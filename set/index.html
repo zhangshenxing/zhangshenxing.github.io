@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hans-CN">
+<head>
+<meta charset="utf-8" />
+<title>Set!</title>
+<style>
+	img{
+		border-radius: 5px;
+		width: 18%;
+	}
+	img.unpressed{
+		border: solid 1px rgba(0,0,0,0.1);
+		box-shadow: 2px 2px 1px #babcbe;
+	}
+	img.pressed{
+		border: solid 1px blue;
+		box-shadow: 2px 2px 1px blue;
+	}
+</style>
+<script>
+	function pressed(thisimg){
+		var t;
+		if(thisimg.getAttributeNode("class").value=="unpressed")
+			t=1;
+		else t=0;
+		if (t==1)
+			thisimg.getAttributeNode("class").value="pressed";
+		else thisimg.getAttributeNode("class").value="unpressed";
+	}
+	function loadpage(){
+		var rd;
+		var rds=[0,0,0,0,0,0,0,0,0,0,0,0];
+		var imgs=document.getElementsByTagName("img");
+		var j;
+		for(var i=0;i<12;i++){
+			do{
+				rd=parseInt(Math.random()*81)+1;
+				for(j=0;j<i;j++){
+					if(rd==rds[j])break;
+				}
+				if(j==i)rds[i]=rd;
+			}while(j<i);
+			document.getElementsByTagName("img")[i].getAttributeNode("src").value="img/"+rd+".png";
+		}
+	}
+	function check(thisbutton){
+		var imgs=document.getElementsByClassName("pressed");
+		if(imgs.length==3){
+			var a1,a2,a3,a4=parseInt(imgs[0].getAttributeNode("src").value.slice(4))-1;
+			var b1,b2,b3,b4=parseInt(imgs[1].getAttributeNode("src").value.slice(4))-1;
+			var c1,c2,c3,c4=parseInt(imgs[2].getAttributeNode("src").value.slice(4))-1;
+			if(a4>=54) a1=2; else if(a4>=27) a1=1; else a1=0; a4-=27*a1;
+			if(a4>=18) a2=2; else if(a4>= 9) a2=1; else a2=0; a4-= 9*a2;
+			if(a4>= 6) a3=2; else if(a4>= 3) a3=1; else a3=0; a4-= 3*a3;
+			if(b4>=54) b1=2; else if(b4>=27) b1=1; else b1=0; b4-=27*b1;
+			if(b4>=18) b2=2; else if(b4>= 9) b2=1; else b2=0; b4-= 9*b2;
+			if(b4>= 6) b3=2; else if(b4>= 3) b3=1; else b3=0; b4-= 3*b3;
+			if(c4>=54) c1=2; else if(c4>=27) c1=1; else c1=0; c4-=27*c1;
+			if(c4>=18) c2=2; else if(c4>= 9) c2=1; else c2=0; c4-= 9*c2;
+			if(c4>= 6) c3=2; else if(c4>= 3) c3=1; else c3=0; c4-= 3*c3;
+			var t1=0,t2=0,t3=0,t4=0;
+			if((a1==b1&&a1==c1)||(a1!=b1&&a1!=c1&&b1!=c1))t1=1;
+			if((a2==b2&&a2==c2)||(a2!=b2&&a2!=c2&&b2!=c2))t2=1;
+			if((a3==b3&&a3==c3)||(a3!=b3&&a3!=c3&&b3!=c3))t3=1;
+			if((a4==b4&&a4==c4)||(a4!=b4&&a4!=c4&&b4!=c4))t4=1;
+			if(t1*t2*t3*t4==1) document.getElementById("ans").innerHTML="You win!";
+			else document.getElementById("ans").innerHTML="You lose!";
+			thisbutton.style.display = 'none';
+		}
+	}
+</script>
+</head>
+<body onload="loadpage();">
+	<p style="text-align: center;">
+		<img class="unpressed" onclick="pressed(this);" src="img/1.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/2.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/3.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/4.png" /><br/>
+		<img class="unpressed" onclick="pressed(this);" src="img/5.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/6.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/7.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/8.png" /><br/>
+		<img class="unpressed" onclick="pressed(this);" src="img/9.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/10.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/11.png" />
+		<img class="unpressed" onclick="pressed(this);" src="img/12.png" /><br/>
+		<button onclick="check(this)" style="height:2em;width:5em;font-size: 200%;">Check</button>
+		<span id="ans" style="font-size: 200%;"></span>
+	</p>
+	<p>You need to choose 3 cards, in which each of the cards' features (shape, color, number, shading), looked at one-by-one, are the same on each card, or are different on each card. All of the features must separately satisfy this rule. In other words: shape must be either the same on all 3 cards, or different on each of the 3 cards; color must be either the same on all 3 cards, or different on each of the 3, etc.</p>
+</body></html>
