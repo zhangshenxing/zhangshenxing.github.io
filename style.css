@@ -46,24 +46,31 @@ span.email::before{
 span.email{
 	font-style: italic;
 }
+
+table.tableul td{
+	border: none;	
+}
+table.tableul td:first-child::before{
+	content: "• ";
+	padding: 0px 6px 0px 14px;
+}
+
+h2::before, h3::before, h4::before{
+	content: "▹ ";
+}
 h2{
 	font-weight: 5000;
 	font-size: 150%;
-}
-h2::before{
-	content: "▹ ";
 }
 h3{
 	font-weight: 100;
 	font-size: 110%;
 	margin-bottom: -6px;
 }
-h3::before{
-	content: "▸ ";
-}
-h4,h5,h6{
+h4{
+	font-size: 110%;
 	margin-bottom: -10px;
-	padding-left: 30px;	
+	padding-left: 20px;	
 }
 span.abstract, pre.bibitem{
 	display: none;
@@ -95,21 +102,12 @@ table{
 	margin:20px auto;
 	width:100%;
 }
-td{
+th,td{
 	border: 1px #ccc solid;
 	vertical-align: middle;
 	padding: 5px 10px;
-	font-size: 100%;
-	
+	font-size: 100%;	
 }
-table.experience td{
-	border: none;
-	padding: 0;
-}
-table.experience ul, table.experience li{
-	margin: 5px 0px;
-}
-
 hr{
 	margin: 0 0 20px;
 	border: 0;
@@ -117,11 +115,11 @@ hr{
 	height: 11px;
 	background:	transparent url("./hr.gif") center center repeat-x;
 }
-.ico img{
+img{
 	height: 20px;
 	vertical-align:middle;
 }
-
+/* Fonts */
 body{
 	font-family: Verdana, "Microsoft Yahei", Arial, Helvetica, sans-serif;
 }
@@ -137,7 +135,7 @@ pre{
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }
-
+/* Color */
 body{
 	background-color: #eaead1;
 	color: #222222;
