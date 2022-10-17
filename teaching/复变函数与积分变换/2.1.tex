@@ -1,0 +1,186 @@
+\section{解析函数的概念}
+
+
+\begin{frame}{复变函数的导数}
+\onslide<+->
+由于 $\BC$ 是一个域, 我们可以像一元实变函数一样去定义复变函数的导数和微分.
+\begin{definition}
+设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
+\onslide<+->
+如果极限
+\[\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}\]
+存在, 则称 \markdef{$f(z)$ 在 $z_0$ 可导}.
+\onslide<+->
+这个极限值称为 \markdef{$f(z)$ 在 $z_0$ 的导数}, 记作
+\[\markatt{f'(z_0)=\frac{\diff w}{\diff z}\big|_{z=z_0}
+=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}\]
+\onslide<+->
+如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \markdef{$f(z)$ 在 $D$ 内可导}.
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{典型例题: 线性函数的不可导性}
+\beqskip{4pt}
+\begin{example}
+函数 $f(z)=x+2yi$ 在哪些点处可导?
+\end{example}
+\begin{solution}
+\vspace{-\baselineskip}
+\begin{align*}
+f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
+&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)i-(x+2yi)}{\Delta z}}\\
+&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y i}{\Delta x+\Delta yi}.}
+\end{align*}
+\onslide<+->
+当 $\Delta x=0$ 时, 上述极限为 $2$;
+\onslide<+->
+当 $\Delta y=0$ 时, 上述极限为 $1$.
+\onslide<+->
+因此该极限不存在, $f(z)$ 处处不可导.
+\end{solution}
+\onslide<+->
+若将 $f(z)$ 视为二元实变量的函数, 则该函数在不同方向的方向导数不同.
+\endgroup
+\end{frame}
+
+
+\begin{frame}[<*>]{例题: 复变函数的导数}
+\beqskip{4pt}
+\onslide<+->
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
+		函数 $f(z)=x-yi$ 在哪些点处可导? 
+		\end{exercise}\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
+		处处不可导.\\
+		\vphantom{$f(z)=x-yi$ 在}
+		\end{answer}
+\end{columns}
+\onslide<+->
+\begin{example}
+求 $f(z)=z^2$ 的导数.
+\end{example}
+\onslide<+->
+\begin{solutions}
+\vspace{-\baselineskip}
+\begin{align*}
+f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
+&\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}\\
+&\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.\mqed}
+\end{align*}
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{求导运算法则}
+\onslide<+->
+和一元实变函数情形类似, 我们有如下求导法则:
+\begin{theorem}
+\begin{itemize}
+\item $(c)'=0$, 其中 $c$ 为复常数;
+\item $(z^n)'=nz^{n-1}$, 其中 $n$ 为整数;
+\item $(f\pm g)'=f'\pm g',\quad (cf)'=cf'$;
+\item $(fg)'=f'g+fg',\quad \left(\dfrac fg\right)'=\dfrac{f'g-fg'}{g^2}$;
+\item $[f(g(z))]'=f'[g(z)]\cdot g'(z)$;
+\item $f'(z)=\dfrac1{(f^{-1})'(w)}, w=f(z)$.
+\end{itemize}
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{可导蕴含连续}
+\begin{theorem}
+若 $f(z)$ 在 $z_0$ 可导, 则 $f(z)$ 在 $z_0$ 连续.
+\end{theorem}
+\begin{proofs}
+该定理的证明和实变量情形完全相同.
+\onslide<+->
+设
+\[\Delta w=f(z_0+\Delta z)-f(z_0),\]
+\onslide<+->
+则
+\vspace{-\baselineskip}
+\begin{align*}
+\lim_{\Delta z\to 0}\Delta w
+&=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z\\
+&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}\\
+&\visible<+->{=f'(z_0)\cdot 0=0.\mqed}
+\end{align*}
+\end{proofs}
+\end{frame}
+
+
+\begin{frame}{复变函数的微分}
+\onslide<+->
+复变函数的微分也和一元实变函数情形类似.
+\begin{definition}
+如果存在常数 $A$ 使得函数 $w=f(z)$ 满足
+\[\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),\]
+其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
+\onslide<+->
+则称 \markdef{$f(z)$ 在 $z_0$ 处可微},
+\onslide<+->
+称 $A\Delta z$ 为 \markdef{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.
+\end{definition}
+\onslide<+->
+和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\diff w=f'(z_0)\Delta z, \diff z=\Delta z$.
+\onslide<+->
+故 \marknot{$\diff w=f'(z_0)\diff z,f'(z_0)=\dfrac{\diff w}{\diff z}$}.
+\end{frame}
+
+
+\begin{frame}{解析函数}
+\begin{definition}
+\begin{itemize}
+\item 若函数 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \markdef{$f(z)$ 在 $z_0$ 解析}.
+\item 若 $f(z)$ 在区域 $D$ 内处处解析, 则称 $f(z)$ 在 $D$ 内解析, 或称 $f(z)$ 是 $D$ 内的一个\markdef{解析函数}(也叫全纯函数或正则函数).
+\item 若 $f(z)$ 在 $z_0$ 不解析, 则称 $z_0$ 为 $f(z)$ 的一个\markdef{奇点}.
+\end{itemize}
+\end{definition}
+\onslide<+->
+由于区域 $D$ 是一个开集, 其中的任意 $z_0\in D$ 均存在一个包含在 $D$ 的邻域. 
+\onslide<+->
+所以 \markatt{$f(z)$ 在 $D$ 内解析和在 $D$ 内可导是等价的}.
+
+\onslide<+->
+如果 $f(z)$ 在 $z_0$ 解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析.
+\onslide<+->
+因此 \markatt{$f(z)$ 解析点全体是一个开集}.
+\end{frame}
+
+
+\begin{frame}{解析函数}
+\begin{example}
+研究函数 $f(z)=|z|^2$ 的解析性.
+\end{example}
+\begin{solution}
+\indent
+由于
+\vspace{-5pt}
+\begin{align*}
+\frac{f(z+\Delta z)-f(z)}{\Delta z}
+&=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}\\
+&=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta yi}{\Delta x+\Delta yi},
+\end{align*}
+\onslide<+->
+若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
+
+\indent
+\onslide<+->
+若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;
+\onslide<+->
+当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$.
+\onslide<+->
+因此此时极限不存在.
+
+\indent
+\onslide<+->
+故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.
+\end{solution}
+\end{frame}
+

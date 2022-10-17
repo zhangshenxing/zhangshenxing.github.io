@@ -1,0 +1,622 @@
+\section{初等函数}
+
+
+\begin{frame}{指数函数}
+\onslide<+->
+我们将实变函数中的初等函数推广到复变函数.
+\onslide<+->
+多项式函数和有理函数的解析性质已经介绍过, 这里不再重复.
+\onslide<+->
+现在我们来定义指数函数.
+
+\onslide<+->
+指数函数有多种等价的定义方式:
+\begin{enumerate}
+\item $\exp z=e^x(\cos y+i\sin y)$ (欧拉恒等式);
+\item $\exp z=\lim\limits_{n\to\infty}\left(1+\dfrac zn\right)^n$ (极限定义);
+\item $\exp z=1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots
+=\lim\limits_{n\to\infty}\sum_{k=0}^n\dfrac{z^k}{k!}$ (级数定义);
+\item $\exp z$ 是唯一的一个处处解析的函数, 使得当 $z=x\in\BR$ 时, $\exp z=e^x$ ($e^x$ 的解析延拓).
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{指数函数}
+\onslide<+->
+有些人会从 $e^x,\cos x,\sin x$ 的泰勒展开
+\begin{align*}
+e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
+\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
+\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
+\end{align*}
+形式地带入得到欧拉恒等式 $e^{ix}=\cos x+i\sin x$.
+\onslide<+->
+事实上我们可以把它当做复指数函数的定义, 而不是欧拉恒等式的证明.
+\onslide<+->
+我们会在幂级数一节说明\enumnum1和\enumnum3等价.
+\end{frame}
+
+
+
+\begin{frame}{指数函数的定义}
+\onslide<+->
+我们来证明\enumnum1和\enumnum2等价.
+\onslide<+->
+\begin{align*}
+\lim_{n\to\infty}\abs{1+\frac zn}^n
+&=\lim_{n\to\infty}\left(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\right)^{\frac n2}\quad
+\visible<+->{(1^\infty\ \text{型不定式})}\\
+&\visible<+->{=\exp\left[\lim_{n\to\infty}\frac n2
+\left(\frac{2x}n+\frac{x^2+y^2}{n^2}\right)\right]=e^x.}
+\end{align*}
+\onslide<+->
+不妨设 $n>|z|$, 这样 $1+\dfrac zn$ 落在右半平面,
+\onslide<+->
+\[\lim_{n\to\infty} n\arg{\left(1+\frac zn\right)}
+=\lim_{n\to\infty} n\arctan \frac y{n+x}
+\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}\]
+\vspace{-\baselineskip}
+\onslide<+->
+故 $\exp z=e^x(\cos y+i\sin y)$.
+\end{frame}
+
+
+\begin{frame}{指数函数的性质}
+\onslide<+->
+定义\markdef{指数函数}
+\[\markatt{\exp z=e^x(\cos y+i\sin y)}.\]
+\onslide<+->
+我们已经知道 $\exp z$ 是一个处处解析的函数, 且 $(\exp z)'=\exp z$.
+
+\onslide<+->
+不难看出
+\begin{itemize}
+\item $\exp z\neq 0$;
+\item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$;
+\item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$;
+\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$;
+\item $\lim\limits_{z\to\infty}\exp z$ 不存在也不为 $\infty$.
+\end{itemize}
+
+\onslide<+->
+为了方便, 我们也记 $\marknot{e^z=\exp z}$.
+\end{frame}
+
+
+\begin{frame}{指数函数的性质}
+\onslide<+->
+指数函数将直线族 $\Re z=c$ 映为圆周族 $|w|=e^c$, 
+\onslide<+->
+将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
+\begin{example}
+求函数 $f(z)=\exp[(1+i)z]$ 的周期.
+\end{example}
+\begin{solution}
+设 $f(z_1)=f(z_2)$, 则 $\exp[(1+i)z_1]=\exp[(1+i)z_2]$.
+\onslide<+->
+因此存在 $k\in\BZ$ 使得
+\[(1+i)z_1=(1+i)z_2+2k\pi i,\]
+\onslide<+->
+从而 $z_1-z_2=k\pi(1+i)$.
+\onslide<+->
+所以 $f(z)$ 的周期是 $\pi(1+i)$.
+\end{solution}
+\onslide<+->
+一般地, $\exp(az+b)$ 的周期是 $\dfrac{2\pi i}a$ (或写成 $-\dfrac{2\pi i}a$), $a\neq 0$.
+\end{frame}
+
+
+\begin{frame}{对数函数}
+\onslide<+->
+对数函数定义为指数函数的反函数.
+\onslide<+->
+设 $z\neq 0$, 满足方程 $\exp w=z$ 的 $w=f(z)$ 被称为\markdef{对数函数}, 记作 $w=\Ln z$.
+
+\onslide<+->
+为什么我们用大写的 $\Ln$ 呢? 
+\onslide<+->
+在复变函数中, 很多函数是多值函数.
+\onslide<+->
+为了便于研究, 我们会固定它的一个单值分支.
+\onslide<+->
+我们将多值的这个开头字母大写, 而对应的单值的则是开头字母小写.
+\onslide<+->
+例如 $\Arg z$ 和 $\arg z$.
+\end{frame}
+
+
+\begin{frame}{对数函数及其主值}
+\onslide<+->
+设 $\exp w=z=r\exp (i\theta)=\exp(\ln r+i\theta)$,
+\onslide<+->
+则
+\[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
+\onslide<+->
+所以
+\[\markatt{\Ln z=\ln|z|+i\Arg z}.\]
+\onslide<+->
+\markatt{它是一个多值函数}.
+
+\onslide<+->
+我们取它的\markdef{主值}为
+\[\markatt{\ln z=\ln|z|+i\arg z}.\]
+\onslide<+->
+那么
+\[\Ln z=\ln z+\Ln 1=\ln z+2k\pi i.\]
+\onslide<+->
+对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
+\onslide<+->
+特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变的对数函数.
+\end{frame}
+
+
+\begin{frame}{典型例题: 对数函数的计算}
+\begin{example}
+求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
+\end{example}
+
+\begin{solution}
+$\Ln2=\ln2+2k\pi i, k\in\BZ$,
+\onslide<+->
+主值就是 $\ln 2$.
+
+\onslide<+->
+$\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
+\onslide<+->
+主值是 $\pi i$.
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 对数函数的计算}
+\begin{example}
+求 $\Ln(-2+3i),\Ln(3-\sqrt3 i),\Ln(-3)$.
+\end{example}
+\begin{solutions}
+\vspace{-\baselineskip}
+\begin{align*}
+\Ln(-2+3i)&=\ln\abs{-2+3i}+i\Arg(-2+3i)\\
+&\visible<+->{=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ.}
+\end{align*}
+\onslide<+->
+\vspace{-\baselineskip}
+\begin{align*}
+&\peq\Ln(3-\sqrt3i)=\ln|3+\sqrt 3i|+i\Arg(3-\sqrt 3i)\\
+&\visible<+->{=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
+=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ.}
+\end{align*}
+\onslide<+->
+\vspace{-\baselineskip}
+\[\Ln(-3)=\ln(-3)+i\Arg(-3)
+\visible<+->{=\ln3+(2k+1)\pi i,\quad k\in\BZ.\mqed}\]
+\vspace{-\baselineskip}
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}[<*>]{典型例题: 对数函数的计算}
+\onslide<+->
+\begin{example}
+解方程 $e^z-1-\sqrt 3i=0$.
+\end{example}
+\onslide<+->
+\begin{solution}
+由于 $1+\sqrt 3 i=2\exp\dfrac{\pi i}3$,
+\onslide<+->
+因此
+\[z=\Ln(1+\sqrt 3i)=\ln 2+\left(2k+\frac13\right)\pi i,\quad k\in\BZ.\qedhere\]
+\end{solution}
+\onslide<+->
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
+		求 $\ln(-1-\sqrt3 i)$.
+		\end{exercise}
+		\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
+		$\ln 2-\dfrac{2\pi i}3$.
+		\end{answer}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{对数函数的性质}
+\onslide<+->
+我们有
+\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
+\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2.\]
+\onslide<+->
+\markatt{注意 $\Ln z$ 不能换成 $\ln z$},
+\onslide<+->
+原因在于乘除的主辐角不一定等于主辐角的加减.
+
+\onslide<+->
+同理, 当 $|n|\ge 2$ 时, \markatt{$\Ln z^n=n\Ln z$ 也不成立}.
+\onslide<+->
+不过 \markatt{$\Ln \sqrt[n]z=\dfrac1n\Ln z$} 是正确的.
+\onslide<+->
+这是因为两侧所能取到的值都是
+\[\dfrac 1n\ln z+\frac{2k\pi i}n,\quad k\in\BZ.\]
+\end{frame}
+
+
+\begin{frame}{对数函数的导数}
+\onslide<+->
+设 $z_0=x<0$ 是负实数.
+\onslide<+->
+由于
+\[\lim_{y\to0^+} \ln (x+yi)=\ln(-x)+\pi,\quad
+\lim_{y\to0^-} \ln (x+yi)=\ln(-x)-\pi,\]
+\onslide<+->
+因此 $\ln z$ 在负实轴和零处不连续.
+\onslide<+->
+实际上, $\lim\limits_{z\to 0}\ln z=\infty$.
+
+\onslide<+->
+而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
+\onslide<+->
+从而
+\[\markatt{(\ln z)'=\frac 1z},\]
+\markatt{$\ln z$ 在除负实轴和零处的区域解析}.
+
+\onslide<+->
+对于其它分支 $\ln z+2k\pi i$, 性质也是类似的.
+\end{frame}
+
+
+\begin{frame}{多值函数的单值化与支点*}
+\onslide<+->
+我们以辐角函数为例简说明为什么要去掉这样一条线.
+\onslide<+->
+为了确定 $\Arg z$ 的一个单值分支, 固定 $\Arg z_0$ 的一个值.
+\onslide<+->
+然后让 $z$ 从 $z_0$ 出发连续地变化, 并让 $\Arg z$ 也连续地变化.
+
+\begin{itemize}
+\item 当 $z$ 沿着原点逆时针绕一圈时, $\Arg z$ 会增加 $2\pi$.
+\item 当 $z$ 沿着 $\infty$ 逆时针绕一圈时, $\Arg z$ 会减少 $2\pi$.
+\item 当 $z$ 沿着其它点附近逆时针绕一圈时, $\Arg z$ 不会改变.
+\end{itemize}
+\onslide<+->
+为了避免 $\Arg z$ 值发生改变, 把 $0$ 和 $\infty$ 连起来.
+\onslide<+->
+那么在复平面去掉这条连线后, $\Arg z$ 就可以被连续地单值化了.
+
+\onslide<1->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis,visible on=<2->](-1.4,0)--(2.4,0);
+\draw[cstaxis,visible on=<2->](0,-1.1)--(0,2);
+\fill[cstdot,defcolor,visible on=<2->](1,1) circle;
+\draw
+	(2,1) node[visible on=<2->,defcolor] {$z_0=1+i$}
+	(2,1.5) node[visible on=<2->,defcolor] {$\Arg z_0=\dfrac\pi4$}
+	(-1.3,1) node[defcolor,visible on=<3->] {$z$}
+	(-1.1,1.5) node[alecolor,visible on=<3->] {$\Arg z=\dfrac{3\pi}4$}
+	(-2.5,0.8) node[notcolor,visible on=<4->] {$\Arg z=\dfrac{7\pi}4$};
+\fill[cstdot,defcolor,visible on=<3->](-1,1) circle;
+\draw[cstcurve,alecolor,cstarrowto,visible on=<3->] (1,1) .. controls (0.5,2) and (-0.5,0.5).. (-1,1);
+\draw[cstcurve,notcolor,visible on=<4->](-0.202,0.362) arc (120:420:0.4);
+\draw[cstcurve,notcolor,visible on=<4->] (1,1)--(-0.202,0.362);
+\draw[cstcurve,notcolor,cstarrowto,visible on=<4->] (0.202,0.362)--(-1,1);
+\draw[cstcurve,defcolor,visible on=<7->] (0,0)to[bend left](-2,-1);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{幂函数}
+\onslide<+->
+设 $a\neq 0$, $z\neq 0$, 定义\markdef{幂函数}
+\begin{align*}
+\markatt{w}&\markatt{=z^a=\exp(a\Ln z)}\\
+&=\exp\bigl[a\ln|z|+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
+\end{align*}
+\onslide<+->
+它的\markdef{主值}为
+\[\exp(a \ln z)=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
+\onslide<+->
+我们有 $z^a=\exp(a \ln z)\cdot 1^a$.
+
+\onslide<+->
+根据 $a$ 的不同, 这个函数有着不同的性质.
+\onslide<+->
+当 $a$ 为整数时, 因为 $\exp(2ak\pi i)=1$, 所以 $w=z^a$ 是单值的.
+\onslide<+->
+此时
+\[z^a=|z|^a\exp(ia\arg z)\]
+就是我们之前定义的方幂.
+\onslide<+->
+当 $a$ 是非负整数时, 补充定义 $0^a=0$.
+\onslide<+->
+那么当 $a$ 是非负整数时, $z^a$ 在复平面上解析;
+\onslide<+->
+当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 上解析.
+\end{frame}
+
+
+\begin{frame}{幂函数的性质: $a$ 为分数时}
+\onslide<+->
+当 $a=\frac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
+\onslide<+->
+\[z^{\frac pq}=|z|^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1\]
+具有 $q$ 个值.
+\onslide<+->
+去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 是处处解析的.
+\onslide<+->
+当 $a=\frac 1n$ 时, $z^a$ 就是方根 $\sqrt[n]z$.
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[draw=white,cstfille,pattern color=notcolor](0,0) circle (1.3);
+\draw[cstaxis](-2,0)--(2,0);
+\draw[cstaxis](0,-1.5)--(0,1.8);
+\draw (1.8,-0.2) node {$x$};
+\draw (-0.2,1.6) node {$y$};
+\draw (-0.2,-0.2) node {$O$};
+\draw[cstcurve,alecolor] (0,0)--(-2,0);
+
+\draw[draw=white,cstfille](5,0) -- ({5+2*cos(30)},{2*sin(30)}) arc (30:-30:2)--(5,0);
+\draw[cstaxis](3,0)--(7,0);
+\draw[cstaxis](5,-1.5)--(5,1.8);
+\draw (7,-0.2) node {$u$};
+\draw (4.8,1.6) node {$v$};
+\draw (4.8,-0.2) node {$O$};
+
+\draw[cstcurve,cstarrowto] (1.7,0.3)to [bend left] (4.5,0.3);
+\draw (3,1.2) node[alecolor] {$w=z^{1/n}$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{幂函数的性质: $a$ 为其他情形}
+\onslide<+->
+对于其它的 $a$, $z^a$ 具有无穷多个值.
+\onslide<+->
+这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi i$ 的整数倍. 
+\onslide<+->
+从而不同的 $k$ 得到的是不同的值.
+\onslide<+->
+去掉负实轴和 $0$ 之后,
+\onslide<+->
+它的主值 $w=\exp(a\ln z)$ 也是处处解析的.
+
+\onslide<+->
+\begin{center}
+\renewcommand\arraystretch{1.6}
+\rowcolors[\hline]{2}{strucolor!15}{strucolor!15}
+\begin{tabular}{|c|c|c|}
+\rowcolor{strucolor}
+\tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\
+整数 $n$&单值&\makecell[c]{$n\ge0$ 时处处解析\\$n<0$ 时除零点外解析}\\
+分数 $p/q$&$q$ 值&除负实轴和零点外解析\\
+无理数或虚数&无穷多值&除负实轴和零点外解析
+\end{tabular}
+\end{center}
+
+\onslide<+->
+对于幂函数的主值, 或者任意固定一个分支 $\Ln z=\ln z+2k\pi i$, 我们总有 $\markatt{(z^a)'=\dfrac{az^a}z}$.
+\end{frame}
+
+
+\begin{frame}[<*>]{典型例题: 幂函数的计算}
+\onslide<+->
+\vspace{-3pt}
+\begin{example}
+求 $1^{\sqrt 2}$ 和 $i^i$.
+\end{example}
+\onslide<+->
+\vspace{-3pt}
+\begin{solutions}
+\vspace{-\baselineskip}
+\vspace{-3pt}
+\begin{align*}
+1^{\sqrt2}&=\exp(\sqrt2\Ln1)
+\visible<+->{=\exp(\sqrt 2\cdot 2k\pi i)}\\
+&\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi),\quad k\in\BZ.}
+\end{align*}
+\vspace{-2\baselineskip}
+\onslide<+->
+\begin{align*}
+i^i&=\exp(i\Ln i)
+\visible<+->{=\exp\left[i\cdot\left(2k+\frac12\right)\pi i\right]}\\
+&\visible<+->{=\exp\left(-2k\pi-\frac12\pi\right),\quad k\in\BZ.\mqed}
+\end{align*}
+\vspace{-\baselineskip}
+\vspace{-3pt}
+\end{solutions}
+\vspace{-3pt}
+\onslide<+->
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
+		求 $(-1)^i$.
+		\end{exercise}
+		\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
+		$\exp{(2k+1)\pi},\ k\in\BZ$.
+		\end{answer}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{幂函数之注记}
+\onslide<+->
+我们总有
+\[\markatt{z^a\cdot z^b=z^{a+b},\quad (z^a)^n=z^{an},n\in\BZ.}\]
+
+\onslide<+->
+我们来看 $\Ln z^a=a\Ln z$ 何时成立.
+\onslide<+->
+由于
+\[\Ln z^a=a\ln z+2a\pi i\cdot\left(k+\frac\ell a\right)\pi i,\quad k,\ell\in\BZ,\]
+\vspace{-\baselineskip}
+\onslide<+->
+\[a\Ln z=a\ln z+2a\pi i\cdot k,\quad k\in\BZ.\]
+\onslide<+->
+因此当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, \markatt{$\Ln z^a=a\Ln z$} 成立.
+\onslide<+->
+对于除此之外的 $a$, 该式子并不成立.
+
+\onslide<+->
+最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\markatt{不同}的.
+\onslide<+->
+因为后者在 $a\not\in\BZ$ 时总是多值的.
+\onslide<+->
+前者实际上是后者的主值.
+\onslide<+->
+为避免混淆, 以后我们总\markatt{默认 $e^a$ 表示指数函数 $\exp a$}.
+\end{frame}
+
+
+\begin{frame}{三角函数的定义}
+\onslide<+->
+我们知道
+\[\cos x=\frac{e^{ix}+e^{-ix}}2,\quad
+\sin x=\frac{e^{ix}-e^{-ix}}{2i}\]
+对于任意实数 $y$ 成立,
+\onslide<+->
+我们将其推广到复数情形.
+\onslide<+->
+定义\markdef{余弦和正弦函数}
+\[\markatt{\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
+\sin z=\frac{e^{iz}-e^{-iz}}{2i}.}\]
+\onslide<+->
+那么欧拉恒等式 $e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立.
+\end{frame}
+
+
+\begin{frame}{三角函数的性质}
+\onslide<+->
+不难得到
+\begin{align*}
+\marknot{\cos(x+iy)}&
+\marknot{=\cos x \ch y-i\sin x\sh y,}\\
+\marknot{\visible<+->{\sin(x+iy)}}&
+\marknot{\visible<.->{=\sin x\ch y+i\cos x\sh y,}}
+\end{align*}
+\onslide<+->
+其中 $\ch y=\dfrac{e^y+e^{-y}}2=\cos{iy}$, $\sh y=\dfrac{e^y-e^{-y}}2=-i\sin{iy}$.
+
+\onslide<+->
+当 $y\to\infty$ 时, $\sin iy=i\sh y$ 和 $\cos iy=\ch y$ 都 $\to\infty$.
+\onslide<+->
+因此 \markatt{$\sin z$ 和 $\cos z$ 并不有界}. 
+\onslide<+->
+这和实变情形完全不同.
+
+\onslide<+->
+容易看出 $\cos z$ 和 $\sin z$ 的零点都是实数.
+\onslide<+->
+于是我们可类似定义其它三角函数
+\begin{align*}
+\markatt{\tan z}&
+\markatt{=\frac{\sin z}{\cos z},z\neq\left(k+\half\right)\pi,}&
+\markatt{\cot z}&
+\markatt{=\frac{\cos z}{\sin z},z\neq k\pi,}\\
+\markatt{\sec z}&
+\markatt{=\frac{1}{\cos z},z\neq\left(k+\half\right)\pi,}&
+\markatt{\csc z}&
+\markatt{=\frac{1}{\sin z},z\neq k\pi.}
+\end{align*}
+\end{frame}
+
+
+\begin{frame}{三角函数的性质}
+\onslide<+->
+这些三角函数的奇偶性, 周期性和导数与实变情形类似,
+\[\markatt{(\cos z)'=-\sin z,\quad
+(\sin z)'=\cos z,}\]
+\onslide<+->
+且在定义域范围内是处处解析的.
+
+\onslide<+->
+三角函数的各种恒等式在复数情形也仍然成立,
+\onslide<+->
+例如
+\begin{itemize}
+\item $\cos(z_1\pm z_2)=\cos z_1 \cos z_2\mp \sin z_1 \sin z_2$,
+\item $\sin(z_1\pm z_2)=\sin z_1 \cos z_2\pm\cos z_1 \sin z_2$,
+\item $\sin^2z+\cos^2z=1$.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{双曲函数}
+\onslide<+->
+类似的, 我们可以定义双曲函数:
+\onslide<+->
+\[\markatt{\ch z=\frac{e^z+e^{-z}}2=\cos iz,}\]
+\onslide<+->
+\[\markatt{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
+\onslide<+->
+\[\markatt{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
+=-i\tan iz,\quad z\neq \left(k+\frac12\right)\pi i.}\]
+\onslide<+->
+它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
+
+\onslide<+->
+$\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
+\end{frame}
+
+
+\begin{frame}{反三角函数和反双曲函数}
+\onslide<+->
+设 $z=\cos w=\dfrac{e^{iw}+e^{-iw}}2$,
+\onslide<+->
+则
+\[e^{2iw}-2ze^{iw}+1=0,\quad
+\visible<+->{e^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}\]
+\onslide<+->
+因此\markdef{反余弦函数}为
+\[w=\Arccos z=-i\Ln(z+\sqrt{z^2-1}).\]
+\onslide<+->
+显然它是多值的.
+
+\onslide<+->
+同理, 我们有:
+\begin{itemize}
+\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{z^2-1})$
+\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}$
+\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$
+\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$
+\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{例题: 解三角函数方程}
+\begin{example}
+解方程 $\sin z=2$ 和 $\cos z=2$.
+\end{example}
+\begin{solution}
+\indent
+由于 $\sin z=\dfrac{e^{iz}-e^{-iz}}{2i}=2$,
+\onslide<+->
+我们有 $e^{2iz}-4ie^{iz}-1=0$.
+\onslide<+->
+于是 $e^{iz}=(2\pm\sqrt 3)i$,
+\onslide<+->
+\vspace{-4pt}
+\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\frac12\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]
+\vspace{-14pt}
+
+\indent
+\onslide<+->
+由于 $\cos z=\dfrac{e^{iz}+e^{-iz}}2=2$,
+\onslide<+->
+我们有 $e^{2iz}-4e^{iz}+1=0$.
+\onslide<+->
+于是 $e^{iz}=2\pm\sqrt 3$,
+\onslide<+->
+\vspace{-4pt}
+\[z=-i\Ln(2\pm\sqrt 3)=2k\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\qedhere\]
+\vspace{-14pt}
+\end{solution}
+\end{frame}
+

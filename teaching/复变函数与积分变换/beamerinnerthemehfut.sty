@@ -1,0 +1,57 @@
+\mode<presentation>
+
+% Part page
+
+\defbeamertemplate{part page}{hfut}
+{
+  \begingroup
+    \begin{beamercolorbox}[sep=10pt,colsep=-4bp,center]{part title}
+      \large 第\chinese{part}章\hspace{1em}\insertpart\par
+    \end{beamercolorbox}
+  \endgroup
+}
+\setbeamertemplate{part page}[hfut]
+
+% Frame title
+%
+%\makeatletter
+%\setbeamertemplate{frametitle}{%
+%  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+%  \@tempdima=\textwidth%
+%  \advance\@tempdima by\beamer@leftmargin%
+%  \advance\@tempdima by\beamer@rightmargin%
+%  \hfill%
+%  \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+%    \usebeamerfont{frametitle}%
+%    \vbox{}\vskip-1ex%
+%    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+%    \hspace{2ex}\strut\insertframetitle\strut\par%
+%    {%
+%      \ifx\insertframesubtitle\@empty%
+%      \else%
+%      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
+%      \fi
+%    }%
+%    \vskip-1ex%
+%    \if@tempswa\else\vskip-.3cm\fi
+%  \end{beamercolorbox}%
+%}
+%\makeatother
+
+% set sub-items normal size
+
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\normalsize}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[square]
+\setbeamertemplate{enumerate items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{title page}[default][colsep=-4bp,shadow=true]
+\setbeamertemplate{subsection page}[default][colsep=-4bp,shadow=true]
+
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\mode<all>

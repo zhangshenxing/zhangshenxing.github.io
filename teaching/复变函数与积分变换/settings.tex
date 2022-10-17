@@ -1,0 +1,128 @@
+\usetheme{hfut}
+\beamerdefaultoverlayspecification{<+->}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+% 中文斜体设置
+\setCJKsansfont[ItalicFont={KaiTi}]{Microsoft YaHei}
+% 章重置节编号
+\makeatletter
+\AtBeginPart{%
+	\beamer@tocsectionnumber=0\relax
+	\setcounter{section}{0}
+	\frame{\partpage}
+}
+% 节目录
+\AtBeginSection{%
+	\begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+\makeatother
+
+% 符号
+\input{symbols}
+% 文本框/表格背景颜色
+\usebeamercolor{example text}
+\colorlet{examcolor}{example text.fg}
+\usebeamercolor{alerted text}
+\colorlet{alercolor}{alerted text.fg}
+\usebeamercolor{structure}
+\colorlet{strucolor}{structure.fg}
+\usepackage{makecell}
+\newcommand\tht{\cellcolor{strucolor}\color{white}}
+% 文本/图形前景色
+\colorlet{defcolor}{red!50!blue}
+\colorlet{alecolor}{red}
+\colorlet{notcolor}{blue}
+\newcommand\markdef[1]{{\color{defcolor}{#1}}}
+\newcommand\markatt[1]{{\color{alecolor}{#1}}}
+\newcommand\marknot[1]{{\color{notcolor}{#1}}}
+% 证毕标志
+\renewcommand\qedsymbol{{\color[rgb]{0.2,0.2,0.7}\ensuremath{\blacksquare}}}
+% 手动证毕标志
+\newcommand\mqed{{\quad\hspace{\fill}\qedsymbol}}
+% 枚举数字引用标志
+\newcommand\enumnum[1]{{\color{defcolor}{\rule[-2pt]{12pt}{12pt}}\hspace{-8.5pt}\color{white}{#1}}\;}
+% 减少公式垂直间距, 配合\endgroup
+\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1}
+% 默认公式间距最低至0
+\setlength\abovedisplayskip{12pt plus 3pt minus 12pt}
+\setlength\abovedisplayshortskip{0pt plus 3pt}
+\setlength\belowdisplayskip{12pt plus 3pt minus 12pt}
+\setlength\belowdisplayshortskip{7pt plus 3pt minus 7pt}
+% 用于对齐的等号幻影
+\newcommand\peq{\mathrel{\phantom{=}}}
+% 缩进, 长度设定需在 \titlepage 之后
+\usepackage{indentfirst}
+\renewcommand{\indent}{\hspace*{2em}}
+% 环境设置
+\makeatletter
+\renewenvironment<>{solution}[1][解]
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newenvironment<>{solutions}[1][解]
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\newenvironment<>{solutionc}[1][续解]
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\newenvironment<>{solutione}[1][续解]
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newenvironment<>{proofs}[1][\proofname]
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\newenvironment<>{proofc}[1][续证]
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\newenvironment<>{proofe}[1][续证]
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newenvironment<>{answer}[1][答案]
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\def\th@analysis{\normalfont\def\inserttheoremblockenv{alertblock}}
+\makeatother
+\newtheorem{conclusion}{结论}
+\theoremstyle{example}
+\newtheorem*{exercise}{练习}
+\newtheorem*{think}{思考}
+\theoremstyle{analysis}
+\newtheorem{analysis}{分析}
+% TIKZ 设置
+\usepackage{tikz}
+\usetikzlibrary{
+  quotes,
+  shapes.arrows,
+  arrows.meta,
+  positioning,
+  shapes.geometric,
+  overlay-beamer-styles,
+  patterns,
+  calc,
+  angles
+}
+\tikzset{
+  cstarrowto/.style     ={-Stealth}, %尖箭头
+  cstarrowfrom/.style   ={Stealth-},
+  cstarrowdouble/.style ={Stealth-Stealth},
+  cstarrow1to/.style    ={-Straight Barb}, %宽箭头
+  cstarrow1from/.style  ={Straight Barb-},
+  cstarrow1double/.style={Straight Barb-Straight Barb},
+  cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+  cstaxis/.style        ={-Stealth, thick}, %坐标轴
+  cstcurve/.style       ={very thick}, %一般曲线
+  cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+  cstdot/.style         ={radius=0.07}, %实心点
+  cstdote/.style        ={radius=0.06, fill=white}, %空心点
+  cstfill/.style        ={fill=cyan!40}, %填充
+  cstfille/.style       ={pattern=north east lines, pattern color=cyan} %虚线填充
+}
+% 标题
+\title{复变函数与积分变换}
+\author{张神星}
+\institute{合肥工业大学}
+\date{2022年秋季学期}

@@ -1,0 +1,241 @@
+\section{原函数和不定积分}
+
+
+\begin{frame}{原函数的存在性}
+\onslide<+->
+设 $f(z)$ 在单连通域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
+\onslide<+->
+由柯西-古萨基本定理可知, 积分 $\displaystyle\int_Cf(\zeta)\diff \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
+\onslide<+->
+因此我们也将其记为 $\displaystyle\int_{z_0}^zf(\zeta)\diff\zeta$.
+
+\onslide<+->
+对于任意固定的 $z_0\in D$, 函数
+\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta\]
+定义了一个单值函数.
+
+\begin{theorem}
+$F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{原函数的存在性}
+\beqskip{5pt}
+\begin{proofs}
+\begin{center}
+\begin{tikzpicture}
+\filldraw[cstcurve,alecolor,rounded corners=0.5cm,fill=cyan!20!white] (-2.5,-0.8) rectangle (2,1);
+\draw[cstcurve,notcolor] (0,0) circle(0.7);
+\draw[cstcurve,defcolor] (-2,0)to [bend left](0,0);
+\draw[cstcurve,defcolor,visible on=<2->] (0,0)--(0.4,0.4);
+\fill[cstdot,alecolor] (-2,0) circle;
+\fill[cstdot,alecolor] (0,0) circle;
+\fill[cstdot,alecolor,visible on=<2->] (0.4,0.4) circle;
+\draw
+  (-2,-0.3) node[notcolor] {$z_0$}
+  (0,-0.3) node[notcolor] {$z$}
+  (1.1,0.7) node[notcolor,visible on=<2->] {$z+\Delta z$};
+\end{tikzpicture}
+\end{center}
+
+以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
+\onslide<+->
+取 $|\Delta z|$ 小于 $K$ 的半径.
+\onslide<+->
+那么
+\vspace{-2pt}
+\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
+\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}\]
+\vspace{-8pt}
+
+\onslide<+->
+容易知道
+\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]
+\onslide<+->
+我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
+\end{proofs}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{原函数的存在性}
+\begin{proofe}
+由于 $f(z)$ 解析, 因此连续.
+\onslide<+->
+$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.
+\onslide<+->
+当 $|\Delta z|<\delta$ 时, 由长大不等式
+\begin{align*}
+\abs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
+&\visible<+->{=\abs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\diff \zeta}}\\
+&\visible<+->{\le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|=\varepsilon.}
+\end{align*}
+\onslide<+->
+由于 $\varepsilon$ 是任意的, 因此
+\[f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]
+\end{proofe}
+\end{frame}
+
+
+\begin{frame}{原函数的存在性}
+\onslide<+->
+如果 $D$ 上的解析函数 $\varphi(z)$ 满足 $\varphi'(z)=f(z)$, 则称 $\varphi(z)$ 是 $f(z)$ 的一个\markdef{原函数}.
+\onslide<+->
+由C-R方程可知, 如果 $\varphi'(z)=0$, 则 $\varphi(z)$ 是常值函数.
+\onslide<+->
+因此 $f(z)$ 的原函数至多相差一个常数.
+\onslide<+->
+故 $f(z)$ 的原函数一定是
+\[G(z)=\markatt{\int_{z_0}^zf(z)\diff z+c}.\]
+\onslide<+->
+我们称之为 $f(z)$ 的\markdef{不定积分}, 记为 \markatt{$\displaystyle\int f(z)\diff z$}.
+\onslide<+->
+显然
+\[G(z_1)-G(z_2)=\int_{z_1}^{z_2}f(z)\diff z.\]
+\onslide<+->
+这就是单连通区域上解析函数的\markdef{牛顿-莱布尼兹定理}.
+
+\onslide<+->
+它和实变函数定积分的牛顿-莱布尼兹定理的差异在哪呢?
+\onslide<+->
+复变情形要求是\markatt{单连通区域上解析函数}, 实变情形要求是\markatt{闭区间上连续函数}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\begin{example}\vspace{4pt}
+求 $\displaystyle\int_{z_0}^{z_1}z\diff z$.
+\end{example}
+\begin{solution}
+由于 $f(z)=z$ 处处解析,
+\onslide<+->
+且 $\displaystyle\int z\diff z=\frac12 z^2+c$,
+\onslide<+->
+因此
+\[\int_{z_0}^{z_1}z\diff z=\frac12z^2\big|_{z_0}^{z_1}=\frac12(z_1^2-z_0^2).\qedhere\]
+\end{solution}
+\onslide<+->
+因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 而无论从 $0$ 到 $3+4i$ 的路径如何.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\begin{example}
+求 $\displaystyle\int_0^{\pi i}z\cos z^2\diff z$.
+\end{example}
+\begin{solution}
+由于 $f(z)=z\cos z^2$ 处处解析,
+\onslide<+->
+且
+\[\int z\cos z^2\diff z=\frac12\int \cos z^2\diff z^2=\frac12\sin z^2+c,\]
+\onslide<+->
+因此
+\[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\qedhere\]
+\end{solution}
+\onslide<+->
+这里我们使用了\markatt{凑微分法}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\beqskip{3pt}
+\begin{example}
+求 $\displaystyle\int_0^i z\cos z\diff z$.
+\end{example}
+\begin{solutions}
+由于 $f(z)=z\cos z$ 处处解析,
+\onslide<+->
+且
+\begin{align*}
+\int z\cos z\diff z&
+=\int z\diff(\sin z)=z\sin z-\int \sin z\diff z\\
+&\visible<+->{=z\sin z+\cos z+c,}
+\end{align*}
+\onslide<+->
+因此
+\begin{align*}
+\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i\\
+&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.\mqed}
+\end{align*}
+\end{solutions}
+\onslide<+->
+这里我们使用了\markatt{分部积分法}.
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\beqskip{10pt}
+\begin{example}
+求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
+\end{example}
+\begin{solutions}
+由于 $f(z)=ze^z$ 处处解析,
+\onslide<+->
+且
+\[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]
+\onslide<+->
+因此
+\begin{align*}
+\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
+&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).\mqed}
+\end{align*}
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\begin{exercise}
+求 $\displaystyle\int_0^1 z\sin z\diff z$.
+\end{exercise}
+
+\begin{answer}
+$\sin 1-\cos 1$.
+\end{answer}
+\begin{example}
+设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
+\end{example}
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\begin{solutions}
+函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
+\onslide<+->
+\[\int\frac{\ln(z+1)}{z+1}\diff z
+=\int\ln(z+1)\diff[\ln(z+1)]=\frac12\ln^2(z+1)+c.\]
+\onslide<+->
+因此
+\begin{align*}
+&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
+\visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}\\
+&\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
+=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.\mqed}
+\end{align*}
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+\begin{example}
+求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是连接 $0$ 到 $2\pi a$ 的摆线
+\vspace{-8pt}
+\[\begin{cases}
+x=a(\theta-\sin\theta),&\\ y=a(1-\cos\theta),
+\end{cases} 0\le \theta\le 2\pi.\]
+\vspace{-8pt}
+\end{example}
+\begin{solutions}
+由于 $f(z)=2z^2+8z+1$ 处处解析,
+\onslide<+->
+因此
+\begin{align*}
+&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
+&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.\mqed}
+\end{align*}
+\vspace{-8pt}
+\end{solutions}
+\end{frame}
+

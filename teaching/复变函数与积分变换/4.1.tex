@@ -1,0 +1,257 @@
+\section{复数项级数}
+
+
+\begin{frame}{复数项级数}
+\onslide<+->
+复数域上的级数与实数域上的级数并无本质差别.
+\begin{definition}
+\begin{itemize}
+\item 设 $\{z_n\}_{n\ge1}$ 是一个复数列.
+\onslide<+->
+表达式 $\suml_{n=1}^\infty z_n$ 称为复数项\markdef{无穷级数}.
+\item 称
+\[s_n=z_1+z_2+\cdots+z_n\]
+为该级数的\markdef{部分和}.
+\item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \markdef{收敛}, 并记 $\suml_{n=1}^\infty z_n=\lim\limits_{n\to\infty}s_n$ 为它的\markdef{和}.
+\onslide<+->
+否则称之\markdef{发散}.
+\end{itemize}
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{复数项级数敛散性的判定}
+\beqskip{8pt}
+\begin{theorem}
+$\suml_{n=1}^\infty z_n=a+bi$ 当且仅当 $\suml_{n=1}^\infty x_n=a,\suml_{n=1}^\infty y_n=b$.
+\end{theorem}
+\begin{proof}
+设 $\suml_{n=1}^\infty x_n$ 的部分和为 $\sigma_n=x_1+x_2+\cdots+x_n$,
+设 $\suml_{n=1}^\infty y_n$ 的部分和为
+$\tau_n=y_1+y_2+\cdots+y_n,$
+\onslide<+->
+则 $\suml_{n=1}^\infty z_n$ 的部分和为
+\[s_n=z_1+z_2+\cdots+z_n=\sigma_n+i\tau_n.\]
+\onslide<+->
+由复数列的敛散性判定条件可知
+\[\lim_{n\to\infty}s_n=a+bi\iff	\lim_{n\to\infty}\sigma_n=a,\quad \lim_{n\to\infty}\tau_n=b.\]
+\onslide<+->
+由此命题得证.
+\end{proof}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{复数项级数敛散性的判定}
+\onslide<+->
+如果 $\suml_{n=1}^\infty z_n$ 收敛, 则它的实部级数和虚部级数都收敛,
+\onslide<+->
+从而 $x_n,y_n\to 0$,
+\onslide<+->
+$z_n=x_n+iy_n\to 0$.
+\onslide<+->
+因此 \markatt{$z_n\to0$ 是 $\suml_{n=1}^\infty z_n$ 收敛的必要条件}.
+\begin{theorem}
+如果实数项级数
+\[\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots\]
+收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{复数项级数敛散性的判定}
+\beqskip{7pt}
+\begin{proof}
+\indent
+因为 $|x_n|,|y_n|\le|z_n|$, 由比较判别法可知实数项级数 $\suml_{n=1}^\infty x_n$, $\suml_{n=1}^\infty y_n$ 绝对收敛, 从而收敛.
+\onslide<+->
+故 $\suml_{n=1}^\infty z_n$ 也收敛.
+
+\onslide<+->
+\indent
+由三角不等式可知
+\[\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|.\]
+\onslide<+->
+两边同时取极限即得级数的不等式关系
+\[\abs{\sum_{n=1}^\infty z_n}=\abs{\lim_{n\to\infty}\sum_{k=1}^n z_k}=
+\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]
+\onslide<+->
+其中第二个等式是因为绝对值函数 $|z|$ 连续.
+\end{proof}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{绝对收敛和条件收敛}
+\begin{definition}
+\begin{enumerate}
+\item 如果级数 $\suml_{n=1}^\infty |z_n|$ 收敛, 则称 $\suml_{n=1}^\infty z_n$ \markdef{绝对收敛}.
+\item 称收敛但不绝对收敛的级数\markdef{条件收敛}.
+\end{enumerate}
+\end{definition}
+\begin{theorem}
+$\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都绝对收敛.
+\end{theorem}
+\begin{proof}
+必要性由前一定理的证明已经知道,
+\onslide<+->
+充分性由 $|z_n|\le|x_n|+|y_n|$ 可得.
+\end{proof}
+\end{frame}
+
+
+\begin{frame}{绝对收敛和条件收敛}
+\begin{center}
+\renewcommand\arraystretch{2}
+\rowcolors[\hline]{2}{strucolor!15}{strucolor!15}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{|c|c|c|c|}
+\rowcolor{strucolor}
+&\tht $\suml_{n=1}^\infty x_n$ 发散
+&\tht $\suml_{n=1}^\infty x_n$ 条件收敛
+&\tht $\suml_{n=1}^\infty x_n$ 绝对收敛\\
+ \tht $\suml_{n=1}^\infty y_n$ 发散
+&$\suml_{n=1}^\infty z_n$ 发散
+&$\suml_{n=1}^\infty z_n$ 发散
+&$\suml_{n=1}^\infty z_n$ 发散\\
+ \tht $\suml_{n=1}^\infty y_n$ 条件收敛
+&$\suml_{n=1}^\infty z_n$ 发散
+&\cellcolor{examcolor!25}$\suml_{n=1}^\infty z_n$ 条件收敛
+&\cellcolor{examcolor!25}$\suml_{n=1}^\infty z_n$ 条件收敛\\
+ \tht $\suml_{n=1}^\infty y_n$ 绝对收敛
+&$\suml_{n=1}^\infty z_n$ 发散
+&\cellcolor{examcolor!25}$\suml_{n=1}^\infty z_n$ 条件收敛
+&\cellcolor{alercolor!25}$\suml_{n=1}^\infty z_n$ 绝对收敛\\
+\end{tabular}}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{绝对收敛和条件收敛}
+\onslide<+->
+绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性, 且不改变其和.
+
+\onslide<+->
+一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
+\begin{think}
+什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
+\end{think}
+\begin{answer}
+当且仅当非零的 $z_n$ 的辐角全都相同时成立.
+\end{answer}
+\end{frame}
+
+
+\begin{frame}{例题: 判断级数的敛散性}
+\beqskip{3pt}
+\begin{example}
+级数 $\displaystyle\sum_{n=1}^\infty\frac{1+i^n}n$ 发散、条件收敛、还是绝对收敛?
+\end{example}
+\begin{solution}
+由于实部级数
+\[\sum_{n=1}^\infty x_n=
+1+\frac13+\frac24+\frac15+\frac17+\frac28+\cdots\]
+发散, 所以该级数发散.
+\end{solution}
+\onslide<+->
+事实上, 它的虚部级数
+\[\sum_{n=1}^\infty y_n=
+1-\frac13+\frac15-\frac17+\cdots\]
+是条件收敛的.
+\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 判断级数的敛散性}
+\begin{example}
+级数 $\displaystyle\sum_{n=1}^\infty\left[\frac{(-1)^n}n+\frac i{2^n}\right]$ 发散、条件收敛、还是绝对收敛?
+\end{example}
+\begin{solution}
+因为实部级数 $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}n$ 条件收敛,
+\onslide<+->
+虚部级数 $\displaystyle\sum_{n=1}^\infty\frac1{2^n}$ 绝对收敛,
+\onslide<+->
+所以该级数条件收敛.
+\end{solution}
+\begin{example}
+级数 $\displaystyle\sum_{n=1}^\infty\dfrac{i^n}n$ 发散、条件收敛、还是绝对收敛?
+\end{example}
+\end{frame}
+
+
+
+\begin{frame}{例题: 复数项级数敛散性}
+\begin{solution}
+因为它的实部和虚部级数
+\[\sum_{n=1}^\infty x_n=-\frac12+\frac14+\frac16-\frac18+\cdots\]
+\onslide<+->
+\[\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots\]
+均条件收敛,
+\onslide<+->
+所以原级数条件收敛.
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 复数项级数敛散性*}
+\onslide<+->
+对 $1/(1+x^2)=1-x^2+x^4-x^6+\cdots$ 逐项积分可得
+\[\arctan x=x-\frac{x^3}3+\frac{x^5}5-\frac{x^7}7+\cdots\]
+\onslide<+->
+可以证明 $x=1$ 时该级数的余项趋于 $0$, 因此
+\[1-\frac13+\frac15-\frac17+\cdots=\arctan1=\frac\pi4.\]
+\onslide<+->
+同理
+\[1-\frac12+\frac13-\frac14+\cdots=\ln(1+x)|_{x=1}=\ln2.\]
+\onslide<+->
+从而
+\[\sum_{n=1}^\infty\dfrac{i^n}n=-\frac12\ln 2+\frac{\pi i}4.\]
+\onslide<+->
+事实上, 左侧是复变函数 $-\ln(1+z)$ 在 $z=-i$ 处的泰勒级数.
+\end{frame}
+
+
+\begin{frame}{例题: 判断级数的敛散性}
+\begin{example}
+级数 $\displaystyle\sum_{n=0}^\infty\frac{(8i)^n}{n!}$ 发散、条件收敛、还是绝对收敛?
+\end{example}
+\begin{solution}
+因为 $\abs{\dfrac{(8i)^n}{n!}}=\dfrac{8^n}{n!}$, $\displaystyle\sum_{n=0}^\infty\frac{8^n}{n!}=e^8$ 收敛, 所以该级数绝对收敛.
+\end{solution}
+\onslide<+->
+实际上, 它的实部和虚部级数分别为
+\[1-\frac{8^2}{2!}+\frac{8^4}{4!}-\frac{8^6}{6!}+\cdots=\cos 8,\ 
+8-\frac{8^3}{3!}+\frac{8^5}{5!}-\frac{8^7}{7!}+\cdots=\sin 8,\]
+\onslide<+->
+因此
+\[\sum_{n=0}^\infty\frac{(8i)^n}{n!}=\cos 8+i\sin 8=e^{8i}.\]
+\end{frame}
+
+
+\begin{frame}{级数敛散性判别法}
+对于正项级数 $\suml_{n=0}^\infty x_n$, 我们有若干判别法来判断它的敛散性.
+\onslide<+->
+由此可得: 设
+\begin{enumerate}
+\item \marknot{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
+\item \marknot{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
+\item \marknot{柯西-Hadamard判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (所有子数列中极限的最大值).
+\end{enumerate}
+\onslide<+->
+则当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛;
+\onslide<+->
+当 $\lambda>1$ 时, $\suml_{n=0}^\infty z_n$ 发散.
+\onslide<+->
+其证明主要是通过将该级数与相应的等比级数做比较得到.
+\onslide<+->
+如果 $\lambda=1$, 则无法使用该方法判断.
+
+\begin{solution}[另解]
+因为 $\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\abs{\dfrac{8}{n+1}}=0$, 所以该级数绝对收敛.
+\end{solution}
+\end{frame}
+
+
+
+
+

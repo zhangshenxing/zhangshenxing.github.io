@@ -1,0 +1,318 @@
+\section{复变函数}
+
+
+\begin{frame}{复变函数的定义}
+\onslide<+->
+\markdef{复变函数}就是复数集合 $G\subseteq C$ 上的一个映射 $f:G\to \BC$.
+\onslide<+->
+换言之, 对于每一个 $z\in G$, 有一个唯一确定的复数 $w=f(z)$ 与之对应.
+\onslide<+->
+例如 $\Re z,\Im z,\arg z,|z|,z^n$ 都是复变函数.
+
+\onslide<+->
+$f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G}$.
+
+\onslide<+->
+如果 $z_1\neq z_2\implies f(z_1)\neq f(z_2)$, 则称 $f$ 是\markdef{单射}.
+\end{frame}
+
+
+\begin{frame}{多值复变函数}
+\onslide<+->
+不过在复变函数中, 我们常常会遇到\markdef{多值的复变函数}, 也就是说一个 $z\in G$ 可能有多个 $w$ 与之对应.
+\onslide<+->
+例如 $\Arg z,\sqrt[n]z$ 等.
+\onslide<+->
+如果对每一个定义域范围内的 $z$, 选取固定的一个 $f(z)$ 的值, 则我们得到了这个多值函数的一个\markdef{单值分支}.
+
+\onslide<+->
+在考虑多值的情况下, 复变函数总有反函数:
+\onslide<+->
+对于任意点 $w\in $, 存在一个或多个 $z\in G$ 使得 $w=f(z)$.
+\onslide<+->
+这样 $w$ 到 $z$ 的就定义了 $f$ 的反函数 $f^{-1}$.
+\onslide<+->
+如果 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\markdef{一一对应}.
+\onslide<+->
+若无特别声明, \markatt{复变函数总是指单值的复变函数}.
+\end{frame}
+
+
+\begin{frame}{与实变函数的关系}
+\onslide<+->
+\markatt{每一个复变函数 $w=f(z)=u+iv$ 等价于给了两个二元实变函数}
+\[\markatt{u=u(x,y),\qquad v=v(x,y).}\]
+\onslide<+->
+例如
+\[w=z^2=(x^2-y^2)+i\cdot 2xy,\]
+\[u(x,y)=x^2-y^2,\quad v(x,y)=2xy.\]
+\onslide<+->
+其实我们也可以把 $f(z)$ 看成一个二元实变量复值函数.
+\end{frame}
+
+
+\begin{frame}{映照}
+\onslide<+->
+在实变函数中, 我们常常用函数图像直观来理解和研究函数.
+\onslide<+->
+在复变函数中, 我们可以用两个复平面($z$ 复平面和 $w$ 复平面)之间的映射(称之为\markdef{映照})来表示这种对应关系.
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-1.5)--(-2.5,1.5);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
+\draw[cstcurve,alecolor,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
+\draw[cstcurve,smooth,notcolor] plot coordinates {(1.2,0) (2,-0.5) (2.5,-0.8) (3,-0.5) (3.5,0) (3.8,0.9) (3.3,1.2) (2,0.8) (1.2,0)};
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2,0.8) (0.4,0.6) (2.8,0.7)};
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.3,0.5) (0,-0.2) (2.2,-0.3)};
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.6) (2.2,-0.3)};
+\fill[cstdot,alecolor] (-2,0.8) circle;
+\fill[cstdot,alecolor] (-2.3,0.5) circle;
+\fill[cstdot,alecolor] (-2.8,0.3) circle;
+\fill[cstdot,notcolor] (2.8,0.7) circle;
+\fill[cstdot,notcolor] (2.2,-0.3) circle;
+\draw
+  (-1.5,-1) node[alecolor] {$z$ 复平面}
+  (-2.7,-0.2) node {$0$}
+  (-0.5,-0.2) node {$x$}
+  (-2.7,1.5) node {$y$}
+  (3.5,-1) node[notcolor] {$w$ 复平面}
+  (2.3,0.2) node {$0$}
+  (4.5,-0.2) node {$u$}
+  (2.3,1.5) node {$v$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{例题: 映照}
+\begin{example}
+函数 $w=\ov z$.
+\onslide<+->
+如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个映照对应的是关于 $z$ 轴的翻转变换.
+\onslide<+->
+它把任一区域映成和它全等的区域.
+\end{example}
+
+\begin{example}
+函数 $w=az$.
+\onslide<+->
+设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.
+\onslide<+->
+它把任一区域映成和它相似的区域.
+\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 映照}
+\begin{example}
+函数 $w=z^2$.
+\onslide<+->
+这个映照把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-1)--(-2.5,2);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-1)--(2.5,2);
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.5,1) (-2,0.6) (-1,1.3) (1.5,0)};
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-1.7,1.2) (0,1.7) (1.7,1.92)};
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-1.5) (1,-1.5) (2.77,0.36)};
+\fill[cstdot,fill=alecolor] (-2.5,1) circle;
+\fill[cstdot,fill=alecolor] (-1.7,1.2) circle;
+\fill[cstdot,fill=alecolor] (-3.1,-0.3) circle;
+\fill[cstdot,fill=notcolor] (1.5,0) circle;
+\fill[cstdot,fill=notcolor] (1.7,1.92) circle;
+\fill[cstdot,fill=notcolor] (2.77,0.36) circle;
+\fill[cstfille,pattern color=alecolor,visible on=<4->] (-2.5,0)--(-1.31,0.913) arc(37.5:7.5:1.5)--cycle;
+\fill[cstfille,pattern color=notcolor,visible on=<4->] (2.5,0)--(2.966,1.74) arc(75:15:1.8)--cycle;
+\draw[cstcurve,alecolor,visible on=<4->] (-2.5,0) --(-1.15,1.035);
+\draw[cstcurve,alecolor,visible on=<4->] (-2.5,0) --(-0.814,0.222);
+\draw[cstcurve,notcolor,visible on=<4->] (2.5,0) --(3.018,1.93);
+\draw[cstcurve,notcolor,visible on=<4->] (2.5,0) --(4.43,0.518);
+\draw
+  (-2.7,-0.2) node {$0$}
+  (-0.5,-0.2) node {$x$}
+  (-2.7,1.8) node {$y$}
+  (2.3,0.2) node {$0$}
+  (4.5,-0.2) node {$u$}
+  (2.3,1.8) node {$v$};
+\end{tikzpicture}
+\end{center}
+\onslide<+->
+这个映射对应两个实变函数 $u=x^2-y^2,\quad v=2xy$.
+\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 映照}
+\begin{example}[续]
+因此它把 $z$ 平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线
+\[x^2-y^2=c_1,\quad 2xy=c_2\]
+\onslide<+->
+分别映射为 $w$ 平面上的两族平行直线
+\[u=c_1,\quad v=c_2.\]
+
+\vspace{-1.5\baselineskip}
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-1.6)--(-2.5,1.6);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-1.6)--(2.5,1.6);
+\draw[cstcurve,notcolor] (-3.7,-1.2)--(-1.3,1.2);
+\draw[cstcurve,notcolor] (-3.7,1.2)--(-1.3,-1.2);
+\draw[cstcurve,notcolor,smooth,domain=-35:35]
+  plot ({sec(\x)-2.5},{tan(\x)})
+  plot ({-sec(\x)-2.5},{tan(\x)})
+  plot ({tan(\x)-2.5},{sec(\x)})
+  plot ({tan(\x)-2.5},{-sec(\x)});
+\draw[cstcurve,notcolor,smooth,domain=-46:46]
+  plot ({(0.8*sec(\x)-2.5)},{0.8*tan(\x)})
+  plot ({(-0.8*sec(\x)-2.5)},{0.8*tan(\x)})
+  plot ({0.8*tan(\x)-2.5},{0.8*sec(\x)})
+  plot ({0.8*tan(\x)-2.5},{0.8*-sec(\x)});
+\draw[cstcurve,notcolor,smooth,domain=-57:57]
+  plot ({(0.6*sec(\x)-2.5)},{0.6*tan(\x)})
+  plot ({(-0.6*sec(\x)-2.5)},{0.6*tan(\x)})
+  plot ({0.6*tan(\x)-2.5},{0.6*sec(\x)})
+  plot ({0.6*tan(\x)-2.5},{0.6*-sec(\x)});
+\draw[cstcurve,notcolor,smooth,domain=-68:68]
+  plot ({(0.4*sec(\x)-2.5)},{0.4*tan(\x)})
+  plot ({(-0.4*sec(\x)-2.5)},{0.4*tan(\x)})
+  plot ({0.4*tan(\x)-2.5},{0.4*sec(\x)})
+  plot ({0.4*tan(\x)-2.5},{0.4*-sec(\x)});
+
+\draw[cstcurve,alecolor,visible on=<4->] (-4,0)--(-1,0);
+\draw[cstcurve,alecolor,visible on=<4->] (-2.5,-1.3)--(-2.5,1.3);
+\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-34:34]
+  plot ({0.8*(sec(\x)+tan(\x))-2.5},{0.8*(sec(\x)-tan(\x))})
+  plot ({0.8*(sec(\x)+tan(\x))-2.5},{-0.8*(sec(\x)-tan(\x))})
+  plot ({-0.8*(sec(\x)+tan(\x))-2.5},{0.8*(sec(\x)-tan(\x))})
+  plot ({-0.8*(sec(\x)+tan(\x))-2.5},{-0.8*(sec(\x)-tan(\x))});
+\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-45:45]
+  plot ({0.6*(sec(\x)+tan(\x))-2.5},{0.6*(sec(\x)-tan(\x))})
+  plot ({0.6*(sec(\x)+tan(\x))-2.5},{-0.6*(sec(\x)-tan(\x))})
+  plot ({-0.6*(sec(\x)+tan(\x))-2.5},{0.6*(sec(\x)-tan(\x))})
+  plot ({-0.6*(sec(\x)+tan(\x))-2.5},{-0.6*(sec(\x)-tan(\x))});
+\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-57:57]
+  plot ({0.4*(sec(\x)+tan(\x))-2.5},{0.4*(sec(\x)-tan(\x))})
+  plot ({0.4*(sec(\x)+tan(\x))-2.5},{-0.4*(sec(\x)-tan(\x))})
+  plot ({-0.4*(sec(\x)+tan(\x))-2.5},{0.4*(sec(\x)-tan(\x))})
+  plot ({-0.4*(sec(\x)+tan(\x))-2.5},{-0.4*(sec(\x)-tan(\x))});
+\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-71:71]
+  plot ({0.2*(sec(\x)+tan(\x))-2.5},{0.2*(sec(\x)-tan(\x))})
+  plot ({0.2*(sec(\x)+tan(\x))-2.5},{-0.2*(sec(\x)-tan(\x))})
+  plot ({-0.2*(sec(\x)+tan(\x))-2.5},{0.2*(sec(\x)-tan(\x))})
+  plot ({-0.2*(sec(\x)+tan(\x))-2.5},{-0.2*(sec(\x)-tan(\x))});
+
+\draw[cstcurve,notcolor] (1.3,-1.3)--(1.3,1.3);
+\draw[cstcurve,notcolor] (1.6,-1.3)--(1.6,1.3);
+\draw[cstcurve,notcolor] (1.9,-1.3)--(1.9,1.3);
+\draw[cstcurve,notcolor] (2.2,-1.3)--(2.2,1.3);
+\draw[cstcurve,notcolor] (2.5,-1.3)--(2.5,1.3);
+\draw[cstcurve,notcolor] (2.8,-1.3)--(2.8,1.3);
+\draw[cstcurve,notcolor] (3.1,-1.3)--(3.1,1.3);
+\draw[cstcurve,notcolor] (3.4,-1.3)--(3.4,1.3);
+\draw[cstcurve,notcolor] (3.7,-1.3)--(3.7,1.3);
+
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,-1.2)--(3.8,-1.2);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.9)--(3.8,-0.9);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.6)--(3.8,-0.6);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.3)--(3.8,-0.3);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,0)--(3.8,0);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.3)--(3.8,0.3);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.6)--(3.8,0.6);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.9)--(3.8,0.9);
+\draw[cstcurve,alecolor,visible on=<4->] (1.2,1.2)--(3.8,1.2);
+\end{tikzpicture}
+\end{center}
+\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 映照的像}
+\vspace{-3pt}
+\begin{example}
+求下列集合在映照 $w=z^2$ 下的像.
+
+\onslide<+->
+(1) 线段 $0<|z|<2,\arg z=\dfrac\pi2$.
+
+(2) 双曲线 $x^2-y^2=4$.
+
+(3) 扇形区域 $0<\arg z<\dfrac\pi4,0<|z|<2$.
+\end{example}
+\vspace{-3pt}
+\begin{solutions}
+(1) 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
+\onslide<+->
+因此它的像还是一条线段 $0<|w|<4,\arg w=-\pi$.
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-0.2)--(-2.5,1.6);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-0.2)--(2.5,1.6);
+\draw[cstcurve,alecolor] (-2.5,0)--(-2.5,1);
+\filldraw[cstdote] (-2.5,0) circle;
+\filldraw[cstdote] (-2.5,1) circle;
+\draw[cstcurve,notcolor] (0.5,0)--(2.5,0);
+\filldraw[cstdote,draw=notcolor] (0.5,0) circle;
+\filldraw[cstdote,draw=notcolor] (2.5,0) circle;
+\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.2,0.5) (-0.3,1.3) (1.5,0.5)};
+\draw
+  (-0.5,-0.2) node {$x$}
+  (-2.7,1.3) node {$y$}
+  (4.5,-0.2) node {$u$}
+  (2.3,1.3) node {$v$};
+\end{tikzpicture}
+\end{center}
+\vspace{-13pt}
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}{例题: 映照的像}
+\begin{solutione}
+(2) 由于
+\[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
+\onslide<+->
+因此 $u=x^2-y^2=4,v=2xy$.
+
+\onslide<+->
+\indent
+对于任意 $v\in\BR$, 存在 $z=x+yi\in\BC$ 使得 $z^2=4+vi$, 且 $x^2-y^2=4$.
+\onslide<+->
+因此这条双曲线的像是一条直线 $\Re w=4$.
+
+(3) 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
+\onslide<+->
+因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.
+\vspace{-5pt}
+\end{solutione}
+\end{frame}
+
+
+\begin{frame}{例题: 映照的像}
+\beqskip{7pt}
+\begin{example}
+求圆周 $|z|=2$ 在映照 $w=z+\dfrac1z$ 下的像.
+\end{example}
+\begin{solution}
+设 $z=x+yi$, 则
+\[w=z+\frac1z=z+\frac{\ov z}4=\frac54x+\frac34yi=u+vi,\]
+\onslide<+->
+\[x=\frac45u,\quad y=\frac43v,\quad \left(\frac45u\right)^2+\left(\frac43v\right)^2=4,\]
+\onslide<+->
+\[\left(\frac u{5/2}\right)^2+\left(\frac v{3/2}\right)^2=1.\qedhere\]
+\end{solution}
+\endgroup
+\end{frame}
+
+

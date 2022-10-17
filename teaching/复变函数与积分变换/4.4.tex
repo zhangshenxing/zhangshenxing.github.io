@@ -1,0 +1,469 @@
+\section{洛朗级数}
+
+
+\begin{frame}{双边幂级数}
+\onslide<+->
+如果解析函数 $f(z)$ 在 $z_0$ 处解析, 那么在 $z_0$ 处可以展开成泰勒级数.
+\onslide<+->
+如果 $f(z)$ 在 $z_0$ 处不解析呢?
+\onslide<+->
+此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数,
+\onslide<+->
+然而它却可能可以展开为\markdef{双边幂级数}
+\onslide<+->
+\[\sum_{n=-\infty}^\infty c_n(z-z_0)^n=\markatt{
+\underbrace{\sum_{n=1}^\infty c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}+
+\marknot{\underbrace{\sum_{n=0}^\infty c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.\]
+
+\onslide<+->
+为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
+\begin{definition}
+如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\markdef{收敛}.
+\onslide<+->
+否则我们称之为\markdef{发散}.
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{双边幂级数的敛散性}
+\onslide<+->
+注意双边幂级数的敛散性不能像幂级数那样通过部分和
+形成的数列的极限来定义.
+\onslide<+->
+这是使用不同的部分和选取方式会影响到极限的数值.
+\onslide<+->
+例如双边幂级数
+\[\cdots+z^{-2}+z^{-1}-1-z-z^2-\cdots=\sum_{n=1}^\infty z^{-n}-\sum_{n=0}^\infty z^n,\]
+\onslide<+->
+若使用定义
+\[s_n(z)=\sum_{k=-n}^n c_k(z-z_0)^k,\]
+作为部分和, 则当 $z=1$ 时, $s_n(1)=-1$.
+\onslide<+->
+若使用定义
+\[s_n(z)=\sum_{k=-n+1}^{n+1} c_k(z-z_0)^k,\]
+作为部分和, 则当 $z=1$ 时, $s_n(1)=-3,n\ge1$.
+\end{frame}
+
+
+\begin{frame}{双边幂级数的收敛域}
+\onslide<+->
+设 $\suml_{n=0}^\infty c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
+
+\onslide<+->
+对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
+\onslide<+->
+设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
+\onslide<+->
+设 $R_1:=\dfrac1R$, 则 $\suml_{n=1}^\infty c_{-n}(z-z_0)^{-n}$ 在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
+
+\begin{enumerate}
+\item 如果 $R_1>R_2$, 则该双边幂级数处处不收敛.
+\item 如果 $R_1=R_2$, 则该双边幂级数只在圆周 $|z-z_0|=R_1$ 上可能有收敛的点.
+\onslide<+->
+此时没有收敛域.
+\item 如果 $R_1<R_2$, 则该双边幂级数在 $R_1<|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|<R_1$ 或 $>R_2$ 内发散, 在圆周 $|z-z_0|=R_1$ 或 $R_2$ 上既可能发散也可能收敛.
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{双边幂级数的收敛域}
+\onslide<+->
+因此\markatt{双边幂级数的收敛域为圆环域 $R_1<|z-z_0|<R_2$}.
+
+\onslide<+->
+当 $R_1=0$ 或 $R_2=+\infty$ 时, 圆环域的形状会有所不同.
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\filldraw[cstcurve,draw=alecolor,cstfill] (0,0) circle (1.5);
+\filldraw[cstdote,draw=alecolor] (0,0) circle;
+\draw[notcolor,cstarrowto,thick] (0.048,0.036)--(1.2,0.9);
+\draw
+  (0.7,0.2) node[notcolor] {$R_2$}
+  (-0.3,0) node[alecolor] {$z_0$}
+  (0,-2) node {$0<|z-z_0|<R_2$};
+
+\fill[cstfille,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
+\filldraw[cstcurve,fill=white,draw=alecolor,visible on=<.->] (4,0) circle (1); 
+\fill[cstdot,notcolor,visible on=<.->] (4,0) circle;
+\draw[notcolor,cstarrowto,thick,visible on=<.->] (4,0)--(4.6,-0.8);
+\draw
+  (4.1,-0.6) node[notcolor,visible on=<.->] {$R_1$}
+  (3.7,0) node[alecolor,visible on=<.->] {$z_0$}
+  (4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
+
+\fill[cstfille,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
+\filldraw[cstdote,draw=alecolor,visible on=<.->] (8,0) circle;
+\draw
+  (7.7,0) node[alecolor,visible on=<.->] {$z_0$}
+  (8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
+\end{tikzpicture}
+\end{center}
+
+\onslide<+->
+双边幂级数的非负幂次部分和负幂次部分在收敛圆环域内都收敛,
+\onslide<+->
+因此它们的和函数都解析($\zeta=\dfrac1{z-z_0}$ 关于 $z$ 解析), 且可以逐项求导、逐项积分.
+\onslide<+->
+从而双边幂级数的和函数也是解析的, 且可以逐项求导、逐项积分.
+\end{frame}
+
+
+\begin{frame}{例题: 双边幂级数的收敛域}
+\begin{example}
+求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}$ 的收敛域与和函数, 其中 $a,b$ 为非零复数.
+\end{example}
+\begin{solution}
+\indent
+由于 $\displaystyle\sum_{n=0}^\infty\frac{z^n}{b^n}$ 的收敛半径为 $|b|$, $\displaystyle\sum_{n=0}^\infty(az)^n$ 的收敛半径为 $\dfrac1{|a|}$,
+\onslide<+->
+因此该双边幂级数的收敛域为 $|a|<|z|<|b|$.
+
+\onslide<+->\indent
+当 $|b|\le |a|$ 时, 没有收敛域.
+\onslide<+->
+当 $|a|<|z|<|b|$ 时,
+\begin{align*}
+\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{a/z}{1-a/z}+\frac1{1-z/b}=\frac{(a-b)z}{(z-a)(z-b)}.\qedhere
+\end{align*}
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{洛朗级数}
+\onslide<+->
+反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\markatt{洛朗级数}.
+
+\onslide<+->
+例如 $f(z)=\dfrac1{z(1-z)}$ 在 $z=0,1$ 以外解析.
+\onslide<+->
+在圆环域 $0<|z|<1$ 内,
+\[f(z)=\frac1z+\frac1{1-z}=\frac1z+1+z+z^2+z^3+\cdots\]
+\onslide<+->
+在圆环域 $1<|z|<+\infty$ 内,
+\[f(z)=\frac1z-\frac1z\cdot\frac1{1-1/z}=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots\]
+\end{frame}
+
+
+\begin{frame}{洛朗级数}
+\onslide<+->
+现在我们来证明洛朗级数的存在性并得到洛朗展开式.
+\onslide<+->
+设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内处处解析.
+\onslide<+->
+设
+\[\markatt{K_1:|z-z_0|=r},\quad \marknot{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.\]
+是该圆环域内的两个圆周. 
+\onslide<+->
+对于 $r<|z-z_0|<R$, 由柯西积分公式,
+\[f(z)=\frac1{2\pi i}
+\marknot{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+-\frac1{2\pi i}\markatt{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.\]
+\onslide<3->
+\begin{center}
+\begin{tikzpicture}
+\filldraw[cstcurve,cstfill,draw=notcolor] (0,0) circle (1.5);
+\filldraw[cstcurve,fill=white,draw=alecolor] (0,0) circle (1);
+\fill[cstdot,alecolor,visible on=<4->] (-1,0) circle;
+\fill[cstdot,notcolor,visible on=<4->] (-1.48,-0.3) circle;
+\fill[cstdot,black,visible on=<4->] (0,1.25) circle;
+\draw[notcolor,cstarrowto,thick,visible on=<3->] (0,0)--(1.2,0.9);
+\draw[alecolor,cstarrowto,thick,visible on=<3->] (0,0)--(0.6,-0.8);
+\draw
+  (-1.25,-0.15) node[visible on=<4->] {$\zeta$}
+  (0.5,0.1) node[notcolor,visible on=<3->] {$R$}
+  (0.1,-0.5) node[alecolor,visible on=<3->] {$r$}
+  (-0.3,0) node {$z_0$}
+  (0.8,-1) node[alecolor,visible on=<3->] {$K_1$}
+  (1.4,1.2) node[notcolor,visible on=<3->] {$K_2$}
+  (-0.3,1.25) node[visible on=<4->] {$z$};
+\fill[cstdot,black] (0,0) circle;
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{洛朗级数}
+\onslide<+->
+和泰勒级数的推导类似,
+\[\frac1{2\pi i}\marknot{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\]
+可以表达为幂级数的形式.
+\onslide<+->
+对于 $\zeta\in K_1$, 由于 $\abs{\dfrac{\zeta-z_0}{z-z_0}}<1$,
+\onslide<+->
+因此
+\[-\frac1{\zeta-z}=\frac1{z-z_0}\cdot\frac1{1-\dfrac{\zeta-z_0}{z-z_0}}=\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}},\]
+\onslide<+->
+\[-\frac1{2\pi i}\markatt{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
+\end{frame}
+
+
+\begin{frame}{洛朗级数}
+\onslide<+->
+令
+\[R_N(z)=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=N}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
+\onslide<+->
+由于 $f(\zeta)$ 在 $D\supseteq K_1$ 上解析, 从而在 $K_1$ 上连续且有界.
+\onslide<+->
+设 $|f(\zeta)|\le M,\zeta\in K_1$,
+\onslide<+->
+那么
+\begin{align*}
+|R_N(z)|&\le\frac M{2\pi}\oint_{K_1}\abs{\sum_{n=N}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}}\diff s\\
+&\visible<+->{=\frac M{2\pi}\oint_{K_1}\abs{\frac1{\zeta-z}\cdot\left(\frac{\zeta-z_0}{z-z_0}\right)^{N-1}}\diff s}\\
+&\visible<+->{\le\frac M{2\pi}\cdot\frac1{|z-z_0|-r}\cdot\left[\frac r{|z-z_0|}\right]^{N-1}\cdot 2\pi r\to 0\quad (N\to\infty).}
+\end{align*}
+\end{frame}
+
+
+\begin{frame}{洛朗级数}
+\onslide<+->
+故
+\begin{align*}
+f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\\
+&\qquad+\sum_{n=1}^\infty \left[\frac1{2\pi i}\oint_{K_1}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{-n+1}}\right](z-z_0)^{-n},
+\end{align*}
+其中 $r<|z-z_0|<R$.
+\onslide<+->
+由复合闭路定理, $K_1,K_2$ 可以换成任意一条在圆环域内绕 $z_0$ 的闭路 $C$.
+\onslide<+->
+从而我们得到 \marknot{$f(z)$ 在以 $z_0$ 为圆心的圆环域的洛朗展开}
+\[\markatt{f(z)=\sum_{n=-\infty}^\infty\left[\marknot{\frac1{2\pi i}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},\]
+其中 $R_1<|z-z_0|<R_2$.
+\end{frame}
+
+
+\begin{frame}{洛朗展开的性质}
+\onslide<+->
+我们称 $f(z)$ 洛朗展开的非负幂次部分为它的\markdef{解析部分}, 负幂次部分为它的\markdef{主要部分}.
+
+\onslide<+->
+设在圆环域 $R_1<|z-z_0|<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
+\[f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n,\]
+\onslide<+->
+则
+\[\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}=\sum_{k=-\infty}^\infty c_k\oint_C(\zeta-z_0)^{k-n-1}\diff\zeta=2\pi i c_n.\]
+\onslide<+->
+因此 $f(z)$ 在圆环域内的\markatt{双边幂级数展开是唯一的, 它就是洛朗级数}.
+\end{frame}
+
+
+\begin{frame}{与泰勒级数的关系}
+\onslide<+->
+如果 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项.
+\onslide<+->
+那么该洛朗级数是一个幂级数.
+\onslide<+->
+因此它的和函数在 $|z-z_0|<R_2$ 内解析, 且在圆环域上等于 $f(z)$.
+
+\onslide<+->
+反过来, 如果 $f(z)$ 在 $|z-z_0|<R_2$ 内解析,
+\onslide<+->
+则 $f(z)$ 可以展开为泰勒级数.
+\onslide<+->
+由洛朗级数的唯一性可知此时泰勒级数就是洛朗级数.
+
+\onslide<+->
+由此可知, $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项, 当且仅当 $f(z)$ 与某一个在 $|z-z_0|<R_2$ 上解析的函数在该圆环域上相同.
+\onslide<+->
+例如
+\[f(z)=\frac{\sin z}z=\frac 1z\sum_{n=0}^\infty\frac{(-1)^nz^{2n+1}}{(2n+1)!}
+\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{2n}}{(2n+1)!}.}\]
+\onslide<+->
+可以看出, 右侧是一个幂级数, 所以它在 $z=0$ 处解析.
+\onslide<+->
+如果我们补充定义 $f(0)=1$, 则 $f(z)$ 处处解析.
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗级数}
+\beqskip{9pt}
+\begin{example}
+将 $f(z)=\dfrac{e^z}{z^2}$ 展开为以 $0$ 为中心的洛朗级数.
+\end{example}
+\begin{solutions}
+由于 $0$ 是奇点, $f(z)$ 在 $0<|z|<+\infty$ 内解析.
+\onslide<+->
+我们有
+\[c_n=\frac1{2\pi i}\oint_C\frac{e^\zeta}{\zeta^{n+3}}\diff\zeta,\]
+其中 $C$ 为圆环域内的闭路.
+\onslide<+->
+当 $n\le -3$ 时, 被积函数处处解析, 因此由柯西-古萨基本定理, $c_n=0$.
+\onslide<+->
+当 $n\ge -2$ 时, 由柯西积分公式
+\[c_n=\frac1{2\pi i}\oint_C\frac{e^\zeta}{\zeta^{n+3}}\diff\zeta
+=\frac1{(n+2)!}(e^z)^{(n+2)}|_{z=0}=\frac1{(n+2)!}.\]
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗级数}
+\begin{solutionc}
+因此
+\vspace{-\baselineskip}
+\[\frac{e^z}{z^2}=\frac1{z^2}+\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,\quad 0<|z|<+\infty.\qedhere\]
+\end{solutionc}
+\onslide<+->
+实际上, 由洛朗级数的唯一性, 我们可以直接从 $e^z$ 的泰勒展开通过代数运算来得到洛朗级数.
+\onslide<+->
+这种做法会简便得多.
+\onslide<+->
+因此我们一般\markatt{不用直接法}, 而是\markatt{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
+\begin{solution}[另解]
+\vspace{-\baselineskip}
+\[\frac{e^z}{z^2}=\frac1{z^2}\left(1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\right)
+\visible<+->{=\frac1{z^2}+\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,}\]
+其中 $0<|z|<+\infty$.
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\beqskip{3pt}
+\begin{example}
+在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
+
+\onslide<+->
+(1) $0<|z|<1$, (2) $1<|z|<2$, (3) $2<|z|<+\infty$. 
+\end{example}
+\begin{solutions}
+由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
+\onslide<+->
+(1) 由于 $|z|<1,\abs{z/2}<1$,
+\onslide<+->
+因此
+\begin{align*}
+f(z)&=\frac1{1-z}-\frac1{2-z}
+\visible<+->{=\frac1{1-z}-\frac12\cdot\frac1{1-z/2}}\\
+&\visible<+->{=\sum_{n=0}^\infty z^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
+\visible<+->{=\sum_{n=0}^\infty\left(1-\frac1{2^{n+1}}\right)z^n}\\
+&\visible<+->{=\frac12+\frac34z+\frac78z^2+\cdots}
+\end{align*}
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\begin{solutionc}
+(2) 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
+\onslide<+->
+因此
+\begin{align*}
+f(z)&=\frac1{1-z}-\frac1{2-z}
+\visible<+->{=-\frac1z\cdot\frac1{1-1/z}-\frac12\cdot\frac1{1-z/2}}\\
+&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
+\visible<+->{=-\sum_{n=-\infty}^{-1}z^n-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
+&\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\frac12-\frac14z-\frac18z^2-\cdots}
+\end{align*}
+\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\begin{solutionc}
+(3) 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->
+因此
+\begin{align*}
+f(z)&=\frac1{1-z}-\frac1{2-z}
+\visible<+->{=-\frac1z\cdot\frac1{1-1/z}+\frac1z\cdot\frac1{1-2/z}}\\
+&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n+\frac1z\sum_{n=0}^\infty\left(\frac2z\right)^n}
+\visible<+->{=\sum_{n=0}^\infty(2^n-1)z^{-n-1}}\\
+&\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots\mqed}
+\end{align*}
+\end{solutionc}
+\onslide<+->
+同一个函数在不同的圆环域内有不同的洛朗展开, 这和洛朗展开的唯一性并不矛盾.
+\onslide<+->
+因为洛朗展开的唯一性是指在固定的一个圆环域上.
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\begin{example}
+将 $f(z)=\dfrac1{z(z-2)}$ 在 $2$ 的去心邻域内展开成洛朗级数.
+\end{example}
+\begin{solutions}
+由于 $0$ 是奇点, $f(z)$ 在 $0<|z-2|<2$ 内解析.
+\onslide<+->
+\begin{align*}
+f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
+&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+(z-2)/2}}
+\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
+&\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.\mqed}
+\end{align*}
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\begin{exercise}
+将 $z^3\exp\left(\dfrac1z\right)$ 在 $0<|z|<+\infty$ 内展开成洛朗级数.
+\end{exercise}
+\begin{answer}
+\vspace{-\baselineskip}
+\begin{align*}
+z^3\exp\left(\frac1z\right)&=\sum_{n=0}^\infty\frac{1}{n!z^{n-3}}
+=\sum_{n=1}^\infty\frac1{(n+3)! z^n}+\frac16+\frac z2+z^2+z^3\\
+&=\cdots+\frac1{24z}+\frac16+\frac z2+z^2+z^3,\quad 0<|z|<+\infty.
+\end{align*}
+\end{answer}
+\end{frame}
+
+
+\begin{frame}{例题: 洛朗展开的应用}
+\onslide<+->
+注意到当 $n=-1$ 时, 洛朗级数的系数
+\[c_{-1}=\frac1{2\pi i}\oint_C f(\zeta)\diff\zeta,\]
+\onslide<+->
+因此洛朗展开可以用来帮助计算函数的积分,
+\onslide<+->
+它就是所谓的\markatt{留数}.
+\begin{example}
+求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
+\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 洛朗展开的应用}
+\begin{solution}
+注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
+\onslide<+->
+我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
+\onslide<+->
+\vspace{-\baselineskip}
+\begin{align*}
+f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
+&\visible<+->{=-\frac1{(z+1)^2}\left[\frac1{z+1}+\frac1{(z+1)^2}+\cdots\right]}\\
+&\visible<+->{=-\frac1{(z+1)^3}-\frac1{(z+1)^4}+\cdots}
+\end{align*}
+\onslide<+->
+故
+\[\oint_Cf(z)\diff z=2\pi i c_{-1}=0.\qedhere\]
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 洛朗展开的应用}
+\beqskip{1pt}
+\begin{example}
+求 $\displaystyle\oint_{|z|=2} \frac{z\exp(1/z)}{1-z}\diff z$.
+\end{example}
+\begin{solution}
+注意到闭路 $|z|=2$ 落在 $1<|z|<+\infty$ 内.
+\onslide<+->
+我们在这个圆环域内求被积函数 $f(z)$ 的洛朗展开.
+\onslide<+->
+\begin{align*}
+f(z)&=-\frac{\exp(1/z)}{1-1/z}
+\visible<+->{=-\left(1+\frac1z+\frac1{z^2}+\cdots\right)\left(1+\frac1z+\frac1{2z^2}+\cdots\right)}\\
+&\visible<+->{=-\left(1+\frac2z+\frac5{2z^2}+\cdots\right)}\end{align*}
+\onslide<+->
+故
+\[\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i.\qedhere\]
+\end{solution}
+\endgroup
+\end{frame}
+

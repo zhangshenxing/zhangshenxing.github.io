@@ -1,0 +1,348 @@
+\section{留数}
+
+
+\begin{frame}{留数}
+设 $z_0$ 为 $f(z)$ 的孤立奇点,
+\onslide<+->
+那么 $f(z)$ 在某个 $0<|z-z_0|<\delta$ 上可以展开为洛朗级数
+\[f(z)=\cdots+\frac{c_{-1}}{z-z_0}+c_0+c_1(z-z_0)+\cdots\]
+\onslide<+->
+其中 $c_n=\displaystyle\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z$, $C$ 为该圆环域中绕 $z_0$ 的一条闭路.
+
+\onslide<+->
+特别地,
+\[\markatt{\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\diff z}\]
+被称为函数 \markdef{$f(z)$ 在 $z_0$ 的留数}.
+\onslide<+->
+可以看出, 知道留数之后可以用来计算积分.
+\end{frame}
+
+
+\begin{frame}{留数定理}
+\beqskip{0pt}
+\begin{theorem}
+如果 $f(z)$ 在区域 $D$ 内除 $z_1,z_2,\dots,z_n$ 外处处解析, $C$ 是 $D$ 内包含这些奇点的一条闭路, 那么
+\[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+\end{theorem}
+\begin{proof}
+\begin{center}
+\begin{tikzpicture}
+\filldraw[cstcurve,rounded corners=0.4cm,alecolor,cstfill] (-3,-0.7) rectangle (3.4,0.7);
+\draw[cstcurve,alecolor,cstarrow1to] (3.4,-0.2)--(3.4,0.1);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (-2.5,-0.5) rectangle (-1.5,0.5);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (-0.5,-0.5) rectangle (0.5,0.5);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (1.5,-0.5) rectangle (2.5,0.5);
+\draw[cstcurve,notcolor,cstarrow1to] (-2.5,0.2)--(-2.5,-0.1);
+\draw[cstcurve,notcolor,cstarrow1to] (-0.5,0.2)--(-0.5,-0.1);
+\draw[cstcurve,notcolor,cstarrow1to] (1.5,0.2)--(1.5,-0.1);
+\fill[cstdot] (-2,0) circle;
+\fill[cstdot] (0,0) circle;
+\fill[cstdot] (2,0) circle;
+\draw
+  (3.8,0) node[alecolor] {$C$}
+  (-1.2,-0.2) node[notcolor] {$C_1$}
+  (0.8,-0.2) node[notcolor] {$C_2$}
+  (2.8,-0.2) node[notcolor] {$C_3$}
+  (-2,-0.3) node {$z_1$}
+  (0,-0.3) node {$z_2$}
+  (2,-0.3) node {$z_3$};
+\end{tikzpicture}
+\end{center}
+\onslide<+->
+由复闭路定理可知,
+\[\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
+=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\qedhere\]
+\end{proof}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{留数的计算方法}
+\beqskip{9pt}
+\begin{enumerate}
+\item $z_0$ 为 $f(z)$ 的可去奇点, 显然 $\Res[f(z),z_0]=0$.
+\item $z_0$ 为 $f(z)$ 的本性奇点, 一般只能从定义计算.
+\item $z_0$ 为 $f(z)$ 的极点.
+\end{enumerate}
+
+\begin{conclusion}
+如果 $z_0$ 是 $\le m$ 阶极点, 那么
+\[\markatt{\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].}\]
+\end{conclusion}
+
+\begin{conclusion}
+如果 $z_0$ 是 $1$ 阶极点, 那么
+\[\markatt{\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z)}.\]
+\end{conclusion}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{留数的计算方法}
+\begin{proof}
+由于 $g(z)=(z-z_0)^mf(z)$ 在 $z_0$ 附近解析,
+\onslide<+->
+且
+\[g(z)=c_{-m}+\cdots+c_{-1}(z-z_0)^{m-1}+c_0(z-z_0)^m+\cdots\]
+\onslide<+->
+由幂级数系数与导数的关系可知 $c_{-1}=\dfrac1{(m-1)!}g^{(m-1)}(z_0)$.
+\end{proof}
+
+\begin{conclusion}
+设 $P(z),Q(z)$ 在 $z_0$ 解析且 $P(z_0)\neq 0$, $Q(z_0)=0$, $Q'(z_0)\neq 0$.
+则 $z_0$ 是 $f(z)$ 的 $1$ 阶极点且
+\[\markatt{\Res[P/Q,z_0]=\frac{P(z_0)}{Q'(z_0)}.}\]
+\end{conclusion}
+\end{frame}
+
+
+\begin{frame}{留数的计算方法}
+\begin{proofs}
+由于 $z_0$ 是 $Q(z)$ 的 $1$ 阶零点且 $P(z_0)\neq 0$, 因此 $z_0$ 是 $P/Q$ 的 $1$ 阶极点.
+\onslide<+->
+于是
+\begin{align*}
+\Res[f(z),z_0]&=\lim_{z\to z_0}\frac{(z-z_0)P(z)}{Q(z)}\\
+&=\lim_{z\to z_0}\frac{P(z)}{Q(z)/(z-z_0)}
+=\frac{P(z_0)}{Q'(z_0)}.\mqed
+\end{align*}
+\end{proofs}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的计算}
+\beqskip{5pt}
+\begin{example}
+求 $\Res\left[\dfrac{e^z}{z^n},0\right]$.
+\end{example}
+\begin{solution}
+由于 $(e^z)(0)=1$, 因此 $0$ 是 $n$ 阶极点,
+\onslide<+->
+\begin{align*}
+\Res\left[\frac{e^z}{z^n},0\right]
+&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}\\
+&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z
+=\frac1{(n-1)!}.}
+\end{align*}
+\onslide<+->
+也可以直接从该函数的洛朗展开得到:
+\[\frac{e^z}{z^n}=\sum_{k=0}^\infty\frac{z^{k-n}}{k!}
+=\cdots+\frac1{(n-1)!z}+\cdots\qedhere\]
+\end{solution}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的计算}
+\beqskip{5pt}
+\begin{example}
+求 $\Res\left[\dfrac{z-\sin z}{z^6},0\right]$.
+\end{example}
+\begin{solutions}
+\indent
+设 $P(z)=z-\sin z$, 则
+\[P(0)=P'(0)=P''(0)=0,\quad P'''(0)\neq 0.\]
+\onslide<+->
+因此 $z=0$ 是 $P(z)$ 的三阶零点,
+\onslide<+->
+是 $\dfrac{z-\sin z}{z^6}$ 的 $3$ 阶极点.
+
+\indent
+\onslide<+->
+如果用公式
+\[\Res\left[\frac{z-\sin z}{z^6},0\right]
+=\frac1{2!}\lim_{z\to0}\left(\frac{z-\sin z}{z^3}\right)''\]
+计算会很繁琐.
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的计算}
+\begin{solutione}
+\vspace{-\baselineskip}
+\begin{align*}
+\Res\left[\frac{z-\sin z}{z^6},0\right]
+&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}\\
+&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
+\end{align*}
+
+\indent
+\onslide<+->
+也可以由 $\sin z$ 的泰勒展开得到
+\[z-\sin z=\frac{z^3}6-\frac{z^5}{120}+\cdots,
+\frac{z-\sin z}{z^6}=\frac1{6z^3}-\frac1{120z}+\cdots\]
+\onslide<+->
+\[\Res\left[\frac{z-\sin z}{z^6},0\right]=-\frac1{120}.\qedhere\]
+\end{solutione}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的计算}
+\begin{exercise}
+求 $\Res\left[\dfrac{e^z-1}{z^5},0\right]$.
+\end{exercise}
+\begin{answer}
+$\dfrac1{24}$.
+\end{answer}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的计算}
+\begin{example}
+求 $\Res\left[\dfrac{z}{z^4-1},i\right]$.
+\end{example}
+\begin{solution}
+$z=i$ 是 $z$ 的取值非零的点, 是 $z^4-1$ 的 $1$ 阶零点.
+\onslide<+->
+\[\Res\left[\frac{z}{z^4-1},i\right]
+=\frac{z}{(z^4-1)'}\Big|_{z=i}
+=\frac{z}{4z^3}\Big|_{z=i}=-\frac14.\qedhere\]
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 留数的应用}
+\beqskip{0pt}
+\vspace{-5pt}
+\begin{example}
+计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z$.
+\end{example}
+\vspace{-5pt}
+\begin{solutions}
+$f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
+\onslide<+->
+\[\Res[f(z),0]=\lim_{z\to0}\frac{e^z}{(z-1)^2}=1,\]
+\onslide<+->
+\[\Res[f(z),1]=\lim_{z\to1}\left(\frac{e^z}z\right)'
+=\lim_{z\to1}\frac{e^z(z-1)}{z^2}=0,\]
+\onslide<+->
+\begin{align*}
+\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
+&=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]\\
+&\visible<+->{=2\pi i(1+0)=2\pi i.\mqed}
+\end{align*}
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{在 $\infty$ 的留数*}
+\onslide<+->
+设 $\infty$ 为 $f(z)$ 的孤立奇点,
+\onslide<+->
+那么 $f(z)$ 在某个 $R<|z|<+\infty$ 上可以展开为洛朗级数
+\[f(z)=\cdots+c_{-1}z^{-1}+c_0+c_1z+\cdots\]
+\onslide<+->
+其中 $c_n=\displaystyle\frac1{2\pi i}\oint_C\frac{f(z)}{z^{n+1}}\diff z$, $C$ 为该圆环域中绕 $0$ 的闭路.
+\onslide<+->
+称
+\[\markatt{\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\diff z}\]
+为函数 \markdef{$f(z)$ 在 $\infty$ 的留数}.
+\onslide<+->
+由于
+\[f\left(\frac1z\right)\frac1{z^2}=\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots\]
+\onslide<+->
+因此
+\[\markatt{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right].}\]
+\end{frame}
+
+
+\begin{frame}{留数之和为 $0$*}
+\onslide<+->
+需要注意的是, 和普通复数不同, \markatt{即便 $\infty$ 是可去奇点, 也不意味着 $\Res[f(z),\infty]=0$}.
+
+\begin{theorem}
+如果 $f(z)$ 在扩充复平面内只有有限个孤立奇点, 那么 $f(z)$ 在各\markatt{奇点处的留数之和为 $0$}.
+\end{theorem}
+\begin{proof}
+设闭路 $C$ 内部包含除 $\infty$ 外所有奇点 $z_1,\dots,z_n$.
+\onslide<+->
+由留数定理
+\[-2\pi i\Res[f(z),\infty]=\oint_C f(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+\onslide<+->
+故 $\suml_{k=1}^n\Res[f(z),z_k]+\Res[f(z),\infty]=0$.
+\end{proof}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的应用*}
+\begin{example}
+求 $\displaystyle\oint_{|z|=2}\frac{z^3}{z^4-1}\diff z$.
+\end{example}
+\begin{solution}
+$f(z)=\dfrac{z^3}{z^4-1}$ 在 $|z|>2$ 内只有奇点 $\infty$.
+\onslide<+->
+\[\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]
+=-\Res\left[\frac1{z(1-z^4)},0\right]=-1.\]
+\onslide<+->
+因此
+\[\oint_{|z|=2}\frac z{z^4-1}\diff z=-2\pi i\Res[f(z),\infty]=2\pi i.\qedhere\]
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的应用*}
+\begin{exercise}
+求 $\displaystyle\oint_{|z|=2}\frac{z^4}{z^5+1}\diff z$.
+\end{exercise}
+\begin{answer}
+$2\pi i$.
+\end{answer}
+\begin{example}
+求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac1{(z+i)^{10}(z-1)(z-3)}$.
+\end{example}
+\end{frame}
+
+
+\begin{frame}{典型例题: 留数的应用*}
+\beqskip{7pt}
+\begin{solutions}
+$f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
+\onslide<+->
+\begin{align*}
+\Res[f(z),\infty]&=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]\\
+&=-\Res\left[\frac{z^{10}}{(1+iz)^{10}(1-z)(1-3z)},0\right]=0.\end{align*}
+\onslide<+->
+\[\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+i)^{10}}.\]
+\onslide<+->
+\vspace{-\baselineskip}
+\begin{align*}
+&\peq\oint_{|z|=2}f(z)\diff z=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]\bigr]\\
+&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}.\mqed}
+\end{align*}
+\end{solutions}
+\endgroup
+\end{frame}
+
+
+\begin{frame}{积分的计算方法汇总}
+\begin{center}
+\begin{tikzpicture}[node distance=25pt]
+  \node (integral){\vphantom{$\displaystyle\int$}};
+  \node[draw,white,fill=strucolor,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+  \node[draw,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
+  \node[draw,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
+  \node[draw,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
+  \node[draw,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
+  \node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
+  \node[draw,fill=alercolor!25,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+  \node[draw,fill=alercolor!25,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
+积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
+可能需要分段计算};
+  \node[draw,fill=alercolor!25,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+  \node[draw,fill=alercolor!25,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+  \draw[cstnarrow,visible on=<2->] (integral) -- (isclosed);
+  \draw[cstnarrow,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
+  \draw[cstnarrow,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
+  \draw[cstnarrow,visible on=<7->] (issingle) -- node[above]{是} (ismany);
+  \draw[cstnarrow,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
+  \draw[cstnarrow,visible on=<6->] (issingle) -- node[left]{否} (end2);
+  \draw[cstnarrow,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
+  \draw[cstnarrow,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
+  \draw[cstnarrow,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
