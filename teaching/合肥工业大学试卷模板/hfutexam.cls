@@ -9,8 +9,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hfutexam}[2022/10/15 v1.0 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi
-\newif\ifExam\Examtrue
-\DeclareOption{datizhi}{\Examfalse}
+\newif\ifShiJuan
+\newif\ifDaTiZhi
+\newif\ifCanKaoDaAn
+\ShiJuantrue\DaTiZhifalse\CanKaoDaAnfalse
+\DeclareOption{datizhi}{\ShiJuanfalse\DaTiZhitrue\CanKaoDaAnfalse}
+\DeclareOption{cankaodaan}{\ShiJuanfalse\DaTiZhitrue\CanKaoDaAntrue}
 \newif\ifFandol\Fandoltrue
 \DeclareOption{nofangzheng}{\Fandolfalse}
 % 基于 ctexart 文档类
@@ -33,7 +37,7 @@
 	footskip=1cm
 }
 % 试卷信息
-\newcommand{\ABJuan}[1]{\gdef\@ABJuan{#1}}
+\newcommand{\BiaoTi}[1]{\gdef\@BiaoTi{#1}}
 \newcommand{\XueNian}[2]{\gdef\@XueNians{#1}\gdef\@XueNiane{#2}}
 \newcommand{\XueQi}[1]{\gdef\@XueQi{#1}}
 \newcommand{\KeChengDaiMa}[1]{\gdef\@KeChengDaiMa{#1}}
@@ -45,17 +49,17 @@
 \newcommand{\KaoShiRiQi}[1]{\gdef\@KaoShiRiQi{#1}}
 \newcommand{\MingTiJiaoShi}[1]{\gdef\@MingTiJiaoShi{#1}}
 \newcommand{\XiZhuRenQianMing}[1]{\gdef\@XiZhuRenQianMing{#1}}
-\ABJuan{}
+\BiaoTi{}
 \XueNian{}{}
 \XueQi{}
 \KeChengDaiMa{}
 \KeChengMingCheng{}
 \XueFen{}
-\KeChengXingZhi{必修}
-\KaoShiXingShi{闭卷}
+\KeChengXingZhi{}
+\KaoShiXingShi{}
 \ZhuanYeBanJi{}
 \KaoShiRiQi{}
-\MingTiJiaoShi{集体}
+\MingTiJiaoShi{}
 \XiZhuRenQianMing{example-sign.png}
 % 粗字体设定
 \newfontfamily\timesnewroman[AutoFakeBold={1.5}]{Times New Roman} % 粗罗马
@@ -99,10 +103,12 @@
 \newcommand{\boxyes}{{\raisebox{-0.5mm}{\LARGE$\checkmark\hspace{-1.2em}\square$}}}
 \newcommand{\boxno}{{\raisebox{-0.5mm}{\LARGE$\square$}}}
 \newcommand{\fillblank}[2]{\underline{\makebox[#1]{#2}}}
-\ifExam
+\newcommand{\titlesep}{2em}
+\ifDaTiZhi\renewcommand\titlesep{0em}\fi
+\ifCanKaoDaAn\renewcommand\titlesep{1em}\fi
+\ifShiJuan
 	\fancyhead[C]{\hfill\bfseries%
-		\LARGE\titlesongti 合\hspace{2em}肥\hspace{2em}工\hspace{2em}业\hspace{2em}大\hspace{2em}学\hspace{2em}试\hspace{2em}卷%
-			\hspace{2em}（\@ABJuan）\hfill%
+		\LARGE\titlesongti{\xeCJKsetup{CJKglue=\hskip\titlesep}\@BiaoTi}\hfill%
 		\large\cusongti 共\fillblank{1.5em}{\timesnewroman\pageref{LastPage}}页第\fillblank{1.5em}{\timesnewroman\thepage}页 \vspace{5pt}\\ %
 		\timesnewroman\@XueNians\titlefangsong～\timesnewroman\@XueNiane\titlefangsong 学年第\fillblank{2em}{\@XueQi}学期\hfill%
 		课程代码\fillblank{5em}{\@KeChengDaiMa}\hfill%
@@ -122,9 +128,27 @@
 		1. 主考教师必须于考试一周前将“试卷A”、“试卷B”经教研室主任审批签字后送教务科印刷。\hspace{1em}%
 		2. 请命题教师用黑色水笔工整地书写题目或用A4纸横式打印贴在试卷版芯中。
 	}
-\else
+\fi
+\ifDaTiZhi
 	\fancyhead[C]{\hfill\bfseries%
-		\LARGE\xinsongti\scalebox{2.0}[1.0]{合肥工业大学考试专用答卷纸（\xinsongti\@ABJuan）}\hfill \vspace{8pt}\\ \hfill%
+		\LARGE\xinsongti\scalebox{2.0}[1.0]{\xeCJKsetup{CJKglue=\hskip\titlesep}\@BiaoTi}\hfill \vspace{8pt}\\ \hfill%
+		\large\timesnewroman\@XueNians\titlefangsong～\timesnewroman\@XueNiane\titlefangsong 学年第\fillblank{2em}{\@XueQi}学期\hfill%
+		课程代码\fillblank{6.5em}{\@KeChengDaiMa}\hfill%
+		课程名称\fillblank{13em}{\@KeChengMingCheng}\hfill%
+		命题教师\fillblank{7em}{\@MingTiJiaoShi}\hfill%
+		系主任审批\fillblank{7em}{\includegraphics[height=0.7cm]{\@XiZhuRenQianMing}}\hfill\vspace{2pt}\\\hfill%
+		教学班级\fillblank{10.5em}{}\hfill%
+		学生姓名\fillblank{8em}{}\hfill%
+		学号\fillblank{8em}{}\hfill%
+		考试日期\fillblank{16em}{\@KaoShiRiQi}\hfill%
+		成绩\fillblank{6.3em}{}\hfill\vspace{4pt}%
+	}
+	\fancyfoot[C]{\small\vspace{0.5\baselineskip}
+		第 \timesnewroman\thepage 页~共 \timesnewroman\pageref{LastPage} 页
+	}
+\fi
+\ifCanKaoDaAn
+	\fancyhead[C]{\hfill\bfseries\LARGE\titlesongti{\xeCJKsetup{CJKglue=\hskip\titlesep}\@BiaoTi}\hfill \vspace{5pt}\\ \hfill%
 		\large\timesnewroman\@XueNians\titlefangsong～\timesnewroman\@XueNiane\titlefangsong 学年第\fillblank{2em}{\@XueQi}学期\hfill%
 		课程代码\fillblank{6.5em}{\@KeChengDaiMa}\hfill%
 		课程名称\fillblank{13em}{\@KeChengMingCheng}\hfill%
@@ -147,18 +171,20 @@
 \newcommand\tigan[1]{{\large\textbf{#1}}}
 % 选择题
 \newcommand{\yihang}[4]{\\
-\makebox[92pt][l]{A. #1} \hfill
-\makebox[92pt][l]{B. #2} \hfill
-\makebox[92pt][l]{C. #3} \hfill
-\makebox[92pt][l]{D. #4}}
+\makebox[0.235\columnwidth][l]{A. #1}% 
+\makebox[0.235\columnwidth][l]{B. #2}%
+\makebox[0.235\columnwidth][l]{C. #3}%
+\makebox[0.235\columnwidth][l]{D. #4}}
 \newcommand{\erhang}[4]{\\
-\makebox[110pt][l]{A. #1} \hfill\makebox[220pt][l]{B. #2}\\
-\makebox[110pt][l]{C. #3} \hfill\makebox[220pt][l]{D. #4}}
+\makebox[0.47\columnwidth][l]{A. #1}%
+\makebox[0.47\columnwidth][l]{B. #2}\\%
+\makebox[0.47\columnwidth][l]{C. #3}%
+\makebox[0.47\columnwidth][l]{D. #4}}
 \newcommand{\sihang}[4]{\\
-\makebox[262pt][l]{A. #1}\\
-\makebox[262pt][l]{B. #2}\\
-\makebox[262pt][l]{C. #3}\\
-\makebox[262pt][l]{D. #4}}
+\makebox[0.94\columnwidth][l]{A. #1}\\
+\makebox[0.94\columnwidth][l]{B. #2}\\
+\makebox[0.94\columnwidth][l]{C. #3}\\
+\makebox[0.94\columnwidth][l]{D. #4}}
 % 打分栏
 \RequirePackage{tikz}
 \usetikzlibrary{overlay-beamer-styles}

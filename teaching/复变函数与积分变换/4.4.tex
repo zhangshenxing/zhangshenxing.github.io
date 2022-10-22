@@ -115,16 +115,16 @@
 \end{example}
 \begin{solution}
 \indent
-由于 $\displaystyle\sum_{n=0}^\infty\frac{z^n}{b^n}$ 的收敛半径为 $|b|$, $\displaystyle\sum_{n=0}^\infty(az)^n$ 的收敛半径为 $\dfrac1{|a|}$,
+非负幂次部分收敛当且仅当 $|z|<|b|$, 负幂次部分收敛当且仅当 $|z|>|a|$.
 \onslide<+->
 因此该双边幂级数的收敛域为 $|a|<|z|<|b|$.
 
 \onslide<+->\indent
-当 $|b|\le |a|$ 时, 没有收敛域.
+当 $|b|\le |a|$ 时, 处处发散.
 \onslide<+->
 当 $|a|<|z|<|b|$ 时,
 \begin{align*}
-\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{a/z}{1-a/z}+\frac1{1-z/b}=\frac{(a-b)z}{(z-a)(z-b)}.\qedhere
+\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{\dfrac az}{1-\dfrac az}+\frac1{1-\dfrac zb}=\frac{(a-b)z}{(z-a)(z-b)}.\qedhere
 \end{align*}
 \end{solution}
 \end{frame}
@@ -141,7 +141,7 @@
 \[f(z)=\frac1z+\frac1{1-z}=\frac1z+1+z+z^2+z^3+\cdots\]
 \onslide<+->
 在圆环域 $1<|z|<+\infty$ 内,
-\[f(z)=\frac1z-\frac1z\cdot\frac1{1-1/z}=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots\]
+\[f(z)=\frac1z-\frac1z\cdot\frac1{1-\dfrac1z}=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots\]
 \end{frame}
 
 
@@ -251,21 +251,22 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 
 \begin{frame}{与泰勒级数的关系}
 \onslide<+->
+如果 $f(z)$ 在 $|z-z_0|<R_2$ 内解析,
+\onslide<+->
+则 $f(z)$ 可以展开为泰勒级数.
+\onslide<+->
+由洛朗级数的唯一性可知此时泰勒级数就是洛朗级数,
+\onslide<+->
+因此\marknot{此时洛朗展开一定没有负幂次项}.
+\onslide<+->
+故有\marknot{负幂次项的双边幂级数一定在收敛圆环域内圆上有奇点}, 不过这个奇点未必是 $z_0$.
+
+\onslide<+->
 如果 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项.
 \onslide<+->
 那么该洛朗级数是一个幂级数.
 \onslide<+->
 因此它的和函数在 $|z-z_0|<R_2$ 内解析, 且在圆环域上等于 $f(z)$.
-
-\onslide<+->
-反过来, 如果 $f(z)$ 在 $|z-z_0|<R_2$ 内解析,
-\onslide<+->
-则 $f(z)$ 可以展开为泰勒级数.
-\onslide<+->
-由洛朗级数的唯一性可知此时泰勒级数就是洛朗级数.
-
-\onslide<+->
-由此可知, $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项, 当且仅当 $f(z)$ 与某一个在 $|z-z_0|<R_2$ 上解析的函数在该圆环域上相同.
 \onslide<+->
 例如
 \[f(z)=\frac{\sin z}z=\frac 1z\sum_{n=0}^\infty\frac{(-1)^nz^{2n+1}}{(2n+1)!}
@@ -321,7 +322,6 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 
 
 \begin{frame}{典型例题: 求洛朗展开}
-\beqskip{3pt}
 \begin{example}
 在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
 
@@ -331,18 +331,26 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \begin{solutions}
 由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
 \onslide<+->
-(1) 由于 $|z|<1,\abs{z/2}<1$,
+注意到
+\[f(z)=\frac1{z-2}-\frac1{z-1},\]
+因此我们可以根据 $|z|$ 的范围来将其展开成等比级数.
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+\begin{solutionc}
+(1) 由于 $|z|<1,\abs{\dfrac z2}<1$,
 \onslide<+->
 因此
 \begin{align*}
-f(z)&=\frac1{1-z}-\frac1{2-z}
-\visible<+->{=\frac1{1-z}-\frac12\cdot\frac1{1-z/2}}\\
-&\visible<+->{=\sum_{n=0}^\infty z^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
+f(z)&=-\frac1{2-z}+\frac1{1-z}
+\visible<+->{=-\frac12\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
+&\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n+\sum_{n=0}^\infty z^n}
 \visible<+->{=\sum_{n=0}^\infty\left(1-\frac1{2^{n+1}}\right)z^n}\\
 &\visible<+->{=\frac12+\frac34z+\frac78z^2+\cdots}
 \end{align*}
-\end{solutions}
-\endgroup
+\end{solutionc}
 \end{frame}
 
 
@@ -353,7 +361,7 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 因此
 \begin{align*}
 f(z)&=\frac1{1-z}-\frac1{2-z}
-\visible<+->{=-\frac1z\cdot\frac1{1-1/z}-\frac12\cdot\frac1{1-z/2}}\\
+\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\frac12\cdot\frac1{1-\dfrac z2}}\\
 &\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
 \visible<+->{=-\sum_{n=-\infty}^{-1}z^n-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
 &\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\frac12-\frac14z-\frac18z^2-\cdots}
@@ -368,7 +376,7 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 因此
 \begin{align*}
 f(z)&=\frac1{1-z}-\frac1{2-z}
-\visible<+->{=-\frac1z\cdot\frac1{1-1/z}+\frac1z\cdot\frac1{1-2/z}}\\
+\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}\\
 &\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n+\frac1z\sum_{n=0}^\infty\left(\frac2z\right)^n}
 \visible<+->{=\sum_{n=0}^\infty(2^n-1)z^{-n-1}}\\
 &\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots\mqed}
@@ -390,10 +398,11 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 \onslide<+->
 \begin{align*}
 f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
-&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+(z-2)/2}}
+&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}}
 \visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
 &\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.\mqed}
 \end{align*}
+\vspace{-5pt}
 \end{solutions}
 \end{frame}
 
@@ -447,23 +456,26 @@ f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
 
 
 \begin{frame}{例题: 洛朗展开的应用}
-\beqskip{1pt}
 \begin{example}
-求 $\displaystyle\oint_{|z|=2} \frac{z\exp(1/z)}{1-z}\diff z$.
+求 $\displaystyle\oint_{|z|=2} \frac{z\exp\left(\dfrac1z\right)}{1-z}\diff z$.
 \end{example}
-\begin{solution}
+\begin{solutions}
 注意到闭路 $|z|=2$ 落在 $1<|z|<+\infty$ 内.
 \onslide<+->
 我们在这个圆环域内求被积函数 $f(z)$ 的洛朗展开.
-\onslide<+->
+\end{solutions}
+\end{frame}
+
+
+\begin{frame}{例题: 洛朗展开的应用}
+\begin{solutione}
 \begin{align*}
-f(z)&=-\frac{\exp(1/z)}{1-1/z}
+f(z)&=-\frac{\exp\left(\dfrac1z\right)}{1-\dfrac1z}
 \visible<+->{=-\left(1+\frac1z+\frac1{z^2}+\cdots\right)\left(1+\frac1z+\frac1{2z^2}+\cdots\right)}\\
 &\visible<+->{=-\left(1+\frac2z+\frac5{2z^2}+\cdots\right)}\end{align*}
 \onslide<+->
 故
 \[\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i.\qedhere\]
-\end{solution}
-\endgroup
+\end{solutione}
 \end{frame}
 

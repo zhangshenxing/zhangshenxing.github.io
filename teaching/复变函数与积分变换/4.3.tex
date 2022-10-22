@@ -264,7 +264,7 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \onslide<+->
 此时
 \begin{align*}
-\frac1{3z-2}&=-\frac12\cdot\frac1{1-3z/2}
+\frac1{3z-2}&=-\frac12\cdot\frac1{1-\dfrac{3z}2}
 \visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}\\
 &\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.\mqed}
 \end{align*}
@@ -279,14 +279,12 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \begin{solution}
 由于 $\dfrac{e^z}{1+z}$ 的奇点为 $-1$, 因此它在 $|z|<1$ 内解析.
 \onslide<+->
-此时由
+此时
 \[e^z=\sum_{n=0}^\infty\frac1{n!}z^n,\quad
-\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n\]
+\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\]
 \onslide<+->
-得
 \[\dfrac{e^z}{1+z}=\sum_{n=0}^\infty\left[\sum_{k=0}^n\frac{(-1)^{n-k}}{k!}\right]z^n
 =1+\frac12z^2-\frac13z^3+\cdots,\quad|z|<1.\qedhere\]
-\vspace{-\baselineskip}
 \end{solution}
 \end{frame}
 

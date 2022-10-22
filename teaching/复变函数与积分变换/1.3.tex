@@ -18,14 +18,14 @@
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
 换言之,
-\[|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},\]
+\[\markatt{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
 \onslide<+->
-\[\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
-\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.\]
+\[\markatt{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
+\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 \onslide<+->
-这里关于辐角的两个等式的含义是指: 两边所能取到的值构成的集合相等,
+关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.
 \onslide<+->
-即
+例如此处关于辐角的等式的含义是:
 \[\Arg(z_1z_2)=\set{\theta_1+\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
 \[\Arg\left(\frac{z_1}{z_2}\right)=\set{\theta_1-\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
 \end{frame}
@@ -33,7 +33,7 @@
 
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
-注意
+注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
 \[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
 \arg\left(\frac{z_1}{z_2}\right)=\arg z_1-\arg z_2\]
 \markatt{不一定成立}.
@@ -147,13 +147,6 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \onslide<+->
 特别地, 当 $r=1$ 时, 我们得到\markdef{棣莫弗(De Moivre)公式}
 \[\marknot{(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.}\]
-
-\onslide<+->
-注意 $\Arg(z^n)=n\Arg z$ 一般\markatt{不成立}, 除非 $n=\pm1$.
-\onslide<+->
-这是因为
-\[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
-\[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
 \end{frame}
 
 
@@ -163,15 +156,15 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \onslide<+->
 \begin{align*}
 \cos(n\theta)&=\Re\left[
-\sum_{0\le k\le n}C_n^k \cos^{n-k}\theta(i\sin\theta)^k\right]\\
-&\visible<+->{=\sum_{0\le 2k\le n}C_n^{2k} \cos^{n-2k}\theta(-\sin^2\theta)^k}\\
-&\visible<+->{=\sum_{0\le k\le n/2}C_n^{2k} \cos^{n-2k}\theta(\cos^2\theta-1)^k.}
+\sum_{0\le k\le n}\mathrm{C}_n^k \cos^{n-k}\theta(i\sin\theta)^k\right]\\
+&\visible<+->{=\sum_{0\le 2k\le n}\mathrm{C}_n^{2k} \cos^{n-2k}\theta(-\sin^2\theta)^k}\\
+&\visible<+->{=\sum_{0\le k\le\frac n2}\mathrm{C}_n^{2k} \cos^{n-2k}\theta(\cos^2\theta-1)^k.}
 \end{align*}
 \onslide<+->
 因此 $\cos{n\theta}$ 是 $\cos\theta$ 的多项式.
 \onslide<+->
 这个多项式
-\[g_n(T)=\sum_{0\le k\le n/2}C_n^{2k} T^{n-2k} (T^2-1)^k.\]
+\[g_n(T)=\sum_{0\le k\le\frac n2}\mathrm{C}_n^{2k} T^{n-2k} (T^2-1)^k.\]
 叫做切比雪夫多项式.
 \onslide<+->
 它在计算数学的逼近理论中有着重要作用.
@@ -249,6 +242,19 @@ $-2^{2022}$.
 因此\markatt{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
 \end{frame}
 
+
+\begin{frame}{方幂和方根的辐角等式}
+\onslide<+->
+注意当 $|n|\ge 2$ 时, \markatt{$\Arg(z^n)=n\Arg z$ 不成立}.
+\onslide<+->
+这是因为
+\[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
+\[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
+
+\onslide<+->
+我们总有
+\[\markatt{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
+\end{frame}
 
 \begin{frame}{典型例题: 复数方根的计算}
 \beqskip{6pt}

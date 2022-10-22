@@ -141,9 +141,6 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 我们取它的\markdef{主值}为
 \[\markatt{\ln z=\ln|z|+i\arg z}.\]
 \onslide<+->
-那么
-\[\Ln z=\ln z+\Ln 1=\ln z+2k\pi i.\]
-\onslide<+->
 对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
 \onslide<+->
 特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变的对数函数.
@@ -210,7 +207,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \begin{columns}
 	\column{0.48\textwidth}
 		\begin{exercise}
-		求 $\ln(-1-\sqrt3 i)$.
+		求 $\ln(-1-\sqrt3 i)$.\vphantom{$\dfrac{2\pi i}3$}
 		\end{exercise}
 		\onslide<+->
 	\column{0.48\textwidth}
@@ -223,21 +220,18 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 
 \begin{frame}{对数函数的性质}
 \onslide<+->
-我们有
-\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
-\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2.\]
-\onslide<+->
-\markatt{注意 $\Ln z$ 不能换成 $\ln z$},
-\onslide<+->
-原因在于乘除的主辐角不一定等于主辐角的加减.
+对数函数与其主值的关系是
+\[\markatt{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
 
 \onslide<+->
-同理, 当 $|n|\ge 2$ 时, \markatt{$\Ln z^n=n\Ln z$ 也不成立}.
+根据辐角以及主辐角的相应等式, 我们有
+\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
+\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,\]
+\[\Ln \sqrt[n]z=\dfrac1n\Ln z.\]
 \onslide<+->
-不过 \markatt{$\Ln \sqrt[n]z=\dfrac1n\Ln z$} 是正确的.
+而当 $|n|\ge 2$ 时, \markatt{$\Ln z^n=n\Ln z$ 不成立}.
 \onslide<+->
-这是因为两侧所能取到的值都是
-\[\dfrac 1n\ln z+\frac{2k\pi i}n,\quad k\in\BZ.\]
+以上等式换成 $\ln z$ 均不一定成立.
 \end{frame}
 
 
@@ -246,8 +240,8 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 设 $z_0=x<0$ 是负实数.
 \onslide<+->
 由于
-\[\lim_{y\to0^+} \ln (x+yi)=\ln(-x)+\pi,\quad
-\lim_{y\to0^-} \ln (x+yi)=\ln(-x)-\pi,\]
+\[\lim_{y\to0^+}\ln (x+yi)=\ln(-x)+\pi,\quad
+\lim_{y\to0^-}\ln (x+yi)=\ln(-x)-\pi,\]
 \onslide<+->
 因此 $\ln z$ 在负实轴和零处不连续.
 \onslide<+->
@@ -265,45 +259,45 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \end{frame}
 
 
-\begin{frame}{多值函数的单值化与支点*}
-\onslide<+->
-我们以辐角函数为例简说明为什么要去掉这样一条线.
-\onslide<+->
-为了确定 $\Arg z$ 的一个单值分支, 固定 $\Arg z_0$ 的一个值.
-\onslide<+->
-然后让 $z$ 从 $z_0$ 出发连续地变化, 并让 $\Arg z$ 也连续地变化.
-
-\begin{itemize}
-\item 当 $z$ 沿着原点逆时针绕一圈时, $\Arg z$ 会增加 $2\pi$.
-\item 当 $z$ 沿着 $\infty$ 逆时针绕一圈时, $\Arg z$ 会减少 $2\pi$.
-\item 当 $z$ 沿着其它点附近逆时针绕一圈时, $\Arg z$ 不会改变.
-\end{itemize}
-\onslide<+->
-为了避免 $\Arg z$ 值发生改变, 把 $0$ 和 $\infty$ 连起来.
-\onslide<+->
-那么在复平面去掉这条连线后, $\Arg z$ 就可以被连续地单值化了.
-
-\onslide<1->
-\begin{center}
-\begin{tikzpicture}
-\draw[cstaxis,visible on=<2->](-1.4,0)--(2.4,0);
-\draw[cstaxis,visible on=<2->](0,-1.1)--(0,2);
-\fill[cstdot,defcolor,visible on=<2->](1,1) circle;
-\draw
-	(2,1) node[visible on=<2->,defcolor] {$z_0=1+i$}
-	(2,1.5) node[visible on=<2->,defcolor] {$\Arg z_0=\dfrac\pi4$}
-	(-1.3,1) node[defcolor,visible on=<3->] {$z$}
-	(-1.1,1.5) node[alecolor,visible on=<3->] {$\Arg z=\dfrac{3\pi}4$}
-	(-2.5,0.8) node[notcolor,visible on=<4->] {$\Arg z=\dfrac{7\pi}4$};
-\fill[cstdot,defcolor,visible on=<3->](-1,1) circle;
-\draw[cstcurve,alecolor,cstarrowto,visible on=<3->] (1,1) .. controls (0.5,2) and (-0.5,0.5).. (-1,1);
-\draw[cstcurve,notcolor,visible on=<4->](-0.202,0.362) arc (120:420:0.4);
-\draw[cstcurve,notcolor,visible on=<4->] (1,1)--(-0.202,0.362);
-\draw[cstcurve,notcolor,cstarrowto,visible on=<4->] (0.202,0.362)--(-1,1);
-\draw[cstcurve,defcolor,visible on=<7->] (0,0)to[bend left](-2,-1);
-\end{tikzpicture}
-\end{center}
-\end{frame}
+%\begin{frame}{多值函数的单值化与支点*}
+%\onslide<+->
+%我们以辐角函数为例简说明为什么要去掉这样一条线.
+%\onslide<+->
+%为了确定 $\Arg z$ 的一个单值分支, 固定 $\Arg z_0$ 的一个值.
+%\onslide<+->
+%然后让 $z$ 从 $z_0$ 出发连续地变化, 并让 $\Arg z$ 也连续地变化.
+%
+%\begin{itemize}
+%\item 当 $z$ 沿着原点逆时针绕一圈时, $\Arg z$ 会增加 $2\pi$.
+%\item 当 $z$ 沿着 $\infty$ 逆时针绕一圈时, $\Arg z$ 会减少 $2\pi$.
+%\item 当 $z$ 沿着其它点附近逆时针绕一圈时, $\Arg z$ 不会改变.
+%\end{itemize}
+%\onslide<+->
+%为了避免 $\Arg z$ 值发生改变, 把 $0$ 和 $\infty$ 连起来.
+%\onslide<+->
+%那么在复平面去掉这条连线后, $\Arg z$ 就可以被连续地单值化了.
+%
+%\onslide<1->
+%\begin{center}
+%\begin{tikzpicture}
+%\draw[cstaxis,visible on=<2->](-1.4,0)--(2.4,0);
+%\draw[cstaxis,visible on=<2->](0,-1.1)--(0,2);
+%\fill[cstdot,defcolor,visible on=<2->](1,1) circle;
+%\draw
+%	(2,1) node[visible on=<2->,defcolor] {$z_0=1+i$}
+%	(2,1.5) node[visible on=<2->,defcolor] {$\Arg z_0=\dfrac\pi4$}
+%	(-1.3,1) node[defcolor,visible on=<3->] {$z$}
+%	(-1.1,1.5) node[alecolor,visible on=<3->] {$\Arg z=\dfrac{3\pi}4$}
+%	(-2.5,0.8) node[notcolor,visible on=<4->] {$\Arg z=\dfrac{7\pi}4$};
+%\fill[cstdot,defcolor,visible on=<3->](-1,1) circle;
+%\draw[cstcurve,alecolor,cstarrowto,visible on=<3->] (1,1) .. controls (0.5,2) and (-0.5,0.5).. (-1,1);
+%\draw[cstcurve,notcolor,visible on=<4->](-0.202,0.362) arc (120:420:0.4);
+%\draw[cstcurve,notcolor,visible on=<4->] (1,1)--(-0.202,0.362);
+%\draw[cstcurve,notcolor,cstarrowto,visible on=<4->] (0.202,0.362)--(-1,1);
+%\draw[cstcurve,defcolor,visible on=<7->] (0,0)to[bend left](-2,-1);
+%\end{tikzpicture}
+%\end{center}
+%\end{frame}
 
 
 \begin{frame}{幂函数}
@@ -315,22 +309,31 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \end{align*}
 \onslide<+->
 它的\markdef{主值}为
-\[\exp(a \ln z)=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
-\onslide<+->
-我们有 $z^a=\exp(a \ln z)\cdot 1^a$.
+\[\markatt{w=\exp(a\ln z)}=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
 
 \onslide<+->
+如果 $\Re a>0$, 则当 $z\to 0$ 时, 主值
+\[\abs{z^a}=|z|^a\cdot e^{-\Im a\cdot\arg z}\to 0.\]
+\onslide<+->
+因此此时我们定义 $0^a=0$.
+\onslide<+->
+约定 $0^0=1$.
+\end{frame}
+
+
+\begin{frame}{幂函数的性质: $a$ 为整数时}
+\onslide<+->
 根据 $a$ 的不同, 这个函数有着不同的性质.
+
 \onslide<+->
 当 $a$ 为整数时, 因为 $\exp(2ak\pi i)=1$, 所以 $w=z^a$ 是单值的.
 \onslide<+->
 此时
 \[z^a=|z|^a\exp(ia\arg z)\]
 就是我们之前定义的方幂.
+
 \onslide<+->
-当 $a$ 是非负整数时, 补充定义 $0^a=0$.
-\onslide<+->
-那么当 $a$ 是非负整数时, $z^a$ 在复平面上解析;
+当 $a$ 是非负整数时, $z^a$ 在复平面上解析;
 \onslide<+->
 当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 上解析.
 \end{frame}
@@ -338,14 +341,14 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 
 \begin{frame}{幂函数的性质: $a$ 为分数时}
 \onslide<+->
-当 $a=\frac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
+当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
 \onslide<+->
 \[z^{\frac pq}=|z|^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1\]
 具有 $q$ 个值.
 \onslide<+->
 去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 是处处解析的.
 \onslide<+->
-当 $a=\frac 1n$ 时, $z^a$ 就是方根 $\sqrt[n]z$.
+当 $a=\dfrac 1n$ 时, $z^a$ 就是方根 $\sqrt[n]z$.
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -395,9 +398,6 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 无理数或虚数&无穷多值&除负实轴和零点外解析
 \end{tabular}
 \end{center}
-
-\onslide<+->
-对于幂函数的主值, 或者任意固定一个分支 $\Ln z=\ln z+2k\pi i$, 我们总有 $\markatt{(z^a)'=\dfrac{az^a}z}$.
 \end{frame}
 
 
@@ -443,11 +443,26 @@ i^i&=\exp(i\Ln i)
 \end{frame}
 
 
-\begin{frame}{幂函数之注记}
+\begin{frame}{幂函数的性质}
+幂函数与其主值有如下关系:
 \onslide<+->
-我们总有
-\[\markatt{z^a\cdot z^b=z^{a+b},\quad (z^a)^n=z^{an},n\in\BZ.}\]
+\[\markatt{z^a=\exp(a\ln z)\cdot 1^a
+=\exp(a\ln z)\cdot e^{2ak\pi i},\quad k\in\BZ.}\]
 
+\onslide<+->
+对于幂函数的主值, 或者任意固定一个分支 $\Ln z=\ln z+2k\pi i$, 我们总有 
+\[\markatt{(z^a)'=[\exp(a\ln z)]'=\frac{a\exp(a\ln z)}z=\dfrac{az^a}z}.\]
+
+\onslide<+->
+对于整数 $n$, 我们总有 \markatt{$(z^a)^n=z^{an}$}.
+\onslide<+->
+这里换成主值也成立.
+\onslide<+->
+而 \markatt{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
+\end{frame}
+
+
+\begin{frame}{幂函数的性质}
 \onslide<+->
 我们来看 $\Ln z^a=a\Ln z$ 何时成立.
 \onslide<+->
@@ -459,7 +474,7 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 因此当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, \markatt{$\Ln z^a=a\Ln z$} 成立.
 \onslide<+->
-对于除此之外的 $a$, 该式子并不成立.
+对于除此之外的 $a$, 该式子均不成立.
 
 \onslide<+->
 最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\markatt{不同}的.

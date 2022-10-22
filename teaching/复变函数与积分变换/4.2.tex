@@ -75,11 +75,8 @@
 \end{center}
 \onslide<+->
 \begin{proof}
-\indent
 \enumnum2可由\enumnum1的逆否命题得到.
-
 \onslide<+->
-\indent
 我们来证明\enumnum1. 因为级数收敛, 所以 $\lim\limits_{n\to\infty}c_n z_0^n=0$.
 \onslide<+->
 于是存在 $M$ 使得 $|c_nz_0^n|<M$.
@@ -87,7 +84,7 @@
 如果 $|z|<|z_0|$, 则
 \[\sum_{n=0}^\infty|c_nz^n|=\sum_{n=0}^\infty|c_nz_0^n|\cdot\abs{\frac z{z_0}}^n
 \visible<+->{\le M\sum_{n=0}^\infty\abs{\frac z{z_0}}^n
-=\frac{M}{1-\abs{z/z_0}}.}\]
+=\frac{M}{1-\abs{\dfrac z{z_0}}}.}\]
 \onslide<+->
 所以级数在 $z$ 处绝对收敛.
 \end{proof}
@@ -352,9 +349,7 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \beqskip{3pt}
 \begin{solution}[另解]
 当 $|z|<\dfrac12$ 时, $\suml_{n=-1}^\infty z^n$ 收敛且
-\[\sum_{n=-1}^\infty z^n=\frac{z^{-1}}{1-z}=\frac1{z(1-z)}=\frac1z-\frac1{z-1}.\]
-\onslide<+->
-当 $|z|<\dfrac12$ 时, $|2z|<1$.
+\[\sum_{n=-1}^\infty z^n=\frac{z^{-1}}{1-z}=\frac1{z(1-z)}=\frac1z-\frac1{z-1},\]
 \onslide<+->
 故
 \[\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z

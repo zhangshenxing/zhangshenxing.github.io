@@ -20,7 +20,7 @@
 
 
 \begin{frame}{例题: 第一类积分}
-\beqskip{5pt}
+\beqskip{2pt}
 \begin{example}
 求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
 \end{example}
@@ -33,7 +33,7 @@
 \onslide<+->
 \begin{align*}
 \int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
-&=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3(z^2+1)/(2z)}\cdot\frac{\diff z}{iz}\\
+&=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\frac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}\\
 &=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\diff z.
 \end{align*}
 \end{solutions}
