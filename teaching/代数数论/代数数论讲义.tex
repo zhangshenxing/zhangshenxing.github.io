@@ -1,0 +1,275 @@
+\documentclass[cn,11pt,chinese,twoside,openright]{elegantbookmath}
+\usepackage{fontspec}
+\usepackage[all]{xy}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{hyperref}
+
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\sto}[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand{\simto}{\sto{\sim}}
+\newcommand{\lto}{\longmapsto}
+\newcommand{\ilim}{\varinjlim\limits}
+\newcommand{\plim}{\varprojlim\limits}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+\newcommand{\ov}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand\ldb{\llbracket}
+\newcommand\rdb{\rrbracket}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\mmid}{\parallel}
+\newcommand{\fct}[4]{\begin{split}#1 &\lra #2 \\ #3 &\lto #4\end{split}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\pair}[1]{\langle{#1}\rangle}
+\newcommand{\pmat}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
+\newcommand{\smat}[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
+\newcommand{\hil}[3]{\left(\frac{{#1},{#2}}{#3}\right)}
+\newcommand{\leg}[2]{\left(\frac{{#1}}{#2}\right)}
+\newcommand{\cA}{{\mathsf{A}}}
+\newcommand{\cB}{{\mathsf{B}}}
+\newcommand{\cC}{{\mathsf{C}}}
+\newcommand{\cAb}{{\mathsf{Ab}}}
+\newcommand{\cComm}{{\mathsf{Comm}}}
+\newcommand{\cFunc}{{\mathsf{Func}}}
+\newcommand{\cGroups}{{\mathsf{Groups}}}
+\newcommand{\cMod}{{\mathsf{Mod}}}
+\newcommand{\cRings}{{\mathsf{Rings}}}
+\newcommand{\cSets}{{\mathsf{Sets}}}
+\newcommand{\cVect}{{\mathsf{Vect}}}
+\newcommand{\bfN}{{\mathbf{N}}}
+\newcommand{\bfX}{{\mathbf{X}}}
+\newcommand{\bfY}{{\mathbf{Y}}}
+\newcommand{\BA}{{\mathbb{A}}}
+\newcommand{\BC}{{\mathbb{C}}}
+\newcommand{\BF}{{\mathbb{F}}}
+\newcommand{\BI}{{\mathbb{I}}}
+\newcommand{\BN}{{\mathbb{N}}}
+\newcommand{\BP}{{\mathbb{P}}}
+\newcommand{\BQ}{{\mathbb{Q}}}
+\newcommand{\BR}{{\mathbb{R}}}
+\newcommand{\BZ}{{\mathbb{Z}}}
+\newcommand{\CF}{{\mathcal{F}}}
+\newcommand{\CG}{{\mathcal{G}}}
+\newcommand{\CH}{{\mathcal{H}}}
+\newcommand{\CI}{{\mathcal{I}}}
+\newcommand{\CL}{{\mathcal{L}}}
+\newcommand{\CN}{{\mathcal{N}}}
+\newcommand{\CO}{{\mathcal{O}}}
+\newcommand{\CP}{{\mathcal{P}}}
+\newcommand{\CS}{{\mathcal{S}}}
+\newcommand{\rmH}{{\mathrm{H}}}
+\newcommand{\rmT}{{\mathrm{T}}}
+\newcommand{\fa}{{\mathfrak{a}}}
+\newcommand{\fb}{{\mathfrak{b}}}
+\newcommand{\fd}{{\mathfrak{d}}}
+\newcommand{\ff}{{\mathfrak{f}}}
+\newcommand{\fm}{{\mathfrak{m}}}
+\newcommand{\fp}{{\mathfrak{p}}}
+\newcommand{\fq}{{\mathfrak{q}}}
+\newcommand{\fA}{{\mathfrak{A}}}
+\newcommand{\fD}{{\mathfrak{D}}}
+\newcommand{\fF}{{\mathfrak{F}}}
+\newcommand{\fH}{{\mathfrak{H}}}
+\newcommand{\fP}{{\mathfrak{P}}}
+\newcommand{\ab}{{\mathrm{ab}}}
+\newcommand{\adele}{ad\'{e}le}
+\newcommand{\Ann}{{\mathrm{Ann}}}
+\newcommand{\Aut}{{\mathrm{Aut}}}
+\newcommand{\bs}{\backslash}
+\newcommand{\Char}{{\mathrm{char}}}
+\newcommand{\Cl}{{\mathrm{Cl}}}
+\newcommand{\coker}{{\mathrm{coker}\,}}
+\newcommand{\Coker}{{\mathrm{Coker}\,}}
+\newcommand{\coim}{{\mathrm{coim}\,}}
+\newcommand{\CoIm}{{\mathrm{CoIm}\,}}
+\newcommand{\covol}{{\mathrm{covol}}}
+\newcommand{\cyc}{{\mathrm{cyc}}}
+\newcommand{\diag}{{\mathrm{diag}}}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand{\diffx}{\mathop{}\!\mathrm{d}^\times}
+\newcommand{\disc}{{\mathrm{disc}}}
+\renewcommand{\div}{{\mathrm{div}}}
+\newcommand{\Div}{{\mathrm{Div}}}
+\newcommand{\End}{{\mathrm{End}}}
+\newcommand{\Fr}{{\mathrm{Frac}\,}}
+\newcommand{\Frob}{{\mathrm{Frob}}}
+\newcommand{\Ga}{\mathbb{G}_a}
+\newcommand{\Gm}{\mathbb{G}_m}
+\newcommand{\Gal}{{\mathrm{Gal}}}
+\newcommand{\GL}{{\mathrm{GL}}}
+\newcommand{\Hom}{{\mathrm{Hom}}}
+\newcommand{\id}{{\mathrm{id}}}
+\newcommand{\idele}{id\'{e}le}
+\renewcommand{\Im}{{\mathrm{Im}\,}}
+\newcommand{\im}{{\mathrm{im}\,}}
+\newcommand{\Ind}{{\mathrm{Ind}}}
+\newcommand{\Ker}{{\mathrm{Ker}\,}}
+\newcommand{\LT}{\mathcal{LT}}
+\renewcommand{\mod}{\bmod}
+\newcommand{\ns}{{\mathrm{ns}}}
+\newcommand{\Obj}{{\mathrm{Obj}\,}}
+\newcommand{\op}{{\mathrm{op}}}
+\newcommand{\ord}{{\mathrm{ord}}}
+\newcommand{\PGL}{{\mathrm{PGL}}}
+\newcommand{\prim}{{\mathrm{prim}}}
+\newcommand{\rank}{{\mathrm{rank}}}
+\renewcommand{\Re}{{\mathrm{Re}}}
+\newcommand{\Res}{{\mathrm{Res}}}
+\newcommand{\sep}{{\mathrm{sep}}}
+\newcommand{\sgn}{{\mathrm{sgn}}}
+\newcommand{\SL}{{\mathrm{SL}}}
+\newcommand{\suml}{\sum\limits}
+\newcommand{\Tr}{{\mathrm{Tr}}}
+\newcommand{\ur}{{\mathrm{ur}}}
+\newcommand{\Ver}{{\mathrm{Ver}}}
+\newcommand{\vK}{{\breve K}}
+\newcommand{\vol}{{\mathrm{vol}}}
+\newfontface\cmunrm{cmunrm.otf}
+\newcommand\cmu[1]{{\cmunrm{#1}}}
+\makeindex
+
+\title{代数数论讲义}
+\author{张神星}
+\institute{合肥工业大学}
+\date{\zhtoday}
+\version{v2.4.0.1}
+\logo{hfut.png}
+\cover{cover.jpg}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\chapter*{前言}
+\addcontentsline{toc}{chapter}{前言}
+本文为2020年春作者在中国科学技术大学教授代数数论(MA05109)的课程讲义.
+本文主要沿着\cite{Neukirch1999}的脉络进行的, 对部分章节进行了增减.
+本课程需要的前置内容包括线性代数、抽象代数和伽罗瓦理论.
+
+2020年, 开年就是新型冠状病毒疫情, 这也导致学校的教学首次安排在线上教学. 现在, 在家中码字的我只希望, 人们能够早日战胜疫病, 加油!
+
+\vskip 0.5cm
+\begin{flushright}
+张神星\\
+2020年2月7日
+\end{flushright}
+
+
+\vskip 0.5cm
+
+\noindent BibTeX 格式:
+\begin{lstlisting}
+@misc{ZhangNotes2021,
+  AUTHOR = {张神星},
+  KEY = {zhang2 shen4 xing2},
+  TITLE = {代数数论讲义 (v2.3)},
+  YEAR = {2021},
+  PAGES = {vi+163},
+  HOWPUBLISHED = {Course Notes},
+  URL = {https://zhangshenxing.gitee.io/teaching/代数数论讲义.pdf},
+  LANGUAGE = {Chinese}
+}
+\end{lstlisting}
+
+\tableofcontents
+
+
+
+
+\mainmatter
+\input{chapter1.tex}
+\input{chapter2.tex}
+\input{chapter3.tex}
+\input{chapter4.tex}
+% 计划中: order, division algebra, Brauer group
+
+
+\appendix
+\renewcommand{\chaptermark}[1]{\markboth{\appendixname \, #1\,}{}}
+\input{appendix.tex}
+
+
+\backmatter
+\bibliography{../../private/mybib}
+
+\chapter*{中外人名对照表}
+%\addcontentsline{toc}{chapter}{中外人名对照表}
+\markboth{中外人名对照表}{中外人名对照表}
+\begin{center}
+\begin{tabular}{lr}
+阿贝尔&Niels Henrik Abel, 1802--1829\\
+阿基米德&\cmu{Ἀρχιμήδης}, 公元前 287--前 212\\
+埃尔布朗&Jacques Herbrand, 1908--1931\\
+艾森斯坦&Ferdinand Gotthold Max Eisenstein, 1823--1852\\
+奥斯特洛斯基&\cmu{Олександр Маркович Островський}, 1893--1986\\
+贝克&Alan Baker, 1939--2018\\
+伯奇&Bryan John Birch, 1931--~~~~\\
+泊松&Siméon Denis Poisson, 1781--1840\\
+戴德金&Julius Wilhelm Richard Dedekind, 1831--1916\\
+狄利克雷&Johann Peter Gustav Lejeune Dirichlet, 1805--1859\\
+法尔廷斯&Gerd Faltings, 1954--~~~~\\
+方丹&Jean-Marc Fontaine, 1944--2019\\
+费马&Pierre de Fermat, 1601--1665\\
+傅里叶&Jean-Baptiste Joseph Fourier, 1768--1830\\
+弗罗贝尼乌斯&Ferdinand Georg Frobenius, 1849--1917\\
+伽罗瓦&Évariste Galois, 1811-1832\\
+高斯&Johann Carl Friedrich Gauß, 1777--1855\\
+谷山丰&谷山豊, 1927--1953\\
+哈尔&Alfréd Haar, 1885--1933\\
+哈塞&Helmut Hasse, 1898--1979\\
+豪斯多夫&Felix Hausdorff, 1868--1942\\
+赫克&Erich Hecke, 1887--1947\\
+亨泽尔&Kurt Hensel, 1861--1941\\
+怀尔斯&Sir Andrew John Wiles, 1953--~~~~\\
+克拉斯纳&Marc Krasner, 1912--1985\\
+克鲁尔&Wolfgang Krull, 1899--1971\\
+克罗内克&Leopold Kronecker, 1823--1891\\
+柯西&Augustin-Louis Cauchy, 1789--1857\\
+库默尔&Ernst Eduard Kummer, 1810--1893\\
+莱布尼茨&Gottfried Wilhelm Freiherr von Leibniz, 1646--1716\\
+勒让德&Adrien-Marie Legendre, 1752--1833\\
+黎曼&Georg Friedrich Bernhard Riemann, 1826--1866\\
+卢宾&Jonathan Darby Lubin, 1936--~~~~\\
+闵可夫斯基&Hermann Minkowski, 1864--1909\\
+默比乌斯&August Ferdinand Möbius, 1790--1868
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{lr}
+牛顿&Sir Isaac Newton, 1643--1727\\
+诺特&Amalie Emmy Noether, 1882--1935\\
+欧拉&Leonhardus Eulerus, 1707--1783\\
+庞特里亚金&\cmu{Лев Семёнович Понтря́гин}, 1908--1988\\
+佩尔&John Pell, 1611--1685\\
+切博塔廖夫&\cmu{Мико́ла Григо́рович Чеботарьо́в}, 1894--1947\\
+塞尔&Jean-Pierre Serre, 1926--~~~~\\
+施瓦兹&Laurent-Moïse Schwartz, 1915--2002\\
+斯温纳顿-戴尔&Sir Henry Peter Francis Swinnerton-Dyer, 1927--2018\\
+沙法列维奇&\cmu{И́горь Ростисла́вович Шафаре́вич}, 1923--2017\\
+泰勒&Brook Taylor, 1685--1731\\
+泰特&John Torrence Tate, 1925--2019\\
+泰希米勒&Paul Julius Oswald Teichm\"uller, 1913--1943\\
+韦伯&Wilhelm Eduard Weber, 1804--1891\\
+魏尔斯特拉斯&Karl Theodor Wilhelm Weierstraß, 1815--1897\\
+维特&Ernst Witt, 1911--1991\\
+韦伊&André Weil, 1906--1998\\
+希尔伯特&David Hilbert, 1862--1943\\
+伯努利&Jacques Bernoulli‎, 1654--1705\\
+岩泽健吉&岩澤健吉, 1917--1998\\
+志村五郎&志村五郎, 1930--2019
+\end{tabular}
+\end{center}
+
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{索引}
+\printindex
+
+\end{document}

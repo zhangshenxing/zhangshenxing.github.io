@@ -1,0 +1,726 @@
+
+\chapter{同调代数初步}\label{chap:homological_algebra}
+
+
+
+
+该附录包含了该课程所需要的同调代数方面的内容, 其中每一节应当安排在正文相同序号的章之前. 诱导模和导出函子可以安排在第三章之前.
+
+\section{模}\label{sec:modules}
+\subsection{模和模同态}\label{subsec:modules_and_homomorphisms}
+设 $(M,+)$ 是交换群, 记 $\End(M)$ 为 $M$ 的自同态全体, $\Aut(M)$ 为 $M$ 的自同构全体, 则 $(\End(M),+,\circ)$ 在加法和复合意义下构成环, 它的单位群为 $\Aut(M)$.
+
+\begin{definition}{模}{module}
+设 $R$ 是(含幺)交换环, 称环同态 $\rho:R\to \End(M)$ 为 $R$ \noun{模}, 或简称 $M$ 是 $R$ 模\footnote{如果将 $\End(M)$ 上的乘法定义为 $fg=g\circ f$, 则这样的环同态被称为右 $R$ 模, 原来的环同态则被称为左 $R$ 模. 如果 $M$ 既是左模又是右模且 $(ra)s=r(as)$, 则称之为双模.}. 对于 $r\in R, a\in M$, 我们记 $ra$ 或 $r.a=\rho(r)(a)$.
+\end{definition}
+
+\begin{definition}{群模}{group module}
+设 $G$ 是群, 称群同态 $\rho:G\to \Aut(M)$ 为 $G$ \noun{模}, 或简称 $M$ 是 $G$ 模\footnote{类似地我们有右 $G$ 模和双模.}. 对于 $s\in G, a\in M$, 我们记 $sa$ 或 $s.a=\rho(s)(a)$. 注意 $M$ 是 $G$ 模等价于 $M$ 是 $\BZ[G]$ 模.
+\end{definition}
+
+\begin{remark}
+如果 $M$ 是一个乘法群, 我们通常将 $R$ 或 $G$ 的作用记为 $a^r$ 这种形式. 
+\end{remark}
+
+\begin{example}
+(1) 交换群 $G$ 是自然的 $\End(G)$ 模.
+
+(2) $\BZ$ 模就是交换群.
+
+(3) 如果环 $A\subseteq B$, 则 $B$ 可视为自然 $A$ 模.
+
+(4) 只有一个元素的群自然是 $R$ 模, 称之为零模.
+\end{example}
+
+\begin{definition}{模同态}{morphism of modules}
+设 $M,N$ 为两个 $R$ 模. 如果群同态 $f:M\to N$ 满足 $f(ra)=rf(a),\forall r\in R$, 则称之为\noun{模同态}. 如果 $f$ 是群的单同态, 满同态, 同构, 则称之为模的\noun{单同态}, \noun{满同态}, \noun{同构}, 记为 $M\inj N, M\surj N, M\cong N$. 记 $\Hom_R(M,N)$ 为 $M$ 到 $N$ 的模同态全体.
+\end{definition}
+
+\begin{definition}{子模}{submodule}
+如果 $N$ 是 $M$ 的子群, 且 $ra\in N,\forall r\in R,a\in N$, 则称 $N$ 是 $M$ 的\noun{子模}. 显然任意多个子模的交仍然是子模. $M$ 有限多个子模的元素之和也形成 $M$ 的子模. $M$ 中包含其子集 $S$ 最小的子模称为由 $S$ \noun{生成的子模}.
+
+如果存在 $a\in M$ 使得 $M=Ra$, 即 $M$ 由 $\set{a}$ 生成, 称之为\noun{循环模}. 如果存在有限集 $S\subseteq M$ 使得 $S$ 生成 $M$, 则称之为\noun{有限生成模}.
+\end{definition}
+
+\begin{proposition}{}{}
+设 $N$ 是 $M$ 的子模, $M/N=\set{x+N\mid x\in M}$ 为其商群. 定义 $r(a+N)=ra+N$, 则 $M/N$ 是 $R$ 模, 称为\noun{商模}.
+\end{proposition}
+\begin{proof}
+易证.
+\end{proof}
+
+\begin{definition}{零化子}{annihilator}
+对于 $a\in M$, 定义 
+  \[\Ann(a)=\set{r\in R\mid ra=0},\]
+  \[\Ann(M)=\set{r\in R\mid rM=0}\]
+为 $a$ 和 $M$ 的\noun{零化子}, 则它们是 $R$ 的左理想. 如果 $\Ann(a)$ 非零, 称 $a$ 为\noun{扭元}. 如果 $M$ 所有元素都是扭元, 称之为\noun{扭模}.
+\end{definition}
+
+\begin{example}
+(1) 群同态就是 $\BZ$ 模同态; 群同构就是 $\BZ$ 模同构.
+
+(2) 有限生成 $\BZ$ 模就是有限生成交换群.
+
+(3) 域 $F$ 上的模就是 $F$ 上的向量空间, 有限生成 $F$ 模就是有限维 $F$ 向量空间.
+
+(4) 环 $R$ 的左理想是 $R$ 的子模.
+\end{example}
+
+\begin{exercise}
+设 $A\subseteq B\subseteq C$ 是整环. 如果 $B$ 是有限生成 $A$ 模, $C$ 是有限生成 $B$ 模, 则 $C$ 是有限生成 $A$ 模.
+\end{exercise}
+
+\begin{proposition}{中山引理}{}
+设 $R$ 是交换环, $\fa$ 为它的一个理想, 且 $\fa$ 是所有极大理想的子集.
+如果有限生成 $R$ 模 $M$ 和它的子模 $N$ 满足 $M=N+\fa M$, 则 $M=N$. 特别地, 如果 $R$ 是局部环, $\fa$ 为其唯一极大理想时该命题成立. 特别地, 如果 $M=\fa M$, 则 $M=0$.
+\end{proposition}
+\begin{proof}
+由于 $M/N=I\cdot M/N$, 因此我们不妨设 $N=0$. 设 $a_1,\dots,a_n$ 是 $M$ 的一组生成元, 则存在 $A\in M_n(\fa)$ 使得
+  \[\begin{pmatrix}
+    a_1\\\vdots\\ a_n
+  \end{pmatrix}=A\begin{pmatrix}
+    a_1\\\vdots\\ a_n.
+  \end{pmatrix}\]
+于是
+  \[(I_n-A)^*(I_n-A)\begin{pmatrix}
+    a_1\\\vdots\\ a_n
+  \end{pmatrix}=\mathbf{0},\]
+即 $\det(I_n-A) a_i=0$. 而 $\det(I_n-A)$ 展开后除了对角元以外都属于理想 $\fa$, 因此 $\det(I_n-A)=1+a,a\in\fa$. 如果 $1+a$ 不是单位, 则存在极大理想 $\fm$ 包含它, 从而 $1=(1+a)-a\in\fm$, 矛盾! 所以 $1+a\in R^\times$, $a_i=0,M=0$.
+\end{proof}
+
+
+\subsection{直和和自由模}
+\label{subsec:direct_sum_and_free_modules}
+
+\begin{definition}{直积和直和}{direct product and direct sum}
+设 $M_i,i\in I$ 是一族 $R$ 模. 定义 $\prod\limits_{i\in I} M_i$, $\bigoplus\limits_{i\in I} M_i$ 为群的直积和直和, 则它们有自然的 $R$ 模结构, $R$ 通过在每个分量作用. 称之为模的\noun{直积}和\noun{直和}.
+\end{definition}
+
+\begin{definition}{自由模}{free module}
+如果存在一族元素 $a_i \in M, i\in I$ 使得 $M=\bigoplus\limits_{i\in I} Ra_i$, 且 $Ra_i\cong R$, 则称之为\noun{自由模}. 换言之, $M\cong \bigoplus\limits_{i\in I} R$.
+\end{definition}
+
+\begin{proposition}{}{}
+主理想整环 $R$上的有限生成模一定同构于
+  \[M\cong R^{\oplus r}\oplus \bigoplus_i R/\fa_i,\]
+其中 $\fa_i$ 是 $R$ 的非零理想.
+\end{proposition}
+\begin{proof}
+略.
+\end{proof}
+
+\begin{definition}{秩}{rank}
+称 $r=\rank M$ 为 $M$ 的秩.
+\end{definition}
+
+\begin{example}
+设 $A,B$ 为 $R$ 模, 令 $A\otimes B$ 为形如 $a\otimes b, a\in A, b\in B$ 的对象生成的交换群, 其中 $ra\otimes b=a\otimes rb, \forall r\in R$. 换言之,
+  \[A\otimes_R B=\pair{(a,b)\mid a\in A,b\in B}/\sim,\]
+其中 $(ra,b)\sim (a,rb)$. $A\otimes B$ 可以自然地看成 $R$ 模, 称之为 $A$ 和 $B$ 的\noun{张量积}. 我们有
+  \[A\otimes B\cong B\otimes A,\]
+  \[(A\otimes B)\otimes C\cong A\otimes(B\otimes C)\cong A\otimes B\otimes C,\]
+  \[(A\oplus B)\otimes C\cong (A\otimes C)\oplus(B\otimes C),\]
+  \[A\otimes R\cong A.\]
+\end{example}
+
+\subsection{诱导模}
+
+\begin{definition}{诱导模}{induced module}
+如果 $H\leqslant G$ 是一个子群, 则对于任意 $H$ 模 $B$,
+  \[A=\Ind_G^H B:=\BZ[G]\otimes_{\BZ[H]} B\] 
+是一个 $G$ 模, 称为\noun{诱导模}. 这里 $\BZ[H]$ 在 $\BZ[G]$ 通过右乘 $h^{-1}$ 作用, $G$ 在 $A$ 通过左乘 $g$ 作用.
+
+另一种看法是将诱导模看成全体函数 $f:G\to B$, 其中 $f(gh)=f(g)^h,\forall h\in H$. 然后 $G$ 的作用是 $f^\sigma(x)=f(\sigma^{-1} x)$. 当 $(G:H)$ 有限时这二者是同构的. 显然 $B=\BZ[H]\otimes_{\BZ[H]} B$ 是 $A$ 的一个 $H$ 子模, 且
+  \[\Ind_G^H B=\bigoplus_{\sigma H\in G/H} B^\sigma\]
+是 $B$ 模同构, 这里 $\sigma$ 取遍左陪集 $G/H$ 的一组代表元.
+\end{definition}
+
+
+\section{范畴}
+
+\subsection{范畴与函子}\label{subsec:categories_and_functors}
+
+\begin{definition}{范畴}{category}
+\noun{范畴} $\cC$ 由如下三个要素构成:
+\begin{itemize}
+\item 一个类 $\Obj\cC$, 其中的元素 $A\in\Obj\cC$ (或简记为 $A\in\cC$) 被称为\noun{对象};
+\item 对于任意对象 $A,B$, 存在集合 $\Hom(A,B)$, 其中的元素 $u$ 被称为 $A$ 到 $B$ 的\noun{态射}, 记为 $u:A\to B$; 不同的有序对 $(A,B)$ 对应的态射不同;
+\item 对于任意对象 $A,B,C$, 存在映射
+  \[\Hom(A,B)\times\Hom(B,C)\to \Hom(A,C).\]
+称 $(v,u)$ 的像为二者的复合, 记为 $u\circ v$ 或 $uv$.
+\end{itemize}
+这些要素需要满足
+\begin{itemize}
+\item 结合律: 对于 $u:A\to B, v:B\to C, w:C\to D$, $w\circ(v\circ u)=(w\circ v)\circ u$;
+\item 对于任意 $A\in\cC$, 存在 $\id_A\in\Hom(A,A)$ 使得对任意 $u:A\to B$, $u\circ\id_A=u$; 对任意 $v:B\to A$, $\id_A\circ v=v$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+(1) 范畴的对象并不要求是一个具体的集合, 态射也不要求是集合间的映射, 尽管从主流集合论出发包括自然数, 实数等均为视为集合. 设 $(I,\le)$ 是一个偏序集, 对于 $i,j\in I$, 当 $i\le j$ 时, $\Hom(i,j)$ 为单点集; 否则 $\Hom(n,m)$ 为空. 这样便构造了一个范畴. 例如 $(\BN^+,\le)$, $(\BN^+,\mid)$, 拓扑空间开集关于包含关系等, 都可以构成范畴.
+
+(2) 范畴对象构成的一般是一个类而不是集合. 例如全体集合关于集合间的映射构成的范畴 $\cSets$ 的对象全体, 即全体集合, 就不是一个集合(为什么).
+
+(3) 其它例子包括: 全体群关于群同态构成范畴 $\cGroups$; 全体交换群关于群同态构成范畴 $\cAb$; 全体环关于环同态构成范畴 $\cRings$; 环 $R$ 上全体模关于模同态构成范畴 $\cMod/R$; 域 $k$ 上全体线性空间关于线性映射构成范畴 $\cVect/k$ 等.
+\end{example}
+
+\begin{definition}{对偶范畴}{dual category}
+设 $\cA$ 是一个范畴, 定义其\noun{对偶范畴} $\cA^\op$:
+\begin{itemize}
+\item $\Obj \cA^\op=\Obj \cA$;
+\item $\Hom_{\cA^\op}(A,B)=\Hom_{\cA}(B,A)$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+设 $(I,\le)$ 是一个偏序集, 则 $(I,\ge)$ 也是一个偏序集, 它们对应的范畴构成对偶范畴.
+\end{example}
+
+\begin{definition}{函子}{functor}
+范畴 $\cA$ 到范畴 $\cB$ 间的\nouns{(共变)函子}{函子!共变函子} $\CF$ 由如下要素构成:
+\begin{itemize}
+\item 对于任意 $A\in\cA$, 有 $\CF(A)\in\cB$;
+\item 对于任意 $\cA$ 中态射 $u:A_1\to A_2$, 有 $\CF(u):\CF(A_1)\to\CF(A_2)$,
+\end{itemize}
+且满足
+\begin{itemize}
+\item $\CF(\id_A)=\id_{\CF(A)}$;
+\item $\CF(u\circ v)=\CF(u)\circ \CF(v)$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}{反变函子}{contravariant functor}
+范畴 $\cA$ 到范畴 $\cB$ 间的\nouns{反变函子}{函子!反变函子} $\CF$ 由如下要素构成:
+\begin{itemize}
+\item 对于任意 $A\in\cA$, 有 $\CF(A)\in\cB$;
+\item 对于任意 $\cA$ 中态射 $u:A_1\to A_2$, 有 $\CF(u):\CF(A_2)\to\CF(A_1)$,
+\end{itemize}
+且满足
+\begin{itemize}
+\item $\CF(\id_A)=\id_{\CF(A)}$;
+\item $\CF(u\circ v)=\CF(v)\circ \CF(u)$.
+\end{itemize}
+这等价于共变函子 $\CF:\cA^\op\to\cB$.
+\end{definition}
+
+\begin{example}
+(1) $\id_\cA:\cA\to \cA$ 将范畴 $\cA$ 的所有对象和映射保持不变, 它显然是一个函子, 称为\noun{恒等函子}.
+
+(2) 设 $k$ 是一个域对于任意集合 $S$, 定义 $\CF(S)$ 为以 $S$ 为基的 $k$ 上线性空间, 则 $\CF:\cSets\to\cVect/k$ 是一个函子. $\CF$ 在态射上怎么作用?
+
+(3) 对于任意群 $G$, 定义 $\CF(G)$ 为其对应的集合, 则 $\CF:\cGroups\to\cSets$ 是一个函子, 称之为\noun{遗忘函子}. 同理我们有遗忘函子 $\cMod/R\to\cAb$ 等.
+
+(4) 设 $\cA$ 是一个范畴, $A,M,N\in\cC$. 定义 $\Hom(A,-)(M)=\Hom(A,M)$, 则 $\Hom(A,-):\cA\to\cSets$ 是一个函子, 其中对于 $u:M\to N$, 
+  \[\fct{\Hom(A,-)(u):\Hom(A,M)}{\Hom(A,N)}{v}{u\circ v.}\]
+
+(5) 设 $\cA$ 是一个范畴, $A,M,N\in\cC$. 定义 $\Hom(-,A)(M)=\Hom(M,A)$, 则 $\Hom(-,A):\cA\to\cSets$ 是一个反变函子, 其中对于 $u:M\to N$, 
+  \[\fct{\Hom(-,A)(u):\Hom(N,A)}{\Hom(M,A)}{v}{v\circ u.}\]
+我们称 $\Hom(A,-),\Hom(-,A)$ 为 \nouns{$\Hom$ 函子}{Hom 函子@$\Hom$ 函子}.
+
+(6) 设 $H$ 是 $G$ 的一个子群, 则 $\Ind_G^H:\cMod/H\to\cMod/G$ 和 $\Res_G^H:\cMod/G\to\cMod/H$ 是函子, 其中 $\Res_G^H(M)=M$. 它们互为\noun{伴随}, 即 
+  \[\Hom_G(\Ind_G^H M,N)=\Hom_H(M,\Res_G^H N).\]
+
+(7) 设 $G$ 是一个群, $G^\ab=G/[G,G]$ 为其极大阿贝尔商, 则 $(~)^\ab:\cGroups\to \cAb$ 是一个函子.
+\end{example}
+
+\begin{definition}{范畴的同构}{isomorphism of categories}
+设 $u:A\to B$. 如果存在 $v:B\to A$ 使得 $v\circ u=\id_A,u\circ v=\id_B$, 则称 $u$ 是\noun{同构}.
+\end{definition}
+
+\begin{definition}{自然变换与范畴等价}{natural transformation and equivalence of categories}
+设 $\CF,\CG:\cA\to \cB$ 是两个函子. 称 $f$ 为 $\CF$ 到 $\CG$ 的\noun{自然变换}, 如果对于任意 $A\in\cA$, 存在 $f_A:\CF(A)\to\CG(A)$, 且满足对任意态射 $u:A_1\to B_2$,
+  \[\xymatrix{
+\CF(A_1)\ar[r]^{\CF(u)}\ar[d]_{f_{A_1}}&\CF(A_2)\ar[d]^{f_{A_2}}\\
+\CG(A_1)\ar[r]^{\CG(u)}&\CG(A_2)
+}\]
+交换. 特别地, 我们有自然变换 $\id_\CF:\CF\to \CF$, 其中 $(\id_\CF)_A=\id_{\CF(A)}$. 如果 $\cA$ 是一个\noun{小范畴}, 即 $\Obj \cA$ 是一个集合, 则 $\cA\to\cB$ 间的函子以及函子的自然变换构成范畴 $\cFunc(\cA,\cB)$. 对于反变函子, 我们也可以类似定义自然变换. 
+
+如果存在自然变换 $f:\CF\to\CG,g:\CG\to \CF$ 使得 $g\circ f=\id_\CF$, $f\circ g=\id_\CG$, 则称 $\CF$ 和 $\CG$ \noun{同构}. 换言之, $\CF,\CG$ 在 $\cFunc(\cA,\cB)$ 中同构. 这也等价于对任意 $A\in\cA$, $f_A:\CF(A)\ra\CG(A)$ 是同构.
+
+如果存在 $\CF:\cA\to \cB$, $\CG:\cB\to \cA$ 使得 $\CG\circ \CF$ 和 $\id_\cA$ 同构, $\CF\circ \CG$ 和 $\id_\cB$ 同构, 则称 $\CF,\CG$ 诱导了 $\cA$ 和 $\cB$ 的\noun{范畴等价}. 这不同于范畴同构, 后者是指范畴的对象的态射完全一一对应, 即 $\CF\circ\CG=\id_\cB,\CG\circ\CF=\id_\cA$. 但是范畴等价意味着两个范畴的对象在同构意义下是一一对应的, 特别地, 二者的\noun{骨架范畴}是同构的, 其中骨架范畴是指范畴的每个对象的同构等价类中只选取一个对象.
+\end{definition}
+
+
+
+
+
+\subsection{加性范畴}\label{subsec:additive_category}
+
+范畴论中大量概念都是通过\noun{泛性质}来定义的.
+
+\begin{definition}{始对象}{}
+如果范畴 $\cA$ 中的对象 $I$ 满足:
+\begin{itemize}
+\item 对于任意对象 $A$, $\Hom(I,A)=\set{i_A}$ 是单点集;
+\item 对于任意态射 $u:A\to B$, $u\circ i_A=i_B$,
+\end{itemize}
+则称 $I$ 为 $\cA$ 的\noun{始对象}.
+\end{definition}
+
+\begin{definition}{终对象}{}
+如果范畴 $\cA$ 中的对象 $F$ 满足:
+\begin{itemize}
+\item 对于任意对象 $A$, $\Hom(A,F)=\set{j_A}$ 是单点集;
+\item 对于任意态射 $u:A\to B$, $j_B\circ u=j_A$,
+\end{itemize}
+则称 $F$ 为 $\cA$ 的\noun{终对象}.
+\end{definition}
+
+\begin{definition}{零对象}{}
+如果一个对象既是始对象也是终对象, 称之为\noun{零对象}, 通常记为 $0$, 并记 $\Hom(A,0)=\set{0},\Hom(0,A)=\set{0}$.
+\end{definition}
+
+\begin{proposition}{}{}
+始对象在同构意义下是唯一的; 终对象在同构意义下是唯一的.
+\end{proposition}
+\begin{proof}
+设 $I,I'$ 是始对象, 则 $\Hom(I,I')=\set{i_{I'}}, \Hom(I',I)=\set{i'_I}$, 因此 $i_{I'}\circ i'_I:I\to I$. 由于 $\Hom(I,I)=\set{\id_I}$, 因此 $i_{I'}\circ i'_I=\id_I$. 同理 $i'_I\circ i_{I'}=\id_{I'}$, 所以 $i_{I'}:I\to I'$ 是同构. 类似地, 终对象在同构意义下也是唯一的.
+\end{proof}
+
+设 $A_i,i\in I$ 是范畴 $\cA$ 中的一族对象.
+
+\begin{definition}{直和}{direct sum}
+如果对象 $A$ 以及一族态射 $\alpha_i:A_i\to A$, 满足对于任意对象 $M$ 和一族态射 $u_i:A_i\to M$, 存在唯一的 $v:A\to M$ 使得下图交换
+  \[\xymatrix{
+A_i\ar[d]_{\alpha_i}\ar[rd]^{\forall u_i}&\\
+A\ar@{.>}_{\exists ! v}[r]&M
+}\]
+则称 $(A,\alpha_i)$ 为 $A_i$ 的\noun{直和}, 记为 $\oplus_i A_i$.
+\end{definition}
+
+\begin{definition}{直积}{direct product}
+如果对象 $A$ 以及一族态射 $\beta_i:A\to A_i$, 满足对于任意对象 $M$ 和一族态射 $u_i:M\to A_i$, 存在唯一的 $v:M\to A$ 使得下图交换
+  \[\xymatrix{
+M\ar[rd]_{u_i}\ar@{.>}^{\exists ! v}[r]&A\ar[d]^{\beta_i}\\
+&A_i
+}\]
+则称 $(A,\beta_i)$ 为 $A_i$ 的\noun{直积}, 记为 $\prod_i A_i$.
+\end{definition}
+
+\begin{proposition}{}{}
+直和和直积是同构意义下唯一的.
+\end{proposition}
+\begin{proof}
+易证.
+\end{proof}
+
+对于 $\cAb,\cMod/R$ 等范畴, 我们可以发现 $\Hom(A,B)$ 均构成交换群且有有限直和, 有限直积, 核, 像等概念. 由此出发, 我们可以定义加性范畴和阿贝尔范畴.
+
+\begin{definition}{加性范畴}{additive category}
+如果范畴 $\cC$ 满足
+\begin{itemize}
+\item 对于任意对象 $A,B,C$, $\Hom(A,B)$ 具有交换群结构, 且态射复合
+  \[\Hom(A,B)\times\Hom(B,C)\to \Hom(A,C)\]
+是双线性的;
+\item 存在零对象 $0$;
+\item 对于任意对象 $A,B$, 存在直和 $A\oplus B$ 和直积 $A\times B$,
+\end{itemize}
+我们称之为\noun{加性范畴}.
+\end{definition}
+
+\begin{proposition}{}{}
+对于加性范畴的对象 $A,B$, 我们有同构 $A\oplus B\simto A\times B$.
+\end{proposition}
+\begin{proof}
+考虑 $\id_A:A\to A,0:A\to B$, 存在 $(\id_A,0):A\to A\times B$. 同理存在 $(0,\id_B):B\to A\times B$. 因此存在态射 $i:A\oplus B\to A\times B$, 使得下图交换
+  \[\xymatrix{
+    A\ar[rd]^{(\id_A,0)}\ar[d]_{\alpha_A}&\\
+    A\oplus B\ar[r]^i&A\times B\\
+    B\ar[u]^{\alpha_B}\ar[ru]_{(0,\id_B)}
+  }\]
+容易验证 $\alpha_A\circ \beta_A+\alpha_B\circ\alpha_A:A\times B\to A\oplus B$ 是它的逆.
+\end{proof}
+
+\begin{definition}{加性函子}{additive functor}
+如果加性范畴间的函子 $\CF:\cA\to \cB$ 满足
+\begin{itemize}
+\item $\CF(0)=0$;
+\item 自然态射 $\CF(A_1)\oplus\CF(A_2)\to \CF(A_1\oplus A_2)$ 是同构,
+\end{itemize}
+称之为\noun{加性函子}. 这等价于对任意 $A,B$, $\CF:\Hom(A,B)\to\Hom\bigl(\CF(A),\CF(B)\bigr)$ 是群同态.
+\end{definition}
+
+\begin{example}
+(1) 加性范畴的对偶仍然是加性的.
+
+(2) $\cAb$ 是加性范畴, 其上的 $\Hom$ 函子是加性函子.
+\end{example}
+
+
+\subsection{阿贝尔范畴}\label{subsec:abelian_category}
+
+设 $u:A\to B$ 是加性范畴 $\cA$ 上的一个态射. 
+
+\begin{definition}{核}{kernel}如果对象 $C$ 和态射 $i:C\to B$ 满足对于任意对象 $M$ 和态射 $v: M\to A$, 若 $u\circ v=0$, 则存在唯一的态射 $w:M\to C$ 使得下图交换
+  \[\xymatrix{
+M\ar@{.>}[d]_{\exists! w}\ar[rd]_{\forall v} \ar[rrd]^0&&\\
+C\ar[r]_i &A\ar[r]_u &B
+}\]
+则称 $(C,i)$ 为 $u$ 的\noun{核}, 记为 $\ker u$. 若 $\ker u=0$, 称 $u$ 为\noun{单态射}.
+\end{definition}
+
+\begin{definition}{余核}{cokernel}
+如果对象 $D$ 和态射 $j:B\to D$ 满足对于任意对象 $M$ 和态射 $v: B\to M$, 若 $v\circ u=0$, 则存在唯一的态射 $w:D\to M$ 使得下图交换
+  \[\xymatrix{
+A\ar[r]^u \ar[rrd]_0&B\ar[rd]^{\forall v}\ar[r]^j&D\ar@{.>}[d]^{\exists! w}\\
+&&M\\
+}\]
+则称 $(D,j)$ 为 $u$ 的\noun{余核}, 记为 $\coker u$. 若 $\coker u=0$, 称 $u$ 为\noun{满态射}.
+\end{definition}
+
+\begin{definition}{像和余像}{image and coimage}
+称余核的核 $\ker(\coker u)$ 为 $u$ 的\noun{像} $\im u$;
+称核的余核 $\coker(\ker u)$ 为 $u$ 的\noun{余像} $\coim u$.
+\end{definition}
+
+我们将它们对应的对象记为 $\Ker,\Coker,\Im,\CoIm$.
+
+\begin{definition}{阿贝尔范畴}{abelian category}
+如果加性范畴 $\cA$ 满足
+\begin{itemize}
+\item 任意态射均有核和余核;
+\item 对于任意态射 $u:A\to B$, 自然映射 $\CoIm u\to \Im u$ 是同构,
+\end{itemize}
+则称 $\cA$ 为\noun{阿贝尔范畴}. 这等价于既满又单的态射是同构.
+\end{definition}
+
+\begin{example}
+(1) 阿贝尔范畴的对偶仍然是阿贝尔的.
+
+(2) $\cAb$, $\cMod/R$ 是阿贝尔范畴.
+
+(3) (Mitchell 嵌入定理) 任何一个小阿贝尔范畴 $\cA$ 可正合嵌入为一个模范畴 $\cMod/R$ 的全子范畴, 即存在函子 $\CF:\cA\to \cMod/R$, 使得 $\CF$ 诱导了 $\Obj \cA\inj \Obj\cMod/R$, $\Hom_\cA(A,B)=\Hom_{\cMod/R}\bigl(\CF(A),\CF(B)\bigr),$ 且保持核和余核.
+\end{example}
+
+\subsection{正合列}\label{subsec:exact_sequence}
+
+\begin{definition}{正合}{exact}
+设 $\cA$ 为阿贝尔范畴, $A,B,C\in \cA$. 称 $A\sto{u} B\sto{v} C$ \noun{正合}, 如果自然映射 $\Ker v\simeq \Im u$ 是同构. 由于它们都可以看成是 $B$ 的子对象 (存在到 $B$ 的单态射), 此时 $\Ker v=\Im u$.
+由此可知
+  \[0\ra A \sto{u}B\sto{v}C\ra 0\]
+正合当且仅当 $\Ker u=0, \Im u=\Ker v,\Im v=C$, 这样的序列被称为\noun{短正合列}.
+\end{definition}
+
+\begin{proposition}{蛇形引理}{}
+考虑阿贝尔范畴 $\cA$ 中的交换图
+  \[\xymatrix{
+    &A\ar[r]\ar[d]^{\alpha}&B\ar[r]\ar[d]^\beta&C\ar[r]\ar[d]^\gamma&0\\
+    0\ar[r]&A'\ar[r]&B\ar[r]&C
+  }\]
+其中每行都是正合的, 则存在唯一的态射
+  \[\delta:\Ker \gamma\to \Coker\alpha\]
+使得下图交换
+  \[\xymatrix{
+    B\times_C\Ker\gamma\ar[r]\ar[d]&\Ker \gamma\ar[d]^\delta\\
+    A'\ar[r]&\Coker \alpha
+  }\]
+其中左竖直态射由 $\beta$ 诱导, 而且我们有正合列
+  \[\Ker\alpha\to\Ker\beta\to\Ker\gamma\sto{\delta}\Coker\alpha\to\Coker\beta\to\Coker\gamma.\]
+\end{proposition}
+
+对于模范畴情形, 我们可以直接验证.
+
+\begin{corollary}{五引理}{}
+考虑交换图表
+  \[\xymatrix{
+    A^1\ar[r]\ar[d]^{u^1}&A^2\ar[r]\ar[d]^{u^2}&
+    A^3\ar[r]\ar[d]^{u^3}&A^4\ar[r]\ar[d]^{u^4}&
+    A^5\ar[d]^{u^5}\\
+    B^1\ar[r]&B^2\ar[r]&B^3\ar[r]&B^4\ar[r]&B^5,
+  }\]
+其中每行都正合. 如果 $u^1,u^2,u^4,u^5$ 是同构, 则 $u^3$ 也是同构.
+\end{corollary}
+
+
+\subsection{正向极限和逆向极限}
+
+\begin{definition}{正向极限}{direct limit}
+设 $I$ 是一个偏序集.
+对于范畴 $\cA$ 中的一族对象 $A_i,i\in I$, 以及 $i
+\le j$ 时态射 $\alpha_{ij}:A_i\to A_j$, 如果对象 $A$ 以及一族态射 $\alpha_i:A_i\to A$, 满足对任意 $i
+le j$, $\alpha_j\circ\alpha_{ij}=\alpha_i$, 以及对于任意对象 $M$ 和一族态射 $u_i:A_i\to M$, 如果 $u_j\circ \alpha_{ij}=u_i$, 存在唯一的 $v:A\to M$ 使得下图交换
+  \[\xymatrix{
+A_i\ar[r]^{\alpha_{ij}}\ar[rd]_{\alpha_i}\ar@/_/[rdd]_{\forall u_i}&A_j\ar[d]_{\alpha_j}\ar@/^/[dd]^{u_j}\\
+&A\ar@{.>}_{\exists ! v}[d]\\
+&M
+}\]
+则称 $(A,\alpha_i)$ 为 $A_i$ 的\noun{正向极限}, 记为 $\ilim_i A_i$.
+\end{definition}
+
+\begin{definition}{逆向极限}{inverse limit}
+对于范畴 $\cA$ 中的一族对象 $A_i,i\in I$, 以及 $i
+\le j$ 时态射 $\alpha_{ij}:A_i\to A_j$, 如果对象 $A$ 以及一族态射 $\alpha_i:A_i\to A$, 满足对任意 $i
+le j$, $\alpha_j\circ\alpha_{ij}=\alpha_i$, 以及对于任意对象 $M$ 和一族态射 $u_i:A_i\to M$, 如果 $u_j\circ \alpha_{ij}=u_i$, 存在唯一的 $v:A\to M$ 使得下图交换
+  \[\xymatrix{
+M\ar@/_/[dd]_{\forall u_i}\ar@/^/[rdd]^{\forall u_j}\ar@{.>}[d]^{\exists ! v}&\\
+A\ar[d]^{\alpha_i}\ar[rd]^{\alpha_j}&\\
+A_i\ar[r]_{\alpha_{ij}}&A_j
+}\]
+则称 $(A,\alpha_i)$ 为 $A_i$ 的\noun{逆向极限}, 记为 $\plim_i A_i$.
+\end{definition}
+
+\begin{proposition}{}{}
+正向极限和逆向极限是同构意义下唯一的.
+\end{proposition}
+\begin{proof}
+易证.
+\end{proof}
+
+我们考虑模范畴情形. 对于正向系 $A_i,i\in I$, 设 $A=\ilim_i A_i$, 则存在映射 $u:\bigoplus_i A_i\to A$. 考虑 $\bigoplus_i A_i$ 中由 $a_j-u_{ij}(a_i)$ 生成的子模 $M$, 则
+  \[\ilim_i A_i=\frac{\bigoplus_i A_i}{M},\]
+所以正向极限是直和的商模. 同理, 设 $B=\plim_i A_i$, 则存在映射 $u:B\to \prod_i A_i$. 考虑 $\prod_i A_i$ 中由满足 $a_j=u_{ij}(a_i)$ 的元素 $(a_i)_i$ 全体 $N$, 则 $N$ 是 $\prod_i A_i$ 的子模, 它就是 $\plim_i A_i$.
+
+\subsection{复形}
+设 $\cA$ 是一个阿贝尔范畴. $\cA$ 上的\noun{复形} $L=L^\bullet$ 是指一族对象 $L^i,i\in\BZ$, 以及态射 $d=d^i:L^i\ra L^{i+1}$, 使得 $d\circ d=0$. 我们记为
+  \[L=(\cdots\ra L^i\ra L^{i+1}\ra\cdots).\]
+其中 $d$ 被称为 $L$ 的\noun{微分}, $L^i$ 被称为 $i$ 次分量. 复形的\noun{态射} $u:L\to M$ 是指一族 $u^i:L^i\to M^i$, 使得 $d_M\circ u^i=u^{i+1}\circ d_L$. $\cA$ 上复形全体构成阿贝尔范畴 $\cC(\cA)$.
+
+定义
+  \[Z^iL=\Ker d^i:L^i\to L^{i+1},\quad B^iL=\Im d^{i-1}:L^{i-1}\to L^i,\]
+  \[\rmH^i=Z^i/B^i,\]
+为 $L$ 的\noun{循环}, \noun{边界}, \noun{上同调}.
+
+\begin{definition}{拟同构}{quasi-isomorphism}
+设 $u:L\to M$ 是复形的态射. 
+如果 $\rmH^i(u):\rmH^iL\to \rmH^iM$ 是同构, $\forall i$, 则称 $u$ 是\noun{拟同构}.
+\end{definition}
+
+显然任意 $A\in \cA$ 可以看做 $0$ 处是 $A$, 其它地方是 $0$ 的复形.
+
+\begin{definition}{解出}{resolution}
+设 $A\in\cA$, $L,M\in\cC(\cA)$. 称 $u:L\to E$ 是一个\noun{左解出}, 如果 $L^i=0,i>0$. 这等价于给出正合列
+  \[\cdots\ra L^2\ra L^1\ra L^0\ra A\ra 0.\]
+类似地, 称 $u:A\to M$ 是一个\noun{右解出}, 如果 $M^i=0,i<0$. 这等价于给出正合列
+  \[0\ra A\ra M^0\ra M^1\ra M^2\ra\cdots.\]
+\end{definition}
+
+
+\subsection{导出函子}
+
+\begin{definition}{导出函子}{derived functor}
+设 $\CF:\cA\to\cB$ 是加性范畴间的加性函子. 如果对于任意正合列
+  \[0\ra A_1\ra A_2\ra A_3\ra 0,\]
+序列
+  \[0\ra\CF(A_1)\ra\CF(A_2)\ra \CF(A_3)\]
+(或 $\CF(A_1)\ra\CF(A_2)\ra \CF(A_3)\ra 0$) 也正合, 则称 $\CF$ 是\noun{左正合}(或\noun{右正合}). 如果 $\CF$ 既左正合也右正合, 则称其\noun{正合}. 对于反变函子 $\CG:\cA\to \cB$, 我们称其左正合(或右正合)是指其对应的共变函子 $\CG^\op:\cA^\op\to\cB$ 左正合(或右正合).
+\end{definition}
+
+\begin{example}
+设 $M\in\cMod/R$. 函子 $\Hom(M,-):\cMod/R\to\cMod/R$ 是左正合的. 设
+  \[\xymatrix@1{0\ar[r]&A\ar[r]^u&B\ar[r]^v&C}\]
+正合, 则
+  \[\xymatrix@1{0\ar[r]&\Hom(M,A)\ar[r]&\Hom(M,B)\ar[r]&\Hom(M,C)}\]
+正合. 显然该序列构成复形. 设 $f\in \Hom(M,A)$ 使得 $u\circ f=0$, 由于 $u$ 是单射, 因此 $f=0$. 设 $g\in \Hom(M,B)$ 使得 $v\circ g=0$, 对任意 $m\in M$, $g(m)\in \Ker v=\Im u$, 因此存在唯一的 $a\in A$ 使得 $u(a)=g(m)$. 定义 $h:M\to A,h(m)=a$, 则容易看出 $h$ 是模同态且 $u\circ h=g$. 
+
+类似地, 反变函子 $\Hom(-,M):\cMod/R\to\cMod/R$ 左正合. 
+\end{example}
+
+\begin{example}
+设 $M\in\cMod/R$, 则函子 $M\otimes-:\cMod/R\to\cMod/R$ 是右正合的.
+\end{example}
+
+\begin{definition}{内射和投射}{injective and projective}
+设 $\cA$ 是阿贝尔范畴. 如果 $\Hom(-,M)$ 正合, 我们称 $M$ 是\noun{内射}的. 我们称 $\cA$ 有足够多的内射对象, 是指对任意 $L\in\cA$, 存在内射 $L'\in \cA$ 和单态射 $L\to L'$.
+
+如果 $\Hom(M,-)$ 正合, 我们称 $M$ 是\noun{投射}的. 我们称 $\cA$ 有足够多的投射对象, 是指对任意 $L\in\cA$, 存在投射 $L'\in \cA$ 和满态射 $L'\to L$.
+\end{definition}
+
+设 $\cA$ 是有足够多的内射对象的阿贝尔范畴. 对于任意 $A\in\cA$, 存在内射 $I^0$ 和单态射 $A\to I^0$. 对其余核进行同样的操作 $\Coker(A\to I^0)\to I^1$, 反复操作下去, 我们便可得到 $A$ 的一个内射右解出
+  \[0\ra A\ra I^0\ra I^1\ra \cdots.\]
+对于左正合函子 $\CF:\cA\to \cB$, 复形
+  \[0\ra \CF(I^0)\ra \CF(I^1)\ra \cdots\]
+的上同调 $R^i\CF(A)$ 称为 $\CF$ 的\noun{右导出函子} $R^i\CF:\cA\to \cB$. 显然 $R^0\CF=\CF$.
+
+类似地, 设 $\cA$ 是有足够多的投射对象的阿贝尔范畴. 对于任意 $A\in\cA$, 存在投射左解出
+  \[\cdots\ra P^1\ra P^0\ra A\ra 0.\]
+对于右正合函子 $\CF:\cA\to \cB$, 复形
+  \[\cdots\ra \CF(P^1)\ra \CF(P^0)\ra 0\]
+的同调 $L^i\CF(A):=\rmH^{-i}\bigl(\CF(P^\bullet)\bigr)$ 称为 $\CF$ 的\noun{左导出函子} $L^i\CF:\cA\to \cB$. 显然 $L^0\CF=\CF$.
+
+对于反变函子, 考虑其对应的共变函子即可.
+
+\section{群的上同调}
+
+\subsection{上同调群}
+
+设 $A$ 是一个 $G$ 模, 定义 $\CF(A)=A^G$ 为 $A$ 中被 $G$ 固定的部分, 则这诱导了 $G$ 模范畴到交换群范畴的一个函子. $\CF$ 是左正合的, 即如果
+  \[0\ra A\ra B\ra C\]
+是 $G$ 模正合列($A\ra B$ 是单射, $A\ra B$ 的像等于 $B\ra C$ 的核), 则
+  \[0\ra \CF(A)\ra \CF(B)\ra \CF(C)\]
+是交换群的正合列.
+
+\begin{exercise}
+证明 $A\mapsto A^G$ 是左正合的.
+\end{exercise}
+
+基于范畴的一般理论, $\CF$ 有所谓\noun{右导出函子} $\rmH^i(G,-)=R^i\CF$, 它们可以通过下述方式得到. 我们可以构造 $\BZ$ 的左解出序列
+  \[\cdots\ra P_2\ra P_1\ra P_0\ra \BZ\ra 0,\]
+其中 $P_i$ 都是自由 $G$ 模. 于是 $K^i=\Hom_G(P_i,A)$ 构成余链复形
+  \[0\ra K_0\ra K_1\to K_2\to K_3\to\cdots,\]
+即连续的两个映射的复合是 $0$, 定义
+  \[\rmH^q(G,A)=\rmH^q(K)=\frac{\Ker(K^q\to K^{q+1})}{\Im(K^{q-1}\to K^q)}.\]
+实际上, 我们可以取 $P_i=\BZ[G\times \cdots\times G]$, 其中一共有 $i+1$ 个 $G$, $G$ 通过对角作用, 即
+  \[s.(g_0,\dots,g_i)=(sg_0,\dots,sg_i).\]
+映射为
+  \[d(g_0,\dots,g_1)=\sum_{j=0}^i (-1)^j(g_0,\dots,\hat g_j,\dots,g_i),\]
+其中 $\hat g_j$ 表示去除该项. 特别地 $d:P_0\to\BZ$ 为 $d(g_0)=1$.
+
+\begin{exercise}
+验证 $\cdots\ra P_2\ra P_1\ra P_0\ra \BZ\ra 0$ 是正合的.
+\end{exercise}
+
+于是 $K^i=\Hom_G(P_i,A)$ 可以看成 $G\times\cdots\times G$ 上满足
+  \[h(s.g_0,\dots,s.g_i)=s.h(g_0,\dots,g_i)\]
+的函数全体. 由此也可以看出 $h$ 完全由函数
+  \[f(g_1,\dots,g_i)=h(1,g_1,g_1g_2,\dots,g_1\dots g_i)\]
+确定. 通过这种非齐次的表达式, $d$ 变为了
+  \[\begin{split}
+  df(g_1,\dots,g_{i+1})=&g_1.f(g_2,\dots,g_{i+1})\\
+  &+\sum_{j=1}^{i}(-1)^j f(g_1,\dots,g_jg_{j+1},\dots,g_{i+1})\\
+  &+(-1)^{i+1}f(g_1,\dots,g_i).
+  \end{split}\]
+
+特别地, $1$ 余循环 $\Ker(K^1\to K^2)$ 由满足
+  \[f(gg')=g.f(g')+f(g)\]
+的函数构成, $1$ 余边界 $\Im(K^0\to K^1)$ 由 $f(g)=g.a-a$ 形式的函数构成. 显然, 如果 $G$ 的作用是平凡的, 则 $\rmH^1(G,A)=\Hom(G,A)$. 
+
+\begin{exercise}
+$2$ 余循环满足什么条件?
+\end{exercise}
+
+由导出函子的性质, 我们有
+  \[0\ra A\ra B\ra C\ra 0\]
+正合, 则
+  \[\cdots \ra \rmH^q(G,B)\ra \rmH^q(G,C)\sto{\delta} \rmH^{q+1}(G,A)\ra \rmH^{q+1}(G,B)\ra\cdots\]
+正合, 其中 $\delta$ 被称为\noun{连接映射}.
+
+\subsection{同调群}
+设 $A$ 是一个 $G$ 模, $DA$ 为 $A$ 中 $s.a-a,s\in G$ 生成的子模, 考虑 $\CF(A)=A_G:=A/DA$, 它是 $A$ 被 $G$ 作用平凡的极大商.
+
+\begin{exercise}
+证明 $A\mapsto A_G$ 是右正合的.
+\end{exercise}
+
+基于范畴的一般理论, $\CF$ 有所谓\noun{左导出函子} $\rmH_i(G,-)=L^i\CF$, 它们可以通过下述方式得到. 类似地, 我们可以构造 $\BZ$ 的左解出序列
+  \[\cdots\ra P_2\ra P_1\ra P_0\ra \BZ\ra 0,\]
+其中 $P_i=\BZ[G\times \cdots\times G]$. 于是 $\rmH_q(G,A)$ 为链复形
+  \[\cdots\ra P_2\otimes_G A\ra P_1\otimes_G A\ra P_0\otimes_G A\ra 0\]
+其中的元素可视为函数 $x(g_1,\dots,g_q)$. 类似地, $d$ 为
+  \[\begin{split}
+dx(g_1,\dots,g_{q-1})=&\sum_{g\in G}g^{-1}.f(g,g_1,\dots,g_{q-1})\\
+&+\sum_{j=1}^{q-1}(-1)^j \sum_{g\in G}x(g_1,\dots,g_jg,g^{-1},,\dots,g_{q-1})\\
+&+(-1)^{q}f(g_1,\dots,g_{q-1},q).
+\end{split}\]
+我们有类似的长正合列.
+
+若 $A=\BZ$, $G$ 为平凡作用, 则 $\rmH_1(G,\BZ)=G^\ab$. 实际上, 设 $\pi:\BZ[G]\to\BZ$ 为\noun{增广映射}, 即 $\sum n_g g\mapsto \sum n_g$. 令 $I_G$ 为其核, 即\noun{增广理想}, 它由 $g-1$ 生成. 由定义, $\rmH_0(G,A)=A/I_GA$. 考虑
+  \[0\ra I_G\ra \BZ[G]\sto{\pi}\BZ\ra 0.\]
+我们有 $\rmH_0(G,I_G)=I_G/I_G^2$ 且其在 $\rmH_0(G,\BZ[G])$ 中的像为 $0$. 而 $\BZ[G]$ 是自由模, 它的同调为 $0$, 因此同调的上正合列诱导了同构
+  \[d:\rmH_1(G,Z)\to \rmH_0(G,I_G)=I_G/I_G^2.\]
+容易验证 $s\mapsto s-1$ 诱导了同构 $G^\ab\simeq I_G/I_G^2$. 因此 $\rmH_1(G,\BZ)=G^\ab$.
+
+由导出函子的性质, 我们有
+  \[0\ra A\ra B\ra C\ra 0\]
+正合, 则
+  \[\cdots \ra \rmH_{q+1}(G,B)\ra \rmH_{q+1}(G,C)\sto{\delta} \rmH_{q}(G,A)\ra \rmH_{q}(G,B)\ra\cdots\]
+正合, 其中 $\delta$ 被称为\noun{连接映射}.
+
+\subsection{泰特上同调}
+我们希望将群的上同调和同调统一起来. 设 $G$ 有限群. 记
+  \[\bfN=\sum_{g\in G} g\in\BZ[G]\]
+为它的\noun{范数},
+  \[I_G=\pair{g-1\mid g\in G}\subseteq \BZ[G]\]
+为\noun{增广理想}. $\bfN$ 在 $A$ 上的作用满足
+  \[I_GA\subseteq A^{\bfN=0}=\ker \bfN,\quad \bfN A=\im\bfN\subseteq A^G.\]
+定义\noun{泰特上同调}
+  \[\begin{split}
+\wh\rmH^n(G,A)&=\rmH^n(G,A),\quad n\ge 1\\
+\wh\rmH^0(G,A)&=A^G/\bfN A,\\
+\wh\rmH^{-1}(G,A)&=A^{\bfN=1}/I_G A,\\
+\wh\rmH^{-n}(G,A)&=\rmH_{n-1}(G,A),\quad n\ge 2
+\end{split}\]
+则对于正合列
+  \[0\ra A\ra B\ra C\ra 0,\]
+我们有长正合列
+  \[\cdots\ra \wh\rmH^{q-1}(G,C)\ra \wh\rmH^q(G,A)\ra \wh\rmH^q(G,B)\ra \wh\rmH^q(G,C)\ra\wh\rmH^{q+1}(G,A)\ra\cdots\]
+后文中我们将简记 $\rmH^n=\wh \rmH^n,n\in\BZ$.
+
+\subsection{埃尔布朗商}
+为了计算类域的上同调, 我们需要埃尔布朗商.
+设 $G$ 有限群, $A$ 是 $G$ 模, 则
+  \[\begin{split}
+\rmH^0(G,A)&=A^G/\bfN A,\\
+\rmH^{-1}(G,A)&=A^{\bfN=1}/I_G A,\\
+\rmH^1(G,A)&=Z^1/B^1,
+\end{split}\]
+其中
+  \[Z^1:=\set{f:G\to A\mid f(gh)=f(g)^h f(h)},\]
+  \[B^1:=\set{f_a:G\to A\mid f_a(g)=a^{g-1},a\in A}.\]
+
+\begin{proposition}{}{}
+如果 $G=\pair{\sigma}$ 是循环群, 则 $\rmH^1(G,A)=\rmH^{-1}(G,A)$.
+对于 $G$ 模的正合列
+  \[\xymatrix{1\ar[r] &A\ar[r]^i &B\ar[r]^j &C\ar[r] &1}\]
+我们有正合六边形
+  \[\xymatrix{
+    & \rmH^0(G,A)\ar[r]^{f_1} &\rmH^0(G,B)\ar[rd]^{f_2} & \\
+    \rmH^{-1}(G,C)\ar[ru]^{f_6}&&&\rmH^0(G,C)\ar[ld]^{f_3}\\
+    & \rmH^{-1}(G,B)\ar[lu]^{f_5}& \rmH^{-1}(G,A)\ar[l]_{f_4}&
+  }\]
+\end{proposition}
+该命题可以利用此情形下泰特上同调和复形
+  \[\xymatrix{\cdots\ar[r]^{\sigma-1}&\BZ[G]\ar[r]^\bfN&\BZ[G]\ar[r]^{\sigma-1}&\BZ[G]\ar[r]^\bfN&\BZ[G]\ar[r]^{\sigma-1}&\dots}\]
+的上同调一致得到, 见~\cite[\S 8.4]{Serre1979}. 由此可知 $\rmH^n(G,A)$ 只与 $n$ 的奇偶性有关, 从而由上同调的长正合列得到该命题.
+也可以直接证明, 见~\cite[Proposition~4.3.7, Proposition~4.7.1]{Neukirch1999}, 其中 $f_3(c)=\bigl(j^{-1}(c)\bigr)^{\sigma-1}, f_6(c)=\bfN\bigl(j^{-1}(c)\bigr).$
+
+\begin{exercise}
+验证 $f_3,f_6$ 是良定义的, 并由此证明该命题.
+\end{exercise}
+
+\begin{definition}{埃尔布朗商}{Herbrand quotient}
+定义 
+  \[h(G,A)=\frac{\#\rmH^0(G,A)}{\#\rmH^{-1}(G,A)}\]
+为 $A$ 的\noun{埃尔布朗商}. 这里它只在两个上同调都有限的情形才有定义.
+\end{definition}
+
+由正合六边形,
+  \[0\ra \Im f_6\to \rmH^0(G,A)\ra \Im f_1\ra 0\]
+正合, 因此 $\#\rmH^0(G,A)=\#\Im f_6\cdot\#\Im f_1$. 类似地, 对其它上同调也有这样的形式, 因此
+  \[h(G,B)=h(G,A)h(G,C).\]
+
+\begin{exercise}
+证明有限模的埃尔布朗商是 $1$.
+\end{exercise}
+
+\begin{proposition}{}{cohomology_of_induced_modules}
+如果 $G$ 是有限循环群, 则
+  \[\rmH^i(G,\Ind^H_GB)\cong \rmH^i(H,B).\]
+\end{proposition}
+\begin{proof}
+设 $A=\Ind_G^H B$. 设 $R$ 是 $G/H$ 的一组代表元. 考虑 $H$ 模同态
+  \[\pi:A\to B,\quad f\mapsto f(1),\]
+  \[\nu:A\to B,\quad f\mapsto \prod_{\tau\in R}f(\tau).\]
+容易看出
+  \[s:B\to A,\quad b\mapsto f_b(h)=\begin{cases}
+    b^h, &\text{如果 }h\in H,\\
+    1,   &\text{如果 }h\notin H
+  \end{cases}\]
+满足 $\pi\circ s=\nu\circ s=\id$. 我们还有
+  \[\pi\circ \bfN_G=\bfN_H\circ v.\]
+很明显, $\pi$ 诱导了同构 $A^G\to B^H$, 而且 
+	\[\pi(\bfN_GA)=\bfN_H(\nu A)\subseteq \bfN_HB,\ 
+	\bfN_H B=\bfN_H(\nu s B)=\pi\bigl(\bfN_G(sB)\bigr)\subseteq \pi(\bfN_G A).\]
+因此 $\rmH^0(G,A)=\rmH^0(H,B)$. $i=-1$ 情形留作习题.
+\end{proof}
+
+\begin{exercise}
+证明 $G$ 是有限循环群 时, $\rmH^{-1}(G,\Ind^H_GB)\cong \rmH^{-1}(H,B)$.
+\end{exercise}
+
+\begin{exercise}
+如果 $G$ 是有限群, $H$ 是正规子群, 则 $\rmH^1(G,\Ind^H_GB)\cong \rmH^1(H,B)$.
+\end{exercise}
+
+
+
+

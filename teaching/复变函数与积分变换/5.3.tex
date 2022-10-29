@@ -122,18 +122,16 @@ $f(z)=\dfrac1{(z^2+a^2)^3}$ 在上半平面内的奇点为 $ai$.
 
 
 \begin{frame}{形如 $\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$,
-$\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$ 的积分}
+$\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$ 的积分}
 \onslide<+->
 考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$,
-$\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
+$\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
 \onslide<+->
 和前一种情形类似, 我们有
-\[\markatt{
-\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x
-=\Re\left[2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a]\right],}\]
-\[\markatt{
-\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x
-=\Im\left[2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a]\right].}\]
+\[\markatt{\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\diff x
+=2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a],}\]
+\onslide<+->
+因此所求积分分别为它的实部和虚部.
 \end{frame}
 
 
@@ -155,90 +153,88 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 \endgroup
 \end{frame}
 
+%
+%\begin{frame}{例题: 留数在定积分上的应用}
+%\beqskip{5pt}
+%\onslide<+->
+%最后我们再来看两个例子.
+%
+%\begin{example}
+%求菲涅尔积分
+%\[I_1=\int_0^{+\infty}\cos x^2\diff x,\quad
+%I_2=\int_0^{+\infty}\sin x^2\diff x.\]
+%\end{example}
+%\begin{solutions}
+%设 $f(z)=\exp(iz^2)$, $C$ 为下图所示闭路.
+%\onslide<+->
+%\vspace{-2pt}
+%\begin{center}
+%\begin{tikzpicture}
+%\draw[cstaxis] (0,0)--(2.8,0);
+%\draw[cstaxis] (0,0)--(0,2);
+%\draw[cstcurve,alecolor] (2,0)coordinate (A)--(0,0)coordinate (B)--(2,2)coordinate (C) pic [draw,notcolor,"$\frac\pi4$",angle eccentricity=1.5] {angle};
+%\draw[cstcurve,alecolor] (2,0)--(2,2);
+%\draw[cstcurve,alecolor,cstarrowto] (0,0)--(1.2,0);
+%\draw[cstcurve,alecolor,cstarrowto] (2,0)--(2,1.2);
+%\draw[cstcurve,alecolor,cstarrowto] (2,2)--(0.8,0.8);
+%\draw
+%  (-0.2,0.2) node {$O$}
+%  (2.3,0.3) node {$R$}
+%  (2.7,2) node {$R+Ri$}
+%  (2.4,1) node[alecolor] {$C_1$}
+%  (0.7,1.3) node[alecolor] {$C_2$};
+%\end{tikzpicture}
+%\end{center}
+%\vspace{-2pt}
+%\end{solutions}
+%\endgroup
+%\end{frame}
+%
+%
+%\begin{frame}{例题: 留数在定积分上的应用}
+%\begin{solutionc}
+%由于 $f(z)$ 处处解析, 因此
+%\[\int_0^Re^{ix^2}\diff x+\int_{C_1}f(z)\diff z+\int_{C_2}f(z)\diff z=\oint_Cf(z)\diff z=0.\]
+%\onslide<+->
+%由于 $C_1:z=R+yi,f(z)=\exp\bigl[i(R+yi)^2\bigr]$,
+%\onslide<+->
+%因此
+%\begin{align*}
+%\abs{\int_{C_1}f(z)\diff z}&\le\int_0^R \abs{\exp\bigl[i(R+yi)^2\bigr]}\diff y\\
+%&\visible<+->{=\int_0^R\exp(-2Ry)\diff y}\\
+%&\visible<+->{=\frac{1-e^{-2R^2}}{2R}\to0 \quad(R\to+\infty).}
+%\end{align*}
+%\end{solutionc}
+%\end{frame}
+%
+%
+%\begin{frame}{例题: 留数在定积分上的应用}
+%\begin{solutione}
+%由于 $C_2:z=\dfrac{1+i}{\sqrt 2}r,0\le r\le\sqrt2R,f(z)=\exp(-r^2)$,
+%\onslide<+->
+%因此
+%\[\int_{C_2}f(z)\diff z=-\frac{1+i}{\sqrt 2}\int_0^{\sqrt 2R}\exp(-r^2)\diff r.\]
+%\onslide<+->
+%令 $R\to+\infty$ 可得
+%\[I_1+iI_2=\frac{1+i}{\sqrt 2}\int_0^{+\infty}\exp(-r^2)\diff r=\frac{1+i}{\sqrt2}\cdot\frac{\sqrt\pi}2.\]
+%\onslide<+->
+%故
+%\[I_1=I_2=\frac{\sqrt{2\pi}}4.\qedhere\]
+%\end{solutione}
+%\end{frame}
+
 
 \begin{frame}{例题: 留数在定积分上的应用}
-\beqskip{5pt}
-\onslide<+->
-最后我们再来看两个例子.
-
-\begin{example}
-求菲涅尔积分
-\[I_1=\int_0^{+\infty}\cos x^2\diff x,\quad
-I_2=\int_0^{+\infty}\sin x^2\diff x.\]
-\end{example}
-\begin{solutions}
-设 $f(z)=\exp(iz^2)$, $C$ 为下图所示闭路.
-\onslide<+->
-\vspace{-2pt}
-\begin{center}
-\begin{tikzpicture}
-\draw[cstaxis] (0,0)--(2.8,0);
-\draw[cstaxis] (0,0)--(0,2);
-\draw[cstcurve,alecolor] (2,0)coordinate (A)--(0,0)coordinate (B)--(2,2)coordinate (C) pic [draw,notcolor,"$\frac\pi4$",angle eccentricity=1.5] {angle};
-\draw[cstcurve,alecolor] (2,0)--(2,2);
-\draw[cstcurve,alecolor,cstarrowto] (0,0)--(1.2,0);
-\draw[cstcurve,alecolor,cstarrowto] (2,0)--(2,1.2);
-\draw[cstcurve,alecolor,cstarrowto] (2,2)--(0.8,0.8);
-\draw
-  (-0.2,0.2) node {$O$}
-  (2.3,0.3) node {$R$}
-  (2.7,2) node {$R+Ri$}
-  (2.4,1) node[alecolor] {$C_1$}
-  (0.7,1.3) node[alecolor] {$C_2$};
-\end{tikzpicture}
-\end{center}
-\vspace{-2pt}
-\end{solutions}
-\endgroup
-\end{frame}
-
-
-\begin{frame}{例题: 留数在定积分上的应用}
-\begin{solutionc}
-由于 $f(z)$ 处处解析, 因此
-\[\int_0^Re^{ix^2}\diff x+\int_{C_1}f(z)\diff z+\int_{C_2}f(z)\diff z=\oint_Cf(z)\diff z=0.\]
-\onslide<+->
-由于 $C_1:z=R+yi,f(z)=\exp\bigl[i(R+yi)^2\bigr]$,
-\onslide<+->
-因此
-\begin{align*}
-\abs{\int_{C_1}f(z)\diff z}&\le\int_0^R \abs{\exp\bigl[i(R+yi)^2\bigr]}\diff y\\
-&\visible<+->{=\int_0^R\exp(-2Ry)\diff y}\\
-&\visible<+->{=\frac{1-e^{-2R^2}}{2R}\to0 \quad(R\to+\infty).}
-\end{align*}
-\end{solutionc}
-\end{frame}
-
-
-\begin{frame}{例题: 留数在定积分上的应用}
-\begin{solutione}
-由于 $C_2:z=\dfrac{1+i}{\sqrt 2}r,0\le r\le\sqrt2R,f(z)=\exp(-r^2)$,
-\onslide<+->
-因此
-\[\int_{C_2}f(z)\diff z=-\frac{1+i}{\sqrt 2}\int_0^{\sqrt 2R}\exp(-r^2)\diff r.\]
-\onslide<+->
-令 $R\to+\infty$ 可得
-\[I_1+iI_2=\frac{1+i}{\sqrt 2}\int_0^{+\infty}\exp(-r^2)\diff r=\frac{1+i}{\sqrt2}\cdot\frac{\sqrt\pi}2.\]
-\onslide<+->
-故
-\[I_1=I_2=\frac{\sqrt{2\pi}}4.\qedhere\]
-\end{solutione}
-\end{frame}
-
-
-\begin{frame}{例题: 留数在定积分上的应用}
+最后我们再来看一个例子.
 \beqskip{2pt}
 \begin{example}
-求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{1+x}\diff x,-1<p<0$.
+求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x,0<p<1$.
 \end{example}
 \begin{solutions}
 \indent
-如果直接考虑复变函数 $\dfrac{z^p}{1+z}$, 则我们对其单值化且需要考虑其在负实轴的沿岸性质,
+\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\eqtxt{令 $x=e^t$}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 \onslide<+->
-因此我们先做如下变换:
-\[I=\int_0^{+\infty}\frac{x^p}{1+x}\diff x=\int_{-\infty}^{+\infty}\frac{e^{(p+1)t}}{1+e^t}\diff t.\]
-\onslide<+->
-考虑 $f(z)=\dfrac{e^{(p+1)z}}{1+e^z}$ 在如下闭路 $C$ 上的积分.
+考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 \vspace{-\baselineskip}
 \begin{center}
 \begin{tikzpicture}
@@ -267,7 +263,6 @@ I_2=\int_0^{+\infty}\sin x^2\diff x.\]
 
 
 \begin{frame}{例题: 留数在定积分上的应用}
-\beqskip{5pt}
 \begin{solutionc}
 \indent
 由于 $l:z=t+2\pi i,-R\le t\le R$,
@@ -277,25 +272,7 @@ I_2=\int_0^{+\infty}\sin x^2\diff x.\]
 =\int_R^{-R}\frac{e^{2p\pi i}\cdot e^{pt}}{e^t+1}\diff t
 =-e^{2p\pi i}\int_{-R}^Rf(t)\diff t.\]
 
-\indent
-由于
-\[\Res[f(z),\pi i]
-=\lim_{z\to\pi i}\frac{e^{pz}(z-\pi i)}{e^z+1}=-e^{p\pi i},\]
 \onslide<+->
-因此
-\[\oint_Cf(z)\diff z=2\pi i\Res[f(z),\pi i]
-=-2\pi ie^{p\pi i},\]
-\onslide<+->
-所以
-\[(1-e^{2p\pi i})\int_{-R}^Rf(t)\diff t=-2\pi ie^{p\pi i}-\left(\int_{C_1}+\int_{C_2}\right)f(z)\diff z.\]
-\end{solutionc}
-\endgroup
-\end{frame}
-
-
-\begin{frame}{例题: 留数在定积分上的应用}
-\begin{solutione}
-\indent
 由于 $C_1:z=R+it,0\le t\le 2\pi$,
 \onslide<+->
 因此
@@ -303,11 +280,31 @@ I_2=\int_0^{+\infty}\sin x^2\diff x.\]
 \onslide<+->
 同理
 \[\abs{\int_{C_2}f(z)\diff z}\le \frac{e^{-(p+1)R}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
+\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例题: 留数在定积分上的应用}
+\begin{solutionc}
+\indent
+由于
+\[\Res[f(z),\pi i]
+=\frac{e^{pz}}{(e^z+1)'}\bigg|_{z=\pi i}=-e^{p\pi i},\]
 \onslide<+->
-故
-\[(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\]
+因此
+\begin{align*}
+&\left(\int_{-R}^R+\int_l+\int_{C_1}+\int_{C_2}\right)f(z)\diff z\\
+=&\oint_Cf(z)\diff z=2\pi i\Res[f(z),\pi i]=-2\pi ie^{p\pi i},
+\end{align*}
 \onslide<+->
-\[I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.\qedhere\]
-\end{solutione}
+令 $R\to+\infty$,
+\onslide<+->
+则
+\begin{flalign*}
+&&&(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
+\visible<+->{I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.}&\visible<.->{\mqed}
+\end{flalign*}
+\vspace{-\baselineskip}
+\end{solutionc}
 \end{frame}
 

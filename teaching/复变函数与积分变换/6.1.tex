@@ -119,42 +119,38 @@ f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\beqskip{0pt}
-\vspace{-2pt}
+\begin{frame}{例题: 求傅里叶变换}
 \begin{example}
-求 $f(t)=
+求函数 $f(t)=
 	\begin{cases}
 		1, & |t|\le 1,\\
 		0, & |t|>1
 	\end{cases}$
-的傅里叶变换和积分表达式.
+的傅里叶变换.
 \end{example}
-\vspace{-2pt}
+
 \begin{solutions}
 \vspace{-\baselineskip}
-\begin{align*}
-F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-&\visible<+->{=\int_{-1}^1(\cos{\omega t}+j\sin{\omega t})\diff t}\visible<+->{=\frac{2\sin \omega}{\omega},}
-\end{align*}
-\begin{align*}
-\visible<+->{f(t)}&\visible<.->{=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega}\\
-&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{2\sin\omega}{\omega}(\cos{\omega t}+j\sin{\omega t})\diff \omega}\\
-&\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos{\omega t}}{\omega}\diff \omega\quad(t\neq \pm1).}
-\end{align*}
+\begin{flalign*}
+&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
+&&&\visible<+->{=\int_{-1}^1(\cos{\omega t}-j\sin{\omega t})\diff t}\visible<+->{=\frac{2\sin \omega}{\omega}.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
-\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\begin{solutione}
-当 $t=\pm1$ 时, $f(t)$ 应替换为 $\dfrac{f(t+)+f(t-)}2=\dfrac12$.
+\begin{frame}{例题: 求傅里叶变换}
 \onslide<+->
-由于 $f(t)$ 是偶函数, 因此该积分表达式也可以从余弦变换得到.
-\end{solutione}
+由傅里叶积分公式
+\begin{align*}
+f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
+&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{2\sin\omega}{\omega}(\cos{\omega t}+j\sin{\omega t})\diff \omega}\\
+&\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos{\omega t}}{\omega}\diff \omega.}
+\end{align*}
 \onslide<+->
-从该傅里叶积分可以得到反常积分
+当 $t=\pm1$ 时, 左侧应替换为 $\frac12[f(t+)+f(t-)]=\frac12$.
+\onslide<+->
+由此可得
 \[\int_0^{+\infty}\frac{\sin \omega\cos{\omega t}}\omega\diff\omega=\begin{cases}
 \pi/2,&|t|<1,\\
 \pi/4,&|t|=1,\\
@@ -162,58 +158,40 @@ F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
 \end{cases}\]
 \onslide<+->
 特别地, 可以得到狄利克雷积分
-\[\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2.\]
+$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\beqskip{5pt}
+\begin{frame}{例题: 求傅里叶变换}
 \begin{example}
-求 $f(t)=
+求函数 $f(t)=
 	\begin{cases}
-		1,&0<t\le 1,\\
-		0,&t>1	
-	\end{cases}$ 的傅里叶积分公式.
+		1,&t\in(0,1),\\
+		-1,&t\in(-1,0),\\
+		0,&\text{其它情形}
+	\end{cases}$ 的傅里叶变换.
 \end{example}
-\begin{analysis}
-只定义在 $(0,+\infty)$ 上的函数需要先将其延拓.
-\end{analysis}
 \begin{solutions}
-将 $f(t)$ 延拓为一个奇函数,
-\onslide<+->
-则
-\begin{align*}
-F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-&\visible<+->{=\left(\int_0^1-\int_{-1}^0\right)(\cos{\omega t}+j\sin{\omega t})\diff t}\visible<+->{=-\frac{2j(1-\cos\omega)}\omega,}
-\end{align*}
+\vspace{-\baselineskip}
+\begin{flalign*}
+&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
+&&&\visible<+->{=\left(\int_0^1-\int_{-1}^0\right)(\cos{\omega t}-j\sin{\omega t})\diff t}&\\
+&&&\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
-\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\begin{solutione}
-\vspace{-\baselineskip}
+\begin{frame}{例题: 求傅里叶变换}
+\onslide<+->
+由傅里叶积分公式
 \begin{align*}
 f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
 &\visible<+->{=-\frac j\pi\int_{-\infty}^{+\infty}\frac{1-\cos\omega}\omega(\cos{\omega t}+j\sin{\omega t})\diff\omega}\\
 &\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{(1-\cos\omega)\sin{\omega t}}\omega\diff\omega\quad(t\neq\pm1),}
 \end{align*}
 \onslide<+->
-即
-\[\frac2\pi\int_0^{+\infty}\frac{(1-\cos\omega)\sin{\omega t}}\omega\diff\omega=
-	\begin{cases}
-		f(t),&0<t\neq1,\\
-		1/2,&t=1.	
-	\end{cases}\]
-\onslide<+->
-若将 $f(t)$ 延拓为一个偶函数, 则和前一个例子相同.
-\end{solutione}
-\end{frame}
-
-
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-从该傅里叶积分可以得到反常积分
+由此可得
 \[\int_0^{+\infty}\frac{(1-\cos\omega)\sin{\omega t}}\omega\diff\omega=
 	\begin{cases}
 		\pi/2,&0<t<1,\\
@@ -223,74 +201,70 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
+\begin{frame}{例题: 求傅里叶变换}
 \begin{example}
 求\markdef{指数衰减函数} $f(t)=
 	\begin{cases}
 		0,&t<0,\\
 		e^{-\beta t},&t\ge 0
-	\end{cases}$ 的傅里叶变换和积分表达式, $\beta>0$.
+	\end{cases}$ 的傅里叶变换, $\beta>0$.
 \end{example}
 \begin{solutions}
 \vspace{-\baselineskip}
-\begin{align*}
-F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
-\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}\\
-&\visible<+->{=\frac1{\beta+j\omega}=\frac{\beta-j\omega}{\beta^2+\omega^2},}
-\end{align*}
+\begin{flalign*}
+&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+&&&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
+\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}&\\
+&&&\visible<+->{\markatt{=\frac1{\beta+j\omega}}.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\beqskip{0pt}
-\begin{solutionc}
-\vspace{-3pt}
-\begin{align*}
-f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
-&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\beta-j\omega}{\beta^2+\omega^2}e^{j\omega t}\diff\omega}\\
-&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\beta\cos{\omega t}+\omega\sin{\omega t}}{\beta^2+\omega^2}\diff\omega}\\
-&\visible<+->{=\frac1\pi\int_0^{+\infty}\frac{\beta\cos{\omega t}+\omega\sin{\omega t}}{\beta^2+\omega^2}\diff\omega.\mqed}
-\end{align*}
-\end{solutionc}
+\begin{frame}{例题: 求傅里叶变换}
 \onslide<+->
-从该傅里叶积分可以得到反常积分
+由傅里叶积分公式
+\begin{align*}
+f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega
+\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{e^{j\omega t}}{\beta+j\omega}\diff\omega}\\
+&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\beta\cos{\omega t}+\omega\sin{\omega t}}{\beta^2+\omega^2}\diff\omega}\\
+&\visible<+->{=\frac1\pi\int_0^{+\infty}\frac{\beta\cos{\omega t}+\omega\sin{\omega t}}{\beta^2+\omega^2}\diff\omega.}
+\end{align*}
+\onslide<+->
+由此可得
 \[\int_0^{+\infty}\frac{\beta\cos{\omega t}+\omega\sin{\omega t}}{\beta^2+\omega^2}\diff\omega=
 	\begin{cases}
 		0,&t<0,\\
 		\pi/2,&t=0,\\
 		\pi e^{-\beta t},&t>0.
 	\end{cases}\]
-\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
+\begin{frame}{例题: 求傅里叶变换}
 \begin{example}
-求\markdef{钟形脉冲函数} $f(t)=Ae^{-\beta t^2}$ 的傅里叶变换和积分表达式, $A,\beta>0$.
+求\markdef{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
 \end{example}
 \begin{solutions}
 \vspace{-\baselineskip}
-\begin{align*}
-F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-&\visible<+->{=\int_{-\infty}^{+\infty}Ae^{-\beta t^2}e^{-j\omega t}\diff t}\\
-&\visible<+->{=Ae^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
-\visible<+->{=\sqrt{\frac\pi\beta}Ae^{-\frac{\omega^2}{4\beta}},}
-\end{align*}
+\begin{flalign*}
+&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
+&&&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}&\\
+&&&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
+\visible<+->{\markatt{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换和积分表达式}
-\begin{solutionc}
-\vspace{-\baselineskip}
+\begin{frame}{例题: 求傅里叶变换}
+\onslide<+->
+由傅里叶积分公式
 \begin{align*}
 f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
-&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\sqrt{\frac\pi\beta}Ae^{-\frac{\omega^2}{4\beta}}e^{j\omega t}\diff\omega}\\
-&\visible<+->{=\frac  A{\sqrt{\pi\beta}}\int_0^{+\infty}e^{-\frac{\omega^2}{4\beta}}\cos{\omega t}\diff\omega.\mqed}
+&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}e^{j\omega t}\diff\omega}\\
+&\visible<+->{=\frac1{\sqrt{\pi\beta}}\int_0^{+\infty}e^{-\frac{\omega^2}{4\beta}}\cos{\omega t}\diff\omega.}
 \end{align*}
-\end{solutionc}
 \onslide<+->
 从该傅里叶积分可以得到反常积分
 \[\int_0^{+\infty}e^{-\frac{\omega^2}{4\beta}}\cos{\omega t}\diff\omega=\sqrt{\pi\beta}e^{-\beta t^2}.\]
@@ -306,32 +280,28 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 为此我们需要引入广义函数的概念.
 
 \onslide<+->
-所有满足傅里叶积分定理的函数形成一个线性空间 $\msc$. 
+设 $\msc$ 是一些函数形成的线性空间, 例如全体绝对可积函数, 或者全体光滑函数之类的. 
 \onslide<+->
 从一个函数 $\lambda(t)$ 出发, 可以定义一个线性映射 $\msc\to \BR$:
 \[\pair{\lambda,f}:=\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
 \onslide<+->
-\markdef{广义函数}是指一个线性映射 $\msc\to \BR$.
-\onslide<+->
-我们通常也将其表为上述积分形式.
-\onslide<+->
-由此可知广义函数确实是普通函数的一种推广.
+这个线性映射基本上确定了 $\lambda(t)$ 本身(至多可数个点处不同).
 
 \onslide<+->
-从这个积分可以形式上推导出广义函数应当满足的性质:
-\[\pair{\lambda(at),f(t)}=\dfrac1{|a|}\pair{\lambda(t),f\left(\frac ta\right)},\quad
-\pair{\lambda',f}=-\pair{\lambda,f'}.\]
+\markdef{广义函数}是指一个线性映射 $\msc\to \BR$.
+\onslide<+->
+为了和普通函数类比, 通常也将广义函数表为上述积分形式:
+\[\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
+这里的 $\lambda(t)$ 并不表示一个函数.
 \end{frame}
 
 
 \begin{frame}{Dirac $\delta$ 函数}
 \onslide<+->
-\markdef{$\delta$ 函数}定义为
+\markdef{$\delta$ 函数}定义为线性映射
 \[\pair{\delta,f}=\int_{-\infty}^{+\infty}\delta(t)f(t)\diff t=f(0).\]
-\onslide<+->
-通常用长度为 $1$ 的有向线段来表示它.
-
-\begin{tikzpicture}[overlay]
+\onslide<6->
+\begin{tikzpicture}[overlay,xshift=2cm]
 \draw[cstaxis](8,-1)--(10,-1);
 \draw[cstaxis](9,-1.5)--(9,2);
 \draw
@@ -341,22 +311,44 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 	(8.8,-1.2) node {$O$};
 \draw[alecolor,cstcurve,cstarrowto](9,-1)--(9,1);
 \end{tikzpicture}
-
 \onslide<+->
-它满足如下性质:
+设 $\delta_\varepsilon(t)=\begin{cases}
+1/\varepsilon,&0\le t\le \varepsilon,\\
+0,&\text{其它情形,}
+\end{cases}$
+\onslide<+->
+则对于连续函数 $f(t)$,
+\[\pair{\delta_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\diff t=f(\xi),\quad \xi\in(0,\varepsilon).\]
+\onslide<+->
+当 $\varepsilon\to0$ 时, 右侧就趋于 $f(0)$.
+\onslide<+->
+因此 $\delta$ 可以看成 $\delta_\varepsilon$ 的某种极限.
+\onslide<+->
+基于此, 我们通常用长度为 $1$ 的有向线段来表示它, 有时候也记做
+\[\delta(t)=\begin{cases}
+\infty,&t=0,\\
+0,&t=0.
+\end{cases}\]
+\end{frame}
+
+
+\begin{frame}{Dirac $\delta$ 函数的性质}
+对于广义函数 $\lambda$, 我们可以形式地定义 $\lambda(at),\lambda'$.
+\onslide<+->
 \begin{itemize}
-\item $\pair{\delta^{(n)},f}=(-1)^nf^{(n)}(0)$;
-\item $\delta(t)=\delta(-t)$ 是偶函数;
-\item $\delta(at)=\delta(t)/|a|$;
-\item $u'(t)=\delta(t)$, 其中 $u(t)=\begin{cases}1,&t>0,\\0,&t<0\end{cases}$ 是\markdef{单位阶跃函数}.
-\item $\msf[\delta]=1$, $\msf[\delta]=\dfrac1{2\pi}$.
+\item $\pair{\delta^{(n)},f}=(-1)^n\pair{\delta,f^{(n)}}=(-1)^nf^{(n)}(0)$, 其中 $f(t)$ 是光滑函数.
+\item $\delta(at)=\frac1{|a|}\delta(t)$, 特别地 $\delta(t)=\delta(-t)$.
+\item 设 $u(t)=\begin{cases}1,&t\ge0,\\0,&t<0\end{cases}$ 是\markdef{单位阶跃函数}(Heaviside 函数), 则
+\[\int_{-\infty}^x\delta(t)\diff t=\int_{-\infty}^{+\infty}\textbf{1}_{(-\infty,x]}\delta(t)\diff t=u(x).\]
+因此 $u'(t)=\delta(t)$.
+\item $\markatt{\msf[\delta(t)]}=\pair{\delta(t),e^{-j\omega t}}\markatt{=1}$, $\markatt{\msf^{-1}[\delta(\omega)]}=\dfrac1{2\pi}\pair{\delta(\omega),e^{j\omega t}}\markatt{=\dfrac1{2\pi}}$.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{例题: 求傅里叶变换}
 \begin{example}
-证明 $u(t)$ 的傅里叶变换是 $\dfrac1{j\omega}+\pi\delta(\omega)$.
+证明 \markatt{$\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega)$}.
 \end{example}
 \begin{proof}
 \[\msf^{-1}\left[\frac1{j\omega}\right]
@@ -368,6 +360,6 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 \onslide<+->
 故
 \[\msf^{-1} \left[\frac1{j\omega}+\pi\delta(\omega)\right]
-=\frac12\sgn(t)+\frac12=u(t).\qedhere\]
+=\frac12\sgn(t)+\frac12=u(t)\ (t\neq 0).\qedhere\]
 \end{proof}
 \end{frame}

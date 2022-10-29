@@ -1,0 +1,1261 @@
+
+
+\chapter{\texorpdfstring{$L$}{L} 函数}
+\begin{introduction}
+\item 狄利克雷 $L$ 函数 \ref{sec:Dirichlet L-function}
+\item 赫克 $L$ 函数 \ref{thm:Hecke_L_function_equation}
+\item 解析类数公式 \ref{cor:class number formula}
+\item 模形式 \ref{sec:modular forms}
+\item 椭圆曲线 \ref{sec:elliptic curves}
+\end{introduction}
+
+\begin{question}{}{}
+是否有分析手段来研究数域的代数行为?
+\end{question}
+
+数论中人们关心的很多对象, 例如类群、方程的解的结构等, 都与某些分析对象有关, 这些分析对象我们可以使用很多分析工具来处理, 因此构建算术和分析之间的联系是现代数论的主要研究目的.
+
+\section{黎曼 \texorpdfstring{$\zeta$}{ζ} 函数和狄利克雷 \texorpdfstring{$L$}{L} 函数}
+\label{sec:Dirichlet L-function}
+
+\subsection{狄利克雷特征}
+\begin{definition}{狄利克雷特征}{Dirichlet character}
+设 $N$ 是正整数, 模 $N$ 的\noun{狄利克雷特征}是指群同态
+  \[\chi:(\BZ/N\BZ)^\times\to S^1.\]
+其中 $S^1=\set{z\in\BC: |z|=1}$.
+我们可以扩充定义 $\chi:\BZ\to\BC$, 使得 $(n,N)>1$ 时 $\chi(n)=0$.
+\end{definition}
+
+\begin{definition}{导子和本原}{primitive Dirichlet character}
+对于 $N$ 的正因子 $d$, 一个模 $d$ 的狄利克雷特征 $\chi_1$ 诱导了模 $N$ 的狄利克雷特征 $(\BZ/N\BZ)^\times\to(\BZ/d\BZ)^\times\sto{\chi_1} S^1$. 对于狄利克雷特征 $\chi$, 这样的最小的 $d$ 我们称之为 $\chi$ 的\noun{导子} $f_\chi$. 记 $\chi^\prim=\chi_1$, 则 $f_{\chi^\prim}=f_\chi=d$.
+如果 $f_\chi=N, \chi^\prim=\chi$, 我们称之为\noun{本原}的; 否则称之为\noun{非本原}的.
+\end{definition}
+
+\begin{example}
+(1) 设 $\chi:(\BZ/8\BZ)^\times\to S^1$, $\chi(1)=\chi(5)=1,\chi(3)=\chi(7)=-1$, 则 $\chi(a+4)=\chi(a)$, 从而 $f_\chi=4$.
+
+(2) 设 $p$ 是奇素数. 勒让德符号 $\leg\cdot p$ 是导子为 $p$ 的狄利克雷特征.
+\end{example}
+\begin{exercise}
+设 $n$ 是正整数. 证明雅克比符号 $\leg\cdot n$ 是狄利克雷特征. 计算它的导子.
+\end{exercise}
+
+
+\begin{definition}{狄利克雷特征的 $L$ 函数}{L-function of dirichelt character}
+称
+  \[L(s,\chi)=\sum_{n=1}^\infty \chi(n)n^{-s}=\prod_p\bigl(1-\chi(p)p^{-s}\bigr)^{-1},\quad \Re(s)>1\]
+为 $\chi$ 的 \nouns{$L$ 函数}{L 函数@$L$ 函数}, 其中右侧的乘积被称为\noun{欧拉乘积}.
+特别地, $\chi=1$ 时,
+  \[\zeta(s):=L(s,1)=\sum_{n=1}^\infty n^{-s}=\prod_p(1-p^{-s})^{-1}\]
+被称为\noun{黎曼 $\zeta$ 函数}. 容易看出 $\chi$ 非本原时, $L(s,\chi)$ 和 $L(s,\chi^\prim)$ 仅相差有限个欧拉因子.
+\end{definition}
+
+我们将证明 $L(s,\chi)$ 可以解析延拓.
+
+\begin{exercise}
+设 $N=4$, $\chi(1+2k)=(-1)^k$, 证明 $L(1,\chi)=\frac{\pi}{4}.$
+\end{exercise}
+
+设 $\chi$ 是模 $N$ 的本原特征, $\zeta=\zeta_N=e^{2\pi i/N}$. 定义\noun{高斯和}
+\begin{equation}
+\tau(\chi)=\sum_{n\mod N}\chi(n)\zeta^n.
+\end{equation}
+
+\begin{lemma}{}{}
+$\suml_{n\mod N}\chi(n)\zeta^{nm}=\ov\chi(m)\tau(\chi).$
+\end{lemma}
+\begin{proof}
+如果 $(m,N)=1$,
+  \[\begin{split}
+    &\sum_{n\mod N}\chi(n)\zeta^{nm}=\ov\chi(m)\sum_{n\mod N}\chi(nm)\zeta^{nm}\\
+   =&\ov\chi(m)\sum_{n\mod N}\chi(n)\zeta^n=\ov\chi(m)\tau(\chi).
+  \end{split}\]
+一般地, 设 $d=(m,N), m=dm_1, N=dN_1$. 由本原性, 存在 $c\equiv1\mod N_1$ 使得 $\chi(c)\neq1$, 于是
+  \[\sum_{n\equiv r\mod N_1}\chi(n)=\sum_{n\equiv r\mod N_1}\chi(c n)=\chi(c)\sum_{n\equiv r\mod N_1}\chi(n)\]
+为 $0$, 
+  \[\begin{split}
+    &\sum_{n\mod N}\chi(n)\zeta^{nm}=\sum_{n\mod N}\chi(n)\zeta_{N_1}^{nm_1}\\
+   =&\sum_{r=0}^{N_1-1}\sum_{n\equiv r\mod N_1}\chi(n)\zeta_{N_1}^{nm_1}
+     =\sum_{r=0}^{N_1-1}\zeta_{N_1}^{rm_1}\sum_{n\equiv r\mod N_1}\chi(n)=0,
+  \end{split}\]
+命题得证.
+\end{proof}
+
+\begin{lemma}{}{}
+$|\tau(\chi)|=\sqrt{N}.$ 特别地, $\tau(\chi)\neq0$.
+\end{lemma}
+\begin{proof}
+注意到
+  \[\left|\sum_{n\mod N}\chi(n)\zeta^{nm}\right|^2=\sum_{n_1,n_2\mod N\atop(n_1n_2,N)=1}\chi(n_1-n_2)\zeta^{(n_1-n_2)m}.\]
+对 $m\mod N$ 求和, 我们得到
+  \[\varphi(N)|\tau(\chi)|=\sum_{m\mod N}\sum_{n_1,n_2\mod N\atop (n_1n_2,N)=1}\chi(n_1-n_2)\zeta^{(n_1-n_2)m}=\varphi(N)N,\]
+因此 $|\tau(\chi)|=\sqrt N$.
+\end{proof}
+
+\begin{exercise}
+证明 $\tau(\chi)\tau(\ov\chi)=\chi(-1)N$.
+\end{exercise}
+
+\begin{example}
+设 $\chi(n)=\leg{n}{p}$, 则 $\tau(\chi)=\sqrt{(-1)^{(p-1)/2}p}$, 见\cite[Chapter IV, \S 3]{Lang1994}.
+\end{example}
+
+
+现在我们有
+  \[\chi(n)=\frac1{\tau(\ov{\chi})}\sum_{m\mod N}\ov\chi(m)\zeta^{nm}
+=\frac{\chi(-1)\tau(\chi)}N\sum_{m\mod N}\ov\chi(m)\zeta^{nm}.\]
+于是我们可以将 $\chi$ 延拓至整个 $\BR$ 上.
+
+
+\subsection{解析延拓和函数方程}
+设 $f$ 是 $\BR$ 上足够好函数\footnote{只有有限多间断点的分段连续函数, 全变分有界, 在间断点的值为左右极限的平均值, 且存在 $c_1>0,c_2>1$, $|f(x)|<c_1\min (1,x^{-c_2})$.}.
+定义
+  \[\wh f(x)=\int_{-\infty}^\infty f(y)e^{2\pi ixy}\diff y\]
+为其\noun{傅里叶变换}, 则 $\wh f$ 的傅里叶变换为 $f(-x)$. 
+
+\begin{proposition}{泊松求和公式}{}
+  \[\sum_{n\in\BZ} f(n)=\sum_{n\in\BZ} \wh f(n).\]
+\end{proposition}
+\begin{proof}
+考虑 $F(x)=\suml_{n\in\BZ} f(x+n)$ 的傅里叶展开
+  \[F(x)=\sum_{n\in\BZ} a_n e^{2\pi i nx},\quad a_n=\int_0^1 F(x)e^{-2\pi i nx}\diff x,\]
+则
+  \[\sum_{n\in\BZ} f(n)=F(0)=\sum_{n\in\BZ}a_n=\sum_{n\in\BZ}\wh f(n).\]
+\end{proof}
+
+\begin{proposition}{}{twisted_poisson}
+设 $\chi$ 是本原模 $N$ 特征,
+  \[\sum_{n\in\BZ}\chi(n)f(n)=\frac{\chi(-1)\tau(\chi)}{N}\sum_{n\in\BZ}\ov\chi(n)\hat f\left(\frac{n}{N}\right).\]
+\end{proposition}
+\begin{proof}
+设
+  \[f_1(x)=\chi(x)f(x)=\frac{\chi(-1)\tau(\chi)}{N}\sum_{m\mod N}\ov\chi(m)\zeta^{mx}f(x),\]
+则
+  \[\wh f_1(x)=\frac{\chi(-1)\tau(\chi)}{N}\sum_{m\mod N}\ov\chi(m)\hat f\left(\frac{Nx+m}{N}\right).\]
+因此
+  \[\begin{split}
+    \sum_{n\in\BZ} \chi(n)f(n)
+      &=\frac{\chi(-1)\tau(\chi)}{N}\sum_{m\mod N}\sum_{n\in\BZ}\ov\chi(m)\wh f\left(\frac{Nx+m}{N}\right)\\
+      &=\frac{\chi(-1)\tau(\chi)}{N}\sum_{n\in\BZ}\ov\chi(n)\wh f\left(\frac{n}{N}\right),
+  \end{split}\]
+命题得证.
+\end{proof}
+
+
+对于实部大于 $0$ 的复数 $t$, 令
+  \[f_{t,\varepsilon}=x^\varepsilon e^{-\pi tx^2},\quad \varepsilon=0,1.\]
+
+\begin{exercise}
+证明
+  \[\wh f_{t,\varepsilon}=i^\varepsilon t^{-\half-\varepsilon}f_{\frac{1}{t},\varepsilon}.\] 
+\end{exercise}
+
+设 $\chi$  是本原模 $N$ 特征, 且 $\chi(-1)=(-1)^\varepsilon$, 定义 \nouns{$\theta$ 函数}{theta 函数@$\theta$ 函数}
+  \[\theta_\chi(t)=\half\sum_{n\in\BZ} \chi(n)f_{t,\varepsilon}(n)=\frac{\chi(0)}{2}+
+\sum_{n=1}^\infty n^{\varepsilon}\chi(n)e^{-\pi n^2t}.\]
+
+\begin{exercise}
+对 $f_{t,\varepsilon}$ 应用命题~\ref{pro:twisted_poisson}, 证明
+  \[ \theta_\chi(t)=\frac{(-i)^\varepsilon\tau(\chi)}{N^{\varepsilon+1}t^{\varepsilon+\half}}\theta_{\ov\chi}\left(\frac{1}{N^2t}\right).\]
+\end{exercise}
+
+称
+  \[\Gamma(s)=\int_0^\infty e^{-y}y^s\frac{\diff y}{y}\]
+为 \nouns{$\Gamma$ 函数}{Gamma 函数@$\Gamma$ 函数}.
+
+\begin{exercise}
+(1) $\Gamma(s+1)=s\Gamma(s)$, 因此 $\Gamma(n+1)=n!,n\in\BN$.
+
+(2) $\Gamma(\half)=\sqrt{\pi}.$
+\end{exercise}
+
+\begin{proposition}{}{}
+$\Gamma$ 可以亚纯延拓至复平面, 处处非零, 仅在 $s=0,-1,-2,\dots$ 处有单极点, 留数为 $\frac{(-1)^s}{(-s)!}$.
+$\Gamma$ 满足函数方程 
+  \[\Gamma(s)\Gamma(1-s)=\frac{\pi}{\sin \pi s},\quad \Gamma(s)\Gamma(s+\half)=\frac{2\sqrt{\pi}}{2^{2s}}\Gamma(2s).\]
+\end{proposition}
+\begin{theorem}{}{}
+令
+  \[\Lambda(s,\chi)=\pi^{-\frac{s+\varepsilon}{2}}\Gamma\left(\frac{s+\varepsilon}{2}\right)L(s,\chi),\]
+则 $\Lambda(s,\chi)$ 可以亚纯延拓至整个复平面. 当 $\chi\neq 1$ 时, 它是全纯的; 当 $\chi=1$ 时, 它有单极点 $s=0,1$ 且留数为 $\mp1$. 我们有函数方程
+  \[\Lambda(s,\chi)=(-i)^\varepsilon\tau(\chi)N^{-s}\Lambda(1-s,\bar\chi).\]
+\end{theorem}
+\begin{proof}
+如果 $\chi\neq1$, $\chi(0)=0$.
+当 $\Re(s)>0$ 时,
+  \[\int_0^\infty e^{-\pi tn^2}t^{\frac{s+\varepsilon}{2}}\frac{dt}{t}
+    =\pi^{-\frac{s+\varepsilon}{2}}\Gamma\left(\frac{s+\varepsilon}{2}\right)n^{-s-\varepsilon},\]
+因此
+  \[\Lambda(s,\chi)=\int_{0}^\infty \theta_\chi(t)t^{\frac{s+\varepsilon}{2}}\frac{\diff t}{t}.\]
+当 $t\ra \infty$ 时 $\theta$ 函数是急减的. 根据 $\theta$ 函数的函数方程, 当 $t\ra 0$ 它也是急减的. 因此右侧积分在整个复平面收敛. 
+于是我们得到 $\Lambda(s,\chi)$ 的延拓. 利用 $\theta$ 函数的函数方程我们可以得到 $\Lambda(s,\chi)$ 的函数方程.
+
+如果 $\chi=1$, $\theta(t)=\half+\sum_{n=1}^\infty e^{-\pi n^2 t}$. 此时
+  \[ \wh\zeta(s)=\Lambda(s,1)=\pi^{-\frac{s}{2}}\Gamma\left(\frac{s}{2}\right)\zeta(s)
+    =\int_0^\infty \left(\theta(t)-\half\right)t^\frac{s}{2}\frac{\diff t}{t}.\]
+当 $\Re s>1$ 时,
+  \[\begin{split}
+    &\int_0^1\left(\theta(t)-\half\right)t^{\frac{s}{2}}\frac{\diff t}{t}
+      =\int_0^1 \theta(t) t^\frac{s}{2}\frac{\diff t}{t}-\frac{1}{s}\\
+   =&\int_1^\infty \theta\left(\frac{1}{t}\right) t^{-\frac{s}{2}}\frac{\diff t}{t}-\frac{1}{s}
+      =\int_1^\infty \theta(t) t^{\frac{1-s}{2}}\frac{\diff t}{t}-\frac{1}{s}\\
+   =&\int_1^\infty\left(\theta(t)-\half\right)t^{\frac{1-s}{2}}\frac{\diff t}{t}-\left(\frac{1}{1-s}+\frac{1}{s}\right),
+  \end{split}\]
+因此
+  \[\wh\zeta(s)=\int_1^\infty\left(\theta(t)-\half\right)(t^\frac{s}{2}+t^\frac{1-s}{2})\frac{\diff t}{t}
+    -\left(\frac{1}{s}+\frac{1}{1-s}\right).\]
+当 $t\ra \infty$ 时, $\theta(t)-\half$ 是急减的, 因此该积分在 $s\neq 0,1$ 处收敛, 故 $\Lambda(s)$ 可以全纯延拓至 $\BC-\set{0,1}$. 显然 $\Lambda(s)=\Lambda(1-s)$ 且 $\Lambda(s)$ 在 $s=0,1$ 处有单极点, 留数为 $1$.
+\end{proof}
+
+\begin{exercise}
+如果 $\chi$ 是实特征, 即 $\chi:(\BZ/m\BZ)^\times\to\set{\pm 1}$, 则 $\tau(\chi)= i^\varepsilon \sqrt{N}$.
+\end{exercise}
+
+\begin{corollary}{}{}
+$\zeta(s)$ 可以解析延拓至 $\BC-\set1$, 且在 $s=1$ 处有单极点, 留数为 $1$. $\zeta(s)$ 满足函数方程
+  \[\zeta(1-s)=2(2\pi)^{-s}\Gamma(s)\cos\left(\frac{\pi s}{2}\right)\zeta(s).\]
+\end{corollary}
+
+\begin{exercise}
+证明上述推论.
+\end{exercise}
+
+
+\subsection{特殊值}
+我们称泰勒展开
+  \[F(t)=\frac{te^t}{e^t-1}=\sum_{k=0}^\infty B_k\frac{t^k}{k!}=1+\half t+\frac{1}{6}\frac{t^2}{2}-\frac{1}{30}\frac{t^4}{4!}
+    +\frac{1}{42}\frac{t^6}{6!}+\dots\]
+中的 $B_k$ 称为\noun{伯努利数}.
+由于 $F(-t)=F(t)-t$, 因此 $B_{2k+1}=0,k\ge 1$.
+
+\begin{proposition}{}{}
+对于正整数 $k$,
+  \[\zeta(1-k)=-\frac{B_k}{k}.\]
+因此对于正整数 $k$,
+  \[\zeta(2k)=(-1)^{k+1}\frac{(2\pi)^{2k}}{2(2k)!}B_{2k}.\]
+\end{proposition}
+
+对于狄利克雷特征 $\chi\neq 1$, 考虑
+  \[F_\chi(t)=\sum_{a=1}^N \chi(a)\frac{te^{at}}{e^{Nt}-1}=\sum_{k=0}^\infty B_{k,\chi}\frac{t^k}{k!}.\]
+我们有 $F_\chi(-t)=\chi(-1)F_\chi(t)$, 因此 $B_{2k+\varepsilon,\chi}=0,k\ge 0$.
+\begin{proposition}{}{}
+对于正整数 $k$,
+  \[L(1-k,\chi)=-\frac{B_{k,\chi}}{k}.\]
+因此对于正整数 $k\equiv \varepsilon\mod2$,
+  \[L(k,\chi)=(-1)^{1+(k-\varepsilon)/2}\tau(\chi)\frac{(2\pi/N)^k}{2i^\varepsilon k!}B_{k,\ov\chi}.\]
+\end{proposition}
+
+我们知道 $\zeta$ 函数在负偶数处为零, 这样的零点被称为 $\zeta$ 函数的平凡零点, 其它的被称为非平凡零点.
+$\zeta$ 函数的非平凡零点和素数分布有关. 设 $\pi(x)$ 为不超过 $x$ 的素数个数, 则通过证明 $\zeta$ 的非平凡零点位于 $0<\Re(s)<1$, 可以得到
+  \[\pi(x)\sim\int_0^x\frac{\diff t}{\ln t}\sim \frac{x}{\ln x},\]
+而更精确的零点信息可以得到余项信息. 著名的黎曼猜想
+  \[\text{$\zeta$ 的非平凡零点位于 $\Re(s)=\half$}\]
+等价于
+  \[\pi(x)=\int_0^x\frac{\diff t}{\ln t}+O(x^{1/2}\ln x).\]
+对于 $L$ 函数, 人们也猜测它的非平凡零点位于函数方程的对称轴上(广义黎曼猜想). 对于狄利克雷 $L$ 函数, 对称轴为 $\Re(s)=\half$.
+
+
+\begin{theorem}{}{l_chi_one}
+设 $\chi$ 是导子 $N>3$ 的狄利克雷特征, 则 $\chi$ 是偶特征时,
+  \[L(1,\chi)=-\frac{\tau(\chi)}{N}\sum_{a=1}^{N-1}\ov \chi(a)\log|1-\zeta^a|=-\frac{\tau(\chi)}{N}\sum_{a=1}^{N-1}\ov\chi(a)\log\left(\sin \frac{\pi a}{N}\right);\]
+$\chi$ 是奇特征时,
+  \[L(1,\chi)=\frac{\tau(\chi)\pi i}{N^2}\sum_{a=1}^{N-1}\ov\chi(a)a.\]
+\end{theorem}
+\begin{proof}
+对于 $a\in(\BZ/N\BZ)^\times$, 考虑 
+  \[\sum_{n=1}^{+\infty} \zeta^{an}n^{-s},\quad\Re(s)>1.\]
+通过收敛性估计, 我们可以得知 $s\to 1^+$ 时它的极限为
+  \[\sum_{n=1}^{+\infty}\zeta^{an}n^{-1}=-\log(1-\zeta^a).\]
+这里我们选择将正实数映为正实数的 $\log$ 的一个分支. 于是
+  \[\sum_{a=1}^{N-1}\ov\chi(a)\sum_{n=1}^{+\infty}\zeta^{an}n^{-s}=\tau(\ov\chi)\sum_{n=1}^\infty\chi(n)n^{-s},\]
+因此
+  \[L(1,\chi)=-\frac{\chi(-1)\tau(\chi)}{N}\sum_{a=1}^{N-1}\ov\chi(a)\log(1-\zeta^a).\]
+注意到
+  \[\log(1-\zeta^a)=\log|1-\zeta^a|+\pi i(\frac{a}{N}-\half).\]
+当 $\chi$ 是奇特征时, $|1-\zeta^a|=|1-\zeta^{-a}|$, 于是
+  \[\begin{split}
+    \sum_{a=1}^{N-1}\ov\chi(a)\log(1-\zeta^a)
+      &=\sum_{a=1}^{N-1}\ov\chi(-a)\log(1-\zeta^a)\\
+      &=-\sum_{a=1}^{N-1}\ov\chi(a)\log(1-\zeta^a)=0.
+  \end{split}\]
+因此
+  \[L(1,\chi)=\frac{\tau(\chi)}N\sum_{a=1}^{N-1}\ov\chi(a)\pi i \left(\frac aN-\half\right)
+    =\frac{\tau(\chi)\pi i}{N^2}\sum_{a=1}^{N-1}\ov\chi(a)a.\]
+
+当 $\chi$ 是偶特征时,
+  \[\begin{split}
+  \sum_{a=1}^{N-1}\ov\chi(a)\left(\frac aN-\frac12\right)
+    &=\sum_{a=1}^{N-1}\ov\chi(a)\left(\frac{-a}N-\frac12\right)\\
+    &=-\half\sum_{a=1}^{N-1}\ov\chi(a)=0.
+  \end{split}\]
+因此
+  \[L(1,\chi)=-\frac{\tau(\chi)}N\sum_{a=1}^{N-1}\ov\chi(a)\log(1-\zeta^a)
+    =-\frac{\tau(\chi)}N\sum_{a=1}^{N-1}\ov\chi(a)\log\left(\sin\frac{\pi a}f\right).\]
+命题得证.
+\end{proof}
+
+
+\section{戴德金 \texorpdfstring{$\zeta$}{ζ} 函数与赫克 \texorpdfstring{$L$}{L} 函数}
+
+
+现在我们来考虑一般数域 $K$. 
+定义\noun{戴德金 $\zeta$ 函数}
+  \[\zeta_K(s)=\sum_\fa \bfN\fa^{-s},\]
+其中 $\fa$ 取遍 $\CO_K$ 的所有非零理想.
+容易证明 $\zeta_K(s)$ 在 $\Re(s)>1$ 收敛且有欧拉乘积
+  \[\zeta_K(s)=\prod_\fp(1-\bfN\fp^{-s})^{-1}.\]
+
+\begin{definition}{赫克特征}{}
+称连续同态 $\chi:C_K\to \BC^\times$ 为\noun{拟赫克特征}. 如果它的像落在 $S^1$ 中, 则称之为(酉)\noun{赫克特征}.
+\end{definition}
+
+狄利克雷 $L$ 函数在一般数域上的推广为赫克 $L$ 函数. 设 $\chi$ 为赫克特征, 定义
+  \[L(s,\chi)=\prod_{v\nmid\infty}(1-\chi(v)\bfN\fp^{-s})^{-1}\]
+为其\noun{赫克 $L$ 函数}, 其中在映射 $K_v^\times\to C_K\to S^1$ 下 $\chi(\CO_v^\times)=1$ 时, $\chi(v):=\chi(\pi_v)$; 否则定义为 $0$. 通过乘以适当的 $\Gamma$ 函数和判别式、导子等, 我们可以定义完备的赫克 $L$ 函数 $\Lambda(s,\chi)$.
+
+我们将使用泰特的方法来得到它们的函数方程.
+
+
+\subsection{泰特的方法}
+
+设 $k$ 是一局部域, 即 $\BR,\BC$ 或 $\BQ_p$ 的有限扩张.
+\begin{definition}{施瓦兹函数}{}
+$k=\BR$ 或 $\BC$ 上的\noun{施瓦兹函数}是指急减光滑函数; $k/\BQ_p$ 上的\noun{施瓦兹函数}是紧支撑的局部常值函数. 记 $\CS(k,\BC)$ 为 $k$ 上复值施瓦兹函数全体.
+\end{definition}
+
+我们选取 $k$ 上的哈尔测度
+\begin{itemize}
+\item $k/\BQ_p$ 时, $dx$ 满足
+	\[\int_{\CO_k}\diff x=\Delta_{k/\BQ_p}^{-1/2};\]
+\item $k=\BR$ 时为通常的勒贝格测度;
+\item $k=\BC$ 时为通常的勒贝格测度的 $2$ 倍.
+\end{itemize}
+于是
+	\[\diffx x=\begin{cases}
+	\frac{\diff x}{|x|},&k=\BR\text{ 或 }\BC\\
+	\frac{1}{1-\bfN\fp^{-1}}\cdot\frac{\diff x}{|x|},&k/\BQ_p
+	\end{cases}\]
+是 $k^\times$ 上的哈尔测度. 注意 $k=\BC$ 时 $|x|=x\bar x$.
+
+\begin{definition}{}{}
+连续的群同态 $\chi:k^\times\to\BC^\times$ 被称为\noun{拟特征}. 如果它的像落在 $S^1$ 中, 则称之为(酉)\noun{特征}.
+\end{definition}
+
+\begin{exercise}
+拟特征一定可以表为 $\chi=\chi_0|\cdot|^s$, 其中 $\chi_0$ 是酉特征, $s\in\BC$. 我们记 $\Re(\chi)=\Re(s)$.
+\end{exercise}
+
+对于 $f\in\CS(k,\BC)$ 和拟特征 $\chi=\chi_0|\cdot|^s$, 定义\noun{局部 $\zeta$ 函数}
+	\[\zeta(f,\chi):=\int_{k^\times}f(x)\chi(x)\diffx x.\]
+	
+\begin{exercise}
+证明 $\zeta(f,\chi)$ 在 $\Re(\chi)>0$ 处绝对收敛.
+\end{exercise}
+%
+%\begin{proposition}{test_function}{}
+%考虑施瓦兹函数
+%  \[f(x)=\begin{cases}
+%	{\bf 1}_{\CO_k}(x),\quad& k/\BQ_p;\\
+%	\exp(-\pi x^2),& k=\BR;\\
+%	\exp(-\pi x\bar x),& k=\BC.
+%	\end{cases}\]
+%对于 $\Re(s)>0$, 我们有
+%  \[\zeta(f,|\cdot|^s)=\begin{cases}
+%\Delta_{k/\BQ_p}^{-1/2}\left(1-\bfN \fp^{-s}\right)^{-1},\quad & k/\BQ_p;\\
+%\pi^{-\frac s2}\Gamma\left(\frac s2\right),& k=\BR;\\
+%2\pi^{1-s}\Gamma(s),& k=\BC.
+%	\end{cases}\]
+%\end{proposition}
+%\begin{proof}
+%当 $k/\BQ_p$ 时, 令 $C_m=\pi^m \CO_k^\times$, 则 $C_m$ 是紧的且 $\mu(C_m)=\mu(\CO_k^\times)$. 因此
+%  \[\zeta(f,|\cdot|^s)
+%=\sum_{m=0}^\infty \bfN \fp^{-ms}\int_{\CO_k^\times}\diffx x
+%=\frac{\int_{\CO_k^\times}\diffx x}{1-\bfN\fp^{-s}}.\]
+%令 $s=1$, 则该积分为 $\int_{\CO_k}\diff x$, 从而可知该积分如题所述.
+%
+%当 $v$ 为实素位时,
+%  \[\zeta(f,|\cdot|^s)
+%=2\int_0^\infty e^{-\pi x^2}x^s\frac{\diff x}{x}
+%=\int_0^\infty e^{-y}\left(\frac{y}{\pi}\right)^s\frac{\diff y}{y}
+%=\pi^{-\frac s2}\Gamma\left(\frac s2\right).\]
+%
+%当 $v$ 为复素位时, 设 $x=r\exp(i\theta)$, 则 $\diffx x=2\diff r\diff \theta/r$.
+%  \[\zeta(f,|\cdot|^s)
+%=\int_0^{2\pi}\!\!\!\!\int_0^\infty\!\! e^{-\pi r^2}r^{2s}\frac{2\!\diff r\!\diff \theta}{r}
+%=2\pi\!\!\int_0^\infty\!\!e^{-y}\left(\!\frac{y}{\pi}\!\right)^s\!\!\frac{\diff y}{y}
+%=2\pi^{1-s}\Gamma(s).\]
+%\end{proof}
+%
+%当 $k=\BR$ 时, 令 $\lambda(x)\in\BR/\BZ$ 满足 $\lambda(x)\equiv -1\bmod 1$. 当 $k=\BQ_p$ 时, 令
+%	\[\lambda:\BQ_p\to\BQ_p/\BZ_p\to \BQ/\BZ\to\BR/\BZ.\]
+%我们固定 $k$ 上的酉加性特征
+%	\[\psi(x)=\exp\Bigl(2\pi i \lambda\bigl(\Tr_{k/\BQ_v}(x)\bigr)\Bigl).\]
+
+定义 $f\in\CS(k,\BC)$ 的\noun{傅里叶变换}为
+	\[\hat f(x)=\int_k f(y)\psi(xy)\diff y,\]
+则 $\hat f\in\CS(k,\BC)$, 且 $\hat f$ 的傅里叶变换为 $f(-x)$.
+对于拟特征 $\chi$, 定义
+	\[\hat\chi(x)=|x|\chi^{-1}(x).\]
+
+\begin{lemma}{}{}
+设 $f,g\in\CS(k,\BC)$, $0<\Re(\chi)<1$.
+我们有函数方程
+	\[\zeta(f,\chi)\zeta(\hat g,\hat \chi)=\zeta(\hat f,\hat\chi)\zeta(g,\chi).\]
+\end{lemma}
+\begin{proof}
+将左式写为
+	\[\iint f(x)\hat g(y)\chi(xy^{-1})|y|\diffx x\diffx y,\]
+然后做变量替换 $(x,y)\to(x,xy)$, 则我们得到
+	\[\iint f(x)\hat g(xy)\chi(y^{-1})|xy|\diffx x\diffx y.\]
+展开,
+	\[\iiint f(x)g(z)\chi(y^{-1})|xy|\psi(xyz)\diffx x\diffx y\diffx z.\]
+这关于 $f,g$ 是对称的, 因此我们得到右式.
+\end{proof}
+
+如果存在 $f$ 使得 $\zeta(\hat f,\hat \chi)\neq 0$, 则我们可定义 $w(\chi)=\zeta(f,\chi)/\zeta(\hat f,\hat\chi)$. 具体的 $f$ 和计算可见\cite[Chapter XIV, \S 4]{Lang1994}.
+
+\begin{theorem}{}{}
+函数 $\zeta(f,\chi)$ 可以亚纯延拓至复平面, 且满足函数方程
+	\[\zeta(f,\chi)=w(\chi)\zeta(\hat f,\hat\chi).\]
+这里 $w(\chi)$ 在 $0<\Re(\chi)<1$ 上有定义, 并可亚纯延拓至复平面.
+\end{theorem}
+
+\begin{exercise}
+根据函数方程我们有
+\begin{itemize}
+\item $w(\chi)w(\hat \chi)=\chi(-1)$;
+\item $w(\bar\chi)=\chi(-1)\ov{w(\chi)}$;
+\item 如果 $\Re(\chi)=\half$, 则 $|w(\chi)|=1$.
+\end{itemize}
+\end{exercise}
+
+%
+%现在我们来对具体的 $f$ 进行计算.
+%
+%\noindent{\textbf{阿基米德情形.}}
+%设 $\chi(x)=\left(\frac{x}{|x|}\right)^m|x|^{s+it}$. 这里 $k=\BR$ 时, $m=0$ 或 $1$. 设 $N=[k:\BR]$.
+%定义
+%	\[f_m(x)=f_{\chi}(x)=\begin{cases}
+%	x^{|m|}\exp(-\pi x^2),& k=\BR\\
+%	\frac{1}{2\pi}{\bar x}^{m}\exp(-2\pi x\bar x),& m\ge 0\\
+%	\frac{1}{2\pi}x^{-m}\exp(-2\pi x\bar x),& m< 0.\\
+%	\end{cases}\]
+%\begin{proposition}{}{}
+%我们有
+%	\[\hat f_m(x)=i^{|m|}f_{-m}(x),\]
+%	\[\zeta(f_\chi,\chi)=(N\pi)^{-\frac{N(s+it)+|m|}{2}}\Gamma\left(\frac{N(s+it)+|m|}{2}\right),\]
+%	\[\zeta(\hat f_\chi,\hat\chi)=i^{|m|}(N\pi)^{-\frac{N(1-s-it)+|m|}{2}}\Gamma\left(\frac{N(1-s-it)+|m|}{2}\right),\]
+%\end{proposition}
+%\begin{proof}
+%$k=BR$ 的情形 $f_m$ 的傅里叶变换我们已经在上一节计算过. $\zeta$ 函数也很容易由 $\Gamma$ 函数的定义得到.
+%
+%
+%\end{proof}
+%
+
+
+
+
+
+
+
+
+
+%\subsection{整体理论}
+
+现在考虑数域 $K$. 
+
+\begin{definition}{施瓦兹函数}{}
+$\BA_K$ 上的\noun{施瓦兹函数}是指所有形如 $f=\otimes_v f_v, f_v\in\CS(K_v,\BC)$ 的函数的线性组合, 其中对几乎所有的 $v$, $f_v={\bf1}_{\CO_v}$.
+\end{definition}
+
+注意到对几乎所有的 $v$, $\CO_v$ 的体积为 $1$. 因此局部的哈尔测度给出了 $\BA_K$ 上的哈尔测度 $=\diff x=\prod_v dx_v$, 它诱导了 $\BA_K/K$ 上的哈尔测度 $\diff x$, 见\cite[Chapter XIV, \S 5]{Lang1994}. 我们有
+	\[\int_{\BA_K}f(x)\diff x=\prod_v \int_{K_v}f_v(x_v)\diff x_v,\]
+且 $f$ 相对
+	\[\pair{x,y}=\prod_v \psi_v(x_v y_v)\]
+的傅里叶变换为 $\hat f=\otimes_v \hat f_v$.
+%
+%\begin{definition}{}{}
+%连续的群同态 $\chi:C_K\to\BC^\times$ 被称为\noun{拟特征}. 如果它的像落在 $S^1$ 中, 则称之为\noun{酉特征}.
+%\end{definition}
+
+\begin{exercise}
+拟赫克特征一定可以表为 $\chi=\chi_0|\cdot|^s$, 其中 $\chi_0$ 是特征, $s\in\BC$, $|\cdot|$ 为伊代尔上的范数. 我们记 $\Re(\chi)=\Re(s)$.
+\end{exercise}
+
+对于 $f\in\CS(K,\BC)$ 和拟赫克特征 $\chi=\chi_0|\cdot|^s$, 定义 \nouns{$\zeta$ 函数}{zeta 函数@$\zeta$ 函数}
+	\[\zeta(f,\chi):=\int_{\BI_K}f(x)\chi(x)\diffx x.\]
+类似于狄利克雷 $L$ 函数, 该函数可以表为某种 $s$ 与 $1-s$ 对称的形式, 从而可以得到它的亚纯延拓. 通过局部的计算, 我们可以得到整体的函数方程.
+
+\begin{theorem}{}{}
+$\zeta(f,\chi)$ 可以亚纯延拓至复平面, 且满足函数方程
+	\[\zeta(f,\chi)=\zeta(\hat f,\hat\chi).\]
+仅当 $\chi=|\cdot|^s$ 时 $\zeta(f,\chi)$ 有极点, 分别为 $s=0$ 和 $1$ 的单极点, 留数为
+	\[-\Res_{s=0}\zeta(f,\chi)=\Res_{s=1}\zeta(f,\chi)=f(0)\frac{2^{r_1+r_2}\pi^{r_2}h R}{w|\Delta_K|^\half},\]
+其中 $h$ 为 $K$ 的类数, $R$ 为调整子, $w$ 为 $\mu(K)$ 大小, $\Delta_K$ 为判别式, $r_1,r_2$ 分别为 $K$ 的实素位和复素位的个数.
+\end{theorem}
+
+令
+  \[f_v(x)=\begin{cases}
+	{\bf 1}_{\CO_k}(x),\quad& v\nmid \infty;\\
+	\exp(-\pi x^2),& K_v=\BR;\\
+	\exp(-\pi x\bar x),& K_v=\BC,
+	\end{cases}\]
+则我们可得戴德金 $\zeta$ 函数与赫克 $L$ 函数的解析延拓和函数方程. 具体细节可参考\cite[\S 7.5]{KatoKurokawaSaito2009}和\cite[\S 11.2]{KurokawaKuriharaSaito2009}.
+
+
+
+
+%对于局部域 $K_v$, 我们固定酉加性特征
+%	\[\psi_v(x)=\begin{cases}
+%	\exp(-2\pi i x),&K_v=\BR\\
+%	\exp\bigl(-2\pi i (x+\ov x)\bigr),&K_v=\BC\\
+%	\exp\Bigl(2\pi i \lambda_p\bigl(\Tr_{k/\BQ_p}(x)\bigr)\Bigr),&K_v/\BQ_p,
+%	\end{cases}\]
+%其中对于最后一种情形, $\lambda_p(x)=r/p^m$, 其中整数 $0\le r<p^m$ 且 $\lambda_p(x)-x\in \BZ_p$. 换言之
+%	\[\lambda:\BQ_p\to\BQ_p/\BZ_p\to \BQ/\BZ.\]
+%令 $\psi=\prod_v \psi_v:\BA_K\to S^1$, 则 $\psi$ 在 $K$ 上平凡. 记 $\CS(\BA_K,\BC)$ 为 $\BA_K$ 上施瓦兹函数全体, 即所有形如 $f=\prod_v f_v, f_v\in\CS(K_v,\BC)$ 且几乎处处 $f_v={\bf1}_{\CO_v}$ 的函数的线性组合.
+%我们可以定义傅里叶变换
+%	\[\hat f(x)=\int_{\BA_K}f(y)\psi(xy)\diff y,\]
+%则 $\hat f\in\CS(\BA_K,\BC)$.
+%
+%同样我们有 $\diffx =\prod_v \diffx x_v$. 设 $\chi:C_K\to \BF^\times$ 为\noun{赫克特征}, 即伊代尔类群的连续同态. 则同样地, $\chi=\chi_0|\cdot|_K^s$, 其中 $\chi_0$ 是酉的. 定义
+%	\[\zeta(f,\chi)=\int_{\BI_K}f(x)\chi(x)\diffx x.\]
+%
+%
+%
+%定义连续函数 $\varphi:\BA_K\to\BC$,
+%  \[\varphi(x)=\prod_v \varphi(x_v).\]
+%对于 $K$ 的素点, 定义连续函数 $\varphi_v:K_v\to\BC$,
+%  \[\varphi_v(x)=\begin{cases}
+%{\bf 1}_{\CO_v}(x),\quad& v\nmid\infty;\\
+%\exp(-\pi x^2),& v\ \text{是实素位};\\
+%\exp(-2\pi x\bar x),& v\ \text{是复素位}.
+%\end{cases}\]
+%定义连续函数 $\varphi:\BA_K\to\BC$,
+%  \[\varphi(x)=\prod_v \varphi(x_v).\]
+%
+%\begin{proposition}{}{}
+%(1) 对于 $\Re(s)>0$,
+%  \[\int_{K_v^\times} \varphi_v(x)|x|_{K_v}^s \diffx x=\begin{cases}
+%(1-\bfN v^{-s})^{-1},\quad & v\nmid\infty;\\
+%\Gamma_{K_v}(s),& v\mid\infty.\end{cases}\]
+%
+%(2) 对于 $\Re(s)>1$,
+%  \[\wh\zeta_K(s)=|\Delta_K|^{s/2}\int_{\BA_K^\times} \varphi(x)|x|^s\diffx x.\]
+%\end{proposition}
+%\begin{proof}
+%当 $v$ 是有限素位时, 令 $C_m=\pi^m \CO_v^\times$, 则 $C_m$ 是紧的且 $\mu(C_m)=1$. 因此
+%  \[\int_{K_v^\times} \varphi_v(x)|x|_{K_v}^s \diffx x
+%=\sum_{m=0}^\infty \bfN v^{-ms}=(1-\bfN v^{-s})^{-1}.\]
+%当 $v$ 为实素位时,
+%  \[\int_{K_v^\times} \varphi_v(x)|x|_{K_v}^s \diffx x
+%=2\int_0^\infty e^{-\pi x^2}x^s\frac{\diff x}{x}
+%=\int_0^\infty e^{-y}\left(\frac{y}{\pi}\right)^s\frac{\diff y}{y}
+%=\Gamma_\BR(s).\]
+%当 $v$ 为复素位时,
+%  \[\int_{K_v^\times} \varphi_v(x)|x|_{K_v}^s \diffx x
+%=\int_0^{2\pi}\!\!\!\!\int_0^\infty\!\! e^{-2\pi r^2}r^{2s}\frac{2\!\diff r\!\diff \theta}{\pi r}
+%=2\!\!\int_0^\infty\!\!e^{-y}\left(\!\frac{y}{2\pi}\!\right)^s\!\!\frac{\diff y}{y}
+%=\Gamma_\BC(s).\]
+%由此可得 (2).
+%\end{proof}
+%
+%对于 $y\in C_K$, 令
+%  \[\theta(y)=\sum_{a\in K}\varphi(\wt ya)=1+\sum_{a\in K^\times}\varphi(\wt ya).\]
+%
+%我们考虑局部紧交换群 $G$ 和其离散子群 $\Gamma$ 的傅里叶分析. 设 $f$ 是 $G$ 上充分好的函数, $\wh{\Gamma\bs G}$ 是商群 $\Gamma\bs G$ 的特征全体, 即全体同态 $\Gamma\bs G\to S^1$ 形成的乘法群. 固定 $G$ 上的哈尔测度使得 $\Gamma\bs G$ 的测度为 $1$, 则对于 $\pi\in\wh{\Gamma\bs G}$, 我们有傅里叶变换的系数
+%  \[\wh f(\pi)=\int_G f(x)\pi^{-1}(x)\diff x.\]
+%我们来看此时的泊松求和公式. 令 $F(x)=\sum_{\gamma\in\Gamma}f(\gamma x)$, 则
+%  \[F(x)=\sum_\pi c(\pi)\pi(x),\]
+%  \[c(\pi)=\int_{\Gamma\bs G}F(x)\pi^{-1}(x)\diff x=\int_G f(x)\pi^{-1}(x)\diff x=\wh f(\pi).\]
+%这里我们用到了特征之间的正交性.
+%于是我们有
+%  \[\sum_{\gamma\in\Gamma}f(\gamma)=F(1)=\sum_{\pi\in\wh{\Gamma\bs G}}\wh f(\pi).\]
+%当 $G=\BR,\Gamma=\BZ$ 时, 这就是经典的泊松求和公式. 令 $G=\BA_K,\Gamma=K$, $f=\theta$, 则
+%  \[\wh{\Gamma\bs G}=\set{\chi_a(y)=\chi(ay)\mid a\in K},\]
+%其中 $\chi$ 是任意一个非平凡特征.
+%此时有
+%  \[\theta(\delta y^{-1})=|D_K|^{\half} |y|\theta(y),\]
+%其中 $\delta\in\BA_K$ 的 $\delta_v$ 生成 $\fD(\CO_v/\BZ_p)$, $v\nmid \infty$; $\delta_v=1$, $v\mid \infty$.
+%然后我们由
+%  \[\wh\zeta_K(s)=f(s)+f(1-s)-\frac{c}{1-s}-\frac{c}{s},\]
+%  \[f(s)=\int_{\set{y\in C_K\mid|\Delta_K|^{s/2}|y|\ge 1}}
+%(\theta(y)-1)|\Delta_K|^{s/2} |y|^s\diffx y, \]
+%  \[c=\mu\set{x\in C_K\mid 1\le |x|\le e}=\frac{2^{r_1+r_2}hR}{w}\]
+%可得函数方程和解析延拓. 具体细节可参考\cite[\S 7.5]{KatoKurokawaSaito2009}和\cite[\S 11.2]{KurokawaKuriharaSaito2009}.
+
+\subsection{解析延拓与函数方程}
+
+%设 $n=[K:\BQ]$, 
+令
+%  \[\Gamma_\BR(s)=\pi^{-s/2}\Gamma(s/2),\quad
+%\Gamma_\BC(s)=2(2\pi)^{-s}\Gamma(s),\]
+%  \[Z_\infty(s)=|\Delta_K|^{s/2}\Gamma_\BR(s)^{r_1}\Gamma_\BC(s)^{r_2}=|\Delta_K|^\frac{s}{2} 2^{(1-s)r_2} \pi^{-\frac{ns}{2}}\Gamma(s/2)^{r_1}\Gamma(s)^{r_2},\]
+  \[\wh\zeta_K(s)=|\Delta_K|^\frac{s}{2} 2^{(1-s)r_2} \pi^{-\frac{ns}{2}}\Gamma(s/2)^{r_1}\Gamma(s)^{r_2}\zeta_K(s).\]
+%其中 $r_1,r_2$ 分别为 $K$ 的实素位和复素位的个数.
+
+\begin{theorem}{}{}
+$\wh\zeta_K(s)$ 可以解析延拓至 $\BC-\set{0,1}$ 且有函数方程
+  \[\wh\zeta_K(s)=\wh\zeta_K(1-s).\]
+它在 $s=0,1$ 处有单极点, 留数为 $\mp\frac{2^{r_1+r_2}hR}{w},$ 其中 $h$ 为 $K$ 的类数, $R$ 为调整子, $w$ 为 $\mu(K)$ 大小.
+\end{theorem}
+
+\begin{corollary}{}{class number formula}
+$\zeta_K(s)$ 可以解析延拓至 $\BC-\set{1}$, 在 $s=1$ 处有单极点且
+  \[\Res_{s=1}\zeta_K(s)=\frac{2^{r_1}(2\pi)^{r_2}}{w|\Delta_K|^\half}hR.\]
+$\zeta_K(s)$ 满足函数方程
+  \[\zeta_K(s)=|\Delta_K|^{s-\half}\left(\cos\frac{\pi s}{2}\right)^{r_1+r_2}\left(\sin\frac{\pi s}{2}\right)^{r_2}2^n(2\pi)^{-ns}\Gamma(s)^n\zeta_K(1-s).\]
+$\zeta_K$ 在 $s=0$ 处为 $r_1+r_2-1$ 阶零点, 且
+  \[\lim_{s\ra 0} s^{-r_1-r_2+1}\zeta_K(s)=-\frac{hR}{w}.\]
+\end{corollary}
+
+\begin{exercise}
+证明该推论.
+\end{exercise}
+
+这个公式意味着我们可以通过估计 $L$ 函数来达到计算类数的目的, 因此该公式被称为\noun{解析类数公式}.
+
+
+完备的赫克 $L$ 函数 $\Lambda(s,\chi)$ 可以参考\cite[\S 7.5]{KatoKurokawaSaito2009}, 我们在次省略.
+\begin{theorem}{}{Hecke_L_function_equation}
+赫克 $L$ 函数 $L(s,\chi)$ 可以亚纯延拓至整个复平面, 且仅在 $\chi|_{\BA_K^1/K^\times}=1$ 时才有极点, 此时 $\chi(a)=|a|^{it}$, $L(s,\chi)=\zeta_K(s+it),t\in\BR$. 这里 $\BA_K^1$ 表示范数为 $1$ 的伊代尔全体.
+我们有函数方程 $\Lambda(s,\chi)=W(s,\chi)\Lambda(1-s,\ov\chi)$, $|W(\half,\chi)|=1$.
+\end{theorem}
+
+设 $L$ 为 $K$ 的有限阿贝尔扩张, 则 $L$ 对应于 $C_K$ 的指数有限的开子群 $H$. 
+\begin{theorem}{}{}
+我们有
+  \[\zeta_L(s)=\prod_\chi L(s,\chi),\]
+其中 $\chi$ 取遍 $C_K/H$ 的所有特征.
+\end{theorem}
+
+
+\subsection{分圆域的 \texorpdfstring{$\zeta$}{ζ} 函数}
+\begin{corollary}{}{cyclotomic_zeta_decomposition}
+如果 $K=\BQ(\zeta_m)$, 则
+  \[\zeta_K(s)=G(s)\prod_\chi L(s,\chi),\]
+其中 $\chi$ 取遍模 $m$ 的狄利克雷特征, 
+  \[G(s)=\prod_{\fp\mid\fm}(1-\bfN\fp^{-s})^{-1}.\]
+\end{corollary}
+我们知道 $\zeta_K(s)$ 和 $\zeta(s)=L(1,s)$ 均只在 $s=1$ 处有单极点, 因此
+\begin{proposition}{}{}
+$\chi$ 非平凡时, $L(1,\chi)\neq 0$.
+\end{proposition}
+
+\begin{theorem}{狄利克雷素数定理}{dirichlet prime}
+对于任意互素的整数 $a,m>0$, $a+m\BZ$ 中有无穷多素数.
+\end{theorem}
+\begin{proof}
+设 $\chi$ 是模 $m$ 的狄利克雷特征. 当 $\Re(s)>1$ 时,
+  \[\log L(s,\chi)=-\sum_p \log(1-\chi(p)p^{-s})=\sum_p\sum_{m=1}^\infty\frac{\chi(p^m)}{mp^{ms}}
+    =\sum_p\frac{\chi(p)}{p^s}+g_\chi(s).\]
+通过估计可知 $g_\chi(s)$ 在 $\Re(s)>\half$ 全纯. 两边同时乘以 $\chi(a^{-1})$ 并对所有模 $m$ 特征求和
+  \[\begin{split}
+  \sum_\chi \chi(a^{-1}) \log L(s,\chi)&=\sum_\chi\sum_p\frac{\chi(a^{-1}p)}{p^s}+g(s)\\
+    &=\sum_{b=1}^m\sum_\chi \chi(a^{-1}b)\sum_{p\equiv b\mod m}\frac{1}{p^s}+g(s)\\
+    &=\sum_{p\equiv a\mod m}\frac{\varphi(m)}{p^s}+g(s).
+  \end{split}\]
+设 $\chi_0:(\BZ/m\BZ)^\times\to S^1$ 为平凡特征.
+当 $s\ra 1$ 时, 对于 $\chi\neq \chi_0$, $\log L(s,\chi)$ 有界, 而 $\log L(s,\chi_0)=-\sum_{p\mid m} \log(1-p^{-s})+\log \zeta(s)$ 趋于无穷, 因此等式右侧也趋于无穷. 这意味着右侧的求和不可能只有有限多项.
+\end{proof}
+\begin{remark}
+实际上狄利克雷证明了这样的素数全体的密度为 $1/\varphi(m)$, 切博塔廖夫密度定理~\ref{thm:chebatarev} 是它的推广.
+\end{remark}
+
+
+
+\subsection{二次域解析类数公式}
+设 $K=\BQ(\sqrt{\Delta_K})$ 为二次域. 设 $N=|\Delta_K|$. 我们有分解
+  \[\zeta_K(s)=\zeta(s)L(s,\chi_{\Delta_K}),\]
+其中 $\chi_{\Delta_K}:(\BZ/N\BZ)^\times\to\set{\pm1}$ 为非平凡特征, 它满足 $\chi_{\Delta_K}(p)=\leg{\Delta_K}{p}$, $p$ 为奇素数. 容易知道 $\chi(-1)=\sgn(\Delta_K)$.
+
+当 $K$ 为实二次域时,  
+  \[\Res_{s=1} \zeta_K(s)=\frac{2}{|\Delta_K|^\half} h R, \quad\lim_{s\ra 0}s^{-1}\zeta_K(s)=\frac{2hR}{w}.\]
+因此 
+  \[h=|\Delta_K|^\half \frac{L(1,\chi_{\Delta_K})}{2R}=\frac{L'(0,\chi_{\Delta_K})}{R}.\]
+当 $K$ 为虚二次域时,
+  \[\Res_{s=1} \zeta_K(s)=\frac{2\pi}{w|\Delta_K|^\half} h, \quad\zeta_K(0)=\frac{2hR}{w}.\]
+因此 
+  \[h=\frac{w}{2\pi}|\Delta_K|^\half L(1,\chi_{\Delta_K})=\frac{w}{2}L(0,\chi_{\Delta_K}).\]
+由定理~\ref{thm:l_chi_one}, 我们得到二次域的解析类数公式.
+\begin{theorem}{}{}
+设 $K$ 为二次域. 如果 $\Delta_K<0$, 则
+  \[h=-\frac{w_k}{2|\Delta_K|}\sum_{a=1}^{|\Delta_K|-1}\chi_{\Delta_K}(a)a.\]
+如果 $\Delta_K>0$, 则 
+  \[h=-\frac{1}{\log\varepsilon}\sum_{a=1}^{\left[\Delta_K/2\right]} \chi_{\Delta_K}(a)\log(\sin\frac{\pi a}{\Delta_K}),\]
+其中 $\varepsilon>1$ 是 $K$ 的基本单位.
+\end{theorem}
+
+\begin{example}
+(1) $K=\BQ(\sqrt{2})$, $\varepsilon=\sqrt{2}+1$,
+  \[h_K=-\frac{1}{\log(\sqrt{2}+1)}(\log\sin\frac{\pi}{8}-\log\sin\frac{3\pi}{8})=1.\]
+
+(2) $K=\BQ(\sqrt{-56})$. 对于奇素数 $p$, 易知
+  \[\chi_{-56}(p)=1\iff p\equiv 3,5,13,19,23\mod 56.\]
+注意到
+  \[\sum_{a=1}^{N-1}\chi(a)a=\sum_{a=1}^{\left[\frac N2\right]}\chi(a)a-\chi(a)(N-a)=2\sum_{a=1}^{\left[\frac N2\right]}\chi(a)a-N\sum_{a=1}^{\left[\frac N2\right]}\chi(a).\]
+因此 $\suml_{a=1}^{55} \chi_{-56}(a)a=2\times 112-56\times 8=-224$, $h=4$.
+\end{example}
+
+\begin{exercise}
+计算虚二次域 $K=\BQ(\sqrt{m})$ 的类数, 其中 $m=-1$, $-2$, $-3$, $-5$, $-6$, $-10$, $-26$.
+\end{exercise}
+
+
+
+\section{模形式}
+\label{sec:modular forms}
+
+最后, 我们将极其简要地介绍谷山-志村-韦伊关于椭圆曲线的猜想, 它最终由怀尔斯证明, 并由此得到费马大定理.
+
+\subsection{庞加莱上半平面}
+设 
+  \[\CH=\set{\tau\in\BC\mid \Im(\tau)>0}\]
+为\noun{庞加莱上半平面}. 我们考虑 $\GL(2,\BR)^+$ 在 $\CH^*=\CH\cup\BQ\cup\infty$ 的作用
+  \[\gamma.\tau:=\frac{a\tau+b}{c\tau+d},\quad\smat{a}{b}{c}{d}\in\GL(2,\BR)^+.\]
+这里 $+$ 表示行列式为正的实矩阵.
+这种作用可以看成是 $\PGL(2,\BR)$ 在 $\BP^1(\BC)\supseteq \CH^*$ 上的自然线性作用诱导而来.
+
+\begin{proposition}{}{}
+(1) $\diff(\gamma.\tau)=\det\gamma\cdot(c\tau+d)^{-2}\diff \tau$.
+
+(2) $\Im(\gamma.\tau)=\det\gamma\cdot|c\tau+d|^{-2}\Im(\tau)$.
+\end{proposition}
+\begin{proof}
+直接验证即可.
+\end{proof}
+
+考虑 $\CH$ 上的度量
+  \[\frac{\diff x^2+\diff y^2}{y^2}=\frac{|\diff\tau|^2}{(\Im\tau)^2}.\]
+由上述命题可知该度量在 $\GL(2,\BR)^+$ 作用下不动.
+该度量下的测地线是圆心在实轴上的半圆, 以及和实轴垂直的射线.
+
+\subsection{同余子群}
+
+\begin{definition}{同余子群}{congruence group}
+对于正整数 $N$, 定义
+  \[\begin{split}
+  \Gamma(N)&=\set{\gamma\in\SL(2,\BZ)\mid \gamma\equiv\smat{1}{}{}{1}\mod N},\\
+  \Gamma_1(N)&=\set{\gamma\in\SL(2,\BZ)\mid \gamma\equiv\smat{1}{*}{}{1}\mod N},\\
+  \Gamma_0(N)&=\set{\gamma\in\SL(2,\BZ)\mid \gamma\equiv\smat{*}{*}{}{*}\mod N}.
+  \end{split}\]
+称 $\Gamma(N)$ 为\noun{主同余子群}.
+任何包含某个 $\Gamma(N)$ 的 $\SL(2,\BZ)$ 的子群 $\Gamma$ 被称为\noun{同余子群}. 易知同余子群都是指标有限的.
+\end{definition}
+
+\begin{definition}{尖点}{cusp}
+称同余子群 $\Gamma$ 在 $\BP^1(\BQ)\subseteq \CH^*$ 上的作用的等价类为它的\noun{尖点}.
+\end{definition}
+
+\begin{proposition}{}{}
+$\SL(2,\BZ)$ 只有一个尖点 $\infty$, 一般的同余子群 $\Gamma$ 只有有限多个尖点.
+\end{proposition}
+\begin{proof}
+对于互素的 $a,c\in\BZ$, 存在 $b,d\in\BZ$ 使得 $ad-bc=1$, 于是 $\smat{a}{b}{c}{d}\infty=a/c$, 因此只有一个轨道. 一般地, $\SL(2,\BZ)=\sqcup_{i=1}^k \Gamma g_i$, 因此只有有限多个尖点 $g_i\infty$.
+\end{proof}
+
+$\Gamma$ 在 $\fH$ 上的作用得到一个开的黎曼面, 通过添加尖点可以将其紧化, 从而得到一个紧黎曼面. 具体如何边界点处的坐标卡此处不做详解, 感兴趣的可以阅读\cite{Li2020}.
+
+我们记 $X_\Gamma=(\Gamma\bs\fH)^*$ 为相应的紧化, 称之为\noun{模曲线}. 记 $X(N),X_1(N)$, $X_0(N)$ 为相应的同余子群对应的模曲线.
+
+
+\subsection{模形式}
+设 $f$ 为上半平面的全纯函数. 如果 $f$ 满足 $f(\tau+N)=f(\tau)$, 则通过 $q_N=e^{2\pi i\tau/N}: \CH\ra U(0,1)$, $f$ 在 $z=0\in U(0,1)$ 的展开拉回变成
+  \[f(z)=\sum_{n\in\BZ} a_n q^n_N.\] 
+若 $a_n=0,\forall n<0$, 称 $f$ 在 $\infty$ \noun{全纯};
+若 $a_n=0,\forall n\le 0$, 称 $f$ 在 $\infty$ \noun{消没}.
+
+考虑 $r\in \BQ$, 则存在 $\gamma\in \SL(2,\BZ)$ 使得 $\gamma\infty=r$. 如果 $f(\gamma z)$ 在 $\infty$ 全纯/消没, 则称 $f$ 在 $r$ 处全纯/消没.
+
+对于 $k\in\BZ,\gamma\in\GL(2,\BR)^+$, 定义
+  \[f|_k\gamma(\tau)=(\det \gamma)^{k/2}(c\tau+d)^{-k}f(\gamma \tau).\]
+\begin{proposition}{}{}
+$f|_k (\gamma_1\gamma_2)=(f|_k\gamma_1)|_k\gamma_2$.
+\end{proposition}
+
+\begin{definition}{模形式}{modular form}
+设 $k$ 是整数. 如果上半平面的全纯函数 $f$ 满足对任意 $\gamma\in\Gamma_0(N)$, $f|_k\gamma=f$, 且在所有的尖点处全纯, 则称 $f$ 为\noun{权} $k$, \noun{级} $\Gamma_0(N)$ 的\noun{模形式}. 若 $f$ 在所有的尖点处消没, 则称 $f$ 为\noun{尖点形式}. 分别记相应的空间为 $M_k(\Gamma),S_k(\Gamma)$. 当 $\Gamma=\SL(2,\BZ)$ 时我们省略 $\Gamma$.
+\end{definition}
+
+如果 $-I\in\Gamma$, 则容易知道仅当 $k\in 2\BZ$ 时存在权 $k$ 级 $\Gamma$ 的非零模形式.
+
+考虑 $f\diff \tau^{\otimes k}$. 任意 $\alpha\in \GL(2,\BR)^+$ 都给出了 $\CH$ 上的全纯自同构, 从而诱导了微分形式的拉回 $\alpha^*$,
+  \[\alpha^*(f\diff \tau^{\otimes k})=(f\circ \alpha)(\diff \alpha \tau)^{\otimes k}=(f|_{2k} \alpha)\diff \tau^{\otimes k}.\]
+因此 $f$ 是权 $2k$ 级 $\Gamma$ 的模形式当且仅当 $f\diff \tau^{\otimes k}$ 在 $\Gamma$ 作用下不变.
+
+\begin{example}
+设 $k$ 为正整数, $\Gamma\subseteq \BC$ 为一个格. 定义
+  \[G_{2k}(\Lambda)=\sum_{0\neq \omega\in\Lambda}\omega^{-2k}.\]
+定义 $G_{2k}(\tau)=G_{2k}(\BZ+\BZ\tau),\tau\in\CH$. 容易看出 $k\ge 2$ 时它绝对收敛.
+\end{example}
+
+\begin{proposition}{}{}
+当 $k\ge 2$ 时, 
+  \[G_{2k}(\tau)=2\zeta(2k)+\frac{2(2\pi i)^{2k}}{(2k-1)!}\sum_{n=1}^\infty \sigma_{2k-1}(n)q^n,\quad q=e^{2\pi i \tau},\]
+其中 $\sigma_\ell(n)=\sum_{0<d\mid n}d^\ell$. 因此 $G_{2k}\in M_{2k}\bigl(\Gamma(1)\bigr)$.
+\end{proposition}
+\begin{proof}
+通过对
+  \[\frac{\sin(\pi s)}{\pi s}=\prod_{n=1}^\infty\left(1-\frac{s^2}{n^2}\right)\]
+两边同时取 $\frac{\diff\log}{\diff s}$ 得到恒等式
+  \[\pi\cot \pi \tau=\frac{1}{\tau}+\sum_{m=1}^\infty\left(\frac{1}{\tau+m}+\frac{1}{\tau-m}\right),\]
+其中右侧在紧集上一致收敛. 令 $q=e^{2\pi i \tau}$, 则 $|q|<1$,
+  \[\pi\cot \pi\tau=i\pi\frac{q+1}{q-1}=i\pi-\frac{2\pi i }{1-q}=i \pi-2\pi i \sum_{d=0}^\infty q^d.\]
+因此
+  \[\frac{1}{\tau}+\sum_{m=1}^\infty\left(\frac{1}{\tau+m}+\frac{1}{\tau-m}\right)=i \pi-2\pi i \sum_{d=0}^\infty q^d,\]
+两边求 $2k-1$ 次导数,
+  \[\sum_{m=-\infty}^\infty\frac{1}{(\tau+m)^{2k}}=\frac{1}{(2k-1)!}(2\pi i)^{2k} \sum_{d=1}^\infty d^{2k-1}q^d.\]
+因此
+  \[\begin{split}
+  G_{2k}(\tau)&=\sum_{(m,n)\neq (0,0)}(n\tau+m)^{-2k}\\
+    &=\sum_{m\neq 0}m^{-2k}+\sum_{n\neq 0}\sum_{m=-\infty}^{\infty}(n\tau+m)^{-2k}\\
+    &=2\zeta(2k)+2\sum_{n=1}^\infty\sum_{m=-\infty}^{\infty}(n\tau+m)^{-2k}\\
+    &=2\zeta(2k)+2\frac{1}{(2k-1)!}(2\pi i )^{2k}\sum_{d=1}^\infty\sum_{a=1}^{\infty}d^{2k-1}q^{da}\\
+    &=2\zeta(2k)+\frac{2(2\pi i)^{2k}}{(2k-1)!}\sum_{n=1}^\infty \sigma_{2k-1}(n)q^n.
+  \end{split}\]
+命题得证.
+\end{proof}
+
+\begin{definition}{艾森斯坦级数}{Eisenstein series}
+定义
+  \[E_{2k}(\tau)=\half\sum_{(c,d)=1}(c\tau+d)^{-2k}.\]
+容易证明 $G_{2k}=2\zeta(2k)E_{2k}$, 因此 $E_{2k}$ 的傅里叶展开常数项为 $1$.
+\end{definition}
+
+\begin{proposition}{}{}
+我们有 
+  \[E_{2k}(\tau)=1-\frac{2k}{B_{2k}}\sum_{n=1}^\infty\sigma_{2k-1}(n)q^n.\]
+\end{proposition}
+
+\begin{definition}{拉马努金 $\Delta$ 函数}{Ramanujan delta function}
+定义
+  \[\Delta=\frac{(2\pi)^{12}}{1728}(E_4^3-E_6^2)=(2\pi)^{12}(q-24q^2+252q^3-1472q^4+\cdots)\in S_{12}\bigl(\Gamma(1)\bigr).\]
+\end{definition}
+
+\begin{theorem}{}{}
+设 $M=\oplus_{k} M_k$ 为模形式形成的分次代数, 则 $M=\BC[E_4,E_6]$. 特别地, $k<0$ 时 $M_k=0$; $k\ge 0$ 时,
+  \[\dim M_k=\begin{cases}
+\left[\frac{k}{12}\right]+1,\quad & k\not\equiv 2\mod 12;\\
+\left[\frac{k}{12}\right],\quad & k\equiv2\mod 12.
+\end{cases}\]
+\end{theorem}
+
+\begin{proposition}{}{}
+我们有
+  \[\Delta(\tau)=(2\pi)^{12}q\prod_{n=1}^\infty(1-q^n)^{24}.\]
+\end{proposition}
+
+\subsection{尖形式的 \texorpdfstring{$L$}{L} 函数}
+设 $f\in S_k$ 是一个尖形式, 它的傅里叶展开为
+  \[f(\tau)=\sum_{n=1}^\infty c_nq^n.\]
+定义 $f$ 的 $L$ 函数为
+  \[L(s,f):=\sum_{n=1}^\infty c_nn^{-s}.\]
+
+\begin{definition}{梅林变换}{Meilin transform}
+函数 $F:(0,\infty)\to \BC$ 的\noun{梅林变换}为
+  \[g(s)=\int_0^\infty F(t)t^s\frac{\diff t}t.\]
+\end{definition}
+
+设 $\tau=\rho+i\sigma$.
+考虑 $f(i\sigma)$ 的梅林变换, 我们暂时不考虑收敛性的问题. 此时它的梅林变换为
+  \[\begin{split}
+g(s)&:=\int_0^\infty f(i\sigma)\sigma^s \frac{\diff \sigma}{\sigma}=\int_0^\infty \sum_{n=1}^\infty c_n e^{-2\pi n \sigma}\sigma^s\frac{\diff \sigma}\sigma\\
+&=\sum_{n=1}^\infty c_n\int_0^\infty e^{-t}(2\pi n)^{-s}t^s\frac{\diff t}t\\
+&=(2\pi)^{-s}\Gamma(s)\sum_{n=1}^\infty c_nn^{-s}=(2\pi)^{-s}\Gamma(s)L(s,f).
+\end{split}\]
+
+\begin{lemma}{}{}
+$\varphi(\tau)=|f(\tau)|\sigma^{k/2}$ 在 $\CH$ 上有界且在 $\SL(2,\BZ)$ 作用下不变. 由此可知 $|c_n|\le Cn^{k/2}$.
+\end{lemma}
+\begin{proof}
+由 $|q|<1$ 时 $f(\tau)=\sum_{n=0}^\infty c_n q^n$ 收敛可知 $|c_n|<C(3/4)^n/4$, 因此当 $|q|<\half$ 时, $|f(\tau)|\le C|q|$, 即
+  \[|f(\tau)|\le Ce^{-2\pi\sigma},\quad \sigma\ge \frac{1}{2\pi}\log 2.\]
+因此当 $\tau$ 在 $\SL(2,\BZ)$ 基本区域 $R$ 中趋于 $\infty$ 时, $\varphi(\tau)=|f(\tau)|\sigma^{k/2}\ra 0$. 而 $\varphi$ 是连续的, $R$ 中 $\sigma\le \frac{1}{2\pi}\log2$ 部分是紧的, 因此 $\varphi$ 在 $R$ 上有界. 容易验证 $\varphi$ 是 $\SL(2,\BZ)$ 不变的, 因此 $\varphi$ 在 $\CH$ 上有界.
+
+我们有 $c_n=\int_{-\half}^\half f(\tau)e^{-2\pi i n\tau}\diff \rho$, 因此 $|c_n|\le C\sigma^{-k/2} e^{2\pi n \sigma},\forall \sigma>0$. 取 $\sigma=1/n$, 则 $|c_n|\le Ce^{2\pi}n^{k/2}$.
+\end{proof}
+
+\begin{theorem}{}{}
+若 $f\in S_k$, 则 $L(s,f)$ 在 $\Re s>k/2+1$ 上收敛, 且可以解析延拓至复平面. 我们有函数方程
+  \[\Lambda(s,f)=(-1)^{k/2}\Lambda(k-s,f),\]
+其中 $\Lambda(s,f)=(2\pi)^{-s}\Gamma(s)L(s,f).$
+\end{theorem}
+\begin{proof}
+由 $\smat{0}{-1}{1}{0}\in \SL(2,\BZ)$ 可知 $f(-1/\tau)=\tau^kf(\tau)$, 因此
+  \[f(i/\sigma)=i^k \sigma^k f(i\sigma).\]
+由 $|c_n|\le n^{k/2}$ 知
+  \[\Lambda(s,f)=\int_0^\infty f(i\sigma)\sigma^{s-1}\diff \sigma\]
+在 $\Re s>k/2+1$ 时收敛. 和狄利克雷特征的 $L$ 函数情形类似,
+  \[\int_1^\infty f(i\sigma)\sigma^{s-1}\diff \sigma\]
+对任意 $s$ 收敛, 且
+  \[\int_0^1 f(i\sigma)\sigma^{s-1}\diff \sigma=i^k\int_1^\infty f(i\sigma)\sigma^{k-s-1}\diff \sigma\]
+右侧对任意 $s$ 收敛. 因此我们得到了 $\Lambda(s,f)$ 的解析延拓和函数方程. 由于 $\Gamma$ 没有零点, 因此 $L(s,f)$ 全纯.
+\end{proof}
+
+设 $f\in S_k\bigl(\Gamma_0(N)\bigr)$ 是一个级 $N$ 的尖形式, 它的傅里叶展开为
+  \[f(\tau)=\sum_{n=1}^\infty c_nq^n.\]
+定义 $f$ 的 $L$ 函数为
+  \[L(s,f):=\sum_{n=1}^\infty c_nn^{-s}.\]
+同样的, 我们有
+  \[\int_0^\infty f(i\sigma)\sigma^s \frac{\diff \sigma}{\sigma}=(2\pi)^{-s}\Gamma(s)L(s,f).\]
+
+\begin{lemma}{}{}
+$\varphi(\tau)=|f(\tau)|\sigma^{k/2}$ 在 $\CH$ 上有界且在 $\Gamma_0(N)$ 作用下不变. 由此可知 $|c_n|\le Cn^{k/2}$.
+\end{lemma}
+\begin{proof}
+考虑 $\Gamma_0(N)$ 的基本区域 $R_N$, 其中的尖点为 $\beta^{-1}\infty$. 显然
+  \[\beta^{-1}\smat{1}{N}{}{1}\beta\in \Gamma_0(N),\]
+因此 $f|_k \beta^{-1}\smat{1}{N}{}{1}\beta=f$, 即
+  \[f|_k\beta^{-1}(\tau+N)=f|_k\beta^{-1}(\tau),\]
+于是我们有傅里叶展开
+  \[f|_k \beta^{-1}(\tau)=\sum_{n=1}^\infty c_n^{(\beta)}q_N^n.\]
+和上一节情形类似, $\varphi(\beta^{-1}\tau)=|f|_k\beta^{-1}(\tau)|(\Im \tau)^{k/2}$ 在 $\Im\tau\ge 2$ 上有界. 而 $R_N$ 去掉每个尖点的一个小领域是紧集, 从而 $\varphi(\tau)$ 在整个 $R_N$ 上有界. 容易验证 $\varphi$ 是 $\Gamma_0(N)$ 不变的, 因此 $\varphi$ 在 $\CH$ 上有界. 其余部分同上一节.
+\end{proof}
+
+\begin{definition}{Atkin-Lehner 算子}{Atkin-Lehner operator}
+设 $\alpha_N=\smat{0}{-1}{N}{0}$. 设 $f\in M_k\bigl(\Gamma_0(N)\bigr)$, 我们称 $w_Nf=f|_k \alpha_N$ 为 \noun{Atkin-Lehner 算子}.
+\end{definition}
+
+对于 $\gamma=\smat{a}{b}{c}{d}, \alpha_N\gamma\alpha_N^{-1}=\smat{d}{-c/N}{-Nb}{a}$. 因此
+  \[\alpha_N\Gamma_0(N)\alpha_N^{-1}\subseteq \Gamma_0(N).\]
+对于 $\gamma\in\Gamma_0(N)$,
+  \[(f|_k\alpha_N)|_k\gamma=(f|_k\alpha_N^{-1}\gamma\alpha_N^{-1})|_k\alpha_N=f|_k\alpha_N,\]
+因此 $w_N f$ 也是权 $k$ 级 $N$ 的函数.
+\begin{proposition}{}{}
+$w_N$ 将 $M_k\bigl(\Gamma_0(N)\bigr)$ 映到 $M_k\bigl(\Gamma_0(N)\bigr)$, $S_k\bigl(\Gamma_0(N)\bigr)$ 映到 $S_k\bigl(\Gamma_0(N)\bigr)$.
+\end{proposition}
+\begin{proof}
+直接计算可知
+  \[\smat{1}{N^2}{}{1}\in \beta\alpha_N^{-1}\Gamma_0(N)\alpha_N\beta^{-1},\quad \beta\in\SL(2,\BZ).\]
+因此
+  \[(w_Nf)|_k\beta^{-1}(\tau)=\sum_{n=0}^\infty c_n^{(\beta)} q_{N^2}^n.\]
+但 $w_Nf$ 实际上是权 $k$ 级 $N$ 的全纯函数, 因此 $c_n^{(\beta)}=0,N\nmid n$. 于是 $w_Nf$ 在 $\beta^{-1}\infty$ 全纯, 从而它是模形式. 同理可知 $w_N:S_k\bigl(\Gamma_0(N)\bigr)\to S_k\bigl(\Gamma_0(N)\bigr)$.
+\end{proof}
+
+显然 $w_N^2=1$, 因此 $w_N$ 是一个内卷, 从而它诱导了分解
+  \[S_k\bigl(\Gamma_0(N)\bigr)=S_k^+\bigl(\Gamma_0(N)\bigr)\oplus S_k^-\bigl(\Gamma_0(N)\bigr),\]
+其中 $S_k^\pm\bigl(\Gamma_0(N)\bigr)$ 上 $w_N$ 特征值为 $\pm 1$.
+
+\begin{theorem}{}{}
+若 $f\in S_k^\varepsilon\bigl(\Gamma_0(N)\bigr)$, 则 $L(s,f)$ 在 $\Re s>k/2+1$ 上收敛, 且可以解析延拓至复平面. 我们有函数方程
+  \[\Lambda(s,f)=\varepsilon(-1)^{k/2}\Lambda(k-s,f),\]
+其中 $\Lambda(s,f)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(s,f).$
+\end{theorem}
+\begin{proof}
+和上一节类似, 由 $c_n$ 的估计可知 $L(s,f)$ 在 $\Re s>k/2+1$ 时收敛. 由于 $w_Nf=\varepsilon f$,
+  \[f\left(\frac{i}{N\sigma}\right)=\varepsilon N^{k/2} i^k\sigma^kf(i\sigma).\]
+我们有
+  \[\Lambda(s,f)=N^{s/2}\int_0^\infty f(i\sigma)\sigma^{s-1}\diff \sigma.\]
+我们知道
+  \[\int_{1/\sqrt{N}}^\infty f(i\sigma)\sigma^{s-1}\diff \sigma\]
+对任意 $s$ 收敛, 且
+  \[\int_0^{1/\sqrt{N}} f(i\sigma)\sigma^{s-1}\diff \sigma=\varepsilon N^{k/2-s}i^k\int_{1/\sqrt{N}}^\infty f(i\sigma)\sigma^{k-s-1}\diff \sigma\]
+右侧对任意 $s$ 收敛. 因此我们得到了 $\Lambda(s,f)$ 的解析延拓和函数方程.
+\end{proof}
+
+
+
+\section{椭圆曲线}
+\label{sec:elliptic curves}
+
+\subsection{代数曲线的亏格}
+
+\begin{definition}{代数曲线}{algebraic curve}
+所谓的代数闭域 $\ov K$ 上的\noun{代数曲线}, 是指 $\ov K$ 上有限多个多项式的公共零点, 且其在 $\ov K$ 之上的有理函数全体 $\ov K(C)$ 的超越维数为 $1$. 如果我们考虑的是射影空间, 则是指有限多个齐次多项式的公共零点, 且其交某个 $\BA^n\subset \BP^n$ 为 $\BA^n$ 中的曲线.
+\end{definition}
+
+\begin{definition}{光滑和奇异}{smooth and singular}
+设曲线 $C$ 由 $\ov K[X_1,\dots,X_n]$ 上的方程给出, 则零化 $C$ 的多项式全体构成 $\ov K[X_1,\dots,X_n]$ 的理想 $I$. 如果 $I$ 可以由 $K$ 上的多项式生成, 称 $C$ 定义在 $K$ 上.
+设 $f_1,\dots,f_m$ 生成 $I$, 则曲线 $C$ 在点 $P$ 处\noun{光滑}是指 $\left(\frac{\partial f_i}{\partial X_j}\right)_{ij}$ 的秩为 $n-1$. 不光滑的点称之为\noun{奇异}点. 若 $C$ 无奇异点, 称 $C$ 光滑.
+\end{definition}
+
+\begin{example}
+设 $C: y^2=x^3+x$, 则 $C$ 的奇异点满足 $2y=3x^2+1=0$, 因此当 $K$ 特征为 $2$ 时, $(1,0)$ 是奇异点; 其它情形 $C$ 是光滑的.
+\end{example}
+
+设 $C$ 是一条射影光滑曲线, $P$ 是 $C$ 上一个点. 称
+  \[\ov K[V]_P=\set{f/g\in\ov K(V)\mid g(P)\neq 0}\]
+为 $P$ 处\noun{局部环}, 它是一个离散赋值环, 因此我们有规范化赋值
+  \[\ord_P:\ov K(C)\to \BZ\cup\set\infty.\]
+我们称形式有限和 $\sum_P n_P(P)$ 为\noun{除子}.
+记
+  \[\div(f)=\sum_P \ord_P(f)(P),\quad f\neq 0\]
+是其对应的除子, 称之为\noun{主除子}. 对于射影曲线, 其上处处全纯的函数只可能是常值函数, 换言之 $\div(f)\ge 0\iff f\in \ov K^\times$. 这个 $\ge$ 表示每个系数都 $\ge$.
+
+考虑 $\omega\in \Omega_{\ov K(C)/\ov K}$, 则在每个 $P$ 处, 设 $t$ 是它的局部环的素元, 则存在 $f$ 使得 $\omega=f\diff t$, 定义
+  \[\ord_P(\omega):=\ord_P(f),\quad \div(\omega):=\sum_P \ord_P(\omega)(P).\]
+如果 $\div(\omega)\ge 0$, 称 $\omega$ 是\noun{全纯微分}. 全纯微分全体构成有限维 $\ov K$ 向量空间, 其维数被称为 $C$ 的\noun{亏格}, 记为 $g=g_C$.
+
+\begin{example}
+(1) $C=\BP^1$. 当 $P=\alpha\in\ov K$ 时, $t-\alpha$ 是素元, 从而 $\diff t=\diff (t-\alpha)$ 阶为 $0$. 当 $P=\infty$ 时, $1/t$ 是素元, $\diff t=-t^{-2}\diff (1/t)$ 阶为 $-2$. 因此
+  \[\div(\diff t)=-2(\infty).\]
+
+(2) $C:y^2=(x-e_1)(x-e_2)(x-e_3)$, $e_i$ 两两不同. 当 $P=P_i=(e_i,0)$ 时, $\ord(y)=1,\ord(x-e_i)=2$, 从而 $\diff x=\diff (x-e_i)$ 阶为 $1$. 当 $P=\infty$=[0:1:0] 时, $\ord(y)=-3,\ord(x)=-2,\ord(x/y)=1$, 从而 $\diff x$ 阶为 $3$. 因此
+  \[\div(\diff x)=(P_1)+(P_2)+(P_3)-3(\infty).\]
+由此可知 $\diff x/y$ 是全纯微分, 实际上此时全纯微分是一维的, 即 $g=1$.
+\end{example}
+
+
+\subsection{椭圆曲线等分点}
+
+\begin{definition}{椭圆曲线}{elliptic curve}
+$K$ 上的椭圆曲线 $(E,O)$ 是指 $K$ 上的亏格 $1$ 的光滑曲线 $E$ 和一个点 $O\in E(K)$.
+\end{definition}
+
+记 $\CL(D)=\set{f|\div(f)\ge D}\cup\set0$, 则通过黎曼-Roch定理可知   \[\dim \CL\bigl(n(O)\bigr)=n.\] 设 $1,x$ 生成 $\CL\bigl(2(O)\bigr)$, $1,x,y$ 生成 $\CL\bigl(3(O)\bigr)$, 则 $1,x,y,x^2,xy,y^2,x^3$ 生成 $\CL\bigl(6(O)\bigr)$, 因此它们线性相关. 从而 $(x,y):E\to \BP^2$ 且
+  \[E: y^2+a_1y+a_3=x^3+a_2x^2+a_4x+a_6,\quad a_i\in K.\]
+该形式被称为\noun{魏尔斯特拉斯方程}. 此时 $O$ 对应 $[0:1:0]\in \BP^2$, 具体见\cite[\S III.3]{Silverman2009}.由于 $E$ 是光滑的, 因此其判别式 $\Delta$ 非零.
+
+容易看出 $E(\BR)$ 拥有1或2个连通分支. 我们来考虑 $E(\BC)$. 设 $\Lambda\subseteq \BC$ 为复平面上一个格. 定义
+  \[g_2(\Lambda)=60G_4(\Lambda),\quad g_3(\Lambda)=140 G_6(\Lambda),\]
+  \[\wp(z,\Lambda)=\frac{1}{z^2}+\sum_{0\neq\omega\in\Lambda}\left(\frac{1}{(z-\omega)^2}-\frac{1}{\omega^2}\right),\]
+则 $\wp$ 是 $\Lambda$ 周期的, 且极点为 $\omega\in\Lambda$.
+
+\begin{theorem}{}{}
+对于椭圆曲线 $E/\BC:y^2=4x^3-g_2 x-g_3$, 存在格 $\Lambda$ 使得 $g_2=g_2(\Lambda),g_3=g_3(\Lambda)$, 且我们有连续同构
+  \[\begin{split}
+\BC/\Lambda&\simto E(\BC)\\
+z&\mapsto \bigl(\wp(z),\wp'(z)\bigr)=[\wp(z):\wp'(z):1].
+\end{split}\]
+容易看出 $0$ 映为 $\BP^2(\BC)$ 的无穷远点 $\infty=[0:1:0]\in E(\BC)$.
+\end{theorem}
+显然 $\BC/\Lambda$ 有一个自然地群结构, 这给出了 $E(\BC)$ 上的群结构. 在魏尔斯特拉斯方程下, 设 $A,B\in E(\BC)$, 则 $C=A+B$ 关于 $x$ 轴的对称点 $-C$ 和 $AB$ 在同一条直线上. $AB$ 重合时取切线,  $AB$ 垂直 $x$ 轴时 $A+B=O=\infty$. 这种加法定义方式对于任何域上的椭圆曲线都是良定的, 即 $E(K)$ 总形成一个交换群.
+
+如果我们换一个 $K$ 点 $O'$, 则 $(E,O)\simto (E,O'), P\mapsto P+O'-O$ 是群同构, 所以我们可以任取一个 $E(K)$ 点, 这并不影响 $E$ 本质的结构.
+
+$E(\BC)$ 和环面 $\BC/\Lambda$ 同构, 从而它的 $n$ 等分点
+  \[E[n]\cong \BZ/n\BZ\oplus\BZ/n\BZ.\]
+很容易看出 $E[n]$ 的坐标均为代数数, 换言之 $E[n]\subseteq E(\ov\BQ)$. 实际上, $\Char K\nmid n$ 时, 总有 $E[n]\cong(\BZ/n\BZ)^{\oplus2}$.
+
+设 $p$ 为素数, 考虑 $p$ 倍映射 $E[p^{n+1}]\to E[p^n]$, 则我们称
+  \[T_p(E)=\plim E[p^n]\]
+为 $E$ 的泰特模, 它是秩为 $2$ 的自由 $\BZ_p$ 模. 固定它的一组基 $e_1,e_2$, 则 $G_\BQ$ 的作用在这组基下的矩阵形式给出了表示
+  \[\rho_p:G_\BQ\to\GL_2(\BZ_p).\]
+\begin{theorem}{}{}
+设 $K_{p^\infty}$ 为包含 $E[p^\infty]$ 的最小的域, 即 $\Ker \rho_p$ 的固定域. 设 $E$ 在素数 $\ell\neq p$ 处为好约化, 则 $\ell$ 在 $K_{p^\infty}/\BQ$ 非分歧. 设 $\Frob_\ell$ 为 $\ell$ 的弗罗贝尼乌斯共轭类, 则
+  \[\det\bigl(\rho_p(\Frob_\ell)\bigr)=\ell.\]
+设 $a_\ell=\Tr\bigl(\rho_p(\Frob_\ell)\bigr)$, 则
+  \[\# E(\BF_\ell)=\ell+1-a_\ell.\]
+我们有 $|a_\ell|\le 2\sqrt{\ell}$.
+\end{theorem}
+我们在下一节中叙述约化的定义.
+
+\begin{theorem}{Mordell 定理}{}
+$E(\BQ)$ 是有限生成交换群.
+\end{theorem}
+
+$E(\BQ)$ 的有限部分只可能是 $\BZ/n\BZ,1\le n\le 10$ 或 $n=12$; $\BZ/n\BZ\oplus\BZ/2\BZ$, $n=2,4,6,8$. $E(\BQ)$ 的秩被称为 $E$ 的\noun{秩}. 
+
+\subsection{椭圆曲线的 \texorpdfstring{$L$}{L} 函数}
+同一条椭圆曲线对应的魏尔斯特拉斯方程可以(也只可能)相差 $F$ 上的线性变换. 当 $F=\BQ$ 是有理函数域时, 在不同的表达形式中, 存在判别式的绝对值最小的那个整系数方程, 我们称之为\noun{极小魏尔斯特拉斯模型}(N\'eron). 例如 $y^2=x^3-x, y^2+y=x^3-x^2$.
+
+考虑有理数域上椭圆曲线 $E$ 的极小魏尔斯特拉斯模型和相应的判别式 $\Delta$. 对于任意素数 $p$, 我们将该方程系数看成是 $\BF_p$ 上, 则 $p\nmid\Delta$ 时该曲线是仍然是光滑的, 它是 $\BF_p$ 上的椭圆曲线, 我们称之为\noun{好约化}; 否则称之为\noun{坏约化}. 假设 $E$ 在 $p$ 处有坏约化, 如果在奇点处只有一条切线(尖点), 称之为\noun{加性约化}; 如果有两条不同切线(结点), 称之为\noun{乘性约化}, 此时若切线斜率位于 $\BF_p$, 称之为\noun{分裂乘性约化}, 否则称之为\noun{非分裂乘性约化}.
+\begin{proposition}{}{}
+若 $p$ 为加性约化, $E_\ns(\BF_p)\cong \BF_p$;
+若 $p$ 为分裂乘性约化, $E_\ns(\BF_p)$ $\cong \BF_p^\times$;
+若 $p$ 为非分裂乘性约化, $E_\ns(\BF_p)\cong \BF_{p^2}^{\bfN=1}$. 这里 $E_\ns$ 表示光滑部分.
+\end{proposition}
+
+\begin{example}
+$y^2=x^3-x$ 在 $p=2$ 处为加性约化, 其余素数处为好约化. $y^2+y=x^3-x$ 在 $p=11$ 处为分裂乘性约化, 其余素数处为好约化.
+\end{example}
+
+对于 $\BQ$ 上的椭圆曲线 $E$, 定义
+  \[L_p(s,E)=\begin{cases}
+    (1-a_p p^{-s}+p^{1-2s})^{-1}, & \text{如果 $p$ 处为好约化};\\
+    (1-p^{-s})^{-1},              & \text{如果 $p$ 处为分裂乘性约化};\\
+    (1+p^{-s})^{-1},              & \text{如果 $p$ 处为非分裂乘性约化};\\
+    1,                            & \text{如果 $p$ 处为加性约化}.
+  \end{cases}\]
+实际上, 在坏约化处 $L_p(s,E)=(1-a_p p^{-s})^{-1}$, $a_p=p+1-\#E(\BF_p)$.
+定义
+  \[L(s,E)=\prod_{p} L_p(s,E).\]
+\begin{proposition}{}{}
+$L(s,E)$ 在 $\Re(s)>3/2$ 时绝对收敛.
+\end{proposition}
+\begin{proof}
+对于好约化 $p$, 由于 $|a_p|\le 2\sqrt{p}$, 因此 $X^2-a_pX+p=0$ 的根复共轭, 设为 $\alpha_p,\ov \alpha_p$. 设
+  \[L(s,E)=\sum_{n=1}^\infty a_n n^{-s},\]
+则 $a_{p^k}=\sum_{i=0}^k \alpha_p^i\ov\alpha_p^{k-i}, |a_{p^k}|\le (k+1)p^{k/2}$. 显然这对坏约化也成立, 于是
+  \[|a_n|\le \sqrt{n}\prod_p(e_p+1)\le n^{\half+\varepsilon},\quad n\to \infty.\]
+由此可知 $\Re(s)>3/2$ 时, $L(s,E)$ 绝对收敛.
+\end{proof}
+
+它可以解析延拓至 $\BC$ 且具有函数方程 $s\leftrightarrow 2-s$, 这些依赖于它的模性, 我们将在下一节叙述.
+
+著名的伯奇-斯温纳顿-戴尔猜想断言
+  \[\ord_{s=1} L(s,E)=\rank_\BZ E(\BQ).\]
+我们可以将其视为
+  \[\ord_{s=0}\zeta_K(s)=\rank \CO_K^\times\]
+的一种类比. 同时他们还给出了 $L(s,E)$ 在 $s=1$ 处泰勒展开的首项系数与椭圆曲线的算术量之间的联系. 解析秩(左端)为 $0$ 和 $1$ 的情形人们已经基本完全解决了, 但大于等于 $2$ 的情形人们知之甚少.
+
+
+\section{尖形式与椭圆曲线}
+
+\subsection{紧黎曼面}
+设 $f\in S_2\bigl(\Gamma_0(N)\bigr)$, 则 $f(\zeta)\diff\zeta$ 是 $\Gamma_0(N)$ 不变的. 固定 $\tau_0\in\CH$, 定义
+  \[F(\tau)=\int_{\tau_0}^\tau f(\zeta)\diff\zeta.\]
+由于 $f$ 是全纯的, 因此该积分不依赖于路径的选取. 对于 $\gamma\in \Gamma_0(N)$, 我们有
+  \[F\bigl(\gamma(\tau)\bigr)=F((\tau)+\int_{\tau_0}^{\gamma\tau_0}f(\zeta)\diff\zeta.\]
+令
+  \[\Phi_f(\gamma)=\int_{\tau_0}^{\gamma\tau_0}f(\zeta)\diff\zeta.\]
+由 $f(\zeta)\diff\zeta$ 的不变性易知 $\Phi_f(\gamma)$ 不依赖于 $\tau_0$ 的选取.
+\begin{proposition}{}{}
+对于 $f\in S_2\bigl(\Gamma_0(N)\bigr)$, $\Phi_f$ 是 $\Gamma_0(N)$ 到 $\BC$ 的群同态.
+\end{proposition}
+\begin{proof}
+  \[\Phi_f(\gamma_1\gamma_2)=\int_{\tau_0}^{\gamma_1\gamma_2\tau_0}=\int _{\tau_0}^{\gamma_1\tau_0}+\int_{\tau_0}^{\gamma_2\tau_0}=\Phi_f(\gamma_1)+\Phi_f(\gamma_2).\]
+\end{proof}
+
+一般地, 设 $X$ 是紧黎曼面, 亏格为 $g\ge 1$, 则 $\rmH_1(X,\BZ)$ 是秩 $2g$ 的自由交换群. 设 $a_1,\dots,a_g,b_1,\dots,b_g$ 为其一组基并满足特定的相交条件.
+
+\begin{proposition}{}{}
+设 $X$ 是紧黎曼面, 亏格为 $g\ge 1$, $\omega_1,\dots,\omega_g$ 是 $X$ 上全纯微分的一组基, 则向量
+  \[\begin{pmatrix}
+    \int_{c_k} \omega_1\\
+    \vdots\\
+    \int_{c_k} \omega_g
+  \end{pmatrix}\in\BC^g\]
+在 $\BR$ 上线性无关.
+\end{proposition}
+因此它们生成 $\BC^g$ 中的一个完全格 $\Lambda(X)$, 显然这不依赖 $\set{c_k}$ 的选取. 如果换一组基 $\set{\omega_j}$, 则 $\Lambda(X)$ 会相差一个 $\GL(g,\BC)$ 的作用.
+
+$X$ 的\noun{雅克比簇}是指 $g$ 维复环面 $J(X)=\BC^g/\Lambda(X)$. 固定一个点 $x_0\in X$, 令
+  \[\Phi:X\to J(X),\quad \Phi(x)=\set{\int_{x_0}^x\omega_j}_{j=1}^g.\]
+对于 $X=X_0(N)$, $\Phi$ 就是 $\set{\Phi_f}$, 其中 $f$ 是 $S_2\bigl(\Gamma_0(N)\bigr)$ 的一组基.
+
+由于 $J(X)$ 是一个群, 容易将 $\Phi$ 线性扩充到 $X$ 的除子上, 即 $\Phi:\Div(X)\to J(X)$. 我们定义
+  \[\deg\bigl(\sum n_P (P)\bigr)=\sum n_P,\]
+则 $\deg\bigl(\div(f)\bigr)=0$.
+
+\begin{theorem}{阿贝尔定理}{}
+设 $X$ 是紧黎曼面, 亏格为 $g\ge 1$. 除子 $D$ 是主除子当且仅当 $\deg(D)=0$ 且 $\Phi(D)=0\in J(X)$.
+\end{theorem}
+
+\begin{corollary}{}{}
+(1) 如果 $g=1$, 则 $\Phi:X\to J(X)$ 是双全纯同构.
+
+(2) 如果 $g>1$, 则 $\Phi:X\to J(X)$ 是单全纯映射, 它的像是 $J(X)$ 的子流形.
+\end{corollary}
+
+记 $K(X)$ 为 $X$ 上亚纯函数全体.
+\begin{theorem}{}{}
+设 $X$ 是紧黎曼面, 亏格为 $g\ge 0$, $x\in K(X)$ 非常值, 则存在 $y\in K(X)$ 非常值, 以及不可约多项式 $P(x,y)=0$, 使得
+  \[K(X)\cong\BC(x)[y]/\bigl(P(x,y)\bigr).\]
+因此 $X/\BC$ 是代数曲线.
+\end{theorem}
+
+
+\subsection{模函数}
+设
+  \[j(\tau)=\frac{1728 g_2(\tau)^3}{\Delta(\tau)}=\frac1q+744+\sum_{n=1}^\infty c_n q^n,\]
+则它是权 $0$ 的模函数, 因此 $j\in K\bigl(X_0(N)\bigr)$. 由于
+  \[\Delta(\tau)=(2\pi)^{12}q\prod_{n=1}^\infty(1-q^n)^{24},\]
+因此 $\Delta$ 在 $\CH$ 上无零点, 从而 $j$ 在 $\CH$ 上全纯.
+
+\begin{proposition}{}{}
+$j:\SL(2,\BZ)\bs \CH\to \BC$ 是满射.
+\end{proposition}
+\begin{proof}
+固定 $z_0\in\BC$, 则 $\deg\bigl(\div(j-z_0)\bigr)=0$. 由于 $\pi(\infty)$ 是它唯一的极点, $\pi:\CH^*\to X(1)$, 因此
+  \[\div(j-z_0)=p-\pi(\infty).\]
+从而 $j(p)=z_0$, $j$ 是满射.
+\end{proof}
+
+\begin{lemma}{}{}
+如果 $f$ 权 $0$ 且在 $\CH$ 上全纯, 设 $f(\tau)=\sum_{n=-M}^\infty c_nq^n$. 则 $f$ 是 $j$ 的多项式, 且系数落在 $\BZ[c_n:n\in\BZ]$ 中. 
+\end{lemma}
+\begin{proof}
+若 $M=0$, 则 $f$ 是常数. 假设对 $M-1$ 命题成立, 则 $f-c_{-M}j^M$ 在 $\pi(\infty)$ 是至多 $M-1$ 阶极点, 从而由归纳假设可知命题成立.
+\end{proof}
+
+\begin{theorem}{}{}
+$K\bigl(X_0(1)\bigr)=\BC(j)$.
+\end{theorem}
+\begin{proof}
+由于 $f\in K\bigl(X_0(1)\bigr)$ 只有有限多极点, 因此
+  \[f(\tau)\cdot \prod_{\ord_P(f)<0}\bigl(j(\tau)-j(p)\bigr)^{-\ord_P(f)}\]
+仅在 $\pi(\infty)$ 有极点, 从而它是 $j$ 的多项式.
+\end{proof}
+
+对于一般的 $N$, 令 $j_N=j\circ \smat{N}{0}{0}{1}$, 则我们有
+\begin{theorem}{}{}
+$K\bigl(X_0(N)\bigr)=\BC(j,j_N)$.
+\end{theorem}
+实际上, $j,j_N$ 满足的多项式可以为 $\BQ$ 系数的, 从而 $X_0(N)$ 可以视为 $\BQ$ 上的代数曲线.
+
+
+\subsection{从尖形式到椭圆曲线}
+设 $M(n)$ 为行列式为 $n$ 的整矩阵全体, 
+  \[M(n,N)=\set{\smat abcd\mid ad-bc=n,N\mid c,(a,N)=1}.\]
+设 $\set{\alpha_i}$ 为 $\Gamma_0(N)$ 关于 $M(n,N)$ 的右陪集代表元. 对于 $f\in M_k\bigl(\Gamma_0(N)\bigr)$, 定义
+  \[T_k(n)f=n^{k/2-1}\sum_i f|_k \alpha_i.\]
+称
+  \[T_k(n):M_k\bigl(\Gamma_0(N)\bigr)\to M_k\bigl(\Gamma_0(N)\bigr)\]
+为\noun{赫克算子}.
+
+\begin{theorem}{赫克定理}{}
+在 $M_k\bigl(\Gamma_0(N)\bigr)$ 上, 我们有
+
+(1) 若 $p\nmid N$, 
+  \[T_k(p^r)T_k(p)=T_k(p^{r+1})+p^{k-1}T_k(p^{r-1}).\]
+
+(2) 若 $p\mid N$, 
+  \[T_k(p^r)=T_k(p)^r.\]
+
+(3) 若 $(m,n)=1$, 则 $T_k(m)T_k(n)=T_k(mn)$.
+
+(4) $T_k(n),n\ge 1$ 生成的代数可以有 $T_k(p)$ 生成, 它是交换代数.
+
+$(n,N)=1$ 时, $T_k(n)$ 将尖形式映为尖形式.
+\end{theorem}
+
+\begin{proposition}{}{}
+如果 $f\in S_k\bigl(\Gamma_0(N)\bigr)$ 是所有 $T_k(n)$ 的特征形式, $T_k(n)f=\lambda(n)f$, 则其傅里叶系数
+  \[c_n=\lambda(n)c_1.\]
+\end{proposition}
+假设 $c_1=1$, 则由赫克算子的运算性质可知
+  \[L(s,f)=\prod_{p\mid N} (1-c_pp^{-s})^{-1}\prod_{p\nmid N}(1-c_p^{-s}+p^{k-1-2s})^{-1},\quad \Re(s)>k/2+1.\]
+对于 $f\in S_k\bigl(\Gamma_0(N/r)\bigr),1<r\mid N$, 我们有 $f(\tau),f(r\tau) \in S_k\bigl(\Gamma_0(N)\bigr)$. 
+所谓的\noun{新形式}, 是指不从上述方式得到的赫克算子的特征尖形式. 如果两个特征形式的特征值均相同, 称之\noun{等价}.
+
+\begin{theorem}{Atkin-Lehner 定理}{}
+如果 $f\in S_k\bigl(\Gamma_0(N)\bigr)$ 是新形式, 则它的等价类是一维的.
+\end{theorem}
+
+\begin{theorem}{}{}
+设 $f(\tau)=\sum_{n=1}^\infty c_ne^{2\pi in\tau}\in S_2\bigl(\Gamma_0(N)\bigr)$ 是新形式且 $c_1=1$. 假设 $c_n\in\BZ,\forall c_n$, 则存在椭圆曲线 $E$ 和满同态 $\nu:J_0(N)\to E$ 使得
+
+(1) 设 $\Lambda_f\subseteq\BC$ 是 $\Phi_f$ 的像, 则 $\BC/\Lambda_f\cong E(\BC)$,
+
+(2) $L(s,E)=L(s,f)$ 除去至多有限个素数外, 具有相同的欧拉因子.
+\end{theorem}
+
+由此可得非常值(满)映射 $\nu\circ\Phi:X_0(N)\to E$.
+
+\subsection{模性}
+
+\begin{theorem}{谷山-韦伊-志村猜想, 怀尔斯, Breuil-Conrad-Diamond-泰勒}{}
+设 $E/\BQ$ 是椭圆曲线, 则存在正整数 $N$ 使得存在非常值映射 $F:X_0(N)\to E$.
+\end{theorem}
+
+设 $\omega$ 是 $E$ 上非常值全纯微分, 则 $F^*\omega=f(\tau)\diff \tau, f\in S_2\bigl(\Gamma_0(N)\bigr)$ 是特征形式, 且
+  \[L(s,f)=L(s,E).\]
+
+\begin{theorem}{}{}
+设 $E/\BQ$ 是椭圆曲线, 则存在正整数 $N$ 使得则 $L(s,E)$ 可以全纯延拓且
+  \[\Lambda(s,E)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(s,E)\]
+满足函数方程
+  \[\Lambda(s,E)=-\varepsilon\Lambda(2-s,E).\]
+\end{theorem}
+
+Frey, 塞尔, Ribet 的工作显示, 如果
+  \[\alpha^\ell+\beta^\ell=\gamma^\ell,\ell\ge 5,\alpha\beta\gamma\neq 0\]
+则
+  \[E:y^2=x(x-\alpha^\ell)(x-\beta^\ell)\]
+只可能对应特征形式 $f\in S_2\bigl(\Gamma_0(2)\bigr)$. 然而这是零空间, 因此如果 $E$ 具有模性, 则费马大定理
+  \[\alpha^\ell+\beta^\ell=\gamma^\ell,\ell\ge 5,\alpha\beta\gamma=0\]
+成立.
+
+

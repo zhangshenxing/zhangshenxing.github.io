@@ -1,0 +1,1460 @@
+
+
+\chapter{类域论}
+\begin{introduction}
+\item 抽象类域论 \ref{sec:abstract class field theory}
+\item 局部类域论 \ref{sec:local class field theory}
+\item 整体类域论 \ref{sec:global class field theory}
+\end{introduction}
+
+我们称伽罗瓦群为交换群的扩张为\noun{阿贝尔扩张}.
+\begin{question}{}{}
+给定数域 $K$, 如何确定它的所有阿贝尔扩张?
+\end{question}
+
+类域论的主要目的是为了分类给定域 $K$ 的所有阿贝尔扩张, 这些扩张应当由 $K$ 自身的结构所导出. 它建立了这些扩张和与 $K$ 有关的交换群 $A_K$ 的子群的一一对应.
+在局部域的情形 $A_K=K^\times$, 在整体域的情形 $A_K$ 是理想类群的变种——伊代尔类群. 类域论的核心是互反映射
+  \[r: G(L/K)^\ab\simto A_K/\bfN_{L/K} A_L.\]
+我们先研究抽象的类域论, 然后再应用到具体情形.
+
+\section{抽象类域论}
+\label{sec:abstract class field theory}
+抽象类域论又称 class formation. 它的目的是为了统一地处理各种类域论. 在阅读过程中, 我们可以先代入局部类域论的情形来理解.
+
+\subsection{射影有限群}
+为了研究无限伽罗瓦扩张, 我们需要学习射影有限群.
+\begin{proposition}{}{}
+\noun{射影有限群}是指有限群的逆向极限, 每个分量赋予离散拓扑. 这等价于一个紧豪斯多夫群, 且存在由正规子群形成幺元的一组邻域基.
+\end{proposition}
+\begin{proof}
+设 $G$ 是一个紧豪斯多夫群, 正规子群 $\set{N_i}$ 形成 $1\in G$ 的一组邻域基. 则 $N_i$ 的陪集形成 $G$ 的一组开覆盖, 因此 $G/N_i$ 有限. 设
+  \[f:G\to \plim G_i,\quad G_i=G/N_i.\]
+由于 $G$ 是豪斯多夫, $G_i$ 都是离散的.
+由于 $\cap N_i=\set{1}$, 因此 $f$ 单.
+对于 $\plim G_i$ 的开集 
+  \[U_S=\prod_{i\in S}\set{1_{G_i}} \times  \prod_{i\notin S} \plim G_i,\quad \#S<\infty,\]
+$f^{-1}(U_S)=\cap_{i\in S} N_i$ 开, 因此 $f$ 连续.
+对于任意 $x=(x_i)\in\plim G_i$ 和邻域 $xU_S$, 令 $N=\cap_{i\in S} N_i$, 则存在 $y\in G$ 使得 $x_i=y\mod N$, 因此 $f(y)\in xU_S$, $f$ 是稠密的. 由于 $G$ 紧, $f$ 将闭集映为闭集, 开集映为开集, 因此 $f$ 是满的.
+
+反之则可以直接验证得到.
+\end{proof}
+
+\begin{exercise}\label{exe:closed_open_subgroups}
+拓扑群的开子群是闭子群, 有限指标的闭子群是开子群.
+\end{exercise}
+
+\begin{example}
+设 $\Omega/k$ 是任意伽罗瓦扩张, $G=G(\Omega/k)$ 为其伽罗瓦群. 我们有\footnote{称该拓扑为\noun{克鲁尔拓扑}.}
+  \[G(\Omega/k)\cong\plim G(K/k),\]
+其中 $K$ 取遍 $k$ 的有限伽罗瓦子扩张.
+\end{example}
+
+\begin{example}
+设 $\CO$ 是一个剩余域有限的完备离散赋值环, $\fp$ 是极大理想, 则
+  \[\CO=\plim_n \CO/\fp^n,\quad \CO^\times=\plim_n \CO^\times/U^{(n)}.\]
+\end{example}
+
+\begin{example}
+令
+  \[\wh \BZ=\plim_n \BZ/n\BZ.\]
+则 $\wh \BZ/n\wh \BZ\cong \BZ/n\BZ$ 且
+  \[\wh \BZ=\prod_p \BZ_p.\]
+我们有自然的嵌入 $\BZ\inj \wh \BZ$, 它是稠密的.
+\end{example}
+
+\begin{example}
+我们有 
+  \[G(\BF_{q^n}/\BF_q)\cong \BZ/n\BZ,\quad \varphi_q\mapsto 1,\]
+其中 $\varphi_q(x)=x^q$ 是弗罗贝尼乌斯. 因此
+  \[G(\ov\BF_q/\BF_q)\cong \wh \BZ.\]
+\end{example}
+
+\begin{example}
+如果 $K$ 是一个完备离散赋值域, 且剩余域 $\kappa$ 有限. 则我们知道 $K^\ur=K W(\ov\kappa)$ 是它的极大非分歧扩张, 且
+  \[G(K^\ur/K)\cong G(\ov \kappa/\kappa)\cong \wh \BZ.\]
+\end{example}
+
+\begin{example}
+设 $\BQ^\cyc=\cup_n \BQ(\zeta_n)$, 则
+  \[G(\BQ^\cyc/\BQ)\cong \plim (\BZ/n\BZ)^\times=\wh\BZ^\times\cong\prod_p \BZ_p^\times.\]
+\end{example}
+
+\begin{example}
+如果一个射影有限群 $G$ 由一个元素 $\sigma\in G$ 拓扑生成, 即 $G=\ov{\pair{\sigma}}$, 则称之为\noun{射影循环群}. 它的开子群一定形如 $G^n$. 例如 $G=\BZ_p,\wh \BZ$ 均是射影循环群.
+\end{example}
+
+\begin{example}
+设 $A$ 是一个交换扭群, 定义它的\noun{庞特里亚金对偶}为
+  \[A^\vee=\Hom(A,\BQ/\BZ).\]
+如果 $A=\cup_i A_i$ 是一些有限子群的并, 则
+  \[A^\vee=\plim A_i^\vee\]
+是射影有限群. 例如 $A=\BQ/\BZ=\cup_n \frac{1}{n}\BZ/\BZ$,
+则 $(\frac{1}{n}\BZ/\BZ)^\vee=\BZ/n\BZ$,
+  \[A^\vee=\plim \BZ/n\BZ=\wh \BZ.\]
+\end{example}
+
+\begin{example}
+对于任意群 $G$, $N$ 取遍它的有限指标的正规子群. 定义
+  \[\wh G=\plim_N G/N\]
+为它的\noun{射影完备化}. 例如 $\BZ$ 的射影完备化就是 $\wh \BZ$.
+\end{example}
+
+\begin{exercise}
+射影有限(乘法)群 $G$ 均可视为 $\wh \BZ$ 模, 即对于任意 $\sigma\in G,a,b\in\wh\BZ$, $(\sigma^a)^b=\sigma^{ab},\sigma^{a+b}=\sigma^a\sigma^b$. 其作用限制在 $\BZ$ 就是通常的 $\BZ$ 作用.
+\end{exercise}
+
+\begin{exercise}
+如果 $G=\plim_i G_i$ 是射影有限的, 则 $G^\ab=\plim_i G_i^\ab$.
+\end{exercise}
+
+
+\subsection{抽象伽罗瓦理论}
+考虑射影有限群 $G$ 和它的闭子群 $\set{G_E}_{E\in X}$. 我们称 $E$ 是(抽象)\noun{域}, 存在域 $k$ 和 $\bar k$ 满足 $G_k=G,G_{\bar k}=1$. 
+
+如果 $G_L\subseteq G_K$, 我们记 $K\subseteq L$ 或 $L/K$, 并称之为\noun{域扩张}. 如果 $G_L$ 是开子群, 即 $n=[G_K:G_L]$ 有限, 称之为 $n$ 次\noun{有限扩张}. 如果 $G_L\triangleleft G_K$, 称之为\noun{正规}或\noun{伽罗瓦扩张}, 并定义 $G(L/K)=G_K/G_L$. 容易知道 $G=\ilim G(K/k)$, 其中 $K/k$ 取遍所有有限伽罗瓦扩张. 类似地, 我们可以定义域的交、复合、共轭以及循环扩张、阿贝尔扩张等概念, 即对应的 $G_E$ 复合、交、共轭以及 $G(L/K)$ 是循环群、阿贝尔群等.
+
+\begin{example}
+设 $E$ 是一个域, $\Omega$ 是它的一个伽罗瓦扩张, $G=G(\Omega/E)$, $X$ 为所有包含在 $\Omega$ 的 $E$ 的有限扩张 $F$ 以及 $\Omega$, $G_F=G(\Omega/F)$. 特别地, 我们可以取 $\Omega=E^\sep$.
+\end{example}
+
+设 $A$ 是一个拓扑 $G$ 模($A$ 赋予离散拓扑), 即 $G$ 在 $A$ 上的作用 $G\times A\to A$ 连续, 则对于任意 $a\in A$, 存在 $(1,a)\in G\times A$ 的一个邻域 $G_K\times \set{a}$ 落在它的原像, 即 $a\in A_K=A^{G_K}$. 因此
+  \[A=\bigcup_{[K:k]<\infty} A_K.\]
+定义范数映射
+  \[\fct{\bfN_{L/K}: A_L}{A_K}{a}{\prod_\sigma a^\sigma,}\]
+其中 $\sigma$ 取遍 $G_K\bs G_L$ 的一组代表元. 对于伽罗瓦扩张, $A_L$ 是 $G(L/K)$ 模且 $A_L^{G(L/K)}=A_K$.
+因此相应的泰特上同调为
+  \[\begin{split}
+	\rmH^0\bigl(G(L/K),A_L\bigr)&=A_K/\bfN_{L/K}A_L,\\
+	\rmH^{-1}\bigl(G(L/K),A_L\bigr)&=A_L^{\bfN=1}/I_{G(L/K)} A_L.
+	\end{split}\]
+
+\subsection{抽象分歧理论}
+固定一个满射
+  \[d:G\to \wh \BZ.\]
+记 $\wt k$ 为 $I=\ker d$ 的固定域, 则 $G(\wt k/k)\cong \wh \BZ$.
+对于任意域 $K$, 称 
+  \[I_K=G_K\cap I=G_K\cap G_{\wt k}=G_{K\wt k},\]
+为 $K$ 的\nouns{惯性群}{惯性!惯性群}, 它是 $\wt K:=K\wt k$ 的固定域, 称之为 $K$ 的\noun{极大非分歧扩张}. 令
+  \[f_K=[\wh \BZ:d(G_K)],\quad e_K=[I:I_K].\]
+如果 $f_K$ 有限, 则我们有满同态
+  \[d_K=\frac{1}{f_K}d:G_K\to \wh \BZ,\]
+核为 $I_K$, 因此 $d_K:G(\wt K/K)\simto \wh \BZ.$
+
+  \[\xymatrix{
+&& \bar k\\
+\wt k\ar@{-}[r]\ar@{-}[rru]^I & \wt K\ar@{-}[ru]_{I_K} &\\
+k\ar@{-}[r]\ar@{-}[u]^{\wh \BZ}& K \ar@{-}[u]^{d(G_K)}\ar@/_/@{-}[ruu]_{G_K}&
+}\]
+
+\begin{definition}{弗罗贝尼乌斯}{frobenius}
+称 $G(\wt K/K)$ 的拓扑生成元 $\varphi_K=d_K^{-1}(1)$ 为 $K$ 的\noun{弗罗贝尼乌斯}.
+\end{definition}
+
+对于域扩张 $L/K$, 定义\nouns{惯性指数}{惯性!惯性指数} $f_{L/K}=[d(G_K):d(G_L)]$, $e_{L/K}=[I_K:I_L]$.
+我们有 $\wt L=L\wt K$, 于是 $f_{L/K}=[L\cap \wt K:K].$
+对于域扩张 $K\subseteq L\subseteq M$, 显然
+  \[f_{M/K}=f_{L/K}f_{M/L},\quad
+e_{M/K}=e_{L/K}e_{M/L}.\]
+
+\begin{proposition}{}{}
+我们有 $[L:K]=f_{L/K}e_{L/K}$.
+\end{proposition}
+\begin{proof}
+考虑交换图表
+  \[\xymatrix{
+    1\ar[r] & I_L\ar[r]\ar[d] & G_L\ar[r]\ar[d] & d(G_L)\ar[r]\ar[d] &1\\
+    1\ar[r] & I_K\ar[r] & G_K\ar[r] & d(G_K)\ar[r] &1.
+  }\]
+如果 $L/K$ 伽罗瓦, 则
+  \[1\ra I_K/I_L\ra G(L/K)\ra d(G_K)/d(G_L)\ra 1\]
+正合. 如果 $L/K$ 不是伽罗瓦, 考虑它的伽罗瓦闭包 $M/K$, 然后利用 $e,f$ 关于扩张的可乘性即可. 
+\end{proof}
+
+如果 $f_{L/K}=1$, 称之为\noun{完全分歧}, 即 $L\cap \wt K=K$.
+如果 $e_{L/K}=1$, 称之为\noun{非分歧}, 即 $L\subseteq \wt K$.
+此时,
+  \[G(\wt K/K)\ra G(L/K)\]
+是满射. 若 $f_K$ 有限, 称 $\varphi_K$ 的像 $\varphi_{L/K}$ 为 $L/K$ 的\noun{弗罗贝尼乌斯}.
+
+\begin{definition}{亨泽尔赋值}{henselian valuation}
+$A_k$ 的一个\noun{亨泽尔赋值}是指同态
+  \[v:A_k\to \wh \BZ,\]
+满足
+\begin{enumerate}
+\item $v(A_k)=Z\supseteq \BZ$ 和 $\BZ/n\BZ\cong Z/nZ, \forall n\in \BN$,
+\item $v(\bfN_{K/k}A_K)=f_kZ$.
+\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}{}{}
+对有限扩张 $K/k$, 
+  \[v_K=\frac{1}{f_K}v\circ\bfN_{K/k}:A_K\to Z\]
+定义了一个满同态, 且
+\begin{enumerate}
+\item $v_K=v_{K^\sigma}\circ \sigma,\forall \sigma\in G$,
+\item 对于有限扩张 $L/K$,
+  \[\xymatrix{
+A_L\ar[r]^{v_L}\ar[d]_{\bfN_{L/K}} &\wh \BZ\ar[d]^{f_{L/K}}\\
+A_K\ar[r]^{v_K} &\wh\BZ.
+}\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(1) 设 $\tau$ 取遍 $G_k/G_K$ 的一组代表元, 则 $\sigma^{-1}\tau\sigma$ 取遍 $G_k/\sigma^{-1}G_K\sigma=G_k/G_{K^\sigma}$ 的一组代表元. 因此
+  \[v_{K^\sigma}(a^\sigma)=\frac{1}{f_{K^\sigma}}v(\prod_\tau a^{\tau\sigma})=\frac{1}{f_K}v(\prod_\tau a^\tau)=v_K(a).\]
+
+(2) 由范数关于域扩张 $L/K/k$ 的分解性得到.
+\end{proof}
+
+\begin{definition}{素元}{prime element}
+$A_K$ 的\noun{素元}是指满足 $v_K(\pi_K)=1$ 的 $\pi_K\in A_K$. 记
+  \[U_K=\set{u\in A_K\mid v_K(u)=0}.\]
+\end{definition}
+
+容易知道, 当 $L/K$ 非分歧时, $K$ 的素元仍然是 $L$ 的素元; 当 $L/K$ 完全分歧时, $L$ 素元的范数是 $K$ 的素元.
+
+
+\subsection{互反映射}
+对于抽象的伽罗瓦群 $G$ 和一个 $G$ 模 $A$, 我们固定了
+  \[d:G\to \wh \BZ,\quad v:A_k\to \wh \BZ.\]
+我们现在只考虑有限扩张 $K/k$.
+我们要求 $G$ 和 $A$ 满足如下的\noun{类域论公理}:
+
+\begin{axiom}{类域论公理}{class_field_axiom}
+对于任意循环扩张 $L/K$,
+  \[\#\rmH^0\bigl(G(L/K),A_L\bigr)=[L:K],\quad \rmH^{-1}\bigl(G(L/K),A_L\bigr)=1.\]
+\end{axiom}
+
+\begin{proposition}{}{}
+对于任意非分歧扩张 $L/K$,
+  \[\rmH^0\bigl(G(L/K),U_L\bigr)=\rmH^{-1}\bigl(G(L/K),U_L\bigr)=1.\]
+\end{proposition}
+
+\begin{proof}
+由于 $L/K$ 非分歧, 因此 $\pi_K$ 是 $L$ 的素元. 由于 $\rmH^{-1}\bigl(G(L/K),A_L\bigr)=1$, 因此对于任意 $u\in U_L^{\bfN=1}$, 存在 $a\in A_L$ 使得 $u=a^{\sigma-1}$. 设 $a=\varepsilon \pi_K^m, \varepsilon\in U_L$, 则 $u=\varepsilon^{\sigma-1}$. 因此 $\rmH^{-1}\bigl(G(L/K),U_L\bigr)=1.$
+
+满同态 $v_K:A_K\to Z$ 诱导了满同态
+  \[v_K: A_K/\bfN A_L\to Z/nZ\cong \BZ/n\BZ,\quad n=f_{L/K}=[L:K].\]
+由于 $\# A_K/\bfN A_L=n$, 因此这是一个同构. 对于 $u\in U_K, v_K(u)=0$, 因此存在 $a\in A_L$ 使得 $u=\bfN a$. 而 $v_K(u)=nv_L(a)$, 因此 $a\in U_L$, $\rmH^0\bigl(G(L/K),U_L\bigr)=1$.
+\end{proof}
+
+对于无限扩张 $L/K$, 我们令
+  \[\bfN_{L/K}A_L:=\bigcap_M \bfN_{M/K}A_M,\]
+其中 $M/K$ 取遍 $L/K$ 的所有有限子扩张. 
+所谓的\noun{互反映射}指的是如下的一个典范同态
+  \[r_{L/K}:G(L/K)\to A_K/\bfN_{L/K}A_L.\]
+考虑 $\wt L/K$, 则 $G_{\wt L}=I_L\subseteq I_K$. 因此 $d_K:G_K\to\wh\BZ$ 诱导了 $d_K:G(\wt L/K)\to \wh \BZ$.
+定义
+  \[\Frob(\wt L/K)=\set{\sigma\in G(\wt L/K)\mid d_K(\sigma)\in \BN^+}.\]
+
+\begin{theorem}{互反映射}{reciprocity map}
+定义
+  \[\fct{r_{\wt L/K}:\Frob(\wt L/K)}{A_K/\bfN_{\wt L/K}A_{\wt L}}{\sigma}{\bfN_{\Sigma/K}(\pi_\Sigma)\mod \bfN_{\wt L/K}A_{\wt L},}\]
+其中 $\Sigma$ 是 $\sigma$ 的固定域, $\pi_\Sigma$ 是它的一个素元. 它可以下降为
+  \[r_{L/K}:G(L/K)\to A_K/\bfN_{L/K}A_L.\]
+\end{theorem}
+
+\begin{lemma}{}{}
+设 $\Sigma$ 是 $\sigma\in\Frob(\wt L/K)$ 的固定域, 则
+  \[f_{\Sigma/K}=d_K(\sigma),\quad
+[\Sigma:K]<\infty,\quad
+\wt\Sigma=\wt L,\quad
+\sigma=\varphi_\Sigma.\]
+\end{lemma}
+\begin{proof}
+(1) 由于 $\Sigma\cap \wt K$ 是 $\sigma|_{\wt K}=\varphi_K^{d_K(\sigma)}$ 的固定域, 因此 
+  \[f_{\Sigma/K}=[\Sigma\cap \wt K:K]=d_K(\sigma).\]
+
+(2) 由 $\wt K\subseteq \Sigma \wt K=\wt \Sigma\subseteq \wt L$ 知
+  \[e_{\Sigma/K}=(I_K:I_\Sigma)=\# G(\wt \Sigma/\wt K)\le \# G(\wt L/\wt K)\]
+有限, 因此 $[\Sigma:K]=f_{\Sigma/K}e_{\Sigma/K}$ 有限.
+
+(3) 由于 $\Gamma=G(\wt L/\Sigma)=\ov{\pair{\sigma}}$ 是射影循环群, $(\Gamma:\Gamma^n)\le n$. 因此满射 $\Gamma\to G(\wt \Sigma/\Sigma)\cong\wt \BZ$ 诱导了双射 $\Gamma/\Gamma^n\cong\wt \BZ/n\wt\BZ$, 从而 $\Gamma\cong G(\wt \Sigma/\Sigma),\wt \Sigma=\wt L$.
+
+(4) 由于 $f_{\Sigma/K}d_\Sigma(\sigma)=d_K(\sigma)=f_{\Sigma/K}$, 因此 $d_\Sigma(\wt \sigma)=1,\sigma=\varphi_\Sigma$.
+\end{proof}
+
+\begin{proof}[定理~\ref{thm:reciprocity map}的证明]
+先考虑有限伽罗瓦扩张.
+
+\noindent{\bf 第一步}.
+对于有限伽罗瓦扩张 $L/K$,
+  \[\fct{\Frob(\wt L/K)}{G(L/K)}{\sigma}{\sigma|_L}\]
+是满射. 设 $\varphi\in G(\wt L/K)$ 是 $\varphi_K$ 的一个提升, 即 $\varphi|_{\wt K}=\varphi_K$ 且 $d_K(\varphi)=1$. 由于 $L\cap\wt K/K$ 非分歧, 因此 $\varphi|_{L\cap \wt K}=\varphi_{L\cap \wt K/K}$. 对于任意 $\sigma\in G(L/K)$, $\sigma$ 在 $L\cap \wt K$ 上的限制是生成元 $\varphi_{L\cap \wt K/K}$ 的一个幂次, 不妨设 $\sigma|_{L\cap \wt K}=\varphi_{L\cap \wt K/K}^n,n\in\BN^+$. 由于 $\wt L=L\wt K$, 因此
+  \[G(\wt L/\wt K)\cong G(L/L\cap \wt K).\]
+设 $\tau\in G(\wt L/\wt K)$ 是 $\sigma\varphi^{-n}|_L$ 的原像, 则 $\wt\sigma=\tau\varphi^n$ 满足 $\wt\sigma|_L=\sigma$ 和 $\wt \sigma|_{\wt K}=\varphi_K^n$, 即 $d_K(\wt\sigma)=n$.
+
+\noindent{\bf 第二步}.
+$r_{\wt L/K}$ 不依赖于 $\pi_\Sigma$ 的选取.
+设 $u\in U_\Sigma$, 对于任意 $\Sigma\subseteq M\subseteq \wt\Sigma=\wt L$, 由类域论公理, 存在 $\varepsilon\in U_M$ 使得 $u=\bfN_{M/\Sigma}(\varepsilon)$, 因此 $\bfN_{\Sigma/K}(u)=\bfN_{M/K}(\varepsilon)\in\bfN_{M/K}A_M$. 从而 $\bfN_{\Sigma/K}(u)\in\bfN_{\wt L/K}A_{\wt L}$, 因此 $r_{\wt L/K}$ 不依赖于素元的选取.
+
+\noindent{\bf 第三步}.
+$r_{\wt L/K}$ 具有可乘性. 对于任意 $\varphi\in G(\wt L/K)$, 考虑自同态
+  \[\varphi-1:A_{\wt L}\to A_{\wt L},\quad a\mapsto a^\varphi/a,\]
+  \[\varphi_n:A_{\wt L}\to A_{\wt L},\quad a\mapsto \prod_{i=0}^{n-1}a^{\varphi^i}.\]
+显然 $(\varphi-1)\circ\varphi_n=\varphi_n\circ(\varphi-1)=\varphi^n-1$.
+设 $\sigma_1=\sigma_2\sigma_3\in\Frob(\wt L/K)$, $n_i=d_K(\wt \sigma_i)$, $\Sigma_i$ 为 $\sigma_i$ 的固定域, $\pi_i\in A_{\Sigma_i}$ 是素元. 固定 $\varphi\in G(\wt L/K)$ 使得 $d_K(\varphi)=1$, 令 $\tau_i=\sigma_i^{-1}\varphi^{n_i}\in G(\wt L/\wt K)$. 我们知道 $n_3=n_1+n_2$,
+  \[\tau_3=\sigma_2^{-1}\sigma_1^{-1}\varphi^{n_1+n_2}=(\sigma_2^{-1}\varphi^{n_2})(\varphi^{-n_2}\sigma_1\varphi^{n_2})^{-1}\varphi^{n_1}.\]
+令 $\sigma_4=\varphi^{-n_2}\sigma_1\varphi^{n_2}$, $n_4=d_K(\sigma_4)=n_1$, $\Sigma_4=\Sigma_1^{\varphi^{n_2}},\pi_4=\pi_1^{\varphi^{n_2}}\in A_{\Sigma_4}$, $\tau_4=\sigma_4^{-1}\varphi^{n_4}$, 则 $\tau_3=\tau_2\tau_4$ 且 $\bfN_{\Sigma_4/K}(\pi_4)=\bfN_{\Sigma_1/K}(\pi_1)$.
+我们只需证明
+  \[\bfN_{\Sigma_3/K}(\pi_3)\equiv \bfN_{\Sigma_2/K}(\pi_2)\bfN_{\Sigma_4/K}(\pi_4)\mod \bfN_{\wt L/K}A_{\wt L}.\]
+
+\begin{lemma}{}{}
+设 $\varphi,\sigma\in\Frob(\wt L/K)$, $d_K(\varphi)=1,d_K(\sigma)=n$. 若 $\Sigma$ 是 $\sigma$ 的固定域, $a\in A_{\Sigma}$, 则
+  \[\bfN_{\Sigma/K}(a)=(\bfN\circ \varphi_n)(a)=(\varphi_n\circ \bfN)(a),\]
+其中 $\bfN=\bfN_{\wt L/\wt K}.$
+\end{lemma}
+\begin{proof}
+$K$ 在 $\Sigma$ 的极大非分歧扩张 $\Sigma^0=\wt K\cap \sigma/K$ 的扩张次数为 $n$, 伽罗瓦群 $G(\Sigma^0/K)$ 由 $\varphi_{\Sigma^0/K}=\varphi_K|_{\Sigma^0}=\varphi|_{\Sigma^0}.$ 因此 $\bfN_{\Sigma^0/K}=\varphi_n|_{A_{\Sigma^0}}$. 又因为 $\Sigma \wt K=\wt \Sigma,\Sigma\cap \wt K=\Sigma^0$, $\bfN_{\Sigma/\Sigma^0}=\bfN|_{A_\Sigma}.$ 对于 $a\in A_{\Sigma}$, 
+  \[\bfN_{\Sigma/K}(a)=\bfN_{\Sigma^0/K}\bigl(\bfN_{\Sigma/\Sigma^0}(a)\bigr)=\bfN(a)^{\varphi_n}=\bfN(a^{\varphi_n}).\]
+最后由 $\varphi$ 正规化 $G(\wt L/\wt K)$ 可知第二个等式成立.
+\end{proof}
+
+现在我们知道 $\bfN_{\Sigma_i/K}(\pi_i)=\bfN(\pi_i^{\varphi_{n_i}})$. 因此我们只需证明 $\bfN(u)\in\bfN_{\wt L/K}A_{\wt L}$, $u=\pi_3^{\varphi_{n_3}}\pi_4^{-\varphi_{n_4}}\pi_2^{-\varphi_{n_2}}$.
+注意到 $I_{G(\wt L/\wt K)}U_{\wt L}$ 中的元素在 $\bfN$ 下的像为 $1$, 因此 $\bfN$ 诱导了同态 $\rmH_0\bigl(G(\wt L/\wt K),U_{\wt L}\bigr)\to U_{\wt K}$.
+
+\begin{lemma}{}{}
+如果 $x\in \rmH_0\bigl(G(\wt L/\wt K),U_{\wt L}\bigr)$ 被 $\varphi\in G(\wt L/K)$ 固定, 且 $d_K(\varphi)=1$, 则 $\bfN(x)\in\bfN_{\wt L/K}U_{\wt L}$.
+\end{lemma}
+\begin{proof}
+设 $x=u\mod I_{G(\wt L/\wt K)}U_{\wt L}$, 则
+  \[u^{\varphi-1}=\prod_{i=1}^r u_i^{\tau_i-1}, \quad \tau_i\in G(\wt L/\wt K),u_i\in U_{\wt L}.\]
+设 $M/K$ 是 $\wt L/K$ 的有限伽罗瓦子扩张, 不妨设 $u,u_i\in M$ 且 $L\subseteq M$. 设 $n=[M:K],\sigma=\varphi^n\in G(\wt L/M)$, $\Sigma$ 是 $\sigma$ 的固定域, $\Sigma_n$ 是 $\sigma^n=\varphi_\Sigma^n$ 的固定域, 则 $\Sigma_n/\Sigma$ 是 $n$ 次非分歧扩张. 由类域论公理, 存在 $\wt u,\wt u_i\in U_{\Sigma_n}$ 使得
+  \[u=\bfN_{\Sigma_n/\Sigma}(\wt u)=\wt u^{\sigma_n},\quad
+u_i=\bfN_{\Sigma_n/\Sigma}(\wt u_i)=\wt u_i^{\sigma_n}.\]
+因此 $\wt u^{\varphi-1}$ 和 $\prod_i \wt u_i^{\varphi-1}$ 仅相差一个 $\wt x\in U_{\Sigma_n}$ 满足 $\bfN_{\Sigma_n/\Sigma}(\wt x)=1$. 再次由类域论公理, 存在 $\wt y\in U_{\Sigma_n},\wt x=\wt y^{\sigma-1}=\wt y^{\varphi_n(\varphi -1)}$. 从而
+  \[\bfN(\wt u)^{\varphi -1}=\bfN(\wt y^{\varphi_n})^{\varphi-1},\quad
+\bfN(\wt u)=\bfN(\wt y^{\varphi_n})z,\]
+其中 $z\in U_{\wt K},z^{\varphi-1}=1$, 即 $z\in U_K$. 设 $y=\wt y^{\sigma_n}=\bfN_{\Sigma_n/\Sigma}(\wt y)\in U_\Sigma$,
+  \[\bfN(u)=\bfN(\wt u)^{\sigma_n}=\bfN(\wt y^{\varphi_n})^{\sigma_n}z^{\sigma_n}=\bfN(y^{\varphi_n})z^n=\bfN_{\Sigma/K}(y)\bfN_{M/K}(z)\]
+属于 $\bfN_{M/K}U_M$.
+\end{proof}
+
+现在返回到原命题. 由于 $\varphi_{n_i}\circ(\varphi -1)=\varphi^{n_i}-1$, $\pi_i^{\varphi_{n_i}-1}=\pi_i^{\tau_i-1}$, 因此
+  \[u^{\varphi-1}=\pi_3^{\tau_3-1}\pi_4^{1-\tau_4}\pi_2^{1-\tau_2}.\]
+由于 $\tau_3=\tau_2\tau_4$ 知道 $(\tau_3-1)+(1-\tau_2)+(1-\tau_4)=(1-\tau_2)(1-\tau_4)$. 设
+  \[\pi_3=u_3\pi_4,\quad \pi_2=u_2^{-1}\pi_4,\quad \pi_4^{\tau_2}=u_4\pi_4,\]
+则 $u^{\varphi-1}=\prod_{i=2}^4 u_i^{\tau_i-1}$, 从而 $\bfN(u)\in \bfN_{\wt L/K}A_{\wt L}.$
+
+\noindent{\bf 第四步}.
+互反映射 $r_{L/K}$ 良定.
+由于 $\Frob(\wt L/K)\to G(L/K)$ 是满射, 且 $\bfN_{\wt L/K}A_{\wt L}\subseteq \bfN_{L/K}A_L$, 因此
+$r_{\wt L/K}:\Frob(\wt L/K)\to A_K/\bfN_{\wt L/K}A_{\wt L}$ 可以下降为
+  \[r_{L/K}:G(L/K)\to A_K/\bfN_{L/K}A_L.\]
+我们只需说明该定义不依赖于 $\sigma\in G(L/K)$ 在 $\Frob(\wt L/K)$ 中提升 $\wt \sigma$ 的选取. 设 $\wt\sigma'$ 也提升 $\sigma$, $\Sigma,\pi_{\Sigma'}\in A_{\Sigma'}$ 是素元. 如果 $d_K(\wt\sigma)=d_K(\wt \sigma')$, 则二者在 $\wt K$ 和 $L$ 上均相同, 从而二者相同. 如果 $d_K(\wt \sigma)<d_K(\wt\sigma)$, 则存在 $\wt\tau\in\Frob(\wt L/K)$ 使得 $\wt\sigma'=\wt\sigma\wt\tau$ 且 $\wt\tau|_L=1$. 因此 $\wt \tau$ 的固定域 $\Sigma''$ 包含 $L$, 从而 $r_{\wt L/K}(\wt\tau)\equiv \bfN_{\Sigma''/K}(\pi_{\Sigma''})\equiv 1\mod\bfN_{L/K}A_L$, 因此 $r_{\wt L/K}(\wt\sigma')=r_{\wt L/K}(\wt\sigma)$.
+
+\noindent{\bf 第五步}.
+根据定义不难证明互反映射满足下列函子性质.
+从而可知命题对于无限伽罗瓦扩张 $L/K$ 也成立.
+\end{proof}
+
+\begin{proposition}{}{}
+对于有限伽罗瓦扩张 $L/K,L'/K'$, 如果 $K\subseteq K',L\subseteq L'$, $\sigma\in G(L/K)$, 则下列图表交换
+  \[\xymatrix{
+G(L'/K')\ar[rr]^{r_{L'/K'}} \ar[d]&& A_{K'}/\bfN_{L'/K'}A_{L'}\ar[d]^{\bfN_{K'/K}}\\
+G(L/K)\ar[rr]^{r_{L/K}}&&A_K/\bfN_{L/K}A_L,
+}\]
+其中左竖直箭头为限制在 $L$ 上, 
+  \[\xymatrix{
+    G(L/K)\ar[rr]^{r_{L/K}} \ar[d]&& A_K/\bfN_{L/K}A_L\ar[d]^{\sigma}\\
+    G(L^\sigma/K^\sigma)\ar[rr]^{r_{L^\sigma/K^\sigma}}&&A_{K^\sigma}/\bfN_{L^\sigma/K^\sigma}A_{L^\sigma}
+  }\]
+其中左竖直箭头为 $\sigma$ 共轭作用. 
+\end{proposition}
+
+如果 $L=L'$, 则有自然的嵌入 $A_K/\bfN_{L/K}A_L\inj A_{K'}/\bfN_{L/K'}A_L$, 它在伽罗瓦群的反映为\noun{变换映射}(Verlagerung). 设 $H$ 是 $G$ 的指标有限的子群, 则我们可以定义典范的同态
+  \[\Ver:G^\ab\to H^\ab.\]
+对于 $\sigma\in G$, 我们有双陪集分解
+  \[G=\bigsqcup_{\tau}\pair{\sigma}\tau H.\]
+对于任意 $\tau$, 设 $f(\tau)$ 是最小的正整数使得 $\sigma_\tau=(\tau^{-1}\sigma\tau)^{f(\tau)}\in H$, 定义
+  \[\Ver(\sigma\mod G')=\prod_{\tau}\sigma_\tau\mod H'.\]
+
+\begin{exercise}
+证明 $\Ver$ 是一个良定义的同态.
+\end{exercise}
+
+\begin{proposition}{}{}
+对于有限伽罗瓦扩张 $L/K$ 的中间域 $K'$, 我们有交换图表
+  \[\xymatrix{
+G(L/K')^\ab\ar[rr]^{r_{L/K'}}&& A_{K'}/\bfN_{L/K'}A_L\\
+G(L/K)^\ab\ar[u]^{\Ver}\ar[rr]^{r_{L/K}}&&A_K/\bfN_{L/K}A_L\ar[u],
+}\]
+其中右侧由嵌入诱导.
+\end{proposition}
+\begin{proof}
+我们暂时记 $G=G(\wt L/K),H=G(\wt L/K')$.
+设 $\sigma\in G(L/K)$, $\wt \sigma\in\Frob(\wt L/K)$ 是 $\sigma$ 的原像, $\Sigma$ 为固定域, $S=G(\wt L/\Sigma)=\ov{\pair{\wt \sigma}}$. 考虑双陪集分解
+  \[G=\bigsqcup_\tau S\tau H.\]
+令 $S_\tau=\tau^{-1}S\tau\cap H,\wt\sigma_\tau=\tau^{-1}\wt\sigma^{f(\tau)}\tau$. 令
+  \[\ov G=G(L/K),\ \ov H=G(L/K'),\ \ov S=\pair{\sigma},\ 
+\ov\tau=\tau|_L,\ \sigma_\tau=\wt\sigma_\tau|_L,\]
+则显然有双陪集分解
+  \[\ov G=\bigsqcup_\tau \ov S\ov\tau \ov H.\]
+因此
+  \[\Ver(\sigma\mod G(L/K)')=\prod_\tau\sigma_\tau\mod G(L/K')'.\]
+对于任意 $\tau$, 设有陪集分解
+  \[H=\bigsqcup_{\omega_\tau}S_\tau\omega_\tau,\quad
+G=\bigsqcup_{\tau,\omega_\tau}S\tau\omega_\tau.\]
+设  $\Sigma_\tau$ 是 $\wt\sigma_\tau$ 的固定域, $\Sigma^\tau$ 是 $\tau^{-1}\wt \sigma\tau$ 的固定域, 则 $\Sigma_\tau/\Sigma^\tau$ 是 $f(\tau)$ 次非分歧扩张. 如果 $\pi\in A_\Sigma$ 是 $\Sigma$ 的素元, 则 $\pi^\tau\in A_{\Sigma^\tau}$ 是 $\Sigma^\tau$ 的素元, 因此也是 $\Sigma_\tau$ 的素元. 从而,
+  \[\bfN_{\Sigma/K}(\pi)=\prod_{\tau,\omega_\tau}\pi^{\tau\omega_\tau}=\prod_\tau\bfN_{\Sigma_\tau/K'}(\pi^\tau),\]
+  \[r_{L/K}(\sigma)\equiv \prod_\tau r_{L/K'}(\sigma_\tau)
+\equiv r_{L/K'}(\prod_\tau\sigma_\tau)\equiv r_{L/K'}\Bigl(\Ver\bigl(\sigma\mod G(L/K')'\bigr)\Bigr).\]
+\end{proof}
+
+
+\begin{proposition}{}{}
+如果 $L/K$ 非分歧, 则 $r_{L/K}$ 由 $r_{L/K}(\varphi_{L/K})=\pi_K\mod\bfN_{L/K}A_L$ 确定, 此时 $r_{L/K}$ 是同构.
+\end{proposition}
+\begin{proof}
+此时 $\wt L=\wt K$, $\varphi_K\in G(\wt K/K)$ 是 $\varphi_{L/K}$ 的原像, 固定域为 $K$, 因此 $r_{L/K}$ 由此给出. 赋值 $v_K$ 诱导了同构 $A_K/\bfN_{L/K}A_L\simto Z/nZ\cong \BZ/n\BZ$, 这是因为对于 $v_K(a)\equiv \mod nZ$, $a=u\pi_K^{dn}$, 而 $u=\bfN_{L/K}(\varepsilon),\varepsilon\in U_L$, 从而 $a=\bfN_{L/K}(\varepsilon \pi_K^d)$. 最后由于生成元 $\varphi_{L/K}$ 的像为素元 $\pi_K$, 即生成元相互对应, 从而 $r_{L/K}$ 是同构.
+\end{proof}
+
+\subsection{互反律}
+类域论的主定理如下所述:
+
+\begin{theorem}{互反律}{reciprocity_map}
+\index{互反律}
+对于任意有限伽罗瓦扩张 $L/K$, 互反映射
+  \[r_{L/K}:G(L/K)^\ab\to A_L/\bfN_{L/K}A_K\]
+是同构.
+\end{theorem}
+\begin{proof}
+设 $M/K$ 是 $L/K$ 的伽罗瓦子扩张, 则我们有交换图表
+  \[\xymatrix{
+    1\ar[r]&G(L/M)\ar[d]^{r_{L/M}}\ar[r]&G(L/K)\ar[d]^{r_{L/K}}\ar[r]&G(M/K)\ar[d]^{r_{M/K}}\ar[r]&1\\
+           &A_M/\bfN_{L/M}A_L\ar[r]^{\bfN_{M/K}}&A_K/\bfN_{L/K}A_L\ar[r]&A_K/\bfN_{M/K}A_M\ar[r]&1.
+  }\]
+
+\noindent{\bf 第一步}.
+约化到 $G(L/K)$ 是交换群情形. 若此时已成立, 则取 $M=L^\ab/K$ 为其极大阿贝尔子扩张, 即 $G(M/K)=G(L/K)^\ab$. 此时 $G(L/M)$ 是 $r_{L/K}$ 的核, 因此 $r_{L/K}$ 是单射. 要证明满射, 我们对次数进行归纳. 当 $G(L/K)$ 是可解群时, $M=L$ 或 $[L:M]<[L:K]$, 如果 $r_{L/M}$ 和 $r_{M/K}$ 都是满射, 则 $r_{L/K}$ 也是满射. 一般情形下, 设 $M$ 是 $G(L/K)$ 的一个希洛夫 $p$ 子群的固定域, 则我们只需证明 $\bfN_{M/K}$ 的像是 $A_K/\bfN_{L/K}A_L$ 的希洛夫 $p$ 子群 $S_p$ 即可, 这诱导了 $r_{L/K}$ 是满射. 嵌入 $A_K\inj A_M$ 诱导了
+  \[i:A_K/\bfN_{L/K}A_L\to A_M/\bfN_{L/M}A_L,\] 
+他满足 $\bfN_{M/K}\circ i=[M:K]$. 由于 $p\nmid[M:K]$, 因此 $[M:K]:S_p\ra S_p$ 是同构, 从而 $S_p$ 落在 $\bfN_{M/K}$ 的像, 因此 $r_{L/K}$ 是满射.
+
+\noindent{\bf 第二步}.
+约化到循环扩张情形. 若 $M/K$ 取遍所有循环子扩张, $r_{L/K}$ 的核落在 $G(L/K)\to\prod G(M/K)$ 的核中. 由于 $G(L/K)$ 是交换群, 该映射是单的, 因此 $r_{L/K}$ 是单射. 由于此时 $G(L/K)$ 是可解的, 因此对次数进行和第一步相同的归纳可知 $r_{L/K}$ 是满射.
+
+\noindent{\bf 第三步}.
+设 $L/K$ 是循环扩张. 不妨设 $f_{L/K}=1$. 实际上, 设 $M=L\cap \wt K$, 则 $f_{L/M}=1, r_{M/K}$ 是同构. 由类域论公理可知图表中下面一行的群的阶, 从而它是正合的, 因此 $r_{L/M}$ 是同构蕴含 $r_{L/K}$ 是同构.
+
+设 $L/K$ 是循环完全分歧扩张. 设 $G(L/K)=\pair{\sigma}$. 我们把 $\sigma$ 在 $G(L/K)\cong G(\wt L/\wt K)$ 下的像仍记为 $\sigma$, 则 $\wt \sigma=\sigma\varphi_L\in\Frob(\wt L/K)$ 是 $\sigma$ 的一个原像, 且 $d_K(\wt \sigma)=1=f_{L/K}$. 设 $\Sigma$ 是 $\wt \sigma$ 的固定域, 则 $f_{\Sigma/K}=1$, 因此 $\Sigma\cap \wt K=K$. 设 $M/K$ 是 $\wt L/K$ 的伽罗瓦子扩张, 包含 $\Sigma L$, $M^0=M\cap\wt K$. 令 $\bfN=\bfN_{M/M^0}$, 则 $\bfN_{A_\Sigma}=\bfN_{\Sigma/K},\bfN_{A_L}=\bfN_{L/K}.$
+
+设 $r_{L/K}(\sigma^k)=1$, $0\le k<n=[L:K]$. 由于 $\pi_\Sigma$ 和 $\pi_L$ 都是 $M$ 的素元, 因此 $\pi_\Sigma^k=u\pi_L^k$, $u\in U_M$, 于是
+  \[r_{L/K}(\sigma^k)\equiv \bfN(\pi_\Sigma^k)\equiv \bfN(u)\bfN(\pi_L^k)\equiv \bfN(u)\mod \bfN_{L/K}A_L.\]
+由 $r_{L/K}(\sigma^k)=1$ 知存在 $v\in U_L$ 使得 $\bfN(uv^{-1})=1$, $uv^{-1}=a^{\sigma-1},a\in A_M$, 从而
+  \[(\pi_L^k v)^{\sigma-1}=(\pi_L^k v)^{\wt \sigma-1}=(\pi_\Sigma^k u^{-1}v)^{\wt \sigma-1}=(a^{\sigma-1})^{\wt \sigma-1}=(a^{\wt \sigma-1})^{\sigma-1},\] 
+因此 $x=\pi_L^k v a^{1-\wt \sigma}\in A_{M^0}$. 由于 $nv_{M^0}(x)=v_M(x)=k$, 因此 $k=0$, $r_{L/K}$ 是单射. 由类域论公理知 $\#A_K/\bfN_{L/K}A_L=n$, 因此 $r_{L/K}$ 是同构.
+\end{proof}
+
+我们考虑互反映射的逆诱导的同态
+  \[(~,L/K):A_K\to G(L/K)^\ab,\]
+它的核是 $\bfN_{L/K}A_L$, 我们称该映射为\noun{范剩余符号}. 由互反映射的函子性我们自然有范剩余符号的函子性. 对于无限伽罗瓦扩张 $L/K$, 
+  \[G(L/K)^\ab=\plim_i G(L_i/K)^\ab,\]
+其中 $L_i/K$ 取遍所有有限子扩张. 由于 $(a,L'/K)|_{L^\ab}=(a,L/K)$, 因此这定义出 $G(L/K)^\ab$ 的一个元素, 即此时也有范剩余符号.
+
+\begin{proposition}{}{}
+我们有
+  \[(a,\wt K/K)=\varphi_K^{v_K(a)},\quad d_K\circ (~~,\wt K/K)=v_K.\]
+\end{proposition}
+\begin{proof}
+考虑它的有限 $f$ 次子扩张 $L/K$, 则 $v_K(a)=n+fz,n\in\BZ,z\in Z$, 即 $a=u\pi_K^nb^f,u\in U_K,b\in A_K$. 于是
+  \[(a,\wt K/K)|_L=(a,L/K)=(\pi_K,L/K)^n(b,L/K)^f=\varphi_{L/K}^n=\varphi_K^{v_K(a)}|_L.\]
+从而 $(a,\wt K/K)=\varphi_K^{v_K(a)}$.
+\end{proof}
+
+对于任意 $K$, 我们赋予 $A_K$ 拓扑为 $\bfN_{L/K}A_L$ 形成单位元的邻域基, 其中 $L/K$ 取遍有限伽罗瓦扩张, 我们称之为\noun{范数拓扑}.
+
+\begin{proposition}{}{}
+(1) $A_K$ 的开子群是它的有限指标闭子群.
+
+(2) $v_K:A_K\to\wh \BZ$ 是连续的.
+
+(3) 对于有限扩张 $L/K$, $\bfN_{L/K}:A_L\to A_K$ 是连续的.
+
+(4) $A_K$ 是豪斯多夫的当且仅当 $A_K^0=\cap_L \bfN_{L/K}A_L=0$.
+\end{proposition}
+\begin{proof}
+(1) 根据习题~\ref{exe:closed_open_subgroups}, 我们只需说明开子群是有限指标的, 而这由它包含某个 $\bfN_{L/K}A_L$ 可知.
+
+(2) $f\wh \BZ,f\ge 1$ 形成 $0\in\wh \BZ$ 的领域基. 设 $L/K$ 是 $f$ 次非分歧扩张, 则 $v_K(\bfN_{L/K}A_L)=f v_L(A_L)\subset f\wh \BZ$, 因此 $v_K$ 连续.
+
+(3) 由于 $\bfN_{M/K}A_M$ 形成 $a\in A_K$ 的领域基, 而它的原像包含 $\bfN_{M/L}A_M$, 因此 $\bfN_{L/K}$ 连续.
+
+(4) 显然.
+\end{proof}
+
+通过互反律, 我们可以给出 $K$ 的有限阿贝尔扩张的一种刻画.
+
+\begin{theorem}{}{abelian_extension_correspondence}
+映射
+  \[L\mapsto \CN_L=\bfN_{L/K}A_L\]
+给出了有限阿贝尔扩张 $L/K$ 和 $A_K$ 的开子群间的一一对应.
+\end{theorem}
+\begin{proof}
+证明是比较直接的, 见\cite[Theorem~4.6.7]{Neukirch1999}.
+\end{proof}
+我们称 $A_K$ 的开子群 $\CN$ 对应 $L$ 为其对应的\noun{类域}, 则
+  \[G(L/K)\cong A_K/\CN.\]
+
+
+\section{局部类域论}
+\label{sec:local class field theory}
+\subsection{局部互反律}
+
+对于任意域 $k$, $G=G(k^\sep/k)$, $A=(k^\sep)^\times$, 我们都有如下结论:
+\begin{theorem}{希尔伯特 90}{}
+对于有限循环扩张 $L/K$, $\rmH^{-1}\bigl(G(L/K),L^\times\bigr)=1$.
+\end{theorem}
+
+\begin{proposition}{诺特}{first_cohom_trivial}
+对于有限伽罗瓦扩张 $L/K$, $\rmH^1\bigl(G(L/K),L^\times\bigr)=1$.
+\end{proposition}
+由于循环扩张情形, $\rmH^1=\rmH^{-1}$, 因此这蕴含希尔伯特 90.
+\begin{proof}
+设 $f:G\to L^\times$ 是一个 $1$ 余循环. 对于 $c\in L^\times$, 令
+  \[\alpha=\sum_{\sigma\in G(L/K)} f(\sigma) c^\sigma.\]
+由 $1,\sigma,\dots,\sigma^{n-1}$ 的线性无关性~\ref{pro:independent_of_embeddings}, 存在 $c\in L^\times$ 使得 $\alpha\neq 0$. 我们有
+  \[\alpha^\tau=\sum_\sigma f(\sigma)^\tau c^{\sigma\tau}=\sum_\sigma f(\tau)^{-1}f(\sigma\tau)c^{\sigma\tau}=f(\tau)^{-1}\alpha,\]
+因此 $f(\sigma)=(\alpha^{-1})^{\sigma-1}$ 是 $1$ 余边界.
+\end{proof}
+
+设 $k$ 是 $\BQ_p$ 的有限扩张.
+\begin{theorem}{}{}
+设 $G=G(\ov k/k)$, $A=\ov k^\times$, 则它们满足类域论公理~\ref{axi:class_field_axiom}.
+\end{theorem}
+\begin{proof}
+$\rmH^{-1}=1$ 由希尔伯特 90 得到.
+设 $G=G(L/K)$, 则我们有 $G$ 模正合列
+  \[0\ra U_L\to L^\times\to \BZ\to 0,\]
+于是
+  \[h(G,L^\times)=h(G,\BZ)h(G,U_L)=[L:K]h(G,U_L).\]
+选取 $L/K$ 的一组正规基 $\set{a^\sigma\mid \sigma\in G}$, $\alpha\in\CO_L$. 设 $M=\suml_{\sigma\in G}\CO_K \alpha^\sigma\subseteq \CO_L$. 则 
+  \[V^n=1+\pi_K^n M,\quad n=1,2,\dots\]
+形成了 $1\in U_L$ 的一组邻域基. 由于 $M$ 是开子群, 因此存在 $N$ 使得 $\pi_K^N\CO_L\subseteq M$, 于是对于 $n\ge N$,
+  \[(\pi_K^nM)(\pi_K^n M)=\pi_K^{2n}MM\subseteq \pi_K^{2n}\CO_L\subseteq\pi_K^{2n-N}M\subseteq \pi_K^n M,\]
+即 $V^nV^n\subseteq V^n$. 显然 $V^n$ 包含其中元素的逆. 我们有 $G$ 模同构
+  \[\begin{split}
+V^n/V^{n+1}&\simto M/\pi_K M\\
+1+\pi_K^n \alpha&\mapsto \alpha\mod \pi_K M.
+\end{split}\]
+而 
+  \[M/\pi_K M=\bigoplus_{\sigma \in G} (\CO_K/\pi_K) \alpha^\sigma=\Ind_G^1(\CO_K/\pi_K),\]
+由命题~\ref{pro:cohomology_of_induced_modules}, $\rmH^i(G,V^n/V^{n+1})=1,i=0,-1$. 设 $a\in (V^n)^G$, 则存在 $b_0\in V^n,a_1\in(V^{n+1})^G$ 使得 $a=(\bfN b_0)b_1$. 归纳地, 我们得到一串 $b_i\in V^{n+i}$ 使得 $a=\bfN(\prod_{i=0}^\infty b_i)$, 这里这个乘积是收敛的. 因此 $\rmH^0(G,V^n)=1$. 同理可得 $\rmH^{-1}(G,V^n)=1$, 因此 $h(G,V^n)=1$. 而 $U_L/V^n$ 有限, 因此
+  \[h(G,U_L)=h(G,U_L/V^n)h(G,V^n)=1.\]
+\end{proof}
+
+
+
+
+设 $\kappa$ 为 $k$ 的剩余域, $\wt k$ 为 $k$ 的极大非分歧扩张, 则
+  \[G(\wt k/k)\cong G(\bar \kappa/\kappa)\cong \wh\BZ.\]
+设 $q=\# \kappa$, 则 $1\in\wh \BZ$ 对应弗罗贝尼乌斯 $x\mapsto x^q$. 于是 $\varphi_k\in G(\wt k/k)$ 由
+  \[a^{\varphi_k}\equiv a^q\mod\fp_{\wt k},\quad a\in\CO_{\wt k}\]
+决定. 我们有自然的满同态
+  \[d:G\to\wh\BZ.\]
+设 $v_K:K^\times\to\BZ$ 为 $K$ 的归一化赋值. 对于任意有限扩张 $K/k$, $\frac{1}{e_K}v_K$ 是 $v_k$ 在 $K^\times$ 上的延拓. 我们有
+  \[\frac{1}{e_K}v_K=\frac{1}{[K:k]}v_k\circ\bfN_{K/k},\]
+因此 $v_K(\bfN_{K/k}K^\times)=f_K v_K(K^\times)=f_K\BZ$, 即 $v_k$ 是一个亨泽尔赋值,
+  \[d:G\to\wh\BZ,\quad v_k:k^\times\to\BZ\]
+满足类域论的假设.
+因此我们有局部域的互反律定理~\ref{thm:reciprocity_map}和阿贝尔扩张刻画定理~\ref{thm:abelian_extension_correspondence}.
+
+\begin{theorem}{}{}
+对于任意局部域的有限伽罗瓦扩张,
+  \[r_{L/K}:G(L/K)^\ab\to L^\times/\bfN_{L/K}K^\times\]
+是同构.
+\end{theorem}
+\begin{theorem}{}{}
+  \[L\mapsto \CN_L=\bfN_{L/K}L^\times\]
+给出了局部域的有限阿贝尔扩张 $L/K$ 和 $K^\times$ 的有限指标开子群间的一一对应.
+\end{theorem}
+\begin{proof}
+这里需要证明赋值给出的拓扑中有限指标开子群和范数拓扑的开子群一致, 见\cite[Theorem~5.1.4]{Neukirch1999}. 由范数拓扑下开子群包含 $\bfN_{L/K}U_L=U_K$ 知道它是开的, 显然它是有限指标的. 反之, 我们需要考虑库默尔理论.
+
+设 $\wp:A\to A$ 是 $G$ 模满同态, 核 $\mu_\wp$ 为 $n$ 阶循环群. 在我们的情形, $a^\wp:=a^n$ 即可. 设 $K\supseteq \mu_\wp$. 对于集合 $B\subseteq A$, 记 $K(B)$ 为
+  \[H=\set{\sigma\in G_K\mid \sigma b=b,\forall b\in B}\]
+的固定域. 显然如果 $B$ 是 $G_K$ 不变的, $K(B)/K$ 是伽罗瓦的. \noun{库默尔扩张}是指形如 $K\bigl(\wp^{-1}(\Delta)\bigr)/K$ 的扩张, 其中 $\Delta\subseteq A_K$.
+
+\begin{proposition}{}{}
+库默尔扩张和 $K$ 的指数为 $n$ 的阿贝尔扩张一一对应. 设 $L/K$ 是指数为 $n$ 的阿贝尔扩张, 则
+  \[L=K\bigl(\wp^{-1}(\Delta)\bigr),\quad \Delta=
+A_L^\wp\cap A_K.\]
+特别地, 如果 $L/K$ 是循环扩张, 则存在 $\alpha^\wp\in A_K$ 使得 $L=K(\alpha)$.
+\end{proposition}
+\begin{proof}
+我们有单射
+  \[G\Bigl(K\bigl(\wp^{-1}(a)\bigr)/K\Bigr)\inj \mu_\wp
+\quad \sigma\mapsto \alpha^{\sigma-1},\]
+其中 $\wp(\alpha)=a$. 由于 $\mu_\wp\subseteq A_K$, 因此该映射不依赖于 $\alpha$ 的选取. 从而
+  \[G(L/K)\inj \prod_{a\in\Delta}G\Bigl(K\bigl(\wp^{-1}(a)\bigr)/K\Bigr)\inj \mu_\wp^\Delta\]
+是单射.
+
+反之我们有 $\wp^{-1}(\Delta)\subseteq A_L$. 由于 $L/K$ 是它循环子扩张的合成, 考虑 $M/K$ 是其中之一. 我们只需证 $M\subseteq K\bigl(\wp^{-1}(\Delta)\bigr)$. 设 $\sigma$ 生成 $G(M/K)$, $\zeta_\wp$ 生成 $\mu_\wp$, $d=[M:K],d'=n/d,\xi=\zeta^{n/d}$. 由于 $\bfN_{M/K}(\xi)=\xi^d=1$, 由类域论公理存在 $\alpha\in A_M$ 使得 $\xi=\alpha^{\sigma-1}$, 因此 $K\subseteq K(\alpha)\subseteq M$. 由于 $\alpha^{\sigma^i}=\xi^i\alpha$, 因此 $\alpha^{\sigma^i}=\alpha$ 当且仅当 $d\mid i$, 所以 $M=K(\alpha)$. 最后 $(\alpha^\wp)^{\sigma-1}=\xi^\wp=1$, $a=\alpha^\wp\in A_K$, 即 $\alpha\in\wp^{-1}(\Delta)$, 从而 $M\subseteq K\bigl(\wp^{-1}(\Delta)\bigr)$.
+\end{proof}
+\begin{theorem}{}{}
+映射
+  \[\Delta\mapsto L=K\bigl(\wp^{-1}(\Delta)\bigr)\]
+给出了群 $A_K^\wp\subseteq \Delta\subseteq A_K$ 和指数为 $n$ 的阿贝尔扩张 $L/K$ 的一一对应, 其中 $\Delta=A_L^\wp\cap A_K$. 此时,
+  \[\Delta/A_K^\wp\cong\Hom(G(L/K),\mu_\wp),\quad a\mod A_K^\wp\mapsto \chi_a,\]
+其中 $\chi_a(\sigma)=\alpha^{\sigma-1},\alpha\in\wp^{-1}(a)$.
+\end{theorem}
+\begin{proof}
+考虑
+  \[\Delta\to \Hom(L/K,\mu_\wp),\quad a\mapsto \chi_a.\]
+$\chi_a=1$ 当且仅当 $\alpha^{\sigma-1}=1,\forall \sigma$, 从而 $\alpha\in A_K,a\in A_K^\wp$. 因此定理中映射为单射. 要证明满射, 任一 $\chi$ 的核的固定域 $M/K$ 是 $d$ 次循环扩张, 且诱导了 $\ov\chi:G(M/K)\to \mu_\wp$. 设 $\sigma$ 生成 $G(M/K)$, 则 $\bfN_{M/K}\bigl(\ov\chi(\sigma)\bigr)=\ov\chi(\sigma)^d=1$, 从而存在 $\alpha\in A_M,\ov\chi(\sigma)=\alpha^{\sigma-1}$. 很明显, $a=\alpha^\wp\in \Delta=A_L^\wp\cap A_K$. 对于 $\tau\in G(L/K)$, $\chi(\tau)=\ov\chi(\tau|_M)=\alpha^{\tau-1}=\chi_a(\tau)$, 即 $\chi=\chi_a$. 从而
+  \[\Delta/A_K^\wp\cong\Hom(G(L/K),\mu_\wp).\]
+根据这个对应可知, 如果 $\Delta$ 对应 $L$, 则它的大小是确定的, 
+
+最后我们来说明一一对应. 设 $A_K^\wp\subseteq\Delta\subseteq A_K$, 且 $L=K\bigl(\wp^{-1}(\Delta)\bigr)$, 则 $\Delta\subseteq \Delta'=A_L^\wp\cap A_K$. 因此
+  \[\Delta'/A_K^\wp\cong \Hom(G(L/K),\mu_\wp)\]
+的子群对应
+  \[\Delta/A_K^\wp\cong \Hom(G(L/K)/H,\mu_\wp),\]
+其中
+  \[H=\set{\sigma\in G(L/K)\mid \chi_a(\sigma)=1,\forall a\in\Delta}.\]
+由于 $\chi_a(\sigma)=\sigma^{\sigma-1}$, 因此 $H$ 固定 $\wp^{-1}(\Delta)$, 从而固定 $L$, 即 $H=1$, $\Delta=\Delta'$.
+\end{proof}
+
+现在返回到局部类域论. 设 $\CN$ 是指标为 $n$ 的子群, 则 $K^{\times n}\subset \CN$. 我们可不妨设 $\mu_n\subseteq K^\times$, 不然令 $K_1=K(\mu_n)$. 若 $K_1$ 包含 $\bfN_{L_1/K_1}L_1^\times$, $L/K$ 是包含 $L_1$ 的伽罗瓦扩张, 则 $\bfN_{L/K}L^\times\subseteq K^\times$.
+
+现在设 $\mu_n\subseteq K$, $L=K(\sqrt[n]{K^\times})$ 是 $K$ 的极大指数 $n$ 阿贝尔扩张, 则
+  \[K^\times/\bfN_{L/K}L^\times\cong \Hom(G(L/K),\mu_n)\cong K^\times/K^{\times n}.\]
+而根据 $K^\times$ 的结构, 它是有限的, 从而 $L/K$ 有限. 由于 $K^\times/\bfN_{L/K}L^\times\cong G(L/K)$ 指数 $n$, 因此 $K^{\times n}\subseteq \bfN_{L/K}L^\times$. 比较指数大小可知二者一致. 
+\end{proof}
+
+
+\subsection{阿贝尔扩域}
+\begin{definition}{导子}{conductor of abelian extension}
+设 $L/K$ 是有限阿贝尔扩张, $n$ 为最小的满足 $U_K^{(n)}\subseteq \bfN_{L/K}L^\times$ 的正整数. 称 $\ff_{L/K}=\fp_K^n$ 为 $L/K$ 的\noun{导子}.
+\end{definition}
+
+\begin{proposition}{}{}
+有限阿贝尔扩张 $L/K$ 非分歧当且仅当 $\ff_{L/K}=1$.
+\end{proposition}
+\begin{proof}
+如果 $L/K$ 非分歧, 则 $U_K=\bfN_{L/K}U_L$, $\ff=1$. 如果 $\ff=1$, 则 $U_K\subseteq \bfN_{L/K}U_L$, $\pi_K^n\in \bfN_{L/K}L^\times$, 其中 $n=(K^\times:\bfN_{L/K}L^\times)$.
+设 $M/K$ 是 $n$ 次非分歧扩张, 则 $\bfN_{M/K}M^\times=\pi_K^{n\BZ}\times U_K\subseteq\bfN_{L/K}L^\times$, 因此 $M\supseteq L$, $L/K$ 非分歧.
+\end{proof}
+
+任何 $K^\times$ 的有限指标开子群都包含某个有限指标开子群 $\pi^{f\BZ}\times U_K^{(n)}$. 因此每个有限阿贝尔扩张 $L/K$ 都包含在某个 $\pi^{f\BZ}\times U_K^{(n)}$ 对应的类域. 换言之, 这样的类域对于研究 $K$ 的阿贝尔扩张是至关重要的. 现在我们考虑 $\BQ_p$ 的情形.
+
+\begin{proposition}{}{}
+$\BQ_p(\mu_{p^n})/\BQ_p$ 的范数群为 $p^\BZ\times U_{\BQ_p}^\times$.
+\end{proposition}
+\begin{proof}
+设 $K=\BQ_p, L=\BQ_p(\mu_{p^n})$. 由于 $\zeta=\zeta_{p^n}$ 的极小多项式为 $\Phi(x)=x^{p^{n-1}(p-1)}+\cdots+x^{p^{n-1}}+1$, 因此
+  \[\bfN_{L/K}(1-\zeta)=\prod_\sigma (1-\sigma\zeta)=\Phi(1)=p.\]
+如果 $v_L$ 延拓 $v_K$, 则 $v_L(\zeta)=\frac{1}{p^{n-1}(p-1)} v_K(p)=\frac{1}{p^{n-1}(p-1)}$, $p\CO_L=(1-\zeta)^{p^{n-1}(p-1)}$, $p$ 完全分歧. 考虑
+  \[\exp:\fp_K^\nu\to U_K^{(\nu)},\]
+其中 $\nu=v_p(2p)=1$ 或 $2$. 由于 
+  \[\fct{\fp_K^\nu}{\fp_K^{\nu+s-1}}{a}{p^{s-1}(p-1)a}\]
+是一个同构, 它诱导了 $(U_K^{(1)})^{p^{n-1}(p-1)}=U_K^{(n)},p\ge 3$ 和 $(U_K^{(2)})^{2^{n-2}}=U_K^{(n)}$, $p=2$. 因此, $p\ge3$ 时 $U_K^{(n)}\subseteq \bfN_{L/K}L^\times$; $p=2$ 时
+  \[U_K^{(2)}=U_K^{(3)}\cup 5U_K^{(3)}=(U_K^{(2)})^2\cup 5(U_K^{(2)})^2,\]
+  \[U_K^{(n)}=(U_K^{(2)})^{2^{n-1}}\cup 5^{2^{n-2}}(U_K^{(2)})^{2^{n-1}}.\]
+而 $5^{2^{n-2}}=\bfN_{L/K}(2+i)$, 因此 $U_K^{(n)}\subseteq \bfN_{L/K}L^\times$. 从而 $p^\BZ\times U_K^{(n)}\subseteq \bfN_{L/K}L^\times$. 又因为二者在 $K^\times$ 中的指标相同, 因此二者相等.
+\end{proof}
+
+\begin{corollary}{}{}
+$\BQ_p$ 的任意有限阿贝尔扩张都包含在某个 $\BQ_p(\mu_n)$ 中. 特别地 $\BQ_p^\ab=\BQ_p(\mu_\infty)$.
+\end{corollary}
+\begin{proof}
+设 $\zeta=\zeta_n$, $p\nmid n$, $\Phi(X)$ 为其极小多项式, $L=\BQ_p(\zeta_n)$. 由于 $\ov\Phi\mid X^n-1$ 可分, 由亨泽尔引理它不可约, 从而 $\ov\Phi(x)$ 是 $\ov\zeta\equiv \zeta\mod\fp_L$ 在 $\BF_p$ 上的极小多项式, $[L:\BQ_p]=\deg\Phi=\deg\ov\Phi=f$, $L/\BQ_p$ 非分歧, $X^n-1$ 在剩余域 $\kappa_L$ 上完全分解为一次多项式乘积, 从而 $\kappa_L=\BF_{p^f}$ 由 $\mu_n$ 生成, 即 $n\mid p^f-1$. 因此 $\BQ_p(\mu_{p^f-1})/\BQ_p$ 是 $f$ 次非分歧扩张.
+
+对于一般的阿贝尔扩张 $M$, 设 $p^{f\BZ}\times U_{\BQ_p}^{(n)}\subseteq \bfN_{M/K}M^\times$, 则 $M$ 包含在
+  \[p^{f\BZ}\times U_{\BQ_p}^{(n)}=\bigl(p^{f\BZ}\times U_{\BQ_p}\bigr)\cap \bigl(p^{\BZ}\times U_{\BQ_p}^{(n)}\bigr)\]
+对应的类域 $L\BQ_p(\mu_{p^n})=\BQ_p(\mu_{(p^f-1)p^n})$ 中.
+\end{proof}
+
+\begin{theorem}{克罗内克-韦伯}{}
+$\BQ$ 的任意有限阿贝尔扩张都包含在某个 $\BQ(\mu_n)$ 中. 特别地 $\BQ_p^\ab=\BQ_p(\mu_\infty)$.
+\end{theorem}
+\begin{proof}
+设 $L/\BQ$ 是阿贝尔扩张, $S$ 包含所有在 $L$ 中分歧的素数, $\fp\mid p$, 则 $L_\fp/\BQ_p$ 是阿贝尔扩张, 从而 $L_\fp\subseteq \BQ_p(\mu_{n_p})$. 设 $e_p=v_p(n_p)$, 
+  \[n=\prod_{p\in S}p^{e_p},\]
+$M=L(\mu_n)$, 则 $M/\BQ$ 是阿贝尔扩张且分歧的有限素位均包含在 $S$ 中. 设 $\fP\mid \fp$,
+  \[M_\fP=L_\fp(\mu_n)=\BQ_p(\mu_{p^{e_p}n'})=\BQ_p(\mu_{p^{e_p}})\BQ_p(\mu_{n'}),p\nmid n',\]
+由于 $\BQ_p(\mu_{n'})$ 是 $M_\fP/\BQ_p$ 的极大非分歧子扩张, 其惯性群
+  \[I_p=G(\BQ_p(\mu_{p^{e_p}})/\BQ_p)\]
+大小为 $\varphi(p^{e_p})$. 设 $I\subseteq G(M/\BQ)$ 由所有惯性群 $I_p,p\in S$ 生成, 则 $I$ 的固定域非分歧, 它只能是 $\BQ$. 由此
+  \[\#I\le\prod_p\# I_p=\prod_p \varphi(p^{e_p})=\varphi(n)=[\BQ(\mu_n):\BQ],\]
+$[M:\BQ]=[\BQ(\mu_n):\BQ]$, 即 $M=\BQ(\mu_n)$.
+\end{proof}
+
+\subsection{卢宾-泰特形式群}
+
+对于一般的局部域, 我们需要利用卢宾-泰特形式群来描述其阿贝尔扩域. 
+
+\begin{definition}{形式群}{formal group}
+环 $R$ 上的\noun{形式群}指的是满足如下条件的形式幂级数 $\CF(X,Y)$ $\in$ $R\ldb X,Y\rdb$\footnote{高维的形式群也可以类似地定义.}
+\begin{enumerate}
+\item $\CF(X,Y)\equiv X+Y\mod\deg 2$;
+\item $\CF(X,Y)=\CF(Y,X)$;
+\item $\CF\bigl(X,\CF(Y,Z)\bigr)=\CF\bigl(\CF(X,Y),Z\bigr)$.
+\end{enumerate}
+我们记 $X+_\CF Y:=\CF(X,Y)$.
+\end{definition}
+
+\begin{exercise}
+(1) 验证 $\Ga(X,Y)=X+Y$ 是形式群, 称为\nouns{形式加法群}{形式群!形式加法群}.
+
+(2) 验证 $\Gm(X,Y)=X+Y+XY$ 是形式群, 称为\nouns{形式乘法群}{形式群!形式乘法群}.
+
+(3) 设 $f(X)=a_1 X+a_2X^2+\dots\in R\ldb X\rdb$, $a_1\in R^\times$, 则存在 $f^{-1}(X)\in R\ldb X\rdb$ 使得 $f\bigl(f^{-1}(X)\bigr)=f^{-1}\bigl(f(X)\bigr)=X$. 此时 $\CF(X,Y)=f^{-1}\bigl(f(X)+f(Y)\bigr)$ 是形式群, $f$ 称为 $\CF$ 的\noun{对数}.
+\end{exercise}
+
+
+设 $\CF,\CG$ 是形式群. 如果 $f\in XR\ldb X\rdb$ 满足
+  \[f\bigl(\CF(X,Y)\bigr)=\CG\bigl(f(X),f(Y)\bigr),\]
+称之为形式群的\noun{同态} $f:\CF\to \CG$. 如果 $f\in R\ldb X\rdb^\times$, 即存在 $f^{-1}:\CG\to \CF$, 称之为\noun{同构}. 容易验证 $\CF$ 的自同态全体在加法和复合意义下构成环 $\End_R(\CF)$.
+
+\begin{exercise}
+设 $R$ 是 $\BQ$ 代数. 对于任意 $R$ 上形式群 $\CF$, 存在唯一的形式群同构 $\log_\CF:F\simto \Ga$, 使得 $\log_\CF(X)\equiv X\mod\deg 2$, 称之为 $\CF$ 的\noun{对数}.
+\end{exercise}
+
+\begin{exercise}
+$\log_{\Gm}=\log(1+X)=\suml_{n=1}^\infty(-1)^{n+1}\frac{X^n}{n}.$
+\end{exercise}
+
+\begin{definition}{形式模}{formal module}
+设 $\CF$ 是 $R$ 上的形式群. 如果环同态
+  \[\fct{R}{\End_R(\CF)}{a}{[a]_\CF(X)}\]
+满足 $[a]_\CF(X)\equiv aX\mod \deg 2$, 称之为\nouns{形式 $R$ 模}{形式群!形式 $R$ 模}, 或简称 $\CF$ 为形式 $R$ 模. 自然地, 形式模之间的同态为满足 $f\bigl([a]_\CF(X)\bigr)=[a]_\CG\bigl(f(X)\bigr)$ 的形式群同态 $f:\CF\to \CG$.
+\end{definition}
+
+设 $K$ 是一个局部环, $\pi$ 为其素元, $q=\#\kappa$. 
+
+\begin{definition}{卢宾-泰特级数}{lubin-tate series}
+如果 $e(X)\in \CO_K\ldb X\rdb$ 满足
+  \[e(X)\equiv \pi X\mod \deg 2\quad e(X)\equiv X^q\mod\pi,\]
+称之为关于 $\pi$ 的\noun{卢宾-泰特级数}.
+\end{definition}
+
+\begin{theorem}{}{}
+(1) 对于任意卢宾-泰特级数 $e(X)$, 存在唯一的形式 $\CO_K$ 模 $\CF$ 使得 
+  \[e\in\End_{\CO_K}(\CF),\quad [\pi]_\CF(X)=e(X),\]
+称之为\noun{卢宾-泰特形式群}.
+
+(2) 如果 $e'(X)$ 也是关于 $\pi$ 的卢宾-泰特级数, 则存在 $[a]_{\CF,\CF'}(X)\in\CO_K\ldb X\rdb$ 使得
+  \[[a]_{\CF,\CF'}:\CF\to\CF'\]
+是形式 $\CO_K$ 模同态. 如果 $a$ 是一个单位, 它是形式模同构.
+\end{theorem}
+\begin{example}
+设 $K=\BQ_p$, $e(X)=(1+X)^p-1$, 则
+  \[\fct{\BZ_p}{\End_{\BZ_p}(\Gm)}{a}{[a]_{\Gm}(X)=(1+X)^a-1}\]
+使得 $\Gm$ 成为对应的形式 $\BZ_p$ 模.
+\end{example}
+
+\begin{proposition}{}{}
+设 $e,e'$ 分别是关于素元 $\pi,\pi'$ 的卢宾-泰特级数, $\varphi$ 是弗罗贝尼乌斯的一个提升, $\vK=\wh{\wt K}$.
+如果 $a_i\in \CO_{\vK}$ 满足 $\pi a_i=\pi' \varphi(a_i)$, 
+$L(X_1,\dots,X_n)=\sum_{i=1}^na_iX_i$, 则存在唯一的幂级数 
+  \[\CF(X_1,\dots, X_n)\in\CO_{\vK}\ldb X_1,\dots,X_n\rdb\]
+满足
+  \[\CF\equiv L\mod\deg 2,\quad e\circ \CF=\CF^{\varphi}\circ e'.\]
+\end{proposition}
+该命题可归纳地解出 $\CF$ 的每一个齐次项, 这里不做详解. 当 $\pi=\pi'$, $a_i\in\CO_K$ 时, $\CF$ 还是 $\CO_K$ 系数的. 由此可得前述定理, 且同一个 $\pi$ 对应的卢宾-泰特形式群是同构的, 
+
+如果 $R$ 是一个完备赋值环, $\fp$ 是其极大理想, 则 
+  \[x+_\CF y:=\CF(x,y)\]
+定义了 $\fp$ 上一个交换群的结构. 如果 $\CF$ 还是一个形式 $R$ 模, 则 $\fp$ 成为 $R$ 模.
+
+设 $\ov K$ 为局部域 $K$ 的代数闭包, $\bar \fp$ 为其极大理想, $\pi$ 为 $K$ 的一个素元, $\LT$ 为其关联的一个卢宾-泰特形式群, 它在同构下是唯一的. 定义
+  \[\LT[\pi^n]=\set{\lambda\in \bar \fp\mid [\pi^n]_\LT(\lambda)=0}=\ker [\pi^n]_\LT\]
+为其 $\pi^n$ 等分点群. 易知它是一个 $\CO_K/\pi^n\CO_K$ 模.
+
+\begin{proposition}{}{}
+$\LT[\pi^n]$ 是秩为 $1$ 的自由 $\CO_K/\pi^n\CO_K$ 模. 因此 $[~~]_\CF$ 定义了同构
+  \[\CO_K/\pi^n\CO_K\simto \End_{\CO_K}(\LT[\pi^n]),\quad
+U_K/U_K^{(n)}\simto \Aut_{\CO_K}(\LT[\pi^n]).\]
+\end{proposition}
+\begin{proof}
+不妨设 $e(X)=X^q+\pi X=[\pi]_\CF(X)$, 则 $\LT[\pi^n]$ 是 $e^n(X)=0$ 的根, 归纳可知它是可分多项式. 设 $\lambda_n\in\LT[\pi^n]-\LT[\pi^{n-1}]$, 则
+  \[\CO_K\to \LT[\pi^n],\quad a\mapsto [a]_\CF(\lambda_n)\]
+诱导了 $\CO_K$ 模同构 $\CO_K/\pi^n\CO_K\simto \LT[\pi^n]$.
+\end{proof}
+
+设 $L_n=K(\LT[\pi^n])$. 由于不同的卢宾-泰特形式群之间是同构的, $f:\CF\to \CG$, 因此 $\CG[\pi^n]=f(\CF[\pi^n]), K(\CG[\pi^n])\subseteq K(\CF[\pi^n])$, $L_n$  不依赖于 $\LT$ 的选取.
+\begin{example}
+如果 $K=\BQ_p,e(X)=(1+X)^p-1$, 则
+  \[\LT[\pi^n]=\set{\zeta-1\mid \zeta\in\mu_{p^n}},\]
+于是 $L_n=\BQ_p(\mu_{p^n})$.
+\end{example}
+
+\begin{theorem}{}{}
+$L_n/K$ 是完全分歧的 $q^{n-1}(q-1)$ 次阿贝尔扩张, 伽罗瓦群为
+  \[G(L_n/K)\cong\Aut_{\CO_K}(\LT[\pi^n])\cong U_K/U_K^{(n)}, \]
+其中 
+  \[\sigma\mapsto u\mod U_K^{(n)},\quad \lambda^\sigma=[u]_F(\lambda),\lambda\in\LT[\pi^n].\]
+如果 $\lambda_n\in\LT[\pi^n]-\LT[\pi^{n-1}]$, 则 $L_n=K(\lambda_n)$ 是 $L_n$ 的素元, 且
+  \[\phi_n(X)=\frac{e^n(X)}{e^{n-1}(X)}=X^{q^{n-1}(q-1)}+\cdots+\pi\in\CO_X[X]\]
+是它的极小多项式, $\bfN_{L_n/K}(-\lambda_n)=\pi$. 
+\end{theorem}
+\begin{proof}
+如果
+  \[e(X)=X^q+\pi(a_{q-1}X^{q-1}+\cdots+a_2X^2)+\pi X,\]
+则
+  \[\phi_n(X)=e^{n-1}(X)^{q-1}+\pi(a_{q-1}X^{q-2}+\cdots+a_2X)+\pi \]
+是艾森斯坦多项式, 从而是 $\lambda_n$ 的极小多项式. 于是 $\lambda_n$ 是完全分歧扩张 $K(\lambda_n)/K$ 的素元. 任一 $\sigma\in G(L_n/K)$ 诱导了 $\LT[\pi^n]$ 的自同构, 从而
+  \[G(L_n/K)\to \Aut_{\CO_K}(\LT[\pi^n])\cong U_K/U_K^{(n)}.\]
+由于 $L_n$ 由 $\LT[\pi^n]$ 生成, 它是单的. 而
+  \[\#G(L_n/K)\ge [K(\lambda_n):K]=q^{n-1}(q-1)=\# U_K/U_K^{(n)},\]
+因此它是同构.
+\end{proof}
+
+\begin{theorem}{}{}
+设 $a=u\pi^{v_K(a)}\in K^\times$, $u\in U_K$, 则
+  \[(a,L_n/K)\lambda=[u^{-1}]_\LT(\lambda),\quad\lambda\in\LT[\pi^n].\]
+\end{theorem}
+\begin{proof}
+设 $\sigma\in G(L_n/K)$ 对应 $u\in U_K$, $\wt \sigma\in\Frob(\wt L_n/K)$ 是 $\sigma$ 的提升且满足 $d_K(\wt\sigma)=1$. 我们将 $\wt \sigma$ 视为 $\breve L_n=L_n\vK$ 的自同构. 设 $\Sigma$ 是 $\wt\sigma$ 的固定域, 则 $f_{\Sigma/K}=d_K(\wt \sigma)=1$, $\Sigma/K$ 完全分歧. 由于 $\Sigma\cap \wt K=K,\wt\Sigma=\Sigma\wt K=\wt L_n$, 因此 $[\Sigma:K]=[\wt L_n:\wt K]=[L_n:K]=q^{n-1}(q-1)$.
+
+设 $e,e'$ 分别为对应 $\pi,\pi'$ 的卢宾-泰特级数, $\pi=u\pi'$, $\CF,\CF'$ 为 $e,e'$ 对应的卢宾-泰特形式群. 则存在 $\theta=\varepsilon X+O(X^2)\in\CO_{\breve K}\ldb X\rdb$, 使得 $\varepsilon\in U_{\breve K}$,
+  \[\theta^\varphi=\theta\circ [u]_{\CF'},\quad
+\theta^\varphi\circ e'=e\circ \theta, \quad\varphi=\varphi_K.\]
+设 $\lambda_n\in \CF[\pi^n]-\CF[\pi^{n-1}]$, $\pi_\Sigma=\theta(\lambda_n)$. 则 
+  \[\pi_{\Sigma}^{\wt \sigma}=\theta^{\varphi}(\lambda_n^\sigma)=\theta^\varphi\bigl([u^{-1}]_\CF (\lambda_n)\bigr)=\theta(\lambda_n)=\pi_\Sigma.\]
+由于 $i=n$ 时, ${e'}^i\bigl(\theta(\lambda_n)\bigr)=\theta^{\varphi^i}\bigl({e}^i(\lambda_n)\bigr)=0$, $i=n-1$ 时, 它非零. 因此 $\pi_\Sigma\in \CF'[{\pi'}^n]-\CF'[{\pi'}^{n-1}]$, $\Sigma=K(\pi_\Sigma)$, $\bfN_{\Sigma/K}(-\pi_\Sigma)=\pi'=u\pi$,
+  \[r_{L_n/K}(\sigma)=\bfN_{\Sigma/K}(-\pi_\Sigma)=\pi'\equiv u\mod \bfN_{L_n/K}L_n^\times,\]
+因此
+  \[(a,L_n/K)=(\pi^{v_K(a)},L_n/K)(u,L_n/K)=(u,L_n/K)=\sigma.\]
+\end{proof}
+
+\begin{example}
+当 $K=\BQ,\LT=\Gm$ 时, $a=u p^{v_p(a)}\in \BQ_p^\times,u\in\BZ_p^\times,\lambda=\zeta-1$, 其中 $\zeta$ 是本原 $p^n$ 次单位根, 则
+  \[\bigl(a,\BQ_p(\mu_{p^n})/\BQ_p\bigr)\zeta=\zeta^{u^{-1}}.\]
+\end{example}
+
+\begin{theorem}{}{}
+$L_n/K$ 的范数群为 $(\pi)\times U_K^{(n)}$. 因此, $K^\ab=\wt K(\LT[\pi^\infty])$ 为 $K$ 的极大阿贝尔扩张.
+\end{theorem}
+\begin{proof}
+由于 $a=u\pi_K^{v_K(a)}$ 时, $a\in \bfN_{L_n/K}L_n^\times$ 当且仅当 $[u^{-1}]_\LT=\id_{\LT[\pi^n]}$, 即 $u\in U_K^{(n)}$. 设 $L/K$ 是有限阿贝尔扩张, 则 $\pi^{f\BZ}\times U_K^{(n)}\in \bfN_{L/K}L^\times$. 和分圆域情形类似, 此时 $\pi^{f\BZ}$ 对应的是非分歧扩张, 因此 $L\subseteq \wt K(\LT[\pi^\infty])$.
+\end{proof}
+
+对于 $K^\times$ 的高阶单位群, 它在范剩余符号下的像是 $G(L/K)$ 的高阶分歧群.
+\begin{theorem}{}{}
+设 $L/K$ 是有限阿贝尔扩张, 范剩余符号
+  \[(\ , L/K):K^\times\to G(L/K)\]
+将 $U^{(n)}_K$ 映为 $G^n(L/K)$. 特别地, $\set{G^t(L/K)}_{t\ge -1}$ 仅在整数处有跳跃.
+\end{theorem}
+\begin{proof}
+见\cite[Chapter V, \S 6]{Neukirch1999}, 这里省略.
+\end{proof}
+
+
+\subsection{希尔伯特符号}
+我们称互反映射的逆
+  \[(~,L/K):K^\times\to G(L/K)^\ab\]
+为\noun{局部范数剩余符号}. 对于 $\BC/\BR$ 情形, $(a,\BC/\BR)=\sgn(a)\in G(\BC/\BR)$.
+
+假设 $K\supseteq \mu_n$. 设 $L=K(\sqrt[n]{K^\times})$, 则 $\bfN_{L/K}L^\times=K^{\times n}$, 因此
+  \[G(L/K)\cong K^\times/K^{\times n}.\]
+另一方面, 我们有自然同构
+  \[\begin{split}
+    \Hom(G(L/K),\mu_n)&\cong K^\times/K^{\times n}\\
+    \left(\sigma\mapsto \frac{(\sqrt[n]{a})^\sigma}{\sqrt[n]{a}}\right)&\mapsfrom a.
+  \end{split}\]
+因此双线性映射
+  \[\fct{G(L/K)\times \Hom(G(L/K),\mu_n)}{\mu_n}{(\sigma,\chi)}{\chi(\sigma)}\]
+诱导了
+  \[\hil{\ }{\ }{\fp}: K^\times/K^{\times n}\times K^\times/K^{\times n} \to \mu_n.\]
+称之为 $n$ 次\noun{希尔伯特符号}.
+
+由定义我们有:
+\begin{proposition}{}{}
+对于 $a,b\in K^\times$,
+  \[(a,K(\sqrt[n]{b})/K)\sqrt[n]{b}=\hil{a}{b}{\fp}\sqrt[n]{b}.\]
+\end{proposition}
+
+一般的希尔伯特符号和我们在\ref{2:hilbert_symbol}节中接触的二次希尔伯特符号一样, 也有着一系列易于计算的性质.
+\begin{proposition}{}{}
+(1) $\hil{aa'}{b}{\fp}=\hil{a}{b}{\fp}\hil{a'}{b}{\fp}$, $\hil{a}{bb'}{\fp}=\hil{a}{b}{\fp}\hil{a}{b'}{\fp}$;
+
+(2) $\hil{a}{b}{\fp}=1\iff a\in\bfN_{K(\sqrt[n]{b})/K}K(\sqrt[n]{b})^\times$;
+
+(3) $\hil{a}{b}{\fp}=1,\forall b\implies a\in K^{\times n}$;
+
+(4) $\hil{a}{b}{\fp}=\hil{b}{a}{\fp}^{-1}$;
+
+(5) $\hil{a}{-a}{\fp}=\hil{a}{1-a}{\fp}=1$.
+\end{proposition}
+\begin{proof}
+(1-3)由定义和互反映射的性质可得. 设 $b\in K^\times,x\in K$ 使得 $x^n-b\neq 0$, 设 $d$ 是 $n$ 的最大的因子使得 $\sqrt[d]{b}\in K$. 设 $\beta^n=b$, 则 $K(\beta)/K$ 是 $m=n/d$ 次循环扩张且 $i\equiv j\mod d$ 时, $x-\zeta^i\beta$ 是 $x-\zeta^j\beta$ 的共轭元, 其中 $\zeta$ 是一个 $n$ 次本原单位根. 于是
+  \[x^n-b=\prod_{i=0}^{d-1}\bfN_{K(\beta)/K}(x-\zeta^i \beta)\]
+是 $K(\sqrt[n]{b})/K$ 的一个范数, 因此
+  \[\hil{x^n-b}{b}{\fp}=1.\]
+由此可得(5). 最后
+  \[1=\hil{ab}{-ab}{\fp}=\hil{a}{b}{\fp}\hil{a}{-a}{\fp}\hil{b}{a}{\fp}\hil{b}{-b}{\fp}=\hil{a}{b}{\fp}\hil{b}{a}{\fp}\]
+得到(4).
+\end{proof}
+
+\begin{exercise}
+对于 $\BC/\BR$, $n=2$, 证明 $\hil{a}{b}{\infty}=(-1)^{\frac{\sgn a-1}{2}\cdot\frac{\sgn b-1}{2}}.$
+\end{exercise}
+
+设 $K$($\neq\BR,\BC$) 的剩余特征为 $p$, 假设 $p\nmid n$. 我们来计算该情形即所谓的\noun{温希尔伯特符号}. 由于 $K$ 的单位根群为 $\mu_{q-1}$, 因此 $n\mid q-1$.
+
+\begin{lemma}{}{}
+设 $p\nmid n$, $x\in K^\times$, 则 $K(\sqrt[n]{x})/K$ 非分歧当且仅当 $x\in U_K K^{\times n}$.
+\end{lemma}
+\begin{proof}
+设 $x=uy^n,u\in U_K,y\in K^\times$, 则 $K(\sqrt[n]{x})=K(\sqrt[n]{u})$. 设 $\kappa'$ 为 $X^n-u$ 在 $\kappa$ 上的分裂域, $K'/K$ 是非分歧扩张且 $\kappa'$ 是 $K'$ 的剩余域. 由亨泽尔引理, $X^n-u$ 在 $K'$ 上完全分解, 因此 $K(\sqrt[n]{u})\subseteq K'$ 非分歧. 反之, 若 $L=K(\sqrt[n]{x})$ 非分歧, 令 $x=u\pi^r,u\in U_K$, $\pi$ 是素元, 则 $v_L(\sqrt[n]{u\pi^r})=r/n\in\BZ$, 从而 $n\mid r$.
+\end{proof}
+
+由于 $U_K=\mu_{q-1}\times U_K^{(1)}$, 因此任一 $u\in U_K$ 可分解为
+  \[u=\omega(u)\pair{u},\]
+其中 $\omega(u)\in \mu_{q-1},\pair{u}\in U_K^{(1)}$.
+
+\begin{proposition}{}{}
+设 $p\nmid n$, $a,b\in K^\times$, 则
+  \[\hil{a}{b}{\fp}=\omega \left((-1)^{\alpha\beta}\frac{b^\alpha}{a^\beta}\right)^{(q-1)/n},\]
+其中 $\alpha=v_K(a),\beta=v_K(b)$.
+\end{proposition}
+\begin{proof}
+由于右侧是双线性的, 因此我们只需证明 $a=\pi,b=-\pi u,u\in U_K$ 的情形. 而 $\hil{\pi}{-\pi}{\fp}=1$, 因此只需证 $a=\pi,b=u$ 的情形.
+设 $y=\sqrt[n]{u}$, $K'=K(y)$, 则 $K(y)/K$ 非分歧, 因此 $(\pi,K(y)/K)$ 是弗罗贝尼乌斯映射 $\varphi=\varphi_{K(y)/K}$, 于是
+  \[\hil{\pi}{u}{\fp}=\frac{\varphi y}{y}\equiv y^{q-1}\equiv u^{(q-1)/n}\equiv \omega(u)^{(q-1)/n}\mod\fp.\]
+由于 $\mu_n\subseteq \mu_{q-1}=\kappa^\times$, 因此两侧相等.
+\end{proof}
+
+我们可以看出 $\hil{\pi}{u}{\fp}$ 不依赖于 $\pi$ 的选取, 定义\noun{勒让德符号}(或 \nouns{$n$ 次剩余符号}{n 次剩余符号@$n$ 次剩余符号})
+  \[\leg{u}{\fp}:=\hil{\pi}{u}{\fp}=\omega(u)^{(q-1)/n}.\]
+
+\begin{exercise}
+$\leg{u}{\fp}=1$ 当且仅当 $u\mod \fp$ 是一个 $n$ 次方.
+\end{exercise}
+
+我们来证明本节定义的希尔伯特符号和\ref{2:hilbert_symbol}节定义的一致. 我们只需证明 $K=\BQ_2$, $n=2$ 时,
+  \[\hil{2}{a}{2}=(-1)^{(a^2-1)/8},\quad \hil{a}{b}{2}=(-1)^{\frac{a-1}{2}\cdot\frac{b-1}{2}},\quad a,b\in U_{\BQ_2}.\]
+由于 $U_{\BQ_2}/U_{\BQ_2}^2=\pair{-1,5}$, 我们只需要考虑 $a,b=-1$ 或 $5$. $\hil{-1}{x}{2}=1$ 当且仅当 $x\in\bfN_{\BQ(\sqrt{-1})/\BQ}$, 因此 $\hil{-1}{2}{2}=\hil{-1}{5}{2}=1$. 但是 $-1$ 不是个平方, 因此 $\hil{-1}{-1}{2}=-1$. 由于 $\hil{2}{2}{2}=\hil{2}{-1}{2}=1$, 而 $2$ 不是个平方, 这迫使 $\hil{2}{5}{2}=-1$.
+
+\begin{exercise}
+证明 $U_{\BQ_2}/U_{\BQ_2}^2=\pair{-1,5}$.
+\end{exercise}
+
+可以看出, $p\mid n$ 的情形(\noun{野希尔伯特符号})相对而言更复杂. 具体的结果由 Br\"uckner 于 1964年给出, 见\cite[Theorem~5.3.7]{Neukirch1999}.
+
+
+\begin{exercise}
+了解和学习整体函数域情形的局部类域论.
+\end{exercise}
+
+
+\section{整体类域论}
+\label{sec:global class field theory}
+
+整体类域论中的 $G$ 模 $A$ 是所谓的伊代尔类群.
+\subsection{阿代尔和伊代尔}
+
+\begin{definition}{阿代尔环}{adele ring}
+称
+  \[\BA_K:={\prod_v}' K_v\]
+为数域 $K$ 的\noun{阿代尔环}\index{A K@$\BA_K$}.
+这里的 $'$ 表示相对于 $\CO_v$ 的\noun{限制直积}, 即除有限多个素位外, $\alpha_v\in\CO_v$\footnote{一般地, 给出一族局部紧群 $(G_\lambda)$, 对除有限多个 $\lambda$ 外给了一个紧开子群 $U_\lambda$, 则其直积中满足除有限多个 $\lambda$ 外, $x_\lambda\in U_\lambda$ 的元素称之为限制直积.}.
+它的拓扑定义为相应的乘积拓扑的限制拓扑.
+其中的元素被称为 $K$ 的\noun{阿代尔} (\noun{\adele}).
+\end{definition}
+
+\begin{definition}{伊代尔群}{idele group}
+称阿代尔环的乘法群 
+  \[\BI_K=\BA_K^\times={\prod_v}' K_v^\times\]
+为 $K$ 的\noun{伊代尔群}\index{A K times@$\BA_K^\times$}\index{I K@$\BI_K$}, 其中的元素被称为\noun{伊代尔} (\noun{\idele}). 容易看出, 伊代尔群是 $K_v^\times$ 相对于 $\CO_v^\times$ 的限制直积.
+\end{definition}
+
+嵌入 $K\inj K_v$ 诱导了对角嵌入
+  \[K^\times\inj \BI_K.\]
+我们称 $K^\times$ 的像为\noun{主伊代尔}.
+
+\begin{definition}{伊代尔类群}{idele class group}
+商群 $C_K=\BI_K/K^\times$ 被称为 $K$ 的\noun{伊代尔类群}\index{C_K@$C_K$}.
+\end{definition}
+
+对于 $v\mid \infty$, 定义
+  \[\CO_v=\begin{cases}
+\BR_{\ge 0},&v\text{ 是实素位};\\
+\BC,&v\text{ 是复素位}.
+\end{cases}\]
+设 $S$ 是 $K$ 的素位的一个有限集合, 我们记 $\BI^S_K$\index{ISK@$\BI^S_K$} 为 $S$ 以外的素位处都属于 $\CO_v^\times$ 的伊代尔构成的子群. 显然 
+  \[\BI_K=\bigcup_S \BI^S_K.\]
+记
+  \[K^S=K^\times\cap \BI_K^S.\]
+如果 $S_\infty=\set{v\mid \infty}$ 包含所有无穷素位, 则 $K^{S_\infty}=\CO_K^\times$.
+
+考虑群同态
+  \[\fct{(~):\BI_K}{\CI_K}{\alpha}{(\alpha)=\prod_{\fp\nmid \infty}\fp^{v_\fp(\alpha_\fp)}.}\]
+它的核是
+  \[\BI_K^{S_\infty}=\prod_{\fp\nmid \infty}\CO_\fp^\times \times\prod_{\fp\mid \infty}K_\fp^\times.\]
+这诱导了群同态
+  \[C_K\to \Cl_K,\]
+核为 $\BI_K^{S_\infty} K^\times/K^\times$.
+
+\begin{proposition}{}{}
+$K^\times$ 是 $\BI_K$ 的离散闭子群.
+\end{proposition}
+\begin{proof}
+只需证明 $1$ 有一个不包含其它主伊代尔的开集即可. 取
+  \[U=\set{\alpha\in \BI_K\mid v\nmid \infty\ \text{时}, \alpha_v\in\CO_v^\times; v\mid \infty\ \text{时}, |\alpha_v-1|_v<1.}\]
+如果 $1\neq x\in U$ 是一个主伊代尔, 则
+  \[1=\prod_v |x-1|_v<\prod_{v\nmid \infty} |x-1|_v\le \prod_{v\nmid\infty}\max\set{|x|_v,1}=1,\]
+矛盾.
+
+由于 $(x,y)\mapsto xy^{-1}$ 是连续的, 存在 $1$ 的一个开邻域 $V$ 使得 $VV^{-1}\subseteq U$. 对于任意 $y\in \BI_K$, 如果 $yV$ 包含两个不同的主伊代尔 $x_1=yv_1,x_2=yv_2\in K^\times$, 则 $x_1x_2^{-1}=v_1v_2^{-1}\in U$, 矛盾! 因此 $yV$ 里只有至多一个主伊代尔, 因此 $K^\times$ 是闭子群.
+\end{proof}
+
+\begin{exercise}
+(1) $\BA_\BQ=(\wh \BZ\otimes_\BZ\BQ)\times\BR$.
+
+(2) $\BA_\BQ/\BZ$ 是紧的, 连通的.
+
+(3) $\BA_\BQ/\BZ$ 任意唯一可除, 即对于任意 $y\in\BA_\BQ/\BZ,n\in\BZ$, 存在唯一的 $x\in\BZ_\BQ/\BZ$ 使得 $nx=y$.
+\end{exercise}
+
+\subsection{域扩张中的伊代尔}
+设 $L/K$ 是数域的有限扩张. 我们记 
+  \[L_\fp=\prod_{\fP\mid \fp} L_\fP=L\otimes_K K_\fp.\]
+它是 $[L:K]$ 次 $K_\fp$ 代数. 自然的对角嵌入 $K_\fp\inj L_\fp$ 诱导了 $\BA_K\inj \BA_L$ 以及
+  \[\fct{\BI_K}{\BI_L}{\alpha}{\alpha',}\]
+其中 $\alpha'_\fP=\alpha_\fp\in K_\fp^\times\subseteq L_\fP^\times,\fP\mid\fp$.
+
+设 $\sigma:L\simto \sigma L$ 是一个同构, 则它同样诱导了同构 $\sigma:\BI_L\to \BI_{\sigma L}$. 对于 $L$ 的任一素位 $\fP$, 设 $\alpha\in L_\fP$ 是 $\set{\alpha_i\in L}$ 在 $|\cdot|_\fP$ 下的极限, 令 $\sigma\alpha\in (\sigma L)_{\sigma\fP}$ 是的 $\set{\sigma\alpha_i\in \sigma L}$ 在 $|\cdot|_{\sigma\fP}$ 下的极限, 则 $\sigma:L_\fP\simto (\sigma L)_{\sigma\fP}$. 对于 $\alpha\in \BI_L$, 我们有 $(\sigma\alpha)_{\sigma\fP}=\sigma\alpha_\fP\in(\sigma L)_{\sigma\fP}.$
+如果 $L/K$ 是伽罗瓦扩张, 则任一 $\sigma\in G=G(L/K)$ 诱导了同构 $\sigma:\BI_L\to \BI_L$, 因此 $\BI_L$ 是 $G$ 模.
+
+\begin{proposition}{}{}
+如果 $L/K$ 是有限伽罗瓦扩张, 则 $\BI_L^G=\BI_K$.
+\end{proposition}
+\begin{proof}
+对于 $\alpha\in \BI_L$, $\sigma\in G$ 诱导了 $K_\fp$ 同构 $\sigma:L_\fP\to L_{\sigma\fP}$, $\fP\mid\fp$. 因此
+  \[(\sigma\alpha)_{\sigma\fP}=\sigma\alpha_\fP=\alpha_\fP=\alpha_{\sigma\fP},\]
+即 $\sigma\alpha=\alpha,\alpha\in \BI_L^G$. 反之, 若 $\alpha\in\BI_L^G$, 则
+  \[(\sigma\alpha)_{\sigma\fP}=\sigma\alpha_\fP=\alpha_{\sigma\fP}.\]
+如果 $\sigma\in G_\fP=G(L_\fP/K_\fp)$, 则 $\sigma\fP=\fP$, $\sigma\alpha_\fP=\alpha_\fP$, $\alpha_\fP\in K_\fp^\times$. 一般地, $\alpha_\fP=\sigma\alpha_\fP=\alpha_{\sigma\fP}$. 而 $G$ 在 $\set{\fP\mid \fp}$ 上传递, 因此 $\alpha\in\BI_K$.
+\end{proof}
+
+任一 $\alpha_\fp \in L_\fp^\times$ 诱导了 $K_\fp$ 向量空间 $L_\fp$ 上的自同构 
+  \[\fct{\alpha_\fp:L_\fp}{L_\fp}{x}{\alpha_\fp x,}\]
+它的行列式记为 $\bfN_{L_\fp/K_\fp}(\alpha_\fp)$. 由此定义了群同态
+  \[\bfN_{L_\fp/K_\fp}:L_\fp^\times\to K_\fp^\times\]
+以及
+  \[\bfN_{L/K}:\BI_L\to \BI_K.\]
+显然, $\alpha_\fp=(\alpha_\fP)$ 诱导的同构是 $\alpha_\fP:L_\fP\to L_\fP$ 的直和, 因此
+  \[\bfN_{L/K}(\alpha)_\fp=\prod_{\fP\mid \fp}\bfN_{L_\fP/K_\fp}(\alpha_\fP).\]
+
+\begin{proposition}{}{}
+(1) 对于 $K\subseteq L\subseteq M$, $\bfN_{M/K}=\bfN_{L/K}\circ \bfN_{M/L}$.
+
+(2) 如果 $M/K$ 是伽罗瓦扩张, $L$ 是中间域, $G=G(M/K)$, $H=G(M/L)$, 则对于 $x\in\BI_L$, $\bfN_{L/K}(\alpha)=\prod_{\sigma\in G/H}\sigma\alpha$.
+
+(3) $\bfN_{L/K}(\alpha)=\alpha^{[L:K]},\alpha\in \BI_K$.
+
+(4) 主伊代尔\ $x\in L^\times$ 的范数是 $\bfN_{L/K}(x)$ 对应的主伊代尔.
+\end{proposition}
+\begin{proof}
+类似域扩张情形.
+\end{proof}
+
+由于 $\bfN_{L/K}:\BI_L\to\BI_K$ 将主伊代尔映为主伊代尔, 因此它诱导了 $\bfN_{L/K}:C_L\to C_K$.
+
+现在我们考虑域扩张下伊代尔类群的关系.
+\begin{proposition}{}{}
+设 $L/K$ 是有限扩张, 则 $\BI_K\inj \BI_L$ 诱导了嵌入 $C_K\to C_L.$
+\end{proposition}
+\begin{proof}
+我们只需证明 $\BI_K\cap L^\times=K^\times$. 设 $M$ 是 $L/K$ 的伽罗瓦闭包, $G=G(M/K),$
+  \[\BI_K\cap L^\times\subseteq \BI_K\cap M^\times= (\BI_K\cap M^\times)^G=\BI_K\cap M^{\times G}=\BI_K\cap K^\times=K^\times.\]
+\end{proof}
+
+\begin{proposition}{}{}
+设 $L/K$ 是有限伽罗瓦扩张, $G=G(L/K)$, 则 $C_L$ 是自然的 $G$ 模且 $C_L^G=C_K$. 
+\end{proposition}
+\begin{proof}
+$L^\times$ 是 $\BI_L$ 的 $G$ 子模, 因此 $C_L$ 是自然的商模. 我们有 $G$ 模短正合列
+  \[1\ra L^\times\ra \BI_L\ra C_L\ra 1,\]
+这诱导了长正合列
+  \[1\ra L^{\times G}\ra \BI_L^G\ra C_L^G\ra \rmH^1(G,L^\times)\]
+由命题~\ref{pro:first_cohom_trivial}~知 $\rmH^1(G,L^\times)=1$, 因此
+$C_L^G=\BI_L^G/L^{\times G}=\BI_K/K^\times=C_K.$
+\end{proof}
+
+
+\subsection{整体域的埃尔布朗商}
+设 $L/K$ 是数域的有限伽罗瓦扩张, $G=G(L/K)$.
+设 $\fP\mid\fp$, $G_\fP=G(L_\fP/K_\fp)\subseteq G$ 是其分解群. 我们有
+  \[L_\fp=\prod_{\sigma\in G/G_\fP} L_{\sigma\fP}=\prod_{\sigma\in G/G_\fP} \sigma(L_\fP),\]
+因此
+  \[L_\fp^\times=\Ind_G^{G_\fP}L_\fP^\times,\quad U_{L,\fp}=\Ind_G^{G_\fP} U_\fP\]
+是诱导模. 由诱导模性质知
+  \[\rmH^i(G,L_\fp^\times)\cong \rmH^i(G_\fP.L_\fP^\times),\quad\rmH^i(G,U_{L,\fp})=\rmH^i(G_\fP,U_\fP).\]
+\begin{proposition}{}{}
+设 $L/K$ 是数域循环扩张, $S$ 包含 $K$ 的所有在 $L$ 中分歧的素位, 则对于 $i=0,-1$,
+  \[\rmH^i(G,\BI_L^S)\cong\bigoplus_{\fp\in S}\rmH^i(G_\fP,L_\fP^\times),\quad\rmH^i(G,\BI_L)\cong\bigoplus_{\fp}\rmH^i(G_\fP,L_\fP^\times).\]
+这里, 每个 $\fp$ 之上选取一个 $\fP$.
+\end{proposition}
+\begin{proof}
+由于 $\BI_L^S=\bigl(\bigoplus_{\fp\in S}L_\fp^\times\bigr)\oplus V, V=\prod_{\fp\notin S}U_{L,\fp}$, 因此我们有
+  \[\rmH^i(G,\BI_L^S)\cong\bigoplus_{\fp\in S}\rmH^i(G,L_\fp^\times)\oplus \rmH^i(G,V),\]
+以及单射 
+  \[\rmH^i(G,V)\inj \prod_{\fp\notin S}\rmH^i(G,U_{L,\fp}).\]
+对于 $\fp\notin S$, $L_\fP/K_\fp$ 非分歧, 因此 $\rmH^i(G,U_{L,\fp})=\rmH^i(G_\fP,U_\fP)=1$. 由此我们得到第一个同构.
+第二个由
+  \[\rmH^i(G,\BI_L)=\ilim_S \rmH^i(G,\BI_L^S)\cong \ilim_S \bigoplus_{\fp\in S}\rmH^i(G_\fP,L_\fP^\times)=\bigoplus_\fp\rmH^i(G_\fP,L_\fP^\times)\]
+可得.
+\end{proof}
+
+\begin{remark}
+对于 $G=G(\BC/\BR)$, 我们有 
+  \[\rmH^{-1}(G,\BC^\times)=1,\#\rmH^0(G,\BC^\times)=2.\]
+因此在无穷素位的相应上同调也满足类域论公理.
+\end{remark}
+
+\begin{exercise}
+设 $i=0,-1$.
+
+(1) 对于任意多个 $G$ 模 $A_k$, $\rmH^i(G,\oplus_k A_k)=\prod_k \rmH^i(G,A_k)$. 
+
+(2) 对于任意多个 $G$ 模 $A_k$, $\rmH^i(G,\prod_k A_k)\inj \prod_k \rmH^i(G,A_k)$ 是单射.
+
+(3) 对于 $G$ 模正向系 $A_k$, $\rmH^i(G,\ilim_k A_k)=\ilim_k \rmH^i(G,A_k)$.
+\end{exercise}
+
+
+根据希尔伯特 90, $\rmH^{-1}(G_\fP,L_\fP^\times)=1$, 因此 $\rmH^{-1}(G,\BI_L)=1$. 换言之, 一个伊代尔是范当且仅当在每个局部如此.
+
+设 $n_\fp=[L_\fP:K_\fp]$, 则由上述结论可知:
+\begin{proposition}{}{}
+设 $L/K$ 是循环扩张, $S$ 包含 $K$ 的所有在 $L$ 中分歧的素位, 则
+  \[\rmH^{-1}(G,\BI_L^S)=1,\quad h(G,\BI_L^S)=\prod_{\fp\in S} n_\fp.\]
+\end{proposition}
+\begin{proposition}{}{}
+设 $L/K$ 是 $n$ 次循环扩张, $S$ 包含 $K$ 的所有在 $L$ 中分歧的素位, 则
+  \[h(G,L^S)=\frac{1}{n}\prod_{\fp\in S} n_\fp.\]
+\end{proposition}
+\begin{proof}
+设 $\ov S$ 是 $L$ 中 $S$ 之上的素位全体, $\set{e_\fP}$ 是 $V=\prod_{\fP\in \ov S}\BR$ 的标准基, 则同态
+  \[\lambda:L^S\to V,\quad \lambda(a)=\sum_{\fP\in\ov S}\log|a|_\fP e_\fP\]
+的核为 $\mu(L)$, 像为 $(s-1)$ 维格, $s=\#\ov S$. 考虑 $G$ 在 $V$ 上的作用 $\sigma e_\fP=e_{\sigma\fP}$, 则 $\lambda$ 是 $G$ 模同态. 因此 $e_0=\sum_\fP e_\fP$ 和 $\lambda(L^S)$ 生成 $G$ 不变的完全格 $\Gamma$. 由于作为 $G$ 模, $\BZ e_0\cong\BZ$, 我们有
+  \[0\ra \BZ e_0\ra \Gamma\ra \Gamma/\BZ e_0\ra 0,\] 
+$\Gamma/\BZ e_0=\lambda(L^S)$, 因此
+  \[h(G,L^S)=h\bigl(G,\lambda(L^S)\bigr)=h(G,\BZ)^{-1}h(G,\Gamma)=\frac{1}{n}h(G,\Gamma).\]
+
+我们断言, 存在子完全格 $\Gamma'\subseteq \Gamma$ 使得
+  \[\Gamma'=\sum \BZ w_\fP,\]
+$\sigma w_\fP=w_{\sigma\fP}$.
+设 $|\sum a_\fP e_\fP|=\max_\fP |a_\fP|$. 存在 $b>0$ 使得对任意 $x\in V,\gamma\in\Gamma,|x-\gamma|<b$. 选取充分大的 $t\in\BR$ 和 $\gamma\in\Gamma$, 使得 $y=te_{\fP_0}-\gamma$ 满足 $|y|<b$.
+定义 $w_\fP=\sum_{\sigma \fP_0=\fP}\sigma \gamma$, 则 $\sigma w_\fP=w_{\sigma\fP}$. 我们来说明它们线性无关. 如果 $\sum c_\fP w_\fP=0$ 系数不全为零, 不妨设 $|c_\fP|\le 1$ 且存在 $c_{\fP'}=1$, 则 
+  \[w_\fP=\sum_{\sigma\fP_0=\fP} \sigma\gamma=tn_\fP e_\fP-y_\fP,\] 
+其中 $|y_\fP|\le gb$, $g=\#G$.
+因此
+  \[0=\sum c_\fP w_\fP=t\sum c_\fP n_\fP e_\fP-z,\quad |z|\le sgb.\]
+而 $t$ 充分大时这不可能成立, 因此 $w_\fP$ 线性无关.
+
+现在
+  \[\Gamma'=\bigoplus_\fP \BZ w_\fP=\bigoplus_{\fp\in S}\bigoplus_{\fP\mid\fp}\BZ w_\fP=\bigoplus_{\fp\in S} \Gamma_\fp'.\]
+而 $\Gamma_\fp'=\Ind_G^{G_\fp}\BZ w_{\fP_0}$ 是诱导模, $\Gamma'$ 在 $\Gamma$ 中有限指标, 从而
+  \[h(G,L^S)=\frac{1}{n}h(G,\Gamma')=\frac{1}{n}\prod_{\fp\in S} (G_\fp,\BZ w_{\fP_0})=\frac{1}{n}\prod_\fp n_\fp.\]
+\end{proof}
+
+\begin{theorem}{}{}
+设 $L/K$ 是 $n$ 次循环扩张, 则
+  \[h(G,C_L)=n.\]
+\end{theorem}
+\begin{proof}
+设 $\fa_1,\dots,\fa_h$ 是 $\Cl_L$ 的一组代表元, $S$ 为包含分歧、无穷素位以及 $\fa_i$ 在 $K$ 中分解的素因子的一个素位的有限集合, 则 $\BI_L=\BI_L^S L^\times$. 实际上, 对于任意 $\alpha\in \BI_L$, 设 $(\alpha)=\prod_{\fP\nmid\infty}\fP^{v_\fP(\alpha_\fP)}$ 为对应的分式理想. 设 $(\alpha)=\fa_i(a),a\in L^\times$, $\alpha'=\alpha a^{-1}$. 对于 $\fP\notin \ov S$, $v_\fP(\alpha'_\fP)=0,\alpha'_\fP\in U_\fP$, 因此 $\alpha'\in \BI_L^S$, 从而 $\BI_L=\BI_L^S L^\times$.
+由正合列
+  \[1\ra L^S\ra \BI_L^S\ra \BI_L^SL^\times/L^\times\ra 1\]
+可知 $h(G,C_L)=h(G,\BI_L^S)/h(G,L^S)=n$.
+\end{proof}
+
+\begin{corollary}{}{}
+如果 $L/K$ 是 $n=p^\nu$ 次循环扩张, 则有无穷多 $K$ 的素位在 $L$ 中不分裂.
+\end{corollary}
+\begin{proof}
+假设不分裂的素位集合 $S$ 有限. 设 $M/K$ 是 $p$ 次子扩张. 对于任意 $\fp\notin S$, 相应的分解群 $G_\fp\neq G$. 因此 $G_\fp\subseteq G(L/M)$, 即所有 $\fp\notin S$ 在 $M/K$ 中完全分裂.
+
+对于任意 $\alpha\in\BI_K$, 由逼近定理, 存在 $a\in K^\times$ 使得对任意 $\fp\in S$, $\alpha_\fp a^{-1}$ 包含在 $\bfN_{M_\fP/K_\fp}M_\fP^\times$ 的一个开子群中. 而 $\fp\notin S$ 时 $M_\fP=K_\fp$, 因此 $\alpha_\fp a^{-1}$ 自然落在 $\bfN_{M_\fP/K_\fp}M_\fP^\times$ 中. 因此 $\alpha a^{-1}$ 局部处处是范, 从而它是 $\BI_M$ 的范, $\alpha$ 在 $C_K$ 中的类落在 $\bfN_{M/K}C_M$ 中. 故 $C_K=\bfN_{M/K}C_M$, 这与 $h(G(M/K),C_M)=p$ 矛盾!
+\end{proof}
+
+\begin{corollary}{}{}
+设 $L/K$ 是数域的有限扩张. 如果 $K$ 几乎所有的素位都在 $L$ 中完全分裂, 则 $L=K$.
+\end{corollary}
+\begin{proof}
+设 $M/K$ 是其伽罗瓦闭包, $G=G(M/K),H=G(M/L)$. 设 $\fP\mid\fp$ 是 $M$ 的素位, 则 $L$ 中 $\fp$ 之上的素位个数为双陪集 $H\bs G/ G_\fP$ 的大小. 因此 $\fp$ 在 $L$ 中完全分裂当且仅当 $\# H\bs G/G_\fP=[L:K]=\# H\bs G$, 这意味着 $G_\fP=1$, 即 $\fp$ 在 $M$ 中完全分裂.
+
+设 $\sigma\in G(M/K)$ 为素数阶元, 固定域为 $K'$, 则 $K'$ 几乎所有的素位在 $M$ 中完全分裂, 这与前述推论矛盾! 因此 $M=K,L=K$.
+\end{proof}
+
+
+\subsection{整体互反律}
+现在我们知道循环扩张 $L/K$ 中 $C_L$ 的埃尔布朗商为 $n=[L:K]$, 因此我们只需要说明 $\rmH^0$ 的大小等于 $n$ 即可得到类域论公理. 我们略去证明过程.
+\begin{theorem}{}{}
+设 $L/K$ 是 $n$ 次循环扩张, 则
+  \[\#\rmH^0\bigl(G(L/K),C_L\bigr)=n,\quad \rmH^{-1}\bigl(G(L/K),C_L\bigr)=1.\]
+\end{theorem}
+\begin{corollary}{}{}
+设 $L/K$ 是循环扩张, 则 $K$ 中元素是 $L$ 的范当且仅当在每个局部如此.
+\end{corollary}
+\begin{proof}
+设 $G=G(L/K)$.
+由于
+  \[1\ra L^\times\ra \BI_L\ra C_L\ra 1\]
+正合, 我们有正合列
+  \[1=\rmH^{-1}(G,C_L)\ra \rmH^0(G,L^\times)\ra \rmH^0(G,\BI_L).\]
+由于 $\rmH^0(G,\BI_L)=\bigoplus_\fp \rmH^0(G_\fP,L_\fP^\times)$, 因此该命题成立.
+\end{proof}
+
+\begin{proposition}{}{}
+设 $T$ 是 $G\bigl(\BQ(\mu_\infty)/\BQ\bigr)$ 的扭部分, 则 $T$ 的固定子域 $\wt\BQ$ 是 $\BQ$ 的 $\wh \BZ$ 扩张. 
+\end{proposition}
+\begin{proof}
+由于
+  \[G\bigl(\BQ(\mu_\infty)/\BQ\bigr)=\plim_n G\bigl(\BQ(\mu_n)/\BQ\bigr)\cong \plim_n (\BZ/n\BZ)^\times=\wh \BZ^\times,\]
+而 $\wh \BZ=\prod_p \BZ_p,\BZ_p^\times\cong \BZ_p\times \BZ/(p-1)\BZ,p\neq 2$ 或 $\BZ_2\times \BZ/2\BZ,p=2$. 因此
+  \[G\bigl(\BQ(\mu_\infty)/\BQ\bigr)\cong\wh \BZ^\times\cong \wh \BZ\times\wh T,\quad \wh T=\prod_{p\neq 2}\BZ/(p-1)\BZ\times \BZ/2\BZ,\]
+而 $T=\bigoplus_{p\neq 2} \BZ/(p-1)\BZ\oplus \BZ/2\BZ$ 的闭包是 $\wh T$, 因此 $T$ 和 $\wh T$ 的固定域相同, $G(\wt \BQ/\BQ)=G\bigl(\BQ(\mu_\infty)/\BQ\bigr)/\wh T\cong \wh \BZ$.
+\end{proof}
+
+固定 $G(\wt \BQ/\BQ)\simto \wh\BZ$, 则我们有一个连续的满同态
+  \[d:G_\BQ\to\wh \BZ.\]
+对于数域 $K$, 令 $f_K=[K\cap \wt \BQ:\BQ]$, 则我们有满同态
+  \[d_K=\frac{1}{f_K}d:G_K\to \wh\BZ.\]
+这给出了一个 $\wh\BZ$ 扩张 $\wt K=K\wt\BQ/K$, 称之为 $K$ 的\noun{分圆扩张}.
+
+对于有限次阿贝尔扩张 $L/K$, 定义
+  \[\fct{[~,L/K]:\BI_K}{G(L/K)}{\alpha}{\prod_\fp(\alpha_\fp,L_\fP/K_\fp).}\]
+由于对几乎所有的素位 $\fp$, $L_\fP/K_\fp$ 非分歧, 因此 $\alpha_\fp\in U_\fp$ 的像是 $1$, 从而右侧乘积有意义.
+
+和局部类域论类似, 我们可以对于无穷次阿贝尔扩张定义范剩余符号, 且范剩余符号满足相应的函子性. 我们不做详解.
+
+\begin{proposition}{}{}
+对于任一单位根 $\zeta$ 和主伊代尔 $a\in K^\times$, $[a,K(\zeta)/K]=1$.
+\end{proposition}
+\begin{proof}
+由函子性我们有 $[\bfN_{K/\BQ}(a),\BQ(\zeta)/\BQ]=[a,K(\zeta)/K]|_{\BQ(\zeta)}$. 因此我们只需对 $K=\BQ$ 情形证明即可. 出于同样的理由, 我们可以不妨设 $\zeta$ 是 $\ell^m\neq 2$ 阶. 对于 $a\in\BQ^\times$, 设 $a=u_pp^{v_p(a)}$. 对于 $p\neq \ell,\infty$, $\BQ_p(\zeta)/\BQ_p$ 非分歧, $(p,\BQ_p(\zeta)/\BQ_p)$ 是弗罗贝尼乌斯 $\varphi_p:\zeta\mapsto \zeta^p$. 由局部类域论可知
+  \[(a,\BQ_p(\zeta)/\BQ_p)\zeta=\zeta^{n_p},\quad n_p=\begin{cases}
+    p^{v_p(a)}, & p\neq \ell,\infty,\\
+    u_p^{-1},   & p=\ell,\\
+    \sgn(a),    & p=\infty.
+  \end{cases}\]
+因此
+  \[[a,\BQ(\zeta)/\BQ]\zeta=\zeta^\alpha,\]
+其中
+  \[\alpha=\prod_p n_p=\sgn(a)\prod_{p\nmid \ell\infty} p^{v_p(a)}u_\ell^{-1}=1.\]
+\end{proof}
+
+由此可知 $[a,\wt K/K]=1,\forall a\in K^\times$.
+因此我们有
+  \[[~~,\wt K/K]:C_K\to G(\wt K/K).\]
+通过复合 $d_K:G(\wt K/K)\to\wh\BZ$, 我们得到
+  \[v_K:C_K\to\wh\BZ.\]
+\begin{proposition}{}{}
+$v_K$ 是满同态且是亨泽尔的.
+\end{proposition}
+\begin{proof}
+我们对有限伽罗瓦子扩张 $L/K$ 来证明 $[~~,L/K]$ 是满射. 由于在每个局部范剩余符号是满的, 因此 $[\BI_K,L/K]$ 包含所有的分解群, 从而它的固定域 $M$ 上所有 $\fp$ 完全分裂, 这意味着 $M=K$, $[\BI_K,L/K]=G(L/K)$. 所以 $[\BI_K,\wt K/K]=[C_K,\wt K/K]$ 在 $G(\wt K/K)$ 中稠密. 
+
+对于任意 $\alpha\in\BI_K$, 定义
+  \[|\alpha|=\prod_{\fp} |\alpha_\fp|_\fp^{-1}.\]
+由乘积公式可知 $|~|$ 在主伊代尔上平凡, 因此它诱导了连续同态 $|~|:C_K\to \BR_+^\times$. 我们不加证明地断言它的核 $C_K^0$ 是紧的. 通过将 $\BR_+^\times$ 看成一个无穷素位处完备化的正实数部分, 我们固定一个 $|~|$ 的截面, 从而 $C_K=C_K^0\times \BR_+^\times$. 而 $\BR_+^\times$ 的像是平凡的, 因此 $C_K$ 和 $C_K^0$ 的像相同, 它是一个闭集, 因此它的像等于它的闭包 $G(\wt K/K)$. 故 $v_K$ 是满的.
+
+对于有限扩张 $L/K$, 由函子性我们有
+  \[\begin{split}
+    v_K(\bfN_{L/K}C_L)&=v_K(\bfN_{L/K}\BI_L)=d_K[\bfN_{L/K}\BI_L,\wt K/K]\\
+    &=f_{L/K}d_L [\BI_L,\wt L/L]=f_{L/K}v_L(C_L)=f_{L/K}\wh \BZ.
+  \end{split}\]
+\end{proof}
+
+
+于是
+  \[d_\BQ:G_\BQ\to\wh\BZ,\quad v_\BQ:C_\BQ\to\wh\BZ\]
+满足类域论公理. 我们有
+\begin{theorem}{}{}
+设 $L/K$ 是数域的伽罗瓦扩张, 我们有典范同构
+  \[r_{L/K}:G(L/K)^\ab\simto C_K/\bfN_{L/K}C_L.\]
+\end{theorem}
+它的逆
+  \[(~,L/K):C_K\to G(L/K)^\ab\]
+被称为\noun{整体范剩余符号}.
+\begin{proposition}{乘积公式}{}
+设 $L/K$ 是数域的伽罗瓦扩张, 我们有典范同构
+  \[(a,L/K)=\prod_\fp (a_\fp,L_\fP/K_\fp),\quad a\in \BA_K^\times.\]
+特别地, 对于主伊代尔 $a\in K^\times$, 我们有乘积公式
+  \[\prod_\fp(a,L_\fP/K_\fp)=1.\]
+\end{proposition}
+\begin{proof}
+见\cite[Chapter VI, Proposition~5.6, Corollary~5.7]{Neukirch1999}, 这里省略.
+\end{proof}
+
+
+\subsection{整体类域}
+\begin{theorem}{}{}
+$L\mapsto \CN_L=\bfN_{L/K}C_L$ 给出了 $K$ 的有限阿贝尔扩张 $L$ 和 $C_K$ 的有限指标闭子群的一一对应.
+\end{theorem}
+\begin{proof}
+我们需要证明范拓扑下开子群和和通常拓扑下有限指标闭子群一致. 我们省略.
+\end{proof}
+
+设 $\fm=\prod_{\fp\nmid\infty}\fp^{n_\fp}$ 为 $K$ 的理想, 记
+  \[\BI_K^\fm={\prod_\fp}' U_\fp^{(n_\fp)}.\]
+
+\begin{definition}{同余子群和射线类群}{congruence group and ray class field}
+称
+  \[C_K^\fm=\BI_K^\fm K^\times/K^\times\]
+为模 $\fm$ 的\noun{同余子群}, 称 $C_K/C_K^\fm$ 为模 $\fm$ 的\noun{射线类群}.
+\end{definition}
+
+\begin{proposition}{}{}
+$C_K$ 的子群是有限指标闭子群当且仅当其包含一个同余子群.
+\end{proposition}
+\begin{proof}
+由于 $\BI_K^\fm\subseteq \BI_K$ 开, 因此 $C_K^\fm$ 是开子群. 由于 $\BI_K^\fm\subseteq \BI_K^{S_\infty}$, 而 $(C_K:\BI_K^{S_\infty}K^\times/K^\times)=h_K<\infty$, 因此
+  \[\begin{split}
+(C_K:C_K^\fm)&=h_K(\BI_K^{S_\infty}K^\times:\BI_K^\fm K^\times)\le h(\BI_K^{S_\infty}:\BI_K^\fm)\\
+&=h_K\prod_{\fp\mid\fm} (U_\fp:U_\fp^{(n_\fp)})2^{r_1}
+\end{split}\]
+有限. 从而 $C_K^\fm$ 是有限指标闭子群, 包含 $C_K^\fm$ 的子群是有限多个陪集的不交并, 也是有限指标闭子群.
+
+反之, 设 $\CN$ 是有限指标闭子群, 则 $\CN$ 是开子群. 于是它在 $\BI_K$ 中的原像 $U$ 是开集, 它包含某个
+  \[W=\prod_{\fp\in S-S_\infty}U_\fp^{(n_\fp)}\times\prod_{\fp\in S\cap S_\infty}W_\fp \times\prod_{\fp\notin S}U_\fp,\]
+其中 $\fp\in S\cap S_\infty$ 时, $W_\fp\subset K_\fp^\times$ 是开集, 它必然生成整个 $U_\fp$, 从而 $U$ 包含某个 $\BI_K^\fm$, $\CN\supseteq C_K^\fm$.
+\end{proof}
+
+设 $\CI_K^\fm$ 为所有和 $\fm$ 互素的分式理想, $\CP_K^\fm$ 为所有主分式理想 $(a)$, 其中 $a\equiv 1\mod\fm$ 且 $a$ 全正(即在所有实嵌入下的像大于 $0$). 令
+  \[\Cl_K^\fm=\CI_K^\fm/\CP_K^\fm.\]
+
+\begin{proposition}{}{}
+自然同态 $(~):\BI_K\to \CI_K$ 诱导了同构 $C_K/C_K^\fm\cong \Cl_K^\fm.$ 特别地, $\Cl_\BQ^m\cong(\BZ/m\BZ)^\times$.
+\end{proposition}
+\begin{proof}
+记
+  \[\BI_K^{(\fm)}=\set{\alpha\in\BI_K\mid \alpha_\fp\in U_\fp^{(n_\fp)},\fp\mid \fm\infty}.\]
+我们有 $\BI_K=\BI_K^{(m)}K^\times$, 这是因为对于 $\alpha\in\BI_K$, 由逼近定理, 存在 $a\in K^\times$ 使得 $\alpha_\fp a\equiv 1\mod \fp^{n_\fp},\fp\mid\fm$ 以及 $\alpha_\fp a>0,\fp$ 是实素位. 因此 $\beta=\alpha a\in\BI_K^{(\fm)}$, $\alpha=\beta a^{-1}\in\BI_K^{(\fm)}K^\times$. 显然 $\BI_K^{(\fm)}\cap K^\times$ 对应的 $\CP_K^\fm$ 中的理想, 因此我们有满同态
+  \[C_K=\BI_K^{(\fm)}K^\times/K^\times=\BI_K^{(\fm)}/\BI_K^{(\fm)}\cap K^\times\to \CI_K^\fm/\CP_K^\fm.\]
+显然 $C_K^\fm=\BI_K^\fm K^\times/K^\times$ 在核中. 如果 $[\alpha]$ 在核中, $\alpha\in \BI_K^{(\fm)}$, 则存在 $(a)\in \CP_K^\fm$ 使得 $(\alpha)=(a)$. 由于 $a\in \BI_K^{(\fm)}\cap K^\times$, 因此 $\beta=\alpha a^{-1}\in \BI_K^\fm$, $[\alpha]=[\beta]\in C_K^\fm$, 核为 $C_K^\fm$.
+
+对每个 $\Cl_\BQ^m$ 中的代表元, 我们选择其正生成元, 则我们得到满同态 $\CI_K^m\to (\BZ/m\BZ)^\times$, 显然它的核是 $a\equiv m,a>0$ 生成的理想.
+\end{proof}
+
+称 $C_K^\fm$ 对应的类域 $K^\fm$ 为\noun{射线类域}, $K$ 的任意有限阿贝尔扩张均包含在其中. 当 $K=\BQ$ 时, 模 $m$ 的射线类域就是 $\BQ(\mu_m)$, 换言之, 射线类域是分圆域的推广.
+
+对于一个有限阿贝尔扩张, 想要判断它落在哪个射线类域中, 我们需要引入导子.
+
+\begin{definition}{导子}{conductor}
+有限阿贝尔扩张 $L/K$ 的\noun{导子} $\ff$ 为满足 $L\subseteq K^\ff$ 的最小的 $\ff$.
+\end{definition}
+
+\begin{proposition}{}{}
+$\ff_{L/K}=\prod_\fp \ff_{L_\fP/K_\fp}.$
+\end{proposition}
+\begin{proof}
+设 $\CN=\bfN_{L/K}C_L$, 则对于 $\fm=\prod_\fp \fp^{n_\fp}$,
+  \[C_K^\fm\subseteq \CN\iff \ff\mid \fm,\quad
+\prod_\fp \ff_\fp\mid\fm \iff \fp\mid \fp^{n_\fp},\forall\fp\]
+因此我们只需证 $C_K^\fm\subseteq\CN\iff \ff_\fp\mid \fp^{n_\fp},\forall\fp$. 我们知道一个伊代尔是范当且仅当每个局部是范, 因此 $C_K^\fm\subseteq \CN$ 当且仅当每个局部 $U_\fp^{(n_\fp)}\subseteq \bfN L_\fP^\times$, 即 $\ff_\fp\mid\fp^{n_\fp}$.
+\end{proof}
+
+\begin{corollary}{}{}
+对于有限阿贝尔扩张 $L/K$, $\fp$ 分歧当且仅当 $\fp\mid\ff_{L/K}$.
+\end{corollary}
+
+令 $\fm=1$, 我们称 $K^1$ 为 $K$ 的\noun{大希尔伯特类域}, 它是 $K$ 的极大非分歧阿贝尔扩张.
+\begin{proposition}{}{}
+我们有正合列
+  \[1\ra \CO^\times/\CO_+^\times\ra \prod_{\text{实素位}\fp}\BR^\times/\BR_+^\times\ra\Cl_K^1\ra \Cl_K\ra 1,\]
+其中 $\CO_+^\times$ 表示所有的全正单位.
+\end{proposition}
+\begin{proof}
+显然我们有
+  \[1\ra \BI_K^{S_\infty}K^\times/\BI_K^1 K^\times\ra \Cl_K^1\ra \Cl_K\ra 1,\]
+另一方面
+  \[1\ra \BI_K^{S_\infty}\cap K^\times/\BI_K^1\cap K^\times\ra \BI_K^{S_\infty}/\BI_K^1\ra \BI_K^{S_\infty}K^\times/\BI_K^1 K^\times\ra 1.\]
+由 $\BI_K^{S_\infty}\cap K^\times=\CO^\times, \BI_K^1\cap K^\times=\CO_+^\times$, $\BI_K^{S_\infty}/\BI_K^1=\prod\limits_{\fp\mid\infty}K_\fp^\times/U_\fp=\prod\limits_{\text{实素位}\fp}\BR^\times/\BR_+^\times$ 知该命题成立.
+\end{proof}
+
+$K^1$ 中无穷素位完全分裂(即实素位变成实素位)的极大子扩张被称为 $K$ 的\noun{希尔伯特类域}.
+\begin{proposition}{}{hilbertclassfield}
+$G(H_K/K)\cong\Cl_K$.
+\end{proposition}
+\begin{proof}
+$H_K/K$ 是所有 $G(K^1_\fp/K_\fp),\fp\mid\infty$ 生成的子群 $G_\infty$ 的固定域, 它在范剩余符号下的像为所有 $K_\fp^\times$ 在 $G(K^1/K)\cong\BI_K/\BI_K^1 K^\times$ 中生成的子群, 即
+  \[(\prod_{\fp\mid\infty} K_\fp^\times)\BI_K^1 K^\times/\BI_K^1 K^\times=\BI_K^{S_\infty}K^\times/\BI_K^1 K^\times,\]
+因此
+  \[G(H_K/K)=G(K^1/K)/G_\infty\cong \BI_K/\BI_K^{S_\infty}K^\times\cong\Cl_K.\]
+\end{proof}
+
+我们知道 $\BQ$ 的射线类域由单位根生成, 那么对于一般的数域而言, 是否可以通过添加解析函数的特殊值来得到呢? 目前为止, 人们仅知道虚二次域的情形.  该情形下, 射线类域由添加理想类的 $j$ 函数值得到, 在此不做详解.
+
+
+设 $L/K$ 是 $n$ 次阿贝尔扩张, $\fp$ 非分歧, 则
+  \[\varphi_\fp=(\pi_\fp,L_\fP/K_\fp)\]
+不依赖于 $\pi_\fp$ 的选取, 且生成 $G_\fp=G(L_\fP/K_\fp)$. 记
+  \[\leg{L/K}{\fp}:=\varphi_\fp.\]
+设 $L\subseteq K^\fm$, 即 $\ff\mid\fm$, 则 $\fp\nmid\fm$ 时 $\fp$ 非分歧, 定义\noun{阿廷符号}
+  \[\fct{\leg{L/K}{~}:\CI_K^\fm}{G(L/K)}{\fa=\prod_\fp \fp^{v_\fp}}{\prod_\fp \leg{L/K}{\fp}^{\nu_\fp}.}\]
+显然
+  \[\leg{L/K}{\fa}=(\prod_\fp \pair{\pi_\fp}^{\nu_\fp},L/K),\]
+因此它在 $\CP_K^\fm$ 上平凡.
+
+\begin{theorem}{}{}
+设 $L/K$ 是 $n$ 次阿贝尔扩张, $\ff\mid\fm$, 则我们有满射
+  \[\leg{L/K}{~}:\Cl_K^\fm/H^\fm\ra G(L/K),\]
+它的核为 $H^\fm/\CP_K^\fm$, 其中 $H^\fm=(\bfN_{L/K}\CI_L^\fm)\CP_K^\fm$, 且我们有正合列的交换图
+  \[\xymatrix{
+    1\ar[r]&\bfN_{L/K}C_L\ar[r]\ar[d]&C_K\ar[r]^-{(~,L/K)}\ar[d]&G(L/K)\ar[r]\ar@{=}[d]&1\\
+    1\ar[r]&H^\fm/\CP_K^\fm\ar[r]&\Cl_K^\fm\ar[r]^-{\leg{L/K}{~}}&G(L/K)\ar[r]&1.
+  }\]
+换言之, 我们有同构
+  \[\leg{L/K}{~}:\CI_K^\fm/H^\fm\ra G(L/K).\]
+\end{theorem}
+
+\begin{theorem}{}{}
+设 $L/K$ 是 $n$ 次阿贝尔扩张, $\ff\mid\fm$, $\fp$ 非分歧.
+设 $\fp$ 在 $\CI^\fm_K/H^\fm$ 中的阶为 $f$, 则 $\fp$ 在 $L$ 中分解为 $n/f$ 个不同素理想的乘积. 特别地, 完全分解的素理想为 $H^\ff$ 中的素理想全体.
+\end{theorem}
+\begin{proof}
+这是因为 $\fP\mid\fp$ 的分解群的大小为弗罗贝尼乌斯 $\varphi_\fp$ 的阶, 即 $\fp$ 在 $\CI^\fm_K/H^\fm$ 中的阶.
+\end{proof}
+
+\begin{example}
+当 $K=\BQ$ 时, $p$ 在 $\BQ(\mu_m)/\BQ$ 中分解为 $\varphi(m)/f$ 个不同素理想乘积, 其中 $f$ 为 $p\mod m$ 的阶. 特别地, 当且仅当 $p\equiv 1\mod m$ 时, $p$ 完全分解.
+\end{example}
+
+我们知道 $G(H_K/K)=\Cl_K=\CI_K/\CP_K$, 因此该扩张对应的 $H^1=\CP_K$.
+\begin{corollary}{}{}
+$K$ 中素理想在希尔伯特类域中完全分解当且仅当它是主理想.
+\end{corollary}
+
+\begin{theorem}{}{}
+$K$ 中任一理想在希尔伯特类域中变成主理想.
+\end{theorem}
+\begin{proof}
+见\cite[Chapter VI, Proposition~7.5]{Neukirch1999}, 这里省略.
+\end{proof}
+
+一般而言, $K$ 的希尔伯特类域类数不为 $1$. 
+一个自然的问题是, 
+  \[K=K_0\subseteq K_1\subseteq \cdots\]
+是否会在某一层停止?其中 $K_{i+1}=H_{K_i}$. 答案是否定的, E. S. Golod 和沙法列维奇证明了存在 $K$ 使得这个扩张塔可以一直增长下去.
+
+
+\subsection{希尔伯特符号的整体性质}
+设 $K$ 包含 $n$ 次单位根.
+\begin{proposition}{}{}
+对于 $a,b\in K^\times$,
+  \[\prod_\fp \hil{a}{b}{\fp}=1.\]
+\end{proposition}
+对于与 $n$ 互素的理想 $\fb=\prod_{\fp\nmid n}\fp^{\nu_\fp}$, 以及和 $\fb$ 互素的元素 $a$, 定义 \nouns{$n$ 次剩余符号}{n 次剩余符号@$n$ 次剩余符号}
+  \[\leg{a}{\fb}=\prod_{\fp\nmid n}\leg{a}{\fp}^{\nu_\fp}.\]
+\begin{theorem}{}{}
+如果 $a,b\in K^\times$ 互素且均和 $n$ 互素, 则
+  \[\leg{a}{b}\leg{b}{a}^{-1}=\prod_{\fp\mid n\infty}\hil{a}{b}{\fp}.\]
+\end{theorem}
+当我们取 $n=2, K=\BQ$ 时, 这就是高斯的二次互反律.
+
+
+\begin{exercise}
+了解和学习整体函数域情形的整体类域论.
+\end{exercise}
+
+\begin{exercise}
+了解和学习几何类域论.
+\end{exercise}
+
+

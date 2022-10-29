@@ -1,0 +1,1550 @@
+
+\chapter{赋值与分歧理论}
+\begin{introduction}
+\item 赋值的定义 \ref{def:valuation}
+\item 完备离散赋值域的结构 \ref{thm:structure of cdvf equal char}, \ref{thm:structure of cdvf unequal char}
+\item 局部分歧理论 \ref{sec:ramification theory}
+\item 整体分歧理论 \ref{sec:global ramification theory}
+\end{introduction}
+
+\begin{question*}{}{}
+设 $K$ 为数域, $f(x_1,\dots,x_n)$ 为 $K$ 系数次数不大于 $2$ 的多项式. 如何判断方程 $f(x_1,\dots,x_n)=0$ 在 $K$ 中是否有解?
+\end{question*}
+
+哈塞-闵可夫斯基定理告诉我们, $f(x_1,\dots,x_n)=0$ 在 $K$ 中有解当且仅当, 对于 $K$ 的每个赋值 $v$, $f(x_1,\dots,x_n)=0$ 在 $K_v$ 中有解. 本章中, 我们将研究赋值的一般性质, 以及赋值在数域扩张中的变化行为.
+
+\section{赋值}
+\subsection{赋值和非阿赋值}
+我们先来了解一般的赋值理论.
+
+\begin{definition}{}{}
+\noun{全序交换群} $\Gamma$ 指的是一个交换群 $\Gamma$, 其上有一个全序关系 $<$, 满足 $x<y\implies xz<yz$. 我们可以自然定义出 $\Gamma\cup\set{0}$ 上的乘法和全序: $x\cdot 0=0=0\cdot 0,0<x$.
+\end{definition}
+
+\begin{exercise}
+全序交换群中没有非平凡有限阶元.
+\end{exercise}
+
+\begin{definition}{赋值}{valuation}
+如果域 $K$ 上的函数 $|\cdot|:K\to \BR_{\ge 0}$ 满足
+\begin{enumerate}[(1)]
+\item $|x|=0$ 当且仅当 $x=0$;
+\item $|xy|=|x|\cdot|y|,\forall x,y\in K$;
+\item (三角不等式) $|x+y|\le|x|+|y|,\forall x,y\in K$,
+\end{enumerate}
+我们称 $|\cdot|$ 为 $K$ 上的一个(乘性)\noun{赋值}, 称 $(K,|\cdot|)$ 为\noun{赋值域}. 如果 $|\cdot|$ 满足
+\begin{enumerate}
+\item[(3$'$)] (强三角不等式) $|x+y|\le\max\set{|x|,|y|},\forall x,y\in K$,
+\end{enumerate}
+则称之为\noun{非阿赋值}; 否则称之为\noun{阿基米德赋值}. 
+一般的(非阿)赋值值域可以是任意全序乘法交换群并上 $0$.
+\end{definition}
+
+\begin{exercise}
+若 $\zeta$ 是 $K$ 中的一个单位根, 则 $|\zeta|=1$.
+\end{exercise}
+
+\begin{exercise}
+设 $|\cdot|$ 是一个非阿赋值.
+
+(1) 如果 $|x|\neq |y|$, 则 $|x+y|=\max\set{|x|,|y|}$.
+
+(2) $\bigl||x|-|y|\bigr|\le|x-y|$.
+\end{exercise}
+
+实数域和复数域上的通常绝对值均为阿基米德赋值.
+阿基米德赋值实际上等价于满足阿基米德定理的赋值: 对于任意 $c>0$ 和非零 $x$, 存在充分大的 $n$ 使得 $|nx|>c$.
+如果 $|\cdot|$ 非阿, 则 $|nx|=|x+\cdots+x|\le|x|$ 有界; 反之, 若存在 $c>0$ 使得 $|n|<c,\forall n\in \BZ$, 
+  \[\begin{split}
+|(x+y)^n|&=|\sum{n\choose i}x^i y^{n-i}|\le (n+1)c\max_i \set{|x|^i|y|^{n-i}}\\
+&\le (n+1)c\max\set{|x|,|y|}^n,
+\end{split}\]
+因此 $|x+y|\le \big((n+1)c\big)^{1/n}\max\set{|x|,|y|}$.
+令 $n\to +\infty$ 可知 $|\cdot|$ 为非阿赋值.
+
+记 $\Gamma'$ 为和 $\Gamma$ 相同的群, 但我们把群运算写成加法, 幺元写成 $0$, 序与 $\Gamma$ 相反. 我们可以自然定义出 $\Gamma'\cup\set{\infty}$ 上的加法和全序: $x+\infty=\infty=\infty+\infty,x<\infty$.
+因此非阿赋值有相应的加性版本.
+
+\begin{definition}{加性赋值}{additive valuation}
+设 $\Gamma$ 是全序加法交换群.
+如果域 $K$ 上的函数 $v:K\to \Gamma\cup\set{\infty}$, 满足
+\begin{enumerate}[(1)]
+\item $v(x)=\infty$ 当且仅当 $x=0$;
+\item $v(xy)=v(x)+v(y),\forall x,y\in K$;
+\item $v(x+y)\ge\min\set{v(x),v(y)},\forall x,y\in K$.
+\end{enumerate}
+则称之为\noun{加性赋值}.
+\end{definition}
+
+加性赋值和非阿赋值之间是一一对应的. 对于 $\Gamma=\BR_{>0}$, 我们可以更直接地通过映射 $\log_a:\BR_{>0}\to \BR$ 构造二者之间的对应, 这里 $0<a<1$.
+
+\begin{exercise}
+设 $\fp$ 是数域 $K$ 的素理想, 定义 $v_\fp(x)$ 为 $(x)$ 素理想分解中 $\fp$ 的幂次, 则 $v_\fp$ 是加性赋值, $|\cdot|_\fp=\bfN\fp^{-v_\fp(\cdot)}$ 是乘性赋值, 称之为 \nouns{$\fp$ 进赋值}{p 进赋值@$\fp$ 进赋值}. 特别地, 如果 $K=\BQ,\fp=(p)$, $v_p$ 是加性赋值, $|\cdot|_p=p^{-v_p(\cdot)}$ 是乘性赋值, 称之为 \nouns{$p$ 进赋值}{p 进赋值@$p$ 进赋值}.
+\end{exercise}
+
+\begin{exercise}\label{exe:valuation}
+证明下述函数为非阿赋值.
+
+(1) 设 $K$ 为 $\BC$ 上的有理函数全体, $x\in \BC$, 定义 $\ord_x(f)$ 为 $f$ 在 $x$ 处的阶, $f\in K^\times$.
+
+(2) 设 $k$ 为一个域, $k\ldb T\rdb$ 为形式幂级数环, 即
+  \[k\ldb T\rdb=\set{\sum_{n=0}^{+\infty} a_n T^n\mid a_n\in k}.\]
+令 $K=k((T))=k\ldb T\rdb[T^{-1}]$ 为其分式域(为什么). 定义 $v\left(\suml_{n=m}^{+\infty} a_nT^n\right)=m$, $a_m\neq 0$.
+
+(3) 设 $k$ 为一个域, $K=k(T)$, $p(T)$ 为 $K$ 上一不可约多项式, 则它生成 $k[T]$ 的素理想 $\fp$. 定义 $v_\fp(f)$ 为 $f(T)$ 的不可约分解中 $p(T)$ 的幂次, 则 $v_\fp$ 是加性赋值.
+\end{exercise}
+
+\begin{example}
+固定一个素数 $p$.
+定义 $\Gamma=\BR_{>0}\times\gamma^\BZ$ 上的序: $r\gamma^m<s\gamma^n\iff r p^{-m}<s p^{-n}$ 或 $r p^{-m}=s p^{-n},m<n$. 
+设 $K$ 是 $R=\set{\sum a_nT^n\in \BZ\ldb T\rdb: |a_n|_p\ra 0}$, 定义
+	\[\fct{K}{\Gamma\cup\set0}{\sum a_n T^n}{\sup |a_n|_p\gamma^n.}\]
+那么它是一个非阿赋值.
+\end{example}
+
+
+
+\subsection{等价赋值}
+
+%\begin{definition}{拓扑域}{topological field}
+%如果域 $K$ 上的拓扑满足 $-:K\times K\to K, /:K\times K^\times\to K$ 是连续的, 则称其为\noun{拓扑域}. 如果 $U$ 是一个开集, 则显然 $a+U,a\in K$ 和 $aU, a\in K^\times$ 都是开集. 
+%\end{definition}
+
+赋值将 $K$ 变成一个度量空间, 于是定义出 $K$ 上的一个拓扑, 其中 
+  \[U(a,r)=\set{x\in K: |x-a|<r},\quad a\in K, r>0\]
+构成一组拓扑基. 在该拓扑下, $K$ 是一个拓扑域. 显然 ${\bf1}_{K^\times}$ 是一个\noun{平凡赋值}, 它给出了离散拓扑. 我们排除这种情形.
+
+对任意正实数 $c$, $|\cdot|^c$ 显然也是一个赋值, 我们称 $|\cdot|$ 和 $|\cdot|^c$ 是\noun{等价赋值}.
+\begin{proposition}{}{equiv_valuation}
+下述命题等价:
+\begin{enumerate}[(1)]
+\item $|\cdot|$ 和 $|\cdot|'$ 等价;
+\item 对任意 $x\in K$, $|x|<1$ 当且仅当 $|x|'<1$;
+\item $|\cdot|$ 和 $|\cdot|'$ 给出相同的拓扑;
+\item 存在 $c_1,c_2>0$ 使得 $|\cdot|^{c_1}\le |\cdot|'\le |\cdot|^{c_2}$;
+\item 对任意 $a,b\in K$, $|a|\le |b|$ 当且仅当 $|a|'\le |b|'$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+显然 (1) 蕴含其它所有命题.
+
+(3)$\implies$(2). 由于 $|x|<1$ 等价于 $\set{x^n}_{n\ge 0}$ 趋于 $0$, 从而 $|x|<1$ 当且仅当 $|x|'<1$. 
+
+(4)$\implies$(2). 显然.
+
+(5)$\implies$(2). 令 $b=1,a=x$ 即可.
+
+(2)$\implies$(1). 设 $|y|>1$, 则对于 $x\neq 0$, $|x|=|y|^s$, $s\in\BR$. 设 $\set{m_i/n_i}_i$ 是一串极限为 $s$ 且大于 $s$ 的有理数, $n_i>0$. 我们有 $|x|<|y|^{m_i/n_i}$, 即
+	\[\left|\frac{x^{n_i}}{y^{m_i}}\right|<1.\]
+反推可知 $|x|'<{|y|'}^{m_i/n_i}$, 故 $|x|'\le {|y|'}^s$. 若我们考虑一串极限为 $s$ 且小于 $s$ 的有理数, 则我们有 $|x|'\ge {|y|'}^s$. 从而 $|x|'={|y|'}^s$. 令 $c=\log|y|'/\log|y|$, 则 $c=\log|x|'/\log|x|$, 因此 $|\cdot|'=|\cdot|^s$.
+\end{proof}
+
+
+\begin{theorem}{}{}
+$\BQ$ 上的赋值等价类只有 $|\cdot|_\BR$ 和 $|\cdot|_p$.
+\end{theorem}
+\begin{proof}
+对于非阿赋值 $|\cdot|$, $|n|\le 1$. 如果对于所有素数 $p$, $|p|=1$, 则容易推出该赋值是平凡赋值. 因此存在 $p$ 使得 $|p|<1$. 考虑
+  \[\fa=\set{a\in\BZ: |a|<1}.\]
+则 $\fa$ 是一个理想, 且 $p\BZ\subseteq \fa\neq \BZ$, 因此 $\fa=p\BZ$. 根据赋值的可乘性, 该赋值等价于 $|\cdot|_p$.
+
+如果 $|\cdot|$ 是阿基米德赋值, 则对于正整数 $m,n>1$, 如果 $|n|\ge 1$,
+  \[m=a_0+a_1 n+\dots+a_r n^r, a_i\in\set{0,1,\dots,n-1},a_r>0,\]
+则 $r\le \ln m/\ln n$,
+  \[|m|\le \sum |a_i|\cdot |n|^i\le \sum |a_i|\cdot |n|^r\le \left(1+\frac{\ln m}{\ln n}\right) n\cdot|n|^{\frac{\ln m}{\ln n}}.\]
+将 $m$ 换成 $m^k$ 并令 $k\to +\infty$, 则
+  \[|m|\le |n|^{\frac{\ln m}{\ln n}},\quad |m|^{\frac{1}{\ln m}}\le |n|^{\frac{1}{\ln n}}.\]
+由对称性可知存在 $c>0$ 使得当 $|n|\ge 1$ 时, $|n|=c^{\ln n}=|n|_\BR^s,s=\ln c$.
+由阿基米德性质知对任意 $m$, 存在 $k>0$ 使得 $|k|>1/|m|, |km|>1$, 因此 $|km|=|km|_\BR^s$. 又因为对任意 $m$, $|m|\le |m|_\BR^s$, 因此 $|m|=|m|_\BR^s$ 等价于 $|\cdot|_\BR$.
+\end{proof}
+
+\begin{definition}{赋值环}{valuation ring}
+设 $R$ 是域 $K$ 的一个子环. 如果对于任意非零元 $x\in K$, 均有 $x\in R$ 或 $x^{-1}\in R$, 则称 $R$ 为一个\noun{赋值环}. 通过自然的商映射, 它给出了 $K$ 的一个赋值
+  \[|\cdot|: K\to \Gamma\cup\set{0},\]
+其中 $\Gamma= K^\times/R^\times$ 的序为: $x\le y\iff xy^{-1}\in R$. 我们称其为\noun{克鲁尔赋值}. 显然
+  \[R=D(0,1):=\set{x\in K: |x|\le 1}.\]
+这给出了非阿赋值的等价类和赋值环的一一对应.
+\end{definition}
+
+\begin{exercise}
+计算习题~\ref{exe:valuation} 中的赋值环.
+\end{exercise}
+
+\begin{exercise}\label{exe:infinite_valuation}
+设 $k$ 为一个域, $K=k(T)$, 则 $v_\infty(f)=-\deg f$ 是加性赋值. 它的赋值环是什么?
+\end{exercise}
+
+\begin{exercise}
+证明习题\ref{exe:valuation}(3)和\ref{exe:infinite_valuation}中的赋值是 $k(T)$ 上所有赋值.
+\end{exercise}
+
+对于不等价的赋值, 我们有如下的逼近定理.
+
+\begin{proposition}{逼近定理}{approximation_theorem}
+设 $|\cdot|_1,\dots,|\cdot|_n$ 为互不等价的赋值, $\alpha_1,\dots,\alpha_n\in K$. 对于任意 $\varepsilon>0$, 存在 $\alpha\in K$ 使得 $|\alpha-\alpha_i|_i<\varepsilon,i=1,\dots,n$.
+\end{proposition}
+\begin{proof}
+由命题~\ref{pro:equiv_valuation} 知存在 $\alpha,\beta\in K$ 使得 $|\alpha|_1<1\le|\alpha|_n,|\beta|_1\ge1>|\beta|_n$. 设 $y=\beta/\alpha$, 则 $|y|_1>1,|y|_n<1$.
+
+我们归纳地证明存在 $z\in K$ 使得 
+  \[|z|_1>1,|z|_j<1,j=2,\dots,n.\]
+$n=2$ 已成立. 设 $x$ 满足 $|x|_1>1,|x|_j<1,j=2,\dots,n-1$. 如果 $|x|_n\le 1$, 则对于充分大的 $m$, $z=x^m y$ 满足我们的要求. 如果 $|x|_n>1$, 则对于充分大的 $m$, $z=yx^m/(1+x^m)$ 满足我们的要求.
+
+我们看到, 我们所取的 $z$ 使得 $z^m/(1+z^m)$ 在 $|\cdot|_1$ 下趋于 $1$, 在其它赋值趋于 $0$. 类似地, 我们构造 $z_i$ 在 $|\cdot|_i$ 下趋于 $1$, 在其它赋值趋于 $0$. 最后取 $\alpha=\sum \alpha_i z_i$ 即可.
+\end{proof}
+
+
+\subsection{完备化}
+
+\begin{proposition}{}{}
+(1) 域 $K$ 在一个赋值下 $|\cdot|$ 的完备化 $\wh K$ 仍然是一个域, 且赋值可以延拓至 $\wh K$. 记为 $(\wh K,|\cdot|_{\wh K})$, 则它在同构意义下唯一.
+
+(2) $\wh K$ 是完备的, 且 $K$ 在 $\wh K$ 中稠密.
+
+(3) 如果 $K\inj L$ 是赋值域的连续嵌入, 则该嵌入可延拓至 $\wh K\inj \wh L$.
+\end{proposition}
+\begin{proof}
+实际上, $\wh K$ 是 $K$ 上等价的柯西列全体构成的集合.
+$\wh K$ 的存在性、唯一性以及 $K$ 在其中稠密均是标准的分析学内容, 这里我们省略. 设柯西列 $(x_n)_{n\ge 1}$ 代表了 $x\in\wh K$, 则 $(|x_n|)_{n\ge 1}$ 也是柯西列, 我们将其极限定义成 $|x|_{\wh K}$. 易知它是良定的且延拓了 $|\cdot|$.
+
+我们可以自然地在 $\wh K$ 上定义加法和乘法. 如果 $a=(a_n)_{n\ge 1}$ 是一个非零柯西列, 则存在整数 $N\ge 1$ 以及常数 $C>0$ 使得 $n\ge N$ 时 $|a_n|\ge C$. 定义
+	\[b_n=\begin{cases}
+		1& 1\le n\le N-1;\\
+		a_n^{-1}\ & n\ge N,\end{cases}\]
+则 $|b_n-b_m|=|a_na_m|^{-1}|a_n-a_m|\le C^{-2}|a_n-a_m|$.
+从而 $b=(b_n)_{n\ge 1}$ 是一个柯西列, 且 $ab=1$. 因此 $\wh K$ 是一个域.
+
+设 $f:K\inj L$ 为题述嵌入. 
+对于 $x=\lim_{n\to +\infty} x_n\in\wh K$, $x_n\in K$, 定义 $\hat f(x)=\lim_{n\to +\infty}f(x_n)$. 则 $\hat f$ 是良定的且是我们要的延拓. 由连续性知它是唯一的.
+\end{proof}
+
+\begin{exercise}
+对于非阿赋值域, $\set{x_k}_{k\ge 1}$ 是柯西列当且仅当 $|x_{k+1}-x_k|\to 0$. 换言之, 完备非阿赋值域中 $\sum_{k=1}^\infty a_k$ 收敛当且仅当 $a_k\to 0$.
+\end{exercise}
+
+\begin{proposition}{}{}
+设 $K$ 为非阿赋值域, $R_K$ 为其赋值环.
+
+(1) $R_K$ 是整闭的, 且 $\fp=\set{x\in K: |x|<1}$ 是极大理想.
+
+(2) 设 $0<|\pi|<1$, 则 $\wh K$ 的赋值环为
+  \[R_{\wh K}=\plim_n R_K/\pi^n R_K=\set{(x_n)_n\in\prod_{n\ge 1}R_K/\pi^nR_K\mid x_{n+1}\equiv x_n\mod{\pi^n}}.\]
+\end{proposition}
+\begin{proof}
+(1) 设 $x\in K$ 被 $f(x)=x^n+a_{n-1}x^{n-1}+\dots+a_0\in R_K[x]$ 零化. 如果 $|x|>1$, 则 $|a_i x^i|=|a_i|\cdot|x|^i<|x|^n$. 于是 $0=|f(x)|=|x|^n>1$, 矛盾. 因此 $R_K$ 是整闭的. 对于任意 $u\in R_K-\fp, |u^{-1}|=|u|^{-1}=1,$ 因此 $u^{-1}\in R_K$, $\fp$ 是极大理想.
+
+(2) 由于 $K$ 在 $\wh K$ 中稠密, 因此 $R_K$ 的闭包是 $R_{\wh K}$. 对于任意 $x=(x_n)_{n\ge 1}\in R:=\plim_n R_K/\pi^n$, 令 $\wt x_n\in R_K$ 为 $x_n$ 的任一提升, 则 $|\wt x_n-\wt x_m|\le |\pi|^m,\forall n\ge m$. 由于 $|\pi|<1$, 因此 $\set{\wt x_n}_n$ 是一个柯西列, 令 $\phi(x)$ 为其极限, 则我们定义了映射 $\phi:R\to R_{\wh K}$. 反之, 对于任意 $a\in R_{\wh K}$, 设序列 $\set{a_n\in R_K}_n$ 的极限为 $a$, 定义 $\psi(x)=(\bar x_n)_n\in R$. 容易验证 $\phi$ 和 $\psi$ 互逆.
+\end{proof}
+
+\begin{proposition}{}{}
+非阿赋值域\noun{全不连通}, 即对任意 $x\neq y$, 存在既开又闭的两个不交集合 $U,V$, 其中 $x\in U,y\notin U, y\in V, x\notin V$.
+\end{proposition}
+\begin{proof}
+设 $\Gamma$ 为该赋值域赋值对应的全序乘法交换群.
+对任意 $r\in\Gamma$, 我们有
+	\[D(a,r)=U(a,r)\cup \bigcup_{|s-a|=r}U(s,r).\]
+从而 $D(a,r)$ 是开集.
+对于任意 $x\notin D(a,r)$, $|x-a|>r$. 设 $0<t<|x-a|-r$, 则对于 $y\in U(x,t)$, $|y-a|\ge|x-a|-|x-y|>|x-a|-t>r$, 因此 $U(x,t)\cap D(0,r)=\emptyset$. 从而 $D(a,r)$ 既开又闭. 对于 $x\neq y$,
+  \[D(x,r)\cap D(y,r)=\emptyset,\quad r<|x-y|,\]
+因此命题成立.
+\end{proof}
+
+
+\begin{example}
+数域 $K$ 上的 $\fp$ 进赋值的赋值环为
+	\[\CO_{K,\fp}=(\CO_K-\fp)^{-1}\CO_K.\]
+它的极大理想为 $\fp\CO_{K,\fp}$, 剩余域为 $\CO_{K,\fp}/\fp\CO_{K,\fp}\cong \CO_K/\fp$. 相应的完备化为
+  \[\CO_{K_\fp}:=\plim_n \CO_K/\fp^n\CO_K\]
+的分式域 $K_p=\CO_{K_\fp}[\frac{1}{p}]$, 其中 $p\BZ=\fp\cap \BZ$.
+
+特别地, $\BQ$ 上的 $p$ 进赋值的赋值环为 
+  \[\BZ_{(p)}=\set{\frac{a}{b}: a,b\in\BZ,p\nmid b},\]
+它的极大理想为 $p\BZ_{(p)}$, 剩余域为 $\BZ_{(p)}/p\BZ_{(p)}=\BF_p$. $\BQ$ 在该赋值下的完备化为
+  \[\BZ_p:=\plim_n \BZ/p^n\BZ\]
+的分式域 $\BQ_p=\BZ_p[\frac{1}{p}]$.
+\end{example}
+
+\begin{exercise}
+给出习题~\ref{exe:valuation} 中赋值环的一个素元并计算剩余域.
+\end{exercise}
+
+\begin{exercise}
+设 $x\in 1+p\BZ_p$.
+
+(1) 证明 $x^{p^n}\in 1+p^{n+1}\BZ_p$.
+
+(2) 如果整数序列 $(s_n)_{n\ge 1}$ 在 $\BZ_p$ 中收敛到 $s$, 则 $(x^{s_n})_{n\ge 1}$ 也收敛. 记为 $x^s$.
+
+(3) $s\in\BZ_p$ 在乘法群 $1+p\BZ_p$ 的作用 $x\mapsto x^s$ 将其变成了一个 $\BZ_p$ 模.
+\end{exercise}
+
+\begin{exercise}
+(1) $\BQ_p$ 和 $\BR$ 不同构.
+
+(2) 当素数 $p\neq q$ 时, 域 $\BQ_p$ 和 $\BQ_q$ 不同构.
+\end{exercise}
+
+\begin{exercise}
+$\BQ_p$ 的代数闭包是无限次的.
+\end{exercise}
+
+
+
+\section{完备离散赋值域}
+
+\subsection{离散赋值}
+\begin{exercise}
+$\BR$ 的离散子群为 $r\BZ,r\in \BR$.
+\end{exercise}
+
+\begin{definition}{离散赋值}{discrete valuation}
+如果 $v(K^\times)$ 是 $\BR$ 的离散子群, 称 $v$ 是\noun{离散赋值}, 称 $K$ 为\nouns{离散赋值域}{离散赋值!离散赋值域}, 对应的赋值环为\nouns{离散赋值环}{离散赋值!离散赋值环}. 显然, 离散赋值存在等价赋值 $v'$ 使得 $v'(K^\times)=\BZ$, 称之为\nouns{规范化离散赋值}{离散赋值!规范化离散赋值}.
+\end{definition}
+
+\begin{example}
+$\fp$ 进赋值和习题~\ref{exe:valuation} 中的赋值均为离散赋值.
+\end{example}
+
+设 $K$ 是完备离散赋值域, 则满足 $v(\pi)=1$ 的元素是素元. 设$\CO_K,\pi,\fp,\kappa:=\CO_K/\fp, v$ 分别为 $K$ 的赋值环、素元、极大理想、剩余域和规范化离散赋值. 我们有
+  \[\CO_K=\plim_n \CO_K/\pi^n \CO_K.\]
+
+\begin{proposition}{}{}
+如果 $K$ 是完备离散赋值域, 则 $\fp$ 是主理想且 $\CO_K$ 的所有非零理想为 $\set{\fp^n}_{n\ge 0}$. 特别地, $\CO_K$ 只有素理想 $(0),\fp$, 且 $\fp^n/\fp^{n+1}$ 是一维 $\kappa$ 向量空间.
+\end{proposition}
+\begin{proof}
+对任意 $x\in\fp$, $v(x\pi^{-1})\ge 0$, 因此 $x\pi^{-1}\in\CO_K$, $\fp=(\pi)$. 对于任意非零理想 $I\subseteq\CO_K$, 设 $n=\min\set{v(x)\mid x\in I}$. 设 $x\in I$ 满足 $v(x)=n$, 则 $x^{-1}\pi^n\in \CO_K, \pi^n=(x^{-1}\pi^n)x\in I$. 又因为对任意 $y\in I, v(y)\ge n, y\pi^{-n}\in\CO_K$, 因此 $I=(\pi^n)=\fp^n$.
+\end{proof}
+
+由此可知:
+\begin{proposition}{}{}
+设 $S$ 是 $\kappa$ 在 $\CO_K$ 的一组代表元, 则任一元素 $x\in\CO_K$ 均可唯一表为
+  \[x=\sum_{i\ge 0} s_i\pi^i,\quad s_i\in S,\]
+任一元素 $x\in K$ 均可唯一表为
+  \[x=\sum_{i\ge -n} s_i\pi^i,\quad s_i\in S.\]
+\end{proposition}
+
+	
+根据域本身的特征和剩余域的特征, 可以将完备离散赋值域分为 $(0,0)$, $(p,p)$, $(0,p)$ 三种情形. 我们将会证明前两种情形(等特征)情形是相对简单的.
+
+\begin{definition}{本原多项式}{primitive polynomial}
+对于 $f(T)=\suml_{i=0}^n a_i T^i\in K[T]$, 定义
+  \[|f|:=\max_i\set{|a_i|}.\]
+如果 $f(T)\in\CO_K[T]$ 满足 $f(T)\not\equiv 0\mod\pi$, 即 $|f|=1$, 则称其为\noun{本原多项式}. 
+\end{definition}
+
+\begin{lemma}{亨泽尔引理}{hensel_lemma}
+如果本原多项式 $f(T)$ 模 $\pi$ 可以分解为
+  \[f(T)\equiv \bar g(T)\bar h(T)\mod\pi,\]
+其中 $\bar g,\bar h\in \kappa[x]$ 互素, 则存在分解
+  \[f(T)=g(T)h(T),\]
+其中 $g,h\in \CO_K[T],\deg(g)=\deg(\bar g)$ 且
+  \[g(T)\equiv\bar g(T)\mod \pi,\quad h(T)\equiv \bar h(T)\mod \pi.\]
+\end{lemma}
+\begin{proof}
+设 $d=\deg (f),m=\deg(\bar g)$. 任取 $\bar g,\bar h $ 的提升 $g_0,h_0\in\CO_K[T]$ 使得 $\deg g_0=m,\deg h_0\le d-m$. 我们将归纳地构造一列 $g_n,h_n\in\CO_K[T]$ 满足
+\begin{itemize}
+\item $\deg g_n=m,\deg h_n\le d-m$;
+\item $g_n\equiv g_{n-1},h_n\equiv h_{n-1}\mod \pi^n$
+\item $f\equiv g_nh_n\mod\pi^{n+1}$.
+\end{itemize}
+设 $f=g_{n-1}h_{n-1}+\pi^n f_n$, $\deg f_n\le \deg f$. 设 $g_n=g_{n-1}+\pi^n p_n,h_n=h_{n-1}+\pi^n q_n$, 则
+  \[\begin{split}
+g_nh_n&\equiv g_{n-1}h_{n-1}+\pi^n(p_n h_{n-1}+g_{n-1}q_n)\\
+&\equiv f+\pi^n(p_n h_0+g_0 q_n-f_n)\mod \pi^{n+1}.
+\end{split}\]
+我们希望找到 $p_n,q_n$ 满足 $p_n h_0+g_0 q_n\equiv f_n\mod\pi$.
+由于 $(\bar g,\bar h)=1$, 存在 $a,b\in\CO_K[T]$ 使得 $ag_0+bh_0\equiv 1\mod \pi$, 因此 $af_n g_0+bf_nh_0\equiv f_n\mod \pi$. 根据带余除法, 存在 $bf_n=ug_0+v,\deg v\le \deg g_0-1$. 注意到 $g$ 首项系数是一个单位, 因此 $u,v\in\CO_K[T]$. 令 $p_n=v$,$q_n$ 为 $af_n+uh_0$ 的次数小于 $d-m$ 的部分, 则它们满足我们需要的性质. 最后令 $n\to \infty$ 即可.
+\end{proof}
+
+\begin{example}
+假设 $K$ 的剩余域 $\kappa=\BF_q$ 有限.
+我们知道 $T^{q-1}-1\in\CO_K[T]$ 满足 $T^{q-1}-1\equiv \prod\limits_{a\in\BF_q^\times}(T-a)\mod \pi$, 因此它在 $\CO_K[T]$ 也可以分解为 $q-1$ 个不同的一次多项式乘积, 换言之, $\mu_{q-1}\subseteq \CO_K$.
+\end{example}
+
+\begin{exercise}
+(魏尔斯特拉斯预备定理) 任何一个非零的幂级数
+	\[f(T)=\sum_{n=0}^\infty a_n T^n\in\BZ_p\ldb T\rdb\]
+可以唯一地写成
+	\[f(T)=p^\mu P(T)u(T),\]
+其中 $U(T)\in\BZ_p\ldb T\rdb^\times$, $P(T)\in\BZ_p[T]$ 首一且满足 $P(T)\equiv T^\lambda\mod p, \lambda=\deg P$.
+\end{exercise}
+
+\begin{exercise}
+在 $\BQ_7$ 中 $\suml_{n\ge 0}{\half \choose n}\left(\frac{7}{9}\right)^n$ 是多少?
+\end{exercise}
+
+\begin{proposition}{}{}
+如果完备离散赋值域 $K$ 的剩余域 $\kappa$ 是特征 $p$ 的完全域, 则对于自然映射 $\CO_K\surj \kappa$, 存在唯一一个具有可乘性的自然的提升 $r:\kappa\to \CO_K$.
+\end{proposition}
+\begin{proof}
+设 $a\in \kappa$. 对于任意 $n\ge 0$, 存在 $a_n\in \kappa$ 使得 $a_n^{p^n}=a,a_{n+1}^p=a_n$. 设 $\wh a_n\in\CO_K$ 为其任一提升. 由于 $\wh a_{n+1}^p\equiv \wh a_n\mod\fp$, 易知 $\wh a_{n+1}^{p^{n+1}}\equiv \wh a_n^{p^n}\mod\fp^{n+1}$. 因此 $r(a):=\lim\limits_{n\to\infty}\wh a_n^{p^{n}}$ 收敛. 容易知道, $r(a)$ 不依赖于提升的选取, 且满足可乘性. 如果 $t$ 也满足相应性质, 则取 $\wh a_n=t(a_n)$, 
+  \[r(a)=\lim_{n\to\infty}\wh a_n^{p^n}=\lim_{n\to\infty}t(a_n)^{p^n}=t(a).\]
+因此 $r$ 是唯一的.
+\end{proof}
+
+\begin{definition}{泰希米勒提升}{Teichmuller lifting}
+$r(a)$ 被称为 $a$ 的\noun{泰希米勒提升}, 记为 $[a]$.
+\end{definition}
+
+当 $K$ 特征 $p$ 时, 容易看出 $r$ 诱导了环嵌入 $\kappa\to \CO_K$, 此时我们知道 $\CO_K=\kappa\ldb\pi\rdb,K=\kappa((\pi))$. 实际上, 对于等特征情形, $K$ 都具有这种形式.
+
+\begin{theorem}{}{structure of cdvf equal char}
+如果 $K$ 是等特征的完备离散赋值域, 则 $\CO_K=\kappa\ldb\pi\rdb,K=\kappa((\pi))$.
+\end{theorem}
+\begin{proof}
+当 $\kappa$ 特征零时, 映射 $\BZ\inj \CO_K\surj \kappa$ 是单射, 因此 $\BZ-\set0$ 在 $\CO_K$ 中可逆, $\BQ\subset \CO_K$. 由佐恩引理, $\CO_K$ 中存在极大子域 $S$. 设 $\ov S$ 是它在 $\kappa$ 中的像, 则 $S\simto \ov S$. 我们断言 $\ov S=k$.
+
+首先 $\kappa$ 在 $\ov S$ 上代数. 若不然, 存在 $a\in\CO_K$ 使得 $\ov a$ 在 $\ov S$ 上超越, 所以 $a$ 在 $S$ 上超越, $S[a]\simeq \ov S[\ov a]\simeq S[T]$, $S[a]\cap\fp=0$. 因此 $S(a)\subset \CO_K$, 这与 $S$ 极大矛盾, 因此 $\kappa$ 在 $\ov S$ 上代数.
+
+对于任意 $\alpha\in\kappa$, 令 $\ov f\in\ov S[x]$ 是它的极小多项式. 由于 $\kappa$ 特征零, $\ov f$ 可分, $\alpha$ 是 $\ov f$ 的单根. 由亨泽尔引理, 存在 $x\in\CO_K,f(x)=0,\ov x=\alpha$. 因此 $\ov S[\alpha]$ 可以提升为 $S[x]$. 由 $S$ 极大知 $x\in S$, $\kappa=\ov S$.
+
+一般情形, 我们由 Cohen 结构定理\cite{Cohen1946} 知, 存在 $\CO_K$ 的子环 $\Lambda$, 使得自然映射 $\Lambda\to \kappa$ 是同构. 由此可知该命题成立.
+\end{proof}
+
+\subsection{维特向量}
+对于混合特征情形, $\Char\, K=0,\Char\, \kappa=p$, 我们需要维特向量来描述完备离散赋值域的结构.
+设 $\bfX=(X_0,\dots,X_n)$,
+  \[W_n(\bfX)=X_0^{p^n}+p X_1^{p^{n-1}}+\cdots+p^n X_n\in \BZ[\bfX]=\BZ[X_0,\dots,X_n].\]
+
+\begin{lemma}{}{}
+对于任意 $\Phi\in \BZ[\bfX,\bfY]$, 
+存在多项式 
+  \[\Phi_i\in \BZ[X_0,\dots,X_i,Y_0,\dots,Y_i],\quad
+i=0,1,\dots,n\]
+使得
+  \[W_n(\Phi_0,\Phi_1,\dots,\Phi_n)=\Phi\bigl(W_n(X_0,X_1,\dots,X_n),W_n(Y_0,Y_1,\dots,Y_n)\bigr).\]
+\end{lemma}
+\begin{proof}
+显然 $\Phi_0=\Phi(X_0,Y_0)$. 归纳地定义
+  \[\Phi_n(\bfX,\bfY)=\frac{1}{p^n}\Biggl(\Phi\Bigl(\sum_{i=0}^n p^i X_i^{p^{n-i}},\sum_{i=0}^n p^i Y_i^{p^{n-i}}\Bigr)-\sum_{i=0}^{n-1} p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\Biggl).\]
+我们只需要证明它是整系数的, 我们利用归纳法证明
+  \[\Phi(\sum_{i=0}^n p^i X_i^{p^{n-i}},\sum_{i=0}^n p^i Y_i^{p^{n-i}})\equiv \sum_{i=0}^{n-1}p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\mod{p^n}.\]
+由归纳假设, $\Phi_i\in \BZ[\bfX,\bfY]$, 因此 
+	\[\Phi_i(\bfX^p,\bfY^p)\equiv \bigl(\Phi_i(\bfX,\bfY)\bigr)^p\mod p.\]
+于是 $p^i\Phi_i(\bfX^p,\bfY^p)^{p^{n-1-i}}\equiv p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\mod p^n$,
+  \[\begin{split}
+\text{左边}&\equiv \Phi(\sum_{i=0}^{n-1}p^i X_i^{p^{n-i}},\sum_{i=0}^{n-1} p^i Y_i^{p^{n-i}})\\
+&\equiv \sum_{i=0}^{n-1}p^i\Phi_i(\bfX^p,\bfY^p)^{p^{n-1-i}}\equiv \text{右边}\mod{p^n}.
+\end{split}\]
+因此命题得证.
+\end{proof}
+
+对于 $n\ge 1$ 和任意交换环 $A$, 令 $W_n(A)=A^n$. 令 $S_i,P_i$ 分别为对应 $X+Y,XY$ 的 $\Phi_i$. 对于任意 $a=(a_0,\dots,a_{n-1}),b=(b_0,\dots,b_{n-1})\in W_n(A)$, 令
+  \[s_i=S_i(a_0,\dots,a_i,b_0,\dots,b_i),\quad p_i=P_i(a_0,\dots,a_i,b_0,\dots,b_i).\]
+定义
+  \[a+b=(s_0,s_1,\dots,s_{n-1}),\quad a\cdot b=(p_0,p_1,\dots,p_{n-1}).\]
+考虑
+  \[\fct{\rho:W_n(A)}{A^n}{(a_0,a_1,\dots,a_{n-1})}{(w_0,w_1,\dots,w_{n-1}),}\]
+其中 $w_i=W_i(a)=a_0^{p^{n-i}}+pa_1^{p^{n-i-1}}+\dots+p^i a_i$. 则 
+  \[w_i(a+b)=w_i(a)+w_i(b),\quad w_i(ab)=w_i(a)w_i(b).\]
+\begin{itemize}
+\item 如果$p$ 可逆, 则 $\rho$ 是双射, $W_n(A)$ 是一个环;
+\item 如果 $A$ 没有 $p$ 阶元, 则 $W_n(A)\subseteq W_n(A[\frac{1}{p}])$ 是一个子环;
+\item 一般情形, 存在 $I\subseteq R$ 使得 $A=R/I, R$ 没有 $p$ 阶元, $W_n(A)=W_n(R)/W_n(I)$.
+\end{itemize}
+因此 $W_n(A)$ 是环.
+考虑满同态
+  \[\fct{W_{n+1}(A)}{W_n(A)}{(a_0,a_1,\dots,a_n)}{(a_0,a_1,\dots,a_{n-1}),}\]
+定义
+  \[W(A)=\plim_n W_n(A),\]
+其中每个 $W_n(A)$ 赋予离散拓扑, 则我们得到一个拓扑环(由直积拓扑限制得到), 称之为 $A$ 的\noun{维特环}, 其中元素被称为\noun{维特向量}. 相应的 $W_n(A)$ 被称为长度为 $n$ 的维特环, 其中元素被称为长度为 $n$ 的维特向量.
+
+\begin{example}
+$W(\BF_p)=\BZ_p$. 考虑映射
+  \[\fct{\varphi:W(\BF_p)}{\BZ_p}{(a_0,a_1,\dots)}{\sum_{n\ge 0}p^n[a_n],}\]
+我们想要说明这是环同构, 则我们需要验证
+  \[\sum_{i=0}^n \big(p^i[a_i]+p^i[b_i]\big)=\sum_{i=0}^n p^i[s_n],\]
+而根据泰希米勒提升的构造, 这等价于
+  \[\sum_{i=0}^n p^i(\wt a_i^{p^{n-i}}+\wt b_i^{p^{n-i}}-\wt s_i^{p^{n-i}})\equiv 0\mod p^n, \quad \wt x\in\BZ~\text{是}~x\in\BF_p~\text{的提升},\]
+这由 $\Phi$ 的构造可以看出. 乘法的验证是类似的.
+
+一般地, 设 $S=\BF_p[X_\alpha^{p^{-\infty}}]$ 为完全环, $X_\alpha$ 是一些不定元, 则 $W(S)=\wh{\BZ_p[X_\alpha^{p^{-\infty}}]}$, $W(S)/p W(S)=S$. 同理可知 $W(S)$ 中的元素均可表为
+  \[x=\sum_{n\ge 0} p^n[x_n^{p^{-n}}],\quad x_n\in S.\]
+对于完全域 $\kappa$, 存在形如 $\BF_p[X_\alpha^{p^{-n}}]$ 的 $S$ 和满射 $h:S\surj \kappa$. 对于 $a,b\in W(S)$, 我们记 $a\sim b$ 表示它们相应的 $x_n$ 在 $h$ 下的像相同, 则 $H=W(\kappa)=W(S)/\sim$ 是特征零完备离散赋值域, $p$ 为素元, $\kappa$ 为剩余域.
+\end{example}
+
+\begin{exercise}
+证明 $W(\BF_p)$ 和 $\BZ_p$ 作为拓扑环是同构的.
+\end{exercise}
+
+
+\begin{definition}{绝对分歧指数}{absolute ramification index}
+设完备离散赋值域 $K$ 是混合特征 $(0,p)$ 的, $v$ 是它的规范化离散赋值. 称 $e=v(p)$ 为其\noun{绝对分歧指数}. 若 $e=1$, 即 $p$ 是它的一个素元, 称之为\noun{绝对非分歧}.
+\end{definition}
+
+\begin{theorem}{}{structure of cdvf unequal char}
+设 $\kappa$ 是特征 $p$ 的完全域, 则 $W(\kappa)$ 是唯一的剩余域为 $\kappa$ 的绝对非分歧特征零完备离散赋值域.
+设完备离散赋值域 $K$ 是混合特征 $(0,p)$ 的, $e$ 为其绝对分歧指数. 如果 $K$ 的剩余域 $\kappa$ 是完全域, 则存在唯一的同态 $\psi:W(\kappa)\to K$ 使得
+  \[\xymatrix{
+W(\kappa)\ar[rr]^\psi\ar[rd]&&K\ar[ld]\\
+&\kappa&
+}\]
+而且 $\psi$ 是单射, 其诱导了剩余域上的同构, $\CO_K$ 是秩 $e$ 的自由 $W(\kappa)$ 模.
+\end{theorem}
+\begin{proof}
+见 \cite[Theorem~0.40]{FontaineOuyang}. 我们简要说明下 $\CO_K$ 是秩 $e$ 的自由 $W(\kappa)$ 模. 设 $\pi$ 是 $\CO_K$ 的素元, 则任意 $a\in\CO_K$ 可唯一表为
+  \[a=\sum_{n\ge 0}[\alpha_n]\pi^n,\quad \alpha_n\in\kappa.\]
+而我们知道 $\pi^e$ 和 $p$ 只相差一个单位, 因此 $a$ 可唯一表为
+  \[a=\sum_{n\ge 0}\sum_{j=0}^{e-1} [\alpha_{ij}]\pi^jp^i,\quad \alpha_{ij}\in\kappa.\]
+因此 $\set{1,\pi,\dots,\pi^{e-1}}$ 是 $\CO_K$ 作为 $W(\kappa)$ 模的一组基.
+\end{proof}
+
+\begin{remark}
+对于 $\kappa$ 不是完全域的情形, 我们有所谓的 Cohen 环作为唯一的剩余域为 $\kappa$ 的绝对非分歧特征零完备离散赋值域, 且仍然有单同态 $\psi$, 其诱导了剩余域上的同构, 尽管 $\psi$ 可能不再唯一, 见 \cite[\S~0.2.4]{FontaineOuyang}.
+\end{remark}
+
+\subsection{乘法群的结构}
+设 $\CO_K,\pi,\fp,\kappa, v$ 为完备离散赋值域 $K$ 的赋值环、素元、极大理想、剩余域和规范化离散赋值.
+
+\begin{definition}{高阶单位群}{higher unit group}
+称
+  \[U^{(n)}=1+\fp^n=\set{x\in K^\times\mid v(x-1)\ge n},\quad n\ge 0\]
+为 $K$ 的 \nouns{$n$ 阶单位群}{n 阶单位群@$n$ 阶单位群}. 它们形成一个递减的群序列 
+  \[\CO_K^\times=U^{(0)}\supseteq U^{(1)}\supseteq \cdots.\]
+\end{definition}
+
+\begin{proposition}{}{}
+我们有
+  \[\CO_K^\times/U^{(n)}\cong (\CO_K/\fp^n)^\times,\quad
+U^{(n)}/U^{(n+1)}\cong \CO_K/\fp,\]
+以及
+  \[\CO_K^\times\cong\plim\limits_n \CO_K^\times/U^{(n)}.\]
+\end{proposition}
+\begin{exercise}
+证明上述命题.
+\end{exercise}
+
+\begin{proposition}{}{}
+如果 $\kappa=\BF_q$ 有限, 则我们有分解
+  \[K^\times=\pi^\BZ\times \mu_{q-1}\times U^{(1)}.\]
+\end{proposition}
+\begin{exercise}
+证明上述命题.
+\end{exercise}
+
+\begin{exercise}
+设 $K$ 的特征为 $0$. 如果其剩余域特征为 $0$, 令 $\epsilon=1$; 如果其剩余特征为 $p$, 令 $\epsilon=|p|^{\frac{1}{p-1}}$. 则 
+  \[\exp(x):=\sum_{n=0}^{+\infty}\frac{x^n}{n!}\]
+的收敛区域为 $U(0,\epsilon)$,
+  \[\log(x):=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}(t-1)^n\]
+的收敛区域为 $U(1,1)$.
+于是我们有群同构
+  \[\exp:U(0,\epsilon)\simto U(1,\epsilon),\]
+其逆为 $\log$.
+\end{exercise}
+
+\begin{proposition}{}{}
+设 $K$ 是剩余域 $\kappa=\BF_q$ 有限的完备离散赋值域, 则 $K$ 是 $\BQ_p$ 或 $\BF_p\ldb t\rdb$ 的有限扩张, 且
+
+(1) $K$ 特征为 $0$ 时, 我们有连续的群同构
+  \[K^\times\cong \BZ\oplus \BZ/(q-1)\BZ\oplus \BZ/p^a\BZ\oplus \BZ_p^d,\]
+这里 $a\ge 0, d=[K:\BQ_p]$.
+
+(2) $K$ 特征为 $p$ 时, 我们有连续的群同构
+  \[K^\times\cong \BZ\oplus \BZ/(q-1)\BZ\oplus \BZ_p^\BN.\]
+\end{proposition}
+\begin{proof}
+见 \cite[Proposition~2.5.7]{Neukirch1999}. 我们粗略证明下 $K$ 特征 $0$ 情形, 此时 $\BQ\subseteq K$, $v$ 限制在 $\BQ$ 上等价于 $p$ 进赋值, 因此 $\BQ_p\subseteq K$. 而 $\BQ_p\subseteq\Fr W(\kappa)\subseteq K$ 均为有限扩张, 因此 $K/\BQ_p$ 有限. 当 $n$ 充分大时, 
+  \[\log: U^{(n)}\to \pi^n\CO_K\cong \CO_K.\]
+我们将会在定理~\ref{thm:valuation_extension}~中证明 $\CO_K$ 是 $\BZ_p$ 在 $K$ 中的整闭包, 由注记~\ref{rem:integral_closure_over_pid_admits_basis}~知 $\CO_K$ 是秩 $n$ 的自由 $\BZ_p$ 模. $[U^{(1)}:U^{(n)}]$ 有限, 因此 $U^{(1)}$ 作为有限生成 $\BZ_p$ 模分解为有限部分和自由部分. 但有限部分只能是 $K^\times$ 的单位根的 $p$ 部分, 它是个循环群.
+\end{proof}
+
+特别地, 如果 $K=\BQ_p$, 当 $p>2$ 时,
+  \[\BQ_p^\times=p^\BZ\times \BF_p^\times \times (1+p\BZ_p)\cong
+\BZ\oplus \BZ/(p-1)\BZ\oplus \BZ_p,\]
+$\BQ_p^\times$ 中的平方元为 $p^{2k}a$, $p\nmid a$, $a\mod p$ 是平方数. 当 $p=2$ 时,
+  \[\BQ_2^\times=2^\BZ\times (\BZ/4\BZ)^\times \times (1+4\BZ_p)\cong \BZ\oplus \BZ/2\BZ\oplus \BZ_2,\]
+$\BQ_2^\times$ 中的平方元为 $2^{2k}a$, $2\nmid a$, $a\equiv 1\mod 8$. 
+
+
+
+\subsection{二次曲线的有理点}
+\label{quad_curve}
+本节中我们将研究二次方程
+  \[f(x,y)=ax^2+by^2-c=0,\quad a,b,c\in\BQ,\ a,b\ \text{不全为零},\  (x,y)\in\BQ^2.\]
+记 $V(f)$ 为 $f$ 的所有有理根全体. 我们不加区分地使用方程的根和对应曲线的点这两种说法.
+
+令 $\BP^n(\BQ)$ 为 $n$ 维\noun{射影曲线}, 即 $\BQ^n$ 中所有过原点的直线全体. 其中的元素我们可以记为 $[x_0:\dots:x_n]$, $(x_0,\dots,x_n)$ 为该直线上任意一非零点. 显然 $[x_0:\dots:x_n]=[\lambda x_0:\dots:\lambda x_n],\lambda\in\BQ^\times$. 因此
+  \[\BP^n(\BQ)=(\BQ^n-\set0)/\BQ^\times.\]
+特别地我们可以记 $\BP^1(\BQ)=\BQ\cup\set\infty$.
+
+假设 $V(f)\neq \emptyset$, 设 $P_0=(x_0,y_0)\in V(f)$, 则对于任意其它有理点 $P=(x,y)$, 设 $(\alpha,\beta)=(x,y)-(x_0,y_0)$, 则 $[\alpha,\beta]\in\BP^1(\BQ)$. 反之, 对于任意 $[\alpha,\beta]\in\BP^1(\BQ)$, 直线 
+  \[\alpha(y-y_0)=\beta(x-x_0),\]
+其与 $f(x,y)=0$ 联立后得到 $x$ 的一个二次方程
+  \[(a\alpha^2+b\beta^2)x^2-2b\beta (\alpha y_0-\beta x_0) x+b(\beta x_0-\alpha y_0)^2-c\alpha^2=0.\]
+如果该二次方程首项系数非零, 由于其中一个根 $x_0$ 是有理数, 因此另一个根也是有理数, 对应的点是有理点. 这里注意有一个 $[\alpha,\beta]$ 对应的是 $P$ 的切线. 由此我们得到
+  \[V(f)\simto \BP^1(\BQ)-\set{\text{至多两个点}}.\]
+
+\begin{exercise}
+令 $f(x,y)=x^2+y^2-1$, $P_0=(-1,0)$, 计算 $V(f)$. 由此得到 $x^2+y^2=z^2$ 的所有整数解.
+\end{exercise}
+%
+%\begin{exercise}
+%当 $k=\infty$ 时如何处理? 是否有统一的做法?
+%\end{exercise}
+
+考虑 $f$ 的齐次化版本
+  \[g(x,y,z)=ax^2+by^2-cz^2.\]
+令 $V(g)=\set{[x:y:z]\in\BP^2(\BQ)\mid g(x,y,z)=0}$. 显然该定义是良好的. 则有可能排除掉的点对应于 $[b:\sqrt{-ab}:0]$. 因此
+  \[V(g)\simto \BP^1(\BQ).\]
+实际上, 如果令 $U=\BP^2(\BQ)-V(z)$, 即所有 $z\neq 0$ 的点, 则 $U\simeq \BQ^2$, $V(f)=V(g)\cap U$.
+
+\begin{exercise}
+令 $g(x,y,z)=x^2+y^2-5z^2$, 计算 $V(g)$.
+\end{exercise}
+
+\begin{proposition}{}{homo_nonempty}
+记号同前文. 则 $V(f)\neq \emptyset$ 当且仅当 $V(g)\neq \emptyset$.
+\end{proposition}
+\begin{proof}
+$V(f)\neq \emptyset$ 显然推出 $V(g)\neq \emptyset$. 反之, 对于 $[x:y:z]\in V(g)$, 若 $z\neq 0$, 则 $(x/z,y/z)\in V(f)$; 若 $z=0$, 不妨设 $x\neq 0$, 则 $(y/x,z/x)\in V(a+bY^2-cZ^2)\neq \emptyset$, 因此 $a+bY^2-cZ^2=0$ 有无穷多有理点, 特别地, 存在 $Z\neq 0$ 的有理点, 即 $g$ 存在 $z\neq 0$ 的有理点.
+\end{proof}
+
+实际上, 上述讨论对于任意特征零的域都是成立的. 现在的问题是, 如何判断一个二次方程是否存在有理数点? 设 $K$ 是一个数域, $v$ 是其上一个赋值, 记 $K_v$ 为 $K$ 在该赋值下的完备化.
+
+\begin{theorem}{哈塞-闵可夫斯基定理}{}
+设 $K$ 为数域, $f(x_1,\dots,x_n)$ 为 $K$ 系数次数不大于 $2$ 的多项式, 则 $f(x_1,\dots,x_n)=0$ 在 $K$ 中有解当且仅当, 对于 $K$ 的每个赋值 $v$, $f(x_1,\dots,x_n)=0$ 在 $K_v$ 中有解.
+\end{theorem}
+\begin{proof}
+见 \cite[Theorem~66.4]{OMeara2000}.
+\end{proof}
+
+
+
+\subsection{有理数域上的希尔伯特符号}
+\label{2:hilbert_symbol}
+我们将使用 $\BQ$ 上的希尔伯特符号来回答\ref{quad_curve}节提出的问题.
+
+\begin{definition}{希尔伯特符号}{}
+设 $a,b\in\BQ^\times$. 如果方程 $ax^2+by^2=1$ 在 $\BQ_v$ 上有解, 则定义 $(a,b)_v=1$, 否则 $(a,b)_v=-1$.
+\end{definition}
+
+由命题~\ref{pro:homo_nonempty} 可知, $(a,b)_v=1$ 当且仅当 $ax^2+by^2-z^2=0$ 在 $\BP^2(\BQ_v)$ 上有解. 
+
+\begin{exercise}
+(1) 证明 $(a,b)_v=(b,a)_v, (a,-a)_v=(a,1-a)_v=1$.
+
+(2) 证明 $(a,b)_\infty=1$ 当且仅当 $a>0$ 或 $b>0$.
+\end{exercise}
+
+不妨设 $a,b\in\BZ$. 当 $v=p>2$ 时, 回忆 $\BQ_p^\times$ 中一个数是平方当且仅当其赋值为偶数且模 $p$ 是二次剩余. 如果 $p\nmid ab$, 则 $a$ 或 $b$ 是模 $p$ 二次剩余时, 显然有解. 如果 $\leg{a}{p}=\leg{b}{p}=-1$, 则
+  \[ax^2=1-by^2,\quad (ax)^2=a(1-by^2).\]
+当 $y=0,\dots,\frac{p-1}{2}$ 时, $1-by^2$ 两两不同且均不被 $p$ 整除, 因此其中至少有一个二次非剩余, 于是 $\leg{a(1-by^2)}{p}=1$, 方程有解. 也就是说 $(a,b)=1$.
+
+\begin{exercise}
+如果 $p\nmid ab$, 则 $(a,pb)_p=\leg{a}{p}, (pa,pb)_p=(-ab,p)_p$.
+\end{exercise}
+
+当 $v=2$ 时, 回忆 $\BQ_2^\times$ 中一个数是平方当且仅当其赋值为偶数且模 $8$ 同余 $1$. 类似地, 若 $2\nmid ab$, 我们有 $(2,2)_2=1$,
+  \[(a,b)_2=\begin{cases}
+1\quad &a\equiv 1\mod 4\text{ 或 } b\equiv 1\mod 4\\
+-1 & a\equiv b\equiv -1\mod 4,
+\end{cases}\]
+  \[(a,2b)_2=\begin{cases}
+1\quad &a\equiv 1\mod 8\text{ 或 } a\equiv 1-2b\mod 8\\
+-1&\text{其它情形}
+\end{cases}\]
+
+通过我们的分析, 我们发现:
+\begin{proposition}{}{}
+我们有 $(a,b)_v(a,c)_v=(a,bc)_v$.
+\end{proposition}
+
+\begin{theorem}{乘积公式}{}
+设 $a,b\in\BQ^\times$, 则除去有限个 $v$ 外, $(a,b)_v=1$, 且
+  \[\prod_v (a,b)_v=1.\]
+\end{theorem}
+\begin{proof}
+当 $v=p$ 不出现在 $a$ 和 $b$ 的分子或分母的素因子中时, 我们有 $(a,b)_v=1$. 由于希尔伯特符号的可乘性, 我们只需要验证下列情形:
+
+(1) $a=b=-1$. 此时 $(-1,-1)_\infty=(-1,-1)_2=-1$, 其它 $v$ 处为 $1$. 这也推出 $\prod_v (a,a)_v=\prod_v (a,-1)_v=1$.
+
+(2) $a=-1,b=2$. 此时 $a+b-1=0$, 因此 $(-1,2)_v=1$.
+
+(3) $a=-1,b=p>2$. 此时 $(-1,p)_\infty=1,(-1,p)_2=(-1)^{(p-1)/2}=\leg{-1}{p}=(-1,p)_p$. 由此可知乘积公式对于 $(-1,n)$ 成立, 因此对于 $(n,n)$ 也成立.
+
+(4) $a=2,b=p>2$. 此时 $(2,p)_\infty=1,(2,p)_2=(-1)^{(p^2-1)/8}=\leg{2}{p}=(2,p)_p$.
+
+(5) $a=p,b=q\neq p$. 此时
+  \[\prod_v(p,q)_v=(-1)^{\frac{p-1}{2}\cdot\frac{q-1}{2}}\cdot \leg{p}{q}\leg{q}{p}=1,\]
+即二次互反律.
+\end{proof}
+
+\begin{example}
+我们来看 $x^2+5y^2=n\neq 0$. 由 $(-5,n)_2=1$ 知 $n\equiv 1\mod 4$ 或 $n\equiv 6\mod 8$; 由 $(-5,n)_5=1$ 知 $n=m$ 或 $5m$, $m\equiv \pm 1\mod 5$; 对于奇素数 $q\mid n, q\neq 5$, 由 $(-5,n)_q=1$ 知 $(\frac{-5}{q})=1, q\equiv 1,3,7,9\mod{20}$.
+因此 
+  \[n=p_1\dots p_{2k} q_1\dots q_m \lambda^2,\]
+素数 $p_i\equiv 2,3,7\mod {20},q_i\equiv 1,5,9\mod{20},\lambda$ 为任意正整数.
+\end{example}
+
+\begin{exercise}
+何时 $x^2+7y^2=n\neq 0$ 有有理点? 这等价于 $x^2+7y^2=n$ 有整数解吗?
+\end{exercise}
+
+\begin{exercise}
+何时 $x^2+26y^2=n\neq 0$ 有有理点?
+\end{exercise}
+
+
+
+\section{分歧理论}
+\label{sec:ramification theory}
+我们已经知道了 $\BQ$ 的所有素位. 对于数域 $K$ 而言, 它的赋值 $w$ 限制在 $\BQ$ 上是 $\BQ$ 的一个赋值 $v$, 我们记 $w|v$. 如果 $v=\infty$, 则 $w$ 是一个阿基米德赋值, 它的等价类是 $K$ 的一个无穷素位. 如果 $v=p$, 我们称 $w$ 为\noun{有限素位}. 不妨设 $w$ 是归一化离散赋值, 则
+  \[\fp=\set{x\in\CO_K\mid w(x)\ge 1}\]
+是 $\CO_K$ 的素理想, 且 $p\CO_K\subset\fp$. 因此作为理想 $\fp\mid p\CO_K$. 反之, 任一 $\CO_K$ 的素理想 $\fp$ 诱导了 $K$ 的赋值
+  \[w(x)=\min\set{n\mid x\in\fp^n}.\]
+因此 $K$ 的有限素位和它的素理想一一对应. 我们不加区分地用 $\fp$ 来表示素理想或素位.
+
+设 $L/K$ 是数域的有限扩张, 则同样的分析告诉我们 $\fP\mid \fp$ 当且仅当 $\fp$ 诱导的 $K$ 上赋值是 $\fP$ 诱导的 $L$ 上赋值的限制(等价意义下). 因此 $\fP\mid \fp$ 既可以表示理想的整除也可以表示素位的延拓.
+本节中我们将研究完备域扩张下的素位变化行为.
+
+
+\subsection{赋值的延拓}
+\begin{theorem}{奥斯特洛斯基定理}{arch_valued_field}
+完备阿基米德赋值域只有 $\BR$ 和 $\BC$.
+\end{theorem}
+\begin{proof}
+由于 $\BQ\subseteq K$, 因此不妨设 $\BR\subseteq K$ 且 $|\cdot|$ 延拓  $|\cdot|_\BR$. 对任意 $\xi\in K$, 定义
+  \[\fct{f:\BC}{\BR}{z}{|\xi^2-(z+\bar z)\xi+z\bar z|.}\]
+由阿基米德性质知 $z\to \infty$ 时, $f(z)\to \infty$. 因此 $f$ 的下确界 $m\ge 0$ 是可达的. 如果 $m>0, S=\set{z\in\BC\mid f(z)=m}$ 为有界闭子集, 因此存在 $z_0\in S$ 使得 $|z_0|\ge |z|,\forall z\in S$. 设 
+  \[g(x)=x^2-(z_0+\bar z_0)x+z_0 \bar z_0+\varepsilon,\quad 0<\varepsilon<m\]
+的根为 $z_1,\bar z_1$, 则 $z_1\bar z_1=z_0\bar z_0+\varepsilon$, $|z_1|>|z_0|$.
+
+考虑多项式
+  \[G(x)=[g(x)-\varepsilon]^n-(-\varepsilon)^n\in \BR[x].\]
+设它的根为 $\alpha_1=z_1,\alpha_2,\dots,\alpha_{2n}\in \BC$, 则
+  \[G(x)^2=\prod_{i=1}^{2n}(x^2-(\alpha_i+\bar\alpha_i)x+\alpha_i\bar\alpha_i),\]
+  \[|G(\xi)|^2=\prod_{i=1}^{2n}f(\alpha_i)\ge m^{2n}\cdot \frac{f(z_1)}{m}.\]
+另一方面,
+  \[|G(\xi)|\le f(z_0)^n+\varepsilon^n=m^n+\varepsilon^n,\]
+因此 $f(z_1)/m\le\bigl(1+(\frac{\varepsilon}{m})^n\bigr)^2$. 令 $n\to \infty$, $f(z_1)\le m$, 这与 $|z_1|>|z_0|$ 矛盾. 因此 $m=0$, $K$ 中元素均为 $\BR$ 上二次多项式的根.
+\end{proof}
+
+\begin{proposition}{}{irred_value}
+设 $K$ 是完备非阿赋值域. 如果 $f(x)=\suml_{i=0}^n a_i x^i\in K[x]$ 不可约, $a_0a_n\neq 0$, 则
+  \[ |f|=\max\set{|a_0|,|a_n|}.\]
+特别地, 如果 $a_n=1,a_0\in\CO_K$, 则 $f\in\CO_K[x]$.
+\end{proposition}
+\begin{proof}
+不妨设 $f\in\CO_K[x],|f|=1$. 设 $r=\min\set{r: |a_r|=1}$, 则
+  \[f(x)\equiv x^r(a_r+a_{r+1}x+\dots+a_nx^{n-r})\mod \pi.\]
+如果 $|a_0|,|a_n|<1$, 则 $0<r<n$, 由亨泽尔引理~\ref{lem:hensel_lemma}, $f$ 可约, 矛盾!
+\end{proof}
+
+由此, 我们有如下定理
+\begin{theorem}{}{valuation_extension}
+完备非阿赋值域 $K$ 上赋值 $|\cdot|$ 可以唯一延拓至 $K$ 的有限次扩张 $L$,
+  \[|\alpha|=|\bfN_{L/K}(\alpha)|^{1/[L:K]},\]
+且 $L$ 在该赋值下完备.
+\end{theorem}
+\begin{proof}
+如果是阿基米德赋值, 则由定理~\ref{thm:arch_valued_field} 知 $K=\BR,\BC$. 假设 $K$ 是非阿赋值域, $\CO_L$ 是 $\CO_K$ 在 $L$ 中的整闭包. 对于 $\alpha\in L$, 如果 $\bfN_{L/K}(\alpha)\in \CO_K$, 则由命题~\ref{pro:irred_value} 知其极小多项式属于 $\CO_K[x]$, 因此 
+  \[\CO_L=\set{x\in L\mid \bfN_{L/K}(x)\in\CO_K}.\]
+
+我们需要证明强三角不等式 $|x+y|\le \max\set{|x|,|y|}$, 换言之, 如果 $|x|\le 1$, 则 $|x+1|\le 1$, 即 $x\in\CO_L\implies x+1\in\CO_L$. 最后, 显然 $\CO_L$ 是延拓后的赋值的赋值环.
+
+唯一性由赋范线性空间上范数的唯一性可得. 容易知道 $L$ 作为 $K$ 上线性空间在最大模下是完备的, 因此它是完备赋值域.
+%如果 $|\cdot|'$ 也是原赋值的一个延拓, 记 $\CO_L',\fp_L'$ 为相应赋值环和极大理想. 对于 $\alpha\in\CO_L-\CO_L'$, 设 $f(x)=x^d+a_{d-1}x^{d-1}+\dots+a_0\in\CO_K[x]$ 为其极小多项式, 则 $a_i\in \CO_K$, $\alpha^{-1}\in\fm_L'$, 因此 $1=-\suml_{i=1}^d a_{d-i} \alpha^{-i}\in\fm_L'$, 这不可能. 因此 $\CO\subseteq \CO'$, $|\alpha|\le 1\implies |\alpha|'\le 1$, 由命题~\ref{pro:equiv_valuation}, 二者等价.
+\end{proof}
+
+完备非阿赋值域上的多项式的在其分裂域上的根的赋值可以由所谓的\noun{牛顿折线}确定.
+设 $f(x)=\sum_{i=0}^na_ix^i\in K[x]$, 点集 
+	\[\set{\bigl(i,v(a_i)\bigr)\mid 0\le i\le n}\]
+的下凸包络被称为 $f$ 的牛顿折线. 换言之, 它是定义在区间 $[0,n]$ 上的分段线性函数, 折点为上述点集中的点, 斜率递增, 且上述点集中没有点落在它图像的下方.
+
+\begin{proposition}{}{}
+设 $a_0a_n\neq0$. 多项式 $f$ 在它的分裂域上的根的赋值的相反数和它的牛顿折线在每个 $[i,i+1]$ 上的斜率一一对应.
+\end{proposition}
+\begin{proof}
+不妨设 $a_n=1$, $w$ 为 $f$ 分裂域上延拓 $v$ 的赋值. 设 $f$ 的根中
+	\[\begin{split}
+		w(\alpha_1),\dots,w(\alpha_{s_1})&=m_1,\\
+		w(\alpha_{s_1+1}),\dots,w(\alpha_{s_2})&=m_2,\\
+		&\vdots\\
+		w(\alpha_{s_{t-1}+1}),\dots,w(\alpha_{s_t})&=m_t,
+	\end{split}\]
+其中 $m_1<m_2<\cdots<m_t$, $s_t=n$. 于是
+	\[\begin{split}
+	v(a_{n-1})&\ge\min\set{w(\alpha_i)}=m_1,\\
+	v(a_{n-2})&\ge\min\set{w(\alpha_i \alpha_j)}=2m_1,\\
+	&\vdots\\
+	v(a_{n-s_1})&=\min\set{w(\alpha_{i_1}\cdots \alpha_{i_{s_1}})}=s_1m_1.
+	\end{split}\]
+同样,
+	\[\begin{split}
+	v(a_{n-s_1-1})&\ge\min\set{w(\alpha_{i_1}\cdots \alpha_{i_{s_1+1}})}=s_1m_1+m_2,\\
+	v(a_{n-s_1-2})&\ge\min\set{w(\alpha_{i_1}\cdots \alpha_{i_{s_1+2}})}=s_1m_1+2m_2,\\
+	&\vdots\\
+	v(a_{n-s_2})&=\min\set{w(\alpha_{i_1}\cdots \alpha_{i_{s_2}})}=s_1m_1+(s_2-s_1)m_2.
+	\end{split}\]
+依次下去可知 $f$ 的牛顿折线为
+	\[(n,0),\ (n-s_1,s_1m_1),\ (n-s_2,s_1m_1+(s_2-s_1)m_2),\ \dots\]
+的连线, 从而命题得证.
+\end{proof}
+
+\begin{exercise}
+如果首一多项式 $f(T)=\sum_{i=0}^n a_ix^{n-i}\in \BZ[T]$ 满足 $\gcd\bigl(v_p(a_n),p\bigr)=1$ 以及 $v(a_i)\ge i v(a_n)/n$, 则称之为关于 $p$ 的\noun{广义艾森斯坦多项式}. 这样的多项式一定是不可约的.
+\end{exercise}
+
+
+\subsection{\texorpdfstring{$p$}{p} 进代数闭完备域}
+我们来了解下 $p$ 进世界的复数域. 由于 $\BQ_p$ 上的赋值可以唯一延拓至其任一有限代数扩张上, 因此可以延拓至 $\ov\BQ_p$ 上.
+令
+  \[|\gamma|_p:=|\bfN_{\BQ_p(\gamma)/\BQ_p}(\gamma)|_p^{1/[\BQ_p(\gamma):\BQ_p]},\]
+则它是 $\BQ_p$ 上赋值在 $\ov\BQ_p$ 上的延拓. 我们知道 $\BQ_\infty=\BR,\ov\BQ_\infty=\BC$ 是完备的, 然而 $\ov\BQ_p$ 却不是完备的. 记 $\ov\BQ_p$ 的完备化记为 $\BC_p$.
+
+\begin{exercise}
+证明 $\ov \BQ$ 在 $\ov \BQ_p$ 中稠密且 $\ov \BQ_p$ 不是完备的.
+\end{exercise}
+
+\begin{theorem}{}{C_p_is_ac}
+$\BC_p$ 是代数闭域.
+\end{theorem}
+
+\begin{lemma}{克拉斯纳引理}{krasner}
+设 $F$ 为完备非阿赋值域, $E\subseteq F$ 是一个闭子域. 假设 $\alpha,\beta\in F$ 满足对 $\alpha$ 的任意共轭元 $\alpha'\neq \alpha$, 有 $|\beta-\alpha|<|\alpha'-\alpha|$, 且 $\alpha$ 在 $E$ 上可分, 则 $\alpha\in E(\beta)$.
+\end{lemma}
+\begin{proof}
+令 $E'=E(\beta),\gamma=\beta-\alpha$. 则 $E'(\gamma)=E'(\alpha)$. 由于 $\gamma'=\beta-\alpha'$ 为 $\gamma$ 在 $E'$ 上的共轭, $|\gamma'|=|\gamma|$. 因此 
+  \[|\beta-\alpha|=|\gamma|\ge |\gamma'-\gamma|=|\alpha'-\alpha|,\]
+这迫使 $\alpha'=\alpha,\gamma'=\gamma\in E'$, 因此 $\alpha \in E'$.
+\end{proof}
+
+\begin{proof}[定理~\ref{thm:C_p_is_ac} 的证明]
+设
+  \[f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_0=\prod_{i=1}^n(x-\alpha_i)\in \BC_p[x].\]
+不妨设 $f(x)\in\CO_{\BC_p}[x]$. 令 $C'=\BC_p(\alpha_1,\dots,\alpha_n)$ 为 $f$ 的分裂域, $r=\max_{i\neq j}\set{v(\alpha_i-\alpha_j)}$.
+由 $\BC_p$ 的完备性, 存在 $b_i\in\ov\BQ$ 使得 $v(a_i-b_i)>nr$. 令
+  \[g=x^n+b_{n-1}x^{n-1}+\cdots+b_0\in\ov\BQ[x].\]
+设 $\beta\in\ov\BQ$ 为 $g$ 的一个根. 令 $\alpha\in C'$ 为 $f$ 的根当中 $v(\beta-\alpha)$ 最大的一个根, 即 $v(\beta-\alpha)\ge v(\beta-\alpha_i)$. 由
+  \[\sum_{i=1}^n v(\beta-\alpha_i)=v\big(f(\beta)\big)=v\big(f(\beta)-g(\beta)\big)>nr\]
+知 $v(\beta-\alpha)>r$. 由克拉斯纳引理, $\alpha\in \BC_p(\beta)=\BC_p$.
+\end{proof}
+
+\begin{definition}{球完备}{spherically complete}
+如果一个完备度量空间中下降的闭球套交均非空, 则称其为\noun{球完备}的.
+\end{definition}
+
+\begin{exercise}
+例如 $\BC$ 和 $\BQ_p$ 均是球完备的.
+\end{exercise}
+
+\begin{proposition}{}{}
+$\BC_p$ 不是球完备的.
+\end{proposition}
+\begin{proof}
+令 $\set{r_n}$ 为严格递减的有理数序列，其极限为 $r=\lim r_n>0$. 球 $B(0,r_0)$ 中存在两个不交的半径为 $r_1$ 的球, 记为 $B_0$ 和 $B_1$. 同样, 球 $B_i$ 中存在两个不交的半径为 $r_2$ 的球, 记为 $B_{i0}$ 和 $B_{i1}$. 依次下去我们对于每一个序列 $(i_0,i_1,\dots)\in\set{0,1}^\BN$, 都对应一个闭球套序列
+  \[B_{i_0}\supset B_{i_0 i_1}\supset \cdots\]
+它们的交两两不同. 如果它们的交非空, 则易知交为半径为 $r$ 的闭球. 但 $B(0,r_0)$ 中一个可数稠密子集均与每一个这样的交相交, 因此这样交出来的非空集合只有至多可数个不同的闭球. 而这样的序列数量是不可数的, 因此至少有一个闭球套交为空集.
+\end{proof}
+
+\begin{exercise}
+如果完备度量空间中闭球套的半径趋于 $0$, 则闭球套的交非空.
+\end{exercise}
+
+对于 $p$ 进分析感兴趣的可以阅读\cite{Colmez2004,Robert2000}.
+
+\subsection{非分歧扩张}
+\label{ramification_theory_on_local_fields}
+设 $\CO_K,\fp,\pi,v,\kappa$ 为完备离散赋值域 $K$ 的赋值环、极大理想、素元、规范化离散赋值、剩余域. 设 $L$ 为 $K$ 的 $n$ 次可分扩张, 则 $v$ 可以唯一延拓为 $L$ 上赋值 $w$,
+  \[w(\alpha)=\frac{1}{n}v\bigl(\bfN_{L/K}(\alpha)\bigr).\]
+设 $\CO_L,\fP,\Pi,\kappa_L$ 为 $L$ 的赋值环、极大理想、素元、剩余域. 称
+  \[e=e(L/K)=[w(L^\times):v(K^\times)]=w(\Pi)\]
+为 $L/K$ 的\nouns{分歧指数}{分歧!分歧指数}, 显然 $\fp\CO_L=\fP^e$. 剩余域的扩张次数
+  \[f=f(L/K)=[\kappa_L:\kappa]\]
+被称为\nouns{惯性指数}{惯性!惯性指数}. 
+
+\begin{proposition}{}{}
+我们有 $ef=[L:K]$.
+\end{proposition}
+\begin{proof}
+由于主理想整环上的有限生成无扭模均为自由模, 因此 $\CO_L$ 是秩 $n$ 自由 $\CO_K$ 模,
+  \[\begin{split}
+   n&=\dim_{\CO_K/\fp}(\CO_L/\fp)=\dim_{\CO_K/\fp}(\CO_L/\Pi^e \CO_L)\\
+    &=\sum_{i=0}^{e-1}\dim_{\CO_K/\fp}(\Pi^i\CO_L/\Pi^{i+1} \CO_L)=\sum_{i=0}^{e-1}f=ef.
+  \end{split}\]
+命题得证.
+\end{proof}
+
+如果 $e=1,f=[L:K]$, 且 $\kappa_L/\kappa$ 可分, 称 $L/K$ \noun{非分歧}(\noun{惯性}). 如果 $e=[L:K],f=1$, 称 $L/K$ \noun{完全分歧}. 显然非分歧扩张的子扩张非分歧.
+
+\begin{proposition}{}{unramified_base_change}
+设 $L,K'\subseteq \ov K$ 为 $K$ 的有限扩张. 如果 $L/K$ 非分歧, 则 $LK'/K'$ 非分歧. 
+\end{proposition}
+\begin{proof}
+设 $\fp',\fP'$ 是 $K',L'=LK'$ 的极大理想.
+由于 $\kappa_L/\kappa$ 可分, 存在 $\ov\alpha\in \kappa_L$ 使得 $\kappa_L=\kappa(\ov\alpha)$. 设 $\ov f(x)\in\kappa[x]$ 为 $\ov\alpha$ 的极小多项式, 设 $f(x)\in\CO_K[x]$ 为 $\ov f$ 的首一提升, 则由亨泽尔引理, 存在 $f$ 的一个根 $\alpha\in\CO_L$ 提升 $\ov\alpha$. 显然 $f$ 是 $\alpha$ 的极小多项式. 于是
+  \[f_{L/K}=\deg\ov f=\deg f=[K(\alpha):K]\le [L:K]=f_{L/K},\]
+因此 $L=K(\alpha)$.
+
+现在 $L'=K'(\alpha)$. 设 $\alpha$ 在 $K'$ 上的极小多项式为 $g(x)\in\CO_{K'}[x]$, $\ov g=g\mod \fp'\in\kappa_{K'}[x]$. 由于 $\ov g\mid \ov f$, 因此 $\ov g$ 可分. 由亨泽尔引理, $\ov g$ 不可约. 因此
+  \[f_{L'/K'}\le [L':K']=\deg g=\deg\ov g=[\kappa_{K'}(\ov\alpha):\kappa_{K'}]\le f_{L'/K'},\]
+这意味着 $f_{L'/K'}=[L':K']$, $L'/K'$ 非分歧.
+\end{proof}
+
+\begin{corollary}{}{}
+非分歧扩张的复合仍然是非分歧的.
+\end{corollary}
+由此, 如果一个无限扩张的任一子扩张均非分歧, 我们称该扩张是\noun{非分歧}的.
+
+\begin{definition}{极大非分歧扩张}{maximal unramified extension}
+设 $L/K$ 为代数扩张, 则所有 $L$ 中 $K$ 的非分歧子扩张的复合构成 $K$ 在 $L$ 中\noun{极大非分歧扩张} $T$.
+\end{definition}
+
+\begin{proposition}{}{}
+$T$ 的剩余域是 $\kappa$ 在 $\kappa_L$ 中的可分闭包 $\kappa^s$.
+\end{proposition}
+\begin{proof}
+设 $\lambda$ 是 $T$ 的剩余域, $\ov\alpha\in\kappa_L$ 在 $\kappa$ 中可分.
+由命题~\ref{pro:unramified_base_change}~的证明中可以看出, $[K(\alpha):K]=f_{K(\alpha)/K}$, $K(\alpha)/K$ 非分歧. 因此 $K(\alpha)\subseteq T$, $\ov\alpha\in\lambda$.
+\end{proof}
+
+\begin{proposition}{}{}
+如果 $L/K$ 是混合特征完备离散赋值域的有限扩张, 且 $\kappa_L$ 是完全域, 则 $K W(\kappa_L)$ 是 $K$ 在 $L$ 中极大非分歧扩张.
+\end{proposition}
+\begin{proof}
+由于 $\kappa_L$ 是完全域, $\kappa_L/\BF_p$ 可分, 于是 $\Fr\,W(\kappa_L)\subseteq L$ 是剩余域为 $\kappa_L$ 的 $\BQ_p$ 的非分歧扩张, 因此 $K W(\kappa_L)$ 是 $K$ 的非分歧扩张. 又因为 $K W(\kappa_L)$ 的剩余域和 $L$ 相同, 因此命题成立.
+\end{proof}
+
+\begin{exercise}
+设 $K$ 是完备离散赋值域, 剩余域为 $\kappa$. 设 $K^\ur$ 是 $K$ 在 $\ov K$ 中的极大非分歧扩张, $\kappa^s$ 是 $\kappa$ 的可分闭包. 证明 $K^\ur/K$ 的所有子扩张和 $\kappa^s/\kappa$ 的所有子扩张一一对应.
+\end{exercise}
+
+
+\subsection{温分歧扩张}
+设 $K$ 是完备离散赋值域, $L$ 为 $K$ 的有限可分扩张. 我们假设 $p=\Char\,\kappa>0$.
+
+\begin{definition}{温分歧}{tamely ramified}
+如果 $L/K$ 的分歧指数和 $p$ 互素, 且 $\kappa_L/\kappa$ 可分, 称 $L/K$ \noun{温分歧}. 特别地, 非分歧扩张是温分歧的.
+\end{definition}
+
+\begin{proposition}{}{tamely_ramified_base_change}
+设 $L,L'\subseteq \ov K$ 为 $K$ 的有限扩张. 如果 $L/K$ 温分歧, 则 $LK'/K'$ 温分歧. 
+\end{proposition}
+
+该命题可以直接由如下引理得到.
+
+\begin{lemma}{}{}
+$L/K$ 温分歧当且仅当 $L/T$ 形如
+  \[L=T(\sqrt[\uproot{4}m_1]{a_1},\dots,\sqrt[\uproot{4}m_r]{a_r}),\quad p\nmid m_i.\]
+\end{lemma}
+\begin{proof}
+不妨设 $K=T,n=[L:K]$. 设 $\omega_1,\dots,\omega_r$ 是 $w(L^\times)/v(K^\times)$ 的一组代表元, $m_i$ 是 $\omega_i$ 在 $w(L^\times)/v(K^\times)$ 的阶. 由于 $w(L^\times)=\frac{1}{n}v\bigl(\bfN_{L/K}(L^\times)\bigr)\subseteq\frac{1}{n} v(K^\times)$, 因此 $m_i\mid n$. 设 $\gamma_i\in L^\times$, $w(\gamma_i)=\omega_i$, 则存在 $c_i\in K^\times$ 使得 $w(\alpha_i^{m_i})=v(c_i)$, 因此 $\gamma_i^{m_i}=c_i\epsilon_i,\epsilon_i\in\CO_L^\times$. 由于 $\kappa=\kappa_L$, 存在 $b_i\in \CO_K^\times$ 使得 $\epsilon_i=b_i u_i,\ov u_i=1\in \kappa_L$. 由亨泽尔引理, $x^m-u_i=0$ 在 $L$ 中有解 $\beta_i$. 令 $\alpha_i=\gamma_i\beta_i^{-1}$, 则 $w(\alpha_i)=\omega_i$, $\alpha^{m_i}=b_i c_i\in K$, 因此 $K(\sqrt[\uproot{4}m_1]{a_1},\dots,\sqrt[\uproot{4}m_r]{a_r})\subseteq L$. 而二者的剩余域和赋值的像相同, 因此二者相同.
+\end{proof}
+
+\begin{corollary}{}{}
+温分歧扩张的复合仍然是温分歧的.
+\end{corollary}
+由此, 如果一个无限扩张的任一子扩张均温分歧, 我们称该扩张是\noun{温分歧}的.
+
+\begin{definition}{极大温分歧扩张}{maximal tamely ramified extension}
+设 $L/K$ 为代数扩张, 则所有 $L$ 中 $K$ 的温分歧子扩张的复合构成 $K$ 在 $L$ 中\noun{极大温分歧扩张} $V$.
+\end{definition}
+
+令 $w(L^\times)^{(p)}$ 为 $w(L^\times)$ 中在 $w(L^\times)/v(K^\times)$ 中的像阶与 $p$ 互素的元素构成.
+\begin{proposition}{}{}
+$V$ 的剩余域是 $\kappa$ 在 $\kappa_L$ 中的可分闭包 $\kappa^s$ 且 $w(V^\times)=w(L^\times)^{(p)}$.
+\end{proposition}
+\begin{proof}
+不妨设 $L/K$ 有限, 且 $T=K$. 此时, $p\nmid e(V/K)=\# w(V^\times)/v(K^\times)$, 因此 $w(V^\times)\subseteq w(L^\times)^{(p)}$. 反之, 对任意 $\omega\in w(L^\times)^{(p)}$, 存在 $\alpha\in L,a=\alpha^m\in K,(m,p)=1$ 使得 $w(\alpha)=\omega$, 因此 $\alpha\in V$, $\omega\in w(V^\times)$.
+\end{proof}
+
+我们总结一下 $L/K$ 中子扩张的剩余域和赋值群的变化
+  \[\xymatrix@=5pt{
+K &\subseteq & T&\subseteq & V&\subseteq & L\\
+\kappa&\subseteq & \kappa^s&=& \kappa^s&\subseteq &\kappa_L\\
+v(K^\times)&= & w(T^\times)&\subseteq & w(L^\times)^{(p)}&\subseteq& w(L^\times).
+}\]
+设 $e(L/K)=e'p^a,p\nmid e'$, 则 $e'=e(V/K)$. 如果 $L\neq V$, 称 $L/K$ \noun{野分歧}.
+
+\begin{exercise}
+设 $L/K$ 是一个完全分歧且是温分歧的扩张, $w|v$ 是 $L$ 和 $K$ 的赋值. 证明 $L/K$ 的所有子扩张和 $w(L^\times)/v(K^\times)$ 的所有子群一一对应.
+\end{exercise}
+
+\section{整体域上的分歧理论}
+\label{sec:global ramification theory}
+\subsection{赋值的分歧}
+回忆数域 $K$ 上的任何一个嵌入 $\tau:K\inj\BC$ 诱导了 $K$ 上的一个赋值, 其中 $\tau$ 和 $\tau'$ 诱导了相同的赋值当且仅当 $\tau'=\tau\circ \sigma$, $\sigma\in G(\BC/\BR)$. 这样的赋值等价类我们称之为无穷素位.
+
+我们考虑一般的有限可分域扩张 $L/K$, $v$ 是 $K$ 的一个赋值. $v$ 可以唯一地延拓到 $\ov K_v$ 上, 记为 $\ov v$. 任一嵌入
+  \[\tau\in\Hom_K(L,\ov K_v)\]
+均诱导了 $L$ 的赋值 $w=\ov v\circ \tau$, 它可以唯一连续地延拓至 $L_w$ 上.
+对于任意 $\sigma\in G(\ov K_v/K_v),\sigma\circ \tau:L\inj \ov K_v$ 也是一个嵌入, 我们称 $\tau$ 和 $\sigma\circ \tau$ 是\noun{共轭的}. 我们可以看出, 这里的 $\ov K_v$ 相当于无穷素位中 $\BC$ 的地位. 我们有如下命题来判断何时不同的嵌入对应同一素位.
+
+\begin{proposition}{}{}
+设 $L/K$ 为有限可分域扩张, $v$ 是 $K$ 的一个赋值.
+
+(1) 任一 $v$ 在 $L$ 上的延拓均来自 $w=\ov v\circ \tau,\tau:L\inj\ov K_v$.
+
+(2) $\ov v\circ\tau$ 和 $\ov v\circ \tau'$ 等价当且仅当 $\tau,\tau'$ 共轭.
+\end{proposition}
+\begin{proof}
+(1) 设 $w$ 是 $v$ 在 $L$ 上的延拓, $L_w$ 为相应的完备化, $w$ 在 $L_w$ 上的延拓仍记为 $w$. 则 $w$ 是 $v$ 从 $K_v$ 到 $L_w$ 的唯一延拓. 任取一个嵌入 $\tau:L_w\inj \ov K_v$, 则 $\ov v\circ \tau=w$. $\tau$ 在 $L$ 上的限制诱导了 $L$ 上的 $\ov v\circ \tau=w$.
+
+(2) 设 $\tau$ 和 $\sigma\circ\tau$ 是两个共轭嵌入 $L\inj\ov K_v$. 由于 $v$ 在 $\ov K_v$ 上的延拓唯一, 因此 $\ov v=\ov v\circ \sigma$, $\ov v\circ \tau=\ov v\circ \sigma\circ\tau$.
+反之, 若 $\ov v\circ\tau=\ov v\circ\tau'$. 设 $\sigma:\tau L\simto\tau' L$ 为保持 $K$ 不动的同构, 即 $\sigma=\tau'\circ\tau^{-1}$. 则 $\sigma$ 可以延拓为保持 $K_v$ 不动的同构
+  \[\sigma:\tau L\cdot K_v\to \tau' L\cdot K_v.\]
+实际上, 由于 $\tau L$ 在 $\tau L\cdot K_v$ 中稠密, 任意 $x\in\tau L\cdot K_v$ 可表为
+  \[x=\lim_{n\to\infty}\tau x_n,\quad x_n\in L.\]
+由于 $\ov v\circ\tau=\ov v\circ\tau'$, 因此 $\tau'x_n=\sigma\tau x_n$ 收敛至 $\sigma x\in\tau' L\cdot K$. 因此我们得到了 $\sigma$ 的延拓. 我们将 $\sigma$ 延拓为 $\ov K_v$ 上的自同构 $\wt \sigma$, 则 $\tau'=\wt \sigma\circ\tau$, 因此 $\tau,\tau'$ 共轭.
+\end{proof}
+
+设 $L=K(\theta)$, $f(x)\in K[x]$ 为 $\theta$ 的极小多项式. 设 $f(x)$ 在 $K_v[x]$ 上分解为
+  \[f(x)=f_1(x)^{m_1}\cdots f_r(x)^{m_r}.\]
+由于 $L/K$ 可分, $m_i=1$. 对于每一个嵌入 $\tau:L\inj \ov K_v$, $\tau(\theta)$ 是 $f(x)$ 在 $\ov K_v$ 中的一个根. 如果两个嵌入 $\tau,\tau'$ 共轭, 则 $\tau(\theta),\tau'(\theta)\in \ov K_v$ 在 $K_v$ 之上共轭, 即它们是同一个不可约多项式 $f_i(x)$ 的根. 因此
+
+\begin{proposition}{}{valu_decpm}
+$K$ 的有限可分扩张 $L=K(\theta)$ 在 $v$ 之上的赋值一一对应于 $\theta$ 的极小多项式 $f(x)$ 在 $K_v[x]$ 中分解出的不可约因子.
+\end{proposition}
+对每一个 $f_i$, 设 $\theta_i\in\ov K_v$ 为其一个根, 令
+  \[\tau_i:L\to \ov K_v,\quad \theta\mapsto \theta_i\]
+为其对应的嵌入. 则 $w_i=\ov v\circ \tau_i$ 为其对应的赋值, $\tau_i$ 可以延拓为 $L_{w_i}\simto K_v(\theta_i)$.
+
+我们记 $w| v$ 表示 $L$ 的赋值 $w$ 是 $K$ 的赋值 $v$ 的一个延拓. 每一个 $L\inj L_w$ 诱导了 $L\otimes_K K_v\to L_w$, 因此有
+  \[\varphi: L\otimes_K K_v\to \prod_{w|v} L_w.\]
+
+\begin{proposition}{}{fund_identity}
+如果 $L/K$ 有限可分, 则 $L\otimes_K K_v\simto \prod\limits_{w|v} L_w.$
+\end{proposition}
+\begin{proof}
+对每一个 $w$, 固定 $L_w\inj \ov K_v$. 记 $f_w,\alpha_w$ 为其对应的 $f$ 在 $K_v[X]$ 中的因式和 $\theta$ 在 $L\inj L_w$ 下的像. 我们有交换图
+  \[\xymatrix{
+    K_v[X]/(f)\ar[r]\ar[d]_{X\mapsto\theta\otimes 1}^\simeq&\prod\limits_{w|v} K_v[X]/(f_w)\ar[d]_\simeq^{X\mapsto \theta_w}\\
+    L\otimes_K K_v\ar[r] &\prod\limits_{w|v} L_w,
+  }\]
+其中第一行由中国剩余定理给出.
+\end{proof}
+
+由此可得如下推论:
+\begin{corollary}{}{local_global_norm}
+如果 $L/K$ 有限可分, 则
+  \[ [L:K]=\suml_{w|v}[L_w:K_v]\]
+且
+  \[\bfN_{L/K}(\alpha)=\prod_{w|v}\bfN_{L_w/K_v}(\alpha),\quad\Tr_{L/K}(\alpha)=\prod_{w|v}\Tr_{L_w/K_v}(\alpha).\]
+\end{corollary}
+
+\begin{proposition}{}{}
+如果 $v$ 非阿, $e_w,f_w$ 为 $L_w/K_v$ 的分歧指数和惯性指数, 则
+  \[ [L:K]=\sum_{w|v} e_w f_w.\]
+\end{proposition}
+
+考虑数域 $K$, 回忆 $\bfN\fa=[\CO_K:\fa]$. 对于有限素位 $\fp$, $\bfN\fp=\#\kappa(\fp)=p^{f_\fp}$. 定义
+  \[|a|_\fp=\bfN\fp^{-v_\fp(a)},\]
+其中 $v_\fp$ 是 $K_\fp$ 的 归一化赋值. 对于无穷素位 $\tau:K\inj \BC$,
+  \[|a|_\BR=|\tau a|,\quad |a|_\BC=|\tau a|^2.\]
+
+\begin{proposition}{乘积公式}{}
+对于任意 $a\in K^\times$, 对几乎所有素位 $v$, $|a|_v=1$, 且
+  \[\prod_v |a|_v=1.\]
+\end{proposition}
+\begin{proof}
+由推论~\ref{cor:local_global_norm}可知
+  \[\bfN_{K/\BQ}(a)=\prod_{w\mid v}\bfN_{K_w/\BQ_v}(a).\]
+而 $|a|_w=|\bfN_{K_w/\BQ_v}(a)|_v$, 因此该命题可以约化到 $\BQ$ 的情形, 而这是显然的.
+\end{proof}
+
+
+我们来看数域情形. 设 $L/K$ 是数域的 $n$ 次有限扩张.
+对于 $K$ 的有限素位 $v=\fp$, 如果 $w=\fP\mid v$, 则 $\fp\subset\fP$, $\fP=\fP_i$, 其中
+  \[\fp\CO_L=\fP_1^{e_1}\cdots\fP_r^{e_r},\]
+其中 $e_i=e(\fP_i/\fp)=e(L_{\fP_i}/K_\fp)$.
+
+设 $L=K(\theta),\theta\in\CO_L$, $f(x)\in\CO_K[x]$ 为 $\theta$ 的极小多项式. 考虑分解
+  \[\ov f(x)=\ov p_1(x)^{e_1}\cdots\ov p_r(x)^{e_r}\in \CO_K/\fp[x].\]
+注意这里 $p_i(x)^{e_i}\equiv f_i(x)\mod \fp$. 
+设 $\CO:=\CO_K[\theta]\subset\CO_L$, 我们假设 $\fp$ 与
+  \[\fF=\set{\alpha\in\CO_L\mid \alpha\CO_L\subset \CO[\theta]}\] 
+互素.
+设 $p_i$ 是 $\ov p_i$ 的首一提升, 则我们有
+  \[\fP_i=\fp\CO_L+p_i(\theta)\CO_L,\]
+  \[\fp\CO_L=\fP_1^{e_1}\cdots\fP_r^{e_r}.\]
+\begin{proof}
+设 $\CO=\CO_K[\theta],\kappa=\CO_K/\fp$, 则
+  \[R:=\CO_L/\fp\CO_L\simeq \CO/\fp\CO\cong \kappa[x]/\bigl(\ov f(x)\bigr).\]
+实际上, 由于 $\fp\CO_L+\fF=\CO_L$, 而 $\fF\subseteq\CO$, 因此 $\CO/\fp\CO\to \CO_L/\fp\CO_L$ 是满射. 它的核为 $\fp\CO_L\cap \CO=(\fp\CO_L+\fF)(\fp\CO_L\cap \CO)\subseteq \fp\CO\subseteq \fp\CO_L\cap\CO$, 因此它是单射. 第二个同构是显然的, 因为两边都是 $\CO_K[\theta]/\bigl(\fp,\ov f(x)\bigr)$.
+
+由中国剩余定理可知
+  \[\kappa[x]/\bigl(\ov f(x)\bigr)\cong \bigoplus_{i=1}^r \kappa[x]/(\ov p_i(x)^e).\]
+因此 $R$ 的非零素理想为 $\ov p_i$ 生成的主理想, 且 $[R/\ov p_i:\kappa]=\deg \ov p_i$. 我们有
+  \[(0)=(\ov f)=\bigcap_{i=1}^r (\ov p_i)^{e_i}.\]
+我们将它们通过映射 $\CO_L\to \CO_L/\fp\CO_L=R$ 提升为
+  \[\fp\CO_L\supseteq \bigcap_{i=1}^r\fP_i^{e_i},\]
+其中 $\fP_i=p_i(\theta)\CO_L+\fp\CO_L$ 是所有整除 $\fp\CO_L$ 的素理想. 由于 $\sum e_if_i=n$, 因此两边的大小相等, 故 $\fp\CO_L=\prod_{i=1}^r \fP_i^{e_i}$.
+\end{proof}
+
+如果 $r=e_1=1$, 称 $\fp$ \noun{惯性}.
+如果所有的 $e_i=f_i=1$, 即 $\fp\CO_L=\fP_1\cdots\fP_n$, 我们称 $\fp$ 在 $L$ 中\noun{完全分裂}. 如果 $e_i=1$, 我们称 $\fP_i$ 在 $K$ 上\noun{非分歧}, 注意此时剩余域扩张可分自动满足; 否则称之为\noun{分歧}. 如果 $r=f_1=1,e_1=n$, 称 $\fP_i$ \noun{完全分歧}.
+
+\begin{proposition}{}{}
+设 $L/K$ 是数域的有限扩张, 则只有有限多个 $K$ 的素理想在 $L$ 中分歧.
+\end{proposition}
+\begin{proof}
+设 $L=K(\theta),\theta\in\CO_L$, $d=\disc(1,\theta,\dots,\theta^{n-1})\in\CO_K$. 则对于与 $d\fF$ 互素的素理想 $\fp$, $\ov f(x)\in\CO_K/\fp[x]$ 的判别式非零, 因此它没有重根, $e_i=1$, 从而 $\fp$ 非分歧.
+\end{proof}
+
+\begin{remark}
+实际上 $L/K$ 中素理想分歧当且仅当 $\fp$ 整除 $L/K$ 的判别式.
+\end{remark}
+
+\begin{exercise}
+(1) 对于任意数域 $K$ 的有限个素理想 $\fp_1,\dots,\fp_r$, 存在 $n$ 次扩张 $L/K$ 使得 $\fp_1,\dots,\fp_r$ 惯性.
+
+(2) 构造 $\BQ$ 的无限代数扩张 $L$ 使得对于每个 $p$ 之上的素理想 $\fp$, 存在数域 $K\subset L$ 使得 $\fp$ 在 $L/K$ 惯性.
+
+(3) $L$ 的整数环 $\CO_L$ 是一个戴德金环.
+\end{exercise}
+
+\begin{example}
+设 $K=\BQ(\sqrt{d})$ 为二次域, $d\neq 0,1$ 无平方因子. 
+当 $d\equiv 2,3\mod 4$ 时, $\CO_K=\BQ[\theta],\theta=\sqrt{d}$ 的极小多项式为 $x^2-d$. 如果素数 $p\mid 2d$, 则 $r=1,e=2,p\CO_K=(\sqrt{d},p)^2$ 或 $2\CO_K=(\sqrt{d}+1,2)^2$ ($2\nmid d$ 时) 完全分歧.  如果素数 $p\nmid 2d$, 当 $\leg{d}{p}=1$ 时, $x^2-d$ 在 $\BF_p$ 上有两个不同的根 $\pm\ov a$, 于是 $p\CO_K=(\sqrt{d}+a,p)(\sqrt{d}-a,p)$ 完全分裂; 当 $\leg{d}{p}=-1$ 时, $p$ 惯性.
+\end{example}
+
+\begin{exercise}
+考虑 $d\equiv 1\mod 4$ 时, $\BQ(\sqrt{d})/\BQ$ 中素理想分解情况.
+\end{exercise}
+
+
+\subsection{伽罗瓦扩张中的分歧}
+设 $L/K$ 是有限伽罗瓦扩张, $G=G(L/K)$ 为它的伽罗瓦群.
+\begin{proposition}{}{}
+$G$ 在所有的 $w\mid v$ 上作用是传递的.
+\end{proposition}
+\begin{proof}
+设 $w,w'$ 是 $v$ 的两个延拓. 如果 $w$ 和 $w'$ 不共轭, 则
+  \[\set{w\circ \sigma\mid \sigma\in G},\quad
+\set{w'\circ\sigma\mid\sigma\in G}\]
+不交. 由逼近定理~\ref{pro:approximation_theorem}, 存在 $x\in L$ 使得
+  \[|\sigma x|_w<1,\quad |\sigma x|_{w'}>1,\quad\forall \sigma\in G.\]
+于是 $\bfN_{L/K}(x)$ 满足 $|\alpha|_v=\prod_\sigma|\sigma x|_w<1$. 同理 $|\alpha|_v>1$, 矛盾! 因此 $w,w'$ 共轭.
+\end{proof}
+
+特别地, 如果 $v=\fp$ 非阿, 则 $e=e_{\fP_i/\fp}$ 均相等, $f=f_{\fP_i/\fp}$ 均相等.
+
+\begin{definition}{分解群, 惯性群和分歧群}{decomposition group, inertia group and ramification group}
+定义 $w$ 的\noun{分解群}为
+  \[G_w(L/K)=\set{\sigma\in G\mid  w\circ \sigma=w}.\]
+如果 $w=\fP$ 是非阿赋值, 设 $B$ 为 $\fP$ 的赋值环. 定义其\nouns{惯性群}{惯性!惯性群}为
+  \[I_w(L/K)=\set{\sigma\in G_w\mid \sigma x\equiv x\mod\fP,\forall x\in B},\]
+\nouns{分歧群}{分歧!分歧群}为
+  \[R_w(L/K)=\set{\sigma\in G_w\mid \frac{\sigma x}{x}\equiv 1\mod \fP,\forall x\in L^\times}.\]
+称它们的固定子域分别为\noun{分解域} $Z_w$, \nouns{惯性域}{惯性!惯性域} $T_w$, \nouns{分歧域}{分歧!分歧域} $V_w$.
+\end{definition}
+
+显然 
+  \[G\supseteq G_w\supseteq I_w\supseteq R_w\supseteq \set1,\quad K\subseteq Z_w\subseteq T_w\subseteq V_w\subseteq L.\]
+我们将说明, $Z_w$ 是 $w$ 完全分裂的最大的子域, $T_w,V_w$ 分别是 $L/Z_w$ 的极大非分歧扩张和极大温分歧扩张.
+
+这些群和它们所对应的的完备域扩张的相应群是一致的.
+\begin{proposition}{}{}
+  \[\begin{split}
+    G_w(L/K)&\cong G(L_w/K_v),\\
+    I_w(L/K)&\cong I(L_w/K_v),\\
+    R_w(L/K)&\cong R(L_w/K_v).
+  \end{split}\]
+\end{proposition}
+\begin{proof}
+分解群 $G_w$ 由那些在 $w$ 下连续的自同构构成. 根据赋值诱导的拓扑的定义, $\sigma\in G_w$ 显然是连续的. 反之, 若 $\sigma\in G$ 连续, 则对于 $|x|_w<1$, $x^n\ra 0$, 因此 $\sigma x^n\to 0$, $|\sigma x|_w=|x|_{w\circ \sigma}<1$. 因此 $w$ 和 $w\circ \sigma$ 等价.
+
+由于 $L$ 在 $L_w$ 中稠密, 任意 $\sigma\in G_w(L/K)$ 可以唯一地延拓为 $L_w$ 的连续的 $K_v$ 自同构 $\wt \sigma$. 容易知道当 $\sigma\in I_w,R_w$ 时 $\wt \sigma\in I_w(L_w/K_v), R_w(L_w/K_v)$.
+\end{proof}
+
+ 设 $W_v$ 为 $v$ 之上的所有素位, 则
+  \[\begin{split}
+G_w\bs G&\simto W_v\\
+G_w\sigma&\longmapsto w\sigma.
+\end{split}\]
+一般情形下, 设 $N$ 为 $L/K$ 的伽罗瓦闭包, 
+  \[G=G(N/K),\ H=G(N/L),\ G_w=G_w(N/K),\]
+则
+  \[\begin{split}
+G_w\bs G/H&\simto W_v\\
+G_w\sigma H&\longmapsto w\circ \sigma|_L.
+\end{split}\]
+
+\begin{proposition}{}{}
+(1) $w_Z:=w|_{Z_w}$ 可以唯一地延拓到 $L$ 上.
+
+(2) $Z_w=L\cap K_v\subseteq L_w$.
+
+(3) 如果 $v$ 有限, 则 $w_Z$ 和 $v$ 剩余域相同.
+\end{proposition}
+\begin{proof}
+(1) 如果 $w'$ 是 $w_Z$ 在 $L$ 上的延拓, 则 $w'=w\circ\sigma$, $\sigma\in G(L/Z_w)=G_w$, 因此 $w'=w$.
+
+(2) 由于 $G_w(L/K)=G(L_w/K_v)$, 因此 $Z_w=L\cap K_v\subset L_w$.
+
+(3) 由于 $K,Z_w$ 的剩余域和 $K_v$ 相同, 因此 $w_Z$ 和 $v$ 剩余域相同.
+\end{proof}
+
+现在我们来考虑惯性群. 设 $w=\fP$ 非阿. 由于 $G(L/Z_w)\cong G(L_w/K_v)$, 因此我们在考虑 $L/Z_w$ 子扩张时, 可以将其放在 $L_w/K_v$ 中看.
+设 $B,\kappa_\fP$ 为 $L$ 的赋值环和剩余域. 对于 $\sigma\in I_w$, 由于 $\sigma \fP=\fP,\sigma B=B$, 因此它诱导了 $v=\fp$ 剩余域 $\kappa$ 上的自同构
+  \[\begin{split}
+\bar \sigma:B/\fP&\lra B/\fP\\
+x\mod\fP&\longmapsto \sigma x\mod\fP.
+\end{split}\]
+因此我们有群同态 $G_w\to \Aut_{\kappa}(\kappa_\fP)$.
+
+\begin{proposition}{}{}
+$\kappa_\fP/\kappa$ 是正规扩张且我们有正合列
+  \[1\ra I_w\ra G_w\ra G(\kappa_\fP/\kappa)\ra 1.\]
+因此 $G(T_w/Z_w)\cong G(\kappa_\fP/\kappa)$, 且 $T_w$ 是 $L/Z_w$ 的极大非分歧扩张.
+\end{proposition}
+\begin{proof}
+设 $v=\fp,w=\fP$, $\fP_Z:=\fP\cap Z_\fP$. 由于 $\fP_Z$ 之上的素理想为 $\sigma\fP=\fP,\sigma\in G(L/Z_\fP)=D_\fP$, 因此 $\fP_Z$ 之上的素理想只有 $\fP$. 由于 $G$ 在 $w|v$ 上传递, 因此 $n=efr$, $r$ 为 $w|v$ 个数, $e,f$ 为任意一个的分歧指数和惯性指数. 而 $r=(G:D_\fP)$, 因此 $ef=[L:Z_\fP]$. 我们不妨设 $K=Z_w$, 设 $\theta\in B$ 是 $\ov\theta\in\kappa$ 的提升, 它们的极小多项式为 $f(x),\ov g(x)$. 显然 $\ov g\mid \ov f$. 由于 $L/K$ 是正规扩张, 因此 $f$ 在 $L$ 上分解为一次多项式乘积, 从而 $\ov f,\ov g$ 也是如此, 故 $\kappa_\fP/\kappa$ 正规.
+
+设 $\ov\theta$ 是 $\kappa_\fP/\kappa$ 的极大可分子扩张的生成元, $\ov\sigma\in G(\kappa_\fP/\kappa)=G(\kappa(\ov\theta)/\kappa)$. 因此 $\ov\sigma\ov\theta$ 是 $\ov g$ 的根, 从而是 $\ov f$ 的根. 因此存在 $f$ 的根 $\theta'$ 使得 $\theta'\equiv \ov \sigma\ov\theta\mod\fP$, $\theta'$ 是 $\theta$ 的共轭元, 即 $\theta'=\sigma\theta,\sigma\in G(L/K)$ 是 $\ov \sigma$ 的一个原像, 因此该映射是满射. 它的核为 $I_w$.
+
+最后, 设 $T$ 为 $L/Z_w$ 极大非分歧扩张. 我们对 $T/Z_w$ 应用上述结论, 则 $G(T/Z_w)\surj G(\kappa_L/\kappa_K)$ 是满射. 由于非分歧扩张分歧指数为 $1$, 因此这是一个同构, 从而 $T=T_w$.
+\end{proof}
+
+如果 $\fP$ 非分歧, 则 $I_w=1$, $G_w\cong G(\kappa_\fP/\kappa)=\pair{\varphi}$, 其中 $\varphi(x)=x^{\#\kappa}$. 从而存在一个元素
+	\[\leg{L/K}{\fP}\in \Gal(L/K)\]
+使得 $\leg{L/K}{\fP}(x)\equiv x^{\#\kappa}\bmod\fP$.
+对于 $\sigma\in\Gal(L/K)$, 我们有
+	\[\leg{L/K}{\sigma\fP}=\sigma\leg{L/K}{\fP}\sigma^{-1}.\]
+记 $\leg{L/K}{\fp}$ 为 $\leg{L/K}{\fP}$ 所在的共轭类.
+
+\begin{theorem}{切博塔廖夫密度定理}{chebatarev}
+设 $c\subset G$ 是一个共轭类, 则 $\leg{L/K}{\fp}=c$ 的全体 $\fp$ 在所有素理想中的密度为 $\#c/\#G$. 这里的密度是指狄利克雷密度
+	\[\rho(\CS)=\lim_{s\to 1+}\frac{\sum_{\fp\in \CS}\bfN\fp^{-s}}{\sum_{\fp\in \CP}\bfN\fp^{-s}},\]
+其中 $\CP$ 为所有素理想集合.
+\end{theorem}
+
+
+
+现在我们来考虑分歧群.
+设 $\chi(L/K)=\Hom(w(L^\times)/v(K^\times),\kappa_L^\times)$, 定义
+  \[\fct{I_w}{\chi(L/K)}{\sigma}{(w(x)\mapsto \frac{\sigma x}{x}\mod\fP),}\]
+该映射的核为分歧群 $R_w$.
+
+\begin{exercise}
+验证该映射良定义且是群同态.
+\end{exercise}
+
+\begin{proposition}{}{}
+$R_w$ 是 $I_w$ 的唯一的希洛夫 $p$ 子群且我们有正合列
+  \[1\ra R_w\ra I_w \ra \chi(L/K)\ra 1.\]
+因此 $V_w$ 是 $L/Z_w$ 的极大温分歧扩张.
+\end{proposition}
+\begin{proof}
+我们不妨设 $L/K$ 是完备域的扩张. 如果 $R_w$ 不是 $p$ 群, 则存在 $\sigma\in R_w$ 阶为素数 $\ell\neq p$. 设 $K'$ 是 $\sigma$ 的固定子域, $\kappa'$ 为其剩余域. 由于 $R_w\subset I_w$, $K'\supseteq T$, 因此 $\kappa$ 在 $\kappa_L$ 中的可分闭包包含在 $\kappa'$ 中, $\kappa_L/\kappa'$ 纯不可分, 从而 $\kappa_L/\kappa'$ 扩张次数是 $p$ 的幂次. 设 $\sigma$ 是 $\ov\sigma\in \kappa_L$ 的提升, $f\in K'[x], \ov g\in \kappa'[x]$ 为它们的极小多项式, 则 $\ov f=\ov g^m$ 的次数为 $1$ 或 $\ell$. 这迫使 $\kappa'=\kappa_L$. 而 $L/K'$ 是温分歧扩张, 存在 $a\in K'$ 使得  $L=K'(\alpha),\alpha=\sqrt[\ell]{a})$. 于是 $\sigma\alpha=\zeta\alpha$, 其中 $\zeta\in L$ 是 $\ell$ 次本原单位根. 由于 $\sigma \in R_w$, $\zeta=\sigma \alpha/\alpha\equiv 1\mod \fP$, 这意味着 $\zeta=1$, 矛盾! 因此 $R_w$ 是 $p$ 群.
+
+由于 $\kappa_L$ 特征 $p$, $\kappa_L^\times$ 中元素的阶与 $p$ 互素, 从而 $\chi(L/K)$ 也是如此. 因此 $R_w$ 是 $I_w$ 的希洛夫 $p$ 子群, $V_w$ 为 $L/T$ 的所有与 $p$ 互素次扩张的并, 因此 $V_w$ 包含 $L/Z_w$ 的极大温分歧扩张 $V$.  由于 $V_w/V$ 扩张次数与 $p$ 互素, $V_w/V$ 的剩余域扩张可分, 从而 $V_w/V$ 是温分歧扩张, $V_w=V$.
+
+最后我们来证明满. 由于 $T_w/K$ 是 $V_w/K$ 的极大非分歧扩张, $V_w/T_w$ 惯性指数为 $1$, 因此
+  \[ [V_w:T_w]=\bigl(w(V_w^\times):w(T_W^\times)\bigr) =\bigl(w(V_w^\times):v(K^\times)\bigr).\]
+由于 $w(V_w^\times)=w(L^\times)^{(p)}$, 因此上式等于商群 $w(L^\times)/v(K^\times)$ 中与 $p$ 互素的部分大小. 若 $w(L^\times)^{(p)}/v(K^\times)$ 包含 $m$ 阶元, 则我们知道 $\kappa_L^\times$ 包含 $m$ 阶元, 因此
+  \[\#\chi(L/K)=\#\Hom(w(L^\times)^{(p)}/v(K^\times),\kappa_L^\times)=\#w(L^\times)^{(p)}/v(K^\times).\]
+\end{proof}
+
+\begin{example}
+设 $L/K$ 是数域的伽罗瓦扩张, $w=\infty'\mid v=\infty$ 分别为它们的无穷素位. 如果 $\infty,\infty'$ 同为实素位或复素位, 则 $L_{\infty'}=K_\infty$, $G_w(L/K)=1$, 因此 $\infty$ 在 $L$ 中完全分裂为 $n$ 个无穷素位.
+
+如果 $\infty$ 是实素位而 $\infty'$ 为复素位, 则 $G_w(L/K)=G(\BC/\BR)$, 因此存在 $L$ 的一个二阶子域 $L'$, 使得 $\infty$ 在 $L'/K$ 完全分裂, 而 $\infty'|_{L'}$ 在 $L'/L'$ 中惯性. 特别地, 如果 $K=\BQ$, 则 $L'$ 是 $L$ 的极大实子域, $L'/L$ 是二次扩张.
+\end{example}
+
+\begin{example}
+设 $K=\BQ(i,\sqrt{p})$. 
+当 $q\equiv 1\mod 4$ 时, $q$ 在 $\BQ(i)$ 中分裂为 $\fq_1\fq_2$, 它们的剩余域均为 $\BF_q$. 如果 $q\neq p$, 则 $q$ 在 $\BQ(\sqrt{p})$ 中非分歧, 从而在 $K$ 上非分歧. 若 $\leg{p}{q}=1$, 则 $\sqrt{p}$ 的极小多项式在 $\BF_p[x]$ 中分解为两个不同的多项式的乘积, 因此 $q$ 在 $K$ 上完全分裂, $G_w=1$. 若不然, 则 $q$ 在 $\BQ(\sqrt{p})$ 中惯性, 从而 $\fq_1,\fq_2$ 在 $K$ 中惯性, $G_w=G\bigl(K/\BQ(i)\bigr), I_w=1$. 如果 $q=p$, 则 $q$ 在 $\BQ(\sqrt{p})$ 中分歧, 从而在 $K$ 中分歧, 因此 $G_w=I_w=G\bigl(K/\BQ(i)\bigr), R_w=1$.
+\end{example}
+
+\begin{exercise}
+$q\equiv -1 \mod 4$ 或 $q=2$ 时, $q$ 之上的素位的分解群、惯性群、分歧群分别是什么?
+\end{exercise}
+
+
+\subsection{高阶分歧群}
+为了研究伽罗瓦扩张的子扩张和其本身的分歧群之间的联系, 我们将考虑更多的分歧群. 我们假设 $K=Z_w$, 即 $L/K$ 中 $v$ 之上的素位只有 $w$. 设 $A,B$ 分别为 $K,L$ 在 $v,w$ 的赋值环.
+我们假设 $L/K$ 的剩余域扩张 $\kappa_w/\kappa$ 可分.
+
+\begin{lemma}{}{}
+存在 $a\in B$ 使得 $B=A[a]$.
+\end{lemma}
+\begin{proof}
+由于 $\kappa_w/\kappa$ 可分, 存在 $\ov a$ 使得 $\kappa_L=\kappa[\bar a]$. 设 $f(x)\in A[x]$ 是 $\ov a$ 的极小多项式 $\ov f$ 的一个首一提升, 则存在 $\ov a$ 的一个提升 $a\in B$ 使得 $f(a)$ 是一个素元. 实际上, 设 $a$ 为任一提升, $v_L\bigl(f(a)\bigr)\ge 1$. 如果 $v_L\bigl(f(a)\bigr)\ge 2$, 则 $v_L\bigl(f(a+\Pi)\bigr)=1$. 这是因为
+  \[f(a+\Pi)=f(a)+f'(a)\Pi+O(\Pi^2),\]
+而 $\ov f'(\ov a)\neq 0$, $f'(a)\in B^\times$. 所以 $a^i f(a)^j,0\le i\le f-1,0\le j\le e-1$ 形成 $B/\fp$ 的一组 $\kappa$ 基. 设 $M$ 为它们生成的子 $A$ 模, $N$ 为 $a^i$ 生成的子 $A$ 模, 则 $M=N+Nf(a)+\cdots Nf(a)^{e-1}$,
+  \[B=N+f(a)B=\cdots=M+f(a)^eB=M+\fp B,\]
+由中山引理, $B=M$, 即 $B=A[a]$.
+\end{proof}
+
+\begin{definition}{高阶分歧群}{higher ramification group}
+设 $L/K$ 是有限伽罗瓦扩张, $v$ 是 $K$ 上规范化离散赋值, $w$ 为 $v$ 之上 $L$ 的一个规范化离散赋值.
+对于任意实数 $s\ge -1$, 定义 \nouns{$s$ 阶分歧群}{高阶分歧群}为
+  \[G_s=G_s(L/K)=\set{\sigma\in G\mid v_L(\sigma a-a)\ge s+1,\forall a\in B)}.\]
+\end{definition}
+
+容易知道 $G_{-1}=G, G_0=I_w$ 为惯性群, $G_1=R_w$ 为分歧群.
+由于
+  \[v_L(\tau^{-1}\sigma \tau a-a)=v_L(\sigma \tau a-\tau a),\]
+且 $\tau B=B$, 因此这些分歧群都是 $G$ 的正规子群, 它们形成一个正规子群的下降链
+  \[G=G_{-1}\supseteq G_0\supseteq G_1\supseteq G_2\supseteq \cdots.\]
+
+\begin{proposition}{}{}
+设 $\Pi$ 是 $B$ 的一个素元. 对于任意整数 $s\ge 0$,
+  \[\fct{G_s/G_{s+1}}{U_L^{(s)}/U_L^{(s+1)}}{\sigma}{\frac{\sigma \Pi}{\Pi}}\]
+是不依赖于 $\Pi$ 的选取的单同态.
+\end{proposition}
+
+\begin{exercise}
+证明该命题.
+\end{exercise}
+
+注意到 $s\ge 1$ 时, $U^{(0)}/U^{(1)}\cong \kappa_L^\times, U^{(s)}/U^{(s+1)}\cong \kappa_L$, 因此 $G_s/G_{s+1}$ 是 $p$ 群, $G_0/G_1$ 阶与 $p$ 互素. 这我们在上一节已经知道, $R_w$ 是 $I_w$ 的希洛夫 $p$ 子群.
+
+\begin{proposition}{}{}
+设 $K'$ 是 $L/K$ 的中间域, 则
+  \[G_s(L/K')=G_s(L/K)\cap G(L/K').\]
+\end{proposition}
+
+\begin{exercise}
+证明该命题.
+\end{exercise}
+
+而 $L/K$ 的分歧群和它的伽罗瓦子扩张 $L'/K$ 的分歧群的联系更为复杂. 通过商映射 $G(L/K)\to G(L'/K)$, $L/K$ 的分歧群确实映为 $L'/K$ 的分歧群, 但是指标发生了改变.
+
+我们记
+  \[i_{L/K}(\sigma)=v_L(\sigma a-a)=\min{v_L(\sigma b-b\mid b\in B)},\]
+则
+  \[G_s(L/K)=\set{\sigma\in G\mid i_{L/K}(\sigma)\ge s+1}.\]
+
+\begin{proposition}{}{average_ram}
+设 $e=e(L/L')$ 为伽罗瓦子扩张 $L/L'$ 的分歧指数, 则
+  \[i_{L'/K}(\sigma')=\frac{1}{e'}\sum_{\sigma|_{L'}=\sigma'} i_{L/K}(\sigma).\]
+\end{proposition}
+\begin{proof}
+$\sigma'=1$ 时两边均为无穷. 设 $\sigma'\neq 1$, $B'$ 为 $w|_{L'}$ 的赋值环. 存在 $b\in B'$ 使得 $B'=A[b]$. 我们有
+  \[e' i_{L'/K}(\sigma')=v_L(\sigma' b-b).\]
+固定一个 $\sigma\in G$ 使得 $\sigma|_{L'}=\sigma'$, 则所有限制在 $L'$ 上为 $\sigma'$ 的元素为 $\sigma\tau,\tau\in H=G(L/L')$. 我们只需证 $u=\sigma b-b$ 和 $v=\prod_{\tau\in H}(\sigma\tau a-a)$ 的赋值相同.
+
+设 $f(x)\in B'[x]$ 是 $a$ 的极小多项式, 则 $f(x)=\prod_{\tau\in H}(x-\tau a)$, $\sigma f(x)=\prod_{\tau\in G}(x-\sigma\tau a)$, 这里 $\sigma$ 作用在系数上. 显然 $\sigma f-f$ 的系数被 $u=\sigma b-b$ 整除, 因此 $u$ 整除 $(\sigma f-f)(a)=\pm v$.
+
+反之, 存在多项式 $g(x)\in A[x]$ 使得 $b=g(a)$. 于是
+  \[g(x)-b=f(x)h(x),\quad h(x)\in B'[x].\]
+令 $\sigma$ 作用在两边系数上, 并取 $x=a$, 我们得到
+  \[u=\sigma b-b=(\sigma f)(a) (\sigma h)(a)=\pm v \cdot(\sigma h)(a).\]
+因此 $v\mid u$.
+\end{proof}
+
+我们将证明 $G_s(L/K)$ 的像为 $G_t(L'/K)$, 其中
+  \[t=\eta_{L/K}(s)=\int_0^s \frac{\diff x}{(G_0:G_x)}.\]
+这里 $-1<s\le 0$ 时, $(G_0:G_s)=(G_{-s}:G_0)^{-1}=1$. 显然这是一个连续的分段线性函数, 其中 $0\le m\le s\le m+1$ 时, 
+  \[\eta_{L/K}(s)=\frac{1}{g_0}(g_1+g_2+\cdots+g_m+(s-m)g_{m+1}),\quad g_i=\# G_i.\]
+
+\begin{proposition}{}{eta_formula}
+证明
+  \[\eta_{L/K}(s)=\frac{1}{g_0}\sum_{\sigma \in G}\min\set{i_{L/K}(\sigma),s+1}-1.\]
+\end{proposition}
+\begin{proof}
+设右端为 $\theta(s)$, 显然它也是连续的分段线性函数. 我们有 $\theta(0)=\eta_{L/K}(0)=0$. 如果 $-1\le m<s<m+1$,
+  \[\theta'(s)=\frac{1}{g_0}\#\set{\sigma \in G\mid i_{L/K}(\sigma)\ge m+2}=\frac{1}{(G_0:G_{m+1})}=\eta_{L/K}'(s).\]
+因此二者相等.
+\end{proof}
+
+\begin{theorem}{埃尔布朗定理}{}
+设 $L'/K$ 是 $L/K$ 的伽罗瓦子扩张, $H=G(L/L')$. 我们有
+  \[G_s(L/K)H/H=G_t(L'/K),\]
+其中 $t=\eta_{L/L'}(s)$.
+\end{theorem}
+\begin{proof}
+设 $G=G(L/K), G'=G(L'/K)$.  对于任意 $\sigma'\in G'$, 设 $\sigma \in G$ 是它的一个原像, 其具有最大的 $i_{L/K}(\sigma)$. 那么我们只需要说明
+  \[i_{L'/K}(\sigma')-1=\eta_{L/L'}(i_{L/K}(\sigma)-1).\]
+这是因为, $\sigma'\in G_s H/H\iff i_{L/K}(\sigma)-1\ge s\iff i_{L'/K}(\sigma')-1\ge \eta_{L/L'}(s)\iff \sigma'\in G_t'$. 
+
+设 $m=i_{L/K}(\sigma)$. 如果 $\tau\in H$ 属于 $H_{m-1}=G_{m-1}(L/L')$, 则 $i_{L/K}(\tau)\ge m$, $i_{L/K}(\sigma\tau)=m$. 如果 $\tau\notin H_{m-1}$, 则 $i_{L/K}(\tau)<m, i_{L/K}(\sigma\tau)=i_{L/K}(\tau)$. 因此 $i_{L/K}(\sigma \tau)=\min\set{i_{L/K}(\tau),m}$.  于是由命题~\ref{pro:average_ram}~知
+  \[i_{L'/K}(\sigma')=\frac{1}{e'}\sum_{\tau \in H}\set{i_{L/K}(\tau),m}.\]
+由命题~\ref{pro:eta_formula}~知我们所需的关系式成立, $e'=\#G_0(L/L')$.
+\end{proof}
+
+我们记 $\eta_{L/K}$ 的逆为 $\psi_{L/K}$, 并定义
+  \[G^t(L/K):=G_{\psi_{L/K}(t)}(L/K).\]
+\begin{proposition}{}{}
+记号同上, $\eta_{L/K}=\eta_{L'/K}\circ \eta_{L/L'},\psi_{L/K}=\psi_{L/L'}\circ \psi_{L'/K}$. 因此 $G^t(L/K)H/H=G^t(L'/K)$.
+\end{proposition}
+\begin{proof}
+我们有 $e=e_{L'/K} e'$. 由于 $G_s/H_s=(G/H)_t, t=\eta_{L/L'}(s)$, 我们有
+  \[\frac{1}{e}\# G_s=\frac{1}{e_{L'/K}}\#(G/H)_t\frac{1}{e'}\#H_s,\]
+此即
+  \[\eta_{L/K}'(s)=\eta'_{L'/K}(t)\eta_{L/L'}'(s)=(\eta_{L'/K}\circ\eta_{L/L'})'(s).\]
+又因为它们均经过原点, 因此二者相等.
+\end{proof}
+
+\subsection{共轭差积和判别式}\label{ssec:different_and_discriminant}
+设 $B/A$ 是戴德金整环的有限扩张, 且 $L=\Fr B$ 是 $K=\Fr A$ 的可分扩张. 我们假设 $B/A$ 的每个剩余域上的扩张都是可分的.
+
+\begin{definition}{共轭差积}{different}
+称分式理想
+  \[\fD_{B/A}^{-1}=\set{x\in L\mid \Tr(xB)\subseteq A}\]
+的逆为 $B/A$ 的\noun{共轭差积}.
+\end{definition}
+
+\begin{exercise}
+设 $S$ 是 $A$ 的乘法集, 则 $\fD_{S^{-1}B/S^{-1}A}=S^{-1}\fD_{B/A}$.
+\end{exercise}
+
+\begin{proposition}{}{disc_exten}
+(1) 设 $A\subseteq B\subseteq C$ 是戴德金环的有限扩张塔, 则 $\fD_{C/A}=\fD_{C/B}\fD_{B/A}$.
+
+(2) 如果 $\fP$ 是 $B$ 的素理想, $\fp=\fP\cap A$, 则 $\fD_{B/A}\CO_\fP=\fD_{B_\fP/A_\fp}$.
+\end{proposition}
+\begin{proof}
+(1) 由于
+  \[\Tr_{C/A}(\fD_{C/B}^{-1}\fD_{B/A}^{-1}C)\subseteq A,\]
+因此 $\fD_{C/B}^{-1}\fD_{B/A}^{-1}\subseteq \fD_{C/A}^{-1}$, 即 $\fD_{C/B}\fD_{B/A}\supseteq \fD_{C/A}$.
+由于
+  \[A\supseteq \Tr_{C/A}(\fD_{C/A}^{-1} C)=\Tr_{B/A}(\Tr_{C/B}(\fD_{C/A}^{-1} C)B),\]
+因此 $\Tr_{C/B}(\fD_{C/A}^{-1} C)\subseteq \fD^{-1}_{B/A}$,
+  \[\Tr_{C/B}(\fD_{B/A} \fD_{C/A}^{-1} C)\subseteq\fD_{B/A} \Tr_{C/B}(\fD_{C/A}^{-1} C)\subseteq B,\]
+所以 $\fD_{B/A} \fD_{C/A}^{-1}\subseteq \fD_{C/B}^{-1}$, 即 $\fD_{C/B}\fD_{B/A}\subseteq \fD_{C/A}$.
+
+(2) 不妨设 $A$ 是离散赋值环. 根据推论~\ref{cor:local_global_norm},
+  \[\Tr_{L/K}=\sum_{\fP\mid\fp} \Tr_{L_\fP/K_\fp}.\]
+由命题~\ref{pro:approximation_theorem}, 存在 $\eta\in L$ 在 $|\cdot|_\fP$ 下接近 $y\in B_\fP$, 在其它 $|\cdot|_{\fP'},\fP'\mid \fp,\fP'\neq\fP$ 下接近 $0$. 对于 $x\in\fD^{-1}_{B/A}$,
+  \[\Tr_{L/K}(x\eta)=\Tr_{L_\fP/K_\fp}(x\eta)+\sum_{\fP'\neq\fP}\Tr_{L_{\fP'}/K_\fp}(x\eta)\in A_\fp.\]
+而 $\Tr_{L_{\fP'}/K_\fp}(x\eta)$ 接近 $0$, 因此也属于 $A_\fp$, 所以 $\Tr_{L_{\fP}/K_\fp}(x y)\in A_\fp$. 故 $\fD^{-1}_{B/A}\subseteq \fD^{-1}_{B_\fP/A_\fp}.$
+
+通过同样的证明方法, 如果 $x\in\fD_{B_\fP/A_\fp}$, $\xi\in L$ 在 $|\cdot|_\fP$ 下接近 $x$, 在其它 $|\cdot|_{\fP'}$ 下接近 $0$, 则 $\xi\in \fD_{B/A}$. 因此 $\fD^{-1}_{B/A}$ 在 $\fD^{-1}_{B_\fP/A_\fp}$ 中稠密, 换言之 $\fD^{-1}_{B/A}B_\fP=\fD^{-1}_{B_\fP/A_\fp}$.
+\end{proof}
+
+\begin{definition}{元素的共轭差积}{different of an element}
+设 $f(X)\in A[X]$ 是 $\alpha\in B$ 的极小多项式. 定义 $\alpha$ 的\noun{共轭差积}为
+  \[\delta_{B/A}(\alpha)=\begin{cases}
+f'(\alpha),\quad &L=K(\alpha),\\
+0,& L\neq K(\alpha).
+\end{cases}\]
+\end{definition}
+
+\begin{theorem}{}{}
+如果 $B=A[\alpha]$, 则 $\fD_{B/A}=\bigl(\delta_{B/A}(\alpha)\bigr)$. 一般地, $\fD_{B/A}$ 为所有 $\delta_{B/A}(\alpha)$ 生成的理想.
+\end{theorem}
+\begin{proof}
+设 $B=A[\alpha]$.
+设 $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\in A[x]$ 是 $\alpha$ 的极小多项式, $\alpha_i$ 是 $\alpha$ 的所有共轭根. 容易证明如下恒等式
+  \[\frac{1}{f(x)}=\sum_{i=1}^n \frac{1}{f'(\alpha_k)(x-\alpha_k).}\]
+两边关于 $\frac{1}{x}$ 做幂级数展开, 我们得到其第 $k\le n$ 项系数为
+  \[0=\sum_{i=1}^n \alpha_i^k/f'(\alpha_i)=\Tr\bigl(\alpha^k/f'(\alpha)\bigr),\]
+除了常数项为 $0$. 特别地, $a_{ij}=\Tr\bigl(\alpha^{i+j}/f'(\alpha)\bigr),0\le i,j\le n-1$ 形成的矩阵为三角阵, 因此它的行列式为 $\pm 1$, $x^j/f'(x)$ 形成 $\fD_{B/A}^{-1}$ 的一组基, $\fD_{B/A}=\bigl(f'(\alpha)\bigr)$.
+
+一般情形下, 设 $L=K(\alpha),\alpha\in B$. 考虑 $A[\alpha]$ 的导子
+  \[\ff=\ff_{A[\alpha]}=\set{x\in L\mid x B\subseteq A[\alpha]}.\]
+对于 $b=f'(\alpha)$, $x\in L$,
+  \[\begin{split}
+    x\in\ff&\iff xB\subseteq A[\alpha] \iff b^{-1}xB\subseteq b^{-1} A[\alpha] \iff \Tr(b^{-1}xB)\subseteq A\\
+           &\iff b^{-1}x\in\fD_{B/A}^{-1}\iff x\in b\fD_{B/A}^{-1}.
+  \end{split}\]
+因此 $\bigl(f'(\alpha)\bigr)=\ff \fD_{B/A},f'(\alpha)\in\fD_{B/A}$.
+
+要证明 $\fD_{B/A}$ 是所有 $\delta(\alpha)$ 的最大公因子, 我们只需要对任意 $\fP$ 证明存在 $\alpha$ 使得 $v_\fP(\fD_{B/A})=v_{\fP}\bigl(f'(\alpha)\bigr)$ 即可. 设 $L_\fP,K_\fp$ 为相应的完备化, $\CO_\fP,\CO_\fp$ 为其赋值环. 我们知道存在 $a$, $\CO_\fP=\CO_\fp[a]$, 而且 $a$ 可以替换为任意一个和 $a$ 足够接近的元素 $b$. 因此
+  \[v_\fP(\fD_{B/A})=v_\fP(\fD_{\CO_\fP/\CO_\fp})=v_\fP\bigl(\delta_{\CO_\fP/\CO_\fp}(b)\bigr).\]
+所以我们只需要构造 $b\in B$ 且 $L=K(b)$, $v_\fP\bigl(\delta_{\CO_\fP/\CO_\fp}(b)\bigr)=v_\fP\bigl(\delta_{B/A}(b)\bigr)$. 
+设 $\sigma_i:L\to \ov K_\fp$ 给出所有 $\fp$ 之上素位 $\fP=\fP_1,\dots,\fP_r$. 设 $\alpha=0$ 或 $1$ 满足
+  \[|\tau a-\alpha|=1,\quad\forall \tau\in G(\ov K_\fp/K_\fp).\]
+由中国剩余定理, 存在 $b\in B$ 使得 $|b-a|,|\sigma_i b-\alpha|$ 都充分小. 我们不妨设 $L=K(b)$, 若不然, 由克拉斯纳引理~\ref{lem:krasner}, $L=K(b+\pi^n \gamma),L=K(\gamma), n$ 充分大即可. 又因为 $\CO_\fP=\CO_\fp[b]$, 则
+  \[\delta_{L_\fP/K_\fp}(b)=\prod_{1\neq\tau\in \Hom_{K_\fp}(L_\fP,\ov K_\fp)}(b-\tau b),\]
+  \[\delta_{B/A}(b)=\prod_{1\neq \sigma\in \Hom_K(L,\ov K)}(b-\sigma b)=\prod_{1\neq \tau}(b-\tau b)\prod_{i=2}^r \prod_j (b-\tau_{ij}\sigma_i b).\]
+而 $|b-\tau_{ij}\sigma_i b|=|\tau_{ij}^{-1} b-\alpha+\alpha-\sigma_i b|=1$. 因此二者赋值相同.
+\end{proof}
+
+下述定理表明, 在域扩张 $L/K$ 中, 共轭差积刻画了 $L$ 的各个素位的分歧程度. 
+\begin{theorem}{}{}
+$L$ 的素理想 $\fP$ 在 $K$ 上分歧当且仅当 $\fP\mid \fD_{L/K}$. 设 $s=v_\fP(\fD_{L/K})$, 则 $\fP$ 温分歧时 $s=e-1$, 野分歧时 $e\le s\le e-1+v_\fP(e).$
+\end{theorem}
+\begin{proof}
+不妨设 $A$ 为完备离散赋值环, 极大理想为 $\fp$, 则 $B=A[a]$, $v_\fP\bigl(f'(a)\bigr)=s$. 如果 $L/K$ 非分歧, 则 $\ov a=a\mod\fP$ 是 $\ov f=f\mod\fp$ 的单根, 因此 $f'(\alpha)\in A^\times$, $s=0=e-1$.
+
+根据命题~\ref{pro:disc_exten}, 我们只需考虑 $L/K$ 完全分歧的情形. 此时 $a$ 可以取为 $B$ 的素元. 此时
+  \[f(x)=c_ex^e+c_{e-1}x^{e-1}+\cdots+c_1x+c_0,\quad c_e=1\]
+是艾森斯坦多项式,
+  \[f'(x)=ex^{e-1}+(e-1)c_{e-1}x^{e-2}+\cdots+2c_2x+c_1.\]
+对于 $1\le i\le e$,
+  \[v_\fP(i c_i a^{i-1})\equiv i-1 \mod e.\]
+因此
+  \[s=v_\fP\bigl(f'(a)\bigr)=\min_{0\le i\le e}v_\fP(i c_i a^{i-1}).\]
+如果 $L/K$ 温分歧, $s=v_\fP(ec_e a^{e-1})=e-1$. 如果 $L/K$ 野分歧, $e\le s\le v_\fP(e)+e-1$.
+\end{proof}
+
+共轭差积和微分的联系十分密切. 设 $B/A$ 是交换环的扩张, 定义
+  \[\Omega^1_{B/A}=\frac{\pair{\diff b\mid b\in B}}{\set{\diff(xy)-y\diff x-x\diff y,\diff a=0,\forall a\in A}}\]
+为所有 $\diff b,b\in B$ 生成的 $B$ 模, 且满足莱布尼茨法则以及在 $A$ 上为 $0$. 我们称之为 $B/A$ 的\noun{微分模}, 其中的元素被称为\noun{微分}. 称
+  \[\diff: B\to \Omega^1_{B/A}\]
+为 $B/A$ 的\noun{导数}.
+
+\begin{exercise}
+设 $k$ 是一个域, 计算 $\Omega^1_{A/k}$, 其中 $A=k[x,y], k[x]/(x^2+1)$, $k[x,y]/(xy-1)$, $k(x).$
+\end{exercise}
+
+\begin{exercise}\label{exe:differential_module_compatible_localization}
+证明对于任意交换的 $A$ 代数 $A'$, $\Omega^1_{B\otimes_A A'/A'}=\Omega^1_{B/A}\otimes_A A'$. 因此微分模和局部化和完备化相匹配.
+\end{exercise}
+
+\begin{proposition}{}{}
+$\fD_{B/A}$ 是 $B$ 模 $\Omega_{B/A}^1$ 的零化子, 即
+  \[\fD_{B/A}=\set{x\in B\mid x\diff y=0,\forall y\in B}.\]
+\end{proposition}
+\begin{proof}
+由习题~\ref{exe:differential_module_compatible_localization}, 我们只需考虑 $A$ 是完备离散赋值环的情形. 由于 $B/A$ 的剩余域扩张 $\kappa_B/\kappa_A$ 是可分的, 存在 $\bar x\in \kappa_B,\kappa_B=\kappa_A(x)$. 设 $\bar f(X)\in\kappa_A[X]$ 是它的极小多项式, $f(X)\in A[X]$ 是它的一个提升. 任取 $\bar x$ 的一个提升, $v_L\bigl(f(x)\bigr)\ge 1$. 如果 $v_L(f(x))\ge 2,$ 由于 $\bar f'(\bar x)\neq 0$, $f'(x)\in B^\times$, $f(x+\pi_L)\equiv f(x)+f'(x)\pi^L\mod \pi_L^2$ 的赋值为 $1$. 因此我们总可以找到 $\bar x$ 的一个提升 $x$ 使得 $f(x)$ 是 $B$ 的一个素元. 因此 $\set{x^i f(x)^j}_{0\le i\le e-1,0\le j\le f-1}$ 构成 $B/A$ 的一组整基, $B=A[x]$. 设 $g(x)$ 是 $x$ 的零化多项式. 则 $\Omega_{B/A}=B\diff x$ 的零化子为 $\bigl(f'(x)\bigr)$.
+\end{proof}
+
+回忆判别式 $\fd_{B/A}$ 为 $\disc(\alpha_i)_i$ 生成的理想, 其中 $\alpha_1,\dots,\alpha_n\in B$. 如果 $A$ 是主理想整环, 判别式就是 $B$ 的一组 $A$ 基的判别式生成的理想, 但是不同的基的判别式并不一定相同. 特别地, $\fd_{\CO_K/\BZ}=(\Delta_K)$. 
+
+\begin{exercise}
+如果 $S\subset A$ 是一个乘法集, 则 $\fd_{S^{-1}B/S^{-1}A}=S^{-1}\fd_{B/A}$.
+\end{exercise}
+
+\begin{exercise}
+如果戴德金环 $R$ 只有有限多个素理想, 则 $R$ 是主理想整环.
+\end{exercise}
+
+\begin{theorem}{}{}
+$\fd_{B/A}=\bfN_{L/K}(\fD_{B/A}).$
+\end{theorem}
+\begin{proof}
+由于 $\fd_{S^{-1}B/S^{-1}A}=S^{-1}\fd_{B/A}$, $\fD_{S^{-1}B/S^{-1}A}=S^{-1}\fD_{B/A}$, 通过考虑 $S^{-1}B/S^{-1}A$, 我们可以不妨设 $A$ 是离散赋值环, 从而 $A$ 是主理想整环. 此时 $B$ 只有有限多个素理想, 从而 $B$ 也是主理想整环. 由注记~\ref{rem:integral_closure_over_pid_admits_basis}, $B$ 是有限生成自由 $A$ 模, 从而存在一组基 $\alpha_1,\dots,\alpha_n$, $\fd_{B/A}=\bigl(\disc(\alpha_i)_i\bigr)$. 我们知道 $\fD^{-1}_{B/A}$ 作为 $A$ 模由 $\alpha_1,\dots,\alpha_n$ 的对偶基 $\alpha_1^\vee,\dots,\alpha_n^\vee$ 生成. 设 $\fD^{-1}_{B/A}$ 
+ 作为理想由 $\beta$ 生成, 则 $\beta\alpha_1,\dots,\beta\alpha_n$ 也是它作为 $A$ 模的一组生成元, 因此
+  \[\bigl(\disc(\alpha_i^\vee)_i\bigr)=\bfN_{L/K}(\beta)^2\bigl(\disc(\alpha_i)_i\bigr).\]
+由于 $\disc(\alpha_i)_i=\det\bigl((\sigma_i\alpha_j)_{ij}\bigr)^2$, 因此 $(\alpha_i)$ 和 $(\alpha_i^\vee)$ 的判别式互逆, 从而
+  \[\fd_{B/A}=\bigl(\disc(\alpha_i)_i\bigr)=\bigl(\bfN_{L/K}(\beta)\bigr)^{-1}=\bfN_{L/K}(\fD_{B/A}).\]
+\end{proof}
+
+\begin{corollary}{}{}
+对于戴德金环的扩张塔 $A\subseteq B\subseteq C$, 设 $K\subseteq L\subseteq M$ 为对应的域扩张, 则
+  \[\fd_{C/A}=\fd_{B/A}^{[M:L]} \bfN_{L/K}(\fd_{C/B}).\]
+\end{corollary}
+\begin{corollary}{}{}
+$\fd=\prod_\fp \fd_{\fp}.$
+\end{corollary}
+
+由此可以看出, 在域扩张 $L/K$ 中, 判别式刻画了 $K$ 的各个素位的分歧程度. 特别地, 如果 $\fd=1$, 则 $L/K$ 处处非分歧.
+
+\begin{exercise}
+(1) 证明 $f(x)=x^3+x^2-2x+8\in\BQ[x]$ 是不可约多项式. 令 $\theta$ 是它的一个根, $K=\BQ(\theta)$.
+
+(2)证明 $2$ 在 $K$ 中完全分解.
+
+(3) 对每个 $\alpha\in\CO_K$, $\set{1,\alpha,\alpha^2}$ 的判别式是偶数, 因此它不可能是一组整基.
+\end{exercise}
+
+\begin{theorem}{}{}
+设 $K$ 是一个数域, $S$ 是它的素位的一个有限集, 则只有有限多 $n$ 次扩张 $L/K$ 在 $S$ 外不分歧.
+\end{theorem}
+\begin{proof}
+如果 $L/K$ 是 $n$ 次扩张且在 $S$ 外不分歧, 则 $\fd_{L/K}$ 整除一个固定的整理想.
+因此我们只需证明具有这样的判别式的 $n$ 次扩张 $L/K$ 只有有限多个. 由于此时 $L/\BQ$ 是一个 $n[K:\BQ]$ 次扩张, 且 $\fd_{L/\BQ}=\fd_{K/\BQ}^n \bfN_{K/\BQ}(\fd_{L/K})$, 因此我们只需要对 $K=\BQ$ 情形证明即可. 最后 $L(\sqrt{-1})\neq L$ 时, $L(\sqrt{-1})/\BQ$ 的判别式和 $L/\BQ$ 的判别式的平方差 $\bfN_{L/\BQ}(\fd_{L(\sqrt{-1})/L})$. 注意到 $\CO_L+\CO_L\sqrt{-1}\subseteq \CO_{L(\sqrt{-1})}$, 因此 $\fd_{L(\sqrt{-1})/L}\mid 4$ 有界. 所以我们只需证明给定判别式的 $n$ 次含 $\sqrt{-1}$ 的数域 $K$ 只有有限多个. 这样的数域只有复嵌入, 任选一个 $\tau_0:K\inj \BC$. 考虑闵可夫斯基空间 $K_\BR=K_\BC^{F=\id}$ 中一个对称凸集
+  \[X=\set{(z_\tau)\in K_\BR: |\Im(z_{\tau_0}|<C\sqrt{|\Delta_K|}, |\Re(z_{\tau_0})|<1,|z_\tau|<1,\tau\neq \tau_0,\ov\tau_0}.\]
+我们取充分大的 $C$ (只依赖于 $n$) 使得 $\vol(X)>2^n\sqrt{|\Delta_K|}=2^n\covol(\CO_K)$, 则存在非零 $\alpha\in\CO_L$ 使得 $ja=(\tau\alpha)\in X$. 由于 $|\bfN_{K/\BQ}(\alpha)|\ge 1, |\tau_0\alpha|>1, \Im(\tau_0\alpha)\neq 0$, 因此 $\tau_0\alpha\neq \ov\tau_0\alpha$. 又因为 $\tau_0 \alpha\neq\tau \alpha$, $\tau\neq\tau_0$, 因此 $K=\BQ(\alpha)$, 否则存在 $\tau'|_{\BQ(\alpha)}=\tau|_{\BQ(\alpha)}$, 这导致 $\tau'\alpha=\tau\alpha$.
+
+由于 $\Delta_K$ 和 $n$ 固定时, $\tau\alpha$ 是有界的, 因此 $\alpha$ 的极小多项式的系数也都是有界的, 从而只有有限多这样的 $\alpha$, 于是只有有限多这样的 $K$.
+\end{proof}
+
+
+由习题~\ref{exe:disc_not_pm1}可知:
+\begin{theorem}{}{}
+$\BQ$ 的非分歧扩张只有它自身.
+\end{theorem}
+
+对于这些命题, 我们有着高维的推广. 设 $X/K$ 是数域上的一条完备光滑代数曲线, 即射影空间中光滑的多项式给出的曲线. 那么在每个素位, 相应的约化曲线如果仍然光滑, 我们称之为好约化. $\BQ$ 的非分歧扩张只有它自身也有着相应的高维推广: 方丹证明了 $\BQ$ 上没有处处都是好约化的完备光滑代数曲线, 见 \cite{Fontaine1985}.
+
+在素位有限集 $S$ 外都是好约化的亏格为 $g$ 的 $K$ 上完备光滑代数曲线只有有限多条. 在此基础上法尔廷斯证明了任意 $K$ 上亏格 $g>1$ 的完备光滑代数曲线只有有限多个有理点. 前文中所说的二次曲线均是亏格 $0$ 的情形, 我们对其有理点已经有明确刻画. 最后剩下 $g=1$ 的, 即椭圆曲线, 其有理点形成一个有限生成交换群. 椭圆曲线的算术性质仍是目前数论前沿的主要研究对象之一. 
+
+

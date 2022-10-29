@@ -1,0 +1,438 @@
+\documentclass[simple]{hfutexam}
+\newcommand{\diff}{\,\mathrm{d}}
+\let\Re\relax
+\DeclareMathOperator\Re{Re}
+\let\Im\relax
+\DeclareMathOperator\Im{Im}
+\DeclareMathOperator\Res{Res}
+\DeclareMathOperator\Arccos{Arccos}
+\usepackage{mathrsfs}
+\newcommand\msl{\mathscr{L}}
+\newcommand\BC{\mathbb{C}}
+\newcommand\BR{\mathbb{R}}
+\newcommand\BZ{\mathbb{Z}}
+\newcommand\BQ{\mathbb{Q}}
+\newcommand\BH{\mathbb{H}}
+\newcommand\ov[1]{\overline{#1}}
+\newcommand\ra{\rightarrow}
+
+\begin{document}
+
+\BiaoTi{中国科学技术大学随堂测验}
+\XueNian{2020}{2021}
+\XueQi{一}
+\KeChengDaiMa{001548}
+\KeChengMingCheng{复变函数B}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\maketitle
+
+
+\tigan{一、每题1分, 共11分.}
+\begin{enumerate}
+\item 计算 $(\sqrt{3}+i)^{114514}$.
+\item 计算 $(-4+4i)^{1/5}$.
+\item 请问 $\arg(z+1)=-\dfrac{\pi}2$ 的图像是什么? 
+\item 请问 $\Re\dfrac{1}{z}=\dfrac{1}{1919}$ 的图像是什么?
+\item 请问 $\arg\dfrac{z-1}{z+1}=\dfrac{\pi}{3}$ 的图像是什么?
+\item 将 $x^2+6x+y^2-18y=810$ 化为复数形式.
+\item $x^2-y^2=4$ 在 $w=z^2$ 下的像是什么?
+\item $\arg z$ 是连续函数吗?
+\item 证明: $f(z)=z{\ov z}^{-1}-\ov zz^{-1}$ 在 $z\ra 0$ 时极限不存在.
+\item 求出 $\dfrac{1}{\sin z-2}$ 的解析区域.
+\item 证明: 若整函数(在整个复平面解析) $f$ 将实轴和虚轴均映为实数, 则 $f'(0)=0$.
+\end{enumerate}
+
+\tigan{二、每题2分, 共4分.}
+\begin{enumerate}
+\item 证明: 如果 $z_1+z_2+z_3=0$ 且 $|z_1|=|z_2|=|z_3|=1$, 则 $z_1,z_2,z_3$ 构成一个正三角形, 且单位圆(圆心为 $0$, 半径为 $1$ 的圆)是它的外接圆.
+\item 证明: 设 $|a|<1$. 证明 $|z|=1$ 当且仅当 $|z-a|=|1-\ov az|$.
+\end{enumerate}
+
+\tigan{三、每题3分, 共9分.}
+
+\begin{enumerate}
+\item 验证 $e^x(x\cos y-y\sin y)+i e^x(y\cos y+x\sin y)$ 在全平面解析, 并求出其导数. 它在无穷远解析吗? 为何?
+\item 求下列全纯函数在 $\{z:|z|<1\}$ 中的零点个数：
+\begin{enumerate}
+\item[(1)] $z^9-2z^6+z^2-8z-2$;
+\item[(2)] $2z^5-z^3+3z^2-z+8$;
+\item[(3)] $e^z-4z^n+1$.
+\end{enumerate}
+\item 设 $4$ 维实向量空间 $\BH=\{z+wj\mid z,w\in\BC\}$ 上的乘法运算为
+  \[(z_1+w_1j)(z_2+w_2j)=(z_1z_2-w_1\ov w_2)+(z_1w_2+w_1\ov z_2)j,\]
+定义 $\tau(z+wj)=\ov z-wj$.
+证明
+\begin{enumerate}
+\item[(1)] 对于任意 $\alpha,\beta\in\BH$, $\tau(\alpha \beta)=\tau(\alpha)\tau(\beta)$.
+\item[(2)] 对于任意 $\alpha\in\BH$, $\tau(\tau(\alpha))=\alpha$ 且 $\alpha\tau(\alpha)$ 是非负实数. $\alpha\tau(\alpha)=0$ 当且仅当 $\alpha=0$. 
+\item[(3)] 对于任意非零 $\alpha\in\BH$, 存在 $\beta\in\BH$ 使得 $\alpha\beta=\beta\alpha=1$. 
+\end{enumerate}
+\end{enumerate}
+
+
+\tigan{四、每题4分, 共36分.}
+\begin{enumerate}
+\item 计算积分 $\displaystyle\int_\gamma\dfrac{3z-2}{z}\diff z$, 其中 $\gamma$ 为圆周 $\{z: |z|=2\}$ 的上半圆, 从 $-2$ 到 $2$.
+\item 求 $\dfrac{1}{1-z-z^2}$ 在 $z=0$ 处的泰勒展开 $\displaystyle\sum_{n=0}^\infty a_nz^n$. 由此求得斐波那契数列
+  \[F_0=F_1=1,\quad F_{n+2}=F_{n+1}+F_n\]
+的通项公式.
+\item 函数 $\sin\dfrac{1}{1-z}$ 有哪些奇点(包括 $\infty$)? 并求其在 $1$ 处的洛朗展开.
+\item 计算 $\dfrac{e^z}{z(z-1)}$ 在其所有奇点处的留数.
+\item 证明如果 $f$ 在复平面解析且有界, 则对任意 $a\in\BC$, 有
+  $\displaystyle\int_{|z|=R}\frac{f(z)}{(z-a)^2}\diff z=0$,
+其中 $R>|a|$.
+由此证明 $f$ 是常数.
+\item 证明 $\displaystyle\int_0^{2\pi}\cos^{2n}\theta\diff \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\pi$.
+\item 利用拉普拉斯变换解微分方程
+$\begin{cases}
+	y''(t)-y'(t)=e^t,&\\
+	y(0)=y'(0)=0.&
+\end{cases}$
+\item 计算 $\displaystyle\int_{|z|=2}\frac{\diff z}{z^3(z-1)^3(z-3)^5}$.
+\item 计算 $\displaystyle\int_0^{+\infty}\frac{x^2+1}{x^4+1}\diff x$.
+\end{enumerate}
+
+\newpage
+
+\BiaoTi{中国科学技术大学试卷（A）}
+\XueNian{2020}{2021}
+\XueQi{一}
+\KeChengDaiMa{001548}
+\KeChengMingCheng{复变函数B}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\KaoShiRiQi{2020年12月13日8:30-10:30}
+\maketitle
+
+
+\tigan{一、计算题 (每题5分, 共10分)}
+\begin{enumerate}
+\item 计算 $(2020+i)(2-i)$.
+\item 计算 $\Arccos 2$.
+\end{enumerate}
+
+\tigan{二、计算题 (每题6分, 共30分), 所有路径均为逆时针.}
+\begin{enumerate}
+\item $\displaystyle\int_C(e^z+3z^2+1)\diff z$, $C:|z|=2,\Re z>0$.
+\item $\displaystyle\int_C\dfrac{\diff z}{z(z-1)^2(z-5)}$, $C:|z|=3$.
+\item $\displaystyle\int_C\dfrac{\diff z}{(\sin z)(z+6)(z-5)}$, $C:|z|=4$.
+\item $\displaystyle\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2+2x+5}\diff x$.
+\item $\displaystyle\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}$.
+\end{enumerate}
+
+\tigan{三、解答题 (每题10分, 共60分)}
+\begin{enumerate}
+\item 求 $\alpha$ 使得 $v(x,y)=\alpha x^2y-y^3+x+y$ 是调和函数, 并求虚部为 $v(x,y)$ 且满足 $f(0)=1$ 的解析函数 $f(z)$.
+\item 将 $f(z)=\dfrac{1}{z-2}+e^{-z}$ 在 $z=0$ 处展开为幂级数, 并指出其收敛半径.
+\item 将 $f(z)=\dfrac{1}{z^3+2z^2}$ 在 $1<|z+1|<+\infty$ 展开为洛朗级数.
+\item 求方程 $z^8+e^z+6z+1=0$ 在 $1<|z|<2$ 中根的个数, 并说明理由.
+\item 利用拉氏变换解微分方程 
+\[\begin{cases}
+y''+2y'+y=te^t&\\
+y(0)=y'(0)=0.&
+\end{cases}\]
+\item 设 $f$ 是域 $|z|>r>0$ 上的解析函数.
+证明: 如果对于 $|a|>R>r$,  $\displaystyle\lim_{z\to\infty} f(z)=f(a)$, 则积分
+  \[\int_{|z|=R} \frac{f(z)}{z-a}\diff z=0.\]
+\end{enumerate}
+
+\newpage
+\BiaoTi{中国科学技术大学试卷参考答案（A）}
+\XueNian{2020}{2021}
+\XueQi{一}
+\KeChengDaiMa{001548}
+\KeChengMingCheng{复变函数B}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\KaoShiRiQi{2020年12月13日8:30-10:30}
+\maketitle
+
+\tigan{一、计算题 (每题5分, 共10分)}
+
+\textbf{1. 【解】}
+\[(2020+i)(2-i)=4040+1+2i-2020i=4041-2018i.\]
+
+\textbf{2. 【解】}
+
+设 $\cos z=2$, 则
+\[\dfrac{e^{iz}+e^{-iz}}{2}=2,\quad e^{2iz}-4e^{iz}+1=0.\]
+于是
+\[e^{iz}=2\pm \sqrt{3},\quad iz=\ln(2\pm \sqrt{3})+2n\pi i,\]
+即 $z=2n\pi\pm \ln(2+\sqrt{3})i,n\in\mathbb{Z}$.
+
+\tigan{二、计算题 (每题6分, 共30分), 所有路径均为逆时针.}
+
+\textbf{1. 【解】}
+
+由于该函数解析, 因此
+  \[\int_C(e^z+3z^2+1)\diff z=(e^z+z^3+z)\big|_{-2i}^{2i}
+  =e^{2i}-e^{-2i}-12i=(2\sin 2-12)i.\]
+
+\textbf{2. 【解】}
+
+该函数 $f(z)$ 在 $|z|<3$ 中有 $1$ 阶极点 $0$ 和 $2$ 阶极点 $1$, 且
+\[\Res[f(z),0]=-\frac{1}{5},\quad \Res[f(z),1]=\left[\frac{1}{z(z-5)}\right]'\bigg|_{z=1}=\frac{5-2z}{z^2(z-5)^2}\bigg|_{z=1}=\frac{3}{16},\]
+因此
+\[\int_C\dfrac{\diff z}{z(z-1)^2(z-5)}=2\pi i\left(-\frac{1}{5}+\frac{3}{16}\right)=-\frac{\pi i}{40}.\]
+
+\textbf{3. 【解】}
+
+该函数 $f(z)$ 在 $|z|<4$ 中有 $1$ 阶极点 $0, \pi$ 且
+\[\Res[f(z),0]=-\frac{1}{30},\quad \Res[f(z),\pi]=\frac{1}{(\pi+6)(5-\pi)},\]
+因此
+\[\int_C\dfrac{\diff z}{(\sin z)(z+6)(z-5)}=2\pi i\left[-\frac{1}{30}+\frac{1}{(\pi+6)(5-\pi)}\right]=\frac{\pi^2(\pi+1)i}{15(\pi+6)(5-\pi)}.\]
+
+\textbf{4. 【解】}
+
+函数 $R(z)=\dfrac{1}{z^2+2z+3}$ 在上半平面有 $1$ 阶极点 $-1+2i$, 因此
+  \[\Res[R(z)e^{iz},-1+2i]=\frac{e^{-2-i}}{4i}=\frac{-\sin 1-i\cos 1}{4e^2},\]
+  \[\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2+2x+5}\diff x=\Re\left(\int_{-\infty}^{+\infty} \frac{e^{ix}}{x^2+2x+5}\diff x\right)=\Re\left(2\pi i\frac{-\sin 1-i\cos 1}{4e^2}\right)=\frac{\pi\cos1}{2e^2}.\]
+  
+\textbf{5. 【解】}
+
+\[\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}
+=\int_0^{\pi/2}\dfrac{\diff \theta}{(2-\cos 2\theta)^2}
+=\int_0^{\pi}\dfrac{\diff \theta}{2(2-\cos \theta)^2}
+=\int_0^{2\pi}\dfrac{\diff \theta}{4(2-\cos \theta)^2}.
+\]
+令 $z=e^{i\theta}$, 则
+\[\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}=\int_{|z|=1}\frac{z\diff z}{i(z^2-4z+1)^2}.\]
+设被积函数为 $f(z)$, 则 $f(z)$ 在 $|z|<1$ 上有 $2$ 阶极点 $2-\sqrt{3}$, 且
+\[\Res[f(z),2-\sqrt{3}]=\left[\frac{1}{i(z-2-\sqrt{3})^2}-\frac{2z}{i(z-2-\sqrt{3})^3}\right]\bigg|_{z=2-\sqrt{3}}=\frac{1}{6\sqrt{3}i}.\]
+从而
+\[\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}=2\pi i\cdot \frac{1}{6\sqrt{3}i}=\frac{\sqrt{3} \pi}{9}.\]
+
+\tigan{三、解答题 (每题10分, 共60分)}
+
+\textbf{1. 【解】}
+
+由 $v_{xx}+v_{yy}=0$ 可知 $2\alpha y-6y=0$, 因此 $\alpha=3$.
+设 $f=u+iv$, 则由柯西-黎曼方程,
+  \[\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}=3x^2-3y^2+1,\]
+因此 $u(x,y)=x^3-3xy^2+x+g(y)$.
+由于
+  \[\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x},\]
+即 $-6xy+g'(y)=-(6xy+1),\quad g(y)=-y+c$, 从而
+\begin{align*}
+u(x,y)&=x^3-3xy^2+x-y+c,\\
+f(z)&=x^3-3xy^2+x-y+c+i(3x^2y-y^3+x+y)
+  =z^3+(1+i)z+c.
+\end{align*}
+由于 $f(0)=1$, 因此 $c=1,f(z)=z^3+(1+i)z+1$.
+
+\textbf{2. 【解】}
+
+\[f(z)=-\frac{1}{2}\cdot\frac{1}{1-\frac z2}+e^{-z}
+=-\frac{1}{2}\sum_{n=0}^{+\infty} \left(\frac{z}{2}\right)^n+\sum_{m=0}^{+\infty} (-1)^m\frac{z^m}{m!}
+=\sum_{n=0}^{+\infty} \left[-2^{-n-1}+\frac{(-1)^n}{n!}\right]z^n,\]
+收敛半径为 $2$.
+
+\textbf{3. 【解】}
+
+设 $w=\dfrac1{z+1}$, 则 $0<|w|<1$,
+\begin{align*}
+\frac{1}{z^3+2z^2}&=\frac{w^3}{(1-w)^2(1+w)}=\frac{w^3}{2}\left[\frac{1}{1-w^2}+\frac{1}{(1-w)^2}\right]\\
+&=\frac{w^3}{2}\sum_{n=0}^{+\infty}\left[\frac{1+(-1)^n}{2}+n+1\right]w^n
+=\sum_{n=3}^{+\infty}\frac{2n-3-(-1)^n}{4}(z+1)^{-n}.
+\end{align*}
+
+\textbf{4. 【解】}
+
+由于在 $|z|=1$ 上
+\[|z^8+e^z+1|\le 1+e+1<6=|6z|,\]
+由罗歇定理, 该方程在 $|z|<1$ 中有 $1$ 个根. 由于在 $|z|=2$ 上
+\[|6z+e^z+1|\le 12+e^2+1<2^8=|z^8|,\]
+由罗歇定理, 该方程在 $|z|<2$ 中有 $8$ 个根.
+从而该方程在 $1<|z|<2$ 中有 $7$ 个根.
+
+\textbf{5. 【解】}
+
+设 $Y=\msl[y]$, 则
+\[p^2Y+2pY+Y=\frac{1}{(p-1)^2},\]
+\[Y=\frac{1}{(1+p)^2(1-p)^2}=\frac{1}{4}\left[\frac{1}{(p+1)^2}+\frac{1}{(p-1)^2}+\frac{1}{p+1}-\frac{1}{p-1}\right],\]
+\[y=\msl^{-1}[Y]=\frac{1}{4}(te^t+te^{-t}+e^{-t}-e^t).\]
+
+\textbf{6. 【证明】}
+
+设 $R'>|a|$, 则函数 $\dfrac{f(z)}{z-a}$ 在 $|z|>R'$ 上解析, 因此由多连通区域的柯西积分定理, 对任意 $R''>R'+|a|$,
+  \[\int_{|z|=R'} \frac{f(z)}{z-a}\diff z=\int_{|z-a|=R''} \frac{f(z)}{z-a}\diff z.\]
+由长大不等式
+  \[\left|\int_{|z-a|=R''} \frac{f(z)}{z-a}\diff z-2\pi if(a)\right|
+  =\left|\int_{|z-a|=R''} \frac{f(z)-f(a)}{z-a}\diff z\right|
+  \le 2\pi \max_{|z-a|=R''}|f(z)-f(a)|.  \]
+令 $R'\to+\infty$, 则 
+  \[\int_{|z|=R'} \frac{f(z)}{z-a}\diff z=\int_{|z-a|=R''} \frac{f(z)}{z-a}\diff z=2\pi if(a).\]
+
+设 $D$ 为区域 $R<|z|<R'$, $C$ 为其边界.
+由多连通区域的柯西积分定理
+\[\int_{|z|=R'} \frac{f(z)}{z-a}\diff z-\int_{|z|=R} \frac{f(z)}{z-a}\diff z=\int_C \frac{f(z)}{z-a}\diff z=2\pi if(a),\]
+因此
+  \[\int_{|z|=R} \frac{f(z)}{z-a}\diff z=0.\]
+
+\newpage
+\BiaoTi{中国科学技术大学试卷（B）}
+\XueNian{2020}{2021}
+\XueQi{一}
+\KeChengDaiMa{001548}
+\KeChengMingCheng{复变函数B}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\KaoShiRiQi{补考时间}
+\maketitle
+
+\tigan{一、计算题 (每题5分, 共10分)}
+\begin{enumerate}
+\item 计算 $\ln (-i)$.
+\item 计算 $(-64)^{1/4}$.
+\end{enumerate}
+
+\tigan{二、计算题 (每题6分, 共30分), 所有路径均为逆时针.}
+\begin{enumerate}
+\item $\displaystyle\int_C(e^{-z}-3z^2+1)\diff z, C:|z|=2,\Im z>0$.
+\item $\displaystyle\int_C\dfrac{\diff z}{z(z+1)^2(z-4)}, C:|z|=3$.
+\item $\displaystyle\int_C\dfrac{\diff z}{(\cos z)(z-6)}, C:|z|=3$.
+\item $\displaystyle\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2-2x+10}\diff x$.
+\item $\displaystyle\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\cos^2\theta)^2}$.
+\end{enumerate}
+
+\tigan{三、解答题 (每题10分, 共60分)}
+\begin{enumerate}
+\item 求 $\alpha$ 使得 $u(x,y)=x^3+\alpha xy^2+x-y$ 是调和函数, 并求实部为 $u(x,y)$ 且满足 $f(0)=i$ 的解析函数 $f(z)$.
+\item 将 $f(z)=\dfrac{1}{z-2}+e^{-z}$ 在 $z=1$ 处展开为幂级数, 并指出其收敛半径.
+\item 将 $f(z)=\dfrac{1}{z^3+2z^2}$ 在 $2<|z|<+\infty$ 展开为洛朗级数.
+\item 求方程 $z^3+\dfrac{1}{z}+4z+1=0$ 在 $1<|z|<3$ 中根的个数, 并说明理由.
+\item 利用拉氏变换解微分方程 
+\[\begin{cases}
+y''-2y'+y=te^{-t}&\\
+y(0)=y'(0)=0.&
+\end{cases}\]
+\item 设函数 $f$ 在整个复平面解析, 若 $f$ 将实轴和虚轴均映为实数, 则 $f$ 是偶函数.
+\end{enumerate}
+
+\newpage
+\BiaoTi{中国科学技术大学试卷参考答案（B）}
+\XueNian{2020}{2021}
+\XueQi{一}
+\KeChengDaiMa{001548}
+\KeChengMingCheng{复变函数B}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\KaoShiRiQi{补考时间}
+\maketitle
+
+\tigan{一、计算题 (每题5分, 共10分)}
+
+\textbf{1. 【解】}
+由于 $-i=\exp\left(-\dfrac{\pi}{2}i\right)$, 因此 $\ln(-i)=-\dfrac{\pi}{2}i$.
+
+\textbf{2. 【解】}
+
+由于 $-64=64e^{\pi i}$, 因此
+  \[(-64)^{1/4}=2\sqrt{2} \exp\left[\frac{(2n+1)\pi i}{4}\right],\quad n=0,1,2,3,\]
+即 $2+2i,2-2i,-2+2i,-2-2i$.
+
+\tigan{二、计算题 (每题6分, 共30分), 所有路径均为逆时针.}
+
+\textbf{1. 【解】}
+由于该函数解析, 因此
+  \[\int_C(e^z-3z^2+1)\diff z=(e^z-z^3+z)\big|_{2}^{-2}
+  =e^{-2}-e^2+12.\]
+
+\textbf{2. 【解】}
+
+该函数 $f(z)$ 在 $|z|<3$ 中有 $1$ 阶极点 $0$ 和 $2$ 阶极点 $-1$, 且
+\[\Res[f(z),0]=-\frac{1}{4},\quad
+\Res[f(z),-1]=\left[\frac{1}{z(z-4)}\right]'\bigg|_{z=-1}=\frac{4-2z}{z^2(z-4)^2}\bigg|_{z=-1}=\frac{6}{25},\]
+因此
+\[\int_C\dfrac{\diff z}{z(z+1)^2(z-4)}=2\pi i\left(-\frac{1}{4}+\frac{6}{25}\right)=-\frac{\pi i}{50}.\]
+
+\textbf{3. 【解】}
+
+该函数 $f(z)$ 在 $|z|<4$ 中有 $1$ 阶极点 $\pm\pi/2$ 且
+\[\Res[f(z),\frac\pi2]=-\frac{2}{\pi-12},\quad \Res[f(z),-\frac\pi2]=-\frac{2}{\pi+12},\]
+因此
+\[\int_C\dfrac{\diff z}{(\cos z)(z-6)}=2\pi i\left(-\frac{2}{\pi-12}-\frac{2}{\pi+12}\right)=\frac{8\pi^2i}{\pi^2-144}.\]
+
+\textbf{4. 【解】}
+
+函数 $R(z)=\dfrac{1}{z^2-2z+10}$ 在上半平面有 $1$ 阶极点 $1+3i$, 因此
+  \[\Res[R(z)e^{iz},1+3i]=\frac{e^{-3+i}}{6i}=\frac{\sin 1-i\cos 1}{6e^3},\]
+  \[\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2-2x+10}\diff x=\Re \left[\int_{-\infty}^{+\infty} \frac{e^{ix}}{x^2-2x+10}\diff x\right]=\Re \left[2\pi i\frac{\sin 1-i\cos 1}{6e^3}\right]=\frac{\pi\cos1}{3e^3}.\]
+  
+\textbf{5. 【解】}
+\[\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\cos^2\theta)^2}
+=\int_0^{\pi/2}\dfrac{\diff \theta}{(2+\cos 2\theta)^2}
+=\int_0^{\pi}\dfrac{\diff \theta}{2(2+\cos \theta)^2}
+=\int_0^{2\pi}\dfrac{\diff \theta}{4(2+\cos \theta)^2}.
+\]
+令 $z=e^{i\theta}$, 则原积分等于
+  \[\int_{|z|=1}\frac{z\diff z}{i(z^2+4z+1)^2}.\]
+设被积函数为 $f(z)$, 则 $f(z)$ 在 $|z|<1$ 上有 $2$ 阶极点 $-2+\sqrt{3}$, 且
+  \[\Res[f(z),-2+\sqrt{3}]=\left[\frac{1}{i(z+2+\sqrt{3})^2}-\frac{2z}{i(z+2+\sqrt{3})^3}\right]\bigg|_{z=-2+\sqrt{3}}=\frac{1}{6\sqrt{3}i}.\]
+从而
+  \[\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\cos^2\theta)^2}=2\pi i\cdot \frac{1}{6\sqrt{3}i}=\frac{\sqrt{3} \pi}{9}.\]
+
+\tigan{三、解答题 (每题10分, 共60分)}
+
+\textbf{1. 【解】}
+
+由 $u_{xx}+u_{yy}=0$ 可知 $6x+2\alpha x=0$, 因此 $\alpha=-3$.
+设 $f=u+iv$, 则由柯西-黎曼方程,
+  \[\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}=3x^2-3y^2+1,\]
+因此 $v(x,y)=3x^2y-y^3+y+g(x)$.
+由于
+  \[\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x},\]
+即 $-6xy-1=-(6xy+g'(x)),\quad g(x)=x+c$, 从而
+  \[v(x,y)=3x^2y-y^3+x+y+c,\]
+  \[f(z)=x^3-3xy^2+x-y+i(3x^2y-y^3+x+y+c)
+  =z^3+(1+i)z+ci.\]
+由于 $f(0)=i$, 因此 $c=1,f(z)=z^3+(1+i)z+i$.
+
+\textbf{2. 【解】}
+
+\[f(z)=-\frac{1}{1-(z-1)}+e^{-1}e^{-(z-1)}
+=-\sum_{n=0}^{+\infty} (z-1)^n+e^{-1}\sum_{m=0}^{+\infty} (-1)^m\frac{(z-1)^m}{m!}\]
+\[=\sum_{n=0}^{+\infty} \left[-1+\frac{(-1)^n}{n!}\right](z-1)^n,\hspace{6cm}\]
+收敛半径为 $1$.
+
+\textbf{3. 【解】}
+
+设 $w=1/z$, 则 $0<|w|<1/2$,
+\[\frac{1}{z^3+2z^2}=\frac{w^3}{1+2w}=w^3\sum_{n=0}^{+\infty}(-2w)^n=\sum_{n=0}^{+\infty}(-2)^nw^{n+3}=\sum_{n=3}^{+\infty}(-2)^{n-3}z^{-n}.\]
+
+\textbf{4. 【解】}
+
+由于 $z\neq 0$, 即要求 $z^4+4z^2+z+1=0$ 的根的个数.
+在 $|z|=1$ 上
+\[|z^4+z+1|\le 1+1+1<4=|4z^2|,\]
+由罗歇定理, 该方程在 $|z|<1$ 中有 $2$ 个根. 由于在 $|z|=3$ 上
+\[|4z^2+z+1|\le 36+3+1<81=|z^4|,\]
+由罗歇定理, 该方程在 $|z|<3$ 中有 $4$ 个根.
+从而该方程在 $1<|z|<3$ 中有 $2$ 个根.
+
+\textbf{5. 【解】}
+
+设 $Y=\msl[y]$, 则
+\[p^2Y-2pY+Y=\frac{1}{(p+1)^2},\]
+\[Y=\frac{1}{(1+p)^2(1-p)^2}=\frac{1}{4}\left[\frac{1}{(p+1)^2}+\frac{1}{(p-1)^2}+\frac{1}{p+1}-\frac{1}{p-1}\right],\]
+\[y=\msl^{-1}[Y]=\frac{1}{4}(te^t+te^{-t}+e^{-t}-e^t).\]
+
+\textbf{6. 【证明】}
+
+设 $f(z)$ 在 $z=0$ 处的幂级数展开为
+  \[f(z)=\sum_{n=0}^{+\infty}a_n z^n.\]
+对于 $x,y\in\mathbb{R}$,
+  \[f'(x)=\lim_{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\in \mathbb{R},\]
+  \[f'(iy)=\lim_{\Delta y\rightarrow 0}\frac{f((y+\Delta y) i)-f(yi)}{\Delta y i}\in i\mathbb{R}.\]
+因此
+  \[f''(x)=\lim_{\Delta x\rightarrow 0}\frac{f'(x+\Delta x)-f'(x)}{\Delta x}\in \mathbb{R},\]
+  \[f''(iy)=\lim_{\Delta y\rightarrow 0}\frac{f'((y+\Delta y) i)-f'(yi)}{\Delta y i}\in \mathbb{R}.\]
+因此 $f''$ 在整个复平面解析且将实轴和虚轴均映为实数. 归纳可知对任意非负整数 $k$,  $f^{(2k)}$ 在整个复平面解析且将实轴和虚轴均映为实数, 且 $f^{(2k+1)}(x)\in \mathbb{R},f^{(2k+1)}(iy)\in i\mathbb{R}$. 从而
+  \[a_{2k+1}=f^{(2k+1)}(0)=0\in\mathbb{R}\cap i\mathbb{R},\]
+即 $f(z)$ 是偶函数.
+
+
+
+
+\end{document}

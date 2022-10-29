@@ -1,0 +1,100 @@
+\documentclass[simple]{hfutexam}
+\usepackage{tikz}
+\usetikzlibrary{
+  quotes, 
+  shapes.arrows, 
+  arrows.meta, 
+  positioning, 
+  shapes.geometric, 
+  overlay-beamer-styles, 
+  patterns, 
+  calc, 
+  angles
+}
+\newcommand{\BC}{\mathbb{C}}
+\newcommand{\BR}{\mathbb{R}}
+\newcommand{\ra}{\rightarrow}
+\let\Re\relax
+\DeclareMathOperator\Re{Re}
+\DeclareMathOperator\Res{Res}
+\newcommand{\diff}{\, \mathrm{d}}
+\renewcommand{\mid}{\,:\,}
+
+
+\begin{document}
+\BiaoTi{中国科学技术大学试卷（A）}
+\XueNian{2010}{2011}
+\XueQi{二}
+\KeChengDaiMa{001012}
+\KeChengMingCheng{复变函数}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\maketitle
+
+\begin{center}
+本卷中 $B(a, r)=\{z\in\BC\mid|z-a|<r\}, B(\infty, r)=\{z\in\BC\mid|z|>r\}$.
+\end{center}
+
+\tigan{一、(20分) 以下陈述是否正确?如果不正确请给出理由.}
+
+\begin{enumerate}
+\item 存在 $B(0, 1)-\{0\}$ 上的无界全纯函数 $f$ 使得 $\displaystyle\lim_{z\ra 0}zf(z)=0$.
+\item 存在 $B(0, 1)$ 上的全纯函数 $f$ 使得 $f\left(\dfrac1n\right)=(-1)^n, n=2, 3, \dots$.
+\item 存在 $\BC$ 上的非零全纯函数 $f$ 有无穷多零点.
+\item 设 $D$ 是 $\BC$ 中的域, $f\in H(D)\cap C(\overline D)$, 则 $f$ 一定能在 $D$ 的边界上取得最大模.
+\item 设 $D=\{z\in\BC\mid0<\Re z<1\}, f\in H(D)\cap C(\overline D)$ 满足 $f(ai)=0, \forall a\in\BR$, 则 $f$ 恒等于零.
+\item 设 $D=B(\infty, R), f, g\in H(D)\cap C(\overline D), R>0$ 满足 $f(z)=g(z), \forall z\in\BC, |z|=R$, 则 $f$ 恒等于 $g$.
+\item $\infty$ 是 $\sin\left[\dfrac1{\cos(1/z)}\right]$ 的本性奇点.
+\item $\dfrac{z}{e^z-1}$ 在 $\BC$ 上亚纯.
+\item $B(0, 1)$ 的全纯自同构必为分式线性变换.
+\item 若整函数 $f$ 将实轴和虚轴均映为实数, 则 $f'(0)=0$.
+\end{enumerate}
+
+\tigan{二、(30分) 计算题.}
+
+\begin{enumerate}
+\item $\displaystyle\int_{|z|=2}\frac{\diff z}{(z-1)^3(z-3)}$.
+\item $\displaystyle\int_{|z|=2}\frac{z+1}{z^2(z^3+2)}\diff z$.
+\item $\displaystyle\int_{|z|=4}\frac{ze^{iz}}{\sin z}\diff z$.
+\item $\displaystyle\Res\left[\frac{z^{2n}}{(z+1)^n}, \infty\right]$.
+\item $e^{\frac{1-z}{z}}$ 在扩充复平面上有哪些奇点? 并求出在 $D=B(\infty, 1)$ 上的 Laurent 展开.
+\end{enumerate}
+
+\tigan{三、(10分)} 设 $f\in H(B(0,1)), f(0)=1$, 并且 $\Re f(z)\geq0, \forall z\in B(0,1)$. 证明
+\[\frac{1-|z|}{1+|z|} \leq \Re f(z) \leq |f(z)| \leq \frac{1+|z|}{1-|z|}, \quad\forall z\in B(0,1).\]
+
+\tigan{四、(10分)} 利用辐角原理或 Rouch\'e 定理证明代数学基本定理.
+
+\tigan{五、(10分)} 设 $\gamma$ 是圆周 $\partial B(a, R)$ 上的一段开圆弧. 证明: 若 $f$ 在 $B(a,R)$ 上全纯, 在 $B(a,R)\cup\gamma$ 上连续, 并且在 $\gamma$ 上恒为零, 则 $f$ 在 $B(a,R)$ 上也恒为零.
+
+\tigan{六、(10分)} 求一单叶全纯映射, 把 $D$ 映为上半平面, 其中
+\[D=\Omega-[0,i], \qquad \Omega=B(\sqrt{3},2)\cap B(-\sqrt{3},2),\]
+这里 $[0,i]$ 表示连接 $0$ 和 $i$ 的线段。
+
+\begin{center}
+\begin{tikzpicture}
+\filldraw[very thick, smooth,fill=black!20] (0,-1.5) arc(210:150:3);
+\filldraw[very thick, smooth,fill=black!20] (0,1.5) arc(30:-30:3);
+\draw[thick, dash pattern=on 0.2cm off 0.05cm] (-{1.5*sqrt(3)},0)--({1.5*sqrt(3)},0);
+\draw[thick, dash pattern=on 0.2cm off 0.05cm] (-{1.5*sqrt(3)},0)--(0,1.5)--({1.5*sqrt(3)},0)--(0,-1.5)--cycle;
+\draw[very thick, dash pattern=on 0.2cm off 0.05cm] (0,0)--(0,1.5);
+\draw
+	(0, -0.3) node {$O$}
+	(0, 1.7) node {$i$}
+	(0, -1.7) node {$-i$}
+	(3, 0) node {$\sqrt3$}
+	(-3.2, 0) node {$-\sqrt3$};
+\end{tikzpicture}
+\end{center}
+
+\tigan{七、(10分)} 设 $\gamma$ 是可求长简单闭曲线, 其内部为域 $G_1$, 外部为域 $G_2$. 如果 $f\in H(G_2)\cap C(\overline G_2)$, 而且 $\displaystyle\lim_{z\ra \infty}f(z)=A$, 那么
+\[\frac{1}{2\pi i}\int_\gamma \frac{f(\zeta)}{\zeta-z}\diff\zeta=
+\begin{cases}
+-f(z)+A, &z\in G_2;\\ A, &z\in G_1, 
+\end{cases}\]
+这里 $\gamma$ 关于 $G_1$ 取正向.
+
+
+
+
+\end{document}

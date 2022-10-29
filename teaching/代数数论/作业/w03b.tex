@@ -1,0 +1,471 @@
+% !Mode:: "TeX:UTF-8"
+\documentclass[a4paper]{ctexart}
+\usepackage{amscd,amsthm,amsfonts,amssymb,amsmath}
+\usepackage[all]{xy}
+\usepackage{ctex}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+% symbols
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\lla}{\longleftarrow}
+\newcommand{\sqra}{\rightsquigarrow}
+\newcommand{\sqlra}{\leftrightsquigarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\sto}[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand{\lsto}[1]{\stackrel{#1}{\longleftarrow}}
+\newcommand{\simto}{\sto{\sim}}
+\newcommand{\lto}{\longmapsto}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+\newcommand{\ilim}{\varinjlim\limits}
+\newcommand{\plim}{\varprojlim\limits}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+\newcommand{\ov}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\vare}{\varepsilon}
+\newcommand{\varp}{\varphi}
+\newcommand{\imply}{\Longrightarrow}
+\newcommand{\rj}{\relbar\joinrel}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\mmid}{\parallel}
+\newcommand{\pppi}{\frac{\partial\bar\partial}{\pi i}}
+\font\cyr=wncyr10 \newcommand{\Sha}{\hbox{\cyr X}}
+
+
+% functions
+\newcommand{\fct}[4]{\begin{split}#1 &\lra #2 \\ #3 &\lto #4\end{split}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\pair}[1]{\langle{#1}\rangle}
+\newcommand{\pmat}[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
+\newcommand{\smat}[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
+\newcommand{\bvec}[2]{\begin{bmatrix}#1 \\ #2\end{bmatrix} }
+\newcommand{\norm}[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand{\env}[2]{\begin{#1}{#2}\end{#1}}
+\newcommand{\envn}[3]{\begin{#1}[#2]{#3}\end{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\hil}[3]{\left(\frac{{#1},{#2}}{#3}\right)}
+\newcommand{\leg}[2]{\left(\frac{{#1}}{#2}\right)}
+
+
+% categories
+\newcommand{\cA}{{\mathsf{A}}}
+\newcommand{\cC}{{\mathsf{C}}}
+\newcommand{\cAb}{{\mathsf{Ab}}}
+\newcommand{\cBT}{{\mathsf{BT}}}
+\newcommand{\cBun}{{\mathsf{Bun}}}
+\newcommand{\cCharLoc}{{\mathsf{CharLoc}}}
+\newcommand{\cCoh}{{\mathsf{Coh}}}
+\newcommand{\cComm}{{\mathsf{Comm}}}
+\newcommand{\cEt}{{\mathsf{Et}}}
+\newcommand{\cFppf}{{\mathsf{Fppf}}}
+\newcommand{\cFpqc}{{\mathsf{Fpqc}}}
+\newcommand{\cGroups}{{\mathsf{Groups}}}
+\newcommand{\cGrpd}{{\{\mathsf{Grpd}\}}}
+\newcommand{\cHo}{{\mathsf{Ho}}}
+\newcommand{\cIso}{{\mathsf{Iso}}}
+\newcommand{\cLoc}{{\mathsf{Loc}}}
+\newcommand{\cMod}{{\mathsf{Mod}}}
+\newcommand{\cModFil}{{\mathsf{ModFil}}}
+\newcommand{\cNilp}{{\mathsf{Nilp}}}
+\newcommand{\cPerf}{{\mathsf{Perf}}}
+\newcommand{\cPN}{{\mathsf{PN}}}
+\newcommand{\cRep}{{\mathsf{Rep}}}
+\newcommand{\cRings}{{\mathsf{Rings}}}
+\newcommand{\cSets}{{\mathsf{Sets}}}
+\newcommand{\cStack}{{\mathsf{Stack}}}
+\newcommand{\cSch}{{\mathsf{Sch}}}
+\newcommand{\cVect}{{\mathsf{Vect}}}
+\newcommand{\cZar}{{\mathsf{Zar}}}
+\newcommand{\cphimod}{{\varphi\txt{-}\mathsf{Mod}}}
+\newcommand{\cphimodfil}{{\varphi\txt{-}\mathsf{ModFil}}}
+
+% font
+\newcommand{\rma}{{\mathrm{a}}}  \newcommand{\rmb}{{\mathrm{b}}}  \newcommand{\rmc}{{\mathrm{c}}}  \newcommand{\rmd}{{\mathrm{d}}}
+\newcommand{\rme}{{\mathrm{e}}}  \newcommand{\rmf}{{\mathrm{f}}}  \newcommand{\rmg}{{\mathrm{g}}}  \newcommand{\rmh}{{\mathrm{h}}}
+\newcommand{\rmi}{{\mathrm{i}}}  \newcommand{\rmj}{{\mathrm{j}}}  \newcommand{\rmk}{{\mathrm{k}}}  \newcommand{\rml}{{\mathrm{l}}}
+\newcommand{\rmm}{{\mathrm{m}}}  \newcommand{\rmn}{{\mathrm{n}}}  \newcommand{\rmo}{{\mathrm{o}}}  \newcommand{\rmp}{{\mathrm{p}}}
+\newcommand{\rmq}{{\mathrm{q}}}  \newcommand{\rmr}{{\mathrm{r}}}  \newcommand{\rms}{{\mathrm{s}}}  \newcommand{\rmt}{{\mathrm{t}}}
+\newcommand{\rmu}{{\mathrm{u}}}  \newcommand{\rmv}{{\mathrm{v}}}  \newcommand{\rmw}{{\mathrm{w}}}  \newcommand{\rmx}{{\mathrm{x}}} \newcommand{\rmy}{{\mathrm{y}}}  \newcommand{\rmz}{{\mathrm{z}}}
+
+\newcommand{\rmA}{{\mathrm{A}}}  \newcommand{\rmB}{{\mathrm{B}}}  \newcommand{\rmC}{{\mathrm{C}}}  \newcommand{\rmD}{{\mathrm{D}}}
+\newcommand{\rmE}{{\mathrm{E}}}  \newcommand{\rmF}{{\mathrm{F}}}  \newcommand{\rmG}{{\mathrm{G}}}  \newcommand{\rmH}{{\mathrm{H}}}
+\newcommand{\rmI}{{\mathrm{I}}}  \newcommand{\rmJ}{{\mathrm{J}}}  \newcommand{\rmK}{{\mathrm{K}}}  \newcommand{\rmL}{{\mathrm{L}}}
+\newcommand{\rmM}{{\mathrm{M}}}  \newcommand{\rmN}{{\mathrm{N}}}  \newcommand{\rmO}{{\mathrm{O}}}  \newcommand{\rmP}{{\mathrm{P}}}
+\newcommand{\rmQ}{{\mathrm{Q}}}  \newcommand{\rmR}{{\mathrm{R}}}  \newcommand{\rmS}{{\mathrm{S}}}  \newcommand{\rmT}{{\mathrm{T}}}
+\newcommand{\rmU}{{\mathrm{U}}}  \newcommand{\rmV}{{\mathrm{V}}}  \newcommand{\rmW}{{\mathrm{W}}}  \newcommand{\rmX}{{\mathrm{X}}}
+\newcommand{\rmY}{{\mathrm{Y}}}  \newcommand{\rmZ}{{\mathrm{Z}}}
+
+\newcommand{\bfa}{{\mathbf{a}}}  \newcommand{\bfb}{{\mathbf{b}}}  \newcommand{\bfc}{{\mathbf{c}}}  \newcommand{\bfd}{{\mathbf{d}}}
+\newcommand{\bfe}{{\mathbf{e}}}  \newcommand{\bff}{{\mathbf{f}}}  \newcommand{\bfg}{{\mathbf{g}}}  \newcommand{\bfh}{{\mathbf{h}}}
+\newcommand{\bfi}{{\mathbf{i}}}  \newcommand{\bfj}{{\mathbf{j}}}  \newcommand{\bfk}{{\mathbf{k}}}  \newcommand{\bfl}{{\mathbf{l}}}
+\newcommand{\bfm}{{\mathbf{m}}}  \newcommand{\bfn}{{\mathbf{n}}}  \newcommand{\bfo}{{\mathbf{o}}}  \newcommand{\bfp}{{\mathbf{p}}}
+\newcommand{\bfq}{{\mathbf{q}}}  \newcommand{\bfr}{{\mathbf{r}}}  \newcommand{\bfs}{{\mathbf{s}}}  \newcommand{\bft}{{\mathbf{t}}}
+\newcommand{\bfu}{{\mathbf{u}}}  \newcommand{\bfv}{{\mathbf{v}}}  \newcommand{\bfw}{{\mathbf{w}}}  \newcommand{\bfx}{{\mathbf{x}}} \newcommand{\bfy}{{\mathbf{y}}}  \newcommand{\bfz}{{\mathbf{z}}}
+
+\newcommand{\bfA}{{\mathbf{A}}}  \newcommand{\bfB}{{\mathbf{B}}}  \newcommand{\bfC}{{\mathbf{C}}}  \newcommand{\bfD}{{\mathbf{D}}}
+\newcommand{\bfE}{{\mathbf{E}}}  \newcommand{\bfF}{{\mathbf{F}}}  \newcommand{\bfG}{{\mathbf{G}}}  \newcommand{\bfH}{{\mathbf{H}}}
+\newcommand{\bfI}{{\mathbf{I}}}  \newcommand{\bfJ}{{\mathbf{J}}}  \newcommand{\bfK}{{\mathbf{K}}}  \newcommand{\bfL}{{\mathbf{L}}}
+\newcommand{\bfM}{{\mathbf{M}}}  \newcommand{\bfN}{{\mathbf{N}}}  \newcommand{\bfO}{{\mathbf{O}}}  \newcommand{\bfP}{{\mathbf{P}}}
+\newcommand{\bfQ}{{\mathbf{Q}}}  \newcommand{\bfR}{{\mathbf{R}}}  \newcommand{\bfS}{{\mathbf{S}}}  \newcommand{\bfT}{{\mathbf{T}}}
+\newcommand{\bfU}{{\mathbf{U}}}  \newcommand{\bfV}{{\mathbf{V}}}  \newcommand{\bfW}{{\mathbf{W}}}  \newcommand{\bfX}{{\mathbf{X}}}
+\newcommand{\bfY}{{\mathbf{Y}}}  \newcommand{\bfZ}{{\mathbf{Z}}}
+
+\newcommand{\BA}{{\mathbb{A}}}  \newcommand{\BB}{{\mathbb{B}}}  \newcommand{\BC}{{\mathbb{C}}}  \newcommand{\BD}{{\mathbb{D}}}  \newcommand{\BE}{{\mathbb{E}}}
+\newcommand{\BF}{{\mathbb{F}}}  \newcommand{\BG}{{\mathbb{G}}}  \newcommand{\BH}{{\mathbb{H}}}  \newcommand{\BI}{{\mathbb{I}}}  \newcommand{\BJ}{{\mathbb{J}}}
+\newcommand{\BK}{{\mathbb{K}}}  \newcommand{\BL}{{\mathbb{L}}}  \newcommand{\BM}{{\mathbb{M}}}  \newcommand{\BN}{{\mathbb{N}}}  \newcommand{\BO}{{\mathbb{O}}}
+\newcommand{\BP}{{\mathbb{P}}}  \newcommand{\BQ}{{\mathbb{Q}}}  \newcommand{\BR}{{\mathbb{R}}}  \newcommand{\BS}{{\mathbb{S}}}  \newcommand{\BT}{{\mathbb{T}}}
+\newcommand{\BU}{{\mathbb{U}}}  \newcommand{\BV}{{\mathbb{V}}}  \newcommand{\BW}{{\mathbb{W}}}  \newcommand{\BX}{{\mathbb{X}}}  \newcommand{\BY}{{\mathbb{Y}}}
+\newcommand{\BZ}{{\mathbb{Z}}}
+
+\newcommand{\CA}{{\mathcal{A}}} \newcommand{\CB}{{\mathcal{B}}} \newcommand{\CC}{{\mathcal{C}}}\renewcommand{\CD}{{\mathcal{D}}}\newcommand{\CE}{{\mathcal{E}}}
+\newcommand{\CF}{{\mathcal{F}}} \newcommand{\CG}{{\mathcal{G}}} \newcommand{\CH}{{\mathcal{H}}} \newcommand{\CI}{{\mathcal{I}}} \newcommand{\CJ}{{\mathcal{J}}}
+\newcommand{\CK}{{\mathcal{K}}} \newcommand{\CL}{{\mathcal{L}}} \newcommand{\CM}{{\mathcal{M}}} \newcommand{\CN}{{\mathcal{N}}} \newcommand{\CO}{{\mathcal{O}}}
+\newcommand{\CP}{{\mathcal{P}}} \newcommand{\CQ}{{\mathcal{Q}}} \newcommand{\CR}{{\mathcal{R}}} \newcommand{\CS}{{\mathcal{S}}} \newcommand{\CT}{{\mathcal{T}}}
+\newcommand{\CU}{{\mathcal{U}}} \newcommand{\CV}{{\mathcal{V}}} \newcommand{\CW}{{\mathcal{W}}} \newcommand{\CX}{{\mathcal{X}}} \newcommand{\CY}{{\mathcal{Y}}}
+\newcommand{\CZ}{{\mathcal{Z}}}
+
+\newcommand{\RA}{{\mathrm{A}}} \newcommand{\RB}{{\mathrm{B}}} \newcommand{\RC}{{\mathrm{C}}} \newcommand{\RD}{{\mathrm{D}}} \newcommand{\RE}{{\mathrm{E}}}
+\newcommand{\RF}{{\mathrm{F}}} \newcommand{\RG}{{\mathrm{G}}} \newcommand{\RH}{{\mathrm{H}}} \newcommand{\RI}{{\mathrm{I}}} \newcommand{\RJ}{{\mathrm{J}}}
+\newcommand{\RK}{{\mathrm{K}}} \newcommand{\RL}{{\mathrm{L}}} \newcommand{\RM}{{\mathrm{M}}} \newcommand{\RN}{{\mathrm{N}}} \newcommand{\RO}{{\mathrm{O}}}
+\newcommand{\RP}{{\mathrm{P}}} \newcommand{\RQ}{{\mathrm{Q}}} \newcommand{\RR}{{\mathrm{R}}} \newcommand{\RS}{{\mathrm{S}}} \newcommand{\RT}{{\mathrm{T}}}
+\newcommand{\RU}{{\mathrm{U}}} \newcommand{\RV}{{\mathrm{V}}} \newcommand{\RW}{{\mathrm{W}}} \newcommand{\RX}{{\mathrm{X}}} \newcommand{\RY}{{\mathrm{Y}}}
+\newcommand{\RZ}{{\mathrm{Z}}}
+
+\newcommand{\msa}{\mathscr{A}}  \newcommand{\msb}{\mathscr{B}}  \newcommand{\msc}{\mathscr{C}}  \newcommand{\msd}{\mathscr{D}}  \newcommand{\mse}{\mathscr{E}}
+\newcommand{\msf}{\mathscr{F}}  \newcommand{\msg}{\mathscr{G}}  \newcommand{\msh}{\mathscr{H}}  \newcommand{\msi}{\mathscr{I}}  \newcommand{\msj}{\mathscr{J}}
+\newcommand{\msk}{\mathscr{K}}  \newcommand{\msl}{\mathscr{L}}  \newcommand{\msm}{\mathscr{M}}  \newcommand{\msn}{\mathscr{N}}  \newcommand{\mso}{\mathscr{O}}
+\newcommand{\msp}{\mathscr{P}}  \newcommand{\msq}{\mathscr{Q}}  \newcommand{\msr}{\mathscr{R}}  \newcommand{\mss}{\mathscr{S}}  \newcommand{\mst}{\mathscr{T}}
+\newcommand{\msu}{\mathscr{U}}  \newcommand{\msv}{\mathscr{V}}  \newcommand{\msw}{\mathscr{W}}  \newcommand{\msx}{\mathscr{X}}  \newcommand{\msy}{\mathscr{Y}}
+\newcommand{\msz}{\mathscr{Z}}
+
+\newcommand{\fa}{{\mathfrak{a}}}\newcommand{\fb}{{\mathfrak{b}}}\newcommand{\fc}{{\mathfrak{c}}}\newcommand{\fd}{{\mathfrak{d}}}\newcommand{\fe}{{\mathfrak{e}}}
+\newcommand{\ff}{{\mathfrak{f}}}\newcommand{\fg}{{\mathfrak{g}}}\newcommand{\fh}{{\mathfrak{h}}}\newcommand{\fii}{\mathfrak{i}} \newcommand{\fj}{{\mathfrak{j}}}
+\newcommand{\fk}{{\mathfrak{k}}}\newcommand{\fl}{{\mathfrak{l}}}\newcommand{\fm}{{\mathfrak{m}}}\newcommand{\fn}{{\mathfrak{n}}}\newcommand{\fo}{{\mathfrak{o}}} \newcommand{\fp}{{\mathfrak{p}}}\newcommand{\fq}{{\mathfrak{q}}}\newcommand{\fr}{{\mathfrak{r}}}\newcommand{\fs}{{\mathfrak{s}}}\newcommand{\ft}{{\mathfrak{t}}}
+\newcommand{\fu}{{\mathfrak{u}}}\newcommand{\fv}{{\mathfrak{v}}}\newcommand{\fw}{{\mathfrak{w}}}\newcommand{\fx}{{\mathfrak{x}}}\newcommand{\fy}{{\mathfrak{y}}}
+\newcommand{\fz}{{\mathfrak{z}}}
+
+\newcommand{\fA}{{\mathfrak{A}}}\newcommand{\fB}{{\mathfrak{B}}}\newcommand{\fC}{{\mathfrak{C}}}\newcommand{\fD}{{\mathfrak{D}}}\newcommand{\fE}{{\mathfrak{E}}}
+\newcommand{\fF}{{\mathfrak{F}}}\newcommand{\fG}{{\mathfrak{G}}}\newcommand{\fH}{{\mathfrak{H}}}\newcommand{\fI}{{\mathfrak{I}}}\newcommand{\fJ}{{\mathfrak{J}}}
+\newcommand{\fK}{{\mathfrak{K}}}\newcommand{\fL}{{\mathfrak{L}}}\newcommand{\fM}{{\mathfrak{M}}}\newcommand{\fN}{{\mathfrak{N}}}\newcommand{\fO}{{\mathfrak{O}}} \newcommand{\fP}{{\mathfrak{P}}}\newcommand{\fQ}{{\mathfrak{Q}}}\newcommand{\fR}{{\mathfrak{R}}}\newcommand{\fS}{{\mathfrak{S}}}\newcommand{\fT}{{\mathfrak{T}}}
+\newcommand{\fU}{{\mathfrak{U}}}\newcommand{\fV}{{\mathfrak{V}}}\newcommand{\fW}{{\mathfrak{W}}} \newcommand{\fX}{{\mathfrak{X}}}\newcommand{\fY}{{\mathfrak{Y}}}\newcommand{\fZ}{{\mathfrak{Z}}}
+% be careful about \fii
+
+% a
+\newcommand{\ab}{{\mathrm{ab}}}
+\newcommand{\ad}{{\mathrm{ad}}}
+\newcommand{\Ad}{{\mathrm{Ad}}}
+\newcommand{\adele}{ad\'{e}le}
+\newcommand{\Adele}{Ad\'{e}le}
+\newcommand{\adeles}{ad\'{e}les}
+\newcommand{\adelic}{ad\'{e}lic}
+\newcommand{\AJ}{{\mathrm{AJ}}}
+\newcommand{\alb}{{\mathrm{alb}}}
+\newcommand{\Alb}{{\mathrm{Alb}}}
+\newcommand{\alg}{{\mathrm{alg}}}
+\newcommand{\an}{{\mathrm{an}}}
+\newcommand{\Aut}{{\mathrm{Aut}}}
+% b
+\newcommand{\Bun}{{\mathrm{Bun}}}
+\newcommand{\Br}{{\mathrm{Br}}}
+\newcommand{\bs}{\backslash}
+\newcommand{\BWt}{{\mathrm{BW}}}
+% c
+\newcommand{\can}{{\mathrm{can}}}
+\newcommand{\cc}{{\mathrm{cc}}}
+\newcommand{\cd}{{\mathrm{cd}}}
+\newcommand{\ch}{{\mathrm{ch}}}
+\newcommand{\Ch}{{\mathrm{Ch}}}
+\newcommand{\Char}{{\mathrm{Char}}}
+\newcommand{\Chow}{{\mathrm{CH}}}
+\newcommand{\circB}{{\stackrel{\circ}{B}}}
+\newcommand{\cl}{{\mathrm{cl}}}
+\newcommand{\Cl}{{\mathrm{Cl}}}
+\newcommand{\cm}{{\mathrm{cm}}}
+\newcommand{\cod}{{\mathrm{cod}}}
+\newcommand{\coker}{{\mathrm{coker}}}
+\newcommand{\Coker}{{\mathrm{Coker}}}
+\newcommand{\cond}{{\mathrm{cond}}}
+\newcommand{\codim}{{\mathrm{codim}}}
+\newcommand{\cont}{{\mathrm{cont}}}
+\newcommand{\Conv}{{\mathrm{Conv}}}
+\newcommand{\corr}{{\mathrm{corr}}}
+\newcommand{\Corr}{{\mathrm{Corr}}}
+\newcommand{\coim}{{\mathrm{coim}}}
+\newcommand{\cris}{{\mathrm{cris}}}
+\newcommand{\Cris}{{\mathrm{Cris}}}
+\newcommand{\CRIS}{{\mathrm{CRIS}}}
+\newcommand{\crit}{{\mathrm{crit}}} % critical
+\newcommand{\crys}{{\mathrm{crys}}}
+\newcommand{\cusp}{{\mathrm{cusp}}} % cuspidal
+\newcommand{\CWt}{{\mathrm{CW}}} % Witt covector
+\newcommand{\cyc}{{\mathrm{cyc}}} % cyclotomic
+% d
+\newcommand{\Def}{{\mathrm{Def}}} % deformation space
+\newcommand{\diag}{{\mathrm{diag}}} % diagonal matrix
+\newcommand{\diff}{\mathop{}\!\mathrm{d}} % differential
+\newcommand{\disc}{{\mathrm{disc}}} % discriminant
+\renewcommand{\div}{{\mathrm{div}}} % divisor
+\newcommand{\Div}{{\mathrm{Div}}} % divisor group
+\newcommand{\dR}{{\mathrm{dR}}} % de Rham
+% e
+\newcommand{\End}{{\mathrm{End}}} % endomorphism
+\newcommand{\ess}{{\mathrm{ess}}} % essential
+\newcommand{\et}{\text{\'{e}t}} % etale
+\newcommand{\etale}{\'{e}tale} % etale
+\newcommand{\Etale}{\'{E}tale} % etale
+\newcommand{\Ext}{\mathrm{Ext}} % extension
+\newcommand{\CExt}{\mathcal{E}\mathrm{xt}} % extension functor
+% f
+\newcommand{\Fil}{{\mathrm{Fil}}}
+\newcommand{\Fix}{{\mathrm{Fix}}}
+\newcommand{\fppf}{{\mathrm{fppf}}}
+\newcommand{\Fr}{{\mathrm{Frac}}}
+\newcommand{\Frob}{{\mathrm{Frob}}}
+% g
+\newcommand{\Ga}{\mathbb{G}_a}
+\newcommand{\Gm}{\mathbb{G}_m}
+\newcommand{\hGa}{\widehat{\mathbb{G}}_{a}}
+\newcommand{\hGm}{\widehat{\mathbb{G}}_{m}}
+\newcommand{\Gal}{{\mathrm{Gal}}}
+\newcommand{\gl}{{\mathrm{gl}}}
+\newcommand{\GL}{{\mathrm{GL}}}
+\newcommand{\GO}{{\mathrm{GO}}}
+\newcommand{\Gr}{{\mathrm{Gr}}}
+\newcommand{\gr}{{\mathrm{gr}}}
+\newcommand{\GSO}{{\mathrm{GSO}}}
+\newcommand{\GSp}{{\mathrm{GSp}}}
+\newcommand{\GSpin}{{\mathrm{GSpin}}}
+\newcommand{\GU}{{\mathrm{GU}}}
+% h
+\newcommand{\hg}{{\mathrm{hg}}}
+\newcommand{\Hk}{{\mathrm{Hk}}}
+\newcommand{\HN}{{\mathrm{HN}}}
+\newcommand{\Hom}{{\mathrm{Hom}}}
+\newcommand{\CHom}{\mathcal{H}\mathrm{om}}
+% i
+\newcommand{\id}{{\mathrm{id}}}
+\newcommand{\Id}{{\mathrm{Id}}}
+\newcommand{\idele}{id\'{e}le}
+\newcommand{\Idele}{Id\'{e}le}
+\newcommand{\ideles}{id\'{e}les}
+\renewcommand{\Im}{{\mathrm{Im}}}
+\newcommand{\im}{{\mathrm{im}}}
+\newcommand{\Ind}{{\mathrm{Ind}}}
+\newcommand{\ind}{{\mathrm{ind}}}
+\renewcommand{\inf}{{\mathrm{inf}}}
+\newcommand{\Int}{{\mathrm{Int}}}
+\newcommand{\inv}{{\mathrm{inv}}}
+\newcommand{\Isom}{{\mathrm{Isom}}}
+% j
+\newcommand{\Jac}{{\mathrm{Jac}}}
+\newcommand{\JL}{{\mathrm{JL}}}
+% k
+\newcommand{\Ker}{{\mathrm{Ker}}}
+\newcommand{\KS}{{\mathrm{KS}}}
+\newcommand{\Katz}{\mathrm{Katz}}
+% l
+\newcommand{\length}{\mathrm{length}}
+\newcommand{\Li}{{\mathrm{Li}}}
+\newcommand{\Lie}{{\mathrm{Lie}}}
+\newcommand{\lt}{\mathrm{lt}}
+\newcommand{\LT}{\mathcal{LT}}
+% m
+\newcommand{\MW}{{\mathrm{MW}}}
+\renewcommand{\mod}{\, \mathrm{mod}\, }
+\newcommand{\mom}{{\mathrm{mom}}}
+\newcommand{\Mor}{{\mathrm{Mor}}}
+% n
+\newcommand{\new}{{\mathrm{new}}}
+\newcommand{\Newt}{{\mathrm{Newt}}}
+\newcommand{\NS}{{\mathrm{NS}}}
+\newcommand{\Nm}{{\mathrm{Nm}}}
+\newcommand{\Neron}{N\'{e}ron}
+% o
+\newcommand{\Obj}{{\mathrm{Obj}}}
+\newcommand{\odd}{{\mathrm{odd}}}
+\newcommand{\old}{{\mathrm{old}}}
+\newcommand{\op}{{\mathrm{op}}}
+\newcommand{\Orb}{{\mathrm{Orb}}}
+\newcommand{\ord}{{\mathrm{ord}}}
+% p
+\newcommand{\pd}{{\mathrm{pd}}}
+\newcommand{\Pet}{{\mathrm{Pet}}}
+\newcommand{\PGL}{{\mathrm{PGL}}}
+\newcommand{\Pic}{{\mathrm{Pic}}}
+\newcommand{\Proj}{{\mathrm{Proj}}}
+\newcommand{\proet}{\text{pro\'{e}t}}
+\newcommand{\Poincare}{\text{Poincar\'{e}}}
+\newcommand{\pr}{{\mathrm{pr}}}
+% r
+\newcommand{\Rad}{{\mathrm{Rad}}}
+\newcommand{\rank}{{\mathrm{rank}}}
+\renewcommand{\Re}{{\mathrm{Re}}}
+\newcommand{\rec}{{\mathrm{rec}}}
+\newcommand{\reg}{{\mathrm{reg}}}
+\newcommand{\res}{{\mathrm{res}}}
+\newcommand{\Res}{{\mathrm{Res}}}
+\newcommand{\rig}{{\mathrm{rig}}}
+\newcommand{\Rig}{{\mathrm{Rig}}}
+\newcommand{\rk}{{\mathrm{rk}}}
+\newcommand{\Ros}{{\mathrm{Ros}}}
+\newcommand{\rs}{{\mathrm{rs}}}
+% s
+\newcommand{\sd}{{\mathrm{sd}}}
+\newcommand{\Sel}{{\mathrm{Sel}}}
+\newcommand{\sep}{{\mathrm{sep}}}
+\newcommand{\sgn}{{\mathrm{sgn}}}
+\newcommand{\Sh}{{\mathrm{Sh}}}
+\newcommand{\Sht}{\mathrm{Sht}}
+\newcommand{\Sim}{{\mathrm{Sim}}}
+\newcommand{\sign}{{\mathrm{sign}}}
+\newcommand{\SL}{{\mathrm{SL}}}
+\newcommand{\SO}{{\mathrm{SO}}}
+\newcommand{\Sp}{{\mathrm{Sp}}}
+\newcommand{\Spa}{{\mathrm{Spa}}}
+\newcommand{\Spec}{{\mathrm{Spec}}}
+\newcommand{\Spf}{{\mathrm{Spf}}}
+\newcommand{\Spin}{{\mathrm{Spin}}}
+\newcommand{\Spm}{{\mathrm{Spm}}}
+\newcommand{\srs}{{\mathrm{srs}}}
+\newcommand{\rss}{{\mathrm{ss}}}
+\newcommand{\st}{{\mathrm{st}}}
+\newcommand{\Stab}{{\mathrm{Stab}}}
+\newcommand{\SU}{{\mathrm{SU}}}
+\newcommand{\Sym}{{\mathrm{Sym}}}
+\newcommand{\sub}{{\mathrm{sub}}}
+\newcommand{\supp}{{\mathrm{supp}}}
+\newcommand{\Supp}{{\mathrm{Supp}}}
+\newcommand{\suml}{\sum\limits}
+\newcommand{\td}{{\mathrm{td}}}
+\newcommand{\tor}{{\mathrm{tor}}}
+\newcommand{\Tor}{{\mathrm{Tor}}}
+\newcommand{\tors}{{\mathrm{tors}}}
+\newcommand{\tr}{{\mathrm{tr}}}
+\newcommand{\Tr}{{\mathrm{Tr}}}
+\newcommand{\TSym}{{\mathrm{TSym}}}
+\newcommand{\tw}{{\mathrm{tw}}}
+% u
+\newcommand{\uni}{{\mathrm{uni}}}
+\newcommand{\univ}{\mathrm{univ}}
+\newcommand{\ur}{{\mathrm{ur}}}
+% v
+\newcommand{\vQ}{{\breve \BQ}}
+\newcommand{\vE}{{\breve E}}
+\newcommand{\vF}{{\breve F}}
+\newcommand{\vol}{{\mathrm{vol}}}
+\newcommand{\Vol}{{\mathrm{Vol}}}
+% w
+\newcommand{\wa}{{\mathrm{wa}}}
+
+% theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theo}[thm]{Theorem}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{coro}[thm]{Corollary}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{question}[thm]{Question}
+\newtheorem{openquestion}[thm]{Open Question}
+\newtheorem{maintheorem}[thm]{Main Theorem}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{exam}[thm]{Example}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{exercise}[thm]{Exercise}
+\newtheorem{situ}[thm]{Situation}
+\newtheorem{situation}[thm]{Situation}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+
+\numberwithin{equation}{subsection}
+\theoremstyle{theorem}
+\newtheorem{dingli}{定理}[section]
+\newtheorem{jieda}[dingli]{解}
+\theoremstyle{definition}
+\newtheorem{xiti}[dingli]{习题}
+
+
+\begin{document}
+
+\begin{center}
+第三周第二次作业
+
+姓名：~~~ \qquad \qquad 学号：~~~~~~~~~~
+\end{center}
+\vspace{0.3cm}
+
+\noindent{\bf 习题~2.2.18.}
+在 $\BQ_7$ 中 $\suml_{n\ge 0}{\half \choose n}\left(\frac{7}{9}\right)^n$ 是多少?
+\begin{proof}[解]
+%在此解答
+\end{proof}
+
+\noindent{\bf 习题~2.2.18.}
+设 $K$ 的特征为 $0$. 如果其剩余域特征为 $0$, 令 $\epsilon=1$; 如果其剩余特征为 $p$, 令 $\epsilon=|p|^{\frac{1}{p-1}}$. 则 
+\[\exp(x):=\sum_{n=0}^{+\infty}\frac{x^n}{n!}\]
+的收敛区域为 $U(0,\epsilon)$,
+\[\log(x):=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}(t-1)^n\]
+的收敛区域为 $U(1,1)$.
+于是我们有群同构
+\[\exp:U(0,\epsilon)\simto	U(1,\epsilon),\]
+其逆为 $\log$.
+\begin{proof}
+%在此证明
+\end{proof}
+
+\noindent{\bf 习题~2.2.24.}
+令 $f(x,y)=x^2+y^2-1$, $P_0=(-1,0)$, 计算 $V(f)$.
+\begin{proof}[解]
+%在此解答
+\end{proof}
+
+\noindent{\bf 习题~2.2.25.}
+当 $k=\infty$ 时如何处理? 是否有统一的做法?
+\begin{proof}[解]
+%在此解答
+\end{proof}
+
+\noindent{\bf 习题~2.2.26.}
+令 $g(x,y,z)=x^2+y^2-5z^2$, 计算 $V(g)$.
+\begin{proof}[解]
+%在此解答
+\end{proof}
+
+\noindent{\bf 习题~2.2.30.}
+(1) 证明 $(a,b)_v=(b,a)_v, (a,-a)_v=(a,1-a)_v=1$.
+
+(2) 证明 $(a,b)_\infty=1$ 当且仅当 $a>0$ 或 $b>0$.
+\begin{proof}
+%在此证明
+\end{proof}
+
+\noindent{\bf 习题~2.2.31.}
+如果 $p\nmid ab$, 则 $(a,pb)_p=\leg{a}{p}, (pa,pb)_p=(-ab,p)_p$.
+\begin{proof}
+%在此证明
+\end{proof}
+
+\noindent{\bf 习题~2.2.35.}
+何时 $x^2+26y^2=n\neq 0$ 有有理点?
+\begin{proof}
+%在此证明
+\end{proof}
+
+\end{document}
+

@@ -112,10 +112,10 @@
 \[\sin{kt}=\frac1{2j}(e^{jkt}-e^{-jkt}),\]
 \onslide<+->
 因此
-\begin{align*}
-\msl[\sin{kt}]&=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)\\
-&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)=\frac k{s^2+k^2},\quad \Re s>0.\mqed}
-\end{align*}
+\begin{flalign*}
+\msl[\sin{kt}]&=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)&\\
+&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)=\frac k{s^2+k^2},\quad \Re s>0.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
@@ -216,11 +216,11 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 \onslide<+->
 我们也可以利用卷积定理来计算.
 \onslide<+->
-\begin{align*}
-\msl^{-1}[F(s)]&=\msl^{-1}\left[\frac1s\right]\ast\msl^{-1}\left[\frac1{(s-1)^2}\right]\\
-&\visible<+->{=1\ast te^t=\int_0^t\tau e^\tau\diff \tau}\\
-&\visible<+->{=(t-1)e^t+1.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\msl^{-1}[F(s)]&=\msl^{-1}\left[\frac1s\right]\ast\msl^{-1}\left[\frac1{(s-1)^2}\right]&\\
+&&&\visible<+->{=1\ast te^t=\int_0^t\tau e^\tau\diff \tau}&\\
+&&&\visible<+->{=(t-1)e^t+1.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutionc}
 \end{frame}
 
@@ -256,12 +256,12 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 \visible<+->{X(s)=\frac{2(s-1)}{[(s-1)^2+1]^2},}\]
 \onslide<+->
 \vspace{-\baselineskip}
-\begin{align*}
+\begin{flalign*}
 x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
-\visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}\\
+\visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}&\\
 &\visible<+->{=-e^t\msl^{-1}\left[\left(\frac1{s^2+1}\right)'\right]}
-\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.\mqed}
-\end{align*}
+\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}&\visible<.->{\mqed}
+\end{flalign*}
 \end{solutions}
 \endgroup
 \end{frame}
