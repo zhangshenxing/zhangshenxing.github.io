@@ -1,6 +1,8 @@
 \documentclass{hfutexam}
 
 %% 示例所需的自定义命令
+\newcommand{\diff}{\,\mathrm{d}}
+\usetikzlibrary{arrows.meta, overlay-beamer-styles}
 \newfontfamily\couriernew{Courier New}
 \usepackage{listings}
 \makeatletter
@@ -20,14 +22,12 @@
   framerule=0.5pt,
   columns=flexible,
   backgroundcolor=\color{black!5},
-  morekeywords={\maketitle, \titlesep, \BiaoTi, \XueNian, \XueQi, \KeChengDaiMa, \KeChengMingCheng, \XueFen, \KeChengXingZhi, \KaoShiXingShi, \ZhuanYeBanJi, \KaoShiRiQi, \MingTiJiaoShi, \XiZhuRenQianMing, \tigan, \scorebox, \score, \Score, \fillblank, \xx, \notice, \xuanzeti, \yihang, \erhang, \sihang, XeLaTeX},
+  morekeywords={\diff, \maketitle, \titlesep, \BiaoTi, \XueNian, \XueQi, \KeChengDaiMa, \KeChengMingCheng, \XueFen, \KeChengXingZhi, \KaoShiXingShi, \ZhuanYeBanJi, \KaoShiRiQi, \MingTiJiaoShi, \XiZhuRenQianMing, \tigan, \scorebox, \score, \Score, \fillblank, \xx, \notice, \xuanzeti, \yihang, \erhang, \sihang, XeLaTeX},
   keywordstyle=\color{winered},
-  morekeywords=[2]{hfutexam, shijuan, datizhi, cankaodaan, simple, nofangzheng, flalign, 5cm},
+  morekeywords=[2]{hfutexam, shijuan, datizhi, cankaodaan, simple, nofangzheng, flalign, 5cm, enumerate, align},
   keywordstyle=[2]\color{blue},
 }
 \makeatother
-\newcommand{\diff}{\,\mathrm{d}}
-\usetikzlibrary{arrows.meta, overlay-beamer-styles}
 
 \begin{document}
 %\renewcommand{\titlesep}{1em} % 该命令用于修改标题文字间隔
@@ -182,17 +182,17 @@
 \end{enumerate}
 \textit{\color{blue}{示例:}}
 \begin{lstlisting}
-\[\int e^x\diff x=e^x+C\Score{(4分, 缺少常数得2分)}.\]
+\[\int e^x\diff x=e^x+C. \Score{(4分, 缺少常数得2分)}\]
 \begin{align*}
-\int\sin x\diff x&=-\cos x+C\Score{(4分, 缺少常数得2分)}\\
-\int_0^\pi(1+\sin x)\diff x&=\pi-2\score5
+\int\sin x\diff x&=-\cos x+C, \Score{(4分, 缺少常数得2分)}\\
+\int_0^\pi(1+\sin x)\diff x&=\pi+2. \score5
 \end{align*}
 \end{lstlisting}
 
-\[\int e^x\diff x=e^x+C\Score{(4分, 缺少常数得2分)}.\]
+\[\int e^x\diff x=e^x+C. \Score{(4分, 缺少常数得2分)}\]
 \begin{align*}
-\int\sin x\diff x&=-\cos x+C,\Score{(4分, 缺少常数得2分)}\\
-\int_0^\pi(1+\sin x)\diff x&=\pi+2.\score5
+\int\sin x\diff x&=-\cos x+C, \Score{(4分, 缺少常数得2分)}\\
+\int_0^\pi(1+\sin x)\diff x&=\pi+2. \score5
 \end{align*}
 
 \newpage
