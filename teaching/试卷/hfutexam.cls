@@ -7,7 +7,7 @@
 % 编译模式： XeLaTeX
 % 你可以任意修改或再次分发该文件
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hfutexam}[2022/10/26 v1.0 HFUTExam document class by Zhang Shenxing]
+\ProvidesClass{hfutexam}[2022/10/30 v1.1 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi, cankaodaan, simple
 \newif\ifHFUT@ShiJuan\HFUT@ShiJuantrue
 \newif\ifHFUT@DaTiZhi\HFUT@DaTiZhifalse
@@ -111,7 +111,13 @@
 \newcommand{\boxyes}{{\raisebox{-0.5mm}{\LARGE$\checkmark\hspace{-1.2em}\square$}}}
 \newcommand{\boxno}{{\raisebox{-0.5mm}{\LARGE$\square$}}}
 \RequirePackage[normalem]{ulem}
-\newcommand{\fillblank}[3]{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}
+\ifHFUT@DaTiZhi%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+	\else\ifHFUT@CanKaoDaAn%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+	\else%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{0.5cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+\fi\fi
 \newcommand{\filltitle}[2]{\uline{\makebox[#1]{#2}}}
 \newlength{\ltitle}
 \settowidth{\ltitle}{\HFUT@BiaoTi}
@@ -130,7 +136,7 @@
              闭卷\ifdefstring{\HFUT@KaoShiXingShi}{闭卷}{\boxyes}{\boxno}\\\vspace{2pt}%
 		专业班级（教学班）\filltitle{11em}{\HFUT@ZhuanYeBanJi}\hfill%
 		考试日期\filltitle{16em}{\HFUT@KaoShiRiQi}\hfill%
-		命题教师\fillblank{5.5em}{0.6cm}{\HFUT@MingTiJiaoShi}\hfill%
+		命题教师\fillblank[5.5em][0.6cm]{\HFUT@MingTiJiaoShi}\hfill%
 		系（所或教研室）主任审批签名%
 		\begin{tikzpicture}[overlay,xshift=3.25em,yshift=0.15cm]%
 			\node at (0,0) {\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}};%
@@ -157,7 +163,7 @@
 		\end{tikzpicture}%
 		\filltitle{7em}{}\\\vspace{2pt}%
 		教学班级\filltitle{10.5em}{}\hfill%
-		学生姓名\fillblank{8em}{0.6cm}{}\hfill%
+		学生姓名\fillblank[8em][0.6cm]{}\hfill%
 		学号\filltitle{8em}{}\hfill%
 		考试日期\filltitle{16em}{\HFUT@KaoShiRiQi}\hfill%
 		成绩\filltitle{6.3em}{}\vspace{4pt}%
@@ -179,7 +185,7 @@
 		\end{tikzpicture}%
 		\filltitle{7em}{}\\\vspace{2pt}%
 		教学班级\filltitle{10.5em}{}\hfill%
-		学生姓名\fillblank{8em}{0.6cm}{}\hfill%
+		学生姓名\fillblank[8em][0.6cm]{}\hfill%
 		学号\filltitle{8em}{}\hfill%
 		考试日期\filltitle{16em}{\HFUT@KaoShiRiQi}\hfill%
 		成绩\filltitle{6.3em}{}\vspace{4pt}%
@@ -230,10 +236,8 @@
 	{\leavevmode\xleaders\hbox{\rule[4pt]{8pt}{0.5pt}\,}\hfill\null}%
 }
 % 选择题, 根据选项内容长度自动排版
-\newlength{\lxxa}
-\newlength{\lxxb}
-\newlength{\lxxc}
-\newlength{\lxxd}
+\newlength{\lxxt}
+\newlength{\lxxmax}
 \newlength{\lquar}
 \newlength{\lhalf}
 \newlength{\lfull}
@@ -246,21 +250,18 @@
 	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
 	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
 	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
+	\settowidth{\lxxmax}{A.~#2~~}% 获取最长选项长度
+	\settowidth{\lxxt}{B.~#3~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
+	\settowidth{\lxxt}{C.~#4~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
+	\settowidth{\lxxt}{D.~#5~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
 	\ifnum\value{lxxtype}=0%
-		\settowidth{\lxxa}{A.~#2~~}%
-		\settowidth{\lxxb}{B.~#3~~}%
-		\settowidth{\lxxc}{C.~#4~~}%
-		\settowidth{\lxxd}{D.~#5~~}%
 		\setcounter{lxxtype}{4}%
-		\ifdimcomp\lxxa>\lquar{\setcounter{lxxtype}{2}}{}%
-		\ifdimcomp\lxxb>\lquar{\setcounter{lxxtype}{2}}{}%
-		\ifdimcomp\lxxc>\lquar{\setcounter{lxxtype}{2}}{}%
-		\ifdimcomp\lxxd>\lquar{\setcounter{lxxtype}{2}}{}%
+		\ifdimcomp\lxxt>\lquar{\setcounter{lxxtype}{2}}{}%
 		\ifnum\value{lxxtype}=2%
-			\ifdimcomp\lxxa>\lhalf{\setcounter{lxxtype}{1}}{}%
-			\ifdimcomp\lxxb>\lhalf{\setcounter{lxxtype}{1}}{}%
-			\ifdimcomp\lxxc>\lhalf{\setcounter{lxxtype}{1}}{}%
-			\ifdimcomp\lxxd>\lhalf{\setcounter{lxxtype}{1}}{}%
+			\ifdimcomp\lxxt>\lhalf{\setcounter{lxxtype}{1}}{}%
 		\fi%
 	\fi%
 	\ifnum\value{lxxtype}=1%
@@ -291,18 +292,49 @@
 	\end{tikzpicture}%
 }
 % 得分点命令
-\NewDocumentCommand\Score{O{4cm} m}{%
-  \relax\ifmmode%
-  	\hfill\makebox[#1]{\leavevmode\xleaders\hbox{$\cdot$\hspace{3pt}}\hfill\null}\text{#2}%
-	\else%
-		~~~\leavevmode\xleaders\hbox{$\cdot$\hspace{3pt}}\hfill\null#2%
-  \fi%
+% https://ask.latexstudio.net/ask/question/7557.html
+\RequirePackage{zref-savepos}
+\makeatletter
+\ExplSyntaxOn
+\zref@require@unique
+\NewDocumentCommand{\examscore}{O{} m}{
+	\mode_if_math:TF
+		{ \@@_math_cdotfill:n {\text{#2}} }
+		{ \__examzh_cdotfill: #2 }
+	\mode_if_math:F{
+		\ignorespaces
+	}
 }
-\NewDocumentCommand\sscore{O{2cm} m}{\Score[#1]{(#2分)}}
-\NewDocumentCommand\score{O{4cm} m}{\Score[#1]{(#2分)}}
-\NewDocumentCommand\lscore{O{8cm} m}{\Score[#1]{(#2分)}}
-\NewDocumentCommand\Lscore{O{12cm} m}{\Score[#1]{(#2分)}}
+\cs_new:Npn \__examzh_cdotfill:
+{
+	\mode_leave_vertical:
+	\cleaders \hb@xt@ .44em {\hss $\cdot$ \hss} \hfill
+	\kern\z@
+}
+\cs_new_protected:Npn \@@_math_cdotfill:n #1
+{
+	\stepcounter { zref@unique }
+	\hbox_overlap_right:n
+	{
+		\zsaveposx { \thezref@unique L }
+		\zref@ifrefundefined { \thezref@unique R }
+		{ }
+		{
+			\cleaders
+			\hbox_to_wd:nn { .44em } { \hss $\cdot$ \hss }
+			\skip_horizontal:n
+			{
+				\zposx { \thezref@unique R } sp
+				- \zposx { \thezref@unique L } sp
+			}
+		}
+	}
+	\tag * { \zsaveposx { \thezref@unique R } #1 }
+}
+\ExplSyntaxOff
+\makeatother
+\newcommand\Score[1]{~~~\examscore{#1}}
+\newcommand\score[1]{~~~\examscore{(#1分)}}
 \renewcommand\le{\leqslant}
 \renewcommand\ge{\geqslant}
-
 

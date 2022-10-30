@@ -55,12 +55,12 @@ $\displaystyle f(x)=\begin{cases}\dfrac{e^{3x}-1}{\arctan x},&x<0,\\2x+a,&x\ge0\
 
 \tigan{一、填空题（每题3分，共18分）}
 \begin{enumerate}
-\item 如果 $f(x)>0$ 且 $\displaystyle\lim_{x\to\infty}f(x)=0$, 则 $\displaystyle\lim_{x\to\infty}\bigl[1+f(x)\bigr]^{1/f(x)}=$\fillblank{3.5cm}{0.5cm}{}.
-\item 设 $y=\sin(x^2+1)$, 则 $\diff y=$\fillblank{3.5cm}{0.5cm}{}.
-\item 极限 $\displaystyle\lim_{n\to\infty}\left(\frac1{n^2-1}+\frac2{n^2-2}+\cdots+\frac n{n^2-n}\right)=$\fillblank{3.5cm}{0.5cm}{}.
-\item 曲线 $y=2\ln(x+1)$ 在点 $(1,2\ln2)$ 处的切线方程为\fillblank{3.5cm}{0.5cm}{}.
-\item 若 $e^{y-1}=1+xy$, 则 $\dfrac{\diff y}{\diff x}\bigg|_{x=0}=$\fillblank{3.5cm}{0.5cm}{}.
-\item 如果函数 $f(x)$ 的定义域是 $(0,+\infty)$, 且 $x=0$ 是曲线 $y=f(x)$ 的垂直渐近线, 那么 $\displaystyle\lim_{x\to0^+}\frac1{f(x)}=$\fillblank{3.5cm}{0.5cm}{}.
+\item 如果 $f(x)>0$ 且 $\displaystyle\lim_{x\to\infty}f(x)=0$, 则 $\displaystyle\lim_{x\to\infty}\bigl[1+f(x)\bigr]^{1/f(x)}=$\fillblank{}.
+\item 设 $y=\sin(x^2+1)$, 则 $\diff y=$\fillblank{}.
+\item 极限 $\displaystyle\lim_{n\to\infty}\left(\frac1{n^2-1}+\frac2{n^2-2}+\cdots+\frac n{n^2-n}\right)=$\fillblank{}.
+\item 曲线 $y=2\ln(x+1)$ 在点 $(1,2\ln2)$ 处的切线方程为\fillblank{}.
+\item 若 $e^{y-1}=1+xy$, 则 $\dfrac{\diff y}{\diff x}\bigg|_{x=0}=$\fillblank{}.
+\item 如果函数 $f(x)$ 的定义域是 $(0,+\infty)$, 且 $x=0$ 是曲线 $y=f(x)$ 的垂直渐近线, 那么 $\displaystyle\lim_{x\to0^+}\frac1{f(x)}=$\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每题3分，共18分）}
@@ -128,15 +128,12 @@ $\displaystyle f(x)=\begin{cases}\dfrac{e^{3x}-1}{\arctan x},&x<0,\\2x+a,&x\ge0\
 
 \textbf{请将你的答案对应填在横线上：}
 
-\vspace{\baselineskip}
-\textbf{1.} \fillblank{3.5cm}{1cm}{$e$}, 
-\textbf{2.} \fillblank{3.5cm}{1cm}{$2x\cos(x^2+1)\diff x$}, 
-\textbf{3.} \fillblank{3.5cm}{1cm}{$1/2$}, 
-
-\vspace{\baselineskip}
-\textbf{4.} \fillblank{3.5cm}{1cm}{$y=x-1+2\ln 2$},
-\textbf{5.} \fillblank{3.5cm}{1cm}{$1$},
-\textbf{6.} \fillblank{3.5cm}{1cm}{$0$}.
+\textbf{1.} \fillblank{$e$}, 
+\textbf{2.} \fillblank{$2x\cos(x^2+1)\diff x$}, 
+\textbf{3.} \fillblank{$1/2$}, \\
+\textbf{4.} \fillblank{$y=x-1+2\ln 2$},
+\textbf{5.} \fillblank{$1$},
+\textbf{6.} \fillblank{$0$}.
 
 \tigan{二、选择题（每小题3分，共18分）}
 
@@ -153,125 +150,109 @@ $\displaystyle f(x)=\begin{cases}\dfrac{e^{3x}-1}{\arctan x},&x<0,\\2x+a,&x\ge0\
 \tigan{三、解答题（每小题8分，共64分）}
 
 % 得分点根据长度不同有4条命令 \sscore(0.5倍) \score(1倍) \lscore(2倍) \Lscore(3倍)
-% 行间公式需要使用 flalign* 环境, 每行有偶数个 &, 开头总有两个&&
+% 行间公式需要使用 align* 环境, 每行有偶数个 &, 开头总有两个
 \textbf{1. （8分）【解】}
 \vspace{-\baselineskip}
 
-\begin{flalign*}
-&&\lim_{x\to-1}\frac{x^2-1}{x^2+3x+2}&=\lim_{x\to-1}\frac{(x-1)(x+1)}{(x+2)(x+1)}		&\score3\\
-&&																	 &=\lim_{x\to-1}\frac{x-1}{x+2}									&\score3\\
-&&																	 &=\frac{-2}1=-2.																&\score2
-\end{flalign*}
+\begin{align*}
+\lim_{x\to-1}\frac{x^2-1}{x^2+3x+2}&=\lim_{x\to-1}\frac{(x-1)(x+1)}{(x+2)(x+1)} \score3\\
+&=\lim_{x\to-1}\frac{x-1}{x+2} \score3\\
+&=\frac{-2}1=-2. \score2
+\end{align*}
 
 \textbf{2. （8分）【解】}
 \vspace{-\baselineskip}
 
-\begin{flalign*}
-&&\lim_{x\to0}\frac{e^x-1-x}{\arcsin x^2}&=\lim_{x\to0}\frac{e^x-1-x}{x^2}												&\score3\\
-&&																			 &\xlongequal[]{\text{洛必达}}\lim_{x\to0}\frac{e^x-1}{2x}	&\score3\\
-&&																			 &=\lim_{x\to0}\frac{x}{2x}=\frac12.											&\score2
-\end{flalign*}
+\begin{align*}
+\lim_{x\to0}\frac{e^x-1-x}{\arcsin x^2}&=\lim_{x\to0}\frac{e^x-1-x}{x^2} \score3\\
+&\xlongequal[]{\text{洛必达}}\lim_{x\to0}\frac{e^x-1}{2x} \score3\\
+&=\lim_{x\to0}\frac{x}{2x}=\frac12. \score2
+\end{align*}
 
 \textbf{3. （8分）【解】}
 \vspace{-\baselineskip}
 
-\begin{flalign*}
-&&		\frac{\diff y}{\diff x}&=\frac{\diff y/\diff t}{\diff x/\diff t}												&\score2\\
-&&													 &=\frac{3t^2+1}{2t+1},																						&\score2\\
-&&\frac{\diff^2 y}{\diff x^2}&=\frac{\diff y'/\diff t}{\diff x/\diff t}												&\score2\\
-&&													 &=\frac{6t(2t+1)-(3t^2+1)2}{(2t+1)^3}=\frac{6t^2+6t-2}{(2t+1)^3}.&\score2
-\end{flalign*}
+\begin{align*}
+\frac{\diff y}{\diff x}&=\frac{\diff y/\diff t}{\diff x/\diff t} \score2\\
+&=\frac{3t^2+1}{2t+1}, \score2\\
+\frac{\diff^2 y}{\diff x^2}&=\frac{\diff y'/\diff t}{\diff x/\diff t} \score2\\
+&=\frac{6t(2t+1)-(3t^2+1)2}{(2t+1)^3}=\frac{6t^2+6t-2}{(2t+1)^3}. \score2
+\end{align*}
 
 \textbf{4. （8分）【解】}
 
 \indent 由于 $f(x)$ 在 $x=0$ 处连续, 因此
-\begin{flalign*}
-&&f(0)&=f(0^+)&\score1\\
-&&		&=b=\lim_{x\to0^-}x\arctan\frac1x=0\times\left(-\frac\pi2\right)=0.	&\score1
-\end{flalign*}
+\begin{align*}
+f(0)&=f(0^+) \score1\\
+&=b=\lim_{x\to0^-}x\arctan\frac1x=0\times\left(-\frac\pi2\right)=0. \score1
+\end{align*}
 
 \indent 由于 $f(x)$ 在 $x=0$ 处可导, 因此
-\begin{flalign*}
-&&f'_-(0)&=f'_+(0),																																				&\score1\\
-&&f'_-(0)&=\lim_{x\to0^-}\frac{x\arctan\frac1x}x=\lim_{x\to0^-}\arctan\frac1x=-\frac\pi2	&\score1\\
-&&f'_+(0)&=(2x+a)|_{x=0}=a,																																&\score1
-\end{flalign*}
-因此 $a=-\dfrac\pi2$.\score1
+\begin{align*}
+f'_-(0)&=f'_+(0), \score1\\
+f'_-(0)&=\lim_{x\to0^-}\frac{x\arctan\frac1x}x=\lim_{x\to0^-}\arctan\frac1x=-\frac\pi2 \score1\\
+f'_+(0)&=(2x+a)|_{x=0}=a, \score1
+\end{align*}
+因此 $a=-\dfrac\pi2$. \score1
 
 \indent 由于
-\begin{flalign*}
-&&\lim_{x\to+\infty}\frac yx&=\lim_{x\to+\infty}\left(x-\frac\pi2\right)=+\infty,	&\score1\\
-&&\lim_{x\to-\infty}\frac yx&=\lim_{x\to-\infty}\arctan\frac1x=0,									&\\
-&&			 \lim_{x\to-\infty}y&=\lim_{x\to-\infty}x\arctan\frac1x
-	=\lim_{t\to0^-}\frac{\arctan t}t=1,																							&
-\end{flalign*}
-因此曲线 $y=f(x)$ 的渐近线只有 $y=1$.\score1
+\begin{align*}
+\lim_{x\to+\infty}\frac yx&=\lim_{x\to+\infty}\left(x-\frac\pi2\right)=+\infty, \score1\\
+\lim_{x\to-\infty}\frac yx&=\lim_{x\to-\infty}\arctan\frac1x=0,\\
+\lim_{x\to-\infty}y&=\lim_{x\to-\infty}x\arctan\frac1x=\lim_{t\to0^-}\frac{\arctan t}t=1,
+\end{align*}
+因此曲线 $y=f(x)$ 的渐近线只有 $y=1$. \score1
 
 \textbf{5. （8分）【解】}
 
 \indent 由
-\begin{flalign*}
-&&f'(x)&=3x^2-2x-1=(3x+1)(x-1)=0&\score2
-\end{flalign*}
-可得驻点 $x=-\dfrac13,1$.\score2
+\[f'(x)=3x^2-2x-1=(3x+1)(x-1)=0 \score2\]
+可得驻点 $x=-\dfrac13,1$. \score2
 
 \indent 由于
-\begin{flalign*}
-&&f(-2)=-10,\quad f(2)=2,\quad f\left(-\frac13\right)=\frac5{27},\quad f(1)=-1,&&\score2
-\end{flalign*}
-因此最大值为 $2$, 最小值为 $-10$.\score2
+\[f(-2)=-10,\quad f(2)=2,\quad f\left(-\frac13\right)=\frac5{27},\quad f(1)=-1, \score2\]
+因此最大值为 $2$, 最小值为 $-10$. \score2
 
 \textbf{6. （8分）【证明】}
 
-\textbf{证法一}: 设 $f(x)=\tan x-x$, 则\score2
-\begin{flalign*}
-&&f'(x)=\frac1{\cos^2x}-1=\tan^2x\ge0.&&\score2
-\end{flalign*}
-因此 $f(x)$ 在 $\left(-\dfrac\pi2,\dfrac\pi2\right)$ 上单调递增, 从而\score2
-\begin{flalign*}
-&&f(x_2)\ge f(x_1),\quad\tan x_2-\tan x_1\ge x_2-x_1.&&\score2
-\end{flalign*}
+\textbf{证法一}: 设 $f(x)=\tan x-x$, 则 \score2
+\[f'(x)=\frac1{\cos^2x}-1=\tan^2x\ge0. \score2\]
+因此 $f(x)$ 在 $\left(-\dfrac\pi2,\dfrac\pi2\right)$ 上单调递增, 从而 \score2
+\[f(x_2)\ge f(x_1),\quad\tan x_2-\tan x_1\ge x_2-x_1. \score2\]
 
-\textbf{证法二}: 设 $f(x)=\tan x$, 则 $f(x)$ 在 $[x_1,x_2]$ 上连续, $(x_1,x_2)$ 内可导.\score2
+\textbf{证法二}: 设 $f(x)=\tan x$, 则 $f(x)$ 在 $[x_1,x_2]$ 上连续, $(x_1,x_2)$ 内可导. \score2
 
 \indent 由拉格朗日中值定理, 存在 $\xi\in(x_1,x_2)$ 使得
-\begin{flalign*}
-&&\frac{f(x_2)-f(x_1)}{x_2-x_1}=f'(\xi),&&\score2
-\end{flalign*}
+\[\frac{f(x_2)-f(x_1)}{x_2-x_1}=f'(\xi), \score2\]
 即
-\begin{flalign*}
-&&\frac{\tan x_2-\tan x_1}{x_2-x_1}=\frac1{\cos^2\xi}\ge1.&&\score2
-\end{flalign*}
-所以 $\tan x_2-\tan x_1\ge x_2-x_1$.\score2
+\[\frac{\tan x_2-\tan x_1}{x_2-x_1}=\frac1{\cos^2\xi}\ge1. \score2\]
+所以 $\tan x_2-\tan x_1\ge x_2-x_1$. \score2
 
 \textbf{7. （8分）【证明】}
 
-设 $F(x)=x^{2022}f(x)$,\score2\\
-则 $F(x)$ 在 $[0,1]$ 上连续, $(0,1)$ 内可导,\score1\\
-且 $F(0)=0,F(1)=f(1)=0$.\score1\\
-由罗尔中值定理, 存在 $\xi\in(0,1)$ 使得 $F'(\xi)=0$.\score2\\
-由于 $F'(x)=x^{2022}f'(x)+2022x^{2021}f(x)$ 且 $\xi\neq0$,\score1\\
-所以 $\xi f'(\xi)+2022f(\xi)=1$.\score1
+设 $F(x)=x^{2022}f(x)$, \score2\\
+则 $F(x)$ 在 $[0,1]$ 上连续, $(0,1)$ 内可导, \score1\\
+且 $F(0)=0,F(1)=f(1)=0$. \score1\\
+由罗尔中值定理, 存在 $\xi\in(0,1)$ 使得 $F'(\xi)=0$. \score2\\
+由于 $F'(x)=x^{2022}f'(x)+2022x^{2021}f(x)$ 且 $\xi\neq0$, \score1\\
+所以 $\xi f'(\xi)+2022f(\xi)=1$. \score1
 
 
 \textbf{8. （8分）【解】}
 
 (1) 
-\begin{flalign*}
-&&f'(x)=\frac1x-\frac4{x^3}=\frac{x^2-4}{x^3}=\frac{(x+2)(x-2)}{x^3}.&&\score1
-\end{flalign*}
-当 $0<x<2$ 时, $f'(x)<0$. 当 $x>2$ 时, $f'(x)>0$.\score1\\
-因此 $(0,2]$ 是 $f(x)$ 的单减区间, $[2,+\infty)$ 是 $f(x)$ 的单增区间.\Score{(1分, 写成开区间不扣分)}\\
-所以 $f(x)$ 只有唯一的极小值 $f(2)=\ln2+\dfrac12$.\score1
+\[f'(x)=\frac1x-\frac4{x^3}=\frac{x^2-4}{x^3}=\frac{(x+2)(x-2)}{x^3}. \score1\]
+当 $0<x<2$ 时, $f'(x)<0$. 当 $x>2$ 时, $f'(x)>0$. \score1\\
+因此 $(0,2]$ 是 $f(x)$ 的单减区间,\\
+$[2,+\infty)$ 是 $f(x)$ 的单增区间. \Score{(1分, 写成开区间不扣分)}\\
+所以 $f(x)$ 只有唯一的极小值 $f(2)=\ln2+\dfrac12$. \score1
 
 (2) 
-\begin{flalign*}
-&&f''(x)=-\frac1{x^2}+\frac{12}{x^4}=-\frac{x^2-12}{x^4}=-\frac{(x-2\sqrt3)(x+2\sqrt3)}{x^4}.&&\score1
-\end{flalign*}
-当 $0<x<2\sqrt3$ 时, $f''(x)>0$. 当 $x>2\sqrt3$ 时, $f''(x)<0$.\score1\\
+\[f''(x)=-\frac1{x^2}+\frac{12}{x^4}=-\frac{x^2-12}{x^4}=-\frac{(x-2\sqrt3)(x+2\sqrt3)}{x^4}. \score1\]
+当 $0<x<2\sqrt3$ 时, $f''(x)>0$. 当 $x>2\sqrt3$ 时, $f''(x)<0$. \score1\\
 因此 $(0,2\sqrt3]$ 是曲线 $y=f(x)$ 的凹区间,\\
 $[2\sqrt3,+\infty)$ 是曲线 $y=f(x)$ 的凸区间,\Score{(1分, 写成开区间不扣分)}\\
-拐点为 $\left(2\sqrt3,\ln(2\sqrt3)+\dfrac16\right)$.\score1
+拐点为 $\left(2\sqrt3,\ln(2\sqrt3)+\dfrac16\right)$. \score1
 
 \end{document}
 

@@ -20,7 +20,7 @@
   framerule=0.5pt,
   columns=flexible,
   backgroundcolor=\color{black!5},
-  morekeywords={\maketitle, \titlesep, \BiaoTi, \XueNian, \XueQi, \KeChengDaiMa, \KeChengMingCheng, \XueFen, \KeChengXingZhi, \KaoShiXingShi, \ZhuanYeBanJi, \KaoShiRiQi, \MingTiJiaoShi, \XiZhuRenQianMing, \tigan, \scorebox, \score, \Score, \sscore, \lscore, \Lscore, \fillblank, \xx, \notice, \xuanzeti, \yihang, \erhang, \sihang, XeLaTeX},
+  morekeywords={\maketitle, \titlesep, \BiaoTi, \XueNian, \XueQi, \KeChengDaiMa, \KeChengMingCheng, \XueFen, \KeChengXingZhi, \KaoShiXingShi, \ZhuanYeBanJi, \KaoShiRiQi, \MingTiJiaoShi, \XiZhuRenQianMing, \tigan, \scorebox, \score, \Score, \fillblank, \xx, \notice, \xuanzeti, \yihang, \erhang, \sihang, XeLaTeX},
   keywordstyle=\color{winered},
   morekeywords=[2]{hfutexam, shijuan, datizhi, cankaodaan, simple, nofangzheng, flalign, 5cm},
   keywordstyle=[2]\color{blue},
@@ -49,7 +49,7 @@
 \tigan{一、模板选项}
 
 \indent
-本模板旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
+本模板 (2022/10/30 v1.1) 旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
 使用时, 只需在文档开头写上
 \begin{lstlisting}
 \documentclass[shijuan]{hfutexam}
@@ -112,22 +112,22 @@
 
 \tigan{填空题相关}
 \begin{enumerate}
-\item \lstinline|\fillblank{长度}{最低高度}{内容}| 用于生成填空题的空白, 内容可以为空.
+\item \lstinline|\fillblank[长度][最低高度]{内容}| 用于生成填空题的空白, 内容可以为空. 其中长度默认值是~{\color{blue}{\lstinline|3.5cm|}}, 最低高度默认值是~{\color{blue}{\lstinline|1cm|}}(答题纸和参考答案)或~{\color{blue}{\lstinline|0.5cm|}}(其它).
 \end{enumerate}
 
 \textit{\color{blue}{示例:}}
 \begin{lstlisting}
 \textbf{请将你的答案对应填在横线上：}
 
-\textbf{1.} \fillblank{3.5cm}{1cm}{}, 
-\textbf{2.} \fillblank{3.5cm}{1cm}{}, 
-\textbf{3.} \fillblank{3.5cm}{1cm}{}.
+\textbf{1.} \fillblank{}, 
+\textbf{2.} \fillblank{}, 
+\textbf{3.} \fillblank{}.
 \end{lstlisting}
 \textbf{请将你的答案对应填在横线上：}
 
-\textbf{1.} \fillblank{3.5cm}{1cm}{}, 
-\textbf{2.} \fillblank{3.5cm}{1cm}{}, 
-\textbf{3.} \fillblank{3.5cm}{1cm}{}.
+\textbf{1.} \fillblank[3.5cm][1cm]{}, 
+\textbf{2.} \fillblank[3.5cm][1cm]{}, 
+\textbf{3.} \fillblank[3.5cm][1cm]{}.
 
 
 \tigan{选择题相关}
@@ -161,7 +161,7 @@
 \end{enumerate}
 
 \newpage
-在答题纸上的示例:
+\textit{\color{blue}{示例:}}
 \begin{lstlisting}
 \textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
 
@@ -175,43 +175,35 @@
 
 
 \tigan{得分点相关}
-
-\lstinline|\score{数值}| 用于在参考答案一行结尾处生成得分点的虚线.\score2
-\lstinline|\Score{(2分, 缺少常数得1分)}| 自定义得分内容.\Score{(2分, 缺少常数得1分)}
-
-\indent
-在公式中无法自动设置虚线长度, 此时请根据需要使用 {\color{blue}{\lstinline|flalign*|}} 环境并使用如下命令:
+\begin{enumerate}
+\item \lstinline|\score{数值}| 用于在参考答案一行结尾处生成得分点的虚线.\score2
+\item \lstinline|\Score{(2分, 缺少常数得1分)}| 用于自定义得分说明.\Score{(2分, 缺少常数得1分)}
+\item 在公式中也可使用, 但是需要编译两次才会正常计算出虚线长度.
+\end{enumerate}
+\textit{\color{blue}{示例:}}
 \begin{lstlisting}
-\begin{flalign*}
-&&aaaa&=bbbbbbb&\Score[3cm]{(2分, 缺少常数得1分)}\\		% 指定长度, 预设 4cm
-&&aaaa&=bbbb&\sscore3\\		% 预设 2cm, 且只需要输入分数
-&&aaaaaa&=bbbbbb&\score4\\		% 预设 4cm, 且只需要输入分数
-&&aaaaa&=bbbbb&\lscore5		% 预设 8cm, 且只需要输入分数
-\end{flalign*}
-\begin{flalign*}
-&&a&=b&\Lscore6		% 预设 12cm, 且只需要输入分数
-\end{flalign*}
+\[\int e^x\diff x=e^x+C\Score{(4分, 缺少常数得2分)}.\]
+\begin{align*}
+\int\sin x\diff x&=-\cos x+C\Score{(4分, 缺少常数得2分)}\\
+\int_0^\pi(1+\sin x)\diff x&=\pi-2\score5
+\end{align*}
 \end{lstlisting}
 
-\begin{flalign*}
-&&aaaaaaa&=bbbbbbb&\Score[3cm]{(2分, 缺少常数得1分)}\\		% 指定长度
-&&aaaa&=bbbb&\sscore3\\		% 预设 2cm, 且只需要输入分数
-&&aaaaaa&=bbbbbb&\score4\\		% 预设 4cm, 且只需要输入分数
-&&aaaaa&=bbbbb&\lscore5		% 预设 8cm, 且只需要输入分数
-\end{flalign*}
-\begin{flalign*}
-&&a&=b&\Lscore6		% 预设 12cm, 且只需要输入分数
-\end{flalign*}
+\[\int e^x\diff x=e^x+C\Score{(4分, 缺少常数得2分)}.\]
+\begin{align*}
+\int\sin x\diff x&=-\cos x+C,\Score{(4分, 缺少常数得2分)}\\
+\int_0^\pi(1+\sin x)\diff x&=\pi+2.\score5
+\end{align*}
 
 \newpage
 \tigan{一、填空题（每题3分，共18分）}
 \begin{enumerate}
-\item 如果 $f(x)>0$ 且 $\displaystyle\lim_{x\to\infty}f(x)=0$, 则 $\displaystyle\lim_{x\to\infty}\bigl[1+f(x)\bigr]^{1/f(x)}=$\fillblank{3.5cm}{0.5cm}{}.
-\item 设 $y=\sin(x^2+1)$, 则 $\diff y=$\fillblank{3.5cm}{0.5cm}{}.
-\item 极限 $\displaystyle\lim_{n\to\infty}\left(\frac1{n^2-1}+\frac2{n^2-2}+\cdots+\frac n{n^2-n}\right)=$\fillblank{3.5cm}{0.5cm}{}.
-\item 曲线 $y=2\ln(x+1)$ 在点 $(1,2\ln2)$ 处的切线方程为\fillblank{3.5cm}{0.5cm}{}.
-\item 若 $e^{y-1}=1+xy$, 则 $\dfrac{\diff y}{\diff x}\bigg|_{x=0}=$\fillblank{3.5cm}{0.5cm}{}.
-\item 如果函数 $f(x)$ 的定义域是 $(0,+\infty)$, 且 $x=0$ 是曲线 $y=f(x)$ 的垂直渐近线, 那么 $\displaystyle\lim_{x\to0^+}\frac1{f(x)}=$\fillblank{3.5cm}{0.5cm}{}.
+\item 如果 $f(x)>0$ 且 $\displaystyle\lim_{x\to\infty}f(x)=0$, 则 $\displaystyle\lim_{x\to\infty}\bigl[1+f(x)\bigr]^{1/f(x)}=$\fillblank{}.
+\item 设 $y=\sin(x^2+1)$, 则 $\diff y=$\fillblank{}.
+\item 极限 $\displaystyle\lim_{n\to\infty}\left(\frac1{n^2-1}+\frac2{n^2-2}+\cdots+\frac n{n^2-n}\right)=$\fillblank{}.
+\item 曲线 $y=2\ln(x+1)$ 在点 $(1,2\ln2)$ 处的切线方程为\fillblank{}.
+\item 若 $e^{y-1}=1+xy$, 则 $\dfrac{\diff y}{\diff x}\bigg|_{x=0}=$\fillblank{}.
+\item 如果函数 $f(x)$ 的定义域是 $(0,+\infty)$, 且 $x=0$ 是曲线 $y=f(x)$ 的垂直渐近线, 那么 $\displaystyle\lim_{x\to0^+}\frac1{f(x)}=$\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每题3分，共18分）}
