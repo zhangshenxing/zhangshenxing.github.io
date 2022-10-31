@@ -7,7 +7,7 @@
 % 编译模式： XeLaTeX
 % 你可以任意修改或再次分发该文件
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hfutexam}[2022/10/30 v1.1 HFUTExam document class by Zhang Shenxing]
+\ProvidesClass{hfutexam}[2022/10/31 v1.2 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi, cankaodaan, simple
 \newif\ifHFUT@ShiJuan\HFUT@ShiJuantrue
 \newif\ifHFUT@DaTiZhi\HFUT@DaTiZhifalse
@@ -212,12 +212,12 @@
 % 题号加粗
 \renewcommand{\labelenumi}{{\bfseries \theenumi.}}
 % 题干
-\newcommand\tigan[1]{{\large\textbf{#1}}}
+\newcommand\tigan[1]{\noindent{\large\textbf{#1}}}
 % 打分栏
 \RequirePackage{tikz}
 \usetikzlibrary{overlay-beamer-styles}
 \newcommand\scorebox{%
-	\vspace{0.5\baselineskip}%
+	\vspace{0.5\baselineskip}\noindent%
 	\begin{tikzpicture}[overlay,xshift=13.4cm,yshift=-1.6cm]%
 		\draw (0,0) rectangle (4,2);%
 		\draw (2,0)--(2,2);%
@@ -228,7 +228,7 @@
 }
 % 答题纸提示信息
 \newcommand\notice{%
-	\textbf{\small 考生注意事项：\\%
+	\noindent\textbf{\small 考生注意事项：\\%
 	\indent 1. 本试卷分试题与答卷两部分；\\%
 	\indent 2. 所有试题的解答（包括选择、填空）必须写在专用答卷纸上，在试题上直接作答一律无效；\\%
 	\indent 3. 考试结束后，必须将试题、答卷整理上交，不得将试题带离考场；\\%
@@ -264,6 +264,7 @@
 			\ifdimcomp\lxxt>\lhalf{\setcounter{lxxtype}{1}}{}%
 		\fi%
 	\fi%
+	\vspace{5pt}%
 	\ifnum\value{lxxtype}=1%
 		\\\makebox[\lfull][l]{A.~#2}%
 		\\\makebox[\lfull][l]{B.~#3}%
