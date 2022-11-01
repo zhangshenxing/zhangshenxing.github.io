@@ -220,11 +220,10 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
 \onslide<+->
 因此
-\begin{align*}
-\frac1{(1+z)^2}&=-\left(\frac1{1+z}\right)'
-\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}\\
-&\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\frac1{(1+z)^2}&=-\left(\frac1{1+z}\right)'\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}&\\
+&&&\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}\mqed
+\end{flalign*}
 \end{solutions}
 \endgroup
 \end{frame}
@@ -244,12 +243,12 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \[[\ln(1+z)]'=\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\quad|z|<1\]
 \onslide<+->
 逐项积分得到
-\begin{align*}
-\ln(1+z)&=\int_0^z\frac1{1+\zeta}\diff\zeta
-\visible<+->{=\int_0^z\sum_{n=0}^\infty(-1)^n\zeta^n\diff\zeta}\\
-&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
-\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\ln(1+z)&=\int_0^z\frac1{1+\zeta}\diff\zeta
+	\visible<+->{=\int_0^z\sum_{n=0}^\infty(-1)^n\zeta^n\diff\zeta}&\\
+&&&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
+	\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.}\mqed
+\end{flalign*}
 \end{solutions}
 \endgroup
 \end{frame}
@@ -263,11 +262,11 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 由于 $\dfrac1{3z-2}$ 的奇点为 $z=\dfrac23$, 因此它在 $|z|<\dfrac23$ 内解析.
 \onslide<+->
 此时
-\begin{align*}
-\frac1{3z-2}&=-\frac12\cdot\frac1{1-\dfrac{3z}2}
-\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}\\
-&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\frac1{3z-2}&=-\frac12\cdot\frac1{1-\dfrac{3z}2}
+	\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}&\\
+&&&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.}\mqed
+\end{flalign*}
 \end{solutions}
 \end{frame}
 

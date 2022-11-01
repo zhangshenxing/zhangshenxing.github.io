@@ -123,12 +123,10 @@ $f(z)=z^4\sin\dfrac1z$.
 \begin{solutions}
 由于 $(e^z)(0)=1$, 因此 $0$ 是 $n$ 阶极点,
 \onslide<+->
-\begin{align*}
-\Res\left[\frac{e^z}{z^n},0\right]
-&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}\\
-&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z
-=\frac1{(n-1)!}.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\Res\left[\frac{e^z}{z^n},0\right]&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}&\\
+&&&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z=\frac1{(n-1)!}.}\mqed
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
@@ -153,11 +151,10 @@ $f(z)=z^4\sin\dfrac1z$.
 \begin{frame}{典型例题: 留数的计算}
 \begin{solutionc}
 \vspace{-\baselineskip}
-\begin{align*}
-\Res\left[\frac{z-\sin z}{z^6},0\right]
-&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}\\
-&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\Res\left[\frac{z-\sin z}{z^6},0\right]&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}&\\
+&&&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}\mqed
+\end{flalign*}
 \end{solutionc}
 
 \begin{exercise}
@@ -182,8 +179,7 @@ $\dfrac1{24}$.
 \begin{flalign*}
 &&&\peq\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)&\\
 &&&\visible<+->{=\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
-\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}
-=\frac{P(z_0)}{Q'(z_0)}.}&\visible<.->{\mqed}
+	\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}\mqed
 \end{flalign*}
 \end{proofs}
 \endgroup
@@ -308,7 +304,7 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \begin{flalign*}
 &&&\peq\oint_{|z|=2}f(z)\diff z&\\
 &&&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]+\Res[f(z),0]\bigr]&\\
-&&&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}&\visible<.->{\mqed}
+&&&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}\mqed
 \end{flalign*}
 \end{solutionc}
 \end{frame}

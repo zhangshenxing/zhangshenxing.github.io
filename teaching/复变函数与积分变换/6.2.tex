@@ -78,7 +78,7 @@
 \begin{flalign*}
 &&\msf[e^{-\beta t}u(t)]&=\frac{1}{\beta+j\omega},&\\
 &&\visible<+->{\msf[t^ke^{-\beta t}u(t)]}&\visible<.->{=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}}
-\visible<+->{=\frac{k!}{(\beta+j\omega)^{k+1}}.}&\visible<.->{\mqed}
+\visible<+->{=\frac{k!}{(\beta+j\omega)^{k+1}}.}\mqed
 \end{flalign*}
 \end{solutions}
 \end{frame}
@@ -96,7 +96,7 @@
 \begin{flalign*}
 &&\markatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
 &&&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
-&&&\visible<+->{\markatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}}&\visible<.->{\mqed}
+&&&\visible<+->{\markatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}}\mqed
 \end{flalign*}
 \end{solutions}
 \end{frame}
@@ -120,7 +120,7 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \onslide<+->
 容易验证卷积满足如下性质:
 \begin{itemize}
-\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_2=f_1\ast(f_2\ast f_3)$;
+\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
 \item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
 \item $f\ast\delta=f$;
 \item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
@@ -162,14 +162,14 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 &\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}&\\
 &\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}&\\
 &\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}&\\
-&\visible<+->{=\msf[f_1]\msf[f_2].}&\visible<.->{\mqed}
+&\visible<+->{=\msf[f_1]\msf[f_2].}\mqed
 \end{flalign*}
 \end{proofs}
 \endgroup
 \end{frame}
 
 
-\begin{frame}{使用积分变换解微积分方程}
+\begin{frame}{使用傅里叶变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
 \node[draw,fill=alercolor!25] (p1){微分方程或积分方程};
@@ -197,12 +197,14 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \onslide<+->
 \[X(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
 \onslide<+->
-\[x(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
-\visible<+->{=\begin{cases}
+\begin{flalign*}
+&&x(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
+&\visible<+->{=\begin{cases}
 0-e^t=-e^t,&t<0,\\
-1/2-1/2=0,&t=0,\\
+0,&t=0,\\
 e^{-t}-0=e^{-t},&t>0.
-\end{cases}\mqed}\]
+\end{cases}}\mqed
+\end{flalign*}
 \end{solutions}
 \vspace{-1pt}
 \endgroup

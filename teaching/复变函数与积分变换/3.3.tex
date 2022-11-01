@@ -154,10 +154,10 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \end{align*}
 \onslide<+->
 因此
-\begin{align*}
-\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i\\
-&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i&\\
+&&&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}\mqed
+\end{flalign*}
 \end{solutions}
 \onslide<+->
 这里我们使用了\markatt{分部积分法}.
@@ -177,10 +177,10 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]
 \onslide<+->
 因此
-\begin{align*}
-\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
-&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).\mqed}
-\end{align*}
+\begin{flalign*}
+&&\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}&\\
+&&&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).}\mqed
+\end{flalign*}
 \end{solutions}
 \endgroup
 \end{frame}
@@ -208,12 +208,12 @@ $\sin 1-\cos 1$.
 =\int\ln(z+1)\diff[\ln(z+1)]=\frac12\ln^2(z+1)+c.\]
 \onslide<+->
 因此
-\begin{align*}
-&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
-\visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}\\
-&\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
-=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.\mqed}
-\end{align*}
+\begin{flalign*}
+&&&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
+\visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}&\\
+&&&\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
+=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}\mqed
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
@@ -231,10 +231,10 @@ x=a(\theta-\sin\theta),&\\ y=a(1-\cos\theta),
 由于 $f(z)=2z^2+8z+1$ 处处解析,
 \onslide<+->
 因此
-\begin{align*}
-&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
-&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.\mqed}
-\end{align*}
+\begin{flalign*}
+&&&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z&\\
+&&&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}\mqed
+\end{flalign*}
 \vspace{-8pt}
 \end{solutions}
 \end{frame}

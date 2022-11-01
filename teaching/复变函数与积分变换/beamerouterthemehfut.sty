@@ -6,17 +6,17 @@
 {%
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{chapter in head/foot}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{chapter in head/foot}%
     \ifnum \thepart>0
       \usebeamerfont{title in head/foot}{第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
     \else
       \usebeamerfont{author in head/foot}{\insertshortauthor}
     \fi
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{course in head/foot}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{course in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{title in head/foot}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{title in head/foot}%
     \ifnum \thesection>0
       \hfill%
       \usebeamerfont{section in head/foot}{\thepart.\thesection~\insertsectionhead{}}

@@ -1,13 +1,72 @@
 \mode<presentation>
-
-\usecolortheme{hfut}
-\useinnertheme{hfut}
-\useoutertheme{hfut}
-
-% set to default serif font and character space
-
+% Color
+\usecolortheme{rose}
+\usecolortheme{seahorse}
+\setbeamercolor*{title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+\setbeamercolor*{part title}{parent=title}
+\setbeamercolor*{chapter in head/foot}{parent=palette quaternary}
+\setbeamercolor*{course in head/foot}{parent=palette tertiary}
+\setbeamercolor*{item}{parent=example text}
+% Inner
+\useinnertheme{rectangles}
+\setbeamersize{text margin left=1em,text margin right=1em}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{part title}{size=\Large}
+\setbeamerfont{part name}{size=\Large, parent=part title}
+\defbeamertemplate*{part page}{hfut}[1][]
+{
+  \begingroup
+    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
+      {\usebeamerfont{part name}\usebeamercolor[fg]{part name}第\chinese{part}章}\hspace{1em}%
+      \usebeamerfont{part title}\insertpart\par
+    \end{beamercolorbox}
+  \endgroup
+}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{enumerate item}{size=\large}
+\setbeamerfont{enumerate subitem}{size=\large}
+\setbeamerfont{enumerate subsubitem}{size=\large}
+\setbeamerfont{item projected}{size=\normalsize}
+% Outer
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+\defbeamertemplate*{footline}{hfut}
+{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{chapter in head/foot}%
+    \ifnum \thepart>0
+      \usebeamerfont{author in head/foot}{第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
+    \else
+      \usebeamerfont{author in head/foot}{\insertshortauthor}
+    \fi
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{course in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{title in head/foot}%
+    \ifnum \thesection>0
+      \hfill%
+      \usebeamerfont{section in head/foot}{\thepart.\thesection~\insertsectionhead{}}
+      \hfill%
+      \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
+    \else
+      \ifnum \thepart>0
+        \hfill%
+        \usebeamerfont{section in head/foot}{\insertshortinstitute}
+        \hfill%
+        \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
+      \else
+        \centering \usebeamerfont{section in head/foot}{\insertshortinstitute}
+      \fi
+    \fi
+  \end{beamercolorbox}}%
+}
+% Font
 \usefonttheme[onlymath]{serif}
 \RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
-
 \mode<all>
+

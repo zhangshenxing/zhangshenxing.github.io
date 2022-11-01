@@ -87,7 +87,7 @@ $m$ 阶极点&\makecell[c]{主要部分只有有限项非零\\最低次为 $-m$ 
 通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 解析.
 
 \begin{conclusion}
-$z_0$ 是 $f(z)$ 的可去奇点当且仅当 $\lim\limits_{z\to z_0}f(z)$ 存在且有限.
+$z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限 $\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
 \end{conclusion}
 \end{frame}
 
@@ -125,7 +125,7 @@ $\displaystyle e^{\frac1z}=1+\frac1z+\frac1{2z^2}+\cdots$, $0$ 是本性奇点.
 \end{example}
 
 \begin{conclusion}
-$z_0$ 是 $f(z)$ 的本性奇点当且仅当 $\lim\limits_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
+$z_0$ 是 $f(z)$ 的本性奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
 \end{conclusion}
 
 \onslide<+->
@@ -142,14 +142,20 @@ $z_0$ 是 $f(z)$ 的本性奇点当且仅当 $\lim\limits_{z\to z_0}f(z)$ 不存
 \[f(z)=c_{-m}(z-z_0)^{-m}+\cdots+c_0+c_1(z-z_0)+\cdots,\]
 其中 $c_{-m}\neq 0,m\ge 1$, 则称 $z_0$ 是 $f(z)$ 的\markdef{$m$ 阶极点}(\markdef{$m$ 级极点}).
 \end{definition}
-\onslide<+->
-令 $g(z)=c_{-m}+c_{-m+1}(z-z_0)+c_{-m+2}(z-z_0)^2+\cdots$, 则 $g(z)$ 在 $z_0$ 解析且非零, 且当 $z\neq z_0$ 时, $f(z)=\dfrac{g(z)}{(z-z_0)^m}$.
-\onslide<+->
-因此 \marknot{$z_0$ 是 $f(z)$ 的 $m$ 阶极点当且仅当 $\lim\limits_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零}.
+\end{frame}
 
-\vspace{-2pt}
+
+\begin{frame}{典型例题: 函数的极点}
+\onslide<+->
+令 $g(z)=c_{-m}+c_{-m+1}(z-z_0)+c_{-m+2}(z-z_0)^2+\cdots$, 则 $g(z)$ 在 $z_0$ 解析且非零,
+\onslide<+->
+且当 $z\neq z_0$ 时, $f(z)=\dfrac{g(z)}{(z-z_0)^m}$.
+
 \begin{conclusion}
-$z_0$ 是 $f(z)$ 的极点当且仅当 $\lim\limits_{z\to z_0}f(z)=\infty$.
+\begin{itemize}
+\item $z_0$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\lim\limits_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零.
+\item $z_0$ 是 $f(z)$ 的极点 $\iff\lim\limits_{z\to z_0}f(z)=\infty$.
+\end{itemize}
 \end{conclusion}
 \end{frame}
 
@@ -184,7 +190,7 @@ $-1$ 是 $1$ 阶极点, $1$ 是 $2$ 阶极点.
 此时 $f(z)=(z-z_0)^mg(z)$, $g(z)$ 在 $z_0$ 解析且 $g(z_0)\neq 0$.
 
 \begin{theorem}
-如果 $f(z)$ 在 $z_0$ 解析, 则 $z_0$ 是 $m$ 阶零点当且仅当
+如果 $f(z)$ 在 $z_0$ 解析, 则 $z_0$ 是 $m$ 阶零点 $\iff$
 \[f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,\quad
 f^{(m)}(z_0)\neq 0.\]
 \end{theorem}
@@ -243,14 +249,15 @@ $f(z)=\sin z-z$.
 \onslide<+->
 记 $\ord(f,z_0)$ 为 $f(z)$ 在 $z_0$ 的洛朗展开的最低次项幂次.
 
+\onslide<+->
+如果 $\ord(f,z_0)=-m<0$, 则 $z_0$ 是 $m$ 阶极点.
+\onslide<+->
+如果 $\ord(f,z_0)\ge 0$, 则 $z_0$ 是可去奇点或解析点.
+
 \begin{theorem}
 如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
 \[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
 \end{theorem}
-\onslide<+->
-如果 $\ord=-m$, 则 $z_0$ 是 $m$ 阶极点.
-\onslide<+->
-如果 $\ord\ge 0$, 则 $z_0$ 是可去奇点或解析点.
 \end{frame}
 
 
@@ -505,11 +512,10 @@ $f(z)=\dfrac z{z+1}$.
 %\onslide<+->
 %从而 $g(z)$ 是一个多项式, $f(z)=g(z)/h(z)$ 是一个有理函数.
 %\onslide<+->
-%\begin{align*}
-%\sum_{z\in\BC^*}\ord(f,z)&
-%=\ord(f,\infty)+\sum_{z\in\BC}\ord(g,z)-\sum_{z\in\BC}\ord(h,z)\\
-%&\visible<+->{=\deg h-\deg g+\deg g-\deg h=0.\mqed}
-%\end{align*}
+%\begin{flalign*}
+%&&\sum_{z\in\BC^*}\ord(f,z)&%=\ord(f,\infty)+\sum_{z\in\BC}\ord(g,z)-\sum_{z\in\BC}\ord(h,z)&\\
+%&&&\visible<+->{=\deg h-\deg g+\deg g-\deg h=0.}\mqed
+%\end{flalign*}
 %\vspace{-\baselineskip}
 %\end{proofc}
 %\endgroup

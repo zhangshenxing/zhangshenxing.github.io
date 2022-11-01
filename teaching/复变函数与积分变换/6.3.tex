@@ -32,7 +32,7 @@
 \begin{center}
 \begin{tikzpicture}[node distance=-20pt]
   \node[draw,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
-  \node[draw,align=center, right=116pt of a](b){象函数\\$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$};
+  \node[draw,align=center, right=116pt of a](b){象函数\\\markatt{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
   \node[above=of a] (a1){\hphantom{原象函数}};
   \node[below=of a] (a2){\hphantom{原象函数}};
   \node[above=of b] (b1){\hphantom{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
@@ -46,7 +46,7 @@
 
 \begin{frame}{例题: 求拉普拉斯变换}
 \begin{example}
-求 $\msl[e^{kt}],k\in\BR$.
+求 $\msl[e^{kt}]$.
 \end{example}
 \begin{solution}
 \vspace{-\baselineskip}
@@ -54,7 +54,7 @@
 \msl[e^{kt}]&=\int_0^{+\infty}e^{kt}e^{-st}\diff t\\
 &\visible<+->{=\int_0^{+\infty}e^{-(s-k)t}\diff t
 =-\frac1{s-k}e^{-(s-k)t}\big|_0^{+\infty}}\\
-&\visible<+->{=\frac1{s-k}, \quad\Re s>k.}
+&\visible<+->{=\frac1{s-k}, \quad\Re s>\Re k.}
 \end{align*}
 \onslide<+->
 即 \markatt{$\msl[e^{kt}]=\dfrac1{s-k}$}.
@@ -70,18 +70,18 @@
 \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
 \end{conclusion}
 
-\begin{conclusion}[延迟性质]
-\[\msl[f(t-t_0)]=e^{-st_0}F(s).\]
+\begin{conclusion}[延迟性质和位移性质]
+\[\msl[e^{s_0t}f(t)]=F(s-s_0),\quad
+\msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0.\]
 \end{conclusion}
 
-\begin{conclusion}[位移性质]
-\[\msl[e^{s_0t}f(t)]=F(s-s_0).\]
-\end{conclusion}
+\onslide<+->
+例如
+\[\msl[1]=\frac1s,\quad\msl[e^{kt}]=\frac1{s-k}.\]
 \end{frame}
 
 
 \begin{frame}{拉普拉斯变换的性质}
-\beqskip{2pt}
 \begin{conclusion}[微分性质]
 \vspace{-\baselineskip}
 \[\markatt{\msl[f'(t)]=sF(s)-f(0),}\]
@@ -96,16 +96,14 @@
 
 \begin{conclusion}[乘多项式性质]
 \vspace{-\baselineskip}
-\[\markatt{\msl[tf(t)]=-F'(s),}\]
-\[\msl[t^kf(t)]=(-1)^kF^{(k)}(s).\]
+\[\msl[tf(t)]=-F'(s),\quad\msl[t^kf(t)]=(-1)^kF^{(k)}(s).\]
 \end{conclusion}
-\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 求拉普拉斯变换}
 \begin{example}
-求 $\msl[\sin{kt}],k\in\BR$.
+求 $\msl[\sin{kt}]$.
 \end{example}
 \begin{solutions}
 由于
@@ -113,8 +111,9 @@
 \onslide<+->
 因此
 \begin{flalign*}
-\msl[\sin{kt}]&=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)&\\
-&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)=\frac k{s^2+k^2},\quad \Re s>0.}&\visible<.->{\mqed}
+&&&\peq\markatt{\msl[\sin{kt}]}=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)&\\
+&&&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)}
+\visible<+->{\markatt{=\frac k{s^2+k^2}},\quad \Re s>\abs{\Im k}.}\mqed
 \end{flalign*}
 \end{solutions}
 \end{frame}
@@ -122,10 +121,10 @@
 
 \begin{frame}{典型例题: 求拉普拉斯变换}
 \begin{exercise}
-求 $\msl[\cos{kt}],k\in\BR$.
+求 $\msl[\cos{kt}]$.
 \end{exercise}
 \begin{answer}
-$\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
+$\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \end{answer}
 \end{frame}
 
@@ -135,13 +134,19 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 求 $\msl[t^m]$, 其中 $m$ 是正整数.
 \end{example}
 \begin{solution}
-设 $f(t)=t^m$. 由于
-\[f(0)=f'(0)=\cdots=f^{(m-1)}(0)=0,\]
+设 $f(t)=t^m$. 由于 $f(0)=f'(0)=\cdots=f^{(m-1)}(0)=0$,
 \onslide<+->
 因此
 \[\msl[f^{(m)}(t)]=s^m\msl[f(t)]=\msl[m!]=\frac{m!}s,\]
 \onslide<+->
-\[\msl[t^m]=\msl[f(t)]=\frac{m!}{s^{m+1}},\quad \Re s>0.\qedhere\]
+\vspace{-\baselineskip}
+\[\markatt{\msl[t^m]}=\msl[f(t)]\markatt{=\frac{m!}{s^{m+1}}},\quad \Re s>0.\]
+\onslide<+->
+或由
+\vspace{-\baselineskip}
+\[\msl[t^m]=(-1)^m \msl[1]^{(m)}
+=(-1)^m\left(\frac1s\right)^{(m)}=\frac{m!}{s^{m+1}}.\qedhere\]
+\vspace{-\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -172,7 +177,7 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 因此
 \[\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1{s^2}\right]
 -\msl^{-1}\left[\frac1{s^2+1}\right]
-=t-\cos t.\qedhere\]
+=t-\sin t.\qedhere\]
 \end{solution}
 \end{frame}
 
@@ -219,13 +224,13 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 \begin{flalign*}
 &&\msl^{-1}[F(s)]&=\msl^{-1}\left[\frac1s\right]\ast\msl^{-1}\left[\frac1{(s-1)^2}\right]&\\
 &&&\visible<+->{=1\ast te^t=\int_0^t\tau e^\tau\diff \tau}&\\
-&&&\visible<+->{=(t-1)e^t+1.}&\visible<.->{\mqed}
+&&&\visible<+->{=(t-1)e^t+1.}\mqed
 \end{flalign*}
 \end{solutionc}
 \end{frame}
 
 
-\begin{frame}{使用积分变换解微积分方程}
+\begin{frame}{使用拉普拉斯变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
 \node[draw,fill=alercolor!25] (p1){微分方程或积分方程};
@@ -260,7 +265,7 @@ $\msl[\cos{kt}]=\dfrac s{s^2+k^2},\Re s>0$.
 x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
 \visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}&\\
 &\visible<+->{=-e^t\msl^{-1}\left[\left(\frac1{s^2+1}\right)'\right]}
-\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}&\visible<.->{\mqed}
+\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}\mqed
 \end{flalign*}
 \end{solutions}
 \endgroup

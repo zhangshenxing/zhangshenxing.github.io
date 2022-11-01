@@ -10,15 +10,15 @@
 % 章重置节编号
 \makeatletter
 \AtBeginPart{%
-	\beamer@tocsectionnumber=0\relax
-	\setcounter{section}{0}
-	\frame{\partpage}
+  \beamer@tocsectionnumber=0\relax
+  \setcounter{section}{0}
+  \frame{\partpage}
 }
 % 节目录
 \AtBeginSection{%
-	\begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}
-		\tableofcontents[currentsection]
-	\end{frame}
+  \begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}
+    \tableofcontents[currentsection]
+  \end{frame}
 }
 \makeatother
 
@@ -41,11 +41,17 @@
 \newcommand\markatt[1]{{\color{alecolor}{#1}}}
 \newcommand\marknot[1]{{\color{notcolor}{#1}}}
 % 证毕标志
-\renewcommand\qedsymbol{{\color[rgb]{0.2,0.2,0.7}\ensuremath{\blacksquare}}}
+\renewcommand\qedsymbol{{\color{strucolor}\ensuremath{\blacksquare}}}
 % 手动证毕标志
-\newcommand\mqed{{\quad\hspace{\fill}\qedsymbol}}
+%\newcommand\mqed{\tag*{\qedsymbol}}
+%\newcommand\mqed{{\quad\hspace{\fill}\qedsymbol}}
+\newcommand\mqed{&\visible<.->{\qedsymbol}}
 % 枚举数字引用标志
-\newcommand\enumnum[1]{{\color{defcolor}{\rule[-2pt]{12pt}{12pt}}\hspace{-8.5pt}\color{white}{#1}}\;}
+\newcommand\enumnum[1]{{
+  \color{examcolor}\vrule width2.25ex height1.85ex depth.4ex%
+  \hskip-2.25ex%
+  \hbox to2.25ex{\hfil\color{white}#1\hfil}}\kern1.25ex%
+}
 % 减少公式垂直间距, 配合\endgroup
 \newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1}
 % 默认公式间距最低至0

@@ -160,12 +160,12 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \begin{frame}{例题: 柯西积分公式的应用}
 \begin{solutionc}
 由复合闭路定理和柯西积分公式
-\begin{align*}
-&\peq\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
-=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z\\
-&\visible<+->{=2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}\\
-&\visible<+->{=2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).\mqed}
-\end{align*}
+\begin{flalign*}
+&&&\peq\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
+=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z&\\
+&&&\visible<+->{=2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}&\\
+&&&\visible<+->{=2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).}\mqed
+\end{flalign*}
 \end{solutionc}
 \end{frame}
 
@@ -286,11 +286,11 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 由于 $\cos(\pi z)$ 在 $|z|<2$ 处处解析,
 \onslide<+->
 因此由柯西积分公式,
-\begin{align*}
-&\peq\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
-=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}\\
-&\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
+&=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}&\\
+&&&\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}\mqed
+\end{flalign*}
 \end{solutions}
 \end{frame}
 
@@ -384,15 +384,10 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 由复合闭路定理和柯西积分公式,
 \onslide<+->
-\begin{align*}
-	&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z
-		=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z
-		 +\oint_{C_2}\frac1{(z-2)^2z^3}\diff z\\
-	&\visible<+->{
-		=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}
-		 +\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.\mqed
-	}
-\end{align*}
+\begin{flalign*}
+&&&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z&\\
+&&&\visible<+->{=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.}\mqed
+\end{flalign*}
 \end{solutionc}
 \onslide<+->
 \begin{columns}
