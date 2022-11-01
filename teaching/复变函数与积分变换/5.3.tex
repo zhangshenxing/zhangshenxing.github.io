@@ -25,7 +25,7 @@
 求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
 \end{example}
 
-\begin{solutions}
+\begin{solution}
 令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
 \onslide<+->
 \[\cos\theta=\frac12\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
@@ -36,7 +36,7 @@
 &=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\frac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}\\
 &=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\diff z.
 \end{align*}
-\end{solutions}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -52,7 +52,7 @@
 \begin{align*}
 \int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
 &=-\frac i6\cdot 2\pi i\Bigl[\Res[f(z),0]+\Res[f(z),\frac13]\Bigr]\\
-&=\frac{2\pi}9.\qedhere
+&=\frac{2\pi}9.
 \end{align*}
 \end{solution}
 \end{frame}
@@ -115,7 +115,7 @@ $f(z)=\dfrac1{(z^2+a^2)^3}$ 在上半平面内的奇点为 $ai$.
 \onslide<+->
 故
 \[\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3}
-=2\pi i\Res[f(z),ai]=\frac{3\pi}{8a^5}.\qedhere\]
+=2\pi i\Res[f(z),ai]=\frac{3\pi}{8a^5}.\]
 \end{solution}
 \endgroup
 \end{frame}
@@ -148,7 +148,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 故
 \[\int_{-\infty}^{+\infty}\frac{e^{ix}\diff x}{(x^2+a^2)^2}=2\pi i \Res[f(z),ai]=\frac{\pi e^{-a}(a+1)}{2a^3},\]
 \onslide<+->
-\[\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}=\frac{\pi e^{-a}(a+1)}{2a^3}.\qedhere\]
+\[\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}=\frac{\pi e^{-a}(a+1)}{2a^3}.\]
 \end{solution}
 \endgroup
 \end{frame}
@@ -164,7 +164,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 %\[I_1=\int_0^{+\infty}\cos x^2\diff x,\quad
 %I_2=\int_0^{+\infty}\sin x^2\diff x.\]
 %\end{example}
-%\begin{solutions}
+%\begin{solution}
 %设 $f(z)=\exp(iz^2)$, $C$ 为下图所示闭路.
 %\onslide<+->
 %\vspace{-2pt}
@@ -186,7 +186,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 %\end{tikzpicture}
 %\end{center}
 %\vspace{-2pt}
-%\end{solutions}
+%\end{solution}
 %\endgroup
 %\end{frame}
 %
@@ -209,7 +209,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 %
 %
 %\begin{frame}{例题: 留数在定积分上的应用}
-%\begin{solutione}
+%\begin{solutionc}
 %由于 $C_2:z=\dfrac{1+i}{\sqrt 2}r,0\le r\le\sqrt2R,f(z)=\exp(-r^2)$,
 %\onslide<+->
 %因此
@@ -219,8 +219,8 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 %\[I_1+iI_2=\frac{1+i}{\sqrt 2}\int_0^{+\infty}\exp(-r^2)\diff r=\frac{1+i}{\sqrt2}\cdot\frac{\sqrt\pi}2.\]
 %\onslide<+->
 %故
-%\[I_1=I_2=\frac{\sqrt{2\pi}}4.\qedhere\]
-%\end{solutione}
+%\[I_1=I_2=\frac{\sqrt{2\pi}}4.\]
+%\end{solutionc}
 %\end{frame}
 
 
@@ -230,7 +230,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 \begin{example}
 求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x,0<p<1$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 \indent
 \[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\eqtxt{令 $x=e^t$}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 \onslide<+->
@@ -257,7 +257,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 \end{tikzpicture}
 \end{center}
 \vspace{-0.5\baselineskip}
-\end{solutions}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -300,10 +300,10 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 令 $R\to+\infty$,
 \onslide<+->
 则
-\begin{flalign*}
-&&&(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
-\visible<+->{I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.}\mqed
-\end{flalign*}
+\begin{align*}
+&(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
+\visible<+->{I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.}
+\end{align*}
 \vspace{-\baselineskip}
 \end{solutionc}
 \end{frame}

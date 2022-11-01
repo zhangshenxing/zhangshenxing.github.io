@@ -65,14 +65,14 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 求 $f(z)=z^2$ 的导数.
 \end{example}
 \onslide<+->
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}&\\
-&&&\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}&\\
-&&&\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
+&\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}\\
+&\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
+\end{align*}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -105,12 +105,11 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 \onslide<+->
 则
 \vspace{-\baselineskip}
-\begin{align*}
-\lim_{\Delta z\to 0}\Delta w
-&=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z\\
-&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}\\
-&\visible<+->{=f'(z_0)\cdot 0=0.\mqed}
-\end{align*}
+\begin{flalign*}
+&&\lim_{\Delta z\to 0}\Delta w&=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z&\\
+&&&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}&\\
+&&&\visible<+->{=f'(z_0)\cdot 0=0.}\mqed
+\end{flalign*}
 \end{proofs}
 \end{frame}
 

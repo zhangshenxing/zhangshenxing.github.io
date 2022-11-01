@@ -217,7 +217,7 @@ v_x&=e^x\sin y,&v_y&=e^x\cos y.
 \end{align*}
 \onslide<+->
 因此该函数处处可导, 处处解析, 且
-\[f'(z)=u_x+iv_x=e^x(\cos y+i\sin y)=f(z).\qedhere\]
+\[f'(z)=u_x+iv_x=e^x(\cos y+i\sin y)=f(z).\]
 \end{solution}
 \onslide<+->
 实际上, 这个函数就是复变量的指数函数 $e^z$.
@@ -253,7 +253,7 @@ v_x&=2cx+dy,&v_y=dx+2y,
 \[a=d=2,\quad b=c=-1,\]
 \vspace{-\baselineskip}
 \onslide<+->
-\[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\qedhere\]
+\[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\]
 \end{solution}
 \endgroup
 \end{frame}
@@ -348,18 +348,17 @@ v_x&=2cx+dy,&v_y=dx+2y,
 
 
 \begin{frame}{复变函数在实变函数导数的应用*}
-\begin{solutions}
+\begin{solution}
 设 $f(z)=\dfrac1{1+z^2}$, 则它在除 $z=\pm i$ 外处处解析.
 \onslide<+->
 当 $z=x$ 为实数时,
 \onslide<+->
-\begin{flalign*}
-&&f^{(n)}(x)&
-=\frac i2\left[\frac1{x+i}-\frac1{x-i}\right]^{(n)}&\\
-&&&\visible<+->{=\frac i2\cdot(-1)^n n!\left[\frac1{(x+i)^{n+1}}-\frac1{(x-i)^{n+1}}\right]}&\\
-&&&\visible<+->{=(-1)^{n+1}n!\Im\frac1{(x+i)^{n+1}}}&\\
-&&&\visible<+->{=\frac{(-1)^nn!\sin[(n+1)\arccot x]}{(x^2+1)^{\frac{n+1}2}}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+f^{(n)}(x)&=\frac i2\left[\frac1{x+i}-\frac1{x-i}\right]^{(n)}\\
+&\visible<+->{=\frac i2\cdot(-1)^n n!\left[\frac1{(x+i)^{n+1}}-\frac1{(x-i)^{n+1}}\right]}\\
+&\visible<+->{=(-1)^{n+1}n!\Im\frac1{(x+i)^{n+1}}}\\
+&\visible<+->{=\frac{(-1)^nn!\sin[(n+1)\arccot x]}{(x^2+1)^{\frac{n+1}2}}.}
+\end{align*}
+\end{solution}
 \end{frame}
 

@@ -155,16 +155,16 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 \begin{example}
 求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是从原点到点 $3+4i$ 的直线段.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $z=(3+4i)t,0\le t\le 1$,
 \onslide<+->
 因此
-\begin{flalign*}
-\int_Cz\diff z&=\int_0^1(3+4i)t\cdot(3+4i)\diff t&\\
-&\visible<+->{=(3+4i)^2\int_0^1t\diff t}&\\
-&\visible<+->{=\frac12(3+4i)^2=-\frac72+12i.\quad\qedsymbol}&
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\int_Cz\diff z&=\int_0^1(3+4i)t\cdot(3+4i)\diff t\\
+&\visible<+->{=(3+4i)^2\int_0^1t\diff t}\\
+&\visible<+->{=\frac12(3+4i)^2=-\frac72+12i.}
+\end{align*}
+\end{solution}
 \onslide<1->
 \begin{tikzpicture}[overlay,xshift=7cm,yshift=2cm]
 \draw[cstaxis](0,0)--(3,0);
@@ -185,19 +185,19 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4i$ 的曲线段.
 \end{example}
 \vspace{-3pt}
-\begin{solutions}
+\begin{solution}
 由于 $z=t+\dfrac49it^2,0\le t\le 3$,
 \onslide<+->
 因此
 \vspace{-2pt}
-\begin{flalign*}
-\int_Cz\diff z&=\int_0^3\left(t+\frac{4}9it^2\right)\cdot\left(1+\frac89it\right)\diff t&\\
-&\visible<+->{=\int_0^3\left(t+\frac43it^2-\frac{32}{81}t^3\right)\diff t}&\\
+\begin{align*}
+\int_Cz\diff z&=\int_0^3\left(t+\frac{4}9it^2\right)\cdot\left(1+\frac89it\right)\diff t\\
+&\visible<+->{=\int_0^3\left(t+\frac43it^2-\frac{32}{81}t^3\right)\diff t}\\
 &\visible<+->{=\left(\frac12t^2+\frac49it^3-\frac8{81}t^4\right)\Big|_0^3}
-\visible<+->{=-\frac72+12i.\quad\qedsymbol}&
-\end{flalign*}
+\visible<+->{=-\frac72+12i.}
+\end{align*}
 \vspace{-\baselineskip}
-\end{solutions}
+\end{solution}
 \onslide<1->
 \begin{tikzpicture}[overlay,xshift=7cm,yshift=2.5cm]
 \draw[cstaxis](0,0)--(3,0);
@@ -217,17 +217,17 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 \begin{example}
 求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $1+i$ 的直线段.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $z=(1+i)t,0\le t\le 1$,
 \onslide<+->
 因此 $\Re z=t$,
 \onslide<+->
-\begin{flalign*}
-&&\int_C\Re z\diff z&=\int_0^1t\cdot(1+i)\diff t&\\
-&&&\visible<+->{=(1+i)\int_0^1t\diff t}&\\
-&&&\visible<+->{=\frac{1+i}2.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\int_C\Re z\diff z&=\int_0^1t\cdot(1+i)\diff t\\
+&\visible<+->{=(1+i)\int_0^1t\diff t}\\
+&\visible<+->{=\frac{1+i}2.}
+\end{align*}
+\end{solution}
 \onslide<1->
 \begin{tikzpicture}[overlay,xshift=7cm,yshift=1.5cm]
 \draw[cstaxis](0,0)--(3,0);
@@ -254,7 +254,7 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 第二段 $z=t+i$, $0\le t\le 1$, $\Re z=t$.
 \onslide<+->
 因此
-\[\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12.\qedhere\]
+\[\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12.\]
 \onslide<2->
 \vspace{-\baselineskip}
 \begin{center}
@@ -317,7 +317,7 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 \begin{example}
 求 $\displaystyle\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 \onslide<+->
 于是 $\diff z=ire^{i\theta}\diff \theta$,
@@ -339,13 +339,13 @@ $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 \end{tikzpicture}
 \end{center}
 \vspace{-0.5\baselineskip}
-\end{solutions}
+\end{solution}
 \endgroup
 \end{frame}
 
 
 \begin{frame}{例题: 计算复变函数沿圆周的积分}
-\begin{solutione}
+\begin{solutionc}
 当 $n=0$ 时, $\displaystyle\oint_C\frac{\diff z}{(z-z_0)^{n+1}}=2\pi i$.
 
 \onslide<+->
@@ -357,8 +357,8 @@ $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 \[\markatt{\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}
 2\pi i,&n=0;\\
 0,&n\neq 0.
-\end{cases}}\qedhere\]
-\end{solutione}
+\end{cases}}\]
+\end{solutionc}
 \onslide<+->
 这个积分以后经常用到, 它的特点是与积分圆周的圆心和半径都无关.
 \end{frame}

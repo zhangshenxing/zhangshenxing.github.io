@@ -105,17 +105,17 @@
 \begin{example}
 求 $\msl[\sin{kt}]$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于
 \[\sin{kt}=\frac1{2j}(e^{jkt}-e^{-jkt}),\]
 \onslide<+->
 因此
-\begin{flalign*}
-&&&\peq\markatt{\msl[\sin{kt}]}=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)&\\
-&&&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)}
-\visible<+->{\markatt{=\frac k{s^2+k^2}},\quad \Re s>\abs{\Im k}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+&\peq\markatt{\msl[\sin{kt}]}=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)\\
+&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)}
+\visible<+->{\markatt{=\frac k{s^2+k^2}},\quad \Re s>\abs{\Im k}.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -145,7 +145,7 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 或由
 \vspace{-\baselineskip}
 \[\msl[t^m]=(-1)^m \msl[1]^{(m)}
-=(-1)^m\left(\frac1s\right)^{(m)}=\frac{m!}{s^{m+1}}.\qedhere\]
+=(-1)^m\left(\frac1s\right)^{(m)}=\frac{m!}{s^{m+1}}.\]
 \vspace{-\baselineskip}
 \end{solution}
 \end{frame}
@@ -177,7 +177,7 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 因此
 \[\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1{s^2}\right]
 -\msl^{-1}\left[\frac1{s^2+1}\right]
-=t-\sin t.\qedhere\]
+=t-\sin t.\]
 \end{solution}
 \end{frame}
 
@@ -201,7 +201,7 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \begin{example}
 求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
 \end{example}
-\begin{solutions}
+\begin{solution}
 通过待定系数, 我们可以得到如下的拆分
 \[F(s)=\frac1s-\frac1{s-1}+\frac1{(s-1)^2}.\]
 \onslide<+->
@@ -209,7 +209,7 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \[\msl^{-1}\left[\frac1s\right]=1,\quad \msl^{-1}\left[\frac1{s-1}\right]=e^t,\]
 \onslide<+->
 \[\msl^{-1}\left[\frac1{s^2}\right]=t\implies\msl^{-1}\left[\frac1{(s-1)^2}\right]=te^t,\]
-\end{solutions}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -221,11 +221,11 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \onslide<+->
 我们也可以利用卷积定理来计算.
 \onslide<+->
-\begin{flalign*}
-&&\msl^{-1}[F(s)]&=\msl^{-1}\left[\frac1s\right]\ast\msl^{-1}\left[\frac1{(s-1)^2}\right]&\\
-&&&\visible<+->{=1\ast te^t=\int_0^t\tau e^\tau\diff \tau}&\\
-&&&\visible<+->{=(t-1)e^t+1.}\mqed
-\end{flalign*}
+\begin{align*}
+\msl^{-1}[F(s)]&=\msl^{-1}\left[\frac1s\right]\ast\msl^{-1}\left[\frac1{(s-1)^2}\right]\\
+&\visible<+->{=1\ast te^t=\int_0^t\tau e^\tau\diff \tau}\\
+&\visible<+->{=(t-1)e^t+1.}
+\end{align*}
 \end{solutionc}
 \end{frame}
 
@@ -251,23 +251,23 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \begin{example}
 解方程 
   $\begin{cases}
-    x''(t)-2x'(t)+2x(t)=2e^t\cos t,&\\
+    x''(t)-2x'(t)+2x(t)=2e^t\cos t,& \\
     x(0)=x'(0)=0.&
   \end{cases}$
 \end{example}
-\begin{solutions}
+\begin{solution}
 设 $\msl[x]=X$, 则
 \[s^2X-2sX+2X=\frac{2(s-1)}{(s-1)^2+1},\quad
 \visible<+->{X(s)=\frac{2(s-1)}{[(s-1)^2+1]^2},}\]
 \onslide<+->
 \vspace{-\baselineskip}
-\begin{flalign*}
+\begin{align*}
 x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
-\visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}&\\
+\visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}\\
 &\visible<+->{=-e^t\msl^{-1}\left[\left(\frac1{s^2+1}\right)'\right]}
-\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}\mqed
-\end{flalign*}
-\end{solutions}
+\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}
+\end{align*}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -277,8 +277,8 @@ x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
 \begin{example}
 解方程 
   $\begin{cases}
-    x'(t)+2x(t)+2y(t)=10e^{2t},&\\
-    -2x(t)+y'(t)+3y(t)=13e^{2t},&\\
+    x'(t)+2x(t)+2y(t)=10e^{2t},& \\
+    -2x(t)+y'(t)+3y(t)=13e^{2t},& \\
     x(0)=1,y(0)=3.&
   \end{cases}$
 \end{example}
@@ -286,7 +286,7 @@ x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
 \begin{solution}
 设 $\msl[x]=X,\msl[y]=Y$, 则
   \[\begin{cases}
-    sX-1+2X+2Y=10/(s-2),&\\
+    sX-1+2X+2Y=10/(s-2),& \\
     -2X+sY-3+3Y=13/(s-2).&
   \end{cases}\]
 \onslide<+->
@@ -294,7 +294,7 @@ x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
 \[X(s)=\frac1{s-2},\quad Y(s)=\frac3{s-2},\]
 \onslide<+->
 \[x(t)=\msl^{-1}\left[\frac1{s-2}\right]=e^{2t},\quad
-y(t)=\msl^{-1}\left[\frac3{s-2}\right]=3e^{2t}.\qedhere\]
+y(t)=\msl^{-1}\left[\frac3{s-2}\right]=3e^{2t}.\]
 \end{solution}
 \endgroup
 \end{frame}
@@ -315,6 +315,6 @@ y(t)=\msl^{-1}\left[\frac3{s-2}\right]=3e^{2t}.\qedhere\]
 \[X(s)=\frac{sx(0)+x'(0)}{s^2+1}=x(0)\frac s{s^2+1}+x'(0)\frac1{s^2+1},\]
 \onslide<+->
 \vspace{-0.8\baselineskip}
-\[x(t)=\msl^{-1}[X(s)]=x(0)\cos t+x'(0)\sin t.\qedhere\]
+\[x(t)=\msl^{-1}[X(s)]=x(0)\cos t+x'(0)\sin t.\]
 \end{solution}
 \end{frame}

@@ -166,7 +166,7 @@
 \begin{example}
 求幂级数 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 的收敛半径并讨论在收敛圆周上的情形, 其中 $p\in\BR$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\left(\frac n{n+1}\right)^p=1$ 可知收敛半径为 $1$.
 \onslide<+->
 设 $|z|=1$.
@@ -178,7 +178,7 @@
 \onslide<+->
 原级数在收敛圆周上处处发散.
 \end{itemize}
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
@@ -186,7 +186,7 @@
 \onslide<+->
 回忆\marknot{狄利克雷判别法}: 若 $\set{a_n}_{n\ge 1}$ 部分和有界, 实数项数列 $\set{b_n}_{n\ge 1}$ 单调趋于 $0$, 则 $\suml_{n=1}^\infty a_nb_n$ 收敛.
 
-\begin{solutione}
+\begin{solutionc}
 \begin{itemize}
 \item 若 $0<p\le1$, $\displaystyle\sum_{n=1}^\infty\frac1{n^p}$ 发散, 
 \onslide<+->
@@ -197,9 +197,9 @@
 \onslide<+->
 因此 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 收敛.
 \onslide<+->
-故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.\qedhere
+故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.
 \end{itemize}
-\end{solutione}
+\end{solutionc}
 \end{frame}
 
 
@@ -273,7 +273,7 @@ g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
 $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\right)^n$,
 \onslide<+->
 即
-\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\qedhere\]
+\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\]
 \vspace{-3pt}
 \end{solution}
 \end{frame}
@@ -283,17 +283,17 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \begin{example}
 求幂级数 $\suml_{n=1}^\infty(2^n-1)z^{n-1}$ 的收敛半径与和函数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{2^{n+1}-1}{2^n-1}=2$ 可知收敛半径为 $\dfrac12$.
 \onslide<+->
 当 $|z|<\dfrac12$ 时, $|2z|<1$.
 \onslide<+->
 从而
-\begin{flalign*}
-&&\sum_{n=1}^\infty(2^n-1)z^{n-1}&=\sum_{n=1}^\infty 2^n z^{n-1}-\sum_{n=1}^\infty z^{n-1}&\\
-&&&\visible<+->{=\frac2{1-2z}-\frac1{1-z}=\frac1{(1-2z)(1-z)}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\sum_{n=1}^\infty(2^n-1)z^{n-1}&=\sum_{n=1}^\infty 2^n z^{n-1}-\sum_{n=1}^\infty z^{n-1}\\
+&\visible<+->{=\frac2{1-2z}-\frac1{1-z}=\frac1{(1-2z)(1-z)}.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -308,7 +308,7 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \[\int_0^z\sum_{n=0}^\infty(n+1)z^n\diff z=\sum_{n=0}^\infty z^{n+1}=\frac z{1-z}=-1-\frac1{z-1},\]
 \onslide<+->
 因此
-\[\sum_{n=0}^\infty(n+1)z^n=\left(-\frac1{z-1}\right)'=\frac1{(z-1)^2},\quad |z|<1.\qedhere\]
+\[\sum_{n=0}^\infty(n+1)z^n=\left(-\frac1{z-1}\right)'=\frac1{(z-1)^2},\quad |z|<1.\]
 \vspace{-\baselineskip}
 \end{solution}
 \end{frame}
@@ -330,18 +330,18 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \end{example}
 \onslide<+->
 注意这里并不能逐项积分, 因为该级数并不是幂级数, 它的和函数不解析.
-\begin{solutions}
+\begin{solution}
 由于 $\suml_{n=0}^\infty z^n$ 在 $|z|<1$ 收敛,
 \onslide<+->
 它的和函数解析.
 \onslide<+->
 因此
-\begin{flalign*}
-&&\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z
-	&=\oint_{|z|=\frac12}\frac1z\diff z+\oint_{|z|=\frac12}\left(\sum_{n=0}^\infty z^n\right)\diff z&\\
-&&&\visible<+->{=2\pi i+0=2\pi i.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z
+	&=\oint_{|z|=\frac12}\frac1z\diff z+\oint_{|z|=\frac12}\left(\sum_{n=0}^\infty z^n\right)\diff z\\
+&\visible<+->{=2\pi i+0=2\pi i.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -353,7 +353,7 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \onslide<+->
 故
 \[\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z
-=\oint_{|z|=\frac12}\left(\frac1z-\frac1{z-1}\right)\diff z=2\pi i.\qedhere\]
+=\oint_{|z|=\frac12}\left(\frac1z-\frac1{z-1}\right)\diff z=2\pi i.\]
 \end{solution}
 \endgroup
 \end{frame}

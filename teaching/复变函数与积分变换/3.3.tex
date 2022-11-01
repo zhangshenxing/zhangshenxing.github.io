@@ -113,7 +113,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 且 $\displaystyle\int z\diff z=\frac12 z^2+c$,
 \onslide<+->
 因此
-\[\int_{z_0}^{z_1}z\diff z=\frac12z^2\big|_{z_0}^{z_1}=\frac12(z_1^2-z_0^2).\qedhere\]
+\[\int_{z_0}^{z_1}z\diff z=\frac12z^2\big|_{z_0}^{z_1}=\frac12(z_1^2-z_0^2).\]
 \end{solution}
 \onslide<+->
 因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 而无论从 $0$ 到 $3+4i$ 的路径如何.
@@ -131,7 +131,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \[\int z\cos z^2\diff z=\frac12\int \cos z^2\diff z^2=\frac12\sin z^2+c,\]
 \onslide<+->
 因此
-\[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\qedhere\]
+\[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\]
 \end{solution}
 \onslide<+->
 这里我们使用了\markatt{凑微分法}.
@@ -143,7 +143,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \begin{example}
 求 $\displaystyle\int_0^i z\cos z\diff z$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $f(z)=z\cos z$ 处处解析,
 \onslide<+->
 且
@@ -154,11 +154,11 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \end{align*}
 \onslide<+->
 因此
-\begin{flalign*}
-&&\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i&\\
-&&&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i\\
+&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
+\end{align*}
+\end{solution}
 \onslide<+->
 这里我们使用了\markatt{分部积分法}.
 \endgroup
@@ -170,18 +170,18 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \begin{example}
 求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $f(z)=ze^z$ 处处解析,
 \onslide<+->
 且
 \[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]
 \onslide<+->
 因此
-\begin{flalign*}
-&&\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}&\\
-&&&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
+&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).}
+\end{align*}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -201,20 +201,20 @@ $\sin 1-\cos 1$.
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
-\begin{solutions}
+\begin{solution}
 函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
 \onslide<+->
 \[\int\frac{\ln(z+1)}{z+1}\diff z
 =\int\ln(z+1)\diff[\ln(z+1)]=\frac12\ln^2(z+1)+c.\]
 \onslide<+->
 因此
-\begin{flalign*}
-&&&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
-\visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}&\\
-&&&\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
-=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
+\visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}\\
+&\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
+=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -223,19 +223,19 @@ $\sin 1-\cos 1$.
 求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是连接 $0$ 到 $2\pi a$ 的摆线
 \vspace{-8pt}
 \[\begin{cases}
-x=a(\theta-\sin\theta),&\\ y=a(1-\cos\theta),
+x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
 \end{cases} 0\le \theta\le 2\pi.\]
 \vspace{-8pt}
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $f(z)=2z^2+8z+1$ 处处解析,
 \onslide<+->
 因此
-\begin{flalign*}
-&&&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z&\\
-&&&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}\mqed
-\end{flalign*}
+\begin{align*}
+&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
+&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+\end{align*}
 \vspace{-8pt}
-\end{solutions}
+\end{solution}
 \end{frame}
 

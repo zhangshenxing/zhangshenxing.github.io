@@ -1,72 +1,173 @@
 \mode<presentation>
-% Color
+% 颜色
 \usecolortheme{rose}
 \usecolortheme{seahorse}
-\setbeamercolor*{title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
-\setbeamercolor*{part title}{parent=title}
-\setbeamercolor*{chapter in head/foot}{parent=palette quaternary}
-\setbeamercolor*{course in head/foot}{parent=palette tertiary}
-\setbeamercolor*{item}{parent=example text}
-% Inner
-\useinnertheme{rectangles}
+\setbeamercolor*{title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg} % 封面页 标题
+\setbeamercolor*{part title}{parent=title} % 部分页 部分标题
+\setbeamercolor*{author/part in head/foot}{parent=palette tertiary} % 底部导航 作者/部分
+\setbeamercolor*{title in head/foot}{parent=palette quaternary} % 底部导航 标题
+\setbeamercolor*{institute/section in head/foot}{parent=palette tertiary} % 底部导航 机构/节
+\setbeamercolor*{item}{parent=example text} % 条目编号
+\setbeamercolor*{email}{use=structure,fg=structure.fg}
+\setbeamercolor*{website}{use=structure,fg=structure.fg}
+% 内部
+%%% 页边距
 \setbeamersize{text margin left=1em,text margin right=1em}
+%%% 条目编号
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{items}[square]
+%%% 字体大小
+\setbeamerfont{institute}{size=\normalsize,shape=\itshape}
+\setbeamerfont{date}{size=\normalsize,shape=\itshape}
 \setbeamerfont{frametitle}{size=\normalsize}
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamerfont{part title}{size=\Large}
 \setbeamerfont{part name}{size=\Large, parent=part title}
-\defbeamertemplate*{part page}{hfut}[1][]
-{
-  \begingroup
-    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
-      {\usebeamerfont{part name}\usebeamercolor[fg]{part name}第\chinese{part}章}\hspace{1em}%
-      \usebeamerfont{part title}\insertpart\par
-    \end{beamercolorbox}
-  \endgroup
-}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
 \setbeamerfont{enumerate item}{size=\large}
 \setbeamerfont{enumerate subitem}{size=\large}
 \setbeamerfont{enumerate subsubitem}{size=\large}
 \setbeamerfont{item projected}{size=\normalsize}
-% Outer
+\setbeamerfont{email}{size=\small,family=\ttfamily}
+\setbeamerfont{website}{size=\small,family=\ttfamily}
+\setbeamerfont{office}{size=\normalsize,shape=\itshape}
+\newcommand{\email}[1]{\gdef\HFUT@email{#1}}\email{}
+\newcommand{\website}[1]{\gdef\HFUT@website{#1}}\website{}
+\newcommand{\office}[1]{\gdef\HFUT@office{#1}}\office{}
+%%% 封面页页
+\defbeamertemplate*{title page}{hfut}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
+    \end{beamercolorbox}
+    \ifx\inserttitlegraphic\@empty
+      \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+        \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute
+      \end{beamercolorbox}
+    \else%
+      {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+    \fi
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate}\par%
+      \ifx\HFUT@office\@empty\else%
+        {\usebeamerfont{office}\usebeamercolor[fg]{office}\HFUT@office}%
+      \fi\par%
+      \ifx\HFUT@email\@empty\else%
+        {\usebeamerfont{email}\usebeamercolor[fg]{email}\href{mailto:\HFUT@email}{\HFUT@email}}%
+      \fi\par%
+      \ifx\HFUT@website\@empty\else%
+        {\usebeamerfont{website}\usebeamercolor[fg]{website}\href{\HFUT@website}{\HFUT@website}}%
+      \fi%
+    \end{beamercolorbox}
+  \endgroup
+  \vfill
+}
+%%% 部分页
+\defbeamertemplate*{part page}{hfut}[1][]
+{
+  \begingroup
+    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
+      {\usebeamercolor[fg]{part name}\usebeamerfont{part name}第\chinese{part}章}%
+      \hspace{1em}%
+      {\usebeamercolor[fg]{part title}\usebeamerfont{part title}\insertpart}\par
+    \end{beamercolorbox}
+  \endgroup
+}
+\makeatletter
+%%% 自动生成部分页
+\AtBeginPart{\beamer@tocsectionnumber=0\relax\setcounter{section}{0}\frame{\partpage}}
+%%% 自动生成部分目录
+\AtBeginSection{\begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}\tableofcontents[currentsection]\end{frame}}
+% 外部
+\setbeamertemplate{sidebar right}{}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{page number in head/foot}[totalframenumber]
+%%% 底部导航
 \defbeamertemplate*{footline}{hfut}
 {%
   \leavevmode%
   \hbox{%
-  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{chapter in head/foot}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author/part in head/foot}%
     \ifnum \thepart>0
-      \usebeamerfont{author in head/foot}{第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
+      \usebeamercolor[fg]{part in head/foot}%
+       \usebeamerfont{part in head/foot}%
+        {第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
     \else
-      \usebeamerfont{author in head/foot}{\insertshortauthor}
+      \usebeamercolor[fg]{author in head/foot}%
+       \usebeamerfont{author in head/foot}%
+        {\insertshortauthor}
     \fi
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{course in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamercolor[fg]{title in head/foot}%
+     \usebeamerfont{title in head/foot}%
+      \insertshorttitle
   \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{title in head/foot}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{institute/section in head/foot}%
     \ifnum \thesection>0
       \hfill%
-      \usebeamerfont{section in head/foot}{\thepart.\thesection~\insertsectionhead{}}
+      \usebeamercolor[fg]{section in head/foot}%
+       \usebeamerfont{section in head/foot}%
+        {\thepart.\thesection~\insertsectionhead{}}
       \hfill%
-      \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
+      \usebeamercolor[fg]{page number in head/foot}%
+       \usebeamerfont{page number in head/foot}%
+        \usebeamertemplate{page number in head/foot}      
     \else
-      \ifnum \thepart>0
-        \hfill%
-        \usebeamerfont{section in head/foot}{\insertshortinstitute}
-        \hfill%
-        \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
-      \else
-        \centering \usebeamerfont{section in head/foot}{\insertshortinstitute}
-      \fi
+      \hfill%
+      \usebeamercolor[fg]{institute in head/foot}%
+       \usebeamerfont{institute in head/foot}%
+        {\insertshortinstitute}
+      \hfill%
+      \usebeamercolor[fg]{page number in head/foot}%
+       \usebeamerfont{page number in head/foot}%
+        \usebeamertemplate{page number in head/foot}
     \fi
   \end{beamercolorbox}}%
 }
-% Font
+%%% 环境
+\renewenvironment<>{solution}[1][\textit{解}]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\renewenvironment<>{proof}[1][\textit{证明}]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newenvironment<>{theorems}[1][定理]{\par\begin{\inserttheoremblockenv}{#1}\itshape #2}{\end{\inserttheoremblockenv}}
+\newtheorem{conclusion}{结论}
+\newtheorem*{solutionc}{\textit{续解}\@addpunct{.}}
+\newtheorem*{proofs}{\textit{证明}\@addpunct{.}}
+\newtheorem*{proofc}{\textit{续证}\@addpunct{.}}
+\newenvironment<>{proofe}[1][\textit{续证}]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newtheorem*{answer}{\textit{答案}\@addpunct{.}}
+\theoremstyle{example}
+\newtheorem*{exercise}{练习}
+\newtheorem*{think}{思考}
+\def\th@analysis{\normalfont\def\inserttheoremblockenv{alertblock}}
+\theoremstyle{analysis}
+\newtheorem*{analysis}{\textit{分析}}
+\makeatother
+% 数学字体
 \usefonttheme[onlymath]{serif}
 \RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
+
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
+\beamerdefaultoverlayspecification{<+->}
 \mode<all>
 

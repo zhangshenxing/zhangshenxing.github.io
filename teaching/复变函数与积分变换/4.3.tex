@@ -213,18 +213,18 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \begin{example}
 将 $\dfrac1{(1+z)^2}$ 展开成 $z$ 的幂级数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 \onslide<+->
 由于
 \[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
 \onslide<+->
 因此
-\begin{flalign*}
-&&\frac1{(1+z)^2}&=-\left(\frac1{1+z}\right)'\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}&\\
-&&&\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\frac1{(1+z)^2}&=-\left(\frac1{1+z}\right)'\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}\\
+&\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}
+\end{align*}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -234,7 +234,7 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \begin{example}
 将对数函数的主值 $\ln(1+z)$ 展开成 $z$ 的幂级数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $\ln(1+z)$ 在去掉射线 $z=x\le-1$ 的区域内解析,
 \onslide<+->
 因此它在 $|z|<1$ 内解析.
@@ -243,13 +243,13 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \[[\ln(1+z)]'=\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\quad|z|<1\]
 \onslide<+->
 逐项积分得到
-\begin{flalign*}
-&&\ln(1+z)&=\int_0^z\frac1{1+\zeta}\diff\zeta
-	\visible<+->{=\int_0^z\sum_{n=0}^\infty(-1)^n\zeta^n\diff\zeta}&\\
-&&&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
-	\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\ln(1+z)&=\int_0^z\frac1{1+\zeta}\diff\zeta
+	\visible<+->{=\int_0^z\sum_{n=0}^\infty(-1)^n\zeta^n\diff\zeta}\\
+&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
+	\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.}
+\end{align*}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -258,16 +258,16 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \begin{example}
 将 $\dfrac1{3z-2}$ 展开成 $z$ 的幂级数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $\dfrac1{3z-2}$ 的奇点为 $z=\dfrac23$, 因此它在 $|z|<\dfrac23$ 内解析.
 \onslide<+->
 此时
-\begin{flalign*}
-&&\frac1{3z-2}&=-\frac12\cdot\frac1{1-\dfrac{3z}2}
-	\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}&\\
-&&&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\frac1{3z-2}&=-\frac12\cdot\frac1{1-\dfrac{3z}2}
+	\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}\\
+&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -283,7 +283,7 @@ f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]
 \frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\]
 \onslide<+->
 \[\dfrac{e^z}{1+z}=\sum_{n=0}^\infty\left[\sum_{k=0}^n\frac{(-1)^{n-k}}{k!}\right]z^n
-=1+\frac12z^2-\frac13z^3+\cdots,\quad|z|<1.\qedhere\]
+=1+\frac12z^2-\frac13z^3+\cdots,\quad|z|<1.\]
 \end{solution}
 \end{frame}
 

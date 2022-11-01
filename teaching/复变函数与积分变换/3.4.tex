@@ -67,7 +67,7 @@
 \onslide<+->
 因此由柯西积分公式
 \[\oint_{|z|=4}\frac{\sin z}z\diff z
-=2\pi i \sin z|_{z=0}=0.\qedhere\]
+=2\pi i \sin z|_{z=0}=0.\]
 \end{solution}
 \end{frame}
 
@@ -84,7 +84,7 @@
 \onslide<+->
 因此由柯西积分公式
 \[\oint_{|z|=2}\frac{e^z}{z-1}\diff z
-=2\pi i e^z|_{z=1}=2\pi ei.\qedhere\]
+=2\pi i e^z|_{z=1}=2\pi ei.\]
 \end{solution}
 
 \onslide<+->
@@ -118,7 +118,7 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \[f'(z)=2\pi i(6z+7),\]
 \vspace{-\baselineskip}
 \onslide<+->
-\[f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.\qedhere\]
+\[f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.\]
 \end{solution}
 \onslide<+->
 注意当 $|z|>\sqrt3$ 时, $f(z)\equiv0$.
@@ -130,7 +130,7 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \begin{example}
 求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 被积函数的奇点为 $0,\pm1$.
 \onslide<+->
 设 $C_1,C_2,C_3$ 分别为绕 $0,1,-1$ 的分离圆周.
@@ -153,19 +153,19 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
   (-0.5,-0.45) node[alecolor,visible on=<3->] {$C_3$};
 \end{tikzpicture}
 \end{center}
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
 \begin{frame}{例题: 柯西积分公式的应用}
 \begin{solutionc}
 由复合闭路定理和柯西积分公式
-\begin{flalign*}
-&&&\peq\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
-=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z&\\
-&&&\visible<+->{=2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}&\\
-&&&\visible<+->{=2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).}\mqed
-\end{flalign*}
+\begin{align*}
+&\peq\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
+=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z\\
+&\visible<+->{=2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}\\
+&\visible<+->{=2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).}
+\end{align*}
 \end{solutionc}
 \end{frame}
 
@@ -282,16 +282,16 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 \begin{example}
 求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $\cos(\pi z)$ 在 $|z|<2$ 处处解析,
 \onslide<+->
 因此由柯西积分公式,
-\begin{flalign*}
-&&\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
-&=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}&\\
-&&&\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
+&=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}\\
+&\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -299,7 +299,7 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 \begin{example}
 求 $\displaystyle\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z.$
 \end{example}
-\begin{solutions}
+\begin{solution}
 $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 取 $C_1,C_2$ 为以 $i,-i$ 为圆心的分离圆周.
@@ -308,12 +308,12 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \[\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
 =\oint_{C_1}\frac{e^z}{(z^2+1)^2}\diff z
 +\oint_{C_2}\frac{e^z}{(z^2+1)^2}\diff z.\]
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
-\begin{solutione}
+\begin{solutionc}
 由柯西积分公式,
 \begin{align*}
 &\peq\oint_{C_1}\frac{e^z}{(z^2+1)^2}\diff z
@@ -329,10 +329,10 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \begin{align*}
 \oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
 &=\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2\\
-&=\pi i(\sin1-\cos1).\qedhere
+&=\pi i(\sin1-\cos1).
 \end{align*}
 \vspace{-18pt}
-\end{solutione}
+\end{solutionc}
 \end{frame}
 
 
@@ -353,7 +353,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 由柯西积分公式,
 \[\oint_{|z|=1}z^ne^z\diff z
 =\frac{2\pi i}{(-n-1)!}(e^z)^{(-n-1)}\big|_{z=0}
-=\frac{2\pi i}{(-n-1)!}.\qedhere\]
+=\frac{2\pi i}{(-n-1)!}.\]
 \end{solution}
 \end{frame}
 
@@ -362,16 +362,14 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \begin{example}
 求 $\displaystyle\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z$ 和 $\displaystyle\oint_{|z-1|=2}\frac1{(z-2)^2z^3}\diff z$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 (1) $\dfrac1{(z-2)^2z^3}$ 在 $|z-3|<2$ 的奇点为 $z=2$.
 \onslide<+->
 由柯西积分公式,
-\[
-	 \oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z
+\[\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z
 	=\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\bigg|_{z=2}
-	=-\frac{3\pi i}8.
-\]
-\end{solutions}
+	=-\frac{3\pi i}8.\]
+\end{solution}
 \end{frame}
 
 
@@ -384,10 +382,10 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 由复合闭路定理和柯西积分公式,
 \onslide<+->
-\begin{flalign*}
-&&&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z&\\
-&&&\visible<+->{=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.}\mqed
-\end{flalign*}
+\begin{align*}
+&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z\\
+&\visible<+->{=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.}
+\end{align*}
 \end{solutionc}
 \onslide<+->
 \begin{columns}

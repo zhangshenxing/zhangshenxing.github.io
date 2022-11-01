@@ -68,14 +68,10 @@
 \node[draw,align=center,right=of 6] (7)  {结合笔记\\汇总知识点};
 \coordinate[above=of 7] (8);
 \node[draw,align=center,right=of 8] (9)  {再用作业检\\测学习效果};
-\draw[defcolor,line width=0.1cm] (1) -- (2);
-\draw[defcolor,line width=0.1cm] (3) -- (4);
-\draw[defcolor,line width=0.1cm] (5) -- (6);
-\draw[defcolor,line width=0.1cm] (7) -- (8);
-\draw[defcolor,cstnarrow] (2) -- (3);
-\draw[defcolor,cstnarrow] (4) -- (5);
-\draw[defcolor,cstnarrow] (6) -- (7);
-\draw[defcolor,cstnarrow] (8) -- (9);
+\draw[cstnarrow,defcolor] (1.south) to [bend right] (3.west);
+\draw[cstnarrow,defcolor] (3.north) to [bend left] (5.west);
+\draw[cstnarrow,defcolor] (5.south) to [bend right] (7.west);
+\draw[cstnarrow,defcolor] (7.north) to [bend left] (9.west);
 \end{tikzpicture}
 \end{frame}
 

@@ -120,14 +120,14 @@ $f(z)=z^4\sin\dfrac1z$.
 \begin{example}
 求 $\Res\left[\dfrac{e^z}{z^n},0\right]$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $(e^z)(0)=1$, 因此 $0$ 是 $n$ 阶极点,
 \onslide<+->
-\begin{flalign*}
-&&\Res\left[\frac{e^z}{z^n},0\right]&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}&\\
-&&&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z=\frac1{(n-1)!}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\Res\left[\frac{e^z}{z^n},0\right]&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}\\
+&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z=\frac1{(n-1)!}.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -135,7 +135,7 @@ $f(z)=z^4\sin\dfrac1z$.
 \begin{example}
 求 $\Res\left[\dfrac{z-\sin z}{z^6},0\right]$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 因为 $z=0$ 是 $z-\sin z$ 的三阶零点,
 \onslide<+->
 所以是 $\dfrac{z-\sin z}{z^6}$ 的 $3$ 阶极点.
@@ -144,17 +144,17 @@ $f(z)=z^4\sin\dfrac1z$.
 \[\Res\left[\frac{z-\sin z}{z^6},0\right]
 =\frac1{2!}\lim_{z\to0}\left(\frac{z-\sin z}{z^3}\right)''\]
 计算会很繁琐.
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 留数的计算}
 \begin{solutionc}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&\Res\left[\frac{z-\sin z}{z^6},0\right]&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}&\\
-&&&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}\mqed
-\end{flalign*}
+\begin{align*}
+\Res\left[\frac{z-\sin z}{z^6},0\right]&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}\\
+&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
+\end{align*}
 \end{solutionc}
 
 \begin{exercise}
@@ -179,7 +179,7 @@ $\dfrac1{24}$.
 \begin{flalign*}
 &&&\peq\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)&\\
 &&&\visible<+->{=\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
-	\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}\mqed
+  \visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}\mqed
 \end{flalign*}
 \end{proofs}
 \endgroup
@@ -197,7 +197,7 @@ $\dfrac1{24}$.
 \[\Res\left[\frac z{z^8-1},\frac{1+i}{\sqrt2}\right]
 =\frac z{(z^8-1)'}\Big|_{z=\frac{1+i}{\sqrt2}}
 =\frac z{8z^7}\Big|_{z=\frac{1+i}{\sqrt2}}
-=-\frac i8.\qedhere\]
+=-\frac i8.\]
 \end{solution}
 \begin{example}
 计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z$.
@@ -216,7 +216,7 @@ $f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
 \onslide<+->
 \[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
 =2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]
-=2\pi i.\qedhere\]
+=2\pi i.\]
 \end{solution}
 \end{frame}
 
@@ -271,7 +271,7 @@ $f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
 %=-\Res\left[\frac1{z(1-z^4)},0\right]=-1.\]
 %\onslide<+->
 %因此
-%\[\oint_{|z|=2}\frac z{z^4-1}\diff z=-2\pi i\Res[f(z),\infty]=2\pi i.\qedhere\]
+%\[\oint_{|z|=2}\frac z{z^4-1}\diff z=-2\pi i\Res[f(z),\infty]=2\pi i.\]
 %\end{solution}
 %\begin{exercise}
 %求 $\displaystyle\oint_{|z|=2}\frac{z^4}{z^5+1}\diff z$.
@@ -286,11 +286,11 @@ $f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
 \begin{example}
 求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin\frac1z}{(z+i)^{10}(z-1)(z-3)}$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \onslide<+->
 \[\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+i)^{10}}\sin\frac13.\]
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
@@ -301,11 +301,11 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 &=-\Res\left[\frac{z^{10}\sin z}{(1+iz)^{10}(1-z)(1-3z)},0\right]=0.
 \end{align*}
 \onslide<+->
-\begin{flalign*}
-&&&\peq\oint_{|z|=2}f(z)\diff z&\\
-&&&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]+\Res[f(z),0]\bigr]&\\
-&&&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}\mqed
-\end{flalign*}
+\begin{align*}
+&\peq\oint_{|z|=2}f(z)\diff z\\
+&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]+\Res[f(z),0]\bigr]\\
+&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}
+\end{align*}
 \end{solutionc}
 \end{frame}
 

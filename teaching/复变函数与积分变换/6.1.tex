@@ -129,13 +129,13 @@ f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)
 的傅里叶变换.
 \end{example}
 
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
-&&&\visible<+->{=\int_{-1}^1(\cos{\omega t}-j\sin{\omega t})\diff t}\visible<+->{=\frac{2\sin \omega}{\omega}.}&\visible<.->{\mqed}
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+&\visible<+->{=\int_{-1}^1(\cos{\omega t}-j\sin{\omega t})\diff t}\visible<+->{=\frac{2\sin \omega}{\omega}.}&\visible<.->{}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -171,14 +171,14 @@ $\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
 		0,&\text{其它情形}
 	\end{cases}$ 的傅里叶变换.
 \end{example}
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
-&&&\visible<+->{=\left(\int_0^1-\int_{-1}^0\right)(\cos{\omega t}-j\sin{\omega t})\diff t}&\\
-&&&\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}&\visible<.->{\mqed}
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+&\visible<+->{=\left(\int_0^1-\int_{-1}^0\right)(\cos{\omega t}-j\sin{\omega t})\diff t}\\
+&\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}&\visible<.->{}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -209,15 +209,15 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 		e^{-\beta t},&t\ge 0
 	\end{cases}$ 的傅里叶变换, $\beta>0$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-&&&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
-\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}&\\
-&&&\visible<+->{\markatt{=\frac1{\beta+j\omega}}.}&\visible<.->{\mqed}
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
+\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}\\
+&\visible<+->{\markatt{=\frac1{\beta+j\omega}}.}&\visible<.->{}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -245,15 +245,15 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 \begin{example}
 求\markdef{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t&\\
-&&&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}&\\
-&&&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
-\visible<+->{\markatt{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}&\visible<.->{\mqed}
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}\\
+&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
+\visible<+->{\markatt{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}&\visible<.->{}
+\end{align*}
+\end{solution}
 \end{frame}
 
 

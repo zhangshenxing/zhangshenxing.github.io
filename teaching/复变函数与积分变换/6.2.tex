@@ -73,14 +73,14 @@
 \begin{example}
 求 $\msf[t^k e^{-\beta t}u(t)],\beta>0$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 \vspace{-\baselineskip}
-\begin{flalign*}
-&&\msf[e^{-\beta t}u(t)]&=\frac{1}{\beta+j\omega},&\\
-&&\visible<+->{\msf[t^ke^{-\beta t}u(t)]}&\visible<.->{=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}}
-\visible<+->{=\frac{k!}{(\beta+j\omega)^{k+1}}.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\msf[e^{-\beta t}u(t)]&=\frac{1}{\beta+j\omega},\\
+\visible<+->{\msf[t^ke^{-\beta t}u(t)]}&\visible<.->{=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}}
+  \visible<+->{=\frac{k!}{(\beta+j\omega)^{k+1}}.}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -88,17 +88,17 @@
 \begin{example}
 求 $\sin{\omega_0 t}$ 的傅里叶变换.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $\msf[1]=2\pi\delta(\omega)$,
 \onslide<+->
 因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
 \onslide<+->
-\begin{flalign*}
-&&\markatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
-&&&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
-&&&\visible<+->{\markatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+\markatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
+&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
+&\visible<+->{\markatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}}
+\end{align*}
+\end{solution}
 \end{frame}
 
 
@@ -158,11 +158,11 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \begin{proofs}
 \vspace{-\baselineskip}
 \begin{flalign*}
-\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t&\\
-&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}&\\
-&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}&\\
-&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}&\\
-&\visible<+->{=\msf[f_1]\msf[f_2].}\mqed
+&&\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t&\\
+&&&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}&\\
+&&&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}&\\
+&&&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}&\\
+&&&\visible<+->{=\msf[f_1]\msf[f_2].}\mqed
 \end{flalign*}
 \end{proofs}
 \endgroup
@@ -190,22 +190,22 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \begin{example}
 解方程 $x'(t)-\displaystyle\int_{-\infty}^t x(\tau)\diff \tau=2\delta(t)$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 设 $\msf[x]=X$, 则两边同时作傅里叶变换得到
 \onslide<+->
 \[j\omega X(\omega)-\frac1{j\omega}X(\omega)=2,\]
 \onslide<+->
 \[X(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
 \onslide<+->
-\begin{flalign*}
-&&x(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
+\begin{align*}
+x(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
 &\visible<+->{=\begin{cases}
 0-e^t=-e^t,&t<0,\\
 0,&t=0,\\
 e^{-t}-0=e^{-t},&t>0.
-\end{cases}}\mqed
-\end{flalign*}
-\end{solutions}
+\end{cases}}
+\end{align*}
+\end{solution}
 \vspace{-1pt}
 \endgroup
 \end{frame}
@@ -216,7 +216,7 @@ e^{-t}-0=e^{-t},&t>0.
 \begin{example}
 解方程 $x''(t)-x(t)=0$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 设 $\msf[x]=X$,
 \onslide<+->
 则
@@ -224,7 +224,7 @@ e^{-t}-0=e^{-t},&t>0.
 \onslide<+->
 \vspace{-\baselineskip}
 \[X(\omega)=0,\quad x(t)=\msf^{-1}[X(\omega)]=0.\]
-\end{solutions}
+\end{solution}
 \onslide<+->
 显然这是不对的, 该方程的解实际上是 $x(t)=C_1e^t+C_2e^{-t}$.
 \onslide<+->

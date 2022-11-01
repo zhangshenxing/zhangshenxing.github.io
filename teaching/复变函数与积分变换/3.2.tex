@@ -102,7 +102,7 @@
 由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
 \onslide<+->
 因此由柯西-古萨基本定理
-\[\oint_{|z|=1}\frac1{2z-3}\diff z=0.\qedhere\]
+\[\oint_{|z|=1}\frac1{2z-3}\diff z=0.\]
 \end{solution}
 \onslide<+->
 \begin{columns}
@@ -135,7 +135,7 @@
 =\oint_{|z-i|=\frac12}\frac1{z+i}\diff z=0,\]
 \onslide<+->
 \[\oint_{|z-i|=\frac12}\frac1{z(z^2+1)}\diff z
-=-\frac12\oint_{|z-i|=\frac12}\frac1{z-i}\diff z=-\pi i.\qedhere\]
+=-\frac12\oint_{|z-i|=\frac12}\frac1{z-i}\diff z=-\pi i.\]
 \end{solution}
 \onslide<+->
 解析函数绕闭路的积分一般用留数定理算，本例只作为柯西-古萨基本定理的一个应用.
@@ -290,20 +290,20 @@
 
 
 \begin{frame}{例题: 复合闭路定理的应用}
-\begin{solutions}
+\begin{solution}
 函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
 \onslide<+->
 设 $C_1,C_2$ 如图所示,
 \onslide<+->
 由复合闭路定理
-\begin{flalign*}
-&&&\peq\oint_\Gamma\frac{2z-1}{z^2-z}\diff z
-=\oint_{C_1}\frac{2z-1}{z^2-z}\diff z+\oint_{C_2}\frac{2z-1}{z^2-z}\diff z&\\
-&&&\visible<+->{=\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
-+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}&\\
-&&&\visible<+->{=2\pi i+0+0+2\pi i=4\pi i.}\mqed
-\end{flalign*}
-\end{solutions}
+\begin{align*}
+&\peq\oint_\Gamma\frac{2z-1}{z^2-z}\diff z
+=\oint_{C_1}\frac{2z-1}{z^2-z}\diff z+\oint_{C_2}\frac{2z-1}{z^2-z}\diff z\\
+&\visible<+->{=\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
++\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}\\
+&\visible<+->{=2\pi i+0+0+2\pi i=4\pi i.}
+\end{align*}
+\end{solution}
 
 \begin{example}
 求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-,C_1:|z|=2,C_2:|z|=1$.
@@ -330,7 +330,7 @@
 函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
 \onslide<+->
 由复合闭路定理可知 
-\[\int_\Gamma\frac{e^z}z\diff z=0.\qedhere\]
+\[\int_\Gamma\frac{e^z}z\diff z=0.\]
 \end{solution}
 \end{frame}
 

@@ -124,7 +124,7 @@
 \onslide<+->
 当 $|a|<|z|<|b|$ 时,
 \begin{align*}
-\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{\dfrac az}{1-\dfrac az}+\frac1{1-\dfrac zb}=\frac{(a-b)z}{(z-a)(z-b)}.\qedhere
+\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{\dfrac az}{1-\dfrac az}+\frac1{1-\dfrac zb}=\frac{(a-b)z}{(z-a)(z-b)}.
 \end{align*}
 \end{solution}
 \end{frame}
@@ -283,7 +283,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \begin{example}
 将 $f(z)=\dfrac{e^z}{z^2}$ 展开为以 $0$ 为中心的洛朗级数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $0$ 是奇点, $f(z)$ 在 $0<|z|<+\infty$ 内解析.
 \onslide<+->
 我们有
@@ -295,7 +295,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 当 $n\ge -2$ 时, 由柯西积分公式
 \[c_n=\frac1{2\pi i}\oint_C\frac{e^\zeta}{\zeta^{n+3}}\diff\zeta
 =\frac1{(n+2)!}(e^z)^{(n+2)}|_{z=0}=\frac1{(n+2)!}.\]
-\end{solutions}
+\end{solution}
 \endgroup
 \end{frame}
 
@@ -304,7 +304,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \begin{solutionc}
 因此
 \vspace{-\baselineskip}
-\[\frac{e^z}{z^2}=\frac1{z^2}+\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,\quad 0<|z|<+\infty.\qedhere\]
+\[\frac{e^z}{z^2}=\frac1{z^2}+\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,\quad 0<|z|<+\infty.\]
 \end{solutionc}
 \onslide<+->
 实际上, 由洛朗级数的唯一性, 我们可以直接从 $e^z$ 的泰勒展开通过代数运算来得到洛朗级数.
@@ -328,13 +328,13 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \onslide<+->
 (1) $0<|z|<1$, (2) $1<|z|<2$, (3) $2<|z|<+\infty$. 
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
 \onslide<+->
 注意到
 \[f(z)=\frac1{z-2}-\frac1{z-1},\]
 因此我们可以根据 $|z|$ 的范围来将其展开成等比级数.
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
@@ -374,13 +374,13 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 \begin{solutionc}
 (3) 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->
 因此
-\begin{flalign*}
-&&f(z)&=\frac1{1-z}-\frac1{2-z}
-	\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}&\\
-&&&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n+\frac1z\sum_{n=0}^\infty\left(\frac2z\right)^n}
-	\visible<+->{=\sum_{n=0}^\infty(2^n-1)z^{-n-1}}&\\
-&&&\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}\mqed
-\end{flalign*}
+\begin{align*}
+f(z)&=\frac1{1-z}-\frac1{2-z}
+	\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}\\
+&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n+\frac1z\sum_{n=0}^\infty\left(\frac2z\right)^n}
+	\visible<+->{=\sum_{n=0}^\infty(2^n-1)z^{-n-1}}\\
+&\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
+\end{align*}
 \end{solutionc}
 \onslide<+->
 同一个函数在不同的圆环域内有不同的洛朗展开, 这和洛朗展开的唯一性并不矛盾.
@@ -393,17 +393,17 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 \begin{example}
 将 $f(z)=\dfrac1{z(z-2)}$ 在 $2$ 的去心邻域内展开成洛朗级数.
 \end{example}
-\begin{solutions}
+\begin{solution}
 由于 $0$ 是奇点, $f(z)$ 在 $0<|z-2|<2$ 内解析.
 \onslide<+->
-\begin{flalign*}
-&&f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}&\\
-&&&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}}
-	\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}&\\
-&&&\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.}\mqed
-\end{flalign*}
+\begin{align*}
+f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
+&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}}
+	\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
+&\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.}
+\end{align*}
 \vspace{-5pt}
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
@@ -450,7 +450,7 @@ f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
 \end{align*}
 \onslide<+->
 故
-\[\oint_Cf(z)\diff z=2\pi i c_{-1}=0.\qedhere\]
+\[\oint_Cf(z)\diff z=2\pi i c_{-1}=0.\]
 \end{solution}
 \end{frame}
 
@@ -459,23 +459,23 @@ f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
 \begin{example}
 求 $\displaystyle\oint_{|z|=2} \frac{z\exp\left(\dfrac1z\right)}{1-z}\diff z$.
 \end{example}
-\begin{solutions}
+\begin{solution}
 注意到闭路 $|z|=2$ 落在 $1<|z|<+\infty$ 内.
 \onslide<+->
 我们在这个圆环域内求被积函数 $f(z)$ 的洛朗展开.
-\end{solutions}
+\end{solution}
 \end{frame}
 
 
 \begin{frame}{例题: 洛朗展开的应用}
-\begin{solutione}
+\begin{solutionc}
 \begin{align*}
 f(z)&=-\frac{\exp\left(\dfrac1z\right)}{1-\dfrac1z}
 \visible<+->{=-\left(1+\frac1z+\frac1{z^2}+\cdots\right)\left(1+\frac1z+\frac1{2z^2}+\cdots\right)}\\
 &\visible<+->{=-\left(1+\frac2z+\frac5{2z^2}+\cdots\right)}\end{align*}
 \onslide<+->
 故
-\[\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i.\qedhere\]
-\end{solutione}
+\[\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i.\]
+\end{solutionc}
 \end{frame}
 
