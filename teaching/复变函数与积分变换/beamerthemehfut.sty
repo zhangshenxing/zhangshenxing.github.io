@@ -140,27 +140,27 @@
   \end{beamercolorbox}}%
 }
 %%% 环境
-\renewenvironment<>{solution}[1][\textit{解}]%
-  {\par\def\insertproofname{#1\@addpunct{.}}\usebeamertemplate{proof begin}#2}
-  {\usebeamertemplate{proof end}}
-\renewenvironment<>{proof}[1][\textit{证明}]%
-  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
-  {\popQED\usebeamertemplate{proof end}}
 \newenvironment<>{theorems}[1][定理]{\par\begin{\inserttheoremblockenv}{#1}\itshape #2}{\end{\inserttheoremblockenv}}
-\newtheorem{conclusion}{结论}
-\newtheorem*{solutionc}{\textit{续解}\@addpunct{.}}
-\newtheorem*{proofs}{\textit{证明}\@addpunct{.}}
-\newtheorem*{proofc}{\textit{续证}\@addpunct{.}}
-\newenvironment<>{proofe}[1][\textit{续证}]%
-  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\usebeamertemplate{proof begin}#2}
+\renewenvironment<>{solution}[1][\itshape 解]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\itshape\usebeamertemplate{proof begin}#2}
+  {\usebeamertemplate{proof end}}
+\renewenvironment<>{proof}[1][\itshape 证明]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\itshape\usebeamertemplate{proof begin}#2}
   {\popQED\usebeamertemplate{proof end}}
-\newtheorem*{answer}{\textit{答案}\@addpunct{.}}
+\newenvironment<>{proofe}[1][\itshape 续证]%
+  {\par\def\insertproofname{#1\@addpunct{.}}\pushQED{\qed}\itshape\usebeamertemplate{proof begin}#2}
+  {\popQED\usebeamertemplate{proof end}}
+\newtheorem{conclusion}{结论}
+\newtheorem*{solutionc}{\itshape 续解\@addpunct{.}}
+\newtheorem*{proofs}{\itshape 证明\@addpunct{.}}
+\newtheorem*{proofc}{\itshape 续证\@addpunct{.}}
+\newtheorem*{answer}{\itshape 答案\@addpunct{.}}
 \theoremstyle{example}
 \newtheorem*{exercise}{练习}
 \newtheorem*{think}{思考}
 \def\th@analysis{\normalfont\def\inserttheoremblockenv{alertblock}}
 \theoremstyle{analysis}
-\newtheorem*{analysis}{\textit{分析}}
+\newtheorem*{analysis}{\itshape 分析\@addpunct{.}}
 \makeatother
 % 数学字体
 \usefonttheme[onlymath]{serif}

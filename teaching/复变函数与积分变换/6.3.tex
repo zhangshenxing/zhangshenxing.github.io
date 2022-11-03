@@ -246,33 +246,29 @@ $\markatt{\msl[\cos{kt}]=\dfrac s{s^2+k^2}},\Re s>\abs{\Im k}$.
 \end{frame}
 
 
-\begin{frame}{典型例题: 使用积分变换解微积分方程}
-\beqskip{8pt}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
 \begin{example}
 解方程 
   $\begin{cases}
-    x''(t)-2x'(t)+2x(t)=2e^t\cos t,& \\
+    x''(t)+4x(t)=3\cos t,& \\
     x(0)=x'(0)=0.&
   \end{cases}$
 \end{example}
 \begin{solution}
-设 $\msl[x]=X$, 则
-\[s^2X-2sX+2X=\frac{2(s-1)}{(s-1)^2+1},\quad
-\visible<+->{X(s)=\frac{2(s-1)}{[(s-1)^2+1]^2},}\]
+设 $\msl[x]=X$,
+\onslide<+->
+则
+\[s^2X+4X=\frac{3s}{s^2+1},\quad
+\visible<+->{X(s)=\frac{3s}{(s^2+1)(s^2+4),}}\]
 \onslide<+->
 \vspace{-\baselineskip}
-\begin{align*}
-x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
-\visible<+->{=e^t\msl^{-1}\left[\frac{2s}{(s^2+1)^2}\right]}\\
-&\visible<+->{=-e^t\msl^{-1}\left[\left(\frac1{s^2+1}\right)'\right]}
-\visible<+->{=te^t\msl^{-1}\left[\frac1{s^2+1}\right]=te^t\sin t.}
-\end{align*}
+\[x(t)=\msl^{-1}\left(\frac{s}{s^2+1}-\frac{s}{s^2+4}\right)
+\visible<+->{=\cos t-\cos(2t).}\]
 \end{solution}
-\endgroup
 \end{frame}
 
 
-\begin{frame}{典型例题: 使用积分变换解微积分方程}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
 \beqskip{0pt}
 \begin{example}
 解方程 
@@ -284,7 +280,9 @@ x(t)&=\msl^{-1}\left[\frac{2(s-1)}{[(s-1)^2+1]^2}\right]
 \end{example}
 \vspace{-7pt}
 \begin{solution}
-设 $\msl[x]=X,\msl[y]=Y$, 则
+设 $\msl[x]=X,\msl[y]=Y$,
+\onslide<+->
+则
   \[\begin{cases}
     sX-1+2X+2Y=10/(s-2),& \\
     -2X+sY-3+3Y=13/(s-2).&
@@ -300,21 +298,23 @@ y(t)=\msl^{-1}\left[\frac3{s-2}\right]=3e^{2t}.\]
 \end{frame}
 
 
-\begin{frame}{例题: 使用积分变换解微积分方程}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
 \begin{example}
 解方程 $x''(t)-x(t)=0$.
 \end{example}
 \begin{solution}
-设 $\msl[x]=X$, 则
-\[\msl[x''(t)]=s^2X(s)-sx(0)-x'(0),\]
+设 $a=x(0),b=x'(0),\msl[x]=X$,
+\onslide<+->
+则
+\[\msl[x''(t)]=s^2X(s)-as-b,\]
 \onslide<+->
 \vspace{-\baselineskip}
-\[s^2X(s)-sx(0)-x'(0)-X(s)=0,\]
+\[s^2X(s)-as-b-X(s)=0,\]
 \onslide<+->
 \vspace{-0.8\baselineskip}
-\[X(s)=\frac{sx(0)+x'(0)}{s^2+1}=x(0)\frac s{s^2+1}+x'(0)\frac1{s^2+1},\]
+\[X(s)=\frac{as-b}{s^2-1}=\frac{a+b}2\cdot\frac1{s-1}+\frac{a-b}2\cdot\frac1{s+1},\]
 \onslide<+->
 \vspace{-0.8\baselineskip}
-\[x(t)=\msl^{-1}[X(s)]=x(0)\cos t+x'(0)\sin t.\]
+\[x(t)=\msl^{-1}[X(s)]=\frac{a+b}2e^t+\frac{a-b}2e^{-t}.\]
 \end{solution}
 \end{frame}

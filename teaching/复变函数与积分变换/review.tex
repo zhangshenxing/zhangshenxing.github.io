@@ -30,7 +30,8 @@
 \item 以下等式未必成立 ($\arg$ 可以换成 $\ln$)
 \[\arg (z_1z_2)=\arg z_1+\arg z_2,\quad 
 \arg\left(\frac{z_1}{z_2}\right)=\arg z_1-\arg z_2,\]
-\[\Arg z^n=n\arg z.\]
+\[\Arg z^n=n\Arg z,\quad
+\Ln z^n=n\Ln z.\]
 \end{itemize}
 \end{frame}
 
@@ -62,7 +63,8 @@
 \begin{frame}{解析函数的判定: C-R方程}
 \begin{itemize}
 \item $f(z)=u+iv$ 在 $z_0$ 可导等价于 $u,v$ 均可微且满足C-R方程:
-\[u_x=v_y,\quad u_y=v_x.\]
+\[u_x=v_y,\quad u_y=-v_x.\]
+\item $f'(z)=u_x+iv_x$.
 \item 会计算函数的可导点和解析区域.
 \end{itemize}
 \begin{exercise}
@@ -136,11 +138,10 @@ $0$ 是 $\dfrac{(\sin z)^3(e^z-1)^4}{z^5}$ 的可去奇点.
 \begin{itemize}
 \item 可去奇点处留数为 $0$, 本性奇点留数按照定义计算: $c_{-1}$.
 \item (至多) $n$ 阶极点
-\[\Res[f(z),z_0]=\frac{1}{(n-1)!}[(z-z_0)^n f(z)]^{(n-1)},\]
+\[\Res[f(z),z_0]=\frac{1}{(n-1)!}\lim_{z\to z_0}[(z-z_0)^n f(z)]^{(n-1)},\]
 \[\Res[f(z),z_0]=\lim_{z\to z_0} (z-z_0)f(z),\quad \text{若}\ n=1,\]
-\item 设 $P(z),Q(z)$ 在 $z_0$ 解析且 $P(z_0)\neq 0$, $Q(z_0)=0$, $Q'(z_0)\neq 0$.
-则 $z_0$ 是 $f(z)$ 的 $1$ 阶极点且
-\[\Res[P/Q,z_0]=\frac{P(z_0)}{Q'(z_0)}.\]
+\item 设 $z_0$ 是 $P$ 的解析点, 是 $Q$ 的一阶零点, 则
+\[\Res[\frac PQ,z_0]=\frac{P(z_0)}{Q'(z_0)}.\]
 \end{itemize}
 \end{frame}
 
@@ -239,12 +240,12 @@ $\msl[t]=\dfrac1{s^2}$.
 
 \begin{frame}{拉普拉斯变换}
 \begin{itemize}
-\item 解微分方程: 两边同时做 $\msl$, 利用微分性质求得 $Y=\msl[y]$, 然后利用常见函数的拉普拉斯变换反解得到 $y(t)$.
+\item 解微分方程: 两边同时做 $\msl$, 利用微分性质求得 $X=\msl[x]$, 然后利用常见函数的拉普拉斯变换反解得到 $x(t)$.
 \end{itemize}
 \begin{exercise}
 解方程 
   $\begin{cases}
-    x''(t)-2x'(t)+2x(t)=2e^t\cos t,& \\
+    x''(t)+4x(t)=3\cos t,& \\
     x(0)=x'(0)=0.&
   \end{cases}$
 \end{exercise}
