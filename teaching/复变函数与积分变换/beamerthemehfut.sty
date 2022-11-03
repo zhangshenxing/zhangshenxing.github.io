@@ -2,8 +2,9 @@
 % 颜色
 \usecolortheme{rose}
 \usecolortheme{seahorse}
-\setbeamercolor*{title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg} % 封面页 标题
-\setbeamercolor*{part title}{parent=title} % 部分页 部分标题
+%\setbeamercolor*{title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg} % 封面页 标题
+\setbeamercolor*{title}{use=structure,fg=structure.fg} % 封面页 标题
+\setbeamercolor*{part title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg} % 部分页 部分标题
 \setbeamercolor*{author/part in head/foot}{parent=palette tertiary} % 底部导航 作者/部分
 \setbeamercolor*{title in head/foot}{parent=palette quaternary} % 底部导航 标题
 \setbeamercolor*{institute/section in head/foot}{parent=palette tertiary} % 底部导航 机构/节
@@ -35,7 +36,7 @@
 \newcommand{\email}[1]{\gdef\HFUT@email{#1}}\email{}
 \newcommand{\website}[1]{\gdef\HFUT@website{#1}}\website{}
 \newcommand{\office}[1]{\gdef\HFUT@office{#1}}\office{}
-%%% 封面页页
+%%% 封面页
 \defbeamertemplate*{title page}{hfut}[1][]
 {
   \vbox{}
@@ -43,14 +44,23 @@
   \begingroup
     \centering
     \begin{beamercolorbox}[sep=8pt,center,#1]{title}
-      \usebeamerfont{title}\inserttitle\par%
+      \usebeamerfont{title}\inserttitle%
       \ifx\insertsubtitle\@empty%
       \else%
-        \vskip0.25em%
-        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+        \vskip0.25em\par%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}%
       \fi%     
     \end{beamercolorbox}%
-    \vskip1em\par
+    \begin{center}%
+    \vspace{-\baselineskip}
+    \begin{tikzpicture}
+    \draw[draw=black!10] (-5.5,-0.03)--(-0.2,-0.03);
+    \draw[draw=black!10] ( 5.5,-0.03)--( 0.2,-0.03);
+    \draw[draw=black!10] (-5.5, 0.03)--(-0.2, 0.03);
+    \draw[draw=black!10] ( 5.5, 0.03)--( 0.2, 0.03);
+    \fill[fill=structure.fg] (-0.1,0)--(0,0.1)--(0.1,0)--(0,-0.1)--cycle;
+    \end{tikzpicture}\end{center}
+    \vspace{-0.5\baselineskip}
     \begin{beamercolorbox}[sep=8pt,center,#1]{author}
       \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
     \end{beamercolorbox}
