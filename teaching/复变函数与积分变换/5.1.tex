@@ -86,7 +86,7 @@ $m$ 阶极点&\makecell[c]{主要部分只有有限项非零\\最低次为 $-m$ 
 \onslide<+->
 通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 解析.
 
-\begin{conclusion}
+\begin{conclusion}[可去奇点判定方法]
 $z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限 $\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
 \end{conclusion}
 \end{frame}
@@ -124,9 +124,9 @@ $z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有�
 $\displaystyle e^{\frac1z}=1+\frac1z+\frac1{2z^2}+\cdots$, $0$ 是本性奇点.
 \end{example}
 
-\begin{conclusion}
+\begin{theorem}
 $z_0$ 是 $f(z)$ 的本性奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
-\end{conclusion}
+\end{theorem}
 
 \onslide<+->
 事实上我们有\marknot{皮卡大定理}: 对于本性奇点 $z_0$ 的任何一个去心邻域, $f(z)$ 的像取遍所有复数, 至多有一个取不到.
@@ -151,12 +151,12 @@ $z_0$ 是 $f(z)$ 的本性奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 不存在也�
 \onslide<+->
 且当 $z\neq z_0$ 时, $f(z)=\dfrac{g(z)}{(z-z_0)^m}$.
 
-\begin{conclusion}
+\begin{theorem}
 \begin{itemize}
 \item $z_0$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\lim\limits_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零.
 \item $z_0$ 是 $f(z)$ 的极点 $\iff\lim\limits_{z\to z_0}f(z)=\infty$.
 \end{itemize}
-\end{conclusion}
+\end{theorem}
 \end{frame}
 
 
@@ -254,10 +254,10 @@ $f(z)=\sin z-z$.
 \onslide<+->
 如果 $\ord(f,z_0)\ge 0$, 则 $z_0$ 是可去奇点或解析点.
 
-\begin{theorem}
+\begin{conclusion}[可去奇点和极点判定方法]
 如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
 \[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
-\end{theorem}
+\end{conclusion}
 \end{frame}
 
 

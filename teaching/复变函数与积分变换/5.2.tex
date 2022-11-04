@@ -20,10 +20,10 @@
 
 \begin{frame}{留数定理}
 \beqskip{0pt}
-\begin{theorem}
+\begin{conclusion}[留数定理]
 如果 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 那么
 \[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
-\end{theorem}
+\end{conclusion}
 \begin{proof}
 \begin{center}
 \begin{tikzpicture}
@@ -89,14 +89,14 @@ $f(z)=z^4\sin\dfrac1z$.
 
 \begin{frame}{留数的计算方法}
 设 $z_0$ 为 $f(z)$ 的极点.
-\begin{conclusion}
+\begin{conclusion}[极点留数计算公式 I]
 如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
-\[\markatt{\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].}\]
+\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].\]
 \end{conclusion}
 
-\begin{conclusion}
+\begin{conclusion}[极点留数计算公式 II]
 如果 $z_0$ 是 $1$ 阶极点或可去奇点, 那么
-\[\markatt{\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z)}.\]
+\[\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z).\]
 \end{conclusion}
 \end{frame}
 
@@ -168,9 +168,9 @@ $\dfrac1{24}$.
 
 \begin{frame}{留数的计算方法}
 \beqskip{3pt}
-\begin{conclusion}
+\begin{conclusion}[极点留数计算公式 III]
 设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的 $1$ 阶零点, 则
-\[\markatt{\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.}\]
+\[\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.\]
 \end{conclusion}
 \begin{proofs}
 不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的 $1$ 阶极点或可去奇点.

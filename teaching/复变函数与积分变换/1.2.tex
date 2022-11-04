@@ -89,7 +89,7 @@
 \end{tikzpicture}
 \onslide<+->
 
-\begin{align*}
+\begin{flalign*}
 &\arg z=\begin{cases}
 \visible<4->{\markatt{\arctan\dfrac yx,}}&\visible<4->{\markatt{x>0;}}\vspace{1ex}\\
 \visible<5->{\markdef{\arctan\dfrac yx+\pi,}}&\visible<5->{\markdef{x<0,y\ge0;}}\vspace{1ex}\\
@@ -97,7 +97,7 @@
 \visible<7->{\dfrac\pi2,}&\visible<7->{x=0,y>0;}\\
 \visible<7->{-\dfrac\pi2,}&\visible<7->{x=0,y<0.}
 \end{cases}&
-\end{align*}
+\end{flalign*}
 
 \onslide<8->
 $z$ 是实数当且仅当 $\arg z=0,\pi$ 或 $z=0$.
@@ -107,8 +107,9 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 
 
 \begin{frame}{复数模的性质}
-\begin{conclusion}
+\onslide<+->
 复数的模满足如下性质:
+\begin{conclusion}[模的性质汇总]
 \begin{itemize}
 \item $z\ov z=|z|^2=|\ov z|^2$;
 \item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;

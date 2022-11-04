@@ -65,15 +65,15 @@
 
 
 \begin{frame}{拉普拉斯变换的性质}
-\begin{conclusion}[线性性质]
+\begin{theorem}[线性性质]
 \[\msl[\alpha f+\beta g]=\alpha F+\beta G,\quad
 \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{conclusion}
+\end{theorem}
 
-\begin{conclusion}[延迟性质和位移性质]
+\begin{theorem}[延迟性质和位移性质]
 \[\msl[e^{s_0t}f(t)]=F(s-s_0),\quad
 \msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0.\]
-\end{conclusion}
+\end{theorem}
 
 \onslide<+->
 例如
@@ -84,20 +84,20 @@
 \begin{frame}{拉普拉斯变换的性质}
 \begin{conclusion}[微分性质]
 \vspace{-\baselineskip}
-\[\markatt{\msl[f'(t)]=sF(s)-f(0),}\]
-\[\markatt{\msl[f''(t)]=s^2F(s)-sf(0)-f'(0),}\]
+\[\msl[f'(t)]=sF(s)-f(0),\]
+\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0),\]
 \[\msl[f^{(n)}(t)]=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-\cdots-f^{(n-1)}(0).\]
 \end{conclusion}
 
-\begin{conclusion}[积分性质]
+\begin{theorem}[积分性质]
 \vspace{-\baselineskip}
 \[\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s).\]
-\end{conclusion}
+\end{theorem}
 
-\begin{conclusion}[乘多项式性质]
+\begin{theorem}[乘多项式性质]
 \vspace{-\baselineskip}
 \[\msl[tf(t)]=-F'(s),\quad\msl[t^kf(t)]=(-1)^kF^{(k)}(s).\]
-\end{conclusion}
+\end{theorem}
 \end{frame}
 
 

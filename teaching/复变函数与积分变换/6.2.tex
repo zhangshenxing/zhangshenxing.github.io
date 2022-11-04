@@ -7,19 +7,19 @@
 \onslide<+->
 通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
 
-\begin{conclusion}[线性性质]
+\begin{theorem}[线性性质]
 \vspace{-3pt}
 \[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 \msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{conclusion}
+\end{theorem}
 
-\begin{conclusion}[位移性质]
+\begin{theorem}[位移性质]
 \vspace{-\baselineskip}
 \vspace{-3pt}
-\[\markatt{\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
-\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).}\]
+\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
+\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
 \vspace{-\baselineskip}
-\end{conclusion}
+\end{theorem}
 \onslide<+->
 位移性质通过变量替换容易证明.
 \onslide<+->
@@ -30,14 +30,14 @@
 
 
 \begin{frame}{傅里叶变换的性质}
-\begin{conclusion}[微分性质]
-\[\markatt{\msf[f'(t)]=j\omega F(\omega),\quad
-\msf^{-1}[F'(\omega)]=-jtf(t),}\]
+\begin{theorem}[微分性质]
+\[\msf[f'(t)]=j\omega F(\omega),\quad
+\msf^{-1}[F'(\omega)]=-jtf(t),\]
 \onslide<+->
 \vspace{-\baselineskip}
 \[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
 \msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
-\end{conclusion}
+\end{theorem}
 \onslide<+->
 这里, 被变换的函数都要求在 $\infty$ 处趋于 $0$, 下同. 
 \onslide<+->
@@ -45,27 +45,27 @@
 \[\msf[f']=\pair{f'(t),e^{-j\omega t}}=-\pair{f(t),(e^{-j\omega t})'}=j\omega F(\omega)\]
 可得.
 
-\begin{conclusion}[积分性质]
+\begin{theorem}[积分性质]
 \[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
-\end{conclusion}
+\end{theorem}
 \end{frame}
 
 
 \begin{frame}{傅里叶变换的性质}
 由微分性质可得
-\begin{conclusion}[乘多项式性质]
+\begin{theorem}[乘多项式性质]
 \[\msf[tf(t)]=jF'(\omega),\quad
 \msf^{-1}[\omega F(\omega)]=-jf'(t),\]
 \onslide<+->
 \[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
 \msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
-\end{conclusion}
+\end{theorem}
 \onslide<+->
 由变量替换易得
-\begin{conclusion}[相似性质]
+\begin{theorem}[相似性质]
 \[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
 \msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac\omega a\right).\]
-\end{conclusion}
+\end{theorem}
 \end{frame}
 
 

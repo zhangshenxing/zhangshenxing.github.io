@@ -4,7 +4,7 @@
 \begin{frame}{柯西积分公式}
 \onslide<+->
 柯西积分定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
-\begin{theorem}[柯西积分公式]
+\begin{conclusion}[柯西积分公式]
 设
 \begin{itemize}[<*>]
 \item 函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析,
@@ -12,8 +12,8 @@
 \end{itemize}
 \onslide<+->
 则
-\[\markatt{f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z}.\]
-\end{theorem}
+\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z.\]
+\end{conclusion}
 \onslide<+->
 如果 $z_0\notin D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
 \end{frame}
@@ -212,10 +212,10 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \onslide<+->
 不仅如此, 通过积分表示, 还可以说明\markatt{解析函数存在任意阶解析的导数}.
 
-\begin{theorem}[柯西积分公式]
+\begin{conclusion}[柯西积分公式]
 设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
-\[\markatt{f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z}.\]
-\end{theorem}
+\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.\]
+\end{conclusion}
 \onslide<+->
 其中右侧被积函数可以记忆成公式
 \[f(z_0)=\frac{1}{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z\]
