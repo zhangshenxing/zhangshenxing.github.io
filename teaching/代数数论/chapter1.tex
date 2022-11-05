@@ -8,7 +8,7 @@
 \item 整二元二次型 \ref{pro:binary_quadratic_form_represent_integer}, \ref{thm:bijection_narrow_class_group_binary_quadratic_forms}
 \end{introduction}
 
-\begin{question*}{}{}
+\begin{question*}{}
 什么样的正整数能够写成两个整数的平方和?
 \end{question*}
 
@@ -322,12 +322,12 @@ $\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, �
 设 $p$ 为奇素数, $K=\BQ(\zeta),\zeta=e^{2\pi i/p}$ 的极小多项式为
   \[f(T)=\frac{T^p-1}{T-1}=T^{p-1}+\dots+1=\prod\limits_{i=1}^{p-1}(T-\zeta^i),\]
 因此
-  \[\begin{split}
-\disc(1,\zeta,\dots,\zeta^{p-2})&=(-1)^{\frac{p(p-1)}{2}}\prod_{i,j=1\atop i\neq j}^{p-1}(\zeta^i-\zeta^j)\\
-&=(-1)^{\frac{(p-1)(p-2)}{2}}\prod_{j=1}^{p-1}\prod_{i=1\atop i\neq-j}^{p-1}(1-\zeta^i)\\
+\begin{align*}
+\disc(1,\zeta,\dots,\zeta^{p-2})&=(-1)^{\frac{p(p-1)}{2}}\prod_{\substack{i,j=1\\ i\neq j}}^{p-1}(\zeta^i-\zeta^j)\\
+&=(-1)^{\frac{(p-1)(p-2)}{2}}\prod_{j=1}^{p-1}\prod_{\substack{i=1\\ i\neq-j}}^{p-1}(1-\zeta^i)\\
 &=(-1)^{\frac{(p-1)(p-2)}{2}}\Bigl(\prod_{i=1}^{p-1}(1-\zeta^i)\Bigr)^{p-2}\\
 &=(-1)^{\frac{(p-1)(p-2)}{2}}f(1)^{p-2}=(-1)^{\frac{(p-1)(p-2)}{2}}p^{p-2}.
-\end{split}\]
+\end{align*}
 又因为 $f(T+1)=T^{p-1}+\suml_{i=1}^{p-1}{p\choose i}T^{i-1}$ 是艾森斯坦的, 因此 $\CO_K=\BZ[\zeta_p]$.
 \end{example}
 \begin{exercise}
@@ -452,7 +452,8 @@ $\BQ(\zeta_N)$ 的判别式整除 $N^{\varphi(N)}$. 由此可知, 如果 $p$ 是
 $\BQ(\zeta_N)$ 的整数环为 $\BZ[\zeta_N]$.
 \end{theorem}
 \begin{proof}
-我们对 $N$ 的素因子个数进行归纳. 若 $N$ 只有一个素因子,由命题~\ref{pro:simple_factor} 已得. 若不然, 设 $N=nm,n,m>1,\gcd(n,m)=1$, 由推论~\ref{cor:disjoint_coprime}、命题~\ref{pro:simple_factor} 和引理~\ref{lem:integeral_extension} 以及归纳假设可知 $\CO_{\BQ(\zeta_N)}=\CO_{\BQ(\zeta_m)}\CO_{\BQ(\zeta_n)}=\BZ[\zeta_n,\zeta_m]=\BZ[\zeta_N]$.
+我们对 $N$ 的素因子个数进行归纳. 若 $N$ 只有一个素因子,由命题~\ref{pro:simple_factor} 已得. 若不然, 设 $N=nm,n,m>1,\gcd(n,m)=1$, 由推论~\ref{cor:disjoint_coprime}、命题~\ref{pro:simple_factor} 和引理~\ref{lem:integeral_extension} 以及归纳假设可知
+\[\CO_{\BQ(\zeta_N)}=\CO_{\BQ(\zeta_m)}\CO_{\BQ(\zeta_n)}=\BZ[\zeta_n,\zeta_m]=\BZ[\zeta_N].\]
 \end{proof}
 
 \begin{proposition}{分圆域的判别式}{}
@@ -1005,7 +1006,7 @@ $\Lambda=\lambda(\CO_K^\times)$ 是 $H$ 的一个完全格.
   \[Xy^{-1}=\set{(z_\tau)\in K_\BR: |z_\tau|<c_\tau|y_\tau|^{-1}}.\]
 由定理~\ref{thm:ideal_exist_pt} 知存在 $0\neq a\in\CO_K$ 使得 
   \[|\bfN_{K/\BQ}(a)|\le C, ja\in Xy^{-1}, y\in X(ja)^{-1}.\]
-我们知道范数有限的理想只有有限多个, 因此我们可以选取 $\alpha_1,\dots,\alpha_N\in\CO_K$ 使得任意满足 $|\bfN_{K/\BQ}(\alpha)|\le C$ 的元素 $\alpha\in \alpha_i \CO_K^\times$. 于是
+我们知道范数有限的理想只有有限多个, 因此可以选取 $\alpha_1,\dots,\alpha_N\in\CO_K$ 使得任意满足 $|\bfN_{K/\BQ}(\alpha)|\le C$ 的元素 $\alpha\in \alpha_i \CO_K^\times$. 于是
   \[T=S\cap \bigcup_{i=1}^N X(j \alpha_i)^{-1}\]
 是一个有界集, 且 $S=\bigcup_{\varepsilon\in\CO_K^\times} Tj\varepsilon.$
 \end{proof}
@@ -1092,7 +1093,9 @@ a&b/2\\b/2&c
 任一二元二次型可等价于 $ax^2+bxy+cy^2$, 其中 $|b|\le|a|\le |c|$.
 \end{lemma}
 \begin{proof}
-设 $a$ 是集合 $\set{F(x,y):x,y\in\BZ}$ 中绝对值最小的非零元. 设 $a=F(r,s)$, $q=(r,s)$. 则 $F(r/q,s/q)=a/q^2$, 因此 $q$ 只能是 $1$, $r$ 与 $s$ 互素. 于是存在 $u,v\in\BZ$ 使得 $rv-us=1$. 记
+设 $a$ 是集合 $\set{F(x,y):x,y\in\BZ}$ 中绝对值最小的非零元. 设 $a=F(r,s)$, $q=(r,s)$. 则
+\[F\left(\frac rq,\frac sq\right)=\frac a{q^2},\]
+因此 $q$ 只能是 $1$, $r$ 与 $s$ 互素. 于是存在 $u,v\in\BZ$ 使得 $rv-us=1$. 记
 	\[F(rx+uy,sx+vy)=ax^2+b'xy+c' y^2.\]
 注意到
 	\[a(x+hy)^2+b'(x+hy)y+c'y^2=ax^2+(b'+2ah)xy+(ah^2+b'h+c')y^2,\]

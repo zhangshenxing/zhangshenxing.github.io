@@ -1,9 +1,13 @@
-\documentclass[cn,11pt,chinese,twoside,openright]{elegantbookmath}
+\documentclass[cn,11pt,chinese,twoside,openright]{elegantbook}
+\PassOptionsToPackage{style=alphabetic}{biblatex}
 \usepackage{fontspec}
 \usepackage[all]{xy}
 \usepackage{stmaryrd}
 \usepackage{makeidx}
 \usepackage{hyperref}
+
+\let\question\relax
+\elegantnewtheorem{question}{问题}{prostyle}{que}
 
 \newcommand{\ra}{\rightarrow}
 \newcommand{\lra}{\longrightarrow}
@@ -132,19 +136,31 @@
 \newcommand{\vol}{{\mathrm{vol}}}
 \newfontface\cmunrm{cmunrm.otf}
 \newcommand\cmu[1]{{\cmunrm{#1}}}
+\newcommand{\noun}[1]{\textcolor{blue}{{\itshape #1}}\index{{#1}}}
+\newcommand{\nouns}[2]{\textcolor{blue}{{\itshape #1}}\index{{#2}}}
+\setcounter{tocdepth}{2}
+\newfontfamily\couriernew{Courier New}
+\lstset{language=[LaTeX]TeX,
+	basicstyle=\couriernew,
+  morekeywords={AUTHOR, KEY, TITLE, YEAR, PAGES, HOWPUBLISHED, URL, LANGUAGE},
+  keywordstyle=\color{winered}
+}
+
 \makeindex
 
 \title{代数数论讲义}
 \author{张神星}
 \institute{合肥工业大学}
 \date{\zhtoday}
-\version{v2.4.0.1}
+\version{v2.4.0.2}
 \logo{hfut.png}
 \cover{cover.jpg}
+\addbibresource[location=local]{mybib.bib}
 
 \begin{document}
 
 \maketitle
+\hypersetup{pageanchor=true}
 \frontmatter
 
 \chapter*{前言}
@@ -164,7 +180,7 @@
 
 \vskip 0.5cm
 
-\noindent BibTeX 格式:
+\noindent Bib 格式:
 \begin{lstlisting}
 @misc{ZhangNotes2021,
   AUTHOR = {张神星},
@@ -197,7 +213,7 @@
 
 
 \backmatter
-\bibliography{../../private/mybib}
+\printbibliography[heading=bibintoc, title=\ebibname]
 
 \chapter*{中外人名对照表}
 %\addcontentsline{toc}{chapter}{中外人名对照表}
@@ -270,6 +286,7 @@
 %\newpage
 %\phantomsection
 %\addcontentsline{toc}{chapter}{索引}
+
 \printindex
 
 \end{document}

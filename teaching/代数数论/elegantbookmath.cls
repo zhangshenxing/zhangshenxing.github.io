@@ -537,17 +537,53 @@
         \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
           \textcolor{third}{}};}},}
 
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{definition}{\definitionname}{defstyle}{def}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{theorem}{\theoremname}{thmstyle}{thm}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{proposition}{\propositionname}{thmstyle}{pro}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{corollary}{\corollaryname}{thmstyle}{cor}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{lemma}{\lemmaname}{thmstyle}{lem}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{axiom}{\axiomname}{propstyle}{axi}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{conjecture}{\conjecturename}{propstyle}{con}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{assumption}{\assumptionname}{propstyle}{ass}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{conclusion}{\conclusionname}{propstyle}{coc}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{property}{\propertyname}{propstyle}{prp}
-  \newtcbtheorem[use counter=theoremenv,number within=chapter]{question}{\questionname}{propstyle}{que}
+  \newcommand{\ELEGANT@newtheorem}[3]{
+    \ifcsundef{#1name}{%
+      \ClassError{elegantbook}{%
+        \ #1name undefined, \MessageBreak
+        Please check in language setting
+      }{}
+    }{\relax}
+    \DeclareTColorBox[auto counter,number within=\ELEGANT@thmcnt]{#1}{ g o t\label g }{
+        common,#3,
+        IfValueTF={##1}
+          {ELEGANT@title={#1}{##1}}
+          {
+            IfValueTF={##2}
+            {ELEGANT@title={#1}{##2}}
+            {ELEGANT@title={#1}{}}
+          },
+        IfValueT={##4}
+          {
+            IfBooleanTF={##3}
+              {label={##4}}
+              {ELEGANT@label={#2}{##4}}
+          }
+      }
+    \DeclareTColorBox{#1*}{ g o }{
+        common,#3,
+        IfValueTF={##1}
+          {ELEGANT@title={#1}{##1}}
+          {
+            IfValueTF={##2}
+            {ELEGANT@title={#1}{##2}}
+            {ELEGANT@title={#1}{}}
+          },
+      }
+  }
+
+
+  \ELEGANT@newtheorem{definition}{def}{defstyle}
+  \ELEGANT@newtheorem{theorem}{thm}{thmstyle}
+  \ELEGANT@newtheorem{proposition}{pro}{propstyle}
+  \ELEGANT@newtheorem{corollary}{cor}{thmstyle}
+  \ELEGANT@newtheorem{axiom}{axi}{thmstyle}
+  \ELEGANT@newtheorem{lemma}{lem}{propstyle}
+  \ELEGANT@newtheorem{conjecture}{con}{propstyle}
+  \ELEGANT@newtheorem{assumption}{ass}{propstyle}
+  \ELEGANT@newtheorem{conclusion}{coc}{propstyle}
+  \ELEGANT@newtheorem{property}{prp}{propstyle}
+  \ELEGANT@newtheorem{question}{que}{propstyle}
 }{\relax}
 
 \ifdefstring{\ELEGANTBOOKMATH@mode}{simple}{
