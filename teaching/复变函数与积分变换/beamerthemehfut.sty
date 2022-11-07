@@ -7,7 +7,7 @@
 \setbeamercolor*{author/part in head/foot}{parent=palette tertiary} % 底部导航 作者/部分
 \setbeamercolor*{title in head/foot}{parent=palette quaternary} % 底部导航 标题
 \setbeamercolor*{institute/section in head/foot}{parent=palette tertiary} % 底部导航 机构/节
-\setbeamercolor*{item}{parent=example text} % 条目编号
+\setbeamercolor*{item}{use=structure,fg=structure.fg} % 条目编号
 \setbeamercolor*{website}{use=structure,fg=structure.fg}
 % 内部
 %%% 页边距
@@ -28,48 +28,34 @@
 \setbeamerfont{enumerate subitem}{size=\large}
 \setbeamerfont{enumerate subsubitem}{size=\large}
 \setbeamerfont{item projected}{size=\normalsize}
-\setbeamerfont{courseid}{size=\normalsize,family=\ttfamily}
 \setbeamerfont{website}{size=\small,family=\ttfamily}
 \setbeamerfont{office}{size=\normalsize,shape=\itshape}
 \newcommand{\website}[1]{\gdef\HFUT@website{#1}}\website{}
 \newcommand{\office}[1]{\gdef\HFUT@office{#1}}\office{}
 %%% 封面页
-\defbeamertemplate*{title page}{hfut}[1][]
-{
-  \vbox{}
-  \vfill
-  \begingroup
-    \centering
-    \begin{center}
-    \begin{minipage}[c][5cm][c]{3cm}
-      \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
-    \end{minipage}
-    \begin{minipage}[c][5cm][c]{1cm}
-      \begin{center}\begin{tikzpicture}
-        \draw[draw=black!10] (-0.03,-1.5)--(-0.03,-0.2);
-        \draw[draw=black!10] (-0.03, 1.5)--(-0.03, 0.2);
-        \draw[draw=black!10] ( 0.03,-1.5)--( 0.03,-0.2);
-        \draw[draw=black!10] ( 0.03, 1.5)--( 0.03, 0.2);
-        \fill[fill=structure.fg] (-0.1,0)--(0,0.1)--(0.1,0)--(0,-0.1)--cycle;
-      \end{tikzpicture}\end{center}
-    \end{minipage}
-    \begin{minipage}[c][5cm][c]{6.5cm}
-      {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\vskip1em\par%
-      {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
-      {\usebeamerfont{office}\usebeamercolor[fg]{office}\HFUT@office}\vskip0.25em\par%
-      {\usebeamerfont{website}\usebeamercolor[fg]{website}\href{\HFUT@website}{\HFUT@website}}%
-    \end{minipage}
-  \end{center}
-  \endgroup
-  \vfill
+\setbeamertemplate{title page}{%
+  \hskip0em\includegraphics[height=0.17\textheight]{misc/hfut.png}\hskip2ex%
+  \raisebox{0.035\textheight}{\includegraphics[height=0.1\textheight]{misc/hfutname.png}}\vskip3em\par%
+  \hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par%
+  \hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip2em\par%
+  \hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{office}\usebeamercolor[fg]{office}\HFUT@office}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{website}\usebeamercolor[fg]{website}\href{\HFUT@website}{\HFUT@website}}%
+}
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \path (0,0) -- (\paperwidth,\paperheight);
+    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{misc/hfut.png}};
+  \end{tikzpicture}
 }
 %%% 部分页
-\defbeamertemplate*{part page}{hfut}[1][]
-{
+\setbeamertemplate{part page}{
   \begingroup
-    \begin{beamercolorbox}[sep=8pt,center,#1]{part title}
+    \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \ifnum\thepart<100\ifnum\thepart>0
       {\usebeamercolor[fg]{part name}\usebeamerfont{part name}第\chinese{part}章}%
-      \hspace{1em}%
+      \hspace{1em}
+    \fi\fi%
       {\usebeamercolor[fg]{part title}\usebeamerfont{part title}\insertpart}\par
     \end{beamercolorbox}
   \endgroup
@@ -84,11 +70,15 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{page number in head/foot}[totalframenumber]
 %%% 底部导航
-\defbeamertemplate*{footline}{hfut}{%
+\setbeamertemplate{footline}{%
   \leavevmode%
   \hbox{%
   \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author/part in head/foot}%
-    \ifnum \thepart>0
+    \ifnum \thepart>99
+      \usebeamercolor[fg]{part in head/foot}%
+       \usebeamerfont{part in head/foot}%
+        {\insertshortpart}
+    \else\ifnum \thepart>0
       \usebeamercolor[fg]{part in head/foot}%
        \usebeamerfont{part in head/foot}%
         {第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
@@ -96,7 +86,7 @@
       \usebeamercolor[fg]{author in head/foot}%
        \usebeamerfont{author in head/foot}%
         {\insertshortauthor}
-    \fi
+    \fi\fi
   \end{beamercolorbox}%
   \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
     \usebeamercolor[fg]{title in head/foot}%
@@ -112,7 +102,7 @@
       \hfill%
       \usebeamercolor[fg]{page number in head/foot}%
        \usebeamerfont{page number in head/foot}%
-        \usebeamertemplate{page number in head/foot}      
+        \usebeamertemplate{page number in head/foot}
     \else
       \hfill%
       \usebeamercolor[fg]{institute in head/foot}%
