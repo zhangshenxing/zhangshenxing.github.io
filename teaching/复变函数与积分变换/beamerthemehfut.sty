@@ -32,21 +32,28 @@
 \setbeamerfont{office}{size=\normalsize,shape=\itshape}
 \newcommand{\website}[1]{\gdef\HFUT@website{#1}}\website{}
 \newcommand{\office}[1]{\gdef\HFUT@office{#1}}\office{}
+\newcommand{\institutelogo}[1]{\gdef\HFUT@institutelogo{#1}}\institutelogo{}
+\newcommand{\institutename}[1]{\gdef\HFUT@institutename{#1}}\institutename{}
 %%% 封面页
 \setbeamertemplate{title page}{%
-  \hskip0em\includegraphics[height=0.17\textheight]{misc/hfut.png}\hskip2ex%
-  \raisebox{0.035\textheight}{\includegraphics[height=0.1\textheight]{misc/hfutname.png}}\vskip3em\par%
+  \hskip0em\ifx\HFUT@institutelogo\@empty\else\includegraphics[height=0.17\textheight]{\HFUT@institutelogo}\hskip2ex\fi%
+  \ifx\HFUT@institutename\@empty\else%
+    \raisebox{0.035\textheight}{\includegraphics[height=0.1\textheight]{\HFUT@institutename}}%
+  \fi\vskip3em\par%
   \hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par%
   \hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip2em\par%
   \hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
   \hskip0em{\usebeamerfont{office}\usebeamercolor[fg]{office}\HFUT@office}\vskip0.25em\par%
   \hskip0em{\usebeamerfont{website}\usebeamercolor[fg]{website}\href{\HFUT@website}{\HFUT@website}}%
 }
+%%% 页面背景
 \setbeamertemplate{background}{
+  \ifx\HFUT@institutelogo\@empty\else
   \begin{tikzpicture}
     \path (0,0) -- (\paperwidth,\paperheight);
-    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{misc/hfut.png}};
+    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\HFUT@institutelogo}};
   \end{tikzpicture}
+  \fi
 }
 %%% 部分页
 \setbeamertemplate{part page}{
@@ -134,7 +141,6 @@
 \usefonttheme[onlymath]{serif}
 \RequirePackage{lmodern}
 \RequirePackage[T1]{fontenc}
-
 \setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
 \beamerdefaultoverlayspecification{<+->}
 \mode<all>
