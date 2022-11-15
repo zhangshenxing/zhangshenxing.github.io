@@ -59,8 +59,8 @@
 为了简便假设 $f'(z)$ 连续,
 \onslide<+->
 则
-\[\oint_Cf(z)\diff z=\oint_Cu\diff x-v\diff y
-+i\oint_Cv\diff x+u\diff y.\]
+\[\oint_Cf(z)\diff z=\oint_C(u\diff x-v\diff y)
++i\oint_C(v\diff x+u\diff y).\]
 \onslide<+->
 由格林公式和C-R方程可知
 \[\oint_Cf(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
@@ -140,6 +140,24 @@
 \onslide<+->
 解析函数绕闭路的积分一般用留数定理算，本例只作为柯西-古萨基本定理的一个应用.
 \endgroup
+\end{frame}
+
+
+\begin{frame}{不解析函数绕闭路积分}
+\onslide<+->
+当 $f(z)$ 不解析, 但 $u,v$ 均可微时, 我们也可以利用格林公式计算闭路上的积分.
+\onslide<+->
+例如
+\[f(z)=\Re z=x,\quad C:|z|=1, D:|z|<1,\]
+\onslide<+->
+则
+\[v_x+u_y=0,\quad u_x-v_y=1,\]
+\onslide<+->
+\begin{align*}
+\oint_Cf(z)\diff z
+&=-\iint_{|z|<1}(v_x+u_y)\diff x\diff y+i\iint_{|z|<1}(u_x-v_y)\diff x\diff y\\
+&=i\iint_{|z|<1}\diff x\diff y=\pi i.
+\end{align*}
 \end{frame}
 
 

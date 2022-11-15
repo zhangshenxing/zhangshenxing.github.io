@@ -1,15 +1,17 @@
 \usetheme{hfut}
-\RequirePackage{bm}
-\RequirePackage{extarrows}
-\RequirePackage{mathrsfs}
-\RequirePackage{stmaryrd}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{makecell}
+\usepackage{tikz}
+%\usepackage{animate}
 % 符号
 \input{symbols}
 % 文本框/表格背景颜色
 \usebeamercolor{example text}\colorlet{examcolor}{example text.fg}
 \usebeamercolor{alerted text}\colorlet{alercolor}{alerted text.fg}
 \usebeamercolor{structure}\colorlet{strucolor}{structure.fg}
-\usepackage{makecell}
 \newcommand\tht{\cellcolor{strucolor!80}\color{white}}
 % 文本/图形前景色
 \colorlet{defcolor}{red!50!blue}
@@ -86,7 +88,6 @@
 	\fi%
 }
 % TIKZ 设置
-\usepackage{tikz}
 \usetikzlibrary{
   quotes,
   shapes.arrows,
@@ -96,7 +97,8 @@
   overlay-beamer-styles,
   patterns,
   calc,
-  angles
+  angles,
+%  decorations.pathmorphing,
 }
 \tikzset{
   cstarrowto/.style     ={-Stealth}, %尖箭头

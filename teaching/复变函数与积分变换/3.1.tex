@@ -38,20 +38,35 @@
 
 
 \begin{frame}{复变函数积分的定义}
+\onslide<+->
+所谓的复变函数积分, 本质上仍然是第二类曲线积分.
+\onslide<+->
+设复变函数 $w=f(z)=u(x,y)+iv(x,y)$ 定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
+\onslide<+->
+形式地展开
+\[f(z)\diff z=(u+iv)(\diff x+i\diff y)=(u\diff x-v\diff y)+i(u\diff y+v\diff x).\]
+
 \begin{definition}
-设 $w=f(z)$ 定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
-\onslide<+->
-分点 $z_0=A,z_1,\dots,z_n=B$ 把曲线 $C$ 分成 $n$ 端弧.
-\onslide<+->
-在每一段弧上任取 $\zeta_k\in\arcc{z_{k-1}z_k}$.
-\onslide<+->
-作和式
-\[S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad
-\Delta z_k=z_k-z_{k-1}.\]
-\onslide<+->
-设 $\Delta s_k$ 为 $\arcc{z_{k-1}z_k}$ 的长度, $\delta=\max\limits_{1\le k\le n}\Delta s_k$.
+如果下述右侧两个线积分均存在, 则定义
+\[\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)\]
+为\markdef{函数 $f(z)$ 沿曲线 $C$ 的积分}.
 \end{definition}
-\onslide<1->
+\end{frame}
+
+
+\begin{frame}{复变函数积分的定义}
+\onslide<+->
+当然, 我们也可以像线积分那样直接定义.
+\onslide<+->
+在曲线 $C$ 上依次选择分点 $z_0=A,z_1,\dots,z_n=B$.
+\onslide<+->
+然后在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
+\[S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.\]
+\onslide<+->
+然后称 $n\to\infty$, 分割的弧长 $\ra 0$ 时 $S_n$ 的极限为复变函数积分.
+\onslide<+->
+这二者是等价的.
+\onslide<2->
 \begin{center}
 \begin{tikzpicture}
 \draw[cstcurve,defcolor,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
@@ -86,60 +101,36 @@
 
 
 \begin{frame}{复变函数积分的定义}
-\begin{definition}
-如果当 $n\to\infty,\delta\to 0$ 时, 和式 $S_n$ 的极限总存在, 则称该极限值为\markdef{函数 $f(z)$ 沿曲线 $C$ 的积分}.
 \onslide<+->
-记作
-\[\int_C f(z)\diff z=\lim_{\delta\to0}\sum_{k=1}^n f(\zeta_k)\Delta z_k.\]
-\onslide<+->
-如果 $C$ 是闭曲线, 则该积分记为 \markdef{$\displaystyle\oint_Cf(z)\diff z$}.
+如果 $C$ 是闭曲线, 则该积分记为 \markatt{$\displaystyle\oint_Cf(z)\diff z$}.
 \onslide<+->
 此时该积分不依赖端点的选取.
-\end{definition}
+
 \onslide<+->
 如果 $C$ 是实轴上的区间 $[a,b]$ 且此时 $f(z)=u(x)$, 
 \onslide<+->
 则
-\[\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x.\]
+\[\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x\]
+就是黎曼积分.
 \end{frame}
 
 
 \begin{frame}{积分存在的条件及其计算法}
+\onslide<+->
+根据线积分的存在性条件可知:
+\begin{theorem}
+如果 $f(z)$ 是 $D$ 内连续函数, $C$ 是光滑曲线, 则 $\displaystyle\int_Cf(z)\diff z$ 总存在.
+\end{theorem}
+\onslide<+->
+在计算线积分时, 我们可以利用变量替换等技巧.
+\onslide<+->
+这些技巧可以照搬过来使用.
 \onslide<+->
 设 $C:z(t)=x(t)+iy(t),a\le t\le b$ 是一条光滑有向曲线, 正方向为 $t$ 增加的方向.
 \onslide<+->
-设 $\zeta_k=\xi_k+i\eta_k$, 则
-\begin{align*}
-S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
-\visible<+->{=\sum_{k=1}^n \bigl[u(\xi_k,\eta_k)+iv(\xi_k,\eta_k)\bigr]\cdot(\Delta x_k+i\Delta y_k)}\\
-&\visible<+->{=\sum_{k=1}^n\bigl[u(\xi_k,\eta_k)\Delta x_k-v(\xi_k,\eta_k)\Delta y_k\bigr]}\\
-&\qquad
-\visible<.->{+i\sum_{k=1}^n\bigl[u(\xi_k,\eta_k)\Delta y_k+v(\xi_k,\eta_k)\Delta x_k\bigr].}
-\end{align*}
+那么 $\diff z=z'(t)\diff t$,
 \onslide<+->
-由于 $f(z)=u+iv$ 连续, $u,v$ 也连续,
-\onslide<+->
-从而
-\[\int_C f(z)\diff z=\lim S_n=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y).\]
-\end{frame}
-
-
-\begin{frame}{积分存在的条件及其计算法}
-\beqskip{5pt}
-\begin{theorem}
-如果 $f(z)$ 是 $D$ 内连续函数, $C$ 是光滑曲线, 则
-\[\int_Cf(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y).\]
-\end{theorem}
-\onslide<+->
-根据 $C$ 的参数方程, $\diff x=x'(t)\diff t,\diff y=y'(t)\diff t$.
-\onslide<+->
-因此
-\begin{align*}
-\markatt{\int_Cf(z)\diff z}&=\int_a^b\Bigl[
-\bigl(u x'(t)-v y'(t)\bigr)
-+i\bigl(v x'(t)+u y'(t)\bigr)\Bigr]\diff t\\
-&\visible<+->{\markatt{=\int_a^b f(z)z'(t)\diff t.}}
-\end{align*}
+\[\markatt{\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.}\]
 \onslide<+->
 如果 $C$ 的正方向是 $t$ 减少的方向, 则需要交换右侧积分的上下限.
 
@@ -147,8 +138,120 @@ S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
 如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
 \onslide<+->
 以后我们\marknot{只考虑逐段光滑曲线上的连续函数的积分}.
-\endgroup
 \end{frame}
+
+
+%\begin{frame}{复变函数积分的定义}
+%\begin{definition}
+%设 $w=f(z)$ 定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
+%\onslide<+->
+%分点 $z_0=A,z_1,\dots,z_n=B$ 把曲线 $C$ 分成 $n$ 端弧.
+%\onslide<+->
+%在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$.
+%\onslide<+->
+%作和式
+%\[S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.\]
+%\onslide<+->
+%设 $\Delta s_k$ 为 $\warc{z_{k-1}z_k}$ 的长度, $\delta=\max\limits_{1\le k\le n}\Delta s_k$.
+%\end{definition}
+%\onslide<1->
+%\begin{center}
+%\begin{tikzpicture}
+%\draw[cstcurve,defcolor,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
+%\draw[cstcurve,defcolor,smooth,domain=195:200,cstarrowto] plot ({0.015*\x},{0.6*sin(\x)});
+%\fill[cstdot,defcolor] (0,0) circle;
+%\fill[cstdot,notcolor,visible on=<3->]({0.015*32},{0.6*sin(32)}) circle;
+%\fill[cstdot,alecolor,visible on=<2->]({0.015*64},{0.6*sin(64)}) circle;
+%\fill[cstdot,notcolor,visible on=<3->]({0.015*96},{0.6*sin(96)}) circle;
+%\fill[cstdot,alecolor,visible on=<2->]({0.015*128},{0.6*sin(128)}) circle;
+%\fill[cstdot,notcolor,visible on=<3->]({0.015*160},{0.6*sin(160)}) circle;
+%\fill[cstdot,alecolor,visible on=<2->]({0.015*232},{0.6*sin(232)}) circle;
+%\fill[cstdot,notcolor,visible on=<3->]({0.015*264},{0.6*sin(264)}) circle;
+%\fill[cstdot,alecolor,visible on=<2->]({0.015*296},{0.6*sin(296)}) circle;
+%\fill[cstdot,notcolor,visible on=<3->]({0.015*328},{0.6*sin(328)}) circle;
+%\fill[cstdot,defcolor] ({0.015*360},0) circle;
+%\draw
+%	({0.015*32},{0.6*sin(32)-0.3}) node[notcolor,visible on=<3->] {$\zeta_1$}
+%	({0.015*64},{0.6*sin(64)+0.3}) node[alecolor,visible on=<2->] {$z_1$}
+%	({0.015*96},{0.6*sin(96)-0.3}) node[notcolor,visible on=<3->] {$\zeta_2$}
+%	({0.015*128},{0.6*sin(128)+0.3}) node[alecolor,visible on=<2->] {$z_2$}
+%	({0.015*160},{0.6*sin(160)-0.3}) node[notcolor,visible on=<3->] {$\zeta_3$}
+%	({0.015*232},{0.6*sin(232)+0.3}) node[alecolor,visible on=<2->] {$z_{n-2}$}
+%	({0.015*264},{0.6*sin(264)-0.3}) node[notcolor,visible on=<3->] {$\zeta_{n-1}$}
+%	({0.015*296},{0.6*sin(296)+0.3}) node[alecolor,visible on=<2->] {$z_{n-1}$}
+%	({0.015*328},{0.6*sin(328)-0.3}) node[notcolor,visible on=<3->] {$\zeta_n$}
+%	({0.015*180},{0.6*sin(180)+0.5}) node[alecolor,visible on=<2->] {$\ddots$}
+%  (-0.3,0) node[defcolor] {$A$}
+%  ({0.015*360+0.3},0) node[defcolor] {$B$};
+%\end{tikzpicture}
+%\end{center}
+%\end{frame}
+%
+%
+%\begin{frame}{复变函数积分的定义}
+%\begin{definition}
+%如果当 $n\to\infty,\delta\to 0$ 时, 和式 $S_n$ 的极限总存在, 则称该极限值为\markdef{函数 $f(z)$ 沿曲线 $C$ 的积分}.
+%\onslide<+->
+%记作
+%\[\int_C f(z)\diff z=\lim_{\delta\to0}\sum_{k=1}^n f(\zeta_k)\Delta z_k.\]
+%\onslide<+->
+%如果 $C$ 是闭曲线, 则该积分记为 \markdef{$\displaystyle\oint_Cf(z)\diff z$}.
+%\onslide<+->
+%此时该积分不依赖端点的选取.
+%\end{definition}
+%\onslide<+->
+%如果 $C$ 是实轴上的区间 $[a,b]$ 且此时 $f(z)=u(x)$, 
+%\onslide<+->
+%则
+%\[\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x.\]
+%\end{frame}
+%
+%
+%\begin{frame}{积分存在的条件及其计算法}
+%\onslide<+->
+%设 $C:z(t)=x(t)+iy(t),a\le t\le b$ 是一条光滑有向曲线, 正方向为 $t$ 增加的方向.
+%\onslide<+->
+%设 $\zeta_k=\xi_k+i\eta_k$, 则
+%\begin{align*}
+%S_n&=\sum_{k=1}^n f(\zeta_k)\Delta z_k
+%\visible<+->{=\sum_{k=1}^n \bigl[u(\xi_k,\eta_k)+iv(\xi_k,\eta_k)\bigr]\cdot(\Delta x_k+i\Delta y_k)}\\
+%&\visible<+->{=\sum_{k=1}^n\bigl[u(\xi_k,\eta_k)\Delta x_k-v(\xi_k,\eta_k)\Delta y_k\bigr]}\\
+%&\qquad
+%\visible<.->{+i\sum_{k=1}^n\bigl[u(\xi_k,\eta_k)\Delta y_k+v(\xi_k,\eta_k)\Delta x_k\bigr].}
+%\end{align*}
+%\onslide<+->
+%由于 $f(z)=u+iv$ 连续, $u,v$ 也连续,
+%\onslide<+->
+%从而
+%\[\int_C f(z)\diff z=\lim S_n=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y).\]
+%\end{frame}
+%
+%
+%\begin{frame}{积分存在的条件及其计算法}
+%\beqskip{5pt}
+%\begin{theorem}
+%如果 $f(z)$ 是 $D$ 内连续函数, $C$ 是光滑曲线, 则
+%\[\int_Cf(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y).\]
+%\end{theorem}
+%\onslide<+->
+%根据 $C$ 的参数方程, $\diff x=x'(t)\diff t,\diff y=y'(t)\diff t$.
+%\onslide<+->
+%因此
+%\begin{align*}
+%\markatt{\int_Cf(z)\diff z}&=\int_a^b\Bigl[
+%\bigl(u x'(t)-v y'(t)\bigr)
+%+i\bigl(v x'(t)+u y'(t)\bigr)\Bigr]\diff t\\
+%&\visible<+->{\markatt{=\int_a^b f(z)z'(t)\diff t.}}
+%\end{align*}
+%\onslide<+->
+%如果 $C$ 的正方向是 $t$ 减少的方向, 则需要交换右侧积分的上下限.
+%
+%\onslide<+->
+%如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
+%\onslide<+->
+%以后我们\marknot{只考虑逐段光滑曲线上的连续函数的积分}.
+%\endgroup
+%\end{frame}
 
 
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
@@ -326,19 +429,18 @@ $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 =\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
 \visible<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta.}\]
 \onslide<2->
-\vspace{-0.9\baselineskip}
+\vspace{-\baselineskip}
 \begin{center}
 \begin{tikzpicture}
 \draw[cstcurve,notcolor] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,notcolor,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
-\draw[cstcurve,alecolor](0,0) circle (1.3);
 \fill[cstdot,notcolor](0,0) circle;
-\draw[cstcurve,alecolor,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:40:1.3);
+\draw[cstcurve,alecolor,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
 \draw
 	(-0.5,0.5) node[notcolor] {$r$}
 	(0,-0.3) node[notcolor] {$z_0$};
 \end{tikzpicture}
 \end{center}
-\vspace{-0.5\baselineskip}
+\vspace{-0.7\baselineskip}
 \end{solution}
 \endgroup
 \end{frame}
