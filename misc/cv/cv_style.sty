@@ -1,0 +1,52 @@
+\usepackage{enumitem, fontawesome, xcolor}
+\setlength{\parindent}{0em}
+\setlist[itemize,1]{label=$\diamond$}
+\renewcommand{\hrulefill}{\leavevmode\leaders\hrule height 0.2ex\hfill\kern\z@}
+\newcommand{\ruleColor}{blue}
+\newcommand{\sectionColor}{blue}
+\newcommand{\subsectionColor}{blue}
+
+\newcommand{\cvtitle}[4]{%
+  \begin{minipage}[c]{\textwidth} \centering
+    {\bfseries\huge\textcolor{black}{#1}}
+  \end{minipage}%
+  \par\medskip
+  \begin{minipage}[c]{\textwidth} \centering
+  \begin{tabular}{rcl}
+  \multicolumn{3}{c}{#2}\\
+  \medskip%
+  \faEnvelopeO~\url{#3} & \textbullet & \faGlobe~\url{#4}
+  \end{tabular}
+  \end{minipage}
+}
+\newcommand{\cvsection}[1]{%
+  \medskip\medskip{%
+\raggedright\strut{\Large\bfseries\textcolor{\sectionColor}{#1}}\par\raisebox{2ex}{\textcolor{\ruleColor}{\rule{\textwidth}{0.2ex}}}\par\vspace{-3.8ex}\textcolor{\ruleColor}{\rule{0.25\textwidth}{1.1ex}}\par\nobreak\addvspace{1ex}%
+  }
+}
+\newcommand{\cvsubsection}[1]{\addvspace{0.3cm}%
+  {%
+\raggedright\strut{\large\bfseries\textcolor{\subsectionColor}{#1}}\hspace{2pt}\textcolor{\ruleColor}{\hrulefill}\hspace{0.5\textwidth}\phantom{x}\par\nobreak\smallskip%
+  }
+}
+
+\newcommand{\edEntry}[4]{%
+  \raisebox{0.25ex}{{$\blacktriangleright$}}\hspace{0.5em}%
+  \textbf{#1}, \emph{#2}%
+  \ifx#3\@empty\else\par\hphantom{{$\blacktriangleright$}}\hspace{0.5em}#3\fi%
+  \ifx#4\@empty\else\par\hphantom{{$\blacktriangleright$}}\hspace{0.5em}\emph{#4}\fi
+  \medskip\par%
+}
+\newcommand{\entryskip}{\\\hphantom{{$\blacktriangleright$}}\hspace{0.5em}}
+\newcommand{\trEntry}[1]{%
+  \medskip%
+  \raisebox{0.25ex}{{$\blacktriangleright$}}\hspace{0.5em}%
+  {\bfseries\large #1}%
+  \smallskip\par%
+}
+\newcommand{\csEntry}[2]{%
+  \hspace{0.7em}\raisebox{0.3ex}{{\small$\bullet$}}\hspace{0.3em}%
+  #1, \emph{#2}\par%
+}
+
+
