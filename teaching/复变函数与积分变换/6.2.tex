@@ -8,24 +8,27 @@
 通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
 
 \begin{theorem}[线性性质]
-\vspace{-3pt}
+\vspace{-5pt}
 \[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 \msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
 \end{theorem}
+\vspace{-5pt}
 
 \begin{theorem}[位移性质]
 \vspace{-\baselineskip}
-\vspace{-3pt}
+\vspace{-5pt}
 \[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
 \msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
 \vspace{-\baselineskip}
 \end{theorem}
+\vspace{-3pt}
 \onslide<+->
 位移性质通过变量替换容易证明.
 \onslide<+->
 由此可得
-\[\markatt{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
-\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}.}\]
+\vspace{-3pt}
+\[\eqatt{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
+\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}}.\]
 \end{frame}
 
 
@@ -94,9 +97,9 @@
 因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
 \onslide<+->
 \begin{align*}
-\markatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
+\eqatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
 &\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
-&\visible<+->{\markatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}}
+&\visible<+->{\eqatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)]}.}
 \end{align*}
 \end{solution}
 \end{frame}
@@ -107,7 +110,7 @@
 求 $\cos{\omega_0 t}$ 的傅里叶变换.
 \end{exercise}
 \begin{answer}
-\markatt{$\msf[\cos{\omega_0 t}]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}.
+\boxatt{$\msf[\cos{\omega_0 t}]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}.
 \end{answer}
 \end{frame}
 

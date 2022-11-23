@@ -5,6 +5,7 @@
 \usepackage{stmaryrd}
 \usepackage{makecell}
 \usepackage{tikz}
+\usepackage{color,calc}
 %\usepackage{animate}
 % 符号
 \input{symbols}
@@ -17,9 +18,11 @@
 \colorlet{defcolor}{red!50!blue}
 \colorlet{alecolor}{red}
 \colorlet{notcolor}{blue}
-\newcommand\markdef[1]{{\color{defcolor}{#1}}}
+\newcommand\markdef[1]{{\color{notcolor}{#1}}}
 \newcommand\markatt[1]{{\color{alecolor}{#1}}}
 \newcommand\marknot[1]{{\color{notcolor}{#1}}}
+\newcommand\boxatt[1]{\colorbox{yellow}{\textcolor{alecolor}{#1}}}
+\newcommand\eqatt[1]{\boxatt{$\displaystyle #1$}}
 % 证毕标志
 \renewcommand\qedsymbol{{\color{strucolor}\ensuremath{\blacksquare}}}
 % 手动证毕标志
@@ -27,14 +30,14 @@
 % 用于对齐的等号幻影
 \newcommand\peq{\mathrel{\phantom{=}}}
 % 枚举数字引用标志
-\newcommand\enumnum[1]{{\color{strucolor}\vrule width2.25ex height1.85ex depth.4ex\hskip-2.25ex\hbox to2.25ex{\hfil\color{white}\upshape#1\hfil}}\kern1.25ex}
+\newcommand\enumnum[1]{\kern0.5ex{\color{strucolor}\vrule width2.25ex height1.85ex depth.4ex\hskip-2.25ex\hbox to2.25ex{\hfil\color{white}\upshape#1\hfil}}\kern0.5ex}
 % 减少公式垂直间距, 配合\endgroup
 \newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1}
 % 默认公式间距最低至0
-\setlength\abovedisplayskip{12pt plus 3pt minus 12pt}
-\setlength\abovedisplayshortskip{0pt plus 3pt}
-\setlength\belowdisplayskip{12pt plus 3pt minus 12pt}
-\setlength\belowdisplayshortskip{7pt plus 3pt minus 7pt}
+%\setlength\abovedisplayskip{12pt plus 3pt minus 12pt}
+%\setlength\abovedisplayshortskip{0pt plus 3pt}
+%\setlength\belowdisplayskip{12pt plus 3pt minus 12pt}
+%\setlength\belowdisplayshortskip{7pt plus 3pt minus 7pt}
 % 缩进
 \renewcommand{\indent}{\hspace*{2em}}
 \setlength{\parindent}{2em}

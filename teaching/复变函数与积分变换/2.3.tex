@@ -64,7 +64,7 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \begin{frame}{指数函数的性质}
 \onslide<+->
 定义\markdef{指数函数}
-\[\markatt{\exp z=e^x(\cos y+i\sin y)}.\]
+\[\boxatt{$\exp z=e^x(\cos y+i\sin y)$}.\]
 \onslide<+->
 我们已经知道 $\exp z$ 是一个处处解析的函数, 且 $(\exp z)'=\exp z$.
 
@@ -133,13 +133,13 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
 \onslide<+->
 所以
-\[\markatt{\Ln z=\ln|z|+i\Arg z}.\]
+\[\boxatt{$\Ln z=\ln|z|+i\Arg z$}.\]
 \onslide<+->
 \markatt{它是一个多值函数}.
 
 \onslide<+->
 我们取它的\markdef{主值}为
-\[\markatt{\ln z=\ln|z|+i\arg z}.\]
+\[\boxatt{$\ln z=\ln|z|+i\arg z$}.\]
 \onslide<+->
 对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
 \onslide<+->
@@ -304,12 +304,12 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \onslide<+->
 设 $a\neq 0$, $z\neq 0$, 定义\markdef{幂函数}
 \begin{align*}
-\markatt{w}&\markatt{=z^a=\exp(a\Ln z)}\\
-&=\exp\bigl[a\ln|z|+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
+&\boxatt{$w=z^a=\exp(a\Ln z)$}\\
+&\hspace{12pt}=\exp\bigl[a\ln|z|+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
 \end{align*}
 \onslide<+->
 它的\markdef{主值}为
-\[\markatt{w=\exp(a\ln z)}=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
+\[\boxatt{$w=\exp(a\ln z)$}=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
 
 \onslide<+->
 如果 $\Re a>0$, 则当 $z\to 0$ 时, 主值
@@ -446,19 +446,19 @@ i^i&=\exp(i\Ln i)
 \begin{frame}{幂函数的性质}
 幂函数与其主值有如下关系:
 \onslide<+->
-\[\markatt{z^a=\exp(a\ln z)\cdot 1^a
+\[\marknot{z^a=\exp(a\ln z)\cdot 1^a
 =\exp(a\ln z)\cdot e^{2ak\pi i},\quad k\in\BZ.}\]
 
 \onslide<+->
 对于幂函数的主值, 或者任意固定一个分支 $\Ln z=\ln z+2k\pi i$, 我们总有 
-\[\markatt{(z^a)'=[\exp(a\ln z)]'=\frac{a\exp(a\ln z)}z=\dfrac{az^a}z}.\]
+\[\marknot{(z^a)'=[\exp(a\ln z)]'=\frac{a\exp(a\ln z)}z=\dfrac{az^a}z}.\]
 
 \onslide<+->
-对于整数 $n$, 我们总有 \markatt{$(z^a)^n=z^{an}$}.
+对于整数 $n$, 我们总有 \marknot{$(z^a)^n=z^{an}$}.
 \onslide<+->
 这里换成主值也成立.
 \onslide<+->
-而 \markatt{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
+而 \marknot{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
 \end{frame}
 
 
@@ -472,7 +472,7 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 \[a\Ln z=a\ln z+2a\pi i\cdot k,\quad k\in\BZ.\]
 \onslide<+->
-因此当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, \markatt{$\Ln z^a=a\Ln z$} 成立.
+因此\marknot{当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, $\Ln z^a=a\Ln z$} 成立.
 \onslide<+->
 对于除此之外的 $a$, 该式子均不成立.
 
@@ -497,10 +497,10 @@ i^i&=\exp(i\Ln i)
 我们将其推广到复数情形.
 \onslide<+->
 定义\markdef{余弦和正弦函数}
-\[\markatt{\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
-\sin z=\frac{e^{iz}-e^{-iz}}{2i}.}\]
+\[\boxatt{$\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
+\sin z=\frac{e^{iz}-e^{-iz}}{2i}$}.\]
 \onslide<+->
-那么欧拉恒等式 $e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立.
+那么欧拉恒等式 \marknot{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
 \end{frame}
 
 
@@ -508,10 +508,10 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 不难得到
 \begin{align*}
-\marknot{\cos(x+iy)}&
-\marknot{=\cos x \ch y-i\sin x\sh y,}\\
-\marknot{\visible<+->{\sin(x+iy)}}&
-\marknot{\visible<.->{=\sin x\ch y+i\cos x\sh y,}}
+\cos(x+iy)&
+=\cos x \ch y-i\sin x\sh y,\\
+\visible<+->{\sin(x+iy)}&
+\visible<.->{=\sin x\ch y+i\cos x\sh y,}
 \end{align*}
 \onslide<+->
 其中 $\ch y=\dfrac{e^y+e^{-y}}2=\cos{iy}$, $\sh y=\dfrac{e^y-e^{-y}}2=-i\sin{iy}$.

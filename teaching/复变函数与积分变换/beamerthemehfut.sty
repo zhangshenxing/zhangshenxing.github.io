@@ -16,6 +16,7 @@
 \setbeamertemplate{sections/subsections in toc}[square]
 \setbeamertemplate{items}[square]
 %%% 字体大小
+\setbeamerfont{block title}{series=\bfseries}
 \setbeamerfont{institute}{size=\normalsize,shape=\itshape}
 \setbeamerfont{date}{size=\normalsize,shape=\itshape}
 \setbeamerfont{frametitle}{size=\normalsize}
@@ -124,15 +125,15 @@
   }%
 }
 %%% 环境
-\newenvironment<>{conclusion}[1][结论]{\par\itshape\begin{alertblock}{#1}#2}{\end{alertblock}}
-\renewenvironment<>{solution}[1][解]{\par\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\end{block}}
-\newenvironment<>{solutionc}[1][续解]{\par\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\end{block}}
-\renewenvironment<>{proof}[1][证明]{\par\pushQED{\qed}\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\popQED\end{block}}
-\newenvironment<>{proofs}[1][证明]{\par\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\end{block}}
-\newenvironment<>{proofc}[1][续证]{\par\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\end{block}}
-\newenvironment<>{proofe}[1][续证]{\par\pushQED{\qed}\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\popQED\end{block}}
-\newenvironment<>{answer}[1][答案]{\par\itshape\begin{block}{\itshape#1\@addpunct{.}}#2}{\end{block}}
-\newenvironment<>{analysis}[1][分析]{\par\itshape\begin{block}{\itshape#1}#2}{\end{block}}
+\newenvironment<>{conclusion}[1][结论]{\par\itshape\begin{block}{#1}#2}{\end{block}}
+\renewenvironment<>{solution}[1][解]{\par\itshape\begin{block}{#1\@addpunct{.}}#2}{\end{block}}
+\newenvironment<>{solutionc}[1][续解]{\par\itshape\begin{block}{#1\@addpunct{.}}#2}{\end{block}}
+\renewenvironment<>{proof}[1][证明]{\par\pushQED{\qed}\itshape\begin{block}{#1\@addpunct{.}}#2}{\popQED\end{block}}
+\newenvironment<>{proofs}[1][证明]{\par\itshape\begin{block}{#1\@addpunct{.}}#2}{\end{block}}
+\newenvironment<>{proofc}[1][续证]{\par\itshape\begin{block}{#1\@addpunct{.}}#2}{\end{block}}
+\newenvironment<>{proofe}[1][续证]{\par\pushQED{\qed}\itshape\begin{block}{#1\@addpunct{.}}#2}{\popQED\end{block}}
+\newenvironment<>{answer}[1][答案]{\par\itshape\begin{block}{#1\@addpunct{.}}#2}{\end{block}}
+\newenvironment<>{analysis}[1][分析]{\par\itshape\begin{block}{#1}#2}{\end{block}}
 \theoremstyle{example}
 \newtheorem*{exercise}{练习}
 \newtheorem*{think}{思考}

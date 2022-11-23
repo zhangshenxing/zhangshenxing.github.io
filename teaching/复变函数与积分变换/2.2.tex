@@ -62,11 +62,11 @@
 
 \begin{frame}{可导的等价刻画: 柯西-黎曼方程}
 \begin{conclusion}[柯西-黎曼方程 (C-R方程)]
-函数 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足柯西-黎曼方程
-\[u_x=v_y,\quad u_y=-v_x.\]
+函数 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足 \boxatt{柯西-黎曼方程}
+\[\boxatt{$u_x=v_y,\quad u_y=-v_x$}.\]
 \onslide<+->
 此时
-\[f'(z)=u_x+iv_x=v_y-iu_y.\]
+\[\boxatt{$f'(z)=u_x+iv_x=v_y-iu_y$}.\]
 \end{conclusion}
 \onslide<+->
 \begin{center}
@@ -136,10 +136,10 @@ u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
 \[f(x,y)=u(x,y)+iv(x,y)=f\left(\dfrac{z+\ov z}2,\dfrac{z-\ov z}{2i}\right),\]
 \onslide<+->
 把 $z,\ov z$ 看作独立变量, $f$ 分别对 $z$ 和 $\ov z$ 的偏导数可定义为
-\[\frac{\partial f}{\partial \ov z}
-=\half\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right),\quad
+\[\frac{\partial f}{\partial z}
+=\half\left(\frac{\partial f}{\partial x}-i\frac{\partial f}{\partial y}\right),\quad
 \frac{\partial f}{\partial \ov z}
-=\half\left(\frac{\partial f}{\partial x}-i\frac{\partial f}{\partial y}\right).\]
+=\half\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right).\]
 \onslide<+->
 那么C-R方程等价于
 \[\frac{\partial f}{\partial \ov z}

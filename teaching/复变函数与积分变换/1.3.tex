@@ -147,7 +147,7 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 \onslide<+->
 根据复数三角形式的乘法和除法运算法则, 我们有
-\[\marknot{z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta}},\quad\forall n\in\BZ.\]
+\[\eqatt{z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta}},\quad\forall n\in\BZ.\]
 \onslide<+->
 特别地, 当 $r=1$ 时, 我们得到\markdef{棣莫弗(De Moivre)公式}
 \[\marknot{(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.}\]
@@ -230,20 +230,20 @@ $-2^{2022}$.
 \onslide<+->
 故
 \begin{align*}
-\marknot{w=w_k}&\marknot{=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n}\\
-&\marknot{=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).}
+&\eqatt{w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n}\\
+&\hspace{42pt}\eqatt{=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).}
 \end{align*}
 \onslide<+->
 不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
 \onslide<+->
-因此只需取 \marknot{$k=0,1,\dots,n-1$}.
+因此只需取 \boxatt{$k=0,1,\dots,n-1$}.
 \onslide<+->
-故\markatt{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
+故\marknot{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
 
 \onslide<+->
 这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 \onslide<+->
-因此\markatt{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
+因此\marknot{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
 \end{frame}
 
 
@@ -293,7 +293,7 @@ $w_0,w_1=iw_0,w_2=-w_0,w_3=-iw_0$ 形成了一个正方形.
 \draw[cstcurve,alecolor,cstarrowto] (0,0)--(-1.5,-0.3);
 \draw[cstcurve,alecolor,cstarrowto] (0,0)--(-0.3,1.5);
 \draw[cstcurve,alecolor,cstarrowto] (0,0)--(0.3,-1.5);
-\draw[cstcurve,defcolor] (1.5,0.3)--(-0.3,1.5)--(-1.5,-0.3)--(0.3,-1.5)--cycle;
+\draw[cstcurve,notcolor] (1.5,0.3)--(-0.3,1.5)--(-1.5,-0.3)--(0.3,-1.5)--cycle;
 \draw
   (-0.2,-0.3) node {$0$}
   (1.8,0.3) node[alecolor] {$w_0$}
