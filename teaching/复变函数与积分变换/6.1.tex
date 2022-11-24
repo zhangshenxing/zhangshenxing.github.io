@@ -81,8 +81,8 @@ f(t)&=\lim_{T\to +\infty}f_T(t)\\
   \node[below=of a] (a2){\phantom{原象函数 $f(t)$}};
   \node[above=of b] (b1){\phantom{象函数 $F(\omega)$}};
   \node[below=of b] (b2){\phantom{象函数 $F(\omega)$}};
-  \draw[cstnarrow, alecolor] (a1) -- node[above]{傅里叶变换 $\msf$} (b1);
-  \draw[cstnarrow, defcolor]   (b2) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a2);
+  \draw[cstnarrow, dcolora] (a1) -- node[above]{傅里叶变换 $\msf$} (b1);
+  \draw[cstnarrow, dcolorc]   (b2) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a2);
 \end{tikzpicture}
 \end{center}
 \endgroup
@@ -307,9 +307,9 @@ f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\ome
 \draw
 	(9.8,-1.25) node {$t$}
 	(8.7,0.9) node {$1$}
-	(9.5,0.8) node[alecolor] {$\delta(t)$}
+	(9.5,0.8) node[dcolora] {$\delta(t)$}
 	(8.8,-1.2) node {$O$};
-\draw[alecolor,cstcurve,cstarrowto](9,-1)--(9,1);
+\draw[dcolora,cstcurve,cstarrowto](9,-1)--(9,1);
 \end{tikzpicture}
 \onslide<+->
 设 $\delta_\varepsilon(t)=\begin{cases}

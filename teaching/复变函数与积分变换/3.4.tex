@@ -139,18 +139,18 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \begin{tikzpicture}
 \draw[cstaxis] (-1.3,0)--(1.3,0);
 \draw[cstaxis] (0,-1.1)--(0,1.25);
-\draw[cstcurve,notcolor] (0,0) circle (1);
-\draw[cstcurve,alecolor,visible on=<3->] (0.5,0) circle(0.2);
-\draw[cstcurve,alecolor,visible on=<3->] (-0.5,0) circle(0.2);
-\draw[cstcurve,alecolor,visible on=<3->] (0,0) circle(0.2);
-\fill[cstdot,notcolor,visible on=<2->] (0,0) circle;
-\fill[cstdot,notcolor,visible on=<2->] (0.5,0) circle;
-\fill[cstdot,notcolor,visible on=<2->] (-0.5,0) circle;
+\draw[cstcurve,dcolorb] (0,0) circle (1);
+\draw[cstcurve,dcolora,visible on=<3->] (0.5,0) circle(0.2);
+\draw[cstcurve,dcolora,visible on=<3->] (-0.5,0) circle(0.2);
+\draw[cstcurve,dcolora,visible on=<3->] (0,0) circle(0.2);
+\fill[cstdot,dcolorb,visible on=<2->] (0,0) circle;
+\fill[cstdot,dcolorb,visible on=<2->] (0.5,0) circle;
+\fill[cstdot,dcolorb,visible on=<2->] (-0.5,0) circle;
 \draw
-  (1,0.8) node[notcolor] {$C$}
-  (-0.3,0.45) node[alecolor,visible on=<3->] {$C_1$}
-  (0.5,-0.45) node[alecolor,visible on=<3->] {$C_2$}
-  (-0.5,-0.45) node[alecolor,visible on=<3->] {$C_3$};
+  (1,0.8) node[dcolorb] {$C$}
+  (-0.3,0.45) node[dcolora,visible on=<3->] {$C_1$}
+  (0.5,-0.45) node[dcolora,visible on=<3->] {$C_2$}
+  (-0.5,-0.45) node[dcolora,visible on=<3->] {$C_3$};
 \end{tikzpicture}
 \end{center}
 \end{solution}
@@ -181,15 +181,15 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 	\column{0.48\textwidth}
 		\begin{tikzpicture}
 		\fill[cstfille] (2.8,1.6) rectangle (-2.8,-1.6);
-		\filldraw[cstcurve,alecolor,rounded corners=0.3cm,fill=white] (-0.6,0.6) rectangle (-1.3,-0.6);
-		\draw[cstcurve,visible on=<4->,defcolor] (0,0) circle (0.4);
-		\draw[cstcurve,visible on=<4->,notcolor] (0,0) circle (1.5);
-		\fill[cstdot,alecolor] (0,0) circle;
+		\filldraw[cstcurve,dcolora,rounded corners=0.3cm,fill=white] (-0.6,0.6) rectangle (-1.3,-0.6);
+		\draw[cstcurve,visible on=<4->,dcolorc] (0,0) circle (0.4);
+		\draw[cstcurve,visible on=<4->,dcolorb] (0,0) circle (1.5);
+		\fill[cstdot,dcolora] (0,0) circle;
 		\draw
-		  (0,0.2) node[alecolor] {$z_0$}
-		  (-0.6,-0.8) node[alecolor] {$C$}
-		  (0.7,-0.2) node[defcolor,visible on=<4->] {$C_1$}
-		  (0.9,0.8) node[notcolor,visible on=<4->] {$C_2$};
+		  (0,0.2) node[dcolora] {$z_0$}
+		  (-0.6,-0.8) node[dcolora] {$C$}
+		  (0.7,-0.2) node[dcolorc,visible on=<4->] {$C_1$}
+		  (0.9,0.8) node[dcolorb,visible on=<4->] {$C_2$};
 		\end{tikzpicture}
 \end{columns}
 \onslide<+->

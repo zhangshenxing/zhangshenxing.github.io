@@ -1,14 +1,20 @@
 \mode<presentation>
 % 颜色
-\usecolortheme{rose}
 \usecolortheme{seahorse}
-\setbeamercolor*{title}{use=structure,fg=structure.fg} % 封面页 标题
-\setbeamercolor*{part title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg} % 部分页 部分标题
-\setbeamercolor*{author/part in head/foot}{parent=palette tertiary} % 底部导航 作者/部分
-\setbeamercolor*{title in head/foot}{parent=palette quaternary} % 底部导航 标题
-\setbeamercolor*{institute/section in head/foot}{parent=palette tertiary} % 底部导航 机构/节
-\setbeamercolor*{item}{use=structure,fg=structure.fg} % 条目编号
-\setbeamercolor*{website}{use=structure,fg=structure.fg}
+\setbeamercolor{block text}{fg=beamer@blendedblue} % used to blend
+\setbeamercolor{block title}{use={block text,structure},fg=white,bg=block text.fg!50!white!50!structure.fg}
+\setbeamercolor{block title alerted}{use={alerted text,structure},fg=white,bg=alerted text.fg!50!white!50!structure.fg}
+\setbeamercolor{block title example}{use={example text,structure},fg=white,bg=example text.fg!50!white!50!structure.fg}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!15!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!15!bg}
+\setbeamercolor{title}{use=structure,fg=structure.fg} % 封面页 标题
+\setbeamercolor{part title}{use=structure,fg=black,bg=structure.fg!30!bg} % 部分页 部分标题
+\setbeamercolor{author/part in head/foot}{parent=palette secondary} % 底部导航 作者/部分
+\setbeamercolor{title in head/foot}{parent=palette quaternary} % 底部导航 标题
+\setbeamercolor{institute/section in head/foot}{parent=palette secondary} % 底部导航 机构/节
+\setbeamercolor{item}{use=structure,fg=structure.fg} % 条目编号
+\setbeamercolor{website}{use=structure,fg=structure.fg}
 % 内部
 %%% 页边距
 \setbeamersize{text margin left=1em,text margin right=1em}

@@ -37,8 +37,8 @@
   \node[below=of a] (a2){\hphantom{原象函数}};
   \node[above=of b] (b1){\hphantom{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
   \node[below=of b] (b2){\hphantom{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
-  \draw[cstnarrow, alecolor] (a1) -- node[above]{拉普拉斯变换 $\msl$} (b1);
-  \draw[cstnarrow, defcolor] (b2) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a2);
+  \draw[cstnarrow, dcolora] (a1) -- node[above]{拉普拉斯变换 $\msl$} (b1);
+  \draw[cstnarrow, dcolorc] (b2) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a2);
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -233,14 +233,14 @@
 \begin{frame}{使用拉普拉斯变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
-\node[draw,fill=alercolor!25] (p1){微分方程或积分方程};
+\node[draw,fill=lightr] (p1){微分方程或积分方程};
 \node[draw,right=110pt of p1] (p2){象函数的代数方程};
-\node[draw,fill=alercolor!25,below=of p1] (p3){原象函数(方程的解)};
+\node[draw,fill=lightr,below=of p1] (p3){原象函数(方程的解)};
 \node[draw,below=of p2] (p4){象函数};
 \draw[cstnarrow] (p1)--node[above]{拉普拉斯变换 $\msl$}(p2);
 \draw[cstnarrow] (p4)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(p3);
 \draw[cstnarrow] (p2)--(p4);
-\draw[cstnarrow,alecolor] (p1)--(p3);
+\draw[cstnarrow,dcolora] (p1)--(p3);
 \end{tikzpicture}
 \end{center}
 \end{frame}

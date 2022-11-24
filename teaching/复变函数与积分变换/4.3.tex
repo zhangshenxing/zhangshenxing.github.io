@@ -57,17 +57,17 @@ e^{-x^{-2}},&x\neq 0,\\
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,alecolor,smooth,cstfill] plot coordinates {(-2.25,0) (-1.5,-0.75) (0,-1.5) (1.05,-1.5) (1.35,0) (0,1.2) (-1.5,1.2) (-2.25,0)};
-\draw[cstdash,defcolor,visible on=<2->] (0,0) circle (1);
-\draw[cstcurve,notcolor,visible on=<3->] (0,0) circle (0.8);
-\fill[cstdot,alecolor] (0,0) circle;
-\fill[cstdot,defcolor,visible on=<2->] (0.4,0.4) circle;
+\filldraw[cstcurve,dcolora,smooth,cstfill] plot coordinates {(-2.25,0) (-1.5,-0.75) (0,-1.5) (1.05,-1.5) (1.35,0) (0,1.2) (-1.5,1.2) (-2.25,0)};
+\draw[cstdash,dcolorc,visible on=<2->] (0,0) circle (1);
+\draw[cstcurve,dcolorb,visible on=<3->] (0,0) circle (0.8);
+\fill[cstdot,dcolora] (0,0) circle;
+\fill[cstdot,dcolorc,visible on=<2->] (0.4,0.4) circle;
 \fill[cstdot,visible on=<3->] (0.6,-0.5) circle;
-\draw[cstcurve,cstarrowto,alecolor,visible on=<3->] (0,0)--(-0.48,-0.64);
+\draw[cstcurve,cstarrowto,dcolora,visible on=<3->] (0,0)--(-0.48,-0.64);
 \draw
-  (-0.25,0) node[alecolor] {$z_0$}
-  (0.2,0.4) node[defcolor,visible on=<2->] {$z$}
-  (0,-0.5) node[alecolor,visible on=<3->] {$r$}
+  (-0.25,0) node[dcolora] {$z_0$}
+  (0.2,0.4) node[dcolorc,visible on=<2->] {$z$}
+  (0,-0.5) node[dcolora,visible on=<3->] {$r$}
   (0.4,-0.3) node[visible on=<3->] {$\zeta$};
 \end{tikzpicture}
 \end{center}

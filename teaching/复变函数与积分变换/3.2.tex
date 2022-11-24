@@ -16,15 +16,15 @@
 \begin{center}
 \begin{tikzpicture}
 \draw
-  (-0.2,-0.2) node[notcolor] {$z_0$}
-  (2.2,2.2) node[notcolor] {$z$}
-  (0.2,1.8) node[alecolor] {$C_1$}
-  (1.8,0.3) node[defcolor] {$C_2$};
-\draw[cstcurve,defcolor] (2,2) arc(0:-90:2);
-\draw[cstcurve,defcolor,cstarrow1to] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
-\draw[cstcurve,alecolor] (0,0) arc(180:90:2);
-\draw[cstcurve,alecolor,cstarrow1to] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
-\draw[cstcurve,notcolor,cstarrow1from,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
+  (-0.2,-0.2) node[dcolorb] {$z_0$}
+  (2.2,2.2) node[dcolorb] {$z$}
+  (0.2,1.8) node[dcolora] {$C_1$}
+  (1.8,0.3) node[dcolorc] {$C_2$};
+\draw[cstcurve,dcolorc] (2,2) arc(0:-90:2);
+\draw[cstcurve,dcolorc,cstarrow1to] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
+\draw[cstcurve,dcolora] (0,0) arc(180:90:2);
+\draw[cstcurve,dcolora,cstarrow1to] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
+\draw[cstcurve,dcolorb,cstarrow1from,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -81,12 +81,12 @@
 \onslide<4->
 \begin{center}
 \begin{tikzpicture}
-\draw[cstcurve,alecolor,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-\draw[cstcurve,alecolor,smooth,domain=-20:45,cstarrow1from] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-\draw[cstcurve,alecolor,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-\draw[cstcurve,alecolor,smooth,domain=-20:45,cstarrow1from] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-\draw[cstcurve,notcolor,cstarrow1from,ultra thick] (1.05,0.35) arc (135:-135:0.5);
-\draw[cstcurve,defcolor,cstarrow1from,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
+\draw[cstcurve,dcolora,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
+\draw[cstcurve,dcolora,smooth,domain=-20:45,cstarrow1from] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
+\draw[cstcurve,dcolora,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
+\draw[cstcurve,dcolora,smooth,domain=-20:45,cstarrow1from] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
+\draw[cstcurve,dcolorb,cstarrow1from,ultra thick] (1.05,0.35) arc (135:-135:0.5);
+\draw[cstcurve,dcolorc,cstarrow1from,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -174,16 +174,16 @@
 \fill[cstcurve,cyan!20!white,visible on=<2->] (0,0) circle(2.5 and 1.5);
 \fill[cstcurve,white,visible on=<2->] (1,0) circle(0.6);
 \fill[cstcurve,white,visible on=<2->] (-1,0) circle(0.6);
-\draw[cstcurve,alecolor] (0,0) circle(2.5 and 1.5);
-\draw[cstcurve,alecolor] (1,0) circle(0.6);
-\draw[cstcurve,alecolor] (-1,0) circle(0.6);
-\draw[cstcurve,alecolor,domain=85:90,cstarrow1to,visible on=<2->] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-\draw[cstcurve,alecolor,domain=135:140,cstarrow1from,visible on=<2->] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,alecolor,domain=135:140,cstarrow1from,visible on=<2->] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora] (0,0) circle(2.5 and 1.5);
+\draw[cstcurve,dcolora] (1,0) circle(0.6);
+\draw[cstcurve,dcolora] (-1,0) circle(0.6);
+\draw[cstcurve,dcolora,domain=85:90,cstarrow1to,visible on=<2->] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+\draw[cstcurve,dcolora,domain=135:140,cstarrow1from,visible on=<2->] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora,domain=135:140,cstarrow1from,visible on=<2->] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 \draw
-  (2,1.3) node[alecolor] {$C_0$}
-  (-1,0.85) node[alecolor] {$C_1^{\visible<2->-}$}
-  (1,0.85) node[alecolor] {$C_2^{\visible<2->-}$};
+  (2,1.3) node[dcolora] {$C_0$}
+  (-1,0.85) node[dcolora] {$C_1^{\visible<2->-}$}
+  (1,0.85) node[dcolora] {$C_2^{\visible<2->-}$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -217,37 +217,37 @@
 \fill[cstcurve,white] (1,0) circle(0.6);
 \fill[cstcurve,white] (-1,0) circle(0.6);
 
-\draw[cstcurve,alecolor,domain=0:90,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-\draw[cstcurve,alecolor,domain=85:180] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-\draw[cstcurve,notcolor,domain=180:270,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-\draw[cstcurve,notcolor,domain=265:360] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+\draw[cstcurve,dcolora,domain=0:90,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+\draw[cstcurve,dcolora,domain=85:180] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+\draw[cstcurve,dcolorb,domain=180:270,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+\draw[cstcurve,dcolorb,domain=265:360] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
 
-\draw[cstcurve,alecolor,domain=0:140] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,alecolor,domain=135:180,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,notcolor,domain=180:320] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,notcolor,domain=315:360,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora,domain=0:140] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora,domain=135:180,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolorb,domain=180:320] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolorb,domain=315:360,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
 
-\draw[cstcurve,alecolor,domain=0:140] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,alecolor,domain=135:180,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,notcolor,domain=180:320] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-\draw[cstcurve,notcolor,domain=315:360,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora,domain=0:140] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolora,domain=135:180,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolorb,domain=180:320] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+\draw[cstcurve,dcolorb,domain=315:360,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 
 \draw
-  (2,1.3) node[alecolor] {$C_0$}
-  (-1,0.85) node[alecolor] {$C_1^-$}
-  (1,0.85) node[alecolor] {$C_2^-$}
+  (2,1.3) node[dcolora] {$C_0$}
+  (-1,0.85) node[dcolora] {$C_1^-$}
+  (1,0.85) node[dcolora] {$C_2^-$}
   (-2,-0.4) node {$\gamma_1$}
   (0,-0.4) node {$\gamma_2$}
   (2,-0.4) node {$\gamma_3$};
 \draw[cstcurve] (-2.5,0)--(-1.6,0);
 \draw[cstcurve] (-0.4,0)--(0.4,0);
 \draw[cstcurve] (1.6,0)--(2.5,0);
-\draw[cstcurve,thick,alecolor,visible on=<2->] (-2.5,0.025)--(-1.6,0.025);
-\draw[cstcurve,thick,notcolor,visible on=<2->] (-2.5,-0.025)--(-1.6,-0.025);
-\draw[cstcurve,thick,alecolor,visible on=<2->] (-0.4,0.025)--(0.4,0.025);
-\draw[cstcurve,thick,notcolor,visible on=<2->] (-0.4,-0.025)--(0.4,-0.025);
-\draw[cstcurve,thick,alecolor,visible on=<2->] (1.6,0.025)--(2.5,0.025);
-\draw[cstcurve,thick,notcolor,visible on=<2->] (1.6,-0.025)--(2.5,-0.025);
+\draw[cstcurve,thick,dcolora,visible on=<2->] (-2.5,0.025)--(-1.6,0.025);
+\draw[cstcurve,thick,dcolorb,visible on=<2->] (-2.5,-0.025)--(-1.6,-0.025);
+\draw[cstcurve,thick,dcolora,visible on=<2->] (-0.4,0.025)--(0.4,0.025);
+\draw[cstcurve,thick,dcolorb,visible on=<2->] (-0.4,-0.025)--(0.4,-0.025);
+\draw[cstcurve,thick,dcolora,visible on=<2->] (1.6,0.025)--(2.5,0.025);
+\draw[cstcurve,thick,dcolorb,visible on=<2->] (1.6,-0.025)--(2.5,-0.025);
 \end{tikzpicture}
 \end{center}
 \vspace{-9pt}
@@ -292,15 +292,15 @@
 \begin{tikzpicture}
 \draw[cstaxis] (-2.3,0)--(2.3,0);
 \draw[cstaxis] (0,-1.2)--(0,1.3);
-\draw[cstcurve,notcolor,visible on=<4->] (0,0) circle (0.4);
-\draw[cstcurve,notcolor,visible on=<4->] (1,0) circle (0.4);
-\fill[cstdot,defcolor,visible on=<3->] (1,0) circle;
-\fill[cstdot,defcolor,visible on=<3->] (0,0) circle;
-\draw[cstcurve,alecolor] (-2,-1) rectangle (2,1);
+\draw[cstcurve,dcolorb,visible on=<4->] (0,0) circle (0.4);
+\draw[cstcurve,dcolorb,visible on=<4->] (1,0) circle (0.4);
+\fill[cstdot,dcolorc,visible on=<3->] (1,0) circle;
+\fill[cstdot,dcolorc,visible on=<3->] (0,0) circle;
+\draw[cstcurve,dcolora] (-2,-1) rectangle (2,1);
 \draw
-  (-0.5,0.5) node[notcolor,visible on=<4->] {$C_1$}
-  (1.5,0.5) node[notcolor,visible on=<4->] {$C_2$}
-  (0.5,-0.8) node[alecolor] {$\Gamma$};
+  (-0.5,0.5) node[dcolorb,visible on=<4->] {$C_1$}
+  (1.5,0.5) node[dcolorb,visible on=<4->] {$C_2$}
+  (0.5,-0.8) node[dcolora] {$\Gamma$};
 \end{tikzpicture}
 \end{center}
 \end{example}
@@ -333,13 +333,13 @@
 \begin{solution}
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,alecolor,fill=cyan!20!white] (0,0) circle (1.5);
-\draw[cstcurve,alecolor,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
-\filldraw[cstcurve,notcolor,fill=white] (0,0) circle (0.75);
-\draw[cstcurve,notcolor,cstarrow1to] (-0.75,0) arc(180:130:0.75);
+\filldraw[cstcurve,dcolora,fill=cyan!20!white] (0,0) circle (1.5);
+\draw[cstcurve,dcolora,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
+\filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.75);
+\draw[cstcurve,dcolorb,cstarrow1to] (-0.75,0) arc(180:130:0.75);
 \draw
-  (-1.6,0.8) node[alecolor] {$C_1$}
-  (0.8,-0.7) node[notcolor] {$C_2^-$};
+  (-1.6,0.8) node[dcolora] {$C_1$}
+  (0.8,-0.7) node[dcolorb] {$C_2^-$};
 \draw[cstaxis] (-1.8,0)--(1.8,0);
 \draw[cstaxis] (0,-1.8)--(0,1.8);
 \end{tikzpicture}

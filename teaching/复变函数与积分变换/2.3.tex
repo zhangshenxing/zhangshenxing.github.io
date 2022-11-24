@@ -282,19 +282,19 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 %\begin{tikzpicture}
 %\draw[cstaxis,visible on=<2->](-1.4,0)--(2.4,0);
 %\draw[cstaxis,visible on=<2->](0,-1.1)--(0,2);
-%\fill[cstdot,defcolor,visible on=<2->](1,1) circle;
+%\fill[cstdot,dcolorc,visible on=<2->](1,1) circle;
 %\draw
-%	(2,1) node[visible on=<2->,defcolor] {$z_0=1+i$}
-%	(2,1.5) node[visible on=<2->,defcolor] {$\Arg z_0=\dfrac\pi4$}
-%	(-1.3,1) node[defcolor,visible on=<3->] {$z$}
-%	(-1.1,1.5) node[alecolor,visible on=<3->] {$\Arg z=\dfrac{3\pi}4$}
-%	(-2.5,0.8) node[notcolor,visible on=<4->] {$\Arg z=\dfrac{7\pi}4$};
-%\fill[cstdot,defcolor,visible on=<3->](-1,1) circle;
-%\draw[cstcurve,alecolor,cstarrowto,visible on=<3->] (1,1) .. controls (0.5,2) and (-0.5,0.5).. (-1,1);
-%\draw[cstcurve,notcolor,visible on=<4->](-0.202,0.362) arc (120:420:0.4);
-%\draw[cstcurve,notcolor,visible on=<4->] (1,1)--(-0.202,0.362);
-%\draw[cstcurve,notcolor,cstarrowto,visible on=<4->] (0.202,0.362)--(-1,1);
-%\draw[cstcurve,defcolor,visible on=<7->] (0,0)to[bend left](-2,-1);
+%	(2,1) node[visible on=<2->,dcolorc] {$z_0=1+i$}
+%	(2,1.5) node[visible on=<2->,dcolorc] {$\Arg z_0=\dfrac\pi4$}
+%	(-1.3,1) node[dcolorc,visible on=<3->] {$z$}
+%	(-1.1,1.5) node[dcolora,visible on=<3->] {$\Arg z=\dfrac{3\pi}4$}
+%	(-2.5,0.8) node[dcolorb,visible on=<4->] {$\Arg z=\dfrac{7\pi}4$};
+%\fill[cstdot,dcolorc,visible on=<3->](-1,1) circle;
+%\draw[cstcurve,dcolora,cstarrowto,visible on=<3->] (1,1) .. controls (0.5,2) and (-0.5,0.5).. (-1,1);
+%\draw[cstcurve,dcolorb,visible on=<4->](-0.202,0.362) arc (120:420:0.4);
+%\draw[cstcurve,dcolorb,visible on=<4->] (1,1)--(-0.202,0.362);
+%\draw[cstcurve,dcolorb,cstarrowto,visible on=<4->] (0.202,0.362)--(-1,1);
+%\draw[cstcurve,dcolorc,visible on=<7->] (0,0)to[bend left](-2,-1);
 %\end{tikzpicture}
 %\end{center}
 %\end{frame}
@@ -352,13 +352,13 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
-\draw[draw=white,cstfille,pattern color=notcolor](0,0) circle (1.3);
+\draw[draw=white,cstfille,pattern color=dcolorb](0,0) circle (1.3);
 \draw[cstaxis](-2,0)--(2,0);
 \draw[cstaxis](0,-1.5)--(0,1.8);
 \draw (1.8,-0.2) node {$x$};
 \draw (-0.2,1.6) node {$y$};
 \draw (-0.2,-0.2) node {$O$};
-\draw[cstcurve,alecolor] (0,0)--(-2,0);
+\draw[cstcurve,dcolora] (0,0)--(-2,0);
 
 \draw[draw=white,cstfille](5,0) -- ({5+2*cos(30)},{2*sin(30)}) arc (30:-30:2)--(5,0);
 \draw[cstaxis](3,0)--(7,0);
@@ -368,7 +368,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \draw (4.8,-0.2) node {$O$};
 
 \draw[cstcurve,cstarrowto] (1.7,0.3)to [bend left] (4.5,0.3);
-\draw (3,1.2) node[alecolor] {$w=z^{1/n}$};
+\draw (3,1.2) node[dcolora] {$w=z^{1/n}$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -389,9 +389,8 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \onslide<+->
 \begin{center}
 \renewcommand\arraystretch{1.6}
-\rowcolors[\hline]{2}{strucolor!15}{strucolor!15}
+\defaultrowcolor
 \begin{tabular}{|c|c|c|}
-\rowcolor{strucolor}
 \tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\
 整数 $n$&单值&\makecell[c]{$n\ge0$ 时处处解析\\$n<0$ 时除零点外解析}\\
 分数 $p/q$&$q$ 值&除负实轴和零点外解析\\

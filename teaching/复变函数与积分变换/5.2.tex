@@ -27,22 +27,22 @@
 \begin{proof}
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,rounded corners=0.4cm,alecolor,cstfill] (-3,-0.7) rectangle (3.4,0.7);
-\draw[cstcurve,alecolor,cstarrow1to] (3.4,-0.2)--(3.4,0.1);
-\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (-2.5,-0.5) rectangle (-1.5,0.5);
-\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (-0.5,-0.5) rectangle (0.5,0.5);
-\filldraw[cstcurve,rounded corners=0.4cm,white,draw=notcolor] (1.5,-0.5) rectangle (2.5,0.5);
-\draw[cstcurve,notcolor,cstarrow1to] (-2.5,0.2)--(-2.5,-0.1);
-\draw[cstcurve,notcolor,cstarrow1to] (-0.5,0.2)--(-0.5,-0.1);
-\draw[cstcurve,notcolor,cstarrow1to] (1.5,0.2)--(1.5,-0.1);
+\filldraw[cstcurve,rounded corners=0.4cm,dcolora,cstfill] (-3,-0.7) rectangle (3.4,0.7);
+\draw[cstcurve,dcolora,cstarrow1to] (3.4,-0.2)--(3.4,0.1);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=dcolorb] (-2.5,-0.5) rectangle (-1.5,0.5);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=dcolorb] (-0.5,-0.5) rectangle (0.5,0.5);
+\filldraw[cstcurve,rounded corners=0.4cm,white,draw=dcolorb] (1.5,-0.5) rectangle (2.5,0.5);
+\draw[cstcurve,dcolorb,cstarrow1to] (-2.5,0.2)--(-2.5,-0.1);
+\draw[cstcurve,dcolorb,cstarrow1to] (-0.5,0.2)--(-0.5,-0.1);
+\draw[cstcurve,dcolorb,cstarrow1to] (1.5,0.2)--(1.5,-0.1);
 \fill[cstdot] (-2,0) circle;
 \fill[cstdot] (0,0) circle;
 \fill[cstdot] (2,0) circle;
 \draw
-  (3.8,0) node[alecolor] {$C$}
-  (-1.2,-0.2) node[notcolor] {$C_1$}
-  (0.8,-0.2) node[notcolor] {$C_2$}
-  (2.8,-0.2) node[notcolor] {$C_3$}
+  (3.8,0) node[dcolora] {$C$}
+  (-1.2,-0.2) node[dcolorb] {$C_1$}
+  (0.8,-0.2) node[dcolorb] {$C_2$}
+  (2.8,-0.2) node[dcolorb] {$C_3$}
   (-2,-0.3) node {$z_1$}
   (0,-0.3) node {$z_2$}
   (2,-0.3) node {$z_3$};
@@ -316,27 +316,27 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \begin{center}
 \begin{tikzpicture}[node distance=25pt]
   \node (integral){\vphantom{$\displaystyle\int$}};
-  \node[draw,white,fill=strucolor!70,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+  \node[draw,white,fill=heavyb,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
   \node[draw,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
   \node[draw,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
   \node[draw,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
   \node[draw,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
   \node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
-  \node[draw,fill=alercolor!25,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
-  \node[draw,fill=alercolor!25,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
+  \node[draw,fill=lightr,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+  \node[draw,fill=lightr,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-  \node[draw,fill=alercolor!25,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
-  \node[draw,fill=alercolor!25,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
-  \draw[cstnarrow,defcolor,visible on=<2->] (integral) -- (isclosed);
-  \draw[cstnarrow,defcolor,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
-  \draw[cstnarrow,defcolor,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
-  \draw[cstnarrow,defcolor,visible on=<7->] (issingle) -- node[above]{是} (ismany);
-  \draw[cstnarrow,defcolor,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
-  \draw[cstnarrow,defcolor,visible on=<6->] (issingle) -- node[left]{否} (end2);
-  \draw[cstnarrow,defcolor,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
-  \draw[cstnarrow,defcolor,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
-  \draw[cstnarrow,defcolor,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
+  \node[draw,fill=lightr,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+  \node[draw,fill=lightr,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+  \draw[cstnarrow,dcolorc,visible on=<2->] (integral) -- (isclosed);
+  \draw[cstnarrow,dcolorc,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
+  \draw[cstnarrow,dcolorc,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
+  \draw[cstnarrow,dcolorc,visible on=<7->] (issingle) -- node[above]{是} (ismany);
+  \draw[cstnarrow,dcolorc,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
+  \draw[cstnarrow,dcolorc,visible on=<6->] (issingle) -- node[left]{否} (end2);
+  \draw[cstnarrow,dcolorc,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
+  \draw[cstnarrow,dcolorc,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
+  \draw[cstnarrow,dcolorc,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
 \end{tikzpicture}
 \end{center}
 \end{frame}

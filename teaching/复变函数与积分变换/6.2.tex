@@ -175,14 +175,14 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \begin{frame}{使用傅里叶变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
-\node[draw,fill=alercolor!25] (p1){微分方程或积分方程};
+\node[draw,fill=lightr] (p1){微分方程或积分方程};
 \node[draw,right=110pt of p1] (p2){象函数的代数方程};
-\node[draw,fill=alercolor!25,below=of p1] (p3){原象函数(方程的解)};
+\node[draw,fill=lightr,below=of p1] (p3){原象函数(方程的解)};
 \node[draw,below=of p2] (p4){象函数};
 \draw[cstnarrow] (p1)--node[above]{傅里叶变换 $\msf$}(p2);
 \draw[cstnarrow] (p4)--node[below]{傅里叶逆变换 $\msf^{-1}$}(p3);
 \draw[cstnarrow] (p2)--(p4);
-\draw[cstnarrow,alecolor] (p1)--(p3);
+\draw[cstnarrow,dcolora] (p1)--(p3);
 \end{tikzpicture}
 \end{center}
 \end{frame}

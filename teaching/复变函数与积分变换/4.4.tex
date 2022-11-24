@@ -75,27 +75,27 @@
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,draw=alecolor,cstfill] (0,0) circle (1.5);
-\filldraw[cstdote,draw=alecolor] (0,0) circle;
-\draw[notcolor,cstarrowto,thick] (0.048,0.036)--(1.2,0.9);
+\filldraw[cstcurve,draw=dcolora,cstfill] (0,0) circle (1.5);
+\filldraw[cstdote,draw=dcolora] (0,0) circle;
+\draw[dcolorb,cstarrowto,thick] (0.048,0.036)--(1.2,0.9);
 \draw
-  (0.7,0.2) node[notcolor] {$R_2$}
-  (-0.3,0) node[alecolor] {$z_0$}
+  (0.7,0.2) node[dcolorb] {$R_2$}
+  (-0.3,0) node[dcolora] {$z_0$}
   (0,-2) node {$0<|z-z_0|<R_2$};
 
 \fill[cstfille,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
-\filldraw[cstcurve,fill=white,draw=alecolor,visible on=<.->] (4,0) circle (1); 
-\fill[cstdot,notcolor,visible on=<.->] (4,0) circle;
-\draw[notcolor,cstarrowto,thick,visible on=<.->] (4,0)--(4.6,-0.8);
+\filldraw[cstcurve,fill=white,draw=dcolora,visible on=<.->] (4,0) circle (1); 
+\fill[cstdot,dcolorb,visible on=<.->] (4,0) circle;
+\draw[dcolorb,cstarrowto,thick,visible on=<.->] (4,0)--(4.6,-0.8);
 \draw
-  (4.1,-0.6) node[notcolor,visible on=<.->] {$R_1$}
-  (3.7,0) node[alecolor,visible on=<.->] {$z_0$}
+  (4.1,-0.6) node[dcolorb,visible on=<.->] {$R_1$}
+  (3.7,0) node[dcolora,visible on=<.->] {$z_0$}
   (4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
 
 \fill[cstfille,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
-\filldraw[cstdote,draw=alecolor,visible on=<.->] (8,0) circle;
+\filldraw[cstdote,draw=dcolora,visible on=<.->] (8,0) circle;
 \draw
-  (7.7,0) node[alecolor,visible on=<.->] {$z_0$}
+  (7.7,0) node[dcolora,visible on=<.->] {$z_0$}
   (8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
 \end{tikzpicture}
 \end{center}
@@ -162,20 +162,20 @@
 \onslide<3->
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,cstfill,draw=notcolor] (0,0) circle (1.5);
-\filldraw[cstcurve,fill=white,draw=alecolor] (0,0) circle (1);
-\fill[cstdot,alecolor,visible on=<4->] (-1,0) circle;
-\fill[cstdot,notcolor,visible on=<4->] (-1.48,-0.3) circle;
+\filldraw[cstcurve,cstfill,draw=dcolorb] (0,0) circle (1.5);
+\filldraw[cstcurve,fill=white,draw=dcolora] (0,0) circle (1);
+\fill[cstdot,dcolora,visible on=<4->] (-1,0) circle;
+\fill[cstdot,dcolorb,visible on=<4->] (-1.48,-0.3) circle;
 \fill[cstdot,black,visible on=<4->] (0,1.25) circle;
-\draw[notcolor,cstarrowto,thick,visible on=<3->] (0,0)--(1.2,0.9);
-\draw[alecolor,cstarrowto,thick,visible on=<3->] (0,0)--(0.6,-0.8);
+\draw[dcolorb,cstarrowto,thick,visible on=<3->] (0,0)--(1.2,0.9);
+\draw[dcolora,cstarrowto,thick,visible on=<3->] (0,0)--(0.6,-0.8);
 \draw
   (-1.25,-0.15) node[visible on=<4->] {$\zeta$}
-  (0.5,0.1) node[notcolor,visible on=<3->] {$R$}
-  (0.1,-0.5) node[alecolor,visible on=<3->] {$r$}
+  (0.5,0.1) node[dcolorb,visible on=<3->] {$R$}
+  (0.1,-0.5) node[dcolora,visible on=<3->] {$r$}
   (-0.3,0) node {$z_0$}
-  (0.8,-1) node[alecolor,visible on=<3->] {$K_1$}
-  (1.4,1.2) node[notcolor,visible on=<3->] {$K_2$}
+  (0.8,-1) node[dcolora,visible on=<3->] {$K_1$}
+  (1.4,1.2) node[dcolorb,visible on=<3->] {$K_2$}
   (-0.3,1.25) node[visible on=<4->] {$z$};
 \fill[cstdot,black] (0,0) circle;
 \end{tikzpicture}

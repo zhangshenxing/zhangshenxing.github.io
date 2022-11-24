@@ -30,7 +30,7 @@
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfille] (0,0) circle (1.2);
-\filldraw[cstcurve,alecolor,fill=white] (0,0) circle (0.7);
+\filldraw[cstcurve,dcolora,fill=white] (0,0) circle (0.7);
 \draw[cstaxis] (-1.5,0)--(1.5,0);
 \draw[cstaxis] (0,-1.5)--(0,1.5);
 \end{tikzpicture}
@@ -56,14 +56,14 @@
 \begin{tikzpicture}
 \fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
 \filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,defcolor] (0,1) circle (1 and 0.3);
+\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
 \draw[cstdash,black,visible on=<5->] (0,0)--(0,2);
-\fill[cstdot,defcolor] (0,1) circle;
-\fill[cstdot,defcolor,visible on=<5->] (0,2) circle;
+\fill[cstdot,dcolorc] (0,1) circle;
+\fill[cstdot,dcolorc,visible on=<5->] (0,2) circle;
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
 \draw
-  (0,2.3) node[defcolor,visible on=<5->] {$N$};
+  (0,2.3) node[dcolorc,visible on=<5->] {$N$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -82,22 +82,22 @@
 \begin{tikzpicture}
 \fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
 \filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,defcolor] (0,1) circle (1 and 0.3);
-\draw[cstdash,defcolor] (0,0) circle (2 and 0.6);
+\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
+\draw[cstdash,dcolorc] (0,0) circle (2 and 0.6);
 \draw[cstdash,black] (0,0)--(0,2);
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
-\draw[cstcurve,alecolor,cstarrowto] (0,2)--(1.65,-0.75);
-\fill[cstdot,alecolor] (0.6,1) circle;
-\draw[cstcurve,cstarrowto,notcolor,visible on=<2->] (0,2)--(-1,0);
-\fill[cstdot,notcolor,visible on=<2->] (-0.7,0.6) circle;
-\fill[cstdot,defcolor] (0,2) circle;
+\draw[cstcurve,dcolora,cstarrowto] (0,2)--(1.65,-0.75);
+\fill[cstdot,dcolora] (0.6,1) circle;
+\draw[cstcurve,cstarrowto,dcolorb,visible on=<2->] (0,2)--(-1,0);
+\fill[cstdot,dcolorb,visible on=<2->] (-0.7,0.6) circle;
+\fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[defcolor] {$N$}
-  (-0.3,0.3) node[notcolor,visible on=<2->] {$Z_2$}
-  (-1.4,0) node[notcolor,visible on=<2->] {$z_2$}
-  (1.3,1) node[alecolor] {$Z_1$}
-  (1.9,-0.75) node[alecolor] {$z_1$};
+  (0,2.3) node[dcolorc] {$N$}
+  (-0.3,0.3) node[dcolorb,visible on=<2->] {$Z_2$}
+  (-1.4,0) node[dcolorb,visible on=<2->] {$z_2$}
+  (1.3,1) node[dcolora] {$Z_1$}
+  (1.9,-0.75) node[dcolora] {$z_1$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -117,22 +117,22 @@
 \begin{tikzpicture}
 \fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
 \filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,defcolor] (0,1) circle (1 and 0.3);
-\draw[cstdash,defcolor] (0,0) circle (2 and 0.6);
+\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
+\draw[cstdash,dcolorc] (0,0) circle (2 and 0.6);
 \draw[cstdash,black] (0,0)--(0,2);
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
-\draw[cstcurve,alecolor,cstarrowto] (0,2)--(1.65,-0.75);
-\fill[cstdot,alecolor] (0.6,1) circle;
-\draw[cstcurve,cstarrowto,notcolor] (0,2)--(-1,0);
-\fill[cstdot,notcolor] (-0.7,0.6) circle;
-\fill[cstdot,defcolor] (0,2) circle;
+\draw[cstcurve,dcolora,cstarrowto] (0,2)--(1.65,-0.75);
+\fill[cstdot,dcolora] (0.6,1) circle;
+\draw[cstcurve,cstarrowto,dcolorb] (0,2)--(-1,0);
+\fill[cstdot,dcolorb] (-0.7,0.6) circle;
+\fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[defcolor] {$N$}
-  (-0.3,0.3) node[notcolor] {$Z_2$}
-  (-1.4,0) node[notcolor] {$z_2$}
-  (1.5,1) node[alecolor] {$Z_1$}
-  (1.9,-0.75) node[alecolor] {$z_1$};
+  (0,2.3) node[dcolorc] {$N$}
+  (-0.3,0.3) node[dcolorb] {$Z_2$}
+  (-1.4,0) node[dcolorb] {$z_2$}
+  (1.5,1) node[dcolora] {$Z_1$}
+  (1.9,-0.75) node[dcolora] {$z_1$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -154,17 +154,17 @@
 \filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
 \draw[cstdash,black] (0,0)--(0,2);
 \draw[cstaxis] (-2,0)--(2.5,0);
-\draw[cstcurve,cstarrowto,alecolor] (0,2)--(2.2,0);
-\fill[cstdot,alecolor] (1,1.1) circle;
-\draw[cstcurve,cstarrowto,notcolor] (0,2)--(-1,0);
-\fill[cstdot,notcolor] (-0.8,0.4) circle;
-\fill[cstdot,defcolor] (0,2) circle;
+\draw[cstcurve,cstarrowto,dcolora] (0,2)--(2.2,0);
+\fill[cstdot,dcolora] (1,1.1) circle;
+\draw[cstcurve,cstarrowto,dcolorb] (0,2)--(-1,0);
+\fill[cstdot,dcolorb] (-0.8,0.4) circle;
+\fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[defcolor] {$N$}
-  (-0.4,0.5) node[notcolor] {$X_2$}
-  (-1,-0.2) node[notcolor] {$x_2$}
-  (1.4,1.2) node[alecolor] {$X_1$}
-  (2.1,-0.2) node[alecolor] {$x_1$};
+  (0,2.3) node[dcolorc] {$N$}
+  (-0.4,0.5) node[dcolorb] {$X_2$}
+  (-1,-0.2) node[dcolorb] {$x_2$}
+  (1.4,1.2) node[dcolora] {$X_1$}
+  (2.1,-0.2) node[dcolora] {$x_1$};
 \end{tikzpicture}
 \end{center}
 \end{frame}

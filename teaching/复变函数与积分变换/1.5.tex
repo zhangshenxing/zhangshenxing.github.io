@@ -63,22 +63,22 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \draw[cstaxis] (-2.5,-1.5)--(-2.5,1.5);
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
-\draw[cstcurve,alecolor,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
-\draw[cstcurve,smooth,notcolor] plot coordinates {(1.2,0) (2,-0.5) (2.5,-0.8) (3,-0.5) (3.5,0) (3.8,0.9) (3.3,1.2) (2,0.8) (1.2,0)};
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2,0.8) (0.4,0.6) (2.8,0.7)};
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.3,0.5) (0,-0.2) (2.2,-0.3)};
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.6) (2.2,-0.3)};
-\fill[cstdot,alecolor] (-2,0.8) circle;
-\fill[cstdot,alecolor] (-2.3,0.5) circle;
-\fill[cstdot,alecolor] (-2.8,0.3) circle;
-\fill[cstdot,notcolor] (2.8,0.7) circle;
-\fill[cstdot,notcolor] (2.2,-0.3) circle;
+\draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
+\draw[cstcurve,smooth,dcolorb] plot coordinates {(1.2,0) (2,-0.5) (2.5,-0.8) (3,-0.5) (3.5,0) (3.8,0.9) (3.3,1.2) (2,0.8) (1.2,0)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0.4,0.6) (2.8,0.7)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.3,0.5) (0,-0.2) (2.2,-0.3)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.6) (2.2,-0.3)};
+\fill[cstdot,dcolora] (-2,0.8) circle;
+\fill[cstdot,dcolora] (-2.3,0.5) circle;
+\fill[cstdot,dcolora] (-2.8,0.3) circle;
+\fill[cstdot,dcolorb] (2.8,0.7) circle;
+\fill[cstdot,dcolorb] (2.2,-0.3) circle;
 \draw
-  (-1.5,-1) node[alecolor] {$z$ 复平面}
+  (-1.5,-1) node[dcolora] {$z$ 复平面}
   (-2.7,-0.2) node {$0$}
   (-0.5,-0.2) node {$x$}
   (-2.7,1.5) node {$y$}
-  (3.5,-1) node[notcolor] {$w$ 复平面}
+  (3.5,-1) node[dcolorb] {$w$ 复平面}
   (2.3,0.2) node {$0$}
   (4.5,-0.2) node {$u$}
   (2.3,1.5) node {$v$};
@@ -118,21 +118,21 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \draw[cstaxis] (-2.5,-1)--(-2.5,2);
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-1)--(2.5,2);
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.5,1) (-2,0.6) (-1,1.3) (1.5,0)};
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-1.7,1.2) (0,1.7) (1.7,1.92)};
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-1.5) (1,-1.5) (2.77,0.36)};
-\fill[cstdot,fill=alecolor] (-2.5,1) circle;
-\fill[cstdot,fill=alecolor] (-1.7,1.2) circle;
-\fill[cstdot,fill=alecolor] (-3.1,-0.3) circle;
-\fill[cstdot,fill=notcolor] (1.5,0) circle;
-\fill[cstdot,fill=notcolor] (1.7,1.92) circle;
-\fill[cstdot,fill=notcolor] (2.77,0.36) circle;
-\fill[cstfille,pattern color=alecolor,visible on=<4->] (-2.5,0)--(-1.31,0.913) arc(37.5:7.5:1.5)--cycle;
-\fill[cstfille,pattern color=notcolor,visible on=<4->] (2.5,0)--(2.966,1.74) arc(75:15:1.8)--cycle;
-\draw[cstcurve,alecolor,visible on=<4->] (-2.5,0) --(-1.15,1.035);
-\draw[cstcurve,alecolor,visible on=<4->] (-2.5,0) --(-0.814,0.222);
-\draw[cstcurve,notcolor,visible on=<4->] (2.5,0) --(3.018,1.93);
-\draw[cstcurve,notcolor,visible on=<4->] (2.5,0) --(4.43,0.518);
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.5,1) (-2,0.6) (-1,1.3) (1.5,0)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-1.7,1.2) (0,1.7) (1.7,1.92)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-1.5) (1,-1.5) (2.77,0.36)};
+\fill[cstdot,fill=dcolora] (-2.5,1) circle;
+\fill[cstdot,fill=dcolora] (-1.7,1.2) circle;
+\fill[cstdot,fill=dcolora] (-3.1,-0.3) circle;
+\fill[cstdot,fill=dcolorb] (1.5,0) circle;
+\fill[cstdot,fill=dcolorb] (1.7,1.92) circle;
+\fill[cstdot,fill=dcolorb] (2.77,0.36) circle;
+\fill[cstfille,pattern color=dcolora,visible on=<4->] (-2.5,0)--(-1.31,0.913) arc(37.5:7.5:1.5)--cycle;
+\fill[cstfille,pattern color=dcolorb,visible on=<4->] (2.5,0)--(2.966,1.74) arc(75:15:1.8)--cycle;
+\draw[cstcurve,dcolora,visible on=<4->] (-2.5,0) --(-1.15,1.035);
+\draw[cstcurve,dcolora,visible on=<4->] (-2.5,0) --(-0.814,0.222);
+\draw[cstcurve,dcolorb,visible on=<4->] (2.5,0) --(3.018,1.93);
+\draw[cstcurve,dcolorb,visible on=<4->] (2.5,0) --(4.43,0.518);
 \draw
   (-2.7,-0.2) node {$0$}
   (-0.5,-0.2) node {$x$}
@@ -164,71 +164,71 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \draw[cstaxis] (-2.5,-1.6)--(-2.5,1.6);
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-1.6)--(2.5,1.6);
-\draw[cstcurve,notcolor] (-3.7,-1.2)--(-1.3,1.2);
-\draw[cstcurve,notcolor] (-3.7,1.2)--(-1.3,-1.2);
-\draw[cstcurve,notcolor,smooth,domain=-35:35]
+\draw[cstcurve,dcolorb] (-3.7,-1.2)--(-1.3,1.2);
+\draw[cstcurve,dcolorb] (-3.7,1.2)--(-1.3,-1.2);
+\draw[cstcurve,dcolorb,smooth,domain=-35:35]
   plot ({sec(\x)-2.5},{tan(\x)})
   plot ({-sec(\x)-2.5},{tan(\x)})
   plot ({tan(\x)-2.5},{sec(\x)})
   plot ({tan(\x)-2.5},{-sec(\x)});
-\draw[cstcurve,notcolor,smooth,domain=-46:46]
+\draw[cstcurve,dcolorb,smooth,domain=-46:46]
   plot ({(0.8*sec(\x)-2.5)},{0.8*tan(\x)})
   plot ({(-0.8*sec(\x)-2.5)},{0.8*tan(\x)})
   plot ({0.8*tan(\x)-2.5},{0.8*sec(\x)})
   plot ({0.8*tan(\x)-2.5},{0.8*-sec(\x)});
-\draw[cstcurve,notcolor,smooth,domain=-57:57]
+\draw[cstcurve,dcolorb,smooth,domain=-57:57]
   plot ({(0.6*sec(\x)-2.5)},{0.6*tan(\x)})
   plot ({(-0.6*sec(\x)-2.5)},{0.6*tan(\x)})
   plot ({0.6*tan(\x)-2.5},{0.6*sec(\x)})
   plot ({0.6*tan(\x)-2.5},{0.6*-sec(\x)});
-\draw[cstcurve,notcolor,smooth,domain=-68:68]
+\draw[cstcurve,dcolorb,smooth,domain=-68:68]
   plot ({(0.4*sec(\x)-2.5)},{0.4*tan(\x)})
   plot ({(-0.4*sec(\x)-2.5)},{0.4*tan(\x)})
   plot ({0.4*tan(\x)-2.5},{0.4*sec(\x)})
   plot ({0.4*tan(\x)-2.5},{0.4*-sec(\x)});
 
-\draw[cstcurve,alecolor,visible on=<4->] (-4,0)--(-1,0);
-\draw[cstcurve,alecolor,visible on=<4->] (-2.5,-1.3)--(-2.5,1.3);
-\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-34:34]
+\draw[cstcurve,dcolora,visible on=<4->] (-4,0)--(-1,0);
+\draw[cstcurve,dcolora,visible on=<4->] (-2.5,-1.3)--(-2.5,1.3);
+\draw[cstcurve,dcolora,visible on=<4->,smooth,domain=-34:34]
   plot ({0.8*(sec(\x)+tan(\x))-2.5},{0.8*(sec(\x)-tan(\x))})
   plot ({0.8*(sec(\x)+tan(\x))-2.5},{-0.8*(sec(\x)-tan(\x))})
   plot ({-0.8*(sec(\x)+tan(\x))-2.5},{0.8*(sec(\x)-tan(\x))})
   plot ({-0.8*(sec(\x)+tan(\x))-2.5},{-0.8*(sec(\x)-tan(\x))});
-\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-45:45]
+\draw[cstcurve,dcolora,visible on=<4->,smooth,domain=-45:45]
   plot ({0.6*(sec(\x)+tan(\x))-2.5},{0.6*(sec(\x)-tan(\x))})
   plot ({0.6*(sec(\x)+tan(\x))-2.5},{-0.6*(sec(\x)-tan(\x))})
   plot ({-0.6*(sec(\x)+tan(\x))-2.5},{0.6*(sec(\x)-tan(\x))})
   plot ({-0.6*(sec(\x)+tan(\x))-2.5},{-0.6*(sec(\x)-tan(\x))});
-\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-57:57]
+\draw[cstcurve,dcolora,visible on=<4->,smooth,domain=-57:57]
   plot ({0.4*(sec(\x)+tan(\x))-2.5},{0.4*(sec(\x)-tan(\x))})
   plot ({0.4*(sec(\x)+tan(\x))-2.5},{-0.4*(sec(\x)-tan(\x))})
   plot ({-0.4*(sec(\x)+tan(\x))-2.5},{0.4*(sec(\x)-tan(\x))})
   plot ({-0.4*(sec(\x)+tan(\x))-2.5},{-0.4*(sec(\x)-tan(\x))});
-\draw[cstcurve,alecolor,visible on=<4->,smooth,domain=-71:71]
+\draw[cstcurve,dcolora,visible on=<4->,smooth,domain=-71:71]
   plot ({0.2*(sec(\x)+tan(\x))-2.5},{0.2*(sec(\x)-tan(\x))})
   plot ({0.2*(sec(\x)+tan(\x))-2.5},{-0.2*(sec(\x)-tan(\x))})
   plot ({-0.2*(sec(\x)+tan(\x))-2.5},{0.2*(sec(\x)-tan(\x))})
   plot ({-0.2*(sec(\x)+tan(\x))-2.5},{-0.2*(sec(\x)-tan(\x))});
 
-\draw[cstcurve,notcolor] (1.3,-1.3)--(1.3,1.3);
-\draw[cstcurve,notcolor] (1.6,-1.3)--(1.6,1.3);
-\draw[cstcurve,notcolor] (1.9,-1.3)--(1.9,1.3);
-\draw[cstcurve,notcolor] (2.2,-1.3)--(2.2,1.3);
-\draw[cstcurve,notcolor] (2.5,-1.3)--(2.5,1.3);
-\draw[cstcurve,notcolor] (2.8,-1.3)--(2.8,1.3);
-\draw[cstcurve,notcolor] (3.1,-1.3)--(3.1,1.3);
-\draw[cstcurve,notcolor] (3.4,-1.3)--(3.4,1.3);
-\draw[cstcurve,notcolor] (3.7,-1.3)--(3.7,1.3);
+\draw[cstcurve,dcolorb] (1.3,-1.3)--(1.3,1.3);
+\draw[cstcurve,dcolorb] (1.6,-1.3)--(1.6,1.3);
+\draw[cstcurve,dcolorb] (1.9,-1.3)--(1.9,1.3);
+\draw[cstcurve,dcolorb] (2.2,-1.3)--(2.2,1.3);
+\draw[cstcurve,dcolorb] (2.5,-1.3)--(2.5,1.3);
+\draw[cstcurve,dcolorb] (2.8,-1.3)--(2.8,1.3);
+\draw[cstcurve,dcolorb] (3.1,-1.3)--(3.1,1.3);
+\draw[cstcurve,dcolorb] (3.4,-1.3)--(3.4,1.3);
+\draw[cstcurve,dcolorb] (3.7,-1.3)--(3.7,1.3);
 
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,-1.2)--(3.8,-1.2);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.9)--(3.8,-0.9);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.6)--(3.8,-0.6);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,-0.3)--(3.8,-0.3);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,0)--(3.8,0);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.3)--(3.8,0.3);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.6)--(3.8,0.6);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,0.9)--(3.8,0.9);
-\draw[cstcurve,alecolor,visible on=<4->] (1.2,1.2)--(3.8,1.2);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,-1.2)--(3.8,-1.2);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,-0.9)--(3.8,-0.9);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,-0.6)--(3.8,-0.6);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,-0.3)--(3.8,-0.3);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,0)--(3.8,0);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,0.3)--(3.8,0.3);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,0.6)--(3.8,0.6);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,0.9)--(3.8,0.9);
+\draw[cstcurve,dcolora,visible on=<4->] (1.2,1.2)--(3.8,1.2);
 \end{tikzpicture}
 \end{center}
 \end{example}
@@ -259,13 +259,13 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \draw[cstaxis] (-2.5,-0.2)--(-2.5,1.6);
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-0.2)--(2.5,1.6);
-\draw[cstcurve,alecolor] (-2.5,0)--(-2.5,1);
+\draw[cstcurve,dcolora] (-2.5,0)--(-2.5,1);
 \filldraw[cstdote] (-2.5,0) circle;
 \filldraw[cstdote] (-2.5,1) circle;
-\draw[cstcurve,notcolor] (0.5,0)--(2.5,0);
-\filldraw[cstdote,draw=notcolor] (0.5,0) circle;
-\filldraw[cstdote,draw=notcolor] (2.5,0) circle;
-\draw[cstdash,smooth,defcolor,cstarrowto] plot coordinates {(-2.2,0.5) (-0.3,1.3) (1.5,0.5)};
+\draw[cstcurve,dcolorb] (0.5,0)--(2.5,0);
+\filldraw[cstdote,draw=dcolorb] (0.5,0) circle;
+\filldraw[cstdote,draw=dcolorb] (2.5,0) circle;
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.2,0.5) (-0.3,1.3) (1.5,0.5)};
 \draw
   (-0.5,-0.2) node {$x$}
   (-2.7,1.3) node {$y$}

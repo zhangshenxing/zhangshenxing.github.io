@@ -11,26 +11,26 @@
 \begin{tikzpicture}
 \draw[cstaxis] (-0.4,0)--(2,0);
 \draw[cstaxis] (0,-0.4)--(0,2);
-\draw[cstdash,alecolor] (1.6,0)--(1.6,1.2);
-\draw[cstdash,alecolor] (0,1.2)--(1.6,1.2);
-\fill[cstdot,alecolor] (1.6,1.2) circle;
-\fill[cstdot,alecolor] (7.6,1.2) circle;
-\draw[notcolor,line width=0.1cm,cstarrow1double] (3.2,0.8)--(4.8,0.8);
+\draw[cstdash,dcolora] (1.6,0)--(1.6,1.2);
+\draw[cstdash,dcolora] (0,1.2)--(1.6,1.2);
+\fill[cstdot,dcolora] (1.6,1.2) circle;
+\fill[cstdot,dcolora] (7.6,1.2) circle;
+\draw[dcolorb,line width=0.1cm,cstarrow1double] (3.2,0.8)--(4.8,0.8);
 \draw
-  (1.6,1.4) node[alecolor] {$z=x+yi$}
+  (1.6,1.4) node[dcolora] {$z=x+yi$}
   (-0.2,-0.2) node {$0$}
-  (7.6,1.4) node[alecolor] {$z=x+yi$}
+  (7.6,1.4) node[dcolora] {$z=x+yi$}
   (5.8,-0.2) node {$O$}
   (7.0,-0.5) node {极坐标系}
-  (4,0.3) node[notcolor] {\small 一一对应}
-  (1.2,-0.5) node[notcolor] {复平面}
-  (6.7,0.8) node[defcolor,visible on =<4->] {$r$};
+  (4,0.3) node[dcolorb] {\small 一一对应}
+  (1.2,-0.5) node[dcolorb] {复平面}
+  (6.7,0.8) node[dcolorc,visible on =<4->] {$r$};
 \coordinate (A) at (9,0);
 \coordinate (B) at (6,0);
 \coordinate (C) at (7.6,1.2);
 \draw[cstaxis] (B)--(A);
-\draw[cstcurve,defcolor,cstarrowto,visible on =<4->] (B)--(C);
-\draw[notcolor,thick,visible on =<5->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
+\draw[cstcurve,dcolorc,cstarrowto,visible on =<4->] (B)--(C);
+\draw[dcolorb,thick,visible on =<5->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
 \end{tikzpicture}
 \end{center}
 
@@ -71,21 +71,21 @@
 \begin{tikzpicture}[overlay,xshift=1.7cm,yshift=-3cm]
 \draw[cstaxis,visible on=<3->](-2,0)->(2,0); 
 \draw[cstaxis,visible on=<3->](0,-2)->(0,2);
-\fill[cstdot,visible on=<4->,alecolor] (1,0) circle;
-\fill[cstdot,visible on=<4->,alecolor] (0.8,0.8) circle;
-\fill[cstdot,visible on=<4->,alecolor] (1.0,-0.8) circle;
-\fill[cstdot,visible on=<5->,defcolor] (-1.0,0.6) circle;
-\fill[cstdot,visible on=<5->,defcolor] (-0.7,0) circle;
-\fill[cstdot,visible on=<6->,notcolor] (-0.9,-0.5) circle;
+\fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
+\fill[cstdot,visible on=<4->,dcolora] (0.8,0.8) circle;
+\fill[cstdot,visible on=<4->,dcolora] (1.0,-0.8) circle;
+\fill[cstdot,visible on=<5->,dcolorc] (-1.0,0.6) circle;
+\fill[cstdot,visible on=<5->,dcolorc] (-0.7,0) circle;
+\fill[cstdot,visible on=<6->,dcolorb] (-0.9,-0.5) circle;
 \fill[cstdot,visible on=<7->] (0,0.5) circle;
 \fill[cstdot,visible on=<7->] (0,-0.5) circle;
 \draw
-	(1.1,0.2) node[alecolor,visible on=<4->] {$0$}
-	(1.0,1.1) node[alecolor,visible on=<4->] {$\arctan\dfrac yx$}
-	(1.1,-1.2) node[alecolor,visible on=<4->] {$\arctan\dfrac yx$}
-	(-1.2,1.2) node[defcolor,visible on=<5->] {$\arctan\dfrac yx+\pi$}
-	(-0.6,-0.2) node[defcolor,visible on=<5->] {$\pi$}
-	(-1.2,-1.1) node[notcolor,visible on=<6->] {$\arctan\dfrac yx-\pi$}
+	(1.1,0.2) node[dcolora,visible on=<4->] {$0$}
+	(1.0,1.1) node[dcolora,visible on=<4->] {$\arctan\dfrac yx$}
+	(1.1,-1.2) node[dcolora,visible on=<4->] {$\arctan\dfrac yx$}
+	(-1.2,1.2) node[dcolorc,visible on=<5->] {$\arctan\dfrac yx+\pi$}
+	(-0.6,-0.2) node[dcolorc,visible on=<5->] {$\pi$}
+	(-1.2,-1.1) node[dcolorb,visible on=<6->] {$\arctan\dfrac yx-\pi$}
 	(-0.2,0.5) node[black,visible on=<7->] {$\dfrac\pi2$}
 	(0.4,-0.5) node[black,visible on=<7->] {$-\dfrac\pi2$};
 \end{tikzpicture}
@@ -127,25 +127,25 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 \begin{tikzpicture}
 \draw[cstaxis] (-3,0)--(3.5,0);
 \draw[cstaxis] (0,-0.5)--(0,2);
-\draw[cstcurve,defcolor] (-1.6,0)--(0,0);
-\draw[cstcurve,notcolor] (-1.6,0)--(-1.6,1.2);
-\draw[cstcurve,alecolor] (-1.6,1.2)--(0,0);
-\fill[cstdot,alecolor] (-1.6,1.2) circle;
+\draw[cstcurve,dcolorc] (-1.6,0)--(0,0);
+\draw[cstcurve,dcolorb] (-1.6,0)--(-1.6,1.2);
+\draw[cstcurve,dcolora] (-1.6,1.2)--(0,0);
+\fill[cstdot,dcolora] (-1.6,1.2) circle;
 \draw[thick] (-1.6,0.2)--(-1.4,0.2)--(-1.4,0);
 \draw 
-  (-0.6,0.9) node[alecolor] {$|z|$}
-  (-0.8,-0.4) node[defcolor] {$\abs{\Re z}$}
-  (-2.2,0.6) node[notcolor] {$\abs{\Im z}$}
-  (1.3,0.2) node[alecolor,visible on=<8->] {$|z_1|$}
-  (0.3,1.4) node[alecolor,visible on=<8->] {$|z_2|$}
-  (2.8,1.3) node[defcolor,visible on=<8->] {$|z_1+z_2|$}
-  (2.5,0.8) node[notcolor,visible on=<8->] {$|z_1-z_2|$};
-\draw[cstcurve,visible on=<8->,alecolor] (0,0)--(1.5,0.6);
-\draw[cstcurve,visible on=<8->,alecolor] (0,0)--(0.8,1.5);
-\draw[cstcurve,visible on=<8->,defcolor] (0,0)--(2.3,2.1);
+  (-0.6,0.9) node[dcolora] {$|z|$}
+  (-0.8,-0.4) node[dcolorc] {$\abs{\Re z}$}
+  (-2.2,0.6) node[dcolorb] {$\abs{\Im z}$}
+  (1.3,0.2) node[dcolora,visible on=<8->] {$|z_1|$}
+  (0.3,1.4) node[dcolora,visible on=<8->] {$|z_2|$}
+  (2.8,1.3) node[dcolorc,visible on=<8->] {$|z_1+z_2|$}
+  (2.5,0.8) node[dcolorb,visible on=<8->] {$|z_1-z_2|$};
+\draw[cstcurve,visible on=<8->,dcolora] (0,0)--(1.5,0.6);
+\draw[cstcurve,visible on=<8->,dcolora] (0,0)--(0.8,1.5);
+\draw[cstcurve,visible on=<8->,dcolorc] (0,0)--(2.3,2.1);
 \draw[cstcurve,visible on=<8->] (1.5,0.6)--(2.3,2.1);
 \draw[cstcurve,visible on=<8->] (0.8,1.5)--(2.3,2.1);
-\draw[cstcurve,visible on=<8->,notcolor] (1.5,0.6)--(0.8,1.5);
+\draw[cstcurve,visible on=<8->,dcolorb] (1.5,0.6)--(0.8,1.5);
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -278,22 +278,22 @@ $\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\p
 \begin{tikzpicture}
 \draw[cstaxis] (-1.5,0)--(2.5,0);
 \draw[cstaxis] (0,-0.6)--(0,2.5);
-\draw[cstcurve,cstarrowto,alecolor] (0,0)--(-0.8,1.72);
+\draw[cstcurve,cstarrowto,dcolora] (0,0)--(-0.8,1.72);
 \draw[cstdash] (-0.8,1.72)--(1,2.32)--(1.8,0.6)--(0.5,1.16);
 \draw[thick] (0.7,1.074)--(0.786,1.274)--(0.586,1.36);
 \coordinate (A) at (2,0);
 \coordinate (B) at (0,0);
 \coordinate (C) at (1.8,0.6);
-\draw[thick,notcolor] pic [draw, "$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle};
+\draw[thick,dcolorb] pic [draw, "$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle};
 \coordinate (A) at (1.8,0.6);
 \coordinate (C) at (1,2.32);
-\draw[cstcurve,alecolor,cstarrowto] (B)--(A);
-\draw[cstcurve,notcolor,cstarrowto] (B)--(C);
-\draw[thick,notcolor] pic [draw, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle};
+\draw[cstcurve,dcolora,cstarrowto] (B)--(A);
+\draw[cstcurve,dcolorb,cstarrowto] (B)--(C);
+\draw[thick,dcolorb] pic [draw, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle};
 \draw
   (-0.2,-0.3) node {$0$}
-  (2.4,0.8) node[alecolor] {$e^{i\varphi}$}
-  (-1.2,1.7) node[alecolor] {$e^{i\theta}$};
+  (2.4,0.8) node[dcolora] {$e^{i\varphi}$}
+  (-1.2,1.7) node[dcolora] {$e^{i\theta}$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
