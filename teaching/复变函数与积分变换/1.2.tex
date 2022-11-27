@@ -152,29 +152,30 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 
 
 \begin{frame}{例题：共轭复数解决模的等式}
+\beqskip{4pt}
 \begin{example}
 证明 (1) $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
 
 (2) $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
 \end{example}
 \begin{proof}
-(1) 因为
+\begin{itemize}
+\item[(1)] 因为
 \[|z_1z_2|^2=z_1z_2\cdot\ov{z_1z_2}
 =z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
 \onslide<+->
 所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 \onslide<+->
 因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
-
-\onslide<+->
-(2) \vspace{-\baselineskip}
+\item[(2)]
 \begin{align*}
 |z_1+z_2|^2&=(z_1+z_2)(\ov{z_1}+\ov{z_2})\\
 &=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}\\
 &=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere
 \end{align*}
-\vspace{-1.2\baselineskip}
+\end{itemize}
 \end{proof}
+\endgroup
 \end{frame}
 
 

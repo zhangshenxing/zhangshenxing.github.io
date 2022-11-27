@@ -1,0 +1,228 @@
+\documentclass[simple]{hfutexam}
+\usepackage{mathrsfs}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Arg}{Arg}
+\newcommand\msl{\mathscr{L}}
+\newcommand\BZ{\mathbb{Z}}
+\newcommand{\diff}{\,\mathrm{d}}
+\let\Im\relax\DeclareMathOperator{\Im}{Im}
+\let\Re\relax\DeclareMathOperator{\Re}{Re}
+
+\begin{document}
+\BiaoTi{合肥工业大学试卷（A）}
+\XueQi{一}
+\XueNian{2022}{2023}
+\KeChengDaiMa{1400261B}
+\KeChengMingCheng{复变函数与积分变换}
+\XueFen{2.5}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\ZhuanYeBanJi{}
+\KaoShiRiQi{2022年11月26日19:00-21:00}
+\MingTiJiaoShi{集体}
+\maketitle
+
+\tigan{一、填空题（每小题3分，共15分）}
+\begin{enumerate}
+\item $i^{-i}$ 的主值是\fillblank{}.
+\item 设 $z=-i$, 则 $1+z+z^2+z^3+z^4=$\fillblank{}.
+\item 设 $C$ 为正向圆周 $|z|=2$, 则积分 $\displaystyle\oint_C\left(\frac{\overline z}{z}\right)\diff z=$\fillblank{}.
+\item 如果函数 $f(z)=x^2-2xy-y^2+i(ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$ \fillblank{}.
+\item 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
+\end{enumerate}
+
+\tigan{二、选择题（每小题3分，共15分）}
+\begin{enumerate}
+\item 方程 $\bigl||z+i|-|z-i|\bigr|=1$ 表示的曲线是(~~~~).
+\xx{直线}{不是圆的椭圆}{双曲线}{圆周}
+\item 不等式 $-1\le\arg z\le \pi-1$ 确定是的(~~~~).
+\xx{有界多连通闭区域}{有界单连通区域}{无界多连通区域}{无界单连通闭区域}
+\item 幂级数 $\displaystyle\sum_{n=1}^\infty (iz)^n$ 的收敛半径是(~~~~).
+\xx{$i$}{$-i$}{$1$}{$+\infty$}
+\item 下面哪个函数在 $z=0$ 处不可导?~(~~~~)
+\xx{$2x+3yi$}{$2x^2+3y^2i$}{$e^x\cos y+i e^x\sin y$}{$x^2-xyi$}
+\item 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的(~~~~).
+\xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
+\end{enumerate}
+
+
+\tigan{三、解答题}
+\begin{enumerate}
+\item \textbf{(6分)} 设 $z=\dfrac{3+i}{i}-\dfrac{10i}{3-i}$, 求 $z$ 的模和辐角.
+\item \textbf{(6分)} 解方程 $\sin z=2\cos z$.
+\item \textbf{(6分)} 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 求 $\displaystyle\int_C\cos^2z\diff z$.
+\item \textbf{(10分)} 设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
+\item \textbf{(10分)} 假设 $v(x,y)=x^3+y^3-axy(x+y)$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
+\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域\\
+\indent (1) $0<|z|<1$; \hspace{2em} (2) $1<|z|<+\infty$\\
+内的洛朗级数展开式.
+\item \textbf{(10分)} 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
+\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+\[\begin{cases}
+y''(t)+2y(t)=\sin t,&\\
+y(0)=0,\quad y'(0)=2.
+\end{cases}\]
+\item \textbf{(3分)} 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试列举一二.
+\end{enumerate}
+\newpage
+
+
+\BiaoTi{合肥工业大学考试参考答案（A）}
+\XueQi{一}
+\XueNian{2022}{2023}
+\KeChengDaiMa{1400261B}
+\KeChengMingCheng{复变函数与积分变换}
+\XueFen{2.5}
+\KeChengXingZhi{必修}
+\KaoShiXingShi{闭卷}
+\ZhuanYeBanJi{}
+\KaoShiRiQi{2022年11月26日19:00-21:00}
+\MingTiJiaoShi{集体}
+\maketitle
+
+\tigan{一、填空题（每小题3分，共15分）}
+
+\textbf{请将你的答案对应填在横线上：}
+
+\textbf{1.} \fillblank[2.5cm]{$e^{\pi/2}$}, 
+\textbf{2.} \fillblank[2.5cm]{$1$}, 
+\textbf{3.} \fillblank[2.5cm]{$0$}, 
+\textbf{4.} \fillblank[2.5cm]{$2$}, 
+\textbf{5.} \fillblank[2.5cm]{$2\pi j\delta(\omega+1)$}.
+
+\tigan{二、选择题（每小题3分，共15分）}
+
+\textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
+
+\xuanzeti{\textbf{题号}}{\textbf{答案}}%
+\xuanzeti{1}{C}%
+\xuanzeti{2}{D}%
+\xuanzeti{3}{C}%
+\xuanzeti{4}{A}%
+\xuanzeti{5}{A}
+
+\tigan{三、解答题}
+
+\textbf{1. （6分） 【解】}
+
+由于 $z=-3i+1-i(3+i)=2-6i$, \score2\\
+因此 $|z|=2\sqrt{10}$, \score2\\
+$\Arg z=2k\pi-\arctan 3,k\in\BZ$. \Score{(2分, 只有主值得1分)}
+
+\textbf{2. （6分） 【解】}
+\begin{align*}
+\frac{e^{iz}-e^{-iz}}{2i}&=2\cdot\frac{e^{iz}+e^{-iz}}2, \score2\\
+e^{iz}-e^{-iz}&=2i(e^{iz}+e^{-iz}), \\
+e^{2iz}&=\frac{1+2i}{1-2i}=\frac{(1+2i)^2}5, \score1\\
+2iz&=\Ln\frac{(1+2i)^2}5=(2\arctan 2+2k\pi)i, \score1\\
+z&=\arctan 2+k\pi,\quad k\in\BZ. \Score{(2分, 只有主值得1分)}
+\end{align*}
+\textbf{其它答案}: $z=\dfrac\pi2-\dfrac12\arctan\dfrac43+k\pi, k\in\BZ$.
+
+\textbf{3. （6分） 【解】}
+
+由于 $\cos^2z$ 解析, 且 \score1
+\begin{align*}
+\int\cos^2z\diff z&=\int\frac{1+\cos(2z)}2\diff z \score1\\
+&=\frac{z}2+\frac{\sin(2z)}4, \score1
+\end{align*}
+因此
+\begin{align*}
+\int_C\cos^2z\diff z&=\left[\frac{z}2+\frac{\sin(2z)}4\right]\bigg|_i^{-\pi} \score1\\
+&=-\frac\pi2-\left[\frac i2+\frac{\sin(2i)}4\right] \score1\\
+&=-\frac\pi2+\frac{(e^{-2}-4-e^2)i}8. \score1
+\end{align*}
+
+\textbf{4. （10分） 【解】}
+
+由于 $f(z)=\dfrac{e^{iz}}{z^2-3\pi z+2\pi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\pi,2\pi$, \score3\\
+因此
+\begin{align*}
+\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \score2\\
+&=2\pi i\biggl[\frac{e^{iz}}{z-2\pi}\bigg|_{z=\pi}+\frac{e^{iz}}{z-\pi}\bigg|_{z=2\pi}\biggr] \score2\\
+&=2\pi i\biggl[\frac1\pi+\frac1\pi\biggr]=4i. \score3
+\end{align*}
+
+\textbf{5. （10分） 【解】}
+
+由 $\Delta v=v_{xx}+v_{yy}=6x-2ay+6y-2ax=0$ 可知 $a=3$. \score3\\
+由
+\begin{align*}
+f'(z)&=v_y+iv_x \score2\\
+&=(3y^2-3x^2-6xy)+i(3x^2-6xy-3y^2) \score2\\
+&=3(i-1)(x+iy)^2=3(i-1)z^2 \score1
+\end{align*}
+可知 $f(z)=(i-1)z^3+C$. \Score{(2分, 没有常数项得1分)}
+
+\textbf{其它解法}: 由 $u_x=v_y=3y^2-3x^2-6xy$ 得 $u=3xy^2-x^3-3x^2y+\psi(y)$. \score2\\
+由 $u_y=-v_x=-(3x^2-6xy-3y^2)$ 得 $\psi'(y)=3y^2$, \\
+$\psi(y)=y^3+C$, \Score{(3分, 没有常数项得2分)}
+\begin{align*}
+f(z)&=u+iv \\
+&=3xy^2-x^3-3x^2y+y^3+C+i(x^3+y^3-3xy^2-3x^2y) \\
+&=(i-1)z^3+C. \score2
+\end{align*}
+
+\textbf{6. （10分） 【解】}
+
+由于 $f(z)$ 的奇点是 $1$, 因此 $f(z)$ 在这两个圆环域内都解析.
+
+(1)
+由于
+\[\frac1{1-z}=\sum_{n=0}^\infty z^n, \score1\]
+因此
+\begin{align*}
+f(z)&=\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}=-\frac1{1-z}+2\left(\frac1{1-z}\right)' \score2\\
+&=-\sum_{n=0}^\infty z^n+2\left(\sum_{n=0}^\infty z^n\right)'=-\sum_{n=0}^\infty z^n+2\sum_{n=1}^\infty nz^{n-1} \\
+&=-\sum_{n=0}^\infty z^n+2\sum_{n=0}^\infty (n+1)z^n=\sum_{n=0}^\infty(2n+1)z^n. \score2
+\end{align*}
+
+(2) 
+由于
+\[\frac1{z-1}=\frac1z\cdot\frac{1}{1-\frac1z}=\sum_{n=1}^\infty z^{-n}, \score1\]
+因此
+\begin{align*}
+f(z)&=\frac1{z-1}-2\left(\frac1{z-1}\right)'=\sum_{n=1}^\infty z^{-n}-2\left(\sum_{n=1}^\infty z^{-n}\right)' \score2\\
+&=\sum_{n=1}^\infty z^{-n}-2\sum_{n=1}^\infty (-n)z^{-n-1} \\
+&=\sum_{n=1}^\infty z^{-n}-2\sum_{n=1}^\infty (-n+1)z^{-n}=\sum_{n=1}^\infty (2n-1)z^{-n}. \score2
+\end{align*}
+
+\textbf{7. （10分） 【解】}
+
+由于 $0$ 是分母的一阶零点, 因此它是 $f(z)$ 的一阶极点. \score1\\
+由于 $\pm\pi$ 是分母的一阶零点, 因此它们是 $f(z)$ 的二阶极点. \score1
+\begin{align*}
+\Res[f(z),0]&=\left(\frac{\cos z}{z^2-\pi^2}\right)'\bigg|_{z=0} \score2\\
+&=\frac{-\sin z\cdot(z^2-\pi^2)-\cos z\cdot 2z}{(z^2-\pi^2)^2}\bigg|_{z=0}=0, \score2\\
+\Res[f(z),\pi]&=\frac{\cos z}{z^2(z+\pi)}\bigg|_{z=\pi}=-\frac1{2\pi^3}, \score2\\
+\Res[f(z),-\pi]&=\frac{\cos z}{z^2(z-\pi)}\bigg|_{z=-\pi}=\frac1{2\pi^3}. \score2
+\end{align*}
+
+\textbf{8. （9分） 【解】}
+
+设 $\msl[y]=Y$, 则
+\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2, \score3\]
+因此
+\begin{align*}
+s^2Y-2+2Y&=\msl[\sin t]=\frac{1}{s^2+1}, \score2\\
+Y(s)&=\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}=\frac{1}{s^2+1}+\frac{1}{s^2+2}, \score2\\
+y(t)&=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right]
+=\sin t+\frac{\sqrt 2}2\cdot\sin(\sqrt 2 t). \score2
+\end{align*}
+
+\textbf{9. （3分） 【解】}
+
+例如(每项1分)
+\begin{itemize}
+\item $f'(z)=\cos z,g'(x)=\cos x$. \score1
+\item $\sin z$ 处处可导, $\sin x$ 处处可导. \score1
+\item 麦克劳林展开的系数相同. \score1
+\item $\sin z$ 无界, $\sin x$ 有界. \score1
+\end{itemize}
+
+
+
+
+
+\end{document}

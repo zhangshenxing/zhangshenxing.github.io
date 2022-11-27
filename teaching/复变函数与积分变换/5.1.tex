@@ -86,7 +86,8 @@ $m$ 阶极点&\makecell[c]{主要部分只有有限项非零\\最低次为 $-m$ 
 通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 解析.
 
 \begin{conclusion}[可去奇点判定方法]
-$z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限 $\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
+$z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限\\
+$\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
 \end{conclusion}
 \end{frame}
 
@@ -94,7 +95,6 @@ $z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有�
 \begin{frame}{例题: 可去奇点}
 \beqskip{2pt}
 \begin{example}
-\vspace{-\baselineskip}
 \[\frac{\sin z}z=1-\dfrac{z^2}{3!}+\dfrac{z^4}{5!}+\cdots\]
 没有负幂次项, 因此 $0$ 是可去奇点.
 \onslide<+->
@@ -102,8 +102,8 @@ $z_0$ 是 $f(z)$ 的可去奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 存在且有�
 \[\lim_{z\to0}\frac{\sin z}z=\lim_{z\to0}\frac{\sin z-\sin 0}{z-0}=(\sin z)'|_{z=0}=\cos 0=1\]
 看出.
 \end{example}
+\vspace{-3pt}
 \begin{example}
-\vspace{-\baselineskip}
 \[\frac{e^z-1}z=1+\dfrac z{2!}+\dfrac{z^2}{3!}+\cdots\]
 没有负幂次项, 因此 $0$ 是可去奇点.
 \onslide<+->
@@ -261,7 +261,6 @@ $f(z)=\sin z-z$.
 
 
 \begin{frame}{函数的零点, 极点和阶}
-\beqskip{7pt}
 \begin{proof}
 设 $f_0(z)$ 为幂级数 $(z-z_0)^{-m}f(z)$ 的和函数, $g_0(z)$ 为幂级数 $(z-z_0)^{-n}g(z)$ 的和函数,
 \onslide<+->
@@ -274,13 +273,11 @@ $f(z)=\sin z-z$.
 f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)\]
 可知命题成立.
 \end{proof}
-
 \begin{corollary}
 设 $z_0$ 是 $f(z)$ 的 $m$ 阶零点, 是 $g(z)$ 的 $n$ 阶零点.
 \onslide<+->
 当 $m\ge n$ 时, $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的可去奇点; 当 $m<n$ 时, $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的 $n-m$ 阶极点.
 \end{corollary}
-\endgroup
 \end{frame}
 
 
@@ -288,6 +285,7 @@ f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)\]
 \begin{example}
 函数 $\dfrac1{\sin z}$ 有哪些奇点? 如果是极点指出它的阶.
 \end{example}
+\vspace{-2pt}
 \begin{solution}
 函数 $\dfrac1{\sin z}$ 的奇点是 $\sin z=0$ 的点, 即 $z=k\pi$.
 \onslide<+->
@@ -296,6 +294,7 @@ f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)\]
 \onslide<+->
 从而是 $\sin z$ 的一阶零点, 是 $\dfrac1{\sin z}$ 的一阶极点.
 \end{solution}
+\vspace{-2pt}
 \begin{example}
 $z=0$ 是 $\dfrac{e^z-1}{z^2}$ 的几阶极点?
 \end{example}
@@ -451,7 +450,7 @@ $f(z)=\dfrac z{z+1}$.
 \begin{example}
 证明非常数复系数多项式 $p(z)$ 总有复零点.
 \end{example}
-\vspace{-1pt}
+\vspace{-3pt}
 \begin{proof}
 \indent
 假设多项式 $p(z)$ 没有复零点, 那么 $f(z)=\dfrac1{p(z)}$ 在复平面上处处解析, 

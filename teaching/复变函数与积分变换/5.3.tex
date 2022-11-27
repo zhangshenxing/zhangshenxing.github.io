@@ -20,7 +20,6 @@
 
 
 \begin{frame}{例题: 第一类积分}
-\beqskip{2pt}
 \begin{example}
 求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
 \end{example}
@@ -30,6 +29,7 @@
 \onslide<+->
 \[\cos\theta=\frac12\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
 \sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
+\vspace{-0.5\baselineskip}
 \onslide<+->
 \begin{align*}
 \int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
@@ -37,7 +37,6 @@
 &=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\diff z.
 \end{align*}
 \end{solution}
-\endgroup
 \end{frame}
 
 
@@ -100,13 +99,13 @@
 
 
 \begin{frame}{例题: 留数在定积分上的应用}
-\beqskip{3pt}
 \begin{example}
 求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3},a>0$.
 \end{example}
 
 \begin{solution}
 $f(z)=\dfrac1{(z^2+a^2)^3}$ 在上半平面内的奇点为 $ai$.
+\vspace{-0.7\baselineskip}
 \onslide<+->
 \begin{align*}
 \Res[f(z),ai]&=\frac1{2!}\lim_{z\to ai}\left[\frac1{(z+ai)^3}\right]''\\
@@ -117,7 +116,6 @@ $f(z)=\dfrac1{(z^2+a^2)^3}$ 在上半平面内的奇点为 $ai$.
 \[\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3}
 =2\pi i\Res[f(z),ai]=\frac{3\pi}{8a^5}.\]
 \end{solution}
-\endgroup
 \end{frame}
 
 
@@ -136,7 +134,7 @@ $\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$
 
 
 \begin{frame}{例题: 留数在定积分上的应用}
-\beqskip{0pt}
+\beqskip{2pt}
 \begin{example}
 求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}, a>0$.
 \end{example}
@@ -226,7 +224,6 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 
 \begin{frame}{例题: 留数在定积分上的应用}
 最后我们再来看一个例子.
-\beqskip{2pt}
 \begin{example}
 求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x,0<p<1$.
 \end{example}
@@ -235,7 +232,6 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 \[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\eqtxt{令 $x=e^t$}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 \onslide<+->
 考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
-\vspace{-\baselineskip}
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-2,0)--(2,0);
@@ -256,9 +252,7 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
   (-0.6,0.8) node[dcolorb] {$l$};
 \end{tikzpicture}
 \end{center}
-\vspace{-0.5\baselineskip}
 \end{solution}
-\endgroup
 \end{frame}
 
 
@@ -304,7 +298,6 @@ $f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 &(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
 \visible<+->{I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.}
 \end{align*}
-\vspace{-\baselineskip}
 \end{solutionc}
 \end{frame}
 

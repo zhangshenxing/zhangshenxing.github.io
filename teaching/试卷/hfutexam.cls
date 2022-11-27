@@ -7,7 +7,7 @@
 % 编译模式： XeLaTeX
 % 你可以任意修改或再次分发该文件
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hfutexam}[2022/10/31 v1.2 HFUTExam document class by Zhang Shenxing]
+\ProvidesClass{hfutexam}[2022/11/27 v1.3 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi, cankaodaan, simple
 \newif\ifHFUT@ShiJuan\HFUT@ShiJuantrue
 \newif\ifHFUT@DaTiZhi\HFUT@DaTiZhifalse
@@ -202,7 +202,7 @@
 		\bfseries\LARGE\titlesongti%
 		\ifdimcomp\ltitle>{0.9\linewidth}{\HFUT@BiaoTi}{\makebox[0.9\linewidth][s]{\HFUT@BiaoTi}}\\%
 		\makebox[0.75\linewidth]{\large\timesnewroman\HFUT@XueNians\titlefangsong～\timesnewroman\HFUT@XueNiane\titlefangsong 学年%
-			第\filltitle{2em}{\HFUT@XueQi}学期\hfill\HFUT@KeChengMingCheng(\HFUT@KeChengDaiMa)}
+			第{\HFUT@XueQi}学期\hfill\HFUT@KeChengMingCheng(\HFUT@KeChengDaiMa)}
 		\end{center}
 	}
 	\fancyfoot[C]{\small\vspace{0.5\baselineskip}
@@ -218,12 +218,12 @@
 \usetikzlibrary{overlay-beamer-styles}
 \newcommand\scorebox{%
 	\vspace{0.5\baselineskip}\noindent%
-	\begin{tikzpicture}[overlay,xshift=13.4cm,yshift=-1.6cm]%
-		\draw (0,0) rectangle (4,2);%
-		\draw (2,0)--(2,2);%
-		\draw (0,1)--(4,1);%
-		\draw (1,1.5) node {\textbf{\normalsize 得分}};%
-		\draw (3,1.5) node {\textbf{\normalsize 阅卷人}};%
+	\begin{tikzpicture}[overlay,xshift=13.8cm,yshift=-1.6cm]%
+		\draw (0,0) rectangle (3.6,2);%
+		\draw (1.8,0)--(1.8,2);%
+		\draw (0,1)--(3.6,1);%
+		\draw (0.9,1.5) node {\textbf{\normalsize 得分}};%
+		\draw (2.7,1.5) node {\textbf{\normalsize 阅卷人}};%
 	\end{tikzpicture}%
 }
 % 答题纸提示信息

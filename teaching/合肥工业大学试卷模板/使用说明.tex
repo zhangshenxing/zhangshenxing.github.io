@@ -4,6 +4,8 @@
 \newcommand{\diff}{\,\mathrm{d}}
 \usetikzlibrary{arrows.meta, overlay-beamer-styles}
 \newfontfamily\couriernew{Courier New}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
 \usepackage{listings}
 \makeatletter
 \definecolor{winered}{rgb}{0.5,0,0}
@@ -27,6 +29,12 @@
   morekeywords=[2]{hfutexam, shijuan, datizhi, cankaodaan, simple, nofangzheng, flalign, 5cm, enumerate, align},
   keywordstyle=[2]\color{blue},
 }
+\tcbset{
+  colback=white,
+  colframe=blue,
+  boxrule=0.5pt,
+  arc=0pt,
+}
 \makeatother
 
 \begin{document}
@@ -48,7 +56,7 @@
 \tigan{一、模板选项}
 
 \indent
-本模板 (2022/10/31 v1.2) 旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
+本模板 (2022/11/27 v1.3) 旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
 使用时, 只需在文档开头写上
 \begin{lstlisting}
 \documentclass[shijuan]{hfutexam}
@@ -61,7 +69,7 @@
 \begin{enumerate}
 \item 试卷/答题纸/参考答案三个选项下页面会设置为 A3 大小, 三种情形的页眉页脚显示的内容以及标题的文字间隔有所不同.
 \item 简易模式选项下页面会设置为 A4 大小, 页眉页脚也较为简单. 此时需要使用命令 \lstinline|\maketitle| 来生成标题.
-一般用于仅保存(多张)试卷内的内容用.
+一般用于保存(多张)试卷的内容，或者便于打印使用.
 \item 标题默认使用方正字体, 因此请在使用前先安装字体: {\bfseries\titlesongti 方正小标宋}和{\bfseries\titlefangsong 方正仿宋}(右键选择为所有用户安装), 否则请使用选项 \lstinline|nofangzheng| (采用新宋体和仿宋代替).
 \end{enumerate}
 
@@ -69,74 +77,66 @@
 
 \indent
 通过下述命令来设置试卷信息.
+
+\textit{\color{blue}{试卷信息示例:}}
 \begin{lstlisting}
-\BiaoTi{试卷标题}		% 一般为: 合肥工业大学试卷（A）或（B)
-\XueNian{学年起始}{学年结束}		% 一般为相差 1 的 4 位数字
-\XueQi{学期}		% 一般为: 一, 二
-\KeChengDaiMa{课程代码}
-\KeChengMingCheng{课程名称}
-\XueFen{学分}
-\KeChengXingZhi{课程性质}		% 只能为: 必修, 选修, 限修
-\KaoShiXingShi{考试形式}		% 只能为: 开卷, 闭卷
-\ZhuanYeBanJi{专业班级}		% 一般不需要填写
-\KaoShiRiQi{考试日期}
-\MingTiJiaoShi{命题教师}
-\XiZhuRenQianMing{系主任签名} 
+\BiaoTi{合肥工业大学试卷（A）} % 试卷标题, 一般为: 合肥工业大学试卷（A）或（B)
+\XueNian{2021}{2022}                 % 学年起始和结束, 一般为相差 1 的 4 位数字
+\XueQi{二}                           % 学期, 一般为: 一, 二
+\KeChengDaiMa{034Y01}                % 课程代码
+\KeChengMingCheng{数学（下）} % 课程名称
+\XueFen{5}                            % 学分
+\KeChengXingZhi{必修}	             	% 课程性质, 只能为: 必修, 选修, 限修
+\KaoShiXingShi{闭卷}	                 	% 考试形式, 只能为: 开卷, 闭卷
+\ZhuanYeBanJi{少数民族预科班} 		% 专业班级, 一般不需要填写
+\KaoShiRiQi{2022年6月18日8:00-10:00} % 考试日期
+\MingTiJiaoShi{集体}                       % 命题教师
+\XiZhuRenQianMing{dengbing.png}  % 系主任签名
 \end{lstlisting}
-其中系主任签名处需要填写相应的图片名, 默认为~{\color{blue}\lstinline|example-sign.png|}, 即一个空白图片. 其它选项默认均为空, 可根据需要只填部分内容.
+其中系主任签名处需要填写相应的图片名, 默认为~{\color{blue}\lstinline|example-sign.png|}, 即一个空白图片.
+
+其它选项默认均为空, 可根据需要只填部分内容.
 \newpage
-\textit{\color{blue}{示例:}}
-\begin{lstlisting}
-\BiaoTi{合肥工业大学试卷（A）}
-\XueNian{2021}{2022}
-\XueQi{二}
-\KeChengDaiMa{034Y01}
-\KeChengMingCheng{数学（下）}
-\XueFen{5}
-\KeChengXingZhi{必修}
-\KaoShiXingShi{闭卷}
-\ZhuanYeBanJi{少数民族预科班}
-\KaoShiRiQi{2022年6月18日8:00-10:00}
-\MingTiJiaoShi{集体}
-\XiZhuRenQianMing{dengbing.png}
-\end{lstlisting}
 
 \tigan{三、命令}
 \begin{enumerate}
 \item \lstinline|\tigan{三、命令}| 用于生成题干, 字体相对较大, 且为黑体. 小题建议使用~{\color{blue}\lstinline|enumerate|} 环境来生成.
+\item \hspace{-8mm}\scorebox\hspace{8mm}\lstinline|\scorebox| 用于生成打分框, 请放置在答题纸一行的开头使用.
+\vspace{-2mm}
 \item \lstinline|\notice| 用于生成答题纸提示信息, 请放置在答题纸的正文开始处.
 \item 答题纸中可能需要设置一定高度的空白, 使用命令 \lstinline|\hspace{5cm}| 之类的命令即可. 也可以使用 \lstinline|\newpage| 换到新的一页(或分栏).
-\item \scorebox\lstinline|\scorebox| 用于生成打分框, 请放置在答题纸一行的开头使用.
 \end{enumerate}
 
 \tigan{填空题相关}
-\begin{enumerate}
-\item \lstinline|\fillblank[长度][最低高度]{内容}| 用于生成填空题的空白, 内容可以为空. 其中长度默认值是~{\color{blue}{\lstinline|3.5cm|}}, 最低高度默认值是~{\color{blue}{\lstinline|1cm|}}(答题纸和参考答案)或~{\color{blue}{\lstinline|0.5cm|}}(其它).
+\begin{enumerate}[resume]
+\item \lstinline|\fillblank[长度][最低高度]{内容}| 用于生成填空题的空白, 内容可以为空. 其中长度默认值是~{\color{blue}{\lstinline|3.5cm|}}, 最低高度默认值是~{\color{blue}{\lstinline|1cm|}} (答题纸和参考答案)或~{\color{blue}{\lstinline|0.5cm|}} (其它).
 \end{enumerate}
 
-\textit{\color{blue}{示例:}}
+\textit{\color{blue}{填空题示例:}}
 \begin{lstlisting}
 \textbf{请将你的答案对应填在横线上：}
 
 \textbf{1.} \fillblank{}, 
-\textbf{2.} \fillblank{}, 
+\textbf{2.} \fillblank[5cm]{}, 
 \textbf{3.} \fillblank{}.
 \end{lstlisting}
+
+\begin{tcolorbox}
 \textbf{请将你的答案对应填在横线上：}
 
 \textbf{1.} \fillblank[3.5cm][1cm]{}, 
-\textbf{2.} \fillblank[3.5cm][1cm]{}, 
+\textbf{2.} \fillblank[5cm][1cm]{}, 
 \textbf{3.} \fillblank[3.5cm][1cm]{}.
-
+\end{tcolorbox}
 
 \tigan{选择题相关}
-\begin{enumerate}
+\begin{enumerate}[resume]
 \item \lstinline|\xx{选项}{选项}{选项}{选项}| 用于生成选择题的选项, 直接在选择题题干后使用即可. 该命令会自动根据选项长度设置行数. 只支持四个选项, 选项会自动带上 ABCD.
 \item 如果想要手动改变每行显示的选项数, 可使用命令 \lstinline|\xx[每行显示的选项数]{选项}{选项}{选项}{选项}|, 每行只能显示 1, 2 或 4 个选项.
 \item \lstinline|\xuanzeti{题号}{答案}| 用于生成答题纸选择题的答题区域, 或参考答案选择题的答案区域.
 \end{enumerate}
 
-\textit{\color{blue}{示例:}}
+\textit{\color{blue}{选择题示例:}}
 \begin{lstlisting}
 \begin{enumerate}
 \item 柳宗元的《江雪》包含下面哪一句? (~~~~).
@@ -149,6 +149,7 @@
 \end{enumerate}
 \end{lstlisting}
 
+\begin{tcolorbox}
 \begin{enumerate}
 \item 柳宗元的《江雪》包含下面哪一句? (~~~~).
 \xx[2]{一山鸟飞绝}{百山鸟飞绝}{千山鸟飞绝}{亿山鸟飞绝}
@@ -158,28 +159,32 @@
 {西塞山前白鹭飞，桃花流水鳜鱼肥。青箬笠，绿蓑衣，斜风细雨不须归。}
 {北塞山前白鹭飞，桃花流水鳜鱼肥。青箬笠，绿蓑衣，斜风细雨不须归。}
 \end{enumerate}
+\end{tcolorbox}
+
+%\newpage
+\textit{\color{blue}{选择题示例:}}
+\begin{lstlisting}
+\textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
+
+\xuanzeti{\textbf{题号}}{\textbf{答案}}%
+\xuanzeti{1}{}\xuanzeti{2}{}\xuanzeti{3}{}\xuanzeti{4}{}
+\end{lstlisting}
+
+\begin{tcolorbox}
+\textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
+
+\xuanzeti{\textbf{题号}}{\textbf{答案}}%
+\xuanzeti{1}{}\xuanzeti{2}{}\xuanzeti{3}{}\xuanzeti{4}{}
+\end{tcolorbox}
 
 \newpage
-\textit{\color{blue}{示例:}}
-\begin{lstlisting}
-\textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
-
-\xuanzeti{\textbf{题号}}{\textbf{答案}}%
-\xuanzeti{1}{}\xuanzeti{2}{}\xuanzeti{3}{}\xuanzeti{4}{}
-\end{lstlisting}
-\textbf{请将你所选择的字母 A, B, C, D 之一对应填在下列表格里：}
-
-\xuanzeti{\textbf{题号}}{\textbf{答案}}%
-\xuanzeti{1}{}\xuanzeti{2}{}\xuanzeti{3}{}\xuanzeti{4}{}
-
-
 \tigan{得分点相关}
-\begin{enumerate}
+\begin{enumerate}[resume]
 \item \lstinline|\score{数值}| 用于在参考答案一行结尾处生成得分点的虚线.\score2
 \item \lstinline|\Score{(2分, 缺少常数得1分)}| 用于自定义得分说明.\Score{(2分, 缺少常数得1分)}
 \item 在公式中也可使用, 但是需要编译两次才会正常计算出虚线长度.
 \end{enumerate}
-\textit{\color{blue}{示例:}}
+\textit{\color{blue}{得分点示例:}}
 \begin{lstlisting}
 \[\int e^x\diff x=e^x+C. \Score{(4分, 缺少常数得2分)}\]
 \begin{align*}
@@ -188,11 +193,29 @@
 \end{align*}
 \end{lstlisting}
 
+\begin{tcolorbox}
 \[\int e^x\diff x=e^x+C. \Score{(4分, 缺少常数得2分)}\]
 \begin{align*}
 \int\sin x\diff x&=-\cos x+C, \Score{(4分, 缺少常数得2分)}\\
 \int_0^\pi(1+\sin x)\diff x&=\pi+2. \score5
 \end{align*}
+\end{tcolorbox}
+
+\tigan{更新历史}
+
+\textbf{\color{blue}{2022/10/30 v1.1}}
+\begin{itemize}
+\item 首次提交.
+\end{itemize}
+\textbf{\color{blue}{2022/10/31 v1.2}}
+\begin{itemize}
+\item 选择题选项后增加了{\color{blue}5pt}的垂直间距.
+\end{itemize}
+\textbf{\color{blue}{2022/11/27 v1.3}}
+\begin{itemize}
+\item 移除了简易模式下学期的下划线.
+\item 打分框的宽度减少了{\color{blue}10\%}.
+\end{itemize}
 
 \newpage
 \tigan{一、填空题（每题3分，共18分）}

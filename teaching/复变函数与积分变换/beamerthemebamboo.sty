@@ -1,0 +1,256 @@
+\mode<presentation>
+% 颜色
+\usecolortheme{seahorse}
+\definecolor{structcolor}{RGB}{40,47,164}
+\definecolor{alertecolor}{RGB}{166,40,47}
+\definecolor{examplcolor}{RGB}{47,164,40}
+\setbeamercolor{structure}{fg=structcolor}
+\setbeamercolor{alerted text}{fg=alertecolor}
+\setbeamercolor{example text}{fg=examplcolor}
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!70!bg}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg!70!bg}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg!70!bg}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!20!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!20!bg}
+\setbeamercolor{title}{use=structure,fg=structure.fg} % 封面页 标题
+\setbeamercolor{part title}{use=structure,fg=black,bg=structure.fg!30!bg} % 部分页 部分标题
+\setbeamercolor{author/part in head/foot}{parent=palette secondary} % 底部导航 作者/部分
+\setbeamercolor{title in head/foot}{parent=palette quaternary} % 底部导航 标题
+\setbeamercolor{institute/section in head/foot}{parent=palette secondary} % 底部导航 机构/节
+\setbeamercolor{item}{use=structure,fg=structure.fg} % 条目编号
+\setbeamercolor{email}{use=structure,fg=structure.fg}
+% 内部
+%%% 页边距
+\setbeamersize{text margin left=1em,text margin right=1em}
+%%% 条目编号
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamertemplate{items}[circle]
+%%% 字体大小
+\setbeamerfont{block title}{series=\bfseries}
+\setbeamerfont{institute}{size=\normalsize,shape=\itshape}
+\setbeamerfont{date}{size=\normalsize,shape=\itshape}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{part title}{size=\Large}
+\setbeamerfont{part name}{size=\Large, parent=part title}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{enumerate item}{size=\large}
+\setbeamerfont{enumerate subitem}{size=\large}
+\setbeamerfont{enumerate subsubitem}{size=\large}
+\setbeamerfont{item projected}{size=\normalsize}
+\setbeamerfont{email}{size=\small,family=\ttfamily}
+\setbeamerfont{office}{size=\normalsize,shape=\itshape}
+\newcommand{\email}[1]{\gdef\HFUT@email{#1}}\email{}
+\newcommand{\office}[1]{\gdef\HFUT@office{#1}}\office{}
+\newcommand{\institutelogo}[1]{\gdef\HFUT@institutelogo{#1}}\institutelogo{}
+\newcommand{\institutename}[1]{\gdef\HFUT@institutename{#1}}\institutename{}
+%%% 封面页
+\setbeamertemplate{title page}{%
+  \hskip0em\ifx\HFUT@institutelogo\@empty\else\includegraphics[height=0.17\textheight]{\HFUT@institutelogo}\hskip2ex\fi%
+  \ifx\HFUT@institutename\@empty\else%
+    \raisebox{0.035\textheight}{\includegraphics[height=0.1\textheight]{\HFUT@institutename}}%
+  \fi\vskip3em\par%
+  \hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par%
+  \hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip2em\par%
+  \hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{office}\usebeamercolor[fg]{office}\HFUT@office}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{email}\usebeamercolor[fg]{email}\HFUT@email}%
+}
+%%% 页面背景
+\setbeamertemplate{background}{
+  \ifx\HFUT@institutelogo\@empty\else
+  \begin{tikzpicture}
+    \path (0,0) -- (\paperwidth,\paperheight);
+    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\HFUT@institutelogo}};
+  \end{tikzpicture}
+  \fi
+}
+%%% 部分页
+\setbeamertemplate{part page}{
+  \begingroup
+    \begin{beamercolorbox}[sep=8pt,rounded=true,center]{part title}
+    \ifnum\thepart>0
+      {\usebeamercolor[fg]{part name}\usebeamerfont{part name}\newchapterprefixname\chinese{part}\newchaptersuffixname}%
+      \hspace{1em}
+    \fi%
+      {\usebeamercolor[fg]{part title}\usebeamerfont{part title}\insertpart}\par
+    \end{beamercolorbox}
+  \endgroup
+}
+\makeatletter
+%%% 自动生成部分页
+\AtBeginPart{\beamer@tocsectionnumber=0\relax\setcounter{section}{0}\frame{\partpage}}
+% 外部
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+%%% 底部导航
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author/part in head/foot}%
+    \ifnum \thesection>0
+      \usebeamercolor[fg]{section in head/foot}%
+       \usebeamerfont{section in head/foot}%
+        {\thepart.\thesection~\insertsectionhead{}}
+    \else
+      \usebeamercolor[fg]{institute in head/foot}%
+       \usebeamerfont{institute in head/foot}%
+        {\insertshortinstitute}
+    \fi
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamercolor[fg]{title in head/foot}%
+     \usebeamerfont{title in head/foot}%
+      \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{institute/section in head/foot}%
+    \ifnum \thepart>0
+      \hfill%
+      \usebeamercolor[fg]{part in head/foot}%
+       \usebeamerfont{part in head/foot}%
+        {\newchapterprefixname\zhnumber{\thepart}\newchaptersuffixname\hspace{1em}\insertshortpart}
+      \hfill%
+      \usebeamercolor[fg]{page number in head/foot}%
+       \usebeamerfont{page number in head/foot}%
+        \usebeamertemplate{page number in head/foot}
+    \else
+      \hfill%
+      \usebeamercolor[fg]{author in head/foot}%
+       \usebeamerfont{author in head/foot}%
+        {\insertshortauthor}
+      \hfill%
+      \usebeamercolor[fg]{page number in head/foot}%
+       \usebeamerfont{page number in head/foot}%
+        \usebeamertemplate{page number in head/foot}
+    \fi
+  \end{beamercolorbox}%
+  }%
+}
+\defbeamertemplate{footline}{no part}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author/part in head/foot}%
+    \ifnum \thesection>0
+      \usebeamercolor[fg]{section in head/foot}%
+       \usebeamerfont{section in head/foot}%
+        {\thesection~\insertsectionhead{}}
+    \else
+      \usebeamercolor[fg]{institute in head/foot}%
+       \usebeamerfont{institute in head/foot}%
+        {\insertshortinstitute}
+    \fi
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamercolor[fg]{title in head/foot}%
+     \usebeamerfont{title in head/foot}%
+      \insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{institute/section in head/foot}%
+    \hfill%
+    \usebeamercolor[fg]{author in head/foot}%
+     \usebeamerfont{author in head/foot}%
+      {\insertshortauthor}
+    \hfill%
+    \usebeamercolor[fg]{page number in head/foot}%
+     \usebeamerfont{page number in head/foot}%
+      \usebeamertemplate{page number in head/foot}
+  \end{beamercolorbox}%
+  }%
+}
+\makeatother
+%%% 环境设置
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+  common/.style={
+    lower separated=false,
+    coltitle=white,
+    boxrule=1pt,
+    fonttitle=\bfseries,
+    enhanced,
+    left=1mm,right=1mm,bottom=1mm,top=2mm,
+    before skip=2mm minus 1mm,
+    after skip=2mm minus 1mm,
+    attach boxed title to top left={
+      yshift=-0.11in, xshift=0.15in
+    },
+    boxed title style={
+      boxrule=0pt, arc=0pt, outer arc=0pt
+    }
+  }
+}
+\usebeamercolor{structure}
+\tcbset{
+  blockstyle/.style={
+    common,
+    colframe=structure.fg,
+    colback=structure.fg!10,
+    colbacktitle=structure.fg!80
+  }
+}
+\usebeamercolor{example text}
+\tcbset{
+  exampstyle/.style={
+    common,
+    colframe=example text.fg,
+    colback=example text.fg!10,
+    colbacktitle=example text.fg!80
+  }
+}
+\usebeamercolor{alerted text}
+\tcbset{
+  alertstyle/.style={
+    common,
+    colframe=alerted text.fg,
+    colback=alerted text.fg!10,
+    colbacktitle=alerted text.fg!80
+  }
+}
+\RequirePackage{xparse}
+\newenvironment{conclusion}[1][\newconclusionname]{\begin{tcolorbox}[blockstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{theorem}{o}{\begin{conclusion}[\newtheoremname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\RenewDocumentEnvironment{corollary}{o}{\begin{conclusion}[\newcorollaryname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\RenewDocumentEnvironment{lemma}{o}{\begin{conclusion}[\newlemmaname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\RenewDocumentEnvironment{fact}{o}{\begin{conclusion}[\newfactname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\RenewDocumentEnvironment{solution}{o}{\begin{conclusion}[\newsolutionname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\newenvironment{solutionc}{\begin{conclusion}[\newsolutioncname]}{\end{conclusion}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{conclusion}[\newproofname\IfNoValueTF{#1}{}{~(#1)}]}{\popQED\end{conclusion}}
+\NewDocumentEnvironment{proofs}{o}{\begin{conclusion}[\newproofname\IfNoValueTF{#1}{}{~(#1)}]}{\end{conclusion}}
+\newenvironment{proofc}{\begin{conclusion}[\newproofcname]}{\end{conclusion}}
+\newenvironment{proofe}{\pushQED{\qed}\begin{conclusion}[\newproofcname]}{\popQED\end{conclusion}}
+\newenvironment{answer}{\begin{conclusion}[\newanswername]}{\end{conclusion}}
+\newenvironment{analysis}{\begin{conclusion}[\newanalysisname]}{\end{conclusion}}
+\newenvironment{conjecture}{\begin{conclusion}[\newconjecturename]}{\end{conclusion}}
+\renewenvironment{definition}{\begin{tcolorbox}[blockstyle,title=\newdefinitionname]}{\end{tcolorbox}}
+\renewenvironment{example}{\begin{tcolorbox}[exampstyle,title=\newexamplename]}{\end{tcolorbox}}
+\newenvironment{exercise}{\begin{tcolorbox}[exampstyle,title=\newexercisename]}{\end{tcolorbox}}
+\newenvironment{think}{\begin{tcolorbox}[exampstyle,title=\newthinkname]}{\end{tcolorbox}}
+
+\newcommand{\newchapterprefixname}{第}
+\newcommand{\newchaptersuffixname}{章}
+\newcommand{\newconclusionname}{结论}
+\newcommand{\newtheoremname}{定理}
+\newcommand{\newcorollaryname}{推论}
+\newcommand{\newlemmaname}{引理}
+\newcommand{\newfactname}{事实}
+\newcommand{\newsolutionname}{解}
+\newcommand{\newsolutioncname}{续解}
+\newcommand{\newproofname}{证明}
+\newcommand{\newproofcname}{续证}
+\newcommand{\newanswername}{答案}
+\newcommand{\newanalysisname}{分析}
+\newcommand{\newconjecturename}{猜想}
+\newcommand{\newdefinitionname}{定义}
+\newcommand{\newexamplename}{例}
+\newcommand{\newexercisename}{练习}
+\newcommand{\newthinkname}{思考}
+% 数学字体
+\usefonttheme[onlymath]{serif}
+\RequirePackage{lmodern}
+\RequirePackage[T1]{fontenc}
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
+\beamerdefaultoverlayspecification{<+->}
+\mode<all>
+

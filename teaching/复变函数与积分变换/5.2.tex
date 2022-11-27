@@ -19,7 +19,7 @@
 
 
 \begin{frame}{留数定理}
-\beqskip{0pt}
+\beqskip{5pt}
 \begin{conclusion}[留数定理]
 如果 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 那么
 \[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
@@ -148,26 +148,29 @@ $f(z)=z^4\sin\dfrac1z$.
 \end{frame}
 
 
-\begin{frame}{典型例题: 留数的计算}
+\begin{frame}[<*>]{典型例题: 留数的计算}
+\onslide<+->
 \begin{solutionc}
-\vspace{-\baselineskip}
 \begin{align*}
 \Res\left[\frac{z-\sin z}{z^6},0\right]&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}\\
 &\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
 \end{align*}
 \end{solutionc}
-
-\begin{exercise}
+\onslide<+->
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
 求 $\Res\left[\dfrac{e^z-1}{z^5},0\right]$.
-\end{exercise}
-\begin{answer}
+		\end{exercise}\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
 $\dfrac1{24}$.
-\end{answer}
+		\end{answer}
+\end{columns}
 \end{frame}
 
 
 \begin{frame}{留数的计算方法}
-\beqskip{3pt}
 \begin{conclusion}[极点留数计算公式 III]
 设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的 $1$ 阶零点, 则
 \[\eqatt{\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}}.\]
@@ -182,7 +185,6 @@ $\dfrac1{24}$.
   \visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}&\mqed
 \end{flalign*}
 \end{proofs}
-\endgroup
 \end{frame}
 
 
@@ -198,7 +200,6 @@ $\dfrac1{24}$.
 =\frac z{(z^8-1)'}\Big|_{z=\frac{1+i}{\sqrt2}}
 =\frac z{8z^7}\Big|_{z=\frac{1+i}{\sqrt2}}
 =-\frac i8.\]
-\vspace{-3pt}
 \end{solution}
 \begin{example}
 计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z$.
@@ -322,12 +323,12 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
   \node[draw,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
   \node[draw,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
   \node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
-  \node[draw,fill=lightr,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
-  \node[draw,fill=lightr,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
+  \node[draw,white,fill=heavyr,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+  \node[draw,white,fill=heavyr,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-  \node[draw,fill=lightr,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
-  \node[draw,fill=lightr,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+  \node[draw,white,fill=heavyr,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+  \node[draw,white,fill=heavyr,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
   \draw[cstnarrow,dcolorc,visible on=<2->] (integral) -- (isclosed);
   \draw[cstnarrow,dcolorc,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
   \draw[cstnarrow,dcolorc,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
