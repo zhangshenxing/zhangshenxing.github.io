@@ -1,0 +1,128 @@
+\mode<presentation>
+% Colors
+\usecolortheme{seahorse}
+\usecolortheme{orchid}
+\setbeamercolor{title}{use=structure,fg=structure.fg}
+\setbeamercolor{item}{use=structure,fg=structure.fg}
+\setbeamercolor{email}{use=structure,fg=structure.fg}
+% Margin
+\setbeamersize{text margin left=2em,text margin right=2em}
+% Items
+\useinnertheme{circles}
+\setbeamertemplate{enumerate item}{(\insertenumlabel)}
+% Font
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{institute}{size=\normalsize,shape=\itshape}
+\setbeamerfont{date}{size=\normalsize,shape=\itshape}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{email}{family=\ttfamily}
+% Title Page
+\newcommand\institutegraphic[1]{\def\insertinstitutegraphic{#1}}
+\newcommand\email[1]{\def\insertemail{#1}}
+\email{}
+\setbeamertemplate{title page}{\vfill%
+  \hskip0em\ifx\inserttitlegraphic\@empty\else\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em\fi%
+  \ifx\insertinstitutegraphic\@empty\else%
+    \raisebox{0.035\textheight}{\includegraphics[height=0.13\textheight]{\insertinstitutegraphic}}%
+  \fi\vskip1.5em\par%
+  \hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par%
+  \hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip1.5em\par%
+  \hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}\vskip0.25em\par%
+  \hskip0em{\usebeamerfont{email}\usebeamercolor[fg]{email}\insertemail}\vfill%
+}
+% Background
+\setbeamertemplate{background}{
+  \ifx\inserttitlegraphic\@empty\else
+  \begin{tikzpicture}
+    \path (0,0) -- (\paperwidth,\paperheight);
+    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\inserttitlegraphic}};
+  \end{tikzpicture}
+  \fi
+}
+\setbeamertemplate{navigation symbols}{}
+% Footline
+\setbeamertemplate{footline}{%
+  \noindent\hbox{%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt]{section in head/foot}
+      \vskip2pt\insertnavigation{.5\paperwidth}\vskip2pt
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt,left]{author in head/foot}%
+      \vfill%
+      \hskip2ex\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}\insertshortauthor%
+      \par%
+      \hskip2ex\usebeamercolor[fg]{title in head/foot}\usebeamerfont{title in head/foot}\insertshorttitle%
+      \vfill
+    \end{beamercolorbox}%
+  }
+}
+\makeatother
+% Theorems, use tcolorbox
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+  common/.style={
+    lower separated=false,
+    coltitle=white,
+    boxrule=1pt,
+    fonttitle=\bfseries,
+    enhanced,
+    left=1mm,right=1mm,bottom=1mm,top=3mm,
+    before skip=2mm minus 1mm,
+    after skip=2mm minus 1mm,
+    attach boxed title to top left={
+      yshift=-0.11in, xshift=0.15in
+    },
+    boxed title style={
+      boxrule=0pt, arc=0pt, outer arc=0pt
+    }
+  }
+}
+\usebeamercolor{structure}
+\tcbset{
+  blockstyle/.style={
+    common,
+    colframe=structure.fg,
+    colback=structure.fg!10,
+    colbacktitle=structure.fg!80
+  }
+}
+\usebeamercolor{example text}
+\tcbset{
+  exampstyle/.style={
+    common,
+    colframe=example text.fg,
+    colback=example text.fg!10,
+    colbacktitle=example text.fg!80
+  }
+}
+\usebeamercolor{alerted text}
+\tcbset{
+  alertstyle/.style={
+    common,
+    colframe=alerted text.fg,
+    colback=alerted text.fg!10,
+    colbacktitle=alerted text.fg!80
+  }
+}
+\RequirePackage{xparse}
+\renewenvironment{block}[1]{\begin{tcolorbox}[blockstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{theorem}{o}{\begin{block}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{corollary}{o}{\begin{block}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{lemma}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{fact}{o}{\begin{block}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{solution}{o}{\begin{block}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{block}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{block}}
+\renewenvironment{definition}{\begin{tcolorbox}[blockstyle,title=\translate{Definition}]}{\end{tcolorbox}}
+\renewenvironment{definitions}{\begin{tcolorbox}[blockstyle,title=\translate{Definitions}]}{\end{tcolorbox}}
+\renewenvironment{example}{\begin{tcolorbox}[exampstyle,title=\translate{Example}]}{\end{tcolorbox}}
+\renewenvironment{examples}{\begin{tcolorbox}[exampstyle,title=\translate{Examples}]}{\end{tcolorbox}}
+\newenvironment{exercise}{\begin{tcolorbox}[exampstyle,title=\translate{Exercise}]}{\end{tcolorbox}}
+\newenvironment{remark}{\begin{tcolorbox}[exampstyle,title=\translate{Remark}]}{\end{tcolorbox}}
+% Math Font
+\usefonttheme[onlymath]{serif}
+\RequirePackage{lmodern}
+\beamerdefaultoverlayspecification{<+->}
+\mode<all>

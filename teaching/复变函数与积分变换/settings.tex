@@ -6,43 +6,32 @@
 \usepackage{makecell}
 \usepackage{tikz}
 \usepackage{color,calc}
+
 % 符号
 \input{symbols}
-\definecolor{lightr}{RGB}{246,233,234}
-\definecolor{lightg}{RGB}{234,246,233}
-\definecolor{lightb}{RGB}{233,234,246}
-\definecolor{heavyr}{RGB}{182,83,89}
-\definecolor{heavyg}{RGB}{89,182,83}
-\definecolor{heavyb}{RGB}{83,89,182}
-% 文本框/表格背景颜色
-\newcommand\defaultrowcolor{\rowcolors[\hline]{1}{lightb}{lightb}}
+\usebeamercolor{structure}
+\colorlet{heavyb}{structure.fg!80}
+\colorlet{lightb}{structure.fg!10}
+\usebeamercolor{example text}
+\colorlet{heavyg}{example text.fg!80}
+\colorlet{lightg}{example text.fg!10}
+\usebeamercolor{alerted text}
+\colorlet{heavyr}{alerted text.fg!80}
+\colorlet{lightr}{alerted text.fg!10}
+% 表格色
+\newcommand\defaultrowcolors{\rowcolors[\hline]{1}{lightb}{lightb}}
 \newcommand\tht{\cellcolor{heavyb}\color{white}}
-\newcommand\thtr{\cellcolor{lightr}}
-\newcommand\thtg{\cellcolor{lightg}}
-\newcommand\thtb{\cellcolor{lightb}}
-% 文本/图形前景色
-\newcommand\markdef[1]{{\color{blue}{#1}}}
-\newcommand\markatt[1]{{\color{red}{#1}}}
-\newcommand\marknot[1]{{\color{blue}{#1}}}
-\newcommand\boxatt[1]{\colorbox{yellow}{\markatt{#1}}}
-\newcommand\eqatt[1]{\boxatt{$\displaystyle #1$}}
+% 文本色
+\usebeamercolor{structure}
+\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
+\newcommand\abox[1]{\colorbox{yellow}{\alert{#1}}}
+\newcommand\aboxeq[1]{\abox{$\displaystyle #1$}}
 % 图形色
 \colorlet{dcolora}{red}
 \colorlet{dcolorb}{blue}
 \colorlet{dcolorc}{red!50!blue}
-% 证毕标志
-\usebeamercolor{structure}
-\renewcommand\qedsymbol{{\color{structure.fg}\ensuremath{\blacksquare}}}
 % 枚举数字引用标志
-%\newcommand\enumnum[1]{\kern0.5ex{\color{structure.fg}\vrule width2.25ex height1.85ex depth.4ex\hskip-2.25ex\hbox to2.25ex{\hfil\color{white}\upshape#1\hfil}}\kern0.5ex}
-\newcommand\enumnum[1]{{
-  \usebeamerfont*{item projected}\usebeamercolor[bg]{item projected}%
-  \begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
-    \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.2ex}
-    \pgfusepath{fill}
-    \pgftext[base]{\color{fg}#1}
-  \end{pgfpicture}
-}}
+\newcommand\enumnum[1]{{\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
 % 手动证毕标志
 \newcommand\mqed{\visible<.->{\qedsymbol}}
 % 用于对齐的等号幻影
@@ -111,8 +100,7 @@
   overlay-beamer-styles,
   patterns,
   calc,
-  angles,
-%  decorations.pathmorphing,
+  angles
 }
 \tikzset{
   cstarrowto/.style     ={-Stealth}, %尖箭头
@@ -128,16 +116,21 @@
   cstdot/.style         ={radius=0.07}, %实心点
   cstdote/.style        ={radius=0.06, fill=white}, %空心点
   cstfill/.style        ={fill=cyan!40}, %填充
-  cstfille/.style       ={pattern=north east lines, pattern color=cyan} %虚线填充
+  cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
+  cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+  cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
+  cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
+  cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
 }
-%%% 节开头自动生成部分目录
+% 节开头自动生成部分目录
 \AtBeginSection{\begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}\tableofcontents[currentsection]\end{frame}}
 % 标题
 \title{复变函数与积分变换}
 \author{张神星}
-\email{\href{mailto:zhangshenxing@hfut.edu.cn}{zhangshenxing@hfut.edu.cn}\\\url{https://zhangshenxing.gitee.io} (课件地址)}
 \institute{合肥工业大学}
-\office{办公室: 翡翠科教楼B1810东}
-\institutelogo{misc/hfut.png}
-\institutename{misc/hfutname.png}
+\email{zhangshenxing@hfut.edu.cn}
+\website{https://zhangshenxing.gitee.io}
+\office{翡翠科教楼B1810东}
+\titlegraphic{misc/hfut.png}
+\institutegraphic{misc/hfutname.png}
 

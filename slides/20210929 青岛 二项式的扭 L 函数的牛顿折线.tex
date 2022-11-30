@@ -1,0 +1,758 @@
+% -*- coding: utf-8 -*-
+\documentclass{beamer}
+\usetheme{madrid}
+\usepackage{beamerouterthemeprogressbarjma} 
+% 恢复默认字体
+\renewcommand\mathfamilydefault{\rmdefault}
+
+
+ %\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+  %\setbeamertemplate{blocks}[rounded][shadow=true]
+  %\setbeamertemplate{footline}[frame number]
+  %\setbeamercovered{transparent}
+  %\usefonttheme[onlysmall]{structurebold}
+  % \usefonttheme[onlymath]{serif}
+
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{rgb}{0.52, 0.52, 0.51} % 灰色
+\definecolor{lightblue}{rgb}{0.15, 0.15, 0.55}
+\colorlet{main}{green!50!black}
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+%\setbeamercolor{title}{fg=main}
+\setbeamercolor{frametitle}{fg=lightblue,bg=white}
+\setbeamertemplate{frametitle}[default][center]
+%\setbeamercolor{section in toc}{fg=text}
+%\setbeamercolor{normal text}{fg=text}
+%\setbeamercolor{block title}{fg=main,bg=mygrey!14!white}
+%\setbeamercolor{block body}{fg=black,bg=mygrey!10!white}
+%\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+%\setbeamercolor{math text}{fg=black}
+
+%\usepackage{CJKutf8}
+\usepackage{ctex}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{cases}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+
+% symbols
+\newcommand\ra{\rightarrow}
+\newcommand\lra{\longrightarrow}
+\newcommand\la{\leftarrow}
+\newcommand\lla{\longleftarrow}
+\newcommand\sqra{\rightsquigarrow}
+\newcommand\sqlra{\leftrightsquigarrow}
+\newcommand\inj{\hookrightarrow}
+\newcommand\surj{\twoheadrightarrow}
+\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
+\newcommand\simto{\sto{\sim}}
+\newcommand\lto{\longmapsto}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\ilim{\varinjlim\limits}
+\newcommand\plim{\varprojlim\limits}
+\newcommand\wh{\widehat}
+\newcommand\wt{\widetilde}
+\newcommand\ov{\overline}
+\newcommand\ul{\underline}
+\newcommand\vare{\varepsilon}
+\newcommand\varp{\varphi}
+\newcommand\imply{\Longrightarrow}
+\newcommand\rj{\relbar\joinrel}
+\newcommand\half{\frac{1}{2}}
+\newcommand\mmid{\parallel}
+\newcommand\ldb{\llbracket}
+\newcommand\rdb{\rrbracket}
+\newcommand\pppi{\frac{\partial\bar\partial}{\pi i}}
+\newcommand\mmod{\underline\bmod}
+\font\cyr=wncyr10 \newcommand\Sha{\hbox{\cyr X}}
+
+
+% functions
+\newcommand\fct[4]{\begin{split}#1 &\lra #2 \\ #3 &\lto #4\end{split}}
+\newcommand\set[1]{\left\{#1\right\}}
+\newcommand\pair[1]{\langle{#1}\rangle}
+\newcommand\pmat[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
+\newcommand\smat[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
+\newcommand\bvec[2]{\begin{bmatrix}#1 \\ #2\end{bmatrix} }
+\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand\env[2]{\begin{#1}{#2}\end{#1}}
+\newcommand\envn[3]{\begin{#1}[#2]{#3}\end{#1}}
+\newcommand\red[1]{\textcolor{red}{#1}} %Marker
+\newcommand\hil[3]{\left(\frac{{#1},{#2}}{#3}\right)} %Hilbert symbol
+\newcommand\leg[2]{\left(\frac{{#1}}{#2}\right)} %Legdred symbol
+\newcommand\stsc[2]{\genfrac{}{}{0pt}{}{#1}{#2}} %atop
+
+
+% categories
+\newcommand\cA{{\mathsf{A}}}
+\newcommand\cB{{\mathsf{B}}}
+\newcommand\cC{{\mathsf{C}}}
+\newcommand\cAb{{\mathsf{Ab}}}
+\newcommand\cBT{{\mathsf{BT}}}
+\newcommand\cBun{{\mathsf{Bun}}}
+\newcommand\cCharLoc{{\mathsf{CharLoc}}}
+\newcommand\cCoh{{\mathsf{Coh}}}
+\newcommand\cComm{{\mathsf{Comm}}}
+\newcommand\cEt{{\mathsf{Et}}}
+\newcommand\cFppf{{\mathsf{Fppf}}}
+\newcommand\cFpqc{{\mathsf{Fpqc}}}
+\newcommand\cFunc{{\mathsf{Func}}}
+\newcommand\cGroups{{\mathsf{Groups}}}
+\newcommand\cGrpd{{\{\mathsf{Grpd}\}}}
+\newcommand\cHo{{\mathsf{Ho}}}
+\newcommand\cIso{{\mathsf{Iso}}}
+\newcommand\cLoc{{\mathsf{Loc}}}
+\newcommand\cMod{{\mathsf{Mod}}}
+\newcommand\cModFil{{\mathsf{ModFil}}}
+\newcommand\cNilp{{\mathsf{Nilp}}}
+\newcommand\cPerf{{\mathsf{Perf}}}
+\newcommand\cPN{{\mathsf{PN}}}
+\newcommand\cRep{{\mathsf{Rep}}}
+\newcommand\cRings{{\mathsf{Rings}}}
+\newcommand\cSets{{\mathsf{Sets}}}
+\newcommand\cStack{{\mathsf{Stack}}}
+\newcommand\cSch{{\mathsf{Sch}}}
+\newcommand\cTop{{\mathsf{Top}}}
+\newcommand\cVect{{\mathsf{Vect}}}
+\newcommand\cZar{{\mathsf{Zar}}}
+\newcommand\cphimod{{\varphi\txt{-}\mathsf{Mod}}}
+\newcommand\cphimodfil{{\varphi\txt{-}\mathsf{ModFil}}}
+
+% font
+\newcommand\rma{{\mathrm{a}}}  \newcommand\rmb{{\mathrm{b}}}  \newcommand\rmc{{\mathrm{c}}}  \newcommand\rmd{{\mathrm{d}}}
+\newcommand\rme{{\mathrm{e}}}  \newcommand\rmf{{\mathrm{f}}}  \newcommand\rmg{{\mathrm{g}}}  \newcommand\rmh{{\mathrm{h}}}
+\newcommand\rmi{{\mathrm{i}}}  \newcommand\rmj{{\mathrm{j}}}  \newcommand\rmk{{\mathrm{k}}}  \newcommand\rml{{\mathrm{l}}}
+\newcommand\rmm{{\mathrm{m}}}  \newcommand\rmn{{\mathrm{n}}}  \newcommand\rmo{{\mathrm{o}}}  \newcommand\rmp{{\mathrm{p}}}
+\newcommand\rmq{{\mathrm{q}}}  \newcommand\rmr{{\mathrm{r}}}  \newcommand\rms{{\mathrm{s}}}  \newcommand\rmt{{\mathrm{t}}}
+\newcommand\rmu{{\mathrm{u}}}  \newcommand\rmv{{\mathrm{v}}}  \newcommand\rmw{{\mathrm{w}}}  \newcommand\rmx{{\mathrm{x}}} \newcommand\rmy{{\mathrm{y}}}  \newcommand\rmz{{\mathrm{z}}}
+
+\newcommand\rmA{{\mathrm{A}}}  \newcommand\rmB{{\mathrm{B}}}  \newcommand\rmC{{\mathrm{C}}}  \newcommand\rmD{{\mathrm{D}}}
+\newcommand\rmE{{\mathrm{E}}}  \newcommand\rmF{{\mathrm{F}}}  \newcommand\rmG{{\mathrm{G}}}  \newcommand\rmH{{\mathrm{H}}}
+\newcommand\rmI{{\mathrm{I}}}  \newcommand\rmJ{{\mathrm{J}}}  \newcommand\rmK{{\mathrm{K}}}  \newcommand\rmL{{\mathrm{L}}}
+\newcommand\rmM{{\mathrm{M}}}  \newcommand\rmN{{\mathrm{N}}}  \newcommand\rmO{{\mathrm{O}}}  \newcommand\rmP{{\mathrm{P}}}
+\newcommand\rmQ{{\mathrm{Q}}}  \newcommand\rmR{{\mathrm{R}}}  \newcommand\rmS{{\mathrm{S}}}  \newcommand\rmT{{\mathrm{T}}}
+\newcommand\rmU{{\mathrm{U}}}  \newcommand\rmV{{\mathrm{V}}}  \newcommand\rmW{{\mathrm{W}}}  \newcommand\rmX{{\mathrm{X}}}
+\newcommand\rmY{{\mathrm{Y}}}  \newcommand\rmZ{{\mathrm{Z}}}
+
+\newcommand\bfa{{\mathbf{a}}}  \newcommand\bfb{{\mathbf{b}}}  \newcommand\bfc{{\mathbf{c}}}  \newcommand\bfd{{\mathbf{d}}}
+\newcommand\bfe{{\mathbf{e}}}  \newcommand\bff{{\mathbf{f}}}  \newcommand\bfg{{\mathbf{g}}}  \newcommand\bfh{{\mathbf{h}}}
+\newcommand\bfi{{\mathbf{i}}}  \newcommand\bfj{{\mathbf{j}}}  \newcommand\bfk{{\mathbf{k}}}  \newcommand\bfl{{\mathbf{l}}}
+\newcommand\bfm{{\mathbf{m}}}  \newcommand\bfn{{\mathbf{n}}}  \newcommand\bfo{{\mathbf{o}}}  \newcommand\bfp{{\mathbf{p}}}
+\newcommand\bfq{{\mathbf{q}}}  \newcommand\bfr{{\mathbf{r}}}  \newcommand\bfs{{\mathbf{s}}}  \newcommand\bft{{\mathbf{t}}}
+\newcommand\bfu{{\mathbf{u}}}  \newcommand\bfv{{\mathbf{v}}}  \newcommand\bfw{{\mathbf{w}}}  \newcommand\bfx{{\mathbf{x}}} \newcommand\bfy{{\mathbf{y}}}  \newcommand\bfz{{\mathbf{z}}}
+
+\newcommand\bfA{{\mathbf{A}}}  \newcommand\bfB{{\mathbf{B}}}  \newcommand\bfC{{\mathbf{C}}}  \newcommand\bfD{{\mathbf{D}}}
+\newcommand\bfE{{\mathbf{E}}}  \newcommand\bfF{{\mathbf{F}}}  \newcommand\bfG{{\mathbf{G}}}  \newcommand\bfH{{\mathbf{H}}}
+\newcommand\bfI{{\mathbf{I}}}  \newcommand\bfJ{{\mathbf{J}}}  \newcommand\bfK{{\mathbf{K}}}  \newcommand\bfL{{\mathbf{L}}}
+\newcommand\bfM{{\mathbf{M}}}  \newcommand\bfN{{\mathbf{N}}}  \newcommand\bfO{{\mathbf{O}}}  \newcommand\bfP{{\mathbf{P}}}
+\newcommand\bfQ{{\mathbf{Q}}}  \newcommand\bfR{{\mathbf{R}}}  \newcommand\bfS{{\mathbf{S}}}  \newcommand\bfT{{\mathbf{T}}}
+\newcommand\bfU{{\mathbf{U}}}  \newcommand\bfV{{\mathbf{V}}}  \newcommand\bfW{{\mathbf{W}}}  \newcommand\bfX{{\mathbf{X}}}
+\newcommand\bfY{{\mathbf{Y}}}  \newcommand\bfZ{{\mathbf{Z}}}
+
+\newcommand\BA{{\mathbb{A}}}  \newcommand\BB{{\mathbb{B}}}  \newcommand\BC{{\mathbb{C}}}  \newcommand\BD{{\mathbb{D}}}  \newcommand\BE{{\mathbb{E}}}
+\newcommand\BF{{\mathbb{F}}}  \newcommand\BG{{\mathbb{G}}}  \newcommand\BH{{\mathbb{H}}}  \newcommand\BI{{\mathbb{I}}}  \newcommand\BJ{{\mathbb{J}}}
+\newcommand\BK{{\mathbb{K}}}  \newcommand\BL{{\mathbb{L}}}  \newcommand\BM{{\mathbb{M}}}  \newcommand\BN{{\mathbb{N}}}  \newcommand\BO{{\mathbb{O}}}
+\newcommand\BP{{\mathbb{P}}}  \newcommand\BQ{{\mathbb{Q}}}  \newcommand\BR{{\mathbb{R}}}  \newcommand\BS{{\mathbb{S}}}  \newcommand\BT{{\mathbb{T}}}
+\newcommand\BU{{\mathbb{U}}}  \newcommand\BV{{\mathbb{V}}}  \newcommand\BW{{\mathbb{W}}}  \newcommand\BX{{\mathbb{X}}}  \newcommand\BY{{\mathbb{Y}}}
+\newcommand\BZ{{\mathbb{Z}}}
+
+\newcommand\CA{{\mathcal{A}}} \newcommand\CB{{\mathcal{B}}} \newcommand\CC{{\mathcal{C}}}\providecommand\CD{{\mathcal{D}}}\newcommand\CE{{\mathcal{E}}}
+\newcommand\CF{{\mathcal{F}}} \newcommand\CG{{\mathcal{G}}} \newcommand\CH{{\mathcal{H}}} \newcommand\CI{{\mathcal{I}}} \newcommand\CJ{{\mathcal{J}}}
+\newcommand\CK{{\mathcal{K}}} \newcommand\CL{{\mathcal{L}}} \newcommand\CM{{\mathcal{M}}} \newcommand\CN{{\mathcal{N}}} \newcommand\CO{{\mathcal{O}}}
+\newcommand\CP{{\mathcal{P}}} \newcommand\CQ{{\mathcal{Q}}} \newcommand\CR{{\mathcal{R}}} \newcommand\CS{{\mathcal{S}}} \newcommand\CT{{\mathcal{T}}}
+\newcommand\CU{{\mathcal{U}}} \newcommand\CV{{\mathcal{V}}} \newcommand\CW{{\mathcal{W}}} \newcommand\CX{{\mathcal{X}}} \newcommand\CY{{\mathcal{Y}}}
+\newcommand\CZ{{\mathcal{Z}}}
+
+\newcommand\RA{{\mathrm{A}}} \newcommand\RB{{\mathrm{B}}} \newcommand\RC{{\mathrm{C}}} \newcommand\RD{{\mathrm{D}}} \newcommand\RE{{\mathrm{E}}}
+\newcommand\RF{{\mathrm{F}}} \newcommand\RG{{\mathrm{G}}} \newcommand\RH{{\mathrm{H}}} \newcommand\RI{{\mathrm{I}}} \newcommand\RJ{{\mathrm{J}}}
+\newcommand\RK{{\mathrm{K}}} \newcommand\RL{{\mathrm{L}}} \newcommand\RM{{\mathrm{M}}} \newcommand\RN{{\mathrm{N}}} \newcommand\RO{{\mathrm{O}}}
+\newcommand\RP{{\mathrm{P}}} \newcommand\RQ{{\mathrm{Q}}} \newcommand\RR{{\mathrm{R}}} \newcommand\RS{{\mathrm{S}}} \newcommand\RT{{\mathrm{T}}}
+\newcommand\RU{{\mathrm{U}}} \newcommand\RV{{\mathrm{V}}} \newcommand\RW{{\mathrm{W}}} \newcommand\RX{{\mathrm{X}}} \newcommand\RY{{\mathrm{Y}}}
+\newcommand\RZ{{\mathrm{Z}}}
+
+\newcommand\msa{\mathscr{A}}  \newcommand\msb{\mathscr{B}}  \newcommand\msc{\mathscr{C}}  \newcommand\msd{\mathscr{D}}  \newcommand\mse{\mathscr{E}}
+\newcommand\msf{\mathscr{F}}  \newcommand\msg{\mathscr{G}}  \newcommand\msh{\mathscr{H}}  \newcommand\msi{\mathscr{I}}  \newcommand\msj{\mathscr{J}}
+\newcommand\msk{\mathscr{K}}  \newcommand\msl{\mathscr{L}}  \newcommand\msm{\mathscr{M}}  \newcommand\msn{\mathscr{N}}  \newcommand\mso{\mathscr{O}}
+\newcommand\msp{\mathscr{P}}  \newcommand\msq{\mathscr{Q}}  \newcommand\msr{\mathscr{R}}  \newcommand\mss{\mathscr{S}}  \newcommand\mst{\mathscr{T}}
+\newcommand\msu{\mathscr{U}}  \newcommand\msv{\mathscr{V}}  \newcommand\msw{\mathscr{W}}  \newcommand\msx{\mathscr{X}}  \newcommand\msy{\mathscr{Y}}
+\newcommand\msz{\mathscr{Z}}
+
+\newcommand\fa{{\mathfrak{a}}}\newcommand\fb{{\mathfrak{b}}}\newcommand\fc{{\mathfrak{c}}}\newcommand\fd{{\mathfrak{d}}}\newcommand\fe{{\mathfrak{e}}}
+\newcommand\ff{{\mathfrak{f}}}\newcommand\fg{{\mathfrak{g}}}\newcommand\fh{{\mathfrak{h}}}\newcommand\fii{\mathfrak{i}} \newcommand\fj{{\mathfrak{j}}}
+\newcommand\fk{{\mathfrak{k}}}\newcommand\fl{{\mathfrak{l}}}\newcommand\fm{{\mathfrak{m}}}\newcommand\fn{{\mathfrak{n}}}\newcommand\fo{{\mathfrak{o}}} \newcommand\fp{{\mathfrak{p}}}\newcommand\fq{{\mathfrak{q}}}\newcommand\fr{{\mathfrak{r}}}\newcommand\fs{{\mathfrak{s}}}\newcommand\ft{{\mathfrak{t}}}
+\newcommand\fu{{\mathfrak{u}}}\newcommand\fv{{\mathfrak{v}}}\newcommand\fw{{\mathfrak{w}}}\newcommand\fx{{\mathfrak{x}}}\newcommand\fy{{\mathfrak{y}}}
+\newcommand\fz{{\mathfrak{z}}}
+
+\newcommand\fA{{\mathfrak{A}}}\newcommand\fB{{\mathfrak{B}}}\newcommand\fC{{\mathfrak{C}}}\newcommand\fD{{\mathfrak{D}}}\newcommand\fE{{\mathfrak{E}}}
+\newcommand\fF{{\mathfrak{F}}}\newcommand\fG{{\mathfrak{G}}}\newcommand\fH{{\mathfrak{H}}}\newcommand\fI{{\mathfrak{I}}}\newcommand\fJ{{\mathfrak{J}}}
+\newcommand\fK{{\mathfrak{K}}}\newcommand\fL{{\mathfrak{L}}}\newcommand\fM{{\mathfrak{M}}}\newcommand\fN{{\mathfrak{N}}}\newcommand\fO{{\mathfrak{O}}} \newcommand\fP{{\mathfrak{P}}}\newcommand\fQ{{\mathfrak{Q}}}\newcommand\fR{{\mathfrak{R}}}\newcommand\fS{{\mathfrak{S}}}\newcommand\fT{{\mathfrak{T}}}
+\newcommand\fU{{\mathfrak{U}}}\newcommand\fV{{\mathfrak{V}}}\newcommand\fW{{\mathfrak{W}}} \newcommand\fX{{\mathfrak{X}}}\newcommand\fY{{\mathfrak{Y}}}\newcommand\fZ{{\mathfrak{Z}}}
+% be careful about \fii
+
+% a
+\newcommand\ab{{\mathrm{ab}}}
+\newcommand\ad{{\mathrm{ad}}}
+\newcommand\Ad{{\mathrm{Ad}}}
+\newcommand\adele{ad\'{e}le}
+\newcommand\Adele{Ad\'{e}le}
+\newcommand\adeles{ad\'{e}les}
+\newcommand\adelic{ad\'{e}lic}
+\newcommand\AJ{{\mathrm{AJ}}}
+\newcommand\alb{{\mathrm{alb}}}
+\newcommand\Alb{{\mathrm{Alb}}}
+\newcommand\alg{{\mathrm{alg}}}
+\newcommand\an{{\mathrm{an}}}
+\newcommand\ann{{\mathrm{ann}}}
+\newcommand\Ann{{\mathrm{Ann}}}
+\newcommand\Arg{{\mathrm{Arg}}}
+\newcommand\arith{{\mathrm{arith}}}
+\newcommand\Art{{\mathrm{Art}}}
+\newcommand\AS{{\mathrm{AS}}}
+\newcommand\Ass{{\mathrm{Ass}}}
+\newcommand\Aut{{\mathrm{Aut}}}
+% b
+\newcommand\Bun{{\mathrm{Bun}}}
+\newcommand\Br{{\mathrm{Br}}}
+\newcommand\bs{\backslash}
+\newcommand\BWt{{\mathrm{BW}}}
+% c
+\newcommand\can{{\mathrm{can}}}
+\newcommand\cc{{\mathrm{cc}}}
+\newcommand\cd{{\mathrm{cd}}}
+\newcommand\ch{{\mathrm{ch}}}
+\newcommand\Ch{{\mathrm{Ch}}}
+\newcommand\Char{{\mathrm{char}\,}}
+\newcommand\Chow{{\mathrm{CH}}}
+\newcommand\circB{{\stackrel{\circ}{B}}}
+\newcommand\cl{{\mathrm{cl}}}
+\newcommand\Cl{{\mathrm{Cl}}}
+\newcommand\cm{{\mathrm{cm}}}
+\newcommand\cod{{\mathrm{cod}}}
+\newcommand\coker{{\mathrm{coker}\,}}
+\newcommand\Coker{{\mathrm{Coker}\,}}
+\newcommand\cond{{\mathrm{cond}}}
+\newcommand\codim{{\mathrm{codim}}}
+\newcommand\cont{{\mathrm{cont}}}
+\newcommand\Conv{{\mathrm{Conv}}}
+\newcommand\corr{{\mathrm{corr}}}
+\newcommand\Corr{{\mathrm{Corr}}}
+\newcommand\coim{{\mathrm{coim}\,}}
+\newcommand\CoIm{{\mathrm{CoIm}\,}}
+\newcommand\cris{{\mathrm{cris}}}
+\newcommand\Cris{{\mathrm{Cris}}}
+\newcommand\CRIS{{\mathrm{CRIS}}}
+\newcommand\crit{{\mathrm{crit}}} % critical
+\newcommand\crys{{\mathrm{crys}}}
+\newcommand\cusp{{\mathrm{cusp}}} % cuspidal
+\newcommand\CWt{{\mathrm{CW}}} % Witt covector
+\newcommand\cyc{{\mathrm{cyc}}} % cyclotomic
+% d
+\newcommand\Def{{\mathrm{Def}}} % deformation space
+\newcommand\diag{{\mathrm{diag}}} % diagonal matrix
+\newcommand\diff{\mathop{}\!\mathrm{d}} % differential
+\newcommand\disc{{\mathrm{disc}}} % discriminant
+\renewcommand\div{{\mathrm{div}}} % divisor
+\newcommand\Div{{\mathrm{Div}}} % divisor group
+\newcommand\dR{{\mathrm{dR}}} % de Rham
+% e
+\newcommand\End{{\mathrm{End}}} % endomorphism
+\newcommand\ess{{\mathrm{ess}}} % essential
+\newcommand\et{\text{\'{e}t}} % etale
+\newcommand\etale{\'{e}tale} % etale
+\newcommand\Etale{\'{E}tale} % etale
+\newcommand\Ext{\mathrm{Ext}} % extension
+\newcommand\CExt{\mathcal{E}\mathrm{xt}} % extension functor
+% f
+\newcommand\Fil{{\mathrm{Fil}}}
+\newcommand\Fix{{\mathrm{Fix}}}
+\newcommand\fppf{{\mathrm{fppf}}}
+\newcommand\Fr{{\mathrm{Fr}\;}}
+\newcommand\Frob{{\mathrm{Frob}}}
+% g
+\newcommand\Ga{\mathbb{G}_a}
+\newcommand\Gm{\mathbb{G}_m}
+\newcommand\hGa{\widehat{\mathbb{G}}_{a}}
+\newcommand\hGm{\widehat{\mathbb{G}}_{m}}
+\newcommand\Gal{{\mathrm{Gal}}}
+\newcommand\gl{{\mathrm{gl}}}
+\newcommand\GL{{\mathrm{GL}}}
+\newcommand\GO{{\mathrm{GO}}}
+\newcommand\geom{{\mathrm{geom}}}
+\newcommand\Gr{{\mathrm{Gr}}}
+\newcommand\gr{{\mathrm{gr}}}
+\newcommand\GSO{{\mathrm{GSO}}}
+\newcommand\GSp{{\mathrm{GSp}}}
+\newcommand\GSpin{{\mathrm{GSpin}}}
+\newcommand\GU{{\mathrm{GU}}}
+% h
+\newcommand\hg{{\mathrm{hg}}}
+\newcommand\Hk{{\mathrm{Hk}}}
+\newcommand\HN{{\mathrm{HN}}}
+\newcommand\Hom{{\mathrm{Hom}}}
+\newcommand\CHom{\mathcal{H}\mathrm{om}}
+% i
+\newcommand\id{{\mathrm{id}}}
+\newcommand\Id{{\mathrm{Id}}}
+\newcommand\idele{id\'{e}le}
+\newcommand\Idele{Id\'{e}le}
+\newcommand\ideles{id\'{e}les}
+\renewcommand\Im{{\mathrm{Im}\,}}
+\newcommand\im{{\mathrm{im}\,}}
+\newcommand\Ind{{\mathrm{Ind}}}
+\newcommand\cInd{{\mathrm{c}\textrm{-}\mathrm{Ind}}}
+\newcommand\ind{{\mathrm{ind}}}
+\renewcommand\inf{{\mathrm{inf}}}
+\newcommand\Int{{\mathrm{Int}}}
+\newcommand\inv{{\mathrm{inv}}}
+\newcommand\Isom{{\mathrm{Isom}}}
+% j
+\newcommand\Jac{{\mathrm{Jac}}}
+\newcommand\JL{{\mathrm{JL}}}
+% k
+\newcommand\Katz{\mathrm{Katz}}
+\newcommand\Ker{{\mathrm{Ker}\,}}
+\newcommand\KS{{\mathrm{KS}}}
+\newcommand\Kl{{\mathrm{Kl}}}
+\newcommand\CKl{{\mathcal{K}\mathrm{l}}}
+% l
+\newcommand\lcm{\mathrm{lcm}}
+\newcommand\length{\mathrm{length}}
+\newcommand\Li{{\mathrm{Li}}}
+\newcommand\Lie{{\mathrm{Lie}}}
+\newcommand\lt{\mathrm{lt}}
+\newcommand\LT{\mathcal{LT}}
+% m
+\newcommand\MW{{\mathrm{MW}}}
+\renewcommand\mod{\, \mathrm{mod}\, }
+\newcommand\mom{{\mathrm{mom}}}
+\newcommand\Mor{{\mathrm{Mor}}}
+\newcommand\Morp{{\mathrm{Morp}\,}}
+% n
+\newcommand\new{{\mathrm{new}}}
+\newcommand\Newt{{\mathrm{Newt}}}
+\newcommand\NP{{\mathrm{NP}}}
+\newcommand\NS{{\mathrm{NS}}}
+\newcommand\ns{{\mathrm{ns}}}
+\newcommand\Nm{{\mathrm{Nm}}}
+\newcommand\Nrd{{\mathrm{Nrd}}}
+\newcommand\Neron{N\'{e}ron}
+% o
+\newcommand\Obj{{\mathrm{Obj}\,}}
+\newcommand\odd{{\mathrm{odd}}}
+\newcommand\old{{\mathrm{old}}}
+\newcommand\op{{\mathrm{op}}}
+\newcommand\Orb{{\mathrm{Orb}}}
+\newcommand\ord{{\mathrm{ord}}}
+% p
+\newcommand\pd{{\mathrm{pd}}}
+\newcommand\Pet{{\mathrm{Pet}}}
+\newcommand\PGL{{\mathrm{PGL}}}
+\newcommand\Pic{{\mathrm{Pic}}}
+\newcommand\pr{{\mathrm{pr}}}
+\newcommand\Proj{{\mathrm{Proj}}}
+\newcommand\proet{\text{pro\'{e}t}}
+\newcommand\Poincare{\text{Poincar\'{e}}}
+\newcommand\Prd{{\mathrm{Prd}}}
+\newcommand\prim{{\mathrm{prim}}}
+% r
+\newcommand\Rad{{\mathrm{Rad}}}
+\newcommand\rank{{\mathrm{rank}}}
+\renewcommand\Re{{\mathrm{Re}}}
+\newcommand\rec{{\mathrm{rec}}}
+\newcommand\reg{{\mathrm{reg}}}
+\newcommand\res{{\mathrm{res}}}
+\newcommand\Res{{\mathrm{Res}}}
+\newcommand\rig{{\mathrm{rig}}}
+\newcommand\Rig{{\mathrm{Rig}}}
+\newcommand\rk{{\mathrm{rk}}}
+\newcommand\Ros{{\mathrm{Ros}}}
+\newcommand\rs{{\mathrm{rs}}}
+% s
+\newcommand\sd{{\mathrm{sd}}}
+\newcommand\Sel{{\mathrm{Sel}}}
+\newcommand\sep{{\mathrm{sep}}}
+\newcommand\sgn{{\mathrm{sgn}}}
+\newcommand\Sh{{\mathrm{Sh}}}
+\newcommand\Sht{\mathrm{Sht}}
+\newcommand\Sim{{\mathrm{Sim}}}
+\newcommand\sign{{\mathrm{sign}}}
+\newcommand\SL{{\mathrm{SL}}}
+\newcommand\SO{{\mathrm{SO}}}
+\newcommand\Sp{{\mathrm{Sp}}}
+\newcommand\Spa{{\mathrm{Spa}}}
+\newcommand\Spec{{\mathrm{Spec}\,}}
+\newcommand\Spf{{\mathrm{Spf}}}
+\newcommand\Spin{{\mathrm{Spin}}}
+\newcommand\Spm{{\mathrm{Spm}}}
+\newcommand\srs{{\mathrm{srs}}}
+\newcommand\rss{{\mathrm{ss}}}
+\newcommand\ST{{\mathrm{ST}}}
+\newcommand\st{{\mathrm{st}}}
+\newcommand\Stab{{\mathrm{Stab}}}
+\newcommand\SU{{\mathrm{SU}}}
+\newcommand\Sym{{\mathrm{Sym}}}
+\newcommand\sub{{\mathrm{sub}}}
+\newcommand\rsum{{\mathrm{sum}}}
+\newcommand\supp{{\mathrm{supp}}}
+\newcommand\Supp{{\mathrm{Supp}}}
+\newcommand\Swan{{\mathrm{Sw}}}
+\newcommand\suml{\sum\limits}
+% t
+\newcommand\td{{\mathrm{td}}}
+\newcommand\tor{{\mathrm{tor}}}
+\newcommand\Tor{{\mathrm{Tor}}}
+\newcommand\tors{{\mathrm{tors}}}
+\newcommand\tr{{\mathrm{tr}\,}}
+\newcommand\Tr{{\mathrm{Tr}}}
+\newcommand\Trd{{\mathrm{Trd}}}
+\newcommand\TSym{{\mathrm{TSym}}}
+\newcommand\tw{{\mathrm{tw}}}
+% u
+\newcommand\uni{{\mathrm{uni}}}
+\newcommand\univ{\mathrm{univ}}
+\newcommand\ur{{\mathrm{ur}}}
+\newcommand\USp{{\mathrm{USp}}}
+% v
+\newcommand\vQ{{\breve \BQ}}
+\newcommand\vE{{\breve E}}
+\newcommand\Ver{{\mathrm{Ver}}}
+\newcommand\vF{{\breve F}}
+\newcommand\vK{{\breve K}}
+\newcommand\vol{{\mathrm{vol}}}
+\newcommand\Vol{{\mathrm{Vol}}}
+% w
+\newcommand\wa{{\mathrm{wa}}}
+% z
+\newcommand\Zar{{\mathrm{Zar}}}
+
+\setbeamertemplate{navigation symbols}{}
+
+\newtheorem{conjecture}{猜想}[section]
+
+
+\begin{document}
+\title{二项式的扭 $L$ 函数的牛顿折线}
+\author{张神星}
+\institute{山东大学第六届齐鲁青年论坛\\ 山东·青岛}
+\date{2021年9月29日}
+
+\frame{
+\titlepage
+}
+
+\section{指数和与 $L$ 函数}
+
+\begin{frame}
+\frametitle{指数和}
+设 $p$ 是素数, $\BF_q$ 是含有 $q=p^a$ 个元素的有限域.
+对于 $f(x)\in \BF_q[x]$, 定义
+	\[\text{\itshape 指数和}\quad S_k(f):=\sum_{x\in\BF_{q^k}}\zeta_p^{\Tr_{\BF_{q^k}/\BF_p}(f(x))}\in\BZ[\zeta_p].\]
+
+我们要问:
+\begin{itemize}
+\item 作为一个复数, $|S_k(f)|=?$
+\item 作为一个 $p$ 进数, $|S_k(f)|_p=?$
+\item 作为一个代数整数, $\deg S_k(f)=?$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$L$ 函数的有理性}
+我们今天来考虑第二个问题.
+定义 $f$ 的 \emph{$L$ 函数}为
+	\[L(s,f):=\exp\left(\sum_k S_k(f)\frac{s^k}{k}\right)\]
+ 
+\begin{theorem}[Dwork-Bombieri-Grothendick]
+$L(s,f)$ 是有理函数.
+\end{theorem} 
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{指数和的变化}
+我们来修改和推广下指数和的定义. 设
+\begin{itemize}
+\item $\psi_m:\BZ_p\to\BC_p^\times$ 是一个阶为 $p^m$ 的加性特征;
+\item $\omega^{-u}:\BF_q^\times\to\BC_p^\times$ 是一个乘性特征, 其中 $\omega$ 是 Teichm\"uller 提升, $0\le u\le q-2$.
+\end{itemize}
+定义
+	\[
+		S_{k,u}(f,\psi_m)=\sum_{x\in\BF_{q^k}^\times}\psi_m\left(\Tr_{\BQ_{q^k}/\BQ_p}\bigl(\hat f(\hat x)\bigr)\right)\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right),
+	\]
+	\[
+		L_u(s,f,\psi_m)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,\psi_m)\frac{s^m}m\right).
+	\]
+\end{frame}
+
+\begin{frame}
+\frametitle{$L$ 函数是多项式}
+\begin{theorem}[Adolphson-Sperber, 李文卿, 刘春雷-魏达盛, 刘春雷]
+如果 $p\nmid d=\deg f$, 则 $L_u(s,f,\psi_m)$ 是次数为 $p^{m-1}d$ 的多项式.
+\end{theorem} 
+
+记
+	\[L_u(s,f,\psi_m)=\sum_{n=0}^{p^{m-1}d} a_n s^n=\prod_i(1-\alpha_i s),
+	\quad S_{u,k}(f)=\sum_i \alpha_i^k.\]
+为了了解 $S_{u,k}(f)$ 的 $p$ 进性质, 我们需要了解 $\alpha_i$ 的赋值.
+而它们正是该 $L$ 函数的牛顿折线的斜率, 其中牛顿折线是指所有
+	\[\bigl(n,\ord_p(a_n)\bigr)\]
+的下凸包.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$T$ 进指数和和 $T$ 进 $L$ 函数}
+为了统一考虑不同 $m$ 对应的牛顿折线, 我们引入 $T$ 进指数和和 $T$ 进 $L$ 函数:
+	\[	S_{k,u}(f,T)=\sum_{x\in\BF_{q^k}^\times}(1+T)^{\Tr_{\BQ_{q^k}/\BQ_p}(\hat f(\hat x))}\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right), \]
+	\[
+		L_u(s,f,T)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,T)\frac{s^k}{k}\right)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb.
+	\]
+我们有 $L_u(s,f,\psi_m)=L_u(s,f,\pi_m)$, 其中 $\pi_m=\psi_m(1)-1$.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{特征函数}
+注意到 $L_u(s,f,T)$ 是一个形式幂级数, 想要建立它和原始的 $L$ 函数的牛顿折线的联系不够方便.
+定义特征函数
+	\[C_u(s,f,T)=\prod_{j=0}^\infty L_u(q^j s,f,T)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb,\]
+则
+	\[	L_u(s,f,T)=\frac{C_u(s,f,T)}{C_u(qs,f,T)}.\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{牛顿折线的关系}
+记
+\begin{itemize}
+\item $\NP_{u,m}(f)=C_u(s,f,\pi_m)$ 的 $\pi_m^{a(p-1)}$ 进牛顿折线(不依赖 $\psi_m$);
+\item $\NP_{u,T}(f)=C_u(s,f,T)$ 的 $T^{a(p-1)}$ 进牛顿折线.
+\item $H_{[0,d],u}^\infty$ 为扭霍奇折线, 其斜率为 $\tfrac{n}{d}+\tfrac{1}{bd(p-1)}\sum_{k=1}^b u_k,\ n\in\BN,$
+其中 $b$ 是满足 $p^bu\equiv u\bmod{q-1}$ 的最小正整数,
+	\[u=u_0+u_1p+\cdots+u_{a-1}p^{a-1},\ 0\le u_i\le p-1.\]
+\end{itemize}
+这样规范化后的牛顿折线满足
+	\[\NP_{u,m}(f)\ge \NP_{u,T}(f)\ge H_{[0,d],u}^\infty.\]
+由定义可知 $\NP_{u,m}(f)$ 完全由它在 $[0,d-1]$ 上的值决定.
+\end{frame}
+
+
+\section{二项式情形的 Dwork 迹公式}
+
+\begin{frame}
+\frametitle{二项式情形的已知结果}
+现在我们考虑 $f(x)=x^d+\lambda x^e$ 的情形. 由于 $(d,e)>1$ 时可以化归到扭的情形, 我们不妨设 $(d,e)=1$. 如下情形是已知的:
+\begin{itemize}
+\item $u=0$:
+\begin{itemize}
+\item $p\equiv 1\bmod d$, 此时 $\NP_{u,m}(f)=H_{[0,d],u}^\infty$.
+\item $e=1$, 有很多人计算过, 不在此列举.
+\item $e=d-1,p\equiv -1\bmod d$, 欧阳毅-张.
+\item $e=2,p\equiv 2\bmod d$, Zhang Qingjie-牛传择.
+\end{itemize}
+\item 任意 $u$, $e=1$, 刘春雷-牛传择.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$p$ 进 Artin-Hasse 函数}
+我们需要 $T$ 进 Dwork 迹公式来计算牛顿折线. 定义
+	\[
+	E(X)=\exp\left(\sum_{i=0}^\infty p^{-i}X^{p^i}\right)=\sum_{n=0}^\infty \lambda_n X^n\in\BZ_p\ldb X\rdb,
+	\]
+	\[
+	E_f(X)=E(\pi X^d)E(\pi\hat\lambda X^e)=\sum_{n=0}^\infty \gamma_n X^n,
+	\]
+则
+	\[\gamma_k=\sum\pi^{x+y}\lambda_x\lambda_y\hat\lambda^y,\]
+其中 $(x,y)$ 取遍 $dx+ey=k$ 的所有非负整数解.
+\end{frame}
+
+\begin{frame}
+\frametitle{$T$ 进 Dwork 半线性算子}
+定义
+	\[\CB_u=\set{\sum_{v\in M_u} b_v \pi^{\frac{v}{d}}X^v\mid b_v\in\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\ra 0 (\pi\text{进})},\ M_u=\tfrac{u}{q-1}+\BN,\]
+	\[\psi:\CB_u\lra \CB_{p^{-1}u},\
+		\sum_{v\in M_u} b_v X^v\longmapsto \sum_{v\in M_{p^{-1}u}} b_{pv}X^v,\]
+则
+	\[\Psi:=\sigma^{-1}\circ\psi\circ E_f: \CB_u\to \CB_{p^{-1}u}\]
+是一个半线性算子, 其中 $\sigma\in \Gal(\BQ_q/\BQ_p)$ 是 Frobenius.
+那么它定义了 $\CB:=\bigoplus_{i=0}^{b-1}\CB_{p^iu}$ 上的算子, 且 $\Psi^a$ 是 $\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 线性的.
+\end{frame}
+
+\begin{frame}
+\frametitle{$T$ 进 Dwork 迹公式}
+\begin{theorem}
+我们有
+	\[C_u(s,f,T)=\det\left(1-\Psi^a s \mid \CB_u/\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\right).\]
+因此 $C_u(s,f,T)$ 的 $T$ 进牛顿折线是
+	\[\left(n,\frac1b\ord_T(c_{abn})\right),\ n\in\BN,\]
+的凸包, 其中
+	\[
+	\det\left(1-\Psi s\mid\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb\right)=\sum_{i=0}^\infty (-1)^n c_n s^n.
+	\]
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{矩阵表达}
+记 $s_k\equiv p^k u\bmod{q-1}$, $0\le s_k\le q-2$.
+设 $\xi_1,\dots,\xi_a$ 为 $\BQ_q/\BQ_p$ 的一组正规基, 则
+	\[\set{\xi_v(\pi^{\frac1d}X)^{\frac{s_k}{q-1}+i}}_{(i,v,k)\in\BN\times I_a\times I_b}\]
+是 $\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 的一组基, 对应的矩阵为
+	\[
+	\Gamma=\left(\gamma_{(v,\frac{s_k}{q-1}+i),(w,\frac{s_\ell}{q-1}+j)}\right)_{\BN\times I_a\times I_b}=\begin{pmatrix}
+		0&\Gamma^{(1)}&0&\cdots&0\\
+		0&0&\Gamma^{(2)}&\cdots&0\\
+		\vdots&\vdots&\vdots&\ddots&\vdots\\
+		0&0&0&\cdots&\Gamma^{(b-1)}\\
+		\Gamma^{(b)}&0&0&\cdots&0
+	\end{pmatrix}.
+	\]
+因此 $c_{bn}=\sum_{A\in\CA_n} \det(A)$, $\CA_n$ 为全体 $bn$ 阶主子式, 且 $A^{(k)}=A\cap \Gamma^{(k)}$ 均为 $n$ 阶.
+\end{frame}
+
+\begin{frame}
+\frametitle{进一步化归}
+我们有
+\vspace{-2mm}
+	\[\xi_w^{\sigma^{-1}}{\color{red}{\gamma_{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}}}^{\sigma^{-1}}=\sum_{u=1}^a {\color{red}{\gamma_{(v,\frac{s_{k-1}}{q-1}+i),(w,\frac{s_k}{q-1}+j)}}}\xi_v,\]
+\vspace{-2mm}
+其中
+\vspace{-2mm}
+	\[\gamma_{\color{red}{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}}
+	=\pi^{\frac{s_k-s_{k-1}}{d(q-1)}+\frac{j-i}{d}}{\color{red}{\gamma_{pi-j+u_{-k}}}}.\]
+于是
+	\[
+	\begin{split}
+	&\ord_\pi\left(\gamma_{(v,\frac{s_{k-1}}{q-1}+i),(w,\frac{s_k}{q-1}+j)}\right)\ge \ord_\pi\left(\gamma_{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}\right)\\
+	=&\frac{s_k-s_{k-1}}{d(q-1)}+\frac{j-i}{d}+\phi(pi-j+u_{-k}),
+	\end{split}
+	\]
+其中 $\phi(n)=\min\set{x+y\mid dx+ey=n,x,y\in\BN}\in\BN\cup\set{+\infty}.$
+\end{frame}
+
+\begin{frame}
+\frametitle{再进一步化归}
+
+\begin{lemma}[主子式赋值]
+对于 $\tau\in S_n^*$ 和整数 $t$, 我们有
+	\[\sum_{i=0}^n \phi(pi-\tau(i)+t)\ge d^{-1}\left(\frac{(p-1)n(n+1)}2+(n+1)t+(d-e)C_{t,n}\right).\]
+\end{lemma}
+其中 ($\ov x$ 指 $x\bmod d$ 最小非负剩余)
+	\[{\color{red}{C_{t,n}}}=\min_{\tau\in S_n^*} \sum_{i=0}^n \ov{e^{-1}(pi-\tau(i)+t)}=\sum_{i=0}^n(R_{i,\alpha}+r_{i,\alpha})-d \bfC_{t,n,\alpha},\]
+	\[R_{i,\alpha}=\ov{e^{-1}(pi+\alpha)},\ r_{i,\alpha}=\ov{e^{-1}(t-\alpha-i)}\]
+	\[{\color{red}{\bfC_{t,n,\alpha}}}=\max\#\set{i\in I_n^*\mid R_{i,\alpha}+r_{\tau(i),\alpha}\ge d}.\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{牛顿折线的下界}
+对于 $A\in\CA_{a(n+1)}$, 设 $\CR$ 为其指标集, 则
+	\vspace{-2mm}
+	\[\det(A)=\prod_{k=1}^b\det(A^{(k)})=\sum_{\tau}\sgn(\tau)\prod_{i\in\CR}\gamma_{i,\tau(i)},\]
+	\vspace{-2mm}
+其中置换 $\tau$ 满足 $\tau(\CR^{(k-1)})=\CR^{(k)}$.
+它的每一项赋值不小于
+	\vspace{-2mm}
+		\[S_\CR^\tau\ge d^{-1}\sum_{k=1}^b\sum_{i\in\CR^{(k-1)}}\left((p-1)i'+(d-e)\ov{e^{-1}(pi'-\tau(i)'+u_{-k})}\right).\]
+这里 $i'$ 表示 $i\in\BN\times I_a$ 的第一个分量.
+根据前面的估计, 我们有
+	\vspace{-2mm}
+	\[S_\CN^\sigma\ge ab(p-1)P_{u,e,d}(n+1),\]
+其中 $\CN:=I_n^*\times I_a\times I_b$, $P_{u,e,d}$ 为由前述估计给出的折线.
+若对任意 $\tau$, 存在 $\sigma$ 使得 $S_\CR^\tau\ge S_\CN^\sigma$, 那么 $P_{u,e,d}$ 就是牛顿折线的一个下界.
+\end{frame}
+
+\begin{frame}
+\frametitle{牛顿折线的下界}
+记 $m=\#(\CR\bs \CN)$, $T=(\CN\bs \CR)\cup\tau^{-1}(\BR\bs \BN)$.
+选择 $\sigma$ 使得在 $\CN\bs T$ 上和 $\tau$ 相同. 则
+	\[\begin{split}
+&d(S_\CR^\tau-S_\CN^\sigma)\\
+\ge&\left(\sum_{i\in \CR\bs\CN}-\sum_{i\in\CN\bs\CR}\right)(p-1)i'-\sum_{k=1}^b\sum_{i\in T\cap\CN^{(k)}}(d-e)\ov{e^{-1}(pi'-\tau(i)'+u_{-k})}\\
+\ge&m(p-1)-2m(d-e)(d-1)>0,\quad p> (d-e)(2d-1).
+\end{split}\]
+\begin{center}
+\includegraphics[width=0.4\textwidth]{2021qingdao.png}
+\end{center}
+\end{frame}
+
+\section{何时达到下界}
+
+\begin{frame}
+\frametitle{何时达到下界}
+模掉更高阶项后, 我们有
+	\[\begin{split}
+	c_{ab(n+1)}&=\sum_{A\in\CA_{a(n+1)}}\det(A)\equiv \det\bigl((\gamma_{i,j})_{i,j\in \CN}\bigr)\\
+	&{\color{red}{=}}\pm\Nm\left(\prod_{k=1}^b\det\left(\gamma_{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}\right)_{i,j\in I_n^*}\right)\\
+	&=\pm \Nm\left(\prod_{k=1}^b\det(\gamma_{pi-j+u_k})_{i,j\in I_n^*}\right)\\
+	&\equiv\pm\pi^{ab(p-1)P_{u,e,d}(n+1)}\Nm\left(\prod_{k=1}^b \hat\lambda^{v_{u_k,n}} h_{n,k}\right),
+	\end{split}\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Hasse 常数}
+其中
+	\[
+	h_{n,k}:=\sum_{\tau\in S_{u_k,n}^\circ}\sgn(\tau)\prod_{i=0}^n\frac{1}{x_{u_k,i}^\tau!y_{u_k,i}^\tau!},
+	\]
+	\[dx_{u_k,i}^\tau+ey_{u_k,i}^\tau=pi-\tau(i)+t,\quad 0\le y\le d-1.\]
+因此当且仅当所有的 $h_{n,k}\in\BZ_p^\times$ 时,
+	\[\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}.\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{一个例子}
+当 $e=d-1$ 时, 若 $p>(d^2-d-1)\mathrm{order}(\omega^{-u})$, 我们有
+	\[\begin{split}
+	&h_{n,k}\equiv\det\left(\frac{1}{(-d^{-1}ev_i+u_k(1-d^{-1}e)-j)!(v_i+j)!}\right)\\
+\equiv &\prod_{i=0}^n \frac{\left(d^{-1}e(i-t)+t\right)_i}{\bigl(-d^{-1}ev_i+u_k(1-d^{-1}e)\bigr)!\cdot(v_i+n)!} \cdot \prod_{0\le i<j\le n}(v_i-v_j)\not\equiv 0\mod p.
+\end{split}\]
+因此此时 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}.$
+\end{frame}
+
+
+\begin{frame}
+\frametitle{一个猜想}
+\begin{conjecture}
+若 $p$ 相对 $d$ 和 $\omega^{-u}$ 的阶都很大, 则 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}$.
+\end{conjecture}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\huge 感谢各位的倾听!
+\end{center}
+\end{frame}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+

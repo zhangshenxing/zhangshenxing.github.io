@@ -9,8 +9,8 @@
 \[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
 \[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_1}\neq 0,\]
 则
-\[\markatt{z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)}},\]
-\[\markatt{\frac{z_1}{z_2}=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}}.\]
+\[\alert{z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)}},\]
+\[\alert{\frac{z_1}{z_2}=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}}.\]
 \end{theorem}
 \end{frame}
 
@@ -18,9 +18,9 @@
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
 换言之,
-\[\markatt{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
+\[\alert{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
 \onslide<+->
-\[\markatt{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
+\[\alert{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
 \Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 \onslide<+->
 关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.
@@ -36,7 +36,7 @@
 注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
 \[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
 \arg\left(\frac{z_1}{z_2}\right)=\arg z_1-\arg z_2\]
-\markatt{不一定成立}.
+\alert{不一定成立}.
 \onslide<+->
 这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 \onslide<+->
@@ -114,8 +114,8 @@ r_2(\cos\theta_2+i\sin\theta_2)\\
 \begin{tikzpicture}
 \draw[cstaxis] (-0.3,0)--(2.8,0);
 \draw[cstaxis] (0,-0.5)--(0,1.4);
-\draw[cstcurve,dcolora] (1,0)--(2,1)--(0.634,1.366)--cycle;
-\draw[cstdash,dcolora] (1,0)--(2.366,-0.366)--(2,1);
+\draw[cstcurve,dcolorb] (1,0)--(2,1)--(0.634,1.366)--cycle;
+\draw[cstdash,dcolorb] (1,0)--(2.366,-0.366)--(2,1);
 \draw 
   (1.0,-0.2) node[dcolora] {$z_1$}
   (2.3,1) node[dcolora] {$z_2$}
@@ -146,10 +146,10 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 \onslide<+->
 根据复数三角形式的乘法和除法运算法则, 我们有
-\[\eqatt{z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta}},\quad\forall n\in\BZ.\]
+\[\aboxeq{z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta}},\quad\forall n\in\BZ.\]
 \onslide<+->
-特别地, 当 $r=1$ 时, 我们得到\markdef{棣莫弗(De Moivre)公式}
-\[\marknot{(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.}\]
+特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗(De Moivre)公式}
+\[\emph{(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.}\]
 \end{frame}
 
 
@@ -207,7 +207,7 @@ $-2^{2022}$.
 
 \begin{frame}{复数的方根}
 \onslide<+->
-我们利用复数方幂公式来计算复数 $z$ 的 \markdef{$n$ 次方根 $\sqrt[n]z$}.
+我们利用复数方幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
 \onslide<+->
 设
 \[w^n=z=r\exp(i\theta)\neq0,\quad w=\rho\exp(i\varphi),\]
@@ -218,7 +218,7 @@ $-2^{2022}$.
 比较两边的模可知 $\rho^n=r,\rho=\sqrt[n]r$.
 
 \onslide<+->
-为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\markdef{算术根}.
+为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\emph{算术根}.
 \onslide<+->
 由于 $n\varphi$ 和 $\theta$ 的正弦和余弦均相等, 因此存在整数 $k$ 使得
 \[n\varphi=\theta+2k\pi,\quad \varphi=\frac{\theta+2k\pi}n.\]
@@ -229,26 +229,26 @@ $-2^{2022}$.
 \onslide<+->
 故
 \begin{align*}
-&\eqatt{w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n}\\
-&\hspace{42pt}\eqatt{=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).}
+&\aboxeq{w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n}\\
+&\hspace{42pt}\aboxeq{=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).}
 \end{align*}
 \onslide<+->
 不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
 \onslide<+->
-因此只需取 \boxatt{$k=0,1,\dots,n-1$}.
+因此只需取 \abox{$k=0,1,\dots,n-1$}.
 \onslide<+->
-故\marknot{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
+故\emph{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
 
 \onslide<+->
 这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 \onslide<+->
-因此\marknot{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
+因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
 \end{frame}
 
 
 \begin{frame}{方幂和方根的辐角等式}
 \onslide<+->
-注意当 $|n|\ge 2$ 时, \markatt{$\Arg(z^n)=n\Arg z$ 不成立}.
+注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
 \onslide<+->
 这是因为
 \[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
@@ -256,7 +256,7 @@ $-2^{2022}$.
 
 \onslide<+->
 我们总有
-\[\markatt{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
+\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
 \end{frame}
 
 \begin{frame}{典型例题: 复数方根的计算}
@@ -305,12 +305,17 @@ $w_0,w_1=iw_0,w_2=-w_0,w_3=-iw_0$ 形成了一个正方形.
 
 
 \begin{frame}{典型例题: 复数方根的计算}
-\begin{exercise}
-求 $\sqrt[6]{-1}$.
-\end{exercise}
-\begin{answer}
-$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
-\end{answer}
+
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
+		求 $\sqrt[6]{-1}$.\vphantom{$\dfrac{\sqrt3+i}2$}
+		\end{exercise}\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
+		$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
+		\end{answer}
+\end{columns}
 
 \begin{think}
 $i=\sqrt{-1}$ 吗?
@@ -318,33 +323,31 @@ $i=\sqrt{-1}$ 吗?
 \begin{answer}
 $\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
 \onslide<+->
-除非给定单值分支 $\sqrt z=\sqrt{|z|}\exp\left(\frac{i\arg z}2\right)$, 否则不能说 $\sqrt{-1}=i$.
+除非给定单值分支
+\[\sqrt z=\sqrt{|z|}\exp\left(\frac{i\arg z}2\right),\]
+否则不能说 $\sqrt{-1}=i$.
 \end{answer}
 \end{frame}
 
 
 \begin{frame}{三次方程的求根问题*}
 \onslide<+->
-现在我们来看三次方程 $x^3-3px-2q=0$ 的根.
+现在我们来看三次方程 $x^3+px+q=0$ 的根, $p\neq 0$.
 \onslide<+->
-\[x=u+\frac pu,\quad
-u^3=q+\sqrt{\Delta},\quad 
-\Delta=q^2-p^3.\]
+\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3.\]
 \begin{enumerate}
-\item 如果 $\Delta>0$, 设 $\alpha=\sqrt[3]{q+\sqrt{\Delta}}$ 是算术根.
+\item 如果 $\Delta>0$, 设 $\alpha=\sqrt[3]{q+\sqrt{\Delta}}$ 是算术根, $\omega=\frac{-1+\sqrt 3i}2$.
 \onslide<+->
 则
-\[x=\alpha+\frac p\alpha,\quad \alpha\omega+\frac p\alpha \omega^2,\quad \alpha\omega^2+\frac p\alpha \omega.\]
+\[u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
+x=\alpha+\frac p\alpha, \alpha\omega+\frac p\alpha \omega^2, \alpha\omega^2+\frac p\alpha \omega.\]
 \onslide<+->
 容易证明后两个根都是虚数.
-\item 如果 $\Delta<0$, 则 $p>0$.
+\item 如果 $\Delta<0$, 则 $p>0$, $u$ 是虚数且 $v=\ov u$.
+\onslide<+->设 $u_1,u_2,u_3$ 是 $\sqrt[3]{q+\sqrt{\Delta}}$ 的所有值,
 \onslide<+->
-设 $\sqrt[3]{q+\sqrt{\Delta}}=u_1,u_2,u_3$,
-\onslide<+->
-则 $u_i$ 都是虚数, 且
-\[|u_i|^6=\abs{q+\sqrt{\Delta}}^2=p^3,\quad u_i\ov u_i=|u_i|^2=p.\]
-\onslide<+->
-于是我们得到 $3$ 个实根 $x=u_i+\overline{u_i}$.
+则我们得到 $3$ 个实根
+\[x=u_1+\ov{u_1}, u_2+\ov{u_2}, u_3+\ov{u_3}.\]
 \end{enumerate}
 \end{frame}
 

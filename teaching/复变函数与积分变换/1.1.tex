@@ -13,7 +13,7 @@
 \item 当 $\Delta>0$ 时, 有两个不同的实根;
 \item 当 $\Delta=0$ 时, 有一个二重的实根;
 \item 当 $\Delta<0$ 时, 无实根.
-\onslide<+->然而, 如果我们\marknot{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
+\onslide<+->然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
 \end{enumerate}
 \end{frame}
 
@@ -81,7 +81,7 @@
 	\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]}
 \visible<+->{\[x=u+v=2,-3,1.\]}
 \end{solutionc}
-\onslide<+->{所以我们从一条``\marknot{错误的路径}''走到了正确的目的地?}
+\onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
 \end{frame}
 
 
@@ -99,17 +99,16 @@
 
 
 \begin{frame}{三次方程的根}
-\onslide<+->所以我们想要使用求根公式的话, 就\marknot{必须接受负数开方}.
+\onslide<+->所以我们想要使用求根公式的话, 就\emph{必须接受负数开方}.
 \onslide<+->那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
 \onslide<+->在学习了第一章的内容之后我们就可以回答这个问题了.
 
 \onslide<+->尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
-\vspace{\baselineskip}
+\onslide<+->
 \begin{quote}
-圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
-\begin{flushright}
-——莱布尼兹 (Leibniz)
-\end{flushright}
+\indent 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
+\tcblower
+莱布尼兹 (Leibniz)
 \end{quote}
 \end{frame}
 
@@ -120,11 +119,11 @@
 \onslide<+->因此我们固定其中一个, 并引入一个记号 $i$ 来表示它.
 \onslide<+->
 \begin{definition}
-固定一个记号 $i$, \markdef{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
+固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
 \end{definition}
 \onslide<+->换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.
 \onslide<+->也就是说, 复数全体构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基.
-\onslide<+->我们将\markdef{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$.
+\onslide<+->我们将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$.
 \end{frame}
 
 
@@ -180,8 +179,8 @@
 \onslide<+->我们称 $z=x+yi$ 在实轴和虚轴的投影为它的\textcolor{dcolorb}{实部 $\Re z=x$} 和\textcolor{dcolorc}{虚部 $\Im z=y$}.
 
 \onslide<+->当 $\Im z=0$ 时, $z$ 是实数.
-\onslide<+->不是实数的复数是\markdef{虚数}.
-\onslide<+->当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\markdef{纯虚数}.
+\onslide<+->不是实数的复数是\emph{虚数}.
+\onslide<+->当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
@@ -204,11 +203,11 @@
   (0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
   (0.8,-0.2) node[visible on=<5>,dcolorb] {$\Re z$}
   (0.45,0.5) node[visible on=<5>,dcolorc] {$\Im y$}
-  (-1.51,0.1) node[visible on=<6->,draw, dcolorb] {实数}
+  (-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
   (4.8,0.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
   (8.5,1) node[visible on=<6->,align=center,dcolora] {\small 全\\体\\复\\数}
   (6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
-  (-1.6,1.2) node[visible on=<8->,align=center,draw,dcolorc] {纯虚数\\不含原点}
+  (-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点}
   (5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
 \end{tikzpicture}
 \end{center}
@@ -218,14 +217,14 @@
 \begin{frame}{典型例题：判断实数和纯虚数}
 \onslide<+->
 \begin{example}
-实数 $x$ 取何值时, $(x^2-3x-4)+(x^2-5x-6)i$ 是: (1) 实数; (2) 纯虚数.
+实数 $x$ 取何值时, $(x^2-3x-4)+(x^2-5x-6)i$ 是: \enumnum1 实数; \enumnum2 纯虚数.
 \end{example}
 \onslide<+->
 \begin{solution}
-\begin{itemize}
-\item[(1)] $x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
-\item[(2)] $x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
-\end{itemize}
+\begin{enumerate}
+\item $x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
+\item $x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
+\end{enumerate}
 \visible<+->{但同时要求 $x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
 \end{solution}
 \onslide<+->
@@ -274,7 +273,7 @@ $x=-4$.
 
 
 \begin{frame}{复数的代数运算}
-\onslide<+->\markatt{规定 $i\cdot i=-1$.}
+\onslide<+->\alert{规定 $i\cdot i=-1$.}
 \onslide<+->由线性空间的数乘和乘法分配律可得复数的乘除法:
 \onslide<+->
 \begin{align*}
@@ -284,24 +283,21 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \onslide<+->\[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
 \onslide<+->\[\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
-\onslide<+->对于正整数 $n$, 定义 $z$ 的 \markdef{$n$ 次幂}为 $n$ 个 $z$ 相乘.
+\onslide<+->对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
 \onslide<+->当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
 \end{frame}
 
 
 \begin{frame}{例题: 常见复数的幂次}
-\beqskip{2pt}
+\beqskip{4pt}
 \onslide<+->
 \begin{example}
-\begin{itemize}
-\item[(1)] $i^2=-1,i^3=-i,i^4=1$.
+\enumnum1 $i^2=-1,i^3=-i,i^4=1$.
 \visible<+->{一般地, 对于整数 $n$, 
-\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}
-\vspace{-6pt}
-\item[(2)] 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
-\end{itemize}
+\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}%
+\enumnum2 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
 \end{example}
-\onslide<+->{我们把满足 $z^n=1$ 的复数 $z$ 称为 \markdef{$n$ 次单位根}.}
+\onslide<+->{我们把满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.}
 \onslide<+->{那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.}
 \onslide<+->
 \begin{think}
@@ -316,7 +312,6 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 
 
 \begin{frame}{例题: 解复数方程}
-\beqskip{6pt}
 \onslide<+->
 \begin{example}
 解方程 $z^2-2(1+i)z-5-10i=0$.
@@ -327,18 +322,18 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 
 \visible<+->{设 $(x+yi)^2=5+12i$, 则
 	\[x^2-y^2=5,\quad 2xy=12,\quad y=\dfrac 6x,\]}
-\visible<+->{\vspace{-5pt}
-	\[x^2-\left(\frac 6x\right)^2=5,\quad
+\vspace{-\baselineskip}
+\visible<+->{\[x^2-\left(\frac 6x\right)^2=5,\quad
 	x^4-5x^2-36=0,\quad x^2=9,\]}
 \visible<+->{故 $(x,y)=(3,2)$ 或 $(-3,-2)$,}
 \visible<+->{\[z=1+i\pm(3+2i)=4+3i\ \text{或}\ -2-i.\]}
+\vspace{-\baselineskip}
 \end{solution}
-\endgroup
 \end{frame}
 
 
 \begin{frame}{复数域*}
-\onslide<+->复数集合全体构成一个\markdef{域}.
+\onslide<+->复数集合全体构成一个\emph{域}.
 \onslide<+->所谓的域, 是指一个集合
 \begin{itemize}
 \item 包含 $0,1$, 且在它之内有四则运算;
@@ -346,7 +341,7 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \item 对任意 $a$, $a+0=a\times 1=a$.
 \end{itemize}
 \onslide<+->有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
-\onslide<+->与有理数域和实数域有着本质不同的是, 复数域是\markdef{代数闭域}.
+\onslide<+->与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}.
 \onslide<+->也就是说, 对于任何一个非常数的复系数多项式
 	\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\quad n\ge 1,\]
 \onslide<+->都存在复数 $z_0$ 使得 $p(z_0)=0$.
@@ -372,12 +367,12 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \begin{frame}{共轭复数}
 \onslide<+->
 \begin{definition}
-称 $z$ 在复平面关于实轴的对称点为它的\markdef{共轭复数 $\ov z$}.
+称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
 换言之, $\ov z=x-yi$.
 \end{definition}
 \onslide<+->从定义出发, 不难验证共轭复数满足如下性质:
 \onslide<+->
-\begin{conclusion}[共轭复数性质汇总]
+\begin{block}{共轭复数性质汇总}
 \begin{itemize}
 \item $z$ 是 $\ov z$ 的共轭复数.
 \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
@@ -388,7 +383,7 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \item $z$ 是实数当且仅当 $z=\ov z$.
 \item $z$ 是纯虚数当且仅当 $z=\ov z$ 且 $z\neq 0$.
 \end{itemize}
-\end{conclusion}
+\end{block}
 \end{frame}
 
 
@@ -400,10 +395,10 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \onslide<+->
 \begin{proof}
 $\dfrac z{1+z^2}$ 是实数当且仅当
-\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
-\visible<+->{即 \[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]}
 \vspace{-\baselineskip}
-\visible<+->{由于 $y\neq0$, 因此 $z\neq \ov z$.}
+\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
+\visible<+->{即 \[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]}%
+\visible<+->{由 $y\neq0$ 可知 $z\neq \ov z$.}
 \visible<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.}
 \end{proof}
 \end{frame}
@@ -424,33 +419,31 @@ $\dfrac z{1+z^2}$ 是实数当且仅当
 	\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
 	=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
 	=2\Re(z_1\cdot\ov{z_2}).\qedhere\]}
-\end{proof}
-\onslide<+->{由于 $z\ov z$ 是一个实数,}
-\onslide<+->{因此在做复数的除法运算时, 可以利用 $\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}$ 将其转化为乘法.}
 \vspace{-\baselineskip}
+\end{proof}
 \end{frame}
 
 
 \begin{frame}{典型例题: 复数的代数计算}
+\onslide<+->{由于 $z\ov z$ 是一个实数,}
+\onslide<+->{因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
+\[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]}
+\vspace{-\baselineskip}
 \onslide<+->
 \begin{example}
 $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 \end{example}
 \onslide<+->
 \begin{solution}
-\vspace{-\baselineskip}
-\begin{align*}
-z&=-\frac1i-\frac{3i}{1-i}
-\onslide<+->{=i-\frac{3i(1+i)}{(1-i)(1+i)}}\\
-&\onslide<+->{=i-\frac{3i-3}2=\frac32-\frac12i,}
-\end{align*}
+\[z=-\frac1i-\frac{3i}{1-i}
+\onslide<+->{=i-\frac{3i-3}2=\frac32-\frac12i,}\]
 \visible<+->{因此 $\displaystyle\Re z=\frac32,\quad\Im z=-\frac12,\quad
 	z\ov z=\left(\frac32\right)^2+\left(-\frac12\right)^2=\frac52$.}
 \end{solution}
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数的代数计算}
+\begin{frame}[<*>]{典型例题: 复数的代数计算}
 \onslide<+->
 \begin{example}
 设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
@@ -464,20 +457,22 @@ z&=-\frac1i-\frac{3i}{1-i}
 &\visible<+->{=\frac{(-15-20)+(-20+15)i}{25}}
 \visible<+->{=-\frac75-\frac15i,}
 \end{align*}
+\vspace{-5pt}
 \visible<+->{因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.}
 \end{solution}
-\end{frame}
 
-
-\begin{frame}{典型例题: 复数的代数计算}
+\vspace{-5pt}
 \onslide<+->
-\begin{exercise}
-计算 $\Re\left(\dfrac{1+2i}{8+i}\right)$.
-\end{exercise}
-\onslide<+->
-\begin{answer}
-$\dfrac2{13}$.
-\end{answer}
+\begin{columns}
+	\column{0.48\textwidth}
+		\begin{exercise}
+		计算 $\Re\left(\dfrac{1+2i}{8+i}\right)$.
+		\end{exercise}\onslide<+->
+	\column{0.48\textwidth}
+		\begin{answer}
+		$\dfrac2{13}$.
+		\end{answer}
+\end{columns}
 \end{frame}
 
 
@@ -493,5 +488,4 @@ $\dfrac2{13}$.
 \onslide<+->此时自然地有加法、乘法(满足交换律)、取逆等运算, 从而这个集合构成一个域.
 \onslide<+->由于 $J^2=-E$, 所以 $J$ 实际上就相当于虚数单位, 这个域就是我们前面定义的复数域 $\BC$.
 \end{frame}
-
 

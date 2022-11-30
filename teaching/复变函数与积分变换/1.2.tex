@@ -36,10 +36,10 @@
 
 \begin{definition}
 \begin{itemize}
-\item 称 $r$ 为 $z$ 的\markdef{模}, 记为 \markdef{$|z|=r$}.
+\item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
 \onslide<+->
-\item 称 $\theta$ 为 $z$ 的\markdef{辐角}, 记为 \markdef{$\Arg z=\theta$}.
-\visible<+->{\markatt{$0$ 的辐角没有意义}.}
+\item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
+\visible<+->{\alert{$0$ 的辐角没有意义}.}
 \end{itemize}
 \end{definition}
 \end{frame}
@@ -67,9 +67,9 @@
 \onslide<+->
 任意 $z\neq 0$ 的辐角有无穷多个.
 \onslide<+->
-我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\markdef{主辐角}, 记作 $\markdef{\arg z}$.
+我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}, 记作 $\emph{\arg z}$.
 \begin{tikzpicture}[overlay,xshift=1.7cm,yshift=-3cm]
-\draw[cstaxis,visible on=<3->](-2,0)->(2,0); 
+\draw[cstaxis,visible on=<3->](-2.5,0)->(2,0); 
 \draw[cstaxis,visible on=<3->](0,-2)->(0,2);
 \fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
 \fill[cstdot,visible on=<4->,dcolora] (0.8,0.8) circle;
@@ -93,9 +93,9 @@
 
 \begin{flalign*}
 &\colorbox{yellow}{$\displaystyle\arg z=\begin{cases}
-\visible<4->{\markatt{\arctan\dfrac yx,}}&\visible<4->{\markatt{x>0;}}\vspace{1ex}\\
-\visible<5->{\markdef{\arctan\dfrac yx+\pi,}}&\visible<5->{\markdef{x<0,y\ge0;}}\vspace{1ex}\\
-\visible<6->{\marknot{\arctan\dfrac yx-\pi,}}&\visible<6->{\marknot{x<0,y<0;}}\\
+\visible<4->{\alert{\arctan\dfrac yx,}}&\visible<4->{\alert{x>0;}}\vspace{1ex}\\
+\visible<5->{\color{dcolorc}{\arctan\dfrac yx+\pi,}}&\visible<5->{\color{dcolorc}{x<0,y\ge0;}}\vspace{1ex}\\
+\visible<6->{\emph{\arctan\dfrac yx-\pi,}}&\visible<6->{\emph{x<0,y<0;}}\\
 \visible<7->{\dfrac\pi2,}&\visible<7->{x=0,y>0;}\\
 \visible<7->{-\dfrac\pi2,}&\visible<7->{x=0,y<0.}
 \end{cases}$}&
@@ -111,18 +111,18 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 \begin{frame}{复数模的性质}
 \onslide<+->
 复数的模满足如下性质:
-\begin{conclusion}[模的性质汇总]
+\begin{block}{模的性质汇总}
 \begin{itemize}
 \item $z\ov z=|z|^2=|\ov z|^2$;
 \item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
 \item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
 \item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
 \end{itemize}
-\end{conclusion}
+\end{block}
 \onslide<+->
 这些不等式均可以用三角不等式证明, 也可以用代数方法证明.
 \onslide<+->
-\vspace{-\baselineskip}
+\vspace{-0.5\baselineskip}
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-3,0)--(3.5,0);
@@ -152,42 +152,41 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 
 
 \begin{frame}{例题：共轭复数解决模的等式}
-\beqskip{4pt}
 \begin{example}
-证明 (1) $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
+证明 \enumnum1 $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
 
-(2) $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
+\enumnum2 $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
 \end{example}
 \begin{proof}
-\begin{itemize}
-\item[(1)] 因为
+\begin{enumerate}
+\item 因为
 \[|z_1z_2|^2=z_1z_2\cdot\ov{z_1z_2}
 =z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
 \onslide<+->
 所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 \onslide<+->
 因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
-\item[(2)]
+\item
 \begin{align*}
 |z_1+z_2|^2&=(z_1+z_2)(\ov{z_1}+\ov{z_2})\\
 &=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}\\
 &=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere
 \end{align*}
-\end{itemize}
+\end{enumerate}
+\vspace{-2\baselineskip}
 \end{proof}
-\endgroup
 \end{frame}
 
 
 \begin{frame}{复数的三角形式和指数形式}
 \onslide<+->
-由 $x=r\cos\theta,y=r\sin\theta$ 可得复数的\markdef{三角形式}
-\[\markatt{z=r(\cos\theta+i\sin\theta)}.\]
+由 $x=r\cos\theta,y=r\sin\theta$ 可得复数的\emph{三角形式}
+\[\alert{z=r(\cos\theta+i\sin\theta)}.\]
 \onslide<+->
 定义 $e^{i\theta}=\exp(i\theta)=\cos\theta+i\sin\theta$ (欧拉恒等式),
 \onslide<+->
-则我们得到复数的\markdef{指数形式}
-\[\markatt{z=re^{i\theta}=r\exp(i\theta)}.\]
+则我们得到复数的\emph{指数形式}
+\[\alert{z=re^{i\theta}=r\exp(i\theta)}.\]
 \onslide<+->
 这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
 \end{frame}

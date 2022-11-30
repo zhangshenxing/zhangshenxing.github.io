@@ -13,7 +13,7 @@
 \[\cos\theta=\frac12\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
 \sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 \onslide<+->
-\[\markatt{\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta=\oint_{|z|=1}R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\diff z.}\]
+\[\alert{\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta=\oint_{|z|=1}R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\diff z.}\]
 \onslide<+->
 由于被积函数是一个有理函数, 它的积分可以由 $|z|<1$ 内奇点留数得到.
 \end{frame}
@@ -41,7 +41,7 @@
 
 
 \begin{frame}{例题: 留数在定积分上的应用}
-\begin{solution}
+\begin{solutionc}
 设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
 \onslide<+->
 则
@@ -53,7 +53,7 @@
 &=-\frac i6\cdot 2\pi i\Bigl[\Res[f(z),0]+\Res[f(z),\frac13]\Bigr]\\
 &=\frac{2\pi}9.
 \end{align*}
-\end{solution}
+\end{solutionc}
 \end{frame}
 
 
@@ -94,7 +94,7 @@
 =\pi \max_{|z|=r}|zf(z)|\to 0.\]
 \onslide<+->
 故
-\[\markatt{\int_{-\infty}^{+\infty}R(x)\diff x=2\pi i\sum_{\Im a>0}\Res[R(z),a].}\]
+\[\alert{\int_{-\infty}^{+\infty}R(x)\diff x=2\pi i\sum_{\Im a>0}\Res[R(z),a].}\]
 \end{frame}
 
 
@@ -126,7 +126,7 @@ $\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$ 的积分}
 $\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
 \onslide<+->
 和前一种情形类似, 我们有
-\[\markatt{\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\diff x
+\[\alert{\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\diff x
 =2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a],}\]
 \onslide<+->
 因此所求积分分别为它的实部和虚部.

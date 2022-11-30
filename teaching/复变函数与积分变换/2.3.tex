@@ -63,8 +63,8 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 
 \begin{frame}{指数函数的性质}
 \onslide<+->
-定义\markdef{指数函数}
-\[\boxatt{$\exp z=e^x(\cos y+i\sin y)$}.\]
+定义\emph{指数函数}
+\[\abox{$\exp z=e^x(\cos y+i\sin y)$}.\]
 \onslide<+->
 我们已经知道 $\exp z$ 是一个处处解析的函数, 且 $(\exp z)'=\exp z$.
 
@@ -79,7 +79,7 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \end{itemize}
 
 \onslide<+->
-为了方便, 我们也记 $\marknot{e^z=\exp z}$.
+为了方便, 我们也记 $\emph{e^z=\exp z}$.
 \end{frame}
 
 
@@ -110,7 +110,7 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \onslide<+->
 对数函数定义为指数函数的反函数.
 \onslide<+->
-设 $z\neq 0$, 满足方程 $\exp w=z$ 的 $w=f(z)$ 被称为\markdef{对数函数}, 记作 $w=\Ln z$.
+设 $z\neq 0$, 满足方程 $\exp w=z$ 的 $w=f(z)$ 被称为\emph{对数函数}, 记作 $w=\Ln z$.
 
 \onslide<+->
 为什么我们用大写的 $\Ln$ 呢? 
@@ -133,13 +133,13 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 \[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
 \onslide<+->
 所以
-\[\boxatt{$\Ln z=\ln|z|+i\Arg z$}.\]
+\[\abox{$\Ln z=\ln|z|+i\Arg z$}.\]
 \onslide<+->
-\markatt{它是一个多值函数}.
+\alert{它是一个多值函数}.
 
 \onslide<+->
-我们取它的\markdef{主值}为
-\[\boxatt{$\ln z=\ln|z|+i\arg z$}.\]
+我们取它的\emph{主值}为
+\[\abox{$\ln z=\ln|z|+i\arg z$}.\]
 \onslide<+->
 对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
 \onslide<+->
@@ -170,7 +170,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 求 $\Ln(-2+3i),\Ln(3-\sqrt3 i),\Ln(-3)$.
 \end{example}
 \begin{solution}
-\vspace{-1.4\baselineskip}
+\vspace{-0.5\baselineskip}
 \begin{align*}
 \Ln(-2+3i)&=\ln\abs{-2+3i}+i\Arg(-2+3i)\\
 &\visible<+->{=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ.}
@@ -221,7 +221,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \begin{frame}{对数函数的性质}
 \onslide<+->
 对数函数与其主值的关系是
-\[\markatt{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
+\[\alert{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
 
 \onslide<+->
 根据辐角以及主辐角的相应等式, 我们有
@@ -229,7 +229,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,\]
 \[\Ln \sqrt[n]z=\dfrac1n\Ln z.\]
 \onslide<+->
-而当 $|n|\ge 2$ 时, \markatt{$\Ln z^n=n\Ln z$ 不成立}.
+而当 $|n|\ge 2$ 时, \alert{$\Ln z^n=n\Ln z$ 不成立}.
 \onslide<+->
 以上等式换成 $\ln z$ 均不一定成立.
 \end{frame}
@@ -251,8 +251,8 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
 \onslide<+->
 从而
-\[\markatt{(\ln z)'=\frac 1z},\]
-\markatt{$\ln z$ 在除负实轴和零处的区域解析}.
+\[\alert{(\ln z)'=\frac 1z},\]
+\alert{$\ln z$ 在除负实轴和零处的区域解析}.
 
 \onslide<+->
 对于其它分支 $\ln z+2k\pi i$, 性质也是类似的.
@@ -302,14 +302,14 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 
 \begin{frame}{幂函数}
 \onslide<+->
-设 $a\neq 0$, $z\neq 0$, 定义\markdef{幂函数}
+设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
 \begin{align*}
-&\boxatt{$w=z^a=\exp(a\Ln z)$}\\
+&\abox{$w=z^a=\exp(a\Ln z)$}\\
 &\hspace{12pt}=\exp\bigl[a\ln|z|+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
 \end{align*}
 \onslide<+->
-它的\markdef{主值}为
-\[\boxatt{$w=\exp(a\ln z)$}=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
+它的\emph{主值}为
+\[\abox{$w=\exp(a\ln z)$}=\exp\bigl(a\ln|z|+ia\arg z\bigr).\]
 
 \onslide<+->
 如果 $\Re a>0$, 则当 $z\to 0$ 时, 主值
@@ -367,8 +367,8 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \draw (4.8,1.6) node {$v$};
 \draw (4.8,-0.2) node {$O$};
 
-\draw[cstcurve,cstarrowto] (1.7,0.3)to [bend left] (4.5,0.3);
-\draw (3,1.2) node[dcolora] {$w=z^{1/n}$};
+\draw[cstdash,cstarrowto,dcolorc] (1.7,0.3)to [bend left] (4.5,0.3);
+\draw (3,1.2) node[dcolorc] {$w=z^{1/n}$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -389,7 +389,7 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \onslide<+->
 \begin{center}
 \renewcommand\arraystretch{1.6}
-\defaultrowcolor
+\defaultrowcolors
 \begin{tabular}{|c|c|c|}
 \tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\
 整数 $n$&单值&\makecell[c]{$n\ge0$ 时处处解析\\$n<0$ 时除零点外解析}\\
@@ -445,19 +445,19 @@ i^i&=\exp(i\Ln i)
 \begin{frame}{幂函数的性质}
 幂函数与其主值有如下关系:
 \onslide<+->
-\[\marknot{z^a=\exp(a\ln z)\cdot 1^a
+\[\emph{z^a=\exp(a\ln z)\cdot 1^a
 =\exp(a\ln z)\cdot e^{2ak\pi i},\quad k\in\BZ.}\]
 
 \onslide<+->
 对于幂函数的主值, 或者任意固定一个分支 $\Ln z=\ln z+2k\pi i$, 我们总有 
-\[\marknot{(z^a)'=[\exp(a\ln z)]'=\frac{a\exp(a\ln z)}z=\dfrac{az^a}z}.\]
+\[\emph{(z^a)'=[\exp(a\ln z)]'=\frac{a\exp(a\ln z)}z=\dfrac{az^a}z}.\]
 
 \onslide<+->
-对于整数 $n$, 我们总有 \marknot{$(z^a)^n=z^{an}$}.
+对于整数 $n$, 我们总有 \emph{$(z^a)^n=z^{an}$}.
 \onslide<+->
 这里换成主值也成立.
 \onslide<+->
-而 \marknot{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
+而 \emph{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
 \end{frame}
 
 
@@ -471,18 +471,18 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 \[a\Ln z=a\ln z+2a\pi i\cdot k,\quad k\in\BZ.\]
 \onslide<+->
-因此\marknot{当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, $\Ln z^a=a\Ln z$} 成立.
+因此\emph{当且仅当 $a=\pm\dfrac 1n,n\in\BZ_+$ 时, $\Ln z^a=a\Ln z$} 成立.
 \onslide<+->
 对于除此之外的 $a$, 该式子均不成立.
 
 \onslide<+->
-最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\markatt{不同}的.
+最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
 \onslide<+->
 因为后者在 $a\not\in\BZ$ 时总是多值的.
 \onslide<+->
 前者实际上是后者的主值.
 \onslide<+->
-为避免混淆, 以后我们总\markatt{默认 $e^a$ 表示指数函数 $\exp a$}.
+为避免混淆, 以后我们总\alert{默认 $e^a$ 表示指数函数 $\exp a$}.
 \end{frame}
 
 
@@ -495,11 +495,11 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 我们将其推广到复数情形.
 \onslide<+->
-定义\markdef{余弦和正弦函数}
-\[\boxatt{$\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
+定义\emph{余弦和正弦函数}
+\[\abox{$\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
 \sin z=\frac{e^{iz}-e^{-iz}}{2i}$}.\]
 \onslide<+->
-那么欧拉恒等式 \marknot{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
+那么欧拉恒等式 \emph{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
 \end{frame}
 
 
@@ -518,7 +518,7 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 当 $y\to\infty$ 时, $\sin iy=i\sh y$ 和 $\cos iy=\ch y$ 都 $\to\infty$.
 \onslide<+->
-因此 \markatt{$\sin z$ 和 $\cos z$ 并不有界}. 
+因此 \alert{$\sin z$ 和 $\cos z$ 并不有界}. 
 \onslide<+->
 这和实变情形完全不同.
 
@@ -527,14 +527,14 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 于是我们可类似定义其它三角函数
 \begin{align*}
-\markatt{\tan z}&
-\markatt{=\frac{\sin z}{\cos z},z\neq\left(k+\half\right)\pi,}&
-\markatt{\cot z}&
-\markatt{=\frac{\cos z}{\sin z},z\neq k\pi,}\\
-\markatt{\sec z}&
-\markatt{=\frac{1}{\cos z},z\neq\left(k+\half\right)\pi,}&
-\markatt{\csc z}&
-\markatt{=\frac{1}{\sin z},z\neq k\pi.}
+\alert{\tan z}&
+\alert{=\frac{\sin z}{\cos z},z\neq\left(k+\half\right)\pi,}&
+\alert{\cot z}&
+\alert{=\frac{\cos z}{\sin z},z\neq k\pi,}\\
+\alert{\sec z}&
+\alert{=\frac{1}{\cos z},z\neq\left(k+\half\right)\pi,}&
+\alert{\csc z}&
+\alert{=\frac{1}{\sin z},z\neq k\pi.}
 \end{align*}
 \end{frame}
 
@@ -542,7 +542,7 @@ i^i&=\exp(i\Ln i)
 \begin{frame}{三角函数的性质}
 \onslide<+->
 这些三角函数的奇偶性, 周期性和导数与实变情形类似,
-\[\markatt{(\cos z)'=-\sin z,\quad
+\[\alert{(\cos z)'=-\sin z,\quad
 (\sin z)'=\cos z,}\]
 \onslide<+->
 且在定义域范围内是处处解析的.
@@ -565,11 +565,11 @@ i^i&=\exp(i\Ln i)
 \onslide<+->
 类似的, 我们可以定义双曲函数:
 \onslide<+->
-\[\markatt{\ch z=\frac{e^z+e^{-z}}2=\cos iz,}\]
+\[\alert{\ch z=\frac{e^z+e^{-z}}2=\cos iz,}\]
 \onslide<+->
-\[\markatt{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
+\[\alert{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
 \onslide<+->
-\[\markatt{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
+\[\alert{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
 =-i\tan iz,\quad z\neq \left(k+\frac12\right)\pi i.}\]
 \onslide<+->
 它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
@@ -587,7 +587,7 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 \[e^{2iw}-2ze^{iw}+1=0,\quad
 \visible<+->{e^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}\]
 \onslide<+->
-因此\markdef{反余弦函数}为
+因此\emph{反余弦函数}为
 \[w=\Arccos z=-i\Ln(z+\sqrt{z^2-1}).\]
 \onslide<+->
 显然它是多值的.

@@ -10,8 +10,8 @@
 \begin{definition}
 \begin{itemize}
 \item 设 $\{z_n\}_{n\ge 1}$ 是一个复数列.
-\markatt{如果 $\forall \varepsilon>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n-z|<\varepsilon$}, 则称 $z$ 是\markdef{数列 $\{z_n\}$ 的极限}, 记作 \markdef{$\lim\limits_{n\to\infty}z_n=z$}.
-\item 如果 \markatt{$\forall X>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n|>X$}, 则称 $\infty$ 是数列 $\{z_n\}$ 的极限, 记作 $\lim\limits_{n\to\infty}z_n=\infty$.
+\alert{如果 $\forall \varepsilon>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n-z|<\varepsilon$}, 则称 $z$ 是\emph{数列 $\{z_n\}$ 的极限}, 记作 \emph{$\lim\limits_{n\to\infty}z_n=z$}.
+\item 如果 \alert{$\forall X>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n|>X$}, 则称 $\infty$ 是数列 $\{z_n\}$ 的极限, 记作 $\lim\limits_{n\to\infty}z_n=\infty$.
 \end{itemize}
 \end{definition}
 \end{frame}
@@ -49,13 +49,13 @@
 \onslide<+->
 取一个与复平面相切于原点 $z=0$ 的球面.
 \onslide<+->
-过 $O$ 做垂直于复平面的直线, 并与球面相交于另一点 $N$, 称之为\markdef{北极}.
+过 $O$ 做垂直于复平面的直线, 并与球面相交于另一点 $N$, 称之为\emph{北极}.
 
 \onslide<4->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
-\filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
+\fill[cstfill] (-3.65,-0.804)--(-1.85,0.804)--(3.65,0.804)--(1.85,-0.804)--cycle;
+\filldraw[cstcurve,fill=black!10] (0,1) circle (1);
 \draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
 \draw[cstdash,black,visible on=<5->] (0,0)--(0,2);
 \fill[cstdot,dcolorc] (0,1) circle;
@@ -80,9 +80,9 @@
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
-\filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
+\fill[cstfill] (-3.65,-0.804)--(-1.85,0.804)--(3.65,0.804)--(1.85,-0.804)--cycle;
+\filldraw[cstcurve,fill=black!10] (0,1) circle (1);
+\draw[cstdash] (0,1) circle (1 and 0.3);
 \draw[cstdash,dcolorc] (0,0) circle (2 and 0.6);
 \draw[cstdash,black] (0,0)--(0,2);
 \draw[cstaxis] (0,0)--(2.5,0);
@@ -107,19 +107,19 @@
 \onslide<+->
 当 $|z|$ 越来越大时, 其对应球面上点也越来越接近 $N$.
 \onslide<+->
-如果我们在复平面上添加一个额外的"点"——\markdef{无穷远点}, 记作 \markdef{$\infty$}.
+如果我们在复平面上添加一个额外的"点"——\emph{无穷远点}, 记作 \emph{$\infty$}.
 \onslide<+->
-那么\markdef{扩充复数集合 $\BC^*=\BC\cup\set\infty$} 就正好和球面上的点一一对应.
+那么\emph{扩充复数集合 $\BC^*=\BC\cup\set\infty$} 就正好和球面上的点一一对应.
 \onslide<+->
-称这样的球面为\markdef{复球面}, 称包含无穷远点的复平面为\markdef{扩充复平面}(\markdef{闭复平面}).
+称这样的球面为\emph{复球面}, 称包含无穷远点的复平面为\emph{扩充复平面}(\emph{闭复平面}).
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstfill] (-3.5,-0.67)--(-2,0.67)--(3.5,0.67)--(2,-0.67)--cycle;
-\filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
+\fill[cstfill] (-3.65,-0.804)--(-1.85,0.804)--(3.65,0.804)--(1.85,-0.804)--cycle;
+\filldraw[cstcurve,fill=black!10] (0,1) circle (1);
+\draw[cstdash] (0,1) circle (1 and 0.3);
 \draw[cstdash,dcolorc] (0,0) circle (2 and 0.6);
-\draw[cstdash,black] (0,0)--(0,2);
+\draw[cstdash] (0,0)--(0,2);
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
 \draw[cstcurve,dcolora,cstarrowto] (0,2)--(1.65,-0.75);
@@ -151,8 +151,8 @@
 \onslide<2->
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,fill=black!20,draw=black] (0,1) circle (1);
-\draw[cstdash,black] (0,0)--(0,2);
+\filldraw[cstcurve,fill=black!10] (0,1) circle (1);
+\draw[cstdash] (0,0)--(0,2);
 \draw[cstaxis] (-2,0)--(2.5,0);
 \draw[cstcurve,cstarrowto,dcolora] (0,2)--(2.2,0);
 \fill[cstdot,dcolora] (1,1.1) circle;
@@ -228,7 +228,7 @@ y_n=\left(1+\frac1n\right)\sin\frac\pi n\to 0.\]
 \begin{definition}
 设函数 $f(z)$ 在点 $z_0$ 的某个去心邻域内有定义.
 \onslide<+->
-如果存在复数 $A$ 使得对 $A$ 的任意邻域 $U,\exists\delta>0$ 使得当 $z\in\stackrel\circ U(z_0,\delta)$ 时, 有 $f(z)\in U$, 则称 $A$ 为 \markdef{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \markdef{$\lim\limits_{z\to z_0}f(z)=A$} 或 \markdef{$f(z)\to A (z\to z_0)$}.
+如果存在复数 $A$ 使得对 $A$ 的任意邻域 $U,\exists\delta>0$ 使得当 $z\in\stackrel\circ U(z_0,\delta)$ 时, 有 $f(z)\in U$, 则称 $A$ 为 \emph{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \emph{$\lim\limits_{z\to z_0}f(z)=A$} 或 \emph{$f(z)\to A (z\to z_0)$}.
 \end{definition}
 
 \onslide<+->
@@ -298,8 +298,8 @@ $z\to z_0$ 可以是沿着任意一条曲线趋向于 $z_0$, 或者看成 $z$ �
 \begin{frame}{函数的连续性}
 \begin{definition}
 \begin{itemize}
-\item 如果 $\lim\limits_{z\to z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \markdef{$z_0$ 处连续}.
-\item 如果 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \markdef{$D$ 内连续}.
+\item 如果 $\lim\limits_{z\to z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \emph{$z_0$ 处连续}.
+\item 如果 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \emph{$D$ 内连续}.
 \end{itemize}
 \end{definition}
 
@@ -372,7 +372,7 @@ $u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
 归根到底就在于 $\BC$ 是一个域, 上面可以做除法.
 
 \onslide<+->
-这就导致了复变函数有\markatt{导数}, 而不是像多变量实函数只有偏导数.
+这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
 \onslide<+->
 这种特性使得可导的复变函数具有整洁优美的性质, 我们将在下一章来逐步揭开它的神秘面纱.
 \end{frame}

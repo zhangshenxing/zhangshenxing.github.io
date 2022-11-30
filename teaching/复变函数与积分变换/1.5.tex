@@ -3,27 +3,27 @@
 
 \begin{frame}{复变函数的定义}
 \onslide<+->
-\markdef{复变函数}就是复数集合 $G\subseteq C$ 上的一个映射 $f:G\to \BC$.
+\emph{复变函数}就是复数集合 $G\subseteq C$ 上的一个映射 $f:G\to \BC$.
 \onslide<+->
 换言之, 对于每一个 $z\in G$, 有一个唯一确定的复数 $w=f(z)$ 与之对应.
 \onslide<+->
 例如 $\Re z,\Im z,\arg z,|z|,z^n$ 都是复变函数.
 
 \onslide<+->
-$f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G}$.
+$f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
 
 \onslide<+->
-如果 $z_1\neq z_2\implies f(z_1)\neq f(z_2)$, 则称 $f$ 是\markdef{单射}.
+如果 $z_1\neq z_2\implies f(z_1)\neq f(z_2)$, 则称 $f$ 是\emph{单射}.
 \end{frame}
 
 
 \begin{frame}{多值复变函数}
 \onslide<+->
-不过在复变函数中, 我们常常会遇到\markdef{多值的复变函数}, 也就是说一个 $z\in G$ 可能有多个 $w$ 与之对应.
+不过在复变函数中, 我们常常会遇到\emph{多值的复变函数}, 也就是说一个 $z\in G$ 可能有多个 $w$ 与之对应.
 \onslide<+->
 例如 $\Arg z,\sqrt[n]z$ 等.
 \onslide<+->
-如果对每一个定义域范围内的 $z$, 选取固定的一个 $f(z)$ 的值, 则我们得到了这个多值函数的一个\markdef{单值分支}.
+如果对每一个定义域范围内的 $z$, 选取固定的一个 $f(z)$ 的值, 则我们得到了这个多值函数的一个\emph{单值分支}.
 
 \onslide<+->
 在考虑多值的情况下, 复变函数总有反函数:
@@ -32,16 +32,16 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \onslide<+->
 这样 $w$ 到 $z$ 的就定义了 $f$ 的反函数 $f^{-1}$.
 \onslide<+->
-如果 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\markdef{一一对应}.
+如果 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\emph{一一对应}.
 \onslide<+->
-若无特别声明, \markatt{复变函数总是指单值的复变函数}.
+若无特别声明, \alert{复变函数总是指单值的复变函数}.
 \end{frame}
 
 
 \begin{frame}{与实变函数的关系}
 \onslide<+->
-\markatt{每一个复变函数 $w=f(z)=u+iv$ 等价于给了两个二元实变函数}
-\[\markatt{u=u(x,y),\qquad v=v(x,y).}\]
+\alert{每一个复变函数 $w=f(z)=u+iv$ 等价于给了两个二元实变函数}
+\[\alert{u=u(x,y),\qquad v=v(x,y).}\]
 \onslide<+->
 例如
 \[w=z^2=(x^2-y^2)+i\cdot 2xy,\]
@@ -55,7 +55,7 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \onslide<+->
 在实变函数中, 我们常常用函数图像直观来理解和研究函数.
 \onslide<+->
-在复变函数中, 我们可以用两个复平面($z$ 复平面和 $w$ 复平面)之间的映射(称之为\markdef{映照})来表示这种对应关系.
+在复变函数中, 我们可以用两个复平面($z$ 复平面和 $w$ 复平面)之间的映射(称之为\emph{映照})来表示这种对应关系.
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -149,7 +149,7 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 
 
 \begin{frame}{例题: 映照}
-\begin{example}
+\begin{example}[续]
 因此它把 $z$ 平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线
 \[x^2-y^2=c_1,\quad 2xy=c_2\]
 \onslide<+->
@@ -239,17 +239,15 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \vspace{-3pt}
 \begin{example}
 求下列集合在映照 $w=z^2$ 下的像.
-
-\onslide<+->
-(1) 线段 $0<|z|<2,\arg z=\dfrac\pi2$.
-
-(2) 双曲线 $x^2-y^2=4$.
-
-(3) 扇形区域 $0<\arg z<\dfrac\pi4,0<|z|<2$.
+\begin{enumerate}
+\item 线段 $0<|z|<2,\arg z=\dfrac\pi2$.
+\item 双曲线 $x^2-y^2=4$.
+\item 扇形区域 $0<\arg z<\dfrac\pi4,0<|z|<2$.
+\end{enumerate}
 \end{example}
 \vspace{-3pt}
 \begin{solution}
-(1) 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
+\enumnum1 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
 \onslide<+->
 因此它的像还是一条线段 $0<|w|<4,\arg w=-\pi$.
 \onslide<+->
@@ -260,12 +258,12 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-0.2)--(2.5,1.6);
 \draw[cstcurve,dcolora] (-2.5,0)--(-2.5,1);
-\filldraw[cstdote] (-2.5,0) circle;
-\filldraw[cstdote] (-2.5,1) circle;
+\filldraw[cstdote,draw=dcolora] (-2.5,0) circle;
+\filldraw[cstdote,draw=dcolora] (-2.5,1) circle;
 \draw[cstcurve,dcolorb] (0.5,0)--(2.5,0);
 \filldraw[cstdote,draw=dcolorb] (0.5,0) circle;
 \filldraw[cstdote,draw=dcolorb] (2.5,0) circle;
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.2,0.5) (-0.3,1.3) (1.5,0.5)};
+\draw[cstdash,cstarrowto,dcolorc] (-2.2,0.5) to[bend left] (1.5,0.5);
 \draw
   (-0.5,-0.2) node {$x$}
   (-2.7,1.3) node {$y$}
@@ -273,14 +271,14 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
   (2.3,1.3) node {$v$};
 \end{tikzpicture}
 \end{center}
-\vspace{-13pt}
+\vspace{-14pt}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{例题: 映照的像}
 \begin{solutionc}
-(2) 由于
+\enumnum2 由于
 \[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
 \onslide<+->
 因此 $u=x^2-y^2=4,v=2xy$.
@@ -292,7 +290,7 @@ $f$ 的\markdef{定义域}是指 $G$, \markdef{值域}是指 $\set{w=f(z):z\in G
 因此这条双曲线的像是一条直线 $\Re w=4$.
 \vspace{\baselineskip}
 
-(3) 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
+\enumnum3 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
 \onslide<+->
 因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.
 \end{solutionc}

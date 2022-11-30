@@ -1,0 +1,787 @@
+% -*- coding: utf-8 -*-
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  %\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+  %\setbeamertemplate{blocks}[rounded][shadow=true]
+  %\setbeamertemplate{footline}[frame number]
+  %\setbeamercovered{transparent}
+  %\usefonttheme[onlysmall]{structurebold}
+  % \usefonttheme[onlymath]{serif}
+}
+
+%\usepackage{CJKutf8}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{cases}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\setlength{\parindent}{2em}
+
+% symbols
+\newcommand\ra{\rightarrow}
+\newcommand\lra{\longrightarrow}
+\newcommand\la{\leftarrow}
+\newcommand\lla{\longleftarrow}
+\newcommand\sqra{\rightsquigarrow}
+\newcommand\sqlra{\leftrightsquigarrow}
+\newcommand\inj{\hookrightarrow}
+\newcommand\surj{\twoheadrightarrow}
+\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
+\newcommand\simto{\sto{\sim}}
+\newcommand\lto{\longmapsto}
+\renewcommand\vec[1]{\overrightarrow{#1}}
+\newcommand\ilim{\varinjlim\limits}
+\newcommand\plim{\varprojlim\limits}
+\newcommand\wh{\widehat}
+\newcommand\wt{\widetilde}
+\newcommand\ov{\overline}
+\newcommand\ul{\underline}
+\newcommand\vare{\varepsilon}
+\newcommand\varp{\varphi}
+\newcommand\imply{\Longrightarrow}
+\newcommand\rj{\relbar\joinrel}
+\newcommand\half{\frac{1}{2}}
+\newcommand\mmid{\parallel}
+\newcommand\ldb{\llbracket}
+\newcommand\rdb{\rrbracket}
+\newcommand\pppi{\frac{\partial\bar\partial}{\pi i}}
+\newcommand\mmod{\underline\bmod}
+\font\cyr=wncyr10 \newcommand\Sha{\hbox{\cyr X}}
+
+
+% functions
+\newcommand\fct[4]{\begin{split}#1 &\lra #2 \\ #3 &\lto #4\end{split}}
+\newcommand\set[1]{\left\{#1\right\}}
+\newcommand\pair[1]{\langle{#1}\rangle}
+\newcommand\pmat[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
+\newcommand\smat[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
+\newcommand\bvec[2]{\begin{bmatrix}#1 \\ #2\end{bmatrix} }
+\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand\env[2]{\begin{#1}{#2}\end{#1}}
+\newcommand\envn[3]{\begin{#1}[#2]{#3}\end{#1}}
+\newcommand\red[1]{\textcolor{red}{#1}} %Marker
+\newcommand\hil[3]{\left(\frac{{#1},{#2}}{#3}\right)} %Hilbert symbol
+\newcommand\leg[2]{\left(\frac{{#1}}{#2}\right)} %Legdred symbol
+\newcommand\stsc[2]{\genfrac{}{}{0pt}{}{#1}{#2}} %atop
+
+
+% categories
+\newcommand\cA{{\mathsf{A}}}
+\newcommand\cB{{\mathsf{B}}}
+\newcommand\cC{{\mathsf{C}}}
+\newcommand\cAb{{\mathsf{Ab}}}
+\newcommand\cBT{{\mathsf{BT}}}
+\newcommand\cBun{{\mathsf{Bun}}}
+\newcommand\cCharLoc{{\mathsf{CharLoc}}}
+\newcommand\cCoh{{\mathsf{Coh}}}
+\newcommand\cComm{{\mathsf{Comm}}}
+\newcommand\cEt{{\mathsf{Et}}}
+\newcommand\cFppf{{\mathsf{Fppf}}}
+\newcommand\cFpqc{{\mathsf{Fpqc}}}
+\newcommand\cFunc{{\mathsf{Func}}}
+\newcommand\cGroups{{\mathsf{Groups}}}
+\newcommand\cGrpd{{\{\mathsf{Grpd}\}}}
+\newcommand\cHo{{\mathsf{Ho}}}
+\newcommand\cIso{{\mathsf{Iso}}}
+\newcommand\cLoc{{\mathsf{Loc}}}
+\newcommand\cMod{{\mathsf{Mod}}}
+\newcommand\cModFil{{\mathsf{ModFil}}}
+\newcommand\cNilp{{\mathsf{Nilp}}}
+\newcommand\cPerf{{\mathsf{Perf}}}
+\newcommand\cPN{{\mathsf{PN}}}
+\newcommand\cRep{{\mathsf{Rep}}}
+\newcommand\cRings{{\mathsf{Rings}}}
+\newcommand\cSets{{\mathsf{Sets}}}
+\newcommand\cStack{{\mathsf{Stack}}}
+\newcommand\cSch{{\mathsf{Sch}}}
+\newcommand\cTop{{\mathsf{Top}}}
+\newcommand\cVect{{\mathsf{Vect}}}
+\newcommand\cZar{{\mathsf{Zar}}}
+\newcommand\cphimod{{\varphi\txt{-}\mathsf{Mod}}}
+\newcommand\cphimodfil{{\varphi\txt{-}\mathsf{ModFil}}}
+
+% font
+\newcommand\rma{{\mathrm{a}}}  \newcommand\rmb{{\mathrm{b}}}  \newcommand\rmc{{\mathrm{c}}}  \newcommand\rmd{{\mathrm{d}}}
+\newcommand\rme{{\mathrm{e}}}  \newcommand\rmf{{\mathrm{f}}}  \newcommand\rmg{{\mathrm{g}}}  \newcommand\rmh{{\mathrm{h}}}
+\newcommand\rmi{{\mathrm{i}}}  \newcommand\rmj{{\mathrm{j}}}  \newcommand\rmk{{\mathrm{k}}}  \newcommand\rml{{\mathrm{l}}}
+\newcommand\rmm{{\mathrm{m}}}  \newcommand\rmn{{\mathrm{n}}}  \newcommand\rmo{{\mathrm{o}}}  \newcommand\rmp{{\mathrm{p}}}
+\newcommand\rmq{{\mathrm{q}}}  \newcommand\rmr{{\mathrm{r}}}  \newcommand\rms{{\mathrm{s}}}  \newcommand\rmt{{\mathrm{t}}}
+\newcommand\rmu{{\mathrm{u}}}  \newcommand\rmv{{\mathrm{v}}}  \newcommand\rmw{{\mathrm{w}}}  \newcommand\rmx{{\mathrm{x}}} \newcommand\rmy{{\mathrm{y}}}  \newcommand\rmz{{\mathrm{z}}}
+
+\newcommand\rmA{{\mathrm{A}}}  \newcommand\rmB{{\mathrm{B}}}  \newcommand\rmC{{\mathrm{C}}}  \newcommand\rmD{{\mathrm{D}}}
+\newcommand\rmE{{\mathrm{E}}}  \newcommand\rmF{{\mathrm{F}}}  \newcommand\rmG{{\mathrm{G}}}  \newcommand\rmH{{\mathrm{H}}}
+\newcommand\rmI{{\mathrm{I}}}  \newcommand\rmJ{{\mathrm{J}}}  \newcommand\rmK{{\mathrm{K}}}  \newcommand\rmL{{\mathrm{L}}}
+\newcommand\rmM{{\mathrm{M}}}  \newcommand\rmN{{\mathrm{N}}}  \newcommand\rmO{{\mathrm{O}}}  \newcommand\rmP{{\mathrm{P}}}
+\newcommand\rmQ{{\mathrm{Q}}}  \newcommand\rmR{{\mathrm{R}}}  \newcommand\rmS{{\mathrm{S}}}  \newcommand\rmT{{\mathrm{T}}}
+\newcommand\rmU{{\mathrm{U}}}  \newcommand\rmV{{\mathrm{V}}}  \newcommand\rmW{{\mathrm{W}}}  \newcommand\rmX{{\mathrm{X}}}
+\newcommand\rmY{{\mathrm{Y}}}  \newcommand\rmZ{{\mathrm{Z}}}
+
+\newcommand\bfa{{\mathbf{a}}}  \newcommand\bfb{{\mathbf{b}}}  \newcommand\bfc{{\mathbf{c}}}  \newcommand\bfd{{\mathbf{d}}}
+\newcommand\bfe{{\mathbf{e}}}  \newcommand\bff{{\mathbf{f}}}  \newcommand\bfg{{\mathbf{g}}}  \newcommand\bfh{{\mathbf{h}}}
+\newcommand\bfi{{\mathbf{i}}}  \newcommand\bfj{{\mathbf{j}}}  \newcommand\bfk{{\mathbf{k}}}  \newcommand\bfl{{\mathbf{l}}}
+\newcommand\bfm{{\mathbf{m}}}  \newcommand\bfn{{\mathbf{n}}}  \newcommand\bfo{{\mathbf{o}}}  \newcommand\bfp{{\mathbf{p}}}
+\newcommand\bfq{{\mathbf{q}}}  \newcommand\bfr{{\mathbf{r}}}  \newcommand\bfs{{\mathbf{s}}}  \newcommand\bft{{\mathbf{t}}}
+\newcommand\bfu{{\mathbf{u}}}  \newcommand\bfv{{\mathbf{v}}}  \newcommand\bfw{{\mathbf{w}}}  \newcommand\bfx{{\mathbf{x}}} \newcommand\bfy{{\mathbf{y}}}  \newcommand\bfz{{\mathbf{z}}}
+
+\newcommand\bfA{{\mathbf{A}}}  \newcommand\bfB{{\mathbf{B}}}  \newcommand\bfC{{\mathbf{C}}}  \newcommand\bfD{{\mathbf{D}}}
+\newcommand\bfE{{\mathbf{E}}}  \newcommand\bfF{{\mathbf{F}}}  \newcommand\bfG{{\mathbf{G}}}  \newcommand\bfH{{\mathbf{H}}}
+\newcommand\bfI{{\mathbf{I}}}  \newcommand\bfJ{{\mathbf{J}}}  \newcommand\bfK{{\mathbf{K}}}  \newcommand\bfL{{\mathbf{L}}}
+\newcommand\bfM{{\mathbf{M}}}  \newcommand\bfN{{\mathbf{N}}}  \newcommand\bfO{{\mathbf{O}}}  \newcommand\bfP{{\mathbf{P}}}
+\newcommand\bfQ{{\mathbf{Q}}}  \newcommand\bfR{{\mathbf{R}}}  \newcommand\bfS{{\mathbf{S}}}  \newcommand\bfT{{\mathbf{T}}}
+\newcommand\bfU{{\mathbf{U}}}  \newcommand\bfV{{\mathbf{V}}}  \newcommand\bfW{{\mathbf{W}}}  \newcommand\bfX{{\mathbf{X}}}
+\newcommand\bfY{{\mathbf{Y}}}  \newcommand\bfZ{{\mathbf{Z}}}
+
+\newcommand\BA{{\mathbb{A}}}  \newcommand\BB{{\mathbb{B}}}  \newcommand\BC{{\mathbb{C}}}  \newcommand\BD{{\mathbb{D}}}  \newcommand\BE{{\mathbb{E}}}
+\newcommand\BF{{\mathbb{F}}}  \newcommand\BG{{\mathbb{G}}}  \newcommand\BH{{\mathbb{H}}}  \newcommand\BI{{\mathbb{I}}}  \newcommand\BJ{{\mathbb{J}}}
+\newcommand\BK{{\mathbb{K}}}  \newcommand\BL{{\mathbb{L}}}  \newcommand\BM{{\mathbb{M}}}  \newcommand\BN{{\mathbb{N}}}  \newcommand\BO{{\mathbb{O}}}
+\newcommand\BP{{\mathbb{P}}}  \newcommand\BQ{{\mathbb{Q}}}  \newcommand\BR{{\mathbb{R}}}  \newcommand\BS{{\mathbb{S}}}  \newcommand\BT{{\mathbb{T}}}
+\newcommand\BU{{\mathbb{U}}}  \newcommand\BV{{\mathbb{V}}}  \newcommand\BW{{\mathbb{W}}}  \newcommand\BX{{\mathbb{X}}}  \newcommand\BY{{\mathbb{Y}}}
+\newcommand\BZ{{\mathbb{Z}}}
+
+\newcommand\CA{{\mathcal{A}}} \newcommand\CB{{\mathcal{B}}} \newcommand\CC{{\mathcal{C}}}\providecommand\CD{{\mathcal{D}}}\newcommand\CE{{\mathcal{E}}}
+\newcommand\CF{{\mathcal{F}}} \newcommand\CG{{\mathcal{G}}} \newcommand\CH{{\mathcal{H}}} \newcommand\CI{{\mathcal{I}}} \newcommand\CJ{{\mathcal{J}}}
+\newcommand\CK{{\mathcal{K}}} \newcommand\CL{{\mathcal{L}}} \newcommand\CM{{\mathcal{M}}} \newcommand\CN{{\mathcal{N}}} \newcommand\CO{{\mathcal{O}}}
+\newcommand\CP{{\mathcal{P}}} \newcommand\CQ{{\mathcal{Q}}} \newcommand\CR{{\mathcal{R}}} \newcommand\CS{{\mathcal{S}}} \newcommand\CT{{\mathcal{T}}}
+\newcommand\CU{{\mathcal{U}}} \newcommand\CV{{\mathcal{V}}} \newcommand\CW{{\mathcal{W}}} \newcommand\CX{{\mathcal{X}}} \newcommand\CY{{\mathcal{Y}}}
+\newcommand\CZ{{\mathcal{Z}}}
+
+\newcommand\RA{{\mathrm{A}}} \newcommand\RB{{\mathrm{B}}} \newcommand\RC{{\mathrm{C}}} \newcommand\RD{{\mathrm{D}}} \newcommand\RE{{\mathrm{E}}}
+\newcommand\RF{{\mathrm{F}}} \newcommand\RG{{\mathrm{G}}} \newcommand\RH{{\mathrm{H}}} \newcommand\RI{{\mathrm{I}}} \newcommand\RJ{{\mathrm{J}}}
+\newcommand\RK{{\mathrm{K}}} \newcommand\RL{{\mathrm{L}}} \newcommand\RM{{\mathrm{M}}} \newcommand\RN{{\mathrm{N}}} \newcommand\RO{{\mathrm{O}}}
+\newcommand\RP{{\mathrm{P}}} \newcommand\RQ{{\mathrm{Q}}} \newcommand\RR{{\mathrm{R}}} \newcommand\RS{{\mathrm{S}}} \newcommand\RT{{\mathrm{T}}}
+\newcommand\RU{{\mathrm{U}}} \newcommand\RV{{\mathrm{V}}} \newcommand\RW{{\mathrm{W}}} \newcommand\RX{{\mathrm{X}}} \newcommand\RY{{\mathrm{Y}}}
+\newcommand\RZ{{\mathrm{Z}}}
+
+\newcommand\msa{\mathscr{A}}  \newcommand\msb{\mathscr{B}}  \newcommand\msc{\mathscr{C}}  \newcommand\msd{\mathscr{D}}  \newcommand\mse{\mathscr{E}}
+\newcommand\msf{\mathscr{F}}  \newcommand\msg{\mathscr{G}}  \newcommand\msh{\mathscr{H}}  \newcommand\msi{\mathscr{I}}  \newcommand\msj{\mathscr{J}}
+\newcommand\msk{\mathscr{K}}  \newcommand\msl{\mathscr{L}}  \newcommand\msm{\mathscr{M}}  \newcommand\msn{\mathscr{N}}  \newcommand\mso{\mathscr{O}}
+\newcommand\msp{\mathscr{P}}  \newcommand\msq{\mathscr{Q}}  \newcommand\msr{\mathscr{R}}  \newcommand\mss{\mathscr{S}}  \newcommand\mst{\mathscr{T}}
+\newcommand\msu{\mathscr{U}}  \newcommand\msv{\mathscr{V}}  \newcommand\msw{\mathscr{W}}  \newcommand\msx{\mathscr{X}}  \newcommand\msy{\mathscr{Y}}
+\newcommand\msz{\mathscr{Z}}
+
+\newcommand\fa{{\mathfrak{a}}}\newcommand\fb{{\mathfrak{b}}}\newcommand\fc{{\mathfrak{c}}}\newcommand\fd{{\mathfrak{d}}}\newcommand\fe{{\mathfrak{e}}}
+\newcommand\ff{{\mathfrak{f}}}\newcommand\fg{{\mathfrak{g}}}\newcommand\fh{{\mathfrak{h}}}\newcommand\fii{\mathfrak{i}} \newcommand\fj{{\mathfrak{j}}}
+\newcommand\fk{{\mathfrak{k}}}\newcommand\fl{{\mathfrak{l}}}\newcommand\fm{{\mathfrak{m}}}\newcommand\fn{{\mathfrak{n}}}\newcommand\fo{{\mathfrak{o}}} \newcommand\fp{{\mathfrak{p}}}\newcommand\fq{{\mathfrak{q}}}\newcommand\fr{{\mathfrak{r}}}\newcommand\fs{{\mathfrak{s}}}\newcommand\ft{{\mathfrak{t}}}
+\newcommand\fu{{\mathfrak{u}}}\newcommand\fv{{\mathfrak{v}}}\newcommand\fw{{\mathfrak{w}}}\newcommand\fx{{\mathfrak{x}}}\newcommand\fy{{\mathfrak{y}}}
+\newcommand\fz{{\mathfrak{z}}}
+
+\newcommand\fA{{\mathfrak{A}}}\newcommand\fB{{\mathfrak{B}}}\newcommand\fC{{\mathfrak{C}}}\newcommand\fD{{\mathfrak{D}}}\newcommand\fE{{\mathfrak{E}}}
+\newcommand\fF{{\mathfrak{F}}}\newcommand\fG{{\mathfrak{G}}}\newcommand\fH{{\mathfrak{H}}}\newcommand\fI{{\mathfrak{I}}}\newcommand\fJ{{\mathfrak{J}}}
+\newcommand\fK{{\mathfrak{K}}}\newcommand\fL{{\mathfrak{L}}}\newcommand\fM{{\mathfrak{M}}}\newcommand\fN{{\mathfrak{N}}}\newcommand\fO{{\mathfrak{O}}} \newcommand\fP{{\mathfrak{P}}}\newcommand\fQ{{\mathfrak{Q}}}\newcommand\fR{{\mathfrak{R}}}\newcommand\fS{{\mathfrak{S}}}\newcommand\fT{{\mathfrak{T}}}
+\newcommand\fU{{\mathfrak{U}}}\newcommand\fV{{\mathfrak{V}}}\newcommand\fW{{\mathfrak{W}}} \newcommand\fX{{\mathfrak{X}}}\newcommand\fY{{\mathfrak{Y}}}\newcommand\fZ{{\mathfrak{Z}}}
+% be careful about \fii
+
+% a
+\newcommand\ab{{\mathrm{ab}}}
+\newcommand\ad{{\mathrm{ad}}}
+\newcommand\Ad{{\mathrm{Ad}}}
+\newcommand\adele{ad\'{e}le}
+\newcommand\Adele{Ad\'{e}le}
+\newcommand\adeles{ad\'{e}les}
+\newcommand\adelic{ad\'{e}lic}
+\newcommand\AJ{{\mathrm{AJ}}}
+\newcommand\alb{{\mathrm{alb}}}
+\newcommand\Alb{{\mathrm{Alb}}}
+\newcommand\alg{{\mathrm{alg}}}
+\newcommand\an{{\mathrm{an}}}
+\newcommand\ann{{\mathrm{ann}}}
+\newcommand\Ann{{\mathrm{Ann}}}
+\newcommand\Arg{{\mathrm{Arg}}}
+\newcommand\arith{{\mathrm{arith}}}
+\newcommand\Art{{\mathrm{Art}}}
+\newcommand\AS{{\mathrm{AS}}}
+\newcommand\Ass{{\mathrm{Ass}}}
+\newcommand\Aut{{\mathrm{Aut}}}
+% b
+\newcommand\Bun{{\mathrm{Bun}}}
+\newcommand\Br{{\mathrm{Br}}}
+\newcommand\bs{\backslash}
+\newcommand\BWt{{\mathrm{BW}}}
+% c
+\newcommand\can{{\mathrm{can}}}
+\newcommand\cc{{\mathrm{cc}}}
+\newcommand\cd{{\mathrm{cd}}}
+\newcommand\ch{{\mathrm{ch}}}
+\newcommand\Ch{{\mathrm{Ch}}}
+\newcommand\Char{{\mathrm{char}\,}}
+\newcommand\Chow{{\mathrm{CH}}}
+\newcommand\circB{{\stackrel{\circ}{B}}}
+\newcommand\cl{{\mathrm{cl}}}
+\newcommand\Cl{{\mathrm{Cl}}}
+\newcommand\cm{{\mathrm{cm}}}
+\newcommand\cod{{\mathrm{cod}}}
+\newcommand\coker{{\mathrm{coker}\,}}
+\newcommand\Coker{{\mathrm{Coker}\,}}
+\newcommand\cond{{\mathrm{cond}}}
+\newcommand\codim{{\mathrm{codim}}}
+\newcommand\cont{{\mathrm{cont}}}
+\newcommand\Conv{{\mathrm{Conv}}}
+\newcommand\corr{{\mathrm{corr}}}
+\newcommand\Corr{{\mathrm{Corr}}}
+\newcommand\coim{{\mathrm{coim}\,}}
+\newcommand\CoIm{{\mathrm{CoIm}\,}}
+\newcommand\cris{{\mathrm{cris}}}
+\newcommand\Cris{{\mathrm{Cris}}}
+\newcommand\CRIS{{\mathrm{CRIS}}}
+\newcommand\crit{{\mathrm{crit}}} % critical
+\newcommand\crys{{\mathrm{crys}}}
+\newcommand\cusp{{\mathrm{cusp}}} % cuspidal
+\newcommand\CWt{{\mathrm{CW}}} % Witt covector
+\newcommand\cyc{{\mathrm{cyc}}} % cyclotomic
+% d
+\newcommand\Def{{\mathrm{Def}}} % deformation space
+\newcommand\diag{{\mathrm{diag}}} % diagonal matrix
+\newcommand\diff{\mathop{}\!\mathrm{d}} % differential
+\newcommand\disc{{\mathrm{disc}}} % discriminant
+\renewcommand\div{{\mathrm{div}}} % divisor
+\newcommand\Div{{\mathrm{Div}}} % divisor group
+\newcommand\dR{{\mathrm{dR}}} % de Rham
+% e
+\newcommand\End{{\mathrm{End}}} % endomorphism
+\newcommand\ess{{\mathrm{ess}}} % essential
+\newcommand\et{\text{\'{e}t}} % etale
+\newcommand\etale{\'{e}tale} % etale
+\newcommand\Etale{\'{E}tale} % etale
+\newcommand\Ext{\mathrm{Ext}} % extension
+\newcommand\CExt{\mathcal{E}\mathrm{xt}} % extension functor
+% f
+\newcommand\Fil{{\mathrm{Fil}}}
+\newcommand\Fix{{\mathrm{Fix}}}
+\newcommand\fppf{{\mathrm{fppf}}}
+\newcommand\Fr{{\mathrm{Fr}\;}}
+\newcommand\Frob{{\mathrm{Frob}}}
+% g
+\newcommand\Ga{\mathbb{G}_a}
+\newcommand\Gm{\mathbb{G}_m}
+\newcommand\hGa{\widehat{\mathbb{G}}_{a}}
+\newcommand\hGm{\widehat{\mathbb{G}}_{m}}
+\newcommand\Gal{{\mathrm{Gal}}}
+\newcommand\gl{{\mathrm{gl}}}
+\newcommand\GL{{\mathrm{GL}}}
+\newcommand\GO{{\mathrm{GO}}}
+\newcommand\geom{{\mathrm{geom}}}
+\newcommand\Gr{{\mathrm{Gr}}}
+\newcommand\gr{{\mathrm{gr}}}
+\newcommand\GSO{{\mathrm{GSO}}}
+\newcommand\GSp{{\mathrm{GSp}}}
+\newcommand\GSpin{{\mathrm{GSpin}}}
+\newcommand\GU{{\mathrm{GU}}}
+% h
+\newcommand\hg{{\mathrm{hg}}}
+\newcommand\Hk{{\mathrm{Hk}}}
+\newcommand\HN{{\mathrm{HN}}}
+\newcommand\Hom{{\mathrm{Hom}}}
+\newcommand\CHom{\mathcal{H}\mathrm{om}}
+% i
+\newcommand\id{{\mathrm{id}}}
+\newcommand\Id{{\mathrm{Id}}}
+\newcommand\idele{id\'{e}le}
+\newcommand\Idele{Id\'{e}le}
+\newcommand\ideles{id\'{e}les}
+\renewcommand\Im{{\mathrm{Im}\,}}
+\newcommand\im{{\mathrm{im}\,}}
+\newcommand\Ind{{\mathrm{Ind}}}
+\newcommand\cInd{{\mathrm{c}\textrm{-}\mathrm{Ind}}}
+\newcommand\ind{{\mathrm{ind}}}
+\renewcommand\inf{{\mathrm{inf}}}
+\newcommand\Int{{\mathrm{Int}}}
+\newcommand\inv{{\mathrm{inv}}}
+\newcommand\Isom{{\mathrm{Isom}}}
+% j
+\newcommand\Jac{{\mathrm{Jac}}}
+\newcommand\JL{{\mathrm{JL}}}
+% k
+\newcommand\Katz{\mathrm{Katz}}
+\newcommand\Ker{{\mathrm{Ker}\,}}
+\newcommand\KS{{\mathrm{KS}}}
+\newcommand\Kl{{\mathrm{Kl}}}
+\newcommand\CKl{{\mathcal{K}\mathrm{l}}}
+% l
+\newcommand\lcm{\mathrm{lcm}}
+\newcommand\length{\mathrm{length}}
+\newcommand\Li{{\mathrm{Li}}}
+\newcommand\Lie{{\mathrm{Lie}}}
+\newcommand\lt{\mathrm{lt}}
+\newcommand\LT{\mathcal{LT}}
+% m
+\newcommand\MW{{\mathrm{MW}}}
+\renewcommand\mod{\, \mathrm{mod}\, }
+\newcommand\mom{{\mathrm{mom}}}
+\newcommand\Mor{{\mathrm{Mor}}}
+\newcommand\Morp{{\mathrm{Morp}\,}}
+% n
+\newcommand\new{{\mathrm{new}}}
+\newcommand\Newt{{\mathrm{Newt}}}
+\newcommand\NP{{\mathrm{NP}}}
+\newcommand\NS{{\mathrm{NS}}}
+\newcommand\ns{{\mathrm{ns}}}
+\newcommand\Nm{{\mathrm{Nm}}}
+\newcommand\Nrd{{\mathrm{Nrd}}}
+\newcommand\Neron{N\'{e}ron}
+% o
+\newcommand\Obj{{\mathrm{Obj}\,}}
+\newcommand\odd{{\mathrm{odd}}}
+\newcommand\old{{\mathrm{old}}}
+\newcommand\op{{\mathrm{op}}}
+\newcommand\Orb{{\mathrm{Orb}}}
+\newcommand\ord{{\mathrm{ord}}}
+% p
+\newcommand\pd{{\mathrm{pd}}}
+\newcommand\Pet{{\mathrm{Pet}}}
+\newcommand\PGL{{\mathrm{PGL}}}
+\newcommand\Pic{{\mathrm{Pic}}}
+\newcommand\pr{{\mathrm{pr}}}
+\newcommand\Proj{{\mathrm{Proj}}}
+\newcommand\proet{\text{pro\'{e}t}}
+\newcommand\Poincare{\text{Poincar\'{e}}}
+\newcommand\Prd{{\mathrm{Prd}}}
+\newcommand\prim{{\mathrm{prim}}}
+% r
+\newcommand\Rad{{\mathrm{Rad}}}
+\newcommand\rank{{\mathrm{rank}}}
+\renewcommand\Re{{\mathrm{Re}}}
+\newcommand\rec{{\mathrm{rec}}}
+\newcommand\reg{{\mathrm{reg}}}
+\newcommand\res{{\mathrm{res}}}
+\newcommand\Res{{\mathrm{Res}}}
+\newcommand\rig{{\mathrm{rig}}}
+\newcommand\Rig{{\mathrm{Rig}}}
+\newcommand\rk{{\mathrm{rk}}}
+\newcommand\Ros{{\mathrm{Ros}}}
+\newcommand\rs{{\mathrm{rs}}}
+% s
+\newcommand\sd{{\mathrm{sd}}}
+\newcommand\Sel{{\mathrm{Sel}}}
+\newcommand\sep{{\mathrm{sep}}}
+\newcommand\sgn{{\mathrm{sgn}}}
+\newcommand\Sh{{\mathrm{Sh}}}
+\newcommand\Sht{\mathrm{Sht}}
+\newcommand\Sim{{\mathrm{Sim}}}
+\newcommand\sign{{\mathrm{sign}}}
+\newcommand\SL{{\mathrm{SL}}}
+\newcommand\SO{{\mathrm{SO}}}
+\newcommand\Sp{{\mathrm{Sp}}}
+\newcommand\Spa{{\mathrm{Spa}}}
+\newcommand\Spec{{\mathrm{Spec}\,}}
+\newcommand\Spf{{\mathrm{Spf}}}
+\newcommand\Spin{{\mathrm{Spin}}}
+\newcommand\Spm{{\mathrm{Spm}}}
+\newcommand\srs{{\mathrm{srs}}}
+\newcommand\rss{{\mathrm{ss}}}
+\newcommand\ST{{\mathrm{ST}}}
+\newcommand\st{{\mathrm{st}}}
+\newcommand\Stab{{\mathrm{Stab}}}
+\newcommand\SU{{\mathrm{SU}}}
+\newcommand\Sym{{\mathrm{Sym}}}
+\newcommand\sub{{\mathrm{sub}}}
+\newcommand\rsum{{\mathrm{sum}}}
+\newcommand\supp{{\mathrm{supp}}}
+\newcommand\Supp{{\mathrm{Supp}}}
+\newcommand\Swan{{\mathrm{Sw}}}
+\newcommand\suml{\sum\limits}
+% t
+\newcommand\td{{\mathrm{td}}}
+\newcommand\tor{{\mathrm{tor}}}
+\newcommand\Tor{{\mathrm{Tor}}}
+\newcommand\tors{{\mathrm{tors}}}
+\newcommand\tr{{\mathrm{tr}\,}}
+\newcommand\Tr{{\mathrm{Tr}}}
+\newcommand\Trd{{\mathrm{Trd}}}
+\newcommand\TSym{{\mathrm{TSym}}}
+\newcommand\tw{{\mathrm{tw}}}
+% u
+\newcommand\uni{{\mathrm{uni}}}
+\newcommand\univ{\mathrm{univ}}
+\newcommand\ur{{\mathrm{ur}}}
+\newcommand\USp{{\mathrm{USp}}}
+% v
+\newcommand\vQ{{\breve \BQ}}
+\newcommand\vE{{\breve E}}
+\newcommand\Ver{{\mathrm{Ver}}}
+\newcommand\vF{{\breve F}}
+\newcommand\vK{{\breve K}}
+\newcommand\vol{{\mathrm{vol}}}
+\newcommand\Vol{{\mathrm{Vol}}}
+% w
+\newcommand\wa{{\mathrm{wa}}}
+% z
+\newcommand\Zar{{\mathrm{Zar}}}
+
+
+\newcommand\bchi{{\boldsymbol\chi}}
+\newcommand\brho{{\boldsymbol\rho}}
+
+
+\begin{document}
+\title{On the generating fields of Kloosterman sums}
+\author{Shenxing Zhang}
+\institute{Liaocheng University}
+\date{2021-05-17}
+
+\frame{
+\titlepage
+}
+
+\section{Exponential Sums}
+
+\frame{\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+}
+
+\frame{\frametitle{Exponential sums}
+Let $f(x)\in\BF_q[x]$ be a polynomial over a finite field with $q=p^d$ elements, where $p$ is a rational prime. \pause
+Define the exponential sum
+	\[S_1(f):=\sum_{x\in\BF_q}\zeta_p^{\Tr(f(x))}\in\BZ[\zeta_p].\]
+\pause A basic problem is 
+\begin{enumerate}
+\item as a complex number, $|S_1(f)|=?$
+\item as a $p$-adic number, $|S_1(f)|_p=?$
+\item as an algebraic number, $\deg S_1(f)=?$
+\end{enumerate}
+}
+
+\frame{
+\frametitle{$L$-function}
+The first two questions have been studied extensively in the literature.
+Define 
+	\[L(t,f):=\prod_{x\in \ov{\BF}_p}\Big(1-\Tr_{\BF_q(x)/\BF_p}(f(x))t^{\deg x}\Big)^{-1}=\exp\Bigl(\sum_k S_k(f)\frac{t^k}{k}\Bigr)\]
+where $S_k(f):=\sum_{x\in\BF_{q^k}}\zeta_p^{\Tr(f(x))}\in\BZ[\zeta_p].$
+ \pause
+\begin{theorem}[Dwork-Bombieri-Grothendick]
+$L(t,f)$ is a rational function.
+\end{theorem} \pause
+Write
+	\[L(t,f)=\frac{\prod_j (1-\beta_j t)}{\prod_i(1-\alpha_i t)}.\]
+Then
+	\[S_k(f)=\sum_i \alpha_i^k-\sum_j\beta_j^k.\]
+}
+
+\frame{
+\frametitle{Sheaf}
+How to estimate the characteristic roots $\alpha_i$ and $\beta_j$? We need $\ell$-adic method.
+To describe it, let's recall the definition of sheaves. \pause
+
+Given a topological space $X$, there is a site $\cTop(X)$ with 
+\begin{enumerate}
+\item objects: the open subsets of $X$;
+\item morphisms:  the injection of open sets;
+\item coverings: normal open coverings.
+\end{enumerate} \pause
+A sheaf $\CF$ on a topological space $X$ over a field $E$ is a contravariant functor $\cTop(X)^\op\to\cVect/E$, which can be uniquely glued locally. That's to say, for any open covering $U=\cup_i U_i$,
+	\[\CF(U)\to \prod_i\CF(U_i)\rightrightarrows \prod_{i,j}\CF(U_i\cap U_j)\]
+is exact.
+}
+
+\frame{
+\frametitle{\Etale\ site}
+Let $X$ be a scheme. Denote by $X_\et$ the site with
+\begin{enumerate}
+\item objects: \etale\ scheme $X'\to X$;
+\item morphisms: \etale\ morphisms;
+\item coverings: $\set{\varphi_i:X'_i\to X'}$ with $X'=\cup \varphi_i(X'_i)$.
+\end{enumerate} \pause
+Fix a prime $\ell\neq p$ and let $E$ be a finite extension of $\BQ_\ell$.
+An $\ell$-adic sheaf is a sheaf on $X_\et$ over $E$ (which is constructible at every finite level).
+}
+
+\frame{
+\frametitle{Swan conductor}
+Let $K$ be c.d.v.f, with higher ramification groups $I^{(r)},r\ge 0$. \pause
+For any $E$-representation $M$ of $P$, we have a decomposition $M=\oplus M(x)$, such that
+	\[M(0)=M^P,\quad M(x)^{I^{(x)}}=0,\quad M(x)^{I(y)}=M(x), \ y>x>0.\]
+	\pause We call $x$ a break if $M(x)\neq 0$. Define
+	\[\Swan(M)=\sum x\dim M(x).\]
+}
+
+\frame{
+\frametitle{Curves}
+Let $C$ be a proper smooth geometrically connected curve over a perfect field $\BF$, with function field $K=\BF(C)$.
+For any closed point $x\in C(\BF)$, we have the completion $K_x$.
+
+\pause
+For any non-empty open $U\subset C$, we have an equivalence of abelian categories
+	\[\fct{\set{\text{lisse $E$-sheaves on $U$}}}{\cRep_E^c \pi_1(U,\ov\eta)}{\CF}{\CF_{\ov\eta}.}\]
+	\pause
+Since $\pi_1(U,\ov\eta)$ is a quotient of $\Gal(\ov K/K)$, the decomposition group $D_x\subset \Gal(\ov K/K)$ acts on $\CF_{\ov\eta}$.
+We can define Swan conductor of $\CF$ at $x$.
+If $x\in U$, the action of $I_x$ is trivial.
+
+We will take $\BF=\BF_p,C=\BP^1$ and $U=\Gm$.
+}
+
+\frame{
+\frametitle{$\ell$-adic method}
+Assume that $\mu_p\subseteq E$.
+Deligne constructed a certain locally free of rank one $\ell$-adic sheaf $\CF_\ell(f)$ over $E$ on ${\Ga}_{,\ov\BF_p}=\Spec \ov\BF_p[X]$, such that
+	\[L(t,f)=\prod_i \det(1-t \Frob,\RH^i_c)^{(-1)^{i+1}}\]
+and
+	\[S_k(f)=\sum_i (-1)^i\Tr(\Frob^k,\RH_c^i).\]
+Here, $\Frob$ is the geometric Frobenius (inverse of $\alpha\mapsto \alpha^p$), $\RH_c^i=\RH_c^i({\Ga}_{,\ov\BF_p},\CF_\ell(f))$ is the compact cohomology.
+}
+
+\frame{
+\frametitle{$\ell$-adic method, continue}
+Denote by $\omega_{ij}$ the eigenvalues of $\Frob$ on $\RH^i_c$, then
+	\[S_k(f)=\sum_{ij}(-1)^i \omega_{ij}^k.\]
+Denote by $B_i=\dim_{E}\RH^i_c$ the Betti number.
+\begin{theorem}[Deligne]
+$\omega_{ij}$ is an algebraic integer and all its conjugates over $\BQ$ has same absolute value $q^{r_{ij}/2}$, where the weight $0\le r_{ij}\le i$ are integers.
+\end{theorem}
+Thus
+	\[|S_k|\le \sum_i B_i q^{ki/2}.\]
+}
+
+\frame{
+\frametitle{General case}
+In general, 
+\begin{enumerate}
+\item $V$ a closed variety over $\BF_q$ of $\BA^N$,
+\item $\psi$ a non-trivial additive character on $\BF_q$, $\psi_k=\psi\circ \Tr_{\BF_{q^k}/\BF_q}$,
+\item $f$ a regular function on $V$ defined over $\BF_q$,
+\item $\chi$ a multiplicative character on $\BF_q^\times$, $\chi_k=\chi\circ\bfN_{\BF_{q^n}/\BF_q}$,
+\item $g$ an invertible regular function on $V$.
+\end{enumerate} \pause
+Define
+	\[S_k=\sum_{x\in V(\BF_{q^k})}\psi_k(f(x))\chi_k(g(x)).\]
+Then Deligne's results still hold in this case. Moreover, Bombieri proved that the number of  characteristic roots is at most
+	\[(4\max\set{\deg V+1,\deg f}+5)^{2N+1}.\]
+} 
+
+\section{Kloosterman sheaves}
+
+\frame{\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+}
+
+\frame{
+\frametitle{Kloosterman sums}
+Now we will consider
+	\[V=V(X_1\cdots X_n-a),\quad f=X_1+\cdots+X_n.\]
+Let $\bchi=\set{\chi_1,\dots,\chi_n}$ be an unordered $n$-tuple of multiplicative characters $\chi_i:\BF_q^\times\to \mu_{q-1}$.
+Define the Kloosterman sum as 
+	\[\Kl_n(\psi,\bchi,q,a)=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_q}\chi_1(x_1)\cdots\chi_n(x_n)\psi\bigl(\Tr_{\BF_q/\BF_p}(x_1+\cdots+x_n)\bigr).\] \pause
+
+In this case, there are $n$ characteristic roots with same weight $n-1$. Hence $|\Kl_n|\le nq^{(n-1)/2}$.
+}
+
+\frame{
+\frametitle{Galois action}
+Clearly, $\Kl_n\in\BZ[\mu_{pc}]$, where
+	\[c=\lcm_i \set{\ord(\chi_i)}\]
+divides $q-1$. \pause
+Write
+	\[\Gal(\BQ(\mu_{pc})/\BQ)=\set{\sigma_t\tau_w\mid t\in (\BZ/p\BZ)^\times,w\in(\BZ/c\BZ)^\times},\]
+where
+	\[\sigma_t(\zeta_p)=\zeta_p^t,\quad \sigma_t(\zeta_c)=\zeta_c,\]
+	\[\tau_w(\zeta_p)=\zeta_p,\quad \tau_w(\zeta_c)=\zeta_c^w.\] \pause
+A basic observation tells
+	\[\sigma_t\tau_w\Kl_n(\psi,\bchi,q,a)=\prod\bchi(t)^{-w}\Kl_n(\psi,\bchi^w,q,at^n).\]
+To study the generating fields of $\Kl_n$, we need to consider the distinctness of different Kloosterman sums.
+}
+
+\frame{\frametitle{Trivial character}
+When $\bchi={\bf1}=\set{1,\dots,1}$ is trivial, it's easy to see that
+	\[a,b\ \text{conjugate} \implies \Kl_n(\psi,{\bf1},q,a)=\Kl_n(\psi,{\bf1},q,b).\] \pause
+When $p>(2n^{2d}+1)^2$ (Fisher), or $p\ge(d-1)n+2$ and	$p$ does not divide a certain integer (Wan), this is necessary. In general, it's conjectured that it's true when $p\ge nd$.
+Thus 
+	\[\deg \Kl_n(\psi,{\bf1},q,a)=\frac{p-1}{(p-1,n)}\]
+under these conditions.
+}
+
+\frame{\frametitle{Kloosterman sheaves}
+For our purpose, we need a different sheaf.
+Deligne and Katz defined the Kloosterman sheaf
+	\[\CKl=\CKl_{n,q}(\psi,\bchi)\]
+on $\Gm\otimes \BF_q=\Spec \BF_q[X,X^{-1}]$, with the following properties:
+\begin{enumerate}
+\item $\CKl$ is lisse (locally constant at every finite level) of rank $n$ and pure of weight $n-1$.
+\item For any $a\in \BF_q^\times$,
+	$\Tr\bigl(\Frob_a,\CKl_{\ov a})=(-1)^{n-1}\Kl_n(\psi,\bchi,q,a).$
+\item $\CKl$ is tame at $0$ (Swan$=0$).
+\item $\CKl$ is totally wild with Swan conductor $1$ at $\infty$. So all $\infty$-breaks are $1/n$.
+\end{enumerate}
+}
+
+\frame{\frametitle{Fisher's descent}
+Fisher gave a descent of Kloosterman sheaves along an extension of finite fields.
+For any $a\in\BF_q^\times$, he defined a lisse sheaf $\CF_a(\bchi)$ on $\Gm\otimes\BF_p$, such that
+$\CF_a(\bchi)|\Gm\otimes\BF_q=\bigotimes\limits_{\sigma\in\Gal(\BF_q/\BF_p)} \bigl(t\mapsto \sigma(a)t^n\bigr)^*\CKl_n(\psi\circ\sigma^{-1},\bchi\circ\sigma^{-1})$.
+\begin{enumerate}
+\item $\CF_a(\bchi)$ is lisse of rank $n^d$ and pure of weight $d(n-1)$.
+\item For any $t\in\BF_p^\times$,
+	$\Tr\bigl(\Frob_t,\CF_a(\bchi)_{\ov t}\bigr)=(-1)^{(n-1)d}\Kl_n(\psi,\bchi,q,at^n).$
+\item $\CF_a(\bchi)$ is tame at $0$ and its $\infty$-breaks are at most $1$.
+\end{enumerate}
+}
+
+\frame{\frametitle{Key lemma}
+\begin{lemma}
+Let $\CF,\CF'$ be lisse sheaves on $\Gm\otimes\BF_p$ of same rank $r$ and pure of the same weight $w$.
+Assume that there is a root of unity $\lambda$ such that for any $t\in \BF_p^\times$, we have 
+	\[\Tr\bigl(\Frob_t, \CF_{\ov t})=\lambda\Tr\bigl(\Frob_t, \CF'_{\ov t}).\]
+Let $\CG$ be a geometrically irreducible sheaf of rank $s$ on $\Gm\otimes\BF_p$, pure of weight $w$, such that $\CG\mid \Gm\otimes\ov\BF_p$ occurs exactly once in $\CF\mid \Gm\otimes\ov \BF_p$.
+Then $\CG\mid \Gm\otimes\ov \BF_p$ occurs at least once in $\CF'\mid \Gm\otimes\ov \BF_p$, provided that $p>[2rs(M_0+M_\infty)+1]^2$, where $M_\eta$ is the largest $\eta$-break of $\CF\oplus \CF'$.
+\end{lemma}
+}
+
+\frame{\frametitle{Key lemma, proof}
+Assume not. 
+Applying the Lefschetz Trace Formula to $\CG^\vee\otimes\CF$ and $\CG^\vee\otimes \CF'$, we have
+	\[\sum_{i=0}^2(-1)^i\Tr\bigl(\Frob,\RH_c^i(\CG^\vee\otimes\CF)\bigr)
+		=\lambda\sum_{i=0}^2(-1)^i\Tr\bigl(\Frob, \RH_c^i(\CG^\vee\otimes\CF')\bigr).\] \pause
+Apply  Euler-Poincar\'e formula
+	\[\begin{split}
+	&h^0_c(\CF)-h^1_c(\CF)+h^2_c(\CF)\\
+	=&\rank \CF\cdot \chi_c(\Gm\otimes\BF_p)-\Swan_0(\CF)-\Swan_\infty(\CF)\end{split}\]
+to estimate $\Tr(\Frob,\RH^1_c)$ (weight $\le1$ by Weil II).
+}
+
+\frame{\frametitle{Corollary}
+The $n$-tuple $\bchi$ is called {\em Kummer-induced} if there exsists a non-trivial character $\Lambda$ such that $\bchi=\bchi\Lambda:=\set{\chi_1\Lambda,\dots,\chi_n\Lambda}$ as unordered $n$-tuples.
+In this case, $\prod\bchi=\prod(\bchi\Lambda)=\Lambda^n\prod\bchi$ and thus $\Lambda^n=1$. \pause
+
+Assume that $p>2n+1$ and $\bchi$ is not Kummer-induced. \pause
+Then $\CF_a(\bchi)$ has a highest weight with multiplicity one.  \pause
+Thus it has a subsheaf $\CG_a(\bchi)$ such that, as representations of the Lie algebra $\fg(\CF_a(\bchi))$, $\CG_a(\bchi)$ is the irreducible sub-representation with highest weight. \pause
+Moreover, it is geometrically irreducible and occurs exactly once in $\CF_a(\bchi)$ over $\Gm\otimes\ov\BF_p$.
+}
+
+\frame{\frametitle{Corollary, continue}
+\begin{corollary}
+Let $a,b\in\BF_q^\times$ and let $\bchi$ and $\brho$ be $n$-tuples of multiplicative characters $\chi_i,\rho_j:\BF_q^\times\to\ov\BQ_\ell^\times$.
+Assume that $p>(2n^{2d}+1)^2$, $\bchi$ is not Kummer-induced	and 
+	\[\Kl_n(\psi,\bchi,q,a)=\lambda\Kl_n(\psi,\brho,q,b)\]
+for a fixed root of unity $\lambda\in\mu_{q-1}$.
+Then $\CG_a(\bchi)\otimes \CL_{\prod \ov\bchi}\mid \Gm\otimes\ov \BF_p$ occurs at least once in $\CF_b(\brho)\otimes\CL_{\prod\ov \brho}\mid \Gm\otimes\ov \BF_p$.
+\end{corollary}
+
+Here $\CL_\chi$ is a rank one lisse sheaf on $\Gm\otimes\BF_p$ such that for $t\in\BF_p^\times$,
+	\[\Tr(\Frob_t,(\CL_\chi)_{\ov t})=\chi(t).\]
+}
+
+\frame{\frametitle{Corollary, proof}
+Denote by
+	\[\CF=\CF_a(\bchi)\otimes\CL_{\prod\ov \bchi},\	\CF'=\CF_b(\brho)\otimes\CL_{\prod\ov\brho},\ \CG=\CG_a(\bchi)\otimes\CL_{\prod\ov\bchi}.\]
+For $t\in\BF_p^\times$, we have $\sigma_t\lambda=\lambda$ and thus
+\[\begin{split}
+&(-1)^{(n-1)d}\Tr\bigl(\Frob_t, \CF_{\ov t})
+=\prod\ov\bchi(t)\cdot\Kl_n(\psi,\bchi,q,at^n)\\
+=&\sigma_t\bigl(\Kl_n(\psi,\bchi,q,a)\bigr)
+=\lambda\sigma_t\bigl(\Kl_n(\psi,\brho,q,b)\bigr)\\
+=&\lambda\prod\ov\brho(t)\cdot\Kl_n(\psi,\brho,q,bt^n)
+=(-1)^{(n-1)d}\lambda\Tr\bigl(\Frob_t, \CF'_{\ov t}).
+\end{split}\]
+Apply Lemma to $r=s=n^d,M_0=0,M_\infty\le 1$.
+}
+
+\frame{\frametitle{Distinctness}
+Now 
+	\[\CG_a(\bchi)\otimes \CL_{\prod \ov\bchi}\inj \CF_b(\brho)\otimes\CL_{\prod\ov \brho},\quad \CG_b(\brho)\otimes \CL_{\prod \ov\brho}\inj \CF_a(\bchi)\otimes\CL_{\prod\ov \bchi}.\]
+Thus the highest weight $\lambda_a(\bchi)=\lambda_b(\brho)$.
+Derived from this, and combining Fisher's arguments,  we have:
+\begin{theorem}[Z.]
+Let $a,b\in\BF_q^\times$.
+Assume that $\bchi,\brho$ are not Kummer-induced and neither of them is of type $(\xi_1,\xi_1^{-1},1,\Lambda_2)\xi_2$.
+If $p>(2n^{2d}+1)^2$ and 
+	\[\Kl_n(\psi,\bchi,q,a)=\lambda\Kl_n(\psi,\brho,q,b)\]
+for some $\lambda\in\mu_{q-1}$, then there exists $\sigma\in\Gal(\BF_q/\BF_p)$ and a multiplicative character $\eta$, such that $b=\sigma(a)$ and $\brho=\eta\cdot(\bchi\circ\sigma^{-1})$ as unordered tuples. Moreover, either both Kloosterman sums vanish or $\eta(b)=\lambda^{-1}$.
+\end{theorem}
+}
+
+\section{Generating fields of Kloosterman sums}
+\frame{\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+}
+
+\frame{\frametitle{Non-vanishingness}
+The last step is to show the non-vanishingness.
+\begin{theorem}
+If $p>(3n-1)C_\bchi-n$ and for any $i,j$, $\chi_i=\chi_j$ if $\chi_i^n=\chi_j^n$, then $\Kl_n(\psi,\bchi,q,a)$ is nonzero.
+Here 
+\begin{equation}
+	C_\bchi=\max_{i,j}\lcm\bigl(\ord(\chi_i),\ord(\chi_j)\bigr)
+\end{equation}
+is the supremum of least common multipliers of the orders of any two characters in $\bchi$.
+\end{theorem}
+}
+
+\frame{\frametitle{Non-vanishingness, continue}
+We can express $\Kl_n$ as Gauss sums
+	\[(q-1)\Kl_n(\psi,\bchi,q,a)=
+	\sum_{m=0}^{q-2}\omega^m(a) \prod_{i=1}^n g(m+s_i)\]
+by Fourier transform on $\BF_q^\times$, where $\chi_i=\omega^{s_i}$ for a Teichm\"uller character.
+What we need to do is to proof there is a unique $m$ such that the valuation of $\prod_{i=1}^ng(m+s_i)$ is minimal.
+}
+
+\frame{\frametitle{Main result}
+\begin{theorem}[Z.]
+If $p>\max\set{(2n^{2d}+1)^2,(3n-1)C_\bchi-n}$ and for any $i,j$, $\chi_i=\chi_j$ if $\chi_i^n=\chi_j^n$, then $\Kl_n(\psi,\bchi,q,a)$ generates $\BQ(\mu_{pc})^H$, where $H$ consists of those $\sigma_t\tau_w$ such that there exists an integer $\beta$ and a character $\eta$ satisfying
+  \[t=\lambda a_1^\beta,\lambda^{n_1}=1,\ \bchi^w=\eta\bchi^{q_1^\beta},\ \eta(a)=\prod\bchi^w(t).\]
+Here $n_1=(n,p-1)$, $q_1=\#\BF_p(a^{(p-1)/n_1})$ and $a_1\in\BF_p^\times$ such that $a_1^{n/n_1}=\bfN_{\BF_{q_1}/\BF_p}(a^{(1-p)/n_1})=a^{(1-q_1)/n_1}$.
+\end{theorem}
+}
+
+
+\frame{\frametitle{An example: $n=2$ case}
+Let $\bchi=\set{1,\chi}$, where $\chi$ is a multiplicative character of order $c\neq 2$.
+If $p>\max\set{(2^{2d+1}+1)^2,5c-2)}$, then $\Kl(\psi,\bchi,p^d,a)$ generates $\BQ(\mu_{pc})^H$, where 
+	\[H=
+	\begin{cases}
+		\pair{\tau_{q_1}\sigma_{a_1},\sigma_{-1},\tau_{-1}},
+			&\text{if}\ \chi(-1)=1,\chi(a)=1;\\
+		\pair{\tau_{-q_1}\sigma_{a_1},\sigma_{-1}},
+			&\text{if}\ \chi(-1)=1,\chi(a)=\chi(a_1)=-1;\\
+		\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha},\sigma_{-1}},
+			&\text{if}\ \chi(-1)=1,\chi(a)^\alpha\neq 1;\\
+		\pair{\tau_{q_1}\sigma_{-a_1},\tau_{-1}\sigma_{-1}},
+			&\text{if}\ \chi(-1)=-1, \chi(a)=\chi(a_1)=-1;\\
+		\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}}
+			&\text{if}\ \chi(-1)=-1, \chi(a)=1;\\
+		\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}\sigma_{-1}},
+			&\text{if}\ \chi(-1)=-1,\chi(a)=-1,\chi(a_1)=1;\\
+		\pair{\tau_{q_1^{\alpha/2}}\sigma_{-a_1^{\alpha/2}}},
+			&\text{if}\ \chi(-1)=-1,2\mid \alpha,\chi(a)\neq \pm1;\\
+		\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha}},
+			&\text{if}\ \chi(-1)=-1,2\nmid \alpha,\chi(a)\neq \pm1.
+	\end{cases}\]
+ $q_1=\#\BF_p(a^{(1-p)/2}), a_1=a^{(1-q_1)/2}$ and $\alpha$ is the order of $\chi(a_1)\in\mu_{p-1}$.
+}
+
+\frame{\frametitle{Remark}
+Consider the Kloosterman sums
+	\[S_k=\Kl(\psi,\bchi\circ\bfN_{\BF_{q^k}/\BF_q},q^k,a).\]
+If $p>\max\set{(2n^{2dk}+1)^2,(3n-1)C_\bchi-n},$ then $\BQ(S_k)=\BQ(\mu_{pc})^H$, where $H$ consists of those $\sigma_t\tau_w$ such that there exists an integer $\beta$ and a character $\eta$ on $\BF_q^\times$ satisfying
+	\[	t=\lambda a_1^\beta,\lambda^{n_1}=1,\quad \bchi^w=\eta\bchi^{q_1^\beta},\quad \eta(a)=\gamma\cdot\prod\bchi^w(t),\gamma^k=1.\]
+Thus $\BQ(S_k)=\BQ(S_{k-c})$ since $\gamma^c=1$.
+}
+
+\frame{\frametitle{Remark, continue}
+The $L$-function 
+	\[L(T)=\exp\left(\sum_{k=1}^\infty \frac{T^k}{k} S_k\right)\]
+is a rational function.
+Thus the sequence $\set{S_k}_k$ is linear recurrence sequence.
+The sequence $\set{\BQ(S_k)}_{k\ge N}$ is periodic of period $r$ for some $N$ (Wan, Yin).
+Thus if $p>\max\set{\bigl(2n^{2d(N+r)}+1\bigr)^2,(3n-1)C_\bchi-n}$,  the generating field of $S_k$ is determined by the previous equations for any $k$.
+For this purpose, we need to decrease the bound $(2n^{2d}+1)^2$ and estimate the period $r$ and $N$.
+We conjecture that $S_k$ has the predicted generating field if $p>3ndc$.
+}
+
+
+
+
+
+
+
+
+
+
+\end{document}

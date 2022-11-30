@@ -9,18 +9,18 @@
 \onslide<+->
 此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数,
 \onslide<+->
-然而它却可能可以展开为\markdef{双边幂级数}
+然而它却可能可以展开为\emph{双边幂级数}
 \onslide<+->
-\[\sum_{n=-\infty}^\infty c_n(z-z_0)^n=\markatt{
+\[\sum_{n=-\infty}^\infty c_n(z-z_0)^n=\alert{
 \underbrace{\sum_{n=1}^\infty c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}+
-\marknot{\underbrace{\sum_{n=0}^\infty c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.\]
+\emph{\underbrace{\sum_{n=0}^\infty c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.\]
 
 \onslide<+->
 为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
 \begin{definition}
-如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\markdef{收敛}.
+如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
 \onslide<+->
-否则我们称之为\markdef{发散}.
+否则我们称之为\emph{发散}.
 \end{definition}
 \end{frame}
 
@@ -68,7 +68,7 @@
 
 \begin{frame}{双边幂级数的收敛域}
 \onslide<+->
-因此\markatt{双边幂级数的收敛域为圆环域 $R_1<|z-z_0|<R_2$}.
+因此\alert{双边幂级数的收敛域为圆环域 $R_1<|z-z_0|<R_2$}.
 
 \onslide<+->
 当 $R_1=0$ 或 $R_2=+\infty$ 时, 圆环域的形状会有所不同.
@@ -132,7 +132,7 @@
 
 \begin{frame}{洛朗级数}
 \onslide<+->
-反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\markatt{洛朗级数}.
+反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\alert{洛朗级数}.
 
 \onslide<+->
 例如 $f(z)=\dfrac1{z(1-z)}$ 在 $z=0,1$ 以外解析.
@@ -152,13 +152,13 @@
 设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内处处解析.
 \onslide<+->
 设
-\[\markatt{K_1:|z-z_0|=r},\quad \marknot{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.\]
+\[\alert{K_1:|z-z_0|=r},\quad \emph{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.\]
 是该圆环域内的两个圆周. 
 \onslide<+->
 对于 $r<|z-z_0|<R$, 由柯西积分公式,
 \[f(z)=\frac1{2\pi i}
-\marknot{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
--\frac1{2\pi i}\markatt{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.\]
+\emph{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+-\frac1{2\pi i}\alert{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.\]
 \onslide<3->
 \begin{center}
 \begin{tikzpicture}
@@ -186,7 +186,7 @@
 \begin{frame}{洛朗级数}
 \onslide<+->
 和泰勒级数的推导类似,
-\[\frac1{2\pi i}\marknot{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+\[\frac1{2\pi i}\emph{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
 =\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\]
 可以表达为幂级数的形式.
 \onslide<+->
@@ -195,7 +195,7 @@
 因此
 \[-\frac1{\zeta-z}=\frac1{z-z_0}\cdot\frac1{1-\dfrac{\zeta-z_0}{z-z_0}}=\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}},\]
 \onslide<+->
-\[-\frac1{2\pi i}\markatt{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
+\[-\frac1{2\pi i}\alert{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
 \end{frame}
 
 
@@ -228,15 +228,15 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \onslide<+->
 由复合闭路定理, $K_1,K_2$ 可以换成任意一条在圆环域内绕 $z_0$ 的闭路 $C$.
 \onslide<+->
-从而我们得到 \marknot{$f(z)$ 在以 $z_0$ 为圆心的圆环域的洛朗展开}
-\[\markatt{f(z)=\sum_{n=-\infty}^\infty\left[\marknot{\frac1{2\pi i}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},\]
+从而我们得到 \emph{$f(z)$ 在以 $z_0$ 为圆心的圆环域的洛朗展开}
+\[\alert{f(z)=\sum_{n=-\infty}^\infty\left[\emph{\frac1{2\pi i}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},\]
 其中 $R_1<|z-z_0|<R_2$.
 \end{frame}
 
 
 \begin{frame}{洛朗展开的性质}
 \onslide<+->
-我们称 $f(z)$ 洛朗展开的非负幂次部分为它的\markdef{解析部分}, 负幂次部分为它的\markdef{主要部分}.
+我们称 $f(z)$ 洛朗展开的非负幂次部分为它的\emph{解析部分}, 负幂次部分为它的\emph{主要部分}.
 
 \onslide<+->
 设在圆环域 $R_1<|z-z_0|<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
@@ -245,7 +245,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 则
 \[\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}=\sum_{k=-\infty}^\infty c_k\oint_C(\zeta-z_0)^{k-n-1}\diff\zeta=2\pi i c_n.\]
 \onslide<+->
-因此 $f(z)$ 在圆环域内的\markatt{双边幂级数展开是唯一的, 它就是洛朗级数}.
+因此 $f(z)$ 在圆环域内的\alert{双边幂级数展开是唯一的, 它就是洛朗级数}.
 \end{frame}
 
 
@@ -257,9 +257,9 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \onslide<+->
 由洛朗级数的唯一性可知此时泰勒级数就是洛朗级数,
 \onslide<+->
-因此\marknot{此时洛朗展开一定没有负幂次项}.
+因此\emph{此时洛朗展开一定没有负幂次项}.
 \onslide<+->
-故有\marknot{负幂次项的双边幂级数一定在收敛圆环域内圆上有奇点}, 不过这个奇点未必是 $z_0$.
+故有\emph{负幂次项的双边幂级数一定在收敛圆环域内圆上有奇点}, 不过这个奇点未必是 $z_0$.
 
 \onslide<+->
 如果 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项.
@@ -312,13 +312,13 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \onslide<+->
 这种做法会简便得多.
 \onslide<+->
-因此我们一般\markatt{不用直接法}, 而是\boxatt{用双边幂级数的代数、求导、求积分运} \boxatt{算来得到洛朗级数}.
-\begin{conclusion}[另解]
+因此我们一般\alert{不用直接法}, 而是\abox{用双边幂级数的代数、求导、求积分运} \abox{算来得到洛朗级数}.
+\begin{block}{另解}
 \vspace{-\baselineskip}
 \[\frac{e^z}{z^2}=\frac1{z^2}\left(1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\right)
 \visible<+->{=\frac1{z^2}+\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,}\]
 其中 $0<|z|<+\infty$.
-\end{conclusion}
+\end{block}
 \end{frame}
 
 
@@ -327,7 +327,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
 
 \onslide<+->
-(1) $0<|z|<1$, (2) $1<|z|<2$, (3) $2<|z|<+\infty$. 
+\enumnum1 $0<|z|<1$, \enumnum2 $1<|z|<2$, \enumnum3 $2<|z|<+\infty$. 
 \end{example}
 \begin{solution}
 由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
@@ -341,7 +341,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 
 \begin{frame}{典型例题: 求洛朗展开}
 \begin{solutionc}
-(1) 由于 $|z|<1,\abs{\dfrac z2}<1$,
+\enumnum1 由于 $|z|<1,\abs{\dfrac z2}<1$,
 \onslide<+->
 因此
 \begin{align*}
@@ -357,7 +357,7 @@ f(z)&=-\frac1{2-z}+\frac1{1-z}
 
 \begin{frame}{典型例题: 求洛朗展开}
 \begin{solutionc}
-(2) 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
+\enumnum2 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
 \onslide<+->
 因此
 \begin{align*}
@@ -373,7 +373,7 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 
 \begin{frame}{典型例题: 求洛朗展开}
 \begin{solutionc}
-(3) 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->
+\enumnum3 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->
 因此
 \begin{align*}
 f(z)&=\frac1{1-z}-\frac1{2-z}
@@ -430,7 +430,7 @@ z^3\exp\left(\frac1z\right)&=\sum_{n=0}^\infty\frac{1}{n!z^{n-3}}
 \onslide<+->
 因此洛朗展开可以用来帮助计算函数的积分,
 \onslide<+->
-它就是所谓的\markatt{留数}.
+它就是所谓的\alert{留数}.
 \begin{example}
 求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
 \end{example}

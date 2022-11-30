@@ -11,8 +11,8 @@
 
 \onslide<+->
 特别地,
-\[\markatt{\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\diff z}\]
-被称为函数 \markdef{$f(z)$ 在 $z_0$ 的留数}.
+\[\alert{\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\diff z}\]
+被称为函数 \emph{$f(z)$ 在 $z_0$ 的留数}.
 \onslide<+->
 可以看出, 知道留数之后可以用来计算积分.
 \end{frame}
@@ -20,10 +20,10 @@
 
 \begin{frame}{留数定理}
 \beqskip{5pt}
-\begin{conclusion}[留数定理]
+\begin{block}{留数定理}
 如果 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 那么
 \[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
-\end{conclusion}
+\end{block}
 \begin{proof}
 \begin{center}
 \begin{tikzpicture}
@@ -89,15 +89,15 @@ $f(z)=z^4\sin\dfrac1z$.
 
 \begin{frame}{留数的计算方法}
 设 $z_0$ 为 $f(z)$ 的极点.
-\begin{conclusion}[极点留数计算公式 I]
+\begin{block}{极点留数计算公式 I}
 如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
-\[\eqatt{\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)]}.\]
-\end{conclusion}
+\[\aboxeq{\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)]}.\]
+\end{block}
 
-\begin{conclusion}[极点留数计算公式 II]
+\begin{block}{极点留数计算公式 II}
 如果 $z_0$ 是 $1$ 阶极点或可去奇点, 那么
-\[\eqatt{\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z)}.\]
-\end{conclusion}
+\[\aboxeq{\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z)}.\]
+\end{block}
 \end{frame}
 
 
@@ -171,10 +171,10 @@ $\dfrac1{24}$.
 
 
 \begin{frame}{留数的计算方法}
-\begin{conclusion}[极点留数计算公式 III]
+\begin{block}{极点留数计算公式 III}
 设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的 $1$ 阶零点, 则
-\[\eqatt{\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}}.\]
-\end{conclusion}
+\[\aboxeq{\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}}.\]
+\end{block}
 \begin{proofs}
 不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的 $1$ 阶极点或可去奇点.
 \onslide<+->
@@ -233,23 +233,23 @@ $f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
 其中 $c_n=\displaystyle\frac1{2\pi i}\oint_C\frac{f(z)}{z^{n+1}}\diff z$, $C$ 为该圆环域中绕 $0$ 的闭路.
 \onslide<+->
 称
-\[\markatt{\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\diff z}\]
-为函数 \markdef{$f(z)$ 在 $\infty$ 的留数}.
+\[\alert{\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\diff z}\]
+为函数 \emph{$f(z)$ 在 $\infty$ 的留数}.
 \onslide<+->
 由于
 \[f\left(\frac1z\right)\frac1{z^2}=\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots\]
 \onslide<+->
 因此
-\[\markatt{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right].}\]
+\[\alert{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right].}\]
 \end{frame}
 
 
 \begin{frame}{留数之和为 $0$*}
 \onslide<+->
-需要注意的是, 和普通复数不同, \markatt{即便 $\infty$ 是可去奇点, 也不意味着 $\Res[f(z),\infty]=0$}.
+需要注意的是, 和普通复数不同, \alert{即便 $\infty$ 是可去奇点, 也不意味着 $\Res[f(z),\infty]=0$}.
 
 \begin{theorem}
-如果 $f(z)$ 只有有限个奇点, 那么 $f(z)$ 在\markatt{扩充复平面内各奇点处的留数之和为 $0$}.
+如果 $f(z)$ 只有有限个奇点, 那么 $f(z)$ 在\alert{扩充复平面内各奇点处的留数之和为 $0$}.
 \end{theorem}
 \begin{proof}
 设闭路 $C$ 内部包含除 $\infty$ 外所有奇点 $z_1,\dots,z_n$.
@@ -317,18 +317,18 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \begin{center}
 \begin{tikzpicture}[node distance=25pt]
   \node (integral){\vphantom{$\displaystyle\int$}};
-  \node[draw,white,fill=heavyb,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
-  \node[draw,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
-  \node[draw,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
-  \node[draw,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
-  \node[draw,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
+  \node[cstnodeb,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+  \node[cstnode,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
+  \node[cstnode,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
+  \node[cstnode,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
+  \node[cstnode,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
   \node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
-  \node[draw,white,fill=heavyr,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
-  \node[draw,white,fill=heavyr,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
+  \node[cstnodeg,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+  \node[cstnodeg,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-  \node[draw,white,fill=heavyr,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
-  \node[draw,white,fill=heavyr,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+  \node[cstnodeg,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+  \node[cstnodeg,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
   \draw[cstnarrow,dcolorc,visible on=<2->] (integral) -- (isclosed);
   \draw[cstnarrow,dcolorc,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
   \draw[cstnarrow,dcolorc,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
@@ -342,4 +342,31 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \end{center}
 \end{frame}
 
+
+\begin{frame}{例题: 留数在有理函数分解中的应用}
+\onslide<+->
+在求有理函数的洛朗展开, 以及之后在求有理函数的拉普拉斯逆变换时, 我们需要将一个有理函数表达为分母只有一个零点的有理函数之和.
+\onslide<+->
+例如:
+\[\frac{z-3}{(z+1)(z-1)^2}=\frac1{z-1}-\frac1{(z-1)^2}-\frac1{z+1}.\]
+\onslide<+->
+我们可以用待定系数法计算, 不过使用留数会更为简便.
+\end{frame}
+
+
+\begin{frame}{例题: 留数在有理函数分解中的应用}
+\onslide<+->
+\begin{solution}
+设
+\[f(z)=\frac{z-3}{(z+1)(z-1)^2}=\frac a{z-1}+\frac b{(z-1)^2}+\frac c{z+1},\]
+\onslide<+->
+则
+\[a=\Res[f(z),1]=\left(\frac{z-3}{z+1}\right)'\Big|_{z=1}
+=\frac 4{(z+1)^2})\Big|_{z=1}=1,\]
+\[b=\Res[(z-1)f(z),1]=\frac{z-3}{z+1}\Big|_{z=1}
+=-1,\]
+\[c=\Res[f(z),-1]=\frac{z-3}{(z-1)^2}\Big|_{z=-1}
+=-1.\]
+\end{solution}
+\end{frame}
 

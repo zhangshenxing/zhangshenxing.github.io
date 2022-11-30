@@ -8,13 +8,13 @@
 \begin{itemize}
 \item 设 $\{z_n\}_{n\ge1}$ 是一个复数列.
 \onslide<+->
-表达式 $\suml_{n=1}^\infty z_n$ 称为复数项\markdef{无穷级数}.
+表达式 $\suml_{n=1}^\infty z_n$ 称为复数项\emph{无穷级数}.
 \item 称
 \[s_n=z_1+z_2+\cdots+z_n\]
-为该级数的\markdef{部分和}.
-\item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \markdef{收敛}, 并记 $\suml_{n=1}^\infty z_n=\lim\limits_{n\to\infty}s_n$ 为它的\markdef{和}.
+为该级数的\emph{部分和}.
+\item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \emph{收敛}, 并记 $\suml_{n=1}^\infty z_n=\lim\limits_{n\to\infty}s_n$ 为它的\emph{和}.
 \onslide<+->
-否则称之\markdef{发散}.
+否则称之\emph{发散}.
 \end{itemize}
 \end{definition}
 \end{frame}
@@ -50,7 +50,7 @@ $\tau_n=y_1+y_2+\cdots+y_n,$
 \onslide<+->
 $z_n=x_n+iy_n\to 0$.
 \onslide<+->
-因此 \markatt{$z_n\to0$ 是 $\suml_{n=1}^\infty z_n$ 收敛的必要条件}.
+因此 \alert{$z_n\to0$ 是 $\suml_{n=1}^\infty z_n$ 收敛的必要条件}.
 \begin{theorem}
 如果实数项级数
 \[\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots\]
@@ -85,8 +85,8 @@ $z_n=x_n+iy_n\to 0$.
 \begin{frame}{绝对收敛和条件收敛}
 \begin{definition}
 \begin{itemize}
-\item 如果级数 $\suml_{n=1}^\infty |z_n|$ 收敛, 则称 $\suml_{n=1}^\infty z_n$ \markdef{绝对收敛}.
-\item 称收敛但不绝对收敛的级数\markdef{条件收敛}.
+\item 如果级数 $\suml_{n=1}^\infty |z_n|$ 收敛, 则称 $\suml_{n=1}^\infty z_n$ \emph{绝对收敛}.
+\item 称收敛但不绝对收敛的级数\emph{条件收敛}.
 \end{itemize}
 \end{definition}
 \begin{theorem}
@@ -103,7 +103,7 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 \begin{frame}{绝对收敛和条件收敛}
 \begin{center}
 \renewcommand\arraystretch{2}
-\defaultrowcolor
+\defaultrowcolors
 \resizebox{\linewidth}{!}{
 \begin{tabular}{|c|c|c|c|}
 &\tht $\suml_{n=1}^\infty x_n$ 发散
@@ -115,12 +115,12 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 &$\suml_{n=1}^\infty z_n$ 发散\\
  \tht $\suml_{n=1}^\infty y_n$ 条件收敛
 &$\suml_{n=1}^\infty z_n$ 发散
-&\thtr$\suml_{n=1}^\infty z_n$ 条件收敛
-&\thtr$\suml_{n=1}^\infty z_n$ 条件收敛\\
+&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
+&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛\\
  \tht $\suml_{n=1}^\infty y_n$ 绝对收敛
 &$\suml_{n=1}^\infty z_n$ 发散
-&\thtr$\suml_{n=1}^\infty z_n$ 条件收敛
-&\thtg$\suml_{n=1}^\infty z_n$ 绝对收敛\\
+&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
+&\cellcolor{lightr} $\suml_{n=1}^\infty z_n$ 绝对收敛\\
 \end{tabular}}
 \end{center}
 \end{frame}
@@ -228,9 +228,9 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 \onslide<+->
 由此可得: 设
 \begin{enumerate}
-\item \marknot{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
-\item \marknot{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
-\item \marknot{柯西-Hadamard判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (所有子数列中极限的最大值).
+\item \emph{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
+\item \emph{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
+\item \emph{柯西-Hadamard判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (所有子数列中极限的最大值).
 \end{enumerate}
 \onslide<+->
 则当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛;
@@ -241,9 +241,9 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 \onslide<+->
 如果 $\lambda=1$, 则无法使用该方法判断.
 
-\begin{conclusion}[另解]
+\begin{block}{另解}
 因为 $\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\abs{\dfrac{8}{n+1}}=0$, 所以该级数绝对收敛.
-\end{conclusion}
+\end{block}
 \end{frame}
 
 

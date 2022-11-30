@@ -14,12 +14,12 @@
 \onslide<+->
 这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
 \onslide<+->
-我们称之为 $\varphi(t)$ 的\markdef{拉普拉斯变换}.
+我们称之为 $\varphi(t)$ 的\emph{拉普拉斯变换}.
 \end{frame}
 
 
 \begin{frame}{拉普拉斯变换存在定理}
-\begin{theorem}[拉普拉斯变换存在定理]
+\begin{block}{拉普拉斯变换存在定理}
 若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足
 \begin{itemize}
 \item $f(t)$ 在任一有限区间上至多只有有限多间断点;
@@ -27,12 +27,12 @@
 \end{itemize}
 \onslide<+->
 则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
-\end{theorem}
+\end{block}
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}[node distance=-20pt]
-  \node[draw,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
-  \node[draw,align=center, right=116pt of a](b){象函数\\\markatt{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
+  \node[cstnodeg,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
+  \node[cstnodeg,align=center, right=116pt of a](b){象函数\\\alert{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
   \node[above=of a] (a1){\hphantom{原象函数}};
   \node[below=of a] (a2){\hphantom{原象函数}};
   \node[above=of b] (b1){\hphantom{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
@@ -57,23 +57,23 @@
 &\visible<+->{=\frac1{s-k}, \quad\Re s>\Re k.}
 \end{align*}
 \onslide<+->
-即 \boxatt{$\msl[e^{kt}]=\dfrac1{s-k}$}.
+即 \abox{$\msl[e^{kt}]=\dfrac1{s-k}$}.
 \onslide<+->
-特别地 \boxatt{$\msl[1]=\dfrac1s$}.
+特别地 \abox{$\msl[1]=\dfrac1s$}.
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{拉普拉斯变换的性质}
-\begin{theorem}[线性性质]
+\begin{block}{线性性质}
 \[\msl[\alpha f+\beta g]=\alpha F+\beta G,\quad
 \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{theorem}
+\end{block}
 
-\begin{theorem}[延迟性质和位移性质]
+\begin{block}{延迟性质和位移性质}
 \[\msl[e^{s_0t}f(t)]=F(s-s_0),\quad
 \msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0.\]
-\end{theorem}
+\end{block}
 
 \onslide<+->
 例如
@@ -82,22 +82,20 @@
 
 
 \begin{frame}{拉普拉斯变换的性质}
-\begin{conclusion}[微分性质]
+\begin{block}{微分性质}
 \vspace{-\baselineskip}
-\[\eqatt{\msl[f'(t)]=sF(s)-f(0)},\]
-\[\eqatt{\msl[f''(t)]=s^2F(s)-sf(0)-f'(0)},\]
+\[\aboxeq{\msl[f'(t)]=sF(s)-f(0)},\]
+\[\aboxeq{\msl[f''(t)]=s^2F(s)-sf(0)-f'(0)},\]
 \[\msl[f^{(n)}(t)]=s^nF(s)-s^{n-1}f(0)-s^{n-2}f'(0)-\cdots-f^{(n-1)}(0).\]
-\end{conclusion}
+\end{block}
 
-\begin{theorem}[积分性质]
-\vspace{-\baselineskip}
+\begin{block}{积分性质}
 \[\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s).\]
-\end{theorem}
+\end{block}
 
-\begin{theorem}[乘多项式性质]
-\vspace{-\baselineskip}
+\begin{block}{乘多项式性质}
 \[\msl[tf(t)]=-F'(s),\quad\msl[t^kf(t)]=(-1)^kF^{(k)}(s).\]
-\end{theorem}
+\end{block}
 \end{frame}
 
 
@@ -111,9 +109,9 @@
 \onslide<+->
 因此
 \begin{align*}
-&\peq\eqatt{\msl[\sin{kt}]}=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)\\
+&\peq\aboxeq{\msl[\sin{kt}]}=\frac1{2j}\left(\msl[e^{jkt}]-\msl[e^{-jkt}]\right)\\
 &\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)}
-\visible<+->{\eqatt{=\frac k{s^2+k^2}},\quad \Re s>\abs{\Im k}.}
+\visible<+->{\aboxeq{=\frac k{s^2+k^2}},\quad \Re s>\abs{\Im k}.}
 \end{align*}
 \end{solution}
 \end{frame}
@@ -124,7 +122,7 @@
 求 $\msl[\cos{kt}]$.
 \end{exercise}
 \begin{answer}
-\boxatt{$\msl[\cos{kt}]=\dfrac s{s^2+k^2}$}, $\Re s>\abs{\Im k}$.
+\abox{$\msl[\cos{kt}]=\dfrac s{s^2+k^2}$}, $\Re s>\abs{\Im k}$.
 \end{answer}
 \end{frame}
 
@@ -140,7 +138,7 @@
 \[\msl[f^{(m)}(t)]=s^m\msl[f(t)]=\msl[m!]=\frac{m!}s,\]
 \onslide<+->
 \vspace{-\baselineskip}
-\[\eqatt{\msl[t^m]}=\msl[f(t)]\eqatt{=\frac{m!}{s^{m+1}}},\quad \Re s>0.\]
+\[\aboxeq{\msl[t^m]}=\msl[f(t)]\aboxeq{=\frac{m!}{s^{m+1}}},\quad \Re s>0.\]
 \onslide<+->
 或由
 \vspace{-\baselineskip}
@@ -157,10 +155,10 @@
 \[\msl^{-1}[F(s)]=\frac1{2\pi j}\int_{\beta-j\infty}^{\beta+j\infty}F(s)e^{st}\diff s,\quad t>0\]
 \onslide<+->
 通过构造恰当的闭路, 可以证明这等价于
-\begin{theorem}[拉普拉斯逆变换定理]
+\begin{block}{拉普拉斯逆变换定理}
 设 $F(s)$ 的所有奇点为 $s_1,\dots,s_k$, 且 $F(\infty)=0$, 则
 \[\msl^{-1}[F(s)]=\sum_{k=1}^n \Res\left[F(s)e^{st},s_k\right].\]
-\end{theorem}
+\end{block}
 \onslide<+->
 不过我们只要求掌握如何利用常见函数的拉普拉斯变换来计算逆变换.
 \end{frame}
@@ -190,9 +188,9 @@
 \[f_1(t)\ast f_2(t)=\int_0^t f_1(\tau)f_2(t-\tau)\diff \tau,\quad t\ge 0.\]
 \onslide<+->
 此时我们有如下的卷积定理.
-\begin{theorem}[卷积定理]
+\begin{block}{卷积定理}
 \[\msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).\]
-\end{theorem}
+\end{block}
 \end{frame}
 
 
@@ -233,14 +231,14 @@
 \begin{frame}{使用拉普拉斯变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
-\node[draw,fill=lightr] (p1){微分方程或积分方程};
-\node[draw,right=110pt of p1] (p2){象函数的代数方程};
-\node[draw,fill=lightr,below=of p1] (p3){原象函数(方程的解)};
-\node[draw,below=of p2] (p4){象函数};
-\draw[cstnarrow] (p1)--node[above]{拉普拉斯变换 $\msl$}(p2);
-\draw[cstnarrow] (p4)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(p3);
-\draw[cstnarrow] (p2)--(p4);
-\draw[cstnarrow,dcolora] (p1)--(p3);
+\node[cstnodeg] (p1){微分方程或积分方程};
+\node[cstnodeb,right=110pt of p1] (p2){象函数的代数方程};
+\node[cstnodeg,below=of p1] (p3){原象函数(方程的解)};
+\node[cstnodeb,below=of p2] (p4){象函数};
+\draw[cstnarrow,dcolorb] (p1)--node[above]{拉普拉斯变换 $\msl$}(p2);
+\draw[cstnarrow,dcolorb] (p4)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(p3);
+\draw[cstnarrow,dcolorb] (p2)--(p4);
+\draw[cstnarrow,dcolorc] (p1)--(p3);
 \end{tikzpicture}
 \end{center}
 \end{frame}

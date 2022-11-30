@@ -7,40 +7,35 @@
 \onslide<+->
 通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
 
-\begin{theorem}[线性性质]
-\vspace{-5pt}
+\begin{block}{线性性质}
 \[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 \msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{theorem}
+\end{block}
 \vspace{-5pt}
 
-\begin{theorem}[位移性质]
-\vspace{-\baselineskip}
-\vspace{-5pt}
+\begin{block}{位移性质}
 \[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
 \msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
 \vspace{-\baselineskip}
-\end{theorem}
-\vspace{-3pt}
+\end{block}
 \onslide<+->
 位移性质通过变量替换容易证明.
 \onslide<+->
 由此可得
-\vspace{-3pt}
-\[\eqatt{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
+\[\aboxeq{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
 \msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}}.\]
 \end{frame}
 
 
 \begin{frame}{傅里叶变换的性质}
-\begin{theorem}[微分性质]
+\begin{block}{微分性质}
 \[\msf[f'(t)]=j\omega F(\omega),\quad
 \msf^{-1}[F'(\omega)]=-jtf(t),\]
 \onslide<+->
 \vspace{-\baselineskip}
 \[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
 \msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
-\end{theorem}
+\end{block}
 \onslide<+->
 这里, 被变换的函数都要求在 $\infty$ 处趋于 $0$, 下同. 
 \onslide<+->
@@ -48,27 +43,27 @@
 \[\msf[f']=\pair{f'(t),e^{-j\omega t}}=-\pair{f(t),(e^{-j\omega t})'}=j\omega F(\omega)\]
 可得.
 
-\begin{theorem}[积分性质]
+\begin{block}{积分性质}
 \[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
-\end{theorem}
+\end{block}
 \end{frame}
 
 
 \begin{frame}{傅里叶变换的性质}
 由微分性质可得
-\begin{theorem}[乘多项式性质]
+\begin{block}{乘多项式性质}
 \[\msf[tf(t)]=jF'(\omega),\quad
 \msf^{-1}[\omega F(\omega)]=-jf'(t),\]
 \onslide<+->
 \[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
 \msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
-\end{theorem}
+\end{block}
 \onslide<+->
 由变量替换易得
-\begin{theorem}[相似性质]
+\begin{block}{相似性质}
 \[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
 \msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac\omega a\right).\]
-\end{theorem}
+\end{block}
 \end{frame}
 
 
@@ -97,9 +92,9 @@
 因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
 \onslide<+->
 \begin{align*}
-\eqatt{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
+\aboxeq{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
 &\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
-&\visible<+->{\eqatt{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)]}.}
+&\visible<+->{\aboxeq{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)]}.}
 \end{align*}
 \end{solution}
 \end{frame}
@@ -110,15 +105,15 @@
 求 $\cos{\omega_0 t}$ 的傅里叶变换.
 \end{exercise}
 \begin{answer}
-\boxatt{$\msf[\cos{\omega_0 t}]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}.
+\abox{$\msf[\cos{\omega_0 t}]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}.
 \end{answer}
 \end{frame}
 
 
 \begin{frame}{卷积}
 \begin{definition}
-$f_1(t),f_2(t)$ 的\markdef{卷积}是指
-\[\markatt{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
+$f_1(t),f_2(t)$ 的\emph{卷积}是指
+\[\alert{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
 \end{definition}
 \onslide<+->
 容易验证卷积满足如下性质:
@@ -152,14 +147,12 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 
 \begin{frame}{卷积定理}
 \beqskip{0pt}
-\begin{theorem}[卷积定理]
-\vspace{-8pt}
+\begin{block}{卷积定理}
 \[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
 \msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
 \vspace{-8pt}
-\end{theorem}
+\end{block}
 \begin{proofs}
-\vspace{-\baselineskip}
 \begin{align*}
 \msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
 &\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
@@ -175,14 +168,14 @@ $f_1(t),f_2(t)$ 的\markdef{卷积}是指
 \begin{frame}{使用傅里叶变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
-\node[draw,fill=lightr] (p1){微分方程或积分方程};
-\node[draw,right=110pt of p1] (p2){象函数的代数方程};
-\node[draw,fill=lightr,below=of p1] (p3){原象函数(方程的解)};
-\node[draw,below=of p2] (p4){象函数};
-\draw[cstnarrow] (p1)--node[above]{傅里叶变换 $\msf$}(p2);
-\draw[cstnarrow] (p4)--node[below]{傅里叶逆变换 $\msf^{-1}$}(p3);
-\draw[cstnarrow] (p2)--(p4);
-\draw[cstnarrow,dcolora] (p1)--(p3);
+\node[cstnodeg] (p1){微分方程或积分方程};
+\node[cstnodeb,right=110pt of p1] (p2){象函数的代数方程};
+\node[cstnodeg,below=of p1] (p3){原象函数(方程的解)};
+\node[cstnodeb,below=of p2] (p4){象函数};
+\draw[cstnarrow,dcolorb] (p1)--node[above]{傅里叶变换 $\msf$}(p2);
+\draw[cstnarrow,dcolorb] (p4)--node[below]{傅里叶逆变换 $\msf^{-1}$}(p3);
+\draw[cstnarrow,dcolorb] (p2)--(p4);
+\draw[cstnarrow,dcolorc] (p1)--(p3);
 \end{tikzpicture}
 \end{center}
 \end{frame}

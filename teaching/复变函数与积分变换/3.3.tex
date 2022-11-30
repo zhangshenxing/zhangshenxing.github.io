@@ -25,7 +25,7 @@ $F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 \begin{proofs}
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,dcolora,rounded corners=0.5cm,fill=cyan!20!white] (-2.5,-0.8) rectangle (2,1);
+\filldraw[cstcurve,dcolora,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
 \draw[cstcurve,dcolorb] (0,0) circle(0.7);
 \draw[cstcurve,dcolorc] (-2,0)to [bend left](0,0);
 \draw[cstcurve,dcolorc,visible on=<2->] (0,0)--(0.4,0.4);
@@ -80,7 +80,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 
 \begin{frame}{原函数的存在性}
 \onslide<+->
-如果 $D$ 上的解析函数 $\varphi(z)$ 满足 $\varphi'(z)=f(z)$, 则称 $\varphi(z)$ 是 $f(z)$ 的一个\markdef{原函数}.
+如果 $D$ 上的解析函数 $\varphi(z)$ 满足 $\varphi'(z)=f(z)$, 则称 $\varphi(z)$ 是 $f(z)$ 的一个\emph{原函数}.
 \onslide<+->
 由C-R方程可知, 如果 $\varphi'(z)=0$, 则 $\varphi(z)$ 是常值函数.
 \onslide<+->
@@ -89,17 +89,17 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 故 $f(z)$ 的原函数一定是
 \[G(z)=\int_{z_0}^zf(z)\diff z+c.\]
 \onslide<+->
-我们称之为 $f(z)$ 的\markdef{不定积分}, 记为 \markdef{$\displaystyle\int f(z)\diff z$}.
+我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\displaystyle\int f(z)\diff z$}.
 \onslide<+->
 显然
-\[\eqatt{G(z_1)-G(z_2)=\int_{z_1}^{z_2}f(z)\diff z.}\]
+\[\aboxeq{G(z_1)-G(z_2)=\int_{z_1}^{z_2}f(z)\diff z.}\]
 \onslide<+->
-这就是单连通区域上解析函数的\markdef{牛顿-莱布尼兹定理}.
+这就是单连通区域上解析函数的\emph{牛顿-莱布尼兹定理}.
 
 \onslide<+->
 它和实变函数定积分的牛顿-莱布尼兹定理的差异在哪呢?
 \onslide<+->
-复变情形要求是\markatt{单连通区域上解析函数}, 实变情形要求是\markatt{闭区间上连续函数}.
+复变情形要求是\alert{单连通区域上解析函数}, 实变情形要求是\alert{闭区间上连续函数}.
 \end{frame}
 
 
@@ -134,7 +134,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\]
 \end{solution}
 \onslide<+->
-这里我们使用了\markatt{凑微分法}.
+这里我们使用了\alert{凑微分法}.
 \end{frame}
 
 
@@ -160,7 +160,7 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 \end{align*}
 \end{solution}
 \onslide<+->
-这里我们使用了\markatt{分部积分法}.
+这里我们使用了\alert{分部积分法}.
 \endgroup
 \end{frame}
 

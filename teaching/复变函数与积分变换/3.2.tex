@@ -70,9 +70,9 @@
 
 
 \begin{frame}{柯西-古萨基本定理}
-\begin{conclusion}[柯西-古萨基本定理]
-\boxatt{设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.}
-\end{conclusion}
+\begin{block}{柯西-古萨基本定理}
+\abox{设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.}
+\end{block}
 \begin{corollary}
 设 $f(z)$ 在单连通域 $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线(可以不是闭路), 则 $\displaystyle\oint_Cf(z)\diff z=0$.
 \end{corollary}
@@ -165,13 +165,13 @@
 \onslide<+->
 设 $C_0,C_1,\dots,C_n$ 是 $n+1$ 条简单闭曲线, 且 $C_1,\dots,C_n$ 每一条都包含在其它闭路的外部, 而且它们都包含在 $C_0$ 的内部.
 \onslide<+->
-这样它们围成了一个多连通区域 $D$, 它的边界称为一个\markdef{复合闭路} $C=C_0+C_1^-+\cdots+C_n^-$.
+这样它们围成了一个多连通区域 $D$, 它的边界称为一个\emph{复合闭路} $C=C_0+C_1^-+\cdots+C_n^-$.
 \onslide<+->
 沿着 $C$ 前进的点, $D$ 总在它的左侧,所以这就是它的正方向.
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstcurve,cyan!20!white,visible on=<2->] (0,0) circle(2.5 and 1.5);
+\fill[cstcurve,cstfill,visible on=<2->] (0,0) circle(2.5 and 1.5);
 \fill[cstcurve,white,visible on=<2->] (1,0) circle(0.6);
 \fill[cstcurve,white,visible on=<2->] (-1,0) circle(0.6);
 \draw[cstcurve,dcolora] (0,0) circle(2.5 and 1.5);
@@ -190,11 +190,11 @@
 
 
 \begin{frame}{复合闭路定理}
-\begin{conclusion}[复合闭路定理]
+\begin{block}{复合闭路定理}
 设 $f(z)$ 在复合闭路 $C=C_0+C_1^-+\cdots+C_n^-$ 及其所围成的多连通区域内解析, 则
 \[\oint_{C_0}f(z)\diff z=
 \oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
-\end{conclusion}
+\end{block}
 \end{frame}
 
 
@@ -213,7 +213,7 @@
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstcurve,cyan!20!white] (0,0) circle(2.5 and 1.5);
+\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
 \fill[cstcurve,white] (1,0) circle(0.6);
 \fill[cstcurve,white] (-1,0) circle(0.6);
 
@@ -284,7 +284,7 @@
 \begin{frame}{例题: 复合闭路定理的应用}
 \onslide<+->
 同理可知, 当 $a$ 在 $C$ 的内部时,
-\[\markatt{\displaystyle\int_C\frac1{z-a}\diff z=2\pi i.}\]
+\[\alert{\displaystyle\int_C\frac1{z-a}\diff z=2\pi i.}\]
 
 \begin{example}
 求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
@@ -333,7 +333,7 @@
 \begin{solution}
 \begin{center}
 \begin{tikzpicture}
-\filldraw[cstcurve,dcolora,fill=cyan!20!white] (0,0) circle (1.5);
+\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.5);
 \draw[cstcurve,dcolora,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
 \filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.75);
 \draw[cstcurve,dcolorb,cstarrow1to] (-0.75,0) arc(180:130:0.75);

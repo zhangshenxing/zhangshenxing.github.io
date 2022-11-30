@@ -4,7 +4,7 @@
 \begin{frame}{柯西积分公式}
 \onslide<+->
 柯西积分定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
-\begin{conclusion}[柯西积分公式]
+\begin{block}{柯西积分公式}
 设
 \begin{itemize}[<*>]
 \item 函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析,
@@ -13,7 +13,7 @@
 \onslide<+->
 则
 \[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z.\]
-\end{conclusion}
+\end{block}
 \onslide<+->
 如果 $z_0\notin D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
 \end{frame}
@@ -210,12 +210,12 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \onslide<+->
 解析函数可以由它的积分所表示.
 \onslide<+->
-不仅如此, 通过积分表示, 还可以说明\markatt{解析函数存在任意阶解析的导数}.
+不仅如此, 通过积分表示, 还可以说明\alert{解析函数存在任意阶解析的导数}.
 
-\begin{conclusion}[柯西积分公式]
+\begin{block}{柯西积分公式}
 设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
 \[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.\]
-\end{conclusion}
+\end{block}
 \onslide<+->
 其中右侧被积函数可以记忆成公式
 \[f(z_0)=\frac{1}{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z\]
@@ -240,11 +240,11 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 \end{align*}
 \onslide<+->
 两式相减得到
-\[\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi i}\marknot{\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\diff z}.\]
+\[\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi i}\emph{\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\diff z}.\]
 \onslide<+->
 当 $h\to 0$ 时, 左边的极限是 $f'(z_0)$.
 \onslide<+->
-因此我们只需要证明右边的极限等于 $\displaystyle\frac1{2\pi i}\marknot{\oint_C\frac{f(z)}{(z-z_0)^2}\diff z}$.
+因此我们只需要证明右边的极限等于 $\displaystyle\frac1{2\pi i}\emph{\oint_C\frac{f(z)}{(z-z_0)^2}\diff z}$.
 \end{proofs}
 \endgroup
 \end{frame}
@@ -278,7 +278,7 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 
 \begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
 \onslide<+->
-\markatt{柯西积分公式的作用不在于计算高阶导数, 而是用高阶导数来计算积分.}
+\alert{柯西积分公式的作用不在于计算高阶导数, 而是用高阶导数来计算积分.}
 \begin{example}
 求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
 \end{example}
@@ -341,12 +341,11 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 求 $\displaystyle\oint_{|z|=1}z^ne^z\diff z$, 其中 $n$ 是整数.
 \end{example}
 \begin{solution}
-\indent
 当 $n\ge 0$ 时, $z^ne^z$ 处处解析.
 \onslide<+->
-由柯西-古萨基本定理, $\displaystyle\oint_{|z|=1}z^ne^z\diff z=0$.
+由柯西-古萨基本定理, 
+\[\oint_{|z|=1}z^ne^z\diff z=0.\]
 
-\indent
 \onslide<+->
 当 $n\le-1$ 时, $e^z$ 处处解析.
 \onslide<+->
@@ -363,7 +362,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 求 $\displaystyle\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z$ 和 $\displaystyle\oint_{|z-1|=2}\frac1{(z-2)^2z^3}\diff z$.
 \end{example}
 \begin{solution}
-(1) $\dfrac1{(z-2)^2z^3}$ 在 $|z-3|<2$ 的奇点为 $z=2$.
+\enumnum1 $\dfrac1{(z-2)^2z^3}$ 在 $|z-3|<2$ 的奇点为 $z=2$.
 \onslide<+->
 由柯西积分公式,
 \[\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z
@@ -376,7 +375,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \begin{frame}[<*>]{典型例题: 使用高阶导数的柯西积分公式计算积分}
 \onslide<+->
 \begin{solutionc}
-(2) $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
+\enumnum2 $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
 \onslide<+->
 取 $C_1,C_2$ 分别为以 $0$ 和 $2$ 为圆心的分离圆周.
 \onslide<+->
@@ -427,7 +426,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 高阶柯西积分公式说明, 函数 $f(z)$ 只要在闭区域 $\ov D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $\ov D$ 中解析.
 \onslide<+->
-\markatt{这一点与实变量函数有本质的区别.}
+\alert{这一点与实变量函数有本质的区别.}
 
 \onslide<+->
 同时我们也可以看出, 如果一个二元实函数 $u(x,y)$ 是一个解析函数的实部或虚部, 则 $u$ 也是具有任意阶偏导数.

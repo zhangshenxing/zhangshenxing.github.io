@@ -1,0 +1,412 @@
+% -*- coding: utf-8 -*-
+\documentclass{beamer}
+\usetheme{madrid}
+\usepackage{beamerouterthemeprogressbarjma} 
+% 恢复默认字体
+%\renewcommand\mathfamilydefault{\rmdefault}
+
+
+ %\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+  %\setbeamertemplate{blocks}[rounded][shadow=true]
+  %\setbeamertemplate{footline}[frame number]
+  %\setbeamercovered{transparent}
+  %\usefonttheme[onlysmall]{structurebold}
+  % \usefonttheme[onlymath]{serif}
+
+\definecolor{bistre}{rgb}{0.24, 0.17, 0.12} % 黑色
+\definecolor{mygrey}{rgb}{0.52, 0.52, 0.51} % 灰色
+\definecolor{lightblue}{rgb}{0.15, 0.15, 0.55}
+\colorlet{main}{green!50!black}
+\colorlet{text}{bistre!100!white}
+
+% 不同元素指定不同颜色，fg是本身颜色，bg是背景颜色，!num!改变数值提供渐变色
+%\setbeamercolor{title}{fg=main}
+\setbeamercolor{frametitle}{fg=lightblue,bg=white}
+\setbeamertemplate{frametitle}[default][center]
+%\setbeamercolor{section in toc}{fg=text}
+%\setbeamercolor{normal text}{fg=text}
+%\setbeamercolor{block title}{fg=main,bg=mygrey!14!white}
+%\setbeamercolor{block body}{fg=black,bg=mygrey!10!white}
+%\setbeamercolor{qed symbol}{fg=main} % 证明结束后的框颜色
+%\setbeamercolor{math text}{fg=black}
+
+%\usepackage{CJKutf8}
+\usepackage{ctex}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{cases}
+\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage[all]{xy}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{stmaryrd}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+
+\input{symbols}
+
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+\title{关于奇素因子模 $8$ 余 $\pm1$ 的非同余数}
+\author{张神星}
+\institute{2021年四川大学青年数论论坛\\四川~成都}
+\date{2021年11月26日}
+
+\frame{
+\titlepage
+}
+
+\section{背景}
+
+\begin{frame}
+\frametitle{同余数与同余椭圆曲线}
+设 $n$ 是一个平方自由的正整数. 如果 $n$ 可以表为一个有理边长直角三角形的面积, 则称 $n$ 是一个同余数.  
+这等价于椭圆曲线
+\[E=E_n: y^2=x^3-n^2x\]
+的 Mordell-Weil 秩至少为 $1$.  
+记 $\Sel_2(E)$ 为 $E/\BQ$ 的 $2$-Selmer 群,
+\[s_2(n):=\dim_{\BF_2}\left(\frac{\Sel_2(E)}{E(\BQ)[2]}\right)
+		=\dim_{\BF_2}\Sel_2(E)-2.\]  
+由长正合列
+\[0\ra E(\BQ)/2E(\BQ)\ra \Sel_2(E)\ra \Sha(E/\BQ)[2]\ra0\]
+可知
+\[s_2(n)=\rank_\BZ E(\BQ)+\dim_{\BF_2}\Sha(E/\BQ)[2].\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{已知的结果}
+Monsky 证明了 $n\equiv 1,2,3\bmod8$ 时, $s_2(n)$ 总是偶数.  
+显然 $s_2(n)=0$ 时, $n$ 是非同余数. 该情形由田野-袁新意-张寿武 (2017) 和 Smith (2016) 完全刻画. 
+
+我们来考虑何时 $n$ 是非同余数且 $s_2(n)=2$. 记 $h_{2^a}(m)$ 为 $\BQ(\sqrt{m})$ 的缩理想类群的 $2^a$ 阶秩.  
+如果 $n$ 的素因子均模 $4$ 余 $1$, 王章结证明了:
+\begin{theorem}[王章结, 2016]
+设 $n=p_1\cdots p_k\equiv 1\bmod 8$ 的素因子均模 $4$ 余 $1$, 则下述等价:
+\begin{itemize}
+\item[(i)] $h_4(-n)=1, h_8(-n)\equiv (d-1)/4\pmod 2$;
+\item[(ii)] $\rank_\BZ E_n(\BQ)=0,\Sha(E_n/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2.$
+\end{itemize}
+这里, 要么 $d\neq 1,n$ 是满足 $(d,-n)_v=1,\forall v$ 的 $n$ 的正因子; 要么 $d$ 是满足 $(2d,-n)_v=1,\forall v$ 的 $n$ 的正因子.
+\end{theorem}
+\end{frame}
+
+\section{主要结果}
+\begin{frame}
+\frametitle{主要结果: 奇数情形}
+\begin{theorem}
+设 $n=p_1\cdots p_k\equiv 1\bmod 8$ 的素因子均模 $8$ 余 $\pm1$, 
+则下述等价:
+\begin{itemize}
+\item[(i)] $h_4(-n)=1, h_4(n)=0, \leg{-\mu}{d}=-1$;
+\item[(ii)] $\rank_\BZ E_n(\BQ)=0,\Sha(E_n/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2.$
+\end{itemize}
+这里, $d\neq 1$ 是满足 $(d,n)_v=1,\forall v$ 的 $n$ 的正因子, $n=2\mu^2-\tau^2$, 其中 $\mu\equiv d\bmod4$.
+\end{theorem} 
+
+\begin{corollary}
+设 $n=p_1\cdots p_k\equiv 1\bmod 8$ 的素因子均模 $8$ 余 $1$, 
+则下述等价:
+\begin{itemize}
+\item[(i)] $r_4(K_2\CO_{\BQ(\sqrt{n})})=0$;
+\item[(ii)] $\rank_\BZ E_n(\BQ)=0,\Sha(E_n/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2.$
+\end{itemize}
+\end{corollary}
+\end{frame}
+
+\begin{frame}
+\frametitle{秦厚荣的结果}
+\begin{theorem}[秦厚荣, 2021]
+设素数 $p\equiv 1\bmod 8$. 如果 $r_8(K_2\CO_{\BQ(\sqrt{p})})=0$, 则 $p$ 是非同余数.
+\end{theorem}
+实际上, 该情形下可以证明完整的BSD猜想成立.
+\end{frame}
+
+\begin{frame}
+\frametitle{主要结果: 偶数情形}
+\begin{theorem}
+设 $n=2p_1\cdots p_k\equiv 1\bmod 8$ 的奇素因子均模 $8$ 余 $\pm1$, 
+则下述等价:
+\begin{itemize}
+\item[(i)] $h_4(-n/2)=1, \leg{2-\sqrt{2}}{|d|}=-1$;
+\item[(ii)] $\rank_\BZ E_n(\BQ)=0,\Sha(E_n/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2.$
+\end{itemize}
+这里, $d\neq 1$ 是满足 $(d,n)_v=1,\forall v$ 的 $n$ 的模 $8$ 余 $1$ 的因子.
+\end{theorem} 
+
+\begin{corollary}
+设 $n=2p_1\cdots p_k\equiv 1\bmod 8$ 的奇素因子均模 $8$ 余 $1$, 
+则下述等价:
+\begin{itemize}
+\item[(i)] $r_4(K_2\CO_{\BQ(\sqrt{-n})})=0$;
+\item[(ii)] $\rank_\BZ E_n(\BQ)=0,\Sha(E_n/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2.$
+\end{itemize}
+\end{corollary}
+\end{frame}
+
+
+\section{主要工具}
+\begin{frame}
+\frametitle{Selmer 群与齐性空间}
+我们来回顾下 Monsky 矩阵 [HeathBrown1994].
+$\Sel_2(E_n)$ 可以表为
+\[\set{\Lambda=(d_1,d_2,d_3)\in(\BQ^\times/\BQ^{\times2})^3:
+D_\Lambda(\BA_\BQ)\neq \emptyset,d_1d_2d_3\equiv 1\bmod\BQ^{\times 2}},\] 
+其中
+\[D_\Lambda=
+	\begin{cases}
+		H_1:& -nt^2+d_2u_2^2-d_3u_3^2=0,\\
+		H_2:& -nt^2+d_3u_3^2-d_1u_1^2=0,\\
+		H_3:& 2nt^2+d_1u_1^2-d_2u_2^2=0.
+	\end{cases}\]
+\begin{align*}
+O&\mapsto(1,1,1)&(n,0)&\mapsto(2,2n,n)\\
+(-n,0)&\mapsto(-2n,2,-n)&(0,0)&\mapsto(-n,n,-1)\\
+(x,y)&\mapsto(x-n,x+n,x)&&
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{辅助矩阵和向量}
+记 $n'=n/(2,n)=p_1\cdots p_k$.
+记 $[a,b]_v, \aleg{a}{b}\in\BF_2$ 分别为加性希尔伯特符号和雅克比符号. 
+定义
+\[\bfA=\bfA_{n'}=(a_{ij})_{k\times k}
+	\quad\text{其中}\quad
+	a_{ij}=[p_j,-n']_{p_i}=
+	\begin{cases}
+		\aleg{p_j}{p_i},&i\neq j;\\
+		\aleg{n'/p_i}{p_i},&i=j,
+	\end{cases}\] 
+\[\bfD_\varepsilon=\diag\left\{\aleg{\varepsilon}{p_1},\dots,\aleg{\varepsilon}{p_k}\right\}\qquad \bfb_\varepsilon=\bfD_\varepsilon{\bf1}.\]
+则 $\bfA{\bf1}={\bf0}, \rank(\bfA)\le k-1$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Monsky 矩阵: 奇数情形}
+当 $n$ 为奇数时, $\Sel_2(E_n)/E_n(\BQ)[2]$ 中元素可表为 $(d_1,d_2,d_3)$, 其中 $d_1,d_2$ 均为 $n$ 的正因子.
+于是 $D_\Lambda$ 局部处处可解等价于特定的希尔伯特符号的条件. 
+我们有同构
+\[\fct{\Sel_2(E_n)/E_n(\BQ)[2]}{\Ker\bfM_n}{(d_1,d_2,d_3)}{\left(\begin{smallmatrix}
+\psi^{-1}(d_2)\\ \psi^{-1}(d_1)
+\end{smallmatrix}\right),}\]
+其中
+\[\psi\bigl((\delta_1,\dots,\delta_k)^\rmT\bigr)=\prod_{\delta_j=1} p_j,\]
+\[\bfM_n=\begin{pmatrix}
+		\bfA+\bfD_2&\bfD_2\\
+		\bfD_2&\bfA+\bfD_{-2}
+	\end{pmatrix}.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Monsky 矩阵: 偶数情形}
+类似地, 当 $n$ 为偶数时, $\Sel_2(E_n)/E_n(\BQ)[2]$ 中元素可表为 $(d_1,d_2,d_3)$, 其中 $d_2,d_3$ 均为 $n$ 的因子, $d_2>0, d_3\equiv1\bmod4$. 
+我们有同构
+\[\fct{\Sel_2(E_n)/E_n(\BQ)[2]}{\Ker\bfM_n}{(d_1,d_2,d_3)}{\left(\begin{smallmatrix}
+\psi^{-1}(|d_3|)\\ \psi^{-1}(d_2)
+\end{smallmatrix}\right),}\]
+其中
+\[\bfM_n=\begin{pmatrix}
+		\bfA^\rmT+\bfD_{2}&\bfD_{-1}\\
+		\bfD_2&\bfA+\bfD_2
+	\end{pmatrix}.\]
+特别地,
+\[s_2(n)=2k-\rank(\bfM_n),\qquad\forall n.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Cassels 配对}
+Cassels 在 $\BF_2$ 线性空间 $\Sel_2(E_n)/E_n(\BQ)[2]$ 上定义了一个(反)对称双线性型.  
+对于 $\Lambda,\Lambda'$, 选择 $P=(P_v)\in D_\Lambda(\BA)$, $Q_i\in H_i(\BQ)$. 令 $L_i$ 为定义了 $H_i$ 在 $Q_i$ 处切平面的线性型, 定义
+\[\pair{\Lambda,\Lambda'}=\prod_v \pair{\Lambda,\Lambda'}_v,\qquad\text{其中}\ \pair{\Lambda,\Lambda'}_v=\prod_{i=1}^3 \bigl(L_i(P_v),d_i'\bigr)_v.\]
+它不依赖 $P$ 和 $Q_i$ 的选择. 
+\begin{lemma}[Cassels1998, Lemma~7.2]
+如果 $p\nmid 2\infty$, $H_i$ 和 $L_i$ 的系数均是 $p$ 进整数, 且模 $p$ 后, $\ov{D}_\Lambda$ 仍定义了一条亏格 $1$ 的曲线并带有切平面 $\ov{L}_i=0$, 则 $\pair{-,-}_p=+1$.
+\end{lemma}
+\end{frame}
+
+\begin{frame}
+\frametitle{类群与 R\'edei 矩阵}
+设 $m\neq 0,1$ 为无平方因子整数, $F=\BQ(\sqrt{m})$, $C(F)$ 为缩理想类群. 我们将其判别式进行分解
+\[D=p_1^*\cdots p_t^*,\qquad p^*=(-1)^{\frac{p-1}2}p\equiv1\bmod4,\ 2^*=-4,8,-8.\]
+高斯型理论告诉我们
+\[h_2(m)=t-1.\] 
+R\'edei证明了
+\[\fct{\theta:\set{\text{$D$ 的平方自由且属于 $\bfN F$ 的正因子}}}{C(F)[2]\cap C(F)^2}{d}{\cl[\fd]}\]
+是 $2:1$ 的满射, 其中 $(d)=\fd^2$.
+将其用矩阵语言表达, 则
+\[h_4(m)=t-1-\rank(\bfR_m),\qquad
+\bfR_m=([p_j,m]_{p_i})_{ij}.\]
+\end{frame}
+
+
+\begin{frame}
+\frametitle{温核 $K_2\CO_F$}
+记 $K_2\CO_F$ 为 $\CO_F$ 的 $K_2$ 群, 则我们有正合列
+\[1\ra K_2\CO_F\ra K_2F\ra \prod_p \BF_p^\times\ra 1,\]
+其中第二个箭头是温剩余符号: $(a,b)_p=(-1)^{v(a)v(b)}b^{v(a)}a^{-v(b)}\bmod p$. 
+
+Browkin-Schinzel (1982) 证明了 $K_2\CO_F[2]$ 可由如下Steinberg符号生成:
+\begin{itemize}
+\item $\set{-1,d},d\mid m$;
+\item $\{-1,u+\sqrt{m}\}$, 其中 $m=u^2-cw^2,c=-1,\pm2,u,w\in\BN$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{温核的 $4$ 阶秩}
+设 $r_4=r_4(K_2\CO_F)$. 秦厚荣 (1995) 证明了如下结果:
+
+(i) $m>0$ 时, $2^{r_4+1}=\#V_1+\#V_2$, 其中 
+\[V_1=\set{\psi(\bfd): \bfB\bfd=\bfb_{\pm1},\bfb_{\pm2}},\qquad
+V_2=\set{\psi(\bfd): \bfB\bfd=\bfb_{\pm\mu}}.\]
+
+(ii) $m<0$ 时, $2^{r_4+2}=\#V_1+\#V_2$, 其中 
+\[\begin{split}
+V_1&=\set{\psi(\bfd): \bfB\bfd={\bf0},\bfb_2}\cup\set{-\psi(\bfd): \bfB\bfd=\bfb_{-1},\bfb_{-2}},\\
+V_2&=\set{\psi(\bfd): \bfB\bfd=\bfb_{\mu}}\cup\set{-\psi(\bfd): \bfB\bfd=\bfb_{-\mu}}.
+\end{split}\]
+
+这里 $\bfB=\bfA_{m'}+\bfD_{m/m'}$, $m'=\frac{|m|}{(2,m)}, m=2\mu^2-\lambda^2,\mu,\lambda\in\BN$.
+\end{frame}
+
+\section{证明过程}
+\begin{frame}
+\frametitle{约化到 Cassels 配对非退化}
+设 $s_2(n)=2$.
+正合列
+\[0\ra E[2]\ra E[4]\sto{\times 2}E[2]\ra 0\]
+诱导了
+\[0\ra E(\BQ)[2]/2E(\BQ)[4]\ra \Sel_2(E)\ra \Sel_4(E)\ra \Sel_2(E)\ra\cdots.\] 
+于是
+\[\rank_\BZ E(\BQ)=0,\quad\Sha(E/\BQ)[2^\infty]\cong(\BZ/2\BZ)^2\]
+当且仅当 $\#\Sel_2(E)=\#\Sel_4(E)$, 即 $\#\Im\Sel_4(E)=\#E(\BQ)[2]$. 而 Cassels 配对的核是 $\Im\Sel_4(E)/E(\BQ)[2]$, 因此我们只需刻画何时 Cassels 配对非退化.
+\end{frame}
+
+\begin{frame}
+\frametitle{奇数情形: $s_2(n)=2$}
+设 $n$ 的素因子均模 $8$ 余 $\pm1$, 此时
+\[\bfD_2=\bfO\qquad 
+\bfM_n=\begin{pmatrix}
+\bfA&\\&\bfA+\bfD_{-1}
+\end{pmatrix}.\]
+由于 $\bfA{\bf1}=(\bfA^\rmT+\bfD_{-1}){\bf1}={\bf0}$, 我们有
+\[\rank(\bfA)\le k-1,\quad \rank(\bfA+\bfD_{-1})\le k-1.\]
+而
+\[\bfR_{-n}=\left(\begin{smallmatrix}
+\bfA&{\bf0}\\\bfb_{-1}^\rmT&0
+\end{smallmatrix}\right),\quad
+\bfR_n=\bfA+\bfD_{-1}\]
+且 ${\bf1}^\rmT\bfA=\bfb_{-1}^\rmT$, 因此 $s_2(n)=2\iff h_4(-n)=1, h_4(n)=0$.
+\end{frame}
+
+\begin{frame}
+\frametitle{奇数情形: 齐性空间}
+设 $d\neq 1$ 是唯一满足 $(d,n)_v=1,\forall v$ 的 $n$ 的正因子. 换言之, $(\bfA+\bfD_{-1})\psi^{-1}(d)={\bf0}$. 于是 $E_n$ 的纯 $2$-Selmer 群为
+\[\{(1,1,1), \Lambda=(1,n,n), \Lambda'=(d,1,d), (d,n,nd)\}.\]
+\[D_\Lambda=\begin{cases}
+H_1:& -t^2+u_2^2-u_3^2=0,\\
+H_2:& -nt^2+nu_3^2-u_1^2=0,\\
+H_3:& 2nt^2+u_1^2-nu_2^2=0.
+\end{cases}\]
+令 $n=2\mu^2-\tau^2$, 则 $\mu$ 是奇数且 $n=u^2-2w^2$, $u=2\mu-\tau, w=-\mu+\tau$. 选择
+\begin{align*}
+Q_1&=(0,1,1)\in H_1(\BQ),& L_1&=u_2-u_3,\\
+Q_3&=(w,n,u)\in H_3(\BQ),& L_3&=2wt+u_1-uu_2.
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{奇数情形: Cassels 配对}
+对于 $p\mid n$, 取 $(t,u_1,u_2,u_3)=(1,0,\sqrt{2},1)$, 其中 $\sqrt{2}\equiv -u/w\bmod p$,
+\[L_1L_3(P_p)=(\sqrt{2}-1)(2w-\sqrt{2}u)\equiv 4(\sqrt{2}-1)w\equiv -4\mu\mod p,\]
+\[\bigl(L_1L_3(P_p),d\bigr)_p=(-\mu,d)_p.\] 
+对于 $p=2$, 取 $(t,u_1,u_2,u_3)=(0,\sqrt{n},1,-1)$,
+\[\bigl(L_1L_3(P_2),d\bigr)_2=\bigl(2(\sqrt{n}-u),d\bigr)_2=(-\sqrt{n}-u,d)_2=(-\mu,d)_2.\]
+由于 $\mu\equiv d\bmod 4$, 于是我们有 $(-\mu,d)_2=1$,
+\[\pair{\Lambda,\Lambda'}=\prod_{p\mid d}(-\mu,d)_p=\leg{-\mu}{d}.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{奇数情形: 推论}
+如果所有的 $p_i\equiv1\bmod8$, 则 $\bfD_{\pm1}=\bfD_{\pm2}=\bfO$, $d=n$. 令 $F=\BQ(\sqrt{n})$, 则
+\[2^{r_4(K_2\CO_F)+1}=\#\set{\bfd: \bfA\bfd={\bf0}}+\#\set{\bfd:\bfA\bfd=\bfb_{|\mu|}=\bfb_\mu}.\]
+由于 $\Ker \bfA\supseteq\set{{\bf0},{\bf1}}$, 因此 $r_4(K_2\CO_F)=0$ 当且仅当 $\rank (\bfA)=k-1$ 且 $\bfb_\mu\notin\Im\bfA$. 但此时
+\[\Im\bfA=\set{\bfd:{\bf1}^\rmT\bfd={\bf0}},\]
+因此 $\leg{\mu}{n}=-1$.
+\end{frame}
+
+\begin{frame}
+\frametitle{偶数情形: $s_2(n)=2$}
+设 $n=2n'$ 的奇素因子均模 $8$ 余 $\pm1$, 此时
+\[\bfD_2=\bfO\qquad 
+\bfM_n=\begin{pmatrix}
+\bfA^\rmT&\bfD_{-1}\\
+&\bfA
+\end{pmatrix}.\]
+由于 $\bfA{\bf1}={\bf0}$, 我们有 $\rank(\bfA)\le k-1$.
+方程 $\bfM_n\left(\begin{smallmatrix}
+\bfx\\\bfy
+\end{smallmatrix}\right)={\bf0}$ 等价于
+\[\bfA^\rmT \bfx=\bfD_{-1}\bfy,\quad \bfA\bfy={\bf0}.\]
+若 $\bfy={\bf0}$, 则 $\bfA^\rmT\bfx={\bf0}$ 至少有两个解.
+若 $\bfy={\bf1}$, 则 $\bfA^\rmT(\bfx+{\bf1})={\bf0}$ 至少有两个解. 因此 $s_2(n)=\dim_{\BF_2}\Ker\bfM_n\ge 2$ 且
+\[s_2(n)=2\iff \rank(\bfA)=k-1\iff h_4(-n/2)=1.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{偶数情形: 齐性空间}
+设 $d\neq 1$ 是唯一满足 $(d,n)_v=1,\forall v$ 的 $n$ 的模 $8$ 余 $1$ 的因子. 换言之, $\bfA^\rmT\psi^{-1}(|d|)={\bf0}$. 于是 $E_n$ 的纯 $2$-Selmer 群为
+\[\{(1,1,1), \Lambda=(1,n',n'), \Lambda'=(d,1,d), (d,n',n'd)\}.\]
+\[D_\Lambda=\begin{cases}
+H_1:& -2t^2+u_2^2-u_3^2=0,\\
+H_2:& -2n't^2+n'u_3^2-u_1^2=0,\\
+H_3:& 4n't^2+u_1^2-n'u_2^2=0.
+\end{cases}\] 
+选择
+\begin{align*}
+Q_1&=(0,1,1)\in H_1(\BQ),& L_1&=u_2-u_3,\\
+Q_3&=(n'-1,4n',2n'+2)\in H_3(\BQ),& L_3&=2(n'-1)t+2u_1-(n'+1)u_2.
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{偶数情形: Cassels 配对}
+对于 $p\mid n$, 取 $(t,u_1,u_2,u_3)=(1,0,2,\sqrt{2})$, 
+\[\bigl(L_1L_3(P_p),d\bigr)_p=\bigl(-2(2-\sqrt{2}),d\bigr)_p=(\sqrt{2}-2,d)_p.\] 
+对于 $p=2$, 取 $(t,u_1,u_2,u_3)=(0,\sqrt{n'},1,-1)$,
+\[L_1L_3(P_2)=2(2\sqrt{n'}-n'-1)=-2(\sqrt{n'}-1)^2,\]
+\[\bigl(L_1L_3(P_2),d\bigr)_2=(-2,d)_2=(-1,d)_2.\]
+因此
+\[\pair{\Lambda,\Lambda'}=(-1,d)_2\prod_{p\mid d}(\sqrt{2}-2,d)_p=\leg{2-\sqrt{2}}{|d|}.\]
+\end{frame}
+
+\begin{frame}
+\frametitle{偶数情形: 推论}
+如果所有的 $p_i\equiv1\bmod8$, 则 $\bfD_{\pm1}=\bfD_{\pm2}=\bfO$, $d=n'$. 令 $F=\BQ(\sqrt{-n})$, $-n=2\mu^2-\lambda^2,\mu,\lambda\in\BN$, 则
+\[2^{r_4(K_2\CO_F)+2}=2\#\set{\bfd: \bfA\bfd={\bf0}}+2\#\set{\bfd:\bfA\bfd=\bfb_\mu}.\]
+由于 $\Ker \bfA\supseteq\set{{\bf0},{\bf1}}$, 因此 $r_4(K_2\CO_F)=0$ 当且仅当 $\rank (\bfA)=k-1$ 且 $\bfb_\mu\notin\Im\bfA$.  
+但此时
+\[\Im\bfA=\set{\bfd:{\bf1}^\rmT\bfd={\bf0}},\]
+因此 $\leg{\mu}{n'}=-1$.
+记 $u=\lambda-\mu, w=-\lambda/2+\mu$, 则 $n'=u^2-2w^2$,
+\[\leg{w}{n'}=\leg{n'}{w'}=\leg{u^2-2w^2}{w'}=\leg{u^2}{w'}=1,\]
+\[\leg{\mu}{n'}=\leg{u+2w}{n'}=\leg{(2\pm\sqrt{2})w}{n'}=\leg{2\pm\sqrt{2}}{n'}.\]
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\huge 感谢各位的倾听!
+\end{center}
+\end{frame}
+
+
+\end{document}
+
+

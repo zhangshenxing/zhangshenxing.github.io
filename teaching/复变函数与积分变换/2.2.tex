@@ -32,11 +32,11 @@
 \Delta v&=b\Delta x+a\Delta y+o(\Delta z).
 \end{align*}
 \onslide<+->
-由于 $o(\Delta z)=o(|\Delta z|)=o(\sqrt{x^2+y^2})$, 因此 \markatt{$u,v$ 可微}且
+由于 $o(\Delta z)=o(|\Delta z|)=o(\sqrt{x^2+y^2})$, 因此 \alert{$u,v$ 可微}且
 \[\diff u=a\diff x-b\diff y,\quad
 \diff v=b\diff x+a\diff y.\]
 \onslide<+->
-故 $\markatt{u_x=v_y,\quad u_y=-v_x}$.
+故 $\alert{u_x=v_y,\quad u_y=-v_x}$.
 \end{frame}
 
 
@@ -61,13 +61,13 @@
 
 
 \begin{frame}{可导的等价刻画: 柯西-黎曼方程}
-\begin{conclusion}[柯西-黎曼方程 (C-R方程)]
-函数 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足 \boxatt{柯西-黎曼方程}
-\[\boxatt{$u_x=v_y,\quad u_y=-v_x$}.\]
+\begin{block}{柯西-黎曼方程 (C-R方程)}
+函数 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足 \abox{柯西-黎曼方程}
+\[\abox{$u_x=v_y,\quad u_y=-v_x$}.\]
 \onslide<+->
 此时
-\[\boxatt{$f'(z)=u_x+iv_x=v_y-iu_y$}.\]
-\end{conclusion}
+\[\abox{$f'(z)=u_x+iv_x=v_y-iu_y$}.\]
+\end{block}
 \onslide<+->
 \begin{center}
 \includegraphics[width=1.7cm]{misc/Cauchy.jpeg}
@@ -146,14 +146,14 @@ u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
 =\half\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right)
 =(u_x-v_y)+i(v_x+u_y)=0.\]
 \onslide<+->
-所以我们也可以把 $\marknot{\dfrac{\partial f}{\partial \ov z}=0}$ 叫做C-R方程.
+所以我们也可以把 $\emph{\dfrac{\partial f}{\partial \ov z}=0}$ 叫做C-R方程.
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
 \beqskip{4pt}
 \begin{example}
-函数 $f(z)=\ov z$ 在何处可导, 在何处解析?
+\enumnum1 函数 $f(z)=\ov z$ 在何处可导, 在何处解析?
 \end{example}
 \begin{solution}
 \indent
@@ -177,8 +177,8 @@ v_x&=0,&v_y&=-1.
 
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
 \beqskip{5pt}
-\begin{example}
-函数 $f(z)=z\Re z$ 在何处可导, 在何处解析?
+\begin{example}[续]
+\enumnum2 函数 $f(z)=z\Re z$ 在何处可导, 在何处解析?
 \end{example}
 \begin{solution}
 \indent
@@ -204,8 +204,8 @@ v_x&=y, &v_y&=x.
 
 
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
-\begin{example}
-函数 $f(z)=e^x(\cos y+i\sin y)$ 在何处可导, 在何处解析?
+\begin{example}[续]
+\enumnum3 函数 $f(z)=e^x(\cos y+i\sin y)$ 在何处可导, 在何处解析?
 \end{example}
 \begin{solution}
 由 $u=e^x\cos y,v=e^x\sin y$
@@ -330,7 +330,7 @@ v_x&=2cx+dy,&v_y=dx+2y,
 \onslide<+->
 经过 $z_0$ 的两条曲线 $C_1,C_2$ 的夹角和它们的像 $f(C_1),f(C_2)$ 在 $f(z_0)$ 处的夹角总是相同的.
 \onslide<+->
-这种性质被称为\markdef{保角性}.
+这种性质被称为\emph{保角性}.
 
 \onslide<+->
 这是因为 $\diff f=f'(z_0)\diff z$.

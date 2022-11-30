@@ -8,14 +8,14 @@
 也就是说 $z(t),a\le t\le b$ 除去有限个点之外都有非零导数.
 
 \onslide<+->
-固定它的一个方向, 称为\markdef{正方向}, 则我们得到一条\markdef{有向曲线}.
+固定它的一个方向, 称为\emph{正方向}, 则我们得到一条\emph{有向曲线}.
 \onslide<+->
-和这条曲线方向相反的记作 $C^-$, 它的方向被称为该曲线\markdef{负方向}.
+和这条曲线方向相反的记作 $C^-$, 它的方向被称为该曲线\emph{负方向}.
 
 \onslide<+->
-对于闭路, 它的\markatt{正方向总是指逆时针方向}, 负方向总是指顺时针方向.
+对于闭路, 它的\alert{正方向总是指逆时针方向}, 负方向总是指顺时针方向.
 \onslide<+->
-以后我们不加说明的话\markatt{默认是正方向}.
+以后我们不加说明的话\alert{默认是正方向}.
 
 \onslide<1->
 \begin{center}
@@ -49,7 +49,7 @@
 \begin{definition}
 如果下述右侧两个线积分均存在, 则定义
 \[\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)\]
-为\markdef{函数 $f(z)$ 沿曲线 $C$ 的积分}.
+为\emph{函数 $f(z)$ 沿曲线 $C$ 的积分}.
 \end{definition}
 \end{frame}
 
@@ -102,7 +102,7 @@
 
 \begin{frame}{复变函数积分的定义}
 \onslide<+->
-如果 $C$ 是闭曲线, 则该积分记为 \markatt{$\displaystyle\oint_Cf(z)\diff z$}.
+如果 $C$ 是闭曲线, 则该积分记为 \alert{$\displaystyle\oint_Cf(z)\diff z$}.
 \onslide<+->
 此时该积分不依赖端点的选取.
 
@@ -130,14 +130,14 @@
 \onslide<+->
 那么 $\diff z=z'(t)\diff t$,
 \onslide<+->
-\[\eqatt{\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.}\]
+\[\aboxeq{\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.}\]
 \onslide<+->
 如果 $C$ 的正方向是 $t$ 减少的方向, 则需要交换右侧积分的上下限.
 
 \onslide<+->
 如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
 \onslide<+->
-以后我们\marknot{只考虑逐段光滑曲线上的连续函数的积分}.
+以后我们\emph{只考虑逐段光滑曲线上的连续函数的积分}.
 \end{frame}
 
 
@@ -190,12 +190,12 @@
 %
 %\begin{frame}{复变函数积分的定义}
 %\begin{definition}
-%如果当 $n\to\infty,\delta\to 0$ 时, 和式 $S_n$ 的极限总存在, 则称该极限值为\markdef{函数 $f(z)$ 沿曲线 $C$ 的积分}.
+%如果当 $n\to\infty,\delta\to 0$ 时, 和式 $S_n$ 的极限总存在, 则称该极限值为\emph{函数 $f(z)$ 沿曲线 $C$ 的积分}.
 %\onslide<+->
 %记作
 %\[\int_C f(z)\diff z=\lim_{\delta\to0}\sum_{k=1}^n f(\zeta_k)\Delta z_k.\]
 %\onslide<+->
-%如果 $C$ 是闭曲线, 则该积分记为 \markdef{$\displaystyle\oint_Cf(z)\diff z$}.
+%如果 $C$ 是闭曲线, 则该积分记为 \emph{$\displaystyle\oint_Cf(z)\diff z$}.
 %\onslide<+->
 %此时该积分不依赖端点的选取.
 %\end{definition}
@@ -238,10 +238,10 @@
 %\onslide<+->
 %因此
 %\begin{align*}
-%\markatt{\int_Cf(z)\diff z}&=\int_a^b\Bigl[
+%\alert{\int_Cf(z)\diff z}&=\int_a^b\Bigl[
 %\bigl(u x'(t)-v y'(t)\bigr)
 %+i\bigl(v x'(t)+u y'(t)\bigr)\Bigr]\diff t\\
-%&\visible<+->{\markatt{=\int_a^b f(z)z'(t)\diff t.}}
+%&\visible<+->{\alert{=\int_a^b f(z)z'(t)\diff t.}}
 %\end{align*}
 %\onslide<+->
 %如果 $C$ 的正方向是 $t$ 减少的方向, 则需要交换右侧积分的上下限.
@@ -249,7 +249,7 @@
 %\onslide<+->
 %如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
 %\onslide<+->
-%以后我们\marknot{只考虑逐段光滑曲线上的连续函数的积分}.
+%以后我们\emph{只考虑逐段光滑曲线上的连续函数的积分}.
 %\endgroup
 %\end{frame}
 
@@ -269,7 +269,7 @@
 \end{flalign*}
 \end{solution}
 \onslide<1->
-\begin{tikzpicture}[overlay,xshift=7cm,yshift=2cm]
+\begin{tikzpicture}[overlay,xshift=7cm,yshift=1.5cm]
 \draw[cstaxis](0,0)--(3,0);
 \draw[cstaxis](0,0)--(0,2.5);
 \draw[cstcurve,dcolora,cstarrowto](0,0)--(1.5,2);
@@ -302,7 +302,7 @@
 \vspace{-\baselineskip}
 \end{solution}
 \onslide<1->
-\begin{tikzpicture}[overlay,xshift=7cm,yshift=2.5cm]
+\begin{tikzpicture}[overlay,xshift=7cm,yshift=2cm]
 \draw[cstaxis](0,0)--(3,0);
 \draw[cstaxis](0,0)--(0,2.5);
 \draw[cstcurve,dcolora,domain=0:1.5,cstarrowto] plot({\x},{8*\x*\x/9});
@@ -332,7 +332,7 @@
 \end{flalign*}
 \end{solution}
 \onslide<1->
-\begin{tikzpicture}[overlay,xshift=7cm,yshift=1.5cm]
+\begin{tikzpicture}[overlay,xshift=7.8cm,yshift=1.2cm]
 \draw[cstaxis](0,0)--(3,0);
 \draw[cstaxis](0,0)--(0,2.5);
 \draw[cstcurve,dcolora,cstarrowto](0,0)--(2,2);
@@ -456,7 +456,7 @@ $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 =ir^{-n}\int_0^{2\pi}(\cos{n\theta}-i\sin{n\theta})\diff\theta=0.\]
 \onslide<+->
 所以
-\[\markatt{\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}
+\[\alert{\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}
 2\pi i,&n=0;\\
 0,&n\neq 0.
 \end{cases}}\]
@@ -473,8 +473,8 @@ $C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
 \item $\displaystyle\int_Ckf(z)\diff z=k\displaystyle\int_Cf(z)\diff z$.
 \item $\displaystyle\int_C[f(z)\pm g(z)]\diff z
 =\displaystyle\int_Cf(z)\diff z\pm\displaystyle\int_Cg(z)\diff z$.
-\item (\markdef{长大不等式}) 设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
-\[\markatt{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.\]
+\item (\emph{长大不等式}) 设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
+\[\alert{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.\]
 \end{enumerate}
 \end{theorem}
 \end{frame}
