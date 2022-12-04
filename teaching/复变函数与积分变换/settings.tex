@@ -72,25 +72,26 @@
 \newlength{\lfull}
 \newcounter{lxxtype}
 \NewDocumentCommand\xx{O{0} m m m m}{%
-	\setlength{\lquar}{0.23\columnwidth}%
-	\setlength{\lhalf}{0.46\columnwidth}%
-	\setlength{\lfull}{0.92\columnwidth}%
+\setlength{\lfull}{\columnwidth}%
+\addtolength{\lfull}{-\leftmargin}%
+\setlength{\lhalf}{0.5\lfull}%
+\setlength{\lquar}{0.25\lfull}%
 	\setcounter{lxxtype}{0}%
 	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
 	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
 	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
-	\settowidth{\lxxmax}{(A)~#2~~}% 获取最长选项长度
-	\settowidth{\lxxt}{(B)~#3~~}%
+	\settowidth{\lxxmax}{(A)~#2~}% 获取最长选项长度
+	\settowidth{\lxxt}{(B)~#3~}%
 	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
-	\settowidth{\lxxt}{(C)~#4~~}%
+	\settowidth{\lxxt}{(C)~#4~}%
 	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
-	\settowidth{\lxxt}{(D)~#5~~}%
+	\settowidth{\lxxt}{(D)~#5~}%
 	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
 	\ifnum\value{lxxtype}=0%
 		\setcounter{lxxtype}{4}%
-		\ifdimcomp\lxxt>\lquar{\setcounter{lxxtype}{2}}{}%
+		\ifdimcomp\lxxmax>\lquar{\setcounter{lxxtype}{2}}{}%
 		\ifnum\value{lxxtype}=2%
-			\ifdimcomp\lxxt>\lhalf{\setcounter{lxxtype}{1}}{}%
+			\ifdimcomp\lxxmax>\lhalf{\setcounter{lxxtype}{1}}{}%
 		\fi%
 	\fi%
 	\vspace{5pt}%

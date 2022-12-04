@@ -7,7 +7,7 @@
 % 编译模式： XeLaTeX
 % 你可以任意修改或再次分发该文件
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hfutexam}[2022/12/04 v1.4 HFUTExam document class by Zhang Shenxing]
+\ProvidesClass{hfutexam}[2022/12/04 v1.5 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi, cankaodaan, simple
 \newif\ifHFUT@ShiJuan\HFUT@ShiJuantrue
 \newif\ifHFUT@DaTiZhi\HFUT@DaTiZhifalse
@@ -68,7 +68,7 @@
 \ZhuanYeBanJi{}
 \KaoShiRiQi{}
 \MingTiJiaoShi{}
-\XiZhuRenQianMing{example-sign.png}
+\XiZhuRenQianMing{}
 % 粗字体设定
 \newfontfamily\timesnewroman[AutoFakeBold={1.5}]{Times New Roman} % 粗罗马
 \ifHFUT@Fandol
@@ -144,7 +144,7 @@
 		命题教师\fillblank[5.5em][0.6cm]{\HFUT@MingTiJiaoShi}\hfill%
 		系（所或教研室）主任审批签名%
 		\begin{tikzpicture}[overlay,xshift=3.25em,yshift=0.15cm]%
-			\node at (0,0) {\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}};%
+			\node at (0,0) {\ifx\HFUT@XiZhuRenQianMing\@empty\else\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}\fi};%
 		\end{tikzpicture}%
 		\filltitle{6.5em}{}\vspace{4pt}%
 	}
@@ -164,7 +164,7 @@
 		命题教师\filltitle{7em}{\HFUT@MingTiJiaoShi}\hfill%
 		系主任审批%
 		\begin{tikzpicture}[overlay,xshift=3.5em,yshift=0.2cm]%
-			\node at (0,0) {\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}};%
+			\node at (0,0) {\ifx\HFUT@XiZhuRenQianMing\@empty\else\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}\fi};%
 		\end{tikzpicture}%
 		\filltitle{7em}{}\\\vspace{2pt}%
 		教学班级\filltitle{10.5em}{}\hfill%
@@ -186,7 +186,7 @@
 		命题教师\filltitle{7em}{\HFUT@MingTiJiaoShi}\hfill%
 		系主任审批%
 		\begin{tikzpicture}[overlay,xshift=3.5em,yshift=0.2cm]%
-			\node at (0,0) {\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}};%
+			\node at (0,0) {\ifx\HFUT@XiZhuRenQianMing\@empty\else\includegraphics[height=0.9cm]{\HFUT@XiZhuRenQianMing}\fi};%
 		\end{tikzpicture}%
 		\filltitle{7em}{}\\\vspace{2pt}%
 		教学班级\filltitle{10.5em}{}\hfill%
