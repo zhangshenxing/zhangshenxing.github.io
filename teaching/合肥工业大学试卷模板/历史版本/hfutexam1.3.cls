@@ -7,7 +7,7 @@
 % 编译模式： XeLaTeX
 % 你可以任意修改或再次分发该文件
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hfutexam}[2022/12/04 v1.4 HFUTExam document class by Zhang Shenxing]
+\ProvidesClass{hfutexam}[2022/11/27 v1.3 HFUTExam document class by Zhang Shenxing]
 % 文档选项 shijuan, datizhi, cankaodaan, simple
 \newif\ifHFUT@ShiJuan\HFUT@ShiJuantrue
 \newif\ifHFUT@DaTiZhi\HFUT@DaTiZhifalse
@@ -100,19 +100,6 @@
 % 分栏
 \setlength\columnsep{0.8cm} % 分栏间距
 \columnseprule=0.5pt % 分栏线宽度
-% 填空题
-\newlength{\ltemp}
-\RequirePackage[normalem]{ulem}
-\ifHFUT@ShiJuan%
-	\NewDocumentCommand\fillblank{O{3.5cm} O{0.5cm} m}{\uline{\makebox[#1]{\rule{0pt}{#2}#3}}}%
-	\else\ifHFUT@DaTiZhi%
-	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{\uline{\makebox[#1]{\rule{0pt}{#2}#3}}}%
-	\else%
-	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{%
-		\settodepth{\ltemp}{#3}%
-		\uline{\makebox[#1]{\rule{0pt}{#2}\raisebox{\ltemp}{#3}}}%
-	}%
-\fi\fi
 % 页眉页脚
 \RequirePackage{fancyhdr}
 \RequirePackage{lastpage}
@@ -123,6 +110,14 @@
 \fancyhf{}
 \newcommand{\boxyes}{{\raisebox{-0.5mm}{\LARGE$\checkmark\hspace{-1.2em}\square$}}}
 \newcommand{\boxno}{{\raisebox{-0.5mm}{\LARGE$\square$}}}
+\RequirePackage[normalem]{ulem}
+\ifHFUT@DaTiZhi%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+	\else\ifHFUT@CanKaoDaAn%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{1cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+	\else%
+	\NewDocumentCommand\fillblank{O{3.5cm} O{0.5cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}}#3}}}%
+\fi\fi
 \newcommand{\filltitle}[2]{\uline{\makebox[#1]{#2}}}
 \newlength{\ltitle}
 \settowidth{\ltitle}{\HFUT@BiaoTi}
@@ -241,32 +236,32 @@
 	{\leavevmode\xleaders\hbox{\rule[4pt]{8pt}{0.5pt}\,}\hfill\null}%
 }
 % 选择题, 根据选项内容长度自动排版
+\newlength{\lxxt}
 \newlength{\lxxmax}
 \newlength{\lquar}
 \newlength{\lhalf}
 \newlength{\lfull}
 \newcounter{lxxtype}
 \NewDocumentCommand\xx{O{0} m m m m}{%
-	\setlength{\lfull}{\columnwidth}%
-	\addtolength{\lfull}{-\leftmargin}%
-	\setlength{\lhalf}{0.5\lfull}%
-	\setlength{\lquar}{0.25\lfull}%
+	\setlength{\lquar}{0.23\columnwidth}%
+	\setlength{\lhalf}{0.46\columnwidth}%
+	\setlength{\lfull}{0.92\columnwidth}%
 	\setcounter{lxxtype}{0}%
 	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
 	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
 	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
-	\settowidth{\lxxmax}{A.~#2~}% 获取最长选项长度
-	\settowidth{\ltemp}{B.~#3~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
-	\settowidth{\ltemp}{C.~#4~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
-	\settowidth{\ltemp}{D.~#5~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\settowidth{\lxxmax}{A.~#2~~}% 获取最长选项长度
+	\settowidth{\lxxt}{B.~#3~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
+	\settowidth{\lxxt}{C.~#4~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
+	\settowidth{\lxxt}{D.~#5~~}%
+	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
 	\ifnum\value{lxxtype}=0%
 		\setcounter{lxxtype}{4}%
-		\ifdimcomp\lxxmax>\lquar{\setcounter{lxxtype}{2}}{}%
+		\ifdimcomp\lxxt>\lquar{\setcounter{lxxtype}{2}}{}%
 		\ifnum\value{lxxtype}=2%
-			\ifdimcomp\lxxmax>\lhalf{\setcounter{lxxtype}{1}}{}%
+			\ifdimcomp\lxxt>\lhalf{\setcounter{lxxtype}{1}}{}%
 		\fi%
 	\fi%
 	\vspace{5pt}%

@@ -36,6 +36,7 @@
   arc=0pt,
 }
 \makeatother
+\newcommand{\versions}[1]{\textbf{\color{blue}{#1}}\vspace{-5pt}}
 
 \begin{document}
 \BiaoTi{合肥工业大学试卷（A）}
@@ -56,7 +57,7 @@
 \tigan{一、模板选项}
 
 \indent
-本模板 (2022/11/27 v1.3) 旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
+本模板 (2022/12/04 v1.4) 旨在为将合肥工业大学试卷的 word 格式转为\LaTeX{}格式.
 使用时, 只需在文档开头写上
 \begin{lstlisting}
 \documentclass[shijuan]{hfutexam}
@@ -96,7 +97,6 @@
 其中系主任签名处需要填写相应的图片名, 默认为~{\color{blue}\lstinline|example-sign.png|}, 即一个空白图片.
 
 其它选项默认均为空, 可根据需要只填部分内容.
-\newpage
 
 \tigan{三、命令}
 \begin{enumerate}
@@ -139,7 +139,7 @@
 \textit{\color{blue}{选择题示例:}}
 \begin{lstlisting}
 \begin{enumerate}
-\item 柳宗元的《江雪》包含下面哪一句? (~~~~).
+\item 柳宗元的《江雪》包含下面哪一句? (~~~~)
 \xx[2]{一山鸟飞绝}{百山鸟飞绝}{千山鸟飞绝}{亿山鸟飞绝}
 \item 张志和的《渔歌子》是(~~~~).
 \xx{东塞山前白鹭飞，桃花流水鳜鱼肥。青箬笠，绿蓑衣，斜风细雨不须归。}
@@ -201,20 +201,26 @@
 \end{align*}
 \end{tcolorbox}
 
-\tigan{更新历史}
+\textbf{如有疑问或建议, 欢迎联系我: {\color{red}{zhangshenxing@hfut.edu.cn}} 或 {\color{blue}{QQ362037052}}.}
 
-\textbf{\color{blue}{2022/10/30 v1.1}}
+\versions{2022/10/30 v1.1}
 \begin{itemize}
 \item 首次提交.
 \end{itemize}
-\textbf{\color{blue}{2022/10/31 v1.2}}
+
+\versions{2022/10/31 v1.2}
 \begin{itemize}
 \item 选择题选项后增加了{\color{blue}5pt}的垂直间距.
 \end{itemize}
-\textbf{\color{blue}{2022/11/27 v1.3}}
+\versions{2022/11/27 v1.3}
 \begin{itemize}
 \item 移除了简易模式下学期的下划线.
 \item 打分框的宽度减少了{\color{blue}10\%}.
+\end{itemize}
+\versions{2022/12/04 v1.4}
+\begin{itemize}
+\item 修复了有时选择题选项未能正确计算行数的问题.
+\item 修复了有时填空题答案会被横线截断的问题.
 \end{itemize}
 
 \newpage
@@ -238,15 +244,15 @@
 \item 设 $f(x)=\arctan\dfrac1{x(x-1)^2}$, 则 $x=0$ 是 $f(x)$ 的(~~~~).
 \xx{可去间断点}{跳跃间断点}{第二类间断点}{连续点}
 \item
-\begin{tikzpicture}[overlay,xshift=13cm,yshift=-3.5cm]
+\begin{tikzpicture}[overlay,xshift=12.5cm,yshift=-3cm]
 \draw[-Stealth,thick](-3,0)--(3,0);
-\draw[-Stealth,thick](0,-1)--(0,3);
+\draw[-Stealth,thick](0,-0.8)--(0,2.5);
 \draw[very thick,smooth,domain=-55:55] plot ({\x/50-1.3}, {tan(\x)*tan(\x)});
 \draw[very thick,smooth,domain=0.15:2] plot ({\x}, {-ln(\x)});
 \draw
 	(-0.3,-0.3) node {$O$}
 	(2.8,-0.3) node {$x$}
-	(-0.3,2.8) node {$y$};
+	(-0.3,2.3) node {$y$};
 \end{tikzpicture}
 设 $f(x)$ 是定义在 $(-\infty,+\infty)$ 上的连续函数, 且 $f'(x)$ 的图像如下图所示, 则 $f(x)$ 有(~~~~).
 % 手动设置为每行1个

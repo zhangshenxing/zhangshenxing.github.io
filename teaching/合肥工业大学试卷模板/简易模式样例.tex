@@ -71,21 +71,19 @@ $\displaystyle f(x)=\begin{cases}\dfrac{e^{3x}-1}{\arctan x},&x<0,\\2x+a,&x\ge0\
 \xx{$0$}{$1$}{$2$}{$3$}
 \item 设 $f(x)=\arctan\dfrac1{x(x-1)^2}$, 则 $x=0$ 是 $f(x)$ 的(~~~~).
 \xx{可去间断点}{跳跃间断点}{第二类间断点}{连续点}
-\item
-设 $f(x)$ 是定义在 $(-\infty,+\infty)$ 上的连续函数, 且 $f'(x)$ 的图像如下图所示, 则 $f(x)$ 有(~~~~).
-\xx{一个极大值点，没有极小值点}{没有极大值点，一个极小值点}{一个极大值点和一个极小值点}{一个极大值点和两个极小值点}
-\begin{center}
-\begin{tikzpicture}
+\item 
+\begin{tikzpicture}[overlay,xshift=12cm,yshift=-3cm]
 \draw[-Stealth,thick](-3,0)--(3,0);
-\draw[-Stealth,thick](0,-1)--(0,3);
+\draw[-Stealth,thick](0,-0.8)--(0,2.5);
 \draw[very thick,smooth,domain=-55:55] plot ({\x/50-1.3}, {tan(\x)*tan(\x)});
 \draw[very thick,smooth,domain=0.15:2] plot ({\x}, {-ln(\x)});
 \draw
 	(-0.3,-0.3) node {$O$}
 	(2.8,-0.3) node {$x$}
-	(-0.3,2.8) node {$y$};
+	(-0.3,2.3) node {$y$};
 \end{tikzpicture}
-\end{center}
+设 $f(x)$ 是定义在 $(-\infty,+\infty)$ 上的连续函数, 且 $f'(x)$ 的图像如下图所示, 则 $f(x)$ 有(~~~~).
+\xx[1]{一个极大值点，没有极小值点}{没有极大值点，一个极小值点}{一个极大值点和一个极小值点}{一个极大值点和两个极小值点}
 \item 设 $f(x)$ 在点 $x=0$ 处可导, 且 $f(0)=0$, 则 $\displaystyle\lim_{x\to0}\frac{f(x^{2022})+x^{2021}f(x)}{x^{2022}}=$(~~~~).
 \xx{$0$}{$f'(0)$}{$2f'(0)$}{$2022f'(0)$}
 \item 如果点 $(x_0,y_0)$ 是曲线 $y=f(x)$ 的拐点, 则 $f''(x_0)=$(~~~~).
@@ -130,7 +128,7 @@ $\displaystyle f(x)=\begin{cases}\dfrac{e^{3x}-1}{\arctan x},&x<0,\\2x+a,&x\ge0\
 
 \textbf{1.} \fillblank{$e$}, 
 \textbf{2.} \fillblank{$2x\cos(x^2+1)\diff x$}, 
-\textbf{3.} \fillblank{$1/2$}, \\
+\textbf{3.} \fillblank{$\dfrac12$}, \\
 \textbf{4.} \fillblank{$y=x-1+2\ln 2$},
 \textbf{5.} \fillblank{$1$},
 \textbf{6.} \fillblank{$0$}.
