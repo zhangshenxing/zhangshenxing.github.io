@@ -1,13 +1,12 @@
 \section{曲线和区域}
 
-
+\subsection{复数表平面曲线}
 \begin{frame}{典型例题: 复数方程表平面图形}
-\onslide<+->
 \onslide<+->
 很多的平面图形能用复数形式的方程来表示, 这种表示方程有些时候会显得更加直观和易于理解.
 \onslide<+->
 由于 $x=\dfrac{z+\ov z}{2i},y=\dfrac{z+\ov z}2$, 因此很容易将 $x,y$ 的方程和 $z$ 的方程相互转化.
-
+\onslide<+->
 \begin{example}
 \enumnum1 $|z+i|=2$.
 \onslide<+->
@@ -16,7 +15,7 @@
 设 $z=x+yi$, 则方程可以化为 $x^2+(y+1)^2=4$.
 \onslide<+->
 一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
-\vspace{-8pt}
+\onslide<4->
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-1.5,0)--(1.5,0);
@@ -24,10 +23,10 @@
 \draw[cstcurve,dcolora] (0,-0.5) circle(1);
 \fill[cstdot,dcolorb] (0,-0.5) circle;
 \draw
-  (-0.4,-0.5) node[dcolorb] {$-i$};
+	(-0.4,-0.5) node[dcolorb] {$-i$};
 \end{tikzpicture}
 \end{center}
-\vspace{-8pt}
+% \vspace{-8pt}
 \end{example}
 \end{frame}
 
@@ -39,7 +38,7 @@
 该方程表示与 $2i$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
 \onslide<+->
 两边同时平方化简可得 $z+i\ov z=0$ 或 $x+y=0$.
-
+\onslide<2->
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-1.5,0)--(1.5,0);
@@ -48,8 +47,8 @@
 \fill[cstdot,dcolorb] (0,1) circle;
 \fill[cstdot,dcolorb] (-1,0) circle;
 \draw
-  (-1,-0.3) node[dcolorb] {$-2$}
-  (0.4,1) node[dcolorb] {$2i$};
+	(-1,-0.3) node[dcolorb] {$-2$}
+	(0.4,1) node[dcolorb] {$2i$};
 \end{tikzpicture}
 \end{center}
 \end{example}
@@ -57,29 +56,29 @@
 
 
 \begin{frame}{典型例题: 复数方程表平面图形}
+\onslide<+->
 \begin{example}[续]
 \enumnum3 $\Im(i+\ov z)=4$.
-\onslide<+->
-设 $z=x+yi$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.
+\onslide<+->{设 $z=x+yi$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.}
 
-\enumnum4 $|z-z_1|+|z-z_2|=2a$.
-\onslide<+->
-该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆.
+\onslide<+->{\enumnum4 $|z-z_1|+|z-z_2|=2a$.}
+\onslide<+->{该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆.}
 
-\enumnum5 $|z-z_1|-|z-z_2|=2a$.
-\onslide<+->
-该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支.
+\onslide<+->{\enumnum5 $|z-z_1|-|z-z_2|=2a$.}
+\onslide<+->{该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支.}
 \end{example}
-
+\onslide<+->
 \begin{exercise}
 $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \end{exercise}
+\onslide<+->
 \begin{answer}
 双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
 \end{answer}
 \end{frame}
 
 
+\subsection{区域的定义}
 \begin{frame}{邻域}
 \onslide<+->
 在高等数学中, 为了引入极限的概念, 需要考虑点的邻域.
@@ -102,10 +101,10 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \draw[cstcurve,visible on=<3->,cstarrowto,dcolora] (3,0)--(3.8,0.6);
 \filldraw[cstdote,visible on=<3->,draw=dcolora] (3,0) circle;
 \draw
-  (-0.3,0) node[dcolora] {$z_0$}
-  (2.7,0) node[visible on=<3->,dcolora] {$z_0$}
-  (0.5,0.1) node[dcolora] {$\delta$}
-  (3.5,0.1) node[visible on=<3->,dcolora] {$\delta$};
+	(-0.3,0) node[dcolora] {$z_0$}
+	(2.7,0) node[visible on=<3->,dcolora] {$z_0$}
+	(0.5,0.1) node[dcolora] {$\delta$}
+	(3.5,0.1) node[visible on=<3->,dcolora] {$\delta$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -136,10 +135,10 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \fill[visible on=<5->,cstdot,dcolorc] (1.5,0) circle;
 \fill[visible on=<4->,cstdot,black] (3,0) circle;
 \draw
-  (0.5,0) node[dcolora] {$G$}
-  (-0.5,0.2) node[visible on=<3->,dcolorb] {$z_0$}
-  (1.75,0) node[visible on=<5->,dcolorc] {$z_0$}
-  (3.3,0) node[visible on=<4->] {$z_0$};
+	(0.5,0) node[dcolora] {$G$}
+	(-0.5,0.2) node[visible on=<3->,dcolorb] {$z_0$}
+	(1.75,0) node[visible on=<5->,dcolorc] {$z_0$}
+	(3.3,0) node[visible on=<4->] {$z_0$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -161,17 +160,17 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 不过注意这并不是绝对的.
 
 \onslide<+->
-如果 $D$ 可以被包含在某个开圆盘 $U(0,\delta)$ 中, 则称它是\emph{有界}的.
+如果 $D$ 可以被包含在某个开圆盘 $U(0,R)$ 中, 则称它是\emph{有界}的.
 \onslide<+->
 否则称它是\emph{无界}的.
 \end{frame}
 
 
 \begin{frame}{区域和闭区域}
+\onslide<+->
 \begin{definition}
 如果开集 $D$ 的任意两个点之间都可以用一条完全包含在 $D$ 中的折线连接起来, 则称 $D$ 是一个\emph{区域}.
-\onslide<+->
-也就是说, 区域是连通的开集.
+\onslide<+->{也就是说, 区域是连通的开集.}
 \end{definition}
 \onslide<+->
 观察下侧的图案, 淡蓝色部分是一个区域.
@@ -193,8 +192,8 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \draw[cstcurve,dcolora,smooth] plot coordinates {(1,0.5) (1.2,0.3) (1.2,-0.3) (1.4,0.5)};
 \draw[cstcurve,dcolorc] (-1,0.8)--(-0.2,0.5)--(0.2,-0.5)--(1,-0.8);
 \draw
-  (-1.2,0.8) node[dcolorc] {$z_1$}
-  (1.3,-0.8) node[dcolorc] {$z_2$};
+	(-1.2,0.8) node[dcolorc] {$z_1$}
+	(1.3,-0.8) node[dcolorc] {$z_2$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -205,6 +204,7 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 复平面上的区域大多由复数的实部、虚部、模和辐角的不等式所确定.
 \onslide<10->{这些区域对应的闭区域是什么?}
 
+\vspace{-0.3\baselineskip}
 \onslide<2->
 \begin{center}
 \begin{tikzpicture}
@@ -220,13 +220,14 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \draw[cstaxis,visible on=<6->](7,-1)--(7,1.2);
 \fill[cstfille,pattern color=dcolorb,visible on=<6->] (7.2,-0.9) rectangle (8,0.9);
 \draw
-  (-0.05,1.5) node[dcolorb] {上半平面 $\Im z>0$}
-  (-0.05,-0.9) node[dcolora,visible on=<3->] {下半平面 $\Im z<0$}
-  (3.1,1.6) node[dcolorb,align=center,visible on=<4->] {左半平面\\$\Re z<0$}
-  (4.9,1.6) node[dcolora,align=center,visible on=<5->] {右半平面\\$\Re z>0$}
-  (7.7,1.7) node[dcolorb,align=center,visible on=<6->] {竖直带状区域\\$x_1<\Re z<x_2$};
+	(-0.05,1.5) node[dcolorb] {上半平面 $\Im z>0$}
+	(-0.05,-0.9) node[dcolora,visible on=<3->] {下半平面 $\Im z<0$}
+	(3.1,1.6) node[dcolorb,align=center,visible on=<4->] {左半平面\\$\Re z<0$}
+	(4.9,1.6) node[dcolora,align=center,visible on=<5->] {右半平面\\$\Re z>0$}
+	(7.7,1.7) node[dcolorb,align=center,visible on=<6->] {竖直带状区域\\$x_1<\Re z<x_2$};
 \end{tikzpicture}
 \end{center}
+\vspace{-0.2\baselineskip}
 \onslide<7->
 \begin{center}
 \begin{tikzpicture}
@@ -241,14 +242,15 @@ $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
 \draw[cstaxis,visible on=<9->](4.9,1)--(7.5,1);
 \draw[cstaxis,visible on=<9->](6.2,-0.2)--(6.2,2.4);
 \draw
-  (0,0.5) node[dcolora,align=center] {水平带状区域\\$y_1<\Im z<y_2$}
-  (3.4,1.8) node[dcolorb,align=center,visible on=<8->] {角状区域\\$\alpha_1<\arg z<\alpha_2$}
-  (8.2,2) node[dcolora,align=center,visible on=<9->] {圆环域\\$r<|z|<R$};
+	(0,0.5) node[dcolora,align=center] {水平带状区域\\$y_1<\Im z<y_2$}
+	(3.4,1.8) node[dcolorb,align=center,visible on=<8->] {角状区域\\$\alpha_1<\arg z<\alpha_2$}
+	(8.2,2) node[dcolora,align=center,visible on=<9->] {圆环域\\$r<|z|<R$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 
+\subsection{区域的特性}
 \begin{frame}{连续区间、简单曲线和闭路}
 \onslide<+->
 设 $x(t),y(t),t\in[a,b]$ 是两个连续函数,
@@ -272,8 +274,8 @@ $\begin{cases}x=x(t),& \\y=y(t),&\end{cases}t\in[a,b]$ 定义了一条\emph{连�
 \draw[cstcurve,dcolorb,smooth,visible on=<3->] plot coordinates {(4,0.5) (4.6,0.9) (5.3,2) (4.7,2.5) (3.7,2) (4.7,0.9) (5.7,0.5)};
 \draw[cstcurve,dcolorc,smooth,smooth,visible on=<4->] plot coordinates {(7,1) (7.5,0.4) (8,0.2) (8.5,0.4) (9,1) (8.5,1.6) (8,1.8) (7.5,1.7) (7,1)};
 \draw
-  (0.5,0.7) node[dcolora] {$z(a)$}
-  (3,1.2) node[dcolora] {$z(b)$};
+	(0.5,0.7) node[dcolora] {$z(a)$}
+	(3,1.2) node[dcolora] {$z(b)$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -290,6 +292,7 @@ $C$ 是它们的公共边界.
 \onslide<+->
 这件事情的严格证明是十分困难的.
 
+\onslide<1->
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfille] (-2,-2) rectangle (1.5,1.5);
@@ -304,15 +307,15 @@ $C$ 是它们的公共边界.
 在前面所说的几个区域的例子中, 我们在区域中画一条闭路.
 \onslide<+->
 除了圆环域之外, 闭路的内部仍然包含在这个区域内.
-
+\onslide<+->
 \begin{definition}
 如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通域}.
-\onslide<+->
-否则称之为\emph{多连通域}.
+\onslide<+->{否则称之为\emph{多连通域}.}
 \end{definition}
 
 \onslide<+->
 单连通域内的任一闭路可以连续地变形成一个点.
+\onslide<+->
 \begin{center}
 \begin{tikzpicture}
 \filldraw[cstcurve,dcolora,smooth,cstfill] plot coordinates {(-2.2,0) (-1.5,-0.7) (0,-1.5) (1,-1.5) (1.4,0) (0,1.2) (-1.5,1.2) (-2.2,0)};
@@ -329,15 +332,15 @@ $C$ 是它们的公共边界.
 
 
 \begin{frame}{例题: 区域的特性}
+\onslide<+->
 \begin{example}
 \enumnum1 $\Re(z^2)<1$.
 
-\onslide<+->
-设 $z=x+yi$, 则 $\Re(z^2)=x^2-y^2<1$.
-\onslide<+->
-这是无界的单连通域.
+\onslide<+->{设 $z=x+yi$, 则 $\Re(z^2)=x^2-y^2<1$.}
+\onslide<+->{这是无界的单连通域.}
 \end{example}
 
+\onslide<2->
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfille] (-1.414,-1) rectangle (1.414,1);
@@ -351,15 +354,14 @@ $C$ 是它们的公共边界.
 
 
 \begin{frame}{例题: 区域的特性}
+\onslide<+->
 \begin{example}[续]
 \enumnum2 $|\arg z|<\dfrac\pi3$.
-\onslide<+->
-即角状区域 $-\dfrac\pi3<\arg z<\dfrac\pi3$.
-\onslide<+->
-这是无界的单连通域.
+\onslide<+->{即角状区域 $-\dfrac\pi3<\arg z<\dfrac\pi3$.}
+\onslide<+->{这是无界的单连通域.}
 \end{example}
 
-\onslide<+->
+\onslide<2->
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfille] (0,0)--(1,1.732) arc(60:-60:2)--cycle;
@@ -373,14 +375,13 @@ $C$ 是它们的公共边界.
 
 
 \begin{frame}{例题: 区域的特性}
+\onslide<+->
 \begin{example}[续]
 \enumnum3 $\abs{\dfrac1z}\le3$.
-\onslide<+->
-即 $|z|\ge\dfrac13$.
-\onslide<+->
-这是无界的多连通\emph{闭区域}.
+\onslide<+->{即 $|z|\ge\dfrac13$.}
+\onslide<+->{这是无界的多连通\emph{闭区域}.}
 \end{example}
-\onslide<+->
+\onslide<2->
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfille] (-1.6,-1.6) rectangle (1.6,1.6);
@@ -393,15 +394,13 @@ $C$ 是它们的公共边界.
 
 
 \begin{frame}{例题: 区域的特性}
+\onslide<+->
 \begin{example}[续]
 \enumnum4 $|z+1|+|z-1|<4$.
 
-\onslide<+->
-表示一个椭圆的内部. 
-\onslide<+->
-这是有界的单连通域.
+\onslide<+->{表示一个椭圆的内部.}
+\onslide<+->{这是有界的单连通域.}
 \end{example}
-\vspace{-5pt}
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -410,16 +409,47 @@ $C$ 是它们的公共边界.
 \draw[cstaxis] (0,-1.1)--(0,1.1);
 \end{tikzpicture}
 \end{center}
-\vspace{-5pt}
-
-\begin{think}
-$|z+1|+|z-1|\ge 1$ 表示什么区域?
-\end{think}
-\vspace{-5pt}
+\onslide<+->
+\begin{thinking}
+$|z+1|+|z-1|\ge 1$ 表示什么集合?
+\end{thinking}
+\onslide<+->
 \begin{answer}
 整个复平面.
 \end{answer}
 \end{frame}
 
+{
+\homework
+\begin{frame}[<*>]{作业一}
+	\begin{homeworks}
+		\item 指出满足下列各式的点 $z$ 的轨迹是什么曲线？
+		\begin{enumerate}
+			\item $\arg(z-i)=\dfrac\pi4$;
+			\item $|z-a|=\Re(z-b)$, 其中 $a,b$ 为实常数;
+			\item $z\ov z+az+\ov{az}+b=0$, 其中 $a$ 为复数, $b$ 为实常数.
+		\end{enumerate}
+		\item 用复参数方程表示连接 $1+i$ 与 $-1-4i$ 的直线段.
+		\item 用复参数方程表示圆周 $|z-z_0|=r$.
+		\item 画出下列不等式所确定的图形, 指出它们的特征(是否为区域、闭区域, 是否有界, 是否单连通).
+		\begin{enumerate}
+			\item $|z|<1,\Re z\le \frac12$;
+			\item $0<\Re z<1$;
+			\item $\left|\dfrac{z+1}{z-1}\right|\le 2$.
+		\end{enumerate}
+	\end{homeworks}
+\end{frame}
 
-
+\begin{frame}[<*>]{作业二}
+	\begin{homeworks}\setcounter{enumi}{4}
+		\item(2020年期末A卷) 方程 $|z|=\Re z+1$ 中 $z$ 的轨迹为(~~~~)．
+		\xx{椭圆}{抛物线}{双曲线}{直线}
+		\item(2020年期末A卷) 不等式 $z\ov z-(2+i)z-(2-i)\ov z\le 4$ 确定的是(~~~~).
+		\xx{有界单连通闭域}{无界多连通开区域}{无界单连通闭域}{有界多连通开区域}
+		\item(2022年期末A卷) 方程 $\bigl||z+i|-|z-i|\bigr|=1$ 表示的是(~~~~).
+		\xx[2]{直线}{不是圆的椭圆}{双曲线}{圆周}
+		\item(2022年期末A卷) 不等式 $-1\le\arg z\le \pi-1$ 确定是的(~~~~).
+		\xx{有界多连通闭区域}{有界单连通区域}{无界多连通区域}{无界单连通闭区域}
+	\end{homeworks}
+\end{frame}
+}

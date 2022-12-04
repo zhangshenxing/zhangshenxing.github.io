@@ -1,12 +1,13 @@
 \section{复数及其代数运算}
 
+\subsection{复数的引入}
 
 \begin{frame}{复数的引入}
 \onslide<+->复数起源于多项式方程的求根问题.
 \onslide<+->我们考虑一元二次方程 $x^2+bx+c=0$,
 \onslide<+->配方可得
 	\[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
-\onslide<+->因此
+\onslide<+->于是得到求根公式
 	\[x=\frac{-b\pm\sqrt\Delta}2,\quad \Delta=b^2-4c.\]
 	\vspace{-\baselineskip}
 \begin{enumerate}
@@ -16,7 +17,6 @@
 \onslide<+->然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
 \end{enumerate}
 \end{frame}
-
 
 \begin{frame}{三次方程的根}
 \onslide<+->现在我们来考虑一元三次方程.
@@ -29,11 +29,11 @@
 设 $x=u+v$, 则
 	\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
 \visible<+->{我们希望
-	\[u^3+v^3=20,\quad uv=-2,\]}
+	\[u^3+v^3=20,\quad uv=-2,\]}%
 \visible<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.}
 \visible<+->{解得
 	\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]}
-\vspace{-\baselineskip}
+\vspace{-1.2\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -68,6 +68,7 @@
 
 \visible<+->{\indent 我们可以强行解得
 	\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
+\vspace{-1.3\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -80,6 +81,7 @@
 \visible<+->{相应地
 	\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]}
 \visible<+->{\[x=u+v=2,-3,1.\]}
+\vspace{-\baselineskip}
 \end{solutionc}
 \onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
 \end{frame}
@@ -113,8 +115,10 @@
 \end{frame}
 
 
+\subsection{复数的概念}
+
 \begin{frame}{复数的定义}
-\onslide<+->现在我们来正式引入复数的概念.
+\onslide<+->现在我们来正式介绍复数的概念.
 \onslide<+->由于我们无法区分方程 $x^2=-1$ 的两个根 $\pm\sqrt{-1}$,
 \onslide<+->因此我们固定其中一个, 并引入一个记号 $i$ 来表示它.
 \onslide<+->
@@ -221,22 +225,18 @@
 \end{example}
 \onslide<+->
 \begin{solution}
-\begin{enumerate}
-\item $x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
-\item $x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
-\end{enumerate}
+\enumnum1 $x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
+
+\visible<+->{\enumnum2 $x^2-3x-4=0$, 即 $x=-1$ 或 $4$.}
 \visible<+->{但同时要求 $x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
 \end{solution}
 \onslide<+->
 \begin{exercise}
-实数 $x$ 取何值时, $x^2(1+i)+x(5+4i)+4+3i$ 是纯虚数.
+若 $x^2(1+i)+x(5+4i)+4+3i$ 是纯虚数, 则实数 $x=$\fillblank{\visible<+->{$-4$}}.
 \end{exercise}
-\onslide<+->
-\begin{answer}
-$x=-4$.
-\end{answer}
 \end{frame}
 
+\subsection{复数的代数运算}
 
 \begin{frame}{复数的加法与减法}
 \onslide<+->设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
@@ -272,7 +272,7 @@ $x=-4$.
 \end{frame}
 
 
-\begin{frame}{复数的代数运算}
+\begin{frame}{复数的乘除法}
 \onslide<+->\alert{规定 $i\cdot i=-1$.}
 \onslide<+->由线性空间的数乘和乘法分配律可得复数的乘除法:
 \onslide<+->
@@ -280,6 +280,7 @@ $x=-4$.
 z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 &=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 \end{align*}
+\vspace{-\baselineskip}
 \onslide<+->\[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
 \onslide<+->\[\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
@@ -288,48 +289,63 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \end{frame}
 
 
-\begin{frame}{例题: 常见复数的幂次}
-\beqskip{4pt}
+\begin{frame}{典型例题: 常见复数的幂次}
 \onslide<+->
 \begin{example}
-\enumnum1 $i^2=-1,i^3=-i,i^4=1$.
+\begin{enumerate}
+\item $i^2=-1,i^3=-i,i^4=1$.
 \visible<+->{一般地, 对于整数 $n$, 
 \[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}%
-\enumnum2 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
+\item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
+\item 令 $z=1+i$, \visible<+->{则
+\[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
+\vspace{-\baselineskip}
+\end{enumerate}
 \end{example}
 \onslide<+->{我们把满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.}
 \onslide<+->{那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.}
-\onslide<+->
-\begin{think}
-$\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
-\end{think}
-\onslide<+->
-\begin{answer}
-它是 $8$ 次单位根.
-\end{answer}
-\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 解复数方程}
+\begin{frame}{典型例题: 常见复数的幂次}
 \onslide<+->
-\begin{example}
-解方程 $z^2-2(1+i)z-5-10i=0$.
+\begin{example}[2022年期末A卷]
+化简 $1+i+i^2+\cdots+i^4=$\fillblank{\visible<4->{$1$}}.
 \end{example}
 \onslide<+->
 \begin{solution}
-\indent 配方可得 $(z-1-i)^2=5+10i+(1+i)^2=5+12i$.
-
-\visible<+->{设 $(x+yi)^2=5+12i$, 则
-	\[x^2-y^2=5,\quad 2xy=12,\quad y=\dfrac 6x,\]}
-\vspace{-\baselineskip}
-\visible<+->{\[x^2-\left(\frac 6x\right)^2=5,\quad
-	x^4-5x^2-36=0,\quad x^2=9,\]}
-\visible<+->{故 $(x,y)=(3,2)$ 或 $(-3,-2)$,}
-\visible<+->{\[z=1+i\pm(3+2i)=4+3i\ \text{或}\ -2-i.\]}
+根据等比数列求和公式,
+\[1+i+i^2+\cdots+i^4=\frac{i^5-1}{i-1}
+\visible<+->{=\frac{i-1}{i-1}=1.}\]
 \vspace{-\baselineskip}
 \end{solution}
+\onslide<+->{
+\begin{exercise}[2020年期末A卷]
+化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{\visible<+->{$1$}}.
+\end{exercise}
+}
 \end{frame}
+
+
+% \begin{frame}{例题: 解复数方程}
+% \onslide<+->
+% \begin{example}
+% 解方程 $z^2-2(1+i)z-5-10i=0$.
+% \end{example}
+% \onslide<+->
+% \begin{solution}
+% \indent 配方可得 $(z-1-i)^2=5+10i+(1+i)^2=5+12i$.
+
+% \visible<+->{设 $(x+yi)^2=5+12i$, 则
+% 	\[x^2-y^2=5,\quad 2xy=12,\quad y=\dfrac 6x,\]}
+% \vspace{-\baselineskip}
+% \visible<+->{\[x^2-\left(\frac 6x\right)^2=5,\quad
+% 	x^4-5x^2-36=0,\quad x^2=9,\]}
+% \visible<+->{故 $(x,y)=(3,2)$ 或 $(-3,-2)$,}
+% \visible<+->{\[z=1+i\pm(3+2i)=4+3i\ \text{或}\ -2-i.\]}
+% \vspace{-1.2\baselineskip}
+% \end{solution}
+% \end{frame}
 
 
 \begin{frame}{复数域*}
@@ -363,6 +379,7 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \onslide<+->于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
 \end{frame}
 
+\subsection{共轭复数}
 
 \begin{frame}{共轭复数}
 \onslide<+->
@@ -380,8 +397,6 @@ $\dfrac{1+i}{\sqrt2}$ 是单位根吗? 如果是, 是几次单位根?
 \ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{\ov{z_1}}{\ov{z_2}}$.
 \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
 \item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
-\item $z$ 是实数当且仅当 $z=\ov z$.
-\item $z$ 是纯虚数当且仅当 $z=\ov z$ 且 $z\neq 0$.
 \end{itemize}
 \end{block}
 \end{frame}
@@ -424,7 +439,7 @@ $\dfrac z{1+z^2}$ 是实数当且仅当
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数的代数计算}
+\begin{frame}{例题: 复数的代数计算}
 \onslide<+->{由于 $z\ov z$ 是一个实数,}
 \onslide<+->{因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
 \[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]}
@@ -443,7 +458,7 @@ $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 \end{frame}
 
 
-\begin{frame}[<*>]{典型例题: 复数的代数计算}
+\begin{frame}[<*>]{例题: 复数的代数计算}
 \onslide<+->
 \begin{example}
 设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
@@ -457,22 +472,8 @@ $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 &\visible<+->{=\frac{(-15-20)+(-20+15)i}{25}}
 \visible<+->{=-\frac75-\frac15i,}
 \end{align*}
-\vspace{-5pt}
 \visible<+->{因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.}
 \end{solution}
-
-\vspace{-5pt}
-\onslide<+->
-\begin{columns}
-	\column{0.48\textwidth}
-		\begin{exercise}
-		计算 $\Re\left(\dfrac{1+2i}{8+i}\right)$.
-		\end{exercise}\onslide<+->
-	\column{0.48\textwidth}
-		\begin{answer}
-		$\dfrac2{13}$.
-		\end{answer}
-\end{columns}
 \end{frame}
 
 
@@ -489,3 +490,19 @@ $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 \onslide<+->由于 $J^2=-E$, 所以 $J$ 实际上就相当于虚数单位, 这个域就是我们前面定义的复数域 $\BC$.
 \end{frame}
 
+{
+\homework
+\begin{frame}[<*>]{作业}
+  \begin{homeworks}
+    \item 判断题: $z$ 是实数当且仅当 $z=\ov z$.
+    \item 判断题: $z$ 是纯虚数当且仅当 $z=-\ov z$.
+    \item $z_1=-z,z_2=\ov z,z_3=-\ov{(-z)}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
+    \item 已知点 $z_1,z_2,z_3$. 点 $\frac12(z_1+z_2)$ 和 $\frac13(z_1+z_2+z_3)$ 表示什么点?
+    \item 如果 $\dfrac{x+1+i(y-3)}{5+3i}=1+i$, 那么实数 $x,y$ 分别是多少?
+    \item 证明共轭复数性质汇总中列出的结论.
+    \item 证明 $z_1\cdot\ov{z_2}-\ov{z_1}\cdot z_2=2i\Im(z_1\cdot\ov{z_2})$.
+    \item(2020年期末B卷) 设复数 $z=\dfrac{2+i}i-\dfrac{2i}{1-i}$, 求 $\Re z,\Im z,z\ov z$.
+    \item(2021年期末A卷) 化简 $\dfrac{(1+i)^{101}}{(1-i)^{99}}=$\fillblank{}.
+  \end{homeworks}
+\end{frame}
+}

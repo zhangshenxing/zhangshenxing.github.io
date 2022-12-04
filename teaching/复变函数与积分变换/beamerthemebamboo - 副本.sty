@@ -1,0 +1,203 @@
+\mode<presentation>
+% Colors
+\usecolortheme{seahorse}
+\usecolortheme{orchid}
+\setbeamercolor{title}{use=structure,fg=structure.fg}
+\setbeamercolor{item}{use=structure,fg=structure.fg}
+\setbeamercolor{email}{use=structure,fg=structure.fg}
+% Margin
+\setbeamersize{text margin left=1em,text margin right=1em}
+% Items
+\useinnertheme{circles}
+\setbeamertemplate{enumerate item}{(\insertenumlabel)}
+% Font
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{institute}{size=\normalsize,shape=\itshape}
+\setbeamerfont{date}{size=\normalsize,shape=\itshape}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{part title}{size=\Large}
+\setbeamerfont{part name}{size=\Large, parent=part title}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{email}{size=\small,family=\ttfamily}
+% Title Page
+\newcommand\institutegraphic[1]{\def\insertinstitutegraphic{#1}}\institutegraphic{}
+\newcommand\office[1]{\def\insertoffice{#1}}\office{}
+\newcommand\email[1]{\def\insertemail{#1}}\email{}
+\newcommand\website[1]{\def\insertwebsite{#1}}\website{}
+\email{}
+\setbeamertemplate{title page}{\vfill%
+	\hskip0em
+	\ifx\inserttitlegraphic\@empty\else
+		\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em
+	\fi%
+	\ifx\insertinstitutegraphic\@empty\else%
+		\raisebox{0.035\textheight}{\includegraphics[height=0.13\textheight]{\insertinstitutegraphic}}%
+	\fi%
+	\vskip1.5em%
+	\par\hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}%
+	\par\hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip1.5em%
+	\par\hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor (\insertinstitute)}\vskip0.25em%	
+	\ifx\insertoffice\@empty\else%
+		\par\hskip0em{\usebeamercolor[fg]{institute}%
+			{\usebeamerfont{institute}\translate{Office}}%
+			{\usebeamerfont{author}: }%
+			{\usebeamerfont{institute}\insertoffice}%
+		}\vskip0.25em%
+	\fi		
+	\ifx\insertemail\@empty\else%
+		\par\hskip0em{%
+			{\usebeamercolor[fg]{institute}\usebeamerfont{email}Email}%
+			{\usebeamercolor[fg]{institute}\usebeamerfont{author}: }%
+			{\usebeamercolor[fg]{email}\usebeamerfont{email}\href{mailto:\insertemail}{\insertemail}}%
+		}\vskip0.25em%
+	\fi
+	\ifx\insertwebsite\@empty\else%
+		\par\hskip0em{%
+			{\usebeamercolor[fg]{institute}\usebeamerfont{institute}\translate{Website}}%
+			{\usebeamercolor[fg]{institute}\usebeamerfont{author}: }%
+			{\usebeamercolor[fg]{email}\usebeamerfont{email}\url{\insertwebsite}}
+		}\vskip0.25em%
+	\fi
+	\vfill%
+}
+% Background
+\setbeamertemplate{background}{
+	\ifx\inserttitlegraphic\@empty\else
+	\begin{tikzpicture}
+		\path (0,0) -- (\paperwidth,\paperheight);
+		\node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\inserttitlegraphic}};
+	\end{tikzpicture}
+	\fi
+}
+\setbeamertemplate{navigation symbols}{}
+% Part Page
+\setbeamertemplate{part page}{
+	\begingroup
+		\begin{beamercolorbox}[sep=8pt,rounded=true,center]{part title}
+		\ifnum\thepart>0
+			{\usebeamercolor[fg]{part name}\usebeamerfont{part name}第\chinese{part}章}%
+			\hspace{1em}
+		\fi%
+			{\usebeamercolor[fg]{part title}\usebeamerfont{part title}\insertpart}\par
+		\end{beamercolorbox}
+	\endgroup
+}
+% Part Page automatically
+\AtBeginPart{\beamer@tocsectionnumber=0\relax\setcounter{section}{0}\frame{\partpage}}
+% Footline
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+\setbeamertemplate{footline}{%
+	\leavevmode%
+	\hbox{%
+	\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+		\ifnum \thesection>0
+			\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}{\thepart.\thesection~\insertsectionhead{}}
+		\else
+			\usebeamercolor[fg]{institute in head/foot}\usebeamerfont{institute in head/foot}{\insertinstitute}
+		\fi
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.3\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+		\usebeamercolor[fg]{title in head/foot}\usebeamerfont{title in head/foot}\insertshorttitle
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.35\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{author in head/foot}%
+		\ifnum \thepart>0
+			\hfill%
+			\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}{第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
+			\hfill%
+			\usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}
+		\else
+			\hfill%
+			\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}{\insertshortauthor}%
+			\hfill%
+			\usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}
+		\fi
+	\end{beamercolorbox}%
+	}%
+}
+% Theorems
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+	common/.style={
+		lower separated=false,
+		coltitle=white,
+		boxrule=1pt,
+		fonttitle=\bfseries,
+		enhanced,
+		left=1mm,right=1mm,bottom=1mm,top=2mm,
+		before skip=2mm minus 1mm,
+		after skip=2mm minus 1mm,
+		attach boxed title to top left={
+			yshift=-0.11in, xshift=0.15in
+		},
+		boxed title style={
+			boxrule=0pt, arc=0pt, outer arc=0pt
+		}
+	}
+}
+\usebeamercolor{structure}
+\tcbset{
+	blockstyle/.style={
+		common,
+		colframe=structure.fg,
+		colback=structure.fg!10,
+		colbacktitle=structure.fg!80
+	}
+}
+\usebeamercolor{example text}
+\tcbset{
+	exampstyle/.style={
+		common,
+		colframe=example text.fg,
+		colback=example text.fg!10,
+		colbacktitle=example text.fg!80
+	}
+}
+\usebeamercolor{alerted text}
+\tcbset{
+	alertstyle/.style={
+		common,
+		colframe=alerted text.fg,
+		colback=alerted text.fg!10,
+		colbacktitle=alerted text.fg!80
+	}
+}
+\RequirePackage{xparse}
+\renewenvironment{quote}{\begin{tcolorbox}[exampstyle,notitle,fontupper=\itshape,fontlower=\itshape,halign lower=flush right,lower separated=true]}{\end{tcolorbox}}
+\renewenvironment{block}[1]{\begin{tcolorbox}[blockstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{theorem}{o}{\begin{block}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{corollary}{o}{\begin{block}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{lemma}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{fact}{o}{\begin{block}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{solution}{o}{\begin{block}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\NewDocumentEnvironment{solutionc}{o}{\begin{block}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{block}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{block}}
+\NewDocumentEnvironment{proofs}{o}{\begin{block}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\NewDocumentEnvironment{proofc}{o}{\begin{block}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{block}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{block}}
+\newenvironment{analysis}{\begin{block}{\translate{Analysis}}}{\end{block}}
+\newenvironment{answer}{\begin{block}{\translate{Answer}}}{\end{block}}
+\RenewDocumentEnvironment{definition}{o}{\begin{tcolorbox}[blockstyle,title=\translate{Definition}\IfNoValueTF{#1}{}{~(#1)}]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{definitions}{o}{\begin{tcolorbox}[blockstyle,title=\translate{Definitions}\IfNoValueTF{#1}{}{~(#1)}]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{example}{o}{\begin{tcolorbox}[exampstyle,title=\translate{Example}\IfNoValueTF{#1}{}{~(#1)}]}{\end{tcolorbox}}
+\RenewDocumentEnvironment{examples}{o}{\begin{tcolorbox}[exampstyle,title=\translate{Examples}\IfNoValueTF{#1}{}{~(#1)}]}{\end{tcolorbox}}
+\newenvironment{exercise}{\begin{tcolorbox}[exampstyle,title=\translate{Exercise}]}{\end{tcolorbox}}
+\newenvironment{thinking}{\begin{tcolorbox}[exampstyle,title=\translate{Thinking}]}{\end{tcolorbox}}
+\newenvironment{remark}{\begin{tcolorbox}[exampstyle,title=\translate{Remark}]}{\end{tcolorbox}}
+% Math Font
+\usefonttheme[onlymath]{serif}
+\RequirePackage{lmodern}
+\beamerdefaultoverlayspecification{<+->}
+\mode<all>
+% Translations
+\providetranslation[to=ChineseUTF8]{Proof (Continued)}{续证}
+\providetranslation[to=ChineseUTF8]{Solution (Continued)}{续解}
+\providetranslation[to=ChineseUTF8]{thinking}{思考}
+\providetranslation[to=ChineseUTF8]{Answer}{答案}
+\providetranslation[to=ChineseUTF8]{Analysis}{分析}
+\providetranslation[to=ChineseUTF8]{Office}{办公室}
+\providetranslation[to=ChineseUTF8]{Website}{课件地址}
+\RequirePackage[T1]{fontenc}
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
+

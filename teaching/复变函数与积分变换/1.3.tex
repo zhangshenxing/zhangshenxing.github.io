@@ -1,9 +1,10 @@
 \section{复数的乘除、方幂与方根}
 
-
+\subsection{复数的乘除与三角/指数表示}
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
 三角形式和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+\onslide<+->
 \begin{theorem}
 设
 \[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
@@ -42,23 +43,24 @@
 \onslide<+->
 例如
 \[(-1+i)(-1+i)=2i,\]
-\vspace{-\baselineskip}
+\vspace{-0.5\baselineskip}
 \onslide<+->
 \[\arg(-1+i)+\arg(-1+i)=\frac{3\pi}4+\frac{3\pi}4=\frac{3\pi}2,\]
-\vspace{-\baselineskip}
+\vspace{-0.5\baselineskip}
 \onslide<+->
 \[\arg(-2i)=-\frac\pi2.\]
 \end{frame}
 
 
 \begin{frame}{复数的乘除与三角/指数表示}
+\onslide<+->
 \begin{proof}
 \vspace{-\baselineskip}	
 \begin{align*}
 z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
 r_2(\cos\theta_2+i\sin\theta_2)\\
 &\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)}\\
-&\visible<.->{\qquad+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
+&\visible<.->{\qquad\qquad+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
 &\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
 \end{align*}
 \onslide<+->
@@ -105,9 +107,11 @@ r_2(\cos\theta_2+i\sin\theta_2)\\
 
 
 \begin{frame}{例题: 复数解决平面几何问题}
+\onslide<+->
 \begin{example}
 已知正三角形的两个顶点为 $z_1=1$ 和 $z_2=2+i$, 求它的另一个顶点.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $\overrightarrow{Z_1Z_3}$ 为 $\overrightarrow{Z_1Z_2}$ 顺时针或逆时针旋转 $\dfrac\pi3$,
 \begin{center}
@@ -140,6 +144,7 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \end{solutionc}
 \end{frame}
 
+\subsection{复数的乘幂}
 
 \begin{frame}{复数的乘幂}
 \onslide<+->
@@ -155,16 +160,16 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 
 \begin{frame}{复数的乘幂*}
 \onslide<+->
-对棣莫弗公式左侧进行二项式展开
+对棣莫弗公式左侧进行二项式展开可以得到
 \onslide<+->
 \begin{align*}
-\cos(n\theta)&=\Re\left[
-\sum_{0\le k\le n}\mathrm{C}_n^k \cos^{n-k}\theta(i\sin\theta)^k\right]\\
-&\visible<+->{=\sum_{0\le 2k\le n}\mathrm{C}_n^{2k} \cos^{n-2k}\theta(-\sin^2\theta)^k}\\
-&\visible<+->{=\sum_{0\le k\le\frac n2}\mathrm{C}_n^{2k} \cos^{n-2k}\theta(\cos^2\theta-1)^k.}
+  \cos(2\theta)&=2\cos^2\theta-1,\\
+  \cos(3\theta)&=4\cos^2\theta-3\cos\theta,\\
+  \cos(4\theta)&=8\cos^2\theta-8\cos^2\theta+1,\\
+  \cos(5\theta)&=16\cos^2\theta-20\cos^3\theta+5\cos\theta.
 \end{align*}
 \onslide<+->
-因此 $\cos{n\theta}$ 是 $\cos\theta$ 的多项式.
+一般地, 可以证明 $\cos{n\theta}$ 是 $\cos\theta$ 的 $n$ 次多项式,
 \onslide<+->
 这个多项式
 \[g_n(T)=\sum_{0\le k\le\frac n2}\mathrm{C}_n^{2k} T^{n-2k} (T^2-1)^k.\]
@@ -175,9 +180,11 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 
 
 \begin{frame}{典型例题: 复数乘幂的计算}
+\onslide<+->
 \begin{example}
 求 $(1+i)^n+(1-i)^n$.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于
 \[1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\quad
@@ -196,15 +203,14 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 
 
 \begin{frame}{典型例题: 复数乘幂的计算}
+\onslide<+->
 \begin{exercise}
-求 $(\sqrt3+i)^{2022}$.
+求 $(\sqrt3+i)^{2022}=$\fillblank{\visible<+->{\alert{$-2^{2022}$}}}.
 \end{exercise}
-\begin{answer}
-$-2^{2022}$.
-\end{answer}
 \end{frame}
 
 
+\subsection{复数的方根}
 \begin{frame}{复数的方根}
 \onslide<+->
 我们利用复数方幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
@@ -228,14 +234,16 @@ $-2^{2022}$.
 \begin{frame}{复数的方根}
 \onslide<+->
 故
+\begin{alertblock*}{}
 \begin{align*}
-&\aboxeq{w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n}\\
-&\hspace{42pt}\aboxeq{=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).}
+  &w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n\\
+  &\hspace{42pt}=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).
 \end{align*}
+\end{alertblock*}
 \onslide<+->
 不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
 \onslide<+->
-因此只需取 \abox{$k=0,1,\dots,n-1$}.
+因此只需取 \alert{$k=0,1,\dots,n-1$}.
 \onslide<+->
 故\emph{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
 
@@ -243,27 +251,15 @@ $-2^{2022}$.
 这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 \onslide<+->
 因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
-\end{frame}
-
-
-\begin{frame}{方幂和方根的辐角等式}
-\onslide<+->
-注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
-\onslide<+->
-这是因为
-\[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
-\[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
 
 \onslide<+->
-我们总有
-\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
-\end{frame}
-
-\begin{frame}{典型例题: 复数方根的计算}
-\beqskip{6pt}
 \begin{example}
 求 $\sqrt[4]{1+i}$.
 \end{example}
+\end{frame}
+
+
+\begin{frame}{典型例题: 复数方根的计算}
 \begin{solution}
 由于 $1+i=\sqrt2\exp\left(\dfrac{\pi i}4\right)$,
 \onslide<+->
@@ -276,7 +272,6 @@ w_1=\sqrt[8]2\exp\frac{9\pi i}{16},\]
 \[w_2=\sqrt[8]2\exp\frac{17\pi i}{16},\qquad
 w_3=\sqrt[8]2\exp\frac{25\pi i}{16}.\]
 \end{solution}
-\endgroup
 \end{frame}
 
 
@@ -304,31 +299,39 @@ $w_0,w_1=iw_0,w_2=-w_0,w_3=-iw_0$ 形成了一个正方形.
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方根的计算}
+\begin{frame}[<*>]{典型例题: 复数方根的计算}
+\onslide<+->
+\begin{exercise}
+求 $\sqrt[6]{-1}=$\fillblank{\visible<+->{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}}.
+\end{exercise}
 
-\begin{columns}
-	\column{0.48\textwidth}
-		\begin{exercise}
-		求 $\sqrt[6]{-1}$.\vphantom{$\dfrac{\sqrt3+i}2$}
-		\end{exercise}\onslide<+->
-	\column{0.48\textwidth}
-		\begin{answer}
-		$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
-		\end{answer}
-\end{columns}
-
-\begin{think}
+\onslide<+->
+\begin{thinking}
 $i=\sqrt{-1}$ 吗?
-\end{think}
+\end{thinking}
+\onslide<+->
 \begin{answer}
 $\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
-\onslide<+->
+\onslide<+->{
 除非给定单值分支
 \[\sqrt z=\sqrt{|z|}\exp\left(\frac{i\arg z}2\right),\]
-否则不能说 $\sqrt{-1}=i$.
+否则不能说 $\sqrt{-1}=i$.}
 \end{answer}
 \end{frame}
 
+
+\begin{frame}{方幂和方根的辐角等式}
+\onslide<+->
+注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
+\onslide<+->
+这是因为
+\[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
+\[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
+\onslide<+->
+不过我们总有
+\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
+\end{frame}
+  
 
 \begin{frame}{三次方程的求根问题*}
 \onslide<+->
@@ -351,4 +354,16 @@ x=\alpha+\frac p\alpha, \alpha\omega+\frac p\alpha \omega^2, \alpha\omega^2+\fra
 \end{enumerate}
 \end{frame}
 
-
+{
+\homework
+\begin{frame}[<*>]{作业}
+  \begin{homeworks}
+    \item 如果 $\left|\dfrac{z_2-z_1}{z_3-z_1}\right|=\left|\dfrac{z_1-z_3}{z_2-z_3}\right|$. 证明 $|z_1-z_2|=|z_2-z_3|=|z_3-z_1|$ 并说明这些等式的几何意义.
+    \item 将 $\dfrac{(\cos \varphi+i\sin \varphi)^5}{(\cos \varphi-i\sin \varphi)^3}$ 写成三角形式和指数形式.
+    \item 计算 \enumnumhk1 $(\sqrt3-i)^5$; \enumnumhk2 $(1+i)^6$; \enumnumhk3 $\sqrt[6]{-1}$; \enumnumhk4 $\sqrt[4]{-2+2i}$.
+    \item(2020年期末B卷) 复数 $\left[\dfrac{(1+i)^2}2\right]^{2021}$ 的模是\fillblank{}.
+    \item(2020年期末B卷) 求 $\sqrt[4]{-2}$.
+    \item(2021年期末A卷) 解方程 $z^3+8=0$.
+  \end{homeworks}
+\end{frame}
+}

@@ -1,6 +1,6 @@
 \section{复数的三角与指数形式}
 
-
+\subsection{复数的模和辐角}
 \begin{frame}{复数的极坐标形式}
 \onslide<+->
 由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
@@ -24,20 +24,20 @@
   (7.0,-0.5) node {极坐标系}
   (4,0.3) node[dcolorb] {\small 一一对应}
   (1.2,-0.5) node[dcolorb] {复平面}
-  (6.7,0.8) node[dcolorc,visible on =<4->] {$r$};
+  (6.7,0.8) node[dcolorc,visible on =<5->] {$r$};
 \coordinate (A) at (9,0);
 \coordinate (B) at (6,0);
 \coordinate (C) at (7.6,1.2);
 \draw[cstaxis] (B)--(A);
-\draw[cstcurve,dcolorc,cstarrowto,visible on =<4->] (B)--(C);
-\draw[dcolorb,thick,visible on =<5->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
+\draw[cstcurve,dcolorc,cstarrowto,visible on =<5->] (B)--(C);
+\draw[dcolorb,thick,visible on =<6->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
 \end{tikzpicture}
 \end{center}
 
+\onslide<+->
 \begin{definition}
 \begin{itemize}
 \item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
-\onslide<+->
 \item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
 \visible<+->{\alert{$0$ 的辐角没有意义}.}
 \end{itemize}
@@ -68,7 +68,7 @@
 任意 $z\neq 0$ 的辐角有无穷多个.
 \onslide<+->
 我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}, 记作 $\emph{\arg z}$.
-\begin{tikzpicture}[overlay,xshift=1.7cm,yshift=-3cm]
+\begin{tikzpicture}[overlay,xshift=3cm,yshift=-3cm]
 \draw[cstaxis,visible on=<3->](-2.5,0)->(2,0); 
 \draw[cstaxis,visible on=<3->](0,-2)->(0,2);
 \fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
@@ -102,15 +102,14 @@
 \end{flalign*}
 
 \onslide<8->
-$z$ 是实数当且仅当 $\arg z=0,\pi$ 或 $z=0$.
-\onslide<9->
-$z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
+显然 \emph{$\Arg z=\arg z+2k\pi, k\in\BZ$}.
 \end{frame}
 
 
 \begin{frame}{复数模的性质}
 \onslide<+->
 复数的模满足如下性质:
+\onslide<+->
 \begin{block}{模的性质汇总}
 \begin{itemize}
 \item $z\ov z=|z|^2=|\ov z|^2$;
@@ -152,38 +151,41 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 
 
 \begin{frame}{例题：共轭复数解决模的等式}
+\onslide<+->
 \begin{example}
 证明 \enumnum1 $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
 
 \enumnum2 $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
 \end{example}
+\onslide<+->
 \begin{proof}
-\begin{enumerate}
-\item 因为
+\enumnum1 因为
 \[|z_1z_2|^2=z_1z_2\cdot\ov{z_1z_2}
 =z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
 \onslide<+->
 所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 \onslide<+->
 因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
-\item
+
+\enumnum2
+\vspace{-0.6\baselineskip}
 \begin{align*}
 |z_1+z_2|^2&=(z_1+z_2)(\ov{z_1}+\ov{z_2})\\
-&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}\\
-&=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere
+&\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}}\\
+&\visible<+->{=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere}
 \end{align*}
-\end{enumerate}
-\vspace{-2\baselineskip}
+\vspace{-1.5\baselineskip}
 \end{proof}
 \end{frame}
 
 
+\subsection{复数的三角形式和指数形式}
 \begin{frame}{复数的三角形式和指数形式}
 \onslide<+->
 由 $x=r\cos\theta,y=r\sin\theta$ 可得复数的\emph{三角形式}
 \[\alert{z=r(\cos\theta+i\sin\theta)}.\]
 \onslide<+->
-定义 $e^{i\theta}=\exp(i\theta)=\cos\theta+i\sin\theta$ (欧拉恒等式),
+定义 $e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$ (欧拉恒等式),
 \onslide<+->
 则我们得到复数的\emph{指数形式}
 \[\alert{z=re^{i\theta}=r\exp(i\theta)}.\]
@@ -193,9 +195,11 @@ $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
 
 
 \begin{frame}{典型例题: 求复数的三角/指数形式}
+\onslide<+->
 \begin{example}
 将 $z=-\sqrt{12}-2i$ 化成三角形式和指数形式.
 \end{example}
+\onslide<+->
 \begin{solution}
 $r=|z|=\sqrt{12+4}=4$.
 \onslide<+->
@@ -212,9 +216,11 @@ $r=|z|=\sqrt{12+4}=4$.
 
 
 \begin{frame}{典型例题: 求复数的三角/指数形式}
+\onslide<+->
 \begin{example}
 将 $z=\sin\dfrac\pi5+i\cos\dfrac\pi5$ 化成三角形式和指数形式.
 \end{example}
+\onslide<+->
 \begin{solution}
 \vspace{-\baselineskip}
 \begin{align*}
@@ -227,44 +233,17 @@ z&=\sin\frac\pi5+i\cos\frac\pi5\\
 
 
 \begin{frame}{典型例题: 求复数的三角/指数形式}
+\onslide<+->
+求复数的三角或指数形式时, 我们只需要任取一个辐角就可以了, 不要求必须是主辐角.
+\onslide<+->
 \begin{exercise}
 将 $z=\sqrt 3-3i$ 化成三角形式和指数形式.
 \end{exercise}
+\onslide<+->
 \begin{answer}
 $\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\pi}3\right)\right]
 =2\sqrt3\exp\left(\frac{5\pi i}3\right)$.
 \end{answer}
-\onslide<+->
-求复数的三角或指数形式时, 我们只需要任取一个辐角就可以了, 不要求必须是主辐角.
-\begin{example}
-将 $z=1-\cos\alpha+i\sin \alpha$ 化成三角形式和指数形式, 并求出它的主辐角, 其中 $0<\alpha\le \pi$.
-\end{example}
-\end{frame}
-
-
-\begin{frame}{典型例题: 求复数的三角/指数形式}
-\beqskip{8pt}
-\begin{solution}
-\[|z|^2=(1-\cos\alpha)^2+(\sin\alpha)^2
-\visible<+->{=2-2\cos\alpha}
-\visible<+->{=4\sin^2\frac\alpha2,}\]
-\onslide<+->
-因此 $|z|=2\sin\dfrac\alpha2$.
-\onslide<+->
-由于
-\[\frac{\sin\alpha}{1-\cos \alpha}
-=\frac{2\sin\dfrac\alpha2\cos\dfrac\alpha2}
-{2\sin^2\dfrac\alpha2}
-\visible<+->{=\cot\frac\alpha2=\tan\frac{\pi-\alpha}2,}\]
-\onslide<+->
-且 $\Re z=1-\cos\alpha>0$,
-\onslide<+->
-因此 $\arg z=\dfrac{\pi-\alpha}2$,
-\onslide<+->
-\[z=2\sin\frac\alpha2\left(\cos\frac{\pi-\alpha}2+i\sin\frac{\pi-\alpha}2\right)
-=2\sin\frac\alpha2 e^{\frac{(\pi-\alpha)i}2}.\]
-\end{solution}
-\endgroup
 \end{frame}
 
 
@@ -272,8 +251,9 @@ $\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\p
 \onslide<+->
 两个模相等的复数之和的三角/指数形式形式较为简单.
 \onslide<+->
-\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2\exp\left[\frac{i(\theta+\varphi)}2\right].\]
+\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
 \onslide<+->
+\vspace{-0.5\baselineskip}
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-1.5,0)--(2.5,0);
@@ -296,6 +276,31 @@ $\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\p
   (-1.2,1.7) node[dcolora] {$e^{i\theta}$};
 \end{tikzpicture}
 \end{center}
+\vspace{-0.3\baselineskip}
+
+\onslide<+->
+\begin{example}
+\vspace{-\baselineskip}
+\begin{align*}
+z&=1-\cos\alpha+i\sin \alpha
+\visible<+->{=e^0+e^{(\pi-\alpha)i}}\\
+&\visible<+->{=2\cos\frac{\pi-\alpha}2 e^{\frac{\pi-\alpha}2i}}
+\visible<+->{=2\sin\frac\alpha2 e^{\frac{\pi-\alpha}2i}.}
+\end{align*}
+\end{example}
 \end{frame}
 
-
+{
+\homework
+\begin{frame}[<*>]{作业}
+  \begin{homeworks}
+    \item 判断题: $z$ 是实数当且仅当 $\arg z=0,\pi$.
+    \item 判断题: $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$.
+    \item 求 $\dfrac{1+2i}{3-4i}-\dfrac{2-i}{5i}$ 的模和主辐角.
+    \item 将 $1-\sqrt 3i,\dfrac{2i}{1-i}$ 写成三角形式和指数形式.
+    \item 证明当 $|z|=1>|w|$ 时, $\left|\dfrac{z-w}{1-z\ov w}\right|=1$.
+    \item(2020年期末A卷) 如果 $(1+2i)\ov z=4+3i$, 求 $z$ 及其主辐角.
+    \item(2022年期末A卷) 求 $z=\dfrac{3+i}{i}-\dfrac{10i}{3-i}$ 的模和辐角.
+  \end{homeworks}
+\end{frame}
+}

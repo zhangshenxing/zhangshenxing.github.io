@@ -1,6 +1,6 @@
 \section{复变函数}
 
-
+\subsection{复变函数的定义}
 \begin{frame}{复变函数的定义}
 \onslide<+->
 \emph{复变函数}就是复数集合 $G\subseteq C$ 上的一个映射 $f:G\to \BC$.
@@ -51,6 +51,7 @@ $f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
 \end{frame}
 
 
+\subsection{映照}
 \begin{frame}{映照}
 \onslide<+->
 在实变函数中, 我们常常用函数图像直观来理解和研究函数.
@@ -88,30 +89,27 @@ $f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
 
 
 \begin{frame}{例题: 映照}
+\onslide<+->
 \begin{example}
 函数 $w=\ov z$.
-\onslide<+->
-如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个映照对应的是关于 $z$ 轴的翻转变换.
-\onslide<+->
-它把任一区域映成和它全等的区域.
+\onslide<+->{如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个映照对应的是关于 $z$ 轴的翻转变换.}
+\onslide<+->{它把任一区域映成和它全等的区域.}
 \end{example}
-
+\onslide<+->
 \begin{example}
 函数 $w=az$.
-\onslide<+->
-设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.
-\onslide<+->
-它把任一区域映成和它相似的区域.
+\onslide<+->{设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.}
+\onslide<+->{它把任一区域映成和它相似的区域.}
 \end{example}
 \end{frame}
 
 
 \begin{frame}{例题: 映照}
+\onslide<+->
 \begin{example}
 函数 $w=z^2$.
-\onslide<+->
-这个映照把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
-\onslide<+->
+\onslide<+->{这个映照把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.}
+\onslide<+->{
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-4.5,0)--(-0.5,0);
@@ -141,23 +139,22 @@ $f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
   (4.5,-0.2) node {$u$}
   (2.3,1.8) node {$v$};
 \end{tikzpicture}
-\end{center}
-\onslide<+->
-这个映射对应两个实变函数 $u=x^2-y^2,\quad v=2xy$.
+\end{center}}
+\onslide<5->{这个映射对应两个实变函数 $u=x^2-y^2,\quad v=2xy$.}
 \end{example}
 \end{frame}
 
 
 \begin{frame}{例题: 映照}
+\onslide<+->
 \begin{example}[续]
 因此它把 $z$ 平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线
 \[x^2-y^2=c_1,\quad 2xy=c_2\]
-\onslide<+->
-分别映射为 $w$ 平面上的两族平行直线
-\[u=c_1,\quad v=c_2.\]
+\onslide<+->{分别映射为 $w$ 平面上的两族平行直线
+\[u=c_1,\quad v=c_2.\]}
 
-\vspace{-1.5\baselineskip}
-\onslide<+->
+\vspace{-1.7\baselineskip}
+\onslide<+->{
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-4.5,0)--(-0.5,0);
@@ -230,27 +227,24 @@ $f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
 \draw[cstcurve,dcolora,visible on=<4->] (1.2,0.9)--(3.8,0.9);
 \draw[cstcurve,dcolora,visible on=<4->] (1.2,1.2)--(3.8,1.2);
 \end{tikzpicture}
-\end{center}
+\end{center}}
+\vspace{-\baselineskip}
 \end{example}
 \end{frame}
 
 
 \begin{frame}{例题: 映照的像}
-\vspace{-3pt}
+\onslide<+->
 \begin{example}
 求下列集合在映照 $w=z^2$ 下的像.
-\begin{enumerate}
-\item 线段 $0<|z|<2,\arg z=\dfrac\pi2$.
-\item 双曲线 $x^2-y^2=4$.
-\item 扇形区域 $0<\arg z<\dfrac\pi4,0<|z|<2$.
-\end{enumerate}
+
+\enumnum1 线段 $0<|z|<2,\arg z=\dfrac\pi2$.
 \end{example}
-\vspace{-3pt}
+\onslide<+->
 \begin{solution}
-\enumnum1 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
-\onslide<+->
-因此它的像还是一条线段 $0<|w|<4,\arg w=-\pi$.
-\onslide<+->
+设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
+\onslide<+->{因此它的像还是一条线段 $0<|w|<4,\arg w=-\pi$.}
+\onslide<+->{
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-4.5,0)--(-0.5,0);
@@ -270,47 +264,83 @@ $f$ 的\emph{定义域}是指 $G$, \emph{值域}是指 $\set{w=f(z):z\in G}$.
   (4.5,-0.2) node {$u$}
   (2.3,1.3) node {$v$};
 \end{tikzpicture}
-\end{center}
-\vspace{-14pt}
+\end{center}}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{例题: 映照的像}
-\begin{solutionc}
-\enumnum2 由于
-\[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
 \onslide<+->
-因此 $u=x^2-y^2=4,v=2xy$.
+\begin{example}
+求下列集合在映照 $w=z^2$ 下的像.
 
+\enumnum2 双曲线 $x^2-y^2=4$.
+\end{example}
 \onslide<+->
+\begin{solution}
 \indent
-对于任意 $v\in\BR$, 存在 $z=x+yi\in\BC$ 使得 $z^2=4+vi$, 且 $x^2-y^2=4$.
-\onslide<+->
-因此这条双曲线的像是一条直线 $\Re w=4$.
-\vspace{\baselineskip}
+由于 \[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
+\onslide<+->{因此 $u=x^2-y^2=4,v=2xy$.}
 
-\enumnum3 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
-\onslide<+->
-因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.
-\end{solutionc}
+\indent
+\onslide<+->{对于任意 $v\in\BR$, 存在 $z=x+yi\in\BC$ 使得 $z^2=4+vi$, 且 $x^2-y^2=4$.}
+\onslide<+->{因此这条双曲线的像是一条直线 $\Re w=4$.}
+\end{solution}
 \end{frame}
 
 
 \begin{frame}{例题: 映照的像}
-\beqskip{7pt}
+\onslide<+->
+\begin{example}
+求下列集合在映照 $w=z^2$ 下的像.
+
+\enumnum3 扇形区域 $0<\arg z<\dfrac\pi4,0<|z|<2$.
+\end{example}
+\onslide<+->
+\begin{solution}
+\onslide<+->{设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.}
+\onslide<+->{因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.}
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 映照的像}
+\onslide<+->
 \begin{example}
 求圆周 $|z|=2$ 在映照 $w=z+\dfrac1z$ 下的像.
 \end{example}
+\onslide<+->
 \begin{solution}
 设 $z=x+yi$, 则
 \[w=z+\frac1z=z+\frac{\ov z}4=\frac54x+\frac34yi=u+vi,\]
-\onslide<+->
-\[x=\frac45u,\quad y=\frac43v,\quad \left(\frac45u\right)^2+\left(\frac43v\right)^2=4,\]
-\onslide<+->
-\[\left(\frac{2u}5\right)^2+\left(\frac{2v}3\right)^2=1.\]
+\vspace{-0.2\baselineskip}
+\onslide<+->{
+\[x=\frac45u,\quad y=\frac43v,\quad \left(\frac45u\right)^2+\left(\frac43v\right)^2=4,\]}
+\vspace{-0.2\baselineskip}
+\onslide<+->{
+\[\left(\frac{2u}5\right)^2+\left(\frac{2v}3\right)^2=1.\]}
+\vspace{-0.2\baselineskip}
 \end{solution}
-\endgroup
 \end{frame}
 
-
+{
+\homework
+\begin{frame}[<*>]{作业}
+	\begin{homeworks}
+		\item 指出满足下列各式的点 $z$ 的轨迹是什么曲线？
+		\begin{enumerate}
+			\item $\arg(z-i)=\dfrac\pi4$;
+			\item $|z-a|=\Re(z-b)$, 其中 $a,b$ 为实常数;
+			\item $z\ov z+az+\ov{az}+b=0$, 其中 $a$ 为复数, $b$ 为实常数.
+		\end{enumerate}
+		\item 用复参数方程表示连接 $1+i$ 与 $-1-4i$ 的直线段.
+		\item 用复参数方程表示圆周 $|z-z_0|=r$.
+		\item 画出下列不等式所确定的图形, 指出它们的特征(是否为区域、闭区域, 是否有界, 是否单连通).
+		\begin{enumerate}
+			\item $|z|<1,\Re z\le \frac12$;
+			\item $0<\Re z<1$;
+			\item $\left|\dfrac{z+1}{z-1}\right|\le 2$.
+		\end{enumerate}
+	\end{homeworks}
+\end{frame}
+}

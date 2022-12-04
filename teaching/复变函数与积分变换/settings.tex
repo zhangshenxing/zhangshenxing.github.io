@@ -31,7 +31,16 @@
 \colorlet{dcolorb}{blue}
 \colorlet{dcolorc}{red!50!blue}
 % 枚举数字引用标志
-\newcommand\enumnum[1]{{\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
+\newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
+\newcommand\enumnumhk[1]{{
+	\usebeamerfont*{item projected}%
+	\usebeamercolor[bg]{item projected}%
+	\begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.2ex}
+		\pgfusepath{fill}
+		\pgftext[base]{\color{fg}#1}
+	\end{pgfpicture}%
+}}
 % 手动证毕标志
 \newcommand\mqed{\visible<.->{\qedsymbol}}
 % 用于对齐的等号幻影
@@ -41,6 +50,20 @@
 % 缩进
 \renewcommand{\indent}{\hspace*{1.5em}}
 \setlength{\parindent}{1.5em}
+% 作业
+\usepackage{bookmark}
+\newcommand{\homework}{%
+	\bookmark[page=\thepage,level=3]{作业}%
+	\setbeamertemplate{subsection in footline}[homework]%
+	\setbeamercolor{subsection in head/foot}{parent=alerted text}%
+	\setbeamercolor{frametitle}{parent=alerted text}%
+	\setbeamercolor{seperate line}{use=alerted text,bg=alerted text.fg}
+	\setnaviboxexercise
+}
+\newenvironment{homeworks}{%
+	\setbeamercolor{enumerate item}{use=alerted text,fg=alerted text.fg}%
+	\setbeamercolor{enumerate subitem}{use=structure,fg=structure.fg}%
+	\begin{enumerate}}{\end{enumerate}}
 % 选择题, 根据选项内容长度自动排版
 \newlength{\lxxt}
 \newlength{\lxxmax}
@@ -72,58 +95,59 @@
 	\fi%
 	\vspace{5pt}%
 	\ifnum\value{lxxtype}=1%
-		\\\indent\makebox[\lfull][l]{(A)~#2}%
-		\\\indent\makebox[\lfull][l]{(B)~#3}%
-		\\\indent\makebox[\lfull][l]{(C)~#4}%
-		\\\indent\makebox[\lfull][l]{(D)~#5}%
+		\\\makebox[\lfull][l]{(A)~#2}%
+		\\\makebox[\lfull][l]{(B)~#3}%
+		\\\makebox[\lfull][l]{(C)~#4}%
+		\\\makebox[\lfull][l]{(D)~#5}%
 	\fi%
 	\ifnum\value{lxxtype}=2%
-		\\\indent\makebox[\lhalf][l]{(A)~#2}%
+		\\\makebox[\lhalf][l]{(A)~#2}%
 			\makebox[\lhalf][l]{(B)~#3}%
-		\\\indent\makebox[\lhalf][l]{(C)~#4}%
+		\\\makebox[\lhalf][l]{(C)~#4}%
 			\makebox[\lhalf][l]{(D)~#5}%
 	\fi%
 	\ifnum\value{lxxtype}=4%
-		\\\indent\makebox[\lquar][l]{(A)~#2}% 
+		\\\makebox[\lquar][l]{(A)~#2}% 
 			\makebox[\lquar][l]{(B)~#3}%
 			\makebox[\lquar][l]{(C)~#4}%
 			\makebox[\lquar][l]{(D)~#5}%
 	\fi%
 }
+\usepackage[normalem]{ulem}
+% \NewDocumentCommand\fillblank{O{2cm} O{0.4cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}#3}#3}}}%
+\NewDocumentCommand\fillblank{O{0.4cm} m}{\underline{\hspace{#1}\alert{#2}\hspace{#1}}}%
 % TIKZ 设置
 \usetikzlibrary{
-  quotes,
-  shapes.arrows,
-  arrows.meta,
-  positioning,
-  shapes.geometric,
-  overlay-beamer-styles,
-  patterns,
-  calc,
-  angles
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	overlay-beamer-styles,
+	patterns,
+	calc,
+	angles
 }
 \tikzset{
-  cstarrowto/.style     ={-Stealth}, %尖箭头
-  cstarrowfrom/.style   ={Stealth-},
-  cstarrowdouble/.style ={Stealth-Stealth},
-  cstarrow1to/.style    ={-Straight Barb}, %宽箭头
-  cstarrow1from/.style  ={Straight Barb-},
-  cstarrow1double/.style={Straight Barb-Straight Barb},
-  cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
-  cstaxis/.style        ={-Stealth, thick}, %坐标轴
-  cstcurve/.style       ={very thick}, %一般曲线
-  cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
-  cstdot/.style         ={radius=0.07}, %实心点
-  cstdote/.style        ={radius=0.06, fill=white}, %空心点
-  cstfill/.style        ={fill=cyan!40}, %填充
-  cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
-  cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
-  cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
-  cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
-  cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
+	cstarrowto/.style     ={-Stealth}, %尖箭头
+	cstarrowfrom/.style   ={Stealth-},
+	cstarrowdouble/.style ={Stealth-Stealth},
+	cstarrow1to/.style    ={-Straight Barb}, %宽箭头
+	cstarrow1from/.style  ={Straight Barb-},
+	cstarrow1double/.style={Straight Barb-Straight Barb},
+	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+	cstcurve/.style       ={very thick}, %一般曲线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+	cstdot/.style         ={radius=0.07}, %实心点
+	cstdote/.style        ={radius=0.06, fill=white}, %空心点
+	cstfill/.style        ={fill=cyan!40}, %填充
+	cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
 }
-% 节开头自动生成部分目录
-\AtBeginSection{\begin{frame}{第\zhnumber{\thepart}章\hspace{1em}\insertpart}\tableofcontents[currentsection]\end{frame}}
 % 标题
 \title{复变函数与积分变换}
 \author{张神星}
