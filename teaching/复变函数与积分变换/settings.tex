@@ -33,13 +33,12 @@
 % 枚举数字引用标志
 \newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
 \newcommand\enumnumhk[1]{{
-	\usebeamerfont*{item projected}%
-	\usebeamercolor[bg]{item projected}%
-	\begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
-		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.2ex}
-		\pgfusepath{fill}
-		\pgftext[base]{\color{fg}#1}
-	\end{pgfpicture}%
+  \usebeamercolor[fg]{enumerate subitem}%
+  \begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+    \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+    \pgfusepath{stroke}
+    \pgftext[base]{\color{fg}#1}
+  \end{pgfpicture}%
 }}
 % 手动证毕标志
 \newcommand\mqed{\visible<.->{\qedsymbol}}
@@ -51,42 +50,45 @@
 \renewcommand{\indent}{\hspace*{1.5em}}
 \setlength{\parindent}{1.5em}
 % 作业
-\usepackage{bookmark}
-\newcommand{\homework}{%
-	\bookmark[page=\thepage,level=3]{作业}%
-	\setbeamertemplate{subsection in footline}[homework]%
-	\setbeamercolor{subsection in head/foot}{parent=alerted text}%
-	\setbeamercolor{frametitle}{parent=alerted text}%
-	\setbeamercolor{seperate line}{use=alerted text,bg=alerted text.fg}
-	\setnaviboxexercise
-}
-\newenvironment{homeworks}{%
-	\setbeamercolor{enumerate item}{use=alerted text,fg=alerted text.fg}%
-	\setbeamercolor{enumerate subitem}{use=structure,fg=structure.fg}%
-	\begin{enumerate}}{\end{enumerate}}
+% \usepackage{bookmark}
+% \newcommand{\homework}{%
+% 	\bookmark[page=\thepage,level=3]{作业}%
+% 	\setbeamertemplate{subsection in footline}[homework]%
+% 	\setbeamercolor{subsection in head/foot}{parent=alerted text}%
+% 	\setbeamercolor{frametitle}{parent=alerted text}%
+% 	\setbeamercolor{seperate line}{use=alerted text,bg=alerted text.fg}
+% 	\setnaviboxexercise
+% }
+% \NewDocumentEnvironment{homeworks}{o}{%
+% 	\setbeamercolor{enumerate item}{use=alerted text,fg=alerted text.fg}%
+% 	\setbeamercolor{enumerate subitem}{use=structure,fg=structure.fg}%
+% 	\begin{enumerate}%
+% 		\IfValueT{#1}{\setcounter{enumi}{#1}}}{%
+% 	\end{enumerate}%
+% }
 % 选择题, 根据选项内容长度自动排版
-\newlength{\lxxt}
+\newlength{\ltemp}
 \newlength{\lxxmax}
 \newlength{\lquar}
 \newlength{\lhalf}
 \newlength{\lfull}
 \newcounter{lxxtype}
 \NewDocumentCommand\xx{O{0} m m m m}{%
-\setlength{\lfull}{\columnwidth}%
-\addtolength{\lfull}{-\leftmargin}%
-\setlength{\lhalf}{0.5\lfull}%
-\setlength{\lquar}{0.25\lfull}%
+	\setlength{\lfull}{\columnwidth}%
+	\addtolength{\lfull}{-\leftmargin}%
+	\setlength{\lhalf}{0.5\lfull}%
+	\setlength{\lquar}{0.25\lfull}%
 	\setcounter{lxxtype}{0}%
 	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
 	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
 	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
 	\settowidth{\lxxmax}{(A)~#2~}% 获取最长选项长度
-	\settowidth{\lxxt}{(B)~#3~}%
-	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
-	\settowidth{\lxxt}{(C)~#4~}%
-	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
-	\settowidth{\lxxt}{(D)~#5~}%
-	\ifdimcomp\lxxt>\lxxmax{\setlength{\lxxmax}{\lxxt}}{}%
+	\settowidth{\ltemp}{(B)~#3~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\settowidth{\ltemp}{(C)~#4~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\settowidth{\ltemp}{(D)~#5~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
 	\ifnum\value{lxxtype}=0%
 		\setcounter{lxxtype}{4}%
 		\ifdimcomp\lxxmax>\lquar{\setcounter{lxxtype}{2}}{}%
@@ -114,9 +116,32 @@
 			\makebox[\lquar][l]{(D)~#5}%
 	\fi%
 }
+\NewDocumentCommand\subex{m o o o o}{%
+	\setlength{\lfull}{\columnwidth}%
+	\addtolength{\lfull}{-\leftmargin}%
+	\vspace{5pt}%
+	\ifnum#1=1%
+		\\\makebox[\lfull][l]{#2}%
+	\fi%
+	\ifnum#1=2%
+		\\\makebox[0.48\lfull][l]{#2}%
+			\makebox[0.48\lfull][l]{#3}%
+	\fi%
+	\ifnum#1=3%
+		\\\makebox[0.32\lfull][l]{#2}% 
+			\makebox[0.32\lfull][l]{#3}%
+			\makebox[0.32\lfull][l]{#4}%
+	\fi%
+	\ifnum#1=4%
+		\\\makebox[0.24\lfull][l]{#2}% 
+			\makebox[0.24\lfull][l]{#3}%
+			\makebox[0.24\lfull][l]{#4}%
+			\makebox[0.24\lfull][l]{#5}%
+	\fi%
+}
 \usepackage[normalem]{ulem}
-% \NewDocumentCommand\fillblank{O{2cm} O{0.4cm} m}{\uline{\makebox[#1]{\vphantom{\rule{0pt}{#2}#3}#3}}}%
-\NewDocumentCommand\fillblank{O{0.4cm} m}{\underline{\hspace{#1}\alert{#2}\hspace{#1}}}%
+\NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
+\newcommand{\fillbrace}{{(\nolinebreak\hspace{2em minus 1em}\nolinebreak)}}
 % TIKZ 设置
 \usetikzlibrary{
 	quotes,

@@ -14,6 +14,14 @@
 % Items
 \useinnertheme{circles}
 \setbeamertemplate{enumerate item}{(\insertenumlabel)}
+\setbeamertemplate{enumerate subitem}{
+  \usebeamercolor[fg]{enumerate subitem}%
+  \begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+    \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+    \pgfusepath{stroke}
+    \pgftext[base]{\color{fg}\insertenumlabel}
+  \end{pgfpicture}%
+}
 % Font
 \setbeamerfont{title}{size=\large}
 \setbeamerfont{institute}{size=\normalsize,shape=\itshape}
@@ -22,6 +30,7 @@
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamerfont{part title}{size=\Large}
 \setbeamerfont{part name}{size=\Large, parent=part title}
+\setbeamerfont{enumerate subitem}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
 \setbeamerfont{email}{size=\small,family=\ttfamily}
@@ -33,9 +42,9 @@
 \newcommand\website[1]{\def\insertwebsite{#1}}\website{}
 \setbeamertemplate{title seperator}{\usebeamerfont{title seperator}: }
 \setbeamertemplate{title page}{\vfill%
-	\hskip0em
-	\ifx\inserttitlegraphic\@empty\else
-		\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em
+	\hskip0em%
+	\ifx\inserttitlegraphic\@empty\else%
+		\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em%
 	\fi%
 	\ifx\insertinstitutegraphic\@empty\else%
 		\raisebox{0.035\textheight}{%
@@ -57,35 +66,28 @@
 		\usebeamercolor[fg]{author}%
 		\insertauthor (\insertinstitute)%
 	}%	
-	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em%
-	{%
+	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
 		{\usebeamerfont{institute}\translate{Office}}%
 		{\usebeamertemplate{title seperator}}%
 		{\usebeamerfont{institute}\insertoffice}%
-	}%
-	\fi		
-	\ifx\insertemail\@empty\else\vskip0.25em\par\hskip0em
-	{%
+	}\fi%
+	\ifx\insertemail\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
 		{\usebeamerfont{email}Email}%
 		{\usebeamertemplate{title seperator}}%
 		{\usebeamercolor[fg]{email}\usebeamerfont{email}\href{mailto:\insertemail}{\insertemail}}%
-	}%
-	\fi
-	\ifx\insertwebsite\@empty\else\vskip0.25em\par\hskip0em
-	{%
+	}\fi%
+	\ifx\insertwebsite\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
 		{\usebeamerfont{institute}\translate{Website}}%
 		{\usebeamertemplate{title seperator}}%
-		{\usebeamercolor[fg]{email}\usebeamerfont{email}\url{\insertwebsite}}
-	}%
-	\fi
-	\vfill%
+		{\usebeamercolor[fg]{email}\usebeamerfont{email}\url{\insertwebsite}}%
+	}\fi\vfill%
 }
 \AtBeginDocument{
 	{
-		\setbeamertemplate{footline}{}
+		\setnaviboxempty
 		\begin{frame}
 			\titlepage
 		\end{frame}
@@ -102,87 +104,47 @@
 }
 \setbeamertemplate{navigation symbols}{}
 % Part Page
-% \setbeamertemplate{part page}{
-% 	\begingroup
-% 		\begin{beamercolorbox}[sep=8pt,rounded=true,center]{part title}
-% 		\ifnum\thepart>0
-% 			{\usebeamercolor[fg]{part name}\usebeamerfont{part name}第\chinese{part}章}%
-% 			\hspace{1em}
-% 		\fi%
-% 			{\usebeamercolor[fg]{part title}\usebeamerfont{part title}\insertpart}\par
-			
-% 		\begin{frame}{\centering 第\zhnumber{\thepart}章\hspace{1em}\insertpart}
-% 			\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]
-% 		\end{frame}
-% 		\end{beamercolorbox}
-% 	\endgroup
-% }
 \setbeamertemplate{part page}{
 	\begingroup
 		\begin{tcolorbox}[parttitle,title=第\zhnumber{\thepart}章\hspace{1em}\insertpart]
 			\tableofcontents[sectionstyle=show,subsectionstyle=hide]
 		\end{tcolorbox}
+		\vspace{-\baselineskip}
 	\endgroup
 }
 \AtBeginPart{
-	% \setbeamertemplate{subsection in footline}[normal]%
-	% \setbeamercolor{subsection in head/foot}{parent=structure}%
-	% \setbeamercolor{frametitle}{parent=structure}%
+	\setbeamertemplate{subsection in footline}[no number]
 	{
 		\beamer@tocsectionnumber=0\relax%
 		\setcounter{section}{0}%
+		\setnaviboxempty
 		\begin{frame}
 			\partpage	
 		\end{frame}
 	}
 }
 % Section Page
-\newcounter{mysubseccnt}
-% \setbeamertemplate{subsection in toc}{
-% 	% \leavevmode\hskip0.5pt%
-% 	\usebeamertemplate{head/foot seperator}%
-% 	% \setcounter{mysubseccnt}{}
-% 	% \Alph{mysubseccnt}
-% 	% \hskip-1pt
-% 	\inserttocsubsection
-% 	% \hskip-0.5pt
-% 	\par%
-% }
-
 \setbeamertemplate{subsection in toc}[square]
-% \AtBeginSection{
-% 	\setbeamertemplate{subsection in footline}[normal]%
-% 	\setnaviboxsection
-% 	% {
-% 		\ifnum\thepart>0
-% 			\begin{frame}{\centering 第\zhnumber{\thepart}章\hspace{1em}\insertpart}
-% 				\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]
-% 			\end{frame}
-% 		\else
-% 			\begin{frame}
-% 				\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]
-% 			\end{frame}
-% 		\fi
-% 	% }
-% }
+\RequirePackage{setspace}
 \setbeamertemplate{section page}{
 	\begingroup
 		\begin{tcolorbox}[sectiontitle,title=第\zhnumber{\thesection}节\hspace{1em}\insertsection]
-			\tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+			\begin{spacing}{2}
+				\tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+			\end{spacing}
+			\vspace{-\baselineskip}
 		\end{tcolorbox}
 	\endgroup
 }
 \AtBeginSection{
-	% \setbeamertemplate{subsection in footline}[normal]%
-	% \setbeamercolor{subsection in head/foot}{parent=structure}%
-	% \setbeamercolor{frametitle}{parent=structure}%
+	\setbeamertemplate{subsection in footline}[normal]
 	{
+		\setnaviboxempty
 		\begin{frame}
 			\sectionpage	
 		\end{frame}
 	}
 }
-
 % Frametitle
 \setbeamertemplate{frametitle}{%
 	\vskip.5ex\hskip-1em
@@ -200,7 +162,8 @@
 \newcommand{\my@navibox@frame@section}{$\boxtimes$}
 \newcommand{\my@navibox@frame@subsection}{$\boxplus$}
 \newcommand{\my@navibox@frame}{$\square$}
-\newcommand{\my@navibox@frame@exercise}{$\boxplus$}
+\newcommand{\my@navibox@frame@exercise}{$\boxtimes$}
+\newcommand{\my@navibox@frame@empty}{}
 \defbeamertemplate{navigation box}{current}{%
 	\kern.55pt\color{example text.fg}\rule[-0.24pt]{5pt}{5pt}%
 	\kern-5.57pt\color{bg}\kern.4pt\my@navibox\kern.4pt
@@ -209,8 +172,14 @@
 \let\my@navibox=\my@navibox@frame
 \newcommand{\my@set@navibox@section}{\let\my@navibox=\my@navibox@frame@section}
 \newcommand{\my@set@navibox@exercise}{\let\my@navibox=\my@navibox@frame@exercise}
+\newcommand{\my@set@navibox@empty}{\let\my@navibox=\my@navibox@frame@empty}
 \newcommand{\setnaviboxsection}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@section}}}
 \newcommand{\setnaviboxexercise}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@exercise}}}
+\newcommand{\setnaviboxempty}{%
+	\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@empty}}%
+	\addtocounter{framenumber}{-1}%
+	\setbeamertemplate{footline}{}%
+}
 \newcommand{\my@sectionentry@show}[5]{%
 	\begingroup
 		\def\my@navibox{#1}%
@@ -238,9 +207,9 @@
 % Footline
 \setbeamertemplate{page number in head/foot}[totalframenumber]
 \setbeamertemplate{head/foot seperator}{\kern1pt\raisebox{0.5pt}{$\blacktriangleright$}\kern1pt}
-% \defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
-\setbeamertemplate{subsection in footline}{\Alph{subsection}~\insertsubsectionhead{}}
-\defbeamertemplate{subsection in footline}{homework}{作业}
+\defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
+\defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
+% \defbeamertemplate{subsection in footline}{homework}{作业}
 \setbeamertemplate{footline}{%
 	\leavevmode%
 	\hbox{%
@@ -289,7 +258,6 @@
 				\usebeamerfont{subsection in head/foot}%
 				\usebeamercolor[fg]{subsection in head/foot}%
 				\kern2pt\usebeamertemplate{head/foot seperator}%
-				% \Alph{subsection}~\insertsubsectionhead{}%
 				\usebeamertemplate{subsection in footline}
 			}\fi%
 			\hfill\par

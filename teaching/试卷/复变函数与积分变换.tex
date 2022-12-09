@@ -4,6 +4,7 @@
 \DeclareMathOperator{\Ln}{Ln}
 \DeclareMathOperator{\Arg}{Arg}
 \newcommand\msl{\mathscr{L}}
+\newcommand\BR{\mathbb{R}}
 \newcommand\BZ{\mathbb{Z}}
 \newcommand{\diff}{\,\mathrm{d}}
 \let\Im\relax\DeclareMathOperator{\Im}{Im}
@@ -41,7 +42,7 @@
 \item 幂级数 $\displaystyle\sum_{n=1}^\infty (iz)^n$ 的收敛半径是(~~~~).
 \xx{$i$}{$-i$}{$1$}{$+\infty$}
 \item 下面哪个函数在 $z=0$ 处不可导?~(~~~~)
-\xx{$2x+3yi$}{$2x^2+3y^2i$}{$e^x\cos y+i e^x\sin y$}{$x^2-xyi$}
+\xx{$2x+3yi$}{$2x^2+3y^2i$}{$x^2-xyi$}{$e^x\cos y+i e^x\sin y$}
 \item 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的(~~~~).
 \xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
 \end{enumerate}
@@ -139,7 +140,7 @@ z&=\arctan 2+k\pi,\quad k\in\BZ. \Score{(2分, 只有主值得1分)}
 由于 $f(z)=\dfrac{e^{iz}}{z^2-3\pi z+2\pi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\pi,2\pi$, \score3\\
 因此
 \begin{align*}
-\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \score2\\
+\oint_Cf(z)\diff z&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \score2\\
 &=2\pi i\biggl[\frac{e^{iz}}{z-2\pi}\bigg|_{z=\pi}+\frac{e^{iz}}{z-\pi}\bigg|_{z=2\pi}\biggr] \score2\\
 &=2\pi i\biggl[\frac1\pi+\frac1\pi\biggr]=4i. \score3
 \end{align*}
@@ -153,7 +154,7 @@ f'(z)&=v_y+iv_x \score2\\
 &=(3y^2-3x^2-6xy)+i(3x^2-6xy-3y^2) \score2\\
 &=3(i-1)(x+iy)^2=3(i-1)z^2 \score1
 \end{align*}
-可知 $f(z)=(i-1)z^3+C$. \Score{(2分, 没有常数项得1分)}
+可知 $f(z)=(i-1)z^3+C, C\in\BR$. \Score{(2分, 没有常数项得1分)}
 
 \textbf{其它解法}: 由 $u_x=v_y=3y^2-3x^2-6xy$ 得 $u=3xy^2-x^3-3x^2y+\psi(y)$. \score2\\
 由 $u_y=-v_x=-(3x^2-6xy-3y^2)$ 得 $\psi'(y)=3y^2$, \\
@@ -161,7 +162,7 @@ $\psi(y)=y^3+C$, \Score{(3分, 没有常数项得2分)}
 \begin{align*}
 f(z)&=u+iv \\
 &=3xy^2-x^3-3x^2y+y^3+C+i(x^3+y^3-3xy^2-3x^2y) \\
-&=(i-1)z^3+C. \score2
+&=(i-1)z^3+C, C\in\BR. \score2
 \end{align*}
 
 \textbf{6. （10分） 【解】}

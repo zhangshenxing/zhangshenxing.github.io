@@ -39,13 +39,13 @@
 \fill[cstdot] (0,0) circle;
 \fill[cstdot] (2,0) circle;
 \draw
-  (3.8,0) node[dcolora] {$C$}
-  (-1.2,-0.2) node[dcolorb] {$C_1$}
-  (0.8,-0.2) node[dcolorb] {$C_2$}
-  (2.8,-0.2) node[dcolorb] {$C_3$}
-  (-2,-0.3) node {$z_1$}
-  (0,-0.3) node {$z_2$}
-  (2,-0.3) node {$z_3$};
+	(3.8,0) node[dcolora] {$C$}
+	(-1.2,-0.2) node[dcolorb] {$C_1$}
+	(0.8,-0.2) node[dcolorb] {$C_2$}
+	(2.8,-0.2) node[dcolorb] {$C_3$}
+	(-2,-0.3) node {$z_1$}
+	(0,-0.3) node {$z_2$}
+	(2,-0.3) node {$z_3$};
 \end{tikzpicture}
 \end{center}
 \onslide<+->
@@ -182,7 +182,7 @@ $\dfrac1{24}$.
 \begin{flalign*}
 &&&\peq\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)&\\
 &&&\visible<+->{=\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
-  \visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}&\mqed
+	\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.}&\mqed
 \end{flalign*}
 \end{proofs}
 \end{frame}
@@ -316,28 +316,28 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 \begin{frame}{积分的计算方法汇总}
 \begin{center}
 \begin{tikzpicture}[node distance=25pt]
-  \node (integral){\vphantom{$\displaystyle\int$}};
-  \node[cstnodeb,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
-  \node[cstnode,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
-  \node[cstnode,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
-  \node[cstnode,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
-  \node[cstnode,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
-  \node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
-  \node[cstnodeg,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
-  \node[cstnodeg,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
+	\node (integral){\vphantom{$\displaystyle\int$}};
+	\node[cstnodeb,right=-40pt of integral]  (integral0){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+	\node[cstnode,below=35pt of integral, visible on=<2->]	(isclosed){是闭路};
+	\node[cstnode,below=45pt of isclosed, visible on=<3->]	(isanalytic){$f(z)$ 解析};
+	\node[cstnode,right=50pt of isclosed, visible on=<5->]	(issingle){只有孤立奇点};
+	\node[cstnode,right=45pt of issingle,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
+	\node[below=30pt of isanalytic]	(end1){\vphantom{$\displaystyle\int$}};
+	\node[cstnodeg,right=-30pt of end1, visible on=<3->]	(end10){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+	\node[cstnodeg,below=of issingle,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-  \node[cstnodeg,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
-  \node[cstnodeg,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
-  \draw[cstnarrow,dcolorc,visible on=<2->] (integral) -- (isclosed);
-  \draw[cstnarrow,dcolorc,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
-  \draw[cstnarrow,dcolorc,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
-  \draw[cstnarrow,dcolorc,visible on=<7->] (issingle) -- node[above]{是} (ismany);
-  \draw[cstnarrow,dcolorc,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
-  \draw[cstnarrow,dcolorc,visible on=<6->] (issingle) -- node[left]{否} (end2);
-  \draw[cstnarrow,dcolorc,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
-  \draw[cstnarrow,dcolorc,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
-  \draw[cstnarrow,dcolorc,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
+	\node[cstnodeg,above=of ismany,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+	\node[cstnodeg,below=of ismany,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+	\draw[cstnarrow,dcolorc,visible on=<2->] (integral) -- (isclosed);
+	\draw[cstnarrow,dcolorc,visible on=<3->] (isanalytic) -- node[left]{是} (end1);
+	\draw[cstnarrow,dcolorc,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
+	\draw[cstnarrow,dcolorc,visible on=<7->] (issingle) -- node[above]{是} (ismany);
+	\draw[cstnarrow,dcolorc,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
+	\draw[cstnarrow,dcolorc,visible on=<6->] (issingle) -- node[left]{否} (end2);
+	\draw[cstnarrow,dcolorc,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
+	\draw[cstnarrow,dcolorc,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
+	\draw[cstnarrow,dcolorc,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -369,4 +369,33 @@ $f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 =-1.\]
 \end{solution}
 \end{frame}
+
+
+{
+\homework
+\begin{frame}[<*>]{作业}
+	\begin{homeworks}
+		\item(2020年B卷) 设 $f(z)=\frac{2021}z+\frac{\sin z}z$, 则 $\Res[f(z),0]=$\fillblank{}.
+		\item(2021年B卷) 设 $f(z)=\dfrac{z}{\sin z}$, 则 $\Res[f(z),0]=$\fillblank{}.
+		\item(2020年A卷) 求函数 $f(z)=\frac{z-\sin z}{z^8}$ 在有限奇点处的留数.  
+		\item(2020年B卷) 求函数 $f(z)=\frac{e^{iz}}{1+z^2}$ 在有限奇点处的留数.  
+		\item(2021年B卷) 设函数 $f(z)=\dfrac{e^z}{z(z-1)^2}$.
+		\begin{enumerate}
+			\item 求 $f(z)$ 在复平面上的所有孤立奇点, 并讨论其类型;
+			\item 计算 $f(z)$ 在所有孤立奇点处的留数;
+			\item 计算积分 $\oint_Cf(z)\diff z$, 其中曲线 $C$ 为正向圆周 $|z|=2$.
+		\end{enumerate}	
+		\item(2022年A卷) 设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
+		\item(2022年A卷) 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
+    \item(2021年A卷) 设 $C$ 为正向圆周 $|z|=2$, 求 $\oint_C\frac{\sin z}{z(z-1)}\diff z$.
+		\item(2021年A卷) 设 $f(z)=\dfrac1{z^2\cos z}$, $C$ 为正向圆周 $|z|=2$.
+		\begin{enumerate}
+			\item 求 $f(z)$ 在 $C$ 内部的孤立奇点, 并给出其类型.
+			\item 求 $f(z)$ 在上述奇点处的留数.
+			\item 求 $\displaystyle\oint_C f(z)\diff z$.
+		\end{enumerate}
+		\enumnumhk1 
+	\end{homeworks}
+\end{frame}
+}
 

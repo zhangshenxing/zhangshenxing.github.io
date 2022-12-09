@@ -1,120 +1,5 @@
 \section{复数及其代数运算}
 
-\subsection{复数的引入}
-
-\begin{frame}{复数的引入}
-\onslide<+->复数起源于多项式方程的求根问题.
-\onslide<+->我们考虑一元二次方程 $x^2+bx+c=0$,
-\onslide<+->配方可得
-	\[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
-\onslide<+->于是得到求根公式
-	\[x=\frac{-b\pm\sqrt\Delta}2,\quad \Delta=b^2-4c.\]
-	\vspace{-\baselineskip}
-\begin{enumerate}
-\item 当 $\Delta>0$ 时, 有两个不同的实根;
-\item 当 $\Delta=0$ 时, 有一个二重的实根;
-\item 当 $\Delta<0$ 时, 无实根.
-\onslide<+->然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{三次方程的根}
-\onslide<+->现在我们来考虑一元三次方程.
-\onslide<+->
-\begin{example}
-解方程 $x^3+6x-20=0$.
-\end{example}
-\onslide<+->
-\begin{solution}
-设 $x=u+v$, 则
-	\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-\visible<+->{我们希望
-	\[u^3+v^3=20,\quad uv=-2,\]}%
-\visible<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.}
-\visible<+->{解得
-	\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]}
-\vspace{-1.2\baselineskip}
-\end{solution}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-\onslide<+->
-\begin{solutionc}
-\indent 所以 \[u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,\quad
-	\visible<+->{x=u+v=2.}\]
-\vspace{-\baselineskip}
-\end{solutionc}
-\onslide<+->{那么这个方程是不是真的只有 $x=2$ 这一个解呢?}
-\onslide<+->{设 \[f(x)=x^3+6x-20,\quad
-	\visible<+->{f'(x)=3x^2+6>0.}\]}
-\onslide<+->{因此 $f(x)$ 单调递增, $f(x)$ 最多只有一个零点.}
-\onslide<+->{由于 \[f(0)=-20<0,\quad f(3)=25>0,\]}
-\onslide<+->{因此由零点定理可知 $f(x)$ 确实只有一个零点.}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-\onslide<+->
-\begin{example}
-解方程 $x^3-7x+6=0$.
-\end{example}
-\onslide<+->
-\begin{solution}
-\indent 同样地我们有 $x=u+v$, 其中
-	\[u^3+v^3=-6,\quad uv=\frac73.\]
-\visible<+->{于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\frac{343}{27}=0$.}
-\visible<+->{然而这个方程没有实数解.}
-
-\visible<+->{\indent 我们可以强行解得
-	\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
-\vspace{-1.3\baselineskip}
-\end{solution}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-\onslide<+->
-\begin{solutionc}
-	\[u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
-	=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,\]
-\visible<+->{相应地
-	\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]}
-\visible<+->{\[x=u+v=2,-3,1.\]}
-\vspace{-\baselineskip}
-\end{solutionc}
-\onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-\onslide<+->对于一般的三次方程 $x^3+px+q=0$ 而言, 使用上述方法可以得到求根公式:
-\[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
-\onslide<+->由于 $p=0$ 情形较为简单, 所以我们不考虑这种情形.
-\onslide<+->通过分析函数的极值可以知道:
-\begin{enumerate}
-\item 当 $\Delta>0$ 时, 有 $1$ 个实根.
-\item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\frac12\sqrt[3]{4q}$ ($2$重).
-\item 当 $\Delta<0$ 时, 有 $3$ 个实根. 这可以通过分析函数单调性得到.
-\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-\onslide<+->所以我们想要使用求根公式的话, 就\emph{必须接受负数开方}.
-\onslide<+->那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
-\onslide<+->在学习了第一章的内容之后我们就可以回答这个问题了.
-
-\onslide<+->尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
-\onslide<+->
-\begin{quote}
-\indent 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
-\tcblower
-莱布尼兹 (Leibniz)
-\end{quote}
-\end{frame}
-
-
 \subsection{复数的概念}
 
 \begin{frame}{复数的定义}
@@ -153,23 +38,23 @@
 \draw[cstcurve,cstarrowto,visible on=<5->] (8,0)--(9.6,1.2);
 \draw[dcolorb,line width=0.1cm,cstarrow1double,visible on=<5->] (6.2,0.8)--(7.4,0.8);
 \draw 
-  (-0.2,-0.2) node {$0$}
-  (1.6,1.5) node[dcolora] {$z=x+yi$}
-  (5.6,1.5) node[dcolora] {$Z(x,y)$}
-  (4.8,0.2) node[dcolora] {$x$}
-  (4.3,0.6) node[dcolora] {$y$}
-  (5.8,-0.2) node {$x$}
-  (3.8,1.5) node {$y$}
-  (3.8,-0.2) node {$O$}
-  (5.0,-0.7) node {直角坐标系}
-  (2.8,0.3) node[dcolorb] {\small 一一对应}
-  (0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
-  (9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
-  (9.8,-0.2) node[visible on=<5->] {$x$}
-  (7.8,1.5) node[visible on=<5->] {$y$}
-  (7.8,-0.2) node[visible on=<5->] {$O$}
-  (9.0,-0.7) node[visible on=<5->] {向量}
-  (6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
+	(-0.2,-0.2) node {$0$}
+	(1.6,1.5) node[dcolora] {$z=x+yi$}
+	(5.6,1.5) node[dcolora] {$Z(x,y)$}
+	(4.8,0.2) node[dcolora] {$x$}
+	(4.3,0.6) node[dcolora] {$y$}
+	(5.8,-0.2) node {$x$}
+	(3.8,1.5) node {$y$}
+	(3.8,-0.2) node {$O$}
+	(5.0,-0.7) node {直角坐标系}
+	(2.8,0.3) node[dcolorb] {\small 一一对应}
+	(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
+	(9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
+	(9.8,-0.2) node[visible on=<5->] {$x$}
+	(7.8,1.5) node[visible on=<5->] {$y$}
+	(7.8,-0.2) node[visible on=<5->] {$O$}
+	(9.0,-0.7) node[visible on=<5->] {向量}
+	(6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -201,18 +86,18 @@
 \draw[visible on=<8->,dcolorc,->,thick] (-0.61,1.3)--(0,1.3);
 \draw[visible on=<8->,cstcurve,dcolora] (5,1.9) circle (0.85 and 0.65);
 \draw 
-  (1.6,1.4) node[dcolora] {$z=x+yi$}
-  (-0.2,-0.2) node {$0$}
-  (2.2,0.4) node[dcolorb,visible on=<3->] {实轴}
-  (0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
-  (0.8,-0.2) node[visible on=<5>,dcolorb] {$\Re z$}
-  (0.45,0.5) node[visible on=<5>,dcolorc] {$\Im y$}
-  (-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
-  (4.8,0.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
-  (8.5,1) node[visible on=<6->,align=center,dcolora] {\small 全\\体\\复\\数}
-  (6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
-  (-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点}
-  (5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
+	(1.6,1.4) node[dcolora] {$z=x+yi$}
+	(-0.2,-0.2) node {$0$}
+	(2.2,0.4) node[dcolorb,visible on=<3->] {实轴}
+	(0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
+	(0.8,-0.2) node[visible on=<5>,dcolorb] {$\Re z$}
+	(0.45,0.5) node[visible on=<5>,dcolorc] {$\Im y$}
+	(-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
+	(4.8,0.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
+	(8.5,1) node[visible on=<6->,align=center,dcolora] {\small 全\\体\\复\\数}
+	(6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
+	(-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点}
+	(5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -259,14 +144,14 @@
 \draw[cstdash,cstarrowto] (0,0)--(-1,-1.5);
 \draw[cstdash] (1,1.5)--(3,1)--(1,-2)--(-1,-1.5);
 \draw 
-  (2.3,-0.5) node[dcolora] {$z_1$}
-  (0.6,1.5) node[dcolora] {$z_2$}
-  (3.7,1) node[dcolorb] {$z_1+z_2$}
-  (-0.2,1.6) node {$y$}
-  (3.3,-0.3) node {$x$}
-  (-0.2,0.3) node {$0$}
-  (1.7,-2.1) node[dcolorc] {$z_1-z_2$}
-  (-1.4,-1.4) node {$-z_2$};
+	(2.3,-0.5) node[dcolora] {$z_1$}
+	(0.6,1.5) node[dcolora] {$z_2$}
+	(3.7,1) node[dcolorb] {$z_1+z_2$}
+	(-0.2,1.6) node {$y$}
+	(3.3,-0.3) node {$x$}
+	(-0.2,0.3) node {$0$}
+	(1.7,-2.1) node[dcolorc] {$z_1-z_2$}
+	(-1.4,-1.4) node {$-z_2$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -294,8 +179,8 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \begin{example}
 \begin{enumerate}
 \item $i^2=-1,i^3=-i,i^4=1$.
-\visible<+->{一般地, 对于整数 $n$, 
-\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}%
+\visible<+->{一般地, 对于整数 $n$, }
+\[\visible<.->{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}\]%
 \item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
 \item 令 $z=1+i$, \visible<+->{则
 \[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
@@ -309,18 +194,18 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 
 \begin{frame}{典型例题: 常见复数的幂次}
 \onslide<+->
-\begin{example}[2022年期末A卷]
-化简 $1+i+i^2+\cdots+i^4=$\fillblank{\visible<4->{$1$}}.
+\begin{example}
+化简 $1+i+i^2+i^3+i^4=$\fillblank{\visible<3->{$1$}}.
 \end{example}
 \onslide<+->
 \begin{solution}
 根据等比数列求和公式,
-\[1+i+i^2+\cdots+i^4=\frac{i^5-1}{i-1}
+\[1+i+i^2+i^3+i^4=\frac{i^5-1}{i-1}
 \visible<+->{=\frac{i-1}{i-1}=1.}\]
 \vspace{-\baselineskip}
 \end{solution}
 \onslide<+->{
-\begin{exercise}[2020年期末A卷]
+\begin{exercise}[2020年A卷]
 化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{\visible<+->{$1$}}.
 \end{exercise}
 }
@@ -378,6 +263,21 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 	\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
 \onslide<+->于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
 \end{frame}
+
+
+\begin{frame}{复数的其它构造*}
+\onslide<+->复数也有其它的构造方式, 
+\onslide<+->例如
+	\[\set{\begin{pmatrix}
+	x&y\\-y&x\end{pmatrix}: x,y\in\BR}
+	=\set{xE+yJ: x,y\in\BR}\subseteq M_2(\BR),\]
+\onslide<+->其中 $E=\begin{pmatrix}1& \\&1\end{pmatrix}$,
+	$J=\begin{pmatrix}&1\\-1&\end{pmatrix}$.
+
+\onslide<+->此时自然地有加法、乘法(满足交换律)、取逆等运算, 从而这个集合构成一个域.
+\onslide<+->由于 $J^2=-E$, 所以 $J$ 实际上就相当于虚数单位, 这个域就是我们前面定义的复数域 $\BC$.
+\end{frame}
+
 
 \subsection{共轭复数}
 
@@ -476,33 +376,3 @@ $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 \end{solution}
 \end{frame}
 
-
-\begin{frame}{复数的其它构造*}
-\onslide<+->复数也有其它的构造方式, 
-\onslide<+->例如
-	\[\set{\begin{pmatrix}
-	x&y\\-y&x\end{pmatrix}: x,y\in\BR}
-	=\set{xE+yJ: x,y\in\BR}\subseteq M_2(\BR),\]
-\onslide<+->其中 $E=\begin{pmatrix}1& \\&1\end{pmatrix}$,
-	$J=\begin{pmatrix}&1\\-1&\end{pmatrix}$.
-
-\onslide<+->此时自然地有加法、乘法(满足交换律)、取逆等运算, 从而这个集合构成一个域.
-\onslide<+->由于 $J^2=-E$, 所以 $J$ 实际上就相当于虚数单位, 这个域就是我们前面定义的复数域 $\BC$.
-\end{frame}
-
-{
-\homework
-\begin{frame}[<*>]{作业}
-  \begin{homeworks}
-    \item 判断题: $z$ 是实数当且仅当 $z=\ov z$.
-    \item 判断题: $z$ 是纯虚数当且仅当 $z=-\ov z$.
-    \item $z_1=-z,z_2=\ov z,z_3=-\ov{(-z)}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
-    \item 已知点 $z_1,z_2,z_3$. 点 $\frac12(z_1+z_2)$ 和 $\frac13(z_1+z_2+z_3)$ 表示什么点?
-    \item 如果 $\dfrac{x+1+i(y-3)}{5+3i}=1+i$, 那么实数 $x,y$ 分别是多少?
-    \item 证明共轭复数性质汇总中列出的结论.
-    \item 证明 $z_1\cdot\ov{z_2}-\ov{z_1}\cdot z_2=2i\Im(z_1\cdot\ov{z_2})$.
-    \item(2020年期末B卷) 设复数 $z=\dfrac{2+i}i-\dfrac{2i}{1-i}$, 求 $\Re z,\Im z,z\ov z$.
-    \item(2021年期末A卷) 化简 $\dfrac{(1+i)^{101}}{(1-i)^{99}}=$\fillblank{}.
-  \end{homeworks}
-\end{frame}
-}
