@@ -1,6 +1,6 @@
 \section{洛朗级数}
 
-
+\subsection{双边幂级数}
 \begin{frame}{双边幂级数}
 \onslide<+->
 如果解析函数 $f(z)$ 在 $z_0$ 处解析, 那么在 $z_0$ 处可以展开成泰勒级数.
@@ -14,34 +14,25 @@
 \[\sum_{n=-\infty}^\infty c_n(z-z_0)^n=\alert{
 \underbrace{\sum_{n=1}^\infty c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}+
 \emph{\underbrace{\sum_{n=0}^\infty c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.\]
-
 \onslide<+->
-为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
-\begin{definition}
-如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
-\onslide<+->
-否则我们称之为\emph{发散}.
-\end{definition}
+例如
+\[\frac1{z^2(1-z)}=\frac1{z^2}+\frac1z+1+z+z^2+\cdots,0<|z|<1.\]
 \end{frame}
 
 
 \begin{frame}{双边幂级数的敛散性}
 \onslide<+->
-注意双边幂级数的敛散性不能像幂级数那样通过部分和
-形成的数列的极限来定义.
+为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
+\onslide<+->
+\begin{definition}
+如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
+\onslide<+->
+否则我们称之为\emph{发散}.
+\end{definition}
+\onslide<+->
+注意双边幂级数的敛散性不能像幂级数那样通过部分和形成的数列的极限来定义,
 \onslide<+->
 这是使用不同的部分和选取方式会影响到极限的数值.
-\onslide<+->
-例如双边幂级数
-\[\cdots+z^{-2}+z^{-1}-1-z-z^2-\cdots=\sum_{n=1}^\infty z^{-n}-\sum_{n=0}^\infty z^n,\]
-\onslide<+->
-若使用定义
-\[s_n(z)=\sum_{k=-n}^n c_k(z-z_0)^k,\]
-作为部分和, 则当 $z=1$ 时, $s_n(1)=-1$.
-\onslide<+->
-若使用定义
-\[s_n(z)=\sum_{k=-n+1}^{n+1} c_k(z-z_0)^k,\]
-作为部分和, 则当 $z=1$ 时, $s_n(1)=-3,n\ge1$.
 \end{frame}
 
 
@@ -50,11 +41,11 @@
 设 $\suml_{n=0}^\infty c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
 
 \onslide<+->
-对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
+对于负幂次部分, 令 $\zeta=\frac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
 \onslide<+->
 设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
 \onslide<+->
-设 $R_1:=\dfrac1R$, 则 $\suml_{n=1}^\infty c_{-n}(z-z_0)^{-n}$ 在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
+设 $R_1:=\frac1R$, 则 $\suml_{n=1}^\infty c_{-n}(z-z_0)^{-n}$ 在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
 
 \begin{enumerate}
 \item 如果 $R_1>R_2$, 则该双边幂级数处处不收敛.
@@ -105,31 +96,29 @@
 \onslide<+->
 因此它们的和函数都解析($\zeta=\dfrac1{z-z_0}$ 关于 $z$ 解析), 且可以逐项求导、逐项积分.
 \onslide<+->
-从而双边幂级数的和函数也是解析的, 且可以逐项求导、逐项积分.
+从而\emph{双边幂级数的和函数也是解析的, 且可以逐项求导、逐项积分}.
 \end{frame}
 
 
 \begin{frame}{例题: 双边幂级数的收敛域}
 \begin{example}
-求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}$ 的收敛域与和函数, 其中 $a,b$ 为非零复数.
+求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}$ 的收敛域与和函数, 其中 $a,b$ 为非零复数.
 \end{example}
 \begin{solution}
 \indent
-非负幂次部分收敛当且仅当 $|z|<|b|$, 负幂次部分收敛当且仅当 $|z|>|a|$.
+非负幂次部分收敛当且仅当 $|z|<|2+i|=\sqrt5$, 负幂次部分收敛当且仅当 $|z|>|2|=2$.
 \onslide<+->
-因此该双边幂级数的收敛域为 $|a|<|z|<|b|$.
-
-\onslide<+->\indent
-当 $|b|\le |a|$ 时, 处处发散.
+因此该双边幂级数的收敛域为 $2<|z|<\sqrt5$.
 \onslide<+->
-当 $|a|<|z|<|b|$ 时,
+此时
 \begin{align*}
-\sum_{n=1}^\infty\frac{a^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{b^n}&=\frac{\dfrac az}{1-\dfrac az}+\frac1{1-\dfrac zb}=\frac{(a-b)z}{(z-a)(z-b)}.
+\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}&=\frac{\dfrac 2z}{1-\dfrac 2z}+\frac1{1-\dfrac z{2+i}}=\frac{-iz}{(z-2)(z-2-i)}.
 \end{align*}
 \end{solution}
 \end{frame}
 
 
+\subsection{洛朗级数}
 \begin{frame}{洛朗级数}
 \onslide<+->
 反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\alert{洛朗级数}.
@@ -249,35 +238,7 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \end{frame}
 
 
-\begin{frame}{与泰勒级数的关系}
-\onslide<+->
-如果 $f(z)$ 在 $|z-z_0|<R_2$ 内解析,
-\onslide<+->
-则 $f(z)$ 可以展开为泰勒级数.
-\onslide<+->
-由洛朗级数的唯一性可知此时泰勒级数就是洛朗级数,
-\onslide<+->
-因此\emph{此时洛朗展开一定没有负幂次项}.
-\onslide<+->
-故有\emph{负幂次项的双边幂级数一定在收敛圆环域内圆上有奇点}, 不过这个奇点未必是 $z_0$.
-
-\onslide<+->
-如果 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内展开的洛朗级数没有负幂次项.
-\onslide<+->
-那么该洛朗级数是一个幂级数.
-\onslide<+->
-因此它的和函数在 $|z-z_0|<R_2$ 内解析, 且在圆环域上等于 $f(z)$.
-\onslide<+->
-例如
-\[f(z)=\frac{\sin z}z=\frac 1z\sum_{n=0}^\infty\frac{(-1)^nz^{2n+1}}{(2n+1)!}
-\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{2n}}{(2n+1)!}.}\]
-\onslide<+->
-可以看出, 右侧是一个幂级数, 所以它在 $z=0$ 处解析.
-\onslide<+->
-如果我们补充定义 $f(0)=1$, 则 $f(z)$ 处处解析.
-\end{frame}
-
-
+\subsection{洛朗展开的计算}
 \begin{frame}{典型例题: 求洛朗级数}
 \beqskip{9pt}
 \begin{example}
@@ -383,10 +344,41 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 &\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
 \end{align*}
 \end{solutionc}
+% \onslide<+->
+% 同一个函数在不同的圆环域内有不同的洛朗展开, 这和洛朗展开的唯一性并不矛盾.
+% \onslide<+->
+% 因为洛朗展开的唯一性是指在固定的一个圆环域上.
+\end{frame}
+
+
+\begin{frame}{洛朗级数的特点*}
 \onslide<+->
-同一个函数在不同的圆环域内有不同的洛朗展开, 这和洛朗展开的唯一性并不矛盾.
+洛朗展开的一些特点可以帮助我们检验计算的正确性.
+\begin{itemize}
+  \item  若 $f(z)$ 在 $|z-z_0|<R_2$ 内\emph{解析},
+  \onslide<+->
+  则 $f(z)$ 可以展开为泰勒级数.
+  \onslide<+->
+  由唯一性可知泰勒级数等于洛朗级数,
+  \onslide<+->
+  因此\emph{此时洛朗展开一定没有负幂次项}.
+  \item 若 $f(z)$ 在 $|z-z_0|=R_1,R_2>0$ 上\emph{有奇点}, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开\emph{一定有无穷多负幂次和无穷多正幂次项}.
+  \item 有理函数在\emph{最内环的洛朗展开最多只有有限多负幂次项}, 在\emph{最外环的洛朗展开最多只有有限多正幂次项}.
+  \item 有理函数在不同圆环域上的洛朗展开形式地相减, 系数会有\emph{共同的通项形式} (形如 $n^k\lambda^n$ 这种的组合).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{洛朗级数的特点*}
 \onslide<+->
-因为洛朗展开的唯一性是指在固定的一个圆环域上.
+例如 $f(z)=z+1+\dfrac1{(z-1)(z-2)}$,
+\[f(z)=-\sum_{n<0}z^n+\frac12+\frac34z-\sum_{n\ge 2}2^{-n-1}z^n,\quad 1<|z|<2.\]
+\onslide<+->
+那么每个系数加 $1$ 得到
+\[f(z)=\frac32+\frac74z+\sum_{n\ge 2}(1-2^{-n-1})z^n,\quad 0<|z|<1,\]
+\onslide<+->
+每个系数加 $2^{-n-1}$ 得到
+\[f(z)=\sum_{n<0}(2^{-n-1}-1)z^n+1+z,\quad |z|>2.\]
 \end{frame}
 
 
@@ -403,9 +395,10 @@ f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
 	\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
 &\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.}
 \end{align*}
-\vspace{-5pt}
+\vspace{-0.7\baselineskip}
 \end{solution}
 \end{frame}
+
 
 
 \begin{frame}{典型例题: 求洛朗展开}
@@ -431,73 +424,71 @@ z^3\exp\left(\frac1z\right)&=\sum_{n=0}^\infty\frac{1}{n!z^{n-3}}
 因此洛朗展开可以用来帮助计算函数的积分,
 \onslide<+->
 它就是所谓的\alert{留数}.
-\begin{example}
-求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
-\end{example}
 \end{frame}
 
 
 \begin{frame}{例题: 洛朗展开的应用}
+\onslide<+->
+\begin{example}
+求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
+\end{example}
+\onslide<+->
 \begin{solution}
 注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
 \onslide<+->
 我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
 \onslide<+->
-\vspace{-\baselineskip}
+\vspace{-0.8\baselineskip}
 \begin{align*}
 f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
-&\visible<+->{=-\frac1{(z+1)^2}\left[\frac1{z+1}+\frac1{(z+1)^2}+\cdots\right]}\\
-&\visible<+->{=-\frac1{(z+1)^3}-\frac1{(z+1)^4}+\cdots}
+&\visible<+->{=-\frac1{(z+1)^2}\sum_{n=1}^{\infty}(z+1)^{-n}}
+\visible<+->{=\sum_{n=1}^{\infty}(z+1)^{-n-2}}
 \end{align*}
-\onslide<+->
-故
-\[\oint_Cf(z)\diff z=2\pi i c_{-1}=0.\]
+\onslide<+->{
+\vspace{-0.3\baselineskip}
+故 $\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
 \end{solution}
 \end{frame}
 
 
-\begin{frame}{例题: 洛朗展开的应用}
-\begin{example}
-求 $\displaystyle\oint_{|z|=2} \frac{z\exp\left(\dfrac1z\right)}{1-z}\diff z$.
-\end{example}
-\begin{solution}
-注意到闭路 $|z|=2$ 落在 $1<|z|<+\infty$ 内.
-\onslide<+->
-我们在这个圆环域内求被积函数 $f(z)$ 的洛朗展开.
-\end{solution}
-\end{frame}
+% \begin{frame}{例题: 洛朗展开的应用}
+% \onslide<+->
+% \begin{example}
+% 求 $\displaystyle\oint_{|z|=2} \frac{z\exp\left(\frac1z\right)}{1-z}\diff z$.
+% \end{example}
+% \onslide<+->
+% \begin{solution}
+% 注意到闭路 $|z|=2$ 落在 $1<|z|<+\infty$ 内.
+% \onslide<+->{
+% 我们在这个圆环域内求被积函数 $f(z)$ 的洛朗展开.
+% \begin{align*}
+% f(z)&=-\frac{\exp\left(\frac1z\right)}{1-\frac1z}
+% \visible<+->{=-\left[1+\frac1z+\frac1{z^2}+\cdots\right]\left[1+\frac1z+\frac1{2z^2}+\cdots\right]}\\
+% &\visible<+->{=-\left(1+\frac2z+\frac5{2z^2}+\cdots\right)}\end{align*}}
+% \vspace{-0.3\baselineskip}
+% \onslide<+->{
+% 故 $\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i$.}
+% \end{solution}
+% \end{frame}
 
 
-\begin{frame}{例题: 洛朗展开的应用}
-\begin{solutionc}
-\begin{align*}
-f(z)&=-\frac{\exp\left(\dfrac1z\right)}{1-\dfrac1z}
-\visible<+->{=-\left[1+\frac1z+\frac1{z^2}+\cdots\right]\left[1+\frac1z+\frac1{2z^2}+\cdots\right]}\\
-&\visible<+->{=-\left(1+\frac2z+\frac5{2z^2}+\cdots\right)}\end{align*}
-\onslide<+->
-故
-\[\oint_Cf(z)\diff z=2\pi i c_{-1}=-4\pi i.\]
-\end{solutionc}
-\end{frame}
-
-
-{
-\homework
-\begin{frame}[<*>]{作业}
-  \begin{homeworks}
-    \item(2020年A卷) 将函数 $f(z)=\dfrac{z+1}{z^2(z-1)}$ 分别在下列区域内展开成洛朗级数\\
-    \indent \enumnumhk1 $0<|z|<1$; \hspace{2em} \enumnumhk2 $1<|z|<+\infty$.
-    \item(2020年B卷) 将函数 $f(z)=\dfrac1{(1-z)(z-2)}$ 分别在下列区域内展开成洛朗级数\\
-    \indent \enumnumhk1 $0<|z-1|<1$; \hspace{2em} \enumnumhk2 $2<|z|<+\infty$.
-    \item(2021年A卷) 将函数 $f(z)=\dfrac1{z^2+z-2}$ 分别在下列区域内展开成洛朗级数\\
-    \indent \enumnumhk1 $1<|z|<2$; \hspace{2em} \enumnumhk2 $0<|z-1|<1$.
-    \item(2021年B卷) 将函数 $f(z)=\dfrac1{z^2+z}$ 分别在下列区域内展开成洛朗级数\\
-    \indent \enumnumhk1 $1<|z|<2$; \hspace{2em} \enumnumhk2 $0<|z+1|<1$.
-    \item(2022年A卷) 将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 分别在下列区域内展开成洛朗级数\\
-    \indent \enumnumhk1 $0<|z|<1$; \hspace{2em} \enumnumhk2 $1<|z|<+\infty$.
-  \end{homeworks}
-\end{frame}
-}
+% {
+% \homework
+% \begin{frame}[<*>]{作业}
+%   \begin{homeworks}
+%     \item(2020年A卷) 将函数 $f(z)=\dfrac{z+1}{z^2(z-1)}$ 分别在下列区域内展开成洛朗级数\\
+%     \indent \enumnumhk1 $0<|z|<1$; \hspace{2em} \enumnumhk2 $1<|z|<+\infty$.
+%     \item(2020年B卷) 将函数 $f(z)=\dfrac1{(1-z)(z-2)}$ 分别在下列区域内展开成洛朗级数\\
+%     \indent \enumnumhk1 $0<|z-1|<1$; \hspace{2em} \enumnumhk2 $2<|z|<+\infty$.
+%     \item(2021年A卷) 将函数 $f(z)=\dfrac1{z^2+z-2}$ 分别在下列区域内展开成洛朗级数\\
+%     \indent \enumnumhk1 $1<|z|<2$; \hspace{2em} \enumnumhk2 $0<|z-1|<1$.
+%     \item(2021年B卷) 将函数 $f(z)=\dfrac1{z^2+z}$ 分别在下列区域内展开成洛朗级数\\
+%     \indent \enumnumhk1 $1<|z|<2$; \hspace{2em} \enumnumhk2 $0<|z+1|<1$.
+%     \item(2022年A卷) 将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 分别在下列区域内展开成洛朗级数\\
+%     \indent \enumnumhk1 $0<|z|<1$; \hspace{2em} \enumnumhk2 $1<|z|<+\infty$.
+%   \end{homeworks}
+% \end{frame}
+% }
 
 
 

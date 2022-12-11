@@ -62,7 +62,7 @@
 由变量替换易得
 \begin{block}{相似性质}
 \[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
-\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac\omega a\right).\]
+\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
 \end{block}
 \end{frame}
 
@@ -165,6 +165,56 @@ $f_1(t),f_2(t)$ 的\emph{卷积}是指
 \end{frame}
 
 
+\begin{frame}{卷积的应用: 奇怪的积分规律}
+	\begin{example}
+		使用计算机进行数值计算可以发现
+		\begin{align*}
+			I_1=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\diff\omega&=3.1415926535897\cdots\\
+			I_3=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\diff\omega&=3.1415926535897\cdots\\
+			I_5=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdot
+			\frac{\sin 5\omega}{5\omega}\diff\omega&=3.1415926535897\cdots\\
+			I_{13}=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdots
+			\frac{\sin 13\omega}{13\omega}\diff\omega&=3.1415926535897\cdots\\
+			I_{15}=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdots
+			\frac{\sin 15\omega}{1\omega}\diff\omega&=3.1415926535\alert{435\cdots}
+		\end{align*}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{卷积的应用: 奇怪的积分规律}
+	\begin{solution}
+		设 $F(\omega)=\dfrac{\sin\omega}{\omega}$, 则
+		$\displaystyle\frac{I_k}{2\pi}=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)\cdots F(k\omega)\diff\omega$ 是被积函数的傅里叶逆变换在 $0$ 的取值.
+		我们之前计算过
+		\[f(t)=\begin{cases}
+			1/2, & |t|<1,\\
+			1/4, & |t|=1,\\
+			0, & |t|>1
+		\end{cases}\]
+		的傅里叶变换是 $F(\omega)$, 所以 $F(m\omega)$ 的傅里叶逆变换为 $\dfrac1mf(\dfrac tm)$, 
+		被积函数的傅里叶逆变换为
+		$\displaystyle h_k(t)=f(t)\ast \frac13f(\frac t3)\ast\cdots\ast \frac1 kf(\frac tk)$.
+	\end{solution}
+	\end{frame}
+
+
+\begin{frame}{卷积的应用: 奇怪的积分规律}
+	\begin{solutionc}
+		注意到 $\frac1mf(\frac tm)$ 在整个实轴上的积分为 $1$, 一个函数 $g(t)$ 和它做卷积之后在 $t$ 处的值相当于 $g(t)$ 在 $[t-\frac1m,t+\frac1m]$ 上取平均值.
+		由此可知, 
+		\begin{itemize}
+			\item $f(t)\ast \frac13f(\frac13)$ 在 $|t|<1-\frac13$ 上取值为 $1/2$;
+			\item $f(t)\ast \frac13f(\frac13)\ast \frac15f(\frac15)$ 在 $|t|<1-\frac13-\frac15$ 上取值为 $1/2$;
+			\item 最终 $h_k(t)$ 在 $|t|<1-\frac13-\cdots-\frac1k$ 上取值为 $1/2$.
+			\item 而 $\frac13+\cdots+\frac1{13}\approx 0.955$, $\frac13+\cdots+\frac1{15}\approx 1.02$, 所以
+			\[I_1=I_3=\cdots=I_{13}=2\pi h_{13}(0)=\pi,\]
+			\[I_{15}=2\pi h_{15}(0)=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\pi.\]
+		\end{itemize}
+	\end{solutionc}
+\end{frame}
+
+
 \begin{frame}{使用傅里叶变换解微积分方程}
 \begin{center}
 \begin{tikzpicture}[node distance=40pt]
@@ -231,18 +281,18 @@ e^{-t}-0=e^{-t},&t>0.
 \end{frame}
 
 
-{
-\homework
-\begin{frame}[<*>]{作业}
-	\begin{homeworks}
-		\item(2020年A卷) 下列不是傅里叶变换对的是\fillbrace.
-		\xx{$\delta(t),1$}%
-			{$e^{j\omega_0t},2\pi\delta(\omega-\omega_0)$}%
-			{$\sin \omega_0t, \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$}%
-			{$1,2\pi\delta(\omega)$}
-		\item(2020年B卷) $F(t)=\delta(t-t_0)$ 的傅里叶变换为\fillblank{}.
-		\item(2021年A卷) $F(\omega)=\delta(\omega+2)$ 的傅里叶逆变换为\fillblank{}.
-		\item(2022年A卷) 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
-	\end{homeworks}
-\end{frame}
-}
+% {
+% \homework
+% \begin{frame}[<*>]{作业}
+% 	\begin{homeworks}
+% 		\item(2020年A卷) 下列不是傅里叶变换对的是\fillbrace.
+% 		\xx{$\delta(t),1$}%
+% 			{$e^{j\omega_0t},2\pi\delta(\omega-\omega_0)$}%
+% 			{$\sin \omega_0t, \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$}%
+% 			{$1,2\pi\delta(\omega)$}
+% 		\item(2020年B卷) $F(t)=\delta(t-t_0)$ 的傅里叶变换为\fillblank{}.
+% 		\item(2021年A卷) $F(\omega)=\delta(\omega+2)$ 的傅里叶逆变换为\fillblank{}.
+% 		\item(2022年A卷) 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
+% 	\end{homeworks}
+% \end{frame}
+% }

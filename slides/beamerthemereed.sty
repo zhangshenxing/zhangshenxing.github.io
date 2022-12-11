@@ -1,12 +1,12 @@
 \mode<presentation>
 % Colors
-\usecolortheme{seahorse}
-\usecolortheme{orchid}
 \setbeamercolor{title}{use=structure,fg=structure.fg}
 \setbeamercolor{item}{use=structure,fg=structure.fg}
 \setbeamercolor{email}{use=structure,fg=structure.fg}
-% Margin
-\setbeamersize{text margin left=2em,text margin right=2em}
+\setbeamercolor{title in head/foot}{parent=structure}
+\setbeamercolor{part in head/foot}{parent=structure}
+\setbeamercolor{section in head/foot}{parent=structure}
+\setbeamercolor{seperate line}{use=structure,bg=structure}
 % Items
 \useinnertheme{circles}
 \setbeamertemplate{enumerate item}{(\insertenumlabel)}
@@ -24,88 +24,234 @@
 \newcommand\email[1]{\def\insertemail{#1}}
 \email{}
 \setbeamertemplate{title page}{\vfill%
-  \hskip0em\ifx\inserttitlegraphic\@empty\else\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em\fi%
-  \ifx\insertinstitutegraphic\@empty\else%
-    \raisebox{0.035\textheight}{\includegraphics[height=0.13\textheight]{\insertinstitutegraphic}}%
-  \fi\vskip1.5em\par%
-  \hskip0em{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\par%
-  \hskip0em\tikz \draw[ultra thick,line cap=round,color=title.fg] (0,0) -- (0.85*\textwidth,0);\vskip1.5em\par%
-  \hskip0em{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}\vskip0.25em\par%
-  \hskip0em{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}\vskip0.25em\par%
-  \hskip0em{\usebeamerfont{email}\usebeamercolor[fg]{email}\insertemail}\vfill%
+	\hskip0em%
+	\ifx\inserttitlegraphic\@empty\else%
+		\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em%
+	\fi%
+	\ifx\insertinstitutegraphic\@empty\else%
+		\raisebox{0.035\textheight}{%
+			\includegraphics[height=0.13\textheight]{\insertinstitutegraphic}%
+		}%
+	\fi%
+	\vskip1.5em%
+	\par\hskip0em{%
+		\usebeamerfont{title}%
+		\usebeamercolor[fg]{title}%
+		\inserttitle%
+	}%
+	\par\hskip0em%
+	\begin{beamercolorbox}[wd=0.8\paperwidth,ht=1.5pt]{seperate line}%
+	\end{beamercolorbox}%
+	\vskip1ex%
+	\par\hskip0em{%
+		\usebeamerfont{author}%
+		\usebeamercolor[fg]{author}%
+		\insertauthor%
+	}%	
+	\ifx\insertinstitute\@empty\else\vskip0.25em\par\hskip0em{%
+		\usebeamercolor[fg]{institute}%
+		\usebeamerfont{institute}%
+		\insertinstitute%
+	}\fi%
+	\ifx\insertemail\@empty\else\vskip0.25em\par\hskip0em{%
+		\usebeamercolor[fg]{email}%
+		\usebeamerfont{email}%
+		\href{mailto:\insertemail}{\insertemail}%
+	}\fi\vfill%
+}
+\AtBeginDocument{
+	{
+		\setnaviboxempty
+		\begin{frame}
+			\titlepage
+		\end{frame}
+	}
 }
 % Background
 \setbeamertemplate{background}{
-  \ifx\inserttitlegraphic\@empty\else
-  \begin{tikzpicture}
-    \path (0,0) -- (\paperwidth,\paperheight);
-    \node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\inserttitlegraphic}};
-  \end{tikzpicture}
-  \fi
+	\ifx\inserttitlegraphic\@empty\else
+	\begin{tikzpicture}
+		\path (0,0) -- (\paperwidth,\paperheight);
+		\node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\inserttitlegraphic}};
+	\end{tikzpicture}
+	\fi
 }
 \setbeamertemplate{navigation symbols}{}
+% Section
+\AtBeginSection{
+	% {
+	% 	\setnaviboxempty
+	% 	\begin{frame}
+	% 		\sectionpage	
+	% 	\end{frame}
+	% }
+	\setnaviboxsection
+}
+% Frametitle
+\setbeamertemplate{frametitle}{%
+	\vskip.5ex\hskip-1em
+	{%
+		\usebeamerfont{frametitle}%
+		\usebeamercolor[fg]{frametitle}%
+		\insertframetitle
+	}\vskip-1ex
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
+		\end{beamercolorbox}%
+	}%
+}
+% Navigation Box, from theme riemann by Jianrui Lyu
+\newcommand{\my@navibox@frame@section}{$\boxtimes$}
+\newcommand{\my@navibox@frame}{$\square$}
+\newcommand{\my@navibox@frame@empty}{}
+\defbeamertemplate{navigation box}{current}{%
+	\kern.55pt\color{example text.fg}\rule[-0.24pt]{5pt}{5pt}%
+	\kern-5.57pt\color{bg}\kern.4pt\my@navibox\kern.4pt
+}
+\defbeamertemplate{navigation box}{other}{\color{black}\kern.4pt\my@navibox\kern.4pt}
+\let\my@navibox=\my@navibox@frame
+\newcommand{\my@set@navibox@section}{\let\my@navibox=\my@navibox@frame@section}
+\newcommand{\my@set@navibox@empty}{\let\my@navibox=\my@navibox@frame@empty}
+\newcommand{\setnaviboxsection}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@section}}}
+\newcommand{\setnaviboxempty}{%
+	\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@empty}}%
+	\addtocounter{framenumber}{-1}%
+	\setbeamertemplate{footline}{}%
+}
+\newcommand{\my@sectionentry@show}[5]{%
+	\begingroup
+		\def\my@navibox{#1}%
+		\hyperlink{Navigation#3}{\usebeamertemplate{navigation box}}%
+	\endgroup
+}
+\newif\ifmy@hidesection
+\newcommand{\my@sectionentry@hide}[5]{\my@hidesectiontrue}
+\pretocmd{\beamer@setuplinks}{\renewcommand{\beamer@subsectionentry}[5]{}}{}{}
+\apptocmd{\beamer@setuplinks}{\global\let\beamer@sectionentry\mybeamer@sectionentry}{}{}
+\newcommand{\mybeamer@sectionentry}[5]{\global\let\my@navibox=\my@navibox@frame@section}
+\newcommand{\my@slideentry@empty}[6]{}
+\newcommand{\my@slideentry@section}[6]{%
+	\setbeamertemplate{navigation box}[other]%
+	\ifnum\c@section=#1%
+		\ifnum\c@subsectionslide=#3%
+			\setbeamertemplate{navigation box}[current]%
+		\fi
+	\fi
+		\beamer@link(#4){\usebeamertemplate{navigation box}}%
+	\global\let\my@navibox=\my@navibox@frame
+}
 % Footline
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+\setbeamertemplate{head/foot seperator}{\kern1pt\raisebox{0.5pt}{$\blacktriangleright$}\kern1pt}
+\defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
+\defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
 \setbeamertemplate{footline}{%
-  \noindent\hbox{%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt]{section in head/foot}
-      \vskip2pt\insertnavigation{.5\paperwidth}\vskip2pt
-    \end{beamercolorbox}%
-    \begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt,left]{author in head/foot}%
-      \vfill%
-      \hskip2ex\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}\insertshortauthor%
-      \par%
-      \hskip2ex\usebeamercolor[fg]{title in head/foot}\usebeamerfont{title in head/foot}\insertshorttitle%
-      \vfill
-    \end{beamercolorbox}%
-  }
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=0.5pt]{seperate line}
+		\end{beamercolorbox}%
+	}\par%
+	\hbox{%
+		\begin{beamercolorbox}[%
+			wd=\paperwidth,%
+			ht=5ex,%
+			dp=1ex,%
+			leftskip=2ex,%
+			rightskip=2ex,%
+			sep=0pt%
+		]{}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\usebeamercolor[fg]{title in head/foot}%
+				\insertshorttitle%
+			}%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\usebeamercolor[fg]{section in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+			}\fi%
+			\hfill
+			{%
+				\usebeamercolor[fg]{date in head/foot}%
+				\usebeamerfont{date in head/foot}%
+				\insertshortdate%
+			}%
+			\par
+			\let\sectionentry=\my@sectionentry@hide
+			\let\slideentry=\my@slideentry@section
+			\dohead
+			\kern\beamer@rightmargin
+			\hfill
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
+		\end{beamercolorbox}%
+	}%
+}
+\defbeamertemplate{footline}{mixed}{
+	\noindent\hbox{%
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt]{section in head/foot}
+			\vskip2pt\insertnavigation{.5\paperwidth}\vskip2pt
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=6ex,dp=1ex,sep=0pt,left]{author in head/foot}%
+			\vfill%
+			\hskip2ex\usebeamercolor[fg]{author in head/foot}\usebeamerfont{author in head/foot}\insertshortauthor%
+			\par%
+			\hskip2ex\usebeamercolor[fg]{title in head/foot}\usebeamerfont{title in head/foot}\insertshorttitle%
+			\vfill
+		\end{beamercolorbox}%
+	}
 }
 \makeatother
 % Theorems, use tcolorbox
 \RequirePackage[many]{tcolorbox}
 \tcbset{
-  common/.style={
-    lower separated=false,
-    coltitle=white,
-    boxrule=1pt,
-    fonttitle=\bfseries,
-    enhanced,
-    left=1mm,right=1mm,bottom=1mm,top=3mm,
-    before skip=2mm minus 1mm,
-    after skip=2mm minus 1mm,
-    attach boxed title to top left={
-      yshift=-0.11in, xshift=0.15in
-    },
-    boxed title style={
-      boxrule=0pt, arc=0pt, outer arc=0pt
-    }
-  }
+	common/.style={
+		lower separated=false,
+		coltitle=white,
+		boxrule=1pt,
+		fonttitle=\bfseries,
+		enhanced,
+		left=1mm,right=1mm,bottom=1mm,top=3mm,
+		before skip=2mm minus 1mm,
+		after skip=2mm minus 1mm,
+		attach boxed title to top left={
+			yshift=-0.11in, xshift=0.15in
+		},
+		boxed title style={
+			boxrule=0pt, arc=0pt, outer arc=0pt
+		}
+	}
 }
 \usebeamercolor{structure}
 \tcbset{
-  blockstyle/.style={
-    common,
-    colframe=structure.fg,
-    colback=structure.fg!10,
-    colbacktitle=structure.fg!80
-  }
+	blockstyle/.style={
+		common,
+		colframe=structure.fg,
+		colback=structure.fg!10,
+		colbacktitle=structure.fg!80
+	}
 }
 \usebeamercolor{example text}
 \tcbset{
-  exampstyle/.style={
-    common,
-    colframe=example text.fg,
-    colback=example text.fg!10,
-    colbacktitle=example text.fg!80
-  }
+	exampstyle/.style={
+		common,
+		colframe=example text.fg,
+		colback=example text.fg!10,
+		colbacktitle=example text.fg!80
+	}
 }
 \usebeamercolor{alerted text}
 \tcbset{
-  alertstyle/.style={
-    common,
-    colframe=alerted text.fg,
-    colback=alerted text.fg!10,
-    colbacktitle=alerted text.fg!80
-  }
+	alertstyle/.style={
+		common,
+		colframe=alerted text.fg,
+		colback=alerted text.fg!10,
+		colbacktitle=alerted text.fg!80
+	}
 }
 \RequirePackage{xparse}
 \renewenvironment{block}[1]{\begin{tcolorbox}[blockstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
@@ -121,6 +267,7 @@
 \renewenvironment{examples}{\begin{tcolorbox}[exampstyle,title=\translate{Examples}]}{\end{tcolorbox}}
 \newenvironment{exercise}{\begin{tcolorbox}[exampstyle,title=\translate{Exercise}]}{\end{tcolorbox}}
 \newenvironment{remark}{\begin{tcolorbox}[exampstyle,title=\translate{Remark}]}{\end{tcolorbox}}
+\renewenvironment{alertblock}{\begin{tcolorbox}[alertstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
 % Math Font
 \usefonttheme[onlymath]{serif}
 \RequirePackage{lmodern}

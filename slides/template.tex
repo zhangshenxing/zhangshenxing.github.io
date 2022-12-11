@@ -1,26 +1,19 @@
-\documentclass[12pt,handout,aspectratio=169]{ctexbeamer}
+% \documentclass[12pt,handout,aspectratio=169]{ctexbeamer}
+\documentclass[handout]{ctexbeamer}
+\setbeamersize{text margin left=0.5em,text margin right=0.5em}
 \RequirePackage[T1]{fontenc}
 \setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
-%\documentclass[12pt,handout,aspectratio=169]{beamer}
-
 \usetheme{reed}
-\AtBeginSection{% Add toc after section automatically
-	\begin{frame}{目录}%Table of Contents
-	\tableofcontents[currentsection]
-	\end{frame}
-}
 
 \title{Lorem Ipsum Dolor Sit Amet Nonummy Eget}
 \author{农张雨 (衡州大学)}
 \institute{Conference on Nonummy Eget\\汉东·衡州}
-\email{\href{mailto:nongzhangyu@hzu.edu.cn}{nongzhangyu@hzu.edu.cn}}
+\email{nongzhangyu@hzu.edu.cn}
 \date{2022-05-19}
 \titlegraphic{misc/hzu.png}
 \institutegraphic{misc/hzuname.png}
-
-% Custom main color, default blue
-%\definecolor{structcolor}{RGB}{48,55,157}
-%\setbeamercolor{structure}{fg=structcolor}
+% \definecolor{structcolor}{RGB}{166,9,30}
+% \setbeamercolor{structure}{fg=structcolor}
 \usebeamercolor{structure}
 \renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
 \setlength{\parindent}{1.5em}
@@ -29,18 +22,13 @@
 %\input{../symbols}
 
 \begin{document}
-{
-	\setbeamertemplate{footline}{}% Remove footline in title page
-	\frame{\titlepage}
-}
-
 \section{Duis nibh mi}
 
 \begin{frame}{Duis nibh mi}
 \begin{block}{猜想}
 \begin{enumerate}
 \item Lorem ipsum dolor sit amet, \emph{consectetuer adipiscing} elit.
-\item 劳仑衣普桑，认至将指点效则机，最你更枝。
+\item 劳仑衣普桑，认至将指点效则机，\alert{最你更枝}。
 \end{enumerate}
 \end{block}
 \begin{solution}
@@ -48,11 +36,19 @@ Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna.
 
 想极整月正进好志次回总般，段然取向使张规军证回，世市总李率英茄持伴。
 \end{solution}
+\end{frame}
 
+
+\begin{frame}{Nibh duis mi}
 省着素科程建持色被什，所界走置派农难取眼，并细杆至志本。
 水厂共当而面三张，白家决空给意层般，单重总歼者新。
 
 Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.
+
+\begin{alertblock}
+Nonummy eget, consectetuer id!
+\end{alertblock}
+
 \end{frame}
 
 \section[响育油命转处他住有]{响育油命转处他住有，一须通给对非交矿今该，花象更面据压来。}
@@ -127,11 +123,12 @@ Duis eget orci sit amet orci dignissim rutrum.
 \end{remark}
 \end{frame}
 
-
-\begin{frame}
-\centering\huge Thank you!
-\end{frame}
-
+{
+	\setnaviboxempty
+	\begin{frame}
+	\centering\huge Thank you!
+	\end{frame}
+}
 
 
 
