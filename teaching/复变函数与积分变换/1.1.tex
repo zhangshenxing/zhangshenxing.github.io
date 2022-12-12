@@ -4,8 +4,7 @@
 
 \begin{frame}{复数的定义}
 \onslide<+->现在我们来正式介绍复数的概念.
-\onslide<+->由于我们无法区分方程 $x^2=-1$ 的两个根 $\pm\sqrt{-1}$,
-\onslide<+->因此我们固定其中一个, 并引入一个记号 $i$ 来表示它.
+\onslide<+->因此引入一个记号 $i$ 来表示 $x^2=-1$ 的一个根.
 \onslide<+->
 \begin{definition}
 固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
@@ -29,22 +28,20 @@
 \fill[cstdot,dcolora] (1.6,1.2) circle;
 \draw[cstaxis] (3.6,0)--(6,0);
 \draw[cstaxis] (4,-0.4)--(4,2);
+\draw[decorate,decoration={brace,amplitude=5},dcolora] (4,0)--(5.6,0);
+\draw[decorate,decoration={brace,amplitude=5},dcolorb] (4,1.2)--(4,0);
 \draw[cstdash] (5.6,0)--(5.6,1.2);
 \draw[cstdash] (4,1.2)--(5.6,1.2);
 \fill[cstdot,dcolora] (5.6,1.2) circle;
 \draw[dcolorb,line width=0.1cm,cstarrow1double] (2.2,0.8)--(3.4,0.8);
 \draw[cstaxis,visible on=<5->] (7.6,0)--(10,0);
 \draw[cstaxis,visible on=<5->] (8,-0.4)--(8,2);
-\draw[cstcurve,cstarrowto,visible on=<5->] (8,0)--(9.6,1.2);
+\draw[cstcurve,cstarrowto,visible on=<5->,dcolora] (8,0)--(9.6,1.2);
 \draw[dcolorb,line width=0.1cm,cstarrow1double,visible on=<5->] (6.2,0.8)--(7.4,0.8);
 \draw 
 	(-0.2,-0.2) node {$0$}
 	(1.6,1.5) node[dcolora] {$z=x+yi$}
 	(5.6,1.5) node[dcolora] {$Z(x,y)$}
-	(4.8,0.2) node[dcolora] {$x$}
-	(4.3,0.6) node[dcolora] {$y$}
-	(5.8,-0.2) node {$x$}
-	(3.8,1.5) node {$y$}
 	(3.8,-0.2) node {$O$}
 	(5.0,-0.7) node {直角坐标系}
 	(2.8,0.3) node[dcolorb] {\small 一一对应}
@@ -80,6 +77,8 @@
 \draw[cstdash] (1.6,0)--(1.6,1.2);
 \draw[cstdash] (0,1.2)--(1.6,1.2);
 \fill[cstdot,dcolora] (1.6,1.2) circle;
+\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorb] (1.6,0)--(0,0);
+\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorc] (0,1.2)--(0,0);
 \draw[visible on=<6->,dcolorb,thick] (-0.95,0.2)--(0.7,0.2)--(0.7,0)[->];
 \filldraw[visible on=<6->,cstcurve,dcolora,cstfill] (5.5,1) circle (2.2 and 1.8);
 \filldraw[visible on=<6->,cstcurve,dcolora,fill=white] (5.5,1)--(3.3,1) arc (180:300:2.2 and 1.8) -- cycle;
@@ -90,8 +89,8 @@
 	(-0.2,-0.2) node {$0$}
 	(2.2,0.4) node[dcolorb,visible on=<3->] {实轴}
 	(0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
-	(0.8,-0.2) node[visible on=<5>,dcolorb] {$\Re z$}
-	(0.45,0.5) node[visible on=<5>,dcolorc] {$\Im y$}
+	(0.8,-0.3) node[visible on=<5>,dcolorb] {$\Re z$}
+	(0.6,0.6) node[visible on=<5>,dcolorc] {$\Im z$}
 	(-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
 	(4.8,0.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
 	(8.5,1) node[visible on=<6->,align=center,dcolora] {\small 全\\体\\复\\数}
@@ -106,14 +105,15 @@
 \begin{frame}{典型例题：判断实数和纯虚数}
 \onslide<+->
 \begin{example}
-实数 $x$ 取何值时, $(x^2-3x-4)+(x^2-5x-6)i$ 是: \enumnum1 实数; \enumnum2 纯虚数.
+实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是: \enumnum1 实数; \enumnum2 纯虚数.
 \end{example}
 \onslide<+->
 \begin{solution}
-\enumnum1 $x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
+\enumnum1 $\Im z=x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
 
-\visible<+->{\enumnum2 $x^2-3x-4=0$, 即 $x=-1$ 或 $4$.}
-\visible<+->{但同时要求 $x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
+\visible<+->{\enumnum2 $\Re z=x^2-3x-4=0$, 即 $x=-1$ 或 $4$.}
+
+\visible<+->{但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
 \end{solution}
 \onslide<+->
 \begin{exercise}
@@ -159,17 +159,18 @@
 
 \begin{frame}{复数的乘除法}
 \onslide<+->\alert{规定 $i\cdot i=-1$.}
-\onslide<+->由线性空间的数乘和乘法分配律可得复数的乘除法:
+\onslide<+->由线性空间的数乘和乘法分配律可得:
 \onslide<+->
 \begin{align*}
 z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 &=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 \end{align*}
 \vspace{-\baselineskip}
-\onslide<+->\[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
-\onslide<+->\[\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
+\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2}},\quad
+\visible<+->{\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.}\]
 
 \onslide<+->对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
+
 \onslide<+->当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
 \end{frame}
 
@@ -179,8 +180,8 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \begin{example}
 \begin{enumerate}
 \item $i^2=-1,i^3=-i,i^4=1$.
-\visible<+->{一般地, 对于整数 $n$, }
-\[\visible<.->{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}\]%
+\visible<+->{一般地, 对于整数 $n$, 
+\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}%
 \item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
 \item 令 $z=1+i$, \visible<+->{则
 \[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
@@ -326,10 +327,10 @@ $\dfrac z{1+z^2}$ 是实数当且仅当
 \end{example}
 \onslide<+->
 \begin{proof}
-\indent 我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
+我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
 \visible<+->{但我们利用共轭复数可以更简单地证明它.}
 
-\visible<+->{\indent 由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, }
+\visible<+->{由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, }
 \visible<+->{因此
 	\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
 	=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}

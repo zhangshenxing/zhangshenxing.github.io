@@ -43,12 +43,20 @@
 	\visible<+->{x=u+v=2.}\]
 \vspace{-\baselineskip}
 \end{solutionc}
-\onslide<+->{那么这个方程是不是真的只有 $x=2$ 这一个解呢?}
-\onslide<+->{设 \[f(x)=x^3+6x-20,\quad
-	\visible<+->{f'(x)=3x^2+6>0.}\]}
-\onslide<+->{因此 $f(x)$ 单调递增, $f(x)$ 最多只有一个零点.}
-\onslide<+->{由于 \[f(0)=-20<0,\quad f(3)=25>0,\]}
-\onslide<+->{因此由零点定理可知 $f(x)$ 确实只有一个零点.}
+\onslide<+->
+那么这个方程是不是真的只有 $x=2$ 这一个解呢?
+\onslide<+->
+这从它的函数图像可以看出.
+\begin{center}
+	\begin{tikzpicture}
+	\filldraw[cstcurve,dcolora,domain=-3.5:4,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
+	\draw[cstaxis] (-1.5,0)--(1.5,0);
+	\draw[cstaxis] (0,-1.7)--(0,1.5);
+	\fill[cstdot,dcolorb] (0,-0.4) circle;
+	\draw
+		(1.4,-0.7) node[dcolorb] {\small 拐点 $(0,-20)$};
+	\end{tikzpicture}
+\end{center}
 \end{frame}
 
 
@@ -89,12 +97,41 @@
 \onslide<+->对于一般的三次方程 $x^3+px+q=0$ 而言, 使用上述方法可以得到求根公式:
 \[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
 \onslide<+->由于 $p=0$ 情形较为简单, 所以我们不考虑这种情形.
-\onslide<+->通过分析函数的极值可以知道:
+\onslide<+->通过分析函数图像的极值点可以知道:
 \begin{enumerate}
 \item 当 $\Delta>0$ 时, 有 $1$ 个实根.
 \item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\frac12\sqrt[3]{4q}$ ($2$重).
 \item 当 $\Delta<0$ 时, 有 $3$ 个实根. 这可以通过分析函数单调性得到.
 \end{enumerate}
+
+\begin{center}
+	\begin{figure}[h]
+		\begin{subfigure}{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\filldraw[cstcurve,dcolora,domain=-2.8:3.5,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{tikzpicture}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\filldraw[cstcurve,dcolora,domain=-3.1:2.7,smooth,fill=white] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{tikzpicture}
+		\end{subfigure}
+		\begin{subfigure}{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\filldraw[cstcurve,dcolora,domain=-3.9:3.7,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{tikzpicture}
+		\end{subfigure}
+	\end{figure}
+\end{center}
 \end{frame}
 
 
@@ -105,9 +142,9 @@
 
 \onslide<+->尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
 \onslide<+->
-\begin{quote}
+\begin{quote@}
 \indent 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
 \tcblower
 莱布尼兹 (Leibniz)
-\end{quote}
+\end{quote@}
 \end{frame}
