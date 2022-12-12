@@ -9,28 +9,26 @@
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
-\draw[cstaxis] (-0.4,0)--(2,0);
+\draw[cstaxis] (-0.4,0)--(2.5,0);
 \draw[cstaxis] (0,-0.4)--(0,2);
-\draw[cstdash,dcolora] (1.6,0)--(1.6,1.2);
-\draw[cstdash,dcolora] (0,1.2)--(1.6,1.2);
+\draw[cstdash] (1.6,0)--(1.6,1.2);
+\draw[cstdash] (0,1.2)--(1.6,1.2);
 \fill[cstdot,dcolora] (1.6,1.2) circle;
-\fill[cstdot,dcolora] (7.6,1.2) circle;
-\draw[dcolorb,line width=0.1cm,cstarrow1double] (3.2,0.8)--(4.8,0.8);
+\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on =<7->] (1.6,0)--(0,0);
+\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on =<7->] (0,0)--(0,1.2);
 \draw
   (1.6,1.4) node[dcolora] {$z=x+yi$}
   (-0.2,-0.2) node {$0$}
-  (7.6,1.4) node[dcolora] {$z=x+yi$}
-  (5.8,-0.2) node {$O$}
-  (7.0,-0.5) node {极坐标系}
-  (4,0.3) node[dcolorb] {\small 一一对应}
-  (1.2,-0.5) node[dcolorb] {复平面}
-  (6.7,0.8) node[dcolorc,visible on =<5->] {$r$};
-\coordinate (A) at (9,0);
-\coordinate (B) at (6,0);
-\coordinate (C) at (7.6,1.2);
-\draw[cstaxis] (B)--(A);
+  (0.7,0.8) node[dcolorc,visible on =<5->] {$r$}
+  (1,-0.3) node[dcolora,visible on =<7->] {$x=r\cos\theta$}
+  (-1.2,0.6) node[dcolorb,visible on =<7->] {$y=r\sin\theta$}
+  (6,1) node[dcolorc,visible on =<5->] {$r=\sqrt{x^2+y^2}$}
+  (6,0.3) node[dcolorc,visible on =<6->] {$\theta=\arctan\dfrac yx$ 或 $\arctan\dfrac yx\pm\pi$};
+\coordinate (A) at (3,0);
+\coordinate (B) at (0,0);
+\coordinate (C) at (1.6,1.2);
 \draw[cstcurve,dcolorc,cstarrowto,visible on =<5->] (B)--(C);
-\draw[dcolorb,thick,visible on =<6->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
+\draw[dcolorc,thick,visible on =<6->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
 \end{tikzpicture}
 \end{center}
 
@@ -45,30 +43,12 @@
 \end{frame}
 
 
-\begin{frame}{极坐标和直角坐标的对应}
-\onslide<+->
-由极坐标和直角坐标的对应可知
-\onslide<+->
-\[x=r\cos\theta,\ y=r\sin \theta,\quad
-\visible<+->{|z|=\sqrt{x^2+y^2}}\]
-\onslide<+->
-\[\Arg z=\begin{cases}
-\arctan\dfrac yx+2k\pi,&x>0;\vspace{1ex}\\
-\arctan\dfrac yx+(2k+1)\pi,&x<0;\\
-\dfrac\pi2+2k\pi,&x=0,y>0;\\
--\dfrac\pi2+2k\pi,&x=0,y<0;\\
-\text{任意/无意义},&z=0,
-\end{cases}\]
-其中 $k\in\BZ$.
-\end{frame}
-
-
 \begin{frame}{主辐角}
 \onslide<+->
 任意 $z\neq 0$ 的辐角有无穷多个.
 \onslide<+->
-我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}, 记作 $\emph{\arg z}$.
-\begin{tikzpicture}[overlay,xshift=3cm,yshift=-3cm]
+我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}或辐角主值, 记作 $\emph{\arg z}$.
+\begin{tikzpicture}[overlay,xshift=1cm,yshift=-3cm]
 \draw[cstaxis,visible on=<3->](-2.5,0)->(2,0); 
 \draw[cstaxis,visible on=<3->](0,-2)->(0,2);
 \fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
@@ -100,9 +80,8 @@
 \visible<7->{-\dfrac\pi2,}&\visible<7->{x=0,y<0.}
 \end{cases}$}&
 \end{flalign*}
-
 \onslide<8->
-显然 \emph{$\Arg z=\arg z+2k\pi, k\in\BZ$}.
+那么 \emph{$\Arg z=\arg z+2k\pi, k\in\BZ$}.
 \end{frame}
 
 
@@ -119,33 +98,52 @@
 \end{itemize}
 \end{block}
 \onslide<+->
-这些不等式均可以用三角不等式证明, 也可以用代数方法证明.
-\onslide<+->
-\vspace{-0.5\baselineskip}
+
 \begin{center}
-\begin{tikzpicture}
-\draw[cstaxis] (-3,0)--(3.5,0);
-\draw[cstaxis] (0,-0.5)--(0,2);
-\draw[cstcurve,dcolorc] (-1.6,0)--(0,0);
-\draw[cstcurve,dcolorb] (-1.6,0)--(-1.6,1.2);
-\draw[cstcurve,dcolora] (-1.6,1.2)--(0,0);
-\fill[cstdot,dcolora] (-1.6,1.2) circle;
-\draw[thick] (-1.6,0.2)--(-1.4,0.2)--(-1.4,0);
-\draw 
-  (-0.6,0.9) node[dcolora] {$|z|$}
-  (-0.8,-0.4) node[dcolorc] {$\abs{\Re z}$}
-  (-2.2,0.6) node[dcolorb] {$\abs{\Im z}$}
-  (1.3,0.2) node[dcolora,visible on=<8->] {$|z_1|$}
-  (0.3,1.4) node[dcolora,visible on=<8->] {$|z_2|$}
-  (2.8,1.3) node[dcolorc,visible on=<8->] {$|z_1+z_2|$}
-  (2.5,0.8) node[dcolorb,visible on=<8->] {$|z_1-z_2|$};
-\draw[cstcurve,visible on=<8->,dcolora] (0,0)--(1.5,0.6);
-\draw[cstcurve,visible on=<8->,dcolora] (0,0)--(0.8,1.5);
-\draw[cstcurve,visible on=<8->,dcolorc] (0,0)--(2.3,2.1);
-\draw[cstcurve,visible on=<8->] (1.5,0.6)--(2.3,2.1);
-\draw[cstcurve,visible on=<8->] (0.8,1.5)--(2.3,2.1);
-\draw[cstcurve,visible on=<8->,dcolorb] (1.5,0.6)--(0.8,1.5);
-\end{tikzpicture}
+	\begin{figure}[h]
+		\begin{subfigure}{0.45\textwidth}
+			\centering\onslide<4->
+			\begin{tikzpicture}
+        \draw[cstaxis] (-0.3,0)--(3,0);
+        \draw[cstaxis] (0,-0.3)--(0,1.5);
+        \draw[cstcurve,dcolorc] (1.6,0)--(0,0);
+        \draw[cstcurve,dcolorb] (1.6,0)--(1.6,1.2);
+        \draw[cstcurve,dcolora] (1.6,1.2)--(0,0);
+        \fill[cstdot,dcolora] (1.6,1.2) circle;
+        \draw[thick] (1.6,0.2)--(1.4,0.2)--(1.4,0);
+        \draw[decorate,decoration={brace,amplitude=5},dcolorc] (1.6,0)--(0,0);
+        \draw[decorate,decoration={brace,amplitude=5},dcolorb] (1.6,1.2)--(1.6,0);
+        \draw 
+          (0.6,0.9) node[dcolora] {$|z|$}
+          (0.8,-0.4) node[dcolorc] {$\abs{\Re z}$}
+          (2.3,0.6) node[dcolorb] {$\abs{\Im z}$};
+			\end{tikzpicture}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}\onslide<5->
+        \draw[cstaxis] (-0.5,0)--(3,0);
+        \draw[cstaxis] (0,-2)--(0,1.3);
+        \draw[cstcurve,cstarrowto,dcolora] (0,0)--(1.6,-0.4);
+        \draw[decorate,decoration={brace,amplitude=5},dcolora] (1.6,-0.4)--(0,0);
+        \draw[cstcurve,cstarrowto,dcolorb] (0,0)--(0.8,1.2);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb] (2.4,0.8)--(1.6,-0.4);
+        \draw[cstcurve,cstarrowto,dcolorc] (0,0)--(2.4,0.8);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0,0)--(2.4,0.8);
+        \draw[cstcurve,cstarrowto,dcolorc] (0,0)--(0.8,-1.6);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0.8,-1.6)--(0,0);
+        \draw[dcolorc,cstarrowto] (0.116,-0.636)--(-0.7,-0.4);
+        \draw[cstdash] (2.4,0.8)--(0.8,-1.6)--(-0.8,-1.2)--(0,0);
+        \draw 
+          (1.8,-0.6) node[dcolora] {\small $z_1$}
+          (0.6,1.3) node[dcolorb] {\small $z_2$}
+          (0.75,-0.55) node[dcolora] {\small $|z_1|$}
+          (2.5,0.2) node[dcolorb] {$\small |z_2|$}
+          (1.4,0.8) node[dcolorc,rotate=20] {\small $|z_1+z_2|$}
+          (-1.5,-0.4) node[dcolorc] {\small $|z_1-z_2|$};
+			\end{tikzpicture}
+		\end{subfigure}
+	\end{figure}
 \end{center}
 \end{frame}
 

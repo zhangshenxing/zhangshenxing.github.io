@@ -42,13 +42,13 @@
 	(-0.2,-0.2) node {$0$}
 	(1.6,1.5) node[dcolora] {$z=x+yi$}
 	(5.6,1.5) node[dcolora] {$Z(x,y)$}
+	(4.8,0.3) node[dcolora] {$x$}
+	(4.3,0.6) node[dcolorb] {$y$}
 	(3.8,-0.2) node {$O$}
 	(5.0,-0.7) node {直角坐标系}
 	(2.8,0.3) node[dcolorb] {\small 一一对应}
 	(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
 	(9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
-	(9.8,-0.2) node[visible on=<5->] {$x$}
-	(7.8,1.5) node[visible on=<5->] {$y$}
 	(7.8,-0.2) node[visible on=<5->] {$O$}
 	(9.0,-0.7) node[visible on=<5->] {向量}
 	(6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
@@ -71,7 +71,7 @@
 \begin{center}
 \begin{tikzpicture}
 \draw[cstaxis] (-0.4,0)--(2.7,0);
-\draw[cstaxis,dcolorb,visible on=<3->] (-0.4,0)--(2.7,0);
+\draw[cstaxis,dcolorb,visible on=<2->] (-0.4,0)--(2.7,0);
 \draw[cstaxis] (0,-0.4)--(0,2);
 \draw[cstaxis,dcolorc,visible on=<4->] (0,-0.4)--(0,2);
 \draw[cstdash] (1.6,0)--(1.6,1.2);
@@ -166,7 +166,7 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 &=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 \end{align*}
 \vspace{-\baselineskip}
-\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2}},\quad
+\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2},}\quad
 \visible<+->{\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.}\]
 
 \onslide<+->对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
@@ -181,7 +181,7 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \begin{enumerate}
 \item $i^2=-1,i^3=-i,i^4=1$.
 \visible<+->{一般地, 对于整数 $n$, 
-\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]}%
+\meq[3pt][3pt]{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}}%
 \item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
 \item 令 $z=1+i$, \visible<+->{则
 \[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
@@ -244,9 +244,10 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \end{itemize}
 \onslide<+->有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
 \onslide<+->与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}.
-\onslide<+->也就是说, 对于任何一个非常数的复系数多项式
-	\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\quad n\ge 1,\]
+\onslide<+->也就是说, 对于任何次数 $n\ge 1$ 的复系数多项式
+	\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
 \onslide<+->都存在复数 $z_0$ 使得 $p(z_0)=0$.
+\onslide<+->也就是说复系数多项式可以因式分解称一次多项式的乘积.
 \onslide<+->我们会在第五章证明该结论.
 \end{frame}
 
@@ -259,7 +260,7 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
 \item 若 $a>b,c>0$, 则 $ac>bc$.
 \end{itemize}
-\onslide<+->而 $\BC$ 却不是有序域.
+\onslide<+->而 \emph{$\BC$ 却不是有序域}.
 \onslide<+->如果 $i>0$, 则
 	\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
 \onslide<+->于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
@@ -295,7 +296,7 @@ z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 \item $z$ 是 $\ov z$ 的共轭复数.
 \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
 \ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-\ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{\ov{z_1}}{\ov{z_2}}$.
+\ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{~\ov{z_1}~}{\ov{z_2}}$.
 \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
 \item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
 \end{itemize}
@@ -315,7 +316,7 @@ $\dfrac z{1+z^2}$ 是实数当且仅当
 \[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
 \visible<+->{即 \[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]}%
 \visible<+->{由 $y\neq0$ 可知 $z\neq \ov z$.}
-\visible<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.}
+\visible<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere}
 \end{proof}
 \end{frame}
 
