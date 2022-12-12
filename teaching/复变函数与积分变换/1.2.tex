@@ -14,16 +14,16 @@
 \draw[cstdash] (1.6,0)--(1.6,1.2);
 \draw[cstdash] (0,1.2)--(1.6,1.2);
 \fill[cstdot,dcolora] (1.6,1.2) circle;
-\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on =<7->] (1.6,0)--(0,0);
-\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on =<7->] (0,0)--(0,1.2);
+\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on =<8->] (1.6,0)--(0,0);
+\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on =<8->] (0,0)--(0,1.2);
 \draw
   (1.6,1.4) node[dcolora] {$z=x+yi$}
   (-0.2,-0.2) node {$0$}
   (0.7,0.8) node[dcolorc,visible on =<5->] {$r$}
-  (1,-0.3) node[dcolora,visible on =<7->] {$x=r\cos\theta$}
-  (-1.2,0.6) node[dcolorb,visible on =<7->] {$y=r\sin\theta$}
   (6,1) node[dcolorc,visible on =<5->] {$r=\sqrt{x^2+y^2}$}
-  (6,0.3) node[dcolorc,visible on =<6->] {$\theta=\arctan\dfrac yx$ 或 $\arctan\dfrac yx\pm\pi$};
+  (6,0.3) node[dcolorc,visible on =<6->] {$\theta=\arctan\dfrac yx$ 或 $\arctan\dfrac yx\pm\pi$}
+  (1,-0.3) node[dcolora,visible on =<8->] {$x=r\cos\theta$}
+  (-1.2,0.6) node[dcolorb,visible on =<8->] {$y=r\sin\theta$};
 \coordinate (A) at (3,0);
 \coordinate (B) at (0,0);
 \coordinate (C) at (1.6,1.2);
@@ -97,50 +97,51 @@
 \item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
 \end{itemize}
 \end{block}
-\onslide<+->
 
 \begin{center}
 	\begin{figure}[h]
-		\begin{subfigure}{0.45\textwidth}
-			\centering\onslide<4->
+		\begin{subfigure}{0.35\textwidth}
+			\centering
 			\begin{tikzpicture}
-        \draw[cstaxis] (-0.3,0)--(3,0);
-        \draw[cstaxis] (0,-0.3)--(0,1.5);
-        \draw[cstcurve,dcolorc] (1.6,0)--(0,0);
-        \draw[cstcurve,dcolorb] (1.6,0)--(1.6,1.2);
-        \draw[cstcurve,dcolora] (1.6,1.2)--(0,0);
-        \fill[cstdot,dcolora] (1.6,1.2) circle;
-        \draw[thick] (1.6,0.2)--(1.4,0.2)--(1.4,0);
-        \draw[decorate,decoration={brace,amplitude=5},dcolorc] (1.6,0)--(0,0);
-        \draw[decorate,decoration={brace,amplitude=5},dcolorb] (1.6,1.2)--(1.6,0);
+        \draw[cstaxis,visible on=<4->] (-0.3,0)--(3,0);
+        \draw[cstaxis,visible on=<4->] (0,-0.3)--(0,1.5);
+        \draw[cstcurve,dcolorc,visible on=<4->] (1.6,0)--(0,0);
+        \draw[cstcurve,dcolorb,visible on=<4->] (1.6,0)--(1.6,1.2);
+        \draw[cstcurve,dcolora,visible on=<4->] (1.6,1.2)--(0,0);
+        \fill[cstdot,dcolora,visible on=<4->] (1.6,1.2) circle;
+        \draw[thick,visible on=<4->] (1.6,0.2)--(1.4,0.2)--(1.4,0);
+        \draw[decorate,decoration={brace,amplitude=5},dcolorc,visible on=<4->] (1.6,0)--(0,0);
+        \draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on=<4->] (1.6,1.2)--(1.6,0);
         \draw 
-          (0.6,0.9) node[dcolora] {$|z|$}
-          (0.8,-0.4) node[dcolorc] {$\abs{\Re z}$}
-          (2.3,0.6) node[dcolorb] {$\abs{\Im z}$};
+          (0.6,0.9) node[dcolora,visible on=<4->] {$|z|$}
+          (0.8,-0.4) node[dcolorc,visible on=<4->] {$\abs{\Re z}$}
+          (2.3,0.6) node[dcolorb,visible on=<4->] {$\abs{\Im z}$};
 			\end{tikzpicture}
 		\end{subfigure}
-		\begin{subfigure}{0.45\textwidth}
+		\begin{subfigure}{0.55\textwidth}
 			\centering
-			\begin{tikzpicture}\onslide<5->
-        \draw[cstaxis] (-0.5,0)--(3,0);
-        \draw[cstaxis] (0,-2)--(0,1.3);
-        \draw[cstcurve,cstarrowto,dcolora] (0,0)--(1.6,-0.4);
-        \draw[decorate,decoration={brace,amplitude=5},dcolora] (1.6,-0.4)--(0,0);
-        \draw[cstcurve,cstarrowto,dcolorb] (0,0)--(0.8,1.2);
-        \draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb] (2.4,0.8)--(1.6,-0.4);
-        \draw[cstcurve,cstarrowto,dcolorc] (0,0)--(2.4,0.8);
-        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0,0)--(2.4,0.8);
-        \draw[cstcurve,cstarrowto,dcolorc] (0,0)--(0.8,-1.6);
-        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0.8,-1.6)--(0,0);
-        \draw[dcolorc,cstarrowto] (0.116,-0.636)--(-0.7,-0.4);
-        \draw[cstdash] (2.4,0.8)--(0.8,-1.6)--(-0.8,-1.2)--(0,0);
+			\begin{tikzpicture}
+        \draw[cstaxis,visible on=<5->] (-0.5,0)--(3,0);
+        \draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
+        \draw[cstcurve,cstarrowto,dcolora,visible on=<5->] (0,0)--(1.6,-0.4);
+        \draw[decorate,decoration={brace,amplitude=5},dcolora,visible on=<5->] (1.6,-0.4)--(0,0);
+        \draw[cstcurve,cstarrowto,dcolorb,visible on=<5->] (0,0)--(0.8,1.2);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb,visible on=<5->] (2.4,0.8)--(1.6,-0.4);
+        \draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
+        \draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(0.8,-1.6);
+        \draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0.8,-1.6)--(0,0);
+        \draw[dcolorc,cstarrowto,visible on=<5->] (0.116,-0.636)--(-0.7,-0.4);
+        \draw[cstdash,dcolorb,visible on=<5->] (2.4,0.8)--(0.8,-1.6);
+        \draw[cstdash,dcolora,visible on=<5->] (0.8,-1.6)--(-0.8,-1.2);
+        \draw[cstdash,dcolorb,visible on=<5->] (-0.8,-1.2)--(0,0);
         \draw 
-          (1.8,-0.6) node[dcolora] {\small $z_1$}
-          (0.6,1.3) node[dcolorb] {\small $z_2$}
-          (0.75,-0.55) node[dcolora] {\small $|z_1|$}
-          (2.5,0.2) node[dcolorb] {$\small |z_2|$}
-          (1.4,0.8) node[dcolorc,rotate=20] {\small $|z_1+z_2|$}
-          (-1.5,-0.4) node[dcolorc] {\small $|z_1-z_2|$};
+          (1.8,-0.6) node[dcolora,visible on=<5->] {\small $z_1$}
+          (0.6,1.3) node[dcolorb,visible on=<5->] {\small $z_2$}
+          (0.75,-0.55) node[dcolora,visible on=<5->] {\small $|z_1|$}
+          (2.6,0.25) node[dcolorb,visible on=<5->] {\small $|z_2|$}
+          (1.4,0.8) node[dcolorc,rotate=20,visible on=<5->] {\small $|z_1+z_2|$}
+          (-1.5,-0.4) node[dcolorc,visible on=<5->] {\small $|z_1-z_2|$};
 			\end{tikzpicture}
 		\end{subfigure}
 	\end{figure}
@@ -157,21 +158,20 @@
 \end{example}
 \onslide<+->
 \begin{proof}
+\onslide<+->{
 \enumnum1 因为
 \[|z_1z_2|^2=z_1z_2\cdot\ov{z_1z_2}
-=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
-\onslide<+->
-所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
-\onslide<+->
-因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
+=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]}
+\onslide<+->{所以 $|z_1z_2|=|z_1|\cdot|z_2|$.}
+\onslide<+->{因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.}
 
-\enumnum2
+\onslide<+->{\enumnum2
 \vspace{-0.6\baselineskip}
 \begin{align*}
 |z_1+z_2|^2&=(z_1+z_2)(\ov{z_1}+\ov{z_2})\\
 &\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}}\\
 &\visible<+->{=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere}
-\end{align*}
+\end{align*}}
 \vspace{-1.5\baselineskip}
 \end{proof}
 \end{frame}
@@ -189,6 +189,9 @@
 \[\alert{z=re^{i\theta}=r\exp(i\theta)}.\]
 \onslide<+->
 这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
+
+\onslide<+->
+求复数的三角/指数形式的\emph{关键在于计算模和辐角}.
 \end{frame}
 
 
@@ -200,15 +203,11 @@
 \onslide<+->
 \begin{solution}
 $r=|z|=\sqrt{12+4}=4$.
-\onslide<+->
-由于 $z$ 在第三象限,
-\onslide<+->
-因此
-\[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.\]
-\onslide<+->
-故
+\onslide<+->{由于 $z$ 在第三象限,}
+\onslide<+->{因此 \[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.\]}
+\onslide<+->{故
 \[z=4\left[\cos\left(-\frac{5\pi}6\right)+i\sin\left(-
-\frac{5\pi}6\right)\right]=4\exp\left(-\frac{5\pi i}6\right).\]
+\frac{5\pi}6\right)\right]=4e^{-\frac{5\pi i}6}.\]}
 \end{solution}
 \end{frame}
 
@@ -224,7 +223,7 @@ $r=|z|=\sqrt{12+4}=4$.
 \begin{align*}
 z&=\sin\frac\pi5+i\cos\frac\pi5\\
 &\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}\\
-&\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=\exp\left(\frac{3\pi i}{10}\right).}
+&\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
 \end{align*}
 \end{solution}
 \end{frame}
@@ -239,8 +238,8 @@ z&=\sin\frac\pi5+i\cos\frac\pi5\\
 \end{exercise}
 \onslide<+->
 \begin{answer}
-$\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\pi}3\right)\right]
-=2\sqrt3\exp\left(\frac{5\pi i}3\right)$.
+$\displaystyle z=2\sqrt3\left(\cos\frac{5\pi}3+i\sin\frac{5\pi}3\right)
+=2\sqrt3e^{\frac{5\pi i}3}$.
 \end{answer}
 \end{frame}
 
@@ -270,8 +269,8 @@ $\displaystyle z=2\sqrt3\left[\cos\left(\frac{5\pi}3\right)+i\sin\left(\frac{5\p
 \draw[thick,dcolorb] pic [draw, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle};
 \draw
   (-0.2,-0.3) node {$0$}
-  (2.4,0.8) node[dcolora] {$e^{i\varphi}$}
-  (-1.2,1.7) node[dcolora] {$e^{i\theta}$};
+  (2.1,0.7) node[dcolora] {$e^{i\varphi}$}
+  (-1.1,1.7) node[dcolora] {$e^{i\theta}$};
 \end{tikzpicture}
 \end{center}
 \vspace{-0.3\baselineskip}

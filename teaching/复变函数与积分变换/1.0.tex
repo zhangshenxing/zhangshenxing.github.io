@@ -39,8 +39,8 @@
 \begin{frame}{三次方程的根}
 \onslide<+->
 \begin{solutionc}
-\indent 所以 \[u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,\quad
-	\visible<+->{x=u+v=2.}\]
+所以
+\[u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,\quad	\visible<+->{x=u+v=2.}\]
 \vspace{-\baselineskip}
 \end{solutionc}
 \onslide<+->
@@ -66,16 +66,16 @@
 解方程 $x^3-7x+6=0$.
 \end{example}
 \onslide<+->
-\begin{solution}
-\indent 同样地我们有 $x=u+v$, 其中
+\begin{solution*}
+同样地我们有 $x=u+v$, 其中
 	\[u^3+v^3=-6,\quad uv=\frac73.\]
 \visible<+->{于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\frac{343}{27}=0$.}
 \visible<+->{然而这个方程没有实数解.}
 
-\visible<+->{\indent 我们可以强行解得
+\visible<+->{我们可以强行解得
 	\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
 \vspace{-1.3\baselineskip}
-\end{solution}
+\end{solution*}
 \end{frame}
 
 
@@ -101,7 +101,7 @@
 \begin{enumerate}
 \item 当 $\Delta>0$ 时, 有 $1$ 个实根.
 \item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\frac12\sqrt[3]{4q}$ ($2$重).
-\item 当 $\Delta<0$ 时, 有 $3$ 个实根. 这可以通过分析函数单调性得到.
+\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
 \end{enumerate}
 
 \begin{center}
@@ -109,25 +109,25 @@
 		\begin{subfigure}{0.3\textwidth}
 			\centering
 			\begin{tikzpicture}
-				\filldraw[cstcurve,dcolora,domain=-2.8:3.5,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\draw[cstcurve,dcolora,domain=-2.8:3.5,smooth,visible on=<4->] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
+				\draw[cstaxis,visible on=<4->] (-1.5,0)--(1.5,0);
+				\draw[cstaxis,visible on=<4->] (0,-1.2)--(0,1.2);
 			\end{tikzpicture}
 		\end{subfigure}
 		\begin{subfigure}{0.3\textwidth}
 			\centering
 			\begin{tikzpicture}
-				\filldraw[cstcurve,dcolora,domain=-3.1:2.7,smooth,fill=white] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth,visible on=<5->] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
+				\draw[cstaxis,visible on=<5->] (-1.5,0)--(1.5,0);
+				\draw[cstaxis,visible on=<5->] (0,-1.2)--(0,1.2);
 			\end{tikzpicture}
 		\end{subfigure}
 		\begin{subfigure}{0.3\textwidth}
 			\centering
 			\begin{tikzpicture}
-				\filldraw[cstcurve,dcolora,domain=-3.9:3.7,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth,visible on=<6->] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
+				\draw[cstaxis,visible on=<6->] (-1.5,0)--(1.5,0);
+				\draw[cstaxis,visible on=<6->] (0,-1.2)--(0,1.2);
 			\end{tikzpicture}
 		\end{subfigure}
 	\end{figure}
@@ -142,9 +142,9 @@
 
 \onslide<+->尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
 \onslide<+->
-\begin{quote@}
-\indent 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
+\begin{quote@*}
+圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
 \tcblower
 莱布尼兹 (Leibniz)
-\end{quote@}
+\end{quote@*}
 \end{frame}

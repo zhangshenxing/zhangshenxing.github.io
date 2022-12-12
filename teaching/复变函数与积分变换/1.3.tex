@@ -3,7 +3,7 @@
 \subsection{复数的乘除与三角/指数表示}
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
-三角形式和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+三角/指数形式在进行复数的乘法、除法和幂次计算中非常方便.
 \onslide<+->
 \begin{theorem}
 设
@@ -54,7 +54,7 @@
 
 \begin{frame}{复数的乘除与三角/指数表示}
 \onslide<+->
-\begin{proof}
+\begin{proof*}
 \vspace{-\baselineskip}	
 \begin{align*}
 z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
@@ -63,17 +63,13 @@ r_2(\cos\theta_2+i\sin\theta_2)\\
 &\visible<.->{\qquad\qquad+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
 &\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
 \end{align*}
-\onslide<+->
-因此乘法情形得证.
+\onslide<+->{因此乘法情形得证.}
 
-\indent\onslide<+->
-设 $\dfrac{z_1}{z_2}=re^{i\theta}$,
-\onslide<+->
-则由乘法情形可知
-\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.\]
-\onslide<+->
-因此 $r=\dfrac{r_1}{r_2},\theta=\theta_1-\theta_2+2k\pi$, 其中 $k\in\BZ$.
-\end{proof}
+\onslide<+->{设 $\dfrac{z_1}{z_2}=re^{i\theta}$,}
+\onslide<+->{则由乘法情形可知
+\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.\]}
+\onslide<+->{因此 $r=\dfrac{r_1}{r_2},\theta=\theta_1-\theta_2+2k\pi$, 其中 $k\in\BZ$.\qedhere}
+\end{proof*}
 \end{frame}
 
 
@@ -139,8 +135,7 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \visible<+->{=(1+i)\left(\frac12\pm\frac{\sqrt3}2i\right)}\\
 &\visible<+->{=\frac{1-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{1+\sqrt3}2+\frac{1-\sqrt3}2i,}
 \end{align*}
-\onslide<+->
-\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2i.\]
+\onslide<+->{\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2i.\]}
 \end{solutionc}
 \end{frame}
 
@@ -150,11 +145,11 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \onslide<+->
 设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 \onslide<+->
-根据复数三角形式的乘法和除法运算法则, 我们有
+根据复数三角/指数形式的乘法和除法运算法则, 我们有
 \[\aboxeq{z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta}},\quad\forall n\in\BZ.\]
 \onslide<+->
-特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗(De Moivre)公式}
-\[\emph{(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.}\]
+特别地, 当 $r=1$ 时, 我们得到棣莫弗(De Moivre)公式
+\[(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.\]
 \end{frame}
 
 
@@ -163,16 +158,16 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 对棣莫弗公式左侧进行二项式展开可以得到
 \onslide<+->
 \begin{align*}
-	\cos(2\theta)&=2\cos^2\theta-1,\\
-	\cos(3\theta)&=4\cos^2\theta-3\cos\theta,\\
-	\cos(4\theta)&=8\cos^2\theta-8\cos^2\theta+1,\\
-	\cos(5\theta)&=16\cos^2\theta-20\cos^3\theta+5\cos\theta.
+	\cos(2\theta)&=\hphantom{1}2\cos^2\theta-\hphantom{1}1,\\
+	\cos(3\theta)&=\hphantom{1}4\cos^3\theta-\hphantom{1}3\cos\theta,\\
+	\cos(4\theta)&=\hphantom{1}8\cos^4\theta-\hphantom{1}8\cos^2\theta+1,\\
+	\cos(5\theta)&=16\cos^5\theta-20\cos^3\theta+5\cos\theta.
 \end{align*}
 \onslide<+->
 一般地, 可以证明 $\cos{n\theta}$ 是 $\cos\theta$ 的 $n$ 次多项式,
 \onslide<+->
 这个多项式
-\[g_n(T)=\sum_{0\le k\le\frac n2}\mathrm{C}_n^{2k} T^{n-2k} (T^2-1)^k.\]
+\[g_n(T)=2^{n-1}T^n-n2^{n-3}T^{n-2}+\cdots\]
 叫做切比雪夫多项式.
 \onslide<+->
 它在计算数学的逼近理论中有着重要作用.
@@ -186,23 +181,17 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 \end{example}
 \onslide<+->
 \begin{solution}
-由于
-\[1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\quad
-1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right),\]
-\onslide<+->
-因此
+由于 $1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
+1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right)$,
+\onslide<+->{因此
 \vspace{-\baselineskip}
 \begin{align*}
 &\peq(1+i)^n+(1-i)^n\\
 &=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)\\
 &\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
-\end{align*}
+\end{align*}}
 \vspace{-\baselineskip}
 \end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 复数乘幂的计算}
 \onslide<+->
 \begin{exercise}
 求 $(\sqrt3+i)^{2022}=$\fillblank[2cm]{\visible<+->{\alert{$-2^{2022}$}}}.
@@ -216,7 +205,7 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 我们利用复数方幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
 \onslide<+->
 设
-\[w^n=z=r\exp(i\theta)\neq0,\quad w=\rho\exp(i\varphi),\]
+\[w^n=z=re^{i\theta}\neq0,\quad w=\rho e^{i\varphi},\]
 \onslide<+->
 则
 \[w^n=\rho^n(\cos{n\varphi}+i\sin{n\varphi})=r(\cos\theta+i\sin\theta).\]
@@ -225,6 +214,7 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 
 \onslide<+->
 为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\emph{算术根}.
+
 \onslide<+->
 由于 $n\varphi$ 和 $\theta$ 的正弦和余弦均相等, 因此存在整数 $k$ 使得
 \[n\varphi=\theta+2k\pi,\quad \varphi=\frac{\theta+2k\pi}n.\]
@@ -251,33 +241,34 @@ z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
 这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 \onslide<+->
 因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
-
-\onslide<+->
-\begin{example}
-求 $\sqrt[4]{1+i}$.
-\end{example}
 \end{frame}
 
 
 \begin{frame}{典型例题: 复数方根的计算}
+\onslide<+->
+\begin{example}
+求 $\sqrt[4]{1+i}$.
+\end{example}
+\onslide<+->
 \begin{solution}
 由于 $1+i=\sqrt2\exp\left(\dfrac{\pi i}4\right)$,
-\onslide<+->
-因此
-\[\sqrt[4]{1+i}=\sqrt[8]2\exp\left[\frac{(\frac\pi4+2k\pi)i}4\right],\quad k=0,1,2,3.\]
-\onslide<+->
-所以该方根所有值为
-\[w_0=\sqrt[8]2\exp\frac{\pi i}{16},\qquad
-w_1=\sqrt[8]2\exp\frac{9\pi i}{16},\]
-\[w_2=\sqrt[8]2\exp\frac{17\pi i}{16},\qquad
-w_3=\sqrt[8]2\exp\frac{25\pi i}{16}.\]
+\onslide<+->{因此
+\[\sqrt[4]{1+i}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)i}4,\quad k=0,1,2,3.\]}
+\onslide<+->{所以该方根所有值为
+\[w_0=\sqrt[8]2e^{\frac{\pi i}{16}},\quad
+w_1=\sqrt[8]2e^{\frac{9\pi i}{16}},\quad
+w_2=\sqrt[8]2e^{\frac{17\pi i}{16}},\quad
+w_3=\sqrt[8]2e^{\frac{25\pi i}{16}}.\]}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 复数方根的计算}
 \onslide<+->
-$w_0,w_1=iw_0,w_2=-w_0,w_3=-iw_0$ 形成了一个正方形.
+显然
+\[w_1=iw_0,\quad w_2=-w_0,\quad w_3=-iw_0.\]
+\onslide<+->
+所以 $w_0,w_1,w_2,w_3$ 形成了一个正方形.
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -296,28 +287,28 @@ $w_0,w_1=iw_0,w_2=-w_0,w_3=-iw_0$ 形成了一个正方形.
 	(0.3,-1.7) node[dcolora] {$w_3$};
 \end{tikzpicture}
 \end{center}
-\end{frame}
-
-
-\begin{frame}[<*>]{典型例题: 复数方根的计算}
 \onslide<+->
 \begin{exercise}
 求 $\sqrt[6]{-1}=$\fillblank[5cm][2mm]{\visible<+->{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}}.
 \end{exercise}
-
-\onslide<+->
-\begin{thinking}
-$i=\sqrt{-1}$ 吗?
-\end{thinking}
-\onslide<+->
-\begin{answer}
-$\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
-\onslide<+->{
-除非给定单值分支
-\[\sqrt z=\sqrt{|z|}\exp\left(\frac{i\arg z}2\right),\]
-否则不能说 $\sqrt{-1}=i$.}
-\end{answer}
 \end{frame}
+
+
+% \begin{frame}[<*>]{典型例题: 复数方根的计算}
+
+% \onslide<+->
+% \begin{thinking}
+% $i=\sqrt{-1}$ 吗?
+% \end{thinking}
+% \onslide<+->
+% \begin{answer}
+% $\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
+% \onslide<+->{
+% 除非给定单值分支
+% \[\sqrt z=\sqrt{|z|}\exp\left(\frac{i\arg z}2\right),\]
+% 否则不能说 $\sqrt{-1}=i$.}
+% \end{answer}
+% \end{frame}
 
 
 \begin{frame}{方幂和方根的辐角等式}
@@ -329,7 +320,9 @@ $\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
 \[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
 \onslide<+->
 不过我们总有
-\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ.\]
+\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ,\]
+\onslide<+->
+其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角.
 \end{frame}
 	
 
@@ -339,18 +332,18 @@ $\sqrt{-1}$ 是多值的, 此时 $\sqrt{-1}=\pm i$.
 \onslide<+->
 \[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3.\]
 \begin{enumerate}
-\item 如果 $\Delta>0$, 设 $\alpha=\sqrt[3]{q+\sqrt{\Delta}}$ 是算术根, $\omega=\frac{-1+\sqrt 3i}2$.
+\item 如果 $\Delta>0$, 设 $\alpha=\sqrt[3]{-q/2+\sqrt{\Delta}}$ 是算术根, $\omega=e^{2\pi i/3}$.
 \onslide<+->
 则
 \[u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
-x=\alpha+\frac p\alpha, \alpha\omega+\frac p\alpha \omega^2, \alpha\omega^2+\frac p\alpha \omega.\]
+x=\alpha-\frac p{3\alpha},\ \alpha\omega-\frac p{3\alpha} \omega^2,\ \alpha\omega^2-\frac p{3\alpha} \omega.\]
 \onslide<+->
 容易证明后两个根都是虚数.
 \item 如果 $\Delta<0$, 则 $p>0$, $u$ 是虚数且 $v=\ov u$.
-\onslide<+->设 $u_1,u_2,u_3$ 是 $\sqrt[3]{q+\sqrt{\Delta}}$ 的所有值,
+\onslide<+->设 $u_1,u_2,u_3$ 是 $\sqrt[3]{-q/2+\sqrt{\Delta}}$ 的所有值,
 \onslide<+->
 则我们得到 $3$ 个实根
-\[x=u_1+\ov{u_1}, u_2+\ov{u_2}, u_3+\ov{u_3}.\]
+\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
 \end{enumerate}
 \end{frame}
 
