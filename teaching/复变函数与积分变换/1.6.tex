@@ -1,9 +1,10 @@
 \section{极限和连续性}
 
 
+\subsection{无穷远点}
 \begin{frame}{数列极限}
 \onslide<+->
-复变函数的极限和连续性的定义和实函数情形是类似的.
+类似于实变函数情形, 我们可以定义复变函数的极限.
 \onslide<+->
 我们先来看数列极限的定义.
 
@@ -21,16 +22,19 @@
 \onslide<+->
 如果我们称
 \[\stackrel{\circ}{U}(\infty,X)=\set{z\in\BC:|z|>X}\]
-为 $\infty$ 的(去心)邻域.
+为 $\infty$ 的(去心)邻域,
 \onslide<+->
 那么 $\lim\limits_{n\to\infty}z_n=z\in\BC\cup\set\infty$ 可统一表述为:
+
 \onslide<+->
-对 $z$ 的任意邻域 $U$, $\exists N$ 使得当 $n\ge N$ 时 $z_n\in U$.
+\begin{block@}
+	对 $z$ 的任意邻域 $U$, $\exists N$ 使得当 $n\ge N$ 时 $z_n\in U$.
+\end{block@}
 \onslide<1->
 \begin{center}
 \begin{tikzpicture}
-\fill[cstfille] (0,0) circle (1.2);
-\filldraw[cstcurve,dcolora,fill=white] (0,0) circle (0.7);
+\fill[cstfille1] (0,0) circle (1.2);
+\filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.5);
 \draw[cstaxis] (-1.5,0)--(1.5,0);
 \draw[cstaxis] (0,-1.5)--(0,1.5);
 \end{tikzpicture}
@@ -49,31 +53,31 @@
 \onslide<+->
 取一个与复平面相切于原点 $z=0$ 的球面.
 \onslide<+->
-过 $O$ 做垂直于复平面的直线, 并与球面相交于另一点 $N$, 称之为\emph{北极}.
+过 $O$ 做垂直于复平面的直线, 并与球面相交于另一点 $N$, 称之为北极.
 
 \onslide<4->
 \begin{center}
 \begin{tikzpicture}
 \fill[cstfill] (-3.65,-0.804)--(-1.85,0.804)--(3.65,0.804)--(1.85,-0.804)--cycle;
 \filldraw[cstcurve,fill=black!10] (0,1) circle (1);
-\draw[cstdash,dcolorc] (0,1) circle (1 and 0.3);
-\draw[cstdash,black,visible on=<5->] (0,0)--(0,2);
+\draw[cstdash] (0,1) circle (1 and 0.3);
+\draw[cstdash,visible on=<5->] (0,0)--(0,2);
 \fill[cstdot,dcolorc] (0,1) circle;
 \fill[cstdot,dcolorc,visible on=<5->] (0,2) circle;
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
 \draw
-  (0,2.3) node[dcolorc,visible on=<5->] {$N$};
+	(0,2.3) node[dcolorc,visible on=<5->] {$N$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 
 \begin{frame}{复球面}
-\onslide<+->
-对于平面上的任意一点 $z$, 连接北极 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z$.
-\onslide<+->
-反之, 球面上除了北极外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
+\begin{itemize}
+	\item 对于平面上的任意一点 $z$, 连接北极 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z$.
+	\item 反之, 球面上除了北极外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
+\end{itemize}
 \onslide<+->
 这样, 球面上除北极外的所有点和全体复数建立了一一对应.
 
@@ -84,7 +88,7 @@
 \filldraw[cstcurve,fill=black!10] (0,1) circle (1);
 \draw[cstdash] (0,1) circle (1 and 0.3);
 \draw[cstdash,dcolorc] (0,0) circle (2 and 0.6);
-\draw[cstdash,black] (0,0)--(0,2);
+\draw[cstdash] (0,0)--(0,2);
 \draw[cstaxis] (0,0)--(2.5,0);
 \draw[cstaxis] (0,0)--(-0.8,-0.9);
 \draw[cstcurve,dcolora,cstarrowto] (0,2)--(1.65,-0.75);
@@ -93,11 +97,11 @@
 \fill[cstdot,dcolorb,visible on=<2->] (-0.7,0.6) circle;
 \fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[dcolorc] {$N$}
-  (-0.3,0.3) node[dcolorb,visible on=<2->] {$Z_2$}
-  (-1.4,0) node[dcolorb,visible on=<2->] {$z_2$}
-  (1.3,1) node[dcolora] {$Z_1$}
-  (1.9,-0.75) node[dcolora] {$z_1$};
+	(0,2.3) node[dcolorc] {$N$}
+	(-0.3,0.3) node[dcolorb,visible on=<2->] {$Z_2$}
+	(-1.4,0) node[dcolorb,visible on=<2->] {$z_2$}
+	(1.3,1) node[dcolora] {$Z_1$}
+	(1.9,-0.75) node[dcolora] {$z_1$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -128,11 +132,11 @@
 \fill[cstdot,dcolorb] (-0.7,0.6) circle;
 \fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[dcolorc] {$N$}
-  (-0.3,0.3) node[dcolorb] {$Z_2$}
-  (-1.4,0) node[dcolorb] {$z_2$}
-  (1.5,1) node[dcolora] {$Z_1$}
-  (1.9,-0.75) node[dcolora] {$z_1$};
+	(0,2.3) node[dcolorc] {$N$}
+	(-0.3,0.3) node[dcolorb] {$Z_2$}
+	(-1.4,0) node[dcolorb] {$z_2$}
+	(1.5,1) node[dcolora] {$Z_1$}
+	(1.9,-0.75) node[dcolora] {$z_1$};
 \end{tikzpicture}
 \end{center}
 \end{frame}
@@ -144,9 +148,7 @@
 \onslide<+->
 选取上述图形的一个截面来看, 实轴可以和圆周去掉一点建立一一对应.
 \onslide<+->
-同样的, 当 $|x|$ 越来越大时, 其对应圆周上点也越来越接近 $N$.
-\onslide<+->
-所以实数中的 $\pm\infty$ 在复球面上或闭复平面上就是 $\infty$, 只是在实数时我们往往还关心它的符号, 所以区分正负.
+于是实数中的 $\pm\infty$ 在复球面上就是 $\infty$.
 
 \onslide<2->
 \begin{center}
@@ -160,48 +162,33 @@
 \fill[cstdot,dcolorb] (-0.8,0.4) circle;
 \fill[cstdot,dcolorc] (0,2) circle;
 \draw
-  (0,2.3) node[dcolorc] {$N$}
-  (-0.4,0.5) node[dcolorb] {$X_2$}
-  (-1,-0.2) node[dcolorb] {$x_2$}
-  (1.4,1.2) node[dcolora] {$X_1$}
-  (2.1,-0.2) node[dcolora] {$x_1$};
+	(0,2.3) node[dcolorc] {$N$}
+	(-0.4,0.5) node[dcolorb] {$X_2$}
+	(-1,-0.2) node[dcolorb] {$x_2$}
+	(1.4,1.2) node[dcolora] {$X_1$}
+	(2.1,-0.2) node[dcolora] {$x_1$};
 \end{tikzpicture}
 \end{center}
+
+\onslide<+->
+朴素地看, 复球面上任意一点可以定义邻域的概念.
+\onslide<+->
+特别地, $\infty$ 的开邻域通过前面所说的对应关系, 可以对应到扩充复平面上 $\infty$ 的一个邻域.
+\onslide<+->
+所以在复球面上, 我们将普通复数和 $\infty$ 的开邻域可以视为相同的概念.
 \end{frame}
 
 
-\begin{frame}{$\infty$ 的性质}
-\onslide<+->
-$\infty$ 的实部、虚部和辐角无意义, 规定 $|\infty|=+\infty$.
-\onslide<+->
-约定
-\[z\pm \infty=\infty\pm z=\infty\quad (z\neq \infty),\]
-\vspace{-\baselineskip}
-\onslide<+->
-\[z\cdot\infty=\infty\cdot z=\infty\quad (z\neq 0),\]
-\vspace{-\baselineskip}
-\onslide<+->
-\[\frac z\infty=0\ (z\neq\infty),\quad
-\frac\infty z=\infty\ (z\neq 0),\quad
-\frac z0=\infty\ (z\neq 0).\]
-
-\onslide<+->
-根据开集的定义可知, 包含 $z$ 的任何一个开集均包含 $z$ 的一个邻域.
-\onslide<+->
-由此可知, 将极限定义中的 $\varepsilon$-邻域换成开邻域(包含 $z$ 的开集)并不影响极限的定义.
-\onslide<+->
-在复球面上的任意一点, 可以自然地定义 $z\in\BC^*$ 的开邻域.
-\onslide<+->
-它在上述对应下的像便是 $z$ 的一个开邻域.
-\end{frame}
-
-
+\subsection{数列的极限}
 \begin{frame}{数列收敛的等价刻画}
+\onslide<+->
+下述定理保证了我们可以使用实数列的敛散性判定技巧.
+\onslide<+->
 \begin{theorem}
 设 $z_n=x_n+y_ni,z=x+yi$, 则
 \[\lim_{n\to\infty}z_n=z\iff \lim_{n\to\infty}x_n=x,\lim_{n\to\infty}y_n=y.\]
 \end{theorem}
-
+\onslide<+->
 \begin{proof}
 由三角不等式
 \[|x_n-x|,|y_n-y|\le|z_n-z|\le|x_n-x|+|y_n-y|\]
@@ -211,25 +198,30 @@ $\infty$ 的实部、虚部和辐角无意义, 规定 $|\infty|=+\infty$.
 
 
 \begin{frame}{例题: 数列的敛散性}
+\onslide<+->
 \begin{example}
-设 $z_n=\left(1+\dfrac1n\right)\exp\left(\frac{\pi i}n\right)$. 数列 $\{z_n\}$ 是否收敛?
+设 $z_n=\left(1+\dfrac1n\right)e^{\frac{\pi i}n}$. 数列 $\{z_n\}$ 是否收敛?
 \end{example}
+\onslide<+->
 \begin{solution}
 由于
 \[x_n=\left(1+\frac1n\right)\cos\frac\pi n\to 1,\quad
 y_n=\left(1+\frac1n\right)\sin\frac\pi n\to 0.\]
-\onslide<+->
-因此 $\{z_n\}$ 收敛且 $\lim\limits_{n\to\infty}z_n=1$.
+\onslide<+->{因此 $\{z_n\}$ 收敛且 $\lim\limits_{n\to\infty}z_n=1$.}
 \end{solution}
 \end{frame}
 
 
+\subsection{函数的极限}
 \begin{frame}{函数的极限}
-\begin{definition}
-设函数 $f(z)$ 在点 $z_0$ 的某个去心邻域内有定义.
 \onslide<+->
-如果存在复数 $A$ 使得对 $A$ 的任意邻域 $U,\exists\delta>0$ 使得当 $z\in\stackrel\circ U(z_0,\delta)$ 时, 有 $f(z)\in U$, 则称 $A$ 为 \emph{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \emph{$\lim\limits_{z\to z_0}f(z)=A$} 或 \emph{$f(z)\to A (z\to z_0)$}.
-\end{definition}
+\begin{definition*}
+设函数 $f(z)$ 在点 $z_0$ 的某个去心邻域内有定义.
+
+\onslide<+->{如果存在复数 $A$ 使得对 $A$ 的任意邻域 $U(A,\varepsilon),\exists\delta>0$ 使得
+	\[z\in\stackrel\circ U(z_0,\delta)\implies f(z)\in U(A,\varepsilon),\]}
+\onslide<+->{则称 $A$ 为 \emph{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \emph{$\lim\limits_{z\to z_0}f(z)=A$} 或 \emph{$f(z)\to A (z\to z_0)$}.}
+\end{definition*}
 
 \onslide<+->
 对于 $z_0=\infty$ 或 $A=\infty$ 的情形, 也可以用上述定义统一描述.
@@ -241,17 +233,10 @@ y_n=\left(1+\frac1n\right)\sin\frac\pi n\to 0.\]
 
 \begin{frame}{与实函数极限之联系}
 \onslide<+->
-\emph{每一个复变函数 $w=f(z)=u+iv$ 等价于给了两个二元实变函数}
-\[\emph{u=u(x,y),\qquad v=v(x,y).}\]
-\onslide<+->
-例如
-\[w=z^2=(x^2-y^2)+i\cdot 2xy,\]
-\[u(x,y)=x^2-y^2,\quad v(x,y)=2xy.\]
-\onslide<+->
 通过与二元实函数的极限对比可知, 复变函数的极限和二元实函数的极限定义是类似的.
 \onslide<+->
 $z\to z_0$ 可以是沿着任意一条曲线趋向于 $z_0$, 或者看成 $z$ 是在一个开圆盘内任意的点逐渐地靠拢 $z_0$.
-
+\onslide<+->
 \begin{theorem}
 设 $f(z)=u(x,y)+iv(x,y),z_0=x_0+y_0i,A=u_0+v_0i$, 则
 \[\lim_{z\to z_0}f(z)=A\iff
@@ -259,7 +244,7 @@ $z\to z_0$ 可以是沿着任意一条曲线趋向于 $z_0$, 或者看成 $z$ �
 \lim_{\substack{x\to x_0\\y\to y_0}}v(x,y)=v_0.\]
 \vspace{-0.5\baselineskip}
 \end{theorem}
-
+\onslide<+->
 \begin{proof}
 由三角不等式
 \[|u-u_0|,|v-v_0|\le|z-z_0|\le|u-u_0|+|v-v_0|\]
@@ -288,28 +273,26 @@ $z\to z_0$ 可以是沿着任意一条曲线趋向于 $z_0$, 或者看成 $z$ �
 \end{example}
 \begin{proof}
 令 $z=x+yi$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
-\onslide<+->
+\onslide<+->{
 因此
-\[u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.\]
+\[u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.\]}
 
-\onslide<+->
-当 $z$ 沿着直线 $y=0$ 左右两侧趋向于 $0$ 时, 则 $u(x,y)\to\pm1$.
-\onslide<+->
-因此 $\lim\limits_{\substack{x\to 0\\y\to0}}u(x,y)$ 不存在,
-\onslide<+->
-从而 $\lim\limits_{z\to z_0}f(z)$ 不存在.
+\onslide<+->{当 $z$ 沿着直线 $y=0$ 左右两侧趋向于 $0$ 时, 则 $u(x,y)\to\pm1$.}
+\onslide<+->{因此 $\lim\limits_{\substack{x\to 0\\y\to0}}u(x,y)$ 不存在,}
+\onslide<+->{从而 $\lim\limits_{z\to z_0}f(z)$ 不存在.\qedhere}
 \end{proof}
 \end{frame}
 
 
 \begin{frame}{函数的连续性}
+\onslide<+->
 \begin{definition}
 \begin{itemize}
 \item 如果 $\lim\limits_{z\to z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \emph{$z_0$ 处连续}.
 \item 如果 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \emph{$D$ 内连续}.
 \end{itemize}
 \end{definition}
-
+\onslide<+->
 \begin{theorem}
 函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+iy_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
 \end{theorem}
@@ -324,6 +307,7 @@ $u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
 
 
 \begin{frame}{连续函数的性质}
+\onslide<+->
 \begin{theorem}
 \begin{itemize}
 \item 在 $z_0$ 处连续的两个函数 $f(z),g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 在 $z_0$ 处仍然连续.
@@ -351,22 +335,15 @@ $u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
 \begin{example}
 证明: 如果 $f(z)$ 在 $z_0$ 连续, 则 $\ov{f(z)}$ 在 $z_0$ 也连续.
 \end{example}
-\begin{proof}
-\indent
+\begin{proof*}
 设 $f(z)=u(x,y)+iv(x,y),z_0=x_0+iy_0$.
-\onslide<+->
-那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.
-\onslide<+->
-从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.
-\onslide<+->
-所以 $\ov{f(z)}=u(x,y)-iv(x,y)$ 在 $(x_0,y_0)$ 连续.
+\onslide<+->{那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.}
+\onslide<+->{从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.}
+\onslide<+->{所以 $\ov{f(z)}=u(x,y)-iv(x,y)$ 在 $(x_0,y_0)$ 连续.}
 
-\indent
-\onslide<+->
-另一种看法是, 函数 $g(z)=\ov z=x-iy$ 处处连续,
-\onslide<+->
-从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.
-\end{proof}
+\onslide<+->{另一种看法是, 函数 $g(z)=\ov z=x-iy$ 处处连续,}
+\onslide<+->{从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.}
+\end{proof*}
 \end{frame}
 
 

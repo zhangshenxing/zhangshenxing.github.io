@@ -28,7 +28,6 @@
 \renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
 \newcommand\abox[1]{\colorbox{yellow}{\alert{#1}}}
 \newcommand\aboxeq[1]{\abox{$\displaystyle #1$}}
-\NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}}
 % 图形色
 \colorlet{dcolora}{red}
 \colorlet{dcolorb}{blue}
@@ -43,15 +42,13 @@
     \pgftext[base]{\color{fg}#1}
   \end{pgfpicture}%
 }}
-% 手动证毕标志
-\newcommand\mqed{\visible<.->{\qedsymbol}}
-% 用于对齐的等号幻影
-\newcommand\peq{\mathrel{\phantom{=}}}
-% 减少公式垂直间距, 配合\endgroup
-\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1}
 % 缩进
 \renewcommand{\indent}{\hspace*{1em}}
 \setlength{\parindent}{1em}
+\newcommand\mqed{\visible<.->{\qedsymbol}} % 手动证毕标志
+\newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
+\NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}} % 减少列表公式后的多余空白
+\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1} % 减少公式垂直间距, 配合\endgroup
 % 作业
 % \usepackage{bookmark}
 % \newcommand{\homework}{%
@@ -70,11 +67,7 @@
 % 	\end{enumerate}%
 % }
 % 选择题, 根据选项内容长度自动排版
-\newlength{\ltemp}
-\newlength{\lxxmax}
-\newlength{\lquar}
-\newlength{\lhalf}
-\newlength{\lfull}
+\newlength{\ltemp}\newlength{\lxxmax}\newlength{\lquar}\newlength{\lhalf}\newlength{\lfull}
 \newcounter{lxxtype}
 \NewDocumentCommand\xx{O{0} m m m m}{%
 	\setlength{\lfull}{\columnwidth}%
@@ -119,29 +112,29 @@
 			\makebox[\lquar][l]{(D)~#5}%
 	\fi%
 }
-\NewDocumentCommand\subex{m o o o o}{%
-	\setlength{\lfull}{\columnwidth}%
-	\addtolength{\lfull}{-\leftmargin}%
-	\vspace{5pt}%
-	\ifnum#1=1%
-		\\\makebox[\lfull][l]{#2}%
-	\fi%
-	\ifnum#1=2%
-		\\\makebox[0.48\lfull][l]{#2}%
-			\makebox[0.48\lfull][l]{#3}%
-	\fi%
-	\ifnum#1=3%
-		\\\makebox[0.32\lfull][l]{#2}% 
-			\makebox[0.32\lfull][l]{#3}%
-			\makebox[0.32\lfull][l]{#4}%
-	\fi%
-	\ifnum#1=4%
-		\\\makebox[0.24\lfull][l]{#2}% 
-			\makebox[0.24\lfull][l]{#3}%
-			\makebox[0.24\lfull][l]{#4}%
-			\makebox[0.24\lfull][l]{#5}%
-	\fi%
-}
+% \NewDocumentCommand\subex{m o o o o}{%
+% 	\setlength{\lfull}{\columnwidth}%
+% 	\addtolength{\lfull}{-\leftmargin}%
+% 	\vspace{5pt}%
+% 	\ifnum#1=1%
+% 		\\\makebox[\lfull][l]{#2}%
+% 	\fi%
+% 	\ifnum#1=2%
+% 		\\\makebox[0.48\lfull][l]{#2}%
+% 			\makebox[0.48\lfull][l]{#3}%
+% 	\fi%
+% 	\ifnum#1=3%
+% 		\\\makebox[0.32\lfull][l]{#2}% 
+% 			\makebox[0.32\lfull][l]{#3}%
+% 			\makebox[0.32\lfull][l]{#4}%
+% 	\fi%
+% 	\ifnum#1=4%
+% 		\\\makebox[0.24\lfull][l]{#2}% 
+% 			\makebox[0.24\lfull][l]{#3}%
+% 			\makebox[0.24\lfull][l]{#4}%
+% 			\makebox[0.24\lfull][l]{#5}%
+% 	\fi%
+% }
 \usepackage[normalem]{ulem}
 \NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
 \newcommand{\fillbrace}{{(\nolinebreak\hspace{2em minus 1em}\nolinebreak)}}

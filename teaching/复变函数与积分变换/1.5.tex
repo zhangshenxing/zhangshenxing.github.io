@@ -57,11 +57,11 @@
 \subsection{映照}
 \begin{frame}{映照}
 \onslide<+->
-在实变函数中, 我们常常用函数图像直观来理解和研究函数.
+大部分复变函数的图像无法在三维空间中表示出来.
 \onslide<+->
-但是大部分复变函数的图像无法在三维空间中表示出来.
+为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的\emph{映照}来表示这种对应关系,
 \onslide<+->
-此时, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的\emph{映照}来表示这种对应关系.
+其中 $w=u+iv$ 的实部和虚部 \[u(x,y),\quad v(x,y)\] 是两个二元实变函数.
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -98,14 +98,72 @@
 \begin{example}
 函数 $w=\ov z$.
 \onslide<+->{如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个映照对应的是关于 $z$ 轴的翻转变换.}
-\onslide<+->{它把任一区域映成和它全等的区域.}
+\onslide<+->{它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.}
 \end{example}
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-1.5)--(-2.5,1.5);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
+\draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
+\draw[cstcurve,dcolorb,smooth] plot coordinates {(4,0) (4.2,-0.4) (2.8,-0.9) (2,-0.7) (1.6,0) (1.4,1) (2.8,1.2) (3.2,1) (4,0)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0,0.6) (2,0.8)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.2) (2.8,0.3)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.6,-0.2) (0,-0.6) (3.6,-0.2)};
+\draw[cstcurve,dcolora] (-1.84,0.9)--(-3.76,-0.3);
+\draw[cstcurve,dcolorb] (1.84,0.9)--(3.76,-0.3);
+\fill[cstdot,dcolora] (-2,0.8) circle;
+\fill[cstdot,dcolora] (-2.8,0.3) circle;
+\fill[cstdot,dcolora] (-3.6,-0.2) circle;
+\fill[cstdot,dcolorb] (2,0.8) circle;
+\fill[cstdot,dcolorb] (2.8,0.3) circle;
+\fill[cstdot,dcolorb] (3.6,-0.2) circle;
+\draw
+  (-0.5,0.2) node {$x$}
+  (-2.7,1.5) node {$y$}
+  (4.5,-0.2) node {$u$}
+  (2.3,1.5) node {$v$};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{例题: 映照}
 \onslide<+->
 \begin{example}
 函数 $w=az$.
 \onslide<+->{设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.}
 \onslide<+->{它把任一区域映成和它相似的区域.}
 \end{example}
+\onslide<+->
+\begin{center}
+\begin{tikzpicture}
+\draw[cstaxis] (-4.5,0)--(-0.5,0);
+\draw[cstaxis] (-2.5,-1.5)--(-2.5,1.5);
+\draw[cstaxis] (0.5,0)--(4.5,0);
+\draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
+\draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
+\draw[cstcurve,dcolorb,smooth] plot coordinates {(2.5,-0.9) (2.74,-1.02) (3.04,-0.18) (2.92,0.3) (2.5,0.54) (1.9,0.66) (1.78,-0.18) (1.9,-0.42) (2.5,-0.9)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0,0.6) (2.02,0.3)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.2) (2.32,-0.18)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.6,-0.2) (0,-0.6) (2.62,-0.66)};
+\draw[cstcurve,dcolora] (-1.84,0.9)--(-3.76,-0.3);
+\draw[cstcurve,dcolorb] (1.96,0.396)--(2.68,-0.756);
+\fill[cstdot,dcolora] (-2,0.8) circle;
+\fill[cstdot,dcolora] (-2.8,0.3) circle;
+\fill[cstdot,dcolora] (-3.6,-0.2) circle;
+\fill[cstdot,dcolorb] (2.02,0.3) circle;
+\fill[cstdot,dcolorb] (2.32,-0.18) circle;
+\fill[cstdot,dcolorb] (2.62,-0.66) circle;
+\draw
+  (-0.5,0.2) node {$x$}
+  (-2.7,1.5) node {$y$}
+  (4.5,-0.2) node {$u$}
+  (2.3,1.5) node {$v$};
+\end{tikzpicture}
+\end{center}
 \end{frame}
 
 
@@ -123,7 +181,7 @@
 \draw[cstaxis] (2.5,-1)--(2.5,2);
 \draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.5,1) (-2,0.6) (-1,1.3) (1.5,0)};
 \draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-1.7,1.2) (0,1.7) (1.7,1.92)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-1.5) (1,-1.5) (2.77,0.36)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-0.8) (1,-0.5) (2.77,0.36)};
 \fill[cstdot,fill=dcolora] (-2.5,1) circle;
 \fill[cstdot,fill=dcolora] (-1.7,1.2) circle;
 \fill[cstdot,fill=dcolora] (-3.1,-0.3) circle;
@@ -145,7 +203,6 @@
   (2.3,1.8) node {$v$};
 \end{tikzpicture}
 \end{center}}
-\onslide<5->{这个映射对应两个实变函数 $u=x^2-y^2,\quad v=2xy$.}
 \end{example}
 \end{frame}
 
@@ -153,12 +210,14 @@
 \begin{frame}{例题: 映照}
 \onslide<+->
 \begin{example}[续]
+由于 $u=x^2-y^2,v=2xy$.
+\onslide<+->
 因此它把 $z$ 平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线
-\[x^2-y^2=c_1,\quad 2xy=c_2\]
+\meq[-3pt][-3pt]{x^2-y^2=c_1,\quad 2xy=c_2}
 \onslide<+->{分别映射为 $w$ 平面上的两族平行直线
-\[u=c_1,\quad v=c_2.\]}
+\meq[-3pt][-3pt]{u=c_1,\quad v=c_2.}}
 
-\vspace{-1.7\baselineskip}
+\vspace{-1.4\baselineskip}
 \onslide<+->{
 \begin{center}
 \begin{tikzpicture}
@@ -286,8 +345,8 @@
 由于 \[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
 \onslide<+->{因此 $u=x^2-y^2=4,v=2xy$.}
 
-\onslide<+->{对于任意 $v\in\BR$, 存在 $z=x+yi\in\BC$ 使得 $z^2=4+vi$, 且 $x^2-y^2=4$.}
-\onslide<+->{因此这条双曲线的像是一条直线 $\Re w=4$.}
+\onslide<+->{可以说明当 $u=4$ 时, 对任意 $v$, $u+iv$ 都是该双曲线上某一点的像.}
+\onslide<+->{所以这条双曲线的像是直线 $\Re w=4$.}
 \end{solution*}
 \end{frame}
 
@@ -301,7 +360,7 @@
 \end{example}
 \onslide<+->
 \begin{solution}
-\onslide<+->{设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.}
+设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
 \onslide<+->{因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.}
 \end{solution}
 \end{frame}
@@ -310,19 +369,17 @@
 \begin{frame}{例题: 映照的像}
 \onslide<+->
 \begin{example}
-求圆周 $|z|=2$ 在映照 $w=z+\dfrac1z$ 下的像.
+求圆周 $|z|=2$ 在映照 $w=\dfrac{z+1}{z-1}$ 下的像.
 \end{example}
 \onslide<+->
 \begin{solution}
-设 $z=x+yi$, 则
-\[w=z+\frac1z=z+\frac{\ov z}4=\frac54x+\frac34yi=u+vi,\]
-\vspace{-0.2\baselineskip}
+由于 $z=\dfrac{w+1}{w-1}$, $\left|\dfrac{w+1}{w-1}\right|=2$,
+\onslide<+->{因此
+\[|w+1|=2|w-1|,\quad w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4,\]}
+\vspace{-\baselineskip}
 \onslide<+->{
-\[x=\frac45u,\quad y=\frac43v,\quad \left(\frac45u\right)^2+\left(\frac43v\right)^2=4,\]}
-\vspace{-0.2\baselineskip}
-\onslide<+->{
-\[\left(\frac{2u}5\right)^2+\left(\frac{2v}3\right)^2=1.\]}
-\vspace{-0.2\baselineskip}
+\[w\ov w-\frac53 w-\frac53\ov w+1=0,\quad \left|w-\frac53\right|^2=\dfrac{16}9,\]}
+\onslide<+->{即 $\left|w-\dfrac53\right|=\dfrac43$, 是一个圆周.}
 \end{solution}
 \end{frame}
 
