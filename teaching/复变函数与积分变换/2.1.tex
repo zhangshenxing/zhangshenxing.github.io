@@ -1,31 +1,35 @@
 \section{解析函数的概念}
 
-
+\subsection{复变函数的导数}
 \begin{frame}{复变函数的导数}
 \onslide<+->
 由于 $\BC$ 是一个域, 我们可以像一元实变函数一样去定义复变函数的导数和微分.
+\onslide<+->
 \begin{definition}
 设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
-\onslide<+->
+\onslide<+->{
 如果极限
 \[\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
 =\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}\]
-存在, 则称 \emph{$f(z)$ 在 $z_0$ 可导}.
-\onslide<+->
-这个极限值称为 \emph{$f(z)$ 在 $z_0$ 的导数}, 记作
+存在,}
+\onslide<+->{则称 \emph{$f(z)$ 在 $z_0$ 可导}.}
+\onslide<+->{这个极限值称为 \emph{$f(z)$ 在 $z_0$ 的导数},}
+\onslide<+->{记作
 \[\alert{f'(z_0)=\frac{\diff w}{\diff z}\big|_{z=z_0}
-=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}\]
-\onslide<+->
-如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
+=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}\]}
+
+\onslide<+->{如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.}
 \end{definition}
 \end{frame}
 
 
 \begin{frame}{典型例题: 线性函数的不可导性}
 \beqskip{4pt}
+\onslide<+->
 \begin{example}
 函数 $f(z)=x+2yi$ 在哪些点处可导?
 \end{example}
+\onslide<+->
 \begin{solution}
 \vspace{-0.5\baselineskip}
 \begin{align*}
@@ -33,12 +37,9 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 &\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)i-(x+2yi)}{\Delta z}}\\
 &\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y i}{\Delta x+\Delta yi}.}
 \end{align*}
-\onslide<+->
-当 $\Delta x=0$ 时, 上述极限为 $2$;
-\onslide<+->
-当 $\Delta y=0$ 时, 上述极限为 $1$.
-\onslide<+->
-因此该极限不存在, $f(z)$ 处处不可导.
+\onslide<+->{当 $\Delta x=0$ 时, 上述极限为 $2$;}
+\onslide<+->{当 $\Delta y=0$ 时, 上述极限为 $1$.}
+\onslide<+->{因此该极限不存在, $f(z)$ 处处不可导.}
 \end{solution}
 \onslide<+->
 若将 $f(z)$ 视为二元实变量的函数, 则该函数在不同方向的方向导数不同.
@@ -91,22 +92,21 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 
 
 \begin{frame}{可导蕴含连续}
+\onslide<+->
 \begin{theorem}
 若 $f(z)$ 在 $z_0$ 可导, 则 $f(z)$ 在 $z_0$ 连续.
 \end{theorem}
+\onslide<+->
 \begin{proofs}
 该定理的证明和实变量情形完全相同.
-\onslide<+->
-设
-\[\Delta w=f(z_0+\Delta z)-f(z_0),\]
-\onslide<+->
-则
+\onslide<+->{设 \[\Delta w=f(z_0+\Delta z)-f(z_0),\]}
+\onslide<+->{则
 \vspace{-\baselineskip}
 \begin{flalign*}
 &&\lim_{\Delta z\to 0}\Delta w&=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z&\\
 &&&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}&\\
 &&&\visible<+->{=f'(z_0)\cdot 0=0.}&\mqed
-\end{flalign*}
+\end{flalign*}}
 \end{proofs}
 \end{frame}
 
@@ -114,14 +114,13 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 \begin{frame}{复变函数的微分}
 \onslide<+->
 复变函数的微分也和一元实变函数情形类似.
+\onslide<+->
 \begin{definition}
 如果存在常数 $A$ 使得函数 $w=f(z)$ 满足
 \[\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),\]
 其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
-\onslide<+->
-则称 \emph{$f(z)$ 在 $z_0$ 处可微},
-\onslide<+->
-称 $A\Delta z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.
+\onslide<+->{则称 \emph{$f(z)$ 在 $z_0$ 处可微},}
+\onslide<+->{称 $A\Delta z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.}
 \end{definition}
 \onslide<+->
 和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\diff w=f'(z_0)\Delta z, \diff z=\Delta z$.
@@ -130,7 +129,9 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 \end{frame}
 
 
+\subsection{解析函数的概念}
 \begin{frame}{解析函数}
+\onslide<+->
 \begin{definition}
 \begin{itemize}
 \item 若函数 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \emph{$f(z)$ 在 $z_0$ 解析}.
@@ -151,11 +152,12 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 
 
 \begin{frame}{解析函数}
+\onslide<+->
 \begin{example}
 研究函数 $f(z)=|z|^2$ 的解析性.
 \end{example}
-\begin{solution}
-\indent
+\onslide<+->
+\begin{solution*}
 由于
 \vspace{-5pt}
 \begin{align*}
@@ -163,31 +165,13 @@ f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 &=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}\\
 &=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta yi}{\Delta x+\Delta yi},
 \end{align*}
-\onslide<+->
-若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
+\onslide<+->{若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.}
 
-\indent
-\onslide<+->
-若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;
-\onslide<+->
-当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$.
-\onslide<+->
-因此此时极限不存在.
+\onslide<+->{若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;}
+\onslide<+->{当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$.}
+\onslide<+->{因此此时极限不存在.}
 
-\indent
-\onslide<+->
-故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.
-\end{solution}
+\onslide<+->{故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.}
+\end{solution*}
 \end{frame}
 
-
-{
-\homework
-\begin{frame}[<*>]{作业}
-  \begin{homeworks}
-		\item(2021年A卷) 设 $f(z)=\dfrac15z^5-(1+i)z$, 解方程 $f'(z)=0$.
-		\item(2021年B卷) 函数 $f(z)$ 在点 $z_0$ 处解析是 $f(z)$ 在该点可导的\fillbrace.
-		\xx{充分条件}{必要条件}{充要条件}{既非充分也非必要条件}
-  \end{homeworks}
-\end{frame}
-}

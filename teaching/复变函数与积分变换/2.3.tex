@@ -88,18 +88,17 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 指数函数将直线族 $\Re z=c$ 映为圆周族 $|w|=e^c$, 
 \onslide<+->
 将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
+\onslide<+->
 \begin{example}
 求函数 $f(z)=\exp[(1+i)z]$ 的周期.
 \end{example}
+\onslide<+->
 \begin{solution}
 设 $f(z_1)=f(z_2)$, 则 $\exp[(1+i)z_1]=\exp[(1+i)z_2]$.
-\onslide<+->
-因此存在 $k\in\BZ$ 使得
-\[(1+i)z_1=(1+i)z_2+2k\pi i,\]
-\onslide<+->
-从而 $z_1-z_2=k\pi(1+i)$.
-\onslide<+->
-所以 $f(z)$ 的周期是 $\pi(1+i)$.
+\onslide<+->{因此存在 $k\in\BZ$ 使得
+\[(1+i)z_1=(1+i)z_2+2k\pi i,\]}
+\onslide<+->{从而 $z_1-z_2=k\pi(1+i)$.}
+\onslide<+->{所以 $f(z)$ 的周期是 $\pi(1+i)$.}
 \end{solution}
 \onslide<+->
 一般地, $\exp(az+b)$ 的周期是 $\dfrac{2\pi i}a$ (或写成 $-\dfrac{2\pi i}a$), $a\neq 0$.
@@ -148,44 +147,44 @@ e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 
 
 \begin{frame}{典型例题: 对数函数的计算}
+\onslide<+->
 \begin{example}
 求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
 \end{example}
-
+\onslide<+->
 \begin{solution}
 $\Ln2=\ln2+2k\pi i, k\in\BZ$,
-\onslide<+->
-主值就是 $\ln 2$.
+\onslide<+->{主值就是 $\ln 2$.}
 
-\onslide<+->
-$\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
-\onslide<+->
-主值是 $\pi i$.
+\onslide<+->{$\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,}
+\onslide<+->{主值是 $\pi i$.}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 对数函数的计算}
+\onslide<+->
 \begin{example}
 求 $\Ln(-2+3i),\Ln(3-\sqrt3 i),\Ln(-3)$.
 \end{example}
+\onslide<+->
 \begin{solution}
 \vspace{-0.5\baselineskip}
 \begin{align*}
 \Ln(-2+3i)&=\ln\abs{-2+3i}+i\Arg(-2+3i)\\
 &\visible<+->{=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ.}
 \end{align*}
-\onslide<+->
 \vspace{-1.4\baselineskip}
+\onslide<+->{
 \begin{align*}
 &\peq\Ln(3-\sqrt3i)=\ln|3+\sqrt 3i|+i\Arg(3-\sqrt 3i)\\
 &\visible<+->{=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
 =\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ.}
-\end{align*}
-\onslide<+->
+\end{align*}}
 \vspace{-1.4\baselineskip}
+\onslide<+->{
 \[\Ln(-3)=\ln(-3)+i\Arg(-3)
-\visible<+->{=\ln3+(2k+1)\pi i,\quad k\in\BZ.}\]
+\visible<+->{=\ln3+(2k+1)\pi i,\quad k\in\BZ.}\]}
 \vspace{-1.4\baselineskip}
 \end{solution}
 \end{frame}
@@ -199,9 +198,8 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 \onslide<+->
 \begin{solution}
 由于 $1+\sqrt 3 i=2\exp\dfrac{\pi i}3$,
-\onslide<+->
-因此
-\[z=\Ln(1+\sqrt 3i)=\ln 2+\left(2k+\frac13\right)\pi i,\quad k\in\BZ.\]
+\onslide<+->{因此
+\[z=\Ln(1+\sqrt 3i)=\ln 2+\left(2k+\frac13\right)\pi i,\quad k\in\BZ.\]}
 \end{solution}
 \onslide<+->
 \begin{columns}
@@ -417,12 +415,12 @@ $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
 &\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi),\quad k\in\BZ.}
 \end{align*}
 \vspace{-2\baselineskip}
-\onslide<+->
+\onslide<+->{
 \begin{align*}
 i^i&=\exp(i\Ln i)
 \visible<+->{=\exp\left[i\cdot\left(2k+\frac12\right)\pi i\right]}\\
 &\visible<+->{=\exp\left(-2k\pi-\frac12\pi\right),\quad k\in\BZ.}
-\end{align*}
+\end{align*}}
 \vspace{-\baselineskip}
 \vspace{-3pt}
 \end{solution}
@@ -559,8 +557,6 @@ i^i&=\exp(i\Ln i)
 \end{frame}
 
 
-
-
 \begin{frame}{双曲函数}
 \onslide<+->
 类似的, 我们可以定义双曲函数:
@@ -605,52 +601,26 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 
 
 \begin{frame}{例题: 解三角函数方程}
+\onslide<+->
 \begin{example}
 解方程 $\sin z=2$ 和 $\cos z=2$.
 \end{example}
-\begin{solution}
-\indent
+\onslide<+->
+\begin{solution*}
 由于 $\sin z=\dfrac{e^{iz}-e^{-iz}}{2i}=2$,
-\onslide<+->
-我们有 $e^{2iz}-4ie^{iz}-1=0$.
-\onslide<+->
-于是 $e^{iz}=(2\pm\sqrt 3)i$,
-\onslide<+->
+\onslide<+->{我们有 $e^{2iz}-4ie^{iz}-1=0$.}
+\onslide<+->{于是 $e^{iz}=(2\pm\sqrt 3)i$,}
 \vspace{-4pt}
-\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\frac12\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]
+\onslide<+->{
+\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\frac12\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 \vspace{-14pt}
 
-\indent
-\onslide<+->
-由于 $\cos z=\dfrac{e^{iz}+e^{-iz}}2=2$,
-\onslide<+->
-我们有 $e^{2iz}-4e^{iz}+1=0$.
-\onslide<+->
-于是 $e^{iz}=2\pm\sqrt 3$,
-\onslide<+->
+\onslide<+->{由于 $\cos z=\dfrac{e^{iz}+e^{-iz}}2=2$,}
+\onslide<+->{我们有 $e^{2iz}-4e^{iz}+1=0$.}
+\onslide<+->{于是 $e^{iz}=2\pm\sqrt 3$,}
 \vspace{-4pt}
-\[z=-i\Ln(2\pm\sqrt 3)=2k\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]
+\onslide<+->{\[z=-i\Ln(2\pm\sqrt 3)=2k\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 \vspace{-14pt}
-\end{solution}
+\end{solution*}
 \end{frame}
 
-
-{
-\homework
-\begin{frame}[<*>]{作业}
-  \begin{homeworks}
-		\item(2020年B卷) $\ln i=$\fillblank{}.
-		\item(2020年B卷) 求 $\Ln 4$ 和 $2\Ln2$.
-    \item(2021年A卷) 求 $\sin(1+i)$ 的虚部.
-		\item(2021年A卷) 下列式子一定正确的是\fillbrace.
-		\xx{$\Arg(z^n)=n\Arg z$}{$\Arg(z_1z_2)=\Arg(z_1)+\Arg(z_2)$}{$\Ln\sqrt z=\frac12\Ln z$}{$\Ln z^2=2\Ln z$}
-    \item(2021年A卷) $3^i$ 的主辐角是\fillblank{}.
-		\item(2021年B卷) 解方程 $e^z+1=0$.
-		\item(2021年B卷) 求 $e^{1-4i}$ 的主辐角.
-		\item(2021年B卷) 设复数 $z=1^{\sqrt3}$, 则 $|z|=$\fillblank{}.
-    \item(2022年A卷) $i^{-i}$ 的主值是\fillblank{}.
-    \item(2022年A卷) 解方程 $\sin z=2\cos z$.
-    \item(2022年A卷) 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试列举若干.
-  \end{homeworks}
-\end{frame}
-}
