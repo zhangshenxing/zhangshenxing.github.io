@@ -1,50 +1,44 @@
 \section{函数解析的充要条件}
 
 
-\begin{frame}{解析函数的特点}
+\begin{frame}{可导函数的特点}
 \onslide<+->
-从上一节的例子中观察到:
+通过对一些简单函数的分析, 我们会发现可导的函数往往可以直接表达为 $z$ 的函数的形式, 而不解析的往往包含 $x,y,\ov z$ 等内容.
 \onslide<+->
-解析函数往往可以直接表达为 $z$ 的函数的形式, 而不解析的往往包含 $x,y,\ov z$ 之类的内容.
+这种现象并不是孤立的.
 \onslide<+->
-这种直观印象实际上是有道理的.
+我们来研究二元实变量函数的可微性与复变函数可导的关系.
 
 \onslide<+->
-我们知道, 给一个复变函数 $f(z)=u(x,y)+iv(x,y)$ 等价于给两个二元实变函数.
-\onslide<+->
-我们将从 $u,v$ 的偏导数来推导出 $f$ 可导的充要条件.
+为了简便我们用 $u_x,u_y,v_x,v_y$ 等记号表示偏导数.
 \end{frame}
 
 
 \begin{frame}{可导的等价刻画: 形式推导}
 \onslide<+->
-为了简便我们用 $u_x,u_y,v_x,v_y$ 等记号表示偏导数.
-
-\onslide<+->
-设 $f$ 在 $z$ 处可导, $f'(z)=a+bi$,
+设 \emph{$f$ 在 $z$ 处可导}, $f'(z)=a+bi$,
 \onslide<+->
 则
 \[\Delta u+i\Delta v=\Delta f=(a+bi)(\Delta x+i\Delta y)+o(\Delta z).\]
-\onslide<+->
-展开可知
+\onslide<+->展开可知
 \begin{align*}
 \Delta u&=a\Delta x-b\Delta y+o(\Delta z),\\
 \Delta v&=b\Delta x+a\Delta y+o(\Delta z).
 \end{align*}
 \onslide<+->
-由于 $o(\Delta z)=o(|\Delta z|)=o(\sqrt{x^2+y^2})$, 因此 \alert{$u,v$ 可微}且
-\[\diff u=a\diff x-b\diff y,\quad
-\diff v=b\diff x+a\diff y.\]
-\onslide<+->
-故 $\alert{u_x=v_y,\quad u_y=-v_x}$.
+由于 $o(\Delta z)=o(|\Delta z|)=o(\sqrt{x^2+y^2})$,
+\onslide<+->因此 
+\begin{block@}
+\begin{center}
+$u,v$ 可微且 $u_x=v_y=a,v_x=-u_y=b$.
+\end{center}
+\end{block@}
 \end{frame}
 
 
 \begin{frame}{可导的等价刻画: 形式推导}
-\onslide<+->
-反过来, 假设 $u,v$ 可微且 $u_x=v_y, u_y=-v_x$.
-\onslide<+->
-由全微分公式
+\onslide<+->反过来, 假设 \emph{$u,v$ 可微且 $u_x=v_y, v_x=-u_y$}.
+\onslide<+->由全微分公式
 \begin{align*}
 \diff u&=u_x\diff x+u_y\diff y
 \visible<+->{=u_x\diff x-v_x\diff y,}\\
@@ -54,20 +48,24 @@
 &\visible<+->{=(u_x+i v_x)\diff(x+iy)}\\
 &\visible<+->{=(u_x+i v_x)\diff z=(v_y-i u_y)\diff z.}
 \end{align*}
-\onslide<+->
-故 $f(z)$ 在 $z$ 处可导, 且
-\[f'(z)=u_x+i v_x=v_y-i u_y.\]
+\onslide<+->故
+\begin{block@}
+\begin{center}
+$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+i v_x=v_y-i u_y$.
+\end{center}
+\end{block@}
 \end{frame}
 
 
 \begin{frame}{可导的等价刻画: 柯西-黎曼方程}
-\begin{block}{柯西-黎曼方程 (C-R方程)}
-函数 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足 \abox{柯西-黎曼方程}
-\[\abox{$u_x=v_y,\quad u_y=-v_x$}.\]
+\onslide<+->由此我们得到
 \onslide<+->
+\begin{alertblock}{柯西-黎曼方程 (C-R方程)}
+$f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足C-R方程:
+\[u_x=v_y,\quad u_y=-v_x.\]
 此时
-\[\abox{$f'(z)=u_x+iv_x=v_y-iu_y$}.\]
-\end{block}
+\[f'(z)=u_x+iv_x=v_y-iu_y.\]
+\end{alertblock}
 \onslide<+->
 \begin{center}
 \includegraphics[width=1.7cm]{misc/Cauchy.jpeg}
@@ -76,75 +74,91 @@
 \end{frame}
 
 
-\begin{frame}{可导的判定方法}
+\begin{frame}{可导的等价刻画: 柯西-黎曼方程}
+\onslide<+->由于有时判断可微性不太方便, 因此我们常常用如下定理来判断.
 \onslide<+->
-具体计算时, 我们先判断 $f(z)$ 的 $u,v$ 的偏导数是否存在.
-\onslide<+->
-然后把偏导数按次序依次写出
-\[u_x=\cdots,\quad u_y=\cdots\]
-\[v_x=\cdots,\quad v_y=\cdots\]
-列出C-R方程, 求出所有的可导点.
-
-\onslide<+->
-如果一个点的一个邻域内都可导, 那么这个点是解析点.
-\onslide<+->
-如果一个区域 $D$ 内所有点都可导, 那么区域 $D$ 是解析区域.
-
-\onslide<+->
-当然, 如果能用求导法则直接说明 $f(z)$ 在 $D$ 内处处可导, 则也可以知道 $f(z)$ 是 $D$ 内的解析函数.
+\begin{theorem}
+\begin{itemize}
+	\item 如果 $u_x,u_y,v_x,v_y$ 在 $z$ 处连续, 且满足C-R方程, 则 $f(z)$ 在 $z$ 可导.
+	\item 如果 $u_x,u_y,v_x,v_y$ 在区域 $D$ 上处处连续, 且满足C-R方程, 则 $f(z)$ 在 $D$ 上可导(从而解析).
+\end{itemize}
+\end{theorem}
 \end{frame}
 
 
-\begin{frame}{柯西-黎曼方程的极坐标形式*}
-\onslide<+->
-设 $x=r\cos \theta,y=r\sin\theta$,
-\onslide<+->
-则
-\[\frac{\partial x}{\partial r}=\cos\theta,\ 
-\frac{\partial y}{\partial r}=\sin\theta,\ 
-\frac{\partial x}{\partial \theta}=-r\sin\theta,\ 
-\frac{\partial y}{\partial \theta}=r\cos\theta.\]
-\onslide<+->
-因此
-\[u_r=u_x\cos\theta+u_y\sin\theta,\quad
-u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
-\onslide<+->
-将C-R方程代入后, 我们可以得到C-R方程的极坐标形式:
-\[ru_r=v_\theta,\quad rv_r=-u_\theta.\]
-\onslide<+->
-且
-\[f'(z)=e^{-i\theta}(u_r+iv_r)=\frac{v_\theta-i u_\theta}z.\]
-\end{frame}
+% \begin{frame}{可导的判定方法}
+% \onslide<+->
+% 具体应用时, 我们先求 $u,v$ 的偏导数, 判断其是否存在.
+% \onslide<+->
+% 然后把偏导数按次序依次写出
+% \[u_x=\cdots,\quad u_y=\cdots\]
+% \[v_x=\cdots,\quad v_y=\cdots\]
+% 列出C-R方程, 求出所有的可导点.
+
+% \onslide<+->
+% 如果一个点的一个邻域内都可导, 那么这个点是解析点.
+% \onslide<+->
+% 如果一个区域 $D$ 内所有点都可导, 那么区域 $D$ 是解析区域.
+
+% \onslide<+->
+% 当然, 如果能用求导法则直接说明 $f(z)$ 在 $D$ 内处处可导, 则也可以知道 $f(z)$ 是 $D$ 内的解析函数.
+% \end{frame}
 
 
-\begin{frame}{柯西-黎曼方程的极坐标形式*}
-\onslide<+->
-设 $w=f(z)=\rho e^{i\varphi}$,
-\onslide<+->
-则类似可得C-R方程
-\[\rho_r=\frac{\rho \varphi_\theta}r,\quad
-\varphi_r=-\frac{\rho_\theta}{\rho r}.\]
-\onslide<+->
-此时
-\[f'(z)=\frac wz(\varphi_\theta+ir\varphi_r)=\frac w{z\rho}(r\rho_r-i\rho_\theta).\]
-\end{frame}
+% \begin{frame}{柯西-黎曼方程的极坐标形式*}
+% \onslide<+->
+% 设 $x=r\cos \theta,y=r\sin\theta$,
+% \onslide<+->
+% 则
+% \[\frac{\partial x}{\partial r}=\cos\theta,\ 
+% \frac{\partial y}{\partial r}=\sin\theta,\ 
+% \frac{\partial x}{\partial \theta}=-r\sin\theta,\ 
+% \frac{\partial y}{\partial \theta}=r\cos\theta.\]
+% \onslide<+->
+% 因此
+% \[u_r=u_x\cos\theta+u_y\sin\theta,\quad
+% u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
+% \onslide<+->
+% 将C-R方程代入后, 我们可以得到C-R方程的极坐标形式:
+% \[ru_r=v_\theta,\quad rv_r=-u_\theta.\]
+% \onslide<+->
+% 且
+% \[f'(z)=e^{-i\theta}(u_r+iv_r)=\frac{v_\theta-i u_\theta}z.\]
+% \end{frame}
+
+
+% \begin{frame}{柯西-黎曼方程的极坐标形式*}
+% \onslide<+->
+% 设 $w=f(z)=\rho e^{i\varphi}$,
+% \onslide<+->
+% 则类似可得C-R方程
+% \[\rho_r=\frac{\rho \varphi_\theta}r,\quad
+% \varphi_r=-\frac{\rho_\theta}{\rho r}.\]
+% \onslide<+->
+% 此时
+% \[f'(z)=\frac wz(\varphi_\theta+ir\varphi_r)=\frac w{z\rho}(r\rho_r-i\rho_\theta).\]
+% \end{frame}
 
 
 \begin{frame}{柯西-黎曼方程的 $z,\ov z$ 形式*}
-\onslide<+->
-如果把复变函数 $f$ 写成
-\[f(x,y)=u(x,y)+iv(x,y)=f\left(\dfrac{z+\ov z}2,\dfrac{z-\ov z}{2i}\right),\]
-\onslide<+->
-把 $z,\ov z$ 看作独立变量, $f$ 分别对 $z$ 和 $\ov z$ 的偏导数可定义为
-\[\frac{\partial f}{\partial z}
-=\half\left(\frac{\partial f}{\partial x}-i\frac{\partial f}{\partial y}\right),\quad
-\frac{\partial f}{\partial \ov z}
-=\half\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right).\]
+\onslide<+->注意到 $x=\dfrac12z+\dfrac12\ov z,y=-\dfrac i2z+\dfrac i2\ov z$.
+\onslide<+->如果我们定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
+\[\left\{
+\begin{aligned}
+	\frac{\partial f}{\partial z}&
+=\frac{\partial x}{\partial z}\frac{\partial f}{\partial x}
+	+\frac{\partial y}{\partial z}\frac{\partial f}{\partial y}
+=\frac12\frac{\partial f}{\partial x}-\frac i2\frac{\partial f}{\partial y},\\
+	\frac{\partial f}{\partial \ov z}&
+=\frac{\partial x}{\partial \ov z}\frac{\partial f}{\partial x}
+	+\frac{\partial y}{\partial \ov z}\frac{\partial f}{\partial y}
+=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}.
+\end{aligned}\right.\]
 \onslide<+->
 那么C-R方程等价于
 \[\frac{\partial f}{\partial \ov z}
-=\half\left(\frac{\partial f}{\partial x}+i\frac{\partial f}{\partial y}\right)
-=(u_x-v_y)+i(v_x+u_y)=0.\]
+=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}
+=\frac{u_x+iv_x+iu_y-v_y}2=0.\]
 \onslide<+->
 所以我们也可以把 $\emph{\dfrac{\partial f}{\partial \ov z}=0}$ 叫做C-R方程.
 \end{frame}
@@ -156,6 +170,7 @@ u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
 \begin{example}
 \enumnum1 函数 $f(z)=\ov z$ 在何处可导, 在何处解析?
 \end{example}
+\onslide<+->
 \begin{solution*}
 由 $u=x,v=-y$ 可知
 \begin{align*}
@@ -163,11 +178,9 @@ u_x&=1,&u_y&=0,\\
 v_x&=0,&v_y&=-1.
 \end{align*}
 \onslide<+->{因为 $u_x=1\neq v_y=-1$, 所以该函数处处不可导, 处处不解析.}
-
-\onslide<+->{也可以从 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.}
 \end{solution*}
-\onslide<+->
-不过这种方法由于课本上没有, 所以考试的时候最好只把它作为一种验算手段.
+\onslide<+->也可以从 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
+\onslide<+->不过这种方法由于课本上没有, 所以考试的时候最好只把它作为一种验算手段.
 \endgroup
 \end{frame}
 
@@ -185,13 +198,13 @@ v_x&=0,&v_y&=-1.
 \begin{align*}
 u_x&=2x,&u_y&=0,\\
 v_x&=y, &v_y&=x.
-\end{align*}}
+\end{align*}}%
 \onslide<+->{由 $2x=x,0=-y$ 可知只有 $x=y=0,z=0$ 满足C-R方程.}
 \onslide<+->{因此该函数只在 $0$ 可导, 处处不解析且
-\[f'(0)=(u_x+iv_x)\big|_{z=0}=0.\]}
-
-\onslide<+->{也可从 $f(z)=\dfrac{z(z+\ov z)}2,\dfrac{\partial f}{\partial\ov z}=\dfrac z2$ 看出.}
+\[f'(0)=\left.(u_x+iv_x)\middle|_{z=0}=0.\right.\]}
+\vspace{-\baselineskip}
 \end{solution*}
+\onslide<+->也可从 $f(z)=\dfrac{z(z+\ov z)}2,\dfrac{\partial f}{\partial\ov z}=\dfrac z2$ 看出.
 \endgroup
 \end{frame}
 
