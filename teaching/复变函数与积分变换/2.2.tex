@@ -62,7 +62,7 @@ $f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+i v_x=v_y-i u_y$.
 \onslide<+->
 \begin{alertblock}{柯西-黎曼方程 (C-R方程)}
 $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足C-R方程:
-\[u_x=v_y,\quad u_y=-v_x.\]
+\[u_x=v_y,\quad v_x=-u_y.\]
 此时
 \[f'(z)=u_x+iv_x=v_y-iu_y.\]
 \end{alertblock}
@@ -74,8 +74,8 @@ $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足C-R方程:
 \end{frame}
 
 
-\begin{frame}{可导的等价刻画: 柯西-黎曼方程}
-\onslide<+->由于有时判断可微性不太方便, 因此我们常常用如下定理来判断.
+\begin{frame}{可导的充分性条件}
+\onslide<+->由于二元函数的偏导数均连续蕴含可微, 因此我们有:
 \onslide<+->
 \begin{theorem}
 \begin{itemize}
@@ -165,7 +165,7 @@ $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足C-R方程:
 
 
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
-\beqskip{4pt}
+% \beqskip{4pt}
 \onslide<+->
 \begin{example}
 \enumnum1 函数 $f(z)=\ov z$ 在何处可导, 在何处解析?
@@ -181,7 +181,7 @@ v_x&=0,&v_y&=-1.
 \end{solution*}
 \onslide<+->也可以从 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
 \onslide<+->不过这种方法由于课本上没有, 所以考试的时候最好只把它作为一种验算手段.
-\endgroup
+% \endgroup
 \end{frame}
 
 
@@ -201,7 +201,7 @@ v_x&=y, &v_y&=x.
 \end{align*}}%
 \onslide<+->{由 $2x=x,0=-y$ 可知只有 $x=y=0,z=0$ 满足C-R方程.}
 \onslide<+->{因此该函数只在 $0$ 可导, 处处不解析且
-\[f'(0)=\left.(u_x+iv_x)\middle|_{z=0}=0.\right.\]}
+\[f'(0)=u_x(0)+iv_x(0)=0.\]}
 \vspace{-\baselineskip}
 \end{solution*}
 \onslide<+->也可从 $f(z)=\dfrac{z(z+\ov z)}2,\dfrac{\partial f}{\partial\ov z}=\dfrac z2$ 看出.
@@ -224,6 +224,7 @@ v_x&=e^x\sin y,&v_y&=e^x\cos y.
 \end{align*}}
 \onslide<+->{因此该函数处处可导, 处处解析, 且
 \[f'(z)=u_x+iv_x=e^x(\cos y+i\sin y)=f(z).\]}
+\vspace{-\baselineskip}
 \end{solution}
 \onslide<+->
 实际上, 这个函数就是复变量的指数函数 $e^z$.
@@ -233,17 +234,20 @@ v_x&=e^x\sin y,&v_y&=e^x\cos y.
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
 \onslide<+->
 \begin{exercise}
-求 $f(z)=3x^2+y^2-2xyi$ 的可导点和解析点.
+	单选题: (2022年A卷) 下面哪个函数在 $z=0$ 处不可导?~\fillbrace{\visible<4->{A}}
+	\xx{$2x+3yi$}{$2x^2+3y^2i$}{$e^x\cos y+i e^x\sin y$}{$x^2-xyi$}
 \end{exercise}
 \onslide<+->
 \begin{answer}
-可导点为 $\Re z=0$, 没有解析点.
+	根据C-R方程可知对于A, $u_x(0)=2\neq v_y(0)=3$.
+	\onslide<+->{对于BD, 各个偏导数在 $0$ 处取值都是 $0$.}
+	\onslide<+->{C则是处处都可导.}
 \end{answer}
 \end{frame}
 
 
 \begin{frame}{例题: 利用C-R方程判断可导和解析}
-\beqskip{4pt}
+% \beqskip{4pt}
 \onslide<+->
 \begin{example}
 设函数 $f(z)=(x^2+axy+by^2)+i(cx^2+dxy+y^2)$ 在复平面内处处解析. 求实常数 $a,b,c,d$ 以及 $f'(z)$.
@@ -251,18 +255,21 @@ v_x&=e^x\sin y,&v_y&=e^x\cos y.
 \onslide<+->
 \begin{solution}
 由于
+\vspace{-\baselineskip}
 \begin{align*}
 u_x&=2x+ay,&u_y=ax+2by,\\
 v_x&=2cx+dy,&v_y=dx+2y,
 \end{align*}
 \onslide<+->{因此
+\vspace{-\baselineskip}
 \[2x+ay=dx+2y,\quad ax+2by=-(2cx+dy),\]}
 \vspace{-\baselineskip}
 \onslide<+->{\[a=d=2,\quad b=c=-1,\]}
 \vspace{-\baselineskip}
 \onslide<+->{\[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\]}
+\vspace{-\baselineskip}
 \end{solution}
-\endgroup
+% \endgroup
 \end{frame}
 
 
@@ -273,11 +280,9 @@ v_x&=2cx+dy,&v_y=dx+2y,
 \end{example}
 \onslide<+->
 \begin{proof}
-由于
-\vspace{-\baselineskip}
-\[f'(z)=u_x+iv_x=v_y-iu_y=0,\]
-\onslide<+->{因此 $u_x=v_x=u_y=v_y=0$, $u,v$ 均为常数, }
-\onslide<+->{从而 $f(z)=u+iv$ 是常数.}
+由于 $f'(z)=u_x+iv_x=v_y-iu_y=0$,
+\onslide<+->{因此 $u_x=v_x=u_y=v_y=0$, $u,v$ 均为常数,}
+\onslide<+->{从而 $f(z)=u+iv$ 是常数.\qedhere}
 \end{proof}
 \onslide<+->
 类似地可以证明, 若 $f(z)$ 在 $D$ 内解析, 则下述条件等价:
@@ -290,7 +295,6 @@ v_x&=2cx+dy,&v_y=dx+2y,
 		\item $\Re{f(z)}$ 是一常数,
 		\item $v=u^2$,
 		\end{itemize}
-		\onslide<+->
 	\column{0.48\textwidth}
 		\begin{itemize}
 		\item $f'(z)=0$,
@@ -303,7 +307,7 @@ v_x&=2cx+dy,&v_y=dx+2y,
 
 
 \begin{frame}{例题: 利用C-R方程证明解析函数结论}
-\beqskip{5pt}
+% \beqskip{5pt}
 \onslide<+->
 \begin{example}
 如果 $f(z)$ 解析且 $f'(z)$ 处处非零, 则曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 互相正交.
@@ -311,8 +315,7 @@ v_x&=2cx+dy,&v_y=dx+2y,
 \onslide<+->
 \begin{proof*}
 由于 $f'(z)=u_x-iu_y$, 因此 $u_x,u_y$ 不全为零.
-\onslide<+->{对 $u(x,y)=c_1$ 使用隐函数求导法则得
-\[u_x\diff x+u_y\diff y=0,\]}
+\onslide<+->{对 $u(x,y)=c_1$ 使用隐函数求导法则得 $u_x\diff x+u_y\diff y=0$,}
 \onslide<+->{从而 $(u_x,-u_y)$ 是该曲线在 $z$ 处的非零切向量.}
 
 \onslide<+->{同理 $(v_x,-v_y)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.}
@@ -320,7 +323,7 @@ v_x&=2cx+dy,&v_y=dx+2y,
 \[u_xv_x+u_yv_y=-u_xu_y+u_yu_x=0,\]}
 \onslide<+->{因此二者正交.\qedhere}
 \end{proof*}
-\endgroup
+% \endgroup
 \end{frame}
 
 
@@ -341,25 +344,22 @@ v_x&=2cx+dy,&v_y=dx+2y,
 
 \onslide<+->
 最后我们来看复数在求导中的一个应用.
-\onslide<+->
-\begin{example}
-求 $f(x)=\dfrac1{1+x^2}$ 的各阶导数.
-\end{example}
 \end{frame}
 
 
 \begin{frame}{复变函数在实变函数导数的应用*}
 \onslide<+->
-\begin{solution}
+\begin{example}
 设 $f(z)=\dfrac1{1+z^2}$, 则它在除 $z=\pm i$ 外处处解析.
 \onslide<+->{当 $z=x$ 为实数时,}
 \onslide<+->{
 \begin{align*}
-f^{(n)}(x)&=\frac i2\left[\frac1{x+i}-\frac1{x-i}\right]^{(n)}\\
+\left(\dfrac1{1+x^2}\right)^{(n)}&=f^{(n)}(x)=\frac i2\left[\frac1{x+i}-\frac1{x-i}\right]^{(n)}\\
 &\visible<+->{=\frac i2\cdot(-1)^n n!\left[\frac1{(x+i)^{n+1}}-\frac1{(x-i)^{n+1}}\right]}\\
 &\visible<+->{=(-1)^{n+1}n!\Im\frac1{(x+i)^{n+1}}}\\
 &\visible<+->{=\frac{(-1)^nn!\sin[(n+1)\arccot x]}{(x^2+1)^{\frac{n+1}2}}.}
 \end{align*}}
-\end{solution}
+\vspace{-\baselineskip}
+\end{example}
 \end{frame}
 

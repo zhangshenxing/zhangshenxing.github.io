@@ -137,7 +137,7 @@
 % }
 \usepackage[normalem]{ulem}
 \NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
-\newcommand{\fillbrace}{{(\nolinebreak\hspace{2em minus 1em}\nolinebreak)}}
+\newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
 % TIKZ 设置
 \usetikzlibrary{
 	quotes,
