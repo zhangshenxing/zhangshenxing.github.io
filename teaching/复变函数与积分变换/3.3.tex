@@ -14,6 +14,7 @@
 \[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta\]
 定义了一个单值函数.
 
+\onslide<+->
 \begin{theorem}
 $F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 \end{theorem}
@@ -21,10 +22,10 @@ $F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 
 
 \begin{frame}{原函数的存在性}
-\beqskip{5pt}
+\onslide<+->
 \begin{proofs}
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[overlay,xshift=3.8cm,yshift=-1cm]
 \filldraw[cstcurve,dcolora,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
 \draw[cstcurve,dcolorb] (0,0) circle(0.7);
 \draw[cstcurve,dcolorc] (-2,0)to [bend left](0,0);
@@ -40,80 +41,70 @@ $F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 \end{center}
 
 以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
-\onslide<+->
-取 $|\Delta z|$ 小于 $K$ 的半径.
-\onslide<+->
-那么
-\vspace{-2pt}
-\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
-\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}\]
-\vspace{-8pt}
 
-\onslide<+->
-容易知道
-\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]
-\onslide<+->
-我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
+\onslide<+->{取 $|\Delta z|$ 小于 $K$ 的半径.}
+\onslide<+->{那么
+\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
+\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}\]}
+
+\onslide<+->{容易知道
+\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]}
+\onslide<+->{我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.}
 \end{proofs}
-\endgroup
 \end{frame}
 
 
 \begin{frame}{原函数的存在性}
+\onslide<+->
 \begin{proofe}
 由于 $f(z)$ 解析, 因此连续.
-\onslide<+->
-$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.
-\onslide<+->
-当 $|\Delta z|<\delta$ 时, 由长大不等式
+\onslide<+->{$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.}
+\onslide<+->{当 $|\Delta z|<\delta$ 时, 由长大不等式
 \begin{align*}
 \abs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
 &\visible<+->{=\abs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\diff \zeta}}\\
 &\visible<+->{\le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|=\varepsilon.}
-\end{align*}
-\onslide<+->
-由于 $\varepsilon$ 是任意的, 因此
-\[f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]
+\end{align*}}
+\onslide<+->{由于 $\varepsilon$ 是任意的, 因此
+\[f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]}
 \end{proofe}
 \end{frame}
 
 
 \begin{frame}{原函数的存在性}
 \onslide<+->
-如果 $D$ 上的解析函数 $\varphi(z)$ 满足 $\varphi'(z)=f(z)$, 则称 $\varphi(z)$ 是 $f(z)$ 的一个\emph{原函数}.
-\onslide<+->
-由C-R方程可知, 如果 $\varphi'(z)=0$, 则 $\varphi(z)$ 是常值函数.
-\onslide<+->
-因此 $f(z)$ 的原函数至多相差一个常数.
-\onslide<+->
-故 $f(z)$ 的原函数一定是
-\[G(z)=\int_{z_0}^zf(z)\diff z+c.\]
-\onslide<+->
-我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\displaystyle\int f(z)\diff z$}.
-\onslide<+->
-显然
-\[\aboxeq{G(z_1)-G(z_2)=\int_{z_1}^{z_2}f(z)\diff z.}\]
-\onslide<+->
-这就是单连通区域上解析函数的\emph{牛顿-莱布尼兹定理}.
+\begin{alertblock}{牛顿-莱布尼兹定理}
+设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
+\[\int_{z_1}^{z_2}f(z)\diff z=F(z_1)-F(z_2),\quad\text{其中}\quad F'(z)=f(z).\]
+\end{alertblock}
 
 \onslide<+->
-它和实变函数定积分的牛顿-莱布尼兹定理的差异在哪呢?
+如果 $D$ 上的解析函数 $G(z)$ 满足 $G'(z)=f(z)$, 则称 $G(z)$ 是 $f(z)$ 的一个\emph{原函数}.
+\onslide<+->
+由于导函数为 $0$ 的解析函数只能是常值函数,
+\onslide<+->
+因此 $\displaystyle G(z)=\int_{z_0}^zf(z)\diff z+C$.
+\onslide<+->
+我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\displaystyle\int f(z)\diff z$}.
+
+\onslide<+->
+复变函数和实变函数的牛顿-莱布尼兹定理的差异在哪呢?
 \onslide<+->
 复变情形要求是\alert{单连通区域上解析函数}, 实变情形要求是\alert{闭区间上连续函数}.
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
-\begin{example}\vspace{4pt}
+\onslide<+->
+\begin{example}
 求 $\displaystyle\int_{z_0}^{z_1}z\diff z$.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $f(z)=z$ 处处解析,
-\onslide<+->
-且 $\displaystyle\int z\diff z=\frac12 z^2+c$,
-\onslide<+->
-因此
-\[\int_{z_0}^{z_1}z\diff z=\frac12z^2\big|_{z_0}^{z_1}=\frac12(z_1^2-z_0^2).\]
+\onslide<+->{且 $\displaystyle\int z\diff z=\frac12 z^2+C$,}
+\onslide<+->{因此
+\[\int_{z_0}^{z_1}z\diff z=\frac12z^2\big|_{z_0}^{z_1}=\frac12(z_1^2-z_0^2).\]}
 \end{solution}
 \onslide<+->
 因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 而无论从 $0$ 到 $3+4i$ 的路径如何.
@@ -121,17 +112,17 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
+\onslide<+->
 \begin{example}
 求 $\displaystyle\int_0^{\pi i}z\cos z^2\diff z$.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $f(z)=z\cos z^2$ 处处解析,
-\onslide<+->
-且
-\[\int z\cos z^2\diff z=\frac12\int \cos z^2\diff z^2=\frac12\sin z^2+c,\]
-\onslide<+->
-因此
-\[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\]
+\onslide<+->{且
+\[\int z\cos z^2\diff z=\frac12\int \cos z^2\diff z^2=\frac12\sin z^2+C,\]}
+\onslide<+->{因此
+\[\int_0^{\pi i}z\cos z^2\diff z=\frac12\sin z^2\big|_0^{\pi i}=-\frac12\sin \pi^2.\]}
 \end{solution}
 \onslide<+->
 这里我们使用了\alert{凑微分法}.
@@ -139,104 +130,130 @@ $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
-\beqskip{3pt}
+\onslide<+->
 \begin{example}
 求 $\displaystyle\int_0^i z\cos z\diff z$.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $f(z)=z\cos z$ 处处解析,
-\onslide<+->
-且
+\onslide<+->{且
 \begin{align*}
 \int z\cos z\diff z&
 =\int z\diff(\sin z)=z\sin z-\int \sin z\diff z\\
-&\visible<+->{=z\sin z+\cos z+c,}
-\end{align*}
-\onslide<+->
-因此
+&\visible<+->{=z\sin z+\cos z+C,}
+\end{align*}}
+\onslide<+->{因此
+\vspace{-1.5\baselineskip}
 \begin{align*}
 \int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i\\
 &\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
-\end{align*}
+\end{align*}}
+\vspace{-1.5\baselineskip}
 \end{solution}
 \onslide<+->
 这里我们使用了\alert{分部积分法}.
-\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
-\beqskip{10pt}
+\onslide<+->
 \begin{example}
 求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $f(z)=ze^z$ 处处解析,
-\onslide<+->
-且
-\[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]
-\onslide<+->
-因此
+\onslide<+->{且
+\[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]}
+\onslide<+->{因此
+\vspace{-\baselineskip}
 \begin{align*}
 \int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
 &\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).}
-\end{align*}
+\end{align*}}
+\vspace{-\baselineskip}
 \end{solution}
-\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
+\onslide<+->
 \begin{exercise}
 求 $\displaystyle\int_0^1 z\sin z\diff z$.
 \end{exercise}
+\onslide<+->
 
 \begin{answer}
 $\sin 1-\cos 1$.
 \end{answer}
-\begin{example}
-设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
-\end{example}
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
+\onslide<+->
+\begin{example}
+设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
+\end{example}
+\onslide<+->
 \begin{solution}
 函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
-\onslide<+->
-\[\int\frac{\ln(z+1)}{z+1}\diff z
-=\int\ln(z+1)\diff[\ln(z+1)]=\frac12\ln^2(z+1)+c.\]
-\onslide<+->
-因此
+\vspace{-0.5\baselineskip}
+\onslide<+->{
+  \[\int\frac{\ln(z+1)}{z+1}\diff z
+=\int\ln(z+1)\diff[\ln(z+1)]=\frac12\ln^2(z+1)+c.\]}
+\onslide<+->{因此
+\vspace{-1.5\baselineskip}
 \begin{align*}
 &\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\frac12\ln^2(z+1)\big|_1^i
 \visible<+->{=\frac12\left[\ln^2(1+i)-\ln^22\right]}\\
 &\visible<+->{=\frac12\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
 =-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}
-\end{align*}
+\end{align*}}
+\vspace{-1.1\baselineskip}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
+\onslide<+->
 \begin{example}
 求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是连接 $0$ 到 $2\pi a$ 的摆线
-\vspace{-8pt}
-\[\begin{cases}
+
+$\displaystyle\begin{cases}
 x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
-\end{cases} 0\le \theta\le 2\pi.\]
-\vspace{-8pt}
+\end{cases} 0\le \theta\le 2\pi.$
+\rule{0pt}{1cm}
+\begin{tikzpicture}[overlay,xshift=0.7cm,yshift=-0.6cm]
+\draw[cstaxis,visible on=<2->](0,0)--(5,0);
+\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
+\draw[cstcurve,dcolora,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
+\draw[cstcurve,dcolorb,visible on=<2>] (0,0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<2->] (0,0) circle;
+\draw[cstcurve,dcolorb,visible on=<3>] ({0.7*(pi/180*60)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<3->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
+\draw[cstcurve,dcolorb,visible on=<4>] ({0.7*(pi/180*120)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<4->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
+\draw[cstcurve,dcolorb,visible on=<5>] ({0.7*(pi/180*180)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<5->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
+\draw[cstcurve,dcolorb,visible on=<6>] ({0.7*(pi/180*240)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<6->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
+\draw[cstcurve,dcolorb,visible on=<7>] ({0.7*(pi/180*300)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<7->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
+\draw[cstcurve,dcolorb,visible on=<8>] ({0.7*(pi/180*360)},0.7) circle (0.7);
+\fill[cstdot,dcolora,visible on=<8->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
+\end{tikzpicture}
 \end{example}
+\onslide<10->{
 \begin{solution}
 由于 $f(z)=2z^2+8z+1$ 处处解析,
-\onslide<+->
-因此
+\onslide<11->{因此
 \begin{align*}
 &\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
 &\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
-\end{align*}
-\vspace{-8pt}
-\end{solution}
+\end{align*}}
+\vspace{-\baselineskip}
+\end{solution}}
 \end{frame}
 
 
