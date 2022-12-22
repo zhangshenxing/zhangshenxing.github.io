@@ -149,7 +149,7 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
   (0.5,-0.45) node[dcolora,visible on=<3->] {$C_2$}
   (-0.5,-0.45) node[dcolora,visible on=<3->] {$C_3$};
 \end{tikzpicture}
-\vspace{-\baselineskip}
+\vspace{-1.1\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -195,7 +195,7 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \onslide<+->
 解析函数可以由它的积分所表示.
 \onslide<+->
-不仅如此, 通过积分表示, 还可以说明\alert{解析函数存在任意阶解析的导数}.
+不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
 
 \onslide<+->
 \begin{block}{柯西积分公式}
@@ -203,10 +203,11 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.\]
 \end{block}
 \onslide<+->
-类似于实变函数的泰勒展开, 我们合理推测解析函数也有泰勒展开
+\noindent
+类似于实变函数的泰勒展开, 我们推测解析函数也有泰勒展开
 \[f(z)=f(z_0)+f'(z_0)(z-z_0)+\cdots+\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots\]
 \onslide<+->
-这样由 $\int_C \frac1{(z-z_0)^n}\diff z$ 的性质可知右侧应当为 $f^{(n)}(z_0)$.
+这样由 $\displaystyle\oint_C \frac1{(z-z_0)^n}\diff z$ 的性质可知右侧应当为 $f^{(n)}(z_0)$.
 \end{frame}
 
 
@@ -217,10 +218,8 @@ f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
 \onslide<+->{设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.}
 \onslide<+->{当 $|h|<\delta$ 时, $z_0+h\in D$.}
 \onslide<+->{由柯西积分公式,
-\begin{align*}
-f(z_0)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z,\\
-f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
-\end{align*}}
+	\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z,\ 
+	f(z_0+h)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.\]}
 \onslide<+->{两式相减得到
 \[\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi i}\emph{\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\diff z}.\]}
 \onslide<+->{当 $h\to 0$ 时, 左边的极限是 $f'(z_0)$.}
@@ -236,20 +235,21 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 \onslide<+->{由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $|f(z)|\le M$.}
 \onslide<+->{注意到 $z\in C$, $|z-z_0|\ge \delta$, $|z-z_0-h|\ge\delta-|h|$.}
 \onslide<+->{由长大不等式,
+\vspace{-0.3\baselineskip}
 \[\abs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\diff z}\le\frac{M|h|}{\delta^2(\delta-|h|)}\cdot L,\]
 其中 $L$ 是闭路 $C$ 的长度.}
 \onslide<+->{当 $h\to0$ 时, 它的极限为 $0$, 因此 $n=1$ 情形得证.}
 
 \onslide<+->{对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式.}
 \onslide<+->{然后利用长大不等式证明 $h\to 0$ 时, $\dfrac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h$ 趋于积分公式右侧.}
-\onslide<+->{具体过程省略.}
+\onslide<+->{具体过程省略.\qedhere}
 \end{proofe*}
 \end{frame}
 
 
 \begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
 \onslide<+->
-\alert{柯西积分公式的作用不在于计算高阶导数, 而是用高阶导数来计算积分.}
+\alert{柯西积分公式不是用来计算高阶导数的, 而是用高阶导数来计算积分的.}
 \onslide<+->
 \begin{example}
 求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
@@ -263,6 +263,7 @@ f(z_0+h)&=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.
 &=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}\\
 &\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
 \end{align*}}
+\vspace{-\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -302,8 +303,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 &=\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2\\
 &=\pi i(\sin1-\cos1).
 \end{align*}}
-\vspace{-\baselineskip}
-% \vspace{-20pt}
+\vspace{-1.7\baselineskip}
 \end{solutionc}
 \end{frame}
 
@@ -324,6 +324,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \[\oint_{|z|=1}z^ne^z\diff z
 =\frac{2\pi i}{(-n-1)!}(e^z)^{(-n-1)}\big|_{z=0}
 =\frac{2\pi i}{(-n-1)!}.\]}
+\vspace{-\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -357,20 +358,13 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \end{align*}}
 \end{solutionc}
 \onslide<+->
-\begin{columns}
-	\column{0.48\textwidth}
-		\begin{exercise}
-		求 $\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z$.
-		\end{exercise}\onslide<+->
-	\column{0.48\textwidth}
-		\begin{answer}
-		$0\vphantom{\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z}$.
-		\end{answer}
-\end{columns}
+\begin{exercise}
+$\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z=$\fillblank{\visible<+->{$0$}}.
+\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 使用柯西积分公式证明莫累拉定理}
+\begin{frame}{莫累拉定理}
 \onslide<+->
 \begin{example}[莫累拉定理]
 设 $f(z)$ 在单连通域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\displaystyle\oint_Cf(z)\diff z=0$, 则 $f(z)$ 在 $D$ 内解析.
@@ -380,11 +374,11 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 \begin{proof}
 由题设可知 $f(z)$ 的积分与路径无关.
-\onslide<+->{固定的 $z_0\in D$, 则
+\onslide<+->{固定 $z_0\in D$, 则
 \[F(z)=\int_{z_0}^zf(z)\diff z\]
-定义了 $D$ 内一个单值函数.}
+定义了 $D$ 内的一个函数.}
 \onslide<+->{类似于原函数的证明可知 $F'(z)=f(z)$.}
-\onslide<+->{故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.}
+\onslide<+->{故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.\qedhere}
 \end{proof}
 \end{frame}
 
@@ -393,7 +387,7 @@ $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
 \onslide<+->
 高阶柯西积分公式说明解析函数的导数与实函数的导数有何不同?
 \onslide<+->
-高阶柯西积分公式说明, 函数 $f(z)$ 只要在闭区域 $\ov D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $\ov D$ 中解析.
+高阶柯西积分公式说明, 函数 $f(z)$ 只要在区域 $D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $D$ 中解析.
 \onslide<+->
 \alert{这一点与实变量函数有本质的区别.}
 

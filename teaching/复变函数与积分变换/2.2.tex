@@ -1,6 +1,6 @@
 \section{函数解析的充要条件}
 
-
+\subsection{柯西-黎曼方程}
 \begin{frame}{可导函数的特点}
 \onslide<+->
 通过对一些简单函数的分析, 我们会发现可导的函数往往可以直接表达为 $z$ 的函数的形式, 而不解析的往往包含 $x,y,\ov z$ 等内容.
@@ -105,67 +105,9 @@ $f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足C-R方程:
 % \end{frame}
 
 
-% \begin{frame}{柯西-黎曼方程的极坐标形式*}
-% \onslide<+->
-% 设 $x=r\cos \theta,y=r\sin\theta$,
-% \onslide<+->
-% 则
-% \[\frac{\partial x}{\partial r}=\cos\theta,\ 
-% \frac{\partial y}{\partial r}=\sin\theta,\ 
-% \frac{\partial x}{\partial \theta}=-r\sin\theta,\ 
-% \frac{\partial y}{\partial \theta}=r\cos\theta.\]
-% \onslide<+->
-% 因此
-% \[u_r=u_x\cos\theta+u_y\sin\theta,\quad
-% u_\theta=r(-u_x\sin\theta+u_y\cos\theta).\]
-% \onslide<+->
-% 将C-R方程代入后, 我们可以得到C-R方程的极坐标形式:
-% \[ru_r=v_\theta,\quad rv_r=-u_\theta.\]
-% \onslide<+->
-% 且
-% \[f'(z)=e^{-i\theta}(u_r+iv_r)=\frac{v_\theta-i u_\theta}z.\]
-% \end{frame}
 
-
-% \begin{frame}{柯西-黎曼方程的极坐标形式*}
-% \onslide<+->
-% 设 $w=f(z)=\rho e^{i\varphi}$,
-% \onslide<+->
-% 则类似可得C-R方程
-% \[\rho_r=\frac{\rho \varphi_\theta}r,\quad
-% \varphi_r=-\frac{\rho_\theta}{\rho r}.\]
-% \onslide<+->
-% 此时
-% \[f'(z)=\frac wz(\varphi_\theta+ir\varphi_r)=\frac w{z\rho}(r\rho_r-i\rho_\theta).\]
-% \end{frame}
-
-
-\begin{frame}{柯西-黎曼方程的 $z,\ov z$ 形式*}
-\onslide<+->注意到 $x=\dfrac12z+\dfrac12\ov z,y=-\dfrac i2z+\dfrac i2\ov z$.
-\onslide<+->如果我们定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
-\[\left\{
-\begin{aligned}
-	\frac{\partial f}{\partial z}&
-=\frac{\partial x}{\partial z}\frac{\partial f}{\partial x}
-	+\frac{\partial y}{\partial z}\frac{\partial f}{\partial y}
-=\frac12\frac{\partial f}{\partial x}-\frac i2\frac{\partial f}{\partial y},\\
-	\frac{\partial f}{\partial \ov z}&
-=\frac{\partial x}{\partial \ov z}\frac{\partial f}{\partial x}
-	+\frac{\partial y}{\partial \ov z}\frac{\partial f}{\partial y}
-=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}.
-\end{aligned}\right.\]
-\onslide<+->
-那么C-R方程等价于
-\[\frac{\partial f}{\partial \ov z}
-=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}
-=\frac{u_x+iv_x+iu_y-v_y}2=0.\]
-\onslide<+->
-所以我们也可以把 $\emph{\dfrac{\partial f}{\partial \ov z}=0}$ 叫做C-R方程.
-\end{frame}
-
-
+\subsection{柯西-黎曼方程的应用}
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
-% \beqskip{4pt}
 \onslide<+->
 \begin{example}
 \enumnum1 函数 $f(z)=\ov z$ 在何处可导, 在何处解析?
@@ -179,14 +121,12 @@ v_x&=0,&v_y&=-1.
 \end{align*}
 \onslide<+->{因为 $u_x=1\neq v_y=-1$, 所以该函数处处不可导, 处处不解析.}
 \end{solution*}
-\onslide<+->也可以从 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
-\onslide<+->不过这种方法由于课本上没有, 所以考试的时候最好只把它作为一种验算手段.
-% \endgroup
+% \onslide<+->也可以从 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
+% \onslide<+->不过这种方法由于课本上没有, 所以考试的时候最好只把它作为一种验算手段.
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
-\beqskip{5pt}
 \onslide<+->
 \begin{example}[续]
 \enumnum2 函数 $f(z)=z\Re z$ 在何处可导, 在何处解析?
@@ -204,8 +144,7 @@ v_x&=y, &v_y&=x.
 \[f'(0)=u_x(0)+iv_x(0)=0.\]}
 \vspace{-\baselineskip}
 \end{solution*}
-\onslide<+->也可从 $f(z)=\dfrac{z(z+\ov z)}2,\dfrac{\partial f}{\partial\ov z}=\dfrac z2$ 看出.
-\endgroup
+% \onslide<+->也可从 $f(z)=\dfrac{z(z+\ov z)}2,\dfrac{\partial f}{\partial\ov z}=\dfrac z2$ 看出.
 \end{frame}
 
 

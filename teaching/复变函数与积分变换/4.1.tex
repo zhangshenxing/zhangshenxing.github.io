@@ -1,9 +1,10 @@
 \section{复数项级数}
 
-
+\subsection{复数项级数}
 \begin{frame}{复数项级数}
 \onslide<+->
 复数域上的级数与实数域上的级数并无本质差别.
+\onslide<+->
 \begin{definition}
 \begin{itemize}
 \item 设 $\{z_n\}_{n\ge1}$ 是一个复数列.
@@ -13,30 +14,28 @@
 \[s_n=z_1+z_2+\cdots+z_n\]
 为该级数的\emph{部分和}.
 \item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \emph{收敛}, 并记 $\suml_{n=1}^\infty z_n=\lim\limits_{n\to\infty}s_n$ 为它的\emph{和}.
-\onslide<+->
-否则称之\emph{发散}.
+\onslide<+->{否则称该级数\emph{发散}.}
 \end{itemize}
 \end{definition}
 \end{frame}
 
 
 \begin{frame}{复数项级数敛散性的判定}
-\beqskip{8pt}
+\beqskip{7pt}
+\onslide<+->
 \begin{theorem}
 $\suml_{n=1}^\infty z_n=a+bi$ 当且仅当 $\suml_{n=1}^\infty x_n=a,\suml_{n=1}^\infty y_n=b$.
 \end{theorem}
+\onslide<+->
 \begin{proof}
 设 $\suml_{n=1}^\infty x_n$ 的部分和为 $\sigma_n=x_1+x_2+\cdots+x_n$,
 设 $\suml_{n=1}^\infty y_n$ 的部分和为
 $\tau_n=y_1+y_2+\cdots+y_n,$
-\onslide<+->
-则 $\suml_{n=1}^\infty z_n$ 的部分和为
-\[s_n=z_1+z_2+\cdots+z_n=\sigma_n+i\tau_n.\]
-\onslide<+->
-由复数列的敛散性判定条件可知
-\[\lim_{n\to\infty}s_n=a+bi\iff	\lim_{n\to\infty}\sigma_n=a,\quad \lim_{n\to\infty}\tau_n=b.\]
-\onslide<+->
-由此命题得证.
+\onslide<+->{则 $\suml_{n=1}^\infty z_n$ 的部分和为
+\[s_n=z_1+z_2+\cdots+z_n=\sigma_n+i\tau_n.\]}
+\onslide<+->{由复数列的敛散性判定条件可知
+\[\lim_{n\to\infty}s_n=a+bi\iff	\lim_{n\to\infty}\sigma_n=a,\quad \lim_{n\to\infty}\tau_n=b.\]}
+\onslide<+->{由此命题得证.\qedhere}
 \end{proof}
 \endgroup
 \end{frame}
@@ -51,6 +50,7 @@ $\tau_n=y_1+y_2+\cdots+y_n,$
 $z_n=x_n+iy_n\to 0$.
 \onslide<+->
 因此 \alert{$z_n\to0$ 是 $\suml_{n=1}^\infty z_n$ 收敛的必要条件}.
+\onslide<+->
 \begin{theorem}
 如果实数项级数
 \[\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots\]
@@ -60,81 +60,102 @@ $z_n=x_n+iy_n\to 0$.
 
 
 \begin{frame}{复数项级数敛散性的判定}
-\beqskip{7pt}
-\begin{proof}
-\indent
+% \beqskip{7pt}
+\onslide<+->
+\begin{proof*}
+% \indent
 因为 $|x_n|,|y_n|\le|z_n|$, 由比较判别法可知实数项级数 $\suml_{n=1}^\infty x_n$, $\suml_{n=1}^\infty y_n$ 绝对收敛, 从而收敛.
-\onslide<+->
-故 $\suml_{n=1}^\infty z_n$ 也收敛.
+\onslide<+->{故 $\suml_{n=1}^\infty z_n$ 也收敛.}
 
-\onslide<+->
-\indent
-由三角不等式可知
-\[\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|.\]
-\onslide<+->
-两边同时取极限即得级数的不等式关系
+\onslide<+->{由三角不等式可知
+$\displaystyle\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|$.}
+\onslide<+->{两边同时取极限即得级数的不等式关系
 \[\abs{\sum_{n=1}^\infty z_n}=\abs{\lim_{n\to\infty}\sum_{k=1}^n z_k}=
-\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]
-\onslide<+->
-其中第二个等式是因为绝对值函数 $|z|$ 连续.
-\end{proof}
-\endgroup
+\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]}
+\onslide<+->{其中第二个等式是因为绝对值函数 $|z|$ 连续.}
+\end{proof*}
+% \endgroup
 \end{frame}
 
 
 \begin{frame}{绝对收敛和条件收敛}
+\onslide<+->
 \begin{definition}
 \begin{itemize}
 \item 如果级数 $\suml_{n=1}^\infty |z_n|$ 收敛, 则称 $\suml_{n=1}^\infty z_n$ \emph{绝对收敛}.
 \item 称收敛但不绝对收敛的级数\emph{条件收敛}.
 \end{itemize}
 \end{definition}
+\onslide<+->
 \begin{theorem}
 $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都绝对收敛.
 \end{theorem}
+\onslide<+->
 \begin{proof}
 必要性由前一定理的证明已经知道,
-\onslide<+->
-充分性由 $|z_n|\le|x_n|+|y_n|$ 可得.
+\onslide<+->{充分性由 $|z_n|\le|x_n|+|y_n|$ 可得.}
 \end{proof}
 \end{frame}
 
 
+\subsection{绝对收敛和条件收敛}
 \begin{frame}{绝对收敛和条件收敛}
+\begin{tikzpicture}[overlay]
+	\draw[decorate,decoration={brace,amplitude=8},thick,dcolora] (1.15,-4.5)--(1.15,-1.5);
+	\draw[decorate,decoration={brace,amplitude=8},thick,dcolorb] (3.3,-0.37)--(9.5,-0.37);
+	\draw (6.4,0.2) node[dcolorb] {实部级数}
+	(0.6,-3) node[align=center,dcolora] {虚\\部\\级\\数};
+\end{tikzpicture}
 \begin{center}
 \renewcommand\arraystretch{2}
 \defaultrowcolors
-\resizebox{\linewidth}{!}{
 \begin{tabular}{|c|c|c|c|}
-&\tht $\suml_{n=1}^\infty x_n$ 发散
-&\tht $\suml_{n=1}^\infty x_n$ 条件收敛
-&\tht $\suml_{n=1}^\infty x_n$ 绝对收敛\\
- \tht $\suml_{n=1}^\infty y_n$ 发散
-&$\suml_{n=1}^\infty z_n$ 发散
-&$\suml_{n=1}^\infty z_n$ 发散
-&$\suml_{n=1}^\infty z_n$ 发散\\
- \tht $\suml_{n=1}^\infty y_n$ 条件收敛
-&$\suml_{n=1}^\infty z_n$ 发散
-&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
-&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛\\
- \tht $\suml_{n=1}^\infty y_n$ 绝对收敛
-&$\suml_{n=1}^\infty z_n$ 发散
-&\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
-&\cellcolor{lightr} $\suml_{n=1}^\infty z_n$ 绝对收敛\\
-\end{tabular}}
+	&\tht ~~发散~~&\tht 条件收敛&\tht 绝对收敛\\
+	\tht 发散&发散&发散&发散\\
+	\tht 条件收敛&发散&\cellcolor{lightg} 条件收敛
+		&\cellcolor{lightg} 条件收敛\\
+	\tht 绝对收敛&发散&\cellcolor{lightg}条件收敛
+		&\cellcolor{lightr}绝对收敛\\
+\end{tabular}
 \end{center}
 \end{frame}
+
+% \begin{frame}{绝对收敛和条件收敛}
+% \begin{center}
+% \renewcommand\arraystretch{2}
+% \defaultrowcolors
+% \resizebox{\linewidth}{!}{
+% \begin{tabular}{|c|c|c|c|}
+% &\tht $\suml_{n=1}^\infty x_n$ 发散
+% &\tht $\suml_{n=1}^\infty x_n$ 条件收敛
+% &\tht $\suml_{n=1}^\infty x_n$ 绝对收敛\\
+%  \tht $\suml_{n=1}^\infty y_n$ 发散
+% &$\suml_{n=1}^\infty z_n$ 发散
+% &$\suml_{n=1}^\infty z_n$ 发散
+% &$\suml_{n=1}^\infty z_n$ 发散\\
+%  \tht $\suml_{n=1}^\infty y_n$ 条件收敛
+% &$\suml_{n=1}^\infty z_n$ 发散
+% &\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
+% &\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛\\
+%  \tht $\suml_{n=1}^\infty y_n$ 绝对收敛
+% &$\suml_{n=1}^\infty z_n$ 发散
+% &\cellcolor{lightg} $\suml_{n=1}^\infty z_n$ 条件收敛
+% &\cellcolor{lightr} $\suml_{n=1}^\infty z_n$ 绝对收敛\\
+% \end{tabular}}
+% \end{center}
+% \end{frame}
 
 
 \begin{frame}{绝对收敛和条件收敛}
 \onslide<+->
 绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性, 且不改变其和.
-
 \onslide<+->
 一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
+\onslide<+->
 \begin{thinking}
 什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
 \end{thinking}
+\onslide<+->
 \begin{answer}
 当且仅当非零的 $z_n$ 的辐角全都相同时成立.
 \end{answer}
@@ -142,10 +163,11 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 
 
 \begin{frame}{例题: 判断级数的敛散性}
-\beqskip{3pt}
+\onslide<+->
 \begin{example}
 级数 $\displaystyle\sum_{n=1}^\infty\frac{1+i^n}n$ 发散、条件收敛、还是绝对收敛?
 \end{example}
+\onslide<+->
 \begin{solution}
 由于实部级数
 \[\sum_{n=1}^\infty x_n=
@@ -153,63 +175,61 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 发散, 所以该级数发散.
 \end{solution}
 \onslide<+->
-事实上, 它的虚部级数
-\[\sum_{n=1}^\infty y_n=
-1-\frac13+\frac15-\frac17+\cdots\]
-是条件收敛的.
-\endgroup
+它的虚部级数是一个交错级数, 从而是条件收敛的.
 \end{frame}
 
 
 \begin{frame}{例题: 判断级数的敛散性}
+\onslide<+->
 \begin{example}
 级数 $\displaystyle\sum_{n=1}^\infty\left[\frac{(-1)^n}n+\frac i{2^n}\right]$ 发散、条件收敛、还是绝对收敛?
 \end{example}
+\onslide<+->
 \begin{solution}
 因为实部级数 $\displaystyle\sum_{n=1}^\infty\frac{(-1)^n}n$ 条件收敛,
-\onslide<+->
-虚部级数 $\displaystyle\sum_{n=1}^\infty\frac1{2^n}$ 绝对收敛,
-\onslide<+->
-所以该级数条件收敛.
+\onslide<+->{虚部级数 $\displaystyle\sum_{n=1}^\infty\frac1{2^n}$ 绝对收敛,}
+\onslide<+->{所以该级数条件收敛.}
 \end{solution}
-\begin{example}
-级数 $\displaystyle\sum_{n=1}^\infty\dfrac{i^n}n$ 发散、条件收敛、还是绝对收敛?
-\end{example}
 \end{frame}
 
 
 
 \begin{frame}{例题: 复数项级数敛散性}
+\onslide<+->
+\begin{example}
+级数 $\displaystyle\sum_{n=1}^\infty\dfrac{i^n}n$ 发散、条件收敛、还是绝对收敛?
+\end{example}
+\onslide<+->
 \begin{solution}
 因为它的实部和虚部级数
 \[\sum_{n=1}^\infty x_n=-\frac12+\frac14+\frac16-\frac18+\cdots\]
-\onslide<+->
-\[\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots\]
-均条件收敛,
-\onslide<+->
-所以原级数条件收敛.
+\onslide<+->{\[\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots\]
+均条件收敛,}
+\onslide<+->{所以原级数条件收敛.}
 \end{solution}
 \end{frame}
 
 
-\begin{frame}{例题: 复数项级数敛散性*}
-\onslide<+->
-可以证明
-\[1-\frac13+\frac15-\frac17+\cdots=\arctan x|_{x=1}=\frac\pi4,\]
-\onslide<+->
-\[1-\frac12+\frac13-\frac14+\cdots=\ln(1+x)|_{x=1}=\ln2.\]
-\onslide<+->
-从而
-\[\sum_{n=1}^\infty\dfrac{i^n}n=-\frac12\ln 2+\frac{\pi i}4.\]
-\onslide<+->
-事实上, 左侧是复变函数 $-\ln(1+z)$ 在 $z=-i$ 处的泰勒级数.
-\end{frame}
+% \begin{frame}{例题: 复数项级数敛散性*}
+% \onslide<+->
+% 可以证明
+% \[1-\frac13+\frac15-\frac17+\cdots=\arctan x|_{x=1}=\frac\pi4,\]
+% \onslide<+->
+% \[1-\frac12+\frac13-\frac14+\cdots=\ln(1+x)|_{x=1}=\ln2.\]
+% \onslide<+->
+% 从而
+% \[\sum_{n=1}^\infty\dfrac{i^n}n=-\frac12\ln 2+\frac{\pi i}4.\]
+% \onslide<+->
+% 事实上, 左侧是复变函数 $-\ln(1+z)$ 在 $z=-i$ 处的泰勒级数.
+% \end{frame}
 
 
 \begin{frame}{例题: 判断级数的敛散性}
+\onslide<+->
 \begin{example}
 级数 $\displaystyle\sum_{n=0}^\infty\frac{(8i)^n}{n!}$ 发散、条件收敛、还是绝对收敛?
 \end{example}
+\onslide<+->
 \begin{solution}
 因为 $\abs{\dfrac{(8i)^n}{n!}}=\dfrac{8^n}{n!}$, $\displaystyle\sum_{n=0}^\infty\frac{8^n}{n!}=e^8$ 收敛, 所以该级数绝对收敛.
 \end{solution}
@@ -224,23 +244,23 @@ $\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都�
 
 
 \begin{frame}{级数敛散性判别法}
-对于正项级数 $\suml_{n=0}^\infty x_n$, 我们有若干判别法来判断它的敛散性.
+由正项级数的判别法可以得到:
 \onslide<+->
-由此可得: 设
+设
 \begin{enumerate}
 \item \emph{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
 \item \emph{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
-\item \emph{柯西-Hadamard判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (所有子数列中极限的最大值).
+\item \emph{柯西-阿达马判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (子数列中极限的最大值).
 \end{enumerate}
 \onslide<+->
-则当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛;
+当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛;
 \onslide<+->
 当 $\lambda>1$ 时, $\suml_{n=0}^\infty z_n$ 发散.
 \onslide<+->
-其证明主要是通过将该级数与相应的等比级数做比较得到.
+其证明是通过将该级数与相应的等比级数做比较得到.
 \onslide<+->
 如果 $\lambda=1$, 则无法使用该方法判断.
-
+\onslide<+->
 \begin{block}{另解}
 因为 $\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\abs{\dfrac{8}{n+1}}=0$, 所以该级数绝对收敛.
 \end{block}
