@@ -9,8 +9,7 @@
 \begin{definition}
 \begin{itemize}
 \item 设 $\{f_n(z)\}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
-\onslide<+->
-表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\emph{复变函数项级数}.
+\onslide<+->{表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\emph{复变函数项级数}.}
 \item 对于 $z_0\in D$, 如果级数 $\suml_{n=1}^\infty f_n(z_0
 )$ 收敛, 则称 \emph{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\emph{和}.
 \item 如果 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\emph{和函数}.
@@ -29,6 +28,7 @@
 
 \onslide<+->
 对于复变函数幂级数, 我们也有阿贝尔定理.
+\onslide<+->
 \begin{block}{阿贝尔定理}
 \begin{enumerate}
 \item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
@@ -62,6 +62,7 @@
 
 
 \begin{frame}{幂级数及其敛散性}
+\onslide<+->
 \begin{center}
 \begin{tikzpicture}
 \filldraw[cstcurve,draw=dcolora,cstfill] (0,0) circle (1.2);
@@ -69,10 +70,10 @@
 \draw[cstcurve,cstarrowto] (0,0)--(0.96,0.72);
 \draw[cstcurve,cstarrowto] (-0.96,0.72)--(-2,0.72);
 \draw
-  (0.6,0.1) node {$R$}
-  (0,-0.4) node[dcolorb] {绝对收敛}
-  (2.5,-0.4) node[dcolorb] {发散}
-  (-3,0.72) node[dcolorb] {都有可能};
+	(0.6,0.1) node {$R$}
+	(0,-0.4) node[dcolorb] {绝对收敛}
+	(2.5,-0.4) node[dcolorb] {发散}
+	(-3,0.72) node[dcolorb] {都有可能};
 \end{tikzpicture}
 \end{center}
 \onslide<+->
@@ -191,11 +192,10 @@
 \begin{solutionc}
 \begin{itemize}
 \item 若 $0<p\le1$, $\displaystyle\sum_{n=1}^\infty\frac1{n^p}$ 发散, 
-\onslide<+->
-而在收敛圆周上其它点 $z\neq1$ 处,
+\onslide<+->{而在收敛圆周上其它点 $z\neq1$ 处,
 \[|z+z^2+\cdots+z^n|=\abs{\frac{z(1-z^n)}{1-z}}
 \le\frac{2}{|1-z|}\]
-有界, 数列 $\set{n^{-p}}_{n\ge 1}$ 单调趋于 $0$,
+有界, 数列 $\set{n^{-p}}_{n\ge 1}$ 单调趋于 $0$,}
 \onslide<+->{因此 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 收敛.}
 \onslide<+->{故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.}
 \end{itemize}
@@ -203,6 +203,7 @@
 \end{frame}
 
 
+\subsection{幂级数的运算性质}
 \begin{frame}{幂级数的有理运算}
 \onslide<+->
 \begin{theorem}
@@ -216,10 +217,10 @@ g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
 \onslide<+->
 注意当 $R_1=R_2$ 时, $f\pm g$ 或 $fg$ 的收敛半径可以比 $f,g$ 的大.
 
-\onslide<+->
-在某些情形下, 我们只关心 $fg$ 的某一幂次系数,
-\onslide<+->
-此时我们便可以用上述表达式来计算特定幂次系数.
+% \onslide<+->
+% 在某些情形下, 我们只关心 $fg$ 的某一幂次系数,
+% \onslide<+->
+% 此时我们便可以用上述表达式来计算特定幂次系数.
 \end{frame}
 
 
@@ -270,13 +271,11 @@ g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
 \begin{solution}
 \[\frac1{z-b}=\frac1{(z-a)-(b-a)}
 \visible<+->{=\frac1{a-b}\cdot\frac1{1-\dfrac{z-a}{b-a}}.}\]
-\onslide<+->
-当 $|z-a|<|b-a|$ 时,
-\onslide<+->
-$\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\right)^n$,
-\onslide<+->
-即
-\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\]
+\onslide<+->{当 $|z-a|<|b-a|$ 时,}
+\onslide<+->{
+$\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\right)^n$,}
+\onslide<+->{即
+\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\]}
 \vspace{-3pt}
 \end{solution}
 \end{frame}
@@ -321,11 +320,11 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
 \onslide<+->
 \begin{exercise}
-求幂级数 $\suml_{n=1}^\infty\dfrac{z^n}n$ 的和函数.
+求幂级数 $\suml_{n=1}^\infty\dfrac{z^n}n$ 的收敛半径与和函数.
 \end{exercise}
 \onslide<+->
 \begin{answer}
-\[\sum_{n=1}^\infty\frac{z^n}n=\ln(1-z),\quad|z|<1.\]
+收敛半径为 $1$, 和函数为 $\ln(1-z),|z|<1$.
 \end{answer}
 \end{frame}
 
@@ -346,20 +345,18 @@ $\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\righ
 	&=\oint_{|z|=\frac12}\frac1z\diff z+\oint_{|z|=\frac12}\left(\sum_{n=0}^\infty z^n\right)\diff z\\
 &\visible<+->{=2\pi i+0=2\pi i.}
 \end{align*}}
+\vspace{-1.5\baselineskip}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
-\beqskip{3pt}
 \onslide<+->
 \begin{block}{另解}
 当 $|z|<\dfrac12$ 时, $\suml_{n=-1}^\infty z^n$ 收敛且
 \[\sum_{n=-1}^\infty z^n=\frac{z^{-1}}{1-z}=\frac1{z(1-z)}=\frac1z-\frac1{z-1},\]
-\onslide<+->
-故
+\onslide<+->{故
 \[\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z
-=\oint_{|z|=\frac12}\left(\frac1z-\frac1{z-1}\right)\diff z=2\pi i.\]
+=\oint_{|z|=\frac12}\left(\frac1z-\frac1{z-1}\right)\diff z=2\pi i.\]}
 \end{block}
-\endgroup
 \end{frame}

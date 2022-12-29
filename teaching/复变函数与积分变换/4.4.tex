@@ -70,24 +70,24 @@
 \filldraw[cstdote,draw=dcolora] (0,0) circle;
 \draw[dcolorb,cstarrowto,thick] (0.048,0.036)--(1.2,0.9);
 \draw
-  (0.7,0.2) node[dcolorb] {$R_2$}
-  (-0.3,0) node[dcolora] {$z_0$}
-  (0,-2) node {$0<|z-z_0|<R_2$};
+	(0.7,0.2) node[dcolorb] {$R_2$}
+	(-0.3,0) node[dcolora] {$z_0$}
+	(0,-2) node {$0<|z-z_0|<R_2$};
 
 \fill[cstfille,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
 \filldraw[cstcurve,fill=white,draw=dcolora,visible on=<.->] (4,0) circle (1); 
 \fill[cstdot,dcolorb,visible on=<.->] (4,0) circle;
 \draw[dcolorb,cstarrowto,thick,visible on=<.->] (4,0)--(4.6,-0.8);
 \draw
-  (4.1,-0.6) node[dcolorb,visible on=<.->] {$R_1$}
-  (3.7,0) node[dcolora,visible on=<.->] {$z_0$}
-  (4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
+	(4.1,-0.6) node[dcolorb,visible on=<.->] {$R_1$}
+	(3.7,0) node[dcolora,visible on=<.->] {$z_0$}
+	(4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
 
 \fill[cstfille,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
 \filldraw[cstdote,draw=dcolora,visible on=<.->] (8,0) circle;
 \draw
-  (7.7,0) node[dcolora,visible on=<.->] {$z_0$}
-  (8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
+	(7.7,0) node[dcolora,visible on=<.->] {$z_0$}
+	(8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
 \end{tikzpicture}
 \end{center}
 
@@ -159,13 +159,13 @@
 \draw[dcolorb,cstarrowto,thick,visible on=<3->] (0,0)--(1.2,0.9);
 \draw[dcolora,cstarrowto,thick,visible on=<3->] (0,0)--(0.6,-0.8);
 \draw
-  (-1.25,-0.15) node[visible on=<4->] {$\zeta$}
-  (0.5,0.1) node[dcolorb,visible on=<3->] {$R$}
-  (0.1,-0.5) node[dcolora,visible on=<3->] {$r$}
-  (-0.3,0) node {$z_0$}
-  (0.8,-1) node[dcolora,visible on=<3->] {$K_1$}
-  (1.4,1.2) node[dcolorb,visible on=<3->] {$K_2$}
-  (-0.3,1.25) node[visible on=<4->] {$z$};
+	(-1.25,-0.15) node[visible on=<4->] {$\zeta$}
+	(0.5,0.1) node[dcolorb,visible on=<3->] {$R$}
+	(0.1,-0.5) node[dcolora,visible on=<3->] {$r$}
+	(-0.3,0) node {$z_0$}
+	(0.8,-1) node[dcolora,visible on=<3->] {$K_1$}
+	(1.4,1.2) node[dcolorb,visible on=<3->] {$K_2$}
+	(-0.3,1.25) node[visible on=<4->] {$z$};
 \fill[cstdot,black] (0,0) circle;
 \end{tikzpicture}
 \end{center}
@@ -355,16 +355,16 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 \onslide<+->
 洛朗展开的一些特点可以帮助我们检验计算的正确性.
 \begin{itemize}
-  \item  若 $f(z)$ 在 $|z-z_0|<R_2$ 内\emph{解析},
-  \onslide<+->
-  则 $f(z)$ 可以展开为泰勒级数.
-  \onslide<+->
-  由唯一性可知泰勒级数等于洛朗级数,
-  \onslide<+->
-  因此\emph{此时洛朗展开一定没有负幂次项}.
-  \item 若 $f(z)$ 在 $|z-z_0|=R_1,R_2>0$ 上\emph{有奇点}, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开\emph{一定有无穷多负幂次和无穷多正幂次项}.
-  \item 有理函数在\emph{最内环的洛朗展开最多只有有限多负幂次项}, 在\emph{最外环的洛朗展开最多只有有限多正幂次项}.
-  \item 有理函数在不同圆环域上的洛朗展开形式地相减, 系数会有\emph{共同的通项形式} (形如 $n^k\lambda^n$ 这种的组合).
+	\item  若 $f(z)$ 在 $|z-z_0|<R_2$ 内\emph{解析},
+	\onslide<+->
+	则 $f(z)$ 可以展开为泰勒级数.
+	\onslide<+->
+	由唯一性可知泰勒级数等于洛朗级数,
+	\onslide<+->
+	因此\emph{此时洛朗展开一定没有负幂次项}.
+	\item 若 $f(z)$ 在 $|z-z_0|=R_1,R_2>0$ 上\emph{有奇点}, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开\emph{一定有无穷多负幂次和无穷多正幂次项}.
+	\item 有理函数在\emph{最内环的洛朗展开最多只有有限多负幂次项}, 在\emph{最外环的洛朗展开最多只有有限多正幂次项}.
+	\item 有理函数在不同圆环域上的洛朗展开形式地相减, 系数会有\emph{共同的通项形式} (形如 $n^k\lambda^n$ 这种的组合).
 \end{itemize}
 \end{frame}
 
