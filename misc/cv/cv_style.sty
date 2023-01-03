@@ -5,9 +5,11 @@
 \newcommand{\urlColor}{magenta}
 \hypersetup{urlcolor=\urlColor}
 \setlength{\parindent}{0em}
-\setlist[itemize,1]{label=$\diamond$}
-\setlist[enumerate,1]{label=$\blacktriangleright$}
-\setlist[enumerate,2]{label=$\bullet$, topsep=-1ex, itemsep=0ex, parsep=0ex, leftmargin=1em}
+\newlist{cvlist}{itemize}{3}
+\setlist[cvlist,1]{label=$\diamond$}
+\newlist{cvstage}{itemize}{3}
+\setlist[cvstage,1]{label=$\blacktriangleright$}
+\setlist[cvstage,2]{label=$\bullet$, topsep=-1ex, itemsep=0ex, parsep=0ex, leftmargin=1em}
 \renewcommand{\hrulefill}{\leavevmode\leaders\hrule height 0.2ex\hfill\kern\z@}
 
 \newcommand{\cvtitle}[4]{
@@ -29,13 +31,13 @@
 \newcommand{\cvsection}[1]{{%
   \vspace{2ex}%
   \raggedright\strut{\Large\bfseries\textcolor{\mainColor}{#1}}\par%
-  \raisebox{0.5ex}{\textcolor{\mainColor}{\rule{0.25\textwidth}{1.2ex}}}%
-  \raisebox{1.5ex}{\textcolor{\mainColor}{\rule{0.75\textwidth}{0.2ex}}}\par\nobreak%
+  \raisebox{0.5ex}{\textcolor{\mainColor}{\rule{0.25\columnwidth}{1.2ex}}}%
+  \raisebox{1.5ex}{\textcolor{\mainColor}{\rule{0.7\columnwidth}{0.2ex}}}\par\nobreak%
 }}
 \newcommand{\cvsubsection}[1]{{%
   \vspace{2ex}%
   \raggedright\strut{\large\bfseries\textcolor{\mainColor}{#1}}\hspace{2pt}%
-  \textcolor{\mainColor}{\hrulefill}\hspace{0.5\textwidth}~\par\nobreak%
+  \textcolor{\mainColor}{\hrulefill}\hspace{0.5\columnwidth}~\par\nobreak%
 }}
 
 \newcommand{\editem}[4]{%

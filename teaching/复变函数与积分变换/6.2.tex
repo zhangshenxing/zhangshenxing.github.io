@@ -1,298 +1,320 @@
-\section{傅里叶变换的性质和应用}
+\section{拉普拉斯变换}
 
+\subsection{拉普拉斯变换}
 
-\begin{frame}{傅里叶变换的性质}
-\onslide<+->
-我们不可能也没必要每次都对需要变换的函数从定义出发计算傅里叶变换.
-\onslide<+->
-通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
-
-\begin{block}{线性性质}
-\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
-\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{block}
-\vspace{-5pt}
-
-\begin{block}{位移性质}
-\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
-\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
-\vspace{-\baselineskip}
-\end{block}
-\onslide<+->
-位移性质通过变量替换容易证明.
-\onslide<+->
-由此可得
-\[\aboxeq{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
-\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}}.\]
+\begin{frame}{拉普拉斯变换}
+	\onslide<+->
+	傅里叶变换对函数要求过高, 这使得在很多时候无法应用它, 或者要引入复杂的广义函数.
+	\onslide<+->
+	对于一般的 $\varphi(t)$, 为了让它绝对可积, 我们考虑
+	\[\varphi(t)u(t)e^{-\beta t},\quad\beta>0.\]
+	\onslide<+->
+	它的傅里叶变换为
+	\[\msf[\varphi(t)u(t)e^{-\beta t}]=\int_0^{+\infty}\varphi(t)e^{-(\beta+j\omega)t}\diff t=\int_0^{+\infty}\varphi(t)e^{-st}\diff t,\]
+	其中 $s=\beta+j\omega$.
+	\onslide<+->
+	这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
+	\onslide<+->
+	我们称之为 $\varphi(t)$ 的\emph{拉普拉斯变换 $\msl[\varphi]$}.
 \end{frame}
 
 
-\begin{frame}{傅里叶变换的性质}
-\begin{block}{微分性质}
-\[\msf[f'(t)]=j\omega F(\omega),\quad
-\msf^{-1}[F'(\omega)]=-jtf(t),\]
-\onslide<+->
-\vspace{-\baselineskip}
-\[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
-\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
-\end{block}
-\onslide<+->
-这里, 被变换的函数都要求在 $\infty$ 处趋于 $0$, 下同. 
-\onslide<+->
-这由
-\[\msf[f']=\pair{f'(t),e^{-j\omega t}}=-\pair{f(t),(e^{-j\omega t})'}=j\omega F(\omega)\]
-可得.
+\begin{frame}{拉普拉斯变换存在定理}
+	\onslide<+->
+	\begin{block}{拉普拉斯变换存在定理}
+			若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足
+			\begin{itemize}
+				\item $f(t)$ 在任一有限区间上至多只有有限多间断点;
+				\item 存在 $M,c$ 使得 $|f(t)|\le Me^{ct}$,
+			\end{itemize}
+		\onslide<+->{%
+			则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
+		}
+	\end{block}
 
-\begin{block}{积分性质}
-\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
-\end{block}
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[node distance=118pt]
+			\node[cstnodeg,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
+			\node[cstnodeg,align=center, right=of a](b){象函数\\\alert{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
+			\draw[cstnarrow, dcolora] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
+			\draw[cstnarrow, dcolorc] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
+		\end{tikzpicture}
+	\end{center}
+
+	\onslide<+->
+	虽然我们限定了函数只定义在 $t\ge 0$ 处, 但很多时候这不影响我们使用.
+	\onslide<+->
+	这是因为在物理学中, 很多时候我们只考虑系统自某个时间点开始之后的行为.
 \end{frame}
 
 
-\begin{frame}{傅里叶变换的性质}
-由微分性质可得
-\begin{block}{乘多项式性质}
-\[\msf[tf(t)]=jF'(\omega),\quad
-\msf^{-1}[\omega F(\omega)]=-jf'(t),\]
-\onslide<+->
-\[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
-\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
-\end{block}
-\onslide<+->
-由变量替换易得
-\begin{block}{相似性质}
-\[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
-\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
-\end{block}
+\begin{frame}{例题: 求拉普拉斯变换}
+	\onslide<+->
+	\begin{example}
+		求 $\msl[e^{kt}]$.
+	\end{example}
+	
+	\onslide<+->
+	\begin{solution}
+		\vspace{-\baselineskip}
+			\begin{align*}
+				\msl[e^{kt}]&=\int_0^{+\infty}e^{kt}e^{-st}\diff t\\
+				&\visible<+->{=\int_0^{+\infty}e^{-(s-k)t}\diff t
+				=-\frac1{s-k}e^{-(s-k)t}\big|_0^{+\infty}}\\
+				&\visible<+->{=\frac1{s-k}, \quad\Re s>\Re k.}
+			\end{align*}
+		\onslide<+->{%
+			即 \alert{$\msl[e^{kt}]=\dfrac1{s-k}$}.
+		}
+		\onslide<+->{%
+			特别地 \alert{$\msl[1]=\dfrac1s$}.
+		}
+	\end{solution}
 \end{frame}
 
 
-\begin{frame}{典型例题: 计算傅里叶变换}
-\begin{example}
-求 $\msf[t^k e^{-\beta t}u(t)],\beta>0$.
-\end{example}
-\begin{solution}
-\vspace{-\baselineskip}
-\begin{align*}
-\msf[e^{-\beta t}u(t)]&=\frac{1}{\beta+j\omega},\\
-\visible<+->{\msf[t^ke^{-\beta t}u(t)]}&\visible<.->{=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}}
-	\visible<+->{=\frac{k!}{(\beta+j\omega)^{k+1}}.}
-\end{align*}
-\end{solution}
+\begin{frame}{例题: 求拉普拉斯变换}
+	\onslide<+->
+	\begin{example}
+		求 $\msl[t^m]$, 其中 $m$ 是正整数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+			由分部积分可知
+			\begin{align*}
+				\msl[t^m]&=\int_0^{+\infty}t^me^{-st}\diff t\\
+				&=-\frac{t^me^{-st}}s\Big|_0^{+\infty}+\int_0^{+\infty}\frac{e^{-st}}s\cdot mt^{m-1}\diff t\\
+				&=\frac ms\msl[t^{m-1}].
+			\end{align*}
+		\onslide<+->{%
+			归纳可知 $\displaystyle\msl[t^m]=\frac{m!}{s^m}\msl[1]=\alert{\frac{m!}{s^{m+1}}}$.
+		}
+	\end{solution}
 \end{frame}
 
 
-\begin{frame}{典型例题: 计算傅里叶变换}
-\begin{example}
-求 $\sin{\omega_0 t}$ 的傅里叶变换.
-\end{example}
-\begin{solution}
-由于 $\msf[1]=2\pi\delta(\omega)$,
-\onslide<+->
-因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
-\onslide<+->
-\begin{align*}
-\aboxeq{\msf[\sin{\omega_0 t}]}&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
-&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
-&\visible<+->{\aboxeq{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)]}.}
-\end{align*}
-\end{solution}
+\subsection{拉普拉斯变换的性质}
+
+\begin{frame}{拉普拉斯变换的性质}
+	\onslide<+->
+	和傅里叶变换类似, 拉普拉斯变换也有着各种性质. 我们不加证明地列出它们.
+
+	\onslide<+->
+	\begin{block}{拉普拉斯变换的性质}
+		\begin{itemize}
+			\item (线性性质) $\msl[\alpha f+\beta g]=\alpha F+\beta G, \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g$.
+			\item (积分性质) $\displaystyle\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s)$.
+			\item (乘多项式性质) $\msl[tf(t)]=-F'(s),\quad\msl[t^kf(t)]=(-1)^kF^{(k)}(s)$.
+			\item (延迟性质) $\msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0$.
+			\item (位移性质) $\msl[e^{s_0t}f(t)]=F(s-s_0)$.
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
-\begin{frame}{典型例题: 计算傅里叶变换}
-\begin{exercise}
-求 $\cos{\omega_0 t}$ 的傅里叶变换.
-\end{exercise}
-\begin{answer}
-\abox{$\msf[\cos{\omega_0 t}]=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}.
-\end{answer}
+\begin{frame}{拉普拉斯变换的性质}	
+	\onslide<+->
+	\begin{alertblock}{微分性质}
+		\[\msl[f'(t)]=sF(s)-f(0),\]
+		\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0).\]
+	\end{alertblock}
+
+	\onslide<+->
+	从拉普拉斯变换的微分性质可以看出, 拉普拉斯变换可以将微分方程转化为代数方程, 从而可用于解微分方程.
 \end{frame}
 
 
-\begin{frame}{卷积}
-\begin{definition}
-$f_1(t),f_2(t)$ 的\emph{卷积}是指
-\[\alert{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
-\end{definition}
-\onslide<+->
-容易验证卷积满足如下性质:
-\begin{itemize}
-\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
-\item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
-\item $f\ast\delta=f$;
-\item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
-\end{itemize}
+\begin{frame}{典型例题: 求拉普拉斯变换}
+	\onslide<+->
+	\begin{example}
+		求 $\msl[\sin{kt}]$.
+	\end{example}
+	
+	\onslide<+->
+	\begin{solution}
+		\begin{align*}
+			\msl[\sin{kt}]&=\frac{\msl[e^{jkt}]-\msl[e^{-jkt}]}{2j}\\
+			&\visible<+->{=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)}
+			\visible<+->{=\alert{\frac k{s^2+k^2}}.}
+		\end{align*}
+	\end{solution}
+	
+	\onslide<+->
+	\begin{exercise}
+		$\msl[\cos{kt}]=$\fillblank[3cm][3mm]{\visible<+->{$\dfrac s{s^2+k^2}$}}.
+	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 计算卷积}
-\begin{example}
-设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$.
-求 $f_1\ast f_2$.
-\end{example}
-\begin{solution}
-\vspace{-\baselineskip}
-\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_2(\tau)f_1(t-\tau)\diff \tau=\int_0^{+\infty} e^{-\tau}u(t-\tau)\diff \tau.\]
-\onslide<+->
-当 $t<0$ 时, $(f_1\ast f_2)(t)=0$.
-\onslide<+->
-当 $t\ge0$ 时, 
-\[(f_1\ast f_2)(t)=\int_0^t e^{-\tau}\diff \tau=1-e^{-t}.\]
-\onslide<+->
-故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
-\end{solution}
+\begin{frame}{例题: 求拉普拉斯变换}
+	\onslide<+->
+	\begin{example}
+		求 $\msl[t^me^{kt}]$, 其中 $m$ 是正整数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $\msl[t^m]=\dfrac{m!}{s^{m+1}}$ 可知
+		\[\msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}}.\]
+	\end{solution}
 \end{frame}
 
+
+\begin{frame}{常见拉普拉斯变换汇总}
+	\onslide<+->
+	\begin{alertblock}{常见拉普拉斯变换汇总}
+		\[\msl[1]=\frac1s,\quad \msl[e^{kt}]=\frac1{s-k},\]
+		\[\msl[t^m]=\frac{m!}{s^{m+1}},\quad \msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}},\]
+		\[\msl[\sin kt]=\frac{k}{s^2+k^2},\quad
+		\msl[\cos kt]=\frac{s}{s^2+k^2}.\]
+	\end{alertblock}
+\end{frame}
+
+
+\subsection{拉普拉斯逆变换}
+
+\begin{frame}{拉普拉斯逆变换}
+	\onslide<+->
+	拉普拉斯逆变换可以由如下定理给出
+	\begin{block}{拉普拉斯逆变换定理}
+		设 $F(s)$ 的所有奇点为 $s_1,\dots,s_k$, 且 $\lim\limits_{z\to\infty}F(z)=0$, 则
+		\[\msl^{-1}[F(s)]=\sum_{k=1}^n \Res\left[F(s)e^{st},s_k\right].\]
+	\end{block}
+
+	\onslide<+->
+	不过我们只要求掌握如何利用常见函数的拉普拉斯变换来计算逆变换.
+\end{frame}
+
+
+\begin{frame}{例题: 求拉普拉斯逆变换}
+	\onslide<+->
+	\begin{example}
+		求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+			\begin{align*}
+				\Res[F(s)e^{st},0]&=\frac{e^{st}}{(s-1)^2}\Big|_{s=0}=1,\\
+				\Res[F(s)e^{st},1]&=\left(\frac{e^{st}}s\right)'\Big|_{s=1}=\frac{te^{st}s-e^{st}}{s^2}\Big|_{s=1}=(t-1)e^t,
+			\end{align*}%
+		\onslide<+->{%
+			故 $\msl^{-1}[F(s)]=1+(t-1)e^t$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 求拉普拉斯逆变换}
+	\onslide<+->
+	\begin{proofblock}{另解}
+			设
+			$\displaystyle F(s)=\frac as+\frac b{s-1}+\frac c{(s-1)^2}$,
+		\onslide<+->{%
+			则
+			\begin{align*}
+				a&=\Res[F(s),0]=\frac1{(s-1)^2}\Big|_{s=0}=1,\\
+				b&=\Res[F(s),1]=\left(\frac1s\right)'\Big|_{s=1}=-\frac1{s^2}\Big|_{s=1}=-1,\\
+				c&=\Res[(s-1)F(s),1]=\frac1s\Big|_{s=1}=1.
+			\end{align*}
+		}%
+		\onslide<+->{%
+			故
+			$\displaystyle\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1s-\frac1{s-1}+\frac1{(s-1)^2}\right]=1+(t-1)e^t$.
+		}
+	\end{proofblock}
+\end{frame}
+
+
+\subsection{卷积定理}
 
 \begin{frame}{卷积定理}
-\beqskip{0pt}
-\begin{block}{卷积定理}
-\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
-\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
-\vspace{-8pt}
-\end{block}
-\begin{proofs}
-\begin{align*}
-\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
-&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
-&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}\\
-&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}\\
-&\visible<+->{=\msf[f_1]\msf[f_2].}\hspace{180pt}\mqed
-\end{align*}
-\end{proofs}
-\endgroup
+	\onslide<+->
+	由于在拉普拉斯变换中, 我们考虑的函数在 $t<0$ 时都是零.
+	\onslide<+->
+	此时函数的卷积变成了
+	\[f_1(t)\ast f_2(t)=\int_0^t f_1(\tau)f_2(t-\tau)\diff \tau,\quad t\ge 0,\]
+	\onslide<+->
+	且我们有如下的卷积定理.
+
+	\onslide<+->
+	\begin{block}{卷积定理}
+		\[\msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).\]
+	\end{block}
 \end{frame}
 
 
-\begin{frame}{卷积的应用: 奇怪的积分规律}
+\subsection{拉普拉斯变换的应用}
+
+\begin{frame}{使用拉普拉斯变换解微积分方程}
+	\begin{center}
+		\begin{tikzpicture}[node distance=40pt]
+			\node[cstnodeg] (a){微分方程或积分方程};
+			\node[cstnodeb,right=110pt of a] (b){象函数的代数方程};
+			\node[cstnodeg,below=of a] (c){原象函数(方程的解)};
+			\node[cstnodeb,below=of b] (d){象函数};
+			\draw[cstnarrow,dcolorb] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
+			\draw[cstnarrow,dcolorb] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
+			\draw[cstnarrow,dcolorb] (b)--(d);
+			\draw[cstnarrow,dcolorc] (a)--(c);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
+	\onslide<+->
 	\begin{example}
-		使用计算机进行数值计算可以发现
-		\begin{align*}
-			I_1=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\diff\omega&=3.1415926535897\cdots\\
-			I_3=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\diff\omega&=3.1415926535897\cdots\\
-			I_5=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdot
-			\frac{\sin 5\omega}{5\omega}\diff\omega&=3.1415926535897\cdots\\
-			I_{13}=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdots
-			\frac{\sin 13\omega}{13\omega}\diff\omega&=3.1415926535897\cdots\\
-			I_{15}=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin 3\omega}{3\omega}\cdots
-			\frac{\sin 15\omega}{1\omega}\diff\omega&=3.1415926535\alert{435\cdots}
-		\end{align*}
+		(2022年A卷) 解微分方程
+		$\displaystyle\begin{cases}y''+2y=\sin t,&\\y(0)=0,\quad y'(0)=2.\end{cases}$
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{卷积的应用: 奇怪的积分规律}
+	
+	\onslide<+->
 	\begin{solution}
-		设 $F(\omega)=\dfrac{\sin\omega}{\omega}$, 则
-		$\displaystyle\frac{I_k}{2\pi}=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)\cdots F(k\omega)\diff\omega$ 是被积函数的傅里叶逆变换在 $0$ 的取值.
-		我们之前计算过
-		\[f(t)=\begin{cases}
-			1/2, & |t|<1,\\
-			1/4, & |t|=1,\\
-			0, & |t|>1
-		\end{cases}\]
-		的傅里叶变换是 $F(\omega)$, 所以 $F(m\omega)$ 的傅里叶逆变换为 $\dfrac1mf(\dfrac tm)$, 
-		被积函数的傅里叶逆变换为
-		$\displaystyle h_k(t)=f(t)\ast \frac13f(\frac t3)\ast\cdots\ast \frac1 kf(\frac tk)$.
+			设 $\msl[y]=Y$, 则 
+			$\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2$,
+		\onslide<+->{%
+			因此
+			\[s^2Y-2+2Y=\msl[\sin t]=\frac{1}{s^2+1},\]
+		}
+		\vspace{-\baselineskip}
+		\onslide<+->{%
+			\[Y(s)=\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}=\frac{1}{s^2+1}+\frac{1}{s^2+2},\]
+		}
+		\onslide<+->{%
+			\[y(t)=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right]
+			=\sin t+\frac{\sqrt 2}2\sin(\sqrt 2 t). \qedhere\]
+		}
+		\vspace{-\baselineskip}
 	\end{solution}
-	\end{frame}
-
-
-\begin{frame}{卷积的应用: 奇怪的积分规律}
-	\begin{solutionc}
-		注意到 $\frac1mf(\frac tm)$ 在整个实轴上的积分为 $1$, 一个函数 $g(t)$ 和它做卷积之后在 $t$ 处的值相当于 $g(t)$ 在 $[t-\frac1m,t+\frac1m]$ 上取平均值.
-		由此可知, 
-		\begin{itemize}
-			\item $f(t)\ast \frac13f(\frac13)$ 在 $|t|<1-\frac13$ 上取值为 $1/2$;
-			\item $f(t)\ast \frac13f(\frac13)\ast \frac15f(\frac15)$ 在 $|t|<1-\frac13-\frac15$ 上取值为 $1/2$;
-			\item 最终 $h_k(t)$ 在 $|t|<1-\frac13-\cdots-\frac1k$ 上取值为 $1/2$.
-			\item 而 $\frac13+\cdots+\frac1{13}\approx 0.955$, $\frac13+\cdots+\frac1{15}\approx 1.02$, 所以
-			\[I_1=I_3=\cdots=I_{13}=2\pi h_{13}(0)=\pi,\]
-			\[I_{15}=2\pi h_{15}(0)=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\pi.\]
-		\end{itemize}
-	\end{solutionc}
 \end{frame}
 
 
-\begin{frame}{使用傅里叶变换解微积分方程}
-\begin{center}
-\begin{tikzpicture}[node distance=40pt]
-\node[cstnodeg] (p1){微分方程或积分方程};
-\node[cstnodeb,right=110pt of p1] (p2){象函数的代数方程};
-\node[cstnodeg,below=of p1] (p3){原象函数(方程的解)};
-\node[cstnodeb,below=of p2] (p4){象函数};
-\draw[cstnarrow,dcolorb] (p1)--node[above]{傅里叶变换 $\msf$}(p2);
-\draw[cstnarrow,dcolorb] (p4)--node[below]{傅里叶逆变换 $\msf^{-1}$}(p3);
-\draw[cstnarrow,dcolorb] (p2)--(p4);
-\draw[cstnarrow,dcolorc] (p1)--(p3);
-\end{tikzpicture}
-\end{center}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
+	\onslide<+->
+	\begin{example}
+		解微分方程 $y''(t)-y(t)=0$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+			设 $a=y(0),b=y'(0),\msl[y]=Y$,
+		\onslide<+->{%
+			则
+			\[\msl[y'']=s^2Y-as-b,\]
+		}
+		\vspace{-\baselineskip}
+		\onslide<+->{%
+			\[s^2Y-as-b-Y=0,\]
+		}
+		\onslide<+->{
+			\[Y(s)=\frac{as-b}{s^2-1}=\frac{a+b}2\cdot\frac1{s-1}+\frac{a-b}2\cdot\frac1{s+1},\]
+		}
+		\onslide<+->{
+			\[y(t)=\msl^{-1}[Y(s)]=\frac{a+b}2e^t+\frac{a-b}2e^{-t}.\]
+		}
+		\vspace{-\baselineskip}
+	\end{solution}
 \end{frame}
-
-
-\begin{frame}{例题: 使用傅里叶变换解微积分方程}
-\beqskip{0pt}
-\begin{example}
-解方程 $x'(t)-\displaystyle\int_{-\infty}^t x(\tau)\diff \tau=2\delta(t)$.
-\end{example}
-\begin{solution}
-设 $\msf[x]=X$, 则两边同时作傅里叶变换得到
-\onslide<+->
-\[j\omega X(\omega)-\frac1{j\omega}X(\omega)=2,\]
-\onslide<+->
-\[X(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
-\onslide<+->
-\begin{align*}
-x(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
-&\visible<+->{=\begin{cases}
-0-e^t=-e^t,&t<0,\\
-0,&t=0,\\
-e^{-t}-0=e^{-t},&t>0.
-\end{cases}}
-\end{align*}
-\end{solution}
-\vspace{-1pt}
-\endgroup
-\end{frame}
-
-
-\begin{frame}{例题: 使用傅里叶变换解微积分方程}
-\beqskip{8pt}
-\begin{example}
-解方程 $x''(t)-x(t)=0$.
-\end{example}
-\begin{solution}
-设 $\msf[x]=X$,
-\onslide<+->
-则
-\[\msf[x''(t)-x(t)]=[(j\omega)^2-1]X(\omega)=0,\]%
-\onslide<+->
-\vspace{-\baselineskip}
-\[X(\omega)=0,\quad x(t)=\msf^{-1}[X(\omega)]=0.\]
-\end{solution}
-\onslide<+->
-显然这是不对的, 该方程的解实际上是 $x(t)=C_1e^t+C_2e^{-t}$.
-\onslide<+->
-原因在于使用傅里叶变换要求函数是绝对可积的, 而非零的 $C_1e^t+C_2e^{-t}$ 并不满足该条件.
-\onslide<+->
-我们需要一个对函数限制更少的积分变换来解决此类方程, 例如拉普拉斯变换.
-\endgroup
-\end{frame}
-
-
-% {
-% \homework
-% \begin{frame}[<*>]{作业}
-% 	\begin{homeworks}
-% 		\item(2020年A卷) 下列不是傅里叶变换对的是\fillbrace.
-% 		\xx{$\delta(t),1$}%
-% 			{$e^{j\omega_0t},2\pi\delta(\omega-\omega_0)$}%
-% 			{$\sin \omega_0t, \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$}%
-% 			{$1,2\pi\delta(\omega)$}
-% 		\item(2020年B卷) $F(t)=\delta(t-t_0)$ 的傅里叶变换为\fillblank{}.
-% 		\item(2021年A卷) $F(\omega)=\delta(\omega+2)$ 的傅里叶逆变换为\fillblank{}.
-% 		\item(2022年A卷) 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
-% 	\end{homeworks}
-% \end{frame}
-% }

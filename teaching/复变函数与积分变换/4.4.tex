@@ -26,8 +26,7 @@
 \onslide<+->
 \begin{definition}
 如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
-\onslide<+->
-否则我们称之为\emph{发散}.
+\onslide<+->{否则我们称之为\emph{发散}.}
 \end{definition}
 \onslide<+->
 注意双边幂级数的敛散性不能像幂级数那样通过部分和形成的数列的极限来定义,
@@ -101,19 +100,18 @@
 
 
 \begin{frame}{例题: 双边幂级数的收敛域}
+\onslide<+->
 \begin{example}
 求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}$ 的收敛域与和函数, 其中 $a,b$ 为非零复数.
 \end{example}
+\onslide<+->
 \begin{solution}
-\indent
 非负幂次部分收敛当且仅当 $|z|<|2+i|=\sqrt5$, 负幂次部分收敛当且仅当 $|z|>|2|=2$.
-\onslide<+->
-因此该双边幂级数的收敛域为 $2<|z|<\sqrt5$.
-\onslide<+->
-此时
+\onslide<+->{因此该双边幂级数的收敛域为 $2<|z|<\sqrt5$.}
+\onslide<+->{此时
 \begin{align*}
 \sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}&=\frac{\dfrac 2z}{1-\dfrac 2z}+\frac1{1-\dfrac z{2+i}}=\frac{-iz}{(z-2)(z-2-i)}.
-\end{align*}
+\end{align*}}
 \end{solution}
 \end{frame}
 
@@ -241,27 +239,27 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 \subsection{洛朗展开的计算}
 \begin{frame}{典型例题: 求洛朗级数}
 \beqskip{9pt}
+\onslide<+->
 \begin{example}
 将 $f(z)=\dfrac{e^z}{z^2}$ 展开为以 $0$ 为中心的洛朗级数.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $0$ 是奇点, $f(z)$ 在 $0<|z|<+\infty$ 内解析.
-\onslide<+->
-我们有
+\onslide<+->{我们有
 \[c_n=\frac1{2\pi i}\oint_C\frac{e^\zeta}{\zeta^{n+3}}\diff\zeta,\]
-其中 $C$ 为圆环域内的闭路.
-\onslide<+->
-当 $n\le -3$ 时, 被积函数处处解析, 因此由柯西-古萨基本定理, $c_n=0$.
-\onslide<+->
-当 $n\ge -2$ 时, 由柯西积分公式
+其中 $C$ 为圆环域内的闭路.}
+\onslide<+->{当 $n\le -3$ 时, 被积函数处处解析, 因此由柯西-古萨基本定理, $c_n=0$.}
+\onslide<+->{当 $n\ge -2$ 时, 由柯西积分公式
 \[c_n=\frac1{2\pi i}\oint_C\frac{e^\zeta}{\zeta^{n+3}}\diff\zeta
-=\frac1{(n+2)!}(e^z)^{(n+2)}|_{z=0}=\frac1{(n+2)!}.\]
+=\frac1{(n+2)!}(e^z)^{(n+2)}|_{z=0}=\frac1{(n+2)!}.\]}
 \end{solution}
 \endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗级数}
+\onslide<+->
 \begin{solutionc}
 因此
 \vspace{-\baselineskip}
@@ -284,65 +282,65 @@ f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{example}
 在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
 
-\onslide<+->
-\enumnum1 $0<|z|<1$, \enumnum2 $1<|z|<2$, \enumnum3 $2<|z|<+\infty$. 
+\onslide<+->{\enumnum1 $0<|z|<1$, \enumnum2 $1<|z|<2$, \enumnum3 $2<|z|<+\infty$.}
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
-\onslide<+->
-注意到
+\onslide<+->{注意到
 \[f(z)=\frac1{z-2}-\frac1{z-1},\]
-因此我们可以根据 $|z|$ 的范围来将其展开成等比级数.
+因此我们可以根据 $|z|$ 的范围来将其展开成等比级数.}
 \end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{solutionc}
 \enumnum1 由于 $|z|<1,\abs{\dfrac z2}<1$,
-\onslide<+->
-因此
+\onslide<+->{因此
 \begin{align*}
 f(z)&=-\frac1{2-z}+\frac1{1-z}
 \visible<+->{=-\frac12\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
 &\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n+\sum_{n=0}^\infty z^n}
 \visible<+->{=\sum_{n=0}^\infty\left(1-\frac1{2^{n+1}}\right)z^n}\\
 &\visible<+->{=\frac12+\frac34z+\frac78z^2+\cdots}
-\end{align*}
+\end{align*}}
 \end{solutionc}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{solutionc}
 \enumnum2 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
-\onslide<+->
-因此
+\onslide<+->{因此
 \begin{align*}
 f(z)&=\frac1{1-z}-\frac1{2-z}
 \visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\frac12\cdot\frac1{1-\dfrac z2}}\\
 &\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
 \visible<+->{=-\sum_{n=-\infty}^{-1}z^n-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
 &\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\frac12-\frac14z-\frac18z^2-\cdots}
-\end{align*}
+\end{align*}}
 \end{solutionc}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{solutionc}
-\enumnum3 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->
-因此
+\enumnum3 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->{因此
 \begin{align*}
 f(z)&=\frac1{1-z}-\frac1{2-z}
 	\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}\\
 &\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n+\frac1z\sum_{n=0}^\infty\left(\frac2z\right)^n}
 	\visible<+->{=\sum_{n=0}^\infty(2^n-1)z^{-n-1}}\\
 &\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
-\end{align*}
+\end{align*}}
 \end{solutionc}
 % \onslide<+->
 % 同一个函数在不同的圆环域内有不同的洛朗展开, 这和洛朗展开的唯一性并不矛盾.
@@ -383,18 +381,20 @@ f(z)&=\frac1{1-z}-\frac1{2-z}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{example}
 将 $f(z)=\dfrac1{z(z-2)}$ 在 $2$ 的去心邻域内展开成洛朗级数.
 \end{example}
+\onslide<+->
 \begin{solution}
 由于 $0$ 是奇点, $f(z)$ 在 $0<|z-2|<2$ 内解析.
-\onslide<+->
+\onslide<+->{
 \begin{align*}
-f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
-&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}}
-	\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
-&\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.}
-\end{align*}
+	f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
+	&\visible<+->{=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}}
+		\visible<+->{=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n}\\
+	&\visible<+->{=\frac1{2(z-2)}+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+2}}(z-2)^n,\quad 0<|z-2|<2.}
+\end{align*}}
 \vspace{-0.7\baselineskip}
 \end{solution}
 \end{frame}
@@ -402,9 +402,11 @@ f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
 
 
 \begin{frame}{典型例题: 求洛朗展开}
+\onslide<+->
 \begin{exercise}
 将 $z^3\exp\left(\dfrac1z\right)$ 在 $0<|z|<+\infty$ 内展开成洛朗级数.
 \end{exercise}
+\onslide<+->
 \begin{answer}
 \vspace{-\baselineskip}
 \begin{align*}
@@ -435,18 +437,16 @@ z^3\exp\left(\frac1z\right)&=\sum_{n=0}^\infty\frac{1}{n!z^{n-3}}
 \onslide<+->
 \begin{solution}
 注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
-\onslide<+->
-我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
-\onslide<+->
+\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.}
 \vspace{-0.8\baselineskip}
+\onslide<+->{
 \begin{align*}
 f(z)&=\frac1{z(z+1)^2}=-\frac1{(z+1)^2}\cdot\frac1{1-(z+1)}\\
 &\visible<+->{=-\frac1{(z+1)^2}\sum_{n=1}^{\infty}(z+1)^{-n}}
 \visible<+->{=\sum_{n=1}^{\infty}(z+1)^{-n-2}}
-\end{align*}
-\onslide<+->{
+\end{align*}}
 \vspace{-0.3\baselineskip}
-故 $\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
+\onslide<+->{故 $\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
 \end{solution}
 \end{frame}
 

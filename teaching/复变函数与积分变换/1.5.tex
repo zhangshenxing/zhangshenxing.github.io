@@ -61,7 +61,9 @@
 \onslide<+->
 为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的\emph{映照}来表示这种对应关系,
 \onslide<+->
-其中 $w=u+iv$ 的实部和虚部 \[u(x,y),\quad v(x,y)\] 是两个二元实变函数.
+其中 
+\[w=u+iv=u(x,y)+iv(x,y)\]
+的实部和虚部是两个二元实变函数.
 \onslide<+->
 \begin{center}
 \begin{tikzpicture}
@@ -71,9 +73,9 @@
 \draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
 \draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
 \draw[cstcurve,smooth,dcolorb] plot coordinates {(1.2,0) (2,-0.5) (2.5,-0.8) (3,-0.5) (3.5,0) (3.8,0.9) (3.3,1.2) (2,0.8) (1.2,0)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0.4,0.6) (2.8,0.7)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.3,0.5) (0,-0.2) (2.2,-0.3)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.6) (2.2,-0.3)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2,0.8) to [bend left=25] (2.8,0.7);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2.3,0.5)to [bend right=15] (2.2,-0.3);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2.8,0.3) to [bend right=25] (2.2,-0.3);
 \fill[cstdot,dcolora] (-2,0.8) circle;
 \fill[cstdot,dcolora] (-2.3,0.5) circle;
 \fill[cstdot,dcolora] (-2.8,0.3) circle;
@@ -108,18 +110,18 @@
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
 \draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
-\draw[cstcurve,dcolorb,smooth] plot coordinates {(4,0) (4.2,-0.4) (2.8,-0.9) (2,-0.7) (1.6,0) (1.4,1) (2.8,1.2) (3.2,1) (4,0)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0,0.6) (2,0.8)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.2) (2.8,0.3)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.6,-0.2) (0,-0.6) (3.6,-0.2)};
+\draw[cstcurve,dcolorb,smooth] plot coordinates {(1,0) (0.8,0.4) (2.2,0.9) (3,0.7) (3.4,0) (3.6,-1) (2.2,-1.2) (1.8,-1) (1,0)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2,0.8) to[bend left=45] (3,-0.8);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2.8,0.3) to[bend right=25] (2.2,-0.3);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-3.6,-0.2) to[bend right=15] (1.4,0.2);
 \draw[cstcurve,dcolora] (-1.84,0.9)--(-3.76,-0.3);
-\draw[cstcurve,dcolorb] (1.84,0.9)--(3.76,-0.3);
+\draw[cstcurve,dcolorb] (3.16,-0.9)--(1.24,0.3);
 \fill[cstdot,dcolora] (-2,0.8) circle;
 \fill[cstdot,dcolora] (-2.8,0.3) circle;
 \fill[cstdot,dcolora] (-3.6,-0.2) circle;
-\fill[cstdot,dcolorb] (2,0.8) circle;
-\fill[cstdot,dcolorb] (2.8,0.3) circle;
-\fill[cstdot,dcolorb] (3.6,-0.2) circle;
+\fill[cstdot,dcolorb] (3,-0.8) circle;
+\fill[cstdot,dcolorb] (2.2,-0.3) circle;
+\fill[cstdot,dcolorb] (1.4,0.2) circle;
 \draw
   (-0.5,0.2) node {$x$}
   (-2.7,1.5) node {$y$}
@@ -146,9 +148,9 @@
 \draw[cstaxis] (2.5,-1.5)--(2.5,1.5);
 \draw[cstcurve,dcolora,smooth] plot coordinates {(-4,0) (-4.2,-0.4) (-2.8,-0.9) (-2,-0.7) (-1.6,0) (-1.4,1) (-2.8,1.2) (-3.2,1) (-4,0)};
 \draw[cstcurve,dcolorb,smooth] plot coordinates {(2.5,-0.9) (2.74,-1.02) (3.04,-0.18) (2.92,0.3) (2.5,0.54) (1.9,0.66) (1.78,-0.18) (1.9,-0.42) (2.5,-0.9)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2,0.8) (0,0.6) (2.02,0.3)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.8,0.3) (0,-0.2) (2.32,-0.18)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.6,-0.2) (0,-0.6) (2.62,-0.66)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2,0.8) to[bend left=20] (2.02,0.3);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2.8,0.3) to[bend right=10] (2.32,-0.18);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-3.6,-0.2) to[bend right=25] (2.62,-0.66);
 \draw[cstcurve,dcolora] (-1.84,0.9)--(-3.76,-0.3);
 \draw[cstcurve,dcolorb] (1.96,0.396)--(2.68,-0.756);
 \fill[cstdot,dcolora] (-2,0.8) circle;
@@ -179,9 +181,9 @@
 \draw[cstaxis] (-2.5,-1)--(-2.5,2);
 \draw[cstaxis] (0.5,0)--(4.5,0);
 \draw[cstaxis] (2.5,-1)--(2.5,2);
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-2.5,1) (-2,0.6) (-1,1.3) (1.5,0)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-1.7,1.2) (0,1.7) (1.7,1.92)};
-\draw[cstdash,smooth,dcolorc,cstarrowto] plot coordinates {(-3.1,-0.3) (-1,-0.8) (1,-0.5) (2.77,0.36)};
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-2.5,1) to[bend left=10] (1.5,0);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-1.7,1.2) to[bend left=20] (1.7,1.92);
+\draw[cstdash,smooth,dcolorc,cstarrowto] (-3.1,-0.3) to[bend right=25] (2.77,0.36);
 \fill[cstdot,fill=dcolora] (-2.5,1) circle;
 \fill[cstdot,fill=dcolora] (-1.7,1.2) circle;
 \fill[cstdot,fill=dcolora] (-3.1,-0.3) circle;
