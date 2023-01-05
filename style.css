@@ -1,168 +1,185 @@
 @media screen and (min-width: 800px) {
-	div#mainpart{
+	div#mainpart {
 		width: 820px;
-		margin: 130px auto 0;
-	}
-}
-@media screen and (max-width: 800px) {
-	div#mainpart{
-		width: 100%;
 		margin: 120px auto 0;
 	}
 }
 
-body{
+@media screen and (max-width: 800px) {
+	div#mainpart {
+		width: 100%;
+		margin: 110px auto 0;
+	}
+}
+
+/* head */
+header#head {
+	width: 100%;
+	height: 110px;
+	box-sizing: border-box;
+	padding: 24px 0px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: hsl(210, 50%, 50%);
+	color: #d8d8d8;
+}
+
+header#head h1 {
+	margin: 0 auto;
+	text-align: center;
+	font-family: "Lucida Console", STKaiti, Verdana, Arial, Helvetica, sans-serif;
+	color: #f3f3f3;
+}
+
+/* main */
+div#mainpart {
+	box-sizing: border-box;
+	padding: 40px;
+	background-color: white;
+}
+
+h2 {
+	font-family: Helvetica, SimHei, Arial, Helvetica, sans-serif;
+	font-size: 150%;
+	color: hsl(20, 60%, 50%);
+	border-bottom: 2px solid hsl(20, 60%, 50%);
+	margin: 30px 0 0;
+	padding: 2px 0;
+}
+
+h3 {
+	font-family: Helvetica, SimHei, Arial, Helvetica, sans-serif;
+	font-size: 120%;
+	color: hsl(20, 60%, 50%);
+	margin: 20px 0 0;
+}
+
+h4 {
+	font-family: Verdana, STKaiTi, Arial, Helvetica, sans-serif;
+	font-size: 120%;
+	margin: 10px 40px;
+}
+
+body {
+	font-family: Verdana, "Microsoft Yahei", Arial, Helvetica, sans-serif;
+	background-color: #eaead1;
+	color: #222222;
 	margin: 0px auto;
 	font-size: 16px;
 }
-header#head{
-	width: 100%; height: 120px;
-	box-sizing: border-box;
-	padding: 28px 0px 20px;
-	position: fixed;
-	top: 0; left: 0;
+
+table {
+	border-collapse: collapse;
+	margin: 20px auto;
+	width: 100%;
 }
-header#head h1{
-	margin: 0 auto;
-	text-align: center;
+
+th,
+td {
+	border: 1px #ccc solid;
+	vertical-align: middle;
+	padding: 5px 10px;
+	font-size: 100%;
 }
-div#mainpart{
-	box-sizing: border-box;
-	padding: 40px;
+
+li {
+	margin-bottom: 8px;
 }
-span.position::before{
-	content: "👷 ";
+
+a {
+	text-decoration: none;
+	color: hsl(210, 60%, 50%);
 }
-span.institute::before{
-	content: "🏫 ";
+
+a:hover {
+	color: hsl(20, 60%, 50%);
 }
-span.address::before{
-	content: "🌏 ";
+
+img {
+	vertical-align: middle;
+	width: 20px;
+	margin-right: 4px;
 }
-span.email::before{
-	content: "📧 ";
-	font-style: normal;
+
+h2 img {
+	filter: url(#changeIconColorGold);
+	-webkit-filter: url(#changeIconColorGold);
+	-moz-filter: url(#changeIconColorGold);
+	-ms-filter: url(#changeIconColorGold);
+	-o-filter: url(#changeIconColorGold);
 }
-span.email{
-	font-style: italic;
+
+/* about me */
+h2:first-child {
+	margin: 10px 0 0;
 }
-.math{
-	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	font-size: 120%;
+
+/* experience */
+table#experiencetable td {
+	border: none;
 }
-table.tableul td{
-	border: none;	
-}
-table.tableul td:first-child::before{
+
+table#experiencetable td:first-child::before {
 	content: "• ";
 	padding: 0px 6px 0px 14px;
 }
 
-h2::before, h3::before, h4::before{
-	content: "▹ ";
+/* research */
+.math {
+	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 120%;
 }
-h2{
-	font-weight: 5000;
-	font-size: 150%;
-}
-h3{
-	font-weight: 100;
-	font-size: 110%;
-	margin-bottom: -6px;
-}
-h4{
-	font-size: 110%;
-	margin-bottom: -10px;
-	padding-left: 20px;	
-}
-span.abstract, pre.bibitem{
-	display: none;
-	border-left: solid 5px #3399cc;
-	padding: 10px;
-	background-color: #EEEEEE;
-}
-button{
-	border-style: none;
-	cursor:pointer;
-	background-color: white;
-	font-size: 100%;
-}
-a{
-	text-decoration:none;
-}
-footer{
-	margin:20px auto;
-}
-footer p{
-	text-align:center;
-	font-size:80%;
-}
-li{
-	margin-bottom: 8px;
-}
-table{
-	border-collapse:collapse;
-	margin:20px auto;
-	width:100%;
-}
-th,td{
-	border: 1px #ccc solid;
-	vertical-align: middle;
-	padding: 5px 10px;
-	font-size: 100%;	
-}
-hr{
-	margin: 0 0 20px;
-	border: 0;
-	outline: none;
-	height: 11px;
-	background:	transparent url("./hr.gif") center center repeat-x;
-}
-img{
-	height: 20px;
-	vertical-align:middle;
-}
-/* Fonts */
-body{
-	font-family: Verdana, "Microsoft Yahei", Arial, Helvetica, sans-serif;
-}
-h1{
-	font-family:  "Lucida Console", STKaiti, Verdana, Arial, Helvetica, sans-serif;
-}
-h2, h3, h4{
-	font-family: Helvetica, STKaiti, Arial, Helvetica, sans-serif;
-}
-pre{
+
+pre {
 	font-family: Courier New;
 	tab-size: 4;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }
-/* Color */
-body{
-	background-color: #eaead1;
-	color: #222222;
+
+span.abstract,
+pre.bibitem {
+	display: none;
+	border-left: solid 5px hsl(210, 60%, 50%);
+	padding: 10px;
+	background-color: #EEEEEE;
 }
-footer{
-	color: #15152f;
+
+/* teaching */
+#courses em {
+	font-family: Helvetica, STKaiti, Arial, Helvetica, sans-serif;
+	font-style: normal;
 }
-header#head{
-	background-color: #4074b4;
-	color: #d8d8d8;
+
+a.exam::before {
+	content: url(img/pen-to-square-solid.svg);
 }
-header#head h1{
-	color: #f3f3f3;
+
+a.excourse::before {
+	content: url(img/person-chalkboard-solid.svg);
 }
-div#mainpart{
-	background-color: white;
+
+a.handout::before {
+	content: url(img/book-open-solid.svg);
 }
-button, a{
-	color: #3399cc;
+
+a.video::before {
+	content: url(img/video-solid.svg);
 }
-button:hover, a:hover{
-	color: #cc6633;
+
+a.exam::before,
+a.excourse::before,
+a.handout::before,
+a.video::before {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	margin-right: 4px;
 }
-td.tex> :first-child::before{
+
+/* links */
+td.tex> :first-child::before {
 	background: url("./img/tex.jpg") no-repeat;
 	background-size: 80% 100%;
 	height: 21px;
@@ -170,4 +187,50 @@ td.tex> :first-child::before{
 	display: inline-block;
 	content: " ";
 	vertical-align: middle;
+}
+
+/* footer */
+footer {
+	margin: 20px auto;
+	color: hsl(240, 40%, 10%);
+}
+
+footer p {
+	text-align: center;
+	font-size: 80%;
+}
+
+/* nav */
+nav {
+	width: 100%;
+	height: 48px;
+	box-sizing: border-box;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+nav p {
+	display: inline-block;
+	height: 36px;
+	padding: 5px;
+	background-color: hsl(210, 50%, 50%);
+	border-radius: 10px 10px 0px 0px;
+}
+
+nav a img {
+	filter: url(#changeIconColorWhite);
+	-webkit-filter: url(#changeIconColorWhite);
+	-moz-filter: url(#changeIconColorWhite);
+	-ms-filter: url(#changeIconColorWhite);
+	-o-filter: url(#changeIconColorWhite);
+}
+
+nav a:hover img {
+	filter: url(#changeIconColorGold);
+	-webkit-filter: url(#changeIconColorGold);
+	-moz-filter: url(#changeIconColorGold);
+	-ms-filter: url(#changeIconColorGold);
+	-o-filter: url(#changeIconColorGold);
 }
