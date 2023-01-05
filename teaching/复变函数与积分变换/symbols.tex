@@ -58,14 +58,14 @@
 \newcommand\stsc[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 \newlength{\larc}
 \NewDocumentCommand\warc{o m}{%
-  \IfNoValueTF {#1}%
-  {%
-    \settowidth{\larc}{$#2$}%
-    \stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{0.7\larc}\right.}}}{#2}%
-  }%
-  {%
-    \stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1}\right.}}}{#2}%
-  }%
+	\IfNoValueTF {#1}%
+	{%
+		\settowidth{\larc}{$#2$}%
+		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{0.7\larc}\right.}}}{#2}%
+	}%
+	{%
+		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1}\right.}}}{#2}%
+	}%
 }
 
 

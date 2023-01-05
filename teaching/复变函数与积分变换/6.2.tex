@@ -26,9 +26,7 @@
 			\begin{itemize}
 				\item $f(t)$ 在任一有限区间上至多只有有限多间断点;
 				\item 存在 $M,c$ 使得 $|f(t)|\le Me^{ct}$,
-			\end{itemize}
-		\onslide<+->{%
-			则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
+			\end{itemize}\onslide<+->{则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
 		}
 	\end{block}
 
@@ -64,12 +62,8 @@
 				=-\frac1{s-k}e^{-(s-k)t}\big|_0^{+\infty}}\\
 				&\visible<+->{=\frac1{s-k}, \quad\Re s>\Re k.}
 			\end{align*}
-		\onslide<+->{%
-			即 \alert{$\msl[e^{kt}]=\dfrac1{s-k}$}.
-		}
-		\onslide<+->{%
-			特别地 \alert{$\msl[1]=\dfrac1s$}.
-		}
+			\onslide<+->{即 \alert{$\msl[e^{kt}]=\dfrac1{s-k}$}.}
+			\onslide<+->{特别地 \alert{$\msl[1]=\dfrac1s$}.}
 	\end{solution}
 \end{frame}
 
@@ -82,14 +76,14 @@
 
 	\onslide<+->
 	\begin{solution}
-			由分部积分可知
-			\begin{align*}
-				\msl[t^m]&=\int_0^{+\infty}t^me^{-st}\diff t\\
-				&=-\frac{t^me^{-st}}s\Big|_0^{+\infty}+\int_0^{+\infty}\frac{e^{-st}}s\cdot mt^{m-1}\diff t\\
-				&=\frac ms\msl[t^{m-1}].
-			\end{align*}
-		\onslide<+->{%
-			归纳可知 $\displaystyle\msl[t^m]=\frac{m!}{s^m}\msl[1]=\alert{\frac{m!}{s^{m+1}}}$.
+		由分部积分可知
+		\begin{align*}
+			\msl[t^m]&=\int_0^{+\infty}t^me^{-st}\diff t\\
+			&=-\frac{t^me^{-st}}s\Big|_0^{+\infty}+\int_0^{+\infty}\frac{e^{-st}}s\cdot mt^{m-1}\diff t\\
+			&=\frac ms\msl[t^{m-1}].
+		\end{align*}
+		\onslide<+->{归纳可知
+			$\displaystyle\msl[t^m]=\frac{m!}{s^m}\msl[1]=\alert{\frac{m!}{s^{m+1}}}$.
 		}
 	\end{solution}
 \end{frame}
@@ -199,9 +193,7 @@
 			\begin{align*}
 				\Res[F(s)e^{st},0]&=\frac{e^{st}}{(s-1)^2}\Big|_{s=0}=1,\\
 				\Res[F(s)e^{st},1]&=\left(\frac{e^{st}}s\right)'\Big|_{s=1}=\frac{te^{st}s-e^{st}}{s^2}\Big|_{s=1}=(t-1)e^t,
-			\end{align*}%
-		\onslide<+->{%
-			故 $\msl^{-1}[F(s)]=1+(t-1)e^t$.
+			\end{align*}\onslide<+->{故 $\msl^{-1}[F(s)]=1+(t-1)e^t$.
 		}
 	\end{solution}
 \end{frame}
@@ -212,16 +204,13 @@
 	\begin{proofblock}{另解}
 			设
 			$\displaystyle F(s)=\frac as+\frac b{s-1}+\frac c{(s-1)^2}$,
-		\onslide<+->{%
-			则
+		\onslide<+->{则
 			\begin{align*}
 				a&=\Res[F(s),0]=\frac1{(s-1)^2}\Big|_{s=0}=1,\\
 				b&=\Res[F(s),1]=\left(\frac1s\right)'\Big|_{s=1}=-\frac1{s^2}\Big|_{s=1}=-1,\\
 				c&=\Res[(s-1)F(s),1]=\frac1s\Big|_{s=1}=1.
 			\end{align*}
-		}%
-		\onslide<+->{%
-			故
+		}\onslide<+->{故
 			$\displaystyle\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1s-\frac1{s-1}+\frac1{(s-1)^2}\right]=1+(t-1)e^t$.
 		}
 	\end{proofblock}
@@ -275,15 +264,13 @@
 	\begin{solution}
 			设 $\msl[y]=Y$, 则 
 			$\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2$,
-		\onslide<+->{%
-			因此
+		\onslide<+->{因此
 			\[s^2Y-2+2Y=\msl[\sin t]=\frac{1}{s^2+1},\]
 		}
 		\vspace{-\baselineskip}
-		\onslide<+->{%
+		\onslide<+->{
 			\[Y(s)=\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}=\frac{1}{s^2+1}+\frac{1}{s^2+2},\]
-		}
-		\onslide<+->{%
+		}\onslide<+->{
 			\[y(t)=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right]
 			=\sin t+\frac{\sqrt 2}2\sin(\sqrt 2 t). \qedhere\]
 		}
@@ -301,18 +288,15 @@
 	\onslide<+->
 	\begin{solution}
 			设 $a=y(0),b=y'(0),\msl[y]=Y$,
-		\onslide<+->{%
-			则
+		\onslide<+->{则
 			\[\msl[y'']=s^2Y-as-b,\]
 		}
 		\vspace{-\baselineskip}
-		\onslide<+->{%
+		\onslide<+->{
 			\[s^2Y-as-b-Y=0,\]
-		}
-		\onslide<+->{
+		}\onslide<+->{
 			\[Y(s)=\frac{as-b}{s^2-1}=\frac{a+b}2\cdot\frac1{s-1}+\frac{a-b}2\cdot\frac1{s+1},\]
-		}
-		\onslide<+->{
+		}\onslide<+->{
 			\[y(t)=\msl^{-1}[Y(s)]=\frac{a+b}2e^t+\frac{a-b}2e^{-t}.\]
 		}
 		\vspace{-\baselineskip}

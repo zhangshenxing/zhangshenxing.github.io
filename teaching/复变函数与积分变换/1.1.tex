@@ -3,74 +3,90 @@
 \subsection{复数的概念}
 
 \begin{frame}{复数的定义}
-\onslide<+->现在我们来正式介绍复数的概念.
-\onslide<+->
-\begin{definition}
-固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
-\end{definition}
-\onslide<+->换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.
-\onslide<+->也就是说, 复数全体构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基.
+	\onslide<+->
+	现在我们来正式介绍复数的概念.
+	
+	\onslide<+->
+	\begin{definition}
+		固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
+	\end{definition}
+	
+	\onslide<+->
+	换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.
+	\onslide<+->
+	也就是说, 复数全体构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基.
 
-\onslide<+->我们将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$.
+	\onslide<+->
+	我们将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$.
 \end{frame}
 
 
 \begin{frame}{复平面}
-\onslide<+->由于 $\BC$ 是一个二维实向量空间, $1$ 和 $i$ 构成一组基,
-\onslide<+->因此它和平面上的点可以建立一一对应.
-\onslide<+->
-\begin{center}
-\begin{tikzpicture}
-\draw[cstaxis] (-0.4,0)--(2,0);
-\draw[cstaxis] (0,-0.4)--(0,2);
-\draw[cstdash] (1.6,0)--(1.6,1.2);
-\draw[cstdash] (0,1.2)--(1.6,1.2);
-\fill[cstdot,dcolora] (1.6,1.2) circle;
-\draw[cstaxis] (3.6,0)--(6,0);
-\draw[cstaxis] (4,-0.4)--(4,2);
-\draw[decorate,decoration={brace,amplitude=5},dcolora] (4,0)--(5.6,0);
-\draw[decorate,decoration={brace,amplitude=5},dcolorb] (4,1.2)--(4,0);
-\draw[cstdash] (5.6,0)--(5.6,1.2);
-\draw[cstdash] (4,1.2)--(5.6,1.2);
-\fill[cstdot,dcolora] (5.6,1.2) circle;
-\draw[dcolorb,Latex-Latex,line width=0.05cm] (2.2,0.8)--(3.4,0.8);
-\draw[cstaxis,visible on=<5->] (7.6,0)--(10,0);
-\draw[cstaxis,visible on=<5->] (8,-0.4)--(8,2);
-\draw[cstcurve,cstarrowto,visible on=<5->,dcolora] (8,0)--(9.6,1.2);
-\draw[dcolorb,Latex-Latex,line width=0.05cm,visible on=<5->] (6.2,0.8)--(7.4,0.8);
-\draw 
-	(-0.2,-0.2) node {$0$}
-	(1.6,1.5) node[dcolora] {$z=x+yi$}
-	(5.6,1.5) node[dcolora] {$Z(x,y)$}
-	(4.8,0.3) node[dcolora] {$x$}
-	(4.3,0.6) node[dcolorb] {$y$}
-	(3.8,-0.2) node {$O$}
-	(5.0,-0.7) node {直角坐标系}
-	(2.8,0.3) node[dcolorb] {\small 一一对应}
-	(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
-	(9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
-	(7.8,-0.2) node[visible on=<5->] {$O$}
-	(9.0,-0.7) node[visible on=<5->] {向量}
-	(6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
-\end{tikzpicture}
-\end{center}
+	\onslide<+->
+	由于 $\BC$ 是一个二维实向量空间, $1$ 和 $i$ 构成一组基,
+	\onslide<+->
+	因此它和平面上的点可以建立一一对应.
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis] (-0.4,0)--(2,0);
+			\draw[cstaxis] (0,-0.4)--(0,2);
+			\draw[cstdash] (1.6,0)--(1.6,1.2);
+			\draw[cstdash] (0,1.2)--(1.6,1.2);
+			\fill[cstdot,dcolora] (1.6,1.2) circle;
+			\draw[cstaxis] (3.6,0)--(6,0);
+			\draw[cstaxis] (4,-0.4)--(4,2);
+			\draw[decorate,decoration={brace,amplitude=5},dcolora] (4,0)--(5.6,0);
+			\draw[decorate,decoration={brace,amplitude=5},dcolorb] (4,1.2)--(4,0);
+			\draw[cstdash] (5.6,0)--(5.6,1.2);
+			\draw[cstdash] (4,1.2)--(5.6,1.2);
+			\fill[cstdot,dcolora] (5.6,1.2) circle;
+			\draw[dcolorb,Latex-Latex,line width=0.05cm] (2.2,0.8)--(3.4,0.8);
+			\draw[cstaxis,visible on=<5->] (7.6,0)--(10,0);
+			\draw[cstaxis,visible on=<5->] (8,-0.4)--(8,2);
+			\draw[cstcurve,cstarrowto,visible on=<5->,dcolora] (8,0)--(9.6,1.2);
+			\draw[dcolorb,Latex-Latex,line width=0.05cm,visible on=<5->] (6.2,0.8)--(7.4,0.8);
+			\draw 
+			(-0.2,-0.2) node {$0$}
+			(1.6,1.5) node[dcolora] {$z=x+yi$}
+			(5.6,1.5) node[dcolora] {$Z(x,y)$}
+			(4.8,0.3) node[dcolora] {$x$}
+			(4.3,0.6) node[dcolorb] {$y$}
+			(3.8,-0.2) node {$O$}
+			(5.0,-0.7) node {直角坐标系}
+			(2.8,0.3) node[dcolorb] {\small 一一对应}
+			(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
+			(9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
+			(7.8,-0.2) node[visible on=<5->] {$O$}
+			(9.0,-0.7) node[visible on=<5->] {向量}
+			(6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 
 \begin{frame}{实部和虚部, 虚数和纯虚数}
-\onslide<+->当 $y=0$ 时, $z=x$ 就是一个实数.
-\onslide<+->它对应复平面上的点就是直角坐标系的 $x$ 轴上的点.
-\onslide<+->因此我们称 $x$ 轴为\textcolor{dcolorb}{实轴}.
-\onslide<+->相应地, 称 $y$ 轴为\textcolor{dcolorc}{虚轴}.
-\onslide<+->我们称 $z=x+yi$ 在实轴和虚轴的投影为它的\textcolor{dcolorb}{实部 $\Re z=x$} 和\textcolor{dcolorc}{虚部 $\Im z=y$}.
+	\onslide<+->
+	当 $y=0$ 时, $z=x$ 就是一个实数.
+	\onslide<+->
+	它对应复平面上的点就是直角坐标系的 $x$ 轴上的点.
+	\onslide<+->
+	因此我们称 $x$ 轴为\textcolor{dcolorb}{实轴}.
+	\onslide<+->
+	相应地, 称 $y$ 轴为\textcolor{dcolorc}{虚轴}.
+	\onslide<+->
+	称 $z=x+yi$ 在实轴和虚轴的投影为它的\textcolor{dcolorb}{实部 $\Re z=x$} 和\textcolor{dcolorc}{虚部 $\Im z=y$}.
 
-\onslide<+->当 $\Im z=0$ 时, $z$ 是实数.
-\onslide<+->不是实数的复数是\emph{虚数}.
-\onslide<+->当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
-\onslide<1->
-\begin{center}
-	\begin{figure}[h]
-		\begin{subfigure}{0.45\textwidth}
+	\onslide<+->
+	当 $\Im z=0$ 时, $z$ 是实数.
+	\onslide<+->
+	不是实数的复数是\emph{虚数}.
+	\onslide<+->
+	当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
+	\onslide<1->
+	\begin{center}
+		\begin{figure}[h]
+			\begin{subfigure}{0.45\textwidth}
 			\centering
 			\begin{tikzpicture}
 				\draw[cstaxis] (-0.4,0)--(2.7,0);
@@ -94,8 +110,8 @@
 					(-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
 					(-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点};
 			\end{tikzpicture}
-		\end{subfigure}
-		\begin{subfigure}{0.45\textwidth}
+			\end{subfigure}
+			\begin{subfigure}{0.45\textwidth}
 			\centering
 			\begin{tikzpicture}
 				\filldraw[visible on=<6->,cstcurve,dcolora,cstfill] (5.5,1) circle (2.2 and 1.8);
@@ -107,272 +123,291 @@
 					(6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
 					(5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
 			\end{tikzpicture}
-		\end{subfigure}
-	\end{figure}
-\end{center}
+			\end{subfigure}
+		\end{figure}
+	\end{center}
 \end{frame}
 
 
 \begin{frame}{典型例题：判断实数和纯虚数}
-\onslide<+->
-\begin{example}
-实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:\par
-\enumnum1 实数; \enumnum2 纯虚数.
-\end{example}
-\onslide<+->
-\begin{solution}
-\enumnum1 $\Im z=x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
+	\onslide<+->
+	\begin{example}
+		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:\par
+		\enumnum1 实数; \enumnum2 纯虚数.
+	\end{example}
 
-\visible<+->{\enumnum2 $\Re z=x^2-3x-4=0$, 即 $x=-1$ 或 $4$.}
+	\onslide<+->
+	\begin{solution}
+		\begin{enumerate}
+			\item $\Im z=x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
+			\item $\Re z=x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
+				\onslide<+->{但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
+		\end{enumerate}
+	\end{solution}
 
-\visible<+->{但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
-\end{solution}
-\onslide<+->
-\begin{exercise}
-若 $x^2(1+i)+x(5+4i)+4+3i$ 是纯虚数, 则实数 $x=$\fillblank{\visible<+->{$-4$}}.
-\end{exercise}
+	\onslide<+->
+	\begin{exercise}
+		若 $x^2(1+i)+x(5+4i)+4+3i$ 是纯虚数, 则实数 $x=$\fillblank{\visible<+->{$-4$}}.
+	\end{exercise}
 \end{frame}
+
 
 \subsection{复数的代数运算}
 
 \begin{frame}{复数的加法与减法}
-\onslide<+->设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
-\onslide<+->由 $\BC$ 是二维实线性空间可得复数的加法和减法:
-\[\onslide<+->{z_1+z_2=(x_1+x_2)+(y_1+y_2)i,}\]
-\vspace{-\baselineskip}
-\[\onslide<+->{z_1-z_2=(x_1-x_2)+(y_1-y_2)i.}\]
-\vspace{-\baselineskip}
-\onslide<+->复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
+	\onslide<+->
+	设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
+	\onslide<+->
+	由 $\BC$ 是二维实线性空间可得复数的加法和减法:
+	\onslide<+->
+		\[z_1+z_2=(x_1+x_2)+(y_1+y_2)i,\]
+	\vspace{-\baselineskip}
+	\onslide<+->
+		\[z_1-z_2=(x_1-x_2)+(y_1-y_2)i.\]
+	\vspace{-\baselineskip}
+	\onslide<+->
+	复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
 
-\onslide<+->\vspace{10pt}
-\begin{center}
-\begin{tikzpicture}
-\draw[cstaxis] (-1.2,0)--(3.5,0);
-\draw[cstaxis] (0,-2.2)--(0,1.6);
-\draw[cstcurve,cstarrowto,dcolora] (0,0)--(2,-0.5);
-\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1,1.5);
-\draw[cstcurve,cstarrowto,dcolorb] (0,0)--(3,1);
-\draw[cstcurve,cstarrowto,dcolorc] (0,0)--(1,-2);
-\draw[cstdash,cstarrowto] (0,0)--(-1,-1.5);
-\draw[cstdash] (1,1.5)--(3,1)--(1,-2)--(-1,-1.5);
-\draw 
-	(2.3,-0.5) node[dcolora] {$z_1$}
-	(0.6,1.5) node[dcolora] {$z_2$}
-	(3.7,1) node[dcolorb] {$z_1+z_2$}
-	(-0.2,1.6) node {$y$}
-	(3.3,-0.3) node {$x$}
-	(-0.2,0.3) node {$0$}
-	(1.7,-2.1) node[dcolorc] {$z_1-z_2$}
-	(-1.4,-1.4) node {$-z_2$};
-\end{tikzpicture}
-\end{center}
+	\onslide<+->\vspace{10pt}
+	\begin{center}
+		\begin{tikzpicture}
+		\draw[cstaxis] (-1.2,0)--(3.5,0);
+		\draw[cstaxis] (0,-2.2)--(0,1.6);
+		\draw[cstcurve,cstarrowto,dcolora] (0,0)--(2,-0.5);
+		\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1,1.5);
+		\draw[cstcurve,cstarrowto,dcolorb] (0,0)--(3,1);
+		\draw[cstcurve,cstarrowto,dcolorc] (0,0)--(1,-2);
+		\draw[cstdash,cstarrowto] (0,0)--(-1,-1.5);
+		\draw[cstdash] (1,1.5)--(3,1)--(1,-2)--(-1,-1.5);
+		\draw 
+		(2.3,-0.5) node[dcolora] {$z_1$}
+		(0.6,1.5) node[dcolora] {$z_2$}
+		(3.7,1) node[dcolorb] {$z_1+z_2$}
+		(-0.2,1.6) node {$y$}
+		(3.3,-0.3) node {$x$}
+		(-0.2,0.3) node {$0$}
+		(1.7,-2.1) node[dcolorc] {$z_1-z_2$}
+		(-1.4,-1.4) node {$-z_2$};
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 
 \begin{frame}{复数的乘除法}
-\onslide<+->\alert{规定 $i\cdot i=-1$.}
-\onslide<+->由线性空间的数乘和乘法分配律可得:
-\onslide<+->
-\begin{align*}
-z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
-&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
-\end{align*}
-\vspace{-\baselineskip}
-\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2},}\quad
-\visible<+->{\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.}\]
+	\onslide<+->
+	\alert{规定 $i\cdot i=-1$.}
+	\onslide<+->
+	由线性空间的数乘和乘法分配律可得:
+	\onslide<+->
+	\begin{align*}
+		z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
+		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
+	\end{align*}
+	\vspace{-\baselineskip}
+	\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2},}\quad
+	\visible<+->{\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.}\]
 
-\onslide<+->对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
+	\onslide<+->
+	对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
 
-\onslide<+->当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
+	\onslide<+->
+	当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
 \end{frame}
 
 
 \begin{frame}{典型例题: 常见复数的幂次}
-\onslide<+->
-\begin{example}
-\begin{enumerate}
-\item $i^2=-1,i^3=-i,i^4=1$.
-\visible<+->{一般地, 对于整数 $n$, 
-\meq[3pt][3pt]{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}}%
-\item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
-\item 令 $z=1+i$, \visible<+->{则
-\[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
-\vspace{-\baselineskip}
-\end{enumerate}
-\end{example}
-\onslide<+->{我们把满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.}
-\onslide<+->{那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $i^2=-1,i^3=-i,i^4=1$.
+			\onslide<+->{一般地, 对于整数 $n$, 
+			\meq[3pt][3pt]{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}}
+			\item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
+			\item 令 $z=1+i$, \onslide<+->{则
+			\[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
+			\vspace{-\baselineskip}
+		\end{enumerate}
+	\end{example}
+
+	\onslide<+->
+	我们把满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
+	\onslide<+->
+	那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.
 \end{frame}
 
 
 \begin{frame}{典型例题: 常见复数的幂次}
-\onslide<+->
-\begin{example}
-化简 $1+i+i^2+i^3+i^4=$\fillblank{\visible<3->{$1$}}.
-\end{example}
-\onslide<+->
-\begin{solution}
-根据等比数列求和公式,
-\[1+i+i^2+i^3+i^4=\frac{i^5-1}{i-1}
-\visible<+->{=\frac{i-1}{i-1}=1.}\]
-\vspace{-\baselineskip}
-\end{solution}
-\onslide<+->{
-\begin{exercise}[2020年A卷]
-化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{\visible<+->{$1$}}.
-\end{exercise}
-}
+	\onslide<+->
+	\begin{example}
+		化简 $1+i+i^2+i^3+i^4=$\fillblank{\visible<3->{$1$}}.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		根据等比数列求和公式,
+		\[1+i+i^2+i^3+i^4=\frac{i^5-1}{i-1}
+		\visible<+->{=\frac{i-1}{i-1}=1.}\]
+		\vspace{-\baselineskip}
+	\end{solution}
+
+	\onslide<+->
+	\begin{exercise}[2020年A卷]
+		化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{\visible<+->{$1$}}.
+	\end{exercise}
 \end{frame}
-
-
-% \begin{frame}{例题: 解复数方程}
-% \onslide<+->
-% \begin{example}
-% 解方程 $z^2-2(1+i)z-5-10i=0$.
-% \end{example}
-% \onslide<+->
-% \begin{solution}
-% \indent 配方可得 $(z-1-i)^2=5+10i+(1+i)^2=5+12i$.
-
-% \visible<+->{设 $(x+yi)^2=5+12i$, 则
-% 	\[x^2-y^2=5,\quad 2xy=12,\quad y=\dfrac 6x,\]}
-% \vspace{-\baselineskip}
-% \visible<+->{\[x^2-\left(\frac 6x\right)^2=5,\quad
-% 	x^4-5x^2-36=0,\quad x^2=9,\]}
-% \visible<+->{故 $(x,y)=(3,2)$ 或 $(-3,-2)$,}
-% \visible<+->{\[z=1+i\pm(3+2i)=4+3i\ \text{或}\ -2-i.\]}
-% \vspace{-1.2\baselineskip}
-% \end{solution}
-% \end{frame}
 
 
 \begin{frame}{复数域*}
-\onslide<+->复数集合全体构成一个\emph{域}.
-\onslide<+->所谓的域, 是指一个集合
-\begin{itemize}
-\item 包含 $0,1$, 且在它之内有四则运算;
-\item 满足加法结合/交换律, 乘法结合/交换/分配律;
-\item 对任意 $a$, $a+0=a\times 1=a$.
-\end{itemize}
-\onslide<+->有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
-\onslide<+->与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}.
-\onslide<+->也就是说, 对于任何次数 $n\ge 1$ 的复系数多项式
-	\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
-\onslide<+->都存在复数 $z_0$ 使得 $p(z_0)=0$.
-\onslide<+->也就是说复系数多项式可以因式分解成一次多项式的乘积.
-\onslide<+->我们会在第五章证明该结论.
+	\onslide<+->
+	复数集合全体构成一个\emph{域}.
+	\onslide<+->
+	所谓的域, 是指一个集合
+	\begin{itemize}
+		\item 包含 $0,1$, 且在它之内有四则运算;
+		\item 满足加法结合/交换律, 乘法结合/交换/分配律;
+		\item 对任意 $a$, $a+0=a\times 1=a$.
+	\end{itemize}
+	\onslide<+->
+	有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
+	\onslide<+->
+	与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}:
+	\onslide<+->
+	对于任何次数 $n\ge 1$ 的复系数多项式
+		\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
+	都存在复数 $z_0$ 使得 $p(z_0)=0$.
+	\onslide<+->
+	也就是说复系数多项式可以因式分解成一次多项式的乘积.
+	\onslide<+->
+	我们会在第五章证明该结论.
 \end{frame}
 
 
 \begin{frame}{复数域不是有序域*}
-\onslide<+->在 $\BQ,\BR$ 上可以定义出一个好的大小关系,
-\onslide<+->换言之它们是有序域, 即存在一个满足下述性质的 $>$:
-\begin{itemize}
-\item 若 $a\neq b$, 则 $a>b$ 或 $b>a$;
-\item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
-\item 若 $a>b,c>0$, 则 $ac>bc$.
-\end{itemize}
-\onslide<+->而 \emph{$\BC$ 却不是有序域}.
-\onslide<+->如果 $i>0$, 则
-	\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
-\onslide<+->于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
+	\onslide<+->
+	在 $\BQ,\BR$ 上可以定义出一个好的大小关系,
+	\onslide<+->
+	换言之它们是有序域, 即存在一个满足下述性质的 $>$:
+	\begin{itemize}
+		\item 若 $a\neq b$, 则 $a>b$ 或 $b>a$;
+		\item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
+		\item 若 $a>b,c>0$, 则 $ac>bc$.
+	\end{itemize}
+	\onslide<+->
+	而 \emph{$\BC$ 却不是有序域}.
+	\onslide<+->
+	如果 $i>0$, 则
+		\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
+	\onslide<+->
+	于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
 \end{frame}
 
 
 \subsection{共轭复数}
 
 \begin{frame}{共轭复数}
-\onslide<+->
-\begin{definition}
-称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
-换言之, $\ov z=x-yi$.
-\end{definition}
-\onslide<+->从定义出发, 不难验证共轭复数满足如下性质:
-\onslide<+->
-\begin{block}{共轭复数性质汇总}
-\begin{itemize}
-\item $z$ 是 $\ov z$ 的共轭复数.
-\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
-\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-\ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{~\ov{z_1}~}{\ov{z_2}}$.
-\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
-\item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
-\end{itemize}
-\end{block}
+	\onslide<+->
+	\begin{definition}
+		称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
+	换言之, $\ov z=x-yi$.
+	\end{definition}
+	
+	\onslide<+->
+	从定义出发, 不难验证共轭复数满足如下性质:
+
+	\onslide<+->
+	\begin{block}{共轭复数性质汇总}
+		\begin{itemize}
+			\item $z$ 是 $\ov z$ 的共轭复数.
+			\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
+			\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
+			\ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{~\ov{z_1}~}{\ov{z_2}}$.
+			\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
+			\item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
 \begin{frame}{例题：共轭复数判断实数}
-\onslide<+->
-\begin{example}
-设 $z=x+yi$ 且 $y\neq 0,\pm1$. 证明: $x^2+y^2=1$ 当且仅当 $\dfrac z{1+z^2}$ 是实数.
-\end{example}
-\onslide<+->
-\begin{proof}
-$\dfrac z{1+z^2}$ 是实数当且仅当
-\vspace{-\baselineskip}
-\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
-\visible<+->{即 \[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]}%
-\visible<+->{由 $y\neq0$ 可知 $z\neq \ov z$.}
-\visible<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere}
-\end{proof}
+	\onslide<+->
+	\begin{example}
+		设 $z=x+yi$ 且 $y\neq 0,\pm1$. 证明: $x^2+y^2=1$ 当且仅当 $\dfrac z{1+z^2}$ 是实数.
+	\end{example}
+	
+	\onslide<+->
+	\begin{proof}
+		$\dfrac z{1+z^2}$ 是实数当且仅当
+		\vspace{-\baselineskip}
+		\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
+		\onslide<+->{即
+			\[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]
+		}\onslide<+->{由 $y\neq0$ 可知 $z\neq \ov z$.
+		}\onslide<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere}
+	\end{proof}
 \end{frame}
 
 
 \begin{frame}{例题：共轭复数证明等式}
-\onslide<+->
-\begin{example}
-证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.
-\end{example}
-\onslide<+->
-\begin{proof*}
-我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
-\visible<+->{但我们利用共轭复数可以更简单地证明它.}
+	\onslide<+->
+	\begin{example}
+		证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.
+	\end{example}
 
-\visible<+->{由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, }
-\visible<+->{因此
-	\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
-	=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
-	=2\Re(z_1\cdot\ov{z_2}).\qedhere\]}
-\vspace{-\baselineskip}
-\end{proof*}
+	\onslide<+->
+	\begin{proof*}
+		我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
+		\onslide<+->{但我们利用共轭复数可以更简单地证明它.}
+
+		\onslide<+->{由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
+		}\onslide<+->{因此
+			\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
+			=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
+			=2\Re(z_1\cdot\ov{z_2}).\qedhere\]}
+		\vspace{-\baselineskip}
+	\end{proof*}
 \end{frame}
 
 
 \begin{frame}{例题: 复数的代数计算}
-\onslide<+->{由于 $z\ov z$ 是一个实数,}
-\onslide<+->{因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
-\[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]}
-\vspace{-\baselineskip}
-\onslide<+->
-\begin{example}
-$z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
-\end{example}
-\onslide<+->
-\begin{solution}
-\[z=-\frac1i-\frac{3i}{1-i}
-\onslide<+->{=i-\frac{3i-3}2=\frac32-\frac12i,}\]
-\visible<+->{因此 $\displaystyle\Re z=\frac32,\quad\Im z=-\frac12,\quad
-	z\ov z=\left(\frac32\right)^2+\left(-\frac12\right)^2=\frac52$.}
-\end{solution}
+	\onslide<+->
+	由于 $z\ov z$ 是一个实数,
+	\onslide<+->
+	因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
+		\[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]
+	\vspace{-\baselineskip}
+
+	\onslide<+->
+	\begin{example}
+		$z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
+	\end{example}
+	
+	\onslide<+->
+	\begin{solution}
+		\[z=-\frac1i-\frac{3i}{1-i}
+		\onslide<+->{=i-\frac{3i-3}2=\frac32-\frac12i,}\]
+	\onslide<+->{因此
+		$\displaystyle\Re z=\frac32,\quad\Im z=-\frac12,\quad
+		z\ov z=\left(\frac32\right)^2+\left(-\frac12\right)^2=\frac52$.}
+	\end{solution}
 \end{frame}
 
 
 \begin{frame}[<*>]{例题: 复数的代数计算}
-\onslide<+->
-\begin{example}
-设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
-\end{example}
-\onslide<+->
-\begin{solution}
-\vspace{-\baselineskip}
-\begin{align*}
-\frac{z_1}{z_2}&=\frac{5-5i}{-3+4i}
-\visible<+->{=\frac{(5-5i)(-3-4i)}{(-3)^2+4^2}}\\
-&\visible<+->{=\frac{(-15-20)+(-20+15)i}{25}}
-\visible<+->{=-\frac75-\frac15i,}
-\end{align*}
-\visible<+->{因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.}
-\end{solution}
+	\onslide<+->
+	\begin{example}
+		设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		\vspace{-\baselineskip}
+		\begin{align*}
+			\frac{z_1}{z_2}&=\frac{5-5i}{-3+4i}
+			\onslide<+->{=\frac{(5-5i)(-3-4i)}{(-3)^2+4^2}}\\
+			&\onslide<+->{=\frac{(-15-20)+(-20+15)i}{25}}
+			\onslide<+->{=-\frac75-\frac15i,}
+		\end{align*}
+		\onslide<+->{因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.}
+	\end{solution}
 \end{frame}
 

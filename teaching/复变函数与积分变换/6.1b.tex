@@ -25,13 +25,11 @@
 \begin{frame}{傅里叶变换的性质: 位移性质}
 	\onslide<+->
 	\begin{proof}
-			\begin{align*}
-				\msf[f(t-t_0)]&=\int_{-\infty}^{+\infty}f(t-t_0)e^{-j\omega t}\diff t\\
-				&=\int_{-\infty}^{+\infty}f(t)e^{-j\omega (t+t_0)}\diff t=e^{-j\omega t_0}F(\omega).
-			\end{align*}
-		\onslide<+->{%
-			逆变换情形类似可得.\qedhere
-		}
+		\begin{align*}
+			\msf[f(t-t_0)]&=\int_{-\infty}^{+\infty}f(t-t_0)e^{-j\omega t}\diff t\\
+			&=\int_{-\infty}^{+\infty}f(t)e^{-j\omega (t+t_0)}\diff t=e^{-j\omega t_0}F(\omega).
+		\end{align*}
+		\onslide<+->{逆变换情形类似可得.\qedhere}
 	\end{proof}
 	
 	\onslide<+->
@@ -54,13 +52,11 @@
 
 	\onslide<+->
 	\begin{proof}
-			\begin{align*}
-				\msf[f']&=\int_{-\infty}^{+\infty}f'(t)e^{-j\omega t}\diff t\\
-				&=-\int_{-\infty}^{+\infty}f(t)(e^{-j\omega t})'\diff t=j\omega F(\omega)
-			\end{align*}
-		\onslide<+->{%
-			逆变换情形类似可得. 一般的 $k$ 归纳可得.\qedhere
-		}
+		\begin{align*}
+			\msf[f']&=\int_{-\infty}^{+\infty}f'(t)e^{-j\omega t}\diff t\\
+			&=-\int_{-\infty}^{+\infty}f(t)(e^{-j\omega t})'\diff t=j\omega F(\omega)
+		\end{align*}
+		\onslide<+->{逆变换情形类似可得. 一般的 $k$ 归纳可得.\qedhere}
 	\end{proof}
 \end{frame}
 
@@ -99,8 +95,7 @@
 	\begin{solution}
 			由于
 			\[\msf[e^{-\beta t}u(t)]=\frac{1}{\beta+j\omega},\]
-		\onslide<+->{%
-			因此
+		\onslide<+->{因此
 			\begin{align*}
 				\msf[t^ke^{-\beta t}u(t)]&=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}
 				=\frac{k!}{(\beta+j\omega)^{k+1}}.
@@ -120,11 +115,9 @@
 	\onslide<+->
 	\begin{solution}
 			由于 $\msf[1]=2\pi\delta(\omega)$,
-		\onslide<+->{%
-			因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
+		\onslide<+->{因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
 		}
-		\onslide<+->{
-			\begin{align*}
+		\onslide<+->{\begin{align*}
 				\msf[\sin{\omega_0 t}]&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
 				&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
 				&\visible<+->{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}
@@ -189,15 +182,10 @@
 	\begin{solution}
 			\vspace{-\baselineskip}
 			\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_2(\tau)f_1(t-\tau)\diff \tau=\int_0^{+\infty} e^{-\tau}u(t-\tau)\diff \tau.\]
-		\onslide<+->{%
-			当 $t<0$ 时, $(f_1\ast f_2)(t)=0$.
-		}%
-		\onslide<+->{%
-			当 $t\ge0$ 时, 
+		\onslide<+->{当 $t<0$ 时, $(f_1\ast f_2)(t)=0$.
+		}\onslide<+->{当 $t\ge0$ 时, 
 			\[(f_1\ast f_2)(t)=\int_0^t e^{-\tau}\diff \tau=1-e^{-t}.\]
-		}%
-		\onslide<+->{%
-			故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
+		}\onslide<+->{故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
 		}
 	\end{solution}
 \end{frame}
@@ -235,11 +223,9 @@
 	\onslide<+->
 	\begin{solution}
 			设 $F(\omega)=\dfrac{\sin\omega}{\omega},G(\omega)=\dfrac{\sin(\omega/3)}{\omega/3}$,%
-		\onslide<+->{%
-			则
+		\onslide<+->{则
 			\[\msf^{-1}[FG]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)e^{j\omega t}\diff\omega,\]
-		}%
-		\onslide<+->{%
+		}\onslide<+->{
 			\[\msf^{-1}[FG](0)=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)\diff\omega=\frac1{2\pi}I.\]
 		}
 	\end{solution}
@@ -255,18 +241,13 @@
 				1/4, & |t|=1,\\
 				0, & |t|>1.
 			\end{cases}\]
-		\onslide<+->{%
-			所以 $\msf^{-1}[G(\omega)]=g(t)=3f(3t)$,
-		}%
-		\onslide<+->{%
+		\onslide<+->{所以 $\msf^{-1}[G(\omega)]=g(t)=3f(3t)$,
+		}\onslide<+->{
 			\begin{align*}
 				\msf^{-1}[FG](0)&=(f\ast g)(0)\\
 				&=\int_{-\infty}^{+\infty}f(-t)g(t)\diff t=\frac12\int_{-1}^1 g(t)\diff t=\frac12,
 			\end{align*}
-		}%
-		\onslide<+->{%
-			故 $I=2\pi\msf^{-1}[FG](0)=\pi$.
-		}
+		}\onslide<+->{故 $I=2\pi\msf^{-1}[FG](0)=\pi$.}
 	\end{solutionc}
 \end{frame}
 
@@ -298,14 +279,11 @@
 	\onslide<+->
 	\begin{solution}
 			设 $\msf[y]=Y$.
-		\onslide<+->{%
-			两边同时作傅里叶变换得到
+		\onslide<+->{两边同时作傅里叶变换得到
 			\[j\omega Y(\omega)-\frac1{j\omega}Y(\omega)=2,\]
-		}%
-		\onslide<+->{%
+		}\onslide<+->{
 			\[Y(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
-		}%
-		\onslide<+->{%
+		}\onslide<+->{
 			\begin{align*}
 				y(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
 				&\visible<+->{=\begin{cases}
@@ -329,14 +307,11 @@
 	\onslide<+->
 	\begin{solution}
 			设 $\msf[y]=Y$,
-		\onslide<+->{%
-			则
+		\onslide<+->{则
 			\[\msf[y''(t)-y(t)]=[(j\omega)^2-1]Y(\omega)=0,\]
 		}
 		\vspace{-\baselineskip}
-		\onslide<+->{
-			\[Y(\omega)=0,\quad y(t)=\msf^{-1}[Y(\omega)]=0.\]
-		}
+		\onslide<+->{\[Y(\omega)=0,\quad y(t)=\msf^{-1}[Y(\omega)]=0.\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 

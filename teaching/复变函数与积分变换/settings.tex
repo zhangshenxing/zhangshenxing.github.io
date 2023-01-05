@@ -35,12 +35,12 @@
 % 枚举数字引用标志
 \newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
 \newcommand\enumnumhk[1]{{
-  \usebeamercolor[fg]{enumerate subitem}%
-  \begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
-    \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
-    \pgfusepath{stroke}
-    \pgftext[base]{\color{fg}#1}
-  \end{pgfpicture}%
+	\usebeamercolor[fg]{enumerate subitem}%
+	\begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+		\pgfusepath{stroke}
+		\pgftext[base]{\color{fg}#1}
+	\end{pgfpicture}%
 }}
 % 缩进
 \renewcommand{\indent}{\hspace*{1em}}
@@ -138,6 +138,7 @@
 \usepackage[normalem]{ulem}
 \NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
 \newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
+\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
 % TIKZ 设置
 \usetikzlibrary{
 	quotes,
@@ -164,9 +165,9 @@
 	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
 	cstdot/.style         ={radius=0.07}, %实心点
 	cstdote/.style        ={radius=0.06, fill=white}, %空心点
-	cstfill/.style        ={fill=cyan!40}, %填充
+	cstfill/.style        ={fill=cyan!30}, %填充
 	cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
-	cstfill1/.style       ={fill=red!40}, %填充
+	cstfill1/.style       ={fill=red!30}, %填充
 	cstfille1/.style      ={pattern=north east lines, pattern color=red}, %虚线填充
 	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},

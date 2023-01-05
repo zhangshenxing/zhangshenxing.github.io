@@ -88,9 +88,7 @@
 \AtBeginDocument{
 	{
 		\setnaviboxempty
-		\begin{frame}
-			\titlepage
-		\end{frame}
+		\frame{\titlepage}
 	}
 }
 % Background
@@ -105,22 +103,20 @@
 \setbeamertemplate{navigation symbols}{}
 % Part Page
 \setbeamertemplate{part page}{
-	\begingroup
+	% \begingroup
 		\begin{tcolorbox}[parttitle,title=第\zhnumber{\thepart}章\hspace{1em}\insertpart]
 			\tableofcontents[sectionstyle=show,subsectionstyle=hide]
 		\end{tcolorbox}
 		\vspace{-\baselineskip}
-	\endgroup
+	% \endgroup
 }
 \AtBeginPart{
 	\setbeamertemplate{subsection in footline}[no number]
+	\beamer@tocsectionnumber=0\relax%
+	\setcounter{section}{0}%
 	{
-		\beamer@tocsectionnumber=0\relax%
-		\setcounter{section}{0}%
 		\setnaviboxempty
-		\begin{frame}
-			\partpage	
-		\end{frame}
+		\frame{\partpage}
 	}
 }
 % Section Page
@@ -140,9 +136,7 @@
 	\setbeamertemplate{subsection in footline}[normal]
 	{
 		\setnaviboxempty
-		\begin{frame}
-			\sectionpage	
-		\end{frame}
+		\frame{\sectionpage}
 	}
 }
 % Frametitle
@@ -447,10 +441,10 @@
 \NewDocumentEnvironment{remark}{o}{\begin{exampleblock}{\translate{Remark}\IfNoValueTF{#1}{}{~(#1)}}}{\end{exampleblock}}
 \NewDocumentEnvironment{remark*}{o}{\begin{exampleblock*}{\translate{Remark}\IfNoValueTF{#1}{}{~(#1)}}}{\end{exampleblock*}}
 % alert
-\renewenvironment{alertblock}[1]{\begin{tcolorbox}[alertstyle,title=#1]}{\end{tcolorbox}}
-\newenvironment{alertblock@}{\begin{tcolorbox}[alertstyle,notitle]}{\end{tcolorbox}}
-\newenvironment{alertblock*}[1]{\begin{tcolorbox}[alertstyle,title=#1,indent]}{\end{tcolorbox}}
-\newenvironment{alertblock@*}{\begin{tcolorbox}[alertstyle,notitle,indent]}{\end{tcolorbox}}
+\renewenvironment{alertblock}[1]{\begin{tcolorbox}[alertstyle,title=#1]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{alertblock@}{\begin{tcolorbox}[alertstyle,notitle]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{alertblock*}[1]{\begin{tcolorbox}[alertstyle,title=#1,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{alertblock@*}{\begin{tcolorbox}[alertstyle,notitle,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
 
 % Math Font
 \usefonttheme[onlymath]{serif}
