@@ -1,12 +1,12 @@
 @media screen and (min-width: 800px) {
-	div#mainpart {
+	article {
 		width: 820px;
 		margin: 120px auto 0;
 	}
 }
 
 @media screen and (max-width: 800px) {
-	div#mainpart {
+	article {
 		width: 100%;
 		margin: 110px auto 0;
 	}
@@ -22,20 +22,19 @@ header#head {
 	top: 0;
 	left: 0;
 	background-color: hsl(210, 50%, 50%);
-	color: #d8d8d8;
+	color: white;
 }
 
 header#head h1 {
 	margin: 0 auto;
 	text-align: center;
 	font-family: "Lucida Console", STKaiti, Verdana, Arial, Helvetica, sans-serif;
-	color: #f3f3f3;
 }
 
 /* main */
-div#mainpart {
+article {
 	box-sizing: border-box;
-	padding: 40px;
+	padding: 2px 40px 10px;
 	background-color: white;
 }
 
@@ -50,14 +49,14 @@ h2 {
 
 h3 {
 	font-family: Helvetica, SimHei, Arial, Helvetica, sans-serif;
-	font-size: 120%;
+	font-size: 110%;
 	color: hsl(20, 60%, 50%);
 	margin: 20px 0 0;
 }
 
 h4 {
 	font-family: Verdana, STKaiTi, Arial, Helvetica, sans-serif;
-	font-size: 120%;
+	font-size: 110%;
 	margin: 10px 40px;
 }
 
@@ -111,67 +110,98 @@ h2 img {
 }
 
 /* about me */
-h2:first-child {
-	margin: 10px 0 0;
+h2#about-me+table {
+	margin: 0 auto -16px;
+}
+
+h2#about-me+table td {
+	border-style: none;
+	vertical-align: top;
+}
+
+img#zsx {
+	width: 150px;
+	border: solid 1px hsl(20, 60%, 50%);
 }
 
 /* experience */
-table#experiencetable td {
-	border: none;
+ul#ul-experience {
+	list-style-type: none;
+	margin-left: -24px;
 }
 
-table#experiencetable td:first-child::before {
-	content: "• ";
-	padding: 0px 6px 0px 14px;
+ul#ul-experience li::before {
+	content: url(img/chalkboard-user-solid.svg);
+	display: inline-block;
+	width: 20px;
+	vertical-align: middle;
+}
+
+ul#ul-experience li.li-education::before {
+	content: url(img/graduation-cap-solid.svg);
+}
+
+ul#ul-experience span {
+	display: inline-block;
+	width: 12em;
 }
 
 /* research */
-.math {
-	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	font-size: 120%;
-}
-
 pre {
-	font-family: Courier New;
+	font-family: "Courier New";
 	tab-size: 4;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }
 
-span.abstract,
-pre.bibitem {
+pre,
+span.abstract {
 	display: none;
 	border-left: solid 5px hsl(210, 60%, 50%);
 	padding: 10px;
 	background-color: #EEEEEE;
 }
 
+span.math {
+	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 120%;
+}
+span.math .ov{
+	text-decoration: overline;
+}
+span.math .root{
+	vertical-align:-12%;
+}
+span.math .cbroot{
+	vertical-align:-10%;
+}
+
 /* teaching */
-#courses em {
+table#table-courses em {
 	font-family: Helvetica, STKaiti, Arial, Helvetica, sans-serif;
 	font-style: normal;
 }
 
-a.exam::before {
+.exam::before {
 	content: url(img/pen-to-square-solid.svg);
 }
 
-a.excourse::before {
+.excourse::before {
 	content: url(img/person-chalkboard-solid.svg);
 }
 
-a.handout::before {
+.handout::before {
 	content: url(img/book-open-solid.svg);
 }
 
-a.video::before {
+.video::before {
 	content: url(img/video-solid.svg);
 }
 
-a.exam::before,
-a.excourse::before,
-a.handout::before,
-a.video::before {
+.exam::before,
+.excourse::before,
+.handout::before,
+.video::before {
 	display: inline-block;
 	vertical-align: middle;
 	width: 20px;
@@ -179,19 +209,8 @@ a.video::before {
 }
 
 /* links */
-td.tex> :first-child::before {
-	background: url("./img/tex.jpg") no-repeat;
-	background-size: 80% 100%;
-	height: 21px;
-	width: 30px;
+p.p-inline-block a {
 	display: inline-block;
-	content: " ";
-	vertical-align: middle;
-}
-
-table#linksicons img{
-	height:20px;
-	width: auto;
 }
 
 /* footer */
@@ -203,39 +222,4 @@ footer {
 footer p {
 	text-align: center;
 	font-size: 80%;
-}
-
-/* nav */
-nav {
-	width: 100%;
-	height: 48px;
-	box-sizing: border-box;
-	text-align: center;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-}
-
-nav p {
-	display: inline-block;
-	height: 36px;
-	padding: 5px;
-	background-color: hsl(210, 50%, 50%);
-	border-radius: 10px 10px 0px 0px;
-}
-
-nav a img {
-	filter: url(#changeIconColorWhite);
-	-webkit-filter: url(#changeIconColorWhite);
-	-moz-filter: url(#changeIconColorWhite);
-	-ms-filter: url(#changeIconColorWhite);
-	-o-filter: url(#changeIconColorWhite);
-}
-
-nav a:hover img {
-	filter: url(#changeIconColorGold);
-	-webkit-filter: url(#changeIconColorGold);
-	-moz-filter: url(#changeIconColorGold);
-	-ms-filter: url(#changeIconColorGold);
-	-o-filter: url(#changeIconColorGold);
 }

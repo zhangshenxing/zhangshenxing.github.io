@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="zh-Hans-CN">
+
 <head>
 	<meta charset="utf-8" />
 	<meta name='author' content='Shenxing Zhang' />
@@ -17,140 +18,180 @@
 	</script>
 	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
 	<script>
-		function toggle_abs(t){
-			var s=0;
-			if(t.nextElementSibling.nextElementSibling.nextElementSibling.style.display=='block') s=1;
-			if(s){	
-				t.nextElementSibling.nextElementSibling.nextElementSibling.style.display='none';
-				t.previousElementSibling.style.display='inline';
+		function toggle_abs(t) {
+			var s = 0;
+			if (t.nextElementSibling.nextElementSibling.nextElementSibling.style.display == 'block') s = 1;
+			if (s) {
+				t.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none';
+				t.previousElementSibling.style.display = 'inline';
 			}
 			else {
-				t.nextElementSibling.nextElementSibling.nextElementSibling.style.display='block';
-				t.nextElementSibling.style.display='inline';
+				t.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'block';
+				t.nextElementSibling.style.display = 'inline';
 			}
 		}
-		function toggle_bib(t){
+		function toggle_bib(t) {
 			toggle_abs(t);
 		}
-		function show_abs(t){
-			t.style.display='none';
-			t.nextElementSibling.nextElementSibling.nextElementSibling.style.display='block';
-			t.nextElementSibling.style.display='inline';
+		function show_abs(t) {
+			t.style.display = 'none';
+			t.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'block';
+			t.nextElementSibling.style.display = 'inline';
 		}
-		function hide_abs(t){
-			t.style.display='none';
-			t.nextElementSibling.nextElementSibling.style.display='none';
-			t.previousElementSibling.style.display='inline';
+		function hide_abs(t) {
+			t.style.display = 'none';
+			t.nextElementSibling.nextElementSibling.style.display = 'none';
+			t.previousElementSibling.style.display = 'inline';
 		}
 	</script>
 </head>
 
 <body>
-
-<header id="head" style="z-index:99;">
-	<h1>ZHANG Shenxing</h1>
-	<h1 style="font-size:150%;">张神星</h1>
-</header>
-
-<div id="mainpart">
-<table style="margin: 0 auto;">
-	<tr>
-		<td style="border-style: none;">
-			<a href="melarge.jpg"><img id="zsx" src="me.jpg" alt="我的照片" title="我的照片" style="width:220px;border-width:6px;" /></a>
-		</td>
-		<td style="border-style: none;vertical-align: top;" class="icons">
+	<header id="head" style="z-index:1;">
+		<h1>ZHANG Shenxing</h1>
+		<h1 style="font-size:150%;">张神星</h1>
+	</header>
+	<article>
+		<section>
 			<h2 id="about-me"><img src="img/user-solid.svg" />About me</h2>
-			<p>
-				<img src="img/user-solid.svg" />
-					Research Associate Professor (特聘副研究员)<br>
-				<img src="img/school-solid.svg" />
-					<a href="https://www.hfut.edu.cn/">合肥工业大学</a><a href="https://maths.hfut.edu.cn">数学学院</a>翡翠科教楼B1810东<br/>
-				<img src="img/map-regular.svg" />
-					<a href="http://maths.hfut.edu.cn/en/">School of Mathematics</a>, 
-					<a href="https://en.hfut.edu.cn/"><abbr title="Hefei University of Technology">HFUT</abbr></a>,
-					<a href="https://www.hefei.gov.cn/english/index.html">Hefei</a>,
-					<a href="http://english.www.gov.cn/"><abbr title="The People's Republic of China">PRC</abbr></a><br/>
-				<img src="img/envelope-solid.svg" />
-					<em>zhangshenxing (at) hfut.edu.cn</em>
-			</p>
-			<p>My research interests lie in number theory, especially elliptic curves, class groups and character sums.</p>
-			<p><a href="misc/cv/cv.pdf">Curriculum Vitae</a> | <a href="misc/cv/cvcn.pdf">个人履历</a></p>
-			<p><img src="img/location-dot-solid.svg" />
-					Where am I (Default: Hefei)</span><br/>
-					01/08 - 01/12 Guangzhou, Guangdong
-			</p>
-		</td>
-	</tr>
-</table>
+			<table>
+				<tr>
+					<td>
+						<p>
+							<img src="img/user-solid.svg" />
+							Research Associate Professor (特聘副研究员)<br>
+							<img src="img/school-solid.svg" />
+							<a href="https://www.hfut.edu.cn/">合肥工业大学</a><a href="https://maths.hfut.edu.cn">数学学院</a>翡翠科教楼B1810东<br>
+							<img src="img/map-regular.svg" />
+							<a href="http://maths.hfut.edu.cn/en/">School of Mathematics</a>,
+							<a href="https://en.hfut.edu.cn/"><abbr title="Hefei University of Technology">HFUT</abbr></a>,
+							<a href="https://www.hefei.gov.cn/english/index.html">Hefei</a>,
+							<a href="http://english.www.gov.cn/"><abbr title="The People's Republic of China">PRC</abbr></a><br>
+							<img src="img/book-open-solid.svg" />
+							<a href="misc/cv/cv.pdf">Curriculum Vitae</a> | <a href="misc/cv/cvcn.pdf">个人履历</a><br>
+							<img src="img/envelope-solid.svg" />
+							<span style="font-family: 'Courier New'; font-size: 110%;">zhangshenxing (at) hfut.edu.cn</em></span><br>
+							<img src="img/location-dot-solid.svg" />
+							Where am I (Default: Hefei)
+						</p>
+						<ul style="margin-top: -15px; margin-left: -8px;">
+							<li>01/08 - 01/12 Guangzhou, Guangdong</li>
+						</ul>
+						<p>
+							My research interests lie in number theory, especially elliptic curves, class groups and character sums.
+						</p>
+					</td>
+					<td>
+						<a href="melarge.jpg"><img id="zsx" src="me.jpg" alt="我的照片" title="我的照片" /></a>
+					</td>
+				</tr>
+			</table>
+		</section>
 
+		<section>
+			<h2 id="experience"><img src="img/user-graduate-solid.svg" />Experience</h2>
+			<ul id="ul-experience">
+				<li>
+					<span>2021/12 - present</span>
+					Research Associate Professor,
+					<a title="Hefei University of Technology" href="http://www.hfut.edu.cn/">HFUT</a>
+				</li>
+				<li>
+					<span>2018/04 - 2021/11</span>
+					Postdoctoral Fellow,
+					Mentor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
+					<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a>
+				</li>
+				<li>
+					<span>2016/03 - 2018/03</span>
+					Postdoctoral Fellow,
+					Mentor <a href="http://www.mcm.ac.cn/faculty/tianye/201409/t20140916_255888.html" title="田野">Ye Tian</a>,
+					<a title="Academy of Mathematics and Systems Science" href="http://www.amss.cas.cn/">AMSS</a>
+					<a title="Chinese Academy of Sciences" href="http://www.cas.cn/">CAS</a>
+				</li>
+				<li class="li-education">
+					<span>2010/09 - 2015/11</span>
+					Ph.D. in <abbr title="SA10001 ⇒ BA12001">Mathematics</abbr>,
+					Advisor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
+					<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a>
+				</li>
+				<li class="li-education">
+					<span>2006/09 - 2010/06</span>
+					B.S. in <abbr title="SCGY PB0600">Mathematics</abbr>,
+					<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a>
+				</li>
+			</ul>
+		</section>
 
-<h2 id="experience"><img src="img/user-graduate-solid.svg" />Experience</h2>
-<table id="experiencetable"><tbody>
-	<tr>
-		<td>2021/12 - present</td>
-		<td>Research Associate Professor,
-			<a title="Hefei University of Technology" href="http://www.hfut.edu.cn/">HFUT</a></td>
-		</tr>
-	<tr>
-		<td>2018/04 - 2021/11</td>
-		<td>Postdoctoral Fellow,
-			Mentor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
-			<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a></td>
-	</tr>
-	<tr>
-		<td>2016/03 - 2018/03</td>
-		<td>Postdoctoral Fellow,
-			Mentor <a href="http://www.mcm.ac.cn/faculty/tianye/201409/t20140916_255888.html" title="田野">Ye Tian</a>,
-			<a title="Academy of Mathematics and Systems Science" href="http://www.amss.cas.cn/">AMSS</a>
-			<a title="Chinese Academy of Sciences" href="http://www.cas.cn/">CAS</a></td>
-		</tr>
-	<tr>
-		<td>2010/09 - 2015/11</td>
-		<td>Ph.D. in <abbr title="SA10001 ⇒ BA12001">Mathematics</abbr>,
-			Advisor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
-			<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a></td>
-		</tr>
-	<tr>
-		<td>2006/09 - 2010/06</td>
-		<td>B.S. in <abbr title="SCGY PB0600">Mathematics</abbr>,
-			<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a></td>
-		</tr>
-<tbody></table>
+		<section>
+			<h2 id="research"><img src="img/scroll-solid.svg" />Research</h2>
+			<ol>
+				<li>On a comparison of Cassels pairings of different elliptic curves<br>
+					S. Zhang.
+					(2022), preprint.<br>
+					<a href="publications/Zhang2022.pdf">PDF</a> |
+					<a href="slides/20220925 南京 不同椭圆曲线的二次扭之比较.pdf">幻灯片</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						Let <span class="math">𝑒<sub>1</sub></span>, <span class="math">𝑒<sub>2</sub></span>, <span
+							class="math">𝑒<sub>3</sub></span> be nonzero integers satisfying <span
+							class="math">𝑒<sub>1</sub>+𝑒<sub>2</sub>+𝑒<sub>3</sub> = 0</span>. Let <span
+							class="math">(𝑎,𝑏,𝑐)</span> be a primitive triple of odd integers satisfying <span
+							class="math">𝑒<sub>1</sub>𝑎<sup>2</sup>+𝑒<sub>2</sub>𝑏<sup>2</sup>+𝑒<sub>3</sub>𝑐<sup>2</sup> =
+							0</span>. Denote by <span class="math">𝐸: 𝑦<sup>2</sup> =
+							𝑥(𝑥&minus;𝑒<sub>1</sub>)(𝑥+𝑒<sub>2</sub>)</span> and <span class="math">ℰ: 𝑦<sup>2</sup> =
+							𝑥(𝑥&minus;𝑒<sub>1</sub>𝑎<sup>2</sup>)(𝑥+𝑒<sub>2</sub>𝑏<sup>2</sup>)</span>. Assume that the <span
+							class="math">2</span>-Selmer groups of <span class="math">𝐸</span> and <span class="math">ℰ</span> are
+						minimal. Let <span class="math">𝑛</span> be a positive square-free odd integer, where the prime factors of
+						<span class="math">𝑛</span> are nonzero quadratic residues modulo each odd prime factor of <span
+							class="math">𝑒<sub>1</sub>𝑒<sub>2</sub>𝑒<sub>3</sub>𝑎𝑏𝑐</span>. Then under certain conditions, the
+						<span class="math">2</span>-Selmer group and the Cassels pairing of the quadratic twist <span
+							class="math">𝐸<sup>(𝑛)</sup></span> coincide with those of <span class="math">ℰ<sup>(𝑛)</sup></span>.
+						As
+						a corollary, <span class="math">𝐸<sup>(𝑛)</sup></span> has Mordell-Weil rank zero without order <span
+							class="math">4</span> element in its Shafarevich-Tate group, if and only if these holds for <span
+							class="math">ℰ<sup>(𝑛)</sup></span>. We also give some applications for the congruent elliptic curve.
+					</span>
+				</li>
+				<li>On the quadratic twist of elliptic curves with full <span class="math">2</span>-torsion<br>
+					Z. Wang, S. Zhang.
+					(2022), preprint.<br>
+					<a href="publications/WangZhang2022.pdf">PDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						Let <span class="math">𝐸: 𝑦<sup>2</sup> = 𝑥(𝑥&minus;𝑎<sup>2</sup>)(𝑥+𝑏<sup>2</sup>)</span> be an
+						elliptic curve with full <span class="math">2</span>-torsion group, where <span class="math">𝑎</span> and
+						<span class="math">𝑏</span> are coprime integers and <span
+							class="math">2(𝑎<sup>2</sup>+𝑏<sup>2</sup>)</span> is a square. Assume that the <span
+							class="math">2</span>-Selmer group of <span calss="math">𝐸</span> has rank two. We characterize all
+						quadratic twists of <span class="math">𝐸</span> with Mordell-Weil rank zero and <span
+							class="math">2</span>-primary Shafarevich-Tate groups <span class="math">(ℤ/2ℤ)<sup>2</sup></span>, under
+						certain conditions. We also obtain a distribution result of these elliptic curves.
+					</span>
+				</li>
+				<li>On the Newton polygons of twisted <span class="math">𝐿</span>-functions of binomials<br>
+					S. Zhang.
+					<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 80 (2022).<br>
+					<a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> |
+					<a href="https://doi.org/10.1016/j.ffa.2022.102026">pubPDF</a> |
+					<a href="slides/20210929 青岛 二项式的扭 L 函数的牛顿折线.pdf">幻灯片</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						Let <span class="math">χ</span> be an order <span class="math">𝑐</span> multiplicative character of a
+						finite
+						field and <span class="math">𝑓(𝑥) = 𝑥<sup>𝑑</sup>+λ𝑥<sup>𝑒</sup></span> a binomial with <span
+							class="math">(𝑑,𝑒) = 1</span>. We study the twisted classical and <span class="math">𝑇</span>-adic
+						Newton
+						polygons of <span class="math">𝑓</span>. When <span class="math">𝑝 > (𝑑&minus;𝑒)(2𝑑&minus;1)</span>, we
+						give a lower bound of Newton polygons and show that they coincide if <span class="math">𝑝</span> does not
+						divide a certain integral constant depending on <span class="math">𝑝 mod 𝑐𝑑</span>.<br><br>
 
-
-<h2 id="research"><img src="img/scroll-solid.svg" />Research</h2>
-<ol>
-	<li>On a comparison of Cassels pairings of different elliptic curves<br>
-		S. Zhang.
-		(2022), preprint.<br>
-		<a href="publications/Zhang2022.pdf">PDF</a> |
-		<a href="slides/20220925 南京 不同椭圆曲线的二次扭之比较.pdf">幻灯片</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			Let <span class="math">𝑒<sub>1</sub></span>, <span class="math">𝑒<sub>2</sub></span>, <span class="math">𝑒<sub>3</sub></span> be nonzero integers satisfying <span class="math">𝑒<sub>1</sub>+𝑒<sub>2</sub>+𝑒<sub>3</sub> = 0</span>. Let <span class="math">(𝑎,𝑏,𝑐)</span> be a primitive triple of odd integers satisfying <span class="math">𝑒<sub>1</sub>𝑎<sup>2</sup>+𝑒<sub>2</sub>𝑏<sup>2</sup>+𝑒<sub>3</sub>𝑐<sup>2</sup> = 0</span>. Denote by <span class="math">𝐸: 𝑦<sup>2</sup> = 𝑥(𝑥&minus;𝑒<sub>1</sub>)(𝑥+𝑒<sub>2</sub>)</span> and <span class="math">ℰ: 𝑦<sup>2</sup> = 𝑥(𝑥&minus;𝑒<sub>1</sub>𝑎<sup>2</sup>)(𝑥+𝑒<sub>2</sub>𝑏<sup>2</sup>)</span>. Assume that the <span class="math">2</span>-Selmer groups of <span class="math">𝐸</span> and <span class="math">ℰ</span> are minimal. Let <span class="math">𝑛</span> be a positive square-free odd integer, where the prime factors of <span class="math">𝑛</span> are nonzero quadratic residues modulo each odd prime factor of <span class="math">𝑒<sub>1</sub>𝑒<sub>2</sub>𝑒<sub>3</sub>𝑎𝑏𝑐</span>. Then under certain conditions, the <span class="math">2</span>-Selmer group and the Cassels pairing of the quadratic twist <span class="math">𝐸<sup>(𝑛)</sup></span> coincide with those of <span class="math">ℰ<sup>(𝑛)</sup></span>. As a corollary, <span class="math">𝐸<sup>(𝑛)</sup></span> has Mordell-Weil rank zero without order <span class="math">4</span> element in its Shafarevich-Tate group, if and only if these holds for <span class="math">ℰ<sup>(𝑛)</sup></span>. We also give some applications for the congruent elliptic curve.
-		</span>
-	</li>
-	<li>On the quadratic twist of elliptic curves with full <span class="math">2</span>-torsion<br>
-		Z. Wang, S. Zhang.
-		(2022), preprint.<br>
-		<a href="publications/WangZhang2022.pdf">PDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			Let <span class="math">𝐸: 𝑦<sup>2</sup> = 𝑥(𝑥&minus;𝑎<sup>2</sup>)(𝑥+𝑏<sup>2</sup>)</span> be an elliptic curve with full <span class="math">2</span>-torsion group, where <span class="math">𝑎</span> and <span class="math">𝑏</span> are coprime integers and <span class="math">2(𝑎<sup>2</sup>+𝑏<sup>2</sup>)</span> is a square. Assume that the <span class="math">2</span>-Selmer group of <span calss="math">𝐸</span> has rank two. We characterize all quadratic twists of <span class="math">𝐸</span> with Mordell-Weil rank zero and <span class="math">2</span>-primary Shafarevich-Tate groups <span class="math">(ℤ/2ℤ)<sup>2</sup></span>, under certain conditions. We also obtain a distribution result of these elliptic curves.
-		</span>
-	</li>
-	<li>On the Newton polygons of twisted <span class="math">𝐿</span>-functions of binomials<br>
-		S. Zhang.
-		<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 80 (2022).<br>
-		<a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> |
-		<a href="https://doi.org/10.1016/j.ffa.2022.102026">pubPDF</a> |
-		<a href="slides/20210929 青岛 二项式的扭 L 函数的牛顿折线.pdf">幻灯片</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			Let <span class="math">χ</span> be an order <span class="math">𝑐</span> multiplicative character of a finite field and <span class="math">𝑓(𝑥) = 𝑥<sup>𝑑</sup>+λ𝑥<sup>𝑒</sup></span> a binomial with <span class="math">(𝑑,𝑒) = 1</span>. We study the twisted classical and <span class="math">𝑇</span>-adic Newton polygons of <span class="math">𝑓</span>. When <span class="math">𝑝 > (𝑑&minus;𝑒)(2𝑑&minus;1)</span>, we give a lower bound of Newton polygons and show that they coincide if <span class="math">𝑝</span> does not divide a certain integral constant depending on <span class="math">𝑝 mod 𝑐𝑑</span>.<br><br>
-			
-			We conjecture that this condition holds if <span class="math">𝑝</span> is large enough with respect to <span class="math">𝑐</span>, <span class="math">𝑑</span> by combining all known results and the conjecture given by Zhang-Niu. As an example, we show that it holds for <span class="math">𝑒=𝑑&minus;1</span>.
-		</span><pre class="bibitem">@article {Zhang2022,
+						We conjecture that this condition holds if <span class="math">𝑝</span> is large enough with respect to
+						<span class="math">𝑐</span>, <span class="math">𝑑</span> by combining all known results and the conjecture
+						given
+						by Zhang-Niu. As an example, we show that it holds for <span class="math">𝑒=𝑑&minus;1</span>.
+					</span>
+					<pre>@article {Zhang2022,
       AUTHOR = {Zhang, Shenxing},
        TITLE = {On the {N}ewton polygons of twisted {$L$}-functions of binomials},
      JOURNAL = {Finite Fields Appl.},
@@ -164,28 +205,48 @@
          DOI = {10.1016/j.ffa.2022.102026},
          URL = {https://doi.org/10.1016/j.ffa.2022.102026},
 }</pre>
-	</li>
-	<li>On linearity of the periods of subtraction games<br>
-		S. Zhang.
-		(2021), preprint.<br>
-		<a href="publications/Zhang2021b.pdf">PDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			The subtraction game is an impartial combinatorial games involving a finite set <span class="math">𝑆</span> of positive integers. The nim-sequence <span class="math">𝒢<sub>𝑆</sub></span> associated to this game is ultimately periodic. In this paper, we study the nim-sequence <span class="math">𝒢<sub>𝑆&cup;{𝑐}</sub></span> where <span class="math">𝑆</span> is fixed and <span class="math">𝑐</span> varies. We conjecture that there is a multiplier <span class="math">𝑞</span> of the period of <span class="math">𝒢<sub>𝑆</sub></span>, such that for sufficiently large <span class="math">𝑐</span>, the pre-period and period of <span class="math">𝒢<sub>𝑆&cup;{𝑐}</sub></span> are linear on <span class="math">𝑐</span>, if <span class="math">𝑐</span> modulo <span class="math">𝑞</span> is fixed. We prove it in several cases.<br><br>
-			
-			We also give new examples with period <span class="math">2</span> inspired by this conjecture.
-		</span>
-	</li>
-	<li>The <span class="math">3</span>-class groups of <span class="math">ℚ(<span style="vertical-align:-10%;">∛</span><span style="text-decoration: overline">𝑝</span>)</span> and its normal closure<br>
-		J. Li, S. Zhang.
-		<em><abbr title="Mathematische Zeitschrift">Math Z.</abbr></em>
-		300 (2022), no. 1, 209-215.<br>
-		<a href="publications/LiZhang2022 The 3-class groups of ℚ(∛𝑝) and its normal closure.pdf">PDF</a> |
-		<a href="https://doi.org/10.1007/s00209-021-02797-5">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			We determine the <span class="math">3</span>-class groups of <span class="math">ℚ(<span style="vertical-align:-10%;">∛</span><span style="text-decoration: overline">𝑝</span>)</span> and <span class="math">𝐾 = ℚ(<span style="vertical-align:-10%;">∛</span><span style="text-decoration: overline">𝑝</span>,<span style="vertical-align:-12%;">√</span><span style="text-decoration: overline">&minus;3</span>)</span> when <span class="math">𝑝 &equiv; 4,7 mod 9</span> is a prime and <span class="math">3</span> is a cube modulo <span class="math">𝑝</span>. This confirms a conjecture made by Barrucand-Cohn, and proves the last remaining case of a conjecture of Lemmermeyer on the <span class="math">3</span>-class group of <span class="math">𝐾</span>.
-		</span><pre class="bibitem">@article {LiZhang2022,
+				</li>
+				<li>On linearity of the periods of subtraction games<br>
+					S. Zhang.
+					(2021), preprint.<br>
+					<a href="publications/Zhang2021b.pdf">PDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						The subtraction game is an impartial combinatorial games involving a finite set <span class="math">𝑆</span>
+						of positive integers. The nim-sequence <span class="math">𝒢<sub>𝑆</sub></span> associated to this game is
+						ultimately periodic. In this paper, we study the nim-sequence <span
+							class="math">𝒢<sub>𝑆&cup;{𝑐}</sub></span> where <span class="math">𝑆</span> is fixed and <span
+							class="math">𝑐</span> varies. We conjecture that there is a multiplier <span class="math">𝑞</span> of
+						the
+						period of <span class="math">𝒢<sub>𝑆</sub></span>, such that for sufficiently large <span
+							class="math">𝑐</span>, the pre-period and period of <span class="math">𝒢<sub>𝑆&cup;{𝑐}</sub></span>
+						are
+						linear on <span class="math">𝑐</span>, if <span class="math">𝑐</span> modulo <span class="math">𝑞</span>
+						is
+						fixed. We prove it in several cases.<br><br>
+
+						We also give new examples with period <span class="math">2</span> inspired by this conjecture.
+					</span>
+				</li>
+				<li>The <span class="math">3</span>-class groups of <span class="math">ℚ(<span class="cbroot">∛</span><span
+							class="ov">𝑝</span>)</span> and its
+					normal closure<br>
+					J. Li, S. Zhang.
+					<em><abbr title="Mathematische Zeitschrift">Math Z.</abbr></em>
+					300 (2022), no. 1, 209-215.<br>
+					<a href="publications/LiZhang2022 The 3-class groups of ℚ(∛𝑝) and its normal closure.pdf">PDF</a> |
+					<a href="https://doi.org/10.1007/s00209-021-02797-5">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						We determine the <span class="math">3</span>-class groups of <span class="math">ℚ(<span
+								class="cbroot">∛</span><span class="ov">𝑝</span>)</span> and <span class="math">𝐾 = ℚ(<span
+								class="cbroot">∛</span><span class="ov">𝑝</span>,<span class="root">√</span><span
+								class="ov">&minus;3</span>)</span> when <span class="math">𝑝 &equiv; 4,7 mod
+							9</span> is a prime and <span class="math">3</span> is a cube modulo <span class="math">𝑝</span>. This
+						confirms a conjecture made by Barrucand-Cohn, and proves the last remaining case of a conjecture of
+						Lemmermeyer on the <span class="math">3</span>-class group of <span class="math">𝐾</span>.
+					</span>
+					<pre>@article {LiZhang2022,
       AUTHOR = {Li, Jianing and Zhang, Shenxing},
        TITLE = {The 3-class groups of {$\mathbb{Q}(\root3p)$} and its normal closure},
      JOURNAL = {Math. Z.},
@@ -199,17 +260,33 @@
          DOI = {10.1007/s00209-021-02797-5},
          URL = {https://doi.org/10.1007/s00209-021-02797-5},
 }</pre>
-	</li>
-	<li><span class="math">ℓ</span>-Class groups of fields in Kummer towers<br>
-		J. Li, Y. Ouyang, Y. Xu, S. Zhang.
-		<em><abbr title="Publicacions Matemàtiques">Publ. Mat.</abbr></em>
-		66(2022), no. 1, 235-267.<br>
-		<a href="publications/LiOuyangXuZhang2022 ℓ-Class groups of fields in Kummer towers.pdf">PDF</a> |
-		<a href="https://arxiv.org/pdf/2010.08342">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			Let <span class="math">ℓ</span> and <span class="math">𝑝</span> be prime numbers and <span class="math">𝐾<sub>𝑛,𝑚</sub> = ℚ(𝑝<sup>1/ℓ<sup>𝑛</sup></sup>,ζ<sub>2ℓ<sup>𝑚</sup></sub>)</span>. We study the <span class="math">ℓ</span>-class group of <span class="math">𝐾<sub>𝑛,𝑚</sub></span> in this paper. When <span class="math">ℓ = 2</span>, we determine the structure of the <span class="math">2</span>-class group of <span class="math">𝐾<sub>𝑛,𝑚</sub></span> for all <span class="math">(𝑛,𝑚) &in; ℤ<sup>2</sup><sub style="margin-left:-9px">&geq;0</sub></span> in the case <span class="math">𝑝 = 2</span> or <span class="math">𝑝 &equiv; 3,5 mod 8</span>, and for <span class="math">(𝑛,𝑚) = (𝑛,0),(𝑛,1)</span> or <span class="math">(1,𝑚)</span> in the case <span class="math">𝑝&equiv;7 mod 16</span>, generalizing the results of Parry about the <span class="math">2</span>-divisibility of the class number of <span class="math">𝐾<sub>2,0</sub></span>. We also obtain results about the <span class="math">ℓ</span>-class group of <span class="math">𝐾<sub>𝑛,𝑚</sub></span> when <span class="math">ℓ</span> is odd and in particular <span class="math">ℓ = 3</span>. The main tools we use are class field theory, including Chevalley’s ambiguous class number formula and its generalization by Gras, and a stationary result about the <span class="math">ℓ</span>-class groups in the <span class="math">2</span>-dimensional Kummer tower <span class="math">{𝐾<sub>𝑛,𝑚</sub>}</span>.<br>
-		</span><pre class="bibitem">@article {LiOuyangXuZhang2022,
+				</li>
+				<li><span class="math">ℓ</span>-Class groups of fields in Kummer towers<br>
+					J. Li, Y. Ouyang, Y. Xu, S. Zhang.
+					<em><abbr title="Publicacions Matemàtiques">Publ. Mat.</abbr></em>
+					66(2022), no. 1, 235-267.<br>
+					<a href="publications/LiOuyangXuZhang2022 ℓ-Class groups of fields in Kummer towers.pdf">PDF</a> |
+					<a href="https://arxiv.org/pdf/2010.08342">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						Let <span class="math">ℓ</span> and <span class="math">𝑝</span> be prime numbers and <span
+							class="math">𝐾<sub>𝑛,𝑚</sub> = ℚ(𝑝<sup>1/ℓ<sup>𝑛</sup></sup>,ζ<sub>2ℓ<sup>𝑚</sup></sub>)</span>. We
+						study the <span class="math">ℓ</span>-class group of <span class="math">𝐾<sub>𝑛,𝑚</sub></span> in this
+						paper. When <span class="math">ℓ = 2</span>, we determine the structure of the <span
+							class="math">2</span>-class group of <span class="math">𝐾<sub>𝑛,𝑚</sub></span> for all <span
+							class="math">(𝑛,𝑚) &in; ℤ<sup>2</sup><sub style="margin-left:-9px">&geq;0</sub></span> in the case <span
+							class="math">𝑝 = 2</span> or <span class="math">𝑝 &equiv; 3,5 mod 8</span>, and for <span
+							class="math">(𝑛,𝑚) = (𝑛,0),(𝑛,1)</span> or <span class="math">(1,𝑚)</span> in the case <span
+							class="math">𝑝&equiv;7 mod 16</span>, generalizing the results of Parry about the <span
+							class="math">2</span>-divisibility of the class number of <span class="math">𝐾<sub>2,0</sub></span>. We
+						also obtain results about the <span class="math">ℓ</span>-class group of <span
+							class="math">𝐾<sub>𝑛,𝑚</sub></span> when <span class="math">ℓ</span> is odd and in particular <span
+							class="math">ℓ = 3</span>. The main tools we use are class field theory, including Chevalley’s ambiguous
+						class number formula and its generalization by Gras, and a stationary result about the <span
+							class="math">ℓ</span>-class groups in the <span class="math">2</span>-dimensional Kummer tower <span
+							class="math">{𝐾<sub>𝑛,𝑚</sub>}</span>.<br>
+					</span>
+					<pre>@article {LiOuyangXuZhang2022,
       AUTHOR = {Li, Jianing and Ouyang, Yi and Xu, Yue and Zhang, Shenxing},
        TITLE = {{$\ell$}-class groups of fields in {K}ummer towers},
      JOURNAL = {Publ. Mat.},
@@ -222,27 +299,41 @@
          DOI = {10.5565/publmat6612210},
          URL = {https://doi.org/10.5565/publmat6612210},
 }</pre>
-	</li>
-	<li>The generating fields of twisted Kloosterman sums<br>
-		S. Zhang.
-		(2021), preprint.<br>
-		<a href="publications/Zhang2021a.pdf">PDF</a> |
-		<a href="slides/20210517 聊城 On the generating fields of Kloosterman sums.pdf">Slide</a> & <a href="slides/20210824 珠海 Kloosterman 和的生成域.pdf">幻灯片</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			We use the Kloosterman sheaves constructed by Fisher to show when two Kloosterman sums differ a <span class="math">(𝑞&minus;1)</span>-th root of unity, and use <span class="math">𝑝</span>-adic analysis to prove the non-vanishing of the Kloosterman sums. Then we can determine the generating fields by these results.
-		</span>
-	</li>
-	<li>The generating fields of two twisted Kloosterman sums<br>
-		S. Zhang.
-		<em><abbr title="Journal of University of Science and Technology of China. 中国科学技术大学学报">J. Univ. Sci. Technol. China</abbr></em>
-		51 (2021), no. 12, 879-888.<br>
-		<a href="publications/Zhang2021 The generating fields of two twisted Kloosterman sums.pdf">PDF</a> |
-		<a href="http://just-cn.ustc.edu.cn/CN/10.52396/JUST-2021-0077">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a>| <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			In this paper, we study the generating fields of the twisted Kloosterman sums <span class="math">Kl(𝑞,𝑎,χ)</span> and the partial Gauss sums <span class="math">𝑔(𝑞,𝑎,χ)</span>. We require that the characteristic <span class="math">𝑝</span> is large with respect to the order <span class="math">𝑑</span> of the character <span class="math">χ</span> and the trace of the coefficient <span class="math">𝑎</span> is nonzero. When <span class="math">𝑝 &equiv; &pm; 1 mod 𝑑</span>, we can characterize the generating fields of these character sums. For general <span class="math">𝑝</span>, when <span class="math">𝑎</span> lies in the prime field, we propose a combinatorial condition on <span class="math">(𝑝,𝑑)</span> to ensure one can determine the generating fields.
-		</span><pre class="bibitem">@article {Zhang2021,
+				</li>
+				<li>The generating fields of twisted Kloosterman sums<br>
+					S. Zhang.
+					(2021), preprint.<br>
+					<a href="publications/Zhang2021a.pdf">PDF</a> |
+					<a href="slides/20210517 聊城 On the generating fields of Kloosterman sums.pdf">Slide</a> & <a
+						href="slides/20210824 珠海 Kloosterman 和的生成域.pdf">幻灯片</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						We use the Kloosterman sheaves constructed by Fisher to show when two Kloosterman sums differ a <span
+							class="math">(𝑞&minus;1)</span>-th root of unity, and use <span class="math">𝑝</span>-adic analysis to
+						prove the non-vanishing of the Kloosterman sums. Then we can determine the generating fields by these
+						results.
+					</span>
+				</li>
+				<li>The generating fields of two twisted Kloosterman sums<br>
+					S. Zhang.
+					<em><abbr title="Journal of University of Science and Technology of China. 中国科学技术大学学报">J. Univ. Sci. Technol.
+							China</abbr></em>
+					51 (2021), no. 12, 879-888.<br>
+					<a href="publications/Zhang2021 The generating fields of two twisted Kloosterman sums.pdf">PDF</a> |
+					<a href="http://just-cn.ustc.edu.cn/CN/10.52396/JUST-2021-0077">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a>| <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						In this paper, we study the generating fields of the twisted Kloosterman sums <span
+							class="math">Kl(𝑞,𝑎,χ)</span> and the partial Gauss sums <span class="math">𝑔(𝑞,𝑎,χ)</span>. We
+						require
+						that the characteristic <span class="math">𝑝</span> is large with respect to the order <span
+							class="math">𝑑</span> of the character <span class="math">χ</span> and the trace of the coefficient <span
+							class="math">𝑎</span> is nonzero. When <span class="math">𝑝 &equiv; &pm; 1 mod 𝑑</span>, we can
+						characterize the generating fields of these character sums. For general <span class="math">𝑝</span>, when
+						<span class="math">𝑎</span> lies in the prime field, we propose a combinatorial condition on <span
+							class="math">(𝑝,𝑑)</span> to ensure one can determine the generating fields.
+					</span>
+					<pre>@article {Zhang2021,
       AUTHOR = {Zhang, Shenxing},
        TITLE = {The generating fields of two twisted {K}loosterman sums},
      JOURNAL = {J. Univ. Sci. Technol. China},
@@ -255,27 +346,34 @@
          DOI = {10.52396/JUST-2021-0077},
          URL = {https://doi.org/10.52396/JUST-2021-0077},
 }</pre>
-	</li>
-	<li>The virtual periods of linear recurrence sequences in cyclotomic fields<br>
-		S. Zhang.
-		arXiv: 2010.08342 (2020).<br>
-		<a href="publications/Zhang2020.pdf">PDF</a> |
-		<a href="https://arxiv.org/pdf/2010.08342">arXivPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			A linear recurrence sequence in a cyclotomic field produces a sequence of the generating fields of each term. We show that the later sequence is periodic after removing the first finite terms, and give a bound of its period. This can be applied to exponential sums.
-		</span>
-	</li>
-	<li>Birch's lemma over global function fields<br>
-		Y. Ouyang, S. Zhang.
-		<em><abbr title="Proceedings of the American Mathematical Society">Proc. Amer. Math. Soc.</abbr></em>
-		145 (2017), no. 2, 577-584.<br>
-		<a href="publications/OuyangZhang2017 Birch's lemma over global function field.pdf">PDF</a> |
-		<a href="https://doi.org/10.1090/proc/13265">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			We obtain a function field version of Birch’s Lemma, which reveals non-torsion points in quadratic twists of an elliptic curve over a global function field, where the quadratic twists have many prime factors. The proof is based on Brown’s Euler system for Heegner points of function fields and Vigni’s result.
-		</span><pre class="bibitem">@article {OuyangZhang2017,
+				</li>
+				<li>The virtual periods of linear recurrence sequences in cyclotomic fields<br>
+					S. Zhang.
+					arXiv: 2010.08342 (2020).<br>
+					<a href="publications/Zhang2020.pdf">PDF</a> |
+					<a href="https://arxiv.org/pdf/2010.08342">arXivPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						A linear recurrence sequence in a cyclotomic field produces a sequence of the generating fields of each
+						term.
+						We show that the later sequence is periodic after removing the first finite terms, and give a bound of its
+						period. This can be applied to exponential sums.
+					</span>
+				</li>
+				<li>Birch's lemma over global function fields<br>
+					Y. Ouyang, S. Zhang.
+					<em><abbr title="Proceedings of the American Mathematical Society">Proc. Amer. Math. Soc.</abbr></em>
+					145 (2017), no. 2, 577-584.<br>
+					<a href="publications/OuyangZhang2017 Birch's lemma over global function field.pdf">PDF</a> |
+					<a href="https://doi.org/10.1090/proc/13265">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						We obtain a function field version of Birch’s Lemma, which reveals non-torsion points in quadratic twists of
+						an elliptic curve over a global function field, where the quadratic twists have many prime factors. The
+						proof
+						is based on Brown’s Euler system for Heegner points of function fields and Vigni’s result.
+					</span>
+					<pre>@article {OuyangZhang2017,
       AUTHOR = {Ouyang, Yi and Zhang, Shenxing},
        TITLE = {Birch's lemma over global function fields},
      JOURNAL = {Proc. Amer. Math. Soc.},
@@ -289,16 +387,29 @@
          DOI = {10.1090/proc/13265},
          URL = {https://doi.org/10.1090/proc/13265},
 }</pre>
-	</li>
-	<li>Newton polygons of <span class="math">𝐿</span>-functions of polynomials <span class="math">𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑&minus;1</sup></span> with <span class="math">𝑝 &equiv; &minus;1 mod 𝑑</span><br>
-		Y. Ouyang, S. Zhang.
-		<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 37 (2016), 285-294.<br>
-		<a href="publications/OuyangZhang2016 Newton polygons of 𝐿-functions of polynomials 𝑥𝑑+𝑎𝑥𝑑−1 with 𝑝 ≡ −1 mod 𝑑.pdf">PDF</a> |
-		<a href="https://doi.org/10.1016/j.ffa.2015.10.003">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			For prime <span class="math">𝑝 &equiv; &minus;1 mod 𝑑</span> and <span class="math">𝑞</span> a power of <span class="math">𝑝</span>, we obtain the slopes of the <span class="math">𝑞</span>-adic Newton polygons of <span class="math">𝐿</span>-functions of <span class="math">𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑&minus;1</sup> &in; 𝔽<sub>𝑞</sub>[𝑥]</span> with respect to finite characters <span class="math">χ</span> when <span class="math">𝑝</span> is larger than an explicit bound depending only on <span class="math">𝑑</span> and <span class="math">log<sub>𝑝</sub> 𝑞</span>. The main tools are Dwork’s trace formula and Zhu’s rigid transform theorem.
-		</span><pre class="bibitem">@article {OuyangZhang2016,
+				</li>
+				<li>Newton polygons of <span class="math">𝐿</span>-functions of polynomials <span
+						class="math">𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑&minus;1</sup></span> with <span class="math">𝑝 &equiv; &minus;1
+						mod
+						𝑑</span><br>
+					Y. Ouyang, S. Zhang.
+					<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 37 (2016), 285-294.<br>
+					<a
+						href="publications/OuyangZhang2016 Newton polygons of 𝐿-functions of polynomials 𝑥𝑑+𝑎𝑥𝑑−1 with 𝑝 ≡ −1 mod 𝑑.pdf">PDF</a>
+					|
+					<a href="https://doi.org/10.1016/j.ffa.2015.10.003">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						For prime <span class="math">𝑝 &equiv; &minus;1 mod 𝑑</span> and <span class="math">𝑞</span> a power of
+						<span class="math">𝑝</span>, we obtain the slopes of the <span class="math">𝑞</span>-adic Newton polygons
+						of
+						<span class="math">𝐿</span>-functions of <span class="math">𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑&minus;1</sup> &in;
+							𝔽<sub>𝑞</sub>[𝑥]</span> with respect to finite characters <span class="math">χ</span> when <span
+							class="math">𝑝</span> is larger than an explicit bound depending only on <span class="math">𝑑</span> and
+						<span class="math">log<sub>𝑝</sub> 𝑞</span>. The main tools are Dwork’s trace formula and Zhu’s rigid
+						transform theorem.
+					</span>
+					<pre>@article {OuyangZhang2016,
       AUTHOR = {Ouyang, Yi and Zhang, Shenxing},
        TITLE = {Newton polygons of {$L$}-functions of polynomials {$x^d+ax^{d-1}$} with {$p\equiv-1\mod d$}},
      JOURNAL = {Finite Fields Appl.},
@@ -311,17 +422,23 @@
          DOI = {10.1016/j.ffa.2015.10.003},
          URL = {https://doi.org/10.1016/j.ffa.2015.10.003},
 }</pre>
-	</li>
-	<li>On second 2-descent and non-congruent numbers<br>
-		Y. Ouyang, S. Zhang.
-		<em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em>
-		170 (2015), no. 4, 343-360.<br>
-		<a href="publications/OuyangZhang2015 On second 2-descent and non-congruent numbers.pdf">PDF</a> |
-		<a href="https://doi.org/10.4064/aa170-4-3">PubPDF</a> & <a href="publications/OuyangZhang2015 Errata ActaArith.pdf">Errata</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			We use the so-called second <span class="math">2</span>-decent method to find several series of non-congruent numbers. We consider three different <span class="math">2</span>-isogenies of the congruent elliptic curves and their duals, and find a necessary condition to estimate the size of the images of the <span class="math">2</span>-Selmer groups in the Selmer groups of the isogeny.
-		</span><pre class="bibitem">@article {OuyangZhang2015,
+				</li>
+				<li>On second 2-descent and non-congruent numbers<br>
+					Y. Ouyang, S. Zhang.
+					<em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em>
+					170 (2015), no. 4, 343-360.<br>
+					<a href="publications/OuyangZhang2015 On second 2-descent and non-congruent numbers.pdf">PDF</a> |
+					<a href="https://doi.org/10.4064/aa170-4-3">PubPDF</a> & <a
+						href="publications/OuyangZhang2015 Errata ActaArith.pdf">Errata</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						We use the so-called second <span class="math">2</span>-decent method to find several series of
+						non-congruent
+						numbers. We consider three different <span class="math">2</span>-isogenies of the congruent elliptic curves
+						and their duals, and find a necessary condition to estimate the size of the images of the <span
+							class="math">2</span>-Selmer groups in the Selmer groups of the isogeny.
+					</span>
+					<pre>@article {OuyangZhang2015,
       AUTHOR = {Ouyang, Yi and Zhang, Shenxing},
        TITLE = {On second 2-descent and non-congruent numbers},
      JOURNAL = {Acta Arith.},
@@ -335,17 +452,21 @@
          DOI = {10.4064/aa170-4-3},
          URL = {https://doi.org/10.4064/aa170-4-3},
 }</pre>
-	</li>
-	<li>On non-congruent numbers with 1 modulo 4 prime factors<br>
-		Y. Ouyang, S. Zhang.
-		<em><abbr title="Science China. Mathematics">Sci. China Math.</abbr></em>
-		57 (2014), no. 3, 649-658. <br>
-		<a href="publications/OuyangZhang2014 On non-congruent numbers with 1 modulo 4 prime factors.pdf">PDF</a> |
-		<a href="https://doi.org/10.1007/s11425-013-4705-y">PubPDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
-		<span class="abstract">
-			In this paper, we use the <span class="math">2</span>-decent method to find a series of odd non-congruent numbers <span class="math">&equiv; 1 mod 8</span> whose prime factors are <span class="math">&equiv; 1 mod 4</span> such that the congruent elliptic curves have second lowest Selmer groups, which includes Li and Tian’s result [LT00] as special cases.
-		</span><pre class="bibitem">@article {OuyangZhang2014,
+				</li>
+				<li>On non-congruent numbers with 1 modulo 4 prime factors<br>
+					Y. Ouyang, S. Zhang.
+					<em><abbr title="Science China. Mathematics">Sci. China Math.</abbr></em>
+					57 (2014), no. 3, 649-658. <br>
+					<a href="publications/OuyangZhang2014 On non-congruent numbers with 1 modulo 4 prime factors.pdf">PDF</a> |
+					<a href="https://doi.org/10.1007/s11425-013-4705-y">PubPDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+					<span class="abstract">
+						In this paper, we use the <span class="math">2</span>-decent method to find a series of odd non-congruent
+						numbers <span class="math">&equiv; 1 mod 8</span> whose prime factors are <span class="math">&equiv; 1 mod
+							4</span> such that the congruent elliptic curves have second lowest Selmer groups, which includes Li and
+						Tian’s result [LT00] as special cases.
+					</span>
+					<pre>@article {OuyangZhang2014,
       AUTHOR = {Ouyang, Yi and Zhang, ShenXing},
        TITLE = {On non-congruent numbers with 1 modulo 4 prime factors},
      JOURNAL = {Sci. China Math.},
@@ -359,41 +480,59 @@
          DOI = {10.1007/s11425-013-4705-y},
          URL = {https://doi.org/10.1007/s11425-013-4705-y},
 }</pre>
-		</span>
-	</li>
-</ol>
+					</span>
+				</li>
+			</ol>
 
-<!--<p>博士论文：<a href="pdf/phdthesis.pdf">椭圆曲线的二次扭系列</a>。<br>
+			<!--<p>博士论文：<a href="pdf/phdthesis.pdf">椭圆曲线的二次扭系列</a>。<br>
 本科论文：<a href="pdf/bsthesis.pdf">局部类域论</a>。</p>-->
 
-<!-- Don't use note or notes as a foulder name! -->
-<p>Here are some notes.</p>
-<ol>
-	<li>The curve and <span class="math">𝑝</span>-adic Hodge theory<br>
-		Laurent Fargus, 2019/11/01 - 2020/01/10, MCM Beijing<br>
-		<a href="pubnote/Fargus2019 The curve and 𝑝-adic Hodge theory.pdf">PDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			The main theme of this course will be to understand and give a meaning to the notion of a <span class="math">𝑝</span>-adic Hodge structure. Starting with the work of Fontaine, who introduced many of the basic notions in the domain, it took many years to understand the exact definition of a <span class="math">𝑝</span>-adic Hodge structure. We now have the right definition: this involves the fundamental curve of <span class="math">𝑝</span>-adic Hodge theory and vector bundles on it. In the course I will explain the construction and basic properties of the curve. I will moreover explain the proof of the classification of vector bundles theorem on the curve. As an application I will explain the proof of weakly admissible implies admissible. In the meanwhile I will review many objects that show up in <span class="math">𝑝</span>-adic Hodge theory like <span class="math">𝑝</span>-divisible groups and their moduli spaces, Hodge-Tate and de Rham period morphisms, and filtered <span class="math">φ</span>-modules.
-		</span>
-	</li>
-	<li><span class="math">𝑝</span>-adic abelian integrals<br>
-		Pierre Colmez, 2016/09/14 - 2016/10/26, BICMR Beijing<br>
-		<a href="pubnote/Colmez2016 𝑝-adic abelian integrals.pdf">PDF</a> |
-		<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
-		<span class="abstract">
-			The study of complex abelian integrals, i.e., integrals of algebraic functions of one complex variable, was a major incentive to develop complex algebraic geometry (some 150 years ago). After briefly explaining the complex theory, I will study its analog in the <span class="math">𝑝</span>-adic world: this provides a concrete introduction to <span class="math">𝑝</span>-adic Hodge theory, a theory that was originated by Tate some 50 years ago and was turned into one of most powerful tools of number theory.
-		</span>
-	</li>
-</ol>
+			<!-- Don't use note or notes as a foulder name! -->
+			<p>Here are some notes.</p>
+			<ol>
+				<li>The curve and <span class="math">𝑝</span>-adic Hodge theory<br>
+					Laurent Fargus, 2019/11/01 - 2020/01/10, MCM Beijing<br>
+					<a href="pubnote/Fargus2019 The curve and 𝑝-adic Hodge theory.pdf">PDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						The main theme of this course will be to understand and give a meaning to the notion of a <span
+							class="math">𝑝</span>-adic Hodge structure. Starting with the work of Fontaine, who introduced many of
+						the
+						basic notions in the domain, it took many years to understand the exact definition of a <span
+							class="math">𝑝</span>-adic Hodge structure. We now have the right definition: this involves the
+						fundamental
+						curve of <span class="math">𝑝</span>-adic Hodge theory and vector bundles on it. In the course I will
+						explain
+						the construction and basic properties of the curve. I will moreover explain the proof of the classification
+						of
+						vector bundles theorem on the curve. As an application I will explain the proof of weakly admissible implies
+						admissible. In the meanwhile I will review many objects that show up in <span class="math">𝑝</span>-adic
+						Hodge theory like <span class="math">𝑝</span>-divisible groups and their moduli spaces, Hodge-Tate and de
+						Rham period morphisms, and filtered <span class="math">φ</span>-modules.
+					</span>
+				</li>
+				<li><span class="math">𝑝</span>-adic abelian integrals<br>
+					Pierre Colmez, 2016/09/14 - 2016/10/26, BICMR Beijing<br>
+					<a href="pubnote/Colmez2016 𝑝-adic abelian integrals.pdf">PDF</a> |
+					<a onclick="toggle_abs(this)">Abs</a> <span></span><br>
+					<span class="abstract">
+						The study of complex abelian integrals, i.e., integrals of algebraic functions of one complex variable, was
+						a
+						major incentive to develop complex algebraic geometry (some 150 years ago). After briefly explaining the
+						complex theory, I will study its analog in the <span class="math">𝑝</span>-adic world: this provides a
+						concrete introduction to <span class="math">𝑝</span>-adic Hodge theory, a theory that was originated by
+						Tate
+						some 50 years ago and was turned into one of most powerful tools of number theory.
+					</span>
+				</li>
+			</ol>
+		</section>
 
-
-
-<h2 id="teaching"><img src="img/chalkboard-user-solid.svg" />Teaching</h2>
-
-<h3>教学中</h3>
-<h4>无</h4>
-<!-- <ul>
+		<section>
+			<h2 id="teaching"><img src="img/chalkboard-user-solid.svg" />Teaching</h2>
+			<h3>教学中</h3>
+			<h4>无</h4>
+			<!-- <ul>
 	<li>教材：西安交通大学高等数学教研室编《复变函数》，张元林《积分变换》</li>
 	<li>日期：2022/08/30-2022/11/03</li>
 	<li>时间： 009班(电信工) 周二 8:10-10:00，周四 10:20-12:10<br>
@@ -411,311 +550,284 @@
 	<li>课件源文件下载地址：<a href="https://gitee.com/zhangshenxing/zhangshenxing/tree/master/teaching/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A7%AF%E5%88%86%E5%8F%98%E6%8D%A2">源文件</a></li>
 </ul> -->
 
-<h3>历史记录</h3>
-<table id="courses"><thead><tr><th>课程</th><th>时间</th><th>资料</th></tr></thead><tbody>
-	<tr>
-		<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
-		<td>2022年秋</td>
-		<td><a href="teaching/复变函数与积分变换/main.pdf" class="handout">课件</a>,
-			<a href="teaching/复变函数与积分变换/review.pdf">复习课</a> <br>
-			<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a></td>
-	</tr>
-	<tr>
-		<td>数学（下） 034Y01<br><em>合肥工业大学</em></td>
-		<td>2022年春</td>
-		<td><a href="teaching/数学下/第一章 函数.pdf" class="handout">课件 1</a>,
-			<a href="teaching/数学下/第二章 极限和连续.pdf">2</a>,
-			<a href="teaching/数学下/第三章 一元函数微分学.pdf">3</a>,
-			<a href="teaching/数学下/第四章 一元函数微分学的应用.pdf">4</a><br>
-			<a href="teaching/试卷/数学（下）.pdf" class="exam">试卷</a><br>
-			<a href="https://www.bilibili.com/video/bv1Qi4y1S77S" class="video">课程精讲 1</a>,
-			<a href="https://www.bilibili.com/video/bv1pY4y1W7HX">2</a>,
-			<a href="https://www.bilibili.com/video/bv1Ra411v7Zv">3</a>,
-			<a href="https://www.bilibili.com/video/bv1hA4y1D7se">4</a></td>
-	</tr>
-	<tr>
-		<td>概率论与数理统计<br><em>合肥工业大学</em></td>
-		<td>2021年秋(助教)</td>
-		<td><a href="teaching/概率论与数理统计课件.pptx" class="handout">课件 5-6</a></td>
-	</tr>
-	<tr>
-		<td>线性代数<br><em>清华丘成桐中学生数学夏令营</em></td>
-		<td>2022年夏(助教)<br>2021年夏(助教)</td>
-		<td><a href="teaching/试卷/非原创/TYMS线性代数.pdf" class="exam">作业和试卷</a></td>
-	</tr>
-	<tr>
-		<td>代数与数论<br><em><abbr title="中国科学院数学与系统科学研究院">中科院</abbr>暑期学校</em></td>
-		<td>2019年夏(助教)</td>
-		<td><a href="teaching/代数与数论/田一超_Lectures _on_Algebraic_Number_Theory.pdf" class="handout">代数数论I讲义</a><br>
-			<a href="teaching/代数与数论/田野_Algebraic_Number_Theory.pdf" class="handout">代数数论II讲义</a><br>
-			<a href="teaching/代数与数论/薛航_群表示论.pdf" class="handout">群表示论讲义</a><br>
-			<a href="teaching/代数与数论/张寿武_Arithmetic_and_Algebraic_Geometry.pdf" class="handout">代数几何讲义</a><br>
-			<a href="teaching/代数与数论/代数数论作业.pdf" class="handout">代数数论作业</a></td>
-	</tr>
-	<tr>
-		<td>初等数论<br><em>中国科学院大学</em></td>
-		<td>2016年春(助教)</td>
-		<td><a href="teaching/试卷/非原创/初等数论.pdf" class="exam">试卷</a><br>
-			<a href="teaching/杂项/2016年初等数论习题课.pdf" class="excourse">习题课</a></td>
-	</tr>
-	<tr>
-		<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
-		<td>2020年秋</td>
-		<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
-	</tr>
-	<tr>
-		<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
-		<td>2020年春</td>
-		<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a>
-			<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a>
-			<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a></td>
-	</tr>
-	<tr>
-		<td>代数学基础 001356.01<br><em>中国科学技术大学</em></td>
-		<td>2014年秋(助教)<br>2012年秋(助教)</td>
-		<td><a href="teaching/试卷/非原创/代数学基础.pdf" class="exam">试卷</a><br>
-			<a href="teaching//杂项/2014年秋代数学基础习题课.pdf" class="excourse">习题课</a></td>
-	</tr>
-	<tr>
-		<td>近世代数(H) 001704.01<br><em>中国科学技术大学</em></td>
-		<td>2013年春(助教)</td>
-		<td><a href="teaching/试卷/非原创/近世代数(H).pdf" class="exam">试卷</a></td>
-	</tr>
-	<tr>
-		<td>近世代数 001010.01<br><em>中国科学技术大学</em></td>
-		<td>2011年秋(助教)</td>
-		<td><a href="teaching/试卷/非原创/近世代数.pdf" class="exam">试卷</a></td>
-	</tr>
-	<tr>
-		<td>复变函数 001012.02<br><em class="inst">中国科学技术大学</em></td>
-		<td>2011年春(助教)</td>
-		<td><a href="teaching/试卷/复变函数.pdf" class="exam">试卷</a></td>
-	</tr>
-</tbody>
-</table>
+			<h3>历史记录</h3>
+			<table id="table-courses">
+				<thead>
+					<tr>
+						<th>课程</th>
+						<th>时间</th>
+						<th>资料</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
+						<td>2022年秋</td>
+						<td><a href="teaching/复变函数与积分变换/main.pdf" class="handout">课件</a>,
+							<a href="teaching/复变函数与积分变换/review.pdf">复习课</a> <br>
+							<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a>
+						</td>
+					</tr>
+					<tr>
+						<td>数学（下） 034Y01<br><em>合肥工业大学</em></td>
+						<td>2022年春</td>
+						<td><span class="handout">课件</span>
+							<a href="teaching/数学下/第一章 函数.pdf">1</a>,
+							<a href="teaching/数学下/第二章 极限和连续.pdf">2</a>,
+							<a href="teaching/数学下/第三章 一元函数微分学.pdf">3</a>,
+							<a href="teaching/数学下/第四章 一元函数微分学的应用.pdf">4</a><br>
+							<a href="teaching/试卷/数学（下）.pdf" class="exam">试卷</a><br>
+							<span class="video">课程精讲</span>
+							<a href="https://www.bilibili.com/video/bv1Qi4y1S77S">1</a>,
+							<a href="https://www.bilibili.com/video/bv1pY4y1W7HX">2</a>,
+							<a href="https://www.bilibili.com/video/bv1Ra411v7Zv">3</a>,
+							<a href="https://www.bilibili.com/video/bv1hA4y1D7se">4</a>
+						</td>
+					</tr>
+					<tr>
+						<td>概率论与数理统计<br><em>合肥工业大学</em></td>
+						<td>2021年秋(助教)</td>
+						<td><span class="handout">课件</span>
+							<a href="teaching/概率论与数理统计课件.pptx">5-6</a>
+						</td>
+					</tr>
+					<tr>
+						<td>线性代数<br><em>清华丘成桐中学生数学夏令营</em></td>
+						<td>2022年夏(助教)<br>2021年夏(助教)</td>
+						<td><a href="teaching/试卷/非原创/TYMS线性代数.pdf" class="exam">作业和试卷</a></td>
+					</tr>
+					<tr>
+						<td>代数与数论<br><em><abbr title="中国科学院数学与系统科学研究院">中科院</abbr>暑期学校</em></td>
+						<td>2019年夏(助教)</td>
+						<td><a href="teaching/代数与数论/田一超_Lectures _on_Algebraic_Number_Theory.pdf" class="handout">代数数论I讲义</a><br>
+							<a href="teaching/代数与数论/田野_Algebraic_Number_Theory.pdf" class="handout">代数数论II讲义</a><br>
+							<a href="teaching/代数与数论/薛航_群表示论.pdf" class="handout">群表示论讲义</a><br>
+							<a href="teaching/代数与数论/张寿武_Arithmetic_and_Algebraic_Geometry.pdf" class="handout">代数几何讲义</a><br>
+							<a href="teaching/代数与数论/代数数论作业.pdf" class="handout">代数数论作业</a>
+						</td>
+					</tr>
+					<tr>
+						<td>初等数论<br><em>中国科学院大学</em></td>
+						<td>2016年春(助教)</td>
+						<td><a href="teaching/试卷/非原创/初等数论.pdf" class="exam">试卷</a><br>
+							<a href="teaching/杂项/2016年初等数论习题课.pdf" class="excourse">习题课</a>
+						</td>
+					</tr>
+					<tr>
+						<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
+						<td>2020年秋</td>
+						<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
+					</tr>
+					<tr>
+						<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
+						<td>2020年春</td>
+						<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a>
+							<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a>
+							<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a>
+						</td>
+					</tr>
+					<tr>
+						<td>代数学基础 001356.01<br><em>中国科学技术大学</em></td>
+						<td>2014年秋(助教)<br>2012年秋(助教)</td>
+						<td><a href="teaching/试卷/非原创/代数学基础.pdf" class="exam">试卷</a><br>
+							<a href="teaching//杂项/2014年秋代数学基础习题课.pdf" class="excourse">习题课</a>
+						</td>
+					</tr>
+					<tr>
+						<td>近世代数(H) 001704.01<br><em>中国科学技术大学</em></td>
+						<td>2013年春(助教)</td>
+						<td><a href="teaching/试卷/非原创/近世代数(H).pdf" class="exam">试卷</a></td>
+					</tr>
+					<tr>
+						<td>近世代数 001010.01<br><em>中国科学技术大学</em></td>
+						<td>2011年秋(助教)</td>
+						<td><a href="teaching/试卷/非原创/近世代数.pdf" class="exam">试卷</a></td>
+					</tr>
+					<tr>
+						<td>复变函数 001012.02<br><em class="inst">中国科学技术大学</em></td>
+						<td>2011年春(助教)</td>
+						<td><a href="teaching/试卷/复变函数.pdf" class="exam">试卷</a></td>
+					</tr>
+				</tbody>
+			</table>
 
-<!-- <h3>学生</h3>
+			<!-- <h3>学生</h3>
 <ul>
 	<li>本科毕设<ul>
 		<li>刘旭鸿(2022)：二次域类群的结构以及算术应用</li>
 	</ul></li>
 </ul> -->
+		</section>
 
+		<section>
+			<h2 id="links"><img src="img/link-solid.svg" />Links</h2>
+			<h3>Math Links</h3>
+			<ul>
+				<li>
+					丘成桐大学生数学竞赛历年<a href="misc/YauCSMC.pdf">笔试题</a>和<a href="misc/YauCSMCOral.pdf">口试题</a>，整理自<a
+						href="http://yau-contest.com/en/lists-jxxg.html">官网</a>。
+				</li>
+				<li>
+					<a href="http://video.moe.gov.cn/kejisi/shuxue.pdf">10000 个科学难题·数学卷</a>
+				</li>
+				<li>
+					<a href="https://www.wwli.asia/downloads/MW-2014.pdf">数学写作漫谈 - 李文威</a>
+				</li>
+				<li><a href="https://www.wwli.asia/downloads/Nanjing-2018-wwli.pdf">教学实践：经验、反思与构想 - 李文威</a></li>
+				<li><a href="https://www.ams.org/profession/leaders/workshops/gcoll.pdf">How
+						to Give a Good Colloquium - John E. McCarthy</a>
+				</li>
+				<li>
+					电子书：
+					<a href="http://www.numdam.org/?lang=en" title="Numdan">NUMDAM</a> |
+					<a href="http://www.digizeitschriften.de/main/dms/toc/?PPN=PPN243919689/" title="DigiZeitschriften">DigiZ</a>
+					|
+					<a href="https://1lib.net/" title="Z-Library">Z-Library</a>
+				</li>
+				<li>
+					索引：
+					<a href="https://mathscinet.ams.org/mathscinet" title="MathSciNet">MathSciNet</a> |
+					<a href="https://zbmath.org/" title="Zentralblatt MATH">Zentralblatt MATH</a>
+				</li>
+				<li>
+					<a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html" title="MSC2020">MSC2020 数学方向分类号查询</a>
+				</li>
+				<li>
+					<a href="http://www.letpub.com.cn/index.php?page=journalapp" title="LetPub">LetPub 期刊信息查询</a>
+				</li>
+				<li>
+					<a href="http://www.lmfdb.org/" title="LMFDB">椭圆曲线数据库</a>
+				</li>
+				<li>
+					<a href="https://www.mathgenealogy.org/" title="Math Genealogy">数学家谱网</a>
+				</li>
+				<li>
+					<a href="http://mathoverflow.net/" title="MathOverflow">MathOverflow 数学问答社区</a>
+				</li>
+				<li>
+					<a href="recent/index.html">近期数论在线学术活动（个人向）</a>
+				</li>
+			</ul>
 
+			<h3><img src="img/tex.jpg" />L<span
+					style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span
+					style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X Links</h3>
+			<ul>
+				<li>
+					<a href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">常用LaTeX代码以及所有入门知识与资料</a><br>
+					<a href="https://www.latexstudio.net/">LaTeX 工作室</a>整理的常见参考资料，该网站也提供了在线问答社区。
+				</li>
+				<li>
+					<a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf">一份不太简短的 LaTeX2ε 介绍</a><br>
+					LaTeX 入门必看资料，先看附录A安装TeX Live 或 MiKTeX，然后可使用编辑器 TeXworks。也可以使用 VSCode 并安装扩展 LaTeX Workshop.
+				</li>
+				<li>
+					<a href="http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf">LaTeX 常见符号表</a><br>
+					页数有点多，建议用<a href="http://detexify.kirelabs.org/classify.html">在线识别LaTeX符号</a>。
+				</li>
+				<li>
+					宏包：<a href="https://www.ctan.org/pkg/hfutexam">合肥工业大学期末试卷模板</a> v1.6<br>
+					旨在将合肥工业大学期末试卷的Word模板转化为LaTeX模板。<br>
+					点击下载<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_shijuan.pdf">试卷示例</a>，<a
+						href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_datizhi.pdf">答题纸示例</a>，<a
+						href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_cankaodaan.pdf">参考答案示例</a>，<a
+						href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam.pdf">说明文档</a>，<a
+						href="https://mirrors.ctan.org/macros/latex/contrib/hfutexam.zip">zip压缩包</a>。
+				</li>
+				<li>
+					宏包：<a href="https://www.ctan.org/pkg/hfutthesis">合肥工业大学学位论文模板</a> v1.0.4<br>
+					基于<a href="https://github.com/ustctug/ustcthesis">USTCThesis</a>。<br>
+					点击下载<a href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis/hfutthesis-doc.pdf">说明文档</a>，<a
+						href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis.zip">使用样例</a>。
+				</li>
+				<li>
+					宏包：<a href="https://www.ctan.org/pkg/pgf">Ti<em>k</em>Z & PGF</a><br>
+					功能强大的绘图宏包，但<a href="http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf">手册</a>有上千页，不便于入门。建议看简略版<a
+						href="http://mirrors.ctan.org/info/visualtikz/VisualTikZ.pdf">可视化TikZ使用手册</a>，也可看<a
+						href="http://cremeronline.com/LaTeX/minimaltikz.pdf">非官方简短入门手册</a>。
+				</li>
+				<li>
+					宏包：<a href="https://www.ctan.org/pkg/beamer">Beamer</a><br>
+					常用的LaTeX幻灯片宏包。点击下载<a
+						href="http://static.latexstudio.net/wp-content/uploads/2017/02/BeamerUserGuide_V3.24_zh-cn.pdf">中译版用户手册</a>，<a
+						href="http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf">英文版手册</a>。
+				</li>
+				<li>
+					宏包：XY-pic</a><br>
+					<a href="misc/xypic.pdf">中文简介</a>, 更详细的中文介绍请参考《LaTeX入门与提高》§12.4，点击下载<a
+						href="http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf">英文版用户手册</a>。
+				</li>
+			</ul>
 
+			<h3>People & Other Links</h3>
+			<p class="p-inline-block">
+				<a href="https://bicmr.pku.edu.cn/~dingyiwen/">丁一文</a> |
+				<a href="http://www.mcm.ac.cn/faculty/huyongquan/">胡永泉</a> |
+				<a href="https://jianingli.gitee.io/">李加宁</a> |
+				<a href="http://www.math.columbia.edu/~chaoli/">李&#x3000;超</a> |
+				<a href="https://www.wwli.asia/index.php/zh/">李文威</a> |
+				<a href="https://bicmr.pku.edu.cn/~ruochuan/">刘若川</a> |
+				<a href="https://sites.google.com/view/liuyifeng/home">刘一峰</a> |
+				<a href="http://staff.ustc.edu.cn/~yiouyang/">欧阳毅</a> |
+				<a href="http://home.ustc.edu.cn/~guohuan/ChineseWeb.html">邱国寰</a> |
+				<a href="http://www.mcm.ac.cn/faculty/shenxu/">申&#x3000;旭</a> |
+				<a href="https://math.tongji.edu.cn/info/1147/8345.htm">舒&#x3000;杰</a> |
+				<a href="http://www.mcm.ac.cn/faculty/tianyichao/201409/t20140916_255897.html">田一超</a> |
+				<a href="http://www.mcm.ac.cn/faculty/tianye/">田&#x3000;野</a> |
+				<a href="https://www.math.uci.edu/~dwan/">万大庆</a> |
+				<a href="http://www.mcm.ac.cn/faculty/wx/">万&#x3000;昕</a> |
+				<a href="https://bicmr.pku.edu.cn/~lxiao/">肖&#x3000;梁</a> |
+				<a href="https://yuexu-math.gitee.io/web/">许&#x3000;跃</a> |
+				<a href="https://web.math.princeton.edu/~chenyang/">许晨阳</a> |
+				<a href="http://home.ustc.edu.cn/~yjb/">杨金榜</a> |
+				<a href="https://people.math.wisc.edu/~thyang/">杨同海</a> |
+				<a href="https://bicmr.pku.edu.cn/~yxy/">袁新意</a> |
+				<a href="https://github.com/YijunYuan">袁轶君</a> |
+				<a href="http://math.mit.edu/~zyun/">恽之玮</a> |
+				<a href="http://staff.ustc.edu.cn/~zhlei18/">张&#x3000;磊</a> |
+				<a href="https://www.math.princeton.edu/~shouwu/">张寿武</a> |
+				<a href="http://math.mit.edu/~wz2113/">张&#x3000;伟</a> |
+				<a href="https://blog.ustc-zzzz.net/about">赵彦冰</a> |
+				<a href="https://server.mcm.ac.cn/~zheng/">郑维喆</a> |
+				<a href="http://math.umd.edu/~yhzhu/">朱艺航</a> |
+				<a href="https://www.math.mcgill.ca/darmon/">Henri Darmon</a> |
+				<a href="https://webusers.imj-prg.fr/~laurent.fargues/">Laurent Fargues</a> |
+				<a href="http://vlafforg.perso.math.cnrs.fr/">Vincent Lafforgue</a>
+			</p>
 
-<h2 id="links"><img src="img/link-solid.svg" />Links</h2>
+			<p class="p-inline-block">
+				个人账号
+				<a href="https://orcid.org/0000-0001-8126-1015">ORCID</a> |
+				<a href="https://arxiv.org/a/zhang_s_7.html">arXiv</a> |
+				<a href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1053285">MathSciNet</a> |
+				<a href="https://gitee.com/zhangshenxing/">Gitee</a> |
+				<a href="https://github.com/ruhuasiyu/">Github</a> |
+				<a href="https://www.mcmod.cn/author/22512.html">MCMod</a> |
+				<a href="https://space.bilibili.com/4469715">Bilibili</a>
+			</p>
 
-<table><tbody>
-<tr><td><img src="img/book-solid.svg" /> 丘成桐大学生数学竞赛历年<a href="misc/YauCSMC.pdf">笔试题</a>和<a href="misc/YauCSMCOral.pdf">口试题</a></td></tr>
-<tr><td><img src="img/book-solid.svg" /> <a href="http://video.moe.gov.cn/kejisi/shuxue.pdf">10000 个科学难题·数学卷</a></td></tr>
-<tr><td><img src="img/book-solid.svg" /> <a href="https://www.wwli.asia/downloads/MW-2014.pdf">数学写作漫谈 - 李文威</a></td></tr>
-<tr><td><img src="img/book-solid.svg" /> <a href="https://www.wwli.asia/downloads/Nanjing-2018-wwli.pdf">教学实践：经验、反思与构想 - 李文威</a></td></tr>
-<tr><td><img src="img/book-solid.svg" /> <a href="https://www.ams.org/profession/leaders/workshops/gcoll.pdf">How to Give a Good Colloquium - John E. McCarthy</a></td></tr>
-<tr><td></td></tr>
-<tr><td class="tex"><a href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">常用L<span style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X代码以及所有入门知识与资料</a></td></tr>
-<tr><td class="tex"><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf">一份不太简短的 L<span style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X2<span style="margin-left: -0.05em;margin-right: -0.1em;vertical-align: -.35ex;">ε</span> 介绍</a>:
-	先看附录A安装T<span style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X Live 或 MiKT<span style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X，然后可使用 TeXworks。
-</td></tr>
-<tr><td class="tex"><a href="https://www.ctan.org/pkg/hfutexam">HFUT试卷模板</a> v1.6: 
-	<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_shijuan.pdf">试卷示例</a>,
-	<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_datizhi.pdf"a>答题纸示例</a>,
-	<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_cankaodaan.pdf">参考答案示例</a>,
-	<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam.pdf">说明文档</a>,
-	<a href="https://mirrors.ctan.org/macros/latex/contrib/hfutexam.zip">下载使用样例</a>
-</td></tr>
-<tr><td class="tex"><a href="https://www.ctan.org/pkg/hfutthesis">HFUT毕业论文模板</a> v1.0.4: 
-	<a href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis/hfutthesis-doc.pdf">说明文档</a>,
-	<a href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis.zip">下载使用样例</a>
-</td></tr>
-<tr><td class="tex"><a href="https://www.ctan.org/pkg/xypic">X<span style="margin-left: -0.15em;margin-right: -0.1em;vertical-align: -.35ex;">Y</span>-pic 宏包</a>:
-	<a href="misc/xypic.pdf">中文简介</a>, 更详细的中文介绍请参考《L<span style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X入门与提高》§12.4, <a href="http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf">英文版用户手册</a>
-</td></tr>
-<tr><td class="tex"><a href="https://www.ctan.org/pkg/pgf">Ti<em>k</em>Z & PGF 宏包</a>:
-	功能强大的绘图宏包，但手册有上千页，建议看<a href="http://mirrors.ctan.org/info/visualtikz/VisualTikZ.pdf">可视化TikZ使用手册</a>
-</td></tr>
-<tr><td class="tex"><a href="https://www.ctan.org/pkg/beamer">Beamer 宏包</a>:
-	<a href="http://static.latexstudio.net/wp-content/uploads/2017/02/BeamerUserGuide_V3.24_zh-cn.pdf">中译版用户手册</a>,
-	<a href="http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf">英文版手册</a>
-</td></tr>
-</tbody></table>
+			<p class="p-inline-block">
+				<a href="https://www.mcmod.cn/class/1297.html" title="Minecraft 原版模组更多的合成">Minecraft 原版模组更多的合成</a> |
+				<a href="VanillaModTutorial" title="Minecraft 原版模组入门教程">Minecraft 原版模组入门教程</a> |
+				<a href="set/index.html" title="在线玩 Set!">Set!</a>
+			</p>
+		</section>
+	</article>
 
-<table style="font-size:80%;"><tbody>
-<tr>
-	<td><a href="http://staff.ustc.edu.cn/~yiouyang/">Yi Ouyang (欧阳毅)</a></td>
-	<td><a href="http://www.mcm.ac.cn/faculty/tianye/">Ye Tian (田野)</a></td>
-	<td><a href="https://bicmr.pku.edu.cn/~yxy/">Xinyi Yuan (袁新意)</a></td>
-	<td><a href="https://www.wwli.asia/index.php/zh/">Wen-Wei Li (李文威)</a></td>
-</tr>
-<tr>
-	<td><a href="https://bicmr.pku.edu.cn/~dingyiwen/">Yiwen Ding (丁一文)</a></td>
-	<td><a href="http://home.ustc.edu.cn/~yjb/">Yang Jinbang (杨金榜)</a></td>
-	<td><a href="https://yuexu-math.gitee.io/web/">Yue Xu (许跃)</a></td>
-	<td><a href="https://jianingli.gitee.io/">Jianing Li (李加宁)</a></td>
-</tr>
-<tr>
-	<td><a href="http://www.mcm.ac.cn/faculty/wx/">Xin Wan (万昕)</a></td>
-	<td><a href="http://www.mcm.ac.cn/faculty/shenxu/">Xu Shen (申旭)</a></td>
-	<td><a href="http://www.mcm.ac.cn/faculty/huyongquan/">Yongquan Hu (胡永泉)</a></td>
-	<td><a href="https://server.mcm.ac.cn/~zheng/">Weizhe Zheng (郑维喆)</a></td>
-</tr>
-<tr>
-	<td><a href="https://www.math.princeton.edu/~shouwu/">Shou-Wu Zhang (张寿武)</a></td>
-	<td><a href="http://math.mit.edu/~wz2113/">Wei Zhang (张伟)</a></td>
-	<td><a href="https://people.math.wisc.edu/~thyang/">Tonghai Yang (杨同海)</a></td>
-	<td><a href="https://www.math.uci.edu/~dwan/">Daqing Wan (万大庆)</a></td>
-</tr>
-<tr>
-	<td><a href="https://bicmr.pku.edu.cn/~lxiao/">Liang Xiao (肖梁)</a></td>
-	<td><a href="https://bicmr.pku.edu.cn/~ruochuan/">Ruochuan Liu (刘若川)</a></td>
-	<td><a href="https://web.math.princeton.edu/~chenyang/">Chenyang Xu (许晨阳)</a></td>
-	<td><a href="http://staff.ustc.edu.cn/~zhlei18/">Lei Zhang (张磊)</a></td>
-</tr>
-<tr>
-	<td><a href="https://sites.google.com/view/liuyifeng/home">Yifeng Liu (刘一峰)</a></td>
-	<td><a href="http://math.mit.edu/~zyun/">Zhiwei Yun (恽之玮)</a></td>
-	<td><a href="http://www.math.columbia.edu/~chaoli/">Chao Li (李超)</a></td>
-	<td><a href="http://math.umd.edu/~yhzhu/">Yihang Zhu (朱艺航)</a></td>
-</tr>
-<tr>
-	<td><a href="https://math.tongji.edu.cn/info/1147/8345.htm">Jie Shu (舒杰)</a></td>
-	<td><a href="https://blog.ustc-zzzz.net/about">Yanbing Zhao (赵彦冰)</a></td>
-	<td><a href="http://home.ustc.edu.cn/~guohuan/ChineseWeb.html">Guohuan Qiu (邱国寰)</a></td>
-	<td><a href="https://github.com/YijunYuan">Yijun Yuan (袁轶君)</a></td>
-</tr>
-<tr>
-	<td><a href="https://www.math.mcgill.ca/darmon/">Henri Darmon</a></td>
-	<td><a href="https://webusers.imj-prg.fr/~laurent.fargues/">Laurent Fargues</a></td>
-	<td><a href="http://vlafforg.perso.math.cnrs.fr/">Vincent Lafforgue</a></td>
-	<td></td>
-</tr>
-</tbody></table>
+	<footer class="ico">
+		<p>A page since 2006 | Last updated on 2023/01/06
+		</p>
+	</footer>
 
-<table style="font-size:80%;" id="linksicons"><tbody>
-<tr>
-	<td>
-		<img src="img/numdam.gif" alt="ico" />
-		<a href="http://www.numdam.org/?lang=en" title="Numdan">NUMDAM</a>
-	</td>
-	<td>
-		<img src="img/digiz.png" alt="ico" />
-		<a href="http://www.digizeitschriften.de/main/dms/toc/?PPN=PPN243919689/" title="DigiZeitschriften">DigiZ</a>
-	</td>
-	<td>
-		<img src="img/zlib.png" alt="ico" />
-		<a href="https://1lib.net/" title="Z-Library">Z-Library</a>
-	</td>
-	<td>
-		<img src="img/msc.png" alt="ico" />
-		<a href="https://mathscinet.ams.org/mathscinet" title="MathSciNet">MathSciNet</a>
-	</td>
-</tr>
-<tr>
-	<td>
-		<img src="img/zbl.ico" alt="ico" />
-		<a href="https://zbmath.org/" title="Zentralblatt MATH">Zentralblatt MATH</a>
-	</td>
-	<td>
-		<img src="img/ams.jpg" alt="ico" />
-		<a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html" title="MSC2020">MSC2020</a>
-	</td>
-	<td>
-		<img src="img/letpub.png" alt="ico" />
-		<a href="http://www.letpub.com.cn/index.php?page=journalapp" title="LetPub">LetPub</a>
-	</td>
-	<td>
-		<img src="img/lmfdb.png" alt="ico" />
-		<a href="http://www.lmfdb.org/" title="LMFDB">LMFDB</a>
-	</td>
-</tr>
-<tr>
-	<td>
-		<img src="img/mg.png" alt="ico" />
-		<a href="https://www.mathgenealogy.org/" title="Math Genealogy">Math Genealogy</a>
-	</td>
-	<td>
-		<img src="img/mo.png" alt="ico" />
-		<a href="http://mathoverflow.net/" title="MathOverflow">MathOverflow</a>
-	</td>
-	<td>
-		<img src="img/gitee.ico" alt="ico" />
-		<a href="https://zhangshenxing.gitee.io/" title="Gitee">Gitee</a>
-	</td>
-	<td>
-		<img src="img/github.png" alt="ico" />
-		<a href="https://ruhuasiyu.github.io/" title="GitHub">GitHub</a>
-	</td>
-</tr>
-<tr>
-	<td colspan="4">
-		<!-- this element intentionally left blank  -->
-	</td>
-</tr>
-<tr>
-	<td>
-		<img src="img/cpp.png" alt="ico" />
-		<a href="https://www.mcmod.cn/class/1297.html" title="Minecraft 原版模组更多的合成">原版模组更多的合成</a>
-	</td>
-	<td>
-		<img src="img/mctutorial.png" alt="ico" />
-		<a href="VanillaModTutorial" title="Minecraft 原版模组入门教程">原版模组入门教程</a>
-	</td>
-	<td>
-		<img src="set/img/3.png" alt="ico" />
-		<a href="set/index.html" title="在线玩 Set!">Set!</a>
-	</td>
-	<td>
-		<a href="recent/index.html">近期数论在线学术活动</a>
-		<img src="https://www.mcbbs.net/template/mcbbs/image/recommend_3.gif" alt="ico" />
-	</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-
-<footer class="ico"><p>A page since 2006 | 
-	<a href="https://orcid.org/0000-0001-8126-1015"><img src="img/orcid.svg" alt="ORCID" title="ORCID "/></a> 
-	<a href="https://arxiv.org/a/zhang_s_7.html"><img src="img/arxiv.ico" alt="arXiv" title="arXiv" /></a> 
-	<a href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1053285"><img src="img/mr.png" alt="MathSciNet" title="MathSciNet" /></a> 
-	<a href="https://gitee.com/zhangshenxing/"><img src="img/gitee.ico" alt="Gitee" title="Gitee" /></a> 
-	<a href="https://github.com/ruhuasiyu/"><img src="img/github.png" alt="Github" title="Github" /></a> 
-	<a href="https://www.mcmod.cn/author/22512.html"><img src="img/mcmod.png" alt="MCMod" title="MCMod" /></a>
-	<a href="https://space.bilibili.com/4469715"><img src="img/bilibili.png" alt="Bilibili" title="Bilibili" /></a>
-	| Last updated 2023/01/05
-</p></footer>
-
-<nav><p>
-	<a href="#about-me" title="About me"><img src="img/user-solid.svg" /></a>
-	<a href="#experience" title="Experience"><img src="img/user-graduate-solid.svg" /></a>
-	<a href="#research" title="Research"><img src="img/scroll-solid.svg" /></a>
-	<a href="#teaching" title="Teaching"><img src="img/chalkboard-user-solid.svg" /></a>
-	<a href="#links" title="Links"><img src="img/link-solid.svg" /></a>
-</p></nav>
-
-<svg style="height:0;">
-	<filter id="changeIconColorGold">
-		<feColorMatrix type="matrix" values="
+	<svg style="height:0;">
+		<filter id="changeIconColorGold">
+			<feColorMatrix type="matrix" values="
 		0 0 0 0 0.7,
 		0 0 0 0 0.15,
 		0 0 0 0 0.04,
 		0 0 0 1 0" />
-	</filter>
-	<filter id="changeIconColorBlue">
-		<feColorMatrix type="matrix" values="
-		0 0 0 0 0.04,
-		0 0 0 0 0.2,
-		0 0 0 0 0.6,
-		0 0 0 1 0" />
-	</filter>
-	<filter id="changeIconColorWhite">
-		<feColorMatrix type="matrix" values="
-		0 0 0 0 1,
-		0 0 0 0 1,
-		0 0 0 0 1,
-		0 0 0 1 0" />
-	</filter>
-</svg>
-
+		</filter>
+	</svg>
 </body>
+
 </html>
