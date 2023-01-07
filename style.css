@@ -1,71 +1,78 @@
+/* Chrome 49.0
+IE 	15.0
+Firefox 	31.0
+Safari 	9.1
+Opera 	36.0 */
+
 @media screen and (min-width: 800px) {
 	article {
 		width: 820px;
-		margin: 90px auto 0;
+		margin: 10px auto 0;
 	}
 }
 
 @media screen and (max-width: 800px) {
 	article {
 		width: 100%;
-		margin: 80px auto 0;
+		margin: 0 auto;
 	}
 }
 
-/* head */
-header#head {
-	width: 100%;
-	height: 80px;
-	box-sizing: border-box;
-	padding: 24px 0px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background-color: hsl(210, 50%, 50%);
-	color: white;
+:root {
+	--primary-color: hsl(210, 60%, 50%);
+	--secondary-color: hsl(20, 60%, 50%);
 }
 
-h1{
-	margin: 0 auto;
+body {
+	margin: 0px auto;
+	background-color: hsl(60, 40%, 86%);
+	font-family: Verdana, 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+
+/* header */
+header {
+	display: table;
+	width: 100%;
+	height: 80px;
+	background-color: var(--primary-color);
+}
+
+h1 {
+	display: table-cell;
 	text-align: center;
+	vertical-align: middle;
+	color: white;
 	font-family: 'Lucida Console', STKaiti, 'Courier New', monospace;
 }
 
-/* main */
+/* article */
 article {
 	box-sizing: border-box;
-	padding: 2px 40px 10px;
+	padding: 6px 40px;
 	background-color: white;
 }
 
 h2 {
+	margin: 28px 0 0;
+	padding-bottom: 2px;
+	border-bottom: 2px solid var(--secondary-color);
+	color: var(--secondary-color);
 	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
 	font-size: 150%;
-	color: hsl(20, 60%, 50%);
-	border-bottom: 2px solid hsl(20, 60%, 50%);
-	margin: 30px 0 0;
-	padding: 2px 0;
 }
 
 h3 {
+	margin: 20px 0 0;
+	color: var(--secondary-color);
 	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
 	font-size: 110%;
-	color: hsl(20, 60%, 50%);
-	margin: 20px 0 0;
 }
 
 h4 {
+	margin: 10px 40px;
 	font-family: 'Courier New', STKaiTi, monospace;
 	font-size: 110%;
-	margin: 10px 40px;
-}
-
-body {
-	font-family: Verdana, 'Microsoft Yahei', Helvetica, Arial, sans-serif;
-	background-color: #eaead1;
-	color: #222222;
-	margin: 0px auto;
-	font-size: 16px;
 }
 
 table {
@@ -76,8 +83,6 @@ table {
 
 th,
 td {
-	border: 1px #ccc solid;
-	vertical-align: middle;
 	padding: 5px 10px;
 	font-size: 100%;
 }
@@ -87,18 +92,18 @@ li {
 }
 
 a {
+	color: var(--primary-color);
 	text-decoration: none;
-	color: hsl(210, 60%, 50%);
 }
 
 a:hover {
-	color: hsl(20, 60%, 50%);
+	color: var(--secondary-color);
 }
 
 img {
-	vertical-align: middle;
 	width: 20px;
 	margin-right: 4px;
+	vertical-align: middle;
 }
 
 h2 img {
@@ -114,14 +119,10 @@ h2#about-me+table {
 	margin: 0 auto -16px;
 }
 
-h2#about-me+table td {
-	border-style: none;
-	vertical-align: top;
-}
-
 img#zsx {
-	width: 150px;
-	border: solid 1px hsl(20, 60%, 50%);
+	height: 240px;
+	width: auto;
+	border: 1px dotted var(--secondary-color);
 }
 
 /* experience */
@@ -157,29 +158,52 @@ pre {
 pre,
 span.abstract {
 	display: none;
-	border-left: solid 5px hsl(210, 60%, 50%);
 	padding: 10px;
-	background-color: #EEEEEE;
+	margin-top: 6px;
+	border: 1px dotted var(--primary-color);
+	background-color: hsl(210, 60%, 98%);
 }
 
 span.math {
 	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 	font-size: 120%;
 }
-span.math .ov{
+
+span.math .ov {
 	text-decoration: overline;
 }
-span.math .root{
-	vertical-align:-12%;
+
+span.math .root {
+	vertical-align: -12%;
 }
-span.math .cbroot{
-	vertical-align:-10%;
+
+span.math .cbroot {
+	vertical-align: -10%;
 }
 
 /* teaching */
-table#table-courses em {
-	font-family: 'Calibri Italic', STKaiti, Helvetica, Arial, Helvetica, sans-serif;
+table.teaching th,
+table.teaching td {
+	vertical-align: middle;
+	border: 1px solid hsl(210, 90%, 75%);
+}
+
+table.teaching th {
+	background-color: var(--primary-color);
+	color: white;
+}
+
+table.teaching tr:nth-child(even) {
+	background-color: hsl(210, 60%, 98%);
+}
+
+.teaching em {
+	font-family: Verdana, STKaiti, Arial, Helvetica, sans-serif;
 	font-style: normal;
+}
+
+.teaching em:lang(en) {
+	font-style: italic;
 }
 
 .exam::before {
@@ -214,12 +238,7 @@ p.p-inline-block a {
 }
 
 /* footer */
-footer {
-	margin: 20px auto;
-	color: hsl(240, 40%, 10%);
-}
-
 footer p {
 	text-align: center;
-	font-size: 80%;
+	font-size: 90%;
 }
