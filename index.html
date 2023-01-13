@@ -44,21 +44,21 @@
 
 		function toggle_div(t) {
 			var s = 0;
-			if (t.nextElementSibling.style.display == 'block') s = 1;
-			if (s) t.nextElementSibling.style.display = 'none';
-			else t.nextElementSibling.style.display = 'block';
+			if (t.nextElementSibling.style.display == 'none') s = 1;
+			if (s) t.nextElementSibling.style.display = 'block';
+			else t.nextElementSibling.style.display = 'none';
 		}
 	</script>
 </head>
 
 <body>
 	<header>
-		<h1>ZHANG Shenxing / 张神星</h1>
+		<h1>ZHANG Shenxing <span class="header-sep">/</span><br class="header-br"> 张神星</h1>
 	</header>
 	<article>
 		<section>
 			<h2 onclick="toggle_div(this)" id="about-me"><img src="img/user-solid.svg" alt="">About me</h2>
-			<div style="display:block;">
+			<div>
 				<div class="flexbox">
 					<div id="div-intro">
 						<p>
@@ -96,7 +96,7 @@
 
 		<section>
 			<h2 onclick="toggle_div(this)" id="experience"><img src="img/user-graduate-solid.svg" alt="">Experience</h2>
-			<div style="display:block">
+			<div>
 				<ul id="ul-experience">
 					<li>
 						<span>2021-12 ~ Present</span>
@@ -133,7 +133,7 @@
 
 		<section>
 			<h2 onclick="toggle_div(this)" id="research"><img src="img/scroll-solid.svg" alt="">Research</h2>
-			<div style="display:block">
+			<div>
 				<ol>
 					<li>On a comparison of Cassels pairings of different elliptic curves<br>
 						S. Zhang. (2022), preprint.<br>
@@ -554,7 +554,7 @@
 
 		<section>
 			<h2 onclick="toggle_div(this)" id="teaching"><img src="img/chalkboard-user-solid.svg" alt="">Teaching</h2>
-			<div style="display:block">
+			<div>
 				<h3>教学中</h3>
 				<h4>数学（下）[代课]</h4>
 				<ul>
@@ -716,7 +716,7 @@
 
 		<section>
 			<h2 onclick="toggle_div(this)" id="links"><img src="img/link-solid.svg" alt="">Links</h2>
-			<div style="display:block">
+			<div>
 				<h3>Math Links</h3>
 				<ul>
 					<li>
