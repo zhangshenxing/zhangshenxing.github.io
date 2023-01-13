@@ -4,28 +4,14 @@ Firefox 	31.0
 Safari 	9.1
 Opera 	36.0 */
 
-@media screen and (min-width: 550px) {
-	img#zsxshort {
-		display: none;
-	}	
-}
-
-@media screen and (max-width: 550px) {
-	img#zsx {
-		display: none;
-	}	
-}
-
 @media screen and (min-width: 800px) {
 	article {
-		width: 800px;
 		margin: 10px auto 0;
 	}
 }
 
 @media screen and (max-width: 800px) {
 	article {
-		width: 100%;
 		margin: 0 auto;
 	}
 }
@@ -59,6 +45,8 @@ h1 {
 
 /* article */
 article {
+	width: 100%;
+	max-width: 810px;
 	padding: 6px 40px 20px;
 	background-color: white;
 }
@@ -128,13 +116,27 @@ h2 img {
 }
 
 /* about me */
-table.twocolumns {
-	margin: 0 auto -16px;
+div.flexbox {
+	display: flex;
+	justify-content: space-between;
 }
 
-img#zsx, img#zsxshort {
+div#div-intro {
+	width: 70%;
+	margin: 0;
+}
+
+div#div-img {
+	width: 30%;
+	margin: 0;
+}
+
+img#zsx {
+	margin-top: 10px;
 	height: 240px;
-	width: auto;
+	/* width: auto;	 */
+	width: 240px;
+	object-fit: cover;
 	border: 1px dotted hsl(20, 60%, 50%);
 }
 
