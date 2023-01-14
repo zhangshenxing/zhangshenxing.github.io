@@ -47,17 +47,39 @@
 			if (t.nextElementSibling.style.display == 'none') s = 1;
 			if (s) t.nextElementSibling.style.display = 'block';
 			else t.nextElementSibling.style.display = 'none';
+		}
+
+		function toggle_all() {
+			var s = 0;
+			var a = document.getElementsByTagName("h2");
+			var b = document.getElementsByTagName("h3");
+			if (a[0].nextElementSibling.style.display == 'none') s = 1;
+			var i;
+			if (s) {
+				a[0].nextElementSibling.style.display = 'block';
+				a[1].nextElementSibling.style.display = 'block';
+				a[2].nextElementSibling.style.display = 'block';
+				for (i = 0; i < b.length; i++)
+					b[i].nextElementSibling.style.display = 'block';
+			}
+			else {
+				a[0].nextElementSibling.style.display = 'none';
+				a[1].nextElementSibling.style.display = 'none';
+				a[2].nextElementSibling.style.display = 'none';
+				for (i = 0; i < b.length; i++)
+					b[i].nextElementSibling.style.display = 'none';
+			}
 		} 
 	</script>
 </head>
 
 <body>
-	<header>
+	<header onclick="toggle_all()" title="Click to hide/show">
 		<h1>ZHANG Shenxing <span class="header-sep">/</span><br class="header-br"> 张神星</h1>
 	</header>
 	<article>
 		<section>
-			<h2 onclick="toggle_div(this)" id="about-me"><img src="img/user-solid.svg" alt="">About me</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="about-me"><img src="img/user-solid.svg" alt="">About me</h2>
 			<div>
 				<div class="flexbox">
 					<div id="div-intro">
@@ -101,7 +123,7 @@
 		</section>
 
 		<section>
-			<h2 onclick="toggle_div(this)" id="experience"><img src="img/user-graduate-solid.svg" alt="">Experience</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="experience"><img src="img/user-graduate-solid.svg" alt="">Experience</h2>
 			<div>
 				<ul id="ul-experience">
 					<li>
@@ -111,20 +133,20 @@
 					</li>
 					<li>
 						<span>2018-04 ~ 2021-11</span><br class="header-br">
-						Postdoctoral Fellow, 
+						Postdoctoral Fellow,
 						Mentor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
 						<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a>
 					</li>
 					<li>
 						<span>2016-03 ~ 2018-03</span><br class="header-br">
-						Postdoctoral Fellow, 
+						Postdoctoral Fellow,
 						Mentor <a href="http://www.mcm.ac.cn/faculty/tianye/201409/t20140916_255888.html" title="田野">Ye Tian</a>,
 						<a title="Academy of Mathematics and Systems Science" href="http://www.amss.cas.cn/">AMSS</a>
 						<a title="Chinese Academy of Sciences" href="http://www.cas.cn/">CAS</a>
 					</li>
 					<li class="li-education">
 						<span>2010-09 ~ 2015-11</span><br class="header-br">
-						Ph.D. in <abbr title="SA10001 ⇒ BA12001">Mathematics</abbr>, 
+						Ph.D. in <abbr title="SA10001 ⇒ BA12001">Mathematics</abbr>,
 						Advisor <a href="http://staff.ustc.edu.cn/~yiouyang/" title="欧阳毅">Yi Ouyang</a>,
 						<a title="University of Science and Technology of China" href="http://www.ustc.edu.cn/">USTC</a>
 					</li>
@@ -138,7 +160,7 @@
 		</section>
 
 		<section>
-			<h2 onclick="toggle_div(this)" id="research"><img src="img/scroll-solid.svg" alt="">Research</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="research"><img src="img/scroll-solid.svg" alt="">Research</h2>
 			<div>
 				<ol>
 					<li>On a comparison of Cassels pairings of different elliptic curves<br>
@@ -355,9 +377,11 @@
 					</li>
 					<li>Newton polygons of $L$-functions of polynomials $x^d+ax^{d-1}$ with $p\equiv-1\bmod d$<br>
 						Y. Ouyang, S. Zhang.
-						<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 
+						<em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em>
 						37 (2016), 285-294.<br>
-						<a href="publications/OuyangZhang2016 Newton polygons of 𝐿-functions of polynomials 𝑥𝑑+𝑎𝑥𝑑−1 with 𝑝 ≡ −1 mod 𝑑.pdf">PDF</a> |
+						<a
+							href="publications/OuyangZhang2016 Newton polygons of 𝐿-functions of polynomials 𝑥𝑑+𝑎𝑥𝑑−1 with 𝑝 ≡ −1 mod 𝑑.pdf">PDF</a>
+						|
 						<a href="https://doi.org/10.1016/j.ffa.2015.10.003">PubPDF</a> |
 						<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
 						<span class="abstract">
@@ -473,137 +497,142 @@
 		</section>
 
 		<section>
-			<h2 onclick="toggle_div(this)" id="teaching"><img src="img/chalkboard-user-solid.svg" alt="">Teaching</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="teaching"><img src="img/chalkboard-user-solid.svg" alt="">Teaching</h2>
 			<div>
-				<h3>教学中</h3>
-				<h4>数学（下）[代课]</h4>
-				<ul>
-					<li>教材：朱士信 唐烁等《高等数学》上册</li>
-					<li>日期：2023-02-20 ~ 2023-06-09</li>
-					<li>时间：周一 08:10~10:00 &
-						周三(9-16周) 10:20~12:10 &
-						周四 08:10~10:00</li>
-					<li>地点：翡翠湖校区翠八教301</li>
-					<li>课件：<a href="teaching/数学下/1.1 函数的概念.pptx">1.1</a>,
-						<a href="teaching/数学下/1.2 函数的几种特征.pptx">1.2</a>,
-						<a href="teaching/数学下/1.3 初等函数.pptx">1.3</a>,
-						<a href="teaching/数学下/1.4 一些常用不等式和等式.pptx">1.4</a>,
-						<a href="teaching/数学下/1.5 极坐标简介.pptx">1.5</a>
-					</li>
-				</ul>
+				<h3 onclick="toggle_div(this)" title="Click to hide/show">教学中</h3>
+				<div>
+					<h4>数学（下）[代课]</h4>
+					<ul>
+						<li>教材：朱士信 唐烁等《高等数学》上册</li>
+						<li>日期：2023-02-20 ~ 2023-06-09</li>
+						<li>时间：周一 08:10~10:00 &
+							周三(9-16周) 10:20~12:10 &
+							周四 08:10~10:00</li>
+						<li>地点：翡翠湖校区翠八教301</li>
+						<li>课件：<a href="teaching/数学下/1.1 函数的概念.pptx">1.1</a>,
+							<a href="teaching/数学下/1.2 函数的几种特征.pptx">1.2</a>,
+							<a href="teaching/数学下/1.3 初等函数.pptx">1.3</a>,
+							<a href="teaching/数学下/1.4 一些常用不等式和等式.pptx">1.4</a>,
+							<a href="teaching/数学下/1.5 极坐标简介.pptx">1.5</a>
+						</li>
+					</ul>
+				</div>
 
-				<h3>历史记录</h3>
-				<table class="teaching">
-					<thead>
-						<tr>
-							<th>课程</th>
-							<th>时间</th>
-							<th>资料</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
-							<td>2022年秋</td>
-							<td><a href="teaching/复变函数与积分变换/main.pdf" class="handout">课件</a><br>
-								<a href="teaching/复变函数与积分变换/review.pdf" class="handout">复习课</a> <br>
-								<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a>
-							</td>
-						</tr>
-						<tr>
-							<td>数学（下） 034Y01<br><em>合肥工业大学</em></td>
-							<td>2022年春</td>
-							<td><span class="handout">课件</span>
-								<a href="teaching/数学下/第一章 函数.pdf">1</a>,
-								<a href="teaching/数学下/第二章 极限和连续.pdf">2</a>,
-								<a href="teaching/数学下/第三章 一元函数微分学.pdf">3</a>,
-								<a href="teaching/数学下/第四章 一元函数微分学的应用.pdf">4</a><br>
-								<a href="teaching/试卷/数学（下）.pdf" class="exam">试卷</a><br>
-								<span class="video">课程精讲</span>
-								<a href="https://www.bilibili.com/video/bv1Qi4y1S77S">1</a>,
-								<a href="https://www.bilibili.com/video/bv1pY4y1W7HX">2</a>,
-								<a href="https://www.bilibili.com/video/bv1Ra411v7Zv">3</a>,
-								<a href="https://www.bilibili.com/video/bv1hA4y1D7se">4</a>
-							</td>
-						</tr>
-						<tr>
-							<td>概率论与数理统计<br><em>合肥工业大学</em></td>
-							<td>2021年秋(助教)</td>
-							<td><span class="handout">课件</span>
-								<a href="teaching/概率论与数理统计课件.pptx">5-6</a>
-							</td>
-						</tr>
-						<tr>
-							<td>线性代数<br><em>清华丘成桐中学生数学夏令营</em></td>
-							<td>2022年夏(助教)<br>2021年夏(助教)</td>
-							<td><a href="teaching/试卷/非原创/TYMS线性代数.pdf" class="exam">作业和试卷</a></td>
-						</tr>
-						<tr>
-							<td>代数与数论<br><em><abbr title="中国科学院数学与系统科学研究院">中科院</abbr>暑期学校</em></td>
-							<td>2019年夏(助教)</td>
-							<td><a href="teaching/代数与数论/田一超_Lectures_on_Algebraic_Number_Theory.pdf" class="handout">代数数论I讲义</a><br>
-								<a href="teaching/代数与数论/田野_Algebraic_Number_Theory.pdf" class="handout">代数数论II讲义</a><br>
-								<a href="teaching/代数与数论/薛航_群表示论.pdf" class="handout">群表示论讲义</a><br>
-								<a href="teaching/代数与数论/张寿武_Arithmetic_and_Algebraic_Geometry.pdf" class="handout">代数几何讲义</a><br>
-								<a href="teaching/代数与数论/代数数论作业.pdf" class="handout">代数数论作业</a>
-							</td>
-						</tr>
-						<tr>
-							<td>初等数论<br><em>中国科学院大学</em></td>
-							<td>2016年春(助教)</td>
-							<td><a href="teaching/试卷/非原创/初等数论.pdf" class="exam">试卷</a><br>
-								<a href="teaching/杂项/2016年初等数论习题课.pdf" class="excourse">习题课</a>
-							</td>
-						</tr>
-						<tr>
-							<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
-							<td>2020年秋</td>
-							<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
-						</tr>
-						<tr>
-							<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
-							<td>2020年春</td>
-							<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a><br>
-								<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a><br>
-								<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a>
-							</td>
-						</tr>
-						<tr>
-							<td>代数学基础 001356.01<br><em>中国科学技术大学</em></td>
-							<td>2014年秋(助教)<br>2012年秋(助教)</td>
-							<td><a href="teaching/试卷/非原创/代数学基础.pdf" class="exam">试卷</a><br>
-								<a href="teaching//杂项/2014年秋代数学基础习题课.pdf" class="excourse">习题课</a>
-							</td>
-						</tr>
-						<tr>
-							<td>近世代数(H) 001704.01<br><em>中国科学技术大学</em></td>
-							<td>2013年春(助教)</td>
-							<td><a href="teaching/试卷/非原创/近世代数(H).pdf" class="exam">试卷</a></td>
-						</tr>
-						<tr>
-							<td>近世代数 001010.01<br><em>中国科学技术大学</em></td>
-							<td>2011年秋(助教)</td>
-							<td><a href="teaching/试卷/非原创/近世代数.pdf" class="exam">试卷</a></td>
-						</tr>
-						<tr>
-							<td>复变函数 001012.02<br><em class="inst">中国科学技术大学</em></td>
-							<td>2011年春(助教)</td>
-							<td><a href="teaching/试卷/复变函数.pdf" class="exam">试卷</a></td>
-						</tr>
-					</tbody>
-				</table>
+				<h3 onclick="toggle_div(this)" title="Click to hide/show">历史记录</h3>
+				<div>
+					<table class="teaching">
+						<thead>
+							<tr>
+								<th>课程</th>
+								<th>时间</th>
+								<th>资料</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
+								<td>2022年秋</td>
+								<td><a href="teaching/复变函数与积分变换/main.pdf" class="handout">课件</a><br>
+									<a href="teaching/复变函数与积分变换/review.pdf" class="handout">复习课</a> <br>
+									<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a>
+								</td>
+							</tr>
+							<tr>
+								<td>数学（下） 034Y01<br><em>合肥工业大学</em></td>
+								<td>2022年春</td>
+								<td><span class="handout">课件</span>
+									<a href="teaching/数学下/第一章 函数.pdf">1</a>,
+									<a href="teaching/数学下/第二章 极限和连续.pdf">2</a>,
+									<a href="teaching/数学下/第三章 一元函数微分学.pdf">3</a>,
+									<a href="teaching/数学下/第四章 一元函数微分学的应用.pdf">4</a><br>
+									<a href="teaching/试卷/数学（下）.pdf" class="exam">试卷</a><br>
+									<span class="video">课程精讲</span>
+									<a href="https://www.bilibili.com/video/bv1Qi4y1S77S">1</a>,
+									<a href="https://www.bilibili.com/video/bv1pY4y1W7HX">2</a>,
+									<a href="https://www.bilibili.com/video/bv1Ra411v7Zv">3</a>,
+									<a href="https://www.bilibili.com/video/bv1hA4y1D7se">4</a>
+								</td>
+							</tr>
+							<tr>
+								<td>概率论与数理统计<br><em>合肥工业大学</em></td>
+								<td>2021年秋(助教)</td>
+								<td><span class="handout">课件</span>
+									<a href="teaching/概率论与数理统计课件.pptx">5-6</a>
+								</td>
+							</tr>
+							<tr>
+								<td>线性代数<br><em>清华丘成桐中学生数学夏令营</em></td>
+								<td>2022年夏(助教)<br>2021年夏(助教)</td>
+								<td><a href="teaching/试卷/非原创/TYMS线性代数.pdf" class="exam">作业和试卷</a></td>
+							</tr>
+							<tr>
+								<td>代数与数论<br><em><abbr title="中国科学院数学与系统科学研究院">中科院</abbr>暑期学校</em></td>
+								<td>2019年夏(助教)</td>
+								<td><a href="teaching/代数与数论/田一超_Lectures_on_Algebraic_Number_Theory.pdf" class="handout">代数数论I讲义</a><br>
+									<a href="teaching/代数与数论/田野_Algebraic_Number_Theory.pdf" class="handout">代数数论II讲义</a><br>
+									<a href="teaching/代数与数论/薛航_群表示论.pdf" class="handout">群表示论讲义</a><br>
+									<a href="teaching/代数与数论/张寿武_Arithmetic_and_Algebraic_Geometry.pdf" class="handout">代数几何讲义</a><br>
+									<a href="teaching/代数与数论/代数数论作业.pdf" class="handout">代数数论作业</a>
+								</td>
+							</tr>
+							<tr>
+								<td>初等数论<br><em>中国科学院大学</em></td>
+								<td>2016年春(助教)</td>
+								<td><a href="teaching/试卷/非原创/初等数论.pdf" class="exam">试卷</a><br>
+									<a href="teaching/杂项/2016年初等数论习题课.pdf" class="excourse">习题课</a>
+								</td>
+							</tr>
+							<tr>
+								<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
+								<td>2020年秋</td>
+								<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
+							</tr>
+							<tr>
+								<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
+								<td>2020年春</td>
+								<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a><br>
+									<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a><br>
+									<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a>
+								</td>
+							</tr>
+							<tr>
+								<td>代数学基础 001356.01<br><em>中国科学技术大学</em></td>
+								<td>2014年秋(助教)<br>2012年秋(助教)</td>
+								<td><a href="teaching/试卷/非原创/代数学基础.pdf" class="exam">试卷</a><br>
+									<a href="teaching//杂项/2014年秋代数学基础习题课.pdf" class="excourse">习题课</a>
+								</td>
+							</tr>
+							<tr>
+								<td>近世代数(H) 001704.01<br><em>中国科学技术大学</em></td>
+								<td>2013年春(助教)</td>
+								<td><a href="teaching/试卷/非原创/近世代数(H).pdf" class="exam">试卷</a></td>
+							</tr>
+							<tr>
+								<td>近世代数 001010.01<br><em>中国科学技术大学</em></td>
+								<td>2011年秋(助教)</td>
+								<td><a href="teaching/试卷/非原创/近世代数.pdf" class="exam">试卷</a></td>
+							</tr>
+							<tr>
+								<td>复变函数 001012.02<br><em class="inst">中国科学技术大学</em></td>
+								<td>2011年春(助教)</td>
+								<td><a href="teaching/试卷/复变函数.pdf" class="exam">试卷</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 
-				<!-- <h3>教研论文</h3> 
-			<ol class="teaching"> 
-				<li>欧阳毅, 张神星. 善用初等变换展开线性代数理论教学[J]. 大学数学 80 (2023).<br> 
-					<a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> | 
-					<a href="https://doi.org/10.1016/j.ffa.2022.102026">pubPDF</a> | 
-					<a href="slides/20210929 青岛 二项式的扭 L 函数的牛顿折线.pdf">幻灯片</a> | 
-					<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br> 
-					<span class="abstract"> 
-						 
-					</span> 
-					<pre>@article {Zhang2022, 
+				<!-- <h3 onclick="toggle_div(this)" title="Click to hide/show">教研论文</h3>
+				<div>
+					<ol class="teaching">
+						<li>欧阳毅, 张神星. 善用初等变换展开线性代数理论教学[J]. 大学数学 80 (2023).<br>
+							<a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> |
+							<a href="https://doi.org/10.1016/j.ffa.2022.102026">pubPDF</a> |
+							<a href="slides/20210929 青岛 二项式的扭 L 函数的牛顿折线.pdf">幻灯片</a> |
+							<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+							<span class="abstract">
+
+							</span>
+							<pre>@article {Zhang2022, 
       AUTHOR = {Zhang, Shenxing}, 
        TITLE = {On the {N}ewton polygons of twisted {$L$}-functions of binomials}, 
      JOURNAL = {Finite Fields Appl.}, 
@@ -616,182 +645,192 @@
     MRNUMBER = {4388988}, 
          DOI = {10.1016/j.ffa.2022.102026}, 
          URL = {https://doi.org/10.1016/j.ffa.2022.102026}, 
-}</pre> 
-				</li> 
-			</ol>			 
- 
-			<h3>学生</h3> 
-			<ul> 
-				<li>研究生</li> 
-				<li>本科毕设<ul> 
-						<li>刘旭鸿(2022)：二次域类群的结构以及算术应用</li> 
-					</ul> 
-				</li> 
-				<li>大创</li><ul> 
-					<li>朱思雯(2023)：新型冠状病毒传染模型</li> 
-				</ul> 
-			</ul> -->
+}</pre>
+						</li>
+					</ol>
+				</div>
+
+				<h3 onclick="toggle_div(this)" title="Click to hide/show">学生</h3>
+				<div>
+					<ul>
+						<li>研究生</li>
+						<li>本科毕设<ul>
+								<li>刘旭鸿(2022)：二次域类群的结构以及算术应用</li>
+							</ul>
+						</li>
+						<li>大创</li>
+						<ul>
+							<li>朱思雯(2023)：新型冠状病毒传染模型</li>
+						</ul>
+					</ul>
+				</div> -->
 			</div>
 		</section>
 
 		<section>
-			<h2 onclick="toggle_div(this)" id="links"><img src="img/link-solid.svg" alt="">Links</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="links"><img src="img/link-solid.svg" alt="">Links</h2>
 			<div>
-				<h3>Math Links</h3>
-				<ul>
-					<li>
-						丘成桐大学生数学竞赛历年<a href="misc/YauCSMC.pdf">笔试题</a>和<a href="misc/YauCSMCOral.pdf">口试题</a>，整理自<a
-							href="http://yau-contest.com/en/lists-jxxg.html">官网</a>。
-					</li>
-					<li>
-						<a href="http://video.moe.gov.cn/kejisi/shuxue.pdf">10000 个科学难题·数学卷</a>
-					</li>
-					<li>
-						<a href="https://www.wwli.asia/downloads/MW-2014.pdf">数学写作漫谈 - 李文威</a>
-					</li>
-					<li><a href="https://www.wwli.asia/downloads/Nanjing-2018-wwli.pdf">教学实践：经验、反思与构想 - 李文威</a></li>
-					<li><a href="https://www.ams.org/profession/leaders/workshops/gcoll.pdf">How
-							to Give a Good Colloquium - John E. McCarthy</a>
-					</li>
-					<li>
-						电子书：
-						<a href="http://www.numdam.org/?lang=en" title="Numdan">NUMDAM</a> |
-						<a href="http://www.digizeitschriften.de/main/dms/toc/?PPN=PPN243919689/"
-							title="DigiZeitschriften">DigiZ</a>
-						|
-						<a href="https://1lib.net/" title="Z-Library">Z-Library</a>
-					</li>
-					<li>
-						索引：
-						<a href="https://mathscinet.ams.org/mathscinet" title="MathSciNet">MathSciNet</a> |
-						<a href="https://zbmath.org/" title="Zentralblatt MATH">Zentralblatt MATH</a>
-					</li>
-					<li>
-						<a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html" title="MSC2020">MSC2020 数学方向分类号查询</a>
-					</li>
-					<li>
-						<a href="http://www.letpub.com.cn/index.php?page=journalapp" title="LetPub">LetPub 期刊信息查询</a>
-					</li>
-					<li>
-						<a href="http://www.lmfdb.org/" title="LMFDB">椭圆曲线数据库</a>
-					</li>
-					<li>
-						<a href="https://www.mathgenealogy.org/" title="Math Genealogy">数学家谱网</a>
-					</li>
-					<li>
-						<a href="http://mathoverflow.net/" title="MathOverflow">MathOverflow 数学问答社区</a>
-					</li>
-					<li>
-						<a href="recent/index.html">近期数论在线学术活动（个人向）</a>
-					</li>
-				</ul>
+				<h3 onclick="toggle_div(this)" title="Click to hide/show">Math Links</h3>
+				<div>
+					<ul>
+						<li>
+							丘成桐大学生数学竞赛历年<a href="misc/YauCSMC.pdf">笔试题</a>和<a href="misc/YauCSMCOral.pdf">口试题</a>，整理自<a
+								href="http://yau-contest.com/en/lists-jxxg.html">官网</a>。
+						</li>
+						<li>
+							<a href="http://video.moe.gov.cn/kejisi/shuxue.pdf">10000 个科学难题·数学卷</a>
+						</li>
+						<li>
+							<a href="https://www.wwli.asia/downloads/MW-2014.pdf">数学写作漫谈 - 李文威</a>
+						</li>
+						<li><a href="https://www.wwli.asia/downloads/Nanjing-2018-wwli.pdf">教学实践：经验、反思与构想 - 李文威</a></li>
+						<li><a href="https://www.ams.org/profession/leaders/workshops/gcoll.pdf">How
+								to Give a Good Colloquium - John E. McCarthy</a>
+						</li>
+						<li>
+							电子书：
+							<a href="http://www.numdam.org/?lang=en" title="Numdan">NUMDAM</a> |
+							<a href="http://www.digizeitschriften.de/main/dms/toc/?PPN=PPN243919689/"
+								title="DigiZeitschriften">DigiZ</a>
+							|
+							<a href="https://1lib.net/" title="Z-Library">Z-Library</a>
+						</li>
+						<li>
+							索引：
+							<a href="https://mathscinet.ams.org/mathscinet" title="MathSciNet">MathSciNet</a> |
+							<a href="https://zbmath.org/" title="Zentralblatt MATH">Zentralblatt MATH</a>
+						</li>
+						<li>
+							<a href="https://mathscinet.ams.org/mathscinet/msc/msc2020.html" title="MSC2020">MSC2020 数学方向分类号查询</a>
+						</li>
+						<li>
+							<a href="http://www.letpub.com.cn/index.php?page=journalapp" title="LetPub">LetPub 期刊信息查询</a>
+						</li>
+						<li>
+							<a href="http://www.lmfdb.org/" title="LMFDB">椭圆曲线数据库</a>
+						</li>
+						<li>
+							<a href="https://www.mathgenealogy.org/" title="Math Genealogy">数学家谱网</a>
+						</li>
+						<li>
+							<a href="http://mathoverflow.net/" title="MathOverflow">MathOverflow 数学问答社区</a>
+						</li>
+						<li>
+							<a href="recent/index.html">近期数论在线学术活动（个人向）</a>
+						</li>
+					</ul>
+				</div>
 
-				<h3><img src="img/tex.jpg" alt="">L<span
+				<h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="img/tex.jpg" alt="">L<span
 						style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span
 						style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X Links</h3>
-				<ul>
-					<li>
-						<a href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">常用LaTeX代码以及所有入门知识与资料</a><br>
-						<a href="https://www.latexstudio.net/">LaTeX 工作室</a>整理的常见参考资料，该网站也提供了在线问答社区。
-					</li>
-					<li>
-						<a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf">一份不太简短的 LaTeX2ε 介绍</a><br>
-						LaTeX 入门必看资料，先看附录A安装TeX Live 或 MiKTeX，然后可使用编辑器 TeXworks。也可以使用 VSCode 并安装扩展 LaTeX Workshop.
-					</li>
-					<li>
-						<a href="http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf">LaTeX 常见符号表</a><br>
-						页数有点多，建议用<a href="http://detexify.kirelabs.org/classify.html">在线识别LaTeX符号</a>。
-					</li>
-					<li>
-						宏包：<a href="https://www.ctan.org/pkg/hfutexam">合肥工业大学期末试卷模板</a> v1.6<br>
-						旨在将合肥工业大学期末试卷的Word模板转化为LaTeX模板。<br>
-						点击下载<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_shijuan.pdf">试卷示例</a>，<a
-							href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_datizhi.pdf">答题纸示例</a>，<a
-							href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_cankaodaan.pdf">参考答案示例</a>，<a
-							href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam.pdf">说明文档</a>，<a
-							href="https://mirrors.ctan.org/macros/latex/contrib/hfutexam.zip">zip压缩包</a>。
-					</li>
-					<li>
-						宏包：<a href="https://www.ctan.org/pkg/hfutthesis">合肥工业大学学位论文模板</a> v1.0.4<br>
-						基于<a href="https://github.com/ustctug/ustcthesis">USTCThesis</a>。<br>
-						点击下载<a href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis/hfutthesis-doc.pdf">说明文档</a>，<a
-							href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis.zip">使用样例</a>。
-					</li>
-					<li>
-						宏包：<a href="https://www.ctan.org/pkg/pgf">Ti<em>k</em>Z & PGF</a><br>
-						功能强大的绘图宏包，但<a href="http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf">手册</a>有上千页，不便于入门。建议看简略版<a
-							href="http://mirrors.ctan.org/info/visualtikz/VisualTikZ.pdf">可视化TikZ使用手册</a>，也可看<a
-							href="http://cremeronline.com/LaTeX/minimaltikz.pdf">非官方简短入门手册</a>。
-					</li>
-					<li>
-						宏包：<a href="https://www.ctan.org/pkg/beamer">Beamer</a><br>
-						常用的LaTeX幻灯片宏包。点击下载<a
-							href="http://static.latexstudio.net/wp-content/uploads/2017/02/BeamerUserGuide_V3.24_zh-cn.pdf">中译版用户手册</a>，<a
-							href="http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf">英文版手册</a>。
-					</li>
-					<li>
-						宏包：<a href="https://www.ctan.org/pkg/xypic">XY-pic</a><br>
-						<a href="misc/xypic.pdf">中文简介</a>, 更详细的中文介绍请参考《LaTeX入门与提高》§12.4，点击下载<a
-							href="http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf">英文版用户手册</a>。
-					</li>
-				</ul>
+				<div>
+					<ul>
+						<li>
+							<a href="https://flowus.cn/latex/share/66110e84-b24a-4cd5-b8a7-2ba2afb35a30">常用LaTeX代码以及所有入门知识与资料</a><br>
+							<a href="https://www.latexstudio.net/">LaTeX 工作室</a>整理的常见参考资料，该网站也提供了在线问答社区。
+						</li>
+						<li>
+							<a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf">一份不太简短的 LaTeX2ε 介绍</a><br>
+							LaTeX 入门必看资料，先看附录A安装TeX Live 或 MiKTeX，然后可使用编辑器 TeXworks。也可以使用 VSCode 并安装扩展 LaTeX Workshop.
+						</li>
+						<li>
+							<a href="http://mirrors.ctan.org/info/symbols/comprehensive/symbols-a4.pdf">LaTeX 常见符号表</a><br>
+							页数有点多，建议用<a href="http://detexify.kirelabs.org/classify.html">在线识别LaTeX符号</a>。
+						</li>
+						<li>
+							宏包：<a href="https://www.ctan.org/pkg/hfutexam">合肥工业大学期末试卷模板</a> v1.6<br>
+							旨在将合肥工业大学期末试卷的Word模板转化为LaTeX模板。<br>
+							点击下载<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_shijuan.pdf">试卷示例</a>，<a
+								href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_datizhi.pdf">答题纸示例</a>，<a
+								href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_cankaodaan.pdf">参考答案示例</a>，<a
+								href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam.pdf">说明文档</a>，<a
+								href="https://mirrors.ctan.org/macros/latex/contrib/hfutexam.zip">zip压缩包</a>。
+						</li>
+						<li>
+							宏包：<a href="https://www.ctan.org/pkg/hfutthesis">合肥工业大学学位论文模板</a> v1.0.4<br>
+							基于<a href="https://github.com/ustctug/ustcthesis">USTCThesis</a>。<br>
+							点击下载<a href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis/hfutthesis-doc.pdf">说明文档</a>，<a
+								href="https://mirrors.ctan.org/macros/xetex/latex/hfutthesis.zip">使用样例</a>。
+						</li>
+						<li>
+							宏包：<a href="https://www.ctan.org/pkg/pgf">Ti<em>k</em>Z & PGF</a><br>
+							功能强大的绘图宏包，但<a href="http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf">手册</a>有上千页，不便于入门。建议看简略版<a
+								href="http://mirrors.ctan.org/info/visualtikz/VisualTikZ.pdf">可视化TikZ使用手册</a>，也可看<a
+								href="http://cremeronline.com/LaTeX/minimaltikz.pdf">非官方简短入门手册</a>。
+						</li>
+						<li>
+							宏包：<a href="https://www.ctan.org/pkg/beamer">Beamer</a><br>
+							常用的LaTeX幻灯片宏包。点击下载<a
+								href="http://static.latexstudio.net/wp-content/uploads/2017/02/BeamerUserGuide_V3.24_zh-cn.pdf">中译版用户手册</a>，<a
+								href="http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf">英文版手册</a>。
+						</li>
+						<li>
+							宏包：<a href="https://www.ctan.org/pkg/xypic">XY-pic</a><br>
+							<a href="misc/xypic.pdf">中文简介</a>, 更详细的中文介绍请参考《LaTeX入门与提高》§12.4，点击下载<a
+								href="http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf">英文版用户手册</a>。
+						</li>
+					</ul>
+				</div>
 
-				<h3>People & Other Links</h3>
-				<p class="p-inline-block">
-					<a href="https://ams.cnu.edu.cn/info/1027/1441.htm">蔡&#x3000;立</a> |
-					<a href="https://bicmr.pku.edu.cn/~dingyiwen/">丁一文</a> |
-					<a href="https://ams.cnu.edu.cn/info/1028/1493.htm">范洋宇</a> |
-					<a href="http://www.mcm.ac.cn/faculty/huyongquan/">胡永泉</a> |
-					<a href="https://jianingli.gitee.io/">李加宁</a> |
-					<a href="http://www.math.columbia.edu/~chaoli/">李&#x3000;超</a> |
-					<a href="https://infosec.sjtu.edu.cn/DirectoryDetail.aspx?id=158">李宋宋</a> |
-					<a href="https://www.wwli.asia/index.php/zh/">李文威</a> |
-					<a href="https://ymsc.tsinghua.edu.cn/info/1033/2415.htm">李永雄</a> |
-					<a href="https://bicmr.pku.edu.cn/~ruochuan/">刘若川</a> |
-					<a href="https://sites.google.com/view/liuyifeng/home">刘一峰</a> |
-					<a href="https://ymsc.tsinghua.edu.cn/info/1033/2398.htm">刘&#x3000;余</a> |
-					<a href="https://faculty.ustc.edu.cn/ouyangyi">欧阳毅</a> |
-					<a href="http://home.ustc.edu.cn/~guohuan/ChineseWeb.html">邱国寰</a> |
-					<a href="http://www.mcm.ac.cn/faculty/shenxu/">申&#x3000;旭</a> |
-					<a href="https://math.tongji.edu.cn/info/1147/8345.htm">舒&#x3000;杰</a> |
-					<a href="http://www.mcm.ac.cn/faculty/tianyichao/201409/t20140916_255897.html">田一超</a> |
-					<a href="http://www.mcm.ac.cn/faculty/tianye/">田&#x3000;野</a> |
-					<a href="https://www.math.uci.edu/~dwan/">万大庆</a> |
-					<a href="http://www.mcm.ac.cn/faculty/wx/">万&#x3000;昕</a> |
-					<a href="https://bicmr.pku.edu.cn/~lxiao/">肖&#x3000;梁</a> |
-					<a href="https://yuexu-math.gitee.io/web/">许&#x3000;跃</a> |
-					<a href="https://web.math.princeton.edu/~chenyang/">许晨阳</a> |
-					<a href="http://home.ustc.edu.cn/~yjb/">杨金榜</a> |
-					<a href="https://people.math.wisc.edu/~thyang/">杨同海</a> |
-					<a href="https://bicmr.pku.edu.cn/~yxy/">袁新意</a> |
-					<a href="https://github.com/YijunYuan">袁轶君</a> |
-					<a href="http://math.mit.edu/~zyun/">恽之玮</a> |
-					<a href="http://staff.ustc.edu.cn/~zhlei18/">张&#x3000;磊</a> |
-					<a href="https://www.math.princeton.edu/~shouwu/">张寿武</a> |
-					<a href="http://math.mit.edu/~wz2113/">张&#x3000;伟</a> |
-					<a href="https://blog.ustc-zzzz.net/about">赵彦冰</a> |
-					<a href="https://server.mcm.ac.cn/~zheng/">郑维喆</a> |
-					<a href="https://www.math.mcgill.ca/darmon/">Henri Darmon</a> |
-					<a href="https://webusers.imj-prg.fr/~laurent.fargues/">Laurent Fargues</a> |
-					<a href="http://vlafforg.perso.math.cnrs.fr/">Vincent Lafforgue</a>
-				</p>
+				<h3 onclick="toggle_div(this)" title="Click to hide/show">People & Other Links</h3>
+				<div>
+					<p class="p-inline-block">
+						<a href="https://ams.cnu.edu.cn/info/1027/1441.htm">蔡&#x3000;立</a> |
+						<a href="https://bicmr.pku.edu.cn/~dingyiwen/">丁一文</a> |
+						<a href="https://ams.cnu.edu.cn/info/1028/1493.htm">范洋宇</a> |
+						<a href="http://www.mcm.ac.cn/faculty/huyongquan/">胡永泉</a> |
+						<a href="https://jianingli.gitee.io/">李加宁</a> |
+						<a href="http://www.math.columbia.edu/~chaoli/">李&#x3000;超</a> |
+						<a href="https://infosec.sjtu.edu.cn/DirectoryDetail.aspx?id=158">李宋宋</a> |
+						<a href="https://www.wwli.asia/index.php/zh/">李文威</a> |
+						<a href="https://ymsc.tsinghua.edu.cn/info/1033/2415.htm">李永雄</a> |
+						<a href="https://bicmr.pku.edu.cn/~ruochuan/">刘若川</a> |
+						<a href="https://sites.google.com/view/liuyifeng/home">刘一峰</a> |
+						<a href="https://ymsc.tsinghua.edu.cn/info/1033/2398.htm">刘&#x3000;余</a> |
+						<a href="https://faculty.ustc.edu.cn/ouyangyi">欧阳毅</a> |
+						<a href="http://home.ustc.edu.cn/~guohuan/ChineseWeb.html">邱国寰</a> |
+						<a href="http://www.mcm.ac.cn/faculty/shenxu/">申&#x3000;旭</a> |
+						<a href="https://math.tongji.edu.cn/info/1147/8345.htm">舒&#x3000;杰</a> |
+						<a href="http://www.mcm.ac.cn/faculty/tianyichao/201409/t20140916_255897.html">田一超</a> |
+						<a href="http://www.mcm.ac.cn/faculty/tianye/">田&#x3000;野</a> |
+						<a href="https://www.math.uci.edu/~dwan/">万大庆</a> |
+						<a href="http://www.mcm.ac.cn/faculty/wx/">万&#x3000;昕</a> |
+						<a href="https://bicmr.pku.edu.cn/~lxiao/">肖&#x3000;梁</a> |
+						<a href="https://yuexu-math.gitee.io/web/">许&#x3000;跃</a> |
+						<a href="https://web.math.princeton.edu/~chenyang/">许晨阳</a> |
+						<a href="http://home.ustc.edu.cn/~yjb/">杨金榜</a> |
+						<a href="https://people.math.wisc.edu/~thyang/">杨同海</a> |
+						<a href="https://bicmr.pku.edu.cn/~yxy/">袁新意</a> |
+						<a href="https://github.com/YijunYuan">袁轶君</a> |
+						<a href="http://math.mit.edu/~zyun/">恽之玮</a> |
+						<a href="http://staff.ustc.edu.cn/~zhlei18/">张&#x3000;磊</a> |
+						<a href="https://www.math.princeton.edu/~shouwu/">张寿武</a> |
+						<a href="http://math.mit.edu/~wz2113/">张&#x3000;伟</a> |
+						<a href="https://blog.ustc-zzzz.net/about">赵彦冰</a> |
+						<a href="https://server.mcm.ac.cn/~zheng/">郑维喆</a> |
+						<a href="https://www.math.mcgill.ca/darmon/">Henri Darmon</a> |
+						<a href="https://webusers.imj-prg.fr/~laurent.fargues/">Laurent Fargues</a> |
+						<a href="http://vlafforg.perso.math.cnrs.fr/">Vincent Lafforgue</a>
+					</p>
 
-				<p class="p-inline-block">
-					个人账号
-					<a href="https://orcid.org/0000-0001-8126-1015">ORCID</a> |
-					<a href="https://arxiv.org/a/zhang_s_7.html">arXiv</a> |
-					<a href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1053285">MathSciNet</a> |
-					<a href="https://gitee.com/zhangshenxing/">Gitee</a> |
-					<a href="https://github.com/ruhuasiyu/">Github</a> |
-					<a href="https://www.mcmod.cn/author/22512.html">MCMod</a> |
-					<a href="https://space.bilibili.com/4469715">Bilibili</a>
-				</p>
+					<p class="p-inline-block">
+						个人账号
+						<a href="https://orcid.org/0000-0001-8126-1015">ORCID</a> |
+						<a href="https://arxiv.org/a/zhang_s_7.html">arXiv</a> |
+						<a href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1053285">MathSciNet</a> |
+						<a href="https://gitee.com/zhangshenxing/">Gitee</a> |
+						<a href="https://github.com/ruhuasiyu/">Github</a> |
+						<a href="https://www.mcmod.cn/author/22512.html">MCMod</a> |
+						<a href="https://space.bilibili.com/4469715">Bilibili</a>
+					</p>
 
-				<p class="p-inline-block">
-					<a href="https://www.mcmod.cn/class/1297.html" title="Minecraft 原版模组更多的合成">Minecraft 原版模组更多的合成</a> |
-					<a href="VanillaModTutorial" title="Minecraft 原版模组入门教程">Minecraft 原版模组入门教程</a> |
-					<a href="set/index.html" title="在线玩 Set!">Set!</a>
-				</p>
+					<p class="p-inline-block">
+						<a href="https://www.mcmod.cn/class/1297.html" title="Minecraft 原版模组更多的合成">Minecraft 原版模组更多的合成</a> |
+						<a href="VanillaModTutorial" title="Minecraft 原版模组入门教程">Minecraft 原版模组入门教程</a> |
+						<a href="set/index.html" title="在线玩 Set!">Set!</a>
+					</p>
+				</div>
 			</div>
 		</section>
 	</article>
@@ -803,9 +842,16 @@
 	<svg style="height:0;">
 		<filter id="changeIconColorGold">
 			<feColorMatrix type="matrix" values=" 
-		0 0 0 0 0.7, 
-		0 0 0 0 0.15, 
-		0 0 0 0 0.04, 
+		0 0 0 0 0.62, 
+		0 0 0 0 0.13, 
+		0 0 0 0 0.03, 
+		0 0 0 1 0" />
+		</filter>
+		<filter id="changeIconColorBlue">
+			<feColorMatrix type="matrix" values=" 
+		0 0 0 0 0.03, 
+		0 0 0 0 0.21, 
+		0 0 0 0 0.61, 
 		0 0 0 1 0" />
 		</filter>
 	</svg>
