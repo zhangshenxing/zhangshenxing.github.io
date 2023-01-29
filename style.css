@@ -22,13 +22,30 @@ h1 {
 	text-align: center;
 	vertical-align: middle;
 	color: white;
-	font-family: 'Lucida Console', STKaiti, 'Courier New', monospace;
+	font-family: STKaiti, 'Courier New', monospace;
 	cursor: pointer;
 }
 
-h1:hover {
+h1 [lang=en] {
+	font-family: 'Lucida Console', 'Courier New', monospace;
+}
+
+header:hover {
 	background-color: hsl(20, 60%, 50%);
 	color: black;
+}
+
+div.fake-body {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+header:hover+div.fake-body {
+	background-color: hsl(60, 0%, 86%);
 }
 
 /* article */
@@ -187,6 +204,7 @@ pre {
 
 pre,
 span.abstract {
+	margin-left: -24px;
 	display: none;
 	padding: 10px;
 	margin-top: 6px;
@@ -236,12 +254,13 @@ table.teaching tr:nth-child(even) {
 }
 
 table.teaching em {
-	font-family: Verdana, STKaiti, Arial, Helvetica, sans-serif;
+	font-family: STKaiti, Arial, Helvetica, sans-serif;
 	font-style: normal;
 }
 
 table.teaching em:lang(en) {
 	font-style: italic;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .exam::before {
