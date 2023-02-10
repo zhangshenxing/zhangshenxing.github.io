@@ -12,8 +12,8 @@
 	\emph{教材}：
 		\begin{tikzpicture}[overlay,xshift=6.5cm,yshift=-1cm]
 			\draw
-			(0,0) node {\includegraphics[height=2.5cm]{misc/book1.jpg}}
-			(2.5,0) node {\includegraphics[height=2.5cm]{misc/book2.png}};
+			(0,0) node {\includegraphics[height=2.5cm]{image-book1.jpg}}
+			(2.5,0) node {\includegraphics[height=2.5cm]{image-book2.png}};
 		\end{tikzpicture}
 	\begin{itemize}[<*>]
 		\item 西交高数教研室《复变函数》
@@ -44,27 +44,57 @@
 \end{frame}
 
 
-\begin{frame}{课程内容和学习方法}
-	\onslide<+->
-	本课程主要研究下述问题：
-	\begin{itemize}
-		\item 复数的由来, 以及复数的基本要素. (\emph{\S~1.1})
-		\item 复数的运算法则和性质. (\emph{\S\S~1.1-1.3})
-		\item 复变量函数的定义, 以及与实变量函数的异同点. (\emph{\S\S~1.4-1.6}) 
-		\item 复变函数的解析性的刻画, 即复变函数的微分理论. (\emph{\S\S~2.1-3.3})
-		\item 复变函数的积分、级数和留数理论. (\emph{\S\S~3.4-5.3})
-		\item 积分变换及其应用. (\emph{\S\S~6.1-6.3})
-	\end{itemize}
-	\onslide<+->
+\begin{frame}{课程内容}
+	\begin{center}
+		\begin{tikzpicture}[
+			small mindmap,
+			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
+			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
+			font=\scriptsize, text=white,
+			childa/.style={concept color=red,faded/.style={concept color=red!50}},
+			childb/.style={concept color=blue,faded/.style={concept color=blue!50}},
+			childc/.style={concept color=orange,faded/.style={concept color=orange!50}},
+			childd/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
+			grow cyclic,
+			level 1/.append style={level distance=2.8cm,font=\small},
+			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
+			\node [root concept] {复变函数与积分变换} % root
+			child [grow=-20, level distance=3cm, childa] { node {复数的概念}
+				child[grow=205, level distance=2.5cm] { node {复数的基本要素} }
+				child[grow=-30] { node {复数的运算法则和性质} }
+				child[grow=15, level distance=2.5cm] { node {复数列、级数、函数、极限、积分} }
+			}
+			child [grow=20, level distance=3cm, childb] { node {复数的解析理论}
+				child[grow=10,level distance=2.5cm] { node {刻画: C-R方程} }
+				child[grow=50,level distance=2.8cm] { node {性质: 柯西-古萨基本定理} }
+				child[grow=115,level distance=2.5cm] { node {性质: 复闭路定理} }
+				child[grow=150,level distance=3cm] { node {应用: 柯西积分公式} }
+			}
+			child [grow=160, level distance=3cm, childc] { node {复数的级数理论}
+				child[grow=70,level distance=2.5cm] { node {幂级数与泰勒展开} }
+				child[grow=120,level distance=2.7cm] { node {洛朗展开} }
+				child[grow=160,level distance=2.5cm] { node {孤立奇点的留数} }
+			}
+			child [grow=200, level distance=3.3cm, childd] { node {积分变换}
+				child[grow=160,level distance=2.3cm] { node {傅里叶变换} }
+				child[grow=210,level distance=2.5cm] { node {拉普拉斯变换} }
+				child[grow=-32,level distance=2.3cm] { node {积分变换的应用} }
+			};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}{课程学习方法}
 	\begin{center}
 		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnodeg,align=center]            (1)  {\emph{课前}\\预习课本};
-			\node[cstnodeg,align=center,right=of 1] (2)  {\emph{课上}\\认真听课\\记好笔记};
-			\node[cstnodeg,align=center,right=of 2] (3)  {\emph{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnodeg,align=center,right=of 3] (4)  {\emph{作业}\\检测学\\习效果};
-			\draw[cstnarrow,dcolorc] (1.east) to (2.west);
-			\draw[cstnarrow,dcolorc] (2.east) to (3.west);
-			\draw[cstnarrow,dcolorc] (3.east) to (4.west);
+			\node[cstnodeg,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
+			\node[cstnodeg,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
+			\node[cstnodeg,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnodeg,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
+			\draw[cstnarrow,dcolorc] (1.east) to[bend left] (2.north);
+			\draw[cstnarrow,dcolorc] (2.south) to[bend left] (3.east);
+			\draw[cstnarrow,dcolorc] (3.west) to[bend left] (4.south);
+			\draw[cstnarrow,dcolorc] (4.north) to[bend left] (1.west);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

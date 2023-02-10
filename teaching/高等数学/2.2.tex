@@ -1,0 +1,258 @@
+
+\end{frame}
+
+
+\begin{frame}
+2.2 函数的极限
+	我们参照数列极限的定义来定义函数的极限. 我们先考虑当 x \ra +\infty 时 $f(x)$ 的
+极限. 回忆数列的极限
+\forall 𝜀>0, ∃𝑁 使得当 n>𝑁 时, 有 an - a < 𝜀 .
+	定义 设函数 $f(x)$ 当 x 充分大时有定义, 𝐴 为常数. 如果
+\forall 𝜀>0, ∃𝑋 使得当 x>𝑋 时, 有 $f(x)$ - 𝐴 < 𝜀,
+	则称 𝐴 为 $f(x)$ 当 x \ra +\infty 时的极限, 记为 lim
+x\ra+\infty f (x )=𝐴 或 f(x ) \ra
+𝐴 x \ra +\infty .
+	从几何角度来看, 就是函数在 𝑋, +\infty 上的限制的图像被夹在直线 y=𝐴 \pm 𝜀 之
+间.
+	我们将红字部分称为 𝜀 -𝑋 语言.
+\end{frame}
+
+
+\begin{frame}
+	类似地, 我们有:
+	定义 设函数 $f(x)$ 当 x 充分小时有定义, 𝐴 为常数. 如果
+\forall 𝜀>0, ∃𝑋 使得当 x < -𝑋 时, 有 $f(x)$ - 𝐴 < 𝜀,
+	则称 𝐴 为 $f(x)$ 当 x \ra -\infty 时的极限, 记为 lim
+x\ra-\infty f (x )=𝐴 或 f(x ) \ra
+𝐴 x \ra -\infty .
+	定义 设函数 $f(x)$ 当 x 充分大时有定义, 𝐴 为常数. 如果
+\forall 𝜀>0, ∃𝑋 使得当 |x |>𝑋 时, 有 $f(x)$ - 𝐴 < 𝜀 ,
+	则称 𝐴 为 $f(x)$ 当 x \ra \infty 时的极限, 记为 lim
+x\ra\infty f (x )=𝐴 或 f (x ) \ra 𝐴 x \ra \infty .
+	注意, 函数极限中需要分清 x \ra \infty, x \ra +\infty, x \ra -\infty, 而数列情形只有 n \ra \infty,
+因为 n 是正整数.
+\end{frame}
+
+
+\begin{frame}
+	类似于数列极限的性质, 我们有
+	\begin{theorem}
+lim
+\end{theorem}
+x\ra\infty $f(x)$=𝐴 ⇔ lim
+x\ra+\infty $f(x)$=lim
+x\ra-\infty $f(x)$=𝐴.
+	当 y \ra \infty 时, x=x0 + 1
+y \ra x0 . 因此如果存在 𝛿>0 使得函数 $f(x)$ 在 x0 的去
+心 𝛿 邻域
+𝑈
+∘
+x0 , 𝛿=x0 - 𝛿 , x0 \cup x0 , x0 + 𝛿
+	上有定义, 则 lim
+x\rax0
+f (x ) 应当定义为 lim
+y\ra\inftyf x0 + 1
+y . 于是我们得到下述定义:
+	定义 设函数 $f(x)$ 在 x0 的某个去心邻域内有定义, 𝐴 为常数. 如果
+\forall 𝜀>0, ∃𝛿>0 使得当 x \in 𝑈
+∘
+x0 , 𝛿 时, 有 $f(x)$ - 𝐴 < 𝜀 ,
+	则称 𝐴 为 $f(x)$ 当 x \ra x0 时的极限, 记为 lim
+x\rax0
+f (x )=𝐴 或 f (x ) \ra 𝐴 x \ra x0 .
+\end{frame}
+
+
+\begin{frame}
+	从几何角度来看, 就是函数在 𝑈
+∘
+x0 , 𝛿 上的限制的图像被夹在直线 y=𝐴 \pm 𝜀 之
+间.
+	类似地可以定义单侧极限
+	lim
+x\rax0
++ $f(x)$=𝐴 ⇔ \forall 𝜀>0, ∃𝛿>0 使得当 x \in x0 , x0 + 𝛿 时, 有 $f(x)$ - 𝐴 < 𝜀 .
+	lim
+x\rax0
+- $f(x)$=𝐴 ⇔ \forall 𝜀>0, ∃𝛿>0 使得当 x \in x0 - 𝛿 , 0 时, 有 $f(x)$ - 𝐴 < 𝜀 .
+	我们将红字部分称为 𝜀 -𝛿 语言.
+	\begin{theorem}
+lim
+\end{theorem}
+x\rax0
+f x=𝐴 ⇔ lim
+x\rax0
++ $f(x)$=lim
+x\rax0
+- $f(x)$=𝐴.
+	如果 lim
+x\rax0
++ $f(x)$=𝐴, 我们记 f x0
++=𝐴. 如果 lim
+x\rax0
+- $f(x)$=𝐴, 我们记 f x0
+-=𝐴.
+\end{frame}
+
+
+\begin{frame}
+	\begin{example}
+\begin{proof}
+\end{example}
+lim
+\end{proof}
+x\ra\infty
+1
+x=0.
+	分析 和数列极限类似, 这种问题的证明通常也分为两部分
+	先估计 $f(x)$ - 𝐴 , 得到它和 x - x0 < 𝛿 或 x>𝑋 的不等式关系,
+从而求得 𝛿 或 𝑋. 这个过程中可以进行适当的放缩.
+	将 𝛿 或 𝑋 代入极限的定义中.
+	1
+x - 0=1
+x < 𝜀, x>1
+𝜀 , 因此我们可以取 𝑋=1
+𝜀 .
+	\begin{proof}
+\forall 𝜀>0, 令 𝑋=1
+\end{proof}
+𝜀 . 当 x>𝑋 时, 有 1
+x - 0=1
+x < 𝜀. 所以 lim
+x\ra\infty
+1
+x =
+0.
+\end{frame}
+
+
+\begin{frame}
+	\begin{example}
+\begin{proof}
+\end{example}
+a>1 时, lim
+\end{proof}
+x\ra-\inftya x=0.
+	分析 由于 a>1 时, \log a x 是单调递增的. 因此 a x - 0=a x < 𝜀, x <
+\log a 𝜀.
+	\begin{proof}
+\forall 𝜀>0, 令 𝑋=- \log a 𝜀. 当 x < -𝑋 时, 有 a x - 0=a x < 𝜀. 所以
+\end{proof}
+lim
+x\ra-\inftya x=0.
+	\begin{example}
+\begin{proof}
+\end{example}
+lim
+\end{proof}
+x\rax0
+ax + 𝑏=ax0 + 𝑏.
+	分析 ax + 𝑏 - ax0 + 𝑏=a ⋅ x - x0 < 𝜀, 因此我们可以取 𝛿=𝜀
+a .
+注意我们需要单独考虑 a=0 的情形.
+\end{frame}
+
+
+\begin{frame}
+	\begin{proof}
+我们有 ax + 𝑏 - ax0 + 𝑏=a ⋅ x - x0 .
+\end{proof}
+	如果 a=0, \forall 𝜀>0, 令 𝛿=1. 当 0 < x - x0 < 𝛿 时, 有
+ax + 𝑏 - ax0 + 𝑏=a ⋅ x - x0=0 < 𝜀.
+	如果 a\neq 0, \forall 𝜀>0, 令 𝛿=𝜀
+a. 当 0 < x - x0 < 𝛿 时, 有
+ax + 𝑏 - ax0 + 𝑏=a ⋅ x - x0 < a 𝛿=𝜀.
+	所以 lim
+x\rax0
+ax + 𝑏=ax0 + 𝑏.
+	注记 当 $f(x)$=𝐴 时, 我们可以取任一正数作为 𝛿 , 只要 𝑈
+∘
+x, 𝛿 包含在该
+函数的定义域范围内即可.
+\end{frame}
+
+
+\begin{frame}
+	\begin{example}
+\begin{proof}
+\end{example}
+lim
+\end{proof}
+x \rax0
+sin x=sin x0 .
+	与三角函数有关的放缩往往要用到和差化积公式
+sin x - sin y=2 sin x - y
+2 cos x + y
+2 , cos x - cos y=-2 sin x + y
+2 sin x - y
+2 ,
+	然后将不含 x - x0 的项放缩到 1; 以及三角函数基本不等式
+sin x ≤ x , \forall x \in -\infty, +\infty , x ≤ tan x , \forall x \in - \pi
+2 , \pi
+2 .
+	\begin{proof}
+我们有 sin x - sin x0=2 sin x-x0
+\end{proof}
+2 cos x+x0
+2 ≤ 2 sin x-x0
+2 ≤ 2 x-x0
+2=x - x0 .
+	\forall 𝜀>0, 令 𝛿=𝜀 . 当 0 < x - x0 < 𝛿 时, 有
+sin x - sin x0 ≤ x - x0 < 𝛿=𝜀 .
+	所以 lim
+x\rax0
+sin x=sin x0 .
+\end{frame}
+
+
+\begin{frame}
+	\begin{example}
+\begin{proof}
+\end{example}
+lim
+\end{proof}
+x\ra\infty arctan x 不存在.
+	分析 从图像上可以看出 lim
+x\ra+\infty arctan x=\pi
+2 . 我们想要使用 x 来控制
+arctan x - \pi
+2 . 不过这个形式不容易估计, 我们令 𝑡=arctan x, 则问题变
+成了 𝑡 - \pi
+2 和 tan 𝑡 的关系. 再令 𝑠=arctan x - \pi
+2 , 则 𝑠 ≤ tan 𝑠 .
+	不过这个不等式并不总是对的, 我们需要估计 𝑠=arctan x - \pi
+2 的范围.
+由于我们考虑的是 x \ra +\infty, 不妨设 x>0, 那么 arctan x \in 0, \pi
+2 , 𝑠 =
+arctan x - \pi
+2 \in - \pi
+2 , 0 .
+\end{frame}
+
+
+\begin{frame}
+	\begin{proof}
+我们来证明 lim
+\end{proof}
+x\ra+\infty arctan x=\pi
+2 . 当 x>0 时,arctan x - \pi
+2 \in - \pi
+2 , 0 .
+因此 arctan x - \pi
+2 ≤ tan \pi
+2 - arctan x=1
+tan arctan x=1
+x.
+	\forall 𝜀>0, 令 𝑋=1
+𝜀>0. 当 x>𝑋 时, 有
+arctan x - \pi
+2 ≤ 1
+x < 1
+𝑋=𝜀.
+	所以 lim
+x\ra+\infty arctan x=\pi
+2 .
+	同理, lim
+x\ra-\infty arctan x=- \pi
+2 . 因此 lim
+x\ra\infty arctan x 不存在.

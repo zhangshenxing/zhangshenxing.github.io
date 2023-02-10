@@ -1,7 +1,6 @@
 \RequirePackage{extarrows}
-% symbols
-\renewcommand\le{\leqslant}
-\renewcommand\ge{\geqslant}
+
+% arrows
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
 \newcommand\la{\leftarrow}
@@ -12,50 +11,21 @@
 \newcommand\linj{\hookleftarrow}
 \newcommand\surj{\twoheadrightarrow}
 \newcommand\simto{\stackrel{\sim}{\longrightarrow}}
+\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
+\newcommand\xto{\xlongrightarrow}
+\newcommand\xeq{\xlongequal}
+\newcommand\luobida{\xeq{\text{洛必达}}}
+\newcommand\djwqx{\xeq{\text{等价无穷小}}}
+\newcommand\eqprob{\stackrel{\mathrm{P}}{=}}
 \newcommand\lto{\longmapsto}
 \renewcommand\vec[1]{\overrightarrow{#1}}
-\newcommand\ilim{\varinjlim\limits}
-\newcommand\plim{\varprojlim\limits}
+
+% decorations
 \newcommand\wh{\widehat}
 \newcommand\wt{\widetilde}
 \newcommand\ov{\overline}
 \newcommand\ul{\underline}
-\newcommand\vare{\varepsilon}
-\newcommand\varp{\varphi}
-\newcommand\imply{\Longrightarrow}
-\newcommand\rj{\relbar\joinrel}
-\newcommand\half{\frac{1}{2}}
-\newcommand\mmid{\parallel}
-\newcommand\ldb{\llbracket}
-\newcommand\rdb{\rrbracket}
-\newcommand\pppi{\frac{\partial\bar\partial}{\pi i}}
-\newcommand\mmod{\underline\bmod}
-\newcommand\floor[1]{\lfloor#1\rfloor}
-\font\cyr=wncyr10
-\newcommand\Sha{\hbox{\cyr X}}
-\newcommand\eqtxt[1]{\xlongequal{\text{#1}}}
-\newcommand\luobida{\xlongequal{\text{洛必达}}}
-\newcommand\djwqx{\xlongequal{\text{等价无穷小}}}
-\newcommand\eqprob{\stackrel{\mathrm{P}}{=}}
-
-% functions
-\newcommand\Uc{\stackrel{\circ}{U}\!\!}
-\newcommand\abs[1]{\left|#1\right|}
-\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
-\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
-\newcommand\set[1]{{\left\{#1\right\}}}
-\newcommand\pair[1]{\langle{#1}\rangle}
-\newcommand\pmat[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
-\newcommand\smat[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
-\newcommand\svec[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
-\newcommand\bvec[2]{\begin{bmatrix}#1 \\ #2\end{bmatrix} }
-\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
-\newcommand\env[2]{\begin{#1}{#2}\end{#1}}
-\newcommand\envn[3]{\begin{#1}[#2]{#3}\end{#1}}
-\newcommand\hil[3]{\left(\frac{{#1},{#2}}{#3}\right)}
-\newcommand\leg[2]{\Bigl(\frac{{#1}}{#2}\Bigr)}
-\newcommand\aleg[2]{\Bigl[\frac{{#1}}{#2}\Bigr]}
-\newcommand\stsc[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 \newlength{\larc}
 \NewDocumentCommand\warc{o m}{%
 	\IfNoValueTF {#1}%
@@ -68,6 +38,30 @@
 	}%
 }
 
+% braces
+\newcommand\set[1]{{\left\{#1\right\}}}
+\newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand\pair[1]{\langle{#1}\rangle}
+\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand\dbb[1]{\llbracket#1 \rrbracket}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+
+% symbols
+\renewcommand\le{\leqslant}
+\renewcommand\ge{\geqslant}
+\newcommand\vare{\varepsilon}
+\newcommand\varp{\varphi}
+\newcommand\ilim{\varinjlim\limits}
+\newcommand\plim{\varprojlim\limits}
+\newcommand\half{\frac{1}{2}}
+\newcommand\mmid{\parallel}
+\font\cyr=wncyr10\newcommand\Sha{\hbox{\cyr X}}
+\newcommand\Uc{\stackrel{\circ}{U}\!\!}
+\newcommand\hil[3]{\left(\frac{{#1},{#2}}{#3}\right)}
+\newcommand\leg[2]{\Bigl(\frac{{#1}}{#2}\Bigr)}
+\newcommand\aleg[2]{\Bigl[\frac{{#1}}{#2}\Bigr]}
+\newcommand\stsc[2]{\genfrac{}{}{0pt}{}{#1}{#2}}
 
 % categories
 \newcommand\cA{{\mathsf{A}}}
@@ -392,8 +386,11 @@
 \DeclareMathOperator\Arcsin{Arcsin}
 \DeclareMathOperator\Arccos{Arccos}
 \DeclareMathOperator\Arctan{Arctan}
+\DeclareMathOperator\arsh{arsh}
 \DeclareMathOperator\Arsh{Arsh}
+\DeclareMathOperator\arch{arch}
 \DeclareMathOperator\Arch{Arch}
+\DeclareMathOperator\arth{arth}
 \DeclareMathOperator\Arth{Arth}
 \DeclareMathOperator\arccot{arccot}
 \DeclareMathOperator\Arg{Arg}
@@ -576,7 +573,7 @@
 \newcommand\sd{{\mathrm{sd}}}
 \newcommand\Sel{{\mathrm{Sel}}}
 \newcommand\sep{{\mathrm{sep}}}
-\newcommand\sgn{{\mathrm{sgn}}}
+\DeclareMathOperator{\sgn}{sgn}
 \newcommand\Sh{{\mathrm{Sh}}}
 \DeclareMathOperator\sh{sh}
 \newcommand\Sht{\mathrm{Sht}}

@@ -1,0 +1,261 @@
+\section{极坐标简介}
+
+\subsection{极坐标系}
+\begin{frame}{极坐标系}
+	\onslide<+->
+	在平面直角坐标系中, 我们想要表示一个圆心在原点的圆, 可以用参数方程
+	\[\left\{\begin{aligned}
+		x&=x_0+R\cos\theta,\\
+		y&=y_0+R\sin\theta,
+	\end{aligned}\right.\qquad \theta\in[0,2\pi)\]
+	来表示.
+	\onslide<+->
+	这就引出了用于表达这类曲线更为简便的极坐标的概念.
+	\onslide<+->
+	\begin{definition*}
+		在平面内取一个定点 $O$ (\emph{极点}), 引一条射线 $Ox$ (\emph{极轴}), 再选定一个长度单位和角度的正方向 (通常取逆时针方向), 所建立的坐标系称为\emph{极坐标系}.
+		\begin{tikzpicture}[overlay,xshift=5.4cm,yshift=-1.2cm]
+			\draw[cstaxis] (0,0)--(2.5,0);
+			\draw (-0.2,0) node {$O$};
+			\draw (2.3,0.2) node {$x$};
+			\begin{scope}[visible on=<4->]
+				\draw[dcolora] (1.8,1.2) node {$M$};
+				\fill[cstdot,dcolora] (1.5,1) circle;
+			\end{scope}
+			\begin{scope}[visible on=<5->]
+				\coordinate (A) at (2,0);
+				\coordinate (B) at (0,0);
+				\coordinate (C) at (1.5,1);
+				\draw[thick,dcolora] (B)--(C);
+				\draw[dcolora] (0.8,0.7) node {$r$};
+			\end{scope}
+			\begin{scope}[visible on=<6->]
+				\draw[dcolora,thick] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+			\end{scope}
+		\end{tikzpicture}
+
+		\onslide<+->{对于平面内任意一点 $M$,
+		\begin{itemize}
+			\item $M$ 的\emph{极径}是指线段 $OM$ 的长度 $r$,
+			\item $M$ 的\emph{极角}是指从 $Ox$ 到 $OM$ 的角度 $\theta$,
+			\item $M$ 的\emph{极坐标}是指有序对 $(r,\theta)$.
+		\end{itemize}}
+	\end{definition*}
+\end{frame}
+
+
+\begin{frame}{极坐标的性质}
+	\onslide<+->
+	建立极坐标系后, 对于给定的 $r$ 和 $\theta$, 就可以在平面内确定唯一一点 $M$.
+
+	\onslide<+->
+	反过来, 给定平面内一点 $M$, 也可以找到它的极坐标 $(r,\theta)$.
+	\onslide<+->
+	但和直角坐标系不同的是, 平面内任意一点的极坐标可以有无数种表示.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item 对任意的 $\theta$, $(0,\theta)$ 均表示极点 $O$.
+			\item $(r,\theta)$ 和 $(r,\theta+2k\pi)$ 总表示同一点, $k\in\BZ$.
+			\onslide<+->{若我们限定 $\theta\in[0,2\pi)$ 或 $\theta\in(-\pi,\pi]$, 则除极点外的每一点均有唯一的极坐标.}
+		\end{enumerate}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{极坐标和直角坐标的转换}
+	\onslide<+->
+	\begin{alertblock}{极坐标系和直角坐标系的转换关系}
+		\[x=r\cos\theta,\qquad y=r\sin\theta,\]
+		\[r=\sqrt{x^2+y^2},\qquad \sin\theta=\frac yr, \cos\theta=\frac xr.\]
+	\end{alertblock}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis] (-0.5,0)--(3,0);
+			\draw[cstaxis] (0,-0.5)--(0,2);
+			\draw (-0.2,-0.2) node {$O$};
+			\draw (2.8,-0.2) node {$x$};
+			\draw (-0.2,1.8) node {$y$};
+			\draw[dcolora] (2.3,1.7) node {$M$};
+			\coordinate (A) at (2,0);
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (2,1.5);
+			\draw[thick,dcolora] (B)--(C);
+			\draw[dcolora] (1,0.9) node {$r$};
+			\draw[dcolora,thick] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw[cstdash,dcolore] (2,0)--(2,1.5)--(0,1.5);
+			\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (2,0)--(0,0);
+			\draw[dcolorb] (1,-0.3) node {$x$};
+			\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (0,0)--(0,1.5);
+			\draw[dcolorb] (-0.3,0.75) node {$y$};
+			\fill[cstdot,dcolora] (2,1.5) circle;
+		\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	实际中我们常用 $\tan\theta=\dfrac yx$ 并根据点所处的象限来确定 $\theta$.
+\end{frame}
+
+
+\begin{frame}{例题: 极坐标的计算}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item 将 $M$ 的极坐标 $\left(2,\dfrac\pi6\right)$ 化为直角坐标.
+			\item 将 $M$ 的直角坐标 $(-1,1)$ 化为极坐标.
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\begin{enumerate}
+			\item \[x=2\cos\frac\pi6=3,\qquad y=2\sin\frac\pi6=1.\]
+			因此 $M$ 的直角坐标为 $(3,1)$.
+			\item $r=\sqrt{(-1)^2+1^2}=\sqrt2$,
+			\onslide<+->{$\tan\theta=-1$,
+			}\onslide<+->{$\theta$ 可以选择为 $\dfrac{3\pi}4$.
+			}\onslide<+->{因此 $M$ 的极坐标为 $\left(\sqrt2,\dfrac{3\pi}4\right)$.}
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+
+\subsection{极坐标方程}
+\begin{frame}{例题: 求极坐标方程}
+	\onslide<+->
+	类似于直角坐标系, 我们可以用 $r$ 和 $\theta$ 的方程来表示平面上的图形. 求曲线的极坐标方程也和直角坐标系类似.
+	\onslide<+->
+	\begin{example}
+		求圆心在极点 $O$, 半径为 $R$ 的圆的极坐标方程.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		设 $M(r,\theta)$ 为圆上任意一点,
+		\onslide<+->{因为\\圆心在极点 $O$, 所以 $r=OM=R$. \\
+		}\onslide<+->{反之, 极径为 $R$ 的点都落在圆上.\\
+		}\onslide<+->{因此该圆的极坐标方程为 $r=R$.}
+		\begin{tikzpicture}[overlay,xshift=3cm,yshift=0.8cm]
+			\draw[cstaxis] (0,0)--(2,0);
+			\draw (-0.2,0) node {$O$};
+			\draw (1.8,0.2) node {$x$};
+			\draw[cstcurve,dcolora] (0,0) circle (1.3);
+			\draw[dcolorb] (1.7,0.9) node {$M(r,\theta)$};
+			\coordinate (A) at (2,0);
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (1.1,0.7);
+			\draw[thick,dcolorc] (B)--(C);
+			\fill[cstdot,dcolorb] (C) circle;
+			\draw[dcolorc] (0.5,0.6) node {$R$};
+			\draw[dcolorc,thick] pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+		\end{tikzpicture}\vspace{4mm}
+	\end{solution}
+	\onslide<+->
+	\begin{proofblock}{另解}
+		圆的直角坐标方程为 $x^2+y^2=R^2$.
+		\onslide<+->{这等价于 $r=\sqrt{x^2+y^2}=R$. 此即该圆的极坐标方程.}
+	\end{proofblock}
+\end{frame}
+
+
+\begin{frame}{例题: 求极坐标方程}
+	\onslide<+->
+	\begin{example}
+		求圆心为 $A(R,0)$, 半径为 $R$ 的圆的极坐标方程.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		设 $M(r,\theta)$ 为圆上任意一点.
+		\onslide<+->{由图可知 \\$OM\perp BM$, 从而 $r=OM=2R\cos\theta$.\\
+		}\onslide<+->{所以极坐标方程为 $r=2R\cos\theta$.}
+		\begin{tikzpicture}[overlay,xshift=2cm,yshift=0.5cm]
+			\draw[cstaxis] (0,0)--(3,0);
+			\draw (-0.2,0) node {$O$};
+			\draw (3.2,0) node {$x$};
+			\draw[dcolorb] (2.4,0.8) node {$M(r,\theta)$};
+			\coordinate (A) at (1,0);
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (1.6,0.8);
+			\draw[cstcurve,dcolora] (A) circle (1);
+			\fill[cstdot] (A) circle;
+			\fill[cstdot] (2,0) circle;
+			\draw[thick,dcolorc] (B)--(C)--(2,0);
+			\fill[cstdot,dcolorb] (C) circle;
+			\draw[dcolorc] (0.7,0.5) node {$r$};
+			\draw (0.95,-0.25) node {$A$};
+			\draw (2.2,-0.2) node {$B$};
+			\draw[dcolorc,thick] pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw (1.44,0.72)--(1.52,0.56)--(1.68,0.64);
+		\end{tikzpicture}\vspace{4mm}
+	\end{solution}
+	\onslide<+->
+	\begin{proofblock}{另解}
+		圆的直角坐标方程为 $(x-R)^2+y^2=R^2$.
+		\onslide<+->{这等价于
+			\[r^2=x^2+y^2=2Rx=2Rr\cos\theta,\]
+		}\onslide<+->{从而该圆的极坐标方程为 $r=2R\cos\theta$.}
+	\end{proofblock}
+\end{frame}
+
+
+\begin{frame}{常见极坐标曲线}
+	\onslide<+->
+	其它常见的极坐标方程及其曲线有: ($a>0$)
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}
+				\draw (0,-1.6) node[dcolora,align=center] {{\small 阿基米德螺旋线} $r=a\theta$};
+				\draw[cstaxis] (0,0)--(1.5,0);
+				\draw[cstcurve,dcolora,smooth,domain=0:13] plot ({0.12*\x*cos (45*\x)},{0.12*\x*sin (45*\x)});
+			\end{scope}
+			\begin{scope}[xshift=4cm,visible on=<3->]
+				\draw (1,-1.6) node[dcolorb,align=center] {{\small 心形线} $r=a(1-\cos\theta)$};
+				\draw[cstaxis] (0,0)--(2.5,0);
+				\draw[cstcurve,dcolorb,smooth,domain=0:360] plot ({(1+cos (\x))*cos (\x)},{(1+cos (\x))*sin (\x)});
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\onslide<4->
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}[xshift=-5cm]
+				\draw (0.2,-1.6) node[dcolorc,align=center] {{\small 双纽线} $r^2=a^2\cos(2\theta)$};
+				\draw[cstaxis] (0,0)--(2,0);
+				\draw[cstcurve,dcolorc,smooth,domain=-45:45] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
+				\draw[cstcurve,dcolorc,smooth,domain=135:225] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
+			\end{scope}
+			\draw (0.2,-1.6) node[dcolord,align=center,visible on=<5->] {{\small $n$ 纽线} $r^2=a^2\cos(n\theta)$};
+			\begin{scope}[visible on=<6->]
+				\draw[cstaxis] (0,0)--(2,0);
+				\draw (1.5,1) node[dcolord] {$n=5$};
+				\draw[cstcurve,dcolord,smooth,domain=-18:18] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\draw[cstcurve,dcolord,smooth,domain=54:90] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\draw[cstcurve,dcolord,smooth,domain=126:162] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\draw[cstcurve,dcolord,smooth,domain=198:234] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\draw[cstcurve,dcolord,smooth,domain=270:306] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例题: 求直角坐标方程}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item 将直角坐标方程 $x=1$ 表示的直线用极坐标方程表示.
+			\item 将极坐标方程 $r=4\sin\theta$ 表示的曲线用直角坐标方程表示.
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\begin{enumerate}
+			\item 由 $x=r\cos\theta=1$ 可知极坐标方程为 $r=\dfrac1{\cos\theta}$.
+			\item 由 $y=r\sin\theta=\dfrac{r^2}4$ 可知 $x^2+y^2=r^2=4y$, 即 $x^2+y^2=4y$.
+		\end{enumerate}
+	\end{solution}
+	\onslide<+->
+	对于极坐标方程 $r=\rho(\theta)$, 我们总可以将其对应的直角坐标系的参数方程表为
+	\[\left\{\begin{aligned}
+		x&=\rho(\theta)\cos\theta,\\
+		y&=\rho(\theta)\sin\theta.
+	\end{aligned}\right.\]
+\end{frame}

@@ -30,7 +30,7 @@
 		如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
 		否则我们称之为\emph{发散}.
 	\end{definition}
-	
+
 	\onslide<+->
 	注意双边幂级数的敛散性不能像幂级数那样通过部分和形成的数列的极限来定义,
 	\onslide<+->
@@ -256,7 +256,7 @@
 	这种做法比直接计算积分更简便.
 	\onslide<+->
 	因此我们一般 \alert{不用直接法}, 而是\abox{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
-	
+
 	\onslide<+->
 	\begin{solution}
 		\[\frac{e^z-1}{z^2}=\frac1{z^2}\left(z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\right)
@@ -291,10 +291,10 @@
 		\onslide<+->{因此
 			\begin{align*}
 				f(z)&=-\frac1{2-z}+\frac1{1-z}
-				\visible<+->{=-\frac12\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
-				&\visible<+->{=-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n+\sum_{n=0}^\infty z^n}
+				\visible<+->{=-\half\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
+				&\visible<+->{=-\half\sum_{n=0}^\infty\left(\frac z2\right)^n+\sum_{n=0}^\infty z^n}
 				\visible<+->{=\sum_{n=0}^\infty\left(1-\frac1{2^{n+1}}\right)z^n}\\
-				&\visible<+->{=\frac12+\frac34z+\frac78z^2+\cdots}
+				&\visible<+->{=\half +\frac34z+\frac78z^2+\cdots}
 			\end{align*}}
 	\end{solutionc}
 \end{frame}
@@ -307,10 +307,10 @@
 		\onslide<+->{因此
 			\begin{align*}
 				f(z)&=\frac1{1-z}-\frac1{2-z}
-				\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\frac12\cdot\frac1{1-\dfrac z2}}\\
-				&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^n}
+				\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\half\cdot\frac1{1-\dfrac z2}}\\
+				&\visible<+->{=-\frac1z\sum_{n=0}^\infty \left(\frac1z\right)^n-\half\sum_{n=0}^\infty\left(\frac z2\right)^n}
 				\visible<+->{=-\sum_{n=1}^{\infty}\frac1{z^n}-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
-				&\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\frac12-\frac14z-\frac18z^2-\cdots}
+				&\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\half -\frac14z-\frac18z^2-\cdots}
 			\end{align*}}
 	\end{solutionc}
 \end{frame}
@@ -331,7 +331,7 @@
 \end{frame}
 
 
-\begin{frame}{洛朗级数的特点*}
+\begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
 	洛朗展开的一些特点可以帮助我们检验计算的正确性.
 	\begin{itemize}
@@ -349,10 +349,10 @@
 \end{frame}
 
 
-\begin{frame}{洛朗级数的特点*}
+\begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
 	例如 $f(z)=\dfrac{z^3-2z^2-z+3}{(z-1)(z-2)}=z+1+\dfrac1{z-2}-\dfrac1{z-1}$,
-	\[f(z)=-\sum_{n<0}z^n+\frac12+\frac34z-\sum_{n\ge 2}2^{-n-1}z^n,\quad 1<|z|<2.\]
+	\[f(z)=-\sum_{n<0}z^n+\half +\frac34z-\sum_{n\ge 2}2^{-n-1}z^n,\quad 1<|z|<2.\]
 	\onslide<+->
 	每个系数加 $1$ 得到
 	\[f(z)=\frac32+\frac74z+\sum_{n\ge 2}(1-2^{-n-1})z^n,\quad 0<|z|<1,\]

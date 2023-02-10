@@ -42,7 +42,7 @@
 	\begin{definition}
 		如果 $z_0$ 是 $f(z)$ 的一个奇点, 且 $z_0$ 的某个邻域内没有其它奇点, 则称 $z_0$ 是 $f(z)$ 的一个\emph{孤立奇点}.
 	\end{definition}
-	
+
 	\onslide<+->
 	\begin{example}
 		\begin{itemize}
@@ -65,12 +65,13 @@
 	\onslide<+->
 	\begin{center}
 		\defaultrowcolors
-		\renewcommand\arraystretch{2}
-		\begin{tabular}{|c|c|c|}
-			\tht 孤立奇点类型&\tht 洛朗级数特点&\tht $\lim\limits_{z\to z_0}f(z)$\\
-			可去奇点&没有主要部分&存在且有限\\
-			$m$ 阶极点&\makecell[c]{主要部分只有有限项非零\\最低次为 $-m$ 次}&$\infty$\\
-			本性奇点&主要部分有无限项非零&不存在且不为 $\infty$\\
+		\renewcommand\arraystretch{1.4}
+		\begin{tabular}{|c|c|c|}\hline
+			\tht 孤立奇点类型&\tht 洛朗级数特点&\tht $\lim\limits_{z\to z_0}f(z)$\\\hline
+			可去奇点&没有主要部分&存在且有限\\\hline
+			&主要部分只有有限项非零&\\
+			\multirow{-2}*{$m$ 阶极点}&最低次为 $-m$ 次&\multirow{-2}*{$\infty$}\\\hline
+			本性奇点&主要部分有无限项非零&不存在且不为 $\infty$\\\hline
 		\end{tabular}
 	\end{center}
 \end{frame}
@@ -83,7 +84,7 @@
 		\[f(z)=c_0+c_1(z-z_0)+c_2(z-z_0)^2+\cdots,\quad 0<|z-z_0|<\delta,\]
 		是幂级数, 则称 $z_0$ 是 $f(z)$ 的\emph{可去奇点}.
 	\end{definition}
-	
+
 	\onslide<+->
 	设 $g(z)$ 为右侧幂级数的和函数, 则 $g(z)$ 在 $|z-z_0|<\delta$ 上解析,
 	\onslide<+->
@@ -92,7 +93,7 @@
 	通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 解析.
 	\onslide<+->
 	这就是``可去''的含义.
-	
+
 	\onslide<+->
 	\begin{theorem}
 		\begin{tabular}{rl}
@@ -130,7 +131,7 @@
 	\begin{definition}
 		若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域的洛朗级数主要部分有无限多项非零, 则称 $z_0$ 是 $f(z)$ 的\emph{本性奇点}.
 	\end{definition}
-	
+
 	\onslide<+->
 	\begin{example}
 		由于 $\displaystyle e^{\frac1z}=1+\frac1z+\frac1{2z^2}+\cdots$, 因此 $0$ 是本性奇点.
@@ -231,7 +232,7 @@
 		\onslide<+->{有一阶零点 $0$ 和三阶零点 $1$.
 		}
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{example}
 			$f(z)=\sin z-z$.
@@ -243,7 +244,7 @@
 \end{frame}
 
 
-\begin{frame}{零点的孤立性*}
+\begin{frame}{零点的孤立性\noexer}
 	\onslide<+->
 	\begin{theorem}
 	非零的解析函数的零点总是孤立的.
@@ -328,7 +329,7 @@
 		单选题: (2021年B卷) $z=0$ 是函数 $f(z)=\dfrac{e^z-1}{z^2}$ 的\fillbrace{\visible<3->{A}} 阶极点.
 		\xx{$1$}{$2$}{$3$}{$4$}
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 			由于 $e^z-1=z+\dfrac{z^2}{2!}+\cdots$, 所以 $0$ 是 $e^z-1$ 的一阶零点.
@@ -352,12 +353,12 @@
 		\onslide<+->{因此 $\ord(f,0)=3+2-7=-2$, $0$ 是二阶极点.
 		}
 	\end{solution}
-	
+
 	\onslide<+->
 	\begin{exercise}
 		求 $f(z)=\dfrac{(z-5)\sin z}{(z-1)^2z^2(z+1)^3}$ 的奇点.
 	\end{exercise}
-	
+
 	\onslide<+->
 	\begin{answer}
 		$1$ 是二阶极点, $0$ 是一阶极点, $-1$ 是三阶极点.
@@ -399,7 +400,7 @@
 	设 $g(t)=f\left(\dfrac1t\right)$, 则研究 $f(z)$ 在 $\infty$ 的性质可以转为研究 $g(t)$ 在 $0$ 的性质.
 	\onslide<+->
 	$g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
-	
+
 	\onslide<+->
 	\begin{definition}
 		如果 $0$ 是 $g(t)$ 的可去奇点 ($m$ 阶极点、本性奇点), 则称 $\infty$ 是 $f(z)$ 的\emph{可去奇点 ($m$ 阶极点、本性奇点).}
@@ -419,12 +420,13 @@
 	\onslide<+->
 	\begin{center}
 		\defaultrowcolors
-		\renewcommand\arraystretch{1.8}
-		\begin{tabular}{|c|c|c|}
-			\tht $\infty$ 类型&\tht 洛朗级数特点&\tht $\lim\limits_{z\to\infty}f(z)$\\
-			可去奇点&没有正幂次部分&存在且有限\\
-			$m$ 阶极点&\makecell[c]{正幂次部分只有有限项非零\\最高次为 $m$ 次}&$\infty$\\
-			本性奇点&正幂次部分有无限项非零&	不存在且不为 $\infty$\\
+		\renewcommand\arraystretch{1.2}
+		\begin{tabular}{|c|c|c|}\hline
+			\tht $\infty$ 类型&\tht 洛朗级数特点&\tht $\lim\limits_{z\to\infty}f(z)$\\\hline
+			可去奇点&没有正幂次部分&存在且有限\\\hline
+			&正幂次部分只有有限项非零&\\
+			\multirow{-2}*{$m$ 阶极点}&最高次为 $m$ 次&\multirow{-2}*{$\infty$}\\\hline
+			本性奇点&正幂次部分有无限项非零&	不存在且不为 $\infty$\\\hline
 		\end{tabular}
 	\end{center}
 \end{frame}
@@ -440,7 +442,7 @@
 		}
 		\vspace{-\baselineskip}
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{example}
 			函数 $f(z)=z^2+\dfrac1z$
@@ -456,7 +458,7 @@
 		\onslide<+->{则 $\infty$ 是 $p(z)$ 的 $n$ 阶极点.
 		}
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{example*}
 			函数 
@@ -475,7 +477,7 @@
 	\begin{example}
 		函数 $f(z)=\dfrac{(z^2-1)(z-2)^3}{(\sin{\pi z})^3}$ 在扩充复平面内有哪些什么类型的奇点, 并指出极点的阶.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		\begin{itemize}
@@ -506,12 +508,12 @@
 \end{frame}
 
 
-\begin{frame}{例题: 证明复数域是代数封闭的*}
+\begin{frame}{例题: 证明复数域是代数封闭的\noexer}
 	\onslide<+->
 	\begin{example}
 		证明非常数复系数多项式 $p(z)$ 总有复零点.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{proof*}
 		假设多项式 $p(z)$ 没有复零点, 那么 $f(z)=\dfrac1{p(z)}$ 在复平面上处处解析, 

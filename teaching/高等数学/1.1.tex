@@ -1,0 +1,992 @@
+\section{函数的概念}
+
+\subsection{映射的概念}
+
+\begin{frame}{映射的引入}
+	\onslide<+->
+	高中时, 我们已经知道什么是集合了.
+	\onslide<+->
+	在数学中, 我们往往关心的不仅是\alert{单个的对象}, 更关心\alert{对象之间的联系}.
+	\onslide<+->
+	这就引出了映射的概念.
+
+	\onslide<+->
+	映射, 英文为 map, 也就是地图:
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw (0,0) node[white,single arrow,fill=dcolorc,minimum height=3cm] {一个映射};
+			\draw (-2.5,0) node[visible on=<5>] {\includegraphics[height=2cm]{image-hfut-map.png}};
+			\draw (2.8,0) node[visible on=<5>] {\includegraphics[height=2cm]{image-hfut-pic.jpg}};
+			\draw (-3,0) node[font=\large,visible on=<6->] {$\left\{\stsc{\text{工大翡翠湖校区}}{\text{地图上的所有点}}\right\}$};
+			\draw (2.8,0) node[font=\large,visible on=<6->] {$\left\{\stsc{\text{地球表面}}{\text{所有位置}}\right\}$};
+		\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	\onslide<+->
+	地图的特点是什么? 
+	\onslide<+->
+	每个地图上的点都对应真实世界唯一的一个位置.
+\end{frame}
+
+
+\begin{frame}{映射的定义}
+	\onslide<+->
+	用数学语言将其重新表述:
+	\onslide<+->
+	\begin{definition}
+		给定集合 $A,B$.
+		若 $\forall a\in A,\exists!b\in B$ 与之对应, 则称这个对应关系为 $A$ 到 $B$ 的一个\emph{映射} $f:A\to B$. 记作 $b=f(a)$ 或 $a\stackrel{f}{\longmapsto}b$.
+	\end{definition}
+	\onslide<+->
+	这里
+	\begin{itemize}
+		\item $\forall $ 表示任意(Any);
+		\item $\exists$ 表示存在(exists);
+		\item $\exists!$ 表示存在唯一.
+	\end{itemize}
+
+	\onslide<+->
+	通常可用 $f,g,h,\varphi,\psi$ 等字母来表示映射.
+\end{frame}
+
+
+\begin{frame}{映射的特点}
+	\onslide<+->
+	映射由出发的集合, 到达的集合, 对应关系三个部分组成, 缺一不可.
+	\onslide<+->
+	下述对应是映射吗?
+
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}[rounded corners=0.2cm]
+				\draw (0.0,0.0) rectangle (0.8,-2.0);
+				\draw (1.5,0.0) rectangle (2.3,-2.0);
+			\end{scope}
+			\begin{scope}[cstarrowto,thick,dcolora]
+				\draw (0.6,-0.4)--(1.7,-0.4);
+				\draw (0.6,-1.0)--(1.7,-1.6);
+			\end{scope}
+			\draw
+				(0.4,-0.4) node{$1$}
+				(0.4,-1.0) node{$2$}
+				(0.4,-1.6) node{$3$}
+				(1.9,-0.4) node{$a$}
+				(1.9,-1.0) node{$b$}
+				(1.9,-1.6) node{$c$};
+			\draw (1.2,-3.2) node[visible on=<4->]{不是};
+
+			\begin{scope}[rounded corners=0.2cm,visible on=<5->]
+				\draw (3.0,0.0) rectangle (3.8,-2.0);
+				\draw (4.5,0.0) rectangle (5.3,-2.0);
+			\end{scope}
+			\begin{scope}[cstarrowto,thick,dcolora,visible on=<5->]
+				\draw (3.6,-0.4)--(4.7,-0.4);
+				\draw (3.6,-0.4)--(4.7,-1.0);
+				\draw (3.6,-1.0)--(4.7,-1.6);
+				\draw (3.6,-1.6)--(4.7,-1.0);
+			\end{scope}
+			\begin{scope}[visible on=<5->]
+				\draw
+					(3.4,-0.4) node{$1$}
+					(3.4,-1.0) node{$2$}
+					(3.4,-1.6) node{$3$}
+					(4.9,-0.4) node{$a$}
+					(4.9,-1.0) node{$b$}
+					(4.9,-1.6) node{$c$};
+			\end{scope}
+			\draw (4.2,-3.2) node[visible on=<6->]{不是};
+
+			\begin{scope}[rounded corners=0.2cm,visible on=<7->]
+				\draw (6.0,0.6) rectangle (6.8,-2.6);
+				\draw (7.5,0.0) rectangle (8.3,-2.0);
+			\end{scope}
+			\begin{scope}[cstarrowto,thick,dcolora,visible on=<7->]
+				\draw (6.6, 0.2)--(7.7,-1.0);
+				\draw (6.6,-0.4)--(7.7,-1.0);
+				\draw (6.6,-1.0)--(7.7,-1.0);
+				\draw (6.6,-1.6)--(7.7,-1.0);
+				\draw (6.6,-2.2)--(7.7,-1.0);
+			\end{scope}
+			\begin{scope}[visible on=<7->]
+				\draw
+					(6.4, 0.2) node{$1$}
+					(6.4,-0.4) node{$2$}
+					(6.4,-1.0) node{$3$}
+					(6.4,-1.6) node{$4$}
+					(6.4,-2.2) node{$\vdots$}
+					(7.9,-0.4) node{$a$}
+					(7.9,-1.0) node{$b$}
+					(7.9,-1.6) node{$c$};
+			\end{scope}
+			\draw (7.4,-3.2) node[visible on=<8->]{是};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{映射的个数\noexer}
+	\onslide<+->
+	\begin{example}
+		集合 $A=\{1,2,3\}$ 到集合 $B=\{1,2\}$ 的映射有多少个?
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		设 $f:A\ra B$ 是一个映射.
+		\onslide<+->{对于 $\forall  a\in A, f(a)\in B$ 有 $2$ 种选法, 因此一共有
+			\[2\times 2\times 2 =2^3 =8\]
+		种选法, 即一共有 $8$ 个映射.
+		}
+	\end{solution}
+	\onslide<+->
+	将有限集合 $S$ 中元素的个数记为 $|S|$. 那么有限集合 $A$ 到 $B$ 之间的映射一共有 $|B|^{|A|}$ 个.
+\end{frame}
+
+
+\subsection{函数的概念}
+
+\begin{frame}{函数的定义}
+	\onslide<+->
+	\begin{definition}
+		\emph{函数}是数的集合之间的映射:
+		\vspace{-\baselineskip}
+		\[\text{数的集合 $D$}\xto{\text{\normalsize 映射}}\text{数的集合 $Y$}\]
+	\end{definition}
+	\onslide<+->
+	这里的``数''就是指我们所学过的所有数, 也就是下列集合中的元素:
+	\begin{enumerate}
+		\item 自然数集合 $\BN=\set{0,1,2,3,\dots}$,
+		\item 整数集合 $\BZ=\set{\dots,-3,-2,-1,0,1,2,3,\dots}$,
+		\item 有理数集合 $\BQ=\setm{\frac ab}{a,b\in\BZ,b\neq 0}$,
+		\item 实数集合 $\BR$ 和 复数集合 $\BC$.
+	\end{enumerate}
+	\onslide<+->
+	在高等数学中, 我们只考虑\alert{实数集合 $\BR$ 的子集}, 即 $D,Y\subseteq \BR$.
+	\onslide<+->
+	\begin{example}
+		汽车离出发点的距离 $s\in[0,+\infty)$ 是出发的时间 $t\in[0,+\infty)$ 的函数.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{函数的要素}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[rounded corners=0.2cm]
+				(3,0) rectangle (3.8,-2.4)
+				(4.5,0) rectangle (5.3,-2.4);
+			\draw
+				(3.4,-0.4) node{$1$}
+				(3.4,-1.2) node{$2$}
+				(3.4,-2.0) node{$3$}
+				(4.9,-0.4) node{$2$}
+				(4.9,-1.2) node{$4$}
+				(4.9,-2.0) node{$5$};
+			\begin{scope}[cstarrowto,thick,dcolora]
+				\draw	(3.6,-0.4)--(4.7,-0.4);
+				\draw	(3.6,-1.2)--(4.7,-1.2);
+				\draw	(3.6,-2.0)--(4.7,-1.2);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\onslide<2->
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}[draw=dcolorc,thick]
+				\node[draw] (p1) at (1,-4) {$x$};
+				\node[draw] (p2) at (2.5,-4) {$\{1,2,3\}$};
+				\node[draw] (p3) at (5,-4) {$y$};
+				\node[draw] (p4) at (6.5,-4) {$\{2,4,5\}$};
+			\end{scope}
+			\draw (1.45,-4) node{$\in$};
+			\draw (4,-3.7) node{$f$};
+			\draw[cstarrowto]	(3.4,-4)--(4.7,-4);
+			\draw (5.45,-4) node{$\in$};
+			\begin{scope}[dcolorb]
+				\node (t1) at (-0.5,-6) {自变量};
+				\node (t2) at (2,-6) {定义域};
+				\node (t3) at (5,-6) {因变量(函数)};
+				\node (t4) at (8.5,-6) {值域是 $\{2,4\}$};
+			\end{scope}
+			\begin{scope}[cstarrowto,dcolorc,thick]
+				\draw (p1)->(t1);
+				\draw (p2)->(t2);
+				\draw (p3)->(t3);
+				\draw (p4)->(t4);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{函数的定义域}
+	\onslide<+->
+	我们常常也用因变量来记相应的函数, 即 $y$ 是 $x$ 的一个函数.
+	\onslide<+->
+	\begin{definition}
+		函数 $f:D\ra Y$ 的\emph{定义域}是指集合 $D$.
+	\end{definition}
+	\onslide<+->
+	函数的定义域通常分为两种情形:
+	\begin{enumerate}
+		\item 根据函数有意义的范围来确定定义域 (自然定义域).
+	
+		\onslide<+->{
+			例如 $y=\dfrac1{\sqrt{x-1}}$, 定义域为 $(1,+\infty)$.}
+		\item 直接在函数定义中给出了自变量的范围 (不超出自然定义域的范围).
+	
+		\onslide<+->{
+			例如 $y=\sin x, x\in\left[-\dfrac\pi2,\dfrac\pi2\right]$.}
+		\item 还有一种情形是根据函数的实际意义来确定的.
+	
+		\onslide<+->{
+			例如球的体积 $V=\frac43\pi r^3$ 是半径的函数, 定义域是 $(0,+\infty)$.}
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{函数定义域的约束条件}
+	\onslide<+->
+	常见函数的定义域通常由下述条件所约束:
+	\begin{enumerate}
+		\item 分母不等于零;
+		\item (偶数次)根号下要 $\ge 0$, 注意奇数次根号下没有限制;
+		\item $\ln,\log_a$ 内要 $>0$;
+		\item $\arcsin, \arccos$ 内范围为 $[-1,1]$, 注意 $\arctan$ 内没有限制.
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求函数定义域}
+	\onslide<+->
+	\begin{example}
+		(2022年期中)
+		求函数 $\displaystyle f(x)=\ln\frac1{\sqrt{x^2-1}}+\arctan\frac1x$ 的定义域.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由 $x^2-1>0$ 可知 $x\in(-\infty,-1)\cup(1,+\infty)$.
+		\onslide<+->{由于 $\arctan\dfrac1x$ 的定义域是 $(-\infty,0)\cup(0,+\infty)$, 因此 $f(x)$ 的定义域是 $(-\infty,-1)\cup(1,+\infty)$.
+		}
+	\end{solution}
+	\onslide<+->
+	\begin{exercise}
+		填空题: 函数 $\displaystyle f(x)=\frac1{\sqrt[3]{\ln x-1}}+\arcsin x$ 的定义域是\fillblank[1.5cm][1pt]{\visible<5->{$(0,1]$}}.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{函数的值域}
+	\onslide<+->
+	\begin{definition}
+		函数 $f:D\ra Y$ 的\emph{靶集}是指集合 $Y$.
+	\end{definition}
+	\onslide<+->
+	适当地放大函数的靶集不会影响到函数对应, 所以我们总可以将 $\BR$ 作为靶集.
+	\onslide<+->
+	\begin{definition}
+		函数 $f:D\ra \BR$ 的\emph{值域}是指集合 $\set{y\mid y=f(x),x\in D}$.
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{例题: 求函数的值域}
+	\onslide<+->
+	\begin{example}
+		求 $f(x)=\dfrac1{\left(\sqrt x+\sqrt 2\right)^2}$ 的值域.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由于 $x\ge 0, \sqrt x+\sqrt 2\in[\sqrt 2,+\infty)$. 
+		\onslide<+->{因此 $(\sqrt x+\sqrt 2)^2\in[2,+\infty)$, 
+		}\onslide<+->{从而 $f(x)$ 的值域是 $\bigl(0,\half\bigr]$.
+		}\onslide<+->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstaxis](-0.3,0)->(3,0); 
+				\draw[cstaxis](0,-0.3)->(0,1.6);
+				\draw
+					(2.8,-0.2) node {$x$}
+					(-0.2,1.4) node {$y$}
+					(-0.2,-0.2) node {$O$}
+					(1.3,0.5) node[dcolora] {$y=f(x)$};
+				\draw[cstcurve,dcolora,domain=0:1.7] plot({\x*\x},{1/(\x^2+2+2*\x*sqrt 2)});
+			\end{tikzpicture}
+		\end{center}}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 求函数定义域和值域}
+	\onslide<+->
+	\begin{example}
+		求 $y=\ln(1-x^2)$ 的定义域和值域.
+	\end{example}
+	\onslide<+->
+	\begin{solution*}
+		定义域为 $\{x\in\BR\mid 1-x^2>0\}=(-1,1)$.
+
+		\onslide<+->{当 $x\in(-1,1)$ 时, $x^2\in[0,1),1-x^2\in(0,1]$,
+		}\onslide<+->{因此 $y=\ln(1-x^2)\in(-\infty,0]$, 即值域为 $(-\infty,0]$.
+		}
+		\onslide<+->{
+			\begin{center}
+				\begin{tikzpicture}
+				\draw[cstaxis](-1.5,0)->(1.5,0);
+				\draw[cstaxis](0,-2.6)->(0,0.5);
+				\draw
+					(1.3,-0.3) node {$x$}
+					(-0.2,0.3) node {$y$}
+					(-0.2,-0.3) node {$O$}
+					(0,-4) node[dcolora] {$y=\ln(1-x^2)$};
+				\draw[cstcurve,dcolora,domain=-0.96:0.96] plot(\x,{ln(1-\x*\x)});
+				\draw[cstdash,dcolord](-1,-2.6)--(-1,0.5);
+				\draw[cstdash,dcolord](1,-2.6)--(1,0.5);
+				\end{tikzpicture}
+			\end{center}}
+			\vspace{-4\baselineskip}
+	\end{solution*}
+\end{frame}
+
+
+\begin{frame}{例题: 求抽象函数定义域}
+	\onslide<+->
+	\begin{example}
+		设 $f(x)$ 的定义域为 $[-1,1]$. 求 $f(x+a)+f(x-a)$ 的定义域, 其中 $a>0$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由题意可知 $x+a,x-a\in[-1,1]$, 即
+		\[-a-1\le x\le 1-a,\quad a-1\le x\le a+1.\]
+		\vspace{-\baselineskip}
+	\begin{itemize}
+		\item 当 $0<a<1$ 时, $1-a>a-1$. 此时定义域为 $[a-1,1-a]$.
+		\item 当 $a=1$ 时, $x=0$. 此时定义域为 $\{0\}$.
+		\item 当 $a>1$ 时, $1-a<a-1$. 此时定义域为 $\emptyset$.
+	\end{itemize}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{相同的函数}
+	\onslide<+->
+	我们称定义域相等, 且对应法则相同的两个函数为\emph{同一函数}.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $f_1(x)=\ln\dfrac1x$ 和 $f_2(x)=-\ln x$ 
+			\onslide<+->{是同一函数, 因为二者的定义域都是 $(0,+\infty)$, 且对应关系相同.
+			}
+			\item $f_1(x)=\dfrac1x,x\in(0,+\infty)$ 和 $f_2(x)=\dfrac1x$ 
+			\onslide<+->{是不同的函数.
+			}\onslide<+->{因为 $f_2$ 的定义域是 $\{x\in\BR\mid x\neq 0\}=(-\infty,0)\cup(0,+\infty)$.
+			}
+			\item $y=x^2,x\in[0,+\infty)$ 与 $s=t^2, t\in[0,+\infty)$ 
+			\onslide<+->{是同一函数.
+			}\onslide<+->{函数与变量所用的符号没有关系, 这便是\alert{函数的变量无关性}.
+			}
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	\begin{exercise}
+		判断题: $y=\dfrac{x^2}x$ 和 $y=x$ 是同一函数.~\fillbrace{\visible<8->{\falseex}}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例题: 解函数方程}
+	\onslide<+->
+	\begin{example}
+		已知函数 $f(x)$ 满足 $2f(x)+f\left(\dfrac1x\right)=\dfrac 3x$. 求 $f(x)$.
+	\end{example}
+	\onslide<+->
+	通过给定条件来求解函数, 这种问题被称为\emph{函数方程}.
+	\onslide<+->
+	\begin{solution}
+		令 $x=\dfrac1t$, 则 $2f\left(\dfrac1t\right)+f(t)=3t$.
+		\onslide<+->{联立
+			\[\left\{\begin{aligned}
+		2f(x)+f\left(\dfrac1x\right)&=\dfrac3x\\
+		2f\left(\dfrac1x\right)+f(x)&=3x
+		\end{aligned}\right.
+		\qquad\text{可得}\qquad f(x)=\dfrac2x-x.\]}
+	\end{solution}
+\end{frame}
+
+
+\subsection{函数的表现形式}
+\begin{frame}{分段函数}
+	\onslide<+->
+	有时候, 一个函数需要分情形来表达, 这就是所谓的\emph{分段函数}.
+	\onslide<+->
+	\begin{example}
+		符号函数 $y=\sgn(x)=\begin{cases}
+			1,&x>0;\\
+			0,&x=0;\\
+			-1,&x<0.
+		\end{cases}$
+		\onslide<+->{
+		\begin{tikzpicture}[overlay,yshift=-0.5cm,xshift=2.5cm]
+			\draw[cstaxis](-2,0)->(2,0); 
+			\draw[cstaxis](0,-1.7)->(0,1.7);
+			\draw
+				(1.8,-0.2) node {$x$}
+				(-0.2,1.5) node {$y$}
+				(-0.2,-0.2) node {$O$}
+				(-0.2,1) node {$1$}
+				(0.4,-1) node {$-1$}
+				(1.2,1.3) node[dcolora] {$y=\sgn(x)$};
+			\draw[cstcurve,dcolora](0,1)--(1.9,1);
+			\draw[cstcurve,dcolora](0,-1)--(-1.9,-1);
+			\filldraw[cstdote,dcolora,fill=white](0,1) circle;
+			\filldraw[cstdote,dcolora,fill=white](0,-1) circle;
+			\fill[cstdot,dcolora](0,0) circle;
+		\end{tikzpicture}}
+
+		\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $\{-1,0,1\}$.}
+		\vspace{0.8cm}
+	\end{example}
+	\onslide<+->
+	在画函数图像时, 用实心圆点表示包含该点, 用空心圆表示不包含该点.
+\end{frame}
+
+
+\begin{frame}{分段函数}
+	\onslide<+->
+	\begin{example}
+		绝对值函数 $y=|x|=\begin{cases}
+			x,&x\ge0;\\
+			-x,&x<0.
+		\end{cases}$
+		\onslide<+->{
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[cstaxis](-2,0)->(2,0);
+					\draw[cstaxis](0,-0.5)->(0,2);
+					\draw
+						(1.8,-0.2) node {$x$}
+						(-0.2,1.8) node {$y$}
+						(-0.2,-0.2) node {$O$}
+						(0.9,1.8) node[dcolora] {$y=|x|$};
+					\draw[cstcurve,dcolora](0,0)--(1.6,1.6);
+					\draw[cstcurve,dcolora](0,0)--(-1.6,1.6);
+				\end{tikzpicture}
+			\end{center}}	
+		\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $[0,+\infty)$.}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{分段函数}
+	\onslide<+->
+	\begin{example}
+		取整函数 $y=[x]$ 表示不超过 $x$ 的最大的整数.
+		\onslide<+->{
+			\begin{center}
+				\begin{tikzpicture}
+					\draw[cstaxis](-2,0)->(2,0);
+					\draw[cstaxis](0,-2)->(0,2);
+					\draw
+						(1.8,-0.2) node {$x$}
+						(-0.2,1.8) node {$y$}
+						(-0.2,-0.2) node {$O$}
+						(1.3,1.7) node[dcolora] {$y=[x]$};
+					\begin{scope}[cstcurve,dcolora]
+						\draw (-1.8,-1.8)--(-1.2,-1.8);
+						\draw (-1.2,-1.2)--(-0.6,-1.2);
+						\draw (-0.6,-0.6)--(0,-0.6);
+						\draw (0,0)--(0.6,0);
+						\draw (0.6,0.6)--(1.2,0.6);
+						\draw (1.2,1.2)--(1.8,1.2);
+					\end{scope}
+					\begin{scope}[cstdot,dcolora]
+						\fill (-1.8,-1.8) circle;
+						\fill (-1.2,-1.2) circle;
+						\fill (-0.6,-0.6) circle;
+						\fill (0,0) circle;
+						\fill (0.6,0.6) circle;
+						\fill (1.2,1.2) circle;
+					\end{scope}
+					\begin{scope}[cstdote,dcolora,fill=white]
+						\filldraw (-1.2,-1.8) circle;
+						\filldraw (-0.6,-1.2) circle;
+						\filldraw (0,-0.6) circle;
+						\filldraw (0.6,0) circle;
+						\filldraw (1.2,0.6) circle;
+						\filldraw (1.8,1.2) circle;
+					\end{scope}
+				\end{tikzpicture}
+			\end{center}}
+			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为整数集 $\BZ$.}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{分段函数}
+	\onslide<+->
+	分段函数只是一种简便称呼, 并不是严格的数学概念.
+	\onslide<+->
+	\begin{example}
+		$f(x)=\begin{cases}
+		2,&x=0\\3,&x=1\\5,&x=2
+		\end{cases}$ 也是一种分段函数.
+
+		\onslide<+->{定义域 $\{0,1,2\}$, 值域 $\{2,3,5\}$.}
+
+		\onslide<+->{我们也可以把它写成 $f(x)=1+2^x,x\in\{0,1,2\}$.}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{多值函数和隐函数}
+	\onslide<+->
+	有些情形下, 一个自变量 $x$ 对应不止一个值 $y$, 这时候按照定义它不是函数, 但一般为了简便称之为\emph{多值函数}.
+	\onslide<+->
+	这种情况常常发生在从一个方程 $F(x,y)=0$ 中求解 $y=f(x)$.
+	\onslide<+->
+	从这种方式得到的函数或多值函数被称为\emph{隐函数}.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $x^2+y^2=1$. 每个 $x\in(-1,1)$ 有两个 $y=\pm\sqrt{1-x^2}$ 与之对应.
+			\item $e^y+y=x$. 由于 $e^y+y$ 关于 $y$ 是单调递增函数, 因此对于 $\forall x\in(-\infty,+\infty),\exists!y$ 满足该方程.
+				\onslide<+->{所以该方程定义了函数 $y=f(x)$, 定义域和值域均为 $(-\infty,+\infty)$.}
+		\end{enumerate}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{多值函数的单值分支}
+	\onslide<+->
+	如果对每个 $x$ 选取固定的一个值与之对应, 则可称之为该多值函数的一个\emph{单值分支}.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $y=\sqrt{1-x^2}$ 和 $y=-\sqrt{1-x^2}$ 是 $y=\pm\sqrt{1-x^2}$ 的两个单值分支.
+			\item 设 $\sin y=x$, 则 $y$ 是 $x\in[-1,1]$ 的多值函数.
+			\onslide<+->{对任意整数 $k$,
+				\[y=2k\pi+\arcsin x,\qquad y=(2k+1)\pi-\arcsin x\]
+			都是它的单值分支.}
+		\end{enumerate}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{函数和隐函数的图像\noexer}
+	\onslide<+->
+	\begin{definition}
+		称集合 $G_F=\{(x,y)\mid F(x,y)=0\}$ 为方程 $F(x,y)=0$ 的\emph{图像}.
+	\end{definition}
+	\onslide<+->
+	当 $(a,b)\in G_F$ 时, $F(a,b)=0$, 因此
+		\[F[(a+u)-u,b]=0,\qquad (a+u,b)\in G_F(x-u,y).\]
+	\onslide<+->
+	也就是说, $F(x-u,y)=0$ 的图像为 $G_F$ 向右移动距离 $u$.
+\end{frame}
+
+\begin{frame}{隐函数的图像\noexer}
+	\onslide<+->
+	\begin{block}{隐函数图像的变换}
+		\begin{enumerate}
+			\item $F(x-u,y)=0$ 的图像为 $G_F$ 向右移动距离 $u$.
+			\item $F(x,y-u)=0$ 的图像为 $G_F$ 向上移动距离 $u$.
+			\item $F\bigl(\dfrac xu,y\bigr)=0$ 的图像为 $G_F$ 沿 $x$ 轴放缩 $u$ 倍.
+			\item $F\bigl(x,\dfrac yu\bigr)=0$ 的图像为 $G_F$ 沿 $y$ 轴放缩 $u$ 倍.
+			\item $F(-x,y)=0$ 的图像与 $G_F$ 关于 $y$ 轴对称.
+			\item $F(x,-y)=0$ 的图像与 $G_F$ 关于 $x$ 轴对称.
+			\item $F(-x,-y)=0$ 的图像与 $G_F$ 关于原点中心对称.
+			\item $F(y,x)=0$ 的图像与 $G_F$ 关于 $y=x$ 轴对称.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{函数的图像\noexer}
+	\onslide<+->
+	令 $F(x,y)=y-f(x)$, 则 $G_F$ 就是函数 $y=f(x)$ 的图像.
+	\onslide<+->
+	\begin{block}{函数图像的变换}
+		\begin{enumerate}
+			\item $f(x-u)$ 的图像为 $f(x)$ 的图像向右移动距离 $u$.
+			\item $f(x)+u$ 的图像为 $f(x)$ 的图像向上移动距离 $u$.
+			\item $f\bigl(\dfrac xu\bigr)$ 的图像为 $f(x)$ 的图像沿 $x$ 轴放缩 $u$ 倍.
+			\item $uf(x)$ 的图像为 $f(x)$ 的图像沿 $y$ 轴放缩 $u$ 倍.
+			\item $f(-x)$ 的图像与 $f(x)$ 的图像关于 $y$ 轴对称.
+			\item $-f(x)$ 的图像与 $f(x)$ 的图像关于 $x$ 轴对称.
+			\item $-f(-x)$ 的图像与 $f(x)$ 的图像关于原点中心对称.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{圆的参变量方程}
+	\onslide<+->
+	\begin{example}
+		设 $(x-x_0)^2+(y-y_0)^2=R^2>0$,
+		\onslide<+->{
+			\begin{tikzpicture}[overlay,xshift=2cm,yshift=-2.5cm]
+			\draw[cstaxis](-0.4,0)--(3,0);
+			\draw[cstaxis](0,-0.4)--(0,3);
+			\draw
+				(2.7,-0.2) node {$x$}
+				(-0.2,2.7) node {$y$}
+				(-0.2,-0.2) node {$O$}
+				(0.8,2) node[dcolorb] {$R$}
+				(1.1,0.9) node[dcolorc] {$(x_0,y_0)$};
+			
+			\coordinate (A) at (2.5,1.1);
+			\coordinate (B) at (1.1,1.1);
+			\coordinate (C) at (0.26,2.22);
+			\draw[thick,dcolorb] (A)--(B)--(C);
+			\draw[dcolorb,thick] pic [draw, "$t$",angle eccentricity=2,angle radius=2mm] {angle};
+			\fill[cstdot,dcolorc] (1.1,1.1) circle;
+			\draw[cstcurve,dcolora] (1.1,1.1) circle (1.4);
+		\end{tikzpicture}
+		则\vspace{3mm}
+
+			\hspace{1cm}$\displaystyle\left\{\begin{aligned}
+				x&=x_0+R\cos t,\\
+				y&=y_0+R\sin t,
+			\end{aligned}\right.\quad t\in[0,2\pi).$
+		}
+		\vspace{1.7cm}
+	\end{example}
+	\onslide<+->
+	\begin{definition}
+		我们称 $\left\{\begin{aligned}
+		x&=\varphi(t),\\y&=\psi(t),
+		\end{aligned}\right.\quad t\in D$ 这种形式定义的方程(或函数)为\emph{参变量方程}(\emph{参变量函数}).
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{椭圆的参变量方程}
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{example}
+		椭圆
+		\[\left(\frac{x-x_0}a\right)^2+\left(\frac{y-y_0}b\right)^2=1,\quad a,b>0\]
+		\onslide<+->{满足参变量方程
+		\[\left\{\begin{aligned}
+			x&=x_0+a \cos t,\\
+			y&=y_0+b\sin t,
+		\end{aligned}\right.\quad t\in[0,2\pi).\]}
+		\onslide<+->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstaxis](-0.6,0)--(3.8,0);
+				\draw[cstaxis](0,-0.6)--(0,2.6);
+				\draw
+					(3.5,-0.2) node {$x$}
+					(-0.2,2.4) node {$y$}
+					(-0.2,-0.2) node {$O$}
+					(2.34,0.92) node[dcolorb] {$a$}
+					(1.24,1.32) node[dcolorb] {$b$}
+					(1.44,0.42) node[dcolorc] {$(x_0,y_0)$};
+				\draw[thick,dcolorb](1.44,0.72)--(3.24,0.72);
+				\draw[thick,dcolorb](1.44,0.72)--(1.44,1.92);
+				\filldraw[cstdot,dcolorc] (1.44,0.72) circle;
+				\draw[cstcurve,dcolora] (1.44,0.72) circle (1.8 and 1.2);
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{双曲线的参变量方程}
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{example}
+		双曲线
+		\[\left(\frac{x-x_0}a\right)^2-\left(\frac{y-y_0}b\right)^2=1,\quad a,b>0\]
+		\onslide<+->{满足参变量方程
+		\[\left\{\begin{aligned}
+			x&=x_0+a \csc t,\\
+			y&=y_0+b\cot t,
+		\end{aligned}\right.\quad t\in(0,\pi)\cup(\pi,2\pi).\]
+		}\onslide<+->{因为 $\csc^2 t-\cot^2t=1$.}
+		\vspace{-3pt}
+		\onslide<+->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstaxis](-0.3,0)--(4,0);
+				\draw[cstaxis](0,-0.3)--(0,2.6);
+				\draw
+					(3.8,0.2) node {$x$}
+					(0.2,2.4) node {$y$}
+					(2.1,1.2) node[dcolorb] {$a$};
+				\draw[thick,dcolorb] (0.6,1)--(2.6,1);
+				\draw[cstcurve,dcolora,domain=30:150] plot({1.6+1/sin(\x)},{1+cot(\x)/(sqrt(1.56))});
+				\draw[cstcurve,dcolora,domain=30:150] plot({1.6-1/sin(\x)},{1+cot(\x)/(sqrt(1.56))});
+				\draw[cstdash,dcolord] ({1.6-1.4*sqrt(1.56)},-0.4)--({1.6+1.4*sqrt(1.56)},2.4);
+				\draw[cstdash,dcolord] ({1.6-1.4*sqrt(1.56)},2.4)--({1.6+1.4*sqrt(1.56)},-0.4);
+				\fill[cstdot,dcolorc] (1.6,1) circle;
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+	\endgroup
+\end{frame}
+
+
+\subsection{函数的构造}
+\begin{frame}{函数的限制}
+	\onslide<+->
+	\begin{definition}
+		设 $f(x)$ 是一个函数. 对于定义域 $D$ 的子集 $X$, 可以定义一个新的函数为 $f|_X$, 定义域为 $X$ 且对应法则和 $f$ 相同, 称之为 $f$ 在 $X$ 上的\emph{限制}. 
+		\onslide<+->{显然, 当 $X\neq D$ 时 $f$ 和 $f|_X$ 是不同的函数.}
+	\end{definition}
+	\onslide<+->
+	\begin{example}
+		$f(x)=\cos \pi x$ 在整数集 $\BZ\subset \BR$ 上的限制为
+		\[f|_\BZ(n)=\begin{cases}
+			-1,&n\text{ 是奇数}\\1,&n\text{ 是偶数}
+		\end{cases}=(-1)^n.\]
+	\end{example}
+	\onslide<+->
+	\begin{example}
+		设 $y_1=x,y_2=(\sqrt x)^2$, 则 $y_2$ 的定义域为 $[0,+\infty)$, 且 $\forall x>0,y_1=y_2$.
+		\onslide<+->{因此 $y_2=y_1|_{[0,+\infty)}$.
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{复合函数}
+	\beqskip{4pt}
+	\onslide<+->
+	\begin{definition}
+		对于函数 $f:A\to B,g:B\to C$, 对应 $x\mapsto g[f(x)]$ 定义了函数 $h:A\to C$, 称为函数 $g$ 和 $f$ 的\emph{复合}.
+		\onslide<+->{记作 $h=g\circ f$, 即
+			\[g\circ f: A\sto{f}B\sto{g}C.\]}
+			\vspace{-\baselineskip}
+	\end{definition}
+	\onslide<+->
+	为便于理解, 可用同一记号来表示 $f$ 的因变量和 $g$ 的自变量.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $f(x)=x^2,g(y)=\sin y$, 则 $(g\circ f)(x)=g[f(x)]=\sin(x^2)$.
+			\item $f(x)=\sqrt x,g(y)=\sqrt{1-y}$, 则
+			\[(g\circ f)(x)=g[f(x)]=\sqrt{1-\sqrt x}.\]
+			\onslide<+->{它的定义域为 $[0,1]$, 值域为 $[0,1]$.
+			}
+		\end{enumerate}
+	\end{example}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 求复合函数}
+	\onslide<+->
+	\begin{example}
+		设函数 $f(x)=\begin{cases}
+x+1,&x>1,\\x^2,&x\le 1,\end{cases}, \varphi(x)=x-1$.
+求 $f[\varphi(x)]$ 和 $\varphi[f(x)]$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		求分段函数的复合的做法一般是直接将里面的函数代入到分段函数定义中, 然后求出自变量的范围.
+	\end{analysis}
+\end{frame}
+
+
+\begin{frame}{例题: 求复合函数}
+	\onslide<+->
+	\begin{solution}
+		\begin{align*}
+			f[\varphi(x)]&=\begin{cases}
+				\varphi(x)+1,&\varphi(x)>1\\
+				\varphi(x)^2,&\varphi(x)\le 1
+			\end{cases}\\
+			&\onslide<+->{=\begin{cases}
+				x-1+1,&x-1>1\\
+				(x-1)^2,&x-1\le 1
+			\end{cases}}
+			\onslide<+->{=\begin{cases}
+				x,&x>2,\\
+				(x-1)^2,&x\le 2.
+			\end{cases}}\\
+		\end{align*}
+		\vspace{-\baselineskip}
+		\onslide<+->{
+			\[\varphi[f(x)]=f(x)-1=\begin{cases}
+				x,&x>1,\\
+				x^2-1,&x\le 1.
+			\end{cases}\]
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 求复合函数}
+	\onslide<+->
+	\begin{example}
+		设 $f(x)=\begin{cases}
+			1,&|x|\le 1,\\
+			0,&|x|>1,
+		\end{cases}$ 求 $f[f(x)]$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		当 $|x|\le 1$ 时, $f(x)=1,f[f(x)]=1$.
+		\onslide<+->{当 $|x|>1$ 时, $f(x)=0,f[f(x)]=1$.
+		}\onslide<+->{故 $f[f(x)]=1$.
+		}
+	\end{solution}
+	\onslide<+->
+	\begin{example}
+		设 $f(x)$ 的定义域为 $(0,1]$, $\varphi(x)=1-\ln x$. 求 $f[\varphi(x)]$ 的定义域.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由 $\varphi(x)=1-\ln x\in(0,1]$ 可得 $0\le \ln x<1$, $1\le x<e$, 即 $f[\varphi(x)]$ 的定义域为 $[1,e)$.
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 求复合函数}
+	\onslide<+->
+	\begin{example}
+		设 $f(x)=e^{x^2},f[\varphi(x)]=1-x$, 且 $\varphi(x)\ge 0$. 求 $\varphi(x)$ 的定义域.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		我们先解出 $\varphi(x)$ 再计算它的定义域.
+	\end{analysis}
+	\onslide<+->
+	\begin{solution}
+		由于 $f[\varphi(x)]=e^{\varphi(x)^2}=1-x$, 因此
+			\[\varphi(x)^2=\ln(1-x),\quad \varphi(x)=\sqrt{\ln(1-x)}.\]
+			\onslide<+->{于是 $\ln(1-x)\ge 0$, 即 $1-x\ge 1, x\le 0$. $\varphi(x)$ 的定义域为 $(-\infty,0]$.
+			}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{多重复合函数}
+	\onslide<+->
+	对于两个以上的函数, 我们也可以进行复合.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item \[y=\sin u,\quad u=\sqrt v,\quad v=e^x+1\]
+				的复合是 $y=\sin(\sqrt{e^x+1})$.
+			\item 函数 $y=2^{\arctan(x^2+1)}$ 可以分解为下述三个函数的复合
+				\[y=2^u,\quad u=\arctan v,\quad v=x^2+1.\]
+		\end{enumerate}
+		\vspace{-\baselineskip}
+	\end{example}
+	\onslide<+->
+	这种分解在进行复杂求导时是十分必要的.
+\end{frame}
+
+
+\begin{frame}{反函数}
+	\onslide<+->
+	\begin{definition}
+		设函数 $y=f(x)$ 的定义域为 $D$, 值域为 $Y$. 若函数 $u=g(v)$ 的定义域为 $Y$, 且
+		\[\forall x\in D, g[f(x)]=x,\quad  \forall y\in Y,f[g(y)]=y,\]
+		则称 $g$ 是 $f$ 的\emph{反函数}, 并记做 $g=f^{-1}$ 或 $x=f^{-1}(y)$.
+	\end{definition}
+	\onslide<+->
+	可以看出, 反函数就是把每个元素的像打回到原来的元素.
+	\onslide<+->
+	反函数不一定存在. 例如 $y=x^2$ 没有反函数, 因为 $-1$ 和 $1$ 的像相同. 但是 $y=x^2,x \in [0,+\infty)$ 有反函数 $x=\sqrt y$.
+
+	\onslide<+->
+	反函数存在当且仅当不同的自变量具有不同的函数值, 即:
+		\[x_1\neq x_2\implies f(x_1)\neq f(x_2).\]
+	\onslide<+->
+	此时 $f:D\ra Y$ 是\alert{一一对应}.
+\end{frame}
+
+
+\begin{frame}{反函数}
+	\onslide<+->
+	由于 $(a,b)$ 在 $f$ 的图像上当且仅当 $b=f(a)$, 这等价于 $a=f^{-1}(b)$, 即 $(b,a)$ 在 $f^{-1}$ 的图像上.
+	\onslide<+->
+	故\alert{反函数和原函数的图像关于直线 $y=x$ 对称}.
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis](-2,0)--(2,0);
+			\draw[cstaxis](0,-2)--(0,2);
+			\draw
+				(1.8,-0.2) node {$x$}
+				(-0.2,1.8) node {$y$}
+				(-0.2,0.2) node {$O$}
+				(1.2,-1.3) node[dcolora] {$y=f(x)$}
+				(-1.4,0.9) node[dcolorb] {$y=f^{-1}(x)$}
+				(-1.7,-1.1) node[dcolord] {$y=x$};
+			\draw[cstdash,dcolord] (1.8,1.8)--(-1.8,-1.8);
+			\draw[cstcurve,dcolora,domain=0.2:1.8] plot(\x,{\x-0.4/\x});
+			\draw[cstcurve,dcolorb,domain=0.2:1.8] plot({\x-0.4/\x},\x);
+		\end{tikzpicture}
+	\end{center}
+
+	\onslide<+->
+	若 $f$ 的图像关于直线 $y=x$ 翻转后仍然是一个函数的图像, 那么 $f$ 存在反函数.
+\end{frame}
+
+
+\begin{frame}{例题: 求反函数}
+	\beqskip{4pt}
+	\onslide<+->
+	\begin{example}
+		求函数 $y=\sqrt{\pi+4\arcsin x}$ 的反函数.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		求反函数的时候, 不要忘了反函数的定义域为原函数的值域.
+	\end{analysis}
+	\onslide<+->
+	\begin{solution}
+		\[\pi+4\arcsin x=y^2,\quad \arcsin x=\frac{y^2-\pi}4, \quad x=\sin\left(\frac{y^2-\pi}4\right).\]
+		\onslide<+->{因为 $\pi+4\arcsin x\ge0, \arcsin x\ge -\frac\pi4$, 所以 $x\in [-\frac{\sqrt2}2,1]$.
+		}\onslide<+->{于是
+			\[\arcsin x\in\left[-\frac\pi4,\frac\pi2\right],\quad \pi+4\arcsin x\in [0,3\pi],\quad y\in [0,\sqrt{3\pi}].\]
+		}\onslide<+->{因此题设函数的反函数为 $y=\sin\left(\frac{x^2-\pi}4\right), x\in[0,\sqrt{3\pi}]$.
+		}
+	\end{solution}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 求反函数}
+	\onslide<+->
+	\begin{example}
+		求函数 $y=\begin{cases}
+			x,&x<1,\\
+			x^2,&1\le x\le 4,\\
+			2^x,&x>4
+		\end{cases}$ 的反函数.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		求分段函数反函数时, 需要先确定每一分段对应的函数的值域.
+	\end{analysis}
+	\onslide<+->
+	\begin{solution}
+		\begin{itemize}
+			\item 当 $x<1$ 时, $y=x\in(-\infty,1), x=y$;
+			\item 当 $1\le x\le 4$ 时, $y=x^2\in[1,16], x=\sqrt y$;
+			\item 当 $x>4$ 时, $y=2^x\in(16,+\infty), x=\log_2 y$.
+		\end{itemize}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 求反函数}
+	\onslide<+->
+	\begin{solutionc}
+	因此该函数存在反函数
+		\[y=\begin{cases}
+			x,&x<1,\\
+			\sqrt x,&1\le x\le 16,\\
+			\log_2 x,&x>16.
+		\end{cases}\]
+	\end{solutionc}
+\end{frame}
+

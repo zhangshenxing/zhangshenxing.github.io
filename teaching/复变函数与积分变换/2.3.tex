@@ -338,13 +338,14 @@
 
 	\onslide<+->
 	\begin{center}
-		\renewcommand\arraystretch{1.7}
+		\renewcommand\arraystretch{1.2}
 		\defaultrowcolors
-		\begin{tabular}{|c|c|c|}
-			\tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\
-			整数 $n$&单值&\makecell[c]{$n\ge0$ 时处处解析\\$n<0$ 时除零点外解析}\\
-			分数 $p/q$&$q$ 值&除负实轴和零点外解析\\
-			无理数或虚数&无穷多值&除负实轴和零点外解析
+		\begin{tabular}{|c|c|c|}\hline
+			\tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\\hline
+			&&$n\ge0$ 时处处解析\\
+			\multirow{-2}*{整数 $n$}&\multirow{-2}*{单值}&$n<0$ 时除零点外解析\\\hline
+			分数 $p/q$&$q$ 值&除负实轴和零点外解析\\\hline
+			无理数或虚数&无穷多值&除负实轴和零点外解析\\\hline
 		\end{tabular}
 	\end{center}
 \end{frame}
@@ -363,8 +364,8 @@
 				\onslide<+->{$=e^{\sqrt 2\cdot 2k\pi i}$}
 				\onslide<+->{$=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ$.}
 			\item $i^i=e^{i\Ln i}$
-				\onslide<+->{$\displaystyle=\exp\left[i\cdot\left(2k+\frac12\right)\pi i\right]$}
-				\onslide<+->{$\displaystyle=\exp\left(-2k\pi-\frac12\pi\right)$, $k\in\BZ$.}
+				\onslide<+->{$\displaystyle=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]$}
+				\onslide<+->{$\displaystyle=\exp\left(-2k\pi-\half\pi\right)$, $k\in\BZ$.}
 		\end{enumerate}
 	\end{solution}
 
@@ -507,7 +508,7 @@
 	\[\alert{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
 	\onslide<+->
 	\[\alert{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
-	=-i\tan iz,\quad z\neq \left(k+\frac12\right)\pi i.}\]
+	=-i\tan iz,\quad z\neq \left(k+\half\right)\pi i.}\]
 	\onslide<+->
 	它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
 
@@ -554,7 +555,7 @@
 	\[e^{2iz}-4ie^{iz}-1=0.\]
 	}\onslide<+->{于是 $e^{iz}=(2\pm\sqrt 3)i$,
 	}\onslide<+->{
-		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\frac12\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
+		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 	\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}

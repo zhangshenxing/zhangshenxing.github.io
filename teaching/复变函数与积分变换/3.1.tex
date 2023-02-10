@@ -47,7 +47,7 @@
 	形式地展开
 		\[f(z)\diff z=(u+iv)(\!\diff x+i\diff y)=(u\diff x-v\diff y)+i(u\diff y+v\diff x).\]
 	\vspace{-\baselineskip}
-	
+
 	\onslide<+->
 	\begin{definition}
 		如果下述右侧两个线积分均存在, 则定义
@@ -137,7 +137,7 @@
 	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向.
 	\onslide<+->
 	则 $\diff z=z'(t)\diff t$,
-	
+
 	\onslide<+->
 	\begin{alertblock}{复变函数积分的一般计算方法}
 		\[\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.\]
@@ -165,11 +165,11 @@
 		\begin{flalign*}
 			\int_Cz\diff z&=\int_0^1(3+4i)t\cdot(3+4i)\diff t&\\
 			&\visible<+->{=(3+4i)^2\int_0^1t\diff t}&\\
-			&\visible<+->{=\frac12(3+4i)^2=-\frac72+12i.}&
+			&\visible<+->{=\half (3+4i)^2=-\frac72+12i.}&
 		\end{flalign*}}
 		\vspace{-\baselineskip}
 	\end{solution}
-	
+
 	\onslide<1->
 	\begin{tikzpicture}[overlay,xshift=7cm,yshift=1.3cm]
 		\draw[cstaxis](0,0)--(3,0);
@@ -194,7 +194,7 @@
 		\begin{flalign*}
 			\int_Cz\diff z&=\int_0^3\left(t+\frac{4}9it^2\right)\cdot\left(1+\frac89it\right)\diff t&\\
 			&\visible<+->{=\int_0^3\left(t+\frac43it^2-\frac{32}{81}t^3\right)\diff t}&\\
-			&\visible<+->{=\left(\frac12t^2+\frac49it^3-\frac8{81}t^4\right)\Big|_0^3}
+			&\visible<+->{=\left(\half t^2+\frac49it^3-\frac8{81}t^4\right)\Big|_0^3}
 			\visible<+->{=-\frac72+12i.}&
 		\end{flalign*}}
 		\vspace{-\baselineskip}
@@ -252,7 +252,7 @@
 
 		\onslide<+->{第二段 $z=t+i$, $0\le t\le 1$, $\Re z=t$.
 		}\onslide<+->{因此
-			\[\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12.\]}
+			\[\int_C\Re z\diff z=\int_0^1 t\diff t=\half .\]}
 		\onslide<2->
 		\vspace{-1.4\baselineskip}
 		\begin{center}
@@ -278,7 +278,7 @@
 	而 $f(z)=z$ 的积分则只和起点和终点位置有关, 与路径无关.
 	\onslide<+->
 	原因在于 $f(z)=z$ 是处处解析的, 我们以后会详加解释.
-	
+
 	\onslide<+->
 	\begin{exercise}
 		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\visible<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
@@ -312,7 +312,7 @@
 				\visible<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta.}&&
 			\end{flalign*}
 		}\onslide<+->{当 $n=0$ 时, 该积分值为 $2\pi i$.}
-		
+
 		\vspace{5mm}
 		\onslide<+->{当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.}
 	\end{solution}
@@ -377,7 +377,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 长大不等式的应用*}
+\begin{frame}{例题: 长大不等式的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\lim\limits_{z\to a}(z-a)f(z)=k$, 则

@@ -9,6 +9,8 @@
 \setbeamercolor{subsection in head/foot}{parent=structure}
 \setbeamercolor{seperate line}{use=structure,bg=structure}
 \setbeamercolor{subsection in toc}{use=structure,fg=black,bg=structure!20}
+\setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
+\setbeamercolor{footline}{use=structure,bg=structure.fg!10}
 % Margin
 \setbeamersize{text margin left=0.5em,text margin right=0.5em}
 % Items
@@ -65,7 +67,7 @@
 		\usebeamerfont{author}%
 		\usebeamercolor[fg]{author}%
 		\insertauthor (\insertinstitute)%
-	}%	
+	}%
 	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
 		{\usebeamerfont{institute}\translate{Office}}%
@@ -141,12 +143,13 @@
 }
 % Frametitle
 \setbeamertemplate{frametitle}{%
-	\vskip.5ex\hskip-1em
-	{%
-		\usebeamerfont{frametitle}%
-		\usebeamercolor[fg]{frametitle}%
-		\insertframetitle
-	}\vskip-1ex
+	\vskip-1pt
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=3.4ex,dp=1ex,leftskip=1em,rightskip=0.5em,sep=0pt]{frametitle}
+			\usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle
+		\end{beamercolorbox}%
+	}%
+	\vskip-1.5ex
 	\hbox{%
 		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
 		\end{beamercolorbox}%
@@ -218,7 +221,7 @@
 			leftskip=2ex,%
 			rightskip=2ex,%
 			sep=0pt%
-		]{}%
+		]{footline}%
 			{%
 				\usebeamerfont{title in head/foot}%
 				\ifnum\thepart>0\else%

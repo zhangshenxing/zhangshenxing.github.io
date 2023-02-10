@@ -1,0 +1,108 @@
+\end{frame}
+
+
+\begin{frame}2.5 极限的存在准则•本节中我们将要介绍两个—夹逼和单调有界收敛.由此可以得到重:
+limx\ra0sinxx=1limx\ra\infty1+1xx=e并一些计算方法假设三列an,𝑏n,𝑐n满足条件从某项起an≤𝑐n≤𝑏nlimn\ra\inftyan=limn\ra\infty𝑏n=a𝑐n, 且limn\ra\infty𝑐n=a
+\end{frame}
+
+
+\begin{frame}•证明设从第𝑁0项起,
+an≤𝑐n≤𝑏n. 由极限定义\forall 𝜀>0,∃𝑁1,𝑁2使得当n>𝑁1时有an-a<𝜀; n>𝑁2𝑏n-a<𝜀n>𝑁=max𝑁0,𝑁1,𝑁2-𝜀<an-a≤𝑐n-a≤𝑏n-a<𝜀,即𝑐n-a<𝜀所以limn\ra\infty𝑐n=a夹逼准则(函版本)在自变量的同一化过程中gx,fx,ℎx都且满足:gx≤fx≤ℎxlimgx=limℎx=𝐴limfx=𝐴
+\end{frame}
+
+
+\begin{frame}•例求limn\ra\infty1n3+1+22n3+2+⋯+n2n3+n. 分析注意到这个和无法直接计算, 我们将其进行放缩使变得可估时需要保留子母的最高次项样以证上界极限相等解由于1n3+n≤1n3+𝑖≤1n3,𝑖=1,2,…,n所1n3+1+22n3+2+⋯+n2n3+n≥1+22+⋯+n2n3+n=nn+12n+16n3+n,1n3+1+22n3+2+⋯+n2n3+n≤1+22+⋯+n2n3=nn+12n+16n3.而limn\ra\inftynn+12n+16n3+n=limn\ra\inftynn+12n+16n3=13, 因此夹逼准则知原为13.
+\end{frame}
+
+
+\begin{frame}•例设fx满足fx≤x_2. 证明limx\ra0fx=0.•我们有limx\ra0x_2=limx\ra0-x_2=0和-x_2≤fx≤x_2. 由夹逼准则可知limx\ra0fx=0.•作为的一个应用, 来定理limx\ra0sinxx=1, 即sinx∼x.于sinxx对切x\neq0义且它是偶函因此以将x\ra0等价地转化x\ra0+, 并x限制在0,\pi2范围内讨论三角基本不式tanx>x>sinx>0cosx<sinxx<1.•而limx\ra0cosx=limx\ra01=1, limx\ra0sinxx=1.
+\end{frame}
+
+
+\begin{frame}•在极限过程中,
+我们可以将x\ra0换成任何一个函y=fx\ra0. 由于x\ra0当且仅arcsinx\ra0, 因此
+sinarcsinx∼arcsinxarcsinx\ra0,•即
+arcsinx∼xx\ra0.•例limx\ra0tanxx=limx\ra0sinxx⋅1cosx=limx\ra0sinxx⋅limx\ra01cosx=1⋅1=1, tanx∼x(x\ra0). 同理arctanx∼xx\ra0.
+\end{frame}
+
+
+\begin{frame}•例limx\ra01-cosxx_2=limx\ra02sin2x_2x_2=limx\ra02x_22x_2=12. 这里我们利用了极限的复合运算性质以及等价无穷小替换. 由上述讨论得到一些: 当x\ra0时,
+sinx∼tanx~arcsinx~arctanx~x,1-cosx~12x_2.•需要注意第个重和limx\ra\inftysinxx=0差别有
+limx\ra0sinxx=limx\ra\inftyxsin1x=1,limx\ra\inftysinxx=limx\ra0xsin1x=0.
+\end{frame}
+
+
+\begin{frame}
+•例limx\rax0sinx-sinx0x-x0=limx\rax02sinx-x02cosx+x02x-x0=limx\rax0sinx-x02x-x02⋅limx\rax0cosx+x02=cosx0.•也可以设y=x+x0, 则
+sinx-sinx0=siny+x0-sinx0=sinycosx0+cosy-1sinx0.•由于limy\ra0sinyy=1,limy\ra01-cosyy=limy\ra0y2=0, 因此
+limx\rax0sinx-sinx0x-x0=cosx0limy\ra0sinyy-sinx0limy\ra01-cosyy=cosx0.
+\end{frame}
+
+
+\begin{frame}•注记当我们把要求极限的函拆成两项之和时, 如果最终都存在那么这种分是合理. 有一个不此需使用其它方法来例x0\neq0limx\rax0sinx-sinx0x-x0=limx\rax0sinxx-x0-limx\rax0sinx0x-x0=\infty-\infty=0对limx\ra0tan3x⋅1-cosxarcsin5x3=limx\ra03x⋅x_225x3=3250.
+\end{frame}
+
+
+\begin{frame}•单调有界收敛准则列一定. 这里, xn增是指: x_1≤x_2≤⋯≤xn≤⋯•xn减x_1≥x_2≥⋯≥xn≥⋯•推论如果xn上𝑀limn\ra\inftyxn存在且limn\ra\inftyxn≤𝑀xn𝑀limn\ra\inftyxnlimn\ra\inftyxn≥𝑀例设xn满足0<x𝑖<\pi,xn+1=sinxn证明limn\ra\inftyxn并求该极限解容易看出xn≥0当n≥2时xn+1=sinxn≤xnxn由可知limn\ra\inftyxn为𝐴递公式两边同取得𝐴=sin𝐴𝐴=0. 故limn\ra\inftyxn=0.
+\end{frame}
+
+
+\begin{frame}•例设x_1=2,xn+1=2+xn,n\inℕ+. 证明该列极限存在并求其值分析这种递归的问题一般为两步:1. xn是单调有界, 如果不能直接话需要使用纳法然后由收敛准则可知2. 𝐴代入推公式中解方程得实际我们以通过计算前几项来判断它增还减(2)𝐴必定个上或1).•于x_2=2+2>x_1=2, 因此猜测xn𝐴=2+𝐴,𝐴=2, xn≤2.
+\end{frame}
+
+
+\begin{frame}•解我们归纳地证明2≥xn+1≥xn. •(1) n=1时, 由2>x_2=2+2>x_1=2可知成立2) 假设2>x𝑘>x𝑘-1, 则
+x𝑘+1-x𝑘=2+x𝑘-2+x𝑘-1=x𝑘-x𝑘-12+x𝑘+2+x𝑘-1>0•且x𝑘+1=2+x𝑘<2+2=2.•法,2>xn+1>xn对任意n因此xn单增有界调收敛准极限存在为𝐴递推公式两边同取得𝐴=2+𝐴,𝐴2-𝐴-2=0,𝐴=2. 故limn\ra\inftyxn=2.
+\end{frame}
+
+
+\begin{frame}•第二个重要极限
+limx\ra\infty1+1xx=e.证明我们先讨论列情形limn\ra\infty1+1nn=e. 设an=1+1nn, 则由几何-算术平均不等式
+an=1+1nn⋅1<1+1n+⋯+1+1nn项+1n+1n+1=1+1n+1n+1=an+1知该单增
+\end{frame}
+
+
+\begin{frame}•由121+12nn<12+1+12n+⋯+1+12nn项n+1n+1=1知a2n-1<a2n=1+12n2n<4. 从而该列有界.单调收敛准则可极限存在, 记e=limn\ra\infty1+1nn
+\end{frame}
+
+
+\begin{frame}•对于函形式, 设fx=1+1xx,n=x. 由
+fx≤1+1nn+1=n+1nan,fx≥1+1n+1n=n+1n+2an+1以及夹逼准则
+可知limx\ra+\inftyfx=e最后令y=-x-1, limx\ra-\infty1+1xx=limy\ra+\inftyyy+1-y-1=limy\ra+\infty1+1yy⋅y+1y=limy\ra+\infty1+1yy⋅limy\ra+\inftyy+1y=e⋅1=e.
+\end{frame}
+
+
+\begin{frame}•以e为底的对称自然,
+记lnxe被.e=2.718281828459045⋯是无理后续我们会看到e=Σn=1\infty1n!=1+11!+12!+⋯+1n!+⋯.•由于2n=1+1n≥Cn1=n因此4n≥n2. 当4n≤x<4n+1时x≥n2>lnxln4-12,0≤ln1+xx≤ln2x⋅ln16lnx-ln42≤lnx+ln2ln16lnx-ln42.•夹逼准则limx\ra\inftyln1+xx=0,limx\ra01+1xx=limx\ra\infty1+x_1x=1.•需要注意第二个重极限和该差别:
+limx\ra01+x_1x=limx\ra\infty1+1xx=e,limx\ra\infty1+x_1x=limx\ra01+1xx=1.
+\end{frame}
+
+
+\begin{frame}•例limn\ra\inftyn+1n-1n=limn\ra\infty1+1(n-1)/2n=limn\ra\infty1+1(n-1)/2n-12×2⋅n+1n-1=e2.•limx\ra01-5x_2x=limy\ra01+y-10y=limy\ra01+y1y-10=e-10.•这种极限被称为1\infty型不定式. 一般要用到第二重, 我们将会在节介绍如何处理该类最后来证明单调有界收敛准则和前面遇的各命题个本质区别所说概念性以及夹逼等，仅考虑范围时仍然成立而内是原因域完备
+\end{frame}
+
+
+\begin{frame}•定义设𝑆是一个集合, 𝑅⊆𝑆×𝑆. 如果有自反性: \forall a\in𝑆,a,a\in𝑅对称\forall a,𝑏\in𝑆,a,𝑏\in𝑅\ra𝑏,a\in𝑅传递\forall a,𝑏,𝑐\in𝑆,a,𝑏\in𝑅且𝑏,𝑐\in𝑅\raa,𝑐\in𝑅则𝑅𝑆上的等价关系x=y\in𝑆x,y\in𝑅我们得到新𝑆/𝑅=xx\in𝑆之为𝑆于𝑅商例𝑆1=ℝ/ℤ张正方形纸边粘什么?
+\end{frame}
+
+
+\begin{frame}•定义设xn是一个有理列. 如果对于任意𝜀>0,∃𝑁使得当𝑚,n>𝑁时, x𝑚-xn<𝜀则称它柯西xn,yn两𝜀>0,∃𝑁n>𝑁xn-yn<𝜀这等价例0.3,0.33,0.333,0.333,…和0.2,0.32,0.332,0.3332,…实集合为
+ℝ=所有柯西数列所有柯西数列的等价关系.
+\end{frame}
+
+
+\begin{frame}•设x=xn,y=yn, 定义x+y=xn+yn,x⋅y=[{xn⋅yn}].•f:\BQ\raℝ,x↦x,x,x,…. 容易看出不同的x对应常值列是等价因此f单射\BQ⊆ℝ. 证明如果于𝑋>0, 存在𝑚,n>𝑋使得x𝑚≥0,xn≤0, 则xn和0n充分大时xn>yn我们称x>y那么x>0⟺-x<0.
+\end{frame}
+
+
+\begin{frame}•定理实的柯西序列一收敛. 证明设an=xn,𝑘,an是那么对于𝜀=12n>0, 存在正整𝑁n使得an-a𝑚<𝜀,\forall n,𝑚≥𝑁n按照义, 𝑀nหxn,𝑘-
+\end{frame}
+
+
+\begin{frame}•定理单调有界列一收敛. 证明我们只考虑增情形, 减类似设xn是且存在𝑀0使得\forall n,xn<𝑀0. 对于任意𝜀>0, 最小的𝑘\inℕ[𝑀0-(𝑘+1)𝜀,𝑀0-𝑘𝜀)区间内该点那么\forall n,xn<𝑀=𝑀0-𝑘𝜀x𝑁>𝑀-𝜀则\forall 𝑚,n>𝑁,x𝑚-xn<𝜀因此{xn}柯西从而极限后来实集不可无穷合
+数
+学（下）•证明由于tan\pix-\pi2:0,1\raℝ是一对应, 因此ℝ=0,1.•每个x\in0,1, 令0.x_1x_2⋯为其十进制展开中有限小0.x_1⋯xn-1xn=0.x_1⋯xn-1yn999⋯,yn=xn-1.•假设0,1只可元素我们将排成列:
+a1=a1,1a1,2a1,3…
+a2=a2,1a2,2a2,3…
+a3=a3,1a3,2a3,3…
+⋮•a𝑖,𝑖存在整1≤𝑏𝑖≤9,𝑏𝑖\neqa𝑖,𝑖. 实0.𝑏1𝑏2𝑏3⋯不等这的任意矛盾! ℝ>ℤℝ无穷集

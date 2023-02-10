@@ -1,0 +1,345 @@
+\section{函数的几种特征}
+
+\subsection{有界性}
+
+\begin{frame}{有界和无界}
+	\onslide<+->
+	\begin{definition}
+		设函数 $f(x)$ 的定义域为 $D$.
+		若 $\exists M>0$ 使得 $\forall x\in D, |f(x)|\le M$, 则称 $f(x)$ \emph{有界}. 否则称 $f(x)$ \emph{无界}.
+	\end{definition}
+	\onslide<+->
+	$f(x)$ 有界等价于它的值域包含在某个有限闭区间 $[m,M]$ 内.
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis] (-3,0)--(3,0);
+			\draw[cstaxis] (0,-2)--(0,2);
+			\draw[cstcurve,dcolora,smooth,domain=-1:2] plot coordinates {(-2.8,-0.8) (-2.1,-0.9) (-1.4,-0.9) (-0.7, 0.5) (0,1) (0.7,0.5) (1.4,1) (2.1,0.9) (2.8,0.6)};
+			\draw[cstdash,dcolord] (-3,-1.1)--(3,-1.1);
+			\draw[cstdash,dcolord] (-3,1.1)--(3,1.1);
+			\draw
+				(-1.7,0.5) node[dcolora] {$y=f(x)$}
+				(2.3,1.4) node[dcolord] {$y=M$}
+				(2.3,-1.4) node[dcolord] {$y=m$}
+				(-0.2,-0.2) node {$O$}
+				(2.8,-0.2) node {$x$}
+				(-0.2,1.8) node {$y$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{有界性的证明}
+	\beqskip{8pt}
+	\onslide<+->
+	判断有界或无界的方法是:
+	\onslide<+->
+	\begin{alertblock}{有界性和无界性的证明}
+		\begin{enumerate}
+			\item 有界: 找到 $M$ 使得 $\forall x\in D, |f(x)|\le M$.
+			\item 无界: $\forall M>0$, 构造 $x_M\in D$ 使得 $|f(x_M)|\ge M$. \onslide<+->{实际上只需对任意充分大的正整数 $M$, 构造这样的 $x_M$.}
+		\end{enumerate}
+	\end{alertblock}
+	\onslide<+->
+	\begin{example}
+		$f(x)=\dfrac1{x^2-1},x\in(1,+\infty)$.
+		\onslide<+->{对任意正整数 $M$, 令
+			\[x_M=\sqrt{1+\dfrac1M}\in(1,+\infty),\]
+		则 $f(x_M)=M$.
+		}\onslide<+->{因此 $f(x)$ 无界.}
+	\end{example}
+	\onslide<+->
+	若 $f$ 的限制 $f|_X$ 有界 (或无界), 则称 \emph{$f$ 在 $X$ 上有界 (或无界)}.
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{上确界和下确界\noexer}
+	\onslide<+->
+	\begin{definition}
+		\begin{enumerate}
+			\item 若 $\exists m$ 使得 $\forall x\in D, f(x)\ge m$, 则称 $f(x)$ \emph{下有界}.
+			\item 若 $\exists M$ 使得 $\forall x\in D, f(x)\le M$, 则称 $f(x)$ \emph{上有界}.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	$f(x)$ 有界 $\iff$ $f(x)$ 上有界且下有界.
+
+	\onslide<+->
+	函数的上下界是不唯一的.
+	\onslide<+->
+	\begin{definition}
+		\begin{enumerate}
+			\item 在函数 $f(x)$ 所有的上界中, 存在一个最小的上界, 称之为\emph{上确界 $\sup f$}.
+			\onslide<+->{若 $f(x)$ 无上界, 记 $\sup f=+\infty$.}
+			\item 在函数 $f(x)$ 所有的下界中, 存在一个最大的下界, 称之为\emph{下确界 $\inf f$}.
+			\onslide<+->{若 $f(x)$ 无下界, 记 $\inf f=-\infty$.}
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	注意, \alert{上确界不等于最大值}, 因为这个上确界不一定能取到.
+	\onslide<+->
+	但如果存在最大值, 则二者是相等的.
+	\onslide<+->
+	下确界与最小值的关系类似.
+\end{frame}
+
+
+\subsection{单调性}
+
+\begin{frame}{单调函数}
+	\onslide<+->
+	\begin{definition}
+		设函数 $f(x)$ 的定义域为 $D$.
+		\begin{enumerate}
+			\item 若 $\forall x_1<x_2\in D$, 有 $f(x_1)\le f(x_2)$, 则称 $f$ \emph{单调不减}.
+			\item 若 $\forall x_1<x_2\in D$, 有 $f(x_1)\ge f(x_2)$, 则称 $f$ \emph{单调不增}.
+			\item 若 $\forall x_1<x_2\in D$, 有 $f(x_1)<f(x_2)$, 则称 $f$ \emph{单调递增}.
+			\item 若 $\forall x_1<x_2\in D$, 有 $f(x_1)>f(x_2)$, 则称 $f$ \emph{单调递减}.
+			\onslide<+->{\begin{tikzpicture}[overlay,xshift=-0.1cm,yshift=0.4cm]
+				\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (0,0.5)--(0,-0.5);
+				\draw (0.6,0) node[dcolorb,align=center] {\emph{单调}\\\emph{函数}};
+			\end{tikzpicture}}
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	某些教材则分别称这些概念为单调递增、单调递减、严格单调递增、严格单调递减, 注意甄别.
+\end{frame}
+
+
+\begin{frame}{单调函数的运算\noexer}
+	\onslide<+->
+	单调函数的复合和四则运算有下述结论.
+	\onslide<+->
+	\begin{block}{结论}
+		\begin{enumerate}
+			\item 以下命题等价:
+				\begin{itemize}
+					\item $f(x)$ 单调递增;
+					\item $-f(x)$ 单调递减;
+					\item $f(-x)$ 单调递减;
+					\item $-f(-x)$ 单调递增.
+				\end{itemize}
+			\item 设 $f_1,f_2$ 单调递增, $g_1,g_2$ 单调递减, 则
+				\begin{itemize}
+					\item $f_1+f_2, f_1\circ f_2, g_1\circ g_2$ 单调递增;
+					\item $f_1\circ g_1, g_1\circ f_1, g_1+g_2$ 单调递减;
+					\item 若 $f_1,f_2$ 恒大于零, 则 $f_1f_2$ 单调递增.
+				\end{itemize}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{单调函数的反函数}
+	\onslide<+->
+	\begin{theorem}
+		若 $f(x)$ 是单调函数, 则 $f(x)$ 有反函数, 且它的单调性和 $f(x)$ 相同.
+	\end{theorem}
+	\onslide<+->
+	\begin{proof*}
+		我们只证明单调递增情形, 单调递减情形类似.
+
+		\onslide<+->{$\forall x_1\neq x_2\in D$, 要么 $x_1<x_2$, 要么 $x_1>x_2$.
+		}\onslide<+->{从而要么 $f(x_1)<f(x_2)$, 要么 $f(x_1)>f(x_2)$.
+		}\onslide<+->{总之, $f(x_1)\neq f(x_2)$.
+		}\onslide<+->{因此 $f$ 是单射, 故 $f$ 有反函数.}
+
+		\onslide<+->{设 $y_1=f(x_1)<y_2=f(x_2)$.
+		}\onslide<+->{若 $x_1\ge x_2$, 则 $f(x_1)\ge f(x_2), y_1\ge y_2$, 矛盾!
+		}\onslide<+->{所以 $x_1=f^{-1}(y_1)<x_2=f^{-1}(y_2)$, 故 $f^{-1}$ 单调递增.\qedhere}
+	\end{proof*}
+\end{frame}
+
+
+\begin{frame}{函数在区间上的单调性}
+	\onslide<+->
+	很多时候, 函数虽然在整个定义域上不单调, 但在一段区间 $I\subseteq D$ 上是单调的.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $\sin x$ 在区间 $\left[-\dfrac\pi2,\dfrac\pi2\right]$ 上单调递增, 且值域为 $[-1,1]$. 
+			\onslide<+->{因此存在单调递增的反函数
+				\[\arcsin x: [-1,1]\ra \left[-\frac\pi2,\frac\pi2\right].\]}
+			\vspace{-\baselineskip}
+			\item $e^{-x}$ 在 $(-\infty, +\infty)$ 上单调递减, 且值域为 $(0, +\infty)$. 
+			\onslide<+->{因此存在单调递减的反函数
+				\[-\ln x: (0, +\infty) \ra (-\infty, +\infty).\]}
+		\end{enumerate}
+		\vspace{-\baselineskip}
+	\end{example}
+\end{frame}
+
+
+\subsection{奇偶性}
+
+\begin{frame}{奇函数和偶函数}
+	\onslide<+->
+	\begin{definition}
+		设函数 $f(x)$ 的\alert{定义域 $D$ 关于原点对称}.
+		\begin{enumerate}
+			\item 若 $\forall x \in D$, 有 $f(-x)=f(x)$, 则称 $f(x)$ 是\emph{偶函数}.
+			\item 若 $\forall x \in D$, 有 $f(-x)=-f(x)$, 则称 $f(x)$ 是\emph{奇函数}.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $x^n$ ($n$ 是偶数), $\cos x$, $|x|$, $1$ 是偶函数.
+			\item $x^n$ ($n$ 是奇数), $\sin x$, $\sgn x$, $e^x-e^{-x}$ 是奇函数.
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	\begin{block}{结论}
+		偶函数的图像关于 $y$ 轴轴对称, 奇函数的图像关于原点中心对称.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{例题: 奇函数和偶函数}
+	\onslide<+->
+	\begin{example}
+		设 $a>0, a\neq 1, f(x)=\log_a\left(\dfrac{x+1}{x-1}\right)$, 
+		\onslide<+->{则
+			\[\dfrac{x-1}{x+1}>0,\qquad x\in(-\infty,-1)\cup(1,+\infty).\]
+		}\onslide<+->{因此它的定义域关于原点对称.
+		}\onslide<+->{由于
+			\[\resizet{1}{$\displaystyle f(-x)=\log_a\left(\frac{-x+1}{-x-1}\right)
+			 	=\log_a\left(\frac{x-1}{x+1}\right)
+				=-\log_a\left(\frac{x+1}{x-1}\right)=-f(x),$}\]
+		}\onslide<+->{因此 $f(x)$ 是奇函数.}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 奇函数和偶函数}
+	\onslide<+->
+	\begin{example}
+		设 $a>0, a\neq 1, f(x)=\dfrac{1-a^x}{1+a^x}$, 
+		\onslide<+->{则它的定义域为 $(-\infty,+\infty)$.
+		}\onslide<+->{由于
+			\[f(-x)=\frac{1-a^{-x}}{1+a^{-x}}
+				=\frac{a^x-1}{a^x+1}=-f(x),\]
+		}\onslide<+->{因此 $f(x)$ 是奇函数.
+		}\onslide<+->{事实上它是上一例子的反函数.}
+	\end{example}
+	\onslide<+->
+	\begin{thinking}
+		设 $[x]$ 是取整函数, 函数 $f(x)=[x]+\dfrac12$ 的奇偶性是怎样的?
+	\end{thinking}
+	\onslide<+->
+	\begin{answer}
+		$f(x)$ 既不是奇函数也不是偶函数.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{奇函数和偶函数的运算\noexer}
+	\onslide<+->
+	\begin{block}{结论}
+		设 $f,f_1,f_2$ 是奇函数, $g,g_1,g_2$ 是偶函数.
+		\begin{enumerate}
+			\item 设 $I\subseteq D_f$ 关于原点对称, 则 $f|_I$ 是奇函数, $g|_I$ 是偶函数.
+			\item 如果 $f$ 有反函数, 则 $f^{-1}$ 也是奇函数.
+			\item $g$ 不存在反函数 (除非定义域是 $0$).
+			\item $f_1f_2, g_1g_2, g\circ f$ 是偶函数.
+			\item $fg, f_1\circ f_2$ 是奇函数.
+			\item 设 $h$ 是任一函数, 则 $h\circ g$ 是偶函数.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{函数可分解为奇函数与偶函数之和\noexer}
+	\beqskip{6pt}
+	\onslide<+->
+	\begin{block}{结论}
+		若函数 $f(x)$ 的定义域关于原点对称, 则 $f(x)$ 可以唯一地表示成一个偶函数和一个奇函数之和.
+	\end{block}
+	\onslide<+->
+	\begin{proof*}
+		设 $f_1(x)=\dfrac{f(x)+f(-x)}2, f_2(x)=\dfrac{f(x)-f(-x)}2$, 
+		\onslide<+->{则它们的定义域和 $f(x)$ 的定义域相同, 且
+			\[f_1(-x)=f_1(x),\qquad f_2(-x)=-f_2(x).\]
+		}\onslide<+->{因此 $f_1(x)$ 是偶函数, $f_2(x)$ 是奇函数.}
+
+		\onslide<+->{如果 $f(x)=g_1(x)+g_2(x)$, 其中 $g_1(x)$ 是偶函数, $g_2(x)$ 是奇函数, 
+		}\onslide<+->{则 $f(-x)=g_1(x)-g_2(x)$, 
+		}\onslide<+->{从而 $g_1(x)=\dfrac{f(x)+f(-x)}2=f_1(x), g_2(x)=f_2(x)$.
+		}\onslide<+->{因此这种拆分是唯一的.\qedhere}
+	\end{proof*}
+	\endgroup
+\end{frame}
+
+
+\subsection{周期性}
+
+\begin{frame}{周期函数}
+	\onslide<+->
+	\begin{definition}
+		设函数 $f(x)$ 的定义域为 $D$.
+		\onslide<+->{若 $\exists T\neq 0$ 使得 $\forall x\in D$, 有 $x+T\in D$ 和 $f(x+T)=f(x)$, 则称 $f(x)$ 是\emph{周期函数}, $T$ 是它的一个\emph{周期}.}
+	\end{definition}
+	\onslide<+->
+	周期函数的图像可以由它在任意一段长为 $|T|$ 的区间上的图像水平逐段平移得到.
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $y=\sin(\omega x), \omega\neq 0$ 是周期函数, 周期为 $\dfrac{2k\pi}{\omega},k\in\BZ$.
+			\item 常数函数 $y=C$. \onslide<+->{任意非零实数都是它的周期.}
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	若 $T$ 是 $f(x)$ 的一个周期, 则显然 $\pm T,\pm2T, \pm3T, \dots$ 都是它的周期.
+	\onslide<+->
+	对于很多周期函数而言, 存在最小的一个正周期, 称之为\emph{最小正周期}, 简称为它的\emph{周期}.
+\end{frame}
+
+
+\begin{frame}{周期函数的性质\noexer}
+	\beqskip{9pt}
+	\onslide<+->
+	\begin{example}
+		狄利克雷函数是指
+			\[D(x)=\begin{cases}
+				1,&x\in \BQ;\\
+				0,&x\notin \BQ.
+			\end{cases}\]
+		\onslide<+->{不难看出, 任意有理数都是它的周期.}
+	\end{example}
+	\onslide<+->
+	\begin{block}{结论}
+		设 $f$ 是周期函数, $g$ 是任一函数.
+		\begin{enumerate}
+			\item $g\circ f$ 是周期函数.
+			\item $f$ 不是单调函数.
+			\item $f$ 不存在反函数.
+			\item 如果 $f$ 在一段长为周期的区间上有界, 则 $f$ 是有界函数.
+		\end{enumerate}
+	\end{block}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 函数的特征}
+	\beqskip{6pt}
+	\onslide<+->
+	\begin{example}
+		函数 $f(x)=|x\cos x| e^{\cos x}$ 在 $\BR$ 上是\fillbrace{\visible<3->{D}}.
+		\xx{有界函数}{单调函数}{周期函数}{偶函数}
+	\end{example}
+	\onslide<+->
+	\begin{solution*}
+		由于 $|x\cos x|$ 和 $e^{\cos x}$ 都是偶函数, 因此 $f(x)$ 是偶函数, 选 D.
+	
+		\onslide<4->{对于任意正整数 $M$,
+			\[f(2M\pi)=2M\pi e>M,\]
+		所以 $f(x)$ 无界.}
+
+		\onslide<5->{由于 $f(0)=0, f(\pi)=\frac\pi e, f\left(\frac{3\pi}2\right)=0$, 因此 $f(x)$ 不单调.}
+
+		\onslide<6->{若 $T>0$ 是 $f(x)$ 的周期, 则由 $x \in[0,T)$ 时, $f(x)\le Te$ 可知 $f(x)$ 有界, 矛盾!}
+	\end{solution*}
+	\endgroup
+\end{frame}

@@ -12,7 +12,7 @@
 		\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 		\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
 	\end{block}
-	
+
 	\onslide<+->
 	\begin{block}{位移性质}
 		\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
@@ -31,7 +31,7 @@
 		\end{align*}
 		\onslide<+->{逆变换情形类似可得.\qedhere}
 	\end{proof}
-	
+
 	\onslide<+->
 	由此可得
 	\[\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
@@ -137,7 +137,7 @@
 	\onslide<+->
 	\begin{alertblock}{常见傅里叶变换汇总 I}
 		\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
-		\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]	
+		\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
 		\begin{align*}
 		\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 		\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
@@ -153,8 +153,8 @@
 \end{frame}
 
 
-\subsection{卷积}
-\begin{frame}{卷积}
+\subsection{卷积*}
+\begin{frame}{卷积\noexer}
 	\onslide<+->
 	\begin{definition}
 		$f_1(t),f_2(t)$ 的\emph{卷积}是指
@@ -172,7 +172,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 计算卷积}
+\begin{frame}{例题: 计算卷积\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$. 求 $f_1\ast f_2$.
@@ -191,7 +191,7 @@
 \end{frame}
 
 
-\begin{frame}{卷积定理}
+\begin{frame}{卷积定理\noexer}
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{block}{卷积定理}
@@ -214,7 +214,7 @@
 \end{frame}
 
 
-\begin{frame}{卷积的应用}
+\begin{frame}{卷积的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle	I=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin (\omega/3)}{\omega/3}\diff\omega$.
@@ -232,7 +232,7 @@
 \end{frame}
 
 
-\begin{frame}{卷积的应用}
+\begin{frame}{卷积的应用\noexer}
 	\onslide<+->
 	\begin{solutionc}
 			我们之前计算过
@@ -245,15 +245,15 @@
 		}\onslide<+->{
 			\begin{align*}
 				\msf^{-1}[FG](0)&=(f\ast g)(0)\\
-				&=\int_{-\infty}^{+\infty}f(-t)g(t)\diff t=\frac12\int_{-1}^1 g(t)\diff t=\frac12,
+				&=\int_{-\infty}^{+\infty}f(-t)g(t)\diff t=\half\int_{-1}^1 g(t)\diff t=\half ,
 			\end{align*}
 		}\onslide<+->{故 $I=2\pi\msf^{-1}[FG](0)=\pi$.}
 	\end{solutionc}
 \end{frame}
 
 
-\subsection{傅里叶变换的应用}
-\begin{frame}{使用傅里叶变换解微积分方程}
+\subsection{傅里叶变换的应用*}
+\begin{frame}{使用傅里叶变换解微积分方程\noexer}
 	\begin{center}
 		\begin{tikzpicture}[node distance=40pt]
 			\node[cstnodeg] (a){微分方程或积分方程};
@@ -269,7 +269,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 使用傅里叶变换解微积分方程}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
@@ -298,7 +298,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 使用傅里叶变换解微积分方程}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\onslide<+->
 	\begin{example}
 		解方程 $y''(t)-y(t)=0$.

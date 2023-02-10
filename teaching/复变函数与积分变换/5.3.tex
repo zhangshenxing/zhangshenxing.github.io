@@ -2,16 +2,18 @@
 
 \subsection{正弦余弦的有理函数的积分}
 
-\begin{frame}{形如 \resizet{0.9}{$\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta$} 的积分}
+\begin{frame}{形如 \raisebox{2pt}{\resizet{0.85}{$\displaystyle\int_0^{2\pi}$}}$R(\cos\theta,\sin\theta)\diff\theta$ 的积分\noexer}
 	\onslide<+->
 	本节中我们将对若干种在实变中难以计算的定积分和广义积分使用复变函数和留数的技巧进行计算.
+	\onslide<+->
+	本节内容不作考试要求.
 
 	\onslide<+->
 	考虑 $\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta$, 其中 $R$ 是一个有理函数.
 	\onslide<+->
 	令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
 	\onslide<+->
-	\[\cos\theta=\frac12\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
+	\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
 	\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 	\onslide<+->
 	\[\alert{\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta=\oint_{|z|=1}R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\diff z.}\]
@@ -20,7 +22,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 第一类积分}
+\begin{frame}{例题: 第一类积分\noexer}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
@@ -30,7 +32,7 @@
 	\begin{solution}
 		令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
 		\onslide<+->{
-			\[\cos\theta=\frac12\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
+			\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
 			\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 			\vspace{-\baselineskip}
 		}\onslide<+->{
@@ -45,7 +47,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solutionc}
 		设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
@@ -66,7 +68,7 @@
 
 \subsection{有理函数的广义积分}
 
-\begin{frame}{形如 \resizet{0.9}{$\displaystyle\int_{-\infty}^{+\infty}R(x)\diff x$} 的积分}
+\begin{frame}{形如 \raisebox{2pt}{\resizet{0.85}{$\displaystyle\int_{-\infty}^{+\infty}$}}$R(x)\diff x$ 的积分\noexer}
 	\onslide<+->
 	考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
 	\onslide<+->
@@ -94,7 +96,7 @@
 \end{frame}
 
 
-\begin{frame}{形如 \resizet{0.9}{$\displaystyle\int_{-\infty}^{+\infty}R(x)\diff x$} 的积分}
+\begin{frame}{形如 \raisebox{2pt}{\resizet{0.85}{$\displaystyle\int_{-\infty}^{+\infty}$}}$R(x)\diff x$ 的积分\noexer}
 	\onslide<+->
 	由于 $P(x)$ 分母次数比分子至少高 $2$ 次,
 	\onslide<+->
@@ -107,7 +109,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3},a>0$.
@@ -120,7 +122,7 @@
 		\onslide<+->{
 			\begin{align*}
 			\Res[f(z),ai]&=\frac1{2!}\lim_{z\to ai}\left[\frac1{(z+ai)^3}\right]''\\
-			&=\frac12\lim_{z\to ai}\frac{12}{(z+ai)^5}=\frac{3}{16a^5i},
+			&=\half\lim_{z\to ai}\frac{12}{(z+ai)^5}=\frac{3}{16a^5i},
 			\end{align*}
 		}\onslide<+->{故
 			\[\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3}
@@ -133,8 +135,8 @@
 
 \subsection{有理函数与三角函数之积的广义积分}
 
-\begin{frame}{形如 \resizet{0.9}{$\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$,
-	$\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$} 的积分}
+\begin{frame}{形如 \raisebox{2pt}{\resizet{0.85}{$\displaystyle\int_{-\infty}^{+\infty}$}}$R(x)\cos{\lambda x}\diff x$,
+	\raisebox{2pt}{\resizet{0.85}{$\displaystyle\int_{-\infty}^{+\infty}$}}$R(x)\sin{\lambda x}\diff x$ 的积分\noexer}
 	\onslide<+->
 	考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$,
 	$\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
@@ -147,13 +149,13 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\beqskip{2pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}, a>0$.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		$f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
@@ -171,10 +173,10 @@
 
 \subsection{其它例子}
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	最后我们再来看一个例子.
-	
+
 	\onslide<+->
 	\begin{example}
 		求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x,0<p<1$.
@@ -182,7 +184,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\eqtxt{令 $x=e^t$}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
+		\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 		\onslide<+->{考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 		\begin{center}
 			\begin{tikzpicture}
@@ -208,7 +210,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solutionc}
 			由于 $l:z=t+2\pi i,-R\le t\le R$,
@@ -226,7 +228,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用}
+\begin{frame}{例题: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solutionc}
 		由于

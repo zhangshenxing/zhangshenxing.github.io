@@ -47,7 +47,7 @@
 		}\onslide<+->{则
 			\begin{align*}
 			&\peq\abs{\oint_C\frac{f(z)}{z-z_0}\diff z-2\pi i f(z_0)}
-			\eqtxt{复合闭路定理}\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\diff z-2\pi i f(z_0)}\\
+			\xto{\text{复合闭路定理}}\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\diff z-2\pi i f(z_0)}\\
 			&\visible<+->{=\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\diff z-\oint_\Gamma\frac{f(z_0)}{z-z_0}\diff z}
 			=\abs{\oint_\Gamma\frac{f(z)-f(z_0)}{z-z_0}\diff z}}\\
 			&\visible<+->{\le \frac\varepsilon \delta\cdot 2\pi \delta=2\pi \varepsilon.}
@@ -230,7 +230,7 @@
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		由于 $\cos(\pi z)$ 处处解析,

@@ -5,7 +5,7 @@
 \begin{frame}{函数项级数与幂级数}
 	\onslide<+->
 	复变函数级数与实变量函数级数也是类似的.
-	
+
 	\onslide<+->
 	\begin{definition}
 		\begin{itemize}
@@ -32,7 +32,7 @@
 			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
 		\end{enumerate}
 	\end{block}
-	
+
 	\onslide<+->
 	\begin{proof}
 		\onslide<+->{\enumnum1 因为级数收敛, 所以 $\lim\limits_{n\to\infty}c_n z_0^n=0$.
@@ -58,7 +58,7 @@
 	\end{itemize}
 	\onslide<+->
 	我们称 $R$ 为该幂级数的\emph{收敛半径}.
-	
+
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -149,7 +149,7 @@
 \end{frame}
 
 
-% \begin{frame}{典型例题: 收敛半径的计算*}
+% \begin{frame}{典型例题: 收敛半径的计算\noexer}
 % \onslide<+->
 % \begin{example}
 % 求幂级数 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 的收敛半径并讨论在收敛圆周上的情形, 其中 $p\in\BR$.
@@ -168,7 +168,7 @@
 % \end{frame}
 
 
-% \begin{frame}{典型例题: 收敛半径的计算*}
+% \begin{frame}{典型例题: 收敛半径的计算\noexer}
 % \onslide<+->
 % 回忆\emph{狄利克雷判别法}: 若 $\set{a_n}_{n\ge 1}$ 部分和有界, 实数项数列 $\set{b_n}_{n\ge 1}$ 单调趋于 $0$, 则 $\suml_{n=1}^\infty a_nb_n$ 收敛.
 
@@ -198,7 +198,7 @@
 		\[(f\pm g)(z)=\sum_{n=0}^\infty (a_n\pm b_n)z^n,\quad
 		(fg)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^na_kb_{n-k}\right)z^n.\]}
 	\end{theorem}
-	
+
 	\onslide<+->
 	当 $f,g$ 的收敛半径相同时, $f\pm g$ 或 $fg$ 的收敛半径可以比 $f,g$ 的大.
 \end{frame}
@@ -248,7 +248,7 @@
 	\begin{example}
 		把函数 $\dfrac1{z-b}$ 表成形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的幂级数, 其中 $a\neq b$.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		\[\frac1{z-b}=\frac1{(z-a)-(b-a)}
@@ -286,7 +286,7 @@
 	\begin{example}
 		求幂级数 $\suml_{n=0}^\infty(n+1)z^n$ 的收敛半径与和函数.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{n+1}n=1$ 可知收敛半径为 $1$.
@@ -315,17 +315,17 @@
 \begin{frame}{例题: 函数项级数的积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z$.
+		求 $\displaystyle\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z$.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		由于 $\suml_{n=0}^\infty z^n$ 在 $|z|<1$ 收敛,
 	\onslide<+->{它的和函数解析.
 	}\onslide<+->{因此
 		\begin{align*}
-		\oint_{|z|=\frac12}\left(\sum_{n=-1}^\infty z^n\right)\diff z
-		&=\oint_{|z|=\frac12}\frac1z\diff z+\oint_{|z|=\frac12}\left(\sum_{n=0}^\infty z^n\right)\diff z\\
+		\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z
+		&=\oint_{|z|=\half }\frac1z\diff z+\oint_{|z|=\half }\left(\sum_{n=0}^\infty z^n\right)\diff z\\
 		&\visible<+->{=2\pi i+0=2\pi i.}
 	\end{align*}}
 	\vspace{-\baselineskip}

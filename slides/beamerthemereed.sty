@@ -1,15 +1,31 @@
 \mode<presentation>
 % Colors
-\setbeamercolor{title}{use=structure,fg=structure.fg}
-\setbeamercolor{item}{use=structure,fg=structure.fg}
-\setbeamercolor{email}{use=structure,fg=structure.fg}
-\setbeamercolor{title in head/foot}{parent=structure}
-\setbeamercolor{part in head/foot}{parent=structure}
-\setbeamercolor{section in head/foot}{parent=structure}
-\setbeamercolor{seperate line}{use=structure,bg=structure}
+\setbeamercolor{theme}{use=structure,fg=structure.fg}
+\setbeamercolor{title}{parent=theme}
+\setbeamercolor{item}{parent=theme}
+\setbeamercolor{email}{parent=theme}
+\setbeamercolor{title in head/foot}{parent=theme}
+\setbeamercolor{part in head/foot}{parent=theme}
+\setbeamercolor{section in head/foot}{parent=theme}
+\setbeamercolor{subsection in head/foot}{parent=theme}
+\setbeamercolor{date in head/foot}{parent=theme}
+\setbeamercolor{seperate line}{use=theme,bg=theme.fg}
+\setbeamercolor{subsection in toc}{use=theme,fg=black,bg=theme!20}
+\setbeamercolor{frametitle}{use=theme,fg=theme.fg,bg=theme.fg!10}
+\setbeamercolor{footline}{use=theme,bg=theme.fg!10}
+% Margin
+\setbeamersize{text margin left=0.5em,text margin right=0.5em}
 % Items
 \useinnertheme{circles}
 \setbeamertemplate{enumerate item}{(\insertenumlabel)}
+\setbeamertemplate{enumerate subitem}{
+	\usebeamercolor[fg]{enumerate subitem}%
+	\begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+		\pgfusepath{stroke}
+		\pgftext[base]{\color{fg}\insertenumlabel}
+	\end{pgfpicture}%
+}
 % Font
 \setbeamerfont{title}{size=\large}
 \setbeamerfont{institute}{size=\normalsize,shape=\itshape}
@@ -89,12 +105,13 @@
 }
 % Frametitle
 \setbeamertemplate{frametitle}{%
-	\vskip.5ex\hskip-1em
-	{%
-		\usebeamerfont{frametitle}%
-		\usebeamercolor[fg]{frametitle}%
-		\insertframetitle
-	}\vskip-1ex
+	\vskip-1pt
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=1.1ex,leftskip=1em,rightskip=0.5em,sep=0pt]{frametitle}
+			\usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle
+		\end{beamercolorbox}%
+	}%
+	\vskip-1.55ex
 	\hbox{%
 		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
 		\end{beamercolorbox}%
@@ -159,7 +176,7 @@
 			leftskip=2ex,%
 			rightskip=2ex,%
 			sep=0pt%
-		]{}%
+		]{footline}%
 			{%
 				\usebeamerfont{title in head/foot}%
 				\usebeamercolor[fg]{title in head/foot}%

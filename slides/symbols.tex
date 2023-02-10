@@ -1,4 +1,6 @@
-% symbols
+\RequirePackage{extarrows}
+
+% arrows
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
 \newcommand\la{\leftarrow}
@@ -9,41 +11,53 @@
 \newcommand\linj{\hookleftarrow}
 \newcommand\surj{\twoheadrightarrow}
 \newcommand\simto{\stackrel{\sim}{\longrightarrow}}
+\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
+\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
+\newcommand\xto{\xlongrightarrow}
+\newcommand\xeq{\xlongequal}
+\newcommand\luobida{\xeq{\text{洛必达}}}
+\newcommand\djwqx{\xeq{\text{等价无穷小}}}
+\newcommand\eqprob{\stackrel{\mathrm{P}}{=}}
 \newcommand\lto{\longmapsto}
 \renewcommand\vec[1]{\overrightarrow{#1}}
-\newcommand\ilim{\varinjlim\limits}
-\newcommand\plim{\varprojlim\limits}
+
+% decorations
 \newcommand\wh{\widehat}
 \newcommand\wt{\widetilde}
 \newcommand\ov{\overline}
 \newcommand\ul{\underline}
+\newlength{\larc}
+\NewDocumentCommand\warc{o m}{%
+	\IfNoValueTF {#1}%
+	{%
+		\settowidth{\larc}{$#2$}%
+		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{0.7\larc}\right.}}}{#2}%
+	}%
+	{%
+		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1}\right.}}}{#2}%
+	}%
+}
+
+% braces
+\newcommand\set[1]{{\left\{#1\right\}}}
+\newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
+\newcommand\abs[1]{\left|#1\right|}
+\newcommand\pair[1]{\langle{#1}\rangle}
+\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand\dbb[1]{\llbracket#1 \rrbracket}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+
+% symbols
+\renewcommand\le{\leqslant}
+\renewcommand\ge{\geqslant}
 \newcommand\vare{\varepsilon}
 \newcommand\varp{\varphi}
-\newcommand\imply{\Longrightarrow}
-\newcommand\rj{\relbar\joinrel}
+\newcommand\ilim{\varinjlim\limits}
+\newcommand\plim{\varprojlim\limits}
 \newcommand\half{\frac{1}{2}}
 \newcommand\mmid{\parallel}
-\newcommand\ldb{\llbracket}
-\newcommand\rdb{\rrbracket}
-\newcommand\pppi{\frac{\partial\bar\partial}{\pi i}}
-\newcommand\mmod{\underline\bmod}
-\newcommand\floor[1]{\lfloor#1\rfloor}
-\font\cyr=wncyr10
-\newcommand\Sha{\hbox{\cyr X}}
-
-% functions
-\newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
-\newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
-\newcommand\fct[4]{\begin{split}#1 &\lra #2 \\ #3 &\lto #4\end{split}}
-\newcommand\set[1]{{\left\{#1\right\}}}
-\newcommand\pair[1]{\langle{#1}\rangle}
-\newcommand\pmat[4]{\begin{pmatrix}#1 & #2 \\ #3 & #4\end{pmatrix} }
-\newcommand\smat[4]{\left(\begin{smallmatrix}#1 & #2 \\ #3 & #4\end{smallmatrix}\right) }
-\newcommand\svec[2]{\begin{pmatrix}#1\\#2\end{pmatrix}}
-\newcommand\bvec[2]{\begin{bmatrix}#1 \\ #2\end{bmatrix} }
-\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
-\newcommand\env[2]{\begin{#1}{#2}\end{#1}}
-\newcommand\envn[3]{\begin{#1}[#2]{#3}\end{#1}}
+\font\cyr=wncyr10\newcommand\Sha{\hbox{\cyr X}}
+\newcommand\Uc{\stackrel{\circ}{U}\!\!}
 \newcommand\hil[3]{\left(\frac{{#1},{#2}}{#3}\right)}
 \newcommand\leg[2]{\Bigl(\frac{{#1}}{#2}\Bigr)}
 \newcommand\aleg[2]{\Bigl[\frac{{#1}}{#2}\Bigr]}
@@ -368,16 +382,26 @@
 \newcommand\alg{{\mathrm{alg}}}
 \newcommand\an{{\mathrm{an}}}
 \newcommand\ann{{\mathrm{ann}}}
-\DeclareMathOperator\Ann{Ann}
+\newcommand\Ann{{\mathrm{Ann}}}
+\DeclareMathOperator\Arcsin{Arcsin}
+\DeclareMathOperator\Arccos{Arccos}
+\DeclareMathOperator\Arctan{Arctan}
+\DeclareMathOperator\arsh{arsh}
+\DeclareMathOperator\Arsh{Arsh}
+\DeclareMathOperator\arch{arch}
+\DeclareMathOperator\Arch{Arch}
+\DeclareMathOperator\arth{arth}
+\DeclareMathOperator\Arth{Arth}
+\DeclareMathOperator\arccot{arccot}
 \DeclareMathOperator\Arg{Arg}
 \newcommand\arith{{\mathrm{arith}}}
-\DeclareMathOperator\Art{Art}
+\newcommand\Art{{\mathrm{Art}}}
 \newcommand\AS{{\mathrm{AS}}}
 \newcommand\Ass{{\mathrm{Ass}}}
-\DeclareMathOperator\Aut{Aut}
+\newcommand\Aut{{\mathrm{Aut}}}
 % b
-\DeclareMathOperator\Bun{Bun}
-\DeclareMathOperator\Br{Br}
+\newcommand\Bun{{\mathrm{Bun}}}
+\newcommand\Br{{\mathrm{Br}}}
 \newcommand\bs{\backslash}
 \newcommand\BWt{{\mathrm{BW}}}
 % c
@@ -385,7 +409,7 @@
 \newcommand\cc{{\mathrm{cc}}}
 \newcommand\cd{{\mathrm{cd}}}
 \DeclareMathOperator\ch{ch}
-\DeclareMathOperator\Ch{Ch}
+\newcommand\Ch{{\mathrm{Ch}}}
 \let\char\relax
 \DeclareMathOperator\char{char}
 \DeclareMathOperator\Char{char}
@@ -418,8 +442,9 @@
 % d
 \newcommand\Def{{\mathrm{Def}}}
 \newcommand\diag{{\mathrm{diag}}}
-\newcommand\diff{\mathop{}\!\mathrm{d}}
+\newcommand\diff{\,\mathrm{d}}
 \newcommand\disc{{\mathrm{disc}}}
+\newcommand\dist{{\mathrm{dist}}}
 \renewcommand\div{{\mathrm{div}}}
 \newcommand\Div{{\mathrm{Div}}}
 \newcommand\dR{{\mathrm{dR}}}
@@ -427,9 +452,9 @@
 % e
 \newcommand\End{{\mathrm{End}}}
 \newcommand\ess{{\mathrm{ess}}}
-\newcommand\et{\text{\'{e}t}}
-\newcommand\etale{\'{e}tale}
-\newcommand\Etale{\'{E}tale}
+\newcommand\et{{\text{\'{e}t}}}
+\newcommand\etale{{\'{e}tale}}
+\newcommand\Etale{{\'{E}tale}}
 \newcommand\Ext{\mathrm{Ext}}
 \newcommand\CExt{\mathcal{E}\mathrm{xt}}
 % f
@@ -437,15 +462,14 @@
 \newcommand\Fix{{\mathrm{Fix}}}
 \newcommand\fppf{{\mathrm{fppf}}}
 \newcommand\Fr{{\mathrm{Fr}}}
-\DeclareMathOperator\Frac{Frac}
-\DeclareMathOperator\Frob{Frob}
+\newcommand\Frac{{\mathrm{Frac}}}
+\newcommand\Frob{{\mathrm{Frob}}}
 % g
 \newcommand\Ga{\mathbb{G}_a}
-%\newcommand\gcd{\mathrm{gcd}}
 \newcommand\Gm{\mathbb{G}_m}
 \newcommand\hGa{\widehat{\mathbb{G}}_{a}}
 \newcommand\hGm{\widehat{\mathbb{G}}_{m}}
-\DeclareMathOperator\Gal{Gal}
+\newcommand\Gal{{\mathrm{Gal}}}
 \newcommand\gl{{\mathrm{gl}}}
 \newcommand\GL{{\mathrm{GL}}}
 \newcommand\GO{{\mathrm{GO}}}
@@ -474,7 +498,6 @@
 \newcommand\Ind{{\mathrm{Ind}}}
 \newcommand\cInd{{\mathrm{c}\textrm{-}\mathrm{Ind}}}
 \newcommand\ind{{\mathrm{ind}}}
-\renewcommand\inf{{\mathrm{inf}}}
 \newcommand\Int{{\mathrm{Int}}}
 \newcommand\inv{{\mathrm{inv}}}
 \newcommand\Isom{{\mathrm{Isom}}}
@@ -488,10 +511,11 @@
 \newcommand\Kl{{\mathrm{Kl}}}
 \newcommand\CKl{{\mathcal{K}\mathrm{l}}}
 % l
-\DeclareMathOperator\lcm{lcm}
-\DeclareMathOperator\length{length}
+\newcommand\lcm{\mathrm{lcm}}
+\newcommand\length{\mathrm{length}}
 \DeclareMathOperator\Li{Li}
-\DeclareMathOperator\Lie{Lie}
+\DeclareMathOperator\Ln{Ln}
+\newcommand\Lie{{\mathrm{Lie}}}
 \newcommand\lt{\mathrm{lt}}
 \newcommand\LT{\mathcal{LT}}
 % m
@@ -517,7 +541,7 @@
 \newcommand\old{{\mathrm{old}}}
 \newcommand\op{{\mathrm{op}}}
 \newcommand\Orb{{\mathrm{Orb}}}
-\DeclareMathOperator\ord{ord}
+\newcommand\ord{{\mathrm{ord}}}
 % p
 \newcommand\pd{{\mathrm{pd}}}
 \newcommand\Pet{{\mathrm{Pet}}}
@@ -538,8 +562,8 @@
 \newcommand\rec{{\mathrm{rec}}}
 \newcommand\red{{\mathrm{red}}}
 \newcommand\reg{{\mathrm{reg}}}
-\DeclareMathOperator\res{res}
-\DeclareMathOperator\Res{Res}
+\newcommand\res{{\mathrm{res}}}
+\newcommand\Res{{\mathrm{Res}}}
 \newcommand\rig{{\mathrm{rig}}}
 \newcommand\Rig{{\mathrm{Rig}}}
 \newcommand\rk{{\mathrm{rk}}}
@@ -547,23 +571,24 @@
 \newcommand\rs{{\mathrm{rs}}}
 % s
 \newcommand\sd{{\mathrm{sd}}}
-\DeclareMathOperator\Sel{Sel}
+\newcommand\Sel{{\mathrm{Sel}}}
 \newcommand\sep{{\mathrm{sep}}}
-\DeclareMathOperator\sgn{sgn}
+\DeclareMathOperator{\sgn}{sgn}
 \newcommand\Sh{{\mathrm{Sh}}}
+\DeclareMathOperator\sh{sh}
 \newcommand\Sht{\mathrm{Sht}}
 \newcommand\Sim{{\mathrm{Sim}}}
 \newcommand\sign{{\mathrm{sign}}}
 \newcommand\SK{{\mathrm{SK}}}
-\DeclareMathOperator\SL{SL}
-\DeclareMathOperator\SO{SO}
-\DeclareMathOperator\Sp{Sp}
-\DeclareMathOperator\Spa{Spa}
-\DeclareMathOperator\Span{Span}
+\newcommand\SL{{\mathrm{SL}}}
+\newcommand\SO{{\mathrm{SO}}}
+\newcommand\Sp{{\mathrm{Sp}}}
+\newcommand\Spa{{\mathrm{Spa}}}
+\newcommand\Span{{\mathrm{Span}}}
 \DeclareMathOperator\Spec{Spec}
-\DeclareMathOperator\Spf{Spf}
-\DeclareMathOperator\Spin{Spin}
-\DeclareMathOperator\Spm{Spm}
+\newcommand\Spf{{\mathrm{Spf}}}
+\newcommand\Spin{{\mathrm{Spin}}}
+\newcommand\Spm{{\mathrm{Spm}}}
 \newcommand\srs{{\mathrm{srs}}}
 \newcommand\rss{{\mathrm{ss}}}
 \newcommand\ST{{\mathrm{ST}}}
@@ -580,6 +605,8 @@
 \newcommand\suml{\sum\limits}
 % t
 \newcommand\td{{\mathrm{td}}}
+\let\tanh\relax
+\DeclareMathOperator\tanh{th}
 \newcommand\tor{{\mathrm{tor}}}
 \newcommand\Tor{{\mathrm{Tor}}}
 \newcommand\tors{{\mathrm{tors}}}

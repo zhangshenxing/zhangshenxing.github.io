@@ -89,7 +89,7 @@
 \end{frame}
 
 
-\begin{frame}{傅里叶积分公式的三角形式*}
+\begin{frame}{傅里叶积分公式的三角形式\noexer}
 	\onslide<+->
 	傅里叶积分公式有一些变化形式.
 	\onslide<+->
@@ -109,17 +109,17 @@
 \end{frame}
 
 
-\begin{frame}{傅里叶正弦/余弦积分公式*}
+\begin{frame}{傅里叶正弦/余弦积分公式\noexer}
 	\onslide<+->
 	对上式再次展开得到:
 	\[f(t)=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)(\cos\omega t\cos\omega\tau+\sin\omega t\sin \omega\tau)\diff\tau\right]\diff\omega.\]
-	
+
 	\onslide<+->
 	若 $f(t)$ 是奇函数, $f(\tau)\cos\omega\tau$ 是 $\tau$ 的奇函数, $f(\tau)\sin \omega\tau$ 是 $\tau$ 的偶函数.
 	\onslide<+->
 	从而得到\emph{傅里叶正弦积分公式}:
 	\[\alert{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
-	
+
 	\onslide<+->
 	类似地, 若 $f(t)$ 是偶函数, 有\emph{傅里叶余弦积分公式}:
 	\[\alert{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}\]
@@ -157,7 +157,7 @@
 		&\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
 	\end{align*}
 	\onslide<+->
-	当 $t=\pm1$ 时, 左侧应替换为 $\frac{f(t+)+f(t-)}2=\frac12$.
+	当 $t=\pm1$ 时, 左侧应替换为 $\frac{f(t+)+f(t-)}2=\half $.
 	\onslide<+->
 	由此可得
 	\[\int_0^{+\infty}\frac{\sin \omega\cos\omega t}\omega\diff\omega=\begin{cases}
@@ -215,14 +215,14 @@
 			\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}&\visible<.->{}
 		\end{align*}
 	\end{solution}
-	
+
 	\onslide<+->
 	类似可得
 	$\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega=
 		\begin{cases}
 			\pi/2,&0<t<1,\\
 			\pi/4,&t=1,\\
-			0,&t>1.	
+			0,&t>1.
 		\end{cases}$
 \end{frame}
 
@@ -247,7 +247,7 @@
 			\visible<+->{\alert{=\frac1{\beta+j\omega}}.}&\visible<.->{}
 		\end{align*}
 	\end{solution}
-	
+
 	\onslide<+->
 	类似可得
 	$\displaystyle\int_0^{+\infty}\frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\diff\omega=
@@ -264,7 +264,7 @@
 	\begin{example}
 		求\emph{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
 	\end{example}
-	
+
 	\onslide<+->
 	\begin{solution}
 		\vspace{-\baselineskip}
@@ -394,7 +394,7 @@
 			$\displaystyle\int_0^{+\infty}\frac{\sin\omega t}\omega \diff\omega=\frac\pi2\sgn(t)$.
 		}\onslide<+->{故
 			\[\msf^{-1} \left[\frac1{j\omega}+\pi\delta(\omega)\right]
-			=\frac12\sgn(t)+\frac12=u(t)\ (t\neq 0).\qedhere\]
+			=\half\sgn(t)+\half =u(t)\ (t\neq 0).\qedhere\]
 		}
 		\vspace{-\baselineskip}
 	\end{proof}

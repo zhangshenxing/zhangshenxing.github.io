@@ -1,9 +1,11 @@
-% \documentclass[12pt,handout,aspectratio=169]{ctexbeamer}
-\documentclass[handout]{ctexbeamer}
-\setbeamersize{text margin left=0.5em,text margin right=0.5em}
-\RequirePackage[T1]{fontenc}
-\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
+\documentclass[handout,aspectratio=169]{ctexbeamer}
+% \documentclass[handout]{ctexbeamer}
+\RequirePackage[T1]{fontenc} % 纯英文去掉此行
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei} % 纯英文去掉此行
 \usetheme{reed}
+\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
+\setlength{\parindent}{1.5em}
+\renewcommand{\indent}{\hspace*{1.5em}}
 
 \title{Lorem Ipsum Dolor}
 \author{农张雨 (衡州大学)}
@@ -12,14 +14,12 @@
 \date{2022-05-19}
 \titlegraphic{misc/hzu.png}
 \institutegraphic{misc/hzuname.png}
-% \definecolor{structcolor}{RGB}{166,9,30}
-% \setbeamercolor{structure}{fg=structcolor}
-\usebeamercolor{structure}
-\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
-\setlength{\parindent}{1.5em}
-\renewcommand{\indent}{\hspace*{1.5em}}
+% 自定义主题配色
+% \definecolor{themecolor}{RGB}{166,9,30}
+% \setbeamercolor{theme}{fg=themecolor}
+% \setbeamersize{text margin left=0.5em,text margin right=0.5em}
 
-%\input{../symbols}
+\input{symbols}
 
 \begin{document}
 \section{Duis nibh mi}
@@ -59,8 +59,6 @@
 		\end{itemize}
 	\end{theorem}
 	\begin{corollary}[轩辕-尉迟1999]
-		Mauris ut leo pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
 		Mauris ut leo pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 		Mauris ut leo pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
 	\end{corollary}
