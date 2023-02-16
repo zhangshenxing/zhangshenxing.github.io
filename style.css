@@ -146,7 +146,7 @@ h2:hover img {
 	-o-filter: url(#changeIconColorBlue);
 }
 
-/* about me */
+/* about me & experience */
 span.phantom-space {
 	width: 20px;
 	height: 20px;
@@ -172,24 +172,61 @@ img#zsx:hover {
 	border: 1px dotted hsl(210, 60%, 50%);
 }
 
-/* experience */
-ul#ul-experience {
+ul.no-space>li {
+	margin: 0px;
+}
+
+ul.travel-plan>li {
+	margin-left: -2px;
+}
+
+ul.travel-plan>li::before {
+	content: "";
+	display: inline-block;
+	width: 3px;
+}
+
+ul.custom-icon {
 	list-style-type: none;
 	margin-left: -24px;
 }
 
-ul#ul-experience li::before {
-	content: url(img/chalkboard-user-solid.svg);
+ul.custom-icon>li::before {
+	content: "";
 	display: inline-block;
 	width: 20px;
 	vertical-align: middle;
 }
 
-ul#ul-experience li.li-education::before {
+ul.custom-icon li.title::before {
+	content: url(img/user-solid.svg);
+}
+
+ul.custom-icon li.institute::before {
+	content: url(img/school-solid.svg);
+}
+
+ul.custom-icon li.email::before {
+	content: url(img/envelope-solid.svg);
+}
+
+ul.custom-icon li.cv::before {
+	content: url(img/book-open-solid.svg);
+}
+
+ul.custom-icon li.location::before {
+	content: url(img/location-dot-solid.svg);
+}
+
+ul.custom-icon li.employment::before {
+	content: url(img/chalkboard-user-solid.svg);
+}
+
+ul.custom-icon li.education::before {
 	content: url(img/graduation-cap-solid.svg);
 }
 
-ul#ul-experience span {
+ul.custom-icon span {
 	display: inline-block;
 	width: 12em;
 }
@@ -210,23 +247,6 @@ span.abstract {
 	margin-top: 6px;
 	border: 1px dotted hsl(210, 60%, 50%);
 	background-color: hsl(210, 60%, 98%);
-}
-
-span.math {
-	font-family: 'Cambria Math', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-	font-size: 120%;
-}
-
-span.math .ov {
-	text-decoration: overline;
-}
-
-span.math .root {
-	vertical-align: -12%;
-}
-
-span.math .cbroot {
-	vertical-align: -10%;
 }
 
 /* teaching */
@@ -288,8 +308,6 @@ table.teaching em:lang(en) {
 	width: 20px;
 	margin-right: 4px;
 }
-
-
 
 @media screen and (min-width: 600px) {
 	div.flexbox {
