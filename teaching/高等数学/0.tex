@@ -33,19 +33,16 @@
 			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
 			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
 			font=\scriptsize, text=white,
-			childa/.style={concept color=red,faded/.style={concept color=red!50}},
-			childb/.style={concept color=blue,faded/.style={concept color=blue!50}},
-			childc/.style={concept color=orange,faded/.style={concept color=orange!50}},
 			grow cyclic,
 			level 1/.append style={level distance=3.5cm,font=\small},
 			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
 			\node [root concept] {函数和极限} % root
-			child [grow=180, childa] { node {函数}
+			child [grow=180, concept color=dcolora] { node {函数}
 				child[grow=-130] { node {定义域和值域} }
 				child[grow=-90] { node {有界、单调、奇偶、周期} }
 				child[grow=-50] { node {初等函数} }
 			}
-			child [grow=-90, level distance=3cm, childb] { node {极限}
+			child [grow=-90, level distance=3cm, concept color=dcolorb] { node {极限}
 				child[grow=-165,level distance=4.5cm] { node {7种极限的定义} }
 				child[grow=-145,level distance=3.3cm] { node {极限的性质} }
 				child[grow=-113] { node {极限的代数复合运算} }
@@ -53,7 +50,7 @@
 				child[grow=-35,level distance=3.3cm] { node {单调有界收敛准则} }
 				child[grow=-15,level distance=4.5cm] { node {夹逼准则} }
 			}
-			child [grow=0, childc] { node {连续}
+			child [grow=0, concept color=dcolorc] { node {连续}
 				child[grow=-130] { node {分段函数连续性} }
 				child[grow=-90] { node {间断点} }
 				child[grow=-50] { node {最值、介值、零点定理} }
@@ -70,20 +67,18 @@
 			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
 			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
 			font=\scriptsize, text=white,
-			childa/.style={concept color=blue,faded/.style={concept color=blue!50}},
-			childb/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
 			grow cyclic,
 			level 1/.append style={level distance=3.5cm,font=\small},
 			level 2/.append style={level distance=2.7cm,sibling angle=45,font=\scriptsize}]
 			\node [root concept] {导数及应用} % root
-			child [grow=225, childa] { node {导数}
+			child [grow=225, concept color=dcolord] { node {导数}
 				child[grow=120] { node {运算法则} }
 				child[grow=160] { node {隐函数导数} }
 				child[grow=200] { node {参变量函数导数} }
 				child[grow=240] { node {高阶导数} }
 				child[grow=280] { node {微分} }
 			}
-			child [grow=-45, childb] { node {一元函数微分学}
+			child [grow=-45, concept color=dcolore] { node {一元函数微分学}
 				child[grow=80] { node {中值定理} }
 				child[grow=40] { node {洛必达法则} }
 				child[grow=0] { node {泰勒展开} }

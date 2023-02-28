@@ -5,8 +5,9 @@
 \begin{frame}{常数函数}
 	\onslide<+->
 	\begin{definition}
-		\emph{常数函数}: $y=C, x\in (-\infty, +\infty)$.
+		\emph{常数函数}: $y=C, x\in (-\infty,+\infty)$.
 	\end{definition}
+	\onslide<+->
 	\begin{itemize}
 		\item 值域为 $\{C\}$.
 		\item 有界, 周期 (无最小正周期), 偶函数.
@@ -15,16 +16,16 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-3,0)--(3,0);
-			\draw[cstaxis] (0,-1)--(0,2);
+			\draw[cstaxis](0,-1)--(0,2);
 			\draw[cstcurve,dcolora] (-3,1)--(3,1);
 			\draw
 				(-0.2,-0.2) node {$O$}
-				(2.8,-0.2) node {$x$}
-				(-0.2,1.8) node {$y$}
-				(-0.2,0.8) node {$C$}
-				(1.8,1.3) node[dcolora] {$y=C$};
+				 (2.8,-0.2) node {$x$}
+				(-0.2, 1.8) node {$y$}
+				(-0.2, 0.8) node {$C$}
+				( 1.8, 1.3) node[dcolora] {$y=C$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -33,11 +34,11 @@
 \begin{frame}{指数函数}
 	\onslide<+->
 	\begin{definition}
-		\emph{指数函数}: $y=a^x (a>0, a\neq 1), x \in (-\infty, +\infty)$.
+		\emph{指数函数}: $y=a^x (a>0, a\neq 1), x \in (-\infty,+\infty)$.
 	\end{definition}
 	\onslide<+->
 	\begin{itemize}
-		\item 值域为 $(0, +\infty)$.
+		\item 值域为 $(0,+\infty)$.
 		\item 图像过点 $(0,1)$.
 		\item 当 $a>1$ 时, 它单调递增; 当 $0<a<1$ 时, 它单调递减.
 		\item $y=a^x$ 的图像和 $y=\bigl(\frac1a\bigr)^x$ 的图像关于 $y$ 轴对称.
@@ -46,19 +47,23 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed,inner frame ysep=0.5ex]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-0.4)--(0,2.3);
-			\draw[cstcurve,dcolora,smooth,domain=-3:1.2] plot (\x,{2^\x});
-			\draw[cstcurve,dcolorb,smooth,domain=-3:1.2] plot (-\x,{2^\x});
+			\begin{scope}[cstcurve,smooth,domain=-3:1.2]
+				\draw[dcolora] plot (\x,{2^\x});
+				\draw[dcolorb] plot (-\x,{2^\x});
+			\end{scope}
 			\draw
 				(-0.2,-0.2) node {$O$}
-				(2.8,-0.2) node {$x$}
-				(-0.2,2.1) node {$y$}
-				(-0.15,0.7) node[visible on=<4->] {$1$}
-				(2.2,1.5) node[dcolora] {$y=a^x (a>1)$}
-				(-2.6,1.5) node[dcolorb] {$y=a^x (0<a<1)$};
-			\fill[cstdot,dcolore,visible on=<4->]	(0,1) circle;
+				( 2.8,-0.2) node {$x$}
+				(-0.2, 2.1) node {$y$}
+				( 2.2, 1.5) node[dcolora] {$y=a^x (a>1)$}
+				(-2.6, 1.5) node[dcolorb] {$y=a^x (0<a<1)$};
+			\begin{scope}[visible on=<4->]
+				\fill[cstdot,dcolore]	(0,1) circle;
+				\draw (-0.15,0.7) node {$1$};
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -67,35 +72,39 @@
 \begin{frame}{对数函数}
 	\onslide<+->
 	\begin{definition}
-		\emph{对数函数}: $y=\log_a x, a>0, a\neq 1, x \in (0, +\infty)$.
-	\end{definition}
+		\emph{对数函数}: $y=\log_a x, a>0, a\neq 1, x \in (0,+\infty)$.
+	\end{definition}	
 	\onslide<+->
-	\begin{itemize}
-		\item 对数函数和指数函数互为反函数.
-		\item 值域为 $(-\infty, +\infty)$.
-		\item 图像过点 $(1,0)$.
-		\item 当 $a>1$ 时, 它单调递增;
-		\item 当 $0 < a < 1$ 时, 它单调递减.
-		\item 直线 $x=0$ 是它唯一的渐近线.
-		\item $y=\log_a x$ 的图像和 $y=\log_{\frac1a}	x$ 的图像\\
-		关于 $x$ 轴对称.
-		\item 称 $\lg x=\log_{10} x$ 为\emph{常用对数}, $\ln x=\log_e x$ 为\emph{自然对数}, 其中无理数 $e=2.71828\cdots$ 被称为\emph{自然对数的底}.
-	\end{itemize}
-	\onslide<2->
-	\begin{tikzpicture}[overlay,xshift=8.2cm,yshift=3.9cm]
-		\draw[cstaxis] (-0.5,0)--(3,0);
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-72mm,yshift=26mm]
+		\draw[cstaxis] (-0.5,0)--(3.5,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
-		\draw[cstcurve,dcolora,smooth,domain=-2.3:1.5] plot ({2^\x},\x);
-		\draw[cstcurve,dcolorb,smooth,domain=-2.3:1.5] plot ({2^\x},-\x);
+		\begin{scope}[cstcurve,smooth,domain=-2.3:1.5]
+			\draw[dcolora] plot ({2^\x},\x);
+			\draw[dcolorb] plot ({2^\x},-\x);
+		\end{scope}
 		\draw
 			(-0.2,-0.2) node {$O$}
-			(2.8,-0.2) node {$x$}
-			(-0.2,2.1) node {$y$}
-			(1,-0.3) node[visible on=<5->] {$1$}
-			(2,-1.9) node[dcolora] {$y=\log_ax (a>1)$}
-			(2.3,1.9) node[dcolorb] {$y=\log_ax (0<a<1)$};
-			\fill[cstdot,dcolore,visible on=<5->]	(1,0) circle;
-	\end{tikzpicture}
+			( 3.3,-0.2) node {$x$}
+			(-0.2, 2.1) node {$y$}
+			( 2.0,-1.9) node[dcolora] {$y=\log_ax (a>1)$}
+			( 2.3, 1.9) node[dcolorb] {$y=\log_ax (0<a<1)$};
+		\begin{scope}[visible on=<5->]
+			\fill[cstdot,dcolore]	(1,0) circle;
+			\draw (1,-0.3) node {$1$};
+		\end{scope}
+	\end{tikzpicture}\end{tikzpicture}
+	\vspace{-50mm}
+	\begin{itemize}
+		\item 对数函数和指数函数互为反函数.
+		\item 值域为 $(-\infty,+\infty)$.
+		\item 图像过点 $(1,0)$.
+		\item 当 $a>1$ 时, 它单调递增;
+		\item 当 $0<a<1$ 时, 它单调递减.
+		\item 直线 $x=0$ 是它唯一的渐近线.
+		\item $y=\log_a x$ 的图像和 $y=\log_{\frac1a}	x$ 的图像\\
+		关于 $x$ 轴对称.\vspace{8mm}
+		\item 称 $\lg x=\log_{10} x$ 为\emph{常用对数}, $\ln x=\log_e x$ 为\emph{自然对数}, 其中无理数 $e=2.71828\cdots$ 被称为\emph{自然对数的底}.
+	\end{itemize}
 \end{frame}
 
 
@@ -110,80 +119,92 @@
 	\onslide<+->
 	当 $\mu$ 是有理数时, 我们可将其表为 $\mu=\frac pq$, 其中 $p,q$ 为互质的整数.
 
-	\onslide<+->
-	\noindent\enumnum1 当 $\mu>0, p,q$ 为奇数时,
-	\begin{itemize}
-		\item 定义域和值域为 $(-\infty, +\infty)$.
-		\item 奇函数, 图像过点 $(0,0), (1,1), (-1,-1)$.
-		\item $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 互为反函数.
-	\end{itemize}
-	\vspace{2.2cm}
-	\onslide<4->
-	\begin{tikzpicture}[overlay,xshift=9.7cm,yshift=2.7cm]
+	\onslide<5->{
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-37mm,yshift=25mm]
 		\draw[cstaxis] (-2.3,0)--(2.3,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
-		\draw[cstcurve,dcolora,smooth,domain=-1.3:1.3] plot (\x,{\x^3});
-		\draw[cstcurve,dcolorb,smooth,domain=-1.3:1.3] plot ({\x^3},\x);
-		\draw[cstdash,dcolord,visible on=<7->] (-2,-2)--(2,2);
+		\begin{scope}[cstcurve,smooth,domain=-1.3:1.3]
+			\draw[dcolora] plot (\x,{\x^3});
+			\draw[dcolorb] plot ({\x^3},\x);
+		\end{scope}
+		\draw[cstdash,dcolord,visible on=<8->] (-2,-2)--(2,2);
 		\draw
-			(-0.2,0.2) node {$O$}
-			(2.1,-0.2) node {$x$}
-			(-0.2,2.1) node {$y$}
-			(0.65,2) node[dcolora] {$y=x^3$}
+			(-0.2, 0.2) node {$O$}
+			( 2.1,-0.2) node {$x$}
+			(-0.2, 2.1) node {$y$}
+			(0.65, 2.0) node[dcolora] {$y=x^3$}
 			(-2.8,-1.3) node[dcolorb] {$y=x^{\frac13}$};
-		\begin{scope}[visible on=<6->]
+		\begin{scope}[visible on=<7->]
+			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
+			\begin{scope}[cstdot,dcolore]
+				\fill	(1,1) circle;
+				\fill	(-1,-1) circle;
+				\fill	(0,0) circle;
+			\end{scope}
 			\draw
 				(1,-0.2) node {$1$}
 				(-1,0.2) node {$-1$}
 				(-0.2,1) node {$1$}
 				(0.3,-1) node {$-1$};
-			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1);
-			\draw[cstdash,dcolore] (-1,0)--(-1,-1)--(0,-1);
-			\fill[cstdot,dcolore]	(1,1) circle;
-			\fill[cstdot,dcolore]	(-1,-1) circle;
-			\fill[cstdot,dcolore]	(0,0) circle;
 		\end{scope}
-	\end{tikzpicture}
+	\end{tikzpicture}\end{tikzpicture}}
+
+	\vspace{-40mm}
+	\onslide<4->
+	\noindent\enumnum1 当 $\mu>0, p,q$ 为奇数时,
+	\onslide<+->\onslide<+->
+	\begin{itemize}
+		\item 定义域和值域为 $(-\infty,+\infty)$.
+		\item 奇函数, 图像过点 $(0,0), (1,1), (-1,-1)$.
+		\item $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 互为反函数.
+	\end{itemize}
+	\vspace{15mm}
 \end{frame}
 
 
 \begin{frame}{幂函数: 正有理幂次 $\frac pq$, $p,q$ 一奇一偶}
 	\onslide<+->
-	\noindent\enumnum2 当 $\mu > 0$, $p$ 偶 $q$ 奇时,
+	\noindent\enumnum2 当 $\mu>0$, $p$ 偶 $q$ 奇时,
+	\onslide<+->
 	\begin{itemize}
-		\item 定义域为 $(-\infty, +\infty)$, 值域为 $[0, +\infty)$.
+		\item 定义域为 $(-\infty,+\infty)$, 值域为 $[0,+\infty)$.
 		\item 偶函数, 图像过点 $(0,0), (\pm1,1)$.
 	\end{itemize}
 	\onslide<+->
-	\noindent\enumnum3 当 $\mu > 0$, $p$ 奇 $q$ 偶时,
+	\noindent\enumnum3 当 $\mu>0$, $p$ 奇 $q$ 偶时,
+	\onslide<+->
 	\begin{itemize}
-		\item 定义域和值域为 $[0, +\infty)$.
+		\item 定义域和值域为 $[0,+\infty)$.
 		\item 图像过点 $(0,0), (1,1)$.
-		\item $y = x^\mu$ 与 $y = x^{\frac1\mu}$ 在 $(0, +\infty)$ 的限制互为反函数.
+		\item $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 在 $(0,+\infty)$ 的限制互为反函数.
 	\end{itemize}
-	\onslide<1->
+	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.3);
 			\draw[cstcurve,dcolora,smooth,domain=-1.5:1.5] plot (\x,{\x*\x});
-			\draw[cstcurve,dcolorb,smooth,domain=0:1.5,visible on=<4->] plot ({\x*\x},\x);
-			\draw[cstdash,dcolord,visible on=<7->] (-0.4,-0.4)--(2,2);
+			\draw[cstdash,dcolord,visible on=<9->] (-0.4,-0.4)--(2,2);
 			\draw
-				(0.2,-0.2) node {$O$}
-				(2.1,-0.2) node {$x$}
-				(-0.2,2.1) node {$y$}
-				(-1.9,1.5) node[dcolora] {$y=x^2$}
-				(3,1.6) node[dcolorb,visible on=<4->] {$y=x^{\half}$};
-			\begin{scope}[visible on=<3->]
+				( 0.2,-0.2) node {$O$}
+				( 2.1,-0.2) node {$x$}
+				(-0.2, 2.1) node {$y$}
+				(-1.9, 1.5) node[dcolora] {$y=x^2$};
+			\begin{scope}[dcolorb,visible on=<6->]
+				\draw[cstcurve,smooth,domain=0:1.5] plot ({\x*\x},\x);
+				\draw (3,1.6) node {$y=x^{\half}$};
+			\end{scope}
+			\begin{scope}[visible on=<4->]
 				\draw
-					(1,-0.2) node {$1$}
-					(-1,-0.2) node {$-1$}
-					(-0.2,1) node {$1$};
+					( 1.0,-0.2) node {$1$}
+					(-1.0,-0.2) node {$-1$}
+					(-0.2, 1.2) node {$1$};
 				\draw[cstdash,dcolore] (-1,0)--(-1,1)--(1,1)--(1,0);
-				\fill[cstdot,dcolore]	(1,1) circle;
-				\fill[cstdot,dcolore]	(-1,1) circle;
-				\fill[cstdot,dcolore]	(0,0) circle;
+				\begin{scope}[cstdot,dcolore]
+					\fill	(1,1) circle;
+					\fill	(-1,1) circle;
+					\fill	(0,0) circle;
+				\end{scope}
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -191,82 +212,100 @@
 
 
 \begin{frame}{幂函数: 负有理幂次 $\frac pq$, $p,q$ 奇}
-	\onslide<+->
-	\noindent\enumnum4 当 $\mu < 0, p, q$ 为奇数时,
-	\begin{itemize}
-		\item 定义域和值域为 $(-\infty, 0)\cup(0, +\infty)$.
-		\item 奇函数, 图像过点 $(0,0), (1,1), (-1, -1)$.
-		\item 有两条渐近线 $x = 0, y = 0$.
-		\item $y = x^\mu$ 与 $y = x^{\frac1\mu}$ 互为反函数.
-	\end{itemize}
-	\vspace{3cm}
-	\onslide<1->
-	\begin{tikzpicture}[overlay,xshift=9.2cm,yshift=3cm]
+	\onslide<2->
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=40mm]
 		\draw[cstaxis] (-2.8,0)--(2.8,0);
 		\draw[cstaxis] (0,-2.8)--(0,2.8);
-		\draw[cstcurve,dcolora,smooth,domain=0.4:1.4] plot ({1/\x},{\x^3});
-		\draw[cstcurve,dcolora,smooth,domain=-0.4:-1.4] plot ({1/\x},{\x^3});
-		\draw[cstcurve,dcolorb,smooth,domain=0.4:1.4,visible on=<5->] plot ({\x^3},{1/\x});
-		\draw[cstcurve,dcolorb,smooth,domain=-0.4:-1.4,visible on=<5->] plot ({\x^3},{1/\x});
-		\draw[cstdash,dcolord,visible on=<5->] (-2,-2)--(2,2);
+		\begin{scope}[cstcurve,dcolora,smooth,domain=0.4:1.4]
+			\draw plot ({1/\x},{\x^3});
+			\draw plot ({-1/\x},{-\x^3});
+		\end{scope}
+		\begin{scope}[visible on=<6->]
+			\begin{scope}[cstcurve,dcolorb,smooth,domain=0.4:1.4]
+				\draw plot ({\x^3},{1/\x});
+				\draw plot ({-\x^3},{-1/\x});
+			\end{scope}
+			\draw[cstdash,dcolord] (-2,-2)--(2,2);
+			\draw (2.2,1.2) node[dcolorb] {$y=x^{-\frac13}$};
+		\end{scope}
 		\draw
 			(0.2,-0.2) node {$O$}
 			(2.6,-0.2) node {$x$}
 			(-0.2,2.6) node {$y$}
-			(-1.6,-2.2) node[dcolora] {$y=x^{-3}$}
-			(2.2,1.2) node[dcolorb,visible on=<5->] {$y=x^{-\frac13}$};
-		\begin{scope}[visible on=<3->]
+			(-1.6,-2.2) node[dcolora] {$y=x^{-3}$};
+		\begin{scope}[visible on=<4->]
 			\draw
-				(1,-0.2) node {$1$}
-				(-1,0.2) node {$-1$}
-				(-0.2,1) node {$1$}
-				(0.3,-1) node {$-1$};
-			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1);
-			\draw[cstdash,dcolore] (-1,0)--(-1,-1)--(0,-1);
-			\fill[cstdot,dcolore]	(1,1) circle;
-			\fill[cstdot,dcolore]	(-1,-1) circle;
+				( 1.0,-0.2) node {$1$}
+				(-1.0, 0.2) node {$-1$}
+				(-0.2, 1.0) node {$1$}
+				( 0.3,-1.0) node {$-1$};
+			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
+			\begin{scope}[cstdot,dcolore]
+				\fill	(1,1) circle;
+				\fill	(-1,-1) circle;
+			\end{scope}
 		\end{scope}
-	\end{tikzpicture}
+	\end{tikzpicture}\end{tikzpicture}
+
+	\vspace{-40mm}
+	\onslide<1->
+	\noindent\enumnum4 当 $\mu<0, p, q$ 为奇数时,
+	\onslide<+->\onslide<+->
+	\begin{itemize}
+		\item 定义域和值域为 $(-\infty, 0)\cup(0,+\infty)$.
+		\item 奇函数, 图像过点 $(0,0), (1,1), (-1, -1)$.
+		\item 有两条渐近线 $x=0, y=0$.
+		\item $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 互为反函数.
+	\end{itemize}
+	\vspace{30mm}
 \end{frame}
 
 
 \begin{frame}{幂函数: 负有理幂次 $\frac pq$, $p,q$ 一奇一偶}
 	\onslide<+->
-	\noindent\enumnum5 当 $\mu < 0, p$ 偶 $q$ 奇时,
+	\noindent\enumnum5 当 $\mu<0, p$ 偶 $q$ 奇时,
+	\onslide<+->
 	\begin{itemize}
-		\item 定义域为 $(-\infty, 0)\cup(0, +\infty)$, 值域为 $(0, +\infty)$.
-		\item 偶函数, 图像过点 $(\pm1,1)$, 有两条渐近线 $x = 0, y = 0$.
+		\item 定义域为 $(-\infty, 0)\cup(0,+\infty)$, 值域为 $(0,+\infty)$.
+		\item 偶函数, 图像过点 $(\pm1,1)$, 有两条渐近线 $x=0, y=0$.
 	\end{itemize}
 	\onslide<+->
-	\noindent\enumnum6 当 $\mu < 0, p$ 奇 $q$ 偶时,
+	\noindent\enumnum6 当 $\mu<0, p$ 奇 $q$ 偶时,
+	\onslide<+->
 	\begin{itemize}
-		\item 定义域和值域为 $(0, +\infty)$.
-		\item 图像过点 $(1,1)$, 有两条渐近线 $x = 0, y = 0$.
-		\item 此时 $y = x^\mu$ 与 $y = x^{\frac1\mu}$ 在 $(0, +\infty)$ 的限制互为反函数.
+		\item 定义域和值域为 $(0,+\infty)$.
+		\item 图像过点 $(1,1)$, 有两条渐近线 $x=0, y=0$.
+		\item 此时 $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 在 $(0,+\infty)$ 的限制互为反函数.
 	\end{itemize}
-	\onslide<1->
+	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.6);
-			\draw[cstcurve,dcolora,smooth,domain=0.5:1.6] plot ({1/\x},{\x*\x});
-			\draw[cstcurve,dcolora,smooth,domain=0.5:1.6] plot ({-1/\x},{\x*\x});
-			\draw[cstcurve,dcolorb,smooth,domain=0.5:1.6,visible on=<4->] plot ({\x*\x},{1/\x});
-			\draw[cstdash,dcolord,visible on=<7->] (-0.4,-0.4)--(2,2);
+			\begin{scope}[cstcurve,dcolora,smooth,domain=0.5:1.6]
+				\draw plot ({1/\x},{\x*\x});
+				\draw plot ({-1/\x},{\x*\x});
+			\end{scope}
+			\begin{scope}[visible on=<6->,dcolorb]
+				\draw[cstcurve,smooth,domain=0.5:1.6] plot ({\x*\x},{1/\x});
+				\draw (3,1) node {$y=x^{-\half}$};
+			\end{scope}
+			\draw[cstdash,dcolord,visible on=<9->] (-0.4,-0.4)--(2,2);
 			\draw
-				(0.2,-0.2) node {$O$}
-				(2.1,-0.2) node {$x$}
-				(-0.2,2.4) node {$y$}
-				(-1.7,1.1) node[dcolora] {$y=x^{-2}$}
-				(3,1) node[dcolorb,visible on=<4->] {$y=x^{-\half}$};
-			\begin{scope}[visible on=<3->]
+				( 0.2,-0.2) node {$O$}
+				( 2.1,-0.2) node {$x$}
+				(-0.2, 2.4) node {$y$}
+				(-1.7, 1.1) node[dcolora] {$y=x^{-2}$};
+			\begin{scope}[visible on=<4->]
 				\draw
-					(1,-0.2) node {$1$}
-					(-1,-0.2) node {$-1$}
-					(-0.2,1) node {$1$};
+					( 1.0,-0.2) node {$1$}
+					(-1.0,-0.2) node {$-1$}
+					(-0.2, 1.2) node {$1$};
 				\draw[cstdash,dcolore] (-1,0)--(-1,1)--(1,1)--(1,0);
-				\fill[cstdot,dcolore]	(1,1) circle;
-				\fill[cstdot,dcolore]	(-1,1) circle;
+				\begin{scope}[cstdot,dcolore]
+					\fill	(1,1) circle;
+					\fill	(-1,1) circle;
+				\end{scope}
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -276,31 +315,38 @@
 \begin{frame}{幂函数: 无理幂次}
 	\onslide<+->
 	\noindent\enumnum7 当 $\mu$ 为无理数时, $y =x^\mu$ 定义为 $y =e^{\mu\ln x}$,
+	\onslide<+->
 	\begin{itemize}
-		\item 定义域和值域为 $(0, +\infty)$.
+		\item 定义域和值域为 $(0,+\infty)$.
 		\item 图像过点 $(1,1)$.
-		\item $\mu < 0$ 时有两条渐近线 $x = 0, y = 0$.
-		\item 此时 $y = x^\mu$ 与 $y = x^{\frac1\mu}$ 互为反函数.
+		\item $\mu<0$ 时有两条渐近线 $x=0, y=0$.
+		\item 此时 $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 互为反函数.
 	\end{itemize}
-	\onslide<1->
+	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis] (-0.5,0)--(2.7,0);
-			\draw[cstaxis] (0,-0.5)--(0,2.7);
-			\draw[cstcurve,dcolora,smooth,domain=0:1.5] plot (\x,{\x^(sqrt 3)});
-			\draw[cstcurve,dcolorb,smooth,domain=0.4:1.6,visible on=<4->] plot (1/\x,{\x^(sqrt 3)});
-			\draw[cstcurve,dcolora,smooth,domain=0:1.5,visible on=<5->] plot ({\x^(sqrt 3)},\x);
-			\draw[cstcurve,dcolorb,smooth,domain=0.4:1.5,visible on=<5->] plot ({\x^(sqrt 3)},1/\x);
-			\draw[cstdash,dcolord,visible on=<5->] (-0.4,-0.4)--(2,2);
+		\begin{tikzpicture}[framed]
+			\draw[cstaxis] (-0.5,0)--(3.5,0);
+			\draw[cstaxis] (0,-0.5)--(0,3.5);
+			\begin{scope}[cstcurve,smooth]
+				\begin{scope}[dcolora,domain=0:1.9]
+					\draw plot (\x,{\x^(sqrt 3)});
+					\draw plot ({\x^(sqrt 3)},\x);
+				\end{scope}
+				\begin{scope}[dcolorb,domain=0.3:1.9]
+					\draw plot (1/\x,{\x^(sqrt 3)});
+					\draw plot ({\x^(sqrt 3)},1/\x);
+				\end{scope}
+			\end{scope}
 			\draw
-				(0.2,-0.2) node {$O$}
-				(2.5,-0.2) node {$x$}
-				(-0.2,2.5) node {$y$}
-				(1.6,2.3) node[dcolora] {$y=x^{\sqrt 3}$}
-				(3.4,0.3) node[dcolorb,visible on=<4->] {$y=x^{-\sqrt 3}$}
-				(2.8,1.6) node[dcolora,visible on=<5->] {$y=x^{\frac1{\sqrt 3}}$}
-				(2.9,0.8) node[dcolorb,visible on=<5->] {$y=x^{-\frac1{\sqrt 3}}$};
-			\begin{scope}[visible on=<3->]
+				( 0.2,-0.2) node {$O$}
+				( 3.2,-0.2) node {$x$}
+				(-0.2, 3.2) node {$y$}
+				( 2.7, 3.2) node[dcolora] {$y=x^{\sqrt 3}$}
+				( 3.8, 2.3) node[dcolora] {$y=x^{\frac1{\sqrt 3}}$}
+				( 4.3, 0.3) node[dcolorb] {$y=x^{-\sqrt 3}$}
+				( 4.0, 0.8) node[dcolorb] {$y=x^{-\frac1{\sqrt 3}}$};
+			\draw[cstdash,dcolord,visible on=<5->] (-0.4,-0.4)--(3,3);
+			\begin{scope}[visible on=<4->]
 				\draw
 					(1,-0.2) node {$1$}
 					(-0.2,1) node {$1$};
@@ -316,10 +362,10 @@
 	\onslide<+->
 	\begin{block}{总结}
 		\begin{itemize}
-			\item 幂函数 $y = x^\mu$ 总在 $(0, +\infty)$ 上有定义, 图像经过 $(1,1)$.
-			\item $y = x^\mu|_{(0, +\infty)}$ 和 $y = x^{\frac1\mu}|_{(0, +\infty)}$ 互为反函数.
+			\item 幂函数 $y=x^\mu$ 总在 $(0,+\infty)$ 上有定义, 图像经过 $(1,1)$.
+			\item $y=x^\mu|_{(0,+\infty)}$ 和 $y=x^{\frac1\mu}|_{(0,+\infty)}$ 互为反函数.
 			\item $\mu>0$ 时, 在第一象限单调递增, 它的图像经过 $(0,0)$.
-			\item $\mu<0$ 时, 在第一象限单调递减, 有两条渐近线 $x = 0, y = 0$.
+			\item $\mu<0$ 时, 在第一象限单调递减, 有两条渐近线 $x=0, y=0$.
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -330,121 +376,135 @@
 	\begin{center}
 		\renewcommand\arraystretch{1.4}
 		\defaultrowcolors
-		\resizebox{\textwidth}{!}{
 		\begin{tabular}{|c|c|c|}\hline
 			\tht $\mu=\dfrac pq$&\tht 定义域&\tht 值域\\\hline
-			&&$p$ 为奇数时, $(-\infty, +\infty)$\\\cline{3-3}
+			&&$p$ 为奇数时, $(-\infty,+\infty)$\\\cline{3-3}
 				\multirow{-2}*{$\mu>0, q$ 奇}
-				&\multirow{-2}*{$(-\infty, +\infty)$}
-				& $p$ 为偶数时, $[0, +\infty)$\\\hline
+				&\multirow{-2}*{$(-\infty,+\infty)$}
+				& $p$ 为偶数时, $[0,+\infty)$\\\hline
 			$\mu>0, q$ 偶
-				& $[0, +\infty)$
-				& $[0, +\infty)$\\\hline
+				& $[0,+\infty)$
+				& $[0,+\infty)$\\\hline
 			&&$p$ 为奇数时, $(-\infty,0)\cup(0,+\infty)$\\\cline{3-3}
 				\multirow{-2}*{$\mu<0, q$ 奇}
 				&\multirow{-2}*{$(-\infty,0)\cup(0,+\infty)$}
-				& $p$ 为偶数时, $(0, +\infty)$\\\hline
+				& $p$ 为偶数时, $(0,+\infty)$\\\hline
 			$\mu<0, q$ 偶
-				& $(0, +\infty)$
-				& $(0, +\infty)$\\\hline
+				& $(0,+\infty)$
+				& $(0,+\infty)$\\\hline
 			$\mu$ 为无理数
-				& $(0, +\infty)$
-				& $(0, +\infty)$\\\hline
-		\end{tabular}}
+				& $(0,+\infty)$
+				& $(0,+\infty)$\\\hline
+		\end{tabular}
 	\end{center}
 \end{frame}
 
 
 \begin{frame}{三角函数}
 	\onslide<+->
-	\vspace{-\baselineskip}
+	\vspace{-0.5\baselineskip}
 	\begin{center}
 		\renewcommand\arraystretch{1.3}
 		\defaultrowcolors
-		\resizebox{\textwidth}{!}{
+		\resizebox{.9\textwidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|}\hline
 			\tht 三角函数&\tht 定义域&\tht 值域&\tht 有界性&\tht 周期&\tht 奇偶性\\\hline
 			正弦 $\sin x$&$(-\infty,+\infty)$&$[-1,1]$&有界&$2\pi$&奇函数\\\hline
 			余弦 $\cos x$&$(-\infty,+\infty)$&$[-1,1]$&有界&$2\pi$&偶函数\\\hline
 			正切 $\tan x$&$x\neq k+\half\pi, k\in\BZ$&$(-\infty,+\infty)$&无界&$\pi$&奇函数\\\hline
-			余切 $\cot x$&$x\neq k\pi, k\in\BZ$&$(-\infty, +\infty)$&无界&$\pi$&奇函数\\\hline
+			余切 $\cot x$&$x\neq k\pi, k\in\BZ$&$(-\infty,+\infty)$&无界&$\pi$&奇函数\\\hline
 			正割 $\sec x$&$x\neq k+\half\pi, k\in\BZ$&$(-\infty,-1]\cup[1,+\infty)$&无界&$2\pi$&偶函数\\\hline
 			余割 $\csc x$&$x\neq k\pi, k\in\BZ$&$(-\infty,-1]\cup[1,+\infty)$&无界&$2\pi$&奇函数\\\hline
 		\end{tabular}}
 	\end{center}
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[scale=0.5]
+		\begin{tikzpicture}[scale=0.5,framed]
 			\draw[cstaxis] (-9,0)--(9,0);
 			\draw[cstaxis] (0,-3.2)--(0,3.2);
 			\begin{scope}[visible on=<2>]
-				\draw[cstcurve,dcolora,smooth,domain=-360:360] plot ({\x/180*pi},{sin (\x)});
+				\draw[cstcurve,dcolora,smooth,domain=-390:390] plot ({\x/180*pi},{sin (\x)});
 				\draw (2,1.4) node[dcolora] {$y=\sin x$};
 				\draw[cstdash,dcolore] (1.57,0)--(1.57,1)--(0,1);
 			\end{scope}
 			\begin{scope}[visible on=<3>]
-				\draw[cstcurve,dcolorb,smooth,domain=-360:360] plot ({\x/180*pi},{cos (\x)});
+				\draw[cstcurve,dcolorb,smooth,domain=-390:390] plot ({\x/180*pi},{cos (\x)});
 				\draw (1.9,1.4) node[dcolorb] {$y=\cos x$};
 			\end{scope}
 			\begin{scope}[visible on=<4>]
-				\draw[cstcurve,dcolorc,smooth,domain=-70:70] plot ({\x/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolorc,smooth,domain=-70:70] plot ({(\x+180)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolorc,smooth,domain=-70:70] plot ({(\x+360)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolorc,smooth,domain=-70:70] plot ({(\x-180)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolorc,smooth,domain=-70:70] plot ({(\x-360)/180*pi},{tan (\x)});
+				\begin{scope}[cstcurve,dcolorc,smooth,domain=-70:70]
+					\draw plot ({\x/180*pi},{tan (\x)});
+					\draw plot ({(\x+180)/180*pi},{tan (\x)});
+					\draw plot ({(\x+360)/180*pi},{tan (\x)});
+					\draw plot ({(\x-180)/180*pi},{tan (\x)});
+					\draw plot ({(\x-360)/180*pi},{tan (\x)});
+				\end{scope}
 				\draw (7.4,-1.2) node[dcolorc] {$y=\tan x$};
-				\draw[cstdash,dcolord] (1.57,-3)--(1.57,3);
-				\draw[cstdash,dcolord] (-1.57,-3)--(-1.57,3);
-				\draw[cstdash,dcolord] (4.71,-3)--(4.71,3);
-				\draw[cstdash,dcolord] (-4.71,-3)--(-4.71,3);
+				\draw[cstdash,dcolord]
+					( 1.57,-3)--( 1.57,3)
+					(-1.57,-3)--(-1.57,3)
+					( 4.71,-3)--( 4.71,3)
+					(-4.71,-3)--(-4.71,3);
 			\end{scope}
 			\begin{scope}[visible on=<5>]
-				\draw[cstcurve,dcolora,smooth,domain=-70:70] plot ({(270-\x)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolora,smooth,domain=-70:70] plot ({(90-\x)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolora,smooth,domain=-70:70] plot ({(-90-\x)/180*pi},{tan (\x)});
-				\draw[cstcurve,dcolora,smooth,domain=-70:70] plot ({(-270-\x)/180*pi},{tan (\x)});
+				\begin{scope}[cstcurve,dcolora,smooth,domain=-70:70]
+					\draw plot ({(270-\x)/180*pi},{tan (\x)});
+					\draw plot ({(90-\x)/180*pi},{tan (\x)});
+					\draw plot ({(-90-\x)/180*pi},{tan (\x)});
+					\draw plot ({(-270-\x)/180*pi},{tan (\x)});
+				\end{scope}
 				\draw (6,1.2) node[dcolora] {$y=\cot x$};
-				\draw[cstdash,dcolord] (3.14,-3)--(3.14,3);
-				\draw[cstdash,dcolord] (-3.14,-3)--(-3.14,3);
-				\draw[cstdash,dcolord] (6.28,-3)--(6.28,3);
-				\draw[cstdash,dcolord] (-6.28,-3)--(-6.28,3);
+				\draw[cstdash,dcolord]
+					( 3.14,-3)--( 3.14,3)
+					(-3.14,-3)--(-3.14,3)
+					( 6.28,-3)--( 6.28,3)
+					(-6.28,-3)--(-6.28,3);
 			\end{scope}
 			\begin{scope}[visible on=<6>]
-				\draw[cstcurve,dcolorb,smooth,domain=20:160] plot ({(\x-90)/180*pi},{1/(sin (\x))});
-				\draw[cstcurve,dcolorb,smooth,domain=20:160] plot ({(\x+90)/180*pi},{-1/(sin (\x))});
-				\draw[cstcurve,dcolorb,smooth,domain=20:160] plot ({(\x+270)/180*pi},{1/(sin (\x))});
-				\draw[cstcurve,dcolorb,smooth,domain=20:160] plot ({(\x-270)/180*pi},{-1/(sin (\x))});
-				\draw[cstcurve,dcolorb,smooth,domain=20:160] plot ({(\x-450)/180*pi},{1/(sin (\x))});
+				\begin{scope}[cstcurve,dcolorb,smooth,domain=20:160]
+					\draw plot ({(\x-90)/180*pi},{1/(sin (\x))});
+					\draw plot ({(\x+90)/180*pi},{-1/(sin (\x))});
+					\draw plot ({(\x+270)/180*pi},{1/(sin (\x))});
+					\draw plot ({(\x-270)/180*pi},{-1/(sin (\x))});
+					\draw plot ({(\x-450)/180*pi},{1/(sin (\x))});
+				\end{scope}
 				\draw (2.6,1.2) node[dcolorb] {$y=\sec x$};
-				\draw[cstdash,dcolord] (1.57,-3)--(1.57,3);
-				\draw[cstdash,dcolord] (-1.57,-3)--(-1.57,3);
-				\draw[cstdash,dcolord] (4.71,-3)--(4.71,3);
-				\draw[cstdash,dcolord] (-4.71,-3)--(-4.71,3);
+				\draw[cstdash,dcolord]
+					( 1.57,-3)--( 1.57,3)
+					(-1.57,-3)--(-1.57,3)
+					( 4.71,-3)--( 4.71,3)
+					(-4.71,-3)--(-4.71,3);
 			\end{scope}
 			\begin{scope}[visible on=<7>]
-				\draw[cstcurve,dcolorc,smooth,domain=20:160] plot ({\x/180*pi},{1/(sin (\x))});
-				\draw[cstcurve,dcolorc,smooth,domain=20:160] plot ({(\x+180)/180*pi},{-1/(sin (\x))});
-				\draw[cstcurve,dcolorc,smooth,domain=20:160] plot ({(\x-180)/180*pi},{-1/(sin (\x))});
-				\draw[cstcurve,dcolorc,smooth,domain=20:160] plot ({(\x-360)/180*pi},{1/(sin (\x))});
+				\begin{scope}[cstcurve,dcolorc,smooth,domain=20:160]
+					\draw plot ({\x/180*pi},{1/(sin (\x))});
+					\draw plot ({(\x+180)/180*pi},{-1/(sin (\x))});
+					\draw plot ({(\x-180)/180*pi},{-1/(sin (\x))});
+					\draw plot ({(\x-360)/180*pi},{1/(sin (\x))});
+				\end{scope}
 				\draw (4.2,1.2) node[dcolorc] {$y=\csc x$};
-				\draw[cstdash,dcolord] (3.14,-3)--(3.14,3);
-				\draw[cstdash,dcolord] (-3.14,-3)--(-3.14,3);
-				\draw[cstdash,dcolord] (6.28,-3)--(6.28,3);
-				\draw[cstdash,dcolord] (-6.28,-3)--(-6.28,3);
+				\draw[cstdash,dcolord]
+					( 3.14,-3)--( 3.14,3)
+					(-3.14,-3)--(-3.14,3)
+					( 6.28,-3)--( 6.28,3)
+					(-6.28,-3)--(-6.28,3);
 				\draw[cstdash,dcolore] (1.57,0)--(1.57,1)--(0,1);
 			\end{scope}
-			\draw[thick] (1.57,0)--(1.57,0.3);
-			\draw[thick] (3.14,0)--(3.14,0.3);
-			\draw[thick] (4.71,0)--(4.71,0.3);
-			\draw[thick] (6.28,0)--(6.28,0.3);
-			\draw[thick] (-1.57,0)--(-1.57,0.3);
-			\draw[thick] (-3.14,0)--(-3.14,0.3);
-			\draw[thick] (-4.71,0)--(-4.71,0.3);
-			\draw[thick] (-6.28,0)--(-6.28,0.3);
-			\draw[thick] (0,1)--(0.3,1);
-			\draw[thick] (0,2)--(0.3,2);
-			\draw[thick] (0,-1)--(0.3,-1);
-			\draw[thick] (0,-2)--(0.3,-2);
+			\begin{scope}[thick]
+				\draw
+					( 1.57,0)--( 1.57,0.3)
+					( 3.14,0)--( 3.14,0.3)
+					( 4.71,0)--( 4.71,0.3)
+					( 6.28,0)--( 6.28,0.3)
+					(-1.57,0)--(-1.57,0.3)
+					(-3.14,0)--(-3.14,0.3)
+					(-4.71,0)--(-4.71,0.3)
+					(-6.28,0)--(-6.28,0.3)
+					(0, 1)--(0.3, 1)
+					(0, 2)--(0.3, 2)
+					(0,-1)--(0.3,-1)
+					(0,-2)--(0.3,-2);
+			\end{scope}
 			\draw
 				(0.4,-0.4) node {$O$}
 				(8.6,-0.4) node {$x$}
@@ -469,10 +529,39 @@
 \begin{frame}{反三角函数}
 	\onslide<+->
 	\begin{definition}
+		\onslide<2->{
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-65mm,yshift=20mm]
+			\draw[cstaxis] (-1.8,0)--(1.8,0);
+			\draw[cstaxis] (0,-2)--(0,3.6);
+			\draw[cstcurve,dcolora,smooth,domain=-90:90] plot ({sin (\x)},{\x/180*pi});
+			\draw (2.2,1.4) node[dcolora] {$y=\arcsin x$};
+			\begin{scope}[visible on=<3->]
+				\draw[cstdash,dcolore] (0,1.57)--(1,1.57)--(1,0) (0,-1.57)--(-1,-1.57)--(-1,0);
+				\draw
+					(-0.3,1.57) node {$\frac\pi2$}
+					(0.3,-1.57) node {$-\frac\pi2$}
+					(1,-0.2) node {$1$}
+					(-1,-0.2) node {$-1$};
+			\end{scope}
+			\begin{scope}[dcolorb,visible on=<5->]
+				\draw[cstcurve,smooth,domain=0:180] plot ({cos (\x)},{\x/180*pi});
+				\draw (0.5,2.5) node {$y=\arccos x$};
+			\end{scope}
+			\begin{scope}[visible on=<6->]
+				\draw[cstdash,dcolore] (0,3.14)--(-1,3.14)--(-1,0);
+				\draw (0.2,3.14) node {$\pi$};
+			\end{scope}
+			\draw
+				(0.2,-0.2) node {$O$}
+				(1.6,-0.2) node {$x$}
+				(-0.2,3.4) node {$y$};
+		\end{tikzpicture}\end{tikzpicture}
+		\vspace{-50mm}
+		\onslide<1->
 		\begin{enumerate}
 			\item \emph{反正弦函数 $y=\arcsin x$}.
 
-			\onslide<+->{定义域为 $[-1,1]$, 值域为 $\left[-\frac\pi2,\frac\pi2\right]$.}
+			\onslide<+->{定义域为 $[-1,1]$, 值域为 $\left[-\dfrac\pi2,\dfrac\pi2\right]$.}
 
 			\onslide<+->{有界、单调递增奇函数.}
 			\item \emph{反余弦函数 $y=\arccos x$}.
@@ -480,31 +569,8 @@
 			\onslide<+->{定义域为 $[-1,1]$, 值域为 $[0,\pi]$.}
 
 			\onslide<+->{有界、单调递减函数.}
-		\end{enumerate}
-		\vspace{1.8cm}
-	\onslide<2->{
-		\begin{tikzpicture}[overlay,xshift=8.7cm,yshift=2cm]
-			\draw[cstaxis] (-1.8,0)--(1.8,0);
-			\draw[cstaxis] (0,-2)--(0,3.6);
-			\draw[cstcurve,dcolora,smooth,domain=-90:90] plot ({sin (\x)},{\x/180*pi});
-			\draw (2.2,1.4) node[dcolora] {$y=\arcsin x$};
-			\draw[cstdash,dcolore] (0,1.57)--(1,1.57)--(1,0);
-			\draw[cstdash,dcolore] (0,-1.57)--(-1,-1.57)--(-1,0);
-			\begin{scope}[visible on=<5->]
-				\draw[cstcurve,dcolorb,smooth,domain=0:180] plot ({cos (\x)},{\x/180*pi});
-				\draw (0.5,2.5) node[dcolorb] {$y=\arccos x$};
-				\draw[cstdash,dcolore] (0,3.14)--(-1,3.14)--(-1,0);
-				\draw (0.2,3.14) node {$\pi$};
-			\end{scope}
-			\draw
-				(0.2,-0.2) node {$O$}
-				(1.6,-0.2) node {$x$}
-				(0.2,3.4) node {$y$}
-				(-0.3,1.57) node {$\frac\pi2$}
-				(0.3,-1.57) node {$-\frac\pi2$}
-				(1,-0.2) node {$1$}
-				(-1,-0.2) node {$-1$};
-		\end{tikzpicture}}
+		\end{enumerate}}
+		\vspace{10mm}
 	\end{definition}
 	\onslide<+->
 	二者满足等式 \alert{$\arcsin x+\arccos x=\frac\pi2$}.
@@ -516,35 +582,39 @@
 	\begin{definition}
 		\begin{enumerate}
 			\item \emph{反正切函数 $y=\arctan x$}.
-			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $\left[-\frac\pi2,\frac\pi2\right]$.
+			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $\left(-\frac\pi2,\frac\pi2\right)$.
 			}\onslide<+->{有界、单调递增奇函数.
 			}\onslide<+->{有两条渐近线 $y=\pm\frac\pi2$.}
 			\item \emph{反余切函数 $y=\arccot x$}.
-			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $[0,\pi]$.
+			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $(0,\pi)$.
 			}\onslide<+->{有界、单调递减函数.
 			}\onslide<+->{有两条渐近线 $y=0,\pi$.}
 		\end{enumerate}
 	\onslide<2->{
 		\begin{center}
-		\begin{tikzpicture}[scale=0.5]
+		\begin{tikzpicture}[scale=0.5,framed]
 			\draw[cstaxis] (-5,0)--(5,0);
 			\draw[cstaxis] (0,-2)--(0,4.2);
 			\draw[cstcurve,dcolora,smooth,domain=-78:78] plot ({tan (\x)},{\x/180*pi});
 			\draw (-3.4,-0.6) node[dcolora] {$y=\arctan x$};
-			\draw[cstdash,dcolord] (-5,1.57)--(5,1.57);
-			\draw[cstdash,dcolord] (-5,-1.57)--(5,-1.57);
-			\begin{scope}[visible on=<6->]
-				\draw[cstcurve,dcolorb,smooth,domain=-78:78] plot ({tan (\x)},{(90-\x)/180*pi});
-				\draw (-3.4,2.1) node[dcolorb] {$y=\arccot x$};
+			\begin{scope}[visible on=<3->]
+				\draw[cstdash,dcolord] (-5,1.57)--(5,1.57) (-5,-1.57)--(5,-1.57);
+				\draw
+					(0.3,2.2) node {$\frac\pi2$}
+					(0.6,-1) node {$-\frac\pi2$};
+			\end{scope}
+			\begin{scope}[dcolorb,visible on=<6->]
+				\draw[cstcurve,smooth,domain=-78:78] plot ({tan (\x)},{(90-\x)/180*pi});
+				\draw (-3.4,2.1) node {$y=\arccot x$};
+			\end{scope}
+			\begin{scope}[visible on=<7->]
 				\draw[cstdash,dcolord] (-5,3.14)--(5,3.14);
 				\draw (-0.3,2.8) node {$\pi$};
 			\end{scope}
 			\draw
 				(-0.4,0.4) node {$O$}
 				(4.6,-0.4) node {$x$}
-				(0.4,3.8) node {$y$}
-				(0.3,2.2) node {$\frac\pi2$}
-				(0.6,-1) node {$-\frac\pi2$};
+				(0.4,3.8) node {$y$};
 		\end{tikzpicture}
 		\end{center}}
 	\end{definition}
@@ -578,39 +648,38 @@
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{definition}
-		定义\emph{双曲正弦/余弦/正切函数}为
+		\onslide<2->{
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=12mm]
+			\draw[cstaxis] (-3,0)--(3,0);
+			\draw[cstaxis] (0,-1.2)--(0,2.5);
+			\draw[cstcurve,dcolora,smooth,domain=-1:1.2] plot (\x,{(e^\x-e^(-\x))/2});
+			\draw (2.1,1.6) node[dcolora] {$y=\sh x$};
+			\begin{scope}[dcolorb,visible on=<3->]
+				\draw[cstcurve,smooth,domain=-1.5:1.5] plot (\x,{(e^\x+e^(-\x))/2});
+				\draw (-1.8,1.3) node {$y=\ch x$};
+			\end{scope}
+			\begin{scope}[dcolorc,visible on=<4->]
+				\draw[cstcurve,smooth,domain=-3:3] plot (\x,{1-2/(e^(2*\x)+1)});
+				\draw (-1.8,-0.6) node {$y=\tanh x$};
+			\end{scope}
+			\draw[cstdash,dcolord,visible on=<7->] (-3,1)--(3,1) (-3,-1)--(3,-1);
+			\draw
+				(0.2,-0.2) node {$O$}
+				(2.8,-0.2) node {$x$}
+				(0.2,2.3) node {$y$};
+		\end{tikzpicture}\end{tikzpicture}}
+
+		\vspace{-40mm}
+		\onslide<1->{定义\emph{双曲正弦/余弦/正切函数}为}
 		\begin{itemize}
 			\item $\sh x=\dfrac{e^x-e^{-x}}2$,
 			\item $\ch x=\dfrac{e^x+e^{-x}}2$,
 			\item $\tanh x=\dfrac{e^x-e^{-x}}{e^x+e^{-x}}$.
 		\end{itemize}
 	\end{definition}
-	\onslide<2->
-	\begin{tikzpicture}[overlay,xshift=8.2cm,yshift=1.7cm]
-		\draw[cstaxis] (-3,0)--(3,0);
-		\draw[cstaxis] (0,-1.2)--(0,2.5);
-		\draw[cstcurve,dcolora,smooth,domain=-1:1.6] plot (\x,{(e^\x-e^(-\x))/2});
-		\draw (2.1,1.6) node[dcolora] {$y=\sh x$};
-		\begin{scope}[visible on=<3->]
-			\draw[cstcurve,dcolorb,smooth,domain=-1.5:1.5] plot (\x,{(e^\x+e^(-\x))/2});
-			\draw (-1.8,1.3) node[dcolorb] {$y=\ch x$};
-		\end{scope}
-		\begin{scope}[visible on=<4->]
-			\draw[cstcurve,dcolorc,smooth,domain=-3:3] plot (\x,{1-2/(e^(2*\x)+1)});
-			\draw (-1.8,-0.6) node[dcolorc] {$y=\tanh x$};
-		\end{scope}
-		\begin{scope}[visible on=<7->]
-			\draw[cstdash,dcolord] (-3,1)--(3,1);
-			\draw[cstdash,dcolord] (-3,-1)--(3,-1);
-		\end{scope}
-		\draw
-			(0.2,-0.2) node {$O$}
-			(2.8,-0.2) node {$x$}
-			(0.2,2.3) node {$y$};
-	\end{tikzpicture}
 	\begin{itemize}
 		\item $\sh x$ 值域为 $\BR$, 是单调递增奇函数.
-		\item $\ch x$ 值域为 $[1,+\infty)$, 是偶函数, 且在 $[0, +\infty)$ 上单调递增.
+		\item $\ch x$ 值域为 $[1,+\infty)$, 是偶函数, 且在 $[0,+\infty)$ 上单调递增.
 		\item $\tanh x$ 值域为 $(-1,1)$, 是单调递增奇函数, 有两条渐近线 $y=\pm1$.
 	\end{itemize}
 	\onslide<+->
@@ -622,45 +691,45 @@
 \begin{frame}{反双曲函数}
 	\onslide<+->
 	\begin{definition}
-		定义\emph{反双曲正弦/余弦/正切函数}为
-		\begin{itemize}
-			\item $\arsh x=\ln(x+\sqrt{x^2+1})$,
-			\item $\arch x=\ln(x+\sqrt{x^2-1})$,
-			\item $\arth x=\dfrac12\ln\dfrac{1+x}{1-x}$.
-		\end{itemize}\vspace{1cm}
-	\end{definition}
-	\onslide<2->
-	\begin{tikzpicture}[overlay,xshift=8cm,yshift=2.3cm]
+	\onslide<2->{
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-42mm,yshift=21mm]
 		\draw[cstaxis] (0,-1.4)--(0,1.9);
 		\draw[cstaxis] (-2.5,0)--(3,0);
 		\draw[cstcurve,dcolora,smooth,domain=-1.65:1.85] plot ({(e^\x-e^(-\x))/2},\x);
 		\draw (-2,-0.7) node[dcolora] {$y=\arsh x$};
-		\begin{scope}[visible on=<3->]
-			\draw[cstcurve,dcolorb,smooth,domain=0:1.8] plot ({(e^\x+e^(-\x))/2},\x);
-			\draw (2.1,0.4) node[dcolorb] {$y=\arch x$};
+		\begin{scope}[dcolorb,visible on=<3->]
+			\draw[cstcurve,smooth,domain=0:1.8] plot ({(e^\x+e^(-\x))/2},\x);
+			\draw (2.1,0.4) node {$y=\arch x$};
 		\end{scope}
-		\begin{scope}[visible on=<4->]
-			\draw[cstcurve,dcolorc,smooth,domain=-1.9:1.9] plot ({1-2/(e^(2*\x)+1)},\x);
-			\draw (0.05,-1.7) node[dcolorc] {$y=\arth x$};
+		\begin{scope}[dcolorc,visible on=<4->]
+			\draw[cstcurve,smooth,domain=-1.9:1.9] plot ({1-2/(e^(2*\x)+1)},\x);
+			\draw (0.05,-1.7) node {$y=\arth x$};
 		\end{scope}
-		\begin{scope}[visible on=<7->]
-			\draw[cstdash,dcolord] (1,-1.9)--(1,1.9);
-			\draw[cstdash,dcolord] (-1,-1.9)--(-1,1.9);
-		\end{scope}
+		\draw[cstdash,dcolord,visible on=<7->] (1,-1.9)--(1,1.9) (-1,-1.9)--(-1,1.9);
 		\draw
 			(0.2,-0.2) node {$O$}
 			(2.8,-0.2) node {$x$}
 			(0.2,1.7) node {$y$};
-	\end{tikzpicture}
+	\end{tikzpicture}\end{tikzpicture}}
+
+	\vspace{-38mm}
+	\onslide<1->{定义\emph{反双曲正弦/余弦/正切函数}为}
+		\begin{itemize}
+			\item $\arsh x=\ln(x+\sqrt{x^2+1})$,
+			\item $\arch x=\ln(x+\sqrt{x^2-1})$,
+			\item $\arth x=\dfrac12\ln\dfrac{1+x}{1-x}$.
+		\end{itemize}
+	\vspace{6mm}
+	\end{definition}
 	\begin{itemize}
 		\item $\arsh x$ 定义域和值域为 $\BR$, 是单调递增奇函数.
-		\item $\arch x$ 定义域为 $[1, +\infty)$, 值域为 $[0, +\infty)$, 是单调递增函数.
+		\item $\arch x$ 定义域为 $[1,+\infty)$, 值域为 $[0,+\infty)$, 是单调递增函数.
 		\item $\arth x$ 定义域为 $(-1,1)$, 值域为 $\BR$, 是单调递增奇函数, 有两条渐近线 $x=\pm1$.
 	\end{itemize}
 \end{frame}
 
 
-\begin{frame}{双曲函数与三角函数}
+\begin{frame}{双曲函数与三角函数\noexer}
 	\onslide<+->
 	双曲函数有着类似三角函数的性质:
 	\begin{itemize}
@@ -673,5 +742,6 @@
 	\onslide<+->
 	其根本原因在于复数域上的欧拉公式 $e^{ix}=\cos x+i\sin x$.
 	\onslide<+->
-	可以看出 (形式上): $\ch(ix)=\cos x, \sh(ix)=i\sin x$.
+	可以看出 (形式上):
+	\[\ch(ix)=\cos x, \quad\sh(ix)=i\sin x.\]
 \end{frame}

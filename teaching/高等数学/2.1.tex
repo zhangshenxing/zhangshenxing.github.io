@@ -1,202 +1,357 @@
+\section{数列的极限}
 
-\end{frame}
+\subsection{极限的引入}
+% \begin{frame}{极限的引入}
+% 	\onslide<+->
+% 	\begin{example*}
+% 		我们知道, 双曲线 $\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1$ 的图像有两条渐近线 $\dfrac xa\pm\dfrac yb=0$.
 
-
-\begin{frame}
-第 二 章 极 限 和 连 续
-\end{frame}
-
-
-\begin{frame}
-2.1 数列的极限
-	\begin{example}
-我们知道, 双曲线 x 2
-\end{example}
-a2 - y2
-𝑏2=1 的图像有两条渐近线 x
-a \pm y
-𝑏=0.
-	所谓的渐近线, 指的是曲线上一点 𝑀 沿曲线趋近于无穷远或某个间断点
-时, 如果 𝑀 到一条直线的距离无限趋近于零，那么这条直线称为这条曲
-线的渐近线。
-	在这个定义中, 为了严格地描述“趋近”的含义, 我们需要引入极限的概
-念.
-	\begin{example}
-一辆汽车沿着直线行驶, 它的瞬时速率 𝑣 定义为 Δ𝑠
-\end{example}
-Δ𝑡 , 其中 Δ𝑠 为一小段
-时间 Δ𝑡 内的位移, Δ𝑡 需要充分小. 严格地描述它需要引入极限的概念.
-\end{frame}
+% 		\onslide<+->{所谓的渐近线, 指的是当曲线上一点 $M$ 沿曲线\alert{趋近}于无穷远或某个间断点时, 如果 $M$ 到一条直线的距离无限\alert{趋近}于零, 那么这条直线称为这条曲线的\emph{渐近线}.
+% 		}\onslide<+->{在这个定义中, 为了严格地描述``趋近''的含义, 我们需要引入极限的概念.}
+% 	\end{example*}
+% 	\onslide<+->
+% 	\begin{example*}
+% 		一辆汽车沿着直线行驶, 它的\alert{瞬时速率} $v$ 定义为 $\dfrac{\Delta s}{\Delta t}$, 其中 $\Delta s$ 为一小段时间 $\Delta t$ 内的位移, $\Delta t$ 需要\alert{充分小}.
+		
+% 		\onslide<+->{严格地描述它需要引入极限的概念.}
+% \end{example*}
+% \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-我国古代数学家刘徽为了计算圆周率 \pi, 采用无限逼近的思
-\end{example}
-想建立了割圆法.
-	计算单位圆内接正六边形的面积 𝐴1=3 sin \pi
-3=3 3
-2 .
-	计算单位圆内接正12边形的面积 𝐴2=6 sin \pi
-6=3.
-	计算单位圆内接正24边形的面积 𝐴3=12 sin \pi
-12=3 6 - 2 .
-	计算单位圆内接正3 ⋅ 2n 边形的面积 𝐴n=3 ⋅ 2n-1 sin \pi
-3⋅2n-1 .
-	如此下去, 这个面积越来越接近圆的面积 \pi. 其中正弦值可以通
-过半角公式计算得到.
-	为什么这样下去会越来越趋近于 \pi 呢? 这也需要用到极限的概
-念.
-\end{frame}
+% \begin{frame}{极限的引入}\small
+% 	\begin{example}
+% 		我国古代数学家刘徽为了计算圆周率 $\pi$, 采用\alert{无限逼近}的思想建立了割圆法.
+% 		\begin{tikzpicture}[overlay,xshift=-0.5cm,yshift=-1.7cm,scale=1.5]
+% 			\draw[cstcurve,dcolora] (0,0) circle (1);
+% 			\foreach \j in {1,2,3,...,6}{
+% 				\filldraw[cstcurve,dcolorb,cstfill,visible on=<2>] (0,0)--({cos (60*\j)},{sin (60*\j)})--({cos(60*(\j+1))},{sin(60*(\j+1))})--cycle;
+% 			}
+% 			\foreach \j in {1,2,3,...,12}{
+% 				\filldraw[thick,dcolorb,cstfill,visible on=<3>] (0,0)--({cos (30*\j)},{sin (30*\j)})--({cos(30*(\j+1))},{sin(30*(\j+1))})--cycle;
+% 			}
+% 			\foreach \j in {1,2,3,...,24}{
+% 				\filldraw[semithick,dcolorb,cstfill,visible on=<4>] (0,0)--({cos (15*\j)},{sin (15*\j)})--({cos(15*(\j+1))},{sin(15*(\j+1))})--cycle;
+% 			}
+% 			\foreach \j in {1,2,3,...,48}{
+% 				\filldraw[thin,dcolorb,cstfill,visible on=<5->] (0,0)--({cos (7.5*\j)},{sin (7.5*\j)})--({cos(7.5*(\j+1))},{sin(7.5*(\j+1))})--cycle;
+% 			}
+% 		\end{tikzpicture}
+% 		\onslide<+->{
+% 		\begin{itemize}
+% 			\item 计算单位圆内接正 $6$ 边形的面积 $A_1=3\sin\dfrac\pi3=\dfrac{3\sqrt3}2$.
+% 			\item 计算单位圆内接正 $12$ 边形的面积 $A_2=6\sin\dfrac\pi6=3$.
+% 			\item 计算单位圆内接正 $24$ 边形的面积 $A_3=12\sin\dfrac\pi{12}=3(\sqrt6-\sqrt2)$.
+% 			\item 计算单位圆内接正 $3\cdot 2^n$ 边形的面积 $A_n=3\cdot2^{n-1}\sin\dfrac\pi{3\cdot2^{n-1}}$.
+% 		\end{itemize}
+% 		}\onslide<+->{如此下去, 这个面积\alert{越来越}接近圆的面积 $\pi$. 其中正弦值可以通过半角公式计算得到.
+% 		}\onslide<+->{为什么这样下去会越来越趋近于 $\pi$ 呢? 这也需要用到极限的概念.}
+% 	\end{example}
+% \end{frame}
+
+% \subsection{极限的定义}
+% \begin{frame}{数列极限的定义}
+% 	\onslide<+->
+% 	极限可以按如下方式理解: 给定一个函数 $y=f(x)$, 当 $x$ 越来越趋向而且无限接近于某个状态(称之为\emph{极限过程})时, $y$ 越来越趋向且无限接近某个值 $A$, 则 $A$ 就是 $y=f(x)$ 关于这个极限过程的\emph{极限}.
+
+% 	\onslide<+->
+% 	如何用严格的数学语言来描述呢? 
+% 	\onslide<+->
+% 	我们先考虑数列的情形.
+% 	\onslide<+->
+% 	所谓的\emph{(无穷)数列}是指按一定规则排列的无穷多个实数
+% 	\[a_1,a_2,\dots,a_n,\dots\]
+% 	\onslide<+->
+% 	记为 $\{a_n\}_{n\ge1}$, $a_n$ 被称为\emph{第 $n$ 项}, 用于描述所有项的式子 $a_n=f(n)$ 被称为它的\emph{通项}.
+% 	\onslide<+->
+% 	注意和集合不同, 这里 $a_i$ 有顺序, 而且可以有相同的.
+
+% 	\onslide<+->
+% 	事实上一个数列和一个定义域是全体正整数的函数
+% 		\[f:\{1,2,3,\dots\}\ra\BR\]
+% 	是一回事.
+% \end{frame}
 
 
-\begin{frame}
-	数列极限的定义
-	极限的非严格定义 对于一个数的过程和实数 a, 如果对于任意的正数 𝜀 >
-0, 均存在某个过程的截断, 在这个截断之后, 这个过程和 a 相差不超过 𝜀.
-	我们先来看数列的极限. 所谓(无穷)数列, 就是指按一定规则排列的无穷多
-个实数 a1 , a2 , ... , an , ...
-	记为 {an }, an 被称为第 n 项, 用于描述所有项的式子 an=f n 被称为
-它的通项.
-	注意和集合不同, 这里 a𝑖 有顺序, 而且可以有相同的.
-	数列等价于一个函数 f: ℕ+=1,2,3, ... \ra ℝ.
-\end{frame}
+% \begin{frame}{极限的例子}
+% 	\onslide<+->
+% 	\begin{example}
+% 		\begin{itemize}
+% 			\item $\set{\dfrac1{2^n}}: \dfrac12,\dfrac14,\dfrac18,\dfrac1{16},\dfrac1{32},\cdots$ 递减地越来越接近 $0$;
+% 			\item $\set{n}: 1,2,3,4,5,\cdots$ 无限增大;
+% 			\item $\set{3\cdot 2^{n-1}\sin\dfrac\pi{3\cdot2^{n-1}}}: \dfrac{3\sqrt3}2, 3,3(\sqrt6-\sqrt2),24\sin\dfrac\pi{24}, \cdots$ 递增地越来越接近 $\pi$;
+% 			\item $\set{1+\dfrac{(-1)^n}n}:0,\dfrac32,\dfrac23,\dfrac54,\dfrac45,\dfrac76,\dfrac67,\cdots$ 交错地越来越接近 $1$;
+% 			\item $\set{(-1)^n+\dfrac1n}:0,\dfrac32,-\dfrac23,\dfrac54,-\dfrac45,\dfrac76,-\dfrac67,\cdots$ 奇数项和偶数项分别交错地越来越接近 $1$ 和 $-1$.
+% 		\end{itemize}
+% 	\end{example}
+% \end{frame}
 
 
-\begin{frame}
-	不同的数列当 n \ra \infty 时具有不同的表现行为.
-	1
-2n : 1
-2 , 1
-4 , 1
-8 , 1
-16 , 1
-32 ... 递减地越来越接近 0
-	n : 1,2,3,4,5, ... 无限增大
-	3 ⋅ 2n-1 sin \pi
-3⋅2n-1 : 3 3
-2 , 3,3 6 - 2 , 24 sin \pi
-24 , ... 递增地越来越接近 \pi
-	1 + -1 n
-n : 0, 3
-2 , 2
-3 , 5
-4 , 4
-5 , 7
-6 , 6
-7 , ... 交错地越来越接近 1.
-	-1 n + 1
-n : 0, 3
-2 , - 2
-3 , 5
-4 , - 4
-5 , 7
-6 , - 6
-7 , ... 交错地分别越来越接近 1 和 -1.
-\end{frame}
+% \subsection{极限的定义}
+% \begin{frame}{数列极限的特点}
+% 	\onslide<+->
+% 	我们来尝试定义数列的极限: 数列 $\{a_n\}$ 的极限是 $a$ 是指 $a_n$ 越来越接近 $a$, 即 $|a_{n+1}-a|<|a_n-a|$.\fillbrace{\visible<+->{\falseex}}
+
+% 	\onslide<+->
+% 	例如数列
+% 	\[\set{a_n=\frac{n+1}n}:2, \frac32, \frac43, \frac54,\cdots\]
+% 	是单调递减的, 因此越来越接近 $0$.
+% 	\onslide<+->
+% 	但显然 $1$ 应该才是更符合极限的直观才对.
+% 	\onslide<+->
+% 	所以我们应当要求 $|a_n-a|$ 越来越趋向于 $0$ 且可以任意地小?
+
+% 	\onslide<+->
+% 	事实上, 我们可以看出, 修改数列中任意有限项是不影响它的无限的趋势的, 所以我们\alert{只需要求 $|a_n-a|$ 可以任意地小}即可.
+% 	\onslide<+->
+% 	例如, 对于 $\forall\varepsilon>0$, 当 $n>\dfrac1\varepsilon$ 时, $\abs{a_n-1}=\dfrac1n<\varepsilon$.
+% 	\onslide<+->
+% 	这便引出了数列极限的定义.
+% \end{frame}
 
 
-\begin{frame}
-	定义 设有数列 an 和常数 a. 如果
-\forall 𝜀>0, ∃𝑁 使得当 n>𝑁 时, 有 an - a < 𝜀,
-	则称 a 为 an 当 n \ra \infty 时的极限, 记为 lim
-n\ra\infty an=a 或 an \ra a n \ra \infty .
-	如果不存在这样的常数 a, 则称该数列发散(没有极限, 不收敛).
-	我们将红字部分称为 𝜀-𝑁 语言.
-	𝜀 的任意性保证了 an 和 a 可以任意接近. 由于 𝜀 小的情形可以推出更大
-的 𝜀 成立, 因此我们实际只需要考虑很接近 0 的 𝜀.
-	而 𝑁=𝑁𝜀 则与 𝜀 相对应, 不同的 𝜀 可能对应不同的 𝑁𝜀 . 该数值可以换成
-任何一个比它大的数值, 所以我们只关心它的存在性, 而不关心它具体的
-数值. 所以我们可以根据需要假设 𝑁>0 或者 𝑁 是正整数.
-\end{frame}
+% \begin{frame}{数列极限的定义}
+% 	\beqskip{8pt}
+% 	\onslide<+->
+% 	\begin{definition*}
+% 		设有数列 $a_n$ 和常数 $a$. 如果
+% 		\[\text{\color{red}$\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$},\]
+% 		则称 $a$ 为 \emph{$a_n$ 当 $n \ra \infty$ 时的极限}, 记为
+% 		\[\text{\emph{$\lim\limits_{n\ra\infty}a_n=a$} 或 $a_n\ra a (n\ra \infty)$}.\]
+% 		\onslide<+->{此时称该数列\emph{收敛}.}
+
+% 		\onslide<+->{如果不存在这样的常数 $a$, 则称该数列\emph{发散}(没有极限, 不收敛).}
+% 	\end{definition*}
+% 	\onslide<+->
+% 	我们将红字部分称为 \alert{$\varepsilon$-$N$ 语言}.
+% 	\onslide<+->
+% 	注意该定义并不是 $\exists N,\forall\varepsilon$ 使得当 $n>N$ 时, 有 $\abs{a_n-a}<\varepsilon$.
+% 	\onslide<+->
+% 	对于不同的 $\varepsilon$, $N=N_\varepsilon$ 往往也不相同.
+	
+% 	\onslide<+->
+% 	如果对于 $\varepsilon>0$ 存在这样的 $N$, 那么对于 $\varepsilon'>\varepsilon$, 这个 $N$ 仍然满足: 当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+% 	\onslide<+->
+% 	所以在实际问题中, 可不妨设 $\varepsilon$ 不太大, 例如 $\varepsilon<1$.
+% 	\onslide<+->
+% 	同理, 也可不妨设 $N$ 不太小, 例如 $N\ge 99$ 之类的.
+% 	\endgroup
+% \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-证明当 q < 1 时 lim
-\end{example}
-n\ra\infty qn=0.
-	分析 这种问题的证明通常分为两步:
-	估计 an - a , 得到它和 n 的不等式关系, 从而求得 𝑁=𝑁𝜀 . 这个过
-程中可以进行适当的放缩.
-	将上述 𝑁 代入极限的定义中.
+% \begin{frame}{例题: 极限的定义证明}
+% 	\beqskip{4pt}
+% 	\onslide<+->
+% 	\begin{example}
+% 		证明当 $|q|<1$ 时, $\lim\limits_{n\ra\infty}q^n=0$.
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{analysis}
+% 		这种问题的证明通常分为两步:
+% 		\begin{itemize}
+% 			\item 估计 $|a_n-a|$, 得到它和 $n$ 的不等式关系, 从而求得 $N=N_\varepsilon$. 这个过程中可以进行适当的放缩.
+% 			\item 将上述 $N$ 代入极限的定义中.
+% 		\end{itemize}
+% 	\end{analysis}
+% 	\onslide<+->
+% 	\begin{proof}
+% 		\[|q^n-0|=|q|^n<\varepsilon,\qquad n>\log_{|q|}\varepsilon.\]
+% 		\onslide<+->{$\forall\varepsilon>0$, 令 \alert{$N=\log_{|q|}\varepsilon$}.
+% 		}\onslide<+->{当 $n>N$ 时, 有 \alert{$|q^n-0|=|q|^ n<\varepsilon$}.
+% 		}\onslide<+->{所以 \alert{$\lim\limits_{n\ra\infty}q^n=0$}.\qedhere}
+% 	\end{proof}
+% 	\onslide<+->
+% 	对于其它证明极限的问题, 我们只需替换红字部分.
+% 	\endgroup
+% \end{frame}
+
+
+% \begin{frame}{例题: 极限的定义证明}
+% 	\onslide<+->
+% 	\begin{example}
+% 		证明 $\lim\limits_{n\ra\infty}\dfrac{\sin n}n=0$.
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{proof}
+% 		我们有 $\abs{\dfrac{\sin n}n-0}\le\dfrac1n$.
+% 		\onslide<+->{$\forall\varepsilon>0$, 令 $N=\dfrac1\varepsilon$.
+% 		 }\onslide<+->{当 $n>N$ 时, 有
+% 		 \[\abs{\frac{\sin n}n-0}\le\frac1n<\varepsilon.\]
+% 		 }\onslide<+->{所以 $\lim\limits_{n\ra\infty}\dfrac{\sin n}n=0$.\qedhere}
+% 	\end{proof}
+% \end{frame}
+
+
+% \begin{frame}{例题: 极限的定义证明}\small
+% 	\beqskip{5pt}
+% 	\onslide<+->
+% 	\begin{example}
+% 		证明 $\lim\limits_{n\ra\infty}\dfrac{2n^2+2n-4}{n^2-8}=2$.
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{proof}
+% 		我们有 $\abs{\dfrac{2n^2+2n-4}{n^2-8}-2}=\dfrac{2n+12}{n^2-8}$.
+% 		\onslide<+->{若 $n\ge12$, 则 $\displaystyle\abs{\frac{2n+12}{n^2-8}}\le\frac{3n}{n^2-n}=\frac3{n-1}$.
+% 		}\onslide<+->{$\forall\varepsilon>0$, 令 $N=\max\set{1+\dfrac3\varepsilon,12}$.
+% 		 }\onslide<+->{当 $n>N$ 时, 有
+% 		\[\abs{\frac{2n^2+2n-4}{n^2-8}-2}\le\frac3{n-1}<\varepsilon.\]
+% 		 }\onslide<+->{所以 $\lim\limits_{n\ra\infty}\dfrac{2n^2+2n-4}{n^2-8}=0$.\qedhere}
+% 	\end{proof}
+% 	\endgroup
+% \end{frame}
+
+
+% \begin{frame}{例题: 极限的定义}
+% 	\onslide<+->
+% 	\begin{example}
+% 		单选题: ``极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在''的充要条件是``$\forall\varepsilon>0$,\fillbrace{\visible<3->{C}}''.
+% 		\xx{必有无穷多项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
+% 		{所有项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
+% 		{只有有限项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
+% 		{可能有无穷多项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{solution}
+% 		$\forall\varepsilon>0$, 存在正整数 $N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+% 		\onslide<+->{这等价于至多只有有限项 $a_1 ,\dots, a_N$ 满足 $|a_n-a|\ge \varepsilon$. 故选 C, 而 BD 均不正确.
+% 		}\onslide<+->{对于 A , 反例 $a_n=(-1)^n, a=1$.}
+% 	\end{solution}
+% \end{frame}
+
+% \subsection{收敛数列的性质}
+
+% \begin{frame}{数列极限的唯一性}
+% 	\onslide<+->
+% 	\begin{theorem}[唯一性]
+% 		收敛数列的极限是唯一的.
+% 	\end{theorem}
+% 	\onslide<+->
+% 	\begin{proof}
+% 		设 $a$ 和 $b$ 都是 $\set{a_n}$ 的极限.
+% 		\onslide<+->{$\forall\varepsilon>0, \exists N, M>0$ 使得当 $n>N$ 时 $|a_n-a|<\varepsilon$; 当 $n>M$ 时 $|a_n-b|<\varepsilon$.
+% 		 }\onslide<+->{从而由三角不等式
+% 		 \[|a-b|\le|a-a_n|+|a_n-b|<2\varepsilon.\]
+% 		 }\onslide<+->{若 $a\neq b$, 则可取 $\varepsilon=\dfrac{a-b}2>0$ 代入得到 $2\varepsilon<2\varepsilon$, 矛盾! 因此 $a=b$.\qedhere}
+% 	\end{proof}
+% \end{frame}
+
+
+% \begin{frame}{数列极限的有界性}
+% 	\onslide<+->
+% 	\begin{theorem}[有界性]
+% 		收敛数列是有界数列.
+% 	\end{theorem}
+% 	\onslide<+->
+% 	\begin{proof}
+% 		设数列 $\set{a_n}$ 收敛到 $a$, 则对于 $\varepsilon=1$, 存在正整数 $N$ 使得当 $n>N$ 时 $|a_n-a|<\varepsilon=1$, 从而 $|a_n|<|a|+1$.
+% 		\onslide<+->{因此对于 $M=\max{|a_1|,\dots,|a_N|,|a|+1}$, 有 $|a_n|\le M$. 这说明 $\set{a_n}$ 是有界数列.\qedhere}
+% 	\end{proof}
+% 	\onslide<+->
+% 	收敛数列一定有界, 但反之未必.
+% 	\begin{example}
+% 		对于数列 $\set{a_n}=(-1)^n$, 该数列是有界的但是不收敛.
+% 	\end{example}
+% \end{frame}
+
+
+\begin{frame}{数列极限的保号性}
+	\onslide<+->
+	\begin{theorem}[保号性]
+		\begin{enumerate}
+			\item 如果 $\lim\limits_{n\ra\infty}a_n=a\alert{>}0$, 则 $\exists N$ 使得当 $n>N$ 时, 有 $a_n\alert{>}0$.
+			\item 如果 $\lim\limits_{n\ra\infty}a_n=a\alert{<}0$, 则 $\exists N$ 使得当 $n>N$ 时, 有 $a_n\alert{<}0$.
+		\end{enumerate}
+	\end{theorem}
+	\onslide<+->
 	\begin{proof}
-qn - 0=q n < 𝜀, n>\log q 𝜀 .
-\end{proof}
-	\forall 𝜀>0, 令 𝑁=\log q 𝜀. 当 n>𝑁 时, 有 qn - 0=q n < 𝜀. 所以
-lim
-n\ra\infty qn=0.
-	对于其它情形, 我们只需替换红字部分.
+		\enumnum1 对于 $\varepsilon=\dfrac a2>0$, $\exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon=\dfrac a2$, 从而 $a_n>a-\dfrac a2=\dfrac a2>0$.
+		\onslide<+->{\enumnum2 同理可得.\qedhere}
+	\end{proof}
+	\onslide<+->
+	注意这里 $>0$ \alert{不能换成} $\ge 0$, 例如 $\lim\limits_{n\ra\infty}\dfrac{(-1)^n}n=0$.
+	\onslide<+->
+	$<0$ 也\alert{不能换成} $\le 0$.
 \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-\begin{proof}
-\end{example}
-lim
-\end{proof}
-n\ra\infty
-sin n
-n=0.
-	\begin{proof}
-我们有 sin n
-\end{proof}
-n - 0 ≤ 1
-n.
-	\forall 𝜀>0, 令 𝑁=1
-𝜀 . 当 n>𝑁 时, 有
-sin n
-n - 0 ≤ 1
-n < 𝜀.
-	所以 lim
-n\ra\infty
-sin n
-n=0.
+\begin{frame}{数列极限的保号性}
+	\onslide<+->
+	\begin{corollary}[逆否命题]
+		\begin{enumerate}
+			\item 如果收敛数列 $\set{a_n}$ 从某项起 $\ge 0$, 则它的极限 $\ge 0$.
+			\item 如果收敛数列 $\set{a_n}$ 从某项起 $\le 0$, 则它的极限 $\le 0$.
+		\end{enumerate}
+	\end{corollary}
+	\onslide<+->
+	同理, 这里 $\ge$ 也不能换成 $>$, 例如 $\lim\limits_{n\ra\infty}\dfrac1n=0$.
+	\onslide<+->
+	\begin{corollary}
+		如果收敛数列 $\set{a_n}, \set{b_n}$ 满足从某项起 $a_n\ge b_n$, 则 $\lim\limits_{n\ra\infty}a_n\ge\lim\limits_{n\ra\infty}b_n$.
+	\end{corollary}
 \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-\begin{proof}
-\end{example}
-lim
-\end{proof}
-n\ra\infty
-2n2 +2n-4
-n2 -8=2.
-	\begin{proof}
-我们有 2n2 +2n-4
-\end{proof}
-n2 -8 - 2=2n+12
-n2 -8 . 若 n ≥ 12, 则
-2n + 12
-n2 - 8 ≤ 3n
-n2 - n=3
-n - 1 .
-	\forall 𝜀>0, 令 𝑁=max 1 + 3
-𝜀 , 12 . 当 n>𝑁 时, 有
-2n2 + 2n - 4
-n2 - 8 - 2 ≤ 3
-n - 1 < 𝜀.
-所以 lim
-n\ra\infty
-2n2 +2n-4
-n2 -8=0.
+\begin{frame}{数列与子数列的极限关系}
+	\onslide<+->
+	对于正整数集的一个无限子集合 $S\subseteq\BN_+$, 将其中元素从小到大排成一列
+	\[S=\set{k_1,k_2,\dots,k_n,\dots},\]
+	\onslide<+->
+	则它对应了数列 $\set{a_n}$ 的一个\emph{子数列}
+	\[\set{a_{k_n}}_{n\ge1}: a_{k_1}, a_{k_2}, \dots, a_{k_n}, \dots\]
+
+	\onslide<+->
+	特别地, 当 $S$ 为全体正奇数时, 称 $\set{a_{2n-1}}$ 为\emph{奇子数列}; 当 $S$ 为全体正偶数时, 称 $\set{a_{2n}}$ 为\emph{偶子数列}.
 \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-"极限 lim
-\end{example}
-n\ra\infty an=a 存在" 的充要条件是 "\forall 𝜀>0, ( )".
-	(A) 必有无穷多项 an 满足 an - a < 𝜀
-	(B) 所有项 an 满足 an - a < 𝜀
-	(C) 只有有限项 an 满足 an - a ≥ 𝜀
-	(D) 可能有无穷多项 an 满足 an - a ≥ 𝜀
-	解 \forall 𝜀>0, 存在正整数 𝑁 使得当 n>𝑁 时, 有 an - a < 𝜀. 这等价于至
-多只有有限项 a1 , ... , a𝑁 满足 an - a ≥ 𝜀. 故选 C, 而 BD 均不正确.
-	对于 A , 反\begin{example}
-an=-1 n , a=1.
-\end{example}
+\begin{frame}{数列与子数列的极限关系}
+	\onslide<+->
+	\begin{theorem}
+		$\set{a_n}$ 收敛于 $a$ 当且仅当 $\set{a_{2n-1}}$ 和 $\set{a_{2n}}$ 均收敛于 $a$.
+	\end{theorem}
+	\onslide<+->
+	\begin{proof*}
+		必要性($\Rightarrow$): 如果 $\lim\limits_{n\ra\infty} a_n=a$, 则 $\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+		\onslide<+->{因此 $|a_{2n-1}-a|<\varepsilon, |a_{2n}-a|<\varepsilon$.
+		}\onslide<+->{从而 $\set{a_{2n-1}}$ 和 $\set{a_{2n}}$ 均收敛于 $a$.}
+
+		\onslide<+->{充分性($\Leftarrow$): 如果 $\lim\limits_{n\ra\infty} a_{2n-1}=\lim\limits_{n\ra\infty} a_{2n}=a$, 则 $\forall\varepsilon>0$, $\exists N,M$ 使得当 $n>N$ 时, 有 $|a_{2n-1}-a|<\varepsilon$; 当 $n>M$ 时, 有 $|a_{2n}-a<\varepsilon$.
+		}\onslide<+->{所以当 $n>\max\set{2N-1,2M}$ 时, 有  $|a_n-a|<\varepsilon$. 故数列 $\set{a_n}$ 收敛到 $a$.\qedhere}
+	\end{proof*}
+\end{frame}
+
+
+\begin{frame}{数列与子数列的极限关系}
+	\onslide<+->
+	\begin{theorem}
+		$\set{a_n}$ 收敛于 $a$ 当且仅当它的所有子数列均收敛于 $a$.
+	\end{theorem}
+	\onslide<+->
+	实际上, 设 $S_1,\dots,S_m\subseteq\BN_+$ 是有限多个无限集合, 且
+		\[S_1\cup\cdots\cup S_m\]
+	包含了所有大于 $M$ 的正整数.
+	\onslide<+->
+	那么 $\set{a_n}$ 收敛于 $a\iff$ 每个 $S_i$ 对应子数列均收敛于 $a$.
+	\onslide<+->
+	这是因为 $\forall\varepsilon>0$, 每个 $S_i$ 中至多只有有限多项不满足 $|a_n-a|<\varepsilon$, 从而一共也只有有限多项不满足这个条件.
+\end{frame}
+
+
+\begin{frame}{数列与子数列的极限关系}	
+	\onslide<+->
+	然而对于无穷多个 $S_i$, 这是不对的.
+	\onslide<+->
+	我们将所有 $\dfrac xy$ ($x,y\in\BN_+$)按如下规律排列成数列
+	\[\set{a_n=\frac{x_n}{y_n}}:\frac11,\frac12,\frac21,\frac13,\frac22,\frac31,\frac14,\frac23,\frac32,\frac41,\dots\]
+
+	\onslide<+->
+	对于每一个正整数 $x$,
+	\begin{itemize}
+		\item 集合 $S_x=\set{n\mid x_n=x}$ 对应的子数列 $\dfrac11,\dfrac12,\dfrac13,\dots$ 收敛于 $0$;
+		\item 无限集合 $S=\set{n\mid x_n=y_n}$ 对应的子数列 $\dfrac11,\dfrac22,\dfrac33,\dots$ 收敛于 $1$.
+	\end{itemize} 
+	\onslide<+->
+	因此数列 $\set{a_n}$ 不收敛.
+
+	\onslide<+->
+	在数学中, 常常有这种在有限情形成立, 无限情形不成立的结论. 因此遇到涉及无限的情形要小心.
+\end{frame}

@@ -13,26 +13,27 @@
 	这就引出了用于表达这类曲线更为简便的极坐标的概念.
 	\onslide<+->
 	\begin{definition*}
-		在平面内取一个定点 $O$ (\emph{极点}), 引一条射线 $Ox$ (\emph{极轴}), 再选定一个长度单位和角度的正方向 (通常取逆时针方向), 所建立的坐标系称为\emph{极坐标系}.
-		\begin{tikzpicture}[overlay,xshift=5.4cm,yshift=-1.2cm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-87mm,yshift=17mm]
 			\draw[cstaxis] (0,0)--(2.5,0);
-			\draw (-0.2,0) node {$O$};
-			\draw (2.3,0.2) node {$x$};
-			\begin{scope}[visible on=<4->]
-				\draw[dcolora] (1.8,1.2) node {$M$};
-				\fill[cstdot,dcolora] (1.5,1) circle;
+			\draw
+				(-0.2,0) node {$O$}
+				(2.3,0.2) node {$x$};
+			\begin{scope}[dcolora,visible on=<4->]
+				\draw (1.8,1.2) node {$M$};
+				\fill[cstdot] (1.5,1) circle;
 			\end{scope}
-			\begin{scope}[visible on=<5->]
+			\begin{scope}[dcolora,visible on=<5->]
 				\coordinate (A) at (2,0);
 				\coordinate (B) at (0,0);
 				\coordinate (C) at (1.5,1);
-				\draw[thick,dcolora] (B)--(C);
-				\draw[dcolora] (0.8,0.7) node {$r$};
+				\draw[thick] (B)--(C);
+				\draw (0.8,0.7) node {$r$};
 			\end{scope}
-			\begin{scope}[visible on=<6->]
-				\draw[dcolora,thick] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
-			\end{scope}
-		\end{tikzpicture}
+			\draw[dcolora,thick,visible on=<6->] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+		\end{tikzpicture}\end{tikzpicture}
+
+		\vspace{-22mm}
+		在平面内取一个定点 $O$ (\emph{极点}), 引一条射线 $Ox$ (\emph{极轴}), 再选定一个长度单位和角度的正方向 (通常取逆时针方向), 所建立的坐标系称为\emph{极坐标系}.
 
 		\onslide<+->{对于平面内任意一点 $M$,
 		\begin{itemize}
@@ -70,24 +71,26 @@
 		\[r=\sqrt{x^2+y^2},\qquad \sin\theta=\frac yr, \cos\theta=\frac xr.\]
 	\end{alertblock}
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-0.5,0)--(3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2);
-			\draw (-0.2,-0.2) node {$O$};
-			\draw (2.8,-0.2) node {$x$};
-			\draw (-0.2,1.8) node {$y$};
-			\draw[dcolora] (2.3,1.7) node {$M$};
+			\draw
+				(-0.2,-0.2) node {$O$}
+				( 2.8,-0.2) node {$x$}
+				(-0.2, 1.8) node {$y$}
+				( 2.3, 1.7) node[dcolora] {$M$}
+				( 1.0, 0.9) node[dcolora] {$r$}
+				( 1.0,-0.3) node[dcolorb] {$x$}
+				(-0.3,0.75) node[dcolorb] {$y$};
 			\coordinate (A) at (2,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (2,1.5);
-			\draw[thick,dcolora] (B)--(C);
-			\draw[dcolora] (1,0.9) node {$r$};
-			\draw[dcolora,thick] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw[thick,dcolora] (B)--(C) pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
 			\draw[cstdash,dcolore] (2,0)--(2,1.5)--(0,1.5);
-			\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (2,0)--(0,0);
-			\draw[dcolorb] (1,-0.3) node {$x$};
-			\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (0,0)--(0,1.5);
-			\draw[dcolorb] (-0.3,0.75) node {$y$};
+			\begin{scope}[thick,decoration={brace,amplitude=5},dcolorb]
+				\draw[decorate] (2,0)--(0,0);
+				\draw[decorate] (0,0)--(0,1.5);
+			\end{scope}
 			\fill[cstdot,dcolora] (2,1.5) circle;
 		\end{tikzpicture}
 	\end{center}
@@ -128,24 +131,27 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-76mm,yshift=12mm,inner frame ysep=0.5ex]
+			\draw[cstaxis] (0,0)--(2,0);
+			\draw
+				(-0.2,0) node {$O$}
+				(1.8,0.2) node {$x$}
+				(1.7,0.9) node[dcolorb] {$M(r,\theta)$}
+				(0.5,0.6) node[dcolorc] {$R$};
+			\draw[cstcurve,dcolora] (0,0) circle (1.3);
+			\coordinate (A) at (2,0);
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (1.1,0.7);
+			\draw[thick,dcolorc] (B)--(C) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+			\fill[cstdot,dcolorb] (C) circle;
+		\end{tikzpicture}\end{tikzpicture}
+		
+		\vspace{-27mm}
 		设 $M(r,\theta)$ 为圆上任意一点,
 		\onslide<+->{因为\\圆心在极点 $O$, 所以 $r=OM=R$. \\
 		}\onslide<+->{反之, 极径为 $R$ 的点都落在圆上.\\
 		}\onslide<+->{因此该圆的极坐标方程为 $r=R$.}
-		\begin{tikzpicture}[overlay,xshift=3cm,yshift=0.8cm]
-			\draw[cstaxis] (0,0)--(2,0);
-			\draw (-0.2,0) node {$O$};
-			\draw (1.8,0.2) node {$x$};
-			\draw[cstcurve,dcolora] (0,0) circle (1.3);
-			\draw[dcolorb] (1.7,0.9) node {$M(r,\theta)$};
-			\coordinate (A) at (2,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (1.1,0.7);
-			\draw[thick,dcolorc] (B)--(C);
-			\fill[cstdot,dcolorb] (C) circle;
-			\draw[dcolorc] (0.5,0.6) node {$R$};
-			\draw[dcolorc,thick] pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
-		\end{tikzpicture}\vspace{4mm}
+		\vspace{3mm}
 	\end{solution}
 	\onslide<+->
 	\begin{proofblock}{另解}
@@ -162,28 +168,33 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		设 $M(r,\theta)$ 为圆上任意一点.
-		\onslide<+->{由图可知 \\$OM\perp BM$, 从而 $r=OM=2R\cos\theta$.\\
-		}\onslide<+->{所以极坐标方程为 $r=2R\cos\theta$.}
-		\begin{tikzpicture}[overlay,xshift=2cm,yshift=0.5cm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-85mm,yshift=10mm]
 			\draw[cstaxis] (0,0)--(3,0);
-			\draw (-0.2,0) node {$O$};
-			\draw (3.2,0) node {$x$};
-			\draw[dcolorb] (2.4,0.8) node {$M(r,\theta)$};
+			\draw
+				(-0.2,0) node {$O$}
+				( 3.2,0) node {$x$}
+				(0.95,-0.25) node {$A$}
+				( 2.2,-0.2) node {$B$}
+				( 2.4, 0.8) node[dcolorb] {$M(r,\theta)$}
+				( 0.7, 0.5)[dcolorc] node {$r$};
 			\coordinate (A) at (1,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (1.6,0.8);
 			\draw[cstcurve,dcolora] (A) circle (1);
-			\fill[cstdot] (A) circle;
-			\fill[cstdot] (2,0) circle;
-			\draw[thick,dcolorc] (B)--(C)--(2,0);
-			\fill[cstdot,dcolorb] (C) circle;
-			\draw[dcolorc] (0.7,0.5) node {$r$};
-			\draw (0.95,-0.25) node {$A$};
-			\draw (2.2,-0.2) node {$B$};
-			\draw[dcolorc,thick] pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+			\begin{scope}[cstdot]
+				\fill (A) circle;
+				\fill (2,0) circle;
+				\fill[dcolorb] (C) circle;
+			\end{scope}
+			\draw[thick,dcolorc] (B)--(C)--(2,0) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
 			\draw (1.44,0.72)--(1.52,0.56)--(1.68,0.64);
-		\end{tikzpicture}\vspace{4mm}
+		\end{tikzpicture}\end{tikzpicture}
+		
+		\vspace{-22mm}
+		设 $M(r,\theta)$ 为圆上任意一点.
+		\onslide<+->{由图可知 \\$OM\perp BM$, 从而 $r=OM=2R\cos\theta$.\\
+		}\onslide<+->{所以极坐标方程为 $r=2R\cos\theta$.}
+		\vspace{3mm}
 	\end{solution}
 	\onslide<+->
 	\begin{proofblock}{另解}
@@ -200,37 +211,36 @@
 	其它常见的极坐标方程及其曲线有: ($a>0$)
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\begin{scope}
 				\draw (0,-1.6) node[dcolora,align=center] {{\small 阿基米德螺旋线} $r=a\theta$};
 				\draw[cstaxis] (0,0)--(1.5,0);
 				\draw[cstcurve,dcolora,smooth,domain=0:13] plot ({0.12*\x*cos (45*\x)},{0.12*\x*sin (45*\x)});
 			\end{scope}
-			\begin{scope}[xshift=4cm,visible on=<3->]
+			\begin{scope}[xshift=40mm,visible on=<3->]
 				\draw (1,-1.6) node[dcolorb,align=center] {{\small 心形线} $r=a(1-\cos\theta)$};
 				\draw[cstaxis] (0,0)--(2.5,0);
 				\draw[cstcurve,dcolorb,smooth,domain=0:360] plot ({(1+cos (\x))*cos (\x)},{(1+cos (\x))*sin (\x)});
 			\end{scope}
-		\end{tikzpicture}
-	\end{center}
-	\onslide<4->
-	\begin{center}
-		\begin{tikzpicture}
-			\begin{scope}[xshift=-5cm]
+			\begin{scope}[yshift=-35mm,visible on=<4->]
 				\draw (0.2,-1.6) node[dcolorc,align=center] {{\small 双纽线} $r^2=a^2\cos(2\theta)$};
 				\draw[cstaxis] (0,0)--(2,0);
-				\draw[cstcurve,dcolorc,smooth,domain=-45:45] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
-				\draw[cstcurve,dcolorc,smooth,domain=135:225] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
+				\begin{scope}[cstcurve,dcolorc,smooth]
+					\draw[domain=-45:45] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
+					\draw[domain=135:225] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
+				\end{scope}
 			\end{scope}
-			\draw (0.2,-1.6) node[dcolord,align=center,visible on=<5->] {{\small $n$ 纽线} $r^2=a^2\cos(n\theta)$};
-			\begin{scope}[visible on=<6->]
+			\draw (5.2,-5.2) node[dcolord,align=center,visible on=<5->] {{\small $n$ 纽线} $r^2=a^2\cos(n\theta)$};
+			\begin{scope}[xshift=50mm,yshift=-35mm,visible on=<6->]
 				\draw[cstaxis] (0,0)--(2,0);
 				\draw (1.5,1) node[dcolord] {$n=5$};
-				\draw[cstcurve,dcolord,smooth,domain=-18:18] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
-				\draw[cstcurve,dcolord,smooth,domain=54:90] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
-				\draw[cstcurve,dcolord,smooth,domain=126:162] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
-				\draw[cstcurve,dcolord,smooth,domain=198:234] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
-				\draw[cstcurve,dcolord,smooth,domain=270:306] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\begin{scope}[cstcurve,dcolord,smooth]
+					\draw[domain=-18:18] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+					\draw[domain=54:90] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+					\draw[domain=126:162] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+					\draw[domain=198:234] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+					\draw[domain=270:306] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
+				\end{scope}
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}

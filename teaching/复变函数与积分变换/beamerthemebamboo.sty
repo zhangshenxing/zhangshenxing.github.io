@@ -12,7 +12,7 @@
 \setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
 \setbeamercolor{footline}{use=structure,bg=structure.fg!10}
 % Margin
-\setbeamersize{text margin left=0.5em,text margin right=0.5em}
+\setbeamersize{text margin left=1.5em,text margin right=1.5em}
 % Items
 \useinnertheme{circles}
 \setbeamertemplate{enumerate item}{(\insertenumlabel)}
@@ -35,7 +35,7 @@
 \setbeamerfont{enumerate subitem}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
 \setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
-\setbeamerfont{email}{size=\small,family=\ttfamily}
+\setbeamerfont{email}{size=\normalsize,family=\ttfamily}
 \setbeamerfont{title seperator}{parent=author}
 % Title Page
 \newcommand\institutegraphic[1]{\def\insertinstitutegraphic{#1}}\institutegraphic{}
@@ -143,13 +143,20 @@
 }
 % Frametitle
 \setbeamertemplate{frametitle}{%
-	\vskip-1pt
+	\vskip-0.25ex
 	\hbox{%
-		\begin{beamercolorbox}[wd=\paperwidth,ht=3.4ex,dp=1ex,leftskip=1em,rightskip=0.5em,sep=0pt]{frametitle}
+		\begin{beamercolorbox}[%
+			wd=\paperwidth,%
+			ht=3.25ex,%
+			dp=2ex,%
+			leftskip=1em,%
+			rightskip=0.5em,%
+			sep=0pt%
+		]{frametitle}
 			\usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle
 		\end{beamercolorbox}%
-	}%
-	\vskip-1.5ex
+	}\par%
+	\vskip-0.75ex
 	\hbox{%
 		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
 		\end{beamercolorbox}%
@@ -206,7 +213,6 @@
 \setbeamertemplate{head/foot seperator}{\kern1pt\raisebox{0.5pt}{$\blacktriangleright$}\kern1pt}
 \defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
 \defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
-% \defbeamertemplate{subsection in footline}{homework}{作业}
 \setbeamertemplate{footline}{%
 	\leavevmode%
 	\hbox{%
@@ -218,8 +224,8 @@
 			wd=\paperwidth,%
 			ht=5ex,%
 			dp=1ex,%
-			leftskip=2ex,%
-			rightskip=2ex,%
+			leftskip=3ex,%
+			rightskip=3ex,%
 			sep=0pt%
 		]{footline}%
 			{%

@@ -5,58 +5,58 @@
 \begin{frame}
 2.3 极限的性质
 	与数列极限类似, 对于函数的六种极限我们均有:
-	定理(唯一性) 如果 lim $f(x)$ 存在, 则必唯一.
-	定理(局部有界性) 如果 lim $f(x)$ 存在, 则 $f(x)$ 局部有界.
-	所谓的局部, 是指极限定义中 $f(x)$ - 𝐴 < 𝜀 成立的某个区间范围. 以
-x \ra +\infty 为例, 局部有界是指存在 𝑋 使得 f | 𝑋,+\infty 有界.
-	定理(局部保号性) 如果 lim $f(x)$=a>0, 则 $f(x)$ 局部大于 0.
-	推论 如果 lim $f(x)$ 存在且局部非负, 则极限非负.
-	推论 如果 lim $f(x)$ , limg(x) 存在且局部 $f(x)$ ≥ g(x), 则 lim $f(x)$ ≥
-limg(x).
+	定理(唯一性) 如果 \lim\limits_ $f(x)$ 存在, 则必唯一.
+	定理(局部有界性) 如果 \lim\limits_ $f(x)$ 存在, 则 $f(x)$ 局部有界.
+	所谓的局部, 是指极限定义中 $f(x)$-A<\varepsilon  成立的某个区间范围. 以
+x\ra+\infty 为例, 局部有界是指存在 X 使得 f | X,+\infty 有界.
+	定理(局部保号性) 如果 \lim\limits_ $f(x)$=a>0, 则 $f(x)$ 局部大于 0.
+	推论 如果 \lim\limits_ $f(x)$ 存在且局部非负, 则极限非负.
+	推论 如果 \lim\limits_ $f(x)$ , \lim\limits_g(x) 存在且局部 $f(x)$ \ge g(x), 则 \lim\limits_ $f(x)$ \ge
+\lim\limits_g(x).
 \end{frame}
 
 
 \begin{frame}
 	极限的四则运算性质
 	\begin{theorem}
-设 lim $f(x)$=𝐴, lim g x=𝐵.
+设 \lim\limits_ $f(x)$=A, \lim\limits_ g x=𝐵.
 \end{theorem}
-	(1) lim f \pm g x=𝐴 \pm 𝐵.
-	(2) lim fg x=𝐴𝐵.
-	(3) 当 𝐵\neq 0 时, lim f
-g x=𝐴
+	(1) \lim\limits_ f \pm g x=A \pm 𝐵.
+	(2) \lim\limits_ fg x=A𝐵.
+	(3) 当 𝐵\neq 0 时, \lim\limits_ f
+g x=A
 𝐵 .
 	\begin{proof}
-我们只证明 x \ra x0 的情形, 其它情形类似.
+我们只证明 x\ra x0 的情形, 其它情形类似.
 \end{proof}
-	(1) \forall 𝜀>0, ∃𝛿1>0 使得当 0 < x - x0 < 𝛿1 时, 有 $f(x)$ - 𝐴 < 𝜀
+	(1) \forall\varepsilon>0, \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 $f(x)$-A<\varepsilon 
 2;
-	∃𝛿2>0 使得当 0 < x - x0 < 𝛿2 时, 有 g x - 𝐵 < 𝜀
+	\exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 g x-𝐵<\varepsilon 
 2.
-	因此, 当 0 < x - x0 < 𝛿=min 𝛿1 , 𝛿2 时, 有
-f \pm g x - 𝐴 \pm 𝐵=$f(x)$ - 𝐴 \pm g x - 𝐵 ≤ $f(x)$ - 𝐴 + g x - 𝐵 < 𝜀 .
-	所以 lim
+	因此, 当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时, 有
+f \pm g x-A \pm 𝐵=$f(x)$-A \pm g x-𝐵 ≤ $f(x)$-A+ g x-𝐵<\varepsilon  .
+	所以 \lim\limits_
 x\rax0
-f \pm g x=𝐴 \pm 𝐵 .
+f \pm g x=A \pm 𝐵 .
 \end{frame}
 
 
 \begin{frame}
-	(2) 分析 $f(x)$ g x - 𝐴𝐵=$f(x)$ g x - 𝐵 + 𝐵 $f(x)$ - 𝐴
-≤ $f(x)$ ⋅ g x - 𝐵 + 𝐵 ⋅ $f(x)$ - 𝐴 .
-	由局部有界性, ∃𝛿1 , 𝑀>0 使得当 0 < x - x0 < 𝛿1 时, 有 $f(x)$ ≤ 𝑀.
-	\forall 𝜀>0, ∃𝛿2>0 使得当 0 < x - x0 < 𝛿2 时, 有 $f(x)$ - 𝐴 < 𝜀
-2 𝐵 +1 ;
-	∃𝛿3>0 使得当 0 < x - x0 < 𝛿3 时, 有 g x - 𝐵 < 𝜀
-2𝑀.
-	因此, 当 0 < x - x0 < 𝛿=min 𝛿1 , 𝛿2 , 𝛿3 时, 有
-f x g x - 𝐴𝐵 ≤ 𝑀 ⋅ g x - 𝐵 + 𝐵 ⋅ $f(x)$ - 𝐴
-≤ 𝑀 ⋅ 𝜀
-2𝑀 + 𝐵 ⋅ 𝜀
-2 𝐵 + 1 < 𝜀.
-	所以 lim
+	(2) 分析 $f(x)$ g x-A𝐵=$f(x)$ g x-𝐵+ 𝐵 $f(x)$-A
+≤ $f(x)$ \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A .
+	由局部有界性, \exists 𝛿1 , M>0 使得当 0<x-x0<𝛿1 时, 有 $f(x)$ ≤ M.
+	\forall\varepsilon>0, \exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 $f(x)$-A<\varepsilon 
+2 𝐵+1 ;
+	\exists 𝛿3>0 使得当 0<x-x0<𝛿3 时, 有 g x-𝐵<\varepsilon 
+2M.
+	因此, 当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 , 𝛿3 时, 有
+f x g x-A𝐵 ≤ M \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A
+≤ M \cdot \varepsilon 
+2M+ 𝐵 \cdot \varepsilon 
+2 𝐵+ 1<\varepsilon .
+	所以 \lim\limits_
 x\rax0
-fg x=𝐴𝐵.
+fg x=A𝐵.
 \end{frame}
 
 
@@ -68,77 +68,77 @@ g \ra 1
 𝐵 然后利用(2). 这需要对 1
 g 在 x0 附近进行估计
 使得其有个非零下界.
-	对于 𝜀=𝐵
-2>0, ∃𝛿1>0 使得当 0 < x - x0 < 𝛿1 时, 有 g x - 𝐵 ≤
-𝜀=𝐵
+	对于 \varepsilon =𝐵
+2>0, \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 g x-𝐵 ≤
+\varepsilon =𝐵
 2 . 于是
-g x ≥ 𝐵 - g x - 𝐵 ≥ 𝐵
+g x \ge 𝐵-g x-𝐵 \ge 𝐵
 2 ,
 1
-g x - 1
-𝐵=g x - 𝐵
-𝐵 ⋅ g x ≤ 2
-𝐵 2 g x - 𝐵 .
+g x-1
+𝐵=g x-𝐵
+𝐵 \cdot g x ≤ 2
+𝐵 2 g x-𝐵 .
 \end{frame}
 
 
 \begin{frame}
-	\forall 𝜀>0, ∃𝛿2>0 使得当 0 < x - x0 < 𝛿2 时, 有 g x - 𝐵 < 𝐵 2
-2 𝜀.
-	因此当 0 < x - x0 < 𝛿=min 𝛿1 , 𝛿2 时,
+	\forall\varepsilon>0, \exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 g x-𝐵<𝐵 2
+2 \varepsilon .
+	因此当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时,
 1
-g x - 1
-𝐵=g x - 𝐵
-𝐵 ⋅ g x ≤ 2
-𝐵 2 g x - 𝐵 < 𝜀.
-	所以 lim
+g x-1
+𝐵=g x-𝐵
+𝐵 \cdot g x ≤ 2
+𝐵 2 g x-𝐵<\varepsilon .
+	所以 \lim\limits_
 x\rax0
 1
 g x=1
-𝐵. 由(2)可知 lim
+𝐵. 由(2)可知 \lim\limits_
 x\rax0
 f(x)
-g x=lim
+g x=\lim\limits_
 x\rax0
-f x ⋅ lim
+f x \cdot \lim\limits_
 x\rax0
 1
-g x=𝐴
+g x=A
 𝐵.
-	推论 设 lim $f(x)$=𝐴, 则
-	(1) lim Cf x=C𝐴.
-	(2) lim $f(x)$ 𝑘=𝐴𝑘 , 𝑘 \in ℕ+ .
+	推论 设 \lim\limits_ $f(x)$=A, 则
+	(1) \lim\limits_ Cf x=CA.
+	(2) \lim\limits_ $f(x)$ 𝑘=A𝑘 , 𝑘 \in ℕ+ .
 \end{frame}
 
 
 \begin{frame}
 	数列与函数的关系
-	设 an 是一个数列. 定义 $f(x)$=a x , 它是 1, +\infty 上的一个分段函数.
-	如果 lim
-n\ra\inftyan=a, 则 \forall 𝜀>0, ∃𝑁 使得当 n>𝑁 时, 有 an - a < 𝜀 . 因此当 x >
-𝑁 + 1 时, x>𝑁, $f(x)$ - a < 𝜀 , 所以 lim
+	设 an 是一个数列. 定义 $f(x)$=a x , 它是 1,+\infty 上的一个分段函数.
+	如果 \lim\limits_
+n\ra\inftyan=a, 则 \forall\varepsilon>0, \exists N 使得当 n>N 时, 有 an-a<\varepsilon  . 因此当 x>
+N+ 1 时, x>N, $f(x)$-a<\varepsilon  , 所以 \lim\limits_
 x\ra+\inftyf x=a
 .
-	反过来也成立, 因此 lim
-n\ra\inftyan=lim
-x\ra+\inftyf x . 从而与函数极限 lim
+	反过来也成立, 因此 \lim\limits_
+n\ra\inftyan=\lim\limits_
+x\ra+\inftyf x . 从而与函数极限 \lim\limits_
 x\ra+\infty 相关的概念和
 性质可以移植到数列上.
 	\begin{theorem}
-设 lim
+设 \lim\limits_
 \end{theorem}
-n\ra\infty an=a, lim
-n\ra\infty 𝑏n=𝑏, 则
-	lim
-n\ra\infty an \pm 𝑏n=a \pm 𝑏, lim
-n\ra\infty an 𝑏n=a𝑏, lim
+n\ra\infty an=a, \lim\limits_
+n\ra\infty bn=b, 则
+	\lim\limits_
+n\ra\infty an \pm bn=a \pm b, \lim\limits_
+n\ra\infty an bn=ab, \lim\limits_
 n\ra\infty
 an
-𝑏n
+bn
 = a
-𝑏 𝑏\neq 0 ,
-	lim
-n\ra\infty C an=Ca, lim
+b b\neq 0 ,
+	\lim\limits_
+n\ra\infty C an=Ca, \lim\limits_
 n\ra\infty an
 𝑘=a𝑘 , 𝑘 \in ℕ+ .
 \end{frame}
@@ -146,12 +146,12 @@ n\ra\infty an
 
 \begin{frame}
 	\begin{example}
-对于多项式 𝑃(x ), 有 lim
+对于多项式 𝑃(x ), 有 \lim\limits_
 \end{example}
 x\rax0
 𝑃 x=𝑃 x0 .
 	\begin{example}
-对于多项式 𝑃 x , 𝑄 x , 如果 𝑄 x0\neq 0, 则 lim
+对于多项式 𝑃 x , 𝑄 x , 如果 𝑄 x0\neq 0, 则 \lim\limits_
 \end{example}
 x\rax0
 𝑃 x
@@ -159,20 +159,20 @@ x\rax0
 𝑄 x0
 .
 	\begin{example}
-求 lim
+求 \lim\limits_
 \end{example}
 x\ra1
 x 2 -1
 x 3 -1.
 	分析 该极限是 0
 0 型不定式.
-	解 由于 x \ra 1 时, x - 1\neq 0, 因此 lim
+	解 由于 x\ra 1 时, x-1\neq 0, 因此 \lim\limits_
 x\ra1
 x 2 -1
-x 3 -1=lim
+x 3 -1=\lim\limits_
 x\ra1
-x +1
-x 2 +x+1=2
+x+1
+x 2+x+1=2
 3.
 	可以看出, 利用极限的四则运算性质, 我们可以得到很多的极限. 下面我们介绍
 极限的函数复合运算性质. 我们在未来会看到, 在研究函数连续性和可导性时,
@@ -184,61 +184,83 @@ x 2 +x+1=2
 \begin{frame}
 极限的复合运算性质
 	\begin{theorem}
-设 lim
+设 \lim\limits_
 \end{theorem}
-x \rax0
-𝜑 x=a, lim
-𝑢\raa f (𝑢)=𝐴. 若函数 𝑢=𝜑 x 在点 x0 的某个去心邻域内不等
-于 a, 则
-lim
-x \rax0
-f 𝜑 x=lim
-𝑢\raa f (𝑢)=𝐴.
-	\begin{proof}
-由 lim
-\end{proof}
-𝑢\raa f (𝑢)=𝐴 知 \forall 𝜀>0, ∃𝜂>0 使得当 0 < 𝑢 - a < 𝜂 时, 有 f 𝑢 - 𝐴 < 𝜀 .
-	由 lim
 x\rax0
-𝜑 x=a 知 ∃𝛿1>0 使得当 0 < x - x0 < 𝛿1 时, 有 𝜑 x - a < 𝜂 .
+𝜑 x=a, \lim\limits_
+𝑢\raa f (𝑢)=A. 若函数 𝑢=𝜑 x 在点 x0 的某个去心邻域内不等
+于 a, 则
+\lim\limits_
+x\rax0
+f 𝜑 x=\lim\limits_
+𝑢\raa f (𝑢)=A.
+	\begin{proof}
+由 \lim\limits_
+\end{proof}
+𝑢\raa f (𝑢)=A 知 \forall\varepsilon>0, \exists 𝜂>0 使得当 0<𝑢-a<𝜂 时, 有 f 𝑢-A<\varepsilon  .
+	由 \lim\limits_
+x\rax0
+𝜑 x=a 知 \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 𝜑 x-a<𝜂 .
 	设 𝑢=𝜑 x 在 𝑈
 ∘
-x0 , 𝛿2 上不等于 a, 则当 0 < x - x0 < 𝛿=min 𝛿1 , 𝛿2 时, 有
-0 < 𝜑 x - a < 𝜂 , f 𝜑 x - 𝐴 < 𝜀 .
-	所以 lim
+x0 , 𝛿2 上不等于 a, 则当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时, 有
+0<𝜑 x-a<𝜂 , f 𝜑 x-A<\varepsilon  .
+	所以 \lim\limits_
 x\rax0
-f 𝜑 x=𝐴.
-	注记 如果 f a=lim
-𝑢\raa f (𝑢)=𝐴, 则可以不要求 𝑢=𝜑 x 在点 x0 的某个去心邻域内
+f 𝜑 x=A.
+	注记 如果 f a=\lim\limits_
+𝑢\raa f (𝑢)=A, 则可以不要求 𝑢=𝜑 x 在点 x0 的某个去心邻域内
 不等于 a.
 \end{frame}
 
 
 \begin{frame}
 	\begin{example}
-求 lim
+求 \lim\limits_
 \end{example}
 x\ra1
 3-x- 1+x
-x 2 +x-2 .
+x 2+x-2 .
 	该极限是 0
-0 型不定式, 分子分母代入均为 0. 利用 a - 𝑏=a-𝑏
-a+ 𝑏 可将极限为
+0 型不定式, 分子分母代入均为 0. 利用 a-b=a-b
+a+ b 可将极限为
 0 的根式化为有理形式, 这种技巧我们会常常使用.
 	解 我们先\begin{proof}
-lim
+\lim\limits_
 \end{proof}
 x\rax0
-x=x0 (x0>0). 注意到 x - x0=x-x0
+x=x0 (x0>0). 注意到 x-x0=x-x0
 x+ x0
 .
-	\forall 𝜀>0, 令 𝛿=min x0
-2 , x0 𝜀 . 当 0 < x - x0 < 𝛿 时, 有
-x + x0>x0 , x - x0=x - x0
-x + x0
-< x0 𝜀
+	\forall\varepsilon>0, 令 𝛿=min x0
+2 , x0 \varepsilon  . 当 0<x-x0<𝛿 时, 有
+x+ x0>x0 , x-x0=x-x0
+x+ x0
+< x0 \varepsilon 
 x0
-= 𝜀 .
-	所以 lim
+= \varepsilon  .
+	所以 \lim\limits_
 x\rax0
 x=x0 .
+
+
+
+• 现在
+\lim\limits_
+𝑥→1
+3 − 𝑥 − 1+ 𝑥
+𝑥 2+ 𝑥 − 2=\lim\limits_
+𝑥→1
+3 − 𝑥 − 1+ 𝑥
+𝑥 − 1 𝑥+ 2 3 − 𝑥+ 1+ 𝑥
+=
+\lim\limits_
+𝑥→1 −2
+𝑥+ 2 3 − 𝑥+ 1+ 𝑥=−2
+3 2+ 2=− 2
+6 .
+• 其中最后一步使用了极限的复合函数运算以及 \lim\limits_
+𝑥→𝑥0
+𝑥=𝑥0 .
+
+

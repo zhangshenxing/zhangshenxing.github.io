@@ -6,13 +6,13 @@
 	\onslide<+->
 	\begin{definition}
 		设函数 $f(x)$ 的定义域为 $D$.
-		若 $\exists M>0$ 使得 $\forall x\in D, |f(x)|\le M$, 则称 $f(x)$ \emph{有界}. 否则称 $f(x)$ \emph{无界}.
+		如果 $f(x)$ 的值域包含在一个有限区间 $[m,M]$ 内, 则称 $f(x)$ \emph{有界}. 否则称 $f(x)$ \emph{无界}.
 	\end{definition}
 	\onslide<+->
-	$f(x)$ 有界等价于它的值域包含在某个有限闭区间 $[m,M]$ 内.
+	$f(x)$ 有界等价于: $\exists M>0$ 使得 $\forall x\in D, |f(x)|\le M$.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-2)--(0,2);
 			\draw[cstcurve,dcolora,smooth,domain=-1:2] plot coordinates {(-2.8,-0.8) (-2.1,-0.9) (-1.4,-0.9) (-0.7, 0.5) (0,1) (0.7,0.5) (1.4,1) (2.1,0.9) (2.8,0.6)};
@@ -57,17 +57,19 @@
 
 \begin{frame}{上确界和下确界\noexer}
 	\onslide<+->
+	有时候函数只在一边是有界的.
+	\onslide<+->
 	\begin{definition}
 		\begin{enumerate}
-			\item 若 $\exists m$ 使得 $\forall x\in D, f(x)\ge m$, 则称 $f(x)$ \emph{下有界}.
 			\item 若 $\exists M$ 使得 $\forall x\in D, f(x)\le M$, 则称 $f(x)$ \emph{上有界}.
+			\item 若 $\exists m$ 使得 $\forall x\in D, f(x)\ge m$, 则称 $f(x)$ \emph{下有界}.
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
-	$f(x)$ 有界 $\iff$ $f(x)$ 上有界且下有界.
-
+	显然函数的上下界是不唯一的,
 	\onslide<+->
-	函数的上下界是不唯一的.
+	且 $f(x)$ 有界 $\iff$ $f(x)$ 上有界且下有界.
+
 	\onslide<+->
 	\begin{definition}
 		\begin{enumerate}
@@ -138,13 +140,27 @@
 		若 $f(x)$ 是单调函数, 则 $f(x)$ 有反函数, 且它的单调性和 $f(x)$ 相同.
 	\end{theorem}
 	\onslide<+->
+	\begin{analysis}
+		要说明一个函数有反函数, 只需要说明 $x_1\neq x_2 \implies f(x_1)\neq f(x_2)$.
+	\end{analysis}
+	\onslide<+->
 	\begin{proof*}
 		我们只证明单调递增情形, 单调递减情形类似.
-
-		\onslide<+->{$\forall x_1\neq x_2\in D$, 要么 $x_1<x_2$, 要么 $x_1>x_2$.
-		}\onslide<+->{从而要么 $f(x_1)<f(x_2)$, 要么 $f(x_1)>f(x_2)$.
-		}\onslide<+->{总之, $f(x_1)\neq f(x_2)$.
-		}\onslide<+->{因此 $f$ 是单射, 故 $f$ 有反函数.}
+		\[
+			\onslide<+->{x_1\neq x_2\in D}
+			\onslide<+->{\implies
+			\begin{cases}
+				x_1<x_2&\\
+				\text{或}\ x_1>x_2&
+			\end{cases}}\hspace{-5mm}
+			\onslide<+->{\implies
+			\begin{cases}
+				f(x_1)<f(x_2)&\\
+				\text{或}\ f(x_1)>f(x_2)&
+			\end{cases}}\hspace{-5mm}
+			\onslide<+->{\implies f(x_1)\neq f(x_2).}
+		\]
+		\onslide<+->{因此 $f$ 是单射, 故 $f$ 有反函数.}
 
 		\onslide<+->{设 $y_1=f(x_1)<y_2=f(x_2)$.
 		}\onslide<+->{若 $x_1\ge x_2$, 则 $f(x_1)\ge f(x_2), y_1\ge y_2$, 矛盾!
@@ -163,9 +179,9 @@
 			\onslide<+->{因此存在单调递增的反函数
 				\[\arcsin x: [-1,1]\ra \left[-\frac\pi2,\frac\pi2\right].\]}
 			\vspace{-\baselineskip}
-			\item $e^{-x}$ 在 $(-\infty, +\infty)$ 上单调递减, 且值域为 $(0, +\infty)$. 
+			\item $e^{-x}$ 在 $(-\infty,+\infty)$ 上单调递减, 且值域为 $(0,+\infty)$. 
 			\onslide<+->{因此存在单调递减的反函数
-				\[-\ln x: (0, +\infty) \ra (-\infty, +\infty).\]}
+				\[-\ln x: (0,+\infty) \ra (-\infty,+\infty).\]}
 		\end{enumerate}
 		\vspace{-\baselineskip}
 	\end{example}
@@ -205,9 +221,9 @@
 			\[\dfrac{x-1}{x+1}>0,\qquad x\in(-\infty,-1)\cup(1,+\infty).\]
 		}\onslide<+->{因此它的定义域关于原点对称.
 		}\onslide<+->{由于
-			\[\resizet{1}{$\displaystyle f(-x)=\log_a\left(\frac{-x+1}{-x-1}\right)
+			\[f(-x)=\log_a\left(\frac{-x+1}{-x-1}\right)
 			 	=\log_a\left(\frac{x-1}{x+1}\right)
-				=-\log_a\left(\frac{x+1}{x-1}\right)=-f(x),$}\]
+				=-\log_a\left(\frac{x+1}{x-1}\right)=-f(x),\]
 		}\onslide<+->{因此 $f(x)$ 是奇函数.}
 	\end{example}
 \end{frame}
@@ -259,15 +275,15 @@
 	\end{block}
 	\onslide<+->
 	\begin{proof*}
-		设 $f_1(x)=\dfrac{f(x)+f(-x)}2, f_2(x)=\dfrac{f(x)-f(-x)}2$, 
-		\onslide<+->{则它们的定义域和 $f(x)$ 的定义域相同, 且
-			\[f_1(-x)=f_1(x),\qquad f_2(-x)=-f_2(x).\]
-		}\onslide<+->{因此 $f_1(x)$ 是偶函数, $f_2(x)$ 是奇函数.}
-
-		\onslide<+->{如果 $f(x)=g_1(x)+g_2(x)$, 其中 $g_1(x)$ 是偶函数, $g_2(x)$ 是奇函数, 
-		}\onslide<+->{则 $f(-x)=g_1(x)-g_2(x)$, 
-		}\onslide<+->{从而 $g_1(x)=\dfrac{f(x)+f(-x)}2=f_1(x), g_2(x)=f_2(x)$.
-		}\onslide<+->{因此这种拆分是唯一的.\qedhere}
+		设 $f(x)=f_1(x)+f_2(x)$, 其中 $f_1(x)$ 是偶函数, $f_2(x)$ 是奇函数. 
+		\onslide<+->{那么 $\forall x\in D$,
+			\[f(-x)=f_1(-x)+f_2(-x)=f_1(x)-f_2(x).\]
+		}\onslide<+->{从而
+			\[f_1(x)=\dfrac{f(x)+f(-x)}2,\qquad
+			f_2(x)=\dfrac{f(x)-f(-x)}2.\]
+		}\onslide<+->{唯一性得证.}
+		
+		\onslide<+->{反过来, 这样的 $f_1(x),f_2(x)$ 的定义域和 $f(x)$ 的定义域相同, 且分别是偶函数和奇函数, 于是存在性得证.\qedhere}
 	\end{proof*}
 	\endgroup
 \end{frame}
@@ -323,7 +339,7 @@
 
 
 \begin{frame}{例题: 函数的特征}
-	\beqskip{6pt}
+	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
 		函数 $f(x)=|x\cos x| e^{\cos x}$ 在 $\BR$ 上是\fillbrace{\visible<3->{D}}.
@@ -333,13 +349,15 @@
 	\begin{solution*}
 		由于 $|x\cos x|$ 和 $e^{\cos x}$ 都是偶函数, 因此 $f(x)$ 是偶函数, 选 D.
 	
-		\onslide<4->{对于任意正整数 $M$,
+		\onslide<+->\onslide<+->{对于任意正整数 $M$,
 			\[f(2M\pi)=2M\pi e>M,\]
 		所以 $f(x)$ 无界.}
 
-		\onslide<5->{由于 $f(0)=0, f(\pi)=\frac\pi e, f\left(\frac{3\pi}2\right)=0$, 因此 $f(x)$ 不单调.}
+		\onslide<+->{由于
+			\[f(0)=0,\quad f(\pi)=\frac\pi e,\quad f\left(\frac{3\pi}2\right)=0,\]
+		因此 $f(x)$ 不单调.}
 
-		\onslide<6->{若 $T>0$ 是 $f(x)$ 的周期, 则由 $x \in[0,T)$ 时, $f(x)\le Te$ 可知 $f(x)$ 有界, 矛盾!}
+		\onslide<+->{若 $T>0$ 是 $f(x)$ 的周期, 则由 $x \in[0,T)$ 时, $f(x)\le Te$ 可知 $f(x)$ 有界, 矛盾!}
 	\end{solution*}
 	\endgroup
 \end{frame}

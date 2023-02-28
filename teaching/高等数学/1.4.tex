@@ -9,29 +9,31 @@
 	\end{alertblock}
 	\onslide<+->
 	\begin{proof}
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-90mm,yshift=28mm]
+			\coordinate (A) at (1,0);
+			\coordinate (B) at (0,0);
+			\coordinate (C) at (1,{sqrt 3});
+			\draw[dcolorb,thick] (A)--(B)--(C) pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
+			\draw[cstcurve,dcolora] (A)--(B)--(C)--cycle (A)--(0.5,{0.5*sqrt 3})--cycle;
+			\draw[cstcurve,dcolorb] (B) circle (1);
+			\draw
+				(1.2,0) node {$A$}
+				(-0.2,-0.2) node {$O$}
+				(0.45,1.2) node {$B$}
+				(1.2,1.73) node {$C$}
+				(0.5,-0.2) node {$1$};
+		\end{tikzpicture}\end{tikzpicture}
+
+		\vspace{-35mm}
 		作半径为 $1$ 的圆, 如图所示.
-		\onslide<+->{\begin{tikzpicture}[overlay,xshift=4.5cm,yshift=-3.4cm]
-				\coordinate (A) at (1,0);
-				\coordinate (B) at (0,0);
-				\coordinate (C) at (1,{sqrt 3});
-				\draw[thick,dcolorb] (A)--(B)--(C);
-				\draw[dcolorb,thick] pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
-				\draw[cstcurve,dcolora] (A)--(B)--(C)--cycle;
-				\draw[cstcurve,dcolora] (A)--(0.5,{0.5*sqrt 3})--cycle;
-				\draw[cstcurve,dcolorb] (B) circle (1);
-				\draw
-					(1.2,0) node {$A$}
-					(-0.2,-0.2) node {$O$}
-					(0.45,1.2) node {$B$}
-					(1.2,1.73) node {$C$}
-					(0.5,-0.2) node {$1$};
-			\end{tikzpicture}}
 		\onslide<+->{由
-		\[\text{$\triangle OAB$ 的面积 $<$ 扇形 $OAB$ 的面积 $<$ 直角 $\triangle OAC$ 的面积}\]
+		\begin{center}
+			$\triangle OAB$ 的面积 $<$ 扇形 $OAB$ 的面积 $<$ 直角 $\triangle OAC$ 的面积
+		\end{center}
 		}\onslide<+->{可知
 		\[\half\sin x<\half x<\half \tan x.\]
 		}\onslide<+->{从而命题得证.\qedhere}
-		\vspace{1cm}
+		\vspace{12mm}
 	\end{proof}
 \end{frame}
 
@@ -125,10 +127,12 @@
 		对任意 $n$ 个正实数 $x_1, x_2, \dots, x_n$, 有
 		\[\sqrt{\frac{x_1^2+\cdots+x_n^2}n}\ge \frac{x_1+\cdots+x_n}n\ge \frac1{\frac1{x_1}+\cdots+\frac1{x_n}}.\]
 		\vspace{0.5cm}
-	\begin{tikzpicture}[overlay,yshift=0.4cm,xshift=1.4cm]
-		\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb,visible on=<4->] (2.8,0.1)--(0,0.1);
+	\begin{tikzpicture}[overlay,yshift=4mm,xshift=26mm]
+		\begin{scope}[thick,decoration={brace,amplitude=5},dcolorb]
+			\draw[decorate,visible on=<4->] (2.8,0.1)--(0,0.1);
+			\draw[decorate,visible on=<5->] (8.8,0)--(6.2,0);
+		\end{scope}
 		\draw[dcolorb,visible on=<4->] (1.4,-0.4) node {平方平均数};
-		\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb,visible on=<5->] (8.8,0)--(6.2,0);
 		\draw[dcolorb,visible on=<5->] (7.5,-0.5) node {调和平均数};
 	\end{tikzpicture}
 	\end{corollary}
@@ -214,21 +218,19 @@
 \end{frame}
 
 
-\begin{frame}{拆分技巧}
+\begin{frame}{数列求和拆分技巧}
 	\onslide<+->
 	\begin{example}
 		\begin{align*}
 			\sum_{k=1}^n\frac1{k(k+3)}
-			&=\frac13\sum_{k=1}^n\left(\frac1k-\frac1{k+3}\right)\\
-			&=\frac13\left(1+\frac12+\frac13-\frac1{n+1}-\frac1{n+2}-\frac1{n+3}\right).
+			&=\frac13\sum_{k=1}^n\left(\frac1k-\frac1{k+3}\right)=\frac13\left(1+\frac12+\frac13-\frac1{n+1}-\frac1{n+2}-\frac1{n+3}\right).
 		\end{align*}
 	\end{example}
 	\onslide<+->
 	\begin{example}
 		\begin{align*}
 			\sum_{k=1}^n\frac1{\sqrt{k+2}+\sqrt k}
-			&=\sum_{k=1}^n \frac{\sqrt{k+2}-\sqrt k}2\\
-			&=\frac{\sqrt{n+2}+\sqrt{n+1}-\sqrt 2-1}2.
+			&=\sum_{k=1}^n \frac{\sqrt{k+2}-\sqrt k}2=\frac{\sqrt{n+2}+\sqrt{n+1}-\sqrt 2-1}2.
 		\end{align*}
 	\end{example}
 \end{frame}
