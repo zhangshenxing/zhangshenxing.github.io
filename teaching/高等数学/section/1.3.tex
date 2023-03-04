@@ -41,7 +41,7 @@
 		\item 值域为 $(0,+\infty)$.
 		\item 图像过点 $(0,1)$.
 		\item 当 $a>1$ 时, 它单调递增; 当 $0<a<1$ 时, 它单调递减.
-		\item $y=a^x$ 的图像和 $y=\bigl(\frac1a\bigr)^x$ 的图像关于 $y$ 轴对称.
+		\item $y=a^x$ 的图像和 $y=(1/a)^x$ 的图像关于 $y$ 轴对称.
 		\item 当 $a=1$ 时, 它退化为常数函数 $y=1$.
 		\item 直线 $y=0$ 是它唯一的渐近线.
 	\end{itemize}
@@ -101,7 +101,7 @@
 		\item 当 $a>1$ 时, 它单调递增;
 		\item 当 $0<a<1$ 时, 它单调递减.
 		\item 直线 $x=0$ 是它唯一的渐近线.
-		\item $y=\log_a x$ 的图像和 $y=\log_{\frac1a}	x$ 的图像\\
+		\item $y=\log_a x$ 的图像和 $y=\log_{1/a}	x$ 的图像\\
 		关于 $x$ 轴对称.\vspace{8mm}
 		\item 称 $\lg x=\log_{10} x$ 为\emph{常用对数}, $\ln x=\log_e x$ 为\emph{自然对数}, 其中无理数 $e=2.71828\cdots$ 被称为\emph{自然对数的底}.
 	\end{itemize}
@@ -253,7 +253,7 @@
 	\onslide<+->\onslide<+->
 	\begin{itemize}
 		\item 定义域和值域为 $(-\infty, 0)\cup(0,+\infty)$.
-		\item 奇函数, 图像过点 $(0,0), (1,1), (-1, -1)$.
+		\item 奇函数, 图像过点 $(1,1), (-1, -1)$.
 		\item 有两条渐近线 $x=0, y=0$.
 		\item $y=x^\mu$ 与 $y=x^{\frac1\mu}$ 互为反函数.
 	\end{itemize}
@@ -361,41 +361,25 @@
 \begin{frame}{幂函数性质总结}
 	\onslide<+->
 	\begin{block}{总结}
-		\begin{itemize}
-			\item 幂函数 $y=x^\mu$ 总在 $(0,+\infty)$ 上有定义, 图像经过 $(1,1)$.
-			\item $y=x^\mu|_{(0,+\infty)}$ 和 $y=x^{\frac1\mu}|_{(0,+\infty)}$ 互为反函数.
-			\item $\mu>0$ 时, 在第一象限单调递增, 它的图像经过 $(0,0)$.
-			\item $\mu<0$ 时, 在第一象限单调递减, 有两条渐近线 $x=0, y=0$.
-		\end{itemize}
+		$x>0$ 时幂函数 $y=x^\mu$ 总有定义且 $y=e^{\mu\ln x}$, 图像经过 $(1,1)$, 且$y=x^\mu|_{(0,+\infty)}$ 和 $y=x^{\frac1\mu}|_{(0,+\infty)}$ 互为反函数.
+		$\mu<0$ 时有两条渐近线 $x=0, y=0$.
 	\end{block}
-\end{frame}
-
-
-\begin{frame}{幂函数性质总结}
 	\onslide<+->
 	\begin{center}
 		\renewcommand\arraystretch{1.4}
 		\defaultrowcolors
-		\begin{tabular}{|c|c|c|}\hline
-			\tht $\mu=\dfrac pq$&\tht 定义域&\tht 值域\\\hline
-			&&$p$ 为奇数时, $(-\infty,+\infty)$\\\cline{3-3}
-				\multirow{-2}*{$\mu>0, q$ 奇}
-				&\multirow{-2}*{$(-\infty,+\infty)$}
-				& $p$ 为偶数时, $[0,+\infty)$\\\hline
-			$\mu>0, q$ 偶
-				& $[0,+\infty)$
-				& $[0,+\infty)$\\\hline
-			&&$p$ 为奇数时, $(-\infty,0)\cup(0,+\infty)$\\\cline{3-3}
-				\multirow{-2}*{$\mu<0, q$ 奇}
-				&\multirow{-2}*{$(-\infty,0)\cup(0,+\infty)$}
-				& $p$ 为偶数时, $(0,+\infty)$\\\hline
-			$\mu<0, q$ 偶
-				& $(0,+\infty)$
-				& $(0,+\infty)$\\\hline
-			$\mu$ 为无理数
-				& $(0,+\infty)$
-				& $(0,+\infty)$\\\hline
-		\end{tabular}
+		\resizebox{.75\textwidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			\tht $\mu=\dfrac pq$   &\tht $(-\infty,0)$&\tht $0$ &\tht $(0,+\infty)$&\tht 值域\\\hline
+			$\mu>0$, $q$ 奇, $p$ 奇&$\nearrow$&$0$&$\nearrow$&$(-\infty,+\infty)$\\\hline
+			$\mu>0$, $q$ 奇, $p$ 偶&$\searrow$&$0$&$\nearrow$&$[0,+\infty)$\\\hline
+			$\mu>0$, $q$ 偶        &无定义    &$0$&$\nearrow$&$[0,+\infty)$\\\hline
+			$\mu>0$ 为无理数       &无定义    &$0$&$\nearrow$&$(0,+\infty)$\\\hline			
+			$\mu<0$, $q$ 奇, $p$ 奇&$\searrow$&无定义&$\searrow$&$(-\infty,0)\cup(0,+\infty)$\\\hline
+			$\mu<0$, $q$ 奇, $p$ 偶&$\nearrow$&无定义&$\searrow$&$(0,+\infty)$\\\hline
+			$\mu<0$, $q$ 偶        &无定义    &无定义&$\searrow$&$(0,+\infty)$\\\hline
+			$\mu<0$ 为无理数       &无定义    &无定义&$\searrow$&$(0,+\infty)$\\\hline
+		\end{tabular}}
 	\end{center}
 \end{frame}
 
@@ -411,9 +395,9 @@
 			\tht 三角函数&\tht 定义域&\tht 值域&\tht 有界性&\tht 周期&\tht 奇偶性\\\hline
 			正弦 $\sin x$&$(-\infty,+\infty)$&$[-1,1]$&有界&$2\pi$&奇函数\\\hline
 			余弦 $\cos x$&$(-\infty,+\infty)$&$[-1,1]$&有界&$2\pi$&偶函数\\\hline
-			正切 $\tan x$&$x\neq k+\half\pi, k\in\BZ$&$(-\infty,+\infty)$&无界&$\pi$&奇函数\\\hline
+			正切 $\tan x$&$x\neq \bigl(k+\half\bigr)\pi, k\in\BZ$&$(-\infty,+\infty)$&无界&$\pi$&奇函数\\\hline
 			余切 $\cot x$&$x\neq k\pi, k\in\BZ$&$(-\infty,+\infty)$&无界&$\pi$&奇函数\\\hline
-			正割 $\sec x$&$x\neq k+\half\pi, k\in\BZ$&$(-\infty,-1]\cup[1,+\infty)$&无界&$2\pi$&偶函数\\\hline
+			正割 $\sec x$&$x\neq \bigl(k+\half\bigr)\pi, k\in\BZ$&$(-\infty,-1]\cup[1,+\infty)$&无界&$2\pi$&偶函数\\\hline
 			余割 $\csc x$&$x\neq k\pi, k\in\BZ$&$(-\infty,-1]\cup[1,+\infty)$&无界&$2\pi$&奇函数\\\hline
 		\end{tabular}}
 	\end{center}
@@ -573,7 +557,7 @@
 		\vspace{10mm}
 	\end{definition}
 	\onslide<+->
-	二者满足等式 \alert{$\arcsin x+\arccos x=\frac\pi2$}.
+	二者满足等式 \alert{$\arcsin x+\arccos x=\pi/2$}.
 \end{frame}
 
 
@@ -582,9 +566,9 @@
 	\begin{definition}
 		\begin{enumerate}
 			\item \emph{反正切函数 $y=\arctan x$}.
-			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $\left(-\frac\pi2,\frac\pi2\right)$.
+			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $\left(-\dfrac\pi2,\dfrac\pi2\right)$.
 			}\onslide<+->{有界、单调递增奇函数.
-			}\onslide<+->{有两条渐近线 $y=\pm\frac\pi2$.}
+			}\onslide<+->{有两条渐近线 $y=\pm\pi/2$.}
 			\item \emph{反余切函数 $y=\arccot x$}.
 			\onslide<+->{定义域为 $(-\infty,+\infty)$, 值域为 $(0,\pi)$.
 			}\onslide<+->{有界、单调递减函数.
@@ -619,7 +603,7 @@
 		\end{center}}
 	\end{definition}
 	\onslide<+->
-	二者满足等式 \alert{$\arctan x+\arccot x=\frac\pi2$}.
+	二者满足等式 \alert{$\arctan x+\arccot x=\pi/2$}.
 \end{frame}
 
 

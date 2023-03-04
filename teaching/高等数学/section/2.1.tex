@@ -1,0 +1,446 @@
+\section{数列的极限}
+
+\subsection{极限的引入}
+\begin{frame}{极限的引入}
+	\onslide<+->
+	在数学中, 很多时候我们需要描述一个无限过程的变化行为.
+	\onslide<+->
+	为了严格地描述并研究它们, 我们需要引入极限的概念.
+
+	\onslide<+->
+	\begin{example*}
+		\begin{itemize}
+			\item 双曲线 $xy=1$ 的图像的渐近线是 \onslide<+->{$x=0,y=0$.}
+			\item 指数函数 $y=a^x (a>0,a\neq 1)$ 的图像的渐近线是
+			\onslide<+->{$y=0$.}
+			\item 函数 $y=x+\dfrac1x$ 的图像的渐近线是什么呢?
+		\end{itemize}
+
+		\onslide<+->{为了回答这个问题, 我们需要明确“渐近线”的含义.
+		}\onslide<+->{朴素地讲, 渐近线是指: 若曲线 $C$ 上一点 $M$ 沿曲线\alert{越来越无限接近无穷远}时, 它到一条直线 $l$ 的距离\alert{无限接近零}, 则称直线 $l$ 为曲线 $C$ 的\emph{渐近线}.
+		}\onslide<+->{而想要严格地描述“越来越无限接近”的含义, 就需要引入极限的概念.}
+	\end{example*}
+\end{frame}
+
+
+\begin{frame}{极限的引入}
+	\onslide<+->
+	\begin{example*}
+		一个物体在空间中移动, 它的位置坐标是 $\bfs=(s_1,s_2,s_3)$, 其中 $s_1,s_2,s_3$ 都是时间 $t$ 的函数.
+		\onslide<+->{
+			它在时间段 $[t,t']$ 内的\emph{平均速度}定义为矢量
+			\[\bfv=(v_1,v_2,v_3),\qquad v_i=\frac{s_i(t')-s_i(t)}{t'-t}.\]
+		}\onslide<+->{当 $t'$ \alert{越来越无限接近 $t$} 时, 平均速度会\alert{无限接近}它在时刻 $t$ 的\emph{瞬时速度}}.
+		
+		\onslide<+->{同样, 我们需要利用极限来准确地描述它.}
+\end{example*}
+\end{frame}
+
+
+\begin{frame}{极限的引入}\small
+	\onslide<+->
+	\begin{example}
+		我国古代数学家刘徽为了计算圆周率 $\pi$, 采用\alert{无限逼近}的思想建立了割圆法.
+		\begin{tikzpicture}[overlay,xshift=-3mm,yshift=-42mm,scale=1.5]
+			\foreach \j in {1,2,...,6}{
+				\filldraw[cstcurve,dcolorb,cstfill,visible on=<2-5>] (0,0)--({cos(60*\j-30)/cos(30)},{sin(60*\j-30)/cos(30)})--({cos(60*\j+30)/cos(30)},{sin(60*\j+30)/cos(30)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,12}{
+				\filldraw[thick,dcolorb,cstfill,visible on=<6>] (0,0)--({cos(30*\j-15)/cos(15)},{sin(30*\j-15)/cos(15)})--({cos(30*\j+15)/cos(15)},{sin(30*\j+15)/cos(15)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,24}{
+				\filldraw[semithick,dcolorb,cstfill,visible on=<7>] (0,0)--({cos(15*\j-7.5)/cos(7.5)},{sin(15*\j-7.5)/cos(7.5)})--({cos(15*\j+7.5)/cos(7.5)},{sin(15*\j+7.5)/cos(7.5)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,48}{
+				\filldraw[thin,dcolorb,cstfill,visible on=<8->] (0,0)--({cos(7.5*\j-3.75)/cos(3.75)},{sin(7.5*\j-3.75)/cos(3.75)})--({cos(7.5*\j+3.75)/cos(3.75)},{sin(7.5*\j+3.75)/cos(3.75)})--cycle;
+			}
+			\fill[dcolord] (0,0) circle (1);
+			\foreach \j in {1,2,...,6}{
+				\filldraw[cstcurve,dcolorc,cstfill,fill=dcolore,visible on=<2-5>] (0,0)--({cos(60*\j)},{sin(60*\j)})--({cos(60*\j+60)},{sin(60*\j+60)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,12}{
+				\filldraw[thick,dcolorc,cstfill,fill=dcolore,visible on=<6>] (0,0)--({cos (30*\j)},{sin (30*\j)})--({cos(30*\j+30)},{sin(30*\j+30)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,24}{
+				\filldraw[semithick,dcolorc,cstfill,fill=dcolore,visible on=<7>] (0,0)--({cos (15*\j)},{sin (15*\j)})--({cos(15*\j+15)},{sin(15*\j+15)})--cycle;
+			}
+			\foreach \j in {1,2,3,...,48}{
+				\filldraw[thin,dcolorc,cstfill,fill=dcolore,visible on=<8->] (0,0)--({cos (7.5*\j)},{sin (7.5*\j)})--({cos(7.5*\j+7.5)},{sin(7.5*\j+7.5)})--cycle;
+			}
+		\end{tikzpicture}
+		\onslide<+->{
+			依次计算单位圆的内接和外切正 $3\cdot 2^n=6,12,24,48,\dots$ 边形的面积
+			\[A_n=3\cdot 2^{n-1}\sin\frac\pi{3\cdot 2^{n-1}},\qquad
+			B_n=3\cdot 2^n\tan\frac\pi{3\cdot 2^n},\]
+		}\onslide<+->{那么必定有 $A_n<\pi<B_n$.
+		}\onslide<+->{这个数列的递推关系可以由半角公式推得:}
+		\onslide<+->{
+		\begin{center}
+			\begin{tabular}{c|l|l}\hline
+				$n$&\multicolumn{1}{c}{$A_n$}&\multicolumn{1}{c}{$B_n$}\\\hline
+				\onslide<+->{$2$}&\onslide<.->{$\alert{3.}00000000$}&\onslide<.->{$\alert{3.}21539031$}\\\hline
+				\onslide<+->{$3$}&\onslide<.->{$\alert{3.1}0582854$}&\onslide<.->{$\alert{3.1}5965994$}\\\hline
+				\onslide<+->{$4$}&\onslide<.->{$\alert{3.1}3262861$}&\onslide<.->{$\alert{3.14}608622$}\\\hline
+				\onslide<+->{$12$}&$\onslide<.->{\alert{3.141592}51$}&\onslide<.->{$\alert{3.141592}72$}\\\hline
+				\onslide<+->{$13$}&\onslide<.->{$\alert{3.1415926}2$}&\onslide<.->{$\alert{3.1415926}7$}\\\hline
+			\end{tabular}
+		\end{center}
+		}\onslide<+->{为什么这样下去会越来越趋近于 $\pi$ 呢? 这也需要用到极限的概念.}
+	\end{example}
+\end{frame}
+
+\subsection{极限的定义}
+\begin{frame}{数列极限的定义}
+	\onslide<+->
+	极限可以按如下方式理解:
+	\begin{alertblock}{极限的朴素定义}
+		给定一个函数 $y=f(x)$.
+		
+		当 $x$ \alert{越来越无限接近}于某个状态时, $y$ \alert{无限接近}某个值 $A$, 则 $A$ 就是 $y=f(x)$ 关于这个极限过程的\emph{极限}, 记为 \emph{$\lim\limits_{x\ra\text{某个状态}}f(x)=A$} 或 \emph{$y\ra A (x\ra\text{某个状态})$}.
+		\begin{tikzpicture}[overlay,xshift=-121mm,yshift=-7mm]
+			\begin{scope}[visible on=<2->]
+				\draw[dcolorb,thick] (-2.25,1.1) rectangle (4.3,1.6);
+				\draw (6,2.8) node {极限过程: $x\ra$ 某个状态};
+				\draw[cstaxis,semithick,dcolorb] (2.5,1.6)--(6,2.5);
+			\end{scope}
+			\begin{scope}[visible on=<3->]
+				\draw[dcolorb,thick] (4.45,1.1) rectangle (8.3,1.6);
+				\draw (10.3,2.8) node {记为 $y\ra A$};
+				\draw[cstaxis,semithick,dcolorb] (7.9,1.6)--(10.3,2.5);
+			\end{scope}
+		\end{tikzpicture}
+	\end{alertblock}
+
+	\onslide<+->\onslide<+->\onslide<+->
+	我们来将该表述严格化.
+	\onslide<+->
+	先考虑数列的情形.
+	\onslide<+->
+	所谓的\emph{(无穷)数列}是指依次排列的无穷多个数
+	\[a_1,a_2,\dots,a_n,\dots,\]
+	记为 $\{a_n\}_{n\ge1}$.
+	\onslide<+->
+	其中 $a_n$ 被称为它的\emph{第 $n$ 项}, 用于描述所有项的式子 $a_n=f(n)$ 被称为它的\emph{通项}.
+	\onslide<+->
+	不难看出, 一个数列和一个定义域是全体正整数的函数
+		\[f:\{1,2,3,\dots\}\ra\BR\]
+	是一回事.
+\end{frame}
+
+
+\begin{frame}{例题: 数列的变化趋势}
+	\onslide<+->
+	\begin{example}
+		\begin{itemize}
+			\item $\set{\dfrac1{2^n}}: \dfrac12,\dfrac14,\dfrac18,\dfrac1{16},\dfrac1{32},\cdots$ 递减地 $\ra 0$;
+			\item $\set{n}: 1,2,3,4,5,\cdots$ 无限增大;
+			\item $\set{A_n=3\cdot 2^{n-1}\sin\dfrac\pi{3\cdot2^{n-1}}}$ 递增地 $\ra \pi$;
+			\item $\set{(-1)^n+\dfrac1n}$ 奇数项和偶数项分别交错地越来越接近 $1$ 和 $-1$;
+			\item $\set{1+\dfrac{(-1)^n}n}$ 交错地 $\ra 1$.
+		\end{itemize}
+		\onslide<+->{
+		\begin{center}
+			\begin{tikzpicture}[scale=0.95]
+				\draw[cstaxis] (-0.3,0)--(13,0);
+				\draw[cstaxis] (0,-0.3)--(0,1.5);
+				\draw[cstdash,dcolord] (0,1)--(13,1);
+				\draw (-0.3,1) node {$1$};
+				\draw (13,-0.3) node {$n$};
+				\foreach \x in {1,2,3,...,12}{
+					\draw (\x,0)--(\x,0.2);
+					\draw (\x,-0.25) node {$\x$};
+				}
+				\foreach \x in {1,3,5,7,9,11}{
+					\fill[cstdot,dcolora] (\x,{1-1/\x}) circle;
+				}
+				\foreach \x in {2,4,6,8,10,12}{
+					\fill[cstdot,dcolora] (\x,{1+1/\x}) circle;
+				}
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+\end{frame}
+
+
+\subsection{极限的定义}
+\begin{frame}{数列极限的定义}
+	\onslide<+->
+	所谓“越来越无限接近”, 是指“比任何正实数”都要接近.
+	\onslide<+->
+	换言之, 对任意的正实数 $\varepsilon>0$, $|a_n-a|$ 最终是要小于 $\varepsilon$ 的.
+	\onslide<+->
+	即存在 $N=N_\varepsilon$ 使得当 $n>N$ 时, $|a_n-a|<\varepsilon$.
+
+	\onslide<+->
+	\begin{definition*}
+		设有数列 $\set{a_n}$ 和常数 $a$. 如果
+		\[\text{\color{red}$\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$},\]
+		则称 $a$ 为 \emph{$a_n$ 当 $n \ra \infty$ 时的极限}, 记为
+		\[\text{\emph{$\lim\limits_{n\ra\infty}a_n=a$} 或 $a_n\ra a (n\ra \infty)$}.\]
+		\onslide<+->{此时称该数列\emph{收敛}.}
+
+		\onslide<+->{如果不存在这样的常数 $a$, 则称该数列\emph{发散}(没有极限, 不收敛).}
+		\onslide<+->{\begin{tikzpicture}[overlay]
+			\draw[semithick,dcolorc] (-9.3,3.2) rectangle (-0.6,3.9);
+			\draw (0.5,3.55) node[dcolorc] {$\varepsilon$-$N$ 语言};
+		\end{tikzpicture}}
+	\end{definition*}
+\end{frame}
+
+
+\begin{frame}{数列极限的定义}
+	\onslide<+->
+	注意并不是 $\exists N,\forall\varepsilon$ 使得当 $n>N$ 时, 有 $\abs{a_n-a}<\varepsilon$.
+	
+	\onslide<+->
+	注意到当 $\varepsilon'>\varepsilon$ 时, 我们可以取 $N_{\varepsilon'}=N_\varepsilon$.
+	\onslide<+->
+	所以在证明极限的问题中, 可以只考虑例如 $\varepsilon<1$ 的情形.
+	\onslide<+->
+	同理, 我们可以只考虑例如 $n\ge 100$ 的情形.
+
+	\onslide<+->
+	\begin{example}
+		单选题: “极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在”的充要条件是“$\forall\varepsilon>0$,\fillbrace{\visible<7->{C}}”.
+		\xx{必有无穷多项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
+		{所有项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
+		{只有有限项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
+		{可能有无穷多项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$\forall\varepsilon>0$, 存在正整数 $N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+		\onslide<+->{这等价于至多只有有限项 $a_1 ,\dots, a_N$ 满足 $|a_n-a|\ge \varepsilon$. 故选 C, 而 BD 均不正确.
+		}\onslide<+->{对于 A , 反例 $a_n=(-1)^n, a=1$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 极限的定义证明}
+	\onslide<+->
+	\begin{example}
+		证明当 $|q|<1$ 时, $\lim\limits_{n\ra\infty}q^n=0$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		分为两步:
+		\begin{itemize}
+			\item 估计 $|a_n-a|$, 得到它和 $n$ 的不等式关系, 从而求得 $N=N_\varepsilon$. 这个过程中可以进行适当的放缩.
+			\item 将上述 $N$ 代入极限的定义中.
+		\end{itemize}
+		\onslide<+->{对于本题, 从 $|q^n-0|=|q|^n<\varepsilon$ 解得 $n>\log_{|q|}\varepsilon$.	}
+	\end{analysis}
+	\onslide<+->
+	\begin{proof}
+		$\forall\varepsilon>0$, 令 \alert{$N=\log_{|q|}\varepsilon$}.
+		\onslide<+->{当 $n>N$ 时, 有 \alert{$|q^n-0|=|q|^ n<\varepsilon$}.
+		}\onslide<+->{所以 \alert{$\lim\limits_{n\ra\infty}q^n=0$}.\qedhere}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例题: 极限的定义证明}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{n\ra\infty}\dfrac{\sin n}n=0$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		我们有 $\abs{\dfrac{\sin n}n-0}\le\dfrac1n$.
+		\onslide<+->{$\forall\varepsilon>0$, 令 $N=\dfrac1\varepsilon$.
+		 }\onslide<+->{当 $n>N$ 时, 有
+		 \[\abs{\frac{\sin n}n-0}\le\frac1n<\varepsilon.\]
+		 }\onslide<+->{所以 $\lim\limits_{n\ra\infty}\dfrac{\sin n}n=0$.\qedhere}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例题: 极限的定义证明}\small
+	\beqskip{5pt}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{n\ra\infty}\dfrac{2n^2+2n-4}{n^2-8}=2$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		我们有 $\abs{\dfrac{2n^2+2n-4}{n^2-8}-2}=\dfrac{2n+12}{n^2-8}$.
+		\onslide<+->{若 $n\ge12$, 则 $\displaystyle\abs{\frac{2n+12}{n^2-8}}\le\frac{3n}{n^2-n}=\frac3{n-1}$.}
+		
+		\onslide<+->{$\forall\varepsilon>0$, 令 $N=\max\set{1+\dfrac3\varepsilon,12}$.
+		 }\onslide<+->{当 $n>N$ 时, 有
+		\[\abs{\frac{2n^2+2n-4}{n^2-8}-2}\le\frac3{n-1}<\varepsilon.\]
+		 }\onslide<+->{所以 $\lim\limits_{n\ra\infty}\dfrac{2n^2+2n-4}{n^2-8}=0$.\qedhere}
+	\end{proof}
+	\endgroup
+\end{frame}
+
+\subsection{收敛数列的性质}
+
+\begin{frame}{数列极限的唯一性}
+	\onslide<+->
+	\begin{theorem}[唯一性]
+		收敛数列的极限是唯一的.
+	\end{theorem}
+	\onslide<+->
+	\begin{proof}
+		设 $a$ 和 $b$ 都是 $\set{a_n}$ 的极限.
+		\onslide<+->{$\forall\varepsilon>0, \exists N, M>0$ 使得
+		\begin{center}
+			当 $n>N$ 时, $|a_n-a|<\varepsilon$; 当 $n>M$ 时, $|a_n-b|<\varepsilon$.
+		\end{center}
+		}\onslide<+->{对于 $n>\max\set{N,M}$, 由三角不等式有
+			\[|a-b|\le|a-a_n|+|a_n-b|<2\varepsilon.\]
+		}\onslide<+->{若 $a\neq b$, 则可取 $\varepsilon=\abs{\dfrac{a-b}2}>0$ 代入得到 $2\varepsilon<2\varepsilon$, 矛盾!}
+		\onslide<+->{因此 $a=b$.\qedhere}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{数列极限的有界性}
+	\onslide<+->
+	\begin{theorem}[有界性]
+		收敛数列是有界数列.
+	\end{theorem}
+	\onslide<+->
+	\begin{proof}
+		设数列 $\set{a_n}$ 收敛到 $a$, 则对于 $\varepsilon=1$, 存在正整数 $N$ 使得当 $n>N$ 时
+		\[|a_n-a|<\varepsilon=1,\qquad |a_n|\le|a|+|a_n-a|<|a|+1.\]
+		\onslide<+->{因此对于
+		\[M=\max\set{|a_1|,\dots,|a_N|,|a|+1},\]
+		有 $|a_n|\le M$.
+		 }\onslide<+->{这说明 $\set{a_n}$ 是有界数列.\qedhere}
+	\end{proof}
+	\onslide<+->
+	收敛数列一定有界, 但反之未必.
+	\onslide<+->
+	\begin{example}
+		对于数列 $\set{a_n}=(-1)^n$, 该数列是有界的但是不收敛.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{数列极限的保号性}
+	\onslide<+->
+	\begin{theorem}[保号性]
+		\begin{enumerate}
+			\item 若 $\lim\limits_{n\ra\infty}a_n=a\alert{>}0$, 则 $\exists N$ 使得当 $n>N$ 时, 有 $a_n\alert{>}0$.
+			\item 若 $\lim\limits_{n\ra\infty}a_n=a\alert{<}0$, 则 $\exists N$ 使得当 $n>N$ 时, 有 $a_n\alert{<}0$.
+		\end{enumerate}
+	\end{theorem}
+	\onslide<+->
+	\begin{proof}
+		\enumnum1 对于 $\varepsilon=\dfrac a2>0$, $\exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon=\dfrac a2$,
+		\onslide<+->{从而
+		\[a_n>a-\dfrac a2=\dfrac a2>0.\]
+		}\onslide<+->{\enumnum2 同理可得.\qedhere}
+	\end{proof}
+	\onslide<+->
+	注意这里 $>0$ \alert{不能换成} $\ge 0$,	$<0$ 也\alert{不能换成} $\le 0$.
+	\onslide<+->
+	因为极限为 $0$ 的数列符号可以无限次变化, 例如$\lim\limits_{n\ra\infty}\dfrac{(-1)^n}n=0$.
+\end{frame}
+
+
+\begin{frame}{数列极限的保号性}
+	\onslide<+->
+	\begin{corollary}[逆否命题]
+		\begin{enumerate}
+			\item 如果收敛数列 $\set{a_n}$ 从某项起 $\ge 0$, 则它的极限 $\ge 0$.
+			\item 如果收敛数列 $\set{a_n}$ 从某项起 $\le 0$, 则它的极限 $\le 0$.
+		\end{enumerate}
+	\end{corollary}
+	\onslide<+->
+	同理, 这里 $\ge$ \alert{也不能换成} $>$ (这很容易记错!), 例如 $\lim\limits_{n\ra\infty}\dfrac1n=0$.
+	\onslide<+->
+	\begin{corollary}
+		如果收敛数列 $\set{a_n}, \set{b_n}$ 满足从某项起 $a_n\ge b_n$, 则 $\lim\limits_{n\ra\infty}a_n\ge\lim\limits_{n\ra\infty}b_n$.
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{数列的子数列}
+	\onslide<+->
+	对于正整数集的一个无限子集合 $S\subseteq\BN_+$, 将其中元素从小到大排成一列
+	\[S=\set{k_1,k_2,\dots,k_n,\dots},\]
+	\onslide<+->
+	则它对应了数列 $\set{a_n}$ 的一个\emph{子数列}
+	\[\set{a_{k_n}}_{n\ge1}: a_{k_1}, a_{k_2}, \dots, a_{k_n}, \dots\]
+
+	\onslide<+->
+	特别地, 当 $S$ 为全体正奇数时, 称 $\set{a_{2n-1}}_{n\ge1}$ 为\emph{奇子数列}; 当 $S$ 为全体正偶数时, 称 $\set{a_{2n}}_{n\ge1}$ 为\emph{偶子数列}.
+\end{frame}
+
+
+\begin{frame}{数列与子数列的极限关系}
+	\onslide<+->
+	\begin{theorem}
+		$\set{a_n}$ 收敛于 $a$ 当且仅当 $\set{a_{2n-1}}$ 和 $\set{a_{2n}}$ 均收敛于 $a$.
+	\end{theorem}
+	\onslide<+->
+	\begin{proof*}
+		必要性($\Rightarrow$): 如果 $\lim\limits_{n\ra\infty} a_n=a$, 则 $\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+		\onslide<+->{因此
+		\[|a_{2n-1}-a|<\varepsilon,\qquad |a_{2n}-a|<\varepsilon.\]
+		}\onslide<+->{从而 $\set{a_{2n-1}}$ 和 $\set{a_{2n}}$ 均收敛于 $a$.}
+
+		\onslide<+->{充分性($\Leftarrow$): 如果 $\lim\limits_{n\ra\infty} a_{2n-1}=\lim\limits_{n\ra\infty} a_{2n}=a$, 则 $\forall\varepsilon>0$, $\exists N,M$ 使得
+		\begin{center}
+			当 $n>N$ 时, $|a_{2n-1}-a|<\varepsilon$; 当 $n>M$ 时, $|a_{2n}-a|<\varepsilon$.
+		\end{center}
+		}\onslide<+->{所以当 $n>\max\set{2N-1,2M}$ 时, 有  $|a_n-a|<\varepsilon$. 故数列 $\set{a_n}$ 收敛到 $a$.\qedhere}
+	\end{proof*}
+\end{frame}
+
+
+\begin{frame}{数列与子数列的极限关系\noexer}
+	\onslide<+->
+	\begin{theorem}
+		$\set{a_n}$ 收敛于 $a$ 当且仅当它的所有子数列均收敛于 $a$.
+	\end{theorem}
+	\onslide<+->
+	设 $S_1,\dots,S_m\subseteq\BN_+$ 均是无限集合, 且
+		\[S_1\cup\cdots\cup S_m=\BN_+.\]
+	\onslide<+->
+	那么 $\set{a_n}$ 收敛于 $a\iff$ 每个 $S_i$ 对应子数列均收敛于 $a$.
+
+	\onslide<+->
+	这是因为 $\forall\varepsilon>0$, 每个 $S_i$ 中至多只有有限多项满足 $|a_n-a|\ge\varepsilon$, 从而一共也只有有限多项满足这个不等式.
+	于是对充分大的 $n$, $|a_n-a|<\varepsilon$.
+\end{frame}
+
+
+\begin{frame}{数列与子数列的极限关系\noexer}	
+	\onslide<+->
+	然而对于无穷多个 $S_i$, 这是不对的.
+	\onslide<+->
+	下图中红色连线形成一个数列 $\set{a_n}$, 
+	\onslide<+->{
+	蓝色连线对应的子数列均收敛到 $0$, }
+	\onslide<+->{
+	但是 $\set{a_n}$ 本身却不收敛.}
+	\begin{center}
+		\begin{tikzpicture}[scale=0.8,visible on=<2->]
+			\draw[cstaxis] (0,0)--(6.5,0);
+			\draw[cstaxis] (0,0)--(0,6.5);
+			\draw[cstaxis,dcolora,visible on=<2>]
+				(1,1)--(1,2)--(2,1)--(1,3)--(2,2)--(3,1)--(1,4)--(2,3)--(3,2)--(4,1)--(1,5)--(2,4)--(3,3)--(4,2)--(5,1)--(1,6);
+			\foreach \x in {1,2,3,4,5}{
+				\draw[cstaxis,dcolorb,visible on=<3->] (\x,1)--(\x,5.5);
+				\draw[dcolorb,visible on=<3->] (\x,5.7) node {$0$};
+			}
+			\draw[cstaxis,dcolorc,visible on=<4->] (1,1)--(5.5,5.5);
+			\draw[dcolorc,visible on=<4->] (5.7,5.7) node {$1$};
+			\foreach \x in {1,2,3,4,5}{
+				\draw (\x,0)--(\x,0.2);
+				\draw (0,\x)--(0.2,\x);
+				\foreach \y in {1,2,3,4,5}{
+					\fill[cstdot] (\x,\y) circle;
+					\draw (\x+0.3,\y) node {$\frac{\x}{\y}$};
+				}
+			}
+		\end{tikzpicture}
+	\end{center}
+
+	\onslide<+->
+	在数学中, 常常有这种在有限情形成立, 无限情形不成立的结论. 因此遇到涉及无限的情形要小心.
+\end{frame}
