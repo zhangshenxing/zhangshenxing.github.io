@@ -175,10 +175,11 @@
 	\end{block}
 	\onslide<+->
 	\begin{block}{万能公式}
-		令 $t=\tan\dfrac x2$, 则
+		令 $t=\tan\dfrac x2$, 则直角边为 $2t,1-t^2$ 的直角三角形含有角 $x$.
+		\onslide<+->{由于斜边是 $1+t^2$, 因此
 		\[\sin x=\frac{2t}{1+t^2},\quad
 			\cos x=\frac{1-t^2}{1+t^2},\quad
-			\tan x=\frac{2t}{1-t^2}.\]
+			\tan x=\frac{2t}{1-t^2}.\]}
 	\end{block}
 	\onslide<+->
 	万能公式可将 $x$ 的三角函数转化为 $\tan \dfrac x2$ 的有理函数.
@@ -196,8 +197,8 @@
 	\begin{block}{等比数列求和公式}
 		设 $x_n=x_1 q^{n-1}$, 则
 		\[x_1+x_2+\cdots+x_n=\begin{cases}
-			\dfrac{x_1 q^{n-1}}{q-1},& q\neq 1,\\
-			nx_1, & q=1.
+			x_1\cdot\dfrac{1-q^n}{1-q},& q\neq 1,\\
+			x_1\cdot n, & q=1.
 		\end{cases}\]
 	\end{block}
 	\onslide<+->
@@ -212,13 +213,13 @@
 		\begin{itemize}
 			\item $1+2+3+\cdots+n=\dfrac{n(n+1)}2$,
 			\item $1^2+2^2+3^2+\cdots+n^2=\dfrac{n(n+1)(2n+1)}6$,
-			\item $1^3+2^3+3^3+\cdots+n^3=\left(\dfrac{n(n+1)}2\right)^2$.
+			\item $1^3+2^3+3^3+\cdots+n^3=\biggl[\dfrac{n(n+1)}2\biggr]^2$.
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 
-\begin{frame}{数列求和拆分技巧}
+\begin{frame}{裂项相消法}
 	\onslide<+->
 	\begin{example}
 		\begin{align*}
@@ -248,4 +249,7 @@
 	\onslide<+->
 	令 $x=-1,y=1$, 则
 	\[\sum_{k=0}^n (-1)^k\rmC_n^k=\rmC_n^0-\rmC_n^1+\cdots+(-1)^n\rmC_n^n=0.\]
+	\onslide<+->
+	特别地,
+	\[\rmC_n^0+\rmC_n^2+\rmC_n^4+\cdots=\rmC_n^1+\rmC_n^3+\rmC_n^5+\cdots=0.\]
 \end{frame}

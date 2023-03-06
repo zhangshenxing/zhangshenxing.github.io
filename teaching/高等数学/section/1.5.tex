@@ -3,14 +3,9 @@
 \subsection{极坐标系}
 \begin{frame}{极坐标系}
 	\onslide<+->
-	在平面直角坐标系中, 我们想要表示一个圆心在原点的圆, 可以用参数方程
-	\[\left\{\begin{aligned}
-		x&=x_0+R\cos\theta,\\
-		y&=y_0+R\sin\theta,
-	\end{aligned}\right.\qquad \theta\in[0,2\pi)\]
-	来表示.
+	在平面直角坐标系中, 我们想要描述一个点或一条曲线的平移是很容易的, 只需要将 $x,y$ 做相应变换.
 	\onslide<+->
-	这就引出了用于表达这类曲线更为简便的极坐标的概念.
+	但有时我们需要考虑点或曲线的旋转, 此时极坐标就比直角坐标更为方便.
 	\onslide<+->
 	\begin{definition*}
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-87mm,yshift=17mm]
@@ -68,7 +63,8 @@
 	\onslide<+->
 	\begin{alertblock}{极坐标系和直角坐标系的转换关系}
 		\[x=r\cos\theta,\qquad y=r\sin\theta,\]
-		\[r=\sqrt{x^2+y^2},\qquad \sin\theta=\frac yr, \cos\theta=\frac xr.\]
+		\[r=\sqrt{x^2+y^2},\]
+		\[\theta=\arctan\frac yx (\text{第一四象限})\ \text{或}\ \arctan\frac yx+\pi (\text{第二三象限}).\]
 	\end{alertblock}
 	\begin{center}
 		\begin{tikzpicture}[framed]
@@ -94,8 +90,6 @@
 			\fill[cstdot,dcolora] (2,1.5) circle;
 		\end{tikzpicture}
 	\end{center}
-	\onslide<+->
-	实际中我们常用 $\tan\theta=\dfrac yx$ 并根据点所处的象限来确定 $\theta$.
 \end{frame}
 
 
@@ -110,8 +104,8 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item \[x=2\cos\frac\pi6=3,\qquad y=2\sin\frac\pi6=1.\]
-			因此 $M$ 的直角坐标为 $(3,1)$.
+			\item \[x=2\cos\frac\pi6=\sqrt3,\qquad y=2\sin\frac\pi6=1.\]
+			因此 $M$ 的直角坐标为 $(\sqrt3,1)$.
 			\item $r=\sqrt{(-1)^2+1^2}=\sqrt2$,
 			\onslide<+->{$\tan\theta=-1$,
 			}\onslide<+->{$\theta$ 可以选择为 $\dfrac{3\pi}4$.
@@ -146,12 +140,10 @@
 			\fill[cstdot,dcolorb] (C) circle;
 		\end{tikzpicture}\end{tikzpicture}
 		
-		\vspace{-27mm}
-		设 $M(r,\theta)$ 为圆上任意一点,
-		\onslide<+->{因为\\圆心在极点 $O$, 所以 $r=OM=R$. \\
-		}\onslide<+->{反之, 极径为 $R$ 的点都落在圆上.\\
-		}\onslide<+->{因此该圆的极坐标方程为 $r=R$.}
-		\vspace{3mm}
+		\vspace{-22mm}
+		$M(r,\theta)$ 在圆上 $\iff r=OM=R$. \\
+		\onslide<+->{因此该圆的极坐标方程为 $r=R$.}
+		\vspace{8mm}
 	\end{solution}
 	\onslide<+->
 	\begin{proofblock}{另解}
@@ -191,8 +183,8 @@
 		\end{tikzpicture}\end{tikzpicture}
 		
 		\vspace{-22mm}
-		设 $M(r,\theta)$ 为圆上任意一点.
-		\onslide<+->{由图可知 \\$OM\perp BM$, 从而 $r=OM=2R\cos\theta$.\\
+		$M(r,\theta)$ 在圆上 $\iff OM\perp BM$\\
+		\onslide<+->{$\iff r=OM=2R\cos\theta$.\\
 		}\onslide<+->{所以极坐标方程为 $r=2R\cos\theta$.}
 		\vspace{3mm}
 	\end{solution}
@@ -251,19 +243,23 @@
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
-			\item 将直角坐标方程 $x=1$ 表示的直线用极坐标方程表示.
+			\item 将直角坐标方程 $x+y=1$ 表示的直线用极坐标方程表示.
 			\item 将极坐标方程 $r=4\sin\theta$ 表示的曲线用直角坐标方程表示.
 		\end{enumerate}
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item 由 $x=r\cos\theta=1$ 可知极坐标方程为 $r=\dfrac1{\cos\theta}$.
-			\item 由 $y=r\sin\theta=\dfrac{r^2}4$ 可知 $x^2+y^2=r^2=4y$, 即 $x^2+y^2=4y$.
+			\item $1=x+y=r\cos\theta+r\sin\theta$
+			\onslide<+->{$\iff r=\dfrac1{\cos\theta+\sin\theta}$.}
+			\item $r=4\sin\theta\iff r^2=4r\sin\theta=4y$
+			\onslide<+->{$\iff x^2+y^2=4y$}.
 		\end{enumerate}
 	\end{solution}
 	\onslide<+->
-	对于极坐标方程 $r=\rho(\theta)$, 我们总可以将其对应的直角坐标系的参数方程表为
+	对于直角坐标方程 $F(x,y)=0$, 可将其对应的极坐标方程表为 $F(r\cos\theta,r\sin\theta)=0$.
+	\onslide<+->
+	对于极坐标方程 $r=\rho(\theta)$, 可将其对应的直角坐标系的参数方程表为
 	\[\left\{\begin{aligned}
 		x&=\rho(\theta)\cos\theta,\\
 		y&=\rho(\theta)\sin\theta.

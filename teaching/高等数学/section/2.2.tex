@@ -3,31 +3,42 @@
 \subsection{函数极限的定义}
 \begin{frame}{函数在 $+\infty$ 的极限}
 	\onslide<+->
-	我们参照数列极限的定义来定义函数的极限.
+	和数列情形类似, 我们可以定义 $x\ra+\infty$ 时 $f(x)$ 的极限.
 	\onslide<+->
-	我们先考虑当 $x\ra+\infty$ 时 $f(x)$ 的极限.
-	\onslide<+->
-	回忆数列的极限
+	回忆数列的 $\varepsilon$-$N$ 语言:
 	\begin{center}
 		\alert{$\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $\abs{a_n-a}<\varepsilon$.}
 	\end{center}
 	\onslide<+->
 	\begin{definition}
-		设函数 $f(x)$ 在 $x$ 充分大时有定义 (即存在 $M$ 使得 $f(x)$ 在 $(M,+\infty)$ 上有定义), $A$ 为常数.
+		设函数 $f(x)$ 的定义包含某个 $(M,+\infty)$, 即在 $x$ 充分大时有定义, $A$ 为一常数.
 		\onslide<+->{如果
 		\begin{center}
 			\alert{$\forall\varepsilon>0, \exists X$ 使得当 $x>X$ 时, 有 $\abs{f(x)-A}<\varepsilon$,}
 		\end{center}
 		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra+\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra+\infty}f(x)=A$} 或 $f(x)\ra A (x\ra+\infty)$.}
+		\onslide<+->{\begin{tikzpicture}[overlay,xshift=106mm,yshift=-19mm]
+			\draw[semithick,dcolorc] (-9.3,3.2) rectangle (-0.1,3.9);
+			\draw (1,3.55) node[dcolorc] {$\varepsilon$-$X$ 语言};
+		\end{tikzpicture}}
 	\end{definition}
 	\onslide<+->
-	从图像上看, 就是函数在 $(X,+\infty)$ 的限制的图像被夹在直线 $y=A\pm\varepsilon$ 之间.
-	\onslide<+->
-	我们将红字部分称为 \alert{$\varepsilon$-$X$} 语言.
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis] (-0.5,0)--(10,0);
+			\draw[cstaxis] (0,-0.5)--(0,1.5);
+			\draw[cstdash,dcolord] (0,1)--(10,1);
+			\draw[domain=1:10]  plot(\x,{sin \x/\x});
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 
 \begin{frame}{函数在 $\infty$ 的极限}
+	\onslide<+->
+	从图像上看, 就是函数在 $(X,+\infty)$ 的限制的图像被夹在直线 $y=A\pm\varepsilon$ 之间.
+	\onslide<+->
+	我们将红字部分称为 \alert{$\varepsilon$-$X$} 语言.
 	\onslide<+->
 	仿造上述定义, 我们有:
 	\onslide<+->
