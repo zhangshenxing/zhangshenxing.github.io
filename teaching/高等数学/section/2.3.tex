@@ -1,266 +1,263 @@
+\section{极限的性质}
 
-\end{frame}
-
-
-\begin{frame}
-2.3 极限的性质
-	与数列极限类似, 对于函数的六种极限我们均有:
-	定理(唯一性) 如果 \lim\limits_ $f(x)$ 存在, 则必唯一.
-	定理(局部有界性) 如果 \lim\limits_ $f(x)$ 存在, 则 $f(x)$ 局部有界.
-	所谓的局部, 是指极限定义中 $f(x)$-A<\varepsilon  成立的某个区间范围. 以
-x\ra+\infty 为例, 局部有界是指存在 X 使得 f | X,+\infty 有界.
-	定理(局部保号性) 如果 \lim\limits_ $f(x)$=a>0, 则 $f(x)$ 局部大于 0.
-	推论 如果 \lim\limits_ $f(x)$ 存在且局部非负, 则极限非负.
-	推论 如果 \lim\limits_ $f(x)$ , \lim\limits_g(x) 存在且局部 $f(x)$ \ge g(x), 则 \lim\limits_ $f(x)$ \ge
-\lim\limits_g(x).
-\end{frame}
+% \begin{frame}
+% 	与数列极限类似, 对于函数的六种极限我们均有:
+% 	定理(唯一性) 如果 \lim\limits_ $f(x)$ 存在, 则必唯一.
+% 	定理(局部有界性) 如果 \lim\limits_ $f(x)$ 存在, 则 $f(x)$ 局部有界.
+% 	所谓的局部, 是指极限定义中 $f(x)$-A<\varepsilon  成立的某个区间范围. 以
+% x\ra+\infty 为例, 局部有界是指存在 X 使得 f | X,+\infty 有界.
+% 	定理(局部保号性) 如果 \lim\limits_ $f(x)$=a>0, 则 $f(x)$ 局部大于 0.
+% 	推论 如果 \lim\limits_ $f(x)$ 存在且局部非负, 则极限非负.
+% 	推论 如果 \lim\limits_ $f(x)$ , \lim\limits_g(x) 存在且局部 $f(x)$ \ge g(x), 则 \lim\limits_ $f(x)$ \ge
+% \lim\limits_g(x).
+% \end{frame}
 
 
-\begin{frame}
-	极限的四则运算性质
-	\begin{theorem}
-设 \lim\limits_ $f(x)$=A, \lim\limits_ g x=𝐵.
-\end{theorem}
-	(1) \lim\limits_ f \pm g x=A \pm 𝐵.
-	(2) \lim\limits_ fg x=A𝐵.
-	(3) 当 𝐵\neq 0 时, \lim\limits_ f
-g x=A
-𝐵 .
-	\begin{proof}
-我们只证明 x\ra x0 的情形, 其它情形类似.
-\end{proof}
-	(1) \forall\varepsilon>0, \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 $f(x)$-A<\varepsilon 
-2;
-	\exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 g x-𝐵<\varepsilon 
-2.
-	因此, 当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时, 有
-f \pm g x-A \pm 𝐵=$f(x)$-A \pm g x-𝐵 ≤ $f(x)$-A+ g x-𝐵<\varepsilon  .
-	所以 \lim\limits_
-x\rax0
-f \pm g x=A \pm 𝐵 .
-\end{frame}
+% \begin{frame}
+% 	极限的四则运算性质
+% 	\begin{theorem}
+% 设 \lim\limits_ $f(x)$=A, \lim\limits_ g x=𝐵.
+% \end{theorem}
+% 	(1) \lim\limits_ f \pm g x=A \pm 𝐵.
+% 	(2) \lim\limits_ fg x=A𝐵.
+% 	(3) 当 𝐵\neq 0 时, \lim\limits_ f
+% g x=A
+% 𝐵 .
+% 	\begin{proof}
+% 我们只证明 x\ra x0 的情形, 其它情形类似.
+% \end{proof}
+% 	(1) \forall\varepsilon>0, \exists \delta1>0 使得当 0<x-x0<\delta1 时, 有 $f(x)$-A<\varepsilon 
+% 2;
+% 	\exists \delta2>0 使得当 0<x-x0<\delta2 时, 有 g x-𝐵<\varepsilon 
+% 2.
+% 	因此, 当 0<x-x0<\delta=min \delta1 , \delta2 时, 有
+% f \pm g x-A \pm 𝐵=$f(x)$-A \pm g x-𝐵 ≤ $f(x)$-A+ g x-𝐵<\varepsilon  .
+% 	所以 \lim\limits_
+% x\rax0
+% f \pm g x=A \pm 𝐵 .
+% \end{frame}
 
 
-\begin{frame}
-	(2) 分析 $f(x)$ g x-A𝐵=$f(x)$ g x-𝐵+ 𝐵 $f(x)$-A
-≤ $f(x)$ \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A .
-	由局部有界性, \exists 𝛿1 , M>0 使得当 0<x-x0<𝛿1 时, 有 $f(x)$ ≤ M.
-	\forall\varepsilon>0, \exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 $f(x)$-A<\varepsilon 
-2 𝐵+1 ;
-	\exists 𝛿3>0 使得当 0<x-x0<𝛿3 时, 有 g x-𝐵<\varepsilon 
-2M.
-	因此, 当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 , 𝛿3 时, 有
-f x g x-A𝐵 ≤ M \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A
-≤ M \cdot \varepsilon 
-2M+ 𝐵 \cdot \varepsilon 
-2 𝐵+ 1<\varepsilon .
-	所以 \lim\limits_
-x\rax0
-fg x=A𝐵.
-\end{frame}
+% \begin{frame}
+% 	(2) 分析 $f(x)$ g x-A𝐵=$f(x)$ g x-𝐵+ 𝐵 $f(x)$-A
+% ≤ $f(x)$ \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A .
+% 	由局部有界性, \exists \delta1 , M>0 使得当 0<x-x0<\delta1 时, 有 $f(x)$ ≤ M.
+% 	\forall\varepsilon>0, \exists \delta2>0 使得当 0<x-x0<\delta2 时, 有 $f(x)$-A<\varepsilon 
+% 2 𝐵+1 ;
+% 	\exists \delta3>0 使得当 0<x-x0<\delta3 时, 有 g x-𝐵<\varepsilon 
+% 2M.
+% 	因此, 当 0<x-x0<\delta=min \delta1 , \delta2 , \delta3 时, 有
+% f x g x-A𝐵 ≤ M \cdot g x-𝐵+ 𝐵 \cdot $f(x)$-A
+% ≤ M \cdot \varepsilon 
+% 2M+ 𝐵 \cdot \varepsilon 
+% 2 𝐵+ 1<\varepsilon .
+% 	所以 \lim\limits_
+% x\rax0
+% fg x=A𝐵.
+% \end{frame}
 
 
-\begin{frame}
-	(3) 我们只需要\begin{proof}
-1
-\end{proof}
-g \ra 1
-𝐵 然后利用(2). 这需要对 1
-g 在 x0 附近进行估计
-使得其有个非零下界.
-	对于 \varepsilon =𝐵
-2>0, \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 g x-𝐵 ≤
-\varepsilon =𝐵
-2 . 于是
-g x \ge 𝐵-g x-𝐵 \ge 𝐵
-2 ,
-1
-g x-1
-𝐵=g x-𝐵
-𝐵 \cdot g x ≤ 2
-𝐵 2 g x-𝐵 .
-\end{frame}
+% \begin{frame}
+% 	(3) 我们只需要\begin{proof}
+% 1
+% \end{proof}
+% g \ra 1
+% 𝐵 然后利用(2). 这需要对 1
+% g 在 x0 附近进行估计
+% 使得其有个非零下界.
+% 	对于 \varepsilon =𝐵
+% 2>0, \exists \delta1>0 使得当 0<x-x0<\delta1 时, 有 g x-𝐵 ≤
+% \varepsilon =𝐵
+% 2 . 于是
+% g x \ge 𝐵-g x-𝐵 \ge 𝐵
+% 2 ,
+% 1
+% g x-1
+% 𝐵=g x-𝐵
+% 𝐵 \cdot g x ≤ 2
+% 𝐵 2 g x-𝐵 .
+% \end{frame}
 
 
-\begin{frame}
-	\forall\varepsilon>0, \exists 𝛿2>0 使得当 0<x-x0<𝛿2 时, 有 g x-𝐵<𝐵 2
-2 \varepsilon .
-	因此当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时,
-1
-g x-1
-𝐵=g x-𝐵
-𝐵 \cdot g x ≤ 2
-𝐵 2 g x-𝐵<\varepsilon .
-	所以 \lim\limits_
-x\rax0
-1
-g x=1
-𝐵. 由(2)可知 \lim\limits_
-x\rax0
-f(x)
-g x=\lim\limits_
-x\rax0
-f x \cdot \lim\limits_
-x\rax0
-1
-g x=A
-𝐵.
-	推论 设 \lim\limits_ $f(x)$=A, 则
-	(1) \lim\limits_ Cf x=CA.
-	(2) \lim\limits_ $f(x)$ 𝑘=A𝑘 , 𝑘 \in ℕ+ .
-\end{frame}
+% \begin{frame}
+% 	\forall\varepsilon>0, \exists \delta2>0 使得当 0<x-x0<\delta2 时, 有 g x-𝐵<𝐵 2
+% 2 \varepsilon .
+% 	因此当 0<x-x0<\delta=min \delta1 , \delta2 时,
+% 1
+% g x-1
+% 𝐵=g x-𝐵
+% 𝐵 \cdot g x ≤ 2
+% 𝐵 2 g x-𝐵<\varepsilon .
+% 	所以 \lim\limits_
+% x\rax0
+% 1
+% g x=1
+% 𝐵. 由(2)可知 \lim\limits_
+% x\rax0
+% f(x)
+% g x=\lim\limits_
+% x\rax0
+% f x \cdot \lim\limits_
+% x\rax0
+% 1
+% g x=A
+% 𝐵.
+% 	推论 设 \lim\limits_ $f(x)$=A, 则
+% 	(1) \lim\limits_ Cf x=CA.
+% 	(2) \lim\limits_ $f(x)$ 𝑘=A𝑘 , 𝑘 \in ℕ+ .
+% \end{frame}
 
 
-\begin{frame}
-	数列与函数的关系
-	设 an 是一个数列. 定义 $f(x)$=a x , 它是 1,+\infty 上的一个分段函数.
-	如果 \lim\limits_
-n\ra\inftyan=a, 则 \forall\varepsilon>0, \exists N 使得当 n>N 时, 有 an-a<\varepsilon  . 因此当 x>
-N+ 1 时, x>N, $f(x)$-a<\varepsilon  , 所以 \lim\limits_
-x\ra+\inftyf x=a
-.
-	反过来也成立, 因此 \lim\limits_
-n\ra\inftyan=\lim\limits_
-x\ra+\inftyf x . 从而与函数极限 \lim\limits_
-x\ra+\infty 相关的概念和
-性质可以移植到数列上.
-	\begin{theorem}
-设 \lim\limits_
-\end{theorem}
-n\ra\infty an=a, \lim\limits_
-n\ra\infty bn=b, 则
-	\lim\limits_
-n\ra\infty an \pm bn=a \pm b, \lim\limits_
-n\ra\infty an bn=ab, \lim\limits_
-n\ra\infty
-an
-bn
-= a
-b b\neq 0 ,
-	\lim\limits_
-n\ra\infty C an=Ca, \lim\limits_
-n\ra\infty an
-𝑘=a𝑘 , 𝑘 \in ℕ+ .
-\end{frame}
+% \begin{frame}
+% 	数列与函数的关系
+% 	设 an 是一个数列. 定义 $f(x)$=a x , 它是 1,+\infty 上的一个分段函数.
+% 	如果 \lim\limits_
+% n\ra\inftyan=a, 则 \forall\varepsilon>0, \exists N 使得当 n>N 时, 有 an-a<\varepsilon  . 因此当 x>
+% N+ 1 时, x>N, $f(x)$-a<\varepsilon  , 所以 \lim\limits_
+% x\ra+\inftyf x=a
+% .
+% 	反过来也成立, 因此 \lim\limits_
+% n\ra\inftyan=\lim\limits_
+% x\ra+\inftyf x . 从而与函数极限 \lim\limits_
+% x\ra+\infty 相关的概念和
+% 性质可以移植到数列上.
+% 	\begin{theorem}
+% 设 \lim\limits_
+% \end{theorem}
+% n\ra\infty an=a, \lim\limits_
+% n\ra\infty bn=b, 则
+% 	\lim\limits_
+% n\ra\infty an \pm bn=a \pm b, \lim\limits_
+% n\ra\infty an bn=ab, \lim\limits_
+% n\ra\infty
+% an
+% bn
+% = a
+% b b\neq 0 ,
+% 	\lim\limits_
+% n\ra\infty C an=Ca, \lim\limits_
+% n\ra\infty an
+% 𝑘=a𝑘 , 𝑘 \in ℕ+ .
+% \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-对于多项式 𝑃(x ), 有 \lim\limits_
-\end{example}
-x\rax0
-𝑃 x=𝑃 x0 .
-	\begin{example}
-对于多项式 𝑃 x , 𝑄 x , 如果 𝑄 x0\neq 0, 则 \lim\limits_
-\end{example}
-x\rax0
-𝑃 x
-𝑄 x=𝑃 x0
-𝑄 x0
-.
-	\begin{example}
-求 \lim\limits_
-\end{example}
-x\ra1
-x 2 -1
-x 3 -1.
-	分析 该极限是 0
-0 型不定式.
-	解 由于 x\ra 1 时, x-1\neq 0, 因此 \lim\limits_
-x\ra1
-x 2 -1
-x 3 -1=\lim\limits_
-x\ra1
-x+1
-x 2+x+1=2
-3.
-	可以看出, 利用极限的四则运算性质, 我们可以得到很多的极限. 下面我们介绍
-极限的函数复合运算性质. 我们在未来会看到, 在研究函数连续性和可导性时,
-也会通过研究简单函数、四则运算性质和函数复合运算性质来研究复杂函数的
-相应性质.
-\end{frame}
+% \begin{frame}
+% 	\begin{example}
+% 对于多项式 𝑃(x ), 有 \lim\limits_
+% \end{example}
+% x\rax0
+% 𝑃 x=𝑃 x0 .
+% 	\begin{example}
+% 对于多项式 𝑃 x , 𝑄 x , 如果 𝑄 x0\neq 0, 则 \lim\limits_
+% \end{example}
+% x\rax0
+% 𝑃 x
+% 𝑄 x=𝑃 x0
+% 𝑄 x0
+% .
+% 	\begin{example}
+% 求 \lim\limits_
+% \end{example}
+% x\ra1
+% x 2 -1
+% x 3 -1.
+% 	分析 该极限是 0
+% 0 型不定式.
+% 	解 由于 x\ra 1 时, x-1\neq 0, 因此 \lim\limits_
+% x\ra1
+% x 2 -1
+% x 3 -1=\lim\limits_
+% x\ra1
+% x+1
+% x 2+x+1=2
+% 3.
+% 	可以看出, 利用极限的四则运算性质, 我们可以得到很多的极限. 下面我们介绍
+% 极限的函数复合运算性质. 我们在未来会看到, 在研究函数连续性和可导性时,
+% 也会通过研究简单函数、四则运算性质和函数复合运算性质来研究复杂函数的
+% 相应性质.
+% \end{frame}
 
 
-\begin{frame}
-极限的复合运算性质
-	\begin{theorem}
-设 \lim\limits_
-\end{theorem}
-x\rax0
-𝜑 x=a, \lim\limits_
-𝑢\raa f (𝑢)=A. 若函数 𝑢=𝜑 x 在点 x0 的某个去心邻域内不等
-于 a, 则
-\lim\limits_
-x\rax0
-f 𝜑 x=\lim\limits_
-𝑢\raa f (𝑢)=A.
-	\begin{proof}
-由 \lim\limits_
-\end{proof}
-𝑢\raa f (𝑢)=A 知 \forall\varepsilon>0, \exists 𝜂>0 使得当 0<𝑢-a<𝜂 时, 有 f 𝑢-A<\varepsilon  .
-	由 \lim\limits_
-x\rax0
-𝜑 x=a 知 \exists 𝛿1>0 使得当 0<x-x0<𝛿1 时, 有 𝜑 x-a<𝜂 .
-	设 𝑢=𝜑 x 在 𝑈
-∘
-x0 , 𝛿2 上不等于 a, 则当 0<x-x0<𝛿=min 𝛿1 , 𝛿2 时, 有
-0<𝜑 x-a<𝜂 , f 𝜑 x-A<\varepsilon  .
-	所以 \lim\limits_
-x\rax0
-f 𝜑 x=A.
-	注记 如果 f a=\lim\limits_
-𝑢\raa f (𝑢)=A, 则可以不要求 𝑢=𝜑 x 在点 x0 的某个去心邻域内
-不等于 a.
-\end{frame}
+% \begin{frame}
+% 极限的复合运算性质
+% 	\begin{theorem}
+% 设 \lim\limits_
+% \end{theorem}
+% x\rax0
+% 𝜑 x=a, \lim\limits_
+% 𝑢\raa f (𝑢)=A. 若函数 𝑢=𝜑 x 在点 x0 的某个去心邻域内不等
+% 于 a, 则
+% \lim\limits_
+% x\rax0
+% f 𝜑 x=\lim\limits_
+% 𝑢\raa f (𝑢)=A.
+% 	\begin{proof}
+% 由 \lim\limits_
+% \end{proof}
+% 𝑢\raa f (𝑢)=A 知 \forall\varepsilon>0, \exists 𝜂>0 使得当 0<𝑢-a<𝜂 时, 有 f 𝑢-A<\varepsilon  .
+% 	由 \lim\limits_
+% x\rax0
+% 𝜑 x=a 知 \exists \delta1>0 使得当 0<x-x0<\delta1 时, 有 𝜑 x-a<𝜂 .
+% 	设 𝑢=𝜑 x 在 𝑈
+% ∘
+% x0 , \delta2 上不等于 a, 则当 0<x-x0<\delta=min \delta1 , \delta2 时, 有
+% 0<𝜑 x-a<𝜂 , f 𝜑 x-A<\varepsilon  .
+% 	所以 \lim\limits_
+% x\rax0
+% f 𝜑 x=A.
+% 	注记 如果 f a=\lim\limits_
+% 𝑢\raa f (𝑢)=A, 则可以不要求 𝑢=𝜑 x 在点 x0 的某个去心邻域内
+% 不等于 a.
+% \end{frame}
 
 
-\begin{frame}
-	\begin{example}
-求 \lim\limits_
-\end{example}
-x\ra1
-3-x- 1+x
-x 2+x-2 .
-	该极限是 0
-0 型不定式, 分子分母代入均为 0. 利用 a-b=a-b
-a+ b 可将极限为
-0 的根式化为有理形式, 这种技巧我们会常常使用.
-	解 我们先\begin{proof}
-\lim\limits_
-\end{proof}
-x\rax0
-x=x0 (x0>0). 注意到 x-x0=x-x0
-x+ x0
-.
-	\forall\varepsilon>0, 令 𝛿=min x0
-2 , x0 \varepsilon  . 当 0<x-x0<𝛿 时, 有
-x+ x0>x0 , x-x0=x-x0
-x+ x0
-< x0 \varepsilon 
-x0
-= \varepsilon  .
-	所以 \lim\limits_
-x\rax0
-x=x0 .
+% \begin{frame}
+% 	\begin{example}
+% 求 \lim\limits_
+% \end{example}
+% x\ra1
+% 3-x- 1+x
+% x 2+x-2 .
+% 	该极限是 0
+% 0 型不定式, 分子分母代入均为 0. 利用 a-b=a-b
+% a+ b 可将极限为
+% 0 的根式化为有理形式, 这种技巧我们会常常使用.
+% 	解 我们先\begin{proof}
+% \lim\limits_
+% \end{proof}
+% x\rax0
+% x=x0 (x0>0). 注意到 x-x0=x-x0
+% x+ x0
+% .
+% 	\forall\varepsilon>0, 令 \delta=min x0
+% 2 , x0 \varepsilon  . 当 0<x-x0<\delta 时, 有
+% x+ x0>x0 , x-x0=x-x0
+% x+ x0
+% < x0 \varepsilon 
+% x0
+% = \varepsilon  .
+% 	所以 \lim\limits_
+% x\rax0
+% x=x0 .
 
 
 
-• 现在
-\lim\limits_
-𝑥→1
-3 − 𝑥 − 1+ 𝑥
-𝑥 2+ 𝑥 − 2=\lim\limits_
-𝑥→1
-3 − 𝑥 − 1+ 𝑥
-𝑥 − 1 𝑥+ 2 3 − 𝑥+ 1+ 𝑥
-=
-\lim\limits_
-𝑥→1 −2
-𝑥+ 2 3 − 𝑥+ 1+ 𝑥=−2
-3 2+ 2=− 2
-6 .
-• 其中最后一步使用了极限的复合函数运算以及 \lim\limits_
-𝑥→𝑥0
-𝑥=𝑥0 .
+% • 现在
+% \lim\limits_
+% 𝑥→1
+% 3 − 𝑥 − 1+ 𝑥
+% 𝑥 2+ 𝑥 − 2=\lim\limits_
+% 𝑥→1
+% 3 − 𝑥 − 1+ 𝑥
+% 𝑥 − 1 𝑥+ 2 3 − 𝑥+ 1+ 𝑥
+% =
+% \lim\limits_
+% 𝑥→1 −2
+% 𝑥+ 2 3 − 𝑥+ 1+ 𝑥=−2
+% 3 2+ 2=− 2
+% 6 .
+% • 其中最后一步使用了极限的复合函数运算以及 \lim\limits_
+% 𝑥→𝑥0
+% 𝑥=𝑥0 .
 
 

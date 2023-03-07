@@ -30,7 +30,7 @@
 		\onslide<+->{
 			它在时间段 $[t,t']$ 内的\emph{平均速度}定义为矢量
 			\[\bfv=(v_1,v_2,v_3),\qquad v_i=\frac{s_i(t')-s_i(t)}{t'-t}.\]
-		}\onslide<+->{当 $t'$ \alert{越来越无限接近 $t$} 时, 平均速度会\alert{无限接近}它在时刻 $t$ 的\emph{瞬时速度}}.
+		}\onslide<+->{当 $t'$ \alert{越来越无限接近 $t$} 时, 平均速度会\alert{无限接近}它在时刻 $t$ 的\emph{瞬时速度}.}
 		
 		\onslide<+->{同样, 我们需要利用极限来准确地描述它.}
 \end{example*}
@@ -40,8 +40,7 @@
 \begin{frame}{极限的引入}\small
 	\onslide<+->
 	\begin{example}
-		我国古代数学家刘徽为了计算圆周率 $\pi$, 采用\alert{无限逼近}的思想建立了割圆法.
-		\begin{tikzpicture}[overlay,xshift=-3mm,yshift=-42mm,scale=1.5]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-93mm,yshift=47mm,scale=1.3]
 			\foreach \j in {1,2,...,6}{
 				\filldraw[cstcurve,dcolorb,cstfill,visible on=<2-5>] (0,0)--({cos(60*\j-30)/cos(30)},{sin(60*\j-30)/cos(30)})--({cos(60*\j+30)/cos(30)},{sin(60*\j+30)/cos(30)})--cycle;
 			}
@@ -67,29 +66,46 @@
 			\foreach \j in {1,2,3,...,48}{
 				\filldraw[thin,dcolorc,cstfill,fill=dcolore,visible on=<8->] (0,0)--({cos (7.5*\j)},{sin (7.5*\j)})--({cos(7.5*\j+7.5)},{sin(7.5*\j+7.5)})--cycle;
 			}
-		\end{tikzpicture}
+			\begin{scope}[visible on=<2>]
+				\draw[cstcurve,dcolora] (0,0)--(1,{(sqrt 3)/3});
+				\draw
+					(0,-0.3) node[dcolorb] {$O$}
+					(1.1,0) node {$A$}
+					(0.6,1) node {$B$}
+					(1.1,0.7) node {$C$};
+					\coordinate (A) at (1,0);
+					\coordinate (B) at (0,0);
+					\coordinate (C) at (1,0.577);
+					\draw[thick,dcolorb] (A)--(B)--(C);
+					\draw[dcolorb,thick] pic [draw, "$\theta$",angle eccentricity=1.5,angle radius=5mm] {angle};
+			\end{scope}
+		\end{tikzpicture}\end{tikzpicture}
+
+		\vspace{-36mm}
+		我国古代数学家刘徽为了计算圆周率 $\pi$, 采用\alert{无限逼近}的思想建立了割圆法.%
 		\onslide<+->{
-			依次计算单位圆的内接和外切正 $3\cdot 2^n=6,12,24,48,\dots$ 边形的面积
-			\[A_n=3\cdot 2^{n-1}\sin\frac\pi{3\cdot 2^{n-1}},\qquad
-			B_n=3\cdot 2^n\tan\frac\pi{3\cdot 2^n},\]
+			依次计算单位圆的内接和外切正 $n=6,12,24,48,\dots$ 边形的面积
+			\[A_n=\frac12n\sin 2\theta,\qquad
+			B_n=n\tan\theta,\qquad \theta=\frac\pi n,\]
 		}\onslide<+->{那么必定有 $A_n<\pi<B_n$.
 		}\onslide<+->{这个数列的递推关系可以由半角公式推得:}
 		\onslide<+->{
 		\begin{center}
 			\begin{tabular}{c|l|l}\hline
-				$n$&\multicolumn{1}{c}{$A_n$}&\multicolumn{1}{c}{$B_n$}\\\hline
-				\onslide<+->{$2$}&\onslide<.->{$\alert{3.}00000000$}&\onslide<.->{$\alert{3.}21539031$}\\\hline
-				\onslide<+->{$3$}&\onslide<.->{$\alert{3.1}0582854$}&\onslide<.->{$\alert{3.1}5965994$}\\\hline
-				\onslide<+->{$4$}&\onslide<.->{$\alert{3.1}3262861$}&\onslide<.->{$\alert{3.14}608622$}\\\hline
-				\onslide<+->{$12$}&$\onslide<.->{\alert{3.141592}51$}&\onslide<.->{$\alert{3.141592}72$}\\\hline
-				\onslide<+->{$13$}&\onslide<.->{$\alert{3.1415926}2$}&\onslide<.->{$\alert{3.1415926}7$}\\\hline
+				$n$&\multicolumn{1}{c|}{$A_n$}&\multicolumn{1}{c}{$B_n$}\\\hline
+				\onslide<+->{$12$}&\onslide<.->{$\alert{3.}00000000$}&\onslide<.->{$\alert{3.}21539031$}\\\hline
+				\onslide<+->{$24$}&\onslide<.->{$\alert{3.1}0582854$}&\onslide<.->{$\alert{3.1}5965994$}\\\hline
+				\onslide<+->{$48$}&\onslide<.->{$\alert{3.1}3262861$}&\onslide<.->{$\alert{3.14}608622$}\\\hline
+				\onslide<+->{$12288$}&$\onslide<.->{\alert{3.141592}51$}&\onslide<.->{$\alert{3.141592}72$}\\\hline
+				\onslide<+->{$24576$}&\onslide<.->{$\alert{3.1415926}2$}&\onslide<.->{$\alert{3.1415926}7$}\\\hline
 			\end{tabular}
 		\end{center}
-		}\onslide<+->{为什么这样下去会越来越趋近于 $\pi$ 呢? 这也需要用到极限的概念.}
+		}\onslide<+->{由于 $A_n/B_n=\cos^2\theta$ 越来越趋近于 $1$, 所以 $A_n,B_n$ 的“极限”就是 $\pi$.}
 	\end{example}
 \end{frame}
 
-\subsection{极限的定义}
+
+\subsection{极限的朴素定义}
 \begin{frame}{数列极限的定义}
 	\onslide<+->
 	极限可以按如下方式理解:
@@ -98,15 +114,15 @@
 		
 		当 $x$ \alert{越来越无限接近}于某个状态时, $y$ \alert{无限接近}某个值 $A$, 则 $A$ 就是 $y=f(x)$ 关于这个极限过程的\emph{极限}, 记为 \emph{$\lim\limits_{x\ra\text{某个状态}}f(x)=A$} 或 \emph{$y\ra A (x\ra\text{某个状态})$}.
 		\begin{tikzpicture}[overlay,xshift=-121mm,yshift=-7mm]
-			\begin{scope}[visible on=<2->]
-				\draw[dcolorb,thick] (-2.25,1.1) rectangle (4.3,1.6);
+			\begin{scope}[dcolord,visible on=<2->]
+				\draw[thick] (-2.25,1.1) rectangle (4.3,1.6);
 				\draw (6,2.8) node {极限过程: $x\ra$ 某个状态};
-				\draw[cstaxis,semithick,dcolorb] (2.5,1.6)--(6,2.5);
+				\draw[cstaxis,semithick] (2.5,1.6)--(6,2.5);
 			\end{scope}
-			\begin{scope}[visible on=<3->]
-				\draw[dcolorb,thick] (4.45,1.1) rectangle (8.3,1.6);
+			\begin{scope}[dcolorc,visible on=<3->]
+				\draw[thick] (4.45,1.1) rectangle (8.3,1.6);
 				\draw (10.3,2.8) node {记为 $y\ra A$};
-				\draw[cstaxis,semithick,dcolorb] (7.9,1.6)--(10.3,2.5);
+				\draw[cstaxis,semithick] (7.9,1.6)--(10.3,2.5);
 			\end{scope}
 		\end{tikzpicture}
 	\end{alertblock}
@@ -117,13 +133,13 @@
 	先考虑数列的情形.
 	\onslide<+->
 	所谓的\emph{(无穷)数列}是指依次排列的无穷多个数
-	\[a_1,a_2,\dots,a_n,\dots,\]
-	记为 $\{a_n\}_{n\ge1}$.
+	\[\set{a_n}_{n\ge1}: a_1,a_2,\dots,a_n,\dots,\]
 	\onslide<+->
 	其中 $a_n$ 被称为它的\emph{第 $n$ 项}, 用于描述所有项的式子 $a_n=f(n)$ 被称为它的\emph{通项}.
+
 	\onslide<+->
 	不难看出, 一个数列和一个定义域是全体正整数的函数
-		\[f:\{1,2,3,\dots\}\ra\BR\]
+		\[f:\BN_+=\{1,2,3,\dots\}\ra\BR\]
 	是一回事.
 \end{frame}
 
@@ -131,64 +147,164 @@
 \begin{frame}{例题: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}
-		\begin{itemize}
-			\item $\set{\dfrac1{2^n}}: \dfrac12,\dfrac14,\dfrac18,\dfrac1{16},\dfrac1{32},\cdots$ 递减地 $\ra 0$;
-			\item $\set{n}: 1,2,3,4,5,\cdots$ 无限增大;
-			\item $\set{A_n=3\cdot 2^{n-1}\sin\dfrac\pi{3\cdot2^{n-1}}}$ 递增地 $\ra \pi$;
-			\item $\set{(-1)^n+\dfrac1n}$ 奇数项和偶数项分别交错地越来越接近 $1$ 和 $-1$;
-			\item $\set{1+\dfrac{(-1)^n}n}$ 交错地 $\ra 1$.
-		\end{itemize}
-		\onslide<+->{
+		\enumnum1 $\set{\dfrac1{2^n}}: \dfrac12,\dfrac14,\dfrac18,\dfrac1{16},\dfrac1{32},\cdots$ 递减地 $\ra 0$.
 		\begin{center}
-			\begin{tikzpicture}[scale=0.95]
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis] (-0.3,0)--(13,0);
-				\draw[cstaxis] (0,-0.3)--(0,1.5);
-				\draw[cstdash,dcolord] (0,1)--(13,1);
-				\draw (-0.3,1) node {$1$};
+				\draw[cstaxis] (0,-0.3)--(0,4.5);
 				\draw (13,-0.3) node {$n$};
 				\foreach \x in {1,2,3,...,12}{
 					\draw (\x,0)--(\x,0.2);
 					\draw (\x,-0.25) node {$\x$};
 				}
-				\foreach \x in {1,3,5,7,9,11}{
-					\fill[cstdot,dcolora] (\x,{1-1/\x}) circle;
-				}
-				\foreach \x in {2,4,6,8,10,12}{
-					\fill[cstdot,dcolora] (\x,{1+1/\x}) circle;
+				\foreach \x in {1,2,3,...,12}{
+					\fill[cstdot,dcolora] (\x,{8/(2^\x)}) circle;
 				}
 			\end{tikzpicture}
-		\end{center}}
+		\end{center}
 	\end{example}
 \end{frame}
+	
 
+\begin{frame}{例题: 数列的变化趋势}
+	\onslide<+->
+	\begin{example}		
+		\enumnum2 $\set{n}: 1,2,3,4,5,\cdots$ 无限增大.
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-0.3,0)--(5.5,0);
+				\draw[cstaxis] (0,-0.3)--(0,5);
+				\draw (5.5,-0.3) node {$n$};
+				\foreach \x in {1,2,3,...,9}{
+					\draw ({\x/2},0)--({\x/2},0.2);
+					\draw (0,{\x/2})--(0.2,{\x/2});
+					\draw ({\x/2},-0.25) node {$\x$};
+					\draw (-0.2,{\x/2}) node {$\x$};
+				}
+				\foreach \x in {1,2,3,...,9}{
+					\fill[cstdot,dcolora] ({\x/2},{\x/2}) circle;
+				}
+			\end{tikzpicture}
+		\end{center}
+	\end{example}
+\end{frame}
+	
 
-\subsection{极限的定义}
-\begin{frame}{数列极限的定义}
+\begin{frame}{例题: 数列的变化趋势}
+	\onslide<+->
+	\begin{example}
+		\enumnum3 $\set{n\sin\dfrac\pi n}$ 递增地 $\ra \pi$.
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-0.3,0)--(13,0);
+				\draw[cstaxis] (0,-0.3)--(0,4);
+				\draw[cstdash,dcolord] (0,3.14)--(13,3.14);
+				\draw (-0.3,3.14) node {$\pi$};
+				\draw (13,-0.3) node {$n$};
+				\foreach \x in {1,2,3,...,20}{
+					\draw ({0.6*\x},0)--({0.6*\x},0.2);
+					\draw ({0.6*\x},-0.25) node {$\x$};
+				}
+				\foreach \x in {1,2,3,...,20}{
+					\fill[cstdot,dcolora] ({0.6*\x},{\x*sin(180/\x)}) circle;
+				}
+			\end{tikzpicture}
+		\end{center}
+	\end{example}
+\end{frame}
+	
+
+\begin{frame}{例题: 数列的变化趋势}
+	\onslide<+->
+	\begin{example}
+		\enumnum4 $\set{(-1)^n+\dfrac1n}$ 奇数项和偶数项分别交错地越来越接近 $1$ 和 $-1$.
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-0.3,0)--(12.5,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstdash,dcolord] (0,1)--(12.5,1);
+				\draw[cstdash,dcolord] (0,-1)--(12.5,-1);
+				\draw (-0.2,1) node {$1$};
+				\draw (-0.35,-1) node {$-1$};
+				\draw (12.5,-0.3) node {$n$};
+				\foreach \x in {1,2,3,...,20}{
+					\draw ({0.6*\x},0)--({0.6*\x},0.2);
+					\draw ({0.6*\x},-0.25) node {$\x$};
+				}
+				\foreach \x in {1,3,5,...,19}{
+					\fill[cstdot,dcolora] ({0.6*\x},{-1+1/\x}) circle;
+				}
+				\foreach \x in {2,4,6,...,20}{
+					\fill[cstdot,dcolora] ({0.6*\x},{1+1/\x}) circle;
+				}
+			\end{tikzpicture}
+		\end{center}
+	\end{example}
+\end{frame}
+	
+
+\begin{frame}{例题: 数列的变化趋势}
+	\onslide<+->
+	\begin{example}
+		\enumnum5 $\set{1+\dfrac{(-1)^n}n}$ 交错地 $\ra 1$.
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-0.3,0)--(12,0);
+				\draw[cstaxis] (0,-0.3)--(0,2);
+				\draw[cstdash,dcolord,visible on=<1-2>] (0,1)--(12,1);
+				\draw (-0.3,1) node[visible on=<1-2>] {$1$};
+				\draw (12,-0.3) node {$n$};
+				\foreach \x in {1,2,3,...,18}{
+					\draw ({0.6*\x},0)--({0.6*\x},0.2);
+					\draw ({0.6*\x},-0.25) node {$\x$};
+				}
+				\foreach \x in {1,3,5,...,19}{
+					\fill[cstdot,dcolora] ({0.6*\x},{1-1/\x}) circle;
+				}
+				\foreach \x in {2,4,6,...,18}{
+					\fill[cstdot,dcolora] ({0.6*\x},{1+1/\x}) circle;
+				}
+				\begin{scope}[visible on=<3->]
+					\draw[cstdash,dcolore] (0,1.2)--(12,1.2);
+					\draw[cstdash,dcolore] (0,0.8)--(12,0.8);
+					\draw (-0.6,1.2) node {$1+\varepsilon$};
+					\draw (-0.6,0.8) node {$1-\varepsilon$};
+				\end{scope}
+				\begin{scope}[visible on=<4->]
+					\draw[cstdash,dcolorc] (3.9,0)--(3.9,1.2);
+					\draw (3.9,-0.25) node {$N$};
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}
+	\end{example}
 	\onslide<+->
 	所谓“越来越无限接近”, 是指“比任何正实数”都要接近.
 	\onslide<+->
 	换言之, 对任意的正实数 $\varepsilon>0$, $|a_n-a|$ 最终是要小于 $\varepsilon$ 的.
 	\onslide<+->
 	即存在 $N=N_\varepsilon$ 使得当 $n>N$ 时, $|a_n-a|<\varepsilon$.
-
-	\onslide<+->
-	\begin{definition*}
-		设有数列 $\set{a_n}$ 和常数 $a$. 如果
-		\[\text{\color{red}$\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$},\]
-		则称 $a$ 为 \emph{$a_n$ 当 $n \ra \infty$ 时的极限}, 记为
-		\[\text{\emph{$\lim\limits_{n\ra\infty}a_n=a$} 或 $a_n\ra a (n\ra \infty)$}.\]
-		\onslide<+->{此时称该数列\emph{收敛}.}
-
-		\onslide<+->{如果不存在这样的常数 $a$, 则称该数列\emph{发散}(没有极限, 不收敛).}
-		\onslide<+->{\begin{tikzpicture}[overlay]
-			\draw[semithick,dcolorc] (-9.3,3.2) rectangle (-0.6,3.9);
-			\draw (0.5,3.55) node[dcolorc] {$\varepsilon$-$N$ 语言};
-		\end{tikzpicture}}
-	\end{definition*}
 \end{frame}
 
 
+\subsection{数列极限的定义}
 \begin{frame}{数列极限的定义}
+	\onslide<+->
+	\begin{definition*}
+		设有数列 $\set{a_n}$. 如果存在常数 $a$ 满足:
+		\begin{center}
+			\alert{$\forall\varepsilon>0, \exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$},
+		\end{center}
+		则称该数列\emph{收敛}, $a$ 为 \emph{$a_n$ 当 $n \ra \infty$ 时的极限}, 记为
+		\begin{center}
+			\emph{$\lim\limits_{n\ra\infty}a_n=a$} 或 $a_n\ra a (n\ra \infty)$.
+		\end{center}
+
+		\onslide<+->{如果不存在这样的常数 $a$, 则称该数列\emph{发散}(没有极限, 不收敛).}
+		\onslide<+->{\begin{tikzpicture}[overlay]
+			\draw[semithick,dcolorc] (-9.3,2.5) rectangle (-0.6,3.2);
+			\draw (0.5,2.85) node[dcolorc] {$\varepsilon$-$N$ 语言};
+		\end{tikzpicture}}
+	\end{definition*}
 	\onslide<+->
 	注意并不是 $\exists N,\forall\varepsilon$ 使得当 $n>N$ 时, 有 $\abs{a_n-a}<\varepsilon$.
 	
@@ -198,10 +314,13 @@
 	所以在证明极限的问题中, 可以只考虑例如 $\varepsilon<1$ 的情形.
 	\onslide<+->
 	同理, 我们可以只考虑例如 $n\ge 100$ 的情形.
+\end{frame}
 
+
+\begin{frame}{例题: 数列极限的等价定义}
 	\onslide<+->
 	\begin{example}
-		单选题: “极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在”的充要条件是“$\forall\varepsilon>0$,\fillbrace{\visible<7->{C}}”.
+		单选题: “极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在”的充要条件是“$\forall\varepsilon>0$,\fillbrace{\visible<3->{C}}”.
 		\xx{必有无穷多项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
 		{所有项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
 		{只有有限项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
@@ -304,11 +423,9 @@
 	\onslide<+->
 	\begin{proof}
 		设数列 $\set{a_n}$ 收敛到 $a$, 则对于 $\varepsilon=1$, 存在正整数 $N$ 使得当 $n>N$ 时
-		\[|a_n-a|<\varepsilon=1,\qquad |a_n|\le|a|+|a_n-a|<|a|+1.\]
-		\onslide<+->{因此对于
-		\[M=\max\set{|a_1|,\dots,|a_N|,|a|+1},\]
-		有 $|a_n|\le M$.
-		 }\onslide<+->{这说明 $\set{a_n}$ 是有界数列.\qedhere}
+		\[|a_n-a|<\varepsilon=1,\qquad \onslide<+->{|a_n|\le|a|+|a_n-a|<|a|+1.}\]
+		\onslide<+->{因此对于 $M=\max\set{|a_1|,\dots,|a_N|,|a|+1}$, 有 $|a_n|\le M$.
+		}\onslide<+->{这说明 $\set{a_n}$ 是有界数列.\qedhere}
 	\end{proof}
 	\onslide<+->
 	收敛数列一定有界, 但反之未必.
@@ -329,15 +446,15 @@
 	\end{theorem}
 	\onslide<+->
 	\begin{proof}
-		\enumnum1 对于 $\varepsilon=\dfrac a2>0$, $\exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon=\dfrac a2$,
-		\onslide<+->{从而
-		\[a_n>a-\dfrac a2=\dfrac a2>0.\]
+		\enumnum1 $\forall\varepsilon>0$, $\exists N$ 使得当 $n>N$ 时, 有 $|a_n-a|<\varepsilon$.
+		\onslide<+->{取 $\varepsilon=\dfrac a2$, 则
+		\[|a_n-a|<\dfrac a2,\qquad \onslide<+->{a_n>a-\dfrac a2=\dfrac a2>0.}\]
 		}\onslide<+->{\enumnum2 同理可得.\qedhere}
 	\end{proof}
 	\onslide<+->
 	注意这里 $>0$ \alert{不能换成} $\ge 0$,	$<0$ 也\alert{不能换成} $\le 0$.
 	\onslide<+->
-	因为极限为 $0$ 的数列符号可以无限次变化, 例如$\lim\limits_{n\ra\infty}\dfrac{(-1)^n}n=0$.
+	例如$\lim\limits_{n\ra\infty}\dfrac{(-1)^n}n=0$.
 \end{frame}
 
 
@@ -350,7 +467,7 @@
 		\end{enumerate}
 	\end{corollary}
 	\onslide<+->
-	同理, 这里 $\ge$ \alert{也不能换成} $>$ (这很容易记错!), 例如 $\lim\limits_{n\ra\infty}\dfrac1n=0$.
+	同理, 这里 $\ge$ 也不能换成 $>$ (\alert{这很容易记错!}), 例如 $\lim\limits_{n\ra\infty}\dfrac1n=0$.
 	\onslide<+->
 	\begin{corollary}
 		如果收敛数列 $\set{a_n}, \set{b_n}$ 满足从某项起 $a_n\ge b_n$, 则 $\lim\limits_{n\ra\infty}a_n\ge\lim\limits_{n\ra\infty}b_n$.
@@ -385,7 +502,7 @@
 
 		\onslide<+->{充分性($\Leftarrow$): 如果 $\lim\limits_{n\ra\infty} a_{2n-1}=\lim\limits_{n\ra\infty} a_{2n}=a$, 则 $\forall\varepsilon>0$, $\exists N,M$ 使得
 		\begin{center}
-			当 $n>N$ 时, $|a_{2n-1}-a|<\varepsilon$; 当 $n>M$ 时, $|a_{2n}-a|<\varepsilon$.
+			当 $n>N$ 时, $|a_{2n-1}-a|<\varepsilon$;\qquad 当 $n>M$ 时, $|a_{2n}-a|<\varepsilon$.
 		\end{center}
 		}\onslide<+->{所以当 $n>\max\set{2N-1,2M}$ 时, 有  $|a_n-a|<\varepsilon$. 故数列 $\set{a_n}$ 收敛到 $a$.\qedhere}
 	\end{proof*}
@@ -404,8 +521,11 @@
 	那么 $\set{a_n}$ 收敛于 $a\iff$ 每个 $S_i$ 对应子数列均收敛于 $a$.
 
 	\onslide<+->
-	这是因为 $\forall\varepsilon>0$, 每个 $S_i$ 中至多只有有限多项满足 $|a_n-a|\ge\varepsilon$, 从而一共也只有有限多项满足这个不等式.
-	于是对充分大的 $n$, $|a_n-a|<\varepsilon$.
+	这是因为 $\forall\varepsilon>0, \exists N_i$ 使得当 $n>N_i$ 时, $|a_n-a|<\varepsilon$, 
+	\onslide<+->
+	从而当
+		\[n>\max\set{N_1,N_2,\dots,N_m}\]
+	时, $|a_n-a|<\varepsilon$.
 \end{frame}
 
 
@@ -415,18 +535,18 @@
 	\onslide<+->
 	下图中红色连线形成一个数列 $\set{a_n}$, 
 	\onslide<+->{
-	蓝色连线对应的子数列均收敛到 $0$, }
-	\onslide<+->{
+	蓝色连线对应的子数列均收敛到 $0$, 
+	}\onslide<+->{
 	但是 $\set{a_n}$ 本身却不收敛.}
 	\begin{center}
-		\begin{tikzpicture}[scale=0.8,visible on=<2->]
+		\begin{tikzpicture}[framed,scale=0.8,visible on=<2->]
 			\draw[cstaxis] (0,0)--(6.5,0);
-			\draw[cstaxis] (0,0)--(0,6.5);
+			\draw[cstaxis] (0,0)--(0,6.3);
 			\draw[cstaxis,dcolora,visible on=<2>]
 				(1,1)--(1,2)--(2,1)--(1,3)--(2,2)--(3,1)--(1,4)--(2,3)--(3,2)--(4,1)--(1,5)--(2,4)--(3,3)--(4,2)--(5,1)--(1,6);
 			\foreach \x in {1,2,3,4,5}{
 				\draw[cstaxis,dcolorb,visible on=<3->] (\x,1)--(\x,5.5);
-				\draw[dcolorb,visible on=<3->] (\x,5.7) node {$0$};
+				\draw[dcolorb,visible on=<3->] (\x,5.8) node {$0$};
 			}
 			\draw[cstaxis,dcolorc,visible on=<4->] (1,1)--(5.5,5.5);
 			\draw[dcolorc,visible on=<4->] (5.7,5.7) node {$1$};

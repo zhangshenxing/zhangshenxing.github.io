@@ -3,7 +3,7 @@
 \subsection{函数极限的定义}
 \begin{frame}{函数在 $+\infty$ 的极限}
 	\onslide<+->
-	和数列情形类似, 我们可以定义 $x\ra+\infty$ 时 $f(x)$ 的极限.
+	我们仿造数列的极限来定义 $x\ra+\infty$ 时 $f(x)$ 的极限.
 	\onslide<+->
 	回忆数列的 $\varepsilon$-$N$ 语言:
 	\begin{center}
@@ -11,401 +11,390 @@
 	\end{center}
 	\onslide<+->
 	\begin{definition}
-		设函数 $f(x)$ 的定义包含某个 $(M,+\infty)$, 即在 $x$ 充分大时有定义, $A$ 为一常数.
-		\onslide<+->{如果
+		设 $x>M$ 时函数 $f(x)$ 有定义.
+		\onslide<+->{如果存在常数 $A$ 满足:
 		\begin{center}
 			\alert{$\forall\varepsilon>0, \exists X$ 使得当 $x>X$ 时, 有 $\abs{f(x)-A}<\varepsilon$,}
 		\end{center}
 		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra+\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra+\infty}f(x)=A$} 或 $f(x)\ra A (x\ra+\infty)$.}
-		\onslide<+->{\begin{tikzpicture}[overlay,xshift=106mm,yshift=-19mm]
-			\draw[semithick,dcolorc] (-9.3,3.2) rectangle (-0.1,3.9);
-			\draw (1,3.55) node[dcolorc] {$\varepsilon$-$X$ 语言};
+		\onslide<+->{\begin{tikzpicture}[overlay]
+			\draw[semithick,dcolorc] (1.3,1.3) rectangle (10.5,2);
+			\draw (11.6,1.65) node[dcolorc] {$\varepsilon$-$X$ 语言};
 		\end{tikzpicture}}
 	\end{definition}
+\end{frame}
+
+
+\begin{frame}{函数在 $-\infty$ 的极限}
 	\onslide<+->
+	从图像上看, 就是函数在 $(X,+\infty)$ 上的图像被夹在直线 $y=A\pm\varepsilon$ 之间.
 	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis] (-0.5,0)--(10,0);
-			\draw[cstaxis] (0,-0.5)--(0,1.5);
-			\draw[cstdash,dcolord] (0,1)--(10,1);
-			\draw[domain=1:10]  plot(\x,{sin \x/\x});
+		\begin{tikzpicture}[framed]
+			\draw[cstaxis] (-0.5,0)--(9,0);
+			\draw[cstaxis] (0,-0.4)--(0,1.7);
+			\begin{scope}[visible on=<1>]
+				\draw[cstdash,dcolord] (0,1)--(9,1);
+				\draw (-0.25,1) node {$A$};
+			\end{scope}
+			\begin{scope}[visible on=<2->]
+				\draw[cstdash,dcolore] (0,1.2)--(9,1.2);
+				\draw[cstdash,dcolore] (0,0.8)--(9,0.8);
+				\draw[cstdash,dcolorc] (4,0)--(4,1.2);
+				\draw (-0.6,1.2) node {$A+\varepsilon$};
+				\draw (-0.6,0.8) node {$A-\varepsilon$};
+				\draw (4,-0.25) node {$X$};
+			\end{scope}
+			\draw[cstcurve,dcolora,smooth,domain=1.2:9.5] plot({\x-1},{1+3*sin(\x*240)/(1+\x*\x)});
 		\end{tikzpicture}
 	\end{center}
+
+	\onslide<+->\onslide<+->
+	仿造上述定义, 我们有:
+	\onslide<+->
+	\begin{definition}
+		设 $x<-M$ 时函数 $f(x)$ 有定义.
+		\onslide<+->{如果存在常数 $A$ 满足:
+			\begin{center}
+				\alert{$\forall\varepsilon>0, \exists X$ 使得当 $x<-X$ 时, 有 $\abs{f(x)-A}<\varepsilon$,}
+			\end{center}
+		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra-\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra-\infty}f(x)=A$}.}
+	\end{definition}
 \end{frame}
 
 
 \begin{frame}{函数在 $\infty$ 的极限}
 	\onslide<+->
-	从图像上看, 就是函数在 $(X,+\infty)$ 的限制的图像被夹在直线 $y=A\pm\varepsilon$ 之间.
-	\onslide<+->
-	我们将红字部分称为 \alert{$\varepsilon$-$X$} 语言.
-	\onslide<+->
-	仿造上述定义, 我们有:
-	\onslide<+->
 	\begin{definition}
-		设函数 $f(x)$ 当 $-x$ 充分大时有定义 (即存在 $M$ 使得 $f(x)$ 在 $(-\infty,-M)$ 上有定义), $A$ 为常数.
-		\onslide<+->{如果
-			\begin{center}
-				\alert{$\forall\varepsilon>0, \exists X$ 使得当 $x<-X$ 时, 有 $\abs{f(x)-A}<\varepsilon$,}
-			\end{center}
-		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra-\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra-\infty}f(x)=A$} 或 $f(x)\ra A (x\ra-\infty)$.}
-	\end{definition}
-	\onslide<+->
-	\begin{definition}
-		设函数 $f(x)$ 当 $|x|$ 充分大时有定义 (即存在 $M$ 使得 $f(x)$ 在 $(-\infty,-M)\cup(M,+\infty)$ 上有定义), $A$ 为常数.
-		\onslide<+->{如果
+		设 $|x|>M$ 时函数 $f(x)$ 有定义.
+		\onslide<+->{如果存在常数 $A$ 满足:
 			\begin{center}
 				\alert{$\forall\varepsilon>0, \exists X$ 使得当 $|x|>X$ 时, 有 $\abs{f(x)-A}<\varepsilon$,}
 			\end{center}
-		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra\infty}f(x)=A$} 或 $f(x)\ra A (x\ra\infty)$.}
+		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra\infty}f(x)=A$}.}
 	\end{definition}
 	\onslide<+->
 	注意, 函数极限中需要分清 $x\ra\infty, x\ra+\infty, x\ra-\infty$, 而数列情形只有 $n\ra\infty$, 因为 $n$ 是正整数.
+
+	\onslide<+->
+	类似于数列极限与子数列极限的关系, 我们有
+	\onslide<+->
+	\begin{theorem}
+		$\lim\limits_{x\ra\infty}f(x)=A \iff \lim\limits_{x\ra+\infty}f(x)=\lim\limits_{x\ra-\infty}f(x)=A$.
+	\end{theorem}
 \end{frame}
 
 
-% \begin{frame}{}
-% 	\onslide<+->
-% 	类似于数列极限与子数列极限的关系, 我们有
-% 	\onslide<+->
-% 	\begin{theorem}
-% 		$\lim\limits_{x\ra\infty}f(x)=A \iff \lim\limits_{x\ra+\infty}f(x)=\lim\limits_{x\ra-\infty}f(x)=A$.
-% 	\end{theorem}
-% 	\onslide<+->
-% 	当 y \ra \infty 时, x=x0+ 1
-% y \ra x0 . 因此如果存在 𝛿>0 使得函数 $f(x)$ 在 x0 的去
-% 心 𝛿 邻域
-% 𝑈
-% ∘
-% x0 , 𝛿=x0-𝛿 , x0 \cup x0 , x0+ 𝛿
-% 	上有定义, 则 \lim\limits_
-% x\rax0
-% f(x) 应当定义为 \lim\limits_
-% y\ra\inftyf x0+ 1
-% y . 于是我们得到下述定义:
-% 	定义 设函数 $f(x)$ 在 x0 的某个去心邻域内有定义, A 为常数. 如果
-% \forall\varepsilon>0, \exists 𝛿>0 使得当 x \in 𝑈
-% ∘
-% x0 , 𝛿 时, 有 $f(x)$-A<\varepsilon  ,
-% 	则称 A 为 $f(x)$ 当 x\ra x0 时的极限, 记为 \lim\limits_
-% x\rax0
-% f(x)=A 或 f(x) \ra A x\ra x0 .
-% \end{frame}
+\begin{frame}{函数在一点的极限}
+	\onslide<+->
+	类似地, 当 $x$ 越来越接近 $x_0$ 时,
+	\onslide<+->
+	如果函数值 $f(x)$ 越来越接近常数 $A$, 则 $A$ 就是 $x\to x_0$ 时的极限.
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[framed]
+			\draw[cstaxis] (-0.5,0)--(10,0);
+			\draw[cstaxis] (0,-0.4)--(0,3.4);
+			\draw[cstcurve,dcolora,smooth,domain=0.02:1.6] plot({4+2*\x},{2+1.4*\x*sin(1/\x*180)});
+			\draw[cstcurve,dcolora,smooth,domain=0.02:1.6] plot({4-2*\x},{2+1.4*\x*sin(1/\x*180)});
+			\begin{scope}[visible on=<3>]
+				\draw[cstdash,dcolord] (0,2)--(10,2);
+				\draw (-0.25,2) node {$A$};
+				\draw (4,-0.25) node {$x_0$};
+			\end{scope}
+			\begin{scope}[visible on=<4->]
+				\draw[cstdash,dcolore] (0,2.4)--(10,2.4);
+				\draw[cstdash,dcolore] (0,1.6)--(10,1.6);
+				\draw[cstdash,dcolorc] (3.25,0)--(3.25,2.4);
+				\draw[cstdash,dcolorc] (4.75,0)--(4.75,2.4);
+				\draw (-0.6,2.4) node {$A+\varepsilon$};
+				\draw (-0.6,1.6) node {$A-\varepsilon$};
+				\draw (4.75,-0.35) node {$x_0+\delta$};
+				\draw (3.25,-0.35) node {$x_0-\delta$};
+			\end{scope}
+			\filldraw[cstdote] (4,2) circle;
+			\fill[cstdot,dcolora] (4,1) circle;
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
 
 
-% \begin{frame}
-% 	从几何角度来看, 就是函数在 𝑈
-% ∘
-% x0 , 𝛿 上的限制的图像被夹在直线 y=A \pm \varepsilon  之
-% 间.
-% 	类似地可以定义单侧极限
-% 	\lim\limits_
-% x\rax0
-% + $f(x)$=A ⇔ \forall\varepsilon>0, \exists 𝛿>0 使得当 x \in x0 , x0+ 𝛿 时, 有 $f(x)$-A<\varepsilon  .
-% 	\lim\limits_
-% x\rax0
-% - $f(x)$=A ⇔ \forall\varepsilon>0, \exists 𝛿>0 使得当 x \in x0-𝛿 , 0 时, 有 $f(x)$-A<\varepsilon  .
-% 	我们将红字部分称为 \varepsilon -𝛿 语言.
-% 	\begin{theorem}
-% \lim\limits_
-% \end{theorem}
-% x\rax0
-% f x=A ⇔ \lim\limits_
-% x\rax0
-% + $f(x)$=\lim\limits_
-% x\rax0
-% - $f(x)$=A.
-% 	如果 \lim\limits_
-% x\rax0
-% + $f(x)$=A, 我们记 f x0
-% +=A. 如果 \lim\limits_
-% x\rax0
-% - $f(x)$=A, 我们记 f x0
-% -=A.
-% \end{frame}
+\begin{frame}{函数在一点的极限}
+	\onslide<+->
+	为了陈述方便, 我们引入去心邻域的概念.
+	\onslide<+->
+	\begin{definition}
+	设 $\delta>0$. $x_0$ 的\emph{去心 $\delta$ 邻域}是指
+		\[\Uc(x_0,\delta)=\set{x: 0<|x-x_0|<\delta}=(x_0-\delta,x_0)\cup(x_0,x_0+\delta).\]
+	\end{definition}
+	\onslide<+->
+	\begin{definition}
+		设函数 $f(x)$ 在 $x_0$ 的某个去心邻域内有定义.
+		\onslide<+->{如果存在常数 $A$ 满足
+		\begin{center}
+			\alert{$\forall\varepsilon>0, \exists\delta>0$ 使得当 $x\in\Uc(x_0,\delta)$ 时, 有 $|f(x)-A|<\varepsilon$,}
+		\end{center}
+		}\onslide<+->{则称 $A$ 为 $f(x)$ 当 $x\ra x_0$ 时的极限, 记为 $\lim\limits_{x\ra x_0}f(x)=A$ 或 $f(x)\ra A(x\ra x_0)$.
+		}\onslide<+->{\begin{tikzpicture}[overlay]
+			\draw[semithick,dcolorc] (1.8,1.2) rectangle (12.4,1.9);
+			\draw (13.4,1.55) node[dcolorc] {$\varepsilon$-$\delta$ 语言};
+		\end{tikzpicture}}
+	\end{definition}
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{example}
-% \begin{proof}
-% \end{example}
-% \lim\limits_
-% \end{proof}
-% x\ra\infty
-% 1
-% x=0.
-% 	分析 和数列极限类似, 这种问题的证明通常也分为两部分
-% 	先估计 $f(x)$-A , 得到它和 x-x0<𝛿 或 x>X 的不等式关系,
-% 从而求得 𝛿 或 X. 这个过程中可以进行适当的放缩.
-% 	将 𝛿 或 X 代入极限的定义中.
-% 	1
-% x-0=1
-% x<\varepsilon , x>1
-% \varepsilon  , 因此我们可以取 X=1
-% \varepsilon  .
-% 	\begin{proof}
-% \forall\varepsilon>0, 令 X=1
-% \end{proof}
-% \varepsilon  . 当 x>X 时, 有 1
-% x-0=1
-% x<\varepsilon . 所以 \lim\limits_
-% x\ra\infty
-% 1
-% x =
-% 0.
-% \end{frame}
+\begin{frame}{函数在一点的单侧极限}
+	\onslide<+->
+	类似地可以定义单侧极限:
+	\onslide<+->
+	\begin{align*}
+		 \lim\limits_{x\ra x_0^+}f(x)=A&\iff\alert{\forall\varepsilon>0, \exists\delta>0\;\text{使得当}\;x\in(x_0,x_0+\delta)\;\text{时, 有}\;|f(x)-A|<\varepsilon}.\\
+		\lim\limits_{x\ra x_0^-}f(x)=A&\iff\alert{\forall\varepsilon>0, \exists\delta>0\;\text{使得当}\;x\in(x_0-\delta,x_0)\;\text{时, 有}\;|f(x)-A|<\varepsilon}.
+	\end{align*}
+	\onslide<+->
+	同样地, 我们有:
+	\begin{theorem}
+		$\lim\limits_{x\ra x_0}f(x)=A\iff\lim\limits_{x\ra x_0^+}f(x)=\lim\limits_{x\ra x_0^-}f(x)=A$.
+	\end{theorem}
+	\onslide<+->
+	为了简便, 我们记 \alert{$f(x_0^+)=\lim\limits_{x\ra x_0^+}f(x)$, $f(x_0^-)=\lim\limits_{x\ra x_0^-}f(x)$}.
+	\onslide<+->
+	注意它们和 $f(x_0)$ 并无关系, $f$ 甚至可以在 $x_0$ 处无定义.
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{example}
-% \begin{proof}
-% \end{example}
-% a>1 时, \lim\limits_
-% \end{proof}
-% x\ra-\inftya x=0.
-% 	分析 由于 a>1 时, \log a x 是单调递增的. 因此 a x-0=a x<\varepsilon , x <
-% \log a \varepsilon .
-% 	\begin{proof}
-% \forall\varepsilon>0, 令 X=- \log a \varepsilon . 当 x<-X 时, 有 a x-0=a x<\varepsilon . 所以
-% \end{proof}
-% \lim\limits_
-% x\ra-\inftya x=0.
-% 	\begin{example}
-% \begin{proof}
-% \end{example}
-% \lim\limits_
-% \end{proof}
-% x\rax0
-% ax+ b=ax0+ b.
-% 	分析 ax+ b-ax0+ b=a \cdot x-x0<\varepsilon , 因此我们可以取 𝛿=\varepsilon 
-% a .
-% 注意我们需要单独考虑 a=0 的情形.
-% \end{frame}
+\subsection{函数极限的证明}
+\begin{frame}{例题: 函数在无穷远的极限}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{x\ra\infty}\dfrac1x=0$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		和数列极限类似, 这种问题的证明通常也分为两步:
+		\begin{itemize}
+			\item 估计 $|f(x)-A|$, 得到它和 $|x-x_0|<\delta$ 或 $|x|>X$ 的不等式关系. 从而求得 $\delta$ 或 $X$. 这个过程中可以进行适当的放缩.
+			\item 将 $\delta$ 或 $X$ 代入极限的定义中.
+		\end{itemize}
+		\onslide<+->{对于本题, 从 $\Bigl|\dfrac1x-0\Bigr|<\varepsilon$ 解得 $|x|>\dfrac1\varepsilon$.}
+	\end{analysis}
+	\onslide<+->
+	\begin{proof}
+		$\forall\varepsilon>0$, 令 $X=\dfrac1\varepsilon$.
+		\onslide<+->{当 $|x|>X$ 时, 有 $\Bigl|\dfrac1x-0\Bigr|=\dfrac1{|x|}<\varepsilon$.
+		}\onslide<+->{所以 $\lim\limits_{x\ra\infty}\dfrac1x=0$.\qedhere}
+	\end{proof}
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{proof}
-% 我们有 ax+ b-ax0+ b=a \cdot x-x0 .
-% \end{proof}
-% 	如果 a=0, \forall\varepsilon>0, 令 𝛿=1. 当 0<x-x0<𝛿 时, 有
-% ax+ b-ax0+ b=a \cdot x-x0=0<\varepsilon .
-% 	如果 a\neq 0, \forall\varepsilon>0, 令 𝛿=\varepsilon 
-% a. 当 0<x-x0<𝛿 时, 有
-% ax+ b-ax0+ b=a \cdot x-x0<a 𝛿=\varepsilon .
-% 	所以 \lim\limits_
-% x\rax0
-% ax+ b=ax0+ b.
-% 	注记 当 $f(x)$=A 时, 我们可以取任一正数作为 𝛿 , 只要 𝑈
-% ∘
-% x, 𝛿 包含在该
-% 函数的定义域范围内即可.
-% \end{frame}
+\begin{frame}{例题: 函数在无穷远的单侧极限}
+	\onslide<+->
+	\begin{example}
+		证明 $a>1$ 时, $\lim\limits_{x\ra-\infty}a^x=0$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		由于 $a>1$ 时, $\log_ax$ 是单调递增的.
+		\onslide<+->{因此 $|a^x-0|=a^x<\varepsilon \iff x<\log_a \varepsilon$.}
+	\end{analysis}
+	\onslide<+->
+	\begin{proof}
+		$\forall\varepsilon>0$, 令 $X=-\log_a\varepsilon$.
+		\onslide<+->{当 $x<-X$ 时, 有 $|a^x-0|=a^x<\varepsilon$.}
+		
+		\onslide<+->{所以 $\lim\limits_{x\ra-\infty}a^x=0$.\qedhere}
+	\end{proof}
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{example}
-% \begin{proof}
-% \end{example}
-% \lim\limits_
-% \end{proof}
-% x\rax0
-% sin x=sin x0 .
-% 	与三角函数有关的放缩往往要用到和差化积公式
-% sin x-sin y=2 sin x-y
-% 2 cos x+ y
-% 2 , cos x-cos y=-2 sin x+ y
-% 2 sin x-y
-% 2 ,
-% 	然后将不含 x-x0 的项放缩到 1; 以及三角函数基本不等式
-% sin x ≤ x , \forall x \in-\infty,+\infty , x ≤ tan x , \forall x \in-\pi
-% 2 , \pi
-% 2 .
-% 	\begin{proof}
-% 我们有 sin x-sin x0=2 sin x-x0
-% \end{proof}
-% 2 cos x+x0
-% 2 ≤ 2 sin x-x0
-% 2 ≤ 2 x-x0
-% 2=x-x0 .
-% 	\forall\varepsilon>0, 令 𝛿=\varepsilon  . 当 0<x-x0<𝛿 时, 有
-% sin x-sin x0 ≤ x-x0<𝛿=\varepsilon  .
-% 	所以 \lim\limits_
-% x\rax0
-% sin x=sin x0 .
-% \end{frame}
+\begin{frame}{例题: 函数在一点的极限}\small
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{x\ra x_0}(ax+b)=ax_0+b$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		$|(ax+b)-(ax_0+b)|=a\cdot|x-x_0|<\varepsilon$, 因此我们可以取 $\delta=\varepsilon/a$.
+		\onslide<+->{注意我们需要单独考虑 $a=0$ 的情形.}
+	\end{analysis}
+	\onslide<+->
+	\begin{proof*}
+		我们有 $|(ax+b)-(ax_0+b)|=a\cdot|x-x_0|$.
+		\onslide<+->{如果 $a=0$, $\forall\varepsilon>0$, 令 $\delta=1$.
+		}\onslide<+->{当 $0<|x-x_0|<\delta$ 时, 有 $|(ax+b)-(ax_0+b)|=0<\varepsilon$.}
+
+		\onslide<+->{如果 $a\neq 0$, $\forall\varepsilon>0$, 令 $\delta=\dfrac\varepsilon a$.
+		}\onslide<+->{当 $0<|x-x_0|<\delta$ 时, 有
+			\[|(ax+b)-(ax_0+b)|=a\cdot|x-x_0|<a\delta=\varepsilon.\]
+		}\onslide<+->{所以 $\lim\limits_{x\ra x_0}(ax+b)=ax_0+b$.\qedhere}
+	\end{proof*}
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{example}
-% \begin{proof}
-% \end{example}
-% \lim\limits_
-% \end{proof}
-% x\ra\infty arctan x 不存在.
-% 	分析 从图像上可以看出 \lim\limits_
-% x\ra+\infty arctan x=\pi
-% 2 . 我们想要使用 x 来控制
-% arctan x-\pi
-% 2 . 不过这个形式不容易估计, 我们令 t=arctan x, 则问题变
-% 成了 t-\pi
-% 2 和 tan t 的关系. 再令 s=arctan x-\pi
-% 2 , 则 s ≤ tan s .
-% 	不过这个不等式并不总是对的, 我们需要估计 s=arctan x-\pi
-% 2 的范围.
-% 由于我们考虑的是 x\ra+\infty, 不妨设 x>0, 那么 arctan x \in 0, \pi
-% 2 , s =
-% arctan x-\pi
-% 2 \in-\pi
-% 2 , 0 .
-% \end{frame}
+\begin{frame}{例题: 线性函数在一点的极限}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{x\ra x_0}\sin x=\sin x_0$.
+	\end{example}
+	\onslide<+->
+	与三角函数有关的放缩往往要用到和差化积公式
+	\[\sin x-\sin y=2\sin\frac{x-y}2\cos\frac{x+y}2,\quad
+	\cos x-\cos y=-2\sin\frac{x+y}2\sin\frac{x-y}2,\]
+	然后将不含 $x-x_0$ 的项放缩到 $1$;
+	\onslide<+->
+	以及三角函数基本不等式
+	\[\left|\sin x\right|\le|x|, \forall x;\qquad|x|\le\left|\tan x\right|, \forall x \in\bigl(-\frac\pi2,\frac\pi2\bigr).\]
+\end{frame}
 
 
-% \begin{frame}
-% 	\begin{proof}
-% 我们来证明 \lim\limits_
-% \end{proof}
-% x\ra+\infty arctan x=\pi
-% 2 . 当 x>0 时,arctan x-\pi
-% 2 \in-\pi
-% 2 , 0 .
-% 因此 arctan x-\pi
-% 2 ≤ tan \pi
-% 2-arctan x=1
-% tan arctan x=1
-% x.
-% 	\forall\varepsilon>0, 令 X=1
-% \varepsilon>0. 当 x>X 时, 有
-% arctan x-\pi
-% 2 ≤ 1
-% x<1
-% X=\varepsilon .
-% 	所以 \lim\limits_
-% x\ra+\infty arctan x=\pi
-% 2 .
-% 	同理, \lim\limits_
-% x\ra-\infty arctan x=- \pi
-% 2 . 因此 \lim\limits_
-% x\ra\infty arctan x 不存在.
+\begin{frame}{例题: 三角函数在一点的极限}
+	\onslide<+->
+	\begin{proof*}
+		我们有
+		\[\left|\sin x-\sin x_0\right|=\Bigl|2\sin\frac{x-x_0}2\cos\frac{x+x_0}2\Bigr|
+			\le2\Bigl|\sin\frac{x-x_0}2\Bigr|
+			\le2\Bigl|\frac{x-x_0}2\Bigr|=|x-x_0|.\]
+
+		\onslide<+->{$\forall\varepsilon>0$, 令 $\delta=\varepsilon$.
+		}\onslide<+->{当 $0<|x-x_0|<\delta$ 时, 有
+		\[\left|\sin x-\sin x_0\right|\le|x-x_0|<\delta=\varepsilon.\]
+		}\onslide<+->{所以 $\lim\limits_{x\ra x_0}\sin x=\sin x_0$.\qedhere}
+	\end{proof*}
+\end{frame}
 
 
+\begin{frame}{例题: 函数在无穷远的极限}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{x\ra\infty}\arctan x$ 不存在.
+	\end{example}
+	\onslide<+->
+	\begin{analysis*}
+		从图像上可以看出 $\lim\limits_{x\ra\pm\infty}\arctan x=\pm\dfrac\pi2$.
 
-% • 例 证明 \lim\limits_
-% 𝑥→2
-% 𝑥 2 −4
-% 𝑥 −2=4.
-% • 分析 这种极限是 𝑓
-% 𝑔 型, 其中 𝑓 → 0, 𝑔 → 0. 我们称之为 0
-% 0 型不定式. 它的极限可
-% 能存在, 可能不存在. 这种一般要去掉公因式, 将其变为定式.
-% • 证明 𝑥 2 −4
-% 𝑥−2 − 4=𝑥+ 2 − 4=𝑥 − 2 .
-% • ∀\varepsilon>0, 令 𝛿=\varepsilon  .当 0<𝑥 − 2<𝛿 时, 有
-% 𝑥 2 − 4
-% 𝑥 − 2 − 4=𝑥 − 2<\varepsilon .
-% • 所以 \lim\limits_
-% 𝑥→2
-% 𝑥 2 −4
-% 𝑥−2=4.
+		\onslide<+->{我们想要使用 $|x|$ 来控制 $\Bigl|\arctan x-\dfrac\pi2\Bigr|$, 不过这个形式不容易估计.
+		}\onslide<+->{令 $t=\dfrac\pi2-\arctan x$, 则问题变成了 $|x|=\Bigl|\tan\Bigl(\dfrac\pi2-t\Bigr)\Bigr|=\dfrac1{\left|\tan t\right|}$ 和 $|t|$ 的关系.
+		}\onslide<+->{而我们有 $|t|\le |\tan t|$.}
 
-
-% • 例 如果函数 𝑓 𝑥=ቐ𝑎 sin 𝑥 , 𝑥<𝜋
-% 2
-% 𝑥+ b, 𝑥>𝜋
-% 2
-% 满足 \lim\limits_
-% 𝑥→𝜋
-% 2
-% 𝑓(𝑥)=1, 求 𝑎, b.
-% • 分析 这种是典型的由分段函数性质求待定参数的问题, 我们后续会经常遇
-% 到. 由于一点处极限等价于两侧极限都存在且为 1, 因此我们会得到两个
-% 等式, 从而可以解出两个未知参数.
-% • 由于 𝑓 𝑥 的两个分段都是我们已经求过极限的函数, 因此我们可以直接
-% 用前面已经证明的结论.
-% • 解 由于 \lim\limits_
-% 𝑥→ 𝜋
-% 2
-% + 𝑓 𝑥=𝜋
-% 2+ b, \lim\limits_
-% 𝑥→ 𝜋
-% 2
-% − 𝑓 𝑥=𝑎, 因此 𝑎=1, b=1 − 𝜋
-% 2 .
+		\onslide<+->{我们还需要估计 $t$ 的范围.
+		}\onslide<+->{由于我们考虑的是 $x\ra+\infty$, 不妨设 $x>0$,
+		}\onslide<+->{那么
+		\[\arctan x \in\Bigl(0,\frac\pi2\Bigr),\qquad t=\frac\pi2-\arctan x\in\Bigl(0,\frac\pi2\Bigr).\]}
+		\vspace{-\baselineskip}
+	\end{analysis*}
+\end{frame}
 
 
+\begin{frame}{例题: 函数在无穷远的极限}
+	\begin{proof*}
+		我们来证明 $\lim\limits_{x\ra+\infty}\arctan x=\dfrac\pi2$.
+		\onslide<+->{当 $x>0$ 时, $0<\dfrac\pi2-\arctan x<\dfrac\pi2$.
+		}\onslide<+->{因此
+			\[\Bigl|\frac\pi2-\arctan x\Bigr|
+			\le\Bigl|\tan\Bigl(\frac\pi2-\arctan x\Bigr)\Bigr|
+			=\frac1{\left|\tan(\arctan x)\right|}=\frac1{|x|}.\]
+		}\onslide<+->{$\forall\varepsilon>0$, 令 $X=\dfrac1\varepsilon>0$.
+		}\onslide<+->{当 $x>X$ 时, 有
+		\[\Bigl|\frac\pi2-\arctan x\Bigr|\le\frac1{|x|}<\frac1X=\varepsilon.\]
+		}\onslide<+->{所以 $\lim\limits_{x\ra+\infty}\arctan x=\dfrac\pi2$.}
 
-% • 例 对于哪些 𝑥0 , \lim\limits_
-% 𝑥→𝑥0
-% [𝑥] 存在.
-% • 分析 与 𝑥 有关的问题往往需要用到两个不等式,
-% 𝑥 ≤ 𝑥<𝑥+ 1 或 𝑥 − 1<𝑥 ≤ 𝑥.
-% • 我们回忆 𝑥 的图像. 从图像上可以看出 𝑥0 ∈ ℤ 时左右极限不相等, 从而
-% 该点极限不存在. 解答时, 我们取一个很小的邻域, 使得在这个邻域的左右
-% 各自半边内, 该函数是常值函数, 从而得到单侧极限.
-% • 当 𝑥0 ∉ ℤ 时, 我们同样希望取一个小邻域使得 𝑥 是常值函数. 这需要 𝛿
-% 不超过 𝑥0 和两边的最近的整数的距离. 所以
-% 𝛿=min{𝑥 − 𝑥0 , 𝑥0+ 1 − 𝑥} .
-
-
-
-% • 解 如果 𝑥0 ∈ ℤ, 则
-% • 当 𝑥 ∈ 𝑥0 , 𝑥0+ 1
-% 2 时, 𝑥=𝑥0 , 所以 \lim\limits_
-% 𝑥→𝑥0
-% + 𝑥=𝑥0 ;
-% • 当 𝑥 ∈ 𝑥0 − 1
-% 2 , 𝑥0 时, 𝑥=𝑥0 − 1, 所以 \lim\limits_
-% 𝑥→𝑥0
-% − 𝑥=𝑥0 − 1.
-% • 因此 \lim\limits_
-% 𝑥→𝑥0
-% 𝑥 不存在.
-% • 如果 𝑥0 ∉ ℤ, 令 𝛿=min 𝑥0 − 𝑥0 , 𝑥0+ 1 − 𝑥0>0. 于是
-% 𝑥0 ≤ 𝑥0 − 𝛿<𝑥0+ 𝛿 ≤ 𝑥0+ 1.
-% • 当 0<𝑥 − 𝑥0<𝛿 时, 有 𝑥0 − 𝛿<𝑥<𝑥0+ 𝛿, 从而 𝑥0<𝑥<𝑥0+
-% 1, 𝑥=𝑥0 . 因此 \lim\limits_
-% 𝑥→𝑥0
-% 𝑥=𝑥0 .
-% • 故当且仅当 𝑥0 ∉ ℤ 时, \lim\limits_
-% 𝑥→𝑥0
-% [𝑥] 存在.
+		\onslide<+->{类似可证, $\lim\limits_{x\ra-\infty}\arctan x=-\dfrac\pi2$.
+		}\onslide<+->{因此 $\lim\limits_{x\ra\infty}\arctan x$ 不存在.\qedhere}
+	\end{proof*}
+\end{frame}
 
 
-
-% • 现在我们可以严格定义渐近线了. 我们知道 𝑎𝑥+ b𝑦+ 𝑐=0 当 𝑎, b 不全
-% 为零时表示一条直线, 无论是 𝑦=𝑘𝑥+ b 还是 𝑥=𝑎 都可以统一为这种
-% 形式.
-% • 点 𝑃=(𝑥, 𝑦) 到这条直线的距离是 𝑎𝑥+b𝑦+𝑐
-% 𝑎2+b2 . 点 𝑃 趋向于无穷远可以表
-% 达为 𝑥 2+ 𝑦 2 →+∞.
-% • 定义 对于曲线 𝐶 , 如果 \lim\limits_ 𝑎𝑥+ b𝑦+ 𝑐=0, 其中 𝑥 2+ 𝑦 2 → ∞,
-% 𝑥, 𝑦 ∈ 𝐶 , 则称直线 𝑎𝑥+ b𝑦+ 𝑐=0 是曲线 𝐶 的一条渐近线.
-% • 用 \varepsilon-X 语言表达就是:
-% ∀\varepsilon>0, \exists X 使得当 𝑥 2+ 𝑦 2>X, 𝑥, 𝑦 ∈ 𝐶 时, 有 𝑎𝑥+ b𝑦+ 𝑐<\varepsilon .
-
-
-
-% • 渐近线可分为: 水平渐近线、竖直渐近线和斜渐近线三种, 相应的判定方
-% 法等价于
-% • \lim\limits_
-% 𝑥→+∞ 𝑓 𝑥 − 𝑘𝑥+ b=0 或 \lim\limits_
-% 𝑥→−∞ 𝑓 𝑥 − 𝑘𝑥+ b=0, 直线 𝑦 =
-% 𝑘𝑥+ b;
-% • \lim\limits_
-% 𝑥→𝑎−
-% 1
-% 𝑓 𝑥=0 或 \lim\limits_
-% 𝑥→𝑎+
-% 1
-% 𝑓 𝑥=0, 直线 𝑥=𝑎.
-% • 注意两个单侧极限有一个存在即可.
-% • 函数的渐近线指的就是它的图像的渐近线.
-% • 例 𝑓 𝑥=1
-% 𝑥−1+ 𝑥, \lim\limits_
-% 𝑥→∞ 𝑓 𝑥 − 𝑥=0, \lim\limits_
-% 𝑥→1
-% 1
-% 𝑓 𝑥=0, 因此 𝑦=𝑥, 𝑥=1 是
-% 它的全部渐近线.
+\begin{frame}{例题: 有理函数在一点的极限}\small
+	\beqskip{2pt}
+	\onslide<+->
+	\begin{example}
+		证明 $\lim\limits_{x\ra2}\dfrac{x^2-4}{x-2}=4$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis}
+		这种极限是 $\dfrac fg$ 型, 其中 $f\ra0, g\ra0$.
+		\onslide<+->{我们称之为 \emph{$\dfrac00$ 型不定式}.
+		}\onslide<+->{它的极限可能存在, 可能不存在.
+		}\onslide<+->{这种一般要去掉公因式, 将其变为定式.}
+	\end{analysis}
+	\onslide<+->
+	\begin{proof}
+		$\displaystyle \biggl|\frac{x^2-4}{x-2}-4\biggr|=|x+2-4|=|x-2|$.
+		\onslide<+->{$\forall\varepsilon>0$, 令 $\delta=\varepsilon$.
+		}\onslide<+->{当 $0<|x-2|<\delta$ 时, 有
+		\[\biggl|\frac{x^2-4}{x-2}-4\biggr|=|x-2|<\varepsilon.\]
+		}\onslide<+->{所以 $\lim\limits_{x\ra2}\dfrac{x^2-4}{x-2}=4$.\qedhere}
+	\end{proof}
+	\endgroup
+\end{frame}
 
 
+\begin{frame}{例题: 分段函数求待定参数}
+	\onslide<+->
+	\begin{example}
+		如果函数 $f(x)=\begin{cases}
+			a\sin x,&x<\pi/2;\\
+			x+b,&x>\pi/2
+		\end{cases}$ 满足 $\lim\limits_{x\ra\pi/2}f(x)=1$, 求 $a,b$.
+	\end{example}
+	\onslide<+->
+	\begin{analysis*}
+		本题是典型的由分段函数性质求待定参数的问题, 我们后续会经常遇到.
+		\onslide<+->{由于一点处极限等价于两侧极限都存在且为 $1$, 因此我们会得到两个等式, 从而可以解出两个未知参数.}
 
+		\onslide<+->{由于 $f(x)$ 的两个分段都是我们已经求过极限的函数, 因此我们可以直接用前面已经证明的结论.}
+	\end{analysis*}
+	\onslide<+->
+	\begin{solution}
+		由于 $\displaystyle f\Bigl[\bigl(\frac\pi2\bigr)^+\Bigr]=\frac\pi2+b,\ 
+		f\Bigl[\bigl(\frac\pi2\bigr)^-\Bigr]=a\sin\frac\pi2=a$,
+		\onslide<+->{因此 $a=1, b=1-\dfrac\pi2$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 取整函数的极限}
+	\beqskip{7pt}
+	\onslide<+->
+	\begin{example}
+		对于哪些 $x_0$, $\lim\limits_{x\ra x_0}[x]$ 存在.
+	\end{example}
+	\onslide<+->
+	\begin{analysis*}
+		与 $[x]$ 有关的问题往往需要用到两个不等式
+		\begin{center}
+			\alert{$[x]\le x<x+1$} 或 \alert{$x-1<[x]\le x$}.
+		\end{center}
+
+		\onslide<+->{从 $[x]$ 的图像上可以看出 $x_0\in\BZ$ 时左右极限不相等, 从而极限不存在.
+		}\onslide<+->{解答时, 我们取 $x_0$ 的 $\delta=1/2$ 邻域, 则在这个邻域的左右各自半边内, $[x]$ 是常值函数, 从而得到单侧极限.}
+
+		\onslide<+->{当 $x_0\notin \BZ$ 时, 我们同样希望取一个小邻域使得 $[x]$ 是常值函数.
+		}\onslide<+->{这需要 $\delta$ 不超过 $x_0$ 和两边的最近的整数的距离.
+		}\onslide<+->{所以
+		\[\delta=\min\set{x_0-[x_0], [x_0]+1-x_0}.\]}
+		\vspace{-\baselineskip}
+	\end{analysis*}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 取整函数的极限}
+	\onslide<+->
+	\begin{solution*}
+		如果 $x_0\in\BZ$, 则
+		\begin{itemize}
+			\item 当 $x\in(x_0, x_0+1/2)$ 时, $[x]=x_0$, 所以 $\lim\limits_{	x\ra x_0^+}[x]=x_0$;
+			\item 当 $x\in(x_0-1/2, x_0)$ 时, $[x]=x_0-1$, 所以 $\lim\limits_{	x\ra x_0^-}[x]=x_0-1$.
+		\end{itemize}
+		\onslide<+->{因此 $\lim\limits_{x\ra x_0}[x]$ 不存在.}
+
+		\onslide<+->{如果 $x_0\notin\BZ$, 令 $\delta=\min\set{x_0-[x_0], [x_0]+1-x_0}>0$.
+		}\onslide<+->{name 
+		\[[x_0]\le x_0-\delta<x_0+\delta\le[x_0]+1.\]
+		}\onslide<+->{当 $0<|x-x_0|<\delta$ 时, 有 $x_0-\delta<x<x_0+\delta$,
+		}\onslide<+->{从而 $[x_0]<x<[x_0]+1$, $[x]=x_0$.
+		}\onslide<+->{因此 $\lim\limits_{x\ra x_0}[x]=x_0$.}
+
+		\onslide<+->{故当且仅当 $x_0\notin\BZ$ 时, $\lim\limits_{x\ra x_0}[x]$ 存在.}
+	\end{solution*}
+\end{frame}
