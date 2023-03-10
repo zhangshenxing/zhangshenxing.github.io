@@ -382,7 +382,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{proof}
-		我们有 $\abs{\dfrac{2n^2+2n-4}{n^2-8}-2}=\dfrac{2n+12}{n^2-8}$.
+		我们有 $\abs{\dfrac{2n^2+2n-4}{n^2-8}-2}=\abs{\dfrac{2n+12}{n^2-8}}$.
 		\onslide<+->{若 $n\ge12$, 则 $\displaystyle\abs{\frac{2n+12}{n^2-8}}\le\frac{3n}{n^2-n}=\frac3{n-1}$.}
 		
 		\onslide<+->{$\forall\varepsilon>0$, 令 $N=\max\set{1+\dfrac3\varepsilon,12}$.
@@ -521,10 +521,10 @@
 	那么 $\set{a_n}$ 收敛于 $a\iff$ 每个 $S_i$ 对应子数列均收敛于 $a$.
 
 	\onslide<+->
-	这是因为 $\forall\varepsilon>0, \exists N_i$ 使得当 $n>N_i$ 时, $|a_n-a|<\varepsilon$, 
+	这是因为 $\forall\varepsilon>0, \exists N_i$ 使得 $S_i$ 中至多有 $N_i$ 个元素 $n$ 不满足 $|a_n-a|<\varepsilon$, 
 	\onslide<+->
 	从而当
-		\[n>\max\set{N_1,N_2,\dots,N_m}\]
+		\[n>N_1+N_2+\cdots+N_m\]
 	时, $|a_n-a|<\varepsilon$.
 \end{frame}
 
