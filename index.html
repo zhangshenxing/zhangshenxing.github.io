@@ -70,6 +70,9 @@
 					b[i].nextElementSibling.style.display = 'none';
 			}
 		} 
+		function hide_cover(){
+			document.getElementById("cover-image").style.display="block";
+		}
 	</script>
 </head>
 
@@ -116,17 +119,21 @@
 						<ul class="no-space travel-plan" style="margin-top: 0px; margin-bottom: 0px;">
 							<li>Default: Hefei / 合肥</li>
 							<!-- <li>01-08 ~ 01-12, Guangzhou / 广州</li> -->
-							<li>03-23 ~ 03-27, Shenzhen / 深圳</li>
+							<!-- <li>03-23 ~ 03-27, Shenzhen / 深圳</li> -->
 							<li>03-30 ~ 04-03, Xi'an / 西安</li>
 							<li>04-04 ~ 04-06, Tongling / 铜陵</li>
+							<li>04-14 ~ 04-17, Wuhan / 武汉</li>
 							<li>May, Beijing / 北京</li>
 							<li>07-10 ~ 08-18, Sanya / 三亚</li>
 						</ul>
 					</div>
 					<div id="div-image">
-						<a href="melarge.jpg"><img id="zsx" src="me.jpg" alt="我的照片" title="我的照片"></a>
+						<img id="zsx" src="me.jpg" alt="我的照片" title="点击放大" onclick="document.getElementById('cover-image').style.display='block';document.getElementById('cover-image').style.animation='enlarge';">
 					</div>
 				</div>
+			</div>
+			<div id="cover-image" onclick="this.style.display='none';">>
+					<img id="zsxlarge" src="melarge.jpg" alt="我的照片" title="点击缩小">
 			</div>
 		</section>
 
@@ -538,18 +545,12 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
-								<td>2022年秋</td>
-								<td><a href="teaching/复变函数与积分变换/chapter/main.pdf" class="handout">课件</a><br>
-									<a href="teaching/复变函数与积分变换/chapter/review.pdf" class="handout">复习课</a> <br>
-									<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a>
-								</td>
-							</tr>
-							<tr>
 								<td>数学（下） 034Y01<br><em>合肥工业大学</em></td>
-								<td>2022年春</td>
+								<td>2023年春(<em>代课</em>)<br>2022年春</td>
 								<td><span class="handout">课件</span>
 									<a href="teaching/高等数学/chapter/1.pdf">1</a>,
+									<a href="teaching/高等数学/chapter/2.pdf">2.1-2.2</a><br>
+									<span class="handout">课件PPT</span>
 									<a href="teaching/数学下/第二章 极限和连续.pdf">2</a>,
 									<a href="teaching/数学下/第三章 一元函数微分学.pdf">3</a>,
 									<a href="teaching/数学下/第四章 一元函数微分学的应用.pdf">4</a><br>
@@ -562,16 +563,37 @@
 								</td>
 							</tr>
 							<tr>
-								<td>概率论与数理统计<br><em>合肥工业大学</em></td>
-								<td>2021年秋(<em>助教</em>)</td>
-								<td><span class="handout">课件</span>
-									<a href="teaching/概率论与数理统计课件.pptx">5-6</a>
+								<td>复变函数与积分变换 1400261B<br><em>合肥工业大学</em></td>
+								<td>2022年秋</td>
+								<td><a href="teaching/复变函数与积分变换/chapter/main.pdf" class="handout">课件</a><br>
+									<a href="teaching/复变函数与积分变换/chapter/review.pdf" class="handout">复习课</a> <br>
+									<a href="teaching/试卷/复变函数与积分变换.pdf" class="exam">试卷</a>
 								</td>
 							</tr>
 							<tr>
 								<td>线性代数<br><em>清华丘成桐中学生数学夏令营</em></td>
 								<td>2022年夏(<em>助教</em>)<br>2021年夏(<em>助教</em>)</td>
 								<td><a href="teaching/试卷/非原创/TYMS线性代数.pdf" class="exam">作业和试卷</a></td>
+							</tr>
+							<tr>
+								<td>概率论与数理统计<br><em>合肥工业大学</em></td>
+								<td>2021年秋(<em>助课</em>)</td>
+								<td><span class="handout">课件PPT</span>
+									<a href="teaching/概率论与数理统计课件.pptx">5-6</a>
+								</td>
+							</tr>
+							<tr>
+								<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
+								<td>2020年秋</td>
+								<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
+							</tr>
+							<tr>
+								<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
+								<td>2020年春</td>
+								<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a><br>
+									<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a><br>
+									<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a>
+								</td>
 							</tr>
 							<tr>
 								<td>代数与数论<br><em><abbr title="中国科学院数学与系统科学研究院">中科院</abbr>暑期学校</em></td>
@@ -588,19 +610,6 @@
 								<td>2016年春(<em>助教</em>)</td>
 								<td><a href="teaching/试卷/非原创/初等数论.pdf" class="exam">试卷</a><br>
 									<a href="teaching/杂项/2016年初等数论习题课.pdf" class="excourse">习题课</a>
-								</td>
-							</tr>
-							<tr>
-								<td>复变函数B 001548.05<br><em>中国科学技术大学</em></td>
-								<td>2020年秋</td>
-								<td><a href="teaching/试卷/复变函数B.pdf" class="exam">试卷</a></td>
-							</tr>
-							<tr>
-								<td>代数数论 MA05109<br><em>中国科学技术大学</em></td>
-								<td>2020年春</td>
-								<td><a href="teaching/代数数论/main.pdf" class="handout">讲义</a><br>
-									<a href="teaching/试卷/代数数论.pdf" class="exam">试卷</a><br>
-									<a href="https://space.bilibili.com/4469715/channel/seriesdetail?sid=442587" class="video">课程视频</a>
 								</td>
 							</tr>
 							<tr>
@@ -629,36 +638,28 @@
 					</table>
 				</div>
 
-				<!-- <h3 onclick="toggle_div(this)" title="Click to hide/show">教研论文</h3>
+				<!-- <h3 onclick="toggle_div(this)" title="Click to hide/show">教研论文</h3> -->
 				<div>
 					<ol class="teaching">
-						<li>欧阳毅, 张神星. 善用初等变换展开线性代数理论教学[J]. 大学数学 80 (2023).<br>
-							<a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> |
-							<a href="https://doi.org/10.1016/j.ffa.2022.102026">pubPDF</a> |
-							<a href="slides/20210929 青岛 二项式的扭 L 函数的牛顿折线.pdf">幻灯片</a> |
-							<a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
+						<!-- <li>欧阳毅, 张神星. 善用初等变换展开线性代数理论教学[J]. 大学数学, 2023, 99(9): 99-99.<br>
+							<a href="teaching/publications/.pdf">PDF</a> |
+							<a href="http://gksx.cbpt.cnki.net/WKE/WebPublication/paperDigest.aspx?paperID=">pubPDF</a> |
+							<a onclick="toggle_abs(this)">Abs</a><br>
 							<span class="abstract">
-
+								初等变换是线性代数的基本变换，在线性代数课程中常常被用来计算，例如求解线性方程组、计算方阵的行列式、矩阵的求逆以及更一般的矩阵方程 $AX=B$ 的求解、计算整数矩阵和域上多项式矩阵的 Smith 标准形、以及计算对称阵的相合标准形等。本文说明如何灵活利用初等变换，给出线性代数课程中一些重要理论结果的系统而又简洁的证明。
 							</span>
-							<pre>@article {Zhang2022, 
-      AUTHOR = {Zhang, Shenxing}, 
-       TITLE = {On the {N}ewton polygons of twisted {$L$}-functions of binomials}, 
-     JOURNAL = {Finite Fields Appl.}, 
-    FJOURNAL = {Finite Fields and their Applications}, 
-      VOLUME = {80}, 
-        YEAR = {2022}, 
-       PAGES = {Paper No. 102026, 20}, 
-        ISSN = {1071-5797}, 
-     MRCLASS = {11S40 (11T23)}, 
-    MRNUMBER = {4388988}, 
-         DOI = {10.1016/j.ffa.2022.102026}, 
-         URL = {https://doi.org/10.1016/j.ffa.2022.102026}, 
-}</pre>
-						</li>
+						</li> -->
+						<!-- <li>张神星. 问题11解答[J]. <em>大学数学</em>, 2022, 38(6): 125-126<br>
+							<a href="teaching/publications/张神星2022 问题11解答.pdf">PDF</a> |
+							<a href="http://gksx.cbpt.cnki.net/WKE/WebPublication/paperDigest.aspx?paperID=705325ca-69af-434d-bb28-7e8ff972518b">pubPDF</a></li>
+						<li>陈树人, 张神星. 问题10解答[J]. <em>大学数学</em>, 2022, 38(5): 125-126<br>
+							<a href="teaching/publications/陈树人张神星2022 问题10解答.pdf">PDF</a> |
+							<a href="http://gksx.cbpt.cnki.net/WKE/WebPublication/paperDigest.aspx?paperID=7a8e39aa-32b0-4c8b-a516-3e8c1166c61e">pubPDF</a>
+						</li> -->
 					</ol>
 				</div>
 
-				<h3 onclick="toggle_div(this)" title="Click to hide/show">学生</h3>
+				<!-- <h3 onclick="toggle_div(this)" title="Click to hide/show">学生</h3>
 				<div>
 					<ul>
 						<li>研究生</li>
@@ -844,7 +845,7 @@
 	</article>
 
 	<footer>
-		<p>A page since 2006 | Last updated on 2023-03-14</p>
+		<p>A page since 2006 | Last updated on 2023-04-01</p>
 	</footer>
 
 	<svg style="height:0;">
