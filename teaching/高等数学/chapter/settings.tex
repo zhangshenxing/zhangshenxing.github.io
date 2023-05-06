@@ -33,7 +33,7 @@
 \colorlet{dcolord}{green!50!black}
 \colorlet{dcolore}{orange}
 % 非考试内容
-\newcommand{\noexer}{\hfill\itshape\color{black}\small 非考试内容}
+\newcommand{\noexer}{\hfill\mdseries\itshape\color{black}\small 非考试内容}
 % 枚举数字引用标志
 \newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
 \newcommand\enumnumhk[1]{{
@@ -105,41 +105,40 @@
 \newcommand{\falseex}{$\times$}
 % TIKZ 设置
 \usetikzlibrary{
-	angles, % 角度
-	arrows.meta, % 箭头
-	backgrounds, % 背景边框
-	calc, % 计算
-	decorations.pathreplacing, % 大括号
-	overlay-beamer-styles, %
-	patterns, %
-	positioning, %
-	quotes, % 
-	shapes.arrows, %
-	shapes.geometric, % 形状
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	overlay-beamer-styles,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
 }
 \tikzset{
-	background rectangle/.style={semithick,draw=cyan,fill=white,rounded corners},
-	cyanbg/.style={background rectangle/.style={semithick,fill=cyan!10,draw=cyan,rounded corners}},
+	background rectangle/.style={semithick,dash pattern= on 1mm off 1mm,fill=green!10,draw=cyan,rounded corners},
 	cstarrowto/.style     ={-Stealth}, %尖箭头
 	cstarrowfrom/.style   ={Stealth-},
 	cstarrowdouble/.style ={Stealth-Stealth},
 	cstarrow1to/.style    ={-Straight Barb}, %宽箭头
 	cstarrow1from/.style  ={Straight Barb-},
 	cstarrow1double/.style={Straight Barb-Straight Barb},
-	cstnarrow/.style      ={-Latex, line width=1mm}, %文本框间箭头
+	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
 	cstaxis/.style        ={-Stealth, thick}, %坐标轴
 	cstcurve/.style       ={very thick}, %一般曲线
-	cstdash/.style        ={thick, dash pattern= on 2mm off 0.5mm}, %虚线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
 	cstdot/.style         ={radius=0.07}, %实心点
 	cstdote/.style        ={radius=0.06, fill=white}, %空心点
 	cstfill/.style        ={fill=cyan!30}, %填充
 	cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
 	cstfill1/.style       ={fill=red!30}, %填充
 	cstfille1/.style      ={pattern=north east lines, pattern color=red}, %虚线填充
-	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=2mm,line width=1pt},
-	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=2mm,line width=1pt},
-	cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=2mm,line width=1pt},
-	cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=2mm,line width=1pt}
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
 }
 % 标题
 \author{张神星}

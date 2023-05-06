@@ -25,10 +25,10 @@
 	\end{pgfpicture}%
 }
 % Font
-\setbeamerfont{title}{size=\large}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
 \setbeamerfont{institute}{size=\normalsize,shape=\itshape}
 \setbeamerfont{date}{size=\normalsize,shape=\itshape}
-\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamerfont{part title}{size=\Large}
 \setbeamerfont{part name}{size=\Large, parent=part title}
@@ -59,19 +59,14 @@
 		\usebeamercolor[fg]{title}%
 		\inserttitle%
 	}%
-	\par\hskip0em%
+	\par\hskip-.5em%
 	\begin{beamercolorbox}[wd=0.8\paperwidth,ht=1.5pt]{seperate line}%
 	\end{beamercolorbox}%
 	\vskip1ex%
 	\par\hskip0em{%
 		\usebeamerfont{author}%
 		\usebeamercolor[fg]{author}%
-		\insertauthor 
-		\ifx\insertinstitute\@empty\else{
-			\usebeamerfont{author}%
-			\usebeamercolor[fg]{author}%
-			(\insertinstitute)%			
-		}\fi%
+		\insertauthor (\insertinstitute)%
 	}%
 	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
@@ -148,12 +143,12 @@
 }
 % Frametitle
 \setbeamertemplate{frametitle}{%
-	\vskip-0.25ex
+	\vskip-0.2ex
 	\hbox{%
 		\begin{beamercolorbox}[%
 			wd=\paperwidth,%
-			ht=3.25ex,%
-			dp=2ex,%
+			ht=2.75ex,%
+			dp=1.5ex,%
 			leftskip=1em,%
 			rightskip=0.5em,%
 			sep=0pt%
@@ -161,7 +156,7 @@
 			\usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle
 		\end{beamercolorbox}%
 	}\par%
-	\vskip-0.75ex
+	\vskip-1.25ex
 	\hbox{%
 		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
 		\end{beamercolorbox}%
@@ -474,4 +469,4 @@
 \providetranslation[to=ChineseUTF8]{Office}{办公室}
 \providetranslation[to=ChineseUTF8]{Website}{课件地址}
 \RequirePackage[T1]{fontenc}
-\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei}
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={LXGW ZhenKai}]{Source Han Sans HW SC}

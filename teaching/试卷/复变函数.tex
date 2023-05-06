@@ -73,11 +73,12 @@
 
 \begin{center}
 \begin{tikzpicture}
-\filldraw[very thick, smooth,fill=black!20] (0,-1.5) arc(210:150:3);
-\filldraw[very thick, smooth,fill=black!20] (0,1.5) arc(30:-30:3);
-\draw[thick, dash pattern=on 0.2cm off 0.05cm] (-{1.5*sqrt(3)},0)--({1.5*sqrt(3)},0);
-\draw[thick, dash pattern=on 0.2cm off 0.05cm] (-{1.5*sqrt(3)},0)--(0,1.5)--({1.5*sqrt(3)},0)--(0,-1.5)--cycle;
-\draw[very thick, dash pattern=on 0.2cm off 0.05cm] (0,0)--(0,1.5);
+\filldraw[very thick, smooth,fill=black!20, dash pattern=on 0.2cm off 0.05cm] (0,-1.5) arc(210:150:3);
+\filldraw[very thick, smooth,fill=black!20, dash pattern=on 0.2cm off 0.05cm] (0,1.5) arc(30:-30:3);
+\draw[thick, dash pattern=on 0.1cm off 0.05cm] ({-1.5*sqrt(3)},0)--({1.5*sqrt(3)-3},0);
+\draw[thick, dash pattern=on 0.1cm off 0.05cm] ({3-1.5*sqrt(3)},0)--({1.5*sqrt(3)},0);
+\draw[thick, dash pattern=on 0.1cm off 0.05cm] ({-1.5*sqrt(3)},0)--(0,1.5)--({1.5*sqrt(3)},0)--(0,-1.5)--cycle;
+\draw[very thick, dash pattern=on 0.1cm off 0.05cm] (0,0)--(0,1.5);
 \draw
 	(0, -0.3) node {$O$}
 	(0, 1.7) node {$i$}
