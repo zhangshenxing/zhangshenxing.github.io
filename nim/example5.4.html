@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Example 5.4</title>
+	<script>
+		var period, preperiod;
+		var nim=[];
+		function get_nim(S){
+			var k=S.length, maxS=S[k-1];
+			var n,i,j, this_nim, last_nim;
+			for(n=0; n<S[0]; n++) nim[n]=0;
+			for(; n<999999; n++){
+				// get this nim
+				this_nim=0;
+				for(i=0; i<k; i++){
+					last_nim=this_nim;
+					for(j=0; j<k; j++){
+						if(n>=S[j]&&nim[n-S[j]]==this_nim) this_nim++;
+					}
+					if(last_nim==this_nim) break;
+				}
+				nim[n]=this_nim;
+
+				if(n>maxS){
+					for(period=1; period<=n-maxS+1; period++){
+						for(preperiod=n+1-maxS-period; preperiod<=n-period; preperiod++){
+							if(nim[preperiod]!=nim[preperiod+period]) break;
+						}
+						if(preperiod==n-period+1) break;
+					}
+					if(preperiod==n-period+1)break;
+				}
+			}
+			while(preperiod>0&&nim[preperiod-1]==nim[preperiod+period-1]){
+				preperiod--;
+			}
+		}
+
+		function show_nim(S){
+			get_nim(S);
+			var k=S.length;
+			var i;
+			var str="𝑆={"+S[0];
+			for(i=1; i<k; i++) str+=", "+S[i];
+			str+="}, 𝑙="+preperiod+", 𝑝="+period+", 𝒢(𝑆)=";
+			for(i=0; i<preperiod; i++) str+=nim[i];
+			str+="<span style=\"text-decoration:underline;\">";
+			for(; i<preperiod+period; i++) str+=nim[i];
+			str+="</span><br>";
+			document.getElementById("base").innerHTML+=str;
+		}
+
+		function show_period(S){
+			show_nim(S);
+			var k=S.length;
+			var q=period; //may be a multiplier of period
+			var size=(parseInt(500/q+1))*q;
+			var i, xp=[], yp=[], xpp=[], ypp=[];
+			var period_list=[], preperiod_list=[];
+			var str="";
+			for(i=0; i<size; i++){
+				S[k]=i;
+				get_nim(S,k);
+				period_list[i]=period;
+				preperiod_list[i]=preperiod;
+			}
+			for(i=size-q; i<size; i++){
+				xpp[i%q]=(preperiod_list[i]-preperiod_list[i-q])/q;
+				ypp[i%q]=preperiod_list[i]-xpp[i%q]*i;
+			}
+			for(i=size-q; i<size; i++){
+				xp[i%q]=(period_list[i]-period_list[i-q])/q;
+				yp[i%q]=period_list[i]-xp[i%q]*i;
+			}
+
+			str+="<table><thead><tr>";
+			for(i=0; i<q; i++) str=str+"<td>𝑐≡"+i+"</td>";
+			str+="</tr></thead><tbody>";
+			for(i=0; i<size; i++){
+				if(i%q==0) str+="<tr>";
+				if((preperiod_list[i]!=(xpp[i%q]*i+ypp[i%q])||period_list[i]!=(xp[i%q]*i+yp[i%q])) &&period_list[i]!=2){
+					if(preperiod_list[i]==(2*i-5*S[0]+(i+1)/S[0]/2) && period_list[i]==4*S[0])
+						str+="<td style='color:green;'>"+i+"<br>"+preperiod_list[i]+"<br>"+period_list[i]+"</td>";
+					else if(preperiod_list[i]==0&&period_list[i]==5*S[0]+1)
+						str+="<td style='color:blue;'>"+i+"<br>"+preperiod_list[i]+"<br>"+period_list[i]+"</td>";
+					else
+						str+="<td style='color:red;'>"+i+"<br>"+preperiod_list[i]+"<br>"+period_list[i]+"</td>";
+				}
+				else
+					str+="<td>"+i+"<br>"+preperiod_list[i]+"<br>"+period_list[i]+"</td>";
+				if((i+1)%q==0) str+="</tr>";
+			}
+			str+="<tr>";
+			for(i=0; i<q; i++){
+				str+="<td>𝑐≡"+i+"<br>";
+				if(xpp[i]==1) str+="𝑐";
+				else if(xpp[i]>1) str+=xpp[i]+"𝑐";
+				if(ypp[i]>0&&xpp[i]!=0) str+="+";
+				str+=ypp[i]+"<br>";
+				if(xp[i]==1) str+="𝑐";
+				else if(xp[i]>1) str+=xp[i]+"𝑐";
+				if(yp[i]>0&&xp[i]!=0) str+="+";
+				str+=yp[i]+"</td>";
+			}
+			str+="</tr></tbody></table>";
+			document.getElementById("result").innerHTML+=str;
+		}
+		function load(){
+			show_period([4,11,12,14]);
+		}
+	</script>
+	<style>
+		header h1{
+			font-size: 200%;
+			text-align: center;
+		}
+		p{
+			font-size: 150%;
+			text-align: center;
+		}
+		table{
+			margin: 0 auto;
+		}
+		table, tbody, tr, td{
+			border: 2px solid black;
+			border-collapse: collapse;
+		}
+	</style>
+</head>
+
+<body onload="load();">
+	<header><h1>List of (𝑐,𝑙<sub>𝑐</sub>,𝑝<sub>𝑐</sub>) for 𝑆∪{𝑐}</h1></header>
+	<p id="base"></p>
+	<div id="result" style="margin: 0 auto;"></div>
+</body>
+</html>
