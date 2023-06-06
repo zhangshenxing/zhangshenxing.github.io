@@ -4,10 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="robots" content="index,nofollow">
+	<meta name="robots" content="index, nofollow">
 	<meta name='author' content='Shenxing Zhang'>
-	<meta name='keywords' content='Shenxing Zhang, 张神星, math, 数学'>
-	<meta name='description' content='Shenxing Zhang&#39;s personal website, 张神星的个人网站'>
+	<meta name='description' content='This is a personal website of Shenxing Zhang, 这是张神星的个人网站'>
 	<meta name='revised' content='张神星'>
 	<title>Zhang Shenxing / 张神星</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
@@ -25,8 +24,8 @@
 				t = t.nextElementSibling;
 				if (t.className == 'abstract') break;
 			} while (true);
-			var s = 0;
-			if (t.style.display == 'block') s = 1;
+			var s = false;
+			if (t.style.display == 'block') s = true;
 			if (s) t.style.display = 'none';
 			else t.style.display = 'block';
 		}
@@ -36,42 +35,43 @@
 				t = t.nextElementSibling;
 				if (t.tagName == 'PRE') break;
 			} while (true);
-			var s = 0;
-			if (t.style.display == 'block') s = 1;
+			var s = false;
+			if (t.style.display == 'block') s = true;
 			if (s) t.style.display = 'none';
 			else t.style.display = 'block';
 		}
 
 		function toggle_div(t) {
-			var s = 0;
-			if (t.nextElementSibling.style.display == 'none') s = 1;
+			var s = false;
+			if (t.nextElementSibling.style.display == 'none') s = true;
 			if (s) t.nextElementSibling.style.display = 'block';
 			else t.nextElementSibling.style.display = 'none';
 		}
 
 		function toggle_all() {
-			var s = 0;
-			var a = document.getElementsByTagName("h2");
-			var b = document.getElementsByTagName("h3");
-			if (a[0].nextElementSibling.style.display == 'none') s = 1;
+			var s = false;
+			var h2List = document.getElementsByTagName("h2");
+			var h3List = document.getElementsByTagName("h3");
+			var len = h3List.length;
+			if (h2List[0].nextElementSibling.style.display == 'none') s = true;
 			var i;
 			if (s) {
-				a[0].nextElementSibling.style.display = 'block';
-				a[1].nextElementSibling.style.display = 'block';
-				a[2].nextElementSibling.style.display = 'block';
-				for (i = 0; i < b.length; i++)
-					b[i].nextElementSibling.style.display = 'block';
+				h2List[0].nextElementSibling.style.display = 'block';
+				h2List[1].nextElementSibling.style.display = 'block';
+				h2List[2].nextElementSibling.style.display = 'block';
+				for (i = 0; i < len; i++)
+					h3List[i].nextElementSibling.style.display = 'block';
 			}
 			else {
-				a[0].nextElementSibling.style.display = 'none';
-				a[1].nextElementSibling.style.display = 'none';
-				a[2].nextElementSibling.style.display = 'none';
-				for (i = 0; i < b.length; i++)
-					b[i].nextElementSibling.style.display = 'none';
+				h2List[0].nextElementSibling.style.display = 'none';
+				h2List[1].nextElementSibling.style.display = 'none';
+				h2List[2].nextElementSibling.style.display = 'none';
+				for (i = 0; i < len; i++)
+					h3List[i].nextElementSibling.style.display = 'none';
 			}
-		} 
-		function hide_cover(){
-			document.getElementById("cover-image").style.display="block";
+		}
+		function hide_cover() {
+			document.getElementById("cover-image").style.display = "block";
 		}
 	</script>
 </head>
@@ -131,17 +131,19 @@
 							<!-- <li>04-14 ~ 04-17, Wuhan / 武汉</li> -->
 							<!-- <li>05-12 ~ 05/13, Shanghai / 上海</li> -->
 							<!-- <li>may May, Beijing / 北京</li> -->
-							<li>06-01 ~ 06-05, Chengdu / 成都</li>
+							<!-- <li>06-01 ~ 06-05, Chengdu / 成都</li> -->
+							<li>06-14 ~ 06-17, Nanjing / 南京</li>
 							<li>07-11 ~ 08-20, Sanya / 三亚</li>
 						</ul>
 					</div>
 					<div id="div-image">
-						<img id="zsx" src="me.jpg" alt="我的照片" title="点击放大" onclick="document.getElementById('cover-image').style.display='block';document.getElementById('cover-image').style.animation='enlarge';">
+						<img id="zsx" src="me.jpg" alt="我的照片" title="点击放大"
+							onclick="document.getElementById('cover-image').style.display='block';document.getElementById('cover-image').style.animation='enlarge';">
 					</div>
 				</div>
 			</div>
 			<div id="cover-image" onclick="this.style.display='none';">>
-					<img id="zsxlarge" src="melarge.jpg" alt="我的照片" title="点击缩小">
+				<img id="zsxlarge" src="melarge.jpg" alt="我的照片" title="点击缩小">
 			</div>
 		</section>
 
@@ -522,8 +524,7 @@
 		</section>
 
 		<section>
-			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="teaching"><img src="img/chalkboard-user-solid.svg"
-					alt="">教学</h2>
+			<h2 onclick="toggle_div(this)" title="Click to hide/show" id="teaching"><img src="img/chalkboard-user-solid.svg" alt="">教学</h2>
 			<div>
 				<h3 onclick="toggle_div(this)" title="Click to hide/show">教学中</h3>
 				<div>
@@ -698,7 +699,7 @@
 							<a href="http://video.moe.gov.cn/kejisi/shuxue.pdf">10000 个科学难题·数学卷</a>
 						</li>
 						<li>
-							<a href="https://www.wwli.asia/downloads/MW-2014.pdf">数学写作漫谈 - 李文威</a>
+							<a href="https://www.wwli.asia/downloads/MW-2014-doc.pdf">数学写作漫谈 - 李文威</a>
 						</li>
 						<li><a href="https://www.wwli.asia/downloads/Nanjing-2018-wwli.pdf">教学实践：经验、反思与构想 - 李文威</a></li>
 						<li><a href="https://www.ams.org/profession/leaders/workshops/gcoll.pdf">How
@@ -756,7 +757,7 @@
 							页数有点多，建议用<a href="http://detexify.kirelabs.org/classify.html">在线识别LaTeX符号</a>。
 						</li>
 						<li>
-							宏包：<a href="https://www.ctan.org/pkg/hfutexam">合肥工业大学期末试卷模板</a> v1.7<br>
+							宏包：<a href="https://www.ctan.org/pkg/hfutexam">合肥工业大学期末试卷模板</a> v1.8<br>
 							旨在将合肥工业大学期末试卷的Word模板转化为LaTeX模板。<br>
 							点击下载<a href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_shijuan.pdf">试卷示例</a>，<a
 								href="http://mirrors.ctan.org/macros/latex/contrib/hfutexam/hfutexam_datizhi.pdf">答题纸示例</a>，<a
@@ -854,7 +855,7 @@
 	</article>
 
 	<footer>
-		<p>A page since 2006 | Last updated on 2023-05-30</p>
+		<p>A page since 2006 | Last updated on 2023-06-06</p>
 	</footer>
 
 	<svg style="height:0;">
