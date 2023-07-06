@@ -28,7 +28,7 @@
 	\onslide<+->
 	\begin{proof}
 		\begin{center}
-			\begin{tikzpicture}[overlay,xshift=1.7cm,yshift=-1cm]
+			\begin{tikzpicture}
 				\filldraw[cstcurve,rounded corners=0.4cm,dcolora,cstfill] (-3,-1) rectangle (3,1);
 				\draw[cstcurve,dcolora,cstarrow1to] (3,-0.2)--(3,0.1);
 				\filldraw[cstcurve,white,draw=dcolorb] (-2,0.2) circle (0.5);
@@ -50,7 +50,6 @@
 					(2,-0.1) node {$z_3$};
 			\end{tikzpicture}
 		\end{center}
-		\vspace{1cm}
 		\onslide<+->{由复闭路定理可知,
 		\[\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
 		=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\qedhere\]}

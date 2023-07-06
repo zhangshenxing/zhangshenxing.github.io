@@ -20,9 +20,9 @@
 
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis](-2.5,0)--(2.5,0);
-			\draw[cstaxis](0,-0.4)--(0,2.5);
+		\begin{tikzpicture}[framed]
+			\draw[cstaxis](-3.5,0)--(3.5,0);
+			\draw[cstaxis](0,-1)--(0,3);
 			\draw[cstcurve,dcolorb,smooth,domain=-35:125] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
 			\draw (3.4,0.3) node[dcolorb] {$A=z(a)$};
 			\draw (0.8,1.9) node[dcolorb] {$B=z(b)$};
@@ -72,7 +72,7 @@
 
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstcurve,dcolorc,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
 			\draw[cstcurve,dcolorc,smooth,domain=195:200,cstarrowto] plot ({0.015*\x},{0.6*sin(\x)});
 			\fill[cstdot,dcolorc] (0,0) circle;
@@ -171,13 +171,13 @@
 	\end{solution}
 
 	\onslide<1->
-	\begin{tikzpicture}[overlay,xshift=7cm,yshift=1.3cm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-75mm,yshift=-36mm]
 		\draw[cstaxis](0,0)--(3,0);
 		\draw[cstaxis](0,0)--(0,2.5);
 		\draw[cstcurve,dcolora,cstarrowto](0,0)--(1.5,2);
 		\draw
 			(2.8,2) node[dcolora,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
-	\end{tikzpicture}
+		\end{tikzpicture}\end{tikzpicture}
 \end{frame}
 
 
@@ -201,13 +201,13 @@
 	\end{solution}
 
 	\onslide<1->
-	\begin{tikzpicture}[overlay,xshift=7cm,yshift=2cm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-80mm,yshift=-35mm]
 		\draw[cstaxis](0,0)--(3,0);
 		\draw[cstaxis](0,0)--(0,2.5);
 		\draw[cstcurve,dcolora,domain=0:1.5,cstarrowto] plot({\x},{8*\x*\x/9});
 		\draw
 			(2.8,2) node[dcolora,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
-	\end{tikzpicture}
+	\end{tikzpicture}\end{tikzpicture}
 \end{frame}
 
 
@@ -231,13 +231,13 @@
 	\end{solution}
 
 	\onslide<1->
-	\begin{tikzpicture}[overlay,xshift=7.8cm,yshift=1cm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-80mm,yshift=-32mm]
 		\draw[cstaxis](0,0)--(3,0);
 		\draw[cstaxis](0,0)--(0,2.5);
 		\draw[cstcurve,dcolora,cstarrowto](0,0)--(2,2);
 		\draw
 			(2.3,0.9) node[dcolora,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
-	\end{tikzpicture}
+	\end{tikzpicture}\end{tikzpicture}
 \end{frame}
 
 
@@ -256,7 +256,7 @@
 		\onslide<2->
 		\vspace{-1.4\baselineskip}
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis](0,0)--(2.5,0);
 				\draw[cstaxis](0,0)--(0,2);
 				\draw[cstcurve,cstarrowto,dcolora](0,0)--(0,1.5);
@@ -283,7 +283,7 @@
 	\begin{exercise}
 		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\visible<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis](0,0)--(2.5,0);
 				\draw[cstaxis](0,0)--(0,2.5);
 				\draw[cstcurve,cstarrowto,dcolora](0,0)--(2,2);
@@ -317,14 +317,14 @@
 		\onslide<+->{当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.}
 	\end{solution}
 	\onslide<2->
-	\begin{tikzpicture}[overlay,xshift=9.5cm,yshift=1.6cm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-85mm,yshift=-25mm]
 		\draw[cstcurve,dcolorb] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,dcolorb,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
 		\fill[cstdot,dcolorb](0,0) circle;
 		\draw[cstcurve,dcolora,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
 		\draw
 			(-0.5,0.5) node[dcolorb] {$r$}
 			(0,-0.3) node[dcolorb] {$z_0$};
-	\end{tikzpicture}
+		\end{tikzpicture}\end{tikzpicture}
 \end{frame}
 
 

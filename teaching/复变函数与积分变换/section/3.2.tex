@@ -16,7 +16,7 @@
 
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw
 				(-0.2,-0.2) node[dcolorb] {$z_0$}
 				(2.2,2.2) node[dcolorb] {$z$}
@@ -85,7 +85,7 @@
 	这是因为即使不是简单曲线也可以拆分为一些简单曲线.
 	\onslide<4->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstcurve,dcolora,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
 			\draw[cstcurve,dcolora,smooth,domain=-20:45,cstarrow1from] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
 			\draw[cstcurve,dcolora,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
@@ -150,7 +150,7 @@
 	沿着 $C$ 前进的点, $D$ 总在它的左侧,所以这就是它的正方向.
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\fill[cstcurve,cstfill,visible on=<2->] (0,0) circle(2.5 and 1.5);
 			\fill[cstcurve,white,visible on=<2->] (1,0) circle(0.6);
 			\fill[cstcurve,white,visible on=<2->] (-1,0) circle(0.6);
@@ -191,7 +191,7 @@
 		\vspace{-\baselineskip}
 		\onslide<1->
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
 				\fill[cstcurve,white] (1,0) circle(0.6);
 				\fill[cstcurve,white] (-1,0) circle(0.6);
@@ -260,7 +260,7 @@
 	\onslide<+->
 	\begin{alertblock@}
 		当 $a$ 在 $C$ 的内部时,
-		\[\oint_C\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
+		\[\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
 	\end{alertblock@}
 \end{frame}
 
@@ -268,24 +268,27 @@
 \begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 \\
-		$2\pm i,-2\pm i$ 形成的矩形闭路.\rule{0pt}{6mm}
-		\begin{tikzpicture}[overlay,xshift=3cm,yshift=0.8cm]
-			\draw[cstaxis] (-2.3,0)--(2.3,0);
-			\draw[cstaxis] (0,-1)--(0,1);
-			\draw[cstcurve,cstarrow1to,dcolora] (-1,-0.7)--(-0.5,-0.7);
-			\draw[cstcurve,cstarrow1to,dcolorb] (-0.4,0) arc(180:225:0.4);
-			\draw[cstcurve,cstarrow1to,dcolorb] (0.6,0) arc(180:225:0.4);
-			\draw[cstcurve,dcolorb,visible on=<3->] (0,0) circle (0.4);
-			\draw[cstcurve,dcolorb,visible on=<3->] (1,0) circle (0.4);
-			\fill[cstdot,dcolorc,visible on=<2->] (1,0) circle;
-			\fill[cstdot,dcolorc,visible on=<2->] (0,0) circle;
-			\draw[cstcurve,dcolora] (-2,-0.7) rectangle (2,0.7);
-			\draw
-				(-0.6,0.4) node[dcolorb,visible on=<3->] {$C_1$}
-				(1.6,0.4) node[dcolorb,visible on=<3->] {$C_2$}
-				(-1,-0.5) node[dcolora] {$\Gamma$};
-		\end{tikzpicture}
+		求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
+		\vspace{-\baselineskip}
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-2.3,0)--(2.3,0);
+				\draw[cstaxis] (0,-1)--(0,1);
+				\draw[cstcurve,cstarrow1to,dcolora] (-1,-0.7)--(-0.5,-0.7);
+				\draw[cstcurve,cstarrow1to,dcolorb] (-0.4,0) arc(180:225:0.4);
+				\draw[cstcurve,cstarrow1to,dcolorb] (0.6,0) arc(180:225:0.4);
+				\draw[cstcurve,dcolorb,visible on=<3->] (0,0) circle (0.4);
+				\draw[cstcurve,dcolorb,visible on=<3->] (1,0) circle (0.4);
+				\fill[cstdot,dcolorc,visible on=<2->] (1,0) circle;
+				\fill[cstdot,dcolorc,visible on=<2->] (0,0) circle;
+				\draw[cstcurve,dcolora] (-2,-0.7) rectangle (2,0.7);
+				\draw
+					(-0.6,0.4) node[dcolorb,visible on=<3->] {$C_1$}
+					(1.6,0.4) node[dcolorb,visible on=<3->] {$C_2$}
+					(-1,-0.5) node[dcolora] {$\Gamma$};
+			\end{tikzpicture}
+			\vspace{-\baselineskip}
+		\end{center}
 	\end{example}
 
 	\onslide<+->
@@ -308,32 +311,28 @@
 \begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$,
-
-		\vspace{2mm}
-		$\qquad C_1:|z|=2,\qquad C_2:|z|=1$.
-
-		\vspace{16mm}
-		\begin{tikzpicture}[overlay,xshift=9cm,yshift=1.8cm]
-			\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.5);
-			\draw[cstcurve,dcolora,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
-			\filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.75);
-			\draw[cstcurve,dcolorb,cstarrow1to] (-0.75,0) arc(180:130:0.75);
-			\draw
-				(-1.6,0.8) node[dcolora] {$C_1$}
-				(0.8,-0.7) node[dcolorb] {$C_2^-$};
-			\draw[cstaxis] (-1.8,0)--(1.8,0);
-			\draw[cstaxis] (0,-1.8)--(0,1.8);
-		\end{tikzpicture}
+		求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
+		\vspace{-\baselineskip}
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.5);
+				\draw[cstcurve,dcolora,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
+				\filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.75);
+				\draw[cstcurve,dcolorb,cstarrow1to] (-0.75,0) arc(180:130:0.75);
+				\draw
+					(-1.6,0.8) node[dcolora] {$C_1$}
+					(0.8,-0.7) node[dcolorb] {$C_2^-$};
+				\draw[cstaxis] (-1.8,0)--(1.8,0);
+				\draw[cstaxis] (0,-1.8)--(0,1.8);
+			\end{tikzpicture}
+		\end{center}
+		\vspace{-\baselineskip}
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.%
-		\onslide<+->{由复合闭路定理可知 
-		\vspace{-\baselineskip}
-		\[\int_\Gamma\frac{e^z}z\diff z=0.\]}
-		\vspace{-\baselineskip}
+		\onslide<+->{由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{e^z}z\diff z=0$.}
 	\end{solution}
 \end{frame}
 

@@ -94,21 +94,22 @@
 
 \begin{frame}{绝对收敛和条件收敛的判定}
 	\begin{tikzpicture}[overlay]
-		\draw[decorate,decoration={brace,amplitude=8},thick,dcolora] (1.15,-4.5)--(1.15,-1.5);
-		\draw[decorate,decoration={brace,amplitude=8},thick,dcolorb] (3.3,-0.37)--(9.5,-0.37);
-		\draw (6.4,0.2) node[dcolorb] {实部级数}
-		(0.6,-3) node[align=center,dcolora] {虚\\部\\级\\数};
+		\draw[decorate,decoration={brace,amplitude=8},thick,dcolora] (2.3,-4.45)--(2.3,-1.45);
+		\draw[decorate,decoration={brace,amplitude=8},thick,dcolorb] (4.47,-0.37)--(10.67,-0.37);
+		\draw (7.57,0.2) node[dcolorb] {实部级数}
+		(1.5,-3) node[align=center,dcolora] {虚\\部\\级\\数};
 	\end{tikzpicture}
 	\begin{center}
 		\renewcommand\arraystretch{2}
 		\defaultrowcolors
 		\begin{tabular}{|c|c|c|c|}
-			&\tht ~~发散~~&\tht 条件收敛&\tht 绝对收敛\\
-			\tht 发散&发散&发散&发散\\
+			\hline
+			&\tht ~~发散~~&\tht 条件收敛&\tht 绝对收敛\\\hline
+			\tht 发散&发散&发散&发散\\\hline
 			\tht 条件收敛&发散&\cellcolor{lightg} 条件收敛
-				&\cellcolor{lightg} 条件收敛\\
+				&\cellcolor{lightg} 条件收敛\\\hline
 			\tht 绝对收敛&发散&\cellcolor{lightg}条件收敛
-				&\cellcolor{lightr}绝对收敛\\
+				&\cellcolor{lightr}绝对收敛\\\hline
 		\end{tabular}
 	\end{center}
 \end{frame}

@@ -277,6 +277,61 @@
 		\end{beamercolorbox}%
 	}%
 }
+\defbeamertemplate{footline}{simple}{%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[%
+			wd=\paperwidth,%
+			ht=3ex,%
+			dp=1ex,%
+			leftskip=3ex,%
+			rightskip=3ex,%
+			sep=0pt%
+		]{}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\ifnum\thepart>0\else%
+					\ifnum\thesection>0\else%
+						\ifnum\thesubsection>0\else%
+							\usebeamercolor[fg]{title in head/foot}%
+						\fi%
+					\fi%
+				\fi%
+				\insertshorttitle%
+			}%
+			\ifnum\thepart>0{%
+				\usebeamerfont{part in head/foot}%
+				\ifnum\thesection>0\else%
+					\ifnum\thesubsection>0\else%
+						\usebeamercolor[fg]{part in head/foot}%
+					\fi%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				第\zhnumber{\thepart}章~\insertshortpart%
+			}\fi%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\ifnum\thesubsection>0\else%
+					\usebeamercolor[fg]{section in head/foot}%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+			}\fi%
+			\ifnum\thesubsection>0{%
+				\usebeamerfont{subsection in head/foot}%
+				\usebeamercolor[fg]{subsection in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\usebeamertemplate{subsection in footline}
+			}\fi%
+			\hfill
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
+		\end{beamercolorbox}%
+	}%
+}
 % Theorems
 \RequirePackage[many]{tcolorbox}
 \tcbset{

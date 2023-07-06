@@ -224,31 +224,33 @@
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是连接 $0$ 到 $2\pi a$ 的摆线
-
+		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
 		$\displaystyle\begin{cases}
 		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
 		\end{cases} 0\le \theta\le 2\pi.$
-		\rule{0pt}{1cm}
-		\begin{tikzpicture}[overlay,xshift=0.7cm,yshift=-0.6cm]
-			\draw[cstaxis,visible on=<2->](0,0)--(5,0);
-			\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
-			\draw[cstcurve,dcolora,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
-			\draw[cstcurve,dcolorb,visible on=<2>] (0,0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<2->] (0,0) circle;
-			\draw[cstcurve,dcolorb,visible on=<3>] ({0.7*(pi/180*60)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<3->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
-			\draw[cstcurve,dcolorb,visible on=<4>] ({0.7*(pi/180*120)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<4->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
-			\draw[cstcurve,dcolorb,visible on=<5>] ({0.7*(pi/180*180)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<5->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
-			\draw[cstcurve,dcolorb,visible on=<6>] ({0.7*(pi/180*240)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<6->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
-			\draw[cstcurve,dcolorb,visible on=<7>] ({0.7*(pi/180*300)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<7->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
-			\draw[cstcurve,dcolorb,visible on=<8>] ({0.7*(pi/180*360)},0.7) circle (0.7);
-			\fill[cstdot,dcolora,visible on=<8->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
-		\end{tikzpicture}
+		\vspace{-.5\baselineskip}
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis,visible on=<2->](0,0)--(5,0);
+				\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
+				\draw[cstcurve,dcolora,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
+				\draw[cstcurve,dcolorb,visible on=<2>] (0,0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<2->] (0,0) circle;
+				\draw[cstcurve,dcolorb,visible on=<3>] ({0.7*(pi/180*60)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<3->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<4>] ({0.7*(pi/180*120)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<4->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<5>] ({0.7*(pi/180*180)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<5->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<6>] ({0.7*(pi/180*240)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<6->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<7>] ({0.7*(pi/180*300)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<7->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<8>] ({0.7*(pi/180*360)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<8->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
+			\end{tikzpicture}
+		\end{center}
+		\vspace{-\baselineskip}
 	\end{example}
 
 	\onslide<10->{

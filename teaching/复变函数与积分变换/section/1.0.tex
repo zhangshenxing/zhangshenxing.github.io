@@ -27,11 +27,9 @@
 	\begin{solution}
 		设 $x=u+v$, 则
 			\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-		\vspace{-2\baselineskip}
-		\onslide<+->{
-			\begin{flalign*}
-				&\text{我们希望}&u^3+v^3=20,\quad uv=-2,&&&\phantom{\text{我们希望}}
-			\end{flalign*}
+		\vspace{-\baselineskip}
+		\onslide<+->{我们希望
+			\[u^3+v^3=20,\quad uv=-2,\]
 		}\onslide<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
 		}\onslide<+->{解得
 			\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
@@ -52,9 +50,9 @@
 	\onslide<+->
 	这从它的函数图像可以看出.
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\filldraw[cstcurve,dcolora,domain=-3.5:4,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
-			\draw[cstaxis] (-1.5,0)--(1.5,0);
+			\draw[cstaxis] (-1.5,0)--(2.5,0);
 			\draw[cstaxis] (0,-1.7)--(0,1.5);
 			\fill[cstdot,dcolorb] (0,-0.4) circle;
 			\draw
@@ -79,7 +77,6 @@
 
 	\onslide<+->{我们可以强行解得
 		\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
-	\vspace{-\baselineskip}
 	\end{solution*}
 \end{frame}
 
@@ -93,7 +90,6 @@
 		\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]
 	}\onslide<+->{
 		\[x=u+v=2,-3,1.\]}
-	\vspace{-\baselineskip}
 	\end{solutionc}
 
 	\onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
@@ -118,7 +114,7 @@
 		\begin{figure}[h]
 			\begin{subfigure}{0.3\textwidth}
 				\centering
-				\begin{tikzpicture}
+				\begin{tikzpicture}[framed]
 					\draw[cstcurve,dcolora,domain=-2.8:3.5,smooth,visible on=<4->] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
 					\draw[cstaxis,visible on=<4->] (-1.5,0)--(1.5,0);
 					\draw[cstaxis,visible on=<4->] (0,-1.2)--(0,1.2);
@@ -126,7 +122,7 @@
 			\end{subfigure}
 			\begin{subfigure}{0.3\textwidth}
 				\centering
-				\begin{tikzpicture}
+				\begin{tikzpicture}[framed]
 					\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth,visible on=<5->] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
 					\draw[cstaxis,visible on=<5->] (-1.5,0)--(1.5,0);
 					\draw[cstaxis,visible on=<5->] (0,-1.2)--(0,1.2);
@@ -134,7 +130,7 @@
 			\end{subfigure}
 			\begin{subfigure}{0.3\textwidth}
 				\centering
-				\begin{tikzpicture}
+				\begin{tikzpicture}[framed]
 					\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth,visible on=<6->] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
 					\draw[cstaxis,visible on=<6->] (-1.5,0)--(1.5,0);
 					\draw[cstaxis,visible on=<6->] (0,-1.2)--(0,1.2);
@@ -162,4 +158,7 @@
 	\tcblower
 	莱布尼兹 (Leibniz)
 	\end{quote@*}
+
+	\onslide<+->
+	我们将在本节使用更为现代的语言来解释和运用复数.
 \end{frame}

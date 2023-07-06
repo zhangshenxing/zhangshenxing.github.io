@@ -56,12 +56,11 @@
 \begin{frame}{复数的乘除与三角/指数表示}
 	\onslide<+->
 	\begin{proof*}
-		\vspace{-\baselineskip}
 		\begin{align*}
 			z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
 			r_2(\cos\theta_2+i\sin\theta_2)\\
-			&\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)}\\
-			&\visible<.->{\qquad\qquad+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
+			&\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
+			+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
 			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
 		\end{align*}
 		\onslide<+->{因此乘法情形得证.}
@@ -79,7 +78,7 @@
 	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并按逆时针旋转角度 $\theta$.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2,0)--(3,0);
 			\draw[cstaxis] (0,-0.4)--(0,4);
 			\coordinate (A) at (2,0);
@@ -113,7 +112,7 @@
 	\begin{solution}
 		由于 $\overrightarrow{Z_1Z_3}$ 为 $\overrightarrow{Z_1Z_2}$ 顺时针或逆时针旋转 $\dfrac\pi3$,
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis] (-0.3,0)--(2.8,0);
 				\draw[cstaxis] (0,-0.5)--(0,1.4);
 				\draw[cstcurve,dcolorb] (1,0)--(2,1)--(0.634,1.366)--cycle;
@@ -193,7 +192,6 @@
 		由于 $1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
 		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right)$,
 		\onslide<+->{因此
-		\vspace{-\baselineskip}
 		\begin{align*}
 			&\peq(1+i)^n+(1-i)^n\\
 			&=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)\\
@@ -283,7 +281,7 @@
 	所以 $w_0,w_1,w_2,w_3$ 形成了一个正方形.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2,0)--(2,0);
 			\draw[cstaxis] (0,-1.8)--(0,1.8);
 			\draw[cstcurve,dcolora,cstarrowto] (0,0)--(1.5,0.3);

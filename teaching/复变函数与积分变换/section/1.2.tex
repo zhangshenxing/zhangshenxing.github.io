@@ -48,8 +48,8 @@
 	任意 $z\neq 0$ 的辐角有无穷多个.
 	\onslide<+->
 	我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}或辐角主值, 记作 $\emph{\arg z}$.
-	\begin{tikzpicture}[overlay,xshift=1cm,yshift=-3cm]
-		\draw[cstaxis,visible on=<3->](-2.5,0)->(2,0); 
+	\begin{tikzpicture}[overlay,xshift=5cm,yshift=-3cm]
+		\draw[cstaxis,visible on=<3->](-2.5,0)->(2.5,0); 
 		\draw[cstaxis,visible on=<3->](0,-2)->(0,2);
 		\fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
 		\fill[cstdot,visible on=<4->,dcolora] (0.8,0.8) circle;
@@ -101,7 +101,7 @@
 		\begin{figure}[h]
 			\begin{subfigure}{0.35\textwidth}
 			\centering
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis,visible on=<4->] (-0.3,0)--(3,0);
 				\draw[cstaxis,visible on=<4->] (0,-0.3)--(0,1.5);
 				\draw[cstcurve,dcolorc,visible on=<4->] (1.6,0)--(0,0);
@@ -119,7 +119,7 @@
 			\end{subfigure}
 			\begin{subfigure}{0.55\textwidth}
 			\centering
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 				\draw[cstaxis,visible on=<5->] (-0.5,0)--(3,0);
 				\draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
 				\draw[cstcurve,cstarrowto,dcolora,visible on=<5->] (0,0)--(1.6,-0.4);
@@ -256,7 +256,7 @@
 	\onslide<+->
 	\vspace{-0.5\baselineskip}
 	\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-1.5,0)--(2.5,0);
 			\draw[cstaxis] (0,-0.6)--(0,2.5);
 			\draw[cstcurve,cstarrowto,dcolora] (0,0)--(-0.8,1.72);

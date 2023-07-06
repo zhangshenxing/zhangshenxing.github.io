@@ -342,7 +342,7 @@
 
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\fill[cstfille] (-1.414,-1) rectangle (1.414,1);
 			\filldraw[cstcurve,dcolora,domain=-45:45,smooth,fill=white] plot ({sec(\x)},{tan(\x)});
 			\filldraw[cstcurve,dcolora,domain=-45:45,smooth,fill=white] plot ({-sec(\x)},{tan(\x)});
@@ -363,7 +363,7 @@
 
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\fill[cstfille] (0,0)--(1,1.732) arc(60:-60:2)--cycle;
 			\draw[cstcurve,dcolora] (0,0)--(1.2,2.078);
 			\draw[cstcurve,dcolora] (0,0)--(1.2,-2.078);
@@ -384,7 +384,7 @@
 
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\fill[cstfille1] (-1.6,-1.6) rectangle (1.6,1.6);
 			\filldraw[cstcurve,dcolora,fill=white] (0,0) circle (0.5);
 			\draw[cstaxis] (-2,0)--(2,0);
@@ -405,7 +405,7 @@
 
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
+		\begin{tikzpicture}[framed]
 			\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1 and {0.5*sqrt(3)});
 			\draw[cstaxis] (-1.5,0)--(1.5,0);
 			\draw[cstaxis] (0,-1.1)--(0,1.1);
