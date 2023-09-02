@@ -27,19 +27,13 @@
 	\begin{solution}
 		设 $x=u+v$, 则
 			\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-		\vspace{-\baselineskip}
 		\onslide<+->{我们希望
 			\[u^3+v^3=20,\quad uv=-2,\]
 		}\onslide<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
 		}\onslide<+->{解得
 			\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
-		\vspace{-2\baselineskip}
-		}\onslide<+->{
-			\begin{flalign*}
-				&\text{所以}&u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,
-				\qquad\onslide<+->{x=u+v=2.}&&&\phantom{\text{所以}}
-			\end{flalign*}}
-		\vspace{-1.4\baselineskip}
+		}\onslide<+->{所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$,
+		}\onslide<+->{$x=u+v=2$.}
 	\end{solution}
 \end{frame}
 
@@ -48,15 +42,18 @@
 	\onslide<+->
 	那么这个方程是不是真的只有 $x=2$ 这一个解呢?
 	\onslide<+->
-	这从它的函数图像可以看出.
+	由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个解.
+	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[framed]
-			\filldraw[cstcurve,dcolora,domain=-3.5:4,smooth,fill=white] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
-			\draw[cstaxis] (-1.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-1.7)--(0,1.5);
-			\fill[cstdot,dcolorb] (0,-0.4) circle;
+			\filldraw[cstcurve,dcolora,domain=-3.1:4,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
+			\draw[cstaxis] (-2.5,0)--(2.5,0);
+			\draw[cstaxis] (0,-3)--(0,3);
+			\fill[cstdot,dcolorb] (0,-0.8) circle;
+			\fill[cstdot,dcolorb] (0.8,0) circle;
 			\draw
-				(1.4,-0.7) node[dcolorb] {\small 拐点 $(0,-20)$};
+			(0.5,-0.8) node {$-20$}
+			(0.7,0.2) node {$2$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -109,31 +106,30 @@
 		\item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\half\sqrt[3]{4q}$ ($2$重).
 		\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
 	\end{enumerate}
-
 	\begin{center}
 		\begin{figure}[h]
 			\begin{subfigure}{0.3\textwidth}
-				\centering
-				\begin{tikzpicture}[framed]
-					\draw[cstcurve,dcolora,domain=-2.8:3.5,smooth,visible on=<4->] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
-					\draw[cstaxis,visible on=<4->] (-1.5,0)--(1.5,0);
-					\draw[cstaxis,visible on=<4->] (0,-1.2)--(0,1.2);
+				\centering\onslide<4->
+				\begin{tikzpicture}[framed,visible on=<4->]
+					\draw[cstcurve,dcolora,domain=-2.8:3.5,smooth] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
 				\end{tikzpicture}
 			\end{subfigure}
 			\begin{subfigure}{0.3\textwidth}
-				\centering
-				\begin{tikzpicture}[framed]
-					\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth,visible on=<5->] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
-					\draw[cstaxis,visible on=<5->] (-1.5,0)--(1.5,0);
-					\draw[cstaxis,visible on=<5->] (0,-1.2)--(0,1.2);
+				\centering\onslide<5->
+				\begin{tikzpicture}[framed,visible on=<5->]
+					\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
 				\end{tikzpicture}
 			\end{subfigure}
 			\begin{subfigure}{0.3\textwidth}
-				\centering
-				\begin{tikzpicture}[framed]
-					\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth,visible on=<6->] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
-					\draw[cstaxis,visible on=<6->] (-1.5,0)--(1.5,0);
-					\draw[cstaxis,visible on=<6->] (0,-1.2)--(0,1.2);
+				\centering\onslide<6->
+				\begin{tikzpicture}[framed,visible on=<6->]
+					\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
 				\end{tikzpicture}
 			\end{subfigure}
 		\end{figure}
@@ -160,5 +156,5 @@
 	\end{quote@*}
 
 	\onslide<+->
-	我们将在本节使用更为现代的语言来解释和运用复数.
+	我们将在下一节使用更为现代的语言来解释和运用复数.
 \end{frame}

@@ -259,11 +259,11 @@
 
 \begin{frame}{复数域\noexer}
 	\onslide<+->
-	复数集合全体构成一个\emph{域}.
+	复数全体构成一个\emph{域}.
 	\onslide<+->
-	所谓的域, 是指一个集合
+	所谓的域, 是指带有如下内容和性质的集合
 	\begin{itemize}
-		\item 包含 $0,1$, 且在它之内有四则运算;
+		\item 包含 $0,1$, 且有四则运算;
 		\item 满足加法结合/交换律, 乘法结合/交换/分配律;
 		\item 对任意 $a$, $a+0=a\times 1=a$.
 	\end{itemize}
@@ -320,11 +320,15 @@
 			\item $z$ 是 $\ov z$ 的共轭复数.
 			\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
 			\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-			\ov{\left(\dfrac{z_1}{z_2}\right)}=\dfrac{~\ov{z_1}~}{\ov{z_2}}$.
+			\ov{z_1/z_2}=\ov{z_1}/\ov{z_2}$.
 			\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
 			\item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
 		\end{itemize}
 	\end{block}
+	\onslide<+->
+	\begin{exercise}
+		$z$ 关于虚轴的对称点是\fillblank{\visible<+->{$-\ov z$}}.
+	\end{exercise}
 \end{frame}
 
 
@@ -337,7 +341,6 @@
 	\onslide<+->
 	\begin{proof}
 		$\dfrac z{1+z^2}$ 是实数当且仅当
-		\vspace{-\baselineskip}
 		\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
 		\onslide<+->{即
 			\[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]
@@ -386,8 +389,8 @@
 		\[z=-\frac1i-\frac{3i}{1-i}
 		\onslide<+->{=i-\frac{3i-3}2=\frac32-\half i,}\]
 	\onslide<+->{因此
-		$\displaystyle\Re z=\frac32,\quad\Im z=-\half ,\quad
-		z\ov z=\left(\frac32\right)^2+\left(-\half\right)^2=\frac52$.}
+		\[\Re z=\frac32,\quad\Im z=-\half ,\quad
+		z\ov z=\left(\frac32\right)^2+\left(-\half\right)^2=\frac52.\]}
 	\end{solution}
 \end{frame}
 

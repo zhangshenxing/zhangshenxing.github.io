@@ -51,6 +51,8 @@
 	\begin{tikzpicture}[overlay,xshift=5cm,yshift=-3cm]
 		\draw[cstaxis,visible on=<3->](-2.5,0)->(2.5,0); 
 		\draw[cstaxis,visible on=<3->](0,-2)->(0,2);
+		\draw[cstaxis,visible on=<3>,dcolorb,cstarrow1from] (-1,0) arc(180:-180:1);
+		\filldraw[cstdote,visible on=<3>,draw=dcolora] (-1,-0.05) circle;
 		\fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
 		\fill[cstdot,visible on=<4->,dcolora] (0.8,0.8) circle;
 		\fill[cstdot,visible on=<4->,dcolora] (1.0,-0.8) circle;
@@ -100,7 +102,7 @@
 	\begin{center}
 		\begin{figure}[h]
 			\begin{subfigure}{0.35\textwidth}
-			\centering
+			\centering\onslide<4->
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis,visible on=<4->] (-0.3,0)--(3,0);
 				\draw[cstaxis,visible on=<4->] (0,-0.3)--(0,1.5);
@@ -118,7 +120,7 @@
 			\end{tikzpicture}
 			\end{subfigure}
 			\begin{subfigure}{0.55\textwidth}
-			\centering
+			\centering\onslide<5->
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis,visible on=<5->] (-0.5,0)--(3,0);
 				\draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
