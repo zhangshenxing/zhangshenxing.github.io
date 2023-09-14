@@ -161,19 +161,19 @@
 	\onslide<+->
 	\begin{proof}
 		\enumnum1 因为
-		\[|z_1z_2|^2=z_1z_2\cdot\ov{z_1z_2}
+		\[|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
 		=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
 		\onslide<+->{所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 		}\onslide<+->{因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.}
 
-		\onslide<+->{\enumnum2
+		\onslide<+->{\enumnum2 因为
 		\vspace{-0.6\baselineskip}
 		\begin{align*}
-			|z_1+z_2|^2&=(z_1+z_2)(\ov{z_1}+\ov{z_2})\\
-			&\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}}\\
-			&\visible<+->{=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2}).\qedhere}
+			\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
+			\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
+			\text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
 		\end{align*}}
-	\vspace{-1.5\baselineskip}
+		而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.
 	\end{proof}
 \end{frame}
 
@@ -221,15 +221,22 @@
 		将 $z=\sin\dfrac\pi5+i\cos\dfrac\pi5$ 化成三角形式和指数形式.
 	\end{example}
 
-	\onslide<+->
+	\onslide
 	\begin{solution}
+		\[|z|=1,\quad \onslide<+->{
+			\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.
+		}\]
+		\onslide<+->{因此 $z=\displaystyle\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}$.}
+	\end{solution}
+	\onslide<+->
+		\begin{proofblock}{另解}
 		\vspace{-\baselineskip}
 		\begin{align*}
-		z&=\sin\frac\pi5+i\cos\frac\pi5\\
-		&\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}\\
+		z&=\sin\frac\pi5+i\cos\frac\pi5
+		\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}\\
 		&\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
 		\end{align*}
-	\end{solution}
+	\end{proofblock}
 \end{frame}
 
 
@@ -244,8 +251,8 @@
 
 	\onslide<+->
 	\begin{answer}
-		$\displaystyle z=2\sqrt3\left(\cos\frac{5\pi}3+i\sin\frac{5\pi}3\right)
-		=2\sqrt3e^{\frac{5\pi i}3}$.
+		$\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)
+		=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
 	\end{answer}
 \end{frame}
 
@@ -284,11 +291,10 @@
 	\onslide<+->
 	\begin{example}
 	\vspace{-\baselineskip}
-		\begin{align*}
-		z&=1-\cos\alpha+i\sin \alpha
-		\visible<+->{=e^0+e^{(\pi-\alpha)i}}\\
-		&\visible<+->{=2\cos\frac{\pi-\alpha}2 e^{\frac{\pi-\alpha}2i}}
+		\[z=1-\cos\alpha+i\sin \alpha
+		\visible<+->{=e^0+e^{(\pi-\alpha)i}}
+		\visible<+->{=2\cos\frac{\pi-\alpha}2 e^{\frac{\pi-\alpha}2i}}
 		\visible<+->{=2\sin\frac\alpha2 e^{\frac{\pi-\alpha}2i}.}
-		\end{align*}
+		\]
 	\end{example}
 \end{frame}

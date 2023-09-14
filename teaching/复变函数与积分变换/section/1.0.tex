@@ -27,8 +27,7 @@
 	\begin{solution}
 		设 $x=u+v$, 则
 			\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-		\onslide<+->{我们希望
-			\[u^3+v^3=20,\quad uv=-2,\]
+		\onslide<+->{我们希望 $u^3+v^3=20, uv=-2$,
 		}\onslide<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
 		}\onslide<+->{解得
 			\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
@@ -46,9 +45,9 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[framed]
-			\filldraw[cstcurve,dcolora,domain=-3.1:4,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
+			\filldraw[cstcurve,dcolora,domain=-3.1:3.7,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
 			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-3)--(0,3);
+			\draw[cstaxis] (0,-2.9)--(0,2.8);
 			\fill[cstdot,dcolorb] (0,-0.8) circle;
 			\fill[cstdot,dcolorb] (0.8,0) circle;
 			\draw
@@ -111,7 +110,7 @@
 			\begin{subfigure}{0.3\textwidth}
 				\centering\onslide<4->
 				\begin{tikzpicture}[framed,visible on=<4->]
-					\draw[cstcurve,dcolora,domain=-2.8:3.5,smooth] plot ({(\x)*0.2},{(\x*\x*\x+6*\x-20)*0.02});
+					\draw[cstcurve,dcolora,domain=-2.4:3.3,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x-10)*0.06});
 					\draw[cstaxis] (-1.5,0)--(1.5,0);
 					\draw[cstaxis] (0,-1.2)--(0,1.2);
 				\end{tikzpicture}

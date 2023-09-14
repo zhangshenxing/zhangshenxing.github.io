@@ -1,4 +1,4 @@
-\section{复数的乘除、方幂与方根}
+\section{复数的乘除、乘幂与方根}
 
 \subsection{复数的乘除与三角/指数表示}
 \begin{frame}{复数的乘除与三角/指数表示}
@@ -9,7 +9,7 @@
 	\begin{theorem}
 		设
 		\[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
-		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_1}\neq 0,\]
+		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
 		则
 		\[\alert{z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)}},\]
 		\[\alert{\frac{z_1}{z_2}=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}}.\]
@@ -43,7 +43,7 @@
 	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 	\onslide<+->
 	例如
-	\[(-1+i)(-1+i)=2i,\]
+	\[(-1+i)(-1+i)=-2i,\]
 	\vspace{-0.5\baselineskip}
 	\onslide<+->
 	\[\arg(-1+i)+\arg(-1+i)=\frac{3\pi}4+\frac{3\pi}4=\frac{3\pi}2,\]
@@ -75,15 +75,15 @@
 
 \begin{frame}{乘积的几何意义}
 	\onslide<+->
-	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并按逆时针旋转角度 $\theta$.
+	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2,0)--(3,0);
 			\draw[cstaxis] (0,-0.4)--(0,4);
-			\coordinate (A) at (2,0);
+			\coordinate (A) at (1.6,0);
 			\coordinate (B) at (0,0);
-			\coordinate (C) at (1.2,2.4);
+			\coordinate (C) at (0.96,1.92);
 			\draw[cstcurve,dcolora,cstarrowto] (B)--(A);
 			\draw[cstcurve,dcolora,cstarrowto] (B)--(C);
 			\draw[cstcurve,dcolora] pic [draw, "$\theta$", angle eccentricity=1.4] {angle};
@@ -93,8 +93,8 @@
 			\draw[cstcurve,dcolorb,cstarrowto,visible on =<3->] (B)--(C);
 			\draw[cstcurve,dcolorb,visible on =<3->] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius= 0.7cm] {angle};
 			\draw 
-			(1.9,2.6) node[dcolora] {$z=re^{i\theta}$}
-			(2,-0.3) node[dcolora] {$1$}
+			(1.52,2.08) node[dcolora] {$z=re^{i\theta}$}
+			(1.6,-0.3) node[dcolora] {$1$}
 			(1.6,1.5) node[dcolorb,visible on =<3->] {$z_1$}
 			(-1.1,2.7) node[dcolorb,visible on =<3->] {$zz_1$};
 		\end{tikzpicture}
@@ -210,7 +210,7 @@
 \subsection{复数的方根}
 \begin{frame}{复数的方根}
 	\onslide<+->
-	我们利用复数方幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
+	我们利用复数乘幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
 	\onslide<+->
 	设
 	\[w^n=z=re^{i\theta}\neq0,\quad w=\rho e^{i\varphi},\]
@@ -249,7 +249,7 @@
 	\onslide<+->
 	这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 	\onslide<+->
-	因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的正接 $n$ 边形的顶点}.
+	因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
 \end{frame}
 
 
@@ -275,8 +275,7 @@
 
 \begin{frame}{典型例题: 复数方根的计算}
 	\onslide<+->
-	显然
-	\[w_1=iw_0,\quad w_2=-w_0,\quad w_3=-iw_0.\]
+	显然 $w_{k+1}=iw_k$,
 	\onslide<+->
 	所以 $w_0,w_1,w_2,w_3$ 形成了一个正方形.
 	\onslide<+->
@@ -310,8 +309,8 @@
 	注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
 	\onslide<+->
 	这是因为
-	\[\Arg(z^n)=n\arg z+2k\pi i,\quad k\in\BZ,\]
-	\[n\Arg z=n\arg z+2nk\pi i,\quad k\in\BZ.\]
+	\[\Arg(z^n)=n\arg z+2k\pi,\quad k\in\BZ,\]
+	\[n\Arg z=n\arg z+2nk\pi,\quad k\in\BZ.\]
 	\onslide<+->
 	不过我们总有
 	\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ,\]
@@ -326,15 +325,15 @@
 	\onslide<+->
 	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3.\]
 	\begin{enumerate}
-		\item 如果 $\Delta>0$, 设 $\alpha=\sqrt[3]{-q/2+\sqrt{\Delta}}$ 是算术根, $\omega=e^{2\pi i/3}$.
+		\item 如果 $\Delta>0$, 设实数 $\alpha$ 满足 $\alpha^3=-q/2+\sqrt{\Delta}$, $\omega=e^{2\pi i/3}$.
 			\onslide<+->
-			则
+			那么
 			\[u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
 			x=\alpha-\frac p{3\alpha},\ \alpha\omega-\frac p{3\alpha} \omega^2,\ \alpha\omega^2-\frac p{3\alpha} \omega.\]
 			\onslide<+->
 			容易证明后两个根都是虚数.
-		\item 如果 $\Delta<0$, 则 $p>0$, $u$ 是虚数且 $v=\ov u$.
-			\onslide<+->设 $u_1,u_2,u_3$ 是 $\sqrt[3]{-q/2+\sqrt{\Delta}}$ 的所有值,
+		\item 如果 $\Delta<0$, 则 $p<0$, $|u|^2=-p/3$. 从而 $v=\ov u$.
+			\onslide<+->设 $\sqrt[3]{-q/2+\sqrt{\Delta}}=u_1,u_2,u_3$,
 			\onslide<+->
 			则我们得到 $3$ 个实根
 			\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
