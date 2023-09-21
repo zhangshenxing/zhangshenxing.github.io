@@ -90,7 +90,7 @@
 \AtBeginDocument{
 	{
 		\setnaviboxempty
-		\frame{\titlepage}
+		\frame[c]{\titlepage}
 	}
 }
 % Background
@@ -118,7 +118,7 @@
 	\setcounter{section}{0}%
 	{
 		\setnaviboxempty
-		\frame{\partpage}
+		\frame[c]{\partpage}
 	}
 }
 % Section Page
@@ -138,7 +138,7 @@
 	\setbeamertemplate{subsection in footline}[normal]
 	{
 		\setnaviboxempty
-		\frame{\sectionpage}
+		\frame[c]{\sectionpage}
 	}
 }
 % Frametitle
@@ -161,6 +161,7 @@
 		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
 		\end{beamercolorbox}%
 	}%
+	% \vskip-1ex
 }
 % Navigation Box, from theme riemann by Jianrui Lyu
 \newcommand{\my@navibox@frame@section}{$\boxtimes$}

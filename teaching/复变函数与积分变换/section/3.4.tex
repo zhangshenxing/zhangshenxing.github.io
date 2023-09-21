@@ -109,10 +109,10 @@
 	\onslide<+->
 	\begin{solution}
 		当 $|z|<\sqrt3$ 时,由柯西积分公式得
-		\begin{align*}
-			f(z)&=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta\\
-			&\visible<+->{=2\pi i(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi i(3z^2+7z+1).}
-		\end{align*}
+		\[
+			f(z)=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta
+			\visible<+->{=2\pi i(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi i(3z^2+7z+1).}
+		\]
 		\onslide<+->{因此 $f'(z)=2\pi i(6z+7)$,
 		}\onslide<+->{
 			\[f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.\]}
@@ -126,6 +126,7 @@
 
 
 \begin{frame}{典型例题: 柯西积分公式的应用}
+	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z$.
@@ -142,7 +143,7 @@
 			&\visible<+->{=2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}&&\\
 			&\visible<+->{=2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).&&}
 			\end{flalign*}}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-70mm,yshift=-25mm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[scale=.7,framed,xshift=-120mm,yshift=-30mm]
 			\draw[cstaxis] (-2.1,0)--(2.1,0);
 			\draw[cstaxis] (0,-2)--(0,2.1);
 			\draw[cstcurve,dcolorb] (0,0) circle (1.8);
@@ -158,8 +159,9 @@
 				(1.2,-.8) node[dcolora,visible on=<3->] {$C_2$}
 				(-1.2,-.8) node[dcolora,visible on=<3->] {$C_3$};
 		\end{tikzpicture}\end{tikzpicture}
-		\vspace{-9.5\baselineskip}
+		\vspace{-7\baselineskip}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
@@ -235,11 +237,11 @@
 	\begin{solution}
 		由于 $\cos(\pi z)$ 处处解析,
 		\onslide<+->{因此由柯西积分公式,
-			\begin{align*}
+			\[
 			\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
-			&=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}\\
-			&\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
-			\end{align*}}
+			=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}
+			\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
+			\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}

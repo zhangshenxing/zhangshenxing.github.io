@@ -26,7 +26,7 @@
 	\onslide<+->
 	\begin{proofs}
 		\begin{center}
-			\begin{tikzpicture}[overlay,xshift=3.8cm,yshift=-1cm]
+			\begin{tikzpicture}
 				\fill[cstcurve,dcolora,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
 				\draw[cstcurve,dcolora] (0,0) circle(0.7);
 				\draw[cstcurve,dcolorc] (-2,0)to [bend left](0,0);
@@ -42,12 +42,11 @@
 		\end{center}
 
 		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
-
 		\onslide<+->{取 $|\Delta z|$ 小于 $K$ 的半径.
 		}\onslide<+->{那么
 		\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
 		\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}\]}
-
+		\vspace{-\baselineskip}
 		\onslide<+->{容易知道
 		\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]
 		}\onslide<+->{我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.}
@@ -110,9 +109,8 @@
 		}\onslide<+->{因此
 		\[\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).\]}
 	\end{solution}
-
 	\onslide<+->
-	因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 而无论从 $0$ 到 $3+4i$ 的路径如何.
+	因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 无论从 $0$ 到 $3+4i$ 的路径如何.
 \end{frame}
 
 
@@ -146,18 +144,15 @@
 	\begin{solution}
 		由于 $f(z)=z\cos z$ 处处解析,
 		\onslide<+->{且
-			\begin{align*}
-			\int z\cos z\diff z&
-			=\int z\diff(\sin z)=z\sin z-\int \sin z\diff z\\
-			&\visible<+->{=z\sin z+\cos z+C,}
-			\end{align*}
+			\[\int z\cos z\diff z
+			=\int z\diff(\sin z)
+			=z\sin z-\int \sin z\diff z
+			\visible<+->{=z\sin z+\cos z+C,}\]
 		}\onslide<+->{因此
-		\vspace{-1.5\baselineskip}
-			\begin{align*}
-			\int_0^i z\cos z\diff z&=(z\sin z+\cos z)\big|_0^i\\
-			&\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
-			\end{align*}}
-		\vspace{-1.5\baselineskip}
+			\[\int_0^i z\cos z\diff z
+			=(z\sin z+\cos z)\big|_0^i
+			\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
+			\]}
 	\end{solution}
 
 	\onslide<+->
@@ -192,6 +187,48 @@
 	\begin{exercise}
 		求 $\displaystyle\int_0^1 z\sin z\diff z=$\fillblank[4cm]{\visible<+->{$\sin 1-\cos 1$}}.
 	\end{exercise}
+	\onslide<+->
+	\begin{example}
+		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
+		$\displaystyle\begin{cases}
+		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
+		\end{cases} 0\le \theta\le 2\pi.$
+		\vspace{-.5\baselineskip}
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis,visible on=<2->](0,0)--(5,0);
+				\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
+				\draw[cstcurve,dcolora,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
+				\draw[cstcurve,dcolorb,visible on=<3>] (0,0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<3->] (0,0) circle;
+				\draw[cstcurve,dcolorb,visible on=<4>] ({0.7*(pi/180*60)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<4->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<5>] ({0.7*(pi/180*120)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<5->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<6>] ({0.7*(pi/180*180)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<6->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<7>] ({0.7*(pi/180*240)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<7->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<8>] ({0.7*(pi/180*300)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<8->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
+				\draw[cstcurve,dcolorb,visible on=<9>] ({0.7*(pi/180*360)},0.7) circle (0.7);
+				\fill[cstdot,dcolora,visible on=<9->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
+			\end{tikzpicture}
+		\end{center}
+		\vspace{-.5\baselineskip}
+	\end{example}
+\end{frame}
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\onslide<+->
+	\begin{solution}
+		由于 $f(z)=2z^2+8z+1$ 处处解析,
+		\onslide<+->{因此
+			\begin{align*}
+			&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
+			&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+			\end{align*}}
+	\end{solution}
 \end{frame}
 
 
@@ -218,51 +255,6 @@
 			\end{align*}}
 		\vspace{-1.1\baselineskip}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 利用原函数求积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
-		$\displaystyle\begin{cases}
-		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
-		\end{cases} 0\le \theta\le 2\pi.$
-		\vspace{-.5\baselineskip}
-		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<2->](0,0)--(5,0);
-				\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
-				\draw[cstcurve,dcolora,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
-				\draw[cstcurve,dcolorb,visible on=<2>] (0,0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<2->] (0,0) circle;
-				\draw[cstcurve,dcolorb,visible on=<3>] ({0.7*(pi/180*60)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<3->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
-				\draw[cstcurve,dcolorb,visible on=<4>] ({0.7*(pi/180*120)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<4->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
-				\draw[cstcurve,dcolorb,visible on=<5>] ({0.7*(pi/180*180)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<5->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
-				\draw[cstcurve,dcolorb,visible on=<6>] ({0.7*(pi/180*240)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<6->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
-				\draw[cstcurve,dcolorb,visible on=<7>] ({0.7*(pi/180*300)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<7->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
-				\draw[cstcurve,dcolorb,visible on=<8>] ({0.7*(pi/180*360)},0.7) circle (0.7);
-				\fill[cstdot,dcolora,visible on=<8->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
-			\end{tikzpicture}
-		\end{center}
-		\vspace{-\baselineskip}
-	\end{example}
-
-	\onslide<10->{
-	\begin{solution}
-		由于 $f(z)=2z^2+8z+1$ 处处解析,
-		\onslide<11->{因此
-			\begin{align*}
-			&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
-			&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
-			\end{align*}}
-		\vspace{-\baselineskip}
-	\end{solution}}
 \end{frame}
 
 

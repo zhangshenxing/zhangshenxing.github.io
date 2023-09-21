@@ -30,7 +30,6 @@
 
 	\onslide<+->
 	\begin{solution}
-		\vspace{-.8\baselineskip}
 		\begin{align*}
 			f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 			&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)i-(x+2yi)}{\Delta z}}\\
@@ -45,17 +44,12 @@
 
 \begin{frame}[<*>]{例题: 复变函数的导数}
 	\onslide<+->
-	\begin{columns}
-		\column{0.58\textwidth}
 		\begin{exercise}
 			函数 $f(z)=x-yi$ 在哪些点处可导? 
 		\end{exercise}\onslide<+->
-		\column{0.38\textwidth}
 		\begin{answer}
 			处处不可导.
 		\end{answer}
-	\end{columns}
-
 	\onslide<+->
 	\begin{example}
 		求 $f(z)=z^2$ 的导数.
@@ -63,12 +57,11 @@
 
 	\onslide<+->
 	\begin{solution}
-		\vspace{-.5\baselineskip}
-		\begin{align*}
-		f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
-		&\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}\\
-		&\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
-		\end{align*}
+		\[
+		f'(z)=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}
+		\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}
+		\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
+		\]
 	\end{solution}
 \end{frame}
 
@@ -100,13 +93,11 @@
 		该定理的证明和实变量情形完全相同.
 		\onslide<+->{设 \[\Delta w=f(z_0+\Delta z)-f(z_0),\]
 		}\onslide<+->{则
-			\vspace{-\baselineskip}
 			\begin{align*}
 			\lim_{\Delta z\to 0}\Delta w&=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z\\
-			&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}\\
-			&\visible<+->{=f'(z_0)\cdot 0=0.}\qedhere
+			&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}
+			\visible<+->{=f'(z_0)\cdot 0=0.}\qedhere
 			\end{align*}}
-		\vspace{-1.4\baselineskip}
 	\end{proof}
 \end{frame}
 

@@ -105,10 +105,10 @@
 
 		\onslide<+->{故 $v(x,y)=-3xy^2+x^3+C$,
 		}\onslide<+->{
-		\begin{align*}
-			f(z)&=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)\\
-			&\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
-		\end{align*}}
+		\[
+			f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
+			\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
+		\]}
 		\vspace{-\baselineskip}
 	\end{solution*}
 
@@ -139,22 +139,25 @@
 \begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
 	\begin{solutionc}
+		故
 		\vspace{-.5\baselineskip}
-		\begin{flalign*}
-			\text{故}\qquad\qquad f(z)&=u+iv&\\
-			&=e^x(x\cos y-y\sin y)+x-y+C&\\
-			&\qquad+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]&\\
-			&\visible<+->{=ze^z+(1+i)z+C,\quad C\in\BR.}&
-		\end{flalign*}
+		\begin{align*}
+			f(z)&=u+iv\\
+			&=e^x(x\cos y-y\sin y)+x-y+C
+			+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]\\
+			&\visible<+->{=ze^z+(1+i)z+C,\quad C\in\BR.}
+		\end{align*}
 	\end{solutionc}
 	\onslide<+->
-	\vspace{-\baselineskip}
-	\begin{flalign*}
-		\text{也可由}\qquad f'(z)&=v_y+iv_x&\\
-		&=e^x(\cos y-y\sin y+x\cos y)+1&\\
-		&\qquad\qquad+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]&\\
-		&\visible<+->{=(z+1)e^z+1+i.}&
-	\end{flalign*}
+	也可由
+	\vspace{-.5\baselineskip}
+	\begin{align*}
+		f'(z)&=v_y+iv_x\\
+		&=e^x(\cos y-y\sin y+x\cos y)+1
+		+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]\\
+		&\visible<+->{=(z+1)e^z+1+i.}
+	\end{align*}
+	\vspace{-.5\baselineskip}
 	\onslide<+->
 	得 $f(z)=ze^z+(1+i)z+C$.
 \end{frame}

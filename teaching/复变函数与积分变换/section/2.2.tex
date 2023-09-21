@@ -130,7 +130,6 @@
 		}\onslide<+->{由 $2x=x,0=-y$ 可知只有 $x=y=0,z=0$ 满足C-R方程.
 		}\onslide<+->{因此该函数只在 $0$ 可导, 处处不解析且
 			\[f'(0)=u_x(0)+iv_x(0)=0.\]}
-		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -191,13 +190,13 @@
 		\end{align*}
 		\onslide<+->{因此
 			\[2x+ay=dx+2y,\quad ax+2by=-(2cx+dy),\]}
-		\vspace{-1.2\baselineskip}
+		\vspace{-\baselineskip}
 		\onslide<+->{
 			\[a=d=2,\quad b=c=-1,\]}
-		\vspace{-1.2\baselineskip}
+		\vspace{-\baselineskip}
 		\onslide<+->{
 			\[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\]}
-		\vspace{-1.2\baselineskip}
+		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -247,11 +246,11 @@
 	\begin{proof*}
 		由于 $f'(z)=u_x-iu_y$, 因此 $u_x,u_y$ 不全为零.
 		\onslide<+->{对 $u(x,y)=c_1$ 使用隐函数求导法则得 $u_x\diff x+u_y\diff y=0$,
-		}\onslide<+->{从而 $(u_x,-u_y)$ 是该曲线在 $z$ 处的非零切向量.}
+		}\onslide<+->{从而 $(u_y,-u_x)$ 是该曲线在 $z$ 处的非零切向量.}
 
-		\onslide<+->{同理 $(v_x,-v_y)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.
+		\onslide<+->{同理 $(v_y,-v_x)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.
 		}\onslide<+->{由于
-			\[u_xv_x+u_yv_y=-u_xu_y+u_yu_x=0,\]
+			\[u_yv_y+u_xv_x=u_yu_x-u_xu_y=0,\]
 		}\onslide<+->{因此二者正交.\qedhere}
 	\end{proof*}
 \end{frame}

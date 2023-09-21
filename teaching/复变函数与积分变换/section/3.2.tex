@@ -9,8 +9,8 @@
 	设 $C=C_1^-+C_2$.
 	\onslide<+->
 	可以看出
-	\[\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff\]
-	\[\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.\]
+	\[\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff
+	\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.\]
 	\onslide<+->
 	所以 $f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零.
 
@@ -107,7 +107,9 @@
 	\begin{solution}
 		由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
 		\onslide<+->{因此由柯西-古萨基本定理
+		\vspace{-.5\baselineskip}
 			\[\oint_{|z|=1}\frac1{2z-3}\diff z=0.\]}
+		\vspace{-.5\baselineskip}
 	\end{solution}
 
 	\onslide<+->
@@ -176,6 +178,23 @@
 		\[\oint_{C_0}f(z)\diff z=
 		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
 	\end{alertblock}
+	\begin{center}
+		\begin{tikzpicture}[framed]
+			\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
+			\fill[cstcurve,white] (1,0) circle(0.6);
+			\fill[cstcurve,white] (-1,0) circle(0.6);
+			\draw[cstcurve,dcolora] (0,0) circle(2.5 and 1.5);
+			\draw[cstcurve,dcolora] (1,0) circle(0.6);
+			\draw[cstcurve,dcolora] (-1,0) circle(0.6);
+			\draw[cstcurve,dcolora,domain=85:90,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+			\draw[cstcurve,dcolora,domain=135:140,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,dcolora,domain=135:140,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw
+				(2,1.3) node[dcolora] {$C_0$}
+				(-1,0.85) node[dcolora] {$C_1^{\visible<2->-}$}
+				(1,0.85) node[dcolora] {$C_2^{\visible<2->-}$};
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 
@@ -188,10 +207,10 @@
 			\[\oint_{C_0}f(z)\diff z-
 		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.\]
 		}\onslide<+->{于是定理得证.\qedhere}
-		\vspace{-\baselineskip}
+		\vspace{-1.7\baselineskip}
 		\onslide<1->
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}[framed,scale=.9]
 				\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
 				\fill[cstcurve,white] (1,0) circle(0.6);
 				\fill[cstcurve,white] (-1,0) circle(0.6);
@@ -269,9 +288,8 @@
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
-		\vspace{-\baselineskip}
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}[scale=.9,framed]
 				\draw[cstaxis] (-2.3,0)--(2.3,0);
 				\draw[cstaxis] (0,-1)--(0,1);
 				\draw[cstcurve,cstarrow1to,dcolora] (-1,-0.7)--(-0.5,-0.7);
@@ -287,10 +305,12 @@
 					(1.6,0.4) node[dcolorb,visible on=<3->] {$C_2$}
 					(-1,-0.5) node[dcolora] {$\Gamma$};
 			\end{tikzpicture}
-			\vspace{-\baselineskip}
 		\end{center}
 	\end{example}
+\end{frame}
 
+
+\begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{solution}
 		函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
@@ -303,7 +323,6 @@
 				+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}\\
 				&\visible<+->{=2\pi i+0+0+2\pi i=4\pi i.}
 			\end{align*}}
-		\vspace{-2\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -312,9 +331,9 @@
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
-		\vspace{-\baselineskip}
+		\vspace{-.8\baselineskip}
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}[scale=.8,framed]
 				\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.5);
 				\draw[cstcurve,dcolora,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
 				\filldraw[cstcurve,dcolorb,fill=white] (0,0) circle (0.75);
@@ -326,12 +345,11 @@
 				\draw[cstaxis] (0,-1.8)--(0,1.8);
 			\end{tikzpicture}
 		\end{center}
-		\vspace{-\baselineskip}
+		\vspace{-.8\baselineskip}
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
-		函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.%
+		函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
 		\onslide<+->{由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{e^z}z\diff z=0$.}
 	\end{solution}
 \end{frame}
