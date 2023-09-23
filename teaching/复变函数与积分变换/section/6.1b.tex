@@ -191,16 +191,16 @@
 
 
 \begin{frame}{卷积定理\noexer}
-	\beqskip{0pt}
 	\onslide<+->
 	\begin{block}{卷积定理}
 	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
 	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
-	\vspace{-8pt}
+	\vspace{-\baselineskip}
 	\end{block}
 
 	\onslide<+->
 	\begin{proof}
+		\vspace{-\baselineskip}
 		\begin{align*}
 			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
@@ -209,7 +209,6 @@
 			&\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
 		\end{align*}
 	\end{proof}
-	\endgroup
 \end{frame}
 
 

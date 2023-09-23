@@ -23,8 +23,6 @@
 
 
 \begin{frame}{阿贝尔定理}
-	\beqskip{0pt}
-	\vspace{-3pt}
 	\onslide<+->
 	\begin{block}{阿贝尔定理}
 		\begin{enumerate}
@@ -44,7 +42,6 @@
 		}\onslide<+->{所以级数在 $z$ 处绝对收敛.
 		}\onslide<+->{\enumnum2是\enumnum1的逆否命题.\qedhere}
 	\end{proof}
-	\endgroup
 \end{frame}
 
 
@@ -127,7 +124,6 @@
 
 
 \begin{frame}{典型例题: 收敛半径的计算}
-	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
 		求幂级数 $\suml_{n=0}^\infty\cos(in)z^n$ 的收敛半径.
@@ -138,14 +134,16 @@
 		我们有 $c_n=\cos(in)=\dfrac{e^n+e^{-n}}2$.
 		\onslide<+->{由
 			\[\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{e^{n+1}+e^{-n-1}}{e^n+e^{-n}}=e\lim_{n\to\infty}\frac{1+e^{-2n-2}}{1+e^{-2n}}=e\]
-		可知收敛半径为 $\frac1e$.}
+		可知收敛半径为 $\dfrac1e$.}
 	\end{solution}
+\end{frame}
 
+
+\begin{frame}{典型例题: 收敛半径的计算}
 	\onslide<+->
 	\begin{exercise}
-		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm]{\visible<+->{$\sqrt2/2$}}.
+		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm][2mm]{\visible<+->{$\dfrac{\sqrt2}2$}}.
 	\end{exercise}
-	\endgroup
 \end{frame}
 
 
@@ -276,7 +274,6 @@
 		\sum_{n=1}^\infty(2^n-1)z^{n-1}&=\sum_{n=1}^\infty 2^n z^{n-1}-\sum_{n=1}^\infty z^{n-1}\\
 		&\visible<+->{=\frac2{1-2z}-\frac1{1-z}=\frac1{(1-2z)(1-z)}.}
 		\end{align*}}
-		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -294,7 +291,6 @@
 		\[\int_0^z\sum_{n=0}^\infty(n+1)z^n\diff z=\sum_{n=0}^\infty z^{n+1}=\frac z{1-z}=-1-\frac1{z-1},\]
 	}\onslide<+->{因此
 		\[\sum_{n=0}^\infty(n+1)z^n=\left(-\frac1{z-1}\right)'=\frac1{(z-1)^2},\quad |z|<1.\]}
-	\vspace{-\baselineskip}
 \end{solution}
 \end{frame}
 
@@ -328,7 +324,6 @@
 		&=\oint_{|z|=\half }\frac1z\diff z+\oint_{|z|=\half }\left(\sum_{n=0}^\infty z^n\right)\diff z\\
 		&\visible<+->{=2\pi i+0=2\pi i.}
 	\end{align*}}
-	\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 

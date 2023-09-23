@@ -154,12 +154,12 @@
 
 
 \begin{frame}{典型例题: 泰勒展开的计算}
-	\beqskip{4pt}
 	\onslide<+->
 	\begin{example}
 		由于 $(e^z)^{(n)}(0)=e^z|_{z=0}=1$,
 		\onslide<+->{因此
 		\[\emph{e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
+		\vspace{-.6\baselineskip}
 	\end{example}
 
 	\onslide<+->
@@ -169,8 +169,8 @@
 			\[(\cos z)^{(2n+1)}(0)=0,\quad (\cos z)^{(2n)}(0)=(-1)^n,\]
 		}\onslide<+->{因此
 			\[\emph{\cos z=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}+\cdots=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!},\quad\forall z.}\]}
+			\vspace{-.6\baselineskip}
 	\end{example}
-	\endgroup
 \end{frame}
 
 
@@ -203,13 +203,11 @@
 		\emph{(1+z)^\alpha}&\emph{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
 		&\emph{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
 	\end{align*}}
-	\vspace{-\baselineskip}
 	\end{example}
 \end{frame}
 
 
 \begin{frame}{典型例题: 泰勒展开的计算}
-	\beqskip{2pt}
 	\onslide<+->
 	\begin{example}
 	将对数函数的主值 $\ln(1+z)$ 展开成 $z$ 的幂级数.
@@ -217,8 +215,8 @@
 	\onslide<+->
 	\begin{solution}
 	由于 $\ln(1+z)$ 在去掉射线 $z=x\le-1$ 的区域内解析,
-	\onslide<+->{因此它在 $|z|<1$ 内解析.
-	}\onslide<+->{此时
+	\onslide<+->{因此它在 $|z|<1$ 内解析,
+	}\onslide<+->{且
 		\[[\ln(1+z)]'=\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\quad|z|<1.\]
 	}\onslide<+->{逐项积分得到
 	\begin{align*}
@@ -227,13 +225,12 @@
 	&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
 		\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.}
 	\end{align*}}
+	\vspace{-\baselineskip}
 	\end{solution}
-	\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 泰勒展开的计算}
-	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
 		将 $\dfrac1{(1+z)^2}$ 展开成 $z$ 的幂级数.
@@ -245,13 +242,14 @@
 		\onslide<+->{由于
 			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
 		}\onslide<+->{因此
-			\begin{align*}
-			\frac1{(1+z)^2}&=-\left(\frac1{1+z}\right)'\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}\\
-			&\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}
-			\end{align*}}
-		\vspace{-2pt}
+			\[
+			\frac1{(1+z)^2}=-\left(\frac1{1+z}\right)'
+			\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}
+			\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}
+			\]
+		}
+		\vspace{-\baselineskip}
 	\end{solution}
-	\endgroup
 \end{frame}
 
 

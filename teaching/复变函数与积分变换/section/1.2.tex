@@ -104,8 +104,8 @@
 			\begin{subfigure}{0.35\textwidth}
 			\centering\onslide<4->
 			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<4->] (-0.3,0)--(3,0);
-				\draw[cstaxis,visible on=<4->] (0,-0.3)--(0,1.5);
+				\draw[cstaxis,visible on=<4->] (-1,0)--(3,0);
+				\draw[cstaxis,visible on=<4->] (0,-1)--(0,2);
 				\draw[cstcurve,dcolorc,visible on=<4->] (1.6,0)--(0,0);
 				\draw[cstcurve,dcolorb,visible on=<4->] (1.6,0)--(1.6,1.2);
 				\draw[cstcurve,dcolora,visible on=<4->] (1.6,1.2)--(0,0);
@@ -122,7 +122,7 @@
 			\begin{subfigure}{0.55\textwidth}
 			\centering\onslide<5->
 			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<5->] (-0.5,0)--(3,0);
+				\draw[cstaxis,visible on=<5->] (-2,0)--(3,0);
 				\draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
 				\draw[cstcurve,cstarrowto,dcolora,visible on=<5->] (0,0)--(1.6,-0.4);
 				\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on=<5->] (1.6,-0.4)--(0,0);
@@ -167,7 +167,6 @@
 		}\onslide<+->{因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.}
 
 		\onslide<+->{\enumnum2 因为
-		\vspace{-0.6\baselineskip}
 		\begin{align*}
 			\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
 			\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
@@ -230,12 +229,11 @@
 	\end{solution}
 	\onslide<+->
 		\begin{proofblock}{另解}
-		\vspace{-\baselineskip}
-		\begin{align*}
-		z&=\sin\frac\pi5+i\cos\frac\pi5
-		\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}\\
-		&\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
-		\end{align*}
+		\[
+		z=\sin\frac\pi5+i\cos\frac\pi5
+		\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}
+		\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
+		\]
 	\end{proofblock}
 \end{frame}
 
@@ -263,7 +261,6 @@
 	\onslide<+->
 	\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
 	\onslide<+->
-	\vspace{-0.5\baselineskip}
 	\begin{center}
 			\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-1.5,0)--(2.5,0);
@@ -286,15 +283,8 @@
 			(-1.1,1.7) node[dcolora] {$e^{i\theta}$};
 		\end{tikzpicture}
 	\end{center}
-	\vspace{-0.3\baselineskip}
-
 	\onslide<+->
 	\begin{example}
-		\[z=1-\cos\alpha+i\sin \alpha
-		\visible<+->{=e^0+e^{(\pi-\alpha)i}}
-		\visible<+->{=2\cos\frac{\pi-\alpha}2 e^{\frac{\pi-\alpha}2i}}
-		\visible<+->{=2\sin\frac\alpha2 e^{\frac{\pi-\alpha}2i}.}
-		\]
-		\vspace{-.5\baselineskip}
+		如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 e^{\frac{\theta i}2}$.
 	\end{example}
 \end{frame}

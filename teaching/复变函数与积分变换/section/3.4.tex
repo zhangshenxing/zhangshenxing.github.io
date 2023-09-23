@@ -73,7 +73,6 @@
 		\onslide<+->{取 $f(z)=\sin z, z_0=0$ 并应用柯西积分公式得
 			\[\oint_{|z|=4}\frac{\sin z}z\diff z
 			=2\pi i \sin z|_{z=0}=0.\]}
-		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -100,7 +99,6 @@
 
 
 \begin{frame}{典型例题: 柯西积分公式的应用}
-	\beqskip{6pt}
 	\onslide<+->
 	\begin{example}
 		设 $f(z)=\displaystyle\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta$, 求 $f'(1+i)$.
@@ -118,15 +116,12 @@
 			\[f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.\]}
 		\vspace{-\baselineskip}
 	\end{solution}
-
 	\onslide<+->
 	注意当 $|z|>\sqrt3$ 时, $f(z)\equiv0$.
-	\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 柯西积分公式的应用}
-	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z$.
@@ -159,9 +154,8 @@
 				(1.2,-.8) node[dcolora,visible on=<3->] {$C_2$}
 				(-1.2,-.8) node[dcolora,visible on=<3->] {$C_3$};
 		\end{tikzpicture}\end{tikzpicture}
-		\vspace{-7\baselineskip}
+		\vspace{-7.7\baselineskip}
 	\end{solution}
-	\endgroup
 \end{frame}
 
 
@@ -212,7 +206,6 @@
 		\onslide<+->{由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $|f(z)|\le M$.
 		}\onslide<+->{注意到 $z\in C$, $|z-z_0|\ge \delta$, $|z-z_0-h|\ge\delta-|h|$.
 		}\onslide<+->{由长大不等式,
-			\vspace{-0.3\baselineskip}
 			\[\abs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\diff z}\le\frac{M|h|}{\delta^2(\delta-|h|)}\cdot L,\]
 		其中 $L$ 是闭路 $C$ 的长度.
 		}\onslide<+->{当 $h\to0$ 时, 它的极限为 $0$, 因此 $n=1$ 情形得证.}
@@ -242,7 +235,6 @@
 			=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}
 			\visible<+->{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
 			\]}
-		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -278,10 +270,9 @@
 
 		\onslide<+->{类似地, $\displaystyle\oint_{C_2}\frac{e^z}{(z^2+1)^2}\diff z=\frac{-(1+i)e^{-i}\pi}2$.
 		}\onslide<+->{故
-			\[\resizet{1.2}{$\displaystyle\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
+			\[\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
 			=\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2
-			=\pi i(\sin1-\cos1).$}\]}
-		\vspace{-.5\baselineskip}
+			=\pi i(\sin1-\cos1).\]}
 	\end{solutionc}
 \end{frame}
 
@@ -302,7 +293,6 @@
 			\[\oint_{|z|=1}z^ne^z\diff z
 			=\frac{2\pi i}{(-n-1)!}(e^z)^{(-n-1)}\big|_{z=0}
 			=\frac{2\pi i}{(-n-1)!}.\]}
-		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -335,7 +325,6 @@
 			&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z\\
 			&\visible<+->{=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.}
 			\end{align*}}
-			\vspace{-.5\baselineskip}
 	\end{solutionc}
 
 	\onslide<+->
