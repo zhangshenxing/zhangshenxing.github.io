@@ -175,7 +175,7 @@
 \begin{frame}{典型例题: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
-	求 $\Ln(-2+3i),\Ln(3-\sqrt3 i),\Ln(-3)$.
+	求 $\Ln(-2+3i),\Ln(3-\sqrt3 i)$.
 	\end{example}
 
 	\onslide<+->
@@ -188,8 +188,8 @@
 
 			\onslide<+->{$\displaystyle=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
 			=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ$.}
-			\item $\Ln(-3)=\ln(-3)+i\Arg(-3)$
-			\onslide<+->{$=\ln3+(2k+1)\pi i,\quad k\in\BZ.$}
+			% \item $\Ln(-3)=\ln(-3)+i\Arg(-3)$
+			% \onslide<+->{$=\ln3+(2k+1)\pi i,\quad k\in\BZ.$}
 		\end{enumerate}
 	\end{solution}
 \end{frame}
@@ -238,12 +238,10 @@
 	设 $z_0=-x<0$ 是负实数.
 	\onslide<+->
 	由于
-	\[\lim_{y\to0^+}\ln (-x+yi)=\ln x+\pi,\quad
-	\lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi,\]
+	\[\lim_{y\to0^+}\ln (-x+yi)=\ln x+\pi i,\quad
+	\lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi i,\]
 	\onslide<+->
 	因此 $\ln z$ 在负实轴和零处不连续.
-	\onslide<+->
-	实际上, $\lim\limits_{z\to 0}\ln z=\infty$.
 
 	\onslide<+->
 	而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
@@ -251,6 +249,9 @@
 	从而
 	\[\alert{(\ln z)'=\frac 1z},\]
 	\alert{$\ln z$ 在除负实轴和零处的区域解析}.
+
+	\onslide<+->
+	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数.
 \end{frame}
 
 
@@ -351,7 +352,7 @@
 \end{frame}
 
 
-\begin{frame}[<*>]{典型例题: 幂函数的计算}
+\begin{frame}{典型例题: 幂函数的计算}
 	\onslide<+->
 	\begin{example}
 		求 $1^{\sqrt 2}$ 和 $i^i$.
@@ -388,28 +389,7 @@
 	\[\alert{(z^a)'}=\left(e^{a\ln z}\right)'=\frac{ae^{a\ln z}}z=\alert{az^{a-1}}.\]
 
 	\onslide<+->
-	对于整数 $n$, 我们总有 \emph{$(z^a)^n=z^{an}$}.
-	\onslide<+->
-	这里换成主值也成立.
-	\onslide<+->
-	而 \emph{$z^a\cdot z^b=z^{a+b}$ 仅对主值总成立}.
-\end{frame}
-
-
-\begin{frame}{幂函数的性质}
-	\onslide<+->
-	我们来看 $\Ln z^a=a\Ln z$ 何时成立.
-	\onslide<+->
-	由于
-	\begin{align*}
-		\Ln z^a&=\Ln e^{a\Ln z}=a\Ln z+2\ell \pi i\\
-		&=a\ln z+(ak+\ell)\cdot 2\pi i,\quad k,\ell\in\BZ,\\
-		\visible<+->{a\Ln z}&\visible<.->{=a\ln z+(ak)\cdot 2\pi i,\quad k\in\BZ}.
-	\end{align*}
-	\onslide<+->
-	因此\emph{当且仅当 $a=\pm\dfrac 1n,n\in\BZ$ 时, $\Ln z^a=a\Ln z$} 成立.
-	\onslide<+->
-	对于除此之外的 $a$, 该式子均不成立.
+	一般而言, $z^a\cdot z^b=z^{a+b}$ 和 $(z^a)^b=z^{ab}$ 都是不成立的.
 
 	\onslide<+->
 	最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
@@ -429,7 +409,7 @@
 	我们知道
 	\[\cos x=\frac{e^{ix}+e^{-ix}}2,\quad
 	\sin x=\frac{e^{ix}-e^{-ix}}{2i}\]
-	对于任意实数 $y$ 成立,
+	对于任意实数 $x$ 成立,
 	\onslide<+->
 	我们将其推广到复数情形.
 	\onslide<+->
@@ -448,16 +428,12 @@
 \begin{frame}{三角函数的性质}
 	\onslide<+->
 	不难得到
-	\begin{align*}
-		\cos(x+iy)&=\cos x \ch y-i\sin x\sh y,\\
-		\visible<+->{\sin(x+iy)}&
-		\visible<.->{=\sin x\ch y+i\cos x\sh y,}
-	\end{align*}
+	\[
+		\cos(iy)=\dfrac{e^y+e^{-y}}2,\qquad
+		\visible<+->{\sin(iy)=i\dfrac{e^y-e^{-y}}2.}
+	\]
 	\onslide<+->
-	其中 $\ch y=\dfrac{e^y+e^{-y}}2=\cos{iy}$, $\sh y=\dfrac{e^y-e^{-y}}2=-i\sin{iy}$.
-
-	\onslide<+->
-	当 $y\to\infty$ 时, $\sin iy=i\sh y$ 和 $\cos iy=\ch y$ 都 $\to\infty$.
+	当 $y\to\infty$ 时, $\cos(iy)$ 和 $\sin(iy)$ 都 $\to\infty$.
 	\onslide<+->
 	因此 \alert{$\sin z$ 和 $\cos z$ 并不有界}. 
 	\onslide<+->
@@ -533,8 +509,8 @@
 	\onslide<+->
 	同理, 我们有:
 	\begin{itemize}
-		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{z^2-1})$
-		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}$
+		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$
+		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$
 		\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$
 		\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$
 		\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}$.
