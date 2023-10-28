@@ -80,6 +80,32 @@
 \end{frame}
 
 
+\begin{frame}{柯西-黎曼方程的等价形式\noexer}
+	\onslide<+->
+	注意到 $x=\dfrac12z+\dfrac12\ov z,y=-\dfrac i2z+\dfrac i2\ov z$.
+	\onslide<+->
+	仿照着二元实函数偏导数在变量替换下的变换规则, 我们定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
+	\[\left\{
+	\begin{aligned}
+		\frac{\partial f}{\partial z}&
+	=\frac{\partial x}{\partial z}\frac{\partial f}{\partial x}
+		+\frac{\partial y}{\partial z}\frac{\partial f}{\partial y}
+	=\frac12\frac{\partial f}{\partial x}-\frac i2\frac{\partial f}{\partial y},\\
+		\frac{\partial f}{\partial \ov z}&
+	=\frac{\partial x}{\partial \ov z}\frac{\partial f}{\partial x}
+		+\frac{\partial y}{\partial \ov z}\frac{\partial f}{\partial y}
+	=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}.
+	\end{aligned}\right.\]
+	\onslide<+->
+	如果把 $z,\ov z$ 看成独立变量, 那么当 $f$ 在 $z$ 处可导时,
+	$\diff f=f'\diff z$.
+	当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微),
+	\[\diff f=\frac{\partial f}{\partial z}\diff z+\frac{\partial f}{\partial \ov z}\diff\ov z.\]
+	\onslide<+->
+	所以 \alert{$f$ 在 $z$ 处可导当且仅当 $u,v$ 可微且 $\dfrac{\partial f}{\partial \ov z}=0$.}
+\end{frame}
+
+
 \begin{frame}{可导的充分性条件}
 	\onslide<+->
 	由于二元函数的偏导数均连续蕴含可微, 因此我们有:
@@ -110,6 +136,8 @@
 		\end{align*}
 		\onslide<+->{因为 $u_x=1\neq v_y=-1$, 所以该函数处处不可导, 处处不解析.}
 	\end{solution}
+	\onslide<+->
+	或由 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
 \end{frame}
 
 
@@ -131,6 +159,8 @@
 		}\onslide<+->{因此该函数只在 $0$ 可导, 处处不解析且
 			\[f'(0)=u_x(0)+iv_x(0)=0.\]}
 	\end{solution}
+	\onslide<+->
+	或由 $f=\half z(z+\ov z), \dfrac{\partial f}{\partial \ov z}=\half z$ 看出.
 \end{frame}
 
 

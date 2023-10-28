@@ -297,13 +297,26 @@
 
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
 	\onslide<+->
+	事实上, 如果幂级数的系数形如
+	\[c_n=p_1(n)\lambda_1^n+\cdots+p_k(n)\lambda_k^n,\]
+	其中 $p_j$ 是次数为 $m_j-1$ 的多项式.
+	\onslide<+->
+	则和函数一定是形如
+	\[\sum_{n=0}^{\infty}c_nz^n
+	=\frac{P(z)}{(1-\lambda_1z)^{m_1}\cdots(1-\lambda_kz)^{m_k}}\]
+	的有理函数.
+	\onslide<+->
+	反过来这样的分式展开成幂级数的系数也一定有上述形式, 至多有有限多项例外.
+	\onslide<+->
+	这可以帮助我们进行计算的验证.
+	\onslide<+->
 	\begin{exercise}
 		求幂级数 $\suml_{n=1}^\infty\dfrac{z^n}n$ 的收敛半径与和函数.
 	\end{exercise}
 
 	\onslide<+->
 	\begin{answer}
-		收敛半径为 $1$, 和函数为 $\ln(1-z)$.
+		收敛半径为 $1$, 和函数为 $-\ln(1-z)$.
 	\end{answer}
 \end{frame}
 

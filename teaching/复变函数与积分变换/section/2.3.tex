@@ -235,10 +235,10 @@
 
 \begin{frame}{对数函数的导数}
 	\onslide<+->
-	设 $z_0=-x<0$ 是负实数.
+	设 $x$ 是正实数, 
 	\onslide<+->
-	由于
-	\[\lim_{y\to0^+}\ln (-x+yi)=\ln x+\pi i,\quad
+	则
+	\[\ln (-x)=\ln x+\pi i,\quad
 	\lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi i,\]
 	\onslide<+->
 	因此 $\ln z$ 在负实轴和零处不连续.
@@ -247,11 +247,16 @@
 	而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
 	\onslide<+->
 	从而
-	\[\alert{(\ln z)'=\frac 1z},\]
+	\alert{$(\ln z)'=\dfrac 1z$},
 	\alert{$\ln z$ 在除负实轴和零处的区域解析}.
 
 	\onslide<+->
-	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数.
+	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数: 当 $x>0$ 时,
+	\[\ln z=\half \ln(x^2+y^2)+i\arctan \frac yx,\]
+	\onslide<+->
+	\[u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},\]
+	\[(\ln z)'=(x-yi)/(x^2+y^2)=\frac 1z.\]
+	其它情形类似.
 \end{frame}
 
 
@@ -268,9 +273,6 @@
 		\end{enumerate}
 		\vspace{-\baselineskip}
 	\end{alertblock}
-
-	\onslide<+->
-	当 $a\ge 0$ 是非负实数时, 我们约定 $0^a=0$.
 \end{frame}
 
 
@@ -509,11 +511,11 @@
 	\onslide<+->
 	同理, 我们有:
 	\begin{itemize}
-		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$
-		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$
-		\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$
-		\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$
-		\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}$.
+		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
+		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
+		\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$;
+		\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
+		\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
 	\end{itemize}
 \end{frame}
 
@@ -534,5 +536,10 @@
 		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 	\vspace{-\baselineskip}
 	\end{solution}
+	\onslide<+->
+	我们总有形式
+	$\Arcsin z=(2k+\half)\pi\pm \theta$,
+	$\Arccos z=2k\pi\pm \theta$,
+	$\Arctan z=k\pi+\theta$.
 \end{frame}
 

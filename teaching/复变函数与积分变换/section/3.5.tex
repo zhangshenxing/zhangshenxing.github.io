@@ -108,11 +108,19 @@
 			f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
 			\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
 		\]}
-		\vspace{-\baselineskip}
 	\end{solution*}
+\end{frame}
 
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
-	也可由 $f'(z)=u_x-iu_y=3iz^2$ 得 $f(z)=iz^3+C$.
+	当解析函数 $f(z)$ 为 $x,y$ 的多项式形式时, 将 $m$ 次齐次的项放一起, 则 $x^m$ 的系数就是 $f(z)$ 中 $z^m$ 的系数.
+	\onslide<+->
+	也可由另一方法得出.
+	\onslide<+->
+	\[f'(z)=u_x-iu_y=-6xy-i(3y^2-3x^2)=3iz^2.\]
+	\onslide<+->
+	因此 $f(z)=iz^3+C$.
 \end{frame}
 
 
@@ -147,21 +155,21 @@
 		\end{align*}
 	\end{solutionc}
 	\onslide<+->
+	这里, 我们只需看 $e^x\cos y$ 的系数 $x+iy=z$, 即 $f(z)$ 中 $e^z$ 的系数.
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
 	也可由
-	\vspace{-.5\baselineskip}
 	\begin{align*}
 		f'(z)&=v_y+iv_x\\
 		&=e^x(\cos y-y\sin y+x\cos y)+1
 		+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]\\
 		&\visible<+->{=(z+1)e^z+1+i.}
 	\end{align*}
-	\vspace{-.5\baselineskip}
 	\onslide<+->
 	得 $f(z)=ze^z+(1+i)z+C$.
-\end{frame}
-
-
-\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
 	\begin{exercise}
 		证明 $u(x,y)=x^3-6x^2y-3xy^2+2y^3$ 是调和函数并求它的共轭调和函数.
@@ -171,5 +179,7 @@
 	\begin{answer}
 		$v(x,y)=2x^3+3x^2y-6xy^2-y^3+C$.
 	\end{answer}
+	\onslide<+->
+	显然 $u+iv=(1+2i)z^3+iC$.
 \end{frame}
 
