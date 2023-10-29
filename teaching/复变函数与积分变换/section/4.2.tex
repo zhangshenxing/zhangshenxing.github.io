@@ -297,14 +297,26 @@
 
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
 	\onslide<+->
-	事实上, 如果幂级数的系数形如
+	通过对
+	\[1+\lambda z+\lambda^2 z^2+\cdots=\dfrac1{1-\lambda z}\]
+	两边求 $k$ 阶导数可得
+	\[\sum_{n=0}^{\infty}(n+k)\cdots(n+2)(n+1)\lambda^n z^n=\frac{k!}{(1-\lambda z)^{k+1}}.\]
+	\onslide<+->
+	因此如果 $p(n)$ 是次数为 $m-1$ 的多项式, 那么
+	\[\sum_{n=0}^\infty p(n)\lambda^n z^n=\frac{P(z)}{(1-\lambda z)^{m}},\]
+	其中 $P$ 是多项式.
+\end{frame}
+
+
+\begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\onslide<+->
+	一般地, 如果幂级数的系数形如
 	\[c_n=p_1(n)\lambda_1^n+\cdots+p_k(n)\lambda_k^n,\]
-	其中 $p_j$ 是次数为 $m_j-1$ 的多项式.
 	\onslide<+->
 	则和函数一定是形如
 	\[\sum_{n=0}^{\infty}c_nz^n
 	=\frac{P(z)}{(1-\lambda_1z)^{m_1}\cdots(1-\lambda_kz)^{m_k}}\]
-	的有理函数.
+	的有理函数,	其中 $m_j=\deg p_j+1$.
 	\onslide<+->
 	反过来这样的分式展开成幂级数的系数也一定有上述形式, 至多有有限多项例外.
 	\onslide<+->

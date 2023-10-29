@@ -67,6 +67,10 @@
 	由格林公式和C-R方程可知
 	\[\oint_Cf(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
 	+i\iint_D(u_x-v_y)\diff x\diff y=0.\]
+	\onslide<+->
+	也可以从
+	\[\oint_Cf(z)\diff z=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z=2i\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y=0\]
+	看出.
 \end{frame}
 
 
@@ -106,15 +110,16 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
-		\onslide<+->{因此由柯西-古萨基本定理
-		\vspace{-.5\baselineskip}
-			\[\oint_{|z|=1}\frac1{2z-3}\diff z=0.\]}
-		\vspace{-.5\baselineskip}
+		\onslide<+->{因此由柯西-古萨基本定理 $\displaystyle \oint_{|z|=1}\frac1{2z-3}\diff z=0$.}
 	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}
 		求 $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblank{\visible<+->{$0$}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{exercise}
+		求 $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblank{\visible<+->{$0$}}.
 	\end{exercise}
 \end{frame}
 
@@ -130,11 +135,9 @@
 		注意到 $\dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\left(\dfrac1{z+i}+\dfrac1{z-i}\right)$.
 		\onslide<+->{由于 $\dfrac1z,\dfrac1{z+i}$ 在 $|z-i|\le\dfrac12$ 上解析,
 		}\onslide<+->{因此由柯西-古萨基本定理
-			\vspace{-0.5\baselineskip}
 			\[\oint_C\frac1z\diff z
 			=\oint_C\frac1{z+i}\diff z=0,\]
 		}\onslide<+->{
-			\vspace{-0.5\baselineskip}
 			\[\oint_C\frac1{z(z^2+1)}\diff z
 			=-\half\oint_C\frac1{z-i}\diff z=-\pi i.\]}
 	\end{solution}
@@ -250,6 +253,59 @@
 		\end{center}
 		\vspace{-\baselineskip}
 	\end{proof}
+\end{frame}
+
+
+\begin{frame}{复合闭路定理: 注记}
+	\onslide<+->
+	在实际应用中, 如果被积函数 $f(z)$ 在闭路 $C$ 的内部有有限多个奇点 $z_1,\dots,z_k$.
+	\onslide<+->
+	那么我们可以在 $C$ 内部构造闭路 $C_1,\dots,C_k$, 使得每个 $C_j$ 内部只包含一个奇点 $z_j$.
+	\onslide<+->
+	这样, 内部含多个奇点的情形就可以化成内部只含一个奇点的情形. 最后将这些闭路上的积分相加即可.
+	\onslide<1->
+	\begin{center}
+		\begin{tikzpicture}[framed]
+			\draw[cstcurve,dcolora] (0,0) circle(2.2 and 1.2);
+			\draw[cstcurve,dcolorb] (1,0) circle(0.4);
+			\draw[cstcurve,dcolorb] (0,0) circle(0.4);
+			\draw[cstcurve,dcolorb] (-1,0) circle(0.4);
+			\fill[cstdot,dcolorb,visible on=<2->] (1,0) circle;
+			\fill[cstdot,dcolorb,visible on=<2->] (0,0) circle;
+			\fill[cstdot,dcolorb,visible on=<2->] (-1,0) circle;
+			\draw
+				(-1,-0.25) node[dcolorb] {$z_1$}
+				(0,-0.25) node[dcolorb] {$z_2$}
+				(1,-0.25) node[dcolorb] {$z_3$}
+				(1.8,1.1) node[dcolora] {$C_0$}
+				(-1,0.65) node[dcolorb,visible on=<2->] {$C_1$}
+				(0,0.65) node[dcolorb,visible on=<2->] {$C_2$}
+				(1,0.65) node[dcolorb,visible on=<2->] {$C_3$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{复合闭路定理: 注记}
+	\onslide<+->
+	此外, 从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
+	\onslide<+->
+	因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
+	\onslide<1->
+	\begin{center}
+		\begin{tikzpicture}[framed]
+			\draw[cstcurve,dcolora] (0,0) circle(2.2 and 1.2);
+			\draw[cstcurve,dcolorc] (0,0) circle(1.2 and 2.2);
+			\draw[cstcurve,dcolorb,visible on=<2->] (0,0) circle(1);
+			\fill[cstdot,dcolorb] (.7,0.2) circle;
+			\fill[cstdot,dcolorb] (0,-0.4) circle;
+			\fill[cstdot,dcolorb] (-.5,0.1) circle;
+			\draw
+				(1.8,1.1) node[dcolora] {$C_1$}
+				(-1.1,1.8) node[dcolorc] {$C_2$}
+				(-.4,0.65) node[dcolorb,visible on=<2->] {$C'$};
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 

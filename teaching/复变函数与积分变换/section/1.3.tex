@@ -25,7 +25,7 @@
 	\[\alert{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
 	\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 	\onslide<+->
-	关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.
+	\emph{关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.}
 	\onslide<+->
 	例如此处关于辐角的等式的含义是:
 	\[\Arg(z_1z_2)=\set{\theta_1+\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
@@ -42,12 +42,11 @@
 	\onslide<+->
 	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 	\onslide<+->
-	例如
-	\[\exp(0.99\pi i)\times \exp(0.99\pi i)=\exp(1.98\pi i),\]
+	例如 $z_1=z_2=e^{0.99\pi i}$, $z_1z_2=e^{1.98\pi i}$,
 	\onslide<+->
-	\[\arg \exp(0.99\pi i)+\arg \exp(0.99\pi i)=0.99\pi+0.99\pi=1.98\pi,\]
+	\[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\]
 	\onslide<+->
-	\[\arg\exp(1.98\pi i)=-0.02\pi.\]
+	\[\arg(z_1z_2)=-0.02\pi.\]
 \end{frame}
 
 
@@ -139,6 +138,54 @@
 		}
 	\end{solutionc}
 \end{frame}
+
+\begin{frame}{例题: 复数解决平面几何问题}
+	\onslide<+->
+	\begin{example}
+		设 $AD$ 是 $\triangle ABC$ 的角平分线, 证明 $\dfrac{AB}{AC}=\dfrac{DB}{DC}$.
+	\end{example}
+
+	\onslide<+->
+	\begin{proofs}
+		不妨设 $A=0,B=z,C=1$.
+		则 $D=(1-\lambda)z+\lambda$, 其中 $\lambda=\dfrac{DB}{BC}\in(0,1)$.
+		\begin{center}
+			\begin{tikzpicture}[framed]
+				\draw[cstaxis] (-0.3,0)--(2.8,0);
+				\draw[cstaxis] (0,-.4)--(0,1.4);
+				\draw[cstcurve,dcolorb] (0,0)--(2.094,0.798);
+				\draw[cstcurve,dcolorb] (0,0)--(2,1.5)--(2.2,0)--cycle;
+				\draw 
+				(-0.2,-0.2) node[dcolora] {$A$}
+				(2.6,1.5) node[dcolora] {$B=z$}
+				(2.2,-0.3) node[dcolora] {$C=1$}
+				(2.4,0.8) node[dcolora] {$D$};
+			\end{tikzpicture}
+		\end{center}
+	\end{proofs}
+\end{frame}
+
+
+\begin{frame}{例题: 复数解决平面几何问题}
+	\onslide<+->
+	\begin{proofc}
+		由于 $\angle BAD=\angle DAC$, 因此 $\dfrac{z}{(1-\lambda)z+\lambda}$ 是 $\dfrac{(1-\lambda)z+\lambda}{1}$ 的正实数倍.
+		\onslide<+->{
+			即
+			\[\dfrac{((1-\lambda)z+\lambda)^2}{z}=(1-\lambda)^2z+\dfrac{\lambda^2}z+2\lambda(1-\lambda)\in\BR.\]
+		}\onslide<+->{
+			从而
+			\[(1-\lambda)^2z+\dfrac{\lambda^2}z=(1-\lambda)^2\ov z+\dfrac{\lambda^2}{\ov z},\qquad
+			((1-\lambda)^2|z|^2-\lambda^2)(z-\ov z)=0.\]
+		}\onslide<+->{
+			显然 $z\neq \ov z$. 又因为 $0<\lambda<1$, 故
+			\[\frac{AB}{AC}=|z|=\frac{\lambda}{1-\lambda}
+			=\frac{DB}{BC-DB}=\frac{DB}{DC}.\qedhere\]
+		}
+		\vspace{-\baselineskip}
+	\end{proofc}
+\end{frame}
+
 
 
 \subsection{复数的乘幂}

@@ -332,7 +332,6 @@
 
 
 \begin{frame}{洛朗级数的特点\noexer}
-	\onslide<+->
 	洛朗展开的一些特点可以帮助我们检验计算的正确性.
 	\begin{itemize}
 		\item  若 $f(z)$ 在 $|z-z_0|<R_2$ 内\emph{解析},
@@ -344,21 +343,34 @@
 		因此\emph{此时洛朗展开一定没有负幂次项}.
 		\item 若 $f(z)$ 在圆周 $|z-z_0|=R_1,R_2>0$ 上\emph{有奇点}, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开\emph{一定有无穷多负幂次和无穷多正幂次项}.
 		\item 有理函数在 $0<|z-z_0|<r$ 洛朗展开\emph{最多只有有限多负幂次项}, 在 $R<|z-z_0|<+\infty$ 洛朗展开\emph{最多只有有限多正幂次项}.
-		\item 有理函数在不同圆环域上的洛朗展开{\itshape 形式地相减}, 系数会有\emph{共同的通项形式} (形如 $\dfrac{P(n)}{\lambda^n}$ 的组合, 其中 $\lambda$ 是奇点, $P(n)$ 是多项式).
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
-	例如 $f(z)=\dfrac{z^3-2z^2-z+3}{(z-1)(z-2)}=z+1+\dfrac1{z-2}-\dfrac1{z-1}$,
-	\[f(z)=-\sum_{n<0}z^n+\half +\frac34z-\sum_{n\ge 2}2^{-n-1}z^n,\quad 1<|z|<2.\]
+	如果有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内解析, 那么它的洛朗展开一定形如
+	\[f(z)=P(z)+\sum_{n\ge 0}a_n z^n+\sum_{n<0}b_n z^n,\]
+	其中 $P(z)$ 只有有限多项, 
 	\onslide<+->
-	每个系数加 $1$ 得到
-	\[f(z)=\frac32+\frac74z+\sum_{n\ge 2}(1-2^{-n-1})z^n,\quad 0<|z|<1,\]
+	$a_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $|\lambda|\ge R$ 是奇点, $\deg p+1$ 是 $\lambda$ 在 $f(z)$ 出现的重数; 而 $b_n$ 则是 $|\lambda|\le r$ 的那个奇点对应的组合.
+
 	\onslide<+->
-	每个系数加 $2^{-n-1}$ 得到
-	\[f(z)=\sum_{n<0}(2^{-n-1}-1)z^n+1+z,\quad |z|>2.\]
+	不仅如此, 在不同的圆环域不同圆环域上的洛朗展开{\itshape 形式地相减}, 系数会有\emph{共同的通项形式}.
+\end{frame}
+
+
+\begin{frame}{洛朗级数的特点\noexer}
+	\onslide<+->
+	例如在 $0<|z|<1$ 内,
+	\[f(z)=\frac{120}{(z-1)(z^2-4)(z^2-9)}=\sum_{n\ge 0}\left(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n.\]
+	\onslide<+->
+	那么在 $2<|z|<3$ 内洛朗展开的系数就是上面的每个系数(不论正负 $n$)减去一个共同形式的项, 使得其非负幂次通项对应那些奇点 $|\lambda|\ge 3$, 而负幂次通项对应那些奇点 $|\lambda|\le2$.
+	\onslide<+->
+	故
+	\[f(z)=\sum_{n\ge 0}\left(-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n+\sum_{n\le-1}\left(5-\frac2{(-2)^{n+1}}-\frac6{2^{n+1}}\right)z^n.\]
+	\onslide<+->
+	其证明可见\alert{\href{https://zhangshenxing.gitee.io/teaching/publications/袁志杰张神星2023 复变函数在不同圆环域内洛朗展开的联系}{复变函数在不同圆环域内洛朗展开的联系}}一文.
 \end{frame}
 
 
@@ -398,7 +410,7 @@
 	\onslide<+->
 	因此洛朗展开可以用来帮助计算函数的积分,
 	\onslide<+->
-	它就是所谓的\alert{留数}.
+	这便引出了\alert{留数}的概念.
 \end{frame}
 
 
