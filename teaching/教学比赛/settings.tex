@@ -1,0 +1,152 @@
+\usetheme{bamboo}
+\setbeamertemplate{footline}[simple]
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{color,calc}
+\usepackage{caption}
+\usepackage{subcaption}
+\input{symbols}
+\usebeamercolor{structure}
+\colorlet{heavyb}{structure.fg!80}
+\colorlet{lightb}{structure.fg!15}
+\usebeamercolor{example text}
+\colorlet{heavyg}{example text.fg!80}
+\colorlet{lightg}{example text.fg!15}
+\usebeamercolor{alerted text}
+\colorlet{heavyr}{alerted text.fg!80}
+\colorlet{lightr}{alerted text.fg!20}
+% 表格色
+\newcommand\defaultrowcolors{\rowcolors{1}{lightb}{lightb}}
+\newcommand\tht{\cellcolor{heavyb}\color{white}}
+% 文本色
+\usebeamercolor{structure}
+\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
+\newcommand\abox[1]{\colorbox{yellow}{\alert{#1}}}
+\newcommand\aboxeq[1]{\abox{$\displaystyle #1$}}
+% 图形色
+\colorlet{dcolora}{red}
+\colorlet{dcolorb}{blue}
+\colorlet{dcolorc}{red!50!blue}
+\colorlet{dcolord}{green!50!black}
+\colorlet{dcolore}{orange}
+% 非考试内容
+\newcommand{\noexer}{\hfill\mdseries\itshape\color{black}\small 非考试内容}
+% 枚举数字引用标志
+\newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
+\newcommand\enumnumhk[1]{{
+	\usebeamercolor[fg]{enumerate subitem}%
+	\begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+		\pgfusepath{stroke}
+		\pgftext[base]{\color{fg}#1}
+	\end{pgfpicture}%
+}}
+% 缩进
+\renewcommand{\indent}{\hspace*{1em}}
+\setlength{\parindent}{1em}
+\newcommand\mqed{\visible<.->{\qedsymbol}} % 手动证毕标志
+\newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
+\NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}} % 减少列表公式后的多余空白
+\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1} % 减少公式垂直间距, 配合\endgroup
+% 选择题, 根据选项内容长度自动排版
+\newlength{\ltemp}\newlength{\lxxmax}\newlength{\lquar}\newlength{\lhalf}\newlength{\lfull}
+\newcounter{lxxtype}
+\NewDocumentCommand\xx{O{0} m m m m}{%
+	\setlength{\lfull}{\columnwidth}%
+	\addtolength{\lfull}{-\leftmargin}%
+	\setlength{\lhalf}{0.5\lfull}%
+	\setlength{\lquar}{0.25\lfull}%
+	\setcounter{lxxtype}{0}%
+	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
+	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
+	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
+	\settowidth{\lxxmax}{(A)~#2~}% 获取最长选项长度
+	\settowidth{\ltemp}{(B)~#3~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\settowidth{\ltemp}{(C)~#4~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\settowidth{\ltemp}{(D)~#5~}%
+	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
+	\ifnum\value{lxxtype}=0%
+		\setcounter{lxxtype}{4}%
+		\ifdimcomp\lxxmax>\lquar{\setcounter{lxxtype}{2}}{}%
+		\ifnum\value{lxxtype}=2%
+			\ifdimcomp\lxxmax>\lhalf{\setcounter{lxxtype}{1}}{}%
+		\fi%
+	\fi%
+	\vspace{5pt}%
+	\ifnum\value{lxxtype}=1%
+		\\\makebox[\lfull][l]{(A)~#2}%
+		\\\makebox[\lfull][l]{(B)~#3}%
+		\\\makebox[\lfull][l]{(C)~#4}%
+		\\\makebox[\lfull][l]{(D)~#5}%
+	\fi%
+	\ifnum\value{lxxtype}=2%
+		\\\makebox[\lhalf][l]{(A)~#2}%
+			\makebox[\lhalf][l]{(B)~#3}%
+		\\\makebox[\lhalf][l]{(C)~#4}%
+			\makebox[\lhalf][l]{(D)~#5}%
+	\fi%
+	\ifnum\value{lxxtype}=4%
+		\\\makebox[\lquar][l]{(A)~#2}% 
+			\makebox[\lquar][l]{(B)~#3}%
+			\makebox[\lquar][l]{(C)~#4}%
+			\makebox[\lquar][l]{(D)~#5}%
+	\fi%
+}
+\usepackage[normalem]{ulem}
+\NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
+\newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
+\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
+\newcommand{\trueex}{$\checkmark$}
+\newcommand{\falseex}{$\times$}
+% TIKZ 设置
+\usetikzlibrary{
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	overlay-beamer-styles,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
+}
+\tikzset{
+	background rectangle/.style={semithick,draw=cyan,fill=white,rounded corners},
+	cstarrowto/.style     ={-Stealth}, %尖箭头
+	cstarrowfrom/.style   ={Stealth-},
+	cstarrowdouble/.style ={Stealth-Stealth},
+	cstarrow1to/.style    ={-Straight Barb}, %宽箭头
+	cstarrow1from/.style  ={Straight Barb-},
+	cstarrow1double/.style={Straight Barb-Straight Barb},
+	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+	cstcurve/.style       ={very thick}, %一般曲线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+	cstdot/.style         ={radius=0.07}, %实心点
+	cstdote/.style        ={radius=0.06, fill=white}, %空心点
+	cstfill/.style        ={fill=cyan!30}, %填充
+	cstfille/.style       ={pattern=north east lines, pattern color=cyan}, %虚线填充
+	cstfill1/.style       ={fill=red!30}, %填充
+	cstfille1/.style      ={pattern=north east lines, pattern color=red}, %虚线填充
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
+}
+% 标题
+\author{张神星}
+\institute{合肥工业大学}
+\email{zhangshenxing@hfut.edu.cn}
+\website{https://zhangshenxing.gitee.io}
+\office{翡翠科教楼B1810东}
+\titlegraphic{hfut.png}
+\institutegraphic{hfutname.png}
+\setbeamersize{text margin left=2em,text margin right=2em}
