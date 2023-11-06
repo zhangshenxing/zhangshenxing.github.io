@@ -193,25 +193,6 @@
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
 	\begin{example}
-	函数 $f(z)=(1+z)^\alpha$ 的主值为 $\exp\bigl[\alpha\ln(1+z)\bigr]$.
-	\onslide<+->{它在去掉射线 $z=x\le -1$ 的区域内解析.
-	}\onslide<+->{由于
-	\begin{align*}
-		f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]\Big|_{z=0}\\
-		&\visible<+->{=\alpha(\alpha-1)\cdots(\alpha-n+1).}
-		\end{align*}
-	}\onslide<+->{因此
-		\begin{align*}
-		\emph{(1+z)^\alpha}&\emph{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
-		&\emph{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
-	\end{align*}}
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{典型例题: 泰勒展开的计算}
-	\onslide<+->
-	\begin{example}
 	求对数函数的主值 $\ln(1+z)$ 的麦克劳林展开.
 	\end{example}
 	\onslide<+->
@@ -231,8 +212,32 @@
 	\end{solution}
 \end{frame}
 
+\begin{frame}{典型例题: 泰勒展开的计算}
+	\onslide<+->
+	\begin{example}
+	函数 $f(z)=(1+z)^\alpha$ 的主值为 $\exp\bigl[\alpha\ln(1+z)\bigr]$.
+	\onslide<+->{它在去掉射线 $z=x\le -1$ 的区域内解析.
+	}\onslide<+->{由于
+	\begin{align*}
+		f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]\Big|_{z=0}\\
+		&\visible<+->{=\alpha(\alpha-1)\cdots(\alpha-n+1).}
+		\end{align*}
+	}\onslide<+->{因此
+		\begin{align*}
+		\emph{(1+z)^\alpha}&\emph{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
+		&\emph{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
+	\end{align*}}
+	\end{example}
+\end{frame}
 
 \begin{frame}{典型例题: 泰勒展开的计算}
+	\onslide<+->
+	当 $\alpha=n$ 是正整数时, 上述麦克劳林展开的 $>n$ 幂次项系数为零, 
+	\onslide<+->
+	从而
+	\[(1+z)^n=\sum_{k=0}^n \mathrm{C}_n^k z^k,\]
+	此即牛顿二项式展开.
+
 	\onslide<+->
 	\begin{example}
 		将 $\dfrac1{(1+z)^2}$ 展开成 $z$ 的幂级数.
@@ -240,6 +245,17 @@
 
 	\onslide<+->
 	\begin{solution}
+		由幂函数展开可知当 $|z|<1$ 时,
+		\[(1+z)^{-2}=\sum_{n=0}^\infty \frac{(-2)(-3)\cdots(-1-n)}{n!}z^n
+		\visible<+->{=\sum_{n=0}^\infty (-1)^n(n+1)z^n.}\]
+		\vspace{-.5\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 泰勒展开的计算}
+	\onslide<+->
+	\begin{proofblock}{另解}
 		由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 		\onslide<+->{由于
 			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
@@ -251,7 +267,10 @@
 			\]
 		}
 		\vspace{-\baselineskip}
-	\end{solution}
+	\end{proofblock}
+	\onslide<+->
+	一般地, 我们有
+	\[\frac1{(1-\lambda z)^k}=\sum_{n=0}^\infty(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|<\frac1{|\lambda|}.\]
 \end{frame}
 
 
@@ -314,6 +333,6 @@
 	类似可得 $c=3,d=-2,e=1$, 只是我们需要计算高阶导数.
 	\onslide<+->
 	因此
-	\[f(z)=\sum_{n=0}^\infty\left(3-(n+1)+\frac{-3/2-1/2(n+1)-1/8(n+2)(n+1)}{2^n}\right)z^n,\quad |z|<1.\]
+	\[f(z)=\sum_{n=0}^\infty\left(3-(n+1)+\frac{-\frac32-\frac12(n+1)-\frac18(n+2)(n+1)}{2^n}\right)z^n,\quad |z|<1.\]
 \end{frame}
 

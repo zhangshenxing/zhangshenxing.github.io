@@ -400,6 +400,11 @@
 	\begin{answer}
 		\[f(z)=\sum_{n=1}^\infty \frac{2n-1}{z^n}.\]
 	\end{answer}
+	\onslide<+->
+	利用幂函数的泰勒展开可以得到
+	\[\frac1{(1-\lambda z)^k}=-\sum_{n<0}(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|>\frac1{|\lambda|}.\]
+	\onslide<+->
+	实际上求和范围可以改成 $n\le -k$.
 \end{frame}
 
 
@@ -427,7 +432,7 @@
 		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
 		}\onslide<+->{
 			\begin{align*}
-			f(z)&=\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\frac1{z+1}}\\
+			f(z)&=\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\dfrac1{z+1}}\\
 			&\visible<+->{=\frac1{(z+1)^3}\sum_{n=0}^\infty\frac1{(z+1)^n}}
 			\visible<+->{=\sum_{n=0}^{\infty}\frac1{(z+1)^{n+3}}}
 			\end{align*}
@@ -438,3 +443,25 @@
 	\endgroup
 \end{frame}
 
+
+
+\begin{frame}{例题: 洛朗展开的应用}
+	\onslide<+->
+	\begin{example}
+		求 $\displaystyle\oint_{|z|=1}\frac{z}{\sin z^2}\diff z$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		注意到闭路 $|z|=1$ 落在 $0<|z|<\sqrt \pi$ 内.
+		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac{z}{\sin z^2}$ 的洛朗展开.
+		}\onslide<+->{
+			\[
+			f(z)=\frac{z}{\sin z^2}=
+			\frac{z}{z^2-\dfrac{z^6}{3!}+\dfrac{z^{10}}{5!}+\cdots}
+			\visible<+->{=\frac1z+\frac{z^3}6+\cdots}
+			\]
+		}\onslide<+->{故
+			$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=2\pi i$.}
+	\end{solution}
+\end{frame}
