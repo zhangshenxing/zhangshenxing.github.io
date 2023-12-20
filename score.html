@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- saved from url=(0030)http://home.ustc.edu.cn/~zsxqq -->
+<html lang="zh-cn">
+
+<head>
+	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+	<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+	<title>复变函数期末成绩查询</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+	<link rel="stylesheet" href="style.css">
+
+	<script>
+
+		function query() {
+			var scores = [
+				["3c8509c8523a8aceaec2d9366c126e78", "缺考", 2, 3, 4, "缺考"],
+				["1b", 2, 2, 3, 4, 4],
+				["aa8743296e3ee58c31ea5d0492d6105b", 3, 2, 3, 4, 4],
+				["1d", 4, 2, 3, 4, 4]
+			];
+			var len = scores.length;
+			var i;
+			var name_md = md5($('#stuid').val().trim() + $('#name').val().trim());
+			for (i = 0; i < len; i++) {
+				if (scores[i][0] == name_md) {
+					$('#result1').html($('#name').val().trim());
+					$('#result2').html($('#stuid').val().trim());
+					$('#result3').html(scores[i][1]);
+					$('#result4').html(scores[i][2]);
+					$('#result5').html(scores[i][3]);
+					$('#result6').html(scores[i][4]);
+					$('#result7').html(scores[i][5]);
+					if (parseInt(scores[i][5]) == "缺考" || parseInt(scores[i][4]) < 45 || parseInt(scores[i][5]) < 60) {
+						$('#result6').css("color", "red");
+						$('#result7').css("color", "red");
+					}
+				}
+			}
+			// $('#result').html(name_md);
+		}
+	</script>
+</head>
+
+<body>
+	<form>
+		姓名: <input type="text" id='name' value='0' /><br>
+		学号: <input type="text" id='stuid' value='0' /><br><br>
+		<button type="button" onclick='query()' style="height:45px;width:210px;font-size: 130%;color:green;font-weight: bold;">点击查询</button>
+	</form>
+	<p id='result'>
+		<span style="font-weight: bold;font-size: 120%;color:blue;">查询结果</span><br>
+		<span style="font-weight: bold;">课后作业</span>：<span id="result3"></span><br>
+		<span style="font-weight: bold;">随堂测验</span>：<span id="result4"></span><br>
+		<span style="font-weight: bold;">期末报告</span>：<span id="result5"></span><br>
+		<span style="font-weight: bold;">期末考试</span>：<span id="result6"></span><br>
+		<span style="font-weight: bold;">总评分数</span>：<span id="result7"></span><br>
+	</p>
+</body>
+
+</html>
