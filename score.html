@@ -4,7 +4,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<script src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
 	<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 	<title>复变函数期末成绩查询</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
@@ -329,12 +328,12 @@
 			];
 			var len = scores.length;
 			var i;
-			var name_md = md5($('#stuid').val().trim() + $('#name').val().trim());
+			var name_md = md5(document.getElementById('stuid').value.trim() + document.getElementById('name').value.trim());
 			var result = "";
 			for (i = 0; i < len; i++) {
 				if (scores[i][0] == name_md) {
-					result += "<span style=\"font-weight: bold;\">姓名</span>：" + $('#name').val().trim() + "<br>";
-					result += "<span style=\"font-weight: bold;\">学号</span>：" + $('#stuid').val().trim() + "<br>";
+					result += "<span style=\"font-weight: bold;\">姓名</span>：" + document.getElementById('stuid').value.trim() + "<br>";
+					result += "<span style=\"font-weight: bold;\">学号</span>：" + document.getElementById('name').value.trim() + "<br>";
 					result += "<span style=\"font-weight: bold;\">课后作业</span>：" + scores[i][1] + "<br>";
 					result += "<span style=\"font-weight: bold;\">随堂测验</span>：" + scores[i][2] + "<br>";
 					result += "<span style=\"font-weight: bold;\">期末报告</span>：" + scores[i][3] + "<br>";
@@ -350,7 +349,7 @@
 				}
 			}
 			if (i == len) result = "未找到，请检查姓名和学号是否正确！";
-			$('#result').html(result);
+			document.getElementById('result').innerHTML=result;
 		}
 	</script>
 </head>
