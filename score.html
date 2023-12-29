@@ -8,10 +8,11 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
 	<style>
 		body {
-			margin: 20px auto;
+			margin: 0px auto;
 			background-image: url(img/bg.png);
 			background-color: hsl(60, 40%, 86%);
-	text-align: center;
+			text-align: center;
+			font-size: 170%;
 		}
 
 		table.result {
@@ -20,7 +21,7 @@
 		}
 
 		table.result td {
-			width: 100px;
+			width: 6em;
 			padding: 5px 10px;
 			font-size: 100%;
 			vertical-align: middle;
@@ -383,12 +384,14 @@
 </head>
 
 <body>
-	<header><h1>复变函数期末成绩查询</h1></header>
+	<header>
+		<h1>复变函数期末成绩查询</h1>
+	</header>
 	<form style="font-size: 120%;">
 		姓名: <input type="text" id='name' style="font-size: 100%;" /><br>
 		学号: <input type="text" id='stuid' style="font-size: 100%;" /><br><br>
 		<button type="button" onclick='query()'
-			style="height:45px;width:210px;font-size: 130%;color:green;font-weight: bold;">点击查询</button>
+			style="height:1.5em;width:8em;font-size: 110%;color:green;font-weight: bold;">点击查询</button>
 	</form>
 	<p id='result'></p>
 </body>
