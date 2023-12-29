@@ -1,5 +1,4 @@
 <!doctype html>
-<!-- saved from url=(0030)http://home.ustc.edu.cn/~zsxqq -->
 <html lang="zh-cn">
 
 <head>
@@ -7,7 +6,36 @@
 	<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
 	<title>复变函数期末成绩查询</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
-	<link rel="stylesheet" href="style.css">
+	<style>
+		body {
+			margin: 20px auto;
+			background-image: url(img/bg.png);
+			background-color: hsl(60, 40%, 86%);
+	text-align: center;
+		}
+
+		table.result {
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+
+		table.result td {
+			width: 100px;
+			padding: 5px 10px;
+			font-size: 100%;
+			vertical-align: middle;
+			border: 1px solid hsl(210, 90%, 75%);
+			text-align: center;
+		}
+
+		table.result tr {
+			background-color: white;
+		}
+
+		table.result tr:nth-child(odd) {
+			background-color: hsl(210, 60%, 98%);
+		}
+	</style>
 
 	<script>
 
@@ -332,36 +360,36 @@
 			var result = "";
 			for (i = 0; i < len; i++) {
 				if (scores[i][0] == name_md) {
-					result += "<span style=\"font-weight: bold;\">姓名</span>：" + document.getElementById('stuid').value.trim() + "<br>";
-					result += "<span style=\"font-weight: bold;\">学号</span>：" + document.getElementById('name').value.trim() + "<br>";
-					result += "<span style=\"font-weight: bold;\">随堂测验</span>：" + scores[i][1] + "<br>";
-					result += "<span style=\"font-weight: bold;\">课后作业</span>：" + scores[i][2] + "<br>";
-					result += "<span style=\"font-weight: bold;\">期末报告</span>：" + scores[i][3] + "<br>";
+					result += "<table class=\"result\"><tbody><tr><td style=\"font-weight: bold;\">姓名</td><td>" + document.getElementById('stuid').value.trim() + "</td></tr>";
+					result += "<tr><td style=\"font-weight: bold;\">学号</td><td>" + document.getElementById('name').value.trim() + "</td></tr>";
+					result += "<tr><td style=\"font-weight: bold;\">随堂测验</td><td>" + scores[i][1] + "</td></tr>";
+					result += "<tr><td style=\"font-weight: bold;\">课后作业</td><td>" + scores[i][2] + "</td></tr>";
+					result += "<tr><td style=\"font-weight: bold;\">期末报告</td><td>" + scores[i][3] + "</td></tr>";
 					if (scores[i][6] == "及格") {
-						result += "<span style=\"font-weight: bold;\">期末考试</span>：" + scores[i][4] + "<br>";
-						result += "<span style=\"font-weight: bold;\">总评分数</span>：" + scores[i][5];
+						result += "<tr><td style=\"font-weight: bold;\">期末考试</td><td>" + scores[i][4] + "</td></tr>";
+						result += "<tr><td style=\"font-weight: bold;\">总评分数</td><td>" + scores[i][5] + "</td></tr></tbody></table>";
 					}
 					else {
-						result += "<span style=\"font-weight: bold;color:#aa0000;\">期末考试：" + scores[i][4] + "<br>";
-						result += "总评分数：" + scores[i][5] + "</span>";
+						result += "<tr><td style=\"font-weight: bold;\">期末考试</td><td style=\"color:#aa0000;\">" + scores[i][4] + "</td></tr>";
+						result += "<tr><td style=\"font-weight: bold;\">总评分数</td><td style=\"color:#aa0000;\">" + scores[i][5] + "</td></tr></tbody></table>";
 					}
 					break;
 				}
 			}
 			if (i == len) result = "未找到，请检查姓名和学号是否正确！";
-			document.getElementById('result').innerHTML=result;
+			document.getElementById('result').innerHTML = result;
 		}
 	</script>
 </head>
 
 <body>
-	<form>
-		姓名: <input type="text" id='name' /><br>
-		学号: <input type="text" id='stuid' /><br><br>
+	<header><h1>复变函数期末成绩查询</h1></header>
+	<form style="font-size: 120%;">
+		姓名: <input type="text" id='name' style="font-size: 100%;" /><br>
+		学号: <input type="text" id='stuid' style="font-size: 100%;" /><br><br>
 		<button type="button" onclick='query()'
 			style="height:45px;width:210px;font-size: 130%;color:green;font-weight: bold;">点击查询</button>
 	</form>
-	<p style="font-weight: bold;font-size: 120%;color:blue;">查询结果</p>
 	<p id='result'></p>
 </body>
 
