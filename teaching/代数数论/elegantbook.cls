@@ -837,10 +837,15 @@
 \newcommand*{\eitemi}{\tikz \draw [baseline, ball color=structurecolor,draw=none] circle (2pt);}
 \newcommand*{\eitemii}{\tikz \draw [baseline, fill=structurecolor,draw=none,circular drop shadow] circle (2pt);}
 \newcommand*{\eitemiii}{\tikz \draw [baseline, fill=structurecolor,draw=none] circle (2pt);}
-\setlist[enumerate,1]{label=\color{structurecolor}\arabic*.}
+\setlist[enumerate,1]{label=\color{structurecolor}(\arabic*)}
 \setlist[enumerate,2]{label=\color{structurecolor}(\alph*).}
 \setlist[enumerate,3]{label=\color{structurecolor}\Roman*.}
 \setlist[enumerate,4]{label=\color{structurecolor}\Alph*.}
+\newlist{exenum}{enumerate}{4}
+\setlist[exenum,1]{label=\color{structurecolor}\arabic*.}
+\setlist[exenum,2]{label=\color{structurecolor}(\arabic*)}
+\setlist[exenum,3]{label=\color{structurecolor}(\alph*).}
+\setlist[exenum,4]{label=\color{structurecolor}\Roman*.}
 \setlist[itemize,1]{label={\eitemi}}
 \setlist[itemize,2]{label={\eitemii}}
 \setlist[itemize,3]{label={\eitemiii}}
@@ -851,8 +856,10 @@
 
 \ifdefstring{\ELEGANT@lang}{cn}{
   \ifdefstring{\ELEGANT@scheme}{chinese}{
-    \newcommand{\xchaptertitle}{第\zhnumber{\arabic{chapter}}章} }{
-    \newcommand{\xchaptertitle}{第 \thechapter{} 章}}
+    \newcommand{\xchaptertitle}{第\zhnumber{\arabic{chapter}}章} 
+    \newcommand{\xsectiontitle}{第\zhnumber{\arabic{section}}节} }{
+    \newcommand{\xchaptertitle}{第 \thechapter{} 章}
+    \newcommand{\xsectiontitle}{第 \thesection{} 节}}
 % Hyperref 2022/05/16's changelog.txt said
 % * nameref is loaded always and earlier (issue#235) 
     \AtBeginDocument{
@@ -1165,7 +1172,7 @@
   \par\ignorespacesafterend}
 
 %% Exercise with counter
-\newcounter{exer}[chapter]
+\newcounter{exer}[section]
 \setcounter{exer}{0}
 \renewcommand{\theexer}{\thechapter.\arabic{exer}}
 \newenvironment{exercise}[1][]{
@@ -1189,14 +1196,15 @@
     \scriptsize\color{red!90}\textdbend\quad}
     \textbf{\color{second}\notename} \citshape}{\par}
 
-\newenvironment{proof}{
-  \par\noindent\textbf{\color{second}\proofname\;}
+\newenvironment{proof}[1][\proofname]{
+  \par\noindent\textbf{\color{second}#1\;}
   \color{black!90}\cfs}{
-  % \hfill$\Box$\quad
+  \hfill$\Box$\quad
   \par}
 
+
 \newenvironment{solution}{\par\noindent\textbf{\color{main}\solutionname} \citshape}{\par}
-\newenvironment{remark}{\noindent\textbf{\color{second}\remarkname}}{\par}
+\newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{second}\remarkname}}{\vspace*{5pt}\par}
 \newenvironment{assumption}{\par\noindent\textbf{\color{third}\assumptionname} \citshape}{\par}
 \newenvironment{conclusion}{\par\noindent\textbf{\color{third}\conclusionname} \citshape}{\par}
 \newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
@@ -1243,6 +1251,14 @@
   \end{center}
   \begin{enumerate}}{
   \end{enumerate}}
+
+\newenvironment{exerciseset}{
+  \vspace*{10pt}
+  \par\indent\makebox[-3pt][r]{
+  \large\color{red!90}\HandPencilLeft\quad}
+  \textbf{\color{main}{\Large\bfseries\exercisename}}\rmfamily
+  \begin{exenum}}{
+  \end{exenum}}
 
 \def\relsec{\endgroup start}
 \def\endrelsec{end\begingroup\def \@currenvir {relsec}}

@@ -17,19 +17,22 @@
 
 代数\noun{数域}指的是有理数域 $\BQ$ 的有限扩张. 正如整数环 $\BZ$ 的算术性质对于 $\BQ$ 的重要性, 本章中我们将对数域的整数环 $\CO_K$ 进行研究, 这包括 $\CO_K$ 的线性结构、唯一分解性、单位群的结构等内容, 并利用其回答整二元二次型表整数问题.
 
+设 $\BF_q$ 为 $q$ 元有限域, $t$ 为一未定元. 我们称 $\BF_q[t]$ 的有限扩张为\noun{函数域}.
+由于函数域与数域有很多相似的性质, 因此在很多情形我们可以把它们放在一起来研究.
+
 \section{域扩张的线性结构}
 设 $L/K$ 为域的 $n$ 次扩张, 则 $L$ 可以看成 $K$ 上 $n$ 维线性空间. 我们来研究它的线性结构.
 
 \subsection{迹和范数}
 
 \begin{definition}{迹和范数}{trace and norm}
-对于 $\alpha\in L$, 映射 $T_\alpha:x\mapsto \alpha x$ 给出了 $K$ 线性空间 $L$ 到自身的线性变换. 我们将该线性变换的迹和行列式称为 $\alpha$ 的\noun{迹}和\noun{范数}, 记为 $\Tr_{L/K}(\alpha)$\index{Tr L K@$\Tr_{L/K}$} 和 $\bfN_{L/K}(\alpha)$\index{N L K@$\bfN_{L/K}$}.
+对于 $\alpha\in L$, 映射 $T_\alpha:x\mapsto \alpha x$ 给出了 $K$ 线性空间 $L$ 到自身的线性变换. 我们将该线性变换的迹和行列式称为 $\alpha$ (在扩张 $L/K$ 下)的\noun{迹}和\noun{范数}, 记为 $\Tr_{L/K}(\alpha)$\index{Tr L K@$\Tr_{L/K}$} 和 $\bfN_{L/K}(\alpha)$\index{N L K@$\bfN_{L/K}$}.
 \end{definition}
 
 \begin{exercise}
 对于 $\alpha,\beta\in L$, 证明
   \[\Tr_{L/K}(\alpha+\beta)=\Tr_{L/K}(\alpha)+\Tr_{L/K}(\beta),\quad
-\bfN_{L/K}(\alpha\beta)=\bfN_{L/K}(\alpha)\bfN_{L/K}(\beta).\]
+  \bfN_{L/K}(\alpha\beta)=\bfN_{L/K}(\alpha)\bfN_{L/K}(\beta).\]
 因此 $\Tr_{L/K}:L\to K$ 和 $\bfN_{L/K}:L^\times\to K^\times$ 是群同态.
 \end{exercise}
 
@@ -39,7 +42,25 @@
   \bfN_{L/K}(\lambda\alpha)=\lambda^n\bfN_{L/K}(\alpha).\]
 \end{exercise}
 
-固定一个 $K$ 的代数闭包 $\ov K$\index{K closure@$\ov K$}. 我们记 $\Hom_K(L,\ov K)$\index{Hom K L K$@$\Hom_K(L,\ov K)$} 为保持 $K$ 不变的嵌入 $\tau:L\inj\ov K$ 全体. 元素 $\alpha\in L^\times$ 的\noun{极小多项式}是指多项式环 $K[X]$ 中零化 $\alpha$ 的次数最小的首一多项式, 也就是线性映射 $T_\alpha$ 的极小多项式. 如果 $L^\times$ 中所有元素的极小多项式均无重根, 称 $L/K$ \noun{可分}. 我们知道, 有限可分扩张都是单扩张, 即存在 $\theta\in L$ 使得 $L=K(\theta)$. 设 $\theta$ 的极小多项式为
+\begin{exercise}
+设 $L/K$ 是一个二次扩张. 是否总能找到 $\theta\in L$ 使得 $\theta^2\in K$ 且 $L=K(\theta)$? 试着用 $L$ 的一个合适的生成元 $\theta$ 来表示 $\Tr_{L/K}$ 和 $\bfN_{L/K}$.
+\end{exercise}
+
+固定一个 $K$ 的代数闭包 $\ov K$\index{K closure@$\ov K$}. 我们记 $\Hom_K(L,\ov K)$\index{Hom K L K@$\Hom_K(L,\ov K)$} 为保持 $K$ 不变的嵌入 $\tau:L\inj\ov K$ 全体. 元素 $\alpha\in L^\times$ 的\noun{极小多项式}是指多项式环 $K[X]$ 中零化 $\alpha$ 的次数最小的首一多项式, 也就是线性映射 $T_\alpha$ 的极小多项式. 如果 $L^\times$ 中所有元素的极小多项式均无重根, 称 $L/K$ \noun{可分}. 
+\begin{example}
+  \begin{enumerate}
+    \item 如果 $K$ 的特征为零, 则 $L/K$ 总是可分的. 这是因为如果 $f$ 是 $\alpha\in L$ 的极小多项式, 则 $f$ 在 $K[X]$ 中不可约. 如果 $f$ 有重根 $\beta$, 则 $f$ 与 $f'$ 的最大公因子零化 $\beta$, 这意味着 $f$ 整除 $f'$. 这在特征零情形是不可能的.
+    \item 如果 $K$ 的特征为素数 $p$, $\alpha\in L$ 不可分, 那么由前述推理可知对于 $\alpha$ 的极小多项式 $f$, 有 $f'=0$. 因此存在 $f_1(X)\in K[X]$ 使得 $f(X)=f_1(X^p)$.
+    注意到 $f_1$ 是 $\alpha^p$ 的极小多项式. 因此归纳可知 $f$ 可表为 $K[X]$ 中一可分多项式的某个 $p^m$ 次幂, $m\ge 0$.
+    设 $t$ 是未定元, 则 $K(t^{1/p})/K(t)$ 中 $t^{1/p}$ 的极小多项式为 $X^p-t=\bigl(X-t^{1/p}\bigr)^p$.
+  \end{enumerate}
+\end{example}
+
+设 $L/K$ 可分. 我们知道, 有限可分扩张都是单扩张\footnote{只需对 $L=K(\alpha,\beta)$ 情形证明, 一般情形归纳即可. 设 $f(X),g(X)\in K[X]$ 分别为 $\alpha,\beta$ 的极小多项式, $c$ 为一充分大的正整数, 使得 $\alpha_i+c\beta_j$ 两两不同, 其中 $\alpha_i,\beta_j$ 分别是 $\alpha,\beta$ 的共轭元.
+
+设 $\gamma=\alpha+c\beta$.
+由于 $L/K$ 可分, $g$ 没有重根.
+考虑多项式 $f(\gamma-cX)\in K(\gamma)[X]$ 和 $g(X)\in K[X]$. 由 $c$ 的选择不难看出二者只有一个公共零点 $\beta$, 从而它们的最大公因子 $x-\beta\in K(\gamma)[X]$, 即 $\beta\in K(\gamma)$, 从而 $\alpha=\gamma-c\beta\in K(\gamma)$. 见~\cite[\S3.2 定理2]{FengLiZhang2009}.}, 即存在 $\theta\in L$ 使得 $L=K(\theta)$. 设 $\theta$ 的极小多项式为
   \[f(X)=\prod_{i=1}^n (X-\theta_i),\]
 则 $\theta\mapsto \theta_i$ 诱导了所有的 $L\inj \ov K$, 因此 $\Hom_K(L,\ov K)$ 的大小为 $n$.
 
@@ -49,6 +70,7 @@
     \bfN_{L/K}(\alpha)=\prod_{\tau\in\Hom_K(L,\ov K)}\tau\alpha.\]
 \end{proposition}
 \begin{proof}
+见\cite[Chapter I, Proposition2.6]{Neukirch1999}.
 对于 $\alpha\in L$, 
   \[p(X):=\prod_{\tau\in\Hom_K(K(\alpha),\ov K)} (X-\tau\alpha)=X^m+a_{m-1} X^{m-1}+\cdots+a_0\in K[X]\]
 为 $\alpha$ 的极小多项式, 因此 $\set{1,\alpha,\dots,\alpha^{m-1}}$ 构成 $K$ 向量空间 $K(\alpha)$ 的一组基. 在这个基下 $T_\alpha$ 的变换矩阵为
@@ -71,6 +93,18 @@
 故原命题成立.
 \end{proof}
 
+\begin{exercise}
+求 $\alpha=\sqrt{-2}+\sqrt3$ 在域扩张 $K/\BQ(\sqrt3)$,  $K/\BQ(\sqrt{-6})$ 和 $K/\BQ$ 下的迹和范数.
+\end{exercise}
+
+\begin{exercise}
+设 $K=\BQ(\zeta)$, 其中 $\zeta=e^{2\pi i/p}$ 是 $p$ 次本原单位根, $p>2$ 是奇素数. 计算 $\Tr_{K/\BQ}(\zeta+\ov\zeta)$ 和 $\bfN_{K/\BQ}(\zeta+\ov\zeta)$.
+\end{exercise}
+
+\begin{exercise}
+设 $\alpha\in\BC$ 满足 $\alpha^3-3\alpha-1=0$. 计算 $\beta=3\alpha^2+7\alpha+5$ 的迹和范数.
+\end{exercise}
+
 \begin{corollary}{}{}
 对于有限域扩张 $K\subseteq L\subseteq M$, 我们有
   \[\Tr_{M/K}=\Tr_{L/K}\circ \Tr_{M/L},\quad \bfN_{M/K}=\bfN_{L/K}\circ \bfN_{M/L}.\]
@@ -92,15 +126,8 @@
 \end{proof}
 \begin{remark}
 实际上, 如果 $L/K$ 不可分, 则 $[L:K]_i$ 是 $\Char K>0$ 的正整数次幂, 因此我们有 $\Tr_{L/K}=0$.
+反之亦然.
 \end{remark}
-
-\begin{exercise}
-设 $\alpha\in\BC$ 满足 $\alpha^3-3\alpha-1=0$. 计算 $\beta=3\alpha^2+7\alpha+5$ 的迹和范数.
-\end{exercise}
-\begin{exercise}
-求 $\alpha=\sqrt{-2}+\sqrt3$ 在域扩张 $K/\BQ(\sqrt3)$,  $K/\BQ(\sqrt{-6})$ 和 $K/\BQ$ 下的迹和范数.
-\end{exercise}
-
 
 \begin{proposition}{嵌入的线性无关性}{independent_of_embeddings}
 设 $\Hom_K(L,\ov K)=\set{\tau_1,\dots,\tau_n}$, 则它们在 $\ov K$ 上线性无关.
@@ -113,36 +140,38 @@ $n=1$ 时显然. 对于 $n\ge2$, 如果命题不成立, 我们可不妨设 $\sum
 
 
 \subsection{判别式}
+现在我们来研究 $K$ 线性空间 $L$ 的基.
 \begin{definition}{判别式}{discriminant of a basis}
 定义 $\alpha_1,\dots,\alpha_n\in L$ 关于 $L/K$ 的\noun{判别式}\index{disc@$\disc$}为
   \[\disc_{L/K}(\alpha_i)_i=\disc_{L/K}(\alpha_1,\dots,\alpha_n)=\det\left(\Tr_{L/K}(\alpha_i\alpha_j)\right)_{ij}.\]
 \end{definition}
-
+  
 \begin{lemma}{}{trace}
 设 $L/K$ 是 $n$ 次可分扩张.
-
-(1) 若 $\Hom_K(L,\ov K)=\set{\tau_1,\dots,\tau_n}$, 则
+\begin{enumerate}
+  \item 若 $\Hom_K(L,\ov K)=\set{\tau_1,\dots,\tau_n}$, 则
   \[\disc_{L/K}(\alpha_i)_i=\det(\tau_i \alpha_j)_{ij}^2.\]
-
-(2) 若存在矩阵 $C\in M_n(K)$ 使得 $(\beta_i)_i=(\alpha_i)_i C$, 则
+  \item 若存在矩阵 $C\in M_n(K)$ 使得 $(\beta_i)_i=(\alpha_i)_i C$, 则
   \[\disc_{L/K}(\beta_i)_i=\disc_{L/K}(\alpha_i)_i\cdot\det(C)^2.\]
+\end{enumerate}
 \end{lemma}
 \begin{proof}
-(1) 由于 $\Tr_{L/K}(\alpha_i\alpha_j)=\suml_k (\tau_k\alpha_i)(\tau_k\alpha_j)$, 我们有 
+\begin{enumerate}
+  \item 由于 $\Tr_{L/K}(\alpha_i\alpha_j)=\suml_k (\tau_k\alpha_i)(\tau_k\alpha_j)$, 我们有 
   \[\left(\Tr_{L/K}(\alpha_i\alpha_j)\right)_{ij}=(\tau_i\alpha_j)_{ij}^\rmT(\tau_i\alpha_j)_{ij},\]
 因此 $\det\left(\Tr_{L/K}(\alpha_i\alpha_j)\right)_{ij}=\det(\tau_i\alpha_j)_{ij}^2$.
-
-(2) 由 $(\tau_i\beta_j)_{ij}=(\tau_i\alpha_j)_{ij}C$ 可得.
+  \item 由 $(\tau_i\beta_j)_{ij}=(\tau_i\alpha_j)_{ij}C$ 可得.
+\end{enumerate}
 \end{proof}
 
 \begin{proposition}{有限可分扩张的迹配对非退化}{tracenondegen}
 设 $L/K$ 是 $n$ 次可分扩张.
-
-(1) $(\alpha_i)_i$ 构成 $K$ 向量空间 $L$ 的一组基当且仅当 $\disc_{L/K}(\alpha_i)_i$ $\neq 0$.
-
-(2) $K$ 上的双线性型 
+\begin{enumerate}
+  \item $(\alpha_i)_i$ 构成 $K$ 向量空间 $L$ 的一组基当且仅当 $\disc_{L/K}(\alpha_i)_i$ $\neq 0$.
+  \item $K$ 上的双线性型 
   \[\fct{L\times L}{K}{(x,y)}{\Tr_{L/K}(xy)}\]
-非退化, 即 $\Tr_{L/K}(xy)=0,\forall y\in L$ 当且仅当 $x=0$. 因此我们有 $K$ 向量空间的自然同构 $L\cong L^\vee$.
+  非退化, 即 $\Tr_{L/K}(xy)=0,\forall y\in L$ 当且仅当 $x=0$. 因此我们有 $K$ 向量空间的自然同构 $L\cong L^\vee$.
+\end{enumerate}
 \end{proposition}
 \begin{proof}
 设 $\theta\in L$ 使得 $L=K(\theta)$, 则 $1,\theta,\dots,\theta^{n-1}$ 构成一组基. 设 
@@ -154,6 +183,7 @@ $n=1$ 时显然. 对于 $n\ge2$, 如果命题不成立, 我们可不妨设 $\sum
 \end{proof}
 
 由于迹配对非退化, 因此其诱导了自然同构 $L\cong L^\vee, x\mapsto \Tr_{L/K}(x\cdot)$.
+
 \begin{definition}{对偶基}{dual basis}
 对于 $L/K$ 的一组基 $(\alpha_i)_i$, 令 $(\alpha_i^\vee)_i$ 为其对偶基在自然同构 $L\cong L^\vee$ 下的原像, 我们称之为 $(\alpha_i)_i$ 关于 $\Tr_{L/K}$ 的\noun{对偶基}.
 \end{definition}
@@ -162,22 +192,54 @@ $n=1$ 时显然. 对于 $n\ge2$, 如果命题不成立, 我们可不妨设 $\sum
   \[(\alpha_1^\vee,\dots,\alpha_n^\vee)=
     (\alpha_1,\dots,\alpha_n)\left(\Tr_{L/K}(\alpha_i\alpha_j)\right)_{ij}^{-1}.\]
 
+我们将会在后面的内容中用到下述命题.
+\begin{proposition}{}{disc_simple}
+设 $\alpha\in L$ 的极小多项式为 $f(T)\in K[T]$. 则
+  \[\disc(1,\alpha,\dots,\alpha^{n-1})=\begin{cases}
+    0,&\text{若 }\deg f<n;\\
+    (-1)^{\frac{n(n-1)}{2}} \bfN_{L/K}\bigl(f'(\alpha)\bigr),\quad&\text{若 }\deg f=n.
+  \end{cases}\]
+\end{proposition}
+\begin{proof}
+$\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, 则由范德蒙行列式知
+  \[\disc(1,\alpha,\dots,\alpha^{n-1})=\det\left(\sigma_i(\alpha^{j-1})_{i,j}\right)^2=\prod_{i<j} \bigl(\sigma_i(\alpha)-\sigma_j(\alpha)\bigr)^2.\]
+由
+  \[\bfN_{K/\BQ}\bigl(f'(\alpha)\bigr)=\prod_{i=1}^n \sigma\bigl(f'(\alpha)\bigr)=\prod_{i=1}^n\prod_{j\neq i}\bigl(\sigma_i(\alpha)-\sigma_j(\alpha)\bigr)\]
+知该命题成立.
+\end{proof}
+
 \begin{exercise}
 计算 $\set{1,\alpha,\alpha+\alpha^2}$ 关于 $\BQ(\alpha)/\BQ$ 的判别式, 其中 $\alpha^3-\alpha-4=0$. 它构成一组基吗? 如果是的话, 它的对偶基是什么?
+\end{exercise}
+
+\begin{exercise}
+设
+\[f(x)=(x-\alpha_1)\cdots(x-\alpha_n)\in K[x]\]
+是域 $K$ 上的多项式, 其中 $\alpha_i\in\ov K,n\ge 1$.
+称 $d(f)=\prod_{1\le r<s\le n}(\alpha_r-\alpha_s)^2$ 为多项式 $f(x)$ 的判别式. 显然 $f(x)$ 有重根当且仅当 $d(f)=0$.
+\begin{enumerate}
+  \item 证明 $d(f)=(-1)^{\frac{n(n-1)}2}\prod_{i=1}^n f'(\alpha_i)\in K$.
+  \item 如果 $f(x)=x^n+a$, 求 $d(f)$.
+  \item 如果 $f(x)=x^n+ax+b$, 求 $d(f)$.
+  \item 设 $f(x)\in\BR[x]$ 为 $3$ 次多项式. 证明: 如果 $d(f)>0$, 则 $f(x)$ 有三个实根; 如果 $d(f)<0$, 则 $f(x)$ 只有一个实根.
+\end{enumerate}
 \end{exercise}
 
 
 
 \section{数域的整数环}
 \label{ring of intergers}
+本节我们将研究 $K$ 的整数环 $\CO_K$ 的群结构. 请先行自学附录~\ref{sec:modules}.
 
 \subsection{整性}
+我们先来了解一般的整性的概念.
 \begin{definition}{整}{integral}
 设 $A\subseteq B$ 是两个含幺交换环. 如果 $b\in B$ 被一个 $A$ 系数首一多项式零化, 称 $b$ 在 $A$ 上\noun{整}. 这样的元素全体称为 $A$ 在 $B$ 中的\noun{整闭包}.
 \end{definition}
 
 \begin{proposition}{}{}
-$b_1,\dots,b_n$ 在 $A$ 上整当且仅当 $A[b_1,\dots,b_n]$ 是有限生成 $A$ 模.
+$b_1,\dots,b_n$ 在 $A$ 上整当且仅当 $B=A[b_1,\dots,b_n]$ 是有限生成 $A$ 模.
+换言之, 存在 $\beta_1,\dots,\beta_k\in B$, 使得 $B$ 中任一元素均可表为 $\sum_{i=1}^k a_i\beta_i,a_i\in A$.
 \end{proposition}
 \begin{proof}
 如果 $b$ 在 $A$ 上整, 设首一多项式 $f(X)\in A[X]$ 零化 $b$. 由于 $f$ 首一, 对于任意多项式 $g(X)\in A[X]$, 存在 $q(X),r(X)\in A[X]$ 使得
@@ -195,16 +257,6 @@ $b_1,\dots,b_n$ 在 $A$ 上整当且仅当 $A[b_1,\dots,b_n]$ 是有限生成 $A
 
 由上述证明可知, 如果 $b_1,b_2$ 在 $A$ 上整, 则 $b_1+b_2,b_1b_2$ 均在 $A$ 上整. 从而 $A$ 在 $B$ 中的整闭包构成一个环.
 
-\begin{exercise}
-对于 $A\subseteq B\subseteq C$, 如果 $B$ 在 $A$ 上整(即其中每个元素在 $A$ 上整), $C$ 在 $B$ 上整, 则 $C$ 在 $A$ 上整. 
-\end{exercise}
-
-\begin{exercise}
-(1) 设 $\ov A$ 是 $A$ 在 $B$ 中的整闭包, 则 $\ov A$ 在 $B$ 中的整闭包是 $\ov A$.
-
-(2) 如果 $B$ 在 $A$ 上代数, 则 $B$ 的分式域等于 $\ov A$ 的分式域.
-\end{exercise}
-
 \begin{definition}{整闭}{integral_closed}
 如果整环 $A$ 在其分式域中的整闭包为自身, 称其为\noun{整闭的}.
 \end{definition}
@@ -217,18 +269,13 @@ $b_1,\dots,b_n$ 在 $A$ 上整当且仅当 $A[b_1,\dots,b_n]$ 是有限生成 $A
 \end{proof}
 
 
-\begin{exercise}
-(1) $\BZ,\BZ[i],\BF_p[T]$ 是整闭的. 
-
-(2) $\BZ[\sqrt{5}]$ 不是整闭的. 它在其分式域中的整闭包是什么?
-\end{exercise}
-
-
 \subsection{整基}
+现在我们来研究 $K$ 的整数环的群结构.
 
 \begin{definition}{整数环}{ring of integers}
 数域 $K$ 的\noun{整数环} $\CO_K$\index{OK@$\CO_K$} 指的是 $\BZ$ 在 $K$ 中的整闭包, 其中的元素被称为\noun{代数整数}.
 \end{definition}
+换言之, 代数整数是整系数多项式的根.
 
 \begin{example}
 考虑 $K=\BQ(\sqrt{d})$, $d\neq 0,1$ 是无平方因子整数. 由命题\ref{pro:integral_closure_is_integral_closed}可知, $\CO_K$ 中的有理数只能是整数; 如果 $a+b\sqrt{d}\in\CO_K$, 则
@@ -268,15 +315,12 @@ $\fa$ 的\noun{判别式} $\Delta_\fa\in\BZ$\index{Delta a@$\Delta_\fa$} 是指�
 \end{definition}
 
 \begin{remark}
-对于一般的数域的有限扩张 $L/K$, $\CO_L$ 未必是自由 $\CO_K$ 模. 我们定义\noun{判别式} $\fd_{L/K}$ 为 $\disc(\alpha_i)_i$ 生成的理想, 其中 $\alpha_1,\dots,\alpha_n\in \CO_L$. 即使 $\CO_K$ 是主理想整环, 不同的基的判别式也可能会相差一个单位. 特别地, $\fd_{K/\BQ}=(\Delta_K)$. 在 \ref{ssec:different_and_discriminant} 小节中我们会研究它的性质.
+对于一般的数域的有限扩张 $L/K$, $\CO_L$ 未必是自由 $\CO_K$ 模. 我们定义\noun{判别式} $\fd_{L/K}$ 为 $\disc(\alpha_i)_i$ 生成的理想, 其中 $\alpha_1,\dots,\alpha_n\in \CO_L$. 即使 $\CO_K$ 是主理想整环, 不同的基的判别式也可能会相差一个单位. 特别地, $\fd_{K/\BQ}=(\Delta_K)$. 我们将在 \ref{ssec:different_and_discriminant} 小节研究它的性质.
 \end{remark}
 
-\begin{exercise}
-设 $d\neq 0,1$ 是无平方因子整数. 当 $d\equiv 1\mod 4$ 时 $\Delta_{\BQ(\sqrt{d})}=d$; 当 $d\equiv 2,3\mod 4$ 时 $\Delta_{\BQ(\sqrt{d})}=4d$.
-\end{exercise}
 
 \begin{lemma}{整基判定准则}{integral_basis_criterion}
-设 $\beta_1,\dots,\beta_n\in \fa$ 是 $K/\BQ$ 的一组基. $(\beta_i)_i$ 构成一组整基当且仅当: 如果素数 $p$ 满足 $p^2\mid\disc(\beta_i)_i$ 和 $\suml_{i=1}^n x_i\beta_i\in p\fa, 0\le x_i\le p-1, \forall i$, 则 $x_i=0,\forall i$.
+设 $\beta_1,\dots,\beta_n\in \fa$ 是 $K/\BQ$ 的一组基. $(\beta_i)_i$ 构成 $\fa$ 一组整基当且仅当: 如果素数 $p$ 满足 $p^2\mid\disc(\beta_i)_i$ 和 $\suml_{i=1}^n x_i\beta_i\in p\fa, 0\le x_i\le p-1, \forall i$, 则 $x_i=0,\forall i$.
 \end{lemma}
 \begin{proof}
 设 $(\alpha_i)_i$ 为一组整基, 令 $(\beta_i)_i=(\alpha_i)_iC,C\in M_n(\BZ)$. 假设 $(\beta_i)_i$ 不是一组整基, 则存在素数 $p\mid \det(C)$. 因此 $p^2\mid \disc(\beta_1,\dots,\beta_n)=\det(C)^2 \Delta_\fa$. 设 $\ov C\in M_n(\BF_p)$ 为 $C$ 模 $p$, 则存在非零列向量 $(\bar x_1,\dots,\bar x_n)^\rmT\in\BF_p^n$ 满足 $\ov C(\bar x_1,\dots,\bar x_n)^\rmT=0.$ 设 $x_i\in\set{0,1,\dots,p-1}$ 为 $\bar x_i$ 的提升, 则 
@@ -299,21 +343,6 @@ $\fa$ 的\noun{判别式} $\Delta_\fa\in\BZ$\index{Delta a@$\Delta_\fa$} 是指�
 展开后为 $\alpha$ 的共轭元 $\sigma_1(\alpha),\dots,\sigma_n(\alpha)$ 的初等对称函数的多项式, 且常数项为 $x_j^n$. 由于 $p\mid a_0,\dots,a_{n-1}$, 因此其模 $p$ 同余于 $x_j^n$. 而 $p\mmid \bfN_{K/\BQ}(\alpha)=(-1)^n a_n$, 因此 $\bfN_{K/\BQ}(x)\notin\BZ,x\notin \CO_K$, 矛盾! 因此 $1,\alpha,\dots,\alpha^{n-1}$ 构成一组整基.
 \end{proof}
 
-\begin{proposition}{}{disc_simple}
-设 $\alpha\in K$ 的极小多项式为 $f(T)\in\BQ[T]$. 则
-  \[\disc(1,\alpha,\dots,\alpha^{n-1})=\begin{cases}
-    0,&\text{若 }\deg f<n;\\
-    (-1)^{\frac{n(n-1)}{2}} \bfN_{K/\BQ}\bigl(f'(\alpha)\bigr),\quad&\text{若 }\deg f=n.
-  \end{cases}\]
-\end{proposition}
-\begin{proof}
-$\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, 则由范德蒙行列式知
-  \[\disc(1,\alpha,\dots,\alpha^{n-1})=\det\left(\sigma_i(\alpha^{j-1})_{i,j}\right)^2=\prod_{i<j} \bigl(\sigma_i(\alpha)-\sigma_j(\alpha)\bigr)^2.\]
-由
-  \[\bfN_{K/\BQ}\bigl(f'(\alpha)\bigr)=\prod_{i=1}^n \sigma\bigl(f'(\alpha)\bigr)=\prod_{i=1}^n\prod_{j\neq i}\bigl(\sigma_i(\alpha)-\sigma_j(\alpha)\bigr)\]
-知该命题成立.
-\end{proof}
-
 \begin{example}
 设 $K=\BQ(\alpha),\alpha^3=2$. 则 $\disc(1,\alpha,\alpha^2)=-2^2 3^3$. 而 $f(T)=T^3-2$ 关于 $2$ 是艾森斯坦的, $f(T-1)=T^3-3T^2+3T-3$ 关于 $3$ 是艾森斯坦的, 因此 $\CO_K=\BZ[\alpha]$.
 \end{example}
@@ -330,14 +359,6 @@ $\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, �
 \end{align*}
 又因为 $f(T+1)=T^{p-1}+\suml_{i=1}^{p-1}{p\choose i}T^{i-1}$ 是艾森斯坦的, 因此 $\CO_K=\BZ[\zeta_p]$.
 \end{example}
-\begin{exercise}
-证明 $1,\alpha,\half(\alpha+\alpha^2)$ 是数域 $\BQ(\alpha)$ 的一组整基, 其中 $\alpha^3-\alpha-4=0$.
-\end{exercise}
-
-\begin{exercise}
-(Stickelberger 判别式关系) 证明 $\Delta_K\equiv 0,1\mod 4$. 提示: 设 $P,N$ 分别为行列式 $\det(\tau_i\omega_j)_{ij}$ 中符号为正/负的置换对应的项之和, 则 $\Delta_K=(P-N)^2$, $P+N,PN$ 是整数.
-\end{exercise}
-
 
 \subsection{无穷素位}
 我们来研究下判别式的符号.
@@ -345,23 +366,16 @@ $\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, �
 考虑嵌入 $\sigma\in\Hom_\BQ(K,\BC)$, 容易看出, $\ov\sigma:\xymatrix@1{K\ar[r]^\sigma&\BC\ar[r]^{\text{复共轭}}&\BC}$ 也是一个嵌入.
 
 \begin{definition}{无穷素位}{infinity place}
-称 $\sigma$ 为\noun{无穷素位}.
-如果 $\sigma(K)\subseteq \BR$, 即  $\ov\sigma=\sigma$, 称 $\sigma$ 为\noun{实嵌入}或\noun{实素位}, 否则称之为\noun{复嵌入}或\noun{复素位}. 我们视一对复嵌入为同一个复素位.
-如果 $K$ 没有复素位, 称 $K$ 为\noun{全实域}; 如果 $K$ 没有实素位, 称 $K$ 为\noun{全虚域}.
+\begin{enumerate}
+  \item 称 $\sigma$ 为\noun{无穷素位}.
+  如果 $\sigma(K)\subseteq \BR$, 即  $\ov\sigma=\sigma$, 称 $\sigma$ 为\noun{实嵌入}或\noun{实素位}, 否则称之为\noun{复嵌入}或\noun{复素位}. 我们视一对复嵌入为同一个复素位.
+  \item 如果 $K$ 没有复素位, 称 $K$ 为\noun{全实域}; 如果 $K$ 没有实素位, 称 $K$ 为\noun{全虚域}.
+\end{enumerate}
 \end{definition}
 
 设 $K$ 有 $r$ 个实嵌入和 $s$ 对复嵌入, 那么 
   \[r+2s=n.\]
 如果 $K=\BQ(\gamma)$, 则 $\gamma$ 的共轭根中有 $r$ 个实数和 $s$ 对复数. 如果 $K/\BQ$ 是伽罗瓦扩张, 那么由于 $K$ 的共轭域均为其自身, 因此 $K$ 必为全实域或全虚域.
-
-\begin{exercise}
-研究下列域的无穷素位: 
-\begin{enumerate}
-\item 二次域 $\BQ(\sqrt{d})$, 其中 $d\neq 0,1$ 为无平方因子整数.
-\item 分圆域 $\BQ(\zeta)$, 其中 $\zeta=e^{2\pi i/n}$, $n\ge 3$ 为正整数.
-\item 三次域 $\BQ(\gamma)$.
-\end{enumerate}
-\end{exercise}
 
 \begin{proposition}{}{sign_disc}
 判别式 $\Delta_K$ 的符号为 $(-1)^{s}$.
@@ -372,7 +386,7 @@ $\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, �
 且 $\sigma_{r+2i}=\ov\sigma_{r+2i-1},1\le i\le s$,
 则
   \[\ov{\det\bigl(\sigma_i(\alpha_j)\bigr)_{i,j}}=\det\bigl(\ov\sigma_i(\alpha_j)\bigr)_{i,j}=(-1)^s \det\bigl(\sigma_i(\alpha_j)\bigr)_{i,j},\]
-这里我们交换了 $s$ 对 $\bigl(\ov\sigma_i(\alpha_j)\big)_{i,j}$ 的行向量. 于是
+这里我们交换了 $s$ 对 $\bigl(\ov\sigma_i(\alpha_j)\bigr)_{i,j}$ 的行向量. 于是
 	\[(-1)^s\Delta_K=(-1)^s|\det\bigl(\sigma_i(\alpha_j)\bigr)_{i,j}|^2>0.\]
 \end{proof}
 
@@ -398,10 +412,19 @@ $\deg f<n$ 时其不构成 $K$ 的一组基, 因此 $\disc=0$. 设 $\deg f=n$, �
 \end{proof}
 
 设 
-  \[\Phi_N(T)=\prod_{a\in(\BZ/N\BZ)^\times} (T-\zeta_N^a)\in\BZ[T].\]
+  \[\Phi_N(T)=\prod_{a\in(\BZ/N\BZ)^\times} (T-\zeta_N^a)\in\BZ[T],\]
 称之为\ \nouns{$N$ 次分圆多项式}{N 次分圆多项式@$N$ 次分圆多项式}. 于是
 	\[T^N-1=\prod_{a\in\BN/N\BZ}(T-\zeta_N^a)=\prod_{d\mid N}\Phi_N(T),\]
-由\noun{默比乌斯反演}可知
+由\noun{默比乌斯反演}\footnote{默比乌斯反演是指
+\[a_n=\sum_{d\mid n}b_d\implies
+b_n=\sum_{d\mid n}\mu\bigl(\frac nd\bigr)a_d,\]
+其中默比乌斯函数
+\[\mu(n)=\begin{cases}
+  1,&n=1;\\
+  (-1)^k,&n=p_1\cdots p_k\text{ 为 $k$ 个不同素数乘积};\\
+  0,&n\text{ 有平方因子}.
+\end{cases}\]
+}可知
 	\[\Phi_N(T)=\prod_{d\mid N}(T^d-1)^{\mu(N/d)},\]
 其中 $\mu$ 是\noun{默比乌斯函数}.
 
@@ -475,6 +498,48 @@ $\Delta_{\BQ(\zeta_{p^n})}$ 的判别式为 $\pm p^{p^{n-1}(pn-n-1)}$, 当 $p\eq
 \end{proof}
 
 \begin{exercise}
+  对于 $A\subseteq B\subseteq C$, 如果 $B$ 在 $A$ 上整(即其中每个元素在 $A$ 上整), $C$ 在 $B$ 上整, 则 $C$ 在 $A$ 上整. 
+  \end{exercise}
+  
+  \begin{exercise}
+    \begin{enumerate}
+      \item 设 $\ov A$ 是 $A$ 在 $B$ 中的整闭包, 则 $\ov A$ 在 $B$ 中的整闭包是 $\ov A$.
+      \item 如果 $B$ 在 $A$ 上代数, 则 $B$ 的分式域等于 $\ov A$ 的分式域.
+    \end{enumerate}
+  \end{exercise}
+  
+\begin{exercise}
+(1) 证明 $\BZ,\BZ[i],\BF_p[T]$ 是整闭的. 
+
+(2) 证明 $\BZ[\sqrt{5}]$ 不是整闭的. 它在其分式域中的整闭包是什么?
+\end{exercise}
+
+\begin{exercise}
+设 $L/K$ 是数域扩张. 证明 $\CO_K$ 在 $L$ 中的整闭包是 $\CO_L$.
+\end{exercise}
+
+\begin{exercise}
+设 $d\neq 0,1$ 是无平方因子整数. 当 $d\equiv 1\mod 4$ 时 $\Delta_{\BQ(\sqrt{d})}=d$; 当 $d\equiv 2,3\mod 4$ 时 $\Delta_{\BQ(\sqrt{d})}=4d$.
+\end{exercise}
+
+\begin{exercise}
+证明 $1,\alpha,\half(\alpha+\alpha^2)$ 是数域 $\BQ(\alpha)$ 的一组整基, 其中 $\alpha^3-\alpha-4=0$.
+\end{exercise}
+
+\begin{exercise}
+(Stickelberger 判别式关系) 证明 $\Delta_K\equiv 0,1\mod 4$. 提示: 设 $P,N$ 分别为行列式 $\det(\tau_i\omega_j)_{ij}$ 中符号为正/负的置换对应的项之和, 则 $\Delta_K=(P-N)^2$, $P+N,PN$ 是整数.
+\end{exercise}
+
+\begin{exercise}
+研究下列域的无穷素位: 
+\begin{enumerate}
+\item 二次域 $\BQ(\sqrt{d})$, 其中 $d\neq 0,1$ 为无平方因子整数.
+\item 分圆域 $\BQ(\zeta)$, 其中 $\zeta=e^{2\pi i/n}$, $n\ge 3$ 为正整数.
+\item 三次域 $\BQ(\gamma)$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
 证明 $\BQ(\mu_n)$ 的判别式为
 	\[(-1)^{\varphi(n)/2}\frac{n^{\varphi(n)}}{\prod_{p\mid n}p^{\varphi(n)/(p-1)}}.\]
 \end{exercise}
@@ -495,23 +560,14 @@ $\Delta_{\BQ(\zeta_{p^n})}$ 的判别式为 $\pm p^{p^{n-1}(pn-n-1)}$, 当 $p\eq
 因此 $(6)=\fa^2 \fb\bar\fb$. 实际上, 作为 $O_K$ 理想, $(6)$ 的素理想分解是唯一的.
 \end{example}
 
-\begin{exercise}
-$\alpha\in \CO_K$ 是一个单位当且仅当 $\bfN(\alpha)=\pm 1$. 如果 $\pm\bfN(\alpha)$ 是一个素数, 则  $\alpha$ 是一个素元.
-\end{exercise}
-
 $\CO_K$ 的理想的唯一分解性来源于它是一个戴德金环.
 
 \begin{definition}{诺特环和戴德金环}{Noetherian ring and Dedekind ring}
 如果一个交换环的任意上升的理想链
   \[0\subseteq I_1\subseteq I_2\subseteq \dots \]
-均稳定, 即存在 $N>0$ 使得 $I_n=I_N,\forall n>N$, 则我们称其为\noun{诺特环}. 
+均稳定, 即存在 $N>0$ 使得 $I_N=I_{N+1}=I_{N+2}=\cdots$, 则我们称其为\noun{诺特环}. 
 如果一个诺特整环是整闭的, 且任意非零素理想都是极大理想, 则称其为\noun{戴德金环}.
 \end{definition}
-
-\begin{exercise}
-举一个不是诺特环的例子.
-\end{exercise}
-
 
 \begin{proposition}{}{}
 交换环 $R$ 是诺特环当且仅当 $R$ 的每个理想是有限生成的 $R$ 模.
@@ -521,11 +577,6 @@ $\CO_K$ 的理想的唯一分解性来源于它是一个戴德金环.
 
 反之, 如果 $R$ 的每个理想都是有限生成的, 则对于任意理想升链 $\fa_1\subseteq \fa_2\subseteq \cdots$, $\fa=\bigcup_i\fa_i$ 是有限生成的. 设 $\fa=\suml_{i=1}^r Ra_i$, $a_i\in \fa_{n_i}$, 则 $\fa=\fa_n,n=\max\set{n_1,\dots,n_r}$. 因此该升链稳定.
 \end{proof}
-
-
-\begin{exercise}
-(希尔伯特基定理) 如果 $R$ 是诺特环, 则 $R[x]$ 也是诺特环. 提示: 考虑 $R[x]$ 非零理想 $\fa$ 所有最高次项次数构成的 $R$ 理想.
-\end{exercise}
 
 \begin{theorem}{}{}
 数域的整数环 $\CO_K$ 是戴德金环.
@@ -545,19 +596,6 @@ $\CO_K$ 的理想的唯一分解性来源于它是一个戴德金环.
 \begin{definition}{分式理想}{fractional ideal}
 设 $\CO$ 是戴德金环. 对于 $K=\Fr \CO$ 的非零子集 $\fa$, 如果存在 $\CO$ 中的非零元 $c$ 使得 $c\fa$ 为 $\CO$ 的理想, 则称 $\fa$ 为 $\CO$ 的一个\noun{分式理想}. 换言之, 分式理想是 $K$ 的有限生成非零 $\CO$ 子模.
 \end{definition}
-
-\begin{exercise}
-设 $\fa,\fb$ 为 $\CO$ 的分式理想.
-
-(1) $\fa\fb=\set{\suml_{i=1}^n a_ib_i\mid a_i\in\fa,b_i\in\fb}$
- 是一个分式理想.
- 
-(2) $\fa^{-1}=\set{x\in K\mid x\fa\subseteq\CO}$ 是一个分式理想.
-\end{exercise}
-
-\begin{exercise}
-分式理想全体构成一个交换群 $\CI_K$\index{I K@$\CI_K$}, 幺元为 $(1)=\CO_K$.
-\end{exercise}
 
 \begin{proof}[定理~\ref{thm:dedekind_domain_admits_unique_prime_ideal_decomposition} 的证明]
 设 $\CO$ 是戴德金整环, $\fa$ 是它的一个非零理想. 我们断言存在非零素理想 $\fp_1,\dots,\fp_r$ 使得 
@@ -594,14 +632,6 @@ $\CO_K$ 的分式理想 $\fa$ 可唯一分解为
 其中 $\fp$ 为素理想, $e_\fp\in\BZ$ 只有有限多非零项.
 \end{corollary}
 
-\begin{exercise}
-设 $d\neq 0,1$ 是平方自由的整数, $K=\BQ(\sqrt{d})$. 对于素数 $p$, $p\CO_K$ 是素理想当且仅当 $x^2\equiv d\mod p$ 无解.
-\end{exercise}
-
-\begin{exercise}
-设 $\CO$ 是戴德金环, $\fa$ 是非零理想, 则 $\CO/\fa$ 是主理想整环. 由此证明 $\fa$ 可以由两个元素生成.
-\end{exercise}
-
 \subsection{单位群和理想类群}
 形如 $(\alpha)=\alpha\CO_K$, $\alpha\in K^\times$ 的分式理想被称为\noun{主分式理想}, 记 $\CP_K$\index{P K@$\CP_K$} 为主分式理想全体. 我们有群的正合列
   \[\xymatrix@1{
@@ -631,15 +661,6 @@ $\CO_K^\times$ 为有限生成交换群, 秩为 $r+s-1$, 即
 
 %数域的类群和椭圆曲线的算术性质有密切的联系, 我们来看一个例子.
 %设 $K$ 是 $n$ 次数域, 记 $h_p(K)$ 为 $\Cl_K$ 中被 $p$ 零化的理想类全体构成的子群大小. 人们猜想对于任意正实数 $\epsilon>0$, 均有 $h_p(K)=O(|\Delta_K|^\epsilon)$. 当 $n=p=2$ 时, 高斯亏格理论完全刻画了 $\Cl_K$ 被 $2$ 零化的部分的结构, 此时猜想成立. 而在 2017 年, M. Bhargava, A. Shankar, 谷口隆, F. Thorne, J. Tsimerman 和赵永强 \cite{BhargavaShankarTaniguchi2020} 证明了 $h_p(K)=O(|\Delta_K|^{\frac{1}{2}-\delta_n+\epsilon})$, 其中 $\delta_n$ 为与 $n$ 有关的特定正实数. 由此, 他们可以得到有理数域上椭圆曲线的秩的上界的估计.
-
-
-\begin{exercise}
-设 $\fm$ 是 $\CO_K$ 的非零理想. 对于任意 $\Cl_K$ 中的理想类, 均存在一个与 $\fm$ 互素的整理想代表元.
-\end{exercise}
-
-\begin{exercise}
-初步了解类群的岩泽理论.
-\end{exercise}
 
 
 \subsection{局部化}
@@ -708,6 +729,49 @@ $S$ 理想类群 $\Cl_{K,S}$ 有限.
 \end{proof}
 
 \begin{exercise}
+$\alpha\in \CO_K$ 是一个单位当且仅当 $\bfN(\alpha)=\pm 1$. 如果 $\pm\bfN(\alpha)$ 是一个素数, 则  $\alpha$ 是一个素元.
+\end{exercise}
+  
+\begin{exercise}
+举一个不是诺特环的例子.
+\end{exercise}
+
+
+\begin{exercise}
+(希尔伯特基定理) 如果 $R$ 是诺特环, 则 $R[x]$ 也是诺特环. 提示: 考虑 $R[x]$ 非零理想 $\fa$ 所有最高次项次数构成的 $R$ 理想.
+\end{exercise}
+
+\begin{exercise}
+设 $\fa,\fb$ 为 $\CO$ 的分式理想.
+
+(1) $\fa\fb=\set{\suml_{i=1}^n a_ib_i\mid a_i\in\fa,b_i\in\fb}$
+ 是一个分式理想.
+ 
+(2) $\fa^{-1}=\set{x\in K\mid x\fa\subseteq\CO}$ 是一个分式理想.
+\end{exercise}
+
+\begin{exercise}
+分式理想全体构成一个交换群 $\CI_K$\index{I K@$\CI_K$}, 幺元为 $(1)=\CO_K$.
+\end{exercise}
+
+\begin{exercise}
+设 $d\neq 0,1$ 是平方自由的整数, $K=\BQ(\sqrt{d})$. 对于素数 $p$, $p\CO_K$ 是素理想当且仅当 $x^2\equiv d\mod p$ 无解.
+\end{exercise}
+
+\begin{exercise}
+设 $\CO$ 是戴德金环, $\fa$ 是非零理想, 则 $\CO/\fa$ 是主理想整环. 由此证明 $\fa$ 可以由两个元素生成.
+\end{exercise}
+
+\begin{exercise}
+设 $\fm$ 是 $\CO_K$ 的非零理想. 对于任意 $\Cl_K$ 中的理想类, 均存在一个与 $\fm$ 互素的整理想代表元.
+\end{exercise}
+
+\begin{exercise}
+初步了解类群的岩泽理论.
+\end{exercise}
+
+
+\begin{exercise}
 $\BQ(\sqrt{2}), \BQ(\sqrt{3}), \BQ(\sqrt{5})$ 的基本单位分别是什么?
 \end{exercise}
 
@@ -754,10 +818,6 @@ $V$ 的子群是一个格当且仅当它是离散的, 即对于任意 $\gamma\in
   \[\covol(\Lambda):=\vol(\Phi)=|\det A|,\]
 其中 $(v_1,\dots,v_n)^\rmT=A(e_1,\dots,e_n)^\rmT$.
 
-\begin{exercise}
-证明 $\covol(\Lambda)=\sqrt{|\det\left(\pair{v_i,v_j}\right)_{i,j}|}$ 且不依赖于基的选取.
-\end{exercise}
-
 \begin{definition}{凸集}{convex set}
 设 $X$ 是 $V$ 的一个子集. 如果 $x\in X\implies -x\in X$, 称 $X$ 是\noun{对称}的. 如果 $x,y\in X\implies tx+(1-t)y\in X,\forall t\in [0,1]$, 称 $X$ 是\noun{凸集}.
 \end{definition}
@@ -774,10 +834,6 @@ $V$ 的子群是一个格当且仅当它是离散的, 即对于任意 $\gamma\in
   \[\vol(\Phi)\ge \sum_{\gamma\in \Lambda} \vol\bigl(\Phi\cap (\half X+\gamma)\bigr)=\sum_{\gamma\in \Lambda} \vol\bigl((\Phi-\gamma)\cap \half X\bigr).\]
 由于 $\Phi-\gamma$ 覆盖整个空间, 因此右侧等于 $\vol(\half X)=\frac{1}{2^n}\vol(X)$. 这和假设矛盾.
 \end{proof}
-
-\begin{exercise}
-设 $\Lambda$ 是欧式空间 $V$ 的完全格, 存在一个对称凸集 $X$ 使得 $\vol(X)=2^n\covol(\Lambda)$, 且 $\Lambda\cap X=\set0$.
-\end{exercise}
 
 
 \subsection{闵可夫斯基空间}
@@ -798,15 +854,11 @@ $K_\BC$ 有一个厄米特双线性型
 \end{equation}
 是一个同构, 其中对于实嵌入 $x_\rho=z_\rho$, 对于成对的复嵌入 $x_\sigma=\Re(z_\sigma),x_{\bar \sigma}=\Im(z_\sigma)$.
 此同构诱导了右侧的内积
-\begin{equation}
+\begin{equation}\label{eq:tau}
   \pair{x,y}=\sum_{\tau} \alpha_\tau x_\tau y_\tau,
 \end{equation}
 对于实嵌入, $\alpha_\tau=1$; 对于复嵌入, $\alpha_\tau=2$.
 从而该测度是 $\BR^n$ 上勒贝格测度的 $2^s$ 倍.
-
-\begin{exercise}
-证明上述断言.
-\end{exercise}
 
 
 我们有自然嵌入
@@ -831,14 +883,6 @@ $K_\BC$ 有一个厄米特双线性型
 \end{proof}
 
 因此 $\bfN$ 满足可乘性 $\bfN(\fa\fb)=\bfN\fa \cdot\bfN\fb,$ 故 $\bfN:\CI_K\to \BR_+^\times$ 是一个群同态.
-
-\begin{exercise}
-$\bfN\bigl((a)\bigr)=|\bfN_{K/\BQ}(a)|,\forall a\in K^\times$.
-\end{exercise}
-
-\begin{exercise}
-证明 $\fa$ 所有元素的范数生成的 $\BZ$ 的理想为 $\bfN\fa \BZ$.
-\end{exercise}
 
 \begin{proposition}{}{}
 设 $\fa\subseteq \fb$ 为非零理想, 则 $\Delta_\fa=[\fb:\fa]^2\Delta_\fb.$
@@ -881,17 +925,6 @@ $\bfN\bigl((a)\bigr)=|\bfN_{K/\BQ}(a)|,\forall a\in K^\times$.
 由闵可夫斯基格点定理~\ref{thm:minkow} 知存在非零元 $a\in\fa$, $ja\in X$.
 \end{proof}
 
-\begin{exercise}\label{exe:weak_bound}
-证明对 $\CO_K$ 的任一非零理想 $\fa$, 存在非零元 $a\in\fa$ 使得
-  \[|\bfN_{K/\BQ}(a)|\le \left(\frac{2}{\pi}\right)^s\sqrt{|\Delta_K|}\bfN\fa.\]
-\end{exercise}
-
-\begin{exercise}
-证明对称凸集
-  \[X=\set{(z_\tau)\in K_\BR\mid \suml_\tau |z_\tau|<t}\]
-的体积为 $\vol(X)=2^r\pi^s \frac{t^n}{n!}$.
-\end{exercise}
-
 \begin{proposition}{}{ideal_bound_element}
 对 $\CO_K$ 的任一非零理想 $\fa$, 存在非零元 $a\in\fa$ 使得
 $|\bfN_{K/\BQ}(a)|\le M_K\bfN\fa$, 其中
@@ -933,19 +966,6 @@ $|\bfN_{K/\BQ}(a)|\le M_K\bfN\fa$, 其中
 而范数为 $2$ 的理想只有 $(\sqrt[3]{2})$, 因此 $\CO_K$ 是主理想整环.
 \end{example}
 
-\begin{exercise}
-计算 $K=\BQ(\sqrt{d}),d=-1,-2,-3,-5,-7,2,3,5$ 的类数.
-\end{exercise}
-
-\begin{exercise}\label{exe:disc_not_pm1}
-证明 $K\ne \BQ$ 时, $|\Delta_K|\neq 1$.
-\end{exercise}
-
-\begin{exercise}
-证明当数域 $K$ 的次数趋于无穷时, $|\Delta_K|$ 趋于无穷.
-\end{exercise}
-
-
 \subsection{狄利克雷单位定理}
 为了证明狄利克雷单位定理, 我们需要乘法版本的闵可夫斯基理论.
 记 $K_\BC$ 中每个分量非零的元素全体为 $K_\BC^\times$.
@@ -985,10 +1005,6 @@ $\ker\lambda=\mu_K$.
 \begin{proof}
 显然 $\mu_K\subseteq \Ker\lambda$. 若 $\varepsilon\in\Ker\lambda$, 则 $|\tau \varepsilon|=1$, 故 $j\varepsilon$ 落在 $K_\BR$ 的一个有界区域内. 而 $j\CO_K$ 是一个格, 因此 $\ker\lambda$ 有限, 这迫使 $\ker\lambda=\mu(K)$.
 \end{proof}
-
-\begin{exercise}
-在相差一个单位的前提下, $\bfN_{K/\BQ}(\alpha)=a$ 的 $\alpha$ 只有有限多个.
-\end{exercise}
 
 \begin{theorem}{}{}
 $\Lambda=\lambda(\CO_K^\times)$ 是 $H$ 的一个完全格.
@@ -1042,6 +1058,54 @@ $\covol\bigl(\lambda(\CO_K^\times)\bigr)=\sqrt{r+s}R,$ 其中 $R$ 是矩阵
 \end{example}
 
 \begin{exercise}
+证明 $\covol(\Lambda)=\sqrt{|\det\left(\pair{v_i,v_j}\right)_{i,j}|}$ 且不依赖于基的选取.
+\end{exercise}
+  
+\begin{exercise}
+设 $\Lambda$ 是欧式空间 $V$ 的完全格, 存在一个对称凸集 $X$ 使得 $\vol(X)=2^n\covol(\Lambda)$, 且 $\Lambda\cap X=\set0$.
+\end{exercise}
+
+\begin{exercise}
+证明在等式\eqref{eq:tau}中, 对于实嵌入, $\alpha_\tau=1$; 对于复嵌入, $\alpha_\tau=2$.
+\end{exercise}
+
+\begin{exercise}
+$\bfN\bigl((a)\bigr)=|\bfN_{K/\BQ}(a)|,\forall a\in K^\times$.
+\end{exercise}
+
+\begin{exercise}
+证明 $\fa$ 所有元素的范数生成的 $\BZ$ 的理想为 $\bfN\fa \BZ$.
+\end{exercise}
+
+\begin{exercise}\label{exe:weak_bound}
+证明对 $\CO_K$ 的任一非零理想 $\fa$, 存在非零元 $a\in\fa$ 使得
+  \[|\bfN_{K/\BQ}(a)|\le \left(\frac{2}{\pi}\right)^s\sqrt{|\Delta_K|}\bfN\fa.\]
+\end{exercise}
+
+\begin{exercise}
+证明对称凸集
+  \[X=\set{(z_\tau)\in K_\BR\mid \suml_\tau |z_\tau|<t}\]
+的体积为 $\vol(X)=2^r\pi^s \frac{t^n}{n!}$.
+\end{exercise}
+
+\begin{exercise}
+计算 $K=\BQ(\sqrt{d}),d=-1,-2,-3,-5,-7,2,3,5$ 的类数.
+\end{exercise}
+
+\begin{exercise}\label{exe:disc_not_pm1}
+证明 $K\ne \BQ$ 时, $|\Delta_K|\neq 1$.
+\end{exercise}
+
+\begin{exercise}
+证明当数域 $K$ 的次数趋于无穷时, $|\Delta_K|$ 趋于无穷.
+\end{exercise}
+
+
+\begin{exercise}
+在相差一个单位的前提下, $\bfN_{K/\BQ}(\alpha)=a$ 的 $\alpha$ 只有有限多个.
+\end{exercise}
+
+\begin{exercise}
 虚二次域的单位群是什么?
 \end{exercise}
 
@@ -1080,12 +1144,8 @@ r&s\\u&v
 我们记 $Q=\left(\begin{smallmatrix}
 a&b/2\\b/2&c
 \end{smallmatrix}\right)$ 为 $F$ 的关联矩阵.
-
-\begin{exercise}
-(1) $G$ 和 $F$ 等价当且仅当存在 $\gamma\in\SL_2(\BZ)$ 使得 $G$ 的关联矩阵为 $\gamma^\rmT Q\gamma$.
-
-(2) 等价的二元二次型具有相同的判别式, 且 $F(x,y)=n$ 的解的数量和 $G(x,y)=n$ 的解的数量相同.
-\end{exercise}
+则 $G$ 和 $F$ 等价当且仅当存在 $\gamma\in\SL_2(\BZ)$ 使得 $G$ 的关联矩阵为 $\gamma^\rmT Q\gamma$.
+不难证明, 等价的二元二次型具有相同的判别式, 且 $F(x,y)=n$ 的解的数量和 $G(x,y)=n$ 的解的数量相同.
 
 我们所感兴趣的是所有二元二次型的等价类.
 
@@ -1181,9 +1241,7 @@ a&b/2\\b/2&c
 \begin{example}
 设 $D=-8$, 则对应的正定既约二元二次型只有 $x^2+2y^2$. 由于 $\leg{-2}{p}=-1\iff p\equiv 5,7\bmod8$, 因此正整数 $n$ 可被 $x^2+2y^2$ 表出当且仅当 $p\equiv 5,7\bmod 8$ 在 $n$ 中的幂次为偶数.
 \end{example}
-\begin{exercise}
-哪些正整数可被 $x^2+3y^2$ 表出?
-\end{exercise}
+
 
 \begin{example}
 正整数 $n$ 被 $x^2+5y^2$ 表出当且仅当
@@ -1278,14 +1336,6 @@ r&s\\ u&v\end{smallmatrix}\right)\in\SL_2(\BZ)$ 使得
 注意到 $\bfN_{K/\BQ}(\omega_1)=a\bfN\fb>0$, 通过将 $(\omega_1,\omega_2)$ 换成 $(-\omega_1,-\omega_2)$, 我们可不妨设 $\omega_1$ 全正. 令 $(x,y)=(-\tau,1)$, 则 $\bfN_{K/\BQ}(\omega_2-\tau \omega_1)=0$, 从而 $\omega_2=\tau\omega_1$, $\fb=(\omega_1)\fa$.
 \end{proof}
 
-\begin{exercise}
-$D$ 是某个二次域的判别式当且仅当
-\begin{itemize}
-\item 任意奇素数在 $D$ 中的幂次最多为一次;
-\item $D\equiv 1\bmod 4$ 或 $D/4\equiv 2,3\bmod 4$.
-\end{itemize}
-\end{exercise}
-
 \begin{remark}
 (1) 任意二元二次型的判别式均可唯一写成 $D=f^2D_K$ 的形式, 其中 $D_K$ 是某个二次域的判别式, $f$ 是正整数. 称 $f$ 为该二元二次型的\nouns{导子}{二元二次型!导子}. 类似地, 判别式为 $D$ 的非负定二元二次型等价类全体和 $\CO_K$ 的子环 $\CO=\BZ+f\CO_K$ 的缩理想类群有一一对应.
 
@@ -1298,10 +1348,26 @@ $D$ 是某个二次域的判别式当且仅当
 
 
 \begin{exercise}
-学习高斯关于二次域缩理想类群的 $2$ 部分的刻画 (Gauss genus theory).
+设 $F,G$ 为两个二次型, $Q$ 为 $F$ 的关联矩阵.
+\begin{enumerate}
+  \item $G$ 和 $F$ 等价当且仅当存在 $\gamma\in\SL_2(\BZ)$ 使得 $G$ 的关联矩阵为 $\gamma^\rmT Q\gamma$.
+  \item 若 $F$ 和 $G$ 等价, 则它们的判别式相同, 且 $F(x,y)=n$ 的解的数量和 $G(x,y)=n$ 的解的数量相同.
+\end{enumerate}
 \end{exercise}
 
+\begin{exercise}
+哪些正整数可被 $x^2+3y^2$ 表出?
+\end{exercise}
 
+\begin{exercise}
+$D$ 是某个二次域的判别式当且仅当
+\begin{itemize}
+\item 任意奇素数在 $D$ 中的幂次最多为一次;
+\item $D\equiv 1\bmod 4$ 或 $D/4\equiv 2,3\bmod 4$.
+\end{itemize}
+\end{exercise}
 
-
+\begin{exercise}
+学习高斯关于二次域缩理想类群的 $2$ 部分的刻画 (Gauss genus theory).
+\end{exercise}
 

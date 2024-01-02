@@ -1,10 +1,12 @@
-\documentclass[cn,11pt,chinese,twoside,openright]{elegantbook}
+\documentclass[cn,11pt,chinese,twoside,openright,usesamecnt]{elegantbook}
 \PassOptionsToPackage{style=alphabetic}{biblatex}
+% \PassOptionsToPackage{hyphens}{url}
 \usepackage{fontspec}
 \usepackage[all]{xy}
 \usepackage{stmaryrd}
 \usepackage{makeidx}
 \usepackage{hyperref}
+% \usepackage{breakurl}
 
 \let\question\relax
 \elegantnewtheorem{question}{问题}{prostyle}{que}
@@ -136,8 +138,8 @@
 \newcommand{\vol}{{\mathrm{vol}}}
 \newfontface\cmunrm{cmunrm.otf}
 \newcommand\cmu[1]{{\cmunrm{#1}}}
-\newcommand{\noun}[1]{\textcolor{blue}{{\itshape #1}}\index{{#1}}}
-\newcommand{\nouns}[2]{\textcolor{blue}{{\itshape #1}}\index{{#2}}}
+\newcommand{\noun}[1]{\textcolor{blue}{{\kaishu #1}}\index{{#1}}}
+\newcommand{\nouns}[2]{\textcolor{blue}{{\kaishu #1}}\index{{#2}}}
 \setcounter{tocdepth}{2}
 \newfontfamily\couriernew{Courier New}
 \lstset{language=[LaTeX]TeX,
@@ -201,9 +203,9 @@
 
 \mainmatter
 \input{chapter1.tex}
-\input{chapter2.tex}
-\input{chapter3.tex}
-\input{chapter4.tex}
+% \input{chapter2.tex}
+% \input{chapter3.tex}
+% \input{chapter4.tex}
 % 计划中: order, division algebra, Brauer group
 
 
