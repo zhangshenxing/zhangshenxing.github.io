@@ -84,7 +84,7 @@ $f^{-1}(U_S)=\cap_{i\in S} N_i$ 开, 因此 $f$ 连续.
 \end{example}
 
 \begin{example}
-设 $A$ 是一个交换扭群, 定义它的\noun{庞特里亚金对偶}为
+设 $A$ 是一个交换挠群, 定义它的\noun{庞特里亚金对偶}为
   \[A^\vee=\Hom(A,\BQ/\BZ).\]
 如果 $A=\cup_i A_i$ 是一些有限子群的并, 则
   \[A^\vee=\plim A_i^\vee\]
@@ -109,9 +109,18 @@ $f^{-1}(U_S)=\cap_{i\in S} N_i$ 开, 因此 $f$ 连续.
 
 
 \subsection{抽象伽罗瓦理论}
-考虑射影有限群 $G$ 和它的闭子群 $\set{G_E}_{E\in X}$. 我们称 $E$ 是(抽象)\noun{域}, 存在域 $k$ 和 $\bar k$ 满足 $G_k=G,G_{\bar k}=1$. 
+设 $G$ 是一个射影有限群.
+$\set{G_E}_{E\in X}$ 是它的闭子群构成的一个集族, 且其中包含 $G$ 和 $\set{1}$.
+我们把指标 $E$ 叫做(抽象)\noun{域}.
+那么存在域 $k$ 和 $\bar k$ 满足 $G_k=G,G_{\bar k}=1$.
 
-如果 $G_L\subseteq G_K$, 我们记 $K\subseteq L$ 或 $L/K$, 并称之为\noun{域扩张}. 如果 $G_L$ 是开子群, 即 $n=[G_K:G_L]$ 有限, 称之为 $n$ 次\noun{有限扩张}. 如果 $G_L\triangleleft G_K$, 称之为\noun{正规}或\noun{伽罗瓦扩张}, 并定义 $G(L/K)=G_K/G_L$. 容易知道 $G=\ilim G(K/k)$, 其中 $K/k$ 取遍所有有限伽罗瓦扩张. 类似地, 我们可以定义域的交、复合、共轭以及循环扩张、阿贝尔扩张等概念, 即对应的 $G_E$ 复合、交、共轭以及 $G(L/K)$ 是循环群、阿贝尔群等.
+如果 $G_L\subseteq G_K$, 我们记 $K\subseteq L$ 或 $L/K$, 并称之为\noun{域扩张}.
+如果 $n=[G_K:G_L]$ 有限, 称 $L/K$ 为 $n$ 次\noun{有限扩张}, 此时 $G_L$ 是 $G_K$ 的开子群.
+如果 $G_L\triangleleft G_K$ 是正规子群, 称 $L/K$ 为\noun{正规扩张}或\noun{伽罗瓦扩张}, 并定义 $G(L/K)=G_K/G_L$.
+不难证明
+\[G=\plim_{[K:k]<\infty} G(K/k),\]
+其中 $K$ 取遍 $k$ 的所有有限伽罗瓦扩张.
+类似地, 我们可以定义域的交、复合、共轭以及循环扩张、阿贝尔扩张等概念, 即对应的 $G_E$ 复合、交、共轭以及 $G(L/K)$ 是循环群、阿贝尔群等.
 
 \begin{example}
 设 $E$ 是一个域, $\Omega$ 是它的一个伽罗瓦扩张, $G=G(\Omega/E)$, $X$ 为所有包含在 $\Omega$ 的 $E$ 的有限扩张 $F$ 以及 $\Omega$, $G_F=G(\Omega/F)$. 特别地, 我们可以取 $\Omega=E^\sep$.
@@ -119,7 +128,7 @@ $f^{-1}(U_S)=\cap_{i\in S} N_i$ 开, 因此 $f$ 连续.
 
 设 $A$ 是一个拓扑 $G$ 模($A$ 赋予离散拓扑), 即 $G$ 在 $A$ 上的作用 $G\times A\to A$ 连续, 则对于任意 $a\in A$, 存在 $(1,a)\in G\times A$ 的一个邻域 $G_K\times \set{a}$ 落在它的原像, 即 $a\in A_K=A^{G_K}$. 因此
   \[A=\bigcup_{[K:k]<\infty} A_K.\]
-定义范数映射
+定义范映射
   \[\fct{\bfN_{L/K}: A_L}{A_K}{a}{\prod_\sigma a^\sigma,}\]
 其中 $\sigma$ 取遍 $G_K\bs G_L$ 的一组代表元. 对于伽罗瓦扩张, $A_L$ 是 $G(L/K)$ 模且 $A_L^{G(L/K)}=A_K$.
 因此相应的泰特上同调为
@@ -1201,7 +1210,7 @@ $\sigma w_\fP=w_{\sigma\fP}$.
 \end{proof}
 
 \begin{proposition}{}{}
-设 $T$ 是 $G\bigl(\BQ(\mu_\infty)/\BQ\bigr)$ 的扭部分, 则 $T$ 的固定子域 $\wt\BQ$ 是 $\BQ$ 的 $\wh \BZ$ 扩张. 
+设 $T$ 是 $G\bigl(\BQ(\mu_\infty)/\BQ\bigr)$ 的挠部分, 则 $T$ 的固定子域 $\wt\BQ$ 是 $\BQ$ 的 $\wh \BZ$ 扩张. 
 \end{proposition}
 \begin{proof}
 由于

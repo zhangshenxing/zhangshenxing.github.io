@@ -417,7 +417,7 @@ i=0,1,\dots,n\]
 \end{lemma}
 \begin{proof}
 显然 $\Phi_0=\Phi(X_0,Y_0)$. 归纳地定义
-  \[\Phi_n(\bfX,\bfY)=\frac{1}{p^n}\Biggl(\Phi\Bigl(\sum_{i=0}^n p^i X_i^{p^{n-i}},\sum_{i=0}^n p^i Y_i^{p^{n-i}}\Bigr)-\sum_{i=0}^{n-1} p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\Biggl).\]
+  \[\Phi_n(\bfX,\bfY)=\frac{1}{p^n}\Biggl(\Phi\Bigl(\sum_{i=0}^n p^i X_i^{p^{n-i}},\sum_{i=0}^n p^i Y_i^{p^{n-i}}\Bigr)-\sum_{i=0}^{n-1} p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\Biggr).\]
 我们只需要证明它是整系数的, 我们利用归纳法证明
   \[\Phi(\sum_{i=0}^n p^i X_i^{p^{n-i}},\sum_{i=0}^n p^i Y_i^{p^{n-i}})\equiv \sum_{i=0}^{n-1}p^i\Phi_i(\bfX,\bfY)^{p^{n-i}}\mod{p^n}.\]
 由归纳假设, $\Phi_i\in \BZ[\bfX,\bfY]$, 因此 
@@ -861,7 +861,7 @@ $\BC_p$ 不是球完备的.
 我们有 $ef=[L:K]$.
 \end{proposition}
 \begin{proof}
-由于主理想整环上的有限生成无扭模均为自由模, 因此 $\CO_L$ 是秩 $n$ 自由 $\CO_K$ 模,
+由于主理想整环上的有限生成无挠模均为自由模, 因此 $\CO_L$ 是秩 $n$ 自由 $\CO_K$ 模,
   \[\begin{split}
    n&=\dim_{\CO_K/\fp}(\CO_L/\fp)=\dim_{\CO_K/\fp}(\CO_L/\Pi^e \CO_L)\\
     &=\sum_{i=0}^{e-1}\dim_{\CO_K/\fp}(\Pi^i\CO_L/\Pi^{i+1} \CO_L)=\sum_{i=0}^{e-1}f=ef.

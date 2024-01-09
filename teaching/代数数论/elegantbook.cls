@@ -17,7 +17,8 @@
 \SetupKeyvalOptions{family=ELEGANT, prefix=ELEGANT@, setkeys=\kvsetkeys}
 \newcommand{\ekv}[1]{\kvsetkeys{ELEGANT}{#1}}
 % ----- Colors -----
-\DeclareStringOption[blue]{color}
+\DeclareStringOption[nocolor]{color}
+\DeclareStringOption[doremi]{theme}
 \DeclareStringOption[en]{lang}
 \DeclareStringOption[answer]{result}
 \DeclareStringOption[fancy]{mode}
@@ -34,6 +35,9 @@
 \DeclareVoidOption{gray}{\ekv{color=gray}}
 \DeclareVoidOption{black}{\ekv{color=black}}
 \DeclareVoidOption{nocolor}{\ekv{color=none}}
+
+\DeclareVoidOption{doremi}{\ekv{theme=doremi}}
+\DeclareVoidOption{madoka}{\ekv{theme=madoka}}
 
 \DeclareVoidOption{chinese}{\ekv{scheme=chinese}}
 
@@ -194,7 +198,7 @@
 \ifdefstring{\ELEGANT@lang}{cn}{
   \ifdefstring{\ELEGANT@chinesefont}{founder}{
     \RequirePackage[UTF8, scheme=plain, fontset=none]{ctex}
-    \setCJKmainfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
+    \setCJKsecondfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
     \setCJKsansfont[BoldFont={FZHei-B01}]{FZKai-Z03}
     \setCJKmonofont[BoldFont={FZHei-B01}]{FZFangSong-Z02}
     \setCJKfamilyfont{zhsong}{FZShuSong-Z01}
@@ -281,67 +285,58 @@
 %% 章节以及页脚图形
 
 \RequirePackage[table]{xcolor}
+\newcommand{\themename}{doremi}
 \ifdefstring{\ELEGANT@color}{green}{
-  \definecolor{structurecolor}{RGB}{0,120,2}%
   \definecolor{main}{RGB}{0,120,2}%
-  \definecolor{second}{RGB}{230,90,7}%
-  \definecolor{third}{RGB}{0,160,152}%
+  \definecolor{second}{RGB}{0,120,2}%
+  \definecolor{third}{RGB}{230,90,7}%
+  \definecolor{fourth}{RGB}{0,160,152}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{cyan}{
-  \definecolor{structurecolor}{RGB}{31,186,190}%
-  \definecolor{main}{RGB}{59,180,5}%
-  \definecolor{second}{RGB}{175,153,8}%
-  \definecolor{third}{RGB}{244,105,102}%
+  \definecolor{main}{RGB}{31,186,190}%
+  \definecolor{second}{RGB}{59,180,5}%
+  \definecolor{third}{RGB}{175,153,8}%
+  \definecolor{fourth}{RGB}{244,105,102}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{blue}{
-  \definecolor{structurecolor}{RGB}{60,113,183}
-  \definecolor{main}{RGB}{0,166,82}%
-  \definecolor{second}{RGB}{255,134,24}%
-  \definecolor{third}{RGB}{0,174,247}%
+  \definecolor{main}{RGB}{60,113,183}
+  \definecolor{second}{RGB}{0,166,82}%
+  \definecolor{third}{RGB}{255,134,24}%
+  \definecolor{fourth}{RGB}{0,174,247}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{gray}{
-  \definecolor{structurecolor}{RGB}{150,150,150}
-  \definecolor{main}{RGB}{150,150,150}%
+  \definecolor{main}{RGB}{150,150,150}
   \definecolor{second}{RGB}{150,150,150}%
   \definecolor{third}{RGB}{150,150,150}%
+  \definecolor{fourth}{RGB}{150,150,150}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{black}{
-  \definecolor{structurecolor}{RGB}{0,0,0}
-  \definecolor{main}{RGB}{0,0,0}%
+  \definecolor{main}{RGB}{0,0,0}
   \definecolor{second}{RGB}{0,0,0}%
   \definecolor{third}{RGB}{0,0,0}%
+  \definecolor{fourth}{RGB}{0,0,0}%
 }{\relax}
 
-%green color
-\definecolor{structure1}{RGB}{0,120,2}%
-\definecolor{main1}{RGB}{0,120,2}%
-\definecolor{second1}{RGB}{230,90,7}%
-\definecolor{third1}{RGB}{0,160,152}%
-%cyan color
-\definecolor{structure2}{RGB}{31,186,190}%
-\definecolor{main2}{RGB}{59,180,5}%
-\definecolor{second2}{RGB}{175,153,8}%
-\definecolor{third2}{RGB}{244,105,102}%
-%blue color
-\definecolor{structure3}{RGB}{60,113,183}
-\definecolor{main3}{RGB}{0,166,82}%
-\definecolor{second3}{RGB}{255,134,24}%
-\definecolor{third3}{RGB}{0,174,247}%
-% gray color
-\definecolor{structure4}{RGB}{150,150,150}
-\definecolor{main4}{RGB}{150,150,150}%
-\definecolor{second4}{RGB}{150,150,150}%
-\definecolor{third4}{RGB}{150,150,150}%
-% black color
-\definecolor{structure5}{RGB}{0,0,0}
-\definecolor{main5}{RGB}{0,0,0}%
-\definecolor{second5}{RGB}{0,0,0}%
-\definecolor{third5}{RGB}{0,0,0}%
+% ------ Theme ------ %
+\ifdefstring{\ELEGANT@theme}{doremi}{
+  \definecolor{main}{RGB}{220,60,105}%
+  \definecolor{second}{RGB}{229,143,52}%
+  \definecolor{third}{RGB}{73,119,213}%
+  \definecolor{fourth}{RGB}{122,89,166}%
+  \renewcommand{\themename}{doremi}
+}{\relax}
+\ifdefstring{\ELEGANT@theme}{madoka}{
+  \definecolor{main}{RGB}{255,77,166}%
+  \definecolor{second}{RGB}{237,128,18}%
+  \definecolor{third}{RGB}{100,157,232}%
+  \definecolor{fourth}{RGB}{191,64,100}%
+  \renewcommand{\themename}{madoka}
+}{\relax}
 
 % corlor definition
 \definecolor{winered}{rgb}{0.5,0,0}
 \definecolor{bule}{RGB}{18,29,57}
-\colorlet{coverlinecolor}{second}
+\colorlet{coverlinecolor}{third}
 
 
 % ----- Title Style -----
@@ -372,7 +367,7 @@
 \RequirePackage[shortlabels,inline]{enumitem}
 \setlist{nolistsep}
 
-\RequirePackage[labelfont={bf,color=structurecolor}]{caption} 
+\RequirePackage[labelfont={bf,color=main}]{caption} 
 \captionsetup[table]{skip=3pt}
 \captionsetup[figure]{skip=3pt}
 
@@ -413,7 +408,7 @@
   \renewcommand{\contentsname}{目录}
   \renewcommand{\figurename}{图}
   \renewcommand{\tablename}{表}
-  \renewcommand{\partname}{\color{structurecolor}}
+  \renewcommand{\partname}{\color{main}}
   \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
   \renewcommand{\listfigurename}{插图目录}
   \renewcommand{\listtablename}{表格目录}
@@ -460,7 +455,7 @@
   \newcommand\figref[1]{\textbf{Figure}~\ref{#1}}
   \newcommand\tabref[1]{\textbf{Table}~\ref{#1}}
   \renewcommand{\chaptername}{Chapter}
-  \renewcommand{\partname}{\color{structurecolor} Part}
+  \renewcommand{\partname}{\color{main} Part}
   \newcommand{\authorname}{\textbf{Author: }}
   \newcommand{\institutename}{\textbf{Institute: }}
   \newcommand{\datename}{\textbf{Date: }}
@@ -640,7 +635,7 @@
   \renewcommand{\contentsname}{Inhaltsverzeichnis}
   \newcommand\figref[1]{\textbf{Figur}~\ref{#1}}
   \newcommand\tabref[1]{\textbf{Tabelle}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor} Teil}
+  \renewcommand{\partname}{\color{main} Teil}
   \renewcommand{\listfigurename}{Abbildungsverzeichnis}
   \renewcommand{\listtablename}{Tabellenverzeichnis}
   \renewcommand{\bibname}{Bibliographie}
@@ -790,7 +785,7 @@
   \renewcommand{\contentsname}{目次}
   \newcommand\figref[1]{\textbf{図}~\ref{#1}}
   \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor}}
+  \renewcommand{\partname}{\color{main}}
   \renewcommand{\listfigurename}{イラストカタログ}
   \renewcommand{\listtablename}{表カタログ}
   \renewcommand{\bibname}{参考文献}
@@ -834,18 +829,18 @@
             \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 %  https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
 
-\newcommand*{\eitemi}{\tikz \draw [baseline, ball color=structurecolor,draw=none] circle (2pt);}
-\newcommand*{\eitemii}{\tikz \draw [baseline, fill=structurecolor,draw=none,circular drop shadow] circle (2pt);}
-\newcommand*{\eitemiii}{\tikz \draw [baseline, fill=structurecolor,draw=none] circle (2pt);}
-\setlist[enumerate,1]{label=\color{structurecolor}(\arabic*)}
-\setlist[enumerate,2]{label=\color{structurecolor}(\alph*).}
-\setlist[enumerate,3]{label=\color{structurecolor}\Roman*.}
-\setlist[enumerate,4]{label=\color{structurecolor}\Alph*.}
+\newcommand*{\eitemi}{\tikz \draw [baseline, ball color=main,draw=none] circle (2pt);}
+\newcommand*{\eitemii}{\tikz \draw [baseline, fill=main,draw=none,circular drop shadow] circle (2pt);}
+\newcommand*{\eitemiii}{\tikz \draw [baseline, fill=main,draw=none] circle (2pt);}
+\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,2]{label=\color{main}(\alph*).}
+\setlist[enumerate,3]{label=\color{main}\Roman*.}
+\setlist[enumerate,4]{label=\color{main}\Alph*.}
 \newlist{exenum}{enumerate}{4}
-\setlist[exenum,1]{label=\color{structurecolor}\arabic*.}
-\setlist[exenum,2]{label=\color{structurecolor}(\arabic*)}
-\setlist[exenum,3]{label=\color{structurecolor}(\alph*).}
-\setlist[exenum,4]{label=\color{structurecolor}\Roman*.}
+\setlist[exenum,1]{label=\color{main}\arabic*.}
+\setlist[exenum,2]{label=\color{main}(\arabic*)}
+\setlist[exenum,3]{label=\color{main}(\alph*).}
+\setlist[exenum,4]{label=\color{main}\Roman*.}
 \setlist[itemize,1]{label={\eitemi}}
 \setlist[itemize,2]{label={\eitemii}}
 \setlist[itemize,3]{label={\eitemiii}}
@@ -878,17 +873,17 @@
 
 \setcounter{secnumdepth}{5}
 \titleformat{\chapter}[\style]{\bfseries}{
-  \filcenter\LARGE\enspace\bfseries{\color{structurecolor} \IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}}{1pt}{
-  \LARGE\bfseries\color{structurecolor}\filcenter}[]
+  \filcenter\LARGE\enspace\bfseries{\color{main} \IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}}{1pt}{
+  \LARGE\bfseries\color{main}\filcenter}[]
 \titleformat{\section}[hang]{\bfseries}{
-  \Large\bfseries{\color{structurecolor}\thesection}\enspace}{1pt}{%
-  \color{structurecolor}\Large\bfseries\filright}
+  \Large\bfseries{\color{main}\S\thesection}\enspace}{1pt}{%
+  \color{main}\Large\bfseries\filright}
 \titleformat{\subsection}[hang]{\bfseries}{
-  \large\bfseries\color{structurecolor}\thesubsection\enspace}{1pt}{%
-  \color{structurecolor}\large\bfseries\filright}
+  \large\bfseries\color{main}\S\thesubsection\enspace}{1pt}{%
+  \color{main}\large\bfseries\filright}
 \titleformat{\subsubsection}[hang]{\bfseries}{
-  \large\bfseries\color{structurecolor}\thesubsubsection\enspace}{1pt}{%
-  \color{structurecolor}\large\bfseries\filright}
+  \large\bfseries\color{main}\S\thesubsubsection\enspace}{1pt}{%
+  \color{main}\large\bfseries\filright}
 
 \titlespacing{\chapter}{0pt}{-20pt}{1.3\baselineskip}
 %\titlespacing{\subsection}{0pt}{0.5\baselineskip}{-\baselineskip}
@@ -940,28 +935,31 @@
       separator sign={.},},
     defstyle/.style={
       common,
-      colframe=main,  
-      colback=main!5,
-      colbacktitle=main, 
-      overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{main}{$\clubsuit$}};}},
-    thmstyle/.style={
-      common,
       colframe=second,  
       colback=second!5,
       colbacktitle=second, 
       overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{second}{$\heartsuit$}};}},
-    prostyle/.style={
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/2.png}};}},
+          % \textcolor{second}{$\clubsuit$}};}},
+    thmstyle/.style={
       common,
       colframe=third,  
       colback=third!5,
       colbacktitle=third, 
       overlay unbroken and last={
-        \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
-          \textcolor{third}{$\spadesuit$}};}},
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/3.png}};}},
+          % \textcolor{third}{$\heartsuit$}};}},
+    prostyle/.style={
+      common,
+      colframe=fourth,  
+      colback=fourth!5,
+      colbacktitle=fourth, 
+      overlay unbroken and last={
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/4.png}};}},
+          % \textcolor{fourth}{$\spadesuit$}};}},
     ELEGANT@title/.code n args={2}
       {
 
@@ -1053,11 +1051,11 @@
 
   % declare new theorem styles: defstyle, thmstyle, prostyle
   \newtheoremstyle{defstyle}{3pt}{3pt}{\citshape}{-3pt}{
-    \bfseries\color{main}}{}{0.5em}{\thmname{#1} \thmnumber{#2} \thmnote{(#3)}}
-  \newtheoremstyle{thmstyle}{3pt}{3pt}{\citshape}{-3pt}{
     \bfseries\color{second}}{}{0.5em}{\thmname{#1} \thmnumber{#2} \thmnote{(#3)}}
-  \newtheoremstyle{prostyle}{3pt}{3pt}{\citshape}{-3pt}{
+  \newtheoremstyle{thmstyle}{3pt}{3pt}{\citshape}{-3pt}{
     \bfseries\color{third}}{}{0.5em}{\thmname{#1} \thmnumber{#2} \thmnote{(#3)}}
+  \newtheoremstyle{prostyle}{3pt}{3pt}{\citshape}{-3pt}{
+    \bfseries\color{fourth}}{}{0.5em}{\thmname{#1} \thmnumber{#2} \thmnote{(#3)}}
 
   % define an internal control sequence \ELEGANT@newtheorem for simple mode's newtheorem
   % #1 is the environment name, #2 is the style
@@ -1158,9 +1156,9 @@
       }{\relax}
   }
 
-% main（green-def): example exercise problem solution
-% second（orange-thm）: proof note remark  
-% third（blue-prop):  assumptions property conclusion custom
+% second（green-def): example exercise problem solution
+% third（orange-thm）: proof note remark  
+% fourth（blue-prop):  assumptions property conclusion custom
 
 %% Example with counter
 \newcounter{exam}[chapter]
@@ -1168,18 +1166,18 @@
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
-  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
+  \par\noindent\textbf{\color{second}{\examplename} \theexam #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
 %% Exercise with counter
 \newcounter{exer}[section]
 \setcounter{exer}{0}
-\renewcommand{\theexer}{\thechapter.\arabic{exer}}
+\renewcommand{\theexer}{\thesection.\arabic{exer}}
 \newenvironment{exercise}[1][]{
   \refstepcounter{exer}
   \par\noindent\makebox[-3pt][r]{
-    \scriptsize\color{red!90}\HandPencilLeft\quad}
-    \textbf{\color{main}{\exercisename} \theexer #1 }\rmfamily}{
+    \scriptsize\color{main}\HandPencilLeft\quad}
+    \textbf{\color{second}{\exercisename} \theexer #1 }\rmfamily}{
     \par\ignorespacesafterend}
 
 %% Problem with counter
@@ -1188,37 +1186,37 @@
 \renewcommand{\theprob}{\thechapter.\arabic{prob}}
 \newenvironment{problem}[1][]{
   \refstepcounter{prob}
-  \par\noindent\textbf{\color{main}{\problemname} \theprob #1 }\rmfamily}{
+  \par\noindent\textbf{\color{second}{\problemname} \theprob #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
 \newenvironment{note}{
   \par\noindent\makebox[-3pt][r]{
     \scriptsize\color{red!90}\textdbend\quad}
-    \textbf{\color{second}\notename} \citshape}{\par}
+    \textbf{\color{third}\notename} \citshape}{\par}
 
 \newenvironment{proof}[1][\proofname]{
-  \par\noindent\textbf{\color{second}#1\;}
+  \par\noindent\textbf{\color{third}#1\;}
   \color{black!90}\cfs}{
   \hfill$\Box$\quad
   \par}
 
 
-\newenvironment{solution}{\par\noindent\textbf{\color{main}\solutionname} \citshape}{\par}
-\newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{second}\remarkname}}{\vspace*{5pt}\par}
-\newenvironment{assumption}{\par\noindent\textbf{\color{third}\assumptionname} \citshape}{\par}
-\newenvironment{conclusion}{\par\noindent\textbf{\color{third}\conclusionname} \citshape}{\par}
-\newenvironment{property}{\par\noindent\textbf{\color{third}\propertyname} \citshape}{\par}
-\newenvironment{custom}[1]{\par\noindent\textbf{\color{third} #1} \citshape}{\par}
+\newenvironment{solution}{\par\noindent\textbf{\color{second}\solutionname} \citshape}{\par}
+\newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}\remarkname}}{\vspace*{5pt}\par}
+\newenvironment{assumption}{\par\noindent\textbf{\color{fourth}\assumptionname} \citshape}{\par}
+\newenvironment{conclusion}{\par\noindent\textbf{\color{fourth}\conclusionname} \citshape}{\par}
+\newenvironment{property}{\par\noindent\textbf{\color{fourth}\propertyname} \citshape}{\par}
+\newenvironment{custom}[1]{\par\noindent\textbf{\color{fourth} #1} \citshape}{\par}
 
 \RequirePackage{multicol}
 \tcbset{
   introductionsty/.style={
     enhanced,
     breakable,
-    colback=structurecolor!10,
-    colframe=structurecolor,
+    colback=main!10,
+    colframe=main,
     fonttitle=\bfseries,
-    colbacktitle=structurecolor,
+    colbacktitle=main,
     fontupper=\citshape,
     attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
     boxrule=0pt,
@@ -1226,15 +1224,19 @@
     bottomrule=0.5pt,
     top=8pt,
     before skip=8pt,
-    sharp corners
+    sharp corners,
+    overlay unbroken and last={
+      \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+        \includegraphics[height=10mm]{theme/\themename/1.png}};}
   },
 }
 
 
-\newenvironment{introduction}[1][\introductionname]{
-  \begin{tcolorbox}[introductionsty,title={#1}]
+\newenvironment{introduction}{
+  \begin{tcolorbox}[introductionsty,title=\introductionname]
+  % \begin{tcolorbox}[introductionsty,title={\includegraphics[height=5mm]{theme/\themename/banner.png}}]
     \begin{multicols}{2}
-      \begin{itemize}[label=\textcolor{structurecolor}{\upshape\scriptsize\SquareShadowBottomRight}]}{
+      \begin{itemize}[label=\textcolor{main}{\upshape\scriptsize\SquareShadowBottomRight}]}{
       \end{itemize}
     \end{multicols}
   \end{tcolorbox}}
@@ -1247,7 +1249,7 @@
     \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\exercisename}{\exercisename}}
     % \markboth{#1}{\rightmark}
     \markright{#1}
-    \textcolor{structurecolor}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
+    \textcolor{main}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
   \end{center}
   \begin{enumerate}}{
   \end{enumerate}}
@@ -1255,8 +1257,8 @@
 \newenvironment{exerciseset}{
   \vspace*{10pt}
   \par\indent\makebox[-3pt][r]{
-  \large\color{red!90}\HandPencilLeft\quad}
-  \textbf{\color{main}{\Large\bfseries\exercisename}}\rmfamily
+  \large\color{fourth}\HandPencilLeft\quad}
+  \textbf{\color{second}{\Large\bfseries\exercisename}}\rmfamily
   \begin{exenum}}{
   \end{exenum}}
 
@@ -1277,15 +1279,15 @@
 \fancyhf{}
 
 
-\fancyfoot[c]{\color{structurecolor}\small\thepage}
+\fancyfoot[c]{\color{main}\small\thepage}
 \if@twoside
-  \fancyhead[EL]{\color{structurecolor}\cnormal\leftmark}
-  \fancyhead[OR]{\color{structurecolor}\cnormal\rightmark}
+  \fancyhead[EL]{\color{main}\cnormal\leftmark}
+  \fancyhead[OR]{\color{main}\cnormal\rightmark}
 \else
-  \fancyhead[R]{\color{structurecolor}\cnormal\rightmark}
+  \fancyhead[R]{\color{main}\cnormal\rightmark}
 \fi
 
-\renewcommand{\headrule}{\color{structurecolor}\hrule width\textwidth}
+\renewcommand{\headrule}{\color{main}\hrule width\textwidth}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{1pt}
 % \renewcommand{\headrule}{}
@@ -1315,12 +1317,12 @@
     \fi
   }{\relax}
   \setlength{\fboxsep}{0pt}
-  \colorbox{coverlinecolor}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
+  \colorbox{main}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
   \vfill
   \vskip-2ex
   \hspace{2em}
   \parbox{0.8\textwidth}{
-    \bfseries\Huge 
+    \bfseries\Huge\color{main}
       \ifcsname @title\endcsname \@title \fi
     \par}
   \vfill
@@ -1328,16 +1330,16 @@
   \setstretch{2.5}
   \hspace{2.5em}
   \begin{minipage}[c]{0.67\linewidth}
-    {\color{darkgray}\bfseries\Large
+    {\color{main}\bfseries\Large
       \ifcsname @subtitle\endcsname\@subtitle\\[2ex]\fi}
-    \color{gray}\normalsize
+    \color{main}\normalsize
     {\renewcommand{\arraystretch}{0.618}
     \begin{tabular}{l}
       % \ifcsname @author\endcsname \authorname \@author\\\fi
-      \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi
-      \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi
+      \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi\color{second}
+      \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi\color{third}
       % \ifcsname @date\endcsname  \@date\\\fi
-      \ifx\@date\empty\else\datename\cnormal\@date \\ \fi
+      \ifx\@date\empty\else\datename\cnormal\@date \\ \fi\color{fourth}
       \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
       \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
     \end{tabular}}
@@ -1348,7 +1350,7 @@
       \node[opacity=0.8,
             anchor=south east,
             outer sep=0pt,
-            inner sep=0pt] at ($(current page.south east) +(-0.8in,1.5in)$) {
+            inner sep=0pt] at ($(current page.south east) +(-0.8in,2.5in)$) {
               \ifcsname @logo\endcsname\includegraphics[width=4.2cm]{\@logo}\fi};
     \end{pgfonlayer}
   \end{tikzpicture}
@@ -1388,10 +1390,10 @@
   commentstyle=\color{gray},
   emph={elegantpaper,fontenc,fontspec,xeCJK,citestyle,FiraMono,xunicode,figure,fig,image,img,table,itemize,enumerate,ctex,microtype,description,times,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,ctex,listings,base,math,scheme,toc,esint,chinesefont,amsmath,bibstyle,natbib,pgfornament,addbibresource,printbibliography},
   emphstyle={\color{frenchplum}},
-  morekeywords={DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKmainfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,section,hypersetup,mainmatter,frontmatter,tableofcontents,elegantpar,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote,marginnote,bioinfo,datechange,listofchange,lvert,lastpage,songti,heiti,fangsong,setCJKfamilyfont,textbf,elegantnewtheorem,thmcnt,colorlet,usesamecnt},
+  morekeywords={DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKsecondfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,section,hypersetup,secondmatter,frontmatter,tableofcontents,elegantpar,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote,marginnote,bioinfo,datechange,listofchange,lvert,lastpage,songti,heiti,fangsong,setCJKfamilyfont,textbf,elegantnewtheorem,thmcnt,colorlet,usesamecnt},
   frame=single,
   tabsize=2,
-  rulecolor=\color{structurecolor},
+  rulecolor=\color{main},
   framerule=0.2pt,
   columns=flexible,
   % backgroundcolor=\color{lightgrey}
@@ -1405,11 +1407,11 @@
   \noindent\makebox[0pt][r]{%
   \makebox[-3em][r]{%
     \small
-    \textbf{\textcolor{structurecolor}{#1}}}\;\;}%
+    \textbf{\textcolor{main}{#1}}}\;\;}%
   {\citshape\updatename\ignorespaces#2}}
 
 \newcommand{\datechange}[2]{%
-  \noindent{\makebox[\textwidth][r]{\color{structurecolor}\rule{1.15\textwidth}{.4pt}}}
+  \noindent{\makebox[\textwidth][r]{\color{main}\rule{1.15\textwidth}{.4pt}}}
   \dateinfoline{#1}{#2}
   \addcontentsline{dates}{section}{#1 -- #2}}
 
@@ -1430,7 +1432,7 @@
 
 
 \renewcommand\tableofcontents{%
-  \hypersetup{linktoc=all, linkcolor=black}
+  \hypersetup{linktoc=all, linkcolor=fourth}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else
@@ -1446,7 +1448,7 @@
       \end{multicols}}{
       \@starttoc{toc}}
     \if@restonecol\twocolumn\fi
-    \hypersetup{linkcolor=winered}}
+    \hypersetup{linkcolor=fourth}}
 
 
 \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
