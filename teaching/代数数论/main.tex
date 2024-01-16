@@ -1,11 +1,11 @@
+% 支持的 theme 有 doremi, madoka, 
 \documentclass[nocolor,theme=doremi,lang=cn,11pt,chinese,twoside,openright,usesamecnt]{elegantbook}
 \PassOptionsToPackage{style=alphabetic}{biblatex}
 % \PassOptionsToPackage{hyphens}{url}
-\usepackage{fontspec}
 \usepackage[all]{xy}
 \usepackage{stmaryrd}
 \usepackage{makeidx}
-\usepackage{hyperref}
+\usepackage{pfnote}
 % \usepackage{breakurl}
 
 
@@ -143,8 +143,8 @@
 \newcommand\cmu[1]{{\cmunrm{#1}}}
 \newcommand{\alert}[1]{\textcolor{main}{\bf #1}}
 
-% \newcommand{\cnen}[2]{{\kaishu$\overset{\text{#2}}{\text{#1}}$}}
-\newcommand{\cnen}[2]{#1}
+\newcommand{\cnen}[2]{{\kaishu$\overset{\text{\clap{#2}}}{\text{#1}}$}}
+% \newcommand{\cnen}[2]{#1}
 \newcommand{\nounen}[2]{{\color{third}\kaishu\cnen{#1}{#2}}\index{{#1}}}
 
 \newcommand{\noun}[1]{{\color{third}\kaishu #1}\index{{#1}}}
@@ -214,9 +214,9 @@
 
 \mainmatter
 \input{chapter1.tex}
-\input{chapter2.tex}
-\input{chapter3.tex}
-\input{chapter4.tex}
+% \input{chapter2.tex}
+% \input{chapter3.tex}
+% \input{chapter4.tex}
 % 计划中: order, division algebra, Brauer group
 
 

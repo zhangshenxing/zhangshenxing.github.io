@@ -17,7 +17,7 @@
 \SetupKeyvalOptions{family=ELEGANT, prefix=ELEGANT@, setkeys=\kvsetkeys}
 \newcommand{\ekv}[1]{\kvsetkeys{ELEGANT}{#1}}
 % ----- Colors -----
-\DeclareStringOption[nocolor]{color}
+% \DeclareStringOption[nocolor]{color}
 \DeclareStringOption[doremi]{theme}
 \DeclareStringOption[en]{lang}
 \DeclareStringOption[answer]{result}
@@ -29,12 +29,12 @@
 \DeclareStringOption{scheme}
 
 % ----- backward compatibility
-\DeclareVoidOption{green}{\ekv{color=green}}
-\DeclareVoidOption{cyan}{\ekv{color=cyan}}
-\DeclareVoidOption{blue}{\ekv{color=blue}}
-\DeclareVoidOption{gray}{\ekv{color=gray}}
-\DeclareVoidOption{black}{\ekv{color=black}}
-\DeclareVoidOption{nocolor}{\ekv{color=none}}
+% \DeclareVoidOption{green}{\ekv{color=green}}
+% \DeclareVoidOption{cyan}{\ekv{color=cyan}}
+% \DeclareVoidOption{blue}{\ekv{color=blue}}
+% \DeclareVoidOption{gray}{\ekv{color=gray}}
+% \DeclareVoidOption{black}{\ekv{color=black}}
+% \DeclareVoidOption{nocolor}{\ekv{color=none}}
 
 \DeclareVoidOption{doremi}{\ekv{theme=doremi}}
 \DeclareVoidOption{madoka}{\ekv{theme=madoka}}
@@ -91,7 +91,7 @@
 
 
 % ----- Math option -----
-\newcommand\mailto[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+% \newcommand\mailto[1]{\href{mailto:#1}{\nolinkurl{#1}}}
 
 % ----- Title Style -----
 \DeclareStringOption[hang]{titlestyle}[hang]
@@ -104,12 +104,8 @@
 \ProcessKeyvalOptions*\relax
 % \ProcessOptions*\relax
 \LoadClass[a4paper,oneside]{book}
-
 \RequirePackage{setspace}
-
 \RequirePackage{csquotes}
-
-
 \RequirePackage{hyperref}
 \hypersetup{
   breaklinks,
@@ -286,36 +282,36 @@
 
 \RequirePackage[table]{xcolor}
 \newcommand{\themename}{doremi}
-\ifdefstring{\ELEGANT@color}{green}{
-  \definecolor{main}{RGB}{0,120,2}%
-  \definecolor{second}{RGB}{0,120,2}%
-  \definecolor{third}{RGB}{230,90,7}%
-  \definecolor{fourth}{RGB}{0,160,152}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{cyan}{
-  \definecolor{main}{RGB}{31,186,190}%
-  \definecolor{second}{RGB}{59,180,5}%
-  \definecolor{third}{RGB}{175,153,8}%
-  \definecolor{fourth}{RGB}{244,105,102}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{blue}{
-  \definecolor{main}{RGB}{60,113,183}
-  \definecolor{second}{RGB}{0,166,82}%
-  \definecolor{third}{RGB}{255,134,24}%
-  \definecolor{fourth}{RGB}{0,174,247}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{gray}{
-  \definecolor{main}{RGB}{150,150,150}
-  \definecolor{second}{RGB}{150,150,150}%
-  \definecolor{third}{RGB}{150,150,150}%
-  \definecolor{fourth}{RGB}{150,150,150}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{black}{
-  \definecolor{main}{RGB}{0,0,0}
-  \definecolor{second}{RGB}{0,0,0}%
-  \definecolor{third}{RGB}{0,0,0}%
-  \definecolor{fourth}{RGB}{0,0,0}%
-}{\relax}
+% \ifdefstring{\ELEGANT@color}{green}{
+%   \definecolor{main}{RGB}{0,120,2}%
+%   \definecolor{second}{RGB}{0,120,2}%
+%   \definecolor{third}{RGB}{230,90,7}%
+%   \definecolor{fourth}{RGB}{0,160,152}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{cyan}{
+%   \definecolor{main}{RGB}{31,186,190}%
+%   \definecolor{second}{RGB}{59,180,5}%
+%   \definecolor{third}{RGB}{175,153,8}%
+%   \definecolor{fourth}{RGB}{244,105,102}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{blue}{
+%   \definecolor{main}{RGB}{60,113,183}
+%   \definecolor{second}{RGB}{0,166,82}%
+%   \definecolor{third}{RGB}{255,134,24}%
+%   \definecolor{fourth}{RGB}{0,174,247}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{gray}{
+%   \definecolor{main}{RGB}{150,150,150}
+%   \definecolor{second}{RGB}{150,150,150}%
+%   \definecolor{third}{RGB}{150,150,150}%
+%   \definecolor{fourth}{RGB}{150,150,150}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{black}{
+%   \definecolor{main}{RGB}{0,0,0}
+%   \definecolor{second}{RGB}{0,0,0}%
+%   \definecolor{third}{RGB}{0,0,0}%
+%   \definecolor{fourth}{RGB}{0,0,0}%
+% }{\relax}
 
 % ------ Theme ------ %
 \ifdefstring{\ELEGANT@theme}{doremi}{
