@@ -437,8 +437,14 @@
 \RenewDocumentEnvironment{theorem}{o}{\begin{block}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
 \NewDocumentEnvironment{theorem*}{o}{\begin{block*}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
 
+\NewDocumentEnvironment{proposition}{o}{\begin{block}{\translate{Proposition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\NewDocumentEnvironment{proposition*}{o}{\begin{block*}{\translate{Proposition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+
 \RenewDocumentEnvironment{corollary}{o}{\begin{block}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
 \NewDocumentEnvironment{corollary*}{o}{\begin{block*}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+
+\NewDocumentEnvironment{conjecture}{o}{\begin{block}{\translate{Conjecture}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
+\NewDocumentEnvironment{conjecture*}{o}{\begin{block*}{\translate{Conjecture}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
 
 \RenewDocumentEnvironment{lemma}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
 \NewDocumentEnvironment{lemma*}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
@@ -517,6 +523,7 @@
 \beamerdefaultoverlayspecification{<+->}
 \mode<all>
 % Translations
+\providetranslation[to=ChineseUTF8]{Conjecture}{猜想}
 \providetranslation[to=ChineseUTF8]{Proof (Continued)}{续证}
 \providetranslation[to=ChineseUTF8]{Solution (Continued)}{续解}
 \providetranslation[to=ChineseUTF8]{Thinking}{思考}

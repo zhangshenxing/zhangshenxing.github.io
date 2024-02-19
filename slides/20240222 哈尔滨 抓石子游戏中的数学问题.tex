@@ -1,0 +1,353 @@
+\documentclass[aspectratio=169]{ctexbeamer}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{booktabs}
+\RequirePackage[T1]{fontenc} % 纯英文去掉此行
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei} % 纯英文去掉此行
+\usetheme{reed}
+\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
+\setlength{\parindent}{1.5em}
+\renewcommand{\indent}{\hspace*{1.5em}}
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{frametitle}{size=\Large}
+
+\title{抓石子游戏中的数学问题}
+\author{张神星 (合肥工业大学)}
+\institute{哈尔滨工程大学}
+\date{2024年2月22日}
+\email{zhangshenxing@hfut.edu.cn}
+\titlegraphic{misc/hrbeu.jpg}
+\institutegraphic{misc/hrbeuname.jpg}
+% 自定义主题配色
+\definecolor{themecolor}{RGB}{0,78,161}
+\setbeamercolor{theme}{fg=themecolor}
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\input{symbols}
+\DeclareMathOperator*{\SUB}{{\text{{\upshape\textsc{sub}}}}}
+\renewcommand\ul[1]{{\color{magenta}\underline{#1}}}
+
+\begin{document}
+
+
+\section{抓石子游戏}
+\begin{frame}{抓石子游戏}
+	\begin{itemize}
+		\item 幼儿园里有两个小朋友Alice和Bob, 他们从地上抓起一把石子, 然后从Alice开始, 轮流从石子堆中取走石子.
+		\item 每个人每次可以取走$1\sim3$个石子, 最终谁把最后一颗石子取走, 谁就获得了游戏的胜利.
+		\item 不难知道, 如果一开始石子的个数是$4$的倍数. 那么每次Alice取 \alert{$x$} 个之后, Bob只需要取 \alert{$4-x$} 个, 就可以保证必胜.
+		\item 而如果一开始石子的个数不是$4$的倍数, 那么Alice只需要取 $1\sim 3$个石子, 使得剩下的石子个数是$4$的倍数即可获胜.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{胜负数列}
+	\begin{itemize}
+		\item 我们将这个游戏记为 $\SUB(S)$, 其中 $S=\set{1,2,3}$ 表示每次可以取的石头个数.
+		\item 那么根据初始石头个数 $n$ 的不同, 我们可以得到一个\emph{胜负数列}(从 $0$ 开始):
+		\[0111\ 0111\ 0111\ \cdots\]
+		这里 $0$ 表示先手必败, $1$ 表示先手必胜.
+		\item 事实上, 我们将游戏规则改成\alert{谁不能取谁算输}更为合理, 因为允许取的石子个数的集合 $S$ 可能不包含 $1$, 这样有时候会剩下石子.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Sprague-Grundy 数列}
+	\begin{itemize}
+		\item 如果存在 $s\in S$ 使得 $n-s$ 个石子情形是先手必败的(必败点), 则 $n$ 个石子情形是先手必胜的(必胜点).
+		\item 而有些情形, 既可以转化为必胜点, 也可以转化为必败点. 为了一般化, 我们把必败点叫做$0$级必胜点, 把可以一步走到 $0\sim m-1$ 级必胜点的点, 叫做 $m$ 级必胜点.
+		\item 如果 $n$ 个石子情形是 $m$ 级必胜点, 定义 $\CG_S(n)=m$.
+		\onslide<+->
+		这样我们得到了一个数列, 称之为 \emph{Sprague-Grundy 数列} (或 Nim 数列),
+		\onslide<+->
+		且
+		\[\CG_S(n)=\mex\set{\CG_S(n-s): s\in S}.\]
+		$\mex$ 是指不属于后面集合的最小的非负整数 (minimal except).
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Nim 游戏及其变种}
+	\onslide<+->
+	实际上 Nim 游戏(抓石子游戏)有相当多的变种, 例如
+	\begin{itemize}
+		\item 有多个石子堆;
+		\item 有无穷多种取法 ($S$ 无限);
+		\item 高维情形 ($n$ 是向量, $S$ 是向量集合).
+	\end{itemize}
+	\onslide<+->
+	不过我们今天只讨论 $S$ 有限的一维一堆情形.
+
+	\onslide<+->
+	注意到 $\CG_{dS}(n)=\CG_S\bigl(\bigl[\frac nd\bigr]\bigr)$.
+	\onslide<+->
+	因此我们只需考虑 $S$ 的所有元素公因子为 $1$ 的情形.
+\end{frame}
+
+
+\subsection{已知结果}
+
+\begin{frame}{周期和预周期}
+	\onslide<+->
+	通过抽屉原理, 容易说明:
+	\onslide<+->
+	\begin{proposition}
+		数列 $\CG_S$ 是\emph{最终周期}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG_S(n+p)=\CG_S(n),\forall n\ge \ell$.
+	\end{proposition}
+
+	\onslide<+->
+	将最小的 $p$ 称为($\CG_S$ 或 $\SUB(S)$ 的)\emph{周期}, 最小的 $\ell$ 称为\emph{预周期} (pre-period).
+
+	\onslide<+->
+	我们总将集合 $S$ 中的元素从小到大排列, 即
+	\[S=\set{s_1,s_2,\dots,s_k},\quad s_1<s_2<\cdots<s_k.\]
+	\onslide<+->
+	不难说明, 满足 $\CG_S(n)=\CG_S(n+p),\ell\le\forall  n\le \ell+s_k$ 的最小的 $p$ 和 $\ell$ 就是周期和预周期.
+	\onslide<+->
+	因此对于任意集合 $S$, 很容易通过计算机来计算它的周期和预周期, 从而得到整个 SG 数列.
+\end{frame}
+
+
+\section{已知的结论}
+\begin{frame}{$k\le 2$ 等情形}
+	\onslide<+->
+	当 $k=\#S\le 2$ 时, $p$ 和 $\ell$ 都是已知的.
+	\onslide<+->
+	而即使是 $k=3$ 的情形, $p$ 和 $\ell$ 依然还不是完全知道.
+	\onslide<+->
+	我们将回顾已知的并给出一些新的结果.
+	\begin{itemize}
+		\item $\CG_{\set1}=\ul{01}$.
+		这里 $\ul{\CH}=\CH\CH\cdots$ 表示无穷多个 $\CH$ 重复得到的序列.
+		\item $1\in S$ 不含偶数 $\iff \CG_S=\ul{01}$.
+		\item 设 $S=\set{a,c=at+r}, 0\le r<a$, 则
+			\[\CG_S=\begin{cases}
+				\ul{(0^a 1^a)^{t/2} 0^r 2^{a-r}1^r},&2\mid t;\\
+				\ul{(0^a 1^a)^{(t+1)/2} 2^r},&2\nmid t,
+			\end{cases},\quad
+			\ell=0, p=c+a\ \text{或}\ 2a.\]
+		这里 $\CH^t=\CH\cdots\CH$ 表示 $t$ 个 $\CH$ 重复得到的序列.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{$S=\set{1,b,c}$ 的简单情形}
+	\begin{itemize}
+		\item 设 $S=\set{1,b,c},2\nmid b$.
+		注意到 $\CG_\set{1,b}=\ul\CH, \CH=01$.
+		我们有
+		\begin{center}
+			\begin{tabular}{cccc}
+				\toprule
+				$c$ & $\CG_S$ & $\ell$ & $p$\\
+				\midrule
+				奇数&$\ul\CH$ & $0$ & $2$\\
+				偶数&$\ul{\CH^{c/2}(23)^{(b-1)/2}2}$ & $0$ & $c+b$\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+
+		\item 设 $S=\set{1,2,3t+r},0\le r<3$.
+		注意到 $\CG_\set{1,2}=\ul\CH, \CH=012$.
+		我们有
+		\begin{center}
+			\begin{tabular}{cccc}
+				\toprule
+				$r$ & $\CG_S$ & $\ell$ & $p$\\
+				\midrule
+				$0$ & $\ul{(012)^t3}$ & $0$ & $c+1$\\
+				$1,2$ & $\ul{012}$ & $0$ & $3$\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{$S=\set{1,b,c}$ 的简单情形}
+	\begin{itemize}
+		\item 设 $S=\set{1,4,c=5t+r}, 0\le r<5$.
+		注意到 $\CG_\set{1,4}=\ul{\CH}, \CH=01012$.
+		我们有
+		\begin{center}
+			\begin{tabular}{cccc}
+				\toprule
+				$r,c$ & $\CG_S$ & $\ell$ & $p$\\
+				\midrule
+				$r=0, c=5$ & $\ul{\CH\,323}$ & $0$ & $8$\\
+				$r=0, c>5$ & $\CH^t\,323013\ul{\CH^{t-1}012012}$ & $c+6$ & $c+1$\\
+				$r=1,4$ & $\ul\CH$ & $0$ & $5$\\
+				$r=2$ & $\ul{\CH^t\,012}$ & $0$ & $c+1$\\
+				$r=3$ & $\ul{\CH^{t+1}\,32}$ & $0$ & $c+4$\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{$S=\set{1,b,c}$ 的复杂情形}
+	\begin{proposition}
+		设 $S=\set{1,b,c=t(b+1)+r},b=2k\ge 6,0\le r\le b$.
+		\onslide<+->{
+		\begin{enumerate}
+			\item 若 $r=1,b$, 则 $\ell=0, p=b+1$.
+			\item 若 $3\le r\le b-1$ 是奇数, 则 $\ell=0, p=c+b$.
+			\item 若 $r=b-2$, 则 $\ell=0, p=c+1$.
+			\item 若 $c=b+1$, 则 $\ell=0,p=2b$.
+			\item 若 $c>b+1$, $0\le r\le b-4$ 是偶数且 $t+r/2\ge k$, 则 $\ell=\bigl((b-r)/2-1\bigr)(c+b+2)-b, p=c+1$.
+			\item 若 $c>b+1$, $0\le r\le b-4$ 是偶数且 $t+r/2\le k-1$, 则 $\ell=t(c+b+2)-b$. 若 $t+r/2<k-1$, 则 $p=c+b$; 若 $t+r/2=k-1$, 则 $p=b-1$.
+		\end{enumerate}}
+	\end{proposition}
+	\onslide<+->
+	我们发现, 对于集合 $S=\set{1,b,c}$, $p$ 和 $\ell$ 的形式与 $c$ 模 $\set{1,b}$ 的周期的同余类有关.
+	\onslide<+->
+	对于每一个同余类而言, $p$ 和 $\ell$ 是 $c$ 的一次函数.
+\end{frame}
+
+
+\begin{frame}{更多的例子}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\item 设 $S=\set{a,2a,c=3at+r},0\le r<3a$, 则
+			\[\ell=\begin{cases}
+					c+a-r,&0<r<a;\\
+					0,&\text{其它情形},
+				\end{cases}\quad 
+				p=\begin{cases}
+					3a/2,&r=a/2;\\
+					3a,&a/2<r\le 2a;\\
+					c+a,&\text{其它情形.}
+				\end{cases}\]
+			\item 设 $S=\set{a,a+1,\dots,b-1,b,c=t(a+b)+r},0\le r<a+b$, 则
+			\[\ell=0,\quad p=\begin{cases}
+				a+b,&a\le r\le b;\\
+				c+a,&r=0\text{ 或 }r>b;\\
+				c+b,&0<r<a.
+			\end{cases}\]
+		\end{enumerate}
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{更多的例子}
+	\onslide<+->
+	\begin{example}
+		设 $S=\set{2,3,5,7}$, 则 $\CG_S=\ul{0^2 1^2 2^2 3^2 4}$ 周期为 $9$.
+		对于 $11\le c\le 500$, $\SUB\bigl(S\cup\set{c}\bigr)$ 的预周期和周期为
+		\[\ell_c=\begin{cases}
+			2c-4,&c\equiv1\bmod{18};\\
+			c+5,&c\equiv10\bmod{18};\\
+			0,&\text{其它情形},
+		\end{cases}\quad
+			p_c=\begin{cases}
+			c+2, &c\equiv0,8,9,10,17\bmod{18};\\
+			4, &c\equiv1\bmod{18};\\
+			9, &\text{其它情形}.
+		\end{cases}\]
+	\end{example}
+\end{frame}
+
+
+\section{主要猜想、结论和应用}
+\begin{frame}{主要猜想结论}
+	\onslide<+->
+	根据这些结论, 我们提出如下猜想:
+	\onslide<+->
+	\begin{conjecture}
+		固定集合 $S$. 存在正整数 $q, N$ 以及 $\alpha_r,\beta_r,\lambda_r,\mu_r,0\le r<q$,
+		使得当 $c\ge N$ 且 $c\equiv r\bmod q$ 时,
+			$\SUB(S\cup\{c\})$ 的预周期和周期分别是 $\alpha_r c+\beta_r$ 和 $\lambda_r c+\mu_r$.
+	\end{conjecture}
+	\onslide<+->
+	\begin{theorem}
+		上述猜想在如下情形成立:
+		\begin{enumerate}[<*>]
+			\item $1\in S$ 且 $S$ 所有元素均为奇数;
+			\item $S=\set{1,b}$;
+			\item $S=\set{a,2a}$;
+			\item $S=\set{a,a+1,\dots,b-1,b}$.
+		\end{enumerate}
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{应用: 最终二分序列}
+	\onslide<+->
+	这个猜想可以指导我们寻找特定周期的 SG 序列.
+	\onslide<+->
+	如果 $\CG_S$ 的周期为 $2$, 称 $\SUB(S)$ 是\emph{最终二分}的.
+	\onslide<+->
+	可以证明如果 $\SUB(S)$ 是最终二分的, 则 $S$ 不含偶数.
+	\onslide<+->
+	\begin{example}
+		设 $a\ge 3$ 是奇数. 如果 $S$ 是如下情形之一:
+		\begin{itemize}[<*>]
+			\item $S=\set{3,5,9,\dots,2^a+1}$;
+			\item $S=\set{3,5,2^a+1}$;
+			\item $S=\set{a,a+2,2a+3}$;
+			\item $S=\set{a,2a+1,3a}$,
+		\end{itemize}
+		则 $\SUB(S)$ 是最终二分的.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{应用: 最终二分序列}
+	\onslide<+->
+	根据上面的例子和猜想的启发, 我们发现了如下三元最终二分 $\SUB(S)$.
+	\onslide<+->
+	\begin{theorem}
+		设 $a\ge 3$ 是奇数, $t\ge 1$.
+		如果 $S$ 是如下情形之一:
+		\begin{enumerate}[<*>]
+			\item $S=\set{a,a+2,(2a+2)t+1}$;
+			\item $S=\set{a,2a+1,(3a+1)t-1}$;
+			\item $S=\set{a,2a-1,(3a-1)t+a-2}$,
+		\end{enumerate}
+		则 $\SUB(S)$ 是最终二分的.
+	\end{theorem}
+	\onslide<+->
+	对于四元情形, 我们通过计算发现了当 $3\le a\le 25, c<500$ 且 $c\not\equiv \pm1 \bmod a$ 时, $\SUB(\set{a,2a+1,3a,c})$ 是最终二分的.
+\end{frame}
+
+
+
+\begin{frame}
+\begin{center}
+\huge 谢谢!
+\end{center}
+\end{frame}
+
+%
+%\begin{frame}{广告: 合肥工业大学人才招聘}
+%\scriptsize
+%\begin{center}
+%\begin{table}
+%\begin{tabular}{|c|c|c|c|c|c|c|}
+%\hline
+%人才岗位&聘用条件&建设费&薪酬&安家费&过渡房或补贴&其他待遇\\\hline
+%斛兵学者I&&充足&120万&面议&专家公寓&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%斛兵学者II&$\leqslant$55岁&充足&100万&260万&\tabincell{c}{两年期过渡住房\\或2500元/月}&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%斛兵学者III&$\leqslant$45岁&充足&70万&200万&\tabincell{c}{两年期过渡住房\\或2000元/月}&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%斛兵学者IV&$\leqslant$45岁&充足&50万&100万&\tabincell{c}{两年期过渡住房\\或1500元/月}&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%\tabincell{c}{黄山学者\\特聘教授}&\tabincell{c}{3年工作经历\\或高校正高级\\或境外终身教职\\$\leqslant$40岁}
+%&50万&45万&90万&\tabincell{c}{一年期过渡住房\\或1500元/月}&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%\tabincell{c}{黄山学者\\优秀青年}&\tabincell{c}{2年工作经历\\$\leqslant$35岁}
+%&30万&40万&70万&\tabincell{c}{一年期过渡住房\\或1500元/月}&\tabincell{c}{配偶工作\\子女入学}\\\hline
+%\tabincell{c}{黄山学者\\学术骨干}&\tabincell{c}{2年工作经历\\$\leqslant$35岁}
+%&20万&26万&50万&\tabincell{c}{一年期教师公寓\\或1000元/月}&子女入学\\\hline
+%青年教师&$\leqslant$35岁&3万&21万&25万&一年期青教公寓&子女入学\\\hline
+%师资博士后&\tabincell{c}{毕业$\leqslant$3年\\$\leqslant$35岁}&5万&26万&&青教公寓&子女入学\\\hline
+%\end{tabular}
+%\end{table}
+%\end{center}
+%\end{frame}
+\end{document}
+
+
+
