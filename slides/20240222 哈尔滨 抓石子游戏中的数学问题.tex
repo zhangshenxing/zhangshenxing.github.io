@@ -29,6 +29,7 @@
 \input{symbols}
 \DeclareMathOperator*{\SUB}{{\text{{\upshape\textsc{sub}}}}}
 \renewcommand\ul[1]{{\color{magenta}\underline{#1}}}
+\newcommand{\emphov}[2]{\emph{$\overset{\text{\clap{#2}}}{\text{#1}}$}}
 
 \begin{document}
 
@@ -76,10 +77,10 @@
 	\begin{itemize}
 		\item 有多个石子堆;
 		\item 有无穷多种取法 ($S$ 无限);
-		\item 高维情形 ($n$ 是向量, $S$ 是向量集合).
+		\item 高维情形 ($n$ 是向量, $S$ 是向量集合) 等等.
 	\end{itemize}
 	\onslide<+->
-	不过我们今天只讨论 $S$ 有限的一维一堆情形.
+	不过我们今天只讨论 $S$ 有限的\emphov{一维一堆情形}{subtraction game}.
 
 	\onslide<+->
 	注意到 $\CG_{dS}(n)=\CG_S\bigl(\bigl[\frac nd\bigr]\bigr)$.
@@ -95,11 +96,11 @@
 	通过抽屉原理, 容易说明:
 	\onslide<+->
 	\begin{proposition}
-		数列 $\CG_S$ 是\emph{最终周期}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG_S(n+p)=\CG_S(n),\forall n\ge \ell$.
+		数列 $\CG_S$ 是\emphov{最终周期}{ultimately periodic}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG_S(n+p)=\CG_S(n),\forall n\ge \ell$.
 	\end{proposition}
 
 	\onslide<+->
-	将最小的 $p$ 称为($\CG_S$ 或 $\SUB(S)$ 的)\emph{周期}, 最小的 $\ell$ 称为\emph{预周期} (pre-period).
+	将最小的 $p$ 称为($\CG_S$ 或 $\SUB(S)$ 的)\emphov{周期}{period}, 最小的 $\ell$ 称为\emphov{预周期}{pre-period}.
 
 	\onslide<+->
 	我们总将集合 $S$ 中的元素从小到大排列, 即
@@ -121,7 +122,7 @@
 	我们将回顾已知的并给出一些新的结果.
 	\begin{itemize}
 		\item $\CG_{\set1}=\ul{01}$.
-		这里 $\ul{\CH}=\CH\CH\cdots$ 表示无穷多个 $\CH$ 重复得到的序列.
+		这里 $\ul{\CH}=\CH\CH\cdots$ 表示无穷多个 $\CH$ 重复得到的数列.
 		\item $1\in S$ 不含偶数 $\iff \CG_S=\ul{01}$.
 		\item 设 $S=\set{a,c=at+r}, 0\le r<a$, 则
 			\[\CG_S=\begin{cases}
@@ -129,7 +130,7 @@
 				\ul{(0^a 1^a)^{(t+1)/2} 2^r},&2\nmid t,
 			\end{cases},\quad
 			\ell=0, p=c+a\ \text{或}\ 2a.\]
-		这里 $\CH^t=\CH\cdots\CH$ 表示 $t$ 个 $\CH$ 重复得到的序列.
+		这里 $\CH^t=\CH\cdots\CH$ 表示 $t$ 个 $\CH$ 重复得到的数列.
 	\end{itemize}
 \end{frame}
 
@@ -276,11 +277,11 @@
 \end{frame}
 
 
-\begin{frame}{应用: 最终二分序列}
+\begin{frame}{应用: 最终二分数列}
 	\onslide<+->
-	这个猜想可以指导我们寻找特定周期的 SG 序列.
+	这个猜想可以指导我们寻找特定周期的 SG 数列.
 	\onslide<+->
-	如果 $\CG_S$ 的周期为 $2$, 称 $\SUB(S)$ 是\emph{最终二分}的.
+	如果 $\CG_S$ 的周期为 $2$, 称 $\SUB(S)$ 是\emphov{最终二分}{ultimately bipartite}的.
 	\onslide<+->
 	可以证明如果 $\SUB(S)$ 是最终二分的, 则 $S$ 不含偶数.
 	\onslide<+->
@@ -297,7 +298,7 @@
 \end{frame}
 
 
-\begin{frame}{应用: 最终二分序列}
+\begin{frame}{应用: 最终二分数列}
 	\onslide<+->
 	根据上面的例子和猜想的启发, 我们发现了如下三元最终二分 $\SUB(S)$.
 	\onslide<+->
