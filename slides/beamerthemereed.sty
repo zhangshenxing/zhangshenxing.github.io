@@ -163,9 +163,13 @@
 \defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
 \defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
 \setbeamertemplate{footline}{%
+	\setlength{\parindent}{0em}
 	\leavevmode%
 	\hbox{%
-		\begin{beamercolorbox}[wd=\paperwidth,ht=0.5pt]{seperate line}
+		\begin{beamercolorbox}[%
+			wd=\paperwidth,%
+			ht=0.5pt%
+		]{seperate line}%
 		\end{beamercolorbox}%
 	}\par%
 	\hbox{%
@@ -188,18 +192,18 @@
 				\kern2pt\usebeamertemplate{head/foot seperator}%
 				\thesection~\insertsectionhead{}%
 			}\fi%
-			\hfill
+			\hfill%
 			{%
 				\usebeamercolor[fg]{date in head/foot}%
 				\usebeamerfont{date in head/foot}%
 				\insertshortdate%
 			}%
-			\par
-			\let\sectionentry=\my@sectionentry@hide
-			\let\slideentry=\my@slideentry@section
-			\dohead
-			\kern\beamer@rightmargin
-			\hfill
+			\par%
+			\let\sectionentry=\my@sectionentry@hide%
+			\let\slideentry=\my@slideentry@section%
+			\dohead%
+			\kern\beamer@rightmargin%
+			\hfill%
 			{%
 				\usebeamercolor[fg]{page number in head/foot}%
 				\usebeamerfont{page number in head/foot}%
@@ -253,6 +257,26 @@
 		colbacktitle=structure.fg!80
 	}
 }
+\usebeamercolor{structure}
+\usebeamercolor{alerted text}
+\tcbset{
+	defstyle/.style={
+		common,
+		colframe=structure.fg!50!alerted text.fg,
+		colback=structure.fg!50!alerted text.fg!7,
+		colbacktitle=structure.fg!50!alerted text.fg!80
+	}
+}
+\usebeamercolor{alerted text}
+\usebeamercolor{example text}
+\tcbset{
+	proofstyle/.style={
+		common,
+		colframe=alerted text.fg!50!example text.fg,
+		colback=alerted text.fg!50!example text.fg!7,
+		colbacktitle=alerted text.fg!50!example text.fg!80
+	}
+}
 \usebeamercolor{example text}
 \tcbset{
 	exampstyle/.style={
@@ -267,8 +291,9 @@
 	alertstyle/.style={
 		common,
 		colframe=alerted text.fg,
-		colback=alerted text.fg!10,
-		colbacktitle=alerted text.fg!80
+		colback=-structure.fg!40!black,
+		colbacktitle=alerted text.fg!80,
+		colupper=alerted text.fg
 	}
 }
 % @ means notitle, * means indent
