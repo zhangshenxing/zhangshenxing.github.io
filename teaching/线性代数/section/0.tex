@@ -1,0 +1,139 @@
+\begin{frame}{课程安排}
+	\onslide<+->
+	\begin{columns}
+		\column{0.48\textwidth}
+			\onslide<+->
+			\begin{block*}{课时}
+				本课程共$10$周$40$课时, 自2023年9月12日至2023年11月16日.
+			\end{block*}
+			\vspace{.4\baselineskip}
+			\onslide<+->
+			\begin{block}{课程QQ群(入群答案 1400261B)}
+				\vspace{\baselineskip}
+					003班(机器人、自动化) \emph{\textbf{871140152}}
+					\vspace{\baselineskip}
+					
+					004班(力学、电气) \emph{\textbf{871141886}}
+			\end{block}
+			\column{0.48\textwidth}
+			\begin{block}{教材}
+				\begin{figure}
+					\includegraphics[height=32mm]{../image/book.jpg}
+					\caption{唐烁\ 朱士信《线性代数》}
+				\end{figure}
+			\end{block}
+		\end{columns}
+\end{frame}
+
+
+\begin{frame}{成绩构成}
+	\onslide<+->
+	\begin{columns}
+		\column{0.48\textwidth}
+		\onslide<+->
+		\begin{block*}{作业 15分}
+			\vspace{\baselineskip}
+			每章交一次, 作业及前一章答案每次发布在QQ群和个人主页中. 
+			作业可以打印出来, 或使用薄作业本(不用抄题目, 注明题号), 请勿使用厚笔记本! 
+			\vspace{\baselineskip}
+
+			\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
+			\vspace{1.1\baselineskip}
+		\end{block*}
+
+		\column{0.48\textwidth}
+		\onslide<+->
+		\begin{block*}{课堂测验 25分}
+			课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
+		\end{block*}
+
+		\onslide<+->
+		\begin{block*}{期末报告 10分}
+			期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
+		\end{block*}
+
+		\onslide<+->
+		\begin{block*}{期末考试 50分}
+			期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
+	\end{block*}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{线性代数的意义}
+	\onslide<+->
+	线性代数是一门研究线性方程、线性空间、线性变换等线性结构的课程.
+	\onslide<+->
+	尽管真实的世界中, 例如函数关系, 往往是非线性的.
+	但我们可以利用线性方法去模拟、近似、逼近它.
+	\onslide<+->
+	这便是线性代数它的意义
+
+	\onslide<+->
+	线性代数的应用之广泛, 使得它成为了高等教育中大多数学科的必修数学课程.
+	\onslide<+->
+	我们不在此处逐一列举, 在之后的课程中我们会见到它的各种应用.
+\end{frame}
+
+
+\begin{frame}{课程内容}
+	\begin{center}
+		\begin{tikzpicture}[
+			small mindmap,
+			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
+			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
+			font=\scriptsize, text=white,
+			childa/.style={concept color=red,faded/.style={concept color=red!50}},
+			childb/.style={concept color=blue,faded/.style={concept color=blue!50}},
+			childc/.style={concept color=orange,faded/.style={concept color=orange!50}},
+			childd/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
+			childe/.style={concept color=purple,faded/.style={concept color=green!50!black!50}},
+			grow cyclic,
+			level 1/.append style={level distance=2.8cm,font=\small},
+			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
+			\node [root concept] {线性代数} % root
+			child [grow=-5, level distance=3.5cm, childa] { node {起源}
+				child[grow=0, level distance=2.5cm] { node {解线性方程} }
+				child[grow=25, level distance=3.5cm] { node {行列式的引入与计算} }
+				child[grow=50, level distance=2.5cm] { node {克拉默法则} }
+			}
+			child [grow=35, level distance=3.5cm, childb] { node {矩阵}
+				child[grow=12,level distance=3.7cm] { node {线性方程的再抽象} }
+				child[grow=35,level distance=4.2cm] { node {矩阵的定义与运算} }
+				child[grow=58,level distance=3.5cm] { node {逆矩阵、分块矩阵} }
+				child[grow=85,level distance=3cm] { node {初等变换和秩} }
+			}
+			child [grow=90, level distance=2.5cm, childc] { node {向量组}
+				child[grow=50,level distance=2.5cm] { node {线性表示与线性相关} }
+				child[grow=90,level distance=2.7cm] { node {极大无关组与秩} }
+				child[grow=130,level distance=2.5cm] { node {向量空间与标准正交组} }
+			}
+			child [grow=130, level distance=3.3cm, childd] { node {线性方程}
+				child[grow=115,level distance=3cm] { node {齐次线性方程} }
+				child[grow=150,level distance=3.7cm] { node {非齐次线性方程} }
+			}
+			child [grow=180, level distance=3.3cm, childe] { node {相似和二次型}
+				child[grow=115,level distance=2.8cm] { node {特征值与特征向量} }
+				child[grow=135,level distance=4.2cm] { node {相似矩阵} }
+				child[grow=155,level distance=3.3cm] { node {实对称矩阵和对角化} }
+				child[grow=185,level distance=3cm] { node {二次型} }
+			};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}{课程学习方法}
+	\begin{center}
+		\begin{tikzpicture}[node distance=25pt]
+			\node[cstnodeg,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
+			\node[cstnodeg,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
+			\node[cstnodeg,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnodeg,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
+			\draw[cstnarrow,dcolorc] (1.east) to[bend left] (2.north);
+			\draw[cstnarrow,dcolorc] (2.south) to[bend left] (3.east);
+			\draw[cstnarrow,dcolorc] (3.west) to[bend left] (4.south);
+			\draw[cstnarrow,dcolorc] (4.north) to[bend left] (1.west);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+

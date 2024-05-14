@@ -1,0 +1,188 @@
+\section{解析函数与调和函数的关系}
+
+
+\subsection{调和函数}
+
+\begin{frame}{调和函数}
+	\onslide<+->
+	调和函数是一类重要的二元实变函数, 它和解析函数有着紧密的联系.
+	\onslide<+->
+	为了简便, 我们用 $u_{xx},u_{yy}$ 来表示二阶偏导数.
+
+	\onslide<+->
+	\begin{definition}
+		如果二元实变函数 $u(x,y)$ 在区域 $D$ 内有二阶连续偏导数, 且满足拉普拉斯方程
+		\[\alert{\Delta u:=u_{xx}+u_{yy}=0},\]
+		则称 $u(x,y)$ 是 $D$ 内的\emph{调和函数}.
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{解析函数与调和函数的联系}
+	\onslide<+->
+	\begin{theorem}
+		区域 $D$ 内解析函数 $f(z)$ 的实部和虚部都是调和函数.
+	\end{theorem}
+
+	\onslide<+->
+	\begin{proof}
+		设 $f(z)=u(x,y)+iv(x,y)$, 则 $u,v$ 存在偏导数且
+			\[f'(z)=u_x+iv_x=v_y-iu_y.\]
+		\onslide<+->{由于 $f(z)$ 任意阶可导, 因此 $u,v$ 存在任意阶偏导数.
+		}\onslide<+->{由C-R方程 $u_x=v_y,u_y=-v_x$
+		}\onslide<+->{可知
+			\[\Delta u=u_{xx}+u_{yy}=v_{yx}-v_{xy}=0,\]}
+			\vspace{-\baselineskip}
+		\onslide<+->{
+			\[\Delta v=v_{xx}+v_{yy}=-u_{yx}+u_{xy}=0.\qedhere\]}
+		\vspace{-\baselineskip}
+	\end{proof}
+\end{frame}
+
+
+\subsection{共轭调和函数}
+\begin{frame}{解析函数与调和函数的联系}
+	\onslide<+->
+	反过来, 调和函数是否一定是某个解析函数的实部或虚部呢?
+	\onslide<+->
+	对于单连通的情形, 答案是肯定的.
+
+	\onslide<+->
+	如果 $u+iv$ 是区域 $D$ 内的解析函数, 则我们称 $v$ 是 $u$ 的\emph{共轭调和函数}.
+	\onslide<+->
+	换言之 $u_x=v_y,u_y=-v_x$.
+	\onslide<+->
+	显然 $-u$ 是 $v$ 的共轭调和函数.
+	\onslide<+->
+	\begin{theorem}
+		设 $u(x,y)$ 是单连通域 $D$ 内的调和函数, 则线积分
+		\[v(x,y)=\int_{(x_0,y_0)}^{(x,y)}-u_y\diff x+u_x\diff y+C\]
+		是 $u$ 的共轭调和函数.
+	\end{theorem}
+	\onslide<+->
+	由此可知, 区域 $D$ 上的调和函数在 $z\in D$ 的一个邻域内是一解析函数的实部, 从而在该邻域内具有任意阶连续偏导数.
+	\onslide<+->
+	而 $z$ 的任取的, 因此调和函数总具有任意阶连续偏导数.
+\end{frame}
+
+
+\begin{frame}{共轭调和函数的求法}
+	\onslide<+->
+	如果 $D$ 是多连通区域, 则未必存在共轭调和函数.
+	\onslide<+->
+	例如 $\ln(x^2+y^2)$ 是复平面去掉原点上的调和函数, 但它并不是某个解析函数的实部.
+	\onslide<+->
+	事实上, 它是 $2\Ln z$ 的实部.
+
+	\onslide<+->
+	在实际计算中, 我们\emph{一般不用线积分}来得到共轭调和函数, 而是采用下述两种办法:
+	\onslide<+->
+	\begin{alertblock}{偏积分法}
+		通过 $v_y=u_x$ 解得 $v=\varphi(x,y)+\psi(x)$, 其中 $\psi(x)$ 待定.
+		\onslide<+->{再代入 $u_y=-v_x$ 中解出 $\psi(x)$.}
+	\end{alertblock}
+	\onslide<+->
+	\begin{alertblock}{不定积分法}
+		对 $f'(z)=u_x-iu_y=v_y+iv_x$ 求不定积分得到 $f(z)$.
+	\end{alertblock}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
+	\begin{example}
+		证明 $u(x,y)=y^3-3x^2y$ 是调和函数, 并求其共轭调和函数以及由它们构成的解析函数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution*}
+		由 $u_x=-6xy,u_y=3y^2-3x^2$ 可知 $u_{xx}+u_{yy}=-6y+6y=0$,
+		\onslide<+->{故 $u$ 是调和函数.}
+
+		\onslide<+->{由 $v_y=u_x=-6xy$ 得 $v=-3xy^2+\psi(x)$.}
+
+		\onslide<+->{由 $v_x=-u_y=3x^2-3y^2$ 得 $\psi'(x)=3x^2$,
+		}\onslide<+->{$\psi(x)=x^3+C$.}
+
+		\onslide<+->{故 $v(x,y)=-3xy^2+x^3+C$,
+		}\onslide<+->{
+		\[
+			f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
+			\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
+		\]}
+	\end{solution*}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
+	当解析函数 $f(z)$ 为 $x,y$ 的多项式形式时, 将 $m$ 次齐次的项放一起, 则 $x^m$ 的系数就是 $f(z)$ 中 $z^m$ 的系数.
+
+	\onslide<+->
+	在上例中我们也可由另一种方法计算得到:
+	\onslide<+->
+	\[f'(z)=u_x-iu_y=-6xy-i(3y^2-3x^2)=3iz^2.\]
+	\onslide<+->
+	因此 $f(z)=iz^3+C$.
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
+	\begin{example}
+		求解析函数 $f(z)$ 使得它的虚部为
+		\[v(x,y)=e^x(y\cos y+x\sin y)+x+y.\]
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $u_x=v_y=e^x(\cos y-y\sin y+x\cos y)+1$ 得
+		\[u=e^x(x\cos y-y\sin y)+x+\psi(y).\]
+		\onslide<+->{由 $u_y=-v_x=-e^x(y\cos y+x\sin y+\sin y)-1$ 得
+		\[\psi'(y)=-1,\quad\psi(y)=-y+C.\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
+	\begin{solutionc}
+		故
+		\vspace{-.5\baselineskip}
+		\begin{align*}
+			f(z)&=u+iv\\
+			&=e^x(x\cos y-y\sin y)+x-y+C
+			+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]\\
+			&\visible<+->{=ze^z+(1+i)z+C,\quad C\in\BR.}
+		\end{align*}
+	\end{solutionc}
+	\onslide<+->
+	这里, 我们只需看 $e^x\cos y$ 的系数 $x+iy=z$, 即 $f(z)$ 中 $e^z$ 的系数.
+\end{frame}
+
+
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\onslide<+->
+	也可由
+	\begin{align*}
+		f'(z)&=v_y+iv_x\\
+		&=e^x(\cos y-y\sin y+x\cos y)+1
+		+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]\\
+		&\visible<+->{=(z+1)e^z+1+i.}
+	\end{align*}
+	\onslide<+->
+	得 $f(z)=ze^z+(1+i)z+C$.
+	\onslide<+->
+	\begin{exercise}
+		证明 $u(x,y)=x^3-6x^2y-3xy^2+2y^3$ 是调和函数并求它的共轭调和函数.
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		$v(x,y)=2x^3+3x^2y-6xy^2-y^3+C$.
+	\end{answer}
+	\onslide<+->
+	显然 $u+iv=(1+2i)z^3+iC$.
+\end{frame}
+

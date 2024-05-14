@@ -1,0 +1,41 @@
+
+\subsection{积分变换的引入}
+
+\begin{frame}{积分变换的引入}
+	\onslide<+->
+	在学习指数和对数的时候, 我们了解到利用对数可以将乘除、幂次转化为加减、乘除.
+	\onslide<+->
+	\begin{example}
+		计算 $12345\times 67890$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+			通过查对数表得到
+			\[\ln 12345\approx 9.4210,\qquad\ln 67890\approx 11.1256.\]%
+		\onslide<+->{将二者相加并通过反查对数表得到原值
+			\[12345\times 67890\approx \exp(20.5466)\approx 8.3806\times 10^8.\]
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{积分变换的引入}
+	\onslide<+->
+	而对于函数而言, 我们常常要解函数的微积分方程.
+	\onslide<+->
+	\begin{example}
+		解微分方程
+		\[\begin{cases}
+			y''+y=t,&\\
+			y(0)=y'(0)=0.&
+		\end{cases}\]
+	\end{example}
+	\onslide<+->
+	\begin{solution*}
+			我们希望能找到一种函数\emph{变换 $\msl$}, 使得它可以把函数的微分和积分变成代数运算, 计算之后通过\emph{反变换 $\msl^{-1}$} 求得原来的解.
+
+		\onslide<+->{这个变换最常见的就是我们将要介绍的\emph{傅里叶变换}和\emph{拉普拉斯变换}.
+		}
+	\end{solution*}
+\end{frame}
+

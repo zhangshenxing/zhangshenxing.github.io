@@ -1,0 +1,354 @@
+\section{幂级数}
+
+
+\subsection{幂级数的收敛域}
+\begin{frame}{函数项级数与幂级数}
+	\onslide<+->
+	复变函数级数与实变量函数级数也是类似的.
+
+	\onslide<+->
+	\begin{definition}
+		\begin{itemize}
+			\item 设 $\{f_n(z)\}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
+			表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\emph{复变函数项级数}.
+			\item 对于 $z_0\in D$, 如果级数 $\suml_{n=1}^\infty f_n(z_0)$ 收敛, 则称 \emph{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\emph{和}.
+			\item 如果 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\emph{和函数}.
+			\item 称形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的函数项级数为\emph{幂级数}.
+		\end{itemize}
+	\end{definition}
+
+	\onslide<+->
+	我们只需要考虑 $a=0$ 情形的幂级数, 因为二者的收敛范围与和函数只是差一个平移.
+\end{frame}
+
+
+\begin{frame}{阿贝尔定理}
+	\onslide<+->
+	\begin{block}{阿贝尔定理}
+		\begin{enumerate}
+			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
+			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
+		\end{enumerate}
+	\end{block}
+
+	\onslide<+->
+	\begin{proof}
+		\onslide<+->{\enumnum1 因为级数收敛, 所以 $\lim\limits_{n\to\infty}c_n z_0^n=0$.
+		}\onslide<+->{故存在 $M$ 使得 $|c_nz_0^n|<M$.
+		}\onslide<+->{对于 $|z|<|z_0|$,
+			\[\sum_{n=0}^\infty|c_nz^n|=\sum_{n=0}^\infty|c_nz_0^n|\cdot\abs{\frac z{z_0}}^n
+			\visible<+->{\le M\sum_{n=0}^\infty\abs{\frac z{z_0}}^n
+			=\frac{M}{1-\abs{\dfrac z{z_0}}}.}\]
+		}\onslide<+->{所以级数在 $z$ 处绝对收敛.
+		}\onslide<+->{\enumnum2是\enumnum1的逆否命题.\qedhere}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{幂级数的收敛半径}
+	\onslide<+->
+	设 $R$ 是实幂级数 $\suml_{n=0}^\infty|c_n|x^n$ 的收敛半径.
+	\begin{itemize}
+		\item 如果 $R=+\infty$, 由阿贝尔定理可知 $\suml_{n=0}^\infty c_nz^n$ 处处绝对收敛.
+		\item 如果 $0<R<+\infty$, 那么 $\suml_{n=0}^\infty c_nz^n$ 在 $|z|<R$ 上绝对收敛, 在 $|z|>R$ 上发散.
+		\item 如果 $R=0$, 那么 $\suml_{n=0}^\infty c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
+	\end{itemize}
+	\onslide<+->
+	我们称 $R$ 为该幂级数的\emph{收敛半径}.
+
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.2);
+			\fill[cstdot] (0,0) circle;
+			\draw[cstcurve,cstarrowto] (0,0)--(0.96,0.72);
+			\draw[cstcurve,cstarrowto] (-0.96,0.72)--(-2,0.72);
+			\draw
+				(0.6,0.1) node {$R$}
+				(0,-0.4) node[dcolorb] {绝对收敛}
+				(2.5,-0.4) node[dcolorb] {发散}
+				(-3,0.72) node[dcolora] {都有可能};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例题: 收敛半径的计算}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\suml_{n=0}^\infty z^n=1+z+z^2+\cdots$ 的收敛半径与和函数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		如果幂级数收敛, 则由 $z^n\to0$ 可知 $|z|<1$.
+		\onslide<+->{当 $|z|<1$ 时, 和函数为
+			\[\lim_{n\to\infty}s_n=\lim_{n\to\infty}\frac{1-z^{n+1}}{1-z}=\frac1{1-z}.\]
+		}\onslide<+->{因此收敛半径为 $1$.}
+	\end{solution}
+\end{frame}
+
+
+\subsection{收敛半径的计算}
+\begin{frame}{收敛半径的计算}
+	\onslide<+->
+	由正项级数的相应判别法容易得到公式 $R=\dfrac1r$, 其中
+	\begin{enumerate}
+		\item \emph{达朗贝尔公式(比值法)}: \abox{$r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$} (假设存在);
+		\item \emph{柯西公式(根式法)}: $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在);
+		\item \emph{柯西-阿达马公式}: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
+	\end{enumerate}
+	\onslide<+->
+	如果 $r=0$ 或 $+\infty$, 则 $R=+\infty$ 或 $0$.
+\end{frame}
+
+
+\begin{frame}{典型例题: 收敛半径的计算}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n$ 的收敛半径, 并讨论 $z=0,2$ 的情形.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac n{n+1}=1$ 可知收敛半径为 $1$.
+
+		\onslide<+->{当 $z=2$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac1n$ 发散.}
+
+		\onslide<+->{当 $z=0$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac{(-1)^n}n$ 收敛.}
+	\end{solution}
+
+	\onslide<+->
+	事实上, \alert{收敛圆周上既可能处处收敛, 也可能处处发散, 也可能既有收敛的点也有发散的点}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 收敛半径的计算}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\suml_{n=0}^\infty\cos(in)z^n$ 的收敛半径.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		我们有 $c_n=\cos(in)=\dfrac{e^n+e^{-n}}2$.
+		\onslide<+->{由
+			\[\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{e^{n+1}+e^{-n-1}}{e^n+e^{-n}}=e\lim_{n\to\infty}\frac{1+e^{-2n-2}}{1+e^{-2n}}=e\]
+		可知收敛半径为 $\dfrac1e$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 收敛半径的计算}
+	\onslide<+->
+	\begin{exercise}
+		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm][2mm]{\visible<+->{$\dfrac{\sqrt2}2$}}.
+	\end{exercise}
+\end{frame}
+
+
+% \begin{frame}{典型例题: 收敛半径的计算\noexer}
+% \onslide<+->
+% \begin{example}
+% 求幂级数 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 的收敛半径并讨论在收敛圆周上的情形, 其中 $p\in\BR$.
+% \end{example}
+% \onslide<+->
+% \begin{solution}
+% 由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\left(\frac n{n+1}\right)^p=1$ 可知收敛半径为 $1$.
+% \onslide<+->{设 $|z|=1$.
+% \begin{itemize}
+% \item 若 $p>1$, $\displaystyle\sum_{n=1}^\infty\abs{\frac{z^n}{n^p}}=\sum_{n=1}^\infty\frac1{n^p}$ 收敛,
+% \onslide<+->{原级数在收敛圆周上处处绝对收敛.}
+% \item 若 $p\le 0$, $\abs{\dfrac{z^n}{n^p}}=\dfrac1{n^p}\not\to0$,
+% \onslide<+->{原级数在收敛圆周上处处发散.}
+% \end{itemize}}
+% \end{solution}
+% \end{frame}
+
+
+% \begin{frame}{典型例题: 收敛半径的计算\noexer}
+% \onslide<+->
+% 回忆\emph{狄利克雷判别法}: 若 $\set{a_n}_{n\ge 1}$ 部分和有界, 实数项数列 $\set{b_n}_{n\ge 1}$ 单调趋于 $0$, 则 $\suml_{n=1}^\infty a_nb_n$ 收敛.
+
+% \onslide<+->
+% \begin{solutionc}
+% \begin{itemize}
+% \item 若 $0<p\le1$, $\displaystyle\sum_{n=1}^\infty\frac1{n^p}$ 发散, 
+% \onslide<+->{而在收敛圆周上其它点 $z\neq1$ 处,
+% \[|z+z^2+\cdots+z^n|=\abs{\frac{z(1-z^n)}{1-z}}
+% \le\frac{2}{|1-z|}\]
+% 有界, 数列 $\set{n^{-p}}_{n\ge 1}$ 单调趋于 $0$,}
+% \onslide<+->{因此 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 收敛.}
+% \onslide<+->{故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.}
+% \end{itemize}
+% \end{solutionc}
+% \end{frame}
+
+
+\subsection{幂级数的运算性质}
+\begin{frame}{幂级数的有理运算}
+	\onslide<+->
+	\begin{theorem}
+		设幂级数
+		\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R_1,\quad
+		g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
+		\onslide<+->{那么当 $|z|<R=\min\{R_1,R_2\}$ 时,
+		\[(f\pm g)(z)=\sum_{n=0}^\infty (a_n\pm b_n)z^n,\quad
+		(fg)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^na_kb_{n-k}\right)z^n.\]}
+	\end{theorem}
+
+	\onslide<+->
+	当 $f,g$ 的收敛半径相同时, $f\pm g$ 或 $fg$ 的收敛半径可以比 $f,g$ 的大.
+\end{frame}
+
+
+\begin{frame}{幂级数的代换运算}
+	\onslide<+->
+	\begin{theorem}
+		设幂级数
+		\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R,\]
+		设函数 $\varphi(z)$ 在 $|z|<r$ 上解析且 $|\varphi(z)|<R$, 
+		\onslide<+->{那么当 $|z|<r$ 时,
+		\[f[\varphi(z)]=\sum_{n=0}^\infty a_n[\varphi(z)]^n.\]}
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{幂级数的解析性质}
+	\onslide<+->
+	\begin{theorem}
+		设幂级数 $\suml_{n=0}^\infty c_nz^n$ 的收敛半径为 $R$, 则在 $|z|<R$ 上:
+		\begin{enumerate}
+			\item 它的和函数 $f(z)=\suml_{n=0}^\infty c_nz^n$ 解析,
+			\item $f'(z)=\suml_{n=1}^\infty nc_nz^{n-1}$,
+			\item $\displaystyle\int_0^zf(z)\diff z=\sum_{n=0}^\infty \frac{c_n}{n+1}z^{n+1}$.
+		\end{enumerate}
+	\end{theorem}
+
+	\onslide<+->
+	也就是说, \alert{在收敛圆内, 幂级数的和函数解析, 且可以逐项求导, 逐项积分}.
+\end{frame}
+
+
+\begin{frame}{幂级数的解析性质}
+	\onslide<+->
+	由于和函数在 $|z|>R$ 上没有定义, 因此我们不能谈和函数在 $|z|=R$ 上的解析性.
+
+	\onslide<+->
+	如果函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
+	\onslide<+->
+	这是因为一旦 $g(z)$ 在收敛圆周上处处解析, 该和函数就可以在一个半径更大的圆域上作泰勒展开.
+\end{frame}
+
+
+\begin{frame}{例题: 幂级数展开}
+	\onslide<+->
+	\begin{example}
+		把函数 $\dfrac1{z-b}$ 表成形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的幂级数, 其中 $a\neq b$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		\[\frac1{z-b}=\frac1{(z-a)-(b-a)}
+		\visible<+->{=\frac1{a-b}\cdot\frac1{1-\dfrac{z-a}{b-a}}.}\]
+		\onslide<+->{当 $|z-a|<|b-a|$ 时,
+		}\onslide<+->{$\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\right)^n$,
+		}\onslide<+->{即
+		\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\]}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\suml_{n=1}^\infty(2^n-1)z^{n-1}$ 的收敛半径与和函数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{2^{n+1}-1}{2^n-1}=2$ 可知收敛半径为 $\dfrac12$.
+		\onslide<+->{当 $|z|<\dfrac12$ 时, $|2z|<1$.}
+		\onslide<+->{从而
+		\begin{align*}
+		\sum_{n=1}^\infty(2^n-1)z^{n-1}&=\sum_{n=1}^\infty 2^n z^{n-1}-\sum_{n=1}^\infty z^{n-1}\\
+		&\visible<+->{=\frac2{1-2z}-\frac1{1-z}=\frac1{(1-2z)(1-z)}.}
+		\end{align*}}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\suml_{n=0}^\infty(n+1)z^n$ 的收敛半径与和函数.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{n+1}n=1$ 可知收敛半径为 $1$.
+	\onslide<+->{当 $|z|<1$ 时,
+		\[\int_0^z\sum_{n=0}^\infty(n+1)z^n\diff z=\sum_{n=0}^\infty z^{n+1}=\frac z{1-z}=-1-\frac1{z-1},\]
+	}\onslide<+->{因此
+		\[\sum_{n=0}^\infty(n+1)z^n=\left(-\frac1{z-1}\right)'=\frac1{(z-1)^2},\quad |z|<1.\]}
+\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\onslide<+->
+	通过对
+	\[1+\lambda z+\lambda^2 z^2+\cdots=\dfrac1{1-\lambda z}\]
+	两边求 $k$ 阶导数可得
+	\[\sum_{n=0}^{\infty}(n+k)\cdots(n+2)(n+1)\lambda^n z^n=\frac{k!}{(1-\lambda z)^{k+1}}.\]
+	\onslide<+->
+	因此如果 $p(n)$ 是次数为 $m-1$ 的多项式, 那么
+	\[\sum_{n=0}^\infty p(n)\lambda^n z^n=\frac{P(z)}{(1-\lambda z)^{m}},\]
+	其中 $P$ 是多项式.
+\end{frame}
+
+
+\begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\onslide<+->
+	一般地, 如果幂级数的系数形如
+	\[c_n=p_1(n)\lambda_1^n+\cdots+p_k(n)\lambda_k^n,\]
+	\onslide<+->
+	则和函数一定是形如
+	\[\sum_{n=0}^{\infty}c_nz^n
+	=\frac{P(z)}{(1-\lambda_1z)^{m_1}\cdots(1-\lambda_kz)^{m_k}}\]
+	的有理函数,	其中 $m_j=\deg p_j+1$.
+	\onslide<+->
+	反过来这样的分式展开成幂级数的系数也一定有上述形式, 至多有有限多项例外.
+	\onslide<+->
+	这可以帮助我们进行计算的验证.
+	\onslide<+->
+	\begin{exercise}
+		求幂级数 $\suml_{n=1}^\infty\dfrac{z^n}n$ 的收敛半径与和函数.
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		收敛半径为 $1$, 和函数为 $-\ln(1-z)$.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例题: 函数项级数的积分}
+	\onslide<+->
+	\begin{example}
+		求 $\displaystyle\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由于 $\suml_{n=0}^\infty z^n$ 在 $|z|<1$ 收敛,
+	\onslide<+->{它的和函数解析.
+	}\onslide<+->{因此
+		\begin{align*}
+		\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z
+		&=\oint_{|z|=\half }\frac1z\diff z+\oint_{|z|=\half }\left(\sum_{n=0}^\infty z^n\right)\diff z\\
+		&\visible<+->{=2\pi i+0=2\pi i.}
+	\end{align*}}
+	\end{solution}
+\end{frame}
+

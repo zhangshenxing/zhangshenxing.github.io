@@ -1,0 +1,170 @@
+\subsection{行列式的引入}
+
+\begin{frame}{行列式的引入\noexer}
+	\onslide<+->
+	线性代数起源于线性方程组的求解问题.
+	\onslide<+->
+	考虑方程组
+	\begin{laeq}
+		3x_1-2x_2=12,&\\
+		2x_1+x_2=1.
+	\end{laeq}
+	\onslide<+->
+	2(2)+(1)可得 $7x_1=14$.
+	\onslide<+->
+	从而 $x_1=2,x_2=-3$.
+\end{frame}
+
+\begin{frame}{行列式的引入\noexer}
+	\onslide<+->
+	我们考虑一般情形:
+	\begin{laeq}
+		a_{11}x_1+a_{12}x_2=b_1,&\\
+		a_{21}x_1+a_{22}x_2=b_2.
+	\end{laeq}
+	\onslide<+->
+	分别作 $a_{22}\times (1), a_{12}\times (2)$ 得到
+	\begin{laeq}
+		a_{22}a_{11}x_1+a_{22}a_{12}x_2=b_1 a_{22},&\\
+		a_{12}a_{21}x_1+a_{12}a_{22}x_2=b_2 a_{12}.
+	\end{laeq}
+	\onslide<+->
+	然后 $-(2)+(1)$ 得到
+	\[(a_{11}a_{22}-a_{12}a_{21})x_1=a_{22}b_1-a_{12}b_2.\]
+\end{frame}
+
+\begin{frame}{行列式的引入\noexer}
+	\onslide<+->
+	于是
+	\[x_1=\frac{b_1 a_{22}-b_2 a_{12}}{a_{11}a_{22}-a_{12}a_{21}}.\]
+	\onslide<+->
+	类似地, 从 $-a_{21}(1)+a_{12}(2)$ 得到
+	\[x_2=\frac{-a_{21}b_1+a_{11}b_2}{a_{11}a_{22}-a_{12}a_{21}}.\]
+
+	\onslide<+->
+	有没有问题?
+	\onslide<+->
+	当 $a_{11}a_{22}-a_{12}a_{21}=0$ 时, 不能使用这种方式求解.
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	那么这个方程是不是真的只有 $x=2$ 这一个解呢?
+	\onslide<+->
+	由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个解.
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[framed]
+			\filldraw[cstcurve,dcolora,domain=-3.1:3.7,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
+			\draw[cstaxis] (-2.5,0)--(2.5,0);
+			\draw[cstaxis] (0,-2.9)--(0,2.8);
+			\fill[cstdot,dcolorb] (0,-0.8) circle;
+			\fill[cstdot,dcolorb] (0.8,0) circle;
+			\draw
+			(0.5,-0.8) node {$-20$}
+			(0.7,0.2) node {$2$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	\begin{example}
+		解方程 $x^3-7x+6=0$.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution*}
+	同样地我们有 $x=u+v$, 其中
+		\[u^3+v^3=-6,\quad uv=\frac73.\]
+	\onslide<+->{于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
+	}\onslide<+->{然而这个方程没有实数解.}
+
+	\onslide<+->{我们可以强行解得
+		\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
+	\end{solution*}
+\end{frame}
+
+
+\begin{frame}{三次方程的根}
+	\onslide<+->
+	\begin{solutionc}
+		\[u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
+		=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,\]
+	\onslide<+->{相应地
+		\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]
+	}\onslide<+->{
+		\[x=u+v=2,-3,1.\]}
+	\end{solutionc}
+
+	\onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:
+		\[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
+	\onslide<+->
+	由于 $p=0$ 情形较为简单, 所以我们不考虑这种情形.
+	\onslide<+->
+	通过分析函数图像的极值点可以知道:
+	\begin{enumerate}
+		\item 当 $\Delta>0$ 时, 有 $1$ 个实根.
+		\item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\half\sqrt[3]{4q}$ ($2$重).
+		\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
+	\end{enumerate}
+	\begin{center}
+		\begin{figure}[h]
+			\begin{subfigure}{0.3\textwidth}
+				\centering\onslide<4->
+				\begin{tikzpicture}[framed,visible on=<4->]
+					\draw[cstcurve,dcolora,domain=-2.4:3.3,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x-10)*0.06});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\end{tikzpicture}
+			\end{subfigure}
+			\begin{subfigure}{0.3\textwidth}
+				\centering\onslide<5->
+				\begin{tikzpicture}[framed,visible on=<5->]
+					\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\end{tikzpicture}
+			\end{subfigure}
+			\begin{subfigure}{0.3\textwidth}
+				\centering\onslide<6->
+				\begin{tikzpicture}[framed,visible on=<6->]
+					\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.2)--(0,1.2);
+				\end{tikzpicture}
+			\end{subfigure}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	所以我们想要使用求根公式的话, 就\emph{必须接受负数开方}.
+	\onslide<+->
+	那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
+	\onslide<+->
+	在学习了第一章的内容之后我们就可以回答这个问题了.
+
+	\onslide<+->
+	尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
+
+	\onslide<+->
+	\begin{quote@*}
+		圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
+	\tcblower
+	莱布尼兹 (Leibniz)
+	\end{quote@*}
+
+	\onslide<+->
+	我们将在下一节使用更为现代的语言来解释和运用复数.
+\end{frame}
