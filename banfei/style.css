@@ -1,0 +1,400 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0px auto;
+	font-family: Verdana, 'Microsoft Yahei', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	background-image: url(img/bg.png);
+	background-color: hsl(60, 40%, 86%);
+}
+
+/* header */
+header {
+	display: table;
+	width: 100%;
+	height: 80px;
+	background-color: hsl(210, 60%, 50%);
+}
+
+h1 {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	color: white;
+	font-family: STKaiti, 'Courier New', monospace;
+	cursor: pointer;
+}
+
+h1 [lang=en] {
+	font-family: 'Lucida Console', 'Courier New', monospace;
+}
+
+header:hover {
+	background-color: hsl(20, 60%, 50%);
+	color: black;
+}
+
+/* article */
+article {
+	width: 100%;
+	max-width: 810px;
+	padding: 6px 40px 20px;
+	background-color: white;
+}
+
+@media screen and (min-width: 800px) {
+	article {
+		margin: 10px auto 0;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	article {
+		margin: 0 auto;
+	}
+}
+
+h2 {
+	margin: 28px 0 0;
+	padding-bottom: 2px;
+	border-bottom: 2px solid hsl(20, 60%, 50%);
+	color: hsl(20, 60%, 50%);
+	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
+	font-size: 150%;
+	cursor: pointer;
+}
+
+h2:hover {
+	color: hsl(210, 60%, 50%);
+	border-bottom: 2px solid hsl(210, 60%, 50%);
+}
+
+h3 {
+	margin: 20px 0 0;
+	color: hsl(20, 60%, 50%);
+	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
+	font-size: 110%;
+	cursor: pointer;
+}
+
+h3:hover {
+	color: hsl(210, 60%, 50%);
+}
+
+h2+div,
+h3+div {
+	display: block;
+}
+
+
+h4 {
+	margin: 10px 40px;
+	font-family: 'Courier New', STKaiTi, monospace;
+	font-size: 110%;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+a {
+	color: hsl(210, 60%, 50%);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: hsl(20, 60%, 50%);
+	text-decoration: underline;
+}
+
+img {
+	width: 20px;
+	height: 20px;
+	margin-right: 4px;
+	vertical-align: middle;
+}
+
+h2 img {
+	filter: url(#changeIconColorGold);
+	-webkit-filter: url(#changeIconColorGold);
+	-moz-filter: url(#changeIconColorGold);
+	-ms-filter: url(#changeIconColorGold);
+	-o-filter: url(#changeIconColorGold);
+}
+
+h2:hover img {
+	filter: url(#changeIconColorBlue);
+	-webkit-filter: url(#changeIconColorBlue);
+	-moz-filter: url(#changeIconColorBlue);
+	-ms-filter: url(#changeIconColorBlue);
+	-o-filter: url(#changeIconColorBlue);
+}
+
+/* about me & experience */
+span.phantom-space {
+	width: 20px;
+	height: 20px;
+	margin-right: 4px;
+	display: inline-block;
+}
+
+div.flexbox {
+	display: flex;
+	justify-content: space-between;
+}
+
+img#zsx {
+	margin-top: 10px;
+	height: 240px;
+	/* width: auto;	 */
+	width: 240px;
+	cursor: pointer;
+	object-fit: cover;
+	border: 1px dotted hsl(20, 60%, 50%);
+}
+
+img#zsx:hover {
+	border: 1px dotted hsl(210, 60%, 50%);
+}
+
+div#cover-image {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0, 0, 0, 0.7);
+	cursor: pointer;
+	z-index: 9;
+}
+
+@keyframes enlarge {
+	from {
+		height: 0%;
+	}
+
+	to {
+		height: 80%;
+	}
+}
+
+img#zsxlarge {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	height: 80%;
+	width: auto;
+	z-index: 10;
+	border: 1px dotted hsl(20, 60%, 50%);
+	animation-name: enlarge;
+	animation-duration: 0.5s;
+}
+
+img#zsxlarge:hover {
+	border: 1px dotted hsl(210, 60%, 50%);
+}
+
+ul.no-space>li {
+	margin: 0px;
+}
+
+ul.travel-plan>li {
+	margin-left: -2px;
+}
+
+ul.travel-plan>li::before {
+	content: "";
+	display: inline-block;
+	width: 3px;
+}
+
+ul.custom-icon {
+	list-style-type: none;
+	margin-left: -24px;
+}
+
+ul.custom-icon>li::before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	vertical-align: middle;
+}
+
+ul.custom-icon li.title::before {
+	content: url(img/user-solid.svg);
+}
+
+ul.custom-icon li.institute::before {
+	content: url(img/school-solid.svg);
+}
+
+ul.custom-icon li.email::before {
+	content: url(img/envelope-solid.svg);
+}
+
+ul.custom-icon li.cv::before {
+	content: url(img/book-open-solid.svg);
+}
+
+ul.custom-icon li.location::before {
+	content: url(img/location-dot-solid.svg);
+}
+
+ul.custom-icon li.employment::before {
+	content: url(img/chalkboard-user-solid.svg);
+}
+
+ul.custom-icon li.education::before {
+	content: url(img/graduation-cap-solid.svg);
+}
+
+ul.custom-icon span {
+	display: inline-block;
+	width: 12em;
+}
+
+/* research */
+pre {
+	font-family: 'Courier New', STKaiTi, monospace;
+	tab-size: 4;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+pre,
+span.abstract {
+	margin-left: -24px;
+	display: none;
+	padding: 10px;
+	margin-top: 6px;
+	border: 1px dotted hsl(210, 60%, 50%);
+	background-color: hsl(210, 60%, 98%);
+}
+
+/* teaching */
+table.balance {
+	border-collapse: collapse;
+	margin: 20px auto;
+	width: 100%;
+}
+
+table.balance th,
+table.balance td {
+	padding: 5px 10px;
+	font-size: 100%;
+	vertical-align: middle;
+	border: 1px solid hsl(210, 90%, 75%);
+}
+
+table.balance th {
+	background-color: hsl(210, 60%, 50%);
+	color: white;
+}
+
+table.balance tr:nth-child(even) {
+	background-color: hsl(210, 60%, 98%);
+}
+
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(3) {
+	text-align: center;
+}
+
+td>em {
+	font-style: normal;
+	color: red;
+}
+
+.exam::before {
+	content: url(img/pen-to-square-solid.svg);
+}
+
+.excourse::before {
+	content: url(img/person-chalkboard-solid.svg);
+}
+
+.handout::before {
+	content: url(img/book-open-solid.svg);
+}
+
+.video::before {
+	content: url(img/video-solid.svg);
+}
+
+.exam::before,
+.excourse::before,
+.handout::before,
+.video::before {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	margin-right: 4px;
+}
+
+@media screen and (min-width: 600px) {
+	div.flexbox {
+		flex-direction: row;
+	}
+
+	div#div-intro {
+		width: 70%;
+	}
+
+	div#div-img {
+		width: 30%;
+	}
+
+	br.header-br {
+		display: none;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	div.flexbox {
+		flex-direction: column-reverse;
+	}
+
+	div#div-intro,
+	div#div-img {
+		width: 100%;
+	}
+
+	span.header-sep {
+		display: none;
+	}
+
+	br.header-br {
+		display: inline;
+	}
+
+	div#div-intro img,
+	.exam::before,
+	.excourse::before,
+	.handout::before,
+	.video::before {
+		content: " ";
+		display: none;
+	}
+
+	article {
+		padding: 6px;
+	}
+}
+
+/* links */
+p.p-inline-block a {
+	display: inline-block;
+}
+
+/* footer */
+footer p {
+	text-align: center;
+	font-size: 90%;
+}
