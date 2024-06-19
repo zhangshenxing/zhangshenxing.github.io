@@ -1,0 +1,403 @@
+	\documentclass[aspectratio=169,handout]{ctexbeamer}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\RequirePackage[T1]{fontenc} % 纯英文去掉此行
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei} % 纯英文去掉此行
+\usetheme{reed}
+\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
+\setlength{\parindent}{1.5em}
+\renewcommand{\indent}{\hspace*{1.5em}}
+\setbeamerfont{title}{size=\Large}
+\setbeamerfont{frametitle}{size=\Large}
+
+\AtBeginSection{
+	\setbeamertemplate{subsection in footline}[normal]
+	{
+		\setnaviboxempty
+		\frame[c]{\sectionpage}
+	}
+}
+\title{漫谈指数和与 $L$ 函数}
+\author{张神星 (合肥工业大学)}
+\institute{首都师范大学}
+\date{2024年6月22日}
+\email{zhangshenxing@hfut.edu.cn}
+\titlegraphic{misc/cnu.jpg}
+\institutegraphic{misc/cnuname.png}
+% 自定义主题配色
+\definecolor{themecolor}{RGB}{28,73,136}
+\setbeamercolor{theme}{fg=themecolor}
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\input{symbols}
+\newcommand\ldb{\llbracket}
+\newcommand\rdb{\rrbracket}
+\newcommand\bchi{{\boldsymbol\chi}}
+\newcommand\brho{{\boldsymbol\rho}}
+
+
+\begin{document}
+
+\section{指数和与 $L$ 函数的特征根}
+\begin{frame}{指数和与 $L$ 函数}
+设 $p$ 是素数, $\BF_q$ 是含有 $q=p^a$ 个元素的有限域.
+设 $\psi:\BF_p\to \BQ(\zeta_p)$ 是一非平凡加性特征,
+那么 $\psi_k=\psi\circ \Tr_{\BF_{q^k}/\BF_p}$ 是 $\BF_{q^k}$ 的加性特征.
+
+对于多项式 $f(x)\in \BF_q[x]$, 定义\emph{指数和}
+\[S_k(f):=\sum_{x\in\BF_{q^k}}\psi_k\bigl(f(x)\bigr)\in\BZ[\zeta_p]\]
+以及\emph{$L$ 函数}
+\[L(s,f):=\exp\left(\sum_k S_k(f)\frac{s^k}{k}\right)=\prod_{x\in\ov{\BF}_p}\Bigl(1-\psi_{\deg x}\bigl(f(x)\bigr)s^{\deg x}\Bigr)^{-1}.\]
+我们关心，作为一个代数整数, $S_k(f)$ 的各种性质, 以及 $L$ 函数的各种性质.
+\end{frame}
+
+
+\begin{frame}{$L$ 函数的有理性}
+\begin{theorem}[Dwork-Bombieri-Grothendick]
+$L(s,f)$ 是有理函数.
+\end{theorem} 
+	\[L(s,f)=\frac{\prod_j (1-\beta_j s)}{\prod_i(1-\alpha_i s)},\quad \alpha_i\neq \beta_j
+	\implies
+	S_k(f)=\sum_i \alpha_i^k-\sum_j\beta_j^k.\]
+称 $\alpha_i,\beta_j$ 为\emph{特征根}. 为了估计特征根, 我们需要 $\ell$ 进方法.
+
+% 一般地, 设 $X$ 是一个概形, $X_\et$ 是(小) \etale\ site.
+% 固定素数 $\ell\neq p$, 设 $E$ 是 $\BQ_\ell$ 的有限扩张.
+% $X_\et$ 上系数为 $E$ 的 \emph{$\ell$ 进层}是这个 site 上的层 (实际上是 $\CO_E$ 有限商上的模层的逆向系, 态射扩充至 $E$), 使得在每个有限商上是可构造的. 若在每个有限商上是局部常值的, 则称之为 \emph{lisse} 的.
+\end{frame}
+
+
+\begin{frame}{$\ell$ 进方法}
+设 $E\supseteq \mu_p$ 是一 $\ell\neq p$ 进域.
+Deligne 在 ${\Ga}_{,\ov\BF_p}$ 上构造了一个局部自由秩 $1$ 的 $E$ 系数 $\ell$ 进 lisse 层 $\CF_\ell(f)$, 它满足
+	\[L(s,f)=\prod_i \det\bigl(1-s \Frob,\RH^i_c\bigr)^{(-1)^{i+1}},\]
+	\[S_k(f)=\sum_i (-1)^i\Tr(\Frob^k,\RH_c^i).\]
+这里 $\Frob$ 是几何 Frobenius, $\RH_c^i=\RH_c^i\bigl({\Ga}_{,\ov\BF_p},\CF_\ell(f)\bigr)$ 是紧支撑上同调.
+\end{frame}
+
+
+\begin{frame}{$\ell$ 进方法（续）}
+记 $\omega_{ij}$ 为 $\Frob$ 在 $\RH^i_c$ 上的特征值, 则
+	\[S_k(f)=\sum_{ij}(-1)^i \omega_{ij}^k.\]
+
+\begin{theorem}[Deligne]
+$\omega_{ij}$ 是代数整数, 且存在整数 $0\le r_{ij}\le i$ 使得它的所有 $\BQ$ 共轭的绝对值均为 $q^{r_{ij}/2}$.
+\end{theorem}
+我们把 $r_{ij}$ 就叫做对应特征根 $\omega_{ij}$ 的权.
+
+记 $b_i=\dim_{E}\RH^i_c$ 为 Betti 数, 
+则
+	\[|S_k(f)|\le \sum_i b_i q^{ki/2}.\]
+\end{frame}
+
+
+
+\begin{frame}{一般情形}
+一般地, 设
+\begin{itemize}
+\item $V\subseteq \BA^N$ 是 $\BF_q$ 上的闭子簇,
+\item $f\in \BF_q[V]$, $g\in\BF_q[V]^\times$,
+\item $\chi$ 是 $\BF_q^\times$ 上乘性特征.
+\end{itemize}
+定义指数和和 $L$ 函数
+	\[S_k=\sum_{x\in V(\BF_{q^k})}\psi_{k\log_p q}\bigl(f(x)\bigr)\chi\Bigl(\bfN_{\BF_{q^n}/\BF_q}\bigl(g(x)\bigr)\Bigr),\quad
+	L(s,V,f)=\exp\left(\sum_k S_k\frac{s^k}k\right).\]
+前述结论依然成立.
+\begin{theorem}[Bombieri1978]
+特征根个数不超过 $(4\max\set{\deg V+1,\deg f}+5)^{2N+1}$.
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{Kloosterman 和}
+
+\begin{example}[Deligne SGA4$\half$, Serre1977]
+设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 上的 $n$ 个特征, $a\in\BF_q^\times$.
+定义 \emph{Kloosterman 和}
+	\[\Kl_k=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q^k}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_k(x_1+\cdots+x_n).\]
+它是 $V=V(X_1\cdots X_n-a)$ 上 $f=X_1+\cdots+X_n$ 的指数和.
+
+此时 $L(s,V,f)^{(-1)^n}$ 是 $n$ 次多项式, 即
+\[\Kl_k=(-1)^{n-1}\sum_{i=1}^n \omega_i^k,\]
+且特征根权均为 $n-1$.
+因此 $|\Kl_k|\le nq^{(n-1)k/2}$.
+\end{example}
+\end{frame}
+
+
+\begin{frame}
+\begin{example}[Serre1977]
+设 $X$ 是一几何不可约仿射光滑曲线, $\wh X$ 为其对应的射影曲线, $X_\infty=\wh X-X$.
+设 $X'\to X$ 是方程 $y^p-y=f(x)$ 给出的 $\BZ/p\BZ$ 平展覆盖, 并延拓至 $\wh X'\to \wh X$.
+对于 $P\in X_\infty$, 如果该覆盖在 $P$ 处非分歧, 记 $n_P=0$; 否则记
+\[n_P=1-\sup_{\varphi\in\BF_q(\wh X)} v_P(f-\varphi^p+\varphi)\ge 2.\]
+那么
+\begin{itemize}
+	\item $L(s,X,f)$ 是多项式; $b_i=0, \forall i\neq 1$;
+	\item $(X,f)$ 权全为 $1 \iff n_P\neq 0,\forall P$, 此时 $b_1=2g-2+\sum n_P\deg P$.
+\end{itemize}
+\end{example}
+\end{frame}
+	
+
+\begin{frame}
+\begin{example}[Serre1977]
+对于仿射平面 $\BA^n$, $f\in\BF_q[x_1,\dots,x_n]$ 是 $d$ 次多项式且 $p\nmid d$, 有
+\begin{itemize}
+	\item $L(s,X,f)^{(-1)^{n-1}}$ 是多项式; $b_i=0,\forall i\neq n$;
+	\item $(X,f)$ 权全为 $n$, $b_n=(d-1)^r$.
+\end{itemize}
+此时 $|S_k|\le (d-1)^nq^{nk/2}$.
+\end{example}
+\end{frame}
+	
+
+\section{$L$ 函数的牛顿折线}
+
+
+\begin{frame}{指数和的变化}
+现在我们来考虑指数和的 $p$ 进性质.
+
+设 $f\in\BF_q[x]$ 是 $d$ 次多项式.
+我们可以考虑更一般点. 设
+\begin{itemize}
+\item $\psi_m:\BZ_p\to\BC_p^\times$ 是一个阶为 $p^m$ 的加性特征;
+\item $\omega^{-u}:\BF_q^\times\to\BC_p^\times$ 是一个乘性特征, 其中 $\omega$ 是 Teichm\"uller 提升, $0\le u\le q-2$.
+\end{itemize}
+定义
+	\[
+		S_{k,u}(f,\psi_m)=\sum_{x\in\BF_{q^k}^\times}\psi_m\left(\Tr_{\BQ_{q^k}/\BQ_p}\bigl(\hat f(\hat x)\bigr)\right)\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right),
+	\]
+	\[
+		L_u(s,f,\psi_m)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,\psi_m)\frac{s^m}m\right).
+	\]
+\end{frame}
+
+\begin{frame}{$L$ 函数是多项式}
+\begin{theorem}[Adolphson-Sperber, 李文卿, 刘春雷-魏达盛, 刘春雷]
+如果 $p\nmid d=\deg f$, 则 $L_u(s,f,\psi_m)$ 是次数为 $p^{m-1}d$ 的多项式.
+\end{theorem} 
+
+记
+	\[L_u(s,f,\psi_m)=\sum_{n=0}^{p^{m-1}d} a_n s^n=\prod_i(1-\alpha_i s),
+	\quad S_{u,k}(f)=-\sum_i \alpha_i^k.\]
+为了了解 $S_{u,k}(f)$ 的 $p$ 进性质, 我们需要了解 $\alpha_i$ 的赋值.
+而它们正是该 $L$ 函数的牛顿折线的斜率, 其中牛顿折线是指所有
+	\[\bigl(n,v_p(a_n)\bigr)\]
+的下凸包.
+\end{frame}
+
+
+\begin{frame}{$T$ 进指数和和 $T$ 进 $L$ 函数}
+为了统一考虑不同 $m$ 对应的牛顿折线, 我们引入 $T$ 进指数和和 $T$ 进 $L$ 函数:
+	\[	S_{k,u}(f,T)=\sum_{x\in\BF_{q^k}^\times}(1+T)^{\Tr_{\BQ_{q^k}/\BQ_p}(\hat f(\hat x))}\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right), \]
+	\[
+		L_u(s,f,T)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,T)\frac{s^k}{k}\right)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb.
+	\]
+我们有 $L_u(s,f,\psi_m)=L_u(s,f,\pi_m)$, 其中 $\pi_m=\psi_m(1)-1$.
+
+定义特征函数
+	\[C_u(s,f,T)=\prod_{j=0}^\infty L_u(q^j s,f,T)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb,\]
+则
+	\[	L_u(s,f,T)=\frac{C_u(s,f,T)}{C_u(qs,f,T)}.\]
+\end{frame}
+
+
+\begin{frame}{牛顿折线的关系}
+记
+\begin{itemize}
+\item $\NP_{u,m}(f)=C_u(s,f,\pi_m)$ 的 $\pi_m^{a(p-1)}$ 进牛顿折线(不依赖 $\psi_m$), $a=\log_p q$;
+\item $\NP_{u,T}(f)=C_u(s,f,T)$ 的 $T^{a(p-1)}$ 进牛顿折线.
+\item $H_{[0,d],u}^\infty$ 为扭霍奇折线, 其斜率为 $\tfrac{n}{d}+\tfrac{1}{bd(p-1)}\sum_{k=1}^b u_k,\ n\in\BN,$
+其中 $b$ 是满足 $p^bu\equiv u\bmod{(q-1)}$ 的最小正整数,
+	\[u=u_0+u_1p+\cdots+u_{a-1}p^{a-1},\ 0\le u_i\le p-1.\]
+\end{itemize}
+这样规范化后的牛顿折线满足
+	\[\NP_{u,m}(f)\ge \NP_{u,T}(f)\ge H_{[0,d],u}^\infty.\]
+由定义可知 $\NP_{u,m}(f)$ 完全由它在 $[0,d-1]$ 上的值决定.
+\end{frame}
+
+
+
+\begin{frame}{$p$ 进 Artin-Hasse 函数}
+不妨设
+\[f(x)=\sum_{i=1}^d a_ix^i.\]
+我们需要 $T$ 进 Dwork 迹公式来计算牛顿折线. 定义
+	\[
+	E(X)=\exp\left(\sum_{i=0}^\infty p^{-i}X^{p^i}\right)=\sum_{n=0}^\infty \lambda_n X^n\in\BZ_p\ldb X\rdb,
+	\]
+	\[
+	E_f(X)=\prod_{i=1}^d E(\pi \hat a_i X^i)=\sum_{n=0}^\infty \gamma_n X^n,
+	\]
+则
+	\[\gamma_k=\sum\pi^{x_1+\cdots+x_d}\prod_{i=1}^d\lambda_{x_i}\hat a_i^{x_i},\]
+其中 $(x_1,\dots,x_d)$ 取遍 $\sum i x_i=k$ 的所有非负整数解.
+\end{frame}
+
+\begin{frame}{$T$ 进 Dwork 半线性算子}
+定义
+	\[\CB_u=\Bigl\{\sum_{v\in M_u} b_v \pi^{\frac{v}{d}}X^v\mid b_v\in\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\ra 0 (\pi\text{进})\Bigr\},\ M_u=\tfrac{u}{q-1}+\BN,\]
+	\[\psi:\CB_u\lra \CB_{p^{-1}u},\
+		\sum_{v\in M_u} b_v X^v\longmapsto \sum_{v\in M_{p^{-1}u}} b_{pv}X^v,\]
+则
+	\[\Psi:=\sigma^{-1}\circ\psi\circ E_f: \CB_u\to \CB_{p^{-1}u}\]
+是一个半线性算子, 其中 $\sigma\in \Gal(\BQ_q/\BQ_p)$ 是 Frobenius.
+那么它定义了 $\CB:=\bigoplus_{i=0}^{b-1}\CB_{p^iu}$ 上的算子, 且 $\Psi^a$ 是 $\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 线性的.
+\end{frame}
+
+\begin{frame}{$T$ 进 Dwork 迹公式}
+\begin{theorem}
+我们有
+	\[C_u(s,f,T)=\det\Bigl(1-\Psi^a s \mid \CB_u/\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr).\]
+因此 $C_u(s,f,T)$ 的 $T$ 进牛顿折线是
+	\[\Bigl(n,\frac1b\ord_T(c_{abn})\Bigr),\ n\in\BN,\]
+的凸包, 其中
+	\[
+	\det\Bigl(1-\Psi s\mid\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr)=\sum_{i=0}^\infty (-1)^n c_n s^n.
+	\]
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{矩阵表达}
+记 $s_k\equiv p^k u\bmod{q-1}$, $0\le s_k\le q-2$.
+设 $\xi_1,\dots,\xi_a$ 为 $\BQ_q/\BQ_p$ 的一组正规基, 则
+	\[\Bigl\{\xi_v(\pi^{\frac1d}X)^{\frac{s_k}{q-1}+i}\Bigr\}_{(i,v,k)\in\BN\times I_a\times I_b}\]
+是 $\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 的一组基, 对应的矩阵为
+	\[
+	\Gamma=\Bigl(\gamma_{(v,\frac{s_k}{q-1}+i),(w,\frac{s_\ell}{q-1}+j)}\Bigr)_{\BN\times I_a\times I_b}=\begin{pmatrix}
+		0&\Gamma^{(1)}&0&\cdots&0\\
+		0&0&\Gamma^{(2)}&\cdots&0\\
+		\vdots&\vdots&\vdots&\ddots&\vdots\\
+		0&0&0&\cdots&\Gamma^{(b-1)}\\
+		\Gamma^{(b)}&0&0&\cdots&0
+	\end{pmatrix}.
+	\]
+因此 $c_{bn}=\sum_{A\in\CA_n} \det(A)$, $\CA_n$ 为全体 $bn$ 阶主子式, 且 $A^{(k)}=A\cap \Gamma^{(k)}$ 均为 $n$ 阶.
+\end{frame}
+
+\begin{frame}{进一步化归}
+我们有
+\vspace{-2mm}
+	\[\xi_w^{\sigma^{-1}}{\color{red}{\gamma_{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}}}^{\sigma^{-1}}=\sum_{u=1}^a {\color{red}{\gamma_{(v,\frac{s_{k-1}}{q-1}+i),(w,\frac{s_k}{q-1}+j)}}}\xi_v,\]
+\vspace{-2mm}
+其中
+\vspace{-2mm}
+	\[\gamma_{\color{red}{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}}
+	=\pi^{\frac{s_k-s_{k-1}}{d(q-1)}+\frac{j-i}{d}}{\color{red}{\gamma_{pi-j+u_{-k}}}}.\]
+于是
+	\[
+	\begin{split}
+	&\ord_\pi\left(\gamma_{(v,\frac{s_{k-1}}{q-1}+i),(w,\frac{s_k}{q-1}+j)}\right)\ge \ord_\pi\left(\gamma_{(\frac{s_{k-1}}{q-1}+i,\frac{s_k}{q-1}+j)}\right)\\
+	=&\frac{s_k-s_{k-1}}{d(q-1)}+\frac{j-i}{d}+\phi(pi-j+u_{-k}),
+	\end{split}
+	\]
+其中 $\phi(n)=\min\set{x_1+\cdots+x_d\mid \sum ix_i=n,x_i\ge0}\in\BN\cup\set{+\infty}.$
+\end{frame}
+
+
+\begin{frame}{二项式情形的已知结果}
+对于一般的多项式, 上述方法可以得到牛顿折线的下界.
+对于二项式情形, 这个下界是否能否达到, 取决于对应赋值项的系数是否为零.
+
+设 $f(x)=x^d+\lambda x^e$ 的情形. 由于 $(d,e)>1$ 时可以化归到扭的情形, 我们不妨设 $(d,e)=1$.
+此时最低赋值项为
+	\[\pm\Nm\left(\prod_{k=1}^b \hat\lambda^{(*)} h_{n,k}\right),\quad
+	h_{n,k}:=\sum_{\tau\in S_{u_k,n}^\circ}\sgn(\tau)\prod_{i=0}^n\frac{1}{x_{u_k,i}^\tau!y_{u_k,i}^\tau!},
+	\]
+其中 $S_{u_k,n}^\circ$ 是 $\set{0,1,\dots,n}$ 上满足 $e^{-1}(pi-\tau(i)+u_k)\mod d$ 所有最小非负剩余之和达到最小的置换全体,
+	\[dx_{u_k,i}^\tau+ey_{u_k,i}^\tau=pi-\tau(i)+u_k,0\le y_{u_k,i}^\tau\le d-1.\]
+因此当且仅当所有的 $h_{n,k}\in\BZ_p^\times$ 时,
+	\[\NP_{u,m}(f)=\NP_{u,T}(f)\]
+达到应有的下界.
+\end{frame}
+
+
+\begin{frame}{二项式情形的已知结果}
+如下情形是已知的 ($p\gg0$):
+\begin{itemize}
+\item $u=0$:
+\begin{itemize}
+\item $p\equiv 1\bmod d$, 此时 $\NP_{u,m}(f)=H_{[0,d],u}^\infty$.
+\item $e=1$, 有很多人计算过, 不在此列举.
+\item $e=d-1,p\equiv -1\bmod d$, 欧阳毅-张 2016.
+\item $e=2,p\equiv 2\bmod d$, Zhang Qingjie-牛传择 2021.
+\end{itemize}
+\item 任意 $u$:
+\begin{itemize}
+	\item $e=1$, 刘春雷-牛传择 2011.
+	\item $e=d-1$, 张 2022.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{二项式情形的已知结果}
+例如, 当 $e=d-1$ 时, 若 $p>(d^2-d-1)\mathrm{order}(\omega^{-u})$, 我们有
+	\[\begin{split}
+	&h_{n,k}\equiv\det\left(\frac{1}{(-d^{-1}ev_i+u_k(1-d^{-1}e)-j)!(v_i+j)!}\right)\\
+\equiv &\prod_{i=0}^n \frac{\left(d^{-1}e(i-t)+t\right)_i}{\bigl(-d^{-1}ev_i+u_k(1-d^{-1}e)\bigr)!\cdot(v_i+n)!} \cdot \prod_{0\le i<j\le n}(v_i-v_j)\not\equiv 0\mod p.
+\end{split}\]
+因此此时 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}.$
+\end{frame}
+
+
+
+\section{指数和的生成域}
+
+
+
+\begin{frame}{Swan 导子}
+为了刻画 lisse 层的一些性质, 我们需要 Swan 导子的概念.
+设 $K$ 是完备离散赋值域, $I^{(x)},x\ge 0$ 为其高阶分歧群. 
+对于分歧群 $P$ 的 $E$ 表示 $M$, 我们有满足如下性质的分解 $M=\oplus M(x)$, 
+	\[M(0)=M^P,\quad M(x)^{I^{(x)}}=0,\quad M(x)^{I(y)}=M(x), \ y>x>0.\]
+称 $M(x)\neq 0$ 的 $x$ 为 $M$ 的断点.
+定义 $M$ 的 \emph{Swan 导子}为
+	\[\Swan(M)=\sum x\dim M(x).\]
+它总是一个整数.
+\end{frame}
+
+
+
+\begin{frame}{曲线}
+令 $C$ 是特征 $p$ 完全域 $\BF$ 上一射影光滑几何连通代数曲线, $K=\BF(C)$ 为其函数域.
+对于任意闭点 $x\in C(\BF)$, 我们有完备化 $K_x$.
+
+对于非空开集 $U\subset C$, 我们有阿贝尔范畴等价
+\begin{align*}
+	\set{\text{$U$ 上的 lisse $E$ 层}}&\lra \cRep_E^c \pi_1(U,\ov\eta)\\
+	\CF&\lto \CF_{\ov\eta}.
+\end{align*}
+	
+由于基本群 $\pi_1(U,\ov\eta)$ 是伽罗瓦群 $\Gal(\ov K/K)$ 的商, 因此分解群 $D_x$ 作用在 $\CF_{\ov\eta}$ 上.
+于是我们可以定义 $\CF$ 在 $x$ 处的 Swan 导子.
+对于 $x\in U$, 由于惯性群 $I_x$ 作用平凡, 因此 $\Swan_x(\CF)=0$.
+
+我们将会取 $C=\BP^1$ and $U=\Gm$.
+\end{frame}
+
+
+
+\begin{frame}{一个猜想}
+\begin{conjecture}
+若 $p$ 相对 $d$ 和 $\omega^{-u}$ 的阶都很大, 则 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}$.
+\end{conjecture}
+\end{frame}
+
+
+
+{
+	\setnaviboxempty
+	\begin{frame}
+		\begin{center}
+			\huge \textbf{谢~谢!}
+		\end{center}
+	\end{frame}
+}
+\end{document}
+
+

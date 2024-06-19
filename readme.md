@@ -1,3 +1,2 @@
 地址：
-[Github](https://ruhuasiyu.github.io/)
-[Gitee](https://zhangshenxing.gitee.io/)
+[Github](https://zhangshenxing.github.io/)
