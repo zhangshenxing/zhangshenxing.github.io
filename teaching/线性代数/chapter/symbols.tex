@@ -1,8 +1,11 @@
 \RequirePackage{extarrows}
 
+\newcommand\detm[1]{\left|\begin{matrix}#1\end{matrix}\right|}
+\newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
+\mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
 \newenvironment{laeq*}{
 	\[\left\{\!\!\!
-		\begin{array}{ll}}{
+		\begin{array}{ccl}}{
 		\end{array}
 	\right.\]}
 \newenvironment{laeq}{
@@ -16,6 +19,7 @@
 \newcommand\lla{\longleftarrow}
 \newcommand\sqra{\rightsquigarrow}
 \newcommand\sqlra{\leftrightsquigarrow}
+\newcommand\swap{\leftrightarrow}
 \newcommand\inj{\hookrightarrow}
 \newcommand\linj{\hookleftarrow}
 \newcommand\surj{\twoheadrightarrow}

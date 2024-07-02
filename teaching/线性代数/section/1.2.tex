@@ -1,293 +1,365 @@
-\section{复数的三角与指数形式}
+\section{行列式的性质}
 
-\subsection{复数的模和辐角}
-\begin{frame}{复数的极坐标形式}
+\subsection{行列式的变换性质}
+
+\begin{frame}{转置的行列式}
 	\onslide<+->
-	由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
-	\onslide<+->
-	以 $0$ 为极点, 正实轴为极轴, 逆时针为极角方向可以自然定义出复平面上的极坐标系.
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis] (-0.4,0)--(2.5,0);
-			\draw[cstaxis] (0,-0.4)--(0,2);
-			\draw[cstdash] (1.6,0)--(1.6,1.2);
-			\draw[cstdash] (0,1.2)--(1.6,1.2);
-			\fill[cstdot,dcolora] (1.6,1.2) circle;
-			\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on =<8->] (1.6,0)--(0,0);
-			\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on =<8->] (0,0)--(0,1.2);
-			\draw
-			(1.6,1.4) node[dcolora] {$z=x+yi$}
-			(-0.2,-0.2) node {$0$}
-			(0.7,0.8) node[dcolorc,visible on =<5->] {$r$}
-			(6,1) node[dcolorc,visible on =<5->] {$r=\sqrt{x^2+y^2}$}
-			(6,0.3) node[dcolorc,visible on =<6->] {$\theta=\arctan\dfrac yx$ 或 $\arctan\dfrac yx\pm\pi$}
-			(1,-0.3) node[dcolora,visible on =<8->] {$x=r\cos\theta$}
-			(-1.2,0.6) node[dcolorb,visible on =<8->] {$y=r\sin\theta$};
-			\coordinate (A) at (3,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (1.6,1.2);
-			\draw[cstcurve,dcolorc,cstarrowto,visible on =<5->] (B)--(C);
-			\draw[dcolorc,thick,visible on =<6->,cstarrowto] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle};
-		\end{tikzpicture}
-	\end{center}
+	如果 $\bfA=(a_{ij})_{m\times n}$, 称
+	\[\bfA^\rmT=\begin{bmatrix}
+		a_{11}&a_{21}&\cdots&a_{m1}\\
+		a_{12}&a_{22}&\cdots&a_{m2}\\
+		\vdots&\vdots&\ddots&\vdots\\
+		a_{1n}&a_{2n}&\cdots&a_{mn}
+	\end{bmatrix}\]
+	为矩阵 $\bfA$ 的\emph{转置}, 它是 $n\times m$ 矩阵.
 
 	\onslide<+->
-	\begin{definition}
-		\begin{itemize}
-			\item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
-			\item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
-			\onslide<+->{\alert{$0$ 的辐角没有意义}.}
-		\end{itemize}
-	\end{definition}
+	注意到对于 $\bfP$,  $c_{k_i}\swap c_{k_j}$ 和 $r_i\swap r_j$ 是一样的,
+	\onslide<+->
+	即对 $\bfP^\rmT$ 进行 $c_i\swap c_j$ 得到的方阵的转置.
+	\onslide<+->
+	因此 $\det(\bfP^\rmT)=\det(\bfP)$.
+	
+	\onslide<+->
+	而 $\det(\bfA)$ 是所有置换对应的型如 $\bfP$ 方阵行列式之和, 因此
+	\begin{alertblock@}
+		转置不改变行列式: $\det(\bfA^\rmT)=\det(\bfA)$.
+	\end{alertblock@}
 \end{frame}
 
 
-\begin{frame}{主辐角}
-	\onslide<+->
-	任意 $z\neq 0$ 的辐角有无穷多个.
-	\onslide<+->
-	我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}或辐角主值, 记作 $\emph{\arg z}$.
-	\begin{tikzpicture}[overlay,xshift=5cm,yshift=-3cm]
-		\draw[cstaxis,visible on=<3->](-2.5,0)->(2.5,0); 
-		\draw[cstaxis,visible on=<3->](0,-2)->(0,2);
-		\draw[cstaxis,visible on=<3>,dcolorb,cstarrow1from] (-1,0) arc(180:-180:1);
-		\filldraw[cstdote,visible on=<3>,draw=dcolora] (-1,-0.05) circle;
-		\fill[cstdot,visible on=<4->,dcolora] (1,0) circle;
-		\fill[cstdot,visible on=<4->,dcolora] (0.8,0.8) circle;
-		\fill[cstdot,visible on=<4->,dcolora] (1.0,-0.8) circle;
-		\fill[cstdot,visible on=<5->,dcolorc] (-1.0,0.6) circle;
-		\fill[cstdot,visible on=<5->,dcolorc] (-0.7,0) circle;
-		\fill[cstdot,visible on=<6->,dcolorb] (-0.9,-0.5) circle;
-		\fill[cstdot,visible on=<7->] (0,0.5) circle;
-		\fill[cstdot,visible on=<7->] (0,-0.5) circle;
-		\draw
-		(1.1,0.2) node[dcolora,visible on=<4->] {$0$}
-		(1.0,1.1) node[dcolora,visible on=<4->] {$\arctan\dfrac yx$}
-		(1.1,-1.2) node[dcolora,visible on=<4->] {$\arctan\dfrac yx$}
-		(-1.2,1.2) node[dcolorc,visible on=<5->] {$\arctan\dfrac yx\colorbox{yellow}{$+\pi$}$}
-		(-0.6,-0.2) node[dcolorc,visible on=<5->] {$\pi$}
-		(-1.2,-1.1) node[dcolorb,visible on=<6->] {$\arctan\dfrac yx\colorbox{yellow}{$-\pi$}$}
-		(-0.2,0.5) node[black,visible on=<7->] {$\dfrac\pi2$}
-		(0.4,-0.5) node[black,visible on=<7->] {$-\dfrac\pi2$};
-	\end{tikzpicture}
-	\onslide<+->
-	\begin{flalign*}
-		&\colorbox{yellow}{$\displaystyle\arg z=\begin{cases}
-		\visible<4->{\alert{\arctan\dfrac yx,}}&\visible<4->{\alert{x>0;}}\vspace{1ex}\\
-		\visible<5->{\color{dcolorc}{\arctan\dfrac yx+\pi,}}&\visible<5->{\color{dcolorc}{x<0,y\ge0;}}\vspace{1ex}\\
-		\visible<6->{\emph{\arctan\dfrac yx-\pi,}}&\visible<6->{\emph{x<0,y<0;}}\\
-		\visible<7->{\dfrac\pi2,}&\visible<7->{x=0,y>0;}\\
-		\visible<7->{-\dfrac\pi2,}&\visible<7->{x=0,y<0.}
-		\end{cases}$}&
-	\end{flalign*}
-	\onslide<8->
-	那么 \emph{$\Arg z=\arg z+2k\pi, k\in\BZ$}.
-
-	\onslide<+->
-	注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 例如 $z$ 是负实数.
-\end{frame}
-
-
-\begin{frame}{复数模的性质}
-	\onslide<+->
-	复数的模满足如下性质:
-	\onslide<+->
-	\begin{block}{模的性质汇总}
-	\begin{itemize}
-		\item $z\ov z=|z|^2=|\ov z|^2$;
-		\item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
-		\item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
-		\item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
-	\end{itemize}
-	\end{block}
-
-	\begin{center}
-		\begin{figure}[h]
-			\begin{subfigure}{0.35\textwidth}
-			\centering\onslide<4->
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<4->] (-1,0)--(3,0);
-				\draw[cstaxis,visible on=<4->] (0,-1)--(0,2);
-				\draw[cstcurve,dcolorc,visible on=<4->] (1.6,0)--(0,0);
-				\draw[cstcurve,dcolorb,visible on=<4->] (1.6,0)--(1.6,1.2);
-				\draw[cstcurve,dcolora,visible on=<4->] (1.6,1.2)--(0,0);
-				\fill[cstdot,dcolora,visible on=<4->] (1.6,1.2) circle;
-				\draw[thick,visible on=<4->] (1.6,0.2)--(1.4,0.2)--(1.4,0);
-				\draw[decorate,decoration={brace,amplitude=5},dcolorc,visible on=<4->] (1.6,0)--(0,0);
-				\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on=<4->] (1.6,1.2)--(1.6,0);
-				\draw 
-					(0.6,0.9) node[dcolora,visible on=<4->] {$|z|$}
-					(0.8,-0.4) node[dcolorc,visible on=<4->] {$\abs{\Re z}$}
-					(2.3,0.6) node[dcolorb,visible on=<4->] {$\abs{\Im z}$};
-			\end{tikzpicture}
-			\end{subfigure}
-			\begin{subfigure}{0.55\textwidth}
-			\centering\onslide<5->
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<5->] (-2,0)--(3,0);
-				\draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
-				\draw[cstcurve,cstarrowto,dcolora,visible on=<5->] (0,0)--(1.6,-0.4);
-				\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on=<5->] (1.6,-0.4)--(0,0);
-				\draw[cstcurve,cstarrowto,dcolorb,visible on=<5->] (0,0)--(0.8,1.2);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb,visible on=<5->] (2.4,0.8)--(1.6,-0.4);
-				\draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
-				\draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(0.8,-1.6);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0.8,-1.6)--(0,0);
-				\draw[dcolorc,cstarrowto,visible on=<5->] (0.116,-0.636)--(-0.7,-0.4);
-				\draw[cstdash,dcolorb,visible on=<5->] (2.4,0.8)--(0.8,-1.6);
-				\draw[cstdash,dcolora,visible on=<5->] (0.8,-1.6)--(-0.8,-1.2);
-				\draw[cstdash,dcolorb,visible on=<5->] (-0.8,-1.2)--(0,0);
-				\draw 
-					(1.8,-0.6) node[dcolora,visible on=<5->] {\small $z_1$}
-					(0.6,1.3) node[dcolorb,visible on=<5->] {\small $z_2$}
-					(0.75,-0.55) node[dcolora,visible on=<5->] {\small $|z_1|$}
-					(2.6,0.25) node[dcolorb,visible on=<5->] {\small $|z_2|$}
-					(1.4,0.8) node[dcolorc,rotate=20,visible on=<5->] {\small $|z_1+z_2|$}
-					(-1.5,-0.4) node[dcolorc,visible on=<5->] {\small $|z_1-z_2|$};
-			\end{tikzpicture}
-			\end{subfigure}
-		\end{figure}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{例题：共轭复数解决模的等式}
+\begin{frame}{上三角阵的行列式}
 	\onslide<+->
 	\begin{example}
-		证明 \enumnum1 $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
-
-		\enumnum2 $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
+		计算 $\det(\bfA)$, 其中 $\bfA=\begin{bmatrix}
+			a_{11}&a_{12}&\cdots&a_{1n}\\
+			      &a_{22}&\cdots&a_{2n}\\
+						&			 &\ddots&\vdots\\
+						&			 &     	&a_{nn}
+		\end{bmatrix}$ 是\emph{上三角阵}.
 	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由于
+		\[\bfA^\rmT=\begin{bmatrix}
+			a_{11}&      &      &\\
+			a_{12}&a_{22}&      &\\
+			\vdots&\vdots&\ddots&\\
+			a_{1n}&a_{2n}&\cdots&a_{nn}
+		\end{bmatrix}\]
+		是下三角阵,
+		\onslide<+->{因此
+		$\det(\bfA)=\det(\bfA^\rmT)=a_{11}a_{22}\cdots a_{nn}.$}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{互换方阵的行的行列式}
+	\onslide<+->
+	注意到交换 $\bfP$ 的两列后得到的方阵 $\bfP'$ 对应的排列 $\sgn$ 发生了改变, 从而 $\det(\bfP')=-\det(\bfP)$.
+	\onslide<+->
+	由此可知互换两行后, 方阵的行列式变为 $-1$ 倍.
+	\onslide<+->
+	再根据转置不改变行列式可知:
+	\begin{alertblock@}
+		互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
+	\end{alertblock@}
 
 	\onslide<+->
-	\begin{proof}
-		\enumnum1 因为
-		\[|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
-		=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
-		\onslide<+->{所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
-		}\onslide<+->{因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.}
+	如果方阵有相同的两行, 那么交换这两行方阵不变但行列式变为 $-1$ 倍.
+	\onslide<+->
+	于是行列式只能为 $0$.
+	\begin{block@}
+		具有相同的两行(列)的方阵的行列式为 $0$.
+	\end{block@}
+\end{frame}
 
-		\onslide<+->{\enumnum2 因为
-		\begin{align*}
-			\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
-			\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
-			\text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
-		\end{align*}}
-		而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.
+
+\begin{frame}{行乘常数的行列式}
+	\onslide<+->
+	如果方阵某一行元素均乘 $k$, 那么行列式展开式的每一项都乘 $k$, 从而行列式乘 $k$.
+	\onslide<+->
+	\begin{alertblock@}
+		方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
+	\end{alertblock@}
+	\onslide<+->
+	\begin{exercise}
+		判断题: $\detm{k a_{11}&k a_{12}&\cdots&k a_{1n}\\ka_{21}&ka_{22}&\cdots&k a_{2n}\\&\vdots&\vdots&\ddots\\k a_{n1}&ka_{n2}&\cdots&k a_{nn}}=k\detm{a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\&\vdots&\vdots&\ddots\\a_{n1}&a_{n2}&\cdots&a_{nn}}$. \visible<+->{\Huge\color{red}{$\times$}}
+	\end{exercise}
+	\onslide<+->
+	\begin{block@}
+		\begin{itemize}
+			\item 行列式中某一行(列)的公因子可以提到行列式外面.
+			\item 如果方阵有一行(列)全为零, 则行列式为零.
+			\item 如果方阵有两行(列)成比例, 则行列式为零.
+		\end{itemize}
+	\end{block@}
+\end{frame}
+
+
+\begin{frame}{沿任一行(列)展开}
+	\onslide<+->
+	\begin{alertblock@}
+		方阵的行列式等于任一行(列)的元素与其对应的代数余子式乘积的和:
+		\[\det(\bfA)=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}.\]
+	\end{alertblock@}
+	\onslide<+->
+	将方阵的第 $i$ 行移动到第一行的前面, 需要的对换数等于排列 $i,1,2,\cdots,i-1$ 变成 $1,2,\dots,i$ 的对换数, 即 $i-1$ 次.
+	\onslide<+->
+	移动后的矩阵的行列式展开式乘 $(-1)^{i-1}$ 就是上述等式右边.
+	
+	\onslide<+->
+	由此也可以看出 $i\neq k$ 时,
+	\[a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,\]
+	\onslide<+->
+	因为它是第 $i,k$ 行相同的方阵的行列式.
+\end{frame}
+
+
+\begin{frame}{行列式的线性性}
+	\onslide<+->
+	\begin{alertblock@}
+		将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
+		\[\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
+		&\vdots&\vdots&\ddots\\
+		a_{i1}+a'_{i1}&a_{i2}+a'_{i2}&\cdots&a_{in}+a'_{in}\\
+		&\vdots&\vdots&\ddots\\
+		a_{n1}&a_{n2}&\cdots&a_{nn}}=\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
+		&\vdots&\vdots&\ddots\\
+		a_{i1}&a_{i2}&\cdots&a_{in}\\
+		&\vdots&\vdots&\ddots\\
+		a_{n1}&a_{n2}&\cdots&a_{nn}}+\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
+		&\vdots&\vdots&\ddots\\
+		a'_{i1}&a'_{i2}&\cdots&a'_{in}\\
+		&\vdots&\vdots&\ddots\\
+		a_{n1}&a_{n2}&\cdots&a_{nn}}.\]
+	\end{alertblock@}
+	\onslide<+->
+	\begin{alertblock@}
+		将方阵一行(列)乘常数 $k$ 再加到另一行(列), 行列式不变.
+	\end{alertblock@}
+\end{frame}
+
+
+\subsection{使用初等变换计算行列式}
+\begin{frame}{三种初等变换}
+	\onslide<+->
+	计算行列式可以通过下列变换来进行化简:
+	\onslide<+->
+	\begin{block}{初等变换}
+		\begin{enumerate}
+		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
+		\item 一行(列)乘常数 $k$: \alert{$r_i\times k, c_i\times k$}, 行列式变为 $k$ 倍;
+		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+	\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{例: 计算行列式}
+	\onslide<+->
+	\begin{example}
+		\[\detm{
+			 2& 3& 1&-1\\
+			-4&-5& 1& 3\\
+			-3& 1&-5& 3\\
+			 1&-2& 0&-1}
+		\onslide<+->{\hspace{-2mm}\xeq{r_1\swap r_4}}
+		\onslide<+->{-\detm{
+			1&-2& 0&-1\\
+		 -4&-5& 1& 3\\
+		 -3& 1&-5& 3\\
+		  2& 3& 1&-1}}
+		\onslide<+->{\xeq[r_4-2r_1]{r_2+4r_1, r_3+3r_1}}
+		\onslide<+->{-\detm{
+			1&-2& 0&-1\\
+		  0&-13& 1&-1\\
+		  0&-5&-5&0\\
+		  0& 7& 1&1}}
+		\]
+		\[\onslide<+->{=-\detm{
+				-13& 1&-1\\
+				-5&-5&0\\
+				 7& 1&1}}
+			\onslide<+->{\xeq{r_3+r_1}}
+		\onslide<+->{-\detm{
+			-13& 1&-1\\
+			-5&-5&0\\
+			-6& 2&0}}
+		\onslide<+->{=(-1)^{1+3}\detm{-5&-5\\-6&2}=-40.}
+		\]
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 计算行列式}
+	\onslide<+->
+	\begin{exercise}
+		$\detm{-2&0&1\\
+		501&200&299\\
+		500&200&300}=$\fillblank{\visible<+->{$-200$}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{example}
+		证明:
+		$\detm{
+			a_1+b_1&b_1+c_1&c_1+a_1\\
+			a_2+b_2&b_2+c_2&c_2+a_2\\
+			a_3+b_3&b_3+c_3&c_3+a_3
+		}=2\detm{
+			a_1&b_1&c_1\\
+			a_2&b_2&c_2\\
+			a_3&b_3&c_3
+		}$.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 计算行列式}
+	\begin{proof}
+		\[\detm{
+			a_1+b_1&b_1+c_1&c_1+a_1\\
+			a_2+b_2&b_2+c_2&c_2+a_2\\
+			a_3+b_3&b_3+c_3&c_3+a_3
+		}\xeq{c_1-c_2}\detm{
+			a_1-c_1&b_1+c_1&c_1+a_1\\
+			a_2-c_2&b_2+c_2&c_2+a_2\\
+			a_3-c_3&b_3+c_3&c_3+a_3
+		}\]\[
+		\onslide<+->{\xeq{c_1+c_3}\detm{
+			2a_1&b_1+c_1&c_1+a_1\\
+			2a_2&b_2+c_2&c_2+a_2\\
+			2a_3&b_3+c_3&c_3+a_3
+		}}
+		\onslide<+->{=2\detm{
+			a_1&b_1+c_1&c_1+a_1\\
+			a_2&b_2+c_2&c_2+a_2\\
+			a_3&b_3+c_3&c_3+a_3
+		}}\]\[
+		\onslide<+->{\xeq{c_3-c_1}2\detm{
+			a_1&b_1+c_1&c_1\\
+			a_2&b_2+c_2&c_2\\
+			a_3&b_3+c_3&c_3
+		}}
+		\onslide<+->{\xeq{c_2-c_3}2\detm{
+			a_1&b_1&c_1\\
+			a_2&b_2&c_2\\
+			a_3&b_3&c_3
+		}.}\]
 	\end{proof}
 \end{frame}
 
 
-\subsection{复数的三角形式和指数形式}
-\begin{frame}{复数的三角形式和指数形式}
-	\onslide<+->
-	由 $x=r\cos\theta,y=r\sin\theta$ 可得复数的\emph{三角形式}
-	\[\alert{z=r(\cos\theta+i\sin\theta)}.\]
-	\onslide<+->
-	定义 $e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$ (欧拉恒等式),
-	\onslide<+->
-	则我们得到复数的\emph{指数形式}
-	\[\alert{z=re^{i\theta}=r\exp(i\theta)}.\]
-	\onslide<+->
-	这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
-
-	\onslide<+->
-	求复数的三角/指数形式的\emph{关键在于计算模和辐角}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 求复数的三角/指数形式}
-	\onslide<+->
-	\begin{example}
-		将 $z=-\sqrt{12}-2i$ 化成三角形式和指数形式.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		$r=|z|=\sqrt{12+4}=4$.
-		\onslide<+->{由于 $z$ 在第三象限,
-		}\onslide<+->{因此
-			\[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.\]
-		}\onslide<+->{故
-			\[z=4\left[\cos\left(-\frac{5\pi}6\right)+i\sin\left(-
-		\frac{5\pi}6\right)\right]=4e^{-\frac{5\pi i}6}.\]}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 求复数的三角/指数形式}
-	\onslide<+->
-	\begin{example}
-		将 $z=\sin\dfrac\pi5+i\cos\dfrac\pi5$ 化成三角形式和指数形式.
-	\end{example}
-
-	\onslide
-	\begin{solution}
-		\[|z|=1,\quad \onslide<+->{
-			\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.
-		}\]
-		\onslide<+->{因此 $z=\displaystyle\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}$.}
-	\end{solution}
-	\onslide<+->
-		\begin{proofblock}{另解}
-		\[
-		z=\sin\frac\pi5+i\cos\frac\pi5
-		\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}
-		\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
-		\]
-	\end{proofblock}
-\end{frame}
-
-
-\begin{frame}{典型例题: 求复数的三角/指数形式}
-	\onslide<+->
-	求复数的三角或指数形式时, 我们只需要任取一个辐角就可以了, 不要求必须是主辐角.
-
+\begin{frame}{例: 特殊形状行列式}
 	\onslide<+->
 	\begin{exercise}
-		将 $z=\sqrt 3-3i$ 化成三角形式和指数形式.
+		$\detm{
+			a_1+b_1&b_1+c_1&c_1+d_1&d_1+a_1\\
+			a_2+b_2&b_2+c_2&c_2+d_2&d_2+a_2\\
+			a_3+b_3&b_3+c_3&c_3+d_3&d_3+a_3\\
+			a_4+b_4&b_4+c_4&c_4+d_4&d_4+a_4
+		}=$\fillblank{\visible<+->{$0$}}.
 	\end{exercise}
-
 	\onslide<+->
-	\begin{answer}
-		$\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)
-		=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
-	\end{answer}
+	\begin{example}
+		计算 $n$ 阶行列式 $\detm{
+			a&1&\cdots&1\\
+			1&a&\cdots&1\\
+			\vdots&\vdots&\ddots&\vdots\\
+			1&1&\cdots&a
+		}$.
+	\end{example}
 \end{frame}
 
 
-\begin{frame}{模为 $1$ 的复数}
+\begin{frame}{例: 特殊形状行列式}
 	\onslide<+->
-	两个模相等的复数之和的三角/指数形式形式较为简单.
-	\onslide<+->
-	\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
-	\onslide<+->
-	\begin{center}
-			\begin{tikzpicture}[framed]
-			\draw[cstaxis] (-1.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-0.6)--(0,2.5);
-			\draw[cstcurve,cstarrowto,dcolora] (0,0)--(-0.8,1.72);
-			\draw[cstdash] (-0.8,1.72)--(1,2.32)--(1.8,0.6)--(0.5,1.16);
-			\draw[thick] (0.7,1.074)--(0.786,1.274)--(0.586,1.36);
-			\coordinate (A) at (2,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (1.8,0.6);
-			\draw[thick,dcolorb] pic [draw, "$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle};
-			\coordinate (A) at (1.8,0.6);
-			\coordinate (C) at (1,2.32);
-			\draw[cstcurve,dcolora,cstarrowto] (B)--(A);
-			\draw[cstcurve,dcolorb,cstarrowto] (B)--(C);
-			\draw[thick,dcolorb] pic [draw, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle};
-			\draw
-			(-0.2,-0.3) node {$0$}
-			(2.1,0.7) node[dcolora] {$e^{i\varphi}$}
-			(-1.1,1.7) node[dcolora] {$e^{i\theta}$};
-		\end{tikzpicture}
-	\end{center}
+	\begin{solution}
+		\[\detm{
+			a&1&\cdots&1\\
+			1&a&\cdots&1\\
+			\vdots&\vdots&\ddots&\vdots\\
+			1&1&\cdots&a
+		}\xeq[i\ge2]{c_1+c_i}\detm{
+			a+n-1&1&\cdots&1\\
+			a+n-1&a&\cdots&1\\
+			\vdots&\vdots&\ddots&\vdots\\
+			a+n-1&1&\cdots&a
+		}
+		\onslide<+->{=(a+n-1)\detm{
+			1&1&\cdots&1\\
+			1&a&\cdots&1\\
+			\vdots&\vdots&\ddots&\vdots\\
+			1&1&\cdots&a
+		}}\]\[
+		\onslide<+->{\xeq[i\ge2]{r_i-r_1}\detm{
+			1&1&\cdots&1\\
+			0&a-1&\cdots&0\\
+			\vdots&\vdots&\ddots&\vdots\\
+			0&0&\cdots&a-1
+		}}
+		\onslide<+->{=(a+n-1)(a-1)^{n-1}.}
+		\]
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 特殊形状行列式}
 	\onslide<+->
 	\begin{example}
-		如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 e^{\frac{\theta i}2}$.
+		计算 $n$ 阶行列式 $\detm{
+			1&1&\cdots&1\\
+			1&2&\cdots&0\\
+			\vdots&\vdots&\ddots&\vdots\\
+			1&0&\cdots&n
+		}$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\detm{
+			1&1&\cdots&1\\
+			1&2&\cdots&0\\
+			\vdots&\vdots&\ddots&\vdots\\
+			1&0&\cdots&n
+		}\xeq[i\ge 2]{r_1-\frac1i r_i}
+		\detm{
+			1-\frac12-\cdots-\frac1n&1&\cdots&1\\
+			0&2&\cdots&0\\
+			\vdots&\vdots&\ddots&\vdots\\
+			0&0&\cdots&n
+		}
+		=\Bigl(1-\frac12-\cdots-\frac1n\Bigr)n!.\]
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 特殊形状行列式}
+	\onslide<+->
+	\begin{example}
+		设
+		\[\bfA=\begin{bmatrix}
+			a_{11}&a_{12}&\cdots&a_{1m}\\
+			a_{21}&a_{22}&\cdots&a_{2m}\\
+			\vdots&\vdots&\ddots&\vdots
+			a_{m1}&a_{m2}&\cdots&a_{mm}\\
+		\end{bmatrix},\qquad
+		\bfB=\begin{bmatrix}
+			b_{11}&b_{12}&\cdots&b_{1n}\\
+			b_{21}&b_{22}&\cdots&b_{2n}\\
+			\vdots&\vdots&\ddots&\vdots
+			b_{n1}&b_{n2}&\cdots&b_{nn}\\
+		\end{bmatrix},\qquad
+		\bfC=\begin{bmatrix}
+			a_{11}&a_{12}&\cdots&a_{1m}\\
+			a_{21}&a_{22}&\cdots&a_{2m}\\
+			\vdots&\vdots&\ddots&\vdots
+			a_{m1}&a_{m2}&\cdots&a_{mm}\\
+		\end{bmatrix},\qquad
+		\bfB=\begin{bmatrix}
+			b_{11}&b_{12}&\cdots&b_{1n}\\
+			b_{21}&b_{22}&\cdots&b_{2n}\\
+			\vdots&\vdots&\ddots&\vdots
+			b_{n1}&b_{n2}&\cdots&b_{nn}\\
+		\end{bmatrix}.\]
 	\end{example}
 \end{frame}
