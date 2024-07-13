@@ -1,8 +1,6 @@
-\begin{frame}{课程安排}
-	\onslide<+->
+\begin{frame}[<*>]{课程安排}
 	\begin{columns}
 		\column{0.48\textwidth}
-			\onslide<+->
 			\begin{block*}{课时}
 				本课程共$10$周$40$课时, 自2024年9月24日至2024年11月27日.
 			\end{block*}
@@ -26,43 +24,96 @@
 \end{frame}
 
 
-\begin{frame}{成绩构成}
-	\onslide<+->
-	\begin{columns}
-		\column{0.48\textwidth}
-		\onslide<+->
-		\begin{block*}{作业 15分}
-			\vspace{\baselineskip}
-			每章交一次, 作业及前一章答案每次发布在QQ群和个人主页中. 
-			作业可以打印出来, 或使用薄作业本(不用抄题目, 注明题号), 请勿使用厚笔记本! 
-			\vspace{\baselineskip}
+% \begin{frame}{成绩构成}
+% 	\onslide<+->
+% 	\begin{columns}
+% 		\column{0.48\textwidth}
+% 		\onslide<+->
+% 		\begin{block*}{作业 15分}
+% 			\vspace{\baselineskip}
+% 			作业为配套练习册, 每章交一次.
 
-			\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
-			\vspace{1.1\baselineskip}
-		\end{block*}
+% 			\vspace{\baselineskip}
+% 			\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
+% 			\vspace{1.1\baselineskip}
+% 		\end{block*}
 
-		\column{0.48\textwidth}
-		\onslide<+->
-		\begin{block*}{课堂测验 25分}
-			课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
-		\end{block*}
+% 		\column{0.48\textwidth}
+% 		\onslide<+->
+% 		\begin{block*}{课堂测验 25分}
+% 			课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
+% 		\end{block*}
 
-		\onslide<+->
-		\begin{block*}{期末报告 10分}
-			期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
-		\end{block*}
+% 		\onslide<+->
+% 		\begin{block*}{期末报告 10分}
+% 			期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
+% 		\end{block*}
 
-		\onslide<+->
-		\begin{block*}{期末考试 50分}
-			期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
-	\end{block*}
-	\end{columns}
+% 		\onslide<+->
+% 		\begin{block*}{期末考试 50分}
+% 			期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
+% 	\end{block*}
+% 	\end{columns}
+% \end{frame}
+
+\begin{frame}[<*>]{成绩构成}
+	\vspace{-\baselineskip}
+	\begin{center}
+	\begin{tikzpicture}
+		\begin{scope}[xshift=.2mm,yshift=1.7mm,scale=2]
+			\filldraw[cstcurve,dcolorb,fill=white] (0,0)--(0,1) arc (90:144:1) -- cycle;
+		\end{scope}
+		\begin{scope}[scale=2.1]
+			\filldraw[cstcurve,dcolorc,fill=white] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
+		\end{scope}
+		\begin{scope}[xshift=1.8mm,yshift=.5mm,scale=1.95]
+			\filldraw[cstcurve,dcolord,fill=white] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
+		\end{scope}
+		\begin{scope}[xshift=1.5mm,yshift=1.7mm,scale=2]
+			\filldraw[cstcurve,dcolore,fill=white] (0,0)--(1,0) arc (0:90:1) -- cycle;
+		\end{scope}
+
+		\begin{scope}
+			\draw[dcolorb] (-.7,1.5)--(-1.6,2.5)--(-3,2.5);
+			\filldraw[dcolorb,fill=white] (-.7,1.5) circle(.1);
+			\node at (-5,1.7) [text width=53mm]  (1){
+			\begin{block*}{作业 15分}
+				作业为配套练习册, 每章交一次.
+				\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
+			\end{block*}};
+		\end{scope}
+
+		\begin{scope}
+			\draw[dcolore] (.9,1.5)--(1.6,2.5)--(3,2.5);
+			\filldraw[dcolore,fill=white] (.9,1.5) circle(.1);
+			\node at (4.7,1.8) [text width=43mm] (2){{\begin{block*}{课堂测验 25分}
+				课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
+			\end{block*}}};
+		\end{scope}
+		
+		\begin{scope}
+			\draw[dcolord] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
+			\filldraw[dcolord,fill=white] (1.5,-.4) circle(.1);
+			\node at (4.7,-1.5) [text width=43mm] (3){\begin{block*}{期末报告 10分}
+				期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
+			\end{block*}};
+		\end{scope}
+
+		\begin{scope}
+			\draw[dcolorc] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
+			\filldraw[dcolorc,fill=white] (-.7,-1) circle(.1);
+			\node at (-5,-1.7) [text width=53mm] (4){\begin{block*}{期末考试 50分}
+				期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
+			\end{block*}};
+		\end{scope}
+	\end{tikzpicture}
+\end{center}
 \end{frame}
 
 
 \begin{frame}{线性代数的意义}
 	\onslide<+->
-	线性代数是一门研究线性方程、线性空间、线性变换等线性结构的课程.
+	线性代数是一门研究\emph{线性方程、线性空间、线性变换}等线性结构的课程.
 	\onslide<+->
 	尽管真实的世界中, 例如函数关系, 往往是非线性的.
 	但我们可以利用线性方法去模拟、近似、逼近它.
@@ -77,6 +128,7 @@
 
 
 \begin{frame}{课程内容}
+	\vspace{-\baselineskip}
 	\begin{center}
 		\begin{tikzpicture}[
 			small mindmap,

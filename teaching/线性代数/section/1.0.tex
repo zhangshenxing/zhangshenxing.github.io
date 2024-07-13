@@ -4,11 +4,11 @@
 	\onslide<+->
 	线性代数起源于线性方程组的求解问题.
 	\onslide<+->
-	考虑方程组
-	\begin{laeq}
+	考虑二元线性方程组
+	\begin{laeqn}
 		3x_1-2x_2=12,&\\
 		2x_1+x_2=1.
-	\end{laeq}
+	\end{laeqn}
 	\onslide<+->
 	2(2)+(1)可得 $7x_1=14$.
 	\onslide<+->
@@ -18,20 +18,20 @@
 
 \begin{frame}{二元线性方程组\noexer}
 	\onslide<+->
-	我们考虑一般情形:
-	\begin{laeq}
+	考虑一般情形:
+	\begin{laeqn}
 		a_{11}x_1+a_{12}x_2=b_1,&\\
 		a_{21}x_1+a_{22}x_2=b_2.
-	\end{laeq}
+	\end{laeqn}
 	\onslide<+->
 	分别作 $a_{22}\times (1), a_{12}\times (2)$ 得到
-	\begin{laeq}
+	\begin{laeqn}
 		a_{22}a_{11}x_1+a_{22}a_{12}x_2=b_1 a_{22},&\\
 		a_{12}a_{21}x_1+a_{12}a_{22}x_2=b_2 a_{12}.
-	\end{laeq}
+	\end{laeqn}
 	\onslide<+->
-	然后 $-(2)+(1)$ 得到
-	\[(a_{11}a_{22}-a_{12}a_{21})x_1=a_{22}b_1-a_{12}b_2.\]
+	然后 $(1)-(2)$ 得到
+	\[(a_{11}a_{22}-a_{12}a_{21})x_1=b_1a_{22}-b_2a_{12}.\]
 \end{frame}
 
 
@@ -54,6 +54,11 @@
 	当 $a_{11}a_{22}-a_{12}a_{21}\neq0$ 时, 总有唯一解.
 	\onslide<+->
 	所以这个数值就充当了方程``判别式''的作用.
+	
+	\onslide<+->
+	对于 $n$ 个未知数 $n$ 的方程的线性方程组, 能不能定义出类似的量来刻画它何时有唯一解呢? 
+	\onslide<+->
+	这便是\emph{行列式}的由来.
 \end{frame}
 
 

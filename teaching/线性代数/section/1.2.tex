@@ -1,112 +1,189 @@
 \section{行列式的性质}
 
-\subsection{行列式的变换性质}
+\subsection{拉普拉斯展开}
+
+\begin{frame}{互换方阵的列的行列式}
+	\onslide<+->
+	\begin{alertblock@}
+		互换两列后, 方阵的行列式变为 $-1$ 倍.
+	\end{alertblock@}
+	\onslide<+->
+	为了陈述方便, 记 \alert{$c_i\swap c_j (r_i\swap r_j)$} 为交换 $i,j$ 列(行).
+	\onslide<+->
+	注意 $c_i\swap c_j$ 可以通过
+	\[c_j\swap c_{j-1},\quad c_{j-1}\swap c_{j-2},\quad \dots,\quad, c_{i+1}\swap c_i,\qquad
+	c_{i+1}\swap c_{i+2},\quad \dots,\quad c_{j-1}\swap c_j\]
+	实现, 一共 $2(j-i)+1$ 次.
+	\onslide<+->
+	因此只需证明互换相邻的两列后, 方阵的行列式变为 $-1$ 倍.
+
+	\onslide<+->
+	对方阵的阶 $n$ 归纳.
+	\onslide<+->
+	当 $n=2$ 时显然成立.
+
+	\onslide<+->
+	如果命题对于 $n-1$ 成立, 对于 $n$ 阶方阵 $\bfA=(a_{ij})$, 交换它的 $k,k+1$ 列得到方阵 $\bfB=(b_{ij})$.
+	\onslide<+->
+	设 $\bfA$ 在 $(i,j)$ 处的余子式为 $M_{ij}$, $\bfB$ 在 $(i,j)$ 处的余子式为 $N_{ij}$.
+\end{frame}
+
+
+\begin{frame}{互换方阵的列的行列式}
+	\onslide<+->
+	\begin{itemize}
+		\item 当 $j\neq k,k+1$ 时, $\bfB$ 去掉 $1$ 行 $j$ 列得到的方阵是$\bfA$ 去掉 $1$ 行 $j$ 列得到的方阵互换两列得到的.
+		\onslide<+->
+		因此 $N_{1j}=-M_{1j}$.
+		\item 当 $j=k$ 时, $\bfB$ 去掉 $1$ 行 $k$ 列得到的方阵是$\bfA$ 去掉 $1$ 行 $k+1$ 列得到的方阵.
+		\onslide<+->
+		因此 $N_{1k}=M_{1,k+1}$.
+		\item 同理 $N_{1,k+1}=M_{1k}$.
+	\end{itemize}
+	\onslide<+->
+	故
+	\begin{align*}
+		|\bfB|&=\sum_{j\neq k,k+1} (-1)^{1+j}a_{1j} N_{1j}
+		+(-1)^{1+k}a_{1,k+1}N_{1k}+(-1)^{1+(k+1)}a_{1,k}N_{1,k+1}\\
+		&=-\sum_{j\neq k,k+1} (-1)^{1+j}a_{1j} M_{1j}
+		+(-1)^{1+k}a_{1,k+1}M_{1,k+1}+(-1)^{k}a_{1,k}M_{1k}\\
+		&=-|\bfA|.
+	\end{align*}
+\end{frame}
+
 
 \begin{frame}{转置的行列式}
 	\onslide<+->
 	如果 $\bfA=(a_{ij})_{m\times n}$, 称
-	\[\bfA^\rmT=\begin{bmatrix}
+	\[\bfA^\rmT=\begin{pmatrix}
 		a_{11}&a_{21}&\cdots&a_{m1}\\
 		a_{12}&a_{22}&\cdots&a_{m2}\\
 		\vdots&\vdots&\ddots&\vdots\\
 		a_{1n}&a_{2n}&\cdots&a_{mn}
-	\end{bmatrix}\]
+	\end{pmatrix}\]
 	为矩阵 $\bfA$ 的\emph{转置}, 它是 $n\times m$ 矩阵.
+	\begin{alertblock@}
+		\begin{enumerate}
+			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
+		\end{enumerate}
+	\end{alertblock@}
+\end{frame}
+
+
+\begin{frame}{转置的行列式}
+	\onslide<+->
+	根据行列式的归纳定义可知, $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1 k_2 \cdots k_n$ 取遍 $1,2,\dots,n$ 的所有排列.
+	\onslide<+->
+	这个 $\pm$ 与具体的 $a_{ij}$ 取值无关, 因此它也就是 $|\bfP|$, 其中 $\bfP$ 的 $i$ 行 $k_i$ 列为 $1$, 其余项为零.
 
 	\onslide<+->
-	注意到对于 $\bfP$,  $c_{k_i}\swap c_{k_j}$ 和 $r_i\swap r_j$ 是一样的,
+	设 $\ell_1,\dots,\ell_n$ 是一个排列且满足 $k_{\ell_i}=i$.
 	\onslide<+->
-	即对 $\bfP^\rmT$ 进行 $c_i\swap c_j$ 得到的方阵的转置.
+	也就是说, 如果把排列看成集合 $\{1,2,\dots,n\}$ 到自身的双射, $\ell$ 就是 $k$ 的逆映射.
+
 	\onslide<+->
-	因此 $\det(\bfP^\rmT)=\det(\bfP)$.
+	现在
+	\begin{align*}
+		|\bfA|&=\sum|\bfP| a_{1k_1}\cdots a_{nk_n},\\
+		|\bfA^\rmT|&=\sum|\bfP| a_{k_1 1}\cdots a_{k_n n}\\
+		&=\sum|\bfP| a_{1\ell_1}\cdots a_{1 \ell_n}.
+	\end{align*}
+	\onslide<+->
+	因此只需证明 $|\bfP|=|\bfQ|$, 其中 $\bfQ$ 的 $i$ 行 $\ell_i$ 列为 $1$, 其余项为零.
+	\onslide<+->
+	换言之, $\bfQ=\bfP^\rmT$.
+\end{frame}
+
+
+\begin{frame}{互换方阵的行(列)的行列式}
+	\onslide<+->
+	注意到交换 $\bfP$ 的 $k_i,k_j$ 列和交换 $i,j$ 行是一回事.
+	\onslide<+->
+	如果 $\bfP$ 可通过 $a$ 次互换列变成单位矩阵 $\bfE_n$, 那么 $|\bfP|=(-1)^a$ 且 $\bfP$ 可通过 $a$ 次互换行变成单位矩阵.
+	\onslide<+->
+	所以 $\bfQ$ 可通过 $a$ 次互换列变成单位矩阵, $|\bfQ|=(-1)^a=|\bfP|$.
+	从而命题得证.
 	
 	\onslide<+->
-	而 $\det(\bfA)$ 是所有置换对应的型如 $\bfP$ 方阵行列式之和, 因此
-	\begin{alertblock@}
-		转置不改变行列式: $\det(\bfA^\rmT)=\det(\bfA)$.
+	由此可知:
+	\begin{enumerate}
+		\setcounter{enumi}{1}
+		\item 互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
+	\end{enumerate}
 	\end{alertblock@}
+	\onslide<+->
+	如果方阵有相同的两行, 那么交换这两行方阵不变但行列式变为 $-1$ 倍.
+	\onslide<+->
+	于是行列式只能为 $0$.
+	\begin{corollary}
+		具有相同的两行(列)的方阵的行列式为 $0$.
+	\end{corollary}
 \end{frame}
 
 
 \begin{frame}{上三角阵的行列式}
 	\onslide<+->
 	\begin{example}
-		计算 $\det(\bfA)$, 其中 $\bfA=\begin{bmatrix}
+		计算 $|\bfA|$, 其中 $\bfA=\begin{pmatrix}
 			a_{11}&a_{12}&\cdots&a_{1n}\\
 			      &a_{22}&\cdots&a_{2n}\\
 						&			 &\ddots&\vdots\\
 						&			 &     	&a_{nn}
-		\end{bmatrix}$ 是\emph{上三角阵}.
+		\end{pmatrix}$ 是\emph{上三角阵}.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		由于
-		\[\bfA^\rmT=\begin{bmatrix}
+		\[\bfA^\rmT=\begin{pmatrix}
 			a_{11}&      &      &\\
 			a_{12}&a_{22}&      &\\
 			\vdots&\vdots&\ddots&\\
 			a_{1n}&a_{2n}&\cdots&a_{nn}
-		\end{bmatrix}\]
+		\end{pmatrix}\]
 		是下三角阵,
 		\onslide<+->{因此
-		$\det(\bfA)=\det(\bfA^\rmT)=a_{11}a_{22}\cdots a_{nn}.$}
+		$|\bfA|=|\bfA^\rmT|=a_{11}a_{22}\cdots a_{nn}.$}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{互换方阵的行的行列式}
+\begin{frame}{拉普拉斯展开}
 	\onslide<+->
-	注意到交换 $\bfP$ 的两列后得到的方阵 $\bfP'$ 对应的排列 $\sgn$ 发生了改变, 从而 $\det(\bfP')=-\det(\bfP)$.
-	\onslide<+->
-	由此可知互换两行后, 方阵的行列式变为 $-1$ 倍.
-	\onslide<+->
-	再根据转置不改变行列式可知:
-	\begin{alertblock@}
-		互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
-	\end{alertblock@}
-
-	\onslide<+->
-	如果方阵有相同的两行, 那么交换这两行方阵不变但行列式变为 $-1$ 倍.
-	\onslide<+->
-	于是行列式只能为 $0$.
-	\begin{block@}
-		具有相同的两行(列)的方阵的行列式为 $0$.
-	\end{block@}
-\end{frame}
-
-
-\begin{frame}{行乘常数的行列式}
-	\onslide<+->
-	如果方阵某一行元素均乘 $k$, 那么行列式展开式的每一项都乘 $k$, 从而行列式乘 $k$.
-	\onslide<+->
-	\begin{alertblock@}
-		方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
-	\end{alertblock@}
-	\onslide<+->
-	\begin{exercise}
-		判断题: $\detm{k a_{11}&k a_{12}&\cdots&k a_{1n}\\ka_{21}&ka_{22}&\cdots&k a_{2n}\\&\vdots&\vdots&\ddots\\k a_{n1}&ka_{n2}&\cdots&k a_{nn}}=k\detm{a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\&\vdots&\vdots&\ddots\\a_{n1}&a_{n2}&\cdots&a_{nn}}$. \visible<+->{\Huge\color{red}{$\times$}}
-	\end{exercise}
-	\onslide<+->
-	\begin{block@}
-		\begin{itemize}
-			\item 行列式中某一行(列)的公因子可以提到行列式外面.
-			\item 如果方阵有一行(列)全为零, 则行列式为零.
-			\item 如果方阵有两行(列)成比例, 则行列式为零.
-		\end{itemize}
-	\end{block@}
-\end{frame}
-
-
-\begin{frame}{沿任一行(列)展开}
-	\onslide<+->
-	\begin{alertblock@}
+	\begin{theorem}[行列式沿任一行(列)展开, 拉普拉斯展开]
 		方阵的行列式等于任一行(列)的元素与其对应的代数余子式乘积的和:
-		\[\det(\bfA)=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}.\]
-	\end{alertblock@}
+		\begin{align*}
+			|\bfA|&=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}\\
+			&=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}.
+		\end{align*}
+	\end{theorem}
 	\onslide<+->
-	将方阵的第 $i$ 行移动到第一行的前面, 需要的对换数等于排列 $i,1,2,\cdots,i-1$ 变成 $1,2,\dots,i$ 的对换数, 即 $i-1$ 次.
+	\begin{proofs}
+	设将方阵的第 $i$ 行移动到第一行的前面得到的方阵为 $\bfB$.
 	\onslide<+->
-	移动后的矩阵的行列式展开式乘 $(-1)^{i-1}$ 就是上述等式右边.
+	那么 $\bfB$ 就是 $\bfA$ 通过
+	\[r_i\swap r_{i-1}, r_{i-1}\swap r_{i-2},\dots,r_2\swap r_1\]
+	\onslide<+->
+	一共 $i-1$ 次行互换得到的.
+	\onslide<+->
+	从而 $|\bfB|=(-1)^{i-1}|\bfA|$.
+	\end{proofs}
+\end{frame}
+
+
+\begin{frame}{拉普拉斯展开}
+	\onslide<+->
+	\begin{proofe}
+	$\bfB$ 在 $(1,j)$ 处的元素是 $a_{ij}$, 余子式是 $M_{ij}$, 因此
+	\[|\bfB|=a_{i1}M_{i1}-a_{i2}M_{i2}+\cdots+(-1)^{n+1}a_{in}M_{in}.\]
+	\onslide<+->
+	两边同时乘以 $(-1)^{i+1}$ 得到
+	\begin{align*}
+		|\bfA|&=(-1)^{i+1}M_{i1}+(-1)^{i+2}M_{i2}+\cdots+(-1)^{i+n}M_{in}\\
+		&=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}.
+	\end{align*}
+	\onslide<+->
+	再根据转置不改变行列式得到行列式沿一列展开的形式.
+	\end{proofe}
 	
 	\onslide<+->
 	由此也可以看出 $i\neq k$ 时,
@@ -116,10 +193,38 @@
 \end{frame}
 
 
+\subsection{行列式的变换性质}
+\begin{frame}{行乘常数的行列式}
+	\onslide<+->
+	如果方阵某一行元素均乘 $k$, 那么沿着这一行展开会发现行列式乘 $k$.
+	\onslide<+->
+	\begin{alertblock@}
+		\begin{enumerate}
+			\setcounter{enumi}{2}
+			\item 方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
+		\end{enumerate}
+	\end{alertblock@}
+	\onslide<+->
+	\begin{exercise}
+		判断题: $\detm{k a_{11}&k a_{12}&\cdots&k a_{1n}\\ka_{21}&ka_{22}&\cdots&k a_{2n}\\&\vdots&\vdots&\ddots\\k a_{n1}&ka_{n2}&\cdots&k a_{nn}}=k\detm{a_{11}&a_{12}&\cdots&a_{1n}\\a_{21}&a_{22}&\cdots&a_{2n}\\&\vdots&\vdots&\ddots\\a_{n1}&a_{n2}&\cdots&a_{nn}}$. \visible<+->{\Huge\color{red}{$\times$}}
+	\end{exercise}
+	\onslide<+->
+	\begin{corollary}
+		\begin{itemize}
+			\item 行列式中某一行(列)的公因子可以提到行列式外面.
+			\item 如果方阵有一行(列)全为零, 则行列式为零.
+			\item 如果方阵有两行(列)成比例, 则行列式为零.
+		\end{itemize}
+	\end{corollary}
+\end{frame}
+
+
 \begin{frame}{行列式的线性性}
 	\onslide<+->
 	\begin{alertblock@}
-		将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
+		\begin{enumerate}
+			\setcounter{enumi}{4}
+			\item 将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
 		\[\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
 		&\vdots&\vdots&\ddots\\
 		a_{i1}+a'_{i1}&a_{i2}+a'_{i2}&\cdots&a_{in}+a'_{in}\\
@@ -133,15 +238,19 @@
 		a'_{i1}&a'_{i2}&\cdots&a'_{in}\\
 		&\vdots&\vdots&\ddots\\
 		a_{n1}&a_{n2}&\cdots&a_{nn}}.\]
+		\end{enumerate}
 	\end{alertblock@}
 	\onslide<+->
 	\begin{alertblock@}
-		将方阵一行(列)乘常数 $k$ 再加到另一行(列), 行列式不变.
+		\begin{enumerate}
+			\setcounter{enumi}{3}
+			\item 将方阵一行(列)乘常数 $k$ 再加到另一行(列), 行列式不变.
+		\end{enumerate}
 	\end{alertblock@}
 \end{frame}
 
 
-\subsection{使用初等变换计算行列式}
+\subsection{使用初等变换和拉普拉斯展开计算行列式}
 \begin{frame}{三种初等变换}
 	\onslide<+->
 	计算行列式可以通过下列变换来进行化简:
@@ -216,6 +325,9 @@
 
 
 \begin{frame}{例: 计算行列式}
+	\onslide<+->
+	利用初等列变换来化简.
+	\onslide<+->
 	\begin{proof}
 		\[\detm{
 			a_1+b_1&b_1+c_1&c_1+a_1\\
@@ -245,12 +357,12 @@
 			a_1&b_1&c_1\\
 			a_2&b_2&c_2\\
 			a_3&b_3&c_3
-		}.}\]
+		}.}\qedhere\]
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 特殊形状行列式}
+\begin{frame}{例: 计算行列式}
 	\onslide<+->
 	\begin{exercise}
 		$\detm{
@@ -261,105 +373,348 @@
 		}=$\fillblank{\visible<+->{$0$}}.
 	\end{exercise}
 	\onslide<+->
+	\begin{exercise}
+		$\detm{
+			1&1&1\\
+			a&b&c\\
+			b+c&c+a&a+b
+		}=$\fillblank{\visible<+->{$0$}}.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 计算行列式}
+	\onslide<+->
+	\begin{exercise}
+		解方程 $\detm{
+			x+1&2&-1\\
+			2&x+1&1\\
+			-1&1&x+1}=0$.
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		$x=-3,\pm\sqrt3$.
+	\end{answer}
+	\onslide<+->
 	\begin{example}
-		计算 $n$ 阶行列式 $\detm{
-			a&1&\cdots&1\\
-			1&a&\cdots&1\\
-			\vdots&\vdots&\ddots&\vdots\\
-			1&1&\cdots&a
-		}$.
+		如果 $abcd=1$, 证明 $\bfA=\begin{pmatrix}
+			a^2+\frac1{a^2}&a&\frac1a&1\\[2pt]
+			b^2+\frac1{b^2}&b&\frac1b&1\\[2pt]
+			c^2+\frac1{c^2}&c&\frac1c&1\\[2pt]
+			d^2+\frac1{d^2}&d&\frac1d&1
+		\end{pmatrix}$ 行列式为零.
 	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 计算行列式}
+	\onslide<+->
+	我们发现第一列可以拆分成两组数相加, 从而行列式也可以拆分成两个数.
+	\onslide<+->
+	\begin{proof}
+		\begin{align*}
+			|\bfA|&=\detm{
+				a^2&a&\dfrac1a&1\\[7pt]
+				b^2&b&\dfrac1b&1\\[7pt]
+				c^2&c&\dfrac1c&1\\[7pt]
+				d^2&d&\dfrac1d&1}+\detm{
+				\dfrac1{a^2}&a&\dfrac1a&1\\[7pt]
+				\dfrac1{b^2}&b&\dfrac1b&1\\[7pt]
+				\dfrac1{c^2}&c&\dfrac1c&1\\[7pt]
+				\dfrac1{d^2}&d&\dfrac1d&1}
+			\onslide<+->{=abcd\detm{
+				a&1&\dfrac1{a^2}&\dfrac1a\\[7pt]
+				b&1&\dfrac1{b^2}&\dfrac1b\\[7pt]
+				c&1&\dfrac1{c^2}&\dfrac1c\\[7pt]
+				d&1&\dfrac1{d^2}&\dfrac1d}+\detm{
+				a&\dfrac1{a^2}&1&\dfrac1a\\[7pt]
+				b&\dfrac1{b^2}&1&\dfrac1b\\[7pt]
+				c&\dfrac1{c^2}&1&\dfrac1c\\[7pt]
+				d&\dfrac1{d^2}&1&\dfrac1d}}\\
+				&\onslide<+->{=0.}\qedhere
+		\end{align*}
+	\end{proof}
 \end{frame}
 
 
 \begin{frame}{例: 特殊形状行列式}
 	\onslide<+->
-	\begin{solution}
-		\[\detm{
+	计算 $n$ 阶矩阵的行列式可以使用初等变换将其变为三角型，也可以使用拉普拉斯展开来对其进行降阶。
+	\onslide<+->
+	\begin{example}
+		\begin{align*}
+			\detm{
 			a&1&\cdots&1\\
 			1&a&\cdots&1\\
 			\vdots&\vdots&\ddots&\vdots\\
 			1&1&\cdots&a
-		}\xeq[i\ge2]{c_1+c_i}\detm{
+		}
+		&\onslide<+->{\xeq[i\ge2]{c_1+c_i}\detm{
 			a+n-1&1&\cdots&1\\
 			a+n-1&a&\cdots&1\\
 			\vdots&\vdots&\ddots&\vdots\\
 			a+n-1&1&\cdots&a
-		}
+		}}
 		\onslide<+->{=(a+n-1)\detm{
 			1&1&\cdots&1\\
 			1&a&\cdots&1\\
 			\vdots&\vdots&\ddots&\vdots\\
 			1&1&\cdots&a
-		}}\]\[
-		\onslide<+->{\xeq[i\ge2]{r_i-r_1}\detm{
+		}}\\
+		&\onslide<+->{\xeq[i\ge2]{r_i-r_1}\detm{
 			1&1&\cdots&1\\
 			0&a-1&\cdots&0\\
 			\vdots&\vdots&\ddots&\vdots\\
 			0&0&\cdots&a-1
 		}}
 		\onslide<+->{=(a+n-1)(a-1)^{n-1}.}
-		\]
-	\end{solution}
+		\end{align*}
+	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 特殊形状行列式}
+\begin{frame}{例: 箭形行列式}
 	\onslide<+->
 	\begin{example}
-		计算 $n$ 阶行列式 $\detm{
-			1&1&\cdots&1\\
-			1&2&\cdots&0\\
-			\vdots&\vdots&\ddots&\vdots\\
-			1&0&\cdots&n
-		}$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
 		\[\detm{
 			1&1&\cdots&1\\
 			1&2&\cdots&0\\
 			\vdots&\vdots&\ddots&\vdots\\
 			1&0&\cdots&n
-		}\xeq[i\ge 2]{r_1-\frac1i r_i}
+		}\onslide<+->{\xeq[i\ge 2]{r_1-\frac1i r_i}
 		\detm{
 			1-\frac12-\cdots-\frac1n&1&\cdots&1\\
 			0&2&\cdots&0\\
 			\vdots&\vdots&\ddots&\vdots\\
 			0&0&\cdots&n
-		}
-		=\Bigl(1-\frac12-\cdots-\frac1n\Bigr)n!.\]
-	\end{solution}
+		}}
+		\onslide<+->{=\Bigl(1-\frac12-\cdots-\frac1n\Bigr)n!.}\]
+	\end{example}
+	\onslide<+->
+	\begin{exercise}
+		计算 $n$ 阶行列式 $\detm{
+			1+a_1&a_2&\cdots&a_n\\
+			a_1&1+a_2&\cdots&a_n\\
+			\vdots&\vdots&\ddots&\vdots\\
+			a_1&a_2&\cdots&1+a_n
+		}=$\fillblank[4cm]{\visible<+->{$1+a_1+\cdots+a_n$}}.
+	\end{exercise}
 \end{frame}
 
 
 \begin{frame}{例: 特殊形状行列式}
 	\onslide<+->
 	\begin{example}
-		设
-		\[\bfA=\begin{bmatrix}
-			a_{11}&a_{12}&\cdots&a_{1m}\\
-			a_{21}&a_{22}&\cdots&a_{2m}\\
-			\vdots&\vdots&\ddots&\vdots
-			a_{m1}&a_{m2}&\cdots&a_{mm}\\
-		\end{bmatrix},\qquad
-		\bfB=\begin{bmatrix}
-			b_{11}&b_{12}&\cdots&b_{1n}\\
-			b_{21}&b_{22}&\cdots&b_{2n}\\
-			\vdots&\vdots&\ddots&\vdots
-			b_{n1}&b_{n2}&\cdots&b_{nn}\\
-		\end{bmatrix},\qquad
-		\bfC=\begin{bmatrix}
-			a_{11}&a_{12}&\cdots&a_{1m}\\
-			a_{21}&a_{22}&\cdots&a_{2m}\\
-			\vdots&\vdots&\ddots&\vdots
-			a_{m1}&a_{m2}&\cdots&a_{mm}\\
-		\end{bmatrix},\qquad
-		\bfB=\begin{bmatrix}
-			b_{11}&b_{12}&\cdots&b_{1n}\\
-			b_{21}&b_{22}&\cdots&b_{2n}\\
-			\vdots&\vdots&\ddots&\vdots
-			b_{n1}&b_{n2}&\cdots&b_{nn}\\
-		\end{bmatrix}.\]
+		\begin{align*}
+		&\detm{
+			a_1-b&a_2&a_3&\cdots&a_n\\
+			a_1&a_2-b&a_3&\cdots&a_n\\
+			a_1&a_2&a_3-b&\cdots&a_n\\
+			\vdots&\vdots&\vdots&\ddots&\vdots\\
+			a_1&a_2&a_3&\cdots&a_n-b
+		}\onslide<+->{\xeq[i=1,2,\dots,n-1]{r_i-r_{i+1}}
+		\detm{
+			-b& b& 0&\cdots&0\\
+			 0&-b& b&\cdots&0\\
+			 0& 0&-b&\cdots&0\\
+			\vdots&\vdots&\vdots&\ddots&\vdots\\
+			a_1&a_2&a_3&\cdots&a_n-b
+		}}\\
+		&\onslide<+->{\xeq[i=1,2,\dots,n-1]{c_{i+1}+c_i}
+		\detm{
+			-b& 0& 0&\cdots&0\\
+			 0&-b& 0&\cdots&0\\
+			 0& 0&-b&\cdots&0\\
+			\vdots&\vdots&\vdots&\ddots&\vdots\\
+			a_1&a_1+a_2&a_1+a_2+a_3&\cdots&a_1+\cdots+a_n-b
+		}}\\
+		&\onslide<+->{=(a_1+\cdots+a_n-b)(-b)^{n-1}.}
+	\end{align*}
 	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 特殊形状行列式}
+	\onslide<+->
+	\begin{exercise}
+		计算 $n$ 阶行列式 $\detm{
+			1&2&3&\cdots&n-1&n\\
+			-1&0&3&\cdots&n-1&n\\
+			-1&-2&0&\cdots&n-1&n\\
+			\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
+			-1&-2&-3&\cdots&0&n\\
+			-1&-2&-3&\cdots&-(n-1)&0
+		}=$\fillblank{\visible<+->{$n!$}}.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 特殊形状行列式}
+	\onslide<+->
+	\begin{exercise}
+		计算矩阵 $\bfA_n=\begin{pmatrix}
+			   x   &   -1    &    0    &\cdots&   0  &   0  \\
+			   0   &    x    &   -1    &\cdots&   0  &   0  \\
+			   0   &    0    &    x    &\cdots&   0  &   0  \\
+			\vdots &  \vdots & \vdots  &\ddots&\vdots&\vdots\\
+			   0   &    0    &    0    &\cdots&   x  &  -1  \\
+				a_n  & a_{n-1} & a_{n-2} &\cdots&  a_2 & x+a_1
+		\end{pmatrix}$ 的行列式.
+	\end{exercise}
+	\onslide<+->
+	\begin{solution}
+		沿着第一列展开得到
+		\[|\bfA_n|=x|\bfA_{n-1}|+(-1)^{1+n}a_n(-1)^{n-1}=x|\bfA_{n-1}|+a_n,\]
+		\onslide<+->{因此 $|\bfA_n|=x^n+a_1x^{n-1}+a_2x^{n-2}+\cdots+a_n$.}
+	\end{solution}
+\end{frame}
+
+\subsection{三对角和范德蒙型行列式}
+
+\begin{frame}{例: 三对角矩阵行列式}
+	\onslide<+->
+	\begin{exercise}
+		计算矩阵 $\bfA_n=\begin{pmatrix}
+				2  &   1  &   0  &\cdots&   0  &   0  \\
+				1  &   2  &   1  &\cdots&   0  &   0  \\
+				0  &   1  &   2  &\cdots&   0  &   0  \\
+			\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
+				0  &   0  &   0  &\cdots&   2  &   1  \\
+				0  &   0  &   0  &\cdots&   1  &   2  \\
+		\end{pmatrix}$ 的行列式.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 三对角矩阵行列式}
+	\onslide<+->
+	\begin{solution}
+		设 $D_n=|\bfA_n|$.
+		\onslide<+->
+		沿着第一列展开得到
+		\[|\bfA_n|=2|\bfA_{n-1}|-\detm{
+			1  &   1  &   0  &\cdots&   0  &   0  \\
+			0  &   2  &   1  &\cdots&   0  &   0  \\
+			0  &   1  &   2  &\cdots&   0  &   0  \\
+		\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
+			0  &   0  &   0  &\cdots&   2  &   1  \\
+			0  &   0  &   0  &\cdots&   1  &   2  \\}=2|\bfA_{n-1}|-|\bfA_{n-2}|,\]
+		\onslide<+->
+		因此
+		\[|\bfA_n|-|\bfA_{n-1}|=|\bfA_{n-1}|-|\bfA_{n-2}|=\cdots=|\bfA_2|-|\bfA_1|=1,\]
+		\onslide<+->
+		从而 $|\bfA_n|=n-1+|\bfA_1|=n+1$.
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 三对角矩阵行列式}
+	\onslide<+->
+	如果主对角线元素均为 $2a$, 上下副对角线元素均为 $b$ 和 $c$, 则
+		\[|\bfA_n|-2a|\bfA_{n-1}|+bc|\bfA_{n-2}|=0.\]
+	\onslide<+->
+	这种线性递推数列有通用解法.
+	\onslide<+->
+	设 $\lambda^2-2a\lambda+bc=0$ 的两个根为 $\lambda_1,\lambda_2$, 则
+	\[|\bfA_n|=\begin{cases}
+		\dfrac{\lambda_1^{n+1}-\lambda_2^{n+1}}{\lambda_1-\lambda_2},&\text{如果}\ \lambda_1\neq \lambda_2;\\[6pt]
+		(n+1)a^n,&\text{如果}\ \lambda_1=\lambda_2=a.
+	\end{cases}\]
+\end{frame}
+
+\begin{frame}{例: 范德蒙行列式}
+	\onslide<+->
+	\begin{exercise}
+		如果 $\bfA=\begin{pmatrix}
+			a_1&a_2&a_3&f\\
+			b_1&b_2&b_3&f\\
+			c_1&c_2&c_3&f\\
+			d_1&d_2&d_3&f
+		\end{pmatrix}$,
+		那么 $A_{11}+A_{21}+A_{31}+A_{41}=$\fillblank{\visible<+->{$0$}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{example}[范德蒙行列式]
+		设 $\bfA_n=\begin{pmatrix}
+			1&1&1&\cdots&1\\
+			x_1&x_2&x_3&\cdots&x_n\\
+			x_1^2&x_2^2&x_3^2&\cdots&x_n^2\\
+			\vdots&\vdots&\vdots&\ddots&\vdots\\
+			x_1^{n-1}&x_2^{n-1}&x_3^{n-1}&\cdots&x_n^{n-1}
+		\end{pmatrix}$.
+		证明 \alert{$|\bfA_n|=\prod\limits_{1\le i<j\le n}(x_j-x_i)$}.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 范德蒙行列式}
+	\onslide<+->
+	\begin{proofs}
+		归纳证明.
+		\onslide<+->{当 $n=1,2$ 时显然成立.}
+
+		\onslide<+->{设 $n\ge 3$, 则由 $r_i-x_1 r_{i-1}, i=n,n-1,\dots,2$ 得到
+		\[|\bfA_n|=\detm{
+		1&1&1&\cdots&1\\
+		0&x_2-x_1&x_3-x_1&\cdots&x_n-x_1\\
+		0&x_2(x_2-x_1)&x_3(x_3-x_1)&\cdots&x_n(x_n-x_1)\\
+		\vdots&\vdots&\vdots&\ddots&\vdots\\
+		0&x_2^{n-2}(x_2-x_1)&x_3^{n-2}(x_3-x_1)&\cdots&x_n^{n-2}(x_n-x_1)}.\]}
+		\end{proofs}
+	\end{frame}
+	
+	\begin{frame}{例: 范德蒙行列式}
+		\onslide<+->
+		\begin{proofe}
+		\onslide<+->{
+			沿着第一列展开, 然后提取每一列的公因式 $(x_j-x_1)$ 得到
+		\[|\bfA_n|
+		=\prod_{j=2}^n(x_j-x_1)\detm{
+			1&1&\cdots&1\\
+			x_2&x_3&\cdots&x_n\\
+			\vdots&\vdots&\ddots&\vdots&\vdots\\
+			x_2^{n-1}&x_3^{n-1}&\cdots&x_n^{n-1}}.\]}
+			\onslide<+->{由归纳假设可知
+			\[|\bfA_n|
+		=\prod_{j=2}^n(x_j-x_1)\cdot \prod_{2\le i<j\le n}(x_j-x_i)=\prod_{1\le i<j\le n}(x_j-x_i).\qedhere\]}
+	\end{proofe}
+\end{frame}
+
+
+\begin{frame}{例: 范德蒙行列式的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item $\detm{
+				x_1^{-3}&x_2^{-3}&x_3^{-3}&x_4^{-3}\\
+				x_1^{-1}&x_2^{-1}&x_3^{-1}&x_4^{-1}\\
+				x_1&x_2&x_3&x_4\\
+				x_1^{3}&x_2^{3}&x_3^{3}&x_4^{3}
+			}=$\fillblank[6cm][3mm]{\visible<4->{$x_1^{-3}x_2^{-3}x_3^{-3}x_4^{-3}\prod\limits_{1\le i<j\le 4}(x_j^2-x_i^2)$}}.
+			\item 
+		$\detm{
+			1&1&1&1\\
+			1&2&3&4\\
+			1&4&9&16\\
+			1&8&27&65
+		}=$\fillblank{\visible<4->{$14$}}.
+		\item
+			设 $a,b,c$ 两两不等, 且 $\detm{
+				a&b&c\\
+				a^2&b^2&c^2\\
+				b+c&c+a&a+b}0$, 则 $a+b+c=$\fillblank{\visible<4->{$0$}}.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{行列式常见计算方法总结}
+	\onslide<+->
+	\begin{enumerate}
+		\item $2,3$ 阶行列式可用对角线法直接展开.
+		\item 上(下)三角阵行列式等于对角元的乘积.
+		\item 行列式的计算一般需要用到\alert{三类初等变换}, 创造出足够多的零.
+		\item 行列式沿一行(列)的展开往往是\alert{降阶法}的必要手段.
+		\item 范德蒙型行列式可处理方阵为元素幂次递增的情形.
+	\end{enumerate}
 \end{frame}

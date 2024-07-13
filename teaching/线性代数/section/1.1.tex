@@ -3,18 +3,15 @@
 \subsection{行列式的归纳定义}
 \begin{frame}{矩阵和方阵}
 	\onslide<+->
-	对于 $n$ 个未知数 $n$ 的方程的线性方程组, 我们能不能定义出类似的量来刻画它何时有唯一解呢? 
-	
-	\onslide<+->
 	首先引入矩阵的概念.
 	\onslide<+->
-	我们将 $mn$ 个数按照每行 $n$ 个元素, 一共 $m$ 行排列, 得到的数表称为 \emph{$m$ 行 $n$ 列矩阵}, 或简称为 \emph{$m\times n$ 矩阵}:
-	\[\bfA=\begin{bmatrix}
+	将 $mn$ 个数按照每行 $n$ 个元素, 一共 $m$ 行排列, 得到的数表称为 \emph{$m$ 行 $n$ 列矩阵}, 或简称为 \emph{$m\times n$ 矩阵}:
+	\[\bfA=\begin{pmatrix}
 		a_{11}&a_{12}&\cdots &a_{1n}\\
 		a_{21}&a_{22}&\cdots &a_{2n}\\
 		\vdots&\vdots&\ddots&\vdots\\
 		a_{m1}&a_{m2}&\cdots &a_{mn}
-	\end{bmatrix}.\]
+	\end{pmatrix}.\]
 	\onslide<+->
 	其中 $a_{ij}$ 表示 $\bfA$ 的第 $i$ 行 $j$ 列元素, 并记 $\bfA=(a_{ij})_{m\times n}$.
 
@@ -26,37 +23,44 @@
 \begin{frame}{线性方程组与矩阵}
 	\onslide<+->
 	对于线性方程组
-	\begin{laeq*}
-		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n&=&b_1\\
-		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n&=&b_2\\
-		\vdots&&\\
-		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n&=&b_m,
-	\end{laeq*}
+	\[\laeq{
+		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
+		\vvdots\\
+		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m,
+	}\]
 	未知量 $x_1,\dots,x_n$ 前面的系数就构成了一个 $m\times n$ 矩阵, 称之为\emph{系数矩阵}
-	\[\bfA=\begin{bmatrix}
+	\[\bfA=\begin{pmatrix}
 		a_{11}&a_{12}&\cdots &a_{1n}\\
 		a_{21}&a_{22}&\cdots &a_{2n}\\
 		\vdots&\vdots&\ddots&\vdots\\
 		a_{m1}&a_{m2}&\cdots &a_{mn}
-	\end{bmatrix}.\]
+	\end{pmatrix}.\]
 	\onslide<+->
-	线性代数的主要任务之一, 就是利用矩阵理论回答该方程组解的情况.
+	线性代数的主要任务之一, 就是利用矩阵理论回答线性方程组解的情况.
 \end{frame}
 
 
 \begin{frame}{$2$ 阶行列式}
 	\onslide<+->
-	为了定义出刻画 $n$ 个方程 $n$ 个变量的线性方程组是否有唯一解的``判别式'', 即矩阵 $\bfA$ 的\emph{行列式 $\det(\bfA)=|A|$}, 首先约定\emph{单位矩阵}
-	\[E_n:=\begin{bmatrix}
+	当 $m=n$ 时, 方阵 $\bfA$ 的\emph{行列式 $\det(\bfA)=|A|$} 就是用于刻画上述方程组是否有唯一解的``判别式''.
+	\onslide<+->
+	首先约定\emph{单位矩阵}
+	\[\alert{\bfE_n=\bfI_n:=\begin{pmatrix}
 		1&&&\\
 		&1&&\\
 		&&\ddots&\\
 		&&&1
-	\end{bmatrix}\]
+	\end{pmatrix}}\qquad 
+	(\text{即方程组}
+	\left\{\begin{array}{l}
+		x_1=b_1,\\x_2=b_2,\\\vdots\\x_n=b_n
+	\end{array}\right.\text{的系数矩阵})
+	\]
 	行列式为 $1$.
 	\onslide<+->
 	作此约定之后, $2$ 阶方阵的行列式就应当为
-	\[\detm{a_{11}&a_{12}\\a_{21}&a_{22}}:=a_{11}a_{22}-a_{12}a_{21}
+	\[\det(\bfA)=|A|=\detm{a_{11}&a_{12}\\a_{21}&a_{22}}:=a_{11}a_{22}-a_{12}a_{21}
 	\begin{tikzpicture}[overlay,xshift=-40mm,yshift=.5mm,visible on=<5->]
 		\draw[cstcurve,dcolora] (-.2,.2)--(.2,-.2);
 		\draw[cstcurve,dcolorb] (-.2,-.2)--(.2,.2);
@@ -67,7 +71,7 @@
 
 \begin{frame}{$3$ 阶行列式}
 	\onslide<+->
-	对于 $3$ 阶方阵, 可通过计算发现其行列式为(注意单位矩阵行列式应当为 $1$)
+	对于 $3$ 阶方阵, 可通过计算发现其行列式为(注意 $|\bfE_3|=1$)
 	\[\detm{a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\
 	a_{31}&a_{32}&a_{33}}:=
 	a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}
@@ -89,31 +93,28 @@
 
 \begin{frame}{$n$ 阶方阵的行列式}
 	\onslide<+->
-	对于 $n$ 阶方阵 $\bfA=(a_{ij})$, 按照如下方式定义行列式
-	\[\det(\bfA)=\detm{
-		a_{11}&a_{12}&\cdots &a_{1n}\\
-		a_{21}&a_{22}&\cdots &a_{2n}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		a_{m1}&a_{m2}&\cdots &a_{mn}}.\]
-		\onslide<+->
+	对于 $n$ 阶方阵 $\bfA=(a_{ij})$, 按照如下方式定义行列式 $|\bfA|$:
+	\onslide<+->
 	\begin{definition}
 		\begin{itemize}
-			\item 当 $n=1$ 时, $\det(\bfA):=a_{11}$;
+			\item 当 $n=1$ 时, $|\bfA|:=a_{11}$;
 			\item 对于一般的 $n$, 归纳定义
-			\[\det(\bfA)=a_{11}M_{11}-a_{12}M_{12}+a_{13}M_{13}-\cdots+(-1)^{n+1}a_{1n}M_{1n},\]
+			\[|\bfA|=a_{11}M_{11}-a_{12}M_{12}+a_{13}M_{13}-\cdots+(-1)^{n+1}a_{1n}M_{1n},\]
 			其中 $M_{ij}$ 表示 $\bfA$ 去掉第 $i$ 行和 $j$ 列得到的 $n-1$ 阶方阵的行列式.
 		\end{itemize}
 	\end{definition}
+	\onslide<+->
+	\begin{definition}
+		称 $M_{ij}$ 为 $a_{ij}$ 的\emph{余子式}; 称 $A_{ij}=(-1)^{i+j}M_{ij}$ 为 $a_{ij}$ 的\emph{代数余子式}.		
+	\end{definition}
+	\onslide<+->
+	那么
+	\[\alert{|\bfA|=a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}+\cdots+a_{1n}A_{1n}.}\]
 \end{frame}
 
 
 \begin{frame}{余子式和代数余子式}
-	\onslide<+->
-	称 $M_{ij}$ 为 $a_{ij}$ 的\emph{余子式}; 称 $A_{ij}=(-1)^{i+j}M_{ij}$ 为 $a_{ij}$ 的\emph{代数余子式}.
-	\onslide<+->
-	那么
-	\[\alert{\det(\bfA)=a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}+\cdots+a_{1n}A_{1n}.}\]
-	\vspace{-\baselineskip}
+	\vspace{-.3\baselineskip}
 	\onslide<+->
 	\begin{example}
 		$\detm{1&3&2\\3&-5&1\\2&1&4}$
@@ -126,27 +127,28 @@
 		\onslide<+->{$=1\times\detm{-5&1\\1&4}-3\times\detm{3&1\\2&4}+2\detm{3&-5\\2&1}$}
 		\onslide<+->{$=-21-3\times10+2\times13=-25.$}
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{注记}
 	\onslide<+->
 	\begin{exercise}
 		\vspace{-.4\baselineskip}
 		如果 $k>0$ 且 $\detm{k&2&1\\2&k&1\\k&1&2}=0$, 那么 $k=$\fillblank{\visible<+->{$2$}}.
 	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{注记}
 	\onslide<+->
 	\begin{enumerate}
 		\item 行列式是一个数, 或者说 $\det:M_n(\BR)\to\BR$ 是一个映射, 其中 $M_n(\BR)$ 表示所有实系数的 $n$ 阶方阵.
-		\item $1$ 阶行列式就是方阵里面唯一的那个元素, 尽管也记作 $|\cdot|$, 但注意和绝对值区分开.
+		\item $1$ 阶行列式就是方阵里面唯一的那个元素, 尽管也记作 $|\cdot|$, 但注意和绝对值区分.
 		\item $2,3$ 阶行列式可以用对角线法直接得到展开式, 但是更高阶的没有这种表示方法.
-		\item 
+		\item \emph{对角矩阵}的行列式
 		$\detm{
 			a_1&&&\\
 			&a_2&&\\
 			&&\ddots&\\
 			&&&a_n
 		}=a_1a_2\cdots a_n.$
+		\item 从行列式的归纳定义出发依次展开得到, $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1 k_2 \cdots k_n$ 取遍 $1,2,\dots,n$ 的所有\emph{排列}, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$, ($n\ge2$).
 	\end{enumerate}
 \end{frame}
 
@@ -179,86 +181,112 @@
 \end{frame}
 
 
-\subsection{行列式的展开}
-\begin{frame}{行列式的展开}
-	\onslide<+->
-	我们知道,
-	\begin{align*}	
-	\det(\bfA)&=a_{11}A_{11}+a_{12}A_{12}+a_{13}A_{13}+\cdots+a_{1n}A_{1n}\\
-	&=a_{11}M_{11}-a_{12}M_{12}+a_{13}M_{13}-\cdots+(-1)^{n+1}a_{1n}M_{1n}.
-	\end{align*}
-	\onslide<+->
-	一直展开下去, $\det(\bfA)$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1 k_2 \cdots k_n$ 是 $1,2\dots,n$ 的一个排列, 一共有 $n!$ 个这样的项.
-	\onslide<+->
-	问题是如何确定它的符号?
-	
-	\onslide<+->
-	假设 $n$ 阶矩阵 $\bfP=(a_{ij})$ 第 $i$ 行除了 $k_i$ 列都是零.
-	那么
-	\[\det(\bfP)=\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}.\]
-	\onslide<+->
-	为了陈述方便, 记 \alert{$c_i\swap c_j (r_i\swap r_j)$} 为交换 $i,j$ 列(行).
-	\onslide<+->
-	如果 $c_{k_1-1}\swap c_{k_1}$, 那么 $\det(\bfP)$ 定义中的余子式不会变, 但是符号 $(-1)^{1+k_1}$ 和 $(-1)^{1+k_1-1}$ 会不同, 从而行列式相差 $-1$ 倍.
-	\onslide<+->
-	再依次
-	\[c_{k_1-2}\swap c_{k_1-1},\quad c_{k_1-3}\swap c_{k_1-2},\quad \dots,\quad c_1\swap c_2\]
-	则 $a_{1k_1}$ 被移动到了第 $1$ 列且余子式没有变, 行列式变为 $(-1)^{k_1-1}$ 倍.
-\end{frame}
-
-
-\begin{frame}{行列式展开项的符号}
-	\onslide<+->
-	后面的每行都类似操作, 最终 $\bfP$ 变成\emph{对角阵}
-	\[\bfD=\begin{bmatrix}
-		a_{1k_1}&&&\\
-		&a_{2k_2}&&\\
-		&&\ddots&\\
-		&&&a_{nk_n}
-	\end{bmatrix},\]
-	\onslide<+->
-	所以
-	\[\det(\bfP)=(-1)^a\det(\bfD)=(-1)^a a_{1k_1}a_{2k_2}\cdots a_{nk_n},\]
-	其中 $a$ 是需要交换 $\bfP$ 的相邻列使其变成对角阵的次数.
-\end{frame}
-
-
-\begin{frame}{行列式展开式}
-	\onslide<+->
-	由于 $c_i\swap c_j$ 可以通过
-	\[c_j\swap c_{j-1},\quad c_{j-1}\swap c_{j-2},\quad \dots,\quad, c_{i+1}\swap c_i,\qquad
-	c_{i+1}\swap c_{i+2},\quad \dots,\quad c_{j-1}\swap c_j\]
-	实现, 一共 $2(j-i)+1$ 次.
-	\onslide<+->
-	因此 $a$ 可以换成交换 $\bfP$ 的列使其变成对角阵的次数.
-
-	\onslide<+->
-	\begin{theorem}
-	如果排列 $k_1k_2\cdots k_n$ 经过 $a$ 次互换变为 $12\cdots n$, 记 $\sgn(k_1k_2\cdots k_n):=(-1)^a$.
-	那么对于 $n$ 阶方阵 $\bfA$,
-		\[\det(\bfA)=\sum \sgn(k_1k_2\cdots k_n) a_{1k_1}a_{2k_2}\cdots a_{nk_n},\]	
-	其中求和取遍所有排列 $k_1k_2\cdots k_n$.
-	\end{theorem}
-\end{frame}
-
-
 \begin{frame}{反对角阵的行列式}
 	\onslide<+->
 	\begin{example}
-		计算 $\det(\bfA)$, 其中 $\bfA=\begin{bmatrix}
+		计算 $|\bfA|$, 其中 $\bfA=\begin{pmatrix}
 			&&&a_1\\&&a_2&\\&\udots&&\\a_n&&&
-		\end{bmatrix}$.
+		\end{pmatrix}$.
 	\end{example}
 	\onslide<+->
 	\begin{solution*}
-		当 $n$ 是偶数时, 排列 $\set{n,n-1,\cdots,2,1}$ 经过对换 $(1n),(2,n-1),\dots,(\frac n2,\frac n2+1)$ 变为 $(12\cdots n)$,
-		\onslide<+->{因此 $\det(\bfA)=(-1)^{\frac n2}a_1a_2\cdots a_n$.}
-
-		\onslide<+->{当 $n$ 是奇数时, 排列 $(n,n-1,\cdots,2,1)$ 经过对换 $(1n),(2,n-1),\dots,(\frac{n-1}2,\frac{n+3}2)$ 变为 $(12\cdots n)$,}
-		\onslide<+->{因此 $\det(\bfA)=(-1)^{\frac{n-1}2}a_1a_2\cdots a_n$.}
-
-		\onslide<+->{也可以统一表为
-		\[\det(\bfA)=(-1)^{\frac{n(n-1)}2}a_1a_2\cdots a_n.\]}
-		\vspace{-\baselineskip}
+		\begin{align*}
+			|\bfA|&=(-1)^{n+1}a_1\detm{&&a_2\\&\udots&\\a_n&&}
+			\visible<+->{=(-1)^{n+1}a_1\cdot (-1)^{n}a_3\detm{&&a_2\\&\udots&\\a_n&&}}\\
+			&\visible<+->{=\cdots=\prod_{i=1}^n (-1)^{n-i}a_i}
+			\visible<+->{=(-1)^{\frac{n(n-1)}2}a_1a_2\cdots a_n.}
+		\end{align*}
 	\end{solution*}
+\end{frame}
+
+
+\begin{frame}{例: 分块矩阵行列式}
+	\onslide<+->
+	\begin{example}
+		设
+		\[\bfA=\begin{pmatrix}
+			a_{11}&\cdots&a_{1m}\\
+			\vdots&\ddots&\vdots\\
+			a_{m1}&\cdots&a_{mm}\\
+		\end{pmatrix},\qquad
+		\bfB=\begin{pmatrix}
+			b_{11}&\cdots&b_{1n}\\
+			\vdots&\ddots&\vdots\\
+			b_{n1}&\cdots&b_{nn}\\
+		\end{pmatrix},\]
+		\[\bfC=\begin{pmatrix}
+			a_{11}&\cdots&a_{1m}&&&\\
+			\vdots&\ddots&\vdots&&0&\\
+			a_{m1}&\cdots&a_{mm}&&&\\
+			*&\cdots&*&b_{11}&\cdots&b_{1n}\\
+			\vdots&\ddots&\vdots&\vdots&\ddots&\vdots\\
+			*&\cdots&*&b_{n1}&\cdots&b_{nn}\\
+		\end{pmatrix}.\]
+		证明 $|\bfC|=|\bfA|\cdot|\bfB|$.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 分块矩阵行列式}
+	\onslide<+->
+	\begin{proof*}
+		对 $m$ 归纳.
+		\onslide<+->{当 $m=1$ 时由行列式定义可知成立.}
+
+		\onslide<+->{%
+			假设命题对于 $m-1$ 成立.
+		}\onslide<+->{%
+			设 $\bfA$ 在 $(1,j)$ 处的余子式为 $M_{1j}$, $\bfC$ 在 $(1,j)$ 处的余子式为 $N_{1j}$.
+		}\onslide<+->{%
+			则由归纳假设 $N_{1j}=M_{1j}|\bfB|$.
+		}\onslide<+->{%
+			因此
+			\begin{align*}
+				|\bfC|&=\sum_{j=1}^m (-1)^{1+j}a_{1j}N_{1j}\\
+				&=\sum_{j=1}^m (-1)^{1+j}a_{1j}M_{1j}|\bfB|
+				=|\bfA|\cdot|\bfB|.\qedhere
+			\end{align*}
+		}
+	\end{proof*}
+\end{frame}
+
+
+\begin{frame}{行列式的几何意义}
+	\onslide<+->
+	设平面上有平行四边形 $OACB$, 其中 $A(a,b), B(c,d)$.
+	\begin{center}
+	\begin{tikzpicture}[scale=.8]
+		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+		\draw[dcolorb] (-0.3,0) node{$O$}
+		(3.3,0) node{$A$}
+		(0.7,1.5) node{$B$}
+		(4.3,1.5) node{$C$};
+	\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	二阶行列式 $\detm{a&b\\c&d}$ 的绝对值就是它的面积.
+	\onslide<+->
+	它的符号则表示从 $OA$ 沿最短角度旋转到 $OB$ 方向是逆时针还是顺时针.
+\end{frame}
+
+
+\begin{frame}{行列式的几何意义}
+	\onslide<+->
+	类似地, 如果 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$, 则三阶行列式 $\detm{a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3}$ 的绝对值就是下述平行六面体的体积.
+	\begin{center}
+	\begin{tikzpicture}[scale=.8]
+		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+		\draw[cstcurve,dcolora] (1.5,1)--(4.5,1)--(5.5,2.5)--(2.5,2.5)--cycle;
+		\draw[cstcurve,dcolora] (0,0)--(1.5,1);
+		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
+		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
+		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
+		\draw[dcolorb] (-0.3,0) node{$O$}
+		(3.3,0) node{$A$}
+		(0.7,1.5) node{$C$}
+		(1.7,.7) node{$B$};
+	\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	它的符号则表示使用右手从 $OA$ 旋转到 $OB$ 方向时, 大拇指所指方向与 $OC$ 是否在平面 $OAB$ 的同侧.
 \end{frame}

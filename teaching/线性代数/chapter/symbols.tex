@@ -3,12 +3,10 @@
 \newcommand\detm[1]{\left|\begin{matrix}#1\end{matrix}\right|}
 \newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
 \mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
-\newenvironment{laeq*}{
-	\[\left\{\!\!\!
-		\begin{array}{ccl}}{
-		\end{array}
-	\right.\]}
-\newenvironment{laeq}{
+\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[dcolorb] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
+\newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
+\newcommand{\laeq}[1]{\left\{\begin{array}{l}#1\end{array}\right.}
+\newenvironment{laeqn}{
 	\setcounter{equation}{0}
 	\begin{numcases}{}}{
 	\end{numcases}}

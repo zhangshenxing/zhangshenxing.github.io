@@ -1,387 +1,271 @@
-\section{复数的乘除、乘幂与方根}
+\section{克拉默法则}
 
-\subsection{复数的乘除与三角/指数表示}
-\begin{frame}{复数的乘除与三角/指数表示}
-	\onslide<+->
-	三角/指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+\subsection{拉普拉斯展开的应用}
 
+\begin{frame}{拉普拉斯展开}
 	\onslide<+->
-	\begin{theorem}
-		设
-		\[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
-		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
-		则
-		\[\alert{z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)}},\]
-		\[\alert{\frac{z_1}{z_2}=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}}.\]
+	回顾下拉普拉斯展开:
+	\begin{theorem}[行列式沿任一行(列)展开, 拉普拉斯展开]
+		方阵的行列式等于任一行(列)的元素与其对应的代数余子式乘积的和:
+		\begin{align*}
+			|\bfA|&=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}\\
+			&=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}.
+		\end{align*}
+	\end{theorem}
+	\onslide<+->
+	其中代数余子式 $A_{ij}$ 是指去掉方阵 $\bfA$ 的 $i$ 行 $j$ 列得到的方阵的行列式的 $(-1)^{i+j}$ 倍.
+\end{frame}
+
+
+
+\begin{frame}{例: 拉普拉斯展开的应用}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA=\begin{pmatrix}
+			3&0&4&0\\
+			2&2&2&2\\
+			0&-7&0&0\\
+			5&3&-2&2
+		\end{pmatrix}$.
+		计算 $A_{41}+A_{42}+A_{43}+A_{44}$ 和 $M_{41}+M_{42}+M_{43}+M_{44}$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由拉普拉斯展开可知
+		\[A_{41}+A_{42}+A_{43}+A_{44}
+		=\detm{
+			3&0&4&0\\
+			2&2&2&2\\
+			0&-7&0&0\\
+			1&1&1&1
+		}=0.\]
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 拉普拉斯展开的应用}
+	\onslide<+->
+		\begin{solutionc}
+			\begin{align*}
+				M_{41}+M_{42}+M_{43}+M_{44}
+				&=-A_{41}+A_{42}-A_{43}+A_{44}
+				=\detm{
+					3&0&4&0\\
+					2&2&2&2\\
+					0&-7&0&0\\
+					-1&1&-1&1
+				}\\
+				&\onslide<+->{
+					=7\detm{
+						3&4&0\\
+						2&2&2\\
+						-1&-1&1
+				}=-28.}
+		\end{align*}
+	\end{solutionc}
+\end{frame}
+
+
+\subsection{克拉默法则}
+
+\begin{frame}{克拉默法则}
+	\onslide<+->
+	\begin{theorem}[克拉默法则]
+		设线性方程组
+		\[\laeq{
+			a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
+			a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
+			\vvdots\\
+			a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n,
+		}\]
+		的系数矩阵为 $\bfA$,
+		将 $\bfA$ 的第 $j$ 列换成 $b_1,\dots,b_n$ 得到的方阵为 $\bfA_j$.
+		那么当 $|\bfA|\neq 0$, 该线性方程组有唯一解
+		\[x_1=\frac{|\bfA_1|}{|\bfA|},\quad
+			x_2=\frac{|\bfA_2|}{|\bfA|},\quad\dots,\quad
+			x_n=\frac{|\bfA_n|}{|\bfA|}.\]
 	\end{theorem}
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角/指数表示}
-	\onslide<+->
-	换言之,
-	\[\alert{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
-	\onslide<+->
-	\[\alert{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
-	\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
-	\onslide<+->
-	\emph{关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.}
-	\onslide<+->
-	例如此处关于辐角的等式的含义是:
-	\[\Arg(z_1z_2)=\set{\theta_1+\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
-	\[\Arg\left(\frac{z_1}{z_2}\right)=\set{\theta_1-\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
-\end{frame}
-
-
-\begin{frame}{复数的乘除与三角/指数表示}
-	\onslide<+->
-	注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
-	\[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
-	\arg\left(\frac{z_1}{z_2}\right)=\arg z_1-\arg z_2\]
-	\alert{不一定成立}.
-	\onslide<+->
-	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
-	\onslide<+->
-	例如 $z_1=z_2=e^{0.99\pi i}$, $z_1z_2=e^{1.98\pi i}$,
-	\onslide<+->
-	\[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\]
-	\onslide<+->
-	\[\arg(z_1z_2)=-0.02\pi.\]
-\end{frame}
-
-
-\begin{frame}{复数的乘除与三角/指数表示}
-	\onslide<+->
-	\begin{proof*}
-		\begin{align*}
-			z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
-			r_2(\cos\theta_2+i\sin\theta_2)\\
-			&\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
-			+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
-			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
-		\end{align*}
-		\onslide<+->{因此乘法情形得证.}
-
-		\onslide<+->{设 $\dfrac{z_1}{z_2}=re^{i\theta}$,
-		}\onslide<+->{则由乘法情形可知
-			\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.\]
-		}\onslide<+->{因此 $r=\dfrac{r_1}{r_2},\theta=\theta_1-\theta_2+2k\pi$, 其中 $k\in\BZ$.\qedhere}
-	\end{proof*}
-\end{frame}
-
-
-\begin{frame}{乘积的几何意义}
-	\onslide<+->
-	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis] (-2,0)--(3,0);
-			\draw[cstaxis] (0,-0.4)--(0,4);
-			\coordinate (A) at (1.6,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (0.96,1.92);
-			\draw[cstcurve,dcolora,cstarrowto] (B)--(A);
-			\draw[cstcurve,dcolora,cstarrowto] (B)--(C);
-			\draw[cstcurve,dcolora] pic [draw, "$\theta$", angle eccentricity=1.4] {angle};
-			\coordinate (A) at (1.3,1.6);
-			\coordinate (C) at (-1.14,2.52);
-			\draw[cstcurve,dcolorb,cstarrowto,visible on =<3->] (B)--(A);
-			\draw[cstcurve,dcolorb,cstarrowto,visible on =<3->] (B)--(C);
-			\draw[cstcurve,dcolorb,visible on =<3->] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius= 0.7cm] {angle};
-			\draw 
-			(1.52,2.08) node[dcolora] {$z=re^{i\theta}$}
-			(1.6,-0.3) node[dcolora] {$1$}
-			(1.6,1.5) node[dcolorb,visible on =<3->] {$z_1$}
-			(-1.1,2.7) node[dcolorb,visible on =<3->] {$zz_1$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{例题: 复数解决平面几何问题}
-	\onslide<+->
-	\begin{example}
-		已知正三角形的两个顶点为 $z_1=1$ 和 $z_2=2+i$, 求它的另一个顶点.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		由于 $\overrightarrow{Z_1Z_3}$ 为 $\overrightarrow{Z_1Z_2}$ 顺时针或逆时针旋转 $\dfrac\pi3$,
-		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis] (-0.3,0)--(2.8,0);
-				\draw[cstaxis] (0,-0.5)--(0,1.4);
-				\draw[cstcurve,dcolorb] (1,0)--(2,1)--(0.634,1.366)--cycle;
-				\draw[cstdash,dcolorb] (1,0)--(2.366,-0.366)--(2,1);
-				\draw 
-				(1.0,-0.2) node[dcolora] {$z_1$}
-				(2.3,1) node[dcolora] {$z_2$}
-				(0.4,1.2) node[dcolora] {$z_3$}
-				(2.6,-0.3) node[dcolora] {$z_3'$};
-			\end{tikzpicture}
-		\end{center}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例题: 复数解决平面几何问题}
-	\begin{solutionc}
-		因此
-		\begin{align*}
-			z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
-			\visible<+->{=(1+i)\left(\half\pm\frac{\sqrt3}2i\right)}\\
-			&\visible<+->{=\frac{1-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{1+\sqrt3}2+\frac{1-\sqrt3}2i,}
-		\end{align*}
-		\onslide<+->{
-			\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2i.\]
-		}
-	\end{solutionc}
-\end{frame}
-
-\begin{frame}{例题: 复数解决平面几何问题}
-	\onslide<+->
-	\begin{example}
-		设 $AD$ 是 $\triangle ABC$ 的角平分线, 证明 $\dfrac{AB}{AC}=\dfrac{DB}{DC}$.
-	\end{example}
-
+\begin{frame}{克拉默法则的证明}
 	\onslide<+->
 	\begin{proofs}
-		不妨设 $A=0,B=z,C=1$.
-		则 $D=(1-\lambda)z+\lambda$, 其中 $\lambda=\dfrac{DB}{BC}\in(0,1)$.
-		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis] (-0.3,0)--(2.8,0);
-				\draw[cstaxis] (0,-.4)--(0,1.4);
-				\draw[cstcurve,dcolorb] (0,0)--(2.094,0.798);
-				\draw[cstcurve,dcolorb] (0,0)--(2,1.5)--(2.2,0)--cycle;
-				\draw 
-				(-0.2,-0.2) node[dcolora] {$A$}
-				(2.6,1.5) node[dcolora] {$B=z$}
-				(2.2,-0.3) node[dcolora] {$C=1$}
-				(2.4,0.8) node[dcolora] {$D$};
-			\end{tikzpicture}
-		\end{center}
+		设 $|\bfA|\neq 0$.
+		注意到 $i\neq k$ 时,
+		\[a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,\]
+		因为它是第 $i,k$ 行相同的方阵的行列式.
+		\onslide<+->{%
+		方阵 $\bfA_j$ 沿着第 $j$ 列展开得到
+		\[|\bfA_j|=b_1A_{1j}+b_2A_{2j}+\cdots+b_nA_{nj}.\]
+		}\onslide<+->{%
+		因此
+		\[\sum_{j=1}^n a_{ij} |\bfA_j|
+			=\sum_{j=1}^n a_{ij} \sum_{k=1}^n b_kA_{kj}
+			=\sum_{k=1}^n b_k \sum_{j=1}^n a_{ij} A_{kj}
+			=b_i |\bfA|.\]
+		}\onslide<+->{%
+		所以 $x_i=|\bfA_i|/|\bfA|$ 是题述方程的解.}
 	\end{proofs}
 \end{frame}
 
 
-\begin{frame}{例题: 复数解决平面几何问题}
+\begin{frame}{克拉默法则的证明}
 	\onslide<+->
-	\begin{proofc}
-		由于 $\angle BAD=\angle DAC$, 因此 $\dfrac{z}{(1-\lambda)z+\lambda}$ 是 $\dfrac{(1-\lambda)z+\lambda}{1}$ 的正实数倍.
+	\begin{proofe}
+		再证唯一性.
+		如果方程有解 $x_1,\dots,x_n$,
 		\onslide<+->{
-			即
-			\[\dfrac{((1-\lambda)z+\lambda)^2}{z}=(1-\lambda)^2z+\dfrac{\lambda^2}z+2\lambda(1-\lambda)\in\BR.\]
-		}\onslide<+->{
-			从而
-			\[(1-\lambda)^2z+\dfrac{\lambda^2}z=(1-\lambda)^2\ov z+\dfrac{\lambda^2}{\ov z},\qquad
-			((1-\lambda)^2|z|^2-\lambda^2)(z-\ov z)=0.\]
-		}\onslide<+->{
-			显然 $z\neq \ov z$. 又因为 $0<\lambda<1$, 故
-			\[\frac{AB}{AC}=|z|=\frac{\lambda}{1-\lambda}
-			=\frac{DB}{BC-DB}=\frac{DB}{DC}.\qedhere\]
+			\[x_i|\bfA|=\detm{
+				a_{11}&\cdots&x_ia_{1i}&\cdots&a_{n1}\\
+				\vdots&\vdots&\vdots&\vdots&\vdots\\
+				a_{n1}&\cdots&x_ia_{ni}&\cdots&a_{nn}.}\]
+		}\onslide<+->{%
+			将所有的 $j\neq i$ 列乘 $x_j$ 并加到第 $i$ 列, 则第 $i$ 列元素变成了 $b_1,\dots,b_n$.
+		}\onslide<+->{%
+		因此 $x_i|\bfA|=|\bfA_i|$.
 		}
-		\vspace{-\baselineskip}
-	\end{proofc}
+	\end{proofe}
+	\onslide<+->
+	后面我们将会知道, $|\bfA|\neq0$ 实际上方程有唯一解的充分必要条件.
+	\onslide<+->
+	因此我们定义的行列式确实起到了线性方程组的``判别式''的作用.
+	
+	\onslide<+->
+	注意到如果 $(a_1,\dots,a_n)$ 和 $(b_1,\dots,b_n)$ 都是上述方程组的解, 那么 $x_i=\lambda a_i+(1-\lambda)b_i$ 也是该方程组的解.
+	\onslide<+->
+	也就是说, 如果上述方程组解不唯一, 那么一定有无穷多解.
+	\onslide<+->
+	所以当 $|\bfA|=0$, 那么方程无解或有无穷多解.
 \end{frame}
 
 
-
-\subsection{复数的乘幂}
-
-\begin{frame}{复数的乘幂}
-	\onslide<+->
-	设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
-	\onslide<+->
-	根据复数三角/指数形式的乘法和除法运算法则, 我们有
-	\onslide<+->
-	\begin{alertblock@}
-		\[z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta},\quad\forall n\in\BZ.\]
-	\end{alertblock@}
-	\onslide<+->
-	特别地, 当 $r=1$ 时, 我们得到棣莫弗(De Moivre)公式
-	\[(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.\]
-\end{frame}
-
-
-\begin{frame}{复数的乘幂\noexer}
-	\onslide<+->
-	对棣莫弗公式左侧进行二项式展开可以得到
-	\onslide<+->
-	\begin{align*}
-		\cos(2\theta)&=\hphantom{1}2\cos^2\theta-\hphantom{1}1,\\
-		\cos(3\theta)&=\hphantom{1}4\cos^3\theta-\hphantom{1}3\cos\theta,\\
-		\cos(4\theta)&=\hphantom{1}8\cos^4\theta-\hphantom{1}8\cos^2\theta+1,\\
-		\cos(5\theta)&=16\cos^5\theta-20\cos^3\theta+5\cos\theta.
-	\end{align*}
-	\onslide<+->
-	一般地, 可以证明 $\cos{n\theta}$ 是 $\cos\theta$ 的 $n$ 次多项式,
-	\onslide<+->
-	这个多项式
-	\[g_n(T)=2^{n-1}T^n-n2^{n-3}T^{n-2}+\cdots\]
-	叫做切比雪夫多项式.
-	\onslide<+->
-	它在计算数学的逼近理论中有着重要作用.
-\end{frame}
-
-
-\begin{frame}{典型例题: 复数乘幂的计算}
+\begin{frame}{克拉默法则的应用}
 	\onslide<+->
 	\begin{example}
-		求 $(1+i)^n+(1-i)^n$.
+		如果 $\laeq{
+			\lambda x_1+x_2+x_3=1\\
+			x_1+\lambda x_2+x_3=1\\
+			x_1+x_2+\lambda x_3=-2}$
+		有无穷多解, 则 $\lambda=$\fillblank{}.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
-		由于 $1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
-		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right)$,
-		\onslide<+->{因此
+		\[0=\detm{\lambda&1&1\\1&\lambda&1\\1&1&\lambda}
+		=\lambda^3+2-3\lambda=(\lambda-1)^2(\lambda+2).\]
+		\onslide<+->{%
+			因此 $\lambda=1$ 或 $-2$.
+		}\onslide<+->{%
+			显然 $\lambda=1$ 时无解.
+		}\onslide<+->{%
+			$\lambda=-2$ 时, $x_1=t,x_2=-t,x_3=1$ 是方程的解.
+		}\onslide<+->{%
+			因此 $\lambda=-2$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{齐次线性方程组}
+	\onslide<+->
+	如果线性方程组的常数都是零, 即
+	\[\laeq{
+		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=0\\
+		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=0\\
+		\vvdots\\
+		a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=0,
+	}\]
+	称之为\emph{齐次线性方程组}. 否则称之为\emph{非齐次线性方程组}.
+
+	\onslide<+->
+	显然 $x_1=\cdots=x_n=0$ 是齐次线性方程组的解, 称为\emph{零解}. 其它解被称为\emph{非零解}.
+	\onslide<+->
+	因此此时系数矩阵行列式 $|\bfA|=0\iff$ 方程有(无穷多)非零解.
+	\onslide<+->
+	\begin{exercise}
+		如果 $\laeq{
+			\lambda x_1+x_2+x_3=0\\
+			x_1+\lambda x_2+x_3=0\\
+			x_1+x_2+\lambda x_3=0}$
+		有非零解, 则 $\lambda=$\fillblank{\visible<+->{$2,-1$}}.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{克拉默法则的应用}
+	\onslide<+->
+	\begin{example}
+		证明: 如果三条不同的直线
 		\begin{align*}
-			&\peq(1+i)^n+(1-i)^n\\
-			&=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
-			\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
-		\end{align*}}
-	\end{solution}
-
-	\onslide<+->
-	\begin{exercise}
-		求 $(\sqrt3+i)^{2022}=$\fillblank[2cm]{\visible<+->{\alert{$-2^{2022}$}}}.
-	\end{exercise}
-\end{frame}
-
-
-\subsection{复数的方根}
-\begin{frame}{复数的方根}
-	\onslide<+->
-	我们利用复数乘幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
-	\onslide<+->
-	设
-	\[w^n=z=re^{i\theta}\neq0,\quad w=\rho e^{i\varphi},\]
-	\onslide<+->
-	则
-	\[w^n=\rho^n(\cos{n\varphi}+i\sin{n\varphi})=r(\cos\theta+i\sin\theta).\]
-	\onslide<+->
-	比较两边的模可知 $\rho^n=r,\rho=\sqrt[n]r$.
-
-	\onslide<+->
-	为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\emph{算术根}.
-
-	\onslide<+->
-	由于 $n\varphi$ 和 $\theta$ 的正弦和余弦均相等, 因此存在整数 $k$ 使得
-	\[n\varphi=\theta+2k\pi,\quad \varphi=\frac{\theta+2k\pi}n.\]
-\end{frame}
-
-
-\begin{frame}{复数的方根}
-	\onslide<+->
-	故
-	\begin{alertblock@}
-	\begin{align*}
-		&w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n\\
-		&\hspace{42pt}=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).
-	\end{align*}
-	\end{alertblock@}
-
-	\onslide<+->
-	不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
-	\onslide<+->
-	因此只需取 \alert{$k=0,1,\dots,n-1$}.
-	\onslide<+->
-	故\emph{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
-
-	\onslide<+->
-	这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
-	\onslide<+->
-	因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 复数方根的计算}
-	\onslide<+->
-	\begin{example}
-		求 $\sqrt[4]{1+i}$.
+			ax+by+c=0\\
+			bx+cy+a=0\\
+			cx+ay+b=0
+		\end{align*}
+		相交于一点, 则 $a+b+c=0$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
-		由于 $1+i=\sqrt2\exp\left(\dfrac{\pi i}4\right)$,
-		\onslide<+->{因此
-			\[\sqrt[4]{1+i}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)i}4,\quad k=0,1,2,3.\]
-		}\onslide<+->{所以该方根所有值为
-			\[w_0=\sqrt[8]2e^{\frac{\pi i}{16}},\quad
-			w_1=\sqrt[8]2e^{\frac{9\pi i}{16}},\quad
-			w_2=\sqrt[8]2e^{\frac{17\pi i}{16}},\quad
-			w_3=\sqrt[8]2e^{\frac{25\pi i}{16}}.\]}
-	\end{solution}
+	\begin{proofs}
+		线性方程组 $\laeq{
+			ax_1+bx_2+cx_3=0\\
+			bx_1+cx_2+ax_3=0\\
+			cx_1+ax_2+bx_3=0}$
+			有非零解 $(x,y,1)$.
+		\onslide<+->{%
+			因此 $\detm{a&b&c\\b&c&a\\c&a&b}=0$.
+		}
+	\end{proofs}
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方根的计算}
+\begin{frame}{克拉默法则的应用}
 	\onslide<+->
-	显然 $w_{k+1}=iw_k$,
+	\begin{proofe}
+		\begin{align*}
+			\detm{a&b&c\\b&c&a\\c&a&b}
+			&=(a+b+c)\detm{1&1&1\\b&c&a\\c&a&b}\\
+			&\visible<+->{=(a+b+c)(bc+ac+ab-a^2-b^2-c^2)}\\
+			&\visible<+->{=-\frac12(a+b+c)[(a-b)^2+(b-c)^2+(c-a)^2].}
+		\end{align*}
+		\onslide<+->{由于这是三条不同直线, 因此 $a,b,c$ 不可能全部相等, 从而 $a+b+c=0$.}
+	\end{proofe}
 	\onslide<+->
-	所以 $w_0,w_1,w_2,w_3$ 形成了一个正方形.
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis] (-2,0)--(2,0);
-			\draw[cstaxis] (0,-1.8)--(0,1.8);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(1.5,0.3);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(-1.5,-0.3);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(-0.3,1.5);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(0.3,-1.5);
-			\draw[cstcurve,dcolorb] (1.5,0.3)--(-0.3,1.5)--(-1.5,-0.3)--(0.3,-1.5)--cycle;
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)circle(1.54);
-			\draw
-			(-0.2,-0.3) node {$0$}
-			(1.8,0.3) node[dcolorb] {$w_0$}
-			(-0.4,1.7) node[dcolorb] {$w_1$}
-			(-1.8,-0.3) node[dcolorb] {$w_2$}
-			(0.3,-1.7) node[dcolorb] {$w_3$};
-		\end{tikzpicture}
-	\end{center}
+	想一想: 为什么 $a+b+c=0$ 时, 三条直线一定相交于一点?
+\end{frame}
 
+
+\begin{frame}{小结}
+	\onslide<+->
+	使用克拉默法则解线性方程组需要: \enumnum1 方程组的数量和未知数数量相同; \enumnum2 系数矩阵行列式非零.
+	\onslide<+->
+	但由于使用克拉默法则计算量较大, 一般不使用该方法解方程, 仅用于理论研究.
+	
 	\onslide<+->
 	\begin{exercise}
-		求 $\sqrt[6]{-1}=$\fillblank[5cm][2mm]{\visible<+->{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}}.
+		设 $a_1+\cdots+a_n\neq 0$.
+		何时线性方程组 $\laeq{
+			(a_1+b)x_1+a_2x_2+\cdots+a_n x_n=0\\
+			a_1x_1+(a_2+b)x_2+\cdots+a_n x_n=0\\
+			\vvdots\\
+			a_1x_1+a_2x_2+\cdots+(a_n+b) x_n=0}$
+		有非零解? \visible<+->{\alert{$b=0$.}}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{方幂和方根的辐角等式}
+\begin{frame}{克拉默法则的应用}
 	\onslide<+->
-	注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
+	\begin{exercise}
+		设 $a_i$ 两两不同.
+		解方程组 $\laeq{
+			x_1+a_1x_2+\cdots+a_1^{n-1} x_n=1\\
+			x_1+a_2x_2+\cdots+a_2^{n-1} x_n=1\\
+			\vvdots\\
+			x_1+a_nx_2+\cdots+a_n^{n-1} x_n=1}$.
+	\end{exercise}
 	\onslide<+->
-	这是因为
-	\[\Arg(z^n)=n\arg z+2k\pi,\quad k\in\BZ,\]
-	\[n\Arg z=n\arg z+2nk\pi,\quad k\in\BZ.\]
-	\onslide<+->
-	不过我们总有
-	\[\alert{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ,\]
-	\onslide<+->
-	其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角.
+	\begin{answer}
+		由于系数矩阵行列式为范德蒙行列式
+		\[\prod_{1\le i<j\le n}(a_j-a_i)\neq0,\]
+		因此方程有唯一解 $x_1=1,x_2=\cdots=x_n=0$.
+	\end{answer}
 \end{frame}
-
-
-\begin{frame}{三次方程的求根问题\noexer}
-	\onslide<+->
-	现在我们来看三次方程 $x^3+px+q=0$ 的根, $p\neq 0$.
-	\onslide<+->
-	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3.\]
-	\begin{enumerate}
-		\item 如果 $\Delta>0$, 设实数 $\alpha$ 满足 $\alpha^3=-q/2+\sqrt{\Delta}$, $\omega=e^{2\pi i/3}$.
-			\onslide<+->
-			那么
-			\[u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
-			x=\alpha-\frac p{3\alpha},\ \alpha\omega-\frac p{3\alpha} \omega^2,\ \alpha\omega^2-\frac p{3\alpha} \omega.\]
-			\onslide<+->
-			容易证明后两个根都是虚数.
-		\item 如果 $\Delta<0$, 则 $p<0$, $|u|^2=-p/3$. 从而 $v=\ov u$.
-			\onslide<+->设 $\sqrt[3]{-q/2+\sqrt{\Delta}}=u_1,u_2,u_3$,
-			\onslide<+->
-			则我们得到 $3$ 个实根
-			\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
-	\end{enumerate}
-\end{frame}
-
