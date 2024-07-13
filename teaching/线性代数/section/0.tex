@@ -1,26 +1,20 @@
-\begin{frame}[<*>]{课程安排}
-	\begin{columns}
-		\column{0.48\textwidth}
-			\begin{block*}{课时}
-				本课程共$10$周$40$课时, 自2024年9月24日至2024年11月27日.
-			\end{block*}
-			\vspace{.4\baselineskip}
-			\onslide<+->
-			\begin{block}{课程QQ群(入群答案 1400071B)}
-				\vspace{\baselineskip}
-					003班(自动化) \emph{\textbf{973042523}}
-					\vspace{\baselineskip}
-					
-					004班(电气) \emph{\textbf{980820998}}
-			\end{block}
-			\column{0.48\textwidth}
-			\begin{block}{教材}
-				\begin{figure}
-					\includegraphics[height=32mm]{../image/book.jpg}
-					\caption{唐烁\ 朱士信《线性代数》}
-				\end{figure}
-			\end{block}
-		\end{columns}
+\begin{frame}[<*>]{课程信息}
+\begin{itemize}
+	\item 课时:
+		\begin{itemize}
+			\item $10$周$40$课时;
+			\item 2024-09-24 $\sim$ 2024-11-27
+		\end{itemize}
+	\item 课程QQ群(入群答案 1400071B)
+		\begin{itemize}
+			\item 003班(自动化) \emph{\textbf{973042523}}
+			\item 004班(电气) \emph{\textbf{980820998}}
+		\end{itemize}
+	\item 教材: 唐烁\ 朱士信《线性代数》
+\end{itemize}
+\begin{tikzpicture}[overlay,xshift=100mm,yshift=21mm]
+	\draw (0,0) node {\includegraphics[height=50mm]{../image/book.jpg}};
+\end{tikzpicture}
 \end{frame}
 
 
@@ -61,21 +55,21 @@
 	\begin{center}
 	\begin{tikzpicture}
 		\begin{scope}[xshift=.2mm,yshift=1.7mm,scale=2]
-			\filldraw[cstcurve,dcolorb,fill=white] (0,0)--(0,1) arc (90:144:1) -- cycle;
+			\filldraw[cstcurve,dcolorb,fill=dcolorb!20] (0,0)--(0,1) arc (90:144:1) -- cycle;
 		\end{scope}
 		\begin{scope}[scale=2.1]
-			\filldraw[cstcurve,dcolorc,fill=white] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
+			\filldraw[cstcurve,dcolorc,fill=dcolorc!20] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
 		\end{scope}
 		\begin{scope}[xshift=1.8mm,yshift=.5mm,scale=1.95]
-			\filldraw[cstcurve,dcolord,fill=white] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
+			\filldraw[cstcurve,dcolord,fill=dcolord!20] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
 		\end{scope}
 		\begin{scope}[xshift=1.5mm,yshift=1.7mm,scale=2]
-			\filldraw[cstcurve,dcolore,fill=white] (0,0)--(1,0) arc (0:90:1) -- cycle;
+			\filldraw[cstcurve,dcolore,fill=dcolore!20] (0,0)--(1,0) arc (0:90:1) -- cycle;
 		\end{scope}
 
 		\begin{scope}
 			\draw[dcolorb] (-.7,1.5)--(-1.6,2.5)--(-3,2.5);
-			\filldraw[dcolorb,fill=white] (-.7,1.5) circle(.1);
+			\filldraw[dcolorb,fill=dcolorb!20] (-.7,1.5) circle(.1);
 			\node at (-5,1.7) [text width=53mm]  (1){
 			\begin{block*}{作业 15分}
 				作业为配套练习册, 每章交一次.
@@ -85,7 +79,7 @@
 
 		\begin{scope}
 			\draw[dcolore] (.9,1.5)--(1.6,2.5)--(3,2.5);
-			\filldraw[dcolore,fill=white] (.9,1.5) circle(.1);
+			\filldraw[dcolore,fill=dcolore!20] (.9,1.5) circle(.1);
 			\node at (4.7,1.8) [text width=43mm] (2){{\begin{block*}{课堂测验 25分}
 				课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
 			\end{block*}}};
@@ -93,7 +87,7 @@
 		
 		\begin{scope}
 			\draw[dcolord] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
-			\filldraw[dcolord,fill=white] (1.5,-.4) circle(.1);
+			\filldraw[dcolord,fill=dcolord!20] (1.5,-.4) circle(.1);
 			\node at (4.7,-1.5) [text width=43mm] (3){\begin{block*}{期末报告 10分}
 				期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
 			\end{block*}};
@@ -101,7 +95,7 @@
 
 		\begin{scope}
 			\draw[dcolorc] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
-			\filldraw[dcolorc,fill=white] (-.7,-1) circle(.1);
+			\filldraw[dcolorc,fill=dcolorc!20] (-.7,-1) circle(.1);
 			\node at (-5,-1.7) [text width=53mm] (4){\begin{block*}{期末考试 50分}
 				期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
 			\end{block*}};
