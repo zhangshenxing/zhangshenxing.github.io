@@ -257,10 +257,10 @@
 	\begin{center}
 	\begin{tikzpicture}[scale=.8]
 		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-		\draw[dcolorb] (-0.3,0) node{$O$}
-		(3.3,0) node{$A$}
-		(0.7,1.5) node{$B$}
-		(4.3,1.5) node{$C$};
+		\draw (0,0) node[dcolorb,left] {$O$};
+		\draw (3,0) node[dcolorb,right] {$A$};
+		\draw (1,1.5) node[dcolorb,left]{$B$};
+		\draw (4,1.5) node[dcolorb,right] {$C$};
 	\end{tikzpicture}
 	\end{center}
 	\onslide<+->
@@ -281,10 +281,10 @@
 		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
 		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
 		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
-		\draw[dcolorb] (-0.3,0) node{$O$}
-		(3.3,0) node{$A$}
-		(0.7,1.5) node{$C$}
-		(1.7,.7) node{$B$};
+		\draw (0,0) node[dcolorb,left] {$O$};
+		\draw (3,0) node[dcolorb,right] {$A$};
+		\draw (1,1.5) node[dcolorb,left] {$C$};
+		\draw (1.5,1) node[dcolorb,below] {$B$};
 	\end{tikzpicture}
 	\end{center}
 	\onslide<+->

@@ -1,0 +1,217 @@
+\section{分块矩阵}
+
+\subsection{分块矩阵的定义和运算}
+
+\begin{frame}{分块矩阵的定义}
+	\onslide<+->
+	有时为了研究矩阵和其部分元素形成的矩阵的联系, 需要使用\emph{分块法}将其进行拆分:
+	\onslide<+->
+	\begin{definition}
+		用若干条横线和竖线将矩阵 $\bfA$ 分成许多小矩阵, 每个小矩阵成为 $\bfA$ 的子块, 以子块为元素的矩阵称为\emph{分块矩阵}.
+	\end{definition}
+	\onslide<+->
+	例如
+	\[\bfA=\begin{pmatrix}
+		\bfO_{m\times n}&\bfE_m\\
+		\bfE_n&\bfO_{n\times m}
+	\end{pmatrix}\]
+	就是一个分块矩阵.
+\end{frame}
+
+
+\begin{frame}{分块矩阵的运算: 加法和数乘}
+	\onslide<+->
+	如果分块矩阵 $\bfA,\bfB$ 同型, 且每个对应分块也同型, 则 $\bfA+\bfB$ 就是对应分块相加形成的分块矩阵:
+	\[\begin{pmatrix}
+		\bfA_{11}&\cdots&\bfA_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{s1}&\cdots&\bfA_{sr}
+	\end{pmatrix}+\begin{pmatrix}
+		\bfB_{11}&\cdots&\bfB_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfB_{s1}&\cdots&\bfB_{sr}
+	\end{pmatrix}=\begin{pmatrix}
+		\bfA_{11}+\bfB_{11}&\cdots&\bfA_{1r}+\bfB_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{s1}+\bfB_{s1}&\cdots&\bfA_{sr}+\bfB_{sr}
+	\end{pmatrix}.\]
+
+	\onslide<+->
+	数 $\lambda$ 和分块矩阵的数乘, 就是 $\lambda$ 和对应分块数乘形成的分块矩阵:
+	\[\lambda\begin{pmatrix}
+		\bfA_{11}&\cdots&\bfA_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{s1}&\cdots&\bfA_{sr}
+	\end{pmatrix}=\begin{pmatrix}
+		\lambda\bfA_{11}&\cdots&\lambda\bfA_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\lambda\bfA_{s1}&\cdots&\lambda\bfA_{sr}
+	\end{pmatrix}.\]
+\end{frame}
+
+
+\begin{frame}{分块矩阵的运算: 乘法}
+	\onslide<+->
+	设
+	\[\bfA=\begin{pmatrix}
+		\bfA_{11}&\cdots&\bfA_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{s1}&\cdots&\bfA_{sr}
+	\end{pmatrix},\quad
+	\bfB=\begin{pmatrix}
+		\bfB_{11}&\cdots&\bfB_{1t}\\
+		\vdots&\ddots&\vdots\\
+		\bfB_{r1}&\cdots&\bfB_{rt},
+	\end{pmatrix}\]
+	且 $\bfA_{ij}$ 的列数和 $\bfB_{jk}$ 的行数相同, 则
+	\[\bfA\bfB=\begin{pmatrix}
+		\bfC_{11}&\cdots&\bfC_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfC_{s1}&\cdots&\bfC_{sr}
+	\end{pmatrix},\quad\bfC_{ij}=\sum_{k=1}^r \bfA_{ik}\bfB_{kj}.\]
+	\onslide<+->
+	简单来说就是, 如果对应的分块能做相应运算, 则分块矩阵的运算就如同把这些分块视作数一样运算.
+\end{frame}
+
+
+\begin{frame}{分块矩阵的运算: 转置}
+	\onslide<+->
+	设
+	\[\bfA=\begin{pmatrix}
+		\bfA_{11}&\cdots&\bfA_{1r}\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{s1}&\cdots&\bfA_{sr}
+	\end{pmatrix},\]
+	则
+	\[\bfA^\rmT=\begin{pmatrix}
+		\bfA_{11}^\rmT&\cdots&\bfA_{s1}^\rmT\\
+		\vdots&\ddots&\vdots\\
+		\bfA_{1r}^\rmT&\cdots&\bfA_{sr}^\rmT
+	\end{pmatrix}.\]
+\end{frame}
+
+
+\subsection{特殊分块矩阵}
+\begin{frame}{分块对角阵}
+	\onslide<+->
+	如果方阵
+	\[\bfA=\begin{pmatrix}
+		\bfA_1&&\\
+		&\ddots&\\
+		&&\bfA_m
+	\end{pmatrix},\]
+	其中 $\bfA_1,\dots,\bfA_m$ 都是方阵,
+	\onslide<+->
+	称 $\bfA$ 为\emph{分块对角阵}.
+	\onslide<+->
+	记作 $\bfA=\diag(\bfA_1,\dots,\bfA_m)$.
+
+	\onslide<+->
+	分块对角阵具有如下性质:
+	\begin{enumerate}
+		\item $|\bfA|=|\bfA_1|\cdots|\bfA_m|$;
+		\item $\bfA$ 可逆当且仅当 $\bfA_1,\dots,\bfA_m$ 均可逆, 此时
+		$\bfA^{-1}=\diag(\bfA_1^{-1},\dots,\bfA_m^{-1})$.
+		\item $\bfA^k=\diag(\bfA_1^k,\dots,\bfA_m^k)$.
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{例: 分块对角阵}
+	\onslide<+->
+	\begin{example}
+		求 $\bfA=\begin{pmatrix}
+			2&1&0&0\\
+			1&1&0&0\\
+			0&0&2&0\\
+			0&0&-1&3
+		\end{pmatrix}$ 的逆矩阵.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		设 $\bfA_1=\begin{pmatrix}
+			2&1\\1&1
+		\end{pmatrix},\bfA_2=\begin{pmatrix}
+			2&0\\-1&3
+		\end{pmatrix}$,\onslide<+->{%
+		则 $\bfA_1^{-1}=\begin{pmatrix}
+			1&-1\\-1&2
+		\end{pmatrix},\quad\bfA_2^{-1}=\frac16\begin{pmatrix}
+			3&0\\1&2
+		\end{pmatrix}$.
+		}
+		
+		\onslide<+->{故 $\bfA^{-1}=\diag(\bfA_1^{-1},\bfA_2^{-1})=\begin{pmatrix}
+			1&-1&&\\
+			-1&2&&\\
+			&&\frac12&0\\[2mm]
+			&&\frac16&\frac13
+		\end{pmatrix}$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 分块三角阵的逆}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA,\bfB$ 均可逆, 求 $\begin{pmatrix}
+			\bfA&\bfO\\\bfC&\bfB
+		\end{pmatrix}$ 的逆矩阵.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由 $\detm{\bfA&\bfO\\\bfC&\bfB}=|\bfA|\cdot|\bfB|\neq0$ 可知该方阵可逆.
+		\onslide<+->{%
+			设
+			\[\begin{pmatrix}
+				\bfA&\bfO\\\bfC&\bfB
+			\end{pmatrix}\begin{pmatrix}
+				\bfA_1&\bfA_2\\\bfA_3&\bfA_4
+			\end{pmatrix}=\bfE.\]
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 分块三角阵的逆}
+	\onslide<+->
+	\begin{solutionc}
+		则
+		\[\bfA\bfA_1=\bfE,\quad \bfA\bfA_2=\bfO,\quad \bfC\bfA_1+\bfB\bfA_3=\bfO,\quad \bfC\bfA_2+\bfB\bfA_4=\bfE.\]
+		\onslide<+->{%
+		于是
+		\[\bfA_1=\bfA^{-1},\bfA_2=\bfO,\bfA_4=\bfB^{-1}.\]
+		}\onslide<+->{%
+		再由 $\bfC\bfA_1+\bfB\bfA_3=\bfO$ 可得
+		\[\bfA_3=-\bfB^{-1}\bfC\bfA_1=-\bfB^{-1}\bfC\bfA^{-1}.\]
+		}\onslide<+->{%
+		故
+		\[\begin{pmatrix}
+			\bfA&\bfO\\\bfC&\bfB
+		\end{pmatrix}^{-1}=\begin{pmatrix}
+			\bfA^{-1}&\bfO\\-\bfB^{-1}\bfC\bfA^{-1}&\bfB^{-1}
+		\end{pmatrix}.\]
+		}
+	\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例: 分块方阵的伴随}
+	\onslide<+->
+	\begin{exercise}
+		设 $\bfA,\bfB$ 为同阶方阵, $\bfC=\begin{pmatrix}
+			&\bfA\\\bfB&
+		\end{pmatrix}$,
+		则 $\bfC^*=$\fillbrace{\visible<+->{D}}.
+		\xx{$\begin{pmatrix}
+			&\bfA^*\\\bfB^*&
+		\end{pmatrix}$}{$\begin{pmatrix}
+			&\bfB^*\\\bfA^*&
+		\end{pmatrix}$}{$\begin{pmatrix}
+			&|\bfB|\bfA^*\\|\bfA|\bfB^*&
+		\end{pmatrix}$}{$\begin{pmatrix}
+			&|\bfA|\bfB^*\\|\bfB|\bfA^*&
+		\end{pmatrix}$}
+	\end{exercise}
+\end{frame}
+

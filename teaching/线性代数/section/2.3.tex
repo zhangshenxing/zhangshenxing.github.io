@@ -1,559 +1,748 @@
-\section{初等函数}
+\section{逆矩阵}
 
-\subsection{指数函数}
-\begin{frame}{指数函数}
+\subsection{方阵的伴随矩阵}
+
+\begin{frame}{伴随矩阵}
 	\onslide<+->
-	我们将实变函数中的初等函数推广到复变函数.
+	\begin{definition}
+		设 $\bfA=(a_{ij})_{n\times n}$.
+		由 $\bfA$ 的代数余子式形成的矩阵
+		\[\bfA^*=(A_{ji})=\begin{pmatrix}
+			A_{11}&A_{21}&\cdots&A_{n1}\\
+			A_{12}&A_{21}&\cdots&A_{n2}\\
+			\vdots&\vdots&\ddots&\vdots\\
+			A_{1n}&A_{21}&\cdots&A_{nn}
+		\end{pmatrix}\]
+		称为矩阵 $\bfA$ 的\emph{伴随矩阵}.
+	\end{definition}
 	\onslide<+->
-	多项式函数和有理函数的解析性质已经介绍过, 这里不再重复.
+	注意, 伴随矩阵的 $(i,j)$ 元是代数余子式 \alert{$A_{ji}$ 而不是 $A_{ij}$}.
 	\onslide<+->
-	现在我们来定义指数函数.
+	\begin{example}
+		如果 $\bfA=\begin{pmatrix}
+			a&b\\c&d
+		\end{pmatrix}$, 那么 $\bfA^*=\begin{pmatrix}
+			d&-b\\-c&a
+		\end{pmatrix}$.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{伴随矩阵的性质}
+	\onslide<+->
+	伴随矩阵满足如下重要性质:
+	\begin{alertblock@}
+		\begin{enumerate}
+		\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
+		\end{enumerate}
+	\end{alertblock@}
+	\onslide<+->
+	这是因为
+	\[\bfA\bfA^*=\begin{pmatrix}
+		a_{11}&a_{12}&\cdots &a_{1n}\\
+		a_{21}&a_{22}&\cdots &a_{2n}\\
+		\vdots&\vdots&\ddots&\vdots\\
+		a_{n1}&a_{n2}&\cdots &a_{nn}
+	\end{pmatrix}\begin{pmatrix}
+		A_{11}&A_{21}&\cdots&A_{n1}\\
+		A_{12}&A_{21}&\cdots&A_{n2}\\
+		\vdots&\vdots&\ddots&\vdots\\
+		A_{1n}&A_{21}&\cdots&A_{nn}
+	\end{pmatrix}\]
+	的 $(i,j)$ 元是
+	\[a_{i1}A_{j1}+\cdots+a_{in}A_{jn}=\begin{cases}
+		|\bfA|,&i=j;\\
+		0,&i\neq j.
+	\end{cases}\]
+\end{frame}
+
+
+\begin{frame}{伴随矩阵的性质}
+	\onslide<+->
+	\begin{block@}
+		\begin{enumerate}
+			\setcounter{enumi}{1}
+			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
+			\item $(\bfA^\rmT)^*=(\bfA^*)^\rmT$.
+			\item $|\bfA^*|=|\bfA|^{n-1}$.
+		\end{enumerate}
+	\end{block@}
+	\onslide<+->
+	如果 $\bfA=\bfO$, 显然 $\bfA^*=\bfO$.
+	\onslide<+->
+	如果 $|\bfA|=0$ 但 $\bfA\neq \bfO$, 那么
+	\[\bfA^*\begin{pmatrix}
+		a_{1j}\\a_{2j}\\\vdots\\a_{nj}
+	\end{pmatrix}=\bfO_{n\times 1}.\]
+	\onslide<+->
+	所以以 $\bfA^*$ 为系数的齐次线性方程组有非零解, 从而 $|\bfA^*|=0$.
 
 	\onslide<+->
-	指数函数有多种等价的定义方式:
+	如果 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
+\end{frame}
+
+
+\begin{frame}{例: 伴随矩阵}
+	\onslide<+->
+	\begin{example}
+		设非零 $n\ge 3$ 实方阵 $\bfA$ 满足对任意 $i,j$, $a_{ij}=A_{ij}$. 求 $|\bfA|$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由题设可知 $(\bfA^*)^\rmT=\bfA$.
+		\onslide<+->{%
+		因此 $|\bfA^*|=|\bfA|=|\bfA|^{n-1}$,
+		}\onslide<+->{%
+		从而 $|\bfA|=0$ 或 $1$.
+		}
+		
+		\onslide<+->{如果 $|\bfA|=0$, 则
+			\[\bfA\bfA^*=\bfA\bfA^\rmT=|\bfA|\bfE=\bfO.\]
+		}\onslide<+->{
+			而 $\bfA\bfA^\rmT$ 的第 $i$ 个对角元为
+			\[\sum_{k=1}^n a_{ik}^2\ge 0.\]
+		}\onslide<+->{
+			于是 $\bfA$ 所有元素均为零, 矛盾! 因此 $|\bfA|=1$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\subsection{逆矩阵的定义和形式}
+\begin{frame}{线性变换的逆}
+	\onslide<+->
+	给定一个线性变换 $f:\BC^n\ra\BC^m$, 如果线性变换 $g:\BC^m\to\BC^n$ 满足
+	\[(gf)(\bfu)=\bfu,\forall \bfu\in\BC^n,\quad
+	(fg)(\bfv)=\bfv,\forall \bfv\in\BC^m,\]
+	\onslide<+->
+	则称 $g$ 是 $f$ 的逆.
+
+	\onslide<+->
+	设 $f,g$ 对应的矩阵分别是 $\bfA,\bfB$, 则
+	\[\bfA\bfB=\bfE_m,\quad \bfB\bfA=\bfE_n.\]
+	\onslide<+->
+	注意到 $m\neq n$ 时上述等式不可能成立, 因为 $|\bfA\bfB|=|\bfB\bfA|=0$.
+	\onslide<+->
+	因此线性变换的逆只可能在 $m=n$ 时存在.
+\end{frame}
+
+
+\begin{frame}{逆矩阵的定义和唯一性}
+	\onslide<+->
+	由此得到对应的矩阵的逆的定义:
+	\onslide<+->
+	\begin{definition}
+		设 $\bfA$ 是 $n$ 阶方阵. 若存在 $n$ 阶方阵 $\bfB$ 使得
+		\[\bfA\bfB=\bfB\bfA=\bfE_n,\]
+		则称 $\bfA$ 是\emph{可逆矩阵}, $\bfB$ 是 $\bfA$ 的\emph{逆矩阵}.
+	\end{definition}
+	\onslide<+->
 	\begin{enumerate}
-		\item $\exp z=e^x(\cos y+i\sin y)$ (欧拉恒等式);
-		\item $\exp z=\lim\limits_{n\to\infty}\left(1+\dfrac zn\right)^n$ (极限定义);
-		\item $\exp z=1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots
-		=\lim\limits_{n\to\infty}\sum\limits_{k=0}^n\dfrac{z^k}{k!}$ (级数定义);
-		\item $\exp z$ 是唯一的一个处处解析的函数, 使得当 $z=x\in\BR$ 时, $\exp z=e^x$ ($e^x$ 的解析延拓).
+		\item 如果 $\bfA$ 是可逆矩阵, 它的逆矩阵唯一吗?
 	\end{enumerate}
+	\onslide<+->
+	设 $\bfB,\bfB'$ 都是 $\bfA$ 的逆矩阵, 则
+	\[\bfA\bfB=\bfE_n,\quad \bfB'\bfA=\bfE_n.\]
+	\onslide<+->
+	于是
+	\[\bfB=(\bfB'\bfA)\bfB=\bfB'(\bfA\bfB)=\bfB'.\]
+	\onslide<+->
+	因此若逆矩阵存在必唯一.
 \end{frame}
 
 
-\begin{frame}{指数函数}
+\begin{frame}{逆矩阵的存在性}
 	\onslide<+->
-	有些人会从 $e^x,\cos x,\sin x$ 的泰勒展开
-	\begin{align*}
-		e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
-		\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
-		\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
-	\end{align*}
-	形式地带入得到欧拉恒等式 $e^{ix}=\cos x+i\sin x$.
+	\begin{enumerate}
+		\setcounter{enumi}{1}
+		\item 任何非零矩阵都有逆吗?
+	\end{enumerate}
 	\onslide<+->
-	事实上我们可以把它当做复指数函数的定义, 而不是欧拉恒等式的证明.
+	设 $\begin{pmatrix}
+		1&1\\2&2
+	\end{pmatrix}\begin{pmatrix}
+		a&b\\c&d
+	\end{pmatrix}=\begin{pmatrix}
+		1&0\\0&1
+	\end{pmatrix}$, 
 	\onslide<+->
-	我们在学习了幂级数之后就可知\enumnum1和\enumnum3是等价的.
+	则 
+	\[a+c=1,\quad 2a+2c=0.\]
+	\onslide<+->
+	这不可能, 因此 $\begin{pmatrix}
+		1&1\\2&2
+	\end{pmatrix}$ 不可逆.
+	\onslide<+->
+	实际上从 $\bfA\bfB=\bfE$ 可知
+	\[|\bfA|\cdot|\bfB|=1.\]
+	\onslide<+->
+	所以退化矩阵都是不可逆的.
 \end{frame}
 
 
-
-\begin{frame}{指数函数的定义}
+\begin{frame}{逆矩阵的存在性}
 	\onslide<+->
-	我们来证明\enumnum1和\enumnum2等价.
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+		\item 那非退化矩阵都可逆吗?
+	\end{enumerate}
 	\onslide<+->
-	\begin{align*}
-		\lim_{n\to\infty}\abs{1+\frac zn}^n
-		&=\lim_{n\to\infty}\left(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\right)^{\frac n2}\quad
-		\visible<+->{(1^\infty\ \text{型不定式})}\\
-		&\visible<+->{=\exp\left[\lim_{n\to\infty}\frac n2
-		\left(\frac{2x}n+\frac{x^2+y^2}{n^2}\right)\right]=e^x.}
-	\end{align*}
+	注意到
+	\[\bfA\bfA^*=\bfA^*\bfA=|\bfA|\bfE.\]
 	\onslide<+->
-	不妨设 $n>\abs{z}$, 这样 $1+\dfrac zn$ 落在右半平面,
+	因此如果 $\bfA$ 非退化, 则
+	\[\bfA\cdot\frac{\bfA^*}{|\bfA|}=\frac{\bfA^*}{|\bfA|}\cdot\bfA=\bfE,\]
 	\onslide<+->
-	\[\lim_{n\to\infty} n\arg{\left(1+\frac zn\right)}
-	=\lim_{n\to\infty} n\arctan \frac y{n+x}
-	\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}\]
-	\vspace{-\baselineskip}
-	\onslide<+->
-	故 $\exp z=e^x(\cos y+i\sin y)$.
+	\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}.\]
 \end{frame}
 
 
-\begin{frame}{指数函数的性质}
+\begin{frame}{逆矩阵存在性的刻画}
 	\onslide<+->
-	\begin{alertblock}{指数函数}
-	定义指数函数
-		\[\exp z:=e^x(\cos y+i\sin y).\]
-	\end{alertblock}
+	\begin{theorem}
+		$n$ 阶方阵 $\bfA$ 可逆当且仅当 $|\bfA|\neq 0$.
+		此时 $\bfA^{-1}=\dfrac{\bfA^*}{|\bfA|}$.
+	\end{theorem}
 	\onslide<+->
-	我们已知 $\exp z$ 是一个处处解析的函数, 且 $(\exp z)'=\exp z$.
+	\begin{corollary}
+		设 $\bfA,\bfB$ 为 $n$ 阶矩阵.
+		如果 $\bfA\bfB=\bfE$ (或 $\bfB\bfA=\bfE$), 则 $\bfB=\bfA^{-1}$.
+	\end{corollary}
 	\onslide<+->
-	不难看出
-	\begin{itemize}
-		\item $\exp z\neq 0$;
-		\item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$;
-		\item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$;
-		\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$.
-	\end{itemize}
-	\onslide<+->
-	为了方便, 我们也记 $\emph{e^z=\exp z}$.
-\end{frame}
-
-
-\begin{frame}{指数函数的性质}
-	\onslide<+->
-	指数函数将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=e^c$, 
-	\onslide<+->
-	将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
-
-	\onslide<+->
-	\begin{example}
-		函数 $f(z)=e^{z/6}$ 的周期是\fillblank{\visible<7->{$12\pi i$}}.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		设 $f(z_1)=f(z_2)$, 则 $e^{z_1/6}=e^{z_2/6}$.
-		\onslide<+->{因此存在 $k\in\BZ$ 使得
-			\[\frac{z_1}6=\frac{z_2}6+2k\pi i,\]
-		}\onslide<+->{从而 $z_1-z_2=12k\pi i$.
-		}\onslide<+->{所以 $f(z)$ 的周期是 $12\pi i$.}
-	\end{solution}
-
-	\onslide<+->
-	一般地, $\exp(az+b)$ 的周期是 $\dfrac{2\pi i}a$ (或写成 $-\dfrac{2\pi i}a$), $a\neq 0$.
-\end{frame}
-
-
-\subsection{对数函数}
-
-\begin{frame}{对数函数}
-	\onslide<+->
-	对数函数定义为指数函数的反函数.
-	\onslide<+->
-	设 $z\neq 0$, 满足方程 $e^w=z$ 的 $w=f(z)$ 被称为\emph{对数函数}, 记作 $w=\Ln z$.
-
-	\onslide<+->
-	为什么我们用大写的 $\Ln$ 呢? 
-	\onslide<+->
-	在复变函数中, 很多函数是多值函数.
-	\onslide<+->
-	为了便于研究, 我们会固定它的一个单值分支.
-	\onslide<+->
-	我们将多值的这个开头字母大写, 而对应的单值的则是开头字母小写.
-	\onslide<+->
-	例如 $\Arg z$ 和 $\arg z$.
-\end{frame}
-
-
-\begin{frame}{对数函数及其主值}
-	\onslide<+->
-	设 $e^w=z=re^{i\theta}=e^{\ln r+i\theta}$,
-	\onslide<+->
-	则
-	\[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
-	\vspace{-\baselineskip}
-	\onslide<+->
-	\begin{alertblock}{对数函数}
-		\begin{enumerate}
-			\item 定义对数函数
-				\[\Ln z=\ln\abs{z}+i\Arg z.\]
-				它是一个多值函数.
-			\item 定义对数函数主值
-				\[\ln z=\ln\abs{z}+i\arg z.\]
-				\vspace{-\baselineskip}
-		\end{enumerate}
-	\end{alertblock}
-
-	\onslide<+->
-	对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
-	\onslide<+->
-	特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变的对数函数.
-\end{frame}
-
-
-\begin{frame}{典型例题: 对数函数的计算}
-	\onslide<+->
-	\begin{example}
-		求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		\begin{enumerate}
-			\item $\Ln2=\ln2+2k\pi i, k\in\BZ$,
-			\onslide<+->{主值就是 $\ln 2$.}
-			\item $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
-			\onslide<+->{主值是 $\pi i$.}
-		\end{enumerate}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 对数函数的计算}
-	\onslide<+->
-	\begin{example}
-	求 $\Ln(-2+3i),\Ln(3-\sqrt3 i)$.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		\begin{enumerate}
-			\item $\Ln(-2+3i)=\ln\abs{-2+3i}+i\Arg(-2+3i)$
-
-			\onslide<+->{$\qquad\qquad\quad\displaystyle=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ$.}
-			\item $\Ln(3-\sqrt3i)=\ln\abs{3+\sqrt 3i}+i\Arg(3-\sqrt 3i)$
-
-			\onslide<+->{$\displaystyle=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
-			=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ$.}
-			% \item $\Ln(-3)=\ln(-3)+i\Arg(-3)$
-			% \onslide<+->{$=\ln3+(2k+1)\pi i,\quad k\in\BZ.$}
-		\end{enumerate}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 对数函数的计算}
-	\onslide<+->
-	\begin{example}
-		解方程 $e^z-1-\sqrt 3i=0$.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		由于 $1+\sqrt 3 i=2e^{\frac{\pi i}3}$,
-		\onslide<+->{因此
-		\[z=\Ln(1+\sqrt 3i)=\ln 2+\left(2k+\frac13\right)\pi i,\quad k\in\BZ.\]}
+	\begin{proof}
+		如果 $\bfA\bfB=\bfE$, 则 $|\bfA|\cdot|\bfB|=1$, $|\bfA|\neq0$.
+		\onslide<+->{%
+		因此 $\bfA$ 可逆.
+		}\onslide<+->{%
+		\[\bfA^{-1}=\bfA^{-1}(\bfA\bfB)=\bfB.\qedhere\]}
 		\vspace{-\baselineskip}
-	\end{solution}
+	\end{proof}
+\end{frame}
 
+
+\begin{frame}{例: 计算逆矩阵}
+	\onslide<+->
+	\begin{example}
+		证明 $\bfA=\begin{pmatrix}
+			\cos\theta&-\sin\theta\\
+			\sin\theta&\cos\theta
+		\end{pmatrix}$ 可逆并求其逆矩阵.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由于 $|\bfA|=\cos^2\theta+\sin^2\theta=1$, 因此 $\bfA$ 可逆.
+		\onslide<+->{由于 $\bfA^*=\begin{pmatrix}
+			\cos\theta&\sin\theta\\
+			-\sin\theta&\cos\theta
+		\end{pmatrix}$, 因此
+		\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}=\begin{pmatrix}
+			\cos\theta&\sin\theta\\
+			-\sin\theta&\cos\theta
+		\end{pmatrix}.\]}
+	\end{solution}
+	\onslide<+->
+	注意到 $\bfA$ 对应的是平面上沿原点逆时针旋转 $\theta$, 因此 $\bfA^{-1}$ 对应的是平面上沿原点逆时针旋转 $-\theta$.
+\end{frame}
+
+
+
+\begin{frame}{例: 计算逆矩阵}
+	\onslide<+->
+	\begin{example}
+		$\bfA=\begin{pmatrix}
+			1&2&1\\
+			0&1&-1\\
+			-1&3&4
+		\end{pmatrix}, \bfB=\begin{pmatrix}
+			2&3&-1\\
+			-1&-3&5\\
+			1&5&11
+		\end{pmatrix}$ 是否可逆? 若可逆求其逆矩阵.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由于 $|\bfA|=10$, 因此 $\bfA$ 可逆.
+		\onslide<+->{%
+			计算其代数余子式为
+			\[A_{11}=7,\ A_{12}=1,\ A_{13}=1,\ A_{21}=-5,\ A_{22}=5\]
+			\[A_{23}=-5,\ A_{31}=-3,\ A_{32}=1,\ A_{33}=1.\]
+		}\onslide<+->{%
+			因此 $\bfA^{-1}=\dfrac{\bfA^*}{10}=\dfrac1{10}\begin{pmatrix}
+				7&-5&-3\\
+				1&5&1\\
+				1&-5&1
+			\end{pmatrix}.$
+		}\onslide<+->{由于 $|\bfB|=0$, 因此 $\bfB$ 不可逆.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 计算逆矩阵}
+	\onslide<+->
+	\begin{example}
+		设 $\lambda_1,\dots,\lambda_n\neq0$.
+		\[\Lambda=\begin{pmatrix}
+			\lambda_1&&&\\
+			&\lambda_2&&\\
+			&&\ddots&\\
+			&&&\lambda_n\\
+		\end{pmatrix}=\diag(\lambda_1,\lambda_2,\dots,\lambda_n),\]
+		\onslide<+->{则
+		\[\Lambda^{-1}=\begin{pmatrix}
+			\lambda_1^{-1}&&&\\
+			&\lambda_2^{-1}&&\\
+			&&\ddots&\\
+			&&&\lambda_n^{-1}\\
+		\end{pmatrix}=\diag(\lambda_1^{-1},\lambda_2^{-1},\dots,\lambda_n^{-1}).\]}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{逆矩阵的计算方法}
+	\onslide<+->
+	逆矩阵通常采用下述方法计算:
+	\begin{enumerate}
+		\item 利用公式 $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$, 适用于 $2,3$ 阶方阵, 或用于抽象分析.
+		\item 寻找方阵 $\bfB$ 使得 $\bfA\bfB=\bfE$, 适用于抽象矩阵求逆.
+		\item 利用矩阵的初等变换求逆矩阵, 该方法我们会在之后的学习中接触到.
+	\end{enumerate}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA$ 为 $n$ 阶矩阵且满足 $\bfA^2+3\bfA-2\bfE=\bfO$.
+		求 $\bfA^{-1}$ 和 $(\bfA-\bfE)^{-1}$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\begin{enumerate}
+			\item 由于 $\bfA^2+3\bfA=2\bfE$, 
+			\onslide<+->{%
+			因此 $\bfA(\bfA+3\bfE)=2\bfE, \bfA^{-1}=\dfrac{\bfA+3\bfE}2$.}
+			\item 由于 $(\bfA-\bfE)(\bfA+4\bfE)=-2\bfE$,
+			\onslide<+->{%
+			因此 $(\bfA-\bfE)^{-1}=-\dfrac{\bfA+4\bfE}2$.}
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{方阵的多项式}
+	\onslide<+->
+	设
+	\[f(x)=a_mx^m+\cdots+a_1x+a_0\]
+	是一个多项式.
+	\onslide<+->
+	定义
+	\[f(\bfA)=a_m\bfA^m+\cdots+a_1\bfA+a_0\bfE.\]
+	\onslide<+->
+	例如, 
+	\begin{enumerate}
+		\item 若 $\bfA=\diag(\lambda_1,\dots,\lambda_n)$, 则 $f(\bfA)=\diag\bigl(f(\lambda_1),\dots,f(\lambda_n)\bigr).$
+		\item $f(\bfP\bfA\bfP^{-1})=\bfP f(\bfA)\bfP^{-1}$.
+	\end{enumerate}
+
+	\onslide<+->
+	若 $f(\bfA)=\bfO$, 我们想求 $(\bfA-\alpha\bfE)^{-1}$.
+	\onslide<+->
+	那么
+	\[f(\bfA)-f(\alpha)\bfE=(\bfA-\alpha\bfE)\bfB=-f(\alpha)\bfE.\]
+	\onslide<+->
+	从而当 $f(\alpha)\neq 0$ 时, $(\bfA-\alpha\bfE)^{-1}=-\dfrac{\bfB}{f(\alpha)}$.
+\end{frame}
+
+
+\begin{frame}{例: 计算逆矩阵}
+	\onslide<+->
+	想一想: 如果 $\bfA^3+\bfA^2-2\bfE=\bfO$, 如何求 $(\bfA^2+\bfE)^{-1}$?
+	\onslide<+->
+	\begin{enumerate}
+		\item 待定系数设 $(\bfA^2+\bfE)(a\bfA^2+b\bfA+c\bfE)=\bfE$, 然后使得两边相减是 $\bfA^3+\bfA^2-2\bfE$ 的倍数.
+		\item 通过 $\bfA^6=(\bfA^3)^2$ 得到 $\bfA^2$ 满足的方程.
+	\end{enumerate}
+	\onslide<+->
+	\begin{example}
+		多选题: 若 $\bfA,\bfB,\bfC$ 为同阶方阵, 且 $\bfA$ 可逆, 则\fillbrace{\visible<+->{\alert{AC}}}.
+		\xx{若 $\bfA\bfB=\bfA\bfC$, 则 $\bfB=\bfC$}%
+		{若 $\bfA\bfB=\bfC\bfB$, 则 $\bfA=\bfC$}%
+		{若 $\bfA\bfB=\bfO$, 则 $\bfB=\bfO$}%
+		{若 $\bfB\bfC=\bfO$, 则 $\bfB=\bfO$}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 计算逆矩阵}
+	\onslide<+->
+	\begin{example}
+		设 $n$ 阶方阵 $\bfA,\bfB,\bfC$ 满足 $\bfA\bfB\bfC=\bfE$, 则\fillbrace{\visible<+->{\alert{D}}}.
+		\xx{$\bfA\bfC\bfB=\bfE$}%
+		{$\bfC\bfB\bfA=\bfE$}%
+		{$\bfB\bfA\bfC=\bfE$}%
+		{$\bfC\bfA\bfB=\bfE$}
+	\end{example}
+	\onslide<+->
+	想一想 $\bfB^{-1}=?$
 	\onslide<+->
 	\begin{exercise}
-		求 $\ln(-1-\sqrt3 i)=$\fillblank[2cm][3mm]{\visible<+->{$\ln 2-\dfrac{2\pi i}3$}}.
+		设 $\bfA=\begin{pmatrix}
+			4&1&3\\4&a&7\\3&-1&4
+		\end{pmatrix}$, 且存在两个不等的 $3\times2$ 矩阵 $\bfB,\bfC$ 使得 $\bfA\bfB=\bfA\bfC$, 则 $a=$\fillblank{\visible<+->{\alert{$-3$}}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{exercise}
+		设 $3$ 阶方阵 $\bfA$ 满足 $\bfA^3-2\bfA+\bfE=\bfO$, 且 $|\bfA|=2$, 则 $|(\bfA^2-2\bfE)^{-1}|=$\fillblank{\visible<+->{\alert{$-2$}}}.
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{对数函数的性质}
-	\onslide<+->
-	对数函数与其主值的关系是
-	\[\alert{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
+\subsection{逆矩阵的性质}
 
+\begin{frame}{逆矩阵的性质}
 	\onslide<+->
-	根据辐角以及主辐角的相应等式, 我们有
-	\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
-	\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,\]
-	\[\Ln \sqrt[n]z=\dfrac1n\Ln z.\]
+	逆矩阵满足如下性质:
+	\begin{enumerate}
+		\item 设 $\bfA$ 可逆.
+		\begin{itemize}
+			\item $\bfA^{-1}$ 也可逆, 且 $(\bfA^{-1})^{-1}=\bfA$;
+			\item 若 $\lambda\neq 0$, 则 $\lambda\bfA$ 也可逆, 且 $(\lambda\bfA)^{-1}=\dfrac1\lambda\bfA^{-1}$;
+			\item $\bfA^\rmT$ 也可逆, 且 $(\bfA^\rmT)^{-1}=(\bfA^{-1})^\rmT$;
+			\item $|\bfA^{-1}|=|\bfA|^{-1}$.
+		\end{itemize}
+		\item 若 $\bfA,\bfB$ 为同阶可逆矩阵, 则 $\bfA\bfB$ 也可逆, 且
+		\[\alert{(\bfA\bfB)^{-1}=\bfB^{-1}\bfA^{-1}}.\]
+		一般地
+		\[\alert{(\bfA_1\bfA_2\cdots\bfA_n)^{-1}=\bfA_n^{-1}\cdots\bfA_2^{-1}\bfA_1^{-1}}.\]
+	\end{enumerate}
 	\onslide<+->
-	而当 $\abs{n}\ge 2$ 时, \alert{$\Ln z^n=n\Ln z$ 不成立}.
-	\onslide<+->
-	以上等式换成 $\ln z$ 均不一定成立.
+	注意矩阵不能相除 $\dfrac{\bfA}{\bfB}$, 因为一般 $\bfB^{-1}\bfA\neq\bfA\bfB^{-1}$.
 \end{frame}
 
 
-\begin{frame}{对数函数的导数}
+\begin{frame}{伴随矩阵和逆矩阵}
 	\onslide<+->
-	设 $x$ 是正实数, 
+	注意一般地, $(\bfA+\bfB)^{-1}\neq\bfA^{-1}+\bfB^{-1}$.
 	\onslide<+->
-	则
-	\[\ln (-x)=\ln x+\pi i,\quad
-	\lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi i,\]
+	例如 $\bfA=\begin{pmatrix}
+		1&0\\0&-1
+	\end{pmatrix},\bfB=\begin{pmatrix}
+		1&0\\0&1
+	\end{pmatrix}$ 均可逆, 但 $\bfA+\bfB=\begin{pmatrix}
+		2&0\\0&0
+	\end{pmatrix}$ 不可逆.
 	\onslide<+->
-	因此 $\ln z$ 在负实轴和零处不连续.
-
-	\onslide<+->
-	而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
-	\onslide<+->
-	从而
-	\alert{$(\ln z)'=\dfrac 1z$},
-	\alert{$\ln z$ 在除负实轴和零处的区域解析}.
-
-	\onslide<+->
-	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数: 当 $x>0$ 时,
-	\[\ln z=\half \ln(x^2+y^2)+i\arctan \frac yx,\]
-	\onslide<+->
-	\[u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},\]
-	\[(\ln z)'=(x-yi)/(x^2+y^2)=\frac 1z.\]
-	其它情形可取虚部为 $\arccot\dfrac xy$ 或 $\arccot\dfrac xy-\pi$ 类似证明.
-\end{frame}
-
-
-\subsection{幂函数}
-	\begin{frame}{幂函数}
-	\onslide<+->
-	\begin{alertblock}{幂函数}
+	\begin{block}{伴随矩阵的性质}
 		\begin{enumerate}
-			\item 设 $a\neq 0$, $z\neq 0$, 定义幂函数
-			\[w=z^a=e^{a\Ln z}
-			=\exp\bigl[a\ln\abs{z}+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.\]
-			\item 它的主值为
-			\[w=e^{a\ln z}=\exp\bigl(a\ln\abs{z}+ia\arg z\bigr).\]
+			\setcounter{enumi}{4}
+			\item 若 $\bfA$ 可逆, 则 $(\bfA^{-1})^*=(\bfA^*)^{-1}=\dfrac{\bfA}{|\bfA|}$.
 		\end{enumerate}
+	\end{block}
+	\onslide<+->
+	\begin{proof}
+		由于 $\bfA\bfA^*=|\bfA|\bfE$, 因此 $\bfA^*=|\bfA|\bfA^{-1}$.
+		\onslide<+->{于是
+		\[(\bfA^{-1})^*=|\bfA^{-1}|(\bfA^{-1})^{-1}=\frac{\bfA}{|\bfA|},\quad\visible<+->{(\bfA^*)^{-1}=(|\bfA|\bfA^{-1})^{-1}=\frac{\bfA}{|\bfA|}.}\qedhere\]
+		}
 		\vspace{-\baselineskip}
-	\end{alertblock}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{幂函数的性质: $a$ 为整数时}
+\begin{frame}{例: 求逆矩阵}
 	\onslide<+->
-	根据 $a$ 的不同, 这个函数有着不同的性质.
-
+	\begin{example}
+		设 $\bfA$ 是 $3$ 阶方阵, $|\bfA|=\dfrac12$.
+		求 $\bigl|(2\bfA)^{-1}-(2\bfA)^*\bigr|$.
+	\end{example}
 	\onslide<+->
-	当 $a$ 为整数时, 因为 $e^{2ak\pi i}=1$, 所以 $w=z^a$ 是单值的.
-	\onslide<+->
-	此时 $z^a$ 就是我们之前定义的乘幂.
-
-	\onslide<+->
-	当 $a$ 是非负整数时, $z^a$ 在复平面上解析;
-	\onslide<+->
-	当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 上解析.
+	\begin{solution}
+		\[(2\bfA)^{-1}-(2\bfA)^*
+		=\frac12\bfA^{-1}-2^2\bfA^*=\bfA^*-4\bfA^*=-3\bfA^*,\]
+		\onslide<+->{因此
+		\[\bigl|(2\bfA)^{-1}-(2\bfA)^*\bigr|=-27|\bfA^*|=-27|\bfA|^2=-\frac{27}4.\]
+		}
+		\vspace{-\baselineskip}
+	\end{solution}
 \end{frame}
 
 
-\begin{frame}{幂函数的性质: $a$ 为分数时}
+\begin{frame}{例: 解矩阵方程}
 	\onslide<+->
-	当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
+	如果 $\bfA,\bfB$ 可逆, 下述矩阵方程可以由逆矩阵表出:
+	\begin{enumerate}
+		\item $\bfA\bfX=\bfC\implies \bfX=\bfA^{-1}\bfC$;
+		\item $\bfX\bfA=\bfC\implies \bfX=\bfC\bfA^{-1}$;
+		\item $\bfA\bfX\bfB=\bfC\implies \bfX=\bfA^{-1}\bfC\bfB^{-1}$.
+	\end{enumerate}
 	\onslide<+->
-	\[z^{\frac pq}=\abs{z}^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1\]
-	具有 $q$ 个值.
+	\begin{example}
+		设 $\bfA=\begin{pmatrix}
+			3&0&1\\1&1&0\\0&1&4
+		\end{pmatrix}$. 如果 $\bfA\bfX=\bfA+2\bfX$, 求 $\bfX$.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}
 	\onslide<+->
-	去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 是处处解析的.
+	\begin{solution}
+		由题设得 $(\bfA-2\bfE)\bfX=\bfA$.
+		\onslide<+->{
+			注意到
+			\[|\bfA-2\bfE|=\detm{
+				1&0&1\\1&-1&0\\0&1&2}=-1\neq0,\quad
+				\visible<+->{(\bfA-2\bfE)^{-1}=\begin{pmatrix}
+				2&-1&-1\\
+				2&-2&-1\\
+				-1&1&1
+			\end{pmatrix}.}\]
+		}\onslide<+->{因此
+		\[\bfX=(\bfA-2\bfE)^{-1}\bfA=\begin{pmatrix}
+			2&-1&-1\\
+			2&-2&-1\\
+			-1&1&1
+		\end{pmatrix}\begin{pmatrix}
+			3&0&1\\1&1&0\\0&1&4
+		\end{pmatrix}=\begin{pmatrix}
+			5&-2&-2\\
+			4&-3&-2\\
+			-2&2&3
+		\end{pmatrix}.\]}
+		\vspace{-\baselineskip}
+	\end{solution}
 	\onslide<+->
-	事实上它就是 $\sqrt[q]{z^p}=(\sqrt[q]z)^p$.
+	也可由 $\bfX=\bfE+2(\bfA-2\bfE)^{-1}$ 计算得到.
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}
+	\onslide<+->
+	\begin{exercise}
+		设 $3$ 阶矩阵 $\bfA,\bfB$ 满足 $\bfA^{-1}\bfB\bfA=6\bfA+\bfB\bfA$.
+		如果 $\bfA=\diag(\dfrac12,\dfrac14,\dfrac17)$, 求 $\bfB$.
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		右乘 $\bfA^{-1}$ 得到 $\bfB=6(\bfA^{-1}-\bfE)^{-1}=\diag(6,2,1)$.
+
+		\onslide<+->{也可以左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
+		\[(\bfE-\bfA)\bfB=6\bfA=6\bfE-6(\bfE-\bfA),\]
+		\[\bfB=6(\bfE-\bfA)^{-1}-6\bfE=\diag(6,2,1).\]}
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}
+	\onslide<+->
+	\begin{example}
+		解矩阵方程 $\bfA^*\bfX=\bfA^{-1}+2\bfX$, 其中 $\bfA=\begin{pmatrix}
+			1&1&-1\\-1&1&1\\1&-1&1
+		\end{pmatrix}$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		注意到 $|\bfA|=4$.
+		\onslide<+->{两边同时左乘 $\bfA$ 得到 $4\bfX=\bfE+2\bfA\bfX$,
+		}\onslide<+->{因此
+		\[\bfX=(4\bfE-2\bfA)^{-1}=\begin{pmatrix}
+			2&-2&2\\2&2&-2\\-2&2&2
+		\end{pmatrix}^{-1}=\frac14\begin{pmatrix}
+			1&1&0\\0&1&1\\1&0&1
+		\end{pmatrix}.\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}
+	\onslide<+->
+	\begin{exercise}
+		解矩阵方程 $\bfA^*\bfX\bfA=2\bfX\bfA-8\bfE$, 其中 $\bfA=\begin{pmatrix}
+			1&2&-2\\0&-2&4\\0&0&1
+		\end{pmatrix}$.
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		两边同时左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
+		\[-2\bfX=2\bfA\bfX-8\bfE,\quad (\bfA+\bfE)\bfX=4\bfE,\]
+		\[\bfX=4(\bfA+\bfE)^{-1}=4\begin{pmatrix}
+			2&2&-2\\0&-1&4\\0&0&2
+		\end{pmatrix}^{-1}=4\begin{pmatrix}
+			2&4&-6\\0&-4&8\\0&0&2
+		\end{pmatrix}.\]
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}
+	\onslide<+->
+	\begin{example}
+		设 $\bfP=\begin{pmatrix}
+			1&2\\1&4
+		\end{pmatrix},\Lambda=\begin{pmatrix}
+			1&\\&2
+		\end{pmatrix},\bfA\bfP=\bfP\Lambda$, 求 $\bfA^n$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$|\bfP|=2,\bfP^{-1}=\dfrac12\begin{pmatrix}
+			4&-1\\-1&1
+		\end{pmatrix},\bfA=\bfP\Lambda\bfP^{-1}$,
+		\onslide<+->{
+			\begin{align*}
+				\bfA^n&=\bfP\Lambda\bfP^{-1}\cdot \bfP\Lambda\bfP^{-1}\cdots \bfP\Lambda\bfP^{-1}=\bfP\Lambda^n\bfP^{-1}\\
+				&\visible<+->{=\dfrac12\begin{pmatrix}
+					1&2\\1&4
+				\end{pmatrix}\begin{pmatrix}
+					1&\\&2^n
+				\end{pmatrix}\begin{pmatrix}
+					4&-1\\-1&1
+				\end{pmatrix}=\begin{pmatrix}
+					2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1
+				\end{pmatrix}.}
+			\end{align*}}
+			\vspace{-\baselineskip}
+	\end{solution}
+	\onslide<+->
+	我们会在后面学习到该技巧来计算一般方阵的幂次.
+\end{frame}
+
+
+\begin{frame}{逆矩阵和克拉默法则}
+	\onslide<+->
+	如果 $\bfA\bfx=\bfb$ 且 $\bfA$ 可逆, 
+	\onslide<+->
+	则 
+		\[\bfx=\bfA^{-1}\bfb=\frac1{|\bfA|}\bfA^*\bfb\]
+	\onslide<+->
+	因此
+	\[x_i=\frac1{|\bfA|}\sum_{k=1}^n A_{ki}b_k.\]
+	\onslide<+->
+	此即克拉默法则.
+\end{frame}
+
+
+\begin{frame}{伴随矩阵的伴随}
+	\onslide<+->
+	容易知道, $2$ 阶方阵满足 $(\bfA^*)^*=\bfA$.
+
+	\onslide<+->
+	如果 $\bfA$ 是 $n\ge3$ 阶非退化方阵, 则
+	\[(\bfA^*)^*=|\bfA^*|(\bfA^*)^{-1}=|\bfA|^{n-1}\dfrac{\bfA}{|\bfA|}=|\bfA|^{n-2}\bfA.\]
+	\onslide<+->
+	如果 $\bfA$ 是 $n\ge3$ 阶退化方阵, 我们会在后面证明 $(\bfA^*)^*=\bfO$.
+	\onslide<+->
+	因此
+	\begin{block}{伴随矩阵的性质}
+		\begin{enumerate}
+			\setcounter{enumi}{5}
+			\item $(\bfA^*)^*=\begin{cases}
+				\bfA,&n=2;\\
+				|\bfA|^{n-2}\bfA,&n\ge3.
+			\end{cases}$
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{例: 逆矩阵的性质}
+	\onslide<+->
+	\begin{exercise}
+		单选题: 设 $\bfA$ 是 $n$ 阶方阵, 如果\fillbrace{\visible<+->{\alert{D}}}, 则 $\bfA-\bfE$ 可逆.
+		\xx{$\bfA$ 可逆}{$|\bfA|=0$}{$\bfA$ 的主对角线元素均为 $0$}{存在某个正整数 $m$ 使得 $\bfA^m=\bfO$}
+	\end{exercise}
+	\onslide<+->
+	\begin{exercise}
+		若 $\bfA$ 为 $n$ 阶方阵, 则下面命题正确的有\fillblank{\visible<+->{\alert{1}}}个.
+		\begin{enumerate}
+			\item $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$
+			\item $\bfA^*=|\bfA|\bfA^{-1}$
+			\item $|\bfA^*|=|\bfA|^{n-1}$
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\subsection{逆矩阵的应用}
+
+\begin{frame}{逆矩阵的应用: 通信加密}
+	\onslide<+->
+	1929年, 希尔通过线性变换对信息进行加密和解密处理, 
+	提出了密码史上具有重要地位的\emph{希尔密码系统}.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
-			\draw[draw=white,cstfille1](0,0) circle (1.3);
-			\draw[cstaxis](-2,0)--(2,0);
-			\draw[cstaxis](0,-1.5)--(0,1.8);
-			\draw (1.8,-0.2) node {$x$};
-			\draw (-0.2,1.6) node {$y$};
-			\draw (-0.2,-0.2) node {$O$};
-			\draw[cstcurve,dcolorb] (0,0)--(-2,0);
-
-			\draw[draw=white,cstfille,pattern color=dcolorc](5,0) -- ({5+cos(40)},{sin(40)}) arc (40:-40:1)--(5,0);
-			\draw[cstaxis](3,0)--(7,0);
-			\draw[cstaxis](5,-1.5)--(5,1.8);
-			\draw (7,-0.2) node {$u$};
-			\draw (4.8,1.6) node {$v$};
-			\draw (4.8,-0.2) node {$O$};
-
-			\draw[cstdash,cstarrowto,dcolorc] (1.7,0.3)to [bend left] (4.5,0.3);
-			\draw (3,1.2) node[dcolorc] {$w=z^{2/9}$};
+			\node[cstnodeg,align=center,minimum height=12mm] (1) at (0,0) {明文字母};
+			\node[cstnodeg,align=center,minimum height=12mm] (2) at (3.6,0) {明文数字\\矩阵 $\bfX$};
+			\node[cstnodeg,align=center,minimum height=12mm] (3) at (8.4,0) {密文数字\\矩阵 $\bfC$};
+			\node[cstnodeg,align=center,minimum height=12mm] (4) at (12,0) {密文字母};
+			\node[cstnodeb,align=center,minimum height=12mm] (11) at (0,-2) {明文字母};
+			\node[cstnodeb,align=center,minimum height=12mm] (12) at (3.6,-2) {明文数字\\矩阵 $\bfX$};
+			\node[cstnodeb,align=center,minimum height=12mm] (13) at (8.4,-2) {密文数字\\矩阵 $\bfC$};
+			\node[cstnodeb,align=center,minimum height=12mm] (14) at (12,-2) {密文字母};
+			\draw[cstarrowto,dcolord,cstcurve] (1.east) to (2.west);
+			\draw[cstarrowto,dcolord,cstcurve] (2.east) to (3.west);
+			\draw[cstarrowto,dcolord,cstcurve] (3.east) to (4.west);
+			\draw[cstarrowto,dcolora,cstcurve] (4.south) to (14.north);
+			\draw[cstarrowto,dcolorb,cstcurve] (14.west) to (13.east);
+			\draw[cstarrowto,dcolorb,cstcurve] (13.west) to (12.east);
+			\draw[cstarrowto,dcolorb,cstcurve] (12.west) to (11.east);
+			\draw (1.8,.3) node {查表};
+			\draw (1.8,-2.3) node {查表};
+			\draw (1.8,-1) node[align=center,dcolore] {$A\sim Z$\\对应\\$0\sim26$};
+			\draw (6,.3) node {$\bfC=\bfA\bfX$};
+			\draw (6,-.3) node[align=center,dcolord] {加密秘钥: $A$};
+			\draw (6,-2.3) node {$\bfX=\bfA^{-1}\bfC$};
+			\draw (6,-1.7) node[align=center,dcolorb] {解密秘钥: $A^{-1}$};
+			\draw (10.2,.3) node {查表};
+			\draw (10.2,-2.3) node {查表};
+			\draw (11.2,-1) node[dcolora] {传输};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{幂函数的性质: $a$ 为其他情形}
-\onslide<+->
-	对于其它的 $a$, $z^a$ 具有无穷多个值.
-	\onslide<+->
-	这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi i$ 的整数倍. 
-	\onslide<+->
-	从而不同的 $k$ 得到的是不同的值.
-	\onslide<+->
-	去掉负实轴和 $0$ 之后,
-	\onslide<+->
-	它的主值 $w=\exp(a\ln z)$ 也是处处解析的.
-
-	\onslide<+->
-	\begin{center}
-		\renewcommand\arraystretch{1.2}
-		\defaultrowcolors
-		\begin{tabular}{|c|c|c|}\hline
-			\tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\\hline
-			&&$n\ge0$ 时处处解析\\
-			\multirow{-2}*{整数 $n$}&\multirow{-2}*{单值}&$n<0$ 时除零点外解析\\\hline
-			分数 $p/q$&$q$ 值&除负实轴和零点外解析\\\hline
-			无理数或虚数&无穷多值&除负实轴和零点外解析\\\hline
-		\end{tabular}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{典型例题: 幂函数的计算}
+\begin{frame}{逆矩阵的应用: 通信加密}
+	\beqskip{2mm}
 	\onslide<+->
 	\begin{example}
-		求 $1^{\sqrt 2}$ 和 $i^i$.
+		设接受收到的密文字母为``WBIZTNWJBRFSGNZ'', 加密密钥为 $\bfA=\begin{pmatrix}
+			1&2&3\\1&1&2\\0&1&2
+		\end{pmatrix}$. 
+		请用希尔密码系统解密密文.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
-		\onslide<+->
-		\begin{enumerate}
-			\item $1^{\sqrt2}=e^{\sqrt2\Ln1}$
-				\onslide<+->{$=e^{\sqrt 2\cdot 2k\pi i}$}
-				\onslide<+->{$=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ$.}
-			\item \onslide<+->{$i^i=e^{i\Ln i}$}
-				\onslide<+->{$\displaystyle=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]$}
-				\onslide<+->{$\displaystyle=\exp\left(-2k\pi-\half\pi\right)$, $k\in\BZ$.}
-		\end{enumerate}
+		密文对应的数字为 
+		\[22,1,8,25,19,13,22,9,1,17,5,18,6,13,25.\]
+		\onslide<+->{由于密钥是 $3$ 阶方阵, 所以将上述数字按 $3$ 个一列写成
+		\[\bfC=\begin{pmatrix}
+			22&25&22&17&6\\
+			1&19&9&5&13\\
+			8&13&1&18&25
+		\end{pmatrix}.\]}
+		\vspace{-\baselineskip}
 	\end{solution}
-
-	\onslide<+->
-	\begin{exercise}
-		填空题: (2021年A卷) $3^i$ 的主辐角是\fillblank{\visible<+->{$\ln 3$}}.
-	\end{exercise}
+	\endgroup
 \end{frame}
-
-
-\begin{frame}{幂函数的性质}
-	幂函数与其主值有如下关系:
-	\onslide<+->
-	\[\emph{z^a=e^{a\ln z}\cdot 1^a
-	=e^{a\ln z}\cdot e^{2ak\pi i},\quad k\in\BZ.}\]
-
-	\onslide<+->
-	对于幂函数的主值,
-	\[\alert{(z^a)'}=\left(e^{a\ln z}\right)'=\frac{ae^{a\ln z}}z=\alert{az^{a-1}}.\]
-
-	\onslide<+->
-	一般而言, $z^a\cdot z^b=z^{a+b}$ 和 $(z^a)^b=z^{ab}$ 都是不成立的.
-
-	\onslide<+->
-	最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
-	\onslide<+->
-	因为后者在 $a\not\in\BZ$ 时总是多值的.
-	\onslide<+->
-	前者实际上是后者的主值.
-	\onslide<+->
-	为避免混淆, 以后我们总\alert{默认 $e^a$ 表示指数函数 $\exp a$}.
-\end{frame}
-
-
-\subsection{三角函数和反三角函数}
-
-\begin{frame}{三角函数的定义}
-	\onslide<+->
-	我们知道
-	\[\cos x=\frac{e^{ix}+e^{-ix}}2,\quad
-	\sin x=\frac{e^{ix}-e^{-ix}}{2i}\]
-	对于任意实数 $x$ 成立,
-	\onslide<+->
-	我们将其推广到复数情形.
-	\onslide<+->
-
-	\begin{alertblock}{余弦和正弦函数}
-		定义余弦和正弦函数
-		\[\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
-		\sin z=\frac{e^{iz}-e^{-iz}}{2i}.\]
-	\end{alertblock}
-
-	\onslide<+->
-	那么欧拉恒等式 \emph{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
-\end{frame}
-
-
-\begin{frame}{三角函数的性质}
-	\onslide<+->
-	不难得到
-	\[
-		\cos(iy)=\dfrac{e^y+e^{-y}}2,\qquad
-		\visible<+->{\sin(iy)=i\dfrac{e^y-e^{-y}}2.}
-	\]
-	\onslide<+->
-	当 $y\to\infty$ 时, $\cos(iy)$ 和 $\sin(iy)$ 都 $\to\infty$.
-	\onslide<+->
-	因此 \alert{$\sin z$ 和 $\cos z$ 并不有界}. 
-	\onslide<+->
-	这和实变情形完全不同.
-
-	\onslide<+->
-	容易看出 $\cos z$ 和 $\sin z$ 的零点都是实数.
-	\onslide<+->
-	于是我们可类似定义其它三角函数
-	\begin{align*}
-		\alert{\tan z}&
-		\alert{=\frac{\sin z}{\cos z},z\neq\left(k+\half\right)\pi,}&
-		\alert{\cot z}&
-		\alert{=\frac{\cos z}{\sin z},z\neq k\pi,}\\
-		\alert{\sec z}&
-		\alert{=\frac{1}{\cos z},z\neq\left(k+\half\right)\pi,}&
-		\alert{\csc z}&
-		\alert{=\frac{1}{\sin z},z\neq k\pi.}
-	\end{align*}
-\end{frame}
-
-
-\begin{frame}{三角函数的性质}
-	\onslide<+->
-	这些三角函数的奇偶性, 周期性和导数与实变情形类似,
-	\[\alert{(\cos z)'=-\sin z,\quad
-	(\sin z)'=\cos z,}\]
-	\onslide<+->
-	且在定义域范围内是处处解析的.
-
-	\onslide<+->
-	三角函数的各种恒等式在复数情形也仍然成立,
-	\onslide<+->
-	例如
-	\begin{itemize}
-		\item $\cos(z_1\pm z_2)=\cos z_1 \cos z_2\mp \sin z_1 \sin z_2$,
-		\item $\sin(z_1\pm z_2)=\sin z_1 \cos z_2\pm\cos z_1 \sin z_2$,
-		\item $\sin^2z+\cos^2z=1$.
-	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{双曲函数}
-	\onslide<+->
-	类似的, 我们可以定义双曲函数:
-	\onslide<+->
-	\[\alert{\ch z=\frac{e^z+e^{-z}}2=\cos iz,}\]
-	\onslide<+->
-	\[\alert{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
-	\onslide<+->
-	\[\alert{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
-	=-i\tan iz,\quad z\neq \left(k+\half\right)\pi i.}\]
-	\onslide<+->
-	它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
-
-	\onslide<+->
-	$\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
-\end{frame}
-
-
-\begin{frame}{反三角函数和反双曲函数}
-	\onslide<+->
-	设 $z=\cos w=\dfrac{e^{iw}+e^{-iw}}2$,
-	\onslide<+->
-	则
-	\[e^{2iw}-2ze^{iw}+1=0,\quad
-	\visible<+->{e^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}\]
-	\onslide<+->
-	因此\emph{反余弦函数}为
-	\[w=\Arccos z=-i\Ln(z+\sqrt{z^2-1}).\]
-	\onslide<+->
-	显然它是多值的.
-	\onslide<+->
-	同理, 我们有:
-	\begin{itemize}
-		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
-		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
-		\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$;
-		\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
-		\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
-	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{例题: 解三角函数方程}
-	\onslide<+->
-	\begin{example}
-		解方程 $\sin z=2$.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-	由于 $\sin z=\dfrac{e^{iz}-e^{-iz}}{2i}=2$,
-	\onslide<+->{我们有
-	\[e^{2iz}-4ie^{iz}-1=0.\]
-	}\onslide<+->{于是 $e^{iz}=(2\pm\sqrt 3)i$,
-	}\onslide<+->{
-		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
-	\vspace{-\baselineskip}
-	\end{solution}
-\end{frame}
-
-\begin{frame}{例题: 解三角函数方程}
-	\onslide<+->
-	\begin{proofblock}{另解}
-	由 $\sin z=2$ 可知
-	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3i.\]
-	\onslide<+->{于是 $e^{iz}=\cos z+i\sin z=(2\pm\sqrt 3)i$,
-	}\onslide<+->{
-		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
-	\vspace{-\baselineskip}
-	\end{proofblock}
-	\onslide<+->
-	我们总有形式
-	\begin{align*}
-		\Arcsin z&=(2k+\half)\pi\pm \theta,\\
-		\Arccos z&=2k\pi\pm \theta,\\
-		\Arctan z&=k\pi+\theta.
-	\end{align*}
+	
+	
+\begin{frame}{逆矩阵的应用: 通信加密}
+	\begin{solutionc}
+		\onslide<+->{解密密钥为
+		$\bfA^{-1}=\begin{pmatrix}
+			0&1&-1\\2&-2&-1\\-1&1&1
+		\end{pmatrix}$,
+		}\onslide<+->{%
+		因此
+		\[\bfA^{-1}\bfC=\begin{pmatrix}
+			-7&6&8&-13&-12\\
+			34&-1&25&6&-39\\
+			-13&7&-12&6&32
+		\end{pmatrix},\quad
+		\bfX=\begin{pmatrix}
+			19&6&8&13&14\\
+			8&25&25&6&13\\
+			13&7&14&6&6
+		\end{pmatrix}.\]}\onslide<+->{%
+		查表得到明文: \alert{TINGZHI ZONGGONG}.}
+	\end{solutionc}
 \end{frame}
 

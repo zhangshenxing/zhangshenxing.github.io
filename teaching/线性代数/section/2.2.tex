@@ -1,4 +1,4 @@
-\section{矩阵的运算: 转置、行列式和伴随}
+\section{矩阵的运算: 转置和行列式}
 
 \subsection{矩阵的转置}
 
@@ -70,6 +70,8 @@
 		-c&-d&a&b\\
 		-d&c&-b&a
 	\end{pmatrix}=(a^2+b^2+c^2+d^2)\bfE.\]
+	\onslide<+->
+	因此 $|\bfA|=(a^2+b^2+c^2+d^2)^2$ (因为一定有 $a^4$ 项).
 \end{frame}
 
 
@@ -232,87 +234,5 @@
 	\[|\bfA\bfB|=\detm{(\bfA,\bfO_{m\times(m-n)})\begin{pmatrix}
 		\bfB\\\bfO_{(m-n)\times m}
 	\end{pmatrix}}=0=|\bfB\bfA|.\]
-\end{frame}
-
-
-\subsection{方阵的伴随矩阵}
-
-\begin{frame}{伴随矩阵}
-	\onslide<+->
-	\begin{definition}
-		设 $\bfA=(a_{ij})_{n\times n}$.
-		由 $\bfA$ 的代数余子式形成的矩阵
-		\[\bfA^*=(A_{ji})=\begin{pmatrix}
-			A_{11}&A_{21}&\cdots&A_{n1}\\
-			A_{12}&A_{21}&\cdots&A_{n2}\\
-			\vdots&\vdots&\ddots&\vdots\\
-			A_{1n}&A_{21}&\cdots&A_{nn}
-		\end{pmatrix}\]
-		称为矩阵 $\bfA$ 的\emph{伴随矩阵}.
-	\end{definition}
-	\onslide<+->
-	注意, 伴随矩阵的 $(i,j)$ 元是代数余子式 \alert{$A_{ji}$ 而不是 $A_{ij}$}.
-	\onslide<+->
-	\begin{example}
-		如果 $\bfA=\begin{pmatrix}
-			a&b\\c&d
-		\end{pmatrix}$, 那么 $\bfA^*=\begin{pmatrix}
-			d&-b\\-c&a
-		\end{pmatrix}$.
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{伴随矩阵的性质}
-	\onslide<+->
-	伴随矩阵满足如下重要性质:
-	\begin{alertblock@}
-		\begin{enumerate}
-		\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
-		\end{enumerate}
-	\end{alertblock@}
-	\onslide<+->
-	这是因为
-	\[\bfA\bfA^*=\begin{pmatrix}
-		a_{11}&a_{12}&\cdots &a_{1n}\\
-		a_{21}&a_{22}&\cdots &a_{2n}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		a_{n1}&a_{n2}&\cdots &a_{nn}
-	\end{pmatrix}\begin{pmatrix}
-		A_{11}&A_{21}&\cdots&A_{n1}\\
-		A_{12}&A_{21}&\cdots&A_{n2}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		A_{1n}&A_{21}&\cdots&A_{nn}
-	\end{pmatrix}\]
-	的 $(i,j)$ 元是
-	\[a_{i1}A_{j1}+\cdots+a_{in}A_{jn}=\begin{cases}
-		|\bfA|,&i=j;\\
-		0,&i\neq j.
-	\end{cases}\]
-\end{frame}
-
-
-
-\begin{frame}{伴随矩阵的性质}
-	\onslide<+->
-	\begin{block@}
-		\begin{enumerate}
-			\setcounter{enumi}{1}
-			\item $|\bfA^*|=|\bfA|^{n-1}$.
-			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
-		\end{enumerate}
-	\end{block@}
-	\onslide<+->
-	如果 $\bfA=\bfO$, 显然 $\bfA^*=\bfO$.
-	\onslide<+->
-	如果 $|\bfA|=0$ 但 $\bfA\neq \bfO$, 那么
-	\[\bfA^*\begin{pmatrix}
-		a_{1j}\\a_{2j}\\\vdots\\a_{nj}
-	\end{pmatrix}=\bfO_{n\times 1}.\]
-	\onslide<+->
-	所以以 $\bfA^*$ 为系数的齐次线性方程组有非零解, 从而 $|\bfA^*|=0$.
-
-	\onslide<+->
-	如果 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
 \end{frame}
 

@@ -1,0 +1,267 @@
+\section{矩阵的初等变换}
+
+% \subsection{初等变换和行最简形矩阵}
+
+% \begin{frame}{初等行变换解线性方程组}
+% 	\onslide<+->
+% 	我们在第一章中利用了如下三种初等变换来帮助计算行列式:
+% 	\onslide<+->
+% 	\begin{block}{初等变换}
+% 		\begin{enumerate}
+% 		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
+% 		\item 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+% 		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+% 	\end{enumerate}
+% 	\end{block}
+% 	\onslide<+->
+% 	实际上它也可以用来解线性方程组.
+% 	\onslide<+->
+% 	例如
+% 	\[\laeq{x_1+3x_2-2x_3=4\\
+% 	3x_1+6x_2-2x_3=11\\
+% 	2x_1+x_2+x_3=3}
+% 	\iff\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		3&6&-2&11\\
+% 		2&1&1&3
+% 	\end{pmatrix}\augdash{9}{-.6}{.8}\]
+% 	\onslide<+->
+% 	右侧矩阵被称为\emph{增广矩阵}.
+% \end{frame}
+
+
+% \begin{frame}{增广矩阵化为行阶梯形}
+% 	\onslide<+->
+% 	\[\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		3&6&-2&11\\
+% 		2&1&1&3
+% 	\end{pmatrix}\augdash{9}{-.6}{.8}
+% 	\visible<+->{\wsim{r_2-3r_1}{r_3-2r_1}\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&-3&4&-1\\
+% 		0&-5&5&-5
+% 	\end{pmatrix}\augdash{10}{-.6}{.8}}
+% 	\visible<+->{\wsim{-\frac15r_3}{}\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&-3&4&-1\\
+% 		0&1&-1&1
+% 	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
+% 	\onslide<+->
+% 	\[\wsim{r_2\swap r_3}{}\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&1&-1&1\\
+% 		0&-3&4&-1
+% 	\end{pmatrix}\augdash{10}{-.6}{.8}
+% 	\visible<+->{\wsim{r_3+3r_2}{}\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&1&-1&1\\
+% 		0&0&1&2
+% 	\end{pmatrix}\augdash{8}{-.6}{.8}}
+% 	\visible<+->{\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
+% 		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
+% 	\end{tikzpicture}}\]
+% 	\onslide<+->
+% 	经过若干次初等变换, 增广矩阵变为\emph{行阶梯形矩阵}.
+% \end{frame}
+
+
+% \begin{frame}{增广矩阵化为行最简形}
+% 	\onslide<+->
+% 	\[\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&1&-1&1\\
+% 		0&0&1&2
+% 	\end{pmatrix}\augdash{8}{-.6}{.8}
+% 	\visible<+->{\wsim{r_2+r_3}{r_1+2r_3}\begin{pmatrix}
+% 		1&3&0&8\\
+% 		0&1&0&3\\
+% 		0&0&1&2
+% 	\end{pmatrix}\augdash{7}{-.6}{.8}}
+% 	\visible<+->{\wsim{r_1-3r_2}{}\begin{pmatrix}
+% 		1&0&0&-1\\
+% 		0&1&0&3\\
+% 		0&0&1&2
+% 	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
+% 	\onslide<+->
+% 	\[\iff\laeq{x_1=-1\\x_2=3\\x_3=2}\]
+% 	\onslide<+->
+% 	再经过若干次初等变换, 增广矩阵变为\emph{行最简形矩阵}.
+% 	\onslide<+->
+% 	\begin{center}
+% 		线性方程组的初等变换$\iff$增广矩阵的初等\alert{行}变换
+% 	\end{center}
+% \end{frame}
+
+
+% \begin{frame}{初等变换}
+% 	\onslide<+->
+% 	\begin{definition}
+% 		矩阵的初等行(列)变换包括:
+% 		\begin{enumerate}
+% 			\item 对换变换: 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
+% 			\item 数乘变换: 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+% 			\item 倍加变换: $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+% 		\end{enumerate}
+% 	\end{definition}
+% 	\onslide<+->
+% 	这三类变换过程都是可逆的, 且其逆变换是同一类变换:
+% 	\begin{enumerate}
+% 		\item $r_i\swap r_j$ 的逆是 $r_i\swap r_j$;
+% 		\item $kr_i$ 的逆是 $\frac1k r_i$;
+% 		\item $r_i+kr_j$ 的逆是 $r_i-kr_j$.
+% 	\end{enumerate}
+% \end{frame}
+
+
+% \begin{frame}{行阶梯形矩阵}
+% 	\onslide<+->
+% 	\begin{definition}
+% 		满足下述条件的矩阵称为\emph{行阶梯形矩阵}:
+% 		\begin{enumerate}
+% 			\item 每个非零行的第一个非零元只出现在上一行第一个非零元的右边;
+% 			\item 零行只可能出现在最下方.
+% 		\end{enumerate}
+% 	\end{definition}
+% 	\onslide<+->
+% 	换言之, 若 $\bfA\in M_{m\times n}$, 存在正整数
+% 	\[1\le k_1<k_2<\cdots<k_\ell,j\le m\]
+% 	使得 $a_{1,k_1},\dots,a_{\ell,k_\ell}$ 均非零; $j<k_i$ 或 $i>\ell$ 时 $a_{ij}=0$.
+% 	\onslide<+->
+% 	\[\begin{pmatrix}
+% 		1&3&-2&4\\
+% 		0&1&-1&1\\
+% 		0&0&1&2
+% 	\end{pmatrix}
+% 	\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
+% 		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
+% 	\end{tikzpicture}
+% 	\qquad
+% 	\visible<+->{\begin{pmatrix}
+% 		0&3&0&0&-1\\
+% 		0&0&1&0&2\\
+% 		0&0&0&0&1\\
+% 		0&0&0&0&0
+% 	\end{pmatrix}
+% 	\begin{tikzpicture}[overlay,xshift=-31mm,yshift=6mm]
+% 		\draw[cstcurve,dcolora] (0,.5)--(.5,.5)--(.5,0)--(1,0)--(1,-.5)--(2.2,-.5)--(2.2,-1)--(2.7,-1)--(2.7,-1.4);
+% 	\end{tikzpicture}}
+% 	\qquad
+% 	\visible<+->{\begin{pmatrix}
+% 		2&3&4&-1\\
+% 		1&0&1&2\\
+% 		0&0&2&1\\
+% 		0&0&3&-1
+% 	\end{pmatrix}
+% 	\alert{\text{\Large$\times$}}}\]
+% 	\onslide<+->
+% 	任何矩阵都可通过初等行变换化为行阶梯形.
+% \end{frame}
+
+
+% \begin{frame}{行最简形矩阵}
+% 	\onslide<+->
+% 	\begin{definition}
+% 		满足下述条件的行阶梯形矩阵称为\emph{行最简形矩阵}:
+% 		\begin{enumerate}
+% 			\item 每个非零行的第一个非零元是 $1$;
+% 			\item 每个非零行的第一个非零元所在列其它元素均为 $0$.
+% 		\end{enumerate}
+% 	\end{definition}
+% 	\onslide<+->
+% 	\[\begin{pmatrix}
+% 		\alert{1}&0&0&4\\
+% 		0&\alert{1}&0&1\\
+% 		0&0&\alert{1}&2
+% 	\end{pmatrix}
+% 	\qquad\begin{pmatrix}
+% 		0&\alert{1}&0&2&0\\
+% 		0&0&\alert{1}&1&0\\
+% 		0&0&0&0&\alert{1}\\
+% 		0&0&0&0&0
+% 	\end{pmatrix}\]
+% 	\onslide<+->
+% 	任何矩阵都可通过初等行变换化为行最简形.
+% \end{frame}
+
+
+% \begin{frame}{行最简形矩阵}
+% 	\onslide<+->
+% 	\begin{example}
+% 		用初等行变换将 $\bfA=\begin{pmatrix}
+% 			1&3&-9&3\\
+% 			0&1&-3&4\\
+% 			-2&-3&9&6
+% 		\end{pmatrix}$
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{solution}
+% 		\[\begin{pmatrix}
+% 			1&3&-9&3\\
+% 			0&1&-3&4\\
+% 			-2&-3&9&6
+% 		\end{pmatrix}
+% 		\visible<+->{\wsim{r_3+2r_1}{}\begin{pmatrix}
+% 			1&3&-9&3\\
+% 			0&1&-3&4\\
+% 			0&3&-9&12
+% 		\end{pmatrix}}
+% 		\visible<+->{\wsim{
+% 			r_3-3r_2}{}\begin{pmatrix}
+% 				1&3&-9&3\\
+% 				0&1&-3&4\\
+% 				0&0&0&0
+% 		\end{pmatrix}}\]\[
+% 		\visible<+->{\wsim{
+% 			r_1-3r_2}{}\begin{pmatrix}
+% 				1&0&0&-9\\
+% 				0&1&-3&4\\
+% 				0&0&0&0
+% 		\end{pmatrix}.}
+% 		\]
+% 	\end{solution}
+% \end{frame}
+
+\subsection{初等矩阵}
+
+\begin{frame}{初等变换}
+	\onslide<+->
+	单位阵 $\bfE$ 经过一次初等变换得到的方阵称为\emph{初等矩阵}.
+	\begin{enumerate}
+		\item $r_i\swap r_j$ 和 $c_i\swap c_j$ 都对应初等矩阵
+		\[\bfE(i,j)=\begin{pmatrix}
+			\begin{matrix}
+				1&&\\
+				&\ddots&\\
+				&&1
+			\end{matrix}&&\\
+			&\begin{matrix}
+				0&&\cdots&&1\\
+				&1&&&\\
+				\vdots&&\ddots&&\vdots\\
+				&&&1&\\
+				1&&\cdots&&0
+			\end{matrix}&\\
+			&&\begin{matrix}
+				1&&\\
+				&\ddots&\\
+				&&1
+			\end{matrix}
+		\end{pmatrix}.\begin{tikzpicture}[overlay]
+			\draw[cstcurve,dcolora] (-5.2,2.9) rectangle (-4.7,-2.9);
+			\draw[cstcurve,dcolora] (-2.7,2.9) rectangle (-2.2,-2.9);
+			\draw[cstcurve,dcolorb] (-7,1.4) rectangle (-.5,.9);
+			\draw[cstcurve,dcolorb] (-7,-1.2) rectangle (-.5,-.7);
+		\end{tikzpicture}\]
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{初等变换}
+	\onslide<+->
+	单位阵 $\bfE$ 经过一次初等变换得到的方阵称为\emph{初等矩阵}.
+	\begin{enumerate}
+		\item 数乘变换: 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+		\item 倍加变换: $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+	\end{enumerate}
+\end{frame}

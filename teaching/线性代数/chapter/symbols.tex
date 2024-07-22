@@ -1,5 +1,9 @@
 \RequirePackage{extarrows}
 
+\newcommand{\wsim}[3][2.5]{
+  \mathrel{\overset{#2}{\underset{#3}{\scalebox{#1}[1]{$\sim$}}}}
+}
+\newcommand{\augdash}[3]{\begin{tikzpicture}[overlay,xshift=-#1mm]\draw[cstdash,dcolora] (0,#2)--(0,#3);\end{tikzpicture}}
 \newcommand\detm[1]{\left|\begin{matrix}#1\end{matrix}\right|}
 \newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
 \mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
