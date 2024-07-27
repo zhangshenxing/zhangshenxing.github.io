@@ -1,0 +1,518 @@
+\section{矩阵的秩}
+
+\subsection{矩阵秩的定义}
+
+\begin{frame}{矩阵秩的定义和计算}
+	\onslide<+->
+	上一节中我们说每个矩阵 $\bfA$ 都等价于某个标准型
+	$\begin{pmatrix}
+		\bfE_r&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix}$.
+	\onslide<+->
+	称 $r$ 为 $\bfA$ 的\emph{秩}, 记作 \alert{$R(\bfA)$}.
+
+	\onslide<+->
+	第一个问题是, 秩是唯一的吗?
+	\onslide<+->
+	如果两个 $m\times n$ 矩阵
+	\[\begin{pmatrix}
+		\bfE_r&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix}\sim\begin{pmatrix}
+		\bfE_s&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix},\quad(r>s)\]
+	则存在可逆的方阵 $\bfP\in M_m,\bfQ\in M_n$ 使得
+	\[\begin{pmatrix}
+		\bfE_r&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix}\bfQ=\bfP\begin{pmatrix}
+		\bfE_s&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix}.\]
+\end{frame}
+
+
+\begin{frame}{矩阵秩的唯一性}
+	\onslide<+->
+	设 $\bfP=\begin{pmatrix}
+		\bfP_1&\bfP_2\\\bfP_3&\bfP_4
+	\end{pmatrix},\bfQ=\begin{pmatrix}
+		\bfQ_1&\bfQ_2\\\bfQ_3&\bfQ_4
+	\end{pmatrix}$, 其中 $\bfP_1\in M_s,\bfQ_1\in M_r$.
+	\onslide<+->
+	则 \[\begin{pmatrix}
+		\bfQ_1&\bfQ_2\\\bfO&\bfO
+	\end{pmatrix}=\begin{pmatrix}
+		\bfP_1&\bfO\\\bfP_3&\bfO
+	\end{pmatrix}.\]
+	\onslide<+->
+	由于 $r>s$, 因此 $\bfQ_1$ 的最后 $r-s$ 列为零, $\bfQ_2=\bfO$.
+	\onslide<+->
+	从而
+	\[|\bfQ|=\detm{
+		\bfQ_1&\bfO\\\bfQ_3&\bfQ_4}=|\bfQ_1|\cdot|\bfQ_4|=0.\]
+	\onslide<+->
+	矛盾! 因此不同的标准型之间不等价, 也就是说矩阵的秩是唯一的.
+\end{frame}
+
+
+\begin{frame}{行阶梯形矩阵的秩}
+	\onslide<+->
+	对于行阶梯形矩阵, 再实施初等变换使其变为行最简形矩阵或标准型矩阵, 并不会改变它的非零行的个数.
+	\onslide<+->
+	换言之, \alert{行阶梯形矩阵的秩就是非零行的个数}.
+
+	\onslide<+->
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			2&-1&0&3&-2\\
+			0&3&1&-2&5\\
+			0&0&0&4&-3\\
+			0&0&0&0&0
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			1&2&3\\
+			2&3&-5\\
+			4&7&1
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$\bfA$ 是行阶梯形矩阵, 因此 $R(\bfA)=3$.
+		\onslide<+->{\[\bfB\wsim{r_2-2r_1}{r_4-4r_1}\begin{pmatrix}
+			1&2&3\\
+			0&-1&-11\\
+			0&-1&-11
+		\end{pmatrix}\wsim{r_3-r_2}{-r_2}\begin{pmatrix}
+			1&2&3\\
+			0&1&11\\
+			0&0&0
+		\end{pmatrix}\visible<+->{\implies R(\bfB)=2.}\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			1&1&a\\
+			-1&a-1&1-a\\
+			1&1&a^2\\
+			1&1&2a+1
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\bfA\wsim{r_2+r_1\atop r_3-r_1}{r_4-r_1}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&a^2-a\\
+			0&0&a+1
+		\end{pmatrix}\visible<+->{\wsim{r_3-ar_4}{-\frac12r_3}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&a\\
+			0&0&a+1
+		\end{pmatrix}}\visible<+->{\wsim{r_4-r_3}{}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&a\\
+			0&0&1
+		\end{pmatrix}}\visible<+->{\wsim{r_3-ar_4}{r_3\swap r_4}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&1\\
+			0&0&0
+		\end{pmatrix}}\]
+		\onslide<+->{因此 $a\neq 0$ 时, $R(\bfA)=3$; $a=0$ 时, $R(\bfA)=2$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{exercise}
+		求矩阵 $\bfA=\begin{pmatrix}
+			1&1&-2&3\\
+			2&1&-6&4\\
+			3&2&m&7
+		\end{pmatrix}$ 的秩.
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		$m\neq -8$ 时, $R(\bfA)=3$; $m=-8$ 时, $R(\bfA)=2$.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			a&1&1&1\\
+			1&a&1&1\\
+			1&1&a&1\\
+			1&1&1&a
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\bfA\wsim{r_1\swap r_4\atop r_2-r_1}{r_3-r_1\atop r_4-ar_1}\begin{pmatrix}
+			1&1&1&a\\
+			0&a-1&0&1-a\\
+			0&0&a-1&1-a\\
+			0&1-a&1-a&1-a^2
+		\end{pmatrix}\visible<+->{\wsim{r_4+r_2}{r_4+r_3}\begin{pmatrix}
+			1&1&1&a\\
+			0&a-1&0&1-a\\
+			0&0&a-1&1-a\\
+			0&0&0&-(a+3)(a-1)
+		\end{pmatrix}}\]
+		\onslide<+->{因此 $a\neq 1,-3$ 时, $R(\bfA)=4$; $a=-3$ 时, $R(\bfA)=3$; $a=1$ 时, $R(\bfA)=1$.}
+	\end{solution}
+\end{frame}
+
+
+\subsection{矩阵秩与子式}
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	矩阵秩有另一种刻画方式.
+	\onslide<+->
+	矩阵 $\bfA$ 任取 $k$ 行 $k$ 列交叉得到的 $k^2$ 个元素(不改变位置次序)形成的 $k$ 阶方阵的行列式,
+	\onslide<+->
+	称为 $\bfA$ 的 \emph{$k$ 阶子式}.
+	\onslide<+->
+	例如 $n$ 阶方阵的余子式是 $n-1$ 阶子式.
+
+	\onslide<+->
+	\begin{theorem}
+		设 $R(\bfA)=r$, 则存在非零的 $r$ 阶子式, 但所有的 $r+1$ 阶子式都是零.
+	\end{theorem}
+	\onslide<+->
+	根据行列式的拉普拉斯展开, 如果 $\bfA$ 的 $k$ 阶子式均为零, 则 $k+1$ 阶子式也都是零.
+	\onslide<+->
+	因此 $\bfA$ 的任意 $s>r$ 阶子式都是零.
+	\onslide<+->
+	\begin{corollary}
+		\begin{enumerate}
+			\item $R(\bfA)\ge r\iff\bfA$ 存在非零 $r$ 阶子式.
+			\item $R(\bfA)\le r\iff\bfA$ 所有 $r+1$ 阶子式均为零.
+			\item $R(\bfA)=r\implies \bfA$ 存在 $1,2,\dots,r$ 阶非零子式. 
+		\end{enumerate}
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proof*}
+		设 $\bfB=\bfP\bfA$, 其中 $\bfP$ 是初等矩阵.
+		\onslide<+->{
+		\begin{enumerate}
+			\item 若 $\bfP=\bfE(i,j)$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式, 最多相差 $-1$.
+			\item 若 $\bfP=\bfE(i(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式或 $a$ 倍.
+			\item 若 $\bfP=\bfE(i,j(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式.
+		\end{enumerate}
+		}\onslide<+->{%
+		因此如果 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.}
+
+		\onslide<+->{
+		由于 $\bfP^{-1}$ 也是初等矩阵, 因此反过来也成立.
+		}\onslide<+->{%
+		对于 $\bfB=\bfA\bfP$ 情形同理.
+		}\onslide<+->{%
+		因此, 如果 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.}
+
+		\onslide<+->{%
+		对于标准型矩阵, 该定理显然成立.
+		}\onslide<+->{%
+		因此该定理对任意矩阵都成立.}
+	\end{proof*}
+\end{frame}
+
+
+\subsection{矩阵秩的性质}
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		设 $\bfA\in M_{m\times n}$, 则 $0\le R(\bfA)\le \min(m,n)$.
+	\end{proposition}
+	\onslide<+->
+	\begin{definition}
+		\begin{enumerate}
+			\item 若 $R(\bfA)=m$, 称 $\bfA$ \emph{行满秩};
+			\item 若 $R(\bfA)=n$, 称 $\bfA$ \emph{列满秩};
+			\item 若 $R(\bfA)=m=n$, 称 $\bfA$ \emph{满秩}.
+		\end{enumerate}
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\item $R(\bfA)=0\iff \bfA=\bfO$;
+			\item $n$ 阶方阵 $\bfA$ 可逆 $\iff R(\bfA)=n$;
+			\item $R(k\bfA)=R(\bfA)=R(\bfA^\rmT), k\neq 0$;
+			\item $\bfA\sim\bfB\iff R(\bfA)=R(\bfB)$;
+			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$;
+			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$;
+			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$;
+			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+		\end{enumerate}
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{4}
+			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		\enumnum5 设 $\bfA=\bfP'\begin{pmatrix}
+			\bfE_r&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ,\bfB=\bfP\begin{pmatrix}
+			\bfE_s&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ'$, 其中 $\bfP,\bfP',\bfQ,\bfQ'$ 均可逆.
+		\onslide<+->{%
+			那么
+			\[R(\bfA\bfB)=R(\begin{pmatrix}
+				\bfE_r&\bfO\\\bfO&\bfO
+			\end{pmatrix}\bfQ\bfP\begin{pmatrix}
+				\bfE_s&\bfO\\\bfO&\bfO
+			\end{pmatrix}).\]
+		}\onslide<+->{%
+			注意到右侧矩阵除前 $r$ 行 $s$ 列外均为零.
+		}\onslide<+->{%
+			因此它的秩不超过 $\min(r,s)$.
+		}
+	\end{proof}
+	\onslide<+->
+	如果 $\bfB$ 行满秩, 则 $R(\bfA\bfB)=R(\bfA)$;
+	如果 $\bfB$ 列满秩, 则 $R(\bfB\bfA)=R(\bfA)$;
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{5}
+			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		\enumnum6 设 $\bfA=\bfP'\begin{pmatrix}
+			\bfE_r&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ,\bfB=\bfP\begin{pmatrix}
+			\bfE_s&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ'$, 其中 $\bfP,\bfP',\bfQ,\bfQ'$ 均可逆.
+		\onslide<+->{%
+			那么
+			\[\bfA\bfB=\bfO\implies\begin{pmatrix}
+				\bfE_r&\bfO\\\bfO&\bfO
+			\end{pmatrix}\bfQ\bfP\begin{pmatrix}
+				\bfE_s&\bfO\\\bfO&\bfO
+			\end{pmatrix}=\bfO.\]
+		}\onslide<+->{%
+			设 $\bfQ\bfP=\begin{pmatrix}
+			\bfC_1&\bfC_2\\\bfC_3&\bfC_4
+		\end{pmatrix}$
+		其中 $\bfC_1$ 为 $(n-s)\times s$.
+		}\onslide<+->{%
+		由于 $\bfQ\bfP$ 的前 $r$ 行 $s$ 列均为零,
+		}\onslide<+->{%
+		因此若 $r+s>n$, 则 $\bfC_1=\bfO$ 且 $\bfC_3$ 的第一行为零, $|\bfQ\bfP|=\pm|\bfC_2|\cdot|\bfC_3|=0$, 矛盾!}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{6}
+			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		\enumnum7 由于添加零行或零列不改变秩, 因此不妨设 $\bfA,\bfB$ 都是方阵.
+		\onslide<+->{%
+		由于\[\bfA+\bfB=(\bfE,\bfO)\begin{pmatrix}
+			\bfA&\\&\bfB
+		\end{pmatrix}\begin{pmatrix}
+			\bfE\\\bfO
+		\end{pmatrix},\]
+		}\onslide<+->{%
+			因此 $R(\bfA+\bfB)\le R\begin{pmatrix}
+				\bfA&\\&\bfB
+			\end{pmatrix}=R(\bfA)+R(\bfB)$.
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{7}
+			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		\enumnum8 不妨设 $\bfA,\bfB$ 是方阵,
+		\onslide<+->{%
+			那么 \[\bfA=(\bfA,\bfB)\begin{pmatrix}
+				\bfE\\\bfO
+			\end{pmatrix},\quad(\bfA,\bfB)=(\bfE,\bfE)\begin{pmatrix}
+				\bfA&\\&\bfB
+			\end{pmatrix}.\]
+		}\onslide<+->{%
+		因此 $R(\bfA)\le R(\bfA,\bfB),R(\bfA,\bfB)\le R\begin{pmatrix}
+			\bfA&\\&\bfB
+		\end{pmatrix}=R(\bfA)+R(\bfB)$.
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{矩阵秩性质的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $R(\bfA)=2,\bfB=\begin{pmatrix}
+				1&0&2\\
+				0&2&0\\
+				-1&0&3
+			\end{pmatrix}$, 则 $R(\bfA\bfB)=$\fillblank{\visible<+->{$2$}}.
+			\item 若 $\bfA$ 是 $n$ 阶方阵且 $R(\bfA\bfB)<R(\bfB)$, 则 $|\bfA|=$\fillblank{\visible<+->{$0$}}.
+			\item 若 $\bfA=\begin{pmatrix}
+				1&0&2\\
+				0&1&1\\
+				2&0&5
+			\end{pmatrix},\bfB=\begin{pmatrix}
+				3&4&1\\
+				1&2&1\\
+				4&6&t
+			\end{pmatrix},\bfA\bfX=\bfB$ 且 $R(\bfX)=2$, 则 $t=$\fillblank{\visible<+->{$2$}}.
+			\item 若 $\bfA=\begin{pmatrix}
+				t&2&3\\
+				2&1&-1\\
+				0&0&5
+			\end{pmatrix}$ 且存在非零矩阵 $\bfB$ 使得 $\bfA\bfB=\bfO$, 则 $t=$\fillblank{\visible<+->{$4$}}.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{example}
+		证明: 若 $n$ 阶方阵 $\bfA$ 满足 $\bfA^2=\bfA$, 则 $R(\bfA)+R(\bfA-\bfE)=n$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		由于 $\bfA(\bfA-\bfE)=\bfA^2-\bfA=\bfO$, 因此 $R(\bfA)+R(\bfA-\bfE)\le n$.
+		\onslide<+->{%
+			由于 $\bfA+(\bfE-\bfA)=\bfE$, 因此 $n=R(\bfE)\le R(\bfA)+R(\bfE-\bfA)$.
+		}\onslide<+->{%
+			故 $R(\bfA)+R(\bfA-\bfE)=n$.
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{example}
+		证明: 设 $\bfA$ 是 $n$ 阶方阵, 则
+		\[\alert{R(\bfA^*)=\begin{cases}
+			n,&R(\bfA)=n;\\
+			1,&R(\bfA)=n-1;\\
+			0,&R(\bfA)\le n-2.
+		\end{cases}}\]
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		\begin{enumerate}
+			\item 若 $R(\bfA)=n$, $\bfA$ 可逆, 从而 $\bfA^*$ 可逆, $R(\bfA^*)=n$.
+			\item 若 $R(\bfA)=n-1$, 由 $\bfA\bfA^*=|\bfA|\bfE=\bfO$ 可知 $R(\bfA^*)\le 1$.
+			\onslide<+->{由于 $R(\bfA)=n-1$, $\bfA$ 存在非零的 $n-1$ 子式, 从而 $\bfA^*\neq\bfO$.
+			}\onslide<+->{故 $R(\bfA^*)=1$.}
+			\item 若 $R(\bfA)\le n-2$, 则 $\bfA$ 的 $n-1$ 子式均为零, 从而 $\bfA^*=\bfO$.\qedhere
+		\end{enumerate}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $\alpha=(1,0,-1,2)^\rmT,\beta=(0,1,0,2)^\rmT$, 则 $R(\alpha\beta^\rmT)=$\fillblank{\visible<+->{$1$}}.
+			\item 若 $\bfA=\begin{pmatrix}
+				a&b&b\\
+				b&a&b\\
+				b&b&a
+			\end{pmatrix}$ 且 $R(\bfA^*)=1$, 则\fillbrace{\visible<+->{B}}.
+			\xx{$a\neq b,a+2b\neq 0$}%
+			{$a\neq b,a+2b=0$}%
+			{$a=b,a\neq 0$}%
+			{$a=b=0$}
+			\item 设 $\bfA,\bfB$ 为 $n$ 阶方阵, 则\fillbrace{\visible<+->{A}}.
+			\xx{$R(\bfA,\bfA\bfB)=R(\bfA)$}%
+			{$R(\bfA,\bfB\bfA)=R(\bfA)$}%
+			{$R(\bfA,\bfA\bfB)=\max\bigl(R(\bfA),R(\bfB)\bigr)$}%
+			{$R(\bfA\bfB)=R(\bfA^\rmT\bfB^\rmT)$}%
+		\end{enumerate}
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		存在 $\bfA\bfB=\bfO,\bfB\bfA\neq \bfO$, D 错误.
+		令 $\bfA=\bfE$, C 错误.
+		$(\bfE,\bfB)$ 行满秩, 选 A.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $\bfP$ 为 $3$ 阶非零矩阵, $\bfQ=\begin{pmatrix}
+				1&2&3\\
+				2&4&t\\
+				3&6&9
+			\end{pmatrix}$ 且 $\bfP\bfQ=\bfO$, 则\fillbrace{\visible<+->{A}}.
+			\xx{$t\neq 6$ 时, $R(\bfP)=1$}%
+			{$t\neq 6$ 时, $R(\bfP)=2$}%
+			{$t=6$ 时, $R(\bfP)=1$}%
+			{$t=6$ 时, $R(\bfP)=2$}%
+			\item 设 $\bfA,\bfB$ 均为 $n$ 阶非零矩阵, 且 $\bfA\bfB=\bfO$, 则 $R(\bfA)$ 与 $R(\bfB)$\fillbrace{\visible<+->{B}}.
+			\xx{必有一个等于 $0$}%
+			{都小于 $n$}%
+			{都等于 $n$}%
+			{一个小于 $n$, 一个等于 $n$}
+			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$, 则\fillbrace{\visible<+->{A}}.
+			\xx{当 $m>n$ 时, 必有 $|\bfA\bfB|=0$}%
+			{当 $m>n$ 时, 必有 $|\bfA\bfB|\neq0$}%
+			{当 $m<n$ 时, 必有 $|\bfA\bfB|=0$}%
+			{当 $m<n$ 时, 必有 $|\bfA\bfB|\neq0$}
+		\end{enumerate}
+	\end{exercise}
+\end{frame}

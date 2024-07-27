@@ -1,230 +1,230 @@
 \section{矩阵的初等变换}
 
-% \subsection{初等变换和行最简形矩阵}
+\subsection{初等变换和行最简形矩阵}
 
-% \begin{frame}{初等行变换解线性方程组}
-% 	\onslide<+->
-% 	我们在第一章中利用了如下三种初等变换来帮助计算行列式:
-% 	\onslide<+->
-% 	\begin{block}{初等变换}
-% 		\begin{enumerate}
-% 		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
-% 		\item 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
-% 		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
-% 	\end{enumerate}
-% 	\end{block}
-% 	\onslide<+->
-% 	实际上它也可以用来解线性方程组.
-% 	\onslide<+->
-% 	例如
-% 	\[\laeq{x_1+3x_2-2x_3=4\\
-% 	3x_1+6x_2-2x_3=11\\
-% 	2x_1+x_2+x_3=3}
-% 	\iff\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		3&6&-2&11\\
-% 		2&1&1&3
-% 	\end{pmatrix}\augdash{9}{-.6}{.8}\]
-% 	\onslide<+->
-% 	右侧矩阵被称为\emph{增广矩阵}.
-% \end{frame}
-
-
-% \begin{frame}{增广矩阵化为行阶梯形}
-% 	\onslide<+->
-% 	\[\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		3&6&-2&11\\
-% 		2&1&1&3
-% 	\end{pmatrix}\augdash{9}{-.6}{.8}
-% 	\visible<+->{\wsim{r_2-3r_1}{r_3-2r_1}\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&-3&4&-1\\
-% 		0&-5&5&-5
-% 	\end{pmatrix}\augdash{10}{-.6}{.8}}
-% 	\visible<+->{\wsim{-\frac15r_3}{}\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&-3&4&-1\\
-% 		0&1&-1&1
-% 	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
-% 	\onslide<+->
-% 	\[\wsim{r_2\swap r_3}{}\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&1&-1&1\\
-% 		0&-3&4&-1
-% 	\end{pmatrix}\augdash{10}{-.6}{.8}
-% 	\visible<+->{\wsim{r_3+3r_2}{}\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&1&-1&1\\
-% 		0&0&1&2
-% 	\end{pmatrix}\augdash{8}{-.6}{.8}}
-% 	\visible<+->{\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
-% 		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
-% 	\end{tikzpicture}}\]
-% 	\onslide<+->
-% 	经过若干次初等变换, 增广矩阵变为\emph{行阶梯形矩阵}.
-% \end{frame}
+\begin{frame}{初等行变换解线性方程组}
+	\onslide<+->
+	我们在第一章中利用了如下三种初等变换来帮助计算行列式:
+	\onslide<+->
+	\begin{block}{初等变换}
+		\begin{enumerate}
+		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
+		\item 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+	\end{enumerate}
+	\end{block}
+	\onslide<+->
+	实际上它也可以用来解线性方程组.
+	\onslide<+->
+	例如
+	\[\laeq{x_1+3x_2-2x_3=4\\
+	3x_1+6x_2-2x_3=11\\
+	2x_1+x_2+x_3=3}
+	\iff\begin{pmatrix}
+		1&3&-2&4\\
+		3&6&-2&11\\
+		2&1&1&3
+	\end{pmatrix}\augdash{9}{-.6}{.8}\]
+	\onslide<+->
+	右侧矩阵被称为\emph{增广矩阵}.
+\end{frame}
 
 
-% \begin{frame}{增广矩阵化为行最简形}
-% 	\onslide<+->
-% 	\[\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&1&-1&1\\
-% 		0&0&1&2
-% 	\end{pmatrix}\augdash{8}{-.6}{.8}
-% 	\visible<+->{\wsim{r_2+r_3}{r_1+2r_3}\begin{pmatrix}
-% 		1&3&0&8\\
-% 		0&1&0&3\\
-% 		0&0&1&2
-% 	\end{pmatrix}\augdash{7}{-.6}{.8}}
-% 	\visible<+->{\wsim{r_1-3r_2}{}\begin{pmatrix}
-% 		1&0&0&-1\\
-% 		0&1&0&3\\
-% 		0&0&1&2
-% 	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
-% 	\onslide<+->
-% 	\[\iff\laeq{x_1=-1\\x_2=3\\x_3=2}\]
-% 	\onslide<+->
-% 	再经过若干次初等变换, 增广矩阵变为\emph{行最简形矩阵}.
-% 	\onslide<+->
-% 	\begin{center}
-% 		线性方程组的初等变换$\iff$增广矩阵的初等\alert{行}变换
-% 	\end{center}
-% \end{frame}
+\begin{frame}{增广矩阵化为行阶梯形}
+	\onslide<+->
+	\[\begin{pmatrix}
+		1&3&-2&4\\
+		3&6&-2&11\\
+		2&1&1&3
+	\end{pmatrix}\augdash{9}{-.6}{.8}
+	\visible<+->{\wsim{r_2-3r_1}{r_3-2r_1}\begin{pmatrix}
+		1&3&-2&4\\
+		0&-3&4&-1\\
+		0&-5&5&-5
+	\end{pmatrix}\augdash{10}{-.6}{.8}}
+	\visible<+->{\wsim{-\frac15r_3}{}\begin{pmatrix}
+		1&3&-2&4\\
+		0&-3&4&-1\\
+		0&1&-1&1
+	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
+	\onslide<+->
+	\[\wsim{r_2\swap r_3}{}\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&-3&4&-1
+	\end{pmatrix}\augdash{10}{-.6}{.8}
+	\visible<+->{\wsim{r_3+3r_2}{}\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+	\end{pmatrix}\augdash{8}{-.6}{.8}}
+	\visible<+->{\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
+		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
+	\end{tikzpicture}}\]
+	\onslide<+->
+	经过若干次初等变换, 增广矩阵变为\emph{行阶梯形矩阵}.
+\end{frame}
 
 
-% \begin{frame}{初等变换}
-% 	\onslide<+->
-% 	\begin{definition}
-% 		矩阵的初等行(列)变换包括:
-% 		\begin{enumerate}
-% 			\item 对换变换: 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
-% 			\item 数乘变换: 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
-% 			\item 倍加变换: $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
-% 		\end{enumerate}
-% 	\end{definition}
-% 	\onslide<+->
-% 	这三类变换过程都是可逆的, 且其逆变换是同一类变换:
-% 	\begin{enumerate}
-% 		\item $r_i\swap r_j$ 的逆是 $r_i\swap r_j$;
-% 		\item $kr_i$ 的逆是 $\frac1k r_i$;
-% 		\item $r_i+kr_j$ 的逆是 $r_i-kr_j$.
-% 	\end{enumerate}
-% \end{frame}
+\begin{frame}{增广矩阵化为行最简形}
+	\onslide<+->
+	\[\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+	\end{pmatrix}\augdash{8}{-.6}{.8}
+	\visible<+->{\wsim{r_2+r_3}{r_1+2r_3}\begin{pmatrix}
+		1&3&0&8\\
+		0&1&0&3\\
+		0&0&1&2
+	\end{pmatrix}\augdash{7}{-.6}{.8}}
+	\visible<+->{\wsim{r_1-3r_2}{}\begin{pmatrix}
+		1&0&0&-1\\
+		0&1&0&3\\
+		0&0&1&2
+	\end{pmatrix}\augdash{10}{-.6}{.8}}\]
+	\onslide<+->
+	\[\iff\laeq{x_1=-1\\x_2=3\\x_3=2}\]
+	\onslide<+->
+	再经过若干次初等变换, 增广矩阵变为\emph{行最简形矩阵}.
+	\onslide<+->
+	\begin{center}
+		线性方程组的初等变换$\iff$增广矩阵的初等\alert{行}变换
+	\end{center}
+\end{frame}
 
 
-% \begin{frame}{行阶梯形矩阵}
-% 	\onslide<+->
-% 	\begin{definition}
-% 		满足下述条件的矩阵称为\emph{行阶梯形矩阵}:
-% 		\begin{enumerate}
-% 			\item 每个非零行的第一个非零元只出现在上一行第一个非零元的右边;
-% 			\item 零行只可能出现在最下方.
-% 		\end{enumerate}
-% 	\end{definition}
-% 	\onslide<+->
-% 	换言之, 若 $\bfA\in M_{m\times n}$, 存在正整数
-% 	\[1\le k_1<k_2<\cdots<k_\ell,j\le m\]
-% 	使得 $a_{1,k_1},\dots,a_{\ell,k_\ell}$ 均非零; $j<k_i$ 或 $i>\ell$ 时 $a_{ij}=0$.
-% 	\onslide<+->
-% 	\[\begin{pmatrix}
-% 		1&3&-2&4\\
-% 		0&1&-1&1\\
-% 		0&0&1&2
-% 	\end{pmatrix}
-% 	\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
-% 		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
-% 	\end{tikzpicture}
-% 	\qquad
-% 	\visible<+->{\begin{pmatrix}
-% 		0&3&0&0&-1\\
-% 		0&0&1&0&2\\
-% 		0&0&0&0&1\\
-% 		0&0&0&0&0
-% 	\end{pmatrix}
-% 	\begin{tikzpicture}[overlay,xshift=-31mm,yshift=6mm]
-% 		\draw[cstcurve,dcolora] (0,.5)--(.5,.5)--(.5,0)--(1,0)--(1,-.5)--(2.2,-.5)--(2.2,-1)--(2.7,-1)--(2.7,-1.4);
-% 	\end{tikzpicture}}
-% 	\qquad
-% 	\visible<+->{\begin{pmatrix}
-% 		2&3&4&-1\\
-% 		1&0&1&2\\
-% 		0&0&2&1\\
-% 		0&0&3&-1
-% 	\end{pmatrix}
-% 	\alert{\text{\Large$\times$}}}\]
-% 	\onslide<+->
-% 	任何矩阵都可通过初等行变换化为行阶梯形.
-% \end{frame}
+\begin{frame}{初等变换}
+	\onslide<+->
+	\begin{definition}
+		矩阵的初等行(列)变换包括:
+		\begin{enumerate}
+			\item 对换变换: 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
+			\item 数乘变换: 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+			\item 倍加变换: $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	这三类变换过程都是可逆的, 且其逆变换是同一类变换:
+	\begin{enumerate}
+		\item $r_i\swap r_j$ 的逆是 $r_i\swap r_j$;
+		\item $kr_i$ 的逆是 $\frac1k r_i$;
+		\item $r_i+kr_j$ 的逆是 $r_i-kr_j$.
+	\end{enumerate}
+\end{frame}
 
 
-% \begin{frame}{行最简形矩阵}
-% 	\onslide<+->
-% 	\begin{definition}
-% 		满足下述条件的行阶梯形矩阵称为\emph{行最简形矩阵}:
-% 		\begin{enumerate}
-% 			\item 每个非零行的第一个非零元是 $1$;
-% 			\item 每个非零行的第一个非零元所在列其它元素均为 $0$.
-% 		\end{enumerate}
-% 	\end{definition}
-% 	\onslide<+->
-% 	\[\begin{pmatrix}
-% 		\alert{1}&0&0&4\\
-% 		0&\alert{1}&0&1\\
-% 		0&0&\alert{1}&2
-% 	\end{pmatrix}
-% 	\qquad\begin{pmatrix}
-% 		0&\alert{1}&0&2&0\\
-% 		0&0&\alert{1}&1&0\\
-% 		0&0&0&0&\alert{1}\\
-% 		0&0&0&0&0
-% 	\end{pmatrix}\]
-% 	\onslide<+->
-% 	任何矩阵都可通过初等行变换化为行最简形.
-% \end{frame}
+\begin{frame}{行阶梯形矩阵}
+	\onslide<+->
+	\begin{definition}
+		满足下述条件的矩阵称为\emph{行阶梯形矩阵}:
+		\begin{enumerate}
+			\item 每个非零行的第一个非零元只出现在上一行第一个非零元的右边;
+			\item 零行只可能出现在最下方.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	换言之, 若 $\bfA\in M_{m\times n}$, 存在正整数
+	\[1\le k_1<k_2<\cdots<k_\ell,j\le m\]
+	使得 $a_{1,k_1},\dots,a_{\ell,k_\ell}$ 均非零; $j<k_i$ 或 $i>\ell$ 时 $a_{ij}=0$.
+	\onslide<+->
+	\[\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+	\end{pmatrix}
+	\begin{tikzpicture}[overlay,xshift=-25.5mm,yshift=3.5mm]
+		\draw[cstcurve,dcolora] (0,0)--(.4,0)--(.4,-.5)--(1,-.5)--(1,-.95)--(2.2,-.95);
+	\end{tikzpicture}
+	\qquad
+	\visible<+->{\begin{pmatrix}
+		0&3&0&0&-1\\
+		0&0&1&0&2\\
+		0&0&0&0&1\\
+		0&0&0&0&0
+	\end{pmatrix}
+	\begin{tikzpicture}[overlay,xshift=-31mm,yshift=6mm]
+		\draw[cstcurve,dcolora] (0,.5)--(.5,.5)--(.5,0)--(1,0)--(1,-.5)--(2.2,-.5)--(2.2,-1)--(2.7,-1)--(2.7,-1.4);
+	\end{tikzpicture}}
+	\qquad
+	\visible<+->{\begin{pmatrix}
+		2&3&4&-1\\
+		1&0&1&2\\
+		0&0&2&1\\
+		0&0&3&-1
+	\end{pmatrix}
+	\alert{\text{\Large$\times$}}}\]
+	\onslide<+->
+	任何矩阵都可通过初等行变换化为行阶梯形.
+\end{frame}
 
 
-% \begin{frame}{行最简形矩阵}
-% 	\onslide<+->
-% 	\begin{example}
-% 		用初等行变换将 $\bfA=\begin{pmatrix}
-% 			1&3&-9&3\\
-% 			0&1&-3&4\\
-% 			-2&-3&9&6
-% 		\end{pmatrix}$
-% 	\end{example}
-% 	\onslide<+->
-% 	\begin{solution}
-% 		\[\begin{pmatrix}
-% 			1&3&-9&3\\
-% 			0&1&-3&4\\
-% 			-2&-3&9&6
-% 		\end{pmatrix}
-% 		\visible<+->{\wsim{r_3+2r_1}{}\begin{pmatrix}
-% 			1&3&-9&3\\
-% 			0&1&-3&4\\
-% 			0&3&-9&12
-% 		\end{pmatrix}}
-% 		\visible<+->{\wsim{
-% 			r_3-3r_2}{}\begin{pmatrix}
-% 				1&3&-9&3\\
-% 				0&1&-3&4\\
-% 				0&0&0&0
-% 		\end{pmatrix}}\]\[
-% 		\visible<+->{\wsim{
-% 			r_1-3r_2}{}\begin{pmatrix}
-% 				1&0&0&-9\\
-% 				0&1&-3&4\\
-% 				0&0&0&0
-% 		\end{pmatrix}.}
-% 		\]
-% 	\end{solution}
-% \end{frame}
+\begin{frame}{行最简形矩阵}
+	\onslide<+->
+	\begin{definition}
+		满足下述条件的行阶梯形矩阵称为\emph{行最简形矩阵}:
+		\begin{enumerate}
+			\item 每个非零行的第一个非零元是 $1$;
+			\item 每个非零行的第一个非零元所在列其它元素均为 $0$.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	\[\begin{pmatrix}
+		\alert{1}&0&0&4\\
+		0&\alert{1}&0&1\\
+		0&0&\alert{1}&2
+	\end{pmatrix}
+	\qquad\begin{pmatrix}
+		0&\alert{1}&0&2&0\\
+		0&0&\alert{1}&1&0\\
+		0&0&0&0&\alert{1}\\
+		0&0&0&0&0
+	\end{pmatrix}\]
+	\onslide<+->
+	任何矩阵都可通过初等行变换化为行最简形.
+\end{frame}
+
+
+\begin{frame}{行最简形矩阵}
+	\onslide<+->
+	\begin{example}
+		用初等行变换将 $\bfA=\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			-2&-3&9&6
+		\end{pmatrix}$
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			-2&-3&9&6
+		\end{pmatrix}
+		\visible<+->{\wsim{r_3+2r_1}{}\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			0&3&-9&12
+		\end{pmatrix}}
+		\visible<+->{\wsim{
+			r_3-3r_2}{}\begin{pmatrix}
+				1&3&-9&3\\
+				0&1&-3&4\\
+				0&0&0&0
+		\end{pmatrix}}\]\[
+		\visible<+->{\wsim{
+			r_1-3r_2}{}\begin{pmatrix}
+				1&0&0&-9\\
+				0&1&-3&4\\
+				0&0&0&0
+		\end{pmatrix}.}
+		\]
+	\end{solution}
+\end{frame}
 
 \subsection{初等矩阵}
 
-\begin{frame}{初等变换}
+\begin{frame}{第一类初等矩阵}
 	\onslide<+->
 	单位阵 $\bfE$ 经过一次初等变换得到的方阵称为\emph{初等矩阵}.
 	\begin{enumerate}
@@ -252,16 +252,676 @@
 			\draw[cstcurve,dcolora] (-2.7,2.9) rectangle (-2.2,-2.9);
 			\draw[cstcurve,dcolorb] (-7,1.4) rectangle (-.5,.9);
 			\draw[cstcurve,dcolorb] (-7,-1.2) rectangle (-.5,-.7);
+			\draw (.6,1.1) node[dcolorb] {$\la$ 第 $i$ 行}
+			(.6,-1) node[dcolorb] {$\la$ 第 $j$ 行};
 		\end{tikzpicture}\]
 	\end{enumerate}
 \end{frame}
 
 
-\begin{frame}{初等变换}
+\begin{frame}{第二类初等矩阵}
 	\onslide<+->
-	单位阵 $\bfE$ 经过一次初等变换得到的方阵称为\emph{初等矩阵}.
 	\begin{enumerate}
-		\item 数乘变换: 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
-		\item 倍加变换: $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+		\setcounter{enumi}{1}
+		\item $k r_i, k c_i$ 都对应初等矩阵
+		\[\bfE(i(k))=\begin{pmatrix}
+			\begin{matrix}
+				1&&\\
+				&\ddots&\\
+				&&1
+			\end{matrix}&&\\
+			&k&\\
+			&&\begin{matrix}
+				1&&\\
+				&\ddots&\\
+				&&1
+			\end{matrix}
+		\end{pmatrix}.\begin{tikzpicture}[overlay]
+			\draw[cstcurve,dcolora] (-2.7,1.9) rectangle (-2.2,-1.8);
+			\draw[cstcurve,dcolorb] (-4.5,.4) rectangle (-.4,-.1);
+			\draw (.7,.1) node[dcolorb] {$\la$ 第 $i$ 行}
+			(-2.4,-2.1) node[dcolora] {$\uparrow$}
+			(-2.4,-2.5) node[dcolora] {第 $i$ 列};
+		\end{tikzpicture}\]
 	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{第三类初等矩阵}
+	\onslide<+->
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+		\item $r_i+kr_j, c_j+kc_i$ 都对应初等矩阵
+		\[\bfE(i,j(k))=\begin{pmatrix}
+			\begin{matrix}
+				1&\\
+				&\ddots
+			\end{matrix}&&\\
+			&\begin{matrix}
+				1&&k\\&\ddots&\\&&1
+			\end{matrix}&\\
+			&&\begin{matrix}
+				\ddots&\\
+				&1
+			\end{matrix}
+		\end{pmatrix}.\begin{tikzpicture}[overlay]
+			\draw[cstcurve,dcolora] (-3.5,1.9) rectangle (-3,-1.9);
+			\draw[cstcurve,dcolora] (-2.2,1.9) rectangle (-1.7,-1.9);
+			\draw[cstcurve,dcolorb] (-4.7,.9) rectangle (-.5,.4);
+			\draw[cstcurve,dcolorb] (-4.7,-.7) rectangle (-.5,-.2);
+			\draw (.7,.8) node[dcolorb] {$\la$ 第 $i$ 行}
+			(.7,-.4) node[dcolorb] {$\la$ 第 $j$ 行}
+			(-3.3,-2.2) node[dcolora] {$\uparrow$}
+			(-3.3,-2.6) node[dcolora] {第 $i$ 列}
+			(-1.8,-2.2) node[dcolora] {$\uparrow$}
+			(-1.8,-2.6) node[dcolora] {第 $j$ 列};
+		\end{tikzpicture}\]
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{初等矩阵左乘矩阵}
+	\beqskip{1mm}
+	\onslide<+->
+	我们来看
+	\[\bfE(1,3)\bfA=\begin{pmatrix}
+		0&0&1\\
+		0&1&0\\
+		1&0&0
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		7&8&9\\
+		4&5&6\\
+		1&2&3
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i,j)$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $r_i\swap r_j$.	
+	\onslide<+->
+	\[\bfE(2(k))\bfA=\begin{pmatrix}
+		1&0&0\\
+		0&k&0\\
+		0&0&1
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		1&2&3\\
+		4k&5k&6k\\
+		7&8&9
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i(k))$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $kr_i$.	
+	\onslide<+->
+	\[\bfE(3,1(k))\bfA=\begin{pmatrix}
+		1&0&0\\
+		0&1&0\\
+		k&0&1
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7+k&8+2k&9+3k
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i,j(k))$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $r_i+kr_j$.
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{初等矩阵与初等变换}
+	\onslide<+->
+	从分块矩阵乘法
+	\[\bfE(i,j)\bfA=\bfE(i,j)\begin{pmatrix}
+		\alpha_1\\
+		\vdots\\
+		\alpha_i\\
+		\vdots\\
+		\alpha_j\\
+		\vdots\\
+		\alpha_n
+	\end{pmatrix}=\begin{pmatrix}
+		\alpha_1\\
+		\vdots\\
+		\alpha_j\\
+		\vdots\\
+		\alpha_i\\
+		\vdots\\
+		\alpha_n
+	\end{pmatrix}\]
+	可以看出确实如此.
+
+	\onslide<+->
+	同理, 初等矩阵右乘矩阵 $\bfA$ 等同于对 $\bfA$ 实施对应的初等列变换.
+\end{frame}
+
+
+\begin{frame}{初等矩阵与初等变换}
+	\onslide<+->
+	\begin{theorem}
+		设 $\bfA\in M_{m\times n}$.
+		\begin{enumerate}
+			\item 对 $\bfA$ 实施一次\emph{初等行变换}, 相当于在\emph{$\bfA$ 的左边}乘对应的 $m$ 阶初等矩阵.
+			\item 对 $\bfA$ 实施一次\alert{初等列变换}, 相当于在\alert{$\bfA$ 的右边}乘对应的 $n$ 阶初等矩阵.
+		\end{enumerate}
+	\end{theorem}
+	\onslide<+->
+	即\alert{左行右列}.
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵与初等变换}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA=\begin{pmatrix}
+			a_{11}&a_{12}&a_{13}\\
+			a_{21}&a_{22}&a_{23}\\
+			a_{31}&a_{32}&a_{33}
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			a_{11}&a_{13}&a_{12}\\
+			a_{21}&a_{23}&a_{22}\\
+			a_{31}+2a_{11}&a_{33}+2a_{13}&a_{32}+2a_{12}
+		\end{pmatrix}$,\\
+		$\bfP_1=\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			0&0&1\\0&1&0\\1&0&0
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&0&0\\0&1&0\\2&0&1
+		\end{pmatrix}$.
+		那么 $\bfB=$\fillbrace{\visible<+->{\alert{C}}}
+		\xx{$\bfP_3\bfA\bfP_2$}{$\bfP_2\bfA\bfP_3$}{$\bfP_3\bfA\bfP_1$}{$\bfP_1\bfP_2\bfA$}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵与初等变换}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA$ 为 $3$ 阶方阵，将 $\bfA$ 的第 $1$ 列与第 $2$ 列交换得 $\bf	B$, 再把 $\bfB$ 的第 $2$ 列加到第 $3$ 列得到 $\bfC$．求满足 $\bfA\bfQ=\bfC$ 的可逆矩阵 $\bfQ$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$\bfB=\bfA\begin{pmatrix}
+			0&1&0\\1&0&0\\0&0&1
+		\end{pmatrix},\bfC=\bfB\begin{pmatrix}
+			1&0&0\\0&1&1\\0&0&1
+		\end{pmatrix}$.
+		\onslide<+->{因此
+		\[\bfQ=\begin{pmatrix}
+			0&1&0\\1&0&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&1\\0&0&1
+		\end{pmatrix}=\begin{pmatrix}
+			0&1&1\\1&0&0\\0&0&1
+		\end{pmatrix}.\]}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵的逆}
+	\onslide<+->
+	由于初等变换都是可逆, 因此初等矩阵也都是可逆的:
+	\onslide<+->
+	\begin{enumerate}
+		\item $\bfE(i,j)\bfE(i,j)=\bfE\implies \alert{\bfE(i,j)^{-1}=\bfE(i,j)}$;
+		\item $\bfE(i(k))\bfE(i(\frac1k))=\bfE\implies\alert{\bfE(i(k))^{-1}=\bfE(i(\frac1k))}$;
+		\item $\bfE(i,j(k))\bfE(i,j(-k))=\bfE\implies\alert{\bfE(i,j(k))^{-1}=\bfE(i,j(-k))}$.
+	\end{enumerate}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA$ 是 $n$ 阶可逆矩阵, 将 $\bfA$ 的第 $i$ 行与第 $j$ 行对换后得到的矩阵记为 $\bfB$, 则 $\bfA\bfB^{-1}=$\fillblank[3cm]{\visible<+->{$\bfE(i,j)$}}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵与初等变换}
+	\onslide<+->
+	\begin{exercise}
+		设 $\bfA=\begin{pmatrix}
+			a_{11}&a_{12}&a_{13}\\
+			a_{21}&a_{22}&a_{23}\\
+			a_{31}&a_{32}&a_{33}
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			a_{13}&-a_{11}+a_{12}&a_{11}\\
+			a_{23}&-a_{21}+a_{22}&a_{21}\\
+			a_{33}&-a_{31}+a_{32}&a_{31}
+		\end{pmatrix}$,\\
+		$\bfP_1=\begin{pmatrix}
+			0&0&1\\0&1&0\\1&0&0
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			1&1&0\\0&1&0\\0&0&1
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&-1&0\\0&1&0\\0&0&1
+		\end{pmatrix}$ 且 $\bfA$ 可逆.
+		那么 $\bfB^{-1}=$\fillbrace{\visible<+->{\alert{B}}}
+		\xx{$\bfA^{-1}\bfP_1\bfP_2$}{$\bfP_1\bfP_2\bfA^{-1}$}{$\bfP_1\bfP_3\bfA^{-1}$}{$\bfP_3\bfP_1\bfA^{-1}$}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵}
+	\onslide<+->
+	\begin{example}
+		设 $\bfP_1=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&0&1
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			1&&&\\
+			0&1&&\\
+			0&0&1&\\
+			a&0&0&1
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&&&\\
+			&k&&\\
+			&&1&\\
+			&&&1
+		\end{pmatrix}$, 求 $\bfP_1\bfP_2\bfP_3$ 和 $(\bfP_1\bfP_2\bfP_3)^{-1}$.
+	\end{example}
+	\onslide<+->
+	这题可以直接计算, 也可以利用初等矩阵对应的变换来看.
+	\begin{solution}
+		$\bfP_1\bfP_2$ 就是对 $\bfP_1$ 实施初等列变换 $c_1+ac_4$, 即 $\bfP_1\bfP_2=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			a&0&0&1
+		\end{pmatrix}.$
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵}
+	\onslide<+->
+	\begin{solutionc}
+		同理 $\bfP_1\bfP_2\bfP_3=\begin{pmatrix}
+			0&0&1&0\\
+			0&k&0&0\\
+			1&0&0&0\\
+			a&0&0&1
+		\end{pmatrix}.$
+
+		\onslide<+->{%
+		反过来, $\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&0&1
+		\end{pmatrix}$, 
+		}\onslide<+->{%
+		$\bfP_2^{-1}\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&-a&1
+		\end{pmatrix}$, 
+		}\onslide<+->{%
+		\[(\bfP_1\bfP_2\bfP_3)^{-1}=\bfP_3^{-1}\bfP_2^{-1}\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1/k&0&0\\
+			1&0&0&0\\
+			0&0&-a&1
+		\end{pmatrix}.\]}
+		\vspace{-\baselineskip}
+	\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵}
+	\onslide<+->
+	\begin{exercise}
+		将可逆方阵 $\bfA$ 的第 $1$ 行的 $2$ 倍加到第 $2$ 行得到 $\bfB$, 则对 $\bfA^{-1}$ 实施初等变换\fillbrace{\visible<+->{D}}可得到 $\bfB^{-1}$.
+		\xx{$r_2+2r_1$}%
+		{$r_2-2r_1$}%
+		{$c_1+2c_2$}%
+		{$c_1-2c_2$}
+	\end{exercise}
+\end{frame}
+
+\begin{frame}{初等变换解矩阵方程}
+	\onslide<+->
+	如果 $(\bfA,\bfB)\simr (\bfE,\bfX)$, 那么存在可逆矩阵 $\bfP$ 使得 $\bfP(\bfA,\bfB)=(\bfE,\bfX)$.
+	\onslide<+->
+	即 $\bfP=\bfA^{-1},\bfX=\bfA^{-1}\bfB$.
+	\onslide<+->
+	所以这种方法可用来解矩阵方程 $\bfA\bfX=\bfB$, 其中 $\bfA$ 是可逆阵.
+
+	\onslide<+->
+	特别地, \alert{$(\bfA,\bfE)\simr(\bfE,\bfA^{-1})$} 可用来帮助计算矩阵的逆.
+	\onslide<+->
+	类似地 $\begin{pmatrix}
+		\bfA\\
+		\bfB
+	\end{pmatrix}\simc\begin{pmatrix}
+		\bfE\\
+		\bfX
+	\end{pmatrix}$ 可用来解 $\bfX\bfA=\bfB$, 其中 $\bfA$ 是可逆阵.
+
+	\onslide<+->
+	\begin{exercise}
+		求 $\bfA=\begin{pmatrix}
+			1&1&2\\1&2&3\\2&1&4
+		\end{pmatrix}$ 的逆.
+	\end{exercise}
+	\onslide<+->
+	\begin{solution}
+		\[(\bfA,\bfE)=\begin{pmatrix}
+			1&1&2&1&0&0\\
+			1&2&3&0&1&0\\
+			2&1&4&0&0&1
+		\end{pmatrix}
+		\visible<+->{\wsim[3]{r_2-r_1}{r_3-2r_1}\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&-1&0&-2&0&1
+		\end{pmatrix}}\]
+		\vspace{-.7\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
+	\begin{solutionc}
+		\[(\bfA,\bfE)\simr\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&-1&0&-2&0&1
+		\end{pmatrix}\wsim[3]{r_3+r_2}{}\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&0&1&-3&1&1
+		\end{pmatrix}\]
+		\onslide<+->{\[\wsim[3]{r_1-2r_3}{r_2-r_3}\begin{pmatrix}
+			1&1&0&7&-2&-2\\
+			0&1&0&2&0&-1\\
+			0&0&1&-3&1&1
+		\end{pmatrix}\visible<+->{\wsim[3]{r_1-r_2}{}\begin{pmatrix}
+				1&0&0&5&-2&-1\\
+				0&1&0&2&0&-1\\
+				0&0&1&-3&1&1
+			\end{pmatrix}.}\]}
+		\onslide<+->{故 $\bfA^{-1}=\begin{pmatrix}
+			5&-2&-1\\
+			2&0&-1\\
+			-3&1&1
+		\end{pmatrix}$.}
+	\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
+	\begin{exercise}
+		若 $\bfA=\begin{pmatrix}
+			2&2&0\\2&1&3\\0&1&0
+		\end{pmatrix},\bfA\bfX=\bfA+\bfX$, 求 $\bfX$.
+	\end{exercise}
+	\onslide<+->
+	\begin{solution}
+		由题设知 $(\bfA-\bfE)\bfX=\bfA$, $\bfX=(\bfA-\bfE)^{-1}\bfA$.
+		\onslide<+->{\[(\bfA-\bfE,\bfA)=\begin{pmatrix}
+			1&2&0&2&2&0\\
+			2&0&3&2&1&3\\
+			0&1&-1&0&1&0
+		\end{pmatrix}
+		\visible<+->{\wsim[3]{r_2-2r_1}{r_2\swap r_3}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&-4&3&-2&-3&3
+		\end{pmatrix}}\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
+	\begin{solutionc}
+		\[(\bfA-\bfE,\bfA)\simr\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&-4&3&-2&-3&3
+		\end{pmatrix}\wsim[3]{r_3+4r_2}{-r_3}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&0&1&2&-1&-3
+		\end{pmatrix}\]
+
+		\onslide<+->{\[\wsim[3]{r_2+r_3}{}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&0&2&0&-3\\
+			0&0&1&2&-1&-3
+		\end{pmatrix}\visible<+->{\wsim[3]{r_1-2r_2}{}\begin{pmatrix}
+			1&0&0&-2&2&6\\
+			0&1&0&2&0&-3\\
+			0&0&1&2&-1&-3
+			\end{pmatrix}.}\]}
+		\onslide<+->{故 $\bfX=\begin{pmatrix}
+			-2&2&6\\
+			2&0&-3\\
+			2&-1&-3
+		\end{pmatrix}$.}
+	\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $\bfA$ 是 $3$ 阶方阵, 存在可逆阵 $\bfP$ 使得 $\bfP^{-1}\bfA\bfP=\begin{pmatrix}
+				1&&\\&2&\\&&3
+			\end{pmatrix}$, 则 $\bfP^{-1}\bfA^*\bfP=$\fillblank[3cm]{\visible<+->{$\diag(6,3,2)$}}.
+			\item 设 $\bfA$ 是 $3$ 阶方阵, 存在可逆阵 $\bfP=(\alpha_1,\alpha_2,\alpha_3)$ 使得 $\bfP^{-1}\bfA\bfP=\begin{pmatrix}
+				1&&\\&2&\\&&3
+			\end{pmatrix}$.
+			若 $\bfQ=(\alpha_1,\alpha_3,\alpha_2)$, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblank[3cm]{\visible<+->{$\diag(1,3,2)$}}.
+			\item 设 $n$ 阶方阵 $\bfA,\bfB$ 满足 $\bfA\bfB=\bfE$, 则以下说法正确的有\fillblank{\visible<+->{4}}个.\\
+			(I) $\bfA$ 等价于 $\bfE$;\hspace{45mm}
+			(II) $\bfA$ 等价于 $\bfB$;\\
+			(III) $\bfA$ 可经过有限次初等行变换化为 $\bfB$;\hspace{4mm}
+			(IV) $\bfA\bfB=\bfB\bfA$.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换}
+	\onslide<+->
+	\begin{exercise}
+		设\[\bfA=\begin{pmatrix}
+			a_{11}&a_{12}&a_{13}&a_{14}\\
+			a_{21}&a_{22}&a_{23}&a_{24}\\
+			a_{31}&a_{32}&a_{33}&a_{34}\\
+			a_{41}&a_{42}&a_{43}&a_{44}
+	\end{pmatrix},\qquad\bfB=\begin{pmatrix}
+		a_{14}&a_{13}&a_{12}&a_{11}\\
+		a_{24}&a_{23}&a_{22}&a_{21}\\
+		a_{34}&a_{33}&a_{32}&a_{31}\\
+		a_{44}&a_{43}&a_{42}&a_{41}
+	\end{pmatrix},\]\[\bfP_1=\begin{pmatrix}
+		0&0&0&1\\
+		0&1&0&0\\
+		0&0&1&0\\
+		1&0&0&0
+	\end{pmatrix},\qquad\bfP_2=\begin{pmatrix}
+		1&0&0&0\\
+		0&0&1&0\\
+		0&1&0&0\\
+		0&0&0&1
+	\end{pmatrix}.\]
+	若 $\bfA$ 可逆, 则 $\bfB^{-1}=$\fillbrace{\visible<+->{C}}.
+	\xx{$\bfA^{-1}\bfP_1\bfP_2$}%
+	{$\bfP_1\bfA^{-1}\bfP_2$}%
+	{$\bfP_1\bfP_2\bfA^{-1}$}%
+	{$\bfP_2\bfA^{-1}\bfP_1$}
+	\end{exercise}
+\end{frame}
+
+
+\subsection{矩阵等价}
+
+\begin{frame}{矩阵等价的定义}
+	\onslide<+->
+	\begin{definition}
+		\begin{enumerate}
+			\item 如果 $\bfA$ 经过有限次初等行变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{行等价}, 记作\emph{$\bfA\simr\bfB$}.
+			\item 如果 $\bfA$ 经过有限次初等列变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{列等价}, 记作\emph{$\bfA\simc\bfB$}.
+			\item 如果 $\bfA$ 经过有限次初等行变换和初等列变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{列等价}, 记作\emph{$\bfA\sim\bfB$}.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	每个矩阵都可以通过初等行变换变为行最简形矩阵.
+	\onslide<+->
+	对于可逆方阵 $\bfP$, 由于初等矩阵都是可逆的, 因此它对应的行最简形矩阵 $\bfQ$ 也是可逆的.
+	\onslide<+->
+	于是 $\bfQ$ 没有零行, 它只能是 $\bfE$.
+	\onslide<+->
+	换言之, \alert{可逆方阵可以写成有限个初等矩阵的乘积}.
+	\onslide<+->
+	所以 $\bfA\simr\bfB$ 等价于存在可逆矩阵 $\bfP$ 使得 $\bfB=\bfP\bfA$.
+\end{frame}
+
+
+\begin{frame}{矩阵等价的刻画}
+	\onslide<+->
+	\begin{theorem}
+		\begin{enumerate}
+			\item $\bfA\simr\bfB$ 当且仅当存在可逆矩阵 $\bfP$ 使得 $\bfB=\bfP\bfA$.
+			\item $\bfA\simc\bfB$ 当且仅当存在可逆矩阵 $\bfQ$ 使得 $\bfB=\bfA\bfQ$.
+			\item $\bfA\sim\bfB$ 当且仅当存在可逆矩阵 $\bfP,\bfQ$ 使得 $\bfB=\bfP\bfA\bfQ$.
+		\end{enumerate}
+	\end{theorem}
+	\onslide<+->
+	由此可知
+	\begin{proposition}
+		矩阵的行等价、列等价、等价均满足
+		\begin{enumerate}
+			\item 自反性: $\bfA\sim\bfA$;
+			\item 对称性: $\bfA\sim\bfB\implies\bfB\sim\bfA$;
+			\item 传递性: $\bfA\sim\bfB,\bfB\sim\bfC\implies\bfA\sim\bfC$.
+		\end{enumerate}
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{矩阵的标准型}
+	\onslide<+->
+	任一矩阵通过有限次初等行变换变为行最简形后, 可通过初等列变换将其变为\emph{标准型} $\begin{pmatrix}
+		\bfE_r&\bfO\\\bfO&\bfO
+	\end{pmatrix}$.
+	\onslide<+->
+	例如:
+	\[\begin{pmatrix}
+		1&0&0&-9\\
+		0&1&-3&4\\
+		0&0&0&0
+	\end{pmatrix}\visible<+->{\wsim{c_4+9c_1}{}\begin{pmatrix}
+		1&0&0&0\\
+		0&1&-3&4\\
+		0&0&0&0
+	\end{pmatrix}}
+	\visible<+->{\wsim{c_3+3c_2}{c_4-4c_2}\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&0&0
+	\end{pmatrix}.}\]
+
+	\onslide<+->
+	矩阵的等价也叫做\emph{相抵}, 上述标准型也叫作\emph{相抵标准型}.
+	\onslide<+->
+	我们会看到不同的 $r$ 对应的相抵标准型不等价.
+	\onslide<+->
+	所以相抵标准型相当于在每一个等价类中找到了一个具有代表性的矩阵.
+
+	\onslide<+->
+	\begin{proposition}
+		方阵 $\bfA$ 可逆当且仅当它的标准型为 $\bfE_n$.
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{矩阵的变换关系}
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[node distance=4cm]
+			\node (1) {任意矩阵};
+			\node (2) [right=of 1]{行阶梯形矩阵};
+			\node (3) [right=of 2]{行最简形矩阵};
+			\node (4) [below=of 3]{标准型矩阵};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt] (1)--(2)
+				node[midway,above] {有限次初等行变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt] (2)--(3)
+				node[midway,above] {有限次初等行变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt,dcolorb] (3)--(4)
+				node[midway,above,sloped] {有限次初等列变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt,dcolora] (1)--(4)
+				node[midway,above,sloped] {有限次初等变换};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换}
+	\beqskip{0mm}
+	\onslide<+->
+	\vspace{-.3\baselineskip}
+	\begin{example}
+		\vspace{-.3\baselineskip}
+		将矩阵 $\bfA=\begin{pmatrix}
+			1&0&0\\
+			2&0&-1\\
+			0&-1&0
+		\end{pmatrix}$ 表示成有限个初等阵的乘积.
+		\vspace{-.2\baselineskip}
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\vspace{-.3\baselineskip}
+		\[\bfA\wsim{r_2\swap r_3}{}\begin{pmatrix}
+			1&0&0\\
+			0&-1&0\\
+			2&0&-1
+		\end{pmatrix}
+		\wsim{r_3-2r_1}{}\begin{pmatrix}
+			1&0&0\\
+			0&-1&0\\
+			0&0&-1
+		\end{pmatrix}
+		\wsim{-r_2}{-r_3}\begin{pmatrix}
+			1&0&0\\
+			0&1&0\\
+			0&0&1
+		\end{pmatrix}.\]
+		\onslide<+->{因此 $\begin{pmatrix}
+			1&0&0\\0&1&0\\0&0&-1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&-1&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\-2&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix}\bfA=\bfE$, 
+		}\onslide<+->{%
+		\[\bfA=\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\2&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&-1&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\0&0&-1
+		\end{pmatrix}.\]}
+		\vspace{-.3\baselineskip}
+	\end{solution}
+	\endgroup
 \end{frame}
