@@ -10,8 +10,8 @@
 		a_{12}&a_{22}&\cdots&a_{m2}\\
 		\vdots&\vdots&\ddots&\vdots\\
 		a_{1n}&a_{2n}&\cdots&a_{mn}
-	\end{pmatrix}\]
-	为矩阵 $\bfA$ 的\emph{转置}, 它是 $n\times m$ 矩阵.
+	\end{pmatrix}\in M_{n\times m}\]
+	为矩阵 $\bfA$ 的\emph{转置}.
 	\onslide<+->
 	例如行向量的转置是列向量, 方阵的转置还是方阵, 上三角阵的转置是下三角阵.
 	\onslide<+->
@@ -173,14 +173,13 @@
 	}=\detm{\bfA&\bfO\\-\bfE&\bfB}=|\bfA|\cdot|\bfB|.\]
 
 	\onslide<+->
-	经过变换 $c_{n+j}+b_{1j}c_1+\cdots+b_{nj},j=1,\dots,n$ 得到
-	$D=\detm{\bfA&\bfC\\-\bfE&\bfO}$,
+	将第 $1,\dots,n$ 列乘 $b_{1j},\dots,b_{nj}$ 加到 $n+j$ 列, $j=1,\dots,n$, 则 	$D=\detm{\bfA&\bfC\\-\bfE&\bfO}$,
 	\onslide<+->
 	其中 $\bfC=(c_{ij})$, $c_{ij}=\sum_{k=1}^nb_{kj}a_{ik}$.
 	\onslide<+->
 	换言之 $\bfC=\bfA\bfB$.
 	\onslide<+->
-	再进行变换 $r_i\swap r_{n+j},j=1,\dots,n$ 得到
+	再进行变换 $r_j\swap r_{n+j},j=1,\dots,n$ 得到
 	\[D=(-1)^n\detm{-\bfE&\bfO\\\bfA&\bfC}=(-1)^n|-\bfE|\cdot|\bfC|=|\bfC|=|\bfA\bfB|.\]
 \end{frame}
 

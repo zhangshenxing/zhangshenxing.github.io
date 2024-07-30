@@ -107,7 +107,7 @@
 
 \begin{frame}{线性代数的意义}
 	\onslide<+->
-	线性代数是一门研究\emph{线性方程、线性空间、线性变换}等线性结构的课程.
+	线性代数是一门利用代数方法研究\emph{线性方程、线性空间、线性变换}等线性结构的课程.
 	\onslide<+->
 	尽管真实的世界中, 例如函数关系, 往往是非线性的.
 	但我们可以利用线性方法去模拟、近似、逼近它.
@@ -171,10 +171,10 @@
 \begin{frame}{课程学习方法}
 	\begin{center}
 		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnodeg,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
-			\node[cstnodeg,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
-			\node[cstnodeg,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnodeg,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
+			\node[cstnodeg,align=center] (1) {\emph{课前}\\预习课本};
+			\node[cstnodeg,align=center] (2) [below right=of 1] {\emph{课上}\\认真听课\\记好笔记};
+			\node[cstnodeg,align=center] (3) [below left=of 2] {\emph{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnodeg,align=center] (4) [above left=of 3] {\emph{作业}\\检测学\\习效果};
 			\draw[cstnarrow,dcolorc] (1.east) to[bend left] (2.north);
 			\draw[cstnarrow,dcolorc] (2.south) to[bend left] (3.east);
 			\draw[cstnarrow,dcolorc] (3.west) to[bend left] (4.south);

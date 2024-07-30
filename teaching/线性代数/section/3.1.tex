@@ -1,408 +1,49 @@
-\section{复变函数积分的概念}
+\section{向量组的线性表示}
 
-\subsection{复变函数积分的定义}
+\subsection{\texorpdfstring{$n$}{n} 维向量的定义及运算}
 
-\begin{frame}{有向曲线}
+\begin{frame}{行向量和列向量}
 	\onslide<+->
-	设 $C$ 是平面上一条光滑或逐段光滑的连续曲线,
+	当矩阵的行数或列数为 $1$ 时, 对应的矩阵被称为\emph{行向量}和\emph{列向量}:
+	\[{\bma}^\rmT=(a_1,\dots,a_n),\quad
+	{\bma}=\begin{pmatrix}
+		a_1\\\vdots\\a_n
+	\end{pmatrix}.\]
 	\onslide<+->
-	也就是说它的参数方程 $z=z(t),a\le t\le b$ 除去有限个点之外都有非零导数.
+	其中 $a_i$ 称为 $n$ 维行向量 ${\bma}^\rmT$ 或 $n$ 维列向量 ${\bma}$ 的\emph{第 $i$ 个分量}.
+	\onslide<+->
+	向量也是我们中学学习的平面和立体向量的高维推广.
 
 	\onslide<+->
-	固定它的一个方向, 称为\emph{正方向}, 则我们得到一条\emph{有向曲线}.
-	\onslide<+->
-	和这条曲线方向相反的记作 $C^-$, 它的方向被称为该曲线\emph{负方向}.
-
-	\onslide<+->
-	对于闭路, 它的\alert{正方向总是指逆时针方向}, 负方向总是指顺时针方向.
-	\onslide<+->
-	以后我们不加说明的话\alert{默认是正方向}.
-
-	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis](-3.5,0)--(3.5,0);
-			\draw[cstaxis](0,-0.5)--(0,2.5);
-			\draw[cstcurve,dcolorb,smooth,domain=-35:125] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
-			\draw (3.4,0.3) node[dcolorb] {$A=z(a)$};
-			\draw (0.8,1.9) node[dcolorb] {$B=z(b)$};
-			\fill[cstdot,dcolorb] ({1.4+1.3*cos(-35)}, {1.1+1.3*sin(-35)}) circle;
-			\fill[cstdot,dcolorb] ({1.4+1.3*cos(125)}, {1.1+1.3*sin(125)}) circle;
-			\draw[cstcurve,dcolorb,smooth,domain=40:45,cstarrow1to,visible on=<3->] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=-65:30,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=25:120,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=115:210,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=205:300,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-		\end{tikzpicture}
-	\end{center}
+	注意行向量和列向量是不同的东西.
+	当没有明确说明是行向量还是列向量时, 默认是\alert{列向量}.
 \end{frame}
 
 
-\begin{frame}{复变函数积分的定义}
+\begin{frame}{向量运算的性质}
 	\onslide<+->
-	所谓的复变函数积分, 本质上仍然是第二类曲线积分.
+	分量全为零的向量称为\emph{零向量} ${\bf0}=(0,0,\dots,0)^\rmT$.
 	\onslide<+->
-	设复变函数 $w=f(z)=u(x,y)+iv(x,y)$ 定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
-	\onslide<+->
-	形式地展开
-		\[f(z)\diff z=(u+iv)(\!\diff x+i\diff y)=(u\diff x-v\diff y)+i(u\diff y+v\diff x).\]
-	\onslide<+->
-	\begin{definition}
-		如果下述右侧两个线积分均存在, 则定义
-		\[\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)\]
-		为\emph{函数 $f(z)$ 沿曲线 $C$ 的积分}.
-	\end{definition}
+	上一章中我们已经知道了向量的加法和数乘运算, 它们满足:
+	\begin{enumerate}
+		\item $\bma+\bmb=\bmb+\bma$;
+		\item $(\bma+\bmb)+\bmg=\bma+(\bmb+\bmg)$;
+		\item $\bma+{\bf0}=\bma$;
+		\item $1\cdot\bma=\bma$;
+		\item $k(\ell\bma)=(k\ell)\bma$;
+		\item $(k+\ell)\bma=k\bma+\ell\bma$;
+		\item $k(\bma+\bmb)=k\bma+k\bmb$.
+	\end{enumerate}
 \end{frame}
 
 
-\begin{frame}{复变函数积分的定义}
-	\onslide<+->
-	当然, 我们也可以像线积分那样通过分割来定义.
-	\onslide<+->
-	在曲线 $C$ 上依次选择分点 $z_0=A,z_1,\dots,z_n=B$.
-	\onslide<+->
-	然后在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
-	\[S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.\]
-	\onslide<+->
-	然后称 $n\to\infty$, 分割的弧长 $\ra 0$ 时 $S_n$ 的极限为复变函数积分.
-	\onslide<+->
-	这二者是等价的.
+\subsection{向量组与矩阵}
 
-	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstcurve,dcolorc,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
-			\draw[cstcurve,dcolorc,smooth,domain=195:200,cstarrowto] plot ({0.015*\x},{0.6*sin(\x)});
-			\fill[cstdot,dcolorc] (0,0) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*32},{0.6*sin(32)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*64},{0.6*sin(64)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*96},{0.6*sin(96)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*128},{0.6*sin(128)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*160},{0.6*sin(160)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*232},{0.6*sin(232)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*264},{0.6*sin(264)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*296},{0.6*sin(296)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*328},{0.6*sin(328)}) circle;
-			\fill[cstdot,dcolorc] ({0.015*360},0) circle;
-			\draw
-			({0.015*32},{0.6*sin(32)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_1$}
-			({0.015*64},{0.6*sin(64)+0.3}) node[dcolora,visible on=<2->] {$z_1$}
-			({0.015*96},{0.6*sin(96)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_2$}
-			({0.015*128},{0.6*sin(128)+0.3}) node[dcolora,visible on=<2->] {$z_2$}
-			({0.015*160},{0.6*sin(160)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_3$}
-			({0.015*232},{0.6*sin(232)+0.3}) node[dcolora,visible on=<2->] {$z_{n-2}$}
-			({0.015*264},{0.6*sin(264)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_{n-1}$}
-			({0.015*296},{0.6*sin(296)+0.3}) node[dcolora,visible on=<2->] {$z_{n-1}$}
-			({0.015*328},{0.6*sin(328)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_n$}
-			({0.015*180},{0.6*sin(180)+0.5}) node[dcolora,visible on=<2->] {$\ddots$}
-			(-0.3,0) node[dcolorc] {$A$}
-			({0.015*360+0.3},0) node[dcolorc] {$B$};
-		\end{tikzpicture}
-	\end{center}
+
+\begin{frame}{向量运算的性质}
+	\onslide<+->
+	由一些具有相同维数的向量构成的集合称为\emph{向量组}.
+	\onslide<+->
+	例如
+	\[\{\bma_1\}\]
 \end{frame}
-
-
-\begin{frame}{复变函数积分的存在性}
-	\onslide<+->
-	如果 $C$ 是闭曲线, 则该积分记为 \alert{$\displaystyle\oint_Cf(z)\diff z$}.
-	\onslide<+->
-	此时该积分不依赖端点的选取.
-
-	\onslide<+->
-	如果 $C$ 是实轴上的区间 $[a,b]$ 且 $f(z)=u(x)$, 
-	\onslide<+->
-	则
-	\[\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x\]
-	就是黎曼积分.
-
-	\onslide<+->
-	根据线积分的存在性条件可知:
-	\onslide<+->
-	\begin{theorem}
-	如果 $f(z)$ 在 $D$ 内连续, $C$ 是光滑曲线, 则 $\displaystyle\int_Cf(z)\diff z$ 总存在.
-	\end{theorem}
-\end{frame}
-
-
-\subsection{复变函数积分的计算法}
-
-\begin{frame}{复变函数积分的计算法}
-	\onslide<+->
-	线积分中诸如变量替换等技巧可以照搬过来使用.
-	\onslide<+->
-	设
-	\[C:z(t)=x(t)+iy(t),\quad a\le t\le b\]
-	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向.
-	\onslide<+->
-	则 $\diff z=z'(t)\diff t$,
-
-	\onslide<+->
-	\begin{alertblock}{复变函数积分的一般计算方法}
-		\begin{equation}\tag{A}
-			\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.
-		\end{equation}
-	\end{alertblock}
-	\onslide<+->
-	\noindent 如果 $C$ 的正方向是从 $z(b)$ 到 $z(a)$, 则需要交换右侧积分的上下限.
-
-	\onslide<+->
-	如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
-	\onslide<+->
-	以后我们\emph{只考虑逐段光滑曲线上的连续函数的积分}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 计算复变函数沿曲线的积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是从原点到点 $3+4i$ 的直线段.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		由于 $z=(3+4i)t,0\le t\le 1$,
-		\onslide<+->{因此
-		\[
-			\int_Cz\diff z=\int_0^1(3+4i)t\cdot(3+4i)\diff t
-			\visible<+->{=(3+4i)^2\int_0^1t\diff t}
-			\visible<+->{=\half (3+4i)^2=-\frac72+12i.}
-		\]}
-		\vspace{-\baselineskip}
-	\end{solution}
-	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis](0,0)--(3,0);
-			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,dcolora,cstarrowto](0,0)--(1.5,2);
-			\draw
-				(2.5,1.2) node[dcolora,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{典型例题: 计算复变函数沿曲线的积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4i$ 的曲线段.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		由于 $z=t+\dfrac49it^2,0\le t\le 3$,
-		\onslide<+->{因此
-		\begin{flalign*}
-			\int_Cz\diff z&=\int_0^3\left(t+\frac{4}9it^2\right)\cdot\left(1+\frac89it\right)\diff t&\\
-			&\visible<+->{=\int_0^3\left(t+\frac43it^2-\frac{32}{81}t^3\right)\diff t}&\\
-			&\visible<+->{=\left(\half t^2+\frac49it^3-\frac8{81}t^4\right)\Big|_0^3}
-			\visible<+->{=-\frac72+12i.}&
-		\end{flalign*}}
-		\vspace{-\baselineskip}
-	\end{solution}
-	\vspace{-7\baselineskip}
-	\onslide<1->
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-80mm,yshift=-5mm]
-		\draw[cstaxis](0,0)--(3,0);
-		\draw[cstaxis](0,0)--(0,2.5);
-		\draw[cstcurve,dcolora,domain=0:1.5,cstarrowto] plot({\x},{8*\x*\x/9});
-		\draw
-			(2.8,2) node[dcolora,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
-	\end{tikzpicture}\end{tikzpicture}
-\end{frame}
-
-
-\begin{frame}{典型例题: 计算复变函数沿曲线的积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $1+i$ 的直线段.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
-		由于 $z=(1+i)t,0\le t\le 1$,
-		\onslide<+->{因此 $\Re z=t$,
-		}\onslide<+->{
-			\[
-				\int_C\Re z\diff z=\int_0^1t\cdot(1+i)\diff t
-				\visible<+->{=(1+i)\int_0^1t\diff t}
-				\visible<+->{=\frac{1+i}2.}
-			\]}
-		\vspace{-\baselineskip}
-	\end{solution}
-	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis](0,0)--(3,0);
-			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,dcolora,cstarrowto](0,0)--(2,2);
-			\draw
-				(2.4,0.9) node[dcolora,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{典型例题: 计算复变函数沿曲线的积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $i$ 再到 $1+i$ 的折线段.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		\onslide<+->{第一段 $z=it,0\le t\le 1, \Re z=0$,}
-
-		\onslide<+->{第二段 $z=t+i$, $0\le t\le 1$, $\Re z=t$.
-		}\onslide<+->{因此
-			$\displaystyle\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12$.}
-		\onslide<2->
-		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis](0,0)--(2.5,0);
-				\draw[cstaxis](0,0)--(0,2);
-				\draw[cstcurve,cstarrowto,dcolora](0,0)--(0,1.5);
-				\draw[cstcurve,cstarrowto,dcolorb](0,1.5)--(1.5,1.5);
-				\draw
-					(-1.1,1.2) node[dcolora,align=center,visible on=<3->] {$z=it$\\$0\le t\le 1$}
-					(2.5,1.5) node[dcolorb,align=center,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
-			\end{tikzpicture}
-		\end{center}
-		\vspace{-0.6\baselineskip}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 计算复变函数沿曲线的积分}
-	\onslide<+->
-	可以看出, 即便起点和终点相同, 沿不同路径 $f(z)=\Re z$ 的积分也可能不同.
-	\onslide<+->
-	而 $f(z)=z$ 的积分则只和起点和终点位置有关, 与路径无关.
-	\onslide<+->
-	原因在于 $f(z)=z$ 是处处解析的, 我们以后会详加解释.
-
-	\onslide<+->
-	\begin{exercise}
-		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\visible<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
-		\begin{center}
-			\begin{tikzpicture}[scale=.8,framed]
-				\draw[cstaxis](0,0)--(2.5,0);
-				\draw[cstaxis](0,0)--(0,2.5);
-				\draw[cstcurve,cstarrowto,dcolora](0,0)--(2,2);
-				\draw[cstcurve,cstarrowto,dcolorb](2,2)--(0,2);
-			\end{tikzpicture}
-		\end{center}
-	\end{exercise}
-\end{frame}
-
-
-\begin{frame}{例题: 计算复变函数沿圆周的积分}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
-	\end{example}
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstcurve,dcolorb] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,dcolorb,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
-			\fill[cstdot,dcolorb](0,0) circle;
-			\draw[cstcurve,dcolora,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
-			\draw
-				(-0.5,0.5) node[dcolorb] {$r$}
-				(0,-0.3) node[dcolorb] {$z_0$};
-		\end{tikzpicture}
-	\end{center}
-	\onslide<+->
-	\begin{solution}
-		$C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
-		\onslide<+->{于是 $\diff z=ire^{i\theta}\diff \theta$.}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例题: 计算复变函数沿圆周的积分}
-	\onslide<+->
-	\begin{solutionc}
-		\[
-			\oint_C\frac{\diff z}{(z-z_0)^{n+1}}
-			=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
-			\visible<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta.}
-		\]
-		\onslide<+->{当 $n=0$ 时, 该积分值为 $2\pi i$.}
-
-		\vspace{5mm}
-		\onslide<+->{当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.}
-	\end{solutionc}
-	\onslide<+->
-	所以
-	\begin{alertblock@}
-		\[\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
-	\end{alertblock@}
-
-	\onslide<+->
-	这个积分以后经常用到, 它的特点是积分值与圆周的圆心和半径都无关.
-\end{frame}
-
-
-\begin{frame}{积分的性质}
-	\onslide<+->
-	\begin{theorem}
-		\begin{enumerate}
-			\item $\displaystyle\int_Cf(z)\diff z=-\displaystyle\int_{C^-}f(z)\diff z$.
-			\item $\displaystyle\int_Ckf(z)\diff z=k\displaystyle\int_Cf(z)\diff z$.
-			\item $\displaystyle\int_C[f(z)\pm g(z)]\diff z
-			=\displaystyle\int_Cf(z)\diff z\pm\displaystyle\int_Cg(z)\diff z$.
-				\begin{tikzpicture}[overlay,xshift=0cm,yshift=1.2cm]
-					\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (0,1.3)--(0,-1.3);
-					\draw (1.2,0) node[dcolorb] {线性性质};
-				\end{tikzpicture}
-			\item (\emph{长大不等式}) 设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
-			\[\alert{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.\]
-		\end{enumerate}
-	\end{theorem}
-\end{frame}
-
-
-\begin{frame}{积分的性质}
-	\onslide<+->
-	\begin{proof}
-		我们来证明下\enumnum4.
-		\onslide<+->{由
-			\[\abs{\sum_{k=1}^n f(\zeta_k)\Delta z_k}
-			\le\sum_{k=1}^n|f(\zeta_k)\Delta z_k|
-			\le\sum_{k=1}^n|f(\zeta_k)|\Delta s_k
-			\le M\sum_{k=1}^n\Delta s_k\]
-		}\onslide<+->{可知
-			\[\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML.\qedhere\]}
-	\end{proof}
-
-	\onslide<+->
-	长大不等式常常用于证明等式: 估算一个积分和一个具体的数值之差不超过任意给定的 $\varepsilon$, 从而得到二者相等.	
-
-	\onslide<+->
-	注意到: 如果被积函数 $f(z)$ 在 $C$ 上的点都连续, 那么 $|f(z)|$ 是 $C$ 的参变量 $t\in[a,b]$ 的连续函数, 从而有界, 即存在 $M$ 使得 $|f(z)|\le M,\forall z\in C$.
-\end{frame}
-
-
-\begin{frame}{例题: 长大不等式的应用\noexer}
-	\onslide<+->
-	\begin{example}
-		设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\lim\limits_{z\to a}(z-a)f(z)=k$, 则
-		\vspace{-0.9\baselineskip}
-		\[\lim_{r\to0}\oint_{|z-a|=r}f(z)\diff z=2\pi ik.\]
-	\end{example}
-
-	\onslide<+->
-	\begin{proof}
-		$\forall \varepsilon>0,\exists\delta>0$ 使得当 $|z-a|<\delta$ 时, $|(z-a)f(z)-k|\le\varepsilon$.
-		\onslide<+->{当 $0<r<\delta$ 时,
-		\vspace{-0.5\baselineskip}
-		\begin{align*}
-		&\peq\abs{\oint_{|z-a|=r}f(z)\diff z-2\pi i k}
-		=\abs{\oint_{|z-a|=r}\left[f(z)-\frac k{z-a}\right]\diff z}\\
-		&\visible<+->{=\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\diff z}}
-		\visible<+->{\le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.}
-		\end{align*}}
-		\onslide<+->{由于 $\varepsilon$ 是任意的, 因此命题得证.}
-	\end{proof}
-\end{frame}
-

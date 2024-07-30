@@ -4,6 +4,9 @@
 
 \begin{frame}{互换方阵的列的行列式}
 	\onslide<+->
+	我们将给出行列式的一系列性质, 这些性质可以帮助我们计算行列式.
+
+	\onslide<+->
 	\begin{alertblock@}
 		互换两列后, 方阵的行列式变为 $-1$ 倍.
 	\end{alertblock@}
@@ -13,7 +16,7 @@
 	注意 $c_i\swap c_j$ 可以通过
 	\[c_j\swap c_{j-1},\quad c_{j-1}\swap c_{j-2},\quad \dots,\quad, c_{i+1}\swap c_i,\qquad
 	c_{i+1}\swap c_{i+2},\quad \dots,\quad c_{j-1}\swap c_j\]
-	实现, 一共 $2(j-i)+1$ 次.
+	实现, 一共 $2(j-i)-1$ 次.
 	\onslide<+->
 	因此只需证明互换相邻的两列后, 方阵的行列式变为 $-1$ 倍.
 
@@ -62,6 +65,7 @@
 		a_{1n}&a_{2n}&\cdots&a_{mn}
 	\end{pmatrix}\]
 	为矩阵 $\bfA$ 的\emph{转置}, 它是 $n\times m$ 矩阵.
+	\onslide<+->
 	\begin{alertblock@}
 		\begin{enumerate}
 			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
@@ -89,9 +93,7 @@
 		&=\sum|\bfP| a_{1\ell_1}\cdots a_{1 \ell_n}.
 	\end{align*}
 	\onslide<+->
-	因此只需证明 $|\bfP|=|\bfQ|$, 其中 $\bfQ$ 的 $i$ 行 $\ell_i$ 列为 $1$, 其余项为零.
-	\onslide<+->
-	换言之, $\bfQ=\bfP^\rmT$.
+	因此只需证明 $|\bfP|=|\bfP^\rmT|$, 其中 $\bfP^\rmT$ 的 $i$ 行 $\ell_i$ 列为 $1$, 其余项为零.
 \end{frame}
 
 
@@ -101,11 +103,12 @@
 	\onslide<+->
 	如果 $\bfP$ 可通过 $a$ 次互换列变成单位矩阵 $\bfE_n$, 那么 $|\bfP|=(-1)^a$ 且 $\bfP$ 可通过 $a$ 次互换行变成单位矩阵.
 	\onslide<+->
-	所以 $\bfQ$ 可通过 $a$ 次互换列变成单位矩阵, $|\bfQ|=(-1)^a=|\bfP|$.
+	所以 $\bfP^\rmT$ 可通过 $a$ 次互换列变成单位矩阵, $|\bfP^\rmT|=(-1)^a=|\bfP|$.
 	从而命题得证.
 	
 	\onslide<+->
 	由此可知:
+	\onslide<+->
 	\begin{alertblock@}
 	\begin{enumerate}
 		\setcounter{enumi}{1}
@@ -116,6 +119,7 @@
 	如果方阵有相同的两行, 那么交换这两行方阵不变但行列式变为 $-1$ 倍.
 	\onslide<+->
 	于是行列式只能为 $0$.
+	\onslide<+->
 	\begin{corollary}
 		具有相同的两行(列)的方阵的行列式为 $0$.
 	\end{corollary}
@@ -160,13 +164,13 @@
 	\onslide<+->
 	\begin{proofs}
 	设将方阵的第 $i$ 行移动到第一行的前面得到的方阵为 $\bfB$.
-	\onslide<+->
+	\onslide<+->{
 	那么 $\bfB$ 就是 $\bfA$ 通过
 	\[r_i\swap r_{i-1}, r_{i-1}\swap r_{i-2},\dots,r_2\swap r_1\]
-	\onslide<+->
+	}\onslide<+->{%
 	一共 $i-1$ 次行互换得到的.
-	\onslide<+->
-	从而 $|\bfB|=(-1)^{i-1}|\bfA|$.
+	}\onslide<+->{%
+	从而 $|\bfB|=(-1)^{i-1}|\bfA|$.}
 	\end{proofs}
 \end{frame}
 
@@ -176,19 +180,19 @@
 	\begin{proofe}
 	$\bfB$ 在 $(1,j)$ 处的元素是 $a_{ij}$, 余子式是 $M_{ij}$, 因此
 	\[|\bfB|=a_{i1}M_{i1}-a_{i2}M_{i2}+\cdots+(-1)^{n+1}a_{in}M_{in}.\]
-	\onslide<+->
+	\onslide<+->{
 	两边同时乘以 $(-1)^{i+1}$ 得到
 	\begin{align*}
 		|\bfA|&=(-1)^{i+1}M_{i1}+(-1)^{i+2}M_{i2}+\cdots+(-1)^{i+n}M_{in}\\
 		&=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}.
 	\end{align*}
-	\onslide<+->
-	再根据转置不改变行列式得到行列式沿一列展开的形式.
+	}\onslide<+->{%
+	再根据转置不改变行列式得到行列式沿一列展开的形式.\qedhere}
 	\end{proofe}
 	
 	\onslide<+->
-	由此也可以看出 $i\neq k$ 时,
-	\[a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,\]
+	由此也可以看出 \alert{$i\neq k$ 时,}
+	\[\alert{a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,}\]
 	\onslide<+->
 	因为它是第 $i,k$ 行相同的方阵的行列式.
 \end{frame}
@@ -226,7 +230,7 @@
 		\begin{enumerate}
 			\setcounter{enumi}{4}
 			\item 将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
-		\[\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
+		\[\hspace{-8mm}\detm{a_{11}&a_{12}&\cdots&a_{1n}\\
 		&\vdots&\vdots&\ddots\\
 		a_{i1}+a'_{i1}&a_{i2}+a'_{i2}&\cdots&a_{in}+a'_{in}\\
 		&\vdots&\vdots&\ddots\\
@@ -259,7 +263,7 @@
 	\begin{block}{初等变换}
 		\begin{enumerate}
 		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
-		\item 一行(列)乘非零常数 $k$: \alert{$r_i\times k, c_i\times k$}, 行列式变为 $k$ 倍;
+		\item 一行(列)乘非零常数 $k$: \alert{$kr_i, kc_i$}, 行列式变为 $k$ 倍;
 		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
 	\end{enumerate}
 	\end{block}
@@ -280,7 +284,7 @@
 		 -4&-5& 1& 3\\
 		 -3& 1&-5& 3\\
 		  2& 3& 1&-1}}
-		\onslide<+->{\xeq[r_4-2r_1]{r_2+4r_1, r_3+3r_1}}
+		\onslide<+->{\xeq[r_4-2r_1]{r_2+4r_1\atop r_3+3r_1}}
 		\onslide<+->{-\detm{
 			1&-2& 0&-1\\
 		  0&-13& 1&-1\\
@@ -358,7 +362,7 @@
 			a_1&b_1&c_1\\
 			a_2&b_2&c_2\\
 			a_3&b_3&c_3
-		}.}\qedhere\]
+		}.\qedhere}\]
 	\end{proof}
 \end{frame}
 
@@ -387,15 +391,11 @@
 \begin{frame}{例: 计算行列式}
 	\onslide<+->
 	\begin{exercise}
-		解方程 $\detm{
+		若 $\detm{
 			x+1&2&-1\\
 			2&x+1&1\\
-			-1&1&x+1}=0$.
+			-1&1&x+1}=0$, 则 $x=$\fillblank[3cm]{\visible<+->{$-3,\pm\sqrt3$}}.
 	\end{exercise}
-	\onslide<+->
-	\begin{answer}
-		$x=-3,\pm\sqrt3$.
-	\end{answer}
 	\onslide<+->
 	\begin{example}
 		如果 $abcd=1$, 证明 $\bfA=\begin{pmatrix}
@@ -591,8 +591,8 @@
 	\onslide<+->
 	\begin{solution}
 		设 $D_n=|\bfA_n|$.
-		\onslide<+->
-		沿着第一列展开得到
+		\onslide<+->{
+		沿着第一行展开得到
 		\[|\bfA_n|=2|\bfA_{n-1}|-\detm{
 			1  &   1  &   0  &\cdots&   0  &   0  \\
 			0  &   2  &   1  &\cdots&   0  &   0  \\
@@ -600,11 +600,11 @@
 		\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
 			0  &   0  &   0  &\cdots&   2  &   1  \\
 			0  &   0  &   0  &\cdots&   1  &   2  \\}=2|\bfA_{n-1}|-|\bfA_{n-2}|,\]
-		\onslide<+->
+		}\onslide<+->{%
 		因此
 		\[|\bfA_n|-|\bfA_{n-1}|=|\bfA_{n-1}|-|\bfA_{n-2}|=\cdots=|\bfA_2|-|\bfA_1|=1,\]
-		\onslide<+->
-		从而 $|\bfA_n|=n-1+|\bfA_1|=n+1$.
+		}\onslide<+->{%
+		从而 $|\bfA_n|=n-1+|\bfA_1|=n+1$.}
 	\end{solution}
 \end{frame}
 
@@ -621,9 +621,6 @@
 		\dfrac{\lambda_1^{n+1}-\lambda_2^{n+1}}{\lambda_1-\lambda_2},&\text{如果}\ \lambda_1\neq \lambda_2;\\[6pt]
 		(n+1)a^n,&\text{如果}\ \lambda_1=\lambda_2=a.
 	\end{cases}\]
-\end{frame}
-
-\begin{frame}{例: 范德蒙行列式}
 	\onslide<+->
 	\begin{exercise}
 		如果 $\bfA=\begin{pmatrix}
@@ -634,6 +631,9 @@
 		\end{pmatrix}$,
 		那么 $A_{11}+A_{21}+A_{31}+A_{41}=$\fillblank{\visible<+->{$0$}}.
 	\end{exercise}
+\end{frame}
+
+\begin{frame}{例: 范德蒙行列式}
 	\onslide<+->
 	\begin{example}[范德蒙行列式]
 		设 $\bfA_n=\begin{pmatrix}
@@ -673,7 +673,7 @@
 		=\prod_{j=2}^n(x_j-x_1)\detm{
 			1&1&\cdots&1\\
 			x_2&x_3&\cdots&x_n\\
-			\vdots&\vdots&\ddots&\vdots&\vdots\\
+			\vdots&\vdots&\ddots&\vdots\\
 			x_2^{n-1}&x_3^{n-1}&\cdots&x_n^{n-1}}.\]}
 			\onslide<+->{由归纳假设可知
 			\[|\bfA_n|
@@ -698,12 +698,12 @@
 			1&2&3&4\\
 			1&4&9&16\\
 			1&8&27&65
-		}=$\fillblank{\visible<4->{$14$}}.
+		}=$\fillblank{\visible<5->{$14$}}.
 		\item
 			设 $a,b,c$ 两两不等, 且 $\detm{
 				a&b&c\\
 				a^2&b^2&c^2\\
-				b+c&c+a&a+b}0$, 则 $a+b+c=$\fillblank{\visible<4->{$0$}}.
+				b+c&c+a&a+b}=0$, 则 $a+b+c=$\fillblank{\visible<6->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}

@@ -4,17 +4,20 @@
 
 \begin{frame}{矩阵记号}
 	\onslide<+->
-	我们已经在上一章知道了什么是矩阵和方阵.
+	我们已经在上一章知道了什么是矩阵和方阵. 为了研究一般的线性方程组的解, 我们需要考虑一般的矩阵. 
 	\onslide<+->
 	分别用记号
 	\begin{itemize}
-		\item $M_{m\times n}(\BR)$ 表示 $m$ 行 $n$ 列实矩阵, 即元素都是实数的矩阵;
-		\item $M_n(\BR)$ 表示 $n$ 阶实方阵;
-		\item $M_{m\times n}(\BC)$ 表示 $m$ 行 $n$ 列复矩阵;
-		\item $M_n(\BC)$ 表示 $n$ 阶复方阵.
+		\item $M_{m\times n}(\BR)$ 表示 $m$ 行 $n$ 列的矩阵全体;
+		\item $M_n(\BR)$ 表示 $n$ 阶方阵全体.
 	\end{itemize}
 	\onslide<+->
-	不特别强调矩阵元素是实数还是复数时, 就简单记作 $M_{m\times n},M_n$.
+	这里我们没有特别强调矩阵元素的取值范围.
+	\onslide<+->
+	\begin{itemize}
+		\item 如果矩阵元素都是实数, 则称其为实矩阵、实方阵，对应集合记作 $M_{m\times n}(\BR), M_n(\BR)$.
+		\item 如果矩阵元素都是复数, 则称其为复矩阵、复方阵，对应集合记作 $M_{m\times n}(\BC), M_n(\BC)$.
+	\end{itemize}
 \end{frame}
 
 
@@ -42,20 +45,37 @@
 	分别为\emph{上三角阵}, \emph{下三角阵}和\emph{对角阵}.
 	\onslide<+->
 	为书写方便, 对角阵也可记作
-	\[\diag(\lambda_1,\lambda_2,\dots,\lambda_n).\]
+	\[\alert{\diag(\lambda_1,\lambda_2,\dots,\lambda_n)}.\]
 	\onslide<+->
 	\[\bfE_n=\diag(1,1,\dots,1)\in M_n\]
 	为\emph{单位阵}.
 \end{frame}
 
 
+\begin{frame}{线性方程组对应的映射}
+	\onslide<+->
+	我们在第一章中说过, 线性方程组
+	\[\laeq{
+		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=y_1\\
+		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=y_2\\
+		\vvdots\\
+		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=y_m
+	}\]
+	的系数矩阵是一个 $m\times n$ 矩阵.
+	\onslide<+->
+	如果我们把 $x_1,\dots,x_n$ 看作自变量, $y_1,\dots,y_m$ 看作因变量, 那么上述关系就给出了一个映射.
+\end{frame}
+
+
 \begin{frame}{向量}
 	\onslide<+->
-	只有一行的矩阵
+	为了描述这个映射, 我们引入向量的概念.
+	\onslide<+->
+	将只有一行的矩阵
 	\[(a_1,a_2,\dots,a_n)\in M_{1\times n}\]
 	称为 $n$ 维\emph{行矩阵}或\emph{行向量}.
 	\onslide<+->
-	只有一行的矩阵
+	只有一列的矩阵
 	\[\begin{pmatrix}
 		b_1\\b_2\\\vdots\\b_n
 	\end{pmatrix}\in M_{n\times 1}\]
@@ -63,6 +83,8 @@
 	\onslide<+->
 	为了书写方便, 可以把列向量写成
 	\[(b_1,b_2,\dots,b_n)^\rmT.\]
+	\onslide<+->
+	\alert{当我们不特别指明时, 向量指的就是列向量.}
 \end{frame}
 
 
@@ -75,27 +97,39 @@
 	\onslide<+->
 	类似于二维和三维向量的情形, 我们可以在 $\BR^n$ 上定义\emph{加法}和\emph{数乘}:
 	\begin{enumerate}
-		\item $(a_1,\dots,a_n)^\rmT+(b_1,\dots,b_n)^\rmT=(a_1+b_1,\dots,a_n+b_n)^\rmT$, 其中 $a_i,b_i\in\BR$;
-		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT$, 其中 $a_i,\lambda\in\BR$.
+		\item $(a_1,\dots,a_n)^\rmT+(b_1,\dots,b_n)^\rmT=(a_1+b_1,\dots,a_n+b_n)^\rmT$;
+		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT$.
 	\end{enumerate}
 
 	\onslide<+->
-	将上述 $\BR$ 均换成 $\BC$, 则可以得到 $\BC^n$ 上的加法和数乘.
+	将 $\BR$ 均换成 $\BC$, 则可以得到 $\BC^n$ 上的加法和数乘.
+	\onslide<+->
+	$\BR^n$ 或 $\BC^n$ 上的加法和数乘满足:
+	\begin{enumerate}
+		\item $\bma+\bmb=\bmb+\bma$;
+		\item $\bma+(\bmb+\bmg)=(\bma+\bmb)+\bmg$;
+		\item 零向量 ${\bm0}=(0,\dots,0)$ 满足 ${\bm0}+\bma=\bma$;
+		\item 对任意 $\bma$, 存在 $\bmb$ 使得 $\bma+\bmb={\bf0}$. 称 $\bmb$ 为 $\bma$ 的负向量;
+		\item $1\cdot\bma=\bma$;
+		\item $(k\ell)\bma=k(\ell)\bma$;
+		\item $(k+\ell)\bma=k\bma+\ell\bma$;
+		\item $k(\bma+\bmb)=k\bma+k\bmb$.
+	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{线性变换和矩阵}
 	\onslide<+->
 	\begin{definition}
-		如果映射 $f:\BC^n\to\BC^m$ 满足
+		如果映射 $f:\BR^n\to\BR^m$ 满足
 		\begin{enumerate}
-			\item $f(\bfu+\bfv)=f(\bfu)+f(\bfv),\forall \bfu,\bfv\in \BC^n$;
-			\item $f(\lambda \bfu)=\lambda f(\bfu),\forall \lambda\in\BC,\bfu\in \BC^n$,
+			\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in \BR^n$;
+			\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in \BR^n$,
 		\end{enumerate}
 		称 $f$ 是一个\emph{线性变换}.
 	\end{definition}
 	\onslide<+->
-	对于线性变换 $f:\BC^n\to\BC^m$, 记
+	对于线性变换 $f:\BR^n\to\BR^m$, 记
 	\[f\begin{pmatrix}
 		1\\0\\\vdots\\0
 	\end{pmatrix}=\begin{pmatrix}
@@ -116,7 +150,7 @@
 
 \begin{frame}{线性变换和矩阵}
 	\onslide<+->
-	那么
+	根据线性变换的性质,
 	\[f\begin{pmatrix}
 		x_1\\x_2\\\vdots\\x_n
 	\end{pmatrix}=\begin{pmatrix}
@@ -135,9 +169,12 @@
 	\end{pmatrix},\cdots,
 	f\begin{pmatrix}
 		0\\0\\\vdots\\1
-	\end{pmatrix}\right)\in M_{m\times n}(\BC).\]
+	\end{pmatrix}\right)\in M_{m\times n}(\BR).\]
 	\onslide<+->
-	线性变换 $f:\BC^n\to\BC^m$ 全体和 $M_{m\times n}(\BC)$ 之间是一一对应的.
+	线性变换 $f:\BR^n\to\BR^m$ 全体和 $M_{m\times n}(\BR)$ 之间是一一对应的.
+
+	\onslide<+->
+	将 $\BR$ 换成 $\BC$ 也有类似结论, 之后不再赘述.
 \end{frame}
 
 
@@ -173,7 +210,7 @@
 		\item $\bfA=\begin{pmatrix}
 			0&1&0\\0&0&1\\1&0&0
 		\end{pmatrix}$ 表示三维空间中沿着直线 $x_1=x_2=x_3$ 旋转 $\dfrac{2\pi}3$.
-		\item $\bfA=\begin{pmatrix}
+		\item 想一想: $\bfA=\begin{pmatrix}
 			1&0&0\\0&1&0\\0&0&-1
 		\end{pmatrix}$ 表示什么线性变换?
 	\end{itemize}
@@ -184,7 +221,7 @@
 \begin{frame}{矩阵的加法}
 	\onslide<+->
 	给定两个线性变换 $f,g:\BC^n\ra\BC^m$, 定义
-	\[(f+g)(\bfu)=f(\bfu)+g(\bfu).\]
+	\[(f+g)(\bfx)=f(\bfx)+g(\bfx).\]
 	\onslide<+->
 	由此得到对应的矩阵的加法:
 	\onslide<+->
@@ -194,9 +231,9 @@
 		\[\bfA+\bfB=(a_{ij}+b_{ij})_{m\times n}.\]
 	\end{definition}
 	\onslide<+->
-	只有\emph{同型矩阵}才能相加, 即行列数都相同的矩阵.
+	只有\emph{同型矩阵}(行列数都相同的矩阵)才能相加.
 	\onslide<+->
-	矩阵的加法满足通常数的加法的几条规律:
+	矩阵的加法满足:
 	\begin{enumerate}
 		\item $\bfA+\bfB=\bfB+\bfA$;
 		\item $(\bfA+\bfB)+\bfC=\bfA+(\bfB+\bfC)$;
@@ -207,7 +244,7 @@
 
 \begin{frame}{加法和行列式不交换}
 	\onslide<+->
-	注意两个方阵的和的行列式 $|\bfA+\bfB|$ 一般不等于各自行列式的和 $|\bfA|+|\bfB|$.
+	注意两个方阵的和的行列式 $|\bfA+\bfB|$ 一般\alert{不等于}各自行列式的和 $|\bfA|+|\bfB|$.
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -246,8 +283,8 @@
 
 \begin{frame}{矩阵的数乘}
 	\onslide<+->
-	给定一个线性变换 $f:\BC^n\ra\BC^m$ 和一个数 $\lambda$, 定义
-	\[(\lambda f)(\bfu)=\lambda(f(\bfu)).\]
+	给定一个线性变换 $f:\BC^n\ra\BC^m$ 和一个数 $\lambda\in\BC$, 定义
+	\[(\lambda f)(\bfx)=\lambda(f(\bfx)).\]
 	\onslide<+->
 	由此得到对应的矩阵的数乘:
 	\onslide<+->
@@ -352,33 +389,23 @@
 
 \begin{frame}{线性变换的复合}
 	\onslide<+->
-	给定两个矩阵 $\bfA=(a_{ij})_{m\times n}, \bfB=(b_{ij})_{n\times p}$, 其中 $\bfA$ 的列数和 $\bfB$ 的行数相等.
+	设线性映射
+	\[f:\BC^n\to\BC^m,\quad
+	g:\BC^p\to \BC^n,\quad 
+	h=f\circ g:\BC^p\to\BC^m\]
+	对应的矩阵为 $\bfA=(a_{ij})_{m\times n}, \bfB=(b_{ij})_{n\times p},\bfC=(c_{ij})_{m\times p}$.
 	\onslide<+->
-	那么它们对应两个映射
-	\[\msl_\bfA:\BC^n\to\BC^m,\quad
-	\msl_\bfB:\BC^p\to \BC^n.\]
-	\onslide<+->
-	它们的复合
-	\[\msl_\bfA\circ\msl_\bfB:\BC^p\to\BC^n\to\BC^m\]
-	是否还是一个线性变换呢?
-	\onslide<+->
-	如果是, 对应的矩阵是什么?
-\end{frame}
+	如何用 $\bfA,\bfB$ 来表示 $\bfC$ 呢?
 
-
-\begin{frame}{线性变换的复合}
 	\onslide<+->
 	设 $\bfx=(x_1,\dots,x_p)^\rmT\in \BC^p$, 那么
-	\[\bfy=(y_1,\dots,y_n)^\rmT=\msl_\bfB(x)\in\BC^n\qquad
-	\text{满足}\qquad
+	\[g(\bfx)=(y_1,\dots,y_n)^\rmT, \quad
 		y_k=\sum_{j=1}^p b_{kj} x_j.\]
 	\onslide<+->
-	\[\bfz=(z_1,\dots,z_m)^\rmT=\msl_\bfA(y)\in\BC^n\]
-	满足
-	\[z_i=\sum_{k=1}^n a_{ik} y_k=\sum_{k=1}^n a_{ik} \sum_{j=1}^p b_{kj} x_j=\sum_{j=1}^p\Bigl(\sum_{k=1}^n a_{ik}b_{kj}\Bigr)x_j.\]
+	\[f\bigl(g(\bfx)\bigr)=(z_1,\dots,z_m)^\rmT, \quad
+	z_i=\sum_{k=1}^n a_{ik} y_k=\sum_{k=1}^n a_{ik} \sum_{j=1}^p b_{kj} x_j=\sum_{j=1}^p\Bigl(\sum_{k=1}^n a_{ik}b_{kj}\Bigr)x_j.\]
 	\onslide<+->
-	所以 $\msl_\bfA\circ\msl_\bfB$ 是线性变换, 且对应的矩阵为
-	\[\bfC=(c_{ij})_{m\times p},\qquad c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.\]
+	\[\implies\bfC=(c_{ij})_{m\times p},\qquad c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.\]
 	\onslide<+->
 	我们把它定义为矩阵的乘法 $\bfC=\bfA\bfB$.
 \end{frame}
@@ -416,15 +443,15 @@
 	\onslide<+->
 	$\bfA\bfB$ 的 $(i,j)$ 元其实就是 $\bfA$ 第 $i$ 行对应的行向量和 $\bfB$ 第 $j$ 列对应的列向量相乘得到的数($1$ 阶方阵):
 	\[\begin{pmatrix}
-		\bfu_1\\
-		\bfu_2\\
+		\bma_1\\
+		\bma_2\\
 		\vdots\\
-		\bfu_m
-	\end{pmatrix}(\bfv_1,\bfv_2,\cdots,\bfv_p)=\begin{pmatrix}
-		\bfu_1\bfv_1&\bfu_1\bfv_2&\cdots&\bfu_1\bfv_p\\
-		\bfu_2\bfv_1&\bfu_2\bfv_2&\cdots&\bfu_2\bfv_p\\
+		\bma_m
+	\end{pmatrix}(\bmb_1,\bmb_2,\cdots,\bmb_p)=\begin{pmatrix}
+		\bma_1\bmb_1&\bma_1\bmb_2&\cdots&\bma_1\bmb_p\\
+		\bma_2\bmb_1&\bma_2\bmb_2&\cdots&\bma_2\bmb_p\\
 		\vdots&\vdots&\ddots&\vdots\\
-		\bfu_m\bfv_1&\bfu_m\bfv_2&\cdots&\bfu_m\bfv_p
+		\bma_m\bmb_1&\bma_m\bmb_2&\cdots&\bma_m\bmb_p
 	\end{pmatrix}.\]
 \end{frame}
 
@@ -485,7 +512,10 @@
 
 \begin{frame}{矩阵乘法的性质}
 	\onslide<+->
-	矩阵乘法满足如下性质:
+	矩阵 $\bfA$ 对应的线性变换就是
+	\[f:\BR^n\to\BR^m,\ \bfx\mapsto \bfA\bfx.\]
+	\onslide<+->
+	由此可知矩阵乘法满足如下性质:
 	\begin{enumerate}
 		\item $(\bfA\bfB)\bfC=\bfA(\bfB\bfC)$;
 		\item $\lambda(\bfA\bfB)=(\lambda\bfA)\bfB=\bfA(\lambda\bfB)$;
@@ -733,7 +763,7 @@
 		\end{pmatrix},\bfN^3=\bfO.$
 		\onslide<+->{由于 $\bfA=\lambda\bfE+\bfN$ 且 $\bfE$ 和 $\bfN$ \alert{可交换}, 因此
 		\begin{align*}
-			\bfA^k&=\lambda^k\bfE+\rmC_k^1\lambda^{k-1} \bfN+\rmC_k^2\lambda^{k-2}\bfN^2\\
+			\bfA^k&=(\lambda E+\bfN)^k=\lambda^k\bfE+\rmC_k^1\lambda^{k-1} \bfN+\rmC_k^2\lambda^{k-2}\bfN^2\\
 			&\visible<+->{=\begin{pmatrix}
 				\lambda^k&k\lambda^{k-1}&\dfrac{k(k-1)}2\lambda^{k-2}\\[3mm]
 				&\lambda^k&k\lambda^{k-1}\\[3mm]
@@ -820,26 +850,29 @@
 	例如 $4$ 个城市之间的航线如图所示:
 	\begin{center}
 	\begin{tikzpicture}
-		\node[dcolorb] at (0,0)  (1){1};
-		\node[dcolorb] at (0,-2)  (2){2};
-		\node[dcolorb] at (2,-2)  (3){3};
-		\node[dcolorb] at (2,0)  (4){4};
-		\draw[dcolorb] (1) circle (.2);
-		\draw[dcolorb] (2) circle (.2);
-		\draw[dcolorb] (3) circle (.2);
-		\draw[dcolorb] (4) circle (.2);
-		\draw[Latex-Latex, line width=0.5mm,dcolorc] (1.east) to (4.west);
-		\draw[Latex-Latex, line width=0.5mm,dcolorc] (1.south) to (2.north);
-		\draw[-Latex, line width=0.5mm,dcolorc] (1.south east) to (3.north west);
-		\draw[-Latex, line width=0.5mm,dcolorc] (4.south) to (3.north);
-		\draw[-Latex, line width=0.5mm,dcolorc] (3.west) to (2.east);
-		\draw[visible on=<3->] (3,-1) node {\Large$\iff$}
-		(6,-1) node{邻接矩阵 $\bfA=\begin{pmatrix}
-			0&1&1&1\\
-			1&0&0&0\\
-			0&1&0&0\\
-			1&0&1&0
-		\end{pmatrix}$};
+		\begin{scope}[dcolorb, node distance=15mm]
+			\node (1) {1};
+			\node (2) [below=of 1] {2};
+			\node (3) [right=of 2]{3};
+			\node (4) [above=of 3]{4};
+			\draw (1) circle (.2);
+			\draw (2) circle (.2);
+			\draw (3) circle (.2);
+			\draw (4) circle (.2);
+		\end{scope}
+		\begin{scope}[line width=0.5mm,dcolorc]
+			\draw[Latex-Latex] (1.east) -- (4.west);
+			\draw[Latex-Latex] (1.south) -- (2.north);
+			\draw[-Latex] (1.south east) -- (3.north west);
+			\draw[-Latex] (3.west) -- (2.east);
+			\draw[-Latex] (4.south) -- (3.north)
+				node[midway,right,black,visible on=<3->] {{\Large$\iff$}\emph{邻接矩阵} $\bfA=\begin{pmatrix}
+					0&1&1&1\\
+					1&0&0&0\\
+					0&1&0&0\\
+					1&0&1&0
+				\end{pmatrix}$};
+		\end{scope}
 	\end{tikzpicture}
 \end{center}
 	\onslide<+->

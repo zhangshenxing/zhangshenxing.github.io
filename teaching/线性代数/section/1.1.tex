@@ -3,6 +3,9 @@
 \subsection{行列式的归纳定义}
 \begin{frame}{矩阵和方阵}
 	\onslide<+->
+	本章我们将回答如何判断 $n$ 个未知数 $n$ 个方程的线性方程组何时有唯一解.
+
+	\onslide<+->
 	首先引入矩阵的概念.
 	\onslide<+->
 	将 $mn$ 个数按照每行 $n$ 个元素, 一共 $m$ 行排列, 得到的数表称为 \emph{$m$ 行 $n$ 列矩阵}, 或简称为 \emph{$m\times n$ 矩阵}:
@@ -27,8 +30,9 @@
 		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1\\
 		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2\\
 		\vvdots\\
-		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m,
+		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=b_m
 	}\]
+	\onslide<+->
 	未知量 $x_1,\dots,x_n$ 前面的系数就构成了一个 $m\times n$ 矩阵, 称之为\emph{系数矩阵}
 	\[\bfA=\begin{pmatrix}
 		a_{11}&a_{12}&\cdots &a_{1n}\\
@@ -36,8 +40,6 @@
 		\vdots&\vdots&\ddots&\vdots\\
 		a_{m1}&a_{m2}&\cdots &a_{mn}
 	\end{pmatrix}.\]
-	\onslide<+->
-	线性代数的主要任务之一, 就是利用矩阵理论回答线性方程组解的情况.
 \end{frame}
 
 
@@ -54,14 +56,17 @@
 	\end{pmatrix}}\qquad 
 	(\text{即方程组}
 	\left\{\begin{array}{l}
-		x_1=b_1,\\x_2=b_2,\\\vdots\\x_n=b_n
+		x_1=b_1\\
+		x_2=b_2\\
+		\vdots\\
+		x_n=b_n
 	\end{array}\right.\text{的系数矩阵})
 	\]
 	行列式为 $1$.
 	\onslide<+->
 	作此约定之后, $2$ 阶方阵的行列式就应当为
 	\[\det(\bfA)=|A|=\detm{a_{11}&a_{12}\\a_{21}&a_{22}}:=a_{11}a_{22}-a_{12}a_{21}
-	\begin{tikzpicture}[overlay,xshift=-40mm,yshift=.5mm,visible on=<5->]
+	\begin{tikzpicture}[overlay,xshift=-40mm,yshift=.5mm,visible on=<4->]
 		\draw[cstcurve,dcolora] (-.2,.2)--(.2,-.2);
 		\draw[cstcurve,dcolorb] (-.2,-.2)--(.2,.2);
 	\end{tikzpicture}\]
@@ -118,13 +123,12 @@
 	\onslide<+->
 	\begin{example}
 		$\detm{1&3&2\\3&-5&1\\2&1&4}$
-		\onslide<+->{$=1\times (-5)\times 4+3\times 1\times2+2\times3\times1-1\times1\times1-3\times3\times4-2\times(-5)\times2$}\\
-		\onslide<+->{$=-20+6+6-1-36+20=-25.$}
-	\end{example}
-	\onslide<+->
-	\begin{example}
-		$\detm{1&3&2\\3&-5&1\\2&1&4}$
-		\onslide<+->{$=1\times\detm{-5&1\\1&4}-3\times\detm{3&1\\2&4}+2\detm{3&-5\\2&1}$}
+		\onslide<+->{$=1\times (-5)\times 4+3\times 1\times2+2\times3\times1-1\times1\times1-3\times3\times4-2\times(-5)\times2$}
+
+		\onslide<+->{\hspace{19.5mm}$=-20+6+6-1-36+20=-25.$}
+
+		\onslide<+->{$\detm{1&3&2\\3&-5&1\\2&1&4}$
+		\onslide<+->{$=1\times\detm{-5&1\\1&4}-3\times\detm{3&1\\2&4}+2\detm{3&-5\\2&1}$}}
 		\onslide<+->{$=-21-3\times10+2\times13=-25.$}
 	\end{example}
 	\onslide<+->
@@ -138,17 +142,17 @@
 \begin{frame}{注记}
 	\onslide<+->
 	\begin{enumerate}
-		\item 行列式是一个数, 或者说 $\det:M_n(\BR)\to\BR$ 是一个映射, 其中 $M_n(\BR)$ 表示所有实系数的 $n$ 阶方阵.
+		\item 行列式将一个方阵映射到一个数.
 		\item $1$ 阶行列式就是方阵里面唯一的那个元素, 尽管也记作 $|\cdot|$, 但注意和绝对值区分.
 		\item $2,3$ 阶行列式可以用对角线法直接得到展开式, 但是更高阶的没有这种表示方法.
-		\item \emph{对角矩阵}的行列式
+		\item \emph{对角阵}的行列式
 		$\detm{
 			a_1&&&\\
 			&a_2&&\\
 			&&\ddots&\\
 			&&&a_n
 		}=a_1a_2\cdots a_n.$
-		\item 从行列式的归纳定义出发依次展开得到, $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1 k_2 \cdots k_n$ 取遍 $1,2,\dots,n$ 的所有\emph{排列}, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$, ($n\ge2$).
+		\item 从行列式的归纳定义出发依次展开得到, $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1 k_2 \cdots k_n$ 取遍 $1,2,\dots,n$ 的所有\emph{排列}, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$ ($n\ge2$).
 	\end{enumerate}
 \end{frame}
 
@@ -192,7 +196,7 @@
 	\begin{solution*}
 		\begin{align*}
 			|\bfA|&=(-1)^{n+1}a_1\detm{&&a_2\\&\udots&\\a_n&&}
-			\visible<+->{=(-1)^{n+1}a_1\cdot (-1)^{n}a_3\detm{&&a_2\\&\udots&\\a_n&&}}\\
+			\visible<+->{=(-1)^{n+1}a_1\cdot (-1)^{n}a_2\detm{&&a_3\\&\udots&\\a_n&&}}\\
 			&\visible<+->{=\cdots=\prod_{i=1}^n (-1)^{n-i}a_i}
 			\visible<+->{=(-1)^{\frac{n(n-1)}2}a_1a_2\cdots a_n.}
 		\end{align*}
@@ -251,7 +255,8 @@
 \end{frame}
 
 
-\begin{frame}{行列式的几何意义}
+\subsection{行列式的几何意义}
+\begin{frame}{二阶行列式的几何意义}
 	\onslide<+->
 	设平面上有平行四边形 $OACB$, 其中 $A(a,b), B(c,d)$.
 	\begin{center}
@@ -270,14 +275,15 @@
 \end{frame}
 
 
-\begin{frame}{行列式的几何意义}
+\begin{frame}{三阶行列式的几何意义}
 	\onslide<+->
 	类似地, 如果 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$, 则三阶行列式 $\detm{a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3}$ 的绝对值就是下述平行六面体的体积.
 	\begin{center}
 	\begin{tikzpicture}[scale=.8]
 		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-		\draw[cstcurve,dcolora] (1.5,1)--(4.5,1)--(5.5,2.5)--(2.5,2.5)--cycle;
-		\draw[cstcurve,dcolora] (0,0)--(1.5,1);
+		\draw[cstcurve,dcolora] (4.5,1)--(5.5,2.5)--(2.5,2.5);
+		\draw[cstdash,cstcurve,dcolora] (2.5,2.5)--(1.5,1)--(4.5,1);
+		\draw[cstdash,cstcurve,dcolora] (0,0)--(1.5,1);
 		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
 		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
 		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
@@ -288,5 +294,5 @@
 	\end{tikzpicture}
 	\end{center}
 	\onslide<+->
-	它的符号则表示使用右手从 $OA$ 旋转到 $OB$ 方向时, 大拇指所指方向与 $OC$ 是否在平面 $OAB$ 的同侧.
+	它的符号则表示使用右手四指从 $OA$ 旋转到 $OB$ 方向时, 大拇指所指方向与 $OC$ 是否在平面 $OAB$ 的同侧.
 \end{frame}
