@@ -1,237 +1,237 @@
-\section{矩阵的运算: 转置和行列式}
+\section{秩与极大线性无关组}
 
-\subsection{矩阵的转置}
 
-\begin{frame}{矩阵转置的定义}
+\subsection{秩}
+
+\begin{frame}{基}
 	\onslide<+->
-	上一章我们已经说过, 如果 $\bfA=(a_{ij})_{m\times n}$, 称
-	\[\bfA^\rmT=\begin{pmatrix}
-		a_{11}&a_{21}&\cdots&a_{m1}\\
-		a_{12}&a_{22}&\cdots&a_{m2}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		a_{1n}&a_{2n}&\cdots&a_{mn}
-	\end{pmatrix}\in M_{n\times m}\]
-	为矩阵 $\bfA$ 的\emph{转置}.
+	我们知道, $\BC^n$ 中任一向量可以\alert{唯一}表为 $\bfe_1,\dots,\bfe_n$ 的线性组合.
 	\onslide<+->
-	例如行向量的转置是列向量, 方阵的转置还是方阵, 上三角阵的转置是下三角阵.
-	\onslide<+->
-	矩阵的转置满足如下性质:
-	\begin{enumerate}
-		\item $(\bfA^\rmT)^\rmT=\bfA$;
-		\item $(\bfA+\bfB)^\rmT=\bfA^\rmT+\bfB^\rmT$;
-		\item $(\lambda\bfA)^\rmT=\lambda\bfA^\rmT$;
-		\item \alert{$(\bfA\bfB)^\rmT=\bfB^\rmT\bfA^\rmT$}.
-	\end{enumerate}
+	由此引出基的概念:
+	\begin{definition}
+		如果 $\bma_1,\dots,\bma_m\in V$ 满足: 对任意 $\bfv\in V$, 存在唯一的一组数 $\lambda_1,\dots,\lambda_m$ 使得
+		\[\bfv=\lambda_1\bma_1+\cdots+\lambda_m \bma_m,\]
+		则称 $\bma_1,\dots,\bma_m$ 是 $V$ 的一组\emph{基}.
+	\end{definition}
 \end{frame}
 
 
-\begin{frame}{矩阵转置与乘法}
+\begin{frame}{基的等价刻画}
 	\onslide<+->
-	例如
-	\[\begin{pmatrix}
-		a_{11}&a_{12}&a_{13}\\
-		a_{21}&a_{22}&a_{23}\\
-		a_{31}&a_{32}&a_{33}
-	\end{pmatrix}\begin{pmatrix}
-		b_1\\b_2\\b_3
-	\end{pmatrix}=\begin{pmatrix}
-		c_1\\c_2\\c_3
-	\end{pmatrix},\]
+	\begin{proposition}
+		$\bma_1,\dots,\bma_m$ 是 $V$ 的基向量组$\iff$该向量组生成 $V$ 且线性无关.
+	\end{proposition}
 	\onslide<+->
-	两边取转置得到
-	\[(b_1,b_2,b_3)\begin{pmatrix}
-		a_{11}&a_{21}&a_{31}\\
-		a_{12}&a_{22}&a_{32}\\
-		a_{13}&a_{23}&a_{33}
-	\end{pmatrix}=(c_1,c_2,c_3).\]
+	\begin{proof*}
+		显然基向量组生成 $V$.
+		\onslide<+->{%
+		由于零向量只有唯一的线性表示方式, 因此基总是线性无关的一组向量.
+		}
+
+		\onslide<+->{%
+		反过来, 假设向量组 $\bma_1,\dots,\bma_m$ 线性无关且生成 $V$.
+		}\onslide<+->{
+			若 $\bfv\in V$ 有两种线性表达形式, 二式相减得到不全为零的数 $\lambda_1,\dots,\lambda_m$ 使得
+			\[\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}.\]
+		}\onslide<+->{
+			这与 $\bma_1,\dots,\bma_s$ 线性无关矛盾.
+		}\onslide<+->{
+			因此 $\forall\bfv\in V$ 只有唯一的一种线性表达形式.\qedhere
+		}
+	\end{proof*}
 \end{frame}
 
 
-\begin{frame}{矩阵转置与乘法}
-	\onslide<+->
-	\begin{example}
-		设 $\bfA=\begin{pmatrix}
-			a&-b&-c&-d\\
-			b&a&-d&c\\
-			c&d&a&-b\\
-			d&-c&b&a
-		\end{pmatrix}$, 求 $|\bfA|$.
-	\end{example}
-	\onslide<+->
-	这题当然可以直接硬算, 不过我们可以利用一点小技巧:
-	\[\bfA\bfA^\rmT=\begin{pmatrix}
-		a&-b&-c&-d\\
-		b&a&-d&c\\
-		c&d&a&-b\\
-		d&-c&b&a
-	\end{pmatrix}\begin{pmatrix}
-		a&b&c&d\\
-		-b&a&d&-c\\
-		-c&-d&a&b\\
-		-d&c&-b&a
-	\end{pmatrix}=(a^2+b^2+c^2+d^2)\bfE.\]
-	\onslide<+->
-	因此 $|\bfA|=(a^2+b^2+c^2+d^2)^2$ (因为一定有 $a^4$ 项).
-\end{frame}
-
-
-\begin{frame}{对称阵和反对称阵}
+\begin{frame}{维数}
 	\onslide<+->
 	\begin{definition}
-		\begin{itemize}
-			\item 如果方阵 $\bfA$ 满足 $\bfA^\rmT=\bfA$, 称 $\bfA$ 为\emph{对称阵};
-			\item 如果 $\bfA^\rmT=-\bfA$, 称 $\bfA$ 为\emph{反对称阵}.
-		\end{itemize}
+		设 $V\subseteq \BC^n$ 是一个线性子空间.
+		如果存在(线性)双射 $f:\BC^r\to V$ 满足
+		\begin{enumerate}
+			\item $f(\bfu+\bfv)=f(\bfu)+f(\bfv),\forall \bfu,\bfv\in\BC^r$;
+			\item $f(\lambda\bfv)=\lambda f(\bfv),\forall \lambda\in\BC,\bfv\in\BC^r$,
+		\end{enumerate}
+		则称 $V$ 的\emph{维数}为 $r$, 记为 $r=\dim V$.
 	\end{definition}
 	\onslide<+->
-	例如 $\begin{pmatrix}
-		12&6&1\\
-		6&8&0\\
-		1&0&6
-	\end{pmatrix}$
-	是对称阵.
+	在逆矩阵一节我们已经知道 $m\neq n$ 时, $\BC^m$ 和 $\BC^n$ 之间没有线性双射.
 	\onslide<+->
-	对角矩阵都是对称阵.
-	
+	因此子空间维数总是唯一的.
+
 	\onslide<+->
-	例如 $\begin{pmatrix}
-		0&6&1\\
-		-6&0&0\\
-		-1&0&0
-	\end{pmatrix}$
-	是反对称阵.
+	设 $\bma_1,\dots,\bma_m$ 是 $V$ 的一组基.
 	\onslide<+->
-	反对称阵的对角线均为 $0$.
+	定义
+	\begin{align*}
+		f:\BC^m&\lra V\\
+		(a_1,\dots,a_m)&\lra a_1\bma_1+\cdots+a_m\bma_m
+	\end{align*}
+	\onslide<+->
+	则该映射是线性双射.
+	\onslide<+->
+	因此子空间的\alert{维数等于基的大小}.
 \end{frame}
 
 
-\begin{frame}{对称阵和反对称阵}
+\begin{frame}{秩}
 	\onslide<+->
-	\begin{example}
-		证明: 如果 $\bfA,\bfB,\bfA\bfB$ 都是对称阵, 则 $\bfA\bfB=\bfB\bfA$.
-	\end{example}
+	\begin{definition}
+		设向量组 $\bma_1,\dots,\bma_m$ 生成空间 $V$.
+		称 $V$ 的维数为该向量组的\emph{秩}(\emph{R}ank), 记作 $R(\bma_1,\dots,\bma_m)$.
+	\end{definition}
 	\onslide<+->
-	\begin{proof}
-		由题设可知 $\bfA^\rmT=\bfA,\bfB^\rmT=\bfB$,
-		\[\bfA\bfB=(\bfA\bfB)^\rmT=\bfB^\rmT\bfA^\rmT=\bfB\bfA.\qedhere\]
-	\end{proof}
+	由于该向量组线性无关当且仅当它们构成一组基, 因此:
+	\begin{theorem}
+		\begin{enumerate}
+			\item 向量组 $\bma_1,\dots,\bma_m$ 线性无关$\iff m=R(\bma_1,\dots,\bma_m)$.
+			\item 向量组 $\bma_1,\dots,\bma_m$ 线性相关$\iff m>R(\bma_1,\dots,\bma_m)$.
+		\end{enumerate}
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{子空间维数关系}
 	\onslide<+->
-	想一想: 如果 $\bfA,\bfB,\bfA\bfB$ 中有一个对称阵和两个反对称阵呢?
+	设 $W\subseteq V$ 是两个子空间, $S=\{\bma_1,\dots,\bma_s\}$ 是 $W$ 的一组基, $T=\{\bmb_1,\dots,\bmb_t\}$ 是 $V$ 的一组基.
+	\onslide<+->
+	则 $S$ 可由 $T$ 线性表示.
+	\onslide<+->
+	由于 $S$ 线性无关, 因此 $s=\dim W\le t=\dim V$.
+	\onslide<+->
+	于是:
+	\begin{theorem}
+		设向量组 $S$ 可由向量组 $T$ 线性表示, 则 $R(S)\le R(T)$.
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{例: 向量组的秩}
 	\onslide<+->
 	\begin{exercise}
-		设 $\bfA$ 是 $n$ 阶方阵, \fillbrace{\visible<+->{\alert{A}}}一定是对称阵?
-		\xx{$\bfA^\rmT\bfA$}{$\bfA-\bfA^\rmT$}{$\bfA^2$}{$\bfA^\rmT-\bfA$}
+		若任一 $3$ 维向量都可由向量组
+		\[\bma_1=(a,3,2)^\rmT,\quad
+		\bma_2=(2,-1,3)^\rmT,\quad
+		\bma_3=(3,2,1)^\rmT,\]
+		线性表示, 则 $a\neq$\fillblank{\visible<+->{$5$}}.
 	\end{exercise}
 	\onslide<+->
-	一般地, 如果 $\bfA\in M_{m\times n}$, $\bfA\bfA^\rmT$ 是 $m$ 阶对称阵, $\bfA^\rmT\bfA$ 是 $n$ 阶对称阵.
+	\begin{exercise}
+		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<+->{\alert{\text{\huge$\times$}}}.
+	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{任一方阵可表为对称阵与反对称阵之和}
+\begin{frame}{例: 向量组的秩}
 	\onslide<+->
 	\begin{example}
-		证明: 任一方阵均可写成一对称阵和一反对称阵之和.
+		如果 $S_1=\{\bma_1,\bma_2,\bma_3\}$, $S_2=\{\bma_1,\bma_2,\bma_3,\bma_4\}$, $S_3=\{\bma_1,\bma_2,\bma_3,\bma_4,\bma_5\}$ 满足 $R(S_1)=R(S_2)=3, R(S_3)=4$.
+		证明向量组 $S=\{\bma_1,\bma_2,\bma_3,\bma_5-\bma_4\}$ 线性无关.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
-		\[\bfA=\frac{\bfA+\bfA^\rmT}2+\frac{\bfA-\bfA^\rmT}2.\qedhere\]
+		由 $R(S_1)=3$ 可知 $S_1$ 线性无关.
+		\onslide<+->{%
+			由 $R(S_2)=3$ 可知 $S_2$ 线性相关.
+		}\onslide<+->{%
+			从而 $\bma_4$ 可由 $S_1$ 线性表示.
+		}\onslide<+->{%
+			于是 $S_3$ 可由 $S$ 线性表示.
+		}\onslide<+->{%
+			显然 $S$ 可由 $S_3$ 线性表示, 因此二者等价, $R(S)=R(S_3)=4$.\qedhere
+		}
 	\end{proof}
-	\onslide<+->
-	想一想: 如果函数 $f(x)$ 的定义域关于原点对称, 那么 $f(x)$ 一定可以表示成一个偶函数和一个奇函数之和.
 \end{frame}
 
 
-\subsection{方阵的行列式}
+\subsection{极大线性无关组}
+\begin{frame}{极大线性无关组的定义}
+	\onslide<+->
+	\begin{definition}
+		设 $S$ 为一个向量组.
+		若 $S$ 的部分组 $S_0=\{\bma_1,\dots,\bma_m\}$ 满足
+		\begin{enumerate}
+			\item $S_0$ 线性无关;
+			\item $S_0$ 添加 $S$ 中的若干向量得到的向量组均线性相关.
+		\end{enumerate}
+		则称 $S_0$ 是 $S$ 的一个\emph{极大线性无关组}.
+	\end{definition}
+	\onslide<+->
+	根据上一节相关结论可知, $S$ 中所有向量均可由 $S_0$ 线性表示.
+	\onslide<+->
+	换言之, $S_0$ 和 $S$ 等价, 它们生成相同的子空间 $V$, $m=R(S)$, $S_0$ 是 $V$ 的一组基.
+\end{frame}
 
-\begin{frame}{方阵的行列式}
+\begin{frame}{极大线性无关组的定义}
 	\onslide<+->
-	方阵的行列式我们已在上一章详细研究过.
+	\begin{theorem}
+		$S_0$ 是 $S$ 的极大线性无关组当且仅当
+		\begin{enumerate}
+			\item $S_0$ 线性无关;
+			\item $S$ 中任意 $m+1$ 个向量线性相关.
+		\end{enumerate}
+	\end{theorem}
 	\onslide<+->
-	如果方阵 $\bfA$ 的行列式 $|\bfA|=0$, 称 $\bfA$ 为\emph{退化矩阵}, 否则称为\emph{非退化矩阵}.
+	\begin{proof*}
+		若 $S_0$ 是 $S$ 的极大线性无关组, 则 $S$ 中任意 $m+1$ 个向量可由 $S_0$ 线性表示.
+		\onslide<+->{%
+			从而线性相关.
+		}
+
+		\onslide<+->{%
+			反之, 若 $S$ 中任意 $m+1$ 个向量线性相关, 则 $S$ 中任意 $s>m$ 个向量线性相关.
+		}\onslide<+->{%
+			于是 $S_0$ 添加 $S$ 中的若干向量得到的向量组均线性相关.\qedhere
+		}
+	\end{proof*}
+\end{frame}
+
+
+\begin{frame}{极大线性无关组的性质}
 	\onslide<+->
-	行列式满足如下性质:
 	\begin{enumerate}
-		\item $|\bfA^\rmT|=|\bfA|$;
-		\item $|\lambda\bfA|=\lambda^n|\bfA|$, 其中 $\bfA$ 是 $n$ 阶方阵;
-		\item \alert{$|\bfA\bfB|=|\bfA|\cdot|\bfB|=|\bfB\bfA|$}.
+		\item 若 $R(S)=r$, 则 $S$ 中任意 $r$ 个线性无关的向量构成 $S$ 的一个极大线性无关组.
+		\item 只含有零向量的向量组没有极大线性无关组(空集), 它的秩为 $0$ (空集生成 $0$ 维空间 $\{{\bf0}\}$).
+		\item 极大线性无关组一般不是唯一的.
+		\onslide<+->{%
+		例如
+		\[\bma_1=(1,0)^\rmT,\quad\bma_2=(0,1)^\rmT,\quad\bma_3=(1,1)^\rmT.\]}
+		\onslide<+->{
+		那么 $\bma_1,\bma_2$ 是一个极大线性无关组, $\bma_1,\bma_3$ 也是一个极大线性无关组.}
+		\item 向量组和它的一个极大线性无关组是等价的, 于是同一向量组的任意两个极大线性无关组等价.
 	\end{enumerate}
 \end{frame}
 
 
-\begin{frame}{行列式与乘法交换}
+\begin{frame}{例: 极大线性无关组}
 	\onslide<+->
-	我们来证明 $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
+	\begin{example}
+		矩阵 $\bfA=\begin{pmatrix}
+			1&1&3&1\\
+			0&1&-1&4\\
+			0&0&0&5\\
+			0&0&0&0
+		\end{pmatrix}$
+		的行向量组为
+		\vspace{-.5\baselineskip}
+		\[\bma_1^\rmT=(1,1,3,1),
+			\bma_2^\rmT=(0,1,-1,4),
+			\bma_3^\rmT=(0,0,0,5),
+			\bma_4^\rmT=(0,0,0,0).
+		\]
+		\onslide<+->{%
+			由于 $\bma_1^\rmT,\bma_2^\rmT,\bma_3^\rmT$ 的第 $1,2,4$ 个分量形成可逆矩阵 $\begin{pmatrix}
+				1&1&1\\
+				0&1&4\\
+				0&0&5
+			\end{pmatrix}$, 因此它们线性无关.
+		}\onslide<+->{%
+			它们是一个极大线性无关组, $\bfA$ 的行向量组的秩是 $3$.
+		}\onslide<+->{%
+			类似可知, $\bfA$ 的列向量组的秩也是 $3$.
+		}
+	\end{example}
 	\onslide<+->
-	设 $\bfA=(a_{ij}),\bfB=(b_{ij})$,
-	\[D=\detm{
-		a_{11}&\cdots&a_{1n}&0&\cdots&0\\
-		\vdots&\ddots&\vdots&\vdots&\ddots&0\\
-		a_{1n}&\cdots&a_{nn}&0&\cdots&0\\
-		-1&&&b_{11}&\cdots&b_{nn}\\
-		&\ddots&&\vdots&\ddots&\vdots\\
-		&&-1&b_{n1}&\cdots&b_{nn}
-	}=\detm{\bfA&\bfO\\-\bfE&\bfB}=|\bfA|\cdot|\bfB|.\]
-
+	实际上, 任意矩阵的行向量组的秩等于列向量组的秩.
 	\onslide<+->
-	将第 $1,\dots,n$ 列乘 $b_{1j},\dots,b_{nj}$ 加到 $n+j$ 列, $j=1,\dots,n$, 则 	$D=\detm{\bfA&\bfC\\-\bfE&\bfO}$,
-	\onslide<+->
-	其中 $\bfC=(c_{ij})$, $c_{ij}=\sum_{k=1}^nb_{kj}a_{ik}$.
-	\onslide<+->
-	换言之 $\bfC=\bfA\bfB$.
-	\onslide<+->
-	再进行变换 $r_j\swap r_{n+j},j=1,\dots,n$ 得到
-	\[D=(-1)^n\detm{-\bfE&\bfO\\\bfA&\bfC}=(-1)^n|-\bfE|\cdot|\bfC|=|\bfC|=|\bfA\bfB|.\]
+	为了说明这一点, 我们需要先研究矩阵的变换.
 \end{frame}
-
-
-\begin{frame}{例: 方阵的行列式}
-	\onslide<+->
-	\begin{exercise}
-		设 $\bfA$ 为 $5$ 阶方阵, $|\bfA|=-1$, 则
-		$|2\bfA|=$\fillblank{\visible<+->{$-32$}},
-		$\bigl||\bfA|\bfA\bigr|=$\fillblank{\visible<+->{$1$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		设 $\alpha=(1,0,-1),\bfA=\alpha^\rmT\alpha$, 则
-		$|5\bfE-\bfA^3|=$\fillblank{\visible<+->{$-75$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		$\detm{
-			2\sin a\cos a&\sin a\cos b+\cos a\sin b&\sin a\cos c+\cos a\sin c\\
-			\sin b\cos a+\cos b\sin a&2\sin b\cos b&\sin b\cos c+\cos b\sin c\\
-			\sin c\cos a+\cos c\sin a&\sin c\cos b+\cos c\sin b&2\sin c\cos c
-		}=$\fillblank{\visible<+->{$0$}}.
-	\end{exercise}
-\end{frame}
-
-\begin{frame}{例: 方阵的行列式}
-	\onslide<+->
-	\begin{answer}
-		注意到
-		\begin{align*}
-			&\begin{pmatrix}
-			2\sin a\cos a&\sin a\cos b+\cos a\sin b&\sin a\cos c+\cos a\sin c\\
-			\sin b\cos a+\cos b\sin a&2\sin b\cos b&\sin b\cos c+\cos b\sin c\\
-			\sin c\cos a+\cos c\sin a&\sin c\cos b+\cos c\sin b&2\sin c\cos c
-		\end{pmatrix}\\=&\begin{pmatrix}
-			\sin a&\cos a&0\\
-			\sin b&\cos b&0\\
-			\sin c&\cos c&0
-		\end{pmatrix}\begin{pmatrix}
-			\cos a&\cos b&\cos c\\
-			\sin a&\sin b&\sin c\\
-			0&0&0
-		\end{pmatrix}.
-	\end{align*}
-	\end{answer}
-	\onslide<+->
-	设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$.
-	\onslide<+->
-	如果 $m>n$, 那么
-	\[|\bfA\bfB|=\detm{(\bfA,\bfO_{m\times(m-n)})\begin{pmatrix}
-		\bfB\\\bfO_{(m-n)\times m}
-	\end{pmatrix}}=0=|\bfB\bfA|.\]
-\end{frame}
-

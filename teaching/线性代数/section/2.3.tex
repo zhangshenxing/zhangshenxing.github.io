@@ -1,748 +1,889 @@
-\section{逆矩阵}
+\section{矩阵的初等变换}
 
-\subsection{方阵的伴随矩阵}
+\subsection{初等矩阵}
 
-\begin{frame}{伴随矩阵}
+\begin{frame}{初等行变换解线性方程组}
 	\onslide<+->
-	\begin{definition}
-		设 $\bfA=(a_{ij})_{n\times n}$.
-		由 $\bfA$ 的代数余子式形成的矩阵
-		\[\bfA^*=(A_{ji})=\begin{pmatrix}
-			A_{11}&A_{21}&\cdots&A_{n1}\\
-			A_{12}&A_{21}&\cdots&A_{n2}\\
-			\vdots&\vdots&\ddots&\vdots\\
-			A_{1n}&A_{21}&\cdots&A_{nn}
-		\end{pmatrix}\]
-		称为矩阵 $\bfA$ 的\emph{伴随矩阵}.
-	\end{definition}
+	我们在第一章中利用了如下三种初等变换来帮助计算行列式:
 	\onslide<+->
-	注意, 伴随矩阵的 $(i,j)$ 元是代数余子式 \alert{$A_{ji}$ 而不是 $A_{ij}$}.
-	\onslide<+->
-	\begin{example}
-		如果 $\bfA=\begin{pmatrix}
-			a&b\\c&d
-		\end{pmatrix}$, 那么 $\bfA^*=\begin{pmatrix}
-			d&-b\\-c&a
-		\end{pmatrix}$.
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{伴随矩阵的性质}
-	\onslide<+->
-	伴随矩阵满足如下重要性质:
-	\begin{alertblock@}
+	\begin{block}{初等变换}
 		\begin{enumerate}
-		\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
-		\end{enumerate}
-	\end{alertblock@}
+		\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$};
+		\item 一行(列)乘非零常数 $k$: \alert{$k r_i, k c_i$};
+		\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+	\end{enumerate}
+	\end{block}
 	\onslide<+->
-	这是因为
-	\[\bfA\bfA^*=\begin{pmatrix}
-		a_{11}&a_{12}&\cdots &a_{1n}\\
-		a_{21}&a_{22}&\cdots &a_{2n}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		a_{n1}&a_{n2}&\cdots &a_{nn}
-	\end{pmatrix}\begin{pmatrix}
-		A_{11}&A_{21}&\cdots&A_{n1}\\
-		A_{12}&A_{21}&\cdots&A_{n2}\\
-		\vdots&\vdots&\ddots&\vdots\\
-		A_{1n}&A_{21}&\cdots&A_{nn}
-	\end{pmatrix}\]
-	的 $(i,j)$ 元是
-	\[a_{i1}A_{j1}+\cdots+a_{in}A_{jn}=\begin{cases}
-		|\bfA|,&i=j;\\
-		0,&i\neq j.
-	\end{cases}\]
-\end{frame}
-
-
-\begin{frame}{伴随矩阵的性质}
+	实际上我们也可以对矩阵实施初等变换.
 	\onslide<+->
-	\begin{block@}
-		\begin{enumerate}
-			\setcounter{enumi}{1}
-			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
-			\item $(\bfA^\rmT)^*=(\bfA^*)^\rmT$.
-			\item $|\bfA^*|=|\bfA|^{n-1}$.
-		\end{enumerate}
-	\end{block@}
-	\onslide<+->
-	如果 $\bfA=\bfO$, 显然 $\bfA^*=\bfO$.
-	\onslide<+->
-	如果 $|\bfA|=0$ 但 $\bfA\neq \bfO$, 那么
-	\[\bfA^*\begin{pmatrix}
-		a_{1j}\\a_{2j}\\\vdots\\a_{nj}
-	\end{pmatrix}=\bfO_{n\times 1}.\]
-	\onslide<+->
-	所以以 $\bfA^*$ 为系数的齐次线性方程组有非零解, 从而 $|\bfA^*|=0$.
-
-	\onslide<+->
-	如果 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
-\end{frame}
-
-
-\begin{frame}{例: 伴随矩阵}
-	\onslide<+->
-	\begin{example}
-		设非零 $n\ge 3$ 实方阵 $\bfA$ 满足对任意 $i,j$, $a_{ij}=A_{ij}$. 求 $|\bfA|$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		由题设可知 $(\bfA^*)^\rmT=\bfA$.
-		\onslide<+->{%
-		因此 $|\bfA^*|=|\bfA|=|\bfA|^{n-1}$,
-		}\onslide<+->{%
-		从而 $|\bfA|=0$ 或 $1$.
-		}
-		
-		\onslide<+->{如果 $|\bfA|=0$, 则
-			\[\bfA\bfA^*=\bfA\bfA^\rmT=|\bfA|\bfE=\bfO.\]
-		}\onslide<+->{
-			而 $\bfA\bfA^\rmT$ 的第 $i$ 个对角元为
-			\[\sum_{k=1}^n a_{ik}^2\ge 0.\]
-		}\onslide<+->{
-			于是 $\bfA$ 所有元素均为零, 矛盾! 因此 $|\bfA|=1$.
-		}
-	\end{solution}
-\end{frame}
-
-
-\subsection{逆矩阵的定义和形式}
-\begin{frame}{线性变换的逆}
-	\onslide<+->
-	给定一个线性变换 $f:\BC^n\ra\BC^m$, 如果线性变换 $g:\BC^m\to\BC^n$ 满足
-	\[(gf)(\bfu)=\bfu,\forall \bfu\in\BC^n,\quad
-	(fg)(\bfv)=\bfv,\forall \bfv\in\BC^m,\]
-	\onslide<+->
-	则称 $g$ 是 $f$ 的逆.
-
-	\onslide<+->
-	设 $f,g$ 对应的矩阵分别是 $\bfA,\bfB$, 则
-	\[\bfA\bfB=\bfE_m,\quad \bfB\bfA=\bfE_n.\]
-	\onslide<+->
-	注意到 $m\neq n$ 时上述等式不可能成立, 因为 $m>n$ 时, 通过补零列可知 $|\bfA\bfB|=0$; $m<n$ 时 $|\bfB\bfA|=0$.
-	\onslide<+->
-	因此线性变换的逆只可能在 $m=n$ 时存在.
-\end{frame}
-
-
-\begin{frame}{逆矩阵的定义和唯一性}
-	\onslide<+->
-	由此得到对应的矩阵的逆的定义:
-	\onslide<+->
-	\begin{definition}
-		设 $\bfA$ 是 $n$ 阶方阵. 若存在 $n$ 阶方阵 $\bfB$ 使得
-		\[\bfA\bfB=\bfB\bfA=\bfE_n,\]
-		则称 $\bfA$ 是\emph{可逆矩阵}, $\bfB$ 是 $\bfA$ 的\emph{逆矩阵}.
-	\end{definition}
-	\onslide<+->
+	而且这三类变换过程都是可逆的, 且其逆变换是同一类变换.
+	以行变换为例:
 	\begin{enumerate}
-		\item 如果 $\bfA$ 是可逆矩阵, 它的逆矩阵唯一吗?
+		\item $r_i\swap r_j$ 的逆是 $r_i\swap r_j$;
+		\item $kr_i$ 的逆k是 $\frac1k r_i$;
+		\item $r_i+kr_j$ 的逆是 $r_i-kr_j$.
 	\end{enumerate}
 	\onslide<+->
-	设 $\bfB,\bfB'$ 都是 $\bfA$ 的逆矩阵, 则
-	\[\bfA\bfB=\bfE_n,\quad \bfB'\bfA=\bfE_n.\]
-	\onslide<+->
-	于是
-	\[\bfB=(\bfB'\bfA)\bfB=\bfB'(\bfA\bfB)=\bfB'.\]
-	\onslide<+->
-	因此若逆矩阵存在必唯一.
+	我们使用矩阵来表示上述变换.
 \end{frame}
 
 
-\begin{frame}{逆矩阵的存在性}
+\begin{frame}{第一类初等矩阵}
+	\onslide<+->
+	单位阵 $\bfE$ 经过一次初等变换得到的方阵称为\emph{初等矩阵}.
+	\begin{enumerate}
+		\item $r_i\swap r_j$ 和 $c_i\swap c_j$ 都对应初等矩阵
+\[\bfE(i,j)=\begin{pNiceMatrix}[last-col]
+	\Emat&       &      &       &   &\\
+			 &\alert0&\cdots&\alert1&   &\text{\textcolor{green!50!black}{$\la$ 第 $i$ 行}}\\
+			 &\vdots &\Emat &\vdots &   &\\
+		   &\alert1&\cdots&\alert0&   &\text{\textcolor{green!50!black}{$\la$ 第 $j$ 行}}\\
+		   &       &      &       &\Emat&
+	\CodeAfter
+	\tikz \draw[cstcurve,dcolorb] (1-|2) rectangle (6-|3);
+	\tikz \draw[cstcurve,dcolorb] (1-|4) rectangle (6-|5);
+	\tikz \draw[cstcurve,dcolord] (2-|1) rectangle (3-|6);
+	\tikz \draw[cstcurve,dcolord] (4-|1) rectangle (5-|6);
+\end{pNiceMatrix}\]
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{第二类初等矩阵}
 	\onslide<+->
 	\begin{enumerate}
 		\setcounter{enumi}{1}
-		\item 任何非零矩阵都有逆吗?
+		\item $k r_i, k c_i$ 都对应初等矩阵
+		\[\bfE(i(k))=\begin{pNiceMatrix}[last-col,last-row]
+			\Emat&&\\
+			&\alert k&&\text{\textcolor{green!50!black}{$\la$ 第 $i$ 行}}\\
+			&&\Emat&\\
+			&\mathclap{\text{\Large\color{blue}$\uparrow\atop\text{第 $i$ 列}$}}&&
+			\CodeAfter
+			\tikz \draw[cstcurve,dcolorb] (1-|2) rectangle (4-|3);
+			\tikz \draw[cstcurve,dcolord] (2-|1) rectangle (3-|4);
+		\end{pNiceMatrix}\]
 	\end{enumerate}
-	\onslide<+->
-	设 $\begin{pmatrix}
-		1&1\\2&2
-	\end{pmatrix}\begin{pmatrix}
-		a&b\\c&d
-	\end{pmatrix}=\begin{pmatrix}
-		1&0\\0&1
-	\end{pmatrix}$, 
-	\onslide<+->
-	则 
-	\[a+c=1,\quad 2a+2c=0.\]
-	\onslide<+->
-	这不可能, 因此 $\begin{pmatrix}
-		1&1\\2&2
-	\end{pmatrix}$ 不可逆.
-	\onslide<+->
-	实际上从 $\bfA\bfB=\bfE$ 可知
-	\[|\bfA|\cdot|\bfB|=1.\]
-	\onslide<+->
-	所以退化矩阵都是不可逆的.
 \end{frame}
 
 
-\begin{frame}{逆矩阵的存在性}
+\begin{frame}{第三类初等矩阵}
 	\onslide<+->
 	\begin{enumerate}
 		\setcounter{enumi}{2}
-		\item 那非退化矩阵都可逆吗?
+		\item $r_i+kr_j, c_j+kc_i$ 都对应初等矩阵
+\[\bfE(i,j(k))=\begin{pNiceMatrix}[last-col,last-row]
+	1&      & &      &        &      & &\\
+	 &\ddots& &      &        &      & &\\
+	 &      &1&      &\alert k&      & &\text{\textcolor{green!50!black}{$\la$ 第 $i$ 行}}\\
+	 &      & &\ddots&        &      & &\\
+	 &      & &      &  1     &      & &\text{\textcolor{green!50!black}{$\la$ 第 $j$ 行}}\\
+	 &      & &      &        &\ddots& &\\
+	 &      & &      &        &      &1\\
+	 &&\mathclap{\text{\Large\color{blue}$\uparrow\atop\text{第 $i$ 列}$}}&&\mathclap{\text{\Large\color{blue}$\uparrow\atop\text{第 $j$ 列}$}}&&&
+	 \CodeAfter
+	 \tikz \draw[cstcurve,dcolorb] (1-|3) rectangle (8-|4);
+	 \tikz \draw[cstcurve,dcolorb] (1-|5) rectangle (8-|6);
+	 \tikz \draw[cstcurve,dcolord] (3-|1) rectangle (4-|8);
+	 \tikz \draw[cstcurve,dcolord] (5-|1) rectangle (6-|8);
+\end{pNiceMatrix}\]
 	\end{enumerate}
-	\onslide<+->
-	注意到
-	\[\bfA\bfA^*=\bfA^*\bfA=|\bfA|\bfE.\]
-	\onslide<+->
-	因此如果 $\bfA$ 非退化, 则
-	\[\bfA\cdot\frac{\bfA^*}{|\bfA|}=\frac{\bfA^*}{|\bfA|}\cdot\bfA=\bfE,\]
-	\onslide<+->
-	\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}.\]
 \end{frame}
 
 
-\begin{frame}{逆矩阵存在性的刻画}
+\begin{frame}{初等矩阵左乘矩阵}
+	\onslide<+->
+	我们来看
+	\[\bfE(1,3)\bfA=\begin{pmatrix}
+		0&0&1\\
+		0&1&0\\
+		1&0&0
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		7&8&9\\
+		4&5&6\\
+		1&2&3
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i,j)$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $r_i\swap r_j$.
+
+	\onslide<+->
+	从分块矩阵乘法
+	\[\bfE(i,j)\bfA=\bfE(i,j)\begin{pmatrix}
+		\vdots\\
+		\bma_i\\
+		\vdots\\
+		\bma_j\\
+		\vdots
+	\end{pmatrix}=\begin{pmatrix}
+		\vdots\\
+		\bma_j\\
+		\vdots\\
+		\bma_i\\
+		\vdots
+	\end{pmatrix}\]
+	可以看出确实如此.
+\end{frame}
+
+
+\begin{frame}{初等矩阵与初等变换}
+	\onslide<+->
+	\[\bfE(2(k))\bfA=\begin{pmatrix}
+		1&0&0\\
+		0&k&0\\
+		0&0&1
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		1&2&3\\
+		4k&5k&6k\\
+		7&8&9
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i(k))$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $kr_i$.
+	\onslide<+->
+	\[\bfE(3,1(k))\bfA=\begin{pmatrix}
+		1&0&0\\
+		0&1&0\\
+		k&0&1
+	\end{pmatrix}\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}=\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7+k&8+2k&9+3k
+	\end{pmatrix}.\]
+	\onslide<+->
+	$\bfE(i,j(k))$ 左乘在矩阵 $\bfA$ 上, 即对 $\bfA$ 实施 $r_i+kr_j$.
+	\onslide<+->
+	即, 初等矩阵左乘矩阵 $\bfA$ 等同于对 $\bfA$ 实施对应的初等行变换.
+
+	\onslide<+->
+	同理, 初等矩阵右乘矩阵 $\bfA$ 等同于对 $\bfA$ 实施对应的初等列变换.
+\end{frame}
+
+
+\begin{frame}{初等矩阵与初等变换}
 	\onslide<+->
 	\begin{theorem}
-		$n$ 阶方阵 $\bfA$ 可逆当且仅当 $|\bfA|\neq 0$.
-		此时 $\bfA^{-1}=\dfrac{\bfA^*}{|\bfA|}$.
+		设 $\bfA\in M_{m\times n}$.
+		\begin{enumerate}
+			\item 对 $\bfA$ 实施一次\emph{初等行变换}, 相当于在\emph{$\bfA$ 的左边}乘对应的 $m$ 阶初等矩阵.
+			\item 对 $\bfA$ 实施一次\alert{初等列变换}, 相当于在\alert{$\bfA$ 的右边}乘对应的 $n$ 阶初等矩阵.
+		\end{enumerate}
+		且对应的初等矩阵就是对单位阵 $\bfE_n$ 实施相应的初等变换得到的矩阵.
 	\end{theorem}
 	\onslide<+->
-	\begin{corollary}
-		设 $\bfA,\bfB$ 为 $n$ 阶矩阵.
-		如果 $\bfA\bfB=\bfE$ (或 $\bfB\bfA=\bfE$), 则 $\bfB=\bfA^{-1}$.
-	\end{corollary}
-	\onslide<+->
-	\begin{proof}
-		如果 $\bfA\bfB=\bfE$, 则 $|\bfA|\cdot|\bfB|=1$, $|\bfA|\neq0$.
-		\onslide<+->{%
-		因此 $\bfA$ 可逆.
-		}\onslide<+->{%
-		\[\bfA^{-1}=\bfA^{-1}(\bfA\bfB)=\bfB.\qedhere\]}
-		\vspace{-\baselineskip}
-	\end{proof}
+	即\alert{左行右列}.
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例: 初等矩阵与初等变换}
 	\onslide<+->
 	\begin{example}
-		证明 $\bfA=\begin{pmatrix}
-			\cos\theta&-\sin\theta\\
-			\sin\theta&\cos\theta
-		\end{pmatrix}$ 可逆并求其逆矩阵.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		由于 $|\bfA|=\cos^2\theta+\sin^2\theta=1$, 因此 $\bfA$ 可逆.
-		\onslide<+->{由于 $\bfA^*=\begin{pmatrix}
-			\cos\theta&\sin\theta\\
-			-\sin\theta&\cos\theta
-		\end{pmatrix}$, 因此
-		\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}=\begin{pmatrix}
-			\cos\theta&\sin\theta\\
-			-\sin\theta&\cos\theta
-		\end{pmatrix}.\]}
-	\end{solution}
-	\onslide<+->
-	注意到 $\bfA$ 对应的是平面上沿原点逆时针旋转 $\theta$, 因此 $\bfA^{-1}$ 对应的是平面上沿原点逆时针旋转 $-\theta$.
-\end{frame}
-
-
-
-\begin{frame}{例: 计算逆矩阵}
-	\onslide<+->
-	\begin{example}
-		$\bfA=\begin{pmatrix}
-			1&2&1\\
-			0&1&-1\\
-			-1&3&4
-		\end{pmatrix}, \bfB=\begin{pmatrix}
-			2&3&-1\\
-			-1&-3&5\\
-			1&5&11
-		\end{pmatrix}$ 是否可逆? 若可逆求其逆矩阵.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		由于 $|\bfA|=10$, 因此 $\bfA$ 可逆.
-		\onslide<+->{%
-			计算其代数余子式为
-			\[A_{11}=7,\ A_{12}=1,\ A_{13}=1,\ A_{21}=-5,\ A_{22}=5\]
-			\[A_{23}=-5,\ A_{31}=-3,\ A_{32}=1,\ A_{33}=1.\]
-		}\onslide<+->{%
-			因此 $\bfA^{-1}=\dfrac{\bfA^*}{10}=\dfrac1{10}\begin{pmatrix}
-				7&-5&-3\\
-				1&5&1\\
-				1&-5&1
-			\end{pmatrix}.$
-		}\onslide<+->{由于 $|\bfB|=0$, 因此 $\bfB$ 不可逆.}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例: 计算逆矩阵}
-	\onslide<+->
-	\begin{example}
-		设 $\lambda_1,\dots,\lambda_n\neq0$.
-		\[\Lambda=\begin{pmatrix}
-			\lambda_1&&&\\
-			&\lambda_2&&\\
-			&&\ddots&\\
-			&&&\lambda_n\\
-		\end{pmatrix}=\diag(\lambda_1,\lambda_2,\dots,\lambda_n),\]
-		\onslide<+->{则
-		\[\Lambda^{-1}=\begin{pmatrix}
-			\lambda_1^{-1}&&&\\
-			&\lambda_2^{-1}&&\\
-			&&\ddots&\\
-			&&&\lambda_n^{-1}\\
-		\end{pmatrix}=\diag(\lambda_1^{-1},\lambda_2^{-1},\dots,\lambda_n^{-1}).\]}
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{逆矩阵的计算方法}
-	\onslide<+->
-	逆矩阵通常采用下述方法计算:
-	\begin{enumerate}
-		\item 利用公式 $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$, 适用于 $2,3$ 阶方阵, 或用于抽象分析.
-		\item 寻找方阵 $\bfB$ 使得 $\bfA\bfB=\bfE$, 适用于抽象矩阵求逆.
-		\item 利用矩阵的初等变换求逆矩阵, 该方法我们会在之后的学习中接触到.
-	\end{enumerate}
-	\onslide<+->
-	\begin{example}
-		设 $\bfA$ 为 $n$ 阶矩阵且满足 $\bfA^2+3\bfA-2\bfE=\bfO$.
-		求 $\bfA^{-1}$ 和 $(\bfA-\bfE)^{-1}$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		\begin{enumerate}
-			\item 由于 $\bfA^2+3\bfA=2\bfE$, 
-			\onslide<+->{%
-			因此 $\bfA(\bfA+3\bfE)=2\bfE, \bfA^{-1}=\dfrac{\bfA+3\bfE}2$.}
-			\item 由于 $(\bfA-\bfE)(\bfA+4\bfE)=-2\bfE$,
-			\onslide<+->{%
-			因此 $(\bfA-\bfE)^{-1}=-\dfrac{\bfA+4\bfE}2$.}
-		\end{enumerate}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{方阵的多项式}
-	\onslide<+->
-	设
-	\[f(x)=a_mx^m+\cdots+a_1x+a_0\]
-	是一个多项式.
-	\onslide<+->
-	定义
-	\[f(\bfA)=a_m\bfA^m+\cdots+a_1\bfA+a_0\bfE.\]
-	\onslide<+->
-	例如, 
-	\begin{enumerate}
-		\item 若 $\bfA=\diag(\lambda_1,\dots,\lambda_n)$, 则 $f(\bfA)=\diag\bigl(f(\lambda_1),\dots,f(\lambda_n)\bigr).$
-		\item $f(\bfP\bfA\bfP^{-1})=\bfP f(\bfA)\bfP^{-1}$.
-	\end{enumerate}
-
-	\onslide<+->
-	若 $f(\bfA)=\bfO$, 我们想求 $(\bfA-\alpha\bfE)^{-1}$.
-	\onslide<+->
-	那么
-	\[f(\bfA)-f(\alpha)\bfE=(\bfA-\alpha\bfE)\bfB=-f(\alpha)\bfE.\]
-	\onslide<+->
-	从而当 $f(\alpha)\neq 0$ 时, $(\bfA-\alpha\bfE)^{-1}=-\dfrac{\bfB}{f(\alpha)}$.
-\end{frame}
-
-
-\begin{frame}{例: 计算逆矩阵}
-	\onslide<+->
-	想一想: 如果 $\bfA^3+\bfA^2-2\bfE=\bfO$, 如何求 $(\bfA^2+\bfE)^{-1}$?
-	\onslide<+->
-	\begin{enumerate}
-		\item 待定系数设 $(\bfA^2+\bfE)(a\bfA^2+b\bfA+c\bfE)=\bfE$, 然后使得两边相减是 $\bfA^3+\bfA^2-2\bfE$ 的倍数.
-		\item 通过 $\bfA^6=(\bfA^3)^2$ 得到 $\bfA^2$ 满足的方程.
-	\end{enumerate}
-	\onslide<+->
-	\begin{example}
-		多选题: 若 $\bfA,\bfB,\bfC$ 为同阶方阵, 且 $\bfA$ 可逆, 则\fillbrace{\visible<+->{\alert{AC}}}.
-		\xx{若 $\bfA\bfB=\bfA\bfC$, 则 $\bfB=\bfC$}%
-		{若 $\bfA\bfB=\bfC\bfB$, 则 $\bfA=\bfC$}%
-		{若 $\bfA\bfB=\bfO$, 则 $\bfB=\bfO$}%
-		{若 $\bfB\bfC=\bfO$, 则 $\bfB=\bfO$}
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 计算逆矩阵}
-	\onslide<+->
-	\begin{example}
-		设 $n$ 阶方阵 $\bfA,\bfB,\bfC$ 满足 $\bfA\bfB\bfC=\bfE$, 则\fillbrace{\visible<+->{\alert{D}}}.
-		\xx{$\bfA\bfC\bfB=\bfE$}%
-		{$\bfC\bfB\bfA=\bfE$}%
-		{$\bfB\bfA\bfC=\bfE$}%
-		{$\bfC\bfA\bfB=\bfE$}
-	\end{example}
-	\onslide<+->
-	想一想 $\bfB^{-1}=?$
-	\onslide<+->
-	\begin{exercise}
 		设 $\bfA=\begin{pmatrix}
-			4&1&3\\4&a&7\\3&-1&4
-		\end{pmatrix}$, 且存在两个不等的 $3\times2$ 矩阵 $\bfB,\bfC$ 使得 $\bfA\bfB=\bfA\bfC$, 则 $a=$\fillblank{\visible<+->{$-3$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		设 $3$ 阶方阵 $\bfA$ 满足 $\bfA^3-2\bfA+\bfE=\bfO$, 且 $|\bfA|=2$, 则 $|(\bfA^2-2\bfE)^{-1}|=$\fillblank{\visible<+->{$-2$}}.
-	\end{exercise}
+			a_{11}&a_{12}&a_{13}\\
+			a_{21}&a_{22}&a_{23}\\
+			a_{31}&a_{32}&a_{33}
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			a_{11}&a_{13}&a_{12}\\
+			a_{21}&a_{23}&a_{22}\\
+			a_{31}+2a_{11}&a_{33}+2a_{13}&a_{32}+2a_{12}
+		\end{pmatrix}$,\\
+		$\bfP_1=\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			0&0&1\\0&1&0\\1&0&0
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&0&0\\0&1&0\\2&0&1
+		\end{pmatrix}$.
+		那么 $\bfB=$\fillbrace{\visible<+->{\alert{C}}}.
+		\xx{$\bfP_3\bfA\bfP_2$}{$\bfP_2\bfA\bfP_3$}{$\bfP_3\bfA\bfP_1$}{$\bfP_1\bfP_2\bfA$}
+	\end{example}
 \end{frame}
 
 
-\subsection{逆矩阵的性质}
-
-\begin{frame}{逆矩阵的性质}
-	\onslide<+->
-	逆矩阵满足如下性质:
-	\begin{enumerate}
-		\item 设 $\bfA$ 可逆.
-		\begin{itemize}
-			\item $\bfA^{-1}$ 也可逆, 且 $(\bfA^{-1})^{-1}=\bfA$;
-			\item 若 $\lambda\neq 0$, 则 $\lambda\bfA$ 也可逆, 且 $(\lambda\bfA)^{-1}=\dfrac1\lambda\bfA^{-1}$;
-			\item $\bfA^\rmT$ 也可逆, 且 $(\bfA^\rmT)^{-1}=(\bfA^{-1})^\rmT$;
-			\item $|\bfA^{-1}|=|\bfA|^{-1}$.
-		\end{itemize}
-		\item 若 $\bfA,\bfB$ 为同阶可逆矩阵, 则 $\bfA\bfB$ 也可逆, 且
-		\[\alert{(\bfA\bfB)^{-1}=\bfB^{-1}\bfA^{-1}}.\]
-		一般地
-		\[\alert{(\bfA_1\bfA_2\cdots\bfA_n)^{-1}=\bfA_n^{-1}\cdots\bfA_2^{-1}\bfA_1^{-1}}.\]
-	\end{enumerate}
-	\onslide<+->
-	注意矩阵不能相除 $\dfrac{\bfA}{\bfB}$, 因为一般 $\bfB^{-1}\bfA\neq\bfA\bfB^{-1}$.
-\end{frame}
-
-
-\begin{frame}{伴随矩阵和逆矩阵}
-	\onslide<+->
-	注意一般地, $(\bfA+\bfB)^{-1}\neq\bfA^{-1}+\bfB^{-1}$.
-	\onslide<+->
-	例如 $\bfA=\begin{pmatrix}
-		1&0\\0&-1
-	\end{pmatrix},\bfB=\begin{pmatrix}
-		1&0\\0&1
-	\end{pmatrix}$ 均可逆, 但 $\bfA+\bfB=\begin{pmatrix}
-		2&0\\0&0
-	\end{pmatrix}$ 不可逆.
-	\onslide<+->
-	\begin{block}{伴随矩阵的性质}
-		\begin{enumerate}
-			\setcounter{enumi}{4}
-			\item 若 $\bfA$ 可逆, 则 $(\bfA^{-1})^*=(\bfA^*)^{-1}=\dfrac{\bfA}{|\bfA|}$.
-		\end{enumerate}
-	\end{block}
-	\onslide<+->
-	\begin{proof}
-		由于 $\bfA\bfA^*=|\bfA|\bfE$, 因此 $\bfA^*=|\bfA|\bfA^{-1}$.
-		\onslide<+->{于是
-		\[(\bfA^{-1})^*=|\bfA^{-1}|(\bfA^{-1})^{-1}=\frac{\bfA}{|\bfA|},\quad\visible<+->{(\bfA^*)^{-1}=(|\bfA|\bfA^{-1})^{-1}=\frac{\bfA}{|\bfA|}.}\qedhere\]
-		}
-		\vspace{-\baselineskip}
-	\end{proof}
-\end{frame}
-
-
-\begin{frame}{例: 求逆矩阵}
+\begin{frame}{例: 初等矩阵与初等变换}
 	\onslide<+->
 	\begin{example}
-		设 $\bfA$ 是 $3$ 阶方阵, $|\bfA|=\dfrac12$.
-		求 $\bigl|(2\bfA)^{-1}-(2\bfA)^*\bigr|$.
+		设 $\bfA$ 为 $3$ 阶方阵，将 $\bfA$ 的第 $1$ 列与第 $2$ 列交换得 $\bf	B$, 再把 $\bfB$ 的第 $2$ 列加到第 $3$ 列得到 $\bfC$．求满足 $\bfA\bfQ=\bfC$ 的可逆矩阵 $\bfQ$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[(2\bfA)^{-1}-(2\bfA)^*
-		=\frac12\bfA^{-1}-2^2\bfA^*=\bfA^*-4\bfA^*=-3\bfA^*,\]
+		$\bfB=\bfA\begin{pmatrix}
+			0&1&0\\1&0&0\\0&0&1
+		\end{pmatrix},\bfC=\bfB\begin{pmatrix}
+			1&0&0\\0&1&1\\0&0&1
+		\end{pmatrix}$.
 		\onslide<+->{因此
-		\[\bigl|(2\bfA)^{-1}-(2\bfA)^*\bigr|=-27|\bfA^*|=-27|\bfA|^2=-\frac{27}4.\]
-		}
-		\vspace{-\baselineskip}
+		\[\bfQ=\begin{pmatrix}
+			0&1&0\\1&0&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&1\\0&0&1
+		\end{pmatrix}=\begin{pmatrix}
+			0&1&1\\1&0&0\\0&0&1
+		\end{pmatrix}.\]}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例: 初等矩阵的逆}
 	\onslide<+->
-	如果 $\bfA,\bfB$ 可逆, 下述矩阵方程可以由逆矩阵表出:
+	由于初等变换都是可逆, 因此初等矩阵也都是可逆的:
+	\onslide<+->
 	\begin{enumerate}
-		\item $\bfA\bfX=\bfC\implies \bfX=\bfA^{-1}\bfC$;
-		\item $\bfX\bfA=\bfC\implies \bfX=\bfC\bfA^{-1}$;
-		\item $\bfA\bfX\bfB=\bfC\implies \bfX=\bfA^{-1}\bfC\bfB^{-1}$.
+		\item $\bfE(i,j)\bfE(i,j)=\bfE\implies \alert{\bfE(i,j)^{-1}=\bfE(i,j)}$;
+		\item $\bfE(i(k))\bfE(i(\frac1k))=\bfE\implies\alert{\bfE(i(k))^{-1}=\bfE(i(\frac1k))}$;
+		\item $\bfE(i,j(k))\bfE(i,j(-k))=\bfE\implies\alert{\bfE(i,j(k))^{-1}=\bfE(i,j(-k))}$.
 	\end{enumerate}
 	\onslide<+->
 	\begin{example}
+		设 $\bfA$ 是 $n$ 阶可逆矩阵, 将 $\bfA$ 的第 $i$ 行与第 $j$ 行对换后得到的矩阵记为 $\bfB$, 则 $\bfA\bfB^{-1}=$\fillblank[3cm]{\visible<+->{$\bfE(i,j)$}}.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵与初等变换}
+	\onslide<+->
+	\begin{exercise}
 		设 $\bfA=\begin{pmatrix}
-			3&0&1\\1&1&0\\0&1&4
-		\end{pmatrix}$. 如果 $\bfA\bfX=\bfA+2\bfX$, 求 $\bfX$.
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 解矩阵方程}
-	\onslide<+->
-	\begin{solution}
-		由题设得 $(\bfA-2\bfE)\bfX=\bfA$.
-		\onslide<+->{
-			注意到
-			\[|\bfA-2\bfE|=\detm{
-				1&0&1\\1&-1&0\\0&1&2}=-1\neq0,\quad
-				\visible<+->{(\bfA-2\bfE)^{-1}=\begin{pmatrix}
-				2&-1&-1\\
-				2&-2&-1\\
-				-1&1&1
-			\end{pmatrix}.}\]
-		}\onslide<+->{因此
-		\[\bfX=(\bfA-2\bfE)^{-1}\bfA=\begin{pmatrix}
-			2&-1&-1\\
-			2&-2&-1\\
-			-1&1&1
-		\end{pmatrix}\begin{pmatrix}
-			3&0&1\\1&1&0\\0&1&4
-		\end{pmatrix}=\begin{pmatrix}
-			5&-2&-2\\
-			4&-3&-2\\
-			-2&2&3
-		\end{pmatrix}.\]}
-		\vspace{-\baselineskip}
-	\end{solution}
-	\onslide<+->
-	也可由 $\bfX=\bfE+2(\bfA-2\bfE)^{-1}$ 计算得到.
-\end{frame}
-
-
-\begin{frame}{例: 解矩阵方程}
-	\onslide<+->
-	\begin{exercise}
-		设 $3$ 阶矩阵 $\bfA,\bfB$ 满足 $\bfA^{-1}\bfB\bfA=6\bfA+\bfB\bfA$.
-		如果 $\bfA=\diag(\dfrac12,\dfrac14,\dfrac17)$, 求 $\bfB$.
+			a_{11}&a_{12}&a_{13}\\
+			a_{21}&a_{22}&a_{23}\\
+			a_{31}&a_{32}&a_{33}
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			a_{13}&-a_{11}+a_{12}&a_{11}\\
+			a_{23}&-a_{21}+a_{22}&a_{21}\\
+			a_{33}&-a_{31}+a_{32}&a_{31}
+		\end{pmatrix}$,\\
+		$\bfP_1=\begin{pmatrix}
+			0&0&1\\0&1&0\\1&0&0
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			1&1&0\\0&1&0\\0&0&1
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&-1&0\\0&1&0\\0&0&1
+		\end{pmatrix}$ 且 $\bfA$ 可逆.
+		那么 $\bfB^{-1}=$\fillbrace{\visible<+->{\alert{B}}}.
+		\xx{$\bfA^{-1}\bfP_1\bfP_2$}{$\bfP_1\bfP_2\bfA^{-1}$}{$\bfP_1\bfP_3\bfA^{-1}$}{$\bfP_3\bfP_1\bfA^{-1}$}
 	\end{exercise}
-	\onslide<+->
-	\begin{answer}
-		右乘 $\bfA^{-1}$ 得到 $\bfB=6(\bfA^{-1}-\bfE)^{-1}=\diag(6,2,1)$.
-
-		\onslide<+->{也可以左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
-		\[(\bfE-\bfA)\bfB=6\bfA=6\bfE-6(\bfE-\bfA),\]
-		\[\bfB=6(\bfE-\bfA)^{-1}-6\bfE=\diag(6,2,1).\]}
-	\end{answer}
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例: 初等矩阵}
 	\onslide<+->
 	\begin{example}
-		解矩阵方程 $\bfA^*\bfX=\bfA^{-1}+2\bfX$, 其中 $\bfA=\begin{pmatrix}
-			1&1&-1\\-1&1&1\\1&-1&1
-		\end{pmatrix}$.
+		设 $\bfP_1=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&0&1
+		\end{pmatrix},\bfP_2=\begin{pmatrix}
+			1&&&\\
+			0&1&&\\
+			0&0&1&\\
+			a&0&0&1
+		\end{pmatrix},\bfP_3=\begin{pmatrix}
+			1&&&\\
+			&k&&\\
+			&&1&\\
+			&&&1
+		\end{pmatrix}$, 求 $\bfP_1\bfP_2\bfP_3$ 和 $(\bfP_1\bfP_2\bfP_3)^{-1}$.
 	\end{example}
 	\onslide<+->
+	这题可以直接计算, 也可以利用初等矩阵对应的变换来看.
 	\begin{solution}
-		注意到 $|\bfA|=4$.
-		\onslide<+->{两边同时左乘 $\bfA$ 得到 $4\bfX=\bfE+2\bfA\bfX$,
-		}\onslide<+->{因此
-		\[\bfX=(4\bfE-2\bfA)^{-1}=\begin{pmatrix}
-			2&-2&2\\2&2&-2\\-2&2&2
-		\end{pmatrix}^{-1}=\frac14\begin{pmatrix}
-			1&1&0\\0&1&1\\1&0&1
+		$\bfP_1\bfP_2$ 就是对 $\bfP_1$ 实施初等列变换 $c_1+ac_4$, 即 $\bfP_1\bfP_2=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			a&0&0&1
+		\end{pmatrix}.$
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等矩阵}
+	\onslide<+->
+	\begin{solutionc}
+		同理 $\bfP_1\bfP_2\bfP_3=\begin{pmatrix}
+			0&0&1&0\\
+			0&k&0&0\\
+			1&0&0&0\\
+			a&0&0&1
+		\end{pmatrix}.$
+
+		\onslide<+->{%
+		反过来, $\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&0&1
+		\end{pmatrix}$, 
+		}\onslide<+->{%
+		$\bfP_2^{-1}\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1&0&0\\
+			1&0&0&0\\
+			0&0&-a&1
+		\end{pmatrix}$, 
+		}\onslide<+->{%
+		\[(\bfP_1\bfP_2\bfP_3)^{-1}=\bfP_3^{-1}\bfP_2^{-1}\bfP_1^{-1}=\begin{pmatrix}
+			0&0&1&0\\
+			0&1/k&0&0\\
+			1&0&0&0\\
+			0&0&-a&1
 		\end{pmatrix}.\]}
 		\vspace{-\baselineskip}
-	\end{solution}
+	\end{solutionc}
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例: 初等矩阵}
 	\onslide<+->
 	\begin{exercise}
-		解矩阵方程 $\bfA^*\bfX\bfA=2\bfX\bfA-8\bfE$, 其中 $\bfA=\begin{pmatrix}
-			1&2&-2\\0&-2&4\\0&0&1
-		\end{pmatrix}$.
+		将可逆方阵 $\bfA$ 的第 $1$ 行的 $2$ 倍加到第 $2$ 行得到 $\bfB$, 则对 $\bfA^{-1}$ 实施初等变换\fillbrace{\visible<+->{D}}可得到 $\bfB^{-1}$.
+		\xx{$r_2+2r_1$}%
+		{$r_2-2r_1$}%
+		{$c_1+2c_2$}%
+		{$c_1-2c_2$}
 	\end{exercise}
-	\onslide<+->
-	\begin{answer}
-		两边同时左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
-		\[-2\bfX=2\bfA\bfX-8\bfE,\quad (\bfA+\bfE)\bfX=4\bfE,\]
-		\[\bfX=4(\bfA+\bfE)^{-1}=4\begin{pmatrix}
-			2&2&-2\\0&-1&4\\0&0&2
-		\end{pmatrix}^{-1}=4\begin{pmatrix}
-			2&4&-6\\0&-4&8\\0&0&2
-		\end{pmatrix}.\]
-	\end{answer}
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+
+\begin{frame}{例: 初等变换}
+	\onslide<+->
+	\begin{exercise}
+		设\[\bfA=\begin{pmatrix}
+			a_{11}&a_{12}&a_{13}&a_{14}\\
+			a_{21}&a_{22}&a_{23}&a_{24}\\
+			a_{31}&a_{32}&a_{33}&a_{34}\\
+			a_{41}&a_{42}&a_{43}&a_{44}
+	\end{pmatrix},\qquad\bfB=\begin{pmatrix}
+		a_{14}&a_{13}&a_{12}&a_{11}\\
+		a_{24}&a_{23}&a_{22}&a_{21}\\
+		a_{34}&a_{33}&a_{32}&a_{31}\\
+		a_{44}&a_{43}&a_{42}&a_{41}
+	\end{pmatrix},\]\[\bfP_1=\begin{pmatrix}
+		0&0&0&1\\
+		0&1&0&0\\
+		0&0&1&0\\
+		1&0&0&0
+	\end{pmatrix},\qquad\bfP_2=\begin{pmatrix}
+		1&0&0&0\\
+		0&0&1&0\\
+		0&1&0&0\\
+		0&0&0&1
+	\end{pmatrix}.\]
+	若 $\bfA$ 可逆, 则 $\bfB^{-1}=$\fillbrace{\visible<+->{C}}.
+	\xx{$\bfA^{-1}\bfP_1\bfP_2$}%
+	{$\bfP_1\bfA^{-1}\bfP_2$}%
+	{$\bfP_1\bfP_2\bfA^{-1}$}%
+	{$\bfP_2\bfA^{-1}\bfP_1$}
+	\end{exercise}
+\end{frame}
+
+
+\subsection{矩阵等价}
+
+\begin{frame}{矩阵化为行阶梯形}
+	\onslide<+->
+	我们来看初等行变换能够将矩阵化简成何种形式.
+	\onslide<+->
+	\[\begin{pmatrix}
+		1&3&-2&4\\
+		3&6&-2&11\\
+		2&1&1&3
+	\end{pmatrix}
+	\visible<+->{\wsim{r_2-3r_1}{r_3-2r_1}\begin{pmatrix}
+		1&3&-2&4\\
+		0&-3&4&-1\\
+		0&-5&5&-5
+	\end{pmatrix}}
+	\visible<+->{\wsim{-\frac15r_3}{}\begin{pmatrix}
+		1&3&-2&4\\
+		0&-3&4&-1\\
+		0&1&-1&1
+	\end{pmatrix}}\]
+	\onslide<+->
+	\[\wsim{r_2\swap r_3}{}\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&-3&4&-1
+	\end{pmatrix}
+	\visible<+->{\wsim{r_3+3r_2}{}\begin{pNiceMatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+		\CodeAfter
+		\tikz \draw [cstcurve,dcolora,visible on=<+->] (1-|1) |- (2-|2) |- (3-|3) |- (4-|5);
+	\end{pNiceMatrix}}\]
+	\onslide<+->
+	经过若干次初等\alert{行变换}, 矩阵变为\emph{行阶梯形矩阵}.
+\end{frame}
+
+
+\begin{frame}{行阶梯形矩阵}
+	\onslide<+->
+	\begin{definition}
+		满足下述条件的矩阵称为\emph{行阶梯形矩阵}:
+		\begin{enumerate}
+			\item 每个非零行的第一个非零元只出现在上一行第一个非零元的右边;
+			\item 零行只可能出现在最下方.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	换言之, 若 $\bfA\in M_{m\times n}$, 存在正整数
+	\[1\le k_1<k_2<\cdots<k_\ell,\qquad \ell\le m\]
+	使得 $a_{1,k_1},\dots,a_{\ell,k_\ell}$ 均非零; $j<k_i$ 或 $i>\ell$ 时 $a_{ij}=0$.
+	\onslide<+->
+	\[\begin{pNiceMatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+		\CodeAfter
+		\tikz \draw [cstcurve,dcolora] (1-|1) |- (2-|2) |- (3-|3) |- (4-|5);
+	\end{pNiceMatrix}
+	\qquad
+	\visible<+->{\begin{pNiceMatrix}
+		0&3&0&0&-1\\
+		0&0&1&0&2\\
+		0&0&0&0&1\\
+		0&0&0&0&0
+		\CodeAfter
+		\tikz \draw [cstcurve,dcolora] (1-|2) |- (2-|3) |- (3-|5) |- (4-|6);
+	\end{pNiceMatrix}}
+	\qquad
+	\visible<+->{\begin{pmatrix}
+		2&3&4&-1\\
+		1&0&1&2\\
+		0&0&2&1\\
+		0&0&3&-1
+	\end{pmatrix}
+	\alert{\text{\Large$\times$}}}\]
+	\onslide<+->
+	任何矩阵都可通过初等行变换化为行阶梯形.
+\end{frame}
+
+
+\begin{frame}{行最简形矩阵}
+	\onslide<+->
+	\vspace{-\baselineskip}
+	\[\begin{pmatrix}
+		1&3&-2&4\\
+		0&1&-1&1\\
+		0&0&1&2
+	\end{pmatrix}
+	\visible<+->{\wsim{r_2+r_3}{r_1+2r_3}\begin{pmatrix}
+		1&3&0&8\\
+		0&1&0&3\\
+		0&0&1&2
+	\end{pmatrix}}
+	\visible<+->{\wsim{r_1-3r_2}{}\begin{pmatrix}
+		1&0&0&-1\\
+		0&1&0&3\\
+		0&0&1&2
+	\end{pmatrix}}\]
+	\onslide<+->
+	再经过若干次初等变换, 增广矩阵变为\emph{行最简形矩阵}.
+	\onslide<+->
+	\begin{definition}
+		满足下述条件的行阶梯形矩阵称为\emph{行最简形矩阵}:
+		\begin{enumerate}
+			\item 每个非零行的第一个非零元是 $1$;
+			\item 每个非零行的第一个非零元所在列其它元素均为 $0$.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	\[\begin{pmatrix}
+		\alert{1}&0&0&4\\
+		0&\alert{1}&0&1\\
+		0&0&\alert{1}&2
+	\end{pmatrix}
+	\qquad\begin{pmatrix}
+		0&\alert{1}&0&2&0\\
+		0&0&\alert{1}&1&0\\
+		0&0&0&0&\alert{1}\\
+		0&0&0&0&0
+	\end{pmatrix}\]
+	\onslide<+->
+	任何矩阵都可通过初等行变换化为行最简形.
+\end{frame}
+
+
+\begin{frame}{例: 行最简形矩阵}
 	\onslide<+->
 	\begin{example}
-		设 $\bfP=\begin{pmatrix}
-			1&2\\1&4
-		\end{pmatrix},\Lambda=\begin{pmatrix}
-			1&\\&2
-		\end{pmatrix},\bfA\bfP=\bfP\Lambda$, 求 $\bfA^n$.
+		用初等行变换将 $\bfA=\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			-2&-3&9&6
+		\end{pmatrix}$ 化为行最简形矩阵.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		$|\bfP|=2,\bfP^{-1}=\dfrac12\begin{pmatrix}
-			4&-1\\-1&1
-		\end{pmatrix},\bfA=\bfP\Lambda\bfP^{-1}$,
-		\onslide<+->{
-			\begin{align*}
-				\bfA^n&=\bfP\Lambda\bfP^{-1}\cdot \bfP\Lambda\bfP^{-1}\cdots \bfP\Lambda\bfP^{-1}=\bfP\Lambda^n\bfP^{-1}\\
-				&\visible<+->{=\dfrac12\begin{pmatrix}
-					1&2\\1&4
-				\end{pmatrix}\begin{pmatrix}
-					1&\\&2^n
-				\end{pmatrix}\begin{pmatrix}
-					4&-1\\-1&1
-				\end{pmatrix}=\begin{pmatrix}
-					2-2^n&2^n-1\\2-2^{n+1}&2^{n+1}-1
-				\end{pmatrix}.}
-			\end{align*}}
-			\vspace{-\baselineskip}
+		\[\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			-2&-3&9&6
+		\end{pmatrix}
+		\visible<+->{\wsim{r_3+2r_1}{}\begin{pmatrix}
+			1&3&-9&3\\
+			0&1&-3&4\\
+			0&3&-9&12
+		\end{pmatrix}}
+		\visible<+->{\wsim{
+			r_3-3r_2}{}\begin{pmatrix}
+				1&3&-9&3\\
+				0&1&-3&4\\
+				0&0&0&0
+		\end{pmatrix}}\]\[
+		\visible<+->{\wsim{
+			r_1-3r_2}{}\begin{pmatrix}
+				1&0&0&-9\\
+				0&1&-3&4\\
+				0&0&0&0
+		\end{pmatrix}.}
+		\]
 	\end{solution}
-	\onslide<+->
-	我们会在后面学习到该技巧来计算一般方阵的幂次.
 \end{frame}
 
 
-\begin{frame}{逆矩阵和克拉默法则}
+\begin{frame}{矩阵等价的定义}
 	\onslide<+->
-	如果 $\bfA\bfx=\bfb$ 且 $\bfA$ 可逆, 
-	\onslide<+->
-	则 
-		\[\bfx=\bfA^{-1}\bfb=\frac1{|\bfA|}\bfA^*\bfb\]
-	\onslide<+->
-	因此
-	\[x_i=\frac1{|\bfA|}\sum_{k=1}^n A_{ki}b_k.\]
-	\onslide<+->
-	此即克拉默法则.
-\end{frame}
-
-
-\begin{frame}{伴随矩阵的伴随}
-	\onslide<+->
-	容易知道, $2$ 阶方阵满足 $(\bfA^*)^*=\bfA$.
-
-	\onslide<+->
-	如果 $\bfA$ 是 $n\ge3$ 阶非退化方阵, 则
-	\[(\bfA^*)^*=|\bfA^*|(\bfA^*)^{-1}=|\bfA|^{n-1}\dfrac{\bfA}{|\bfA|}=|\bfA|^{n-2}\bfA.\]
-	\onslide<+->
-	如果 $\bfA$ 是 $n\ge3$ 阶退化方阵, 我们会在后面证明 $(\bfA^*)^*=\bfO$.
-	\onslide<+->
-	因此
-	\begin{block}{伴随矩阵的性质}
+	\begin{definition}
 		\begin{enumerate}
-			\setcounter{enumi}{5}
-			\item $(\bfA^*)^*=\begin{cases}
-				\bfA,&n=2;\\
-				|\bfA|^{n-2}\bfA,&n\ge3.
-			\end{cases}$
+			\item 如果 $\bfA$ 经过有限次初等行变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{行等价}, 记作\emph{$\bfA\simr\bfB$}.
+			\item 如果 $\bfA$ 经过有限次初等列变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{列等价}, 记作\emph{$\bfA\simc\bfB$}.
+			\item 如果 $\bfA$ 经过有限次初等行变换和初等列变换变为 $\bfB$, 则称 $\bfA$ 和 $\bfB$ \emph{列等价}, 记作\emph{$\bfA\sim\bfB$}.
 		\end{enumerate}
-	\end{block}
+	\end{definition}
+	\onslide<+->
+	每个矩阵都可以通过初等行变换变为行最简形矩阵.
+	\onslide<+->
+	对于可逆方阵 $\bfP$, 由于初等矩阵都是可逆的, 因此它对应的行最简形矩阵 $\bfQ$ 也是可逆的.
+	\onslide<+->
+	于是 $\bfQ$ 没有零行, 它只能是 $\bfE$.
+	\onslide<+->
+	换言之, \alert{可逆方阵可以写成有限个初等矩阵的乘积}.
+	\onslide<+->
+	所以 $\bfA\simr\bfB$ 等价于存在可逆矩阵 $\bfP$ 使得 $\bfB=\bfP\bfA$.
 \end{frame}
 
 
-\begin{frame}{例: 逆矩阵的性质}
+\begin{frame}{矩阵等价的刻画}
 	\onslide<+->
-	\begin{exercise}
-		单选题: 设 $\bfA$ 是 $n$ 阶方阵, 如果\fillbrace{\visible<+->{\alert{D}}}, 则 $\bfA-\bfE$ 可逆.
-		\xx{$\bfA$ 可逆}{$|\bfA|=0$}{$\bfA$ 的主对角线元素均为 $0$}{存在某个正整数 $m$ 使得 $\bfA^m=\bfO$}
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $\bfA$ 为 $n$ 阶方阵, 则下面命题正确的有\fillblank{\visible<+->{1}}个.
+	\begin{theorem}
 		\begin{enumerate}
-			\item $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$
-			\item $\bfA^*=|\bfA|\bfA^{-1}$
-			\item $|\bfA^*|=|\bfA|^{n-1}$
+			\item $\bfA\simr\bfB$ 当且仅当存在可逆矩阵 $\bfP$ 使得 $\bfB=\bfP\bfA$.
+			\item $\bfA\simc\bfB$ 当且仅当存在可逆矩阵 $\bfQ$ 使得 $\bfB=\bfA\bfQ$.
+			\item $\bfA\sim\bfB$ 当且仅当存在可逆矩阵 $\bfP,\bfQ$ 使得 $\bfB=\bfP\bfA\bfQ$.
 		\end{enumerate}
-	\end{exercise}
+	\end{theorem}
+	\onslide<+->
+	由此可知
+	\begin{proposition}
+		矩阵的行等价、列等价、等价均满足
+		\begin{enumerate}
+			\item 自反性: $\bfA\sim\bfA$;
+			\item 对称性: $\bfA\sim\bfB\implies\bfB\sim\bfA$;
+			\item 传递性: $\bfA\sim\bfB,\bfB\sim\bfC\implies\bfA\sim\bfC$.
+		\end{enumerate}
+	\end{proposition}
 \end{frame}
 
 
-\subsection{逆矩阵的应用}
-
-\begin{frame}{逆矩阵的应用: 通信加密}
+\begin{frame}{向量组的等价与矩阵等价}
 	\onslide<+->
-	1929年, 希尔通过线性变换对信息进行加密和解密处理, 
-	提出了密码史上具有重要地位的\emph{希尔密码系统}.
+	如果矩阵 $\bfA\simc\bfB$ 列等价, 那么存在可逆矩阵 $\bfQ$ 使得 $\bfB=\bfA\bfQ$, 于是二者的列向量组作为向量组等价.
+	\onslide<+->
+	但是反过来\alert{不成立}.
+	\onslide<+->
+	这是因为列等价的矩阵一定是同型矩阵, 但等价的向量组并不要求向量数量相同.
+
+	\onslide<+->
+	不过, 等价的向量组它们各自的极大线性无关组构成的矩阵确实是列等价的.
+	\onslide<+->
+	设 $\bfA=(\bma_1,\dots,\bma_r),\bfB=(\bmb_1,\dots,\bmb_r)$ 的列向量组是等价的线性无关组.
+	\onslide<+->
+	存在矩阵 $\bfP,\bfQ\in M_t$ 使得 $\bfB=\bfA\bfP,\bfA=\bfB\bfQ$.
+	\onslide<+->
+	从而 $\bfA=\bfA\bfP\bfQ$.
+	\onslide<+->
+	注意 $\bfP\bfQ$ 的第 $j$ 列就是 $\bma_j$ 表达为 $\bma_1,\dots,\bma_r$ 线性组合的系数.
+	\onslide<+->
+	由于 $\bma_1,\dots,\bma_r$ 线性无关, 该表达形式唯一, 因此 $\bfP\bfQ$ 第 $j$ 列就是 $\bfe_j, \bfP\bfQ=\bfE$.
+	\onslide<+->
+	故 $\bfP$ 可逆, $\bfA\simc\bfB$.
+\end{frame}
+
+
+\begin{frame}{矩阵的标准型}
+	\onslide<+->
+	任一矩阵通过有限次初等行变换变为行最简形后, 可通过初等列变换将其变为\emph{标准型} $\begin{pmatrix}
+		\bfE_r&\bfO\\\bfO&\bfO
+	\end{pmatrix}$.
+	\onslide<+->
+	例如:
+	\[\begin{pmatrix}
+		1&0&0&-9\\
+		0&1&-3&4\\
+		0&0&0&0
+	\end{pmatrix}\visible<+->{\wsim{c_4+9c_1}{}\begin{pmatrix}
+		1&0&0&0\\
+		0&1&-3&4\\
+		0&0&0&0
+	\end{pmatrix}}
+	\visible<+->{\wsim{c_3+3c_2}{c_4-4c_2}\begin{pmatrix}
+		1&0&0&0\\
+		0&1&0&0\\
+		0&0&0&0
+	\end{pmatrix}.}\]
+
+	\onslide<+->
+	矩阵的等价也叫做\emph{相抵}, 上述标准型也叫作\emph{相抵标准型}.
+	\onslide<+->
+	我们会看到不同的 $r$ 对应的相抵标准型不等价.
+	\onslide<+->
+	所以相抵标准型相当于在每一个等价类中找到了一个具有代表性的矩阵.
+
+	\onslide<+->
+	\begin{proposition}
+		方阵 $\bfA$ 可逆当且仅当它的标准型为 $\bfE_n$.
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{矩阵的变换关系}
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
-			\node[cstnodeg,align=center,minimum height=12mm] (1) at (0,0) {明文字母};
-			\node[cstnodeg,align=center,minimum height=12mm] (2) at (3.6,0) {明文数字\\矩阵 $\bfX$};
-			\node[cstnodeg,align=center,minimum height=12mm] (3) at (8.4,0) {密文数字\\矩阵 $\bfC$};
-			\node[cstnodeg,align=center,minimum height=12mm] (4) at (12,0) {密文字母};
-			\node[cstnodeb,align=center,minimum height=12mm] (11) at (0,-2) {明文字母};
-			\node[cstnodeb,align=center,minimum height=12mm] (12) at (3.6,-2) {明文数字\\矩阵 $\bfX$};
-			\node[cstnodeb,align=center,minimum height=12mm] (13) at (8.4,-2) {密文数字\\矩阵 $\bfC$};
-			\node[cstnodeb,align=center,minimum height=12mm] (14) at (12,-2) {密文字母};
-			\draw[cstarrowto,dcolord,cstcurve] (1.east) to (2.west);
-			\draw[cstarrowto,dcolord,cstcurve] (2.east) to (3.west);
-			\draw[cstarrowto,dcolord,cstcurve] (3.east) to (4.west);
-			\draw[cstarrowto,dcolora,cstcurve] (4.south) to (14.north);
-			\draw[cstarrowto,dcolorb,cstcurve] (14.west) to (13.east);
-			\draw[cstarrowto,dcolorb,cstcurve] (13.west) to (12.east);
-			\draw[cstarrowto,dcolorb,cstcurve] (12.west) to (11.east);
-			\draw (1.8,.3) node {查表};
-			\draw (1.8,-2.3) node {查表};
-			\draw (1.8,-1) node[align=center,dcolore] {$A\sim Z$\\对应\\$0\sim26$};
-			\draw (6,.3) node {$\bfC=\bfA\bfX$};
-			\draw (6,-.3) node[align=center,dcolord] {加密秘钥: $A$};
-			\draw (6,-2.3) node {$\bfX=\bfA^{-1}\bfC$};
-			\draw (6,-1.7) node[align=center,dcolorb] {解密秘钥: $A^{-1}$};
-			\draw (10.2,.3) node {查表};
-			\draw (10.2,-2.3) node {查表};
-			\draw (11.2,-1) node[dcolora] {传输};
+		\begin{tikzpicture}[node distance=4cm]
+			\node (1) {任意矩阵};
+			\node (2) [right=of 1]{行阶梯形矩阵};
+			\node (3) [right=of 2]{行最简形矩阵};
+			\node (4) [below=of 3]{标准型矩阵};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt] (1)--(2)
+				node[midway,above] {有限次初等行变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt] (2)--(3)
+				node[midway,above] {有限次初等行变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt,dcolorb] (3)--(4)
+				node[midway,above,sloped] {有限次初等列变换};
+			\draw[Implies-Implies,double,double distance=1mm,line width=1pt,dcolora] (1)--(4)
+				node[midway,above,sloped] {有限次初等变换};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{逆矩阵的应用: 通信加密}
-	\beqskip{2mm}
+\begin{frame}{例: 初等变换}
+	\beqskip{0mm}
 	\onslide<+->
+	\vspace{-.3\baselineskip}
 	\begin{example}
-		设接受收到的密文字母为``WBIZTNWJBRFSGNZ'', 加密密钥为 $\bfA=\begin{pmatrix}
-			1&2&3\\1&1&2\\0&1&2
-		\end{pmatrix}$. 
-		请用希尔密码系统解密密文.
+		\vspace{-.3\baselineskip}
+		将矩阵 $\bfA=\begin{pmatrix}
+			1&0&0\\
+			2&0&-1\\
+			0&-1&0
+		\end{pmatrix}$ 表示成有限个初等阵的乘积.
+		\vspace{-.2\baselineskip}
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		密文对应的数字为 
-		\[22,1,8,25,19,13,22,9,1,17,5,18,6,13,25.\]
-		\onslide<+->{由于密钥是 $3$ 阶方阵, 所以将上述数字按 $3$ 个一列写成
-		\[\bfC=\begin{pmatrix}
-			22&25&22&17&6\\
-			1&19&9&5&13\\
-			8&13&1&18&25
+		\vspace{-.3\baselineskip}
+		\[\bfA\wsim{r_2\swap r_3}{}\begin{pmatrix}
+			1&0&0\\
+			0&-1&0\\
+			2&0&-1
+		\end{pmatrix}
+		\wsim{r_3-2r_1}{}\begin{pmatrix}
+			1&0&0\\
+			0&-1&0\\
+			0&0&-1
+		\end{pmatrix}
+		\wsim{-r_2}{-r_3}\begin{pmatrix}
+			1&0&0\\
+			0&1&0\\
+			0&0&1
+		\end{pmatrix}.\]
+		\onslide<+->{因此 $\begin{pmatrix}
+			1&0&0\\0&1&0\\0&0&-1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&-1&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\-2&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix}\bfA=\bfE$, 
+		}\onslide<+->{%
+		\[\bfA=\begin{pmatrix}
+			1&0&0\\0&0&1\\0&1&0
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\2&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&-1&0\\0&0&1
+		\end{pmatrix}\begin{pmatrix}
+			1&0&0\\0&1&0\\0&0&-1
 		\end{pmatrix}.\]}
-		\vspace{-\baselineskip}
+		\vspace{-.3\baselineskip}
 	\end{solution}
 	\endgroup
 \end{frame}
-	
-	
-\begin{frame}{逆矩阵的应用: 通信加密}
+
+
+
+
+\subsection{初等变换解矩阵方程}
+\begin{frame}{初等变换解矩阵方程}
+	\onslide<+->
+	如果 $(\bfA,\bfB)\simr (\bfE,\bfX)$, 那么存在可逆矩阵 $\bfP$ 使得 $\bfP(\bfA,\bfB)=(\bfE,\bfX)$.
+	\onslide<+->
+	即 $\bfP=\bfA^{-1},\bfX=\bfA^{-1}\bfB$.
+	\onslide<+->
+	所以这种方法可用来解矩阵方程 $\bfA\bfX=\bfB$, 其中 $\bfA$ 是可逆阵.
+
+	\onslide<+->
+	特别地, \alert{$(\bfA,\bfE)\simr(\bfE,\bfA^{-1})$} 可用来帮助计算矩阵的逆.
+	\onslide<+->
+	类似地 $\begin{pmatrix}
+		\bfA\\
+		\bfB
+	\end{pmatrix}\simc\begin{pmatrix}
+		\bfE\\
+		\bfX
+	\end{pmatrix}$ 可用来解 $\bfX\bfA=\bfB$, 其中 $\bfA$ 是可逆阵.
+
+	\onslide<+->
+	\begin{exercise}
+		求 $\bfA=\begin{pmatrix}
+			1&1&2\\1&2&3\\2&1&4
+		\end{pmatrix}$ 的逆.
+	\end{exercise}
+	\onslide<+->
+	\begin{solution}
+		\[(\bfA,\bfE)=\begin{pmatrix}
+			1&1&2&1&0&0\\
+			1&2&3&0&1&0\\
+			2&1&4&0&0&1
+		\end{pmatrix}
+		\visible<+->{\wsim[3]{r_2-r_1}{r_3-2r_1}\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&-1&0&-2&0&1
+		\end{pmatrix}}\]
+		\vspace{-.7\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
 	\begin{solutionc}
-		\onslide<+->{解密密钥为
-		$\bfA^{-1}=\begin{pmatrix}
-			0&1&-1\\2&-2&-1\\-1&1&1
-		\end{pmatrix}$,
-		}\onslide<+->{%
-		因此
-		\[\bfA^{-1}\bfC=\begin{pmatrix}
-			-7&6&8&-13&-12\\
-			34&-1&25&6&-39\\
-			-13&7&-12&6&32
-		\end{pmatrix},\quad
-		\bfX=\begin{pmatrix}
-			19&6&8&13&14\\
-			8&25&25&6&13\\
-			13&7&14&6&6
-		\end{pmatrix}.\]}\onslide<+->{%
-		查表得到明文: \alert{TINGZHI ZONGGONG}.}
+		\[(\bfA,\bfE)\simr\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&-1&0&-2&0&1
+		\end{pmatrix}\wsim[3]{r_3+r_2}{}\begin{pmatrix}
+			1&1&2&1&0&0\\
+			0&1&1&-1&1&0\\
+			0&0&1&-3&1&1
+		\end{pmatrix}\]
+		\onslide<+->{\[\wsim[3]{r_1-2r_3}{r_2-r_3}\begin{pmatrix}
+			1&1&0&7&-2&-2\\
+			0&1&0&2&0&-1\\
+			0&0&1&-3&1&1
+		\end{pmatrix}\visible<+->{\wsim[3]{r_1-r_2}{}\begin{pmatrix}
+				1&0&0&5&-2&-1\\
+				0&1&0&2&0&-1\\
+				0&0&1&-3&1&1
+			\end{pmatrix}.}\]}
+		\onslide<+->{故 $\bfA^{-1}=\begin{pmatrix}
+			5&-2&-1\\
+			2&0&-1\\
+			-3&1&1
+		\end{pmatrix}$.}
 	\end{solutionc}
 \end{frame}
 
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
+	\begin{exercise}
+		若 $\bfA=\begin{pmatrix}
+			2&2&0\\2&1&3\\0&1&0
+		\end{pmatrix},\bfA\bfX=\bfA+\bfX$, 求 $\bfX$.
+	\end{exercise}
+	\onslide<+->
+	\begin{solution}
+		由题设知 $(\bfA-\bfE)\bfX=\bfA$, $\bfX=(\bfA-\bfE)^{-1}\bfA$.
+		\onslide<+->{\[(\bfA-\bfE,\bfA)=\begin{pmatrix}
+			1&2&0&2&2&0\\
+			2&0&3&2&1&3\\
+			0&1&-1&0&1&0
+		\end{pmatrix}
+		\visible<+->{\wsim[3]{r_2-2r_1}{r_2\swap r_3}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&-4&3&-2&-3&3
+		\end{pmatrix}}\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换解矩阵方程}
+	\onslide<+->
+	\begin{solutionc}
+		\[(\bfA-\bfE,\bfA)\simr\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&-4&3&-2&-3&3
+		\end{pmatrix}\wsim[3]{r_3+4r_2}{-r_3}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&-1&0&1&0\\
+			0&0&1&2&-1&-3
+		\end{pmatrix}\]
+
+		\onslide<+->{\[\wsim[3]{r_2+r_3}{}\begin{pmatrix}
+			1&2&0&2&2&0\\
+			0&1&0&2&0&-3\\
+			0&0&1&2&-1&-3
+		\end{pmatrix}\visible<+->{\wsim[3]{r_1-2r_2}{}\begin{pmatrix}
+			1&0&0&-2&2&6\\
+			0&1&0&2&0&-3\\
+			0&0&1&2&-1&-3
+			\end{pmatrix}.}\]}
+		\onslide<+->{故 $\bfX=\begin{pmatrix}
+			-2&2&6\\
+			2&0&-3\\
+			2&-1&-3
+		\end{pmatrix}$.}
+	\end{solutionc}
+\end{frame}
+
+
+\begin{frame}{例: 初等变换}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $\bfA$ 是 $3$ 阶方阵, 存在可逆阵 $\bfP$ 使得 $\bfP^{-1}\bfA\bfP=\begin{pmatrix}
+				1&&\\&2&\\&&3
+			\end{pmatrix}$, 则 $\bfP^{-1}\bfA^*\bfP=$\fillblank[3cm]{\visible<+->{$\diag(6,3,2)$}}.
+			\item 设 $\bfA$ 是 $3$ 阶方阵, 存在可逆阵 $\bfP=(\bma_1,\bma_2,\bma_3)$ 使得 $\bfP^{-1}\bfA\bfP=\begin{pmatrix}
+				1&&\\&2&\\&&3
+			\end{pmatrix}$.
+			若 $\bfQ=(\bma_1,\bma_3,\bma_2)$, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblank[3cm]{\visible<+->{$\diag(1,3,2)$}}.
+			\item 设 $n$ 阶方阵 $\bfA,\bfB$ 满足 $\bfA\bfB=\bfE$, 则以下说法正确的有\fillblank{\visible<+->{4}}个.\\
+			(I) $\bfA$ 等价于 $\bfE$;\hspace{45mm}
+			(II) $\bfA$ 等价于 $\bfB$;\\
+			(III) $\bfA$ 可经过有限次初等行变换化为 $\bfB$;\hspace{4mm}
+			(IV) $\bfA\bfB=\bfB\bfA$.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}

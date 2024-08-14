@@ -5,13 +5,24 @@
 \newcommand{\wsim}[3][2.5]{
   \mathrel{\overset{#2}{\underset{#3}{\scalebox{#1}[1]{$\sim$}}}}
 }
-\newcommand{\augdash}[3]{\begin{tikzpicture}[overlay,xshift=-#1mm]\draw[cstdash,dcolora] (0,#2)--(0,#3);\end{tikzpicture}}
-\newcommand\detm[1]{\left|\begin{matrix}#1\end{matrix}\right|}
+\newcommand{\Emat}{
+	\begin{matrix}
+		1&&\\
+		&\ddots&\\
+		&&1
+	\end{matrix}
+}
+% 参数为行+1, 列
+\newcommand{\augdash}[2]{\CodeAfter
+\tikz \draw[cstdash,dcolora] (1-|#2) -- (#1-|#2);}
 \newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
 \mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
 \newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[dcolorb] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
 \newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
-\newcommand{\laeq}[1]{\left\{\begin{array}{l}#1\end{array}\right.}
+\newcommand{\laeq}[2][l]{
+	\setlength{\arraycolsep}{0pt}
+	\left\{\begin{array}{#1}
+	#2\end{array}\right.}
 \newenvironment{laeqn}{
 	\setcounter{equation}{0}
 	\begin{numcases}{}}{
