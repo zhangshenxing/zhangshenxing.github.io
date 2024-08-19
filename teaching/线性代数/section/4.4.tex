@@ -4,9 +4,9 @@
 
 \begin{frame}{双边幂级数}
 	\onslide<+->
-	如果解析函数 $f(z)$ 在 $z_0$ 处解析, 那么在 $z_0$ 处可以展开成泰勒级数.
+	若解析函数 $f(z)$ 在 $z_0$ 处解析, 则在 $z_0$ 处可以展开成泰勒级数.
 	\onslide<+->
-	如果 $f(z)$ 在 $z_0$ 处不解析呢?
+	若 $f(z)$ 在 $z_0$ 处不解析呢?
 	\onslide<+->
 	此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数,
 	\onslide<+->
@@ -27,7 +27,7 @@
 
 	\onslide<+->
 	\begin{definition}
-		如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
+		若双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
 		否则我们称之为\emph{发散}.
 	\end{definition}
 
@@ -43,18 +43,18 @@
 	设 $\suml_{n=0}^\infty c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
 
 	\onslide<+->
-	对于负幂次部分, 令 $\zeta=\frac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
+	对于负幂次部分, 令 $\zeta=\frac1{z-z_0}$, 则负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
 	\onslide<+->
 	设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
 	\onslide<+->
 	设 $R_1:=\frac1R$, 则 $\suml_{n=1}^\infty c_{-n}(z-z_0)^{-n}$ 在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
 
 	\begin{enumerate}
-		\item 如果 $R_1>R_2$, 则该双边幂级数处处不收敛.
-		\item 如果 $R_1=R_2$, 则该双边幂级数只在圆周 $|z-z_0|=R_1$ 上可能有收敛的点.
+		\item 若 $R_1>R_2$, 则该双边幂级数处处不收敛.
+		\item 若 $R_1=R_2$, 则该双边幂级数只在圆周 $|z-z_0|=R_1$ 上可能有收敛的点.
 		\onslide<+->
 		此时没有收敛域.
-		\item 如果 $R_1<R_2$, 则该双边幂级数在 $R_1<|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|<R_1$ 或 $>R_2$ 内发散, 在圆周 $|z-z_0|=R_1$ 或 $R_2$ 上既可能发散也可能收敛.
+		\item 若 $R_1<R_2$, 则该双边幂级数在 $R_1<|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|<R_1$ 或 $>R_2$ 内发散, 在圆周 $|z-z_0|=R_1$ 或 $R_2$ 上既可能发散也可能收敛.
 	\end{enumerate}
 \end{frame}
 
@@ -202,7 +202,7 @@
 	\onslide<+->
 	设 $|f(\zeta)|\le M,\zeta\in K_1$,
 	\onslide<+->
-	那么
+	则
 	\begin{align*}
 	|R_N(z)|&\le\frac 1{2\pi}\oint_{K_1}\abs{\frac{f(\zeta)}{z-\zeta}\cdot\left(\frac{\zeta-z_0}{z-z_0}\right)^{N-1}}\diff s\\
 	&\visible<+->{\le\frac 1{2\pi}\cdot\frac M{|z-z_0|-r}\cdot\abs{\frac{\zeta-z_0}{z-z_0}}^{N-1}\cdot 2\pi r\to 0\quad (N\to\infty).}
@@ -349,7 +349,7 @@
 
 \begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
-	如果有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内解析, 那么它的洛朗展开一定形如
+	若有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内解析, 则它的洛朗展开一定形如
 	\[f(z)=P(z)+\sum_{n\ge 0}a_n z^n+\sum_{n<0}b_n z^n,\]
 	其中 $P(z)$ 只有有限多项, 
 	\onslide<+->
@@ -365,7 +365,7 @@
 	例如在 $0<|z|<1$ 内,
 	\[f(z)=\frac{120}{(z-1)(z^2-4)(z^2-9)}=\sum_{n\ge 0}\left(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n.\]
 	\onslide<+->
-	那么在 $2<|z|<3$ 内洛朗展开的系数就是上面的每个系数(不论正负 $n$)减去一个共同形式的项, 使得其非负幂次通项对应那些奇点 $|\lambda|\ge 3$, 而负幂次通项对应那些奇点 $|\lambda|\le2$.
+	则在 $2<|z|<3$ 内洛朗展开的系数就是上面的每个系数(不论正负 $n$)减去一个共同形式的项, 使得其非负幂次通项对应那些奇点 $|\lambda|\ge 3$, 而负幂次通项对应那些奇点 $|\lambda|\le2$.
 	\onslide<+->
 	故
 	\[f(z)=\sum_{n\ge 0}\left(-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n+\sum_{n\le-1}\left(5-\frac2{(-2)^{n+1}}-\frac6{2^{n+1}}\right)z^n.\]

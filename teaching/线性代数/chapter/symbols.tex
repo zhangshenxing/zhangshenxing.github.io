@@ -27,7 +27,9 @@
 	\setcounter{equation}{0}
 	\begin{numcases}{}}{
 	\end{numcases}}
+\newcommand{\cnen}[2]{{$\overset{\text{\clap{#2}}}{\text{#1}}$}}
 % arrows
+\newcommand{\nsmath}[1]{\text{\normalsize{$#1$}}}
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
 \newcommand\la{\leftarrow}
@@ -42,7 +44,7 @@
 \newcommand\sto[1]{\stackrel{#1}{\longrightarrow}}
 \newcommand\lsto[1]{\stackrel{#1}{\longleftarrow}}
 \newcommand\xto{\xlongrightarrow}
-\newcommand\xeq{\xlongequal}
+\newcommand\xeq[2][]{\xlongequal[{\nsmath{#1}}]{\nsmath{#2}}}
 \newcommand\luobida{\xeq{\text{洛必达}}}
 \newcommand\djwqx{\xeq{\text{等价无穷小}}}
 \newcommand\eqprob{\stackrel{\mathrm{P}}{=}}
@@ -71,7 +73,7 @@
 \newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
 \newcommand\abs[1]{\left|#1\right|}
 \newcommand\pair[1]{\langle{#1}\rangle}
-\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
+\newcommand\norm[1]{\!\parallel\!{#1}\!\parallel}
 \newcommand\dbb[1]{\llbracket#1 \rrbracket}
 \newcommand\floor[1]{\lfloor#1\rfloor}
 

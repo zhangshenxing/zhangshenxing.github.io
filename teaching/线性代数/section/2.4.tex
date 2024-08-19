@@ -15,7 +15,7 @@
 	\onslide<+->
 	第一个问题是, 秩是唯一的吗?
 	\onslide<+->
-	如果两个 $m\times n$ 矩阵
+	若两个 $m\times n$ 矩阵
 	\[\begin{pmatrix}
 		\bfE_r&\bfO\\
 		\bfO&\bfO
@@ -127,7 +127,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[\bfA\wsim{r_2+r_1\atop r_3-r_1}{r_4-r_1}\begin{pmatrix}
+		\[\bfA\wsim{\substack{r_2+r_1\\ r_3-r_1}}{r_4-r_1}\begin{pmatrix}
 			1&1&a\\
 			0&a&1\\
 			0&0&a^2-a\\
@@ -181,7 +181,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[\bfA\wsim{r_1\swap r_4\atop r_2-r_1}{r_3-r_1\atop r_4-ar_1}\begin{pmatrix}
+		\[\bfA\wsim{\substack{r_1\swap r_4\\ r_2-r_1}}{\substack{r_3-r_1\\ r_4-ar_1}}\begin{pmatrix}
 			1&1&1&a\\
 			0&a-1&0&1-a\\
 			0&0&a-1&1-a\\
@@ -214,7 +214,7 @@
 		设 $R(\bfA)=r$, 则存在非零的 $r$ 阶子式, 但所有的 $r+1$ 阶子式都是零.
 	\end{theorem}
 	\onslide<+->
-	根据行列式的拉普拉斯展开, 如果 $\bfA$ 的 $k$ 阶子式均为零, 则 $k+1$ 阶子式也都是零.
+	根据行列式的拉普拉斯展开, 若 $\bfA$ 的 $k$ 阶子式均为零, 则 $k+1$ 阶子式也都是零.
 	\onslide<+->
 	因此 $\bfA$ 的任意 $s>r$ 阶子式都是零.
 	\onslide<+->
@@ -239,14 +239,14 @@
 			\item 若 $\bfP=\bfE(i,j(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式.
 		\end{enumerate}
 		}\onslide<+->{%
-		因此如果 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.}
+		因此若 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.}
 
 		\onslide<+->{
 		由于 $\bfP^{-1}$ 也是初等矩阵, 因此反过来也成立.
 		}\onslide<+->{%
 		对于 $\bfB=\bfA\bfP$ 情形同理.
 		}\onslide<+->{%
-		因此, 如果 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.}
+		因此, 若 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.}
 
 		\onslide<+->{%
 		对于标准型矩阵, 该定理显然成立.
@@ -309,8 +309,8 @@
 		}
 	\end{proof}
 	\onslide<+->
-	如果 $\bfB$ 行满秩, 则 $\bfB$ 有 $R(\bfB)$ 阶子式非零, 它对应的方阵右乘 $\bfA$ 得到的列向量组和 $\bfA$ 列向量组等价, 从而 $R(\bfA\bfB)=R(\bfA)$;
-	如果 $\bfB$ 列满秩, 则 $R(\bfB\bfA)=R(\bfA)$;
+	若 $\bfB$ 行满秩, 则 $\bfB$ 有 $R(\bfB)$ 阶子式非零, 它对应的方阵右乘 $\bfA$ 得到的列向量组和 $\bfA$ 列向量组等价, 从而 $R(\bfA\bfB)=R(\bfA)$;
+	若 $\bfB$ 列满秩, 则 $R(\bfB\bfA)=R(\bfA)$;
 \end{frame}
 
 
@@ -330,7 +330,7 @@
 			\bfE_s&\bfO\\\bfO&\bfO
 		\end{pmatrix}\bfQ'$, 其中 $\bfP,\bfP',\bfQ,\bfQ'$ 均可逆.
 		\onslide<+->{%
-			那么
+			则
 			\[\bfA\bfB=\bfO\implies\begin{pmatrix}
 				\bfE_r&\bfO\\\bfO&\bfO
 			\end{pmatrix}\bfQ\bfP\begin{pmatrix}
@@ -387,7 +387,7 @@
 	\begin{proof}
 		\enumnum8 不妨设 $\bfA,\bfB$ 是方阵,
 		\onslide<+->{%
-			那么 \[\bfA=(\bfA,\bfB)\begin{pmatrix}
+			则 \[\bfA=(\bfA,\bfB)\begin{pmatrix}
 				\bfE\\\bfO
 			\end{pmatrix},\quad(\bfA,\bfB)=(\bfE,\bfE)\begin{pmatrix}
 				\bfA&\\&\bfB
@@ -577,13 +577,13 @@
 	\begin{proposition}
 		设 $n$ 维向量 $\bma_1,\dots,\bma_m$ 线性无关, 
 		\[(\bmb_1,\dots,\bmb_m)=(\bma_1,\dots,\bma_m)\bfC.\]
-		那么 $\bmb_1,\dots,\bmb_m$ 线性无关$\iff |\bfC|\neq0$.
+		则 $\bmb_1,\dots,\bmb_m$ 线性无关$\iff |\bfC|\neq0$.
 	\end{proposition}
 	\onslide<+->
 	\begin{proof}
 		设 $\bfA=(\bma_1,\dots,\bma_m),\bfB=(\bmb_1,\dots,\bmb_m)$.
 		\onslide<+->{%
-			那么
+			则
 			\[\bfB\bfx={\bf0}\iff \bfA\bfC\bfx={\bf0}\iff \bfC\bfx={\bf0}.\]
 		}\onslide<+->{%
 		于是命题得证.
@@ -635,7 +635,7 @@
 \begin{frame}{线性相关的不变性}
 	\onslide<+->
 	\begin{theorem}
-		如果 $\bfA$ 经过初等行变换变为 $\bfB$, 则
+		若 $\bfA$ 经过初等行变换变为 $\bfB$, 则
 		\begin{enumerate}
 			\item $\bfA$ 的行向量组与 $\bfB$ 的行向量组等价;
 			\item $\bfA$ 任意 $k$ 列和 $\bfB$ 对应的 $k$ 列具有相同的线性相关性.

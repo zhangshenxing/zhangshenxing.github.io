@@ -79,6 +79,7 @@
 \newcommand\bmpi{{\boldsymbol{\pi}}}
 \newcommand\bmx{{\boldsymbol{\xi}}}
 \newcommand\bmet{{\boldsymbol{\eta}}}
+\newcommand\bmL{{\boldsymbol{\Lambda}}}
 
 \usebeamercolor{structure}
 \colorlet{heavyb}{structure.fg!80}
@@ -121,7 +122,7 @@
 \newcommand\mqed{\visible<.->{\qedsymbol}} % 手动证毕标志
 \newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
 \NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}} % 减少列表公式后的多余空白
-\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1} % 减少公式垂直间距, 配合\endgroup
+\newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1\parskip=#1} % 减少公式垂直间距, 配合\endgroup
 % 选择题, 根据选项内容长度自动排版
 \newlength{\ltemp}\newlength{\lxxmax}\newlength{\lquar}\newlength{\lhalf}\newlength{\lfull}
 \newcounter{lxxtype}
@@ -197,6 +198,8 @@
 	cstarrow1from/.style  ={Straight Barb-},
 	cstarrow1double/.style={Straight Barb-Straight Barb},
 	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+	cstmarrow/.style      ={-Latex, line width=0.05cm}, %文本框间箭头
+	cstmarrowd/.style     ={Latex-Latex, line width=0.05cm}, %文本框间箭头
 	cstaxis/.style        ={-Stealth, thick}, %坐标轴
 	cstcurve/.style       ={very thick}, %一般曲线
 	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线

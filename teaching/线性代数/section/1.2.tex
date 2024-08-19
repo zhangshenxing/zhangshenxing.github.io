@@ -72,9 +72,9 @@
 
 	一张图片由一些像素构成, 上图包含 $512\times341$ 个像素.
 	\onslide<+->
-	在 RGB 颜色模式下, 每个像素包含红绿蓝三个通道, 每个通道为一个 $0\sim255$ 之间的数, 数值越高对应颜色越饱满.
+	在 RGB 颜色模式下, 每个像素包含红绿蓝三个通道, 每个通道为一个 $0\sim255$ 之间的数, 数值越高对应颜色越亮.
 	\onslide<+->
-	如果三个通道相同, 图片就是一张灰色的图(无色彩).
+	若三个通道相同, 图片就是一张灰色的图(无色彩).
 	此时图片对应一个 $512\times 341$ 的矩阵 $\bfA$.
 
 	\onslide<+->
@@ -145,7 +145,7 @@
 	如何用 $\bfA,\bfB$ 来表示 $\bfC$ 呢?
 
 	\onslide<+->
-	设 $\bfx=(x_1,\dots,x_p)^\rmT\in \BC^p$, 那么
+	设 $\bfx=(x_1,\dots,x_p)^\rmT\in \BC^p$, 则
 	\[g(\bfx)=(y_1,\dots,y_n)^\rmT, \quad
 		y_k=\sum_{j=1}^p b_{kj} x_j.\]
 	\onslide<+->
@@ -243,15 +243,15 @@
 		\item $(\bfA\bfB)\bfC=\bfA(\bfB\bfC)$;
 		\item $\lambda(\bfA\bfB)=(\lambda\bfA)\bfB=\bfA(\lambda\bfB)$;
 		\item $\bfA(\bfB+\bfC)=\bfA\bfB+\bfA\bfC$;
-		\item 如果 $\bfA\in M_{m\times n}$, 则 $\bfE_m \bfA=\bfA\bfE_n=\bfA$.
-		\item 如果 $\bfA\in M_{m\times n}$, 则 $\bfO_{p\times m} \bfA=\bfO_{p\times n}, \bfA\bfO_{n\times p}=\bfO_{m\times p}$.
+		\item 若 $\bfA\in M_{m\times n}$, 则 $\bfE_m \bfA=\bfA\bfE_n=\bfA$.
+		\item 若 $\bfA\in M_{m\times n}$, 则 $\bfO_{p\times m} \bfA=\bfO_{p\times n}, \bfA\bfO_{n\times p}=\bfO_{m\times p}$.
 	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{矩阵乘法和线性方程组}
 	\onslide<+->
-	矩阵 $\bfA$ 对应的线性变换就是 $f(\bfx)=\bfA\bfx$,
+	由于矩阵 $\bfA$ 对应的线性变换就是 $f(\bfx)=\bfA\bfx$,
 	\onslide<+->
 	因此解线性方程组
 	\[\laeq[lclcclcl]{
@@ -277,7 +277,7 @@
 	一般称 $\bfA\bfB$ 为 \emph{$\bfA$ 左乘 $\bfB$}, 或者 \emph{$\bfB$ 右乘 $\bfA$}.
 
 	\onslide<+->
-	如果 $\bfA\bfB=\bfB\bfA$, 则称 $\bfA,\bfB$ 是\emph{可交换}的.
+	若 $\bfA\bfB=\bfB\bfA$, 则称 $\bfA,\bfB$ 是\emph{可交换}的.
 	\onslide<+->
 	此时 $\bfA,\bfB$ \alert{必为同阶方阵}.
 	\onslide<+->
@@ -293,6 +293,8 @@
 	\end{pmatrix}\begin{pmatrix}
 		1&2\\0&1
 	\end{pmatrix}\]
+	\onslide<+->
+	方阵总和同阶单位阵、同阶零矩阵交换.
 
 	\onslide<+->
 	矩阵乘法也没有消去律: $\bfA\bfB=\bfO$ 推不出 $\bfA=\bfO$ 或 $\bfB=\bfO$.
@@ -314,8 +316,8 @@
 \end{frame}
 
 
-\begin{frame}{例: 与给定矩阵可交换}
-	\beqskip{0mm}
+\begin{frame}{例: 与给定矩阵可交换}\small
+	\beqskip{2mm}
 	\onslide<+->
 	\begin{example}
 		求与矩阵 $\bfA=\begin{pmatrix}
@@ -333,15 +335,15 @@
 			0&a_{11}&a_{12}\\
 			0&a_{21}&a_{22}\\
 			0&a_{31}&a_{32}
-		\end{pmatrix}.\]
+		\end{pmatrix},\]
 		\onslide<+->{
-			\[\implies a_{11}=a_{21}=a_{31}=a_{32}=0,\quad a_{11}=a_{22}=a_{33},\quad a_{23}=a_{12},\]
+			\[a_{21}=a_{31}=a_{32}=0,\quad a_{11}=a_{22}=a_{33},\quad a_{23}=a_{12},\]
 		}\onslide<+->{%
 		即 $\bfB=\begin{pmatrix}
 			a_{11}&a_{12}&a_{13}\\
 			&a_{11}&a_{12}\\
 			&&a_{11}
-		\end{pmatrix}$.}
+		\end{pmatrix}=a_{11}\bfE+a_{12}\bfA+a_{13}\bfA^2$.}
 	\end{solution}
 	\endgroup
 \end{frame}
@@ -349,20 +351,20 @@
 
 \begin{frame}{矩阵乘法的应用: 图像校正}
 	\onslide<+->
-	某位同学拍身份证照片拍成了下图的样子, 如何能否修复好呢?
+	某位同学拍身份证照片拍成了下图的样子, 如何才能修复好呢?
 	\begin{center}
 		\begin{tikzpicture}
 			\draw (2.75,2) node {\includegraphics[height=4.03cm]{../image/idcard1.png}};
-			\draw (0,0) node[dcolora,below left] {$O$};
-			\draw (5.21,0.88) node[dcolora,below right] {$A$};
-			\draw (0.19,3.11) node[dcolora,above left] {$B$};
+			\draw (0,0) node[dcolora,below left,visible on=<2->] {$O$};
+			\draw (5.21,0.88) node[dcolora,below right,visible on=<2->] {$A$};
+			\draw (0.19,3.11) node[dcolora,above left,visible on=<2->] {$B$};
 		\end{tikzpicture}
 	\end{center}
 	\onslide<+->
 	以左下角为原点, 通过测量发现 $A$ 坐标为 $(521,88)$, $B$ 坐标为 $(19,311)$.
 
 	\onslide<+->
-	经过查询知道身份证长宽比为 $85.6:54$.
+	经过查询知道身份证长宽比为 $42.7:27$.
 	\onslide<+->
 	令 $A'=(427,0),B'=(270,0)$.
 	我们希望找到一个线性变换, 将 $A,B$ 变为 $A',B'$.
@@ -373,14 +375,14 @@
 	\onslide<+->
 	设该线性变换对应的矩阵为 $\bfA=\begin{pmatrix}
 		a&b\\c&d
-	\end{pmatrix}$, 那么
+	\end{pmatrix}$, 则
 	\[\bfA\begin{pmatrix}
 		521&19\\88&311
 	\end{pmatrix}=\begin{pmatrix}
 		427&0\\0&270
 	\end{pmatrix},\qquad
 	\visible<+->{
-		\text{即}\qquad
+		\text{即}\quad
 	\laeq[crcrc]{
 		521&a+{}& 88&b={}&427\\
 		 19&a+{}&311&b={}&0\\
@@ -391,8 +393,9 @@
 	解得 $\bfA=\begin{pmatrix}
 		0.828&-0.051\\
 		-0.148&0.877
-	\end{pmatrix}.$
+	\end{pmatrix}$.
 	\onslide<+->
+	通过应用该变换, 图片被修正成如下效果:
 	\begin{center}
 		\includegraphics[height=2.5cm]{../image/idcard.png}
 	\end{center}
@@ -407,7 +410,7 @@
 		\[\bfA^0=\bfE_n,\quad \bfA^k=\underbrace{\bfA\cdot\bfA\cdot\cdots\cdot\bfA}_{k\ \text{个}}.\]
 	\end{definition}
 	\onslide<+->
-	矩阵幂满足如下性质 ($k,\ell$ 为正整数):
+	矩阵幂满足如下性质 ($k,\ell$ 为非负整数):
 	\begin{enumerate}
 		\item $\bfA^{k+\ell}=\bfA^k\cdot \bfA^\ell$;
 		\item $\bfA^{k\ell}=(\bfA^k)^\ell$.
@@ -421,7 +424,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -431,14 +434,18 @@
 	\onslide<+->
 	\begin{solution}
 		\[\bfA^2=\bfA\cdot\bfA=\diag(\lambda_1^2,\cdots,\lambda_n^2),\]
-		\[\bfA^3=\bfA\cdot\bfA^2=\diag(\lambda_1^3,\cdots,\lambda_n^3),\]
-		递推下去可知
-		\[\bfA^k=\diag(\lambda_1^k,\cdots,\lambda_n^k).\]
+		\onslide<+->{%
+			\[\bfA^3=\bfA\cdot\bfA^2=\diag(\lambda_1^3,\cdots,\lambda_n^3),\]
+		}\onslide<+->{%
+			递推下去可知
+			\[\bfA^k=\diag(\lambda_1^k,\cdots,\lambda_n^k).\]
+		}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}\small
+\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -462,14 +469,9 @@
 			\lambda^2&2\lambda&1\\
 			&\lambda^2&2\lambda\\
 			&&\lambda^2
-		\end{pmatrix}.\]
-	\end{solution}
-	\end{frame}
-
-
-	\begin{frame}{例: 矩阵的幂}
-		\begin{solutionc}
-			\[\bfA^2=\begin{pmatrix}
+		\end{pmatrix},\]
+		\onslide<+->{%
+			\[\bfA^3=\begin{pmatrix}
 				\lambda&1&0\\
 				&\lambda&1\\
 				&&\lambda
@@ -482,43 +484,47 @@
 				&\lambda^3&3\lambda^2\\
 				&&\lambda^3
 			\end{pmatrix}.\]
-			\onslide<+->{归纳可知
-		\[\bfA^k=\begin{pNiceMatrix}
-			\lambda^k&k\lambda^{k-1}&\dfrac{k(k-1)}2\lambda^{k-2}\\
-			&\lambda^k&k\lambda^{k-1}\\
-			&&\lambda^k
-		\end{pNiceMatrix}.\]}
-	\end{solutionc}
+		}\onslide<+->{%
+			归纳可知
+			$\bfA^k=\begin{pNiceMatrix}
+				\lambda^k&k\lambda^{k-1}&\frac12k(k-1)\lambda^{k-2}\\
+				&\lambda^k&k\lambda^{k-1}\\
+				&&\lambda^k
+			\end{pNiceMatrix}$.
+		}\vspace{-.2\baselineskip}
+	\end{solution}
+\endgroup
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}
 	\begin{proofblock}{另解}
 		设 $\bfN=\begin{pmatrix}
 			0&1&0\\
 			&0&1\\
 			&&0
-		\end{pmatrix}$,
-		则
+		\end{pmatrix}$, 则
 		$\bfN^2=\begin{pmatrix}
 			0&0&1\\
 			&0&0\\
 			&&0
 		\end{pmatrix},\bfN^3=\bfO.$
-		\onslide<+->{由于 $\bfA=\lambda\bfE+\bfN$ 且 $\bfE$ 和 $\bfN$ \alert{可交换}, 因此
-		\begin{align*}
-			\bfA^k&=(\lambda E+\bfN)^k=\lambda^k\bfE+\rmC_k^1\lambda^{k-1} \bfN+\rmC_k^2\lambda^{k-2}\bfN^2\\
-			&\visible<+->{=\begin{pmatrix}
-				\lambda^k&k\lambda^{k-1}&\dfrac{k(k-1)}2\lambda^{k-2}\\[3mm]
-				&\lambda^k&k\lambda^{k-1}\\[3mm]
-				&&\lambda^k
-			\end{pmatrix}.}
-		\end{align*}}
+		\onslide<+->{%
+			由于 $\bfA=\lambda\bfE+\bfN$ 且 $\bfE$ 和 $\bfN$ \alert{可交换}, 因此
+			\begin{align*}
+				\bfA^k&=(\lambda\bfE+\bfN)^k=\lambda^k\bfE+\rmC_k^1\lambda^{k-1} \bfN+\rmC_k^2\lambda^{k-2}\bfN^2\\
+				&\visible<+->{=\begin{pNiceMatrix}
+					\lambda^k&k\lambda^{k-1}&\dfrac12k(k-1)\lambda^{k-2}\\
+					&\lambda^k&k\lambda^{k-1}\\
+					&&\lambda^k
+				\end{pNiceMatrix}.}
+			\end{align*}
+		}
 	\end{proofblock}
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -539,7 +545,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设 
@@ -551,20 +557,19 @@
 	\onslide<+->
 	\begin{solution}
 		注意到 $\bfA\bfB=3$, 因此
-		\begin{align*}
-			(\bfB\bfA)^k&=\bfB(\bfA\bfB)^{k-1}\bfA
-			\visible<+->{=\bfB\cdots 3^{k-1}\cdot \bfA}
-			\visible<+->{=3^{k-1}\bfB\bfA=\begin{pmatrix}
+		\[(\bfB\bfA)^k=\bfB(\bfA\bfB)^{k-1}\bfA
+			\visible<+->{=\bfB\cdot 3^{k-1}\cdot \bfA
+				=3^{k-1}\bfB\bfA}
+			\visible<+->{=\begin{pmatrix}
 				-3^{k-1}&-2\cdot 3^{k-1}&-3^k\\
 				2\cdot 3^{k-1}&4\cdot 3^{k-1}&2\cdot3^{k}\\
 				0&0&0
-			\end{pmatrix}.}
-		\end{align*}
+			\end{pmatrix}.}\]
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 矩阵的幂}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{exercise}
 		设 
@@ -626,11 +631,11 @@
 
 \begin{frame}{矩阵幂的应用: 换乘}
 	\onslide<+->
-	那么 $\bfA^2$ 的 $(i,j)$ 元
+	于是 $\bfA^2$ 的 $(i,j)$ 元
 	\[b_{ij}=\sum_{k=1}^4 a_{ik}a_{kj}\]
 	就是从 $i$ 到 $j$ 换乘一次的方案数.
 	\onslide<+->
-	例如从\circleno{$1$} $\implies$\circleno{$3$} :
+	例如从\circleno{$2$} $\implies$\circleno{$3$} :
 	\[\bfA^2=\begin{pmatrix}
 		0&1&1&1\\
 		1&0&0&0\\
@@ -659,8 +664,8 @@
 
 \begin{frame}{矩阵转置的定义}
 	\onslide<+->
-	如果 $\bfA=(a_{ij})_{m\times n}$, 称
-	\[\bfA^\rmT=\begin{pmatrix}
+	若 $\bfA=(a_{ij})_{m\times n}$, 称
+	\[\bfA^\rmT=(a_{ji})_{n\times m}=\begin{pmatrix}
 		a_{11}&a_{21}&\cdots&a_{m1}\\
 		a_{12}&a_{22}&\cdots&a_{m2}\\
 		\vdots&\vdots&\ddots&\vdots\\
@@ -676,7 +681,7 @@
 	方阵的转置还是方阵, 上三角阵的转置是下三角阵.
 
 	\onslide<+->
-	$\bfA^\rmT$ 对应的线性变换为 $\bfA$ 对应的线性变换诱导的对偶空间上的线性变换, 感兴趣的可自行阅读有关材料.
+	$\bfA^\rmT$ 对应的线性变换是 $\bfA$ 对应的线性变换诱导的对偶空间上的线性变换, 感兴趣的可自行阅读有关材料.
 \end{frame}
 
 
@@ -714,8 +719,8 @@
 	\onslide<+->
 	\begin{definition}
 		\begin{itemize}
-			\item 如果方阵 $\bfA$ 满足 $\bfA^\rmT=\bfA$, 称 $\bfA$ 为\emph{对称阵};
-			\item 如果 $\bfA^\rmT=-\bfA$, 称 $\bfA$ 为\emph{反对称阵}.
+			\item 若方阵 $\bfA$ 满足 $\bfA^\rmT=\bfA$, 称 $\bfA$ 为\emph{对称阵};
+			\item 若 $\bfA^\rmT=-\bfA$, 称 $\bfA$ 为\emph{反对称阵}.
 		\end{itemize}
 	\end{definition}
 	\onslide<+->
@@ -743,7 +748,7 @@
 \begin{frame}{对称阵和反对称阵}
 	\onslide<+->
 	\begin{example}
-		证明: 如果 $\bfA,\bfB,\bfA\bfB$ 都是对称阵, 则 $\bfA\bfB=\bfB\bfA$.
+		证明: 若 $\bfA,\bfB,\bfA\bfB$ 都是对称阵, 则 $\bfA\bfB=\bfB\bfA$.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
@@ -751,14 +756,14 @@
 		\[\bfA\bfB=(\bfA\bfB)^\rmT=\bfB^\rmT\bfA^\rmT=\bfB\bfA.\qedhere\]
 	\end{proof}
 	\onslide<+->
-	想一想: 如果 $\bfA,\bfB,\bfA\bfB$ 中有一个对称阵和两个反对称阵呢?
+	想一想: 若 $\bfA,\bfB,\bfA\bfB$ 中有一个对称阵和两个反对称阵呢?
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfA$ 是 $n$ 阶方阵, \fillbrace{\visible<+->{\alert{A}}}一定是对称阵?
 		\xx{$\bfA^\rmT\bfA$}{$\bfA-\bfA^\rmT$}{$\bfA^2$}{$\bfA^\rmT-\bfA$}
 	\end{exercise}
 	\onslide<+->
-	一般地, 如果 $\bfA\in M_{m\times n}$, $\bfA\bfA^\rmT$ 是 $m$ 阶对称阵, $\bfA^\rmT\bfA$ 是 $n$ 阶对称阵.
+	一般地, 若 $\bfA\in M_{m\times n}$, $\bfA\bfA^\rmT$ 是 $m$ 阶对称阵, $\bfA^\rmT\bfA$ 是 $n$ 阶对称阵.
 \end{frame}
 
 
@@ -772,6 +777,6 @@
 		\[\bfA=\frac{\bfA+\bfA^\rmT}2+\frac{\bfA-\bfA^\rmT}2.\qedhere\]
 	\end{proof}
 	\onslide<+->
-	想一想: 如果函数 $f(x)$ 的定义域关于原点对称, 那么 $f(x)$ 一定可以表示成一个偶函数和一个奇函数之和.
+	想一想: 若函数 $f(x)$ 的定义域关于原点对称, 则 $f(x)$ 一定可以表示成一个偶函数和一个奇函数之和.
 \end{frame}
 

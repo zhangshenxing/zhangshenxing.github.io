@@ -11,8 +11,8 @@
 		\begin{itemize}
 			\item 设 $\{f_n(z)\}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
 			表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\emph{复变函数项级数}.
-			\item 对于 $z_0\in D$, 如果级数 $\suml_{n=1}^\infty f_n(z_0)$ 收敛, 则称 \emph{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\emph{和}.
-			\item 如果 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\emph{和函数}.
+			\item 对于 $z_0\in D$, 若级数 $\suml_{n=1}^\infty f_n(z_0)$ 收敛, 则称 \emph{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\emph{和}.
+			\item 若 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\emph{和函数}.
 			\item 称形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的函数项级数为\emph{幂级数}.
 		\end{itemize}
 	\end{definition}
@@ -26,8 +26,8 @@
 	\onslide<+->
 	\begin{block}{阿贝尔定理}
 		\begin{enumerate}
-			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
-			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
+			\item 若 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 则对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
+			\item 若 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 则对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
 		\end{enumerate}
 	\end{block}
 
@@ -49,9 +49,9 @@
 	\onslide<+->
 	设 $R$ 是实幂级数 $\suml_{n=0}^\infty|c_n|x^n$ 的收敛半径.
 	\begin{itemize}
-		\item 如果 $R=+\infty$, 由阿贝尔定理可知 $\suml_{n=0}^\infty c_nz^n$ 处处绝对收敛.
-		\item 如果 $0<R<+\infty$, 那么 $\suml_{n=0}^\infty c_nz^n$ 在 $|z|<R$ 上绝对收敛, 在 $|z|>R$ 上发散.
-		\item 如果 $R=0$, 那么 $\suml_{n=0}^\infty c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
+		\item 若 $R=+\infty$, 由阿贝尔定理可知 $\suml_{n=0}^\infty c_nz^n$ 处处绝对收敛.
+		\item 若 $0<R<+\infty$, 则 $\suml_{n=0}^\infty c_nz^n$ 在 $|z|<R$ 上绝对收敛, 在 $|z|>R$ 上发散.
+		\item 若 $R=0$, 则 $\suml_{n=0}^\infty c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
 	\end{itemize}
 	\onslide<+->
 	我们称 $R$ 为该幂级数的\emph{收敛半径}.
@@ -81,7 +81,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		如果幂级数收敛, 则由 $z^n\to0$ 可知 $|z|<1$.
+		若幂级数收敛, 则由 $z^n\to0$ 可知 $|z|<1$.
 		\onslide<+->{当 $|z|<1$ 时, 和函数为
 			\[\lim_{n\to\infty}s_n=\lim_{n\to\infty}\frac{1-z^{n+1}}{1-z}=\frac1{1-z}.\]
 		}\onslide<+->{因此收敛半径为 $1$.}
@@ -99,7 +99,7 @@
 		\item \emph{柯西-阿达马公式}: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
 	\end{enumerate}
 	\onslide<+->
-	如果 $r=0$ 或 $+\infty$, 则 $R=+\infty$ 或 $0$.
+	若 $r=0$ 或 $+\infty$, 则 $R=+\infty$ 或 $0$.
 \end{frame}
 
 
@@ -192,7 +192,7 @@
 		设幂级数
 		\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R_1,\quad
 		g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
-		\onslide<+->{那么当 $|z|<R=\min\{R_1,R_2\}$ 时,
+		\onslide<+->{则当 $|z|<R=\min\{R_1,R_2\}$ 时,
 		\[(f\pm g)(z)=\sum_{n=0}^\infty (a_n\pm b_n)z^n,\quad
 		(fg)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^na_kb_{n-k}\right)z^n.\]}
 	\end{theorem}
@@ -208,7 +208,7 @@
 		设幂级数
 		\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R,\]
 		设函数 $\varphi(z)$ 在 $|z|<r$ 上解析且 $|\varphi(z)|<R$, 
-		\onslide<+->{那么当 $|z|<r$ 时,
+		\onslide<+->{则当 $|z|<r$ 时,
 		\[f[\varphi(z)]=\sum_{n=0}^\infty a_n[\varphi(z)]^n.\]}
 	\end{theorem}
 \end{frame}
@@ -235,7 +235,7 @@
 	由于和函数在 $|z|>R$ 上没有定义, 因此我们不能谈和函数在 $|z|=R$ 上的解析性.
 
 	\onslide<+->
-	如果函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
+	若函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
 	\onslide<+->
 	这是因为一旦 $g(z)$ 在收敛圆周上处处解析, 该和函数就可以在一个半径更大的圆域上作泰勒展开.
 \end{frame}
@@ -302,7 +302,7 @@
 	两边求 $k$ 阶导数可得
 	\[\sum_{n=0}^{\infty}(n+k)\cdots(n+2)(n+1)\lambda^n z^n=\frac{k!}{(1-\lambda z)^{k+1}}.\]
 	\onslide<+->
-	因此如果 $p(n)$ 是次数为 $m-1$ 的多项式, 那么
+	因此若 $p(n)$ 是次数为 $m-1$ 的多项式, 则
 	\[\sum_{n=0}^\infty p(n)\lambda^n z^n=\frac{P(z)}{(1-\lambda z)^{m}},\]
 	其中 $P$ 是多项式.
 \end{frame}
@@ -310,7 +310,7 @@
 
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
 	\onslide<+->
-	一般地, 如果幂级数的系数形如
+	一般地, 若幂级数的系数形如
 	\[c_n=p_1(n)\lambda_1^n+\cdots+p_k(n)\lambda_k^n,\]
 	\onslide<+->
 	则和函数一定是形如

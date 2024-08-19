@@ -21,7 +21,7 @@
 	\begin{example}
 		若 $\bfA=\begin{pmatrix}
 			a&b\\c&d
-		\end{pmatrix}$, 那么 $\bfA^*=\begin{pmatrix}
+		\end{pmatrix}$, 则 $\bfA^*=\begin{pmatrix}
 			d&-b\\-c&a
 		\end{pmatrix}$.
 	\end{example}
@@ -256,14 +256,14 @@
 	\onslide<+->
 	\begin{example}
 		设 $\lambda_1,\dots,\lambda_n\neq0$.
-		\[\Lambda=\begin{pmatrix}
+		\[\bmL=\begin{pmatrix}
 			\lambda_1&&&\\
 			&\lambda_2&&\\
 			&&\ddots&\\
 			&&&\lambda_n\\
 		\end{pmatrix}=\diag(\lambda_1,\lambda_2,\dots,\lambda_n),\]
 		\onslide<+->{则
-		\[\Lambda^{-1}=\begin{pmatrix}
+		\[\bmL^{-1}=\begin{pmatrix}
 			\lambda_1^{-1}&&&\\
 			&\lambda_2^{-1}&&\\
 			&&\ddots&\\
@@ -318,7 +318,7 @@
 	\onslide<+->
 	若 $f(\bfA)=\bfO$, 我们想求 $(\bfA-\alpha\bfE)^{-1}$.
 	\onslide<+->
-	那么
+	则
 	\[f(\bfA)-f(\alpha)\bfE=(\bfA-\alpha\bfE)\bfB=-f(\alpha)\bfE.\]
 	\onslide<+->
 	从而当 $f(\alpha)\neq 0$ 时, $(\bfA-\alpha\bfE)^{-1}=-\dfrac{\bfB}{f(\alpha)}$.
@@ -553,18 +553,18 @@
 	\begin{example}
 		设 $\bfP=\begin{pmatrix}
 			1&2\\1&4
-		\end{pmatrix},\Lambda=\begin{pmatrix}
+		\end{pmatrix},\bmL=\begin{pmatrix}
 			1&\\&2
-		\end{pmatrix},\bfA\bfP=\bfP\Lambda$, 求 $\bfA^n$.
+		\end{pmatrix},\bfA\bfP=\bfP\bmL$, 求 $\bfA^n$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		$|\bfP|=2,\bfP^{-1}=\dfrac12\begin{pmatrix}
 			4&-1\\-1&1
-		\end{pmatrix},\bfA=\bfP\Lambda\bfP^{-1}$,
+		\end{pmatrix},\bfA=\bfP\bmL\bfP^{-1}$,
 		\onslide<+->{
 			\begin{align*}
-				\bfA^n&=\bfP\Lambda\bfP^{-1}\cdot \bfP\Lambda\bfP^{-1}\cdots \bfP\Lambda\bfP^{-1}=\bfP\Lambda^n\bfP^{-1}\\
+				\bfA^n&=\bfP\bmL\bfP^{-1}\cdot \bfP\bmL\bfP^{-1}\cdots \bfP\bmL\bfP^{-1}=\bfP\bmL^n\bfP^{-1}\\
 				&\visible<+->{=\dfrac12\begin{pmatrix}
 					1&2\\1&4
 				\end{pmatrix}\begin{pmatrix}
@@ -685,7 +685,7 @@
 
 \begin{frame}{齐次线性方程组}
 	\onslide<+->
-	如果线性方程组的常数都是零, 即 $\bfA\bfx={\bf0}$ 或
+	若线性方程组的常数都是零, 即 $\bfA\bfx={\bf0}$ 或
 	\[\laeq[lclcclcl]{
 		a_{11}&x_1+{}&a_{12}&x_2&{}+\cdots+{}&a_{1n}&x_n={}&b_1\\
 		a_{21}&x_1+{}&a_{22}&x_2&{}+\cdots+{}&a_{2n}&x_n={}&b_2\\
@@ -702,7 +702,7 @@
 	所以 \alert{$|\bfA|=0\iff$ 齐次线性方程组有无穷多(非零)解}.
 
 	\onslide<+->
-	对于非齐次线性方程组, 如果 $(a_1,\dots,a_n)$ 是一组解, 而 $(b_1,\dots,b_n)$ 是对应的齐次线性方程组的解, 那么
+	对于非齐次线性方程组, 若 $(a_1,\dots,a_n)$ 是一组解, 而 $(b_1,\dots,b_n)$ 是对应的齐次线性方程组的解, 则
 	$(a_1+b_1,\dots,a_n+b_n)$ 也是非齐次线性方程组的解.
 	\onslide<+->
 	所以 \alert{$|\bfA|=0\iff$ 非齐次线性方程组无解或有无穷多解}.
@@ -712,7 +712,7 @@
 \begin{frame}{克拉默法则的应用}
 	\onslide<+->
 	\begin{exercise}
-		如果 $\laeq[rrr]{
+		若 $\laeq[rrr]{
 			\lambda x_1+{}&x_2+{}&x_3=0\\
 			x_1+{}&\lambda x_2+{}&x_3=0\\
 			x_1+{}&x_2+{}&\lambda x_3=0}$
@@ -720,7 +720,7 @@
 	\end{exercise}
 	\onslide<+->
 	\begin{example}
-		证明: 如果三条不同的直线
+		证明: 若三条不同的直线
 		\begin{align*}
 			ax+by+c=0\\
 			bx+cy+a=0\\
@@ -916,7 +916,7 @@
 	\onslide<+->
 	我们希望将树叶变成金黄色 RGB$(234,228,70)$ 而保持蓝天和地面的颜色不变.
 	\onslide<+->
-	那么我们需要的矩阵 $\bfA$ 满足
+	则我们需要的矩阵 $\bfA$ 满足
 	\[\bfA\begin{pmatrix}
 		59&90&210\\
 		181&185&205\\

@@ -1,7 +1,7 @@
 \section{向量和矩阵的定义}
 
 
-\subsection{向量和线性空间}
+\subsection{向量和向量空间}
 \begin{frame}{平面向量和立体向量}
 	\onslide<+->
 	我们在高中学习过向量的概念.
@@ -17,7 +17,7 @@
 	\[{\bf0}=(0,0),\]
 	而且我们可以定义加法和数乘:
 	\[(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2),\quad
-	\lambda(x,y)=(\lambda x,\lambda y).\]
+	\lambda(x,y)=(\lambda x,\lambda y),\lambda\in\BR.\]
 
 	\onslide<+->
 	类似地, 立体空间中的所有向量形成集合 $\BR^3$.
@@ -28,11 +28,11 @@
 
 \begin{frame}{平面向量和立体向量的性质}
 	\onslide<+->
-	$\BR^2$ 或 $\BR^3$ 上的这些要素满足:
+	$\BR^2$ 或 $\BR^3$ 上的零向量、加法和数乘满足:
 	\begin{enumerate}
 		\item $\bma+\bmb=\bmb+\bma$;
 		\item $\bma+(\bmb+\bmg)=(\bma+\bmb)+\bmg$;
-		\item \emph{零向量} ${\bm0}=(0,\dots,0)$ 满足 ${\bm0}+\bma=\bma$;
+		\item ${\bm0}+\bma=\bma$;
 		\item 对任意 $\bma$, 存在 $\bmb$ 使得 $\bma+\bmb={\bf0}$. 称 $\bmb$ 为 $\bma$ 的\emph{负向量};
 		\item $1\cdot\bma=\bma$;
 		\item $(k\ell)\bma=k(\ell\bma)$;
@@ -60,7 +60,7 @@
 	\onslide<+->
 	为了书写方便, 也可以把列向量写成
 	\[\bfx=(x_1,x_2,\dots,x_n)^\rmT.\]
-	其中 $\rmT$ 表示\emph{转置}(\emph{T}ranspose), 它是将行列关系对换的一种操作.
+	其中 $\rmT$ 表示\cnen{\emph{转置}}{Transpose}, 它是将行列关系对换的一种操作.
 \end{frame}
 
 
@@ -72,52 +72,44 @@
 	\begin{enumerate}
 		\item ${\bf0}=(0,\dots,0)^\rmT$;
 		\item $(a_1,\dots,a_n)^\rmT+(b_1,\dots,b_n)^\rmT=(a_1+b_1,\dots,a_n+b_n)^\rmT$;
-		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT$.
+		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT,\lambda\in\BR$.
 	\end{enumerate}
 	\onslide<+->
 	而且它们也满足前述的八条性质.
 	\onslide<+->
 	\begin{definition}
-		若集合 $V$ 带有零向量、加法和数乘, 且满足前述的八条性质, 则称 $V$ 是一个\emph{线性空间}或\emph{向量空间}.
+		若集合 $V$ 带有零向量、加法和数乘, 且满足前述八条性质, 则称 $V$ 是一个\emph{线性空间}.
 	\end{definition}
 	\onslide<+->
 	这样, $\BR^n$ 成为了一个线性空间.
 
 	\onslide<+->
-	类似地, 如果向量的分量以及数乘的系数都是复数, 则称对应的 $V$ 为\emph{复线性空间}, 前面的则称为\emph{实线性空间}.
+	若数乘的系数是复数而不是实数, 称线性空间 $V$ 为\emph{复线性空间}, 而前述线性空间为\emph{实线性空间}.
 	\onslide<+->
-	例如, $n$ 维复向量全体形成一个复线性空间.
+	我们可以类似地定义复向量, 且 $n$ 维复向量全体形成一个复线性空间 $\BC^n$.
 \end{frame}
 
 
-\begin{frame}{标准向量空间}
+\begin{frame}{子空间、向量空间}
 	\onslide<+->
-	将全体 $n$ 维列向量记为 $\BR^n$.
-	\onslide<+->
-	在这个集合中可类似定义零向量、加法和数乘:
+	若 $W$ 是 $V$ 的一个子集, 且
 	\begin{enumerate}
-		\item ${\bf0}=(0,\dots,0)^\rmT$;
-		\item $(a_1,\dots,a_n)^\rmT+(b_1,\dots,b_n)^\rmT=(a_1+b_1,\dots,a_n+b_n)^\rmT$;
-		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT$.
+		\item ${\bf0}\in V$;
+		\item $\bma,\bmb\in V\implies \bma+\bmb\in V$;
+		\item $\bma\in V\implies \lambda\bma\in V, \forall\lambda\in\BR$,
 	\end{enumerate}
 	\onslide<+->
-	而且它们也满足前述的八条性质.
-	\onslide<+->
-	\begin{definition}
-		若集合 $V$ 带有零向量、加法和数乘, 且满足前述的八条性质, 则称 $V$ 是一个\emph{线性空间}或\emph{向量空间}.
-	\end{definition}
-	\onslide<+->
-	这样, $\BR^n$ 成为了一个线性空间.
+	则 $W$ 以及它继承自 $V$ 的这些要素构成线性空间, 称之为 $V$ 的\emph{子空间}.
 
 	\onslide<+->
-	类似地, 如果向量的分量以及数乘的系数都是复数, 则称对应的 $V$ 为\emph{复线性空间}, 前面的则称为\emph{实线性空间}.
-	\onslide<+->
-	例如, $n$ 维复向量全体形成一个复线性空间 $\BC^n$.
+	将线性空间 $\BR^n$ 或 $\BC^n$ 的子空间称为实/复\emph{向量空间}.
 \end{frame}
 
 
 \subsection{线性映射}
 \begin{frame}{线性方程组对应的映射}
+	\onslide<+->
+	考虑向量空间之间的映射.
 	\onslide<+->
 	对于系数都是实数的线性方程组
 	\[\laeq[lclcclcl]{
@@ -127,7 +119,7 @@
 		a_{m1}&x_1+{}&a_{m2}&x_2&{}+\cdots+{}&a_{mn}&x_n={}&y_m
 	}\]
 	\onslide<+->
-	如果我们把 $x_1,\dots,x_n$ 看作自变量, $y_1,\dots,y_m$ 看作因变量, 那么上述关系就给出了一个映射:
+	若把 $x_1,\dots,x_n$ 看作自变量, $y_1,\dots,y_m$ 看作因变量, 则上述关系给出了一个映射:
 	\[f:\BR^n\lra\BR^m.\]
 	\onslide<+->
 	不难看出, 这个映射满足
@@ -141,10 +133,11 @@
 \begin{frame}{线性变换}
 	\onslide<+->
 	\begin{definition}
-		如果映射 $f:\BR^n\to\BR^m$ 满足
+		设 $V,W$ 是实向量空间.
+		若映射 $f:V\to W$ 满足
 		\begin{enumerate}
-			\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in \BR^n$;
-			\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in \BR^n$,
+			\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in V$;
+			\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in V$,
 		\end{enumerate}
 		称 $f$ 是一个\emph{线性变换}或\emph{线性映射}.
 	\end{definition}
@@ -166,30 +159,26 @@
 		\end{pmatrix}.
 	\end{align*}
 	\onslide<+->
-	反过来, 是不是所有的线性变换都可以表达为这种形式呢?
+	反过来, 是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为这种形式呢?
 \end{frame}
 
 
 \begin{frame}{标准向量空间}
 	\onslide<+->
-	设
-	\[\bfe_1=(1,0,\dots,0)^\rmT,\bfe_2=(0,1,\dots,0)^\rmT,\dots,\bfe_n=(0,0,\dots,1)^\rmT\]
-	是一组 $n$ 维向量.
-	\onslide<+->
-	对于任意 $n$ 维向量 $\bfx=(x_1,\dots,x_n)^\rmT$,
-	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
-	\onslide<+->
-	也就是说任意 $n$ 维向量都表示为这个向量组中向量的数乘之和, 也就是\emph{线性组合}.
-
-	\onslide<+->
 	设 $f:\BR^n\to\BR^m$ 是一个线性变换, 记
-	\[f(\bfe_1)=\begin{pmatrix}
+	\[f\begin{pmatrix}
+		1\\0\\\vdots\\0
+	\end{pmatrix}=\begin{pmatrix}
 		a_{11}\\a_{21}\\\vdots\\a_{m1}
 	\end{pmatrix},\quad
-	f(\bfe_2)=\begin{pmatrix}
+	f\begin{pmatrix}
+		0\\1\\\vdots\\0
+	\end{pmatrix}=\begin{pmatrix}
 		a_{12}\\a_{22}\\\vdots\\a_{m2}
 	\end{pmatrix},\cdots,
-	f(\bfe_n)=\begin{pmatrix}
+	f\begin{pmatrix}
+		0\\0\\\vdots\\1
+	\end{pmatrix}=\begin{pmatrix}
 		a_{1n}\\a_{2n}\\\vdots\\a_{mn}
 	\end{pmatrix}.\]
 \end{frame}
@@ -202,8 +191,16 @@
 		&f\begin{pmatrix}
 			x_1\\x_2\\\vdots\\x_n
 		\end{pmatrix}
-		=f(x_1\bfe_1+\dots+x_n\bfe_n)
-		=x_1f(\bfe_1)+\dots+x_nf(\bfe_n)\\
+		=f\left(x_1\begin{pmatrix}
+			1\\0\\\vdots\\0
+		\end{pmatrix}+\dots+x_n\begin{pmatrix}
+			0\\0\\\vdots\\1
+		\end{pmatrix}\right)
+		=x_1f\begin{pmatrix}
+			x_1\\x_2\\\vdots\\x_n
+		\end{pmatrix}+\dots+x_nf\begin{pmatrix}
+			0\\0\\\vdots\\1
+		\end{pmatrix}\\
 		=&x_1\begin{pmatrix}
 			a_{11}\\a_{21}\\\vdots\\a_{m1}
 		\end{pmatrix}+x_2\begin{pmatrix}
@@ -220,6 +217,9 @@
 	\end{align*}
 	\onslide<+->
 	所以每个 $\BR^n\to\BR^m$ 的线性变换都具有这种形式.
+
+	\onslide<+->
+	将 $\BR$ 换成 $\BC$ 我们亦有类似结论.
 \end{frame}
 
 
@@ -229,7 +229,7 @@
 	现在给出矩阵的定义:
 	\onslide<+->
 	\begin{definition}
-		将 $mn$ 个数按照每行 $n$ 个元素, 一共 $m$ 行排列, 得到的数表称为 \emph{$m$ 行 $n$ 列矩阵}(\emph{M}atrix), 或简称为 \emph{$m\times n$ 矩阵}:
+		将 $mn$ 个数按照每行 $n$ 个元素, 每列 $m$ 个元素, 排成的数表称为 \emph{$m$ 行 $n$ 列\cnen{矩阵}{Matrix}}, 或简称为 \emph{$m\times n$ 矩阵}:
 		\[\bfA=\begin{pmatrix}
 			a_{11}&a_{12}&\cdots &a_{1n}\\
 			a_{21}&a_{22}&\cdots &a_{2n}\\
@@ -237,19 +237,20 @@
 			a_{m1}&a_{m2}&\cdots &a_{mn}
 		\end{pmatrix},\]
 		其中 $a_{ij}$ 表示 $\bfA$ 的第 $i$ 行 $j$ 列元素, 并记 $\bfA=(a_{ij})_{m\times n}$.
-		记 $M_{m\times n}$ 表示 $m$ 行 $n$ 列的矩阵全体.
 	\end{definition}
+	\onslide<+->
+	记 $M_{m\times n}$ 表示 $m$ 行 $n$ 列的矩阵全体.
 \end{frame}
 
 
 \begin{frame}{线性映射与矩阵一一对应}
 	\onslide<+->
-	若矩阵分量都是实数或复数, 称相应的矩阵为\emph{实矩阵}或\emph{复矩阵}, 并分别用 $M_{m\times n}(\BR),M_{m\times n}(\BC)$ 表示它们全体.
+	若矩阵元素都是实数或复数, 称相应的矩阵为\emph{实矩阵}或\emph{复矩阵}, 并分别用 $M_{m\times n}(\BR),M_{m\times n}(\BC)$ 表示它们全体.
 
 	\onslide<+->
-	那么 $\BR^n\to\BR^m$ 的全体线性变换就和 $M_{m\times n}(\BR)$ 建立了一一对应.
+	于是 $\BR^n\to\BR^m$ 的全体线性变换就和 $M_{m\times n}(\BR)$ 建立了一一对应.
 	\onslide<+->
-	类似地, $\BC^n\to\BC^m$ 的全体线性变换和 $M_{m\times n}(\BC)$ 也是一一对应的, 之后不再赘述类似情形.
+	类似地, $\BC^n\to\BC^m$ 的全体线性变换和 $M_{m\times n}(\BC)$ 也是一一对应的, 之后此种类比不再赘述.
 
 	\onslide<+->
 	若 $m=n$, 称相应矩阵为 \emph{$n$ 阶方阵}, 并记全体 $n$ 阶 (实、复)方阵为 $M_n,M_n(\BR),M_n(\BC)$.
@@ -258,7 +259,7 @@
 
 \begin{frame}{特殊矩阵}
 	\onslide<+->
-	元素全为零的矩阵为\emph{零矩阵} $\bfO\in M_{m\times n}$.
+	元素全为零的矩阵为\emph{零矩阵} $\bfO=\bfO_{m\times n}\in M_{m\times n}$.
 	\onslide<+->
 	方阵中
 	\[\begin{pmatrix}
@@ -283,7 +284,7 @@
 	\[\alert{\diag(\lambda_1,\lambda_2,\dots,\lambda_n)}.\]
 	\onslide<+->
 	称方阵
-	\[\bfE_n=\diag(1,1,\dots,1)\in M_n\]
+	\[\bfE=\bfE_n=\diag(1,1,\dots,1)\in M_n\]
 	为\emph{单位阵}.
 \end{frame}
 
@@ -299,14 +300,15 @@
 		b_1\\b_2\\\vdots\\b_n
 	\end{pmatrix}\in M_{n\times 1}\]
 	称为 $n$ 维\emph{列矩阵}.
+
 	\onslide<+->
-	我们将在后面定义矩阵的加法和数乘, 它与将行/列矩阵看作行/列向量的加法和数乘是相同的.
+	我们将在后面定义矩阵的加法和数乘, 它与将行(列)矩阵看作行(列)向量的加法和数乘是相同的.
 	\onslide<+->
-	我们可将行/列矩阵和对应的行/列向量视为同一对象.
+	于是可将行(列)矩阵和对应的行(列)向量视为同一对象.
 \end{frame}
 
 
-\begin{frame}{线性变换的例子: 旋转}
+\begin{frame}{例: 旋转变换}
 	\onslide<+->
 	如何用矩阵表示平面 $\BR^2$ 上的旋转?
 	\onslide<+->
@@ -316,13 +318,13 @@
 	\[\laeq{
 		x_1=\rho\cos\alpha,\\
 		x_2=\rho\sin\alpha,}\]
-	那么
+	则
 	\[\laeq[lcccccrcr]{
 		y_1&{}={}&\rho\cos(\alpha+\theta)&{}={}&\rho(\cos\alpha\cos\theta-\sin\alpha\sin\theta)&{}={}&(\cos\theta)x_1&{}-{}&(\sin\theta)x_2,\\
 		y_2&{}={}&\rho\sin(\alpha+\theta)&{}={}&\rho(\cos\alpha\sin\theta+\sin\alpha\cos\theta)&{}={}&(\sin\theta)x_1&{}+{}&(\cos\theta)x_2.
 	}\]
 	\onslide<+->
-	因此上述\emph{旋转变换} 对应的矩阵为
+	因此上述\emph{旋转变换}对应的矩阵为
 	\[\bfR_\theta=\begin{pmatrix}
 		\cos\theta&-\sin\theta\\
 		\sin\theta&\cos\theta
@@ -330,7 +332,7 @@
 \end{frame}
 
 
-\begin{frame}{线性变换的例子}
+\begin{frame}{例: 线性变换}
 	\onslide<+->
 	\begin{itemize}
 		\item $\bfA=\begin{pmatrix}

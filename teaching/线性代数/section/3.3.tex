@@ -1,0 +1,388 @@
+\section{实对称阵的合同}
+
+\subsection{惯性指数}
+
+\begin{frame}{引例: 二次曲线的分类}
+	\onslide<+->
+	设 $A,B,C$ 是不全为零的实数.
+	二次曲线 $Ax^2+Bxy+Cy^2=1$ 左侧的实二次型对应方阵 $\bfA=\begin{pmatrix}
+		A&B/2\\
+		B/2&C
+	\end{pmatrix}$.
+	\onslide<+->
+	由
+	\[|\bfA-\lambda\bfE|=\begin{vmatrix}
+		A-\lambda&B/2\\
+		B/2&C-\lambda
+	\end{vmatrix}=\lambda^2-(A+C)\lambda+(AC-B^2/4)\]
+	可知,
+	\onslide<+->
+	\begin{enumerate}
+		\item 当 $B^2-4AC>0$ 时, $\bfA$ 特征值一正一负, 
+		\onslide<+->
+		从而通过正交变换 $\begin{pmatrix}
+			x\\y
+		\end{pmatrix}=\bfP\begin{pmatrix}
+			s\\t
+		\end{pmatrix}$ 可知该曲线为双曲线.
+		\item 同理, $B^2-4AC<0$ 时该曲线为椭圆(或空集);
+		\item $B^2-4AC=0$ 时该曲线为双曲线.
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{惯性定理}
+	\onslide<+->
+	可以看出我们有时候只关心实二次型对应的矩阵的特征值的符号.
+	\onslide<+->
+	\begin{definition}
+		称实二次型 $f$ 对应矩阵 $\bfA$ 的秩为 $f$ 的\emph{秩}.
+	\end{definition}
+	\onslide<+->
+	对于可逆阵 $\bfP$, $\bfP^\rmT\bfA\bfP$ 的秩和 $\bfA$ 相同.
+	\onslide<+->
+	因此若可逆线性变换 $\bfx=\bfP\bfy$ 将 $f$ 变为标准形, 则 $y_i^2$ 系数非零为恰有 $r$ 个.
+	\onslide<+->
+	\begin{theorem}[惯性定理]
+		设实二次型 $f=\bfx^\rmT\bfA\bfx$ 的秩为 $r$.
+		若可逆线性变换 $\bfx=\bfP\bfy=\bfQ\bfz$ 分别将 $f$ 变为
+		\begin{align*}
+			f&=k_1y_1^2+\cdots+k_ry_r^2\\
+			f&=\ell_1z_1^2+\cdots+\ell_rz_r^2,
+		\end{align*}
+		则 $k_1,\dots,k_r$ 中正的个数和 $\ell_1,\dots,\ell_r$ 中正的个数相同.
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{惯性指数}
+	\onslide<+->
+	\begin{proof}
+		由题设可知
+		\begin{align*}
+			\bfB&:=\diag(k_1,\dots,k_r,0,\dots,0)=\bfP^\rmT\bfA\bfP,\\
+			\bfC&:=\diag(\ell_1,\dots,\ell_r,0,\dots,0)=\bfQ^\rmT\bfA\bfQ.
+		\end{align*}
+		\onslide<+->{%
+			设 $\bfR=\bfP^{-1}\bfQ=(\bma_1,\dots,\bma_n)$, 则
+			\[\bfC=\bfR^\rmT\bfB\bfR=\diag(k_1\bma_1^\rmT\bma_1,
+				\dots,k_r\bma_r^\rmT\bma_r,0,\dots,0).\]
+		}\onslide<+->{%
+			从而 $\ell_i=k_i\|\bma_i\|^2$, 二者符号相同.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{惯性指数}
+	\onslide<+->
+	\begin{definition}
+		把 $f$ 标准型系数中为正数的个数称为实二次型 $f$ 的\emph{正惯性指数} $p$, 为负数的个数称为实二次型 $f$ 的\emph{负惯性指数} $q=r-q$.
+	\end{definition}
+	\onslide<+->
+	\begin{corollary}
+		实二次型 $f=\bfx^\rmT\bfA\bfx$ 的正(负)惯性指数等于实对称阵 $\bfA$ 的正(负)特征值的个数.
+	\end{corollary}
+	\onslide<+->
+	\begin{corollary}
+		设 $\bfA,\bfB$ 均为 $n$ 阶实对称阵.
+		$\bfA$ 与 $\bfB$ 合同当且仅当 $\bfA$ 的正特征值的个数等于 $\bfB$ 的正特征值的个数, 且 $\bfA$ 的负特征值的个数等于 $\bfB$ 的负特征值的个数.
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{例: 惯性指数的应用}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA=\begin{pmatrix}
+			1&2\\2&1
+		\end{pmatrix}$, 则 $\bfA$ 合同于\fillbrace{\visible<+->{D}}.
+		\xx{$\begin{pmatrix}
+			-2&1\\
+			1&-2
+		\end{pmatrix}$}{$\begin{pmatrix}
+			2&-1\\
+			-1&2
+		\end{pmatrix}$}{$\begin{pmatrix}
+			2&1\\
+			1&2
+		\end{pmatrix}$}{$\begin{pmatrix}
+			1&-2\\
+			-2&1
+		\end{pmatrix}$}
+	\end{example}
+	\onslide
+	\begin{example}
+		矩阵 $\begin{pmatrix}
+			1&1\\1&1
+		\end{pmatrix}$ 与 $\begin{pmatrix}
+			3&0\\0&0
+		\end{pmatrix}$\fillbrace{\visible<+->{B}}.
+		\xx{合同且相似}{合同但不相似}{不合同但相似}{既不合同也不相似}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{二次曲面的分类}
+	\onslide<+->
+	对于三元实二次型, 正负惯性指数确定了二次曲面的类别.
+	\onslide<+->
+	\begin{enumerate}
+		\item $p=3,q=0$ 为椭球面 $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$.
+		\item $p=2,q=1$ 为单叶双曲面 $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}=1$.
+		\item $p=1,q=2$ 为双叶双曲面 $\displaystyle\frac{x^2}{a^2}-\frac{y^2}{b^2}-\frac{z^2}{c^2}=1$.
+		\item $p=2,q=0$ 为椭圆柱面 $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$.
+		\item $p=1,q=1$ 为双曲柱面 $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$.
+	\end{enumerate}
+\end{frame}
+
+\subsection{实二次型规范形}
+
+
+
+\begin{frame}{实二次型规范形}
+	\onslide<+->
+	\begin{definition}
+		若实二次型的标准形的系数只在 $−1, 0, 1$ 三个数中取值, 则称此实二次型为\emph{规范形}．
+	\end{definition}
+	\onslide<+->
+	\begin{theorem}
+		任意一个实二次型总可经过适当的可逆线性变换化为规范形，且规范形是唯一的(可任意交换变量顺序):
+		\[f=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2,\]
+		其中 $p,q$ 分别为正负惯性指数.
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{实对称阵的合同标准形}
+	\onslide<+->
+	\begin{corollary}
+		任意 $n$ 阶实对称矩阵 $\bfA$ 合同于对角矩阵
+		\[\begin{pmatrix}
+			\bfE_p&&\\
+			&-\bfE_q&\\
+			&&\bfO_{n-p-q}
+		\end{pmatrix},\]
+		其中 $p,q$ 分别为正负特征值个数(计算重数), $R(\bfA)=p+q$.
+	\end{corollary}
+	\onslide<+->
+	\begin{example}
+		若实对称矩阵 $\bfA$ 合同于 $\begin{pmatrix}
+			1&0&0\\0&0&2\\0&2&0
+		\end{pmatrix}$, 则通过可逆线性变换 $\bfx=\bfP\bfy$ 可将二次型 $\bfx^\rmT\bfA\bfx$ 化为规范形\fillblank[3cm]{\visible<+->{$y_1^2+y_2^2-y_3^2$}}.
+	\end{example}
+\end{frame}
+
+\subsection{正定二次型}
+
+\begin{frame}{正定和负定}
+	\onslide<+->
+	\begin{definition}
+		设 $f=\bfx^\rmT\bfA\bfx$ 是二次型.
+		\begin{enumerate}
+			\item 若对任意 $\bfx\neq{\bf0}$, 都有 $f(\bfx)>0$, 则称 $f$ 为\emph{正定二次型}, 并称实对称阵 $\bfA$ 为\emph{正定矩阵}, 也记作 $\bfA>0$.
+			\item 若对任意 $\bfx$, 都有 $f(\bfx)\ge0$, 则称 $f$ 为\emph{半正定二次型}, 并称实对称阵 $\bfA$ 为\emph{半正定矩阵}, 也记作 $\bfA\ge0$.
+			\item 若 $-f$ 正定, 则称 $f$ 为\emph{负定二次型}, 并称实对称阵 $\bfA$ 为\emph{负定矩阵}, 也记作 $\bfA<0$.
+			\item 若 $-f$ 半正定, 则称 $f$ 为\emph{半负定二次型}, 并称实对称阵 $\bfA$ 为\emph{半负定矩阵}, 也记作 $\bfA\le0$.
+			\item 除此之外, 称 $f$ \emph{不定}.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	可逆线性变换 $\bfx=\bfP\bfy$ 不会影响正定性.
+	\onslide<+->
+	$\bfA$ 正定$\iff \bfP^\rmT\bfA\bfP$ 正定.
+\end{frame}
+
+
+\begin{frame}{例: 正定和负定}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $f(x_1,x_2,x_3)=x_1^2+x_2^2$ 半正定.
+			\item $f(x_1,x_2,x_3)=x_1^2-2x_2^2+x_3^2$ 不定.
+			\item $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2+x_3)^2+(x_3+x_1)^2$ 正定.
+			\item $f(x_1,x_2,x_3)=(x_1-x_2)^2+(x_2-x_3)^2+(x_3-x_1)^2$ 半正定.
+			\item 椭球面 $f(x,y,z)=1$ 对应的二次型正定.
+			\item 单叶/双叶双曲面 $f(x,y,z)=1$ 对应的二次型不定.
+		\end{enumerate}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{正定的判定}
+	\onslide<+->
+	\begin{theorem}
+		设 $\bfA$ 是 $n$ 阶实对称阵, $f=\bfx^\rmT\bfA\bfx$. 如下命题等价:
+		\begin{enumerate}
+			\item $\bfA>0$ 正定, 即 $f$ 正定.
+			\item $f$ 的正惯性指数为 $n$, 即 $\bfA$ 特征值全为正.
+			\item 存在正交阵 $\bfP$ 使得 $\bfA=\bfP^\rmT\bfP$.
+			\item (\cnen{赫尔维茨}{Hurwitz}定理) $\bfA$ 的各阶顺序主子式都为正, 即
+			\[a_{11}>0,\quad
+			\begin{vmatrix}
+				a_{11}&a_{12}\\
+				a_{21}&a_{22}
+			\end{vmatrix}>0,\quad
+			\begin{vmatrix}
+				a_{11}&a_{12}&a_{13}\\
+				a_{21}&a_{22}&a_{23}\\
+				a_{31}&a_{32}&a_{33}
+			\end{vmatrix}>0,\quad
+			\dots,\quad
+			|\bfA|>0.\]
+		\end{enumerate}
+	\end{theorem}
+	\onslide<+->
+	将\enumnum4中 $>$ 换成 $\ge$ 即可判断半正定, 这也等价于 $f$ 的负惯性指数为 $0$, 即 $\bfA$ 特征值全非负.
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\onslide<+->
+	\begin{corollary}
+		若 $\bfA$ 正定, 则 $|\bfA|>0$ 且对角元全为正.
+	\end{corollary}
+	\onslide<+->
+	\begin{example}
+		若 $f(x_1,x_2,x_3)=2x_1^2+x_2^2+x_3^2+2x_1x_2+tx_2x_3$ 正定, 求 $t$ 的取值范围.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$f$ 对应 $\bfA=\begin{pmatrix}
+			2&1&0\\
+			1&1&t/2\\
+			0&t/2&1
+		\end{pmatrix}$, 顺序主子式 $2>0,\begin{vmatrix}
+			2&1\\1&1
+		\end{vmatrix}=1>0,|\bfA|=1-\dfrac{t^2}2>0$
+		得到 $\displaystyle-\frac{\sqrt2}2<t<\frac{\sqrt2}2$.
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\onslide<+->
+	\begin{example}
+		判别二次型 $f=-5x^2-6y^2-4z^2+4xy+4xz$ 是否正定.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		由于
+		$\bfA=\begin{pmatrix}
+			-5&2&2\\
+			2&-6&0\\
+			2&0&-4
+		\end{pmatrix}$.
+		顺序主子式 $-5<0$, 因此不是正定的.
+
+		或由 $f(1,0,0)<0$ 得到.
+	\end{solution}
+	\onslide<+->
+	\begin{example}
+		若实对称阵 $\bfA$ 正定, 证明 $|\bfA+\bfE|>1$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		由 $\bfA$ 正定可知其特征值均为正, 从而 $\bfA+\bfE$ 特征值都大于 $1$.
+		\onslide<+->{
+			从而 $|\bfA+\bfE|>1$.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\onslide<+->
+	\begin{example}
+		设 $3$ 阶实对称阵 $\bfA$ 满足 $\bfA^2+2\bfA=\bfO, R(\bfA)=2$.
+		\begin{enumerate}
+			\item 求 $\bfA$ 的全部特征值.
+			\item 当 $k$ 为何值时, 矩阵 $\bfA+k\bfE$ 为正定矩阵.
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\begin{enumerate}
+			\item 由 $\bfA^2+2\bfA=\bfO$ 可知 $\bfA$ 的特征值满足 $\lambda^2+2\lambda=0,\lambda=0,-2$.
+			\onslide<+->{%
+				由 $R(\bfA)=2$ 可知 $\bfA$ 特征值为 $0,-2,-2$.
+			}
+			\item $\bfA+k\bfE$ 特征值为 $k,k-2,k-2$.
+			\onslide<+->{%
+				因此 $k>2$.
+			}
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA$ 是 $m\times n$ 实矩阵且 $R(\bfA)=n$.
+		证明 $\bfA^\rmT\bfA$ 正定.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		显然 $\bfA^\rmT\bfA$ 是对称的.
+		\onslide<+->{%
+			注意到
+			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=(\bfA\bfx)^\rmT\bfA\bfx=\|\bfA\bfx\|.\]
+		}\onslide<+->{%
+			由于 $R(\bfA)=n$, $\bfA\bfx={\bf0}$ 只有零解.
+		}\onslide<+->{%
+			因此当 $\bfx\neq{\bf0}$ 时, $\bfA\bfx\neq{\bf0}$, 从而
+			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=\|\bfA\bfx\|>0.\qedhere\]
+		}\vspace{-\baselineskip}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\onslide<+->
+	\begin{example}
+		设 $\bfA$ 为 $n$ 阶实对称矩阵.
+		证明 $R(\bfA)=n\iff$ 存在一个 $n$ 阶实方阵 $\bfB$ 使得 $\bfA\bfB+\bfB^\rmT\bfA$ 正定.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		显然 $\bfA\bfB+\bfB^\rmT\bfA$ 是对称的, 且
+		\[\bfx^\rmT(\bfA\bfB+\bfB^\rmT\bfA)\bfx=(\bfA\bfx)^\rmT\bfB\bfx+(\bfB\bfx)^\rmT(\bfA\bfx)=2[\bfA\bfx,\bfB\bfx].\]
+		\onslide<+->{%
+			若 $R(\bfA)=n$, 令 $\bfB=\bfA$, 则当 $\bfx\neq{\bf0}$ 时, $\bfA\bfx\neq{\bf0}$, 从而
+			\[[\bfA\bfx,\bfB\bfx]=\|\bfA\bfx\|>0.\]
+		}\onslide<+->{%
+			若 $R(\bfA)<n$, 则存在 $\bfx\neq{\bf0}$ 使得 $\bfA\bfx={\bf0}$, 从而 $[\bfA\bfx,\bfB\bfx]=0$, $\bfA\bfB+\bfB^\rmT\bfA$ 不正定.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\beqskip{6pt}
+	\onslide<+->
+	\begin{example}
+		设二次型 $f=\bfx^\rmT\bfA\bfx$.
+		证明: 当 $\|x\|=1$ 时, $f(\bfx)$ 的最大(小)值为实对称阵 $\bfA$ 的最大(小)特征值.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		将 $\bfA$ 的特征值排序为  $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_n$.
+		\onslide<+->{%
+			存在正交变换 $\bfx=\bfP\bfy$ 使得
+			\[\bmL=\bfP^\rmT\bfA\bfP=\diag(\lambda_1,\dots,\lambda_n),\quad 
+			f=\bfx^\rmT\bfA\bfx=\bfy^\rmT\bmL\bfy=\lambda_1y_1^2+\cdots+\lambda_ny_n^2.\]
+		}\onslide<+->{%
+			由于正交变换保持长度, 因此 $\|\bfx\|=1\iff\|\bfy\|=1$.
+		}\onslide<+->{%
+			\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\le\lambda_1(y_1^2+\cdots+y_n^2)=\lambda_1,\]
+			且等式可在 $\bfy=(1,0,\dots,0)$ 处取得.
+		}\onslide<+->{%
+			\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\ge\lambda_n(y_1^2+\cdots+y_n^2)=\lambda_n,\]
+			且等式可在 $\bfy=(0,\dots,0,1)$ 处取得.
+		}\onslide<+->{%
+			故 $f$ 的最大值为 $\lambda_1$, 最小值为 $\lambda_n$.\qedhere
+		}
+	\end{proof}
+	\endgroup
+\end{frame}

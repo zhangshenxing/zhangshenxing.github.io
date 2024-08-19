@@ -12,7 +12,7 @@
 	\onslide<+->
 	显然 ${\bf0}\in V$.
 	\onslide<+->
-	如果 $\bfu,\bfv\in V$, 则 $\bfA\bfu=\bfA\bfv={\bf0}$, 那么
+	若 $\bfu,\bfv\in V$, 则 $\bfA\bfu=\bfA\bfv={\bf0}$, 则
 	\[\bfA(\bfu+\bfv)=\bfA(\lambda \bfv)={\bf0},\quad \forall\lambda\in\BC.\]
 	\onslide<+->
 	换言之, $V$ 上的加法和数乘的结果还落在 $V$ 中.
@@ -24,7 +24,7 @@
 \begin{frame}{线性子空间}
 	\onslide<+->
 	\begin{definition}
-		如果非空子集 $V\subseteq \BC^n$ 满足:
+		若非空子集 $V\subseteq \BC^n$ 满足:
 		\begin{enumerate}
 			\item 对任意 $\bfu,\bfv\in V$, 有 $\bfu+\bfv\in V$;
 			\item 对任意 $\bfv\in V,\lambda\in\BC$, 有 $\lambda\bfv\in V$,
@@ -82,7 +82,7 @@
 	\onslide<+->
 	\begin{definition}
 		设 $\bma_1,\dots,\bma_m,\bmb$ 为 $n$ 维向量.
-		如果存在数 $\lambda_1,\dots,\lambda_m$ 使得
+		若存在数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\bmb=\lambda_1\bma_1+\cdots+\lambda_m\bma_m,\]
 		则称 $\bmb$ 可以被向量组 $\{\bma_1,\dots,\bma_m\}$ \emph{线性表示}, 或称 $\bmb$ 是向量组 $\{\bma_1,\dots,\bma_m\}$ 的\emph{线性组合}.
 	\end{definition}
@@ -125,8 +125,8 @@
 	\begin{definition}
 		\begin{enumerate}
 			\item 设有两个向量组 $S=\{\bma_1,\dots,\bma_m\}, T=\{\bmb_1,\dots,\bmb_k\}$.
-			如果 $\bmb_1,\dots,\bmb_k$ 均可以被 $\{\bma_1,\dots,\bma_m\}$ 线性表示, 则称向量组 $T$ 可以被向量组 $S$ 线性表示.
-			\item 如果向量组 $S$ 和 $T$ 能相互线性表示, 则称 $S,T$ \emph{向量组等价}.
+			若 $\bmb_1,\dots,\bmb_k$ 均可以被 $\{\bma_1,\dots,\bma_m\}$ 线性表示, 则称向量组 $T$ 可以被向量组 $S$ 线性表示.
+			\item 若向量组 $S$ 和 $T$ 能相互线性表示, 则称 $S,T$ \emph{向量组等价}.
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
@@ -142,7 +142,7 @@
 	即存在矩阵 $\bfX$ 使得 $\bfA\bfX=\bfB$, 其中 $\bfB=(\bmb_1,\dots,\bmb_k)$.
 
 	\onslide<+->
-	反过来, 如果 $\bfA\bfX=\bfB$, 那么 $\bfB$ 的列向量组可以由 $\bfA$ 的列向量组线性表示.
+	反过来, 若 $\bfA\bfX=\bfB$, 则 $\bfB$ 的列向量组可以由 $\bfA$ 的列向量组线性表示.
 \end{frame}
 
 
@@ -172,7 +172,7 @@
 	\onslide<+->
 	\begin{definition}
 		对于 $n$ 维向量组 $\{\bma_1,\dots,\bma_m\}$,
-		如果存在一组\alert{不全为零}的数 $\lambda_1,\dots,\lambda_m$ 使得
+		若存在一组\alert{不全为零}的数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\lambda_1\bma_1+\dots+\lambda_m\bma_m={\bf0},\]
 		则称该向量组\emph{线性相关}.
 		否则称该向量组\emph{线性无关}.
@@ -223,7 +223,7 @@
 			且
 			\[(\bma_1+\bma_2,\bma_2+\bma_3,\bma_3+\bma_1)=(\bma_1,\bma_2,\bma_3)\bfA.\]
 		}\onslide<+->{%
-			如果 $(\bma_1+\bma_2,\bma_2+\bma_3,\bma_3+\bma_1)\bfx={\bf0}$, 则
+			若 $(\bma_1+\bma_2,\bma_2+\bma_3,\bma_3+\bma_1)\bfx={\bf0}$, 则
 			\[(\bma_1,\bma_2,\bma_3)\bfA\bfx={\bf0}\implies
 			\bfA\bfx={\bf0}\implies\bfx={\bf0}.\qedhere\]
 		}\vspace{-\baselineskip}
@@ -249,7 +249,7 @@
 		\end{pmatrix},\bma=\begin{pmatrix}
 			k\\1\\1
 		\end{pmatrix}$.
-		如果 $\bfA\bma$ 和 $\bma$ 线性相关, 则 $k=$\fillblank{\visible<+->{$-1$}}.
+		若 $\bfA\bma$ 和 $\bma$ 线性相关, 则 $k=$\fillblank{\visible<+->{$-1$}}.
 	\end{exercise}
 \end{frame}
 
@@ -264,19 +264,19 @@
 	\end{theorem}
 	\onslide<+->
 	\begin{proof*}
-		如果该向量组线性相关, 则存在不全为零的数 $\lambda_1,\dots,\lambda_m$ 使得
+		若该向量组线性相关, 则存在不全为零的数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}.\]
 		\onslide<+->{%
 			设 $\lambda_i\neq 0$, 则
-			$\bma_i=-\displaystyle\frac1{\lambda_i}\sum_{j=1\atop j\neq i}^m \lambda_j \bma_j$
+			$\bma_i=-\displaystyle\frac1{\lambda_i}\sum_{\substack{j=1\\j\neq i}}^m \lambda_j \bma_j$
 			可由其它向量线性表示.
 		}
 
 		\onslide<+->{
-			反之, 若 $\bma_i=\displaystyle\sum_{j=1\atop j\neq i}^m \lambda_j \bma_j$ 
+			反之, 若 $\bma_i=\displaystyle\sum_{\substack{j=1\\j\neq i}}^m \lambda_j \bma_j$ 
 			可由其它向量线性表示.
 		}\onslide<+->{%
-			则 $\displaystyle -\bma_i+\sum_{j=1\atop j\neq i}^m \lambda_j \bma_j={\bf0}$, 
+			则 $\displaystyle -\bma_i+\sum_{\substack{j=1\\j\neq i}}^m \lambda_j \bma_j={\bf0}$, 
 			向量组 $\bma_1,\dots,\bma_m$ 线性相关.\qedhere
 		}
 	\end{proof*}
@@ -392,7 +392,7 @@
 			}\onslide<+->{%
 				但是 $\bma_1,\bma_2,\bma_3$ 线性相关, 所以 $\bma_1$ 能由 $\bma_2,\bma_3$ 线性表示.
 			}
-			\item 如果 $\bma_4$ 能由 $\bma_1,\bma_2,\bma_3$ 线性表示, 由于 $\bma_1$ 能由 $\bma_2,\bma_3$ 线性表示, 于是 $\bma_4$ 也能由 $\bma_2,\bma_3$ 线性表示.
+			\item 若 $\bma_4$ 能由 $\bma_1,\bma_2,\bma_3$ 线性表示, 由于 $\bma_1$ 能由 $\bma_2,\bma_3$ 线性表示, 于是 $\bma_4$ 也能由 $\bma_2,\bma_3$ 线性表示.
 			\onslide<+->{这与 $\bma_2,\bma_3,\bma_4$ 线性无关矛盾.\qedhere}
 		\end{enumerate}
 	\end{proof}
