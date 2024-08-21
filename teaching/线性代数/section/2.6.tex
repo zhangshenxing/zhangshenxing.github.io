@@ -879,3 +879,29 @@
 \end{frame}
 
 
+\begin{frame}{线性方程组的应用: 最小二乘法}
+	\onslide<+->
+	在物理实验中, 经常会出现实验数据与预期不符的情况.
+	\onslide<+->
+	例如变量 $y$ 应当为变量 $\bfx=(x_1,\dots,x_n)^\rmT$ 的线性组合, 即存在 $n$ 维向量 $\bmb$ 使得 $y=\bfx^\rmT\bmb$.
+	\onslide<+->
+	但从实验数据解方程却是无解.
+	因此我们需要寻找参数 $\bmb$ 使得 $y=\bfx^\rmT\bmb$ 尽可能接近实验数据.
+
+	\onslide<+->
+	比较常见的是最小二乘法: 即寻找参数 $\bmb$ 使得
+	\[\sum_{i=1}^k |y_i-\bfx_i^\rmT\bmb|^2
+	=\|\bfy-\bfA\bmb\|^2\]
+	尽可能小, 其中 $(\bfx_i,y_i)$ 是实验数据, $\bfy=(y_1,\dots,y_k)^\rmT$, $\bfA$ 是由行向量 $\bfx_i^\rmT$ 构成的 $k\times n$ 矩阵.
+	\onslide<+->
+	注意所有向量 $\bfA\bmb$ 形成一个向量空间 $V$, 也就是 $\bfA$ 的列向量生成的空间.
+	\onslide<+->
+	$\bfy$ 距离这个空间的距离	$\|\bfy-\bfA\bmb\|$ 达到最小时, $\bfy-\bfA\bmb$ 应当和这个空间正交.
+	\onslide<+->
+	于是 $\bfA^\rmT(\bfy-\bfA\bmb)={\bf0}$, 即 $\bmb$ 是方程
+	\[\bfA^\rmT\bfA\bmb=\bfA^\rmT\bfy\]
+	的解.
+\end{frame}
+
+
+

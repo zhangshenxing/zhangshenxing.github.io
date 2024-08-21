@@ -16,6 +16,8 @@
 		\bfE_n&\bfO_{n\times m}
 	\end{pmatrix}\]
 	就是一个分块矩阵.
+	\onslide<+->
+	事实上我们已经不加声明地用过分块矩阵了.
 \end{frame}
 
 
@@ -88,6 +90,8 @@
 		\vdots&\ddots&\vdots\\
 		\bfA_{1r}^\rmT&\cdots&\bfA_{sr}^\rmT
 	\end{pmatrix}.\]
+	\onslide<+->
+	注意小块的位置需要转置, 每个小块也需要转置.
 \end{frame}
 
 
@@ -133,25 +137,29 @@
 			2&1\\1&1
 		\end{pmatrix},\bfA_2=\begin{pmatrix}
 			2&0\\-1&3
-		\end{pmatrix}$,\onslide<+->{%
-		则 $\bfA_1^{-1}=\begin{pmatrix}
-			1&-1\\-1&2
-		\end{pmatrix},\quad\bfA_2^{-1}=\dfrac16\begin{pmatrix}
-			3&0\\1&2
-		\end{pmatrix}$.
+		\end{pmatrix}$,
+		\onslide<+->{%
+			则 $\bfA_1^{-1}=\begin{pmatrix}
+				1&-1\\-1&2
+			\end{pmatrix},\quad\bfA_2^{-1}=\dfrac16\begin{pmatrix}
+				3&0\\1&2
+			\end{pmatrix}$.
 		}
 
-		\onslide<+->{故 $\bfA^{-1}=\diag(\bfA_1^{-1},\bfA_2^{-1})=\begin{pNiceMatrix}
-			1&-1&&\\
-			-1&2&&\\
-			&&\frac12&0\\
-			&&\frac16&\frac13
-		\end{pNiceMatrix}$.}
+		\onslide<+->{%
+			故 $\bfA^{-1}=\diag(\bfA_1^{-1},\bfA_2^{-1})=\begin{pNiceMatrix}
+				1&-1&&\\
+				-1&2&&\\
+				&&1/2&0\\
+				&&1/6&1/3
+			\end{pNiceMatrix}$.
+		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{例: 分块三角阵的逆}
+\beqskip{2pt}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA,\bfB$ 均可逆, 求 $\begin{pmatrix}
@@ -164,39 +172,31 @@
 			\bfA&\bfO\\\bfC&\bfB
 		\end{vmatrix}=|\bfA|\cdot|\bfB|\neq0$ 可知该方阵可逆.
 		\onslide<+->{%
-			设
-			\[\begin{pmatrix}
+			设 $\begin{pmatrix}
 				\bfA&\bfO\\\bfC&\bfB
 			\end{pmatrix}\begin{pmatrix}
 				\bfA_1&\bfA_2\\\bfA_3&\bfA_4
-			\end{pmatrix}=\bfE.\]
+			\end{pmatrix}=\bfE$.
+		}
+		
+		\onslide<+->{%
+			则 $\bfA\bfA_1=\bfE, \bfA\bfA_2=\bfO, \bfC\bfA_2+\bfB\bfA_4=\bfE$.
+		}\onslide<+->{%
+			于是 $\bfA_1=\bfA^{-1},\bfA_2=\bfO,\bfA_4=\bfB^{-1}$.
+		}\onslide<+->{%
+			再由 $\bfC\bfA_1+\bfB\bfA_3=\bfO$ 可得
+			\[\bfA_3=-\bfB^{-1}\bfC\bfA_1=-\bfB^{-1}\bfC\bfA^{-1}.\]
+		}\onslide<+->{%
+			故 $\begin{pmatrix}
+				\bfA&\bfO\\\bfC&\bfB
+			\end{pmatrix}^{-1}=\begin{pmatrix}
+				\bfA^{-1}&\bfO\\-\bfB^{-1}\bfC\bfA^{-1}&\bfB^{-1}
+			\end{pmatrix}$.
 		}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例: 分块三角阵的逆}
-	\onslide<+->
-	\begin{solutionc}
-		则
-		\[\bfA\bfA_1=\bfE,\quad \bfA\bfA_2=\bfO,\quad \bfC\bfA_1+\bfB\bfA_3=\bfO,\quad \bfC\bfA_2+\bfB\bfA_4=\bfE.\]
-		\onslide<+->{%
-		于是
-		\[\bfA_1=\bfA^{-1},\bfA_2=\bfO,\bfA_4=\bfB^{-1}.\]
-		}\onslide<+->{%
-		再由 $\bfC\bfA_1+\bfB\bfA_3=\bfO$ 可得
-		\[\bfA_3=-\bfB^{-1}\bfC\bfA_1=-\bfB^{-1}\bfC\bfA^{-1}.\]
-		}\onslide<+->{%
-		故
-		\[\begin{pmatrix}
-			\bfA&\bfO\\\bfC&\bfB
-		\end{pmatrix}^{-1}=\begin{pmatrix}
-			\bfA^{-1}&\bfO\\-\bfB^{-1}\bfC\bfA^{-1}&\bfB^{-1}
-		\end{pmatrix}.\]
-		}
-	\end{solutionc}
 	\onslide<+->
 	由此可知, (分块)上/下三角阵的逆还是(分块)上/下三角阵.
+\endgroup
 \end{frame}
 
 

@@ -15,6 +15,7 @@
 	\onslide<+->
 	在这个集合中有一个特殊的元素, 叫作\emph{零向量}:
 	\[{\bf0}=(0,0),\]
+	\onslide<+->
 	而且我们可以定义加法和数乘:
 	\[(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2),\quad
 	\lambda(x,y)=(\lambda x,\lambda y),\lambda\in\BR.\]
@@ -135,7 +136,7 @@
 	\begin{definition}
 		设 $V,W$ 是实向量空间.
 		若映射 $f:V\to W$ 满足
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in V$;
 			\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in V$,
 		\end{enumerate}
@@ -143,6 +144,7 @@
 	\end{definition}
 	\onslide<+->
 	于是给定 $mn$ 个实数 $a_{ij}$, 我们便可构造出一个线性变换:
+	\onslide<+->
 	\begin{align*}
 		f:\BR^n&\lra\BR^m\\
 		\begin{pmatrix}
@@ -165,7 +167,9 @@
 
 \begin{frame}{标准向量空间}
 	\onslide<+->
-	设 $f:\BR^n\to\BR^m$ 是一个线性变换, 记
+	设 $f:\BR^n\to\BR^m$ 是一个线性变换,
+	\onslide<+->
+	记
 	\[f\begin{pmatrix}
 		1\\0\\\vdots\\0
 	\end{pmatrix}=\begin{pmatrix}
@@ -196,24 +200,24 @@
 		\end{pmatrix}+\dots+x_n\begin{pmatrix}
 			0\\0\\\vdots\\1
 		\end{pmatrix}\right)
-		=x_1f\begin{pmatrix}
-			x_1\\x_2\\\vdots\\x_n
+		\visible<+->{=x_1f\begin{pmatrix}
+			1\\0\\\vdots\\0
 		\end{pmatrix}+\dots+x_nf\begin{pmatrix}
 			0\\0\\\vdots\\1
-		\end{pmatrix}\\
-		=&x_1\begin{pmatrix}
+		\end{pmatrix}}\\
+		\visible<+->{=}&\visible<.->{x_1\begin{pmatrix}
 			a_{11}\\a_{21}\\\vdots\\a_{m1}
 		\end{pmatrix}+x_2\begin{pmatrix}
 			a_{12}\\a_{22}\\\vdots\\a_{m2}
 		\end{pmatrix}+\dots+x_n\begin{pmatrix}
 			a_{1n}\\a_{2n}\\\vdots\\a_{mn}
-		\end{pmatrix}
-		=\begin{pmatrix}
+		\end{pmatrix}}
+		\visible<+->{=\begin{pmatrix}
 			a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n\\
 			a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n\\
 			\vvdots\\
 			a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n
-		\end{pmatrix}.
+		\end{pmatrix}}.
 	\end{align*}
 	\onslide<+->
 	所以每个 $\BR^n\to\BR^m$ 的线性变换都具有这种形式.
@@ -248,12 +252,14 @@
 	若矩阵元素都是实数或复数, 称相应的矩阵为\emph{实矩阵}或\emph{复矩阵}, 并分别用 $M_{m\times n}(\BR),M_{m\times n}(\BC)$ 表示它们全体.
 
 	\onslide<+->
-	于是 $\BR^n\to\BR^m$ 的全体线性变换就和 $M_{m\times n}(\BR)$ 建立了一一对应.
+	于是 $\BR^n\to\BR^m$ 的线性变换全体就和 $M_{m\times n}(\BR)$ 建立了一一对应.
 	\onslide<+->
-	类似地, $\BC^n\to\BC^m$ 的全体线性变换和 $M_{m\times n}(\BC)$ 也是一一对应的, 之后此种类比不再赘述.
+	类似地, $\BC^n\to\BC^m$ 的线性变换全体和 $M_{m\times n}(\BC)$ 也是一一对应的, 之后此种类比不再赘述.
 
 	\onslide<+->
-	若 $m=n$, 称相应矩阵为 \emph{$n$ 阶方阵}, 并记全体 $n$ 阶 (实、复)方阵为 $M_n,M_n(\BR),M_n(\BC)$.
+	若 $m=n$, 称相应矩阵为 \emph{$n$ 阶方阵}, 并记 $n$ 阶 (实、复)方阵全体为 $M_n,M_n(\BR),M_n(\BC)$.
+	\onslide<+->
+	方阵的对角线上的元素 $a_{11},\dots,a_{nn}$ 称为方阵的\emph{对角元}.
 \end{frame}
 
 
@@ -318,6 +324,7 @@
 	\[\laeq{
 		x_1=\rho\cos\alpha,\\
 		x_2=\rho\sin\alpha,}\]
+	\onslide<+->
 	则
 	\[\laeq[lcccccrcr]{
 		y_1&{}={}&\rho\cos(\alpha+\theta)&{}={}&\rho(\cos\alpha\cos\theta-\sin\alpha\sin\theta)&{}={}&(\cos\theta)x_1&{}-{}&(\sin\theta)x_2,\\
@@ -333,7 +340,6 @@
 
 
 \begin{frame}{例: 线性变换}
-	\onslide<+->
 	\begin{itemize}
 		\item $\bfA=\begin{pmatrix}
 			\lambda_1&&\\&\ddots&\\&&\lambda_n

@@ -49,13 +49,12 @@
 
 	\onslide<+->
 	特征值和特征向量只对方阵存在, 且有如下性质:
-	\onslide<+->
 	\begin{enumerate}
 		\item 零向量不是特征向量;
 		\item 若 $\bfx$ 是对应 $\lambda$ 的特征向量, 则它的非零倍也是;
 		\item 若 $\bfx_1,\bfx_2\neq-\bfx_1$ 是对应 $\lambda$ 的特征向量, 则 $\bfx_1+\bfx_2$ 也是;
 		\item $|\bfA|=0\iff 0$ 是特征值; $|\bfA|\neq0\iff 0$ 不是特征值;
-		\item 若 $n$ 阶方阵 $\bfA$ 的各行元素之和为 $k$，则 $k$ 是 $\bfA$ 	的一个特征值，且特征向量为 $(1,\dots,1)^\rmT$.
+		\item 若 $n$ 阶方阵 $\bfA$ 的各行元素之和为 $k$, 则 $k$ 是 $\bfA$ 	的一个特征值, 且特征向量为 $(1,\dots,1)^\rmT$.
 	\end{enumerate}
 \end{frame}
 
@@ -63,7 +62,6 @@
 \begin{frame}{特征值和特征向量的计算步骤}
 	\onslide<+->
 	特征值和特征向量的计算步骤如下:
-	\onslide<+->
 	\begin{enumerate}
 		\item 求 $\bfA$ 的特征多项式 $f(\lambda)=|\bfA-\lambda \bfE|$;
 		\item 解 $f(\lambda)=|\bfA-\lambda \bfE|=0$ 得到特征值;
@@ -683,7 +681,6 @@
 \begin{frame}{相似对角化的步骤}
 	\onslide<+->
 	相似对角化的步骤如下:
-	\onslide<+->
 	\begin{enumerate}
 		\item 求出 $\bfA$ 的所有特征值 $\lambda_i$ 和特征向量 $\bfp_i$;
 		\item 根据上述判定方法判断 $\bfA$ 是否可以相似对角化;
@@ -827,9 +824,9 @@
 \end{frame}
 
 
-\begin{frame}{例: 对角化的计算}
+\begin{frame}{相似标准形\noexer}
 	\onslide<+->
-	任何方阵都相似于\emph{约当标准型}
+	任何方阵都相似于\emph{约当标准形}
 	\[\diag(\bfJ_{k_1}(\lambda_1),\dots,\bfJ_{k_t}(\lambda_t)),\]
 	其中 $\bfJ_k(\lambda)=\begin{pmatrix}
 		\lambda&1&&\\
@@ -842,12 +839,30 @@
 
 	\onslide<+->
 	由此可知, \alert{$\bfA^*$ 的所有特征值的就是 $\bfA$ 的 $n$ 个特征值中 $n-1$ 个相乘得到的}.
-	\onslide<+->
 	\begin{enumerate}
 		\item 当 $|\bfA|\neq0$ 时, $\bfA^*$ 的所有特征值为 $|\bfA|/\lambda$.
 		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是一重特征值, 则$\bfA^*$ 唯一的非零特征值为 $\bfA$ 非零特征值之乘积.
 		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是 $\ge2$ 重特征值, 则$\bfA^*=\bfO$.
 	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{相似标准形\noexer}
+	\onslide<+->
+	对于 $\bfA$ 的 $k$ 重特征值 $\lambda$,
+	\onslide<+->
+	若
+	\[R\bigl((\bfA-\lambda\bfE)^i\bigr)=n-r_i,\quad
+	0=r_0\le r_1\le r_2\le \cdots\le k,\]
+	\onslide<+->
+	则 $\lambda$ 对应的约当块有 $r_1$ 个, 其中 $J_k(\lambda)$ 有 $2r_k-r_{k+1}-r_{k-1}$ 个.
+	
+	\onslide<+->
+	利用约当标准形可以计算任意矩阵的方幂.
+	\onslide<+->
+	设 $\bfN=\bfJ_k(0)$, 则
+	\[\bfJ_k(\lambda)^m
+	=(\lambda\bfE+\bfN)^m=\sum_{i=0}^m \rmC_m^i \lambda^{m-i}\bfN^i.\]
 \end{frame}
 
 
@@ -963,5 +978,84 @@
 		\end{pmatrix}$.
 		由于 $\bfB$ 是实对称矩阵, 因此 $\bfB$ 能对角化, 从而 $\bfA$ 也可以.
 	\end{solution}
+\end{frame}
+
+
+\begin{frame}{相似的应用: 求线性递推数列通项}
+\beqskip{1pt}
+	\onslide<+->
+	线性递推数列是一种常见的数列,
+	\onslide<+->
+	例如著名的斐波那契数列: 假设一对刚出生的小兔一个月后就能长成大兔, 再过一个月就能生下一对小兔, 并且此后每个月都生一对小兔.
+	若一年内没有发生死亡, 一对刚出生的兔子一年内能繁殖成多少对兔子?
+
+	\onslide<+->
+	设第 $n$ 个月的兔子数量为 $a_n$, 那么
+	\[a_{n+2}=a_{n+1}+a_n,\quad a_2=a_1=1.\]
+	\onslide<+->
+	设 $\bfx_n=\begin{pmatrix}
+		a_{n+1}\\a_n
+	\end{pmatrix}$, 则 $\bfx_{n+1}=\bfA\bfx_n$, $\bfA=\begin{pmatrix}
+		1&1\\
+		1&0
+	\end{pmatrix}$.
+	\onslide<+->
+	通过计算可知
+	\[\bfA=\bfP\bmL\bfP^{-1},\quad
+	\bmL=\diag\Bigl(\frac{1+\sqrt5}2,\frac{1-\sqrt5}2\Bigr), \quad \bfP=\begin{pmatrix}
+		\frac{1+\sqrt5}2&\frac{1-\sqrt5}2\\
+		1&1
+	\end{pmatrix}.\]
+	\onslide<+->
+	因此
+	$\bfx_n=\bfA^{n-1}\bfx_1=\bfP\bmL^{n-1}\bfP^{-1}\bfx_1$,
+	$a_n=\frac1{\sqrt5}\biggl(\Bigl(\frac{1+\sqrt5}2\Bigr)^n-\Bigl(\frac{1-\sqrt5}2\Bigr)^n\biggr)$,
+	\onslide<+->
+	\[a_{12}\approx \frac{1.618^n}{\sqrt5}=143.9\approx144.\]
+\endgroup
+\end{frame}
+
+
+\begin{frame}{相似的应用: 求线性递推数列通项}
+	\onslide<+->
+	对于一般的线性递推数列
+	\[a_{n+k}-c_{k-1}a_{n+k-1}-\cdots-c_1a_{n+1}-c_0a_n=0,\]
+	\onslide<+->
+	$\bfx_n=(a_{n+k-1},\dots,a_{n+1},a_n)^\rmT$ 满足 $\bfx_{n+1}=\bfA\bfx_n$, 其中 $\bfA=\begin{pmatrix}
+		c_{k-1}&\cdots&c_1&c_0\\
+		1&&&\\
+		&\ddots&&\\
+		&&1&
+	\end{pmatrix}$ 的特征多项式为(可能相差 $-1$ 倍)
+	\[\lambda^k-c_{k-1}\lambda^{k-1}-\cdots-c_1\lambda-c_0=0.\]
+	\onslide<+->
+	若特征值两两不同, 可知 $a_n$ 的通项为 $\lambda_1^n,\dots,\lambda_k^n$ 的线性组合;
+	\onslide<+->
+	若特征值有重数, 由约当块的幂次形式可知
+	\[a_n=\sum_\lambda f_\lambda(n)\lambda^n,\]
+	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
+\end{frame}
+
+
+\begin{frame}{相似的应用: 求常系数微分方程的解}
+	\onslide<+->
+	类似地, 对于微分方程
+	\[y^{(k)}(t)-c_{k-1}y^{(k-1)}(t)-\cdots-c_1y'(t)-c_0y(t)=0,\]
+	\onslide<+->
+	$\bfx=(y^{(k-1)},\dots,y',y)^\rmT$ 满足 $\bfx'=\bfA\bfx$.
+	\onslide<+->
+	于是 ``$\bfx=\exp(\bfA t)$''.
+
+	\onslide<+->
+	其实这里的指数函数是通过幂级数展开定义的
+	\[\exp(\bfA)=\sum_{i=0}^\infty\frac{\bfA^i}{i!}.\]
+	\onslide<+->
+	若 $\bfA=\bfP\diag(\lambda_1,\dots,\lambda_k)\bfP^{-1}$, 容易看出 $\exp(\bfA t)=\bfP\diag(e^{\lambda_1 t},\dots,e^{\lambda_k t})\bfP^{-1}$,
+	\onslide<+->
+	从而 $y$ 是 $e^{\lambda_1},\dots,e^{\lambda_k}$ 的线性组合.
+	\onslide<+->
+	对于一般情形, 通过考虑约当块的指数函数可知
+	\[y(t)=\sum_\lambda f_\lambda(t)e^{\lambda t},\]
+	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
 \end{frame}
 

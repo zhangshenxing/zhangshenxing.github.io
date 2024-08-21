@@ -28,7 +28,6 @@
 	\end{definition}
 	\onslide<+->
 	内积是数量积的推广, 它满足
-	\onslide<+->
 	\begin{enumerate}
 		\item $[\bma,\bmb]=[\bmb,\bma]$;
 		\item $[\lambda\bma,\bmb]=[\bma,\lambda\bmb]=\lambda[\bma,\bmb]$;
@@ -53,17 +52,33 @@
 	\end{definition}
 	\onslide<+->
 	我们有 $\bfx={\bf0}\iff\|\bfx\|=0\iff[\bfx,\bfx]=0$.
+	\onslide<+->
+	\begin{definition}
+		若 $[\bma,\bmb]=0$, 称 $\bma,\bmb$ \emph{正交}(垂直).
+	\end{definition}
 \end{frame}
 
 
 \begin{frame}{夹角}
 	\onslide<+->
+	设 $\bma\neq{\bf0}$.
+	\onslide<+->
+	那么 $X$ 的二次多项式
+	\[\|X\bma+\bmb\|^2=[X\bma+\bmb,X\bma+\bmb]
+	=[\bma,\bma]X^2+2[\bma,\bmb]X+[\bmb,\bmb]\ge0\]
+	恒成立.
+	\onslide<+->
+	因此其判别式
+	\[\Delta=4([\bma,\bmb]^2-\|\bma\|^2\cdot\|\bmb\|^2)\le 0,\]
+	\onslide<+->
+	于是我们得到柯西-施瓦兹不等式
+	\[|[\bma,\bmb]|\le \|\bma\|\cdot\|\bmb\|.\]
+	\onslide<+->
+	显然 $\bma={\bf0}$ 时它也成立.
+	\onslide<+->
 	\begin{definition}
-		设 $\bma=(a_1,\dots,a_n)^\rmT,\bmb=(b_1,\dots,b_n)^\rmT\in\BR^n$, 定义 $\bma,\bmb$ 的\emph{夹角}为
+		设非零向量 $\bma=(a_1,\dots,a_n)^\rmT,\bmb=(b_1,\dots,b_n)^\rmT\in\BR^n$, 定义 $\bma,\bmb$ 的\emph{夹角}为
 		\[\theta=\arccos\dfrac{[\bma,\bmb]}{\|\bma\|\cdot\|\bmb\|}\in[0,\pi].\]
-		\onslide<+->{%
-			若 $\bma,\bmb$ 夹角为 $\dfrac\pi2$, 即 $[\bma,\bmb]=0$, 称 $\bma,\bmb$ \emph{正交}(垂直).
-		}
 	\end{definition}
 \end{frame}
 
@@ -133,7 +148,7 @@
 
 \begin{frame}{格拉姆-施密特正交化}
 	\onslide<+->
-	由此得到\alert{\cnen{格拉姆}{Gram}-\cnen{施密特}{Schmidt}正交单位化方法:} 取
+	由此得到\alert{格拉姆-施密特正交单位化方法:} 取
 		\begin{align*}
 			\bmb_1&=\bma_1\\
 			\bmb_2&=\bma_2-\frac{[\bma_2,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1\\

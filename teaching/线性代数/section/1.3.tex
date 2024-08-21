@@ -13,28 +13,32 @@
 	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
 
 	\onslide<+->
-	定义 $V_2$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合, 其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
+	定义 $V_2:=\wedge^2\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
+	\onslide<+->
+	其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
 	\begin{enumerate}
 		\item 反对称性: $\bma\wedge \bmb=-\bmb\wedge\bma$;
 		\item $\bma\wedge(\bmb+\bmg)=\bma\wedge\bmb+\bma\wedge\bmg$;
 		\item $(\lambda\bma)\wedge\bmb=\bma\wedge(\lambda\bmb)=\lambda(\bma\wedge\bmb)$.
 	\end{enumerate}
 	\onslide<+->
-	根据这些运算性质可以知道, $V_2$ 是一个线性空间, 且其中的元素可以唯一表达为如下形式(注意 $\bfv\wedge\bfv=0$):
+	根据这些运算性质可以知道, $V_2$ 是一个线性空间,
+	\onslide<+->
+	且其中的元素可以唯一表达为如下形式(注意 $\bfv\wedge\bfv=0$):
 	\[\sum_{1\le i<j\le n} x_{ij} \bfe_i\wedge\bfe_j.\]
 \end{frame}
 
 
 \begin{frame}{行列式的抽象定义\noexer}
 	\onslide<+->
-	类似地, 定义 $V_k$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
+	类似地, 定义 $V_k:=\wedge^k\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
 	\onslide<+->
 	同理可知, $V_k$ 中的元素可以唯一表达为如下形式:
 	\[\sum_{1\le i_1<\cdots<i_k\le n} x_{i_1,\dots,i_k} \bfe_{i_1}\wedge\cdots\wedge\bfe_{i_k}.\]
-
 	\onslide<+->
-	特别地, $k=n$ 时, $V_n$ 中的元素可以唯一表达为如下形式:
+	特别地, $k=n$ 时, $V_n:=\wedge^n\BC^n$ 中的元素可以唯一表达为如下形式:
 	\[x\bfe_1\wedge\cdots\wedge\bfe_n.\]
+
 	\onslide<+->
 	对于 $n$ 阶方阵 $\bfA$,
 	\[\sum\bfv_1\wedge\dots\wedge \bfv_n\mapsto \sum\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n\]
@@ -42,13 +46,46 @@
 	\onslide<+->
 	根据 $V_n$ 的元素形式, 存在一个数 $|\bfA|$ 使得
 	\[\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n=|\bfA| \bfv_1\wedge\dots\wedge \bfv_n,\]
+	\onslide<+->
 	称之为 $\bfA$ 的\emph{行列式}, 记作 $|\bfA|$ 或 $\det(\bfA)$.
+\end{frame}
+
+
+\begin{frame}{例: 行列式的抽象定义\noexer}
+	\onslide<+->
+	设 $\bfA=\begin{pmatrix}
+		a&b\\c&d
+	\end{pmatrix}$,
+	\onslide<+->
+	则
+	\begin{align*}
+		\bfA\bfe_1\wedge\bfA\bfe_2&=
+		(a\bfe_1+c\bfe_2)\wedge(b\bfe_1+d\bfe_2)\\
+		&\visible<+->{=ab\bfe_1\wedge\bfe_1+ad\bfe_1\wedge\bfe_2+bc\bfe_2\wedge\bfe_1+cd\bfe_2\wedge\bfe_2}\\
+		&\visible<+->{=(ad-bc)\bfe_1\wedge\bfe_2.}
+	\end{align*}
+	\onslide<+->
+	故 $|\bfA|=ad-bc$.
+
+	\onslide<+->
+	设 $\bfA=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$,
+	\onslide<+->
+	则
+	\begin{align*}
+		\bfA\bfe_1\wedge\bfA\bfe_2\wedge\cdots\wedge\bfA\bfe_n
+		&=\lambda_1\bfe_1\wedge\lambda_2\bfe_2\wedge \cdots\wedge\lambda_n\bfe_n\\
+		&\visible<+->{=\lambda_1\lambda_2\cdots\lambda_n\bfe_1\wedge\bfe_2\wedge\cdots\wedge\bfe_n.}
+	\end{align*}
+	\onslide<+->
+	故 $|\bfA|=\lambda_1\lambda_2\cdots\lambda_n$.
 \end{frame}
 
 
 \begin{frame}{行列式的具体定义\noexer}
 	\onslide<+->
-	设 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$, 则
+	设 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$,
+	\onslide<+->
+	则
 	\[\bfA\bfe_1\wedge \dots\wedge \bfA\bfe_n=\bfv_1\wedge\cdots\wedge\bfv_n=\sum a_{1,k_1}\cdots a_{n,k_n} \bfe_{k_1}\wedge \dots\wedge \bfe_{k_n}\]
 	其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\onslide<+->
@@ -129,7 +166,6 @@
 
 
 \begin{frame}{注记}
-	\onslide<+->
 	\begin{enumerate}
 		\item 行列式将一个方阵映射到一个数.
 		\item $1$ 阶行列式就是方阵里面唯一的那个元素, 尽管也记作 $|\cdot|$, 但注意和绝对值区分.
@@ -165,7 +201,9 @@
 
 \begin{frame}{三阶行列式的几何意义}
 	\onslide<+->
-	类似地, 若 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$, 则三阶行列式 $\begin{vmatrix}
+	类似地, 若 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$,
+	\onslide<+->
+	则三阶行列式 $\begin{vmatrix}
 		a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3
 	\end{vmatrix}$ 的绝对值就是下述平行六面体的体积.
 	\begin{center}
@@ -208,6 +246,8 @@
 	设 $\bfA,\bfB$ 都是 $n$ 阶方阵, 则
 	\[\bfA\bfB\bfv_1\wedge \dots\wedge \bfA\bfB\bfv_n=|\bfA|\bfB\bfv_1\wedge \dots\wedge \bfB\bfv_n
 	=|\bfA|\cdot|\bfB|\bfv_1\wedge\dots\wedge \bfv_n.\]
+	\vspace{-\baselineskip}
+	\onslide<+->
 	\begin{alertblock@}
 		\begin{enumerate}
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
@@ -305,15 +345,15 @@
 			-3& 1&-5& 3\\
 			 1&-2& 0&-1
 		\end{vmatrix}
-		\onslide<+->{\!\!\xeq{r_1\swap r_4}\!\!}
-		\onslide<+->{-\begin{vmatrix}
+		\onslide<+->{\!\!\xeq{r_1\swap r_4}\!\!
+		-\begin{vmatrix}
 			1&-2& 0&-1\\
 		 -4&-5& 1& 3\\
 		 -3& 1&-5& 3\\
 		  2& 3& 1&-1
 		\end{vmatrix}}
-		\onslide<+->{\!\!\xeq[r_4-2r_1]{\substack{\nsmath{r_2+4r_1}\\\nsmath{r_3+3r_1}}}\!\!}
-		\onslide<+->{-\begin{vmatrix}
+		\onslide<+->{\!\!\xeq[r_4-2r_1]{\substack{\nsmath{r_2+4r_1}\\\nsmath{r_3+3r_1}}}\!\!
+		-\begin{vmatrix}
 			1&-2& 0&-1\\
 		  0&-13& 1&-1\\
 		  0&-5&-5&0\\
@@ -324,8 +364,8 @@
 			-5&-5&0\\
 				7& 1&1
 			\end{vmatrix}}
-		\onslide<+->{\xeq{r_3+r_1}}
-		\onslide<+->{-\begin{vmatrix}
+		\onslide<+->{\xeq{r_3+r_1}
+		-\begin{vmatrix}
 			-13& 1&-1\\
 			-5&-5&0\\
 			-6& 2&0
@@ -400,7 +440,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}
+\begin{frame}{例: 利用初等变换计算行列式}\small
 	\onslide<+->
 	\begin{exercise}
 		$\begin{vmatrix}
@@ -418,10 +458,6 @@
 			b+c&c+a&a+b
 		\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
 	\end{exercise}
-\end{frame}
-
-
-\begin{frame}{例: 利用初等变换计算行列式}
 	\onslide<+->
 	\begin{exercise}
 		若 $\begin{vmatrix}
@@ -430,49 +466,47 @@
 			-1&1&x+1
 		\end{vmatrix}=0$, 则 $x=$\fillblank[3cm]{\visible<+->{$-3,\pm\sqrt3$}}.
 	\end{exercise}
-	\onslide<+->
-	\begin{example}
-		若 $abcd=1$, 证明 $\bfA=\begin{pNiceMatrix}
-			a^2+\dfrac1{a^2}&a&\dfrac1a&1\\
-			b^2+\dfrac1{b^2}&b&\dfrac1b&1\\
-			c^2+\dfrac1{c^2}&c&\dfrac1c&1\\
-			d^2+\dfrac1{d^2}&d&\dfrac1d&1
-		\end{pNiceMatrix}$ 行列式为零.
-	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 计算行列式}
+\begin{frame}{例: 计算行列式}\small
 	\onslide<+->
-	我们发现第一列可以拆分成两组数相加, 从而行列式也可以拆分成两个数.
+	\begin{example}
+		若 $abcd=1$, 证明 $\bfA=\begin{pNiceMatrix}
+			a^2+a^{-2}&a&a^{-1}&1\\
+			b^2+b^{-2}&b&b^{-1}&1\\
+			c^2+c^{-2}&c&c^{-1}&1\\
+			d^2+d^{-2}&d&d^{-1}&1
+		\end{pNiceMatrix}$ 行列式为零.
+	\end{example}
 	\onslide<+->
 	\begin{proof}
-		\begin{align*}
-			|\bfA|&=
+		\[|\bfA|=
 			\begin{vNiceMatrix}
-				a^2&a&\dfrac1a&1\\
-				b^2&b&\dfrac1b&1\\
-				c^2&c&\dfrac1c&1\\
-				d^2&d&\dfrac1d&1
+				a^2&a&a^{-1}&1\\
+				b^2&b&b^{-1}&1\\
+				c^2&c&c^{-1}&1\\
+				d^2&d&d^{-1}&1
 			\end{vNiceMatrix}+\begin{vNiceMatrix}
-				\dfrac1{a^2}&a&\dfrac1a&1\\
-				\dfrac1{b^2}&b&\dfrac1b&1\\
-				\dfrac1{c^2}&c&\dfrac1c&1\\
-				\dfrac1{d^2}&d&\dfrac1d&1
+				{a^{-2}}&a&a^{-1}&1\\
+				{b^{-2}}&b&b^{-1}&1\\
+				{c^{-2}}&c&c^{-1}&1\\
+				{d^{-2}}&d&d^{-1}&1
 			\end{vNiceMatrix}
 			\onslide<+->{=abcd\begin{vNiceMatrix}
-				a&1&\dfrac1{a^2}&\dfrac1a\\
-				b&1&\dfrac1{b^2}&\dfrac1b\\
-				c&1&\dfrac1{c^2}&\dfrac1c\\
-				d&1&\dfrac1{d^2}&\dfrac1d
+				a&1&{a^{-2}}&a^{-1}\\
+				b&1&{b^{-2}}&b^{-1}\\
+				c&1&{c^{-2}}&c^{-1}\\
+				d&1&{d^{-2}}&d^{-1}
 			\end{vNiceMatrix}+\begin{vNiceMatrix}
-				a&\dfrac1{a^2}&1&\dfrac1a\\
-				b&\dfrac1{b^2}&1&\dfrac1b\\
-				c&\dfrac1{c^2}&1&\dfrac1c\\
-				d&\dfrac1{d^2}&1&\dfrac1d
-			\end{vNiceMatrix}}\\
-			&\onslide<+->{=0.}\qedhere
-		\end{align*}
+				a&{a^{-2}}&1&a^{-1}\\
+				b&{b^{-2}}&1&b^{-1}\\
+				c&{c^{-2}}&1&c^{-1}\\
+				d&{d^{-2}}&1&d^{-1}
+			\end{vNiceMatrix}.}\]
+		\onslide<+->{%
+			由于 $abcd=1$, 且等式右侧两个行列式相差 $-1$ 倍, 因此 $|\bfA|=0$.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
@@ -492,7 +526,10 @@
 	\end{definition}
 	\onslide<+->
 	注意余子式和代数余子式是数而不是矩阵.
+\end{frame}
 
+
+\begin{frame}{拉普拉斯展开}
 	\onslide<+->
 	假设 $\bfA$ 的第一行除了 $a_{11}$ 都是零.
 	\onslide<+->
@@ -500,10 +537,7 @@
 	\onslide<+->
 	因此
 	\[|\bfA|=\sum \sgn(1,k_2,\dots,k_n)a_{11}a_{2,k_2}\cdots a_{n,k_n}=a_{11} M_{11}=a_{11} A_{11}.\]
-\end{frame}
 
-
-\begin{frame}{拉普拉斯展开}
 	\onslide<+->
 	假设 $\bfA$ 的第 $i$ 行除了 $a_{ij}$ 都是零.
 	\onslide<+->
@@ -517,14 +551,16 @@
 	同理, 将 $\bfB$ 的第 $j$ 列移动到第一列的前面得到的方阵记为 $\bfC$, 则
 	\[|\bfC|=(-1)^{j-1}|\bfB|=(-1)^{i+j}|\bfA|.\]
 	\onslide<+->
-	注意到 $\bfC$ 在 $(1,1)$ 处元素是 $a_{ij}$, 余子式是 $M_{ij}$, 因此 $|\bfC|=a_{ij}M_{ij}, |\bfA|=(-1)^{i+j}a_{ij}M_{ij}=a_{ij}A_{ij}$.
+	注意到 $\bfC$ 在 $(1,1)$ 处元素是 $a_{ij}$, 余子式是 $M_{ij}$,
+	\onslide<+->
+	因此
+	\[|\bfC|=a_{ij}M_{ij},\qquad |\bfA|=(-1)^{i+j}a_{ij}M_{ij}=a_{ij}A_{ij}.\]
 \end{frame}
 
 
 \begin{frame}{拉普拉斯展开}
-
 	\onslide<+->
-	再根据行列式的线性性质, 我们得到\cnen{拉普拉斯}{Laplace}展开:
+	再根据行列式的线性性质, 我们得到拉普拉斯展开:
 	\begin{theorem}[行列式沿任一行(列)展开]
 		方阵的行列式等于任一行(列)的元素与其对应的代数余子式乘积的和:
 		\begin{align*}
@@ -709,7 +745,7 @@
 
 \begin{frame}{例: 行和为常数的行列式}
 	\onslide<+->
-	计算 $n$ 阶矩阵的行列式可以使用初等变换将其变为三角型，也可以使用拉普拉斯展开来对其实施降阶。
+	计算 $n$ 阶矩阵的行列式可以使用初等变换将其变为三角型, 也可以使用拉普拉斯展开来对其实施降阶.
 	\onslide<+->
 	\begin{example}
 		\begin{align*}
@@ -875,8 +911,8 @@
 \end{frame}
 
 
-\begin{frame}{例: 范德蒙行列式}\small
-\beqskip{2pt}
+\begin{frame}{例: 范德蒙行列式}
+\beqskip{0pt}
 	\onslide<+->
 	\begin{example}[范德蒙行列式]
 		设 $\bfA_n=\begin{pmatrix}
@@ -887,6 +923,7 @@
 			x_1^{n-1}&x_2^{n-1}&x_3^{n-1}&\cdots&x_n^{n-1}
 		\end{pmatrix}$.
 		证明 \alert{$|\bfA_n|=\prod\limits_{1\le i<j\le n}(x_j-x_i)$}.
+		\vspace{-.4\baselineskip}
 	\end{example}
 	\onslide<+->
 	\begin{proofs}
@@ -902,6 +939,7 @@
 				\vdots&\vdots&\vdots&\ddots&\vdots\\
 				0&x_2^{n-2}(x_2-x_1)&x_3^{n-2}(x_3-x_1)&\cdots&x_n^{n-2}(x_n-x_1)
 			\end{vmatrix}.\]}
+			\vspace{-.48\baselineskip}
 	\end{proofs}
 \endgroup
 \end{frame}
@@ -934,77 +972,56 @@
 				x_1^{-1}&x_2^{-1}&x_3^{-1}&x_4^{-1}\\
 				x_1&x_2&x_3&x_4\\
 				x_1^{3}&x_2^{3}&x_3^{3}&x_4^{3}
-			\end{vmatrix}=$\fillblank[6cm][3mm]{\visible<4->{$x_1^{-3}x_2^{-3}x_3^{-3}x_4^{-3}\prod\limits_{1\le i<j\le 4}(x_j^2-x_i^2)$}}.
+			\end{vmatrix}=$\fillblank[6cm][3mm]{\visible<5->{$x_1^{-3}x_2^{-3}x_3^{-3}x_4^{-3}\prod\limits_{1\le i<j\le 4}(x_j^2-x_i^2)$}}.
 			\item $\begin{vmatrix}
 				1&1&1&1\\
 				1&2&3&4\\
 				1&4&9&16\\
 				1&8&27&65
-			\end{vmatrix}=$\fillblank{\visible<5->{$14$}}.
+			\end{vmatrix}=$\fillblank{\visible<6->{$14$}}.
 			\item 设 $a,b,c$ 两两不等, 且 $\begin{vmatrix}
 				a&b&c\\
 				a^2&b^2&c^2\\
 				b+c&c+a&a+b
-			\end{vmatrix}=0$, 则 $a+b+c=$\fillblank{\visible<6->{$0$}}.
+			\end{vmatrix}=0$, 则 $a+b+c=$\fillblank{\visible<7->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
 \begin{frame}{行列式常见计算方法总结}
-	\onslide<+->
 	\begin{enumerate}
 		\item $2,3$ 阶行列式可用对角线法直接展开.
 		\item 上(下)三角阵行列式等于对角元的乘积.
 		\item 行列式的计算一般需要用到\alert{三类初等变换}, 创造出足够多的零.
 		\item 行列式沿一行(列)的展开往往是\alert{降阶法}的必要手段.
-		\item \cnen{范德蒙}{Vandermonde}型行列式可处理方阵为元素幂次递增的情形.
+		\item 范德蒙型行列式可处理方阵为元素幂次递增的情形.
 	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{例: 方阵的行列式}
 	\onslide<+->
-	\begin{exercise}
-		设 $\bfA$ 为 $5$ 阶方阵, $|\bfA|=-1$, 则
-		$|2\bfA|=$\fillblank{\visible<+->{$-32$}},
-		$\bigl||\bfA|\bfA\bigr|=$\fillblank{\visible<+->{$1$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		设 $\bma=(1,0,-1),\bfA=\bma^\rmT\bma$, 则
-		$|5\bfE-\bfA^3|=$\fillblank{\visible<+->{$-75$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
+	\begin{example}
+		计算
 		$\begin{vmatrix}
 			2\sin a\cos a&\sin a\cos b+\cos a\sin b&\sin a\cos c+\cos a\sin c\\
 			\sin b\cos a+\cos b\sin a&2\sin b\cos b&\sin b\cos c+\cos b\sin c\\
 			\sin c\cos a+\cos c\sin a&\sin c\cos b+\cos c\sin b&2\sin c\cos c
-		\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
-	\end{exercise}
-\end{frame}
-
-\begin{frame}{例: 方阵的行列式}
+		\end{vmatrix}$.
+	\end{example}
 	\onslide<+->
-	\begin{answer}
-		注意到
-		\begin{align*}
-			&\begin{pmatrix}
-			2\sin a\cos a&\sin a\cos b+\cos a\sin b&\sin a\cos c+\cos a\sin c\\
-			\sin b\cos a+\cos b\sin a&2\sin b\cos b&\sin b\cos c+\cos b\sin c\\
-			\sin c\cos a+\cos c\sin a&\sin c\cos b+\cos c\sin b&2\sin c\cos c
-		\end{pmatrix}\\=&\begin{pmatrix}
+	\begin{solution}
+		原式$=\begin{vmatrix}
 			\sin a&\cos a&0\\
 			\sin b&\cos b&0\\
 			\sin c&\cos c&0
-		\end{pmatrix}\begin{pmatrix}
+		\end{vmatrix}\cdot\begin{vmatrix}
 			\cos a&\cos b&\cos c\\
 			\sin a&\sin b&\sin c\\
 			0&0&0
-		\end{pmatrix}.
-	\end{align*}
-	\end{answer}
+		\end{vmatrix}=0$.
+	\end{solution}
 	\onslide<+->
 	设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$.
 	\onslide<+->
@@ -1018,6 +1035,32 @@
 
 \begin{frame}{例: 方阵的行列式}
 	\onslide<+->
+	\begin{exercise}
+		设 $\bfA$ 为 $5$ 阶方阵, $|\bfA|=-1$, 则
+		$|2\bfA|=$\fillblank{\visible<+->{$-32$}},
+		$\bigl||\bfA|\bfA\bigr|=$\fillblank{\visible<.->{$1$}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{exercise}
+		设 $\bma=(1,0,-1),\bfA=\bma^\rmT\bma$, 则
+		$|5\bfE-\bfA^3|=$\fillblank{\visible<+->{$-75$}}.
+	\end{exercise}
+	\onslide<+->
+	\begin{example}
+		设 $n$ 阶方阵 $\bfA$ 是实反对称阵.
+		若 $n$ 是奇数, 则 $|\bfA|=0$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		由于 $\bfA^\rmT=-\bfA$, 于是 $|\bfA|=|\bfA^\rmT|=|{-\bfA}|=(-1)^n|\bfA|=-|\bfA|$.
+		\onslide<+->{故 $|\bfA|=0$.\qedhere}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 方阵的行列式}
+\beqskip{6pt}
+	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
 			a&-b&-c&-d\\
@@ -1027,20 +1070,26 @@
 		\end{pmatrix}$, 求 $|\bfA|$.
 	\end{example}
 	\onslide<+->
-	这题当然可以直接硬算, 不过我们可以利用一点小技巧:
-	\[\bfA\bfA^\rmT=\begin{pmatrix}
-		a&-b&-c&-d\\
-		b&a&-d&c\\
-		c&d&a&-b\\
-		d&-c&b&a
-	\end{pmatrix}\begin{pmatrix}
-		a&b&c&d\\
-		-b&a&d&-c\\
-		-c&-d&a&b\\
-		-d&c&-b&a
-	\end{pmatrix}=(a^2+b^2+c^2+d^2)\bfE.\]
-	\onslide<+->
-	因此 $|\bfA|=(a^2+b^2+c^2+d^2)^2$ (因为一定有 $a^4$ 项).
+	\begin{solution}
+		这题可以直接硬算, 不过我们可以利用一点小技巧:
+		\onslide<+->{%
+			\[\bfA\bfA^\rmT=\begin{pmatrix}
+				a&-b&-c&-d\\
+				b&a&-d&c\\
+				c&d&a&-b\\
+				d&-c&b&a
+			\end{pmatrix}\begin{pmatrix}
+				a&b&c&d\\
+				-b&a&d&-c\\
+				-c&-d&a&b\\
+				-d&c&-b&a
+			\end{pmatrix}=(a^2+b^2+c^2+d^2)\bfE.\]
+		}\onslide<+->{%
+			因此 $|\bfA|=\pm(a^2+b^2+c^2+d^2)^2$.
+		}\onslide<+->{%
+			因为 $|\bfA|$ 一定有 $a^4$ 项, 所以 $|\bfA|=(a^2+b^2+c^2+d^2)^2$.
+		}
+	\end{solution}
+\endgroup
 \end{frame}
-
 

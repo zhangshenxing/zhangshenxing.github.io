@@ -2,21 +2,28 @@
 
 \subsection{方阵的伴随矩阵}
 
-\begin{frame}{伴随矩阵}
+\begin{frame}{伴随矩阵的定义}
 	\onslide<+->
 	\begin{definition}
-		设 $\bfA=(a_{ij})_{n\times n}$.
-		由 $\bfA$ 的代数余子式形成的矩阵
+		设 $\bfA=(a_{ij})$ 为 $n$ 阶方阵.
+		由 $\bfA$ 的代数余子式形成的 $n$ 阶方阵
 		\[\bfA^*=(A_{ji})=\begin{pmatrix}
 			A_{11}&A_{21}&\cdots&A_{n1}\\
-			A_{12}&A_{21}&\cdots&A_{n2}\\
+			A_{12}&A_{22}&\cdots&A_{n2}\\
 			\vdots&\vdots&\ddots&\vdots\\
-			A_{1n}&A_{21}&\cdots&A_{nn}
+			A_{1n}&A_{2n}&\cdots&A_{nn}
 		\end{pmatrix}\]
-		称为矩阵 $\bfA$ 的\emph{伴随矩阵}.
+		称为 $\bfA$ 的\emph{伴随矩阵}.
 	\end{definition}
 	\onslide<+->
 	注意, 伴随矩阵的 $(i,j)$ 元是代数余子式 \alert{$A_{ji}$ 而不是 $A_{ij}$}.
+
+	\onslide<+->
+	$\bfA^*$ 对应的线性变换是 $\bfA$ 对应的线性变换诱导的 $\wedge^{n-1}\BC^n$ 上的线性变换, 感兴趣的可自行阅读有关材料.
+\end{frame}
+
+
+\begin{frame}{伴随矩阵的性质}
 	\onslide<+->
 	\begin{example}
 		若 $\bfA=\begin{pmatrix}
@@ -25,15 +32,29 @@
 			d&-b\\-c&a
 		\end{pmatrix}$.
 	\end{example}
+	\onslide<+->
+	伴随矩阵满足如下性质:
+	\onslide<+->
+	\begin{block@}
+		\begin{enumerate}
+			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
+			\item $(\bfA^\rmT)^*=(\bfA^*)^\rmT$.
+			\item \alert{$|\bfA^*|=|\bfA|^{n-1}$}.
+		\end{enumerate}
+	\end{block@}
+	\onslide<+->
+	若 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=|\bfA^*\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
+
+	\onslide<+->
+	若 $|\bfA|=0$, 我们会在\S2.4证明 $|\bfA^*|=0$.
 \end{frame}
 
 
 \begin{frame}{伴随矩阵的性质}
-	\onslide<+->
-	伴随矩阵满足如下重要性质:
 	\begin{alertblock@}
 		\begin{enumerate}
-		\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
+			\setcounter{enumi}{3}
+			\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
 		\end{enumerate}
 	\end{alertblock@}
 	\onslide<+->
@@ -45,10 +66,11 @@
 		a_{n1}&a_{n2}&\cdots &a_{nn}
 	\end{pmatrix}\begin{pmatrix}
 		A_{11}&A_{21}&\cdots&A_{n1}\\
-		A_{12}&A_{21}&\cdots&A_{n2}\\
+		A_{12}&A_{22}&\cdots&A_{n2}\\
 		\vdots&\vdots&\ddots&\vdots\\
-		A_{1n}&A_{21}&\cdots&A_{nn}
+		A_{1n}&A_{2n}&\cdots&A_{nn}
 	\end{pmatrix}\]
+	\onslide<+->
 	的 $(i,j)$ 元是
 	\[a_{i1}A_{j1}+\cdots+a_{in}A_{jn}=\begin{cases}
 		|\bfA|,&i=j;\\
@@ -57,47 +79,29 @@
 \end{frame}
 
 
-\begin{frame}{伴随矩阵的性质}
-	\onslide<+->
-	\begin{block@}
-		\begin{enumerate}
-			\setcounter{enumi}{1}
-			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
-			\item $(\bfA^\rmT)^*=(\bfA^*)^\rmT$.
-			\item \alert{$|\bfA^*|=|\bfA|^{n-1}$}.
-		\end{enumerate}
-	\end{block@}
-	\onslide<+->
-	若 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
-
-	\onslide<+->
-	若 $|\bfA|=0$, 之后我们将会证明 $|\bfA^*|=0$.
-\end{frame}
-
-
-\begin{frame}{例: 伴随矩阵}
+\begin{frame}{例: 伴随矩阵的性质}
 	\onslide<+->
 	\begin{example}
 		设非零 $n\ge 3$ 实方阵 $\bfA$ 满足对任意 $i,j$, $a_{ij}=A_{ij}$. 求 $|\bfA|$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由题设可知 $(\bfA^*)^\rmT=\bfA$.
+		由题设可知 $\bfA^*=\bfA^\rmT$.
 		\onslide<+->{%
-		因此 $|\bfA^*|=|\bfA|=|\bfA|^{n-1}$,
-		}\onslide<+->{%
-		从而 $|\bfA|=0$ 或 $1$.
+			因此 $|\bfA|=|\bfA^*|=|\bfA|^{n-1}$.
 		}
 
-		\onslide<+->{若 $|\bfA|=0$, 则
-			\[\bfA\bfA^*=\bfA\bfA^\rmT=|\bfA|\bfE=\bfO.\]
-		}\onslide<+->{
-			而 $\bfA\bfA^\rmT$ 的第 $i$ 个对角元为
+		\onslide<+->{%
+			注意 $\bfA\bfA^\rmT=\bfA\bfA^*=|\bfA|\bfE$ 的第 $i$ 个对角元
 			\[\sum_{k=1}^n a_{ik}^2\ge 0.\]
-		}\onslide<+->{
-			于是 $\bfA$ 所有元素均为零, 矛盾! 因此 $|\bfA|=1$.
+		}\onslide<+->{%
+			因此 $|\bfA|\ge0$, $|\bfA|=0$ 或 $1$.
+		}\onslide<+->{%
+			若 $|\bfA|=0$, 则 $\bfA$ 所有元素均为零, 矛盾! 因此 $|\bfA|=1$.
 		}
 	\end{solution}
+	\onslide<+->
+	事实上, $\bfA$ 是\emph{正交阵}, 即满足 $\bfA^\rmT\bfA=\bfE$ 的实方阵.
 \end{frame}
 
 
@@ -131,10 +135,7 @@
 		则称 $\bfA$ 是\emph{可逆矩阵}, $\bfB$ 是 $\bfA$ 的\emph{逆矩阵}.
 	\end{definition}
 	\onslide<+->
-	\begin{enumerate}
-		\item 若 $\bfA$ 是可逆矩阵, 它的逆矩阵唯一吗?
-	\end{enumerate}
-
+	可逆矩阵的逆矩阵唯一吗?
 	\onslide<+->
 	设 $\bfB,\bfB'$ 都是 $\bfA$ 的逆矩阵, 则
 	\[\bfA\bfB=\bfE_n,\quad \bfB'\bfA=\bfE_n.\]
@@ -142,11 +143,11 @@
 	于是
 	\[\bfB=(\bfB'\bfA)\bfB=\bfB'(\bfA\bfB)=\bfB'.\]
 	\onslide<+->
-	因此若逆矩阵存在必唯一.
+	因此\alert{若逆矩阵存在必唯一, 记为 $\bfA^{-1}$}.
 \end{frame}
 
 
-\begin{frame}{逆矩阵的存在性}
+\begin{frame}{逆矩阵存在性的刻画}
 	\onslide<+->
 	称行列式非零的方阵\emph{非退化}, 行列式为零的方阵\emph{退化}.
 
@@ -154,26 +155,30 @@
 	若 $\bfA$ 可逆, 从 $\bfA\bfA^{-1}=\bfE$ 可知
 	\[|\bfA|\cdot|\bfA^{-1}|=1.\]
 	\onslide<+->
-	从而 $\bfA$ 非退化.
+	从而 $|\bfA|\neq 0$, $\bfA$ 非退化.
 
 	\onslide<+->
 	反之, 若 $\bfA$ 非退化, 则
-	\[\bfA\bfA^*=\bfA^*\bfA=|\bfA|\bfE.\]
-	\onslide<+->
-	\[\bfA\cdot\frac{\bfA^*}{|\bfA|}=\frac{\bfA^*}{|\bfA|}\cdot\bfA=\bfE,\]
-	\onslide<+->
-	\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}.\]
-\end{frame}
-
-
-\begin{frame}{逆矩阵存在性的刻画}
+	\[\bfA\bfA^*=\bfA^*\bfA=|\bfA|\bfE,\qquad
+	\visible<+->{\bfA\cdot\frac{\bfA^*}{|\bfA|}=\frac{\bfA^*}{|\bfA|}\cdot\bfA=\bfE,}\qquad
+	\visible<+->{\bfA^{-1}=\frac{\bfA^*}{|\bfA|}.}\]
 	\onslide<+->
 	\begin{alertblock}{逆矩阵的存在性和形式}
 		$n$ 阶方阵 $\bfA$ 可逆当且仅当 $|\bfA|\neq 0$.
 		此时 $\bfA^{-1}=\dfrac{\bfA^*}{|\bfA|}$.
 	\end{alertblock}
+\end{frame}
+
+
+\begin{frame}{逆矩阵存在性的刻画}
 	\onslide<+->
-	若 $\bfA$ 退化, 则存在 $j$ 使得 $\bfA\bfx=\bfe_j$ 无解.
+	令 $\bfe_i$ 表示第 $i$ 个分量为 $1$ 其余为 $0$ 的 $n$ 维向量.
+	\onslide<+->
+	若方程
+	\[\bfA\bfx_1=\bfe_1,\quad\dots,\quad\bfA\bfx_n=\bfe_n\]
+	均有解, 则这些解形成 $\bfA^{-1}=(\bfx_1,\dots,\bfx_n)$.
+	\onslide<+->
+	所以若 $\bfA$ 退化, 则存在 $j$ 使得 $\bfA\bfx=\bfe_j$ 无解.
 	\onslide<+->
 	从而 $\bfA$ 对应的线性映射 $f:\BC^n\to\BC^n$ 不是满射, 这便是``退化''的含义.
 
@@ -186,10 +191,10 @@
 	\begin{proof}
 		若 $\bfA\bfB=\bfE$, 则 $|\bfA|\cdot|\bfB|=1$, $|\bfA|\neq0$.
 		\onslide<+->{%
-		因此 $\bfA$ 可逆.
+			因此 $\bfA$ 可逆.
 		}\onslide<+->{%
-		\[\bfA^{-1}=\bfA^{-1}(\bfA\bfB)=\bfB.\qedhere\]}
-		\vspace{-\baselineskip}
+			\[\bfA^{-1}=\bfA^{-1}(\bfA\bfB)=\bfB.\qedhere\]
+		}\vspace{-\baselineskip}
 	\end{proof}
 \end{frame}
 
@@ -205,23 +210,24 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $|\bfA|=\cos^2\theta+\sin^2\theta=1$, 因此 $\bfA$ 可逆.
-		\onslide<+->{由于 $\bfA^*=\begin{pmatrix}
-			\cos\theta&\sin\theta\\
-			-\sin\theta&\cos\theta
-		\end{pmatrix}$, 因此
-		\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}=\begin{pmatrix}
-			\cos\theta&\sin\theta\\
-			-\sin\theta&\cos\theta
-		\end{pmatrix}.\]}
-		\vspace{-\baselineskip}
+		\onslide<+->{%
+			由于 $\bfA^*=\begin{pmatrix}
+				\cos\theta&\sin\theta\\
+				-\sin\theta&\cos\theta
+			\end{pmatrix}$, 因此
+			\[\bfA^{-1}=\frac{\bfA^*}{|\bfA|}=\begin{pmatrix}
+				\cos\theta&\sin\theta\\
+				-\sin\theta&\cos\theta
+			\end{pmatrix}.\]
+		}\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->
 	注意到 $\bfA$ 对应的是平面上沿原点逆时针旋转 $\theta$, 因此 $\bfA^{-1}$ 对应的是平面上沿原点逆时针旋转 $-\theta$.
 \end{frame}
 
 
-
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例: 计算逆矩阵}\small
+\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
 		$\bfA=\begin{pmatrix}
@@ -229,33 +235,49 @@
 			0&1&-1\\
 			-1&3&4
 		\end{pmatrix}, \bfB=\begin{pmatrix}
-			2&3&-1\\
+			2&7&-2\\
 			-1&-3&5\\
 			1&5&11
 		\end{pmatrix}$ 是否可逆? 若可逆求其逆矩阵.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由于 $|\bfA|=10$, 因此 $\bfA$ 可逆.
+		由于 $|\bfA|\xeq{r_3+r_1}\begin{vmatrix}
+			1&2&1\\
+			0&1&-1\\
+			0&5&5
+		\end{vmatrix}=10$, 因此 $\bfA$ 可逆,
 		\onslide<+->{%
-			计算其代数余子式为
-			\[A_{11}=7,\ A_{12}=1,\ A_{13}=1,\ A_{21}=-5,\ A_{22}=5\]
-			\[A_{23}=-5,\ A_{31}=-3,\ A_{32}=1,\ A_{33}=1.\]
-		}\onslide<+->{%
-			因此 $\bfA^{-1}=\dfrac{\bfA^*}{10}=\dfrac1{10}\begin{pmatrix}
+			\[\bfA^{-1}=\frac1{10}\bfA^*
+			=\frac1{10}\begin{pmatrix}
+				A_{11}&A_{21}&A_{31}\\
+				A_{12}&A_{22}&A_{32}\\
+				A_{13}&A_{23}&A_{33}
+			\end{pmatrix}
+			\visible<+->{=\frac1{10}\begin{pmatrix}
 				7&-5&-3\\
 				1&5&1\\
 				1&-5&1
-			\end{pmatrix}.$
-		}\onslide<+->{由于 $|\bfB|=0$, 因此 $\bfB$ 不可逆.}
+			\end{pmatrix}.}\]
+		}\onslide<+->{%
+			由于 $|\bfB|\xeq[c_2-5c_1]{c_3-11c_1}\begin{vmatrix}
+				2&-3&-24\\
+				-1&2&16\\
+				1&0&0
+			\end{vmatrix}=\begin{vmatrix}
+				-3&-24\\
+				2&16
+			\end{vmatrix}=0$, 因此 $\bfB$ 不可逆.
+		}
 	\end{solution}
+\endgroup
 \end{frame}
 
 
 \begin{frame}{例: 计算逆矩阵}
 	\onslide<+->
 	\begin{example}
-		设 $\lambda_1,\dots,\lambda_n\neq0$.
+		设 $\lambda_1,\dots,\lambda_n\neq0$,
 		\[\bmL=\begin{pmatrix}
 			\lambda_1&&&\\
 			&\lambda_2&&\\
@@ -279,7 +301,7 @@
 	\begin{enumerate}
 		\item 利用公式 $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$, 适用于 $2,3$ 阶方阵, 或用于抽象分析.
 		\item 寻找方阵 $\bfB$ 使得 $\bfA\bfB=\bfE$, 适用于抽象矩阵求逆.
-		\item 利用矩阵的初等变换求逆矩阵, 该方法我们会在之后的学习中接触到.
+		\item 利用矩阵的初等变换求逆矩阵, 该方法我们会在\S2.3中学习.
 	\end{enumerate}
 	\onslide<+->
 	\begin{example}
@@ -291,10 +313,10 @@
 		\begin{enumerate}
 			\item 由于 $\bfA^2+3\bfA=2\bfE$, 
 			\onslide<+->{%
-			因此 $\bfA(\bfA+3\bfE)=2\bfE, \bfA^{-1}=\dfrac{\bfA+3\bfE}2$.}
+			因此 $\bfA(\bfA+3\bfE)=2\bfE, \bfA^{-1}=\dfrac12(\bfA+3\bfE)$.}
 			\item 由于 $(\bfA-\bfE)(\bfA+4\bfE)=-2\bfE$,
 			\onslide<+->{%
-			因此 $(\bfA-\bfE)^{-1}=-\dfrac{\bfA+4\bfE}2$.}
+			因此 $(\bfA-\bfE)^{-1}=-\dfrac12(\bfA+4\bfE)$.}
 		\end{enumerate}
 	\end{solution}
 \end{frame}
@@ -308,27 +330,26 @@
 	\onslide<+->
 	定义
 	\[f(\bfA)=a_m\bfA^m+\cdots+a_1\bfA+a_0\bfE.\]
-	\vspace{-.5\baselineskip}
-	\onslide<+->
+	\vspace{-\baselineskip}
 	\begin{enumerate}
 		\item 若 $\bfA=\diag(\lambda_1,\dots,\lambda_n)$, 则 $f(\bfA)=\diag\bigl(f(\lambda_1),\dots,f(\lambda_n)\bigr).$
 		\item $f(\bfP\bfA\bfP^{-1})=\bfP f(\bfA)\bfP^{-1}$.
 	\end{enumerate}
 
 	\onslide<+->
-	若 $f(\bfA)=\bfO$, 我们想求 $(\bfA-\alpha\bfE)^{-1}$.
+	设 $f(\bfA)=\bfO$, 我们想求 $(\bfA-\alpha\bfE)^{-1}$.
 	\onslide<+->
-	则
+	注意到
 	\[f(\bfA)-f(\alpha)\bfE=(\bfA-\alpha\bfE)\bfB=-f(\alpha)\bfE.\]
 	\onslide<+->
-	从而当 $f(\alpha)\neq 0$ 时, $(\bfA-\alpha\bfE)^{-1}=-\dfrac{\bfB}{f(\alpha)}$.
+	从而当 $f(\alpha)\neq 0$ 时, $(\bfA-\alpha\bfE)^{-1}=-\dfrac1{f(\alpha)}\bfB$.
+	当 $f(\alpha)=0$ 时 $\bfA-\alpha\bfE$ 不可逆.
 \end{frame}
 
 
 \begin{frame}{例: 计算逆矩阵}
 	\onslide<+->
 	想一想: 若 $\bfA^3+\bfA^2-2\bfE=\bfO$, 如何求 $(\bfA^2+\bfE)^{-1}$?
-	\onslide<+->
 	\begin{enumerate}
 		\item 待定系数设 $(\bfA^2+\bfE)(a\bfA^2+b\bfA+c\bfE)=\bfE$, 然后使得两边相减是 $\bfA^3+\bfA^2-2\bfE$ 的倍数.
 		\item 通过 $\bfA^6=(\bfA^3)^2=(\bfA^2-2\bfE)^2$ 得到 $\bfA^2$ 满足的方程.
@@ -382,8 +403,10 @@
 		\end{itemize}
 		\item 若 $\bfA,\bfB$ 为同阶可逆矩阵, 则 $\bfA\bfB$ 也可逆, 且
 		\[\alert{(\bfA\bfB)^{-1}=\bfB^{-1}\bfA^{-1}}.\]
-		一般地
-		\[\alert{(\bfA_1\bfA_2\cdots\bfA_n)^{-1}=\bfA_n^{-1}\cdots\bfA_2^{-1}\bfA_1^{-1}}.\]
+		\onslide<+->{%
+			一般地
+			\[\alert{(\bfA_1\bfA_2\cdots\bfA_n)^{-1}=\bfA_n^{-1}\cdots\bfA_2^{-1}\bfA_1^{-1}}.\]
+		}
 	\end{enumerate}
 	\onslide<+->
 	注意矩阵不能相除 $\dfrac{\bfA}{\bfB}$, 因为一般 $\bfB^{-1}\bfA\neq\bfA\bfB^{-1}$.
@@ -437,7 +460,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{利用逆矩阵解矩阵方程}
 	\onslide<+->
 	若 $\bfA,\bfB$ 可逆, 下述矩阵方程可以由逆矩阵表出:
 	\begin{enumerate}
@@ -445,20 +468,20 @@
 		\item $\bfX\bfA=\bfC\implies \bfX=\bfC\bfA^{-1}$;
 		\item $\bfA\bfX\bfB=\bfC\implies \bfX=\bfA^{-1}\bfC\bfB^{-1}$.
 	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{例: 解矩阵方程}\small
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
 			3&0&1\\1&1&0\\0&1&4
 		\end{pmatrix}$. 若 $\bfA\bfX=\bfA+2\bfX$, 求 $\bfX$.
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 解矩阵方程}
 	\onslide<+->
 	\begin{solution}
 		由题设得 $(\bfA-2\bfE)\bfX=\bfA$.
-		\onslide<+->{
+		\onslide<+->{%
 			注意到
 			\[|\bfA-2\bfE|=\begin{vmatrix}
 				1&0&1\\1&-1&0\\0&1&2
@@ -468,19 +491,20 @@
 				2&-2&-1\\
 				-1&1&1
 			\end{pmatrix}.}\]
-		}\onslide<+->{因此
-		\[\bfX=(\bfA-2\bfE)^{-1}\bfA=\begin{pmatrix}
-			2&-1&-1\\
-			2&-2&-1\\
-			-1&1&1
-		\end{pmatrix}\begin{pmatrix}
-			3&0&1\\1&1&0\\0&1&4
-		\end{pmatrix}=\begin{pmatrix}
-			5&-2&-2\\
-			4&-3&-2\\
-			-2&2&3
-		\end{pmatrix}.\]}
-		\vspace{-\baselineskip}
+		}\onslide<+->{%
+			因此
+			$\bfX=(\bfA-2\bfE)^{-1}\bfA=\begin{pmatrix}
+				2&-1&-1\\
+				2&-2&-1\\
+				-1&1&1
+			\end{pmatrix}\begin{pmatrix}
+				3&0&1\\1&1&0\\0&1&4
+			\end{pmatrix}=\begin{pmatrix}
+				5&-2&-2\\
+				4&-3&-2\\
+				-2&2&3
+			\end{pmatrix}$.
+		}
 	\end{solution}
 	\onslide<+->
 	也可由 $\bfX=\bfE+2(\bfA-2\bfE)^{-1}$ 计算得到.
@@ -491,15 +515,19 @@
 	\onslide<+->
 	\begin{exercise}
 		设 $3$ 阶矩阵 $\bfA,\bfB$ 满足 $\bfA^{-1}\bfB\bfA=6\bfA+\bfB\bfA$.
-		若 $\bfA=\diag(\dfrac12,\dfrac14,\dfrac17)$, 求 $\bfB$.
+		若 $\bfA=\diag\biggl(\dfrac12,\dfrac14,\dfrac17\biggr)$, 求 $\bfB$.
 	\end{exercise}
 	\onslide<+->
 	\begin{answer}
 		右乘 $\bfA^{-1}$ 得到 $\bfB=6(\bfA^{-1}-\bfE)^{-1}=\diag(6,2,1)$.
 
-		\onslide<+->{也可以左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
-		\[(\bfE-\bfA)\bfB=6\bfA=6\bfE-6(\bfE-\bfA),\]
-		\[\bfB=6(\bfE-\bfA)^{-1}-6\bfE=\diag(6,2,1).\]}
+		\onslide<+->{%
+			也可以左乘 $\bfA$ 右乘 $\bfA^{-1}$ 得到
+			\[(\bfE-\bfA)\bfB=6\bfA=6\bfE-6(\bfE-\bfA),\]
+			\vspace{-\baselineskip}
+		}\onslide<+->{%
+			\[\bfB=6(\bfE-\bfA)^{-1}-6\bfE=\diag(6,2,1).\]
+		}\vspace{-\baselineskip}
 	\end{answer}
 \end{frame}
 
@@ -541,14 +569,14 @@
 		\[-2\bfX=2\bfA\bfX-8\bfE,\quad (\bfA+\bfE)\bfX=4\bfE,\]
 		\[\bfX=4(\bfA+\bfE)^{-1}=4\begin{pmatrix}
 			2&2&-2\\0&-1&4\\0&0&2
-		\end{pmatrix}^{-1}=4\begin{pmatrix}
+		\end{pmatrix}^{-1}=\begin{pmatrix}
 			2&4&-6\\0&-4&8\\0&0&2
 		\end{pmatrix}.\]
 	\end{answer}
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例: 逆矩阵计算方阵的幂}
 	\onslide<+->
 	\begin{example}
 		设 $\bfP=\begin{pmatrix}
@@ -591,7 +619,7 @@
 	若 $\bfA$ 是 $n\ge3$ 阶非退化方阵, 则
 	\[(\bfA^*)^*=|\bfA^*|(\bfA^*)^{-1}=|\bfA|^{n-1}\dfrac{\bfA}{|\bfA|}=|\bfA|^{n-2}\bfA.\]
 	\onslide<+->
-	若 $\bfA$ 是 $n\ge3$ 阶退化方阵, 我们会在后面证明 $(\bfA^*)^*=\bfO$.
+	若 $\bfA$ 是 $n\ge3$ 阶退化方阵, 我们会在\S2.4证明 $(\bfA^*)^*=\bfO$.
 	\onslide<+->
 	因此
 	\begin{block}{伴随矩阵的性质}
@@ -615,7 +643,7 @@
 	\onslide<+->
 	\begin{exercise}
 		若 $\bfA$ 为 $n$ 阶方阵, 则下面命题正确的有\fillblank{\visible<+->{1}}个.
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$
 			\item $\bfA^*=|\bfA|\bfA^{-1}$
 			\item $|\bfA^*|=|\bfA|^{n-1}$
@@ -629,31 +657,27 @@
 \begin{frame}{克拉默法则}
 	\onslide<+->
 	\begin{theorem}[克拉默法则]
-		设 $\bfA$ 是 $n$ 阶方阵, $\bfb$ 是 $n$ 维列向量,
+		设 $\bfA$ 是 $n$ 阶方阵, $\bfb=(b_1,\dots,b_n)^\rmT$ 是 $n$ 维列向量,
 		将 $\bfA$ 的第 $j$ 列换成 $\bfb$ 得到的方阵记为 $\bfA_j$.
 		当 $|\bfA|\neq 0$, 线性方程组 $\bfA\bfx=\bfb$ 有唯一解
-		\[x_1=\frac{|\bfA_1|}{|\bfA|},\quad
-			x_2=\frac{|\bfA_2|}{|\bfA|},\quad\dots,\quad
-			x_n=\frac{|\bfA_n|}{|\bfA|}.\]
+		\[\bfx=\biggl(\frac{|\bfA_1|}{|\bfA|},\frac{|\bfA_2|}{|\bfA|},\dots,\frac{|\bfA_n|}{|\bfA|}\biggr).\]
 	\end{theorem}
 	\onslide<+->
 	\begin{proof}
-		显然唯一解就是
-		\vspace{-\baselineskip}
-		\[\bfx=\bfA^{-1}\bfb=\frac1{|\bfA|}\bfA^*\bfb,\]
+		显然唯一解就是 $\bfx=\bfA^{-1}\bfb=\dfrac1{|\bfA|}\bfA^*\bfb$.
 		\onslide<+->{%
-		方阵 $\bfA_j$ 沿着第 $j$ 列展开得到
-		\[|\bfA_j|=b_1A_{1j}+b_2A_{2j}+\cdots+b_nA_{nj}=(A_{1j},A_{2j},\dots,A_{nj})\bfb.\]
+			由于方阵 $\bfA_j$ 沿着第 $j$ 列展开得到
+			\[|\bfA_j|=b_1A_{1j}+b_2A_{2j}+\cdots+b_nA_{nj}=(A_{1j},A_{2j},\dots,A_{nj})\bfb.\]
 		}\onslide<+->{%
-			因此 $(|\bfA_1|,\dots,|\bfA_n|)^\rmT=\bfA^*\bfb$, 从而 $\bfx$ 具有题述形式.\qedhere
+			因此 $\bfA^*\bfb=(|\bfA_1|,\dots,|\bfA_n|)^\rmT$, 从而 $\bfx$ 具有题述形式.\qedhere
 		}
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{克拉默法则的应用}
+\begin{frame}{例: 克拉默法则的应用}
 	\onslide<+->
-	后面我们将会知道, \alert{$|\bfA|\neq0$ 是方程有唯一解的充分必要条件}.
+	我们将会在\S2.4知道, \alert{$|\bfA|\neq0$ 是方程有唯一解的充分必要条件}.
 	\onslide<+->
 	因此我们定义的行列式起到了线性方程组的``判别式''的作用.
 	\onslide<+->
@@ -687,10 +711,10 @@
 	\onslide<+->
 	若线性方程组的常数都是零, 即 $\bfA\bfx={\bf0}$ 或
 	\[\laeq[lclcclcl]{
-		a_{11}&x_1+{}&a_{12}&x_2&{}+\cdots+{}&a_{1n}&x_n={}&b_1\\
-		a_{21}&x_1+{}&a_{22}&x_2&{}+\cdots+{}&a_{2n}&x_n={}&b_2\\
+		a_{11}&x_1+{}&a_{12}&x_2&{}+\cdots+{}&a_{1n}&x_n={}&0\\
+		a_{21}&x_1+{}&a_{22}&x_2&{}+\cdots+{}&a_{2n}&x_n={}&0\\
 		&&&&\vdots&&&\\
-		a_{n1}&x_1+{}&a_{n2}&x_2&{}+\cdots+{}&a_{nn}&x_n={}&b_n
+		a_{m1}&x_1+{}&a_{n2}&x_2&{}+\cdots+{}&a_{mn}&x_n={}&0
 	}\]
 	称之为\emph{齐次线性方程组}.
 	\onslide<+->
@@ -699,17 +723,18 @@
 	\onslide<+->
 	显然 $\bfx={\bf0}$ 是齐次线性方程组的解, 称为\emph{零解}. 其它解被称为\emph{非零解}.
 	\onslide<+->
-	所以 \alert{$|\bfA|=0\iff$ 齐次线性方程组有无穷多(非零)解}.
+	所以当 $m=n$ 时, \alert{$|\bfA|=0\iff$ 齐次线性方程组有无穷多(非零)解}.
 
 	\onslide<+->
-	对于非齐次线性方程组, 若 $(a_1,\dots,a_n)$ 是一组解, 而 $(b_1,\dots,b_n)$ 是对应的齐次线性方程组的解, 则
-	$(a_1+b_1,\dots,a_n+b_n)$ 也是非齐次线性方程组的解.
+	对于非齐次线性方程组, 若 $\bfx_0$ 是一组解, 而 $\bfx$ 是对应的齐次线性方程组的解,
 	\onslide<+->
-	所以 \alert{$|\bfA|=0\iff$ 非齐次线性方程组无解或有无穷多解}.
+	则 $\bfx_0+\bfx$ 也是非齐次线性方程组的解.
+	\onslide<+->
+	所以当 $m=n$ 时, \alert{$|\bfA|=0\iff$ 非齐次线性方程组无解或有无穷多解}.
 \end{frame}
 
 
-\begin{frame}{克拉默法则的应用}
+\begin{frame}{例: 克拉默法则的应用}
 	\onslide<+->
 	\begin{exercise}
 		若 $\laeq[rrr]{
@@ -731,7 +756,7 @@
 \end{frame}
 
 
-\begin{frame}{克拉默法则的应用}
+\begin{frame}{例: 克拉默法则的应用}
 	\onslide<+->
 	\begin{proof}
 		线性方程组 $\laeq[cccccc]{
@@ -751,16 +776,18 @@
 				1&1&1\\b&c&a\\c&a&b
 			\end{vmatrix}\\
 			&\visible<+->{=(a+b+c)(bc+ac+ab-a^2-b^2-c^2)}\\
-			&\visible<+->{=-\frac12(a+b+c)[(a-b)^2+(b-c)^2+(c-a)^2].}
+			&\visible<+->{=-\frac12(a+b+c)\bigl[(a-b)^2+(b-c)^2+(c-a)^2\bigr].}
 		\end{align*}}
-		\onslide<+->{由于这是三条不同直线, 因此 $a,b,c$ 不可能全部相等, 从而 $a+b+c=0$.\qedhere}
+		\onslide<+->{%
+			由于这是三条不同直线, 因此 $a,b,c$ 不可能全部相等, 从而 $a+b+c=0$.\qedhere
+		}
 	\end{proof}
 	\onslide<+->
 	想一想: 为什么 $a+b+c=0$ 时, 三条直线一定相交于一点?
 \end{frame}
 
 
-\begin{frame}{克拉默法则的使用注意}
+\begin{frame}{克拉默法则的注记}
 	\onslide<+->
 	使用克拉默法则解线性方程组需要:
 	\begin{enumerate}
@@ -786,7 +813,7 @@
 \begin{frame}{克拉默法则的应用}
 	\onslide<+->
 	\begin{exercise}
-		设 $a_i$ 两两不同.
+		设 $a_1,\dots,a_n$ 两两不同.
 		解方程组 $\laeq[clcclc]{
 			x_1+{}&a_1&x_2&{}+\cdots+{}&a_1^{n-1}&x_n=1\\
 			x_1+{}&a_2&x_2&{}+\cdots+{}&a_2^{n-1}&x_n=1\\
@@ -806,102 +833,101 @@
 
 \subsection{逆矩阵的应用}
 
-\begin{frame}{逆矩阵的应用: 通信加密}
-	\onslide<+->
-	1929年, 希尔通过线性变换对信息进行加密和解密处理, 
-	提出了密码史上具有重要地位的\emph{希尔密码系统}.
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}
-			\begin{scope}[align=center,node distance=18mm,minimum height=12mm]
-				\node (1) [cstnodeg] {明文字母};
-				\node (2) [cstnodeg,right=of 1] {明文数字\\矩阵 $\bfX$};
-				\node (3) [cstnodeg,right=30mm of 2]{密文数字\\矩阵 $\bfC$};
-				\node (4) [cstnodeg,right=of 3]{密文字母};
-				\node (11) [cstnodeb,below=of 1] {明文字母};
-				\node (12) [cstnodeb,below=of 2] {明文数字\\矩阵 $\bfX$};
-				\node (13) [cstnodeb,below=of 3] {密文数字\\矩阵 $\bfC$};
-				\node (14) [cstnodeb,below=of 4] {密文字母};
-			\end{scope}
-			\path (1.east) -- (12.west)
-				node[midway,align=center,dcolore] {$A\sim Z$\\对应\\$0\sim26$};
-			\begin{scope}[cstarrowto,cstcurve]
-				\begin{scope}[dcolord]
-					\draw (1.east) -- (2.west) 
-						node[midway,above,black] {查表};
-					\draw (2.east) -- (3.west)
-						node[midway,above,black] {$\bfC=\bfA\bfX$}
-						node[midway,below,dcolord] {加密秘钥: $A$};
-					\draw (3.east) -- (4.west)
-						node[midway,above,black] {查表};
-				\end{scope}
-				\draw[dcolora] (4.south) -- (14.north)
-					node[midway,left] {传输};
-				\begin{scope}[dcolorb]
-					\draw (14.west) -- (13.east)
-						node[midway,above,black] {查表};
-					\draw (13.west) -- (12.east)
-						node[midway,above,black] {$\bfX=\bfA^{-1}\bfC$}
-						node[midway,below,dcolorb] {解密秘钥: $A^{-1}$};
-					\draw (12.west) -- (11.east) 
-						node[midway,above,black] {查表};
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
+% \begin{frame}{逆矩阵的应用: 通信加密}
+% 	\onslide<+->
+% 	1929年, 希尔通过线性变换对信息进行加密和解密处理, 
+% 	提出了密码史上具有重要地位的\emph{希尔密码系统}.
+% 	\onslide<+->
+% 	\begin{center}
+% 		\begin{tikzpicture}
+% 			\begin{scope}[align=center,node distance=18mm,minimum height=12mm]
+% 				\node (1) [cstnodeg] {明文字母};
+% 				\node (2) [cstnodeg,right=of 1] {明文数字\\矩阵 $\bfX$};
+% 				\node (3) [cstnodeg,right=30mm of 2]{密文数字\\矩阵 $\bfC$};
+% 				\node (4) [cstnodeg,right=of 3]{密文字母};
+% 				\node (11) [cstnodeb,below=of 1] {明文字母};
+% 				\node (12) [cstnodeb,below=of 2] {明文数字\\矩阵 $\bfX$};
+% 				\node (13) [cstnodeb,below=of 3] {密文数字\\矩阵 $\bfC$};
+% 				\node (14) [cstnodeb,below=of 4] {密文字母};
+% 			\end{scope}
+% 			\path (1.east) -- (12.west)
+% 				node[midway,align=center,dcolore] {$A\sim Z$\\对应\\$0\sim26$};
+% 			\begin{scope}[cstarrowto,cstcurve]
+% 				\begin{scope}[dcolord]
+% 					\draw (1.east) -- (2.west) 
+% 						node[midway,above,black] {查表};
+% 					\draw (2.east) -- (3.west)
+% 						node[midway,above,black] {$\bfC=\bfA\bfX$}
+% 						node[midway,below,dcolord] {加密秘钥: $A$};
+% 					\draw (3.east) -- (4.west)
+% 						node[midway,above,black] {查表};
+% 				\end{scope}
+% 				\draw[dcolora] (4.south) -- (14.north)
+% 					node[midway,left] {传输};
+% 				\begin{scope}[dcolorb]
+% 					\draw (14.west) -- (13.east)
+% 						node[midway,above,black] {查表};
+% 					\draw (13.west) -- (12.east)
+% 						node[midway,above,black] {$\bfX=\bfA^{-1}\bfC$}
+% 						node[midway,below,dcolorb] {解密秘钥: $A^{-1}$};
+% 					\draw (12.west) -- (11.east) 
+% 						node[midway,above,black] {查表};
+% 				\end{scope}
+% 			\end{scope}
+% 		\end{tikzpicture}
+% 	\end{center}
+% \end{frame}
 
 
-\begin{frame}{逆矩阵的应用: 通信加密}
-	\beqskip{2mm}
-	\onslide<+->
-	\begin{example}
-		设接受收到的密文字母为``WBIZTNWJBRFSGNZ'', 加密密钥为 $\bfA=\begin{pmatrix}
-			1&2&3\\1&1&2\\0&1&2
-		\end{pmatrix}$. 
-		请用希尔密码系统解密密文.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		密文对应的数字为 
-		\[22,1,8,25,19,13,22,9,1,17,5,18,6,13,25.\]
-		\onslide<+->{由于密钥是 $3$ 阶方阵, 所以将上述数字按 $3$ 个一列写成
-		\[\bfC=\begin{pmatrix}
-			22&25&22&17&6\\
-			1&19&9&5&13\\
-			8&13&1&18&25
-		\end{pmatrix}.\]}
-		\vspace{-.8\baselineskip}
-	\end{solution}
-	\endgroup
-\end{frame}
+% \begin{frame}{逆矩阵的应用: 通信加密}
+% 	\beqskip{2mm}
+% 	\onslide<+->
+% 	\begin{example}
+% 		设接受收到的密文字母为``WBIZTNWJBRFSGNZ'', 加密密钥为 $\bfA=\begin{pmatrix}
+% 			1&2&3\\1&1&2\\0&1&2
+% 		\end{pmatrix}$. 
+% 		请用希尔密码系统解密密文.
+% 	\end{example}
+% 	\onslide<+->
+% 	\begin{solution}
+% 		密文对应的数字为 
+% 		\[22,1,8,25,19,13,22,9,1,17,5,18,6,13,25.\]
+% 		\onslide<+->{由于密钥是 $3$ 阶方阵, 所以将上述数字按 $3$ 个一列写成
+% 		\[\bfC=\begin{pmatrix}
+% 			22&25&22&17&6\\
+% 			1&19&9&5&13\\
+% 			8&13&1&18&25
+% 		\end{pmatrix}.\]}
+% 		\vspace{-.8\baselineskip}
+% 	\end{solution}
+% 	\endgroup
+% \end{frame}
 
 
-\begin{frame}{逆矩阵的应用: 通信加密}
-	\begin{solutionc}
-		\onslide<+->{解密密钥为
-		$\bfA^{-1}=\begin{pmatrix}
-			0&1&-1\\2&-2&-1\\-1&1&1
-		\end{pmatrix}$,
-		}\onslide<+->{%
-		因此
-		\[\bfA^{-1}\bfC=\begin{pmatrix}
-			-7&6&8&-13&-12\\
-			34&-1&25&6&-39\\
-			-13&7&-12&6&32
-		\end{pmatrix},\quad
-		\bfX=\begin{pmatrix}
-			19&6&8&13&14\\
-			8&25&25&6&13\\
-			13&7&14&6&6
-		\end{pmatrix}.\]}\onslide<+->{%
-		查表得到明文: \alert{TINGZHI ZONGGONG}.}
-	\end{solutionc}
-\end{frame}
+% \begin{frame}{逆矩阵的应用: 通信加密}
+% 	\begin{solutionc}
+% 		\onslide<+->{解密密钥为
+% 		$\bfA^{-1}=\begin{pmatrix}
+% 			0&1&-1\\2&-2&-1\\-1&1&1
+% 		\end{pmatrix}$,
+% 		}\onslide<+->{%
+% 		因此
+% 		\[\bfA^{-1}\bfC=\begin{pmatrix}
+% 			-7&6&8&-13&-12\\
+% 			34&-1&25&6&-39\\
+% 			-13&7&-12&6&32
+% 		\end{pmatrix},\quad
+% 		\bfX=\begin{pmatrix}
+% 			19&6&8&13&14\\
+% 			8&25&25&6&13\\
+% 			13&7&14&6&6
+% 		\end{pmatrix}.\]}\onslide<+->{%
+% 		查表得到明文: \alert{TINGZHI ZONGGONG}.}
+% 	\end{solutionc}
+% \end{frame}
 
 
 \begin{frame}{逆矩阵的应用: 图像处理}
-	\onslide<+->
 	\begin{wrapfigure}{l}{42mm}
 		\centering
 		\includegraphics[height=32mm]{../image/ps_in.jpg}
