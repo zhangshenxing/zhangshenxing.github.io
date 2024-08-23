@@ -2,111 +2,236 @@
 
 \subsection{行列式的定义}
 
-\begin{frame}{行列式的抽象定义\noexer}
+\begin{frame}{引例: 平行四边形的面积\noexer}
 	\onslide<+->
-	设 $n$ 维向量
+	设平面上有平行四边形 $OACB$, 其中 $A(a,b), B(c,d)$.
+	\onslide<+->{%
+		可以通过计算底乘高来得到平行四边形 $OACB$ 的面积为 $|ad-bc|$.
+	}\onslide<+->{%
+		我们来介绍另一种方法.
+	}
+	\begin{center}
+	\begin{tikzpicture}[scale=.8]
+		\draw[cstaxis] (-1,0)--(4,0);
+		\draw[cstaxis] (0,-1)--(0,3);
+		\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(4,2)--(1,1.5)--cycle;
+		\draw (0,0) node[dcolorb,below left] {$O$};
+		\draw (3,0.5) node[dcolorb,right] {$A$};
+		\draw (1,1.5) node[dcolorb,left]{$B$};
+		\draw (4,2) node[dcolorb,right] {$C$};
+		\begin{scope}[visible on=<4->]
+			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<4->] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+			\draw (3,0) node[dcolorc,below] {$A_1$};
+			\draw (4,1.5) node[dcolorc,right] {$C_1$};
+		\end{scope}
+		\begin{scope}[visible on=<5->]
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<5->] (0,0)--(0,0.5)--(1,2)--(1,1.5)--cycle;
+			\draw (0,.5) node[dcolord,left] {$A_2$};
+			\draw (1,2) node[dcolord,above] {$C_2$};
+		\end{scope}
+		\begin{scope}[visible on=<6->]
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<7->] (1,1.5)--(4,1.5)--(4,2)--cycle;
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<8->] (0,0)--(3,0)--(3,0.5)--cycle;
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<9->] (3,0)--(3,0.5)--(4,2)--(4,1.5)--cycle;
+		\end{scope}
+		\begin{scope}[xshift=7cm,visible on=<10->]
+			\draw[cstaxis] (-1,0)--(4,0);
+			\draw[cstaxis] (0,-1)--(0,3);
+			\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(2,2)--(-1,1.5)--cycle;
+			\draw (0,0) node[dcolorb,below left] {$O$};
+			\draw (3,0.5) node[dcolorb,right] {$A$};
+			\draw (-1,1.5) node[dcolorb,left]{$B$};
+			\draw (2,2) node[dcolorb,right] {$C$};
+			\begin{scope}[visible on=<11->]
+				\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<11->] (0,0)--(3,0)--(2,1.5)--(-1,1.5)--cycle;
+				\draw (3,0) node[dcolorc,below] {$A_1$};
+				\draw (2,1.5) node[dcolorc,right] {$C_1$};
+			\end{scope}
+			\begin{scope}[visible on=<11->]
+				\fill[cstcurve,dcolord,fill opacity=.5,visible on=<11->] (0,0)--(0,0.5)--(-1,2)--(-1,1.5)--cycle;
+				\draw (0,.5) node[dcolord,right] {$A_2$};
+				\draw (-1,2) node[dcolord,above] {$C_2$};
+			\end{scope}
+			\begin{scope}[visible on=<9->]
+				\fill[cstcurve,dcolord,fill opacity=.5,visible on=<12->] (3,0)--(3,0.5)--(2,2)--(2,1.5)--cycle;
+				\fill[cstcurve,dcolore,fill opacity=.5,visible on=<12->] (0,0)--(3,0)--(3,0.5)--cycle;
+				\fill[cstcurve,dcolore,fill opacity=.5,visible on=<13->] (-1,1.5)--(2,1.5)--(2,2)--cycle;
+			\end{scope}
+		\end{scope}
+	\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	令 $A_1(a,0)$, 并作平行四边形 $OA_1C_1B$;
+	\onslide<+->
+	令 $A_2(0,b)$, 并作平行四边形 $OA_2C_2B$.
+	\onslide<+->
+	那么平行四边形 $OACB$ 的面积是这两个相加还是相减?
+	
+	\onslide<+->\onslide<+->\onslide<+->\onslide<+->
+	如果 $A$ 在第一象限, $B$ 在第二象限.
+	\onslide<+->
+	那么平行四边形 $OACB$ 的面积是这两个相加还是相减?
+\end{frame}
+
+
+\begin{frame}{有向面积\noexer}
+	\onslide<+->
+	为何第一种情形是加而第二种情形是减呢?
+	\onslide<+->
+	这些平行四边形只有第一种情形的平行四边形 $OA_2C_2B$, 从 $OA_2$ 到 $OB$ 是顺时针方向.
+	\onslide<+->
+	如果我们规定从 $OA$ 到 $OB$ 是逆(顺)时针时, 其\emph{有向面积}为面积的 $1$ ($-1$) 倍, 并记为
+	\[\begin{vmatrix}
+		a&c\\b&d
+	\end{vmatrix},\]
+	其中第一列为 $OA$, 第二列为 $OB$,
+	\onslide<+->
+	那么
+	\[\begin{vmatrix}
+		a&c\\b&d
+	\end{vmatrix}=\begin{vmatrix}
+		a&c\\0&d
+	\end{vmatrix}+\begin{vmatrix}
+		0&c\\b&d
+	\end{vmatrix}=a\begin{vmatrix}
+		1&c\\0&d
+	\end{vmatrix}+c\begin{vmatrix}
+		0&1\\b&d
+	\end{vmatrix}.\]
+	\onslide<+->
+	同样的, 我们对于第二列也可以进行拆分, 且有 $\begin{vmatrix}
+		a&c\\b&d
+	\end{vmatrix}=ad-bc$.
+\end{frame}
+
+
+\begin{frame}{平行多面体\noexer}
+	\onslide<+->
+	对于 $n$ 维空间中由从原点出发的向量 $\bfv_1,\dots,\bfv_n$ 张成的平行多面体, 也有类似概念.
+	\onslide<+->
+	如果 $\bfv_1,\dots,\bfv_n$ 就是按顺序各个分量上的单位向量
 	\[\bfe_1=(1,0,\dots,0)^\rmT,\quad
 	\bfe_2=(0,1,\dots,0)^\rmT,\quad\cdots,\quad
-	\bfe_n=(0,0,\dots,1)^\rmT.\]
+	\bfe_n=(0,0,\dots,1)^\rmT,\]
+	则有向面积为 $1$.
 	\onslide<+->
-	那么 $V=\BC^n$ 中的任一元素均可唯一表达为如下形式:
-	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
-
+	而如果交换 $\bfv_i,\bfv_j$ 的位置, 有向面积相差 $-1$.
 	\onslide<+->
-	定义 $V_2:=\wedge^2\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
+	于是得到 $n$ 阶\emph{行列式} $|\bfv_1,\dots,\bfv_n|$ 应当满足的性质:
 	\onslide<+->
-	其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
 	\begin{enumerate}
-		\item 反对称性: $\bma\wedge \bmb=-\bmb\wedge\bma$;
-		\item $\bma\wedge(\bmb+\bmg)=\bma\wedge\bmb+\bma\wedge\bmg$;
-		\item $(\lambda\bma)\wedge\bmb=\bma\wedge(\lambda\bmb)=\lambda(\bma\wedge\bmb)$.
+		\item $|\bfe_1,\dots,\bfe_n|=1$;
+		\item 反对称性: $|\cdots,\bfv_i,\cdots,\bfv_j,\cdots|=-|\cdots,\bfv_j,\cdots,\bfv_i,\cdots|$;
+		\item $|\cdots,k\bma,\cdots|=k|\cdots,\bma,\cdots|$;
+		\item $|\cdots,\bma+\bmb,\cdots|=|\cdots,\bma,\cdots|+|\cdots,\bmb,\cdots|$.
 	\end{enumerate}
-	\onslide<+->
-	根据这些运算性质可以知道, $V_2$ 是一个线性空间,
-	\onslide<+->
-	且其中的元素可以唯一表达为如下形式(注意 $\bfv\wedge\bfv=0$):
-	\[\sum_{1\le i<j\le n} x_{ij} \bfe_i\wedge\bfe_j.\]
 \end{frame}
 
 
-\begin{frame}{行列式的抽象定义\noexer}
-	\onslide<+->
-	类似地, 定义 $V_k:=\wedge^k\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
-	\onslide<+->
-	同理可知, $V_k$ 中的元素可以唯一表达为如下形式:
-	\[\sum_{1\le i_1<\cdots<i_k\le n} x_{i_1,\dots,i_k} \bfe_{i_1}\wedge\cdots\wedge\bfe_{i_k}.\]
-	\onslide<+->
-	特别地, $k=n$ 时, $V_n:=\wedge^n\BC^n$ 中的元素可以唯一表达为如下形式:
-	\[x\bfe_1\wedge\cdots\wedge\bfe_n.\]
+% \begin{frame}{行列式的抽象定义\noexer}
+% 	\onslide<+->
+% 	设 $n$ 维向量
+% 	\[\bfe_1=(1,0,\dots,0)^\rmT,\quad
+% 	\bfe_2=(0,1,\dots,0)^\rmT,\quad\cdots,\quad
+% 	\bfe_n=(0,0,\dots,1)^\rmT.\]
+% 	\onslide<+->
+% 	那么 $V=\BC^n$ 中的任一元素均可唯一表达为如下形式:
+% 	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
 
-	\onslide<+->
-	对于 $n$ 阶方阵 $\bfA$,
-	\[\sum\bfv_1\wedge\dots\wedge \bfv_n\mapsto \sum\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n\]
-	定义了 $V_n$ 上的一个线性映射.
-	\onslide<+->
-	根据 $V_n$ 的元素形式, 存在一个数 $|\bfA|$ 使得
-	\[\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n=|\bfA| \bfv_1\wedge\dots\wedge \bfv_n,\]
-	\onslide<+->
-	称之为 $\bfA$ 的\emph{行列式}, 记作 $|\bfA|$ 或 $\det(\bfA)$.
-\end{frame}
+% 	\onslide<+->
+% 	定义 $V_2:=\wedge^2\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
+% 	\onslide<+->
+% 	其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
+% 	\begin{enumerate}
+% 		\item 反对称性: $\bma\wedge \bmb=-\bmb\wedge\bma$;
+% 		\item $\bma\wedge(\bmb+\bmg)=\bma\wedge\bmb+\bma\wedge\bmg$;
+% 		\item $(\lambda\bma)\wedge\bmb=\bma\wedge(\lambda\bmb)=\lambda(\bma\wedge\bmb)$.
+% 	\end{enumerate}
+% 	\onslide<+->
+% 	根据这些运算性质可以知道, $V_2$ 是一个线性空间,
+% 	\onslide<+->
+% 	且其中的元素可以唯一表达为如下形式(注意 $\bfv\wedge\bfv=0$):
+% 	\[\sum_{1\le i<j\le n} x_{ij} \bfe_i\wedge\bfe_j.\]
+% \end{frame}
 
 
-\begin{frame}{例: 行列式的抽象定义\noexer}
-	\onslide<+->
-	设 $\bfA=\begin{pmatrix}
-		a&b\\c&d
-	\end{pmatrix}$,
-	\onslide<+->
-	则
-	\begin{align*}
-		\bfA\bfe_1\wedge\bfA\bfe_2&=
-		(a\bfe_1+c\bfe_2)\wedge(b\bfe_1+d\bfe_2)\\
-		&\visible<+->{=ab\bfe_1\wedge\bfe_1+ad\bfe_1\wedge\bfe_2+bc\bfe_2\wedge\bfe_1+cd\bfe_2\wedge\bfe_2}\\
-		&\visible<+->{=(ad-bc)\bfe_1\wedge\bfe_2.}
-	\end{align*}
-	\onslide<+->
-	故 $|\bfA|=ad-bc$.
+% \begin{frame}{行列式的抽象定义\noexer}
+% 	\onslide<+->
+% 	类似地, 定义 $V_k:=\wedge^k\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
+% 	\onslide<+->
+% 	同理可知, $V_k$ 中的元素可以唯一表达为如下形式:
+% 	\[\sum_{1\le i_1<\cdots<i_k\le n} x_{i_1,\dots,i_k} \bfe_{i_1}\wedge\cdots\wedge\bfe_{i_k}.\]
+% 	\onslide<+->
+% 	特别地, $k=n$ 时, $V_n:=\wedge^n\BC^n$ 中的元素可以唯一表达为如下形式:
+% 	\[x\bfe_1\wedge\cdots\wedge\bfe_n.\]
 
-	\onslide<+->
-	设 $\bfA=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$,
-	\onslide<+->
-	则
-	\begin{align*}
-		\bfA\bfe_1\wedge\bfA\bfe_2\wedge\cdots\wedge\bfA\bfe_n
-		&=\lambda_1\bfe_1\wedge\lambda_2\bfe_2\wedge \cdots\wedge\lambda_n\bfe_n\\
-		&\visible<+->{=\lambda_1\lambda_2\cdots\lambda_n\bfe_1\wedge\bfe_2\wedge\cdots\wedge\bfe_n.}
-	\end{align*}
-	\onslide<+->
-	故 $|\bfA|=\lambda_1\lambda_2\cdots\lambda_n$.
-\end{frame}
+% 	\onslide<+->
+% 	对于 $n$ 阶方阵 $\bfA$,
+% 	\[\sum\bfv_1\wedge\dots\wedge \bfv_n\mapsto \sum\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n\]
+% 	定义了 $V_n$ 上的一个线性映射.
+% 	\onslide<+->
+% 	根据 $V_n$ 的元素形式, 存在一个数 $|\bfA|$ 使得
+% 	\[\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n=|\bfA| \bfv_1\wedge\dots\wedge \bfv_n,\]
+% 	\onslide<+->
+% 	称之为 $\bfA$ 的\emph{行列式}, 记作 $|\bfA|$ 或 $\det(\bfA)$.
+% \end{frame}
+
+
+% \begin{frame}{例: 行列式的抽象定义\noexer}
+% 	\onslide<+->
+% 	设 $\bfA=\begin{pmatrix}
+% 		a&b\\c&d
+% 	\end{pmatrix}$,
+% 	\onslide<+->
+% 	则
+% 	\begin{align*}
+% 		\bfA\bfe_1\wedge\bfA\bfe_2&=
+% 		(a\bfe_1+c\bfe_2)\wedge(b\bfe_1+d\bfe_2)\\
+% 		&\visible<+->{=ab\bfe_1\wedge\bfe_1+ad\bfe_1\wedge\bfe_2+bc\bfe_2\wedge\bfe_1+cd\bfe_2\wedge\bfe_2}\\
+% 		&\visible<+->{=(ad-bc)\bfe_1\wedge\bfe_2.}
+% 	\end{align*}
+% 	\onslide<+->
+% 	故 $|\bfA|=ad-bc$.
+
+% 	\onslide<+->
+% 	设 $\bfA=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$,
+% 	\onslide<+->
+% 	则
+% 	\begin{align*}
+% 		\bfA\bfe_1\wedge\bfA\bfe_2\wedge\cdots\wedge\bfA\bfe_n
+% 		&=\lambda_1\bfe_1\wedge\lambda_2\bfe_2\wedge \cdots\wedge\lambda_n\bfe_n\\
+% 		&\visible<+->{=\lambda_1\lambda_2\cdots\lambda_n\bfe_1\wedge\bfe_2\wedge\cdots\wedge\bfe_n.}
+% 	\end{align*}
+% 	\onslide<+->
+% 	故 $|\bfA|=\lambda_1\lambda_2\cdots\lambda_n$.
+% \end{frame}
 
 
 \begin{frame}{行列式的具体定义\noexer}
 	\onslide<+->
 	设 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$,
 	\onslide<+->
-	则
-	\[\bfA\bfe_1\wedge \dots\wedge \bfA\bfe_n=\bfv_1\wedge\cdots\wedge\bfv_n=\sum a_{1,k_1}\cdots a_{n,k_n} \bfe_{k_1}\wedge \dots\wedge \bfe_{k_n}\]
+	则通过拆分逐个分量,
+	\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n}, \]
 	其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\onslide<+->
-	记 $\sgn(k_1,k_2,\dots,k_n)$ 表示 $\bfe_{k_1}\wedge \dots\wedge \bfe_{k_n}$ 关于 $\bfe_1\wedge \dots\wedge \bfe_n$ 的倍数.
+	如果排列 $k_1,k_2,\dots,k_n$ 需要奇数次对换变成 $1,2,\dots,n$, 则 
+	$|\bfe_{k_1},\cdots,\bfe_{k_n}|=-1$; 否则 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=1$.
 	\onslide<+->
 	\begin{definition}
 		设 $\bfA=(a_{ij})$ 是 $n$ 阶方阵.
 		定义 $\bfA$ 的行列式为
-		\[|\bfA|=\sum \sgn(k_1,k_2,\dots,k_n)a_{1,k_1}\cdots a_{n,k_n}.\]
+		\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n},\]
 		其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\end{definition}
-	\onslide<+->
-	根据 $\wedge$ 的反对称性, 若排列 $k_1,k_2,\dots,k_n$ 需要奇数次对换变成 $1,2,\dots,n$, 则 $\sgn=-1$; 否则 $\sgn=1$.
 \end{frame}
 
 
 \begin{frame}{$2,3$ 阶行列式}
 	\onslide<+->
-	当 $n=2$ 时, $\sgn(1,2)=1,\sgn(2,1)=-1$,
+	当 $n=2$ 时, $|\bfe_1,\bfe_2|=1,|\bfe_2,\bfe_1|=-1$,
 	\onslide<+->
-	于是(此处可省略矩阵的括号)
+	于是
 	\[\begin{vNiceMatrix}
 		a_{11}&a_{12}\\
 		a_{21}&a_{22}
@@ -119,8 +244,8 @@
 	\onslide<+->
 	\onslide<+->
 	当 $n=3$ 时,
-	\[\sgn(1,2,3)=\sgn(2,3,1)=\sgn(3,1,2)=1,\]
-	\[\sgn(1,3,2)=\sgn(2,1,3)=\sgn(3,1,2)=-1,\]
+	\[|\bfe_1,\bfe_2,\bfe_3|=|\bfe_2,\bfe_3,\bfe_1|=|\bfe_3,\bfe_1,\bfe_2|=1,\]
+	\[|\bfe_1,\bfe_3,\bfe_2|=|\bfe_2,\bfe_1,\bfe_3|=|\bfe_3,\bfe_1,\bfe_2|=-1,\]
 	\onslide<+->
 	于是
 	\[\begin{vNiceMatrix}
@@ -174,89 +299,71 @@
 		\[\bigl|\diag(a_1,a_2,\dots,a_n)\bigr|=a_1a_2\cdots a_n,\]
 		特别地 $|\bfE_n|=1,|\bfO_n|=0$.
 		\item $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的所有排列, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$ ($n\ge2$).
+		\item 行列式对应的线性变换(常数倍)是其对应的线性变换 $\BC^n\ra\BC^n$ 诱导的 $n$ 次外代数上的线性变换 $\wedge^n\BC^n\ra \wedge^n\BC^n$, 感兴趣的可自行阅读有关材料.
 	\end{enumerate}
 \end{frame}
 
 
-\begin{frame}{二阶行列式的几何意义}
-	\onslide<+->
-	设平面上有平行四边形 $OACB$, 其中 $A(a,b), B(c,d)$.
-	\begin{center}
-	\begin{tikzpicture}[scale=.8]
-		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-		\draw (0,0) node[dcolorb,left] {$O$};
-		\draw (3,0) node[dcolorb,right] {$A$};
-		\draw (1,1.5) node[dcolorb,left]{$B$};
-		\draw (4,1.5) node[dcolorb,right] {$C$};
-	\end{tikzpicture}
-	\end{center}
-	\onslide<+->
-	二阶行列式 $\begin{vmatrix}
-		a&b\\c&d
-	\end{vmatrix}$ 的绝对值就是它的面积.
-	\onslide<+->
-	它的符号则表示从 $OA$ 沿最短角度旋转到 $OB$ 方向是逆时针还是顺时针.
-\end{frame}
-
-
-\begin{frame}{三阶行列式的几何意义}
-	\onslide<+->
-	类似地, 若 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$,
-	\onslide<+->
-	则三阶行列式 $\begin{vmatrix}
-		a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3
-	\end{vmatrix}$ 的绝对值就是下述平行六面体的体积.
-	\begin{center}
-	\begin{tikzpicture}[scale=.8]
-		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-		\draw[cstcurve,dcolora] (4.5,1)--(5.5,2.5)--(2.5,2.5);
-		\draw[cstdash,cstcurve,dcolora] (2.5,2.5)--(1.5,1)--(4.5,1);
-		\draw[cstdash,cstcurve,dcolora] (0,0)--(1.5,1);
-		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
-		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
-		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
-		\draw (0,0) node[dcolorb,left] {$O$};
-		\draw (3,0) node[dcolorb,right] {$A$};
-		\draw (1,1.5) node[dcolorb,left] {$C$};
-		\draw (1.5,1) node[dcolorb,below] {$B$};
-	\end{tikzpicture}
-	\end{center}
-	\onslide<+->
-	它的符号则表示使用右手四指从 $OA$ 旋转到 $OB$ 方向时, 大拇指所指方向与 $OC$ 是否在平面 $OAB$ 的同侧.
-\end{frame}
+% \begin{frame}{三阶行列式的几何意义}
+% 	\onslide<+->
+% 	类似地, 若 $A(a_1,a_2,a_3),B(b_1,b_2,b_3),C(c_1,c_2,c_3)$,
+% 	\onslide<+->
+% 	则三阶行列式 $\begin{vmatrix}
+% 		a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3
+% 	\end{vmatrix}$ 的绝对值就是下述平行六面体的体积.
+% 	\begin{center}
+% 	\begin{tikzpicture}[scale=.8]
+% 		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+% 		\draw[cstcurve,dcolora] (4.5,1)--(5.5,2.5)--(2.5,2.5);
+% 		\draw[cstdash,cstcurve,dcolora] (2.5,2.5)--(1.5,1)--(4.5,1);
+% 		\draw[cstdash,cstcurve,dcolora] (0,0)--(1.5,1);
+% 		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
+% 		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
+% 		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
+% 		\draw (0,0) node[dcolorb,left] {$O$};
+% 		\draw (3,0) node[dcolorb,right] {$A$};
+% 		\draw (1,1.5) node[dcolorb,left] {$C$};
+% 		\draw (1.5,1) node[dcolorb,below] {$B$};
+% 	\end{tikzpicture}
+% 	\end{center}
+% 	\onslide<+->
+% 	它的符号则表示使用右手四指从 $OA$ 旋转到 $OB$ 方向时, 大拇指所指方向与 $OC$ 是否在平面 $OAB$ 的同侧.
+% \end{frame}
 
 
 \subsection{行列式的性质}
 
-\begin{frame}{行列式的线性性、反对称性和乘性}
+\begin{frame}{行列式的乘性}
 	\onslide<+->
-	我们将给出行列式的一系列性质, 这些性质可以帮助我们计算行列式.
-
+	注意到 $n$ 阶方阵 $\bfA$ 将 $\bfe_1,\dots,\bfe_n$ 张成的平行多面体映射为 $\bfv_1,\dots,\bfv_n$ 张成的平行多面体.
 	\onslide<+->
-	根据 $\wedge$ 的线性性和反对称性有:
-	\onslide<+->
-	\begin{proposition}
-		\begin{itemize}
-			\item $|\bfv_1,\dots,k\bfv_i,\dots,\bfv_n|=k|\bfv_1,\dots,\bfv_i,\dots,\bfv_n|$.
-			\item $|\bfv_1,\dots,\bma+\bmb,\dots,\bfv_n|=|\bfv_1,\dots,\bma,\dots,\bfv_n|+|\bfv_1,\dots,\bmb,\dots,\bfv_n|$.
-			\item $|\dots,\bfv_i,\dots,\bfv_j,\dots|=-|\dots,\bfv_j,\dots,\bfv_i,\dots|$.
-		\end{itemize}
-	\end{proposition}
-	\onslide<+->
-	设 $\bfA,\bfB$ 都是 $n$ 阶方阵, 则
-	\[\bfA\bfB\bfv_1\wedge \dots\wedge \bfA\bfB\bfv_n=|\bfA|\bfB\bfv_1\wedge \dots\wedge \bfB\bfv_n
-	=|\bfA|\cdot|\bfB|\bfv_1\wedge\dots\wedge \bfv_n.\]
-	\vspace{-\baselineskip}
+	事实上, 它把任意平行多面体映射为平行多面体, 且二者面积相差 $|\bfA|$ 倍.
 	\onslide<+->
 	\begin{alertblock@}
 		\begin{enumerate}
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
 		\end{enumerate}
 	\end{alertblock@}
+	\onslide<+->
+	\begin{proof}
+		设 $f(\bfv_1,\dots,\bfv_n)=f(\bfB)=|\bfA\bfB|$.
+		\onslide<+->{%
+			不难看出
+			\begin{enumerate}
+				\item $f(\cdots,\bfv_i,\cdots,\bfv_j,\cdots)=-f(\cdots,\bfv_j,\cdots,\bfv_i,\cdots)$;
+				\item $f(\cdots,k\bma,\cdots)==kf(\cdots,\bma,\cdots)$;
+				\item $f(\cdots,\bma+\bmb,\cdots)=f(\cdots,\bma,\cdots)+f(\cdots,\bmb,\cdots)$.
+			\end{enumerate}
+		}\onslide<+->{%
+			通过将 $\bfv_1,\dots,\bfv_n$ 逐分量展开可知 $f$ 是行列式函数的 $f(\bfE)$ 倍.
+		}\onslide<+->{%
+			因此 $f(\bfB)=f(\bfE)|\bfB|=|\bfA|\cdot |\bfB|$.\qedhere
+		}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{转置的行列式}
+\begin{frame}{行列式的转置不变性}
 	\onslide<+->
 	\begin{alertblock@}
 		\begin{enumerate}
@@ -267,7 +374,7 @@
 	\onslide<+->
 	设 $k_1,\dots,k_n$ 是一个排列, $\bfP$ 的 $i$ 行 $k_i$ 列为 $1$, 其余项为零.
 	\onslide<+->
-	根据行列式定义可知, 该排列的 $\sgn=|\bfP|$.
+	那么 $|\bfP|$.
 	\onslide<+->
 	设 $\ell_1,\dots,\ell_n$ 是一个排列且满足 $k_{\ell_i}=i$.
 	\onslide<+->
@@ -283,13 +390,13 @@
 	\onslide<+->
 	注意到 $\bfP\bfP^\rmT=\bfE$, 因此 $|\bfP|\cdot|\bfP^\rmT|=|\bfE|=1$.
 	\onslide<+->
-	而 $|\bfP|=\sgn=\pm1$, 因此 $|\bfP|=|\bfP^\rmT|$.
+	而 $|\bfP|=|\bfe_{k_1},\dots,\bfe_{k_n}|=\pm1$, 因此 $|\bfP|=|\bfP^\rmT|$.
 \end{frame}
 
 
-\begin{frame}{列变换的行列式}
+\begin{frame}{行列式线性性}
 	\onslide<+->
-	由此可知:
+	再根据行列式关于每个列向量的线性性和反对称性有:
 	\onslide<+->
 	\begin{alertblock@}
 		\begin{enumerate}
@@ -533,10 +640,10 @@
 	\onslide<+->
 	假设 $\bfA$ 的第一行除了 $a_{11}$ 都是零.
 	\onslide<+->
-	若 $k_1\neq 1$, 则 $a_{1,k_1}\cdots a_{n,k_n}=0$; 若 $k_1=1$, 则 $\sgn(1,k_2,\dots,k_n)=\sgn(k_2,\dots,k_n)$.
+	若 $k_1\neq 1$, 则 $a_{1,k_1}\cdots a_{n,k_n}=0$; 若 $k_1=1$, 则 $|\bfe_1,\bfe_{k_2},\dots,\bfe_{k_n}|=|\bfe_{k_2},\dots,\bfe_{k_n}|$.
 	\onslide<+->
 	因此
-	\[|\bfA|=\sum \sgn(1,k_2,\dots,k_n)a_{11}a_{2,k_2}\cdots a_{n,k_n}=a_{11} M_{11}=a_{11} A_{11}.\]
+	\[|\bfA|=\sum |\bfe_1,\bfe_{k_2},\dots,\bfe_{k_n}|a_{11}a_{2,k_2}\cdots a_{n,k_n}=a_{11} M_{11}=a_{11} A_{11}.\]
 
 	\onslide<+->
 	假设 $\bfA$ 的第 $i$ 行除了 $a_{ij}$ 都是零.
@@ -680,6 +787,7 @@
 		}
 	\end{proof*}
 \end{frame}
+
 
 \begin{frame}{例: 拉普拉斯展开的应用}
 	\onslide<+->

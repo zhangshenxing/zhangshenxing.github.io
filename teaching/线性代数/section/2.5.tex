@@ -59,7 +59,7 @@
 \end{frame}
 
 
-\begin{frame}{夹角}
+\begin{frame}{柯西-施瓦兹不等式}
 	\onslide<+->
 	设 $\bma\neq{\bf0}$.
 	\onslide<+->
@@ -75,11 +75,23 @@
 	\[|[\bma,\bmb]|\le \|\bma\|\cdot\|\bmb\|.\]
 	\onslide<+->
 	显然 $\bma={\bf0}$ 时它也成立.
+\end{frame}
+
+
+\begin{frame}{夹角}
 	\onslide<+->
 	\begin{definition}
 		设非零向量 $\bma=(a_1,\dots,a_n)^\rmT,\bmb=(b_1,\dots,b_n)^\rmT\in\BR^n$, 定义 $\bma,\bmb$ 的\emph{夹角}为
 		\[\theta=\arccos\dfrac{[\bma,\bmb]}{\|\bma\|\cdot\|\bmb\|}\in[0,\pi].\]
 	\end{definition}
+	\onslide<+->
+	注意正交比夹角为 $\dfrac\pi2$ 略微广泛点, 因为零向量与任意向量正交.
+
+	\onslide<+->
+	若 $\bma$ 与 $\bmb$ 正交, 则
+	\[\|\bma+\bmb\|^2=\|\bma\|^2+\|\bmb\|^2+2[\bma,\bmb]=\|\bma\|^2+\|\bmb\|^2,\]
+	\onslide<+->
+	此即\emph{勾股定理}.
 \end{frame}
 
 \subsection{正交向量组与格拉姆-施密特正交化}
