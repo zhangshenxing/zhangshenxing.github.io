@@ -12,69 +12,39 @@
 	\onslide<+->
 	显然 ${\bf0}\in V$.
 	\onslide<+->
-	若 $\bfu,\bfv\in V$, 则 $\bfA\bfu=\bfA\bfv={\bf0}$, 则
+	若 $\bfu,\bfv\in V$, 则 $\bfA\bfu=\bfA\bfv={\bf0}$.
+	\onslide<+->
+	于是
 	\[\bfA(\bfu+\bfv)=\bfA(\lambda \bfv)={\bf0},\quad \forall\lambda\in\BC.\]
 	\onslide<+->
 	换言之, $V$ 上的加法和数乘的结果还落在 $V$ 中.
 	\onslide<+->
-	它是 $\BR^n$ 或 $\BC^n$ 的一个\emph{子空间}.
-\end{frame}
-
-
-\begin{frame}{线性子空间}
+	它是 $\BC^n$ 的一个\emph{子空间}.
+	
 	\onslide<+->
-	\begin{definition}
-		若非空子集 $V\subseteq \BC^n$ 满足:
-		\begin{enumerate}
-			\item 对任意 $\bfu,\bfv\in V$, 有 $\bfu+\bfv\in V$;
-			\item 对任意 $\bfv\in V,\lambda\in\BC$, 有 $\lambda\bfv\in V$,
-		\end{enumerate}
-		则称 $V$ 是 $\BC^n$ 的一个\emph{(线性)子空间}.
-	\end{definition}
+	如何用有限个向量来表示一个子空间中的所有向量呢?
 	\onslide<+->
-	容易知道, $V$ 及之上的加法和数乘满足线性空间的八条性质.
-
-	\onslide<+->
-	\begin{example}
-		\begin{enumerate}
-			\item $\BR^2$ 中经过原点的直线是 $\BR^2$ 的子空间.
-			\item $\BR^3$ 中经过原点的直线和平面都是 $\BR^3$ 的子空间. 
-			\item 仅包含零向量的集合是 $\BR^n$ 或 $\BC^n$ 的一个子空间.
-		\end{enumerate}
-	\end{example}
+	我们需要线性组合的概念.
 \end{frame}
 
 
 \begin{frame}{向量组}
 	\onslide<+->
-	如何用有限个向量来表示一个子空间中的所有向量呢?
+	一些具有相同维数的向量放在一起形成\emph{向量组}(可以有重复的):
 	\onslide<+->
-	我们需要线性组合的概念.
-
-	\onslide<+->
-	由一些具有相同维数的向量构成的集合称为\emph{向量组}(可以有重复的).
-	\onslide<+->
-	例如
-	\[\{\bma_1=(1,1,-1)^\rmT,
-	\bma_2=(2,1,2)^\rmT,
-	\bma_3=(3,2,1)^\rmT\},\]
-	\[\{(1,1,-1),
-	(2,1,2),
-	(3,2,1)\}.\]
-	\onslide<+->
-	例如 $m\times n$ 矩阵 $\bfA$ 的 $m$ 行可以看成 $m$ 个行向量, 它们构成一个向量组, 叫做 $\bfA$ 的\emph{行向量组}.
-	\onslide<+->
-	类似地, $\bfA$ 的列向量构成它的\emph{列向量组}.
-
-	\onslide<+->
-	设
-	\[\bfe_1=(1,0,\dots,0)^\rmT,\bfe_2=(0,1,\dots,0)^\rmT,\dots,\bfe_n=(0,0,\dots,1)^\rmT\]
-	是一组 $n$ 维向量.
-	\onslide<+->
-	对于任意 $n$ 维向量 $\bfx=(x_1,\dots,x_n)^\rmT$,
-	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
-	\onslide<+->
-	也就是说它可以表示为这个向量组中向量的数乘之和.
+	例如:
+	\begin{itemize}
+		\item $\bma_1=(1,1,-1)^\rmT, \bma_2=(2,1,2)^\rmT, \bma_3=(3,2,1)^\rmT$;
+		\item $\bma_1^\rmT=(1,1,-1), \bma_2^\rmT=(2,1,2), \bma_3^\rmT=(3,2,1)$;
+		\item $m\times n$ 矩阵 $\bfA$ 的 $m$ 行可以看成 $m$ 个行向量, 它们构成一个向量组, 叫做 $\bfA$ 的\emph{行向量组};
+		\item 类似地, $\bfA$ 的列向量构成它的\emph{列向量组}.
+		\item 对于 $n$ 维向量组
+		\[\bfe_1=(1,0,\dots,0)^\rmT,\bfe_2=(0,1,\dots,0)^\rmT,\dots,\bfe_n=(0,0,\dots,1)^\rmT,\]
+		\onslide<+->{%
+			任意 $n$ 维向量 $\bfx=(x_1,\dots,x_n)^\rmT$ 可以表示为这个向量组中向量的数乘之和:
+			\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
+		}
+	\end{itemize}
 \end{frame}
 
 
@@ -113,15 +83,13 @@
 	\onslide<+->
 	容易知道
 	\[V=\{\bmb\in\BC^n\mid \text{存在 $\bfx$ 使得}\ \bfA\bfx=\bmb\}\]
-	是 $\BC^n$ 的子空间,
+	是 $\BC^n$ 的子空间, 称为 $S$ \emph{生成的空间}.
 	\onslide<+->
-	称为 $S$ \emph{生成的空间}.
 	它是包含 $S$ 中所有向量的最小的线性空间.
 \end{frame}
 
 
 \begin{frame}{向量组的等价}
-	\onslide<+->
 	\begin{definition}
 		\begin{enumerate}
 			\item 设有两个向量组 $S=\{\bma_1,\dots,\bma_m\}, T=\{\bmb_1,\dots,\bmb_k\}$.
@@ -132,7 +100,9 @@
 	\onslide<+->
 	设 $S,T$ 分别生成空间 $V,W$.
 	\onslide<+->
-	$T$ 可以被 $S$ 线性表示$\iff$ $W\subseteq V$;  $S,T$ 向量组等价$\iff W=V$.
+	$T$ 可以被 $S$ 线性表示$\iff$ $W\subseteq V$;
+	\onslide<+->
+	$S,T$ 向量组等价$\iff W=V$.
 
 	\onslide<+->
 	$T$ 能被 $S$ 线性表示, 当且仅当存在 $\bfx_1,\dots,\bfx_k$ 使得
@@ -187,7 +157,6 @@
 
 
 \begin{frame}{例: 线性相关与线性无关}
-	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
 			\item $\bma_1=(1,2,3)^\rmT,\bma_2=(2,3,4)^\rmT,\bma_3=(0,0,0)^\rmT$ 线性相关.
@@ -291,7 +260,7 @@
 	注意, 向量组 $\bma_1,\dots,\bma_m$ 线性相关\alert{$\ \ \not\!\!\!\!\implies$}其中任一向量可以由其它向量线性表示.
 	\onslide<+->
 	\begin{exercise}
-		设 $\bma_1,\dots,\bma_m$ 是 $m$ 个 $n$ 维向量, 则下列结论是否正确的有\fillblank{\visible<+->{1}}个.
+		设 $\bma_1,\dots,\bma_m$ 是 $m$ 个 $n$ 维向量, 则下列结论是否正确的有\fillblank{\visible<8->{1}}个.
 		\begin{enumerate}
 			\item {若 $\bma_1,\dots,\bma_m$ 线性相关, 则其中任一向量均可由其余向量线性表示}%
 			\item {若 $\bma_m$ 不能由 $\bma_1,\dots,\bma_{m-1}$ 线性表示, 则向量组 $\bma_1,\dots,\bma_m$ 线性无关}%
@@ -303,7 +272,7 @@
 
 
 \begin{frame}{线性相关和线性无关的性质}
-	\beqskip{3mm}
+\beqskip{3mm}
 	\onslide<+->
 	\begin{theorem}
 		若向量组 $\bma_1,\dots,\bma_m$ 线性无关, 向量组 $\bma_1,\dots,\bma_m,\bmb$ 线性相关, 则 $\bmb$ 可以由 $\bma_1,\dots,\bma_m$ 线性表示, 且表达形式唯一.
@@ -328,7 +297,7 @@
 			矛盾.\qedhere
 		}
 	\end{proof*}
-	\endgroup
+\endgroup
 \end{frame}
 
 
@@ -378,7 +347,7 @@
 	\onslide<+->
 	\begin{example}
 		设向量组 $\bma_1,\bma_2,\bma_3$ 线性相关, $\bma_2,\bma_3,\bma_4$ 线性无关, 证明
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $\bma_1$ 能由 $\bma_2,\bma_3$ 线性表示;
 			\item $\bma_4$ 不能由 $\bma_1,\bma_2,\bma_3$ 线性表示;
 		\end{enumerate}
@@ -431,7 +400,7 @@
 	\onslide<+->
 	\begin{example}
 		判断下列向量组的线性相关性:
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $(1,2,3,4)^\rmT,(2,3,4,5)^\rmT,(0,0,0,0)^\rmT$; 
 			\item $(a,b,1,0,0)^\rmT,(c,d,0,6,0)^\rmT,(a,c,0,5,6)^\rmT$;
 			\item $(a,1,0,b,0)^\rmT,(c,0,6,d,0)^\rmT,(a,0,5,c,6)^\rmT$.
@@ -460,7 +429,7 @@
 	\begin{proof}
 		设 $\bfA=(\bma_1,\dots,\bma_s),\bfB=(\bmb_1,\dots,\bmb_t)$.
 		则存在矩阵 $\bfP$ 使得 $\bfA=\bfB\bfP_{t\times s}$.
-		\onslide<+->{
+		\onslide<+->{%
 			将 $\bfP$ 补充 $s-t$ 个零行得到 $\bfQ=\begin{pmatrix}
 				\bfP\\\bfO
 			\end{pmatrix}$.
@@ -474,7 +443,6 @@
 
 
 \begin{frame}{推论和总结}
-	\onslide<+->
 	\begin{corollary}
 		\begin{enumerate}
 			\item 设向量组 $S=\{\bma_1,\dots,\bma_s\}$ 可由 $\bmb_1,\dots,\bmb_t$ 线性表示. 若 $S$ 线性无关, 则 $s\le t$.

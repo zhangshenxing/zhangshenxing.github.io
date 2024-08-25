@@ -4,37 +4,40 @@
 
 \begin{frame}{引例: 平行四边形的面积\noexer}
 	\onslide<+->
-	设平面上有平行四边形 $OACB$, 其中 $A(a,b), B(c,d)$.
+	设平面上有平行四边形 $OACB$, 其中 $A,B$ 坐标分别为 $\bfu=(a,b)^\rmT, \bfv=(c,d)^\rmT$.
 	\onslide<+->{%
-		可以通过计算底乘高来得到平行四边形 $OACB$ 的面积为 $|ad-bc|$.
+		如果 $\bfu=(1,0)^\rmT,\bfv=(0,1)^\rmT$, 那么面积为 $1$.
 	}\onslide<+->{%
-		我们来介绍另一种方法.
+		如果将 $\bfu$ 换成 $k\bfu$, 那么面积变为 $|k|$ 倍.
+	}\onslide<+->{%
+		如果将 $\bfu$ 拆分为 $(a,0)^\rmT+(0,b)^\rmT$, 那么得到的三个平行四边形的面积有什么联系呢?
 	}
 	\begin{center}
 	\begin{tikzpicture}[scale=.8]
-		\draw[cstaxis] (-1,0)--(4,0);
-		\draw[cstaxis] (0,-1)--(0,3);
-		\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(4,2)--(1,1.5)--cycle;
-		\draw (0,0) node[dcolorb,below left] {$O$};
-		\draw (3,0.5) node[dcolorb,right] {$A$};
-		\draw (1,1.5) node[dcolorb,left]{$B$};
-		\draw (4,2) node[dcolorb,right] {$C$};
-		\begin{scope}[visible on=<4->]
-			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<4->] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-			\draw (3,0) node[dcolorc,below] {$A_1$};
-			\draw (4,1.5) node[dcolorc,right] {$C_1$};
+		\begin{scope}
+			\draw[cstaxis] (-1,0)--(4,0);
+			\draw[cstaxis] (0,-1)--(0,3);
+			\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(4,2)--(1,1.5)--cycle;
+			\draw (0,0) node[dcolorb,below left] {$O$};
+			\draw (3,0.5) node[dcolorb,right] {$A$};
+			\draw (1,1.5) node[dcolorb,left]{$B$};
+			\draw (4,2) node[dcolorb,right] {$C$};
+			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<5->] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+			\begin{scope}[visible on=<5->]
+				\draw (3,0) node[dcolorc,below] {$A_1$};
+				\draw (4,1.5) node[dcolorc,right] {$C_1$};
+			\end{scope}
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<6->] (0,0)--(0,0.5)--(1,2)--(1,1.5)--cycle;
+			\begin{scope}[visible on=<6->]
+				\draw (0,.5) node[dcolord,left] {$A_2$};
+				\draw (1,2) node[dcolord,above] {$C_2$};
+			\end{scope}
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<8->] (1,1.5)--(4,1.5)--(4,2)--cycle;
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<9->] (0,0)--(3,0)--(3,0.5)--cycle;
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<10->] (3,0)--(3,0.5)--(4,2)--(4,1.5)--cycle;
 		\end{scope}
-		\begin{scope}[visible on=<5->]
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<5->] (0,0)--(0,0.5)--(1,2)--(1,1.5)--cycle;
-			\draw (0,.5) node[dcolord,left] {$A_2$};
-			\draw (1,2) node[dcolord,above] {$C_2$};
-		\end{scope}
-		\begin{scope}[visible on=<6->]
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<7->] (1,1.5)--(4,1.5)--(4,2)--cycle;
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<8->] (0,0)--(3,0)--(3,0.5)--cycle;
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<9->] (3,0)--(3,0.5)--(4,2)--(4,1.5)--cycle;
-		\end{scope}
-		\begin{scope}[xshift=7cm,visible on=<10->]
+
+		\begin{scope}[xshift=7cm,visible on=<11->]
 			\draw[cstaxis] (-1,0)--(4,0);
 			\draw[cstaxis] (0,-1)--(0,3);
 			\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(2,2)--(-1,1.5)--cycle;
@@ -42,21 +45,17 @@
 			\draw (3,0.5) node[dcolorb,right] {$A$};
 			\draw (-1,1.5) node[dcolorb,left]{$B$};
 			\draw (2,2) node[dcolorb,right] {$C$};
-			\begin{scope}[visible on=<11->]
-				\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<11->] (0,0)--(3,0)--(2,1.5)--(-1,1.5)--cycle;
+			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<12->] (0,0)--(3,0)--(2,1.5)--(-1,1.5)--cycle;
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<12->] (0,0)--(0,0.5)--(-1,2)--(-1,1.5)--cycle;
+			\begin{scope}[visible on=<12->]
 				\draw (3,0) node[dcolorc,below] {$A_1$};
 				\draw (2,1.5) node[dcolorc,right] {$C_1$};
-			\end{scope}
-			\begin{scope}[visible on=<11->]
-				\fill[cstcurve,dcolord,fill opacity=.5,visible on=<11->] (0,0)--(0,0.5)--(-1,2)--(-1,1.5)--cycle;
 				\draw (0,.5) node[dcolord,right] {$A_2$};
 				\draw (-1,2) node[dcolord,above] {$C_2$};
 			\end{scope}
-			\begin{scope}[visible on=<9->]
-				\fill[cstcurve,dcolord,fill opacity=.5,visible on=<12->] (3,0)--(3,0.5)--(2,2)--(2,1.5)--cycle;
-				\fill[cstcurve,dcolore,fill opacity=.5,visible on=<12->] (0,0)--(3,0)--(3,0.5)--cycle;
-				\fill[cstcurve,dcolore,fill opacity=.5,visible on=<13->] (-1,1.5)--(2,1.5)--(2,2)--cycle;
-			\end{scope}
+			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<13->] (3,0)--(3,0.5)--(2,2)--(2,1.5)--cycle;
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<13->] (0,0)--(3,0)--(3,0.5)--cycle;
+			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<14->] (-1,1.5)--(2,1.5)--(2,2)--cycle;
 		\end{scope}
 	\end{tikzpicture}
 	\end{center}
@@ -76,15 +75,16 @@
 
 \begin{frame}{有向面积\noexer}
 	\onslide<+->
-	为何第一种情形是加而第二种情形是减呢?
+	为何第一种情形是相减而第二种情形是相加呢?
 	\onslide<+->
-	这些平行四边形只有第一种情形的平行四边形 $OA_2C_2B$, 从 $OA_2$ 到 $OB$ 是顺时针方向.
+	观察发现: 这些平行四边形中只有第一种情形的平行四边形 $OA_2C_2B$, 从 $OA_2$ 到 $OB$ 是顺时针方向.
 	\onslide<+->
-	如果我们规定从 $OA$ 到 $OB$ 是逆(顺)时针时, 其\emph{有向面积}为面积的 $1$ ($-1$) 倍, 并记为
-	\[\begin{vmatrix}
+	如果规定: 从 $OA$ 到 $OB$ 是逆时针时, 定义\emph{有向面积}为面积; 从 $OA$ 到 $OB$ 是顺时针时, 定义\emph{有向面积}为面积的 $-1$ 倍,
+	\onslide<+->
+	并记为
+	\[|\bfu,\bfv|=\begin{vmatrix}
 		a&c\\b&d
-	\end{vmatrix},\]
-	其中第一列为 $OA$, 第二列为 $OB$,
+	\end{vmatrix}.\]
 	\onslide<+->
 	那么
 	\[\begin{vmatrix}
@@ -95,13 +95,11 @@
 		0&c\\b&d
 	\end{vmatrix}=a\begin{vmatrix}
 		1&c\\0&d
-	\end{vmatrix}+c\begin{vmatrix}
-		0&1\\b&d
+	\end{vmatrix}+b\begin{vmatrix}
+		0&c\\1&d
 	\end{vmatrix}.\]
 	\onslide<+->
-	同样的, 我们对于第二列也可以进行拆分, 且有 $\begin{vmatrix}
-		a&c\\b&d
-	\end{vmatrix}=ad-bc$.
+	同样的, 我们对于第二列也可以进行拆分.
 \end{frame}
 
 
@@ -115,10 +113,9 @@
 	\bfe_n=(0,0,\dots,1)^\rmT,\]
 	则有向面积为 $1$.
 	\onslide<+->
-	而如果交换 $\bfv_i,\bfv_j$ 的位置, 有向面积相差 $-1$.
+	而如果交换 $\bfv_i,\bfv_j$ 的位置, 有向面积相差 $-1$ 倍.
 	\onslide<+->
-	于是得到 $n$ 阶\emph{行列式} $|\bfv_1,\dots,\bfv_n|$ 应当满足的性质:
-	\onslide<+->
+	于是得到 $n$ 维情形的有向面积 $|\bfv_1,\dots,\bfv_n|$ 应当满足:
 	\begin{enumerate}
 		\item $|\bfe_1,\dots,\bfe_n|=1$;
 		\item 反对称性: $|\cdots,\bfv_i,\cdots,\bfv_j,\cdots|=-|\cdots,\bfv_j,\cdots,\bfv_i,\cdots|$;
@@ -209,9 +206,11 @@
 
 \begin{frame}{行列式的具体定义\noexer}
 	\onslide<+->
-	设 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$,
+	设方阵 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$,
 	\onslide<+->
-	则通过拆分逐个分量,
+	称有向面积 $|\bfv_1,\cdots,\bfv_n|$ 就是方阵 $\bfA$ 的\emph{行列式}.
+	\onslide<+->
+	通过拆分逐个分量,
 	\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n}, \]
 	其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\onslide<+->
@@ -340,7 +339,7 @@
 	事实上, 它把任意平行多面体映射为平行多面体, 且二者面积相差 $|\bfA|$ 倍.
 	\onslide<+->
 	\begin{alertblock@}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
 		\end{enumerate}
 	\end{alertblock@}
@@ -366,7 +365,7 @@
 \begin{frame}{行列式的转置不变性}
 	\onslide<+->
 	\begin{alertblock@}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\setcounter{enumi}{1}
 			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
 		\end{enumerate}

@@ -84,7 +84,7 @@
 	\onslide<8->
 	那么 \emph{$\Arg z=\arg z+2k\pi, k\in\BZ$}.
 
-	\onslide<+->
+	\onslide<9->
 	注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 例如 $z$ 是负实数.
 \end{frame}
 
@@ -101,54 +101,47 @@
 		\item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
 	\end{itemize}
 	\end{block}
-
 	\begin{center}
-		\begin{figure}[h]
-			\begin{subfigure}{0.35\textwidth}
-			\centering\onslide<4->
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<4->] (-1,0)--(3,0);
-				\draw[cstaxis,visible on=<4->] (0,-1)--(0,2);
-				\draw[cstcurve,dcolorc,visible on=<4->] (1.6,0)--(0,0);
-				\draw[cstcurve,dcolorb,visible on=<4->] (1.6,0)--(1.6,1.2);
-				\draw[cstcurve,dcolora,visible on=<4->] (1.6,1.2)--(0,0);
-				\fill[cstdot,dcolora,visible on=<4->] (1.6,1.2) circle;
-				\draw[thick,visible on=<4->] (1.6,0.2)--(1.4,0.2)--(1.4,0);
-				\draw[decorate,decoration={brace,amplitude=5},dcolorc,visible on=<4->] (1.6,0)--(0,0);
-				\draw[decorate,decoration={brace,amplitude=5},dcolorb,visible on=<4->] (1.6,1.2)--(1.6,0);
+		\begin{tikzpicture}
+			\begin{scope}[framed,visible on=<4->]
+				\draw[cstaxis] (-1,0)--(3,0);
+				\draw[cstaxis] (0,-1)--(0,2);
+				\draw[cstcurve,dcolorc] (1.6,0)--(0,0);
+				\draw[cstcurve,dcolorb] (1.6,0)--(1.6,1.2);
+				\draw[cstcurve,dcolora] (1.6,1.2)--(0,0);
+				\fill[cstdot,dcolora] (1.6,1.2) circle;
+				\draw[thick] (1.6,0.2)--(1.4,0.2)--(1.4,0);
+				\draw[decorate,decoration={brace,amplitude=5},dcolorc] (1.6,0)--(0,0);
+				\draw[decorate,decoration={brace,amplitude=5},dcolorb] (1.6,1.2)--(1.6,0);
 				\draw 
-					(0.6,0.9) node[dcolora,visible on=<4->] {$|z|$}
-					(0.8,-0.4) node[dcolorc,visible on=<4->] {$\abs{\Re z}$}
-					(2.3,0.6) node[dcolorb,visible on=<4->] {$\abs{\Im z}$};
-			\end{tikzpicture}
-			\end{subfigure}
-			\begin{subfigure}{0.55\textwidth}
-			\centering\onslide<5->
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<5->] (-2,0)--(3,0);
-				\draw[cstaxis,visible on=<5->] (0,-1.6)--(0,1.3);
-				\draw[cstcurve,cstarrowto,dcolora,visible on=<5->] (0,0)--(1.6,-0.4);
-				\draw[decorate,decoration={brace,amplitude=5},dcolora,visible on=<5->] (1.6,-0.4)--(0,0);
-				\draw[cstcurve,cstarrowto,dcolorb,visible on=<5->] (0,0)--(0.8,1.2);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb,visible on=<5->] (2.4,0.8)--(1.6,-0.4);
-				\draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0,0)--(2.4,0.8);
-				\draw[cstcurve,cstarrowto,dcolorc,visible on=<5->] (0,0)--(0.8,-1.6);
-				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc,visible on=<5->] (0.8,-1.6)--(0,0);
-				\draw[dcolorc,cstarrowto,visible on=<5->] (0.116,-0.636)--(-0.7,-0.4);
-				\draw[cstdash,dcolorb,visible on=<5->] (2.4,0.8)--(0.8,-1.6);
-				\draw[cstdash,dcolora,visible on=<5->] (0.8,-1.6)--(-0.8,-1.2);
-				\draw[cstdash,dcolorb,visible on=<5->] (-0.8,-1.2)--(0,0);
+					(0.6,0.9) node[dcolora] {$|z|$}
+					(0.8,-0.4) node[dcolorc] {$\abs{\Re z}$}
+					(2.3,0.6) node[dcolorb] {$\abs{\Im z}$};
+			\end{scope}
+			\begin{scope}[framed,visible on=<5->,xshift=60mm]
+				\draw[cstaxis] (-2,0)--(3,0);
+				\draw[cstaxis] (0,-1.6)--(0,1.3);
+				\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1.6,-0.4);
+				\draw[decorate,decoration={brace,amplitude=5},dcolora] (1.6,-0.4)--(0,0);
+				\draw[cstcurve,cstarrowto,dcolorb] (0,0)--(0.8,1.2);
+				\draw[decorate,decoration={brace,amplitude=5,aspect=0.35},dcolorb] (2.4,0.8)--(1.6,-0.4);
+				\draw[cstcurve,cstarrowto,dcolorc] (0,0)--(2.4,0.8);
+				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0,0)--(2.4,0.8);
+				\draw[cstcurve,cstarrowto,dcolorc] (0,0)--(0.8,-1.6);
+				\draw[decorate,decoration={brace,amplitude=5,aspect=0.65},dcolorc] (0.8,-1.6)--(0,0);
+				\draw[dcolorc,cstarrowto] (0.116,-0.636)--(-0.7,-0.4);
+				\draw[cstdash,dcolorb] (2.4,0.8)--(0.8,-1.6);
+				\draw[cstdash,dcolora] (0.8,-1.6)--(-0.8,-1.2);
+				\draw[cstdash,dcolorb] (-0.8,-1.2)--(0,0);
 				\draw 
-					(1.8,-0.6) node[dcolora,visible on=<5->] {\small $z_1$}
-					(0.6,1.3) node[dcolorb,visible on=<5->] {\small $z_2$}
-					(0.75,-0.55) node[dcolora,visible on=<5->] {\small $|z_1|$}
-					(2.6,0.25) node[dcolorb,visible on=<5->] {\small $|z_2|$}
-					(1.4,0.8) node[dcolorc,rotate=20,visible on=<5->] {\small $|z_1+z_2|$}
-					(-1.5,-0.4) node[dcolorc,visible on=<5->] {\small $|z_1-z_2|$};
-			\end{tikzpicture}
-			\end{subfigure}
-		\end{figure}
+					(1.8,-0.6) node[dcolora] {$z_1$}
+					(0.3,1.1) node[dcolorb] {$z_2$}
+					(0.75,-0.55) node[dcolora] {$|z_1|$}
+					(2.6,0.25) node[dcolorb] {$|z_2|$}
+					(1.4,0.8) node[dcolorc,rotate=20] {$|z_1+z_2|$}
+					(-1.5,-0.4) node[dcolorc] {$|z_1-z_2|$};
+			\end{scope}
+		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
@@ -166,16 +159,22 @@
 		\enumnum1 因为
 		\[|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
 		=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
-		\onslide<+->{所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
-		}\onslide<+->{因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.}
+		\onslide<+->{%
+			所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
+		}\onslide<+->{%
+			因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
+		}
 
-		\onslide<+->{\enumnum2 因为
-		\begin{align*}
-			\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
-			\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
-			\text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
-		\end{align*}}
-		而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.
+		\onslide<+->{%
+			\enumnum2 因为
+			\begin{align*}
+				\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
+				\visible<+->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
+				\text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
+			\end{align*}
+		}\onslide<+->{%
+			而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
@@ -186,7 +185,7 @@
 	由 $x=r\cos\theta,y=r\sin\theta$ 可得复数的\emph{三角形式}
 	\[\alert{z=r(\cos\theta+i\sin\theta)}.\]
 	\onslide<+->
-	定义 $e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$ (\cnen{欧拉}{Euler}恒等式),
+	定义 $e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$ (欧拉恒等式),
 	\onslide<+->
 	则我们得到复数的\emph{指数形式}
 	\[\alert{z=re^{i\theta}=r\exp(i\theta)}.\]
@@ -264,12 +263,12 @@
 	两个模相等的复数之和的三角/指数形式形式较为简单.
 	\onslide<+->
 	\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
-	\vspace{-.5\baselineskip}
+	\vspace{-.7\baselineskip}
 	\onslide<+->
 	\begin{center}
-			\begin{tikzpicture}[framed]
+		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-1.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-0.6)--(0,2.5);
+			\draw[cstaxis] (0,-0.4)--(0,2.5);
 			\draw[cstcurve,cstarrowto,dcolora] (0,0)--(-0.8,1.72);
 			\draw[cstdash] (-0.8,1.72)--(1,2.32)--(1.8,0.6)--(0.5,1.16);
 			\draw[thick] (0.7,1.074)--(0.786,1.274)--(0.586,1.36);
@@ -291,6 +290,5 @@
 	\onslide<+->
 	\begin{example}
 		如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 e^{\frac{\theta i}2}$.
-		\vspace{-.5\baselineskip}
 	\end{example}
 \end{frame}

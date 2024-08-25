@@ -27,37 +27,45 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
-			\draw[cstaxis] (-0.4,0)--(2,0);
-			\draw[cstaxis] (0,-0.4)--(0,2);
-			\draw[cstdash] (1.6,0)--(1.6,1.2);
-			\draw[cstdash] (0,1.2)--(1.6,1.2);
-			\fill[cstdot,dcolora] (1.6,1.2) circle;
-			\draw[cstaxis] (3.6,0)--(6,0);
-			\draw[cstaxis] (4,-0.4)--(4,2);
-			\draw[decorate,decoration={brace,amplitude=5},dcolora] (4,0)--(5.6,0);
-			\draw[decorate,decoration={brace,amplitude=5},dcolorb] (4,1.2)--(4,0);
-			\draw[cstdash] (5.6,0)--(5.6,1.2);
-			\draw[cstdash] (4,1.2)--(5.6,1.2);
-			\fill[cstdot,dcolora] (5.6,1.2) circle;
-			\draw[dcolorb,Latex-Latex,line width=0.05cm] (2.2,0.8)--(3.4,0.8);
-			\draw[cstaxis,visible on=<5->] (7.6,0)--(10,0);
-			\draw[cstaxis,visible on=<5->] (8,-0.4)--(8,2);
-			\draw[cstcurve,cstarrowto,visible on=<5->,dcolora] (8,0)--(9.6,1.2);
-			\draw[dcolorb,Latex-Latex,line width=0.05cm,visible on=<5->] (6.2,0.8)--(7.4,0.8);
-			\draw 
-			(-0.2,-0.2) node {$0$}
-			(1.6,1.5) node[dcolora] {$z=x+yi$}
-			(5.6,1.5) node[dcolora] {$Z(x,y)$}
-			(4.8,0.3) node[dcolora] {$x$}
-			(4.3,0.6) node[dcolorb] {$y$}
-			(3.8,-0.2) node {$O$}
-			(5.0,-0.7) node {直角坐标系}
-			(2.8,0.3) node[dcolorb] {\small 一一对应}
-			(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面}
-			(9.5,1.5) node[dcolora,visible on=<5->] {$\overrightarrow{OZ}=(x,y)$}
-			(7.8,-0.2) node[visible on=<5->] {$O$}
-			(9.0,-0.7) node[visible on=<5->] {向量}
-			(6.8,0.3) node[dcolorb,visible on=<5->] {\small 一一对应};
+			\begin{scope}
+				\draw[cstaxis] (-0.4,0)--(2,0);
+				\draw[cstaxis] (0,-0.4)--(0,2);
+				\draw[cstdash] (1.6,0)--(1.6,1.2);
+				\draw[cstdash] (0,1.2)--(1.6,1.2);
+				\fill[cstdot,dcolora] (1.6,1.2) circle;
+				\draw (-0.2,-0.2) node {$0$};
+				\draw[dcolorb,Latex-Latex,line width=.5mm] (2.2,.8)--(3.4,.8);
+				\draw
+					(1.6,1.5) node[dcolora] {$z=x+yi$}
+					(2.8,.3) node[dcolorb,visible on=<4->] {\small 一一对应}
+					(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面};
+			\end{scope}
+			\begin{scope}[xshift=4cm]
+				\draw[cstaxis] (-.4,0)--(2,0);
+				\draw[cstaxis] (0,-0.4)--(0,2);
+				\draw[decorate,decoration={brace,amplitude=5},dcolora] (0,0)--(1.6,0);
+				\draw[decorate,decoration={brace,amplitude=5},dcolorb] (0,1.2)--(0,0);
+				\draw[cstdash] (1.6,0)--(1.6,1.2);
+				\draw[cstdash] (0,1.2)--(1.6,1.2);
+				\fill[cstdot,dcolora] (1.6,1.2) circle;
+				\draw[dcolorb,Latex-Latex,line width=.5mm,visible on=<5->] (2.2,.8)--(3.4,.8);
+				\draw
+					(1.6,1.5) node[dcolora] {$Z(x,y)$}
+					(.8,.3) node[dcolora] {$x$}
+					(.3,.6) node[dcolorb] {$y$}
+					(-.2,-.2) node {$O$}
+					(1,-0.7) node {直角坐标系}
+					(2.8,.3) node[dcolorb,visible on=<5->] {\small 一一对应};
+			\end{scope}
+			\begin{scope}[xshift=8cm,visible on=<5->]
+				\draw[cstaxis] (-.4,0)--(2,0);
+				\draw[cstaxis] (0,-.4)--(0,2);
+				\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1.6,1.2);
+				\draw 
+					(1.5,1.5) node[dcolora] {$\overrightarrow{OZ}=(x,y)$}
+					(-.2,-.2) node {$O$}
+					(1,-.7) node {向量};
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -83,10 +91,8 @@
 	当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
 	\onslide<1->
 	\begin{center}
-		\begin{figure}[h]
-			\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}
+		\begin{tikzpicture}
+			\begin{scope}
 				\draw[cstaxis] (-0.4,0)--(2.7,0);
 				\draw[cstaxis,dcolorb,visible on=<2->] (-0.4,0)--(2.7,0);
 				\draw[cstaxis] (0,-0.4)--(0,2);
@@ -96,33 +102,29 @@
 				\fill[cstdot,dcolora] (1.6,1.2) circle;
 				\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorb] (1.6,0)--(0,0);
 				\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorc] (0,1.2)--(0,0);
-				\draw[visible on=<6->,dcolorb,thick] (-0.95,0.2)--(0.7,0.2)--(0.7,0)[->];
+				\draw[visible on=<6->,dcolorb,thick] (-0.95,.2)--(0.7,.2)--(0.7,0)[->];
 				\draw[visible on=<8->,dcolorc,->,thick] (-0.61,1.3)--(0,1.3);
 				\draw 
 					(1.6,1.4) node[dcolora] {$z=x+yi$}
 					(-0.2,-0.2) node {$0$}
-					(2.2,0.4) node[dcolorb,visible on=<3->] {实轴}
+					(2.2,.4) node[dcolorb,visible on=<3->] {实轴}
 					(0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
 					(0.8,-0.3) node[visible on=<5>,dcolorb] {$\Re z$}
-					(0.6,0.6) node[visible on=<5>,dcolorc] {$\Im z$}
-					(-1.51,0.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
+					(0.6,.6) node[visible on=<5>,dcolorc] {$\Im z$}
+					(-1.51,.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
 					(-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点};
-			\end{tikzpicture}
-			\end{subfigure}
-			\begin{subfigure}{0.45\textwidth}
-			\centering
-			\begin{tikzpicture}
+			\end{scope}
+			\begin{scope}[xshift=1cm]
 				\filldraw[visible on=<6->,cstcurve,dcolora,cstfill] (5.5,1) circle (2.2 and 1.8);
 				\filldraw[visible on=<6->,cstcurve,dcolora,fill=white] (5.5,1)--(3.3,1) arc (180:300:2.2 and 1.8) -- cycle;
 				\draw[visible on=<8->,cstcurve,dcolora] (5,1.9) circle (0.85 and 0.65);
 				\draw 
-					(4.8,0.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
-					(8.5,1) node[visible on=<6->,align=center,dcolora] {\small 全\\体\\复\\数}
+					(4.8,.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
+					(8.5,1) node[visible on=<6->,align=center,dcolora] {全\\体\\复\\数}
 					(6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
 					(5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
-			\end{tikzpicture}
-			\end{subfigure}
-		\end{figure}
+			\end{scope}
+		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
@@ -179,7 +181,7 @@
 		(3.7,1) node[dcolorb] {$z_1+z_2$}
 		(-0.2,1.4) node {$y$}
 		(3.3,-0.3) node {$x$}
-		(-0.2,0.2) node {$0$}
+		(-0.2,.2) node {$0$}
 		(1.7,-2.1) node[dcolorc] {$z_1-z_2$}
 		(-1.4,-1.4) node {$-z_2$};
 		\end{tikzpicture}
@@ -327,16 +329,21 @@
 		证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.
 	\end{example}
 	\onslide<+->
-	\begin{proof*}
-		我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
-		\onslide<+->{但我们利用共轭复数可以更简单地证明它.}
-
-		\onslide<+->{由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
-		}\onslide<+->{因此
+	我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
+	\onslide<+->
+	但我们利用共轭复数可以更简单地证明它.
+	\onslide<+->
+	\begin{proof}
+		\onslide<+->{%
+			由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
+		}\onslide<+->{%
+			因此
 			\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
-			=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
-			=2\Re(z_1\cdot\ov{z_2}).\qedhere\]}
-	\end{proof*}
+				=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
+				=2\Re(z_1\cdot\ov{z_2}).\qedhere\]
+		}
+		\vspace{-\baselineskip}
+	\end{proof}
 \end{frame}
 
 
@@ -349,14 +356,18 @@
 	\begin{proof}
 		$\dfrac z{1+z^2}$ 是实数当且仅当
 		\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
-		\onslide<+->{即
+		\onslide<+->{%
+			即
 			\[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]
-		}\onslide<+->{由 $y\neq0$ 可知 $z\neq \ov z$.
-		}\onslide<+->{故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere}
+		}\onslide<+->{%
+			由 $y\neq0$ 可知 $z\neq \ov z$.
+		}\onslide<+->{%
+			故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
-\begin{frame}{例题: 复数的代数计算}
+\begin{frame}{例: 复数的代数计算}
 	\onslide<+->
 	由于 $z\ov z$ 是一个实数,
 	\onslide<+->
@@ -379,7 +390,7 @@
 \end{frame}
 
 
-\begin{frame}[<*>]{例题: 复数的代数计算}
+\begin{frame}[<*>]{例: 复数的代数计算}
 	\onslide<+->
 	\begin{example}
 		设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
@@ -392,7 +403,9 @@
 			&\onslide<+->{=\frac{(-15-20)+(-20+15)i}{25}}
 			\onslide<+->{=-\frac75-\frac15i,}
 		\end{align*}
-		\onslide<+->{因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.}
+		\onslide<+->{%
+			因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.
+		}
 	\end{solution}
 \end{frame}
 

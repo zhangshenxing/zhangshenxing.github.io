@@ -25,7 +25,7 @@
 			s\\t
 		\end{pmatrix}$ 可知该曲线为双曲线.
 		\item 同理, $B^2-4AC<0$ 时该曲线为椭圆(或空集);
-		\item $B^2-4AC=0$ 时该曲线为双曲线.
+		\item $B^2-4AC=0$ 时该曲线为两条直线(若有一次项则为抛物线).
 	\end{enumerate}
 \end{frame}
 
@@ -134,14 +134,13 @@
 	\end{enumerate}
 \end{frame}
 
+
 \subsection{实二次型规范形}
-
-
 
 \begin{frame}{实二次型规范形}
 	\onslide<+->
 	\begin{definition}
-		若实二次型的标准形的系数只在 $−1, 0, 1$ 三个数中取值, 则称此实二次型为\emph{规范形}．
+		若实二次型的标准形的系数只在 $-1, 0, 1$ 三个数中取值, 则称此实二次型为\emph{规范形}．
 	\end{definition}
 	\onslide<+->
 	\begin{theorem}
@@ -357,7 +356,7 @@
 
 
 \begin{frame}{例: 正定的性质和判定}
-	\beqskip{6pt}
+\beqskip{6pt}
 	\onslide<+->
 	\begin{example}
 		设二次型 $f=\bfx^\rmT\bfA\bfx$.
@@ -382,7 +381,7 @@
 			故 $f$ 的最大值为 $\lambda_1$, 最小值为 $\lambda_n$.\qedhere
 		}
 	\end{proof}
-	\endgroup
+\endgroup
 \end{frame}
 
 
@@ -440,7 +439,7 @@
 	\onslide<+->
 	则
 	\[\bfA=\bfU'_{m\times r}\bmS'_{r\times r}\bfV'_{r\times n},\]
-	其中 $\bmS'$ 是 $\bfA$ 奇异值降序的对角阵, $\bfU',\bfV'$ 分别为列/行为标准向量且两两正交的矩阵.
+	其中 $\bmS'$ 是 $\bfA$ 奇异值降序的对角阵, $\bfU',\bfV'$ 为列/行为标准向量且两两正交的矩阵.
 
 	\onslide<+->
 	这意味着当 $r$ 相比 $m,n$ 较小时, 只需存储 $(m+n+1)r$ 个元素即可还原 $\bfA$.
@@ -456,4 +455,7 @@
 	\onslide<+->
 	矩阵还有诸如 $LU$ 分解, $QR$ 分解, 科列斯基分解等.
 	这些分解往往都在压缩或降噪中发挥着作用.
+
+	\onslide<+->
+	当 $m=n=3$ 时, 可以看出线性变换可以分解为旋转、放缩、旋转的复合.
 \end{frame}

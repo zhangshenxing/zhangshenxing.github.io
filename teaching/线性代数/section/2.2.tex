@@ -30,12 +30,12 @@
 
 		\onslide<+->{%
 		反过来, 假设向量组 $\bma_1,\dots,\bma_m$ 线性无关且生成 $V$.
-		}\onslide<+->{
+		}\onslide<+->{%
 			若 $\bfv\in V$ 有两种线性表达形式, 二式相减得到不全为零的数 $\lambda_1,\dots,\lambda_m$ 使得
 			\[\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}.\]
-		}\onslide<+->{
+		}\onslide<+->{%
 			这与 $\bma_1,\dots,\bma_s$ 线性无关矛盾.
-		}\onslide<+->{
+		}\onslide<+->{%
 			因此 $\forall\bfv\in V$ 只有唯一的一种线性表达形式.\qedhere
 		}
 	\end{proof*}
@@ -47,7 +47,7 @@
 	\begin{definition}
 		设 $V\subseteq \BC^n$ 是一个线性子空间.
 		若存在(线性)双射 $f:\BC^r\to V$ 满足
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $f(\bfu+\bfv)=f(\bfu)+f(\bfv),\forall \bfu,\bfv\in\BC^r$;
 			\item $f(\lambda\bfv)=\lambda f(\bfv),\forall \lambda\in\BC,\bfv\in\BC^r$,
 		\end{enumerate}
@@ -77,10 +77,12 @@
 	\onslide<+->
 	\begin{definition}
 		设向量组 $\bma_1,\dots,\bma_m$ 生成空间 $V$.
-		称 $V$ 的维数为该向量组的\emph{秩}(Rank), 记作 $R(\bma_1,\dots,\bma_m)$.
+		称 $V$ 的维数为该向量组的\emph{\cnen{秩}{Rank}}, 记作 $R(\bma_1,\dots,\bma_m)$.
 	\end{definition}
 	\onslide<+->
-	由于该向量组线性无关当且仅当它们构成一组基, 因此:
+	由于该向量组线性无关当且仅当它们构成一组基,
+	\onslide<+->
+	因此:
 	\begin{theorem}
 		\begin{enumerate}
 			\item 向量组 $\bma_1,\dots,\bma_m$ 线性无关$\iff m=R(\bma_1,\dots,\bma_m)$.
@@ -116,7 +118,7 @@
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
-		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<+->{\alert{\text{\huge$\times$}}}.
+		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<+->{\alert{\text{\huge$\times$}}}
 	\end{exercise}
 \end{frame}
 
@@ -149,7 +151,7 @@
 	\begin{definition}
 		设 $S$ 为一个向量组.
 		若 $S$ 的部分组 $S_0=\{\bma_1,\dots,\bma_m\}$ 满足
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $S_0$ 线性无关;
 			\item $S_0$ 添加 $S$ 中的若干向量得到的向量组均线性相关.
 		\end{enumerate}
@@ -165,7 +167,7 @@
 	\onslide<+->
 	\begin{theorem}
 		$S_0$ 是 $S$ 的极大线性无关组当且仅当
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item $S_0$ 线性无关;
 			\item $S$ 中任意 $m+1$ 个向量线性相关.
 		\end{enumerate}
@@ -194,8 +196,8 @@
 		\onslide<+->{%
 		例如
 		\[\bma_1=(1,0)^\rmT,\quad\bma_2=(0,1)^\rmT,\quad\bma_3=(1,1)^\rmT.\]}
-		\onslide<+->{
-		则 $\bma_1,\bma_2$ 是一个极大线性无关组, $\bma_1,\bma_3$ 也是一个极大线性无关组.}
+		\onslide<+->{%
+		$\bma_1,\bma_2$ 是一个极大线性无关组, $\bma_1,\bma_3$ 也是一个极大线性无关组.}
 		\item 向量组和它的一个极大线性无关组是等价的, 于是同一向量组的任意两个极大线性无关组等价.
 	\end{enumerate}
 \end{frame}
@@ -224,7 +226,7 @@
 				0&0&5
 			\end{pmatrix}$, 因此它们线性无关.
 		}\onslide<+->{%
-			它们是一个极大线性无关组, $\bfA$ 的行向量组的秩是 $3$.
+			它们构成一个极大线性无关组, $\bfA$ 的行向量组的秩是 $3$.
 		}\onslide<+->{%
 			类似可知, $\bfA$ 的列向量组的秩也是 $3$.
 		}

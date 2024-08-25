@@ -23,6 +23,7 @@
 		\bfE_s&\bfO\\
 		\bfO&\bfO
 	\end{pmatrix},\quad(r>s)\]
+	\onslide<+->
 	则存在可逆的方阵 $\bfP\in M_m,\bfQ\in M_n$ 使得
 	\[\begin{pmatrix}
 		\bfE_r&\bfO\\
@@ -127,7 +128,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[\bfA\wsim{\substack{r_2+r_1\\ r_3-r_1}}{r_4-r_1}\begin{pmatrix}
+		\[\bfA\wsim{\substack{\nsmath{r_2+r_1}\\\nsmath{r_3-r_1}}}{r_4-r_1}\begin{pmatrix}
 			1&1&a\\
 			0&a&1\\
 			0&0&a^2-a\\
@@ -137,12 +138,7 @@
 			0&a&1\\
 			0&0&a\\
 			0&0&a+1
-		\end{pmatrix}}\visible<+->{\wsim{r_4-r_3}{}\begin{pmatrix}
-			1&1&a\\
-			0&a&1\\
-			0&0&a\\
-			0&0&1
-		\end{pmatrix}}\visible<+->{\wsim{r_3-ar_4}{r_3\swap r_4}\begin{pmatrix}
+		\end{pmatrix}}\visible<+->{\sim\begin{pmatrix}
 			1&1&a\\
 			0&a&1\\
 			0&0&1\\
@@ -181,25 +177,31 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[\bfA\wsim{\substack{r_1\swap r_4\\ r_2-r_1}}{\substack{r_3-r_1\\ r_4-ar_1}}\begin{pmatrix}
+		\[\bfA\!\wsim{\substack{\nsmath{r_1\swap r_4}\\\nsmath{r_2-r_1}}}{\substack{\nsmath{r_3-r_1}\\\nsmath{r_4-ar_1}}}\!\begin{pmatrix}
 			1&1&1&a\\
 			0&a-1&0&1-a\\
 			0&0&a-1&1-a\\
 			0&1-a&1-a&1-a^2
-		\end{pmatrix}\visible<+->{\wsim{r_4+r_2}{r_4+r_3}\begin{pmatrix}
+		\end{pmatrix}\!\!\visible<+->{\wsim{r_4+r_2}{r_4+r_3}\!\!\begin{pmatrix}
 			1&1&1&a\\
 			0&a-1&0&1-a\\
 			0&0&a-1&1-a\\
 			0&0&0&-(a+3)(a-1)
 		\end{pmatrix}}\]
-		\onslide<+->{因此 $a\neq 1,-3$ 时, $R(\bfA)=4$; $a=-3$ 时, $R(\bfA)=3$; $a=1$ 时, $R(\bfA)=1$.}
+		\onslide<+->{%
+			因此 $a\neq 1,-3$ 时, $R(\bfA)=4$;
+		}\onslide<+->{%
+			$a=-3$ 时, $R(\bfA)=3$;
+		}\onslide<+->{%
+			$a=1$ 时, $R(\bfA)=1$.
+		}
 	\end{solution}
 \end{frame}
 
 
 \subsection{矩阵秩与子式}
 
-\begin{frame}{矩阵秩的性质}
+\begin{frame}{矩阵秩与子式}
 	\onslide<+->
 	矩阵秩有另一种刻画方式.
 	\onslide<+->
@@ -232,26 +234,28 @@
 	\onslide<+->
 	\begin{proof*}
 		设 $\bfB=\bfP\bfA$, 其中 $\bfP$ 是初等矩阵.
-		\onslide<+->{
 		\begin{enumerate}
 			\item 若 $\bfP=\bfE(i,j)$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式, 最多相差 $-1$.
 			\item 若 $\bfP=\bfE(i(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式或 $a$ 倍.
 			\item 若 $\bfP=\bfE(i,j(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式.
 		\end{enumerate}
-		}\onslide<+->{%
-		因此若 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.}
+		\onslide<+->{%
+			因此若 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.
+		}
 
 		\onslide<+->{
-		由于 $\bfP^{-1}$ 也是初等矩阵, 因此反过来也成立.
+			由于 $\bfP^{-1}$ 也是初等矩阵, 因此反过来也成立.
 		}\onslide<+->{%
-		对于 $\bfB=\bfA\bfP$ 情形同理.
+			对于 $\bfB=\bfA\bfP$ 情形同理.
 		}\onslide<+->{%
-		因此, 若 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.}
+			因此, 若 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.
+		}
 
 		\onslide<+->{%
-		对于标准型矩阵, 该定理显然成立.
+			对于标准型矩阵, 该定理显然成立.
 		}\onslide<+->{%
-		因此该定理对任意矩阵都成立.}
+			因此该定理对任意矩阵都成立.\qedhere
+		}
 	\end{proof*}
 \end{frame}
 
@@ -294,7 +298,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\setcounter{enumi}{4}
 			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$.
 		\end{enumerate}
@@ -307,9 +311,11 @@
 			于是
 			\[R(\bfA\bfB)=R(\bfB^\rmT\bfA^\rmT)\le R(\bfB^\rmT)=R(\bfB).\qedhere\]
 		}
+		\vspace{-\baselineskip}
 	\end{proof}
 	\onslide<+->
 	若 $\bfB$ 行满秩, 则 $\bfB$ 有 $R(\bfB)$ 阶子式非零, 它对应的方阵右乘 $\bfA$ 得到的列向量组和 $\bfA$ 列向量组等价, 从而 $R(\bfA\bfB)=R(\bfA)$;
+	\onslide<+->
 	若 $\bfB$ 列满秩, 则 $R(\bfB\bfA)=R(\bfA)$;
 \end{frame}
 
@@ -317,7 +323,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\setcounter{enumi}{5}
 			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$.
 		\end{enumerate}
@@ -352,7 +358,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\setcounter{enumi}{6}
 			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
@@ -361,10 +367,10 @@
 	\begin{proof}
 		\enumnum7 由于添加零行或零列不改变秩, 因此不妨设 $\bfA,\bfB$ 都是方阵.
 		\onslide<+->{%
-		由于\[\bfA+\bfB=(\bfE,\bfO)\begin{pmatrix}
+		由于\[\bfA+\bfB=(\bfE,\bfE)\begin{pmatrix}
 			\bfA&\\&\bfB
 		\end{pmatrix}\begin{pmatrix}
-			\bfE\\\bfO
+			\bfE\\\bfE
 		\end{pmatrix},\]
 		}\onslide<+->{%
 			因此 $R(\bfA+\bfB)\le R\begin{pmatrix}
@@ -378,7 +384,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\setcounter{enumi}{7}
 			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
@@ -393,7 +399,7 @@
 				\bfA&\\&\bfB
 			\end{pmatrix}.\]
 		}\onslide<+->{%
-		因此 $R(\bfA)\le R(\bfA,\bfB),R(\bfA,\bfB)\le R\begin{pmatrix}
+		因此 $R(\bfA)\le R(\bfA,\bfB)\le R\begin{pmatrix}
 			\bfA&\\&\bfB
 		\end{pmatrix}=R(\bfA)+R(\bfB)$.
 		}
@@ -716,23 +722,20 @@
 			-7&1&3&5&-4\\
 			-11&8&4&0&-11
 		\end{pmatrix}
-		\wsim{}{}
-		\begin{pmatrix}
+		\sim\begin{pmatrix}
 			1&5&-1&-7&1\\
 			0&9&-1&-11&0\\
 			0&36&-4&-44&3\\
 			0&63&-7&-77&0
 		\end{pmatrix}\]
 		\onslide<+->{\[
-			\wsim{}{}
-		\begin{pmatrix}
+		\sim\begin{pmatrix}
 			1&5&-1&-7&1\\
 			0&9&-1&-11&0\\
 			0&0&0&0&3\\
 			0&0&0&0&0
 		\end{pmatrix}
-		\wsim{}{}
-		\begin{pmatrix}
+		\sim\begin{pmatrix}
 			1&0&-4/9&-8/9&0\\
 			0&1&-1/9&-11/9&0\\
 			0&0&0&0&1\\
@@ -775,16 +778,16 @@
 
 \begin{frame}{典型例题: 求极大线性无关组}
 	\onslide<+->
-	\begin{exercise}
+	\begin{example}
 		假设下述向量组线性相关
 		\[\bma_1=(1,1,1,1,2),\ 
 		\bma_2=(2,1,3,2,3),\ 
 		\bma_3=(2,3,3,2,3),\ 
 		\bma_4=(1,3,-1,1,a).\]
 		求 $a$, 并求它的秩和一个极大无关组, 并把其余向量用这个极大无关组线性表示.
-	\end{exercise}
+	\end{example}
 	\onslide<+->
-	\begin{answer}
+	\begin{solution}
 		\[\bfA=(\bma_1^\rmT,\bma_2^\rmT,\bma_3^\rmT,\bma_4^\rmT)
 		\simr\begin{pmatrix}
 			1&0&0&5\\
@@ -793,8 +796,10 @@
 			0&0&0&a-4\\
 			0&0&0&0
 		\end{pmatrix}.\]
-		因此 $a=4$, 秩为 $3$, $\bma_1,\bma_2,\bma_3$ 是一个极大线性无关组, 且 $\bma_3=5\bma_1+2\bma_2$.
-	\end{answer}
+		\onslide<+->{%
+			因此 $a=4$, 秩为 $3$, $\bma_1,\bma_2,\bma_3$ 是一个极大线性无关组, 且 $\bma_3=5\bma_1+2\bma_2$.
+		}
+	\end{solution}
 \end{frame}
 
 
@@ -815,7 +820,6 @@
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
-
 
 
 \begin{frame}{例: 线性相关与线性无关}

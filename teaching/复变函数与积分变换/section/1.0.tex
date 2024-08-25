@@ -1,38 +1,49 @@
 \subsection{复数的引入}
 
 \begin{frame}{复数的引入\noexer}
-	\onslide<+->复数起源于多项式方程的求根问题.
-	\onslide<+->我们考虑一元二次方程 $x^2+bx+c=0$,
-	\onslide<+->配方可得
+	\onslide<+->
+	复数起源于多项式方程的求根问题.
+	\onslide<+->
+	我们考虑一元二次方程 $x^2+bx+c=0$,
+	\onslide<+->
+	配方可得
 		\[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
-	\onslide<+->于是得到求根公式
+	\onslide<+->
+	于是得到求根公式
 		\[x=\frac{-b\pm\sqrt\Delta}2,\quad \Delta=b^2-4c.\]
 	\begin{enumerate}
 		\item 当 $\Delta>0$ 时, 有两个不同的实根;
 		\item 当 $\Delta=0$ 时, 有一个二重的实根;
 		\item 当 $\Delta<0$ 时, 无实根.
-	\onslide<+->然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
+		\onslide<+->
+		然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}{三次方程的根\noexer}
-	\onslide<+->现在我们来考虑一元三次方程.
 
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	现在我们来考虑一元三次方程.
 	\onslide<+->
 	\begin{example}
 		解方程 $x^3+6x-20=0$.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
 		设 $x=u+v$, 则
 			\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-		\onslide<+->{我们希望 $u^3+v^3=20, uv=-2$,
-		}\onslide<+->{则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
-		}\onslide<+->{解得
+		\onslide<+->{%
+			我们希望 $u^3+v^3=20, uv=-2$,
+		}\onslide<+->{%
+			则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+		}\onslide<+->{%
+			解得
 			\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
-		}\onslide<+->{所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$,
-		}\onslide<+->{$x=u+v=2$.}
+		}\onslide<+->{%
+			所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$,
+		}\onslide<+->{%
+			$x=u+v=2$.
+		}
 	\end{solution}
 \end{frame}
 
@@ -47,12 +58,11 @@
 		\begin{tikzpicture}[framed]
 			\filldraw[cstcurve,dcolora,domain=-3.1:3.7,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
 			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-2.9)--(0,2.8);
+			\draw[cstaxis] (0,-2.9)--(0,2.5);
 			\fill[cstdot,dcolorb] (0,-0.8) circle;
 			\fill[cstdot,dcolorb] (0.8,0) circle;
-			\draw
-			(0.5,-0.8) node {$-20$}
-			(0.7,0.2) node {$2$};
+			\draw (0,-.8) node[right] {$-20$};
+			\draw (.8,0) node[above left] {$2$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -106,32 +116,23 @@
 		\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
 	\end{enumerate}
 	\begin{center}
-		\begin{figure}[h]
-			\begin{subfigure}{0.3\textwidth}
-				\centering\onslide<4->
-				\begin{tikzpicture}[framed,visible on=<4->]
-					\draw[cstcurve,dcolora,domain=-2.4:3.3,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x-10)*0.06});
-					\draw[cstaxis] (-1.5,0)--(1.5,0);
-					\draw[cstaxis] (0,-1.2)--(0,1.2);
-				\end{tikzpicture}
-			\end{subfigure}
-			\begin{subfigure}{0.3\textwidth}
-				\centering\onslide<5->
-				\begin{tikzpicture}[framed,visible on=<5->]
-					\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
-					\draw[cstaxis] (-1.5,0)--(1.5,0);
-					\draw[cstaxis] (0,-1.2)--(0,1.2);
-				\end{tikzpicture}
-			\end{subfigure}
-			\begin{subfigure}{0.3\textwidth}
-				\centering\onslide<6->
-				\begin{tikzpicture}[framed,visible on=<6->]
-					\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
-					\draw[cstaxis] (-1.5,0)--(1.5,0);
-					\draw[cstaxis] (0,-1.2)--(0,1.2);
-				\end{tikzpicture}
-			\end{subfigure}
-		\end{figure}
+		\begin{tikzpicture}
+			\begin{scope}[framed,visible on=<4->]
+				\draw[cstcurve,dcolora,domain=-2.4:3.3,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x-10)*0.06});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{scope}
+			\begin{scope}[framed,visible on=<5->,xshift=40mm]
+				\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{scope}
+			\begin{scope}[framed,visible on=<6->,xshift=80mm]
+				\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.2)--(0,1.2);
+			\end{scope}
+		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
