@@ -200,7 +200,7 @@
 		\[z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta},\quad\forall n\in\BZ.\]
 	\end{alertblock@}
 	\onslide<+->
-	特别地, 当 $r=1$ 时, 我们得到\cnen{棣莫弗}{De Moivre}公式
+	特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗公式}
 	\[(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.\]
 \end{frame}
 
@@ -220,7 +220,7 @@
 	\onslide<+->
 	这个多项式
 	\[g_n(T)=2^{n-1}T^n-n2^{n-3}T^{n-2}+\cdots\]
-	叫做切比雪夫多项式.
+	叫做\emph{切比雪夫多项式}.
 	\onslide<+->
 	它在计算数学的逼近理论中有着重要作用.
 \end{frame}
@@ -234,14 +234,16 @@
 
 	\onslide<+->
 	\begin{solution}
-		由于 $1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
+		由于 $\displaystyle 1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
 		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right)$,
-		\onslide<+->{因此
-		\begin{align*}
-			&\peq(1+i)^n+(1-i)^n\\
-			&=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
-			\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
-		\end{align*}}
+		\onslide<+->{%
+			因此
+			\begin{align*}
+				&\peq(1+i)^n+(1-i)^n\\
+				&=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
+				\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
+			\end{align*}
+		}\vspace{-\baselineskip}
 	\end{solution}
 
 	\onslide<+->
@@ -306,13 +308,17 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $1+i=\sqrt2\exp\left(\dfrac{\pi i}4\right)$,
-		\onslide<+->{因此
+		\onslide<+->{%
+			因此
 			\[\sqrt[4]{1+i}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)i}4,\quad k=0,1,2,3.\]
-		}\onslide<+->{所以该方根所有值为
+		}\onslide<+->{%
+			所以该方根所有值为
 			\[w_0=\sqrt[8]2e^{\frac{\pi i}{16}},\quad
 			w_1=\sqrt[8]2e^{\frac{9\pi i}{16}},\quad
 			w_2=\sqrt[8]2e^{\frac{17\pi i}{16}},\quad
-			w_3=\sqrt[8]2e^{\frac{25\pi i}{16}}.\]}
+			w_3=\sqrt[8]2e^{\frac{25\pi i}{16}}.\]
+		}
+		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
