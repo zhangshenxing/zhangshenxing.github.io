@@ -1,0 +1,264 @@
+\documentclass[%
+  color=doremi,%
+  lang=cn,%
+  11pt,%
+  chinese,%
+  twoside,%
+  openright,%
+  usesamecnt%
+]{elegantbook}
+\PassOptionsToPackage{style=alphabetic}{biblatex}
+% \PassOptionsToPackage{hyphens}{url}
+\usepackage[all]{xy}
+\usepackage{stmaryrd}
+\usepackage{makeidx}
+\usepackage{pfnote}
+\usepackage{booktabs}
+% \usepackage{breakurl}
+
+\newcommand{\ansno}[1]{\par\noindent\emph{#1}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
+\renewcommand{\labelenumi}{{\upshape(\arabic{enumi})}}
+\newcommand\enumnum[1]{{\textcolor{main}{\mdseries\upshape{(#1)}}}}
+\newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
+
+\usepackage{tikz}
+\usepackage{color,calc}
+% TIKZ 设置
+\usetikzlibrary{
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
+}
+\tikzset{
+	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
+  % arrow
+	cstra/.style      ={-Stealth},        % right arrow
+	cstla/.style      ={Stealth-},        % left arrow
+	cstlra/.style     ={Stealth-Stealth}, % left-right arrow
+	cstwra/.style     ={-Straight Barb},  % wide ra
+	cstwla/.style     ={Straight Barb-},
+	cstwlra/.style    ={Straight Barb-Straight Barb},
+	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+  % curve
+	cstcurve/.style       ={very thick}, %一般曲线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+  % dot
+	cstdot/.style         ={radius=.08}, %实心点
+	cstdote/.style        ={radius=.07, fill=white}, %空心点
+  % fill
+	cstfill1/.style       ={fill=main!30},
+	cstfille1/.style      ={pattern=north east lines, pattern color=main},
+	cstfill2/.style        ={fill=second!30},
+	cstfille2/.style       ={pattern=north east lines, pattern color=second},
+	cstfill3/.style        ={fill=third!30},
+	cstfille3/.style       ={pattern=north east lines, pattern color=third},
+	cstfill4/.style        ={fill=fourth!30},
+	cstfille4/.style       ={pattern=north east lines, pattern color=fourth},
+	cstfill5/.style        ={fill=fifth!30},
+	cstfille5/.style       ={pattern=north east lines, pattern color=fifth},
+  % node
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode1/.style       ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode2/.style       ={fill=second!15,draw=second!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode3/.style       ={fill=third!15,draw=third!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode4/.style       ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode5/.style       ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt}
+}
+\ExplSyntaxOn
+\cs_new_protected:Npn \fpstepfromto#1#2#3 
+  {% from, to, nums
+    \fp_step_inline:nnnn {#1} { (#2-(#1))/(#3-1)*0.99 } {#2}
+  }
+\pgfmathdeclarefunction{nrand}{0}
+  {% \tex_normaldeviate:D 生成均值为 0，标准差为 10000 的随机整数
+    \tl_set:Nx \pgfmathresult { \fp_eval:n { \tex_normaldeviate:D/10000 } }
+  }
+\pgfmathdeclarefunction{rdv}{0}{\pgfmathparse{1+nrand/100}}
+\ExplSyntaxOff
+\newcommand{\randpts}[3][10]{
+  \foreach\i in {0,1,...,#1}{
+    \pgfmathparse{rdv}\let\rdv\pgfmathresult
+    \coordinate (\i) at ({#2*\rdv*cos(360/#1*\i)},{#3*\rdv*sin(360/#1*\i)});
+  }
+}
+\newcommand{\randep}[2]{
+  \randpts{#1}{#2}
+  \filldraw[cstcurve,main,cstfill3,smooth] plot coordinates {(0) (1) (2) (3) (4) (5) (6) (7) (8) (9) (0)};
+}
+
+\input{symbols}
+\let\question\relax
+\elegantnewtheorem{question}{问题}{defstyle}{que}
+
+\newfontface\cmunrm{cmunrm.otf}
+\newcommand\cmu[1]{{\cmunrm{#1}}}
+\newcommand{\alert}[1]{\textcolor{main}{\bf #1}}
+\renewcommand{\emph}[1]{\textcolor{second}{\bf #1}}
+\newcommand{\cnen}[2]{{\kaishu$\overset{\text{{#2}}}{\text{#1}}$}}
+\newcommand{\nounen}[2]{{\color{second}\kaishu\cnen{#1}{#2}}\index{{#1}}}
+\newcommand{\noun}[1]{{\color{second}\kaishu #1}\index{{#1}}}
+\newcommand{\nouns}[2]{{\color{second}\kaishu #1}\index{{#2}}}
+\newcommand{\nounsen}[3]{{\color{second}\kaishu\cnen{#1}{#2}}\index{{#3}}}
+
+\setcounter{tocdepth}{2}
+\newfontfamily\couriernew{Courier New}
+\lstset{language=[LaTeX]TeX,
+	basicstyle=\couriernew,
+  morekeywords={AUTHOR, KEY, TITLE, YEAR, PAGES, HOWPUBLISHED, URL, LANGUAGE},
+  keywordstyle=\color{winered}
+}
+
+\makeindex
+
+\title{复变函数与积分变换}
+\author{张神星}
+\institute{合肥工业大学}
+\date{\zhtoday}
+\version{v1.0.0.0}
+\logo{hfut.png}
+\cover{theme/doremi/cover.jpg}
+\addbibresource[location=local]{mybib.bib}
+
+\begin{document}
+
+\maketitle
+\hypersetup{pageanchor=true}
+\frontmatter
+
+\chapter*{前言}
+\addcontentsline{toc}{chapter}{前言}
+% 本文为2020年春作者在中国科学技术大学教授代数数论(MA05109)的课程讲义.
+% 本文主要沿着\cite{Neukirch1999}的脉络进行的, 对部分章节进行了增减.
+% 本课程需要的前置内容包括线性代数、抽象代数和伽罗瓦理论.
+
+% 2020年, 开年就是新型冠状病毒疫情, 这也导致学校的教学首次安排在线上教学. 现在, 在家中码字的我只希望, 人们能够早日战胜疫病, 加油!
+
+\vskip 0.5cm
+\begin{flushright}
+张神星\\
+2024年8月27日
+\end{flushright}
+
+
+\vskip 0.5cm
+
+\noindent Bib 格式:
+\begin{lstlisting}
+@misc{ZhangNotes2021,
+  AUTHOR = {张神星},
+  KEY = {zhang2 shen4 xing2},
+  TITLE = {复变函数与积分变换 (v1.0.0.0)},
+  YEAR = {2024},
+  PAGES = {vi+163},
+  HOWPUBLISHED = {Course Notes},
+  URL = {https://zhangshenxing.github.io/teaching/复变函数与积分变换/note/main.pdf},
+  LANGUAGE = {Chinese}
+}
+\end{lstlisting}
+
+\tableofcontents
+
+
+
+
+\mainmatter
+% \input{chapter1.tex}
+\input{chapter2.tex}
+% \input{chapter3.tex}
+% \input{chapter4.tex}
+% 计划中: order, division algebra, Brauer group
+
+
+% \appendix
+% \input{appendix.tex}
+
+
+% \backmatter
+% \printbibliography[heading=bibintoc, title=\ebibname]
+
+\chapter*{中外人名对照表}
+%\addcontentsline{toc}{chapter}{中外人名对照表}
+\markboth{中外人名对照表}{中外人名对照表}
+\begin{center}
+\begin{tabular}{lr}
+阿贝尔&Niels Henrik Abel, 1802--1829\\
+阿基米德&\cmu{Ἀρχιμήδης}, 公元前 287--前 212\\
+埃尔布朗&Jacques Herbrand, 1908--1931\\
+艾森斯坦&Ferdinand Gotthold Max Eisenstein, 1823--1852\\
+奥斯特洛斯基&\cmu{Олександр Маркович Островський}, 1893--1986\\
+贝克&Alan Baker, 1939--2018\\
+伯奇&Bryan John Birch, 1931--~~~~\\
+泊松&Siméon Denis Poisson, 1781--1840\\
+戴德金&Julius Wilhelm Richard Dedekind, 1831--1916\\
+狄利克雷&Johann Peter Gustav Lejeune Dirichlet, 1805--1859\\
+法尔廷斯&Gerd Faltings, 1954--~~~~\\
+方丹&Jean-Marc Fontaine, 1944--2019\\
+费马&Pierre de Fermat, 1601--1665\\
+傅里叶&Jean-Baptiste Joseph Fourier, 1768--1830\\
+弗罗贝尼乌斯&Ferdinand Georg Frobenius, 1849--1917\\
+伽罗瓦&Évariste Galois, 1811-1832\\
+高斯&Johann Carl Friedrich Gauß, 1777--1855\\
+谷山丰&谷山豊, 1927--1953\\
+哈尔&Alfréd Haar, 1885--1933\\
+哈塞&Helmut Hasse, 1898--1979\\
+豪斯多夫&Felix Hausdorff, 1868--1942\\
+赫克&Erich Hecke, 1887--1947\\
+亨泽尔&Kurt Hensel, 1861--1941\\
+怀尔斯&Sir Andrew John Wiles, 1953--~~~~\\
+克拉斯纳&Marc Krasner, 1912--1985\\
+克鲁尔&Wolfgang Krull, 1899--1971\\
+克罗内克&Leopold Kronecker, 1823--1891\\
+柯西&Augustin-Louis Cauchy, 1789--1857\\
+库默尔&Ernst Eduard Kummer, 1810--1893\\
+莱布尼茨&Gottfried Wilhelm Freiherr von Leibniz, 1646--1716\\
+勒让德&Adrien-Marie Legendre, 1752--1833\\
+黎曼&Georg Friedrich Bernhard Riemann, 1826--1866\\
+卢宾&Jonathan Darby Lubin, 1936--~~~~\\
+闵可夫斯基&Hermann Minkowski, 1864--1909\\
+默比乌斯&August Ferdinand Möbius, 1790--1868
+\end{tabular}
+\end{center}
+\begin{center}
+\begin{tabular}{lr}
+牛顿&Sir Isaac Newton, 1643--1727\\
+诺特&Amalie Emmy Noether, 1882--1935\\
+欧拉&Leonhardus Eulerus, 1707--1783\\
+庞特里亚金&\cmu{Лев Семёнович Понтря́гин}, 1908--1988\\
+佩尔&John Pell, 1611--1685\\
+切博塔廖夫&\cmu{Мико́ла Григо́рович Чеботарьо́в}, 1894--1947\\
+塞尔&Jean-Pierre Serre, 1926--~~~~\\
+施瓦兹&Laurent-Moïse Schwartz, 1915--2002\\
+斯温纳顿-戴尔&Sir Henry Peter Francis Swinnerton-Dyer, 1927--2018\\
+沙法列维奇&\cmu{И́горь Ростисла́вович Шафаре́вич}, 1923--2017\\
+泰勒&Brook Taylor, 1685--1731\\
+泰特&John Torrence Tate, 1925--2019\\
+泰希米勒&Paul Julius Oswald Teichm\"uller, 1913--1943\\
+韦伯&Wilhelm Eduard Weber, 1804--1891\\
+魏尔斯特拉斯&Karl Theodor Wilhelm Weierstraß, 1815--1897\\
+维特&Ernst Witt, 1911--1991\\
+韦伊&André Weil, 1906--1998\\
+希尔伯特&David Hilbert, 1862--1943\\
+伯努利&Jacques Bernoulli, 1654--1705\\
+岩泽健吉&岩澤健吉, 1917--1998\\
+志村五郎&志村五郎, 1930--2019
+\end{tabular}
+\end{center}
+
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{索引}
+
+\printindex
+
+% \input{ans.tex}
+\end{document}

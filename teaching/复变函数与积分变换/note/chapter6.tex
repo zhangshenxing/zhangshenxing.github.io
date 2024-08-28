@@ -1,0 +1,746 @@
+
+
+\chapter{积分变换}
+
+在学习指数和对数的时候, 我们了解到利用对数可以将乘除、幂次转化为加减、乘除.
+\begin{example}
+	计算 $12345\times 67890$.
+\end{example}
+\begin{solution}
+	通过查对数表得到
+		\[\ln 12345\approx 9.4210,\qquad\ln 67890\approx 11.1256.\]%
+	将二者相加并通过反查对数表得到原值
+		\[12345\times 67890\approx \exp(20.5466)\approx 8.3806\times 10^8.\]
+\end{solution}
+
+而对于函数而言, 我们常常要解函数的微积分方程.
+\begin{example}
+	解微分方程
+	\[\begin{cases}
+		y''+y=t,&\\
+		y(0)=y'(0)=0.&
+	\end{cases}\]
+\end{example}
+\begin{solution}
+		我们希望能找到一种函数\emph{变换 $\msl$}, 使得它可以把函数的微分和积分变成代数运算, 计算之后通过\emph{反变换 $\msl^{-1}$} 求得原来的解.
+		这个变换最常见的就是我们将要介绍的\emph{傅里叶变换}和\emph{拉普拉斯变换}.
+\end{solution}
+
+\section{傅里叶变换}
+
+\subsection{傅里叶级数}
+
+为了引入傅里叶变换, 我们回顾下傅里叶级数展开.
+
+设 $f(t)$ 是定义在 $(-\infty,+\infty)$ 上周期为 $T$ 的可积实变函数.
+我们知道 $\cos n\omega t$ 和 $\sin n\omega t$ 周期也是 $T$, 其中 $\omega=\dfrac{2\pi}T$.
+如果 $f(t)$ 在 $\left[-\dfrac T2,\dfrac T2\right]$ 上满足\emph{狄利克雷条件}:
+\begin{itemize}
+	\item 间断点只有有限多个, 且均为第一类间断点;
+	\item 只有有限个极值点,
+\end{itemize}
+则我们有\emph{傅里叶级数}展开:
+	\[f(t)=\frac{a_0}2+\sum_{n=1}^\infty \left(a_n\cos n\omega t+b_n \sin n\omega t\right).\]
+当 $t$ 是间断点时, 傅里叶级数的左侧需改为 $\dfrac{f(t+)+f(t-)}2$.
+
+我们来将其改写为复指数形式.
+物理中为了与电流 $i$ 区分, 通常用 $j$ 来表示虚数单位.
+由
+	\[\cos x=\frac{e^{jx}+e^{-jx}}2,\quad \sin x=\frac{e^{jx}-e^{-jx}}{2j}\]
+可知 $f(t)$ 的傅里叶级数可以表示为函数 $e^{jn\omega t}$ 的线性组合.
+设 $f(t)=\suml_{n=-\infty}^{+\infty} c_n e^{jn\omega t}$, 则
+\[c_n=\frac 1T \int_{-\frac T2}^{\frac T2} f(t)e^{-jn\omega t} \diff t.\]
+于是我们得到周期函数\emph{傅里叶级数的复指数形式}:
+\[f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-jn\omega\tau} \diff\tau\right] e^{jn\omega t}.\]
+
+对于一般的函数 $f(t)$, 它未必是周期的.
+我们考虑它在 $\left[-\dfrac T2,\dfrac T2\right]$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
+设
+\[\omega_n=n\omega,\quad \Delta\omega_n=\omega_n-\omega_{n-1}=\omega,\]
+则
+\begin{align*}
+	f(t)&=\lim_{T\to +\infty}f_T(t)\\
+	&=\lim_{T\to+\infty} \frac 1T \sum_{n=-\infty}^{+\infty} \left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau}\diff\tau\right] e^{j\omega_n t}\\
+	&=\frac1{2\pi}\lim_{\Delta\omega_n\to 0}\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau} \diff \tau\right] e^{j\omega_n t}\Delta\omega_n\\
+	&=\frac1{2\pi}\int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff \tau\right]e^{j\omega t}\diff\omega.
+\end{align*}
+
+\subsection{傅里叶积分与傅里叶变换}
+
+\begin{block}{傅里叶积分定理}
+	设函数 $f(t)$ 满足
+	\begin{itemize}
+		\item 在 $(-\infty,+\infty)$ 上\emph{绝对可积};
+		\item 在任一有限区间上满足狄利克雷条件.
+	\end{itemize}
+	那么
+		\[f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
+		F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.\]
+	对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
+\end{block}
+\begin{center}
+	\begin{tikzpicture}[node distance=100pt]
+		\node[cstnode2](a){原象函数 $f(t)$};
+		\node[cstnode2,right=of a](b){象函数 $F(\omega)$};
+		\draw[cstnarrow, main] (a.9) -- node[above]{傅里叶变换 $\msf$} (b.170);
+		\draw[cstnarrow, third] (b.190) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a.-9);
+	\end{tikzpicture}
+\end{center}
+
+傅里叶积分公式有一些变化形式.
+例如:
+\begin{align*}
+	f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
+	&=\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega\\
+	&=\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
+		\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
+		+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}
+	\Bigr] \diff\omega\\
+	&=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \cos \omega(t-\tau)\diff\tau\right]\diff\omega.
+\end{align*}
+此即\emph{傅里叶积分公式的三角形式}.
+
+对上式再次展开得到:
+\[f(t)=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)(\cos\omega t\cos\omega\tau+\sin\omega t\sin \omega\tau)\diff\tau\right]\diff\omega.\]
+
+若 $f(t)$ 是奇函数, $f(\tau)\cos\omega\tau$ 是 $\tau$ 的奇函数, $f(\tau)\sin \omega\tau$ 是 $\tau$ 的偶函数.
+从而得到\emph{傅里叶正弦积分公式}:
+\[f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.\]
+
+类似地, 若 $f(t)$ 是偶函数, 有\emph{傅里叶余弦积分公式}:
+\[f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.\]
+
+\begin{example}
+	求函数 $f(t)=
+		\begin{cases}
+			1, & |t|\le 1,\\
+			0, & |t|>1
+		\end{cases}$
+	的傅里叶变换.
+\end{example}
+
+\begin{solution}
+
+	\begin{align*}
+		F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+		&{=\int_{-1}^1(\cos\omega t-j\sin\omega t)\diff t}{=\frac{2\sin \omega}{\omega}.}
+	\end{align*}
+\end{solution}
+
+由傅里叶积分公式
+\begin{align*}
+	f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
+	&{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{2\sin\omega}{\omega}(\cos\omega t+j\sin\omega t)\diff \omega}\\
+	&{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
+\end{align*}
+当 $t=\pm1$ 时, 左侧应替换为 $\frac{f(t+)+f(t-)}2=\half $.
+由此可得
+\[\int_0^{+\infty}\frac{\sin \omega\cos\omega t}\omega\diff\omega=\begin{cases}
+	\pi/2,&|t|<1,\\
+	\pi/4,&|t|=1,\\
+	0,&|t|>1.
+\end{cases}\]
+特别地, 可以得到狄利克雷积分
+$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
+
+\begin{example}
+	求函数 $f(t)=\dfrac{\sin t}{t}$ 的傅里叶变换.
+\end{example}
+
+\begin{solution}
+	根据前面的例子可知
+
+	\begin{align*}
+		F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+		&{=2\int_0^{+\infty}\frac{\sin t\cos\omega t}{t}\diff t}
+		{=\begin{cases}
+			\pi,&|\omega|<1,\\
+			\pi/2,&|\omega|=1,\\
+			0,&|\omega|>1.
+			\end{cases}}
+	\end{align*}
+\end{solution}
+
+\begin{example}
+	求函数 $f(t)=
+		\begin{cases}
+			1,&t\in(0,1),\\
+			-1,&t\in(-1,0),\\
+			0,&\text{其它情形}
+		\end{cases}$
+	的傅里叶变换.
+\end{example}
+
+\begin{solution}
+
+	\begin{align*}
+		F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+		&{=\left(\int_0^1-\int_{-1}^0\right)(\cos\omega t-j\sin\omega t)\diff t}
+		{=-\frac{2j(1-\cos\omega)}\omega.}&{}
+	\end{align*}
+\end{solution}
+
+类似可得
+$\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega=
+	\begin{cases}
+		\pi/2,&0<t<1,\\
+		\pi/4,&t=1,\\
+		0,&t>1.
+	\end{cases}$
+
+\begin{example}
+	求\emph{指数衰减函数} $f(t)=
+		\begin{cases}
+			0,&t<0,\\
+			e^{-\beta t},&t\ge 0
+		\end{cases}$ 的傅里叶变换, $\beta>0$.
+\end{example}
+\begin{solution}
+	\begin{align*}
+		F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+		&=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t
+			=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t
+			=\frac1{\beta+j\omega}.
+	\end{align*}
+\end{solution}
+
+类似可得
+	\[\int_0^{+\infty}\frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\diff\omega
+	=\begin{cases}
+		0,&t<0,\\
+		\pi/2,&t=0,\\
+		\pi e^{-\beta t},&t>0.
+	\end{cases}\]
+
+\begin{example}
+	求\emph{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
+\end{example}
+
+\begin{solution}
+	\begin{align*}
+		F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+		&=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t\\
+		&=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t
+			=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.
+	\end{align*}
+\end{solution}
+
+类似可得
+	\[\int_0^{+\infty}e^{-\frac{\omega^2}{4\beta}}\cos\omega t\diff\omega=\sqrt{\pi\beta}e^{-\beta t^2}.\]
+
+\subsection{狄拉克 \texorpdfstring{$\delta$}{δ} 函数}
+
+傅里叶变换存在的条件是比较苛刻的.
+例如常值函数 $f(t)=1$ 在 $(-\infty,+\infty)$ 上不是可积的, 所以它没有傅里叶变换, 这很影响我们使用傅里叶变换.
+为此我们引入广义函数的概念.
+
+设 $\msc$ 是一些函数形成的线性空间, 例如全体绝对可积函数, 或者全体光滑函数之类的. 
+从一个函数 $\lambda(t)$ 出发, 可以定义一个线性映射 $\msc\to \BR$:
+	\[\pair{\lambda,f}:=\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
+这个线性映射基本上确定了 $\lambda(t)$ 本身(至多可数个点处不同).
+
+\emph{广义函数}就是指一个线性映射 $\msc\to \BR$.
+为了和普通函数类比, 通常也将广义函数表为上述积分形式(并不是真的积分):
+\[\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
+这里的 $\lambda(t)$ 并不表示一个真正的函数.
+
+\begin{definition}
+	\emph{$\delta$ 函数}是指广义函数
+	\[\pair{\delta,f}=\int_{-\infty}^{+\infty}\delta(t)f(t)\diff t=f(0).\]
+\end{definition}
+
+
+\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-190mm,yshift=10mm]
+	\draw[cstaxis](8.2,0)--(9.8,0);
+	\draw[cstaxis](9,-0.6)--(9,2);
+	\draw
+		(9.8,-0.25) node {$t$}
+		(8.7,1.6) node {$1$}
+		(9.5,1.6) node[main] {$\delta(t)$}
+		(8.8,-0.2) node {$O$};
+	\draw[main,cstcurve,cstra](9,0)--(9,1.5);
+\end{tikzpicture}\end{tikzpicture}
+
+
+设 $\delta_\varepsilon(t)=\begin{cases}
+1/\varepsilon,&0\le t\le \varepsilon,\\
+0,&\text{其它情形,}
+\end{cases}$
+则对于连续函数 $f(t)$,
+\[\pair{\delta_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\diff t=f(\xi),\quad \xi\in(0,\varepsilon).\]
+当 $\varepsilon\to0$ 时, 右侧就趋于 $f(0)$.
+因此 $\delta$ 可以看成 $\delta_\varepsilon$ 的某种极限.
+基于此, 我们通常用长度为 $1$ 的有向线段来表示它.
+
+对于广义函数 $\lambda$, 我们可以形式地定义 $\lambda(at),\lambda'$:
+\[\int_{-\infty}^{+\infty}\lambda(at)f(t)\diff t
+=\int_{-\infty}^{+\infty}\lambda(t)\cdot\frac1{|a|}f\bigl(\frac ta\bigr)\diff t,\]
+\[\int_{-\infty}^{+\infty}\lambda'(t)f(t)\diff t
+=-\int_{-\infty}^{+\infty}\lambda(t)f'(t)\diff t.\]
+由此可知
+\begin{itemize}
+	\item $\pair{\delta^{(n)},f}=(-1)^nf^{(n)}(0)$, 其中 $f(t)$ 是光滑函数.
+	\item $\delta(at)=\dfrac1{|a|}\delta(t)$. 特别地 $\delta(t)=\delta(-t)$.
+	\item $u'(t)=\delta(t)$, 其中 $u(t)=\begin{cases}1,&t\ge0,\\0,&t<0\end{cases}$ 是\emph{单位阶跃函数}.
+\end{itemize}
+
+根据 $\delta$ 函数的定义可知
+\[\msf[\delta(t)]=\int_{-\infty}^{+\infty}\delta(t)e^{-j\omega t}\diff t=1.\]
+同理可得其傅里叶逆变换.
+因此我们得到:
+\begin{alertblock@}
+	\[\msf[\delta(t)]=1,\qquad
+	\msf^{-1}[\delta(\omega)]=\dfrac1{2\pi}.\]
+\end{alertblock@}
+
+\begin{example}
+	证明 \emph{$\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega)$}.
+\end{example}
+
+\begin{proof}
+		\[\msf^{-1}\left[\frac1{j\omega}\right]
+		=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{e^{j\omega t}}{j\omega} \diff\omega
+		=\frac1\pi\int_0^{+\infty}\frac{\sin\omega t}{\omega} \diff\omega.\]
+	{由
+		$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega \diff\omega=\dfrac\pi2$
+		可知
+		$\displaystyle\int_0^{+\infty}\frac{\sin\omega t}\omega \diff\omega=\frac\pi2\sgn(t)$.故
+		\[\msf^{-1} \left[\frac1{j\omega}+\pi\delta(\omega)\right]
+		=\half\sgn(t)+\half =u(t)\quad (t\neq 0).\qedhere\]
+	}
+\end{proof}
+
+\subsection{傅里叶变换的性质}
+
+我们不可能也没必要每次都对需要变换的函数从定义出发计算傅里叶变换.
+通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
+
+\begin{block}{线性性质}
+	\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
+	\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
+\end{block}
+
+\begin{block}{位移性质}
+	\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
+	\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
+\end{block}
+
+\begin{proof}
+	\begin{align*}
+		\msf[f(t-t_0)]&=\int_{-\infty}^{+\infty}f(t-t_0)e^{-j\omega t}\diff t\\
+		&=\int_{-\infty}^{+\infty}f(t)e^{-j\omega (t+t_0)}\diff t=e^{-j\omega t_0}F(\omega).
+	\end{align*}
+	{逆变换情形类似可得.\qedhere}
+\end{proof}
+
+由此可得
+\[\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
+\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}.\]
+
+\begin{block}{微分性质}
+	\[\msf[f'(t)]=j\omega F(\omega),\quad
+	\msf^{-1}[F'(\omega)]=-jtf(t),\]
+
+	\[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
+	\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
+	这里, 被变换的函数要求在 $\infty$ 处趋于 $0$.
+\end{block}
+
+\begin{proof}
+	\begin{align*}
+		\msf[f']&=\int_{-\infty}^{+\infty}f'(t)e^{-j\omega t}\diff t\\
+		&=-\int_{-\infty}^{+\infty}f(t)(e^{-j\omega t})'\diff t=j\omega F(\omega)
+	\end{align*}
+	{逆变换情形类似可得. 一般的 $k$ 归纳可得.\qedhere}
+\end{proof}
+
+由微分性质可得
+\begin{block}{乘多项式性质}
+	\[\msf[tf(t)]=jF'(\omega),\quad
+	\msf^{-1}[\omega F(\omega)]=-jf'(t),\]
+	\[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
+	\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
+\end{block}
+
+\begin{block}{积分性质}
+	\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
+\end{block}
+
+由变量替换易得
+\begin{block}{相似性质}
+	\[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
+	\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
+\end{block}
+
+\begin{example}
+	求 $\msf[t^k e^{-\beta t}u(t)],\beta>0$.
+\end{example}
+
+\begin{solution}
+		由于
+		\[\msf[e^{-\beta t}u(t)]=\frac{1}{\beta+j\omega},\]
+	{因此
+		\begin{align*}
+			\msf[t^ke^{-\beta t}u(t)]&=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}
+			=\frac{k!}{(\beta+j\omega)^{k+1}}.
+		\end{align*}
+	}
+\end{solution}
+
+\begin{example}
+	求 $\sin{\omega_0 t}$ 的傅里叶变换.
+\end{example}
+
+\begin{solution}
+		由于 $\msf[1]=2\pi\delta(\omega)$,
+	{因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
+	}
+	{\begin{align*}
+			\msf[\sin{\omega_0 t}]&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
+			&{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
+			&{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}
+		\end{align*}
+	}
+\end{solution}
+
+\begin{exercise}
+	$\msf[\cos{\omega_0 t}]=$\fillblank[5cm][1mm]{{$\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}}.
+\end{exercise}
+
+\begin{alertblock}{常见傅里叶变换汇总 I}
+	\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
+	\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
+	\begin{align*}
+	\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
+	\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
+	\end{align*}
+\end{alertblock}
+
+\begin{block}{常见傅里叶变换汇总 II}
+	\[\msf[u(t)e^{-\beta t}]=\dfrac1{\beta+j\omega},\quad
+	\msf[e^{-\beta t^2}]=\sqrt{\dfrac\pi\beta}e^{-\omega^2/(4\beta)},\]
+	\[\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega).\]
+\end{block}
+
+\subsection{卷积*}
+
+\begin{definition}
+	$f_1(t),f_2(t)$ 的\emph{卷积}是指
+	\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.\]
+\end{definition}
+
+容易验证卷积满足如下性质:
+\begin{itemize}
+	\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
+	\item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
+	\item $f\ast\delta=f$;
+	\item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
+\end{itemize}
+
+\begin{example}
+	设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$. 求 $f_1\ast f_2$.
+\end{example}
+\begin{solution}
+	\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_2(\tau)f_1(t-\tau)\diff \tau=\int_0^{+\infty} e^{-\tau}u(t-\tau)\diff \tau.\]
+	当 $t<0$ 时, $(f_1\ast f_2)(t)=0$.当 $t\ge0$ 时, 
+		\[(f_1\ast f_2)(t)=\int_0^t e^{-\tau}\diff \tau=1-e^{-t}.\]
+	故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
+\end{solution}
+
+\begin{block}{卷积定理}
+	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
+	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
+\end{block}
+
+\begin{proof}
+	\begin{align*}
+		\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
+		&{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
+		&{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}\\
+		&{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}\\
+		&{=\msf[f_1]\msf[f_2].\qedhere}
+	\end{align*}
+\end{proof}
+
+\begin{example}
+	求 $\displaystyle	I=\int_{-\infty}^{+\infty}\frac{\sin \omega}{\omega}\cdot \frac{\sin (\omega/3)}{\omega/3}\diff\omega$.
+\end{example}
+
+\begin{solution}
+		设 $F(\omega)=\dfrac{\sin\omega}{\omega},G(\omega)=\dfrac{\sin(\omega/3)}{\omega/3}$,%
+	{则
+		\[\msf^{-1}[FG]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)e^{j\omega t}\diff\omega,\]
+		\[\msf^{-1}[FG](0)=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)\diff\omega=\frac1{2\pi}I.\]
+	}
+
+		我们之前计算过
+		\[\msf^{-1}[F(\omega)]=f(t)=\begin{cases}
+			1/2, & |t|<1,\\
+			1/4, & |t|=1,\\
+			0, & |t|>1.
+		\end{cases}\]
+	{所以 $\msf^{-1}[G(\omega)]=g(t)=3f(3t)$,
+		\begin{align*}
+			\msf^{-1}[FG](0)&=(f\ast g)(0)\\
+			&=\int_{-\infty}^{+\infty}f(-t)g(t)\diff t=\half\int_{-1}^1 g(t)\diff t=\half ,
+		\end{align*}故 $I=2\pi\msf^{-1}[FG](0)=\pi$.}
+\end{solution}
+
+\subsection{傅里叶变换的应用*}
+
+\begin{center}
+	\begin{tikzpicture}[node distance=40pt]
+		\node[cstnode2] (a){微分方程或积分方程};
+		\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
+		\node[cstnode2,below=of a] (c){原象函数(方程的解)};
+		\node[cstnode1,below=of b] (d){象函数};
+		\draw[cstnarrow,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
+		\draw[cstnarrow,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
+		\draw[cstnarrow,second] (b)--(d);
+		\draw[cstnarrow,third] (a)--(c);
+	\end{tikzpicture}
+\end{center}
+
+
+\begin{example}
+	解方程 $y'(t)-\displaystyle\int_{-\infty}^t y(\tau)\diff \tau=2\delta(t)$.
+\end{example}
+
+\begin{solution}
+		设 $\msf[y]=Y$.
+	{两边同时作傅里叶变换得到
+		\[j\omega Y(\omega)-\frac1{j\omega}Y(\omega)=2,\]
+		\[Y(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
+		\begin{align*}
+			y(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
+			&{=\begin{cases}
+			0-e^t=-e^t,&t<0,\\
+			0,&t=0,\\
+			e^{-t}-0=e^{-t},&t>0.
+			\end{cases}}
+		\end{align*}
+	}
+\end{solution}
+
+\begin{example}
+	解方程 $y''(t)-y(t)=0$.
+\end{example}
+
+\begin{solution}
+		设 $\msf[y]=Y$,
+	{则
+		\[\msf[y''(t)-y(t)]=[(j\omega)^2-1]Y(\omega)=0,\]
+	}
+
+	{\[Y(\omega)=0,\quad y(t)=\msf^{-1}[Y(\omega)]=0.\]}
+\end{solution}
+
+显然这是不对的, 该方程的解应该是 $y(t)=C_1e^t+C_2e^{-t}$.
+
+原因在于使用傅里叶变换要求函数是绝对可积的, 而 $e^t,e^{-t}$ 并不满足该条件.
+我们需要一个对函数限制更少的积分变换来解决此类方程, 例如拉普拉斯变换.
+
+\section{拉普拉斯变换}
+
+\subsection{拉普拉斯变换}
+
+傅里叶变换对函数要求过高, 这使得在很多时候无法应用它, 或者要引入复杂的广义函数.
+对于一般的 $\varphi(t)$, 为了让它绝对可积, 我们考虑
+\[\varphi(t)u(t)e^{-\beta t},\quad\beta>0.\]
+它的傅里叶变换为
+\[\msf[\varphi(t)u(t)e^{-\beta t}]=\int_0^{+\infty}\varphi(t)e^{-(\beta+j\omega)t}\diff t=\int_0^{+\infty}\varphi(t)e^{-st}\diff t,\]
+其中 $s=\beta+j\omega$.
+这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
+我们称之为 $\varphi(t)$ 的\emph{拉普拉斯变换 $\msl[\varphi]$}.
+
+\begin{block}{拉普拉斯变换存在定理}
+		若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足
+		\begin{itemize}
+			\item $f(t)$ 在任一有限区间上至多只有有限多间断点;
+			\item 存在 $M,c$ 使得 $|f(t)|\le Me^{ct}$,
+		\end{itemize}{则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
+	}
+\end{block}
+
+\begin{center}
+	\begin{tikzpicture}[node distance=118pt]
+		\node[cstnode2,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
+		\node[cstnode2,align=center, right=of a](b){象函数\\\emph{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
+		\draw[cstnarrow, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
+		\draw[cstnarrow, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
+	\end{tikzpicture}
+\end{center}
+
+虽然我们限定了函数只定义在 $t\ge 0$ 处, 但很多时候这不影响我们使用.
+这是因为在物理学中, 很多时候我们只考虑系统自某个时间点开始之后的行为.
+
+\begin{example}
+	求 $\msl[e^{kt}]$.
+\end{example}
+
+\begin{solution}
+	\begin{align*}
+		\msl[e^{kt}]&=\int_0^{+\infty}e^{kt}e^{-st}\diff t\\
+		&{=\int_0^{+\infty}e^{-(s-k)t}\diff t
+		=-\frac1{s-k}e^{-(s-k)t}\big|_0^{+\infty}}\\
+		&{=\frac1{s-k}, \quad\Re s>\Re k.}
+	\end{align*}
+	即 \emph{$\msl[e^{kt}]=\dfrac1{s-k}$}.
+	特别地 \emph{$\msl[1]=\dfrac1s$}.
+\end{solution}
+
+\begin{example}
+	求 $\msl[t^m]$, 其中 $m$ 是正整数.
+\end{example}
+
+\begin{solution}
+	由分部积分可知
+	\begin{align*}
+		\msl[t^m]&=\int_0^{+\infty}t^me^{-st}\diff t\\
+		&=-\frac{t^me^{-st}}s\Big|_0^{+\infty}+\int_0^{+\infty}\frac{e^{-st}}s\cdot mt^{m-1}\diff t\\
+		&=\frac ms\msl[t^{m-1}].
+	\end{align*}
+	归纳可知
+		\[\msl[t^m]=\frac{m!}{s^m}\msl[1]=\frac{m!}{s^{m+1}}.\]
+\end{solution}
+
+\subsection{拉普拉斯变换的性质}
+
+和傅里叶变换类似, 拉普拉斯变换也有着各种性质. 我们不加证明地列出它们.
+
+\begin{block}{拉普拉斯变换的性质}
+	\begin{itemize}
+		\item (线性性质) $\msl[\alpha f+\beta g]=\alpha F+\beta G, \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g$.
+		\item (积分性质) $\displaystyle\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s)$.
+		\item (乘多项式性质) $\msl[tf(t)]=-F'(s),\quad\msl[t^kf(t)]=(-1)^kF^{(k)}(s)$.
+		\item (延迟性质) $\msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0$.
+		\item (位移性质) $\msl[e^{s_0t}f(t)]=F(s-s_0)$.
+	\end{itemize}
+\end{block}
+
+\begin{alertblock}{微分性质}
+	\[\msl[f'(t)]=sF(s)-f(0),\]
+	\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0).\]
+\end{alertblock}
+
+从拉普拉斯变换的微分性质可以看出, 拉普拉斯变换可以将微分方程转化为代数方程, 从而可用于解微分方程.
+
+\begin{example}
+	求 $\msl[\sin{kt}]$.
+\end{example}
+
+\begin{solution}
+	\begin{align*}
+		\msl[\sin{kt}]&=\frac{\msl[e^{jkt}]-\msl[e^{-jkt}]}{2j}\\
+		&=\frac1{2j}\left(\frac1{s-jk}-\frac1{s+jk}\right)
+			=\frac k{s^2+k^2}.
+	\end{align*}
+\end{solution}
+
+\begin{exercise}
+	$\msl[\cos{kt}]=$\fillblank[3cm][3mm]{{$\dfrac s{s^2+k^2}$}}.
+\end{exercise}
+
+\begin{example}
+	求 $\msl[t^me^{kt}]$, 其中 $m$ 是正整数.
+\end{example}
+
+\begin{solution}
+	由 $\msl[t^m]=\dfrac{m!}{s^{m+1}}$ 可知
+	\[\msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}}.\]
+\end{solution}
+
+\begin{alertblock}{常见拉普拉斯变换汇总}
+	\[\msl[1]=\frac1s,\quad \msl[e^{kt}]=\frac1{s-k},\]
+	\[\msl[t^m]=\frac{m!}{s^{m+1}},\quad \msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}},\]
+	\[\msl[\sin kt]=\frac{k}{s^2+k^2},\quad
+	\msl[\cos kt]=\frac{s}{s^2+k^2}.\]
+\end{alertblock}
+
+\subsection{拉普拉斯逆变换}
+
+拉普拉斯逆变换可以由如下定理给出
+\begin{block}{拉普拉斯逆变换定理}
+	设 $F(s)$ 的所有奇点为 $s_1,\dots,s_k$, 且 $\lim\limits_{z\to\infty}F(z)=0$, 则
+	\[\msl^{-1}[F(s)]=\sum_{k=1}^n \Res\left[F(s)e^{st},s_k\right].\]
+\end{block}
+
+不过我们只要求掌握如何利用常见函数的拉普拉斯变换来计算逆变换.
+
+\begin{example}
+	求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
+\end{example}
+
+\begin{solution}
+		\begin{align*}
+			\Res[F(s)e^{st},0]&=\frac{e^{st}}{(s-1)^2}\Big|_{s=0}=1,\\
+			\Res[F(s)e^{st},1]&=\left(\frac{e^{st}}s\right)'\Big|_{s=1}=\frac{te^{st}s-e^{st}}{s^2}\Big|_{s=1}=(t-1)e^t,
+		\end{align*}{故 $\msl^{-1}[F(s)]=1+(t-1)e^t$.
+	}
+\end{solution}
+
+\begin{proofblock}{另解}
+		设
+		$\displaystyle F(s)=\frac as+\frac b{s-1}+\frac c{(s-1)^2}$,
+	{则
+		\begin{align*}
+			a&=\Res[F(s),0]=\frac1{(s-1)^2}\Big|_{s=0}=1,\\
+			b&=\Res[F(s),1]=\left(\frac1s\right)'\Big|_{s=1}=-\frac1{s^2}\Big|_{s=1}=-1,\\
+			c&=\Res[(s-1)F(s),1]=\frac1s\Big|_{s=1}=1.
+		\end{align*}故
+		$\displaystyle\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1s-\frac1{s-1}+\frac1{(s-1)^2}\right]=1+(t-1)e^t$.
+	}
+\end{proofblock}
+
+\subsection{卷积定理*}
+
+由于在拉普拉斯变换中, 我们考虑的函数在 $t<0$ 时都是零.
+此时函数的卷积变成了
+\[f_1(t)\ast f_2(t)=\int_0^t f_1(\tau)f_2(t-\tau)\diff \tau,\quad t\ge 0,\]
+且我们有如下的卷积定理.
+
+\begin{block}{卷积定理}
+	\[\msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).\]
+\end{block}
+
+\subsection{拉普拉斯变换的应用}
+
+\begin{center}
+	\begin{tikzpicture}[node distance=40pt]
+		\node[cstnode2] (a){微分方程或积分方程};
+		\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
+		\node[cstnode2,below=of a] (c){原象函数(方程的解)};
+		\node[cstnode1,below=of b] (d){象函数};
+		\draw[cstnarrow,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
+		\draw[cstnarrow,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
+		\draw[cstnarrow,second] (b)--(d);
+		\draw[cstnarrow,third] (a)--(c);
+	\end{tikzpicture}
+\end{center}
+
+\begin{example}
+	(2022年A卷) 解微分方程
+	\begin{align*}
+		y''+2y=\sin t,\\
+		y(0)=0,\quad y'(0)=2.
+	\end{align*}
+\end{example}
+\begin{solution}
+	设 $\msl[y]=Y$, 则 $\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2$, 因此
+		\[s^2Y-2+2Y=\msl[\sin t]=\frac{1}{s^2+1},\]
+		\[Y(s)=\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}=\frac{1}{s^2+1}+\frac{1}{s^2+2},\]
+		\[y(t)=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right]
+		=\sin t+\frac{\sqrt 2}2\sin(\sqrt 2 t). \]
+\end{solution}
+
+\begin{example}
+	解微分方程 $y''(t)-y(t)=0$.
+\end{example}
+\begin{solution}
+	设 $a=y(0),b=y'(0),\msl[y]=Y$, 则
+		\[\msl[y'']=s^2Y-as-b,\]
+		\[s^2Y-as-b-Y=0,\]
+		\[Y(s)=\frac{as-b}{s^2-1}=\frac{a+b}2\cdot\frac1{s-1}+\frac{a-b}2\cdot\frac1{s+1},\]
+		\[y(t)=\msl^{-1}[Y(s)]=\frac{a+b}2e^t+\frac{a-b}2e^{-t}.\]
+\end{solution}
+
