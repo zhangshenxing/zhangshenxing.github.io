@@ -1,50 +1,109 @@
-\RequirePackage{extarrows}
-\newlength{\ltemp}\newlength{\lxxmax}\newlength{\lquar}\newlength{\lhalf}\newlength{\lfull}
-\newcounter{lxxtype}
-\RequirePackage{etoolbox}
-\NewDocumentCommand\xx{O{0} m m m m}{%
-	\setlength{\lfull}{\columnwidth}%
-	\addtolength{\lfull}{-\leftmargin}%
-	\setlength{\lhalf}{0.5\lfull}%
-	\setlength{\lquar}{0.25\lfull}%
-	\setcounter{lxxtype}{0}%
-	\ifnum#1=1\setcounter{lxxtype}{1}\fi%
-	\ifnum#1=2\setcounter{lxxtype}{2}\fi%
-	\ifnum#1=4\setcounter{lxxtype}{4}\fi%
-	\settowidth{\lxxmax}{(A)~#2~}% 获取最长选项长度
-	\settowidth{\ltemp}{(B)~#3~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
-	\settowidth{\ltemp}{(C)~#4~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
-	\settowidth{\ltemp}{(D)~#5~}%
-	\ifdimcomp\ltemp>\lxxmax{\setlength{\lxxmax}{\ltemp}}{}%
-	\ifnum\value{lxxtype}=0%
-		\setcounter{lxxtype}{4}%
-		\ifdimcomp\lxxmax>\lquar{\setcounter{lxxtype}{2}}{}%
-		\ifnum\value{lxxtype}=2%
-			\ifdimcomp\lxxmax>\lhalf{\setcounter{lxxtype}{1}}{}%
-		\fi%
-	\fi%
-	\vspace{5pt}
-	\ifnum\value{lxxtype}=1%
-		\\\makebox[\lfull][l]{(A)~#2}%
-		\\\makebox[\lfull][l]{(B)~#3}%
-		\\\makebox[\lfull][l]{(C)~#4}%
-		\\\makebox[\lfull][l]{(D)~#5}%
-	\fi%
-	\ifnum\value{lxxtype}=2%
-		\\\makebox[\lhalf][l]{(A)~#2}%
-			\makebox[\lhalf][l]{(B)~#3}%
-		\\\makebox[\lhalf][l]{(C)~#4}%
-			\makebox[\lhalf][l]{(D)~#5}%
-	\fi%
-	\ifnum\value{lxxtype}=4%
-		\\\makebox[\lquar][l]{(A)~#2}% 
-			\makebox[\lquar][l]{(B)~#3}%
-			\makebox[\lquar][l]{(C)~#4}%
-			\makebox[\lquar][l]{(D)~#5}%
-	\fi%
+
+\newcommand{\ansno}[1]{\par\noindent\emph{#1}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
+\renewcommand{\labelenumi}{{\upshape(\arabic{enumi})}}
+\newcommand\enumnum[1]{{\textcolor{main}{\mdseries\upshape{(#1)}}}}
+\newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
+
+\usepackage{tikz}
+\usepackage{color,calc}
+% TIKZ 设置
+\usetikzlibrary{
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
 }
+\tikzset{
+	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
+  % arrow
+	cstra/.style      ={-Stealth},        % right arrow
+	cstla/.style      ={Stealth-},        % left arrow
+	cstlra/.style     ={Stealth-Stealth}, % left-right arrow
+	cstwra/.style     ={-Straight Barb},  % wide ra
+	cstwla/.style     ={Straight Barb-},
+	cstwlra/.style    ={Straight Barb-Straight Barb},
+	cstnarrow/.style      ={-Latex, line width=0.1cm}, %文本框间箭头
+	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+  % curve
+	cstcurve/.style       ={very thick}, %一般曲线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+  % dot
+	cstdot/.style         ={radius=.08}, %实心点
+	cstdote/.style        ={radius=.07, fill=white}, %空心点
+  % fill
+	cstfill1/.style       ={fill=main!30},
+	cstfille1/.style      ={pattern=north east lines, pattern color=main},
+	cstfill2/.style        ={fill=second!30},
+	cstfille2/.style       ={pattern=north east lines, pattern color=second},
+	cstfill3/.style        ={fill=third!30},
+	cstfille3/.style       ={pattern=north east lines, pattern color=third},
+	cstfill4/.style        ={fill=fourth!30},
+	cstfille4/.style       ={pattern=north east lines, pattern color=fourth},
+	cstfill5/.style        ={fill=fifth!30},
+	cstfille5/.style       ={pattern=north east lines, pattern color=fifth},
+  % node
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode1/.style       ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode2/.style       ={fill=second!15,draw=second!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode3/.style       ={fill=third!15,draw=third!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode4/.style       ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode5/.style       ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt}
+}
+\ExplSyntaxOn
+\cs_new_protected:Npn \fpstepfromto#1#2#3 
+  {% from, to, nums
+    \fp_step_inline:nnnn {#1} { (#2-(#1))/(#3-1)*0.99 } {#2}
+  }
+\pgfmathdeclarefunction{nrand}{0}
+  {% \tex_normaldeviate:D 生成均值为 0，标准差为 10000 的随机整数
+    \tl_set:Nx \pgfmathresult { \fp_eval:n { \tex_normaldeviate:D/10000 } }
+  }
+\pgfmathdeclarefunction{rdv}{0}{\pgfmathparse{1+nrand/100}}
+\ExplSyntaxOff
+\newcommand{\randpts}[3][10]{
+  \foreach\i in {0,1,...,#1}{
+    \pgfmathparse{rdv}\let\rdv\pgfmathresult
+    \coordinate (\i) at ({#2*\rdv*cos(360/#1*\i)},{#3*\rdv*sin(360/#1*\i)});
+  }
+}
+\newcommand{\randep}[2]{
+  \randpts{#1}{#2}
+  \filldraw[cstcurve,main,cstfill3,smooth] plot coordinates {(0) (1) (2) (3) (4) (5) (6) (7) (8) (9) (0)};
+}
+
+\let\question\relax
+\elegantnewtheorem{question}{问题}{defstyle}{que}
+
+\newfontface\cmunrm{cmunrm.otf}
+\newcommand\cmu[1]{{\cmunrm{#1}}}
+\newcommand{\alert}[1]{\textcolor{main}{\bf #1}}
+\renewcommand{\emph}[1]{\textcolor{second}{\bf #1}}
+\newcommand{\cnen}[2]{{\kaishu$\overset{\text{{#2}}}{\text{#1}}$}}
+\newcommand{\nounen}[2]{{\color{second}\kaishu\cnen{#1}{#2}}\index{{#1}}}
+\newcommand{\noun}[1]{{\color{second}\kaishu #1}\index{{#1}}}
+\newcommand{\nouns}[2]{{\color{second}\kaishu #1}\index{{#2}}}
+\newcommand{\nounsen}[3]{{\color{second}\kaishu\cnen{#1}{#2}}\index{{#3}}}
+
+\setcounter{tocdepth}{2}
+\newfontfamily\couriernew{Courier New}
+\lstset{language=[LaTeX]TeX,
+	basicstyle=\couriernew,
+  morekeywords={AUTHOR, KEY, TITLE, YEAR, PAGES, HOWPUBLISHED, URL, LANGUAGE},
+  keywordstyle=\color{winered}
+}
+
+
+
+
+\RequirePackage{extarrows}
 \usepackage[normalem]{ulem}
 \NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{#3}}}}
 \newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}

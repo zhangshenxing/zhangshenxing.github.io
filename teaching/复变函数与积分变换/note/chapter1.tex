@@ -1003,7 +1003,7 @@
       \coordinate (A);
       \filldraw[cstcurve,main,cstfill3] (A) circle (1.5);
       \draw[cstcurve,cstra,second] (A)--(1.2,.9)
-				node[midway,above left] {$\delta$};
+        node[midway,above left] {$\delta$};
       \fill[cstdot,second] (A) circle
         node[left] {$z_0$};
     \end{scope}
@@ -1011,7 +1011,7 @@
       \coordinate (A);
       \filldraw[cstcurve,main,cstfill3] (A) circle (1.5);
       \draw[cstcurve,cstra,second] (A)--(1.2,.9)
-				node[midway,above left] {$\delta$};
+        node[midway,above left] {$\delta$};
       \filldraw[cstdote,draw=second] (A) circle
         node[left,second] {$z_0$};
     \end{scope}
@@ -1830,3 +1830,229 @@ $C$ 是它们的公共边界.
 归根到底就在于 $\BC$ 是一个域, 上面可以做除法.
 这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
 这种特性使得可导的复变函数具有整洁优美的性质, 我们将逐步揭开它的神秘面纱.
+
+\begin{homework}
+  \item 判断题.
+    \begin{exlist}
+      \item $z$ 是实数当且仅当 $z=\ov z$. \fillbrace{}
+      \item $z$ 是纯虚数当且仅当 $z=-\ov z$. \fillbrace{}
+      \item $z$ 是实数当且仅当 $\arg z=0,\pi$. \fillbrace{}
+      \item $z$ 是纯虚数当且仅当 $\arg z=\pm\dfrac\pi2$. \fillbrace{}
+      \item 如果 $f(z)$ 在 $z_0$ 处可导, 则 $f(z)$ 在 $z_0$ 处解析. \fillbrace{}
+      \item 如果 $f(z)$ 在区域 $D$ 内处处可导, 则 $f(z)$ 在区域 $D$ 解析. \fillbrace{}
+    \end{exlist}
+  \item 选择题.
+    \begin{exlist}
+      \item \begin{tasks}
+        \task 方程 $|z|=\Re z+1$ 中 $z$ 的轨迹为\fillbrace{}.
+        \task 方程 $|z+i|=|z-i|$ 表示的曲线是\fillbrace{}.
+        \task 方程 $\bigl||z+i|-|z-i|\bigr|=1$ 表示的是\fillbrace{}.
+        \task 方程 $|z|+|z-2i|=2$ 表示的是\fillbrace{}.
+      \end{tasks}
+        \begin{taskschoice}(4)
+          () 直线
+          () 圆周
+          () 不是圆的椭圆
+          () 双曲线
+          () 双曲线的一支
+          () 抛物线
+          () 一个点
+          () 一条线段
+        \end{taskschoice}
+      \item \begin{tasks}
+        \task 不等式 $z\ov z-(2+i)z-(2-i)\ov z\le 4$ 确定的是\fillbrace{}.
+        \task 不等式 $-1<\arg z<\pi-1$ 确定是的\fillbrace{}.
+        \task 不等式 $1<|z|<2$ 确定是的\fillbrace{}.
+        \task 区域 $0<\Re z<1$ 是\fillbrace{}.
+      \end{tasks}
+        \begin{taskschoice}(2)
+          () 有界单连通区域
+          () 有界多连通区域
+          () 无界单连通区域
+          () 无界多连通区域
+          () 有界单连通闭区域
+          () 有界多连通闭区域
+          () 无界单连通闭区域
+          () 无界多连通闭区域
+        \end{taskschoice}
+    \end{exlist}
+\item 填空题.
+    \begin{exlist}
+      \item 如果 $x,y$ 是实数且 $\dfrac{x+1+i(y-3)}{5+3i}=1+i$, 那么 $x+y=$\fillblank{}.
+      \item 设 $z=-i$, 则 $1+z+z^2+z^3+z^4=$\fillblank{}.
+      \item 化简 $(-1+i)^{10}-(-1-i)^{10}$=\fillblank{}.
+      \item 化简 $\dfrac{(1+i)^3}{(1-i)^3}=$\fillblank{}.
+      \item 化简 $i^{2022}-(-i)^{2022}=$\fillblank{}.
+      \item 化简 $\dfrac{(1+i)^{101}}{(1-i)^{99}}=$\fillblank{}.
+      \item 复数 $\biggl(\dfrac{(1+i)^2}2\biggr)^{2021}$ 的模是\fillblank{}.
+      \item $-1+\sqrt 3i$ 的辐角主值是\fillblank{}.
+      \item $2^{-i}$ 的辐角主值是\fillblank{}.
+      \item $-1-i$ 的辐角主值是\fillblank{}.
+      \item $2023-i$ 绕 $0$ 逆时针旋转 $\dfrac\pi2$ 后得到的复数是\fillblank{}.
+      \item 区域 $0<\arg z<\dfrac\pi3$ 在映射 $w=z^3$ 下的像是\fillblank[4cm]{}.
+      \item 已知映射 $w=z^3$, 则 $z=\sqrt3+i$ 在 $w$ 复平面上的像是\fillblank{}.
+      \item 极限 $\displaystyle\lim_{z\to1+i}(1+z^2+2z^4)=$\fillblank{}.
+    \end{exlist}
+  \item 计算题.
+    \begin{exlist}
+      \item $z_1=-z,z_2=\ov z,z_3=-\ov{z}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
+      \item 已知点 $z_1,z_2,z_3$ 不共线. 点 $\dfrac12(z_1+z_2)$ 和 $\dfrac13(z_1+z_2+z_3)$ 表示什么点?
+      \item 求下列复数 $z$ 的实部与虚部, 共轭复数, 模和主辐角:
+        \begin{tasks}(4)
+          \task $\dfrac{5+i}{2+3i}$;
+          \task $\dfrac{3i}{1-i}-\dfrac1i$;
+          \task $\dfrac{(3+4i)(2-5i)}{2i}$;
+          \task $i^8-4i^{21}+i$.
+        \end{tasks}
+      \item 求下列复数 $z$ 的三角和指数形式:
+        \begin{tasks}(4)
+          \task $i$;
+          \task $1+i\sqrt3$;
+          \task $3-\sqrt 3i$;
+          \task $\dfrac{2i}{1-i}$;
+          \task $\ov{\biggl(\dfrac{4+3i}{1+2i}\biggr)}$;
+          \task $\dfrac{3+i}{i}-\dfrac{10i}{3-i}$;
+          \task $\dfrac{(\cos \varphi+i\sin \varphi)^5}{(\cos \varphi-i\sin \varphi)^3}$.
+        \end{tasks}
+      \item 计算
+        \begin{tasks}(4)
+          \task $(\sqrt3-i)^5$;
+          \task $(1+i)^6$;
+          \task $\sqrt[3]{-8}$;
+          \task $\sqrt[6]{-1}$;
+          \task $\sqrt[4]{-2+2i}$;
+          \task $\sqrt[4]{-2}$;
+          \task $(1-i)^{1/3}$.
+        \end{tasks}
+      \item 用复参数方程表示连接 $-1+i$ 与 $1-4i$ 的直线段.
+      \item 求下列各题中 $z$ 的轨迹或范围, 并作图.
+        \begin{tasks}(2)
+          \task $\Re(i\ov z)=3$;
+          \task $z\ov z-(2+i)z-(2-i)\ov z=4$.
+        \end{tasks}
+      \item 描出下列不等式所确定的区域或闭区域, 并指出它是有界还是无界的, 单连通还是多连通.
+        \begin{tasks}(2)
+          \task $\Im z\le0,\Re z\ge0$;
+          \task $|z-1|<|z+3|$;
+          \task $\left|\dfrac{z+1}{z-1}\right|<2$;
+          \task $\arg z<\dfrac{3\pi}4$.
+        \end{tasks}
+      \item 讨论极限 $\displaystyle\lim_{z\to0}\left(\frac{z}{~\ov z~}-\frac{~\ov z~}z\right)$ 是否存在. 若存在请求出具体的值, 若不存在请证明.
+      \item 下列数列 $\set{z_n}$ 是否收敛? 如果收敛, 求出它们的极限:
+        \begin{tasks}(3)
+          \task $z_n=\dfrac{1+ni}{1-ni}$;
+          \task $\displaystyle z_n=\left(1+\frac i2\right)^n$;
+          \task $z_n=(-1)^n+\dfrac{i}{n+1}$;
+          \task $z_n=\dfrac{(3+2i)^n}{(3+4i)^n}$;
+          \task $z_n=\biggl(1+\dfrac{(-1)^n}n\biggr)e^{-\frac{n\pi i}2}$.
+        \end{tasks}
+    \end{exlist}
+  \item 证明题.
+    \begin{exlist}
+      \item 证明: 当 $|z|=1>|w|$ 时, $\left|\dfrac{z-w}{1-z\ov w}\right|=1$.
+      \item 证明: 如果复数 $a+ib$ 是实系数方程
+      	\[a_0z^n+a_1z^{n-1}+\cdots+a_{n-1}z+a_n=0\]
+      	的根, 则 $a-ib$ 也是它的根.
+      \item 设 $\dfrac{z_2-z_1}{z_3-z_1}=\dfrac{z_1-z_3}{z_2-z_3}$. 证明: $|z_1-z_2|=|z_2-z_3|=|z_3-z_1|$ 并说明这些等式的几何意义.
+      \item 设 $z=e^{it}$, 证明:\begin{tasks}(2)
+          \task $z^n+\dfrac1{z^n}=2\cos{nt}$;
+          \task $z^n-\dfrac1{z^n}=2i\sin{nt}$.
+        \end{tasks}
+    \end{exlist}
+  \item 扩展阅读. 该部分作业不需要交, 有兴趣的同学可以做完后交到本人邮箱.
+    \begin{exlist}
+    \item 我们知道, 对于任意两个集合 $A,B$, 我们可以定义 $A\to B$ 的映射.
+      在数学中, 很多对象是带有``结构''的集合, 例如实线性空间 $V$ 是一个拥有如下结构:
+      \begin{center}
+        零元 $0\in V$;\qquad 加法 $v_1+v_2\in V$;\qquad 数乘 $\lambda v$,
+      \end{center}
+      且满足一些特定性质的集合.
+      如果 $A,B$ 具有同一种结构, 映射 $f:A\to B$ ``保持''了这些结构, 则我们称 $f$ 是\emph{同态}.	
+      例如实线性空间之间的同态就是指一个映射 $f:V\to W$, 使得
+      \[f(0)=0;\qquad f(v_1+v_2)=f(v_1)+f(v_2);\qquad f(\lambda v)=\lambda f(v).\]
+    
+      再比如域是带有如下结构:
+      \begin{center}
+        零元 $0$;\qquad 幺元 $1$;\qquad 加法;\qquad 减法;\qquad 乘法;\qquad 除法, 
+      \end{center}
+      且满足特定性质的集合(交换律分配律之类的). 所以域之间的同态就是指一个 $f:F\to K$, 使得
+      \begin{itemize}
+        \item $f(0)=0,\qquad f(1)=1$;
+        \item $f(x+y)=f(x)+f(y),\qquad f(x-y)=f(x)-f(y)$;
+        \item $f(xy)=f(x)f(y),\qquad f(x/y)=f(x)/f(y)$.
+      \end{itemize}
+      如果一个同态是双射(一一对应), 则称之为\emph{同构}.
+      \begin{tasks}
+        \task 设 $f:\BQ\to\BQ$ 是有理数域之间的同构, 证明 $f$ 只能是恒等映射.
+        \task 设 $f:\BR\to\BR$ 是实数域之间的连续的同构, 证明 $f$ 只能是恒等映射.
+        \task 设 $f:\BC\to\BC$ 是复数域之间的连续的同构, 证明 $f$ 只能是恒等映射或复共轭.
+        \task 如果 $F=\BR+\BR t$ 是一个真包含 $\BR$ 的域, 证明 $F$ 同构于 $\BC$.
+        \task 设
+        \[F=\set{\begin{pmatrix}
+        x&y\\-y&x\end{pmatrix}: x,y\in\BR}
+        =\set{xE+yJ: x,y\in\BR}\subseteq M_2(\BR),\]
+        其中 $E=\begin{pmatrix}1& \\&1\end{pmatrix}$,
+        $J=\begin{pmatrix}&1\\-1&\end{pmatrix}$.
+        证明 $F$ 是一个域且同构于 $\BC$.
+      \end{tasks}
+    \item 满足 $z^n=1$ 的复数 $z$ 被称为 \emph{$n$ 次单位根}.
+      不难看出 $z=e^{\frac{2k\pi i}n},k=0,1,\dots,n-1$.
+      单位根在代数, 几何和组合中有着丰富的应用. 我们来看一个例子.
+      设集合 $A=\set{1,2,\dots,2023}$.
+      \begin{tasks}
+        \task 集合 $A$ 有多少个子集? 试着将 $A$ 的每一个子集与
+        \[N(x)=\prod_{a=1}^{2023}(1+x^a)\]
+        的展开式中的每一项建立一个一一对应.
+        \task 设 $S\subseteq A$. 定义
+        \[f(S)=\prod_{a\in S}x^a=x^{\sum_{a\in S}a}.\]
+        证明所有的 $S$ 对应的 $f(S)$ 之和就是 $N(x)$.
+        \task 证明 $N(x)$ 的展开式合并同类项后 $x^k$ 的系数就是 $A$ 的那些满足元素之和是 $k$ 的子集的个数.
+        \task 现在我们想知道 $A$ 有多少个子集满足元素之和是 $5$ 的倍数.
+      令 $x$ 是 $5$ 次单位根, 则 $N(x)$ 可以表为
+      \[N(x)=N_0+N_1x+N_2x^2+N_3x^3+N_4x^4,\]
+        那么 $N_0$ 就是元素之和是 $5$ 的倍数的集合个数.
+        \task 当 $x=1$ 时, 显然 $N(1)=2^{2023}$.
+        当 $x\neq 1$ 是 $5$ 次单位根时, $1,x,x^2,x^3,x^4$ 是方程 $X^5-1=0$ 的所有根, 所以 $2,1+x,1+x^2,1+x^3,1+x^4$ 是方程 $(X-1)^5-1=0$ 的所有根. 由韦达定理可知
+        \[(1+x^0)(1+x)(1+x^2)(1+x^3)(1+x^4)=2.\]
+        由此证明
+        \[N(x)=2^{404}(1+x^0)(1+x)(1+x^2)=2^{405}(1+x+x^2+x^3).\]
+        \task 计算 $N(1)+N(e^{2\pi i/5})+N(e^{4\pi i/5})+N(e^{6\pi i/5})+N(e^{8\pi i/5})$. 由此得到 $N_0=\dfrac{2^{2023}+4\cdot 2^{405}}5$.
+        \task 想一想, $N_1,N_2,N_3,N_4$ 分别是多少?
+      \end{tasks}
+      更多细节可见: \url{https://www.bilibili.com/video/BV1R34y1W7Xn/}
+  \end{exlist}  
+\end{homework}
+
+\section*{练习参考答案}
+\ansno{1.1.1} $-4$.
+\ansno{1.1.2} $1$.
+\ansno{1.1.3} $-\ov z$.
+
+\ansno{1.2.1} $\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
+
+\ansno{1.3.1} $-2^{2022}$.
+\ansno{1.3.2} $\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
+
+\ansno{1.4.1} 双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
+\ansno{1.4.2}
+\begin{enumerate}
+	\item 上半平面对应的闭区域为 $\Im z\ge0$.
+	\item 下半平面对应的闭区域为 $\Im z\le0$.
+	\item 左半平面对应的闭区域为 $\Re z\le0$.
+	\item 右半平面对应的闭区域为 $\Re z\ge0$.
+	\item 竖直带状区域对应的闭区域为 $x_1\le\Re z\le x_2$.
+	\item 水平带状区域对应的闭区域为 $y_1\le\Im z\le y_2$.
+	\item 角状区域对应的闭区域为 $\alpha_1\le \arg z\le \alpha_2$ 以及原点. 如果 $\alpha_1=-\pi,\alpha_2=\pi$, 则为 $\BC$.
+	\item 圆环域对应的闭区域为 $r\le|z|\le R$.
+\end{enumerate}
+\ansno{1.4.3} 整个复平面.
+
+\ansno{1.5.1}
+\begin{enumerate}
+	\item $\Re z$ 的定义域为 $\BC$, 值域为 $\BR$.
+	\item $\arg z$ 的定义域为 $\{z\in\BC\mid z\neq 0\}$, 值域为 $(-\pi,\pi]$.
+	\item $|z|$ 的定义域为 $\BC$, 值域为 $\{x\in\BR\mid x\ge0\}$.
+	\item 当 $n>0$ 时, $z^n$ 的定义域为 $\BC$, 值域为 $\BC$.
+	当 $n\le 0$ 时, $z^n$ 的定义域为 $\{z\in\BC\mid z\neq 0\}$, 值域为 $\{z\in\BC\mid z\neq 0\}$.
+	\item $\dfrac{z+1}{z^2+1}$ 的定义域为 $\{z\in\BC\mid z\neq \pm i\}$, 值域为 $\BC$.
+\end{enumerate}

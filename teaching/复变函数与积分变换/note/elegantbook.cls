@@ -368,9 +368,8 @@
 \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
 
 \RequirePackage{enumerate}
-% list/itemize/enumerate setting
 \RequirePackage[shortlabels,inline]{enumitem}
-\setlist{nolistsep}
+\RequirePackage{tasks}
 
 \RequirePackage[labelfont={bf,color=main}]{caption} 
 \captionsetup[table]{skip=3pt}
@@ -441,6 +440,8 @@
   \newcommand{\instancename}{示例} %
   \newcommand{\problemname}{问题} % 问题
   \newcommand{\exercisename}{练习} % 练习=习题
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{注}
   \newcommand{\assumptionname}{假设}
   \newcommand{\conclusionname}{结论}
@@ -477,6 +478,8 @@
   \newcommand{\corollaryname}{Corollary}
   \newcommand{\examplename}{Example}
   \newcommand{\exercisename}{Exercise}
+  \newcommand{\homeworkname}{Homework}
+  \newcommand{\answername}{Answer}
   \newcommand{\remarkname}{Remark}
   \newcommand{\assumptionname}{Assumption}
   \newcommand{\conclusionname}{Conclusion}
@@ -485,7 +488,7 @@
   \newcommand{\introductionname}{Introduction}
   \renewcommand{\appendixname}{Appendix}
   \newcommand{\ebibname}{Bibliography}
-  % \newcommand{\problemsetname}{Exercise}
+  % \newcommand{\homeworkname}{Exercise}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Updates:}
   \newcommand{\historyname}{Version History}
@@ -515,6 +518,8 @@
   \newcommand{\corollaryname}{Corollario}
   \newcommand{\examplename}{Esempio}
   \newcommand{\exercisename}{Esercizio}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Commento}
   \newcommand{\assumptionname}{Assunto}
   \newcommand{\conclusionname}{Conclusione}
@@ -551,13 +556,15 @@
   \renewcommand{\corollaryname}{Corollaire}
   \renewcommand{\examplename}{Exemple}
   \renewcommand{\exercisename}{Exercice}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \renewcommand{\remarkname}{Remarque}
   \renewcommand{\assumptionname}{Supposition}
   \renewcommand{\conclusionname}{Conclusion}
   \renewcommand{\solutionname}{Solution}
   \renewcommand{\propertyname}{Propriété}
   \renewcommand{\introductionname}{Introduction}
-  \renewcommand{\problemsetname}{Exercice}
+  \renewcommand{\homeworkname}{Exercice}
   \renewcommand{\updatename}{Mises à jour:}
   \newcommand{\ebibname}{Bibliographie}
   \renewcommand{\historyname}{Historique des versions}
@@ -586,13 +593,15 @@
   \newcommand{\corollaryname}{Gevolgtrekking}
   \newcommand{\examplename}{Voorbeeld}
   \newcommand{\exercisename}{Oefening}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Commentaar}
   \newcommand{\assumptionname}{Veronderstelling}
   \newcommand{\conclusionname}{Besluit}
   \newcommand{\solutionname}{Oplossing}
   \newcommand{\propertyname}{Eigenschap}
   \newcommand{\introductionname}{Introductie}
-  \newcommand{\problemsetname}{Probleemcomplex}
+  \newcommand{\homeworkname}{Probleemcomplex}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Update:}
   \newcommand{\ebibname}{Bibliographie}
@@ -622,13 +631,15 @@
   \newcommand{\corollaryname}{Következmény}
   \newcommand{\examplename}{Példa}
   \newcommand{\exercisename}{Feladat}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Megjegyzés}
   \newcommand{\assumptionname}{Sejtés}
   \newcommand{\conclusionname}{Összefoglalás}
   \newcommand{\solutionname}{Megoldás}
   \newcommand{\propertyname}{Tulajdonság}
   \newcommand{\introductionname}{Bevezetés}
-  \newcommand{\problemsetname}{Feladatok}
+  \newcommand{\homeworkname}{Feladatok}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Frissítve:}
   \newcommand{\ebibname}{Bibliográfia}
@@ -663,6 +674,8 @@
   \newcommand{\examplename}{Beispiel}
   \newcommand{\instancename}{Beispiel} %
   \newcommand{\exercisename}{\"{U}bung}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Anmerkung}
   \newcommand{\assumptionname}{Annahme}
   \newcommand{\conclusionname}{Abschluss}
@@ -697,13 +710,15 @@
   \newcommand{\corollaryname}{Corolario}
   \newcommand{\examplename}{Ejemplo}
   \newcommand{\exercisename}{Ejercicio}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Comentario}
   \newcommand{\assumptionname}{Asunto}
   \newcommand{\conclusionname}{Conclusión}
   \newcommand{\solutionname}{Solución}
   \newcommand{\propertyname}{Propiedad}
   \newcommand{\introductionname}{Introducción}
-  \newcommand{\problemsetname}{Ejercicio}
+  \newcommand{\homeworkname}{Ejercicio}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Actualización:}
   \newcommand{\ebibname}{Bibliografía}
@@ -734,13 +749,15 @@
   \newcommand{\corollaryname}{Үр дүн}
   \newcommand{\examplename}{Жишээ}
   \newcommand{\exercisename}{Дасгал}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Тайлбар}
   \newcommand{\assumptionname}{Урьдчилсан нөхцөл}
   \newcommand{\conclusionname}{Дүгнэлт}
   \newcommand{\solutionname}{Хариулт}
   \newcommand{\propertyname}{Шинж чанар}
   \newcommand{\introductionname}{Удиртгал}
-  \newcommand{\problemsetname}{Бодлогууд}
+  \newcommand{\homeworkname}{Бодлогууд}
   \newcommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Шинэчлэлтүүд:}
   \newcommand{\ebibname}{Ном зүй}
@@ -770,13 +787,15 @@
   \newcommand{\corollaryname}{Corolário}
   \newcommand{\examplename}{Exemplo}
   \newcommand{\exercisename}{Exercício}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Comentário}
   \newcommand{\assumptionname}{Assunto}
   \newcommand{\conclusionname}{Conclusão}
   \newcommand{\solutionname}{Soluções}
   \newcommand{\propertyname}{Propiedade}
   \newcommand{\introductionname}{Introdução}
-  \newcommand{\problemsetname}{Questão}
+  \newcommand{\homeworkname}{Questão}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Atualização: }
   \newcommand{\ebibname}{Bibliografia}
@@ -813,6 +832,8 @@
   \newcommand{\examplename}{例題}
   \newcommand{\instancename}{例}
   \newcommand{\exercisename}{練習}
+  \newcommand{\homeworkname}{作业}
+  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{注}
   \newcommand{\assumptionname}{仮設}
   \newcommand{\conclusionname}{結論}
@@ -845,18 +866,23 @@
 \newcommand*{\eitemi}{\tikz \draw [baseline, ball color=main,draw=none] circle (2pt);}
 \newcommand*{\eitemii}{\tikz \draw [baseline, fill=main,draw=none,circular drop shadow] circle (2pt);}
 \newcommand*{\eitemiii}{\tikz \draw [baseline, fill=main,draw=none] circle (2pt);}
+\setlist[itemize,1]{label={\eitemi}}
+\setlist[itemize,2]{label={\eitemii}}
+\setlist[itemize,3]{label={\eitemiii}}
 \setlist[enumerate,1]{label=\color{main}(\arabic*)}
 \setlist[enumerate,2]{label=\color{main}(\alph*).}
 \setlist[enumerate,3]{label=\color{main}\Roman*.}
 \setlist[enumerate,4]{label=\color{main}\Alph*.}
-\newlist{exenum}{enumerate}{4}
-\setlist[exenum,1]{label=\color{main}\arabic*.}
-\setlist[exenum,2]{label=\color{main}(\arabic*)}
-\setlist[exenum,3]{label=\color{main}(\alph*).}
-\setlist[exenum,4]{label=\color{main}\Roman*.}
-\setlist[itemize,1]{label={\eitemi}}
-\setlist[itemize,2]{label={\eitemii}}
-\setlist[itemize,3]{label={\eitemiii}}
+\newlist{homeworklist}{enumerate}{1}
+\setlist[homeworklist,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
+\newlist{exlist}{enumerate}{3}
+\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
+\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
+\setlist[exlist,3]{label=\color{main}{(\roman*)}}
+\settasks{label-format=\textcolor{main},label={(\arabic*)},label-width=1.5em}
+\setlist{nolistsep}
+\NewTasksEnvironment[label={(\Alph*)},label-width=1.5em]{taskschoice}[()]
+\NewTasksEnvironment[label={\arabic*.},label-width=1.5em]{tasksans}[()]
 
 \RequirePackage{apptools}
 
@@ -1238,26 +1264,58 @@
     \end{multicols}
   \end{tcolorbox}}
 
-\RequirePackage{adforn}
-
-\newenvironment{problemset}[1][\xchaptertitle~\exercisename]{
-  \vspace*{10pt}
+\newenvironment{homework}[1][\homeworkname]{
+  \newpage
   \begin{center}
-    \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\exercisename}{\exercisename}}
+    \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\homeworkname}{\homeworkname}}
     % \markboth{#1}{\rightmark}
     \markright{#1}
-    \textcolor{main}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
+    \textcolor{main}{\Large\bfseries~#1~}
   \end{center}
-  \begin{enumerate}}{
-  \end{enumerate}}
+  \begin{homeworklist}}{
+  \end{homeworklist}}
 
-\newenvironment{exerciseset}{
-  \vspace*{10pt}
-  \par\indent\makebox[-3pt][r]{
-  \large\color{fourth}\HandPencilLeft\quad}
-  \textbf{\color{second}{\Large\bfseries\exercisename}}\rmfamily
-  \begin{exenum}}{
-  \end{exenum}}
+\newenvironment{answer}[1][\answername]{
+  \chapter{#1}
+  \begin{homeworklist}}{
+  \end{homeworklist}}
+
+% \newenvironment{exerciseset}{
+%   \vspace*{10pt}
+%   \par\indent\makebox[-3pt][r]{
+%   \large\color{fourth}\HandPencilLeft\quad}
+%   \textbf{\color{second}{\Large\bfseries\exercisename}}\rmfamily
+%   \begin{exenum}}{
+%   \end{exenum}}
+
+% \newcommand{\subexs}[1][1]{\vskip1ex\par%
+%   \setcounter{subexperiod}{#1}%
+%   \noindent{\color{green!60!black}{\kaishu 作业~\theexercise. }}}
+% \newcounter{subexnum}[enumii]
+% \newcounter{subexcount}[enumii]
+% \newcounter{subexperiod}[enumii]
+% \newcommand{\setsubex}[1][4]{\setcounter{subexperiod}{#1}}
+% \newcommand{\subex}[1]{%
+% 	\stepcounter{subexnum}%
+% 	\ifnum\value{subexperiod}>4%
+% 		\setcounter{subexperiod}{5}
+% 	\fi%
+% 	\ifnum\value{subexperiod}>1%
+% 		\ifnum\value{subexcount}=0\par\fi%
+% 		\ifnum\value{subexperiod}=2\makebox[0.44\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% 		\ifnum\value{subexperiod}=3\makebox[0.29\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% 		\ifnum\value{subexperiod}=4\makebox[0.21\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% 		\ifnum\value{subexperiod}>4\makebox[0.16\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% 		\stepcounter{subexcount}%
+% 		\ifnum\value{subexperiod}=\value{subexcount}\setcounter{subexcount}{0}\fi%
+% 	\else%
+% 		\ifnum\value{subexperiod}=1%
+% 			\par\textcolor{main}{(\thesubexnum)} #1%
+% 		\else
+% 			\textcolor{main}{(\thesubexnum)} #1\relax%
+% 		\fi
+% 	\fi%
+% }
 
 \def\relsec{\endgroup start}
 \def\endrelsec{end\begingroup\def \@currenvir {relsec}}
