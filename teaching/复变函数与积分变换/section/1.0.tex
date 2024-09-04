@@ -16,7 +16,7 @@
 		\item 当 $\Delta=0$ 时, 有一个二重的实根;
 		\item 当 $\Delta<0$ 时, 无实根.
 		\onslide<+->
-		然而, 如果我们\emph{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
+		然而, 如果我们\alert{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
 	\end{enumerate}
 \end{frame}
 
@@ -53,16 +53,15 @@
 	那么这个方程是不是真的只有 $x=2$ 这一个解呢?
 	\onslide<+->
 	由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个解.
-	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[framed]
-			\filldraw[cstcurve,dcolora,domain=-3.1:3.7,smooth,fill=white] plot ({(\x)*0.4},{(\x*\x*\x+6*\x-20)*0.04});
-			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-2.9)--(0,2.5);
-			\fill[cstdot,dcolorb] (0,-0.8) circle;
-			\fill[cstdot,dcolorb] (0.8,0) circle;
-			\draw (0,-.8) node[right] {$-20$};
-			\draw (.8,0) node[above left] {$2$};
+		\begin{tikzpicture}
+      \filldraw[cstcurve,main,domain=-1.2:3.1,smooth,fill=white] plot ({\x*.5},{(\x*\x*\x+6*\x-20)*.1});
+      \draw[cstaxis] (-3,0)--(3,0);
+      \draw[cstaxis] (0,-3)--(0,3);
+      \coordinate [label=above left:$-20$] (A) at (0,-2);
+      \coordinate [label=above left:$2$] (B) at (1,0);
+      \fill[cstdot,second] (A) circle;
+      \fill[cstdot,second] (B) circle;
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -76,33 +75,40 @@
 
 	\onslide<+->
 	\begin{solution*}
-	同样地我们有 $x=u+v$, 其中
+		同样地我们有 $x=u+v$, 其中
 		\[u^3+v^3=-6,\quad uv=\frac73.\]
-	\onslide<+->{于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
-	}\onslide<+->{然而这个方程没有实数解.}
+	\onslide<+->{%
+		于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
+	}\onslide<+->{%
+		然而这个方程没有实数解.
+	}
 
-	\onslide<+->{我们可以强行解得
-		\[u^3=-3+\frac{10}9\sqrt{-3}.\]}
+	\onslide<+->{%
+		我们可以强行解得
+		\[u^3=-3+\frac{10}9\sqrt{-3}.\]
+	}
 	\end{solution*}
 \end{frame}
 
 
 \begin{frame}{三次方程的根}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\[u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
 		=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,\]
-	\onslide<+->{相应地
+	\onslide<+->{%
+		相应地
 		\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]
-	}\onslide<+->{
+	}\onslide<+->{%
 		\[x=u+v=2,-3,1.\]}
-	\end{solutionc}
+	\end{solution}
 
-	\onslide<+->{所以我们从一条``\emph{错误的路径}''走到了正确的目的地?}
+	\onslide<+->
+	所以我们从一条``\alert{错误的路径}''走到了正确的目的地?
 \end{frame}
 
 
-\begin{frame}{三次方程的根\noexer}
+\begin{frame}{三次方程的根\noexer}\small
 	\onslide<+->
 	对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:
 		\[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
@@ -115,31 +121,45 @@
 		\item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\half\sqrt[3]{4q}$ ($2$重).
 		\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
 	\end{enumerate}
-	\begin{center}
-		\begin{tikzpicture}
-			\begin{scope}[framed,visible on=<4->]
-				\draw[cstcurve,dcolora,domain=-2.4:3.3,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x-10)*0.06});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
-			\end{scope}
-			\begin{scope}[framed,visible on=<5->,xshift=40mm]
-				\draw[cstcurve,dcolora,domain=-3.1:2.7,smooth] plot ({(\x)*0.25},{(\x*\x*\x-3*\x+2)*0.06});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
-			\end{scope}
-			\begin{scope}[framed,visible on=<6->,xshift=80mm]
-				\draw[cstcurve,dcolora,domain=-3.9:3.7,smooth] plot ({(\x)*0.2},{(\x*\x*\x-7*\x+1)*0.03});
-				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.2)--(0,1.2);
-			\end{scope}
-		\end{tikzpicture}
-	\end{center}
+	\begin{figure}[hbpt]
+		\centering
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<4->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-2.6:3.3,smooth] plot ({(\x)*0.35},{(\x*\x*\x-3*\x-10)*0.1});
+				\fill[cstdot,second] (.92,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<5->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-3.1:2.8,smooth] plot ({(\x)*0.35},{(\x*\x*\x-3*\x+2)*0.1});
+				\fill[cstdot,second] (.37,0) circle;
+				\fill[cstdot,second] (-.69,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<6->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-4:3.9,smooth] plot ({(\x)*0.3},{(\x*\x*\x-7*\x+1)*0.05});
+				\fill[cstdot,second] (.76,0) circle;
+				\fill[cstdot,second] (.05,0) circle;
+				\fill[cstdot,second] (-.78,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 
 \begin{frame}{三次方程的根\noexer}
 	\onslide<+->
-	所以我们想要使用求根公式的话, 就\emph{必须接受负数开方}.
+	所以我们想要使用求根公式的话, 就\alert{必须接受负数开方}.
 	\onslide<+->
 	那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
 	\onslide<+->
@@ -149,11 +169,17 @@
 	尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
 
 	\onslide<+->
-	\begin{quote@*}
+	\begin{tcolorbox}[
+		common,
+		borderline={0pt}{0pt}{fourth,cstdash},
+		colbacktitle=fourth,
+		fontlower=\itshape,
+		halign lower=flush right,
+		lower separated=true]
 		圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
-	\tcblower
-	莱布尼兹 (Leibniz)
-	\end{quote@*}
+		\tcblower
+		莱布尼兹 (Leibniz)
+	\end{tcolorbox}
 
 	\onslide<+->
 	我们将在下一节使用更为现代的语言来解释和运用复数.

@@ -7,7 +7,7 @@
 	柯西积分定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
 
 	\onslide<+->
-	\begin{alertblock}{柯西积分公式}
+	\begin{second}{柯西积分公式}
 		设
 		\begin{itemize}[<*>]
 			\item 函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析,
@@ -15,7 +15,7 @@
 		\end{itemize}
 		\onslide<+->{则
 			\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z.\]}
-	\end{alertblock}
+	\end{second}
 
 	\onslide<+->
 	如果 $z_0\notin D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
@@ -141,18 +141,18 @@
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[scale=.7,framed,xshift=-120mm,yshift=-30mm]
 			\draw[cstaxis] (-2.1,0)--(2.1,0);
 			\draw[cstaxis] (0,-2)--(0,2.1);
-			\draw[cstcurve,dcolorb] (0,0) circle (1.8);
-			\draw[cstcurve,dcolora,visible on=<3->] (1.2,0) circle(0.5);
-			\draw[cstcurve,dcolora,visible on=<3->] (-1.2,0) circle(0.5);
-			\draw[cstcurve,dcolora,visible on=<3->] (0,0) circle(0.5);
-			\fill[cstdot,dcolorb,visible on=<2->] (0,0) circle;
-			\fill[cstdot,dcolorb,visible on=<2->] (1.2,0) circle;
-			\fill[cstdot,dcolorb,visible on=<2->] (-1.2,0) circle;
+			\draw[cstcurve,second] (0,0) circle (1.8);
+			\draw[cstcurve,main,visible on=<3->] (1.2,0) circle(0.5);
+			\draw[cstcurve,main,visible on=<3->] (-1.2,0) circle(0.5);
+			\draw[cstcurve,main,visible on=<3->] (0,0) circle(0.5);
+			\fill[cstdot,second,visible on=<2->] (0,0) circle;
+			\fill[cstdot,second,visible on=<2->] (1.2,0) circle;
+			\fill[cstdot,second,visible on=<2->] (-1.2,0) circle;
 			\draw
-				(1.6,1.6) node[dcolorb] {$C$}
-				(-0.4,0.8) node[dcolora,visible on=<3->] {$C_1$}
-				(1.2,-.8) node[dcolora,visible on=<3->] {$C_2$}
-				(-1.2,-.8) node[dcolora,visible on=<3->] {$C_3$};
+				(1.6,1.6) node[second] {$C$}
+				(-0.4,0.8) node[main,visible on=<3->] {$C_1$}
+				(1.2,-.8) node[main,visible on=<3->] {$C_2$}
+				(-1.2,-.8) node[main,visible on=<3->] {$C_3$};
 		\end{tikzpicture}\end{tikzpicture}
 		\vspace{-7.7\baselineskip}
 	\end{solution}
@@ -168,10 +168,10 @@
 	不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
 
 	\onslide<+->
-	\begin{alertblock}{柯西积分公式}
+	\begin{second}{柯西积分公式}
 		设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
 		\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.\]
-	\end{alertblock}
+	\end{second}
 
 	\onslide<+->
 	假如 $f(z)$ 有泰勒展开
@@ -183,7 +183,7 @@
 
 \begin{frame}{高阶导数的柯西积分公式}
 	\onslide<+->
-	\begin{proofs*}
+	\begin{solution*}[证明]
 		先证明 $n=1$ 的情形.
 		\onslide<+->{设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.
 		}\onslide<+->{当 $|h|<\delta$ 时, $z_0+h\in D$.
@@ -195,13 +195,13 @@
 		}\onslide<+->{当 $h\to 0$ 时, 左边的极限是 $f'(z_0)$.
 		}\onslide<+->{因此我们只需要证明右边的极限等于 
 			$\displaystyle\frac1{2\pi i}\emph{\oint_C\frac{f(z)}{(z-z_0)^2}\diff z}$.}
-	\end{proofs*}
+	\end{solution*}
 \end{frame}
 
 
 \begin{frame}{高阶导数的柯西积分公式}
 	\onslide<+->
-	\begin{proofe*}
+	\begin{proof*}[续证]
 		二者之差 $=\displaystyle\frac1{2\pi i}\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\diff z$.
 		\onslide<+->{由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $|f(z)|\le M$.
 		}\onslide<+->{注意到 $z\in C$, $|z-z_0|\ge \delta$, $|z-z_0-h|\ge\delta-|h|$.
@@ -213,7 +213,7 @@
 		\onslide<+->{对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式.
 		}\onslide<+->{比较 $\dfrac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h$ 与积分公式右侧之差, 并利用长大不等式证明 $h\to 0$ 时, 差趋于零.
 		}\onslide<+->{具体过程省略.\qedhere}
-	\end{proofe*}
+	\end{proof*}
 \end{frame}
 
 
@@ -259,7 +259,7 @@
 
 \begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		由柯西积分公式,
 			\begin{align*}
 			&\peq\oint_{C_1}\frac{e^z}{(z^2+1)^2}\diff z
@@ -273,7 +273,7 @@
 			\[\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
 			=\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2
 			=\pi i(\sin1-\cos1).\]}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
 
@@ -314,9 +314,9 @@
 \end{frame}
 
 
-\begin{frame}[<*>]{典型例题: 使用高阶导数的柯西积分公式计算积分}
+\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\enumnum2 $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
 		\onslide<+->{取 $C_1,C_2$ 分别为以 $0$ 和 $2$ 为圆心的分离圆周.
 		}\onslide<+->{由复合闭路定理和柯西积分公式,
@@ -325,7 +325,7 @@
 			&\peq\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z\\
 			&\visible<+->{=\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.}
 			\end{align*}}
-	\end{solutionc}
+	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}

@@ -68,27 +68,27 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,draw=dcolora,cstfill] (0,0) circle (1.5);
-			\filldraw[cstdote,draw=dcolora] (0,0) circle;
-			\draw[dcolorb,cstarrowto,thick] (0.048,0.036)--(1.2,0.9);
+			\filldraw[cstcurve,draw=main,cstfill] (0,0) circle (1.5);
+			\filldraw[cstdote,draw=main] (0,0) circle;
+			\draw[second,cstra,thick] (0.048,0.036)--(1.2,0.9);
 			\draw
-				(0.7,0.2) node[dcolorb] {$R_2$}
-				(-0.3,0) node[dcolora] {$z_0$}
+				(0.7,0.2) node[second] {$R_2$}
+				(-0.3,0) node[main] {$z_0$}
 				(0,-2) node {$0<|z-z_0|<R_2$};
 
 			\fill[cstfille,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
-			\filldraw[cstcurve,fill=white,draw=dcolora,visible on=<.->] (4,0) circle (1); 
-			\fill[cstdot,dcolorb,visible on=<.->] (4,0) circle;
-			\draw[dcolorb,cstarrowto,thick,visible on=<.->] (4,0)--(4.6,-0.8);
+			\filldraw[cstcurve,fill=white,draw=main,visible on=<.->] (4,0) circle (1); 
+			\fill[cstdot,second,visible on=<.->] (4,0) circle;
+			\draw[second,cstra,thick,visible on=<.->] (4,0)--(4.6,-0.8);
 			\draw
-				(4.1,-0.6) node[dcolorb,visible on=<.->] {$R_1$}
-				(3.7,0) node[dcolora,visible on=<.->] {$z_0$}
+				(4.1,-0.6) node[second,visible on=<.->] {$R_1$}
+				(3.7,0) node[main,visible on=<.->] {$z_0$}
 				(4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
 
 			\fill[cstfille,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
-			\filldraw[cstdote,draw=dcolora,visible on=<.->] (8,0) circle;
+			\filldraw[cstdote,draw=main,visible on=<.->] (8,0) circle;
 			\draw
-				(7.7,0) node[dcolora,visible on=<.->] {$z_0$}
+				(7.7,0) node[main,visible on=<.->] {$z_0$}
 				(8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
 		\end{tikzpicture}
 	\end{center}
@@ -102,7 +102,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 双边幂级数的收敛域}
+\begin{frame}{例题: 双边幂级数的收敛域}
 	\onslide<+->
 	\begin{example}
 		求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}$ 的收敛域与和函数.
@@ -154,20 +154,20 @@
 	\onslide<2->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolorb,cstfill] (0,0) circle (1.5);
-			\filldraw[cstcurve,dcolora,fill=white] (0,0) circle (1);
-			\fill[cstdot,dcolora,visible on=<4->] (-1,0) circle;
-			\fill[cstdot,dcolorb,visible on=<4->] (-1.48,-0.3) circle;
+			\filldraw[cstcurve,second,cstfill] (0,0) circle (1.5);
+			\filldraw[cstcurve,main,fill=white] (0,0) circle (1);
+			\fill[cstdot,main,visible on=<4->] (-1,0) circle;
+			\fill[cstdot,second,visible on=<4->] (-1.48,-0.3) circle;
 			\fill[cstdot,black,visible on=<4->] (0,1.25) circle;
-			\draw[dcolorb,cstarrowto,thick,visible on=<3->] (0,0)--(1.2,0.9);
-			\draw[dcolora,cstarrowto,thick,visible on=<3->] (0,0)--(0.6,-0.8);
+			\draw[second,cstra,thick,visible on=<3->] (0,0)--(1.2,0.9);
+			\draw[main,cstra,thick,visible on=<3->] (0,0)--(0.6,-0.8);
 			\draw
 				(-1.25,-0.15) node[visible on=<4->] {$\zeta$}
-				(0.5,0.1) node[dcolorb,visible on=<3->] {$R$}
-				(0.1,-0.5) node[dcolora,visible on=<3->] {$r$}
+				(0.5,0.1) node[second,visible on=<3->] {$R$}
+				(0.1,-0.5) node[main,visible on=<3->] {$r$}
 				(-0.3,0) node {$z_0$}
-				(0.8,-1) node[dcolora,visible on=<3->] {$K_1$}
-				(1.4,1.2) node[dcolorb,visible on=<3->] {$K_2$}
+				(0.8,-1) node[main,visible on=<3->] {$K_1$}
+				(1.4,1.2) node[second,visible on=<3->] {$K_2$}
 				(-0.3,1.25) node[visible on=<4->] {$z$};
 			\fill[cstdot,black] (0,0) circle;
 		\end{tikzpicture}
@@ -286,7 +286,7 @@
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\enumnum1 由于 $|z|<1,\abs{\dfrac z2}<1$,
 		\onslide<+->{因此
 			\begin{align*}
@@ -296,13 +296,13 @@
 				\visible<+->{=\sum_{n=0}^\infty\left(1-\frac1{2^{n+1}}\right)z^n}\\
 				&\visible<+->{=\half +\frac34z+\frac78z^2+\cdots}
 			\end{align*}}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\enumnum2 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
 		\onslide<+->{因此
 			\begin{align*}
@@ -312,13 +312,13 @@
 				\visible<+->{=-\sum_{n=1}^{\infty}\frac1{z^n}-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
 				&\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\half -\frac14z-\frac18z^2-\cdots}
 			\end{align*}}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\enumnum3 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->{因此
 			\begin{align*}
 				f(z)&=\frac1{1-z}-\frac1{2-z}
@@ -327,7 +327,7 @@
 					\visible<+->{=\sum_{n=0}^\infty\frac{2^n-1}{z^{n+1}}}\\
 				&\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
 			\end{align*}}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
 
@@ -408,7 +408,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 洛朗展开的应用}
+\begin{frame}{例题: 洛朗展开的应用}
 	\onslide<+->
 	注意到当 $n=-1$ 时, 洛朗级数的系数
 	\[c_{-1}=\frac1{2\pi i}\oint_C f(\zeta)\diff\zeta,\]
@@ -419,7 +419,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 洛朗展开的应用}
+\begin{frame}{例题: 洛朗展开的应用}
 	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
@@ -445,7 +445,7 @@
 
 
 
-\begin{frame}{例: 洛朗展开的应用}
+\begin{frame}{例题: 洛朗展开的应用}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=1}\frac{z}{\sin z^2}\diff z$.

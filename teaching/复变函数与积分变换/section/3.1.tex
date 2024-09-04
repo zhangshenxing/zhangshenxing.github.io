@@ -23,16 +23,16 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis](-3.5,0)--(3.5,0);
 			\draw[cstaxis](0,-0.5)--(0,2.5);
-			\draw[cstcurve,dcolorb,smooth,domain=-35:125] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
-			\draw (3.4,0.3) node[dcolorb] {$A=z(a)$};
-			\draw (0.8,1.9) node[dcolorb] {$B=z(b)$};
-			\fill[cstdot,dcolorb] ({1.4+1.3*cos(-35)}, {1.1+1.3*sin(-35)}) circle;
-			\fill[cstdot,dcolorb] ({1.4+1.3*cos(125)}, {1.1+1.3*sin(125)}) circle;
-			\draw[cstcurve,dcolorb,smooth,domain=40:45,cstarrow1to,visible on=<3->] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=-65:30,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=25:120,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=115:210,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
-			\draw[cstcurve,dcolora,smooth,domain=205:300,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
+			\draw[cstcurve,second,smooth,domain=-35:125] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
+			\draw (3.4,0.3) node[second] {$A=z(a)$};
+			\draw (0.8,1.9) node[second] {$B=z(b)$};
+			\fill[cstdot,second] ({1.4+1.3*cos(-35)}, {1.1+1.3*sin(-35)}) circle;
+			\fill[cstdot,second] ({1.4+1.3*cos(125)}, {1.1+1.3*sin(125)}) circle;
+			\draw[cstcurve,second,smooth,domain=40:45,cstarrow1to,visible on=<3->] plot ({1.4+1.3*cos(\x)}, {1.1+1.3*sin(\x)});
+			\draw[cstcurve,main,smooth,domain=-65:30,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
+			\draw[cstcurve,main,smooth,domain=25:120,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
+			\draw[cstcurve,main,smooth,domain=115:210,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
+			\draw[cstcurve,main,smooth,domain=205:300,visible on=<5->,cstarrow1to] plot ({-1.4+0.7*cos(\x)}, {1.4+0.7*sin(\x)});
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -71,32 +71,32 @@
 	\onslide<2->
 	\begin{center}
 		\begin{tikzpicture}[framed]
-			\draw[cstcurve,dcolorc,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
-			\draw[cstcurve,dcolorc,smooth,domain=195:200,cstarrowto] plot ({0.015*\x},{0.6*sin(\x)});
-			\fill[cstdot,dcolorc] (0,0) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*32},{0.6*sin(32)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*64},{0.6*sin(64)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*96},{0.6*sin(96)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*128},{0.6*sin(128)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*160},{0.6*sin(160)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*232},{0.6*sin(232)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*264},{0.6*sin(264)}) circle;
-			\fill[cstdot,dcolora,visible on=<2->]({0.015*296},{0.6*sin(296)}) circle;
-			\fill[cstdot,dcolorb,visible on=<3->]({0.015*328},{0.6*sin(328)}) circle;
-			\fill[cstdot,dcolorc] ({0.015*360},0) circle;
+			\draw[cstcurve,third,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
+			\draw[cstcurve,third,smooth,domain=195:200,cstra] plot ({0.015*\x},{0.6*sin(\x)});
+			\fill[cstdot,third] (0,0) circle;
+			\fill[cstdot,second,visible on=<3->]({0.015*32},{0.6*sin(32)}) circle;
+			\fill[cstdot,main,visible on=<2->]({0.015*64},{0.6*sin(64)}) circle;
+			\fill[cstdot,second,visible on=<3->]({0.015*96},{0.6*sin(96)}) circle;
+			\fill[cstdot,main,visible on=<2->]({0.015*128},{0.6*sin(128)}) circle;
+			\fill[cstdot,second,visible on=<3->]({0.015*160},{0.6*sin(160)}) circle;
+			\fill[cstdot,main,visible on=<2->]({0.015*232},{0.6*sin(232)}) circle;
+			\fill[cstdot,second,visible on=<3->]({0.015*264},{0.6*sin(264)}) circle;
+			\fill[cstdot,main,visible on=<2->]({0.015*296},{0.6*sin(296)}) circle;
+			\fill[cstdot,second,visible on=<3->]({0.015*328},{0.6*sin(328)}) circle;
+			\fill[cstdot,third] ({0.015*360},0) circle;
 			\draw
-			({0.015*32},{0.6*sin(32)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_1$}
-			({0.015*64},{0.6*sin(64)+0.3}) node[dcolora,visible on=<2->] {$z_1$}
-			({0.015*96},{0.6*sin(96)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_2$}
-			({0.015*128},{0.6*sin(128)+0.3}) node[dcolora,visible on=<2->] {$z_2$}
-			({0.015*160},{0.6*sin(160)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_3$}
-			({0.015*232},{0.6*sin(232)+0.3}) node[dcolora,visible on=<2->] {$z_{n-2}$}
-			({0.015*264},{0.6*sin(264)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_{n-1}$}
-			({0.015*296},{0.6*sin(296)+0.3}) node[dcolora,visible on=<2->] {$z_{n-1}$}
-			({0.015*328},{0.6*sin(328)-0.3}) node[dcolorb,visible on=<3->] {$\zeta_n$}
-			({0.015*180},{0.6*sin(180)+0.5}) node[dcolora,visible on=<2->] {$\ddots$}
-			(-0.3,0) node[dcolorc] {$A$}
-			({0.015*360+0.3},0) node[dcolorc] {$B$};
+			({0.015*32},{0.6*sin(32)-0.3}) node[second,visible on=<3->] {$\zeta_1$}
+			({0.015*64},{0.6*sin(64)+0.3}) node[main,visible on=<2->] {$z_1$}
+			({0.015*96},{0.6*sin(96)-0.3}) node[second,visible on=<3->] {$\zeta_2$}
+			({0.015*128},{0.6*sin(128)+0.3}) node[main,visible on=<2->] {$z_2$}
+			({0.015*160},{0.6*sin(160)-0.3}) node[second,visible on=<3->] {$\zeta_3$}
+			({0.015*232},{0.6*sin(232)+0.3}) node[main,visible on=<2->] {$z_{n-2}$}
+			({0.015*264},{0.6*sin(264)-0.3}) node[second,visible on=<3->] {$\zeta_{n-1}$}
+			({0.015*296},{0.6*sin(296)+0.3}) node[main,visible on=<2->] {$z_{n-1}$}
+			({0.015*328},{0.6*sin(328)-0.3}) node[second,visible on=<3->] {$\zeta_n$}
+			({0.015*180},{0.6*sin(180)+0.5}) node[main,visible on=<2->] {$\ddots$}
+			(-0.3,0) node[third] {$A$}
+			({0.015*360+0.3},0) node[third] {$B$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -137,11 +137,11 @@
 	则 $\diff z=z'(t)\diff t$,
 
 	\onslide<+->
-	\begin{alertblock}{复变函数积分的一般计算方法}
+	\begin{second}{复变函数积分的一般计算方法}
 		\begin{equation}\tag{A}
 			\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.
 		\end{equation}
-	\end{alertblock}
+	\end{second}
 	\onslide<+->
 	\noindent 如果 $C$ 的正方向是从 $z(b)$ 到 $z(a)$, 则需要交换右侧积分的上下限.
 
@@ -174,9 +174,9 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis](0,0)--(3,0);
 			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,dcolora,cstarrowto](0,0)--(1.5,2);
+			\draw[cstcurve,main,cstra](0,0)--(1.5,2);
 			\draw
-				(2.5,1.2) node[dcolora,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
+				(2.5,1.2) node[main,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -205,9 +205,9 @@
 	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-80mm,yshift=-5mm]
 		\draw[cstaxis](0,0)--(3,0);
 		\draw[cstaxis](0,0)--(0,2.5);
-		\draw[cstcurve,dcolora,domain=0:1.5,cstarrowto] plot({\x},{8*\x*\x/9});
+		\draw[cstcurve,main,domain=0:1.5,cstra] plot({\x},{8*\x*\x/9});
 		\draw
-			(2.8,2) node[dcolora,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
+			(2.8,2) node[main,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
 	\end{tikzpicture}\end{tikzpicture}
 \end{frame}
 
@@ -235,9 +235,9 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis](0,0)--(3,0);
 			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,dcolora,cstarrowto](0,0)--(2,2);
+			\draw[cstcurve,main,cstra](0,0)--(2,2);
 			\draw
-				(2.4,0.9) node[dcolora,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
+				(2.4,0.9) node[main,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -260,11 +260,11 @@
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis](0,0)--(2.5,0);
 				\draw[cstaxis](0,0)--(0,2);
-				\draw[cstcurve,cstarrowto,dcolora](0,0)--(0,1.5);
-				\draw[cstcurve,cstarrowto,dcolorb](0,1.5)--(1.5,1.5);
+				\draw[cstcurve,cstra,main](0,0)--(0,1.5);
+				\draw[cstcurve,cstra,second](0,1.5)--(1.5,1.5);
 				\draw
-					(-1.1,1.2) node[dcolora,align=center,visible on=<3->] {$z=it$\\$0\le t\le 1$}
-					(2.5,1.5) node[dcolorb,align=center,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
+					(-1.1,1.2) node[main,align=center,visible on=<3->] {$z=it$\\$0\le t\le 1$}
+					(2.5,1.5) node[second,align=center,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}
 		\vspace{-0.6\baselineskip}
@@ -287,15 +287,15 @@
 			\begin{tikzpicture}[scale=.8,framed]
 				\draw[cstaxis](0,0)--(2.5,0);
 				\draw[cstaxis](0,0)--(0,2.5);
-				\draw[cstcurve,cstarrowto,dcolora](0,0)--(2,2);
-				\draw[cstcurve,cstarrowto,dcolorb](2,2)--(0,2);
+				\draw[cstcurve,cstra,main](0,0)--(2,2);
+				\draw[cstcurve,cstra,second](2,2)--(0,2);
 			\end{tikzpicture}
 		\end{center}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例: 计算复变函数沿圆周的积分}
+\begin{frame}{例题: 计算复变函数沿圆周的积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
@@ -303,12 +303,12 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[framed]
-			\draw[cstcurve,dcolorb] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,dcolorb,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
-			\fill[cstdot,dcolorb](0,0) circle;
-			\draw[cstcurve,dcolora,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
+			\draw[cstcurve,second] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,second,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
+			\fill[cstdot,second](0,0) circle;
+			\draw[cstcurve,main,cstarrow1from]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
 			\draw
-				(-0.5,0.5) node[dcolorb] {$r$}
-				(0,-0.3) node[dcolorb] {$z_0$};
+				(-0.5,0.5) node[second] {$r$}
+				(0,-0.3) node[second] {$z_0$};
 		\end{tikzpicture}
 	\end{center}
 	\onslide<+->
@@ -319,9 +319,9 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算复变函数沿圆周的积分}
+\begin{frame}{例题: 计算复变函数沿圆周的积分}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 		\[
 			\oint_C\frac{\diff z}{(z-z_0)^{n+1}}
 			=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
@@ -331,12 +331,12 @@
 
 		\vspace{5mm}
 		\onslide<+->{当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.}
-	\end{solutionc}
+	\end{solution}
 	\onslide<+->
 	所以
-	\begin{alertblock@}
+	\begin{second@}
 		\[\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
-	\end{alertblock@}
+	\end{second@}
 
 	\onslide<+->
 	这个积分以后经常用到, 它的特点是积分值与圆周的圆心和半径都无关.
@@ -352,8 +352,8 @@
 			\item $\displaystyle\int_C[f(z)\pm g(z)]\diff z
 			=\displaystyle\int_Cf(z)\diff z\pm\displaystyle\int_Cg(z)\diff z$.
 				\begin{tikzpicture}[overlay,xshift=0cm,yshift=1.2cm]
-					\draw[decorate,thick,decoration={brace,amplitude=5},dcolorb] (0,1.3)--(0,-1.3);
-					\draw (1.2,0) node[dcolorb] {线性性质};
+					\draw[decorate,thick,decoration={brace,amplitude=5},second] (0,1.3)--(0,-1.3);
+					\draw (1.2,0) node[second] {线性性质};
 				\end{tikzpicture}
 			\item (\emph{长大不等式}) 设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
 			\[\alert{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.\]
@@ -383,7 +383,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 长大不等式的应用\noexer}
+\begin{frame}{例题: 长大不等式的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\lim\limits_{z\to a}(z-a)f(z)=k$, 则

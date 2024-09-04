@@ -15,20 +15,20 @@
 		\onslide<3->{
 		\begin{center}
 			\begin{tikzpicture}[framed]
-				\draw[cstcurve,dcolorc] (0,0) circle (1.3);
+				\draw[cstcurve,third] (0,0) circle (1.3);
 				\fill[cstdot] (0,0) circle;
-				\fill[cstdot,dcolorb] (2,0) circle;
-				\fill[cstdot,dcolora] (1,0) circle;
-				\fill[cstdot,dcolorb] (0.6667,0) circle;
-				\fill[cstdot,dcolora] (0.5,0) circle;
-				\fill[cstdot,dcolorb] (0.4,0) circle;
+				\fill[cstdot,second] (2,0) circle;
+				\fill[cstdot,main] (1,0) circle;
+				\fill[cstdot,second] (0.6667,0) circle;
+				\fill[cstdot,main] (0.5,0) circle;
+				\fill[cstdot,second] (0.4,0) circle;
 				\draw
 					(-0.3,0) node {$0$}
-					(2,-0.3) node[dcolorb] {$z_1$}
-					(1,0.3) node[dcolora] {$z_2$}
-					(0.6667,-0.3) node[dcolorb] {$z_3$}
-					(0.5,0.3) node[dcolora] {$z_4$}
-					(0.4,-0.3) node[dcolorb] {$z_k$};
+					(2,-0.3) node[second] {$z_1$}
+					(1,0.3) node[main] {$z_2$}
+					(0.6667,-0.3) node[second] {$z_3$}
+					(0.5,0.3) node[main] {$z_4$}
+					(0.4,-0.3) node[second] {$z_k$};
 			\end{tikzpicture}
 		\end{center}}
 	\end{example}
@@ -103,7 +103,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 可去奇点}
+\begin{frame}{例题: 可去奇点}
 	\onslide<+->
 	\begin{example*}
 			\[f(z)=\frac{\sin z}z=1-\dfrac{z^2}{3!}+\dfrac{z^4}{5!}+\cdots\]
@@ -223,7 +223,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 函数的零点}
+\begin{frame}{例题: 函数的零点}
 	\onslide<+->
 	\begin{example}
 			$f(z)=z(z-1)^3$
@@ -285,10 +285,10 @@
 	\end{enumerate}
 
 	\onslide<+->
-	\begin{alertblock}{可去奇点和极点判定方法}
+	\begin{second}{可去奇点和极点判定方法}
 		如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
 		\[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
-	\end{alertblock}
+	\end{second}
 \end{frame}
 
 
@@ -428,7 +428,7 @@
 \end{frame}
 
 
-\begin{frame}{例: $\infty$ 的奇点类型}
+\begin{frame}{例题: $\infty$ 的奇点类型}
 	\onslide<+->
 	\begin{example}
 			$f(z)=\dfrac z{z+1}$.
@@ -447,7 +447,7 @@
 \end{frame}
 
 
-\begin{frame}{例: $\infty$ 的奇点类型}
+\begin{frame}{例题: $\infty$ 的奇点类型}
 	\onslide<+->\begin{example}
 			设 $p(z)$ 是 $n\ge1$ 次多项式,
 		\onslide<+->{则 $\infty$ 是 $p(z)$ 的 $n$ 阶极点.
@@ -503,7 +503,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 证明复数域是代数封闭的\noexer}
+\begin{frame}{例题: 证明复数域是代数封闭的\noexer}
 	\onslide<+->
 	\begin{example}
 		证明非常数复系数多项式 $p(z)$ 总有复零点.

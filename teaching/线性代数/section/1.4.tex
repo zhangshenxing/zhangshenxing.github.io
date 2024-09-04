@@ -35,13 +35,13 @@
 	\onslide<+->
 	伴随矩阵满足如下性质:
 	\onslide<+->
-	\begin{block@}
+	\begin{main@}
 		\begin{enumerate}
 			\item $(k\bfA)^*=k^{n-1}\bfA^*$.
 			\item $(\bfA^\rmT)^*=(\bfA^*)^\rmT$.
 			\item \alert{$|\bfA^*|=|\bfA|^{n-1}$}.
 		\end{enumerate}
-	\end{block@}
+	\end{main@}
 	\onslide<+->
 	若 $|\bfA|\neq0$, 由 $|\bfA^*|\cdot|\bfA|=|\bfA^*\bfA|=\bigl||\bfA|\bfE_n\bigr|=|\bfA|^n$ 可得.
 
@@ -51,12 +51,12 @@
 
 
 \begin{frame}{伴随矩阵的性质}
-	\begin{alertblock@}
+	\begin{second@}
 		\begin{enumerate}
 			\setcounter{enumi}{3}
 			\item $\bfA\bfA^*=\bfA^*\bfA=|\bfA|E_n$.
 		\end{enumerate}
-	\end{alertblock@}
+	\end{second@}
 	\onslide<+->
 	这是因为
 	\[\bfA\bfA^*=\begin{pmatrix}
@@ -79,7 +79,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 伴随矩阵的性质}
+\begin{frame}{例题: 伴随矩阵的性质}
 	\onslide<+->
 	\begin{example}
 		设非零 $n\ge 3$ 实方阵 $\bfA$ 满足对任意 $i,j$, $a_{ij}=A_{ij}$. 求 $|\bfA|$.
@@ -163,10 +163,10 @@
 	\visible<+->{\bfA\cdot\frac{\bfA^*}{|\bfA|}=\frac{\bfA^*}{|\bfA|}\cdot\bfA=\bfE,}\qquad
 	\visible<+->{\bfA^{-1}=\frac{\bfA^*}{|\bfA|}.}\]
 	\onslide<+->
-	\begin{alertblock}{逆矩阵的存在性和形式}
+	\begin{second}{逆矩阵的存在性和形式}
 		$n$ 阶方阵 $\bfA$ 可逆当且仅当 $|\bfA|\neq 0$.
 		此时 $\bfA^{-1}=\dfrac{\bfA^*}{|\bfA|}$.
-	\end{alertblock}
+	\end{second}
 \end{frame}
 
 
@@ -199,7 +199,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例题: 计算逆矩阵}
 	\onslide<+->
 	\begin{example}
 		证明 $\bfA=\begin{pmatrix}
@@ -226,7 +226,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}\small
+\begin{frame}{例题: 计算逆矩阵}\small
 \beqskip{5pt}
 	\onslide<+->
 	\begin{example}
@@ -274,7 +274,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例题: 计算逆矩阵}
 	\onslide<+->
 	\begin{example}
 		设 $\lambda_1,\dots,\lambda_n\neq0$,
@@ -347,7 +347,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例题: 计算逆矩阵}
 	\onslide<+->
 	想一想: 若 $\bfA^3+\bfA^2-2\bfE=\bfO$, 如何求 $(\bfA^2+\bfE)^{-1}$?
 	\begin{enumerate}
@@ -365,7 +365,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算逆矩阵}
+\begin{frame}{例题: 计算逆矩阵}
 	\onslide<+->
 	\begin{example}
 		设 $n$ 阶方阵 $\bfA,\bfB,\bfC$ 满足 $\bfA\bfB\bfC=\bfE$, 则\fillbrace{\visible<+->{\alert{D}}}.
@@ -425,12 +425,12 @@
 		2&0\\0&0
 	\end{pmatrix}$ 不可逆.
 	\onslide<+->
-	\begin{block}{伴随矩阵的性质}
+	\begin{main}{伴随矩阵的性质}
 		\begin{enumerate}[<*>]
 			\setcounter{enumi}{4}
 			\item 若 $\bfA$ 可逆, 则 $(\bfA^{-1})^*=(\bfA^*)^{-1}=\dfrac{\bfA}{|\bfA|}$.
 		\end{enumerate}
-	\end{block}
+	\end{main}
 	\onslide<+->
 	\begin{proof}
 		由于 $\bfA\bfA^*=|\bfA|\bfE$, 因此 $\bfA^*=|\bfA|\bfA^{-1}$.
@@ -442,7 +442,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求逆矩阵}
+\begin{frame}{例题: 求逆矩阵}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA$ 是 $3$ 阶方阵, $|\bfA|=\dfrac12$.
@@ -471,7 +471,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}\small
+\begin{frame}{例题: 解矩阵方程}\small
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -511,7 +511,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例题: 解矩阵方程}
 	\onslide<+->
 	\begin{exercise}
 		设 $3$ 阶矩阵 $\bfA,\bfB$ 满足 $\bfA^{-1}\bfB\bfA=6\bfA+\bfB\bfA$.
@@ -532,7 +532,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例题: 解矩阵方程}
 	\onslide<+->
 	\begin{example}
 		解矩阵方程 $\bfA^*\bfX=\bfA^{-1}+2\bfX$, 其中 $\bfA=\begin{pmatrix}
@@ -556,7 +556,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 解矩阵方程}
+\begin{frame}{例题: 解矩阵方程}
 	\onslide<+->
 	\begin{exercise}
 		解矩阵方程 $\bfA^*\bfX\bfA=2\bfX\bfA-8\bfE$, 其中 $\bfA=\begin{pmatrix}
@@ -576,7 +576,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 逆矩阵计算方阵的幂}
+\begin{frame}{例题: 逆矩阵计算方阵的幂}
 	\onslide<+->
 	\begin{example}
 		设 $\bfP=\begin{pmatrix}
@@ -621,7 +621,7 @@
 	\onslide<+->
 	若 $\bfA$ 是 $n\ge3$ 阶退化方阵, 我们会在\S2.4证明 $(\bfA^*)^*=\bfO$.
 	\onslide<+->
-	\begin{block}{伴随矩阵的性质}
+	\begin{main}{伴随矩阵的性质}
 		\begin{enumerate}[<*>]
 			\setcounter{enumi}{5}
 			\item $(\bfA^*)^*=\begin{cases}
@@ -629,11 +629,11 @@
 				|\bfA|^{n-2}\bfA,&n\ge3.
 			\end{cases}$
 		\end{enumerate}
-	\end{block}
+	\end{main}
 \end{frame}
 
 
-\begin{frame}{例: 逆矩阵的性质}
+\begin{frame}{例题: 逆矩阵的性质}
 	\onslide<+->
 	\begin{exercise}
 		单选题: 设 $\bfA$ 是 $n$ 阶方阵, 若\fillbrace{\visible<+->{\alert{D}}}, 则 $\bfA-\bfE$ 可逆.
@@ -674,7 +674,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 克拉默法则的应用}
+\begin{frame}{例题: 克拉默法则的应用}
 	\onslide<+->
 	我们将会在\S2.4知道, \alert{$|\bfA|\neq0$ 是方程有唯一解的充分必要条件}.
 	\onslide<+->
@@ -733,7 +733,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 克拉默法则的应用}
+\begin{frame}{例题: 克拉默法则的应用}
 	\onslide<+->
 	\begin{exercise}
 		若 $\laeq[rrr]{
@@ -755,7 +755,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 克拉默法则的应用}
+\begin{frame}{例题: 克拉默法则的应用}
 	\onslide<+->
 	\begin{proof}
 		线性方程组 $\laeq[cccccc]{
@@ -840,35 +840,35 @@
 % 	\begin{center}
 % 		\begin{tikzpicture}
 % 			\begin{scope}[align=center,node distance=18mm,minimum height=12mm]
-% 				\node (1) [cstnodeg] {明文字母};
-% 				\node (2) [cstnodeg,right=of 1] {明文数字\\矩阵 $\bfX$};
-% 				\node (3) [cstnodeg,right=30mm of 2]{密文数字\\矩阵 $\bfC$};
-% 				\node (4) [cstnodeg,right=of 3]{密文字母};
-% 				\node (11) [cstnodeb,below=of 1] {明文字母};
-% 				\node (12) [cstnodeb,below=of 2] {明文数字\\矩阵 $\bfX$};
-% 				\node (13) [cstnodeb,below=of 3] {密文数字\\矩阵 $\bfC$};
-% 				\node (14) [cstnodeb,below=of 4] {密文字母};
+% 				\node (1) [cstnode2] {明文字母};
+% 				\node (2) [cstnode2,right=of 1] {明文数字\\矩阵 $\bfX$};
+% 				\node (3) [cstnode2,right=30mm of 2]{密文数字\\矩阵 $\bfC$};
+% 				\node (4) [cstnode2,right=of 3]{密文字母};
+% 				\node (11) [cstnode1,below=of 1] {明文字母};
+% 				\node (12) [cstnode1,below=of 2] {明文数字\\矩阵 $\bfX$};
+% 				\node (13) [cstnode1,below=of 3] {密文数字\\矩阵 $\bfC$};
+% 				\node (14) [cstnode1,below=of 4] {密文字母};
 % 			\end{scope}
 % 			\path (1.east) -- (12.west)
-% 				node[midway,align=center,dcolore] {$A\sim Z$\\对应\\$0\sim26$};
-% 			\begin{scope}[cstarrowto,cstcurve]
-% 				\begin{scope}[dcolord]
+% 				node[midway,align=center,fifth] {$A\sim Z$\\对应\\$0\sim26$};
+% 			\begin{scope}[cstra,cstcurve]
+% 				\begin{scope}[fourth]
 % 					\draw (1.east) -- (2.west) 
 % 						node[midway,above,black] {查表};
 % 					\draw (2.east) -- (3.west)
 % 						node[midway,above,black] {$\bfC=\bfA\bfX$}
-% 						node[midway,below,dcolord] {加密秘钥: $A$};
+% 						node[midway,below,fourth] {加密秘钥: $A$};
 % 					\draw (3.east) -- (4.west)
 % 						node[midway,above,black] {查表};
 % 				\end{scope}
-% 				\draw[dcolora] (4.south) -- (14.north)
+% 				\draw[main] (4.south) -- (14.north)
 % 					node[midway,left] {传输};
-% 				\begin{scope}[dcolorb]
+% 				\begin{scope}[second]
 % 					\draw (14.west) -- (13.east)
 % 						node[midway,above,black] {查表};
 % 					\draw (13.west) -- (12.east)
 % 						node[midway,above,black] {$\bfX=\bfA^{-1}\bfC$}
-% 						node[midway,below,dcolorb] {解密秘钥: $A^{-1}$};
+% 						node[midway,below,second] {解密秘钥: $A^{-1}$};
 % 					\draw (12.west) -- (11.east) 
 % 						node[midway,above,black] {查表};
 % 				\end{scope}
@@ -904,7 +904,7 @@
 
 
 % \begin{frame}{逆矩阵的应用: 通信加密\noexer}
-% 	\begin{solutionc}
+% 	\begin{solution}[续解]
 % 		\onslide<+->{解密密钥为
 % 		$\bfA^{-1}=\begin{pmatrix}
 % 			0&1&-1\\2&-2&-1\\-1&1&1
@@ -922,7 +922,7 @@
 % 			13&7&14&6&6
 % 		\end{pmatrix}.\]}\onslide<+->{%
 % 		查表得到明文: \alert{TINGZHI ZONGGONG}.}
-% 	\end{solutionc}
+% 	\end{solution}
 % \end{frame}
 
 

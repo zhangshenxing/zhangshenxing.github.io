@@ -1,9 +1,5 @@
-
-\newcommand{\ansno}[1]{\par\noindent\emph{#1}}
-\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
 \renewcommand{\labelenumi}{{\upshape(\arabic{enumi})}}
-\newcommand\enumnum[1]{{\textcolor{main}{\mdseries\upshape{(#1)}}}}
+\newcommand\enumnum[1]{{\textcolor{fourth}{\mdseries\upshape{(#1)}}}}
 \newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
 
 \usepackage{tikz}
@@ -39,15 +35,17 @@
 	cstdot/.style         ={radius=.08}, %实心点
 	cstdote/.style        ={radius=.07, fill=white}, %空心点
   % fill
-	cstfill1/.style       ={fill=main!30},
+	cstfill/.style       ={fill=black!10},
+	cstfille/.style      ={pattern=north east lines, pattern color=black},
+	cstfill1/.style       ={fill=main!20},
 	cstfille1/.style      ={pattern=north east lines, pattern color=main},
-	cstfill2/.style        ={fill=second!30},
+	cstfill2/.style        ={fill=second!20},
 	cstfille2/.style       ={pattern=north east lines, pattern color=second},
-	cstfill3/.style        ={fill=third!30},
+	cstfill3/.style        ={fill=third!20},
 	cstfille3/.style       ={pattern=north east lines, pattern color=third},
-	cstfill4/.style        ={fill=fourth!30},
+	cstfill4/.style        ={fill=fourth!20},
 	cstfille4/.style       ={pattern=north east lines, pattern color=fourth},
-	cstfill5/.style        ={fill=fifth!30},
+	cstfill5/.style        ={fill=fifth!20},
 	cstfille5/.style       ={pattern=north east lines, pattern color=fifth},
   % node
 	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},

@@ -1,23 +1,25 @@
 \section{复数的乘除、乘幂与方根}
 
-\subsection{复数的乘除与三角/指数表示}
-\begin{frame}{复数的乘除与三角/指数表示}
+\subsection{复数的乘除与三角、指数表示}
+\begin{frame}{复数的乘除与三角、指数表示}
 	\onslide<+->
-	三角/指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+	三角和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
 
 	\onslide<+->
-	\begin{theorem}
+	\begin{theorem}[复数的乘除与三角、指数形式]
 		设
 		\[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
 		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
 		则
-		\[\alert{z_1z_2=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)}},\]
-		\[\alert{\frac{z_1}{z_2}=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}}.\]
+		\begin{align*}
+			z_1z_2&=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)},\\
+			\frac{z_1}{z_2}&=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.
+		\end{align*}
 	\end{theorem}
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角/指数表示}
+\begin{frame}{复数的乘除与三角、指数表示}
 	\onslide<+->
 	换言之,
 	\[\alert{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
@@ -25,7 +27,7 @@
 	\[\alert{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
 	\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 	\onslide<+->
-	\emph{关于多值函数的等式的含义是指: 两边所能取到的值构成的集合相等.}
+	\emph{多值函数相等是指两边所能取到的值构成的集合相等.}
 	\onslide<+->
 	例如此处关于辐角的等式的含义是:
 	\[\Arg(z_1z_2)=\set{\theta_1+\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
@@ -33,7 +35,7 @@
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角/指数表示}
+\begin{frame}{复数的乘除与三角和指数表示}
 	\onslide<+->
 	注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
 	\[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
@@ -42,17 +44,21 @@
 	\onslide<+->
 	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 	\onslide<+->
-	例如 $z_1=z_2=e^{0.99\pi i}$, $z_1z_2=e^{1.98\pi i}$,
+	事实上, 当且仅当等式右侧落在区间 $(-\pi,\pi]$ 内时才成立, 否则等式两侧会相差 $\pm2\pi$.
 	\onslide<+->
-	\[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\]
+	例如
+	\[z_1=z_2=e^{0.99\pi i},\quad z_1z_2=e^{1.98\pi i},\]
+	\vspace{-\baselineskip}
 	\onslide<+->
-	\[\arg(z_1z_2)=-0.02\pi.\]
+	\[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\quad
+	\arg(z_1z_2)=-0.02\pi.\]
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角/指数表示}
+\begin{frame}{复数的乘除与三角和指数表示}
 	\onslide<+->
 	\begin{proof*}
+		根据和差的正弦、余弦公式可知
 		\begin{align*}
 			z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
 			r_2(\cos\theta_2+i\sin\theta_2)\\
@@ -60,12 +66,18 @@
 			+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
 			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
 		\end{align*}
-		\onslide<+->{因此乘法情形得证.}
+		\onslide<+->{%
+			因此乘法情形得证.
+		}
 
-		\onslide<+->{设 $\dfrac{z_1}{z_2}=re^{i\theta}$,
-		}\onslide<+->{则由乘法情形可知
+		\onslide<+->{%
+			设 $\dfrac{z_1}{z_2}=re^{i\theta}$,
+		}\onslide<+->{%
+			则由乘法情形可知
 			\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.\]
-		}\onslide<+->{因此 $r=\dfrac{r_1}{r_2},\theta=\theta_1-\theta_2+2k\pi$, 其中 $k\in\BZ$.\qedhere}
+		}\onslide<+->{%
+			因此 $r=\dfrac{r_1}{r_2}$, $\theta$ 可取 $\theta_1-\theta_2$.\qedhere
+		}
 	\end{proof*}
 \end{frame}
 
@@ -75,31 +87,28 @@
 	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis] (-2,0)--(3,0);
-			\draw[cstaxis] (0,-0.4)--(0,4);
-			\coordinate (A) at (1.6,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (0.96,1.92);
-			\draw[cstcurve,dcolora,cstarrowto] (B)--(A);
-			\draw[cstcurve,dcolora,cstarrowto] (B)--(C);
-			\draw[cstcurve,dcolora] pic [draw, "$\theta$", angle eccentricity=1.4] {angle};
-			\coordinate (A) at (1.3,1.6);
-			\coordinate (C) at (-1.14,2.52);
-			\draw[cstcurve,dcolorb,cstarrowto,visible on =<3->] (B)--(A);
-			\draw[cstcurve,dcolorb,cstarrowto,visible on =<3->] (B)--(C);
-			\draw[cstcurve,dcolorb,visible on =<3->] pic [draw, "$\theta$", angle eccentricity=1.3, angle radius= 0.7cm] {angle};
-			\draw 
-			(1.52,2.08) node[dcolora] {$z=re^{i\theta}$}
-			(1.6,-0.3) node[dcolora] {$1$}
-			(1.6,1.5) node[dcolorb,visible on =<3->] {$z_1$}
-			(-1.1,2.7) node[dcolorb,visible on =<3->] {$zz_1$};
+		\begin{tikzpicture}
+			\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
+			\coordinate (O) at (0,0);
+			\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+			\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
+			\begin{scope}[visible on=<3->]
+				\coordinate [label=right:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
+				\coordinate [label=right:\textcolor{second}{$zz_1$}] (ZZ1) at ({3*cos(130)},{3*sin(130)});
+				\draw[cstcurve,second] pic [cstfill2,draw=second, "$\theta$", angle eccentricity=1.4] {angle=Z1--O--ZZ1};
+				\draw[cstcurve,second,cstra] (O)--(Z1);
+				\draw[cstcurve,second,cstra] (O)--(ZZ1);
+			\end{scope}
+			\draw[cstaxis] (-3,0)--(3,0);
+			\draw[cstaxis] (0,-.5)--(0,3);
+			\draw[cstcurve,main,cstra] (O)--(X);
+			\draw[cstcurve,main,cstra] (O)--(Z);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 复数解决平面几何问题}
+\begin{frame}{例题: 复数解决平面几何问题}
 	\onslide<+->
 	\begin{example}
 		已知正三角形的两个顶点为 $z_1=1$ 和 $z_2=2+i$, 求它的另一个顶点.
@@ -109,24 +118,26 @@
 	\begin{solution}
 		由于 $\overrightarrow{Z_1Z_3}$ 为 $\overrightarrow{Z_1Z_2}$ 顺时针或逆时针旋转 $\dfrac\pi3$,
 		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis] (-0.3,0)--(2.8,0);
-				\draw[cstaxis] (0,-0.5)--(0,1.4);
-				\draw[cstcurve,dcolorb] (1,0)--(2,1)--(0.634,1.366)--cycle;
-				\draw[cstdash,dcolorb] (1,0)--(2.366,-0.366)--(2,1);
-				\draw 
-				(1.0,-0.2) node[dcolora] {$z_1$}
-				(2.3,1) node[dcolora] {$z_2$}
-				(0.4,1.2) node[dcolora] {$z_3$}
-				(2.6,-0.3) node[dcolora] {$z_3'$};
+			\begin{tikzpicture}
+				\coordinate [label=below:\textcolor{third}{$z_1$}] (Z1) at (1.5,0);
+				\coordinate [label=right:\textcolor{third}{$z_2$}] (Z2) at (3,1.5);
+				\coordinate [label=left:\textcolor{main}{$z_3$}] (Z3) at ({1.5*(1.5-sqrt(3)/2)},{1.5*(.5+sqrt(3)/2)});
+				\coordinate [label=right:\textcolor{second}{$z'_3$}] (Z3p) at ({1.5*(1.5+sqrt(3)/2)},{1.5*(.5-sqrt(3)/2)});
+				\draw[cstcurve,main] pic [cstfill1,draw=main, "$\pi/3$", angle eccentricity=1.7,angle radius=4mm] {angle=Z2--Z1--Z3};
+				\draw[cstcurve,second] pic [cstfill2,draw=second, "$\pi/3$", angle eccentricity=1.8] {angle=Z3p--Z1--Z2};
+				\draw[cstaxis] (-.5,0)--(4,0);
+				\draw[cstaxis] (0,-.5)--(0,2.5);
+				\draw[cstcurve,third] (Z1)--(Z2);
+				\draw[cstcurve,main] (Z2)--(Z3)--(Z1);
+				\draw[cstdash,second] (Z1)--(Z3p)--(Z2);
 			\end{tikzpicture}
 		\end{center}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 复数解决平面几何问题}
-	\begin{solutionc}
+\begin{frame}{例题: 复数解决平面几何问题}
+	\begin{solution}[续解]
 		因此
 		\begin{align*}
 			z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
@@ -136,54 +147,60 @@
 		\onslide<+->{
 			\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2i.\]
 		}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
-\begin{frame}{例: 复数解决平面几何问题}
+\begin{frame}{例题: 复数解决平面几何问题}
 	\onslide<+->
 	\begin{example}
 		设 $AD$ 是 $\triangle ABC$ 的角平分线, 证明 $\dfrac{AB}{AC}=\dfrac{DB}{DC}$.
 	\end{example}
 
 	\onslide<+->
-	\begin{proofs}
-		不妨设 $A=0,B=z,C=1$.
-		则 $D=(1-\lambda)z+\lambda$, 其中 $\lambda=\dfrac{DB}{BC}\in(0,1)$.
+	\begin{solution}[证明]
+		不妨设 $A=0,B=z,C=1,D=w$, 设
+		$\displaystyle \lambda=\dfrac{DC}{BC}=\dfrac{w-1}{z-1}\in(0,1)$.
 		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis] (-0.3,0)--(2.8,0);
-				\draw[cstaxis] (0,-.4)--(0,1.4);
-				\draw[cstcurve,dcolorb] (0,0)--(2.106,0.702);
-				\draw[cstcurve,dcolorb] (0,0)--(2,1.5)--(2.2,0)--cycle;
-				\draw 
-				(-0.2,-0.2) node[dcolora] {$A$}
-				(2.6,1.5) node[dcolora] {$B=z$}
-				(2.2,-0.3) node[dcolora] {$C=1$}
-				(2.4,0.8) node[dcolora] {$D$};
+			\begin{tikzpicture}
+				\coordinate [label=below left:\textcolor{main}{$A$}] (A) at (0,0);
+				\coordinate [label=right:\textcolor{main}{$B=z$}] (B) at ({3*cos(60)},{3*sin(60)});
+				\coordinate [label=below:\textcolor{main}{$C=1$}] (C) at (2,0);
+				\coordinate [label=right:\textcolor{second}{$D=w$}] (D) at ($0.4*(B)+0.6*(C)$);
+				\draw[cstcurve] pic [cstfill2,draw=second] {angle=C--A--D};
+				\draw[cstcurve] pic [cstfill3,draw=third,angle radius=4mm] {angle=D--A--B};
+				\draw[cstaxis] (-.3,0)--(3,0);
+				\draw[cstaxis] (0,-.4)--(0,2);
+				\draw[cstcurve,main] (B)--(A)--(C)--cycle;
+				\draw[cstcurve,second] (A)--(D);
 			\end{tikzpicture}
 		\end{center}
-	\end{proofs}
+	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 复数解决平面几何问题}
+\begin{frame}{例题: 复数解决平面几何问题}\small
+	\beqskip{5pt}
 	\onslide<+->
-	\begin{proofc}
-		由于 $\angle BAD=\angle DAC$, 因此 $\dfrac{z}{(1-\lambda)z+\lambda}$ 是 $\dfrac{(1-\lambda)z+\lambda}{1}$ 的正实数倍.
-		\onslide<+->{
+	\begin{proof}[续证]
+		那么
+		\[w=1+\lambda(z-1)=\lambda z+(1-\lambda).\]
+		\onslide<+->{%
+			由于 $\angle BAD=\angle DAC$, 根据复数乘法的几何意义,
+			$\dfrac{z-0}{w-0}$ 是 $\dfrac{w-0}{1-0}$ 的正实数倍,
+		}\onslide<+->{%
 			即
-			\[\dfrac{((1-\lambda)z+\lambda)^2}{z}=(1-\lambda)^2z+\dfrac{\lambda^2}z+2\lambda(1-\lambda)\in\BR.\]
-		}\onslide<+->{
-			从而
-			\[(1-\lambda)^2z+\dfrac{\lambda^2}z=(1-\lambda)^2\ov z+\dfrac{\lambda^2}{\ov z},\qquad
-			((1-\lambda)^2|z|^2-\lambda^2)(z-\ov z)=0.\]
-		}\onslide<+->{
+			\[\frac{w^2}z=\lambda^2 z+2\lambda(1-\lambda)+\frac{(1-\lambda)^2}z\in\BR,\]
+		}\onslide<+->{%
+			于是
+			\[\lambda^2z+\dfrac{(1-\lambda)^2}z=\lambda^2\ov z+\dfrac{(1-\lambda)^2}{\ov z},\qquad
+			\bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0.\]
+		}\onslide<+->{%
 			显然 $z\neq \ov z$. 又因为 $0<\lambda<1$, 故
-			\[\frac{AB}{AC}=|z|=\frac{\lambda}{1-\lambda}
-			=\frac{DB}{BC-DB}=\frac{DB}{DC}.\qedhere\]
+			\[\frac{AB}{AC}=|z|=\frac{1-\lambda}{\lambda}
+			=\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere\]
 		}
-		\vspace{-\baselineskip}
-	\end{proofc}
+	\end{proof}
+	\endgroup
 \end{frame}
 
 
@@ -194,11 +211,11 @@
 	\onslide<+->
 	设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 	\onslide<+->
-	根据复数三角/指数形式的乘法和除法运算法则, 我们有
+	根据复数三角和指数形式的乘法和除法运算法则, 我们有
 	\onslide<+->
-	\begin{alertblock@}
+	\begin{theorem}[复数的乘幂]
 		\[z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta},\quad\forall n\in\BZ.\]
-	\end{alertblock@}
+	\end{theorem}
 	\onslide<+->
 	特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗公式}
 	\[(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.\]
@@ -234,15 +251,16 @@
 
 	\onslide<+->
 	\begin{solution}
-		由于 $\displaystyle 1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
-		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right)$,
+		由于
+		\[1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
+		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right),\]
 		\onslide<+->{%
 			因此
-			\begin{align*}
-				&\peq(1+i)^n+(1-i)^n\\
-				&=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
+			\[
+				(1+i)^n+(1-i)^n
+				=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
 				\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
-			\end{align*}
+			\]
 		}\vspace{-\baselineskip}
 	\end{solution}
 
@@ -265,7 +283,6 @@
 	\[w^n=\rho^n(\cos{n\varphi}+i\sin{n\varphi})=r(\cos\theta+i\sin\theta).\]
 	\onslide<+->
 	比较两边的模可知 $\rho^n=r,\rho=\sqrt[n]r$.
-
 	\onslide<+->
 	为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\emph{算术根}.
 
@@ -277,29 +294,26 @@
 
 \begin{frame}{复数的方根}
 	\onslide<+->
-	故
-	\begin{alertblock@}
-	\begin{align*}
-		&w=w_k=\sqrt[n]r\exp\frac{(\theta+2k\pi)i}n\\
-		&\hspace{42pt}=\sqrt[n]r\left(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\right).
-	\end{align*}
-	\end{alertblock@}
-
+	故 $w=w_k=\sqrt[n]r\exp\Bigl(\dfrac{\theta+2k\pi}ni\Bigr)$.
 	\onslide<+->
 	不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
+	因此只需取 $k=0,1,\dots,n-1$.
 	\onslide<+->
-	因此只需取 \alert{$k=0,1,\dots,n-1$}.
-	\onslide<+->
-	故\emph{任意一个非零复数的 $n$ 次方根有 $n$ 个值}.
-
+	\begin{theorem}[复数的方根]
+		任意一个非零复数 $z$ 的 $n$ 次方根有 $n$ 个值:
+		\[
+			\sqrt[n]z=\sqrt[n]r\exp\Bigl(\dfrac{\theta+2k\pi}ni\Bigr)\\
+				=\sqrt[n]r\Bigl(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\Bigr),\quad k=0,1,\dots,n-1.
+		\]
+	\end{theorem}
 	\onslide<+->
 	这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
 	\onslide<+->
-	因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
+	因此\alert{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方根的计算}
+\begin{frame}{例题: 复数方根的计算}
 	\onslide<+->
 	\begin{example}
 		求 $\sqrt[4]{1+i}$.
@@ -312,7 +326,7 @@
 			因此
 			\[\sqrt[4]{1+i}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)i}4,\quad k=0,1,2,3.\]
 		}\onslide<+->{%
-			所以该方根所有值为
+			于是该方根所有值为
 			\[w_0=\sqrt[8]2e^{\frac{\pi i}{16}},\quad
 			w_1=\sqrt[8]2e^{\frac{9\pi i}{16}},\quad
 			w_2=\sqrt[8]2e^{\frac{17\pi i}{16}},\quad
@@ -330,27 +344,30 @@
 	所以 $w_0,w_1,w_2,w_3$ 形成了一个正方形.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstaxis] (-2,0)--(2,0);
-			\draw[cstaxis] (0,-1.8)--(0,1.8);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(1.5,0.3);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(-1.5,-0.3);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(-0.3,1.5);
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)--(0.3,-1.5);
-			\draw[cstcurve,dcolorb] (1.5,0.3)--(-0.3,1.5)--(-1.5,-0.3)--(0.3,-1.5)--cycle;
-			\draw[cstcurve,thick,dcolora,cstarrowto] (0,0)circle(1.54);
-			\draw
-			(-0.2,-0.3) node {$0$}
-			(1.8,0.3) node[dcolorb] {$w_0$}
-			(-0.4,1.7) node[dcolorb] {$w_1$}
-			(-1.8,-0.3) node[dcolorb] {$w_2$}
-			(0.3,-1.7) node[dcolorb] {$w_3$};
+		\begin{tikzpicture}[scale=.9]
+			\draw[cstaxis] (-2.3,0)--(2.3,0);
+			\draw[cstaxis] (0,-2.3)--(0,2.3);
+			\coordinate [label=below left:$0$] (O) at (0,0);
+			\draw[cstcurve,thick,third,cstra] (0,0) circle (1.6);
+			\coordinate (W0) at ({1.6*cos(11.25)},{1.6*sin(11.25)});
+			\coordinate (W1) at ({1.6*cos(101.25)},{1.6*sin(101.25)});
+			\coordinate (W2) at ({1.6*cos(191.25)},{1.6*sin(191.25)});
+			\coordinate (W3) at ({1.6*cos(281.25)},{1.6*sin(281.25)});
+			\draw[cstcurve,thick,second,cstra] (O)--(W0)
+				node[right] {$w_0$};
+			\draw[cstcurve,thick,second,cstra] (O)--(W1)
+				node[above] {$w_1$};
+			\draw[cstcurve,thick,second,cstra] (O)--(W2)
+				node[left] {$w_2$};
+			\draw[cstcurve,thick,second,cstra] (O)--(W3)
+				node[below] {$w_3$};
+			\draw[cstcurve,main] (W0)--(W1)--(W2)--(W3)--cycle;
 		\end{tikzpicture}
 	\end{center}
-
+	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{exercise}
-		求 $\sqrt[6]{-1}=$\fillblank[5cm][2mm]{\visible<+->{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}}.
+		计算 $\sqrt[6]{-1}=$\fillblank[5cm][2mm]{\visible<+->{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}}.
 	\end{exercise}
 \end{frame}
 
@@ -370,24 +387,35 @@
 \end{frame}
 
 
-\begin{frame}{三次方程的求根问题\noexer}
+\begin{frame}{应用: 三次方程的求根问题\noexer}
 	\onslide<+->
 	现在我们来看三次方程 $x^3+px+q=0$ 的根, $p\neq 0$.
 	\onslide<+->
-	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3.\]
+	回顾求根公式:
+	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3,\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
+	\vspace{-\baselineskip}
 	\begin{enumerate}
-		\item 如果 $\Delta>0$, 设实数 $\alpha$ 满足 $\alpha^3=-q/2+\sqrt{\Delta}$, $\omega=e^{2\pi i/3}$.
+		\item 如果 $\Delta>0$, 设 $\omega=e^{2\pi i/3}$, 设实数 $\alpha$ 满足 $\alpha^3=-\dfrac q2+\sqrt{\Delta}$,
 			\onslide<+->
-			那么
-			\[u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
-			x=\alpha-\frac p{3\alpha},\ \alpha\omega-\frac p{3\alpha} \omega^2,\ \alpha\omega^2-\frac p{3\alpha} \omega.\]
+			则
+				\[
+					u=\alpha,\alpha\omega,\alpha\omega^2,\qquad
+					x=\alpha-\frac p{3\alpha},\ 
+						\alpha\omega-\frac p{3\alpha} \omega^2,\ 
+						\alpha\omega^2-\frac p{3\alpha} \omega.
+				\]
 			\onslide<+->
 			容易证明后两个根都是虚数.
-		\item 如果 $\Delta<0$, 则 $p<0$, $|u|^2=-p/3$. 从而 $v=\ov u$.
-			\onslide<+->设 $\sqrt[3]{-q/2+\sqrt{\Delta}}=u_1,u_2,u_3$,
+		\item 如果 $\Delta\le 0$, 则 $p<0$, $|u|^2=-\dfrac p3>0$. 
+			\onslide<+->
+			从而 $v=\ov u$.
+			\onslide<+->
+			设 $\sqrt[3]{-\dfrac q2+\sqrt{\Delta}}=u_1,u_2,u_3$,
 			\onslide<+->
 			则我们得到 $3$ 个实根
-			\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
+				\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
+			\onslide<+->
+			不难验证, 若有重根则 $\Delta=0$.
 	\end{enumerate}
 \end{frame}
 

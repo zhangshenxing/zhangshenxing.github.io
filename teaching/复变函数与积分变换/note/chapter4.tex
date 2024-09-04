@@ -175,12 +175,12 @@
 
 我们只需要考虑 $a=0$ 情形的幂级数, 因为二者的收敛范围与和函数只是差一个平移.
 
-\begin{block}{阿贝尔定理}
+\begin{main}{阿贝尔定理}
 	\begin{enumerate}
 		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
 		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
 	\end{enumerate}
-\end{block}
+\end{main}
 
 \begin{proof}
 	{\enumnum1 因为级数收敛, 所以 $\lim\limits_{n\to\infty}c_n z_0^n=0$.故存在 $M$ 使得 $|c_nz_0^n|<M$.对于 $|z|<|z_0|$,
@@ -578,7 +578,7 @@ e^{-x^{-2}},&x\neq 0,\\
 	{=\sum_{n=0}^\infty (-1)^n(n+1)z^n.}\]
 \end{solution}
 
-\begin{proofblock}{另解}
+\begin{solution}{另解}
 	由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 	{由于
 		\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]因此
@@ -588,7 +588,7 @@ e^{-x^{-2}},&x\neq 0,\\
 		{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}
 		\]
 	}
-\end{proofblock}
+\end{solution}
 一般地, 我们有
 \[\frac1{(1-\lambda z)^k}=\sum_{n=0}^\infty(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|<\frac1{|\lambda|}.\]
 

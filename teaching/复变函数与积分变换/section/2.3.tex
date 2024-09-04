@@ -33,7 +33,7 @@
 	\onslide<+->
 	事实上我们可以把它当做复指数函数的定义, 而不是欧拉恒等式的证明.
 	\onslide<+->
-	我们在学习了幂级数之后就可知\enumnum1和\enumnum3是等价的.
+	我们将在第四章说明\enumnum1、\enumnum3和\enumnum4是等价的.
 \end{frame}
 
 
@@ -63,43 +63,42 @@
 
 \begin{frame}{指数函数的性质}
 	\onslide<+->
-	\begin{alertblock}{指数函数}
-	定义指数函数
+	\begin{definition}{指数函数}
+	定义\emph{指数函数}
 		\[\exp z:=e^x(\cos y+i\sin y).\]
-	\end{alertblock}
-	\onslide<+->
-	我们已知 $\exp z$ 是一个处处解析的函数, 且 $(\exp z)'=\exp z$.
-	\onslide<+->
-	不难看出
-	\begin{itemize}
-		\item $\exp z\neq 0$;
-		\item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$;
-		\item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$;
-		\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$.
-	\end{itemize}
+	\end{definition}
 	\onslide<+->
 	为了方便, 我们也记 $\emph{e^z=\exp z}$.
+	\onslide<+->
+	指数函数有如下性质:
+	\begin{itemize}
+		\item $\exp z$ 处处解析, 且 $(\exp z)'=\exp z$.
+		\item $\exp z\neq 0$.
+		\item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$.
+		\item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$.
+		\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$.
+		\item 指数函数将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=e^c$, 将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{指数函数的性质}
 	\onslide<+->
-	指数函数将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=e^c$, 
-	\onslide<+->
-	将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
-
-	\onslide<+->
 	\begin{example}
-		函数 $f(z)=e^{z/6}$ 的周期是\fillblank{\visible<7->{$12\pi i$}}.
+		计算函数 $f(z)=\exp(z/6)$ 的周期.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		设 $f(z_1)=f(z_2)$, 则 $e^{z_1/6}=e^{z_2/6}$.
-		\onslide<+->{因此存在 $k\in\BZ$ 使得
+		\onslide<+->{%
+			因此存在 $k\in\BZ$ 使得
 			\[\frac{z_1}6=\frac{z_2}6+2k\pi i,\]
-		}\onslide<+->{从而 $z_1-z_2=12k\pi i$.
-		}\onslide<+->{所以 $f(z)$ 的周期是 $12\pi i$.}
+		}\onslide<+->{%
+			从而 $z_1-z_2=12k\pi i$.
+		}\onslide<+->{%
+			所以 $f(z)$ 的周期是 $12\pi i$.
+		}
 	\end{solution}
 
 	\onslide<+->
@@ -111,10 +110,7 @@
 
 \begin{frame}{对数函数}
 	\onslide<+->
-	对数函数定义为指数函数的反函数.
-	\onslide<+->
-	设 $z\neq 0$, 满足方程 $e^w=z$ 的 $w=f(z)$ 被称为\emph{对数函数}, 记作 $w=\Ln z$.
-
+	对数函数 $\Ln z$ 定义为指数函数 $\exp z$ 的反函数.
 	\onslide<+->
 	为什么我们用大写的 $\Ln$ 呢? 
 	\onslide<+->
@@ -130,31 +126,31 @@
 
 \begin{frame}{对数函数及其主值}
 	\onslide<+->
-	设 $e^w=z=re^{i\theta}=e^{\ln r+i\theta}$,
+	设 $z\neq0,e^w=z=re^{i\theta}=e^{\ln r+i\theta}$,
 	\onslide<+->
 	则
 	\[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
 	\vspace{-\baselineskip}
 	\onslide<+->
-	\begin{alertblock}{对数函数}
+	\begin{definition}{对数函数}
 		\begin{enumerate}
-			\item 定义对数函数
+			\item 定义\emph{对数函数}
 				\[\Ln z=\ln\abs{z}+i\Arg z.\]
 				它是一个多值函数.
-			\item 定义对数函数主值
+			\item 定义\emph{对数函数主值}
 				\[\ln z=\ln\abs{z}+i\arg z.\]
 				\vspace{-\baselineskip}
 		\end{enumerate}
-	\end{alertblock}
+	\end{definition}
 
 	\onslide<+->
-	对于每一个 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
+	对于每一个整数 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
 	\onslide<+->
 	特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变的对数函数.
 \end{frame}
 
 
-\begin{frame}{典型例题: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
 		求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
@@ -163,16 +159,23 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item $\Ln2=\ln2+2k\pi i, k\in\BZ$,
-			\onslide<+->{主值就是 $\ln 2$.}
-			\item $\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ$,
-			\onslide<+->{主值是 $\pi i$.}
+			\item
+			\[\Ln2=\ln2+2k\pi i, k\in\BZ,\]
+			\onslide<+->{%
+				主值为 $\ln 2$.
+			}
+			\item
+			\[\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ,\]
+			\onslide<+->{%
+				主值为 $\pi i$.
+			}
 		\end{enumerate}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{典型例题: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
+	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
 	求 $\Ln(-2+3i),\Ln(3-\sqrt3 i)$.
@@ -181,21 +184,25 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item $\Ln(-2+3i)=\ln\abs{-2+3i}+i\Arg(-2+3i)$
-
-			\onslide<+->{$\qquad\qquad\quad\displaystyle=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ$.}
-			\item $\Ln(3-\sqrt3i)=\ln\abs{3+\sqrt 3i}+i\Arg(3-\sqrt 3i)$
-
-			\onslide<+->{$\displaystyle=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
-			=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ$.}
-			% \item $\Ln(-3)=\ln(-3)+i\Arg(-3)$
-			% \onslide<+->{$=\ln3+(2k+1)\pi i,\quad k\in\BZ.$}
+			\item
+			\begin{align*}
+				\Ln(-2+3i)&=\ln\abs{-2+3i}+i\Arg(-2+3i)\\
+				&\visible<+->{=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ.}
+			\end{align*}
+			\item
+			\begin{align*}
+				\Ln(3-\sqrt3i)&=\ln\abs{3+\sqrt 3i}+i\Arg(3-\sqrt 3i)\\
+				&\visible<+->{=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
+				=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ.}
+			\end{align*}
 		\end{enumerate}
+		\vspace{-.5\baselineskip}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{典型例题: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
 		解方程 $e^z-1-\sqrt 3i=0$.
@@ -211,7 +218,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\ln(-1-\sqrt3 i)=$\fillblank[2cm][3mm]{\visible<+->{$\ln 2-\dfrac{2\pi i}3$}}.
+		求 $\ln(-1-\sqrt3 i)=$\fillblank[2cm]{\visible<+->{$\ln 2-2\pi i/3$}}.
 	\end{exercise}
 \end{frame}
 
@@ -219,7 +226,7 @@
 \begin{frame}{对数函数的性质}
 	\onslide<+->
 	对数函数与其主值的关系是
-	\[\alert{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
+	\[\emph{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
 
 	\onslide<+->
 	根据辐角以及主辐角的相应等式, 我们有
@@ -266,16 +273,16 @@
 
 \begin{frame}{幂函数}
 	\onslide<+->
-	\begin{alertblock}{幂函数}
+	\begin{definition}[幂函数]
 		\begin{enumerate}
-			\item 设 $a\neq 0$, $z\neq 0$, 定义幂函数
+			\item 设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
 			\[w=z^a=e^{a\Ln z}
 			=\exp\bigl[a\ln\abs{z}+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.\]
-			\item 它的主值为
+			\item \emph{幂函数的主值}为
 			\[w=e^{a\ln z}=\exp\bigl(a\ln\abs{z}+ia\arg z\bigr).\]
 		\end{enumerate}
 		\vspace{-\baselineskip}
-	\end{alertblock}
+	\end{definition}
 \end{frame}
 
 
@@ -307,24 +314,26 @@
 	事实上它就是 $\sqrt[q]{z^p}=(\sqrt[q]z)^p$.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
-			\draw[draw=white,cstfille1](0,0) circle (1.3);
-			\draw[cstaxis](-2,0)--(2,0);
-			\draw[cstaxis](0,-1.5)--(0,1.8);
-			\draw (1.8,-0.2) node {$x$};
-			\draw (-0.2,1.6) node {$y$};
-			\draw (-0.2,-0.2) node {$O$};
-			\draw[cstcurve,dcolorb] (0,0)--(-2,0);
-
-			\draw[draw=white,cstfille,pattern color=dcolorc](5,0) -- ({5+cos(40)},{sin(40)}) arc (40:-40:1)--(5,0);
-			\draw[cstaxis](3,0)--(7,0);
-			\draw[cstaxis](5,-1.5)--(5,1.8);
-			\draw (7,-0.2) node {$u$};
-			\draw (4.8,1.6) node {$v$};
-			\draw (4.8,-0.2) node {$O$};
-
-			\draw[cstdash,cstarrowto,dcolorc] (1.7,0.3)to [bend left] (4.5,0.3);
-			\draw (3,1.2) node[dcolorc] {$w=z^{2/9}$};
+		\begin{tikzpicture}[scale=.8]
+			\coordinate [label=below left:{$0$}] (O) at (0,0);
+			\coordinate [label=below:{$x$}] (X) at (2,0);
+			\coordinate [label=left:{$y$}] (Y) at (0,2);
+			\draw[cstaxis] (O)--(X);
+			\draw[cstaxis] (0,-2)--(Y);
+			\draw[draw=white,cstfille1] (O) circle (1.3);
+			\draw[cstdash,main] (0,0)--(-2,0);
+			\draw[cstdash,cstra,third] (1.7,.7)to [bend left] (4.5,.7);
+			\draw (3,1.7) node[third] {$w=z^{2/9}$};
+			\begin{scope}[xshift=5cm]
+				\coordinate [label=below left:{$0$}] (O) at (0,0);
+				\fill[cstfille2,pattern color=second] (O)--({1.4*cos(40)},{1.4*sin(40)}) arc (40:-40:1.4)--cycle;
+				\draw[cstdash,second] ({1.4*cos(40)},{-1.4*sin(40)})--(0,0)--({1.4*cos(40)},{1.4*sin(40)});
+				\coordinate [label=below left:{$0$}] (O) at (0,0);
+				\coordinate [label=below:{$u$}] (X) at (2,0);
+				\coordinate [label=left:{$v$}] (Y) at (0,2);
+				\draw[cstaxis] (-2,0)--(X);
+				\draw[cstaxis] (0,-2)--(Y);
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -343,17 +352,17 @@
 	它的主值 $w=\exp(a\ln z)$ 也是处处解析的.
 
 	\onslide<+->
-	\begin{center}
-		\renewcommand\arraystretch{1.2}
-		\defaultrowcolors
-		\begin{tabular}{|c|c|c|}\hline
-			\tht $a$&\tht $z^a$ 的值&\tht $z^a$ 的解析区域\\\hline
-			&&$n\ge0$ 时处处解析\\
-			\multirow{-2}*{整数 $n$}&\multirow{-2}*{单值}&$n<0$ 时除零点外解析\\\hline
-			分数 $p/q$&$q$ 值&除负实轴和零点外解析\\\hline
-			无理数或虚数&无穷多值&除负实轴和零点外解析\\\hline
-		\end{tabular}
-	\end{center}
+	\begin{second@}
+		\begin{center}
+			\begin{tabular}{cccc} \toprule
+				$a$& $z^a$ 的值& $z^a$ 的解析区域\\ \midrule
+				&&$n\ge0$ 时处处解析\\
+				\multirow{-2}*{整数 $n$}&\multirow{-2}*{单值}&$n<0$ 时除零点外解析\\ \midrule
+				分数 $p/q$&$q$ 值&除负实轴和零点外解析\\ \midrule
+				无理数或虚数&无穷多值&除负实轴和零点外解析\\ \bottomrule
+			\end{tabular}
+		\end{center}
+	\end{second@}
 \end{frame}
 
 
@@ -365,17 +374,21 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item $1^{\sqrt2}=e^{\sqrt2\Ln1}$
-				\onslide<+->{$=e^{\sqrt 2\cdot 2k\pi i}$}
-				\onslide<+->{$=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ$.}
-			\item $i^i=e^{i\Ln i}$
-				\onslide<+->{$\displaystyle=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]$}
-				\onslide<+->{$\displaystyle=\exp\left(-2k\pi-\half\pi\right)$, $k\in\BZ$.}
+			\item
+			\[
+				1^{\sqrt2}=e^{\sqrt2\Ln1}
+				\visible<+->{=e^{\sqrt 2\cdot 2k\pi i}}
+				\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ.}\]
+			\item
+			\[
+				i^i=e^{i\Ln i}
+				\visible<+->{=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]}
+				\visible<+->{=\exp\left(-2k\pi-\half\pi\right), k\in\BZ.}\]
 		\end{enumerate}
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		填空题: (2021年A卷) $3^i$ 的主辐角是\fillblank{\visible<+->{$\ln 3$}}.
+		填空题: $3^i$ 的主辐角是\fillblank{\visible<+->{$\ln 3$}}.
 	\end{exercise}
 \end{frame}
 
@@ -415,12 +428,11 @@
 	\onslide<+->
 	我们将其推广到复数情形.
 	\onslide<+->
-
-	\begin{alertblock}{余弦和正弦函数}
+	\begin{definition}[余弦和正弦函数]
 		定义余弦和正弦函数
 		\[\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
 		\sin z=\frac{e^{iz}-e^{-iz}}{2i}.\]
-	\end{alertblock}
+	\end{definition}
 
 	\onslide<+->
 	那么欧拉恒等式 \emph{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
@@ -511,16 +523,16 @@
 	\onslide<+->
 	同理, 我们有:
 	\begin{itemize}
-		\item 反正弦函数 $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
-		\item 反正切函数 $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
-		\item 反双曲余弦函数 $\Arch z=\Ln(z+\sqrt{z^2-1})$;
-		\item 反双曲正弦函数 $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
-		\item 反双曲正切函数 $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
+		\item \emph{反正弦函数} $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
+		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
+		\item \emph{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
+		\item \emph{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
+		\item \emph{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
 	\end{itemize}
 \end{frame}
 
 
-\begin{frame}{例: 解三角函数方程}
+\begin{frame}{例题: 解三角函数方程}
 	\onslide<+->
 	\begin{example}
 		解方程 $\sin z=2$.
@@ -538,16 +550,16 @@
 	\end{solution}
 \end{frame}
 
-\begin{frame}{例: 解三角函数方程}
+\begin{frame}{例题: 解三角函数方程}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}[另解]
 	由 $\sin z=2$ 可知
 	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3i.\]
 	\onslide<+->{于是 $e^{iz}=\cos z+i\sin z=(2\pm\sqrt 3)i$,
 	}\onslide<+->{
 		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 	\vspace{-\baselineskip}
-	\end{proofblock}
+	\end{solution}
 	\onslide<+->
 	我们总有形式
 	\begin{align*}

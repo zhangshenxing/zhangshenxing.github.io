@@ -2,7 +2,7 @@
 
 \subsection{行列式的定义}
 
-\begin{frame}{引例: 平行四边形的面积\noexer}
+\begin{frame}{引例题: 平行四边形的面积\noexer}
 	\onslide<+->
 	设平面上有平行四边形 $OACB$, 其中 $A,B$ 坐标分别为 $\bfu=(a,b)^\rmT, \bfv=(c,d)^\rmT$.
 	\onslide<+->{%
@@ -17,45 +17,45 @@
 		\begin{scope}
 			\draw[cstaxis] (-1,0)--(4,0);
 			\draw[cstaxis] (0,-1)--(0,3);
-			\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(4,2)--(1,1.5)--cycle;
-			\draw (0,0) node[dcolorb,below left] {$O$};
-			\draw (3,0.5) node[dcolorb,right] {$A$};
-			\draw (1,1.5) node[dcolorb,left]{$B$};
-			\draw (4,2) node[dcolorb,right] {$C$};
-			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<5->] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+			\draw[cstcurve,main] (0,0)--(3,0.5)--(4,2)--(1,1.5)--cycle;
+			\draw (0,0) node[second,below left] {$O$};
+			\draw (3,0.5) node[second,right] {$A$};
+			\draw (1,1.5) node[second,left]{$B$};
+			\draw (4,2) node[second,right] {$C$};
+			\fill[cstcurve,third,fill opacity=.5,visible on=<5->] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
 			\begin{scope}[visible on=<5->]
-				\draw (3,0) node[dcolorc,below] {$A_1$};
-				\draw (4,1.5) node[dcolorc,right] {$C_1$};
+				\draw (3,0) node[third,below] {$A_1$};
+				\draw (4,1.5) node[third,right] {$C_1$};
 			\end{scope}
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<6->] (0,0)--(0,0.5)--(1,2)--(1,1.5)--cycle;
+			\fill[cstcurve,fourth,fill opacity=.5,visible on=<6->] (0,0)--(0,0.5)--(1,2)--(1,1.5)--cycle;
 			\begin{scope}[visible on=<6->]
-				\draw (0,.5) node[dcolord,left] {$A_2$};
-				\draw (1,2) node[dcolord,above] {$C_2$};
+				\draw (0,.5) node[fourth,left] {$A_2$};
+				\draw (1,2) node[fourth,above] {$C_2$};
 			\end{scope}
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<8->] (1,1.5)--(4,1.5)--(4,2)--cycle;
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<9->] (0,0)--(3,0)--(3,0.5)--cycle;
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<10->] (3,0)--(3,0.5)--(4,2)--(4,1.5)--cycle;
+			\fill[cstcurve,fifth,fill opacity=.5,visible on=<8->] (1,1.5)--(4,1.5)--(4,2)--cycle;
+			\fill[cstcurve,fifth,fill opacity=.5,visible on=<9->] (0,0)--(3,0)--(3,0.5)--cycle;
+			\fill[cstcurve,fourth,fill opacity=.5,visible on=<10->] (3,0)--(3,0.5)--(4,2)--(4,1.5)--cycle;
 		\end{scope}
 
 		\begin{scope}[xshift=7cm,visible on=<11->]
 			\draw[cstaxis] (-1,0)--(4,0);
 			\draw[cstaxis] (0,-1)--(0,3);
-			\draw[cstcurve,dcolora] (0,0)--(3,0.5)--(2,2)--(-1,1.5)--cycle;
-			\draw (0,0) node[dcolorb,below left] {$O$};
-			\draw (3,0.5) node[dcolorb,right] {$A$};
-			\draw (-1,1.5) node[dcolorb,left]{$B$};
-			\draw (2,2) node[dcolorb,right] {$C$};
-			\fill[cstcurve,dcolorc,fill opacity=.5,visible on=<12->] (0,0)--(3,0)--(2,1.5)--(-1,1.5)--cycle;
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<12->] (0,0)--(0,0.5)--(-1,2)--(-1,1.5)--cycle;
+			\draw[cstcurve,main] (0,0)--(3,0.5)--(2,2)--(-1,1.5)--cycle;
+			\draw (0,0) node[second,below left] {$O$};
+			\draw (3,0.5) node[second,right] {$A$};
+			\draw (-1,1.5) node[second,left]{$B$};
+			\draw (2,2) node[second,right] {$C$};
+			\fill[cstcurve,third,fill opacity=.5,visible on=<12->] (0,0)--(3,0)--(2,1.5)--(-1,1.5)--cycle;
+			\fill[cstcurve,fourth,fill opacity=.5,visible on=<12->] (0,0)--(0,0.5)--(-1,2)--(-1,1.5)--cycle;
 			\begin{scope}[visible on=<12->]
-				\draw (3,0) node[dcolorc,below] {$A_1$};
-				\draw (2,1.5) node[dcolorc,right] {$C_1$};
-				\draw (0,.5) node[dcolord,right] {$A_2$};
-				\draw (-1,2) node[dcolord,above] {$C_2$};
+				\draw (3,0) node[third,below] {$A_1$};
+				\draw (2,1.5) node[third,right] {$C_1$};
+				\draw (0,.5) node[fourth,right] {$A_2$};
+				\draw (-1,2) node[fourth,above] {$C_2$};
 			\end{scope}
-			\fill[cstcurve,dcolord,fill opacity=.5,visible on=<13->] (3,0)--(3,0.5)--(2,2)--(2,1.5)--cycle;
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<13->] (0,0)--(3,0)--(3,0.5)--cycle;
-			\fill[cstcurve,dcolore,fill opacity=.5,visible on=<14->] (-1,1.5)--(2,1.5)--(2,2)--cycle;
+			\fill[cstcurve,fourth,fill opacity=.5,visible on=<13->] (3,0)--(3,0.5)--(2,2)--(2,1.5)--cycle;
+			\fill[cstcurve,fifth,fill opacity=.5,visible on=<13->] (0,0)--(3,0)--(3,0.5)--cycle;
+			\fill[cstcurve,fifth,fill opacity=.5,visible on=<14->] (-1,1.5)--(2,1.5)--(2,2)--cycle;
 		\end{scope}
 	\end{tikzpicture}
 	\end{center}
@@ -174,7 +174,7 @@
 % \end{frame}
 
 
-% \begin{frame}{例: 行列式的抽象定义\noexer}
+% \begin{frame}{例题: 行列式的抽象定义\noexer}
 % 	\onslide<+->
 % 	设 $\bfA=\begin{pmatrix}
 % 		a&b\\c&d
@@ -235,8 +235,8 @@
 		a_{11}&a_{12}\\
 		a_{21}&a_{22}
 		\CodeAfter
-		\tikz \draw[thick,dcolora,visible on=<3->] (1-|1) -- (3-|3);
-		\tikz \draw[cstdash,dcolorb,visible on=<3->] (3-|1) -- (1-|3);
+		\tikz \draw[thick,main,visible on=<3->] (1-|1) -- (3-|3);
+		\tikz \draw[cstdash,second,visible on=<3->] (3-|1) -- (1-|3);
 	\end{vNiceMatrix}
 	:=a_{11}a_{22}-a_{12}a_{21}.\]
 
@@ -252,16 +252,16 @@
 		a_{21}&a_{22}&a_{23}\\
 		a_{31}&a_{32}&a_{33}
 		\CodeAfter
-		\tikz \draw[thick,dcolora,visible on=<6-8>] (1-|1) -- (4-|4);
-		\tikz \draw[thick,dcolorb,visible on=<7-8>] (1-|2) -- (3-|4);
-		\tikz \draw[thick,dcolorb,visible on=<7-8>] (3-|1) -- (4-|2);
-		\tikz \draw[thick,dcolorc,visible on=<8>] (1-|3) -- (2-|4);
-		\tikz \draw[thick,dcolorc,visible on=<8>] (2-|1) -- (4-|3);
-		\tikz \draw[cstdash,dcolora,visible on=<9->] (1-|4) -- (4-|1);
-		\tikz \draw[cstdash,dcolorb,visible on=<10->] (1-|3) -- (3-|1);
-		\tikz \draw[cstdash,dcolorb,visible on=<10->] (3-|4) -- (4-|3);
-		\tikz \draw[cstdash,dcolorc,visible on=<11->] (1-|2) -- (2-|1);
-		\tikz \draw[cstdash,dcolorc,visible on=<11->] (2-|4) -- (4-|2);
+		\tikz \draw[thick,main,visible on=<6-8>] (1-|1) -- (4-|4);
+		\tikz \draw[thick,second,visible on=<7-8>] (1-|2) -- (3-|4);
+		\tikz \draw[thick,second,visible on=<7-8>] (3-|1) -- (4-|2);
+		\tikz \draw[thick,third,visible on=<8>] (1-|3) -- (2-|4);
+		\tikz \draw[thick,third,visible on=<8>] (2-|1) -- (4-|3);
+		\tikz \draw[cstdash,main,visible on=<9->] (1-|4) -- (4-|1);
+		\tikz \draw[cstdash,second,visible on=<10->] (1-|3) -- (3-|1);
+		\tikz \draw[cstdash,second,visible on=<10->] (3-|4) -- (4-|3);
+		\tikz \draw[cstdash,third,visible on=<11->] (1-|2) -- (2-|1);
+		\tikz \draw[cstdash,third,visible on=<11->] (2-|4) -- (4-|2);
 	\end{vNiceMatrix}
 	:=
 	a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}
@@ -270,7 +270,7 @@
 \end{frame}
 
 
-\begin{frame}{例: $2,3$ 阶行列式的计算}
+\begin{frame}{例题: $2,3$ 阶行列式的计算}
 	\onslide<+->
 	\begin{example}
 		$\begin{vmatrix}
@@ -312,17 +312,17 @@
 % 	\end{vmatrix}$ 的绝对值就是下述平行六面体的体积.
 % 	\begin{center}
 % 	\begin{tikzpicture}[scale=.8]
-% 		\draw[cstcurve,dcolora] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
-% 		\draw[cstcurve,dcolora] (4.5,1)--(5.5,2.5)--(2.5,2.5);
-% 		\draw[cstdash,cstcurve,dcolora] (2.5,2.5)--(1.5,1)--(4.5,1);
-% 		\draw[cstdash,cstcurve,dcolora] (0,0)--(1.5,1);
-% 		\draw[cstcurve,dcolora] (3,0)--(4.5,1);
-% 		\draw[cstcurve,dcolora] (4,1.5)--(5.5,2.5);
-% 		\draw[cstcurve,dcolora] (1,1.5)--(2.5,2.5);
-% 		\draw (0,0) node[dcolorb,left] {$O$};
-% 		\draw (3,0) node[dcolorb,right] {$A$};
-% 		\draw (1,1.5) node[dcolorb,left] {$C$};
-% 		\draw (1.5,1) node[dcolorb,below] {$B$};
+% 		\draw[cstcurve,main] (0,0)--(3,0)--(4,1.5)--(1,1.5)--cycle;
+% 		\draw[cstcurve,main] (4.5,1)--(5.5,2.5)--(2.5,2.5);
+% 		\draw[cstdash,cstcurve,main] (2.5,2.5)--(1.5,1)--(4.5,1);
+% 		\draw[cstdash,cstcurve,main] (0,0)--(1.5,1);
+% 		\draw[cstcurve,main] (3,0)--(4.5,1);
+% 		\draw[cstcurve,main] (4,1.5)--(5.5,2.5);
+% 		\draw[cstcurve,main] (1,1.5)--(2.5,2.5);
+% 		\draw (0,0) node[second,left] {$O$};
+% 		\draw (3,0) node[second,right] {$A$};
+% 		\draw (1,1.5) node[second,left] {$C$};
+% 		\draw (1.5,1) node[second,below] {$B$};
 % 	\end{tikzpicture}
 % 	\end{center}
 % 	\onslide<+->
@@ -338,11 +338,11 @@
 	\onslide<+->
 	事实上, 它把任意平行多面体映射为平行多面体, 且二者面积相差 $|\bfA|$ 倍.
 	\onslide<+->
-	\begin{alertblock@}
+	\begin{second@}
 		\begin{enumerate}[<*>]
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
 		\end{enumerate}
-	\end{alertblock@}
+	\end{second@}
 	\onslide<+->
 	\begin{proof}
 		设 $f(\bfv_1,\dots,\bfv_n)=f(\bfB)=|\bfA\bfB|$.
@@ -364,12 +364,12 @@
 
 \begin{frame}{行列式的转置不变性}
 	\onslide<+->
-	\begin{alertblock@}
+	\begin{second@}
 		\begin{enumerate}[<*>]
 			\setcounter{enumi}{1}
 			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
 		\end{enumerate}
-	\end{alertblock@}
+	\end{second@}
 	\onslide<+->
 	设 $k_1,\dots,k_n$ 是一个排列, $\bfP$ 的 $i$ 行 $k_i$ 列为 $1$, 其余项为零.
 	\onslide<+->
@@ -397,14 +397,14 @@
 	\onslide<+->
 	再根据行列式关于每个列向量的线性性和反对称性有:
 	\onslide<+->
-	\begin{alertblock@}
+	\begin{second@}
 		\begin{enumerate}
 			\setcounter{enumi}{2}
 			\item 互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
 			\item 方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
 			\item 将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
 		\end{enumerate}
-	\end{alertblock@}
+	\end{second@}
 	\onslide<+->
 	\begin{corollary}
 		\begin{enumerate}
@@ -421,13 +421,13 @@
 	\onslide<+->
 	计算行列式可以通过实施下列变换来化简:
 	\onslide<+->
-	\begin{block}{初等变换}
+	\begin{main}{初等变换}
 		\begin{enumerate}
 			\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
 			\item 一行(列)乘\alert{非零常数} $k$: \alert{$kr_i, kc_i$}, 行列式变为 $k$ 倍;
 			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
 		\end{enumerate}
-	\end{block}
+	\end{main}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
@@ -442,7 +442,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}
+\begin{frame}{例题: 利用初等变换计算行列式}
 	\onslide<+->
 	\begin{example}
 		\[\begin{vmatrix}
@@ -483,7 +483,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}
+\begin{frame}{例题: 利用初等变换计算行列式}
 	\onslide<+->
 	\begin{exercise}
 		$\begin{vmatrix}
@@ -508,7 +508,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}
+\begin{frame}{例题: 利用初等变换计算行列式}
 	\onslide<+->
 	\begin{proof}
 		\begin{align*}
@@ -546,7 +546,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}\small
+\begin{frame}{例题: 利用初等变换计算行列式}\small
 	\onslide<+->
 	\begin{exercise}
 		$\begin{vmatrix}
@@ -575,7 +575,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算行列式}\small
+\begin{frame}{例题: 计算行列式}\small
 	\onslide<+->
 	\begin{example}
 		若 $abcd=1$, 证明 $\bfA=\begin{pNiceMatrix}
@@ -734,7 +734,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 分块矩阵行列式}
+\begin{frame}{例题: 分块矩阵行列式}
 	\onslide<+->
 	\begin{example}
 		设
@@ -756,15 +756,15 @@
 			\vdots&\ddots&\vdots&\vdots&\ddots&\vdots\\
 			*&\cdots&*&b_{n1}&\cdots&b_{nn}
 			\CodeAfter
-			\tikz \draw[cstdash,dcolora] (4-|1) -- (4-|7);
-			\tikz \draw[cstdash,dcolora] (1-|4) -- (7-|4);
+			\tikz \draw[cstdash,main] (4-|1) -- (4-|7);
+			\tikz \draw[cstdash,main] (1-|4) -- (7-|4);
 		\end{pNiceMatrix}.\]
 		证明 $|\bfC|=|\bfA|\cdot|\bfB|$.
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 分块矩阵行列式}
+\begin{frame}{例题: 分块矩阵行列式}
 	\onslide<+->
 	\begin{proof*}
 		对 $m$ 归纳.
@@ -788,7 +788,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 拉普拉斯展开的应用}
+\begin{frame}{例题: 拉普拉斯展开的应用}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -813,9 +813,9 @@
 \end{frame}
 
 
-\begin{frame}{例: 拉普拉斯展开的应用}
+\begin{frame}{例题: 拉普拉斯展开的应用}
 	\onslide<+->
-		\begin{solutionc}
+		\begin{solution}[续解]
 			\vspace{-\baselineskip}
 			\begin{align*}
 				M_{41}+M_{42}+M_{43}+M_{44}
@@ -832,7 +832,7 @@
 					-1&-1&1
 				\end{vmatrix}=-28.}
 		\end{align*}
-	\end{solutionc}
+	\end{solution}
 	\onslide<+->
 	\begin{exercise}
 		若 $\bfA=\begin{pmatrix}
@@ -850,7 +850,7 @@
 \subsection{行列式的计算举例}
 
 
-\begin{frame}{例: 行和为常数的行列式}
+\begin{frame}{例题: 行和为常数的行列式}
 	\onslide<+->
 	计算 $n$ 阶矩阵的行列式可以使用初等变换将其变为三角型, 也可以使用拉普拉斯展开来对其实施降阶.
 	\onslide<+->
@@ -886,7 +886,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 行和为常数的行列式}
+\begin{frame}{例题: 行和为常数的行列式}
 	\onslide<+->
 	若方阵的每行(列)之和为常数, 可用此法化简.
 	\onslide<+->
@@ -901,7 +901,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 箭形行列式}
+\begin{frame}{例题: 箭形行列式}
 	\onslide<+->
 	\begin{example}
 		\[\begin{vmatrix}
@@ -923,7 +923,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 特殊形状行列式}
+\begin{frame}{例题: 特殊形状行列式}
 	\onslide<+->
 	\begin{exercise}
 		计算 $n$ 阶行列式 $\begin{vmatrix}
@@ -938,7 +938,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 降阶法}
+\begin{frame}{例题: 降阶法}
 	\onslide<+->
 	\begin{example}
 		计算矩阵 $\bfA_n=\begin{pmatrix}
@@ -962,7 +962,7 @@
 
 \subsection{三对角和范德蒙型行列式}
 
-\begin{frame}{例: 降阶法计算三对角矩阵行列式}
+\begin{frame}{例题: 降阶法计算三对角矩阵行列式}
 	\onslide<+->
 	\begin{example}
 		计算矩阵 $\bfA_n=\begin{pmatrix}
@@ -977,7 +977,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 降阶法计算三对角矩阵行列式}
+\begin{frame}{例题: 降阶法计算三对角矩阵行列式}
 	\onslide<+->
 	\begin{solution}
 		设 $D_n=|\bfA_n|$.
@@ -1000,7 +1000,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 降阶法计算三对角矩阵行列式}
+\begin{frame}{例题: 降阶法计算三对角矩阵行列式}
 	\onslide<+->
 	若主对角线元素均为 $a$, 上下副对角线元素均为 $b$ 和 $c$, 则
 		\[|\bfA_n|-a|\bfA_{n-1}|+bc|\bfA_{n-2}|=0.\]
@@ -1018,7 +1018,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 范德蒙行列式}
+\begin{frame}{例题: 范德蒙行列式}
 \beqskip{0pt}
 	\onslide<+->
 	\begin{example}[范德蒙行列式]
@@ -1033,7 +1033,7 @@
 		\vspace{-.4\baselineskip}
 	\end{example}
 	\onslide<+->
-	\begin{proofs}
+	\begin{solution}[证明]
 		归纳证明.
 		\onslide<+->{%
 			当 $n=1,2$ 时显然成立.
@@ -1047,13 +1047,13 @@
 				0&x_2^{n-2}(x_2-x_1)&x_3^{n-2}(x_3-x_1)&\cdots&x_n^{n-2}(x_n-x_1)
 			\end{vmatrix}.\]}
 			\vspace{-.48\baselineskip}
-	\end{proofs}
+	\end{solution}
 \endgroup
 \end{frame}
 
-\begin{frame}{例: 范德蒙行列式}
+\begin{frame}{例题: 范德蒙行列式}
 		\onslide<+->
-		\begin{proofe}
+		\begin{proof}[续证]
 		\onslide<+->{
 			沿着第一列展开, 然后提取每一列的公因式 $(x_j-x_1)$ 得到
 		\[|\bfA_n|
@@ -1066,11 +1066,11 @@
 			\onslide<+->{由归纳假设可知
 			\[|\bfA_n|
 		=\prod_{j=2}^n(x_j-x_1)\cdot \prod_{2\le i<j\le n}(x_j-x_i)=\prod_{1\le i<j\le n}(x_j-x_i).\qedhere\]}
-	\end{proofe}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 范德蒙行列式的应用}
+\begin{frame}{例题: 范德蒙行列式的应用}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
@@ -1107,7 +1107,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 方阵的行列式}
+\begin{frame}{例题: 方阵的行列式}
 	\onslide<+->
 	\begin{example}
 		计算
@@ -1140,7 +1140,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 方阵的行列式}
+\begin{frame}{例题: 方阵的行列式}
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfA$ 为 $5$ 阶方阵, $|\bfA|=-1$, 则
@@ -1165,7 +1165,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 方阵的行列式}
+\begin{frame}{例题: 方阵的行列式}
 \beqskip{6pt}
 	\onslide<+->
 	\begin{example}

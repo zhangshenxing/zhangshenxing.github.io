@@ -8,17 +8,17 @@
 	通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
 
 	\onslide<+->
-	\begin{block}{线性性质}
+	\begin{main}{线性性质}
 		\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 		\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-	\end{block}
+	\end{main}
 
 	\onslide<+->
-	\begin{block}{位移性质}
+	\begin{main}{位移性质}
 		\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
 		\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
 		\vspace{-\baselineskip}
-	\end{block}
+	\end{main}
 \end{frame}
 
 
@@ -41,14 +41,14 @@
 
 \begin{frame}{傅里叶变换的性质: 微分性质}
 	\onslide<+->
-	\begin{block}{微分性质}
+	\begin{main}{微分性质}
 		\[\msf[f'(t)]=j\omega F(\omega),\quad
 		\msf^{-1}[F'(\omega)]=-jtf(t),\]
 		\vspace{-\baselineskip}
 		\[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
 		\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
 		这里, 被变换的函数要求在 $\infty$ 处趋于 $0$.
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	\begin{proof}
@@ -64,24 +64,24 @@
 \begin{frame}{傅里叶变换的性质}
 	\onslide<+->
 	由微分性质可得
-	\begin{block}{乘多项式性质}
+	\begin{main}{乘多项式性质}
 		\[\msf[tf(t)]=jF'(\omega),\quad
 		\msf^{-1}[\omega F(\omega)]=-jf'(t),\]
 		\[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
 		\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
-	\end{block}
+	\end{main}
 
 	\onslide<+->
-	\begin{block}{积分性质}
+	\begin{main}{积分性质}
 		\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	由变量替换易得
-	\begin{block}{相似性质}
+	\begin{main}{相似性质}
 		\[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
 		\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
-	\end{block}
+	\end{main}
 \end{frame}
 
 
@@ -135,21 +135,21 @@
 
 \begin{frame}{常见傅里叶变换汇总}
 	\onslide<+->
-	\begin{alertblock}{常见傅里叶变换汇总 I}
+	\begin{second}{常见傅里叶变换汇总 I}
 		\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
 		\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
 		\begin{align*}
 		\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 		\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
 		\end{align*}
-	\end{alertblock}
+	\end{second}
 
 	\onslide<+->
-	\begin{block}{常见傅里叶变换汇总 II}
+	\begin{main}{常见傅里叶变换汇总 II}
 		\[\msf[u(t)e^{-\beta t}]=\dfrac1{\beta+j\omega},\quad
 		\msf[e^{-\beta t^2}]=\sqrt{\dfrac\pi\beta}e^{-\omega^2/(4\beta)},\]
 		\[\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega).\]
-	\end{block}
+	\end{main}
 \end{frame}
 
 
@@ -172,7 +172,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算卷积\noexer}
+\begin{frame}{例题: 计算卷积\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$. 求 $f_1\ast f_2$.
@@ -192,11 +192,11 @@
 
 \begin{frame}{卷积定理\noexer}
 	\onslide<+->
-	\begin{block}{卷积定理}
+	\begin{main}{卷积定理}
 	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
 	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
 	\vspace{-\baselineskip}
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	\begin{proof}
@@ -232,7 +232,7 @@
 
 \begin{frame}{卷积的应用\noexer}
 	\onslide<+->
-	\begin{solutionc}
+	\begin{solution}[续解]
 			我们之前计算过
 			\[\msf^{-1}[F(\omega)]=f(t)=\begin{cases}
 				1/2, & |t|<1,\\
@@ -246,7 +246,7 @@
 				&=\int_{-\infty}^{+\infty}f(-t)g(t)\diff t=\half\int_{-1}^1 g(t)\diff t=\half ,
 			\end{align*}
 		}\onslide<+->{故 $I=2\pi\msf^{-1}[FG](0)=\pi$.}
-	\end{solutionc}
+	\end{solution}
 \end{frame}
 
 
@@ -254,20 +254,20 @@
 \begin{frame}{使用傅里叶变换解微积分方程\noexer}
 	\begin{center}
 		\begin{tikzpicture}[node distance=40pt]
-			\node[cstnodeg] (a){微分方程或积分方程};
-			\node[cstnodeb,right=110pt of a] (b){象函数的代数方程};
-			\node[cstnodeg,below=of a] (c){原象函数(方程的解)};
-			\node[cstnodeb,below=of b] (d){象函数};
-			\draw[cstnarrow,dcolorb] (a)--node[above]{傅里叶变换 $\msf$}(b);
-			\draw[cstnarrow,dcolorb] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
-			\draw[cstnarrow,dcolorb] (b)--(d);
-			\draw[cstnarrow,dcolorc] (a)--(c);
+			\node[cstnode2] (a){微分方程或积分方程};
+			\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
+			\node[cstnode2,below=of a] (c){原象函数(方程的解)};
+			\node[cstnode1,below=of b] (d){象函数};
+			\draw[cstnarrow,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
+			\draw[cstnarrow,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
+			\draw[cstnarrow,second] (b)--(d);
+			\draw[cstnarrow,third] (a)--(c);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
@@ -296,7 +296,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\onslide<+->
 	\begin{example}
 		解方程 $y''(t)-y(t)=0$.

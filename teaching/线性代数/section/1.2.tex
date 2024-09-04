@@ -208,7 +208,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵乘法的计算}
+\begin{frame}{例题: 矩阵乘法的计算}
 	\onslide<+->
 	\begin{example}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -322,7 +322,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 与给定矩阵可交换}\small
+\begin{frame}{例题: 与给定矩阵可交换}\small
 	\beqskip{2mm}
 	\onslide<+->
 	\begin{example}
@@ -361,9 +361,9 @@
 	\begin{center}
 		\begin{tikzpicture}
 			\draw (2.75,2) node {\includegraphics[height=4.03cm]{../image/idcard1.png}};
-			\draw (0,0) node[dcolora,below left,visible on=<2->] {$O$};
-			\draw (5.21,0.88) node[dcolora,below right,visible on=<2->] {$A$};
-			\draw (0.19,3.11) node[dcolora,above left,visible on=<2->] {$B$};
+			\draw (0,0) node[main,below left,visible on=<2->] {$O$};
+			\draw (5.21,0.88) node[main,below right,visible on=<2->] {$A$};
+			\draw (0.19,3.11) node[main,above left,visible on=<2->] {$B$};
 		\end{tikzpicture}
 	\end{center}
 	\onslide<+->
@@ -430,7 +430,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}
+\begin{frame}{例题: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -451,7 +451,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}\small
+\begin{frame}{例题: 矩阵幂的计算}\small
 \beqskip{0pt}
 	\onslide<+->
 	\begin{example}
@@ -504,9 +504,9 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}
+\begin{frame}{例题: 矩阵幂的计算}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}{另解}
 		设 $\bfN=\begin{pmatrix}
 			0&1&0\\
 			&0&1\\
@@ -530,11 +530,11 @@
 				\end{pNiceMatrix}.}
 			\end{align*}
 		}\vspace{-\baselineskip}
-	\end{proofblock}
+	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}
+\begin{frame}{例题: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -555,7 +555,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}
+\begin{frame}{例题: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设 
@@ -582,7 +582,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 矩阵幂的计算}
+\begin{frame}{例题: 矩阵幂的计算}
 	\onslide<+->
 	\begin{exercise}
 		设 
@@ -612,7 +612,7 @@
 	例如 $4$ 个城市之间的航线如图所示:
 	\begin{center}
 	\begin{tikzpicture}
-		\begin{scope}[dcolorb, node distance=15mm]
+		\begin{scope}[second, node distance=15mm]
 			\node (1) {1};
 			\node (2) [below=of 1] {2};
 			\node (3) [right=of 2]{3};
@@ -622,7 +622,7 @@
 			\draw (3) circle (.2);
 			\draw (4) circle (.2);
 		\end{scope}
-		\begin{scope}[line width=0.5mm,dcolorc]
+		\begin{scope}[line width=0.5mm,third]
 			\draw[Latex-Latex] (1.east) -- (4.west);
 			\draw[Latex-Latex] (1.south) -- (2.north);
 			\draw[-Latex] (1.south east) -- (3.north west);

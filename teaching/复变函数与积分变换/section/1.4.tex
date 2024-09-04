@@ -1,86 +1,89 @@
 \section{曲线和区域}
 
 \subsection{复数表平面曲线}
-\begin{frame}{典型例题: 复数方程表平面图形}
+\begin{frame}{例题: 复数方程表平面图形}
 	\onslide<+->
 	很多的平面图形能用复数形式的方程来表示, 这种表示方程有些时候会显得更加直观和易于理解.
 
 	\onslide<+->
-	\begin{example*}
+	\begin{example}
 		$|z+i|=2$.
-
-		\onslide<+->{该方程表示与 $-i$ 的距离为 $2$ 的点全体, 即圆心为 $-i$ 半径为 $2$ 的圆.}
-
-		\onslide<+->{一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.}
+		\onslide<+->{%
+			该方程表示与 $-i$ 的距离为 $2$ 的点全体, 即圆心为 $-i$ 半径为 $2$ 的圆.
+		}\onslide<+->{%
+			一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
+		}
 		\onslide<3->{
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis] (-1.5,0)--(1.5,0);
-				\draw[cstaxis] (0,-1.8)--(0,1);
-				\draw[cstcurve,dcolora] (0,-0.5) circle(1);
-				\fill[cstdot,dcolorb] (0,-0.5) circle;
-				\draw
-				(-0.4,-0.5) node[dcolorb] {$-i$};
+				\draw[cstaxis] (0,-2)--(0,1);
+				\coordinate (A) at (0,-.6);
+				\fill[cstdot,second] (A) circle
+					node[left] {$-i$};
+				\draw[cstcurve,main] (A) circle(1.2);
 			\end{tikzpicture}
 		\end{center}}
-	\end{example*}
+	\end{example}
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方程表平面图形}
+\begin{frame}{例题: 复数方程表平面图形}
 	\onslide<+->
-	\begin{example*}
+	\begin{example}
 		$|z-2i|=|z+2|$.
-
-		\onslide<+->{该方程表示与 $2i$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
-		}\onslide<+->{两边同时平方化简可得 $x+y=0$.}
+		\onslide<+->{%
+			该方程表示与 $2i$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
+		}\onslide<+->{%
+			两边同时平方化简可得 $x+y=0$.
+		}
 		\onslide<2->{
 		\begin{center}
-			\begin{tikzpicture}[scale=.8]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-1.5,0)--(1.5,0);
 				\draw[cstaxis] (0,-1.5)--(0,1.5);
-				\draw[cstcurve,dcolora] (-1.2,1.2)--(1.2,-1.2);
-				\fill[cstdot,dcolorb] (0,1) circle;
-				\fill[cstdot,dcolorb] (-1,0) circle;
-				\draw
-					(-1,-0.3) node[dcolorb] {$-2$}
-					(0.4,1) node[dcolorb] {$2i$};
+				\coordinate (A) at (-1,0);
+				\fill[cstdot,second] (A) circle node[above] {$-2$};
+				\coordinate (B) at (0,1);
+				\fill[cstdot,second] (B) circle node[left] {$2i$};
+				\draw[cstcurve,main] (-1.2,1.2)--(1.2,-1.2);
 			\end{tikzpicture}
 		\end{center}}
-	\end{example*}
+	\end{example}
 	\onslide<+->
 	
-	\begin{example*}
+	\begin{example}
 		$\Im(i+\ov z)=4$.
-
-		\onslide<+->{设 $z=x+yi$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.}
-	\end{example*}
+		\onslide<+->{%
+			设 $z=x+yi$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.
+		}
+	\end{example}
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方程表平面图形}
+\begin{frame}{例题: 复数方程表平面图形}
 	\onslide<+->
-	\begin{example*}
+	\begin{example}
 		$|z-z_1|+|z-z_2|=2a$.
 		\begin{itemize}
 			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
 			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
 			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示空集.	
 		\end{itemize}
-	\end{example*}
+	\end{example}
 	\onslide<+->
-	\begin{example*}
+	\begin{example}
 		$|z-z_1|-|z-z_2|=2a$.
 		\begin{itemize}
 			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支;
 			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
 			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示空集.	
 		\end{itemize}
-	\end{example*}
+	\end{example}
 \end{frame}
 
 
-\begin{frame}{典型例题: 复数方程表平面图形}
+\begin{frame}{例题: 复数方程表平面图形}
 	\onslide<+->
 	\begin{exercise}
 		$z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
@@ -91,6 +94,7 @@
 		双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
 	\end{answer}
 \end{frame}
+
 
 \subsection{区域的定义}
 \begin{frame}{邻域}
@@ -106,21 +110,31 @@
 	为 $z_0$ 的一个\emph{去心 $\delta$-邻域}.
 
 	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolorb,cstfill] (0,0) circle(1);
-			\draw[cstcurve,cstarrowto,dcolora] (0,0)--(0.8,0.6);
-			\fill[cstdot,dcolora] (0,0) circle;
-			\filldraw[cstcurve,dcolorb,cstfill,visible on=<3->] (3,0) circle(1);
-			\draw[cstcurve,visible on=<3->,cstarrowto,dcolora] (3,0)--(3.8,0.6);
-			\filldraw[cstdote,visible on=<3->,draw=dcolora] (3,0) circle;
-			\draw
-			(-0.3,0) node[dcolora] {$z_0$}
-			(2.7,0) node[visible on=<3->,dcolora] {$z_0$}
-			(0.5,0.1) node[dcolora] {$\delta$}
-			(3.5,0.1) node[visible on=<3->,dcolora] {$\delta$};
-		\end{tikzpicture}
-	\end{center}
+	\begin{figure}[hbpt]
+		\centering
+		\begin{minipage}{.48\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\coordinate (A);
+				\filldraw[cstcurve,main,cstfill1] (A) circle (1.5);
+				\draw[cstcurve,cstra,second] (A)--(1.2,.9)
+					node[midway,above left] {$\delta$};
+				\fill[cstdot,second] (A) circle
+					node[left] {$z_0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.48\textwidth}
+			\centering
+			\begin{tikzpicture}[visible on=<3->]
+				\coordinate (A);
+				\filldraw[cstcurve,main,cstfill1] (A) circle (1.5);
+				\draw[cstcurve,cstra,second] (A)--(1.2,.9)
+					node[midway,above left] {$\delta$};
+				\filldraw[cstdote,draw=main] (A) circle
+					node[left,second] {$z_0$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 
@@ -142,30 +156,47 @@
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolora,cstfill,smooth] plot coordinates {(0,-0.8) (1,-0.8) (1.5,0) (1,0.6) (0,0.8) (-1,0.7) (-1.2,0) (-1,-0.6) (0,-0.8)};
-			\draw[visible on=<3->,cstcurve,dcolorb] (-0.5,0) circle (0.5);
-			\draw[visible on=<5->,cstcurve,dcolorc] (1.43,0) circle (0.5);
-			\draw[visible on=<4->,cstcurve,black] (3,0) circle (0.5);
-			\fill[visible on=<3->,cstdot,dcolorb] (-0.5,0) circle;
-			\fill[visible on=<5->,cstdot,dcolorc] (1.5,0) circle;
-			\fill[visible on=<4->,cstdot,black] (3,0) circle;
-			\draw
-			(0.5,0) node[dcolora] {$G$}
-			(-0.5,0.2) node[visible on=<3->,dcolorb] {$z_0$}
-			(1.75,0) node[visible on=<5->,dcolorc] {$z_0$}
-			(3.3,0) node[visible on=<4->] {$z_0$};
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2,0) (1.83,.9) (.64,1.46) (-.63,1.6) (-1.66,1.01) (-2.35,0) (-1.81,-1.06) (-.73,-1.68) (.74,-1.57) (1.82,-.91) (2,0)};
+			\begin{scope}[visible on=<3->]
+				\coordinate (A) at (-.7,0);
+				\draw[cstcurve,second] (A) circle (.5) node[above] {$z_0$};
+				\fill[cstdot,second] (A) circle;
+			\end{scope}
+			\begin{scope}[visible on=<5->]
+				\coordinate (B) at (2,0);
+				\draw[cstcurve,third] (B) circle (.5) node[right] {$z_0$};
+				\fill[cstdot,third] (B) circle;
+			\end{scope}
+			\begin{scope}[visible on=<4->]
+				\coordinate (C) at (4,0);
+				\draw[cstcurve,fourth] (C) circle (.5) node[above] {$z_0$};
+				\fill[cstdot,fourth] (C) circle;
+			\end{scope}
+			\draw (.5,0) node[main] {$G$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{开集和闭集}
+\begin{frame}{开集和闭集、有界和无界}
 	\onslide<+->
-	如果 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\emph{开集}.
+	\begin{definition}[开集和闭集]
+		\begin{enumerate}
+			\item 如果 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\emph{开集}.
+			\item 如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}.
+		\end{enumerate}
+	\end{definition}
 	\onslide<+->
 	例如
-	\[|z-z_0|<R,\quad 1<\Re z<3,\quad\frac\pi4<\arg z<\dfrac{3\pi}4\] 都是开集.
+	\[|z-z_0|<R,\quad 1<\Re z<3,\quad\frac\pi4<\arg z<\dfrac{3\pi}4\]
+	都是开集.
 	\onslide<+->
+	$G$ 是一个闭集当且仅当它的补集是开集.
+	\onslide<+->
+	直观上看: 开集往往由 $>,<$ 的不等式给出, 闭集往往由 $\ge,\le$ 的不等式给出.
+	\onslide<+->
+	不过注意这并不是绝对的.
+
 	如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}.
 	\onslide<+->
 	这等价于它的补集是开集.
@@ -174,8 +205,7 @@
 	直观上看: 开集往往由 $>,<$ 的不等式给出, 闭集往往由 $\ge,\le$ 的不等式给出.
 	\onslide<+->
 	不过注意这并不是绝对的.
-	例如 $|z+1|+|z-1|\ge 1$ 表示整个复平面.
-
+	
 	\onslide<+->
 	如果 $D$ 可以被包含在某个开圆盘 $U(0,R)$ 中, 则称它是\emph{有界}的.
 	\onslide<+->
@@ -185,91 +215,144 @@
 
 \begin{frame}{区域和闭区域}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[区域]
 		如果开集 $D$ 的任意两个点之间都可以用一条完全包含在 $D$ 中的折线连接起来, 则称 $D$ 是一个\emph{区域}.
-		\onslide<+->{也就是说, 区域是连通的开集.}
+		\onslide<+->{%
+			也就是说, 区域是连通的开集.
+		}
 	\end{definition}
 
 	\onslide<+->
-	观察下侧的图案, 青色部分是一个区域(不包含红色部分).
+	观察下方的图案,
 	\onslide<+->
-	红色的线条和点是它的边界.
+	阴影部分(不包含线条部分)中任意两点可用折线连接, 因此它是一个区域.
+	\onslide<+->
+	这些线条和点构成了它的边界.
+
+	\onslide<3->
+	\begin{center}
+		\begin{tikzpicture}[scale=.8]
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93) (2.81,0)};
+			\filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+			\filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+			\fill[cstdot,main] (1.5,0) circle;
+			\fill[cstdot,main] (1.6,-.5) circle;
+			\draw[cstcurve,second,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+			\begin{scope}[visible on=<4->]
+				\coordinate [label=left:\textcolor{second}{$z_1$}] (A) at (-1,.8);
+				\coordinate [label=below:\textcolor{second}{$z_2$}] (B) at (1,-.8);
+				\draw[cstcurve,second] (A)--(-.2,.5)--(.2,-.5)--(B);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 	\onslide<+->
 	区域和它的边界一起构成了\emph{闭区域}, 记作 $\ov D$.
 	\onslide<+->
 	它是一个闭集.
-
-	\onslide<3->
-	\begin{center}
-		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolora,cstfill,smooth] plot coordinates {(0,-1.2) (1.5,-1.2) (2.3,0) (1.5,0.9) (0,1.2) (-1.5,1) (-1.8,0) (-1.5,-0.9) (0,-1.2)};
-			\filldraw[cstcurve,dcolora,fill=white,smooth] plot coordinates {(-1.4,0) (-1,0.6) (-0.6,0) (-1.2,-0.5) (-1.4,0)};
-			\filldraw[cstcurve,dcolora,fill=white] (0.5,0.3) circle (0.3);
-			\fill[cstdot,dcolora] (1.5,0) circle;
-			\fill[cstdot,dcolora] (1.6,-0.5) circle;
-			\draw[cstcurve,dcolora,smooth] plot coordinates {(1,0.5) (1.2,0.3) (1.2,-0.3) (1.4,0.5)};
-			\draw[cstcurve,dcolorc] (-1,0.8)--(-0.2,0.5)--(0.2,-0.5)--(1,-0.8);
-			\draw
-			(-1.2,0.8) node[dcolorc] {$z_1$}
-			(1.3,-0.8) node[dcolorc] {$z_2$};
-		\end{tikzpicture}
-	\end{center}
 	\onslide<+->
 	数学中边界的概念与日常所说的边界是两码事. 例如区域 $|z|>1$ 的边界是 $|z|=1$, 其闭区域是 $|z|\ge 1$.
 \end{frame}
 
 
-\begin{frame}{常见区域}
+\begin{frame}{常见区域}\small
 	\onslide<+->
-	复平面上的区域大多由复数的实部、虚部、模和辐角的不等式所确定.
-	\onslide<10->{这些区域对应的闭区域是什么?}
-	\vspace{-\baselineskip}
+	很多区域可以由复数的实部、虚部、模和辐角的不等式所确定.
+	\onslide<7->{%
+		下方区域对应的闭区域是什么?
+	}
+	\vspace{-.5\baselineskip}
 	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis](-1.5,0.3)--(1.5,0.3);
-			\draw[cstaxis](0,-0.6)--(0,1.4);
-			\fill[cstfille,pattern color=dcolorb] (-1.2,0.3) rectangle (1.2,1.1);
-			\fill[cstfille,pattern color=dcolora,visible on=<3->] (-1.2,0.3) rectangle (1.2,-0.5);
-			\draw[cstaxis,visible on=<4->](2.5,0)--(5.5,0);
-			\draw[cstaxis,visible on=<4->](4,-1.1)--(4,1.3);
-			\fill[cstfille,pattern color=dcolorb,visible on=<4->] (2.8,-1) rectangle (4,1);
-			\fill[cstfille,pattern color=dcolora,visible on=<5->] (4,1) rectangle (5.2,-1);
-			\draw[cstaxis,visible on=<6->](6.5,0)--(8.5,0);
-			\draw[cstaxis,visible on=<6->](7,-1)--(7,1.2);
-			\fill[cstfille,pattern color=dcolorb,visible on=<6->] (7.2,-0.9) rectangle (8,0.9);
-			\draw
-			(-0.05,1.5) node[dcolorb] {上半平面 $\Im z>0$}
-			(-0.05,-0.9) node[dcolora,visible on=<3->] {下半平面 $\Im z<0$}
-			(3.1,1.6) node[dcolorb,align=center,visible on=<4->] {左半平面\\$\Re z<0$}
-			(4.9,1.6) node[dcolora,align=center,visible on=<5->] {右半平面\\$\Re z>0$}
-			(7.7,1.7) node[dcolorb,align=center,visible on=<6->] {竖直带状区域\\$x_1<\Re z<x_2$};
-		\end{tikzpicture}
-	\end{center}
-	\onslide<7->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis](-1.5,1.2)--(1.5,1.2);
-			\draw[cstaxis](0,1)--(0,2.2);
-			\fill[cstfille,pattern color=dcolora] (-1.2,1.3) rectangle (1.2,2);
-			\draw[cstaxis,visible on=<8->](2,0)--(4,0);
-			\draw[cstaxis,visible on=<8->](2.5,-0.2)--(2.5,1.3);
-			\fill[cstfille,pattern color=dcolorb,visible on=<8->] (2.5,0)--(3.25,1.299) arc(60:10:1.5)--cycle;
-			\filldraw[cstcurve,dcolora,cstfill,visible on=<9->] (6.2,1) circle (1);
-			\filldraw[cstcurve,dcolora,cstfill,fill=white,visible on=<9->] (6.2,1) circle (0.5);
-			\draw[cstaxis,visible on=<9->](4.9,1)--(7.5,1);
-			\draw[cstaxis,visible on=<9->](6.2,-0.2)--(6.2,2.4);
-			\draw
-			(0,0.5) node[dcolora,align=center] {水平带状区域\\$y_1<\Im z<y_2$}
-			(3.4,1.8) node[dcolorb,align=center,visible on=<8->] {角状区域\\$\alpha_1<\arg z<\alpha_2$}
-			(8.2,2) node[dcolora,align=center,visible on=<9->] {圆环域\\$r<|z|<R$};
-		\end{tikzpicture}
-	\end{center}
+	\begin{figure}[hbpt]
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,0) rectangle (1.2,.8);
+				\draw (0,-1.5) node[below,align=center] {上半平面\\$\Im z>0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,0) rectangle (1.2,-.8);
+				\draw (0,-1.5) node[below,align=center] {下半平面\\$\Im z<0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<3->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,-1) rectangle (0,1);
+				\draw (0,-1.5) node[below,align=center] {左半平面\\$\Re z<0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<3->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (0,1) rectangle (1.2,-1);
+				\draw (0,-1.5) node[below,align=center] {右半平面\\$\Re z>0$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
+	\vspace{-.5\baselineskip}	
+	\begin{figure}[hbpt]
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<4->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-.6,-1) rectangle (.2,1);
+				\draw[cstcurve,main] (-.6,-1)--(-.6,1);
+				\draw[cstcurve,main] (.2,-1)--(.2,1);
+				\draw (0,-1.5) node[below,align=center] {竖直带状区域\\$x_1<\Re z<x_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<4->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-.5,-.4) rectangle (1.1,.4);
+				\draw[cstcurve,main] (-.5,-.4)--(1.1,-.4);
+				\draw[cstcurve,main] (-.5,.4)--(1.1,.4);
+				\draw (0,-1.5) node[below,align=center] {水平带状区域\\$y_1<\Im z<y_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<5->]
+				\draw[cstaxis](-.5,0)--(2.5,0);
+				\draw[cstaxis](0,-.5)--(0,2.5);
+				\coordinate (A) at (0,0);
+				\coordinate (B) at ({2.2*cos(60)},{2.2*sin(60)});
+				\coordinate (C) at ({2.2*cos(10)},{2.2*sin(10)});
+				\fill[cstfille1] (A)--(B) arc(60:10:2.2)--cycle;
+				\draw[cstcurve,main] (C)--(A)--(B);
+				\draw (1,-.5) node[below,align=center] {角状区域\\$\alpha_1<\arg z<\alpha_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<6->]
+				\filldraw[cstcurve,main,cstfill1] (0,0) circle (1.2);
+				\filldraw[cstcurve,main,fill=white] (0,0) circle (.6);
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\draw (0,-1.5) node[below,align=center] {圆环域\\$r<|z|<R$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 
 \subsection{区域的特性}
-\begin{frame}{简单闭曲线（闭路）}
+\begin{frame}{闭路}
 	\onslide<+->
 	设 $x(t),y(t),t\in[a,b]$ 是两个连续函数,
 	\onslide<+->
@@ -281,19 +364,21 @@
 	\onslide<+->
 	如果除了两个端点有可能重叠外, 其它情形不会出现重叠的点, 则称 $C$ 是\emph{简单曲线}.
 	\onslide<+->
-	如果还满足两个端点重叠, 即 $z(a)=z(b)$, 则称 $C$ 是\emph{简单闭曲线}, 也简称为\emph{闭路}.
+	\onslide<+->
+	如果还满足两个端点重叠, 即 $z(a)=z(b)$, 则称 $C$ 是\emph{简单闭曲线}或\emph{闭路}.
 
-	\onslide<2->
+	\onslide<4->
 	\begin{center}
 		\begin{tikzpicture}
-			\draw[cstaxis](-0.3,0)--(9.5,0);
-			\draw[cstaxis](0,-0.3)--(0,2.5);
-			\draw[cstcurve,dcolora,smooth] plot coordinates {(0.2,0.9) (1,1.6) (2,0.6) (3,0.9)};
-			\draw[cstcurve,dcolorb,smooth,visible on=<4->] plot coordinates {(4,0.5) (4.6,0.9) (5.3,2) (4.7,2.5) (3.7,2) (4.7,0.9) (5.7,0.5)};
-			\draw[cstcurve,dcolorc,smooth,smooth,visible on=<5->] plot coordinates {(7,1) (7.5,0.4) (8,0.2) (8.5,0.4) (9,1) (8.5,1.6) (8,1.8) (7.5,1.7) (7,1)};
-			\draw
-			(0.5,0.7) node[dcolora] {$z(a)$}
-			(3,1.2) node[dcolora] {$z(b)$};
+			\draw[cstaxis](-.3,0)--(9.5,0);
+			\draw[cstaxis](0,-.3)--(0,2.5);
+			\coordinate (A) at (.7,.9);
+			\coordinate (B) at (3.5,.9);
+			\draw[cstcurve,main,smooth] plot coordinates {(A) (1.5,1.6) (2.5,.6) (B)};
+			\fill[cstdot,second] (A) circle node[below] {$z(a)$};
+			\fill[cstdot,second] (B) circle node[above] {$z(b)$};
+			\draw[cstcurve,second,smooth,visible on=<5->] plot coordinates {(4.8,.7) (5.76,1.25) (6.31,2) (5.77,2.71) (4.77,2.45) (4.78,1.55) (6.2,.7) };
+			\draw[cstcurve,main,smooth,visible on=<6->] plot coordinates {(9.02,1.5) (8.9,1.98) (8.33,2.27) (7.69,2.18) (7.07,1.95) (6.94,1.5) (7.11,1.04) (7.68,.75) (8.34,.82) (8.93,1.08) (9.02,1.5)};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -306,15 +391,11 @@
 	分别称这两个区域是 $C$ 的\emph{内部}和\emph{外部}.
 	\onslide<+->
 	$C$ 是它们的公共边界.
-
-	\onslide<+->
-	这件事情的严格证明是十分困难的 (Veblen 1905).
-
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\fill[cstfille] (-2,-2) rectangle (1.5,1.5);
-			\filldraw[cstcurve,dcolora,smooth,cstfill] plot coordinates {(-1.5,0) (-1,-0.5) (0,-1) (0.7,-1) (0.9,0) (0,0.8) (-1,0.8) (-1.5,0)};
+			\fill[cstfille1] (-2,-1.5) rectangle (2,1.5);
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(1.18,0) (.93,.64) (.33,1.06) (-.32,1.08) (-.83,.59) (-1.15,0) (-.83,-.68) (-.36,-1) (.36,-1.08) (.83,-.69) (1.18,0)};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -322,115 +403,122 @@
 
 \begin{frame}{单连通域和多连通域}
 	\onslide<+->
-	在前面所说的几个区域的例子中, 我们在区域中画一条闭路.
+	在前面所说的几个常见区域的例子中, 我们在区域中画一条闭路.
 	\onslide<+->
 	除了圆环域之外, 闭路的内部仍然包含在这个区域内.
 
 	\onslide<+->
-		\begin{definition}
-			如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通域}.
-			否则称之为\emph{多连通域}.
+	\begin{definition}[单连通区域和多连通区域]
+		如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通区域}.
+		否则称之为\emph{多连通区域}.
 	\end{definition}
 
 	\onslide<+->
-	单连通域内的任一闭路可以连续地变形成一个点.
-	这也等价于: 设 $\ell_1,\ell_2$ 是从 $A$ 到 $B$ 的两条连续曲线, 则 $\ell_1$ 可以连续地变形为 $\ell_2$ 且保持端点不动.
 	\onslide<+->
+	\onslide<+->
+	单连通区域内的任一闭路可以``连续地变形''成一个点.
+	\onslide<+->
+	这也等价于: 设 $\ell_0,\ell_1$ 是从 $A$ 到 $B$ 的两条连续曲线, 则 $\ell_0$ 可以连续地变形为 $\ell_1$ 且保持端点不动.
+	\onslide<4->
 	\begin{center}
-		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolora,smooth,cstfill] plot coordinates {(-2.2,0) (-1.5,-0.7) (0,-1.5) (1,-1.5) (1.4,0) (0,1.2) (-1.5,1.2) (-2.2,0)};
-			\draw[cstcurve,dcolorc,smooth] plot coordinates {(-1.6,0) (-1.2,-0.5) (-0.3,-1) (0,-0.5) (-0.3,0.2) (-1.2,0.7) (-1.6,0)};
-			\filldraw[cstcurve,dcolora,smooth,fill=white] plot coordinates {(-1.4,0) (-1,-0.3) (-0.8,0) (-1,0.3) (-1.4,0)};
-			\filldraw[cstcurve,dcolora,smooth,fill=white] plot coordinates {(-0.8,-0.4) (-0.4,-0.7) (-0.2,-0.4) (-0.4,-0.1) (-0.8,-0.4)};
-			\draw[cstcurve,dcolora,smooth] plot coordinates {(-0.7,1) (-0.2,0.9) (0.1,0.7)};
-			\draw[cstcurve,dcolora](-0.4,1.2)--(0.1,0.7);
-			\fill[cstdot,dcolora] (0.7,0) circle;
-			\fill[cstdot,dcolora] (1,-0.6) circle;
+		\begin{tikzpicture}[scale=.8]
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93) (2.81,0)};
+			\filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+			\filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+			\fill[cstdot,main] (1.5,0) circle;
+			\fill[cstdot,main] (1.6,-.5) circle;
+			\draw[cstcurve,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+			\draw[cstcurve,second,smooth,visible on=<5->] plot coordinates {(1.94,-.2) (1.79,.41) (1.23,.77) (.58,.81) (.04,.35) (-.3,-.2) (.03,-.81) (.53,-1.19) (1.23,-1.08) (1.76,-.82) (1.94,-.2)};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 区域的特性}
+\begin{frame}{例题: 区域的特性}
 	\onslide<+->
 	\begin{example}
-		\enumnum1 $\Re(z^2)<1$.
-
-		\onslide<+->{设 $z=x+yi$, 则 $\Re(z^2)=x^2-y^2<1$.
-		}\onslide<+->{这是无界的单连通域.}
+		$\Re(z^2)<1$.
+		\onslide<+->{%
+			设 $z=x+yi$, 则 $\Re(z^2)=x^2-y^2<1$.
+		}\onslide<+->{%
+			这是无界的单连通域.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (-1.414,-1) rectangle (1.414,1);
+					\filldraw[cstcurve,main,domain=-45:45,smooth,fill=white] plot ({sec(\x)},{tan(\x)});
+					\filldraw[cstcurve,main,domain=-45:45,smooth,fill=white] plot ({-sec(\x)},{tan(\x)});
+					\draw[cstaxis] (-1.8,0)--(1.8,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+		}
 	\end{example}
-
-	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\fill[cstfille] (-1.414,-1) rectangle (1.414,1);
-			\filldraw[cstcurve,dcolora,domain=-45:45,smooth,fill=white] plot ({sec(\x)},{tan(\x)});
-			\filldraw[cstcurve,dcolora,domain=-45:45,smooth,fill=white] plot ({-sec(\x)},{tan(\x)});
-			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-1.5)--(0,1.5);
-		\end{tikzpicture}
-	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 区域的特性}
+\begin{frame}{例题: 区域的特性}
 	\onslide<+->
-	\begin{example}[续]
-		\enumnum2 $|\arg z|<\dfrac\pi3$ (不含原点).
-		\onslide<+->{即角状区域 $-\dfrac\pi3<\arg z<\dfrac\pi3$.
-		}\onslide<+->{这是无界的单连通域.}
+	\begin{example}
+		$\arg z\neq \pi$. 
+		\onslide<+->{%
+			即角状区域 $-\pi<\arg z<\pi$.
+		}\onslide<+->{%
+		 	这是无界的单连通区域.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (0,0) circle (1.2);
+					\draw[cstaxis] (0,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\draw[cstdash,main] (-1.5,0)--(0,0);
+				\end{tikzpicture}
+			\end{center}
+		}
 	\end{example}
-
-	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\fill[cstfille] (0,0)--(1,1.732) arc(60:-60:2)--cycle;
-			\draw[cstcurve,dcolora] (0,0)--(1.2,2.078);
-			\draw[cstcurve,dcolora] (0,0)--(1.2,-2.078);
-			\draw[cstaxis] (-0.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-2.2)--(0,2.2);
-		\end{tikzpicture}
-	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 区域的特性}
+\begin{frame}{例题: 区域的特性}
 	\onslide<+->
-	\begin{example}[续]
-		\enumnum3 $\abs{\dfrac1z}\le3$.
-		\onslide<+->{即 $|z|\ge\dfrac13$.
-		}\onslide<+->{这是无界的多连通\emph{闭区域}.}
+	\begin{example}
+		$\abs{\dfrac1z}\le3$.
+		\onslide<+->{%
+			即 $|z|\ge\dfrac13$.
+		}\onslide<+->{%
+			这是无界的多连通\alert{闭区域}.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (-1.2,-1.2) rectangle (1.2,1.2);
+					\filldraw[cstcurve,main,fill=white] (0,0) circle (.5);
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+		}
 	\end{example}
-
-	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\fill[cstfille1] (-1.6,-1.6) rectangle (1.6,1.6);
-			\filldraw[cstcurve,dcolora,fill=white] (0,0) circle (0.5);
-			\draw[cstaxis] (-2,0)--(2,0);
-			\draw[cstaxis] (0,-2)--(0,2);
-		\end{tikzpicture}
-	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 区域的特性}
+\begin{frame}{例题: 区域的特性}
 	\onslide<+->
-	\begin{example}[续]
-		\enumnum4 $|z+1|+|z-1|<4$.
-
-		\onslide<+->{表示一个椭圆的内部.
-		}\onslide<+->{这是有界的单连通域.}
+	\begin{example}
+		$|z+1|+|z-1|<4$.
+		\onslide<+->{%
+			表示一个椭圆的内部.
+		}\onslide<+->{%
+			这是有界的单连通域.
+		}\onslide<+->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\filldraw[cstdash,main,cstfill1] (0,0) circle (1 and {0.5*sqrt(3)});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+			}
 	\end{example}
-
-	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1 and {0.5*sqrt(3)});
-			\draw[cstaxis] (-1.5,0)--(1.5,0);
-			\draw[cstaxis] (0,-1.1)--(0,1.1);
-		\end{tikzpicture}
-	\end{center}
 
 	\onslide<+->
 	\begin{thinking}

@@ -58,17 +58,17 @@
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolora,smooth,cstfill] plot coordinates {(-2.25,0) (-1.5,-0.75) (0,-1.5) (1.05,-1.5) (1.35,0) (0,1.2) (-1.5,1.2) (-2.25,0)};
-			\draw[cstdash,dcolorc,visible on=<2->] (0,0) circle (1);
-			\draw[cstcurve,dcolorb,visible on=<3->] (0,0) circle (0.8);
-			\fill[cstdot,dcolora] (0,0) circle;
-			\fill[cstdot,dcolorc,visible on=<2->] (0.4,0.4) circle;
+			\filldraw[cstcurve,main,smooth,cstfill] plot coordinates {(-2.25,0) (-1.5,-0.75) (0,-1.5) (1.05,-1.5) (1.35,0) (0,1.2) (-1.5,1.2) (-2.25,0)};
+			\draw[cstdash,third,visible on=<2->] (0,0) circle (1);
+			\draw[cstcurve,second,visible on=<3->] (0,0) circle (0.8);
+			\fill[cstdot,main] (0,0) circle;
+			\fill[cstdot,third,visible on=<2->] (0.4,0.4) circle;
 			\fill[cstdot,visible on=<3->] (0.6,-0.5) circle;
-			\draw[cstcurve,cstarrowto,dcolora,visible on=<3->] (0,0)--(-0.48,-0.64);
+			\draw[cstcurve,cstra,main,visible on=<3->] (0,0)--(-0.48,-0.64);
 			\draw
-				(-0.25,0) node[dcolora] {$z_0$}
-				(0.2,0.4) node[dcolorc,visible on=<2->] {$z$}
-				(0,-0.5) node[dcolora,visible on=<3->] {$r$}
+				(-0.25,0) node[main] {$z_0$}
+				(0.2,0.4) node[third,visible on=<2->] {$z$}
+				(0,-0.5) node[main,visible on=<3->] {$r$}
 				(0.4,-0.3) node[visible on=<3->] {$\zeta$};
 		\end{tikzpicture}
 	\end{center}
@@ -255,7 +255,7 @@
 
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}{另解}
 		由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 		\onslide<+->{由于
 			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
@@ -267,7 +267,7 @@
 			\]
 		}
 		\vspace{-\baselineskip}
-	\end{proofblock}
+	\end{solution}
 	\onslide<+->
 	一般地, 我们有
 	\[\frac1{(1-\lambda z)^k}=\sum_{n=0}^\infty(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|<\frac1{|\lambda|}.\]

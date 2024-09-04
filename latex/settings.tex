@@ -1,4 +1,16 @@
-\usetheme{bamboo}
+\definecolor{main}{RGB}{0,0,224}%
+\definecolor{second}{RGB}{224,0,0}%
+\definecolor{third}{RGB}{112,0,112}%
+% \definecolor{fourth}{RGB}{196,128,0}%
+\definecolor{fourth}{RGB}{0,128,0}%
+\definecolor{fifth}{RGB}{255,128,0}%
+
+% \definecolor{main}{RGB}{73,119,213}%
+% \definecolor{second}{RGB}{220,60,105}%
+% \definecolor{third}{RGB}{122,89,166}%
+% \definecolor{fourth}{RGB}{229,143,52}%
+% \definecolor{fifth}{RGB}{244,220,10}%
+
 % \setbeamertemplate{footline}[simple]
 \usepackage{bm}
 \usepackage{extarrows}
@@ -9,34 +21,54 @@
 \usepackage{color,calc}
 \usepackage{caption}
 \usepackage{subcaption}
-\input{symbols}
-\usebeamercolor{structure}
-\colorlet{heavyb}{structure.fg!80}
-\colorlet{lightb}{structure.fg!15}
-\usebeamercolor{example text}
-\colorlet{heavyg}{example text.fg!80}
-\colorlet{lightg}{example text.fg!15}
-\usebeamercolor{alerted text}
-\colorlet{heavyr}{alerted text.fg!80}
-\colorlet{lightr}{alerted text.fg!20}
+\usepackage{booktabs}
 % 表格色
-\newcommand\defaultrowcolors{\rowcolors{1}{lightb}{lightb}}
-\newcommand\tht{\cellcolor{heavyb}\color{white}}
+\newcommand\defaultrowcolors{\rowcolors{1}{main!15}{main!15}}
+\newcommand\tht{\cellcolor{main}\color{white}}
 % 文本色
-\usebeamercolor{structure}
 \renewcommand\emph[1]{{\color{main}{#1}}}
+\ifcsundef{alert}{  
+  \newcommand{\alert}[1]{\textcolor{second}{\bf #1}}
+}{}
 \newcommand\abox[1]{\colorbox{yellow}{\alert{#1}}}
 \newcommand\aboxeq[1]{\abox{$\displaystyle #1$}}
 % 非考试内容
 \newcommand{\noexer}{\hfill\mdseries\itshape\color{black}\small 非考试内容}
 % 枚举数字引用标志
-\newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
+\newcommand\enumnum[1]{{\mdseries\upshape\textcolor{main}{(#1)}}}
 % 缩进
 \renewcommand{\indent}{\hspace*{1em}}
 \setlength{\parindent}{1em}
 \newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
 \NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}} % 减少列表公式后的多余空白
 \newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1} % 减少公式垂直间距, 配合\endgroup
+
+
+\RequirePackage{enumerate}
+\RequirePackage[shortlabels,inline]{enumitem}
+\RequirePackage{tasks}
+\newcommand*{\eitemi}{\tikz \draw [baseline, ball color=main,draw=none] circle (2pt);}
+\newcommand*{\eitemii}{\tikz \draw [baseline, fill=main,draw=none,circular drop shadow] circle (2pt);}
+\newcommand*{\eitemiii}{\tikz \draw [baseline, fill=main,draw=none] circle (2pt);}
+\setlist[itemize,1]{label={\eitemi}}
+\setlist[itemize,2]{label={\eitemii}}
+\setlist[itemize,3]{label={\eitemiii}}
+\setlist[enumerate]{format=\upshape\textcolor{main}}
+\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,2]{label=\color{main}(\alph*).}
+\setlist[enumerate,3]{label=\color{main}\Roman*.}
+\setlist[enumerate,4]{label=\color{main}\Alph*.}
+\newlist{homeworklist}{enumerate}{1}
+\setlist[homeworklist,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
+\newlist{exlist}{enumerate}{3}
+\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
+\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
+\setlist[exlist,3]{label=\color{main}{(\roman*)}}
+\settasks{label-format=\textcolor{main},label={(\arabic*)},label-width=1.5em}
+\setlist{nolistsep}
+\NewTasksEnvironment[label={(\Alph*)},label-width=1.5em]{taskschoice}[()]
+\NewTasksEnvironment[label={\arabic*.},label-width=1.5em]{tasksans}[()]
+
 % 选择题, 根据选项内容长度自动排版
 \newlength{\ltemp}\newlength{\lxxmax}\newlength{\lquar}\newlength{\lhalf}\newlength{\lfull}
 \newcounter{lxxtype}
@@ -83,12 +115,6 @@
 			\makebox[\lquar][l]{(D)~#5}%
 	\fi%
 }
-\usepackage[normalem]{ulem}
-\NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
-\newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
-\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
-\newcommand{\trueex}{$\checkmark$}
-\newcommand{\falseex}{$\times$}
 % TIKZ 设置
 \usetikzlibrary{
 	quotes,
@@ -141,12 +167,3 @@
 	cstnode4/.style       ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnode5/.style       ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt}
 }
-% 标题
-\author{张神星}
-\institute{合肥工业大学}
-\email{zhangshenxing@hfut.edu.cn}
-\website{https://zhangshenxing.github.io}
-\office{翡翠科教楼B1810东}
-\titlegraphic{../image/hfut.png}
-\institutegraphic{../image/hfutname.png}
-\setbeamersize{text margin left=2em,text margin right=2em}

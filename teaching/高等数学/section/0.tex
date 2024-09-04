@@ -37,12 +37,12 @@
 			level 1/.append style={level distance=3.5cm,font=\small},
 			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
 			\node [root concept] {函数和极限} % root
-			child [grow=180, concept color=dcolora] { node {函数}
+			child [grow=180, concept color=main] { node {函数}
 				child[grow=-130] { node {定义域和值域} }
 				child[grow=-90] { node {有界、单调、奇偶、周期} }
 				child[grow=-50] { node {初等函数} }
 			}
-			child [grow=-90, level distance=3cm, concept color=dcolorb] { node {极限}
+			child [grow=-90, level distance=3cm, concept color=second] { node {极限}
 				child[grow=-165,level distance=4.5cm] { node {7种极限的定义} }
 				child[grow=-145,level distance=3.3cm] { node {极限的性质} }
 				child[grow=-113] { node {极限的代数复合运算} }
@@ -50,7 +50,7 @@
 				child[grow=-35,level distance=3.3cm] { node {单调有界收敛准则} }
 				child[grow=-15,level distance=4.5cm] { node {夹逼准则} }
 			}
-			child [grow=0, concept color=dcolorc] { node {连续}
+			child [grow=0, concept color=third] { node {连续}
 				child[grow=-130] { node {分段函数连续性} }
 				child[grow=-90] { node {间断点} }
 				child[grow=-50] { node {最值、介值、零点定理} }
@@ -71,14 +71,14 @@
 			level 1/.append style={level distance=3.5cm,font=\small},
 			level 2/.append style={level distance=2.7cm,sibling angle=45,font=\scriptsize}]
 			\node [root concept] {导数及应用} % root
-			child [grow=225, concept color=dcolord] { node {导数}
+			child [grow=225, concept color=fourth] { node {导数}
 				child[grow=120] { node {运算法则} }
 				child[grow=160] { node {隐函数导数} }
 				child[grow=200] { node {参变量函数导数} }
 				child[grow=240] { node {高阶导数} }
 				child[grow=280] { node {微分} }
 			}
-			child [grow=-45, concept color=dcolore] { node {一元函数微分学}
+			child [grow=-45, concept color=fifth] { node {一元函数微分学}
 				child[grow=80] { node {中值定理} }
 				child[grow=40] { node {洛必达法则} }
 				child[grow=0] { node {泰勒展开} }
@@ -93,14 +93,14 @@
 \begin{frame}{课程学习方法}
 	\begin{center}
 		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnodeg,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
-			\node[cstnodeg,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
-			\node[cstnodeg,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnodeg,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
-			\draw[cstnarrow,dcolorc] (1.east) to[bend left] (2.north);
-			\draw[cstnarrow,dcolorc] (2.south) to[bend left] (3.east);
-			\draw[cstnarrow,dcolorc] (3.west) to[bend left] (4.south);
-			\draw[cstnarrow,dcolorc] (4.north) to[bend left] (1.west);
+			\node[cstnode2,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
+			\node[cstnode2,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
+			\node[cstnode2,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnode2,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
+			\draw[cstnarrow,third] (1.east) to[bend left] (2.north);
+			\draw[cstnarrow,third] (2.south) to[bend left] (3.east);
+			\draw[cstnarrow,third] (3.west) to[bend left] (4.south);
+			\draw[cstnarrow,third] (4.north) to[bend left] (1.west);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

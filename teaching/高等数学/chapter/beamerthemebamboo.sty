@@ -373,62 +373,62 @@
 \newenvironment{quote*}[1]{\begin{tcolorbox}[exampstyle,title=#1,fontupper=\itshape,fontlower=\itshape,halign lower=flush right,lower separated=true,indent]}{\end{tcolorbox}}
 \newenvironment{quote@*}{\begin{tcolorbox}[exampstyle,notitle,fontupper=\itshape,fontlower=\itshape,halign lower=flush right,lower separated=true,indent]}{\end{tcolorbox}}
 % theorems
-\renewenvironment{block}[1]{\begin{tcolorbox}[blockstyle,title=#1]}{\end{tcolorbox}}
-\newenvironment{block@}{\begin{tcolorbox}[blockstyle,notitle]}{\end{tcolorbox}}
-\newenvironment{block*}[1]{\begin{tcolorbox}[blockstyle,title=#1,indent]}{\end{tcolorbox}}
-\newenvironment{block@*}{\begin{tcolorbox}[blockstyle,notitle,indent]}{\end{tcolorbox}}
+\renewenvironment{main}[1]{\begin{tcolorbox}[blockstyle,title=#1]}{\end{tcolorbox}}
+\newenvironment{main@}{\begin{tcolorbox}[blockstyle,notitle]}{\end{tcolorbox}}
+\newenvironment{main*}[1]{\begin{tcolorbox}[blockstyle,title=#1,indent]}{\end{tcolorbox}}
+\newenvironment{main@*}{\begin{tcolorbox}[blockstyle,notitle,indent]}{\end{tcolorbox}}
 
-\RenewDocumentEnvironment{theorem}{o}{\begin{block}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
-\NewDocumentEnvironment{theorem*}{o}{\begin{block*}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+\RenewDocumentEnvironment{theorem}{o}{\begin{main}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
+\NewDocumentEnvironment{theorem*}{o}{\begin{main*}{\translate{Theorem}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main*}}
 
-\RenewDocumentEnvironment{corollary}{o}{\begin{block}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
-\NewDocumentEnvironment{corollary*}{o}{\begin{block*}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+\RenewDocumentEnvironment{corollary}{o}{\begin{main}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
+\NewDocumentEnvironment{corollary*}{o}{\begin{main*}{\translate{Corollary}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main*}}
 
-\RenewDocumentEnvironment{lemma}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
-\NewDocumentEnvironment{lemma*}{o}{\begin{block}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+\RenewDocumentEnvironment{lemma}{o}{\begin{main}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
+\NewDocumentEnvironment{lemma*}{o}{\begin{main}{\translate{Lemma}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main*}}
 
-\RenewDocumentEnvironment{fact}{o}{\begin{block}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
-\NewDocumentEnvironment{fact*}{o}{\begin{block*}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
+\RenewDocumentEnvironment{fact}{o}{\begin{main}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
+\NewDocumentEnvironment{fact*}{o}{\begin{main*}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main*}}
 % proofs
-\newenvironment{proofblock}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{proofblock@}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{proofblock*}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
-\newenvironment{proofblock@*}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{solution}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{solution@}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{solution*}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{solution@*}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
 
-\RenewDocumentEnvironment{solution}{o}{\begin{proofblock}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{solution*}{o}{\begin{proofblock*}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\RenewDocumentEnvironment{solution}{o}{\begin{solution}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{solution*}{o}{\begin{solution*}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{solutionc}{o}{\begin{proofblock}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{solutionc*}{o}{\begin{proofblock*}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{solutionc}{o}{\begin{solution}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{solutionc*}{o}{\begin{solution*}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{proofblock}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock}}
-\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{proofblock*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock*}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{solution}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution}}
+\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{solution*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution*}}
 
-\NewDocumentEnvironment{proofs}{o}{\begin{proofblock}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{proofs*}{o}{\begin{proofblock*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{proofs}{o}{\begin{solution}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{proofs*}{o}{\begin{solution*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{proofc}{o}{\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{proofc*}{o}{\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{proofc}{o}{\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{proofc*}{o}{\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock}}
-\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{proofblock*}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock*}}
+\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution}}
+\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{solution*}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution*}}
 
-\NewDocumentEnvironment{analysis}{o}{\begin{proofblock}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{analysis*}{o}{\begin{proofblock*}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{analysis}{o}{\begin{solution}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{analysis*}{o}{\begin{solution*}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{answer}{o}{\begin{proofblock}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{answer*}{o}{\begin{proofblock*}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{answer}{o}{\begin{solution}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{answer*}{o}{\begin{solution*}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 % definitions
-\newenvironment{defblock}[1]{\begin{tcolorbox}[defstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{defblock@}{\begin{tcolorbox}[defstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{defblock*}[1]{\begin{tcolorbox}[defstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
-\newenvironment{defblock@*}{\begin{tcolorbox}[defstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{third}[1]{\begin{tcolorbox}[defstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{third@}{\begin{tcolorbox}[defstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{third*}[1]{\begin{tcolorbox}[defstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{third@*}{\begin{tcolorbox}[defstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
 
-\RenewDocumentEnvironment{definition}{o}{\begin{defblock}{\translate{Definition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{defblock}}
-\NewDocumentEnvironment{definition*}{o}{\begin{defblock*}{\translate{Definition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{defblock*}}
+\RenewDocumentEnvironment{definition}{o}{\begin{third}{\translate{Definition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{third}}
+\NewDocumentEnvironment{definition*}{o}{\begin{third*}{\translate{Definition}\IfNoValueTF{#1}{}{~(#1)}}}{\end{third*}}
 
-\RenewDocumentEnvironment{definitions}{o}{\begin{defblock}{\translate{Definitions}\IfNoValueTF{#1}{}{~(#1)}}}{\end{defblock}}
-\NewDocumentEnvironment{definitions*}{o}{\begin{defblock*}{\translate{Definitions}\IfNoValueTF{#1}{}{~(#1)}}}{\end{defblock*}}
+\RenewDocumentEnvironment{definitions}{o}{\begin{third}{\translate{Definitions}\IfNoValueTF{#1}{}{~(#1)}}}{\end{third}}
+\NewDocumentEnvironment{definitions*}{o}{\begin{third*}{\translate{Definitions}\IfNoValueTF{#1}{}{~(#1)}}}{\end{third*}}
 % examples
 \renewenvironment{exampleblock}[1]{\begin{tcolorbox}[exampstyle,title=#1]}{\end{tcolorbox}}
 \newenvironment{exampleblock@}{\begin{tcolorbox}[exampstyle,notitle]}{\end{tcolorbox}}
@@ -450,10 +450,10 @@
 \NewDocumentEnvironment{remark}{o}{\begin{exampleblock}{\translate{Remark}\IfNoValueTF{#1}{}{~(#1)}}}{\end{exampleblock}}
 \NewDocumentEnvironment{remark*}{o}{\begin{exampleblock*}{\translate{Remark}\IfNoValueTF{#1}{}{~(#1)}}}{\end{exampleblock*}}
 % alert
-\renewenvironment{alertblock}[1]{\begin{tcolorbox}[alertstyle,title=#1]\usebeamercolor{alerted text}}{\end{tcolorbox}}
-\newenvironment{alertblock@}{\begin{tcolorbox}[alertstyle,notitle]\usebeamercolor{alerted text}}{\end{tcolorbox}}
-\newenvironment{alertblock*}[1]{\begin{tcolorbox}[alertstyle,title=#1,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
-\newenvironment{alertblock@*}{\begin{tcolorbox}[alertstyle,notitle,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\renewenvironment{second}[1]{\begin{tcolorbox}[alertstyle,title=#1]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{second@}{\begin{tcolorbox}[alertstyle,notitle]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{second*}[1]{\begin{tcolorbox}[alertstyle,title=#1,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
+\newenvironment{second@*}{\begin{tcolorbox}[alertstyle,notitle,indent]\usebeamercolor{alerted text}}{\end{tcolorbox}}
 
 % Math Font
 \usefonttheme[onlymath]{serif}

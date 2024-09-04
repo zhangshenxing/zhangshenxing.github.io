@@ -206,10 +206,10 @@
 	\item 如果 $\ord(f,z_0)=-m<0$, 则 $z_0$ 是 $m$ 阶极点.
 \end{enumerate}
 
-\begin{alertblock}{可去奇点和极点判定方法}
+\begin{second}{可去奇点和极点判定方法}
 	如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
 	\[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
-\end{alertblock}
+\end{second}
 
 \begin{proof}
 		设 $f_0(z)$ 为幂级数 $(z-z_0)^{-m}f(z)$ 的和函数, $g_0(z)$ 为幂级数 $(z-z_0)^{-n}g(z)$ 的和函数,
@@ -398,10 +398,10 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 可以看出, 知道留数之后可以用来计算积分.
 
-\begin{block}{留数定理}
+\begin{main}{留数定理}
 	若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 则
 	\[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
-\end{block}
+\end{main}
 
 \begin{proof}
 	\begin{center}
@@ -459,15 +459,15 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 设 $z_0$ 为 $f(z)$ 的极点.
 
-\begin{alertblock}{极点留数计算公式 I}
+\begin{second}{极点留数计算公式 I}
 	如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
 	\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].\]
-\end{alertblock}
+\end{second}
 
-\begin{alertblock}{极点留数计算公式 II}
+\begin{second}{极点留数计算公式 II}
 	如果 $z_0$ 是一阶极点或可去奇点, 那么
 	\[\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z).\]
-\end{alertblock}
+\end{second}
 
 \begin{proof}
 	设
@@ -520,10 +520,10 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 		求 $\Res\left[\dfrac{e^z-1}{z^5},0\right]=$\fillblank[2cm][2mm]{{$\dfrac1{24}$}}.
 \end{exercise}
 
-\begin{alertblock}{极点留数计算公式 III}
+\begin{second}{极点留数计算公式 III}
 	设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的一阶零点, 则
 	\[\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.\]
-\end{alertblock}
+\end{second}
 
 \begin{proof}
 		不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的一阶极点或可去奇点.

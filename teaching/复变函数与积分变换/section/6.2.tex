@@ -21,22 +21,22 @@
 
 \begin{frame}{拉普拉斯变换存在定理}
 	\onslide<+->
-	\begin{block}{拉普拉斯变换存在定理}
+	\begin{main}{拉普拉斯变换存在定理}
 			若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足
 			\begin{itemize}
 				\item $f(t)$ 在任一有限区间上至多只有有限多间断点;
 				\item 存在 $M,c$ 使得 $|f(t)|\le Me^{ct}$,
 			\end{itemize}\onslide<+->{则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
 		}
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[node distance=118pt]
-			\node[cstnodeg,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
-			\node[cstnodeg,align=center, right=of a](b){象函数\\\alert{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
-			\draw[cstnarrow, dcolora] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
-			\draw[cstnarrow, dcolorc] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
+			\node[cstnode2,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
+			\node[cstnode2,align=center, right=of a](b){象函数\\\alert{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
+			\draw[cstnarrow, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
+			\draw[cstnarrow, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
 		\end{tikzpicture}
 	\end{center}
 
@@ -47,7 +47,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求拉普拉斯变换}
+\begin{frame}{例题: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[e^{kt}]$.
@@ -67,7 +67,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求拉普拉斯变换}
+\begin{frame}{例题: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[t^m]$, 其中 $m$ 是正整数.
@@ -95,7 +95,7 @@
 	和傅里叶变换类似, 拉普拉斯变换也有着各种性质. 我们不加证明地列出它们.
 
 	\onslide<+->
-	\begin{block}{拉普拉斯变换的性质}
+	\begin{main}{拉普拉斯变换的性质}
 		\begin{itemize}
 			\item (线性性质) $\msl[\alpha f+\beta g]=\alpha F+\beta G, \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g$.
 			\item (积分性质) $\displaystyle\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s)$.
@@ -103,16 +103,16 @@
 			\item (延迟性质) $\msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0$.
 			\item (位移性质) $\msl[e^{s_0t}f(t)]=F(s-s_0)$.
 		\end{itemize}
-	\end{block}
+	\end{main}
 \end{frame}
 
 
 \begin{frame}{拉普拉斯变换的性质}
 	\onslide<+->
-	\begin{alertblock}{微分性质}
+	\begin{second}{微分性质}
 		\[\msl[f'(t)]=sF(s)-f(0),\]
 		\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0).\]
-	\end{alertblock}
+	\end{second}
 
 	\onslide<+->
 	从拉普拉斯变换的微分性质可以看出, 拉普拉斯变换可以将微分方程转化为代数方程, 从而可用于解微分方程.
@@ -141,7 +141,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求拉普拉斯变换}
+\begin{frame}{例题: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[t^me^{kt}]$, 其中 $m$ 是正整数.
@@ -157,12 +157,12 @@
 
 \begin{frame}{常见拉普拉斯变换汇总}
 	\onslide<+->
-	\begin{alertblock}{常见拉普拉斯变换汇总}
+	\begin{second}{常见拉普拉斯变换汇总}
 		\[\msl[1]=\frac1s,\quad \msl[e^{kt}]=\frac1{s-k},\]
 		\[\msl[t^m]=\frac{m!}{s^{m+1}},\quad \msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}},\]
 		\[\msl[\sin kt]=\frac{k}{s^2+k^2},\quad
 		\msl[\cos kt]=\frac{s}{s^2+k^2}.\]
-	\end{alertblock}
+	\end{second}
 \end{frame}
 
 
@@ -171,17 +171,17 @@
 \begin{frame}{拉普拉斯逆变换}
 	\onslide<+->
 	拉普拉斯逆变换可以由如下定理给出
-	\begin{block}{拉普拉斯逆变换定理}
+	\begin{main}{拉普拉斯逆变换定理}
 		设 $F(s)$ 的所有奇点为 $s_1,\dots,s_k$, 且 $\lim\limits_{z\to\infty}F(z)=0$, 则
 		\[\msl^{-1}[F(s)]=\sum_{k=1}^n \Res\left[F(s)e^{st},s_k\right].\]
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	不过我们只要求掌握如何利用常见函数的拉普拉斯变换来计算逆变换.
 \end{frame}
 
 
-\begin{frame}{例: 求拉普拉斯逆变换}
+\begin{frame}{例题: 求拉普拉斯逆变换}
 	\onslide<+->
 	\begin{example}
 		求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
@@ -198,9 +198,9 @@
 \end{frame}
 
 
-\begin{frame}{例: 求拉普拉斯逆变换}
+\begin{frame}{例题: 求拉普拉斯逆变换}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}{另解}
 			设
 			$\displaystyle F(s)=\frac as+\frac b{s-1}+\frac c{(s-1)^2}$,
 		\onslide<+->{则
@@ -212,7 +212,7 @@
 		}\onslide<+->{故
 			$\displaystyle\msl^{-1}[F(s)]=\msl^{-1}\left[\frac1s-\frac1{s-1}+\frac1{(s-1)^2}\right]=1+(t-1)e^t$.
 		}
-	\end{proofblock}
+	\end{solution}
 \end{frame}
 
 
@@ -228,9 +228,9 @@
 	且我们有如下的卷积定理.
 
 	\onslide<+->
-	\begin{block}{卷积定理}
+	\begin{main}{卷积定理}
 		\[\msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).\]
-	\end{block}
+	\end{main}
 \end{frame}
 
 
@@ -239,20 +239,20 @@
 \begin{frame}{使用拉普拉斯变换解微积分方程}
 	\begin{center}
 		\begin{tikzpicture}[node distance=40pt]
-			\node[cstnodeg] (a){微分方程或积分方程};
-			\node[cstnodeb,right=110pt of a] (b){象函数的代数方程};
-			\node[cstnodeg,below=of a] (c){原象函数(方程的解)};
-			\node[cstnodeb,below=of b] (d){象函数};
-			\draw[cstnarrow,dcolorb] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
-			\draw[cstnarrow,dcolorb] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
-			\draw[cstnarrow,dcolorb] (b)--(d);
-			\draw[cstnarrow,dcolorc] (a)--(c);
+			\node[cstnode2] (a){微分方程或积分方程};
+			\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
+			\node[cstnode2,below=of a] (c){原象函数(方程的解)};
+			\node[cstnode1,below=of b] (d){象函数};
+			\draw[cstnarrow,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
+			\draw[cstnarrow,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
+			\draw[cstnarrow,second] (b)--(d);
+			\draw[cstnarrow,third] (a)--(c);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 使用拉普拉斯变换解微分方程}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
 	\onslide<+->
 	\begin{example}
 		(2022年A卷) 解微分方程
@@ -278,7 +278,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 使用拉普拉斯变换解微分方程}
+\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
 	\onslide<+->
 	\begin{example}
 		解微分方程 $y''(t)-y(t)=0$.

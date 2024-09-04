@@ -13,18 +13,18 @@
 			\draw
 				(-0.2,0) node {$O$}
 				(2.3,0.2) node {$x$};
-			\begin{scope}[dcolora,visible on=<4->]
+			\begin{scope}[main,visible on=<4->]
 				\draw (1.8,1.2) node {$M$};
 				\fill[cstdot] (1.5,1) circle;
 			\end{scope}
-			\begin{scope}[dcolora,visible on=<5->]
+			\begin{scope}[main,visible on=<5->]
 				\coordinate (A) at (2,0);
 				\coordinate (B) at (0,0);
 				\coordinate (C) at (1.5,1);
 				\draw[thick] (B)--(C);
 				\draw (0.8,0.7) node {$r$};
 			\end{scope}
-			\draw[dcolora,thick,visible on=<6->] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw[main,thick,visible on=<6->] pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
 		\end{tikzpicture}\end{tikzpicture}
 
 		\vspace{-22mm}
@@ -61,11 +61,11 @@
 
 \begin{frame}{极坐标和直角坐标的转换}
 	\onslide<+->
-	\begin{alertblock}{极坐标系和直角坐标系的转换关系}
+	\begin{second}{极坐标系和直角坐标系的转换关系}
 		\[x=r\cos\theta,\qquad y=r\sin\theta,\]
 		\[r=\sqrt{x^2+y^2},\]
 		\[\theta=\arctan\frac yx (\text{第一四象限})\ \text{或}\ \arctan\frac yx+\pi (\text{第二三象限}).\]
-	\end{alertblock}
+	\end{second}
 	\begin{center}
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-0.5,0)--(3,0);
@@ -74,20 +74,20 @@
 				(-0.2,-0.2) node {$O$}
 				( 2.8,-0.2) node {$x$}
 				(-0.2, 1.8) node {$y$}
-				( 2.3, 1.7) node[dcolora] {$M$}
-				( 1.0, 0.9) node[dcolora] {$r$}
-				( 1.0,-0.3) node[dcolorb] {$x$}
-				(-0.3,0.75) node[dcolorb] {$y$};
+				( 2.3, 1.7) node[main] {$M$}
+				( 1.0, 0.9) node[main] {$r$}
+				( 1.0,-0.3) node[second] {$x$}
+				(-0.3,0.75) node[second] {$y$};
 			\coordinate (A) at (2,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (2,1.5);
-			\draw[thick,dcolora] (B)--(C) pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
-			\draw[cstdash,dcolore] (2,0)--(2,1.5)--(0,1.5);
-			\begin{scope}[thick,decoration={brace,amplitude=5},dcolorb]
+			\draw[thick,main] (B)--(C) pic [draw,->, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw[cstdash,fifth] (2,0)--(2,1.5)--(0,1.5);
+			\begin{scope}[thick,decoration={brace,amplitude=5},second]
 				\draw[decorate] (2,0)--(0,0);
 				\draw[decorate] (0,0)--(0,1.5);
 			\end{scope}
-			\fill[cstdot,dcolora] (2,1.5) circle;
+			\fill[cstdot,main] (2,1.5) circle;
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -130,14 +130,14 @@
 			\draw
 				(-0.2,0) node {$O$}
 				(1.8,0.2) node {$x$}
-				(1.7,0.9) node[dcolorb] {$M(r,\theta)$}
-				(0.5,0.6) node[dcolorc] {$R$};
-			\draw[cstcurve,dcolora] (0,0) circle (1.3);
+				(1.7,0.9) node[second] {$M(r,\theta)$}
+				(0.5,0.6) node[third] {$R$};
+			\draw[cstcurve,main] (0,0) circle (1.3);
 			\coordinate (A) at (2,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (1.1,0.7);
-			\draw[thick,dcolorc] (B)--(C) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
-			\fill[cstdot,dcolorb] (C) circle;
+			\draw[thick,third] (B)--(C) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+			\fill[cstdot,second] (C) circle;
 		\end{tikzpicture}\end{tikzpicture}
 		
 		\vspace{-22mm}
@@ -146,10 +146,10 @@
 		\vspace{8mm}
 	\end{solution}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}{另解}
 		圆的直角坐标方程为 $x^2+y^2=R^2$.
 		\onslide<+->{这等价于 $r=\sqrt{x^2+y^2}=R$. 此即该圆的极坐标方程.}
-	\end{proofblock}
+	\end{solution}
 \end{frame}
 
 
@@ -167,18 +167,18 @@
 				( 3.2,0) node {$x$}
 				(0.95,-0.25) node {$A$}
 				( 2.2,-0.2) node {$B$}
-				( 2.4, 0.8) node[dcolorb] {$M(r,\theta)$}
-				( 0.7, 0.5)[dcolorc] node {$r$};
+				( 2.4, 0.8) node[second] {$M(r,\theta)$}
+				( 0.7, 0.5)[third] node {$r$};
 			\coordinate (A) at (1,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (1.6,0.8);
-			\draw[cstcurve,dcolora] (A) circle (1);
+			\draw[cstcurve,main] (A) circle (1);
 			\begin{scope}[cstdot]
 				\fill (A) circle;
 				\fill (2,0) circle;
-				\fill[dcolorb] (C) circle;
+				\fill[second] (C) circle;
 			\end{scope}
-			\draw[thick,dcolorc] (B)--(C)--(2,0) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
+			\draw[thick,third] (B)--(C)--(2,0) pic [draw, "$\theta$",angle eccentricity=1.5] {angle};
 			\draw (1.44,0.72)--(1.52,0.56)--(1.68,0.64);
 		\end{tikzpicture}\end{tikzpicture}
 		
@@ -189,12 +189,12 @@
 		\vspace{3mm}
 	\end{solution}
 	\onslide<+->
-	\begin{proofblock}{另解}
+	\begin{solution}{另解}
 		圆的直角坐标方程为 $(x-R)^2+y^2=R^2$.
 		\onslide<+->{这等价于
 			\[r^2=x^2+y^2=2Rx=2Rr\cos\theta,\]
 		}\onslide<+->{从而该圆的极坐标方程为 $r=2R\cos\theta$.}
-	\end{proofblock}
+	\end{solution}
 \end{frame}
 
 
@@ -205,28 +205,28 @@
 	\begin{center}
 		\begin{tikzpicture}[framed]
 			\begin{scope}
-				\draw (0,-1.6) node[dcolora,align=center] {{\small 阿基米德螺旋线} $r=a\theta$};
+				\draw (0,-1.6) node[main,align=center] {{\small 阿基米德螺旋线} $r=a\theta$};
 				\draw[cstaxis] (0,0)--(1.5,0);
-				\draw[cstcurve,dcolora,smooth,domain=0:13] plot ({0.12*\x*cos (45*\x)},{0.12*\x*sin (45*\x)});
+				\draw[cstcurve,main,smooth,domain=0:13] plot ({0.12*\x*cos (45*\x)},{0.12*\x*sin (45*\x)});
 			\end{scope}
 			\begin{scope}[xshift=40mm,visible on=<3->]
-				\draw (1,-1.6) node[dcolorb,align=center] {{\small 心形线} $r=a(1-\cos\theta)$};
+				\draw (1,-1.6) node[second,align=center] {{\small 心形线} $r=a(1-\cos\theta)$};
 				\draw[cstaxis] (0,0)--(2.5,0);
-				\draw[cstcurve,dcolorb,smooth,domain=0:360] plot ({(1+cos (\x))*cos (\x)},{(1+cos (\x))*sin (\x)});
+				\draw[cstcurve,second,smooth,domain=0:360] plot ({(1+cos (\x))*cos (\x)},{(1+cos (\x))*sin (\x)});
 			\end{scope}
 			\begin{scope}[yshift=-35mm,visible on=<4->]
-				\draw (0.2,-1.6) node[dcolorc,align=center] {{\small 双纽线} $r^2=a^2\cos(2\theta)$};
+				\draw (0.2,-1.6) node[third,align=center] {{\small 双纽线} $r^2=a^2\cos(2\theta)$};
 				\draw[cstaxis] (0,0)--(2,0);
-				\begin{scope}[cstcurve,dcolorc,smooth]
+				\begin{scope}[cstcurve,third,smooth]
 					\draw[domain=-45:45] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
 					\draw[domain=135:225] plot ({sqrt (cos (2*\x))*cos (\x)*1.5},{sqrt (cos (2*\x))*sin (\x)*1.5});
 				\end{scope}
 			\end{scope}
-			\draw (5.2,-5.2) node[dcolord,align=center,visible on=<5->] {{\small $n$ 纽线} $r^2=a^2\cos(n\theta)$};
+			\draw (5.2,-5.2) node[fourth,align=center,visible on=<5->] {{\small $n$ 纽线} $r^2=a^2\cos(n\theta)$};
 			\begin{scope}[xshift=50mm,yshift=-35mm,visible on=<6->]
 				\draw[cstaxis] (0,0)--(2,0);
-				\draw (1.5,1) node[dcolord] {$n=5$};
-				\begin{scope}[cstcurve,dcolord,smooth]
+				\draw (1.5,1) node[fourth] {$n=5$};
+				\begin{scope}[cstcurve,fourth,smooth]
 					\draw[domain=-18:18] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
 					\draw[domain=54:90] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});
 					\draw[domain=126:162] plot ({sqrt (cos (5*\x))*cos (\x)*1.5},{sqrt (cos (5*\x))*sin (\x)*1.5});

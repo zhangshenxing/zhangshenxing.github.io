@@ -19,13 +19,13 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis](0,-1)--(0,2);
-			\draw[cstcurve,dcolora] (-3,1)--(3,1);
+			\draw[cstcurve,main] (-3,1)--(3,1);
 			\draw
 				(-0.2,-0.2) node {$O$}
 				 (2.8,-0.2) node {$x$}
 				(-0.2, 1.8) node {$y$}
 				(-0.2, 0.8) node {$C$}
-				( 1.8, 1.3) node[dcolora] {$y=C$};
+				( 1.8, 1.3) node[main] {$y=C$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -51,17 +51,17 @@
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-0.4)--(0,2.3);
 			\begin{scope}[cstcurve,smooth,domain=-3:1.2]
-				\draw[dcolora] plot (\x,{2^\x});
-				\draw[dcolorb] plot (-\x,{2^\x});
+				\draw[main] plot (\x,{2^\x});
+				\draw[second] plot (-\x,{2^\x});
 			\end{scope}
 			\draw
 				(-0.2,-0.2) node {$O$}
 				( 2.8,-0.2) node {$x$}
 				(-0.2, 2.1) node {$y$}
-				( 2.2, 1.5) node[dcolora] {$y=a^x (a>1)$}
-				(-2.6, 1.5) node[dcolorb] {$y=a^x (0<a<1)$};
+				( 2.2, 1.5) node[main] {$y=a^x (a>1)$}
+				(-2.6, 1.5) node[second] {$y=a^x (0<a<1)$};
 			\begin{scope}[visible on=<4->]
-				\fill[cstdot,dcolore]	(0,1) circle;
+				\fill[cstdot,fifth]	(0,1) circle;
 				\draw (-0.15,0.7) node {$1$};
 			\end{scope}
 		\end{tikzpicture}
@@ -79,17 +79,17 @@
 		\draw[cstaxis] (-0.5,0)--(3.5,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
 		\begin{scope}[cstcurve,smooth,domain=-2.3:1.5]
-			\draw[dcolora] plot ({2^\x},\x);
-			\draw[dcolorb] plot ({2^\x},-\x);
+			\draw[main] plot ({2^\x},\x);
+			\draw[second] plot ({2^\x},-\x);
 		\end{scope}
 		\draw
 			(-0.2,-0.2) node {$O$}
 			( 3.3,-0.2) node {$x$}
 			(-0.2, 2.1) node {$y$}
-			( 2.0,-1.9) node[dcolora] {$y=\log_ax (a>1)$}
-			( 2.3, 1.9) node[dcolorb] {$y=\log_ax (0<a<1)$};
+			( 2.0,-1.9) node[main] {$y=\log_ax (a>1)$}
+			( 2.3, 1.9) node[second] {$y=\log_ax (0<a<1)$};
 		\begin{scope}[visible on=<5->]
-			\fill[cstdot,dcolore]	(1,0) circle;
+			\fill[cstdot,fifth]	(1,0) circle;
 			\draw (1,-0.3) node {$1$};
 		\end{scope}
 	\end{tikzpicture}\end{tikzpicture}
@@ -124,19 +124,19 @@
 		\draw[cstaxis] (-2.3,0)--(2.3,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
 		\begin{scope}[cstcurve,smooth,domain=-1.3:1.3]
-			\draw[dcolora] plot (\x,{\x^3});
-			\draw[dcolorb] plot ({\x^3},\x);
+			\draw[main] plot (\x,{\x^3});
+			\draw[second] plot ({\x^3},\x);
 		\end{scope}
-		\draw[cstdash,dcolord,visible on=<8->] (-2,-2)--(2,2);
+		\draw[cstdash,fourth,visible on=<8->] (-2,-2)--(2,2);
 		\draw
 			(-0.2, 0.2) node {$O$}
 			( 2.1,-0.2) node {$x$}
 			(-0.2, 2.1) node {$y$}
-			(0.65, 2.0) node[dcolora] {$y=x^3$}
-			(-2.8,-1.3) node[dcolorb] {$y=x^{\frac13}$};
+			(0.65, 2.0) node[main] {$y=x^3$}
+			(-2.8,-1.3) node[second] {$y=x^{\frac13}$};
 		\begin{scope}[visible on=<7->]
-			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
-			\begin{scope}[cstdot,dcolore]
+			\draw[cstdash,fifth] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
+			\begin{scope}[cstdot,fifth]
 				\fill	(1,1) circle;
 				\fill	(-1,-1) circle;
 				\fill	(0,0) circle;
@@ -183,14 +183,14 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.3);
-			\draw[cstcurve,dcolora,smooth,domain=-1.5:1.5] plot (\x,{\x*\x});
-			\draw[cstdash,dcolord,visible on=<9->] (-0.4,-0.4)--(2,2);
+			\draw[cstcurve,main,smooth,domain=-1.5:1.5] plot (\x,{\x*\x});
+			\draw[cstdash,fourth,visible on=<9->] (-0.4,-0.4)--(2,2);
 			\draw
 				( 0.2,-0.2) node {$O$}
 				( 2.1,-0.2) node {$x$}
 				(-0.2, 2.1) node {$y$}
-				(-1.9, 1.5) node[dcolora] {$y=x^2$};
-			\begin{scope}[dcolorb,visible on=<6->]
+				(-1.9, 1.5) node[main] {$y=x^2$};
+			\begin{scope}[second,visible on=<6->]
 				\draw[cstcurve,smooth,domain=0:1.5] plot ({\x*\x},\x);
 				\draw (3,1.6) node {$y=x^{\half}$};
 			\end{scope}
@@ -199,8 +199,8 @@
 					( 1.0,-0.2) node {$1$}
 					(-1.0,-0.2) node {$-1$}
 					(-0.2, 1.2) node {$1$};
-				\draw[cstdash,dcolore] (-1,0)--(-1,1)--(1,1)--(1,0);
-				\begin{scope}[cstdot,dcolore]
+				\draw[cstdash,fifth] (-1,0)--(-1,1)--(1,1)--(1,0);
+				\begin{scope}[cstdot,fifth]
 					\fill	(1,1) circle;
 					\fill	(-1,1) circle;
 					\fill	(0,0) circle;
@@ -216,31 +216,31 @@
 	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=40mm]
 		\draw[cstaxis] (-2.8,0)--(2.8,0);
 		\draw[cstaxis] (0,-2.8)--(0,2.8);
-		\begin{scope}[cstcurve,dcolora,smooth,domain=0.4:1.4]
+		\begin{scope}[cstcurve,main,smooth,domain=0.4:1.4]
 			\draw plot ({1/\x},{\x^3});
 			\draw plot ({-1/\x},{-\x^3});
 		\end{scope}
 		\begin{scope}[visible on=<6->]
-			\begin{scope}[cstcurve,dcolorb,smooth,domain=0.4:1.4]
+			\begin{scope}[cstcurve,second,smooth,domain=0.4:1.4]
 				\draw plot ({\x^3},{1/\x});
 				\draw plot ({-\x^3},{-1/\x});
 			\end{scope}
-			\draw[cstdash,dcolord] (-2,-2)--(2,2);
-			\draw (2.2,1.2) node[dcolorb] {$y=x^{-\frac13}$};
+			\draw[cstdash,fourth] (-2,-2)--(2,2);
+			\draw (2.2,1.2) node[second] {$y=x^{-\frac13}$};
 		\end{scope}
 		\draw
 			(0.2,-0.2) node {$O$}
 			(2.6,-0.2) node {$x$}
 			(-0.2,2.6) node {$y$}
-			(-1.6,-2.2) node[dcolora] {$y=x^{-3}$};
+			(-1.6,-2.2) node[main] {$y=x^{-3}$};
 		\begin{scope}[visible on=<4->]
 			\draw
 				( 1.0,-0.2) node {$1$}
 				(-1.0, 0.2) node {$-1$}
 				(-0.2, 1.0) node {$1$}
 				( 0.3,-1.0) node {$-1$};
-			\draw[cstdash,dcolore] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
-			\begin{scope}[cstdot,dcolore]
+			\draw[cstdash,fifth] (1,0)--(1,1)--(0,1) (-1,0)--(-1,-1)--(0,-1);
+			\begin{scope}[cstdot,fifth]
 				\fill	(1,1) circle;
 				\fill	(-1,-1) circle;
 			\end{scope}
@@ -282,27 +282,27 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.6);
-			\begin{scope}[cstcurve,dcolora,smooth,domain=0.5:1.6]
+			\begin{scope}[cstcurve,main,smooth,domain=0.5:1.6]
 				\draw plot ({1/\x},{\x*\x});
 				\draw plot ({-1/\x},{\x*\x});
 			\end{scope}
-			\begin{scope}[visible on=<6->,dcolorb]
+			\begin{scope}[visible on=<6->,second]
 				\draw[cstcurve,smooth,domain=0.5:1.6] plot ({\x*\x},{1/\x});
 				\draw (3,1) node {$y=x^{-\half}$};
 			\end{scope}
-			\draw[cstdash,dcolord,visible on=<9->] (-0.4,-0.4)--(2,2);
+			\draw[cstdash,fourth,visible on=<9->] (-0.4,-0.4)--(2,2);
 			\draw
 				( 0.2,-0.2) node {$O$}
 				( 2.1,-0.2) node {$x$}
 				(-0.2, 2.4) node {$y$}
-				(-1.7, 1.1) node[dcolora] {$y=x^{-2}$};
+				(-1.7, 1.1) node[main] {$y=x^{-2}$};
 			\begin{scope}[visible on=<4->]
 				\draw
 					( 1.0,-0.2) node {$1$}
 					(-1.0,-0.2) node {$-1$}
 					(-0.2, 1.2) node {$1$};
-				\draw[cstdash,dcolore] (-1,0)--(-1,1)--(1,1)--(1,0);
-				\begin{scope}[cstdot,dcolore]
+				\draw[cstdash,fifth] (-1,0)--(-1,1)--(1,1)--(1,0);
+				\begin{scope}[cstdot,fifth]
 					\fill	(1,1) circle;
 					\fill	(-1,1) circle;
 				\end{scope}
@@ -328,11 +328,11 @@
 			\draw[cstaxis] (-0.5,0)--(3.5,0);
 			\draw[cstaxis] (0,-0.5)--(0,3.5);
 			\begin{scope}[cstcurve,smooth]
-				\begin{scope}[dcolora,domain=0:1.9]
+				\begin{scope}[main,domain=0:1.9]
 					\draw plot (\x,{\x^(sqrt 3)});
 					\draw plot ({\x^(sqrt 3)},\x);
 				\end{scope}
-				\begin{scope}[dcolorb,domain=0.3:1.9]
+				\begin{scope}[second,domain=0.3:1.9]
 					\draw plot (1/\x,{\x^(sqrt 3)});
 					\draw plot ({\x^(sqrt 3)},1/\x);
 				\end{scope}
@@ -341,17 +341,17 @@
 				( 0.2,-0.2) node {$O$}
 				( 3.2,-0.2) node {$x$}
 				(-0.2, 3.2) node {$y$}
-				( 2.7, 3.2) node[dcolora] {$y=x^{\sqrt 3}$}
-				( 3.8, 2.3) node[dcolora] {$y=x^{\frac1{\sqrt 3}}$}
-				( 4.3, 0.3) node[dcolorb] {$y=x^{-\sqrt 3}$}
-				( 4.0, 0.8) node[dcolorb] {$y=x^{-\frac1{\sqrt 3}}$};
-			\draw[cstdash,dcolord,visible on=<5->] (-0.4,-0.4)--(3,3);
+				( 2.7, 3.2) node[main] {$y=x^{\sqrt 3}$}
+				( 3.8, 2.3) node[main] {$y=x^{\frac1{\sqrt 3}}$}
+				( 4.3, 0.3) node[second] {$y=x^{-\sqrt 3}$}
+				( 4.0, 0.8) node[second] {$y=x^{-\frac1{\sqrt 3}}$};
+			\draw[cstdash,fourth,visible on=<5->] (-0.4,-0.4)--(3,3);
 			\begin{scope}[visible on=<4->]
 				\draw
 					(1,-0.2) node {$1$}
 					(-0.2,1) node {$1$};
-				\draw[cstdash,dcolore] (0,1)--(1,1)--(1,0);
-				\fill[cstdot,dcolore]	(1,1) circle;
+				\draw[cstdash,fifth] (0,1)--(1,1)--(1,0);
+				\fill[cstdot,fifth]	(1,1) circle;
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -360,10 +360,10 @@
 
 \begin{frame}{幂函数性质总结}
 	\onslide<+->
-	\begin{block}{总结}
+	\begin{main}{总结}
 		$x>0$ 时幂函数 $y=x^\mu$ 总有定义且 $y=e^{\mu\ln x}$, 图像经过 $(1,1)$, 且$y=x^\mu|_{(0,+\infty)}$ 和 $y=x^{\frac1\mu}|_{(0,+\infty)}$ 互为反函数.
 		$\mu<0$ 时有两条渐近线 $x=0, y=0$.
-	\end{block}
+	\end{main}
 	\onslide<+->
 	\begin{center}
 		\renewcommand\arraystretch{1.4}
@@ -407,72 +407,72 @@
 			\draw[cstaxis] (-9,0)--(9,0);
 			\draw[cstaxis] (0,-3.2)--(0,3.2);
 			\begin{scope}[visible on=<2>]
-				\draw[cstcurve,dcolora,smooth,domain=-390:390] plot ({\x/180*pi},{sin (\x)});
-				\draw (2,1.4) node[dcolora] {$y=\sin x$};
-				\draw[cstdash,dcolore] (1.57,0)--(1.57,1)--(0,1);
+				\draw[cstcurve,main,smooth,domain=-390:390] plot ({\x/180*pi},{sin (\x)});
+				\draw (2,1.4) node[main] {$y=\sin x$};
+				\draw[cstdash,fifth] (1.57,0)--(1.57,1)--(0,1);
 			\end{scope}
 			\begin{scope}[visible on=<3>]
-				\draw[cstcurve,dcolorb,smooth,domain=-390:390] plot ({\x/180*pi},{cos (\x)});
-				\draw (1.9,1.4) node[dcolorb] {$y=\cos x$};
+				\draw[cstcurve,second,smooth,domain=-390:390] plot ({\x/180*pi},{cos (\x)});
+				\draw (1.9,1.4) node[second] {$y=\cos x$};
 			\end{scope}
 			\begin{scope}[visible on=<4>]
-				\begin{scope}[cstcurve,dcolorc,smooth,domain=-70:70]
+				\begin{scope}[cstcurve,third,smooth,domain=-70:70]
 					\draw plot ({\x/180*pi},{tan (\x)});
 					\draw plot ({(\x+180)/180*pi},{tan (\x)});
 					\draw plot ({(\x+360)/180*pi},{tan (\x)});
 					\draw plot ({(\x-180)/180*pi},{tan (\x)});
 					\draw plot ({(\x-360)/180*pi},{tan (\x)});
 				\end{scope}
-				\draw (7.4,-1.2) node[dcolorc] {$y=\tan x$};
-				\draw[cstdash,dcolord]
+				\draw (7.4,-1.2) node[third] {$y=\tan x$};
+				\draw[cstdash,fourth]
 					( 1.57,-3)--( 1.57,3)
 					(-1.57,-3)--(-1.57,3)
 					( 4.71,-3)--( 4.71,3)
 					(-4.71,-3)--(-4.71,3);
 			\end{scope}
 			\begin{scope}[visible on=<5>]
-				\begin{scope}[cstcurve,dcolora,smooth,domain=-70:70]
+				\begin{scope}[cstcurve,main,smooth,domain=-70:70]
 					\draw plot ({(270-\x)/180*pi},{tan (\x)});
 					\draw plot ({(90-\x)/180*pi},{tan (\x)});
 					\draw plot ({(-90-\x)/180*pi},{tan (\x)});
 					\draw plot ({(-270-\x)/180*pi},{tan (\x)});
 				\end{scope}
-				\draw (6,1.2) node[dcolora] {$y=\cot x$};
-				\draw[cstdash,dcolord]
+				\draw (6,1.2) node[main] {$y=\cot x$};
+				\draw[cstdash,fourth]
 					( 3.14,-3)--( 3.14,3)
 					(-3.14,-3)--(-3.14,3)
 					( 6.28,-3)--( 6.28,3)
 					(-6.28,-3)--(-6.28,3);
 			\end{scope}
 			\begin{scope}[visible on=<6>]
-				\begin{scope}[cstcurve,dcolorb,smooth,domain=20:160]
+				\begin{scope}[cstcurve,second,smooth,domain=20:160]
 					\draw plot ({(\x-90)/180*pi},{1/(sin (\x))});
 					\draw plot ({(\x+90)/180*pi},{-1/(sin (\x))});
 					\draw plot ({(\x+270)/180*pi},{1/(sin (\x))});
 					\draw plot ({(\x-270)/180*pi},{-1/(sin (\x))});
 					\draw plot ({(\x-450)/180*pi},{1/(sin (\x))});
 				\end{scope}
-				\draw (2.6,1.2) node[dcolorb] {$y=\sec x$};
-				\draw[cstdash,dcolord]
+				\draw (2.6,1.2) node[second] {$y=\sec x$};
+				\draw[cstdash,fourth]
 					( 1.57,-3)--( 1.57,3)
 					(-1.57,-3)--(-1.57,3)
 					( 4.71,-3)--( 4.71,3)
 					(-4.71,-3)--(-4.71,3);
 			\end{scope}
 			\begin{scope}[visible on=<7>]
-				\begin{scope}[cstcurve,dcolorc,smooth,domain=20:160]
+				\begin{scope}[cstcurve,third,smooth,domain=20:160]
 					\draw plot ({\x/180*pi},{1/(sin (\x))});
 					\draw plot ({(\x+180)/180*pi},{-1/(sin (\x))});
 					\draw plot ({(\x-180)/180*pi},{-1/(sin (\x))});
 					\draw plot ({(\x-360)/180*pi},{1/(sin (\x))});
 				\end{scope}
-				\draw (4.2,1.2) node[dcolorc] {$y=\csc x$};
-				\draw[cstdash,dcolord]
+				\draw (4.2,1.2) node[third] {$y=\csc x$};
+				\draw[cstdash,fourth]
 					( 3.14,-3)--( 3.14,3)
 					(-3.14,-3)--(-3.14,3)
 					( 6.28,-3)--( 6.28,3)
 					(-6.28,-3)--(-6.28,3);
-				\draw[cstdash,dcolore] (1.57,0)--(1.57,1)--(0,1);
+				\draw[cstdash,fifth] (1.57,0)--(1.57,1)--(0,1);
 			\end{scope}
 			\begin{scope}[thick]
 				\draw
@@ -517,22 +517,22 @@
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-65mm,yshift=20mm]
 			\draw[cstaxis] (-1.8,0)--(1.8,0);
 			\draw[cstaxis] (0,-2)--(0,3.6);
-			\draw[cstcurve,dcolora,smooth,domain=-90:90] plot ({sin (\x)},{\x/180*pi});
-			\draw (2.2,1.4) node[dcolora] {$y=\arcsin x$};
+			\draw[cstcurve,main,smooth,domain=-90:90] plot ({sin (\x)},{\x/180*pi});
+			\draw (2.2,1.4) node[main] {$y=\arcsin x$};
 			\begin{scope}[visible on=<3->]
-				\draw[cstdash,dcolore] (0,1.57)--(1,1.57)--(1,0) (0,-1.57)--(-1,-1.57)--(-1,0);
+				\draw[cstdash,fifth] (0,1.57)--(1,1.57)--(1,0) (0,-1.57)--(-1,-1.57)--(-1,0);
 				\draw
 					(-0.3,1.57) node {$\frac\pi2$}
 					(0.3,-1.57) node {$-\frac\pi2$}
 					(1,-0.2) node {$1$}
 					(-1,-0.2) node {$-1$};
 			\end{scope}
-			\begin{scope}[dcolorb,visible on=<5->]
+			\begin{scope}[second,visible on=<5->]
 				\draw[cstcurve,smooth,domain=0:180] plot ({cos (\x)},{\x/180*pi});
 				\draw (0.5,2.5) node {$y=\arccos x$};
 			\end{scope}
 			\begin{scope}[visible on=<6->]
-				\draw[cstdash,dcolore] (0,3.14)--(-1,3.14)--(-1,0);
+				\draw[cstdash,fifth] (0,3.14)--(-1,3.14)--(-1,0);
 				\draw (0.2,3.14) node {$\pi$};
 			\end{scope}
 			\draw
@@ -579,20 +579,20 @@
 		\begin{tikzpicture}[scale=0.5,framed]
 			\draw[cstaxis] (-5,0)--(5,0);
 			\draw[cstaxis] (0,-2)--(0,4.2);
-			\draw[cstcurve,dcolora,smooth,domain=-78:78] plot ({tan (\x)},{\x/180*pi});
-			\draw (-3.4,-0.6) node[dcolora] {$y=\arctan x$};
+			\draw[cstcurve,main,smooth,domain=-78:78] plot ({tan (\x)},{\x/180*pi});
+			\draw (-3.4,-0.6) node[main] {$y=\arctan x$};
 			\begin{scope}[visible on=<3->]
-				\draw[cstdash,dcolord] (-5,1.57)--(5,1.57) (-5,-1.57)--(5,-1.57);
+				\draw[cstdash,fourth] (-5,1.57)--(5,1.57) (-5,-1.57)--(5,-1.57);
 				\draw
 					(0.3,2.2) node {$\frac\pi2$}
 					(0.6,-1) node {$-\frac\pi2$};
 			\end{scope}
-			\begin{scope}[dcolorb,visible on=<6->]
+			\begin{scope}[second,visible on=<6->]
 				\draw[cstcurve,smooth,domain=-78:78] plot ({tan (\x)},{(90-\x)/180*pi});
 				\draw (-3.4,2.1) node {$y=\arccot x$};
 			\end{scope}
 			\begin{scope}[visible on=<7->]
-				\draw[cstdash,dcolord] (-5,3.14)--(5,3.14);
+				\draw[cstdash,fourth] (-5,3.14)--(5,3.14);
 				\draw (-0.3,2.8) node {$\pi$};
 			\end{scope}
 			\draw
@@ -636,17 +636,17 @@
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=12mm]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-1.2)--(0,2.5);
-			\draw[cstcurve,dcolora,smooth,domain=-1:1.2] plot (\x,{(e^\x-e^(-\x))/2});
-			\draw (2.1,1.6) node[dcolora] {$y=\sh x$};
-			\begin{scope}[dcolorb,visible on=<3->]
+			\draw[cstcurve,main,smooth,domain=-1:1.2] plot (\x,{(e^\x-e^(-\x))/2});
+			\draw (2.1,1.6) node[main] {$y=\sh x$};
+			\begin{scope}[second,visible on=<3->]
 				\draw[cstcurve,smooth,domain=-1.5:1.5] plot (\x,{(e^\x+e^(-\x))/2});
 				\draw (-1.8,1.3) node {$y=\ch x$};
 			\end{scope}
-			\begin{scope}[dcolorc,visible on=<4->]
+			\begin{scope}[third,visible on=<4->]
 				\draw[cstcurve,smooth,domain=-3:3] plot (\x,{1-2/(e^(2*\x)+1)});
 				\draw (-1.8,-0.6) node {$y=\tanh x$};
 			\end{scope}
-			\draw[cstdash,dcolord,visible on=<7->] (-3,1)--(3,1) (-3,-1)--(3,-1);
+			\draw[cstdash,fourth,visible on=<7->] (-3,1)--(3,1) (-3,-1)--(3,-1);
 			\draw
 				(0.2,-0.2) node {$O$}
 				(2.8,-0.2) node {$x$}
@@ -679,17 +679,17 @@
 	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-42mm,yshift=21mm]
 		\draw[cstaxis] (0,-1.4)--(0,1.9);
 		\draw[cstaxis] (-2.5,0)--(3,0);
-		\draw[cstcurve,dcolora,smooth,domain=-1.65:1.85] plot ({(e^\x-e^(-\x))/2},\x);
-		\draw (-2,-0.7) node[dcolora] {$y=\arsh x$};
-		\begin{scope}[dcolorb,visible on=<3->]
+		\draw[cstcurve,main,smooth,domain=-1.65:1.85] plot ({(e^\x-e^(-\x))/2},\x);
+		\draw (-2,-0.7) node[main] {$y=\arsh x$};
+		\begin{scope}[second,visible on=<3->]
 			\draw[cstcurve,smooth,domain=0:1.8] plot ({(e^\x+e^(-\x))/2},\x);
 			\draw (2.1,0.4) node {$y=\arch x$};
 		\end{scope}
-		\begin{scope}[dcolorc,visible on=<4->]
+		\begin{scope}[third,visible on=<4->]
 			\draw[cstcurve,smooth,domain=-1.9:1.9] plot ({1-2/(e^(2*\x)+1)},\x);
 			\draw (0.05,-1.7) node {$y=\arth x$};
 		\end{scope}
-		\draw[cstdash,dcolord,visible on=<7->] (1,-1.9)--(1,1.9) (-1,-1.9)--(-1,1.9);
+		\draw[cstdash,fourth,visible on=<7->] (1,-1.9)--(1,1.9) (-1,-1.9)--(-1,1.9);
 		\draw
 			(0.2,-0.2) node {$O$}
 			(2.8,-0.2) node {$x$}

@@ -14,10 +14,10 @@
 }
 % 参数为行+1, 列
 \newcommand{\augdash}[2]{\CodeAfter
-\tikz \draw[cstdash,dcolora] (1-|#2) -- (#1-|#2);}
+\tikz \draw[cstdash,main] (1-|#2) -- (#1-|#2);}
 \newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
 \mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
-\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[dcolorb] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
+\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[second] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
 \newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
 \newcommand{\laeq}[2][l]{
 	\setlength{\arraycolsep}{0pt}

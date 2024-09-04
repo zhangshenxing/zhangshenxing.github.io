@@ -24,12 +24,12 @@
 
 \begin{frame}{阿贝尔定理}
 	\onslide<+->
-	\begin{block}{阿贝尔定理}
+	\begin{main}{阿贝尔定理}
 		\begin{enumerate}
 			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
 			\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
 		\end{enumerate}
-	\end{block}
+	\end{main}
 
 	\onslide<+->
 	\begin{proof}
@@ -59,21 +59,21 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,dcolora,cstfill] (0,0) circle (1.2);
+			\filldraw[cstcurve,main,cstfill] (0,0) circle (1.2);
 			\fill[cstdot] (0,0) circle;
-			\draw[cstcurve,cstarrowto] (0,0)--(0.96,0.72);
-			\draw[cstcurve,cstarrowto] (-0.96,0.72)--(-2,0.72);
+			\draw[cstcurve,cstra] (0,0)--(0.96,0.72);
+			\draw[cstcurve,cstra] (-0.96,0.72)--(-2,0.72);
 			\draw
 				(0.6,0.1) node {$R$}
-				(0,-0.4) node[dcolorb] {绝对收敛}
-				(2.5,-0.4) node[dcolorb] {发散}
-				(-3,0.72) node[dcolora] {都有可能};
+				(0,-0.4) node[second] {绝对收敛}
+				(2.5,-0.4) node[second] {发散}
+				(-3,0.72) node[main] {都有可能};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例: 收敛半径的计算}
+\begin{frame}{例题: 收敛半径的计算}
 	\onslide<+->
 	\begin{example}
 		求幂级数 $\suml_{n=0}^\infty z^n=1+z+z^2+\cdots$ 的收敛半径与和函数.
@@ -171,7 +171,7 @@
 % 回忆\emph{狄利克雷判别法}: 若 $\set{a_n}_{n\ge 1}$ 部分和有界, 实数项数列 $\set{b_n}_{n\ge 1}$ 单调趋于 $0$, 则 $\suml_{n=1}^\infty a_nb_n$ 收敛.
 
 % \onslide<+->
-% \begin{solutionc}
+% \begin{solution}[续解]
 % \begin{itemize}
 % \item 若 $0<p\le1$, $\displaystyle\sum_{n=1}^\infty\frac1{n^p}$ 发散, 
 % \onslide<+->{而在收敛圆周上其它点 $z\neq1$ 处,
@@ -181,7 +181,7 @@
 % \onslide<+->{因此 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n^p}$ 收敛.}
 % \onslide<+->{故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.}
 % \end{itemize}
-% \end{solutionc}
+% \end{solution}
 % \end{frame}
 
 
@@ -241,7 +241,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 幂级数展开}
+\begin{frame}{例题: 幂级数展开}
 	\onslide<+->
 	\begin{example}
 		把函数 $\dfrac1{z-b}$ 表成形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的幂级数, 其中 $a\neq b$.
@@ -333,7 +333,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 函数项级数的积分}
+\begin{frame}{例题: 函数项级数的积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z$.

@@ -4,18 +4,18 @@
 
 \begin{frame}{三角函数的基本不等式}
 	\onslide<+->
-	\begin{alertblock}{三角函数的基本不等式}
+	\begin{second}{三角函数的基本不等式}
 		当 $x\in\left(0,\dfrac\pi2\right)$ 时, 有 $\sin x<x<\tan x$.
-	\end{alertblock}
+	\end{second}
 	\onslide<+->
 	\begin{proof}
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-90mm,yshift=28mm]
 			\coordinate (A) at (1,0);
 			\coordinate (B) at (0,0);
 			\coordinate (C) at (1,{sqrt 3});
-			\draw[dcolorb,thick] (A)--(B)--(C) pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
-			\draw[cstcurve,dcolora] (A)--(B)--(C)--cycle (A)--(0.5,{0.5*sqrt 3})--cycle;
-			\draw[cstcurve,dcolorb] (B) circle (1);
+			\draw[second,thick] (A)--(B)--(C) pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
+			\draw[cstcurve,main] (A)--(B)--(C)--cycle (A)--(0.5,{0.5*sqrt 3})--cycle;
+			\draw[cstcurve,second] (B) circle (1);
 			\draw
 				(1.2,0) node {$A$}
 				(-0.2,-0.2) node {$O$}
@@ -40,14 +40,14 @@
 
 \begin{frame}{三角函数的基本不等式}
 	\onslide<+->
-	\begin{block}{结论}
+	\begin{main}{结论}
 		$\sin x\begin{cases}
 			<x,&x>0,\\
 			=x,&x=0,\\
 			>x,&x<0.		
 		\end{cases}$
 		从而有 $\abs{\sin x}\le |x|$.
-	\end{block}
+	\end{main}
 	\onslide<+->
 	\begin{proof*}
 		当 $0<x<\dfrac\pi2$ 时, 由前一结论有 $\sin x<x$.
@@ -63,11 +63,11 @@
 \subsection{算术不等式}
 \begin{frame}{均值不等式}
 	\onslide<+->
-	\begin{alertblock}{均值不等式}
+	\begin{second}{均值不等式}
 		对任意 $n$ 个正数 $a_1, a_2, \dots, a_n$, 有
 		\[\sqrt[n]{a_1 a_2\cdots a_n}\le\frac{a_1+a_2+\cdots+a_n}n.\]
 		等式成立当且仅当所有 $a_i$ 均相等.
-	\end{alertblock}
+	\end{second}
 	\onslide<+->
 	其中不等式的左侧被称为\emph{几何平均数}, 右侧被称为\emph{算术平均数}.
 \end{frame}
@@ -128,12 +128,12 @@
 		\[\sqrt{\frac{x_1^2+\cdots+x_n^2}n}\ge \frac{x_1+\cdots+x_n}n\ge \frac1{\frac1{x_1}+\cdots+\frac1{x_n}}.\]
 		\vspace{0.5cm}
 	\begin{tikzpicture}[overlay,yshift=4mm,xshift=26mm]
-		\begin{scope}[thick,decoration={brace,amplitude=5},dcolorb]
+		\begin{scope}[thick,decoration={brace,amplitude=5},second]
 			\draw[decorate,visible on=<4->] (2.8,0.1)--(0,0.1);
 			\draw[decorate,visible on=<5->] (8.8,0)--(6.2,0);
 		\end{scope}
-		\draw[dcolorb,visible on=<4->] (1.4,-0.4) node {平方平均数};
-		\draw[dcolorb,visible on=<5->] (7.5,-0.5) node {调和平均数};
+		\draw[second,visible on=<4->] (1.4,-0.4) node {平方平均数};
+		\draw[second,visible on=<5->] (7.5,-0.5) node {调和平均数};
 	\end{tikzpicture}
 	\end{corollary}
 	\onslide<+->
@@ -146,41 +146,41 @@
 
 \subsection{三角函数有关等式}
 \begin{frame}{积化和差与和差化积公式}
-	\begin{block}{积化和差公式}
+	\begin{main}{积化和差公式}
 		\begin{itemize}
 			\item $\sin x\sin y=-\dfrac12[\cos(x+y)-\cos(x-y)]$,
 			\item $\sin x\cos y=\dfrac12[\sin(x+y)+\sin(x-y)]$,
 			\item $\cos x\cos y=\dfrac12[\cos(x+y)+\cos(x-y)]$.
 		\end{itemize}
-	\end{block}
+	\end{main}
 	\onslide<+->
-	\begin{block}{和差化积公式}
+	\begin{main}{和差化积公式}
 		\begin{itemize}
 			\item $\sin x\pm \sin y=2\sin\dfrac{x\pm y}2\cos\dfrac{x\mp y}2$,
 			\item $\cos x+\cos y=2\cos\dfrac{x+y}2\cos\dfrac{x-y}2$,
 			\item $\cos x-\cos y=-2\sin\dfrac{x+y}2\sin\dfrac{x-y}2$.
 		\end{itemize}
-	\end{block}
+	\end{main}
 \end{frame}
 
 
 \begin{frame}{倍角公式与万能公式}
 	\onslide<+->
-	\begin{block}{倍角公式}
+	\begin{main}{倍角公式}
 		\begin{itemize}
 			\item $\sin(2x)=2\sin x\cos x$,
 			\item $\cos(2x)=\cos^2x-\sin^2x=2\cos^2x-1=1-2\sin^2x$,
 			\item $\tan(2x)=\dfrac{2\tan x}{1-\tan^2x}$.
 		\end{itemize}
-	\end{block}
+	\end{main}
 	\onslide<+->
-	\begin{block}{万能公式}
+	\begin{main}{万能公式}
 		令 $t=\tan\dfrac x2$, 则直角边为 $2t,1-t^2$ 的直角三角形含有角 $x$.
 		\onslide<+->{由于斜边是 $1+t^2$, 因此
 		\[\sin x=\frac{2t}{1+t^2},\quad
 			\cos x=\frac{1-t^2}{1+t^2},\quad
 			\tan x=\frac{2t}{1-t^2}.\]}
-	\end{block}
+	\end{main}
 	\onslide<+->
 	万能公式可将 $x$ 的三角函数转化为 $\tan \dfrac x2$ 的有理函数.
 \end{frame}
@@ -189,18 +189,18 @@
 
 \begin{frame}{数列求和公式}
 	\onslide<+->
-	\begin{block}{等差数列求和公式}
+	\begin{main}{等差数列求和公式}
 		设 $x_n=an+b$, 则
 		\[x_1+x_2+\cdots+x_n=\frac{n(x_1+x_n)}2=a\frac{n(n+1)}2+bn.\]
-	\end{block}
+	\end{main}
 	\onslide<+->
-	\begin{block}{等比数列求和公式}
+	\begin{main}{等比数列求和公式}
 		设 $x_n=x_1 q^{n-1}$, 则
 		\[x_1+x_2+\cdots+x_n=\begin{cases}
 			x_1\cdot\dfrac{1-q^n}{1-q},& q\neq 1,\\
 			x_1\cdot n, & q=1.
 		\end{cases}\]
-	\end{block}
+	\end{main}
 	\onslide<+->
 	由此可知
 	\[x^n-y^n=(x-y)(x^{n-1}+x^{n-2}y+\cdots+xy^{n-2}+y^{n-1}).\]
@@ -209,13 +209,13 @@
 
 \begin{frame}{自然数的幂次和}
 	\onslide<+->
-	\begin{block}{自然数的幂次和}
+	\begin{main}{自然数的幂次和}
 		\begin{itemize}
 			\item $1+2+3+\cdots+n=\dfrac{n(n+1)}2$,
 			\item $1^2+2^2+3^2+\cdots+n^2=\dfrac{n(n+1)(2n+1)}6$,
 			\item $1^3+2^3+3^3+\cdots+n^3=\biggl[\dfrac{n(n+1)}2\biggr]^2$.
 		\end{itemize}
-	\end{block}
+	\end{main}
 \end{frame}
 
 
@@ -239,10 +239,10 @@
 
 \begin{frame}{二项式展开}
 	\onslide<+->
-	\begin{block}{二项式展开}
+	\begin{main}{二项式展开}
 		\[(x+y)^n=\sum_{k=0}^n \rmC_n^k x^ky^{n-k},\qquad
 		\text{其中}\ \rmC_n^k=\frac{n!}{k!(n-k)!}.\]	
-	\end{block}
+	\end{main}
 	\onslide<+->
 	令 $x=y=1$, 则
 	\[\sum_{k=0}^n \rmC_n^k=2^n.\]

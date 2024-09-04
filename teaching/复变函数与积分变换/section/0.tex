@@ -7,8 +7,8 @@
 		\end{itemize}
 	\item 课程QQ群(入群答案 1400261B)
 		\begin{itemize}
-			\item 008班(生医、通信工程) \emph{\textbf{973042840}}
-			\item 009班(车辆创新实验、集成) \emph{\textbf{973041550}}
+			\item 008班(生医、通信工程) \alert{\textbf{973042840}}
+			\item 009班(车辆创新实验、集成) \alert{\textbf{973041550}}
 		\end{itemize}
 	\item 教材: 西交高数教研室《复变函数》,张元林《积分变换》
 \end{itemize}
@@ -21,81 +21,60 @@
 \end{frame}
 
 
-% \begin{frame}{成绩构成}
-% 	\onslide<+->
-% 	\begin{block*}{作业 15分}
-% 		每章交一次, 作业及前一章答案每次发布在QQ群和个人主页中. 
-% 		作业可以打印出来, 或使用薄作业本(不用抄题目, 注明题号), 请勿使用厚笔记本! 
-
-% 		\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
-% 	\end{block*}
-
-% 	\onslide<+->
-% 	\begin{block*}{课堂测验 25分}
-% 		课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
-% 	\end{block*}
-
-% 	\onslide<+->
-% 	\begin{block*}{期末报告 10分}
-% 		期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
-% 	\end{block*}
-
-% 	\onslide<+->
-% 	\begin{block*}{期末考试 50分}
-% 		期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
-% 	\end{block*}
-% \end{frame}
-
-
-\begin{frame}[<*>]{成绩构成}
+\begin{frame}{成绩构成}
 	\vspace{-\baselineskip}
 	\begin{center}
 	\begin{tikzpicture}
-		\begin{scope}[xshift=.2mm,yshift=1.7mm,scale=2]
-			\filldraw[cstcurve,dcolorb,fill=dcolorb!20] (0,0)--(0,1) arc (90:144:1) -- cycle;
-		\end{scope}
-		\begin{scope}[scale=2.1]
-			\filldraw[cstcurve,dcolorc,fill=dcolorc!20] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
-		\end{scope}
-		\begin{scope}[xshift=1.8mm,yshift=.5mm,scale=1.95]
-			\filldraw[cstcurve,dcolord,fill=dcolord!20] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
-		\end{scope}
-		\begin{scope}[xshift=1.5mm,yshift=1.7mm,scale=2]
-			\filldraw[cstcurve,dcolore,fill=dcolore!20] (0,0)--(1,0) arc (0:90:1) -- cycle;
-		\end{scope}
 
 		\begin{scope}
-			\draw[dcolorb] (-.7,1.5)--(-1.6,2.5)--(-3,2.5);
-			\filldraw[dcolorb,fill=dcolorb!20] (-.7,1.5) circle(.1);
+			\begin{scope}[xshift=.2mm,yshift=1.7mm,scale=2]
+				\filldraw[cstcurve,main,cstfill1] (0,0)--(0,1) arc (90:144:1) -- cycle;
+			\end{scope}
+			\draw[main] (-.7,1.5)--(-1.6,2.5)--(-3,2.5);
+			\filldraw[main,cstfill1] (-.7,1.5) circle(.1);
 			\node at (-5,1.7) [text width=53mm]  (1){
-			\begin{block*}{作业 15分}
-				作业每次会提前发布, 每章交一次.
-				\alert{作业不允许迟交}. 没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分. 请假需提前交给我请假条. 
-			\end{block*}};
+				\begin{main*}{作业 15分}
+					作业每次会提前发布, 每章交一次.
+					\alert{作业不允许迟交}.
+					没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分.
+					请假需提前交给我请假条.
+				\end{main*}
+			};
 		\end{scope}
 
-		\begin{scope}
-			\draw[dcolore] (.9,1.5)--(1.6,2.5)--(3,2.5);
-			\filldraw[dcolore,fill=dcolore!20] (.9,1.5) circle(.1);
-			\node at (4.7,1.8) [text width=43mm] (2){{\begin{block*}{课堂测验 25分}
-				课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
-			\end{block*}}};
-		\end{scope}
-		
-		\begin{scope}
-			\draw[dcolord] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
-			\filldraw[dcolord,fill=dcolord!20] (1.5,-.4) circle(.1);
-			\node at (4.7,-1.5) [text width=43mm] (3){\begin{block*}{期末报告 10分}
-				期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. 
-			\end{block*}};
+		\begin{scope}[visible on=<2->]
+			\begin{scope}[xshift=1.5mm,yshift=1.7mm,scale=2]
+				\filldraw[cstcurve,second,cstfill2] (0,0)--(1,0) arc (0:90:1) -- cycle;
+			\end{scope}
+			\draw[second] (.9,1.5)--(1.6,2.5)--(3,2.5);
+			\filldraw[second,cstfill2] (.9,1.5) circle(.1);
+			\node at (4.7,1.8) [text width=43mm] (2){{\begin{second*}{课堂测验 25分}
+				\onslide<2->{%
+					课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
+				}
+			\end{second*}}};
 		\end{scope}
 
-		\begin{scope}
-			\draw[dcolorc] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
-			\filldraw[dcolorc,fill=dcolorc!20] (-.7,-1) circle(.1);
-			\node at (-5,-1.7) [text width=53mm] (4){\begin{block*}{期末考试 50分}
-				期末卷面需要达到45分才计算总评分数, 45分以下直接不及格. 
-			\end{block*}};
+		\begin{scope}[visible on=<3->]
+			\begin{scope}[xshift=1.8mm,yshift=.5mm,scale=1.95]
+				\filldraw[cstcurve,third,cstfill3] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
+			\end{scope}
+			\draw[third] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
+			\filldraw[third,cstfill3] (1.5,-.4) circle(.1);
+			\node at (4.7,-1.5) [text width=43mm] (3){\begin{third*}{期末报告 10分}
+				\onslide<3->{期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. }
+			\end{third*}};
+		\end{scope}
+
+		\begin{scope}[visible on=<4->]
+			\begin{scope}[scale=2.1]
+				\filldraw[cstcurve,fourth,cstfill4] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
+			\end{scope}
+			\draw[fourth] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
+			\filldraw[fourth,cstfill4] (-.7,-1) circle(.1);
+			\node at (-5,-1.7) [text width=53mm] (4){\begin{fourth*}{期末考试 50分}
+				\onslide<4->{期末卷面需要达到45分才计算总评分数, 45分以下直接不及格.}
+			\end{fourth*}};
 		\end{scope}
 	\end{tikzpicture}
 \end{center}
@@ -107,9 +86,9 @@
 	\onslide<+->
 	复变函数的应用非常广泛, 它包括：
 	\begin{itemize}
-		\item \emph{数学}中的代数、数论、几何、分析、动力系统……
-		\item \emph{物理学}中流体力学、材料力学、电磁学、光学、量子力学……
-		\item \emph{信息学}、\emph{电子学}、\emph{电气工程}……
+		\item \alert{数学}中的代数、数论、几何、分析、动力系统……
+		\item \alert{物理学}中流体力学、材料力学、电磁学、光学、量子力学……
+		\item \alert{信息学}、\alert{电子学}、\alert{电气工程}……
 	\end{itemize}
 	\onslide<+->
 	可以说复变函数应用之广, 在大学数学课程中仅次于高等数学和线性代数. 
@@ -123,10 +102,10 @@
 			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
 			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
 			font=\scriptsize, text=white,
-			childa/.style={concept color=red,faded/.style={concept color=red!50}},
-			childb/.style={concept color=blue,faded/.style={concept color=blue!50}},
-			childc/.style={concept color=orange,faded/.style={concept color=orange!50}},
-			childd/.style={concept color=green!50!black,faded/.style={concept color=green!50!black!50}},
+			childa/.style={concept color=main,faded/.style={concept color=main!50}},
+			childb/.style={concept color=second,faded/.style={concept color=second!50}},
+			childc/.style={concept color=third,faded/.style={concept color=third!50}},
+			childd/.style={concept color=fourth,faded/.style={concept color=fourth!50}},
 			grow cyclic,
 			level 1/.append style={level distance=2.8cm,font=\small},
 			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
@@ -159,14 +138,14 @@
 \begin{frame}{课程学习方法}
 	\begin{center}
 		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnodeg,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
-			\node[cstnodeg,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
-			\node[cstnodeg,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnodeg,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
-			\draw[cstnarrow,dcolorc] (1.east) to[bend left] (2.north);
-			\draw[cstnarrow,dcolorc] (2.south) to[bend left] (3.east);
-			\draw[cstnarrow,dcolorc] (3.west) to[bend left] (4.south);
-			\draw[cstnarrow,dcolorc] (4.north) to[bend left] (1.west);
+			\node[cstnode1,align=center] (1) at (0,2)  {\alert{课前}\\预习课本};
+			\node[cstnode1,align=center] (2) at (3,0)  {\alert{课上}\\认真听课\\记好笔记};
+			\node[cstnode1,align=center] (3) at (0,-2) {\alert{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnode1,align=center] (4) at (-3,0) {\alert{作业}\\检测学\\习效果};
+			\draw[cstnarrow,main] (1.east) to[bend left] (2.north);
+			\draw[cstnarrow,main] (2.south) to[bend left] (3.east);
+			\draw[cstnarrow,main] (3.west) to[bend left] (4.south);
+			\draw[cstnarrow,main] (4.north) to[bend left] (1.west);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

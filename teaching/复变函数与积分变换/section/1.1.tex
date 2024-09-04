@@ -6,65 +6,54 @@
 	\onslide<+->
 	现在我们来正式介绍复数的概念.
 	\onslide<+->
-	\begin{definition}
+	为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $i$, 再通过定义它的运算来构造复数.
+	\onslide<+->
+	\begin{definition}[复数]
 		固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
 	\end{definition}
 	\onslide<+->
-	换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.
+	于是复数全体构成一个二维实线性空间, $\{1,i\}$ 是一组基. 而且实数 $x$ 可以自然地看成复数 $x+0i$.
 	\onslide<+->
-	也就是说, 复数全体构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基.
-
-	\onslide<+->
-	我们将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$.
+	将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$, $\BR\subseteq \BC$.
 \end{frame}
 
 
 \begin{frame}{复平面}
 	\onslide<+->
-	由于 $\BC$ 是一个二维实向量空间, $1$ 和 $i$ 构成一组基,
-	\onslide<+->
-	因此它和平面上的点可以建立一一对应.
+	由此, $\BC$ 和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
 			\begin{scope}
-				\draw[cstaxis] (-0.4,0)--(2,0);
-				\draw[cstaxis] (0,-0.4)--(0,2);
-				\draw[cstdash] (1.6,0)--(1.6,1.2);
-				\draw[cstdash] (0,1.2)--(1.6,1.2);
-				\fill[cstdot,dcolora] (1.6,1.2) circle;
-				\draw (-0.2,-0.2) node {$0$};
-				\draw[dcolorb,Latex-Latex,line width=.5mm] (2.2,.8)--(3.4,.8);
-				\draw
-					(1.6,1.5) node[dcolora] {$z=x+yi$}
-					(2.8,.3) node[dcolorb,visible on=<4->] {\small 一一对应}
-					(0.8,-0.7) node[dcolorb,visible on=<4->] {复平面};
+				\draw[cstaxis] (-.5,0)--(3,0);
+				\draw[cstaxis] (0,-.5)--(0,2.5);
+				\coordinate [label=below left:$0$] (O) at (0,0);
+				\coordinate [label=above:\textcolor{second}{$z=x+yi$}] (A) at (2,1.5);
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (0,1.5);
+				\draw[cstdash] (B)--(A)--(C);
+				\fill[cstdot,second] (A) circle;
+				\draw[third,Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,third] {一一对应};
 			\end{scope}
-			\begin{scope}[xshift=4cm]
-				\draw[cstaxis] (-.4,0)--(2,0);
-				\draw[cstaxis] (0,-0.4)--(0,2);
-				\draw[decorate,decoration={brace,amplitude=5},dcolora] (0,0)--(1.6,0);
-				\draw[decorate,decoration={brace,amplitude=5},dcolorb] (0,1.2)--(0,0);
-				\draw[cstdash] (1.6,0)--(1.6,1.2);
-				\draw[cstdash] (0,1.2)--(1.6,1.2);
-				\fill[cstdot,dcolora] (1.6,1.2) circle;
-				\draw[dcolorb,Latex-Latex,line width=.5mm,visible on=<5->] (2.2,.8)--(3.4,.8);
-				\draw
-					(1.6,1.5) node[dcolora] {$Z(x,y)$}
-					(.8,.3) node[dcolora] {$x$}
-					(.3,.6) node[dcolorb] {$y$}
-					(-.2,-.2) node {$O$}
-					(1,-0.7) node {直角坐标系}
-					(2.8,.3) node[dcolorb,visible on=<5->] {\small 一一对应};
+			\begin{scope}[xshift=5cm]
+				\coordinate [label=below left:$O$] (O) at (0,0);
+				\coordinate [label=above:\textcolor{second}{$Z(x,y)$}] (A) at (2,1.5);
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (0,1.5);
+				\draw[cstdash] (B)--(A)--(C);
+				\fill[cstdot,second] (A) circle;
+				\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(B) node[midway,above=2mm] {$x$};
+				\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (C)--(O) node[midway,right=2mm] {$y$};
+				\draw[third,Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,third] {一一对应};
+				\draw[cstaxis] (-.5,0)--(3,0);
+				\draw[cstaxis] (0,-.5)--(0,2.5);
 			\end{scope}
-			\begin{scope}[xshift=8cm,visible on=<5->]
-				\draw[cstaxis] (-.4,0)--(2,0);
-				\draw[cstaxis] (0,-.4)--(0,2);
-				\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1.6,1.2);
-				\draw 
-					(1.5,1.5) node[dcolora] {$\overrightarrow{OZ}=(x,y)$}
-					(-.2,-.2) node {$O$}
-					(1,-.7) node {向量};
+			\begin{scope}[xshift=10cm]
+				\draw[cstaxis] (-.5,0)--(3,0);
+				\draw[cstaxis] (0,-.5)--(0,2.5);
+				\coordinate [label=below left:$O$] (O) at (0,0);
+				\coordinate [label=above:\textcolor{second}{$\overrightarrow{OZ}=(x,y)$}] (A) at (2,1.5);
+				\draw[cstcurve,cstra,second] (O)--(A);
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -77,70 +66,89 @@
 	\onslide<+->
 	它对应复平面上的点就是直角坐标系的 $x$ 轴上的点.
 	\onslide<+->
-	因此我们称 $x$ 轴为\textcolor{dcolorb}{实轴}.
+	因此我们称 $x$ 轴为\emph{实轴}.
 	\onslide<+->
-	相应地, 称 $y$ 轴为\textcolor{dcolorc}{虚轴}.
+	相应地, 称 $y$ 轴为\alert{虚轴}.
 	\onslide<+->
-	称 $z=x+yi$ 在实轴和虚轴的投影为它的\textcolor{dcolorb}{实部 $\Re z=x$} 和\textcolor{dcolorc}{虚部 $\Im z=y$}.
+	称 $z=x+yi$ 在实轴和虚轴的投影为它的\emph{实部 $\Re z=x$} 和\alert{虚部 $\Im z=y$}.
 
 	\onslide<+->
 	当 $\Im z=0$ 时, $z$ 是实数.
 	\onslide<+->
-	不是实数的复数是\emph{虚数}.
+	不是实数的复数是\textcolor{third}{虚数}.
 	\onslide<+->
-	当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
+	当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\alert{纯虚数}.
 	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}
-			\begin{scope}
-				\draw[cstaxis] (-0.4,0)--(2.7,0);
-				\draw[cstaxis,dcolorb,visible on=<2->] (-0.4,0)--(2.7,0);
-				\draw[cstaxis] (0,-0.4)--(0,2);
-				\draw[cstaxis,dcolorc,visible on=<4->] (0,-0.4)--(0,2);
-				\draw[cstdash] (1.6,0)--(1.6,1.2);
-				\draw[cstdash] (0,1.2)--(1.6,1.2);
-				\fill[cstdot,dcolora] (1.6,1.2) circle;
-				\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorb] (1.6,0)--(0,0);
-				\draw[decorate,decoration={brace,amplitude=5},visible on=<5>,dcolorc] (0,1.2)--(0,0);
-				\draw[visible on=<6->,dcolorb,thick] (-0.95,.2)--(0.7,.2)--(0.7,0)[->];
-				\draw[visible on=<8->,dcolorc,->,thick] (-0.61,1.3)--(0,1.3);
+	\begin{figure}[hbpt]
+		\centering
+		\begin{minipage}{.48\textwidth}
+			\raggedleft
+			\begin{tikzpicture}
+				\coordinate [label=below left:$0$] (O) at (0,0);
+				\draw[cstaxis] (-.5,0)--(3,0);
+				\draw[cstaxis] (0,-.5)--(0,2.5);
+				\begin{scope}[visible on=<5->]
+					\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (B)--(O) node[midway,below=1.5mm] {$\Re z$};
+					\draw[decorate,decoration={brace,amplitude=5},second,cstfill2] (C)--(O) node[midway,right=1.5mm] {$\Im z$};
+					\coordinate [label=above:\textcolor{third}{$z=x+yi$}] (A) at (2,1.5);
+					\draw[cstdash] (B)--(A)--(C);
+					\fill[cstdot,third] (A) circle;
+				\end{scope}
+				\begin{scope}[visible on=<3->]
+					\coordinate [label=above:\textcolor{main}{实轴}] (R) at (3,0);
+				\end{scope}
+				\begin{scope}[visible on=<4->]
+					\coordinate [label=right:\textcolor{second}{虚轴}] (I) at (0,2.5);
+				\end{scope}
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (0,1.5);
+				\draw[cstaxis,main,visible on=<2->] (-.5,0)--(R);
+				\draw[main,->,thick,visible on=<2->] (-2,.2)-|(.6,0);
+				\draw[cstaxis,second,visible on=<4->] (0,-.5)--(I);
+				\draw[second,->,thick,visible on=<8->] (-2,1.3)--(0,1.3);
 				\draw 
-					(1.6,1.4) node[dcolora] {$z=x+yi$}
-					(-0.2,-0.2) node {$0$}
-					(2.2,.4) node[dcolorb,visible on=<3->] {实轴}
-					(0.6,1.9) node[dcolorc,visible on=<4->] {虚轴}
-					(0.8,-0.3) node[visible on=<5>,dcolorb] {$\Re z$}
-					(0.6,.6) node[visible on=<5>,dcolorc] {$\Im z$}
-					(-1.51,.1) node[visible on=<6->,cstnode,draw=dcolorb,text=dcolorb] {实数}
-					(-1.6,1.2) node[visible on=<8->,align=center,cstnode,draw=dcolorc,text=dcolorc] {纯虚数\\不含原点};
-			\end{scope}
-			\begin{scope}[xshift=1cm]
-				\filldraw[visible on=<6->,cstcurve,dcolora,cstfill] (5.5,1) circle (2.2 and 1.8);
-				\filldraw[visible on=<6->,cstcurve,dcolora,fill=white] (5.5,1)--(3.3,1) arc (180:300:2.2 and 1.8) -- cycle;
-				\draw[visible on=<8->,cstcurve,dcolora] (5,1.9) circle (0.85 and 0.65);
+					(-2,.1) node[cstnode,draw=main,text=main,visible on=<2->] {实数}
+					(-2,1.2) node[align=center,cstnode,draw=second,text=second,visible on=<8->] {纯虚数\\不含原点};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.48\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\filldraw[cstcurve,cstfill] (.8,0) circle (2.6 and 2);
+				\coordinate (R) at (0,-.8);
+				\filldraw[cstcurve,main,fill=white,visible on=<2->] (R) circle (1.2 and .7);
+				\coordinate (I) at (0,.8);
+				\draw (R) node[align=center,main,visible on=<2->] {实数 \\$0,1,\sqrt2,\pi,e$};
+				\draw (I) node[align=center,second,visible on=<8->] {纯虚数 \\$i,-i,\pi i$};
+				\draw[cstcurve,second,visible on=<8->] (I) circle (1.2 and .7);
 				\draw 
-					(4.8,.35) node[visible on=<6->,align=center] {\small 实数 \\$0,1,\sqrt2,\pi,e$}
-					(8.5,1) node[visible on=<6->,align=center,dcolora] {全\\体\\复\\数}
-					(6.6,1.3) node[visible on=<7->,align=center] {\small 虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$}
-					(5,1.9) node[visible on=<8->,align=center] {\small 纯虚数 \\$i,-i,\pi i$};
-			\end{scope}
-		\end{tikzpicture}
-	\end{center}
+					(3.7,0) node[align=center] {全\\体\\复\\数}
+					(2,0) node[align=center,third,visible on=<7->] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
 \end{frame}
 
 
-\begin{frame}{典型例题：判断实数和纯虚数}
+\begin{frame}{例题：判断实数和纯虚数}
 	\onslide<+->
 	\begin{example}
-		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:\par
-		\enumnum1 实数; \enumnum2 纯虚数.
+		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:
+		\begin{enumerate}
+			\item 实数;
+			\item 纯虚数.
+		\end{enumerate}
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
 			\item $\Im z=x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
 			\item $\Re z=x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
-				\onslide<+->{但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$, $x=4$.}
+				\onslide<+->{%
+					但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$.
+				}\onslide<+->{%
+					故 $x=4$.
+				}
 		\end{enumerate}
 	\end{solution}
 	\onslide<+->
@@ -158,32 +166,34 @@
 	\onslide<+->
 	由 $\BC$ 是二维实线性空间可得复数的加法和减法:
 	\onslide<+->
-	\begin{align*}
-		z_1+z_2&=(x_1+x_2)+(y_1+y_2)i,\\
-		\visible<+->{z_1-z_2}&\visible<.->{=(x_1-x_2)+(y_1-y_2)i.}
-	\end{align*}
+	\[
+		z_1+z_2=(x_1+x_2)+(y_1+y_2)i,\quad
+		\visible<+->{z_1-z_2=(x_1-x_2)+(y_1-y_2)i.}
+	\]
 	\onslide<+->
 	复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
-	\onslide<+->
+	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}[scale=.9,framed]
-		\draw[cstaxis] (-1.2,0)--(3.5,0);
-		\draw[cstaxis] (0,-2.2)--(0,1.6);
-		\draw[cstcurve,cstarrowto,dcolora] (0,0)--(2,-0.5);
-		\draw[cstcurve,cstarrowto,dcolora] (0,0)--(1,1.5);
-		\draw[cstcurve,cstarrowto,dcolorb] (0,0)--(3,1);
-		\draw[cstcurve,cstarrowto,dcolorc] (0,0)--(1,-2);
-		\draw[cstdash,cstarrowto] (0,0)--(-1,-1.5);
-		\draw[cstdash] (1,1.5)--(3,1)--(1,-2)--(-1,-1.5);
-		\draw 
-		(2.3,-0.5) node[dcolora] {$z_1$}
-		(0.6,1.5) node[dcolora] {$z_2$}
-		(3.7,1) node[dcolorb] {$z_1+z_2$}
-		(-0.2,1.4) node {$y$}
-		(3.3,-0.3) node {$x$}
-		(-0.2,.2) node {$0$}
-		(1.7,-2.1) node[dcolorc] {$z_1-z_2$}
-		(-1.4,-1.4) node {$-z_2$};
+		\begin{tikzpicture}[scale=.8]
+			\draw[cstaxis] (-2,0)--(4,0);
+			\draw[cstaxis] (0,-3)--(0,2.5);
+			\coordinate (O) at (0,0);
+			\coordinate [label=right:\textcolor{main}{$z_1$}] (Z1) at (2.5,-1);
+			\coordinate [label=above:\textcolor{main}{$z_2$}] (Z2) at (1.5,2);
+			\begin{scope}[visible on=<3->]
+				\coordinate [label=above right:\textcolor{second}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
+				\draw[cstcurve,cstra,second] (O)--(P);
+				\draw[cstdash] (Z2)--(P)--(Z1);
+			\end{scope}
+			\begin{scope}[visible on=<4->]
+				\coordinate [label=below:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
+				\coordinate [label=left:{$-z_2$}] (neg) at ($(O)-(Z2)$);
+				\draw[cstcurve,cstra,third] (O)--(M);
+				\draw[cstdash,cstra] (O)--(neg);
+				\draw[cstdash] (Z1)--(M)--(neg);
+			\end{scope}
+			\draw[cstcurve,cstra,main] (O)--(Z1);
+			\draw[cstcurve,cstra,main] (O)--(Z2);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -191,30 +201,40 @@
 
 \begin{frame}{复数的乘除法}
 	\onslide<+->
-	\alert{规定 $i\cdot i=-1$.}
+	\alert{规定 $i\cdot i=-1$} 并要求实数与复数的乘法和标量乘法(数乘)一致.
 	\onslide<+->
-	由线性空间的数乘和乘法分配律可得:
+	我们希望 $\BC$ 上的运算满足乘法分配律,
 	\onslide<+->
+	则
 	\begin{align*}
 		z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 	\end{align*}
-	\[\visible<+->{\frac1{z}=\frac{x-yi}{x^2+y^2},}\quad
-	\visible<+->{\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.}\]
+	\onslide<+->
+	由此可得 $z\neq0$ 时,
+	\[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
+	\onslide<+->
+	从而
+	\[\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
+
 	\onslide<+->
 	对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
+
 	\onslide<+->
 	当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
 \end{frame}
 
 
-\begin{frame}{典型例题: 常见复数的幂次}
+\begin{frame}{例题: 单位根}
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
 			\item $i^2=-1,i^3=-i,i^4=1$.
-			\onslide<+->{一般地, 对于整数 $n$, 
-			\meq[3pt][3pt]{i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.}}
+			\onslide<+->{%
+				一般地, 对于整数 $n$, 
+				\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]
+			}
+			\vspace{-\baselineskip}
 			\item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
 			\item 令 $z=1+i$, \onslide<+->{则
 			\[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
@@ -222,16 +242,16 @@
 		\vspace{-\baselineskip}
 	\end{example}
 	\onslide<+->
-	我们把满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
+	将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
 	\onslide<+->
 	那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.
 \end{frame}
 
 
-\begin{frame}{典型例题: 常见复数的幂次}
+\begin{frame}{例题: 单位根}
 	\onslide<+->
 	\begin{example}
-		化简 $1+i+i^2+i^3+i^4=$\fillblank{\visible<3->{$1$}}.
+		化简 $1+i+i^2+i^3+i^4$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -265,7 +285,7 @@
 		\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
 	都存在复数 $z_0$ 使得 $p(z_0)=0$.
 	\onslide<+->
-	也就是说复系数多项式可以因式分解成一次多项式的乘积.
+	由此不难知道, 复系数多项式可以因式分解成一次多项式的乘积.
 	\onslide<+->
 	我们会在第五章证明该结论.
 \end{frame}
@@ -282,7 +302,7 @@
 		\item 若 $a>b,c>0$, 则 $ac>bc$.
 	\end{itemize}
 	\onslide<+->
-	而 \emph{$\BC$ 却不是有序域}.
+	而 \alert{$\BC$ 却不是有序域}.
 	\onslide<+->
 	如果 $i>0$, 则
 		\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
@@ -295,13 +315,12 @@
 
 \begin{frame}{共轭复数}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[共轭复数]
 		称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
-	换言之, $\ov z=x-yi$.
+	换言之, $\ov{x+yi}=x-yi$.
 	\end{definition}
 	\onslide<+->
 	从定义出发, 不难验证共轭复数满足如下性质:
-	\onslide<+->
 	\begin{enumerate}
 		\item $z$ 是 $\ov z$ 的共轭复数.
 		\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
@@ -309,9 +328,11 @@
 		\ov{z_1/z_2}=\ov{z_1}/\ov{z_2}$.
 		\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
 		\item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
+		\item $z=\ov z\iff z$ 是实数; $z=-\ov z\iff z$ 是纯虚数或 $z=0$.
 	\end{enumerate}
 	\onslide<+->
 	\enumnum4表明了 $x,y$ 可以用 $z,\ov z$ 表出.
+	\onslide<+->
 	\enumnum2表明共轭复数和四则运算交换.
 	\onslide<+->
 	这意味着使用共轭复数进行计算和证明，往往比直接使用 $x,y$ 表达的形式更简单.
@@ -366,12 +387,13 @@
 	\end{proof}
 \end{frame}
 
-\begin{frame}{例: 复数的代数计算}
+\begin{frame}{例题: 复数的代数计算}
 	\onslide<+->
 	由于 $z\ov z$ 是一个实数,
 	\onslide<+->
 	因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
 		\[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]
+	\vspace{-.5\baselineskip}
 	\onslide<+->
 	\begin{example}
 		$z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
@@ -389,7 +411,7 @@
 \end{frame}
 
 
-\begin{frame}[<*>]{例: 复数的代数计算}
+\begin{frame}{例题: 复数的代数计算}
 	\onslide<+->
 	\begin{example}
 		设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.

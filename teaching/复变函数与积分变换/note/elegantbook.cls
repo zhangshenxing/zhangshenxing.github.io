@@ -325,10 +325,10 @@
   \definecolor{fifth}{RGB}{25,89,90}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{doremi}{
-  \definecolor{main}{RGB}{220,60,105}%
-  \definecolor{second}{RGB}{73,119,213}%
-  \definecolor{third}{RGB}{229,143,52}%
-  \definecolor{fourth}{RGB}{122,89,166}%
+  \definecolor{main}{RGB}{73,119,213}%
+  \definecolor{second}{RGB}{220,60,105}%
+  \definecolor{third}{RGB}{122,89,166}%
+  \definecolor{fourth}{RGB}{229,143,52}%
   \definecolor{fifth}{RGB}{244,220,10}%
 }{\relax}
 \ifdefstring{\ELEGANT@color}{madoka}{
@@ -367,11 +367,7 @@
 
 \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
 
-\RequirePackage{enumerate}
-\RequirePackage[shortlabels,inline]{enumitem}
-\RequirePackage{tasks}
-
-\RequirePackage[labelfont={bf,color=main}]{caption} 
+\RequirePackage[labelfont={bf,color=fourth}]{caption} 
 \captionsetup[table]{skip=3pt}
 \captionsetup[figure]{skip=3pt}
 
@@ -442,10 +438,10 @@
   \newcommand{\exercisename}{练习} % 练习=习题
   \newcommand{\homeworkname}{作业}
   \newcommand{\answername}{参考答案}
-  \newcommand{\remarkname}{注}
+  \newcommand{\remarkname}{注记}
   \newcommand{\assumptionname}{假设}
   \newcommand{\conclusionname}{结论}
-  \newcommand{\solutionname}{解}
+  \newcommand{\solutionname}{解答}
   \newcommand{\propertyname}{性质}
   \newcommand{\introductionname}{内容提要}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
@@ -863,27 +859,6 @@
             \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 %  https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
 
-\newcommand*{\eitemi}{\tikz \draw [baseline, ball color=main,draw=none] circle (2pt);}
-\newcommand*{\eitemii}{\tikz \draw [baseline, fill=main,draw=none,circular drop shadow] circle (2pt);}
-\newcommand*{\eitemiii}{\tikz \draw [baseline, fill=main,draw=none] circle (2pt);}
-\setlist[itemize,1]{label={\eitemi}}
-\setlist[itemize,2]{label={\eitemii}}
-\setlist[itemize,3]{label={\eitemiii}}
-\setlist[enumerate,1]{label=\color{main}(\arabic*)}
-\setlist[enumerate,2]{label=\color{main}(\alph*).}
-\setlist[enumerate,3]{label=\color{main}\Roman*.}
-\setlist[enumerate,4]{label=\color{main}\Alph*.}
-\newlist{homeworklist}{enumerate}{1}
-\setlist[homeworklist,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
-\newlist{exlist}{enumerate}{3}
-\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
-\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
-\setlist[exlist,3]{label=\color{main}{(\roman*)}}
-\settasks{label-format=\textcolor{main},label={(\arabic*)},label-width=1.5em}
-\setlist{nolistsep}
-\NewTasksEnvironment[label={(\Alph*)},label-width=1.5em]{taskschoice}[()]
-\NewTasksEnvironment[label={\arabic*.},label-width=1.5em]{tasksans}[()]
-
 \RequirePackage{apptools}
 
 % appendix chapter:
@@ -956,7 +931,7 @@
       lower separated=false,
       % before upper={\setlength{\parindent}{\normalparindent}},
       coltitle=white,
-      % colback=gray!5,
+      colback=white,
       boxrule=0pt,
       fonttitle=\bfseries,
       enhanced,
@@ -972,22 +947,24 @@
         arc=0pt,
         outer arc=0pt},
       separator sign={.},},
-    defstyle/.style={
-      common,
-      borderline={0pt}{0pt}{second,cstdash},
-      colback=white,
-      colbacktitle=second
-    },
-    thmstyle/.style={
+      mainstyle/.style={
+        common,
+        borderline={0pt}{0pt}{main,cstdash},
+        colbacktitle=main
+      },
+      secondstyle/.style={
+        common,
+        borderline={0pt}{0pt}{second,cstdash},
+        colbacktitle=second
+      },
+    thirdstyle/.style={
       common,
       borderline={0pt}{0pt}{third,cstdash},
-      colback=white,
       colbacktitle=third
     },
-    prostyle/.style={
+    fourthstyle/.style={
       common,
       borderline={0pt}{0pt}{fourth,cstdash},
-      colback=white,
       colbacktitle=fourth
     },
     ELEGANT@title/.code n args={2}
@@ -1061,13 +1038,13 @@
   }
   % define several environment 
   % we define headers like \definitionname before
-  \ELEGANT@newtheorem{theorem}{thm}{thmstyle}
-  \ELEGANT@newtheorem{definition}{def}{defstyle}
-  \ELEGANT@newtheorem{postulate}{pos}{thmstyle}
-  \ELEGANT@newtheorem{axiom}{axi}{thmstyle}
-  \ELEGANT@newtheorem{corollary}{cor}{thmstyle}
-  \ELEGANT@newtheorem{lemma}{lem}{thmstyle}
-  \ELEGANT@newtheorem{proposition}{pro}{prostyle}
+  \ELEGANT@newtheorem{theorem}{thm}{mainstyle}
+  \ELEGANT@newtheorem{definition}{def}{thirdstyle}
+  \ELEGANT@newtheorem{postulate}{pos}{mainstyle}
+  \ELEGANT@newtheorem{axiom}{axi}{mainstyle}
+  \ELEGANT@newtheorem{corollary}{cor}{mainstyle}
+  \ELEGANT@newtheorem{lemma}{lem}{mainstyle}
+  \ELEGANT@newtheorem{proposition}{pro}{mainstyle}
 }{\relax}
 
 
@@ -1195,7 +1172,7 @@
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
-  \par\noindent\textbf{\color{second}{\examplename} \theexam #1 }\rmfamily}{
+  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
 %% Exercise with counter
@@ -1205,8 +1182,8 @@
 \newenvironment{exercise}[1][]{
   \refstepcounter{exer}
   \par\noindent\makebox[-3pt][r]{
-    \scriptsize\color{main}\HandPencilLeft\quad}
-    \textbf{\color{second}{\exercisename} \theexer #1 }\rmfamily}{
+    \scriptsize\color{fifth}\HandPencilLeft\quad}
+    \textbf{\color{fifth}{\exercisename} \theexer #1 }\rmfamily}{
     \par\ignorespacesafterend}
 
 %% Problem with counter
@@ -1230,7 +1207,7 @@
 %   \par}
 
 
-\newenvironment{solution}[1][\solutionname]{\par\noindent\textbf{\color{second}#1\@addpunct{:}} \citshape}{\par}
+\newenvironment{solution}[1][\solutionname]{\par\noindent\textbf{\color{fourth}#1\@addpunct{:}} \citshape}{\par}
 \newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}\remarkname}}{\vspace*{5pt}\par}
 \newenvironment{assumption}{\par\noindent\textbf{\color{fourth}\assumptionname} \citshape}{\par}
 \newenvironment{conclusion}{\par\noindent\textbf{\color{fourth}\conclusionname} \citshape}{\par}
@@ -1267,13 +1244,21 @@
 \newenvironment{homework}[1][\homeworkname]{
   \newpage
   \begin{center}
-    \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\homeworkname}{\homeworkname}}
-    % \markboth{#1}{\rightmark}
+    \phantomsection\addcontentsline{toc}{section}{#1}
     \markright{#1}
     \textcolor{main}{\Large\bfseries~#1~}
   \end{center}
   \begin{homeworklist}}{
   \end{homeworklist}}
+  
+\newcommand{\exerciseanswer}[1][\exercisename~\answername]{
+  \newpage
+  \begin{center}
+    \phantomsection\addcontentsline{toc}{section}{#1}
+    \markright{#1}
+    \textcolor{main}{\Large\bfseries~#1~}
+  \end{center}
+}
 
 \newenvironment{answer}[1][\answername]{
   \chapter{#1}
@@ -1484,10 +1469,8 @@
   \begin{enumerate}[label=\small\protect\circled{\arabic*}]}{
   \end{enumerate}}
 
-
-
 \renewcommand\tableofcontents{%
-  \hypersetup{linktoc=all, linkcolor=fourth}
+  \hypersetup{linktoc=all, linkcolor=main}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else

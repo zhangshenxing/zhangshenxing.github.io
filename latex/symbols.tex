@@ -1,6 +1,56 @@
 \RequirePackage{extarrows}
 
-\newcommand{\cnen}[2]{{$\overset{\text{\clap{#2}}}{\text{#1}}$}}
+\newfontface\cmunrm{cmunrm.otf}
+\newcommand\cmu[1]{{\cmunrm{#1}}}
+
+
+\newcommand\simr{\mathrel{\overset{r}{\sim}}}
+\newcommand\simc{\mathrel{\overset{c}{\sim}}}
+\newcommand{\wsim}[3][3]{
+  \mathrel{\overset{\nsmath{#2}}{\underset{\nsmath{#3}}{\scalebox{#1}[1]{$\sim$}}}}
+}
+\newcommand{\Emat}{
+	\begin{matrix}
+		1&&\\
+		&\ddots&\\
+		&&1
+	\end{matrix}
+}
+% 参数为行+1, 列
+\newcommand{\augdash}[2]{\CodeAfter
+\tikz \draw[cstdash,main] (1-|#2) -- (#1-|#2);}
+\newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
+\mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
+\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[second] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
+\newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
+\newcommand{\laeq}[2][l]{
+	\setlength{\arraycolsep}{0pt}
+	\left\{\begin{array}{#1}
+	#2\end{array}\right.}
+\newenvironment{laeqn}{
+	\setcounter{equation}{0}
+	\begin{numcases}{}}{
+	\end{numcases}}
+% arrows
+\newcommand{\nsmath}[1]{\text{\normalsize{$#1$}}}
+
+\usepackage[normalem]{ulem}
+\NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
+\newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
+\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
+\newcommand{\trueex}{$\checkmark$}
+\newcommand{\falseex}{$\times$}
+
+\newcommand{\ansno}[1]{\par\noindent\emph{\thechapter.#1}}
+\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
+
+\newcommand{\cnen}[2]{{\kaishu$\overset{\text{{#2}}}{\text{#1}}$}}
+\newcommand{\nounen}[2]{{\color{main}\kaishu\cnen{#1}{#2}}\index{{#1}}}
+\newcommand{\noun}[1]{{\color{main}\kaishu #1}\index{{#1}}}
+\newcommand{\nouns}[2]{{\color{main}\kaishu #1}\index{{#2}}}
+\newcommand{\nounsen}[3]{{\color{main}\kaishu\cnen{#1}{#2}}\index{{#3}}}
+
 % arrows
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
@@ -277,7 +327,7 @@
 \newcommand\RK{{\mathrm{K}}}
 \newcommand\RL{{\mathrm{L}}}
 \newcommand\RM{{\mathrm{M}}}
-\newcommand\RN{{\mathrm{N}}}
+\let\RN\relax\newcommand\RN{{\mathrm{N}}}
 \newcommand\RO{{\mathrm{O}}}
 \newcommand\RP{{\mathrm{P}}}
 \newcommand\RQ{{\mathrm{Q}}}

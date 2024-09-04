@@ -42,42 +42,42 @@
 	\begin{example}
 		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-93mm,yshift=47mm,scale=1.3]
 			\foreach \j in {1,2,...,6}{
-				\filldraw[cstcurve,dcolorb,cstfill,visible on=<2-5>] (0,0)--({cos(60*\j-30)/cos(30)},{sin(60*\j-30)/cos(30)})--({cos(60*\j+30)/cos(30)},{sin(60*\j+30)/cos(30)})--cycle;
+				\filldraw[cstcurve,second,cstfill,visible on=<2-5>] (0,0)--({cos(60*\j-30)/cos(30)},{sin(60*\j-30)/cos(30)})--({cos(60*\j+30)/cos(30)},{sin(60*\j+30)/cos(30)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,12}{
-				\filldraw[thick,dcolorb,cstfill,visible on=<6>] (0,0)--({cos(30*\j-15)/cos(15)},{sin(30*\j-15)/cos(15)})--({cos(30*\j+15)/cos(15)},{sin(30*\j+15)/cos(15)})--cycle;
+				\filldraw[thick,second,cstfill,visible on=<6>] (0,0)--({cos(30*\j-15)/cos(15)},{sin(30*\j-15)/cos(15)})--({cos(30*\j+15)/cos(15)},{sin(30*\j+15)/cos(15)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,24}{
-				\filldraw[semithick,dcolorb,cstfill,visible on=<7>] (0,0)--({cos(15*\j-7.5)/cos(7.5)},{sin(15*\j-7.5)/cos(7.5)})--({cos(15*\j+7.5)/cos(7.5)},{sin(15*\j+7.5)/cos(7.5)})--cycle;
+				\filldraw[semithick,second,cstfill,visible on=<7>] (0,0)--({cos(15*\j-7.5)/cos(7.5)},{sin(15*\j-7.5)/cos(7.5)})--({cos(15*\j+7.5)/cos(7.5)},{sin(15*\j+7.5)/cos(7.5)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,48}{
-				\filldraw[thin,dcolorb,cstfill,visible on=<8->] (0,0)--({cos(7.5*\j-3.75)/cos(3.75)},{sin(7.5*\j-3.75)/cos(3.75)})--({cos(7.5*\j+3.75)/cos(3.75)},{sin(7.5*\j+3.75)/cos(3.75)})--cycle;
+				\filldraw[thin,second,cstfill,visible on=<8->] (0,0)--({cos(7.5*\j-3.75)/cos(3.75)},{sin(7.5*\j-3.75)/cos(3.75)})--({cos(7.5*\j+3.75)/cos(3.75)},{sin(7.5*\j+3.75)/cos(3.75)})--cycle;
 			}
-			\fill[dcolord] (0,0) circle (1);
+			\fill[fourth] (0,0) circle (1);
 			\foreach \j in {1,2,...,6}{
-				\filldraw[cstcurve,dcolorc,cstfill,fill=dcolore,visible on=<2-5>] (0,0)--({cos(60*\j)},{sin(60*\j)})--({cos(60*\j+60)},{sin(60*\j+60)})--cycle;
+				\filldraw[cstcurve,third,cstfill,fill=fifth,visible on=<2-5>] (0,0)--({cos(60*\j)},{sin(60*\j)})--({cos(60*\j+60)},{sin(60*\j+60)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,12}{
-				\filldraw[thick,dcolorc,cstfill,fill=dcolore,visible on=<6>] (0,0)--({cos (30*\j)},{sin (30*\j)})--({cos(30*\j+30)},{sin(30*\j+30)})--cycle;
+				\filldraw[thick,third,cstfill,fill=fifth,visible on=<6>] (0,0)--({cos (30*\j)},{sin (30*\j)})--({cos(30*\j+30)},{sin(30*\j+30)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,24}{
-				\filldraw[semithick,dcolorc,cstfill,fill=dcolore,visible on=<7>] (0,0)--({cos (15*\j)},{sin (15*\j)})--({cos(15*\j+15)},{sin(15*\j+15)})--cycle;
+				\filldraw[semithick,third,cstfill,fill=fifth,visible on=<7>] (0,0)--({cos (15*\j)},{sin (15*\j)})--({cos(15*\j+15)},{sin(15*\j+15)})--cycle;
 			}
 			\foreach \j in {1,2,3,...,48}{
-				\filldraw[thin,dcolorc,cstfill,fill=dcolore,visible on=<8->] (0,0)--({cos (7.5*\j)},{sin (7.5*\j)})--({cos(7.5*\j+7.5)},{sin(7.5*\j+7.5)})--cycle;
+				\filldraw[thin,third,cstfill,fill=fifth,visible on=<8->] (0,0)--({cos (7.5*\j)},{sin (7.5*\j)})--({cos(7.5*\j+7.5)},{sin(7.5*\j+7.5)})--cycle;
 			}
 			\begin{scope}[visible on=<2>]
-				\draw[cstcurve,dcolora] (0,0)--(1,{(sqrt 3)/3});
+				\draw[cstcurve,main] (0,0)--(1,{(sqrt 3)/3});
 				\draw
-					(0,-0.3) node[dcolorb] {$O$}
+					(0,-0.3) node[second] {$O$}
 					(1.1,0) node {$A$}
 					(0.6,1) node {$B$}
 					(1.1,0.7) node {$C$};
 					\coordinate (A) at (1,0);
 					\coordinate (B) at (0,0);
 					\coordinate (C) at (1,0.577);
-					\draw[thick,dcolorb] (A)--(B)--(C);
-					\draw[dcolorb,thick] pic [draw, "$\theta$",angle eccentricity=1.5,angle radius=5mm] {angle};
+					\draw[thick,second] (A)--(B)--(C);
+					\draw[second,thick] pic [draw, "$\theta$",angle eccentricity=1.5,angle radius=5mm] {angle};
 			\end{scope}
 		\end{tikzpicture}\end{tikzpicture}
 
@@ -109,23 +109,23 @@
 \begin{frame}{数列极限的定义}
 	\onslide<+->
 	极限可以按如下方式理解:
-	\begin{alertblock}{极限的朴素定义}
+	\begin{second}{极限的朴素定义}
 		给定一个函数 $y=f(x)$.
 		
 		当 $x$ \alert{越来越无限接近}于某个状态时, $y$ \alert{无限接近}某个值 $A$, 则 $A$ 就是 $y=f(x)$ 关于这个极限过程的\emph{极限}, 记为 \emph{$\lim\limits_{x\ra\text{某个状态}}f(x)=A$} 或 \emph{$y\ra A (x\ra\text{某个状态})$}.
 		\begin{tikzpicture}[overlay,xshift=-121mm,yshift=-7mm]
-			\begin{scope}[dcolord,visible on=<2->]
+			\begin{scope}[fourth,visible on=<2->]
 				\draw[thick] (-2.25,1.1) rectangle (4.3,1.6);
 				\draw (6,2.8) node {极限过程: $x\ra$ 某个状态};
 				\draw[cstaxis,semithick] (2.5,1.6)--(6,2.5);
 			\end{scope}
-			\begin{scope}[dcolorc,visible on=<3->]
+			\begin{scope}[third,visible on=<3->]
 				\draw[thick] (4.45,1.1) rectangle (8.3,1.6);
 				\draw (10.3,2.8) node {记为 $y\ra A$};
 				\draw[cstaxis,semithick] (7.9,1.6)--(10.3,2.5);
 			\end{scope}
 		\end{tikzpicture}
-	\end{alertblock}
+	\end{second}
 
 	\onslide<+->\onslide<+->\onslide<+->
 	我们来将该表述严格化.
@@ -158,7 +158,7 @@
 					\draw (\x,-0.25) node {$\x$};
 				}
 				\foreach \x in {1,2,3,...,12}{
-					\fill[cstdot,dcolora] (\x,{8/(2^\x)}) circle;
+					\fill[cstdot,main] (\x,{8/(2^\x)}) circle;
 				}
 			\end{tikzpicture}
 		\end{center}
@@ -182,7 +182,7 @@
 					\draw (-0.2,{\x/2}) node {$\x$};
 				}
 				\foreach \x in {1,2,3,...,9}{
-					\fill[cstdot,dcolora] ({\x/2},{\x/2}) circle;
+					\fill[cstdot,main] ({\x/2},{\x/2}) circle;
 				}
 			\end{tikzpicture}
 		\end{center}
@@ -198,7 +198,7 @@
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis] (-0.3,0)--(13,0);
 				\draw[cstaxis] (0,-0.3)--(0,4);
-				\draw[cstdash,dcolord] (0,3.14)--(13,3.14);
+				\draw[cstdash,fourth] (0,3.14)--(13,3.14);
 				\draw (-0.3,3.14) node {$\pi$};
 				\draw (13,-0.3) node {$n$};
 				\foreach \x in {1,2,3,...,20}{
@@ -206,7 +206,7 @@
 					\draw ({0.6*\x},-0.25) node {$\x$};
 				}
 				\foreach \x in {1,2,3,...,20}{
-					\fill[cstdot,dcolora] ({0.6*\x},{\x*sin(180/\x)}) circle;
+					\fill[cstdot,main] ({0.6*\x},{\x*sin(180/\x)}) circle;
 				}
 			\end{tikzpicture}
 		\end{center}
@@ -222,8 +222,8 @@
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis] (-0.3,0)--(12.5,0);
 				\draw[cstaxis] (0,-2)--(0,2);
-				\draw[cstdash,dcolord] (0,1)--(12.5,1);
-				\draw[cstdash,dcolord] (0,-1)--(12.5,-1);
+				\draw[cstdash,fourth] (0,1)--(12.5,1);
+				\draw[cstdash,fourth] (0,-1)--(12.5,-1);
 				\draw (-0.2,1) node {$1$};
 				\draw (-0.35,-1) node {$-1$};
 				\draw (12.5,-0.3) node {$n$};
@@ -232,10 +232,10 @@
 					\draw ({0.6*\x},-0.25) node {$\x$};
 				}
 				\foreach \x in {1,3,5,...,19}{
-					\fill[cstdot,dcolora] ({0.6*\x},{-1+1/\x}) circle;
+					\fill[cstdot,main] ({0.6*\x},{-1+1/\x}) circle;
 				}
 				\foreach \x in {2,4,6,...,20}{
-					\fill[cstdot,dcolora] ({0.6*\x},{1+1/\x}) circle;
+					\fill[cstdot,main] ({0.6*\x},{1+1/\x}) circle;
 				}
 			\end{tikzpicture}
 		\end{center}
@@ -251,7 +251,7 @@
 			\begin{tikzpicture}[framed]
 				\draw[cstaxis] (-0.3,0)--(12,0);
 				\draw[cstaxis] (0,-0.3)--(0,2);
-				\draw[cstdash,dcolord,visible on=<1-2>] (0,1)--(12,1);
+				\draw[cstdash,fourth,visible on=<1-2>] (0,1)--(12,1);
 				\draw (-0.3,1) node[visible on=<1-2>] {$1$};
 				\draw (12,-0.3) node {$n$};
 				\foreach \x in {1,2,3,...,18}{
@@ -259,19 +259,19 @@
 					\draw ({0.6*\x},-0.25) node {$\x$};
 				}
 				\foreach \x in {1,3,5,...,19}{
-					\fill[cstdot,dcolora] ({0.6*\x},{1-1/\x}) circle;
+					\fill[cstdot,main] ({0.6*\x},{1-1/\x}) circle;
 				}
 				\foreach \x in {2,4,6,...,18}{
-					\fill[cstdot,dcolora] ({0.6*\x},{1+1/\x}) circle;
+					\fill[cstdot,main] ({0.6*\x},{1+1/\x}) circle;
 				}
 				\begin{scope}[visible on=<3->]
-					\draw[cstdash,dcolore] (0,1.2)--(12,1.2);
-					\draw[cstdash,dcolore] (0,0.8)--(12,0.8);
+					\draw[cstdash,fifth] (0,1.2)--(12,1.2);
+					\draw[cstdash,fifth] (0,0.8)--(12,0.8);
 					\draw (-0.6,1.2) node {$1+\varepsilon$};
 					\draw (-0.6,0.8) node {$1-\varepsilon$};
 				\end{scope}
 				\begin{scope}[visible on=<4->]
-					\draw[cstdash,dcolorc] (3.9,0)--(3.9,1.2);
+					\draw[cstdash,third] (3.9,0)--(3.9,1.2);
 					\draw (3.9,-0.25) node {$N$};
 				\end{scope}
 			\end{tikzpicture}
@@ -301,8 +301,8 @@
 
 		\onslide<+->{如果不存在这样的常数 $a$, 则称该数列\emph{发散}(没有极限, 不收敛).}
 		\onslide<+->{\begin{tikzpicture}[overlay]
-			\draw[semithick,dcolorc] (-9.3,2.5) rectangle (-0.6,3.2);
-			\draw (0.5,2.85) node[dcolorc] {$\varepsilon$-$N$ 语言};
+			\draw[semithick,third] (-9.3,2.5) rectangle (-0.6,3.2);
+			\draw (0.5,2.85) node[third] {$\varepsilon$-$N$ 语言};
 		\end{tikzpicture}}
 	\end{definition*}
 	\onslide<+->
@@ -542,14 +542,14 @@
 		\begin{tikzpicture}[framed,scale=0.8,visible on=<2->]
 			\draw[cstaxis] (0,0)--(6.5,0);
 			\draw[cstaxis] (0,0)--(0,6.3);
-			\draw[cstaxis,dcolora,visible on=<2>]
+			\draw[cstaxis,main,visible on=<2>]
 				(1,1)--(1,2)--(2,1)--(1,3)--(2,2)--(3,1)--(1,4)--(2,3)--(3,2)--(4,1)--(1,5)--(2,4)--(3,3)--(4,2)--(5,1)--(1,6);
 			\foreach \x in {1,2,3,4,5}{
-				\draw[cstaxis,dcolorb,visible on=<3->] (\x,1)--(\x,5.5);
-				\draw[dcolorb,visible on=<3->] (\x,5.8) node {$0$};
+				\draw[cstaxis,second,visible on=<3->] (\x,1)--(\x,5.5);
+				\draw[second,visible on=<3->] (\x,5.8) node {$0$};
 			}
-			\draw[cstaxis,dcolorc,visible on=<4->] (1,1)--(5.5,5.5);
-			\draw[dcolorc,visible on=<4->] (5.7,5.7) node {$1$};
+			\draw[cstaxis,third,visible on=<4->] (1,1)--(5.5,5.5);
+			\draw[third,visible on=<4->] (5.7,5.7) node {$1$};
 			\foreach \x in {1,2,3,4,5}{
 				\draw (\x,0)--(\x,0.2);
 				\draw (0,\x)--(0.2,\x);

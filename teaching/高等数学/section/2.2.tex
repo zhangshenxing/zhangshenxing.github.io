@@ -18,8 +18,8 @@
 		\end{center}
 		}\onslide<+->{则称 $A$ 为 \emph{$f(x)$ 当 $x\ra+\infty$ 时的极限}, 记为 \emph{$\lim\limits_{x\ra+\infty}f(x)=A$} 或 $f(x)\ra A (x\ra+\infty)$.}
 		\onslide<+->{\begin{tikzpicture}[overlay]
-			\draw[semithick,dcolorc] (1.3,1.3) rectangle (10.5,2);
-			\draw (11.6,1.65) node[dcolorc] {$\varepsilon$-$X$ 语言};
+			\draw[semithick,third] (1.3,1.3) rectangle (10.5,2);
+			\draw (11.6,1.65) node[third] {$\varepsilon$-$X$ 语言};
 		\end{tikzpicture}}
 	\end{definition}
 \end{frame}
@@ -33,18 +33,18 @@
 			\draw[cstaxis] (-0.5,0)--(9,0);
 			\draw[cstaxis] (0,-0.4)--(0,1.7);
 			\begin{scope}[visible on=<1>]
-				\draw[cstdash,dcolord] (0,1)--(9,1);
+				\draw[cstdash,fourth] (0,1)--(9,1);
 				\draw (-0.25,1) node {$A$};
 			\end{scope}
 			\begin{scope}[visible on=<2->]
-				\draw[cstdash,dcolore] (0,1.2)--(9,1.2);
-				\draw[cstdash,dcolore] (0,0.8)--(9,0.8);
-				\draw[cstdash,dcolorc] (4,0)--(4,1.2);
+				\draw[cstdash,fifth] (0,1.2)--(9,1.2);
+				\draw[cstdash,fifth] (0,0.8)--(9,0.8);
+				\draw[cstdash,third] (4,0)--(4,1.2);
 				\draw (-0.6,1.2) node {$A+\varepsilon$};
 				\draw (-0.6,0.8) node {$A-\varepsilon$};
 				\draw (4,-0.25) node {$X$};
 			\end{scope}
-			\draw[cstcurve,dcolora,smooth,domain=1.2:9.5] plot({\x-1},{1+3*sin(\x*240)/(1+\x*\x)});
+			\draw[cstcurve,main,smooth,domain=1.2:9.5] plot({\x-1},{1+3*sin(\x*240)/(1+\x*\x)});
 		\end{tikzpicture}
 	\end{center}
 
@@ -94,25 +94,25 @@
 		\begin{tikzpicture}[framed]
 			\draw[cstaxis] (-0.5,0)--(10,0);
 			\draw[cstaxis] (0,-0.4)--(0,3.4);
-			\draw[cstcurve,dcolora,smooth,domain=0.02:1.6] plot({4+2*\x},{2+1.4*\x*sin(1/\x*180)});
-			\draw[cstcurve,dcolora,smooth,domain=0.02:1.6] plot({4-2*\x},{2+1.4*\x*sin(1/\x*180)});
+			\draw[cstcurve,main,smooth,domain=0.02:1.6] plot({4+2*\x},{2+1.4*\x*sin(1/\x*180)});
+			\draw[cstcurve,main,smooth,domain=0.02:1.6] plot({4-2*\x},{2+1.4*\x*sin(1/\x*180)});
 			\begin{scope}[visible on=<3>]
-				\draw[cstdash,dcolord] (0,2)--(10,2);
+				\draw[cstdash,fourth] (0,2)--(10,2);
 				\draw (-0.25,2) node {$A$};
 				\draw (4,-0.25) node {$x_0$};
 			\end{scope}
 			\begin{scope}[visible on=<4->]
-				\draw[cstdash,dcolore] (0,2.4)--(10,2.4);
-				\draw[cstdash,dcolore] (0,1.6)--(10,1.6);
-				\draw[cstdash,dcolorc] (3.25,0)--(3.25,2.4);
-				\draw[cstdash,dcolorc] (4.75,0)--(4.75,2.4);
+				\draw[cstdash,fifth] (0,2.4)--(10,2.4);
+				\draw[cstdash,fifth] (0,1.6)--(10,1.6);
+				\draw[cstdash,third] (3.25,0)--(3.25,2.4);
+				\draw[cstdash,third] (4.75,0)--(4.75,2.4);
 				\draw (-0.6,2.4) node {$A+\varepsilon$};
 				\draw (-0.6,1.6) node {$A-\varepsilon$};
 				\draw (4.75,-0.35) node {$x_0+\delta$};
 				\draw (3.25,-0.35) node {$x_0-\delta$};
 			\end{scope}
 			\filldraw[cstdote] (4,2) circle;
-			\fill[cstdot,dcolora] (4,1) circle;
+			\fill[cstdot,main] (4,1) circle;
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -135,8 +135,8 @@
 		\end{center}
 		}\onslide<+->{则称 $A$ 为 $f(x)$ 当 $x\ra x_0$ 时的极限, 记为 $\lim\limits_{x\ra x_0}f(x)=A$ 或 $f(x)\ra A(x\ra x_0)$.
 		}\onslide<+->{\begin{tikzpicture}[overlay]
-			\draw[semithick,dcolorc] (1.8,1.2) rectangle (12.4,1.9);
-			\draw (13.4,1.55) node[dcolorc] {$\varepsilon$-$\delta$ 语言};
+			\draw[semithick,third] (1.8,1.2) rectangle (12.4,1.9);
+			\draw (13.4,1.55) node[third] {$\varepsilon$-$\delta$ 语言};
 		\end{tikzpicture}}
 	\end{definition}
 \end{frame}

@@ -100,27 +100,18 @@
 \newcommand\abox[1]{\colorbox{yellow}{\alert{#1}}}
 \newcommand\aboxeq[1]{\abox{$\displaystyle #1$}}
 % 图形色
-\colorlet{dcolora}{red}
-\colorlet{dcolorb}{blue}
-\colorlet{dcolorc}{red!50!blue}
-\colorlet{dcolord}{green!50!black}
-\colorlet{dcolore}{orange}
+\colorlet{main}{red}
+\colorlet{second}{blue}
+\colorlet{third}{red!50!blue}
+\colorlet{fourth}{green!50!black}
+\colorlet{fifth}{orange}
 % 非考试内容
 \newcommand{\noexer}{\hfill\mdseries\itshape\color{black}\small 非考试内容}
 % 枚举数字引用标志
 \newcommand\enumnum[1]{{\mdseries\upshape\usebeamerfont{enumerate item}\usebeamercolor[fg]{enumerate item}(#1)}}
-\newcommand\enumnumhk[1]{{
-	\usebeamercolor[fg]{enumerate subitem}%
-	\begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
-		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
-		\pgfusepath{stroke}
-		\pgftext[base]{\color{fg}#1}
-	\end{pgfpicture}%
-}}
 % 缩进
 \renewcommand{\indent}{\hspace*{1em}}
 \setlength{\parindent}{1em}
-\newcommand\mqed{\visible<.->{\qedsymbol}} % 手动证毕标志
 \newcommand\peq{\mathrel{\phantom{=}}} % 用于对齐的等号幻影
 \NewDocumentCommand\meq{O{0pt} O{0pt} m}{\par\vspace{#1}\begin{center}$\displaystyle #3$\end{center}\vspace{#2}} % 减少列表公式后的多余空白
 \newcommand\beqskip[1]{\begingroup\abovedisplayskip=#1\belowdisplayskip=#1\belowdisplayshortskip=#1\parskip=#1} % 减少公式垂直间距, 配合\endgroup
@@ -192,8 +183,8 @@
 }
 \tikzset{
 	background rectangle/.style={semithick,draw=cyan,fill=white,rounded corners},
-	cstarrowto/.style     ={-Stealth}, %尖箭头
-	cstarrowfrom/.style   ={Stealth-},
+	cstra/.style     ={-Stealth}, %尖箭头
+	cstla/.style   ={Stealth-},
 	cstarrowdouble/.style ={Stealth-Stealth},
 	cstarrow1to/.style    ={-Straight Barb}, %宽箭头
 	cstarrow1from/.style  ={Straight Barb-},
@@ -211,8 +202,8 @@
 	cstfill1/.style       ={fill=red!30}, %填充
 	cstfille1/.style      ={pattern=north east lines, pattern color=red}, %虚线填充
 	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnodeb/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnodeg/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode1/.style       ={fill=lightb,draw=heavyb,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode2/.style       ={fill=lightg,draw=heavyg,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnoder/.style       ={fill=lightr,draw=heavyr,text=black,rounded corners=0.2cm,line width=1pt}
 }
 % 标题

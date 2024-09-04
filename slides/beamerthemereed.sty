@@ -326,34 +326,34 @@
 \RenewDocumentEnvironment{fact}{o}{\begin{block}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block}}
 \NewDocumentEnvironment{fact*}{o}{\begin{block*}{\translate{Fact}\IfNoValueTF{#1}{}{~(#1)}}}{\end{block*}}
 % proofs
-\newenvironment{proofblock}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{proofblock@}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
-\newenvironment{proofblock*}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
-\newenvironment{proofblock@*}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{solution}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{solution@}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
+\newenvironment{solution*}[1]{\begin{tcolorbox}[proofstyle,title=#1,fontupper=\itshape,indent]}{\end{tcolorbox}}
+\newenvironment{solution@*}{\begin{tcolorbox}[proofstyle,notitle,fontupper=\itshape,indent]}{\end{tcolorbox}}
 
-\RenewDocumentEnvironment{solution}{o}{\begin{proofblock}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{solution*}{o}{\begin{proofblock*}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\RenewDocumentEnvironment{solution}{o}{\begin{solution}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{solution*}{o}{\begin{solution*}{\translate{Solution}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{solutionc}{o}{\begin{proofblock}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{solutionc*}{o}{\begin{proofblock*}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{solutionc}{o}{\begin{solution}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{solutionc*}{o}{\begin{solution*}{\translate{Solution (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{proofblock}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock}}
-\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{proofblock*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock*}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{solution}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution}}
+\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{solution*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution*}}
 
-\NewDocumentEnvironment{proofs}{o}{\begin{proofblock}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{proofs*}{o}{\begin{proofblock*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{proofs}{o}{\begin{solution}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{proofs*}{o}{\begin{solution*}{\translate{Proof}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{proofc}{o}{\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{proofc*}{o}{\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{proofc}{o}{\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{proofc*}{o}{\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{proofblock}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock}}
-\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{proofblock*}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{proofblock*}}
+\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{solution}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution}}
+\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{solution*}{\translate{Proof (Continued)}\IfNoValueTF{#1}{}{~(#1)}}}{\popQED\end{solution*}}
 
-\NewDocumentEnvironment{analysis}{o}{\begin{proofblock}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{analysis*}{o}{\begin{proofblock*}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{analysis}{o}{\begin{solution}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{analysis*}{o}{\begin{solution*}{\translate{Analysis}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 
-\NewDocumentEnvironment{answer}{o}{\begin{proofblock}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock}}
-\NewDocumentEnvironment{answer*}{o}{\begin{proofblock*}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{proofblock*}}
+\NewDocumentEnvironment{answer}{o}{\begin{solution}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution}}
+\NewDocumentEnvironment{answer*}{o}{\begin{solution*}{\translate{Answer}\IfNoValueTF{#1}{}{~(#1)}}}{\end{solution*}}
 % definitions
 \newenvironment{defblock}[1]{\begin{tcolorbox}[defstyle,title=#1,fontupper=\itshape]}{\end{tcolorbox}}
 \newenvironment{defblock@}{\begin{tcolorbox}[defstyle,notitle,fontupper=\itshape]}{\end{tcolorbox}}
