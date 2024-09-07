@@ -1,23 +1,23 @@
 \begin{frame}[<*>]{课程信息}
-\begin{itemize}
-	\item 课时:
-		\begin{itemize}
-			\item $10$周$40$课时;
-			\item 2024-09-09 $\sim$ 2024-11-14
-		\end{itemize}
-	\item 课程QQ群(入群答案 1400261B)
-		\begin{itemize}
-			\item 008班(生医、通信工程) \alert{\textbf{973042840}}
-			\item 009班(车辆创新实验、集成) \alert{\textbf{973041550}}
-		\end{itemize}
-	\item 教材: 西交高数教研室《复变函数》,张元林《积分变换》
-\end{itemize}
-\begin{center}
-	\begin{figure}
-		\includegraphics[height=32mm]{../image/book1.jpg}
-		\includegraphics[height=32mm]{../image/book2.png}
-	\end{figure}
-\end{center}
+	\begin{itemize}
+		\item 课时:
+			\begin{itemize}
+				\item $10$周$40$课时;
+				\item 2024-09-09 $\sim$ 2024-11-14
+			\end{itemize}
+		\item 课程QQ群(入群答案 1400261B)
+			\begin{itemize}
+				\item 008班(生医、通信工程) \alert{\textbf{973042840}}
+				\item 009班(车辆创新实验、集成) \alert{\textbf{973041550}}
+			\end{itemize}
+		\item 教材: 西交高数教研室《复变函数》, 张元林《积分变换》
+	\end{itemize}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[height=32mm]{../image/book1.jpg}
+			\includegraphics[height=32mm]{../image/book2.png}
+		\end{figure}
+	\end{center}
 \end{frame}
 
 
@@ -25,7 +25,6 @@
 	\vspace{-\baselineskip}
 	\begin{center}
 	\begin{tikzpicture}
-
 		\begin{scope}
 			\begin{scope}[xshift=.2mm,yshift=1.7mm,scale=2]
 				\filldraw[cstcurve,main,cstfill1] (0,0)--(0,1) arc (90:144:1) -- cycle;
@@ -34,7 +33,7 @@
 			\filldraw[main,cstfill1] (-.7,1.5) circle(.1);
 			\node at (-5,1.7) [text width=53mm]  (1){
 				\begin{main*}{作业 15分}
-					作业每次会提前发布, 每章交一次.
+					作业每次会提前发布, 每两周交一次.
 					\alert{作业不允许迟交}.
 					没带的请当天联系助教补交, 迟一天交 $-50\%$ 当次作业分, 迟两天或以上0分.
 					请假需提前交给我请假条.
@@ -42,38 +41,36 @@
 			};
 		\end{scope}
 
-		\begin{scope}[visible on=<2->]
+		\begin{scope}
 			\begin{scope}[xshift=1.5mm,yshift=1.7mm,scale=2]
 				\filldraw[cstcurve,second,cstfill2] (0,0)--(1,0) arc (0:90:1) -- cycle;
 			\end{scope}
 			\draw[second] (.9,1.5)--(1.6,2.5)--(3,2.5);
 			\filldraw[second,cstfill2] (.9,1.5) circle(.1);
 			\node at (4.7,1.8) [text width=43mm] (2){{\begin{second*}{课堂测验 25分}
-				\onslide<2->{%
 					课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
-				}
 			\end{second*}}};
 		\end{scope}
 
-		\begin{scope}[visible on=<3->]
+		\begin{scope}
 			\begin{scope}[xshift=1.8mm,yshift=.5mm,scale=1.95]
 				\filldraw[cstcurve,third,cstfill3] (0,0)--({cos{36}},-sin{36}) arc (-36:0:1) -- cycle;
 			\end{scope}
 			\draw[third] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
 			\filldraw[third,cstfill3] (1.5,-.4) circle(.1);
 			\node at (4.7,-1.5) [text width=43mm] (3){\begin{third*}{期末报告 10分}
-				\onslide<3->{期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失. }
+				期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失.
 			\end{third*}};
 		\end{scope}
 
-		\begin{scope}[visible on=<4->]
+		\begin{scope}
 			\begin{scope}[scale=2.1]
 				\filldraw[cstcurve,fourth,cstfill4] (0,0)--({cos{144}},sin{144}) arc (144:324:1) -- cycle;
 			\end{scope}
 			\draw[fourth] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
 			\filldraw[fourth,cstfill4] (-.7,-1) circle(.1);
 			\node at (-5,-1.7) [text width=53mm] (4){\begin{fourth*}{期末考试 50分}
-				\onslide<4->{期末卷面需要达到45分才计算总评分数, 45分以下直接不及格.}
+				期末卷面需要达到45分才计算总评分数, 45分以下直接不及格.
 			\end{fourth*}};
 		\end{scope}
 	\end{tikzpicture}
@@ -138,14 +135,14 @@
 \begin{frame}{课程学习方法}
 	\begin{center}
 		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnode1,align=center] (1) at (0,2)  {\alert{课前}\\预习课本};
-			\node[cstnode1,align=center] (2) at (3,0)  {\alert{课上}\\认真听课\\记好笔记};
-			\node[cstnode1,align=center] (3) at (0,-2) {\alert{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnode1,align=center] (4) at (-3,0) {\alert{作业}\\检测学\\习效果};
-			\draw[cstnarrow,main] (1.east) to[bend left] (2.north);
-			\draw[cstnarrow,main] (2.south) to[bend left] (3.east);
-			\draw[cstnarrow,main] (3.west) to[bend left] (4.south);
-			\draw[cstnarrow,main] (4.north) to[bend left] (1.west);
+			\node[cstnode4,align=center] (1) at (0,2)  {\alert{课前}\\预习课本};
+			\node[cstnode4,align=center] (2) at (3,0)  {\alert{课上}\\认真听课\\记好笔记};
+			\node[cstnode4,align=center] (3) at (0,-2) {\alert{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnode4,align=center] (4) at (-3,0) {\alert{作业}\\检测学\\习效果};
+			\draw[cstnra,main] (1.east) to[bend left] (2.north);
+			\draw[cstnra,main] (2.south) to[bend left] (3.east);
+			\draw[cstnra,main] (3.west) to[bend left] (4.south);
+			\draw[cstnra,main] (4.north) to[bend left] (1.west);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

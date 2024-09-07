@@ -8,7 +8,7 @@
 	但有时我们需要考虑点或曲线的旋转, 此时极坐标就比直角坐标更为方便.
 	\onslide<+->
 	\begin{definition*}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-87mm,yshift=17mm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-87mm,yshift=17mm]
 			\draw[cstaxis] (0,0)--(2.5,0);
 			\draw
 				(-0.2,0) node {$O$}
@@ -67,7 +67,7 @@
 		\[\theta=\arctan\frac yx (\text{第一四象限})\ \text{或}\ \arctan\frac yx+\pi (\text{第二三象限}).\]
 	\end{second}
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-0.5,0)--(3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2);
 			\draw
@@ -93,7 +93,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 极坐标的计算}
+\begin{frame}{例: 极坐标的计算}
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
@@ -116,7 +116,7 @@
 
 
 \subsection{极坐标方程}
-\begin{frame}{例题: 求极坐标方程}
+\begin{frame}{例: 求极坐标方程}
 	\onslide<+->
 	类似于直角坐标系, 我们可以用 $r$ 和 $\theta$ 的方程来表示平面上的图形. 求曲线的极坐标方程也和直角坐标系类似.
 	\onslide<+->
@@ -125,7 +125,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-76mm,yshift=12mm,inner frame ysep=0.5ex]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-76mm,yshift=12mm,inner frame ysep=0.5ex]
 			\draw[cstaxis] (0,0)--(2,0);
 			\draw
 				(-0.2,0) node {$O$}
@@ -153,14 +153,14 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求极坐标方程}
+\begin{frame}{例: 求极坐标方程}
 	\onslide<+->
 	\begin{example}
 		求圆心为 $A(R,0)$, 半径为 $R$ 的圆的极坐标方程.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-85mm,yshift=10mm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-85mm,yshift=10mm]
 			\draw[cstaxis] (0,0)--(3,0);
 			\draw
 				(-0.2,0) node {$O$}
@@ -203,7 +203,7 @@
 	其它常见的极坐标方程及其曲线有: ($a>0$)
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\begin{scope}
 				\draw (0,-1.6) node[main,align=center] {{\small 阿基米德螺旋线} $r=a\theta$};
 				\draw[cstaxis] (0,0)--(1.5,0);
@@ -239,7 +239,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求直角坐标方程}
+\begin{frame}{例: 求直角坐标方程}
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}

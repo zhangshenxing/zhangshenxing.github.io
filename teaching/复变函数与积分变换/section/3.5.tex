@@ -95,22 +95,27 @@
 	\end{example}
 
 	\onslide<+->
-	\begin{solution*}
-		由 $u_x=-6xy,u_y=3y^2-3x^2$ 可知 $u_{xx}+u_{yy}=-6y+6y=0$,
-		\onslide<+->{故 $u$ 是调和函数.}
-
-		\onslide<+->{由 $v_y=u_x=-6xy$ 得 $v=-3xy^2+\psi(x)$.}
-
-		\onslide<+->{由 $v_x=-u_y=3x^2-3y^2$ 得 $\psi'(x)=3x^2$,
-		}\onslide<+->{$\psi(x)=x^3+C$.}
-
-		\onslide<+->{故 $v(x,y)=-3xy^2+x^3+C$,
-		}\onslide<+->{
-		\[
-			f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
-			\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
-		\]}
-	\end{solution*}
+	\begin{solution}
+		\begin{itemize}
+			\item 由 $u_x=-6xy,u_y=3y^2-3x^2$ 可知 $u_{xx}+u_{yy}=-6y+6y=0$,
+				\onslide<+->{%
+					故 $u$ 是调和函数.
+				}
+			\item 由 $v_y=u_x=-6xy$ 得 $v=-3xy^2+\psi(x)$.
+			\item 由 $v_x=-u_y=3x^2-3y^2$ 得 $\psi'(x)=3x^2$,
+				\onslide<+->{%
+					$\psi(x)=x^3+C$.
+				}
+			\item 故 $v(x,y)=-3xy^2+x^3+C$,
+				\onslide<+->{%
+					\[
+						f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
+						\visible<+->{=i(x+iy)^3+iC=i(z^3+C).}
+					\]
+				}
+		\end{itemize}
+		\vspace{-\baselineskip}
+	\end{solution}
 \end{frame}
 
 
@@ -128,6 +133,7 @@
 
 
 \begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\beqskip{4pt}
 	\onslide<+->
 	\begin{example}
 		求解析函数 $f(z)$ 使得它的虚部为
@@ -137,28 +143,27 @@
 	\onslide<+->
 	\begin{solution}
 		由 $u_x=v_y=e^x(\cos y-y\sin y+x\cos y)+1$ 得
-		\[u=e^x(x\cos y-y\sin y)+x+\psi(y).\]
-		\onslide<+->{由 $u_y=-v_x=-e^x(y\cos y+x\sin y+\sin y)-1$ 得
-		\[\psi'(y)=-1,\quad\psi(y)=-y+C.\]}
-		\vspace{-\baselineskip}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
-	\onslide<+->
-	\begin{solution}[续解]
-		故
-		\vspace{-.5\baselineskip}
-		\begin{align*}
-			f(z)&=u+iv\\
-			&=e^x(x\cos y-y\sin y)+x-y+C
-			+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]\\
-			&\visible<+->{=ze^z+(1+i)z+C,\quad C\in\BR.}
-		\end{align*}
+		\[
+			u=e^x(x\cos y-y\sin y)+x+\psi(y).
+		\]
+		\onslide<+->{%
+			由 $u_y=-v_x=-e^x(y\cos y+x\sin y+\sin y)-1$ 得
+			\[
+				\psi'(y)=-1,\quad\psi(y)=-y+C.
+			\]
+		}\onslide<+->{%
+			\vspace{-\baselineskip}
+			\begin{align*}
+				f(z)&=u+iv
+				=e^x(x\cos y-y\sin y)+x-y+C
+				+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]\\
+				&\visible<+->{=ze^z+(1+i)z+C,\quad C\in\BR.}
+			\end{align*}
+		}\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->
 	这里, 我们只需看 $e^x\cos y$ 的系数 $x+iy=z$, 即 $f(z)$ 中 $e^z$ 的系数.
+	\endgroup
 \end{frame}
 
 
@@ -168,7 +173,7 @@
 	\begin{align*}
 		f'(z)&=v_y+iv_x\\
 		&=e^x(\cos y-y\sin y+x\cos y)+1
-		+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]\\
+		+i\bigl(e^x(y\cos y+x\sin y+\sin y)+1\bigr)\\
 		&\visible<+->{=(z+1)e^z+1+i.}
 	\end{align*}
 	\onslide<+->

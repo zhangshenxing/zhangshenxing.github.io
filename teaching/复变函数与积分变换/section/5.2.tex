@@ -30,15 +30,15 @@
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
 				\filldraw[cstcurve,rounded corners=0.4cm,main,cstfill] (-3,-1) rectangle (3,1);
-				\draw[cstcurve,main,cstarrow1to] (3,-0.2)--(3,0.1);
+				\draw[cstcurve,main,cstwra] (3,-0.2)--(3,0.1);
 				\filldraw[cstcurve,white,draw=second] (-2,0.2) circle (0.5);
-				\draw[cstcurve,second,cstarrow1to] (-2,0.7) arc(90:135:0.5);
+				\draw[cstcurve,second,cstwra] (-2,0.7) arc(90:135:0.5);
 				\fill[cstdot] (-2,0.2) circle;
 				\filldraw[cstcurve,white,draw=second] (0.2,-0.2) circle (0.5);
-				\draw[cstcurve,second,cstarrow1to] (0.2,0.3)arc(90:135:0.5);
+				\draw[cstcurve,second,cstwra] (0.2,0.3)arc(90:135:0.5);
 				\fill[cstdot] (0.2,-0.2) circle;
 				\filldraw[cstcurve,white,draw=second] (2,0.2) circle (0.5);
-				\draw[cstcurve,second,cstarrow1to] (2,0.7)arc(90:135:0.5);
+				\draw[cstcurve,second,cstwra] (2,0.7)arc(90:135:0.5);
 				\fill[cstdot] (2,0.2) circle;
 				\draw
 					(3.4,0) node[main] {$C$}
@@ -51,10 +51,10 @@
 			\end{tikzpicture}
 		\end{center}
 		\vspace{-.3\baselineskip}
-		\onslide<+->{由复闭路定理,
-		\[\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
-		=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\qedhere\]}
-		\vspace{-\baselineskip}
+		\onslide<+->{%
+			由复闭路定理, $\displaystyle\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
+			=2\pi i\sum_{k=1}^n\Res[f(z),z_k]$.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
@@ -166,10 +166,10 @@
 		}
 		\vspace{-.5\baselineskip}
 		\onslide<+->{
-		\begin{align*}
-			\Res\left[\frac{z-\sin z}{z^6},0\right]&=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}\\
-			&\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
-		\end{align*}}
+		\[
+			\Res\left[\frac{z-\sin z}{z^6},0\right]=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}
+			\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
+		\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
@@ -195,8 +195,8 @@
 			不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的一阶极点或可去奇点.
 		\onslide<+->{因此
 			\begin{align*}
-				&\peq\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
-				&\visible<+->{=\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
+				&\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
+				\visible<+->{=}&\visible<.->{\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
 				\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere}
 			\end{align*}
 		}
@@ -224,7 +224,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数的应用}
+\begin{frame}{例: 留数的应用}
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
@@ -288,7 +288,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数的应用\noexer}
+\begin{frame}{例: 留数的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+i)^{10}(z-1)(z-3)}$.
@@ -304,7 +304,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数的应用\noexer}
+\begin{frame}{例: 留数的应用\noexer}
 	\onslide<+->
 	\begin{solution}[续解]
 		\begin{align*}
@@ -325,7 +325,7 @@
 \begin{frame}{积分的计算方法汇总}
 \begin{center}
 \begin{tikzpicture}[node distance=25pt]
-	\node at (4.55,0.3) [cstnode2,visible on=<3->]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+	\node at (4.5,0.5) [cstnode2,visible on=<3->]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
 	\node at (0,2.2) [cstnode,visible on=<3->]	(isanalytic){$f(z)$ 解析};
 	\node at (4.5,2.2) [cstnode2,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
@@ -334,24 +334,24 @@
 	\node at (0,4.5) [cstnode,visible on=<2->]	(isclosed){是闭路};
 	\node at (4.5,4.5) [cstnode,visible on=<5->]	(issingle){只有孤立奇点};
 	\node at (9,4.5) [cstnode,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
-	\node at (1.5,6.5) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
-	\node at (9,6.5) [cstnode2,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+	\node at (1.5,6.3) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
 
-	\draw[cstnarrow,third,visible on=<2->] (integral.-160) -- (isclosed);
-	\draw[cstnarrow,third,visible on=<3->] (isanalytic) -- node[left]{是} (end1.173);
-	\draw[cstnarrow,third,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
-	\draw[cstnarrow,third,visible on=<7->] (issingle) -- node[above]{是} (ismany);
-	\draw[cstnarrow,third,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
-	\draw[cstnarrow,third,visible on=<6->] (issingle) -- node[left]{否} (end2);
-	\draw[cstnarrow,third,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
-	\draw[cstnarrow,third,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
-	\draw[cstnarrow,third,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
+	\draw[cstmra,fourth,visible on=<2->] (integral.-160) -- (isclosed);
+	\draw[cstmra,fourth,visible on=<3->] (isanalytic) -- node[left]{是} (end1.173);
+	\draw[cstmra,fourth,visible on=<5->] (isclosed) -- node[above]{是} (issingle);
+	\draw[cstmra,fourth,visible on=<7->] (issingle) -- node[above]{是} (ismany);
+	\draw[cstmra,fourth,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
+	\draw[cstmra,fourth,visible on=<6->] (issingle) -- node[left]{否} (end2);
+	\draw[cstmra,fourth,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
+	\draw[cstmra,fourth,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
+	\draw[cstmra,fourth,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 
-\begin{frame}{例题: 留数在有理函数分解中的应用}
+\begin{frame}{例: 留数在有理函数分解中的应用}
 	\onslide<+->
 	在求有理函数的洛朗展开, 以及之后在求有理函数的拉普拉斯逆变换时, 我们需要将一个有理函数表达为分母只有一个零点的有理函数之和.
 	\onslide<+->
@@ -362,7 +362,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在有理函数分解中的应用}
+\begin{frame}{例: 留数在有理函数分解中的应用}
 	\onslide<+->
 	\begin{solution}
 			设 $\displaystyle f(z)=\frac{z-3}{(z+1)(z-1)^2}=\frac a{z-1}+\frac b{(z-1)^2}+\frac c{z+1}$,

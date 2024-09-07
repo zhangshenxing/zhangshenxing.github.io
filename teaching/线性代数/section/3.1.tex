@@ -117,7 +117,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求特征值和特征向量}
+\begin{frame}{例: 求特征值和特征向量}
 	\onslide<+->
 	\begin{example}
 		求上三角阵 $\bfA=\begin{pmatrix}
@@ -169,7 +169,7 @@
 
 
 \begin{frame}{典型例题: 求特征值和特征向量}
-	\begin{solutionc*}
+	\begin{solution*}[续解]
 		对于 $\lambda_1=1$,
 		\[\bfA-\bfE=\begin{pmatrix}
 			-2&1&0\\
@@ -200,7 +200,7 @@
 		}\onslide<+->{%
 			故对应的所有特征向量为 $k(0,0,1)^\rmT,k\neq0$.
 		}
-	\end{solutionc*}
+	\end{solution*}
 \end{frame}
 
 
@@ -258,7 +258,7 @@
 
 \begin{frame}{特征值和特征向量的性质}
 	\onslide<+->
-	\begin{second@}
+	\begin{second}{特征值和特征向量的性质}
 		定义 $\bfA$ 的\emph{迹}为对角元之和:
 		\[\Tr(\bfA)=a_{11}+a_{22}+\cdots+a_{nn}.\]
 		\vspace{-\baselineskip}
@@ -266,7 +266,7 @@
 			\item 特征值之和等于迹: $\lambda_1+\lambda_2+\cdots+\lambda_n=\Tr(\bfA)$;
 			\item 特征值之积等于行列式: $\lambda_1\lambda_2\cdots\lambda_n=|\bfA|$.
 		\end{enumerate}
-	\end{second@}
+	\end{second}
 	\onslide<+->
 	\begin{example}
 		$\begin{pmatrix}
@@ -274,26 +274,39 @@
 			1&0&1\\
 			0&1&1
 		\end{pmatrix}$ 的特征值为\fillbrace{\visible<+->{C}}.
-		\xx{$1,0,1$}{$1,1,2$}{$-1,1,2$}{$-1,1,1$}
+		\begin{taskschoice}(4)
+			() $1,0,1$
+			() $1,1,2$
+			() $-1,1,2$
+			() $-1,1,1$
+		\end{taskschoice}
 	\end{example}
 \end{frame}
 
 
 \begin{frame}{特征值和特征向量的性质}
-	\NiceMatrixOptions{cell-space-limits = 5pt}
+	% \NiceMatrixOptions{cell-space-limits = 5pt}
 	\onslide<+->
 	\begin{theorem}
 		若 $\lambda$ 是 $\bfA$ 的特征值, $\bfx$ 是对应特征向量, 则下述矩阵有如下对应的特征值与特征向量:
-		\[\begin{NiceMatrix}[hvlines]
-			\CodeBefore
-			\rectanglecolor{red!15}{1-1}{1-8}
-			\rectanglecolor{green!15}{2-1}{2-8}
-			\rectanglecolor{blue!15}{3-1}{3-8}
-			\Body
-			\text{方阵}&k\bfA&\bfA^m&\bfA^{-1}&\bfA^*&g(\bfA)h(\bfA)^{-1}&\bfA^\rmT&\bfP^{-1}\bfA\bfP\\
-			\text{特征值}&k\lambda&\lambda^m&\lambda^{-1}&|\bfA|/\lambda&g(\lambda)/h(\lambda)&\lambda&\lambda\\
-			\text{对应特征向量}&\bfx&\bfx&\bfx&\bfx&\bfx&\alert{\text{未必是}\ \bfx}&\alert{\bfP^{-1}\bfx}
-		\end{NiceMatrix}\]
+		\begin{center}
+			\begin{tabular}{cccccccc} \toprule
+				方阵 & $k\bfA$ & $\bfA^m$ & $\bfA^{-1}$ & $\bfA^*$ & $g(\bfA)h(\bfA)^{-1}$ & $\bfA^\rmT$ & $\bfP^{-1}\bfA\bfP$\\ \midrule
+				特征值&$k\lambda$&$\lambda^m$&$\lambda^{-1}$&$|\bfA|/\lambda$&$g(\lambda)/h(\lambda)$&$\lambda$&$\lambda$\\ \midrule
+				对应特征向量&$\bfx$&$\bfx$&$\bfx$&$\bfx$&$\bfx$&\alert{未必是 $\bfx$}&\alert{$\bfP^{-1}\bfx$}\\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		% \[\begin{NiceMatrix}[hvlines]
+		% 	\CodeBefore
+		% 	\rectanglecolor{red!15}{1-1}{1-8}
+		% 	\rectanglecolor{green!15}{2-1}{2-8}
+		% 	\rectanglecolor{blue!15}{3-1}{3-8}
+		% 	\Body
+		% 	\text{方阵}&k\bfA&\bfA^m&\bfA^{-1}&\bfA^*&g(\bfA)h(\bfA)^{-1}&\bfA^\rmT&\bfP^{-1}\bfA\bfP\\
+		% 	\text{特征值}&k\lambda&\lambda^m&\lambda^{-1}&|\bfA|/\lambda&g(\lambda)/h(\lambda)&\lambda&\lambda\\
+		% 	\text{对应特征向量}&\bfx&\bfx&\bfx&\bfx&\bfx&\alert{\text{未必是}\ \bfx}&\alert{\bfP^{-1}\bfx}
+		% \end{NiceMatrix}\]
 		这里 $g,h$ 是多项式, 且满足 $h(\bfA)$ 可逆.
 	\end{theorem}
 	\onslide<+->
@@ -301,7 +314,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 特征值和特征向量的性质}
+\begin{frame}{例: 特征值和特征向量的性质}
 	\onslide<+->
 	\begin{example}
 		设 $3$ 阶方阵 $\bfA$ 的特征值为 $2,2,3$, 则
@@ -317,7 +330,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 特征值和特征向量的性质}
+\begin{frame}{例: 特征值和特征向量的性质}
 	\onslide<+->
 	\begin{example}
 		设 $3$ 阶方阵 $\bfA$ 的特征值为 $1,-1,2$.
@@ -337,12 +350,17 @@
 	\onslide<+->
 	\begin{exercise}
 		若 $4$ 阶方阵 $\bfA$ 的特征值为 $1,2,-2,0$, 则下列矩阵可逆的是\fillbrace{\visible<+->{C}}.
-		\xx{$\bfA$}{$\bfA-2\bfE$}{$\bfA+\bfE$}{$\bfA-\bfE$}
+		\begin{taskschoice}(4)
+			() $\bfA$
+			() $\bfA-2\bfE$
+			() $\bfA+\bfE$
+			() $\bfA-\bfE$
+		\end{taskschoice}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 特征值和特征向量的性质}
+\begin{frame}{例: 特征值和特征向量的性质}
 	\onslide<+->
 	\begin{example}
 		若 $\bma=(1,k,1)^\rmT$ 为 $\bfA=\begin{pmatrix}
@@ -486,10 +504,12 @@
 	\onslide<+->
 	\begin{example}
 		若 $3$ 阶方阵 $\bfA\wsim{r_1\swap r_3}{}\bfB\wsim{c_1\swap c_3}{}\bfC$, 则 $\bfA$ 与 $\bfC$ \fillbrace{\visible<+->{C}}.
-		\xx{等价但不相似}
-		{相似但不等价}
-		{等价而且相似}
-		{既不等价也不相似}
+		\begin{taskschoice}(2)
+			() 等价但不相似
+			() 相似但不等价
+			() 等价而且相似
+			() 既不等价也不相似
+		\end{taskschoice}
 	\end{example}
 \end{frame}
 
@@ -498,9 +518,9 @@
 
 \begin{frame}{相似矩阵的性质}
 	\onslide<+->
-	\begin{theorem}
+	\begin{second}{相似矩阵的性质}
 		若 $\bfA$ 与 $\bfB$ 相似, 则二者的特征多项式相同, 从而特征值也相同.
-	\end{theorem}
+	\end{second}
 	\onslide<+->
 	这是因为若 $\bfP^{-1}\bfA\bfP=\bfB$, 则
 	\[\bfP^{-1}(\bfA-\lambda\bfE)\bfP=\bfP^{-1}\bfA\bfP-\lambda\bfP^{-1}\bfE\bfP=\bfB-\lambda\bfE.\]
@@ -524,7 +544,7 @@
 
 \begin{frame}{相似矩阵的性质}
 	\onslide<+->
-	\begin{theorem}
+	\begin{second}{相似矩阵的性质}
 		若 $\bfA$ 与 $\bfB$ 相似, 则
 		\begin{enumerate}
 			\item \alert{$\bfA,\bfB$ 特征值相同(包括重数)};
@@ -533,7 +553,7 @@
 			\item 对于多项式 $g,h$, 若 $h(\bfA)$ 可逆, 则 $h(\bfB)$ 也可逆, 且 $g(\bfA)/h(\bfA)$ 与 $g(\bfB)/h(\bfB)$ 相似.
 			特别地, $\bfA-\lambda\bfE$ 与 $\bfB-\lambda\bfE$ 相似.
 		\end{enumerate}
-	\end{theorem}
+	\end{second}
 	\onslide<+->
 	\begin{corollary}
 		若 $\bfA$ 与对角阵 $\bmL=\diag(\lambda_1,\dots,\lambda_n)$ 相似, 则 $\lambda_1,\dots,\lambda_n$ 是 $\bfA$ 的 $n$ 个特征值.
@@ -541,7 +561,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 相似矩阵的性质}
+\begin{frame}{例: 相似矩阵的性质}
 	\onslide<+->
 	\begin{example}
 		若 $4$ 阶方阵 $\bfA$ 与 $\bfB$ 相似, $\bfA$ 的特征值为 $1,2,3,4$, 则 $|\bfB+\bfE|=$\fillblank{\visible<+->{$120$}}.
@@ -569,12 +589,12 @@
 \end{frame}
 
 
-\begin{frame}{例题: 相似矩阵的性质}
+\begin{frame}{例: 相似矩阵的性质}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且 $|\bfA-\bfE|=0, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<+->{$3/4$}}.
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<+->{$3/4$}}.
+			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且 $|\bfA-\bfE|=0, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<4->{$3/4$}}.
+			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<5->{$3/4$}}.
 		\end{enumerate}
 	\end{exercise}
 	\onslide<+->
@@ -585,7 +605,7 @@
 \subsection{相似对角化}
 \begin{frame}{相似对角化的定义}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[相似对角化]
 		若 $n$ 阶方阵 $\bfA$ 相似于某个对角阵
 		\[\bmL=\diag(\lambda_1,\dots,\lambda_n),\]
 		则称 $\bfA$ 可\emph{(相似)对角化}.
@@ -608,9 +628,9 @@
 	\onslide<+->
 	反之, 若 $\bfA$ 拥有 $n$ 个线性无关的特征向量, 则选择 $\bfP$ 以它们为列向量即可使 $\bfA$ 对角化.
 	\onslide<+->
-	\begin{theorem}
+	\begin{second}{相似对角化的等价刻画}
 		$n$ 阶矩阵 $\bfA$ 可对角化$\iff\bfA$ 有 $n$ 个线性无关的特征向量.
-	\end{theorem}
+	\end{second}
 \end{frame}
 
 
@@ -632,13 +652,13 @@
 	\onslide<+->
 	回忆 $k$ 重特征值对应的线性无关的特征向量最多 $k$ 个.
 	\onslide<+->
-	\begin{theorem}
+	\begin{second}{相似对角化的等价刻画}
 		若 $\lambda$ 是 $\bfA$ 的 $k$ 重特征值, 则 $\bfA$ 可对角化 $\iff\forall\lambda, R(\bfA-\lambda\bfE)=n-k$, 即 $\lambda$ 对应的线性无关的特征向量恰有 $k$ 个.
-	\end{theorem}
+	\end{second}
 \end{frame}
 
 
-\begin{frame}{例题: 可对角化的刻画}
+\begin{frame}{例: 可对角化的刻画}
 	\onslide<+->
 	\begin{example}
 		判断下列矩阵 $\bfA$ 能否相似对角化:
@@ -690,6 +710,39 @@
 \end{frame}
 
 
+\begin{frame}{例: 可对角化矩阵的应用}
+	\onslide<+->
+	\begin{example}
+		计算 $\bfA=\begin{pmatrix}
+			a&b&\cdots&b\\
+			b&a&\cdots&b\\
+			\vdots&\vdots&\ddots&\vdots\\
+			b&b&\cdots&a
+		\end{pmatrix}$ 的行列式.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$b=0$ 时, $|\bfA|=a^n$.
+		\onslide<+->{%
+			设 $b\neq 0$, $\bfB=\bfA+(b-a)\bfE$,
+		}\onslide<+->{%
+			则 $\bfB$ 所有元素为 $b$, 秩为 $1$, $\bfB\bfx={\bf0}$ 基础解系有 $n-1$ 个向量.
+		}\onslide<+->{%
+			从而 $0$ 是 $\bfB$ 的至少 $n-1$ 重特征值.
+		}\onslide<+->{%
+			由于 $\bfB$ 行和为 $nb$, 因此 $nb$ 也是它的特征值.
+		}\onslide<+->{%
+			所以 $\bfB$ 的特征值就是 $nb$ 和 $0$ ($n-1$ 重), 特征多项式为
+			\[|\bfB-\lambda\bfE|=(nb-\lambda)(-\lambda)^{n-1},\]
+			\vspace{-\baselineskip}
+		}\onslide<+->{%
+			\[|\bfA|=\bigl(nb-(b-a)\bigr)(a-b)^{n-1}=(a-b)^{n-1}(nb-b+a).\]
+			\vspace{-\baselineskip}
+		}
+	\end{solution}
+\end{frame}
+
+
 \begin{frame}{相似对角化的步骤}
 	\onslide<+->
 	相似对角化的步骤如下:
@@ -702,7 +755,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 方阵的相似的应用}
+\begin{frame}{例: 方阵的相似的应用}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -742,7 +795,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 对角化的计算}\small
+\begin{frame}{例: 对角化的计算}\small
 	\onslide<+->
 	\begin{example}
 		$\bfA=\begin{pmatrix}
@@ -778,8 +831,8 @@
 \end{frame}
 
 
-\begin{frame}{例题: 对角化的性质}\small
-\beqskip{5pt}
+\begin{frame}{例: 对角化的性质}\small
+\beqskip{4pt}
 	\onslide<+->
 	\begin{exercise}
 		已知矩阵 $\bfA=\begin{pmatrix}
@@ -808,10 +861,12 @@
 			0&2&0\\
 			0&0&2
 		\end{pmatrix}$, 则\fillbrace{\visible<+->{C}}.
-		\xx{$\bfA,\bfC$ 相似, $\bfB,\bfC$ 相似}%
-		{$\bfA,\bfC$ 不相似, $\bfB,\bfC$ 相似}%
-		{$\bfA,\bfC$ 相似, $\bfB,\bfC$ 不相似}%
-		{$\bfA,\bfC$ 不相似, $\bfB,\bfC$ 不相似}
+		\begin{taskschoice}(2)
+			() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 相似
+			() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 相似
+			() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 不相似
+			() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 不相似
+		\end{taskschoice}
 	\end{exercise}
 \endgroup
 \end{frame}
@@ -859,16 +914,28 @@
 \end{frame}
 
 
-\begin{frame}{例题: 特征值的性质}
+\begin{frame}{例: 特征值的性质}
 	\onslide<+->
 	\begin{exercise}
 		若 $4$ 阶实矩阵 $\bfA^*$ 的特征值为 $-1,1,2,4$, 则下列矩阵可逆的是\fillbrace{\visible<+->{D}}.
-		\xx{$\bfA+2\bfE$}{$\bfA-2\bfE$}{$\bfA+\frac12\bfE$}{$\bfA-\bfE$}
+		
+		\begin{taskschoice}(4)
+			() $\bfA+2\bfE$
+			() $\bfA-2\bfE$
+			() $\bfA+\frac12\bfE$
+			() $\bfA-\bfE$
+		\end{taskschoice}
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
 		若 $n$ 阶实对称矩阵 $\bfA$ 满足 $\bfA^2-\bfA=\bfO$, 则下列矩阵不可逆的是\fillbrace{\visible<+->{C}}.
-		\xx{$\bfA+2\bfE$}{$\bfA+\bfE$}{$\bfA-\bfE$}{$\bfA-2\bfE$}
+		
+		\begin{taskschoice}(4)
+			() $\bfA+2\bfE$
+			() $\bfA+\bfE$
+			() $\bfA-\bfE$
+			() $\bfA-2\bfE$
+		\end{taskschoice}
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
@@ -877,7 +944,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 对角化的计算}\small
+\begin{frame}{例: 对角化的计算}\small
 	\onslide<+->
 	\begin{example}
 		设 $\bfA=\begin{pmatrix}
@@ -930,7 +997,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 对角化的计算}
+\begin{frame}{例: 对角化的计算}
 	\onslide<+->
 	\begin{example}
 		已知 $n$ 阶方阵 $\bfA$ 的各行元素之和为 $2$, $\bfA\begin{pmatrix}
@@ -942,7 +1009,13 @@
 			0&1\\
 			1&1
 		\end{pmatrix}$, 则 $\bfA$ 相似于\fillbrace{\visible<+->{C}}.
-		\xx{$\diag(1,1,2)$}{$\diag(2,1,1)$}{$\diag(2,1,-1)$}{$\diag(2,-1,-1)$}
+		
+		\begin{taskschoice}(4)
+			() $\diag(1,1,2)$
+			() $\diag(2,1,1)$
+			() $\diag(2,1,-1)$
+			() $\diag(2,-1,-1)$
+		\end{taskschoice}
 	\end{example}
 	\onslide<+->
 	\begin{exercise}
@@ -960,7 +1033,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 对角化的计算}
+\begin{frame}{例: 对角化的计算}
 	\onslide<+->
 	\begin{example}
 		设 $\bfA$ 为三阶方阵, $\bma_1,\bma_2,\bma_3$ 是线性无关的三维列向量且 $\bfA\bma_1=2\bma_1,\bfA\bma_2=3\bma_2+2\bma_3,\bfA\bma_3=2\bma_2+3\bma_3$.

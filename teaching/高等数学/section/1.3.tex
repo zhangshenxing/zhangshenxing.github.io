@@ -16,7 +16,7 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis](0,-1)--(0,2);
 			\draw[cstcurve,main] (-3,1)--(3,1);
@@ -47,7 +47,7 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}[framed,inner frame ysep=0.5ex]
+		\begin{tikzpicture}[inner frame ysep=0.5ex]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-0.4)--(0,2.3);
 			\begin{scope}[cstcurve,smooth,domain=-3:1.2]
@@ -75,7 +75,7 @@
 		\emph{对数函数}: $y=\log_a x, a>0, a\neq 1, x \in (0,+\infty)$.
 	\end{definition}	
 	\onslide<+->
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-72mm,yshift=26mm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-72mm,yshift=26mm]
 		\draw[cstaxis] (-0.5,0)--(3.5,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
 		\begin{scope}[cstcurve,smooth,domain=-2.3:1.5]
@@ -120,7 +120,7 @@
 	当 $\mu$ 是有理数时, 我们可将其表为 $\mu=\frac pq$, 其中 $p,q$ 为互质的整数.
 
 	\onslide<5->{
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-37mm,yshift=25mm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-37mm,yshift=25mm]
 		\draw[cstaxis] (-2.3,0)--(2.3,0);
 		\draw[cstaxis] (0,-2.3)--(0,2.3);
 		\begin{scope}[cstcurve,smooth,domain=-1.3:1.3]
@@ -180,7 +180,7 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.3);
 			\draw[cstcurve,main,smooth,domain=-1.5:1.5] plot (\x,{\x*\x});
@@ -213,7 +213,7 @@
 
 \begin{frame}{幂函数: 负有理幂次 $\frac pq$, $p,q$ 奇}
 	\onslide<2->
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=40mm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-45mm,yshift=40mm]
 		\draw[cstaxis] (-2.8,0)--(2.8,0);
 		\draw[cstaxis] (0,-2.8)--(0,2.8);
 		\begin{scope}[cstcurve,main,smooth,domain=0.4:1.4]
@@ -279,7 +279,7 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-2.3,0)--(2.3,0);
 			\draw[cstaxis] (0,-0.5)--(0,2.6);
 			\begin{scope}[cstcurve,main,smooth,domain=0.5:1.6]
@@ -324,7 +324,7 @@
 	\end{itemize}
 	\onslide<2->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-0.5,0)--(3.5,0);
 			\draw[cstaxis] (0,-0.5)--(0,3.5);
 			\begin{scope}[cstcurve,smooth]
@@ -403,7 +403,7 @@
 	\end{center}
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[scale=0.5,framed]
+		\begin{tikzpicture}[scale=0.5]
 			\draw[cstaxis] (-9,0)--(9,0);
 			\draw[cstaxis] (0,-3.2)--(0,3.2);
 			\begin{scope}[visible on=<2>]
@@ -514,7 +514,7 @@
 	\onslide<+->
 	\begin{definition}
 		\onslide<2->{
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-65mm,yshift=20mm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-65mm,yshift=20mm]
 			\draw[cstaxis] (-1.8,0)--(1.8,0);
 			\draw[cstaxis] (0,-2)--(0,3.6);
 			\draw[cstcurve,main,smooth,domain=-90:90] plot ({sin (\x)},{\x/180*pi});
@@ -576,7 +576,7 @@
 		\end{enumerate}
 	\onslide<2->{
 		\begin{center}
-		\begin{tikzpicture}[scale=0.5,framed]
+		\begin{tikzpicture}[scale=0.5]
 			\draw[cstaxis] (-5,0)--(5,0);
 			\draw[cstaxis] (0,-2)--(0,4.2);
 			\draw[cstcurve,main,smooth,domain=-78:78] plot ({tan (\x)},{\x/180*pi});
@@ -633,7 +633,7 @@
 	\onslide<+->
 	\begin{definition}
 		\onslide<2->{
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-45mm,yshift=12mm]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-45mm,yshift=12mm]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,-1.2)--(0,2.5);
 			\draw[cstcurve,main,smooth,domain=-1:1.2] plot (\x,{(e^\x-e^(-\x))/2});
@@ -676,7 +676,7 @@
 	\onslide<+->
 	\begin{definition}
 	\onslide<2->{
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-42mm,yshift=21mm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-42mm,yshift=21mm]
 		\draw[cstaxis] (0,-1.4)--(0,1.9);
 		\draw[cstaxis] (-2.5,0)--(3,0);
 		\draw[cstcurve,main,smooth,domain=-1.65:1.85] plot ({(e^\x-e^(-\x))/2},\x);

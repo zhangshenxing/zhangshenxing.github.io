@@ -82,8 +82,8 @@
 	\begin{tikzpicture}[node distance=100pt]
 		\node[cstnode2](a){原象函数 $f(t)$};
 		\node[cstnode2,right=of a](b){象函数 $F(\omega)$};
-		\draw[cstnarrow, main] (a.9) -- node[above]{傅里叶变换 $\msf$} (b.170);
-		\draw[cstnarrow, third] (b.190) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a.-9);
+		\draw[cstnra, main] (a.9) -- node[above]{傅里叶变换 $\msf$} (b.170);
+		\draw[cstnra, third] (b.190) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a.-9);
 	\end{tikzpicture}
 \end{center}
 
@@ -250,7 +250,7 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 \end{definition}
 
 
-\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-190mm,yshift=10mm]
+\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-190mm,yshift=10mm]
 	\draw[cstaxis](8.2,0)--(9.8,0);
 	\draw[cstaxis](9,-0.6)--(9,2);
 	\draw
@@ -494,10 +494,10 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 		\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
 		\node[cstnode2,below=of a] (c){原象函数(方程的解)};
 		\node[cstnode1,below=of b] (d){象函数};
-		\draw[cstnarrow,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
-		\draw[cstnarrow,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
-		\draw[cstnarrow,second] (b)--(d);
-		\draw[cstnarrow,third] (a)--(c);
+		\draw[cstnra,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
+		\draw[cstnra,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
+		\draw[cstnra,second] (b)--(d);
+		\draw[cstnra,third] (a)--(c);
 	\end{tikzpicture}
 \end{center}
 
@@ -566,8 +566,8 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 	\begin{tikzpicture}[node distance=118pt]
 		\node[cstnode2,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
 		\node[cstnode2,align=center, right=of a](b){象函数\\\emph{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
-		\draw[cstnarrow, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
-		\draw[cstnarrow, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
+		\draw[cstnra, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
+		\draw[cstnra, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
 	\end{tikzpicture}
 \end{center}
 
@@ -711,10 +711,10 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 		\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
 		\node[cstnode2,below=of a] (c){原象函数(方程的解)};
 		\node[cstnode1,below=of b] (d){象函数};
-		\draw[cstnarrow,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
-		\draw[cstnarrow,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
-		\draw[cstnarrow,second] (b)--(d);
-		\draw[cstnarrow,third] (a)--(c);
+		\draw[cstnra,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
+		\draw[cstnra,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
+		\draw[cstnra,second] (b)--(d);
+		\draw[cstnra,third] (a)--(c);
 	\end{tikzpicture}
 \end{center}
 

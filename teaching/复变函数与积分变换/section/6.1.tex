@@ -82,8 +82,8 @@
 		\begin{tikzpicture}[node distance=100pt]
 			\node[cstnode2](a){原象函数 $f(t)$};
 			\node[cstnode2,right=of a](b){象函数 $F(\omega)$};
-			\draw[cstnarrow, main] (a.9) -- node[above]{傅里叶变换 $\msf$} (b.170);
-			\draw[cstnarrow, third] (b.190) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a.-9);
+			\draw[cstnra, main] (a.9) -- node[above]{傅里叶变换 $\msf$} (b.170);
+			\draw[cstnra, third] (b.190) -- node[below]{傅里叶逆变换 $\msf^{-1}$} (a.-9);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -95,9 +95,9 @@
 	\onslide<+->
 	例如:
 	\begin{align*}
-		&\peq f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
-		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
-		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
+		&f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
+		\visible<+->{=}&\visible<.->{\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
+		\visible<+->{=}&\visible<.->{\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
 			\resizebox{!}{5mm}{
 				$\displaystyle\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
 				+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}$
@@ -126,7 +126,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求函数 $f(t)=
@@ -148,7 +148,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	由傅里叶积分公式
 	\begin{align*}
@@ -157,7 +157,7 @@
 		&\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
 	\end{align*}
 	\onslide<+->
-	当 $t=\pm1$ 时, 左侧应替换为 $\frac{f(t+)+f(t-)}2=\half $.
+	当 $t=\pm1$ 时, 左侧应替换为 $\bigl(f(t+)+f(t-)\bigr)/2=1/2 $.
 	\onslide<+->
 	由此可得
 	\[\int_0^{+\infty}\frac{\sin \omega\cos\omega t}\omega\diff\omega=\begin{cases}
@@ -171,7 +171,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求函数 $f(t)=\dfrac{\sin t}{t}$ 的傅里叶变换.
@@ -194,7 +194,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求函数 $f(t)=
@@ -227,7 +227,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求\emph{指数衰减函数} $f(t)=
@@ -259,7 +259,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求\emph{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
@@ -317,7 +317,7 @@
 	\end{definition}
 
 	\onslide<6->
-	\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-190mm,yshift=10mm]
+	\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-190mm,yshift=10mm]
 		\draw[cstaxis](8.2,0)--(9.8,0);
 		\draw[cstaxis](9,-0.6)--(9,2);
 		\draw
@@ -378,7 +378,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求傅里叶变换}
+\begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		证明 \alert{$\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega)$}.
@@ -575,7 +575,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 计算卷积\noexer}
+\begin{frame}{例: 计算卷积\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$. 求 $f_1\ast f_2$.
@@ -661,16 +661,16 @@
 			\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
 			\node[cstnode2,below=of a] (c){原象函数(方程的解)};
 			\node[cstnode1,below=of b] (d){象函数};
-			\draw[cstnarrow,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
-			\draw[cstnarrow,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
-			\draw[cstnarrow,second] (b)--(d);
-			\draw[cstnarrow,third] (a)--(c);
+			\draw[cstnra,second] (a)--node[above]{傅里叶变换 $\msf$}(b);
+			\draw[cstnra,second] (d)--node[below]{傅里叶逆变换 $\msf^{-1}$}(c);
+			\draw[cstnra,second] (b)--(d);
+			\draw[cstnra,third] (a)--(c);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
 	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
@@ -699,7 +699,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
 	\onslide<+->
 	\begin{example}
 		解方程 $y''(t)-y(t)=0$.

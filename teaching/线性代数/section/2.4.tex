@@ -64,9 +64,9 @@
 	\onslide<+->
 	称 $\bfA$ 的行向量组的秩为\emph{行秩}, 列向量组的秩为\emph{列秩}.
 	\onslide<+->
-	\begin{theorem}
+	\begin{second}{行秩、列秩与秩相等}
 		$\bfA$ 的行秩和列秩均等于秩 $R(\bfA)$.
-	\end{theorem}
+	\end{second}
 	\onslide<+->
 	对于行阶梯形矩阵, 再实施初等变换使其变为行最简形矩阵或标准型矩阵, 并不会改变它的非零行的个数.
 	\onslide<+->
@@ -116,7 +116,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 计算矩阵的秩}
+\begin{frame}{例: 计算矩阵的秩}
 	\onslide<+->
 	\begin{example}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -149,7 +149,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 计算矩阵的秩}
+\begin{frame}{例: 计算矩阵的秩}
 	\onslide<+->
 	\begin{exercise}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -165,7 +165,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 计算矩阵的秩}
+\begin{frame}{例: 计算矩阵的秩}
 	\onslide<+->
 	\begin{example}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -268,7 +268,7 @@
 		设 $\bfA\in M_{m\times n}$, 则 $0\le R(\bfA)\le \min(m,n)$.
 	\end{proposition}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[满秩]
 		\begin{enumerate}
 			\item 若 $R(\bfA)=m$, 称 $\bfA$ \emph{行满秩};
 			\item 若 $R(\bfA)=n$, 称 $\bfA$ \emph{列满秩};
@@ -298,7 +298,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\setcounter{enumi}{4}
 			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$.
 		\end{enumerate}
@@ -323,7 +323,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\setcounter{enumi}{5}
 			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$.
 		\end{enumerate}
@@ -358,7 +358,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\setcounter{enumi}{6}
 			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
@@ -384,7 +384,7 @@
 \begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proposition}
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\setcounter{enumi}{7}
 			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
@@ -415,8 +415,8 @@
 				1&0&2\\
 				0&2&0\\
 				-1&0&3
-			\end{pmatrix}$, 则 $R(\bfA\bfB)=$\fillblank{\visible<+->{$2$}}.
-			\item 若 $\bfA$ 是 $n$ 阶方阵且 $R(\bfA\bfB)<R(\bfB)$, 则 $|\bfA|=$\fillblank{\visible<+->{$0$}}.
+			\end{pmatrix}$, 则 $R(\bfA\bfB)=$\fillblank{\visible<6->{$2$}}.
+			\item 若 $\bfA$ 是 $n$ 阶方阵且 $R(\bfA\bfB)<R(\bfB)$, 则 $|\bfA|=$\fillblank{\visible<7->{$0$}}.
 			\item 若 $\bfA=\begin{pmatrix}
 				1&0&2\\
 				0&1&1\\
@@ -425,18 +425,18 @@
 				3&4&1\\
 				1&2&1\\
 				4&6&t
-			\end{pmatrix},\bfA\bfX=\bfB$ 且 $R(\bfX)=2$, 则 $t=$\fillblank{\visible<+->{$2$}}.
+			\end{pmatrix},\bfA\bfX=\bfB$ 且 $R(\bfX)=2$, 则 $t=$\fillblank{\visible<8->{$2$}}.
 			\item 若 $\bfA=\begin{pmatrix}
 				t&2&3\\
 				2&1&-1\\
 				0&0&5
-			\end{pmatrix}$ 且存在非零矩阵 $\bfB$ 使得 $\bfA\bfB=\bfO$, 则 $t=$\fillblank{\visible<+->{$4$}}.
+			\end{pmatrix}$ 且存在非零矩阵 $\bfB$ 使得 $\bfA\bfB=\bfO$, 则 $t=$\fillblank{\visible<9->{$4$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵秩性质的应用}
+\begin{frame}{例: 矩阵秩性质的应用}
 	\onslide<+->
 	\begin{example}
 		证明: 若 $n$ 阶方阵 $\bfA$ 满足 $\bfA^2=\bfA$, 则 $R(\bfA)+R(\bfA-\bfE)=n$.
@@ -453,16 +453,16 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵秩性质的应用}
+\begin{frame}{例: 矩阵秩性质的应用}
 	\onslide<+->
-	\begin{example}
-		证明: 设 $\bfA$ 是 $n$ 阶方阵, 则
-		\[\alert{R(\bfA^*)=\begin{cases}
+	\begin{theorem}[伴随矩阵的秩]
+		设 $\bfA$ 是 $n$ 阶方阵, 则
+		\[R(\bfA^*)=\begin{cases}
 			n,&R(\bfA)=n;\\
 			1,&R(\bfA)=n-1;\\
 			0,&R(\bfA)\le n-2.
-		\end{cases}}\]
-	\end{example}
+		\end{cases}\]
+	\end{theorem}
 	\onslide<+->
 	\begin{proof}
 		\begin{enumerate}
@@ -476,27 +476,61 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵秩性质的应用}
+\begin{frame}{例: 矩阵秩性质的应用}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item 设 $\bma=(1,0,-1,2)^\rmT,\bmb=(0,1,0,2)^\rmT$, 则 $R(\bma\bmb^\rmT)=$\fillblank{\visible<+->{$1$}}.
+			\item 设 $\bma=(1,0,-1,2)^\rmT,\bmb=(0,1,0,2)^\rmT$, 则 $R(\bma\bmb^\rmT)=$\fillblank{\visible<5->{$1$}}.
 			\item 若 $\bfA=\begin{pmatrix}
 				a&b&b\\
 				b&a&b\\
 				b&b&a
-			\end{pmatrix}$ 且 $R(\bfA^*)=1$, 则\fillbrace{\visible<+->{B}}.
-			\xx{$a\neq b,a+2b\neq 0$}%
-			{$a\neq b,a+2b=0$}%
-			{$a=b,a\neq 0$}%
-			{$a=b=0$}
-			\item 设 $\bfA,\bfB$ 为 $n$ 阶方阵, 则\fillbrace{\visible<+->{A}}.
-			\xx{$R(\bfA,\bfA\bfB)=R(\bfA)$}%
-			{$R(\bfA,\bfB\bfA)=R(\bfA)$}%
-			{$R(\bfA,\bfA\bfB)=\max\bigl(R(\bfA),R(\bfB)\bigr)$}%
-			{$R(\bfA\bfB)=R(\bfA^\rmT\bfB^\rmT)$}%
+			\end{pmatrix}$ 且 $R(\bfA^*)=1$, 则\fillbrace{\visible<6->{B}}.
+			\begin{taskschoice}(2)
+				() $a\neq b,a+2b\neq 0$
+				() $a\neq b,a+2b=0$
+				() $a=b,a\neq 0$
+				() $a=b=0$
+			\end{taskschoice}
+			\item 设 $\bfA,\bfB$ 均为 $n$ 阶非零矩阵, 且 $\bfA\bfB=\bfO$, 则 $R(\bfA)$ 与 $R(\bfB)$\fillbrace{\visible<7->{B}}.
+			\begin{taskschoice}(2)
+				() 必有一个等于 $0$
+				() 都小于 $n$
+				() 都等于 $n$
+				() 一个小于 $n$, 一个等于 $n$
+			\end{taskschoice}
 		\end{enumerate}
 	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}\small
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\setcounter{enumi}{3}
+			\item 设 $\bfP$ 为 $3$ 阶非零矩阵, $\bfQ=\begin{pmatrix}
+				1&2&3\\
+				2&4&t\\
+				3&6&9
+			\end{pmatrix}$ 且 $\bfP\bfQ=\bfO$, 则\fillbrace{\visible<4->{A}}.
+			\begin{taskschoice}(2)
+				() $t\neq 6$ 时, $R(\bfP)=1$
+				() $t\neq 6$ 时, $R(\bfP)=2$
+				() $t=6$ 时, $R(\bfP)=1$
+				() $t=6$ 时, $R(\bfP)=2$
+			\end{taskschoice}
+			\item 设 $\bfA,\bfB$ 为 $n$ 阶方阵, 则\fillbrace{\visible<5->{A}}.
+			\begin{taskschoice}(2)
+				() $R(\bfA,\bfA\bfB)=R(\bfA)$
+				() $R(\bfA,\bfB\bfA)=R(\bfA)$
+				() $R(\bfA,\bfA\bfB)=\max\bigl(R(\bfA),R(\bfB)\bigr)$
+				() $R(\bfA\bfB)=R(\bfA^\rmT\bfB^\rmT)$
+			\end{taskschoice}
+		\end{enumerate}
+	\end{exercise}
+	\onslide<+->
+	\onslide<+->
 	\onslide<+->
 	\begin{answer}
 		存在 $\bfA\bfB=\bfO,\bfB\bfA\neq \bfO$, D 错误.
@@ -506,51 +540,30 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵秩性质的应用}
-	\onslide<+->
+\begin{frame}{例: 矩阵秩性质的应用}
 	\begin{exercise}
-		\begin{enumerate}
-			\setcounter{enumi}{3}
-			\item 设 $\bfP$ 为 $3$ 阶非零矩阵, $\bfQ=\begin{pmatrix}
-				1&2&3\\
-				2&4&t\\
-				3&6&9
-			\end{pmatrix}$ 且 $\bfP\bfQ=\bfO$, 则\fillbrace{\visible<+->{A}}.
-			\xx{$t\neq 6$ 时, $R(\bfP)=1$}%
-			{$t\neq 6$ 时, $R(\bfP)=2$}%
-			{$t=6$ 时, $R(\bfP)=1$}%
-			{$t=6$ 时, $R(\bfP)=2$}%
-			\item 设 $\bfA,\bfB$ 均为 $n$ 阶非零矩阵, 且 $\bfA\bfB=\bfO$, 则 $R(\bfA)$ 与 $R(\bfB)$\fillbrace{\visible<+->{B}}.
-			\xx{必有一个等于 $0$}%
-			{都小于 $n$}%
-			{都等于 $n$}%
-			{一个小于 $n$, 一个等于 $n$}
-			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$, 则\fillbrace{\visible<+->{A}}.
-			\xx{当 $m>n$ 时, 必有 $|\bfA\bfB|=0$}%
-			{当 $m>n$ 时, 必有 $|\bfA\bfB|\neq0$}%
-			{当 $m<n$ 时, 必有 $|\bfA\bfB|=0$}%
-			{当 $m<n$ 时, 必有 $|\bfA\bfB|\neq0$}
-		\end{enumerate}
-	\end{exercise}
-\end{frame}
-
-
-\begin{frame}{例题: 矩阵秩性质的应用}
-	\onslide<+->
-	\begin{exercise}
-		\begin{enumerate}
-			\setcounter{enumi}{6}
-			\item 设 $\bfA\in M_{n\times m},\bfB\in M_{m\times n},n<m$. 若 $\bfA\bfB=\bfE$, 则 $R(\bfB)=$\fillblank{\visible<+->{$n$}}.
+		\begin{enumerate}[<*>]
+			\setcounter{enumi}{5}
+			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$, 则\fillbrace{\visible<2->{A}}.
+			\begin{taskschoice}(2)
+				() 当 $m>n$ 时, 必有 $|\bfA\bfB|=0$
+				() 当 $m>n$ 时, 必有 $|\bfA\bfB|\neq0$
+				() 当 $m<n$ 时, 必有 $|\bfA\bfB|=0$
+				() 当 $m<n$ 时, 必有 $|\bfA\bfB|\neq0$
+			\end{taskschoice}
+			\item 设 $\bfA\in M_{n\times m},\bfB\in M_{m\times n},n<m$. 若 $\bfA\bfB=\bfE$, 则 $R(\bfB)=$\fillblank{\visible<3->{$n$}}.
 			\item 若 $\begin{pmatrix}
 				1&1&1\\0&1&-1\\2&3&a+2
 			\end{pmatrix}$ 和 $\begin{pmatrix}
 				1&2&2\\2&1&1\\a+3&a+6&a+4
-			\end{pmatrix}$ 等价, 则\fillbrace{\visible<+->{B}}.
-			\xx{$a=-1$}%
-			{$a\neq-1$}%
-			{$a\neq 1$}%
-			{$a=1$}
-			\item 设四阶方阵 $\bfA=(\bma_1,\bma_2,\bma_3,\bma_4)$ 满足 $\bma_1+\bma_2-2\bma_3={\bf0},\bma_2+5\bma_4={\bf0}$, 则 $R(\bfA^*)=$\fillblank{\visible<+->{$0$}}.
+			\end{pmatrix}$ 等价, 则\fillbrace{\visible<4->{B}}.
+			\begin{taskschoice}(4)
+				() $a=-1$
+				() $a\neq-1$
+				() $a\neq 1$
+				() $a=1$
+			\end{taskschoice}
+			\item 设四阶方阵 $\bfA=(\bma_1,\bma_2,\bma_3,\bma_4)$ 满足 $\bma_1+\bma_2-2\bma_3={\bf0},\bma_2+5\bma_4={\bf0}$, 则 $R(\bfA^*)=$\fillblank{\visible<5->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
@@ -598,7 +611,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 秩与线性相关}
+\begin{frame}{例: 秩与线性相关}
 	\onslide<+->
 	\begin{example}
 		已知向量组
@@ -618,22 +631,23 @@
 \end{frame}
 
 
-\begin{frame}{例题: 秩与线性相关}
+\begin{frame}{例: 秩与线性相关}
 	\onslide<+->
 	\begin{exercise}
-		设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbrace{\visible<+->{C}}.
-		\xx{$\bfA$ 必有一列元素全为零}%
-		{$\bfA$ 必有两列元素对应成比例}%
-		{$\bfA$ 必有一个列向量可由其余列向量线性表示}%
-		{$\bfA$ 中任意列向量均可由其余列向量线性表示}
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若
-		\[\bma_1=(1,0,0,2)^\rmT,
-		\bma_2=(0,1,5,0)^\rmT,
-		\bma_3=(2,1,t+1,4)^\rmT\]
-		线性相关, 则 $t=$\fillblank{\visible<+->{3}}.
+		\begin{enumerate}
+			\item 设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbrace{\visible<4->{C}}.
+			\begin{taskschoice}(1)
+				() $\bfA$ 必有一列元素全为零
+				() $\bfA$ 必有两列元素对应成比例
+				() $\bfA$ 必有一个列向量可由其余列向量线性表示
+				() $\bfA$ 中任意列向量均可由其余列向量线性表示
+			\end{taskschoice}
+			\item 若
+				\[\bma_1=(1,0,0,2)^\rmT,
+				\bma_2=(0,1,5,0)^\rmT,
+				\bma_3=(2,1,t+1,4)^\rmT\]
+				线性相关, 则 $t=$\fillblank{\visible<5->{$3$}}.
+		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
@@ -663,18 +677,19 @@
 \end{frame}
 
 
-\begin{frame}{计算方法}
+\begin{frame}{极大线性无关组和秩的计算方法}
 	\onslide<+->
-	由此得到极大线性无关组和秩的计算方法.
-	\begin{enumerate}
-		\item 将向量组以列向量形式组成矩阵 $\bfA=(\bma_1,\dots,\bma_m)$.
-		\item 通过初等行变换将 $\bfA$ 变为行阶梯形矩阵.
-			\begin{itemize}
-				\item 行阶梯形矩阵非零行的行数就是秩 $R(\bfA)$;
-				\item 行阶梯形矩阵每个非零行的首个非零元对应的 $\bfA$ 的列向量, 就是极大线性无关组.
-			\end{itemize}
-		\item 继续化简为行最简形矩阵, 则可将其余向量表示为极大线性无关组的线性组合.
-	\end{enumerate}
+	\begin{second}{极大线性无关组和秩的计算方法}
+		\begin{enumerate}
+			\item 将向量组以列向量形式组成矩阵 $\bfA=(\bma_1,\dots,\bma_m)$.
+			\item 通过初等行变换将 $\bfA$ 变为行阶梯形矩阵.
+				\begin{itemize}
+					\item 行阶梯形矩阵非零行的行数就是秩 $R(\bfA)$;
+					\item 行阶梯形矩阵每个非零行的首个非零元对应的 $\bfA$ 的列向量, 就是极大线性无关组.
+				\end{itemize}
+			\item 继续化简为行最简形矩阵, 则可将其余向量表示为极大线性无关组的线性组合.
+		\end{enumerate}
+	\end{second}
 \end{frame}
 
 
@@ -735,12 +750,16 @@
 			0&0&0&0&3\\
 			0&0&0&0&0
 		\end{pmatrix}
-		\sim\begin{pmatrix}
+		\sim\begin{pNiceMatrix}
 			1&0&-4/9&-8/9&0\\
 			0&1&-1/9&-11/9&0\\
 			0&0&0&0&1\\
 			0&0&0&0&0
-		\end{pmatrix}\]}
+			\CodeAfter
+			\tikz \draw [cstcurve,second,rounded corners] (1-|1) rectangle (2-|2);
+			\tikz \draw [cstcurve,second,rounded corners] (2-|2) rectangle (3-|3);
+			\tikz \draw [cstcurve,second,rounded corners] (3-|5) rectangle (4-|6);
+		\end{pNiceMatrix}\]}
 		\onslide<+->{%
 			因此 $R(\bfA)=3,\bma_1,\bma_2,\bma_5$ 是一个极大线性无关组, 且
 			\[\bma_3=-\frac49 \bma_1-\frac19\bma_2,\quad
@@ -803,32 +822,38 @@
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关与线性无关}
+\begin{frame}{例: 线性相关与线性无关}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item 设矩阵 $\bfA$ 经初等行变换化为 $\bfB$, 则二者的\fillbrace{\visible<+->{A}}.
-			\xx{行向量组等价, 列向量组同相关性}%
-				{行向量组同相关性, 列向量组等价}%
-				{行向量组未必等价, 列向量组同相关性}%
-				{行向量组等价, 列向量组未必同相关性}
-			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times k},\bfA\bfB=\bfO,\bfB\neq \bfO$, 则\fillbrace{\visible<+->{A}}
-			\xx{$\bfA$ 的列向量组线性相关}%
-				{$\bfA$ 的行向量组线性相关}%
-				{$\bfA$ 的列向量组线性无关}%
-				{$\bfA$ 的行向量组线性无关}
+			\item 设矩阵 $\bfA$ 经初等行变换化为 $\bfB$, 则二者的\fillbrace{\visible<4->{A}}.
+			\begin{taskschoice}(1)
+				() 行向量组等价, 列向量组同相关性
+				() 行向量组同相关性, 列向量组等价
+				() 行向量组未必等价, 列向量组同相关性
+				() 行向量组等价, 列向量组未必同相关性
+			\end{taskschoice}
+			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times k},\bfA\bfB=\bfO,\bfB\neq \bfO$, 则\fillbrace{\visible<5->{A}}
+			\begin{taskschoice}(2)
+				() $\bfA$ 的列向量组线性相关
+				() $\bfA$ 的行向量组线性相关
+				() $\bfA$ 的列向量组线性无关
+				() $\bfA$ 的行向量组线性无关
+			\end{taskschoice}
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关与线性无关}
+\begin{frame}{例: 线性相关与线性无关}
 	\onslide<+->
 	\begin{exercise}
 		多选题: 设 $\bfA^*$ 是 $n>1$ 阶方阵, 以下说法正确的是\fillbrace{\visible<+->{ABCD}}
-		\xx{若 $\bfA$ 的列向量组线性相关, 则 $\bfA^*$ 的列向量组线性相关}%
-			{若 $\bfA$ 的列向量组线性无关, 则 $\bfA^*$ 的列向量组线性无关}%
-			{若 $\bfA$ 的某两列向量线性相关, 则 $\bfA^*$ 的列向量组线性相关}%
-			{若 $\bfA$ 的某两列向量线性无关, 则 $\bfA^*$ 的列向量组线性无关}
+		\begin{taskschoice}(1)
+			() 若 $\bfA$ 的列向量组线性相关, 则 $\bfA^*$ 的列向量组线性相关
+			() 若 $\bfA$ 的列向量组线性无关, 则 $\bfA^*$ 的列向量组线性无关
+			() 若 $\bfA$ 的某两列向量线性相关, 则 $\bfA^*$ 的列向量组线性相关
+			() 若 $\bfA$ 的某两列向量线性无关, 则 $\bfA^*$ 的列向量组线性无关
+		\end{taskschoice}
 	\end{exercise}
 \end{frame}

@@ -62,7 +62,7 @@
 			\filldraw[cstcurve,main,cstfill] (0,0) circle (1.2);
 			\fill[cstdot] (0,0) circle;
 			\draw[cstcurve,cstra] (0,0)--(0.96,0.72);
-			\draw[cstcurve,cstra] (-0.96,0.72)--(-2,0.72);
+			\draw[cstcurve,main,cstra] (-0.96,0.72)--(-2,0.72);
 			\draw
 				(0.6,0.1) node {$R$}
 				(0,-0.4) node[second] {绝对收敛}
@@ -73,7 +73,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 收敛半径的计算}
+\begin{frame}{例: 收敛半径的计算}
 	\onslide<+->
 	\begin{example}
 		求幂级数 $\suml_{n=0}^\infty z^n=1+z+z^2+\cdots$ 的收敛半径与和函数.
@@ -94,7 +94,7 @@
 	\onslide<+->
 	由正项级数的相应判别法容易得到公式 $R=\dfrac1r$, 其中
 	\begin{enumerate}
-		\item \emph{达朗贝尔公式(比值法)}: \abox{$r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$} (假设存在);
+		\item \emph{达朗贝尔公式(比值法)}: \alert{$r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$} (假设存在);
 		\item \emph{柯西公式(根式法)}: $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在);
 		\item \emph{柯西-阿达马公式}: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
 	\end{enumerate}
@@ -124,6 +124,7 @@
 
 
 \begin{frame}{典型例题: 收敛半径的计算}
+	\beqskip{4pt}
 	\onslide<+->
 	\begin{example}
 		求幂级数 $\suml_{n=0}^\infty\cos(in)z^n$ 的收敛半径.
@@ -134,16 +135,13 @@
 		我们有 $c_n=\cos(in)=\dfrac{e^n+e^{-n}}2$.
 		\onslide<+->{由
 			\[\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{e^{n+1}+e^{-n-1}}{e^n+e^{-n}}=e\lim_{n\to\infty}\frac{1+e^{-2n-2}}{1+e^{-2n}}=e\]
-		可知收敛半径为 $\dfrac1e$.}
+		可知收敛半径为 $1/e$.}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 收敛半径的计算}
 	\onslide<+->
 	\begin{exercise}
-		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm][2mm]{\visible<+->{$\dfrac{\sqrt2}2$}}.
+		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank{\visible<+->{$\sqrt2/2$}}.
 	\end{exercise}
+	\endgroup
 \end{frame}
 
 
@@ -241,7 +239,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 幂级数展开}
+\begin{frame}{例: 幂级数展开}
 	\onslide<+->
 	\begin{example}
 		把函数 $\dfrac1{z-b}$ 表成形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的幂级数, 其中 $a\neq b$.
@@ -255,6 +253,7 @@
 		}\onslide<+->{$\displaystyle\frac1{z-b}=\frac1{a-b}\sum_{n=0}^\infty\left(\frac{z-a}{b-a}\right)^n$,
 		}\onslide<+->{即
 		\[\frac1{z-b}=-\sum_{n=0}^\infty\frac{(z-a)^n}{(b-a)^{n+1}},\quad|z-a|<|b-a|.\]}
+		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -274,6 +273,7 @@
 		\sum_{n=1}^\infty(2^n-1)z^{n-1}&=\sum_{n=1}^\infty 2^n z^{n-1}-\sum_{n=1}^\infty z^{n-1}\\
 		&\visible<+->{=\frac2{1-2z}-\frac1{1-z}=\frac1{(1-2z)(1-z)}.}
 		\end{align*}}
+		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -309,6 +309,7 @@
 
 
 \begin{frame}{典型例题: 幂级数的收敛半径与和函数}
+	\beqskip{4pt}
 	\onslide<+->
 	一般地, 如果幂级数的系数形如
 	\[c_n=p_1(n)\lambda_1^n+\cdots+p_k(n)\lambda_k^n,\]
@@ -330,10 +331,11 @@
 	\begin{answer}
 		收敛半径为 $1$, 和函数为 $-\ln(1-z)$.
 	\end{answer}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 函数项级数的积分}
+\begin{frame}{例: 函数项级数的积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z$.
@@ -342,13 +344,14 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $\suml_{n=0}^\infty z^n$ 在 $|z|<1$ 收敛,
-	\onslide<+->{它的和函数解析.
-	}\onslide<+->{因此
-		\begin{align*}
-		\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z
-		&=\oint_{|z|=\half }\frac1z\diff z+\oint_{|z|=\half }\left(\sum_{n=0}^\infty z^n\right)\diff z\\
-		&\visible<+->{=2\pi i+0=2\pi i.}
-	\end{align*}}
+		\onslide<+->{它的和函数解析.
+		}\onslide<+->{因此
+			\begin{align*}
+			\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z
+			&=\oint_{|z|=\half }\frac1z\diff z+\oint_{|z|=\half }\left(\sum_{n=0}^\infty z^n\right)\diff z\\
+			&\visible<+->{=2\pi i+0=2\pi i.}
+		\end{align*}}
+		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 

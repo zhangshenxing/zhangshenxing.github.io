@@ -425,10 +425,10 @@
 \newenvironment{fourth@}{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
 \newenvironment{fourth*}[1]{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,title=#1,indent]}{\end{tcolorbox}}
 \newenvironment{fourth@*}{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,notitle,indent]}{\end{tcolorbox}}
-\newenvironment{fifth}[1]{\begin{tcolorbox}[fifthstyle,title=#1]}{\end{tcolorbox}}
-\newenvironment{fifth@}{\begin{tcolorbox}[fifthstyle,notitle]}{\end{tcolorbox}}
-\newenvironment{fifth*}[1]{\begin{tcolorbox}[fifthstyle,title=#1,indent]}{\end{tcolorbox}}
-\newenvironment{fifth@*}{\begin{tcolorbox}[fifthstyle,notitle,indent]}{\end{tcolorbox}}
+\newenvironment{fifth}[1]{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{fifth@}{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{fifth*}[1]{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,title=#1,indent]}{\end{tcolorbox}}
+\newenvironment{fifth@*}{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,notitle,indent]}{\end{tcolorbox}}
 
 \RenewDocumentEnvironment{example}{o}{\begin{main}{\translate{Example}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
 \NewDocumentEnvironment{example*}{o}{\begin{main*}{\translate{Example}\IfNoValueTF{#1}{}{~(#1)}}}{\end{main*}}
@@ -477,7 +477,7 @@
 \beamerdefaultoverlayspecification{<+->}
 \mode<all>
 % Translations
-\providetranslation[to=ChineseUTF8]{Example}{例题}
+\providetranslation[to=ChineseUTF8]{Example}{例}
 \providetranslation[to=ChineseUTF8]{Conjecture}{猜想}
 \providetranslation[to=ChineseUTF8]{Proof (Continued)}{续证}
 \providetranslation[to=ChineseUTF8]{Solution (Continued)}{续解}
@@ -496,6 +496,6 @@
 \email{zhangshenxing@hfut.edu.cn}
 \website{https://zhangshenxing.github.io}
 \office{翡翠科教楼B1810东}
-\titlegraphic{../image/hfut.png}
-\institutegraphic{../image/hfutname.png}
+\titlegraphic{../../../image/logo/hfut.png}
+\institutegraphic{../../../image/logo/hfutname.png}
 \setbeamersize{text margin left=2em,text margin right=2em}

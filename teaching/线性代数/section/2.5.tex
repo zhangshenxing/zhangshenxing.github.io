@@ -2,7 +2,7 @@
 
 \subsection{向量的内积}
 
-\begin{frame}{引例题: 更好的基}
+\begin{frame}{引例: 更好的基}
 	\onslide<+->
 	本节考虑的向量都是实向量.
 
@@ -22,7 +22,7 @@
 
 \begin{frame}{内积}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[内积]
 		设 $\bma=(a_1,\dots,a_n)^\rmT,\bmb=(b_1,\dots,b_n)^\rmT\in\BR^n$, 定义\emph{内积}
 		\[[\bma,\bmb]=\bma^\rmT\bmb=\bmb^\rmT\bma=a_1b_1+\cdots+a_nb_n\in\BR.\]
 	\end{definition}
@@ -41,7 +41,7 @@
 
 \begin{frame}{长度}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[单位向量]
 		设 $\bfx=(x_1,\dots,x_n)\in\BR^n$, 定义 $\bfx$ 的\emph{长度}或\emph{模}为
 		\[\|\bfx\|=\sqrt{x_1^2+\cdots+x_n^2}.\]
 		当 $\|\bfx\|=1$ 时, 称 $\bfx$ 为\emph{单位向量}.
@@ -93,12 +93,12 @@
 
 \subsection{正交向量组与格拉姆-施密特正交化}
 
-\begin{frame}{例题: 正交向量}
+\begin{frame}{例: 正交向量}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[正交向量组和标准正交向量组]
 		\begin{enumerate}
-			\item 若向量组 $S$ 中的向量两两正交且非零, 则称 $S$ 为正交向量组.
-			\item 若向量组 $S$ 中的向量两两正交且均为单位向量, 则称 $S$ 为标准正交向量组.
+			\item 若向量组 $S$ 中的向量两两正交且非零, 则称 $S$ 为\emph{正交向量组}.
+			\item 若向量组 $S$ 中的向量两两正交且均为单位向量, 则称 $S$ 为\emph{标准正交向量组}.
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
@@ -157,7 +157,7 @@
 
 \begin{frame}{格拉姆-施密特正交化}
 	\onslide<+->
-	由此得到\alert{格拉姆-施密特正交单位化方法}: 取
+	\begin{second}{格拉姆-施密特正交单位化方法}
 		\begin{align*}
 			\bmb_1&=\bma_1\\
 			\bmb_2&=\bma_2-\frac{[\bma_2,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1\\
@@ -165,8 +165,10 @@
 			&\vdots\\
 			\bmb_r&=\bma_r-\frac{[\bma_r,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1-\cdots-\frac{[\bma_r,\bmb_{r-1}]}{[\bmb_{r-1},\bmb_{r-1}]}\bmb_{r-1}
 		\end{align*}
-	\onslide<+->
-	则 $\bfe_1=\dfrac{\bmb_1}{\|\bmb_1\|},\dots,\bfe_r=\dfrac{\bmb_r}{\|\bmb_r\|}$ 就是 $V$ 的一组标准正交基.
+		\onslide<+->{%
+			则 $\bfe_1=\dfrac{\bmb_1}{\|\bmb_1\|},\dots,\bfe_r=\dfrac{\bmb_r}{\|\bmb_r\|}$ 就是 $V$ 的一组标准正交基.
+		}
+	\end{second}
 \end{frame}
 
 

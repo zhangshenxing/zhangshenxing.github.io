@@ -8,7 +8,7 @@
 	我们知道, $\BC^n$ 中任一向量可以\alert{唯一}表为 $\bfe_1,\dots,\bfe_n$ 的线性组合.
 	\onslide<+->
 	由此引出基的概念:
-	\begin{definition}
+	\begin{definition}[基]
 		若 $\bma_1,\dots,\bma_m\in V$ 满足: 对任意 $\bfv\in V$, 存在唯一的一组数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\bfv=\lambda_1\bma_1+\cdots+\lambda_m \bma_m,\]
 		则称 $\bma_1,\dots,\bma_m$ 是 $V$ 的一组\emph{基}.
@@ -44,7 +44,7 @@
 
 \begin{frame}{维数}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[维数]
 		设 $V\subseteq \BC^n$ 是一个线性子空间.
 		若存在(线性)双射 $f:\BC^r\to V$ 满足
 		\begin{enumerate}[<*>]
@@ -75,7 +75,7 @@
 
 \begin{frame}{秩}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[秩]
 		设向量组 $\bma_1,\dots,\bma_m$ 生成空间 $V$.
 		称 $V$ 的维数为该向量组的\emph{\cnen{秩}{Rank}}, 记作 $R(\bma_1,\dots,\bma_m)$.
 	\end{definition}
@@ -107,23 +107,21 @@
 \end{frame}
 
 
-\begin{frame}{例题: 向量组的秩}
-	\onslide<+->
+\begin{frame}{例: 向量组的秩}
 	\begin{exercise}
-		若任一 $3$ 维向量都可由向量组
-		\[\bma_1=(a,3,2)^\rmT,\quad
-		\bma_2=(2,-1,3)^\rmT,\quad
-		\bma_3=(3,2,1)^\rmT,\]
-		线性表示, 则 $a\neq$\fillblank{\visible<+->{$5$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<+->{\alert{\text{\huge$\times$}}}
+		\begin{enumerate}[<*>]
+			\item 若任一 $3$ 维向量都可由向量组
+			\[\bma_1=(a,3,2)^\rmT,\quad
+			\bma_2=(2,-1,3)^\rmT,\quad
+			\bma_3=(3,2,1)^\rmT,\]
+			线性表示, 则 $a\neq$\fillblank{\visible<2->{$5$}}.
+			\item 判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<3->{\alert{\text{\huge$\times$}}}
+		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例题: 向量组的秩}
+\begin{frame}{例: 向量组的秩}
 	\onslide<+->
 	\begin{example}
 		若 $S_1=\{\bma_1,\bma_2,\bma_3\}$, $S_2=\{\bma_1,\bma_2,\bma_3,\bma_4\}$, $S_3=\{\bma_1,\bma_2,\bma_3,\bma_4,\bma_5\}$ 满足 $R(S_1)=R(S_2)=3, R(S_3)=4$.
@@ -148,7 +146,7 @@
 \subsection{极大线性无关组}
 \begin{frame}{极大线性无关组的定义}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[极大线性无关组]
 		设 $S$ 为一个向量组.
 		若 $S$ 的部分组 $S_0=\{\bma_1,\dots,\bma_m\}$ 满足
 		\begin{enumerate}[<*>]
@@ -167,7 +165,7 @@
 	\onslide<+->
 	\begin{theorem}
 		$S_0$ 是 $S$ 的极大线性无关组当且仅当
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\item $S_0$ 线性无关;
 			\item $S$ 中任意 $m+1$ 个向量线性相关.
 		\end{enumerate}
@@ -203,7 +201,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 极大线性无关组}
+\begin{frame}{例: 极大线性无关组}
 	\onslide<+->
 	\begin{example}
 		矩阵 $\bfA=\begin{pmatrix}

@@ -14,15 +14,15 @@
 	对于任意固定的 $z_0\in D$, 函数
 	\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta\]
 	定义了一个单值函数.
-
-	\onslide<+->
-	\begin{theorem}
-		$F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
-	\end{theorem}
 \end{frame}
 
 
 \begin{frame}{原函数的存在性}
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{theorem}
+		$F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
+	\end{theorem}
 	\onslide<+->
 	\begin{solution}[证明]
 		\begin{center}
@@ -40,17 +40,23 @@
 					(1.1,0.7) node[third,visible on=<2->] {$z+\Delta z$};
 			\end{tikzpicture}
 		\end{center}
-
 		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
-		\onslide<+->{取 $|\Delta z|$ 小于 $K$ 的半径.
-		}\onslide<+->{那么
-		\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
-		\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}\]}
-		\vspace{-\baselineskip}
-		\onslide<+->{容易知道
-		\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]
-		}\onslide<+->{我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.}
+		\onslide<+->{%
+			取 $|\Delta z|$ 小于 $K$ 的半径.
+		}\onslide<+->{%
+			那么
+			\[
+				F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
+				\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}
+			\]
+		}\onslide<+->{%
+			容易知道
+			$\displaystyle\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z$.
+		}\onslide<+->{%
+			我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
+		}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
@@ -73,13 +79,13 @@
 
 \subsection{牛顿-莱布尼兹定理}
 
-\begin{frame}{原函数的存在性}
+\begin{frame}{牛顿-莱布尼兹定理}
 	\onslide<+->
-	\begin{second}{牛顿-莱布尼兹定理}
+	\begin{second}{复变函数积分计算方法II}
 		设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
-		\begin{equation}\tag{B}
+		\[
 			\int_{z_1}^{z_2}f(z)\diff z=F(z_1)-F(z_2),\quad\text{其中}\quad F'(z)=f(z).
-		\end{equation}
+		\]
 	\end{second}
 
 	\onslide<+->
@@ -107,9 +113,14 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $f(z)=z$ 处处解析,
-		\onslide<+->{且 $\displaystyle\int z\diff z=\half  z^2+C$,
-		}\onslide<+->{因此
-		\[\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).\]}
+		\onslide<+->{%
+			且 $\displaystyle\int z\diff z=\half  z^2+C$,
+		}\onslide<+->{%
+			因此
+			\[
+				\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
+			\]
+		}\vspace{-.5\baselineskip}
 	\end{solution}
 	\onslide<+->
 	因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 无论从 $0$ 到 $3+4i$ 的路径如何.
@@ -125,10 +136,17 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $f(z)=z\cos z^2$ 处处解析,
-		\onslide<+->{且
-		\[\int z\cos z^2\diff z=\half\int \cos z^2\diff z^2=\half\sin z^2+C,\]
-		}\onslide<+->{因此
-		\[\int_0^{\pi i}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi i}=-\half\sin \pi^2.\]}
+		\onslide<+->{%
+			且
+			\[
+				\int z\cos z^2\diff z=\half\int \cos z^2\diff z^2=\half\sin z^2+C,
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\int_0^{\pi i}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi i}=-\half\sin \pi^2.
+			\]
+		}\vspace{-.5\baselineskip}
 	\end{solution}
 
 	\onslide<+->
@@ -145,18 +163,23 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $f(z)=z\cos z$ 处处解析,
-		\onslide<+->{且
-			\[\int z\cos z\diff z
-			=\int z\diff(\sin z)
-			=z\sin z-\int \sin z\diff z
-			\visible<+->{=z\sin z+\cos z+C,}\]
-		}\onslide<+->{因此
-			\[\int_0^i z\cos z\diff z
-			=(z\sin z+\cos z)\big|_0^i
-			\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
-			\]}
+		\onslide<+->{%
+			且
+			\[
+				\int z\cos z\diff z
+				=\int z\diff(\sin z)
+				=z\sin z-\int \sin z\diff z
+				\visible<+->{=z\sin z+\cos z+C,}
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\int_0^i z\cos z\diff z
+				=(z\sin z+\cos z)\big|_0^i
+				\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
+			\]
+		}\vspace{-.5\baselineskip}
 	\end{solution}
-
 	\onslide<+->
 	这里我们使用了\alert{分部积分法}.
 \end{frame}
@@ -167,74 +190,63 @@
 	\begin{example}
 		求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
 		由于 $f(z)=ze^z$ 处处解析,
-		\onslide<+->{且
-		\[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]
-		}\onslide<+->{因此
-		\vspace{-\baselineskip}
-			\begin{align*}
-			\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
-			&\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1).}
-			\end{align*}}
-		\vspace{-\baselineskip}
+		\onslide<+->{%
+			且 $\displaystyle\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c$,
+		}\onslide<+->{%
+			因此 $\displaystyle \int_1^{1+i} z e^z\diff z=(z-1)e^z\big|_1^{1+i}
+			\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1)}$.
+		}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
 	\begin{exercise}
 		求 $\displaystyle\int_0^1 z\sin z\diff z=$\fillblank[4cm]{\visible<+->{$\sin 1-\cos 1$}}.
 	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
 		$\displaystyle\begin{cases}
 		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
 		\end{cases} 0\le \theta\le 2\pi.$
-		\vspace{-.5\baselineskip}
+		\vspace{-\baselineskip}
 		\begin{center}
-			\begin{tikzpicture}[framed]
-				\draw[cstaxis,visible on=<2->](0,0)--(5,0);
-				\draw[cstaxis,visible on=<2->](0,0)--(0,1.8);
-				\draw[cstcurve,main,smooth,domain=0:360,visible on=<9->] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
-				\draw[cstcurve,second,visible on=<3>] (0,0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<3->] (0,0) circle;
-				\draw[cstcurve,second,visible on=<4>] ({0.7*(pi/180*60)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<4->] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
-				\draw[cstcurve,second,visible on=<5>] ({0.7*(pi/180*120)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<5->] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
-				\draw[cstcurve,second,visible on=<6>] ({0.7*(pi/180*180)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<6->] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
-				\draw[cstcurve,second,visible on=<7>] ({0.7*(pi/180*240)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<7->] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
-				\draw[cstcurve,second,visible on=<8>] ({0.7*(pi/180*300)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<8->] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
-				\draw[cstcurve,second,visible on=<9>] ({0.7*(pi/180*360)},0.7) circle (0.7);
-				\fill[cstdot,main,visible on=<9->] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
-			\end{tikzpicture}
+			\begin{animateinline}[autoplay,loop,width=9cm]{10}
+				\multiframe{25}{r=0+15}{
+					\begin{tikzpicture}
+						\draw[cstaxis, thick](-1.5,0)--(7.5,0);
+						\draw[cstaxis, thick](0,0)--(0,2.5);
+						\draw[cstcurve,second] ({1*(pi/180*\r)},1) circle (1);
+						\fill[cstdot,main] ({1*(pi/180*\r-sin(\r))},{1*(1-cos(\r))}) circle;
+						\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
+					\end{tikzpicture}
+				}
+			\end{animateinline}
 		\end{center}
-		\vspace{-.5\baselineskip}
 	\end{example}
-\end{frame}
-
-\begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
 	\begin{solution}
 		由于 $f(z)=2z^2+8z+1$ 处处解析,
-		\onslide<+->{因此
-			\begin{align*}
-			&\peq\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
-			&\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
-			\end{align*}}
+		\onslide<+->{%
+			因此
+			\[
+				\text{原积分}=\int_0^{2\pi a}(2z^2+8z+1)\diff z
+				\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+			\]
+		}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
+	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
 		设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
@@ -243,20 +255,20 @@
 	\onslide<+->
 	\begin{solution}
 		函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
-		\vspace{-0.5\baselineskip}
-		\onslide<+->{
+		\onslide<+->{%
 			\[\int\frac{\ln(z+1)}{z+1}\diff z
 			=\int\ln(z+1)\diff[\ln(z+1)]=\half\ln^2(z+1)+c.\]
-		}\onslide<+->{因此
-		\vspace{-1.5\baselineskip}
+		}\onslide<+->{%
+			因此
 			\begin{align*}
-			&\peq\int_C\frac{\ln(z+1)}{z+1}\diff z=\half\ln^2(z+1)\big|_1^i
-			\visible<+->{=\half\left[\ln^2(1+i)-\ln^22\right]}\\
-			&\visible<+->{=\half\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
-			=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}
-			\end{align*}}
-		\vspace{-1.1\baselineskip}
+				\int_C\frac{\ln(z+1)}{z+1}\diff z&=\half\ln^2(z+1)\big|_1^i
+				\visible<+->{=\half\left[\ln^2(1+i)-\ln^22\right]}\\
+				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4i\Bigr)^2-\ln^22\biggr)
+				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}
+			\end{align*}
+		}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 

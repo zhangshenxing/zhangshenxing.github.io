@@ -2,7 +2,7 @@
 
 \subsection{向量组的线性表示}
 
-\begin{frame}{引例题: 齐次线性方程组的解}
+\begin{frame}{引例: 齐次线性方程组的解}
 	\onslide<+->
 	我们知道齐次线性方程组是指 $\bfA\bfx={\bf0}$.
 	\onslide<+->
@@ -50,7 +50,7 @@
 
 \begin{frame}{向量组的线性表示}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[线性组合]
 		设 $\bma_1,\dots,\bma_m,\bmb$ 为 $n$ 维向量.
 		若存在数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\bmb=\lambda_1\bma_1+\cdots+\lambda_m\bma_m,\]
@@ -90,7 +90,8 @@
 
 
 \begin{frame}{向量组的等价}
-	\begin{definition}
+	\onslide<+->
+	\begin{definition}[线性表示、向量组等价]
 		\begin{enumerate}
 			\item 设有两个向量组 $S=\{\bma_1,\dots,\bma_m\}, T=\{\bmb_1,\dots,\bmb_k\}$.
 			若 $\bmb_1,\dots,\bmb_k$ 均可以被 $\{\bma_1,\dots,\bma_m\}$ 线性表示, 则称向量组 $T$ 可以被向量组 $S$ 线性表示.
@@ -140,7 +141,7 @@
 
 \begin{frame}{线性相关与线性无关}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[线性相关与线性无关]
 		对于 $n$ 维向量组 $\{\bma_1,\dots,\bma_m\}$,
 		若存在一组\alert{不全为零}的数 $\lambda_1,\dots,\lambda_m$ 使得
 		\[\lambda_1\bma_1+\dots+\lambda_m\bma_m={\bf0},\]
@@ -156,7 +157,8 @@
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关与线性无关}
+\begin{frame}{例: 线性相关与线性无关}
+	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
 			\item $\bma_1=(1,2,3)^\rmT,\bma_2=(2,3,4)^\rmT,\bma_3=(0,0,0)^\rmT$ 线性相关.
@@ -175,7 +177,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 判断线性无关}
+\begin{frame}{例: 判断线性无关}
 	\onslide<+->
 	\begin{example}
 		已知向量组 $\{\bma_1,\bma_2,\bma_3\}$ 线性无关, 证明向量组 $\{\bma_1+\bma_2,\bma_2+\bma_3,\bma_3+\bma_1\}$ 线性无关.
@@ -200,8 +202,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 判断线性无关}
-	\onslide<+->
+\begin{frame}{例: 判断线性无关}
 	\begin{exercise}
 		已知向量组 $\{\bma_1,\bma_2\}$ 线性无关, 请问向量组 $\{\bma_1-\bma_2,\bma_1+\bma_2,\bma_1\}$ 是否线性无关?
 	\end{exercise}
@@ -260,7 +261,7 @@
 	注意, 向量组 $\bma_1,\dots,\bma_m$ 线性相关\alert{$\ \ \not\!\!\!\!\implies$}其中任一向量可以由其它向量线性表示.
 	\onslide<+->
 	\begin{exercise}
-		设 $\bma_1,\dots,\bma_m$ 是 $m$ 个 $n$ 维向量, 则下列结论是否正确的有\fillblank{\visible<8->{1}}个.
+		设 $\bma_1,\dots,\bma_m$ 是 $m$ 个 $n$ 维向量, 则下列结论正确的有\fillblank{\visible<8->{$1$}}个.
 		\begin{enumerate}
 			\item {若 $\bma_1,\dots,\bma_m$ 线性相关, 则其中任一向量均可由其余向量线性表示}%
 			\item {若 $\bma_m$ 不能由 $\bma_1,\dots,\bma_{m-1}$ 线性表示, 则向量组 $\bma_1,\dots,\bma_m$ 线性无关}%
@@ -314,42 +315,48 @@
 	即\alert{部分相关$\implies$整体相关, 整体无关$\implies$部分无关}.
 	\onslide<+->
 	\begin{example}
-		$n$ 维向量组 $\bma_1,\dots,\bma_s (3\le s\le n)$ 线性无关$\iff$\fillbrace{\visible<+->{D}}
-		\xx{$\bma_1,\dots,\bma_s$ 中存在一个向量不能由其余向量线性表示}%
-		{$\bma_1,\dots,\bma_s$ 中任两个向量都线性无关}%
-		{$\bma_1,\dots,\bma_s$ 中不含零向量}%
-		{$\bma_1,\dots,\bma_s$ 中任一个向量都不能由其余向量线性表示}
+		$n$ 维向量组 $\bma_1,\dots,\bma_s (3\le s\le n)$ 线性无关$\iff$\fillbrace{\visible<+->{D}}.
+		\begin{taskschoice}(1)
+			() $\bma_1,\dots,\bma_s$ 中存在一个向量不能由其余向量线性表示
+			() $\bma_1,\dots,\bma_s$ 中任两个向量都线性无关
+			() $\bma_1,\dots,\bma_s$ 中不含零向量
+			() $\bma_1,\dots,\bma_s$ 中任一个向量都不能由其余向量线性表示
+		\end{taskschoice}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关和线性无关}
+\begin{frame}{例: 线性相关和线性无关}
 	\onslide<+->
 	\begin{exercise}
 		若向量组 $\bma,\bmb,\bmg$ 线性无关, $\bma,\bmb,\bmd$ 线性相关, 则\fillbrace{\visible<+->{C}}.
-		\xx{$\bma$ 一定能由 $\bmb,\bmg,\bmd$ 线性表示}%
-		{$\bmb$ 一定不能由 $\bma,\bmg,\bmd$ 线性表示}%
-		{$\bmd$ 一定能由 $\bma,\bmb,\bmg$ 线性表示}%
-		{$\bmd$ 一定不能由 $\bma,\bmb,\bmg$ 线性表示}
+		\begin{taskschoice}(2)
+			() $\bma$ 一定能由 $\bmb,\bmg,\bmd$ 线性表示
+			() $\bmb$ 一定不能由 $\bma,\bmg,\bmd$ 线性表示
+			() $\bmd$ 一定能由 $\bma,\bmb,\bmg$ 线性表示
+			() $\bmd$ 一定不能由 $\bma,\bmb,\bmg$ 线性表示
+		\end{taskschoice}
 	\end{exercise}
 	\onslide<+->
 	\begin{example}
 		设向量 $\bmb$ 可由 $\bma_1,\dots,\bma_m$ 线性表示, 但不能由向量组 $S=\{\bma_1,\dots,\bma_{m-1}\}$ 线性表示. 记 $T=\{\bma_1,\dots,\bma_{m-1},\bmb\}$, 则\fillbrace{\visible<+->{B}}.
-		\xx{$\bma_m$ 不能由 $S$ 线性表示, 也不能由 $T$ 线性表示}%
-		{$\bma_m$ 不能由 $S$ 线性表示, 但能由 $T$ 线性表示}%
-		{$\bma_m$ 能由 $S$ 线性表示, 也能由 $T$ 线性表示}%
-		{$\bma_m$ 能由 $S$ 线性表示, 但不能由 $T$ 线性表示}%
+		\begin{taskschoice}(1)
+			() $\bma_m$ 不能由 $S$ 线性表示, 也不能由 $T$ 线性表示
+			() $\bma_m$ 不能由 $S$ 线性表示, 但能由 $T$ 线性表示
+			() $\bma_m$ 能由 $S$ 线性表示, 也能由 $T$ 线性表示
+			() $\bma_m$ 能由 $S$ 线性表示, 但不能由 $T$ 线性表示
+		\end{taskschoice}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关和线性无关}
+\begin{frame}{例: 线性相关和线性无关}
 	\onslide<+->
 	\begin{example}
 		设向量组 $\bma_1,\bma_2,\bma_3$ 线性相关, $\bma_2,\bma_3,\bma_4$ 线性无关, 证明
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\item $\bma_1$ 能由 $\bma_2,\bma_3$ 线性表示;
-			\item $\bma_4$ 不能由 $\bma_1,\bma_2,\bma_3$ 线性表示;
+			\item $\bma_4$ 不能由 $\bma_1,\bma_2,\bma_3$ 线性表示.
 		\end{enumerate}
 	\end{example}
 	\onslide<+->
@@ -396,11 +403,11 @@
 \end{frame}
 
 
-\begin{frame}{例题: 线性相关和线性无关}
+\begin{frame}{例: 线性相关和线性无关}
 	\onslide<+->
 	\begin{example}
 		判断下列向量组的线性相关性:
-		\begin{enumerate}[<*>]
+		\begin{enumerate}
 			\item $(1,2,3,4)^\rmT,(2,3,4,5)^\rmT,(0,0,0,0)^\rmT$; 
 			\item $(a,b,1,0,0)^\rmT,(c,d,0,6,0)^\rmT,(a,c,0,5,6)^\rmT$;
 			\item $(a,1,0,b,0)^\rmT,(c,0,6,d,0)^\rmT,(a,0,5,c,6)^\rmT$.
@@ -412,7 +419,7 @@
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		若 $(1,0,0,2)^\rmT,(0,1,5,0)^\rmT,(2,1,t+2,4)^\rmT$ 线性相关, 则 $t=$\fillblank{\visible<+->{3}}.
+		若 $(1,0,0,2)^\rmT,(0,1,5,0)^\rmT,(2,1,t+2,4)^\rmT$ 线性相关, 则 $t=$\fillblank{\visible<+->{$3$}}.
 	\end{exercise}
 \end{frame}
 

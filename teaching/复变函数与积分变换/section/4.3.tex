@@ -61,15 +61,15 @@
 			\filldraw[cstcurve,main,smooth,cstfill] plot coordinates {(-2.25,0) (-1.5,-0.75) (0,-1.5) (1.05,-1.5) (1.35,0) (0,1.2) (-1.5,1.2) (-2.25,0)};
 			\draw[cstdash,third,visible on=<2->] (0,0) circle (1);
 			\draw[cstcurve,second,visible on=<3->] (0,0) circle (0.8);
-			\fill[cstdot,main] (0,0) circle;
+			\fill[cstdot,second] (0,0) circle;
 			\fill[cstdot,third,visible on=<2->] (0.4,0.4) circle;
 			\fill[cstdot,visible on=<3->] (0.6,-0.5) circle;
-			\draw[cstcurve,cstra,main,visible on=<3->] (0,0)--(-0.48,-0.64);
+			\draw[cstcurve,cstra,second,visible on=<3->] (0,0)--(-0.48,-0.64);
 			\draw
-				(-0.25,0) node[main] {$z_0$}
+				(-0.25,0) node[second] {$z_0$}
 				(0.2,0.4) node[third,visible on=<2->] {$z$}
-				(0,-0.5) node[main,visible on=<3->] {$r$}
-				(0.4,-0.3) node[visible on=<3->] {$\zeta$};
+				(0,-0.5) node[second,visible on=<3->] {$r$}
+				(0.4,-0.3) node[main,visible on=<3->] {$\zeta$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -88,10 +88,10 @@
 	\end{align*}
 	\onslide<+->
 	其中
-	\begin{align*}
-		R_N(z)&=\frac1{2\pi i}\oint_Kf(\zeta)\left[\sum_{n=N}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\right]\diff\zeta\\
-		&=\frac1{2\pi i}\oint_K\frac{f(\zeta)}{\zeta-z}\cdot\left(\frac{z-z_0}{\zeta-z_0}\right)^N\diff\zeta.
-	\end{align*}
+	\[
+		R_N(z)=\frac1{2\pi i}\oint_Kf(\zeta)\left[\sum_{n=N}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\right]\diff\zeta
+		=\frac1{2\pi i}\oint_K\frac{f(\zeta)}{\zeta-z}\cdot\left(\frac{z-z_0}{\zeta-z_0}\right)^N\diff\zeta.
+	\]
 \end{frame}
 
 
@@ -154,12 +154,13 @@
 
 
 \begin{frame}{典型例题: 泰勒展开的计算}
+	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
 		由于 $(e^z)^{(n)}(0)=e^z|_{z=0}=1$,
 		\onslide<+->{因此
 		\[\emph{e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
-		\vspace{-.6\baselineskip}
+		\vspace{-.5\baselineskip}
 	\end{example}
 
 	\onslide<+->
@@ -169,8 +170,9 @@
 			\[(\cos z)^{(2n+1)}(0)=0,\quad (\cos z)^{(2n)}(0)=(-1)^n,\]
 		}\onslide<+->{因此
 			\[\emph{\cos z=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}+\cdots=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!},\quad\forall z.}\]}
-			\vspace{-.6\baselineskip}
+			\vspace{-.5\baselineskip}
 	\end{example}
+	\endgroup
 \end{frame}
 
 
@@ -191,6 +193,7 @@
 
 
 \begin{frame}{典型例题: 泰勒展开的计算}
+	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
 	求对数函数的主值 $\ln(1+z)$ 的麦克劳林展开.
@@ -208,9 +211,11 @@
 	&\visible<+->{=\sum_{n=0}^\infty\frac{(-1)^nz^{n+1}}{n+1}}
 		\visible<+->{=\sum_{n=1}^\infty\frac{(-1)^{n+1}z^n}{n},\quad|z|<1.}
 	\end{align*}}
-	\vspace{-\baselineskip}
+	\vspace{-.5\baselineskip}
 	\end{solution}
+	\endgroup
 \end{frame}
+
 
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
@@ -227,6 +232,7 @@
 		\emph{(1+z)^\alpha}&\emph{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
 		&\emph{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
 	\end{align*}}
+	\vspace{-.5\baselineskip}
 	\end{example}
 \end{frame}
 
@@ -289,11 +295,13 @@
 				\visible<+->{=-\half\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}\\
 			&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.}
 		\end{align*}}
+		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 泰勒展开的计算\noexer}
+	\beqskip{3pt}
 	\onslide<+->
 	\begin{exercise}
 		求 $\dfrac1{1-3z+2z^2}$ 的麦克劳林展开.
@@ -316,6 +324,7 @@
 	\[a=\frac1{2\pi i} \oint_{|z-1|=0.1}f(z)\diff z=\dfrac{1}{(z-2)(z+2)}\Big|_{z=1}=-\frac13.\]
 	\onslide<+->
 	类似可得 $b=\dfrac14,c=\dfrac1{12}$.
+	\endgroup
 \end{frame}
 
 

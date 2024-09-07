@@ -22,7 +22,8 @@
 \end{frame}
 
 
-\begin{frame}{例题: 第一类积分\noexer}
+\begin{frame}{例: 第一类积分\noexer}\small
+	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
@@ -34,27 +35,18 @@
 		\onslide<+->{
 			\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\qquad
 			\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
-			\vspace{-\baselineskip}
 		}\onslide<+->{
-			\begin{align*}
+			\[
 				\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
-				&=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\frac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}\\
-				&=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\diff z.
-			\end{align*}
+				=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\dfrac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}
+				=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\dfrac13)}\diff z.
+			\]
+		}\onslide<+->{%
+			设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
+		}\onslide<+->{%
+			则
+			$\Res[f(z),0]=\dfrac{10}3, \Res[f(z),\dfrac13]=-\dfrac83$,
 		}
-		\vspace{-\baselineskip}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
-	\onslide<+->
-	\begin{solution}[续解]
-		设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
-		\onslide<+->{则
-			\[\Res[f(z),0]=\frac{10}3,\quad\Res[f(z),\frac13]=-\frac83,\]
-		}
-		\vspace{-\baselineskip}
 		\onslide<+->{
 			\[
 				\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
@@ -62,8 +54,9 @@
 				=\frac{2\pi}9.
 			\]
 		}
-		\vspace{-\baselineskip}
+		\vspace{-.5\baselineskip}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 \subsection{有理函数的广义积分}
@@ -80,7 +73,7 @@
 	\[2\pi i\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\diff z=\int_{-r}^rR(x)\diff x+\int_{C_r}f(z)\diff z.\]
 	\onslide<3->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-2,0)--(2,0);
 			\draw[cstaxis] (0,-0.2)--(0,2);
 			\draw[cstcurve,main] (-1.5,0) arc(180:0:1.5);
@@ -109,7 +102,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
+\begin{frame}{例: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3},a>0$.
@@ -149,7 +142,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
+\begin{frame}{例: 留数在定积分上的应用\noexer}
 	\beqskip{2pt}
 	\onslide<+->
 	\begin{example}
@@ -173,7 +166,7 @@
 
 \subsection{其它例子}
 
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
+\begin{frame}{例: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	最后我们再来看一个例子.
 
@@ -187,7 +180,7 @@
 		\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 		\onslide<+->{考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 		\begin{center}
-			\begin{tikzpicture}[framed,scale=.8]
+			\begin{tikzpicture}[scale=.8]
 				\draw[cstaxis] (-3,0)--(3,0);
 				\draw[cstaxis] (0,0)--(0,1.7);
 				\draw[cstcurve,second] (-1.5,0) rectangle (1.5,1.2);
@@ -210,7 +203,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
+\begin{frame}{例: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solution}[续解]
 			由于 $l:z=t+2\pi i,-R\le t\le R$,
@@ -228,7 +221,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 留数在定积分上的应用\noexer}
+\begin{frame}{例: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solution}[续解]
 		由于

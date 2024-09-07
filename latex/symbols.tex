@@ -1,28 +1,26 @@
 \RequirePackage{extarrows}
+\RequirePackage{mathtools}
+\RequirePackage{nicematrix}
+\NiceMatrixOptions{cell-space-limits = 1pt}
 
 \newfontface\cmunrm{cmunrm.otf}
 \newcommand\cmu[1]{{\cmunrm{#1}}}
-
 
 \newcommand\simr{\mathrel{\overset{r}{\sim}}}
 \newcommand\simc{\mathrel{\overset{c}{\sim}}}
 \newcommand{\wsim}[3][3]{
   \mathrel{\overset{\nsmath{#2}}{\underset{\nsmath{#3}}{\scalebox{#1}[1]{$\sim$}}}}
 }
-\newcommand{\Emat}{
-	\begin{matrix}
-		1&&\\
-		&\ddots&\\
-		&&1
-	\end{matrix}
-}
-% 参数为行+1, 列
+% 单位阵
+\newcommand{\Emat}{\begin{matrix}1&&\\&\ddots&\\&&1\end{matrix}}
+% 分块, 参数为行+1, 列
 \newcommand{\augdash}[2]{\CodeAfter
-\tikz \draw[cstdash,main] (1-|#2) -- (#1-|#2);}
-\newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}
-\mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
-\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[second] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
+\tikz \draw[cstdash,second] (1-|#2) -- (#1-|#2);}
+\newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}\mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
+% 带圈数字
+\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[main] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
 \newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
+% 线性方程组, 对齐
 \newcommand{\laeq}[2][l]{
 	\setlength{\arraycolsep}{0pt}
 	\left\{\begin{array}{#1}
@@ -36,7 +34,7 @@
 
 \usepackage[normalem]{ulem}
 \NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
-\newcommand\fillbrace[1]{{(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
+\newcommand\fillbrace[1]{{\upshape(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}
 \newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
 \newcommand{\trueex}{$\checkmark$}
 \newcommand{\falseex}{$\times$}
@@ -58,6 +56,7 @@
 \newcommand\lla{\longleftarrow}
 \newcommand\sqra{\rightsquigarrow}
 \newcommand\sqlra{\leftrightsquigarrow}
+\newcommand\swap{\leftrightarrow}
 \newcommand\inj{\hookrightarrow}
 \newcommand\linj{\hookleftarrow}
 \newcommand\surj{\twoheadrightarrow}
@@ -418,6 +417,72 @@
 \newcommand\fX{{\mathfrak{X}}}
 \newcommand\fY{{\mathfrak{Y}}}
 \newcommand\fZ{{\mathfrak{Z}}}
+
+\renewcommand\bfa{{\boldsymbol{a}}}
+\renewcommand\bfb{{\boldsymbol{b}}}
+\renewcommand\bfc{{\boldsymbol{c}}}
+\renewcommand\bfd{{\boldsymbol{d}}}
+\renewcommand\bfe{{\boldsymbol{e}}}
+\renewcommand\bff{{\boldsymbol{f}}}
+\renewcommand\bfg{{\boldsymbol{g}}}
+\renewcommand\bfh{{\boldsymbol{h}}}
+\renewcommand\bfi{{\boldsymbol{i}}}
+\renewcommand\bfj{{\boldsymbol{j}}}
+\renewcommand\bfk{{\boldsymbol{k}}}
+\renewcommand\bfl{{\boldsymbol{l}}}
+\renewcommand\bfm{{\boldsymbol{m}}}
+\renewcommand\bfn{{\boldsymbol{n}}}
+\renewcommand\bfo{{\boldsymbol{o}}}
+\renewcommand\bfp{{\boldsymbol{p}}}
+\renewcommand\bfq{{\boldsymbol{q}}}
+\renewcommand\bfr{{\boldsymbol{r}}}
+\renewcommand\bfs{{\boldsymbol{s}}}
+\renewcommand\bft{{\boldsymbol{t}}}
+\renewcommand\bfu{{\boldsymbol{u}}}
+\renewcommand\bfv{{\boldsymbol{v}}}
+\renewcommand\bfw{{\boldsymbol{w}}}
+\renewcommand\bfx{{\boldsymbol{x}}}
+\renewcommand\bfy{{\boldsymbol{y}}}
+\renewcommand\bfz{{\boldsymbol{z}}}
+\renewcommand\bfA{{\boldsymbol{A}}}
+\renewcommand\bfB{{\boldsymbol{B}}}
+\renewcommand\bfC{{\boldsymbol{C}}}
+\renewcommand\bfD{{\boldsymbol{D}}}
+\renewcommand\bfE{{\boldsymbol{E}}}
+\renewcommand\bfF{{\boldsymbol{F}}}
+\renewcommand\bfG{{\boldsymbol{G}}}
+\renewcommand\bfH{{\boldsymbol{H}}}
+\renewcommand\bfI{{\boldsymbol{I}}}
+\renewcommand\bfJ{{\boldsymbol{J}}}
+\renewcommand\bfK{{\boldsymbol{K}}}
+\renewcommand\bfL{{\boldsymbol{L}}}
+\renewcommand\bfM{{\boldsymbol{M}}}
+\renewcommand\bfN{{\boldsymbol{N}}}
+\renewcommand\bfO{{\boldsymbol{O}}}
+\renewcommand\bfP{{\boldsymbol{P}}}
+\renewcommand\bfQ{{\boldsymbol{Q}}}
+\renewcommand\bfR{{\boldsymbol{R}}}
+\renewcommand\bfS{{\boldsymbol{S}}}
+\renewcommand\bfT{{\boldsymbol{T}}}
+\renewcommand\bfU{{\boldsymbol{U}}}
+\renewcommand\bfV{{\boldsymbol{V}}}
+\renewcommand\bfW{{\boldsymbol{W}}}
+\renewcommand\bfX{{\boldsymbol{X}}}
+\renewcommand\bfY{{\boldsymbol{Y}}}
+\renewcommand\bfZ{{\boldsymbol{Z}}}
+
+\newcommand\bma{{\boldsymbol{\alpha}}}
+\newcommand\bmb{{\boldsymbol{\beta}}}
+\newcommand\bmg{{\boldsymbol{\gamma}}}
+\newcommand\bmd{{\boldsymbol{\delta}}}
+\newcommand\bme{{\boldsymbol{\epsilon}}}
+\newcommand\bmph{{\boldsymbol{\phi}}}
+\newcommand\bmp{{\boldsymbol{\psi}}}
+\newcommand\bmpi{{\boldsymbol{\pi}}}
+\newcommand\bmx{{\boldsymbol{\xi}}}
+\newcommand\bmet{{\boldsymbol{\eta}}}
+\newcommand\bmL{{\boldsymbol{\Lambda}}}
+\newcommand\bmS{{\boldsymbol{\Sigma}}}
 
 % a
 \newcommand\ab{{\mathrm{ab}}}

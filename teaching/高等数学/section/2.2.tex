@@ -29,7 +29,7 @@
 	\onslide<+->
 	从图像上看, 就是函数在 $(X,+\infty)$ 上的图像被夹在直线 $y=A\pm\varepsilon$ 之间.
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-0.5,0)--(9,0);
 			\draw[cstaxis] (0,-0.4)--(0,1.7);
 			\begin{scope}[visible on=<1>]
@@ -91,7 +91,7 @@
 	如果函数值 $f(x)$ 越来越接近常数 $A$, 则 $A$ 就是 $x\to x_0$ 时的极限.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstaxis] (-0.5,0)--(10,0);
 			\draw[cstaxis] (0,-0.4)--(0,3.4);
 			\draw[cstcurve,main,smooth,domain=0.02:1.6] plot({4+2*\x},{2+1.4*\x*sin(1/\x*180)});
@@ -163,7 +163,7 @@
 
 
 \subsection{函数极限的证明}
-\begin{frame}{例题: 函数在无穷远的极限}
+\begin{frame}{例: 函数在无穷远的极限}
 	\onslide<+->
 	\begin{example}
 		证明 $\lim\limits_{x\ra\infty}\dfrac1x=0$.
@@ -186,7 +186,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 函数在无穷远的单侧极限}
+\begin{frame}{例: 函数在无穷远的单侧极限}
 	\onslide<+->
 	\begin{example}
 		证明 $a>1$ 时, $\lim\limits_{x\ra-\infty}a^x=0$.
@@ -206,7 +206,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 函数在一点的极限}\small
+\begin{frame}{例: 函数在一点的极限}\small
 	\onslide<+->
 	\begin{example}
 		证明 $\lim\limits_{x\ra x_0}(ax+b)=ax_0+b$.
@@ -230,7 +230,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 线性函数在一点的极限}
+\begin{frame}{例: 线性函数在一点的极限}
 	\onslide<+->
 	\begin{example}
 		证明 $\lim\limits_{x\ra x_0}\sin x=\sin x_0$.
@@ -246,7 +246,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 三角函数在一点的极限}
+\begin{frame}{例: 三角函数在一点的极限}
 	\onslide<+->
 	\begin{proof*}
 		我们有
@@ -262,7 +262,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 函数在无穷远的极限}
+\begin{frame}{例: 函数在无穷远的极限}
 	\onslide<+->
 	\begin{example}
 		证明 $\lim\limits_{x\ra\infty}\arctan x$ 不存在.
@@ -284,7 +284,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 函数在无穷远的极限}
+\begin{frame}{例: 函数在无穷远的极限}
 	\begin{proof*}
 		我们来证明 $\lim\limits_{x\ra+\infty}\arctan x=\dfrac\pi2$.
 		\onslide<+->{当 $x>0$ 时, $0<\dfrac\pi2-\arctan x<\dfrac\pi2$.
@@ -303,7 +303,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 有理函数在一点的极限}\small
+\begin{frame}{例: 有理函数在一点的极限}\small
 	\beqskip{2pt}
 	\onslide<+->
 	\begin{example}
@@ -328,7 +328,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 分段函数求待定参数}
+\begin{frame}{例: 分段函数求待定参数}
 	\onslide<+->
 	\begin{example}
 		如果函数 $f(x)=\begin{cases}
@@ -352,7 +352,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 取整函数的极限}
+\begin{frame}{例: 取整函数的极限}
 	\beqskip{7pt}
 	\onslide<+->
 	\begin{example}
@@ -378,7 +378,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 取整函数的极限}
+\begin{frame}{例: 取整函数的极限}
 	\onslide<+->
 	\begin{solution*}
 		如果 $x_0\in\BZ$, 则

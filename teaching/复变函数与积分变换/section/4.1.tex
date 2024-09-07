@@ -42,18 +42,13 @@
 
 
 \begin{frame}{复数项级数敛散性的判定}
+	\beqskip{3pt}
 	\onslide<+->
 	\begin{theorem}
-		如果实数项级数
-		\[\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots\]
-		收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
+		如果实数项级数 $\suml_{n=1}^\infty|z_n|$ 收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
 	\end{theorem}
-\end{frame}
-
-
-\begin{frame}{复数项级数敛散性的判定}
 	\onslide<+->
-	\begin{proof*}
+	\begin{proof}
 		因为 $|x_n|,|y_n|\le|z_n|$, 由比较判别法可知实数项级数 $\suml_{n=1}^\infty x_n$, $\suml_{n=1}^\infty y_n$ 绝对收敛, 从而收敛.
 		\onslide<+->{故 $\suml_{n=1}^\infty z_n$ 也收敛.}
 
@@ -63,7 +58,8 @@
 			\[\abs{\sum_{n=1}^\infty z_n}=\abs{\lim_{n\to\infty}\sum_{k=1}^n z_k}=
 			\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]
 		}\onslide<+->{其中第二个等式是因为绝对值函数 $|z|$ 连续.\qedhere}
-	\end{proof*}
+	\end{proof}
+	\endgroup
 \end{frame}
 
 \subsection{绝对收敛和条件收敛}
@@ -91,25 +87,20 @@
 
 
 \begin{frame}{绝对收敛和条件收敛的判定}
-	\begin{tikzpicture}[overlay]
-		\draw[decorate,decoration={brace,amplitude=8},thick,main] (2.56,-4.25)--(2.56,-1.33);
-		\draw[decorate,decoration={brace,amplitude=8},thick,second] (4.52,-0.34)--(10.33,-0.34);
-		\draw (7.57,0.2) node[second] {实部级数}
-		(1.9,-3) node[align=center,main] {虚\\部\\级\\数};
-	\end{tikzpicture}
 	\begin{center}
-		\renewcommand\arraystretch{2}
-		\defaultrowcolors
-		\begin{tabular}{|c|c|c|c|}
-			\hline
-			&\tht ~~发散~~&\tht 条件收敛&\tht 绝对收敛\\\hline
-			\tht 发散&发散&发散&发散\\\hline
-			\tht 条件收敛&发散&\cellcolor{lightg} 条件收敛
-				&\cellcolor{lightg} 条件收敛\\\hline
-			\tht 绝对收敛&发散&\cellcolor{lightg}条件收敛
-				&\cellcolor{lightr}绝对收敛\\\hline
+		\begin{tabular}{cccc} \toprule
+			&\alert{发散}&\alert{条件收敛}&\alert{绝对收敛}\\ \toprule
+			\emph{发散}&发散&发散&发散\\ \midrule
+			\emph{条件收敛}&发散&条件收敛&条件收敛\\ \midrule
+			\emph{绝对收敛}&发散&条件收敛&绝对收敛\\ \bottomrule
 		\end{tabular}
 	\end{center}
+	\begin{tikzpicture}[overlay]
+		\draw[decorate,decoration={brace,amplitude=8},thick,main] (3.6,0.6)--(3.6,2.6);
+		\draw[decorate,decoration={brace,amplitude=8},thick,second] (5.7,3.3)--(10.7,3.3);
+		\draw (8.2,3.8) node[second] {实部级数}
+		(3.0,1.6) node[align=center,main] {虚\\部\\级\\数};
+	\end{tikzpicture}
 \end{frame}
 
 

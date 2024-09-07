@@ -432,7 +432,7 @@
   \newcommand{\lemmaname}{引理}
   \newcommand{\propositionname}{命题}
   \newcommand{\corollaryname}{推论}
-  \newcommand{\examplename}{例题} %
+  \newcommand{\examplename}{例} %
   \newcommand{\instancename}{示例} %
   \newcommand{\problemname}{问题} % 问题
   \newcommand{\exercisename}{练习} % 练习=习题
@@ -441,7 +441,7 @@
   \newcommand{\remarkname}{注记}
   \newcommand{\assumptionname}{假设}
   \newcommand{\conclusionname}{结论}
-  \newcommand{\solutionname}{解答}
+  \newcommand{\solutionname}{解}
   \newcommand{\propertyname}{性质}
   \newcommand{\introductionname}{内容提要}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
@@ -904,6 +904,25 @@
 
 
 
+% \RequirePackage{enumerate}
+\RequirePackage[inline]{enumitem}
+
+\setlist[itemize,1]{label={\textcolor{main}{$\bullet$}}}
+\setlist[itemize,2]{label={\textcolor{second}{$\bullet$}}}
+\setlist[itemize,3]{label={\textcolor{third}{$\bullet$}}}
+\setlist[enumerate]{format=\upshape\textcolor{main}}
+\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,2]{label=\color{main}(\alph*).}
+\setlist[enumerate,3]{label=\color{main}\Roman*.}
+\setlist[enumerate,4]{label=\color{main}\Alph*.}
+\newlist{homeworklist}{enumerate}{1}
+\setlist[homeworklist,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
+\newlist{exlist}{enumerate}{3}
+\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
+\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
+\setlist[exlist,3]{label=\color{main}{(\roman*)}}
+\setlist{nolistsep}
+
 %%define the 
 %%definition theorem postulate axiom corollary lemma proposition 
 %%and proof environment
@@ -1038,13 +1057,13 @@
   }
   % define several environment 
   % we define headers like \definitionname before
-  \ELEGANT@newtheorem{theorem}{thm}{mainstyle}
+  \ELEGANT@newtheorem{theorem}{thm}{secondstyle}
   \ELEGANT@newtheorem{definition}{def}{thirdstyle}
   \ELEGANT@newtheorem{postulate}{pos}{mainstyle}
-  \ELEGANT@newtheorem{axiom}{axi}{mainstyle}
-  \ELEGANT@newtheorem{corollary}{cor}{mainstyle}
-  \ELEGANT@newtheorem{lemma}{lem}{mainstyle}
-  \ELEGANT@newtheorem{proposition}{pro}{mainstyle}
+  \ELEGANT@newtheorem{axiom}{axi}{secondstyle}
+  \ELEGANT@newtheorem{corollary}{cor}{secondstyle}
+  \ELEGANT@newtheorem{lemma}{lem}{secondstyle}
+  \ELEGANT@newtheorem{proposition}{pro}{secondstyle}
 }{\relax}
 
 

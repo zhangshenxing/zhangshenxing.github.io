@@ -35,8 +35,8 @@
 		\begin{tikzpicture}[node distance=118pt]
 			\node[cstnode2,align=center] (a){原象函数\\$f(t)\vphantom{\displaystyle\int}$};
 			\node[cstnode2,align=center, right=of a](b){象函数\\\alert{$F(s)=\displaystyle\int_0^{+\infty}f(t)e^{-st}\diff t$}};
-			\draw[cstnarrow, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
-			\draw[cstnarrow, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
+			\draw[cstnra, main] (a.17) -- node[above]{拉普拉斯变换 $\msl$} (b.172);
+			\draw[cstnra, third] (b.188) -- node[below]{拉普拉斯逆变换 $\msl^{-1}$} (a.-17);
 		\end{tikzpicture}
 	\end{center}
 
@@ -47,7 +47,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求拉普拉斯变换}
+\begin{frame}{例: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[e^{kt}]$.
@@ -67,7 +67,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求拉普拉斯变换}
+\begin{frame}{例: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[t^m]$, 其中 $m$ 是正整数.
@@ -141,7 +141,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求拉普拉斯变换}
+\begin{frame}{例: 求拉普拉斯变换}
 	\onslide<+->
 	\begin{example}
 		求 $\msl[t^me^{kt}]$, 其中 $m$ 是正整数.
@@ -181,7 +181,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求拉普拉斯逆变换}
+\begin{frame}{例: 求拉普拉斯逆变换}
 	\onslide<+->
 	\begin{example}
 		求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
@@ -198,7 +198,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 求拉普拉斯逆变换}
+\begin{frame}{例: 求拉普拉斯逆变换}
 	\onslide<+->
 	\begin{solution}{另解}
 			设
@@ -243,16 +243,16 @@
 			\node[cstnode1,right=110pt of a] (b){象函数的代数方程};
 			\node[cstnode2,below=of a] (c){原象函数(方程的解)};
 			\node[cstnode1,below=of b] (d){象函数};
-			\draw[cstnarrow,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
-			\draw[cstnarrow,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
-			\draw[cstnarrow,second] (b)--(d);
-			\draw[cstnarrow,third] (a)--(c);
+			\draw[cstnra,second] (a)--node[above]{拉普拉斯变换 $\msl$}(b);
+			\draw[cstnra,second] (d)--node[below]{拉普拉斯逆变换 $\msl^{-1}$}(c);
+			\draw[cstnra,second] (b)--(d);
+			\draw[cstnra,third] (a)--(c);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
-\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
+\begin{frame}{例: 使用拉普拉斯变换解微分方程}
 	\onslide<+->
 	\begin{example}
 		(2022年A卷) 解微分方程
@@ -278,7 +278,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 使用拉普拉斯变换解微分方程}
+\begin{frame}{例: 使用拉普拉斯变换解微分方程}
 	\onslide<+->
 	\begin{example}
 		解微分方程 $y''(t)-y(t)=0$.

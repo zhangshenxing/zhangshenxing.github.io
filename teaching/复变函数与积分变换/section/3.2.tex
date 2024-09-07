@@ -16,17 +16,17 @@
 
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw
 				(-0.2,-0.2) node[second] {$z_0$}
 				(2.2,2.2) node[second] {$z$}
 				(0.2,1.8) node[main] {$C_1$}
 				(1.8,0.3) node[third] {$C_2$};
 			\draw[cstcurve,third] (2,2) arc(0:-90:2);
-			\draw[cstcurve,third,cstarrow1to] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
+			\draw[cstcurve,third,cstwra] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
 			\draw[cstcurve,main] (0,0) arc(180:90:2);
-			\draw[cstcurve,main,cstarrow1to] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
-			\draw[cstcurve,second,cstarrow1from,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
+			\draw[cstcurve,main,cstwra] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
+			\draw[cstcurve,second,cstwla,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -89,13 +89,13 @@
 	这是因为即使不是简单曲线也可以拆分为一些简单曲线.
 	\onslide<4->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstcurve,main,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,main,smooth,domain=-20:45,cstarrow1from] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
+			\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
 			\draw[cstcurve,main,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,main,smooth,domain=-20:45,cstarrow1from] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,second,cstarrow1from,ultra thick] (1.05,0.35) arc (135:-135:0.5);
-			\draw[cstcurve,third,cstarrow1from,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
+			\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
+			\draw[cstcurve,second,cstwla,ultra thick] (1.05,0.35) arc (135:-135:0.5);
+			\draw[cstcurve,third,cstwla,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -123,7 +123,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 柯西-古萨基本定理计算积分}
+\begin{frame}{例: 柯西-古萨基本定理计算积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\half $.
@@ -154,16 +154,16 @@
 	沿着 $C$ 前进的点, $D$ 总在它的左侧,所以这就是它的正方向.
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\fill[cstcurve,cstfill,visible on=<2->] (0,0) circle(2.5 and 1.5);
 			\fill[cstcurve,white,visible on=<2->] (1,0) circle(0.6);
 			\fill[cstcurve,white,visible on=<2->] (-1,0) circle(0.6);
 			\draw[cstcurve,main] (0,0) circle(2.5 and 1.5);
 			\draw[cstcurve,main] (1,0) circle(0.6);
 			\draw[cstcurve,main] (-1,0) circle(0.6);
-			\draw[cstcurve,main,domain=85:90,cstarrow1to,visible on=<2->] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstarrow1from,visible on=<2->] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstarrow1from,visible on=<2->] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,main,domain=85:90,cstwra,visible on=<2->] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+			\draw[cstcurve,main,domain=135:140,cstwla,visible on=<2->] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,main,domain=135:140,cstwla,visible on=<2->] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 			\draw
 				(2,1.3) node[main] {$C_0$}
 				(-1,0.85) node[main] {$C_1^{\visible<2->-}$}
@@ -181,16 +181,16 @@
 		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
 	\end{second}
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
 			\fill[cstcurve,white] (1,0) circle(0.6);
 			\fill[cstcurve,white] (-1,0) circle(0.6);
 			\draw[cstcurve,main] (0,0) circle(2.5 and 1.5);
 			\draw[cstcurve,main] (1,0) circle(0.6);
 			\draw[cstcurve,main] (-1,0) circle(0.6);
-			\draw[cstcurve,main,domain=85:90,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,main,domain=85:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+			\draw[cstcurve,main,domain=135:140,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,main,domain=135:140,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 			\draw
 				(2,1.3) node[main] {$C_0$}
 				(-1,0.85) node[main] {$C_1^{\visible<2->-}$}
@@ -204,7 +204,7 @@
 	\onslide<+->
 	\begin{proof}
 		以曲线 $\gamma_1,\gamma_2,\dots,\gamma_{n+1}$ 把 $C_0,C_1,\dots,C_n$ 连接起来, 则它们把区域 $D$ 分成了两个单连通域 $D_1,D_2$.
-		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西积分定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
+		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨基本定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
 		}\onslide<+->{因此
 			\[\oint_{C_0}f(z)\diff z-
 		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.\]
@@ -212,25 +212,25 @@
 		\vspace{-1.7\baselineskip}
 		\onslide<1->
 		\begin{center}
-			\begin{tikzpicture}[framed,scale=.9]
+			\begin{tikzpicture}[scale=.9]
 				\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
 				\fill[cstcurve,white] (1,0) circle(0.6);
 				\fill[cstcurve,white] (-1,0) circle(0.6);
 
-				\draw[cstcurve,main,domain=0:90,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+				\draw[cstcurve,main,domain=0:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
 				\draw[cstcurve,main,domain=85:180] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-				\draw[cstcurve,second,domain=180:270,cstarrow1to] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+				\draw[cstcurve,second,domain=180:270,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
 				\draw[cstcurve,second,domain=265:360] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
 
 				\draw[cstcurve,main,domain=0:140] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-				\draw[cstcurve,main,domain=135:180,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+				\draw[cstcurve,main,domain=135:180,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
 				\draw[cstcurve,second,domain=180:320] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-				\draw[cstcurve,second,domain=315:360,cstarrow1from] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+				\draw[cstcurve,second,domain=315:360,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
 
 				\draw[cstcurve,main,domain=0:140] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-				\draw[cstcurve,main,domain=135:180,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+				\draw[cstcurve,main,domain=135:180,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 				\draw[cstcurve,second,domain=180:320] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-				\draw[cstcurve,second,domain=315:360,cstarrow1from] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+				\draw[cstcurve,second,domain=315:360,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 
 				\draw
 					(2,1.3) node[main] {$C_0$}
@@ -264,7 +264,7 @@
 	这样, 内部含多个奇点的情形就可以化成内部只含一个奇点的情形. 最后将这些闭路上的积分相加即可.
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
 			\draw[cstcurve,second] (1,0) circle(0.4);
 			\draw[cstcurve,second] (0,0) circle(0.4);
@@ -292,7 +292,7 @@
 	因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
 	\onslide<1->
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
 			\draw[cstcurve,third] (0,0) circle(1.2 and 2.2);
 			\draw[cstcurve,second,visible on=<2->] (0,0) circle(1);
@@ -308,27 +308,33 @@
 \end{frame}
 
 
-\begin{frame}{例题: 复合闭路定理的应用}
+\begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
 		证明对于任意闭路 $C$, $\displaystyle\int_C(z-a)^n\diff z=0$, $n\neq -1$ 为整数.
 	\end{example}
 
 	\onslide<+->
-	\begin{proof*}
-		\onslide<+->{如果 $a$ 不在 $C$ 的内部,
-		}\onslide<+->{则 $(z-a)^n$ 在 $C$ 及其内部解析.
-		}\onslide<+->{由柯西积分定理, $\displaystyle\int_C(z-a)^n\diff z=0$.}
-
-		\onslide<+->{如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
-		}\onslide<+->{由复合闭路定理以及上一节的结论
-			\[\int_C(z-a)^n\diff z=\int_{C_1}(z-a)^n\diff z=0.\qedhere\]}
-		\vspace{-\baselineskip}
-	\end{proof*}
+	\begin{proof}
+		\begin{enumerate}
+			\item 如果 $a$ 不在 $C$ 的内部, 则 $(z-a)^n$ 在 $C$ 及其内部解析.
+			\onslide<+->{%
+				由柯西-古萨基本定理, $\displaystyle\int_C(z-a)^n\diff z=0$.
+			}
+			\item 如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
+			\onslide<+->{%
+				由复合闭路定理以及上一节的结论
+				\[
+					\int_C(z-a)^n\diff z=\int_{C_1}(z-a)^n\diff z=0.\qedhere
+				\]
+			}
+			\vspace{-\baselineskip}
+		\end{enumerate}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例题: 复合闭路定理的应用}
+\begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
 	同理, 由复合闭路定理和上一节的结论可知当 $a$ 在 $C$ 的内部且 $n=-1$ 时积分为 $2\pi i$.
 	\onslide<+->
@@ -339,17 +345,20 @@
 \end{frame}
 
 
-\begin{frame}{例题: 复合闭路定理的应用}
+\begin{frame}{例: 复合闭路定理的应用}
+	\beqskip{4pt}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
-		\begin{center}
-			\begin{tikzpicture}[framed]
+		\begin{minipage}{.6\textwidth}
+			求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
+		\end{minipage}
+		\begin{minipage}{.36\textwidth}
+			\begin{tikzpicture}
 				\draw[cstaxis] (-2.5,0)--(2.5,0);
-				\draw[cstaxis] (0,-1.5)--(0,1.5);
-				\draw[cstcurve,cstarrow1to,main] (-1,-0.7)--(-0.5,-0.7);
-				\draw[cstcurve,cstarrow1to,second] (-0.4,0) arc(180:225:0.4);
-				\draw[cstcurve,cstarrow1to,second] (0.6,0) arc(180:225:0.4);
+				\draw[cstaxis] (0,-1)--(0,1);
+				\draw[cstcurve,cstwra,main] (-1,-0.7)--(-0.5,-0.7);
+				\draw[cstcurve,cstwra,second] (-0.4,0) arc(180:225:0.4);
+				\draw[cstcurve,cstwra,second] (0.6,0) arc(180:225:0.4);
 				\draw[cstcurve,second,visible on=<3->] (0,0) circle (0.4);
 				\draw[cstcurve,second,visible on=<3->] (1,0) circle (0.4);
 				\fill[cstdot,third,visible on=<2->] (1,0) circle;
@@ -360,39 +369,39 @@
 					(1.6,0.4) node[second,visible on=<3->] {$C_2$}
 					(-1,-0.5) node[main] {$\Gamma$};
 			\end{tikzpicture}
-		\end{center}
+		\end{minipage}
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{solution}
 		函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
-		\onslide<+->{设 $C_1,C_2$ 如图所示,
-		}\onslide<+->{由复合闭路定理
+		\onslide<+->{%
+			设 $C_1,C_2$ 如图所示,
+		}\onslide<+->{%
+			由复合闭路定理
 			\begin{align*}
-				&\peq\oint_\Gamma\frac{2z-1}{z^2-z}\diff z
+				&\oint_\Gamma\frac{2z-1}{z^2-z}\diff z
 				=\oint_{C_1}\frac{2z-1}{z^2-z}\diff z+\oint_{C_2}\frac{2z-1}{z^2-z}\diff z\\
-				&\visible<+->{=\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
+				\visible<+->{=}&\visible<.->{\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
 				+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}\\
-				&\visible<+->{=2\pi i+0+0+2\pi i=4\pi i.}
-			\end{align*}}
+				\visible<+->{=}&\visible<.->{2\pi i+0+0+2\pi i=4\pi i.}
+			\end{align*}
+		}\vspace{-\baselineskip}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 复合闭路定理的应用}
+\begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
 		\vspace{-.8\baselineskip}
 		\begin{center}
-			\begin{tikzpicture}[scale=.8,framed]
+			\begin{tikzpicture}[scale=.8]
 				\filldraw[cstcurve,main,cstfill] (0,0) circle (1.5);
-				\draw[cstcurve,main,cstarrow1from] (-1.06,1.06) arc(135:90:1.5);
+				\draw[cstcurve,main,cstwla] (-1.06,1.06) arc(135:90:1.5);
 				\filldraw[cstcurve,second,fill=white] (0,0) circle (0.75);
-				\draw[cstcurve,second,cstarrow1to] (-0.75,0) arc(180:130:0.75);
+				\draw[cstcurve,second,cstwra] (-0.75,0) arc(180:130:0.75);
 				\draw
 					(-1.6,0.8) node[main] {$C_1$}
 					(0.8,-0.7) node[second] {$C_2^-$};

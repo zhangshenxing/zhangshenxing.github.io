@@ -12,7 +12,7 @@
 	}
 	{
 	\begin{center}
-		\begin{tikzpicture}[framed]
+		\begin{tikzpicture}
 			\draw[cstcurve,third] (0,0) circle (1.3);
 			\fill[cstdot] (0,0) circle;
 			\fill[cstdot,second] (2,0) circle;
@@ -232,8 +232,13 @@
 \end{corollary}
 
 \begin{example}
-	单选题: (2021年B卷) $z=0$ 是函数 $f(z)=\dfrac{e^z-1}{z^2}$ 的\fillbrace{{A}} 阶极点.
-	\xx{$1$}{$2$}{$3$}{$4$}
+	$z=0$ 是函数 $f(z)=\dfrac{e^z-1}{z^2}$ 的\fillbrace{{A}} 阶极点.
+	\begin{taskschoice}(4)
+		() 1
+		() 2
+		() 3
+		() 4
+	\end{taskschoice}
 \end{example}
 
 \begin{solution}
@@ -526,14 +531,12 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \end{second}
 
 \begin{proof}
-		不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的一阶极点或可去奇点.
-	{因此
-		\begin{align*}
-			&\peq\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
-			&{=\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
-			{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere}
-		\end{align*}
-	}
+	不难看出 $z_0$ 是 $f(z)=\dfrac{P(z)}{Q(z)}$ 的一阶极点或可去奇点. 因此
+	\begin{align*}
+			&\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
+		=&\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}
+		=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere
+	\end{align*}
 \end{proof}
 
 \begin{example}
@@ -630,15 +633,15 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 		\node at (1.5,6.5) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
 		\node at (9,6.5) [cstnode2,align=center]	(end3){用闭路内的孤立\\奇点的留数计算};
 
-		\draw[cstnarrow,third] (integral.-160) -- (isclosed);
-		\draw[cstnarrow,third] (isanalytic) -- node[left]{是} (end1.173);
-		\draw[cstnarrow,third] (isclosed) -- node[above]{是} (issingle);
-		\draw[cstnarrow,third] (issingle) -- node[above]{是} (ismany);
-		\draw[cstnarrow,third] (isclosed) -- node[left]{否} (isanalytic);
-		\draw[cstnarrow,third] (issingle) -- node[left]{否} (end2);
-		\draw[cstnarrow,third] (isanalytic) -- node[above]{否} (end2);
-		\draw[cstnarrow,third] (ismany) -- node[left]{闭路内的少} (end3);
-		\draw[cstnarrow,third] (ismany) -- node[left]{闭路外的少} (end4);
+		\draw[cstnra,third] (integral.-160) -- (isclosed);
+		\draw[cstnra,third] (isanalytic) -- node[left]{是} (end1.173);
+		\draw[cstnra,third] (isclosed) -- node[above]{是} (issingle);
+		\draw[cstnra,third] (issingle) -- node[above]{是} (ismany);
+		\draw[cstnra,third] (isclosed) -- node[left]{否} (isanalytic);
+		\draw[cstnra,third] (issingle) -- node[left]{否} (end2);
+		\draw[cstnra,third] (isanalytic) -- node[above]{否} (end2);
+		\draw[cstnra,third] (ismany) -- node[left]{闭路内的少} (end3);
+		\draw[cstnra,third] (ismany) -- node[left]{闭路外的少} (end4);
 	\end{tikzpicture}
 \end{center}
 
@@ -712,7 +715,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \[2\pi i\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\diff z=\int_{-r}^rR(x)\diff x+\int_{C_r}f(z)\diff z.\]
 
 \begin{center}
-	\begin{tikzpicture}[framed]
+	\begin{tikzpicture}
 		\draw[cstaxis] (-2,0)--(2,0);
 		\draw[cstaxis] (0,-0.2)--(0,2);
 		\draw[cstcurve,main] (-1.5,0) arc(180:0:1.5);
@@ -784,7 +787,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
 	{考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 	\begin{center}
-		\begin{tikzpicture}[framed,scale=.8]
+		\begin{tikzpicture}[scale=.8]
 			\draw[cstaxis] (-3,0)--(3,0);
 			\draw[cstaxis] (0,0)--(0,1.7);
 			\draw[cstcurve,second] (-1.5,0) rectangle (1.5,1.2);

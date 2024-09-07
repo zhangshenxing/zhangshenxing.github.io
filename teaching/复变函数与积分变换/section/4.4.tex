@@ -68,7 +68,7 @@
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,draw=main,cstfill] (0,0) circle (1.5);
+			\filldraw[cstcurve,draw=main,cstfill1] (0,0) circle (1.5);
 			\filldraw[cstdote,draw=main] (0,0) circle;
 			\draw[second,cstra,thick] (0.048,0.036)--(1.2,0.9);
 			\draw
@@ -76,7 +76,7 @@
 				(-0.3,0) node[main] {$z_0$}
 				(0,-2) node {$0<|z-z_0|<R_2$};
 
-			\fill[cstfille,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
+			\fill[cstfille1,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
 			\filldraw[cstcurve,fill=white,draw=main,visible on=<.->] (4,0) circle (1); 
 			\fill[cstdot,second,visible on=<.->] (4,0) circle;
 			\draw[second,cstra,thick,visible on=<.->] (4,0)--(4.6,-0.8);
@@ -85,7 +85,7 @@
 				(3.7,0) node[main,visible on=<.->] {$z_0$}
 				(4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
 
-			\fill[cstfille,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
+			\fill[cstfille1,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
 			\filldraw[cstdote,draw=main,visible on=<.->] (8,0) circle;
 			\draw
 				(7.7,0) node[main,visible on=<.->] {$z_0$}
@@ -102,7 +102,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 双边幂级数的收敛域}
+\begin{frame}{例: 双边幂级数的收敛域}
 	\onslide<+->
 	\begin{example}
 		求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+i)^n}$ 的收敛域与和函数.
@@ -255,7 +255,7 @@
 	\onslide<+->
 	这种做法比直接计算积分更简便.
 	\onslide<+->
-	因此我们一般\alert{不用直接法}, 而是\abox{用双边幂级数的} \abox{代数、求导、求积分运算}来得到洛朗级数.
+	因此我们一般不用直接法, 而是\alert{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
 
 	\onslide<+->
 	\begin{solution}
@@ -377,7 +377,7 @@
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
 	\begin{example}
-		(2022年A卷) 将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<|z|<1$ 内展开成洛朗级数.
+		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<|z|<1$ 内展开成洛朗级数.
 	\end{example}
 
 	\onslide<+->
@@ -393,7 +393,7 @@
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
 	\begin{exercise}
-		(2022年A卷) 将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
+		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
 	\end{exercise}
 
 	\onslide<+->
@@ -408,7 +408,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 洛朗展开的应用}
+\begin{frame}{例: 洛朗展开的应用}
 	\onslide<+->
 	注意到当 $n=-1$ 时, 洛朗级数的系数
 	\[c_{-1}=\frac1{2\pi i}\oint_C f(\zeta)\diff\zeta,\]
@@ -419,8 +419,8 @@
 \end{frame}
 
 
-\begin{frame}{例题: 洛朗展开的应用}
-	\beqskip{3pt}
+\begin{frame}{例: 洛朗展开的应用}
+	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
@@ -439,13 +439,13 @@
 		}\onslide<+->{故
 			$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
 	\end{solution}
-	% \vspace{-.\baselineskip}
+	\vspace{-.\baselineskip}
 	\endgroup
 \end{frame}
 
 
 
-\begin{frame}{例题: 洛朗展开的应用}
+\begin{frame}{例: 洛朗展开的应用}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=1}\frac{z}{\sin z^2}\diff z$.

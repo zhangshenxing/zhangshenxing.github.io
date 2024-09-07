@@ -11,7 +11,7 @@
 	\onslide<+->
 	由此得到对应的矩阵的加法:
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[矩阵的加法]
 		设 $\bfA=(a_{ij})_{m\times n},\bfB=(b_{ij})_{m\times n}$.
 		定义
 		\[\bfA+\bfB=(a_{ij}+b_{ij})_{m\times n}.\]
@@ -46,7 +46,7 @@
 	\onslide<+->
 	由此得到对应的矩阵的数乘:
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[矩阵的数乘]
 		数 $\lambda$ 和矩阵 $\bfA=(a_{ij})_{m\times n}$ 的数乘定义为
 		\[\lambda\bfA=(\lambda a_{ij})_{m\times n}.\]
 	\end{definition}
@@ -92,9 +92,9 @@
 	\begin{center}
 		\begin{tikzpicture}
 			\draw
-			(0,0)node{\includegraphics[height=3cm]{../image/matrix2.jpg}}
-			(8,0)node{\includegraphics[height=3cm]{../image/matrix4.jpg}}
-			(4,0)node{{\Huge$\implies$}};
+				(0,0) node {\includegraphics[height=3cm]{../image/matrix2.jpg}}
+				(8,0) node {\includegraphics[height=3cm]{../image/matrix4.jpg}}
+				(4,0) node[fourth] {{\Huge$\implies$}};
 		\end{tikzpicture}
 	\end{center}
 
@@ -121,9 +121,9 @@
 	\begin{center}
 		\begin{tikzpicture}
 			\draw
-			(0,0)node{\includegraphics[height=3cm]{../image/matrix2.jpg}}
-			(8,0)node{\includegraphics[height=3cm]{../image/matrix3.jpg}}
-			(4,0)node{{\Huge$\implies$}};
+				(0,0) node {\includegraphics[height=3cm]{../image/matrix2.jpg}}
+				(8,0) node {\includegraphics[height=3cm]{../image/matrix3.jpg}}
+				(4,0) node[fourth] {{\Huge$\implies$}};
 		\end{tikzpicture}
 	\end{center}
 
@@ -165,7 +165,7 @@
 
 \begin{frame}{矩阵乘法的定义}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[矩阵的乘法]
 		设 $\bfA=(a_{ij})_{m\times n}, \bfB=(b_{ij})_{n\times p}$.
 		定义矩阵的乘法为  $\bfC=\bfA\bfB=(c_{ij})_{m\times p}$, 其中
 		\[c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.\]
@@ -208,7 +208,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵乘法的计算}
+\begin{frame}{例: 矩阵乘法的计算}
 	\onslide<+->
 	\begin{example}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -277,6 +277,7 @@
 
 
 \begin{frame}{矩阵乘法无交换律和消去律}
+	\beqskip{3pt}
 	\onslide<+->
 	\alert{矩阵的乘法不能随意交换顺序}.
 	\onslide<+->
@@ -316,13 +317,19 @@
 
 	\onslide<+->
 	\begin{exercise}
-		设 $\bfA,\bfB$ 为 $n>1$ 阶方阵, 则 $\bfA+\bfA\bfB=$\fillbrace{\visible<+->{\alert{C}}}
-		\xx{$\bfA(1+\bfB)$}{$(\bfE+\bfB)\bfA$}{$\bfA(\bfE+\bfB)$}{以上都不对}
+		设 $\bfA,\bfB$ 为 $n>1$ 阶方阵, 则 $\bfA+\bfA\bfB=$\fillbrace{\visible<+->{\alert{C}}}.
+		\begin{taskschoice}(4)
+			() $\bfA(1+\bfB)$
+			() $(\bfE+\bfB)\bfA$
+			() $\bfA(\bfE+\bfB)$
+			() 以上都不对
+		\end{taskschoice}
 	\end{exercise}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{例题: 与给定矩阵可交换}\small
+\begin{frame}{例: 与给定矩阵可交换}\small
 	\beqskip{2mm}
 	\onslide<+->
 	\begin{example}
@@ -361,9 +368,12 @@
 	\begin{center}
 		\begin{tikzpicture}
 			\draw (2.75,2) node {\includegraphics[height=4.03cm]{../image/idcard1.png}};
-			\draw (0,0) node[main,below left,visible on=<2->] {$O$};
-			\draw (5.21,0.88) node[main,below right,visible on=<2->] {$A$};
-			\draw (0.19,3.11) node[main,above left,visible on=<2->] {$B$};
+			\begin{scope}[main,visible on=<2->]
+				\draw
+					(0,0) node[below left] {$O$}
+					(5.21,0.88) node[below right] {$A$}
+					(0.19,3.11) node[above left] {$B$};
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 	\onslide<+->
@@ -401,7 +411,7 @@
 		-0.148&0.877
 	\end{pmatrix}$.
 	\onslide<+->
-	通过应用该变换, 图片被修正成如下效果:
+	通过应用该变换, 图片被修复成如下效果:
 	\begin{center}
 		\includegraphics[height=2.5cm]{../image/idcard.png}
 	\end{center}
@@ -411,7 +421,7 @@
 
 \begin{frame}{矩阵幂的定义}
 	\onslide<+->
-	\begin{definition}
+	\begin{definition}[方阵的幂]
 		设 $\bfA$ 为 $n$ 阶方阵, 定义 $\bfA$ 的幂
 		\[\bfA^0=\bfE_n,\quad \bfA^k=\underbrace{\bfA\cdot\bfA\cdot\cdots\cdot\bfA}_{k\ \text{个}}.\]
 	\end{definition}
@@ -430,7 +440,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -451,7 +461,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}\small
+\begin{frame}{例: 矩阵幂的计算}\small
 \beqskip{0pt}
 	\onslide<+->
 	\begin{example}
@@ -504,7 +514,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{solution}{另解}
 		设 $\bfN=\begin{pmatrix}
@@ -534,7 +544,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设
@@ -555,7 +565,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{example}
 		设 
@@ -582,7 +592,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 矩阵幂的计算}
+\begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
 	\begin{exercise}
 		设 
@@ -612,7 +622,7 @@
 	例如 $4$ 个城市之间的航线如图所示:
 	\begin{center}
 	\begin{tikzpicture}
-		\begin{scope}[second, node distance=15mm]
+		\begin{scope}[main, node distance=15mm]
 			\node (1) {1};
 			\node (2) [below=of 1] {2};
 			\node (3) [right=of 2]{3};
@@ -622,7 +632,7 @@
 			\draw (3) circle (.2);
 			\draw (4) circle (.2);
 		\end{scope}
-		\begin{scope}[line width=0.5mm,third]
+		\begin{scope}[line width=0.5mm,fourth]
 			\draw[Latex-Latex] (1.east) -- (4.west);
 			\draw[Latex-Latex] (1.south) -- (2.north);
 			\draw[-Latex] (1.south east) -- (3.north west);
@@ -649,22 +659,28 @@
 	就是从 $i$ 到 $j$ 换乘一次的方案数.
 	\onslide<+->
 	例如从\circleno{$2$} $\implies$\circleno{$3$} :
-	\[\bfA^2=\begin{pmatrix}
+	\[\bfA^2=\begin{pNiceMatrix}
 		0&1&1&1\\
 		\alert1&0&0&0\\
 		0&1&0&0\\
 		1&0&1&0
-	\end{pmatrix}\begin{pmatrix}
+		\CodeAfter
+		\tikz \draw[cstdash,second] (2-|1) rectangle (3-|5);
+	\end{pNiceMatrix}\begin{pNiceMatrix}
 		0&1&\alert1&1\\
 		1&0&0&0\\
 		0&1&0&0\\
 		1&0&1&0
-	\end{pmatrix}=\begin{pmatrix}
+		\CodeAfter
+		\tikz \draw[cstdash,second] (1-|3) rectangle (5-|4);
+	\end{pNiceMatrix}=\begin{pNiceMatrix}
 		2&1&1&0\\
 		0&1&\alert1&1\\
 		1&0&0&0\\
 		0&2&1&1
-	\end{pmatrix}.\]
+		\CodeAfter
+		\tikz \draw[cstcurve,second,rounded corners] (2-|3) rectangle (3-|4);
+	\end{pNiceMatrix}.\]
 	\onslide<+->
 	由于 $b_{23}=1$, 因此可通过\circleno{$2$} $\implies$\circleno{$1$} $\implies$\circleno{$3$} 换乘一次到达.
 
@@ -729,7 +745,8 @@
 
 
 \begin{frame}{对称阵和反对称阵}
-	\begin{definition}
+	\onslide<+->
+	\begin{definition}[对称阵和反对称阵]
 		\begin{itemize}
 			\item 若方阵 $\bfA$ 满足 $\bfA^\rmT=\bfA$, 称 $\bfA$ 为\emph{对称阵};
 			\item 若 $\bfA^\rmT=-\bfA$, 称 $\bfA$ 为\emph{反对称阵}.
@@ -772,7 +789,12 @@
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfA$ 是 $n$ 阶方阵, \fillbrace{\visible<+->{\alert{A}}}一定是对称阵?
-		\xx{$\bfA^\rmT\bfA$}{$\bfA-\bfA^\rmT$}{$\bfA^2$}{$\bfA^\rmT-\bfA$}
+		\begin{taskschoice}(4)
+			() $\bfA^\rmT\bfA$
+			() $\bfA-\bfA^\rmT$
+			() $\bfA^2$
+			() $\bfA^\rmT-\bfA$
+		\end{taskschoice}
 	\end{exercise}
 	\onslide<+->
 	一般地, 若 $\bfA\in M_{m\times n}$, $\bfA\bfA^\rmT$ 是 $m$ 阶对称阵, $\bfA^\rmT\bfA$ 是 $n$ 阶对称阵.
@@ -789,6 +811,10 @@
 		\[\bfA=\frac{\bfA+\bfA^\rmT}2+\frac{\bfA-\bfA^\rmT}2.\qedhere\]
 	\end{proof}
 	\onslide<+->
-	想一想: 若函数 $f(x)$ 的定义域关于原点对称, 则 $f(x)$ 一定可以表示成一个偶函数和一个奇函数之和.
+	想一想:
+	\begin{itemize}
+		\item 若函数 $f(x)$ 的定义域关于原点对称, 则 $f(x)$ 可以表示成一个偶函数和一个奇函数之和.
+		\item 复数 $z$ 可以写成 $z_1+z_2$, 其中 $\ov{z_1}=z_1,\ov{z_2}=-z_2$.
+	\end{itemize}
 \end{frame}
 

@@ -40,7 +40,7 @@
 \begin{frame}{极限的引入}\small
 	\onslide<+->
 	\begin{example}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[framed,xshift=-93mm,yshift=47mm,scale=1.3]
+		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-93mm,yshift=47mm,scale=1.3]
 			\foreach \j in {1,2,...,6}{
 				\filldraw[cstcurve,second,cstfill,visible on=<2-5>] (0,0)--({cos(60*\j-30)/cos(30)},{sin(60*\j-30)/cos(30)})--({cos(60*\j+30)/cos(30)},{sin(60*\j+30)/cos(30)})--cycle;
 			}
@@ -144,12 +144,12 @@
 \end{frame}
 
 
-\begin{frame}{例题: 数列的变化趋势}
+\begin{frame}{例: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}
 		\enumnum1 $\set{\dfrac1{2^n}}: \dfrac12,\dfrac14,\dfrac18,\dfrac1{16},\dfrac1{32},\cdots$ 递减地 $\ra 0$.
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-0.3,0)--(13,0);
 				\draw[cstaxis] (0,-0.3)--(0,4.5);
 				\draw (13,-0.3) node {$n$};
@@ -166,12 +166,12 @@
 \end{frame}
 	
 
-\begin{frame}{例题: 数列的变化趋势}
+\begin{frame}{例: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}		
 		\enumnum2 $\set{n}: 1,2,3,4,5,\cdots$ 无限增大.
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-0.3,0)--(5.5,0);
 				\draw[cstaxis] (0,-0.3)--(0,5);
 				\draw (5.5,-0.3) node {$n$};
@@ -190,12 +190,12 @@
 \end{frame}
 	
 
-\begin{frame}{例题: 数列的变化趋势}
+\begin{frame}{例: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}
 		\enumnum3 $\set{n\sin\dfrac\pi n}$ 递增地 $\ra \pi$.
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-0.3,0)--(13,0);
 				\draw[cstaxis] (0,-0.3)--(0,4);
 				\draw[cstdash,fourth] (0,3.14)--(13,3.14);
@@ -214,12 +214,12 @@
 \end{frame}
 	
 
-\begin{frame}{例题: 数列的变化趋势}
+\begin{frame}{例: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}
 		\enumnum4 $\set{(-1)^n+\dfrac1n}$ 奇数项和偶数项分别交错地越来越接近 $1$ 和 $-1$.
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-0.3,0)--(12.5,0);
 				\draw[cstaxis] (0,-2)--(0,2);
 				\draw[cstdash,fourth] (0,1)--(12.5,1);
@@ -243,12 +243,12 @@
 \end{frame}
 	
 
-\begin{frame}{例题: 数列的变化趋势}
+\begin{frame}{例: 数列的变化趋势}
 	\onslide<+->
 	\begin{example}
 		\enumnum5 $\set{1+\dfrac{(-1)^n}n}$ 交错地 $\ra 1$.
 		\begin{center}
-			\begin{tikzpicture}[framed]
+			\begin{tikzpicture}
 				\draw[cstaxis] (-0.3,0)--(12,0);
 				\draw[cstaxis] (0,-0.3)--(0,2);
 				\draw[cstdash,fourth,visible on=<1-2>] (0,1)--(12,1);
@@ -317,14 +317,16 @@
 \end{frame}
 
 
-\begin{frame}{例题: 数列极限的等价定义}
+\begin{frame}{例: 数列极限的等价定义}
 	\onslide<+->
 	\begin{example}
-		单选题: “极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在”的充要条件是“$\forall\varepsilon>0$,\fillbrace{\visible<3->{C}}”.
-		\xx{必有无穷多项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
-		{所有项 $a_n$ 满足 $|a_n-a|<\varepsilon$}
-		{只有有限项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
-		{可能有无穷多项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$}
+		“极限 $\lim\limits_{n\ra\infty}a_n=a$ 存在”的充要条件是“$\forall\varepsilon>0$,\fillbrace{\visible<3->{C}}”.
+		\begin{taskschoice}(1)
+			() 必有无穷多项 $a_n$ 满足 $|a_n-a|<\varepsilon$
+			() 所有项 $a_n$ 满足 $|a_n-a|<\varepsilon$
+			() 只有有限项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$
+			() 可能有无穷多项 $a_n$ 满足 $|a_n-a|\ge \varepsilon$
+		\end{taskschoice}
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -335,7 +337,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 极限的定义证明}
+\begin{frame}{例: 极限的定义证明}
 	\onslide<+->
 	\begin{example}
 		证明当 $|q|<1$ 时, $\lim\limits_{n\ra\infty}q^n=0$.
@@ -358,7 +360,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 极限的定义证明}
+\begin{frame}{例: 极限的定义证明}
 	\onslide<+->
 	\begin{example}
 		证明 $\lim\limits_{n\ra\infty}\dfrac{\sin n}n=0$.
@@ -374,7 +376,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 极限的定义证明}\small
+\begin{frame}{例: 极限的定义证明}\small
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
@@ -539,7 +541,7 @@
 	}\onslide<+->{
 	但是 $\set{a_n}$ 本身却不收敛.}
 	\begin{center}
-		\begin{tikzpicture}[framed,scale=0.8,visible on=<2->]
+		\begin{tikzpicture}[scale=0.8,visible on=<2->]
 			\draw[cstaxis] (0,0)--(6.5,0);
 			\draw[cstaxis] (0,0)--(0,6.3);
 			\draw[cstaxis,main,visible on=<2>]
