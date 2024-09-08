@@ -85,6 +85,8 @@
 			\raggedleft
 			\begin{tikzpicture}
 				\coordinate [label=below left:$0$] (O) at (0,0);
+				\coordinate (B) at (2,0);
+				\coordinate (C) at (0,1.5);
 				\draw[cstaxis] (-.5,0)--(3,0);
 				\draw[cstaxis] (0,-.5)--(0,2.5);
 				\begin{scope}[visible on=<5->]
@@ -100,8 +102,6 @@
 				\begin{scope}[visible on=<4->]
 					\coordinate [label=right:\textcolor{second}{虚轴}] (I) at (0,2.5);
 				\end{scope}
-				\coordinate (B) at (2,0);
-				\coordinate (C) at (0,1.5);
 				\draw[cstaxis,main,visible on=<2->] (-.5,0)--(R);
 				\draw[main,->,thick,visible on=<2->] (-2,.2)-|(.6,0);
 				\draw[cstaxis,second,visible on=<4->] (0,-.5)--(I);

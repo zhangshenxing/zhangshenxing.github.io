@@ -31,7 +31,7 @@
 			\end{scope}
 			\draw[main] (-.7,1.5)--(-1.6,2.5)--(-3,2.5);
 			\filldraw[main,cstfill1] (-.7,1.5) circle(.1);
-			\node at (-5,1.7) [text width=53mm]  (1){
+			\node at (-4.9,1.7) [text width=51mm]  (1){
 				\begin{main*}{作业 15分}
 					作业每次会提前发布, 每两周交一次.
 					\alert{作业不允许迟交}.
@@ -47,7 +47,7 @@
 			\end{scope}
 			\draw[second] (.9,1.5)--(1.6,2.5)--(3,2.5);
 			\filldraw[second,cstfill2] (.9,1.5) circle(.1);
-			\node at (4.7,1.8) [text width=43mm] (2){{\begin{second*}{课堂测验 25分}
+			\node at (4.4,1.8) [text width=42mm] (2){{\begin{second*}{课堂测验 25分}
 					课堂测验共3次, 取最高的两次平均. 测验范围和时间会提前通知. \alert{测验时在教室内作答，否则按未考处理}. 
 			\end{second*}}};
 		\end{scope}
@@ -58,7 +58,7 @@
 			\end{scope}
 			\draw[third] (1.5,-.4)--(2.2,-1.1)--(3,-1.1);
 			\filldraw[third,cstfill3] (1.5,-.4) circle(.1);
-			\node at (4.7,-1.5) [text width=43mm] (3){\begin{third*}{期末报告 10分}
+			\node at (4.4,-1.5) [text width=42mm] (3){\begin{third*}{期末报告 10分}
 				期末之前会告知主题. 请交手写纸质版, 并自行留存电子版本以免意外丢失.
 			\end{third*}};
 		\end{scope}
@@ -69,7 +69,7 @@
 			\end{scope}
 			\draw[fourth] (-.7,-1)--(-1.6,-1.7)--(-3,-1.7);
 			\filldraw[fourth,cstfill4] (-.7,-1) circle(.1);
-			\node at (-5,-1.7) [text width=53mm] (4){\begin{fourth*}{期末考试 50分}
+			\node at (-4.9,-1.7) [text width=51mm] (4){\begin{fourth*}{期末考试 50分}
 				期末卷面需要达到45分才计算总评分数, 45分以下直接不及格.
 			\end{fourth*}};
 		\end{scope}
@@ -92,45 +92,62 @@
 \end{frame}
 
 
-\begin{frame}{课程内容}
+\begin{frame}{课程内容关系}
 	\begin{center}
-		\begin{tikzpicture}[
-			small mindmap,
-			every node/.style={concept, circular drop shadow,execute at begin node=\hskip0pt},
-			root concept/.append style={concept color=black, fill=white, line width=1ex, text=black},
-			font=\scriptsize, text=white,
-			childa/.style={concept color=main,faded/.style={concept color=main!50}},
-			childb/.style={concept color=second,faded/.style={concept color=second!50}},
-			childc/.style={concept color=third,faded/.style={concept color=third!50}},
-			childd/.style={concept color=fourth,faded/.style={concept color=fourth!50}},
-			grow cyclic,
-			level 1/.append style={level distance=2.8cm,font=\small},
-			level 2/.append style={level distance=2.5cm,sibling angle=45,font=\scriptsize}]
-			\node [root concept] {复变函数与积分变换} % root
-			child [grow=-20, level distance=3cm, childa] { node {复数的概念}
-				child[grow=205, level distance=2.5cm] { node {复数的基本要素} }
-				child[grow=-25] { node {复数的运算法则和性质} }
-				child[grow=20, level distance=2.5cm] { node {复数列、级数、函数、极限、积分} }
-			}
-			child [grow=20, level distance=3cm, childb] { node {复数的解析理论}
-				child[grow=15,level distance=2.5cm] { node {刻画: C-R方程} }
-				child[grow=55,level distance=2.5cm] { node {性质: 柯西-古萨基本定理} }
-				child[grow=115,level distance=2.5cm] { node {性质: 复闭路定理} }
-				child[grow=150,level distance=3cm] { node {应用: 柯西积分公式} }
-			}
-			child [grow=160, level distance=3cm, childc] { node {复数的级数理论}
-				child[grow=70,level distance=2.5cm] { node {幂级数与泰勒展开} }
-				child[grow=120,level distance=2.7cm] { node {洛朗展开} }
-				child[grow=160,level distance=2.5cm] { node {孤立奇点的留数} }
-			}
-			child [grow=200, level distance=3.3cm, childd] { node {积分变换}
-				child[grow=160,level distance=2.3cm] { node {傅里叶变换} }
-				child[grow=210,level distance=2.5cm] { node {拉普拉斯变换} }
-				child[grow=-32,level distance=2.3cm] { node {积分变换的应用} }
-			};
+		\begin{tikzpicture}[node distance=18pt]
+			\node[cstnode4] (1) {复数的要素};
+			\node[cstnode4] (2) [right=35pt of 1] {四则运算};
+			\node[cstnode4] (3) [right=32pt of 2] {幂和方根};
+			
+			\node[cstnode4] (11) [below=of 1] {数列极限};
+			\node[cstnode4] (12) [below=of 2] {函数极限};
+			\node[cstnode4] (13) [below=of 3] {连续};
+
+			\node[cstnode4] (21) [below=of 11] {导数};
+			\node[cstnode4] (22) [below=of 12] {解析函数};
+			\node[cstnode2] (23) [below=of 13] {柯西-黎曼方程};
+			\node[cstnode2] (24) [right=of 23] {初等函数};
+
+			\node[cstnode2] (31) [below=of 21] {积分: 参变量法};
+			\node[cstnode4] (32) [align=center,below=of 22] {柯西-古萨定理};
+			\node[cstnode2] (33) [below=of 23] {原函数法};
+			\node[cstnode4] (34) [below=of 24] {柯西积分公式};
+			\node[cstnode2] (35) [right=of 34] {留数法};
+
+			\node[cstnode4] (41) [below=of 32] {幂级数};
+			\node[cstnode4] (42) [below=of 33] {泰勒展开};
+			\node[cstnode4] (43) [below=of 34] {洛朗级数};
+
+			\node[cstnode3] (51) [below=36pt of 31] {傅里叶变换};
+			\node[cstnode3] (54) [right=80pt of 13] {拉普拉斯变换};
+			\begin{scope}[cstmra,main]
+				\draw (1.east) to (2.west);
+				\draw (2.east) to (3.west);
+				\draw (1.south) to (11.north);
+				\draw (1.south) to (12.north);
+				\draw (12.east) to (13.west);
+				\draw (12.south) to (21.north);
+				\draw (21.east) to (22.west);
+				\draw (22.east) to (23.west);
+				\draw (23.east) to (24.west);
+				\draw (21.south) to (31.north);
+				\draw (23.south) to (32.north);
+				\draw (31.east) to (32.west);
+				\draw (32.east) to (33.west);
+				\draw (33.east) to (34.west);
+				\draw (34.east) to (35.west);
+				\draw (34.south) to (42.north);
+				\draw (34.south) to (43.north);
+				\draw (41.east) to (42.west);
+				\draw (42.east) to (43.west);
+				\draw (43.east) to (35.south);
+				\draw (35.north) to (54.south);
+				\draw (1.west) to[bend right=20] (51.west);
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
+
 
 \begin{frame}{课程学习方法}
 	\begin{center}
