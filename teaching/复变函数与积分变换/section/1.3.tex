@@ -6,7 +6,7 @@
 	三角和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
 
 	\onslide<+->
-	\begin{theorem}[复数的乘除与三角、指数形式]
+	\begin{theorem}
 		设
 		\[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
 		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
@@ -28,14 +28,7 @@
 	\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 	\onslide<+->
 	\emph{多值函数相等是指两边所能取到的值构成的集合相等.}
-	\onslide<+->
-	例如此处关于辐角的等式的含义是:
-	\[\Arg(z_1z_2)=\set{\theta_1+\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
-	\[\Arg\left(\frac{z_1}{z_2}\right)=\set{\theta_1-\theta_2:\theta_1\in\Arg z_1,\theta_2\in\Arg z_2}.\]
-\end{frame}
 
-
-\begin{frame}{复数的乘除与三角和指数表示}
 	\onslide<+->
 	注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
 	\[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
@@ -45,13 +38,6 @@
 	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 	\onslide<+->
 	事实上, 当且仅当等式右侧落在区间 $(-\pi,\pi]$ 内时才成立, 否则等式两侧会相差 $\pm2\pi$.
-	\onslide<+->
-	例如
-	\[z_1=z_2=e^{0.99\pi i},\quad z_1z_2=e^{1.98\pi i},\]
-	\vspace{-\baselineskip}
-	\onslide<+->
-	\[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\quad
-	\arg(z_1z_2)=-0.02\pi.\]
 \end{frame}
 
 
@@ -87,24 +73,64 @@
 	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
 	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}
-			\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
-			\coordinate (O) at (0,0);
-			\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
-			\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
-			\begin{scope}[visible on=<3->]
-				\coordinate [label=right:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
-				\coordinate [label=right:\textcolor{second}{$zz_1$}] (ZZ1) at ({3*cos(130)},{3*sin(130)});
+		\begin{animateinline}[width=6.5cm]{10}
+			\begin{tikzpicture}
+				\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
+				\coordinate (O) at (0,0);
+				\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+				\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
+				\coordinate [label=above:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
+				\coordinate (ZZ1) at ({3*cos(130)},{3*sin(130)});
+				\coordinate [label=above:\textcolor{second}{$zz_1$}] (2) at ({3*cos(130)},{3*sin(130)});
 				\draw[cstcurve,second] pic [cstfill2,draw=second, "$\theta$", angle eccentricity=1.4] {angle=Z1--O--ZZ1};
 				\draw[cstcurve,second,cstra] (O)--(Z1);
 				\draw[cstcurve,second,cstra] (O)--(ZZ1);
-			\end{scope}
-			\draw[cstaxis] (-3,0)--(3,0);
-			\draw[cstaxis] (0,-.5)--(0,3);
-			\draw[cstcurve,main,cstra] (O)--(X);
-			\draw[cstcurve,main,cstra] (O)--(Z);
-		\end{tikzpicture}
+				\draw[cstaxis] (-3,0)--(3.5,0);
+				\draw[cstaxis] (0,-.5)--(0,3);
+				\draw[cstcurve,main,cstra] (O)--(X);
+				\draw[cstcurve,main,cstra] (O)--(Z);
+			\end{tikzpicture}
+			\newframe
+			\multiframe{41}{r=0+0.5}{
+				\begin{tikzpicture}
+					\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
+					\coordinate (O) at (0,0);
+					\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+					\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
+					\coordinate [label=above:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
+					\coordinate (ZZ1) at ({(2.4+0.03*\r)*cos(80+2.5*\r)},{(2.4+0.03*\r)*sin(80+2.5*\r)});
+					\coordinate [label=above:\textcolor{second}{$zz_1$}] (2) at ({3*cos(130)},{3*sin(130)});
+					\draw[cstcurve,second] pic [cstfill2,draw=second, "$\theta$", angle eccentricity=1.4] {angle=Z1--O--ZZ1};
+					\draw[cstcurve,second,cstra] (O)--(Z1);
+					\draw[cstcurve,second,cstra] (O)--(ZZ1);
+					\draw[cstaxis] (-3,0)--(3.5,0);
+					\draw[cstaxis] (0,-.5)--(0,3);
+					\draw[cstcurve,main,cstra] (O)--(X);
+					\draw[cstcurve,main,cstra] (O)--(Z);
+				\end{tikzpicture}
+			}
+		\end{animateinline}
 	\end{center}
+
+	% \begin{center}
+	% 	\begin{tikzpicture}
+	% 		\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
+	% 		\coordinate (O) at (0,0);
+	% 		\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+	% 		\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
+	% 		\begin{scope}[visible on=<3->]
+	% 			\coordinate [label=right:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
+	% 			\coordinate [label=right:\textcolor{second}{$zz_1$}] (ZZ1) at ({3*cos(130)},{3*sin(130)});
+	% 			\draw[cstcurve,second] pic [cstfill2,draw=second, "$\theta$", angle eccentricity=1.4] {angle=Z1--O--ZZ1};
+	% 			\draw[cstcurve,second,cstra] (O)--(Z1);
+	% 			\draw[cstcurve,second,cstra] (O)--(ZZ1);
+	% 		\end{scope}
+	% 		\draw[cstaxis] (-3,0)--(3,0);
+	% 		\draw[cstaxis] (0,-.5)--(0,3);
+	% 		\draw[cstcurve,main,cstra] (O)--(X);
+	% 		\draw[cstcurve,main,cstra] (O)--(Z);
+	% 	\end{tikzpicture}
+	% \end{center}
 \end{frame}
 
 

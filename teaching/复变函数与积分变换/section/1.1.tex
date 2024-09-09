@@ -8,19 +8,21 @@
 	\onslide<+->
 	为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $i$, 再通过定义它的运算来构造复数.
 	\onslide<+->
-	\begin{definition}[复数]
+	\begin{definition}
 		固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
 	\end{definition}
 	\onslide<+->
-	于是复数全体构成一个二维实线性空间, $\{1,i\}$ 是一组基. 而且实数 $x$ 可以自然地看成复数 $x+0i$.
-	\onslide<+->
-	将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$, $\BR\subseteq \BC$.
+	实数 $x$ 可以自然地看成复数 $x+0i$.
 \end{frame}
 
 
 \begin{frame}{复平面}
 	\onslide<+->
-	由此, $\BC$ 和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
+	将\emph{全体复数记作 $\BC$}.
+	\onslide<+->
+	那么 $\BC$ 自然构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基. 
+	\onslide<+->
+	因此它和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -62,22 +64,13 @@
 
 \begin{frame}{实部和虚部, 虚数和纯虚数}
 	\onslide<+->
-	当 $y=0$ 时, $z=x$ 就是一个实数.
-	\onslide<+->
-	它对应复平面上的点就是直角坐标系的 $x$ 轴上的点.
-	\onslide<+->
-	因此我们称 $x$ 轴为\emph{实轴}.
-	\onslide<+->
-	相应地, 称 $y$ 轴为\alert{虚轴}.
-	\onslide<+->
-	称 $z=x+yi$ 在实轴和虚轴的投影为它的\emph{实部 $\Re z=x$} 和\alert{虚部 $\Im z=y$}.
-
-	\onslide<+->
-	当 $\Im z=0$ 时, $z$ 是实数.
-	\onslide<+->
-	不是实数的复数是\textcolor{third}{虚数}.
-	\onslide<+->
-	当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\alert{纯虚数}.
+	\begin{itemize}
+		\item $x,y$ 轴分别对应复平面的\emph{实轴}和\alert{虚轴}.
+		\item 称 $z=x+yi$ 中 $x=\Re z$ 为 $z$ 的\emph{实部}; $y=\Im z$ 为 $z$ 的\alert{虚部}.
+		\item 当虚部 $\Im z=0$ 时, $z$ 为实数, 它落在实轴上.
+		\item 不是实数的复数是\textcolor{third}{虚数}.
+		\item 当实部 $\Re z=0$ 且 \alert{$z\neq0$} 时, $z$ 为\alert{纯虚数}, 它落在虚轴上.
+	\end{itemize}
 	\onslide<1->
 	\begin{figure}[hbpt]
 		\centering
@@ -89,26 +82,24 @@
 				\coordinate (C) at (0,1.5);
 				\draw[cstaxis] (-.5,0)--(3,0);
 				\draw[cstaxis] (0,-.5)--(0,2.5);
-				\begin{scope}[visible on=<5->]
+				\begin{scope}[visible on=<3->]
 					\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (B)--(O) node[midway,below=1.5mm] {$\Re z$};
 					\draw[decorate,decoration={brace,amplitude=5},second,cstfill2] (C)--(O) node[midway,right=1.5mm] {$\Im z$};
 					\coordinate [label=above:\textcolor{third}{$z=x+yi$}] (A) at (2,1.5);
 					\draw[cstdash] (B)--(A)--(C);
 					\fill[cstdot,third] (A) circle;
 				\end{scope}
-				\begin{scope}[visible on=<3->]
+				\begin{scope}[visible on=<2->]
 					\coordinate [label=above:\textcolor{main}{实轴}] (R) at (3,0);
-				\end{scope}
-				\begin{scope}[visible on=<4->]
 					\coordinate [label=right:\textcolor{second}{虚轴}] (I) at (0,2.5);
+					\draw[cstaxis,main] (-.5,0)--(R);
+					\draw[cstaxis,second] (0,-.5)--(I);
 				\end{scope}
-				\draw[cstaxis,main,visible on=<2->] (-.5,0)--(R);
-				\draw[main,->,thick,visible on=<2->] (-2,.2)-|(.6,0);
-				\draw[cstaxis,second,visible on=<4->] (0,-.5)--(I);
-				\draw[second,->,thick,visible on=<8->] (-2,1.3)--(0,1.3);
+				\draw[main,->,thick,visible on=<4->] (-2,.2)-|(.6,0);
+				\draw[second,->,thick,visible on=<6->] (-2,1.3)--(0,1.3);
 				\draw 
-					(-2,.1) node[cstnode,draw=main,text=main,visible on=<2->] {实数}
-					(-2,1.2) node[align=center,cstnode,draw=second,text=second,visible on=<8->] {纯虚数\\不含原点};
+					(-2,.1) node[cstnode,draw=main,text=main,visible on=<4->] {实数}
+					(-2,1.2) node[align=center,cstnode,draw=second,text=second,visible on=<6->] {纯虚数\\不含原点};
 			\end{tikzpicture}
 		\end{minipage}
 		\begin{minipage}{.48\textwidth}
@@ -116,14 +107,14 @@
 			\begin{tikzpicture}
 				\filldraw[cstcurve,cstfill] (.8,0) circle (2.6 and 2);
 				\coordinate (R) at (0,-.8);
-				\filldraw[cstcurve,main,fill=white,visible on=<2->] (R) circle (1.2 and .7);
+				\filldraw[cstcurve,main,fill=white,visible on=<4->] (R) circle (1.2 and .7);
 				\coordinate (I) at (0,.8);
-				\draw (R) node[align=center,main,visible on=<2->] {实数 \\$0,1,\sqrt2,\pi,e$};
-				\draw (I) node[align=center,second,visible on=<8->] {纯虚数 \\$i,-i,\pi i$};
-				\draw[cstcurve,second,visible on=<8->] (I) circle (1.2 and .7);
+				\draw (R) node[align=center,main,visible on=<4->] {实数 \\$0,1,\sqrt2,\pi,e$};
+				\draw (I) node[align=center,second,visible on=<6->] {纯虚数 \\$i,-i,\pi i$};
+				\draw[cstcurve,second,visible on=<6->] (I) circle (1.2 and .7);
 				\draw 
 					(3.7,0) node[align=center] {全\\体\\复\\数}
-					(2,0) node[align=center,third,visible on=<7->] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
+					(2,0) node[align=center,third,visible on=<5->] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
 			\end{tikzpicture}
 		\end{minipage}
 	\end{figure}
@@ -134,7 +125,7 @@
 	\onslide<+->
 	\begin{example}
 		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:
-		\begin{enumerate}
+		\begin{enumerate}[<*>]
 			\item 实数;
 			\item 纯虚数.
 		\end{enumerate}
@@ -164,7 +155,7 @@
 	\onslide<+->
 	设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
 	\onslide<+->
-	由 $\BC$ 是二维实线性空间可得复数的加法和减法:
+	定义复数的加法和减法:
 	\onslide<+->
 	\[
 		z_1+z_2=(x_1+x_2)+(y_1+y_2)i,\quad
@@ -201,21 +192,15 @@
 
 \begin{frame}{复数的乘除法}
 	\onslide<+->
-	\alert{规定 $i\cdot i=-1$} 并要求实数与复数的乘法和标量乘法(数乘)一致.
+	\alert{规定 $i\cdot i=-1$} 并定义复数的乘法:
 	\onslide<+->
-	我们希望 $\BC$ 上的运算满足乘法分配律,
-	\onslide<+->
-	则
 	\begin{align*}
-		z_1\cdot z_2&=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
+		z_1\cdot z_2&=(x_1+y_1i)(x_2+y_2i)=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
 		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 	\end{align*}
 	\onslide<+->
-	由此可得 $z\neq0$ 时,
-	\[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
-	\onslide<+->
-	从而
-	\[\frac{z_1}{z_2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
+	由此可得复数的除法:
+	\[\frac{z_1}{z_2}=\frac{(x_1+y_1i)(x_2-y_2i)}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
 	\onslide<+->
 	对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
@@ -244,7 +229,7 @@
 	\onslide<+->
 	将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
 	\onslide<+->
-	那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.
+	那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $-\omega$ 是 $6$ 次单位根.
 \end{frame}
 
 
@@ -260,7 +245,7 @@
 		\visible<+->{=\frac{i-1}{i-1}=1.}\]
 	\end{solution}
 	\onslide<+->
-	\begin{exercise}[2020年A卷]
+	\begin{exercise}
 		化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{\visible<+->{$1$}}.
 	\end{exercise}
 \end{frame}
@@ -315,10 +300,14 @@
 
 \begin{frame}{共轭复数}
 	\onslide<+->
-	\begin{definition}[共轭复数]
+	\begin{definition}
 		称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
 	换言之, $\ov{x+yi}=x-yi$.
 	\end{definition}
+	\onslide<+->
+	\begin{exercise}
+		$z$ 关于虚轴的对称点是\fillblank{\visible<+->{$-\ov z$}}.
+	\end{exercise}
 	\onslide<+->
 	从定义出发, 不难验证共轭复数满足如下性质:
 	\begin{enumerate}
@@ -340,10 +329,6 @@
 
 
 \begin{frame}{例题：共轭复数证明等式}
-	\onslide<+->
-	\begin{exercise}
-		$z$ 关于虚轴的对称点是\fillblank{\visible<+->{$-\ov z$}}.
-	\end{exercise}
 	\onslide<+->
 	\begin{example}
 		证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.

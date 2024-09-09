@@ -4,7 +4,7 @@
 	\onslide<+->
 	复数起源于多项式方程的求根问题.
 	\onslide<+->
-	我们考虑一元二次方程 $x^2+bx+c=0$,
+	考虑一元二次方程 $x^2+bx+c=0$,
 	\onslide<+->
 	配方可得
 		\[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
@@ -15,97 +15,88 @@
 		\item 当 $\Delta>0$ 时, 有两个不同的实根;
 		\item 当 $\Delta=0$ 时, 有一个二重的实根;
 		\item 当 $\Delta<0$ 时, 无实根.
-		\onslide<+->
-		然而, 如果我们\alert{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
 	\end{enumerate}
+	\onslide<+->
+	可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开方}的解.
+	\onslide<+->
+	然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开方.
 \end{frame}
 
 
 \begin{frame}{三次方程的根\noexer}
-	\onslide<+->
-	现在我们来考虑一元三次方程.
 	\onslide<+->
 	\begin{example}
 		解方程 $x^3+6x-20=0$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		设 $x=u+v$, 则
-			\[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
+		\begin{minipage}{.74\textwidth}
+			设 $x=u+v$, 则
+			\[
+				u^3+v^3+3uv(u+v)+6(u+v)-20=0.
+			\]
+			\onslide<+->{%
+				我们希望 $u^3+v^3=20, uv=-2$,
+			}\onslide<+->{%
+				则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+			}\onslide<+->{%
+				解得
+				\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
+			}\onslide<+->{%
+				所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$,
+			}\onslide<+->{%
+				$x=u+v=2$.
+			}
+		\end{minipage}
 		\onslide<+->{%
-			我们希望 $u^3+v^3=20, uv=-2$,
-		}\onslide<+->{%
-			则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
-		}\onslide<+->{%
-			解得
-			\[u^3=10\pm\sqrt{108}\visible<+->{=(1\pm\sqrt3)^3.}\]
-		}\onslide<+->{%
-			所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$,
-		}\onslide<+->{%
-			$x=u+v=2$.
+			\begin{minipage}{.22\textwidth}
+				\centering
+				\begin{tikzpicture}
+					\draw (-.2,1.8) node[second] {$y'=3x^2+6$};
+					\begin{scope}[visible on=<2->]
+						\filldraw[cstcurve,main,domain=-1.2:3.1,smooth,fill=white] plot ({\x*.35},{(\x*\x*\x+6*\x-20)*.07});
+						\draw[cstaxis] (-1.5,0)--(1.5,0);
+						\draw[cstaxis] (0,-2)--(0,1.5);
+						\coordinate [label=above left:$2$] (B) at (.7,0);
+						\fill[cstdot,second] (B) circle;
+					\end{scope}
+				\end{tikzpicture}
+			\end{minipage}
 		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{三次方程的根\noexer}
-	\onslide<+->
-	那么这个方程是不是真的只有 $x=2$ 这一个解呢?
-	\onslide<+->
-	由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个解.
-	\begin{center}
-		\begin{tikzpicture}
-      \filldraw[cstcurve,main,domain=-1.2:3.1,smooth,fill=white] plot ({\x*.5},{(\x*\x*\x+6*\x-20)*.1});
-      \draw[cstaxis] (-3,0)--(3,0);
-      \draw[cstaxis] (0,-3)--(0,3);
-      \coordinate [label=above left:$-20$] (A) at (0,-2);
-      \coordinate [label=above left:$2$] (B) at (1,0);
-      \fill[cstdot,second] (A) circle;
-      \fill[cstdot,second] (B) circle;
-			\draw (3,2) node[main] {$y=x^3+6x-20$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{三次方程的根\noexer}
+	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
 		解方程 $x^3-7x+6=0$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution*}
+	\begin{solution}
 		同样地我们有 $x=u+v$, 其中
-		\[u^3+v^3=-6,\quad uv=\frac73.\]
+		\[u^3+v^3=-6,\quad uv=\dfrac73.\]
 	\onslide<+->{%
 		于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
 	}\onslide<+->{%
 		然而这个方程没有实数解.
-	}
-
-	\onslide<+->{%
-		我们可以强行解得
-		\[u^3=-3+\frac{10}9\sqrt{-3}.\]
-	}
-	\end{solution*}
-\end{frame}
-
-
-\begin{frame}{三次方程的根}
-	\onslide<+->
-	\begin{solution}[续解]
-		\[u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
-		=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,\]
-	\onslide<+->{%
-		相应地
-		\[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]
 	}\onslide<+->{%
-		\[x=u+v=2,-3,1.\]}
+		我们可以强行解得 
+	}\onslide<+->{%
+		\[
+			u^3=-3+\dfrac{10}9\sqrt{-3},\qquad
+			\visible<+->{u=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,}
+		\]
+	}\onslide<+->{%
+		相应地
+		\[
+			v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\qquad
+			\visible<+->{x=u+v=2,-3,1.}
+		\]
+	}
 	\end{solution}
-
-	\onslide<+->
-	所以我们从一条``\alert{错误的路径}''走到了正确的目的地?
+	\endgroup
 \end{frame}
 
 

@@ -217,7 +217,13 @@
 		\end{cases} 0\le \theta\le 2\pi.$
 		\vspace{-\baselineskip}
 		\begin{center}
-			\begin{animateinline}[autoplay,loop,width=9cm]{10}
+			\begin{animateinline}[width=9cm]{10}
+				\begin{tikzpicture}
+					\draw[cstaxis, thick](-1.5,0)--(7.5,0);
+					\draw[cstaxis, thick](0,0)--(0,2.5);
+					\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
+				\end{tikzpicture}
+				\newframe
 				\multiframe{25}{r=0+15}{
 					\begin{tikzpicture}
 						\draw[cstaxis, thick](-1.5,0)--(7.5,0);
