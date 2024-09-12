@@ -64,7 +64,7 @@
 	\onslide<+->
 	称 $\bfA$ 的行向量组的秩为\emph{行秩}, 列向量组的秩为\emph{列秩}.
 	\onslide<+->
-	\begin{second}{行秩、列秩与秩相等}
+	\begin{second}{行秩等于列秩等于秩}
 		$\bfA$ 的行秩和列秩均等于秩 $R(\bfA)$.
 	\end{second}
 	\onslide<+->
@@ -85,7 +85,6 @@
 
 
 \begin{frame}{行阶梯形矩阵的秩}
-
 	\onslide<+->
 	\begin{example}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -268,7 +267,7 @@
 		设 $\bfA\in M_{m\times n}$, 则 $0\le R(\bfA)\le \min(m,n)$.
 	\end{proposition}
 	\onslide<+->
-	\begin{definition}[满秩]
+	\begin{definition}
 		\begin{enumerate}
 			\item 若 $R(\bfA)=m$, 称 $\bfA$ \emph{行满秩};
 			\item 若 $R(\bfA)=n$, 称 $\bfA$ \emph{列满秩};
@@ -455,14 +454,14 @@
 
 \begin{frame}{例: 矩阵秩性质的应用}
 	\onslide<+->
-	\begin{theorem}[伴随矩阵的秩]
+	\begin{second}{伴随矩阵的秩}
 		设 $\bfA$ 是 $n$ 阶方阵, 则
 		\[R(\bfA^*)=\begin{cases}
 			n,&R(\bfA)=n;\\
 			1,&R(\bfA)=n-1;\\
 			0,&R(\bfA)\le n-2.
 		\end{cases}\]
-	\end{theorem}
+	\end{second}
 	\onslide<+->
 	\begin{proof}
 		\begin{enumerate}

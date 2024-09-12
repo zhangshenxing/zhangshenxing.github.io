@@ -63,10 +63,9 @@
 
 \begin{frame}{指数函数的性质}
 	\onslide<+->
-	\begin{definition}{指数函数}
-	定义\emph{指数函数}
+	\begin{third}{指数函数}
 		\[\exp z:=e^x(\cos y+i\sin y).\]
-	\end{definition}
+	\end{third}
 	\onslide<+->
 	为了方便, 我们也记 $\emph{e^z=\exp z}$.
 	\onslide<+->
@@ -132,7 +131,7 @@
 	\[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
 	\vspace{-\baselineskip}
 	\onslide<+->
-	\begin{definition}{对数函数}
+	\begin{third}{对数函数}
 		\begin{enumerate}
 			\item 定义\emph{对数函数}
 				\[\Ln z=\ln\abs{z}+i\Arg z.\]
@@ -141,7 +140,7 @@
 				\[\ln z=\ln\abs{z}+i\arg z.\]
 				\vspace{-\baselineskip}
 		\end{enumerate}
-	\end{definition}
+	\end{third}
 
 	\onslide<+->
 	对于每一个整数 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
@@ -271,9 +270,9 @@
 
 \subsection{幂函数}
 
-\begin{frame}{幂函数}
+\begin{frame}{幂函数的性质: $a$ 为整数时}
 	\onslide<+->
-	\begin{definition}[幂函数]
+	\begin{third}{幂函数}
 		\begin{enumerate}
 			\item 设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
 			\[w=z^a=e^{a\Ln z}
@@ -282,11 +281,7 @@
 			\[w=e^{a\ln z}=\exp\bigl(a\ln\abs{z}+ia\arg z\bigr).\]
 		\end{enumerate}
 		\vspace{-\baselineskip}
-	\end{definition}
-\end{frame}
-
-
-\begin{frame}{幂函数的性质: $a$ 为整数时}
+	\end{third}
 	\onslide<+->
 	根据 $a$ 的不同, 这个函数有着不同的性质.
 
@@ -373,18 +368,16 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\begin{enumerate}
-			\item
-			\[
-				1^{\sqrt2}=e^{\sqrt2\Ln1}
-				\visible<+->{=e^{\sqrt 2\cdot 2k\pi i}}
-				\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ.}\]
-			\item
-			\[
-				i^i=e^{i\Ln i}
-				\visible<+->{=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]}
-				\visible<+->{=\exp\left(-2k\pi-\half\pi\right), k\in\BZ.}\]
-		\end{enumerate}
+		\[
+			1^{\sqrt2}=e^{\sqrt2\Ln1}
+			\visible<+->{=e^{\sqrt 2\cdot 2k\pi i}}
+			\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ.}\]
+		\onslide<+->{%
+		\[
+			i^i=e^{i\Ln i}
+			\visible<+->{=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]}
+			\visible<+->{=\exp\left(-2k\pi-\half\pi\right), k\in\BZ.}\]}
+		\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
@@ -428,7 +421,7 @@
 	\onslide<+->
 	我们将其推广到复数情形.
 	\onslide<+->
-	\begin{definition}[余弦和正弦函数]
+	\begin{definition}
 		定义余弦和正弦函数
 		\[\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
 		\sin z=\frac{e^{iz}-e^{-iz}}{2i}.\]

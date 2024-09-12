@@ -180,10 +180,10 @@
 
 \begin{frame}{开集和闭集、有界和无界}
 	\onslide<+->
-	\begin{definition}[开集和闭集]
+	\begin{definition}
 		\begin{enumerate}
 			\item 如果 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\emph{开集}.
-			\item 如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}.
+			\item 如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}. 这等价于它的补集是开集.
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
@@ -197,15 +197,6 @@
 	\onslide<+->
 	不过注意这并不是绝对的.
 
-	如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}.
-	\onslide<+->
-	这等价于它的补集是开集.
-
-	\onslide<+->
-	直观上看: 开集往往由 $>,<$ 的不等式给出, 闭集往往由 $\ge,\le$ 的不等式给出.
-	\onslide<+->
-	不过注意这并不是绝对的.
-	
 	\onslide<+->
 	如果 $D$ 可以被包含在某个开圆盘 $U(0,R)$ 中, 则称它是\emph{有界}的.
 	\onslide<+->
@@ -215,7 +206,7 @@
 
 \begin{frame}{区域和闭区域}
 	\onslide<+->
-	\begin{definition}[区域]
+	\begin{definition}
 		如果开集 $D$ 的任意两个点之间都可以用一条完全包含在 $D$ 中的折线连接起来, 则称 $D$ 是一个\emph{区域}.
 		\onslide<+->{%
 			也就是说, 区域是连通的开集.
@@ -318,9 +309,9 @@
 			\begin{tikzpicture}[scale=.7,visible on=<4->]
 				\draw[cstaxis](-1.5,0)--(1.5,0);
 				\draw[cstaxis](0,-1.5)--(0,1.5);
-				\fill[cstfille1] (-.5,-.4) rectangle (1.1,.4);
-				\draw[cstcurve,main] (-.5,-.4)--(1.1,-.4);
-				\draw[cstcurve,main] (-.5,.4)--(1.1,.4);
+				\fill[cstfille1] (-1,-.4) rectangle (1,.4);
+				\draw[cstcurve,main] (-1,-.4)--(1,-.4);
+				\draw[cstcurve,main] (-1,.4)--(1,.4);
 				\draw (0,-1.5) node[below,align=center] {水平带状区域\\$y_1<\Im z<y_2$};
 			\end{tikzpicture}
 		\end{minipage}
@@ -408,7 +399,7 @@
 	除了圆环域之外, 闭路的内部仍然包含在这个区域内.
 
 	\onslide<+->
-	\begin{definition}[单连通区域和多连通区域]
+	\begin{definition}
 		如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通区域}.
 		否则称之为\emph{多连通区域}.
 	\end{definition}

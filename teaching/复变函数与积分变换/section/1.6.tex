@@ -8,7 +8,7 @@
 	\onslide<+->
 	我们先来看数列极限的定义.
 	\onslide<+->
-	\begin{definition}[数列极限的定义]
+	\begin{definition}
 		设 $\{z_n\}_{n\ge 1}$ 是一个复数列.
 		如果 $\forall \varepsilon>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n-z|<\varepsilon$, 则称 $z$ 是\emph{数列 $\{z_n\}$ 的极限}, 记作 \emph{$\lim\limits_{n\to\infty}z_n=z$}.
 	\end{definition}
@@ -35,9 +35,9 @@
 	那么上述定义可统一表述为:
 
 	\onslide<+->
-	\begin{definition}[数列极限的等价定义]
+	\begin{third}{数列极限的等价定义}
 		对 $z$ 的任意邻域 $U$, $\exists N$ 使得当 $n\ge N$ 时 $z_n\in U$.
-	\end{definition}
+	\end{third}
 \end{frame}
 
 
@@ -185,7 +185,7 @@
 	下述定理保证了我们可以使用实数列的敛散性判定技巧.
 
 	\onslide<+->
-	\begin{theorem}[复数列极限的等价刻画]
+	\begin{theorem}
 		设 $z_n=x_n+y_ni,z=x+yi$, 则
 		\[\lim_{n\to\infty}z_n=z\iff \lim_{n\to\infty}x_n=x,\lim_{n\to\infty}y_n=y.\]
 	\end{theorem}
@@ -203,7 +203,7 @@
 	\onslide<+->
 	由此可知极限的四则运算法则对于数列也是成立的.
 	\onslide<+->
-	\begin{theorem}[数列极限的四则运算法则]
+	\begin{theorem}
 		设 $\lim\limits_{n\to\infty}z_n=z,\lim\limits_{n\to\infty}w_n=w$, 则
 		\begin{enumerate}
 			\item $\lim\limits_{n\to\infty}(z_n\pm w_n)=z\pm w$;
@@ -319,7 +319,7 @@
 \subsection{函数的连续性}
 \begin{frame}{函数的连续性}
 	\onslide<+->
-	\begin{definition}[连续]
+	\begin{definition}
 		\begin{itemize}
 			\item 如果 $\lim\limits_{z\to z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \emph{$z_0$ 处连续}.
 			\item 如果 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \emph{$D$ 内连续}.
@@ -329,7 +329,7 @@
 	\onslide<+->
 	根据前面的极限判定定理可知:
 	\onslide<+->
-	\begin{theorem}[连续的等价刻画]
+	\begin{theorem}
 		函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+iy_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
 	\end{theorem}
 
@@ -347,7 +347,7 @@
 
 \begin{frame}{连续函数的性质}
 	\onslide<+->
-	\begin{theorem}[连续函数的四则运算和复合]
+	\begin{theorem}
 		\begin{itemize}
 			\item 在 $z_0$ 处连续的两个函数 $f(z),g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 在 $z_0$ 处仍然连续.
 			\item 如果函数 $g(z)$ 在 $z_0$ 处连续, 函数 $f(w)$ 在 $g(z_0)$ 处连续, 则 $f(g(z))$ 在 $z_0$ 处连续.

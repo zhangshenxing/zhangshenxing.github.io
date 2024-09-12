@@ -217,9 +217,9 @@
 	如果排列 $k_1,k_2,\dots,k_n$ 需要奇数次对换变成 $1,2,\dots,n$, 则 
 	$|\bfe_{k_1},\cdots,\bfe_{k_n}|=-1$; 否则 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=1$.
 	\onslide<+->
-	\begin{definition}[行列式]
+	\begin{definition}
 		设 $\bfA=(a_{ij})$ 是 $n$ 阶方阵.
-		定义 $\bfA$ 的行列式为
+		定义 $\bfA$ 的\emph{行列式}为
 		\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n},\]
 		其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\end{definition}
@@ -338,11 +338,11 @@
 	\onslide<+->
 	事实上, 它把任意平行多面体映射为平行多面体, 且二者面积相差 $|\bfA|$ 倍.
 	\onslide<+->
-	\begin{second}{行列式的性质}
+	\begin{second@}
 		\begin{enumerate}
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
 		\end{enumerate}
-	\end{second}
+	\end{second@}
 	\onslide<+->
 	\begin{proof}
 		设 $f(\bfv_1,\dots,\bfv_n)=f(\bfB)=|\bfA\bfB|$.
@@ -364,12 +364,12 @@
 
 \begin{frame}{行列式的转置不变性}
 	\onslide<+->
-	\begin{second}{行列式的性质}
+	\begin{second@}
 		\begin{enumerate}
 			\setcounter{enumi}{1}
 			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
 		\end{enumerate}
-	\end{second}
+	\end{second@}
 	\onslide<+->
 	设 $k_1,\dots,k_n$ 是一个排列, $\bfP$ 的 $i$ 行 $k_i$ 列为 $1$, 其余项为零.
 	\onslide<+->
@@ -397,14 +397,14 @@
 	\onslide<+->
 	再根据行列式关于每个列向量的线性性和反对称性有:
 	\onslide<+->
-	\begin{second}{行列式的性质}
+	\begin{second@}
 		\begin{enumerate}
 			\setcounter{enumi}{2}
 			\item 互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
 			\item 方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
 			\item 将方阵一行(列)每一个元素都写成两个数之和, 则行列式也可拆成两个行列式之和:
 		\end{enumerate}
-	\end{second}
+	\end{second@}
 	\onslide<+->
 	\begin{corollary}
 		\begin{enumerate}
@@ -421,13 +421,13 @@
 	\onslide<+->
 	计算行列式可以通过实施下列变换来化简:
 	\onslide<+->
-	\begin{definition}[初等变换]
+	\begin{third}{初等变换}
 		\begin{enumerate}
 			\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
 			\item 一行(列)乘\alert{非零常数} $k$: \alert{$kr_i, kc_i$}, 行列式变为 $k$ 倍;
 			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
 		\end{enumerate}
-	\end{definition}
+	\end{third}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
@@ -623,7 +623,7 @@
 	\onslide<+->
 	我们来介绍行列式与方阵子式的联系.
 	\onslide<+->
-	\begin{definition}[余子式和代数余子式]
+	\begin{definition}
 		设 $\bfA=(a_{ij})$ 是 $n$ 阶方阵.
 		\begin{enumerate}
 			\item $\bfA$ 去掉第 $i$ 行和 $j$ 列得到的 $n-1$ 阶方阵的行列式称为 $\bfA$ 在 $(i,j)$ 处的\emph{\cnen{余子式}{Minor}}, 记为 $M_{ij}$.
@@ -1093,6 +1093,57 @@
 			\end{vmatrix}=0$, 则 $a+b+c=$\fillblank{\visible<7->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 范德蒙行列式\noexer}
+	\onslide<+->
+	范德蒙行列式还有另一种证明方式, 这种思路对于其它行列式的计算也有帮助.
+	\begin{proof}
+		$f=|\bfA_n|$ 是 $x_1,\dots,x_n$ 的多项式, 且次数不超过 $1+2+\cdots+(n-1)$.
+		\onslide<+->{%
+			由于当 $x_i=x_j$ 时 $f=0$, 因此 $f$ 包含因式 $x_i-x_j$, 从而
+			\[f=g\prod_{1\le i<j\le n}(x_j-x_i).\]
+		}\onslide<+->{%
+			比较两边次数可知 $g$ 是常数.
+		}\onslide<+->{%
+			注意到 $\prod_{i=1}^n x_i^{i-1}$ 只出现在范德蒙行列式对角元的乘积中, 且它在 $\prod_{1\le i<j\le n}(x_j-x_i)$ 中的系数是 $1$.
+		}\onslide<+->{%
+			因此 $g=1$.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{特殊形状行列式\noexer}
+	\beqskip{1pt}
+	\onslide<+->
+	\begin{example}
+		计算 $\displaystyle\begin{vmatrix}
+			1^{50}&2^{50}&\cdots&100^{50}\\
+			2^{50}&3^{50}&\cdots&101^{50}\\
+			\vdots&\vdots&\ddots&\vdots\\
+			100^{50}&101^{50}&\cdots&199^{50}\\
+		\end{vmatrix}$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		将第一行换成 $(x+1)^{50},\dots,(x+100)^{50}$, 并将行列式记为 $f(x)$.
+		\onslide<+->{%
+			那么 $f(1)=\cdots=f(99)=0$.
+		}\onslide<+->{%
+			注意到 $f$ 的次数不超过 $50$, 因此 $f\equiv 0$.\qedhere
+		}
+	\end{proof}
+	\onslide<+->
+	同理若 $k<n-1$, $\det((a_i+b_j)^k)_{1\le i,j\le n}=0$.
+	\onslide<+->
+	对于 $k=n-1$, 可以通过
+	\[(x+b_j)^k=x^k+\rmC_k^1 x^{k-1} b_j+\cdots+\cdots+b_j^k\]
+	将这个方阵拆分为
+	\[((a_i+b_j)^{n-1})_{ij}
+	=(a_i^{n-j})_{ij}\cdot \diag(\rmC_{n-1}^0,\rmC_{n-1}^1,\dots,\rmC_{n-1}^{n-1}) \cdot (b_j^{i-1})_{ij}.\]
+	\endgroup
 \end{frame}
 
 

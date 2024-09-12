@@ -34,12 +34,12 @@
 	\onslide<+->
 	$\iff R(\bfA)<n$.
 	\onslide<+->
-	\begin{second}{齐次线性方程组解的判定准则}
+	\begin{theorem}
 		\begin{enumerate}
 			\item $\bfA_{m\times n}\bfx={\bf0}$ 有(无穷多)非零解$\iff R(\bfA)<n$;
 			\item $\bfA_{m\times n}\bfx={\bf0}$ 只有零解$\iff R(\bfA)=n$.
 		\end{enumerate}
-	\end{second}
+	\end{theorem}
 	\onslide<+->
 	\begin{corollary}
 		设 $\bfA$ 是 $n$ 阶方阵.
@@ -117,11 +117,11 @@
 \begin{frame}{基础解系}
 \beqskip{0pt}
 	\onslide<+->
-	\begin{definition}[基础解系]
+	\begin{definition}
 		称空间 $\{\bfx\mid \bfA\bfx={\bf0}\}$ 的一组基为该齐次线性方程组的\emph{基础解系}.
 	\end{definition}
 	\onslide<+->
-	\begin{second}{齐次线性方程组解的结构}
+	\begin{second}{齐次线性方程组的解}
 		设 $\bfA\in M_{m\times n}, R(\bfA)=r$.
 		线性方程组 $\bfA\bfx={\bf0}$ 的基础解系包含 $n-r$ 个向量.
 	\end{second}
@@ -421,9 +421,9 @@
 	从而 $\bfb$ 是 $S$ 的线性组合, 也是 $\bfA$ 列向量的线性组合.
 
 	\onslide<+->
-	\begin{second}{非齐次线性方程组解的存在性判定准则}
+	\begin{theorem}
 		$\bfA \bfx=\bfb$ 有解 $\iff R(\bfA)=R(\bfA,\bfb)$.
-	\end{second}
+	\end{theorem}
 	\onslide<+->
 	\begin{corollary}
 		若 $R(\bfA_{m\times n})=m$ (即 $\bfA$ 行满秩), 则 $\bfA \bfx=\bfb$ 总有解.
