@@ -92,15 +92,16 @@
 
 \begin{frame}{课程学习方法}
 	\begin{center}
-		\begin{tikzpicture}[node distance=25pt]
-			\node[cstnode2,align=center] (1) at (0,2)  {\emph{课前}\\预习课本};
-			\node[cstnode2,align=center] (2) at (3,0)  {\emph{课上}\\认真听课\\记好笔记};
-			\node[cstnode2,align=center] (3) at (0,-2) {\emph{课后}\\过一遍教材\\与课上知识点};
-			\node[cstnode2,align=center] (4) at (-3,0) {\emph{作业}\\检测学\\习效果};
-			\draw[cstnra,third] (1.east) to[bend left] (2.north);
-			\draw[cstnra,third] (2.south) to[bend left] (3.east);
-			\draw[cstnra,third] (3.west) to[bend left] (4.south);
-			\draw[cstnra,third] (4.north) to[bend left] (1.west);
+		\begin{tikzpicture}[node distance=25pt,text width=26mm]
+			\node[cstnode2,align=center] (0) {\alert{核心}\\理解抽象概念\\掌握计算方法};
+			\node[cstnode4,align=center] (1) [above=of 0]{\alert{课前}\\预习课本};
+			\node[cstnode4,align=center] (2) [right=of 0] {\alert{课上}\\认真听课\\记好笔记};
+			\node[cstnode4,align=center] (3) [below=of 0] {\alert{课后}\\过一遍教材\\与课上知识点};
+			\node[cstnode4,align=center] (4) [left=of 0] {\alert{作业}\\检测学\\习效果};
+			\draw[cstnra,main] (1.east) to[bend left] (2.north);
+			\draw[cstnra,main] (2.south) to[bend left] (3.east);
+			\draw[cstnra,main] (3.west) to[bend left] (4.south);
+			\draw[cstnra,main] (4.north) to[bend left] (1.west);
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

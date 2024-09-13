@@ -9,31 +9,33 @@
 	\end{second}
 	\onslide<+->
 	\begin{proof}
-		\begin{tikzpicture}[overlay]\begin{tikzpicture}[xshift=-90mm,yshift=28mm]
-			\coordinate (A) at (1,0);
-			\coordinate (B) at (0,0);
-			\coordinate (C) at (1,{sqrt 3});
-			\draw[second,thick] (A)--(B)--(C) pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
-			\draw[cstcurve,main] (A)--(B)--(C)--cycle (A)--(0.5,{0.5*sqrt 3})--cycle;
-			\draw[cstcurve,second] (B) circle (1);
-			\draw
-				(1.2,0) node {$A$}
-				(-0.2,-0.2) node {$O$}
-				(0.45,1.2) node {$B$}
-				(1.2,1.73) node {$C$}
-				(0.5,-0.2) node {$1$};
-		\end{tikzpicture}\end{tikzpicture}
-
-		\vspace{-35mm}
-		作半径为 $1$ 的圆, 如图所示.
-		\onslide<+->{由
-		\begin{center}
-			$\triangle OAB$ 的面积 $<$ 扇形 $OAB$ 的面积 $<$ 直角 $\triangle OAC$ 的面积
-		\end{center}
-		}\onslide<+->{可知
-		\[\half\sin x<\half x<\half \tan x.\]
-		}\onslide<+->{从而命题得证.\qedhere}
-		\vspace{12mm}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\coordinate (A) at (1,0);
+				\coordinate (B) at (0,0);
+				\coordinate (C) at (1,{sqrt 3});
+				\draw[second,thick] (A)--(B)--(C) pic [draw, "$x$",angle eccentricity=2,angle radius=2mm] {angle};
+				\draw[cstcurve,main] (A)--(B)--(C)--cycle (A)--(0.5,{0.5*sqrt 3})--cycle;
+				\draw[cstcurve,second] (B) circle (1);
+				\draw
+					(1.2,0) node {$A$}
+					(-0.2,-0.2) node {$O$}
+					(0.45,1.2) node {$B$}
+					(1.2,1.73) node {$C$}
+					(0.5,-0.2) node {$1$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.72\textwidth}
+			作半径为 $1$ 的圆, 如图所示.
+			\onslide<+->{由
+			\begin{center}
+				$\triangle OAB$ 的面积 $<$ 扇形 $OAB$ 的面积 $<$ 直角 $\triangle OAC$ 的面积
+			\end{center}
+			}\onslide<+->{可知
+			\[\half\sin x<\half x<\half \tan x.\]
+			}\onslide<+->{从而命题得证.\qedhere}
+		\end{minipage}
 	\end{proof}
 \end{frame}
 
@@ -70,30 +72,27 @@
 	\end{second}
 	\onslide<+->
 	其中不等式的左侧被称为\emph{几何平均数}, 右侧被称为\emph{算术平均数}.
-\end{frame}
-
-
-\begin{frame}{均值不等式}
 	\onslide<+->
 	\begin{proof*}
-		我们用数学归纳法来证明.
-		\onslide<+->{$n=1$ 时显然成立.
-		}\onslide<+->{假设对于 $n-1\ge1$ 个数成立. 我们不妨设 $a_n\ge a_i, 1\le i\le n$.
+		设 $b_i={a_i}/{\sqrt[n]{a_1\cdots a_n}}$, 则 $b_1b_2\cdots b_n=1$ 且我们只需证明 $b_1+b_2+\cdots+b_n\ge n$.
+
+		\onslide<+->{%
+			利用数学归纳法. $n=1$ 时显然成立.
+		}\onslide<+->{%
+			假设对于 $n-1\ge1$ 个数成立, 且等号成立当且仅当 $b_i$ 均为 $1$.
+		}\onslide<+->{%
+			我们不妨设 $b_1\ge b_2\ge\cdots\ge b_n$.
+		}\onslide<+->{%
+			对 $b_1b_n,b_2,\dots,b_{n-1}$ 应用归纳假设, 则
+			$b_1b_n+b_2+\cdots+b_{n-1}\ge n-1$.
+		}\onslide<+->{%
+			注意到 $b_1\ge 1\ge b_n$, 因此
+			\[0\ge (b_1-1)(1-b_n)=b_1+b_n-1-b_1b_n.\]
+		}\onslide<+->{%
+			故 $b_1+\cdots+b_{n-1}\ge n$.
+		}\onslide<+->{%
+			不难看出等式成立当且仅当 $b_i$ 全为 $1$.\qedhere
 		}
-	
-		\onslide<+->{令 $x=\dfrac{a_1+\cdots+a_{n-1}}{n-1}$, 则由归纳假设 $x^{n-1}\ge a_1\cdots a_{n-1}$.
-		}\onslide<+->{由于 $a_n\ge x$, 故
-		\begin{align*}
-			\left(\frac{a_1+a_2+\cdots+a_n}n\right)^n
-			&=\left(\frac{(n-1)x+a_n}n\right)^n
-			 =\left(x+\frac{a_n-x}n\right)^n\\
-			&\ge x^n+\rmC_n^1 x^{n-1}\left(\frac{a_n-x}n\right)
-			 =x^{n-1}a_n\\
-			&\ge a_1\cdots a_{n-1}a_n.
-		\end{align*}
-		}\onslide<+->{从而命题对 $n$ 成立.
-		}\onslide<+->{等式成立当且仅当 $a_n=x=\sqrt[n-1]{a_1\cdots a_{n-1}}$.
-		}\onslide<+->{由归纳假设可知此时所有 $a_i$ 均相等.\qedhere}
 	\end{proof*}
 \end{frame}
 
