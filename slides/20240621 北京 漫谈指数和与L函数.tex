@@ -1,55 +1,21 @@
 \documentclass[aspectratio=169,handout]{ctexbeamer}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{bm}
-\usepackage{extarrows}
-\usepackage{mathrsfs}
-\usepackage{stmaryrd}
-\usepackage[all]{xy}
-\RequirePackage[T1]{fontenc} % 纯英文去掉此行
-\setCJKsansfont[ItalicFont={KaiTi},BoldFont={SimHei}]{Microsoft YaHei} % 纯英文去掉此行
-\usetheme{reed}
-\renewcommand\emph[1]{{\color{structure.fg!50!blue}{#1}}}
-\setlength{\parindent}{1.5em}
-\renewcommand{\indent}{\hspace*{1.5em}}
-\setbeamerfont{title}{size=\Large}
-\setbeamerfont{frametitle}{size=\Large}
-
-\AtBeginSection{
-	\setbeamertemplate{subsection in footline}[normal]
-	{
-		\setnaviboxsection
-		\frame[c]{\sectionpage}
-	}
-}
+\input{../latex/cn_talk}
 \title{漫谈指数和与 $L$ 函数}
-\author{张神星 (合肥工业大学)}
-\institute{首都师范大学}
+\office{首都师范大学}
+\logo{cnu}
 \date{2024年6月21日}
-\email{zhangshenxing@hfut.edu.cn}
-\titlegraphic{misc/cnu.jpg}
-\institutegraphic{misc/cnuname.png}
-% 自定义主题配色
-\definecolor{themecolor}{RGB}{28,73,136}
-\setbeamercolor{theme}{fg=themecolor}
-\setbeamersize{text margin left=1em,text margin right=1em}
 
-\input{symbols}
 \newcommand\ldb{\llbracket}
 \newcommand\rdb{\rrbracket}
 \newcommand\bchi{{\boldsymbol\chi}}
 \newcommand\brho{{\boldsymbol\rho}}
 
-
 \begin{document}
 
-{
-	\setnaviboxempty
-	\begin{frame}{提纲}
-		\tableofcontents
-	\end{frame}
-}
+\frameoutline
 
 \section{指数和与 $L$ 函数的特征根}
+
 \begin{frame}{指数和与 $L$ 函数}
 设 $p$ 是素数, $\BF_q$ 是含有 $q=p^a$ 个元素的有限域.
 设 $\psi:\BF_p\to \BQ(\zeta_p)^\times$ 是一非平凡加性特征,
@@ -665,21 +631,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 \end{frame}
 
 
+\framethanks
 
-
-
-
-
-
-
-{
-	\setnaviboxempty
-	\begin{frame}
-		\begin{center}
-			\huge \textbf{谢~谢!}
-		\end{center}
-	\end{frame}
-}
 \end{document}
-
-

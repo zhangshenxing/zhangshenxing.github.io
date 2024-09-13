@@ -1,9 +1,10 @@
 \mode<presentation>
+\newif\ifshowprefix\showprefixtrue
+\setbeamersize{text margin left=2em,text margin right=2em}
 % Colors
 \setbeamercolor{structure}{fg=main,bg=white}
 \setbeamercolor{alerted text}{fg=second,bg=white}
 \setbeamercolor{example text}{fg=fourth,bg=white}
-
 \setbeamercolor{title}{use=structure,fg=structure.fg}
 \setbeamercolor{item}{fg=main,bg=white}
 \setbeamercolor{email}{use=structure,fg=structure.fg}
@@ -11,12 +12,11 @@
 \setbeamercolor{part in head/foot}{parent=structure}
 \setbeamercolor{section in head/foot}{parent=structure}
 \setbeamercolor{subsection in head/foot}{parent=structure}
+\setbeamercolor{date in head/foot}{parent=structure}
 \setbeamercolor{seperate line}{use=structure,bg=structure}
 \setbeamercolor{subsection in toc}{use=structure,fg=black,bg=structure!20}
 \setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
 \setbeamercolor{footline}{use=structure,bg=structure.fg!10}
-% Margin
-\setbeamersize{text margin left=1.5em,text margin right=1.5em}
 % Items
 \useinnertheme{circles}
 \setbeamertemplate{enumerate item}{(\insertenumlabel)}
@@ -43,7 +43,6 @@
 \setbeamerfont{email}{size=\normalsize,family=\ttfamily}
 \setbeamerfont{title seperator}{parent=author}
 % Title Page
-\newcommand\institutegraphic[1]{\def\insertinstitutegraphic{#1}}\institutegraphic{}
 \newcommand\office[1]{\def\insertoffice{#1}}\office{}
 \newcommand\email[1]{\def\insertemail{#1}}\email{}
 \newcommand\website[1]{\def\insertwebsite{#1}}\website{}
@@ -76,20 +75,26 @@
 	}%
 	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
-		{\usebeamerfont{institute}\translate{Office}}%
-		{\usebeamertemplate{title seperator}}%
+		\ifshowprefix%
+			{\usebeamerfont{institute}\translate{Office}}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
 		{\usebeamerfont{institute}\insertoffice}%
 	}\fi%
 	\ifx\insertemail\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
-		{\usebeamerfont{email}Email}%
-		{\usebeamertemplate{title seperator}}%
+		\ifshowprefix%
+			{\usebeamerfont{email}Email}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
 		{\usebeamercolor[fg]{email}\usebeamerfont{email}\href{mailto:\insertemail}{\insertemail}}%
 	}\fi%
 	\ifx\insertwebsite\@empty\else\vskip0.25em\par\hskip0em{%
 		\usebeamercolor[fg]{institute}%
-		{\usebeamerfont{institute}\translate{Website}}%
-		{\usebeamertemplate{title seperator}}%
+		\ifshowprefix%
+			{\usebeamerfont{institute}\translate{Website}}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
 		{\usebeamercolor[fg]{email}\usebeamerfont{email}\url{\insertwebsite}}%
 	}\fi\vfill%
 }
@@ -111,12 +116,10 @@
 \setbeamertemplate{navigation symbols}{}
 % Part Page
 \setbeamertemplate{part page}{
-	% \begingroup
-		\begin{tcolorbox}[parttitle,title=第\zhnumber{\thepart}章\hspace{1em}\insertpart]
-			\tableofcontents[sectionstyle=show,subsectionstyle=hide]
-		\end{tcolorbox}
-		\vspace{-\baselineskip}
-	% \endgroup
+	\begin{tcolorbox}[parttitle,title=第\zhnumber{\thepart}章\hspace{1em}\insertpart]
+		\tableofcontents[sectionstyle=show,subsectionstyle=hide]
+	\end{tcolorbox}
+	\vspace{-\baselineskip}
 }
 \AtBeginPart{
 	\setbeamertemplate{subsection in footline}[no number]
@@ -271,7 +274,13 @@
 				\kern2pt\usebeamertemplate{head/foot seperator}%
 				\usebeamertemplate{subsection in footline}
 			}\fi%
-			\hfill\par
+			\hfill%
+			% {%
+			% 	\usebeamercolor[fg]{date in head/foot}%
+			% 	\usebeamerfont{date in head/foot}%
+			% 	\insertshortdate%
+			% }%
+			\par%
 			\let\sectionentry=\my@sectionentry@hide
 			\let\slideentry=\my@slideentry@section
 			\dohead
@@ -486,16 +495,4 @@
 \providetranslation[to=ChineseUTF8]{Analysis}{分析}
 \providetranslation[to=ChineseUTF8]{Office}{办公室}
 \providetranslation[to=ChineseUTF8]{Website}{课件地址}
-\RequirePackage[T1]{fontenc}
-\setCJKsansfont[ItalicFont={KaiTi},BoldFont={LXGW ZhenKai}]{Source Han Sans HW SC}
 \setlength{\parskip}{6pt plus 6pt minus 6pt}
-
-% 标题
-\author{张神星}
-\institute{合肥工业大学}
-\email{zhangshenxing@hfut.edu.cn}
-\website{https://zhangshenxing.github.io}
-\office{翡翠科教楼B1810东}
-\titlegraphic{../../../image/logo/hfut.png}
-\institutegraphic{../../../image/logo/hfutname.png}
-\setbeamersize{text margin left=2em,text margin right=2em}
