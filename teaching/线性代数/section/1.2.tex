@@ -75,19 +75,25 @@
 	\end{center}
 
 	\onslide<+->
-	一张图片由一些像素构成, 上图包含 $512\times341$ 个像素.
+	一张图片由一些像素构成, 上图包含 $341\times512$ 个像素.
 	\onslide<+->
-	在 RGB 颜色模式下, 每个像素包含红绿蓝三个通道, 每个通道为一个 $0\sim255$ 之间的整数, 数值越高对应颜色越亮.
+	在 \cnen{\color{red}{R}}{红}\cnen{\color{green}{G}}{绿}\cnen{\color{blue}{B}}{蓝} 颜色模式下, 每个像素包含红绿蓝三个通道, 每个通道为一个 $0\sim255$ 之间的整数, 数值越高对应颜色越亮.
 	\onslide<+->
-	若三个通道相同, 图片就是一张灰色的图(无色彩).
-	此时图片对应一个 $512\times 341$ 的矩阵 $\bfA$.
-
+	例如
+	\begin{itemize}
+		\item \textcolor{red}{$R=0$}, \textcolor{green}{$G=0$}, \textcolor{blue}{$B=0$} 表示纯黑色;
+		\item \textcolor{red}{$R=255$}, \textcolor{green}{$G=255$}, \textcolor{blue}{$B=255$} 表示\colorbox[gray]{0.5}{\textcolor{white}{纯白色}};
+		\item \textcolor{red}{$R=0$}, \textcolor{green}{$G=255$}, \textcolor{blue}{$B=255$} 表示\textcolor{-red}{纯青色}.
+	\end{itemize}
 	\onslide<+->
-	想一想: 如何将这个图像变亮?
+	若三个通道相同, 图片就是一张灰色的图.
+	此时图片对应一个 $341\times512$ 的矩阵 $\bfA$.
 \end{frame}
 
 
 \begin{frame}{矩阵线性运算的应用: 图像处理\noexer}
+	\onslide<+->
+	想一想: 如何将这个图像变亮?
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -99,7 +105,7 @@
 	\end{center}
 
 	\onslide<+->
-	我们只需要增加每个元素的值, 例如
+	我们只需要增加每个元素的值, 例如(超过 $255$ 的需要修正为 $255$)
 	\[\bfA+\begin{pmatrix}
 		50&50&\cdots&50\\
 		50&50&\cdots&50\\

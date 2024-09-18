@@ -1,162 +1,11 @@
-\documentclass[12pt,handout]{ctexbeamer}
-\mode<presentation>
-
-\setbeamercolor*{palette primary}{use=structure,fg=black,bg=structure.fg!40!white}
-\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!60!white}
-\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg}
-\setbeamercolor*{palette quaternary}{fg=white,bg=black}
-
-\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg}
-\setbeamercolor{block title alerted}{use=alerted text,fg=alerted text.fg,bg=alerted text.fg!20!bg}
-\setbeamercolor{block title example}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
-
-\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
-\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!50!bg}
-\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
-
-\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
-
-\setbeamercolor*{chapter in head/foot}{parent=palette quaternary}
-\setbeamercolor*{course in head/foot}{parent=palette tertiary}
-\setbeamercolor*{section in head/foot}{parent=palette quaternary}
-
-\setbeamercolor*{section in head/foot}{parent=palette tertiary}
-\setbeamercolor*{subsection in head/foot}{parent=palette primary}
-
-\setbeamercolor*{titlelike}{parent=palette tertiary}
-
-\setbeamercolor*{separation line}{}
-\setbeamercolor*{fine separation line}{}
-
-% Part page
-
-\defbeamertemplate{part page}{hfut}
-{
-  \begingroup
-    \begin{beamercolorbox}[sep=10pt,colsep=-4bp,rounded=true,shadow=true,center]{part title}
-      \large 第\chinese{part}章\hspace{1em}\insertpart\par
-    \end{beamercolorbox}
-  \endgroup
-}
-\setbeamertemplate{part page}[hfut]
-
-% Frame title
-
-\makeatletter
-\setbeamertemplate{frametitle}{%
-  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
-  \@tempdima=\textwidth%
-  \advance\@tempdima by\beamer@leftmargin%
-  \advance\@tempdima by\beamer@rightmargin%
-  \hfill%
-  \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
-    \usebeamerfont{frametitle}%
-    \vbox{}\vskip-1ex%
-    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
-    \hspace{2ex}\strut\insertframetitle\strut\par%
-    {%
-      \ifx\insertframesubtitle\@empty%
-      \else%
-      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\strut\insertframesubtitle\strut\par}%
-      \fi
-    }%
-    \vskip-1ex%
-    \if@tempswa\else\vskip-.3cm\fi
-  \end{beamercolorbox}%
-}
-\makeatother
-
-% set sub-items normal size
-
-\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
-\setbeamertemplate{itemize/enumerate subsubbody begin}{\normalsize}
-\setbeamerfont{frametitle}{size=\normalsize}
-\setbeamerfont{block title}{size=\normalsize}
-
-\setbeamertemplate{blocks}[rounded][shadow=true]
-\setbeamertemplate{items}[circle]
-\setbeamertemplate{sections/subsections in toc}[circle]
-\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
-\setbeamertemplate{subsection page}[default][colsep=-4bp,rounded=true,shadow=true]
-
-\setbeamersize{text margin left=1em,text margin right=1em}
-
-\mode<presentation>
-
-\setbeamertemplate{page number in head/foot}[totalframenumber]%
-
-\defbeamertemplate*{footline}{hfut theme}
-{%
-  \leavevmode%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{chapter in head/foot}%
-    \ifnum \thepart>0
-      \usebeamerfont{title in head/foot}{第\zhnumber{\thepart}章\hspace{1em}\insertshortpart}
-    \else
-      \usebeamerfont{author in head/foot}{\insertshortauthor}
-    \fi
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{course in head/foot}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{title in head/foot}%
-    \ifnum \thesection>0
-      \hfill%
-      \usebeamerfont{section in head/foot}{\thepart.\thesection~\insertsection{}}
-      \hfill%
-      \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
-    \else
-      \ifnum \thepart>0
-        \hfill%
-        \usebeamerfont{institute in head/foot}{\insertshortinstitute}
-        \hfill%
-        \usebeamercolor[fg]{page number in head/foot}\usebeamerfont{page number in head/foot}\usebeamertemplate{page number in head/foot}      
-      \else
-        \centering \usebeamerfont{author in head/foot}{\insertshortinstitute}
-      \fi
-    \fi
-  \end{beamercolorbox}}%
-  \vskip0pt%
-}
-
-\setbeamersize{text margin left=1em,text margin right=1em}
-\setbeamertemplate{navigation symbols}{} % 去掉导航栏
-
-% set to default serif font and character space
-
-\usefonttheme[onlymath]{serif}
-\RequirePackage{lmodern}
-\RequirePackage[T1]{fontenc}
-
-\mode<all>
-
-\beamerdefaultoverlayspecification{<+->}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{bm}
-\usepackage{extarrows}
-\usepackage{mathrsfs}
-\usepackage{stmaryrd}
-
-\input{../symbols}
-\renewcommand\le{\leqslant}
-\renewcommand\ge{\geqslant}
-\colorlet{alertcolor}{red!85!black}
-\colorlet{defcolor}{violet}
-\colorlet{notecolor}{blue}
-\newcommand\markdef[1]{{\color{defcolor}{#1}}}
-\newcommand\markatt[1]{{\color{alertcolor}{#1}}}
-\newcommand\marknot[1]{{\color{notecolor}{#1}}}
-\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}} %放在导言区
-
-\begin{document}
+\documentclass[aspectratio=169,handout]{ctexbeamer}
+\input{../latex/cn_talk}
 \title{不同椭圆曲线的二次扭之比较}
 \author{张神星}
-\institute{合肥工业大学}
-\date{\markatt{南京大学~金陵数论与代数几何会议}\\2022年9月25日}
+\invitedby[nju]{南京大学~金陵数论与代数几何会议}
+\date{2022年9月25日}
 
-\begin{frame}
-\titlepage
-\end{frame}
+\begin{document}
 
 
 \begin{frame}{背景}
@@ -229,8 +78,8 @@
 \item 如果下述三种情形之一成立:
 	\begin{itemize}
 	\item $n$ 的素因子都模 $8$ 余 $1$, 且 $E_i^{(n)}$ 没有 $4$ 阶有理点;
-	\item $a_i,b_i$ 是奇数且 $2\mmid c_i$; \marknot{(例如 $y^2=x(x-1)(x+1)$)}
-	\item $2\mmid a_i,b_i,4\mid c_i$, 且 $E_i^{(n)}$ 没有 $4$ 阶有理点, \marknot{(例如 $y^2=x(x-2)(x+2)$)}
+	\item $a_i,b_i$ 是奇数且 $2\mmid c_i$; \emph{(例如 $y^2=x(x-1)(x+1)$)}
+	\item $2\mmid a_i,b_i,4\mid c_i$, 且 $E_i^{(n)}$ 没有 $4$ 阶有理点, \emph{(例如 $y^2=x(x-2)(x+2)$)}
 	\end{itemize}
 \item 则 $\Sel_2\bigl(E_1^{(n)}/\BQ\bigr)\cong \Sel_2\bigl(E_2^{(n)}/\BQ\bigr)$, 
 \onslide<+->
@@ -337,23 +186,23 @@ d_3=p_1^{z_1}\cdots p_k^{z_k}\cdot \wt d_3,\quad &z_i=v_{p_i}(d_3),
 \item 假设 $n$ 素因子均模 $8$ 余 $1$.
 \item 设 $\wt\Lambda=(\wt d_1,\wt d_2,\wt d_3)$.
 我们对比 $D_\Lambda^{(n)}(\BQ_p)$ 和 $D_{\wt\Lambda}^{(1)}(\BQ_p)$ 的可解性.
-\item \markatt{$\bm{p=\infty}$}. 由 $d_i$ 和 $\wt d_i$ 符号相同可知二者可解性相同.
-\item \markatt{$\bm{p\mid abc}$}. 由 $n,d_i/\wt d_i\in\BQ_p^{\times2}$ 可知二者可解性相同.
+\item \alert{$\bm{p=\infty}$}. 由 $d_i$ 和 $\wt d_i$ 符号相同可知二者可解性相同.
+\item \alert{$\bm{p\mid abc}$}. 由 $n,d_i/\wt d_i\in\BQ_p^{\times2}$ 可知二者可解性相同.
 \item 如果 $\Lambda\in\Sel_2\bigl(E^{(n)}\bigr)$, 则 $\wt\Lambda\in \Sel_2(E)=E[2]$.
 \item 如果 $\wt\Lambda=(-c,-ac,a)$, 则
 \[\Lambda\cdot(-cn,-ac,an)=\Bigl(\prod_{i=1}^k p_i^{1-x_i},\prod_{i=1}^k p_i^{y_i},\prod_{i=1}^k p_i^{1-z_i}\Bigr).\]
 其它情形也类似.
 \onslide<+-> 
 因此
-\[\markatt{\Sel_2'\bigl(E^{(n)}\bigr)=\Sel_2\bigl(E^{(n)}\bigr)/E[2]}\]
-\markatt{中每个元素都有唯一代表元 $(d_1,d_2,d_3)$ 满足 $0<d_i\mid n$}.
+\[\alert{\Sel_2'\bigl(E^{(n)}\bigr)=\Sel_2\bigl(E^{(n)}\bigr)/E[2]}\]
+\alert{中每个元素都有唯一代表元 $(d_1,d_2,d_3)$ 满足 $0<d_i\mid n$}.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}{计算 Selmer 群: 得到 $\Sel_2'\bigl(E_i^{(n)}\bigr)$}
 \begin{itemize}
-\item \markatt{$\bm{p\mid n}$}.
+\item \alert{$\bm{p\mid n}$}.
 \onslide<+-> 
 由于 $a_1/a_2,b_1/b_2,c_1/c_2\in \BQ^{\times2}$, 因此 $\Lambda=(d_1,d_2,d_3)$ 对应的 $E_1,E_2$ 的齐性空间在 $\BQ_p$ 的可解性相同.
 \onslide<+-> 
@@ -364,7 +213,9 @@ d_3=p_1^{z_1}\cdots p_k^{z_k}\cdot \wt d_3,\quad &z_i=v_{p_i}(d_3),
 \Sel_2'\bigl(E^{(n)}\bigr)&\simto \Ker\begin{pmatrix}
 \bfA+\bfD_{-c}&\bfD_{-bc}\\\bfD_{-ac}&\bfA+\bfD_c
 \end{pmatrix}\\
-(d_1,d_2,d_3)&\mapsto \svec{\bfx}{\bfy},\end{split}\]
+(d_1,d_2,d_3)&\mapsto \begin{pmatrix}
+  \bfx\\\bfy
+\end{pmatrix},\end{split}\]
 \item 这个矩阵便是 Monsky 矩阵, 其中
 \[\bfA=\bigl([p_j,-n]_{p_i}\bigr)_{i,j},\qquad
 \bfD_u=\diag\left(\aleg{u}{p_1},\dots,\aleg{u}{p_k}\right)\in M_k(\BF_2),\]
@@ -397,8 +248,8 @@ d_3=p_1^{z_1}\cdots p_k^{z_k}\cdot \wt d_3,\quad &z_i=v_{p_i}(d_3),
 \item 得到长正合列
 \[0\ra \frac{E(\BQ)[2]}{2E(\BQ)[4]}\to\Sel_2(E)\to\Sel_4(E)\to\Im\Sel_4(E)\to 0.\]
 \item 注意到 Cassels 配对的核是 $\dfrac{\Im\Sel_4(E)}{E[2]}$.
-\item 因此 \markatt{Cassels 配对非退化等价于}
-\[\markatt{\rank_\BZ E(\BQ)=0,\quad \Sha(E/\BQ)[2^\infty]\cong(\BZ/2\BZ)^{2t}.}\]
+\item 因此 \alert{Cassels 配对非退化等价于}
+\[\alert{\rank_\BZ E(\BQ)=0,\quad \Sha(E/\BQ)[2^\infty]\cong(\BZ/2\BZ)^{2t}.}\]
 \end{itemize}
 \end{frame}
 
@@ -411,7 +262,7 @@ d_3=p_1^{z_1}\cdots p_k^{z_k}\cdot \wt d_3,\quad &z_i=v_{p_i}(d_3),
 其中 $A,B,C$ 是互素的非零奇数.
 \item 设 $\Lambda=(d_1,d_2,d_3),\Lambda'=(d_1',d_2',d_3')$.
 \item 若能选取适当的 $Q_{i,j}$ 和 $P_{i,v}$, 使得
-\[\markatt{[L_{1,i}(P_{1,v}),d_i']_v}=\marknot{[L_{2,i}(P_{2,v}),d_i']_v},\]
+\[\alert{[L_{1,i}(P_{1,v}),d_i']_v}=\emph{[L_{2,i}(P_{2,v}),d_i']_v},\]
 则 $E_1,E_2$ 对应的 Cassels 配对就相同了.
 \item 在多数情形这不难证明, 我们仅说明相对复杂的一种情形.
 \item 不妨设 $A\equiv B\equiv C\equiv 1\bmod 4$.
@@ -424,15 +275,15 @@ d_3=p_1^{z_1}\cdots p_k^{z_k}\cdot \wt d_3,\quad &z_i=v_{p_i}(d_3),
 \item $\bm{p\mid n,p\nmid d_1,p\mid d_2,p\mid d_3}$.
 \onslide<+-> 
 设
-\[\markatt{Q_{1,1}=(\alpha,\beta,\gamma)\in H_{1,1}(\BQ)},\quad
-\marknot{Q_{2,1}=(\alpha,A\beta,A\gamma)\in H_{2,1}(\BQ)}.\]
-\[\markatt{P_{1,p}=(1,0,u,v),\quad
+\[\alert{Q_{1,1}=(\alpha,\beta,\gamma)\in H_{1,1}(\BQ)},\quad
+\emph{Q_{2,1}=(\alpha,A\beta,A\gamma)\in H_{2,1}(\BQ)}.\]
+\[\alert{P_{1,p}=(1,0,u,v),\quad
 L_{1,1}(P_{1,p})=a_1n\alpha-d_3\gamma v+d_2\beta u,}\]
-\[\marknot{P_{2,p}=(1,0,Cu,Bv),\quad
+\[\emph{P_{2,p}=(1,0,Cu,Bv),\quad
 L_{2,1}(P_{2,p})=Aa_1n\alpha-Bd_3\gamma v+Cd_2\beta u,}\]
 \end{itemize}
 \onslide<+-> 
-\[\markatt{L_{1,1}(P_{1,p})}\marknot{L_{2,1}(P_{2,p})}=\tfrac{(A+B)(B+C)(C+A)}2\left(\frac{a_1n\alpha}{b+c}+\frac{d_2\beta u}{a+b}-\frac{d_3\gamma v}{a+c}\right)^2.\]
+\[\alert{L_{1,1}(P_{1,p})}\emph{L_{2,1}(P_{2,p})}=\tfrac{(A+B)(B+C)(C+A)}2\left(\frac{a_1n\alpha}{b+c}+\frac{d_2\beta u}{a+b}-\frac{d_3\gamma v}{a+c}\right)^2.\]
 \begin{itemize}
 \item 这里需要用到 $a_1A^2+b_1B^2+c_1C^2=0$.
 \end{itemize}
@@ -462,12 +313,7 @@ L_{2,1}(P_{2,p})=Aa_1n\alpha-Bd_3\gamma v+Cd_2\beta u,}\]
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}
-\begin{center}
-\huge 感谢各位的倾听!
-\end{center}
-\end{frame}
+\framethanks
 
 %
 %\begin{frame}{广告: 合肥工业大学人才招聘}

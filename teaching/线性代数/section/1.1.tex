@@ -95,12 +95,12 @@
 	\onslide<+->
 	若 $W$ 是 $V$ 的一个子集, 且
 	\begin{enumerate}
-		\item ${\bf0}\in V$;
-		\item $\bma,\bmb\in V\implies \bma+\bmb\in V$;
-		\item $\bma\in V\implies \lambda\bma\in V, \forall\lambda\in\BR$,
+		\item ${\bf0}\in W$;
+		\item $\forall\bma,\bmb\in W\implies \bma+\bmb\in W$;
+		\item $\forall\lambda\in\BR,\forall\bma\in W\implies \lambda\bma\in W$,
 	\end{enumerate}
 	\onslide<+->
-	则 $W$ 以及它继承自 $V$ 的这些要素构成线性空间, 称之为 $V$ 的\emph{子空间}.
+	则 $W$ (和继承自 $V$ 的加法和数乘)构成线性空间, 称之为 $V$ 的\emph{子空间}.
 
 	\onslide<+->
 	将线性空间 $\BR^n$ 或 $\BC^n$ 的子空间称为实/复\emph{向量空间}.
@@ -131,7 +131,7 @@
 	若把 $x_1,\dots,x_n$ 看作自变量, $y_1,\dots,y_m$ 看作因变量, 则上述关系给出了一个映射:
 	\[f:\BR^n\lra\BR^m.\]
 	\onslide<+->
-	不难看出, 这个映射满足
+	不难验证这个映射满足
 	\begin{enumerate}
 		\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in \BR^n$;
 		\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in \BR^n$.
@@ -200,9 +200,9 @@
 	\onslide<+->
 	根据线性变换的性质,
 	\begin{align*}
-		&f\begin{pmatrix}
+		&f\left(\begin{pmatrix}
 			x_1\\x_2\\\vdots\\x_n
-		\end{pmatrix}
+		\end{pmatrix}\right)
 		=f\left(x_1\begin{pmatrix}
 			1\\0\\\vdots\\0
 		\end{pmatrix}+\dots+x_n\begin{pmatrix}
@@ -292,7 +292,7 @@
 		&&\ddots&\\
 		&&&\lambda_n\\
 	\end{pmatrix}\in M_n\]
-	分别为\emph{上三角阵}, \emph{下三角阵}和\emph{对角阵}.
+	分别为\emph{上三角阵}, \emph{下三角阵}和\emph{对角阵} (空白部分表示元素都是零).
 	\onslide<+->
 	为书写方便, 对角阵也可记作
 	\[\alert{\diag(\lambda_1,\lambda_2,\dots,\lambda_n)}.\]

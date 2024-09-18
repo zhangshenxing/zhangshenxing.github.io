@@ -1,14 +1,14 @@
 \usepackage{../latex/bamboo}
 \input{../latex/settings}
 \input{../latex/symbols}
-\renewcommand\logo[1]{
+\newcommand\invitedby[2][hfut]{
+	\def\insertoffice{#2}
 	\def\inserttitlegraphic{../image/logo/#1.png}
 	\def\insertinstitutegraphic{../image/logo/#1name.png}
 }
 \email{zhangshenxing@hfut.edu.cn}
 \website{https://zhangshenxing.github.io}
-\date{}
-\logo{hfut}
+\date{\today}
 \author{张神星}
 \institute{合肥工业大学}
 \AtBeginSection{}
