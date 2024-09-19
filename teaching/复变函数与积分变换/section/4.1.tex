@@ -88,12 +88,17 @@
 
 \begin{frame}{绝对收敛和条件收敛的判定}
 	\begin{center}
-		\begin{tabular}{cccc} \toprule
-			&\alert{发散}&\alert{条件收敛}&\alert{绝对收敛}\\ \toprule
-			\emph{发散}&发散&发散&发散\\ \midrule
-			\emph{条件收敛}&发散&条件收敛&条件收敛\\ \midrule
-			\emph{绝对收敛}&发散&条件收敛&绝对收敛\\ \bottomrule
+		\renewcommand\arraystretch{1.4}
+		\begin{tabular}{cccc} 
+			&\alert{发散}&\alert{条件收敛}&\alert{绝对收敛}\\
+			\emph{发散}&发散&发散&发散\\ 
+			\emph{条件收敛}&发散&条件收敛&条件收敛\\ 
+			\emph{绝对收敛}&发散&条件收敛&绝对收敛
 		\end{tabular}
+		\begin{tikzpicture}[overlay,yshift=14.6mm,fourth]
+			\draw[cstcurve] (-7.21,-.63)--(-.12,-.63);
+			\draw[cstcurve] (-5.2,0)--(-5.2,-2.67);
+		\end{tikzpicture}
 	\end{center}
 	\begin{tikzpicture}[overlay]
 		\draw[decorate,decoration={brace,amplitude=8},thick,main] (3.6,0.6)--(3.6,2.6);

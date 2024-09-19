@@ -76,17 +76,18 @@
 	注意到 $x=\dfrac12z+\dfrac12\ov z,y=-\dfrac i2z+\dfrac i2\ov z$.
 	\onslide<+->
 	仿照着二元实函数偏导数在变量替换下的变换规则, 我们定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
-	\[\laeq{
-		\dpp fz=\dpp xz\dpp fx+\dpp yz\dpp fy
-		=\frac12\dpp fx-\frac i2\dpp fy,\\
-		\dpp f{\ov z}=\dpp x{\ov z}\dpp fx+\dpp y{\ov z}\dpp fy
-		=\frac12\dpp fx+\frac i2\dpp fy.
+	\[\laeq{\displaystyle
+		\pp fz=\pp xz\pp fx+\pp yz\pp fy
+		=\frac12\pp fx-\frac i2\pp fy,\\
+		\displaystyle
+		\pp f{\ov z}=\pp x{\ov z}\pp fx+\pp y{\ov z}\pp fy
+		=\frac12\pp fx+\frac i2\pp fy.
 	}.\]
 	\onslide<+->
 	如果把 $z,\ov z$ 看成独立变量, 那么当 $f$ 在 $z$ 处可导时,
 	$\diff f=f'\diff z$.
 	当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微),
-	\[\diff f=\dpp fz\diff z+\dpp f{\ov z}\diff\ov z.\]
+	\[\diff f=\pp fz\diff z+\pp f{\ov z}\diff\ov z.\]
 	\onslide<+->
 	所以 \alert{$f$ 在 $z$ 处可导当且仅当 $u,v$ 可微且 $\dpp f{\ov z}=0$, 此时 $f'(z)=\dpp fz$.}
 \end{frame}
@@ -125,7 +126,7 @@
 		}
 	\end{solution}
 	\onslide<+->
-	也可由 $\dfrac{\partial f}{\partial \ov z}=1\neq0$ 看出.
+	也可由 $\dpp f{\ov z}=1\neq0$ 看出.
 \end{frame}
 
 
