@@ -2,68 +2,63 @@
 
 
 \subsection{矩阵的线性运算}
-\begin{frame}{矩阵的加法}
+\begin{frame}{线性映射的加法和数乘}
 	\onslide<+->
-	给定两个线性变换 $f,g:\BC^n\ra\BC^m$,
+	给定线性变换 $f,g:\BR^n\ra\BR^m$ 和数 $\lambda\in\BR$,
 	\onslide<+->
 	定义
-	\[(f+g)(\bfx)=f(\bfx)+g(\bfx).\]
+	\[(f+g)(\bfx)=f(\bfx)+g(\bfx),\qquad (\lambda f)(\bfx)=\lambda(f(\bfx)).\]
 	\onslide<+->
-	由此得到对应的矩阵的加法:
+	对任意 $\bfx\in\BR^n$,
+	\[(f+g)(\bfx)=f(\bfx)+g(\bfx)=g(\bfx)+f(\bfx)=(g+f)(\bfx).\]
+	故 $f+g=g+f$.
+	\onslide<+->
+	同理
+	\begin{enumerate}
+		\item $(f+g)+h=f+(g+h)$;
+		\item $f+0=f$, 这里 $0$ 表示零映射: $0(\bfx)={\bf0}$;
+		\item 对任意线性映射 $f$, 存在线性映射 $g=(-1)f$ 使得 $f+g=0$;
+		\item $(\lambda \mu)f=\lambda(\mu f)=\mu(\lambda f)$;
+		\item $(\lambda+\mu)f=\lambda f+\mu f$;
+		\item $\lambda(f+g)=\lambda f+\lambda g$;
+		\item $1\cdot f=f, 0\cdot f=0,\lambda\cdot 0=0$.
+	\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{矩阵的加法和数乘}
+	\onslide<+->
+	由此得到对应的矩阵的加法和数乘:
 	\onslide<+->
 	\begin{definition}
-		设 $\bfA=(a_{ij})_{m\times n},\bfB=(b_{ij})_{m\times n}$.
+		设 $\bfA=(a_{ij})_{m\times n},\bfB=(b_{ij})_{m\times n}$, $\lambda\in\BR$.
 		定义
-		\[\bfA+\bfB=(a_{ij}+b_{ij})_{m\times n}.\]
+			\[\bfA+\bfB=(a_{ij}+b_{ij})_{m\times n},\qquad 
+			(\lambda f)(\bfx)=\lambda(f(\bfx)).\]
 	\end{definition}
 	\onslide<+->
 	只有\emph{同型矩阵}(行列数都相同的矩阵)才能相加.
+	\onslide<+->
+	列矩阵的加法和数乘就是其对应的列向量的加法和数乘.
+
+	\onslide<+->
+	自然地, 矩阵的减法为
+	\[\bfA-\bfB=(a_{ij}-b_{ij})_{m\times n}.\]
 \end{frame}
 
 
 \begin{frame}{矩阵加法的性质}
 	\onslide<+->
-	矩阵的加法满足:
+	由线性映射的相应性质可知:
 	\begin{enumerate}
 		\item $\bfA+\bfB=\bfB+\bfA$;
 		\item $(\bfA+\bfB)+\bfC=\bfA+(\bfB+\bfC)$;
 		\item $\bfA+\bfO=\bfA$;
-		\item 对于任意矩阵 $\bfA$, 存在矩阵 $\bfB$ 使得 $\bfA+\bfB=\bfO$.
-		称 $\bfB$ 为 $\bfA$ 的\emph{负矩阵}.
-	\end{enumerate}
-	\onslide<+->
-	于是矩阵的减法就是
-	\[\bfA-\bfB=\bfA+(-\bfB)=(a_{ij}-b_{ij})_{m\times n}.\]
-\end{frame}
-
-
-\begin{frame}{矩阵的数乘}
-	\onslide<+->
-	给定一个线性变换 $f:\BC^n\ra\BC^m$ 和一个数 $\lambda\in\BC$, 
-	\onslide<+->
-	定义
-	\[(\lambda f)(\bfx)=\lambda(f(\bfx)).\]
-	\onslide<+->
-	由此得到对应的矩阵的数乘:
-	\onslide<+->
-	\begin{definition}
-		数 $\lambda$ 和矩阵 $\bfA=(a_{ij})_{m\times n}$ 的\emph{数乘}定义为
-		\[\lambda\bfA=(\lambda a_{ij})_{m\times n}.\]
-	\end{definition}
-	\onslide<+->
-	列矩阵的加法和数乘就是其对应的列向量的加法和数乘.
-\end{frame}
-
-
-\begin{frame}{矩阵数乘的性质}
-	\onslide<+->
-	矩阵的数乘满足:
-	\begin{enumerate}
+		\item 对于任意矩阵 $\bfA$, 存在矩阵 $\bfB=(-1)\bfA$ 使得 $\bfA+\bfB=\bfO$. 称 $\bfB$ 为 $\bfA$ 的\emph{负矩阵}, 记作 $-\bfA$.
 		\item $(\lambda \mu)\bfA=\lambda(\mu\bfA)=\mu(\lambda\bfA)$;
 		\item $(\lambda+\mu)\bfA=\lambda\bfA+\mu\bfA$;
 		\item $\lambda(\bfA+\bfB)=\lambda\bfA+\lambda\bfB$;
-		\item $1\cdot \bfA=\bfA, 0\cdot\bfA=\bfO,\lambda\bfO=\bfO$;
-		\item $-\bfA=(-1)\cdot\bfA$.
+		\item $1\cdot \bfA=\bfA, 0\cdot\bfA=\bfO,\lambda\bfO=\bfO$.
 	\end{enumerate}
 \end{frame}
 
@@ -83,7 +78,7 @@
 	\begin{itemize}
 		\item \textcolor{red}{$R=0$}, \textcolor{green}{$G=0$}, \textcolor{blue}{$B=0$} 表示纯黑色;
 		\item \textcolor{red}{$R=255$}, \textcolor{green}{$G=255$}, \textcolor{blue}{$B=255$} 表示\colorbox[gray]{0.5}{\textcolor{white}{纯白色}};
-		\item \textcolor{red}{$R=0$}, \textcolor{green}{$G=255$}, \textcolor{blue}{$B=255$} 表示\textcolor{-red}{纯青色}.
+		\item \textcolor{red}{$R=255$}, \textcolor{green}{$G=0$}, \textcolor{blue}{$B=255$} 表示\textcolor{-green}{纯紫色}.
 	\end{itemize}
 	\onslide<+->
 	若三个通道相同, 图片就是一张灰色的图.
@@ -148,15 +143,15 @@
 \begin{frame}{线性变换的复合}
 	\onslide<+->
 	设线性映射
-	\[f:\BC^n\to\BC^m,\quad
-	g:\BC^p\to \BC^n,\quad 
-	h=f\circ g:\BC^p\to\BC^m\]
+	\[f:\BR^n\to\BR^m,\quad
+	g:\BR^p\to \BR^n,\quad 
+	h=f\circ g:\BR^p\to\BR^m\]
 	对应的矩阵为 $\bfA=(a_{ij})_{m\times n}, \bfB=(b_{ij})_{n\times p},\bfC=(c_{ij})_{m\times p}$.
 	\onslide<+->
 	如何用 $\bfA,\bfB$ 来表示 $\bfC$ 呢?
 
 	\onslide<+->
-	设 $\bfx=(x_1,\dots,x_p)^\rmT\in \BC^p$, 则
+	设 $\bfx=(x_1,\dots,x_p)^\rmT\in \BR^p$, 则
 	\[g(\bfx)=(y_1,\dots,y_n)^\rmT, \quad
 		y_k=\sum_{j=1}^p b_{kj} x_j.\]
 	\onslide<+->
@@ -184,6 +179,8 @@
 	\end{pmatrix}\begin{pmatrix}
 		0&0&0\\0&0&0\\0&0&0
 	\end{pmatrix}=?\visible<+->{\alert{\text{\huge$\times$}}}\]
+	\onslide<+->
+	简单来说, $\bfA\bfB$ 的 $(i,j)$ 元就是 $\bfA$ 的 $i$ 行和 $\bfB$ 的 $j$ 列对应分量相乘后求和得到的.
 \end{frame}
 
 
@@ -245,9 +242,14 @@
 
 \begin{frame}{矩阵乘法的性质}
 	\onslide<+->
-	矩阵 $\bfA$ 对应的线性变换就是
-	\[f:\BR^n\to\BR^m,\ \bfx\mapsto \bfA\bfx.\]
-	这里我们将列向量看成列矩阵.
+	线性映射满足如下性质:
+	\begin{enumerate}
+		\item $(f\circ g)\circ h=f\circ(g\circ h)$;
+		\item $\lambda(f\circ g)=(\lambda f)\circ g=f\circ (\lambda g)$;
+		\item $f\circ(g+h)=f\circ g+f\circ h$;
+		\item $\id_{\BR^m}\circ f=f\circ\id_{\BR^n}=f$, 这里 $\id$ 表示恒等映射: $\id(\bfx)=\bfx$;
+		\item $0\circ f=f\circ 0=0$, 这里 $0$ 表示零映射.
+	\end{enumerate}
 	\onslide<+->
 	由此可知矩阵乘法满足如下性质:
 	\begin{enumerate}
@@ -262,7 +264,8 @@
 
 \begin{frame}{矩阵乘法和线性方程组}
 	\onslide<+->
-	由于矩阵 $\bfA$ 对应的线性变换就是 $f(\bfx)=\bfA\bfx$,
+	矩阵 $\bfA$ 对应的线性变换就是
+	\[f:\BR^n\to\BR^m,\ \bfx\mapsto \bfA\bfx.\]
 	\onslide<+->
 	因此解线性方程组
 	\[\laeq[lclcclcl]{
@@ -362,7 +365,7 @@
 			a_{11}&a_{12}&a_{13}\\
 			&a_{11}&a_{12}\\
 			&&a_{11}
-		\end{pmatrix}=a_{11}\bfE+a_{12}\bfA+a_{13}\bfA^2$.}
+		\end{pmatrix}$.}
 	\end{solution}
 	\endgroup
 \end{frame}
@@ -388,7 +391,7 @@
 	\onslide<+->
 	经过查询知道身份证长宽比为 $42.7:27$.
 	\onslide<+->
-	令 $A'=(427,0),B'=(270,0)$.
+	令 $A'=(427,0),B'=(0,270)$.
 	我们希望找到一个线性变换, 将 $A,B$ 变为 $A',B'$.
 \end{frame}
 
@@ -408,8 +411,8 @@
 	\laeq[crcrc]{
 		521&a+{}& 88&b={}&427\\
 		 19&a+{}&311&b={}&0\\
-		511&a+{}& 88&d={}&0\\
-		 19&a+{}&311&d={}&270
+		521&c+{}& 88&d={}&0\\
+		 19&c+{}&311&d={}&270
 	}}\]
 	\onslide<+->
 	解得 $\bfA=\begin{pmatrix}
@@ -522,7 +525,7 @@
 
 \begin{frame}{例: 矩阵幂的计算}
 	\onslide<+->
-	\begin{solution}{另解}
+	\begin{solution}[另解]
 		设 $\bfN=\begin{pmatrix}
 			0&1&0\\
 			&0&1\\
@@ -613,7 +616,11 @@
 	\begin{answer}
 		注意到 $\bfA=\begin{pmatrix}
 			1\\2\\3
-		\end{pmatrix}(1,2,3)$, 因此 $\bfA^k=14^{k-1}\bfA$.
+		\end{pmatrix}(1,2,3)$, 因此 $\bfA^k=14^{k-1}\bfA=\begin{pmatrix}
+			14^{k-1}&2\cdot14^{k-1}&3\cdot14^{k-1}\\
+			2\cdot14^{k-1}&4\cdot14^{k-1}&6\cdot14^{k-1}\\
+			3\cdot14^{k-1}&6\cdot14^{k-1}&9\cdot14^{k-1}
+		\end{pmatrix}$.
 	\end{answer}
 	\onslide<+->
 	想一想: $\bfA^2=\bfE$ 能推出 $\bfA=\bfE$ 或 $-\bfE$ 吗?

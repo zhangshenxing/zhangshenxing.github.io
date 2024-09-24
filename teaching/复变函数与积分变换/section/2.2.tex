@@ -38,13 +38,14 @@
 	\onslide<+->
 	由全微分公式
 	\begin{align*}
-		\diff u&=u_x\diff x+u_y\diff y
-		\visible<+->{=u_x\diff x-v_x\diff y,}\\
-		\visible<+->{\diff v}&\visible<.->{=v_x\diff x+v_y\diff y}\visible<+->{=v_x\diff x+u_x\diff y,}\\
-		\visible<+->{\diff f}&
-		\visible<.->{=\diff (u+iv)=(u_x+i v_x)\diff x+(-v_x+i u_x)\diff y}\\
-		&\visible<+->{=(u_x+i v_x)\diff(x+iy)}\\
-		&\visible<+->{=(u_x+i v_x)\diff z=(v_y-i u_y)\diff z.}
+		\Delta u&=u_x\Delta x+u_y\Delta y+o(\Delta z)
+			=u_x\Delta x-v_x\Delta y+o(\Delta z),\\
+			\visible<+->{\Delta v}&\visible<.->{=v_x\Delta x+v_y\Delta y+o(\Delta z)
+			=v_x\Delta x+u_x\Delta y+o(\Delta z),}\\
+		\visible<+->{\Delta f}&
+		\visible<.->{=\Delta (u+iv)=(u_x+i v_x)\Delta x+(-v_x+i u_x)\Delta y}+o(\Delta z)\\
+		&\visible<+->{=(u_x+i v_x)\Delta(x+iy)+o(\Delta z)}\\
+		&\visible<+->{=(u_x+i v_x)\Delta z+o(\Delta z).}
 	\end{align*}
 	\onslide<+->
 	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+i v_x=v_y-i u_y$}.
@@ -250,12 +251,11 @@
 	\end{proof}
 
 	\onslide<+->
-	类似地可以证明, 若 $f(z)$ 在 $D$ 内解析, 则下述条件等价:
+	类似地可以证明, 若 $f(z)$ 在 $D$ 内解析, 则下述条件均可推出 $f(z)$ 是常数:
 	\onslide<+->
 	\begin{figure}[hbpt]
 		\begin{minipage}{0.48\textwidth}
 			\begin{itemize}
-				\item $f(z)$ 是一常数,
 				\item $f'(z)=0$,
 				\item $|f(z)|$ 是一常数,
 				\item $\arg{f(z)}$ 是一常数,
@@ -265,8 +265,7 @@
 			\begin{itemize}
 				\item $\Re{f(z)}$ 是一常数,
 				\item $\Im{f(z)}$ 是一常数,
-				\item $v=u^2$,
-				\item $u=v^2$.
+				\item $v=u^2$.
 			\end{itemize}
 		\end{minipage}
 	\end{figure}

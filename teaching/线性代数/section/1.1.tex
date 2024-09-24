@@ -35,10 +35,10 @@
 		\item $\bma+(\bmb+\bmg)=(\bma+\bmb)+\bmg$;
 		\item ${\bm0}+\bma=\bma$;
 		\item 对任意 $\bma$, 存在 $\bmb$ 使得 $\bma+\bmb={\bf0}$. 称 $\bmb$ 为 $\bma$ 的\emph{负向量};
-		\item $1\cdot\bma=\bma$;
-		\item $(k\ell)\bma=k(\ell\bma)$;
-		\item $(k+\ell)\bma=k\bma+\ell\bma$;
-		\item $k(\bma+\bmb)=k\bma+k\bmb$.
+		\item $(\lambda\mu)\bma=\lambda(\mu\bma)$;
+		\item $(\lambda+\mu)\bma=\lambda\bma+\mu\bma$;
+		\item $\lambda(\bma+\bmb)=\lambda\bma+\lambda\bmb$;
+		\item $1\cdot\bma=\bma$.
 	\end{enumerate}
 \end{frame}
 
@@ -61,7 +61,7 @@
 	\onslide<+->
 	为了书写方便, 也可以把列向量写成
 	\[\bfx=(x_1,x_2,\dots,x_n)^\rmT.\]
-	其中 $\rmT$ 表示\cnen{\emph{转置}}{Transpose}, 它是将行列关系对换的一种操作.
+	其中 $\rmT$ 表示\cnen{\emph{转置}}{\smash{Transpose}}, 它是将行列关系对换的一种操作.
 \end{frame}
 
 
@@ -116,20 +116,24 @@
 
 
 \subsection{线性映射}
-\begin{frame}{线性方程组对应的映射\noexer}
+\begin{frame}{向量空间之间的映射\noexer}
 	\onslide<+->
-	考虑向量空间之间的映射.
-	\onslide<+->
-	对于系数都是实数的线性方程组
-	\[\laeq[lclcclcl]{
-		a_{11}&x_1+{}&a_{12}&x_2&{}+\cdots+{}&a_{1n}&x_n={}&y_1\\
-		a_{21}&x_1+{}&a_{22}&x_2&{}+\cdots+{}&a_{2n}&x_n={}&y_2\\
-		&&&&\vdots&&&\\
-		a_{m1}&x_1+{}&a_{m2}&x_2&{}+\cdots+{}&a_{mn}&x_n={}&y_m
-	}\]
-	\onslide<+->
-	若把 $x_1,\dots,x_n$ 看作自变量, $y_1,\dots,y_m$ 看作因变量, 则上述关系给出了一个映射:
-	\[f:\BR^n\lra\BR^m.\]
+	考虑向量空间之间的映射
+	\begin{align*}
+		f:\BR^n&\lra\BR^m\\
+		\begin{pmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_n
+		\end{pmatrix}&\lto
+		\begin{pmatrix}
+			a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n\\
+			a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n\\
+			\vvdots\\
+			a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n
+		\end{pmatrix}.
+	\end{align*}
 	\onslide<+->
 	不难验证这个映射满足
 	\begin{enumerate}
@@ -151,29 +155,7 @@
 		称 $f$ 是一个\emph{线性变换}或\emph{线性映射}.
 	\end{definition}
 	\onslide<+->
-	于是给定 $mn$ 个实数 $a_{ij}$, 我们便可构造出一个线性变换:
-	\onslide<+->
-	\begin{align*}
-		f:\BR^n&\lra\BR^m\\
-		\begin{pmatrix}
-			x_1\\
-			x_2\\
-			\vdots\\
-			x_n
-		\end{pmatrix}&\lto
-		\begin{pmatrix}
-			a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n\\
-			a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n\\
-			\vvdots\\
-			a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n
-		\end{pmatrix}.
-	\end{align*}
-	\onslide<+->
-	反过来, 是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为这种形式呢?
-\end{frame}
-
-
-\begin{frame}{标准向量空间\noexer}
+	是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为前述形式呢?
 	\onslide<+->
 	设 $f:\BR^n\to\BR^m$ 是一个线性变换,
 	\onslide<+->
