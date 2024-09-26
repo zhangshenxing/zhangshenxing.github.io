@@ -2,22 +2,23 @@
 \chapter{复数与复变函数}
 
 复数起源于多项式方程的求根问题. 
-我们考虑一元二次方程 $x^2+bx+c=0$, 配方可得
+考虑一元二次方程 $x^2+bx+c=0$, 配方可得
   \[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
 于是得到求根公式
   \[x=\frac{-b\pm\sqrt\Delta}2,\quad \Delta=b^2-4c.\]
 \begin{enumerate}
   \item 当 $\Delta>0$ 时, 有两个不同的实根;
-  \item 当 $\Delta=0$ 时, 有一个二重的实根;
-  \item 当 $\Delta<0$ 时, 无实根. 然而, 如果我们\alert{接受负数开方}的话, 此时仍然有两个根, 形式地计算可以发现它们满足原来的方程.
+  \item 当 $\Delta=0$ 时, 有一个二重\footnote{如果 $x_0$ 是多项式方程 $f(x)=0$ 的根, 则 $x-x_0$ 是 $f(x)$ 的因式, 即存在多项式 $g(x)$ 使得 $f(x)=(x-x_0)g(x)$.
+  如果 $(x-x_0)^k$ 是 $f(x)$ 的因式, 但 $(x-x_0)^{k+1}$ 不是, 则称 $x_0$ 是 \emph{$k$ 重根}.}的实根;
+  \item 当 $\Delta<0$ 时, 无实根.
 \end{enumerate}
 
-现在我们来考虑一元三次方程.
+可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开平方}的解. 然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开平方.
 
 \begin{example}
   解方程 $x^3+6x-20=0$.
 \end{example}
-
+我们将使用由 Scipione dal Ferro (1465--1526) 最先发现, 最终由 Cardan 公开的解法\footnote{Ferro 发现了该方法后, 并没有发表他的结果, 因为当时人们常把他们的发现保密, 而向对手们提出挑战.}.
 \begin{solution}
   设 $x=u+v$, 则
     \[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]

@@ -99,13 +99,17 @@
 		0&c\\1&d
 	\end{vmatrix}.\]
 	\onslide<+->
-	同样的, 我们对于第二列也可以进行拆分.
+	换言之, $\bfv$ 固定时, 则 $|\bfu,\bfv|$ 关于 $\bfu$ 是线性的.
+	\onslide<+->
+	同理, $\bfu$ 固定时, $|\bfu,\bfv|$ 关于 $\bfv$ 也是线性的.
 \end{frame}
 
 
-\begin{frame}{平行多面体\noexer}
+\begin{frame}{平行多面体情形\noexer}
 	\onslide<+->
-	对于 $n$ 维空间中由从原点出发的向量 $\bfv_1,\dots,\bfv_n$ 张成的平行多面体, 也有类似概念.
+	将上述概念推广到 $n$ 维情形.
+	\onslide<+->
+	考虑 $n$ 维空间中由从原点出发的向量 $\bfv_1,\dots,\bfv_n$ 张成的平行多面体.
 	\onslide<+->
 	如果 $\bfv_1,\dots,\bfv_n$ 就是按顺序各个分量上的单位向量
 	\[\bfe_1=(1,0,\dots,0)^\rmT,\quad
@@ -113,7 +117,7 @@
 	\bfe_n=(0,0,\dots,1)^\rmT,\]
 	则有向面积为 $1$.
 	\onslide<+->
-	而如果交换 $\bfv_i,\bfv_j$ 的位置, 有向面积相差 $-1$ 倍.
+	如果交换 $\bfv_i,\bfv_j$ 的位置, 有向面积相差 $-1$ 倍.
 	\onslide<+->
 	于是得到 $n$ 维情形的有向面积 $|\bfv_1,\dots,\bfv_n|$ 应当满足:
 	\begin{enumerate}
@@ -132,11 +136,11 @@
 % 	\bfe_2=(0,1,\dots,0)^\rmT,\quad\cdots,\quad
 % 	\bfe_n=(0,0,\dots,1)^\rmT.\]
 % 	\onslide<+->
-% 	那么 $V=\BC^n$ 中的任一元素均可唯一表达为如下形式:
+% 	那么 $V=\BR^n$ 中的任一元素均可唯一表达为如下形式:
 % 	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
 
 % 	\onslide<+->
-% 	定义 $V_2:=\wedge^2\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
+% 	定义 $V_2:=\wedge^2\BR^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
 % 	\onslide<+->
 % 	其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
 % 	\begin{enumerate}
@@ -154,12 +158,12 @@
 
 % \begin{frame}{行列式的抽象定义\noexer}
 % 	\onslide<+->
-% 	类似地, 定义 $V_k:=\wedge^k\BC^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
+% 	类似地, 定义 $V_k:=\wedge^k\BR^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
 % 	\onslide<+->
 % 	同理可知, $V_k$ 中的元素可以唯一表达为如下形式:
 % 	\[\sum_{1\le i_1<\cdots<i_k\le n} x_{i_1,\dots,i_k} \bfe_{i_1}\wedge\cdots\wedge\bfe_{i_k}.\]
 % 	\onslide<+->
-% 	特别地, $k=n$ 时, $V_n:=\wedge^n\BC^n$ 中的元素可以唯一表达为如下形式:
+% 	特别地, $k=n$ 时, $V_n:=\wedge^n\BR^n$ 中的元素可以唯一表达为如下形式:
 % 	\[x\bfe_1\wedge\cdots\wedge\bfe_n.\]
 
 % 	\onslide<+->
@@ -204,25 +208,35 @@
 % \end{frame}
 
 
-\begin{frame}{行列式的具体定义\noexer}
+\begin{frame}{行列式的定义\noexer}
 	\onslide<+->
-	设方阵 $\bfA=(a_{ij})$ 的各列为 $\bfv_1,\dots,\bfv_n$,
+	设 $n$ 阶方阵 $\bfA=(a_{ij})$ 的各列形成的向量为 $\bfv_1,\dots,\bfv_n$,
 	\onslide<+->
 	称有向面积 $|\bfv_1,\cdots,\bfv_n|$ 就是方阵 $\bfA$ 的\emph{行列式}.
 	\onslide<+->
-	通过拆分逐个分量,
-	\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n}, \]
-	其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
+	注意到
+	\[\bfv_j=a_{1j}\bfe_1+a_{2j}\bfe_2+\cdots+a_{nj}\bfe_n,\]
 	\onslide<+->
-	如果排列 $k_1,k_2,\dots,k_n$ 需要奇数次对换变成 $1,2,\dots,n$, 则 
-	$|\bfe_{k_1},\cdots,\bfe_{k_n}|=-1$; 否则 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=1$.
+	利用线性性质将行列式展开将会得到 $n^n$ 项
+	\[\sum_{k_1,k_2,\dots,k_n=1}^n|\bfe_{k_1},\cdots,\bfe_{k_n}| a_{k_11}a_{k_22}\cdots a_{k_nn}.\]
+	\onslide<+->
+	注意到如果 $k_i=k_j$, 则交换 $\bfe_{k_i},\bfe_{k_j}$ 可知 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=0$.
+	\onslide<+->
+	从而只剩下 $k_1,k_2,\dots,k_n$ 是 $1,2,\dots,n$ 的排列时的那些项.
+	\end{frame}
+	
+	
+	\begin{frame}{行列式的展开形式\noexer}
 	\onslide<+->
 	\begin{definition}
 		设 $\bfA=(a_{ij})$ 是 $n$ 阶方阵.
 		定义 $\bfA$ 的\emph{行列式}为
-		\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{1,k_1}\cdots a_{n,k_n},\]
+		\[|\bfA|=\sum |\bfe_{k_1},\cdots,\bfe_{k_n}| a_{k_11}a_{k_22}\cdots a_{k_nn},\]
 		其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的全体排列.
 	\end{definition}
+	\onslide<+->
+	如果排列 $k_1,k_2,\dots,k_n$ 需要奇数次对换变成 $1,2,\dots,n$, 则 
+	$|\bfe_{k_1},\cdots,\bfe_{k_n}|=-1$; 否则 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=1$.
 \end{frame}
 
 
@@ -244,7 +258,7 @@
 	\onslide<+->
 	当 $n=3$ 时,
 	\[|\bfe_1,\bfe_2,\bfe_3|=|\bfe_2,\bfe_3,\bfe_1|=|\bfe_3,\bfe_1,\bfe_2|=1,\]
-	\[|\bfe_1,\bfe_3,\bfe_2|=|\bfe_2,\bfe_1,\bfe_3|=|\bfe_3,\bfe_1,\bfe_2|=-1,\]
+	\[|\bfe_1,\bfe_3,\bfe_2|=|\bfe_2,\bfe_1,\bfe_3|=|\bfe_3,\bfe_2,\bfe_1|=-1,\]
 	\onslide<+->
 	于是
 	\[\begin{vNiceMatrix}
@@ -298,7 +312,7 @@
 		\[\bigl|\diag(a_1,a_2,\dots,a_n)\bigr|=a_1a_2\cdots a_n,\]
 		特别地 $|\bfE_n|=1,|\bfO_n|=0$.
 		\item $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的所有排列, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$ ($n\ge2$).
-		\item 行列式对应的线性变换(常数倍)是其对应的线性变换 $\BC^n\ra\BC^n$ 诱导的 $n$ 次外代数上的线性变换 $\wedge^n\BC^n\ra \wedge^n\BC^n$, 感兴趣的可自行阅读有关材料.
+		\item 行列式对应的线性变换(常数倍)是其对应的线性变换 $\BR^n\ra\BR^n$ 诱导的 $n$ 次外代数上的线性变换 $\bigwedge^n\BR^n\ra \bigwedge^n\BR^n$, 感兴趣的可自行阅读有关材料.
 	\end{enumerate}
 \end{frame}
 
@@ -336,7 +350,7 @@
 	\onslide<+->
 	注意到 $n$ 阶方阵 $\bfA$ 将 $\bfe_1,\dots,\bfe_n$ 张成的平行多面体映射为 $\bfv_1,\dots,\bfv_n$ 张成的平行多面体.
 	\onslide<+->
-	事实上, 它把任意平行多面体映射为平行多面体, 且二者面积相差 $|\bfA|$ 倍.
+	事实上, 它把任意平行多面体映射为平行多面体, 且二者有向面积相差 $|\bfA|$ 倍.
 	\onslide<+->
 	\begin{second@}
 		\begin{enumerate}
@@ -345,19 +359,54 @@
 	\end{second@}
 	\onslide<+->
 	\begin{proof}
-		设 $f(\bfv_1,\dots,\bfv_n)=f(\bfB)=|\bfA\bfB|$.
+		设 $V\subset \BR^n$ 是一个平行多面体, $f,g$ 是 $\bfA,\bfB$ 对应的线性映射.
 		\onslide<+->{%
-			不难看出
-			\begin{enumerate}
-				\item $f(\cdots,\bfv_i,\cdots,\bfv_j,\cdots)=-f(\cdots,\bfv_j,\cdots,\bfv_i,\cdots)$;
-				\item $f(\cdots,k\bma,\cdots)==kf(\cdots,\bma,\cdots)$;
-				\item $f(\cdots,\bma+\bmb,\cdots)=f(\cdots,\bma,\cdots)+f(\cdots,\bmb,\cdots)$.
-			\end{enumerate}
+			那么 $g(V)$ 的有向面积是 $V$ 的有向面积的 $|\bfB|$ 倍,
+			那么 $f\bigl(g(V)\bigr)$ 的有向面积是 $g(V)$ 的有向面积的 $|\bfA|$ 倍.
 		}\onslide<+->{%
-			通过将 $\bfv_1,\dots,\bfv_n$ 逐分量展开可知 $f$ 是行列式函数的 $f(\bfE)$ 倍.
+			所以 $f\bigl(g(V)\bigr)$ 的有向面积是 $V$ 的有向面积的 $|\bfA|\cdot|\bfB|$ 倍.
 		}\onslide<+->{%
-			因此 $f(\bfB)=f(\bfE)|\bfB|=|\bfA|\cdot |\bfB|$.\qedhere
+			注意到 $f\circ g$ 对应的矩阵是 $\bfA\bfB$, 因此 $f\bigl(g(V)\bigr)$ 的有向面积是 $V$ 的有向面积的 $|\bfA\bfB|$ 倍.
+		}\onslide<+->{%
+			故 $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.\qedhere
 		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 行列式的乘性}
+	\onslide<+->
+	\begin{example}
+		证明:
+		$\begin{vmatrix}
+			a_1+b_1&b_1+c_1&c_1+a_1\\
+			a_2+b_2&b_2+c_2&c_2+a_2\\
+			a_3+b_3&b_3+c_3&c_3+a_3
+		\end{vmatrix}=2\begin{vmatrix}
+			a_1&b_1&c_1\\
+			a_2&b_2&c_2\\
+			a_3&b_3&c_3
+		\end{vmatrix}$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		\[\begin{vmatrix}
+			a_1+b_1&b_1+c_1&c_1+a_1\\
+			a_2+b_2&b_2+c_2&c_2+a_2\\
+			a_3+b_3&b_3+c_3&c_3+a_3
+		\end{vmatrix}=\begin{vmatrix}
+			a_1&b_1&c_1\\
+			a_2&b_2&c_2\\
+			a_3&b_3&c_3
+		\end{vmatrix}\cdot\begin{vmatrix}
+			1&0&1\\
+			1&1&0\\
+			0&1&1
+		\end{vmatrix}\visible<+->{=2\begin{vmatrix}
+			a_1&b_1&c_1\\
+			a_2&b_2&c_2\\
+			a_3&b_3&c_3
+		\end{vmatrix}.}\qedhere\]
 	\end{proof}
 \end{frame}
 
@@ -371,23 +420,26 @@
 		\end{enumerate}
 	\end{second@}
 	\onslide<+->
-	设 $k_1,\dots,k_n$ 是一个排列, $\bfP$ 的 $i$ 行 $k_i$ 列为 $1$, 其余项为零.
-	\onslide<+->
-	那么 $|\bfP|$.
+	设 $k_1,\dots,k_n$ 是一个排列,
+	\[\bfP=(\bfe_{k_1},\bfe_{k_2},\dots,\bfe_{k_n})\]
+	的 $k_i$ 行 $i$ 列为 $1$, 其余项为零.
 	\onslide<+->
 	设 $\ell_1,\dots,\ell_n$ 是一个排列且满足 $k_{\ell_i}=i$.
 	\onslide<+->
 	也就是说, 若把排列看成集合 $\{1,2,\dots,n\}$ 到自身的双射, $\ell$ 就是 $k$ 的逆映射.
 	\onslide<+->
+	那么
+	\[\bfP^\rmT=(\bfe_{\ell_1},\bfe_{\ell_2},\dots,\bfe_{\ell_n})\]
+	\onslide<+->
 	于是
 	\begin{align*}
-		|\bfA|&=\sum|\bfP| a_{1k_1}\cdots a_{nk_n}=\sum|\bfP^\rmT| a_{1\ell_1}\cdots a_{n\ell_n},\\
-		|\bfA^\rmT|&=\sum|\bfP| a_{k_1 1}\cdots a_{k_n n}=\sum|\bfP| a_{1\ell_1}\cdots a_{1 \ell_n}.
+		|\bfA|&=\sum|\bfP| a_{k_11}\cdots a_{k_nn}=\sum|\bfP^\rmT| a_{\ell_11}\cdots a_{\ell_nn},\\
+		|\bfA^\rmT|&=\sum|\bfP| a_{1k_1}\cdots a_{nk_n}=\sum|\bfP| a_{\ell_11}\cdots a_{\ell_nn}.
 	\end{align*}
 	\onslide<+->
 	因此只需证明 $|\bfP|=|\bfP^\rmT|$.
 	\onslide<+->
-	注意到 $\bfP\bfP^\rmT=\bfE$, 因此 $|\bfP|\cdot|\bfP^\rmT|=|\bfE|=1$.
+	由于 $\bfP\bfP^\rmT=\bfE$, 因此 $|\bfP|\cdot|\bfP^\rmT|=|\bfE|=1$.
 	\onslide<+->
 	而 $|\bfP|=|\bfe_{k_1},\dots,\bfe_{k_n}|=\pm1$, 因此 $|\bfP|=|\bfP^\rmT|$.
 \end{frame}
@@ -417,7 +469,7 @@
 \end{frame}
 
 
-\begin{frame}{三种初等变换}
+\begin{frame}{初等变换}
 	\onslide<+->
 	计算行列式可以通过实施下列变换来化简:
 	\onslide<+->
@@ -425,9 +477,25 @@
 		\begin{enumerate}
 			\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
 			\item 一行(列)乘\alert{非零常数} $k$: \alert{$kr_i, kc_i$}, 行列式变为 $k$ 倍;
-			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}.
+			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}, 行列式不变.
 		\end{enumerate}
 	\end{third}
+	\onslide<+->
+	实施第三类初等变换 $c_i+kc_j$ 时, 第 $j$ 列不变, 改变的是第 $i$ 列.
+	\onslide<+->
+	由于
+	\begin{align*}
+		|\cdots,\bfv_i,\cdots,\bfv_j,\cdots|
+		&=|\cdots,\bfv_i,\cdots,\bfv_j,\cdots|
+		+|\cdots,k\bfv_j,\cdots,\bfv_j,\cdots|\\
+		&=|\cdots,\bfv_i+k\bfv_j,\cdots,\bfv_j,\cdots|,
+	\end{align*}
+	\onslide<+->
+	因此第三类初等变换不改变行列式的值.
+\end{frame}
+
+
+\begin{frame}{例: 使用初等变换计算行列式}
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
@@ -437,145 +505,18 @@
 			\end{vmatrix}=-\begin{vmatrix}
 				&&&1\\&&2&\\&3&&\\4&&&
 			\end{vmatrix}$. \visible<+->{\Huge\alert{$\times$}}
+			\item 计算 $\begin{vmatrix}
+				a_1+b_1&b_1+c_1&c_1+d_1&d_1+a_1\\
+				a_2+b_2&b_2+c_2&c_2+d_2&d_2+a_2\\
+				a_3+b_3&b_3+c_3&c_3+d_3&d_3+a_3\\
+				a_4+b_4&b_4+c_4&c_4+d_4&d_4+a_4
+			\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例: 利用初等变换计算行列式}
-	\onslide<+->
-	\begin{example}
-		\[\begin{vmatrix}
-			 2& 3& 1&-1\\
-			-4&-5& 1& 3\\
-			-3& 1&-5& 3\\
-			 1&-2& 0&-1
-		\end{vmatrix}
-		\onslide<+->{\!\!\xeq{r_1\swap r_4}\!\!
-		-\begin{vmatrix}
-			1&-2& 0&-1\\
-		 -4&-5& 1& 3\\
-		 -3& 1&-5& 3\\
-		  2& 3& 1&-1
-		\end{vmatrix}}
-		\onslide<+->{\!\!\xeq[r_4-2r_1]{\substack{\nsmath{r_2+4r_1}\\\nsmath{r_3+3r_1}}}\!\!
-		-\begin{vmatrix}
-			1&-2& 0&-1\\
-		  0&-13& 1&-1\\
-		  0&-5&-5&0\\
-		  0& 7& 1&1
-		\end{vmatrix}}\]
-		\[\onslide<+->{=-\begin{vmatrix}
-			-13& 1&-1\\
-			-5&-5&0\\
-				7& 1&1
-			\end{vmatrix}}
-		\onslide<+->{\xeq{r_3+r_1}
-		-\begin{vmatrix}
-			-13& 1&-1\\
-			-5&-5&0\\
-			-6& 2&0
-		\end{vmatrix}}
-		\onslide<+->{=(-1)^{1+3}\begin{vmatrix}
-			-5&-5\\-6&2
-		\end{vmatrix}=-40.}\]
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 利用初等变换计算行列式}
-	\onslide<+->
-	\begin{exercise}
-		$\begin{vmatrix}
-			-2&0&1\\
-			501&200&299\\
-			500&200&300
-		\end{vmatrix}=$\fillblank{\visible<+->{$-200$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{example}
-		证明:
-		$\begin{vmatrix}
-			a_1+b_1&b_1+c_1&c_1+a_1\\
-			a_2+b_2&b_2+c_2&c_2+a_2\\
-			a_3+b_3&b_3+c_3&c_3+a_3
-		\end{vmatrix}=2\begin{vmatrix}
-			a_1&b_1&c_1\\
-			a_2&b_2&c_2\\
-			a_3&b_3&c_3
-		\end{vmatrix}$.
-	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 利用初等变换计算行列式}
-	\onslide<+->
-	\begin{proof}
-		\begin{align*}
-			&\begin{vmatrix}
-				a_1+b_1&b_1+c_1&c_1+a_1\\
-				a_2+b_2&b_2+c_2&c_2+a_2\\
-				a_3+b_3&b_3+c_3&c_3+a_3
-			\end{vmatrix}\xeq{c_1-c_2}\begin{vmatrix}
-				a_1-c_1&b_1+c_1&c_1+a_1\\
-				a_2-c_2&b_2+c_2&c_2+a_2\\
-				a_3-c_3&b_3+c_3&c_3+a_3
-			\end{vmatrix}\\
-			\visible<+->{\xeq{c_1+c_3}}&\visible<.->{\begin{vmatrix}
-				2a_1&b_1+c_1&c_1+a_1\\
-				2a_2&b_2+c_2&c_2+a_2\\
-				2a_3&b_3+c_3&c_3+a_3
-			\end{vmatrix}}
-			\visible<+->{=2\begin{vmatrix}
-				a_1&b_1+c_1&c_1+a_1\\
-				a_2&b_2+c_2&c_2+a_2\\
-				a_3&b_3+c_3&c_3+a_3
-			\end{vmatrix}}\\
-			\visible<+->{\xeq{c_3-c_1}}&\visible<.->{2\begin{vmatrix}
-				a_1&b_1+c_1&c_1\\
-				a_2&b_2+c_2&c_2\\
-				a_3&b_3+c_3&c_3
-			\end{vmatrix}}
-			\visible<+->{\xeq{c_2-c_3}2\begin{vmatrix}
-				a_1&b_1&c_1\\
-				a_2&b_2&c_2\\
-				a_3&b_3&c_3
-			\end{vmatrix}.\qedhere}
-		\end{align*}
-	\end{proof}
-\end{frame}
-
-
-\begin{frame}{例: 利用初等变换计算行列式}\small
-	\onslide<+->
-	\begin{exercise}
-		$\begin{vmatrix}
-			a_1+b_1&b_1+c_1&c_1+d_1&d_1+a_1\\
-			a_2+b_2&b_2+c_2&c_2+d_2&d_2+a_2\\
-			a_3+b_3&b_3+c_3&c_3+d_3&d_3+a_3\\
-			a_4+b_4&b_4+c_4&c_4+d_4&d_4+a_4
-		\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		$\begin{vmatrix}
-			1&1&1\\
-			a&b&c\\
-			b+c&c+a&a+b
-		\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $\begin{vmatrix}
-			x+1&2&-1\\
-			2&x+1&1\\
-			-1&1&x+1
-		\end{vmatrix}=0$, 则 $x=$\fillblank[3cm]{\visible<+->{$-3,\pm\sqrt3$}}.
-	\end{exercise}
-\end{frame}
-
-
-\begin{frame}{例: 计算行列式}\small
+\begin{frame}{例: 使用初等变换计算行列式}\small
 	\onslide<+->
 	\begin{example}
 		若 $abcd=1$, 证明 $\bfA=\begin{pNiceMatrix}
@@ -635,38 +576,60 @@
 \end{frame}
 
 
-\begin{frame}{拉普拉斯展开}
+\begin{frame}{行列式与余子式的联系}
 	\onslide<+->
-	假设 $\bfA$ 的第一行除了 $a_{11}$ 都是零.
+	假设 $\bfA$ 的第 $n$ 列除了 $a_{nn}$ 都是零.
 	\onslide<+->
-	若 $k_1\neq 1$, 则 $a_{1,k_1}\cdots a_{n,k_n}=0$; 若 $k_1=1$, 则 $|\bfe_1,\bfe_{k_2},\dots,\bfe_{k_n}|=|\bfe_{k_2},\dots,\bfe_{k_n}|$.
+	若 $k_n\neq n$, 则 $a_{k_11}\cdots a_{k_nn}=0$; 若 $k_n=n$, 则 $|\bfe_{k_1},\dots,\bfe_{k_{n-1}},\bfe_n|=|\bfe_{k_1},\dots,\bfe_{k_{n-1}}|$.
 	\onslide<+->
 	因此
-	\[|\bfA|=\sum |\bfe_1,\bfe_{k_2},\dots,\bfe_{k_n}|a_{11}a_{2,k_2}\cdots a_{n,k_n}=a_{11} M_{11}=a_{11} A_{11}.\]
+	\[|\bfA|=\sum |\bfe_{k_1},\dots,\bfe_{k_{n-1}},\bfe_n|a_{1,k_1}\cdots a_{n-1,k_{n-1}}a_{n,n}=a_{nn} M_{nn}=a_{nn} A_{nn}.\]
 
 	\onslide<+->
-	假设 $\bfA$ 的第 $i$ 行除了 $a_{ij}$ 都是零.
+	假设 $\bfA$ 的第 $j$ 列除了 $a_{ij}$ 都是零.
 	\onslide<+->
 	依次对 $\bfA$ 实施
-	\[r_i\swap r_{i-1},\quad r_{i-1}\swap r_{i-2},\quad\dots,\quad r_2\swap r_1,\]
-	得到的方阵 $\bfB$ 就是将 $\bfA$ 的第 $i$ 行移动到第一行的前面得到的方阵.
+	\[r_i\swap r_{i+1},\quad r_{i+1}\swap r_{i+2},\quad\dots,\quad r_{n-1}\swap r_n,\]
+	得到的方阵 $\bfB$ 就是将 $\bfA$ 的第 $i$ 行移动到第 $n$ 行的后面得到的方阵.
 	\onslide<+->
-	由于一共 $i-1$ 次行互换, 因此 $|\bfB|=(-1)^{i-1}|\bfA|$.
+	由于一共 $n-i$ 次列互换, 因此 $|\bfB|=(-1)^{n-i}|\bfA|$.
 
 	\onslide<+->
-	同理, 将 $\bfB$ 的第 $j$ 列移动到第一列的前面得到的方阵记为 $\bfC$, 则
-	\[|\bfC|=(-1)^{j-1}|\bfB|=(-1)^{i+j}|\bfA|.\]
+	同理, 将 $\bfB$ 的第 $j$ 列移动到第 $n$ 列的后面得到的方阵记为 $\bfC$, 则
+	\[|\bfC|=(-1)^{n-j}|\bfB|=(-1)^{i+j}|\bfA|.\]
 	\onslide<+->
-	注意到 $\bfC$ 在 $(1,1)$ 处元素是 $a_{ij}$, 余子式是 $M_{ij}$,
+	注意到 $\bfC$ 在 $(n,n)$ 处元素是 $a_{ij}$, 余子式是 $M_{ij}$,
 	\onslide<+->
 	因此
 	\[|\bfC|=a_{ij}M_{ij},\qquad |\bfA|=(-1)^{i+j}a_{ij}M_{ij}=a_{ij}A_{ij}.\]
 \end{frame}
 
 
+\begin{frame}{行列式与余子式的联系}
+	\onslide<+->
+	$\bfA$ 的第 $j$ 列写成
+	\[\begin{pmatrix}
+		a_{1j}\\a_{2j}\\\vdots\\a_{nj}
+	\end{pmatrix}
+	=\begin{pmatrix}
+		a_{1j}\\0\\\vdots\\0
+	\end{pmatrix}
+	+\begin{pmatrix}
+		0\\a_{2j}\\\vdots\\0
+	\end{pmatrix}+\cdots+\begin{pmatrix}
+		0\\0\\\vdots\\a_{nj},
+	\end{pmatrix}\]
+	\onslide<+->
+	根据行列式的线性性质, 我们得到
+	\[|\bfA|=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}.\]
+	\onslide<+->
+	由于转置不改变方阵的行列式, 于是得到
+	\[|\bfA|=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}.\]
+\end{frame}
+
+
 \begin{frame}{拉普拉斯展开}
 	\onslide<+->
-	再根据行列式的线性性质, 我们得到拉普拉斯展开:
 	\begin{second}{行列式沿任一行或列展开}
 		方阵的行列式等于任一行(列)的元素与其对应的代数余子式乘积的和:
 		\begin{align*}
@@ -674,7 +637,6 @@
 			&=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj}.
 		\end{align*}
 	\end{second}
-
 	\onslide<+->
 	由此也可以看出 \alert{$i\neq k$ 时,}
 	\[\alert{a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,}\]
@@ -683,7 +645,7 @@
 \end{frame}
 
 
-\begin{frame}{三角阵的行列式}
+\begin{frame}{例: 三角阵的行列式}
 	\onslide<+->
 	\begin{example}
 		\begin{align*}
@@ -731,6 +693,74 @@
 			\visible<+->{=(-1)^{\frac{n(n-1)}2}a_1a_2\cdots a_n.}
 		\end{align*}
 	\end{solution*}
+\end{frame}
+
+
+\begin{frame}{例: 利用初等变换计算行列式}
+	\onslide<+->
+	对于具体的方阵, 我们可以利用初等变换将其化为三角阵来计算行列式.
+	\onslide<+->
+	也可以在某一行或一列只有少数非零元时用拉普拉斯展开来降阶.
+	\onslide<+->
+	\begin{example}
+		\[\begin{vmatrix}
+			 2& 3& 1&-1\\
+			-4&-5& 1& 3\\
+			-3& 1&-5& 3\\
+			 1&-2& 0&-1
+		\end{vmatrix}
+		\onslide<+->{\!\!\xeq{\nsmath{r_1\swap r_4}}\!\!
+		-\begin{vmatrix}
+			1&-2& 0&-1\\
+		 -4&-5& 1& 3\\
+		 -3& 1&-5& 3\\
+		  2& 3& 1&-1
+		\end{vmatrix}}
+		\onslide<+->{\!\!\xeq[\nsmath{r_4-2r_1}]{\substack{\nsmath{r_2+4r_1}\\\nsmath{r_3+3r_1}}}\!\!
+		-\begin{vmatrix}
+			1&-2& 0&-1\\
+		  0&-13& 1&-1\\
+		  0&-5&-5&0\\
+		  0& 7& 1&1
+		\end{vmatrix}}\]
+		\[\onslide<+->{=-\begin{vmatrix}
+			-13& 1&-1\\
+			-5&-5&0\\
+				7& 1&1
+			\end{vmatrix}}
+		\onslide<+->{\xeq{\nsmath{r_3+r_1}}
+		-\begin{vmatrix}
+			-13& 1&-1\\
+			-5&-5&0\\
+			-6& 2&0
+		\end{vmatrix}}
+		\onslide<+->{=(-1)^{1+3}\begin{vmatrix}
+			-5&-5\\-6&2
+		\end{vmatrix}=-40.}\]
+	\end{example}
+\end{frame}
+
+\begin{frame}{例: 利用初等变换计算行列式}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item $\begin{vmatrix}
+				-2&0&1\\
+				501&200&299\\
+				500&200&300
+			\end{vmatrix}=$\fillblank{\visible<+->{$-200$}}.
+			\item $\begin{vmatrix}
+				1&1&1\\
+				a&b&c\\
+				b+c&c+a&a+b
+			\end{vmatrix}=$\fillblank{\visible<+->{$0$}}.
+			\item 若 $\begin{vmatrix}
+				x+1&2&-1\\
+				2&x+1&1\\
+				-1&1&x+1
+			\end{vmatrix}=0$, 则 $x=$\fillblank[3cm]{\visible<+->{$-3,\pm\sqrt3$}}.
+		\end{enumerate}
+	\end{exercise}
 \end{frame}
 
 
@@ -1030,7 +1060,7 @@
 			x_1^{n-1}&x_2^{n-1}&x_3^{n-1}&\cdots&x_n^{n-1}
 		\end{pmatrix}$.
 		证明 \alert{$|\bfA_n|=\prod\limits_{1\le i<j\le n}(x_j-x_i)$}.
-		\vspace{-.4\baselineskip}
+		\vspace{-.36\baselineskip}
 	\end{main}
 	\onslide<+->
 	\begin{solution}[证明]
@@ -1046,7 +1076,7 @@
 				\vdots&\vdots&\vdots&\ddots&\vdots\\
 				0&x_2^{n-2}(x_2-x_1)&x_3^{n-2}(x_3-x_1)&\cdots&x_n^{n-2}(x_n-x_1)
 			\end{vmatrix}.\]}
-			\vspace{-.48\baselineskip}
+			\vspace{-.44\baselineskip}
 	\end{solution}
 \endgroup
 \end{frame}
@@ -1079,18 +1109,18 @@
 				x_1^{-1}&x_2^{-1}&x_3^{-1}&x_4^{-1}\\
 				x_1&x_2&x_3&x_4\\
 				x_1^{3}&x_2^{3}&x_3^{3}&x_4^{3}
-			\end{vmatrix}=$\fillblank[6cm][3mm]{\visible<5->{$x_1^{-3}x_2^{-3}x_3^{-3}x_4^{-3}\prod\limits_{1\le i<j\le 4}(x_j^2-x_i^2)$}}.
+			\end{vmatrix}=$\fillblank[6cm][3mm]{\visible<+->{$x_1^{-3}x_2^{-3}x_3^{-3}x_4^{-3}\prod\limits_{1\le i<j\le 4}(x_j^2-x_i^2)$}}.
 			\item $\begin{vmatrix}
 				1&1&1&1\\
 				1&2&3&4\\
 				1&4&9&16\\
 				1&8&27&65
-			\end{vmatrix}=$\fillblank{\visible<6->{$14$}}.
+			\end{vmatrix}=$\fillblank{\visible<+->{$14$}}.
 			\item 设 $a,b,c$ 两两不等, 且 $\begin{vmatrix}
 				a&b&c\\
 				a^2&b^2&c^2\\
 				b+c&c+a&a+b
-			\end{vmatrix}=0$, 则 $a+b+c=$\fillblank{\visible<7->{$0$}}.
+			\end{vmatrix}=0$, 则 $a+b+c=$\fillblank{\visible<+->{$0$}}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
@@ -1099,6 +1129,7 @@
 \begin{frame}{例: 范德蒙行列式\noexer}
 	\onslide<+->
 	范德蒙行列式还有另一种证明方式, 这种思路对于其它行列式的计算也有帮助.
+	\onslide<+->
 	\begin{proof}
 		$f=|\bfA_n|$ 是 $x_1,\dots,x_n$ 的多项式, 且次数不超过 $1+2+\cdots+(n-1)$.
 		\onslide<+->{%
@@ -1107,7 +1138,7 @@
 		}\onslide<+->{%
 			比较两边次数可知 $g$ 是常数.
 		}\onslide<+->{%
-			注意到 $\prod_{i=1}^n x_i^{i-1}$ 只出现在范德蒙行列式对角元的乘积中, 且它在 $\prod_{1\le i<j\le n}(x_j-x_i)$ 中的系数是 $1$.
+			注意到 $\prod\limits_{i=1}^n x_i^{i-1}$ 只出现在范德蒙行列式对角元的乘积中, 且它在 $\prod\limits_{1\le i<j\le n}(x_j-x_i)$ 中的系数是 $1$.
 		}\onslide<+->{%
 			因此 $g=1$.\qedhere
 		}

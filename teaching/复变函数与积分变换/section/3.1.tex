@@ -7,6 +7,8 @@
 	设 $C$ 是平面上一条光滑或逐段光滑的连续曲线,
 	\onslide<+->
 	也就是说它的参数方程 $z=z(t),a\le t\le b$ 除去有限个点之外都有非零导数.
+	\onslide<+->
+	这里 $z'(t)=x'(t)+iy'(t)$.
 
 	\onslide<+->
 	固定它的一个方向, 称为\emph{正方向}, 则我们得到一条\emph{有向曲线}.
@@ -63,7 +65,7 @@
 		\[
 			\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)
 		\]
-		为\emph{函数 $f(z)$ 沿曲线 $C$ 的积分}.
+		为 \emph{$f(z)$ 沿曲线 $C$ 的积分}.
 	\end{definition}
 \end{frame}
 
@@ -72,7 +74,7 @@
 	\onslide<+->
 	当然, 我们也可以像线积分那样通过分割来定义.
 	\onslide<+->
-	在曲线 $C$ 上依次选择分点 $z_0=A,z_1,\dots,z_n=B$.
+	在曲线 $C$ 上依次选择分点 $z_0=A,z_1,\dots,z_{n-1},z_n=B$.
 	\onslide<+->
 	然后在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
 	\[
@@ -124,7 +126,7 @@
 
 \begin{frame}{复变函数积分的存在性}
 	\onslide<+->
-	如果 $C$ 是闭曲线, 则该积分记为 \alert{$\displaystyle\oint_Cf(z)\diff z$}.
+	如果 $C$ 是闭路, 则该积分记为 \alert{$\displaystyle\oint_Cf(z)\diff z$}.
 	\onslide<+->
 	此时该积分不依赖端点的选取.
 
@@ -158,10 +160,10 @@
 	\]
 	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向,
 	\onslide<+->
-	则 $\diff z=z'(t)\diff t$.
+	则 $\diff z=z'(t)\diff t=\bigl(x'(t)+y'(t)\bigr)\diff t$.
 	\onslide<+->
 	\begin{second}{复变函数积分计算方法I}
-		\[\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.\]
+		\[\int_Cf(z)\diff z=\int_a^b f\bigl(z(t)\bigr)z'(t)\diff t.\]
 	\end{second}
 	\onslide<+->
 	如果 $C$ 的正方向是从 $z(b)$ 到 $z(a)$, 则需要交换右侧积分的上下限.
@@ -185,12 +187,12 @@
 		因此
 		\[
 			\int_Cz\diff z=\int_0^1(3+4i)t\cdot(3+4i)\diff t
-			\visible<+->{=(3+4i)^2\int_0^1t\diff t}
-			\visible<+->{=\half (3+4i)^2=-\frac72+12i.}
+			\onslide<+->{=(3+4i)^2\int_0^1t\diff t}
+			\onslide<+->{=\half (3+4i)^2=-\frac72+12i.}
 		\]
 		}
 		\vspace{-\baselineskip}
-		\onslide<1->
+		\onslide<1->{%
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis](0,0)--(3,0);
@@ -199,7 +201,7 @@
 				\draw
 					(2.5,1.2) node[main,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
-		\end{center}
+		\end{center}}
 	\end{solution}
 \end{frame}
 
@@ -216,9 +218,9 @@
 			因此
 			\begin{flalign*}
 				\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9it^2\biggr)\cdot\biggl(1+\frac89it\biggr)\diff t&\\
-				&\visible<+->{=\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t}&\\
-				&\visible<+->{=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3}
-				\visible<+->{=-\frac72+12i.}&
+				&\onslide<+->{=\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t}&\\
+				&\onslide<+->{=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3}
+				\onslide<+->{=-\frac72+12i.}&
 		\end{flalign*}}
 		\vspace{-\baselineskip}
 	\end{solution}
@@ -247,11 +249,11 @@
 		}\onslide<+->{
 			\[
 				\int_C\Re z\diff z=\int_0^1t\cdot(1+i)\diff t
-				\visible<+->{=(1+i)\int_0^1t\diff t}
-				\visible<+->{=\frac{1+i}2.}
+				\onslide<+->{=(1+i)\int_0^1t\diff t}
+				\onslide<+->{=\frac{1+i}2.}
 			\]}
 		\vspace{-\baselineskip}
-		\onslide<1->
+		\onslide<1->{%
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis](0,0)--(3,0);
@@ -260,7 +262,7 @@
 				\draw
 					(2.4,0.9) node[main,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
-		\end{center}
+		\end{center}}
 	\end{solution}
 \end{frame}
 
@@ -307,7 +309,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\visible<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
+		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\onslide<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
 				\draw[cstaxis](0,0)--(2.5,0);
@@ -326,43 +328,23 @@
 		求 $\displaystyle\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
 	\end{example}
 	\onslide<+->
-	\begin{center}
-		\begin{tikzpicture}[framed]
-			\draw[cstcurve,second] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,second,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
-			\fill[cstdot,second](0,0) circle;
-			\draw[cstcurve,main,cstwla]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
-			\draw
-				(-0.5,0.5) node[second] {$r$}
-				(0,-0.3) node[second] {$z_0$};
-		\end{tikzpicture}
-	\end{center}
-	\onslide<+->
 	\begin{solution}
 		$C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
-		\onslide<+->{于是 $\diff z=ire^{i\theta}\diff \theta$.}
+		\onslide<+->{%
+			于是 $\diff z=ire^{i\theta}\diff \theta$.
+		}\onslide<+->{%
+			\begin{align*}
+				\alert<8->{\oint_C\frac{\diff z}{(z-z_0)^{n+1}}}
+				&=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
+				\onslide<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta}\\
+				&\onslide<+->{=ir^{-n}\int_0^{2\pi}\bigl(\cos(n\theta)+i\sin(n\theta)\bigr)\diff\theta}
+				\onslide<+->{\alert<8->{=\begin{cases}
+					2\pi i,&\text{若}\ n=0;\\
+					0,&\text{若}\ n\neq0.
+				\end{cases}}}
+			\end{align*}
+		}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例: 计算复变函数沿圆周的积分}
-	\onslide<+->
-	\begin{solution}[续解]
-		\[
-			\oint_C\frac{\diff z}{(z-z_0)^{n+1}}
-			=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
-			\visible<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta.}
-		\]
-		\onslide<+->{当 $n=0$ 时, 该积分值为 $2\pi i$.}
-
-		\vspace{5mm}
-		\onslide<+->{当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.}
-	\end{solution}
-	\onslide<+->
-	所以
-	\begin{second@}
-		\[\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
-	\end{second@}
-
 	\onslide<+->
 	这个积分以后经常用到, 它的特点是积分值与圆周的圆心和半径都无关.
 \end{frame}
@@ -425,8 +407,8 @@
 			\begin{align*}
 				&\abs{\oint_{|z-a|=r}f(z)\diff z-2\pi i k}
 				=\abs{\oint_{|z-a|=r}\left[f(z)-\frac k{z-a}\right]\diff z}\\
-				\visible<+->{=}&\visible<.->{\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\diff z}}
-				\visible<+->{\le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.}
+				\onslide<+->{=}&\onslide<.->{\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\diff z}}
+				\onslide<+->{\le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.}
 			\end{align*}
 		}\onslide<+->{%
 			由于 $\varepsilon$ 是任意的, 因此命题得证.\qedhere
