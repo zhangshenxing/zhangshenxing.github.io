@@ -49,7 +49,7 @@
 
 	\onslide<+->
 	特征值和特征向量只对方阵存在, 且有如下性质:
-	\begin{enumerate}
+	\begin{enumerate}\bf
 		\item 零向量不是特征向量;
 		\item 若 $\bfx$ 是对应 $\lambda$ 的特征向量, 则它的非零倍也是;
 		\item 若 $\bfx_1,\bfx_2\neq-\bfx_1$ 是对应 $\lambda$ 的特征向量, 则 $\bfx_1+\bfx_2$ 也是;
@@ -273,7 +273,7 @@
 			1&1&0\\
 			1&0&1\\
 			0&1&1
-		\end{pmatrix}$ 的特征值为\fillbrace{\visible<+->{C}}.
+		\end{pmatrix}$ 的特征值为\fillbraceframe{C}.
 		\begin{taskschoice}(4)
 			() $1,0,1$
 			() $1,1,2$
@@ -320,12 +320,12 @@
 	\begin{example}
 		设 $3$ 阶方阵 $\bfA$ 的特征值为 $2,2,3$, 则
 		\begin{enumerate}
-			\item $\bfA^2$ 的特征值为\fillblank[2cm]{\visible<+->{$4,4,9$}};
-			\item $\bfA^2-2\bfA+\bfE$ 的特征值为\fillblank[2cm]{\visible<+->{$1,1,4$}};
-			\item $|\bfA^2-2\bfA+\bfE|=$\fillblank{\visible<+->{$4$}};
-			\item $\bfA^{-1}$ 的特征值为\fillblank[3cm]{\visible<+->{$1/2,1/2,1/3$}};
-			\item $\bfA^*$ 的特征值为\fillblank[2cm]{\visible<+->{$4,6,6$}};
-			\item $A_{11}+A_{22}+A_{33}=$\fillblank{\visible<+->{$16$}}, 其中 $A_{ij}$ 表示 $\bfA$ 的代数余子式.
+			\item $\bfA^2$ 的特征值为\fillblankframe[2cm]{$4,4,9$};
+			\item $\bfA^2-2\bfA+\bfE$ 的特征值为\fillblankframe[2cm]{$1,1,4$};
+			\item $|\bfA^2-2\bfA+\bfE|=$\fillblankframe{$4$};
+			\item $\bfA^{-1}$ 的特征值为\fillblankframe[3cm]{$1/2,1/2,1/3$};
+			\item $\bfA^*$ 的特征值为\fillblankframe[2cm]{$4,6,6$};
+			\item $A_{11}+A_{22}+A_{33}=$\fillblankframe{$16$}, 其中 $A_{ij}$ 表示 $\bfA$ 的代数余子式.
 		\end{enumerate}
 	\end{example}
 \end{frame}
@@ -350,7 +350,7 @@
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		若 $4$ 阶方阵 $\bfA$ 的特征值为 $1,2,-2,0$, 则下列矩阵可逆的是\fillbrace{\visible<+->{C}}.
+		若 $4$ 阶方阵 $\bfA$ 的特征值为 $1,2,-2,0$, 则下列矩阵可逆的是\fillbraceframe{C}.
 		\begin{taskschoice}(4)
 			() $\bfA$
 			() $\bfA-2\bfE$
@@ -676,7 +676,7 @@
 		这是因为和 $\bfA=\bfE$ 相似的只有它自己.
 	\onslide<+->
 	\begin{example}
-		若 $3$ 阶方阵 $\bfA\wsim{r_1\swap r_3}{}\bfB\wsim{c_1\swap c_3}{}\bfC$, 则 $\bfA$ 与 $\bfC$ \fillbrace{\visible<+->{C}}.
+		若 $3$ 阶方阵 $\bfA\wsim{r_1\swap r_3}{}\bfB\wsim{c_1\swap c_3}{}\bfC$, 则 $\bfA$ 与 $\bfC$ \fillbraceframe{C}.
 		\begin{taskschoice}(2)
 			() 等价但不相似
 			() 相似但不等价
@@ -737,11 +737,11 @@
 \begin{frame}{例: 相似矩阵的性质}
 	\onslide<+->
 	\begin{example}
-		若 $4$ 阶方阵 $\bfA$ 与 $\bfB$ 相似, $\bfA$ 的特征值为 $1,2,3,4$, 则 $|\bfB+\bfE|=$\fillblank{\visible<+->{$120$}}.
+		若 $4$ 阶方阵 $\bfA$ 与 $\bfB$ 相似, $\bfA$ 的特征值为 $1,2,3,4$, 则 $|\bfB+\bfE|=$\fillblankframe{$120$}.
 	\end{example}
 	\onslide<+->
 	\begin{example}
-		设$3$ 阶可逆阵 $\bfA,\bfB$ 相似, $\bfA^{-1}$ 的特征值为 $1/2,1/3,1/4$, 则 $|\bfE-\bfB|=$\fillblank{\visible<+->{$-6$}}.
+		设$3$ 阶可逆阵 $\bfA,\bfB$ 相似, $\bfA^{-1}$ 的特征值为 $1/2,1/3,1/4$, 则 $|\bfE-\bfB|=$\fillblankframe{$-6$}.
 	\end{example}
 	\onslide<+->
 	\begin{example}
@@ -766,8 +766,8 @@
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且 $|\bfA-\bfE|=0, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<4->{$3/4$}}.
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblank{\visible<5->{$3/4$}}.
+			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且 $|\bfA-\bfE|=0, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblankframe{\visible<4->{$3/4$}}.
+			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblankframe{\visible<5->{$3/4$}}.
 		\end{enumerate}
 	\end{exercise}
 	\onslide<+->
@@ -1007,12 +1007,12 @@
 			0&0&1\\
 			a&1&1\\
 			1&0&0
-		\end{pmatrix}$ 可对角化, 则\fillblank{\visible<+->{$-1$}}.
+		\end{pmatrix}$ 可对角化, 则\fillblankframe{$-1$}.
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfP^{-1}\bfA\bfP=\diag(1,2,3)$.
-		若 $\bfP=(\bma_1,\bma_2,\bma_3),\bfQ=(\bma_1,\bma_3,\bma_2)$	, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblank[2cm]{\visible<+->{$\diag(1,3,2)$}}.
+		若 $\bfP=(\bma_1,\bma_2,\bma_3),\bfQ=(\bma_1,\bma_3,\bma_2)$	, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblankframe[2cm]{$\diag(1,3,2)$}.
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
@@ -1028,7 +1028,7 @@
 			1&0&0\\
 			0&2&0\\
 			0&0&2
-		\end{pmatrix}$, 则\fillbrace{\visible<+->{C}}.
+		\end{pmatrix}$, 则\fillbraceframe{C}.
 		\begin{taskschoice}(2)
 			() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 相似
 			() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 相似
@@ -1085,7 +1085,7 @@
 \begin{frame}{例: 特征值的性质}
 	\onslide<+->
 	\begin{exercise}
-		若 $4$ 阶实矩阵 $\bfA^*$ 的特征值为 $-1,1,2,4$, 则下列矩阵可逆的是\fillbrace{\visible<+->{D}}.
+		若 $4$ 阶实矩阵 $\bfA^*$ 的特征值为 $-1,1,2,4$, 则下列矩阵可逆的是\fillbraceframe{D}.
 		
 		\begin{taskschoice}(4)
 			() $\bfA+2\bfE$
@@ -1096,7 +1096,7 @@
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
-		若 $n$ 阶实对称矩阵 $\bfA$ 满足 $\bfA^2-\bfA=\bfO$, 则下列矩阵不可逆的是\fillbrace{\visible<+->{C}}.
+		若 $n$ 阶实对称矩阵 $\bfA$ 满足 $\bfA^2-\bfA=\bfO$, 则下列矩阵不可逆的是\fillbraceframe{C}.
 		
 		\begin{taskschoice}(4)
 			() $\bfA+2\bfE$
@@ -1107,7 +1107,7 @@
 	\end{exercise}
 	\onslide<+->
 	\begin{exercise}
-		若 $3$ 阶方阵 $\bfA$ 的特征值互不相同且 $|\bfA|=0$, 则 $R(\bfA)=$\fillblank{\visible<+->{$2$}}.
+		若 $3$ 阶方阵 $\bfA$ 的特征值互不相同且 $|\bfA|=0$, 则 $R(\bfA)=$\fillblankframe{$2$}.
 	\end{exercise}
 \end{frame}
 
@@ -1176,7 +1176,7 @@
 			-1&2\\
 			0&1\\
 			1&1
-		\end{pmatrix}$, 则 $\bfA$ 相似于\fillbrace{\visible<+->{C}}.
+		\end{pmatrix}$, 则 $\bfA$ 相似于\fillbraceframe{C}.
 		
 		\begin{taskschoice}(4)
 			() $\diag(1,1,2)$

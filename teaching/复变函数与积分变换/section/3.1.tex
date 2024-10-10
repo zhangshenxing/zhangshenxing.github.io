@@ -33,11 +33,11 @@
 				\fill (A) circle;
 				\fill (B) circle;
 			\end{scope}
-			\begin{scope}[xshift=-14mm,yshift=11mm,cstcurve,main,smooth,cstwla,visible on=<5->]
-				\draw[domain=-65:30] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-				\draw[domain=25:120] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-				\draw[domain=115:210] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-				\draw[domain=205:300] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
+			\begin{scope}[xshift=-18mm,yshift=13mm,cstcurve,main,smooth,cstwla,visible on=<5->]
+				\draw[domain=-65:30] plot ({-cos(\x)}, {.8*sin(\x)});
+				\draw[domain=25:120] plot ({-cos(\x)}, {.8*sin(\x)});
+				\draw[domain=115:210] plot ({-cos(\x)}, {.8*sin(\x)});
+				\draw[domain=205:300] plot ({-cos(\x)}, {.8*sin(\x)});
 			\end{scope}
 		\end{tikzpicture}
 	\end{center}
@@ -195,11 +195,13 @@
 		\onslide<1->{%
 		\begin{center}
 			\begin{tikzpicture}
-				\draw[cstaxis](0,0)--(3,0);
-				\draw[cstaxis](0,0)--(0,2.5);
-				\draw[cstcurve,main,cstwra](0,0)--(1.5,2);
+				\coordinate (O) at (0,0);
+				\draw[cstaxis](O)--(3,0);
+				\draw[cstaxis](O)--(0,2.5);
+				\coordinate (A) at (1.5,2);
+				\draw[cstcurve,main,cstwra](O)--(A);
 				\draw
-					(2.5,1.2) node[main,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
+					(A) node[below right,main,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}}
 	\end{solution}
@@ -213,26 +215,28 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由于 $z=t+\dfrac49it^2,0\le t\le 3$,
-		\onslide<+->{%
-			因此
-			\begin{flalign*}
-				\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9it^2\biggr)\cdot\biggl(1+\frac89it\biggr)\diff t&\\
-				&\onslide<+->{=\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t}&\\
-				&\onslide<+->{=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3}
-				\onslide<+->{=-\frac72+12i.}&
-		\end{flalign*}}
-		\vspace{-\baselineskip}
+		\begin{minipage}{.66\textwidth}
+			由于 $z=t+\dfrac49it^2,0\le t\le 3$,
+			\onslide<+->{%
+				因此
+				\begin{align*}
+					\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9it^2\biggr)\cdot\biggl(1+\frac89it\biggr)\diff t\\
+					&\onslide<+->{=\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t}\\
+					&\onslide<+->{=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3}
+					\onslide<+->{=-\frac72+12i.}
+			\end{align*}}
+			\vspace{-\baselineskip}
+		\end{minipage}
+		\begin{minipage}{.3\textwidth}
+			\onslide<2->
+			\begin{tikzpicture}
+				\draw[cstaxis](O)--(3,0);
+				\draw[cstaxis](O)--(0,2.5);
+				\draw[cstcurve,main,domain=0:1.5,cstwra] plot({\x},{8*\x*\x/9});
+				\draw (A) node[right,main,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
+			\end{tikzpicture}
+		\end{minipage}
 	\end{solution}
-	\vspace{-\baselineskip}
-	\onslide<1->
-	\begin{tikzpicture}[overlay,xshift=85mm,yshift=10mm]
-		\draw[cstaxis](0,0)--(3,0);
-		\draw[cstaxis](0,0)--(0,2.5);
-		\draw[cstcurve,main,domain=0:1.5,cstwra] plot({\x},{8*\x*\x/9});
-		\draw
-			(2.8,2) node[main,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
-	\end{tikzpicture}
 \end{frame}
 
 
@@ -256,11 +260,11 @@
 		\onslide<1->{%
 		\begin{center}
 			\begin{tikzpicture}
-				\draw[cstaxis](0,0)--(3,0);
-				\draw[cstaxis](0,0)--(0,2);
-				\draw[cstcurve,main,cstwra](0,0)--(2,2);
-				\draw
-					(2.4,0.9) node[main,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
+				\draw[cstaxis](O)--(3,0);
+				\draw[cstaxis](O)--(0,2);
+				\coordinate (B) at (2,2);
+				\draw[cstcurve,main,cstwra](O)--(B);
+				\draw (B) node[below right,main,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}}
 	\end{solution}
@@ -285,16 +289,18 @@
 		\onslide<2->
 		\begin{center}
 			\begin{tikzpicture}
-				\draw[cstaxis](0,0)--(2.5,0);
-				\draw[cstaxis](0,0)--(0,2);
-				\draw[cstcurve,main,cstwra](0,0)--(0,1.5);
-				\draw[cstcurve,second,cstwra](0,1.5)--(1.5,1.5);
+				\draw[cstaxis](O)--(2.5,0);
+				\draw[cstaxis](O)--(0,2);
+				\coordinate (C) at (0,1.5);
+				\coordinate (D) at (1.5,1.5);
+				\draw[cstcurve,main,cstwra](O)--(C);
+				\draw[cstcurve,second,cstwra](C)--(D);
 				\draw
-					(-1.1,1.2) node[align=center,main,visible on=<3->] {$z=it$\\$0\le t\le 1$}
-					(2.5,1.5) node[align=center,second,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
+					(C) node[below left,align=center,main,visible on=<3->] {$z=it$\\$0\le t\le 1$}
+					(D) node[right,align=center,second,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}
-		\vspace{-0.6\baselineskip}
+		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -309,13 +315,13 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{\onslide<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
+		求 $\displaystyle\int_C\Im z\diff z=$\fillblankframe[3cm][2mm]{\onslide<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
 		\begin{center}
-			\begin{tikzpicture}[scale=.8]
-				\draw[cstaxis](0,0)--(2.5,0);
-				\draw[cstaxis](0,0)--(0,2.5);
-				\draw[cstcurve,cstwra,main](0,0)--(2,2);
-				\draw[cstcurve,cstwra,second](2,2)--(0,2);
+			\begin{tikzpicture}
+				\draw[cstaxis](O)--(2,0);
+				\draw[cstaxis](O)--(0,2);
+				\draw[cstcurve,cstwra,main](O)--(D);
+				\draw[cstcurve,cstwra,second](D)--(C);
 			\end{tikzpicture}
 		\end{center}
 	\end{exercise}

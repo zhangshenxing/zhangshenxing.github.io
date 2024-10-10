@@ -1,0 +1,935 @@
+\ctexset{
+  chapter = {
+    name = {第,章},
+    number = \chinese{chapter},
+    format = \centering\color{main}\huge\bfseries
+  },
+  section = {
+    name = {\S,},
+    format = \centering\color{main}\Large\bfseries
+  },
+  subsection = {
+    name = {\S,},
+    format = \color{third}\large\bfseries
+  },
+  subsubsection = {
+    name = {\S,},
+    format = \color{third}\large\bfseries
+  }
+}
+
+
+
+\RequirePackage{kvoptions}
+\RequirePackage{etoolbox}
+\RequirePackage{amsthm}
+
+\RequirePackage[T1]{fontenc}
+\setCJKsansfont[ItalicFont={KaiTi},BoldFont={LXGW ZhenKai}]{Source Han Sans HW SC}
+
+
+
+
+
+
+
+
+% \SetupKeyvalOptions{family=ELEGANT, prefix=ELEGANT@, setkeys=\kvsetkeys}
+% \newcommand{\ekv}[1]{\kvsetkeys{ELEGANT}{#1}}
+% % ----- Colors -----
+% \DeclareStringOption[nocolor]{color}
+% \DeclareStringOption[answer]{result}
+% \DeclareStringOption[fancy]{mode}
+% \DeclareStringOption[normal]{device}
+% \DeclareStringOption[cm]{math}
+% \DeclareStringOption[marginfalse]{marginpar}
+% \DeclareStringOption[onecol]{toc}
+% \DeclareStringOption{scheme}
+
+% % ----- backward compatibility
+% \DeclareVoidOption{nocolor}{\ekv{color=none}}
+% \DeclareVoidOption{green}{\ekv{color=green}}
+% \DeclareVoidOption{cyan}{\ekv{color=cyan}}
+% \DeclareVoidOption{blue}{\ekv{color=blue}}
+% \DeclareVoidOption{gray}{\ekv{color=gray}}
+% \DeclareVoidOption{black}{\ekv{color=black}}
+% \DeclareVoidOption{beamercolor}{\ekv{color=beamercolor}}
+% \DeclareVoidOption{doremi}{\ekv{color=doremi}}
+% \DeclareVoidOption{madoka}{\ekv{color=madoka}}
+
+% \DeclareVoidOption{chinese}{\ekv{scheme=chinese}}
+
+% \DeclareVoidOption{fancy}{\ekv{mode=fancy}}
+% \DeclareVoidOption{simple}{\ekv{mode=simple}}
+% \DeclareBoolOption[false]{usesamecnt}
+
+% \DeclareVoidOption{answer}{\ekv{result=answer}}
+% \DeclareVoidOption{noanswer}{\ekv{result=noanswer}}
+
+% \DeclareStringOption[numeric-comp]{citestyle}
+% \DeclareStringOption[numeric]{bibstyle}
+
+% \DeclareVoidOption{margintrue}{\ekv{marginpar=margintrue}}
+% \DeclareVoidOption{marginfalse}{\ekv{marginpar=marginfalse}}
+
+% \DeclareStringOption[biber]{bibend}
+% \DeclareVoidOption{biber}{\ekv{bibend=biber}}
+% \DeclareVoidOption{bibtex}{\ekv{bibend=bibtex}}
+
+
+% % ----- Math option -----
+% % \newcommand\mailto[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+
+% % ----- Title Style -----
+% \DeclareStringOption[hang]{titlestyle}[hang]
+% % ----- backward compatibility
+% \DeclareVoidOption{hang}{\ekv{titlestyle=hang}}
+% \DeclareVoidOption{display}{\ekv{titlestyle=display}}
+% % ----- Default Options -----
+% \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{book}}
+
+% \ProcessKeyvalOptions*\relax
+% % \ProcessOptions*\relax
+% % \LoadClass[a4paper,oneside]{book}
+\RequirePackage{setspace}
+\RequirePackage{csquotes}
+\RequirePackage{hyperref}
+\hypersetup{
+  breaklinks,
+  unicode,
+  linktoc=all,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  pdfkeywords={ElegantBook},
+  colorlinks,
+  linkcolor=second,
+  citecolor=second,
+  urlcolor=second,
+  plainpages=false,
+  pdfstartview=FitH,
+  pdfborder={0 0 0},
+  linktocpage
+}
+% \newif\ifELEGANT@Hy@later
+%   \@ifpackagelater{hyperref}{2022/05/16}
+%     {\ELEGANT@Hy@latertrue}
+%     {\ELEGANT@Hy@laterfalse}
+
+% %% device settings
+\RequirePackage{geometry}
+% \ifdefstring{\ELEGANT@device}{normal}{
+%   \geometry{
+%     a4paper,
+%     top=25.4mm, bottom=25.4mm,
+%     left=20mm, right=20mm,
+%     headheight=2.17cm,
+%     headsep=4mm,
+%     footskip=12mm
+%   }
+%   \ifdefstring{\ELEGANT@marginpar}{margintrue}{
+%     \geometry{
+%       marginparwidth=5cm, marginparsep=5mm,
+%       left=2cm,right=7cm}}{\relax}}{
+%     \relax}
+
+% \ifdefstring{\ELEGANT@device}{pad}{
+% \geometry{
+%   paperwidth=7.5in, 
+%   paperheight=10in,
+%   margin=16mm,
+%   headheight=2.17cm,
+%   footskip=4mm
+% }}{\relax}
+
+
+% \RequirePackage{indentfirst,comment}
+% % fontsetting
+% \ifdefstring{\ELEGANT@math}{mtpro2}{
+%   \let\Bbbk\relax
+%   \RequirePackage[lite]{mtpro2}
+% }{\relax}
+
+% \setcounter{tocdepth}{1}
+% \renewcommand{\baselinestretch}{1.2}
+
+% \PassOptionsToPackage{no-math}{fontspec}
+% \PassOptionsToPackage{quiet}{fontspec}
+% \RequirePackage{iftex}
+
+% \ifpdftex
+%   \RequirePackage{newtxtext}
+%   \RequirePackage[scaled=.90]{helvet}
+% \else
+%   \RequirePackage[no-math]{fontspec}
+%   \setmainfont{TeXGyreTermesX}[
+%     UprightFont = *-Regular ,
+%     BoldFont = *-Bold ,
+%     ItalicFont = *-Italic ,
+%     BoldItalicFont = *-BoldItalic ,
+%     Extension = .otf ,
+%     Scale = 1.0]
+    
+%   \setsansfont{texgyreheros}[
+%     UprightFont = *-regular ,
+%     BoldFont = *-bold ,
+%     ItalicFont = *-italic ,
+%     BoldItalicFont = *-bolditalic ,
+%     Extension = .otf ,
+%     Scale = 0.9]
+% \fi
+
+%   \ifdefstring{\ELEGANT@chinesefont}{founder}{
+%     \setCJKsecondfont[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]{FZShuSong-Z01}
+%     \setCJKsansfont[BoldFont={FZHei-B01}]{FZKai-Z03}
+%     \setCJKmonofont[BoldFont={FZHei-B01}]{FZFangSong-Z02}
+%     \setCJKfamilyfont{zhsong}{FZShuSong-Z01}
+%     \setCJKfamilyfont{zhhei}{FZHei-B01}
+%     \setCJKfamilyfont{zhkai}[BoldFont={FZHei-B01}]{FZKai-Z03}
+%     \setCJKfamilyfont{zhfs}[BoldFont={FZHei-B01}]{FZFangSong-Z02}
+%     \newcommand*{\songti}{\CJKfamily{zhsong}}
+%     \newcommand*{\heiti}{\CJKfamily{zhhei}}
+%     \newcommand*{\kaishu}{\CJKfamily{zhkai}}
+%     \newcommand*{\fangsong}{\CJKfamily{zhfs}}}{\relax}
+  
+%   \ifdefstring{\ELEGANT@chinesefont}{nofont}{
+%     \xeCJKsetup{AutoFakeBold=true}
+%     }{\relax}
+
+%   \ifdefstring{\ELEGANT@chinesefont}{ctexfont}{
+%     \xeCJKsetup{AutoFakeBold=true}
+%     }{\relax}
+  
+%   \AfterEndPreamble{
+%     \setlength\parindent{2\ccwd}}
+
+% \ifcsname heiti\endcsname
+%   \newcommand{\cbfseries}{\heiti}
+% \else
+%   \newcommand{\cbfseries}{\bfseries}
+% \fi
+
+
+% \ifcsname kaishu\endcsname
+%   \newcommand{\citshape}{\kaishu}
+% \else
+%   \newcommand{\citshape}{\itshape}
+% \fi
+% \ifcsname kaishu\endcsname
+%   \newcommand{\cnormal}{\kaishu}
+% \else
+%   \newcommand{\cnormal}{\normalfont}
+% \fi
+
+% \ifcsname fangsong\endcsname
+%   \newcommand{\cfs}{\fangsong}
+% \else
+%   \newcommand{\cfs}{\normalfont}
+% \fi
+
+% \RequirePackage{anyfontsize}
+% \ifdefstring{\ELEGANT@math}{newtx}{
+%   \let\oldencodingdefault\encodingdefault
+%   \let\oldrmdefault\rmdefault
+%   \let\oldsfdefault\sfdefault
+%   \let\oldttdefault\ttdefault
+%   \def\encodingdefault{T1}
+%   \renewcommand{\rmdefault}{ntxtlf}
+%   \renewcommand{\sfdefault}{qhv}
+%   \renewcommand{\ttdefault}{ntxtt}
+%   \RequirePackage{newtxmath}
+%   \let\encodingdefault\oldencodingdefault
+%   \let\rmdefault\oldrmdefault
+%   \let\sfdefault\oldsfdefault
+%   \let\ttdefault\oldttdefault
+%   \let\Bbbk\relax
+%   \RequirePackage{esint}
+%   %%% use yhmath pkg, uncomment following code
+%   % \let\oldwidering\widering
+%   % \let\widering\undefined
+%   % \RequirePackage{yhmath}
+%   % \let\widering\oldwidering
+
+%   %%% use esvect pkg, uncomment following code
+%   % \RequirePackage{esvect}
+
+%   \DeclareSymbolFont{CMlargesymbols}{OMX}{cmex}{m}{n}
+%   \let\sumop\relax\let\prodop\relax
+%   \DeclareMathSymbol{\sumop}{\mathop}{CMlargesymbols}{"50}
+%   \DeclareMathSymbol{\prodop}{\mathop}{CMlargesymbols}{"51}
+% }{\relax}
+
+
+% % ----- Handle Colors -----
+% %% 章节以及页脚图形
+
+% \ifdefstring{\ELEGANT@color}{nocolor}{
+%   \definecolor{main}{RGB}{0,0,0}
+%   \definecolor{second}{RGB}{0,0,0}%
+%   \definecolor{third}{RGB}{0,0,0}%
+%   \definecolor{fourth}{RGB}{0,0,0}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{green}{
+%   \definecolor{main}{RGB}{0,120,2}%
+%   \definecolor{second}{RGB}{0,120,2}%
+%   \definecolor{third}{RGB}{230,90,7}%
+%   \definecolor{fourth}{RGB}{0,160,152}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{cyan}{
+%   \definecolor{main}{RGB}{31,186,190}%
+%   \definecolor{second}{RGB}{59,180,5}%
+%   \definecolor{third}{RGB}{175,153,8}%
+%   \definecolor{fourth}{RGB}{244,105,102}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{blue}{
+%   \definecolor{main}{RGB}{60,113,183}
+%   \definecolor{second}{RGB}{0,166,82}%
+%   \definecolor{third}{RGB}{255,134,24}%
+%   \definecolor{fourth}{RGB}{0,174,247}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{gray}{
+%   \definecolor{main}{RGB}{150,150,150}
+%   \definecolor{second}{RGB}{150,150,150}%
+%   \definecolor{third}{RGB}{150,150,150}%
+%   \definecolor{fourth}{RGB}{150,150,150}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{black}{
+%   \definecolor{main}{RGB}{0,0,0}
+%   \definecolor{second}{RGB}{0,0,0}%
+%   \definecolor{third}{RGB}{0,0,0}%
+%   \definecolor{fourth}{RGB}{0,0,0}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{beamercolor}{
+%   \definecolor{main}{RGB}{242,0,0}%
+%   \definecolor{second}{RGB}{51,51,179}%
+%   \definecolor{third}{RGB}{0,128,0}%
+%   \definecolor{fourth}{RGB}{121,64,0}%
+%   \definecolor{fifth}{RGB}{25,89,90}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{doremi}{
+%   \definecolor{main}{RGB}{73,119,213}%
+%   \definecolor{second}{RGB}{220,60,105}%
+%   \definecolor{third}{RGB}{122,89,166}%
+%   \definecolor{fourth}{RGB}{229,143,52}%
+%   \definecolor{fifth}{RGB}{244,220,10}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{madoka}{
+%   \definecolor{main}{RGB}{255,77,166}%
+%   \definecolor{second}{RGB}{237,128,18}%
+%   \definecolor{third}{RGB}{100,157,232}%
+%   \definecolor{fourth}{RGB}{191,64,100}%
+% }{\relax}
+
+% % corlor definition
+% \definecolor{second}{rgb}{0.5,0,0}
+% \definecolor{bule}{RGB}{18,29,57}
+% \colorlet{coverlinecolor}{third}
+
+
+% % ----- Title Style -----
+% \ifdefstring{\ELEGANT@titlestyle}{hang}{\def\style{hang}}{\relax}
+% \ifdefstring{\ELEGANT@titlestyle}{display}{\def\style{display}}{\relax}
+
+% % reference: 
+% % https://tex.stackexchange.com/questions/58506/how-to-make-a-new-command-similar-to-author
+% % https://pastebin.com/C8W4axzV
+% \newcommand\email[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+
+% \global\let\@title\@empty
+% \global\let\@author\@empty
+% \global\let\@date\@empty
+% \newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+% \newcommand{\institute}[1]{\gdef\@institute{#1}}
+% \newcommand{\version}[1]{\gdef\@version{#1}}
+% \newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
+
+% \RequirePackage{mwe}
+% \newcommand{\logo}[1]{\gdef\@logo{#1}}
+% \newcommand{\cover}[1]{\gdef\@cover{#1}}
+
+% \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
+
+\RequirePackage[labelfont={bf,color=fourth}]{caption} 
+\captionsetup[table]{skip=3pt}
+\captionsetup[figure]{skip=3pt}
+
+\AtBeginDocument{
+  \setlength{\abovedisplayskip}{3pt}
+  \setlength{\belowdisplayskip}{3pt}
+  \RequirePackage[flushmargin,stable]{footmisc}
+  \setlength{\footnotesep}{12pt}
+}
+
+
+
+\RequirePackage{graphicx}
+%\RequirePackage{enumerate}
+\RequirePackage{amsmath,mathrsfs,amsfonts,amssymb}
+% \providecommand\qed{}
+% \renewcommand{\qed}{\hfill\ensuremath{\square}}
+\RequirePackage{booktabs}
+\RequirePackage{multicol,multirow}
+
+\RequirePackage{fancyvrb}
+\RequirePackage{makecell,lipsum,hologo}
+%%中文结构名字
+
+
+% %%   章节设置
+% \RequirePackage[center,pagestyles]{titlesec}
+% \RequirePackage[title,titletoc,header]{appendix}
+
+
+% \RequirePackage[
+%   backend=\ELEGANT@bibend,
+%   citestyle=\ELEGANT@citestyle,
+%   bibstyle=\ELEGANT@bibstyle
+% ]{biblatex}
+
+\renewcommand{\baselinestretch}{1.3}
+%   % \renewcommand{\contentsname}{目录}
+%   % \renewcommand{\figurename}{图}
+%   % \renewcommand{\tablename}{表}
+%   % \renewcommand{\partname}{\color{main}}
+%   % \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+%   % \renewcommand{\listfigurename}{插图目录}
+%   % \renewcommand{\listtablename}{表格目录}
+%   % \renewcommand{\bibname}{参考文献}
+%   % \newcommand{\ebibname}{参考文献}
+%   % \renewcommand{\appendixname}{附录}
+%   % \renewcommand{\appendixtocname}{附录}
+%   % \renewcommand{\indexname}{索\hspace{2em}引}
+%   % \newcommand\figref[1]{\textbf{图}~\ref{#1}}
+%   % \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
+%   % \newcommand{\authorname}{\citshape 作者：}
+%   % \newcommand{\institutename}{\citshape 组织：}
+%   % \newcommand{\datename}{\citshape 时间：}
+%   % \newcommand{\introductionname}{内容提要}
+%   % \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+%   % \newcommand{\updatename}{更新：}
+%   % \newcommand{\historyname}{版本更新历史}
+%   % \newcommand{\beforechap}{第}
+%   % \newcommand{\afterchap}{章}
+
+
+%   \renewenvironment{proof}[1][\proofname]{\par
+%   \pushQED{\qed}%
+%   \normalfont \topsep6\p@\@plus6\p@\relax
+%   \trivlist
+%   \item[\hskip\labelsep
+%     \textbf{\color{third}{#1\@addpunct{:}}}]\ignorespaces\citshape
+% }{%
+%   \popQED\endtrivlist\@endpefalse
+% }
+
+% \graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
+
+% \RequirePackage{tikz} %% load tikz without tikz
+% \usetikzlibrary{backgrounds,calc,shadows,positioning,fit}
+% \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%             \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+% %  https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+
+% \RequirePackage{apptools}
+
+% \setcounter{secnumdepth}{5}
+% % \titleformat{\chapter}[\style]{\bfseries}{
+% %   \filcenter\LARGE\enspace\bfseries{\color{main} \IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}}{1pt}{
+% %   \LARGE\bfseries\color{main}\filcenter}[]
+% % \titleformat{\section}[hang]{\bfseries}{
+% %   \Large\bfseries{\color{main}\S\thesection}\enspace}{1pt}{%
+% %   \color{main}\Large\bfseries\filright}
+% % \titleformat{\subsection}[hang]{\bfseries}{
+% %   \large\bfseries\color{main}\S\thesubsection\enspace}{1pt}{%
+% %   \color{main}\large\bfseries\filright}
+% % \titleformat{\subsubsection}[hang]{\bfseries}{
+% %   \large\bfseries\color{main}\S\thesubsubsection\enspace}{1pt}{%
+% %   \color{main}\large\bfseries\filright}
+
+
+
+% \RequirePackage{enumerate}
+\RequirePackage[inline]{enumitem}
+
+\setlist[itemize,1]{label={\textcolor{main}{$\bullet$}}}
+\setlist[itemize,2]{label={\textcolor{second}{$\bullet$}}}
+\setlist[itemize,3]{label={\textcolor{third}{$\bullet$}}}
+\setlist[enumerate]{format=\upshape\textcolor{main}}
+\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,2]{label=\color{main}(\alph*).}
+\setlist[enumerate,3]{label=\color{main}\Roman*.}
+\setlist[enumerate,4]{label=\color{main}\Alph*.}
+\newlist{homework}{enumerate}{1}
+\setlist[homework,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
+\newlist{exlist}{enumerate}{3}
+\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
+\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
+\setlist[exlist,3]{label=\color{main}{(\roman*)}}
+\setlist{nolistsep}
+
+% %%define the 
+% %%definition theorem postulate axiom corollary lemma proposition 
+% %%and proof environment
+% \RequirePackage{pifont,manfnt}
+\RequirePackage{bbding}
+% \RequirePackage[many]{tcolorbox}
+% % \newlength{\normalparindent}
+% % % \setlength{\normalparindent}{\parindent}
+% % \newcommand{\ELEGANT@tmp@tl}{}
+% % \ifELEGANT@usesamecnt
+% %   \newcounter{ELEGANT@samecnt}
+% %   \counterwithin{ELEGANT@samecnt}{chapter}
+% %   \tcbset{
+% %     new/usesamecnt/.style = {use counter = ELEGANT@samecnt}
+% %   }
+% % \else
+% %   \tcbset{
+% %     new/usesamecnt/.style = {}
+% %   }
+% % \fi
+
+
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+	common/.style={
+		lower separated=false,
+		coltitle=white,
+		colback=white,
+		boxrule=0pt,
+		fonttitle=\bfseries,
+		enhanced,
+		left=1mm,right=1mm,bottom=1mm,top=2mm,
+		before skip=2mm minus 1mm,
+		after skip=2mm minus 1mm,
+		attach boxed title to top left={
+			yshift=-0.11in, xshift=0.15in
+		},
+		boxed title style={
+			boxrule=0pt, arc=0pt, outer arc=0pt
+		},
+		before upper={\parindent1em\vspace{.2\baselineskip}}
+	},
+	indent/.style={
+		before upper={\parindent1em}
+	},
+	parttitle/.style={
+		mainstyle,
+		left=1em,
+		bottom=1ex,
+		fonttitle=\large,
+		attach boxed title to top center={
+			yshift=-10pt, xshift=0pt
+		}
+	},
+	sectiontitle/.style={
+		thirdstyle,
+		left=-0.5em, top=4ex,
+		bottom=1ex,
+		fonttitle=\large,
+		attach boxed title to top center={
+			yshift=-10pt, xshift=0pt
+		}
+	},
+	mainstyle/.style={
+		common,
+		borderline={0pt}{0pt}{main,cstdash},
+		colbacktitle=main
+	},
+	secondstyle/.style={
+		common,
+		borderline={0pt}{0pt}{second,cstdash},
+		colbacktitle=second
+	},
+	thirdstyle/.style={
+		common,
+		borderline={0pt}{0pt}{third,cstdash},
+		colbacktitle=third
+	},
+	fourthstyle/.style={
+		common,
+		borderline={0pt}{0pt}{fourth,cstdash},
+		colbacktitle=fourth
+	},
+	fifthstyle/.style={
+		common,
+		borderline={0pt}{0pt}{fifth,cstdash},
+		colbacktitle=fifth
+	}
+}
+% @ means notitle, * means indent
+\RequirePackage{xparse}
+\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{main@}{\begin{tcolorbox}[mainstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{second}[1]{\begin{tcolorbox}[secondstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{second@}{\begin{tcolorbox}[secondstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{third}[1]{\begin{tcolorbox}[thirdstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{third@}{\begin{tcolorbox}[thirdstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{fourth}[1]{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{fourth@}{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{fifth}[1]{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
+\newenvironment{fifth@}{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+
+\newcounter{thm}[chapter]
+\setcounter{thm}{0}
+\renewcommand{\thethm}{\thechapter.\arabic{thm}}
+\NewDocumentEnvironment{theorem}{o}{
+  \refstepcounter{thm}
+	\begin{second}{定理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}
+}
+\NewDocumentEnvironment{proposition}{o}{
+  \refstepcounter{thm}
+	\begin{second}{命题 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+\NewDocumentEnvironment{corollary}{o}{
+  \refstepcounter{thm}
+	\begin{second}{推论 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+\NewDocumentEnvironment{lemma}{o}{
+  \refstepcounter{thm}
+	\begin{second}{引理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+
+\newcounter{def}[chapter]
+\setcounter{def}{0}
+\renewcommand{\thedef}{\thechapter.\arabic{def}}
+\NewDocumentEnvironment{definition}{o}{
+  \refstepcounter{def}
+	\begin{third}{定义 \thedef \IfNoValueTF{#1}{}{~(#1)}}}{\end{third}}
+
+\NewDocumentEnvironment{conjecture}{o}{
+  \refstepcounter{thm}
+	\begin{fifth}{猜想 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{fifth}}
+
+%% Example with counter
+\newcounter{exam}[chapter]
+\setcounter{exam}{0}
+\renewcommand{\theexam}{\thechapter.\arabic{exam}}
+\NewDocumentEnvironment{example}{o}{
+  \refstepcounter{exam}
+  \par\noindent\textbf{\color{main}{例} \theexam \IfNoValueTF{#1}{}{~(#1)}}\rmfamily}{
+  \par\ignorespacesafterend}
+
+%% Exercise with counter
+\newcounter{exer}[chapter]
+\setcounter{exer}{0}
+\renewcommand{\theexer}{\thechapter.\arabic{exer}}
+\newenvironment{exercise}[1][]{
+  \refstepcounter{exer}
+	\label{exer:\theexer}
+  \par\noindent\makebox[-3pt][r]{
+    \scriptsize\color{fifth}\HandPencilLeft\quad}
+    \textbf{\color{fifth} 练习 \theexer #1 }\rmfamily}{
+    \par\ignorespacesafterend}
+\newcommand\exans{
+	\refstepcounter{exer}
+	\par\noindent
+	\textbf{\color{fifth}\ref{exer:\theexer}}
+}
+
+%% Problem with counter
+\newcounter{prob}[chapter]
+\setcounter{prob}{0}
+\renewcommand{\theprob}{\thechapter.\arabic{prob}}
+\newenvironment{problem}[1][]{
+  \refstepcounter{prob}
+  \par\noindent\textbf{\color{second}{作~~业} \theprob #1 }\rmfamily}{
+  \par\ignorespacesafterend}
+
+\newenvironment{solution}[1][解]{\par\noindent\textbf{\color{fourth}#1\@addpunct{:}} \itshape}{\par}
+\newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}注}}{\vspace*{5pt}\par}
+
+% \RequirePackage{multicol}
+% \tcbset{
+%   introductionsty/.style={
+%     enhanced,
+%     breakable,
+%     fonttitle=\bfseries,
+%     colbacktitle=main,
+%     fontupper=\citshape,
+%     attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
+%     boxrule=0pt,
+%     toprule=0.5pt,
+%     bottomrule=0.5pt,
+%     top=8pt,
+%     before skip=8pt,
+%     sharp corners
+%   },
+% }
+
+\newcommand{\section@}[1]{
+  \newpage
+  \begin{center}
+    \phantomsection\addcontentsline{toc}{section}{#1}
+    \markright{#1}
+    \textcolor{main}{\Large\bfseries~#1~}
+  \end{center}
+}
+\newcommand{\sectionHomework}{\section@{作业}}
+\newcommand{\sectionExtraReading}{\section@{扩展阅读}}
+\newcommand{\sectionExerciseAnswer}{
+	\setcounter{exer}{0}
+	\section@{练习答案}
+	\hypersetup{linkcolor=fifth}
+}
+
+
+% \newenvironment{answer}[1][答案]{
+%   \chapter{#1}
+%   \begin{homeworklist}}{
+%   \end{homeworklist}}
+
+% % \newenvironment{exerciseset}{
+% %   \vspace*{10pt}
+% %   \par\indent\makebox[-3pt][r]{
+% %   \large\color{fourth}\HandPencilLeft\quad}
+% %   \textbf{\color{second}{\Large\bfseries练习}}\rmfamily
+% %   \begin{exenum}}{
+% %   \end{exenum}}
+
+% % \newcommand{\subexs}[1][1]{\vskip1ex\par%
+% %   \setcounter{subexperiod}{#1}%
+% %   \noindent{\color{green!60!black}{\kaishu 作业~\theexercise. }}}
+% % \newcounter{subexnum}[enumii]
+% % \newcounter{subexcount}[enumii]
+% % \newcounter{subexperiod}[enumii]
+% % \newcommand{\setsubex}[1][4]{\setcounter{subexperiod}{#1}}
+% % \newcommand{\subex}[1]{%
+% % 	\stepcounter{subexnum}%
+% % 	\ifnum\value{subexperiod}>4%
+% % 		\setcounter{subexperiod}{5}
+% % 	\fi%
+% % 	\ifnum\value{subexperiod}>1%
+% % 		\ifnum\value{subexcount}=0\par\fi%
+% % 		\ifnum\value{subexperiod}=2\makebox[0.44\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}=3\makebox[0.29\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}=4\makebox[0.21\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}>4\makebox[0.16\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\stepcounter{subexcount}%
+% % 		\ifnum\value{subexperiod}=\value{subexcount}\setcounter{subexcount}{0}\fi%
+% % 	\else%
+% % 		\ifnum\value{subexperiod}=1%
+% % 			\par\textcolor{main}{(\thesubexnum)} #1%
+% % 		\else
+% % 			\textcolor{main}{(\thesubexnum)} #1\relax%
+% % 		\fi
+% % 	\fi%
+% % }
+
+% \def\relsec{\endgroup start}
+% \def\endrelsec{end\begingroup\def \@currenvir {relsec}}
+
+% %页眉页脚
+% \RequirePackage{fancyhdr}
+% \fancyhf{}
+
+
+% \fancyfoot[c]{\color{main}\small\thepage}
+% \if@twoside
+%   \fancyhead[EL]{\color{main}\cnormal\leftmark}
+%   \fancyhead[OR]{\color{main}\cnormal\rightmark}
+% \else
+%   \fancyhead[R]{\color{main}\cnormal\rightmark}
+% \fi
+
+% \renewcommand{\headrule}{\color{main}\hrule width\textwidth}
+% \pagestyle{fancy}
+% \renewcommand{\headrulewidth}{1pt}
+% % \renewcommand{\headrule}{}
+% \fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}\renewcommand{\headrule}{}}
+% \renewcommand{\sectionmark}[1]{\markright{\thesection\, #1}{}}
+
+
+% \renewcommand*{\maketitle}{%
+% \hypersetup{pageanchor=false}
+% \pagenumbering{Alph}
+% \begin{titlepage}
+%   \newgeometry{margin = 0in}
+%   \parindent=0pt
+%   \ifdefstring{\ELEGANT@device}{normal}{
+%     \ifcsname @cover\endcsname
+%       \includegraphics[width=\linewidth]{\@cover}
+%     \else
+%       \includegraphics[width=\linewidth]{example-image}
+%     \fi
+%   }{\relax}
+%   \ifdefstring{\ELEGANT@device}{pad}{
+%     \ifcsname @cover\endcsname
+%       \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{\@cover}
+%     \else
+%       \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{example-image}
+%     \fi
+%   }{\relax}
+%   \setlength{\fboxsep}{0pt}
+%   \colorbox{main}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
+%   \vfill
+%   \vskip-2ex
+%   \hspace{2em}
+%   \parbox{0.8\textwidth}{
+%     \bfseries\Huge\color{main}
+%       \ifcsname @title\endcsname \@title \fi
+%     \par}
+%   \vfill
+%   \vspace{-1.0cm}
+%   \setstretch{2.5}
+%   \hspace{2.5em}
+%   \begin{minipage}[c]{0.67\linewidth}
+%     {\color{main}\bfseries\Large
+%       \ifcsname @subtitle\endcsname\@subtitle\\[2ex]\fi}
+%     \color{main}\normalsize
+%     {\renewcommand{\arraystretch}{0.618}
+%     \begin{tabular}{l}
+%       % \ifcsname @author\endcsname \authorname \@author\\\fi
+%       \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi\color{second}
+%       \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi\color{third}
+%       % \ifcsname @date\endcsname  \@date\\\fi
+%       \ifx\@date\empty\else\datename\cnormal\@date \\ \fi\color{fourth}
+%       \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
+%       \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
+%     \end{tabular}}
+%   \end{minipage}
+%   \begin{minipage}[c]{0.27\linewidth}
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \begin{pgfonlayer}{background}
+%       \node[opacity=0.8,
+%             anchor=south east,
+%             outer sep=0pt,
+%             inner sep=0pt] at ($(current page.south east) +(-0.8in,2.5in)$) {
+%               \ifcsname @logo\endcsname\includegraphics[width=4.2cm]{\@logo}\fi};
+%     \end{pgfonlayer}
+%   \end{tikzpicture}
+%   \end{minipage}
+%   \vfill
+%   \begin{center}
+%     \setstretch{1.3}
+%     \parbox[t]{0.7\textwidth}{\centering \citshape 
+%       \ifcsname @extrainfo\endcsname\@extrainfo\fi}
+%   \end{center}
+%   \vfill
+% \end{titlepage}
+% \restoregeometry
+% \thispagestyle{empty}}
+
+
+% \newcommand{\dollar}{\mbox{\textdollar}}
+
+% \RequirePackage{listings}
+% \renewcommand{\ttdefault}{cmtt}
+% \lstdefinestyle{mystyle}{
+%   basicstyle=%
+%     \ttfamily
+%     \lst@ifdisplaystyle\small\fi
+% }
+
+% \lstset{basicstyle=\ttfamily,style=mystyle,breaklines=true}
+
+% \definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+% \definecolor{frenchplum}{RGB}{190,20,83}
+% \lstset{language=[LaTeX]TeX,
+%   texcsstyle=*\color{second},
+%   numbers=none,
+%   mathescape=false,
+%   breaklines=true,
+%   keywordstyle=\color{second},
+%   commentstyle=\color{gray},
+%   emph={elegantpaper,fontenc,fontspec,xeCJK,citestyle,FiraMono,xunicode,figure,fig,image,img,table,itemize,enumerate,ctex,microtype,description,times,booktabs,tabular,PDFLaTeX,XeLaTeX,type1cm,BibTeX,device,color,mode,lang,amsthm,tcolorbox,titlestyle,cite,ctex,listings,base,math,scheme,toc,esint,chinesefont,amsmath,bibstyle,natbib,pgfornament,addbibresource,printbibliography},
+%   emphstyle={\color{frenchplum}},
+%   morekeywords={DeclareSymbolFont,SetSymbolFont,toprule,midrule,bottomrule,institute,version,includegraphics,setmainfont,setsansfont,setmonofont ,setCJKsecondfont,setCJKsansfont,setCJKmonofont,RequirePackage,figref,tabref,email,maketitle,keywords,definecolor,extrainfo,logo,cover,subtitle,appendix,chapter,section,hypersetup,secondmatter,frontmatter,tableofcontents,elegantpar,heiti,kaishu,lstset,pagecolor,zhnumber,marginpar,part,equote,marginnote,bioinfo,datechange,listofchange,lvert,lastpage,songti,heiti,fangsong,setCJKfamilyfont,textbf,elegantnewtheorem,thmcnt,colorlet,usesamecnt},
+%   frame=single,
+%   tabsize=2,
+%   rulecolor=\color{main},
+%   framerule=0.2pt,
+%   columns=flexible,
+%   % backgroundcolor=\color{lightgrey}
+% }
+
+% \newcommand\bmmax{0}
+% \RequirePackage{bm}
+
+% % add the list of change history
+% \newcommand{\dateinfoline}[2]{
+%   \noindent\makebox[0pt][r]{%
+%   \makebox[-3em][r]{%
+%     \small
+%     \textbf{\textcolor{main}{#1}}}\;\;}%
+%   {\citshape\updatename\ignorespaces#2}}
+
+% \newcommand{\datechange}[2]{%
+%   \noindent{\makebox[\textwidth][r]{\color{main}\rule{1.15\textwidth}{.4pt}}}
+%   \dateinfoline{#1}{#2}
+%   \addcontentsline{dates}{section}{#1 -- #2}}
+
+% \newcommand{\listofchanges}{%
+%   \begingroup
+%     \renewcommand{\contentsname}{\historyname}
+%     \let\old@starttoc\@starttoc
+%     \def\@starttoc##1{
+%       \old@starttoc{dates}}
+%     \tableofcontents%
+%   \endgroup}
+% % https://tex.stackexchange.com/questions/472931/list-of-all-dates-in-a-document
+
+% \newenvironment{change}{
+%   \begin{enumerate}[label=\small\protect\circled{\arabic*}]}{
+%   \end{enumerate}}
+
+% % \renewcommand\tableofcontents{%
+% %   \hypersetup{linktoc=all, linkcolor=main}
+% %     \if@twocolumn
+% %       \@restonecoltrue\onecolumn
+% %     \else
+% %       \@restonecolfalse
+% %     \fi
+% %     \chapter*{\contentsname
+% %         \@mkboth{%
+% %            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+% %     \ifdefstring{\ELEGANT@toc}{twocol}{
+% %       \setlength{\columnsep}{2em}
+% %       \begin{multicols}{2}%
+% %         \@starttoc{toc}
+% %       \end{multicols}}{
+% %       \@starttoc{toc}}
+% %     \if@restonecol\twocolumn\fi
+% %     \hypersetup{linkcolor=fourth}}
+
+
+% \renewcommand*{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+% \hbox{}%
+% \thispagestyle{empty}%
+% \newpage%
+% \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+
+% \RequirePackage{calc}
+% \RequirePackage[titles]{tocloft}
+% % \ifdefstring{\ELEGANT@lang}{cn}{
+%   % \renewcommand{\cftchappresnum}{\beforechap\space}
+%   % \renewcommand{\cftchapaftersnum}{\space\afterchap}
+%   % \setlength{\cftchapnumwidth}{\widthof{\textbf{附录~十一}}}
+% %   \renewcommand{\numberline}[1]{%
+% %   \@cftbsnum #1\@cftasnum~\@cftasnumb ~%
+% %   }
+% %   \g@addto@macro\appendix{%
+% %     \ifELEGANT@Hy@later
+% %       \patchcmd{\NR@chapter}%
+% %         {\numberline{\xchaptertitle}}{\numberline{\thechapter}}%
+% %         {}{\fail}      
+% %     \else
+% %       \patchcmd{\Hy@org@chapter}%
+% %         {\numberline{\xchaptertitle}}{\numberline{\thechapter}}%
+% %         {}{\fail}  
+% %     \fi
+% %     \addtocontents{toc}{%
+% %       \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+% %       \protect\renewcommand{\protect\cftchapaftersnum}{}%
+% %     }%
+% %   }
+% % }{
+% %   \renewcommand{\cftchappresnum}{\chaptername\space}
+% %   \renewcommand{\cftchapaftersnum}{\space}
+% %   \setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~9}}}
+% %   \g@addto@macro\appendix{%
+% %     \addtocontents{toc}{%
+% %       \protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+% %       \protect\renewcommand{\protect\cftchapaftersnum}{}%
+% %       \setlength{\cftchapnumwidth}{\widthof{\textbf{Appendix~999}}}
+% %     }%
+% %   }
+% % }
+
+% % restore the tt default family to lmodern tt family
+% \renewcommand\ttdefault{lmtt}

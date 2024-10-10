@@ -86,13 +86,7 @@
 
 一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
 
-\begin{thinking}
-	什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
-\end{thinking}
-
-\begin{answer}
-	当且仅当非零的 $z_n$ 的辐角全都相同时成立.
-\end{answer}
+想一想: 什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
 
 \begin{example}
 	级数 $\displaystyle\sum_{n=1}^\infty\frac{1+i^n}n$ 发散、条件收敛、还是绝对收敛?
@@ -123,10 +117,6 @@
 \begin{exercise}
 	级数 $\displaystyle\sum_{n=1}^\infty\left[\frac{(-1)^n}n+\frac i{2^n}\right]$ 发散、条件收敛、还是绝对收敛?
 \end{exercise}
-
-\begin{answer}
-	实部级数条件收敛, 虚部级数绝对收敛, 所以该级数条件收敛.
-\end{answer}
 
 由正项级数的判别法可以得到:
 设
@@ -175,12 +165,12 @@
 
 我们只需要考虑 $a=0$ 情形的幂级数, 因为二者的收敛范围与和函数只是差一个平移.
 
-\begin{main}{阿贝尔定理}
+\begin{theorem}{阿贝尔定理}
 	\begin{enumerate}
 		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
 		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
 	\end{enumerate}
-\end{main}
+\end{theorem}
 
 \begin{proof}
 	{\enumnum1 因为级数收敛, 所以 $\lim\limits_{n\to\infty}c_n z_0^n=0$.故存在 $M$ 使得 $|c_nz_0^n|<M$.对于 $|z|<|z_0|$,
@@ -389,10 +379,6 @@
 \begin{exercise}
 	求幂级数 $\suml_{n=1}^\infty\dfrac{z^n}n$ 的收敛半径与和函数.
 \end{exercise}
-
-\begin{answer}
-	收敛半径为 $1$, 和函数为 $-\ln(1-z)$.
-\end{answer}
 
 \begin{example}
 	求 $\displaystyle\oint_{|z|=\half }\left(\sum_{n=-1}^\infty z^n\right)\diff z$.
@@ -609,13 +595,6 @@ e^{-x^{-2}},&x\neq 0,\\
 \begin{exercise}
 	求 $\dfrac1{1-3z+2z^2}$ 的麦克劳林展开.
 \end{exercise}
-
-\begin{answer}
-\[
-	\frac1{1-3z+2z^2}=\frac{2}{1-2z}-\frac1{1-z}
-	=\sum_{n=0}^\infty(2^{n+1}-1)z^n,\quad |z|<\half .
-\]
-\end{answer}
 
 有理函数展开为真分式形式若用待定系数法总略显繁琐, 我们现介绍一种方法.
 设
@@ -890,9 +869,6 @@ $a_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $|\lambda|\ge R$ 是奇点, 
 	将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
 \end{exercise}
 
-\begin{answer}
-	\[f(z)=\sum_{n=1}^\infty \frac{2n-1}{z^n}.\]
-\end{answer}
 利用幂函数的泰勒展开可以得到
 \[\frac1{(1-\lambda z)^k}=-\sum_{n<0}(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|>\frac1{|\lambda|}.\]
 实际上求和范围可以改成 $n\le -k$.
@@ -933,3 +909,35 @@ $a_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $|\lambda|\ge R$ 是奇点, 
 		\]故
 		$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=2\pi i$.}
 \end{solution}
+
+
+
+
+\sectionExerciseAnswer
+\exans1} $-\dfrac12+\dfrac i2$.
+\exans1} \enumnum1 $0$; \enumnum2 $0$.
+\exans5} $v(x,y)=2x^3+3x^2y-6xy^2-y^3+C$.
+
+% \begin{answer}
+% 	当且仅当非零的 $z_n$ 的辐角全都相同时成立.
+% \end{answer}
+
+
+% \begin{answer}
+% 	实部级数条件收敛, 虚部级数绝对收敛, 所以该级数条件收敛.
+% \end{answer}
+
+% \begin{answer}
+% 	收敛半径为 $1$, 和函数为 $-\ln(1-z)$.
+% \end{answer}
+
+% \begin{answer}
+% \[
+% 	\frac1{1-3z+2z^2}=\frac{2}{1-2z}-\frac1{1-z}
+% 	=\sum_{n=0}^\infty(2^{n+1}-1)z^n,\quad |z|<\half .
+% \]
+% \end{answer}
+
+% \begin{answer}
+% 	\[f(z)=\sum_{n=1}^\infty \frac{2n-1}{z^n}.\]
+% \end{answer}

@@ -14,11 +14,11 @@
 %%%
 \RequirePackage{kvoptions}
 \RequirePackage{etoolbox}
-\RequirePackage{amsthm}
 \SetupKeyvalOptions{family=ELEGANT, prefix=ELEGANT@, setkeys=\kvsetkeys}
 \newcommand{\ekv}[1]{\kvsetkeys{ELEGANT}{#1}}
 % ----- Colors -----
-\DeclareStringOption[nocolor]{color}
+% \DeclareStringOption[nocolor]{color}
+\DeclareStringOption[doremi]{theme}
 \DeclareStringOption[en]{lang}
 \DeclareStringOption[answer]{result}
 \DeclareStringOption[fancy]{mode}
@@ -29,15 +29,15 @@
 \DeclareStringOption{scheme}
 
 % ----- backward compatibility
-\DeclareVoidOption{nocolor}{\ekv{color=none}}
-\DeclareVoidOption{green}{\ekv{color=green}}
-\DeclareVoidOption{cyan}{\ekv{color=cyan}}
-\DeclareVoidOption{blue}{\ekv{color=blue}}
-\DeclareVoidOption{gray}{\ekv{color=gray}}
-\DeclareVoidOption{black}{\ekv{color=black}}
-\DeclareVoidOption{beamercolor}{\ekv{color=beamercolor}}
-\DeclareVoidOption{doremi}{\ekv{color=doremi}}
-\DeclareVoidOption{madoka}{\ekv{color=madoka}}
+% \DeclareVoidOption{green}{\ekv{color=green}}
+% \DeclareVoidOption{cyan}{\ekv{color=cyan}}
+% \DeclareVoidOption{blue}{\ekv{color=blue}}
+% \DeclareVoidOption{gray}{\ekv{color=gray}}
+% \DeclareVoidOption{black}{\ekv{color=black}}
+% \DeclareVoidOption{nocolor}{\ekv{color=none}}
+
+\DeclareVoidOption{doremi}{\ekv{theme=doremi}}
+\DeclareVoidOption{madoka}{\ekv{theme=madoka}}
 
 \DeclareVoidOption{chinese}{\ekv{scheme=chinese}}
 
@@ -281,61 +281,52 @@
 %% 章节以及页脚图形
 
 \RequirePackage[table]{xcolor}
-\ifdefstring{\ELEGANT@color}{nocolor}{
-  \definecolor{main}{RGB}{0,0,0}
-  \definecolor{second}{RGB}{0,0,0}%
-  \definecolor{third}{RGB}{0,0,0}%
-  \definecolor{fourth}{RGB}{0,0,0}%
+\newcommand{\themename}{doremi}
+% \ifdefstring{\ELEGANT@color}{green}{
+%   \definecolor{main}{RGB}{0,120,2}%
+%   \definecolor{second}{RGB}{0,120,2}%
+%   \definecolor{third}{RGB}{230,90,7}%
+%   \definecolor{fourth}{RGB}{0,160,152}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{cyan}{
+%   \definecolor{main}{RGB}{31,186,190}%
+%   \definecolor{second}{RGB}{59,180,5}%
+%   \definecolor{third}{RGB}{175,153,8}%
+%   \definecolor{fourth}{RGB}{244,105,102}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{blue}{
+%   \definecolor{main}{RGB}{60,113,183}
+%   \definecolor{second}{RGB}{0,166,82}%
+%   \definecolor{third}{RGB}{255,134,24}%
+%   \definecolor{fourth}{RGB}{0,174,247}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{gray}{
+%   \definecolor{main}{RGB}{150,150,150}
+%   \definecolor{second}{RGB}{150,150,150}%
+%   \definecolor{third}{RGB}{150,150,150}%
+%   \definecolor{fourth}{RGB}{150,150,150}%
+% }{\relax}
+% \ifdefstring{\ELEGANT@color}{black}{
+%   \definecolor{main}{RGB}{0,0,0}
+%   \definecolor{second}{RGB}{0,0,0}%
+%   \definecolor{third}{RGB}{0,0,0}%
+%   \definecolor{fourth}{RGB}{0,0,0}%
+% }{\relax}
+
+% ------ Theme ------ %
+\ifdefstring{\ELEGANT@theme}{doremi}{
+  \definecolor{main}{RGB}{220,60,105}%
+  \definecolor{second}{RGB}{229,143,52}%
+  \definecolor{third}{RGB}{73,119,213}%
+  \definecolor{fourth}{RGB}{122,89,166}%
+  \renewcommand{\themename}{doremi}
 }{\relax}
-\ifdefstring{\ELEGANT@color}{green}{
-  \definecolor{main}{RGB}{0,120,2}%
-  \definecolor{second}{RGB}{0,120,2}%
-  \definecolor{third}{RGB}{230,90,7}%
-  \definecolor{fourth}{RGB}{0,160,152}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{cyan}{
-  \definecolor{main}{RGB}{31,186,190}%
-  \definecolor{second}{RGB}{59,180,5}%
-  \definecolor{third}{RGB}{175,153,8}%
-  \definecolor{fourth}{RGB}{244,105,102}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{blue}{
-  \definecolor{main}{RGB}{60,113,183}
-  \definecolor{second}{RGB}{0,166,82}%
-  \definecolor{third}{RGB}{255,134,24}%
-  \definecolor{fourth}{RGB}{0,174,247}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{gray}{
-  \definecolor{main}{RGB}{150,150,150}
-  \definecolor{second}{RGB}{150,150,150}%
-  \definecolor{third}{RGB}{150,150,150}%
-  \definecolor{fourth}{RGB}{150,150,150}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{black}{
-  \definecolor{main}{RGB}{0,0,0}
-  \definecolor{second}{RGB}{0,0,0}%
-  \definecolor{third}{RGB}{0,0,0}%
-  \definecolor{fourth}{RGB}{0,0,0}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{beamercolor}{
-  \definecolor{main}{RGB}{242,0,0}%
-  \definecolor{second}{RGB}{51,51,179}%
-  \definecolor{third}{RGB}{0,128,0}%
-  \definecolor{fourth}{RGB}{121,64,0}%
-  \definecolor{fifth}{RGB}{25,89,90}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{doremi}{
-  \definecolor{main}{RGB}{73,119,213}%
-  \definecolor{second}{RGB}{220,60,105}%
-  \definecolor{third}{RGB}{122,89,166}%
-  \definecolor{fourth}{RGB}{229,143,52}%
-  \definecolor{fifth}{RGB}{244,220,10}%
-}{\relax}
-\ifdefstring{\ELEGANT@color}{madoka}{
+\ifdefstring{\ELEGANT@theme}{madoka}{
   \definecolor{main}{RGB}{255,77,166}%
   \definecolor{second}{RGB}{237,128,18}%
   \definecolor{third}{RGB}{100,157,232}%
   \definecolor{fourth}{RGB}{191,64,100}%
+  \renewcommand{\themename}{madoka}
 }{\relax}
 
 % corlor definition
@@ -367,7 +358,12 @@
 
 \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
 
-\RequirePackage[labelfont={bf,color=fourth}]{caption} 
+\RequirePackage{enumerate}
+% list/itemize/enumerate setting
+\RequirePackage[shortlabels,inline]{enumitem}
+\setlist{nolistsep}
+
+\RequirePackage[labelfont={bf,color=main}]{caption} 
 \captionsetup[table]{skip=3pt}
 \captionsetup[figure]{skip=3pt}
 
@@ -432,13 +428,11 @@
   \newcommand{\lemmaname}{引理}
   \newcommand{\propositionname}{命题}
   \newcommand{\corollaryname}{推论}
-  \newcommand{\examplename}{例} %
+  \newcommand{\examplename}{例题} %
   \newcommand{\instancename}{示例} %
   \newcommand{\problemname}{问题} % 问题
   \newcommand{\exercisename}{练习} % 练习=习题
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
-  \newcommand{\remarkname}{注记}
+  \newcommand{\remarkname}{注}
   \newcommand{\assumptionname}{假设}
   \newcommand{\conclusionname}{结论}
   \newcommand{\solutionname}{解}
@@ -463,7 +457,7 @@
   \newcommand{\datename}{\textbf{Date: }}
   \newcommand{\versionname}{\textbf{Version: }}
   \newcommand{\notename}{Note}
-  \renewcommand{\proofname}{Proof}
+  \newcommand{\proofname}{Proof}
   \newcommand{\problemname}{Problem}
   \newcommand{\definitionname}{Definition}
   \newcommand{\theoremname}{Theorem}
@@ -474,8 +468,6 @@
   \newcommand{\corollaryname}{Corollary}
   \newcommand{\examplename}{Example}
   \newcommand{\exercisename}{Exercise}
-  \newcommand{\homeworkname}{Homework}
-  \newcommand{\answername}{Answer}
   \newcommand{\remarkname}{Remark}
   \newcommand{\assumptionname}{Assumption}
   \newcommand{\conclusionname}{Conclusion}
@@ -484,7 +476,7 @@
   \newcommand{\introductionname}{Introduction}
   \renewcommand{\appendixname}{Appendix}
   \newcommand{\ebibname}{Bibliography}
-  % \newcommand{\homeworkname}{Exercise}
+  % \newcommand{\problemsetname}{Exercise}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Updates:}
   \newcommand{\historyname}{Version History}
@@ -503,7 +495,7 @@
   \newcommand{\datename}{\textbf{Data: }}
   \newcommand{\versionname}{\textbf{Versione: }}
   \newcommand{\notename}{Nota}
-  \renewcommand{\proofname}{Dimostrazione}
+  \newcommand{\proofname}{Dimostrazione}
   \newcommand{\problemname}{Problema}
   \newcommand{\definitionname}{Definizione}
   \newcommand{\theoremname}{Teorema}
@@ -514,8 +506,6 @@
   \newcommand{\corollaryname}{Corollario}
   \newcommand{\examplename}{Esempio}
   \newcommand{\exercisename}{Esercizio}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Commento}
   \newcommand{\assumptionname}{Assunto}
   \newcommand{\conclusionname}{Conclusione}
@@ -552,15 +542,13 @@
   \renewcommand{\corollaryname}{Corollaire}
   \renewcommand{\examplename}{Exemple}
   \renewcommand{\exercisename}{Exercice}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \renewcommand{\remarkname}{Remarque}
   \renewcommand{\assumptionname}{Supposition}
   \renewcommand{\conclusionname}{Conclusion}
   \renewcommand{\solutionname}{Solution}
   \renewcommand{\propertyname}{Propriété}
   \renewcommand{\introductionname}{Introduction}
-  \renewcommand{\homeworkname}{Exercice}
+  \renewcommand{\problemsetname}{Exercice}
   \renewcommand{\updatename}{Mises à jour:}
   \newcommand{\ebibname}{Bibliographie}
   \renewcommand{\historyname}{Historique des versions}
@@ -578,7 +566,7 @@
   \newcommand{\datename}{\textbf{Datum: }}
   \newcommand{\versionname}{\textbf{Versie: }}
   \newcommand{\notename}{Opmerking}
-  \renewcommand{\proofname}{Bewijs}
+  \newcommand{\proofname}{Bewijs}
   \newcommand{\problemname}{Probleem}
   \newcommand{\definitionname}{Definitie}
   \newcommand{\theoremname}{Stelling}
@@ -589,15 +577,13 @@
   \newcommand{\corollaryname}{Gevolgtrekking}
   \newcommand{\examplename}{Voorbeeld}
   \newcommand{\exercisename}{Oefening}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Commentaar}
   \newcommand{\assumptionname}{Veronderstelling}
   \newcommand{\conclusionname}{Besluit}
   \newcommand{\solutionname}{Oplossing}
   \newcommand{\propertyname}{Eigenschap}
   \newcommand{\introductionname}{Introductie}
-  \newcommand{\homeworkname}{Probleemcomplex}
+  \newcommand{\problemsetname}{Probleemcomplex}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Update:}
   \newcommand{\ebibname}{Bibliographie}
@@ -616,7 +602,7 @@
   \newcommand{\datename}{\textbf{Dátum: }}
   \newcommand{\versionname}{\textbf{Verziószám: }}
   \newcommand{\notename}{Jegyzet}
-  \renewcommand{\proofname}{Bizonyítás}
+  \newcommand{\proofname}{Bizonyítás}
   \newcommand{\problemname}{Probléma}
   \newcommand{\definitionname}{Definíció}
   \newcommand{\theoremname}{Tétel}
@@ -627,15 +613,13 @@
   \newcommand{\corollaryname}{Következmény}
   \newcommand{\examplename}{Példa}
   \newcommand{\exercisename}{Feladat}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Megjegyzés}
   \newcommand{\assumptionname}{Sejtés}
   \newcommand{\conclusionname}{Összefoglalás}
   \newcommand{\solutionname}{Megoldás}
   \newcommand{\propertyname}{Tulajdonság}
   \newcommand{\introductionname}{Bevezetés}
-  \newcommand{\homeworkname}{Feladatok}
+  \newcommand{\problemsetname}{Feladatok}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Frissítve:}
   \newcommand{\ebibname}{Bibliográfia}
@@ -658,7 +642,7 @@
   \newcommand{\datename}{\textbf{Datum: }}
   \newcommand{\versionname}{\textbf{Version: }}
   \newcommand{\notename}{Notiz}
-  \renewcommand{\proofname}{Beweis}
+  \newcommand{\proofname}{Beweis}
   \newcommand{\problemname}{Problem}
   \newcommand{\definitionname}{Definition}
   \newcommand{\theoremname}{Theorem}
@@ -670,8 +654,6 @@
   \newcommand{\examplename}{Beispiel}
   \newcommand{\instancename}{Beispiel} %
   \newcommand{\exercisename}{\"{U}bung}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Anmerkung}
   \newcommand{\assumptionname}{Annahme}
   \newcommand{\conclusionname}{Abschluss}
@@ -695,7 +677,7 @@
   \newcommand{\datename}{\textbf{Fecha: }}
   \newcommand{\versionname}{\textbf{Versión: }}
   \newcommand{\notename}{Nota}
-  \renewcommand{\proofname}{Demostración}
+  \newcommand{\proofname}{Demostración}
   \newcommand{\problemname}{Problema}
   \newcommand{\definitionname}{Definición}
   \newcommand{\theoremname}{Teorema}
@@ -706,15 +688,13 @@
   \newcommand{\corollaryname}{Corolario}
   \newcommand{\examplename}{Ejemplo}
   \newcommand{\exercisename}{Ejercicio}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Comentario}
   \newcommand{\assumptionname}{Asunto}
   \newcommand{\conclusionname}{Conclusión}
   \newcommand{\solutionname}{Solución}
   \newcommand{\propertyname}{Propiedad}
   \newcommand{\introductionname}{Introducción}
-  \newcommand{\homeworkname}{Ejercicio}
+  \newcommand{\problemsetname}{Ejercicio}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Actualización:}
   \newcommand{\ebibname}{Bibliografía}
@@ -734,7 +714,7 @@
   \newcommand{\datename}{\textbf{Огноо: }}
   \newcommand{\versionname}{\textbf{Хувилбар: }}
   \newcommand{\notename}{Тэмдэглэл}
-  \renewcommand{\proofname}{Баталгаа}
+  \newcommand{\proofname}{Баталгаа}
   \newcommand{\problemname}{Бодлого}
   \newcommand{\definitionname}{Тодорхойлолт}
   \newcommand{\theoremname}{Томьёо}
@@ -745,15 +725,13 @@
   \newcommand{\corollaryname}{Үр дүн}
   \newcommand{\examplename}{Жишээ}
   \newcommand{\exercisename}{Дасгал}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Тайлбар}
   \newcommand{\assumptionname}{Урьдчилсан нөхцөл}
   \newcommand{\conclusionname}{Дүгнэлт}
   \newcommand{\solutionname}{Хариулт}
   \newcommand{\propertyname}{Шинж чанар}
   \newcommand{\introductionname}{Удиртгал}
-  \newcommand{\homeworkname}{Бодлогууд}
+  \newcommand{\problemsetname}{Бодлогууд}
   \newcommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Шинэчлэлтүүд:}
   \newcommand{\ebibname}{Ном зүй}
@@ -772,7 +750,7 @@
   \newcommand{\datename}{\textbf{Data: }}
   \newcommand{\versionname}{\textbf{Versão: }}
   \newcommand{\notename}{Observação}
-  \renewcommand{\proofname}{Demostração}
+  \newcommand{\proofname}{Demostração}
   \newcommand{\problemname}{Problema}
   \newcommand{\definitionname}{Definição}
   \newcommand{\theoremname}{Teorema}
@@ -783,15 +761,13 @@
   \newcommand{\corollaryname}{Corolário}
   \newcommand{\examplename}{Exemplo}
   \newcommand{\exercisename}{Exercício}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{Comentário}
   \newcommand{\assumptionname}{Assunto}
   \newcommand{\conclusionname}{Conclusão}
   \newcommand{\solutionname}{Soluções}
   \newcommand{\propertyname}{Propiedade}
   \newcommand{\introductionname}{Introdução}
-  \newcommand{\homeworkname}{Questão}
+  \newcommand{\problemsetname}{Questão}
   \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
   \newcommand{\updatename}{Atualização: }
   \newcommand{\ebibname}{Bibliografia}
@@ -816,7 +792,7 @@
   \newcommand{\datename}{\textbf{日付：}}
   \newcommand{\versionname}{\textbf{\citshape バージョン：}}
   \newcommand{\notename}{ノート}
-  \renewcommand{\proofname}{証明}
+  \newcommand{\proofname}{証明}
   \newcommand{\problemname}{問題}
   \newcommand{\definitionname}{定義}
   \newcommand{\theoremname}{定理}
@@ -828,8 +804,6 @@
   \newcommand{\examplename}{例題}
   \newcommand{\instancename}{例}
   \newcommand{\exercisename}{練習}
-  \newcommand{\homeworkname}{作业}
-  \newcommand{\answername}{参考答案}
   \newcommand{\remarkname}{注}
   \newcommand{\assumptionname}{仮設}
   \newcommand{\conclusionname}{結論}
@@ -841,15 +815,7 @@
   \newcommand{\ebibname}{参考文献}
   \newcommand{\historyname}{バージョン更新履歴}
 }{\relax}
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-    \textbf{\color{third}{#1\@addpunct{:}}}]\ignorespaces\citshape
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
+
 
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
 
@@ -858,6 +824,22 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 %  https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+
+\newcommand*{\eitemi}{\tikz \draw [baseline, ball color=main,draw=none] circle (2pt);}
+\newcommand*{\eitemii}{\tikz \draw [baseline, fill=main,draw=none,circular drop shadow] circle (2pt);}
+\newcommand*{\eitemiii}{\tikz \draw [baseline, fill=main,draw=none] circle (2pt);}
+\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,2]{label=\color{main}(\alph*).}
+\setlist[enumerate,3]{label=\color{main}\Roman*.}
+\setlist[enumerate,4]{label=\color{main}\Alph*.}
+\newlist{exenum}{enumerate}{4}
+\setlist[exenum,1]{label=\color{main}\arabic*.}
+\setlist[exenum,2]{label=\color{main}(\arabic*)}
+\setlist[exenum,3]{label=\color{main}(\alph*).}
+\setlist[exenum,4]{label=\color{main}\Roman*.}
+\setlist[itemize,1]{label={\eitemi}}
+\setlist[itemize,2]{label={\eitemii}}
+\setlist[itemize,3]{label={\eitemiii}}
 
 \RequirePackage{apptools}
 
@@ -904,25 +886,6 @@
 
 
 
-% \RequirePackage{enumerate}
-\RequirePackage[inline]{enumitem}
-
-\setlist[itemize,1]{label={\textcolor{main}{$\bullet$}}}
-\setlist[itemize,2]{label={\textcolor{second}{$\bullet$}}}
-\setlist[itemize,3]{label={\textcolor{third}{$\bullet$}}}
-\setlist[enumerate]{format=\upshape\textcolor{main}}
-\setlist[enumerate,1]{label=\color{main}(\arabic*)}
-\setlist[enumerate,2]{label=\color{main}(\alph*).}
-\setlist[enumerate,3]{label=\color{main}\Roman*.}
-\setlist[enumerate,4]{label=\color{main}\Alph*.}
-\newlist{homeworklist}{enumerate}{1}
-\setlist[homeworklist,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
-\newlist{exlist}{enumerate}{3}
-\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
-\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
-\setlist[exlist,3]{label=\color{main}{(\roman*)}}
-\setlist{nolistsep}
-
 %%define the 
 %%definition theorem postulate axiom corollary lemma proposition 
 %%and proof environment
@@ -950,8 +913,8 @@
       lower separated=false,
       % before upper={\setlength{\parindent}{\normalparindent}},
       coltitle=white,
-      colback=white,
-      boxrule=0pt,
+      colback=gray!5,
+      boxrule=0.5pt,
       fonttitle=\bfseries,
       enhanced,
       breakable,
@@ -962,32 +925,40 @@
         xshift=0.15in},
       boxed title style={
         boxrule=0pt,
-        % colframe=white,
+        colframe=white,
         arc=0pt,
         outer arc=0pt},
       separator sign={.},},
-      mainstyle/.style={
-        common,
-        borderline={0pt}{0pt}{main,cstdash},
-        colbacktitle=main
-      },
-      secondstyle/.style={
-        common,
-        borderline={0pt}{0pt}{second,cstdash},
-        colbacktitle=second
-      },
-    thirdstyle/.style={
+    defstyle/.style={
       common,
-      borderline={0pt}{0pt}{third,cstdash},
-      colbacktitle=third
-    },
-    fourthstyle/.style={
+      colframe=second,  
+      colback=second!5,
+      colbacktitle=second, 
+      overlay unbroken and last={
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/2.png}};}},
+          % \textcolor{second}{$\clubsuit$}};}},
+    thmstyle/.style={
       common,
-      borderline={0pt}{0pt}{fourth,cstdash},
-      colbacktitle=fourth
-    },
+      colframe=third,  
+      colback=third!5,
+      colbacktitle=third, 
+      overlay unbroken and last={
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/3.png}};}},
+          % \textcolor{third}{$\heartsuit$}};}},
+    prostyle/.style={
+      common,
+      colframe=fourth,  
+      colback=fourth!5,
+      colbacktitle=fourth, 
+      overlay unbroken and last={
+        \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+          \includegraphics[height=10mm]{theme/\themename/4.png}};}},
+          % \textcolor{fourth}{$\spadesuit$}};}},
     ELEGANT@title/.code n args={2}
       {
+
         \tcbset
           {
             title=
@@ -1057,13 +1028,13 @@
   }
   % define several environment 
   % we define headers like \definitionname before
-  \ELEGANT@newtheorem{theorem}{thm}{secondstyle}
-  \ELEGANT@newtheorem{definition}{def}{thirdstyle}
-  \ELEGANT@newtheorem{postulate}{pos}{mainstyle}
-  \ELEGANT@newtheorem{axiom}{axi}{secondstyle}
-  \ELEGANT@newtheorem{corollary}{cor}{secondstyle}
-  \ELEGANT@newtheorem{lemma}{lem}{secondstyle}
-  \ELEGANT@newtheorem{proposition}{pro}{secondstyle}
+  \ELEGANT@newtheorem{theorem}{thm}{thmstyle}
+  \ELEGANT@newtheorem{definition}{def}{defstyle}
+  \ELEGANT@newtheorem{postulate}{pos}{thmstyle}
+  \ELEGANT@newtheorem{axiom}{axi}{thmstyle}
+  \ELEGANT@newtheorem{corollary}{cor}{thmstyle}
+  \ELEGANT@newtheorem{lemma}{lem}{thmstyle}
+  \ELEGANT@newtheorem{proposition}{pro}{prostyle}
 }{\relax}
 
 
@@ -1191,7 +1162,7 @@
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
-  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
+  \par\noindent\textbf{\color{second}{\examplename} \theexam #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
 %% Exercise with counter
@@ -1201,8 +1172,8 @@
 \newenvironment{exercise}[1][]{
   \refstepcounter{exer}
   \par\noindent\makebox[-3pt][r]{
-    \scriptsize\color{fifth}\HandPencilLeft\quad}
-    \textbf{\color{fifth}{\exercisename} \theexer #1 }\rmfamily}{
+    \scriptsize\color{main}\HandPencilLeft\quad}
+    \textbf{\color{second}{\exercisename} \theexer #1 }\rmfamily}{
     \par\ignorespacesafterend}
 
 %% Problem with counter
@@ -1219,14 +1190,14 @@
     \scriptsize\color{red!90}\textdbend\quad}
     \textbf{\color{third}\notename} \citshape}{\par}
 
-% \newenvironment{proof}[1][\proofname]{
-%   \par\noindent\textbf{\color{third}#1\;}
-%   \color{black!90}\citshape}{
-%   \hfill$\Box$\quad
-%   \par}
+\newenvironment{proof}[1][\proofname]{
+  \par\noindent\textbf{\color{third}#1\;}
+  \color{black!90}\cfs}{
+  \hfill$\Box$\quad
+  \par}
 
 
-\newenvironment{solution}[1][\solutionname]{\par\noindent\textbf{\color{fourth}#1\@addpunct{:}} \citshape}{\par}
+\newenvironment{solution}{\par\noindent\textbf{\color{second}\solutionname} \citshape}{\par}
 \newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}\remarkname}}{\vspace*{5pt}\par}
 \newenvironment{assumption}{\par\noindent\textbf{\color{fourth}\assumptionname} \citshape}{\par}
 \newenvironment{conclusion}{\par\noindent\textbf{\color{fourth}\conclusionname} \citshape}{\par}
@@ -1238,6 +1209,8 @@
   introductionsty/.style={
     enhanced,
     breakable,
+    colback=main!10,
+    colframe=main,
     fonttitle=\bfseries,
     colbacktitle=main,
     fontupper=\citshape,
@@ -1247,79 +1220,43 @@
     bottomrule=0.5pt,
     top=8pt,
     before skip=8pt,
-    sharp corners
+    sharp corners,
+    overlay unbroken and last={
+      \node[anchor=south east, outer sep=0pt, fill opacity=0.5] at (\linewidth-width,0) {
+        \includegraphics[height=10mm]{theme/\themename/1.png}};}
   },
 }
 
 
 \newenvironment{introduction}{
   \begin{tcolorbox}[introductionsty,title=\introductionname]
+  % \begin{tcolorbox}[introductionsty,title={\includegraphics[height=5mm]{theme/\themename/banner.png}}]
     \begin{multicols}{2}
       \begin{itemize}[label=\textcolor{main}{\upshape\scriptsize\SquareShadowBottomRight}]}{
       \end{itemize}
     \end{multicols}
   \end{tcolorbox}}
 
-\newenvironment{homework}[1][\homeworkname]{
-  \newpage
+\RequirePackage{adforn}
+
+\newenvironment{problemset}[1][\xchaptertitle~\exercisename]{
+  \vspace*{10pt}
   \begin{center}
-    \phantomsection\addcontentsline{toc}{section}{#1}
+    \phantomsection\addcontentsline{toc}{section}{\texorpdfstring{\xchaptertitle~\exercisename}{\exercisename}}
+    % \markboth{#1}{\rightmark}
     \markright{#1}
-    \textcolor{main}{\Large\bfseries~#1~}
+    \textcolor{main}{\Large\bfseries\adftripleflourishleft~#1~\adftripleflourishright}
   \end{center}
-  \begin{homeworklist}}{
-  \end{homeworklist}}
-  
-\newcommand{\exerciseanswer}[1][\exercisename~\answername]{
-  \newpage
-  \begin{center}
-    \phantomsection\addcontentsline{toc}{section}{#1}
-    \markright{#1}
-    \textcolor{main}{\Large\bfseries~#1~}
-  \end{center}
-}
+  \begin{enumerate}}{
+  \end{enumerate}}
 
-\newenvironment{answer}[1][\answername]{
-  \chapter{#1}
-  \begin{homeworklist}}{
-  \end{homeworklist}}
-
-% \newenvironment{exerciseset}{
-%   \vspace*{10pt}
-%   \par\indent\makebox[-3pt][r]{
-%   \large\color{fourth}\HandPencilLeft\quad}
-%   \textbf{\color{second}{\Large\bfseries\exercisename}}\rmfamily
-%   \begin{exenum}}{
-%   \end{exenum}}
-
-% \newcommand{\subexs}[1][1]{\vskip1ex\par%
-%   \setcounter{subexperiod}{#1}%
-%   \noindent{\color{green!60!black}{\kaishu 作业~\theexercise. }}}
-% \newcounter{subexnum}[enumii]
-% \newcounter{subexcount}[enumii]
-% \newcounter{subexperiod}[enumii]
-% \newcommand{\setsubex}[1][4]{\setcounter{subexperiod}{#1}}
-% \newcommand{\subex}[1]{%
-% 	\stepcounter{subexnum}%
-% 	\ifnum\value{subexperiod}>4%
-% 		\setcounter{subexperiod}{5}
-% 	\fi%
-% 	\ifnum\value{subexperiod}>1%
-% 		\ifnum\value{subexcount}=0\par\fi%
-% 		\ifnum\value{subexperiod}=2\makebox[0.44\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% 		\ifnum\value{subexperiod}=3\makebox[0.29\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% 		\ifnum\value{subexperiod}=4\makebox[0.21\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% 		\ifnum\value{subexperiod}>4\makebox[0.16\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% 		\stepcounter{subexcount}%
-% 		\ifnum\value{subexperiod}=\value{subexcount}\setcounter{subexcount}{0}\fi%
-% 	\else%
-% 		\ifnum\value{subexperiod}=1%
-% 			\par\textcolor{main}{(\thesubexnum)} #1%
-% 		\else
-% 			\textcolor{main}{(\thesubexnum)} #1\relax%
-% 		\fi
-% 	\fi%
-% }
+\newenvironment{exerciseset}{
+  \vspace*{10pt}
+  \par\indent\makebox[-3pt][r]{
+  \large\color{fourth}\HandPencilLeft\quad}
+  \textbf{\color{second}{\Large\bfseries\exercisename}}\rmfamily
+  \begin{exenum}}{
+  \end{exenum}}
 
 \def\relsec{\endgroup start}
 \def\endrelsec{end\begingroup\def \@currenvir {relsec}}
@@ -1488,8 +1425,10 @@
   \begin{enumerate}[label=\small\protect\circled{\arabic*}]}{
   \end{enumerate}}
 
+
+
 \renewcommand\tableofcontents{%
-  \hypersetup{linktoc=all, linkcolor=main}
+  \hypersetup{linktoc=all, linkcolor=fourth}
     \if@twocolumn
       \@restonecoltrue\onecolumn
     \else

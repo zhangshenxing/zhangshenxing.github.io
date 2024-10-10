@@ -10,7 +10,7 @@
 	\begin{second}{柯西积分公式}
 		设
 		\begin{itemize}[<*>]
-			\item 函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析,
+			\item 函数 $f(z)$ 在(复合)闭路 $C$ 及其内部(围成的区域) $D$ 解析,
 			\item $z_0\in D$,
 		\end{itemize}
 		\onslide<+->{则
@@ -18,7 +18,7 @@
 	\end{second}
 
 	\onslide<+->
-	如果 $z_0\notin D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
+	如果 $z_0\notin \ov D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
 \end{frame}
 
 
@@ -106,7 +106,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\oint_{|z|=2\pi}\frac{\cos z}{z-\pi}\diff z=$\fillblank{\visible<+->{$-2\pi i$}}.
+		求 $\displaystyle\oint_{|z|=2\pi}\frac{\cos z}{z-\pi}\diff z=$\fillblankframe{$-2\pi i$}.
 	\end{exercise}
 \end{frame}
 
@@ -140,38 +140,40 @@
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z$.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
-		被积函数的奇点为 $0,\pm1$.
-		\onslide<+->{%
-			设 $C_1,C_2,C_3$ 分别为绕 $0,1,-1$ 的分离圆周.
-		}\onslide<+->{%
-			由复合闭路定理和柯西积分公式
-			\begin{flalign*}
-				&\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
-				=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z&&\\
-				\visible<+->{=}&\visible<.->{2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]}&&\\
-				\visible<+->{=}&\visible<.->{2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).&&}
-			\end{flalign*}
-		}
-		\begin{tikzpicture}[overlay,scale=.7,xshift=160mm,yshift=30mm]
-			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-2.5)--(0,2.5);
-			\draw[cstcurve,second] (0,0) circle (1.8);
-			\draw[cstcurve,main,visible on=<3->] (1.2,0) circle(0.5);
-			\draw[cstcurve,main,visible on=<3->] (-1.2,0) circle(0.5);
-			\draw[cstcurve,main,visible on=<3->] (0,0) circle(0.5);
-			\fill[cstdot,second,visible on=<2->] (0,0) circle;
-			\fill[cstdot,second,visible on=<2->] (1.2,0) circle;
-			\fill[cstdot,second,visible on=<2->] (-1.2,0) circle;
-			\draw
-				(1.6,1.6) node[second] {$C$}
-				(-0.4,0.8) node[main,visible on=<3->] {$C_1$}
-				(1.2,-.8) node[main,visible on=<3->] {$C_2$}
-				(-1.2,-.8) node[main,visible on=<3->] {$C_3$};
-		\end{tikzpicture}
-		\vspace{-\baselineskip}
+		\begin{minipage}{.66\textwidth}
+			被积函数的奇点为 $0,\pm1$.
+			\onslide<+->{%
+				设 $C_1$, $C_2$, $C_3$ 分别为绕 $0$, $1$, $-1$ 的分离圆周.
+			}\onslide<+->{%
+				由复合闭路定理和柯西积分公式
+				\begin{align*}
+					&\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
+					=\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z\\
+					\visible<+->{=}&\visible<.->{2\pi i\Bigg(\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\Bigg)}\\
+					\visible<+->{=}&\visible<.->{2\pi i\Bigg(-1+\frac e2+\frac{e^{-1}}2\Bigg)=\pi i(e+e^{-1}-2).}
+				\end{align*}
+			}\vspace{-1.2\baselineskip}
+		\end{minipage}
+		\begin{minipage}{.32\textwidth}
+			\begin{tikzpicture}[scale=.85]
+				\draw[cstaxis] (-2.5,0)--(2.5,0);
+				\draw[cstaxis] (0,-2.5)--(0,2.5);
+				\draw[cstcurve,main] (0,0) circle (1.8);
+				\draw[cstcurve,main,visible on=<3->] (1.2,0) circle(0.5);
+				\draw[cstcurve,main,visible on=<3->] (-1.2,0) circle(0.5);
+				\draw[cstcurve,main,visible on=<3->] (0,0) circle(0.5);
+				\fill[cstdot,second,visible on=<2->] (0,0) circle;
+				\fill[cstdot,second,visible on=<2->] (1.2,0) circle;
+				\fill[cstdot,second,visible on=<2->] (-1.2,0) circle;
+				\draw
+					(1.6,1.6) node[main] {$C$}
+					(-0.4,0.8) node[second,visible on=<3->] {$C_1$}
+					(1.2,-.8) node[second,visible on=<3->] {$C_2$}
+					(-1.2,-.8) node[second,visible on=<3->] {$C_3$};
+			\end{tikzpicture}
+		\end{minipage}
 	\end{solution}
 \end{frame}
 
@@ -361,7 +363,7 @@
 	\beqskip{2pt}
 	\onslide<+->
 	\begin{exercise}
-		$\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z=$\fillblank{\visible<+->{$0$}}.
+		$\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z=$\fillblankframe{$0$}.
 	\end{exercise}
 	\onslide<+->
 	\begin{example}[莫累拉定理]

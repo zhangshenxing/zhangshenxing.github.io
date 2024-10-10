@@ -1,6 +1,8 @@
 
 \chapter{复数与复变函数}
 
+本章中我们将学习复数、复变函数的基本概念, 以及复数列和复变函数的极限.
+
 复数起源于多项式方程的求根问题. 
 考虑一元二次方程 $x^2+bx+c=0$, 配方可得
   \[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
@@ -22,47 +24,49 @@
 \begin{solution}
   设 $x=u+v$, 则
     \[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
-  我们希望 $u^3+v^3=20, uv=-2$, 则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+  我们希望
+    \[u^3+v^3=20, uv=-2,\]
+  则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
   解得
     \[u^3=10\pm\sqrt{108}{=(1\pm\sqrt3)^3.}\]
   所以 $u=1\pm\sqrt3, v=1\mp\sqrt 3$, $x=u+v=2$.
 \end{solution}
 
-那么这个方程是不是真的只有 $x=2$ 这一个解呢?
-由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个解.
+那么这个方程是不是真的只有 $x=2$ 这一个实数解呢?
+由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个实数解.
 
-\begin{figure}[hbpt]
-  \centering
-  \begin{minipage}{.48\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \filldraw[cstcurve,main,domain=-1.2:3.1,smooth,fill=white] plot ({\x*.5},{(\x*\x*\x+6*\x-20)*.1});
-      \draw[cstaxis] (-3,0)--(3,0);
-      \draw[cstaxis] (0,-3)--(0,3);
-      \coordinate [label=above left:$-20$] (A) at (0,-2);
-      \coordinate [label=above left:$2$] (B) at (1,0);
-      \fill[cstdot,second] (A) circle;
-      \fill[cstdot,second] (B) circle;
-    \end{tikzpicture}
-    \caption{$y=x^3+6x-20$\footnotemark}
-  \end{minipage}
-  \begin{minipage}{.48\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \filldraw[cstcurve,main,domain=-3.6:3.2,smooth,fill=white] plot ({\x*.6},{(\x*\x*\x-7*\x+6)*.15});
-      \draw[cstaxis] (-3,0)--(3,0);
-      \draw[cstaxis] (0,-3)--(0,3);
-      \coordinate [label=below left:$1$] (A) at (.6,0);
-      \coordinate [label=above left:$2$] (B) at (1.2,0);
-      \coordinate [label=above left:$-3$] (C) at (-1.8,0);
-      \fill[cstdot,second] (A) circle;
-      \fill[cstdot,second] (B) circle;
-      \fill[cstdot,second] (C) circle;
-    \end{tikzpicture}
-    \caption{$y=x^3-7x+6$\footnotemark[1]}
-  \end{minipage}
-\end{figure}
-\footnotetext{图像的横纵坐标比例有放缩}
+% \begin{figure}[hbpt]
+%   \centering
+%   \begin{minipage}{.48\textwidth}
+%     \centering
+%     \begin{tikzpicture}
+%       \filldraw[cstcurve,main,domain=-1.2:3.1,smooth,fill=white] plot ({\x*.5},{(\x*\x*\x+6*\x-20)*.1});
+%       \draw[cstaxis] (-3,0)--(3,0);
+%       \draw[cstaxis] (0,-3)--(0,3);
+%       \coordinate [label=above left:$-20$] (A) at (0,-2);
+%       \coordinate [label=above left:$2$] (B) at (1,0);
+%       \fill[cstdot,second] (A) circle;
+%       \fill[cstdot,second] (B) circle;
+%     \end{tikzpicture}
+%     \caption{$y=x^3+6x-20$\footnotemark}
+%   \end{minipage}
+%   \begin{minipage}{.48\textwidth}
+%     \centering
+%     \begin{tikzpicture}
+%       \filldraw[cstcurve,main,domain=-3.6:3.2,smooth,fill=white] plot ({\x*.6},{(\x*\x*\x-7*\x+6)*.15});
+%       \draw[cstaxis] (-3,0)--(3,0);
+%       \draw[cstaxis] (0,-3)--(0,3);
+%       \coordinate [label=below left:$1$] (A) at (.6,0);
+%       \coordinate [label=above left:$2$] (B) at (1.2,0);
+%       \coordinate [label=above left:$-3$] (C) at (-1.8,0);
+%       \fill[cstdot,second] (A) circle;
+%       \fill[cstdot,second] (B) circle;
+%       \fill[cstdot,second] (C) circle;
+%     \end{tikzpicture}
+%     \caption{$y=x^3-7x+6$\footnotemark[1]}
+%   \end{minipage}
+% \end{figure}
+% \footnotetext{图像的横纵坐标比例有放缩}
 
 \begin{example}
   解方程 $x^3-7x+6=0$.
@@ -83,18 +87,14 @@
   从而 $x=u+v=2,-3,1$.
 \end{solution}
 
-所以我们从一条``\alert{错误的路径}''走到了正确的目的地?
-
 对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:
 \footnote{一般 $n$ 次多项式的判别式定义为 $\prod_{1\le i<j\le n}(x_i-x_j)^2$, 其中 $x_1,\dots,x_n$ 表示其所有(复数)根.
 三次多项式的判别式应当是 $-108\Delta$, 这里为了运算方便取作如此形式.}
   \[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
-由于 $p=0$ 情形较为简单, 所以我们不考虑这种情形.
 通过分析函数图像的极值点可以知道:
 \begin{enumerate}
   \item 当 $\Delta>0$ 时, 有 $1$ 个实根.
-  \item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\dfrac12\sqrt[3]{4q}$ ($2$重).
-  \item 当 $\Delta<0$ 时, 有 $3$ 个实根.
+  \item 当 $\Delta\le0$ 时, 有 $3$ 个实根(含重根).
 \end{enumerate}
 
 \begin{figure}[hbpt]
@@ -134,25 +134,12 @@
   \end{minipage}
 \end{figure}
 
-所以我们想要使用求根公式的话, 就\alert{必须接受负数开方}.
+所以我们想要使用一元三次方程求根公式的话, 就\alert{必须接受负数开方}.
 那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
 在学习了本章内容之后就可以回答这个问题了.
 
 尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
-
-\begin{tcolorbox}[
-  common,
-  borderline={0pt}{0pt}{fourth,cstdash},
-  colbacktitle=fourth,
-  fontlower=\itshape,
-  halign lower=flush right,
-  lower separated=true]
-	圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。
-  \tcblower
-  莱布尼兹 (Leibniz)
-\end{tcolorbox}
-
-我们将在下一节使用更为现代的语言来解释和运用复数.
+莱布尼兹 (Leibniz) 对此有如下评论: {\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根.}
 
 
 \section{复数及其代数运算}
@@ -160,18 +147,19 @@
 \subsection{复数的概念}
 
 现在我们来正式介绍复数的概念.
-为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $i$, 再通过定义它的运算来构造复数.\footnote{记号 $i$ 被称为\emph{虚数单位}, 它最先是由欧拉引入并使用.}
 
-\begin{definition}[复数]
+由于方程 $x^2=-1$ 在复数范围内有两个不同的根, 为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们引入抽象符号 $i$ 来表示其中一个根.
+
+\begin{definition}
   固定一个记号 $i$, \noun{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
+  分别称 $x,y$ 为 $z$ 的\emph{实部 $\Re z$} 和\emph{虚部 $\Im z$}.
 \end{definition}
 
-换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.
+换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.\footnote{记号 $i$ 被称为\emph{虚数单位}, 它最先是由欧拉引入并使用.}
 
-于是复数全体构成一个二维实线性空间, $\{1,i\}$ 是一组基. 而且实数 $x$ 可以自然地看成复数 $x+0i$.
+于是复数全体构成一个二维实线性空间, $\{1,i\}$ 是一组基, 而且实数 $x$ 可以自然地看成复数 $x+0i$.
 将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$, $\BR\subseteq \BC$.\footnote{
   全体复数、实数、有理数、整数、自然数集合分别记作 $\BC,\BR,\BQ,\BZ,\BN$, 整数来自德语 Zahlen, 其余来自它们的英文名称 complex number, real number, rational number, natural number.
-}\footnote{
   这些符号的叫做空心体, 书写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
 }
 由此, $\BC$ 和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
@@ -214,14 +202,9 @@
   \caption{复数、平面上的点、平面向量一一对应}
 \end{figure}
 
-当 $y=0$ 时, $z=x$ 就是一个实数.
-它对应复平面上的点就是直角坐标系的 $x$ 轴上的点.
-因此我们称 $x$ 轴为\emph{实轴}.
-相应地, 称 $y$ 轴为\emph{虚轴}.
-称 $z=x+yi$ 在实轴和虚轴的投影为它的\emph{实部 $\Re z=x$} 和\emph{虚部 $\Im z=y$}.
-
-当 $\Im z=0$ 时, $z$ 是实数.
-不是实数的复数是\emph{虚数}.
+我们将复平面的 $x,y$ 轴称为\emph{实轴}和\emph{虚轴}.
+当 $\Im z=0$ 时, $z$ 是实数, 它落在实轴上.
+称不是实数的复数是\emph{虚数}.
 当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
 
 \begin{figure}[hbpt]
@@ -303,14 +286,14 @@
 \begin{figure}[hbpt]
   \centering
   \begin{tikzpicture}
-    \draw[cstaxis] (-2,0)--(4,0);
-    \draw[cstaxis] (0,-3)--(0,2.5);
+    \draw[cstaxis] (-3,0)--(5,0);
+    \draw[cstaxis] (0,-1)--(0,3);
     \coordinate (O) at (0,0);
-    \coordinate [label=right:\textcolor{main}{$z_1$}] (Z1) at (2.5,-1);
-    \coordinate [label=above:\textcolor{main}{$z_2$}] (Z2) at (1.5,2);
-    \coordinate [label=above right:\textcolor{second}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
-    \coordinate [label=below:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
-    \coordinate [label=left:{$-z_2$}] (neg) at ($(O)-(Z2)$);
+    \coordinate [label=above:\textcolor{main}{$z_1$}] (Z1) at (1,2);
+    \coordinate [label=left:\textcolor{main}{$z_2$}] (Z2) at (-2.5,.5);
+    \coordinate [label=above left:\textcolor{second}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
+    \coordinate [label=right:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
+    \coordinate [label=below:{$-z_2$}] (neg) at ($(O)-(Z2)$);
     \draw[cstcurve,cstra,main] (O)--(Z1);
     \draw[cstcurve,cstra,main] (O)--(Z2);
     \draw[cstcurve,cstra,second] (O)--(P);
@@ -321,17 +304,19 @@
   \caption{复数的加法和减法}
 \end{figure}
 
-\alert{规定 $i\cdot i=-1$} 并要求实数与复数的乘法和标量乘法(数乘)一致.
-我们希望 $\BC$ 上的运算满足乘法分配律, 则
+\alert{规定 $i\cdot i=-1$}.
+我们希望 $\BC$ 上的运算满足乘法分配律, 且实数与复数的乘法和标量乘法(数乘)一致.
+那么乘法应当定义为
   \begin{align*}
     z_1\cdot z_2&=(x_1+y_1i)(x_2+y_2i)\\
     &=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
     &=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i.
   \end{align*}
-由此可得 $z\neq0$ 时,
-  \[\frac1{z}=\frac{x-yi}{x^2+y^2},\]
-从而
-  \[\frac{z_1}{z_2}=z_1\cdot\frac1z=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
+可以证明加法和乘法满足交换律、结合律和分配律.
+
+当 $z\neq0$ 时, 可以发现 $x+yi$ 与 $(x-yi)/(x^2+y^2)$ 的乘积为 $1$.
+从而除法定义为
+  \[\frac{z_1}{z_2}=(x_1+y_1i)\cdot\frac{x_2-y_2i}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
 对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
 当 $z\neq 0$ 时, 还可以定义 $z^0:=1,z^{-n}:=\dfrac1{z^n}$.
@@ -342,12 +327,12 @@
     \item $i^2=-1,i^3=-i,i^4=1$.
     一般地, 对于整数 $n$, 
     \[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]
-    \item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
+    \item 令 $\omega=\dfrac12(-1+\sqrt 3i)$, 则 $\omega^2=\frac12(-1-\sqrt3i),\omega^3=1$.
     \item 令 $z=1+i$, {则
     \[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
   \end{enumerate}
   将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
-  那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根.
+  那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $(1+i)/\sqrt2$ 是 $8$ 次单位根.
 \end{example}
 
 \begin{example}
@@ -366,7 +351,7 @@
 \subsubsection*{复数域的性质}
 
 复数全体构成一个\emph{域}.
-所谓的域, 是指带有如下内容和性质的集合:
+所谓的域, 是指带有如下内容并满足相应性质的集合:
 \begin{itemize}
   \item 包含 $0,1$, 且有四则运算;\footnote{即有运算 $+$ 和 $\times$, 且对任意 $a$, 存在 $b$ 使得 $a+b=b+a=0$; 对任意 $a\neq 0$, 存在 $c$ 使得 $a\times c=c\times a=1$.}
   \item 满足加法结合、交换律, 乘法结合、交换、分配律;
@@ -394,7 +379,7 @@
 
 \subsection{共轭复数}
 
-\begin{definition}[共轭复数]
+\begin{definition}
   称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
 换言之, $\ov{x+yi}=x-yi$.
 \end{definition}
@@ -479,7 +464,7 @@
 \[ x=r\cos\theta,\qquad y=r\sin\theta,\]
 \[r=\sqrt{x^2+y^2},\qquad \theta=\arctan\dfrac yx\text{ 或 }\arctan\dfrac yx\pm\pi.\]
 
-\begin{definition}[模和辐角]
+\begin{definition}
   \begin{itemize}
     \item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
     \item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
@@ -712,7 +697,7 @@
 
 三角和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
 
-\begin{theorem}[复数的乘除与三角、指数形式]
+\begin{theorem}
   设
   \[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
   \[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
@@ -850,7 +835,7 @@
 
 设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 根据复数三角和指数形式的乘法和除法运算法则, 我们有
-\begin{theorem}[复数的乘幂]
+\begin{theorem}
   \[z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta},\quad\forall n\in\BZ.\]
 \end{theorem}
 特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗公式}
@@ -910,7 +895,7 @@
 故 $w=w_k=\sqrt[n]r\exp\Bigl(\dfrac{\theta+2k\pi}ni\Bigr)$.
 不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\dots,w_{n-1}$ 两两不同.
 因此只需取 $k=0,1,\dots,n-1$.
-\begin{theorem}[复数的方根]
+\begin{theorem}
   任意一个非零复数 $z$ 的 $n$ 次方根有 $n$ 个值:
   \[
     \sqrt[n]z=\sqrt[n]r\exp\Bigl(\dfrac{\theta+2k\pi}ni\Bigr)\\
@@ -1123,7 +1108,7 @@
   \caption{点与集合的位置关系}
 \end{figure}
 
-\begin{definition}[开集和闭集]
+\begin{definition}
   \begin{enumerate}
     \item 如果 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\emph{开集}.
     \item 如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}.
@@ -1139,7 +1124,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
 如果 $D$ 可以被包含在某个开圆盘 $U(0,R)$ 中, 则称它是\emph{有界}的.
 否则称它是\emph{无界}的.
 
-\begin{definition}[区域]
+\begin{definition}
   如果开集 $D$ 的任意两个点之间都可以用一条完全包含在 $D$ 中的折线连接起来, 则称 $D$ 是一个\emph{区域}.
   也就是说, 区域是连通的开集.
 \end{definition}
@@ -1303,7 +1288,7 @@ $C$ 是它们的公共边界.
 在前面所说的几个常见区域的例子中, 我们在区域中画一条闭路.
 除了圆环域之外, 闭路的内部仍然包含在这个区域内.
 
-\begin{definition}[单连通区域和多连通区域]
+\begin{definition}
   如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通区域}.
   否则称之为\emph{多连通区域}.
 \end{definition}
@@ -1397,10 +1382,10 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \end{itemize}
 
 \begin{example}
-  $f(z)=\Re z,\arg z,|z|$, $z^n$ ($n$ 为整数), $\dfrac{z+1}{z^2+1}$ 都是复变函数.
+  $f(z)=\Re z,\arg z,|z|$, $z^n$ ($n\neq0$ 为整数), $\dfrac{z+1}{z^2+1}$ 都是复变函数.
 \end{example}
 
-\begin{definition}[复变函数的定义域和值域]
+\begin{definition}
   \begin{itemize}
     \item 称 $A$ 为 函数 $f$ 的\emph{定义域}.
     \item 称 $\set{w=f(z)\mid z\in A}$ 为它的\emph{值域}.\footnotemark
@@ -1723,8 +1708,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
     \item 由于
       \[w=u+iv=z^2=(x^2-y^2)+2xyi.\]
       因此 $u=x^2-y^2=4,v=2xy$.
-      由于 
-      \[f\biggl(\sqrt{\sqrt{4+v^2/4}+2}+i\dfrac{v}{2\sqrt{\sqrt{4+v^2/4}+2}}\biggr)=4+iv,\]
+      由于任何复数均存在平方根, 存在 $z=x+yi$ 使得 $f(z)=4+iv$, 其中 $x^2-y^2=4$.
       因此这条双曲线的像的确就是直线 $\Re w=4$.\footnote{在很多教材或习题册中, 往往会忽略检查所给的集合中的每个元素都有原像.}
     \item 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
       因此它的像是扇形区域 $0<\arg w<\dfrac\pi2,0<|w|<4$.
@@ -1753,7 +1737,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \subsubsection*{数列极限}
 先来看数列极限的定义.
 
-\begin{definition}[数列极限的定义]
+\begin{definition}
   设 $\{z_n\}_{n\ge 1}$ 是一个复数列.
   如果 $\forall \varepsilon>0,\exists N$ 使得当 $n\ge N$ 时 $|z_n-z|<\varepsilon$, 则称 $z$ 是\emph{数列 $\{z_n\}$ 的极限}, 记作 \emph{$\lim\limits_{n\to\infty}z_n=z$}.
 \end{definition}
@@ -1775,7 +1759,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 为 \emph{$\infty$ 的(去心) $X$ 邻域},
 那么上述定义可统一表述为:
 
-\begin{definition}[数列极限的等价定义]
+\begin{definition}
   $\lim\limits_{n\to\infty}z_n=z\in\BC\cup\set\infty$ 是指: 对 $z$ 的任意 $\delta$ 邻域 $U$, $\exists N$ 使得当 $n\ge N$ 时 $z_n\in U$.\footnotemark
 \end{definition}
 \footnotetext{一般地, 一个点的邻域是指包含它的任意一个开集.
@@ -1856,7 +1840,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 
 下述定理保证了我们可以使用实数列的敛散性判定技巧.
 
-\begin{theorem}[复数列极限的等价刻画]
+\begin{theorem}
   设 $z_n=x_n+y_ni,z=x+yi$, 则
   \[\lim_{n\to\infty}z_n=z\iff \lim_{n\to\infty}x_n=x,\lim_{n\to\infty}y_n=y.\]
 \end{theorem}
@@ -1868,7 +1852,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \end{proof}
 
 由此可知极限的四则运算法则对于数列也是成立的.
-\begin{theorem}[数列极限的四则运算法则]
+\begin{theorem}
   设 $\lim\limits_{n\to\infty}z_n=z,\lim\limits_{n\to\infty}w_n=w$, 则
   \begin{enumerate}
     \item $\lim\limits_{n\to\infty}(z_n\pm w_n)=z\pm w$;
@@ -1903,7 +1887,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 不难看出, 复变函数的极限和二元实函数的极限定义是类似的:
 即 $z\to z_0$ 沿任一曲线趋向于 $z_0$ 的极限都是相同的.
 
-\begin{theorem}[函数极限的等价刻画]
+\begin{theorem}
   设 $f(z)=u(x,y)+iv(x,y),z_0=x_0+y_0i,A=u_0+v_0i$, 则
   \[\lim_{z\to z_0}f(z)=A\iff
   \lim_{\substack{x\to x_0\\y\to y_0}}u(x,y)=u_0,\quad
@@ -1918,7 +1902,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 
 由此可知极限的四则运算法则对于复变函数也是成立的.
 
-\begin{theorem}[函数极限的四则运算法则]
+\begin{theorem}
   设 $\lim\limits_{z\to z_0}f(z)=A,\lim\limits_{z\to z_0}g(z)=B$, 则
   \begin{enumerate}
     \item $\lim\limits_{z\to z_0}(f\pm g)(z)=A\pm B$;
@@ -1943,7 +1927,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 
 \subsection{函数的连续性}
 
-\begin{definition}[连续]
+\begin{definition}
   \begin{itemize}
     \item 如果 $\lim\limits_{z\to z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \emph{$z_0$ 处连续}.
     \item 如果 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \emph{$D$ 内连续}.
@@ -1951,7 +1935,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \end{definition}
 
 根据前面的极限判定定理可知:
-\begin{theorem}[连续的等价刻画]
+\begin{theorem}
   函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+iy_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
 \end{theorem}
 
@@ -1960,7 +1944,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
   $u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.因此 $f(z)$ 在 $z\neq0$ 处连续.
 \end{example}
 
-\begin{theorem}[连续函数的四则运算和复合]
+\begin{theorem}
   \begin{itemize}
     \item 在 $z_0$ 处连续的两个函数 $f(z),g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 在 $z_0$ 处仍然连续.
     \item 如果函数 $g(z)$ 在 $z_0$ 处连续, 函数 $f(w)$ 在 $g(z_0)$ 处连续, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处连续.
@@ -1989,6 +1973,8 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
 这种特性使得可导的复变函数具有整洁优美的性质, 我们将逐步揭开它的神秘面纱.
 
+
+\sectionHomework
 \begin{homework}
   \item 判断题.
     \begin{exlist}
@@ -2110,84 +2096,93 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
           \task $z^n-\dfrac1{z^n}=2i\sin{nt}$.
         \end{tasks}
     \end{exlist}
-  \item 扩展阅读. 该部分作业不需要交, 有兴趣的同学可以做完后交到任课教师邮箱.
-    \begin{exlist}
-    \item 我们知道, 对于任意两个集合 $A,B$, 我们可以定义 $A\to B$ 的映射.
-      在数学中, 很多对象是带有``结构''的集合, 例如实线性空间 $V$ 是一个拥有如下结构:
-      \begin{center}
-        零元 $0\in V$;\qquad 加法 $v_1+v_2\in V$;\qquad 数乘 $\lambda v$,
-      \end{center}
-      且满足一些特定性质的集合.
-      如果 $A,B$ 具有同一种结构, 映射 $f:A\to B$ ``保持''了这些结构, 则我们称 $f$ 是\emph{同态}.	
-      例如实线性空间之间的同态就是指一个映射 $f:V\to W$, 使得
-      \[f(0)=0;\qquad f(v_1+v_2)=f(v_1)+f(v_2);\qquad f(\lambda v)=\lambda f(v).\]
-    
-      再比如域是带有如下结构:
-      \begin{center}
-        零元 $0$;\qquad 幺元 $1$;\qquad 加法;\qquad 减法;\qquad 乘法;\qquad 除法, 
-      \end{center}
-      且满足特定性质的集合(交换律分配律之类的). 所以域之间的同态就是指一个 $f:F\to K$, 使得
-      \begin{itemize}
-        \item $f(0)=0,\qquad f(1)=1$;
-        \item $f(x+y)=f(x)+f(y),\qquad f(x-y)=f(x)-f(y)$;
-        \item $f(xy)=f(x)f(y),\qquad f(x/y)=f(x)/f(y)$.
-      \end{itemize}
-      如果一个同态是双射(一一对应), 则称之为\emph{同构}.
-      \begin{tasks}
-        \task 设 $f:\BQ\to\BQ$ 是有理数域之间的同构, 证明 $f$ 只能是恒等映射.
-        \task 设 $f:\BR\to\BR$ 是实数域之间的连续的同构, 证明 $f$ 只能是恒等映射.
-        \task 设 $f:\BC\to\BC$ 是复数域之间的连续的同构, 证明 $f$ 只能是恒等映射或复共轭.
-        \task 如果 $F=\BR+\BR t$ 是一个真包含 $\BR$ 的域, 证明 $F$ 同构于 $\BC$.
-        \task 设
-        \[F=\set{\begin{pmatrix}
-        x&y\\-y&x\end{pmatrix}: x,y\in\BR}
-        =\set{xE+yJ: x,y\in\BR}\subseteq M_2(\BR),\]
-        其中 $E=\begin{pmatrix}1& \\&1\end{pmatrix}$,
-        $J=\begin{pmatrix}&1\\-1&\end{pmatrix}$.
-        证明 $F$ 是一个域且同构于 $\BC$.
-      \end{tasks}
-    \item 满足 $z^n=1$ 的复数 $z$ 被称为 \emph{$n$ 次单位根}.
-      不难看出 $z=e^{\frac{2k\pi i}n},k=0,1,\dots,n-1$.
-      单位根在代数, 几何和组合中有着丰富的应用. 我们来看一个例子.
-      设集合 $A=\set{1,2,\dots,2023}$.
-      \begin{tasks}
-        \task 集合 $A$ 有多少个子集? 试着将 $A$ 的每一个子集与
-        \[N(x)=\prod_{a=1}^{2023}(1+x^a)\]
-        的展开式中的每一项建立一个一一对应.
-        \task 设 $S\subseteq A$. 定义
-        \[f(S)=\prod_{a\in S}x^a=x^{\sum_{a\in S}a}.\]
-        证明所有的 $S$ 对应的 $f(S)$ 之和就是 $N(x)$.
-        \task 证明 $N(x)$ 的展开式合并同类项后 $x^k$ 的系数就是 $A$ 的那些满足元素之和是 $k$ 的子集的个数.
-        \task 现在我们想知道 $A$ 有多少个子集满足元素之和是 $5$ 的倍数.
-      令 $x$ 是 $5$ 次单位根, 则 $N(x)$ 可以表为
-      \[N(x)=N_0+N_1x+N_2x^2+N_3x^3+N_4x^4,\]
-        那么 $N_0$ 就是元素之和是 $5$ 的倍数的集合个数.
-        \task 当 $x=1$ 时, 显然 $N(1)=2^{2023}$.
-        当 $x\neq 1$ 是 $5$ 次单位根时, $1,x,x^2,x^3,x^4$ 是方程 $X^5-1=0$ 的所有根, 所以 $2,1+x,1+x^2,1+x^3,1+x^4$ 是方程 $(X-1)^5-1=0$ 的所有根. 由韦达定理可知
-        \[(1+x^0)(1+x)(1+x^2)(1+x^3)(1+x^4)=2.\]
-        由此证明
-        \[N(x)=2^{404}(1+x^0)(1+x)(1+x^2)=2^{405}(1+x+x^2+x^3).\]
-        \task 计算 $N(1)+N(e^{2\pi i/5})+N(e^{4\pi i/5})+N(e^{6\pi i/5})+N(e^{8\pi i/5})$. 由此得到 $N_0=\dfrac{2^{2023}+4\cdot 2^{405}}5$.
-        \task 想一想, $N_1,N_2,N_3,N_4$ 分别是多少?
-      \end{tasks}
-      更多细节可见: \url{https://www.bilibili.com/video/BV1R34y1W7Xn/}
-  \end{exlist}  
 \end{homework}
 
-\exerciseanswer
 
-\ansno{1.1} $-4$.
-\ansno{1.2} $1$.
-\ansno{1.3} $-\ov z$.
 
-\ansno{2.1} $z_1,\dots,z_n$ 中的非零元辐角相等.
-\ansno{2.2} $\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
+\sectionExtraReading
 
-\ansno{3.1} $-2^{2022}$.
-\ansno{3.2} $\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
+\begin{homework}
+  \item 我们知道, 对于任意两个集合 $A,B$, 我们可以定义 $A\to B$ 的映射.
+  在数学中, 很多对象是带有``结构''的集合, 例如实线性空间 $V$ 是一个拥有如下结构:
+  \begin{center}
+    零元 $0\in V$;\qquad 加法 $v_1+v_2\in V$;\qquad 数乘 $\lambda v$,
+  \end{center}
+  且满足一些特定性质的集合.
+  如果 $A,B$ 具有同一种结构, 映射 $f:A\to B$ ``保持''了这些结构, 则我们称 $f$ 是\emph{同态}.	
+  例如实线性空间之间的同态就是指一个映射 $f:V\to W$, 使得
+  \[f(0)=0;\qquad f(v_1+v_2)=f(v_1)+f(v_2);\qquad f(\lambda v)=\lambda f(v).\]
 
-\ansno{4.1} 双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
-\ansno{4.2}
+  再比如域是带有如下结构:
+  \begin{center}
+    零元 $0$;\qquad 幺元 $1$;\qquad 加法;\qquad 减法;\qquad 乘法;\qquad 除法, 
+  \end{center}
+  且满足特定性质的集合(交换律分配律之类的). 所以域之间的同态就是指一个 $f:F\to K$, 使得
+  \begin{itemize}
+    \item $f(0)=0,\quad f(1)=1$;
+    \item $f(x+y)=f(x)+f(y),\quad f(x-y)=f(x)-f(y)$;
+    \item $f(xy)=f(x)f(y),\quad f(x/y)=f(x)/f(y)$.
+  \end{itemize}
+  如果一个同态是双射(一一对应), 则称之为\emph{同构}.
+
+  \begin{exlist}
+    \item 设 $f:\BQ\to\BQ$ 是有理数域之间的同构, 证明 $f$ 只能是恒等映射.
+    \item 设 $f:\BR\to\BR$ 是实数域之间的连续的同构, 证明 $f$ 只能是恒等映射.
+    \item 设 $f:\BC\to\BC$ 是复数域之间的连续的同构, 证明 $f$ 只能是恒等映射或复共轭.
+    \item 如果 $F=\BR+\BR t$ 是一个真包含 $\BR$ 的域, 证明 $F$ 同构于 $\BC$.
+    \item 设
+    \[F=\set{\begin{pmatrix}
+      x&-y\\y&x\end{pmatrix}: x,y\in\BR}
+      =\set{xE+yJ: x,y\in\BR}\subseteq M_2(\BR),\]
+    其中 $E=\begin{pmatrix}1& \\&1\end{pmatrix}$,
+    $J=\begin{pmatrix}&-1\\1&\end{pmatrix}$.
+    证明 $F$ 是一个域且同构于 $\BC$.
+    \item 从(5)中可以看出, 复数 $z_0=x_0+y_0i=re^{i\theta}$ 对应的矩阵 $x_0\bfE+y_0\bfJ$ 所对应的线性变换, 将平面向量旋转 $\theta$ 并将模长放缩至 $r$ 倍.
+    \end{exlist}
+    
+    \item 满足 $z^n=1$ 的复数 $z$ 被称为 \emph{$n$ 次单位根}.
+    不难看出 $z=e^{\frac{2k\pi i}n},k=0,1,\dots,n-1$.
+    单位根在代数, 几何和组合中有着丰富的应用. 我们来看一个例子.
+    设集合 $A=\set{1,2,\dots,2026}$.
+
+    \begin{exlist}
+      \item 集合 $A$ 有多少个子集? 试着将 $A$ 的每一个子集与
+      \[N(x)=\prod_{a=1}^{2026}(1+x^a)\]
+      的展开式中的每一项建立一个一一对应.
+      \item 设 $S\subseteq A$. 定义
+      \[f(S)=\prod_{a\in S}x^a=x^{\sum_{a\in S}a}.\]
+      证明所有的 $S$ 对应的 $f(S)$ 之和就是 $N(x)$.
+      \item 证明 $N(x)$ 的展开式合并同类项后 $x^k$ 的系数就是 $A$ 的那些满足元素之和是 $k$ 的子集的个数.
+      \item 现在我们想知道 $A$ 有多少个子集满足元素之和是 $5$ 的倍数.
+    令 $x$ 是 $5$ 次单位根, 则 $N(x)$ 可以表为
+    \[N(x)=N_0+N_1x+N_2x^2+N_3x^3+N_4x^4,\]
+      那么 $N_0$ 就是元素之和是 $5$ 的倍数的集合个数.
+      \item 当 $x=1$ 时, 显然 $N(1)=2^{2026}$.
+      当 $x\neq 1$ 是 $5$ 次单位根时, $1,x,x^2,x^3,x^4$ 是方程 $X^5-1=0$ 的所有根, 所以 $2,1+x,1+x^2,1+x^3,1+x^4$ 是方程 $(X-1)^5-1=0$ 的所有根. 由韦达定理可知
+      \[(1+x^0)(1+x)(1+x^2)(1+x^3)(1+x^4)=2.\]
+      由此证明
+      \[N(x)=2^{405}(1+x).\]
+      \item 计算 $N(1)+N(e^{2\pi i/5})+N(e^{4\pi i/5})+N(e^{6\pi i/5})+N(e^{8\pi i/5})$. 由此得到 $N_0=\dfrac{2^{2026}-2^{406}}5$.
+      \item 想一想, $N_1,N_2,N_3,N_4$ 分别是多少?
+    \end{exlist}
+    更多细节可见: \url{https://www.bilibili.com/video/BV1R34y1W7Xn/}
+\end{homework}
+
+
+\sectionExerciseAnswer
+
+\exans $-4$.
+\exans $1$.
+\exans $-\ov z$.
+
+\exans $z_1,\dots,z_n$ 中的非零元辐角相等.
+\exans $\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
+
+\exans $-2^{2022}$.
+\exans $\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$.
+
+\exans 双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
+\exans
 \begin{enumerate}
 	\item 上半平面对应的闭区域为 $\Im z\ge0$.
 	\item 下半平面对应的闭区域为 $\Im z\le0$.
@@ -2198,14 +2193,14 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 	\item 角状区域对应的闭区域为 $\alpha_1\le \arg z\le \alpha_2$ 以及原点. 如果 $\alpha_1=-\pi,\alpha_2=\pi$, 则为 $\BC$.
 	\item 圆环域对应的闭区域为 $r\le|z|\le R$.
 \end{enumerate}
-\ansno{4.3} 整个复平面.
+\exans 整个复平面.
 
-\ansno{5.1}
+\exans
 \begin{enumerate}
 	\item $\Re z$ 的定义域为 $\BC$, 值域为 $\BR$.
 	\item $\arg z$ 的定义域为 $\{z\in\BC\mid z\neq 0\}$, 值域为 $(-\pi,\pi]$.
 	\item $|z|$ 的定义域为 $\BC$, 值域为 $\{x\in\BR\mid x\ge0\}$.
 	\item 当 $n>0$ 时, $z^n$ 的定义域为 $\BC$, 值域为 $\BC$.
-	当 $n\le 0$ 时, $z^n$ 的定义域为 $\{z\in\BC\mid z\neq 0\}$, 值域为 $\{z\in\BC\mid z\neq 0\}$.
+	当 $n<0$ 时, $z^n$ 的定义域为 $\{z\in\BC\mid z\neq 0\}$, 值域为 $\{z\in\BC\mid z\neq 0\}$.
 	\item $\dfrac{z+1}{z^2+1}$ 的定义域为 $\{z\in\BC\mid z\neq \pm i\}$, 值域为 $\BC$.
 \end{enumerate}

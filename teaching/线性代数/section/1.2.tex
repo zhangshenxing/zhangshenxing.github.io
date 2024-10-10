@@ -11,10 +11,11 @@
 	\onslide<+->
 	对任意 $\bfx\in\BR^n$,
 	\[(f+g)(\bfx)=f(\bfx)+g(\bfx)=g(\bfx)+f(\bfx)=(g+f)(\bfx).\]
-	故 $f+g=g+f$.
+	故 \enumnum1 $f+g=g+f$.
 	\onslide<+->
 	同理
 	\begin{enumerate}
+		\stepcounter{enumi}
 		\item $(f+g)+h=f+(g+h)$;
 		\item $f+0=f$, 这里 $0$ 表示零映射: $0(\bfx)={\bf0}$;
 		\item 对任意线性映射 $f$, 存在线性映射 $g=(-1)f$ 使得 $f+g=0$;
@@ -50,7 +51,7 @@
 \begin{frame}{矩阵加法的性质}
 	\onslide<+->
 	由线性映射的相应性质可知:
-	\begin{enumerate}
+	\begin{enumerate}\bf
 		\item $\bfA+\bfB=\bfB+\bfA$;
 		\item $(\bfA+\bfB)+\bfC=\bfA+(\bfB+\bfC)$;
 		\item $\bfA+\bfO=\bfA$;
@@ -168,7 +169,7 @@
 	\onslide<+->
 	\begin{definition}
 		设 $\bfA=(a_{ij})_{m\times n}, \bfB=(b_{ij})_{n\times p}$.
-		定义矩阵的乘法为  $\bfC=\bfA\bfB=(c_{ij})_{m\times p}$, 其中
+		定义矩阵的\emph{乘法}为 $\bfC=\bfA\bfB=(c_{ij})_{m\times p}$, 其中
 		\[c_{ij}=\sum_{k=1}^n a_{ik}b_{kj}.\]
 	\end{definition}
 	\onslide<+->
@@ -252,7 +253,7 @@
 	\end{enumerate}
 	\onslide<+->
 	由此可知矩阵乘法满足如下性质:
-	\begin{enumerate}
+	\begin{enumerate}\bf
 		\item $(\bfA\bfB)\bfC=\bfA(\bfB\bfC)$;
 		\item $\lambda(\bfA\bfB)=(\lambda\bfA)\bfB=\bfA(\lambda\bfB)$;
 		\item $\bfA(\bfB+\bfC)=\bfA\bfB+\bfA\bfC$;
@@ -326,7 +327,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		设 $\bfA,\bfB$ 为 $n>1$ 阶方阵, 则 $\bfA+\bfA\bfB=$\fillbrace{\visible<+->{\alert{C}}}.
+		设 $\bfA,\bfB$ 为 $n>1$ 阶方阵, 则 $\bfA+\bfA\bfB=$\fillbraceframe{C}.
 		\begin{taskschoice}(4)
 			() $\bfA(1+\bfB)$
 			() $(\bfE+\bfB)\bfA$
@@ -436,7 +437,7 @@
 	\end{definition}
 	\onslide<+->
 	矩阵幂满足如下性质 ($k,\ell$ 为非负整数):
-	\begin{enumerate}
+	\begin{enumerate}\bf
 		\item $\bfA^{k+\ell}=\bfA^k\cdot \bfA^\ell$;
 		\item $\bfA^{k\ell}=(\bfA^k)^\ell$.
 	\end{enumerate}
@@ -723,14 +724,14 @@
 	方阵的转置还是方阵, 上三角阵的转置是下三角阵.
 
 	\onslide<+->
-	$\bfA^\rmT$ 对应的线性变换是 $\bfA$ 对应的线性变换诱导的对偶空间上的线性变换, 感兴趣的可自行阅读有关材料.
+	{\itshape $\bfA^\rmT$ 对应的线性变换是 $\bfA$ 对应的线性变换诱导的对偶空间上的线性变换, 感兴趣的可自行阅读有关材料.}
 \end{frame}
 
 
 \begin{frame}{矩阵转置的性质}
 	\onslide<+->
 	矩阵的转置满足如下性质:
-	\begin{enumerate}
+	\begin{enumerate}\bf
 		\item $(\bfA^\rmT)^\rmT=\bfA$;
 		\item $(\bfA+\bfB)^\rmT=\bfA^\rmT+\bfB^\rmT$;
 		\item $(\lambda\bfA)^\rmT=\lambda\bfA^\rmT$;
@@ -801,7 +802,7 @@
 	想一想: 若 $\bfA,\bfB,\bfA\bfB$ 中有一个对称阵和两个反对称阵呢?
 	\onslide<+->
 	\begin{exercise}
-		设 $\bfA$ 是 $n$ 阶方阵, \fillbrace{\visible<+->{\alert{A}}}一定是对称阵?
+		设 $\bfA$ 是 $n$ 阶方阵, \fillbraceframe{A}一定是对称阵?
 		\begin{taskschoice}(4)
 			() $\bfA^\rmT\bfA$
 			() $\bfA-\bfA^\rmT$

@@ -67,7 +67,7 @@
 
 \subsection{傅里叶积分与傅里叶变换}
 
-\begin{main}{傅里叶积分定理}
+\begin{theorem}{傅里叶积分定理}
 	设函数 $f(t)$ 满足
 	\begin{itemize}
 		\item 在 $(-\infty,+\infty)$ 上\emph{绝对可积};
@@ -77,7 +77,7 @@
 		\[f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
 		F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.\]
 	对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
-\end{main}
+\end{theorem}
 \begin{center}
 	\begin{tikzpicture}[node distance=100pt]
 		\node[cstnode2](a){原象函数 $f(t)$};
@@ -288,10 +288,10 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 \[\msf[\delta(t)]=\int_{-\infty}^{+\infty}\delta(t)e^{-j\omega t}\diff t=1.\]
 同理可得其傅里叶逆变换.
 因此我们得到:
-\begin{second@}
+% \begin{second@}
 	\[\msf[\delta(t)]=1,\qquad
 	\msf^{-1}[\delta(\omega)]=\dfrac1{2\pi}.\]
-\end{second@}
+% \end{second@}
 
 \begin{example}
 	证明 \emph{$\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega)$}.
@@ -315,15 +315,15 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 我们不可能也没必要每次都对需要变换的函数从定义出发计算傅里叶变换.
 通过研究傅里叶变换的性质, 结合常见函数的傅里叶变换, 我们可以得到很多情形的傅里叶变换.
 
-\begin{main}{线性性质}
+\begin{theorem}{线性性质}
 	\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
 	\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
-\end{main}
+\end{theorem}
 
-\begin{main}{位移性质}
+\begin{theorem}{位移性质}
 	\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
 	\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
-\end{main}
+\end{theorem}
 
 \begin{proof}
 	\begin{align*}
@@ -337,14 +337,14 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 \[\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
 \msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}.\]
 
-\begin{main}{微分性质}
+\begin{theorem}{微分性质}
 	\[\msf[f'(t)]=j\omega F(\omega),\quad
 	\msf^{-1}[F'(\omega)]=-jtf(t),\]
 
 	\[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
 	\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
 	这里, 被变换的函数要求在 $\infty$ 处趋于 $0$.
-\end{main}
+\end{theorem}
 
 \begin{proof}
 	\begin{align*}
@@ -355,22 +355,22 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 \end{proof}
 
 由微分性质可得
-\begin{main}{乘多项式性质}
+\begin{theorem}{乘多项式性质}
 	\[\msf[tf(t)]=jF'(\omega),\quad
 	\msf^{-1}[\omega F(\omega)]=-jf'(t),\]
 	\[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
 	\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
-\end{main}
+\end{theorem}
 
-\begin{main}{积分性质}
+\begin{theorem}{积分性质}
 	\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
-\end{main}
+\end{theorem}
 
 由变量替换易得
-\begin{main}{相似性质}
+\begin{theorem}{相似性质}
 	\[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
 	\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
-\end{main}
+\end{theorem}
 
 \begin{example}
 	求 $\msf[t^k e^{-\beta t}u(t)],\beta>0$.
@@ -407,20 +407,20 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 	$\msf[\cos{\omega_0 t}]=$\fillblank[5cm][1mm]{{$\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)]$}}.
 \end{exercise}
 
-\begin{second}{常见傅里叶变换汇总 I}
+\begin{theorem}{常见傅里叶变换汇总 I}
 	\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
 	\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
 	\begin{align*}
 	\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 	\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
 	\end{align*}
-\end{second}
+\end{theorem}
 
-\begin{main}{常见傅里叶变换汇总 II}
+\begin{theorem}{常见傅里叶变换汇总 II}
 	\[\msf[u(t)e^{-\beta t}]=\dfrac1{\beta+j\omega},\quad
 	\msf[e^{-\beta t^2}]=\sqrt{\dfrac\pi\beta}e^{-\omega^2/(4\beta)},\]
 	\[\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega).\]
-\end{main}
+\end{theorem}
 
 \subsection{卷积*}
 
@@ -447,10 +447,10 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 	故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
 \end{solution}
 
-\begin{main}{卷积定理}
+\begin{theorem}{卷积定理}
 	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
 	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
-\end{main}
+\end{theorem}
 
 \begin{proof}
 	\begin{align*}
@@ -553,14 +553,14 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
 我们称之为 $\varphi(t)$ 的\emph{拉普拉斯变换 $\msl[\varphi]$}.
 
-\begin{main}{拉普拉斯变换存在定理}
+\begin{theorem}{拉普拉斯变换存在定理}
 		若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足
 		\begin{itemize}
 			\item $f(t)$ 在任一有限区间上至多只有有限多间断点;
 			\item 存在 $M,c$ 使得 $|f(t)|\le Me^{ct}$,
 		\end{itemize}{则 $F(s)=\msl[f(t)]$ 在 $\Re s>c$ 上存在且为解析函数.
 	}
-\end{main}
+\end{theorem}
 
 \begin{center}
 	\begin{tikzpicture}[node distance=118pt]
@@ -608,7 +608,7 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 
 和傅里叶变换类似, 拉普拉斯变换也有着各种性质. 我们不加证明地列出它们.
 
-\begin{main}{拉普拉斯变换的性质}
+\begin{theorem}{拉普拉斯变换的性质}
 	\begin{itemize}
 		\item (线性性质) $\msl[\alpha f+\beta g]=\alpha F+\beta G, \msl^{-1}[\alpha F+\beta G]=\alpha f+\beta g$.
 		\item (积分性质) $\displaystyle\msl\left[\int_0^t f(\tau)\diff\tau\right]=\frac 1s F(s)$.
@@ -616,12 +616,12 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 		\item (延迟性质) $\msl[f(t-t_0)]=e^{-st_0}F(s), t_0\ge 0$.
 		\item (位移性质) $\msl[e^{s_0t}f(t)]=F(s-s_0)$.
 	\end{itemize}
-\end{main}
+\end{theorem}
 
-\begin{second}{微分性质}
+\begin{theorem}{微分性质}
 	\[\msl[f'(t)]=sF(s)-f(0),\]
 	\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0).\]
-\end{second}
+\end{theorem}
 
 从拉普拉斯变换的微分性质可以看出, 拉普拉斯变换可以将微分方程转化为代数方程, 从而可用于解微分方程.
 
@@ -650,20 +650,20 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 	\[\msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}}.\]
 \end{solution}
 
-\begin{second}{常见拉普拉斯变换汇总}
+\begin{theorem}{常见拉普拉斯变换汇总}
 	\[\msl[1]=\frac1s,\quad \msl[e^{kt}]=\frac1{s-k},\]
 	\[\msl[t^m]=\frac{m!}{s^{m+1}},\quad \msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}},\]
 	\[\msl[\sin kt]=\frac{k}{s^2+k^2},\quad
 	\msl[\cos kt]=\frac{s}{s^2+k^2}.\]
-\end{second}
+\end{theorem}
 
 \subsection{拉普拉斯逆变换}
 
 拉普拉斯逆变换可以由如下定理给出
-\begin{main}{拉普拉斯逆变换定理}
+\begin{theorem}{拉普拉斯逆变换定理}
 	设 $F(s)$ 的所有奇点为 $s_1,\dots,s_k$, 且 $\lim\limits_{z\to\infty}F(z)=0$, 则
 	\[\msl^{-1}[F(s)]=\sum_{k=1}^n \Res\left[F(s)e^{st},s_k\right].\]
-\end{main}
+\end{theorem}
 
 不过我们只要求掌握如何利用常见函数的拉普拉斯变换来计算逆变换.
 
@@ -699,9 +699,9 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 \[f_1(t)\ast f_2(t)=\int_0^t f_1(\tau)f_2(t-\tau)\diff \tau,\quad t\ge 0,\]
 且我们有如下的卷积定理.
 
-\begin{main}{卷积定理}
+\begin{theorem}{卷积定理}
 	\[\msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).\]
-\end{main}
+\end{theorem}
 
 \subsection{拉普拉斯变换的应用}
 

@@ -13,20 +13,27 @@
 	\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.\]
 	\onslide<+->
 	所以 $f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零.
+	\onslide<+->
+	这里, 如果 $C$ 不是闭路(有自相交的点), 也可以拆分为一些闭路的并.
 
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\draw
-				(-0.2,-0.2) node[second] {$z_0$}
-				(2.2,2.2) node[second] {$z$}
-				(0.2,1.8) node[main] {$C_1$}
-				(1.8,0.3) node[third] {$C_2$};
-			\draw[cstcurve,third] (2,2) arc(0:-90:2);
-			\draw[cstcurve,third,cstwra] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
-			\draw[cstcurve,main] (0,0) arc(180:90:2);
-			\draw[cstcurve,main,cstwra] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
-			\draw[cstcurve,second,cstwla,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
+			\coordinate (O);
+			\coordinate (A) at (2,2);
+			\coordinate (C) at ({2+2*cos(145)},{2*sin(145)});
+			\coordinate (D) at ({2*cos(-45)},{2+2*sin(-45)});
+			\draw (O) node[below left,second] {$z_0$};
+			\draw (A) node[above right,second] {$z$};
+			\draw (C) node[above left,main] {$C_1$};
+			\draw (D) node[below right,third] {$C_2$};
+			\begin{scope}[cstcurve]
+				\draw[third] (A) arc(0:-90:2);
+				\draw[third,cstwra] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
+				\draw[main] (O) arc(180:90:2);
+				\draw[main,cstwra] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
+				\draw[second,cstwla,visible on=<2->] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
+			\end{scope}
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -40,7 +47,7 @@
 	\begin{itemize}
 		\item $f(z)=z$ 处处解析, 积分只与起点终点有关 (闭路积分为零);
 		\item $f(z)=\dfrac1{z-z_0}$ 有奇点 $z_0$, 沿绕 $z_0$ 闭路的积分非零;
-		\item $f(z)=\Re z$ 处处不解析, 积分与路径有关 (闭路积分非零).
+		\item $f(z)=\Re z$ 处处不解析, 积分与路径有关 (闭路积分可能非零).
 	\end{itemize}
 	\onslide<+->
 	由此可见函数沿闭路积分为零,
@@ -82,22 +89,24 @@
 
 	\onslide<+->
 	\begin{corollary}
-	设 $f(z)$ 在单连通域 $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线(可以不是闭路), 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+	设 $f(z)$ 在\alert{单连通域} $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
 	\end{corollary}
-
 	\onslide<+->
-	这是因为即使不是简单曲线也可以拆分为一些简单曲线.
-	\onslide<4->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstcurve,main,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,main,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-			\draw[cstcurve,second,cstwla,ultra thick] (1.05,0.35) arc (135:-135:0.5);
-			\draw[cstcurve,third,cstwla,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
-		\end{tikzpicture}
-	\end{center}
+	这里的闭合曲线可以不是闭路.
+
+	% \onslide<+->
+	% 这是因为即使不是简单曲线也可以拆分为一些简单曲线.
+	% \onslide<4->
+	% \begin{center}
+	% 	\begin{tikzpicture}
+	% 		\draw[cstcurve,main,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
+	% 		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
+	% 		\draw[cstcurve,main,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
+	% 		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
+	% 		\draw[cstcurve,second,cstwla,ultra thick] (1.05,0.35) arc (135:-135:0.5);
+	% 		\draw[cstcurve,third,cstwla,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
+	% 	\end{tikzpicture}
+	% \end{center}
 \end{frame}
 
 
@@ -116,8 +125,8 @@
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblank{\visible<5->{$0$}}.
-			\item 求 $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblank{\visible<6->{$0$}}.
+			\item $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblankframe{$0$}.
+			\item 求 $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblankframe{$0$}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
@@ -126,7 +135,7 @@
 \begin{frame}{例: 柯西-古萨基本定理计算积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\half $.
+		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\dfrac12$.
 	\end{example}
 
 	\onslide<+->
@@ -155,17 +164,17 @@
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\fill[cstcurve,cstfill,visible on=<2->] (0,0) circle(2.5 and 1.5);
+			\fill[cstfill,visible on=<2->,rounded corners=15mm] (-2.5,-1.5) rectangle (2.5,1.5);
+			\draw[cstcurve,main,rounded corners=15mm] (-2.5,-1.5) rectangle (2.5,1.5);
 			\fill[cstcurve,white,visible on=<2->] (1,0) circle(0.6);
 			\fill[cstcurve,white,visible on=<2->] (-1,0) circle(0.6);
-			\draw[cstcurve,main] (0,0) circle(2.5 and 1.5);
 			\draw[cstcurve,main] (1,0) circle(0.6);
 			\draw[cstcurve,main] (-1,0) circle(0.6);
-			\draw[cstcurve,main,domain=85:90,cstwra,visible on=<2->] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+			\draw[cstcurve,main,domain=85:90,cstwra,visible on=<2->] plot (.3,1.5)--(0,1.5);
 			\draw[cstcurve,main,domain=135:140,cstwla,visible on=<2->] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
 			\draw[cstcurve,main,domain=135:140,cstwla,visible on=<2->] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
 			\draw
-				(2,1.3) node[main] {$C_0$}
+				(2.2,1.3) node[main] {$C_0$}
 				(-1,0.85) node[main] {$C_1^{\visible<2->-}$}
 				(1,0.85) node[main] {$C_2^{\visible<2->-}$};
 		\end{tikzpicture}
@@ -180,21 +189,64 @@
 		\[\oint_{C_0}f(z)\diff z=
 		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
 	\end{second}
+	\onslide<+->
+	事实上, 复合闭路定理和柯西-古萨基本定理可以看成一个定理的两种情形: 
+	\onslide<+->
+	设 $C$ 是一个闭路或复合闭路, 若 $f(z)$ 在 $C$ 及其围成的区域(单连通或多连通)内解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+\end{frame}
+
+
+
+\begin{frame}{复合闭路定理: 注记}
+	\onslide<+->
+	在实际应用中, 如果被积函数 $f(z)$ 在(复合)闭路 $C$ 的内部有有限多个奇点 $z_1,\dots,z_k$.
+	\onslide<+->
+	那么我们可以在 $C$ 内部(围成的区域)构造闭路 $C_1,\dots,C_k$, 使得每个 $C_j$ 内部只包含一个奇点 $z_j$.
+	\onslide<+->
+	这样, 内部含多个奇点的情形就可以化成内部只含一个奇点的情形. 最后将这些闭路上的积分相加即可.
+	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
-			\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
-			\fill[cstcurve,white] (1,0) circle(0.6);
-			\fill[cstcurve,white] (-1,0) circle(0.6);
-			\draw[cstcurve,main] (0,0) circle(2.5 and 1.5);
-			\draw[cstcurve,main] (1,0) circle(0.6);
-			\draw[cstcurve,main] (-1,0) circle(0.6);
-			\draw[cstcurve,main,domain=85:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-			\draw[cstcurve,main,domain=135:140,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+			\draw[cstcurve,main,rounded corners=10mm] (-2.2,-1.2) rectangle (2.2,1.2);
+			\draw[cstcurve,second,visible on=<2->] (1,0) circle(0.4);
+			\draw[cstcurve,second,visible on=<2->] (0,0) circle(0.4);
+			\draw[cstcurve,second,visible on=<2->] (-1,0) circle(0.4);
+			\fill[cstdot,second] (1,0) circle;
+			\fill[cstdot,second] (0,0) circle;
+			\fill[cstdot,second] (-1,0) circle;
 			\draw
-				(2,1.3) node[main] {$C_0$}
-				(-1,0.85) node[main] {$C_1^{\visible<2->-}$}
-				(1,0.85) node[main] {$C_2^{\visible<2->-}$};
+				(-1,-0.25) node[second] {$z_1$}
+				(0,-0.25) node[second] {$z_2$}
+				(1,-0.25) node[second] {$z_3$}
+				(2.2,1.1) node[main] {$C$}
+				(-1,0.65) node[second,visible on=<2->] {$C_1$}
+				(0,0.65) node[second,visible on=<2->] {$C_2$}
+				(1,0.65) node[second,visible on=<2->] {$C_3$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{复合闭路定理: 注记}
+	\onslide<+->
+	此外, 从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
+	\onslide<+->
+	因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
+	\onslide<+->
+	这里即使 $C$ 是复合闭路也是可以自由变形的.
+	\onslide<1->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstcurve,main,rounded corners=10mm] (-2.2,-1.2) rectangle (2.2,1.2);
+			\draw[cstcurve,third] (0,0) circle(1.2 and 2.2);
+			\draw[cstcurve,second,visible on=<2->] (0,0) circle(1);
+			\fill[cstdot,second] (.7,0.2) circle;
+			\fill[cstdot,second] (0,-0.4) circle;
+			\fill[cstdot,second] (-.5,0.1) circle;
+			\draw
+				(2,1.4) node[main] {$C_1$}
+				(-1.1,1.8) node[third] {$C_2$}
+				(-.4,0.65) node[second,visible on=<2->] {$C'$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
@@ -255,59 +307,6 @@
 \end{frame}
 
 
-\begin{frame}{复合闭路定理: 注记}
-	\onslide<+->
-	在实际应用中, 如果被积函数 $f(z)$ 在闭路 $C$ 的内部有有限多个奇点 $z_1,\dots,z_k$.
-	\onslide<+->
-	那么我们可以在 $C$ 内部构造闭路 $C_1,\dots,C_k$, 使得每个 $C_j$ 内部只包含一个奇点 $z_j$.
-	\onslide<+->
-	这样, 内部含多个奇点的情形就可以化成内部只含一个奇点的情形. 最后将这些闭路上的积分相加即可.
-	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
-			\draw[cstcurve,second] (1,0) circle(0.4);
-			\draw[cstcurve,second] (0,0) circle(0.4);
-			\draw[cstcurve,second] (-1,0) circle(0.4);
-			\fill[cstdot,second,visible on=<2->] (1,0) circle;
-			\fill[cstdot,second,visible on=<2->] (0,0) circle;
-			\fill[cstdot,second,visible on=<2->] (-1,0) circle;
-			\draw
-				(-1,-0.25) node[second] {$z_1$}
-				(0,-0.25) node[second] {$z_2$}
-				(1,-0.25) node[second] {$z_3$}
-				(1.8,1.1) node[main] {$C_0$}
-				(-1,0.65) node[second,visible on=<2->] {$C_1$}
-				(0,0.65) node[second,visible on=<2->] {$C_2$}
-				(1,0.65) node[second,visible on=<2->] {$C_3$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}{复合闭路定理: 注记}
-	\onslide<+->
-	此外, 从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
-	\onslide<+->
-	因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
-	\onslide<1->
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
-			\draw[cstcurve,third] (0,0) circle(1.2 and 2.2);
-			\draw[cstcurve,second,visible on=<2->] (0,0) circle(1);
-			\fill[cstdot,second] (.7,0.2) circle;
-			\fill[cstdot,second] (0,-0.4) circle;
-			\fill[cstdot,second] (-.5,0.1) circle;
-			\draw
-				(1.8,1.1) node[main] {$C_1$}
-				(-1.1,1.8) node[third] {$C_2$}
-				(-.4,0.65) node[second,visible on=<2->] {$C'$};
-		\end{tikzpicture}
-	\end{center}
-\end{frame}
-
-
 \begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
@@ -357,8 +356,8 @@
 				\draw[cstaxis] (-2.5,0)--(2.5,0);
 				\draw[cstaxis] (0,-1)--(0,1);
 				\draw[cstcurve,cstwra,main] (-1,-0.7)--(-0.5,-0.7);
-				\draw[cstcurve,cstwra,second] (-0.4,0) arc(180:225:0.4);
-				\draw[cstcurve,cstwra,second] (0.6,0) arc(180:225:0.4);
+				\draw[cstcurve,cstwra,second,visible on=<3->] (-0.4,0) arc(180:225:0.4);
+				\draw[cstcurve,cstwra,second,visible on=<3->] (0.6,0) arc(180:225:0.4);
 				\draw[cstcurve,second,visible on=<3->] (0,0) circle (0.4);
 				\draw[cstcurve,second,visible on=<3->] (1,0) circle (0.4);
 				\fill[cstdot,third,visible on=<2->] (1,0) circle;

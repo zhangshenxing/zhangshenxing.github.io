@@ -1,0 +1,88 @@
+\documentclass[11pt,a4paper,twoside,openright]{ctexbook}
+\usepackage{../../../latex/book}
+\PassOptionsToPackage{style=alphabetic}{biblatex}
+\usepackage[all]{xy}
+\usepackage{makeidx}
+\input{../../../latex/settings}
+\input{../../../latex/symbols}
+\makeindex
+\title{复变函数与积分变换}
+\author{张神星}
+\institute{合肥工业大学}
+\date{\zhtoday}
+\version{v1.0.0.0}
+\logo{hfut.png}
+\cover{theme/doremi/cover.jpg}
+\addbibresource[location=local]{mybib.bib}
+\newfontface\cmunrm{cmunrm.otf}\newcommand\cmu[1]{{\cmunrm{#1}}}
+
+\begin{document}
+
+% \maketitle
+% \hypersetup{pageanchor=true}
+% \frontmatter
+
+% \chapter*{前言}
+% \addcontentsline{toc}{chapter}{前言}
+
+% 复变函数是大多数理工科专业的必修课。对于非数学专业学生，复变函数课程课时往往相对较短，内容侧重于具体的计算，而缺乏对概念和定理的理解。
+% 本书针对该课程的特点，一方面着重强调概念与定理的理解，并由此得到相应的计算方法；另一方面提供计算中有用的各种技巧，并给出相应理论的应用。
+% 对于定理和概念，本书不会过分强调证明的严格和描述的准确，而是尽量提供多元化的、触及核心的理解方式。
+
+% \vskip 0.5cm
+% \begin{flushright}
+% 张神星\\
+% 2024年9月24日
+% \end{flushright}
+
+
+% \vskip 0.5cm
+
+% \noindent Bib 格式:
+% \begin{lstlisting}
+% @misc{ZhangNotes2021,
+%   AUTHOR = {张神星},
+%   KEY = {zhang2 shen4 xing2},
+%   TITLE = {复变函数与积分变换 (v1.0.0.0)},
+%   YEAR = {2024},
+%   PAGES = {vi+163},
+%   HOWPUBLISHED = {Course Notes},
+%   URL = {https://zhangshenxing.github.io/teaching/复变函数与积分变换/note/main.pdf},
+%   LANGUAGE = {Chinese}
+% }
+% \end{lstlisting}
+
+% \tableofcontents
+
+
+
+
+\mainmatter
+
+
+\input{chapter1.tex}
+\input{chapter2.tex}
+\input{chapter3.tex}
+\input{chapter4.tex}
+\input{chapter5.tex}
+\input{chapter6.tex}
+
+
+% \appendix
+% \input{appendix.tex}
+
+
+% \backmatter
+% \printbibliography[heading=bibintoc, title=\ebibname]
+
+% \input{name.tex}
+
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{索引}
+
+% \printindex
+% \input{../../../../ans.tex}
+
+\end{document}
+

@@ -691,7 +691,7 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 \end{align*}
 
 
-
+\sectionHomework
 \begin{homework}
 	\item 判断题.
 		\begin{exlist}
@@ -806,15 +806,18 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 				\end{tasks}
 			\item 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试说出3点.
 		\end{exlist}
-	\item 扩展阅读. 该部分作业不需要交, 有兴趣的同学可以做完后交到任课教师邮箱.
+\end{homework}
 	
-	仿照复数的指数函数, 我们可以尝试在矩阵上定义指数函数. 设 $\bfA\in M_m(\BC)$ 是一个 $m\times m$ 的复矩阵, 我们想说明极限
+
+\sectionExtraReading
+\begin{homework}
+	\item 仿照复数的指数函数, 我们可以尝试在矩阵上定义指数函数. 设 $\bfA\in M_m(\BC)$ 是一个 $m\times m$ 的复矩阵, 我们想说明极限
 	\[e^\bfA:=\lim_{n\to \infty}\left(1+\frac1n \bfA\right)^n\]
 	存在.
-	\begin{tasks}
-		\task 当 $\bfA=\diag\set{a_1,a_2,\dots,a_m}$ 是一个对角矩阵时, 证明 $e^\bfA$ 存在且
+	\begin{exlist}
+		\item 当 $\bfA=\diag\set{a_1,a_2,\dots,a_m}$ 是一个对角矩阵时, 证明 $e^\bfA$ 存在且
 		\[e^\bfA=\diag\set{e^{a_1},e^{a_2},\dots,e^{a_m}}.\]
-		\task 当
+		\item 当
 		\[\bfA=\bfJ_m(a)=\begin{pmatrix}
 			a&1&   &\\
 			&a& 1 &\\
@@ -822,25 +825,47 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 			& &      &a
 		\end{pmatrix}\]
 		是约当块时, 证明 $e^\bfA$ 存在.
-		\task 每个方阵都可以相似于一些约当块构成的分块对角阵, 由此证明 $e^\bfA$ 总存在.
-		\task 当 $\bfA=x\bfE+y\bfJ=\begin{pmatrix}
+		\item 每个方阵都可以相似于一些约当块构成的分块对角阵, 由此证明 $e^\bfA$ 总存在.
+		\item 当 $\bfA=x\bfE+y\bfJ=\begin{pmatrix}
 			x&y\\-y&x
 		\end{pmatrix}$ 时, 证明 $e^\bfA=\begin{pmatrix}
 			e^x\cos y&e^x\sin y\\-e^x\sin y&e^x\cos y
 		\end{pmatrix}=e^x(cos y\bfE+\sin y \bfJ)$.
-		\task 证明 $e^\bfA=\bfE+\bfA+\dfrac{\bfA^2}{2!}+\dfrac{\bfA^3}{3!}+\cdots$.
-		\task 证明 $e^{\bfA+\bfB}=e^\bfA\cdot e^\bfB$.
-	\end{tasks}
+		\item 证明 $e^\bfA=\bfE+\bfA+\dfrac{\bfA^2}{2!}+\dfrac{\bfA^3}{3!}+\cdots$.
+		\item 证明 $e^{\bfA+\bfB}=e^\bfA\cdot e^\bfB$.
+	\end{exlist}
+	
+	\item 注意到 $x=\dfrac12z+\dfrac12\ov z,y=-\dfrac i2z+\dfrac i2\ov z$.
+	仿照着二元实函数偏导数在变量替换下的变换规则, 我们定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
+	\[\left\{
+	\begin{aligned}
+		\frac{\partial f}{\partial z}&
+	=\frac{\partial x}{\partial z}\frac{\partial f}{\partial x}
+		+\frac{\partial y}{\partial z}\frac{\partial f}{\partial y}
+	=\frac12\frac{\partial f}{\partial x}-\frac i2\frac{\partial f}{\partial y},\\
+		\frac{\partial f}{\partial \ov z}&
+	=\frac{\partial x}{\partial \ov z}\frac{\partial f}{\partial x}
+		+\frac{\partial y}{\partial \ov z}\frac{\partial f}{\partial y}
+	=\frac12\frac{\partial f}{\partial x}+\frac i2\frac{\partial f}{\partial y}.
+	\end{aligned}\right.\]
+	\begin{exlist}
+	\item 证明C-R方程等价于 $\dfrac{\partial f}{\partial \ov z}
+	=0$.
+	所以我们也可以把 \emph{$\dfrac{\partial f}{\partial \ov z}=0$} 叫做C-R方程.
+
+	\item 利用该结论求函数 $f(z)=\ov z, z\Im z, e^{z\ov z}$ 的可导点和解析点.
+	\end{exlist}
 \end{homework}
 
 
-\exerciseanswer
-\ansno{1.1} 处处不可导.
-\ansno{1.2} A. 因为解析要求在 $z_0$ 的一个邻域内都可导才行.
-\ansno{2.1} A. 根据C-R方程可知对于A, $u_x(0)=2\neq v_y(0)=3$. 对于BD, 各个偏导数在 $0$ 处取值都是 $0$. C则是处处都可导.
 
-\ansno{3.1} $\ln 2-\dfrac{2\pi i}3$.
-\ansno{3.2} $\ln 3$.
+\sectionExerciseAnswer
+\exans 处处不可导.
+\exans A. 因为解析要求在 $z_0$ 的一个邻域内都可导才行.
+\exans A. 根据C-R方程可知对于A, $u_x(0)=2\neq v_y(0)=3$. 对于BD, 各个偏导数在 $0$ 处取值都是 $0$. C则是处处都可导.
+
+\exans $\ln 2-\dfrac{2\pi i}3$.
+\exans $\ln 3$.
 
 
 
