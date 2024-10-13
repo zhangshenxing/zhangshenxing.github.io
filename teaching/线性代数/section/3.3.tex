@@ -354,6 +354,44 @@
 
 
 \begin{frame}{例: 正定的性质和判定}
+	\beqskip{2pt}
+	\onslide<+->
+	\begin{example}
+		设 $x$ 是实数, 证明 $\begin{vmatrix}
+			10&2&3&5\\
+			2&10&1&-1\\
+			3&1&10&x\\
+			5&-1&x&10
+		\end{vmatrix}\le 10000$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		设 $\bfA$ 为题述方阵.
+	\onslide<+->{%
+		它的前三个顺序主子式
+		\[10>0,\quad\begin{vmatrix}
+			10&2\\
+			2&10
+		\end{vmatrix}=96>0,\quad
+		\begin{vmatrix}
+			10&2&3\\
+			2&10&1\\
+			3&1&10
+		\end{vmatrix}=872>0,\]
+	}\onslide<+->{%
+		若 $|\bfA|\le0$, 命题显然成立.
+	}\onslide<+->{%
+		若 $|\bfA|>0$, 则 $\bfA$ 正定, 从而特征值全正.
+	}\onslide<+->{%
+		因此
+		\[|\bfA|=\lambda_1\lambda_2\lambda_3\lambda_4\le\Bigl(\frac{\lambda_1+\lambda_2+\lambda_3+\lambda_4}4\Bigr)^4=10000.\qedhere\]
+	}\vspace{-.5\baselineskip}
+	\end{proof}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
 \beqskip{6pt}
 	\onslide<+->
 	\begin{example}
