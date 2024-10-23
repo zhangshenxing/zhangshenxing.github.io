@@ -9,7 +9,7 @@
 	反过来, 解析函数是不是也一定可以在一点展开成幂级数呢? 也就是说是否存在\emph{泰勒级数}展开?
 
 	\onslide<+->
-	在实变函数中我们知道, 一个函数即使在一点附近无限次可导, 它的泰勒级数也未必收敛到原函数.
+	在高等数学中我们知道, 一个函数即使在一点附近无限次可导, 它的泰勒级数也未必收敛到原函数.
 	\onslide<+->
 	例如
 	\[f(x)=\begin{cases}
@@ -108,38 +108,44 @@
 	\end{align*}
 	\onslide<+->
 	故
-	\[\alert{f(z)=\sum_{n=0}^\infty\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n},\quad |z-z_0|<d.\]
+	\[\alertm{f(z)=\sum_{n=0}^\infty\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n},\quad |z-z_0|<d.\]
 \end{frame}
 
 
 \begin{frame}{泰勒展开的成立范围}
 	\onslide<+->
-	由于幂级数在收敛半径内的和函数是解析的, 因此解析函数的泰勒展开成立的圆域不包含奇点.
+	由于幂级数在收敛半径内的和函数是解析的, 因此上述等式成立的圆域不包含奇点.
 	\onslide<+->
-	由此可知, 解析函数在 $z_0$ 处\alert{泰勒展开成立的圆域的最大半径是 $z_0$ 到最近奇点的距离}.
-
+	故解析函数在 $z_0$ 处\alert{泰勒展开成立的圆域的最大半径是 $\alertm{z_0}$ 到最近奇点的距离}.
 	\onslide<+->
-	需要注意的是, 泰勒级数的收敛半径是有可能比这个半径更大的,
-	\onslide<+->
-	而且泰勒展开等式也可能在这个圆域之外的点成立.
-	\onslide<+->
-	例如 
+	需要注意的是, 泰勒级数的收敛半径是有可能比这个半径更大的:
 	\[f(z)=\begin{cases}
-	e^z,&z\neq 1;\\ 0,&z=1
-	\end{cases}\]
-	的麦克劳林展开为 $f(z)=\suml_{n=0}^\infty \dfrac{z^n}{n!},\quad |z|<1$.
+	e^z,&z\neq 1;\\ 0,&z=1,
+	\end{cases}\qquad f(z)=\suml_{n=0}^\infty \dfrac{z^n}{n!},\quad |z|<1.\]
+	\onslide<+->
+	\[f(z)=\ln(z-1-i),\qquad f(z)=-\frac1{1+i}\sum_{n=0}^\infty\frac1{n(1+i)^n}z^n,\quad |z|<1.\]
+	\onslide<+->
+	若并非这两种情形(奇点``可去''), 则收敛半径的确就是前述距离.
 
 	\onslide<+->
-	现在我们来看 $f(z)=\dfrac1{1+z^2}$.
+	对于
+	\[f(z)=\begin{cases}
+	e^{-z^{-2}},&z\neq 0,\\
+	0,&z=0.\end{cases}\]
 	\onslide<+->
-	它的奇点为 $\pm i$, 所以它的麦克劳林展开成立的半径是 $1$.
-	\onslide<+->
-	这就解释了为什么函数 $f(x)=\dfrac1{1+x^2}$ 的麦克劳林展开成立的开区间是 $(-1,1)$.
+	$\lim_{y\to 0}f(iy)=\infty$, 因此 $f(z)$ 在 $0$ 处不连续, 无法在 $0$ 处进行复的泰勒展开.
 \end{frame}
 
 
 \subsection{泰勒展开的计算方法}
 \begin{frame}{幂级数展开的唯一性}
+	\onslide<+->
+	对于 $f(z)=\dfrac1{1+z^2}$,
+	\onslide<+->
+	它的奇点为 $\pm i$, 所以它的麦克劳林展开成立的半径是 $1$.
+	\onslide<+->
+	这就解释了为什么函数 $f(x)=\dfrac1{1+x^2}$ 的麦克劳林展开成立的开区间是 $(-1,1)$.
+
 	\onslide<+->
 	若 $f(z)$ 在 $z_0$ 附近展开为 $\suml_{n=0}^\infty c_n(z-z_0)^n$,
 	\onslide<+->
@@ -147,9 +153,13 @@
 	\[f^{(n)}(z_0)=\sum_{k=n}^\infty c_k k(k-1)\cdots(k-n+1)(z-z_0)^{k-n}\Big|_{z=z_0}=n!c_n.\]
 	\onslide<+->
 	所以\alert{解析函数的幂级数展开是唯一的}.
+	\onslide<+->
+	由此, 解析函数的泰勒展开不仅可以\emph{直接求出各阶导数得到}, 也可以\emph{利用幂级数的运算法则得到}.
 
 	\onslide<+->
-	因此解析函数的泰勒展开不仅可以\emph{直接求出各阶导数得到}, 也可以\emph{利用幂级数的运算法则得到}.
+	如果函数 $f(z)$ 在一幂级数所有收敛的点处与其和函数相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
+	\onslide<+->
+	这是因为一旦 $f(z)$ 在收敛圆周上处处解析, 它就可以在一个半径更大的圆域上泰勒展开成该幂级数.
 \end{frame}
 
 
@@ -159,7 +169,7 @@
 	\begin{example}
 		由于 $(e^z)^{(n)}(0)=e^z|_{z=0}=1$,
 		\onslide<+->{因此
-		\[\emph{e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
+		\[\emphm{e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
 		\vspace{-.5\baselineskip}
 	\end{example}
 
@@ -169,7 +179,7 @@
 		\onslide<+->{
 			\[(\cos z)^{(2n+1)}(0)=0,\quad (\cos z)^{(2n)}(0)=(-1)^n,\]
 		}\onslide<+->{因此
-			\[\emph{\cos z=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}+\cdots=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!},\quad\forall z.}\]}
+			\[\emphm{\cos z=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}+\cdots=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!},\quad\forall z.}\]}
 			\vspace{-.5\baselineskip}
 	\end{example}
 	\endgroup
@@ -183,8 +193,8 @@
 		\begin{align*}
 			\sin z&=\frac{e^{iz}-e^{-iz}}{2i}
 			\visible<+->{=\sum_{n=0}^\infty\frac{(iz)^n-(-iz)^n}{2i\cdot n!}}\\
-			&\visible<+->{\emph{=z-\frac{z^3}{3!}+\frac{z^5}{5!}-\cdots}}
-			\visible<+->{\emph{=\sum_{n=0}^\infty(-1)^n\frac{z^{2n+1}}{(2n+1)!},\quad\forall z.}}
+			&\visible<+->{\emphm{=z-\frac{z^3}{3!}+\frac{z^5}{5!}-\cdots}
+			\emphm{=\sum_{n=0}^\infty(-1)^n\frac{z^{2n+1}}{(2n+1)!},\quad\forall z.}}
 		\end{align*}
 		\onslide<+->
 		这里, 因为 $\sin z$ 是奇函数, 所以它的麦克劳林展开只有奇数幂次项, 没有偶数幂次项.
@@ -220,19 +230,21 @@
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
 	\begin{example}
-	函数 $f(z)=(1+z)^\alpha$ 的主值为 $\exp\bigl[\alpha\ln(1+z)\bigr]$.
-	\onslide<+->{它在去掉射线 $z=x\le -1$ 的区域内解析.
-	}\onslide<+->{由于
-	\begin{align*}
-		f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)\exp\bigl[(\alpha-n)\ln(1+z)\bigr]\Big|_{z=0}\\
-		&\visible<+->{=\alpha(\alpha-1)\cdots(\alpha-n+1).}
-		\end{align*}
-	}\onslide<+->{因此
+		本例中幂函数均取主值.
+		\onslide<+->{%
+		$f(z)=(1+z)^\alpha$ 在去掉射线 $z=x\le -1$ 的区域内解析.
+	}\onslide<+->{%
+		由于
 		\begin{align*}
-		\emph{(1+z)^\alpha}&\emph{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
-		&\emph{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
-	\end{align*}}
-	\vspace{-.5\baselineskip}
+			f^{(n)}(0)&=\alpha(\alpha-1)\cdots(\alpha-n+1)(1+z)^{\alpha-n}\Big|_{z=0}\\
+			&\visible<+->{=\alpha(\alpha-1)\cdots(\alpha-n+1).}
+			\end{align*}
+		}\onslide<+->{因此
+			\begin{align*}
+			\emphm{(1+z)^\alpha}&\emphm{=1+\alpha z+\frac{\alpha(\alpha-1)}2z^2+\frac{\alpha(\alpha-1)(\alpha-2)}{3!}z^3+\cdots}\\
+			&\emphm{=\sum_{n=0}^\infty\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}z^n,\quad |z|<1.}
+		\end{align*}}
+		\vspace{-.5\baselineskip}
 	\end{example}
 \end{frame}
 
@@ -261,7 +273,7 @@
 
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
-	\begin{solution}{另解}
+	\begin{solution}[另解]
 		由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 		\onslide<+->{由于
 			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]

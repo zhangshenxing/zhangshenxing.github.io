@@ -1,22 +1,31 @@
 \ctexset{
+  secnumdepth=4,
+  tocdepth=2,
   chapter = {
     name = {第,章},
     number = \chinese{chapter},
-    format = \centering\color{main}\huge\bfseries
+    format = \raggedleft\color{main}\huge\bfseries\underline,
+    beforeskip={10pt}
   },
   section = {
-    name = {\S,},
-    format = \centering\color{main}\Large\bfseries
+    name = {,},
+    format = \raggedright\color{main}\Large\bfseries,
+    beforeskip={7ex plus 2ex minus .4ex},
+    afterskip={4.6ex plus .4ex},
   },
   subsection = {
-    name = {\S,},
-    format = \color{third}\large\bfseries
+    name = {,},
+    format = \color{main}\large\bfseries,
+    beforeskip={6.5ex plus 2ex minus .4ex},
+    afterskip={3ex plus .4ex},
   },
   subsubsection = {
-    name = {\S,},
-    format = \color{third}\large\bfseries
+    name = {,},
+    format = \color{main}\bfseries,
+    indent=\parindent
   }
 }
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
 
 
@@ -25,7 +34,8 @@
 \RequirePackage{amsthm}
 
 \RequirePackage[T1]{fontenc}
-\setCJKsansfont[ItalicFont={KaiTi},BoldFont={LXGW ZhenKai}]{Source Han Sans HW SC}
+% \setmainfont{Times New Roman}
+% \setCJKsansfont[ItalicFont={KaiTi},BoldFont={LXGW ZhenKai}]{Source Han Sans HW SC}
 
 
 
@@ -117,29 +127,18 @@
 
 % %% device settings
 \RequirePackage{geometry}
-% \ifdefstring{\ELEGANT@device}{normal}{
-%   \geometry{
-%     a4paper,
-%     top=25.4mm, bottom=25.4mm,
-%     left=20mm, right=20mm,
-%     headheight=2.17cm,
-%     headsep=4mm,
-%     footskip=12mm
-%   }
-%   \ifdefstring{\ELEGANT@marginpar}{margintrue}{
-%     \geometry{
-%       marginparwidth=5cm, marginparsep=5mm,
-%       left=2cm,right=7cm}}{\relax}}{
-%     \relax}
-
-% \ifdefstring{\ELEGANT@device}{pad}{
-% \geometry{
-%   paperwidth=7.5in, 
-%   paperheight=10in,
-%   margin=16mm,
-%   headheight=2.17cm,
-%   footskip=4mm
-% }}{\relax}
+\geometry{
+  a4paper,
+  % top=25.4mm,
+  % bottom=25.4mm,
+  % left=20mm,
+  % right=30mm,
+	% marginparwidth=5cm,
+  % marginparsep=5mm,
+  % headheight=2.17cm,
+  % headsep=4mm,
+  % footskip=12mm
+}{\relax}
 
 
 % \RequirePackage{indentfirst,comment}
@@ -202,155 +201,43 @@
 %   \AfterEndPreamble{
 %     \setlength\parindent{2\ccwd}}
 
-% \ifcsname heiti\endcsname
-%   \newcommand{\cbfseries}{\heiti}
-% \else
-%   \newcommand{\cbfseries}{\bfseries}
-% \fi
+\ifcsname kaishu\endcsname
+  \newcommand{\citshape}{\kaishu}
+\else
+  \newcommand{\citshape}{\itshape}
+\fi
+\ifcsname kaishu\endcsname
+  \newcommand{\cnormal}{\kaishu}
+\else
+  \newcommand{\cnormal}{\normalfont}
+\fi
+
+\ifcsname fangsong\endcsname
+  \newcommand{\cfs}{\fangsong}
+\else
+  \newcommand{\cfs}{\normalfont}
+\fi
+
+\global\let\@title\@empty
+\global\let\@author\@empty
+\global\let\@date\@empty
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+\newcommand{\institute}[1]{\gdef\@institute{#1}}
+\newcommand{\version}[1]{\gdef\@version{#1}}
+\newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
+
+\RequirePackage{mwe}
+\newcommand{\logo}[1]{\gdef\@logo{#1}}
+\newcommand{\cover}[1]{\gdef\@cover{#1}}
 
 
-% \ifcsname kaishu\endcsname
-%   \newcommand{\citshape}{\kaishu}
-% \else
-%   \newcommand{\citshape}{\itshape}
-% \fi
-% \ifcsname kaishu\endcsname
-%   \newcommand{\cnormal}{\kaishu}
-% \else
-%   \newcommand{\cnormal}{\normalfont}
-% \fi
-
-% \ifcsname fangsong\endcsname
-%   \newcommand{\cfs}{\fangsong}
-% \else
-%   \newcommand{\cfs}{\normalfont}
-% \fi
-
-% \RequirePackage{anyfontsize}
-% \ifdefstring{\ELEGANT@math}{newtx}{
-%   \let\oldencodingdefault\encodingdefault
-%   \let\oldrmdefault\rmdefault
-%   \let\oldsfdefault\sfdefault
-%   \let\oldttdefault\ttdefault
-%   \def\encodingdefault{T1}
-%   \renewcommand{\rmdefault}{ntxtlf}
-%   \renewcommand{\sfdefault}{qhv}
-%   \renewcommand{\ttdefault}{ntxtt}
-%   \RequirePackage{newtxmath}
-%   \let\encodingdefault\oldencodingdefault
-%   \let\rmdefault\oldrmdefault
-%   \let\sfdefault\oldsfdefault
-%   \let\ttdefault\oldttdefault
-%   \let\Bbbk\relax
-%   \RequirePackage{esint}
-%   %%% use yhmath pkg, uncomment following code
-%   % \let\oldwidering\widering
-%   % \let\widering\undefined
-%   % \RequirePackage{yhmath}
-%   % \let\widering\oldwidering
-
-%   %%% use esvect pkg, uncomment following code
-%   % \RequirePackage{esvect}
-
-%   \DeclareSymbolFont{CMlargesymbols}{OMX}{cmex}{m}{n}
-%   \let\sumop\relax\let\prodop\relax
-%   \DeclareMathSymbol{\sumop}{\mathop}{CMlargesymbols}{"50}
-%   \DeclareMathSymbol{\prodop}{\mathop}{CMlargesymbols}{"51}
-% }{\relax}
-
-
-% % ----- Handle Colors -----
-% %% 章节以及页脚图形
-
-% \ifdefstring{\ELEGANT@color}{nocolor}{
-%   \definecolor{main}{RGB}{0,0,0}
-%   \definecolor{second}{RGB}{0,0,0}%
-%   \definecolor{third}{RGB}{0,0,0}%
-%   \definecolor{fourth}{RGB}{0,0,0}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{green}{
-%   \definecolor{main}{RGB}{0,120,2}%
-%   \definecolor{second}{RGB}{0,120,2}%
-%   \definecolor{third}{RGB}{230,90,7}%
-%   \definecolor{fourth}{RGB}{0,160,152}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{cyan}{
-%   \definecolor{main}{RGB}{31,186,190}%
-%   \definecolor{second}{RGB}{59,180,5}%
-%   \definecolor{third}{RGB}{175,153,8}%
-%   \definecolor{fourth}{RGB}{244,105,102}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{blue}{
-%   \definecolor{main}{RGB}{60,113,183}
-%   \definecolor{second}{RGB}{0,166,82}%
-%   \definecolor{third}{RGB}{255,134,24}%
-%   \definecolor{fourth}{RGB}{0,174,247}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{gray}{
-%   \definecolor{main}{RGB}{150,150,150}
-%   \definecolor{second}{RGB}{150,150,150}%
-%   \definecolor{third}{RGB}{150,150,150}%
-%   \definecolor{fourth}{RGB}{150,150,150}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{black}{
-%   \definecolor{main}{RGB}{0,0,0}
-%   \definecolor{second}{RGB}{0,0,0}%
-%   \definecolor{third}{RGB}{0,0,0}%
-%   \definecolor{fourth}{RGB}{0,0,0}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{beamercolor}{
-%   \definecolor{main}{RGB}{242,0,0}%
-%   \definecolor{second}{RGB}{51,51,179}%
-%   \definecolor{third}{RGB}{0,128,0}%
-%   \definecolor{fourth}{RGB}{121,64,0}%
-%   \definecolor{fifth}{RGB}{25,89,90}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{doremi}{
-%   \definecolor{main}{RGB}{73,119,213}%
-%   \definecolor{second}{RGB}{220,60,105}%
-%   \definecolor{third}{RGB}{122,89,166}%
-%   \definecolor{fourth}{RGB}{229,143,52}%
-%   \definecolor{fifth}{RGB}{244,220,10}%
-% }{\relax}
-% \ifdefstring{\ELEGANT@color}{madoka}{
-%   \definecolor{main}{RGB}{255,77,166}%
-%   \definecolor{second}{RGB}{237,128,18}%
-%   \definecolor{third}{RGB}{100,157,232}%
-%   \definecolor{fourth}{RGB}{191,64,100}%
-% }{\relax}
-
-% % corlor definition
-% \definecolor{second}{rgb}{0.5,0,0}
-% \definecolor{bule}{RGB}{18,29,57}
-% \colorlet{coverlinecolor}{third}
-
-
-% % ----- Title Style -----
-% \ifdefstring{\ELEGANT@titlestyle}{hang}{\def\style{hang}}{\relax}
-% \ifdefstring{\ELEGANT@titlestyle}{display}{\def\style{display}}{\relax}
-
-% % reference: 
-% % https://tex.stackexchange.com/questions/58506/how-to-make-a-new-command-similar-to-author
-% % https://pastebin.com/C8W4axzV
-% \newcommand\email[1]{\href{mailto:#1}{\nolinkurl{#1}}}
-
-% \global\let\@title\@empty
-% \global\let\@author\@empty
-% \global\let\@date\@empty
-% \newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
-% \newcommand{\institute}[1]{\gdef\@institute{#1}}
-% \newcommand{\version}[1]{\gdef\@version{#1}}
-% \newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
-
-% \RequirePackage{mwe}
-% \newcommand{\logo}[1]{\gdef\@logo{#1}}
-% \newcommand{\cover}[1]{\gdef\@cover{#1}}
 
 % \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
 
-\RequirePackage[labelfont={bf,color=fourth}]{caption} 
-\captionsetup[table]{skip=3pt}
-\captionsetup[figure]{skip=3pt}
+% \RequirePackage[labelfont={bf,color=main}]{caption} 
+\RequirePackage[labelfont={bf}]{caption} 
+\captionsetup[table]{skip=3pt,labelsep=space}
+\captionsetup[figure]{skip=3pt,labelsep=space}
 
 \AtBeginDocument{
   \setlength{\abovedisplayskip}{3pt}
@@ -371,6 +258,7 @@
 
 \RequirePackage{fancyvrb}
 \RequirePackage{makecell,lipsum,hologo}
+
 %%中文结构名字
 
 
@@ -386,40 +274,31 @@
 % ]{biblatex}
 
 \renewcommand{\baselinestretch}{1.3}
-%   % \renewcommand{\contentsname}{目录}
-%   % \renewcommand{\figurename}{图}
-%   % \renewcommand{\tablename}{表}
-%   % \renewcommand{\partname}{\color{main}}
-%   % \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
-%   % \renewcommand{\listfigurename}{插图目录}
-%   % \renewcommand{\listtablename}{表格目录}
-%   % \renewcommand{\bibname}{参考文献}
-%   % \newcommand{\ebibname}{参考文献}
-%   % \renewcommand{\appendixname}{附录}
-%   % \renewcommand{\appendixtocname}{附录}
-%   % \renewcommand{\indexname}{索\hspace{2em}引}
-%   % \newcommand\figref[1]{\textbf{图}~\ref{#1}}
-%   % \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
-%   % \newcommand{\authorname}{\citshape 作者：}
-%   % \newcommand{\institutename}{\citshape 组织：}
-%   % \newcommand{\datename}{\citshape 时间：}
-%   % \newcommand{\introductionname}{内容提要}
-%   % \newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
-%   % \newcommand{\updatename}{更新：}
-%   % \newcommand{\historyname}{版本更新历史}
-%   % \newcommand{\beforechap}{第}
-%   % \newcommand{\afterchap}{章}
+\renewcommand{\contentsname}{目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\renewcommand{\partname}{\color{main}}
+\renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
+\renewcommand{\listfigurename}{插图目录}
+\renewcommand{\listtablename}{表格目录}
+\renewcommand{\bibname}{参考文献}
+\newcommand{\ebibname}{参考文献}
+\renewcommand{\appendixname}{附录}
+% \renewcommand{\appendixtocname}{附录}
+\renewcommand{\indexname}{索\hspace{2em}引}
+\renewcommand\eqref[1]{\textcolor{main}{公式~(\ref{#1})}}
+\newcommand\figref[1]{\textcolor{main}{图~\ref{#1} }}
+\newcommand\tabref[1]{\textcolor{main}{表~\ref{#1} }}
+\newcommand{\authorname}{\citshape 作者：}
+\newcommand{\institutename}{\citshape 组织：}
+\newcommand{\datename}{\citshape 时间：}
+\newcommand{\introductionname}{内容提要}
+\newcommand\bioinfo[2]{\gdef\@bioinfo{{\citshape #1}：#2}}
+\newcommand{\updatename}{更新：}
+\newcommand{\historyname}{版本更新历史}
+\newcommand{\beforechap}{第}
+\newcommand{\afterchap}{章}
 
-
-%   \renewenvironment{proof}[1][\proofname]{\par
-%   \pushQED{\qed}%
-%   \normalfont \topsep6\p@\@plus6\p@\relax
-%   \trivlist
-%   \item[\hskip\labelsep
-%     \textbf{\color{third}{#1\@addpunct{:}}}]\ignorespaces\citshape
-% }{%
-%   \popQED\endtrivlist\@endpefalse
-% }
 
 % \graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
 
@@ -431,195 +310,165 @@
 
 % \RequirePackage{apptools}
 
-% \setcounter{secnumdepth}{5}
-% % \titleformat{\chapter}[\style]{\bfseries}{
-% %   \filcenter\LARGE\enspace\bfseries{\color{main} \IfAppendix{\appendixname\;\thechapter\;}{\xchaptertitle\;}}}{1pt}{
-% %   \LARGE\bfseries\color{main}\filcenter}[]
-% % \titleformat{\section}[hang]{\bfseries}{
-% %   \Large\bfseries{\color{main}\S\thesection}\enspace}{1pt}{%
-% %   \color{main}\Large\bfseries\filright}
-% % \titleformat{\subsection}[hang]{\bfseries}{
-% %   \large\bfseries\color{main}\S\thesubsection\enspace}{1pt}{%
-% %   \color{main}\large\bfseries\filright}
-% % \titleformat{\subsubsection}[hang]{\bfseries}{
-% %   \large\bfseries\color{main}\S\thesubsubsection\enspace}{1pt}{%
-% %   \color{main}\large\bfseries\filright}
-
-
-
-% \RequirePackage{enumerate}
 \RequirePackage[inline]{enumitem}
 
 \setlist[itemize,1]{label={\textcolor{main}{$\bullet$}}}
-\setlist[itemize,2]{label={\textcolor{second}{$\bullet$}}}
-\setlist[itemize,3]{label={\textcolor{third}{$\bullet$}}}
+\setlist[itemize,2]{label={\textcolor{main}{$\bullet$}}}
+\setlist[itemize,3]{label={\textcolor{main}{$\bullet$}}}
 \setlist[enumerate]{format=\upshape\textcolor{main}}
-\setlist[enumerate,1]{label=\color{main}(\arabic*)}
+\setlist[enumerate,1]{label=\color{main}{(\arabic*)}}
 \setlist[enumerate,2]{label=\color{main}(\alph*).}
 \setlist[enumerate,3]{label=\color{main}\Roman*.}
 \setlist[enumerate,4]{label=\color{main}\Alph*.}
 \newlist{homework}{enumerate}{1}
-\setlist[homework,1]{label=\color{main}{\zhnum*、\hspace*{-\labelsep}}}
+\setlist[homework,1]{label=\color{black}{\zhnum*、\hspace*{-\labelsep}}}
 \newlist{exlist}{enumerate}{3}
-\setlist[exlist,1]{label=\color{main}{\arabic*.},itemindent=0em}
-\setlist[exlist,2]{label=\color{main}{(\arabic*)}}
-\setlist[exlist,3]{label=\color{main}{(\roman*)}}
+\setlist[exlist,1]{label=\color{black}{\arabic*.},itemindent=0em}
+\setlist[exlist,2]{label=\color{black}{(\arabic*)}}
+\setlist[exlist,3]{label=\color{black}{(\roman*)}}
 \setlist{nolistsep}
 
-% %%define the 
-% %%definition theorem postulate axiom corollary lemma proposition 
-% %%and proof environment
-% \RequirePackage{pifont,manfnt}
 \RequirePackage{bbding}
-% \RequirePackage[many]{tcolorbox}
-% % \newlength{\normalparindent}
-% % % \setlength{\normalparindent}{\parindent}
-% % \newcommand{\ELEGANT@tmp@tl}{}
-% % \ifELEGANT@usesamecnt
-% %   \newcounter{ELEGANT@samecnt}
-% %   \counterwithin{ELEGANT@samecnt}{chapter}
-% %   \tcbset{
-% %     new/usesamecnt/.style = {use counter = ELEGANT@samecnt}
-% %   }
-% % \else
-% %   \tcbset{
-% %     new/usesamecnt/.style = {}
-% %   }
-% % \fi
 
 
 \RequirePackage[many]{tcolorbox}
 \tcbset{
-	common/.style={
-		lower separated=false,
-		coltitle=white,
-		colback=white,
-		boxrule=0pt,
-		fonttitle=\bfseries,
-		enhanced,
-		left=1mm,right=1mm,bottom=1mm,top=2mm,
-		before skip=2mm minus 1mm,
-		after skip=2mm minus 1mm,
-		attach boxed title to top left={
-			yshift=-0.11in, xshift=0.15in
-		},
-		boxed title style={
-			boxrule=0pt, arc=0pt, outer arc=0pt
-		},
-		before upper={\parindent1em\vspace{.2\baselineskip}}
-	},
-	indent/.style={
-		before upper={\parindent1em}
-	},
-	parttitle/.style={
-		mainstyle,
-		left=1em,
-		bottom=1ex,
-		fonttitle=\large,
-		attach boxed title to top center={
-			yshift=-10pt, xshift=0pt
-		}
-	},
-	sectiontitle/.style={
-		thirdstyle,
-		left=-0.5em, top=4ex,
-		bottom=1ex,
-		fonttitle=\large,
-		attach boxed title to top center={
-			yshift=-10pt, xshift=0pt
-		}
-	},
-	mainstyle/.style={
-		common,
-		borderline={0pt}{0pt}{main,cstdash},
-		colbacktitle=main
-	},
-	secondstyle/.style={
-		common,
-		borderline={0pt}{0pt}{second,cstdash},
-		colbacktitle=second
-	},
-	thirdstyle/.style={
-		common,
-		borderline={0pt}{0pt}{third,cstdash},
-		colbacktitle=third
-	},
-	fourthstyle/.style={
-		common,
-		borderline={0pt}{0pt}{fourth,cstdash},
-		colbacktitle=fourth
-	},
-	fifthstyle/.style={
-		common,
-		borderline={0pt}{0pt}{fifth,cstdash},
-		colbacktitle=fifth
-	}
+  common/.style={
+    lower separated=false,
+    coltitle=white,
+    colback=white,
+    boxrule=0pt,
+    fonttitle=\bfseries,
+    enhanced,
+    left=1mm,right=1mm,bottom=1mm,top=2mm,
+    before skip=2mm minus 1mm,
+    after skip=2mm minus 1mm,
+    attach boxed title to top left={
+      yshift=-0.11in, xshift=0.15in
+    },
+    boxed title style={
+      boxrule=0pt, arc=0pt, outer arc=0pt
+    },
+    before upper={\parindent2em\vspace{.2\baselineskip}}
+  },
+  indent/.style={
+    before upper={\parindent2em}
+  },
+  parttitle/.style={
+    mainstyle,
+    left=1em,
+    bottom=1ex,
+    fonttitle=\large,
+    attach boxed title to top center={
+      yshift=-10pt, xshift=0pt
+    }
+  },
+  sectiontitle/.style={
+    thirdstyle,
+    left=-0.5em, top=4ex,
+    bottom=1ex,
+    fonttitle=\large,
+    attach boxed title to top center={
+      yshift=-10pt, xshift=0pt
+    }
+  },
+  mainstyle/.style={
+    common,
+    borderline={0pt}{0pt}{main,cstdash},
+    colbacktitle=main
+  },
+  secondstyle/.style={
+    common,
+    borderline={0pt}{0pt}{second,cstdash},
+    colbacktitle=second
+  },
+  thirdstyle/.style={
+    common,
+    borderline={0pt}{0pt}{third,cstdash},
+    colbacktitle=third
+  },
+  fourthstyle/.style={
+    common,
+    borderline={0pt}{0pt}{fourth,cstdash},
+    colbacktitle=fourth
+  },
+  fifthstyle/.style={
+    common,
+    borderline={0pt}{0pt}{fifth,cstdash},
+    colbacktitle=fifth
+  }
 }
+
+
+
+
+
 % @ means notitle, * means indent
 \RequirePackage{xparse}
-\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
-\newenvironment{main@}{\begin{tcolorbox}[mainstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
-\newenvironment{second}[1]{\begin{tcolorbox}[secondstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
-\newenvironment{second@}{\begin{tcolorbox}[secondstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
-\newenvironment{third}[1]{\begin{tcolorbox}[thirdstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
-\newenvironment{third@}{\begin{tcolorbox}[thirdstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
-\newenvironment{fourth}[1]{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
-\newenvironment{fourth@}{\begin{tcolorbox}[fourthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
-\newenvironment{fifth}[1]{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,title=#1]}{\end{tcolorbox}}
-\newenvironment{fifth@}{\begin{tcolorbox}[fifthstyle,fontupper=\itshape,notitle]}{\end{tcolorbox}}
+\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\citshape,title=\bfseries{#1}]}{\end{tcolorbox}}
+\newenvironment{main@}{\begin{tcolorbox}[mainstyle,fontupper=\citshape,notitle]}{\end{tcolorbox}}
+
+% 环境
+\newcommand{\envskip}{\hskip 1em plus 1em minus .5em}
+% \renewenvironment{main}[1]%
+% 	{%
+% 		\vspace*{.25\baselineskip}
+% 		\par\textcolor{main}{\bf #1}\envskip
+% 	}{%
+% 		\par\ignorespacesafterend\vspace{.2\baselineskip}
+% 	}
 
 \newcounter{thm}[chapter]
 \setcounter{thm}{0}
 \renewcommand{\thethm}{\thechapter.\arabic{thm}}
 \NewDocumentEnvironment{theorem}{o}{
   \refstepcounter{thm}
-	\begin{second}{定理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}
+  \begin{main}{定理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{main}
 }
 \NewDocumentEnvironment{proposition}{o}{
   \refstepcounter{thm}
-	\begin{second}{命题 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+  \begin{main}{命题 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
 \NewDocumentEnvironment{corollary}{o}{
   \refstepcounter{thm}
-	\begin{second}{推论 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+  \begin{main}{推论 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
 \NewDocumentEnvironment{lemma}{o}{
   \refstepcounter{thm}
-	\begin{second}{引理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{second}}
+  \begin{main}{引理 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
 
 \newcounter{def}[chapter]
 \setcounter{def}{0}
 \renewcommand{\thedef}{\thechapter.\arabic{def}}
 \NewDocumentEnvironment{definition}{o}{
   \refstepcounter{def}
-	\begin{third}{定义 \thedef \IfNoValueTF{#1}{}{~(#1)}}}{\end{third}}
+  \begin{main}{定义 \thedef \IfNoValueTF{#1}{}{~(#1)}}}{\end{main}}
 
 \NewDocumentEnvironment{conjecture}{o}{
   \refstepcounter{thm}
-	\begin{fifth}{猜想 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{fifth}}
+  \begin{fifth}{猜想 \thethm \IfNoValueTF{#1}{}{~(#1)}}}{\end{fifth}}
 
 %% Example with counter
 \newcounter{exam}[chapter]
 \setcounter{exam}{0}
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \NewDocumentEnvironment{example}{o}{
-  \refstepcounter{exam}
-  \par\noindent\textbf{\color{main}{例} \theexam \IfNoValueTF{#1}{}{~(#1)}}\rmfamily}{
-  \par\ignorespacesafterend}
+  \refstepcounter{exam}\par
+  \textbf{\color{main}例 \theexam}\envskip}{
+    \par\ignorespacesafterend\vspace{.2\baselineskip}}
 
 %% Exercise with counter
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
 \renewcommand{\theexer}{\thechapter.\arabic{exer}}
 \newenvironment{exercise}[1][]{
-  \refstepcounter{exer}
-	\label{exer:\theexer}
-  \par\noindent\makebox[-3pt][r]{
-    \scriptsize\color{fifth}\HandPencilLeft\quad}
-    \textbf{\color{fifth} 练习 \theexer #1 }\rmfamily}{
+  \refstepcounter{exer}\par%
+  \makebox[-3pt][r]{\scriptsize\color{third}\HandPencilLeft\quad}
+  \label{exer:\theexer}
+  \textbf{\color{third}练习 \theexer}\envskip}{
     \par\ignorespacesafterend}
 \newcommand\exans{
-	\refstepcounter{exer}
-	\par\noindent
-	\textbf{\color{fifth}\ref{exer:\theexer}}
+  \refstepcounter{exer}
+  \par\noindent
+  \textbf{\color{main}\ref{exer:\theexer}}
 }
 
 %% Problem with counter
@@ -631,26 +480,40 @@
   \par\noindent\textbf{\color{second}{作~~业} \theprob #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
-\newenvironment{solution}[1][解]{\par\noindent\textbf{\color{fourth}#1\@addpunct{:}} \itshape}{\par}
+\newenvironment{solution}[1][解]{\par\textbf{\color{main}#1~~} \citshape}{\par}
+\renewenvironment{proof}[1][证明]{\par\textbf{\color{main}#1~~} \citshape}{\par}
+
 \newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}注}}{\vspace*{5pt}\par}
 
-% \RequirePackage{multicol}
-% \tcbset{
-%   introductionsty/.style={
-%     enhanced,
-%     breakable,
-%     fonttitle=\bfseries,
-%     colbacktitle=main,
-%     fontupper=\citshape,
-%     attach boxed title to top center={yshift=-3mm,yshifttext=-1mm},
-%     boxrule=0pt,
-%     toprule=0.5pt,
-%     bottomrule=0.5pt,
-%     top=8pt,
-%     before skip=8pt,
-%     sharp corners
-%   },
-% }
+\newlength{\storedtextwidth}
+\newlength{\storedhoffset}
+\newenvironment{introduction}{
+	\setlength{\storedtextwidth}{\textwidth}%
+	\setlength{\storedhoffset}{\hoffset+\oddsidemargin}%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    colback=main,
+    colupper=white,
+    boxrule=0pt,
+    boxsep=0pt,
+    top=\baselineskip,
+    bottom=\baselineskip,
+    left=0pt,
+    before skip=8pt,
+    sharp corners,
+    notitle,
+    indent,
+    grow sidewards by=.3\storedtextwidth,
+  ]
+    \centering
+    \begin{minipage}{\storedtextwidth}\parindent=2em
+      }{
+    \end{minipage}
+  \end{tcolorbox}
+}
+
+
 
 \newcommand{\section@}[1]{
   \newpage
@@ -663,9 +526,9 @@
 \newcommand{\sectionHomework}{\section@{作业}}
 \newcommand{\sectionExtraReading}{\section@{扩展阅读}}
 \newcommand{\sectionExerciseAnswer}{
-	\setcounter{exer}{0}
-	\section@{练习答案}
-	\hypersetup{linkcolor=fifth}
+  \setcounter{exer}{0}
+  \section@{练习答案}
+  \hypersetup{linkcolor=fifth}
 }
 
 
@@ -735,75 +598,102 @@
 % \renewcommand{\sectionmark}[1]{\markright{\thesection\, #1}{}}
 
 
-% \renewcommand*{\maketitle}{%
-% \hypersetup{pageanchor=false}
-% \pagenumbering{Alph}
-% \begin{titlepage}
-%   \newgeometry{margin = 0in}
-%   \parindent=0pt
-%   \ifdefstring{\ELEGANT@device}{normal}{
-%     \ifcsname @cover\endcsname
-%       \includegraphics[width=\linewidth]{\@cover}
-%     \else
-%       \includegraphics[width=\linewidth]{example-image}
-%     \fi
-%   }{\relax}
-%   \ifdefstring{\ELEGANT@device}{pad}{
-%     \ifcsname @cover\endcsname
-%       \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{\@cover}
-%     \else
-%       \includegraphics[trim=0 26bp 0 26bp,clip=true, width=\linewidth]{example-image}
-%     \fi
-%   }{\relax}
-%   \setlength{\fboxsep}{0pt}
-%   \colorbox{main}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{0.5in}}}}
-%   \vfill
-%   \vskip-2ex
-%   \hspace{2em}
-%   \parbox{0.8\textwidth}{
-%     \bfseries\Huge\color{main}
-%       \ifcsname @title\endcsname \@title \fi
-%     \par}
-%   \vfill
-%   \vspace{-1.0cm}
-%   \setstretch{2.5}
-%   \hspace{2.5em}
-%   \begin{minipage}[c]{0.67\linewidth}
-%     {\color{main}\bfseries\Large
-%       \ifcsname @subtitle\endcsname\@subtitle\\[2ex]\fi}
-%     \color{main}\normalsize
-%     {\renewcommand{\arraystretch}{0.618}
-%     \begin{tabular}{l}
-%       % \ifcsname @author\endcsname \authorname \@author\\\fi
-%       \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi\color{second}
-%       \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi\color{third}
-%       % \ifcsname @date\endcsname  \@date\\\fi
-%       \ifx\@date\empty\else\datename\cnormal\@date \\ \fi\color{fourth}
-%       \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
-%       \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
-%     \end{tabular}}
-%   \end{minipage}
-%   \begin{minipage}[c]{0.27\linewidth}
-%   \begin{tikzpicture}[remember picture,overlay]
-%     \begin{pgfonlayer}{background}
-%       \node[opacity=0.8,
-%             anchor=south east,
-%             outer sep=0pt,
-%             inner sep=0pt] at ($(current page.south east) +(-0.8in,2.5in)$) {
-%               \ifcsname @logo\endcsname\includegraphics[width=4.2cm]{\@logo}\fi};
-%     \end{pgfonlayer}
-%   \end{tikzpicture}
-%   \end{minipage}
-%   \vfill
-%   \begin{center}
-%     \setstretch{1.3}
-%     \parbox[t]{0.7\textwidth}{\centering \citshape 
-%       \ifcsname @extrainfo\endcsname\@extrainfo\fi}
-%   \end{center}
-%   \vfill
-% \end{titlepage}
-% \restoregeometry
-% \thispagestyle{empty}}
+\renewcommand*{\maketitle}{%
+\hypersetup{pageanchor=false}
+\pagenumbering{Alph}
+\begin{titlepage}
+  \newgeometry{margin = 0in}
+  \parindent=0pt
+  \setlength{\fboxsep}{0pt}
+  \colorbox{main!50!white}{\makebox[\linewidth][c]{\shortstack[c]{\vspace{.5\linewidth}}}}
+  \begin{tikzpicture}[overlay,xshift=.5\linewidth,yshift=.25\linewidth]
+    \begin{scope}[scale=2]
+      \fill[cstcurve,cstfill1] (0,0) circle(2.5 and 1.5);
+      \fill[cstcurve,white] (1,0) circle(0.6);
+      \fill[cstcurve,white] (-1,0) circle(0.6);
+  
+      \draw[cstcurve,main,domain=0:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+      \draw[cstcurve,main,domain=85:180] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+      \draw[cstcurve,second,domain=180:270,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+      \draw[cstcurve,second,domain=265:360] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
+  
+      \draw[cstcurve,main,domain=0:140] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,main,domain=135:180,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,second,domain=180:320] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,second,domain=315:360,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
+  
+      \draw[cstcurve,main,domain=0:140] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,main,domain=135:180,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,second,domain=180:320] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+      \draw[cstcurve,second,domain=315:360,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
+  
+      \draw
+        (2,1.3) node[main] {$C_0$}
+        (-1,0.85) node[main] {$C_1^-$}
+        (1,0.85) node[main] {$C_2^-$}
+        (-2,-0.3) node {$\gamma_1$}
+        (0,-0.3) node {$\gamma_2$}
+        (2,-0.3) node {$\gamma_3$};
+      \draw[cstcurve] (-2.5,0)--(-1.6,0);
+      \draw[cstcurve] (-0.4,0)--(0.4,0);
+      \draw[cstcurve] (1.6,0)--(2.5,0);
+      \draw[cstcurve,thick,main] (-2.5,0.025)--(-1.6,0.025);
+      \draw[cstcurve,thick,second] (-2.5,-0.025)--(-1.6,-0.025);
+      \draw[cstcurve,thick,main] (-0.4,0.025)--(0.4,0.025);
+      \draw[cstcurve,thick,second] (-0.4,-0.025)--(0.4,-0.025);
+      \draw[cstcurve,thick,main] (1.6,0.025)--(2.5,0.025);
+      \draw[cstcurve,thick,second] (1.6,-0.025)--(2.5,-0.025);
+    \end{scope}
+  \end{tikzpicture}
+  \vfill
+  \vskip-2ex
+  \hspace{2em}
+  \begin{flushright}
+    \parbox{0.8\textwidth}{
+      \bfseries{\fontsize{50}{60}\selectfont \color{main}
+        \ifcsname @title\endcsname \@title \fi
+      \par}}
+  \end{flushright}
+  \vfill
+  \vspace{-1.0cm}
+  \setstretch{2.5}
+  \hspace{2.5em}
+  \begin{minipage}[c]{0.67\linewidth}
+    {\color{main}\bfseries\Large
+      \ifcsname @subtitle\endcsname\@subtitle\\[2ex]\fi}
+    \color{main}\normalsize
+    {\renewcommand{\arraystretch}{0.618}
+    \begin{tabular}{l}
+      % \ifcsname @author\endcsname \authorname \@author\\\fi
+      \ifx\@author\empty\else\authorname\cnormal\@author\\ \fi\color{second}
+      \ifcsname @institute\endcsname \institutename \cnormal\@institute\\ \fi\color{third}
+      % \ifcsname @date\endcsname  \@date\\\fi
+      \ifx\@date\empty\else\datename\cnormal\@date \\ \fi\color{fourth}
+      % \ifcsname @version\endcsname \cnormal\versionname\@version\\ \fi
+      \ifcsname @bioinfo\endcsname \cnormal\@bioinfo\\ \fi
+    \end{tabular}}
+  \end{minipage}
+  % \begin{minipage}[c]{0.27\linewidth}
+  % \begin{tikzpicture}[remember picture,overlay]
+  %   \begin{pgfonlayer}{background}
+  %     \node[opacity=0.8,
+  %           anchor=south east,
+  %           outer sep=0pt,
+  %           inner sep=0pt] at ($(current page.south east) +(-0.8in,2.5in)$) {
+  %             \ifcsname @logo\endcsname\includegraphics[width=4.2cm]{\@logo}\fi};
+  %   \end{pgfonlayer}
+  % \end{tikzpicture}
+  % \end{minipage}
+  \vfill
+  \begin{center}
+    \setstretch{1.3}
+    \parbox[t]{0.7\textwidth}{\centering \citshape 
+      \ifcsname @extrainfo\endcsname\@extrainfo\fi}
+  \end{center}
+  \vfill
+\end{titlepage}
+\restoregeometry
+\thispagestyle{empty}}
 
 
 % \newcommand{\dollar}{\mbox{\textdollar}}

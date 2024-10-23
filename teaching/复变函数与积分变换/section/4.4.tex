@@ -43,7 +43,7 @@
 	设 $\suml_{n=0}^\infty c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
 
 	\onslide<+->
-	对于负幂次部分, 令 $\zeta=\frac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
+	对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
 	\onslide<+->
 	设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
 	\onslide<+->
@@ -139,35 +139,36 @@
 
 \begin{frame}{洛朗级数的形式}
 	\onslide<+->
-	现在我们来证明洛朗级数的存在性并得到洛朗展开式.
+	考虑一般情形下的洛朗展开.
 	\onslide<+->
 	设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析.
 	\onslide<+->
 	设
-	\[\alert{K_1:|z-z_0|=r},\quad \emph{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.\]
-	是该圆环域内的两个圆周. 
+	\[\alertn{K_1:|z-z_0|=r},\quad \emphn{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.\]
 	\onslide<+->
-	对于 $r<|z-z_0|<R$, 由柯西积分公式,
+	对于 $r<|z-z_0|<R$, 对复合闭路 $K_2+K_1^-$ 应用柯西积分公式,
 	\[f(z)=\frac1{2\pi i}
-	\emph{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
-	-\frac1{2\pi i}\alert{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.\]
+	\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+	-\frac1{2\pi i}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.\]
 	\onslide<2->
 	\begin{center}
 		\begin{tikzpicture}
-			\filldraw[cstcurve,second,cstfill] (0,0) circle (1.5);
-			\filldraw[cstcurve,main,fill=white] (0,0) circle (1);
-			\fill[cstdot,main,visible on=<4->] (-1,0) circle;
-			\fill[cstdot,second,visible on=<4->] (-1.48,-0.3) circle;
+			\fill[cstcurve,cstfill] (0,0) circle (1.8);
+			\fill[cstcurve,white] (0,0) circle (.8);
+			\draw[cstcurve,main] (0,0) circle (1.5);
+			\draw[cstcurve,second] (0,0) circle (1);
+			\fill[cstdot,second,visible on=<4->] (-1,0) circle;
+			\fill[cstdot,main,visible on=<4->] (-1.48,-0.3) circle;
 			\fill[cstdot,black,visible on=<4->] (0,1.25) circle;
-			\draw[second,cstra,thick,visible on=<3->] (0,0)--(1.2,0.9);
-			\draw[main,cstra,thick,visible on=<3->] (0,0)--(0.6,-0.8);
+			\draw[main,cstra,thick,visible on=<3->] (0,0)--(1.2,0.9);
+			\draw[second,cstra,thick,visible on=<3->] (0,0)--(0.6,-0.8);
 			\draw
 				(-1.25,-0.15) node[visible on=<4->] {$\zeta$}
-				(0.5,0.1) node[second,visible on=<3->] {$R$}
-				(0.1,-0.5) node[main,visible on=<3->] {$r$}
+				(0.5,0.1) node[main,visible on=<3->] {$R$}
+				(0.1,-0.5) node[second,visible on=<3->] {$r$}
 				(-0.3,0) node {$z_0$}
-				(0.8,-1) node[main,visible on=<3->] {$K_1$}
-				(1.4,1.2) node[second,visible on=<3->] {$K_2$}
+				(0.8,-1) node[second,visible on=<3->] {$K_1$}
+				(1.4,1.2) node[main,visible on=<3->] {$K_2$}
 				(-0.3,1.25) node[visible on=<4->] {$z$};
 			\fill[cstdot,black] (0,0) circle;
 		\end{tikzpicture}
@@ -178,7 +179,7 @@
 \begin{frame}{洛朗级数}
 	\onslide<+->
 	和泰勒级数的推导类似,
-	\[\frac1{2\pi i}\emph{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
+	\[\frac1{2\pi i}\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
 	=\sum_{n=0}^\infty\left[\frac1{2\pi i}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\]
 	可以表达为幂级数的形式.
 	\onslide<+->
@@ -186,7 +187,7 @@
 	\onslide<+->
 	\[-\frac1{\zeta-z}=\frac1{z-z_0}\cdot\frac1{1-\dfrac{\zeta-z_0}{z-z_0}}=\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}},\]
 	\onslide<+->
-	\[-\frac1{2\pi i}\alert{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
+	\[-\frac1{2\pi i}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi i}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.\]
 \end{frame}
 
 
@@ -221,8 +222,8 @@
 	\onslide<+->
 	由复合闭路定理, $K_1,K_2$ 可以换成任意一条在圆环域内绕 $z_0$ 的闭路 $C$.
 	\onslide<+->
-	从而我们得到 \emph{$f(z)$ 在以 $z_0$ 为圆心的圆环域的洛朗展开}
-	\[\alert{f(z)=\sum_{n=-\infty}^\infty\left[\emph{\frac1{2\pi i}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},\]
+	从而我们得到 \emph{$\emphm{f(z)}$ 在以 $\emphm{z_0}$ 为圆心的圆环域的洛朗展开}
+	\[\alertm{f(z)=\sum_{n=-\infty}^\infty\left[\emphm{\frac1{2\pi i}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},\]
 	其中 $R_1<|z-z_0|<R_2$.
 \end{frame}
 
@@ -231,16 +232,20 @@
 
 \begin{frame}{洛朗展开的唯一性}
 	\onslide<+->
-	我们称 $f(z)$ 洛朗展开的非负幂次部分为它的\emph{解析部分}, 负幂次部分为它的\emph{主要部分}.
-
+	和圆域上解析函数的幂级数展开类似, 圆环域上解析函数的双边幂级数展开也具有唯一性.
 	\onslide<+->
 	设在圆环域 $R_1<|z-z_0|<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
-	\[f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n,\]
+	\[f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n.\]
 	\onslide<+->
-	则逐项积分得到
+	逐项积分得到
 	\[\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}=\sum_{k=-\infty}^\infty c_k\oint_C(\zeta-z_0)^{k-n-1}\diff\zeta=2\pi i c_n.\]
 	\onslide<+->
 	因此 $f(z)$ 在圆环域内的\alert{双边幂级数展开是唯一的, 它就是洛朗级数}.
+	\onslide<+->
+	由于计算积分往往较繁琐, 因此我们一般不用直接法, 而是\alert{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
+	
+	\onslide<+->
+	称 $f(z)$ 洛朗展开的非负幂次部分为它的\emph{解析部分}, 负幂次部分为它的\emph{主要部分}.
 \end{frame}
 
 
@@ -251,35 +256,45 @@
 	\end{example}
 
 	\onslide<+->
-	由洛朗级数的唯一性, 我们可以从 $e^z$ 的泰勒展开通过代数运算来得到洛朗级数.
+	由于 $f(z)$ 只有 $0$ 这个奇点, 因此 $f(z)$ 在 $0<|z|<+\infty$ 解析.
 	\onslide<+->
-	这种做法比直接计算积分更简便.
-	\onslide<+->
-	因此我们一般不用直接法, 而是\alert{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
-
+	我们先使用直接法解答.
 	\onslide<+->
 	\begin{solution}
-		\[\frac{e^z-1}{z^2}=\frac1{z^2}\left(z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\right)
-		\visible<+->{=\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n,}\]
-		\onslide<+->{其中 $0<|z|<+\infty$.}
+		\[c_n=\frac1{2\pi i}\oint_C\frac{e^z-1}{z^{n+3}}
+		=\begin{cases}
+			\dfrac{(e^z-1)^{(n+2)}}{(n+2)!}\Big|_{z=0}=\dfrac1{(n+2)!},&n\ge -3;\\
+			(e^z-1)(0)=0,&n=-2;\\
+			0,&n\le -1.
+		\end{cases}\]
+		\onslide<+->{%
+		故 $\displaystyle f(z)=\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n$.%
+		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
+	\begin{solution}[另解]
+		\[\frac{e^z-1}{z^2}=\frac1{z^2}\left(z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\right)
+		\onslide<+->{%
+		=\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n.}\]
+	\end{solution}
+	\onslide<+->
 	\begin{example}
-		在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
-
-		\onslide<+->{\enumnum1 $0<|z|<1$, \enumnum2 $1<|z|<2$, \enumnum3 $2<|z|<+\infty$.}
+		在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.\par
+		\onslide<+->{\enumnum1 $0<|z|<1$,\qquad \enumnum2 $1<|z|<2$, \qquad\enumnum3 $2<|z|<+\infty$.}
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 都可以展开为洛朗级数.
-		\onslide<+->{注意到
-			\[f(z)=\frac1{z-2}-\frac1{z-1},\]
-			因此我们可以根据 $|z|$ 的范围来将其展开成等比级数.}
+		由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 解析.
+		\onslide<+->{%
+		我们有
+			\[f(z)=\frac1{z-2}-\frac1{z-1}.\]
+		}
+		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
@@ -340,37 +355,35 @@
 		\onslide<+->
 		由唯一性可知泰勒级数等于洛朗级数,
 		\onslide<+->
-		因此\emph{此时洛朗展开一定没有负幂次项}.
-		\item 若 $f(z)$ 在圆周 $|z-z_0|=R_1,R_2>0$ 上\emph{有奇点}, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开\emph{一定有无穷多负幂次和无穷多正幂次项}.
-		\item 有理函数在 $0<|z-z_0|<r$ 洛朗展开\emph{最多只有有限多负幂次项}, 在 $R<|z-z_0|<+\infty$ 洛朗展开\emph{最多只有有限多正幂次项}.
+		因此\emph{此处洛朗展开一定没有负幂次项}.
+		\item 有理函数的洛朗展开在 $0<|z-z_0|<r$ \emph{最多只有有限多负幂次项}, 在 $R<|z-z_0|<+\infty$ \emph{最多只有有限多正幂次项}, 在其它圆环域\emph{总有无穷多负幂次和无穷多正幂次项}.
 	\end{itemize}
-\end{frame}
-
-
-\begin{frame}{洛朗级数的特点\noexer}
+	
 	\onslide<+->
-	如果有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内解析, 那么它的洛朗展开一定形如
+	有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内的洛朗展开总形如
 	\[f(z)=P(z)+\sum_{n\ge 0}a_n z^n+\sum_{n<0}b_n z^n,\]
 	其中 $P(z)$ 只有有限多项, 
 	\onslide<+->
-	$a_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $|\lambda|\ge R$ 是奇点, $\deg p+1$ 是 $\lambda$ 在 $f(z)$ 出现的重数; 而 $b_n$ 则是 $|\lambda|\le r$ 的那个奇点对应的组合.
-
+	$a_n$ 和 $b_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $\lambda$ 是奇点, $\deg p+1$ 是 $\lambda$ 在 $f(z)$ 分母出现的重数,
 	\onslide<+->
-	不仅如此, 在不同的圆环域不同圆环域上的洛朗展开{\itshape 形式地相减}, 系数会有\emph{共同的通项形式}.
+	其中 $|\lambda|\ge R$ 的那些项出现在 $a_n$ 中, 而 $|\lambda|\le r$ 的那些项出现在 $b_n$ 中.
 \end{frame}
 
 
 \begin{frame}{洛朗级数的特点\noexer}
+	\onslide<+->
+	不仅如此, 从 $f(z)$ 在任一圆环域上的展开可以得到其它圆环域上的展开,
+	\onslide<+->
+	只需要将需要变化求和范围的那些项{\itshape\ $n$ 的求和范围变化, 系数变号}.
+
 	\onslide<+->
 	例如在 $0<|z|<1$ 内,
 	\[f(z)=\frac{120}{(z-1)(z^2-4)(z^2-9)}=\sum_{n\ge 0}\left(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n.\]
 	\onslide<+->
-	那么在 $2<|z|<3$ 内洛朗展开的系数就是上面的每个系数(不论正负 $n$)减去一个共同形式的项, 使得其非负幂次通项对应那些奇点 $|\lambda|\ge 3$, 而负幂次通项对应那些奇点 $|\lambda|\le2$.
-	\onslide<+->
-	故
+	那么在 $2<|z|<3$ 内洛朗展开需要变动奇点 $1,\pm2$ 对应的项:
 	\[f(z)=\sum_{n\ge 0}\left(-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\right)z^n+\sum_{n\le-1}\left(5-\frac2{(-2)^{n+1}}-\frac6{2^{n+1}}\right)z^n.\]
 	\onslide<+->
-	其证明可见\alert{\href{https://zhangshenxing.gitee.io/teaching/publications/袁志杰张神星2023 复变函数在不同圆环域内洛朗展开的联系.pdf}{复变函数在不同圆环域内洛朗展开的联系}}一文.
+	感兴趣的同学可阅读《\alert{\href{https://zhangshenxing.gitee.io/teaching/publications/袁志杰张神星2023 复变函数在不同圆环域内洛朗展开的联系.pdf}{复变函数在不同圆环域内洛朗展开的联系}}》.
 \end{frame}
 
 
@@ -382,10 +395,16 @@
 
 	\onslide<+->
 	\begin{solution}
-		\[f(z)=\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}=-\frac1{1-z}+2\left(\frac1{1-z}\right)'\]
-		\onslide<+->{因此当 $0<|z|<1$ 时,
-			\[f(z)=-\sum_{n=0}^\infty z^n+2\left(\sum_{n=0}^\infty z^n\right)'=-\sum_{n=0}^\infty z^n+2\sum_{n=1}^\infty nz^{n-1}
-			=\sum_{n=0}^\infty(2n+1)z^n.\]}
+		\[f(z)=\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}.\]
+		\onslide<+->{%
+		\begin{align*}
+			\frac1{1-z}=\sum_{n=0}^{\infty} z^n,\qquad
+			\frac1{(1-z)^2}=\sum_{n=1}^\infty nz^{n-1}=\sum_{n=0}^\infty (n+1)z^n,
+		\end{align*}
+		}\onslide<+->{%
+			\[f(z)=\sum_{n=0}^\infty \bigl(2(n+1)-1\bigr)z^n
+			=\sum_{n=0}^\infty(2n+1)z^n.\]%
+		}
 	\end{solution}
 \end{frame}
 
@@ -395,16 +414,17 @@
 	\begin{exercise}
 		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
 	\end{exercise}
-
 	\onslide<+->
 	\begin{answer}
-		\[f(z)=\sum_{n=1}^\infty \frac{2n-1}{z^n}.\]
+		\begin{align*}
+			\frac1{z-1}=\frac1z\cdot\frac1{1-\dfrac1z}=\sum_{n=1}^{\infty} \frac1{z^n},\qquad
+			-\frac1{(z-1)^2}=\sum_{n=1}^\infty \frac{-n}{z^{n+1}}=-\sum_{n=1}^\infty \frac{(n-1)}{z^n},
+		\end{align*}
+			\[f(z)=\sum_{n=0}^\infty \frac{2(n-1)+1}{z^n}
+			=\sum_{n=1}^\infty\frac{(2n-1)}{z^n}.\]
 	\end{answer}
 	\onslide<+->
-	利用幂函数的泰勒展开可以得到
-	\[\frac1{(1-\lambda z)^k}=-\sum_{n<0}(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|>\frac1{|\lambda|}.\]
-	\onslide<+->
-	实际上求和范围可以改成 $n\le -k$.
+	此即 $\displaystyle -\sum_{n\le -1}(2n+1)z^n$.
 \end{frame}
 
 
@@ -419,29 +439,29 @@
 \end{frame}
 
 
-\begin{frame}{例: 洛朗展开的应用}
-	\beqskip{0pt}
-	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
-	\end{example}
+% \begin{frame}{例: 洛朗展开的应用}
+% 	\beqskip{0pt}
+% 	\onslide<+->
+% 	\begin{example}
+% 		求 $\displaystyle\oint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
+% 	\end{example}
 
-	\onslide<+->
-	\begin{solution}
-		注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
-		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
-		}\onslide<+->{
-			\begin{align*}
-			f(z)&=\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\dfrac1{z+1}}\\
-			&\visible<+->{=\frac1{(z+1)^3}\sum_{n=0}^\infty\frac1{(z+1)^n}}
-			\visible<+->{=\sum_{n=0}^{\infty}\frac1{(z+1)^{n+3}}}
-			\end{align*}
-		}\onslide<+->{故
-			$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
-	\end{solution}
-	\vspace{-.\baselineskip}
-	\endgroup
-\end{frame}
+% 	\onslide<+->
+% 	\begin{solution}
+% 		注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
+% 		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
+% 		}\onslide<+->{
+% 			\begin{align*}
+% 			f(z)&=\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\dfrac1{z+1}}\\
+% 			&\visible<+->{=\frac1{(z+1)^3}\sum_{n=0}^\infty\frac1{(z+1)^n}}
+% 			\visible<+->{=\sum_{n=0}^{\infty}\frac1{(z+1)^{n+3}}}
+% 			\end{align*}
+% 		}\onslide<+->{故
+% 			$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=0$.}
+% 	\end{solution}
+% 	\vspace{-.\baselineskip}
+% 	\endgroup
+% \end{frame}
 
 
 

@@ -48,17 +48,22 @@
 		如果实数项级数 $\suml_{n=1}^\infty|z_n|$ 收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
 	\end{theorem}
 	\onslide<+->
-	\begin{proof}
+	\begin{proof*}
 		因为 $|x_n|,|y_n|\le|z_n|$, 由比较判别法可知实数项级数 $\suml_{n=1}^\infty x_n$, $\suml_{n=1}^\infty y_n$ 绝对收敛, 从而收敛.
-		\onslide<+->{故 $\suml_{n=1}^\infty z_n$ 也收敛.}
+	\onslide<+->{%
+		故 $\suml_{n=1}^\infty z_n$ 也收敛.}
 
-		\onslide<+->{由三角不等式可知
+	\onslide<+->{%
+		由三角不等式可知
 			$\displaystyle\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|$.
-		}\onslide<+->{两边同时取极限即得级数的不等式关系
+	}\onslide<+->{%
+		两边同时取极限即得级数的不等式关系
 			\[\abs{\sum_{n=1}^\infty z_n}=\abs{\lim_{n\to\infty}\sum_{k=1}^n z_k}=
 			\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]
-		}\onslide<+->{其中第二个等式是因为绝对值函数 $|z|$ 连续.\qedhere}
-	\end{proof}
+	}\onslide<+->{%
+		其中第二个等式是因为绝对值函数 $|z|$ 连续.\qedhere
+	}
+	\end{proof*}
 	\endgroup
 \end{frame}
 
@@ -72,28 +77,34 @@
 			\item 称收敛但不绝对收敛的级数\emph{条件收敛}.
 		\end{enumerate}
 	\end{definition}
+	\onslide<+->
+	绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性, 且不改变其和.
+	\onslide<+->
+	一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
 
 	\onslide<+->
 	\begin{theorem}
 		$\suml_{n=1}^\infty z_n$ 绝对收敛当且仅当它的实部和虚部级数都绝对收敛.
 	\end{theorem}
-
 	\onslide<+->
 	\begin{proof}
 		必要性由前一定理的证明已经知道,
-		\onslide<+->{充分性由 $|z_n|\le|x_n|+|y_n|$ 可得.\qedhere}
+	\onslide<+->{%
+		充分性由 $|z_n|\le|x_n|+|y_n|$ 加上正项级数可重排得到.\qedhere
+	}
 	\end{proof}
 \end{frame}
 
 
 \begin{frame}{绝对收敛和条件收敛的判定}
+	\vspace{\baselineskip}
 	\begin{center}
 		\renewcommand\arraystretch{1.4}
 		\begin{tabular}{cccc} 
-			&\alert{发散}&\alert{条件收敛}&\alert{绝对收敛}\\
-			\emph{发散}&发散&发散&发散\\ 
-			\emph{条件收敛}&发散&条件收敛&条件收敛\\ 
-			\emph{绝对收敛}&发散&条件收敛&绝对收敛
+			&\alertn{发散}&\alertn{条件收敛}&\alertn{绝对收敛}\\
+			\emphn{发散}&发散&发散&发散\\ 
+			\emphn{条件收敛}&发散&条件收敛&条件收敛\\ 
+			\emphn{绝对收敛}&发散&条件收敛&绝对收敛
 		\end{tabular}
 		\begin{tikzpicture}[overlay,yshift=14.6mm,fourth]
 			\draw[cstcurve] (-7.21,-.63)--(-.12,-.63);
@@ -106,25 +117,12 @@
 		\draw (8.2,3.8) node[second] {实部级数}
 		(3.0,1.6) node[align=center,main] {虚\\部\\级\\数};
 	\end{tikzpicture}
-\end{frame}
-
-
-\begin{frame}{绝对收敛和条件收敛}
-	\onslide<+->
-	绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性, 且不改变其和.
-
-	\onslide<+->
-	一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
-
+	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{thinking}
 		什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
+		\onslide<+->{\alertn{当且仅当非零的 $z_n$ 的辐角全都相同时成立.}}
 	\end{thinking}
-
-	\onslide<+->
-	\begin{answer}
-		当且仅当非零的 $z_n$ 的辐角全都相同时成立.
-	\end{answer}
 \end{frame}
 
 
@@ -181,11 +179,10 @@
 \begin{frame}{级数敛散性判别法}
 	由正项级数的判别法可以得到:
 	\onslide<+->
-	设
 	\begin{enumerate}
-		\item \emph{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
-		\item \emph{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
-		\item \emph{柯西-阿达马判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (子数列中极限的最大值).
+		\item \alert{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
+		\item 柯西判别法(根式法): $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
+		\item 柯西-阿达马判别法: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (子数列中极限的最大值).
 	\end{enumerate}
 
 	\begin{itemize}
@@ -206,7 +203,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		因为 $\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\abs{\dfrac{8}{n+1}}=0$, 所以该级数绝对收敛.
+		因为 $\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\dfrac{8}{n+1}=0$, 所以该级数绝对收敛.
 	\end{solution}
 
 	\onslide<+->

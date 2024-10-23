@@ -1,55 +1,160 @@
+\usepackage{bm}
 \usepackage{extarrows}
-\usepackage{mathtools}
-\usepackage{nicematrix}
-\NiceMatrixOptions{cell-space-limits = 1pt}
-
-\newcommand\parallelogram{\mathord{\text{%
-	\tikz[baseline] \draw (0em,.1ex)-- ++(.9em,0ex)--++(.2em,1.2ex)--++(-.9em,0ex)--cycle;%
-}}}
-\newcommand\simr{\mathrel{\overset{r}{\sim}}}
-\newcommand\simc{\mathrel{\overset{c}{\sim}}}
-\newcommand{\wsim}[3][3]{
-  \mathrel{\overset{\nsmath{#2}}{\underset{\nsmath{#3}}{\scalebox{#1}[1]{$\sim$}}}}
-}
-% 单位阵
-\newcommand{\Emat}{\begin{matrix}1&&\\&\ddots&\\&&1\end{matrix}}
-% 分块, 参数为行+1, 列
-\newcommand{\augdash}[2]{\CodeAfter
-\tikz \draw[cstdash,second] (1-|#2) -- (#1-|#2);}
-\newcommand{\udots}{\mathinner{\mskip1mu\raise1pt\vbox{\kern7pt\hbox{.}}\mskip2mu\raise4pt\hbox{.}\mskip2mu\raise7pt\hbox{.}\mskip1mu}}
-% 带圈数字
-\newcommand{\circleno}[1]{\tikz[baseline=-1.1mm]\draw[main] (0,0) circle (.2);\hspace{-3mm}\textcolor{blue}{#1}}
-\newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
-% 线性方程组, 对齐
-\newcommand{\laeq}[2][l]{
-	\setlength{\arraycolsep}{0pt}
-	\left\{\begin{array}{#1}
-	#2\end{array}\right.}
-\newenvironment{laeqn}{
-	\setcounter{equation}{0}
-	\begin{numcases}{}}{
-	\end{numcases}}
-% arrows
-\newcommand{\nsmath}[1]{\text{\normalsize{$#1$}}}
-
+\usepackage{mathrsfs}
+\usepackage{stmaryrd}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{color,calc}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
 \usepackage[normalem]{ulem}
-\NewDocumentCommand\fillblank{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\alert{#3}}}}}
-\NewDocumentCommand\fillblankframe{O{1cm} O{0cm} m}{\uline{\makebox[#1]{\raisebox{#2}{\onslide<+->{\alert{#3}}}}}}
-\newcommand\fillbrace[1]{{\text{\upshape(\nolinebreak\hspace{0.5em minus 0.5em}\alert{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}}
-\newcommand\fillbraceframe[1]{{\text{\upshape(\nolinebreak\hspace{0.5em minus 0.5em}\onslide<+->{\alert{#1}}\hspace{0.5em minus 0.5em}\nolinebreak)}}}
-\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
+% 颜色
+
+\definecolor{main}{RGB}{0,128,192}%
+\definecolor{second}{RGB}{0,128,192}%
+% \definecolor{main}{RGB}{0,0,0}%
+% \definecolor{second}{RGB}{0,0,0}%
+\definecolor{third}{RGB}{0,0,0}%
+\definecolor{fourth}{RGB}{0,0,0}%
+\definecolor{fifth}{RGB}{0,0,0}%
+
+% \definecolor{main}{RGB}{0,0,224}%
+% \definecolor{second}{RGB}{224,0,0}%
+% \definecolor{third}{RGB}{112,0,112}%
+% \definecolor{fourth}{RGB}{0,128,0}%
+% \definecolor{fifth}{RGB}{255,128,0}%
+
+% \definecolor{main}{RGB}{0,0,0}%
+% \definecolor{second}{RGB}{0,0,0}%
+% \definecolor{third}{RGB}{0,0,0}%
+% \definecolor{fourth}{RGB}{0,0,0}%
+% \definecolor{fifth}{RGB}{0,0,0}%
+
+% 缩进
+\renewcommand{\indent}{\hspace*{1em}}
+\setlength{\parindent}{1em}
+% 选读
+\newcommand{\optional}{\textcolor{black}{(选读内容)}}
+% 文本色
+\newcommand{\noun}[1]{{\color{main}{\heiti #1}\index{{#1}}}}
+\newcommand{\nouns}[2]{{\color{main}{\heiti #1}\index{{#2}}}}
+\renewcommand{\emph}[1]{{\kaishu #1}}
+\newcommand{\alert}[1]{{\color{main}{\kaishu #1}}}
+\newcommand{\alertn}[1]{{\color{second}{#1}}}
+\newcommand{\emphn}[1]{{\color{main}{#1}}}
+\newcommand{\alertm}[1]{{\textcolor{second}{\boldsymbol{#1}}}}
+\newcommand{\emphm}[1]{{\color{main}{\boldsymbol{#1}}}}
+% 枚举数字引用标志
+\newcommand{\enumnum}[1]{{\mdseries\upshape{\textcolor{main}{(#1)}}}}
+% 枚举环境
+\newcounter{customenumi}
+\newcommand{\setenumtype}[1]{
+	\ifstrequal{#1}{(1)}{%
+		\renewcommand{\thecustomenumi}{{\upshape\textcolor{main}{(\arabic{customenumi})}}}
+	}{}
+	\ifstrequal{#1}{(i)}{%
+		\renewcommand{\thecustomenumi}{{\upshape\textcolor{main}{(\roman{customenumi})}}}
+	}{}
+  \setcounter{customenumi}{0}%
+}
+% 分段枚举环境
+\newenvironment{enumpar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+		\par%
+	\refstepcounter{customenumi}\thecustomenumi{ }}}%
+{\ignorespacesafterend}
+% 首项不分段枚举环境
+\newenvironment{enumnopar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+    \ifnum\value{customenumi}=0\hspace{-1em}\else\par\fi%
+  \refstepcounter{customenumi}\thecustomenumi { }}}%
+{\ignorespacesafterend}
+% 不分段枚举环境
+\newenvironment{enuminline}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+	\refstepcounter{customenumi}\thecustomenumi { }}}%
+{\ignorespacesafterend}
+% 选择题
+% \begin{taskschoice}(4)
+% 	() 选项
+% \end{taskschoice}
+\RequirePackage{tasks}
+\settasks{%
+	% label-format=\textcolor{main},%
+	label={(\arabic*)},%
+	label-width=1.5em,%
+	before-skip={.3\topsep},%
+	after-skip={.3\topsep}%
+}
+\NewTasksEnvironment[label={\upshape(\Alph*)},label-width=1.5em]{taskschoice}[()]
+% 一行显示多题答案
+\NewTasksEnvironment[label={\arabic*.},label-width=1.5em]{tasksans}[()]
+% TIKZ 设置
+\usetikzlibrary{
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	overlay-beamer-styles,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
+}
+\tikzset{
+	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
+  % arrow
+	cstra/.style      ={-Stealth},        % right arrow
+	cstla/.style      ={Stealth-},        % left arrow
+	cstlra/.style     ={Stealth-Stealth}, % left-right arrow
+	cstwra/.style     ={-Straight Barb},  % wide ra
+	cstwla/.style     ={Straight Barb-},
+	cstwlra/.style    ={Straight Barb-Straight Barb},
+	cstnra/.style      ={-Latex, line width=0.1cm},
+	cstmra/.style      ={-Latex, line width=0.05cm},
+	cstmlra/.style     ={Latex-Latex, line width=0.05cm},
+	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+  % curve
+	cstcurve/.style       ={very thick}, %一般曲线
+	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+  % dot
+	cstdot/.style         ={radius=.08}, %实心点
+	cstdote/.style        ={radius=.07, fill=white}, %空心点
+  % fill
+	cstfill/.style       ={fill=black!10},
+	cstfille/.style      ={pattern=north east lines, pattern color=black},
+	cstfill1/.style       ={fill=main!20},
+	cstfille1/.style      ={pattern=north east lines, pattern color=main},
+	cstfill2/.style        ={fill=second!20},
+	cstfille2/.style       ={pattern=north east lines, pattern color=second},
+	cstfill3/.style        ={fill=third!20},
+	cstfille3/.style       ={pattern=north east lines, pattern color=third},
+	cstfill4/.style        ={fill=fourth!20},
+	cstfille4/.style       ={pattern=north east lines, pattern color=fourth},
+	cstfill5/.style        ={fill=fifth!20},
+	cstfille5/.style       ={pattern=north east lines, pattern color=fifth},
+  % node
+	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode1/.style       ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode2/.style       ={fill=second!15,draw=second!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode3/.style       ={fill=third!15,draw=third!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode4/.style       ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode5/.style       ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	emph/.style = {text=main,font=\bfseries}
+}
+
+% 填空题/选择题/判断题
+\NewDocumentCommand\fillblank{O{3em} O{0ex} m}{\uline{\makebox[#1]{\raisebox{#2}{\alertn{#3}}}}}
+\newcommand\fillbrace[1]{{\text{\upshape(\nolinebreak\hspace{0.5em minus 0.5em}\alertn{#1}\hspace{0.5em minus 0.5em}\nolinebreak)}}}
 \newcommand{\trueex}{$\checkmark$}
 \newcommand{\falseex}{$\times$}
 
 \newcommand{\ansno}[1]{\par\noindent\emph{\thechapter.#1}}
 \newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
-
-\newcommand{\cnen}[2]{{$\overset{\text{{#2}}}{\text{#1}}$}}
-\newcommand{\nounen}[2]{{\color{main}\kaishu\cnen{#1}{#2}}\index{{#1}}}
-\newcommand{\noun}[1]{{\emph{#1}\index{{#1}}}}
-\newcommand{\nouns}[2]{{\color{main}\kaishu #1}\index{{#2}}}
-\newcommand{\nounsen}[3]{{\color{main}\kaishu\cnen{#1}{#2}}\index{{#3}}}
 
 % arrows
 \newcommand\ra{\rightarrow}
@@ -78,7 +183,7 @@
 \newcommand\wt{\widetilde}
 \newcommand\ov{\overline}
 \newcommand\ul{\underline}
-\newlength{\larc}
+\newlength{\larc} % 弧
 \NewDocumentCommand\warc{o m}{%
 	\IfNoValueTF {#1}%
 	{%
@@ -90,7 +195,7 @@
 	}%
 }
 
-% braces
+% 括号, 少用
 \newcommand\set[1]{{\left\{#1\right\}}}
 \newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
 \newcommand\abs[1]{\left|#1\right|}

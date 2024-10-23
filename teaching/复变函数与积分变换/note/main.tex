@@ -1,20 +1,26 @@
 \documentclass[11pt,a4paper,twoside,openright,scheme=chinese]{ctexbook}
-\usepackage{../../../latex/book}
+\usepackage{book}
 % \PassOptionsToPackage{style=alphabetic}{biblatex}
 % \usepackage[all]{xy}
-% \usepackage{makeidx}
-\input{../../../latex/settings}
-\input{../../../latex/symbols}
-% \makeindex
+\usepackage{makeidx}
+\input{settings}
+\makeindex
 \title{复变函数与积分变换}
 \author{张神星}
-% \institute{合肥工业大学}
-% \date{\zhtoday}
-% \version{v1.0.0.0}
-% \logo{hfut.png}
+\institute{合肥工业大学}
+\date{\zhtoday}
+\version{v1.0.0.0}
+\logo{../../../image/logo/hfut.png}
 % \cover{theme/doremi/cover.jpg}
 % \addbibresource[location=local]{mybib.bib}
 % \newfontface\cmunrm{cmunrm.otf}\newcommand\cmu[1]{{\cmunrm{#1}}}
+
+\newcommand{\wip}{
+\begin{exercise}
+  \alert{WIP 这里需要一道填空或选择.}
+\end{exercise}}
+
+
 
 \begin{document}
 
@@ -74,13 +80,46 @@
 % \backmatter
 % \printbibliography[heading=bibintoc, title=\ebibname]
 
+
+
+\begin{thebibliography}{Car43}
+
+\bibitem[Car43]{Cardano1643}
+吉罗拉莫·卡尔达诺, 王宪生 译.
+{\em 我的生平}.
+浙江大学出版社, 2021.\\
+译自: 
+Girolamo Cardano, {\em De Vita Propria}, Paris, 1643.
+
+\bibitem[Car63]{Cardano1663}
+Gerolamo Cardano, Sydney Henry Gould (Translator),
+{\em The Book on Games of Chance}, Dover Publications,2015.\\
+译自: 
+Gerolamo Cardano, {\em Liber de Zudo Aleae}, Paris, 1663.
+
+
+\bibitem[Kli90]{Kline1990}
+莫里斯·克莱因, 张理京, 张锦炎, 江泽涵 译.
+{\em 古今数学思想（第一册）}.
+上海科学技术出版社, 2013.\\
+译自: 
+Kline, Morris, {\em Mathematical Thought from Ancient to Modern Times}, New York, NY, 1990.
+
+
+\end{thebibliography}
+
 % \input{name.tex}
 
-%\newpage
+\newpage
 %\phantomsection
-%\addcontentsline{toc}{chapter}{索引}
-
-% \printindex
+% \addcontentsline{toc}{chapter}{索引}
+\chapter*{索引}
+\begingroup  
+% \let\clearpage\relax % 取消 clearpage 的效果，防止分页  
+\begin{multicols}{2} % 开始两栏布局  
+\printindex % 打印索引  
+\end{multicols}  
+\endgroup  
 % \input{../../../../ans.tex}
 
 \end{document}

@@ -1,31 +1,61 @@
 
 \chapter{复数与复变函数}
+\label{chapter:1}
 
-本章中我们将学习复数、复变函数的基本概念, 以及复数列和复变函数的极限.
+\begin{introduction}
+  复数的产生源于对数学中代数方程求解的需求.
+  复数的概念最初由意大利数学家卡尔达诺在求解三次方程时提出.
+  复数的引入, 使得数学体系得以扩展, 解决了许多实数范围内无法解决的问题.
+  
+  复数不仅在数学领域如几何、分析、表示论、动力系统等发挥着重要作用, 还在物理、工程、信息学、电子学等领域有着广泛应用.
+  它不仅丰富了数学的内容，也为科学和技术的发展提供了有力的数学工具.
+
+  本章中我们将学习复数、复变函数的基本概念, 以及复数列和复变函数的极限.
+  我们将从一元三次方程求解问题出发, 逐步展示引入复数的必要性. 然后介绍复数的运算规则, 并展示复数的三角形式和指数形式在运算中所起的关键作用. 最后, 我们引入复变函数、复数列以及极限的概念, 并将之与实数情形进行对比.
+\end{introduction}
+
+
+\section{复数及其代数运算}
+
+\subsection{复数的产生}
 
 复数起源于多项式方程的求根问题. 
 考虑一元二次方程 $x^2+bx+c=0$, 配方可得
   \[\left(x+\frac b2\right)^2=\frac{b^2-4c}4.\]
 于是得到求根公式
   \[x=\frac{-b\pm\sqrt\Delta}2,\quad \Delta=b^2-4c.\]
-\begin{enumerate}
+\begin{enumpar}
   \item 当 $\Delta>0$ 时, 有两个不同的实根;
-  \item 当 $\Delta=0$ 时, 有一个二重\footnote{如果 $x_0$ 是多项式方程 $f(x)=0$ 的根, 则 $x-x_0$ 是 $f(x)$ 的因式, 即存在多项式 $g(x)$ 使得 $f(x)=(x-x_0)g(x)$.
-  如果 $(x-x_0)^k$ 是 $f(x)$ 的因式, 但 $(x-x_0)^{k+1}$ 不是, 则称 $x_0$ 是 \emph{$k$ 重根}.}的实根;
+  \item 当 $\Delta=0$ 时, 有一个二重%
+    \footnote{%
+      如果 $x_0$ 是多项式方程 $f(x)=0$ 的根, 则 $x-x_0$ 是 $f(x)$ 的因式, 即存在多项式 $g(x)$ 使得 $f(x)=(x-x_0)g(x)$.
+      如果 $(x-x_0)^k$ 是 $f(x)$ 的因式, 但 $(x-x_0)^{k+1}$ 不是, 则称 $x_0$ 是 \nouns{$k$ 重根}{重根}.
+    }%
+    的实根;
   \item 当 $\Delta<0$ 时, 无实根.
-\end{enumerate}
+\end{enumpar}
 
-可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开平方}的解. 然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开平方.
+可以看出, 在一元二次方程中, 我们可以舍去包含\emph{负数开平方}的解. 然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开平方.
 
 \begin{example}
   解方程 $x^3+6x-20=0$.
 \end{example}
-我们将使用由 Scipione dal Ferro (1465--1526) 最先发现, 最终由 Cardan 公开的解法\footnote{Ferro 发现了该方法后, 并没有发表他的结果, 因为当时人们常把他们的发现保密, 而向对手们提出挑战.}.
+
+我们将使用由希皮奥内·德尔·费罗%
+  \footnote{%
+    Scipione del Ferro (1465--1526), 意大利数学家, 1496年至1526年任博洛尼亚大学 (Universit\`a di Bologna) 代数学和几何学教授. 费罗发现了该方法后, 并没有发表他的结果, 因为当时人们常把他们的发现保密, 而向对手们提出挑战\cite{Kline1990}.
+  }%
+最先发现, 并由吉罗拉莫·卡尔达诺%
+  \footnote{%
+    Girolamo Cardano (1501--1576), 意大利数学家、物理学家、天文学家、哲学家, 十六世纪人文主义代表人物, 是古典概率论的创始人\cite{Cardano1643,Cardano1663}.
+  }%
+最先公开的解法.
+
 \begin{solution}
   设 $x=u+v$, 则
     \[u^3+v^3+3uv(u+v)+6(u+v)-20=0.\]
   我们希望
-    \[u^3+v^3=20, uv=-2,\]
+    \[u^3+v^3=20,\qquad uv=-2,\]
   则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
   解得
     \[u^3=10\pm\sqrt{108}{=(1\pm\sqrt3)^3.}\]
@@ -33,7 +63,7 @@
 \end{solution}
 
 那么这个方程是不是真的只有 $x=2$ 这一个实数解呢?
-由 $f'(x)=3x^2+6>0$ 可知其单调递增, 因此确实只有一个实数解.
+由其导数 $3x^2+6>0$ 可知其单调递增, 因此确实只有一个实数解.
 
 % \begin{figure}[hbpt]
 %   \centering
@@ -74,28 +104,33 @@
 
 \begin{solution}
   同样地我们有 $x=u+v$, 其中
-    \[u^3+v^3=-6,\quad uv=\frac73.\]
-  于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
+    \[u^3+v^3=-6,\qquad uv=\frac73.\]
+  于是 $u^3,v^3$ 满足一元二次方程
+    \[X^2+6X+\dfrac{343}{27}=0.\]
   然而这个方程没有实数解.
 
   我们可以强行解得
     \[u^3=-3+\frac{10}9\sqrt{-3},\]
     \[u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
       =\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,\]
-  相应地
+  相应地,
     \[v=\frac{3-2\sqrt{-3}}3,\frac{-9-\sqrt{-3}}6,\frac{3+5\sqrt{-3}}6,\]
   从而 $x=u+v=2,-3,1$.
 \end{solution}
 
-对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:
-\footnote{一般 $n$ 次多项式的判别式定义为 $\prod_{1\le i<j\le n}(x_i-x_j)^2$, 其中 $x_1,\dots,x_n$ 表示其所有(复数)根.
-三次多项式的判别式应当是 $-108\Delta$, 这里为了运算方便取作如此形式.}
+对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:%
+  \footnote{%
+    一般 $n$ 次多项式的判别式定义为
+    \[\prod_{1\le i<j\le n}(x_i-x_j)^2,\]
+    其中 $x_1,\dots,x_n$ 表示其所有(复数)根.
+    三次多项式的判别式应当是 $-108\Delta$, 这里为了运算方便取作如此形式.
+  }
   \[x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
-通过分析函数图像的极值点可以知道:
-\begin{enumerate}
+通过分析函数图像的极值点可以知道:\par
+\begin{enumpar}
   \item 当 $\Delta>0$ 时, 有 $1$ 个实根.
-  \item 当 $\Delta\le0$ 时, 有 $3$ 个实根(含重根).
-\end{enumerate}
+  \item 当 $\Delta\le0$ 时, 有 $3$ 个实根(含重根情形).
+\end{enumpar}
 
 \begin{figure}[hbpt]
   \centering
@@ -134,35 +169,53 @@
   \end{minipage}
 \end{figure}
 
-所以我们想要使用一元三次方程求根公式的话, 就\alert{必须接受负数开方}.
+所以我们想要使用一元三次方程求根公式的话, 就\emph{必须接受负数开方}.
 那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
 在学习了本章内容之后就可以回答这个问题了.
 
 尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
-莱布尼兹 (Leibniz) 对此有如下评论: {\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根.}
+戈特弗里德·威廉·莱布尼茨%
+  \footnote{%
+    Gottfried Wilhelm Leibniz (1646-1716), 德国哲学家、数学家, 微积分的发现者之一. 他所发明的微积分系列记号也是现今使用最为广泛的记号.
+  }%
+对此有如下评论: \emph{圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根.}
 
 
-\section{复数及其代数运算}
 
 \subsection{复数的概念}
 
 现在我们来正式介绍复数的概念.
-
 由于方程 $x^2=-1$ 在复数范围内有两个不同的根, 为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们引入抽象符号 $i$ 来表示其中一个根.
 
 \begin{definition}
   固定一个记号 $i$, \noun{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
-  分别称 $x,y$ 为 $z$ 的\emph{实部 $\Re z$} 和\emph{虚部 $\Im z$}.
+
+  分别称 $x,y$ 为 $z$ 的\noun{实部} 和\noun{虚部}, 并记作 \nouns{$\Re z$}{Re z@$\Re z$}${}=x$, \nouns{$\Im z$}{Im z@$\Im z$}${}=y$.
 \end{definition}
 
-换言之, 每一个复数可以唯一地表达成 $x+yi$ 这样的形式.\footnote{记号 $i$ 被称为\emph{虚数单位}, 它最先是由欧拉引入并使用.}
+本书中, 我们将不言自明地使用 $x,y,x_1,y_1,\dots$ 等记号表示实数.
+复数 $x+yi$ 也可表达为形式 $x+iy$.
 
-于是复数全体构成一个二维实线性空间, $\{1,i\}$ 是一组基, 而且实数 $x$ 可以自然地看成复数 $x+0i$.
-将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$, 则 $\BC=\BR+\BR i$, $\BR\subseteq \BC$.\footnote{
-  全体复数、实数、有理数、整数、自然数集合分别记作 $\BC,\BR,\BQ,\BZ,\BN$, 整数来自德语 Zahlen, 其余来自它们的英文名称 complex number, real number, rational number, natural number.
-  这些符号的叫做空心体, 书写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
-}
-由此, $\BC$ 和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
+记号 $i$ 被称为\noun{虚数单位}, 它最先是由莱昂哈德·欧拉%
+  \footnote{%
+    Leonhard Euler (1707--1783), 瑞士数学家、自然科学家, 18世纪数学界最杰出的人物之一. 他是数学史上最多产的数学家, 研究涉及数学各个分支.
+  }%
+引入并使用.
+将\emph{全体复数记作 $\BC$}, 全体实数记作 $\BR$\footnote{%
+  全体复数、实数、有理数、整数、自然数构成的集合分别记作 $\BC,\BR,\BQ,\BZ,\BN$, 整数集合记号来自其德语 Zahlen, 其余来自它们的英文名称 complex number, real number, rational number, natural number.
+  这些符号的叫做空心体, 手写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
+  有些文献使用黑粗体字母 $\mathbf{C,R,Q,Z,N}$ 来表示这些集合.
+}.
+由于实数 $x$ 可以自然地看成复数 $x+0i$, 在此观点下, 我们有 $\BR\subseteq \BC$.
+我们简记 $x+0i=x,0+yi=yi$.
+
+由定义可知, 每一个复数都可以唯一地表达成 $x+yi$ 这样的形式.
+于是复数全体和平面上的点可以建立一一对应.
+将建立起这种对应的平面称为\noun{复平面}, 将复平面的 $x$ 和 $y$ 轴分别称为\noun{实轴}和\noun{虚轴}.
+当 $\Im z=0$ 时, $z=x$ 是实数, 它落在实轴上.
+称不是实数的复数是\noun{虚数}.
+当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z=yi\neq 0$ 是\noun{纯虚数}.
+
 
 \begin{figure}[hbpt]
   \centering
@@ -171,23 +224,23 @@
       \draw[cstaxis] (-.5,0)--(3,0);
       \draw[cstaxis] (0,-.5)--(0,2.5);
       \coordinate [label=below left:$0$] (O) at (0,0);
-      \coordinate [label=above:\textcolor{second}{$z=x+yi$}] (A) at (2,1.5);
+      \coordinate [label=above:{$z=x+yi$}] (A) at (2,1.5);
       \coordinate (B) at (2,0);
       \coordinate (C) at (0,1.5);
       \draw[cstdash] (B)--(A)--(C);
-      \fill[cstdot,second] (A) circle;
-      \draw[third,Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,third] {一一对应};
+      \fill[cstdot,main] (A) circle;
+      \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,emph] {一一对应};
     \end{scope}
     \begin{scope}[xshift=5cm]
       \coordinate [label=below left:$O$] (O) at (0,0);
-      \coordinate [label=above:\textcolor{second}{$Z(x,y)$}] (A) at (2,1.5);
+      \coordinate [label=above:{$Z(x,y)$}] (A) at (2,1.5);
       \coordinate (B) at (2,0);
       \coordinate (C) at (0,1.5);
       \draw[cstdash] (B)--(A)--(C);
-      \fill[cstdot,second] (A) circle;
-      \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(B) node[midway,above=2mm] {$x$};
-      \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (C)--(O) node[midway,right=2mm] {$y$};
-      \draw[third,Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,third] {一一对应};
+      \fill[cstdot,main] (A) circle;
+      \draw[decorate,decoration={brace,amplitude=5},cstfill] (O)--(B) node[midway,above=2mm] {$x$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill] (C)--(O) node[midway,right=2mm] {$y$};
+      \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4,1) node[midway,below,emph] {一一对应};
       \draw[cstaxis] (-.5,0)--(3,0);
       \draw[cstaxis] (0,-.5)--(0,2.5);
     \end{scope}
@@ -195,40 +248,35 @@
       \draw[cstaxis] (-.5,0)--(3,0);
       \draw[cstaxis] (0,-.5)--(0,2.5);
       \coordinate [label=below left:$O$] (O) at (0,0);
-      \coordinate [label=above:\textcolor{second}{$\overrightarrow{OZ}=(x,y)$}] (A) at (2,1.5);
+      \coordinate [label=above:{$\overrightarrow{OZ}=(x,y)$}] (A) at (2,1.5);
       \draw[cstcurve,cstra,second] (O)--(A);
     \end{scope}
   \end{tikzpicture}
   \caption{复数、平面上的点、平面向量一一对应}
 \end{figure}
 
-我们将复平面的 $x,y$ 轴称为\emph{实轴}和\emph{虚轴}.
-当 $\Im z=0$ 时, $z$ 是实数, 它落在实轴上.
-称不是实数的复数是\emph{虚数}.
-当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z$ 是\emph{纯虚数}.
-
 \begin{figure}[hbpt]
   \centering
   \begin{minipage}{.48\textwidth}
     \centering
     \begin{tikzpicture}
-      \coordinate [label=above:\textcolor{main}{实轴}] (R) at (3,0);
-      \coordinate [label=right:\textcolor{second}{虚轴}] (I) at (0,2.5);
+      \coordinate [label=above:{实轴}] (R) at (3,0);
+      \coordinate [label=right:{虚轴}] (I) at (0,2.5);
       \coordinate [label=below left:$0$] (O) at (0,0);
-      \coordinate [label=above:\textcolor{third}{$z=x+yi$}] (A) at (2,1.5);
+      \coordinate [label=above:{$z=x+yi$}] (A) at (2,1.5);
       \coordinate (B) at (2,0);
       \coordinate (C) at (0,1.5);
       \draw[cstdash] (B)--(A)--(C);
-      \fill[cstdot,third] (A) circle;
-      \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (B)--(O) node[midway,below=1.5mm] {$\Re z$};
-      \draw[decorate,decoration={brace,amplitude=5},second,cstfill2] (C)--(O) node[midway,right=1.5mm] {$\Im z$};
-      \draw[cstaxis,main] (-.5,0)--(R);
-      \draw[cstaxis,second] (0,-.5)--(I);
-      \draw[main,->,thick] (-2,.2)-|(.6,0);
-      \draw[second,->,thick] (-2,1.3)--(0,1.3);
+      \fill[cstdot] (A) circle;
+      \draw[decorate,decoration={brace,amplitude=5},cstfill] (B)--(O) node[midway,below=1.5mm] {$\Re z$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill] (C)--(O) node[midway,right=1.5mm] {$\Im z$};
+      \draw[cstaxis] (-.5,0)--(R);
+      \draw[cstaxis] (0,-.5)--(I);
+      \draw[->,thick] (-2,.2)-|(.6,0);
+      \draw[->,thick] (-2,1.3)--(0,1.3);
       \draw 
-        (-2,.1) node[cstnode,draw=main,text=main] {实数}
-        (-2,1.2) node[align=center,cstnode,draw=second,text=second] {纯虚数\\不含原点};
+        (-2,.1) node[cstnode,emph] {实数}
+        (-2,1.2) node[align=center,cstnode] {\textcolor{main}{\bfseries 纯虚数}\\不含原点};
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{.48\textwidth}
@@ -236,33 +284,33 @@
     \begin{tikzpicture}
       \filldraw[cstcurve,cstfill] (.8,0) circle (2.6 and 2);
       \coordinate (R) at (0,-.8);
-      \filldraw[cstcurve,main,fill=white] (R) circle (1.2 and .7);
+      \filldraw[cstcurve,fill=white] (R) circle (1.2 and .7);
       \coordinate (I) at (0,.8);
-      \draw (R) node[align=center,main] {实数 \\$0,1,\sqrt2,\pi,e$};
-      \draw (I) node[align=center,second] {纯虚数 \\$i,-i,\pi i$};
-      \draw[cstcurve,second] (I) circle (1.2 and .7);
+      \draw (R) node[align=center] {\textcolor{main}{\bfseries 实数} \\$0,1,\sqrt2,\pi,e$};
+      \draw (I) node[align=center] {\textcolor{main}{\bfseries 纯虚数} \\$i,-i,\pi i$};
+      \draw[cstcurve] (I) circle (1.2 and .7);
       \draw 
         (3.7,0) node[align=center] {全\\体\\复\\数}
-        (2,0) node[align=center,third] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
+        (2,0) node[align=center] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
     \end{tikzpicture}
   \end{minipage}
   \caption{实数、纯虚数、复数和复平面的关系}
 \end{figure}
 
 \begin{example}
-  实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:
-  \begin{enumerate}
+  实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:\par
+  \begin{enuminline}[(i)]
     \item 实数;
     \item 纯虚数.
-  \end{enumerate}
+  \end{enuminline}
 \end{example}
 \begin{solution}
-  \begin{enumerate}
+  \begin{enumnopar}[(i)]
     \item $\Im z=x^2-5x-6=0$, 即 $x=-1$ 或 $6$.
     \item $\Re z=x^2-3x-4=0$, 即 $x=-1$ 或 $4$.
       但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1$.
       故 $x=4$.
-  \end{enumerate}
+  \end{enumnopar}
 \end{solution}
 
 \begin{exercise}
@@ -272,68 +320,76 @@
 
 \subsection{复数的代数运算}
 
-我们将不言自明地使用 $x,y,x_1,y_1,\dots$ 等记号表示实数.
 
-\subsubsection*{四则运算}
+\subsubsection{四则运算}
 设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
-由 $\BC$ 是二维实线性空间可得复数的加法和减法:
+由向量的加减法可自然定义出复数的加法和减法:
   \begin{align*}
     z_1+z_2&=(x_1+x_2)+(y_1+y_2)i,\\
     z_1-z_2&=(x_1-x_2)+(y_1-y_2)i.
   \end{align*}
-复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
+显然, 复数的加法满足交换律和结合律.
 
 \begin{figure}[hbpt]
   \centering
   \begin{tikzpicture}
-    \draw[cstaxis] (-3,0)--(5,0);
+    \draw[cstaxis] (-3,0)--(4,0);
     \draw[cstaxis] (0,-1)--(0,3);
     \coordinate (O) at (0,0);
-    \coordinate [label=above:\textcolor{main}{$z_1$}] (Z1) at (1,2);
-    \coordinate [label=left:\textcolor{main}{$z_2$}] (Z2) at (-2.5,.5);
-    \coordinate [label=above left:\textcolor{second}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
-    \coordinate [label=right:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
+    \coordinate [label=above:{$z_1$}] (Z1) at (1,2);
+    \coordinate [label=left:{$z_2$}] (Z2) at (-2.5,.5);
+    \coordinate [label=above left:{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
+    \coordinate [label=right:{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
     \coordinate [label=below:{$-z_2$}] (neg) at ($(O)-(Z2)$);
-    \draw[cstcurve,cstra,main] (O)--(Z1);
-    \draw[cstcurve,cstra,main] (O)--(Z2);
+    \draw[cstcurve,cstra] (O)--(Z1);
+    \draw[cstcurve,cstra] (O)--(Z2);
     \draw[cstcurve,cstra,second] (O)--(P);
-    \draw[cstcurve,cstra,third] (O)--(M);
+    \draw[cstcurve,cstra,main] (O)--(M);
     \draw[cstdash,cstra] (O)--(neg);
     \draw[cstdash] (Z2)--(P)--(M)--(neg);
   \end{tikzpicture}
   \caption{复数的加法和减法}
 \end{figure}
 
-\alert{规定 $i\cdot i=-1$}.
-我们希望 $\BC$ 上的运算满足乘法分配律, 且实数与复数的乘法和标量乘法(数乘)一致.
-那么乘法应当定义为
+\emph{规定 $i\cdot i=-1$}.
+我们希望 $\BC$ 上的运算满足乘法分配律, 那么复数的乘法应当定义为
   \begin{align*}
     z_1\cdot z_2&=(x_1+y_1i)(x_2+y_2i)\\
     &=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
     &=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i.
   \end{align*}
-可以证明加法和乘法满足交换律、结合律和分配律.
+容易证明, 复数的乘法满足交换律、结合律和分配律.
 
-当 $z\neq0$ 时, 可以发现 $x+yi$ 与 $(x-yi)/(x^2+y^2)$ 的乘积为 $1$.
+当 $z\neq0$ 时, 可以发现
+  \[(x+yi)\cdot\frac{x-yi}{x^2+y^2}=1.\]
 从而除法定义为
   \[\frac{z_1}{z_2}=(x_1+y_1i)\cdot\frac{x_2-y_2i}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
-对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
-当 $z\neq 0$ 时, 还可以定义 $z^0:=1,z^{-n}:=\dfrac1{z^n}$.
+对于正整数 $n$, 定义 $z$ 的 \nouns{$n$ 次幂}{乘幂}为 $n$ 个 $z$ 相乘.
+当 $z\neq 0$ 时, 还可以定义
+\[z^0=1,\qquad z^{-n}=\frac1{z^n}.\]
 
-\subsubsection*{单位根}
+\subsubsection{单位根}
 \begin{example}
-  \begin{enumerate}
-    \item $i^2=-1,i^3=-i,i^4=1$.
+  \begin{enumnopar}[(i)]
+    \item 容易知道 $i^2=-1,i^3=-i,i^4=1$.
     一般地, 对于整数 $n$, 
     \[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]
-    \item 令 $\omega=\dfrac12(-1+\sqrt 3i)$, 则 $\omega^2=\frac12(-1-\sqrt3i),\omega^3=1$.
+    \item 令 $\omega=\frac12(-1+\sqrt 3i)$, 则
+    \[\omega^2=\frac12(-1-\sqrt3i),\qquad\omega^3=1.\]
     \item 令 $z=1+i$, {则
     \[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
-  \end{enumerate}
-  将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
+  \end{enumnopar}
+
+  对于正整数 $n$, 将满足 $z^n=1$ 的复数 $z$ 称为 \nouns{$n$ 次单位根}{单位根}.
   那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $(1+i)/\sqrt2$ 是 $8$ 次单位根.
 \end{example}
+
+实数范围内的诸多代数恒等式在复数情形也是成立, 例如
+\[1+q+q^2+\cdots+q^n=\begin{cases}
+  \dfrac{1-q^{n+1}}{1-q},&\text{若}\ q\neq 1;\\
+  n+1,&\text{若}\ q=1.
+\end{cases}\]
 
 \begin{example}
   化简 $1+i+i^2+i^3+i^4$.
@@ -348,31 +404,33 @@
   化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblank{}.
 \end{exercise}
 
-\subsubsection*{复数域的性质}
+\subsubsection{复数域的性质\optional}
 
-复数全体构成一个\emph{域}.
-所谓的域, 是指带有如下内容并满足相应性质的集合:
+若集合 $F$ 带有元素 $0,1$ 以及四则运算\footnote{%
+  即有运算 $+$ 和 $\times$, 且对任意 $a\in S$, 存在 $b\in S$ 使得 $a+b=b+a=0$; 对任意非零 $a\in F$, 存在 $c\in F$ 使得 $a\times c=c\times a=1$.%
+}, 且
 \begin{itemize}
-  \item 包含 $0,1$, 且有四则运算;\footnote{即有运算 $+$ 和 $\times$, 且对任意 $a$, 存在 $b$ 使得 $a+b=b+a=0$; 对任意 $a\neq 0$, 存在 $c$ 使得 $a\times c=c\times a=1$.}
-  \item 满足加法结合、交换律, 乘法结合、交换、分配律;
-  \item 对任意 $a$, $a+0=a\times 1=a$.
+  \item 满足加法交换、结合律, 乘法交换、结合、分配律\footnote{即对任意 $a,b,c\in F$, 有 $a+b=b+a$, $a+(b+c)=(a+b)+c$, $ab=ba$, $a(bc)=(ab)c$, $a(b+c)=ab+ac$.};
+  \item 对任意 $a\in F$, $a+0=a\times 1=a$,
 \end{itemize}
-有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
-与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}:
-对于任何次数 $n\ge 1$ 的复系数多项式
+则称 $F$ 构成一个\noun{域}.
+有理数全体 $\BQ$, 实数全体 $\BR$, 复数全体 $\BC$ 均构成域.
+
+与有理数域和实数域有着本质不同的是, 复数域是\nouns{代数闭域}{域!代数闭域}:
+对于任意 $n\ge 1$ 个复数 $c_0,c_1,\dots,c_{n-1}$, 复系数多项式
   \[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
-都存在复数 $z_0$ 使得 $p(z_0)=0$.
-由此不难知道, 复系数多项式可以因式分解成一次多项式的乘积.
+总存在复数 $z_0$ 使得 $p(z_0)=0$.
+由此归纳可知, 复系数多项式可以因式分解成一次多项式的乘积.
 我们会在第五章证明该结论.
 
-在 $\BQ,\BR$ 上可以定义出一个``好的''大小关系, 换言之它们是\emph{有序域}, 即存在一个满足下述性质的 $>$:
+在 $\BQ,\BR$ 上可以定义出一个``好的''大小关系, 换言之它们是\nouns{有序域}{域!有序域}, 即存在一个满足下述性质的 $>$:
 \begin{itemize}
   \item 若 $a\neq b$, 则要么 $a>b$, 要么 $b>a$;
   \item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
   \item 若 $a>b,c>0$, 则 $ac>bc$.
 \end{itemize}
-而 \alert{$\BC$ 却不是有序域}.
-如果 $i>0$, 则
+而 \emph{$\BC$ 却不是有序域}.
+这是因为: 如果 $i>0$, 则
   \[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
 于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
 
@@ -380,78 +438,85 @@
 \subsection{共轭复数}
 
 \begin{definition}
-  称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
+  称 $z$ 在复平面关于实轴的对称点为它的\nouns{共轭复数 $\ov z$}{共轭复数}\index{zbar@$\ov z$}.
 换言之, $\ov{x+yi}=x-yi$.
 \end{definition}
-从定义出发, 不难验证共轭复数满足如下性质:
-\begin{enumerate}
-  \item $z$ 是 $\ov z$ 的共轭复数.
-  \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
-  \ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-  \ov{z_1/z_2}=\ov{z_1}/\ov{z_2}$.
-  \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
-  \item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
-  \item $z=\ov z\iff z$ 是实数; $z=-\ov z\iff z$ 是纯虚数或 $z=0$.
-\end{enumerate}
-\enumnum4表明了 $x,y$ 可以用 $z,\ov z$ 表出.
-\enumnum2表明共轭复数和四则运算交换.
-这意味着使用共轭复数进行计算和证明，往往比直接使用 $x,y$ 表达的形式更简单.
 
 \begin{exercise}
   $z$ 关于虚轴的对称点是\fillblank{}.
 \end{exercise}
+
+从定义出发, 不难验证共轭复数满足如下性质:
+\begin{enumpar}
+  \item $z$ 是 $\ov z$ 的共轭复数, 即 $\ov{\ov z}=z$.
+  \label{enum:conjugate-zbarbar}
+  \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
+  \ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
+  \ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
+  \label{enum:conjugate-commutes}
+  \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
+  \item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
+  \label{enum:conjugate-xy-zzbar}
+  \item $z=\ov z$ 当且仅当 $z$ 是实数; $z=-\ov z$ 当且仅当 $z$ 是纯虚数或 $z=0$.
+  \label{enum:conjugate-real-imag}
+\end{enumpar}\par\noindent
+\ref{enum:conjugate-commutes}表明共轭运算和四则运算交换.
+\ref{enum:conjugate-xy-zzbar}表明了复数 $z$ 的实部 $x$ 和虚部 $y$ 可以用 $z,\ov z$ 表出.
+这意味着使用共轭复数进行计算和证明，往往比直接使用 $x,y$ 表达的形式更简单.
+
 \begin{example}
-  证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.
+  证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re{(z_1\cdot\ov{z_2})}$.
 \end{example}
 
-我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
+我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部来证明.
 但利用共轭复数可以更简单地证明它.
 
 \begin{proof}
-  由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 因此
+  根据共轭复数的性质\ref{enum:conjugate-zbarbar}和\ref{enum:conjugate-commutes},
+  \[\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2.\]
+  于是由共轭复数的性质\ref{enum:conjugate-xy-zzbar}可得
     \[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
       =z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
-      =2\Re(z_1\cdot\ov{z_2}).\qedhere\]
+      =2\Re{(z_1\cdot\ov{z_2})}.\]
 \end{proof}
 
 \begin{example}
   设 $z=x+yi$ 且 $y\neq 0,\pm1$. 证明: $x^2+y^2=1$ 当且仅当 $\dfrac z{1+z^2}$ 是实数.
 \end{example}
 \begin{proof}
+  由于 $y\neq\pm1$, 因此 $z\neq \pm i, 1+z^2\neq 0$.
+  由共轭复数的性质\ref{enum:conjugate-real-imag}可知, 
   $\dfrac z{1+z^2}$ 是实数当且仅当
     \[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
-  即
-    \[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]%
+  即 $z(1+{\ov z}^2)=\ov z(1+z^2)$.
+  化简可知其等价于
+    \[(z-\ov z)(z\ov z-1)=0.\]
   由 $y\neq0$ 可知 $z\neq \ov z$.
   故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.
 \end{proof}
+
+\begin{exercise}
+  将 $(x_1^2+y_1^2)(x_2^2+y_2^2)$ 表达为两个多项式的平方和.
+\end{exercise}
 
 由于 $z\ov z$ 是一个实数,
 因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
   \[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]
 \begin{example}
-  设 $z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
-\end{example}
-\begin{solution}
-  \[z=-\frac1i-\frac{3i}{1-i}
-  {=i-\frac{3i-3}2=\frac32-\half i,}\]
-  因此
-    \[\Re z=\frac32,\quad\Im z=-\half ,\quad
-    z\ov z=\left(\frac32\right)^2+\left(-\half\right)^2=\frac52.\]
-\end{solution}
-
-\begin{example}
-  设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
+  设 $z_1=10-5i,z_2=4+3i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
 \end{example}
 \begin{solution}
   \begin{align*}
-    \frac{z_1}{z_2}&=\frac{5-5i}{-3+4i}
-    =\frac{(5-5i)(-3-4i)}{(-3)^2+4^2}\\
-    &=\frac{(-15-20)+(-20+15)i}{25}=-\frac75-\frac15i,
+    \frac{z_1}{z_2}&=\frac{10-5i}{4+3i}
+    =\frac{(10-5i)(4-3i)}{4^2+3^2}\\
+    &=\frac{(40-15)+(-20-30)i}{25}=1-2i,
   \end{align*}
-  因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.
+  因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=1+2i$.
 \end{solution}
 
+\begin{exercise}
+  计算 $\dfrac{2-3i}{2-i}=$\fillblank[6em]{}.
+\end{exercise}
 
 \section{复数的三角与指数形式}
 
@@ -459,87 +524,100 @@
 
 由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
 以 $0$ 为极点, 正实轴为极轴, 逆时针为极角方向可以自然定义出复平面上的极坐标系.
+设复数 $z=x+yi$ 对应点的极坐标为 $(r,\theta)$.
+由极坐标和直角坐标的转化关系可知:
+\[x=r\cos\theta,\qquad y=r\sin\theta,\]
+\[r=\sqrt{x^2+y^2},\qquad \theta=\arctan\dfrac yx+k\pi,k\in\BZ.\]
 
-通过极坐标和直角坐标的转化关系可知:
-\[ x=r\cos\theta,\qquad y=r\sin\theta,\]
-\[r=\sqrt{x^2+y^2},\qquad \theta=\arctan\dfrac yx\text{ 或 }\arctan\dfrac yx\pm\pi.\]
+\begin{figure}[hbpt]
+  \centering
+  \begin{tikzpicture}
+    \coordinate [label=below left:$0$] (O) at (0,0);
+    \coordinate [label=above:{$z=x+yi$}] (Z) at (3,2);
+    \coordinate (X) at (3,0);
+    \coordinate (Y) at (0,2);
+    \draw[decorate,decoration={brace,amplitude=5},cstfill] (X)--(O) node[midway,below=2mm] {$x$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill] (O)--(Y) node[midway,left=2mm] {$y$};
+    \draw[main,thick,cstra] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle=X--O--Z};
+    \draw[cstaxis] (-.5,0)--(4,0);
+    \draw[cstaxis] (0,-.5)--(0,3);
+    \draw[cstcurve,main,cstra] (O)--(Z) node[midway,above,main] {$r$};
+    \draw[cstdash] (X)--(Z)--(Y);
+    \fill[cstdot,second] (Z) circle;
+  \end{tikzpicture}
+  \caption{复数的模和辐角}
+\end{figure}
 
 \begin{definition}
   \begin{itemize}
-    \item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
-    \item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
-    \alert{$0$ 的辐角没有意义}.
+    \item 称 $r$ 为 $z$ 的\noun{模}, 记为 \nouns{$|z|$}{z@$|z|$}${}=r=\sqrt{x^2+y^2}$.
+    \item 称 $\theta$ 为 $z$ 的\noun{辐角}, 记为 \nouns{$\Arg z$}{Arg z@$\Arg z$}${}=\theta$.
+    约定 \alert{$0$ 的辐角没有意义}.
   \end{itemize}
 \end{definition}
 
+任意非零复数 $z$ 的辐角有无穷多个.
+这是因为若 $\theta$ 是 $z$ 的辐角, 则 $\theta+2k\pi$ 也是 $z$ 的辐角, 其中 $k$ 是任意整数.
+我们固定选择 $\Arg z$ 中位于 $(-\pi,\pi]$ 的那个, 并称之为\nouns{辐角主值}{辐角!辐角主值}%
+  \footnote{%
+    部分文献选择位于 $[0,2\pi)$ 的辐角作为辐角主值. 由于这会导致后续对数函数主值在正实轴上不解析, 因此本书选择位于 $(-\pi,\pi]$ 的辐角作为辐角主值.
+  }%
+, 记作 \nouns{$\arg z$}{arg z@$\arg z$}.
+那么 $\Arg z=\arg z+2k\pi, k\in\BZ$.
+根据 $z$ 所处的位置, 我们有
+\begin{equation}\label{eq:arg}
+  \arg z=\begin{cases}
+    \arctan\dfrac yx,&x>0;\\
+    \arctan\dfrac yx+\pi,&x<0,y\ge0;\\
+    \arctan\dfrac yx-\pi,&x<0,y<0;\\
+    \dfrac\pi2,&x=0,y>0;\\
+    -\dfrac\pi2,&x=0,y<0.
+  \end{cases}
+\end{equation}
 
 \begin{figure}[hbpt]
-  \begin{minipage}{.45\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \coordinate [label=below left:$0$] (O) at (0,0);
-      \coordinate [label=above:\textcolor{second}{$z=x+yi$}] (Z) at (3,2);
-      \coordinate (X) at (3,0);
-      \coordinate (Y) at (0,2);
-      \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (X)--(O) node[midway,below=2mm] {$x$};
-      \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(Y) node[midway,left=2mm] {$y$};
-      \draw[third,thick,cstra] pic [cstfill3,draw=third, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle=X--O--Z};
-      \draw[cstaxis] (-.5,0)--(4,0);
-      \draw[cstaxis] (0,-.5)--(0,3);
-      \draw[cstcurve,third,cstra] (O)--(Z) node[midway,above,third] {$r$};
-      \draw[cstdash] (X)--(Z)--(Y);
-      \fill[cstdot,second] (Z) circle;
-    \end{tikzpicture}
-    \caption{复数的模和辐角}
-  \end{minipage}
-  \begin{minipage}{.45\textwidth}
-    \centering
-    \begin{tikzpicture}
-      \draw[cstaxis](-2.5,0)->(2.5,0); 
-      \draw[cstaxis](0,-2)->(0,2);
-      \draw[cstaxis,main,cstwla] (-1.5,0) arc(180:-180:1.5);
-      \filldraw[cstdote,draw=main] (-1.5,-.07) circle;
-      \coordinate [label=above:\textcolor{main}{$0$}] (A) at (1.7,0);
-      \fill[cstdot,main] (A) circle;
-      \coordinate [label=above right:\textcolor{main}{$\arctan\dfrac yx$}] (B) at (.9,.9);
-      \fill[cstdot,main] (B) circle;
-      \coordinate [label=right:\textcolor{main}{$\arctan\dfrac yx$}] (C) at (1.4,-.9);
-      \fill[cstdot,main] (C) circle;
-      \coordinate [label=above left:\textcolor{second}{$\arctan\dfrac yx+\pi$}] (D) at (-1.1,.8);
-      \fill[cstdot,second] (D) circle;
-      \coordinate [label=below:\textcolor{second}{$\pi$}] (E) at (-.9,0);
-      \fill[cstdot,second] (E) circle;
-      \coordinate [label=left:\textcolor{third}{$\arctan\dfrac yx-\pi$}] (F) at (-1.6,-.7);
-      \fill[cstdot,third] (F) circle;
-      \coordinate [label=left:\textcolor{fourth}{$\dfrac\pi2$}] (G) at (0,.5);
-      \fill[cstdot,fourth] (G) circle;
-      \coordinate [label=right:\textcolor{fourth}{$-\dfrac\pi2$}] (H) at (0,-.6);
-      \fill[cstdot,fourth] (H) circle;
-    \end{tikzpicture}
-    \caption{主辐角与复数位置的关系}
-  \end{minipage}
+  \centering
+  \begin{tikzpicture}
+    \draw[cstaxis](-2.5,0)->(2.5,0); 
+    \draw[cstaxis](0,-2)->(0,2);
+    \draw[cstaxis,main,cstwla] (-1.5,0) arc(180:-180:1.5);
+    \filldraw[cstdote,draw=main] (-1.5,-.07) circle;
+    \coordinate [label=above:\textcolor{main}{$0$}] (A) at (1.7,0);
+    \fill[cstdot,main] (A) circle;
+    \coordinate [label=above right:{$\arctan\dfrac yx$}] (B) at (.9,.9);
+    \fill[cstdot,main] (B) circle;
+    \coordinate [label=right:{$\arctan\dfrac yx$}] (C) at (1.4,-.9);
+    \fill[cstdot,main] (C) circle;
+    \coordinate [label=above left:{$\arctan\dfrac yx+\pi$}] (D) at (-1.1,.8);
+    \fill[cstdot,second] (D) circle;
+    \coordinate [label=below:{$\pi$}] (E) at (-.9,0);
+    \fill[cstdot,second] (E) circle;
+    \coordinate [label=left:{$\arctan\dfrac yx-\pi$}] (F) at (-1.6,-.7);
+    \fill[cstdot,main] (F) circle;
+    \coordinate [label=left:{$\dfrac\pi2$}] (G) at (0,.5);
+    \fill[cstdot,main] (G) circle;
+    \coordinate [label=right:{$-\dfrac\pi2$}] (H) at (0,-.6);
+    \fill[cstdot,main] (H) circle;
+  \end{tikzpicture}
+  \caption{辐角主值与复数位置的关系}
 \end{figure}
 
-任意 $z\neq 0$ 的辐角有无穷多个.
-我们固定选择其中位于 $(-\pi,\pi]$ 的那个, 并称之为\emph{主辐角}或\emph{辐角主值}\footnote{选择位于 $[0,2\pi)$ 的那个作为辐角主值也是一种常见的选择, 但这会导致后续中对数函数主值在正实轴上不解析. 因此我们作此选择.}, 记作 \emph{$\arg z$}.
-那么 \alert{$\Arg z=\arg z+2k\pi, k\in\BZ$},
-\[\arg z=\begin{cases}
-  \arctan\dfrac yx,&x>0;\\
-  \arctan\dfrac yx+\pi,&x<0,y\ge0;\\
-  \arctan\dfrac yx-\pi,&x<0,y<0;\\
-  \dfrac\pi2,&x=0,y>0;\\
-  -\dfrac\pi2,&x=0,y<0.
-\end{cases}\]
-
-注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 仅当 $z$ 不是负实数和 $0$ 时成立.
+\begin{exercise}
+  $\arg \ov z=-\arg z$ 是否对于非零复数都成立?  
+\end{exercise}
 
 复数的模满足如下性质:
-\begin{enumerate}
+\begin{enumpar}
   \item $z\ov z=|z|^2=|\ov z|^2$;
+  \label{enum:modulus-zzbar}
   \item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
+  \label{enum:re-im-less}
   \item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
+  \label{enum:modulus-triangle-inequality}
   \item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
-\end{enumerate}
+  \label{enum:modulus-nangle-inequality}
+\end{enumpar}
+这些性质可通过\figref{fig:inequality_of_modulus}使用几何方式证明, 也可利用代数方法直接证明.
 
 \begin{figure}[hbpt]
   \centering
@@ -549,137 +627,161 @@
     \coordinate (O) at (0,0);
     \coordinate (Z) at (-2.5,1.5);
     \coordinate (R) at (-2.5,0);
-    \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(R) node[midway,below=2mm,main] {$\abs{\Re z}$};
-    \draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (R)--(Z) node[midway,left=2mm,main] {$\abs{\Im z}$};
-    \draw[cstcurve,second] (O)--(Z) node[midway,above,second] {$|z|$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill] (O)--(R) node[midway,below=2mm] {$\abs{\Re z}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill] (R)--(Z) node[midway,left=2mm] {$\abs{\Im z}$};
+    \draw[cstcurve,second] (O)--(Z) node[midway,above,third] {$|z|$};
     \draw[cstcurve,main] (Z)--(R)--(O);
     \draw[thick] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
 
-    \coordinate [label=below right:\textcolor{main}{$z_1$}] (Z1) at (2.8,-.4);
+    \coordinate [label=below right:{$z_1$}] (Z1) at (2.8,-.4);
     \coordinate (Z2) at (1.2,2);
     \coordinate (A) at (2.7,2.4);
-    \coordinate [label=above right:\textcolor{main}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
-    \coordinate [label=below:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
-    \draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(O) node[midway,below,sloped] {$|z_1|$};
-    \draw[decorate,decoration={brace,amplitude=5},main] (P)--(Z1) node[midway,below,sloped] {$|z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},second] (O)--(P) node[midway,above,sloped] {$|z_1+z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(M) node[midway,below,sloped] {$|z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},third] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},main] (A)--(P) node[midway,above,sloped] {$|z_3|$};
-    \draw[decorate,decoration={brace,amplitude=5},fourth] (O)--(A) node[midway,above=2mm,sloped] {$|z_1+z_2+z_3|$};
+    \coordinate [label=above right:{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
+    \coordinate [label=below:{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
+    \draw[decorate,decoration={brace,amplitude=5}] (Z1)--(O) node[midway,below,sloped] {$|z_1|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (P)--(Z1) node[midway,below,sloped] {$|z_2|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (O)--(P) node[midway,above,sloped] {$|z_1+z_2|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (Z1)--(M) node[midway,below,sloped] {$|z_2|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (A)--(P) node[midway,above,sloped] {$|z_3|$};
+    \draw[decorate,decoration={brace,amplitude=5}] (O)--(A) node[midway,above=2mm,sloped] {$|z_1+z_2+z_3|$};
     \begin{scope}[cstcurve,cstra]
-      \draw[main] (O)--(Z1);
-      \draw[main] (Z1)--(P);
-      \draw[main] (P)--(A);
-      \draw[fourth] (O)--(A);
-      \draw[second] (O)--(P);
-      \draw[third] (O)--(M);
-      \draw[main] (Z1)--(M);
+      \draw (O)--(Z1);
+      \draw (Z1)--(P);
+      \draw (P)--(A);
+      \draw[main] (O)--(A);
+      \draw[main] (O)--(P);
+      \draw[main] (O)--(M);
+      \draw (Z1)--(M);
     \end{scope}
   \end{tikzpicture}
-  \caption{复数模的不等式关系}
+  \caption{复数模的不等式关系}\label{fig:inequality_of_modulus}
 \end{figure}
-
-\begin{exercise}
-  什么时候 $|z_1+z_2+\cdots+z_n|=|z_1|+|z_2|+\cdots+|z_n|$?
-\end{exercise}
 
 \begin{example}
   证明
-  \begin{enumerate}
+  \begin{enumnopar}[(i)]
     \item $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
+    \label{enum:modulus-z1z2-z1-z2}
     \item $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
-  \end{enumerate}
+    \item $\bigl||z_1|-|z_2|\bigr|\le|z_1+z_2|$.
+  \end{enumnopar}
 \end{example}
 
 \begin{proof}
-  \begin{enumerate}
-    \item 因为
+  \begin{enumnopar}[(i)]
+    \item 根据复数模的性质\ref{enum:modulus-zzbar},
     \[|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
-    =z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
-    所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
-    因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
+    =z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2.\]
+    由于复数模总是非负实数, 因此 $|z_1z_2|=|z_1|\cdot|z_2|$.
+    将 $z_2$ 换成 $\ov{z_2}$ 得到
+    \[|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|.\]
     \item 因为
     \begin{align*}
-      \text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
-      {=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,}\\
-      \text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
+        |z_1+z_2|^2
+       =(z_1+z_2)(\ov{z_1}+\ov{z_2})
+      &=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,\\
+        |z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})
+      &=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
     \end{align*}
-    而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.\qedhere
-  \end{enumerate}
+    而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两式相等.
+    \item 根据 \ref{enum:modulus-z1z2-z1-z2}, 我们有
+      \[\bigl||z_1|-|z_2|\bigr|^2=|z_1|^2-2|z_1|\cdot|z_2|+|z_2|^2=|z_1|^2-2|z_1 \ov{z_2}|+|z_2|^2.\]
+      由于
+      \[|z_1\ov{z_2}|=|{-z_1\ov{z_2}}|\ge\Re(-z_1\ov z_2)=-\Re(z_1\ov z_2),\]
+      因此
+      \[\bigl||z_1|-|z_2|\bigr|^2\le |z_1|^2+2\Re(z_1 \ov{z_2})+|z_2|^2=|z_1+z_2|^2.\]
+      而复数模总是非负实数, 所以 $\bigl||z_1|-|z_2|\bigr|\le|z_1+z_2|$.
+  \end{enumnopar}
 \end{proof}
+
+\begin{exercise}
+  什么时候 $|z_1+z_2+\cdots+z_n|=|z_1|+|z_2|+\cdots+|z_n|$ 成立?
+\end{exercise}
+
 
 
 \subsection{复数的三角形式和指数形式}
 
 由 $x=r\cos\theta,y=r\sin\theta$ 可得
-
-\begin{definition}[复数的三角形式]
-  \[z=r(\cos\theta+i\sin\theta).\]	
-\end{definition}
-
-定义 \alert{$e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$}\footnote{此即欧拉恒等式, 我们会在第二章说明为何如此定义.}, 则我们得到
-
-\begin{definition}[复数的指数形式]
-  \[z=re^{i\theta}=r\exp(i\theta).\]
-\end{definition}
-这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
-
-求复数的三角和指数形式的\alert{关键在于计算模和辐角}.
+  \[z=r(\cos\theta+i\sin\theta).\]
+我们把这种形式称为\nouns{复数的三角形式}{复数!三角形式}.
+定义 \emph{$e^{i\theta}:=\cos\theta+i\sin\theta$}, 则上述形式可改写为\nouns{复数的指数形式}{复数!指数形式}%
+  \footnote{%
+    $e^{i\theta}:=\cos\theta+i\sin\theta$ 被称为\noun{欧拉恒等式}, 我们会在第二章说明为何如此定义.
+  }%
+  \[z=re^{i\theta}.\]
+这两种形式是等价的, 指数形式可以认为是三角形式的一种缩写方式.
+指数形式也可写作 $z=r\exp(i\theta)$.
+求复数的三角和指数形式的\emph{关键在于计算模和辐角}.
 
 \begin{example}
-  将 $z=-\sqrt{12}-2i$ 化成三角形式和指数形式.
+  将 $z=-2-\sqrt{12}i$ 化成三角形式和指数形式.
 \end{example}
 
 \begin{solution}
-  $r=|z|=\sqrt{12+4}=4$.
-  由于 $z$ 在第三象限, 因此
-    \[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.\]
-  故
-    \[z=4\left[\cos\left(-\frac{5\pi}6\right)+i\sin\left(-
-    \frac{5\pi}6\right)\right]=4e^{-\frac{5\pi i}6}.\]
+  显然 $|z|=\sqrt{4+12}=4$.
+  由于 $z$ 在第三象限, 由\eqref{eq:arg}可知
+    \[\arg z=\arctan\frac{-\sqrt{12}}{-2}-\pi=\frac\pi3-\pi=-\frac{2\pi}3.\]
+  因此 $z$ 的三角形式和指数形式为
+    \[z=4\Bigl(\cos\bigl(-\frac{2\pi}3\bigr)+i\sin\bigl(-
+    \frac{2\pi}3\bigr)\Bigr)=4e^{-\frac{2\pi i}3}.\]
 \end{solution}
 
 \begin{example}
-  将 $z=\sin\dfrac\pi5+i\cos\dfrac\pi5$ 化成三角形式和指数形式.
+  设 $0<\theta<\dfrac\pi2$. 将 $z=\sin\theta-i\cos\theta$ 化成三角形式和指数形式.
 \end{example}
 \begin{solution}
-  $r=|z|=1$. 由于 $z$ 在第一象限, 因此
-  \[\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.\]
-  故
-  \[z=\displaystyle\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.\]
+  显然 $|z|=\sqrt{\sin^2\theta+\cos^2\theta}=1$. 由于 $z$ 在第四象限, 由\eqref{eq:arg}可知
+  \[\arg z=\arctan(-\frac{\cos\theta}{\sin\theta})=-\arctan\cot\theta=-(\frac\pi2-\theta)=\theta-\frac\pi2.\]
+  因此 $z$ 的三角形式和指数形式为
+  \[z=\displaystyle\cos(\theta-\frac\pi2)+i\sin(\theta-\frac\pi2)=e^{i(\theta-\frac\pi2)}.\]
 \end{solution}
 \begin{solution}[另解]
-  \[z=\sin\frac\pi5+i\cos\frac\pi5
-  =\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)
-  =\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.\]
+  利用三角函数间的等式关系得到
+  \begin{align*}
+    \sin\theta&=\cos(\frac\pi2-\theta)=\cos(\theta-\frac\pi2),\\
+    -\cos\theta&=-\sin(\frac\pi2-\theta)=\sin(\theta-\frac\pi2).
+  \end{align*}
+  因此 $z$ 的三角形式和指数形式为
+  \[z=\displaystyle\cos(\theta-\frac\pi2)+i\sin(\theta-\frac\pi2)=e^{i(\theta-\frac\pi2)}.\]
 \end{solution}
 
-求复数的三角或指数形式时, 只需要任取一个辐角就可以了, 不要求必须是主辐角.
+求复数的三角或指数形式时, 只需要任取一个辐角就可以了, 不要求必须是辐角主值.
 
 \begin{exercise}
   将 $z=\sqrt 3-3i$ 化成三角形式和指数形式.
 \end{exercise}
 
-两个模相等的复数之和的三角和指数形式形式较为简单:
-\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
-注意 $\cos\dfrac{\theta-\varphi}2<0$ 时, 这离指数形式还差一步变形.
-
 \begin{example}
-  如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 e^{\frac{\theta i}2}$.
+  设 $z=e^{i\theta}$, 其中 $-\pi<\theta<\pi$.
+  求 $1+z$ 的三角形式和指数形式.
 \end{example}
+\begin{solution}
+  我们有
+  \[1+z=(1+\cos\theta)+i\sin\theta=2\cos^2\frac\theta2+2i\sin\frac\theta2\cos\frac\theta2
+  =2\cos\frac\theta2(\cos\frac\theta2+i\sin\frac\theta2).\]
+  由 $-\pi<\theta<\pi$ 可知 $\cos\dfrac\theta2>0$.
+  因此 $1+z$ 的三角形式和指数形式为
+  \[1+z=2\cos\frac\theta2(\cos\frac\theta2+i\sin\frac\theta2)=2\cos\frac\theta2e^{\frac{i\theta}2}.\]
+\end{solution}
+
+两个模相等的复数之和的三角和指数形式形式较为简单:
+\[re^{i\theta}+re^{i\varphi}=2r\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
+从\figref{fig:sum_of_same_modulus}可以很容易得到该等式.
+注意 $\cos\dfrac{\theta-\varphi}2<0$ 时, 这离指数形式还差一步变形.
 
 \begin{figure}[hbpt]
   \centering
   \begin{tikzpicture}
     \coordinate [label=below left:0] (O) at (0,0);
-    \coordinate [label=right:\textcolor{main}{$e^{i\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
-    \coordinate [label=left:\textcolor{main}{$e^{i\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
-    \coordinate [label=above:\textcolor{second}{$e^{i\theta}+e^{i\varphi}$}] (P) at ($(Z1)+(Z2)$);
+    \coordinate [label=right:{$e^{i\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
+    \coordinate [label=left:{$e^{i\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
+    \coordinate [label=above:{$e^{i\theta}+e^{i\varphi}$}] (P) at ($(Z1)+(Z2)$);
     \coordinate (M) at ($0.5*(P)$);
     \coordinate (X) at (2,0);
-    \draw[thick,main] pic [cstfill1, draw=main,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1};
-    \draw[thick,second] pic [cstfill2, draw=second, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle=Z1--O--P};
+    \draw[thick] pic [cstfill, draw=third,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1};
+    \draw[thick] pic [cstfill, draw=third, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle=Z1--O--P};
     \draw[cstaxis] (-3,0)--(3,0);
     \draw[cstaxis] (0,-.4)--(0,3.5);
     \draw[cstcurve,cstra,main] (O)--(Z1);
@@ -688,27 +790,32 @@
     \draw[cstdash] (Z2)--(Z1)--(P)--(Z2);
     \draw[thick] (M)--++({.3*cos(16)},{-.3*sin(16)})--++({.3*sin(16)},{.3*cos(16)})--++({-.3*cos(16)},{.3*sin(16)});
   \end{tikzpicture}
-  \caption{模相等的复数之和}
+  \caption{模相等的复数之和}\label{fig:sum_of_same_modulus}
 \end{figure}
 
 \section{复数的乘除、乘幂和方根}
 
-\subsection{复数的乘除与三角、指数形式}
-
-三角和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+三角形式和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
+\subsection{复数的乘除与三角形式和指数形式}
 
 \begin{theorem}
-  设
-  \[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
-  \[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
+  设复数 $z_1,z_2\neq0$ 的三角形式为
+  \[z_1=r_1(\cos\theta_1+i\sin\theta_1),\qquad
+    z_2=r_2(\cos\theta_2+i\sin\theta_2),\]
   则
   \begin{align*}
-    z_1z_2&=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)},\\
-    \frac{z_1}{z_2}&=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.
+    z_1z_2&=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)],\\
+    \frac{z_1}{z_2}&=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)].
   \end{align*}
 \end{theorem}
 
-换言之\footnote{多值函数相等是指两边所能取到的值构成的集合相等.
+若表达为指数形式, 上述等式变为
+  \[
+  r_1e^{i\theta_1}\cdot r_2e^{i\theta_2}=r_1r_2e^{i(\theta_1+\theta_2)},\qquad
+  \frac{r_1e^{i\theta_1}}{r_2e^{i\theta_2}}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.
+  \]
+
+该定理表明:\footnote{多值函数相等是指两边所能取到的值构成的集合相等.
 例如此处关于辐角的等式的含义是:
   \[\Arg(z_1z_2)=\{\theta_1+\theta_2\mid\theta_1\in\Arg z_1,\theta_2\in\Arg z_2\}.\]
   \[\Arg\Bigl(\frac{z_1}{z_2}\Bigr)=\{\theta_1-\theta_2\mid\theta_1\in\Arg z_1,\theta_2\in\Arg z_2\}.\]
@@ -719,7 +826,7 @@
 注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
   \[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
   \arg\Bigl(\frac{z_1}{z_2}\Bigr)=\arg z_1-\arg z_2\]
-\alert{不一定成立}.
+\emph{不一定成立}.
 事实上, 当且仅当等式右侧落在区间 $(-\pi,\pi]$ 内时才成立, 否则等式两侧会相差 $\pm2\pi$.
 例如 $z_1=z_2=e^{0.99\pi i}$, $z_1z_2=e^{1.98\pi i}$,
 \[\arg z_1+\arg z_2=0.99\pi+0.99\pi=1.98\pi,\qquad
@@ -736,14 +843,13 @@
   \end{align*}
   因此乘法情形得证.
 
-  设 $\dfrac{z_1}{z_2}=re^{i\theta}$, 则由乘法情形可知
-    \[rr_2=r_1,\quad \theta+2k\pi+\Arg z_2=\Arg z_1.\]
+  设 $\dfrac{z_1}{z_2}=re^{i\theta}$, 则由乘法情形可知 $rr_2=r_1$ 且 $\theta+\theta_2$ 是 $z_1$ 的辐角.
   因此 $r=\dfrac{r_1}{r_2}$, $\theta$ 可取 $\theta_1-\theta_2$.
 \end{proof}
 
 
-\subsubsection*{复数乘法的几何意义}
-从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为\alert{模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$}.
+\subsection{复数乘法的几何意义}
+从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为\emph{模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$}.
 
 \begin{figure}[hbpt]
   \centering
@@ -827,7 +933,7 @@
     \bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0.\]
   显然 $z\neq \ov z$. 又因为 $0<\lambda<1$, 故
     \[\frac{AB}{AC}=|z|=\frac{1-\lambda}{\lambda}
-    =\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere\]
+    =\frac{BC-DC}{DC}=\frac{DB}{DC}.\]
 \end{proof}
 
 
@@ -873,7 +979,7 @@
 \end{solution}
 
 \begin{exercise}
-  化简 $(\sqrt3+i)^{2022}=$\fillblank[2cm]{}.
+  化简 $(\sqrt3+i)^{2022}=$\fillblank[6em]{}.
 \end{exercise}
 
 
@@ -903,7 +1009,7 @@
   \]
 \end{theorem}
 这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
-因此\alert{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
+因此\emph{它们是以原点为中心, $\sqrt[n]r$ 为半径的圆的内接正 $n$ 边形的顶点}.
 
 \begin{example}
   求 $\sqrt[4]{1+i}$.
@@ -948,10 +1054,10 @@
 \end{figure}
 
 \begin{exercise}
-  计算 $\sqrt[6]{-1}=$\fillblank[5cm][2mm]{}.
+  计算 $\sqrt[6]{-1}=$\fillblank[12em]{}.
 \end{exercise}
 
-注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
+注意当 $|n|\ge 2$ 时, \emph{$\Arg(z^n)=n\Arg z$ 不成立}.
 这是因为
   \begin{align*}
     \Arg(z^n)&=n\arg z+2k\pi,\quad k\in\BZ,\\
@@ -962,7 +1068,7 @@
 其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角\footnote{此即多值函数复合的含义.}.
 
 
-\subsubsection*{应用: 实系数三次方程根的情况}
+\subsection{应用: 实系数三次方程根的情况}
 现在我们来看三次方程 $x^3+px+q=0$ 的根, $p\neq 0$.
 回顾求根公式:
   \[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3,\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
@@ -1411,7 +1517,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
   $f(z)=z^n$ 的反函数就是 $f^{-1}(w)=\sqrt[n]{w}$.
   {当 $n=\pm1$ 时, $f$ 是一一对应.}
 \end{example}
-若无特别声明, 本书中\alert{复变函数总是指单值的复变函数}.
+若无特别声明, 本书中\emph{复变函数总是指单值的复变函数}.
 
 
 \subsection{映照}
@@ -1734,7 +1840,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 
 类似于实变函数情形, 我们可以定义复变函数的极限.
 
-\subsubsection*{数列极限}
+\subsubsection{数列极限}
 先来看数列极限的定义.
 
 \begin{definition}
@@ -1765,7 +1871,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \footnotetext{一般地, 一个点的邻域是指包含它的任意一个开集.
 可以说明, 把这里的任意 $\delta$ 邻域换成任意邻域, 并不会改变定义, 因为包含 $z$ 的开集一定包含一个 $z$ 的 $\delta$ 领域.}
 
-\subsubsection*{复球面和扩充复平面}
+\subsubsection{复球面和扩充复平面}
 那么有没有一种看法使得 $\infty$ 的邻域和普通复数的邻域没有差异呢?
 我们将介绍复球面的概念, 它是复数的一种几何表示且自然包含无穷远点 $\infty$.
 这种思想是在黎曼研究多值复变函数时引入的.
@@ -1970,7 +2076,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 可以看出, 在极限和连续性上, 复变函数和两个二元实函数没有什么差别.
 那么复变函数和多变量微积分的差异究竟是什么导致的呢?
 归根到底就在于 $\BC$ 是一个域, 上面可以做除法.
-这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
+这就导致了复变函数有\emph{导数}, 而不是像多变量实函数只有偏导数.
 这种特性使得可导的复变函数具有整洁优美的性质, 我们将逐步揭开它的神秘面纱.
 
 
@@ -1986,16 +2092,17 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
     \end{exlist}
   \item 选择题.
     \begin{exlist}
-      \item \begin{tasks}
-        \task $|z|=\Re z+1$ 是\fillbrace{}.
-        \task $|z+i|=|z-i|$ 是\fillbrace{}.
-        \task $\bigl||z+i|-|z-i|\bigr|=1$ 是\fillbrace{}.
-        \task $|z|+|z-2i|=2$ 是\fillbrace{}.
-        \task $\Re(i\ov z)=3$ 是\fillbrace{}.
-        \task $z\ov z-(2+i)z-(2-i)\ov z=4$ 是\fillbrace{}.
-        \task $z=1+it,-1\le t\le 1$ 是\fillbrace{}.
-        \task $z=i+2e^{i\theta},0\le \theta\le 2\pi$ 是\fillbrace{}.
-      \end{tasks}
+      \item 选择合适的选项填入下方的括号中.
+      \begin{enumerate}
+        \item $|z|=\Re z+1$ 是\fillbrace{}.
+        \item $|z+i|=|z-i|$ 是\fillbrace{}.
+        \item $\bigl||z+i|-|z-i|\bigr|=1$ 是\fillbrace{}.
+        \item $|z|+|z-2i|=2$ 是\fillbrace{}.
+        \item $\Re(i\ov z)=3$ 是\fillbrace{}.
+        \item $z\ov z-(2+i)z-(2-i)\ov z=4$ 是\fillbrace{}.
+        \item $z=1+it,-1\le t\le 1$ 是\fillbrace{}.
+        \item $z=i+2e^{i\theta},0\le \theta\le 2\pi$ 是\fillbrace{}.
+      \end{enumerate}
         \begin{taskschoice}(4)
           () 直线
           () 圆周
@@ -2006,16 +2113,17 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
           () 一个点
           () 一条线段
         \end{taskschoice}
-      \item \begin{tasks}
-        \task $z\ov z-(2+i)z-(2-i)\ov z\le 4$ 是\fillbrace{}.
-        \task $-1<\arg z<\pi-1$ 的\fillbrace{}.
-        \task $1<|z|<2$ 是\fillbrace{}.
-        \task $0<\Re z<1$ 是\fillbrace{}.
-        \task $\Im z\le0,\Re z\ge0$ 是\fillbrace{}.
-        \task $|z-1|<|z+3|$ 是\fillbrace{}.
-        \task $\left|\dfrac{z+1}{z-1}\right|<2$ 是\fillbrace{}.
-        \task $\arg z<\dfrac{3\pi}4$ 是\fillbrace{}.
-      \end{tasks}
+      \item 选择合适的选项填入下方的括号中.
+      \begin{enumerate}
+        \item $z\ov z-(2+i)z-(2-i)\ov z\le 4$ 是\fillbrace{}.
+        \item $-1<\arg z<\pi-1$ 的\fillbrace{}.
+        \item $1<|z|<2$ 是\fillbrace{}.
+        \item $0<\Re z<1$ 是\fillbrace{}.
+        \item $\Im z\le0,\Re z\ge0$ 是\fillbrace{}.
+        \item $|z-1|<|z+3|$ 是\fillbrace{}.
+        \item $\left|\dfrac{z+1}{z-1}\right|<2$ 是\fillbrace{}.
+        \item $\arg z<\dfrac{3\pi}4$ 是\fillbrace{}.
+      \end{enumerate}
         \begin{taskschoice}(2)
           () 有界单连通区域
           () 有界多连通区域
@@ -2038,7 +2146,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
       \item $2^{-i}$ 的辐角主值是\fillblank{}.
       \item $-1-i$ 的辐角主值是\fillblank{}.
       \item $2023-i$ 绕 $0$ 逆时针旋转 $\dfrac\pi2$ 后得到的复数是\fillblank{}.
-      \item 区域 $0<\arg z<\dfrac\pi3$ 在映射 $w=z^3$ 下的像是\fillblank[4cm]{}.
+      \item 区域 $0<\arg z<\dfrac\pi3$ 在映射 $w=z^3$ 下的像是\fillblank[12em]{}.
       \item 已知映射 $w=z^3$, 则 $z=\sqrt3+i$ 在 $w$ 复平面上的像是\fillblank{}.
       \item 极限 $\displaystyle\lim_{z\to1+i}(1+z^2+2z^4)=$\fillblank{}.
     \end{exlist}
@@ -2046,7 +2154,7 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
     \begin{exlist}
       \item $z_1=-z,z_2=\ov z,z_3=-\ov{z}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
       \item 已知点 $z_1,z_2,z_3$ 不共线. 点 $\dfrac12(z_1+z_2)$ 和 $\dfrac13(z_1+z_2+z_3)$ 表示什么点?
-      \item 求下列复数 $z$ 的实部与虚部, 共轭复数, 模和主辐角:
+      \item 求下列复数 $z$ 的实部与虚部, 共轭复数, 模和辐角主值:
         \begin{tasks}(4)
           \task $\dfrac{5+i}{2+3i}$;
           \task $\dfrac{3i}{1-i}-\dfrac1i$;
@@ -2174,6 +2282,10 @@ $\ell_s: z=X(s,t)+iY(s,t),t\in[0,1]$
 \exans $-4$.
 \exans $1$.
 \exans $-\ov z$.
+\exans $(x_1x_2-y_1y_2)^2+(x_1y_2+x_2y_1)^2$ 或 $(x_1x_2+y_1y_2)^2+(x_1y_2-x_2y_1)^2$.
+\exans $\dfrac{7-4i}5$.
+
+\exans 仅当 $z$ 不是负实数和 $0$ 时它才成立.
 
 \exans $z_1,\dots,z_n$ 中的非零元辐角相等.
 \exans $\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.

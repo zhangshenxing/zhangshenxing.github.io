@@ -92,11 +92,11 @@
 \subsection{收敛半径的计算}
 \begin{frame}{收敛半径的计算}
 	\onslide<+->
-	由正项级数的相应判别法容易得到公式 $R=\dfrac1r$, 其中
+	由正项级数的相应判别法容易得到公式 $\alertm{R=\dfrac1r}$, 其中
 	\begin{enumerate}
-		\item \emph{达朗贝尔公式(比值法)}: \alert{$r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$} (假设存在);
-		\item \emph{柯西公式(根式法)}: $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在);
-		\item \emph{柯西-阿达马公式}: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
+		\item \alert{达朗贝尔公式(比值法)}: $\alertm{r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}}$ (假设存在);
+		\item 柯西公式(根式法): $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在);
+		\item 柯西-阿达马公式: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
 	\end{enumerate}
 	\onslide<+->
 	如果 $r=0$ 或 $+\infty$, 则 $R=+\infty$ 或 $0$.
@@ -116,6 +116,25 @@
 		\onslide<+->{当 $z=2$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac1n$ 发散.}
 
 		\onslide<+->{当 $z=0$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac{(-1)^n}n$ 收敛.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 收敛半径的计算}
+	\onslide<+->
+	\begin{example}
+		求幂级数 $\displaystyle\sum_{n=1}^\infty\frac{z^n}{n(n+1)}$ 的收敛半径, 并讨论收敛圆周上的情形.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac {n(n+1)}{(n+1)(n+2)}=1$ 可知收敛半径为 $1$.
+
+		\onslide<+->{%
+		当 $|z|=1$ 时, $\displaystyle\sum_{n=1}^\infty\left|\frac{z^n}{n(n+1)}\right|=\sum_{n=1}^\infty\frac1{n(n+1)}=1$ 收敛.
+		}\onslide<+->{%
+		因此该幂级数在收敛圆周上处处绝对收敛.
+		}
 	\end{solution}
 
 	\onslide<+->
@@ -139,7 +158,7 @@
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblankframe{$\sqrt2/2$}.
+		幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblankframe[2cm]{$\sqrt2/2$}.
 	\end{exercise}
 	\endgroup
 \end{frame}
@@ -205,9 +224,11 @@
 	\begin{theorem}
 		设幂级数
 		\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R,\]
-		设函数 $\varphi(z)$ 在 $|z|<r$ 上解析且 $|\varphi(z)|<R$, 
-		\onslide<+->{那么当 $|z|<r$ 时,
-		\[f[\varphi(z)]=\sum_{n=0}^\infty a_n[\varphi(z)]^n.\]}
+		设函数 $\varphi(z)$ 在 $D$ 上满足 $|\varphi(z)|<R$, 
+		\onslide<+->{%
+		那么当 $z\in D$ 时,
+		\[f\bigl(\varphi(z)\bigr)\sum_{n=0}^\infty a_n\bigl(\varphi(z)\bigr)^n.\]
+		}
 	\end{theorem}
 \end{frame}
 
@@ -225,17 +246,9 @@
 
 	\onslide<+->
 	也就是说, \alert{在收敛圆内, 幂级数的和函数解析, 且可以逐项求导, 逐项积分}.
-\end{frame}
-
-
-\begin{frame}{幂级数的解析性质}
-	\onslide<+->
-	由于和函数在 $|z|>R$ 上没有定义, 因此我们不能谈和函数在 $|z|=R$ 上的解析性.
 
 	\onslide<+->
-	如果函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
-	\onslide<+->
-	这是因为一旦 $g(z)$ 在收敛圆周上处处解析, 该和函数就可以在一个半径更大的圆域上作泰勒展开.
+	由于和函数在 $|z|>R$ 上没有定义, 因此和函数在 $|z|=R$ 上不可能解析.
 \end{frame}
 
 
@@ -266,7 +279,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{2^{n+1}-1}{2^n-1}=2$ 可知收敛半径为 $\dfrac12$.
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{2^{n+2}-1}{2^{n+1}-1}=2$ 可知收敛半径为 $\dfrac12$.
 		\onslide<+->{当 $|z|<\dfrac12$ 时, $|2z|<1$.}
 		\onslide<+->{从而
 		\begin{align*}
@@ -286,7 +299,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{n+1}n=1$ 可知收敛半径为 $1$.
+		由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{n+2}{n+1}=1$ 可知收敛半径为 $1$.
 	\onslide<+->{当 $|z|<1$ 时,
 		\[\int_0^z\sum_{n=0}^\infty(n+1)z^n\diff z=\sum_{n=0}^\infty z^{n+1}=\frac z{1-z}=-1-\frac1{z-1},\]
 	}\onslide<+->{因此

@@ -55,8 +55,8 @@
 	\begin{align*}
 		f(t)&=\lim_{T\to +\infty}f_T(t)\\
 		&\visible<+->{=\lim_{T\to+\infty} \frac 1T \sum_{n=-\infty}^{+\infty} \left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau}\diff\tau\right] e^{j\omega_n t}}\\
-		&\visible<+->{=\frac1{2\pi}\lim_{\Delta\omega_n\to 0}\sum_{n=-\infty}^{+\infty}\emph{\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau} \diff \tau\right] e^{j\omega_n t}}\Delta\omega_n}\\
-		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\emph{\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff \tau\right]e^{j\omega t}}\diff\omega.}
+		&\visible<+->{=\frac1{2\pi}\lim_{\Delta\omega_n\to 0}\sum_{n=-\infty}^{+\infty}\emphn{\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau} \diff \tau\right] e^{j\omega_n t}}\Delta\omega_n}\\
+		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\emphn{\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff \tau\right]e^{j\omega t}}\diff\omega.}
 	\end{align*}
 \end{frame}
 
@@ -72,7 +72,7 @@
 				\item 在任一有限区间上满足狄利克雷条件.
 			\end{itemize}
 		\onslide<+->{那么
-			\[\alert{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
+			\[\alertm{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
 			F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.}\]
 		}\onslide<+->{对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
 		}
@@ -102,7 +102,7 @@
 				$\displaystyle\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
 				+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}$
 			}\Bigr] \diff\omega}\\
-		&\visible<+->{\alert{=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \cos \omega(t-\tau)\diff\tau\right]\diff\omega.}}
+		&\visible<+->{\alertn{=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \cos \omega(t-\tau)\diff\tau\right]\diff\omega.}}
 	\end{align*}
 	\onslide<+->
 	此即\emph{傅里叶积分公式的三角形式}.
@@ -118,11 +118,11 @@
 	若 $f(t)$ 是奇函数, $f(\tau)\cos\omega\tau$ 是 $\tau$ 的奇函数, $f(\tau)\sin \omega\tau$ 是 $\tau$ 的偶函数.
 	\onslide<+->
 	从而得到\emph{傅里叶正弦积分公式}:
-	\[\alert{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
+	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
 
 	\onslide<+->
 	类似地, 若 $f(t)$ 是偶函数, 有\emph{傅里叶余弦积分公式}:
-	\[\alert{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}\]
+	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}\]
 \end{frame}
 
 
@@ -244,7 +244,7 @@
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
 			\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}
-			\visible<+->{\alert{=\frac1{\beta+j\omega}}.}&\visible<.->{}
+			\visible<+->{\alertn{=\frac1{\beta+j\omega}}.}&\visible<.->{}
 		\end{align*}
 	\end{solution}
 
@@ -272,7 +272,7 @@
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}\\
 			&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
-			\visible<+->{\alert{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}&\visible<.->{}
+			\visible<+->{\alertn{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}
 		\end{align*}
 	\end{solution}
 
@@ -561,7 +561,7 @@
 	\onslide<+->
 	\begin{definition}
 		$f_1(t),f_2(t)$ 的\emph{卷积}是指
-		\[\alert{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
+		\[\alertn{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
 	\end{definition}
 
 	\onslide<+->
