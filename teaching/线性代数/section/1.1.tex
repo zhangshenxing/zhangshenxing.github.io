@@ -2,7 +2,7 @@
 
 
 \subsection{向量和向量空间}
-\begin{frame}{平面向量和立体向量}
+\begin{frame}{平面向量和立体向量\noexer}
 	\onslide<+->
 	我们在高中学习过向量的概念.
 	\onslide<+->
@@ -11,7 +11,7 @@
 	它可以用 $\bfu=(x,y)$ 来表示.
 
 	\onslide<+->
-	记平面上的所有向量为集合 $\BR^2$.
+	由于向量和平面上的点是一一对应的, 因此我们可以用 $\BR^2$ 来表示平面上所有向量形成的集合.
 	\onslide<+->
 	在这个集合中有一个特殊的元素, 叫作\emph{零向量}:
 	\[{\bf0}=(0,0),\]
@@ -27,10 +27,13 @@
 \end{frame}
 
 
-\begin{frame}{平面向量和立体向量的性质}
+\begin{frame}{平面向量和立体向量的性质\noexer}
+	\onslide<+->
+	我们总使用粗小写字母 $\bma,\bmb,\bmg,\bfx,\bfy,\dots$ 表示向量.
+
 	\onslide<+->
 	$\BR^2$ 或 $\BR^3$ 上的零向量、加法和数乘满足:
-	\begin{enumerate}\bf
+	\begin{enumV}\bf
 		\item $\bma+\bmb=\bmb+\bma$;
 		\item $\bma+(\bmb+\bmg)=(\bma+\bmb)+\bmg$;
 		\item ${\bm0}+\bma=\bma$;
@@ -39,7 +42,7 @@
 		\item $(\lambda+\mu)\bma=\lambda\bma+\mu\bma$;
 		\item $\lambda(\bma+\bmb)=\lambda\bma+\lambda\bmb$;
 		\item $1\cdot\bma=\bma$.
-	\end{enumerate}
+	\end{enumV}
 \end{frame}
 
 
@@ -61,11 +64,11 @@
 	\onslide<+->
 	为了书写方便, 也可以把列向量写成
 	\[\bfx=(x_1,x_2,\dots,x_n)^\rmT.\]
-	其中 $\rmT$ 表示\cnen{\emph{转置}}{\smash{Transpose}}, 它是将行列关系对换的一种操作.
+	其中 $\rmT$ 表示\emph{转置}(Transpose), 它是将行列关系对换的一种操作.
 \end{frame}
 
 
-\begin{frame}{标准向量空间}
+\begin{frame}{标准向量空间\noexer}
 	\onslide<+->
 	将全体 $n$ 维列向量记为 $\BR^n$.
 	\onslide<+->
@@ -76,51 +79,40 @@
 		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT,\lambda\in\BR$.
 	\end{enumerate}
 	\onslide<+->
-	而且它们也满足前述的八条性质.
+	而且它们也满足\enumnum{V1}--\enumnum{V8}.
 	\onslide<+->
 	\begin{definition}
-		若集合 $V$ 带有零向量、加法和数乘, 且满足前述八条性质, 则称 $V$ 是一个\emph{线性空间}.
+		若集合 $V$ 带有零向量、加法和实数的数乘, 且满足\enumnum{V1}--\enumnum{V8}, 则称 $V$ 是一个\emph{实线性空间}.
 	\end{definition}
 	\onslide<+->
-	这样, $\BR^n$ 成为了一个线性空间.
+	这样, $\BR^n$ 成为了一个实线性空间.
+\end{frame}
 
+
+\begin{frame}{线性空间\noexer}
 	\onslide<+->
-	若数乘的系数是复数而不是实数, 称线性空间 $V$ 为\emph{复线性空间}, 而前述线性空间为\emph{实线性空间}.
+	\begin{example}
+		\begin{enumerate}
+			\item 平面上经过原点的直线 $V=\{(x,y)\in\BR^2\mid ax+by=0\}$ 是实线性空间.
+			\item $\BR^3$ 中经过原点的平面 $V=\{(x,y,z)\in\BR^3\mid ax+by+cz=0\}$ 是实线性空间.
+			\item 如果 $V$ 是 $\BR^n$ 的子集, 且它和继承自 $\BR^n$ 的零向量、加法和数乘构成线性空间, 则称 $V$ 是\emph{向量空间}.
+			\item 实系数多项式全体 $\BR[x]$ 是实线性空间, 其中的零向量是指零多项式.
+			\item 次数不超过 $n$ 的多项式(含零多项式)全体是实线性空间.
+		\end{enumerate}
+	\end{example}
+	\onslide<+->
+	若数乘的系数是复数而不是实数, 称 $V$ 为\emph{复线性空间}.
 	\onslide<+->
 	我们可以类似地定义复向量, 且 $n$ 维复向量全体形成一个复线性空间 $\BC^n$.
 \end{frame}
 
 
-\begin{frame}{子空间、向量空间\noexer}
-	\onslide<+->
-	若 $W$ 是 $V$ 的一个子集, 且
-	\begin{enumerate}
-		\item ${\bf0}\in W$;
-		\item $\forall\bma,\bmb\in W\implies \bma+\bmb\in W$;
-		\item $\forall\lambda\in\BR,\forall\bma\in W\implies \lambda\bma\in W$,
-	\end{enumerate}
-	\onslide<+->
-	则 $W$ (和继承自 $V$ 的加法和数乘)构成线性空间, 称之为 $V$ 的\emph{子空间}.
-
-	\onslide<+->
-	将线性空间 $\BR^n$ 或 $\BC^n$ 的子空间称为实/复\emph{向量空间}.
-	\onslide<+->
-	\begin{example}
-		\begin{enumerate}
-			\item $\BR^2$ 中经过原点的直线是 $\BR^2$ 的子空间.
-			\item $\BR^3$ 中经过原点的直线和平面都是 $\BR^3$ 的子空间. 
-			\item 仅包含零向量的集合是 $\BR^n$ 或 $\BC^n$ 的一个子空间.
-		\end{enumerate}
-	\end{example}
-\end{frame}
-
-
 \subsection{线性映射}
-\begin{frame}{向量空间之间的映射\noexer}
+\begin{frame}{标准向量空间之间的映射\noexer}
 	\onslide<+->
-	考虑向量空间之间的映射
+	考虑如下映射
 	\begin{align*}
-		f:\BR^n&\lra\BR^m\\
+		\msa:\BR^n&\lra\BR^m\\
 		\begin{pmatrix}
 			x_1\\
 			x_2\\
@@ -135,45 +127,40 @@
 		\end{pmatrix}.
 	\end{align*}
 	\onslide<+->
-	不难验证这个映射满足
-	\begin{enumerate}
-		\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in \BR^n$;
-		\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in \BR^n$.
-	\end{enumerate}
+	不难验证, 对任意 $\bfu,\bfv\in\BR^n,\lambda\in\BR$,
+	\begin{enumV}[L]
+		\item $\msa(\bfu+\bfv)=\msa(\bfu)+\msa(\bfv)$;
+		\item $\msa(\lambda\bfu)=\lambda \msa(\bfu)$.
+	\end{enumV}
 \end{frame}
 
 
 \begin{frame}{线性变换\noexer}
 	\onslide<+->
 	\begin{definition}
-		设 $V,W$ 是实向量空间.
-		若映射 $f:V\to W$ 满足
-		\begin{enumerate}[<*>]
-			\item $f(\bma+\bmb)=f(\bma)+f(\bmb),\forall \bma,\bmb\in V$;
-			\item $f(\lambda \bma)=\lambda f(\bma),\forall \lambda\in\BR,\forall\bma\in V$,
-		\end{enumerate}
-		称 $f$ 是一个\emph{线性变换}或\emph{线性映射}.
+		若映射 $\msa:\BR^n\ra\BR^m$ 满足\enumnum{L1},\enumnum{L2}, 称 $\msa$ 是一个\emph{线性变换}或\emph{线性映射}.
 	\end{definition}
 	\onslide<+->
-	是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为前述形式呢?
+	反过来, 是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为前述形式呢?
+
 	\onslide<+->
-	设 $f:\BR^n\to\BR^m$ 是一个线性变换,
+	以线性映射 $\msa:\BR^3\to\BR^4$ 为例,
 	\onslide<+->
 	记
-	\[f\begin{pmatrix}
-		1\\0\\\vdots\\0
+	\[\msa\begin{pmatrix}
+		1\\0\\0
 	\end{pmatrix}=\begin{pmatrix}
-		a_{11}\\a_{21}\\\vdots\\a_{m1}
-	\end{pmatrix},\quad
-	f\begin{pmatrix}
-		0\\1\\\vdots\\0
+		a_{11}\\a_{21}\\a_{31}\\a_{41}
+	\end{pmatrix},\qquad
+	\msa\begin{pmatrix}
+		0\\1\\0
 	\end{pmatrix}=\begin{pmatrix}
-		a_{12}\\a_{22}\\\vdots\\a_{m2}
-	\end{pmatrix},\cdots,
-	f\begin{pmatrix}
-		0\\0\\\vdots\\1
+		a_{12}\\a_{22}\\a_{32}\\a_{42}
+	\end{pmatrix},\qquad
+	\msa\begin{pmatrix}
+		0\\0\\1
 	\end{pmatrix}=\begin{pmatrix}
-		a_{1n}\\a_{2n}\\\vdots\\a_{mn}
+		a_{13}\\a_{23}\\a_{33}\\a_{43}
 	\end{pmatrix}.\]
 \end{frame}
 
@@ -182,45 +169,49 @@
 	\onslide<+->
 	根据线性变换的性质,
 	\begin{align*}
-		&f\left(\begin{pmatrix}
-			x_1\\x_2\\\vdots\\x_n
+		\msa\begin{pmatrix}
+			x_1\\x_2\\x_3
+		\end{pmatrix}
+		&=\msa\left(x_1\begin{pmatrix}
+			1\\0\\0
+		\end{pmatrix}+x_2\begin{pmatrix}
+			0\\1\\0
+		\end{pmatrix}+x_3\begin{pmatrix}
+			0\\0\\1
 		\end{pmatrix}\right)
-		=f\left(x_1\begin{pmatrix}
-			1\\0\\\vdots\\0
-		\end{pmatrix}+\dots+x_n\begin{pmatrix}
-			0\\0\\\vdots\\1
-		\end{pmatrix}\right)
-		\visible<+->{=x_1f\begin{pmatrix}
-			1\\0\\\vdots\\0
-		\end{pmatrix}+\dots+x_nf\begin{pmatrix}
-			0\\0\\\vdots\\1
+		\visible<+->{=x_1\msa\begin{pmatrix}
+			1\\0\\0
+		\end{pmatrix}+x_2\msa\begin{pmatrix}
+			0\\1\\0
+		\end{pmatrix}+x_3\msa\begin{pmatrix}
+			0\\0\\1
 		\end{pmatrix}}\\
 		\visible<+->{=}&\visible<.->{x_1\begin{pmatrix}
-			a_{11}\\a_{21}\\\vdots\\a_{m1}
+			a_{11}\\a_{21}\\a_{31}\\a_{41}
 		\end{pmatrix}+x_2\begin{pmatrix}
-			a_{12}\\a_{22}\\\vdots\\a_{m2}
-		\end{pmatrix}+\dots+x_n\begin{pmatrix}
-			a_{1n}\\a_{2n}\\\vdots\\a_{mn}
+			a_{12}\\a_{22}\\a_{32}\\a_{42}
+		\end{pmatrix}+x_3\begin{pmatrix}
+			a_{13}\\a_{23}\\a_{33}\\a_{43}
 		\end{pmatrix}}
 		\visible<+->{=\begin{pmatrix}
-			a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n\\
-			a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n\\
-			\vvdots\\
-			a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n
+			a_{11}x_1+a_{12}x_2+a_{13}x_3\\
+			a_{21}x_1+a_{22}x_2+a_{23}x_3\\
+			a_{31}x_1+a_{32}x_2+a_{33}x_3\\
+			a_{41}x_1+a_{42}x_2+a_{43}x_3
 		\end{pmatrix}}.
 	\end{align*}
+	因此每个线性变换 $\BR^4\to\BR^3$ 都具有这种形式,
 	\onslide<+->
-	所以每个 $\BR^n\to\BR^m$ 的线性变换都具有这种形式.
-
+	它完全由 $4\times 3$ 个系数
+	\[(a_{ij})_{1\le i\le 4,1\le j\le 3}\]
+	所确定.
 	\onslide<+->
-	将 $\BR$ 换成 $\BC$ 我们亦有类似结论.
+	由此引出矩阵的定义.
 \end{frame}
 
 
 \subsection{矩阵}
 \begin{frame}{矩阵的定义}
-	\onslide<+->
-	现在给出矩阵的定义:
 	\onslide<+->
 	\begin{definition}
 		将 $mn$ 个数按照每行 $n$ 个元素, 每列 $m$ 个元素, 排成的数表称为 \emph{$m$ 行 $n$ 列矩阵}, 或简称为 \emph{$m\times n$ 矩阵}:
@@ -229,27 +220,57 @@
 			a_{21}&a_{22}&\cdots &a_{2n}\\
 			\vdots&\vdots&\ddots&\vdots\\
 			a_{m1}&a_{m2}&\cdots &a_{mn}
-		\end{pmatrix},\]
+		\end{pmatrix}_{m\times n},\]
 		其中 $a_{ij}$ 表示 $\bfA$ 的第 $i$ 行 $j$ 列元素, 并记 $\bfA=(a_{ij})_{m\times n}$.
 	\end{definition}
 	\onslide<+->
-	记 $M_{m\times n}$ 表示 $m$ 行 $n$ 列的\cnen{矩阵}{Matrix}全体.
+	我们总使用粗大写字母 $\bfA,\bfB,\bmL,\dots$ 表示矩阵.
+	\onslide<+->
+	不强调矩阵的阶时, 也可省略右下角 $m\times n$.
+
+	\onslide<+->
+	矩阵的圆括号也可用方括号来代替.
+\end{frame}
+
+
+\begin{frame}{例: 矩阵}
+	\onslide<+->
+	\begin{example}
+		\begin{enumerate}
+			\item $\bfA=\begin{pmatrix}
+				0&-1&-2&-3\\
+				1&0&-1&-2\\
+				2&1&0&-1\\
+				3&2&1&0
+			\end{pmatrix}=(i-j)_{4\times 4}$.
+			\item $\bfA=\begin{pmatrix}
+				1&1&\cdots&1\\
+				1&2&\cdots&n\\
+				\vdots&\vdots&\ddots&\vdots\\
+				1&2^{n-1}&3^{n-1}&n^{n-1}
+			\end{pmatrix}_n=(j^{i-1})_{n}$.
+			\onslide<+->{$m=n$ 时可用 $n$ 来表示右下角的 $n\times n$.}
+		\end{enumerate}
+	\end{example}
 \end{frame}
 
 
 \begin{frame}{线性映射与矩阵一一对应\noexer}
 	\onslide<+->
-	若矩阵元素都是实数或复数, 称相应的矩阵为\emph{实矩阵}或\emph{复矩阵}, 并分别用 $M_{m\times n}(\BR),M_{m\times n}(\BC)$ 表示它们全体.
+	\begin{itemize}
+		\item 令 $M_{m\times n}$ 表示 $m$ 行 $n$ 列的矩阵(Matrix)全体.
+		\item 若 $m=n$, 称相应矩阵为 \emph{$n$ 阶方阵}, 并用 $M_n$ 来表示 $n$ 阶方阵全体.
+		\item 若要强调矩阵元素都是实数, 我们称相应的矩阵为\emph{实矩阵}, 并用 $M_{m\times n}(\BR), M_n(\BR)$ 来表示相应集合.
+		\item 全体线性变换 $\msa:\BR^n\to\BR^m$ 和 $\bfA\in M_{m\times n}(\BR)$ 是一一对应的.
+	\end{itemize}
+	\onslide<+->
+	类似可定义\emph{复矩阵}, $M_{m\times n}(\BC)$, $M_n(\BC)$, 且全体线性变换 $\BC^n\to\BC^m$ 和 $M_{m\times n}(\BC)$ 一一对应.
+	\onslide<+->
+	之后此种类比不再赘述.
 
-	\onslide<+->
-	于是 $\BR^n\to\BR^m$ 的线性变换全体就和 $M_{m\times n}(\BR)$ 建立了一一对应.
-	\onslide<+->
-	类似地, $\BC^n\to\BC^m$ 的线性变换全体和 $M_{m\times n}(\BC)$ 也是一一对应的, 之后此种类比不再赘述.
-
-	\onslide<+->
-	若 $m=n$, 称相应矩阵为 \emph{$n$ 阶方阵}, 并记 $n$ 阶 (实、复)方阵全体为 $M_n,M_n(\BR),M_n(\BC)$.
-	\onslide<+->
-	方阵的对角线上的元素 $a_{11},\dots,a_{nn}$ 称为方阵的\emph{对角元}.
+	\begin{itemize}
+		\item 称方阵的对角线上的元素 $a_{11},\dots,a_{nn}$ 为方阵的\emph{对角元}.
+	\end{itemize}
 \end{frame}
 
 
@@ -274,10 +295,10 @@
 		&&\ddots&\\
 		&&&\lambda_n\\
 	\end{pmatrix}\in M_n\]
-	分别为\emph{上三角阵}, \emph{下三角阵}和\emph{\cnen{对角}{diagonal}阵} (空白部分表示元素都是零).
+	分别为\emph{上三角阵}, \emph{下三角阵}和\emph{对角阵} (空白部分表示元素都是零).
 	\onslide<+->
-	为书写方便, 对角阵也可记作
-	\[\alert{\diag(\lambda_1,\lambda_2,\dots,\lambda_n)}.\]
+	为书写方便, 对角阵也可记作 (对角: diagonal)
+	\[\alertn{\diag(\lambda_1,\lambda_2,\dots,\lambda_n)}.\]
 	\onslide<+->
 	称方阵
 	\[\bfE=\bfE_n=\diag(1,1,\dots,1)\in M_n\]
@@ -321,7 +342,7 @@
 		y_2&{}={}&\rho\sin(\alpha+\theta)&{}={}&\rho(\cos\alpha\sin\theta+\sin\alpha\cos\theta)&{}={}&(\sin\theta)x_1&{}+{}&(\cos\theta)x_2.
 	}\]
 	\onslide<+->
-	因此上述\emph{旋转变换}对应的矩阵为
+	因此上述\emph{旋转变换} $\msr_\theta$ 对应的矩阵为
 	\[\bfR_\theta=\begin{pmatrix}
 		\cos\theta&-\sin\theta\\
 		\sin\theta&\cos\theta
@@ -333,7 +354,7 @@
 	\begin{itemize}
 		\item $\bfA=\begin{pmatrix}
 			\lambda_1&&\\&\ddots&\\&&\lambda_n
-		\end{pmatrix}$ 表示各个分量分别放大 $\lambda_i$ 倍的线性变换.
+		\end{pmatrix}$ 表示各个分量分别放大为 $\lambda_i$ 倍的线性变换.
 		\item $\bfA=\begin{pmatrix}
 			0&1\\1&0
 		\end{pmatrix}$ 表示平面中沿着直线 $x_1=x_2$ 翻转.

@@ -1,237 +1,763 @@
-\section{秩与极大线性无关组}
+\section{矩阵的秩}
+
+\subsection{矩阵秩的定义}
 
 
-\subsection{秩}
-
-\begin{frame}{基}
+\begin{frame}{行秩、列秩与秩}
 	\onslide<+->
-	我们知道, $\BR^n$ 中任一向量可以\alert{唯一}表为 $\bfe_1,\dots,\bfe_n$ 的线性组合.
+	我们知道, 每个矩阵 $\bfA$ 都等价于某个标准型
+	$\begin{pmatrix}
+		\bfE_r&\bfO\\
+		\bfO&\bfO
+	\end{pmatrix}$.
 	\onslide<+->
-	由此引出基的概念:
-	\begin{definition}
-		若 $\bma_1,\dots,\bma_m\in V$ 满足: 对任意 $\bfv\in V$, 存在唯一的一组数 $\lambda_1,\dots,\lambda_m$ 使得
-		\[\bfv=\lambda_1\bma_1+\cdots+\lambda_m \bma_m,\]
-		则称 $\bma_1,\dots,\bma_m$ 是 $V$ 的一组\emph{基}.
-	\end{definition}
+	称 $r$ 为 $\bfA$ 的\emph{秩}, 记作 \alert{$R(\bfA)$}.
+
+	\onslide<+->
+	称 $\bfA$ 的行向量组的秩为\emph{行秩}, 列向量组的秩为\emph{列秩}.
+	\onslide<+->
+	\begin{second}{行秩等于列秩等于秩}
+		$\bfA$ 的行秩和列秩均等于秩 $R(\bfA)$.
+	\end{second}
+	\onslide<+->
+	由此可知矩阵的秩是唯一确定的.
+
+	\onslide<+->
+	对于行阶梯形矩阵, 再实施初等变换使其变为行最简形矩阵或标准型矩阵, 并不会改变它的非零行的个数.
+	\onslide<+->
+	换言之, \alert{行阶梯形矩阵的秩就是非零行的个数}.
+
+	\onslide<+->
+	设 $\bfA$ 通过初等行变换变为行阶梯形矩阵 $\bfB$, 则二者秩相等, 二者的行向量组等价, 从而行秩也相等.
+	\onslide<+->
+	对于 $\bfB$, 它的行秩就是非零行的个数, 也就是 $R(\bfB)$.
+	\onslide<+->
+	因此 $\bfA$ 的行秩等于秩.
+	\onslide<+->
+	不难知道 $R(\bfA)=R(\bfA^\rmT)$,
+	从而 $\bfA$ 的列秩$=\bfA^\rmT$ 的行秩$=R(\bfA^\rmT)=R(\bfA)$.
 \end{frame}
 
 
-\begin{frame}{基的等价刻画}
+\begin{frame}{行阶梯形矩阵的秩}
 	\onslide<+->
-	\begin{proposition}
-		$\bma_1,\dots,\bma_m$ 是 $V$ 的基向量组$\iff$该向量组生成 $V$ 且线性无关.
-	\end{proposition}
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			2&-1&0&3&-2\\
+			0&3&1&-2&5\\
+			0&0&0&4&-3\\
+			0&0&0&0&0
+		\end{pmatrix},\bfB=\begin{pmatrix}
+			1&2&3\\
+			2&3&-5\\
+			4&7&1
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$\bfA$ 是行阶梯形矩阵, 因此 $R(\bfA)=3$.
+		\onslide<+->{\[\bfB\wsim{r_2-2r_1}{r_4-4r_1}\begin{pmatrix}
+			1&2&3\\
+			0&-1&-11\\
+			0&-1&-11
+		\end{pmatrix}\wsim{r_3-r_2}{-r_2}\begin{pmatrix}
+			1&2&3\\
+			0&1&11\\
+			0&0&0
+		\end{pmatrix}\onslide<+->{\implies R(\bfB)=2.}\]}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			1&1&a\\
+			-1&a-1&1-a\\
+			1&1&a^2\\
+			1&1&2a+1
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\bfA\wsim{\substack{\nsmath{r_2+r_1}\\\nsmath{r_3-r_1}}}{r_4-r_1}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&a^2-a\\
+			0&0&a+1
+		\end{pmatrix}\onslide<+->{\wsim{r_3-ar_4}{-\frac12r_3}\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&a\\
+			0&0&a+1
+		\end{pmatrix}}\onslide<+->{\sim\begin{pmatrix}
+			1&1&a\\
+			0&a&1\\
+			0&0&1\\
+			0&0&0
+		\end{pmatrix}}\]
+		\onslide<+->{因此 $a\neq 0$ 时, $R(\bfA)=3$; $a=0$ 时, $R(\bfA)=2$.}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{exercise}
+		求矩阵 $\bfA=\begin{pmatrix}
+			1&1&-2&3\\
+			2&1&-6&4\\
+			3&2&m&7
+		\end{pmatrix}$ 的秩.
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		$m\neq -8$ 时, $R(\bfA)=3$; $m=-8$ 时, $R(\bfA)=2$.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	\begin{example}
+		求矩阵 $\bfA=\begin{pmatrix}
+			a&1&1&1\\
+			1&a&1&1\\
+			1&1&a&1\\
+			1&1&1&a
+		\end{pmatrix}$ 的秩.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\bfA\!\wsim{\substack{\nsmath{r_1\swap r_4}\\\nsmath{r_2-r_1}}}{\substack{\nsmath{r_3-r_1}\\\nsmath{r_4-ar_1}}}\!\begin{pmatrix}
+			1&1&1&a\\
+			0&a-1&0&1-a\\
+			0&0&a-1&1-a\\
+			0&1-a&1-a&1-a^2
+		\end{pmatrix}\!\!\onslide<+->{\wsim{r_4+r_2}{r_4+r_3}\!\!\begin{pmatrix}
+			1&1&1&a\\
+			0&a-1&0&1-a\\
+			0&0&a-1&1-a\\
+			0&0&0&-(a+3)(a-1)
+		\end{pmatrix}}\]
+		\onslide<+->{%
+			因此 $a\neq 1,-3$ 时, $R(\bfA)=4$;
+		}\onslide<+->{%
+			$a=-3$ 时, $R(\bfA)=3$;
+		}\onslide<+->{%
+			$a=1$ 时, $R(\bfA)=1$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{矩阵秩与子式}
+	\onslide<+->
+	矩阵秩有另一种刻画方式.
+	\onslide<+->
+	矩阵 $\bfA$ 任取 $k$ 行 $k$ 列交叉得到的 $k^2$ 个元素(不改变位置次序)形成的 $k$ 阶方阵的行列式,
+	\onslide<+->
+	称为 $\bfA$ 的 \emph{$k$ 阶子式}.
+	\onslide<+->
+	例如 $n$ 阶方阵的余子式是 $n-1$ 阶子式.
+
+	\onslide<+->
+	\begin{theorem}
+		设 $R(\bfA)=r$, 则存在非零的 $r$ 阶子式, 但所有的 $r+1$ 阶子式都是零.
+	\end{theorem}
+	\onslide<+->
+	根据行列式的拉普拉斯展开, 若 $\bfA$ 的 $k$ 阶子式均为零, 则 $k+1$ 阶子式也都是零.
+	\onslide<+->
+	因此 $\bfA$ 的任意 $s>r$ 阶子式都是零.
+	\onslide<+->
+	\begin{corollary}
+		\begin{enumerate}
+			\item $R(\bfA)\ge r\iff\bfA$ 存在非零 $r$ 阶子式.
+			\item $R(\bfA)\le r\iff\bfA$ 所有 $r+1$ 阶子式均为零.
+			\item $R(\bfA)=r\implies \bfA$ 存在 $1,2,\dots,r$ 阶非零子式. 
+		\end{enumerate}
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
 	\onslide<+->
 	\begin{proof*}
-		显然基向量组生成 $V$.
+		设 $\bfB=\bfP\bfA$, 其中 $\bfP$ 是初等矩阵.
+		\begin{enumerate}
+			\item 若 $\bfP=\bfE(i,j)$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式, 最多相差 $-1$.
+			\item 若 $\bfP=\bfE(i(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式或 $a$ 倍.
+			\item 若 $\bfP=\bfE(i,j(a))$, 则 $\bfB$ 的 $k$ 阶子式总等于 $\bfA$ 的某个 $k$ 阶子式.
+		\end{enumerate}
 		\onslide<+->{%
-		由于零向量只有唯一的线性表示方式, 因此基总是线性无关的一组向量.
+			因此若 $\bfA$ 的 $k$ 阶子式都是零, 则 $\bfB$ 的 $k$ 阶子式也都是零.
+		}
+
+		\onslide<+->{
+			由于 $\bfP^{-1}$ 也是初等矩阵, 因此反过来也成立.
+		}\onslide<+->{%
+			对于 $\bfB=\bfA\bfP$ 情形同理.
+		}\onslide<+->{%
+			因此, 若 $\bfA\sim\bfB$, 则 $\bfA$ 的 $k$ 阶子式都是零 $\iff$ $\bfB$ 的 $k$ 阶子式都是零.
 		}
 
 		\onslide<+->{%
-		反过来, 假设向量组 $\bma_1,\dots,\bma_m$ 线性无关且生成 $V$.
+			对于标准型矩阵, 该定理显然成立.
 		}\onslide<+->{%
-			若 $\bfv\in V$ 有两种线性表达形式, 二式相减得到不全为零的数 $\lambda_1,\dots,\lambda_m$ 使得
-			\[\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}.\]
-		}\onslide<+->{%
-			这与 $\bma_1,\dots,\bma_s$ 线性无关矛盾.
-		}\onslide<+->{%
-			因此 $\forall\bfv\in V$ 只有唯一的一种线性表达形式.\qedhere
+			因此该定理对任意矩阵都成立.\qedhere
 		}
 	\end{proof*}
 \end{frame}
 
 
-\begin{frame}{维数}
+\subsection{矩阵秩的性质}
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		设 $\bfA\in M_{m\times n}$, 则 $0\le R(\bfA)\le \min(m,n)$.
+	\end{proposition}
 	\onslide<+->
 	\begin{definition}
-		设 $V\subseteq \BR^n$ 是一个线性子空间.
-		若存在(线性)双射 $f:\BR^r\to V$ 满足
-		\begin{enumerate}[<*>]
-			\item $f(\bfu+\bfv)=f(\bfu)+f(\bfv),\forall \bfu,\bfv\in\BR^r$;
-			\item $f(\lambda\bfv)=\lambda f(\bfv),\forall \lambda\in\BR,\bfv\in\BR^r$,
-		\end{enumerate}
-		则称 $V$ 的\emph{维数}为 $r$, 记为 $r=\dim V$.
-	\end{definition}
-	\onslide<+->
-	在逆矩阵一节我们已经知道 $m\neq n$ 时, $\BR^m$ 和 $\BR^n$ 之间没有线性双射.
-	\onslide<+->
-	因此子空间维数总是唯一的.
-
-	\onslide<+->
-	设 $\bma_1,\dots,\bma_m$ 是 $V$ 的一组基.
-	\onslide<+->
-	定义
-	\begin{align*}
-		f:\BR^m&\lra V\\
-		(a_1,\dots,a_m)&\lra a_1\bma_1+\cdots+a_m\bma_m
-	\end{align*}
-	\onslide<+->
-	则该映射是线性双射.
-	\onslide<+->
-	因此子空间的\alert{维数等于基的大小}.
-\end{frame}
-
-
-\begin{frame}{秩}
-	\onslide<+->
-	\begin{definition}
-		设向量组 $\bma_1,\dots,\bma_m$ 生成空间 $V$.
-		称 $V$ 的维数为该向量组的\emph{\cnen{秩}{Rank}}, 记作 $R(\bma_1,\dots,\bma_m)$.
-	\end{definition}
-	\onslide<+->
-	由于该向量组线性无关当且仅当它们构成一组基,
-	\onslide<+->
-	因此:
-	\begin{theorem}
 		\begin{enumerate}
-			\item 向量组 $\bma_1,\dots,\bma_m$ 线性无关$\iff m=R(\bma_1,\dots,\bma_m)$.
-			\item 向量组 $\bma_1,\dots,\bma_m$ 线性相关$\iff m>R(\bma_1,\dots,\bma_m)$.
+			\item 若 $R(\bfA)=m$, 称 $\bfA$ \emph{行满秩};
+			\item 若 $R(\bfA)=n$, 称 $\bfA$ \emph{列满秩};
+			\item 若 $R(\bfA)=m=n$, 称 $\bfA$ \emph{满秩}.
 		\end{enumerate}
-	\end{theorem}
+	\end{definition}
 \end{frame}
 
 
-\begin{frame}{子空间维数关系}
+\begin{frame}{矩阵秩的性质}
 	\onslide<+->
-	设 $W\subseteq V$ 是两个子空间, $S=\{\bma_1,\dots,\bma_s\}$ 是 $W$ 的一组基, $T=\{\bmb_1,\dots,\bmb_t\}$ 是 $V$ 的一组基.
-	\onslide<+->
-	则 $S$ 可由 $T$ 线性表示.
-	\onslide<+->
-	由于 $S$ 线性无关, 因此 $s=\dim W\le t=\dim V$.
-	\onslide<+->
-	于是:
-	\begin{theorem}
-		设向量组 $S$ 可由向量组 $T$ 线性表示, 则 $R(S)\le R(T)$.
-	\end{theorem}
-\end{frame}
-
-
-\begin{frame}{例: 向量组的秩}
-	\begin{exercise}
-		\begin{enumerate}[<*>]
-			\item 若任一 $3$ 维向量都可由向量组
-			\[\bma_1=(a,3,2)^\rmT,\quad
-			\bma_2=(2,-1,3)^\rmT,\quad
-			\bma_3=(3,2,1)^\rmT,\]
-			线性表示, 则 $a\neq$\fillblankframe{\visible<2->{$5$}}.
-			\item 判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\visible<3->{\alert{\text{\huge$\times$}}}
+	\begin{proposition}
+		\begin{enumerate}
+			\item $R(\bfA)=0\iff \bfA=\bfO$;
+			\item $n$ 阶方阵 $\bfA$ 可逆 $\iff R(\bfA)=n$;
+			\item $R(k\bfA)=R(\bfA)=R(\bfA^\rmT), k\neq 0$;
+			\item $\bfA\sim\bfB\iff R(\bfA)=R(\bfB)$;
+			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$;
+			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$;
+			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$;
+			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
-	\end{exercise}
+	\end{proposition}
 \end{frame}
 
 
-\begin{frame}{例: 向量组的秩}
+\begin{frame}{矩阵秩的性质}
 	\onslide<+->
-	\begin{example}
-		若 $S_1=\{\bma_1,\bma_2,\bma_3\}$, $S_2=\{\bma_1,\bma_2,\bma_3,\bma_4\}$, $S_3=\{\bma_1,\bma_2,\bma_3,\bma_4,\bma_5\}$ 满足 $R(S_1)=R(S_2)=3, R(S_3)=4$.
-		证明向量组 $S=\{\bma_1,\bma_2,\bma_3,\bma_5-\bma_4\}$ 线性无关.
-	\end{example}
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{4}
+			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$.
+		\end{enumerate}
+	\end{proposition}
 	\onslide<+->
 	\begin{proof}
-		由 $R(S_1)=3$ 可知 $S_1$ 线性无关.
+		$\bfA\bfB$ 的列向量为 $\bfA$ 列向量组的线性组合, 从而 $\bfA\bfB$ 的列秩 $\le \bfA$ 的列秩, 即 $R(\bfA\bfB)\le R(\bfA)$.
 		\onslide<+->{%
-			由 $R(S_2)=3$ 可知 $S_2$ 线性相关.
+			于是
+			\[R(\bfA\bfB)=R(\bfB^\rmT\bfA^\rmT)\le R(\bfB^\rmT)=R(\bfB).\qedhere\]
+		}
+		\vspace{-\baselineskip}
+	\end{proof}
+	\onslide<+->
+	若 $\bfB$ 行满秩, 则 $\bfB$ 有 $R(\bfB)$ 阶子式非零, 它对应的方阵右乘 $\bfA$ 得到的列向量组和 $\bfA$ 列向量组等价, 从而 $R(\bfA\bfB)=R(\bfA)$;
+	\onslide<+->
+	若 $\bfB$ 列满秩, 则 $R(\bfB\bfA)=R(\bfA)$;
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{5}
+			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		设 $\bfA=\bfP'\begin{pmatrix}
+			\bfE_r&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ,\bfB=\bfP\begin{pmatrix}
+			\bfE_s&\bfO\\\bfO&\bfO
+		\end{pmatrix}\bfQ'$, 其中 $\bfP,\bfP',\bfQ,\bfQ'$ 均可逆.
+		\onslide<+->{%
+			则
+			\[\bfA\bfB=\bfO\implies\begin{pmatrix}
+				\bfE_r&\bfO\\\bfO&\bfO
+			\end{pmatrix}\bfQ\bfP\begin{pmatrix}
+				\bfE_s&\bfO\\\bfO&\bfO
+			\end{pmatrix}=\bfO.\]
 		}\onslide<+->{%
-			从而 $\bma_4$ 可由 $S_1$ 线性表示.
+			设 $\bfQ\bfP=\begin{pmatrix}
+			\bfC_1&\bfC_2\\\bfC_3&\bfC_4
+		\end{pmatrix}$
+		其中 $\bfC_1$ 为 $(n-s)\times s$.
 		}\onslide<+->{%
-			于是 $S_3$ 可由 $S$ 线性表示.
+		由于 $\bfQ\bfP$ 的前 $r$ 行 $s$ 列均为零,
 		}\onslide<+->{%
-			显然 $S$ 可由 $S_3$ 线性表示, 因此二者等价, $R(S)=R(S_3)=4$.\qedhere
+		因此若 $r+s>n$, 则 $\bfC_1=\bfO$ 且 $\bfC_3$ 的第一行为零, $|\bfQ\bfP|=\pm|\bfC_2|\cdot|\bfC_3|=0$, 矛盾!}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{6}
+			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{proof}
+		由于添加零行或零列不改变秩, 因此不妨设 $\bfA,\bfB$ 都是方阵.
+		\onslide<+->{%
+		由于\[\bfA+\bfB=(\bfE,\bfE)\begin{pmatrix}
+			\bfA&\\&\bfB
+		\end{pmatrix}\begin{pmatrix}
+			\bfE\\\bfE
+		\end{pmatrix},\]
+		}\onslide<+->{%
+			因此 $R(\bfA+\bfB)\le R\begin{pmatrix}
+				\bfA&\\&\bfB
+			\end{pmatrix}=R(\bfA)+R(\bfB)$.
 		}
 	\end{proof}
 \end{frame}
 
 
-\subsection{极大线性无关组}
-\begin{frame}{极大线性无关组的定义}
+\begin{frame}{矩阵秩的性质}
 	\onslide<+->
-	\begin{definition}
-		设 $S$ 为一个向量组.
-		若 $S$ 的部分组 $S_0=\{\bma_1,\dots,\bma_m\}$ 满足
-		\begin{enumerate}[<*>]
-			\item $S_0$ 线性无关;
-			\item $S_0$ 添加 $S$ 中的若干向量得到的向量组均线性相关.
+	\begin{proposition}
+		\begin{enumerate}
+			\setcounter{enumi}{7}
+			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
 		\end{enumerate}
-		则称 $S_0$ 是 $S$ 的一个\emph{极大线性无关组}.
-	\end{definition}
+	\end{proposition}
 	\onslide<+->
-	根据上一节相关结论可知, $S$ 中所有向量均可由 $S_0$ 线性表示.
-	\onslide<+->
-	换言之, $S_0$ 和 $S$ 等价, 它们生成相同的子空间 $V$, $m=R(S)$, $S_0$ 是 $V$ 的一组基.
+	\begin{proof}
+		不妨设 $\bfA,\bfB$ 是方阵,
+		\onslide<+->{%
+			则 \[\bfA=(\bfA,\bfB)\begin{pmatrix}
+				\bfE\\\bfO
+			\end{pmatrix},\quad(\bfA,\bfB)=(\bfE,\bfE)\begin{pmatrix}
+				\bfA&\\&\bfB
+			\end{pmatrix}.\]
+		}\onslide<+->{%
+		因此 $R(\bfA)\le R(\bfA,\bfB)\le R\begin{pmatrix}
+			\bfA&\\&\bfB
+		\end{pmatrix}=R(\bfA)+R(\bfB)$.
+		}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{极大线性无关组的定义}
+\begin{frame}{矩阵秩性质的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $R(\bfA)=2,\bfB=\begin{pmatrix}
+				1&0&2\\
+				0&2&0\\
+				-1&0&3
+			\end{pmatrix}$, 则 $R(\bfA\bfB)=$\fillblankframe{$2$}.
+			\item 若 $\bfA$ 是 $n$ 阶方阵且 $R(\bfA\bfB)<R(\bfB)$, 则 $|\bfA|=$\fillblankframe{$0$}.
+			\item 若 $\bfA=\begin{pmatrix}
+				1&0&2\\
+				0&1&1\\
+				2&0&5
+			\end{pmatrix},\bfB=\begin{pmatrix}
+				3&4&1\\
+				1&2&1\\
+				4&6&t
+			\end{pmatrix},\bfA\bfX=\bfB$ 且 $R(\bfX)=2$, 则 $t=$\fillblankframe{$2$}.
+			\item 若 $\bfA=\begin{pmatrix}
+				t&2&3\\
+				2&1&-1\\
+				0&0&5
+			\end{pmatrix}$ 且存在非零矩阵 $\bfB$ 使得 $\bfA\bfB=\bfO$, 则 $t=$\fillblankframe{$4$}.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{example}
+		证明: 若 $n$ 阶方阵 $\bfA$ 满足 $\bfA^2=\bfA$, 则 $R(\bfA)+R(\bfA-\bfE)=n$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		由于 $\bfA(\bfA-\bfE)=\bfA^2-\bfA=\bfO$, 因此
+		\[R(\bfA)+R(\bfA-\bfE)\le n.\]
+		\onslide<+->{%
+			由于 $\bfA+(\bfE-\bfA)=\bfE$, 因此
+			\[n=R(\bfE)\le R(\bfA)+R(\bfE-\bfA).\]
+		}\onslide<+->{%
+			故 $R(\bfA)+R(\bfA-\bfE)=n$.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{second}{伴随矩阵的秩}
+		设 $\bfA$ 是 $n$ 阶方阵, 则
+		\[R(\bfA^*)=\begin{cases}
+			n,&R(\bfA)=n;\\
+			1,&R(\bfA)=n-1;\\
+			0,&R(\bfA)\le n-2.
+		\end{cases}\]
+	\end{second}
+	\onslide<+->
+	\begin{proof}
+		\begin{enumerate}
+			\item 若 $R(\bfA)=n$, $\bfA$ 可逆, 从而 $\bfA^*$ 可逆, $R(\bfA^*)=n$.
+			\item 若 $R(\bfA)=n-1$, 由 $\bfA\bfA^*=|\bfA|\bfE=\bfO$ 可知 $R(\bfA^*)\le 1$.
+			\onslide<+->{由于 $R(\bfA)=n-1$, $\bfA$ 存在非零的 $n-1$ 子式, 从而 $\bfA^*\neq\bfO$.
+			}\onslide<+->{故 $R(\bfA^*)=1$.}
+			\item 若 $R(\bfA)\le n-2$, 则 $\bfA$ 的 $n-1$ 子式均为零, 从而 $\bfA^*=\bfO$.\qedhere
+		\end{enumerate}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设 $\bma=(1,0,-1,2)^\rmT,\bmb=(0,1,0,2)^\rmT$, 则 $R(\bma\bmb^\rmT)=$\fillblankframe{$1$}.
+			\item 若 $\bfA=\begin{pmatrix}
+				a&b&b\\
+				b&a&b\\
+				b&b&a
+			\end{pmatrix}$ 且 $R(\bfA^*)=1$, 则\fillbraceframe{B}.
+			\begin{taskschoice}(2)
+				() $a\neq b,a+2b\neq 0$
+				() $a\neq b,a+2b=0$
+				() $a=b,a\neq 0$
+				() $a=b=0$
+			\end{taskschoice}
+			\item 设 $\bfA,\bfB$ 均为 $n$ 阶非零矩阵, 且 $\bfA\bfB=\bfO$, 则 $R(\bfA)$ 与 $R(\bfB)$\fillbraceframe{B}.
+			\begin{taskschoice}(2)
+				() 必有一个等于 $0$
+				() 都小于 $n$
+				() 都等于 $n$
+				() 一个小于 $n$, 一个等于 $n$
+			\end{taskschoice}
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}\small
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\setcounter{enumi}{3}
+			\item 设 $\bfP$ 为 $3$ 阶非零矩阵, $\bfQ=\begin{pmatrix}
+				1&2&3\\
+				2&4&t\\
+				3&6&9
+			\end{pmatrix}$ 且 $\bfP\bfQ=\bfO$, 则\fillbraceframe{A}.
+			\begin{taskschoice}(2)
+				() $t\neq 6$ 时, $R(\bfP)=1$
+				() $t\neq 6$ 时, $R(\bfP)=2$
+				() $t=6$ 时, $R(\bfP)=1$
+				() $t=6$ 时, $R(\bfP)=2$
+			\end{taskschoice}
+			\item 设 $\bfA,\bfB$ 为 $n$ 阶方阵, 则\fillbraceframe{A}.
+			\begin{taskschoice}(2)
+				() $R(\bfA,\bfA\bfB)=R(\bfA)$
+				() $R(\bfA,\bfB\bfA)=R(\bfA)$
+				() $R(\bfA,\bfA\bfB)=\max\bigl(R(\bfA),R(\bfB)\bigr)$
+				() $R(\bfA\bfB)=R(\bfA^\rmT\bfB^\rmT)$
+			\end{taskschoice}
+		\end{enumerate}
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		存在 $\bfA\bfB=\bfO,\bfB\bfA\neq \bfO$, D 错误.
+		令 $\bfA=\bfE$, C 错误.
+		$(\bfE,\bfB)$ 行满秩, 选 A.
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 矩阵秩性质的应用}
+	\begin{exercise}
+		\begin{enumerate}
+			\setcounter{enumi}{5}
+			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$, 则\fillbraceframe{A}.
+			\begin{taskschoice}(2)
+				() 当 $m>n$ 时, 必有 $|\bfA\bfB|=0$
+				() 当 $m>n$ 时, 必有 $|\bfA\bfB|\neq0$
+				() 当 $m<n$ 时, 必有 $|\bfA\bfB|=0$
+				() 当 $m<n$ 时, 必有 $|\bfA\bfB|\neq0$
+			\end{taskschoice}
+			\item 设 $\bfA\in M_{n\times m},\bfB\in M_{m\times n},n<m$. 若 $\bfA\bfB=\bfE$, 则 $R(\bfB)=$\fillblankframe{$n$}.
+			\item 若 $\begin{pmatrix}
+				1&1&1\\0&1&-1\\2&3&a+2
+			\end{pmatrix}$ 和 $\begin{pmatrix}
+				1&2&2\\2&1&1\\a+3&a+6&a+4
+			\end{pmatrix}$ 等价, 则\fillbraceframe{B}.
+			\begin{taskschoice}(4)
+				() $a=-1$
+				() $a\neq-1$
+				() $a\neq 1$
+				() $a=1$
+			\end{taskschoice}
+			\item 设四阶方阵 $\bfA=(\bma_1,\bma_2,\bma_3,\bma_4)$ 满足 $\bma_1+\bma_2-2\bma_3={\bf0},\bma_2+5\bma_4={\bf0}$, 则 $R(\bfA^*)=$\fillblankframe{$0$}.
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\subsection{极大线性无关组的计算方法}
+
+\begin{frame}{秩与线性相关}
+	\onslide<+->
+	\begin{proposition}
+		设 $\bfA=(\bma_1,\dots,\bma_m)\in M_{n\times m}$.
+		\begin{enumerate}
+			\item $\bma_1,\dots,\bma_m$ 线性相关$\iff \bfA\bfx={\bf0}$ 有非零解$\iff R(\bfA)<m$;
+			\item $\bma_1,\dots,\bma_m$ 线性无关$\iff \bfA\bfx={\bf0}$ 只有零解$\iff R(\bfA)=m$.
+		\end{enumerate}
+	\end{proposition}
+	\onslide<+->
+	\begin{corollary}
+		设 $\bfA=(\bma_1,\dots,\bma_n)\in M_n$.
+		\begin{enumerate}
+			\item $\bma_1,\dots,\bma_m$ 线性相关$\iff \bfA\bfx={\bf0}$ 有非零解$\iff R(\bfA)<m\iff |\bfA|=0$;
+			\item $\bma_1,\dots,\bma_m$ 线性无关$\iff \bfA\bfx={\bf0}$ 只有零解$\iff R(\bfA)=m\iff |\bfA|\neq0$.
+		\end{enumerate}
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{例: 判断线性无关}
+	\onslide<+->
+	\begin{exercise}
+		设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbraceframe{C}.
+		\begin{taskschoice}(1)
+			() $\bfA$ 必有一列元素全为零
+			() $\bfA$ 必有两列元素对应成比例
+			() $\bfA$ 必有一个列向量可由其余列向量线性表示
+			() $\bfA$ 中任意列向量均可由其余列向量线性表示
+		\end{taskschoice}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{线性相关的不变性}
 	\onslide<+->
 	\begin{theorem}
-		$S_0$ 是 $S$ 的极大线性无关组当且仅当
+		若 $\bfA$ 经过初等行变换变为 $\bfB$, 则
 		\begin{enumerate}
-			\item $S_0$ 线性无关;
-			\item $S$ 中任意 $m+1$ 个向量线性相关.
+			\item $\bfA$ 的行向量组与 $\bfB$ 的行向量组等价;\label{enum:equi-row-vec}
+			\item $\bfA$ 任意 $k$ 列和 $\bfB$ 对应的 $k$ 列具有相同的线性相关性.
 		\end{enumerate}
 	\end{theorem}
 	\onslide<+->
-	\begin{proof*}
-		若 $S_0$ 是 $S$ 的极大线性无关组, 则 $S$ 中任意 $m+1$ 个向量可由 $S_0$ 线性表示.
+	即\alert{初等行变换保持行向量组的等价性, 列向量组的线性组合关系}.
+	\onslide<+->
+	\begin{proof}
+		\enumref{enum:equi-row-vec}我们已经证明过.
 		\onslide<+->{%
-			从而线性相关.
-		}
-
-		\onslide<+->{%
-			反之, 若 $S$ 中任意 $m+1$ 个向量线性相关, 则 $S$ 中任意 $s>m$ 个向量线性相关.
+			设 $\bfB=\bfP\bfA$, 其中 $\bfP$ 是可逆矩阵.
 		}\onslide<+->{%
-			于是 $S_0$ 添加 $S$ 中的若干向量得到的向量组均线性相关.\qedhere
+			若 $\bfB\bfx={\bf0}$, 则 $\bfP\bfA\bfx={\bf0}, \bfA\bfx={\bf0}$. 反之亦然, 即 $\bfA\bfx={\bf0}\iff\bfB\bfx={\bf0}$.
+		}\onslide<+->{%
+			所以 $\bfx$ 非零分量对应的那些 $\bfA,\bfB$ 的列向量与 $\bfx$ 对应分量数乘之和同时为零或同时非零.
 		}
-	\end{proof*}
+	\end{proof}
 \end{frame}
 
 
-\begin{frame}{极大线性无关组的性质}
-	\begin{enumerate}\bf
-		\item 若 $R(S)=r$, 则 $S$ 中任意 $r$ 个线性无关的向量构成 $S$ 的一个极大线性无关组.
-		\item 只含有零向量的向量组没有极大线性无关组(空集), 它的秩为 $0$ (空集生成 $0$ 维空间 $\{{\bf0}\}$).
-		\item 极大线性无关组一般不是唯一的.
-	\onslide<+->{%
-		\mdseries 例如
-		\[\bma_1=(1,0)^\rmT,\quad\bma_2=(0,1)^\rmT,\quad\bma_3=(1,1)^\rmT.\]}
-		\onslide<+->{%
-		$\bma_1,\bma_2$ 是一个极大线性无关组, $\bma_1,\bma_3$ 也是一个极大线性无关组.}
-		\item 向量组和它的一个极大线性无关组是等价的, 于是同一向量组的任意两个极大线性无关组等价.
-	\end{enumerate}
+\begin{frame}{极大线性无关组和秩的计算方法}
+	\onslide<+->
+	\begin{second}{极大线性无关组和秩的计算方法}
+		\begin{enumerate}
+			\item 将向量组以列向量形式组成矩阵 $\bfA=(\bma_1,\dots,\bma_m)$.
+			\item 通过初等行变换将 $\bfA$ 变为行阶梯形矩阵.
+				\begin{itemize}
+					\item 行阶梯形矩阵非零行的行数就是秩 $R(\bfA)$;
+					\item 行阶梯形矩阵每个非零行的首个非零元对应的 $\bfA$ 的列向量, 就是极大线性无关组.
+				\end{itemize}
+			\item 继续化简为行最简形矩阵, 则可将其余向量表示为极大线性无关组的线性组合.
+		\end{enumerate}
+	\end{second}
 \end{frame}
 
 
-\begin{frame}{例: 极大线性无关组}
+\begin{frame}{典型例题: 求极大线性无关组}
 	\onslide<+->
 	\begin{example}
-		矩阵 $\bfA=\begin{pmatrix}
-			1&1&3&1\\
-			0&1&-1&4\\
-			0&0&0&5\\
-			0&0&0&0
-		\end{pmatrix}$
-		的行向量组为
-		\vspace{-.5\baselineskip}
-		\[\bma_1^\rmT=(1,1,3,1),
-			\bma_2^\rmT=(0,1,-1,4),
-			\bma_3^\rmT=(0,0,0,5),
-			\bma_4^\rmT=(0,0,0,0).
+		求下述向量组的秩和一个极大无关组, 并把其余向量用这个极大无关组线性表示:
+		\[\bma_1=\begin{pmatrix}
+			-7\\-2\\1\\-11
+		\end{pmatrix},\ 
+		\bma_2=\begin{pmatrix}
+			1\\-1\\5\\8
+		\end{pmatrix},\ 
+		\bma_3=\begin{pmatrix}
+			3\\1\\-1\\4
+		\end{pmatrix},\ 
+		\bma_4=\begin{pmatrix}
+			5\\3\\-7\\0
+		\end{pmatrix},\ 
+		\bma_5=\begin{pmatrix}
+			-4\\-2\\1\\-11
+		\end{pmatrix}.
 		\]
-		\onslide<+->{%
-			由于 $\bma_1^\rmT,\bma_2^\rmT,\bma_3^\rmT$ 的第 $1,2,4$ 个分量形成可逆矩阵 $\begin{pmatrix}
-				1&1&1\\
-				0&1&4\\
-				0&0&5
-			\end{pmatrix}$, 因此它们线性无关.
-		}\onslide<+->{%
-			它们构成一个极大线性无关组, $\bfA$ 的行向量组的秩是 $3$.
-		}\onslide<+->{%
-			类似可知, $\bfA$ 的列向量组的秩也是 $3$.
-		}
 	\end{example}
 	\onslide<+->
-	实际上, 任意矩阵的行向量组的秩等于列向量组的秩.
+	\begin{solution}
+		\[\bfA=(\bma_1,\bma_2,\bma_3,\bma_4,\bma_5)
+		=\begin{pmatrix}
+			-7&1&3&5&-4\\
+			-2&-1&1&3&-2\\
+			1&5&-1&-7&1\\
+			-11&8&4&0&-11
+		\end{pmatrix}\]
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求极大线性无关组}
 	\onslide<+->
-	为了说明这一点, 我们需要先研究矩阵的变换.
+	\begin{solution}[续解]
+		\[\wsim{r_1\swap r_3}{}
+		\begin{pmatrix}
+			1&5&-1&-7&1\\
+			-2&-1&1&3&-2\\
+			-7&1&3&5&-4\\
+			-11&8&4&0&-11
+		\end{pmatrix}
+		\sim\begin{pmatrix}
+			1&5&-1&-7&1\\
+			0&9&-1&-11&0\\
+			0&36&-4&-44&3\\
+			0&63&-7&-77&0
+		\end{pmatrix}\]
+		\onslide<+->{\[
+		\sim\begin{pmatrix}
+			1&5&-1&-7&1\\
+			0&9&-1&-11&0\\
+			0&0&0&0&3\\
+			0&0&0&0&0
+		\end{pmatrix}
+		\sim\begin{pNiceMatrix}
+			1&0&-4/9&-8/9&0\\
+			0&1&-1/9&-11/9&0\\
+			0&0&0&0&1\\
+			0&0&0&0&0
+			\CodeAfter
+			\tikz \draw [cstcurve,second,rounded corners] (1-|1) rectangle (2-|2);
+			\tikz \draw [cstcurve,second,rounded corners] (2-|2) rectangle (3-|3);
+			\tikz \draw [cstcurve,second,rounded corners] (3-|5) rectangle (4-|6);
+		\end{pNiceMatrix}\]}
+		\onslide<+->{%
+			因此 $R(\bfA)=3,\bma_1,\bma_2,\bma_5$ 是一个极大线性无关组, 且
+			\[\bma_3=-\frac49 \bma_1-\frac19\bma_2,\quad
+			\bma_4=-\frac89 \bma_1-\frac{11}9\bma_2.\]
+		}
+		\vspace{-\baselineskip}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求极大线性无关组}
+	\onslide<+->
+	\begin{exercise}
+		求下述矩阵列向量的一个极大无关组, 并把其余向量用这个极大无关组线性表示:
+		\[\bfA=\begin{pmatrix}
+			2&-1&-1&1&2\\
+			1&1&-2&1&4\\
+			4&-6&2&-2&4\\
+			3&6&-9&7&9
+		\end{pmatrix}\onslide<+->{\simr\begin{pmatrix}
+			1&0&-1&0&4\\
+			0&1&-1&0&3\\
+			0&0&0&1&-3\\
+			0&0&0&0&0
+		\end{pmatrix}}\]
+	\end{exercise}
+	\onslide<+->
+	\begin{answer}
+		设 $\bma_j$ 是 $\bfA$ 的第 $j$ 列, 则 $\bma_1,\bma_2,\bma_4$ 是一个极大线性无关组, 且
+		\[\bma_3=-\bma_1-\bma_2,\quad
+		\bma_5=4\bma_1+3\bma_2-3\bma_4.\]
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求极大线性无关组}
+	\onslide<+->
+	\begin{example}
+		假设下述向量组线性相关
+		\[\bma_1=(1,1,1,1,2),\ 
+		\bma_2=(2,1,3,2,3),\ 
+		\bma_3=(2,3,3,2,3),\ 
+		\bma_4=(1,3,-1,1,a).\]
+		求 $a$, 并求它的秩和一个极大无关组, 并把其余向量用这个极大无关组线性表示.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\[\bfA=(\bma_1^\rmT,\bma_2^\rmT,\bma_3^\rmT,\bma_4^\rmT)
+		\simr\begin{pmatrix}
+			1&0&0&5\\
+			0&1&0&-2\\
+			0&0&1&0\\
+			0&0&0&a-4\\
+			0&0&0&0
+		\end{pmatrix}.\]
+		\onslide<+->{%
+			因此 $a=4$, 秩为 $3$, $\bma_1,\bma_2,\bma_3$ 是一个极大线性无关组, 且 $\bma_4=5\bma_1-2\bma_2$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 线性相关与线性无关}
+	\onslide<+->
+	\begin{exercise}
+		\begin{enumerate}
+			\item 设矩阵 $\bfA$ 经初等行变换化为 $\bfB$, 则二者的\fillbraceframe{A}.
+			\begin{taskschoice}(1)
+				() 行向量组等价, 列向量组同相关性
+				() 行向量组同相关性, 列向量组等价
+				() 行向量组未必等价, 列向量组同相关性
+				() 行向量组等价, 列向量组未必同相关性
+			\end{taskschoice}
+			\item 设 $\bfA\in M_{m\times n},\bfB\in M_{n\times k},\bfA\bfB=\bfO,\bfB\neq \bfO$, 则\fillbraceframe{A}.
+			\begin{taskschoice}(2)
+				() $\bfA$ 的列向量组线性相关
+				() $\bfA$ 的行向量组线性相关
+				() $\bfA$ 的列向量组线性无关
+				() $\bfA$ 的行向量组线性无关
+			\end{taskschoice}
+		\end{enumerate}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 线性相关与线性无关}
+	\onslide<+->
+	\begin{exercise}
+		多选题: 设 $\bfA^*$ 是 $n>1$ 阶方阵, 以下说法正确的是\fillbraceframe{ABCD}.
+		\begin{taskschoice}(1)
+			() 若 $\bfA$ 的列向量组线性相关, 则 $\bfA^*$ 的列向量组线性相关
+			() 若 $\bfA$ 的列向量组线性无关, 则 $\bfA^*$ 的列向量组线性无关
+			() 若 $\bfA$ 的某两列向量线性相关, 则 $\bfA^*$ 的列向量组线性相关
+			() 若 $\bfA$ 的某两列向量线性无关, 则 $\bfA^*$ 的列向量组线性无关
+		\end{taskschoice}
+	\end{exercise}
 \end{frame}

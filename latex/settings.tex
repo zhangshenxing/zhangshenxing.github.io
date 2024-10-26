@@ -46,34 +46,52 @@
 \newcommand\enumnum[1]{{\mdseries\upshape\textcolor{main}{(#1)}}}
 % 枚举引用
 \newcommand\enumref[1]{\textcolor{main}{\upshape(\ref{#1})}}
-% 首项不分段枚举环境
-\newcounter{enumnopari}
-\renewcommand{\theenumnopari}{{\upshape\textcolor{main}{(\arabic{enumnopari})}}}
-\newenvironment{enumnopar}{%
-  \setcounter{enumnopari}{0}%
-  \renewcommand{\item}{%
-    \ifnum\value{enumnopari}=0\else\par\fi%
-    \refstepcounter{enumnopari}%
-    \theenumnopari
-    { } 
-  }%
-}{\ignorespacesafterend}
-% 不分段枚举环境
-\newcounter{enuminlinei}
-\renewcommand{\theenuminlinei}{{\upshape\textcolor{main}{(\arabic{enuminlinei})}}}
-\newenvironment{enuminline}{%
-  \setcounter{enuminlinei}{0}%
-  \renewcommand{\item}{%
-    \refstepcounter{enuminlinei}%
-    \theenuminlinei
-  }%
-}{}
+
+% 枚举环境
+\newcommand{\setenumtype}[1]{
+	\ifstrequal{#1}{(1)}{%
+		\renewcommand{\theenumi}{{\mdseries\upshape\textcolor{main}{(\arabic{enumi})}}}
+	}{}
+	\ifstrequal{#1}{(i)}{%
+		\renewcommand{\theenumi}{{\mdseries\upshape\textcolor{main}{(\roman{enumi})}}}
+	}{}
+  \setcounter{enumi}{0}%
+}
+% (V1)
+\newenvironment{enumV}[1][V]{%
+	\renewcommand{\theenumi}{{\mdseries\upshape\textcolor{main}{(#1\arabic{enumi})}}}
+  \setcounter{enumi}{0}%
+	\renewcommand{\item}{%
+		\pause\par\noindent%
+	\refstepcounter{enumi}\theenumi{ }}}%
+{\ignorespacesafterend}
+% 分段枚举环境
+% \newenvironment{enumpar}[1][(1)]{%
+% 	\setenumtype{#1}\renewcommand{\item}{%
+% 		\ifnum\value{enumi}=0\pause\fi%
+% 		\par%
+% 	\refstepcounter{enumi}\theenumi{ }}}%
+% {\ignorespacesafterend}
+% % 首项不分段枚举环境
+\newenvironment{enumnopar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+		\ifnum\value{enumi}=0\else\pause\fi%
+    \ifnum\value{enumi}=0\hspace{-1em}\else\par\noindent\fi%
+  \refstepcounter{enumi}\theenumi { }}}%
+{\ignorespacesafterend}
+% % 不分段枚举环境
+\newenvironment{enuminline}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+		\ifnum\value{enumi}=0\pause\fi%
+	\refstepcounter{enumi}\theenumi { }}}%
+{\ignorespacesafterend}
+
 % 选择题
 % \begin{taskschoice}(4)
 % 	() 选项
 % \end{taskschoice}
 \RequirePackage{tasks}
-\settasks{label-format=\textcolor{main},label={(\arabic*)},label-width=1.5em}
+\settasks{label-format=\mdseries\textcolor{main},label={(\arabic*)},label-width=1.5em}
 \NewTasksEnvironment[label={\upshape(\Alph*)},label-width=1.5em]{taskschoice}[()]
 % TIKZ 设置
 \usetikzlibrary{

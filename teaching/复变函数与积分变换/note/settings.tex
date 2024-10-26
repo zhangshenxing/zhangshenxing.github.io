@@ -48,32 +48,31 @@
 % 枚举数字引用标志
 \newcommand{\enumnum}[1]{{\mdseries\upshape{\textcolor{main}{(#1)}}}}
 % 枚举环境
-\newcounter{customenumi}
 \newcommand{\setenumtype}[1]{
 	\ifstrequal{#1}{(1)}{%
-		\renewcommand{\thecustomenumi}{{\upshape\textcolor{main}{(\arabic{customenumi})}}}
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{(\arabic{enumi})}}}
 	}{}
 	\ifstrequal{#1}{(i)}{%
-		\renewcommand{\thecustomenumi}{{\upshape\textcolor{main}{(\roman{customenumi})}}}
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{(\roman{enumi})}}}
 	}{}
-  \setcounter{customenumi}{0}%
+  \setcounter{enumi}{0}%
 }
 % 分段枚举环境
 \newenvironment{enumpar}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
 		\par%
-	\refstepcounter{customenumi}\thecustomenumi{ }}}%
+	\refstepcounter{enumi}\theenumi{ }}}%
 {\ignorespacesafterend}
 % 首项不分段枚举环境
 \newenvironment{enumnopar}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
-    \ifnum\value{customenumi}=0\hspace{-1em}\else\par\fi%
-  \refstepcounter{customenumi}\thecustomenumi { }}}%
+    \ifnum\value{enumi}=0\hspace{-1em}\else\par\fi%
+  \refstepcounter{enumi}\theenumi { }}}%
 {\ignorespacesafterend}
 % 不分段枚举环境
 \newenvironment{enuminline}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
-	\refstepcounter{customenumi}\thecustomenumi { }}}%
+	\refstepcounter{enumi}\theenumi { }}}%
 {\ignorespacesafterend}
 % 选择题
 % \begin{taskschoice}(4)

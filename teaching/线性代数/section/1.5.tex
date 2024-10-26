@@ -65,14 +65,18 @@
 		\vdots&\ddots&\vdots\\
 		\bfB_{r1}&\cdots&\bfB_{rt},
 	\end{pmatrix}\]
-	且 $\bfA_{ij}$ 的列数和 $\bfB_{jk}$ 的行数相同, 则
+	且 $\bfA_{ik}$ 的列数和 $\bfB_{kj}$ 的行数相同, 则
 	\[\bfA\bfB=\begin{pmatrix}
-		\bfC_{11}&\cdots&\bfC_{1r}\\
+		\bfC_{11}&\cdots&\bfC_{1t}\\
 		\vdots&\ddots&\vdots\\
-		\bfC_{s1}&\cdots&\bfC_{sr}
+		\bfC_{s1}&\cdots&\bfC_{st}
 	\end{pmatrix},\quad\bfC_{ij}=\sum_{k=1}^r \bfA_{ik}\bfB_{kj}.\]
 	\onslide<+->
-	简单来说就是, 若对应的分块能做相应运算, 则分块矩阵的运算就如同把这些分块视作数一样运算.
+	分块矩阵能相乘, 需要 $\bfA$ 的列块数和 $\bfB$ 的行块数要相等.
+	\onslide<+->
+	然后得到乘积的每个分块表达式后, 相应的分块乘法也要能相乘.
+	\onslide<+->
+	这样分块矩阵的运算就如同把这些分块视作数一样运算.
 \end{frame}
 
 
@@ -204,14 +208,14 @@
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfA,\bfB$ 为同阶方阵, $\bfC=\begin{pmatrix}
-			&\bfA\\\bfB&
+			\bfA&\\ &\bfB
 		\end{pmatrix}$,
-		则 $\bfC^*=$\fillbraceframe{D}.
+		则 $\bfC^*=$\fillbraceframe{C}.
 		\begin{taskschoice}(2)
-			() $\begin{pmatrix}&\bfA^*\\\bfB^*&\end{pmatrix}$
-			() $\begin{pmatrix}&\bfB^*\\\bfA^*&\end{pmatrix}$
-			() $\begin{pmatrix}&|\bfB|\bfA^*\\|\bfA|\bfB^*&\end{pmatrix}$
-			() $\begin{pmatrix}&|\bfA|\bfB^*\\|\bfB|\bfA^*&\end{pmatrix}$
+			() $\begin{pmatrix}\bfA^*&\\&\bfB^*\end{pmatrix}$
+			() $\begin{pmatrix}\bfB^*&\\&\bfA^*\end{pmatrix}$
+			() $\begin{pmatrix}|\bfB|\bfA^*&\\&|\bfA|\bfB^*\end{pmatrix}$
+			() $\begin{pmatrix}|\bfA|\bfB^*&\\&|\bfB|\bfA^*\end{pmatrix}$
 		\end{taskschoice}
 	\end{exercise}
 \end{frame}

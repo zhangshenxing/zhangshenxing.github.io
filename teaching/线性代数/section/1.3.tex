@@ -65,11 +65,14 @@
 	令 $A_2(0,b)$, 并作 $\parallelogram OA_2C_2B$.
 	\onslide<+->
 	那么 $\parallelogram OACB$ 的面积是这两个相加还是相减?
+	\onslide<+->\onslide<+->\onslide<+->
+	使用割补法可知为\alert{二者相减}.
 	
-	\onslide<+->\onslide<+->\onslide<+->\onslide<+->
+	\onslide<+->
 	如果 $A$ 在第一象限, $B$ 在第二象限.
 	\onslide<+->
-	那么 $\parallelogram OACB$ 的面积是这两个相加还是相减?
+	那么 $\parallelogram OACB$ 的面积是这两个相加还是相减?\onslide<+->\onslide<+->
+	使用割补法可知为\alert{二者相加}.
 \end{frame}
 
 
@@ -130,85 +133,6 @@
 \end{frame}
 
 
-% \begin{frame}{行列式的抽象定义\noexer}
-% 	\onslide<+->
-% 	设 $n$ 维向量
-% 	\[\bfe_1=(1,0,\dots,0)^\rmT,\quad
-% 	\bfe_2=(0,1,\dots,0)^\rmT,\quad\cdots,\quad
-% 	\bfe_n=(0,0,\dots,1)^\rmT.\]
-% 	\onslide<+->
-% 	那么 $V=\BR^n$ 中的任一元素均可唯一表达为如下形式:
-% 	\[\bfx=x_1\bfe_1+\cdots+x_n\bfe_n.\]
-
-% 	\onslide<+->
-% 	定义 $V_2:=\wedge^2\BR^n$ 为所有形如 $\bfv_1\wedge\bfv_2$ 的元素以及它们的有限和构成的集合,
-% 	\onslide<+->
-% 	其中 $\wedge$ 为满足如下性质的一种运算(\emph{外积}或\emph{楔积}):
-% 	\begin{enumerate}
-% 		\item 反对称性: $\bma\wedge \bmb=-\bmb\wedge\bma$;
-% 		\item $\bma\wedge(\bmb+\bmg)=\bma\wedge\bmb+\bma\wedge\bmg$;
-% 		\item $(\lambda\bma)\wedge\bmb=\bma\wedge(\lambda\bmb)=\lambda(\bma\wedge\bmb)$.
-% 	\end{enumerate}
-% 	\onslide<+->
-% 	根据这些运算性质可以知道, $V_2$ 是一个线性空间,
-% 	\onslide<+->
-% 	且其中的元素可以唯一表达为如下形式(注意 $\bfv\wedge\bfv=0$):
-% 	\[\sum_{1\le i<j\le n} x_{ij} \bfe_i\wedge\bfe_j.\]
-% \end{frame}
-
-
-% \begin{frame}{行列式的抽象定义\noexer}
-% 	\onslide<+->
-% 	类似地, 定义 $V_k:=\wedge^k\BR^n$ 为所有形如 $\bfv_1\wedge\bfv_2\wedge\cdots\wedge\bfv_k$ 的元素以及它们的有限和构成的集合.
-% 	\onslide<+->
-% 	同理可知, $V_k$ 中的元素可以唯一表达为如下形式:
-% 	\[\sum_{1\le i_1<\cdots<i_k\le n} x_{i_1,\dots,i_k} \bfe_{i_1}\wedge\cdots\wedge\bfe_{i_k}.\]
-% 	\onslide<+->
-% 	特别地, $k=n$ 时, $V_n:=\wedge^n\BR^n$ 中的元素可以唯一表达为如下形式:
-% 	\[x\bfe_1\wedge\cdots\wedge\bfe_n.\]
-
-% 	\onslide<+->
-% 	对于 $n$ 阶方阵 $\bfA$,
-% 	\[\sum\bfv_1\wedge\dots\wedge \bfv_n\mapsto \sum\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n\]
-% 	定义了 $V_n$ 上的一个线性映射.
-% 	\onslide<+->
-% 	根据 $V_n$ 的元素形式, 存在一个数 $|\bfA|$ 使得
-% 	\[\bfA\bfv_1\wedge \dots\wedge \bfA\bfv_n=|\bfA| \bfv_1\wedge\dots\wedge \bfv_n,\]
-% 	\onslide<+->
-% 	称之为 $\bfA$ 的\emph{行列式}, 记作 $|\bfA|$ 或 $\det(\bfA)$.
-% \end{frame}
-
-
-% \begin{frame}{例: 行列式的抽象定义\noexer}
-% 	\onslide<+->
-% 	设 $\bfA=\begin{pmatrix}
-% 		a&b\\c&d
-% 	\end{pmatrix}$,
-% 	\onslide<+->
-% 	则
-% 	\begin{align*}
-% 		\bfA\bfe_1\wedge\bfA\bfe_2&=
-% 		(a\bfe_1+c\bfe_2)\wedge(b\bfe_1+d\bfe_2)\\
-% 		&\onslide<+->{=ab\bfe_1\wedge\bfe_1+ad\bfe_1\wedge\bfe_2+bc\bfe_2\wedge\bfe_1+cd\bfe_2\wedge\bfe_2}\\
-% 		&\onslide<+->{=(ad-bc)\bfe_1\wedge\bfe_2.}
-% 	\end{align*}
-% 	\onslide<+->
-% 	故 $|\bfA|=ad-bc$.
-
-% 	\onslide<+->
-% 	设 $\bfA=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$,
-% 	\onslide<+->
-% 	则
-% 	\begin{align*}
-% 		\bfA\bfe_1\wedge\bfA\bfe_2\wedge\cdots\wedge\bfA\bfe_n
-% 		&=\lambda_1\bfe_1\wedge\lambda_2\bfe_2\wedge \cdots\wedge\lambda_n\bfe_n\\
-% 		&\onslide<+->{=\lambda_1\lambda_2\cdots\lambda_n\bfe_1\wedge\bfe_2\wedge\cdots\wedge\bfe_n.}
-% 	\end{align*}
-% 	\onslide<+->
-% 	故 $|\bfA|=\lambda_1\lambda_2\cdots\lambda_n$.
-% \end{frame}
-
-
 \begin{frame}{行列式的定义\noexer}
 	\onslide<+->
 	设 $n$ 阶方阵 $\bfA=(a_{ij})$ 的各列形成的向量为 $\bfv_1,\dots,\bfv_n$,
@@ -225,6 +149,16 @@
 	如果 $k_i=k_j$, 则交换 $\bfe_{k_i},\bfe_{k_j}$ 可知 $|\bfe_{k_1},\cdots,\bfe_{k_n}|=0$.
 	\onslide<+->
 	从而只剩下 $k_1,k_2,\dots,k_n$ 是 $1,2,\dots,n$ 的排列时的那些项.
+	\onslide<+->
+	例如: 
+	\begin{align*}
+		\begin{vmatrix}
+			a_{11}&a_{12}\\
+			a_{21}&a_{22}
+		\end{vmatrix}&=|a_{11}\bfe_1,a_{12}\bfe_1+a_{22}\bfe_2|+|a_{21}\bfe_2,a_{12}\bfe_1+a_{22}\bfe_2|\\
+		&=a_{11}a_{12}|\bfe_1,\bfe_1|+a_{11}a_{22}|\bfe_1,\bfe_2|+a_{21}a_{12}|\bfe_2,\bfe_1|+a_{21}a_{22}|\bfe_2,\bfe_2|\\
+		&=a_{11}a_{22}-a_{21}a_{12}.
+	\end{align*}
 \end{frame}
 	
 	
@@ -293,18 +227,19 @@
 \begin{frame}{例: $2,3$ 阶行列式的计算}
 	\onslide<+->
 	\begin{example}
-		$\begin{vmatrix}
-			1&3&2\\3&-5&1\\2&1&4
-	\end{vmatrix}$
-		\onslide<+->{$=1\times (-5)\times 4+3\times 1\times2+2\times3\times1-1\times1\times1-3\times3\times4-2\times(-5)\times2$}
-
-		\onslide<+->{\hspace{19.5mm}$=-20+6+6-1-36+20=-25.$}
+		\begin{align*}
+			\begin{vmatrix}
+				1&3&2\\3&-5&1\\2&1&4
+			\end{vmatrix}
+			&\onslide<+->{=1\cdot (-5)\cdot 4+3\cdot 1\cdot2+2\cdot3\cdot1-1\cdot1\cdot1-3\cdot3\cdot4-2\cdot(-5)\cdot2}\\
+			&\onslide<+->{=-20+6+6-1-36+20=-25.}
+		\end{align*}
 	\end{example}
 	\onslide<+->
 	\begin{exercise}
 		若 $k>0$ 且 $\begin{vmatrix}
 			k&2&1\\2&k&1\\k&1&2
-		\end{vmatrix}=0$, 则 $k=$\fillblankframe{\onslide<+->{$2$}}.
+		\end{vmatrix}=0$, 则 $k=$\fillblankframe{$2$}.
 	\end{exercise}
 \end{frame}
 
@@ -317,7 +252,7 @@
 		\item \emph{对角阵}的行列式
 		\[\bigl|\diag(a_1,a_2,\dots,a_n)\bigr|=a_1a_2\cdots a_n,\]
 		特别地 $|\bfE_n|=1,|\bfO_n|=0$.
-		\item $|\bfA|$ 是由一些 $\pm a_{1 k_1}a_{2 k_2}\cdots a_{n k_n}$ 相加得到, 其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的所有排列, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$ ($n\ge2$).
+		\item $|\bfA|$ 是由一些 $\pm a_{k_11}a_{k_22}\cdots a_{k_nn}$ 相加得到, 其中 $k_1,k_2,\dots,k_n$ 取遍 $1,2,\dots,n$ 的所有排列, 一共有 $n!$ 个这样的项, 其中一半取 $+$, 一半取 $-$ ($n\ge2$).
 		\item {\itshape $|\bfA|$ 对应的线性变换(常数倍)是 $\bfA$ 对应的线性变换 $\BR^n\ra\BR^n$ 诱导的 $n$ 次外代数上的线性变换 $\bigwedge^n\BR^n\to\bigwedge^n\BR^n$, 感兴趣的可自行阅读有关材料.}
 	\end{enumerate}
 \end{frame}
@@ -354,11 +289,11 @@
 
 \begin{frame}{行列式的乘性}
 	\onslide<+->
-	\begin{second@}
+	\begin{theorem@}
 		\begin{enumerate}
 			\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$.
 		\end{enumerate}
-	\end{second@}
+	\end{theorem@}
 	\onslide<+->
 	\begin{proof}
 		设 $f(\bfX):=|\bfA\bfX|$, 即 $f(\bfv_1,\dots,\bfv_n)=|\bfA\bfv_1,\dots,\bfA\bfv_n|$.
@@ -420,35 +355,34 @@
 
 \begin{frame}{行列式的转置不变性}
 	\onslide<+->
-	\begin{second@}
+	\begin{theorem@}
 		\begin{enumerate}
 			\setcounter{enumi}{1}
 			\item 转置不改变行列式: $|\bfA^\rmT|=|\bfA|$.
 		\end{enumerate}
-	\end{second@}
+	\end{theorem@}
 	\onslide<+->
-	设 $k_1,\dots,k_n$ 是一个排列,
+	一个排列 $k_1,\dots,k_n$ 可以看成是集合 $\{1,2,\dots,n\}$ 到自身的双射 $i\mapsto k_i$.
+	\onslide<+->
+	设它的逆映射对应的排列是 $\ell_1,\dots,\ell_n$, 则 $\ell_{k_i}=i$.
+	\onslide<+->
+	由于
+	\begin{align*}
+		|\bfA|&=\sum\sgn(k_1,\dots,k_n) a_{k_11}\cdots a_{k_nn}=\sum\sgn(k_1,\dots,k_n)a_{1\ell_1}\cdots a_{n\ell_n},\\
+		|\bfA^\rmT|&=\sum\sgn(\ell_1,\dots,\ell_n)a_{1\ell_1}\cdots a_{n\ell_n},
+	\end{align*}
+	\onslide<+->
+	我们只需说明 $\sgn(k_1,\dots,k_n)=\sgn(\ell_1,\dots,\ell_n)$.
+	\onslide<+->
+	设
 	\[\bfP=(\bfe_{k_1},\bfe_{k_2},\dots,\bfe_{k_n})\]
 	的 $k_i$ 行 $i$ 列为 $1$, 其余项为零.
 	\onslide<+->
-	设 $\ell_1,\dots,\ell_n$ 是一个排列且满足 $k_{\ell_i}=i$.
-	\onslide<+->
-	也就是说, 若把排列看成集合 $\{1,2,\dots,n\}$ 到自身的双射, $\ell$ 就是 $k$ 的逆映射.
-	\onslide<+->
-	那么
-	\[\bfP^\rmT=(\bfe_{\ell_1},\bfe_{\ell_2},\dots,\bfe_{\ell_n})\]
-	\onslide<+->
-	于是
-	\begin{align*}
-		|\bfA|&=\sum|\bfP| a_{k_11}\cdots a_{k_nn}=\sum|\bfP^\rmT| a_{\ell_11}\cdots a_{\ell_nn},\\
-		|\bfA^\rmT|&=\sum|\bfP| a_{1k_1}\cdots a_{nk_n}=\sum|\bfP| a_{\ell_11}\cdots a_{\ell_nn}.
-	\end{align*}
-	\onslide<+->
-	因此只需证明 $|\bfP|=|\bfP^\rmT|$.
+	那么 $|\bfP|=\sgn(k_1,\dots,k_n)$, $|\bfP^\rmT|=\sgn(\ell_1,\dots,\ell_n)$.
 	\onslide<+->
 	由于 $\bfP\bfP^\rmT=\bfE$, 因此 $|\bfP|\cdot|\bfP^\rmT|=|\bfE|=1$.
 	\onslide<+->
-	而 $|\bfP|=|\bfe_{k_1},\dots,\bfe_{k_n}|=\pm1$, 因此 $|\bfP|=|\bfP^\rmT|$.
+	而 $|\bfP|=\pm1$, 因此 $|\bfP|=|\bfP^\rmT|$.
 \end{frame}
 
 
@@ -492,14 +426,14 @@
 	\onslide<+->
 	再根据行列式关于每个列向量的线性性和反对称性有:
 	\onslide<+->
-	\begin{second@}
+	\begin{theorem@}
 		\begin{enumerate}
 			\setcounter{enumi}{2}
 			\item 互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
 			\item 方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
 			\item 将方阵某一行(列)对应向量写成两个向量之和, 则行列式也可对应拆成两个行列式之和.
 		\end{enumerate}
-	\end{second@}
+	\end{theorem@}
 	\onslide<+->
 	\begin{corollary}
 		\begin{enumerate}
@@ -518,9 +452,9 @@
 	\onslide<+->
 	\begin{third}{初等变换}
 		\begin{enumerate}
-			\item 互换两行(列): \alert{$r_i\swap r_j, c_i\swap c_j$}, 行列式变号;
-			\item 一行(列)乘\alert{非零常数} $k$: \alert{$kr_i, kc_i$}, 行列式变为 $k$ 倍;
-			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): \alert{$r_i+kr_j, c_i+kc_j$}, 行列式不变.
+			\item 互换两行(列): $\alertm{r_i\swap r_j, c_i\swap c_j}$, 行列式变号;
+			\item 一行(列)乘\alert{非零常数} $k$: $\alertm{kr_i, kc_i}$, 行列式变为 $k$ 倍;
+			\item $j$ 行(列)乘 $k$ 加到 $i$ 行(列): $\alertm{r_i+kr_j, c_i+kc_j}$, 行列式不变.
 		\end{enumerate}
 	\end{third}
 	\onslide<+->
@@ -553,13 +487,14 @@
 				a_2+b_2&b_2+c_2&c_2+d_2&d_2+a_2\\
 				a_3+b_3&b_3+c_3&c_3+d_3&d_3+a_3\\
 				a_4+b_4&b_4+c_4&c_4+d_4&d_4+a_4
-			\end{vmatrix}=$\fillblankframe{\onslide<+->{$0$}}.
+			\end{vmatrix}=$\fillblankframe{$0$}.
 			\item 设 $\bfA$ 为 $5$ 阶方阵, $|\bfA|=-1$, 则
-				$|2\bfA|=$\fillblankframe{\onslide<+->{$-32$}},
-				$\bigl||\bfA|\bfA\bigr|=$\fillblankframe{\onslide<.->{$1$}}.
+				$|2\bfA|=$\fillblankframe{$-32$},
+				$\bigl||\bfA|\bfA\bigr|=$\fillblankframe{$1$}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
+
 
 \begin{frame}{例: 方阵的行列式}
 	\onslide<+->
@@ -571,6 +506,43 @@
 			\sin c\cos a+\cos c\sin a&\sin c\cos b+\cos c\sin b&2\sin c\cos c
 		\end{vmatrix}$.
 	\end{example}
+	\onslide<+->
+	容易看出该方阵可写成两个方阵之和
+	\[\begin{pmatrix}
+		\sin a\cos a&\sin a\cos b&\sin a\cos c\\
+		\sin b\cos a&\sin b\cos b&\sin b\cos c\\
+		\sin c\cos a&\sin c\cos b&\sin c\cos c
+	\end{pmatrix}+\begin{pmatrix}
+		\cos a\sin a&\cos a\sin b&\cos a\sin c\\
+		\cos b\sin a&\cos b\sin b&\cos b\sin c\\
+		\cos c\sin a&\cos c\sin b&\cos c\sin c
+	\end{pmatrix}.\]
+	\onslide<+->
+	这两个方阵各自满足各行成比例, 因此可分别写成
+	\[\begin{pmatrix}
+			\sin a\\
+			\sin b\\
+			\sin c
+		\end{pmatrix}(\cos a,\cos b,\cos c),\qquad
+		\begin{pmatrix}
+			\cos a\\
+			\cos b\\
+			\cos c
+		\end{pmatrix}(\sin a,\sin b,\sin c).\]
+\end{frame}
+
+
+\begin{frame}{例: 方阵的行列式}
+	\onslide<+->
+	因此原方阵为
+	\[\begin{pmatrix}
+			\sin a&\cos a\\
+			\sin b&\cos b\\
+			\sin c&\cos c
+		\end{pmatrix}\cdot\begin{pmatrix}
+			\cos a&\cos b&\cos c\\
+			\sin a&\sin b&\sin c
+		\end{pmatrix}.\]
 	\onslide<+->
 	\begin{solution}
 		原式$=\begin{vmatrix}
@@ -587,10 +559,10 @@
 	设 $\bfA\in M_{m\times n},\bfB\in M_{n\times m}$.
 	\onslide<+->
 	若 $m>n$, 则
-	\[\alert{|\bfA\bfB|}=\left|
+	\[\alertn{|\bfA\bfB|}=\left|
 		(\bfA,\bfO_{m\times(m-n)})\begin{pmatrix}
 		\bfB\\\bfO_{(m-n)\times m}
-	\end{pmatrix}\right|\alert{=0}.\]
+	\end{pmatrix}\right|\alertn{=0}.\]
 \end{frame}
 
 
@@ -660,10 +632,10 @@
 	我们来介绍行列式与方阵子式的联系.
 	\onslide<+->
 	\begin{definition}
-		设 $\bfA=(a_{ij})$ 是 $n$ 阶方阵.
+		设 $\bfA=(a_{ij})$ 是 $n\ge2$ 阶方阵.
 		\begin{enumerate}
-			\item $\bfA$ 去掉第 $i$ 行和 $j$ 列得到的 $n-1$ 阶方阵的行列式称为 $\bfA$ 在 $(i,j)$ 处的\emph{\cnen{余子式}{Minor}}, 记为 $M_{ij}$.
-			\item 称 $A_{ij}=(-1)^{i+j}M_{ij}$ 为 $\bfA$ 在 $(i,j)$ 处的\emph{\cnen{代数余子式}{Algebraic minor}}.
+			\item $\bfA$ 去掉第 $i$ 行和 $j$ 列得到的 $n-1$ 阶方阵的行列式称为 $\bfA$ 在 $(i,j)$ 处的\emph{余子式} (Minor), 记为 $M_{ij}$.
+			\item 称 $A_{ij}=(-1)^{i+j}M_{ij}$ 为 $\bfA$ 在 $(i,j)$ 处的\emph{代数余子式} (Algebraic Minor).
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
@@ -671,7 +643,7 @@
 \end{frame}
 
 
-\begin{frame}{行列式与余子式的联系}
+\begin{frame}{行列式与余子式的联系\noexer}
 	\onslide<+->
 	假设 $\bfA$ 的第 $n$ 列除了 $a_{nn}$ 都是零.
 	\onslide<+->
@@ -734,7 +706,7 @@
 	\end{second}
 	\onslide<+->
 	由此也可以看出 \alert{$i\neq k$ 时,}
-	\[\alert{a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,}\]
+	\[\alertn{a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0,}\]
 	\onslide<+->
 	因为它是第 $i,k$ 行相同的方阵的行列式.
 \end{frame}
@@ -807,10 +779,10 @@
 			\end{vmatrix}
 			&\onslide<+->{\!\!\xeq[\nsmath{r_1-2r_4}]{\substack{\nsmath{r_2+4r_4}\\\nsmath{r_3+3r_4}}}\!\!
 			\begin{vmatrix}
-				\alert0& 7& 1&1\\
-				\alert0&-13& 1&-1\\
-				\alert0&-5&-5&0\\
-				\alert1&-2& 0&-1
+				\alertn0& 7& 1&1\\
+				\alertn0&-13& 1&-1\\
+				\alertn0&-5&-5&0\\
+				\alertn1&-2& 0&-1
 			\end{vmatrix}}
 			\onslide<+->{=(-1)^{4+1}\begin{vmatrix}
 				-13& 1&-1\\
@@ -819,9 +791,9 @@
 				\end{vmatrix}}\\
 			&\onslide<+->{\xeq{\nsmath{r_3+r_1}}
 			-\begin{vmatrix}
-				-13& 1&\alert{-1}\\
-				-5&-5&\alert0\\
-				-6& 2&\alert0
+				-13& 1&\alertn{-1}\\
+				-5&-5&\alertn0\\
+				-6& 2&\alertn0
 			\end{vmatrix}}
 			\onslide<+->{=(-1)^{1+3}\begin{vmatrix}
 				-5&-5\\-6&2
@@ -829,6 +801,7 @@
 		\end{align*}
 	\end{example}
 \end{frame}
+
 
 \begin{frame}{例: 利用初等变换计算行列式}
 	\onslide<+->
@@ -838,18 +811,18 @@
 				-2&0&1\\
 				501&200&299\\
 				500&200&300
-			\end{vmatrix}=$\fillblankframe{\onslide<+->{$-200$}}.
+			\end{vmatrix}=$\fillblankframe{$-200$}.
 			\item $\begin{vmatrix}
 				1&1&1\\
 				a&b&c\\
 				b+c&c+a&a+b
-			\end{vmatrix}=$\fillblankframe{\onslide<+->{$0$}}.
+			\end{vmatrix}=$\fillblankframe{$0$}.
 			\item 设 $\bma=(1,0,-1),\bfA=\bma^\rmT\bma$, 则
-				$|5\bfE-\bfA^3|=$\fillblankframe{\onslide<+->{$-75$}}.
+				$|5\bfE-\bfA^3|=$\fillblankframe{$-75$}.
 		\end{enumerate}
 	\end{exercise}
 	\onslide<+->
-	若 $\bfA=\bma\bmb^\rmT$, 则 $\bfA^k=\lambda^{k-1}\bfA$, 其中 $k=\bmb^{\rmT}\bma$.
+	回忆: 若 $\bfA=\bma\bmb^\rmT$, 则 $\bfA^k=\lambda^{k-1}\bfA$, 其中 $k=\bmb^{\rmT}\bma$.
 \end{frame}
 
 
@@ -960,7 +933,7 @@
 			c_1&c_2&c_3&f\\
 			d_1&d_2&d_3&f
 		\end{pmatrix}$,
-		则 $A_{11}+A_{21}+A_{31}+A_{41}=$\fillblankframe{\onslide<+->{$0$}}.
+		则 $A_{11}+A_{21}+A_{31}+A_{41}=$\fillblankframe{$0$}.
 		\vspace{-.2\baselineskip}
 	\end{exercise}
 \end{frame}
@@ -1015,7 +988,7 @@
 			a_1&1+a_2&\cdots&a_n\\
 			\vdots&\vdots&\ddots&\vdots\\
 			a_1&a_2&\cdots&1+a_n
-		\end{vmatrix}=$\fillblankframe[4cm]{\onslide<+->{$1+a_1+\cdots+a_n$}}.
+		\end{vmatrix}=$\fillblankframe[4cm]{$1+a_1+\cdots+a_n$}.
 	\end{exercise}
 \end{frame}
 
@@ -1053,28 +1026,11 @@
 			\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
 			-1&-2&-3&\cdots&0&n\\
 			-1&-2&-3&\cdots&-(n-1)&0
-		\end{vmatrix}=$\fillblankframe{\onslide<+->{$n!$}}.
+		\end{vmatrix}=$\fillblankframe{$n!$}.
 	\end{exercise}
 	\onslide<+->
 	\begin{answer}
-		\begin{align*}
-			\text{行列式}&=n!\begin{vmatrix}
-				1&1&1&\cdots&1&1\\
-				-1&0&1&\cdots&1&1\\
-				-1&-1&0&\cdots&1&1\\
-				\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-				-1&-1&-1&\cdots&0&1\\
-				-1&-1&-1&\cdots&-1&0
-			\end{vmatrix}
-			\xeq[\nsmath{i\ge2}]{\nsmath{c_i-c_1}}n!\begin{vmatrix}
-				1&0&0&\cdots&0&0\\
-				-1&1&2&\cdots&2&2\\
-				-1&0&1&\cdots&2&2\\
-				\vdots&\vdots&\vdots&\ddots&\vdots&\vdots\\
-				-1&0&0&\cdots&1&2\\
-				-1&0&0&\cdots&0&1
-			\end{vmatrix}=n!.
-		\end{align*}
+		对该方阵实施 $r_i+r_1,i\ge 2$ 即可化为上三角阵.
 	\end{answer}
 	\endgroup
 \end{frame}
@@ -1196,6 +1152,7 @@
 \endgroup
 \end{frame}
 
+
 \begin{frame}{例: 范德蒙行列式}
 		\onslide<+->
 		\begin{proof}[续证]
@@ -1230,7 +1187,7 @@
 				1&2&3&4\\
 				1&4&9&16\\
 				1&8&27&65
-			\end{vmatrix}=$\fillblankframe{\onslide<+->{$14$}}.
+			\end{vmatrix}=$\fillblankframe{$14$}.
 			\onslide<.->{$\alert{=\begin{vmatrix}
 				1&1&1&1\\
 				1&2&3&4\\
@@ -1246,7 +1203,7 @@
 				a&b&c\\
 				a^2&b^2&c^2\\
 				b+c&c+a&a+b
-			\end{vmatrix}=0$, 则 $a+b+c=$\fillblankframe{\onslide<+->{$0$}}.
+			\end{vmatrix}=0$, 则 $a+b+c=$\fillblankframe{$0$}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
@@ -1273,7 +1230,7 @@
 
 
 \begin{frame}{特殊形状行列式\noexer}
-	\beqskip{1pt}
+	% \beqskip{1pt}
 	\onslide<+->
 	\begin{example}
 		计算 $\displaystyle\begin{vmatrix}
@@ -1293,14 +1250,14 @@
 		}
 	\end{proof}
 	\onslide<+->
-	同理若 $k<n-1$, $\det((a_i+b_j)^k)_{1\le i,j\le n}=0$.
-	\onslide<+->
-	对于 $k=n-1$, 可以通过
-	\[(x+b_j)^k=x^k+\rmC_k^1 x^{k-1} b_j+\cdots+\cdots+b_j^k\]
-	将这个方阵拆分为
-	\[((a_i+b_j)^{n-1})_{ij}
-	=(a_i^{n-j})_{ij}\cdot \diag(\rmC_{n-1}^0,\rmC_{n-1}^1,\dots,\rmC_{n-1}^{n-1}) \cdot (b_j^{i-1})_{ij}.\]
-	\endgroup
+	同理若 $k<n-1$, $\Bigl|\bigl((a_i+b_j)^k\bigr)_{1\le i,j\le n}\Bigr|=0$.
+	% \onslide<+->
+	% 对于 $k=n-1$, 可以通过
+	% \[(x+b_j)^k=x^k+\rmC_k^1 x^{k-1} b_j+\cdots+\cdots+b_j^k\]
+	% 将这个方阵拆分为
+	% \[((a_i+b_j)^{n-1})_{ij}
+	% =(a_i^{n-j})_{ij}\cdot \diag(\rmC_{n-1}^0,\rmC_{n-1}^1,\dots,\rmC_{n-1}^{n-1}) \cdot (b_j^{i-1})_{ij}.\]
+	% \endgroup
 \end{frame}
 
 
