@@ -171,22 +171,16 @@
 	}
 \end{example}
 
-\begin{theorem}
+\begin{theorem}\label{thm:zero-isolated}
 非零的解析函数的零点总是孤立的.
 \end{theorem}
 
 \begin{proof}
 	设 $f(z)$ 是区域 $D$ 上的非零解析函数, $z_0\in D$ 是 $f(z)$ 的一个零点.
-{%
 	由于 $f(z)$ 不恒为零, 因此存在 $m\ge 1$ 使得在 $z_0$ 的一个邻域内 $f(z)=(z-z_0)^m g(z)$, $g(z)$ 在 $z_0$ 处解析且非零.
-}
-
-{
+	
 	对于 $\varepsilon=\dfrac12|g(z_0)|$, 存在 $\delta>0$ 使得当 $z\in \Uc(z_0,\delta)\subseteq D$ 时, $|g(z)-g(z_0)|<\varepsilon$.
-}%
-{%
-	从而 $g(z)\neq0$, $f(z)\neq 0$.\qedhere
-}
+	从而 $g(z)\neq0$, $f(z)\neq 0$.
 \end{proof}
 
 由此可知, 一旦我们知道了解析函数在一串有极限的数列上的值, 这个解析函数本身就被唯一决定了.
@@ -301,9 +295,8 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{example}
 		$f(z)=\dfrac z{z+1}$.
-	{由 $\lim\limits_{z\to\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
+	由 $\lim\limits_{z\to\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
 		\[f(z)=\frac{1}{1+\dfrac1z}=1-\frac1z+\frac1{z^2}-\frac1{z^3}+\cdots\]
-	}
 \end{example}
 
 \begin{example}
@@ -348,7 +341,10 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \begin{example}
 	证明非常数复系数多项式 $p(z)$ 总有复零点.
 \end{example}
-
+此即\noun{代数基本定理}\footnote{
+	该定理最先由德国数学家高斯 (Johann Carl Friedrich Gauß, 1777--1855) 于1799年严格证明.
+	参考 \cite[第25章1节]{Kline1990}.
+}.
 \begin{proof}
 	假设多项式 $p(z)$ 没有复零点, 那么 $f(z)=\dfrac1{p(z)}$ 在复平面上处处解析, 
 {%
@@ -815,6 +811,375 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \end{solution}
 
 
+
+
+
+
+
+
+\begin{exercise}
+	单选题: $z=0$ 是函数 $f(z)=\dfrac{e^z-1}{z}$ 的\fillbrace{D}.
+	\xx{一阶极点}{二阶极点}{解析点}{可去奇点}
+\end{exercise}
+
+
+\begin{exercise}
+	单选题: 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的\fillbrace{A}.
+	\xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
+\end{exercise}
+
+
+\begin{exercise}[3]
+	下列函数有哪些奇点? 如果是极点, 请指出它的阶:
+	\subex{$\dfrac1{(z-2)^3(z^2+1)^2}$;}
+	\subex{$\dfrac{\cos z-1}{z^3}$;}
+	\subex{$\dfrac1{z^3+z^2-z-1}$;}
+	\subex{$\dfrac{\ln(z+1)}z$;}
+	\subex{$\dfrac z{(1+z^2)(1+e^{\pi z})}$;}
+	\subex{$\dfrac1{e^{z-1}}$;}
+	\subex{$\dfrac1{z^2(e^z-1)}$;}
+	\subex{$\dfrac{z^6}{1+z^4}$;}
+	\subex{$\dfrac1{\sin z^2}$.}
+\end{exercise}
+\begin{solution}
+	\subex $2$ 为三阶极点, $\pm i$ 为二阶极点.
+
+	\subex $0$ 为一阶极点.
+
+	\subex $-1$ 为二阶极点, $1$ 为一阶极点.
+
+	\subex $0$ 为可去奇点.
+
+	\subex $\pm i$ 为二阶极点, $(2k+1)i$ 为一阶极点, 其中 $k\neq -1,0$ 为整数.
+
+	\subex 没有奇点.
+
+	\subex $0$ 为三阶极点, $2k\pi i$ 为一阶极点, 其中 $k\neq0$ 为整数.
+
+	\subex $\pm\dfrac{1+i}{\sqrt2},\pm\dfrac{1-i}{\sqrt2}$ 为一阶极点.
+
+	\subex $0$ 为二阶极点, $\pm\sqrt{k\pi}$ 为一阶极点, 其中 $k\neq 0$ 为整数.
+
+	也可写成 $\pm\sqrt{k\pi},\pm i\sqrt{k\pi}$, 其中 $k$ 为正整数.
+\end{solution}
+
+
+\begin{exercise}
+	证明: 如果 $z_0$ 是 $f(z)$ 的 $m>1$ 阶零点, 那么 $z_0$ 是 $f'(z)$ 的 $m-1$ 阶零点.
+\end{exercise}
+\begin{solution}[证明]
+	设 $g(z)=f'(z)$, 则 $g^{(n)}(z_0)=f^{(n+1)}(z_0)$.
+	由于
+	\[f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,\quad f^{(m)}(z_0)\neq 0,\]
+	因此
+	\[g(z_0)=g'(z_0)=\cdots=g^{(m-2)}(z_0)=0,\quad g^{(m-1)}(z_0)\neq 0,\]
+	从而 $z_0$ 是 $f'(z)$ 的 $m-1$ 阶零点.
+\end{solution}
+
+
+\begin{exercise}
+	证明: $\dfrac{\pi i}2$ 是 $\ch z$ 的一阶零点.
+\end{exercise}
+\begin{solution}[证明]
+	由于
+	\[\ch\frac{\pi i}2=\frac{e^{\frac{\pi i}2}+e^{-\frac{\pi i}2}}2
+	=\frac{i-i}2=0,\]
+	\[(\ch z)'|_{z=\frac{\pi i}2}=\sh\frac{\pi i}2=\frac{e^{\frac{\pi i}2}-e^{-\frac{\pi i}2}}2
+	=\frac{i+i}2=i\neq 0,\]
+	因此 $\dfrac{\pi i}2$ 是 $\ch z$ 的一阶零点.
+\end{solution}
+
+
+\begin{exercise}
+	$0$ 是 $(\sin z+\sh z-2z)^{-2}$ 的几阶极点?
+\end{exercise}
+\begin{solution}
+	设 $f(z)=\sin z+\sh z-2z$, 则
+	\begin{align*}
+		f(0)&=0,\\
+		f'(0)&=(\cos z+\ch z-2)|_{z=0}=0,\\
+		f''(0)&=(-\sin z+\sh z)|_{z=0}=0,\\
+		f'''(0)&=(-\cos z+\ch z)|_{z=0}=0,\\
+		f^{(4)}(0)&=(\sin z+\sh z)|_{z=0}=0,\\
+		f^{(5)}(0)&=(\cos z+\ch z)|_{z=0}=2\neq0,
+	\end{align*}
+	因此 $0$ 是 $f(z)$ 的 $5$ 阶零点, 从而是 $(\sin z+\sh z-2z)^{-2}$ 的 \markt{$10$ 阶极点}.
+\end{solution}
+\begin{solution}[另解]
+	设 $f(z)=\sin z+\sh z-2z$, 则
+	\[f(z)=\left(z-\frac{z^3}{6}+\frac{z^5}{120}+\cdots\right)
+	+\left(z+\frac{z^3}{6}+\frac{z^5}{120}+\cdots\right)-2z
+	=\frac{z^5}{60}+\cdots,\]
+	因此 $0$ 是 $f(z)$ 的 $5$ 阶零点, 从而是 $(\sin z+\sh z-2z)^{-2}$ 的 $10$ 阶极点.
+\end{solution}
+
+
+\begin{exercise}[3]
+	设 $a$ 是 $\varphi(z)$ 和 $\psi(z)$ 的 $m$ 阶和 $n$ 阶极点, 则 $z=a$ 是
+	\subex{$\varphi(z)\psi(z)$;}
+	\subex{$\dfrac{\varphi(z)}{\psi(z)}$;}
+	\subex{$\varphi(z)+\psi(z)$}\\
+	的什么类型奇点?
+\end{exercise}
+\begin{solution}
+	如果 $a$ 是 $\varphi(z)$ 和 $\psi(z)$ 的 $m$ 阶和 $n$ 阶极点, 则
+
+	\subex $a$ 是 $\varphi(z)\psi(z)$ 的 $m+n$ 阶极点;
+
+	\subex 当 $m>n$ 时, $a$ 是 $\dfrac{\varphi(z)}{\psi(z)}$ 的 $m-n$ 阶极点; 当 $m\le n$ 时, $a$ 是 $\dfrac{\varphi(z)}{\psi(z)}$ 的可去奇点;
+
+	\subex 当 $m\neq n$ 时, $a$ 是 $\varphi(z)+\psi(z)$ 的 $\max\set{m,n}$ 阶极点; 当 $m=n$ 时, $a$ 是 $\varphi(z)+\psi(z)$ 的 $\le m$ 阶极点或可去奇点.
+\end{solution}
+
+
+\section{留数}
+
+\begin{exercise}
+	填空题: 设 $f(z)=\dfrac{2021}z+\dfrac{\sin z}z$, 则 $\Res[f(z),0]=$\fillblank{$2021$}.
+\end{exercise}
+
+
+\begin{exercise}
+	填空题: 设 $f(z)=\dfrac{z}{\sin z}$, 则 $\Res[f(z),0]=$\fillblank{$0$}.
+\end{exercise}
+
+
+\begin{exercise}
+	求函数 $f(z)=\dfrac{z-\sin z}{z^8}$ 在有限奇点处的留数.  
+\end{exercise}
+\begin{solution}
+	它的奇点只有 $z=0$, 且 $0$ 是 $f(z)$ 的至多 $8$ 阶极点.
+	从而
+	\[\Res[f(z),0]=\frac1{7!}(z-\sin z)^{(7)}|_{z=0}
+		=\frac1{7!}\Bigl(-\sin(z+\frac{7\pi}2)\Bigr)|_{z=0}=\markeq{\frac1{7!}}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	求函数 $f(z)=\dfrac{e^{iz}}{1+z^2}$ 在有限奇点处的留数.
+\end{exercise}
+\begin{solution}
+	它的奇点只有 $z=\pm i$, 且它们是 $f(z)$ 的至多 $1$ 阶极点.
+	从而
+	\begin{align*}
+		\Res[f(z),i]&=\frac{e^{iz}}{z+i}\Big|_{z=i}=\frac{e^{-1}}{2i}=\markeq{-\frac i{2e}},\\
+		\Res[f(z),-i]&=\frac{e^{iz}}{z-i}\Big|_{z=-i}=\frac{e}{-2i}=\markeq{\frac {ei}2},\qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
+\end{exercise}
+\begin{solution}
+	$z=0$ 是二阶极点, 故
+	\[\Res[f(z),0]=\left(\frac{\cos z}{z^2-\pi^2}\right)'\Big|_{z=0}=\frac{-\sin z\cdot(z^2-\pi^2)-\cos z\cdot 2z}{(z^2-\pi^2)^2}\bigg|_{z=0}=\markeq{0}.\]
+	$z=\pm\pi$ 是一阶极点, 故
+	\begin{align*}
+		\Res[f(z),\pi]&=\frac{\cos z}{z^2(z+\pi)}\bigg|_{z=\pi}=\markeq{-\frac1{2\pi^3}}, \\
+		\Res[f(z),-\pi]&=\frac{\cos z}{z^2(z-\pi)}\bigg|_{z=-\pi}=\markeq{\frac1{2\pi^3}}.\qedhere
+	\end{align*}	
+\end{solution}
+
+
+\begin{exercise}
+	设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
+\end{exercise}
+\begin{solution}
+	由于 $f(z)=\dfrac{e^{iz}}{z^2-3\pi z+2\pi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\pi,2\pi$, 因此
+	\begin{align*}
+		\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \\
+		&=2\pi i\biggl[\frac{e^{iz}}{z-2\pi}\bigg|_{z=\pi}+\frac{e^{iz}}{z-\pi}\bigg|_{z=2\pi}\biggr] \\
+	&=2\pi i\biggl[\frac1\pi+\frac1\pi\biggr]=\markeq{4i}. \qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	设 $C$ 为正向圆周 $|z|=2$, 求 $\displaystyle\oint_C\frac{\sin z}{z(z-1)}\diff z$.
+\end{exercise}
+\begin{solution}
+	由于 $f(z)=\dfrac{\sin z}{z(z-1)}$ 在 $|z|\le 2$ 内的奇点为 $0,1$, 因此
+	\begin{align*}
+		\oint_C\frac{\sin z}{z(z-1)}\diff z&=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr] \\
+		&=2\pi i\biggl[\frac{\sin z}{z-1}\bigg|_{z=0}+\frac{\sin z}{z}\bigg|_{z=1}\biggr]=\markeq{2\pi i\sin1}. \qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	设 $f(z)=\dfrac1{z^2\cos z}$, $C$ 为正向圆周 $|z|=2$.
+	\subex 求 $f(z)$ 在 $C$ 内部的孤立奇点, 并给出其类型.
+	\subex 求 $f(z)$ 在上述奇点处的留数.
+	\subex 求 $\displaystyle\oint_C f(z)\diff z$.
+\end{exercise}
+\begin{solution}
+	\subex 孤立奇点为\markt{二阶极点 $z=0$, 一阶极点 $z=\pm\frac\pi2$}.
+
+	\subex~
+	\begin{align*}
+		\Res[f(z),0]&=\left(\frac1{\cos z}\right)'\Big|_{z=0}
+		=-\frac{-\sin z}{\cos^2 z}\Big|_{z=0}=\markeq{0},\\
+		\Res[f(z),\frac\pi2]&=\frac{1/z^2}{(\cos z)'}\Big|_{z=\frac\pi2}=\markeq{-\frac4{\pi^2}},\\
+		\Res[f(z),-\frac\pi2]&=\frac{1/z^2}{(\cos z)'}\Big|_{z=-\frac\pi2}=\markeq{\frac4{\pi^2}}.
+	\end{align*}
+
+	\subex~
+	\[\oint_Cf(z)\diff z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),\frac\pi2]+\Res[f(z),-\frac\pi2]\bigr]=\markeq{0}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	设函数 $f(z)=\dfrac{e^z}{z(z-1)^2}$.
+	\subex 求 $f(z)$ 在复平面上的所有孤立奇点, 并讨论其类型;
+	\subex 计算 $f(z)$ 在所有孤立奇点处的留数;
+	\subex 计算积分 $\displaystyle\oint_Cf(z)\diff z$, 其中曲线 $C$ 为正向圆周 $|z|=2$.
+\end{exercise}
+\begin{solution}
+	\subex 孤立奇点为\markt{二阶极点 $z=1$, 一阶极点 $z=0$}.
+
+	\subex~
+	\begin{align*}
+		\Res[f(z),1]&=\left(\frac{e^z}{z}\right)'\Big|_{z=1}
+		=\frac{e^z z-e^z}{z^2}\Big|_{z=1}=\markeq{0},\\
+		\Res[f(z),0]&=\frac{e^z}{(z-1)^2}\Big|_{z=0}=\markeq{1}.
+	\end{align*}
+
+	\subex~
+	\[\oint_Cf(z)\diff z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]=\markeq{2\pi i}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}[5]
+	求下列各函数 $f(z)$ 在有限奇点处的留数:
+	\subex{$\dfrac{z-1}{z^2+2z}$;}
+	\subex{$\dfrac{1-e^{2z}}{z^5}$;}
+	\subex{$\dfrac z{\cos z}$;}
+	\subex{$\cos\dfrac1{1-z}$;}
+	\subex{$\dfrac{\sh z}{\ch z}$.}
+\end{exercise}
+\begin{solution}
+	\subex 由于 $0,-2$ 均为一阶极点, 因此
+	\begin{align*}
+	\Res[f(z),0]&=\lim_{z\to 0}\frac{z-1}{z+2}=\markeq{-\frac12},\\
+	\Res[f(z),-2]&=\lim_{z\to 2}\frac{z-1}z=\markeq{\frac32}.
+	\end{align*}
+
+	\subex 由于 $0$ 为 $4$ 阶极点, 因此
+	\[\Res[f(z),0]=\frac1{4!}\lim_{z\to 0}(1-e^{2z})^{(4)}
+	=\frac1{24}\lim_{z\to 0}(-16e^{2z})=\markeq{-\frac23}.\]
+
+	\subex 由于 $\left(k+\frac12\right)\pi, k\in\BZ$ 为 $\cos z$ 的 $1$ 阶零点, 因此
+	\[\Res[f(z),0]=\frac{z}{-\sin z}\bigg|_{z=\left(k+\frac12\right)\pi}=\markeq{(-1)^{k+1}\left(k+\frac12\right)\pi}.\]
+
+	\subex 由于
+	\[\cos\frac1{1-z}=1-\frac1{2!(z-1)^2}+\frac1{4!(z-1)^4}+\cdots,\]
+	因此 $\Res[f(z),1]=c_{-1}=\markeq{0}$.
+
+	\subex 由于 $\left(k+\frac12\right)\pi i$ 是 $\ch z$ 的 $1$ 阶零点, 因此
+	\[\Res\left[f(z),\left(k+\frac12\right)\pi i\right]
+	=\frac{\sh z}{\sh z}\bigg|_{z=\left(k+\frac12\right)\pi i}=\markeq{1}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}[2]{9}
+	利用留数计算下述积分:
+	\subex{$\displaystyle\oint_{|z|=4}\frac{\sin z}{z(z-\pi)}\diff z$;}
+	\subex{$\displaystyle\oint_{|z|=2}\frac{e^{2z}}{z(z-1)^2}\diff z$;}
+	\subex{$\displaystyle\oint_{|z|=\frac32}\frac{1-\cos z}{z^5}\diff z,\quad m\in\BZ$;}
+	\subex{$\displaystyle\oint_{|z|=1}\frac1{(z-\frac12)^9(z-2)^9}\diff z$.}
+\end{exercise}
+\begin{solution}
+	\subex 被积函数 $f(z)$ 在闭路内部的奇点为可去奇点 $0,\pi$, 因此
+	\[\oint_{|z|=4}f(z)\diff z=2\pi i\bigl(\Res[f(z),0]+\Res[f(z),\pi]\bigr)=\markeq{0}.\]
+
+	\subex 被积函数 $f(z)$ 在闭路内部的奇点为二阶极点 $1$ 和一阶极点 $0$, 因此
+	\[\Res[f(z),1]=\left(\frac{e^{2z}}{z}\right)'\Big|_{z=1}=\frac{2e^{2z}z-e^{2z}}{z^2}\Big|_{z=1}=e^2,\]
+	\[\Res[f(z),0]=\frac{e^{2z}}{(z-1)^2}\Big|_{z=0}=1,\]
+	\[\oint_{|z|=2}f(z)\diff z=2\pi i\bigl(\Res[f(z),1]+\Res[f(z),0]\bigr)=\markeq{2\pi i(e^2+1)}.\]
+
+	\subex 被积函数 $f(z)$ 在闭路内部的奇点为 $3$ 阶极点 $0$, 因此
+	\[\Res[f(z),0]=\frac1{4!}\lim_{z\to 0}(1-\cos z)^{(4)}=-\frac1{24},\]
+	\[\oint_{|z|=\frac32}f(z)\diff z=2\pi i\Res[f(z),0]=\markeq{-\frac{\pi i}{12}}.\]
+
+	\subex $\frac12$ 为被积函数 $f(z)$ 的 $9$ 阶极点, 因此
+	\[\Res[f(z),\frac12]
+		=\frac1{8!}\lim_{z\to \frac12}[(z-2)^{-9}]^{(8)}
+		=\frac1{8!}\lim_{z\to \frac12}\frac{16!}{8!}(z-2)^{-17}
+		=-\frac{16!}{8!^2}(\frac23)^{17}.\]
+	故
+	\[\oint_{|z|=1}f(z)\diff z=2\pi i\Res[f(z),\frac12]=\markeq{-\frac{2^{18}16!\pi i}{{3^{17}}8!^2}}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	函数 $f(z)=\dfrac1{z(z-1)^2}$ 在 $z=1$ 处有一个二阶极点. 这个函数又有下列洛朗展开式
+	\[\frac1{z(z-1)^2}=\cdots+\frac1{(z-1)^5}-\frac1{(z-1)^4}+\frac1{(z-1)^3},\quad|z-1|>1,\]
+	所以``$z=1$ 又是 $f(z)$ 的本性奇点''. 又其中不含 $(z-1)^{-1}$ 幂, 因此 $\Res[f(z),1]=0$. 这些说法对吗?
+	\end{exercise}
+	\begin{solution}
+	不对, 因为这个洛朗展开并不是在 $1$ 的去心邻域内的洛朗展开.
+	\end{solution}
+		
+
+
+\section*{扩展阅读}
+该部分作业不需要交, 有兴趣的同学可以做完后交到本人邮箱.
+\begin{exercise}
+	根据辐角原理和下图简要解释下为何路西定理是对的: 设 $f(z)$ 和 $g(z)$ 在闭路 $C$ 及其内部解析, 且在 $C$ 上满足 $|f(z)|>|f(z)-g(z)|$, 那么在 $C$ 内部 $f(z)$ 和 $g(z)$ 的零点个数相同.
+	\begin{center}
+	\includegraphics[width=8cm]{rouche.png}
+	\end{center}
+\end{exercise}
+
+
+\begin{exercise}
+	设函数 $f(z)$ 在扩充复平面上的奇点都是极点.
+	\subex 证明 $f(z)$ 只有有限多个奇点.
+	\subex 设 $f(z)$ 在复平面内的奇点为 $z_1,\dots,z_n$, 其中 $z_k$ 为 $d_k$ 阶极点. 定义
+	\[g(z)=\prod_{k=1}^n(z-z_k)^{d_k}f(z).\]
+	根据 $g(z)$ 在 $0$ 和 $\infty$ 处的洛朗展开的特点证明 $g(z)$ 是一个多项式, 从而 $f(z)$ 是有理函数.
+	\subex 证明 $\sum\limits_{z\in\BC^*}\ord(f,z)=0$.
+\end{exercise}
+\end{document}
+
+
+
+
+
+
+\item 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的(~~~~).
+\xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
+\item $z=\pi$ 是函数 $\dfrac{\sin z}{(z-\pi)^2}$ 的(~~~~).
+\xx{一阶极点}{一阶零点}{可去奇点}{本性奇点}
+\item $z=0$ 是函数 $f(z)=\dfrac{(e^z-1)^2z^3}{\sin z^8}$ 的(~~~~).
+\xx{一阶极点}{本性奇点}{可去奇点}{三阶极点}
+\item $z=\pi$ 是函数 $f(z)=\dfrac{z-\pi}{(\sin z)^3}$ 的(~~~~).
+\xx{一阶极点}{本性奇点}{可去奇点}{二阶极点}
+\item 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
+\item 设 $f(z)=\dfrac{1}{(z+1)(z+2)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=3}f(z)\diff z$.
+
+
+\item 函数 $\sin\dfrac{1}{1-z}$ 有哪些奇点(包括 $\infty$)? 并求其在 $1$ 处的洛朗展开.
+\item 计算 $\dfrac{e^z}{z(z-1)}$ 在其所有奇点处的留数.
+
+\item 计算 $\displaystyle\int_{|z|=2}\frac{\diff z}{z^3(z-1)^3(z-3)^5}$.
+
+\item $\displaystyle\int_C\dfrac{\diff z}{(\sin z)(z+6)(z-5)}$, $C:|z|=4$.
+\item $\displaystyle\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2+2x+5}\diff x$.
+\item $\displaystyle\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}$.
+
+\item 证明 $\displaystyle\int_0^{2\pi}\cos^{2n}\theta\diff \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\pi$.
+
+\item 求下列全纯函数在 $\{z:|z|<1\}$ 中的零点个数：
+\begin{enumerate}
+\item[(1)] $z^9-2z^6+z^2-8z-2$;
+\item[(2)] $2z^5-z^3+3z^2-z+8$;
+\item[(3)] $e^z-4z^n+1$.
+\end{enumerate}
+
+
+\item 求方程 $z^8+e^z+6z+1=0$ 在 $1<|z|<2$ 中根的个数, 并说明理由.
 % \sectionExerciseAnswer
 
 % \begin{answer}

@@ -99,6 +99,9 @@
 	\onslide<+->
 	故
 	\[\alertn{\int_{-\infty}^{+\infty}R(x)\diff x=2\pi i\sum_{\Im a>0}\Res[R(z),a].}\]
+	\onslide<+->
+	这里我们考虑的广义积分都是指柯西主值
+	\[P.V.\int_{-\infty}^{+\infty}f(x)\diff x=\lim_{a\to+\infty}\int_{-a}^af(x)\diff t.\]
 \end{frame}
 
 
@@ -213,9 +216,9 @@
 			=-e^{2p\pi i}\int_{-R}^Rf(t)\diff t.\]
 		}\onslide<+->{由于 $C_1:z=R+it,0\le t\le 2\pi$,
 		}\onslide<+->{因此
-			\[\abs{\int_{C_1}f(z)\diff z}\le \frac{e^{(p+1)R}}{e^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).\]
+			\[\abs{\int_{C_1}f(z)\diff z}\le \frac{e^{pR}}{e^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).\]
 		}\onslide<+->{同理
-			\[\abs{\int_{C_2}f(z)\diff z}\le \frac{e^{-(p+1)R}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
+			\[\abs{\int_{C_2}f(z)\diff z}\le \frac{e^{-pR}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
 		}
 	\end{solution}
 \end{frame}

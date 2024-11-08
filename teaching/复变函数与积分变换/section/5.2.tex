@@ -20,10 +20,10 @@
 
 \begin{frame}{留数定理}
 	\onslide<+->
-	\begin{second}{复变函数积分计算方法 III: 留数定理}
+	\begin{algorithm}{复变函数积分计算方法 III: 留数定理}
 		若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 则
 		\[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
-	\end{second}
+	\end{algorithm}
 
 	\onslide<+->
 	\begin{proof}
@@ -67,9 +67,12 @@
 
 	\onslide<+->
 	\begin{example}
-			$f(z)=\dfrac{z^3(e^z-1)^2}{\sin z^4}$.
-		\onslide<+->{由于 $\ord(f,0)=3+2-4=1$, $z=0$ 是 $f(z)$ 的可去奇点,
-		}\onslide<+->{因此 \[\Res[f(z),0]=0.\]
+		$f(z)=\dfrac{z^3(e^z-1)^2}{\sin z^4}$.
+		\onslide<+->{%
+		由于 $0$ 是分子的 $5$ 阶零点, 分母的 $4$ 阶零点, 因此 $z=0$ 是 $f(z)$ 的可去奇点.
+		}\onslide<+->{%
+		故
+		\[\Res[f(z),0]=0.\]
 		}
 	\end{example}
 \end{frame}
@@ -99,16 +102,16 @@
 	设 $z_0$ 为 $f(z)$ 的极点.
 
 	\onslide<+->
-	\begin{second}{极点留数计算公式 I}
+	\begin{algorithm}{极点留数计算公式 I}
 		如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
 		\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].\]
-	\end{second}
+	\end{algorithm}
 
 	\onslide<+->
-	\begin{second}{极点留数计算公式 II}
+	\begin{algorithm}{极点留数计算公式 II}
 		如果 $z_0$ 是一阶极点或可去奇点, 那么
 		\[\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z).\]
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -185,10 +188,10 @@
 
 \begin{frame}{留数的计算方法}
 	\onslide<+->
-	\begin{second}{极点留数计算公式 III}
+	\begin{algorithm}{极点留数计算公式 III}
 		设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的一阶零点, 则
 		\[\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.\]
-	\end{second}
+	\end{algorithm}
 
 	\onslide<+->
 	\begin{proof}
@@ -234,11 +237,13 @@
 	\onslide<+->
 	\begin{solution}
 			$f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
-		\onslide<+->{\begin{align*}
+		\onslide<+->{%
+		\begin{align*}
 			\Res[f(z),0]&=\lim_{z\to0}\frac{e^z}{(z-1)^2}=1,\\
 			\visible<+->{\Res[f(z),1]}&\visible<.->{=\lim_{z\to1}\left(\frac{e^z}z\right)'=\lim_{z\to1}\frac{e^z(z-1)}{z^2}=0,}
 		\end{align*}
-		}\onslide<+->{\[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
+		}\onslide<+->{%
+		\[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
 			=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]
 			=2\pi i.\]
 		}
@@ -264,7 +269,7 @@
 	由于
 	\[f\left(\frac1z\right)\frac1{z^2}=\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots\]
 	\onslide<+->
-	因此 $\displaystyle\qquad\qquad\alert{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]}$.
+	因此 $\displaystyle\alertm{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]}$.
 \end{frame}
 
 
@@ -295,12 +300,20 @@
 	\end{example}
 
 	\onslide<+->
-	\begin{solution}
+	\begin{solution*}
+		$f(z)$ 在 $|z|<2$ 内有奇点 $1,-i,0$,
+		\onslide<+->{%
+		其中 $0$ 是本性奇点, 它的留数不易求得.
+		}\onslide<+->{%
+		而 $-i$ 是 $10$ 阶极点, 它的留数也难以计算.
+		}
+		
+		\onslide<+->{%
 		$f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
-	\onslide<+->{
+		}\onslide<+->{%
 		\[\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+i)^{10}}\sin\frac13.\]
-	}
-	\end{solution}
+		}\vspace{-\baselineskip}
+	\end{solution*}
 \end{frame}
 
 
@@ -330,12 +343,12 @@
 	\node at (4.5,2.2) [cstnode2,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-	\node at (9,2.2) [cstnode2,align=center, visible on=<9->]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
+	\node at (9,2.2) [cstnode2,align=center, visible on=<9->]	(end4){闭路外奇点留数之和\\并乘 $-2\pi i$*};
 	\node at (0,4.5) [cstnode,visible on=<2->]	(isclosed){是闭路};
-	\node at (4.5,4.5) [cstnode,visible on=<5->]	(issingle){只有孤立奇点};
+	\node at (4.5,4.5) [cstnode,visible on=<5->]	(issingle){内(外)部只有孤立奇点};
 	\node at (9,4.5) [cstnode,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
 	\node at (1.5,6.3) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
-	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){用闭路内的孤立\\奇点的留数计算};
+	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){闭路内奇点留数之和\\并乘 $2\pi i$};
 
 	\draw[cstmra,fourth,visible on=<2->] (integral.-160) -- (isclosed);
 	\draw[cstmra,fourth,visible on=<3->] (isanalytic) -- node[left]{是} (end1.173);
@@ -344,8 +357,8 @@
 	\draw[cstmra,fourth,visible on=<3->] (isclosed) -- node[left]{否} (isanalytic);
 	\draw[cstmra,fourth,visible on=<6->] (issingle) -- node[left]{否} (end2);
 	\draw[cstmra,fourth,visible on=<4->] (isanalytic) -- node[above]{否} (end2);
-	\draw[cstmra,fourth,visible on=<8->] (ismany) -- node[left]{闭路内的少} (end3);
-	\draw[cstmra,fourth,visible on=<9->] (ismany) -- node[left]{闭路外的少} (end4);
+	\draw[cstmra,fourth,visible on=<8->] (ismany) -- node[left]{闭路内易计算} (end3);
+	\draw[cstmra,fourth,visible on=<9->] (ismany) -- node[left]{闭路外易计算} (end4);
 \end{tikzpicture}
 \end{center}
 \end{frame}

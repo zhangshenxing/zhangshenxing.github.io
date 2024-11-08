@@ -66,12 +66,12 @@
 	\refstepcounter{enumi}\theenumi{ }}}%
 {\ignorespacesafterend}
 % 分段枚举环境
-% \newenvironment{enumpar}[1][(1)]{%
-% 	\setenumtype{#1}\renewcommand{\item}{%
-% 		\ifnum\value{enumi}=0\pause\fi%
-% 		\par%
-% 	\refstepcounter{enumi}\theenumi{ }}}%
-% {\ignorespacesafterend}
+\newenvironment{enumpar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+		\ifnum\value{enumi}=0\pause\fi%
+		\par%
+	\refstepcounter{enumi}\theenumi{ }}}%
+{\ignorespacesafterend}
 % % 首项不分段枚举环境
 \newenvironment{enumnopar}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
@@ -85,6 +85,7 @@
 		\ifnum\value{enumi}=0\pause\fi%
 	\refstepcounter{enumi}\theenumi { }}}%
 {\ignorespacesafterend}
+
 
 % 选择题
 % \begin{taskschoice}(4)
@@ -178,11 +179,11 @@
 	\begin{numcases}{}}{
 	\end{numcases}}
 \newcommand{\vvdots}{\multicolumn{1}{c}{\vdots}}
-
+% 缩小标题
+\newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
 % 填空题/选择题/判断题
 \NewDocumentCommand\fillblankframe{O{3em} O{0ex} m}{\uline{\makebox[#1]{\raisebox{#2}{\onslide<+->{\alertn{#3}}}}}}
 \newcommand\fillbraceframe[1]{{\text{\upshape(\nolinebreak\hspace{0.5em minus 0.5em}\onslide<+->{\alertn{#1}}\hspace{0.5em minus 0.5em}\nolinebreak)}}}
-% \newcommand\resizet[1]{\resizebox{!}{#1\baselineskip}}
 \newcommand{\trueex}{$\checkmark$}
 \newcommand{\falseex}{$\times$}
 
@@ -838,6 +839,7 @@
 \DeclareMathOperator\sh{sh}
 \newcommand\Sht{\mathrm{Sht}}
 \newcommand\Sim{{\mathrm{Sim}}}
+\DeclareMathOperator\sinc{sinc}
 \newcommand\sign{{\mathrm{sign}}}
 \newcommand\SK{{\mathrm{SK}}}
 \newcommand\SL{{\mathrm{SL}}}

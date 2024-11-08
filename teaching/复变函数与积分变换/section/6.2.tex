@@ -62,7 +62,7 @@
 				&\visible<+->{=\frac1{s-k}, \quad\Re s>\Re k.}
 			\end{align*}
 			\onslide<+->{即 $\alertm{\msl[e^{kt}]=\dfrac1{s-k}}$}.
-			\onslide<+->{特别地 \alert{$\msl[1]=\dfrac1s$}.}
+			\onslide<+->{特别地 $\alertm{\msl[1]=\dfrac1s}$.}
 	\end{solution}
 \end{frame}
 
@@ -81,8 +81,8 @@
 			&=-\frac{t^me^{-st}}s\Big|_0^{+\infty}+\int_0^{+\infty}\frac{e^{-st}}s\cdot mt^{m-1}\diff t\\
 			&=\frac ms\msl[t^{m-1}].
 		\end{align*}
-		\onslide<+->{归纳可知
-			$\displaystyle\msl[t^m]=\frac{m!}{s^m}\msl[1]=\alertn{\frac{m!}{s^{m+1}}}$.
+		\onslide<+->{%
+		归纳可知 $\alertm{\msl[t^m]}=\dfrac{m!}{s^m}\msl[1]\alertm{=\dfrac{m!}{s^{m+1}}}$.
 		}
 	\end{solution}
 \end{frame}
@@ -109,10 +109,10 @@
 
 \begin{frame}{拉普拉斯变换的性质}
 	\onslide<+->
-	\begin{second}{微分性质}
+	\begin{algorithm}{微分性质}
 		\[\msl[f'(t)]=sF(s)-f(0),\]
 		\[\msl[f''(t)]=s^2F(s)-sf(0)-f'(0).\]
-	\end{second}
+	\end{algorithm}
 
 	\onslide<+->
 	从拉普拉斯变换的微分性质可以看出, 拉普拉斯变换可以将微分方程转化为代数方程, 从而可用于解微分方程.
@@ -157,12 +157,12 @@
 
 \begin{frame}{常见拉普拉斯变换汇总}
 	\onslide<+->
-	\begin{second}{常见拉普拉斯变换汇总}
+	\begin{algorithm}{常见拉普拉斯变换汇总}
 		\[\msl[1]=\frac1s,\quad \msl[e^{kt}]=\frac1{s-k},\]
 		\[\msl[t^m]=\frac{m!}{s^{m+1}},\quad \msl[t^me^{kt}]=\frac{m!}{(s-k)^{m+1}},\]
 		\[\msl[\sin kt]=\frac{k}{s^2+k^2},\quad
 		\msl[\cos kt]=\frac{s}{s^2+k^2}.\]
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 

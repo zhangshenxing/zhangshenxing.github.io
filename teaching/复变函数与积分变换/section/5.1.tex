@@ -65,7 +65,7 @@
 		\arrayrulecolor{second}
 		\begin{tabular}{ccc} \toprule
 			孤立奇点类型&洛朗级数特点&$\lim\limits_{z\to z_0}f(z)$\\ \toprule
-			可去奇点&没有主要部分&存在且有限\\ \midrule
+			可去奇点&没有主要部分&存在\\ \midrule
 			&主要部分只有有限项非零&\\
 			\multirow{-2}*{$m$ 阶极点}&最低次为 $-m$ 次&\multirow{-2}*{$\infty$}\\ \midrule
 			本性奇点&主要部分有无限项非零&不存在且不为 $\infty$\\ \bottomrule
@@ -93,11 +93,9 @@
 
 	\onslide<+->
 	\begin{theorem}
-		\begin{tabular}{rl}
 			$z_0$ 是 $f(z)$ 的可去奇点
-			&$\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限\\
-			&$\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
-		\end{tabular}
+			$\iff\lim\limits_{z\to z_0}f(z)$ 存在
+			$\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
 	\end{theorem}
 \end{frame}
 
@@ -180,8 +178,8 @@
 	\onslide<+->
 	\begin{example}
 			$f(z)=\dfrac{3z+2}{z^2(z+2)}$,
-		\onslide<+->{由于 $\lim\limits_{z\to 0}z^2f(z)=1$, 因此 $0$ 是二阶极点.
-		}\onslide<+->{同理 $-2$ 是一阶极点.
+		\onslide<+->{由于 $\lim\limits_{z\to 0}z^2f(z)=1$, 因此 $0$ 是 $2$ 阶极点.
+		}\onslide<+->{同理 $-2$ 是 $1$ 阶极点.
 		}
 	\end{example}
 
@@ -192,7 +190,7 @@
 
 	\onslide<+->
 	\begin{answer}
-		$-1$ 是一阶极点, $1$ 是二阶极点.
+		$-1$ 是 $1$ 阶极点, $1$ 是 $2$ 阶极点.
 	\end{answer}
 \end{frame}
 
@@ -215,8 +213,8 @@
 	\onslide<+->
 	\begin{theorem}
 		设 $f(z)$ 在 $z_0$ 解析.
-		$z_0$ 是 $m$ 阶零点当且仅当
-		\[f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,\quad
+		$z_0$ 是 $m$ 阶零点$\iff\lim\limits_{z\to z_0}(z-z_0)^{-m}f(z)$ 存在
+		\[\iff f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,\quad
 		f^{(m)}(z_0)\neq 0.\]
 	\end{theorem}
 \end{frame}
@@ -226,16 +224,17 @@
 	\onslide<+->
 	\begin{example}
 			$f(z)=z(z-1)^3$
-		\onslide<+->{有一阶零点 $0$ 和三阶零点 $1$.
+		\onslide<+->{有 $1$ 阶零点 $0$ 和 $3$ 阶零点 $1$.
 		}
 	\end{example}
 
 	\onslide<+->
 	\begin{example}
-			$f(z)=\sin z-z$.
-		\onslide<+->{由于
-			\[f(z)=\frac{z^3}{3!}-\frac{z^5}{5!}+\cdots\]
-			因此 $0$ 是三阶零点.
+		$f(z)=\sin z^5-z^5$.
+		\onslide<+->{%
+		由于
+			\[f(z)=-\frac{z^{15}}{3!}+\frac{z^{25}}{5!}+\cdots\]
+		因此 $0$ 是 $3$ 阶零点.
 		}
 	\end{example}
 \end{frame}
@@ -263,60 +262,66 @@
 	\end{proof*}
 
 	\onslide<+->
-	由此可知, 一旦我们知道了解析函数在一串有极限的数列上的值, 这个解析函数本身就被唯一决定了.
+	若解析函数 $f(z)$ 满足对任意实数 $x,f(x)=e^x$, 那么所有实数都是解析函数 $f(z)-e^z$ 的零点, 从而 $f(z)\equiv e^z$.
 \end{frame}
+
+
+% \begin{frame}{函数的零点, 极点和阶}
+% 	\onslide<+->
+% 	为了统一地研究零点和极点, 我们引入下述记号.
+% 	\onslide<+->
+% 	设 $z_0$ 是 $f(z)$ 的可去奇点、极点或解析点.
+% 	\onslide<+->
+% 	记 $\ord(f,z_0)$ 为 $f(z)$ 在 $z_0$ 的洛朗展开的最低次项幂次.
+
+% 	\onslide<+->
+% 	不难看出,
+% 	\begin{enumerate}
+% 		\item 如果 $\ord(f,z_0)\ge0$, 则 $z_0$ 是可去奇点或解析点.
+% 		\item 如果 $\ord(f,z_0)=m>0$, 则 $z_0$ 是可去奇点或 $m$ 阶零点.
+% 		\item 如果 $\ord(f,z_0)=-m<0$, 则 $z_0$ 是 $m$ 阶极点.
+% 	\end{enumerate}
+
+% 	\onslide<+->
+% 	\begin{algorithm}{可去奇点和极点判定方法}
+% 		如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
+% 		\[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
+% 	\end{algorithm}
+% \end{frame}
+
+
+% \begin{frame}{函数的零点, 极点和阶}
+% 	\onslide<+->
+% 	\begin{proof*}
+% 			设 $f_0(z)$ 为幂级数 $(z-z_0)^{-m}f(z)$ 的和函数, $g_0(z)$ 为幂级数 $(z-z_0)^{-n}g(z)$ 的和函数,
+% 		\onslide<+->{则 $f_0(z),g_0(z)$ 在 $z_0$ 解析且非零.
+% 		}%
+
+% 		\onslide<+->{因此 $\dfrac{f_0(z)}{g_0(z)},f_0(z)g_0(z)$ 在 $z_0$ 解析且非零.
+% 		}\onslide<+->{由
+% 			\[\frac{f(z)}{g(z)}=(z-z_0)^{m-n}\frac{f_0(z)}{g_0(z)},\quad
+% 			f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)\]
+% 			可知命题成立.\qedhere
+% 		}
+% 	\end{proof*}
+% \end{frame}
 
 
 \begin{frame}{函数的零点, 极点和阶}
 	\onslide<+->
-	为了统一地研究零点和极点, 我们引入下述记号.
+	下面我们给出分式的奇点和分子分母零点的联系.
 	\onslide<+->
-	设 $z_0$ 是 $f(z)$ 的可去奇点、极点或解析点.
+	\begin{proposition}
+		若 $z_0$ 是 $f$ 的 $m$ 阶零点(若解析不是零点 $m=0$), $g$ 的 $n$ 阶零点, 则 $z_0$ 是 $fg$ 的 $m+n$ 阶零点.
+	\end{proposition}
 	\onslide<+->
-	记 $\ord(f,z_0)$ 为 $f(z)$ 在 $z_0$ 的洛朗展开的最低次项幂次.
-
-	\onslide<+->
-	不难看出,
-	\begin{enumerate}
-		\item 如果 $\ord(f,z_0)\ge0$, 则 $z_0$ 是可去奇点或解析点.
-		\item 如果 $\ord(f,z_0)=m>0$, 则 $z_0$ 是可去奇点或 $m$ 阶零点.
-		\item 如果 $\ord(f,z_0)=-m<0$, 则 $z_0$ 是 $m$ 阶极点.
-	\end{enumerate}
-
-	\onslide<+->
-	\begin{second}{可去奇点和极点判定方法}
-		如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
-		\[\ord\left(\frac fg,z_0\right)=m-n,\quad\ord(fg,z_0)=m+n.\]
-	\end{second}
-\end{frame}
-
-
-\begin{frame}{函数的零点, 极点和阶}
-	\onslide<+->
-	\begin{proof*}
-			设 $f_0(z)$ 为幂级数 $(z-z_0)^{-m}f(z)$ 的和函数, $g_0(z)$ 为幂级数 $(z-z_0)^{-n}g(z)$ 的和函数,
-		\onslide<+->{则 $f_0(z),g_0(z)$ 在 $z_0$ 解析且非零.
-		}%
-
-		\onslide<+->{因此 $\dfrac{f_0(z)}{g_0(z)},f_0(z)g_0(z)$ 在 $z_0$ 解析且非零.
-		}\onslide<+->{由
-			\[\frac{f(z)}{g(z)}=(z-z_0)^{m-n}\frac{f_0(z)}{g_0(z)},\quad
-			f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)\]
-			可知命题成立.\qedhere
-		}
-	\end{proof*}
-\end{frame}
-
-
-\begin{frame}{函数的零点, 极点和阶}
-	\onslide<+->
-	\begin{corollary}
-		设 $z_0$ 是 $f(z)$ 的 $m$ 阶零点, 是 $g(z)$ 的 $n$ 阶零点.
+	\begin{proposition}
+		设 $z_0$ 是 $f$ 的 $m$ 阶零点(若解析不是零点 $m=0$), 是 $g$ 的 $n$ 阶零点.
 		\begin{enumerate}
 			\item 若 $m\ge n$, 则 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的可去奇点.
 			\item 若 $m<n$ 时, 则 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的 $n-m$ 阶极点.
 		\end{enumerate}
-	\end{corollary}
+	\end{proposition}
 \end{frame}
 
 
@@ -334,9 +339,11 @@
 
 	\onslide<+->
 	\begin{solution}
-			由于 $e^z-1=z+\dfrac{z^2}{2!}+\cdots$, 所以 $0$ 是 $e^z-1$ 的一阶零点.
-
-		\onslide<+->{因此 $\ord(f,0)=1-2=-1$, $0$ 是一阶极点.
+		由于
+		\[e^z-1=z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots,\]
+		所以 $0$ 是 $e^z-1$ 的 $1$ 阶零点.
+		\onslide<+->{%
+		因此$0$ 是 $1$ 阶极点.
 		}
 	\end{solution}
 \end{frame}
@@ -350,20 +357,20 @@
 
 	\onslide<+->
 	\begin{solution}
-			由于 $(\sin z)'(0)=\cos 0=1$, 所以 $0$ 是 $\sin z$ 的一阶零点.
-
-		\onslide<+->{因此 $\ord(f,0)=3+2-7=-2$, $0$ 是二阶极点.
+		$0$ 是分子的 $5$ 阶零点, 分母的 $7$ 阶零点.
+		\onslide<+->{%
+		因此 $0$ 是 $2$ 阶极点.
 		}
 	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}
-		求 $f(z)=\dfrac{(z-5)\sin z}{(z-1)^2z^2(z+1)^3}$ 的奇点.
+		函数 $f(z)=\dfrac{(z-5)\sin z}{(z-1)^2z^2(z+1)^3}$ 有哪些什么类型的奇点, 并指出极点的阶.
 	\end{exercise}
 
 	\onslide<+->
 	\begin{answer}
-		$1$ 是二阶极点, $0$ 是一阶极点, $-1$ 是三阶极点.
+		$1$ 是 $2$ 阶极点, $0$ 是 $1$ 阶极点, $-1$ 是 $3$ 阶极点.
 	\end{answer}
 \end{frame}
 
@@ -372,7 +379,7 @@
 
 \begin{frame}{函数在 $\infty$ 的性态}
 	\onslide<+->
-	当我们把复平面扩充成闭复平面后, 从几何上看它变成了一个球面.
+	在复平面添加了 $\infty$之后, 从几何上看它变成了一个球面.
 	\onslide<+->
 	这样的一个球面是一种封闭的曲面, 它具有某些整体性质.
 
@@ -422,7 +429,7 @@
 		\arrayrulecolor{second}
 		\begin{tabular}{ccc}\toprule
 			$\infty$ 类型&洛朗级数特点&$\lim\limits_{z\to\infty}f(z)$\\ \toprule
-			可去奇点&没有正幂次部分&存在且有限\\ \midrule
+			可去奇点&没有正幂次部分&存在\\ \midrule
 			&正幂次部分只有有限项非零&\\
 			\multirow{-2}*{$m$ 阶极点}&最高次为 $m$ 次&\multirow{-2}*{$\infty$}\\ \midrule
 			本性奇点&正幂次部分有无限项非零&不存在且不为 $\infty$\\ \bottomrule
@@ -451,20 +458,28 @@
 
 
 \begin{frame}{例: $\infty$ 的奇点类型}
-	\onslide<+->\begin{example}
-			设 $p(z)$ 是 $n\ge1$ 次多项式,
-		\onslide<+->{则 $\infty$ 是 $p(z)$ 的 $n$ 阶极点.
+	\onslide<+->
+	\begin{example}
+		设 $p(z)$ 是 $n\ge1$ 次多项式,
+		\onslide<+->{%
+		则 $\infty$ 是 $p(z)$ 的 $n$ 阶极点.
+		}
+
+		\onslide<+->{%
+		一般地, $\infty$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\displaystyle\lim_{z\to\infty}\frac{f(z)}{z^m}$ 是非零复数.
 		}
 	\end{example}
 
 	\onslide<+->
 	\begin{example*}
-			函数 
+		函数 
 			\[\sin z=z-\frac{z^3}{3!}+\frac{z^5}{5!}-\frac{z^7}{7!}+\cdots\]
-		\onslide<+->{含有无限多正次幂项, 因此 $\infty$ 是本性奇点.
+		\onslide<+->{%
+		含有无限多正次幂项, 因此 $\infty$ 是本性奇点.
 		}
 
-		\onslide<+->{事实上, 如果函数 $f(z)$ 在复平面上处处解析, 且 $f(z)$ 不是多项式, 则 $\infty$ 是它的本性奇点.
+		\onslide<+->{%
+		事实上, 如果函数 $f(z)$ 在复平面上处处解析, 且 $f(z)$ 不是多项式, 则 $\infty$ 是它的本性奇点.
 		}
 	\end{example*}
 \end{frame}
@@ -479,12 +494,14 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{itemize}
-			\item 整数 $z=k\neq \pm1,2$ 是 $\sin{\pi z}$ 的一阶零点, 因此是 $f(z)$ 的三阶极点.
-			\item $z=\pm1$ 是 $z^2-1$ 的一阶零点, 因此是 $f(z)$ 的二阶极点.
-			\item $z=2$ 是 $(z-2)^3$ 的三阶零点, 因此是 $f(z)$ 的可去奇点.
+			\item 整数 $z=k\neq \pm1,2$ 是 $\sin{\pi z}$ 的 $1$ 阶零点, 因此是 $f(z)$ 的 $3$ 阶极点.
+			\item $z=\pm1$ 是 $z^2-1$ 的 $1$ 阶零点, 因此是 $f(z)$ 的 $2$ 阶极点.
+			\item $z=2$ 是 $(z-2)^3$ 的 $3$ 阶零点, 因此是 $f(z)$ 的可去奇点.
 			\item 由于奇点 $1,2,3,\cdots\to \infty$, 因此 $\infty$ 不是孤立奇点.
 		\end{itemize}
 	\end{solution}
+	\onslide<+->
+	如果 $f(z)$ 在复平面上有无限多奇点, 那么 $f(z)$ 在扩充复平面上一定有非孤立奇点.
 \end{frame}
 
 
@@ -497,7 +514,7 @@
 	\onslide<+->
 	\begin{answer}
 		\begin{itemize}
-			\item $z=2k\pi i$ 是一阶极点, $k\neq 0,\pm1$.
+			\item $z=2k\pi i$ 是 $1$ 阶极点, $k\neq 0,\pm1$.
 			\item $z=0$ 是四阶极点.
 			\item $z=\pm 2\pi i$ 是可去奇点.
 			\item $z=\infty$ 不是孤立奇点.

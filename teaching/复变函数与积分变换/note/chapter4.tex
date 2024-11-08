@@ -496,7 +496,7 @@ e^{-x^{-2}},&x\neq 0,\\
 
 因此解析函数的泰勒展开不仅可以\emph{直接求出各阶导数得到}, 也可以\emph{利用幂级数的运算法则得到}.
 
-\begin{example}
+\begin{example}\label{exam:exp-taylor-expansion}
 	由于 $(e^z)^{(n)}(0)=e^z|_{z=0}=1$, 因此
 	\[e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.\]
 \end{example}
@@ -909,6 +909,516 @@ $a_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $|\lambda|\ge R$ 是奇点, 
 		\]故
 		$\displaystyle\oint_Cf(z)\diff z=2\pi i c_{-1}=2\pi i$.}
 \end{solution}
+
+
+
+
+
+\begin{exercise}
+	单选题: 下列级数中发散的是\fillbrace{D}.
+	\xx{$\displaystyle\sum_{n=1}^\infty\frac{i^n}{n}$}%
+	{$\displaystyle\sum_{n=1}^\infty\left[\frac{1}{\ln (in)}\right]^n$}%
+	{$\displaystyle\sum_{n=0}^\infty\frac{(1+i)^n}{5^n}$}%
+	{$\displaystyle\sum_{n=0}^\infty\frac{\cos(in)}{2^n}$}
+\end{exercise}
+\begin{solution}[解析]
+	A 的实部级数和虚部级数
+	\[-\frac12+\frac14-\frac16+\cdots,\quad
+	\frac11-\frac13+\frac15+\cdots\]
+	都是交错级数, 从而条件收敛. 所以A条件收敛.
+
+	B 中
+	\[\left|z_n\right|
+	=\left|\frac{1}{\ln n+\frac{\pi i}2}\right|^n
+	\le\left(\frac1{\ln 3}\right)^n,\quad n\ge 3,\]
+	因此绝对收敛.
+
+	C 中 $|z_n|\le\left(\dfrac{2}5\right)^n$, 因此绝对收敛.
+
+	D 中
+	\[\sum_{n=0}^\infty\frac{\cos (in)}{2^n}
+	=\sum_{n=0}^\infty\frac{e^n+e^{-n}}{2^{n+1}}
+	=\frac12\sum_{n=0}^\infty\left(\frac e2\right)^n
+	+\frac12\sum_{n=0}^\infty\left(\frac 1{2e}\right)^n,\]
+	因此发散.
+\end{solution}
+
+
+\begin{exercise}
+	单选题: 级数 $\displaystyle\sum_{n=1}^\infty\left[\frac1n+\frac{(-1)^ni}{\sqrt n}\right]$ 的敛散性是\fillbrace{D}.
+	\xx{无法判断}{条件收敛}{绝对收敛}{发散}
+\end{exercise}
+\begin{solution}[解析]
+	由于实部是调和级数, 发散, 虚部是交错级数, 条件收敛, 因此原函数发散.
+\end{solution}
+
+
+\begin{exercise}[3]
+	判断下列级数的绝对收敛性与收敛性:
+	\subex{$\displaystyle\sum_{n=2}^\infty\frac{i^n}{\ln n}$;}
+	\subex{$\displaystyle\sum_{n=0}^\infty\frac{(6+5i)^n}{8^n}$;}
+	\subex{$\displaystyle\sum_{n=2}^\infty\frac{n^2}{5^n}(1+2i)^n$.}
+\end{exercise}
+\begin{solution}
+	\subex 由于它的实部级数和虚部级数
+	\[-\frac1{\ln2}+\frac1{\ln4}-\frac1{\ln6}+\cdots,\quad
+	-\frac1{\ln3}+\frac1{\ln5}-\frac1{\ln7}+\cdots\]
+	都是交错级数, 从而条件收敛. 所以该级数\markt{条件收敛}.
+
+	\subex 由于
+	\[\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\frac{\sqrt{61}}{8}<1,\]
+	因此该级数\markt{绝对收敛}.
+
+	\subex 由于
+	\[\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}=\lim_{n\to\infty}\abs{\frac{(n+1)^2}{n^2\sqrt5}}=\frac1{\sqrt5}<1,\]
+	因此该级数\markt{绝对收敛}.
+\end{solution}
+
+
+\section{幂级数}
+
+
+\begin{exercise}
+	单选题: 幂级数 $\displaystyle\sum_{n=1}^\infty (iz)^n$ 的收敛半径是\fillbrace{C}.
+	\xx{$i$}{$-i$}{$1$}{$+\infty$}
+\end{exercise}
+\begin{solution}[解析]
+	根据比值法 $r=\lim\limits_{n\to\infty} \left|\dfrac{c_{n+1}}{c_n}\right|=|i|=1$, $R=\dfrac1r=1$.
+\end{solution}
+
+
+\begin{exercise}
+	填空题: 如果级数 $\displaystyle\sum_{n=0}^\infty a_n(z-1)^n$ 在点 $z=3$ 发散，则\fillbrace{B}.
+	\xx{在点 $z=-1$ 收敛}{在点 $z=-3$ 发散}{在点 $z=2$ 收敛}{以上都不对}
+\end{exercise}
+\begin{solution}[解析]
+	根据阿贝尔定理, 该级数在 $|z-1|>|3-1|=2$ 内发散, 在 $|z-1|<|3-1|=2$ 内收敛.
+\end{solution}
+	
+	
+\begin{exercise}
+	填空题: 幂级数 $\displaystyle\sum_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm][3mm]{$\dfrac{\sqrt2}2$}.
+\end{exercise}
+\begin{solution}[解析]
+	根据比值法 $r=\lim\limits_{n\to\infty} \left|\dfrac{c_{n+1}}{c_n}\right|=|1+i|=\sqrt 2$, $R=\dfrac1r=\dfrac{\sqrt2}2$.
+\end{solution}
+
+	
+\begin{exercise}
+	填空题: 幂级数 $\displaystyle\sum_{n=1}^\infty\frac1n(z-1)^n$ 的收敛半径为\fillblank{$1$}.
+\end{exercise}
+\begin{solution}[解析]
+	根据比值法 $r=\lim\limits_{n\to\infty} \left|\dfrac{c_{n+1}}{c_n}\right|
+	=\lim\limits_{n\to\infty} \left|\dfrac{n+1}{n}\right|=1$, $R=\dfrac1r=1$.
+\end{solution}
+
+
+\begin{exercise}
+	填空题: 幂级数 $\displaystyle\sum_{n=1}^\infty\frac{n!}{n^n}z^n$ 的收敛半径为\fillblank{$e$}.
+\end{exercise}
+\begin{solution}[解析]
+	根据比值法 $r=\lim\limits_{n\to\infty} \left|\dfrac{c_{n+1}}{c_n}\right|
+	=\lim\limits_{n\to\infty} \left(\dfrac{n}{n+1}\right)^n=\dfrac1e$, $R=\dfrac1r=e$.
+\end{solution}
+
+
+\begin{exercise}
+	判断题:
+	\subex 任一幂级数在它的收敛圆周上处处收敛. \fillbrace{\falseex}
+	\subex 幂级数的和函数在收敛圆周内可能有奇点. \fillbrace{\falseex}
+	\subex 任一在 $z_0$ 可导的函数一定可以在 $z_0$ 的邻域内展开成泰勒级数. \fillbrace{\falseex}
+\end{exercise}
+\begin{solution}[解析]
+	(1) 错误, 例如 $\sum\limits_{n=1}^\infty\dfrac{z^n}{n}$ 的收敛半径是 $1$, 但在 $z=1$ 处发散.
+
+	(2) 错误, 每一个幂级数的和函数在收敛圆周内处处解析.
+
+	(3) 错误, 需要在 $z_0$ 处解析才行. 例如 $f(z)=z\ov z$ 在 $0$ 处可导但不解析.
+\end{solution}
+
+
+
+\begin{exercise}[2]
+	求下列幂级数的收敛半径:
+	\subex{$\displaystyle\sum_{n=1}^\infty \frac{z^n}{n^p}$ ($p$ 为正整数);}
+	\subex{$\displaystyle\sum_{n=1}^\infty\frac{n!}{n^n}z^n$;}
+	\subex{$\displaystyle\sum_{n=0}^\infty (1+i)^n(z+i)^n$;}
+	\subex{$\displaystyle\sum_{n=1}^\infty e^{\frac{\pi i}n}z^n$;}
+	\subex{$\displaystyle\sum_{n=1}^\infty \left(\frac{z-2}{\ln{in}}\right)^n$;}
+	\subex{$\displaystyle\sum_{n=1}^\infty(n+a^n)z^n$, 其中 $a$ 是正实数.}
+\end{exercise}
+\begin{solution}
+	\subex 由于
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+	=\lim_{n\to\infty}\frac{(n+1)^p}{n^p}
+	=\lim_{n\to\infty}\left(\frac{n+1}n\right)^p=1$,
+	因此收敛半径为 $1$.
+
+	% 下次去掉2题
+	\subex 由于
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+	=\lim_{n\to\infty}\frac{(n+1)!}{n!}\cdot\frac{(n+1)!}{n!}
+	=\lim_{n\to\infty}\left(1+\frac1n\right)^{-n}=\frac1e$,
+	因此收敛半径为 $e$.
+
+	\subex 由于
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+	=\lim_{n\to\infty}\abs{1+i}=\sqrt2$,
+	因此收敛半径为 $\dfrac{\sqrt2}2$.
+
+	\subex 由于
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=1$,
+	因此收敛半径为 $1$.
+
+	\subex 由于
+	$\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{c_n}}
+	=\lim_{n\to\infty}\frac1{\abs{\ln{in}}}
+	=\lim_{n\to\infty}\frac1{\sqrt{(\ln n)^2+\left(\dfrac\pi2\right)^2}}=0$,
+	因此收敛半径为 $+\infty$.
+
+	\subex 当 $a>1$ 时,
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+	=\lim_{n\to\infty}\frac{\dfrac{n+1}{a^n}+a}{\dfrac n{a^n}+1}=a$,
+	因此收敛半径为 $\dfrac1a$.
+
+	当 $0<a\le1$ 时,
+	$\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+	=\lim_{n\to\infty}\frac{1+\dfrac{1+a^{n+1}}n}{1+\dfrac {a^n}n}=1$,
+	因此收敛半径为 $1$.
+\end{solution}
+
+
+\begin{exercise}
+	证明: 如果 $\displaystyle\lim_{n\to\infty}\frac{c_{n+1}}{c_n}$ 存在($\neq\infty$), 下列三个幂级数有相同的收敛半径
+	\[\sum c_nz^n;\quad \sum \frac{c_n}{n+1}z^{n+1};\quad \sum nc_nz^{n-1}.\]
+\end{exercise}
+\begin{solution}[证明]
+	设 $\lambda=\displaystyle\lim_{n\to\infty}\frac{c_{n+1}}{c_n}$, 则
+	\[\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\abs{\lambda},\]
+	\[\lim_{n\to\infty}\abs{\frac{c_{n+1}/(n+1)}{c_n/n}}
+	=\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}\cdot\frac{n}{n+1}
+	=\abs{\lambda},\]
+	\[\lim_{n\to\infty}\abs{\frac{(n+1)c_{n+1}}{nc_n}}
+	=\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}\cdot\frac{n+1}{n}
+	=\abs{\lambda},\]
+	因此三者的收敛半径相同, 均为 $\dfrac1{|\lambda|}$.
+\end{solution}
+
+
+\section{泰勒级数}
+
+
+\begin{exercise}
+	函数 $f(z)=\dfrac{e^{1/z}}{z+1}$ 在 $z_0=i$ 处的泰勒展开成立的最大圆域是 $|z-i|<$\fillblank{$1$}.
+\end{exercise}
+\begin{solution}[解析]
+	泰勒展开成立的最大圆域半径是展开的中心点离最近奇点距离, 所以是 $|i-0|=1$.
+\end{solution}
+
+
+\begin{exercise}[3]
+	把下列各函数展开成 $z$ 的幂级数, 并指出它们的收敛半径:
+	\subex{$\dfrac1{(1+z^2)^2}$;}
+	\subex{$\dfrac{1}{(z-1)(z-2)}$;}
+	\subex{$e^z\cos z$.}
+\end{exercise}
+\begin{solution}
+	\subex 由于 $\pm i$ 是奇点, 因此该函数在 $|z|<1$ 内解析.
+	当 $|z|<1$ 时,
+	\[\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\]
+	\[\frac1{(1+z)^2}=-\left(\frac1{1+z}\right)'
+	=-\sum_{n=1}^\infty(-1)^nnz^{n-1}
+	=\sum_{n=0}^\infty(-1)^n(n+1)z^n,\]
+	\[\frac1{(1+z^2)^2}=\markeq{\sum_{n=0}^\infty(-1)^n(n+1)z^{2n}
+	=1-2z^2+3z^4-4z^6+\cdots,\quad |z|<1}.\]
+
+	\subex 由于 $1,2$ 是奇点, 因此该函数在 $|z|<1$ 内解析.
+	当 $|z|<1$ 时,
+	\begin{align*}
+		\frac1{(z-1)(z-2)}&=\frac1{z-2}-\frac1{z-1}
+		=-\frac12\cdot\frac1{1-z/2}+\frac1{z-1}\\
+		&=-\frac12\sum_{n=0}^\infty\left(\frac z2\right)^nz^n
+		+\sum_{n=0}^\infty z^n
+		=\markeq{\sum_{n=0}^\infty (1-2^{-n-1})z^n,\quad |z|<1}.
+	\end{align*}
+
+	\subex 该函数处处解析.
+	\begin{align*}
+		e^z\cos z&=\frac12(e^{z+iz}+e^{z-iz})=\frac12\sum_{n=0}^\infty\frac{(1+i)^n+(1-i)^n}{n!}z^n=\markeq{\sum_{n=0}^\infty2^{\frac n2}{n!}\cos\frac{n\pi}4z^n}\\
+		&\markeq{=1+z-\frac13z^3-\frac16z^4-\frac1{30}z^5+\frac{8}{7!}z^7+\frac{16}{8!}z^8+\cdots,\quad |z|<+\infty}.\qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}[2]
+	求下列各函数在指定点 $z_0$ 处的泰勒展开式, 并指出它们的收敛半径:
+	\subex{$\dfrac{z}{(z+1)(z+2)}, z_0=2$;}
+	\subex{$\dfrac1{z^2}, z_0=-1$;}
+	\subex{$\arctan z=−\dfrac i2\ln\dfrac{1+iz}{1-iz}, z_0=0$.}
+\end{exercise}
+\begin{solution}
+	\subex 由于 $-1,-2$ 是奇点, 因此该函数在 $|z-2|<3$ 内解析.
+	\begin{align*}
+	\frac{z}{(z+1)(z+2)}&=\frac{2}{z+2}-\frac{1}{z+1}
+	=\frac{2}{4+(z-2)}-\frac{1}{3+(z-2)}\\
+	&=\frac12\sum_{n=0}^\infty\left(-\frac{z-2}4\right)^n
+	-\frac13\sum_{n=0}^\infty\left(-\frac{z-2}3\right)^n\\
+	&\markeq{=\sum_{n=0}^\infty(-1)^n\left(\frac1{2^{2n+1}}
+	-\frac1{3^{n+1}}\right)(z-2)^n,\quad|z-2|<3}.
+	\end{align*}
+
+	\subex 由于 $0$ 是奇点, 因此该函数在 $|z+1|<1$ 内解析.
+	\begin{align*}
+	\frac1z&=\frac1{1+(z+1)}=\sum_{n=0}^\infty(-1)^n(z+1)^n,\quad|z+1|<1,\\
+	\frac1{z^2}&=\left(-\frac1z\right)'
+	=\markeq{\sum_{n=1}^\infty(-1)^nn(z+1)^{n-1}
+	=\sum_{n=0}^\infty(-1)^{n+1}(n+1)(z+1)^n,\quad|z+1|<1}.
+	\end{align*}
+
+	\subex 该函数的奇点为 $iz,|z|\ge 1$, 因此该函数在 $|z|<1$ 内解析.
+	\[(\arctan z)'=\frac1{1+z^2}=\sum_{n=0}^\infty(-1)^nz^{2n},\quad|z|<1,\]
+	\[\arctan z=\markeq{\sum_{n=0}^\infty\frac{(-1)^n}{2n+1}z^{2n+1}
+	=z-\frac13z^3+\frac15z^5-\frac17z^7+\cdots,\quad|z|<1}.\qedhere\]
+\end{solution}
+
+	
+\section{洛朗级数}
+
+
+\begin{exercise}[2]
+	将函数 $f(z)=\dfrac{z+1}{z^2(z-1)}$ 分别在下列区域内展开成洛朗级数
+	\subex{$0<|z|<1$;}
+	\subex{$1<|z|<+\infty$.}
+\end{exercise}
+\begin{solution}
+	\subex 注意到
+	\[f(z)=-\frac1{z^2}-\frac2z+\frac{2}{z-1}.\]
+	因此当 $0<|z|<1$ 时,
+	\[f(z)=\markeq{-\frac1{z^2}-\frac2z-\sum_{n=0}^\infty 2z^n}.\]
+	
+	\subex 
+	因此当 $1<|z|<+\infty$ 时,
+	\[f(z)=-\frac1{z^2}-\frac2z+\frac2z\cdot\frac1{1-\frac1z}
+	=\markeq{\frac1{z^2}+\sum_{n=3}^\infty \frac2{z^n}}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}[2]
+	将函数 $f(z)=\dfrac1{(1-z)(z-2)}$ 分别在下列区域内展开成洛朗级数
+	\subex{$0<|z-1|<1$;}
+	\subex{$2<|z|<+\infty$.}
+\end{exercise}
+\begin{solution}
+	\subex 注意到
+	\[f(z)=\frac1{z-1}-\frac1{z-2}.\]
+	因此当 $0<|z-1|<1$ 时,
+	\[f(z)=\frac1{z-1}+\frac1{1-(z-1)}
+	=\markeq{\frac1{z-1}+\sum_{n=0}^\infty (z-1)^n}.\]
+	
+	\subex 当 $2<|z|<+\infty$ 时,
+	\[f(z)=\frac1z\cdot\frac1{1-\dfrac1z}-\frac1z\cdot\frac1{1-\dfrac2z}
+	=\sum_{n=1}^\infty\frac1{z^n}-\sum_{n=1}^\infty \frac{2^n}{z^n}
+	=\markeq{\sum_{n=1}^\infty\frac{1-2^n}{z^n}}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}[2]
+	将函数 $f(z)=\dfrac1{z^2+z-2}$ 分别在下列区域内展开成洛朗级数
+	\subex{$1<|z|<2$;}
+	\subex{$0<|z-1|<1$.}
+\end{exercise}
+\begin{solution}
+	\subex 注意到
+	\[f(z)=\frac13\left(\frac1{z-1}-\frac1{z+2}\right).\]
+	因此当 $1<|z|<2$ 时,
+	\begin{align*}
+		f(z)&=\frac13\left(\frac1{z-1}-\frac1{z+2}\right)
+	=\frac13\left(\frac1z\cdot\frac1{1-\dfrac1z}-\frac12\cdot\frac1{1+\dfrac z2}\right)\\
+	&=\markeq{\frac13\sum_{n=1}^\infty \frac1{z^n}
+	-\frac16\sum_{n=0}^\infty \left(-\frac12\right)^nz^n}.
+\end{align*}
+	
+	\subex 当 $0<|z-1|<1$ 时,
+	\begin{align*}
+	f(z)&=\frac13\left(\frac1{z-1}-\frac1{z+2}\right)
+	=\frac1{3(z-1)}-\frac19\cdot\frac1{1+\dfrac{z-1}3}\\
+	&=\markeq{\frac1{3(z-1)}-\sum_{n=0}^\infty\left(-\frac13\right)^{n+2}(z-1)^n}.\qedhere
+\end{align*}
+\end{solution}
+
+
+\begin{exercise}[2]
+	将函数 $f(z)=\dfrac1{z^2+z}$ 分别在下列区域内展开成洛朗级数
+	\subex{$1<|z|<2$;}
+	\subex{$0<|z+1|<1$.}
+\end{exercise}
+\begin{solution}
+	\subex 注意到
+	\[f(z)=\frac1z-\frac1{z+1}.\]
+	因此当 $1<|z|<2$ 时,
+	\[f(z)=\frac1z-\frac1{z+1}
+	=\frac1z-\frac1z\cdot\frac1{1+\dfrac1z}
+	=\markeq{-\sum_{n=2}^\infty\frac1{z^n}}.\]
+	
+	\subex 当 $0<|z+1|<1$ 时,
+	\[f(z)=-\frac1{z+1}-\frac1{1-(z+1)}
+	=\markeq{-\frac1{z+1}-\sum_{n=0}^\infty(z+1)^n}.\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	将 $f(z)=\dfrac1{z(z-2)}$ 在 $2$ 的去心邻域内展开成洛朗级数.
+\end{exercise}
+\begin{solution}
+	由于 $0$ 是奇点, $f(z)$ 在 $0<|z-2|<2$ 内解析.
+	\begin{align*}
+		f(z)&=\frac1{z(z-2)}=\frac1{z-2}\cdot\frac1{2+z-2}\\
+		&=\frac1{2(z-2)}\cdot\frac1{1+\dfrac{z-2}2}
+		=\frac1{2(z-2)}\sum_{n=0}^\infty\left(-\frac{z-2}2\right)^n\\
+		&=\markeq{\frac1{2(z-2)}+\frac12\sum_{n=0}^\infty\left(-\frac12\right)^{n+1}(z-2)^n}.\qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	将函数 $e^{1/(1-z)}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
+\end{exercise}
+\begin{solution}
+	由于当 $|z|<1$ 时,
+	\begin{align*}
+		\left(\frac{z}{z-1}\right)^k
+		&=(-1)^kz^k(1-z)^{-k}\\
+		&=(-1)^kz^k\sum_{n=0}^\infty\frac{(-k)(-k-1)\cdots(-k-n+1)}{n!}(-z)^n\\
+		&=\sum_{n=0}^\infty\frac{(-k)(-k-1)\cdots(-k-n+1)}{n!}(-z)^{n+k}\\
+		&=\sum_{n=k}^\infty\frac{(-k)(-k-1)\cdots(-n+1)}{(n-k)!}(-z)^n=\sum_{n=k}^\infty (-1)^k\mathrm{C}_{n-1}^{k-1}z^n,
+\end{align*}
+因此
+\begin{align*}
+	e^{\frac{z}{z-1}}&=1+\sum_{k=1}^\infty\frac1{k!}\left(\frac{z}{z-1}\right)^k\\
+	&=1+\sum_{n=1}^\infty\sum_{k=1}^n \frac{(-1)^k\mathrm{C}_{n-1}^{k-1}}{k!}z^n\\
+	&=1-z-\frac12z^2-\frac16z^3+\frac1{24}z^4+\cdots,
+\end{align*}
+	因此当 $1<|z|<+\infty$ 时,
+	\begin{align*}
+	e^{\frac1{1-z}}&=e^{\frac{1/z}{1/z-1}}
+	=\markeq{1+\sum_{n=1}^\infty\sum_{k=1}^n \frac{(-1)^k\mathrm{C}_{n-1}^{k-1}}{k!}z^{-n}}\\
+	&=\markeq{1-\frac1z-\frac1{2z^2}-\frac1{6z^3}+\frac1{24z^4}+\cdots,\quad 1<|z|<+\infty}.\qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	将 $z^3\exp\left(\dfrac1z\right)$ 在圆环域 $0<|z|<+\infty$ 内展开成洛朗级数.
+\end{exercise}
+\begin{solution}
+	\begin{align*}
+	z^3\exp\left(\frac1z\right)&=\sum_{n=0}^\infty\frac{1}{n!z^{n-3}}
+	=\markeq{\sum_{n=1}^\infty\frac1{(n+3)! z^n}+\frac16+\frac z2+z^2+z^3}\\
+	&=\markeq{\cdots+\frac1{24z}+\frac16+\frac z2+z^2+z^3,\quad 0<|z|<+\infty}.\qedhere
+	\end{align*}
+\end{solution}
+
+
+\begin{exercise}
+	下列结论是否正确? 用长除法得
+	\begin{align*}
+	\frac{z}{1-z}&=z+z^2+z^3+z^4+\cdots,\\
+	\frac{z}{z-1}&=1+\frac1z+\frac1{z^2}+\frac1{z^3}+\cdots,
+	\end{align*}
+	因为 $\dfrac{z}{1-z}+\dfrac{z}{z-1}=0$, 所以
+	\[\cdots+\frac1{z^3}+\frac1{z^2}+\frac1z+1+z+z^2+z^3+z^4+\cdots=0.\]
+\end{exercise}
+\begin{solution}
+	不正确, 因为两个式子成立的条件分别是 $|z|<1$ 和 $|z|>1$, 所以二者并不能相加.
+	事实上, 最后一个双边幂级数的处处发散.
+\end{solution}
+
+
+\begin{exercise}[2]
+	如果 $C$ 为正向圆周 $|z|=3$, 求积分 $\displaystyle\int_Cf(z)\diff z$ 的值, 其中 $f(z)$ 为:
+	\subex{$\dfrac1{z(z+2)}$;}
+	\subex{$\dfrac{z}{(z+1)(z+2)}$.}
+\end{exercise}
+\begin{solution}
+	\subex $C$ 落在圆环域 $2<|z|<+\infty$ 内, 此时
+	\[f(z)=\frac12\left(\frac1z-\frac1{z+2}\right)
+	=\frac12\left[\frac1z-\frac1z\sum_{n=0}^\infty\left(-\frac2z\right)^n\right]
+	=\sum_{n=2}^\infty\frac{(-2)^{n-2}}{z^n}.\]
+	因此
+	\[\int_Cf(z)\diff z=2\pi ic_{-1}=\markeq{0}.\]
+
+	\subex $C$ 落在圆环域 $1<|z+1|<+\infty$ 内, 此时
+	\[f(z)=\frac2{z+2}-\frac1{z+1}
+	=\frac2{z+1}\sum_{n=0}^\infty(-z-1)^{-n}-\frac1{z+1}
+	=\frac1{z+1}+\sum_{n=2}^\infty\frac{2(-1)^{n+1}}{(z+1)^n}.\]
+	因此
+	\[\int_Cf(z)\diff z=2\pi ic_{-1}=\markeq{2\pi i}.\qedhere\]
+\end{solution}
+
+
+\section*{扩展阅读}
+该部分作业不需要交, 有兴趣的同学可以做完后交到本人邮箱.
+\begin{exercise}
+	设解析函数 $f(z)$ 满足 $f(\zeta z)=\zeta^k f(z)$, 其中 $\zeta=e^{2\pi i/m}$ 是 $m$ 次单位根.
+	\subex 归纳证明 $f^{(n)}(\zeta z)=\zeta^{k-n}f^{(n)}(z)$.
+	\subex 证明 $f(z)$ 的麦克劳林展开只有 $ml+k$ 次项, $l\in\BZ$.
+\end{exercise}
+
+
+\begin{exercise}
+	设 $f(z)=\ln z$, $z_0=-3+4i$.
+	\subex 求 $f(z)$ 在 $z_0$ 处的泰勒展开, 并说明它成立的圆域半径是 $4$.
+	\subex 证明上述幂级数的收敛半径是 $5$? 为什么比 $4$ 大?
+\end{exercise}
+
+
+\begin{exercise}
+	设 $P(z)=\dfrac{f(z)}{g(z)}$ 是有理函数, 且其(既约)分母为
+	\[g(z)=(z-\lambda_1)^{d_1}\cdots(z-\lambda_m)^{d_m},\]
+	其中 $|\lambda_1|\le|\lambda_2|\le\cdots\le|\lambda_m|$.
+	
+	设 $r=|\lambda_k|<R=|\lambda_{k+1}|$. 证明 $P(z)$ 在圆环域 $r<|z|<R$ 内的洛朗展开形如
+	\[h(z)+\sum_{n\ge 0}\left[\frac{\alpha_1(n)}{\lambda_1^n}+\cdots+\frac{\alpha_k(n)}{\lambda_k^n}\right]z^n
+	+\sum_{n<0}\left[\frac{\alpha_{k+1}(n)}{\lambda_{k+1}^n}+\cdots+\frac{\alpha_m(n)}{\lambda_m^n}\right]z^n,\]
+	其中 $h(z)$ 是只有有限多项的双边幂级数, $\alpha_t(n)$ 是 $n$ 的多项式, 次数为 $d_t$.
+\end{exercise}
+
+
+\item 求 $\dfrac{1}{1-z-z^2}$ 在 $z=0$ 处的泰勒展开 $\displaystyle\sum_{n=0}^\infty a_nz^n$. 由此求得斐波那契数列
+  \[F_0=F_1=1,\quad F_{n+2}=F_{n+1}+F_n\]
+的通项公式.
+\item 将 $f(z)=\dfrac{1}{z-2}+e^{-z}$ 在 $z=0$ 处展开为幂级数, 并指出其收敛半径.
+\item 将 $f(z)=\dfrac{1}{z^3+2z^2}$ 在 $1<|z+1|<+\infty$ 展开为洛朗级数.
+
+\item 幂级数 $\displaystyle\sum_{n=1}^\infty \frac{z^n}{(1+i)^n}$ 的收敛半径是(~~~~).
+\xx{$0$}{$+\infty$}{$\sqrt2$}{$\dfrac{\sqrt2}2$}
+\item 幂级数 $\displaystyle\sum_{n=1}^\infty \frac{n!}{n^n}z^n$ 的收敛半径是(~~~~).
+\xx{$0$}{$+\infty$}{$e$}{$1$}
+\item 如果函数 $f(z)=\dfrac1{(z+5)\sin z}$ 可以在圆环域 $0<|z|<R$ 内作洛朗展开, 则 $R$ 的最大值为\fillblank{}.
+\item 幂级数 $\displaystyle\sum_{n=1}^\infty (iz)^n$ 的收敛半径是(~~~~).
+\xx{$i$}{$-i$}{$1$}{$+\infty$}
+\item 幂级数在其收敛圆周上(~~~~).
+\xx{一定处处绝对收敛}{一定处处条件收敛}{一定有发散的点}{可能处处收敛也可能有发散的点}
+\item 确定函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域\\
+\indent (1) $0<|z|<1$; \hspace{2em} (2) $1<|z|<+\infty$\\
+内的洛朗级数展开式.
+\item 确定函数 $f(z)=\dfrac{2}{z(z+2)}$ 在圆环域\\
+\indent (1) $0<|z|<2$; \hspace{2em} (2) $2<|z|<+\infty$\\
+内的洛朗级数展开式.
+\item 函数 $f(z)=\dfrac1{(z+5)(z-3)}$ 在 $z_0=0$ 处展开的幂级数的收敛半径是\fillblank{}.
+\item 确定函数 $f(z)=\dfrac{z}{z^2-3z+2}$ 在圆环域\\[6pt]
+\indent (1) $|z|>2$; \hspace{2em} (2) $0<|z-2|<1$\\
+内的洛朗级数展开式.
+\item 确定函数 $f(z)=\dfrac{z+1}{(z-1)(z-2)}$ 在圆环域\\
+\indent (1) $|z-1|>1$; \hspace{2em} (2) $0<|z-2|<1$\\
+内的洛朗级数展开式.
+
+
+
+
+
+
+
 
 
 

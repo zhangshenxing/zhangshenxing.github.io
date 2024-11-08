@@ -4,19 +4,19 @@
   chapter = {
     name = {第,章},
     number = \chinese{chapter},
-    format = \raggedleft\color{main}\huge\bfseries\underline,
+    format = \centering\color{main}\huge\bfseries\uuline,
     beforeskip={10pt}
   },
   section = {
     name = {,},
     format = \raggedright\color{main}\Large\bfseries,
-    beforeskip={7ex plus 2ex minus .4ex},
+    % beforeskip={7ex plus 2ex minus .4ex},
     afterskip={4.6ex plus .4ex},
   },
   subsection = {
     name = {,},
     format = \color{main}\large\bfseries,
-    beforeskip={6.5ex plus 2ex minus .4ex},
+    % beforeskip={6.5ex plus 2ex minus .4ex},
     afterskip={3ex plus .4ex},
   },
   subsubsection = {
@@ -26,7 +26,10 @@
   }
 }
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
-
+\labelformat{chapter}{第\zhnumber{\thechapter}章}
+\labelformat{subsubsection}{\thesubsection.#1小节}
+\labelformat{equation}{公式 (\theequation) }
+\labelformat{figure}{图 \thefigure{} }
 
 
 \RequirePackage{kvoptions}
@@ -200,6 +203,7 @@
   
 %   \AfterEndPreamble{
 %     \setlength\parindent{2\ccwd}}
+\setlength\parindent{2\ccwd}
 
 \ifcsname kaishu\endcsname
   \newcommand{\citshape}{\kaishu}
@@ -217,19 +221,6 @@
 \else
   \newcommand{\cfs}{\normalfont}
 \fi
-
-\global\let\@title\@empty
-\global\let\@author\@empty
-\global\let\@date\@empty
-\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
-\newcommand{\institute}[1]{\gdef\@institute{#1}}
-\newcommand{\version}[1]{\gdef\@version{#1}}
-\newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
-
-\RequirePackage{mwe}
-\newcommand{\logo}[1]{\gdef\@logo{#1}}
-\newcommand{\cover}[1]{\gdef\@cover{#1}}
-
 
 
 % \newcommand{\question}[1]{{\par\citshape #1}\\[0.2ex]}
@@ -275,7 +266,6 @@
 
 \renewcommand{\baselinestretch}{1.3}
 \renewcommand{\contentsname}{目录}
-\renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 \renewcommand{\partname}{\color{main}}
 \renewcommand{\thepart}{第\zhnumber{\arabic{part}}部分}
@@ -286,9 +276,6 @@
 \renewcommand{\appendixname}{附录}
 % \renewcommand{\appendixtocname}{附录}
 \renewcommand{\indexname}{索\hspace{2em}引}
-\renewcommand\eqref[1]{\textcolor{main}{公式~(\ref{#1})}}
-\newcommand\figref[1]{\textcolor{main}{图~\ref{#1} }}
-\newcommand\tabref[1]{\textcolor{main}{表~\ref{#1} }}
 \newcommand{\authorname}{\citshape 作者：}
 \newcommand{\institutename}{\citshape 组织：}
 \newcommand{\datename}{\citshape 时间：}
@@ -321,12 +308,105 @@
 \setlist[enumerate,3]{label=\color{main}\Roman*.}
 \setlist[enumerate,4]{label=\color{main}\Alph*.}
 \newlist{homework}{enumerate}{1}
-\setlist[homework,1]{label=\color{black}{\zhnum*、\hspace*{-\labelsep}}}
+\setlist[homework,1]{label={\zhnum*、\hspace*{-\labelsep}}}
 \newlist{exlist}{enumerate}{3}
-\setlist[exlist,1]{label=\color{black}{\arabic*.},itemindent=0em}
-\setlist[exlist,2]{label=\color{black}{(\arabic*)}}
-\setlist[exlist,3]{label=\color{black}{(\roman*)}}
-\setlist{nolistsep}
+\setlist[exlist,1]{label=\color{main}{\arabic*.},leftmargin=0em}
+\setlist[exlist,2]{label=\color{main}{(\roman*)}}
+\setlist[exlist,3]{label=\color{main}{(\Roman*)}}
+
+\newcommand{\delspace}{\hspace{-1.5em}}
+% 枚举环境
+\newcommand{\setenumtype}[1]{
+	\ifstrequal{#1}{(1)}{%
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{(\arabic{enumi})}}}
+	}{}
+	\ifstrequal{#1}{(i)}{%
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{(\roman{enumi})}}}
+	}{}
+	\ifstrequal{#1}{1.}{%
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{\arabic{enumi}.~}}}
+	}{}
+	\ifstrequal{#1}{A.}{%
+		\renewcommand{\theenumi}{{\upshape\textcolor{main}{\Alph{enumi}.~}}}
+	}{}
+  \setcounter{enumi}{0}%
+}
+% 分段枚举环境
+\newenvironment{enumpar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+		\par%
+	\refstepcounter{enumi}\theenumi{ }}}%
+{\ignorespacesafterend}
+% 首项不分段枚举环境
+\newenvironment{enumnopar}[1][(1)]{%
+	\setenumtype{#1}\renewcommand{\item}{%
+    \ifnum\value{enumi}=0\else\par\fi%
+  \refstepcounter{enumi}\theenumi { }}}%
+{\ignorespacesafterend}
+% 不分段枚举环境
+\NewDocumentEnvironment{enuminline}{O{(1)} O{1em}}{%
+	\setenumtype{#1}\renewcommand{\item}{%
+	\ifnum\value{enumi}=0\else\hspace{#2}\fi%
+	\refstepcounter{enumi}\theenumi { }}}%
+{\ignorespacesafterend}
+% 不分段固定宽度
+% \newlength{\fullwidth}
+% \newlength{\enumlistwidth}
+% \newcounter{enumlisttype}
+% \NewDocumentEnvironment{enumlist}{O{1} O{(1)}}{%
+%   \setlength{\fullwidth}{\linewidth}%
+%   \addtolength{\fullwidth}{-\leftmargin}%
+%   \addtolength{\fullwidth}{-5em}%
+%   \ifnum#1=1\setlength{\enumlistwidth}{\fullwidth}\fi%
+%   \ifnum#1=2\setlength{\enumlistwidth}{.5\fullwidth}\fi%
+%   \ifnum#1=3\setlength{\enumlistwidth}{.333\fullwidth}\fi%
+%   \ifnum#1=4\setlength{\enumlistwidth}{.25\fullwidth}\fi%
+%   \ifnum#1=5\setlength{\enumlistwidth}{.2\fullwidth}\fi%
+%   \setenumtype{#2}
+%   \setcounter{enumlisttype}{0}%
+%   \renewcommand{\item}[1]{%
+%     \ifnum\value{enumlisttype}=#1\setcounter{enumlisttype}{0}\fi%
+%     \ifnum\value{enumlisttype}=0\par\fi%
+%     \refstepcounter{enumlisttype}
+%     \refstepcounter{enumi}
+%     \makebox[\enumlistwidth][l]{\makebox[1.5em][r]{\theenumi} ##1}%
+%   }
+% }{\ignorespacesafterend}
+
+
+
+% % 首项不分段枚举环境
+\newenvironment{itemnopar}[1][$\bullet$]{%
+	\renewcommand{\item}{\par\hspace*{1em}{\upshape\textcolor{main}{#1}} { }}}%
+{\ignorespacesafterend}
+
+
+\RequirePackage{tasks}
+\settasks{%
+	label={\upshape\textcolor{main}{(\roman*)}},%
+	label-width=1.5em,%
+	before-skip={0pt},%
+	after-skip={0pt}%
+}
+\NewTasksEnvironment[
+  label-width=1.5em,
+  item-indent=4em
+]{tasksexam}[\item]
+\NewTasksEnvironment[
+  label-width=1.5em,
+  item-indent=2em
+]{tasksexer}[\item]
+\NewTasksEnvironment[
+  label={\upshape{(\Alph*)}},
+  label-width=1.5em,
+  item-indent=2em
+]{taskschoice}[\item]
+\NewTasksEnvironment[
+  label={\arabic*.},
+  label-width=1.5em
+]{tasksans}[\item]
+
+
 
 \RequirePackage{bbding}
 
@@ -354,6 +434,9 @@
   indent/.style={
     before upper={\parindent2em}
   },
+  noindent/.style={
+    before upper={\vspace{.2\baselineskip}}
+  },
   parttitle/.style={
     mainstyle,
     left=1em,
@@ -374,8 +457,10 @@
   },
   mainstyle/.style={
     common,
-    borderline={0pt}{0pt}{main,cstdash},
-    colbacktitle=main
+    % borderline={0pt}{0pt}{main,cstdash},
+    colbacktitle=main,
+    colback=main!5,
+    borderline={0pt}{0pt}{main},
   },
   secondstyle/.style={
     common,
@@ -405,7 +490,7 @@
 
 % @ means notitle, * means indent
 \RequirePackage{xparse}
-\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\citshape,title=\bfseries{#1}]}{\end{tcolorbox}}
+\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\citshape,title=\bfseries{#1},noindent]}{\end{tcolorbox}}
 \newenvironment{main@}{\begin{tcolorbox}[mainstyle,fontupper=\citshape,notitle]}{\end{tcolorbox}}
 
 % 环境
@@ -514,6 +599,9 @@
 }
 
 
+\renewenvironment{introduction}{}{}
+
+
 
 \newcommand{\section@}[1]{
   \newpage
@@ -524,12 +612,18 @@
   \end{center}
 }
 \newcommand{\sectionHomework}{\section@{作业}}
-\newcommand{\sectionExtraReading}{\section@{扩展阅读}}
-\newcommand{\sectionExerciseAnswer}{
-  \setcounter{exer}{0}
-  \section@{练习答案}
-  \hypersetup{linkcolor=fifth}
-}
+% \newenvironment{ExtraReading}{
+%   \section{扩展阅读\optional}
+  % \setcounter{subsection}{0}
+  % \renewcommand{\thesubsection}{\Alph{subsection}.}
+% }{
+  % \renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+% }
+% \newcommand{\sectionExerciseAnswer}{
+%   \setcounter{exer}{0}
+%   \section@{练习答案}
+%   \hypersetup{linkcolor=fifth}
+% }
 
 
 % \newenvironment{answer}[1][答案]{
@@ -559,10 +653,10 @@
 % % 	\fi%
 % % 	\ifnum\value{subexperiod}>1%
 % % 		\ifnum\value{subexcount}=0\par\fi%
-% % 		\ifnum\value{subexperiod}=2\makebox[0.44\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% % 		\ifnum\value{subexperiod}=3\makebox[0.29\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% % 		\ifnum\value{subexperiod}=4\makebox[0.21\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
-% % 		\ifnum\value{subexperiod}>4\makebox[0.16\columnwidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}=2\makebox[0.44\linewidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}=3\makebox[0.29\linewidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}=4\makebox[0.21\linewidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
+% % 		\ifnum\value{subexperiod}>4\makebox[0.16\linewidth][l]{\textcolor{main}{(\thesubexnum)} #1}\fi%
 % % 		\stepcounter{subexcount}%
 % % 		\ifnum\value{subexperiod}=\value{subexcount}\setcounter{subexcount}{0}\fi%
 % % 	\else%
@@ -596,6 +690,19 @@
 % % \renewcommand{\headrule}{}
 % \fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}\renewcommand{\headrule}{}}
 % \renewcommand{\sectionmark}[1]{\markright{\thesection\, #1}{}}
+
+
+\global\let\@title\@empty
+\global\let\@author\@empty
+% \global\let\@date\@empty
+\newcommand{\subtitle}[1]{\gdef\@subtitle{#1}}
+% \newcommand{\institute}[1]{\gdef\@institute{#1}}
+% \newcommand{\version}[1]{\gdef\@version{#1}}
+% \newcommand{\extrainfo}[1]{\gdef\@extrainfo{#1}}
+
+% \RequirePackage{mwe}
+% \newcommand{\logo}[1]{\gdef\@logo{#1}}
+% \newcommand{\cover}[1]{\gdef\@cover{#1}}
 
 
 \renewcommand*{\maketitle}{%
@@ -694,6 +801,70 @@
 \end{titlepage}
 \restoregeometry
 \thispagestyle{empty}}
+
+
+
+\renewcommand*{\maketitle}{%
+  \hypersetup{pageanchor=false}
+  \begin{titlepage}
+    \pagecolor{yellow!5}
+    \centering
+    \newgeometry{margin = 0in}
+    \begin{minipage}[c][.3\linewidth][c]{\linewidth}
+      \centering
+      \vspace{7ex}
+      \LARGE
+      {
+        \kaishu
+        \ifcsname @subtitle\endcsname
+          \@subtitle\par
+        \fi
+      }
+      \vspace{3ex}
+      {
+        \bfseries\fontsize{30}{40}\selectfont\color{main}
+        \ifcsname @title\endcsname
+          \@title\par
+        \fi
+      }
+      \vspace{5ex}
+      {
+        \fangsong
+        \ifcsname @author\endcsname
+          \@author\par
+        \fi
+      }
+    \end{minipage}
+    \vspace{20ex}
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      colback=green!30,
+      colupper=white,
+      boxrule=0pt,
+      boxsep=0pt,
+      top=\baselineskip,
+      bottom=\baselineskip,
+      left=0pt,
+      height=.85\linewidth,
+      before skip=0pt,
+      sharp corners,
+      notitle
+    ]
+    \centering
+    \vspace{5ex}
+    \includegraphics[width=.7\linewidth]{cover.png}
+    \end{tcolorbox}
+    合肥工业大学
+  \end{titlepage}
+  \newpage\nopagecolor
+  \thispagestyle{empty}
+  \newpage
+}{\relax}
+
+
+
+
 
 
 % \newcommand{\dollar}{\mbox{\textdollar}}

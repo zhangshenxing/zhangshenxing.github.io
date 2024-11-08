@@ -13,8 +13,6 @@
 	}\]
 	\onslide<+->
 	它的系数形成了一个 $m\times n$ 矩阵 $\bfA$, 称为\emph{系数矩阵}.
-	\onslide<+->
-	系数和常数项一起形成了一个 $m\times(n+1)$ 矩阵 $(\bfA,\bfb)$, 称为\emph{增广矩阵}.
 
 	\onslide<+->
 	线性方程组等价于
@@ -115,16 +113,16 @@
 \subsection{齐次线性方程组解的结构}
 
 \begin{frame}{基础解系}
-\beqskip{0pt}
+	\beqskip{0pt}
 	\onslide<+->
 	\begin{definition}
 		称空间 $\{\bfx\mid \bfA\bfx={\bf0}\}$ 的一组基为该齐次线性方程组的\emph{基础解系}.
 	\end{definition}
 	\onslide<+->
-	\begin{second}{齐次线性方程组的解}
+	\begin{algorithm}{齐次线性方程组的解}
 		设 $\bfA\in M_{m\times n}, R(\bfA)=r$.
 		线性方程组 $\bfA\bfx={\bf0}$ 的基础解系包含 $n-r$ 个向量.
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{solution}[证明]
 		通过交换未知元的位置(相当于交换 $\bfA$ 列的位置), 不妨设 $\bfA$ 可化为行最简形
@@ -143,7 +141,7 @@
 			\bfE_r&\bfB\\
 			\bfO&\bfO
 		\end{pmatrix}.\]
-		\vspace{-.6\baselineskip}
+		\vspace{-.4\baselineskip}
 	\end{solution}
 \endgroup
 \end{frame}
@@ -182,15 +180,15 @@
 
 \begin{frame}{求基础解系的步骤}
 	\onslide<+->
-	\begin{second}{齐次线性方程组的解法}
+	\begin{algorithm}{齐次线性方程组的解法}
 		\begin{enumerate}
 			\item 将系数矩阵通过初等行变换化为行最简形.
-			\item 去掉零行, 并取负矩阵, 得到 $r\times n$ 矩阵.
-			\item 添加 $n-r$ 行 $e_j^\rmT$, 使得对角元全都变成 $\pm1$,
-			其中 $1$ 对应的是原来的非零行的第一个 $1$, 得到 $n\times n$ 矩阵.
-			\item 对角元是 $1$ 对应的列就是一组基础解系, 它们形成 $n\times (n-r)$ 矩阵.
+			\item 将矩阵重新写成方程形式 $x_i+\cdots=0$.
+			\item 移项, 使得等式左侧只有阶梯拐角列 $i$ 对应的 $x_i=\cdots$.
+			\item 添加 $n-r$ 项 $x_j=x_j$, 使得等式左边凑成 $\bfx$.
+			\item 等式右侧是非拐角列 $j$ 对应的 $x_j$ 的组合, 其系数形成的 $n-r$ 个向量就是基础解系.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -217,7 +215,13 @@
 			1&2&0&-1/5\\
 			0&0&1&3/10\\
 			0&0&0&0
-		\end{pmatrix}.\]
+		\end{pmatrix},\]
+		\onslide<+->{\[
+			\implies
+			\laeq[l]{
+				x_1+2x_2-1/5x_4=0\\
+				x_3+3/10x_4=0
+			}\]}
 	\end{solution}
 \end{frame}
 
@@ -225,24 +229,20 @@
 \begin{frame}{典型例题: 求基础解系}
 	\onslide<+->
 	\begin{solution}[续解]
-		\[\begin{pNiceMatrix}
-			\visible<2->{-}1&\visible<2->{-}2&0&\visible<1>{-}1/5\\
-			\visible<3->{\alertn0}&\visible<3->{\alertn1}&\visible<3->{\alertn0}&\visible<3->{\alertn0}\\
-			0&0&\visible<2->{-}1&\visible<2->{-}3/10\\
-			\visible<3->{\alertn0}&\visible<3->{\alertn0}&\visible<3->{\alertn0}&\visible<3->{\alertn1}
-			\CodeAfter
-			\tikz \draw[cstdash,main,visible on=<3>] (2-|1) rectangle (3-|5);
-			\tikz \draw[cstdash,main,visible on=<3>] (4-|1) rectangle (5-|5);
-			\tikz \draw[cstdash,second,visible on=<4->] (1-|2) rectangle (5-|3);
-			\tikz \draw[cstdash,second,visible on=<4->] (1-|4) rectangle (5-|5);
-		\end{pNiceMatrix}
-		\visible<4->{\implies\begin{pmatrix}
-			-2&1/5\\
-			\alertn1&\alertn0\\
-			0&-3/10\\
-			\alertn0&\alertn1
-		\end{pmatrix}.}\]
-		\onslide<5->{%
+		将 $x_1,x_3$ 保留在等式左侧, 其它项移动到等式右边, 并添加 $x_2=x_2,x_4=x_4$, 得到
+		\[\laeq[lrr]{
+			x_1=&{}-2x_2&{}+1/5x_4\\
+			x_2=&  x_2&\\
+			x_3=&     &{}-3/10x_4\\
+			x_4=&     &x_4}
+		\onslide<+->{\implies\begin{pmatrix}
+			x_1\\x_2\\x_3\\x_4
+		\end{pmatrix}=x_2\begin{pmatrix}
+			-2\\1\\0\\0
+		\end{pmatrix}+x_4\begin{pmatrix}
+			1/5\\0\\-3/10\\1
+		\end{pmatrix},}\]
+		\onslide<+->{%
 			通解为
 			\[\begin{pmatrix}
 				x_1\\x_2\\x_3\\x_4
@@ -273,18 +273,19 @@
 			0&0&1&0&-1\\
 			0&0&0&1&0\\
 			0&0&0&0&0
-		\end{pmatrix}\implies\begin{pmatrix}
-			-1&-2&0&0&-2\\
-			\alertn0&\alertn1&\alertn0&\alertn0&\alertn0\\
-			0&0&-1&0&1\\
-			0&0&0&-1&0\\
-			\alertn0&\alertn0&\alertn0&\alertn0&\alertn1
-		\end{pmatrix}\implies\begin{pmatrix}
-			-2&-2\\
-			1&0\\
-			0&1\\
-			0&0\\
-			0&1
+		\end{pmatrix}\implies
+		\laeq[l]{
+			x_1=-2x_2-2x_5\\
+			x_2=x_2\\
+			x_3=x_5\\
+			x_4=x_4\\
+			x_5=x_5
+		}\implies\begin{pmatrix}
+			x_1\\x_2\\x_3\\x_4\\x_5
+		\end{pmatrix}=k_1\begin{pmatrix}
+			-2\\1\\0\\0\\0
+		\end{pmatrix}+k_2\begin{pmatrix}
+			-2\\0\\1\\0\\1
 		\end{pmatrix}.\]
 	\end{answer}
 \end{frame}
@@ -323,32 +324,59 @@
 	\end{example}
 	\onslide<+->
 	\begin{example}
-		设 $\bfA_{m\times n}\bfB_{n\times s}=\bfO$, 证明 $R(\bfA)+R(\bfB)\le n$.
+		设 $n$ 阶方阵 $\bfA$ 列向量的一个极大线性无关组为 $\bma_1,\dots,\bma_{n-1}$.
+		则 $\bfA^*\bfx={\bf0}$ 的解为\fillblankframe[10cm]{$k_1\bma_1+\cdots+k_{n-1}\bma_{n-1},k_1,\dots,k_{n-1}$ 为任意常数}.
 	\end{example}
 	\onslide<+->
-	\begin{proof}
-		由于 $\bfB$ 的列向量都是 $\bfA\bfx={\bf0}$ 的解, 因此 $R(\bfB)$ 不超过该方程解空间的维数, 即 $n-R(\bfA)$.
-	\end{proof}
+	\begin{exercise}
+		设 $n$ 阶方阵 $\bfA$ 满足 $R(\bfA)=n-1$, 代数余子式 $A_{11}\neq 0$.
+		则 $\bfA\bfx={\bf0}$ 的解为\fillblankframe[10cm]{$k(A_{11},\dots,A_{1n})^\rmT,k$ 为任意常数}.
+	\end{exercise}
 \end{frame}
 
 
 \begin{frame}{例: 基础解系}
 	\onslide<+->
 	\begin{example}
+		设 $\bfA_{m\times n}\bfB_{n\times s}=\bfO$, 证明 $R(\bfA)+R(\bfB)\le n$.
+	\end{example}
+	\onslide<+->
+	\begin{proof}
+		由于 $\bfB$ 的列向量都是 $\bfA\bfx={\bf0}$ 的解, 因此 $R(\bfB)$ 不超过该方程解空间的维数, 即 $n-R(\bfA)$.
+	\end{proof}
+	\onslide<+->
+	\begin{example}
 		设 $\bfA$ 是实矩阵, 证明 $R(\bfA^\rmT\bfA)=R(\bfA)$.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
-		若 $\bfA^\rmT\bfA\bfx={\bf0}$, 则
-		\[0=\bfx^\rmT\bfA^\rmT\bfA\bfx=(\bfA\bfx)^\rmT\bfA\bfx.\]
+		若 $\bfA^\rmT\bfA\bfx={\bf0}$, 则 $0=\bfx^\rmT\bfA^\rmT\bfA\bfx=(\bfA\bfx)^\rmT\bfA\bfx
+		=[\bfA\bfx,\bfA\bfx]$.
 		\onslide<+->{%
-			设 $\bfA\bfx=(y_1,\dots,y_n)^\rmT$, 则右侧为 $y_1^2+\cdots+y_n^2=0$, 这迫使 $y_1=\cdots=y_n=0$, 于是 $\bfA\bfx=0$.
+		由内积的正定性可知 $\bfA\bfx={\bf0}$.
 		}\onslide<+->{%
 			所以 $\bfA^\rmT\bfA\bfx={\bf0}\iff\bfA\bfx={\bf0}$.
+			二者解空间维数相等.
 		}\onslide<+->{%
-			二者列数相同, 因此二者秩相同.
+			由于二者列数相同, 因此二者秩相同.
 		}
 	\end{proof}
+\end{frame}
+
+
+\begin{frame}{例: 基础解系}
+	\onslide<+->
+	由此可知
+	\[R(\bfA\bfA^\rmT)=R(\bfA^\rmT)=R(\bfA)=R(\bfA^\rmT\bfA),\]
+	\onslide<+->
+	\[R(\bfA)=R(\bfA^\rmT\bfA)=R(\bfA^\rmT\bfA\bfA^\rmT\bfA)=\cdots\]
+	\onslide<+->
+	由于
+	\[R(\bfA)\ge R(\bfA\bfA^\rmT\bfA)\ge R(\bfA^\rmT\bfA\bfA^\rmT\bfA),\] 
+	因此这些矩阵的秩都相等.
+	\onslide<+->
+	类似地, 任意多个 $\bfA,\bfA^\rmT$ 交错相乘得到的矩阵秩也都等于 $R(\bfA)$.
+
 	\onslide<+->
 	注意, 对于复矩阵这并不成立, 例如
 	\[\bfA=\begin{pmatrix}
@@ -362,16 +390,6 @@
 \begin{frame}{例: 基础解系}
 	\onslide<+->
 	\begin{example}
-		设 $n$ 阶方阵 $\bfA$ 列向量的一个极大线性无关组为 $\bma_1,\dots,\bma_{n-1}$.
-		则 $\bfA^*\bfx={\bf0}$ 的解为\fillblankframe[10cm]{$k_1\bma_1+\cdots+k_{n-1}\bma_{n-1},k_1,\dots,k_{n-1}$ 为任意常数}.
-	\end{example}
-	\onslide<+->
-	\begin{exercise}
-		设 $n$ 阶方阵 $\bfA$ 满足 $R(\bfA)=n-1$, 代数余子式 $A_{11}\neq 0$.
-		则 $\bfA\bfx={\bf0}$ 的解为\fillblankframe[10cm]{$k(A_{11},\dots,A_{1n})^\rmT,k_1,\dots,k_{n-1}$ 为任意常数}.
-	\end{exercise}
-	\onslide<+->
-	\begin{example}
 		若 $\bfA=(\bma_1,\bma_2,\bma_3,\bma_4,\bma_5)$ 且 $\bfA\bfx={\bf0}$ 的解为 $k_1(1,0,-1,0,1)^\rmT+k_2(1,0,0,1,-1)^\rmT$, 则 $\bfA$ 列向量组的一个极大无关组是\fillbraceframe{D}.
 		\begin{taskschoice}(4)
 			() $\bma_1,\bma_3,\bma_5$
@@ -380,10 +398,6 @@
 			() $\bma_2,\bma_3,\bma_5$
 		\end{taskschoice}
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{例: 基础解系}
 	\onslide<+->
 	\begin{exercise}
 		若 $\bfA=\begin{pmatrix}
@@ -412,6 +426,8 @@
 	若方程有解, 则 $\bfb$ 可以由 $\bfA$ 的列向量线性表示, 从而 $\bfA$ 的列向量组和 $(\bfA,\bfb)$ 的列向量组等价.
 	\onslide<+->
 	因此 $R(\bfA)=R(\bfA,\bfb)$.
+	\onslide<+->
+	我们称 $m\times(n+1)$ 矩阵 $(\bfA,\bfb)$ 为\emph{增广矩阵}.
 
 	\onslide<+->
 	注意到 $\bfA$ 列向量生成的空间 $V$ 是 $(\bfA,\bfb)$ 列向量生成的空间 $W$ 的子空间.
@@ -426,7 +442,7 @@
 	\end{theorem}
 	\onslide<+->
 	\begin{corollary}
-		若 $R(\bfA_{m\times n})=m$ (即 $\bfA$ 行满秩), 则 $\bfA \bfx=\bfb$ 总有解.
+		若 $R(\bfA_{m\times n})=m$, 则 $\bfA \bfx=\bfb$ 总有解.
 	\end{corollary}
 \end{frame}
 
@@ -436,20 +452,20 @@
 	若非齐次线性方程组 $\bfA\bfx=\bfb$ 有解 $\bfx=\bfx_0$,
 	则 $\bfA(\bfx-\bfx_0)={\bf0}$.
 	\onslide<+->
-	从而 $\bfx-\bfx_0$ 是 $\bfA\bfx={\bf0}$ 的解.
+	从而 $\bfx-\bfx_0$ 是 $\bfA\bfx={\bfb}$ 的解.
 	\onslide<+->
 	设 $\bmx_1,\dots,\bmx_{n-r}$ 为 $\bfA\bfx={\bf0}$ 的一组基础解系, 则 $\bfA\bfx={\bf0}$ 的通解为
 	\[\bfx=\bfx_0+k_1\bmx_1+\cdots+k_{n-r}\bmx_{n-r},\]
 	$k_1,\dots,k_{n-r}$ 为任意常数.
 
 	\onslide<+->
-	\begin{second}{线性方程组解的判定准则}
+	\begin{algorithm}{线性方程组解的判定准则}
 		\begin{enumerate}
 			\item 若 $R(\bfA)<R(\bfA,\bfb)$, 则 $\bfA \bfx=\bfb$ 无解;
 			\item 若 $R(\bfA)=R(\bfA,\bfb)=n$, 则 $\bfA \bfx=\bfb$ 有唯一解;
 			\item 若 $R(\bfA)=R(\bfA,\bfb)<n$, 则 $\bfA \bfx=\bfb$ 有无穷多解.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{corollary}
 		若 $\bfA$ 是 $n$ 阶方阵, 则 $\bfA\bfx=\bfb$ 有唯一解$\iff|\bfA|\neq0$.
@@ -461,16 +477,16 @@
 
 \begin{frame}{求解非齐次线性方程组的步骤}
 	\onslide<+->
-	\begin{second}{非齐次线性方程组的解法}
+	\begin{algorithm}{非齐次线性方程组的解法}
 		\begin{enumerate}
 			\item 写: 写出方程组对应的增广矩阵 $(\bfA,\bfb)$;
 			\item 变: 通过初等行变换将其化为行最简形;
 			\item 判: 通过行最简形判定方程是否有解;
 			\item 解: 若系数矩阵部分零行对应的常数项均为零, 则方程有解.
-			其中特解为每个非零行对应未知元取对应常数项值, 其余取零.
-			\item 通解$=$特解$+$对应的齐次方程的基础解系的线性组合.
+			\item 类似于齐次情形, 将矩阵重新写成方程形式、移项、添恒等式, 使得等式左边凑成 $\bfx$.
+			\item 等式右侧的常数部分是特解，其余是非拐角列 $j$ 对应的 $x_j$ 的组合, 其系数形成的 $n-r$ 个向量就是基础解系.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -508,7 +524,7 @@
 \end{frame}
 
 
-\begin{frame}{典型例题: 解非齐次线性方程组}
+\begin{frame}{典型例题: 解非齐次线性方程组}\small
 	\onslide<+->
 	\begin{example}
 		解方程 $\laeq[cccccccc]{
@@ -533,42 +549,22 @@
 		\onslide<+->{%
 			于是 $R(\bfA)=2=R(\bfA,\bfb)=2$, 有解.
 		}\onslide<+->{%
-			特解为 $(1/2,0,1/2,0)^\rmT$.
-		}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 解非齐次线性方程组}
-	\onslide<+->
-	\begin{solution}[续解]
-		\[\begin{pmatrix}
-			-1&1&0&1\\
-			\alertn0&\alertn1&\alertn0&\alertn0\\
-			0&0&-1&2\\
-			\alertn0&\alertn0&\alertn0&\alertn1
-		\end{pmatrix}\implies\begin{pmatrix}
-			1&1\\
-			1&0\\
-			0&2\\
-			0&1
-		\end{pmatrix}\implies\text{基础解系}\ \bmx_1=\begin{pmatrix}
-			1\\1\\0\\0
-		\end{pmatrix},\quad
-		\bmx_2=\begin{pmatrix}
-			1\\0\\2\\1
-		\end{pmatrix},\]
-		\onslide<+->{%
-			通解为
-			\[\bfx=\begin{pmatrix}
+		\[\laeq[l]{
+			x_1=x_2+x_4+1/2\\
+			x_2=x_2\\
+			x_3=2x_4+1/2\\
+			x_4=x_4
+			}\implies
+		\onslide<+->{
+			\bfx=\begin{pmatrix}
 				1/2\\0\\1/2\\0
 			\end{pmatrix}+k_1\begin{pmatrix}
 				1\\1\\0\\0
 			\end{pmatrix}+k_2\begin{pmatrix}
 				1\\0\\2\\1
-			\end{pmatrix},\]
-			$k_1,k_2$ 为任意常数.
-		}
+			\end{pmatrix},}\]
+		}\onslide<.->{%
+		$k_1,k_2$ 为任意常数.}
 	\end{solution}
 \end{frame}
 
@@ -592,9 +588,9 @@
 \begin{frame}{典型例题: 线性方程组的性质}
 	\onslide<+->
 	\begin{solution}
-		即问 $\bfA\bfx=\bfb$ 的解的情况, 其中 $\bfA=(\bma_1,\bma_2,\bma_3)$.
+		即问 $\bfA\bfx=\bmb$ 的解的情况, 其中 $\bfA=(\bma_1,\bma_2,\bma_3)$.
 		\onslide<+->{%
-			\[(\bfA,\bfb)=\begin{pNiceMatrix}
+			\[(\bfA,\bmb)=\begin{pNiceMatrix}
 				1&2&0&3\\
 				4&7&1&10\\
 				0&1&-1&b\\
@@ -614,7 +610,7 @@
 				\augdash54
 			\end{pNiceMatrix}\]
 		}\onslide<+->{
-			于是可知 $R(\bfA)$ 和 $R(\bfA,\bfb)$, 故
+			于是可知 $R(\bfA)$ 和 $R(\bfA,\bmb)$, 故
 			\begin{enumerate}
 				\item $b\neq 2$ 时, $\bmb$ 不能由 $\bma_1,\bma_2,\bma_3$ 线性表示;
 				\item $a\neq1, b=2$ 时, $\bmb$ 能由 $\bma_1,\bma_2,\bma_3$ 唯一线性表示;
@@ -667,7 +663,7 @@
 		}\]
 	\end{example}
 	\onslide<+->
-	注意处理带未知数的矩阵时, 不宜实施 $\dfrac{1}{a+1}r_2,(a-2)r_3$ 等类似操作, 因为其分母或系数可能为零.
+	和之前求带参数矩阵的秩类似, 此处不宜实施常数不确定是否非零的第二类初等变换 $\dfrac{1}{a+1}r_2,(a-2)r_3$ 等.
 	\onslide<+->
 	\begin{solution}
 		\[(\bfA,\bfb)=\begin{pNiceMatrix}
@@ -740,7 +736,7 @@
 \begin{frame}{典型例题: 解非齐次线性方程组}
 	\onslide<+->
 	\begin{exercise}
-		$a,b$ 为何值时, 以下方程
+		$a,b$ 为何值时, 以下方程\par
 		\begin{enuminline}
 			\item 有唯一解;
 			\item 无解;

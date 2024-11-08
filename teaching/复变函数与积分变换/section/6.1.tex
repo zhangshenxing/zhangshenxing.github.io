@@ -4,12 +4,20 @@
 
 \begin{frame}{周期函数的傅里叶级数展开}
 	\onslide<+->
-	为了引入傅里叶变换, 我们回顾下傅里叶级数展开.
+	为了引入傅里叶变换, 我们回顾下傅里叶级数.
 
 	\onslide<+->
-	设 $f(t)$ 是定义在 $(-\infty,+\infty)$ 上周期为 $T$ 的可积实变函数.
+	考虑定义在 $(-\infty,+\infty)$ 上周期为 $T>0$ 的函数 $f(t)$.
 	\onslide<+->
-	我们知道 $\cos n\omega t$ 和 $\sin n\omega t$ 周期也是 $T$, 其中 $\omega=\dfrac{2\pi}T$.
+	例如
+	\[
+		1,\sin{\omega t},\cos{\omega t},
+		\sin{2\omega t},\cos{2\omega t},
+		\sin{3\omega t},\cos{3\omega t},\dots
+	\]
+	的周期都是 $T$, 其中 $\omega=\dfrac{2\pi}T$.
+	\onslide<+->
+	类似于线性组合的概念, 我们希望将 $f$ 表达为上述函数的线性叠加.
 	\onslide<+->
 	如果 $f(t)$ 在 $\left[-\dfrac T2,\dfrac T2\right]$ 上满足\emph{狄利克雷条件}:
 	\begin{itemize}
@@ -33,13 +41,41 @@
 	由
 	\[\cos x=\frac{e^{jx}+e^{-jx}}2,\quad \sin x=\frac{e^{jx}-e^{-jx}}{2j}\]
 	\onslide<+->
-	可知 $f(t)$ 的傅里叶级数可以表示为函数 $e^{jn\omega t}$ 的线性组合.
+	可知 $f(t)$ 的傅里叶级数可以表示为函数 $e^{jn\omega t}$ 的线性叠加
+	\[
+		f(t)=\sum_{n=-\infty}^{+\infty}c_ne^{jn\omega t}.
+	\]
 	\onslide<+->
-	设 $f(t)=\suml_{n=-\infty}^{+\infty} c_n e^{jn\omega t}$, 则
-	\[c_n=\frac 1T \int_{-\frac T2}^{\frac T2} f(t)e^{-jn\omega t} \diff t.\]
+	现在我们来计算这个线性叠加的系数.
+
 	\onslide<+->
-	于是我们得到周期函数\emph{傅里叶级数的复指数形式}:
-	\[f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-jn\omega\tau} \diff\tau\right] e^{jn\omega t}.\]
+	对于定义在 $(-\infty,+\infty)$ 上周期为 $T>0$ 的\alert{复值}函数 $f,g$, 定义内积
+	\[(f,g):=\frac1T\int_{-\frac T2}^{\frac T2} f(t)\ov g(t)\diff t.\]
+\end{frame}
+
+
+\begin{frame}{傅里叶级数的复指数形式}
+	\onslide<+->
+	那么
+	\[(e^{jm\omega t},e^{jn\omega t})
+	=\frac1T\int_{-\frac T2}^{\frac T2} e^{j(m-n)\omega t}\diff t=\begin{cases}
+		1,&m=n\\
+		0,&m\neq n.
+	\end{cases}\]
+	\onslide<+->
+	所以
+	\[\cdots,e^{-2j\omega t},e^{-j\omega t},1,e^{j\omega t},e^{2j\omega t},\cdots\]
+	是一组标准正交基.
+	\onslide<+->
+	于是
+	\[
+		c_n=(f,e^{jn\omega t})=\frac 1T\int_{-\frac T2}^{\frac T2}f(t)e^{-jn\omega t} \diff t,
+	\]
+	\onslide<+->
+	我们得到周期函数\emph{傅里叶级数的复指数形式}:
+	\[
+		f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-jn\omega\tau} \diff\tau\right] e^{jn\omega t}.
+	\]
 \end{frame}
 
 
@@ -47,7 +83,24 @@
 	\onslide<+->
 	对于一般的函数 $f(t)$, 它未必是周期的.
 	\onslide<+->
-	我们考虑它在 $\left[-\dfrac T2,\dfrac T2\right]$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
+	此时它无法像前面的情形一样, 表达成可数多个函数
+	\[\cdots,e^{-2j\omega t},e^{-j\omega t},1,e^{j\omega t},e^{2j\omega t},\cdots\]
+	的线性叠加,
+	\onslide<+->
+	而是所有的 $e^{j\omega t},\omega\in(-\infty,+\infty)$ 的叠加.
+	\onslide<+->
+	这种叠加的系数应当是无穷小方可, 而求和应当改为积分.
+	\onslide<+->
+	所以, 若记 $e^{j\omega t}$ 的系数为函数 $\dfrac1{2\pi}F(\omega)$, 则
+	\[f(t)=\frac1{2\pi}\int_{-\infty}^{+\infty} F(\omega) e^{j\omega t}\diff t.\]
+\end{frame}
+
+
+\begin{frame}{从傅里叶级数到傅里叶积分公式}
+	\onslide<+->
+	我们来从傅里叶级数形式地推导出函数 $F(\omega)$.
+	\onslide<+->
+	考虑 $f(t)$ 它在 $\left[-\dfrac T2,\dfrac T2\right]$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
 	\onslide<+->
 	设
 	\[\omega_n=n\omega,\quad \Delta\omega_n=\omega_n-\omega_{n-1}=\omega,\]
@@ -66,15 +119,11 @@
 \begin{frame}{傅里叶积分定理}
 	\onslide<+->
 	\begin{main}{傅里叶积分定理}
-			设函数 $f(t)$ 满足
-			\begin{itemize}
-				\item 在 $(-\infty,+\infty)$ 上\emph{绝对可积};
-				\item 在任一有限区间上满足狄利克雷条件.
-			\end{itemize}
-		\onslide<+->{那么
-			\[\alertm{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
-			F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.}\]
-		}\onslide<+->{对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
+		若 $f(t)$ 在 $(-\infty,+\infty)$ 上\emph{绝对可积}, 且在任一有限区间上满足狄利克雷条件, 则
+		\[\alertm{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
+		F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.}\]
+		\onslide<+->{%
+		对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
 		}
 	\end{main}
 	\onslide<+->
@@ -91,18 +140,20 @@
 
 \begin{frame}{傅里叶积分公式的三角形式\noexer}
 	\onslide<+->
+	如果 $f(t)$ 表示随时间 $t$ 变化的函数, 那么 $F(\omega)$ 表示的是频率 $\omega$ 的函数, 所以傅里叶变换是时域到频域的转换.
+
+	\onslide<+->
 	傅里叶积分公式有一些变化形式.
 	\onslide<+->
 	例如:
 	\begin{align*}
-		&f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
-		\visible<+->{=}&\visible<.->{\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
-		\visible<+->{=}&\visible<.->{\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
-			\resizebox{!}{5mm}{
-				$\displaystyle\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
-				+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}$
-			}\Bigr] \diff\omega}\\
-		&\visible<+->{\alertn{=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \cos \omega(t-\tau)\diff\tau\right]\diff\omega.}}
+		f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
+		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
+		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
+				\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
+				+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}
+			\Bigr] \diff\omega}\\
+		&\visible<+->{=\alertn{\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \cos \omega(t-\tau)\diff\tau\right]\diff\omega.}}
 	\end{align*}
 	\onslide<+->
 	此即\emph{傅里叶积分公式的三角形式}.
@@ -111,18 +162,18 @@
 
 \begin{frame}{傅里叶正弦/余弦积分公式\noexer}
 	\onslide<+->
-	对上式再次展开得到:
-	\[f(t)=\frac1\pi\int_0^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau)(\cos\omega t\cos\omega\tau+\sin\omega t\sin \omega\tau)\diff\tau\right]\diff\omega.\]
-
+	若 $f(t)$ 是偶函数, 则 $f(t)\cos{\omega t}$ 是偶函数, $f(t)\sin{\omega t}$ 是偶函数,
 	\onslide<+->
-	若 $f(t)$ 是奇函数, $f(\tau)\cos\omega\tau$ 是 $\tau$ 的奇函数, $f(\tau)\sin \omega\tau$ 是 $\tau$ 的偶函数.
+	\[F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
+	=2\int_0^{+\infty} f(t)\cos{\omega t}\diff t\]
+	也是偶函数,
 	\onslide<+->
-	从而得到\emph{傅里叶正弦积分公式}:
-	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
-
-	\onslide<+->
-	类似地, 若 $f(t)$ 是偶函数, 有\emph{傅里叶余弦积分公式}:
+	从而得到\emph{傅里叶余弦积分公式}:
 	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}\]
+
+	\onslide<+->
+	类似地, 若 $f(t)$ 是奇函数, 则 $\displaystyle F(\omega)=2j\int_0^{+\infty} f(t)\sin{\omega t}\diff t$ 也是奇函数, 且有\emph{傅里叶正弦积分公式}:
+	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
 \end{frame}
 
 
@@ -131,20 +182,26 @@
 	\begin{example}
 		求函数 $f(t)=
 			\begin{cases}
-				1, & |t|\le 1,\\
+				1/2, & |t|\le 1,\\
 				0, & |t|>1
 			\end{cases}$
 		的傅里叶变换.
 	\end{example}
-
+	\onslide<+->
+	这是矩形脉冲函数.
 	\onslide<+->
 	\begin{solution}
-		\vspace{-\baselineskip}
+		由于 $f(t)$ 是偶函数, 因此
 		\begin{align*}
-			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-			&\visible<+->{=\int_{-1}^1(\cos\omega t-j\sin\omega t)\diff t}\visible<+->{=\frac{2\sin \omega}{\omega}.}
+			F(\omega)&=\msf[f(t)]
+			=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
+			=\int_{-\infty}^{+\infty}f(t)\cos{\omega t}\diff t\\
+			&\visible<+->{=\frac12\int_{-1}^1\cos{\omega t}\diff t}
+				\visible<+->{=\frac{\sin \omega}{\omega}.}
 		\end{align*}
 	\end{solution}
+	\onslide<+->
+	它的傅里叶变换为 $\sinc$ 函数 $\sinc(x)=\dfrac{\sin x}x$.
 \end{frame}
 
 
@@ -153,11 +210,11 @@
 	由傅里叶积分公式
 	\begin{align*}
 		f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
-		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{2\sin\omega}{\omega}(\cos\omega t+j\sin\omega t)\diff \omega}\\
-		&\visible<+->{=\frac2\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
+		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\sin\omega}{\omega}(\cos\omega t+j\sin\omega t)\diff \omega}\\
+		&\visible<+->{=\frac1\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
 	\end{align*}
 	\onslide<+->
-	当 $t=\pm1$ 时, 左侧应替换为 $\bigl(f(t+)+f(t-)\bigr)/2=1/2 $.
+	当 $t=\pm1$ 时, 左侧应替换为 $\frac{f(t+)+f(t-)}2=\frac14$.
 	\onslide<+->
 	由此可得
 	\[\int_0^{+\infty}\frac{\sin \omega\cos\omega t}\omega\diff\omega=\begin{cases}
@@ -173,24 +230,34 @@
 
 \begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
-	\begin{example}
-		求函数 $f(t)=\dfrac{\sin t}{t}$ 的傅里叶变换.
-	\end{example}
-
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}
+				\draw[cstaxis](-2,0)--(2,0);
+				\draw[cstaxis](0,-1.5)--(0,2);
+				\draw[cstdash](-1,0)--(-1,1);
+				\draw[cstdash](1,0)--(1,1);
+				\draw[main,cstcurve](-1,1)--(1,1);
+			\end{scope}
+			\begin{scope}[xshift=6cm]
+				\draw[cstaxis](-2.5,0)--(2.5,0);
+				\draw[cstaxis](0,-1.5)--(0,2);
+				\draw[cstcurve,second,domain=1:700,smooth] plot ({\x*0.003}, {1.5*sin(\x)*180/\x/pi});
+				\draw[cstcurve,second,domain=1:700,smooth] plot ({-\x*0.003}, {1.5*sin(\x)*180/\x/pi});
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 	\onslide<+->
-	\begin{solution}
-		根据前面的例子可知
-		\vspace{-\baselineskip}
-		\begin{align*}
-			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-			&\visible<+->{=2\int_0^{+\infty}\frac{\sin t\cos\omega t}{t}\diff t}
-			\visible<+->{=\begin{cases}
-				\pi,&|\omega|<1,\\
-				\pi/2,&|\omega|=1,\\
-				0,&|\omega|>1.
-				\end{cases}}
-		\end{align*}
-	\end{solution}
+	我们将 $f(t),F(\omega)$ 称为傅里叶变换对.
+	\onslide<+->
+	不难发现 $F(t),2\pi f(-\omega)$ 也是傅里叶变换对 (不连续点处值需要修改).
+	\onslide<+->
+	故
+	\[\msf[\sinc(t)]=\begin{cases}
+		\pi,&|\omega|<1,\\
+		\pi/2,&|\omega|=1,\\
+		0,&|\omega|>1.
+		\end{cases}.\]
 \end{frame}
 
 
@@ -208,14 +275,38 @@
 
 	\onslide<+->
 	\begin{solution}
-		\vspace{-\baselineskip}
+		由于 $f(t)$ 是奇函数, 因此
 		\begin{align*}
-			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
-			&\visible<+->{=\left(\int_0^1-\int_{-1}^0\right)(\cos\omega t-j\sin\omega t)\diff t}
-			\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}&\visible<.->{}
+			F(\omega)&=\msf[f(t)]
+			=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
+			=2j\int_0^{+\infty}f(t)\sin{\omega t}\diff t\\
+			&\visible<+->{=2j\int_0^1\sin{\omega t}\diff t}
+			\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}
 		\end{align*}
 	\end{solution}
+\end{frame}
 
+
+\begin{frame}{例: 求傅里叶变换}
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{scope}
+				\draw[cstaxis](-2,0)--(2,0);
+				\draw[cstaxis](0,-1.5)--(0,2);
+				\draw[cstdash](-1,0)--(-1,-1);
+				\draw[cstdash](1,0)--(1,1);
+				\draw[main,cstcurve](-1,-1)--(0,-1);
+				\draw[main,cstcurve](0,1)--(1,1);
+			\end{scope}
+			\begin{scope}[xshift=6cm]
+				\draw[cstaxis](-2.5,0)--(2.5,0);
+				\draw[cstaxis](0,-1.5)--(0,2);
+				\draw[cstcurve,second,domain=1:540,smooth] plot ({\x*pi/800}, {-1.5*(1-cos(\x))*180/\x/pi});
+				\draw[cstcurve,second,domain=1:540,smooth] plot ({-\x*pi/800}, {1.5*(1-cos(\x))*180/\x/pi});
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 	\onslide<+->
 	类似可得
 	$\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega=
@@ -244,7 +335,7 @@
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
 			\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}
-			\visible<+->{\alertn{=\frac1{\beta+j\omega}}.}&\visible<.->{}
+			\visible<+->{=\alertn{\frac1{\beta+j\omega}}.}&\visible<.->{}
 		\end{align*}
 	\end{solution}
 
@@ -272,7 +363,7 @@
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}\\
 			&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
-			\visible<+->{\alertn{=\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}
+			\visible<+->{=\alertn{\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}
 		\end{align*}
 	\end{solution}
 
@@ -293,23 +384,27 @@
 	为此我们引入广义函数的概念.
 
 	\onslide<+->
-	设 $\msc$ 是一些函数形成的线性空间, 例如全体绝对可积函数, 或者全体光滑函数之类的. 
+	设 $\mss$ 是一些函数形成的线性空间.
 	\onslide<+->
-	从一个函数 $\lambda(t)$ 出发, 可以定义一个线性映射 $\msc\to \BR$:
+	从一个(满足特定性质)函数 $\lambda(t)$ 出发, 我们可以定义一个线性映射 $\mss\to \BR$:
 	\[\pair{\lambda,f}:=\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
 	\onslide<+->
 	这个线性映射基本上确定了 $\lambda(t)$ 本身(至多可数个点处不同).
 
 	\onslide<+->
-	\emph{广义函数}就是指一个线性映射 $\msc\to \BR$.
+	\emph{广义函数(分布)}就是指一个线性映射 $\mss\to \BR$.
 	\onslide<+->
-	为了和普通函数类比, 通常也将广义函数表为上述积分形式(并不是真的积分):
+	为了和普通函数类比, 也可将广义函数表为上述积分形式(并不是真的积分):
 	\[\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
 	这里的 $\lambda(t)$ 并不表示一个真正的函数.
 \end{frame}
 
 
 \begin{frame}{狄拉克 $\delta$ 函数}
+	\onslide<+->
+	我们可以取 $\mss$ 是光滑速降函数 $f(t)$ 全体, 即对任意 $k$, $\lim\limits_{t\to\infty}f(t)t^k=0$.
+	\onslide<+->
+	那么一个局部可积且增长速度不超过多项式的 $\lambda(t)$ 就是一个广义函数.
 	\onslide<+->
 	\begin{definition}
 		\emph{$\delta$ 函数}是指广义函数
@@ -335,12 +430,12 @@
 	0,&\text{其它情形,}
 	\end{cases}$
 	\onslide<+->
-	则对于连续函数 $f(t)$,
+	则
 	\[\pair{\delta_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\diff t=f(\xi),\quad \xi\in(0,\varepsilon).\]
 	\onslide<+->
 	当 $\varepsilon\to0$ 时, 右侧就趋于 $f(0)$.
 	\onslide<+->
-	因此 $\delta$ 可以看成 $\delta_\varepsilon$ 的某种极限.
+	因此 $\delta$ 可以看成 $\delta_\varepsilon$ 的``弱极限''.
 	\onslide<+->
 	基于此, 我们通常用长度为 $1$ 的有向线段来表示它.
 \end{frame}
@@ -437,8 +532,8 @@
 
 	\onslide<+->
 	由此可得
-	\[\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
-	\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}.\]
+	\[\alertn{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
+	\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}}.\]
 \end{frame}
 
 
@@ -476,7 +571,7 @@
 
 	\onslide<+->
 	\begin{main}{积分性质}
-		\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega).\]
+		\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega)\qquad (\text{假设}\ \int_{-\infty}^{+\infty}f(t)\diff t=0).\]
 	\end{main}
 
 	\onslide<+->
@@ -506,6 +601,65 @@
 		}
 		\vspace{-\baselineskip}
 	\end{solution}
+	\onslide<+->
+	由此可得任意有理函数(分子次数小于分母)的傅里叶(逆)变换.
+\end{frame}
+
+
+\begin{frame}{典型例题: 计算傅里叶变换}
+	\onslide<+->
+	\begin{example}
+		设 $f(t)$ 定义在 $[-\dfrac T2,\dfrac T2]$ 上,
+		求 $g(t)=\sum\limits_{n=-\infty}^{+\infty}f(t+nT)$ 的傅里叶变换.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		$g(t)$ 是一个周期为 $T$ 的函数, 设 $\omega_0=\dfrac{2\pi}T$.
+		\onslide<+->
+		我们先计算它的傅里叶级数展开
+		\[c_n=\frac1T\int_{-\frac T2}^{\frac T2} f(t)e^{-jn\omega_0 t}\diff t=\frac 1TF(n\omega_0),\quad
+		\onslide<+->{f(t)=\frac1T\sum_{n=-\infty}^{+\infty}F(n\omega_0)e^{jn\omega_0t}.}\]
+		\onslide<+->{%
+		因此
+		\[
+			G(\omega)=\msf[f(t)]=\frac{2\pi}T\sum_{n=-\infty}^{+\infty}F(n\omega_0)\delta(n-n\omega_0).
+		\]
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 计算傅里叶变换}
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[yscale=1.8]
+			\begin{scope}[xscale=.4]
+				\draw[cstaxis](-6,0)--(6,0);
+				\draw[cstaxis](0,-.5)--(0,2);
+				\draw[cstdash](-1,0)--(-1,1);
+				\draw[cstdash](1,0)--(1,1);
+				\draw[cstdash](-3,0)--(-3,1);
+				\draw[cstdash](3,0)--(3,1);
+				\draw[main,cstcurve](-1,1)--(1,1);
+				\draw[main,cstcurve](-5,1)--(-3,1);
+				\draw[main,cstcurve](3,1)--(5,1);
+			\end{scope}
+			\begin{scope}[xshift=7cm,xscale=.3]
+				\draw[cstaxis](-10,0)--(10,0);
+				\draw[cstaxis](0,-.5)--(0,2);
+				\draw[domain=1:800,smooth] plot ({\x/90}, {sin(\x)*90/\x});
+				\draw[domain=1:800,smooth] plot ({-\x/90}, {sin(\x)*90/\x});
+				\draw[cstcurve,cstra,second] (0,0)--(0,{pi/2});
+				\draw[cstcurve,cstra,second] (1,0)--(1,1);
+				\draw[cstcurve,cstra,second] (-1,0)--(-1,1);
+				\draw[cstcurve,cstra,second] (3,0)--(3,-.333);
+				\draw[cstcurve,cstra,second] (-3,0)--(-3,-.333);
+				\draw[cstcurve,cstra,second] (5,0)--(5,.2);
+				\draw[cstcurve,cstra,second] (-5,0)--(-5,.2);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
 \end{frame}
 
 
@@ -538,14 +692,14 @@
 
 \begin{frame}{常见傅里叶变换汇总}
 	\onslide<+->
-	\begin{second}{常见傅里叶变换汇总 I}
+	\begin{algorithm}{常见傅里叶变换汇总 I}
 		\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
 		\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
 		\begin{align*}
 		\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 		\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
 		\end{align*}
-	\end{second}
+	\end{algorithm}
 
 	\onslide<+->
 	\begin{main}{常见傅里叶变换汇总 II}
@@ -556,6 +710,102 @@
 \end{frame}
 
 
+\subsection{傅里叶变换在级数中的应用*}
+\begin{frame}{傅里叶级数的帕塞瓦尔等式\noexer}
+	\onslide<+->
+	对于傅里叶级数 $\displaystyle f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}c_n e^{jn\omega t}$, 我们有如下等式
+	\[\frac1{T}\int_{-\frac T2}^{\frac T2}|f(t)|^2\diff t=\sum_{n=-\infty}^{\infty}|c_n|^2.\]
+	\onslide<+->
+	这其实就是勾股定理.
+	\onslide<+->
+	\begin{example}
+		设 $f(t)$ 是一个周期为 $2\pi$ 的函数, 且 $f(t)=1,t\in[-\pi,\pi]$.
+		\onslide<+->{%
+		它的傅里叶级数展开为 $\displaystyle f(t)=\sum_{n\neq 0}\frac1n e^{jnt}.$
+		}\onslide<+->{%
+		因此
+		\[\frac1{2\pi}\int_{-\pi}^{\pi}t^2\diff t=\sum_{n\neq 0}\frac1{n^2},
+		\qquad\onslide<+->{
+		\sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}6.}\]
+		}\vspace{-\baselineskip}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{傅里叶变换的帕塞瓦尔等式\noexer}
+	\beqskip{5pt}
+	\onslide<+->
+	对于傅里叶变换, 有
+	\begin{theorem}
+		\[\int_{-\infty}^{+\infty}|f(t)|^2\diff t
+		=\frac1{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^2\diff \omega.\]
+	\end{theorem}
+	\onslide<+->
+	\begin{proof}
+		\begin{align*}
+			\int_{-\infty}^{+\infty}|f(t)|^2\diff t
+			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff \omega \ov f(t)\diff t\\
+			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\ov{\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t}F(\omega)\diff \omega\\
+			&=\frac1{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^2\diff \omega.\qedhere
+		\end{align*}
+	\end{proof}
+	\onslide<+->
+	这表明 $\dfrac1{\sqrt{2\pi}}\msf$ 是正交变换.
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{泊松求和公式\noexer}
+	\beqskip{3pt}
+	\onslide<+->
+	\begin{theorem}
+		\[\sum_{n=-\infty}^{+\infty}f(n)
+		=\sum_{n=-\infty}^{+\infty}F(2\pi n).\]
+	\end{theorem}
+	\onslide<+->
+	\begin{proof}
+		考虑 $g(t)=\sum\limits_{n=-\infty}^{+\infty}f(t+n)$ 的傅里叶展开:
+		\onslide<+->{%
+		\begin{align*}
+			&\int_0^1 g(t)e^{-2\pi jnt}\diff t
+			=\sum_{m=-\infty}^{+\infty}\int_0^1f(t+m)e^{-2\pi jnt}\diff t\\
+			\onslide<+->{=}&\onslide<.->{\sum_{m=-\infty}^{+\infty}\int_m^{m+1}f(t)e^{-2\pi jnt}\diff t
+			=\int_{-\infty}^{+\infty}f(t)e^{-2\pi jnt}\diff t=F(2\pi n).}
+		\end{align*}
+		}\onslide<+->{%
+		因此 $g(t)=\sum\limits_{n=-\infty}^{+\infty}F(2\pi n)e^{2\pi j n t}$.
+		}\onslide<+->{%
+		令 $t=0$ 即得.\qedhere
+		}
+	\end{proof}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{泊松求和公式的应用\noexer}
+	\onslide<+->
+	\begin{example}
+		为了计算 $\sum\limits_{n=-\infty}^{+\infty}\dfrac1{n^2+1}$, 
+		\onslide<+->{%
+		考虑
+		\[F(\omega)=\frac1{2\pi +j\omega}+\frac1{2\pi -j\omega}=\frac{4\pi }{4\pi^2+\omega^2}\]
+		的傅里叶逆变换
+		}\onslide<+->{%
+		\[f(t)=\msf^{-1}[F(\omega)]=e^{-2\pi t\sgn(t)}.\]
+		}\onslide<+->{%
+		于是
+		\[
+			\sum_{n=-\infty}^{+\infty}\frac1{n^2+1}
+			=\pi\sum_{n=-\infty}^{+\infty}F(2\pi n)
+			\onslide<+->{=\pi\sum_{n=-\infty}^{+\infty}f(n)
+			=\pi\Bigl(1+2\sum_{n=1}^\infty e^{-2\pi n}\Bigr)
+			=\frac{\pi}{\tanh\pi}.}
+		\]
+		}
+	\end{example}
+\end{frame}
+
+
 \subsection{卷积*}
 \begin{frame}{卷积\noexer}
 	\onslide<+->
@@ -563,9 +813,30 @@
 		$f_1(t),f_2(t)$ 的\emph{卷积}是指
 		\[\alertn{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
 	\end{definition}
-
 	\onslide<+->
-	容易验证卷积满足如下性质:
+	卷积满足如下重要性质:
+	\onslide<+->
+	\begin{main}{卷积定理}
+	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
+	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
+	\vspace{-\baselineskip}
+	\end{main}
+\end{frame}
+
+
+\begin{frame}{卷积的性质\noexer}
+	\onslide<+->
+	\begin{proof}
+		\vspace{-\baselineskip}
+		\begin{align*}
+			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
+		\end{align*}
+	\end{proof}
+	\onslide<+->
+	由函数的乘法性质可知卷积满足如下性质:
 	\begin{itemize}\bf
 		\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
 		\item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
@@ -590,28 +861,6 @@
 		}\onslide<+->{故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
 		}
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{卷积定理\noexer}
-	\onslide<+->
-	\begin{main}{卷积定理}
-	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
-	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
-	\vspace{-\baselineskip}
-	\end{main}
-
-	\onslide<+->
-	\begin{proof}
-		\vspace{-\baselineskip}
-		\begin{align*}
-			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}\\
-			&\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
-		\end{align*}
-	\end{proof}
 \end{frame}
 
 

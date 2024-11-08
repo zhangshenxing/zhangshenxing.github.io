@@ -16,9 +16,9 @@
 	\onslide<+->
 	称 $\bfA$ 的行向量组的秩为\emph{行秩}, 列向量组的秩为\emph{列秩}.
 	\onslide<+->
-	\begin{second}{行秩等于列秩等于秩}
+	\begin{algorithm}{行秩等于列秩等于秩}
 		$\bfA$ 的行秩和列秩均等于秩 $R(\bfA)$.
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	由此可知矩阵的秩是唯一确定的.
 
@@ -56,7 +56,7 @@
 	\onslide<+->
 	\begin{solution}
 		$\bfA$ 是行阶梯形矩阵, 因此 $R(\bfA)=3$.
-		\onslide<+->{\[\bfB\wsim{r_2-2r_1}{r_4-4r_1}\begin{pmatrix}
+		\onslide<+->{\[\bfB\wsim{r_2-2r_1}{r_3-4r_1}\begin{pmatrix}
 			1&2&3\\
 			0&-1&-11\\
 			0&-1&-11
@@ -98,12 +98,16 @@
 			0&0&1\\
 			0&0&0
 		\end{pmatrix}}\]
-		\onslide<+->{因此 $a\neq 0$ 时, $R(\bfA)=3$; $a=0$ 时, $R(\bfA)=2$.}
+		\onslide<+->{%
+		因此 $a\neq 0$ 时, $R(\bfA)=3$; $a=0$ 时, $R(\bfA)=2$.
+		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{例: 计算矩阵的秩}
+	\onslide<+->
+	注意处理带未知数的矩阵时, 不宜实施 $\dfrac{1}{a+1}r_2,(a-2)r_3$ 等类似操作, 因为其分母或系数可能为零.
 	\onslide<+->
 	\begin{exercise}
 		求矩阵 $\bfA=\begin{pmatrix}
@@ -240,8 +244,9 @@
 			\item $\bfA\sim\bfB\iff R(\bfA)=R(\bfB)$;
 			\item $R(\bfA\bfB)\le \min\bigl(R(\bfA),R(\bfB)\bigr)$;
 			\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $R(\bfA)+R(\bfB)\le n$;
-			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$;
-			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+			\item $R(a\bfA+b\bfB)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+			
+			特别地, $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)$.
 		\end{enumerate}
 	\end{proposition}
 \end{frame}
@@ -281,52 +286,17 @@
 	\end{proposition}
 	\onslide<+->
 	\begin{proof}
-		设 $\bfA=\bfP'\begin{pmatrix}
-			\bfE_r&\bfO\\\bfO&\bfO
-		\end{pmatrix}\bfQ,\bfB=\bfP\begin{pmatrix}
-			\bfE_s&\bfO\\\bfO&\bfO
-		\end{pmatrix}\bfQ'$, 其中 $\bfP,\bfP',\bfQ,\bfQ'$ 均可逆.
+		我们将会\S2.4证明空间
+		\[V=\{\bfx\in\BR^n\mid \bfA\bfx={\bf0}\}\]
+		的维数是 $n-R(\bfA)$.
 		\onslide<+->{%
-			则
-			\[\bfA\bfB=\bfO\implies\begin{pmatrix}
-				\bfE_r&\bfO\\\bfO&\bfO
-			\end{pmatrix}\bfQ\bfP\begin{pmatrix}
-				\bfE_s&\bfO\\\bfO&\bfO
-			\end{pmatrix}=\bfO.\]
+		设
+		\[W=\{\bfB\bfy\mid\bfy\in \BR^\ell\}\]
+		是 $\bfB$ 列向量生成的空间,
 		}\onslide<+->{%
-			设 $\bfQ\bfP=\begin{pmatrix}
-			\bfC_1&\bfC_2\\\bfC_3&\bfC_4
-		\end{pmatrix}$
-		其中 $\bfC_1$ 为 $(n-s)\times s$.
-		}\onslide<+->{%
-		由于 $\bfQ\bfP$ 的前 $r$ 行 $s$ 列均为零,
-		}\onslide<+->{%
-		因此若 $r+s>n$, 则 $\bfC_1=\bfO$ 且 $\bfC_3$ 的第一行为零, $|\bfQ\bfP|=\pm|\bfC_2|\cdot|\bfC_3|=0$, 矛盾!}
-	\end{proof}
-\end{frame}
-
-
-\begin{frame}{矩阵秩的性质}
-	\onslide<+->
-	\begin{proposition}
-		\begin{enumerate}
-			\setcounter{enumi}{6}
-			\item $R(\bfA+\bfB)\le R(\bfA)+R(\bfB)$.
-		\end{enumerate}
-	\end{proposition}
-	\onslide<+->
-	\begin{proof}
-		由于添加零行或零列不改变秩, 因此不妨设 $\bfA,\bfB$ 都是方阵.
-		\onslide<+->{%
-		由于\[\bfA+\bfB=(\bfE,\bfE)\begin{pmatrix}
-			\bfA&\\&\bfB
-		\end{pmatrix}\begin{pmatrix}
-			\bfE\\\bfE
-		\end{pmatrix},\]
-		}\onslide<+->{%
-			因此 $R(\bfA+\bfB)\le R\begin{pmatrix}
-				\bfA&\\&\bfB
-			\end{pmatrix}=R(\bfA)+R(\bfB)$.
+		则 $W$ 的维数是 $R(\bfB)$.
+		由 $\bfA\bfB=\bfO$ 可知 $W\subseteq V$,
+		因此 $R(\bfB)\le n-R(\bfA)$.\qedhere
 		}
 	\end{proof}
 \end{frame}
@@ -336,23 +306,42 @@
 	\onslide<+->
 	\begin{proposition}
 		\begin{enumerate}
-			\setcounter{enumi}{7}
-			\item $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+			\setcounter{enumi}{6}
+			\item $R(a\bfA+b\bfB)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
+			
+			特别地, $\max\bigl(R(\bfA),R(\bfB)\bigr)\le R(\bfA,\bfB)$.
 		\end{enumerate}
 	\end{proposition}
 	\onslide<+->
 	\begin{proof}
-		不妨设 $\bfA,\bfB$ 是方阵,
+		设 $S$, $T$ 分别为 $\bfA,\bfB$ 列向量组的极大线性无关组, 
 		\onslide<+->{%
-			则 \[\bfA=(\bfA,\bfB)\begin{pmatrix}
-				\bfE\\\bfO
-			\end{pmatrix},\quad(\bfA,\bfB)=(\bfE,\bfE)\begin{pmatrix}
-				\bfA&\\&\bfB
-			\end{pmatrix}.\]
+		则 $S$, $T$ 的大小分别是 $R(\bfA)$, $R(\bfB)$.
 		}\onslide<+->{%
-		因此 $R(\bfA)\le R(\bfA,\bfB)\le R\begin{pmatrix}
+		由于 $(\bfA,\bfB)$ 的列向量组和 $S\cup T$ 向量组等价, 因此
+		\[R(\bfA,\bfB)=R(S\cup T)\le R(\bfA)+R(\bfB).\]
+		}\onslide<+->{%
+		由于 $a\bfA+b\bfB$ 的列向量组可以由 $(\bfA,\bfB)$ 的列向量组线性表示, 因此
+		\[R(a\bfA+b\bfB)\le R(\bfA,\bfB).\qedhere\]
+		}
+		\vspace{-\baselineskip}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{矩阵秩的性质}
+	\onslide<+->
+	\begin{proof}[另证]
+		由于添加零行或零列不改变秩, 因此不妨设 $\bfA,\bfB$ 都是方阵.
+		\onslide<+->{%
+		由于
+		\[a\bfA+b\bfB=(\bfA,\bfB)\begin{pmatrix}
+			a\bfE&\\&b\bfE
+		\end{pmatrix},\quad (\bfA,\bfB)=(\bfE,\bfE)\begin{pmatrix}
 			\bfA&\\&\bfB
-		\end{pmatrix}=R(\bfA)+R(\bfB)$.
+		\end{pmatrix}.\]
+		}\onslide<+->{%
+		因此 $R(a\bfA+b\bfB)\le R(\bfA,\bfB)\le R(\bfA)+R(\bfB)$.
 		}
 	\end{proof}
 \end{frame}
@@ -408,14 +397,14 @@
 
 \begin{frame}{例: 矩阵秩性质的应用}
 	\onslide<+->
-	\begin{second}{伴随矩阵的秩}
+	\begin{algorithm}{伴随矩阵的秩}
 		设 $\bfA$ 是 $n$ 阶方阵, 则
 		\[R(\bfA^*)=\begin{cases}
 			n,&R(\bfA)=n;\\
 			1,&R(\bfA)=n-1;\\
 			0,&R(\bfA)\le n-2.
 		\end{cases}\]
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{proof}
 		\begin{enumerate}
@@ -522,41 +511,9 @@
 
 \subsection{极大线性无关组的计算方法}
 
-\begin{frame}{秩与线性相关}
-	\onslide<+->
-	\begin{proposition}
-		设 $\bfA=(\bma_1,\dots,\bma_m)\in M_{n\times m}$.
-		\begin{enumerate}
-			\item $\bma_1,\dots,\bma_m$ 线性相关$\iff \bfA\bfx={\bf0}$ 有非零解$\iff R(\bfA)<m$;
-			\item $\bma_1,\dots,\bma_m$ 线性无关$\iff \bfA\bfx={\bf0}$ 只有零解$\iff R(\bfA)=m$.
-		\end{enumerate}
-	\end{proposition}
-	\onslide<+->
-	\begin{corollary}
-		设 $\bfA=(\bma_1,\dots,\bma_n)\in M_n$.
-		\begin{enumerate}
-			\item $\bma_1,\dots,\bma_m$ 线性相关$\iff \bfA\bfx={\bf0}$ 有非零解$\iff R(\bfA)<m\iff |\bfA|=0$;
-			\item $\bma_1,\dots,\bma_m$ 线性无关$\iff \bfA\bfx={\bf0}$ 只有零解$\iff R(\bfA)=m\iff |\bfA|\neq0$.
-		\end{enumerate}
-	\end{corollary}
-\end{frame}
-
-
-\begin{frame}{例: 判断线性无关}
-	\onslide<+->
-	\begin{exercise}
-		设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbraceframe{C}.
-		\begin{taskschoice}(1)
-			() $\bfA$ 必有一列元素全为零
-			() $\bfA$ 必有两列元素对应成比例
-			() $\bfA$ 必有一个列向量可由其余列向量线性表示
-			() $\bfA$ 中任意列向量均可由其余列向量线性表示
-		\end{taskschoice}
-	\end{exercise}
-\end{frame}
-
 
 \begin{frame}{线性相关的不变性}
+	\beqskip{6pt}
 	\onslide<+->
 	\begin{theorem}
 		若 $\bfA$ 经过初等行变换变为 $\bfB$, 则
@@ -575,15 +532,23 @@
 		}\onslide<+->{%
 			若 $\bfB\bfx={\bf0}$, 则 $\bfP\bfA\bfx={\bf0}, \bfA\bfx={\bf0}$. 反之亦然, 即 $\bfA\bfx={\bf0}\iff\bfB\bfx={\bf0}$.
 		}\onslide<+->{%
-			所以 $\bfx$ 非零分量对应的那些 $\bfA,\bfB$ 的列向量与 $\bfx$ 对应分量数乘之和同时为零或同时非零.
-		}
+			设
+			\[\bfA=(\bma_1,\dots,\bma_m),\qquad
+			\bfB=(\bmb_1,\dots,\bmb_m).\]
+		}\onslide<+->{%
+		则对于 $\bfx=(\lambda_1,\dots,\lambda_m)^\rmT$,
+		\[\bfA\bfx=\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}
+		\iff 
+		\bfB\bfx=\lambda_1\bmb_1+\cdots+\lambda_m\bmb_m={\bf0}.\qedhere\]
+		}\vspace{-\baselineskip}
 	\end{proof}
+	\endgroup
 \end{frame}
 
 
 \begin{frame}{极大线性无关组和秩的计算方法}
 	\onslide<+->
-	\begin{second}{极大线性无关组和秩的计算方法}
+	\begin{algorithm}{极大线性无关组和秩的计算方法}
 		\begin{enumerate}
 			\item 将向量组以列向量形式组成矩阵 $\bfA=(\bma_1,\dots,\bma_m)$.
 			\item 通过初等行变换将 $\bfA$ 变为行阶梯形矩阵.
@@ -593,7 +558,7 @@
 				\end{itemize}
 			\item 继续化简为行最简形矩阵, 则可将其余向量表示为极大线性无关组的线性组合.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -756,8 +721,8 @@
 		\begin{taskschoice}(1)
 			() 若 $\bfA$ 的列向量组线性相关, 则 $\bfA^*$ 的列向量组线性相关
 			() 若 $\bfA$ 的列向量组线性无关, 则 $\bfA^*$ 的列向量组线性无关
-			() 若 $\bfA$ 的某两列向量线性相关, 则 $\bfA^*$ 的列向量组线性相关
-			() 若 $\bfA$ 的某两列向量线性无关, 则 $\bfA^*$ 的列向量组线性无关
+			() 若 $\bfA^*$ 的某两列向量线性相关, 则 $\bfA$ 的列向量组线性相关
+			() 若 $\bfA^*$ 的某两列向量线性无关, 则 $\bfA$ 的列向量组线性无关
 		\end{taskschoice}
 	\end{exercise}
 \end{frame}

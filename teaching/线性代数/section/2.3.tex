@@ -12,7 +12,7 @@
 	$S$ 的极大无关组 $S_0$ 的大小就是 $r$, 且 $S_0$ 是 $V$ 的一组基.
 
 	\onslide<+->
-	有时候我们想更进一步, 就像 $\BR^n$ 的标准正交基 $\bfe_1,\dots,\bfe_n$ 一样, 我们希望找到 $V$ 的一组基 $\bma_1,\dots,\bma_r$ 使得
+	有时候我们想更进一步, 就像 $\BR^n$ 的基本向量组 $\bfe_1,\dots,\bfe_n$ 一样, 我们希望找到 $V$ 的一组基 $\bma_1,\dots,\bma_r$ 使得
 	\begin{enumerate}
 		\item $\bma_i$ \alert{长度}都是 $1$;
 		\item $\bma_1,\dots,\bma_r$ 两两\alert{垂直}.
@@ -30,9 +30,9 @@
 	内积是数量积的推广, 它满足
 	\begin{enumerate}
 		\item $[\bma,\bmb]=[\bmb,\bma]$;
+		\item $[\bma,\bma]\ge 0$. 当且仅当 $\bma={\bf0}$ 时, $[\bma,\bma]=0$;
 		\item $[\lambda\bma,\bmb]=[\bma,\lambda\bmb]=\lambda[\bma,\bmb]$;
-		\item $[\bma+\bmb,\bmg]=[\bma,\bmg]+[\bmb,\bmg]$;
-		\item $[\bma,\bma]\ge 0$. 当且仅当 $\bma={\bf0}$ 时, $[\bma,\bma]=0$.
+		\item $[\bma+\bmb,\bmg]=[\bma,\bmg]+[\bmb,\bmg]$.
 	\end{enumerate}
 	\onslide<+->
 	这说明内积是一个对称正定双线性型.
@@ -43,7 +43,7 @@
 	\onslide<+->
 	\begin{definition}
 		设 $\bfx=(x_1,\dots,x_n)\in\BR^n$, 定义 $\bfx$ 的\emph{长度}或\emph{模}为
-		\[\|\bfx\|=\sqrt{x_1^2+\cdots+x_n^2}.\]
+		\[\|\bfx\|=\sqrt{[\bfx,\bfx]}=\sqrt{x_1^2+\cdots+x_n^2}.\]
 		当 $\|\bfx\|=1$ 时, 称 $\bfx$ 为\emph{单位向量}.
 		对于非零向量 $\bfx$, \alert{$\dfrac{\bfx}{\|\bfx\|}$} 为 $\bfx$ 的\emph{单位化向量}.
 	\end{definition}
@@ -135,29 +135,76 @@
 		$\lambda_1\bma_1+\cdots+\lambda_r\bma_r={\bf0}$.
 		\onslide<+->{%
 			对任意 $1\le i\le r$,
-			\[0=[{\bf0},\bma_i]=[\lambda_1\bma_1+\cdots+\lambda_r\bma_r,\bma_i]=\lambda_i[\bma_i,\bma_i].\]
+			\begin{align*}
+				0&=[{\bf0},\bma_i]=[\lambda_1\bma_1+\cdots+\lambda_r\bma_r,\bma_i]\\
+				&\onslide<+->{
+					=\lambda_1[\bma_1,\bma_i]+\cdots+\lambda_r[\bma_r,\bma_i]
+					=\lambda_i[\bma_i,\bma_i].}
+			\end{align*}
 		}\onslide<+->{%
 			由于 $\bma_i$ 非零, $[\bma_i,\bma_i]\neq 0,\lambda_i=0$.
 		}\onslide<+->{%
 			故 $\bma_1,\dots,\bma_r$ 线性无关.\qedhere
 		}
 	\end{proof}
-	
+	\onslide<+->
+	如果 $\bma_1,\dots,\bma_r$ 是线性空间 $V$ 的一组标准正交基, 则对任意 $\bfv\in V$, 有
+	\[\bfv=\sum_{i=1}^r [\bfv,\bma_i]\bma_i.\]
+\end{frame}
+
+
+\begin{frame}{正交阵}
+	\onslide<+->
+	\begin{definition}
+		若实方阵 $\bfA$ 满足 $\bfA^\rmT\bfA=\bfE$, 则称 $\bfA$ 为\emph{正交阵}.
+	\end{definition}
+	\onslide<+->
+	正交阵满足如下性质:
+	\begin{enumerate}\bf
+		\item $\bfA=(\bma_1,\dots,\bma_n)$ 是正交阵$\iff \bma_1,\dots,\bma_n$ 是标准正交向量组.
+		\item $\bfA$ 是正交阵$\iff\bfA^\rmT=\bfA^{-1}$.
+		\item $\bfA$ 是正交阵$\implies|\bfA|=\pm1$ 且 $\bfA^\rmT,\bfA^{-1},\bfA^*$ 都是正交阵.
+	\end{enumerate}
+	\onslide<+->
+	\begin{definition}
+		若 $\bfP$ 为正交阵, 称线性变换 $\bfy=\bfP\bfx$ 为\emph{正交变换}.
+	\end{definition}
+	\onslide<+->
+	例如, $\BR^2$ 上的正交变换就是绕原点的旋转、反射, 以及它们的复合.
+	\onslide<+->
+	由于
+	\[[\bfP\bfx,\bfP\bfy]=\bfx^\rmT\bfP^\rmT\bfP\bfy=\bfx^\rmT\bfy=[\bfx,\bfy],\]
+	因此\alert{正交变换保持向量的长度和夹角}.
+\end{frame}
+
+
+\begin{frame}{正交化}
 	\onslide<+->
 	现在我们来看如何从空间 $V$ 的一组基 $\bma_1,\dots,\bma_r$ 得到一组标准正交基.
 	\onslide<+->
-	令 $\bmb_1=\bma_1$.
+	令 $\bmb_1=\bma_1$, $\bmb_2=\bma_2+\lambda\bmb_1$.
 	\onslide<+->
-	若 $\bmb_1,\dots,\bmb_k$ 已经是两两正交的单位向量, 设 $\bmb_{k+1}=\bma_{k+1}+\lambda_1\bmb_1+\dots+\lambda_k\bmb_k$ 与它们均正交, 
+	若 $\bmb_1$ 和 $\bmb_2$ 正交, 则
+	\[0=[\bmb_2,\bmb_1]=[\bma_2,\bmb_1]+\lambda[\bmb_1,\bmb_1],\]
 	\onslide<+->
-	则对于 $i=1,\dots,k$,
-	\[[\bmb_i,\bmb_{k+1}]=[\bmb_i,\bma_{k+1}]+\lambda_i[\bmb_i,\bmb_i]=0\implies\lambda_i=-\frac{[\bma_{k+1},\bmb_i]}{[\bmb_i,\bmb_i]}.\]
+	因此 $\lambda=-\dfrac{[\bma_2,\bmb_1]}{[\bmb_1,\bmb_1]}$.
+
+	\onslide<+->
+	令 $\bmb_3=\bma_3+\lambda_1\bmb_1+\lambda_2\bmb_2$,
+	\onslide<+->
+	类似地, 若 $\bmb_3$ 和 $\bmb_1$, $\bmb_2$ 均正交, 则
+	\[\lambda_1=-\dfrac{[\bma_3,\bmb_1]}{[\bmb_1,\bmb_1]},\qquad
+	\lambda_2=-\dfrac{[\bma_3,\bmb_2]}{[\bmb_2,\bmb_2]},\]
+	\onslide<+->
+	\[\bmb_3=\bma_3-\frac{[\bma_3,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1-\frac{[\bma_3,\bmb_2]}{[\bmb_2,\bmb_2]}\bmb_2.\]
+	\onslide<+->
+	依次递推下去可得一组正交基.
 \end{frame}
 
 
 \begin{frame}{格拉姆-施密特正交化}
 	\onslide<+->
-	\begin{second}{格拉姆-施密特正交单位化方法}
+	\begin{algorithm}{格拉姆-施密特正交单位化方法}
 		\begin{align*}
 			\bmb_1&=\bma_1\\
 			\bmb_2&=\bma_2-\frac{[\bma_2,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1\\
@@ -168,7 +215,7 @@
 		\onslide<+->{%
 			则 $\bfe_1=\dfrac{\bmb_1}{\|\bmb_1\|},\dots,\bfe_r=\dfrac{\bmb_r}{\|\bmb_r\|}$ 就是 $V$ 的一组标准正交基.
 		}
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -184,15 +231,15 @@
 			\visible<+->{\bmb_2}&\visible<.->{=\bma_2-\frac{[\bma_2,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1=(1,0,1)^\rmT-\frac12(1,1,0)^\rmT=(\frac12,-\frac12,1)^\rmT}\\
 			\visible<+->{\bmb_3}&\visible<.->{=\bma_3-\frac{[\bma_3,\bmb_1]}{[\bmb_1,\bmb_1]}\bmb_1-\frac{[\bma_3,\bmb_2]}{[\bmb_2,\bmb_2]}\bmb_2}
 			\visible<+->{\!=\!(1,1,2)^\rmT-(1,1,0)^\rmT-\frac2{3/2}(\frac12,-\frac12,1)^\rmT
-			\!=\!(\frac23,-\frac23,\frac23)^\rmT}
+			\!=\!(-\frac23,\frac23,\frac23)^\rmT}
 		\end{align*}
 		\onslide<+->{%
 			\[
-			\bfe_1=\dfrac{\bfb_1}{\|\bfb_1\|}
+			\bfe_1=\dfrac{\bmb_1}{\|\bmb_1\|}
 				=\frac1{\sqrt2}(1,1,0)^\rmT,\quad
-			\bfe_2=\dfrac{\bfb_2}{\|\bfb_2\|}
+			\bfe_2=\dfrac{\bmb_2}{\|\bmb_2\|}
 				=\frac1{\sqrt6}(1,-1,2)^\rmT,\quad
-			\bfe_3=\dfrac{\bfb_3}{\|\bfb_3\|}
+			\bfe_3=\dfrac{\bmb_3}{\|\bmb_3\|}
 				=\frac1{\sqrt3}(-1,1,1)^\rmT.
 		\]}
 	\end{solution}

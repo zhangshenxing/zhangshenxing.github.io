@@ -258,7 +258,7 @@
 
 \begin{frame}{特征值和特征向量的性质}
 	\onslide<+->
-	\begin{second}{特征值和特征向量的性质}
+	\begin{algorithm}{特征值和特征向量的性质}
 		定义 $\bfA$ 的\emph{迹}为对角元之和:
 		\[\Tr(\bfA)=a_{11}+a_{22}+\cdots+a_{nn}.\]
 		\vspace{-\baselineskip}
@@ -266,7 +266,7 @@
 			\item 特征值之和等于迹: $\lambda_1+\lambda_2+\cdots+\lambda_n=\Tr(\bfA)$;
 			\item 特征值之积等于行列式: $\lambda_1\lambda_2\cdots\lambda_n=|\bfA|$.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{example}
 		$\begin{pmatrix}
@@ -691,9 +691,9 @@
 
 \begin{frame}{相似矩阵的性质}
 	\onslide<+->
-	\begin{second}{相似矩阵的性质}
+	\begin{algorithm}{相似矩阵的性质}
 		若 $\bfA$ 与 $\bfB$ 相似, 则二者的特征多项式相同, 从而特征值也相同.
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	这是因为若 $\bfP^{-1}\bfA\bfP=\bfB$, 则
 	\[\bfP^{-1}(\bfA-\lambda\bfE)\bfP=\bfP^{-1}\bfA\bfP-\lambda\bfP^{-1}\bfE\bfP=\bfB-\lambda\bfE.\]
@@ -717,7 +717,7 @@
 
 \begin{frame}{相似矩阵的性质}
 	\onslide<+->
-	\begin{second}{相似矩阵的性质}
+	\begin{algorithm}{相似矩阵的性质}
 		若 $\bfA$ 与 $\bfB$ 相似, 则
 		\begin{enumerate}
 			\item \alert{$\bfA,\bfB$ 特征值相同(包括重数)};
@@ -726,7 +726,7 @@
 			\item 对于多项式 $g,h$, 若 $h(\bfA)$ 可逆, 则 $h(\bfB)$ 也可逆, 且 $g(\bfA)/h(\bfA)$ 与 $g(\bfB)/h(\bfB)$ 相似.
 			特别地, $\bfA-\lambda\bfE$ 与 $\bfB-\lambda\bfE$ 相似.
 		\end{enumerate}
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{corollary}
 		若 $\bfA$ 与对角阵 $\bmL=\diag(\lambda_1,\dots,\lambda_n)$ 相似, 则 $\lambda_1,\dots,\lambda_n$ 是 $\bfA$ 的 $n$ 个特征值.
@@ -796,9 +796,9 @@
 	\onslide<+->
 	反之, 若 $\bfA$ 拥有 $n$ 个线性无关的特征向量, 则选择 $\bfP$ 以它们为列向量即可使 $\bfA$ 对角化.
 	\onslide<+->
-	\begin{second}{相似对角化的等价刻画}
+	\begin{algorithm}{相似对角化的等价刻画}
 		$n$ 阶矩阵 $\bfA$ 可对角化$\iff\bfA$ 有 $n$ 个线性无关的特征向量.
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -820,9 +820,9 @@
 	\onslide<+->
 	回忆 $k$ 重特征值对应的线性无关的特征向量最多 $k$ 个.
 	\onslide<+->
-	\begin{second}{相似对角化的等价刻画}
+	\begin{algorithm}{相似对角化的等价刻画}
 		若 $\lambda$ 是 $\bfA$ 的 $k$ 重特征值, 则 $\bfA$ 可对角化 $\iff\forall\lambda, R(\bfA-\lambda\bfE)=n-k$, 即 $\lambda$ 对应的线性无关的特征向量恰有 $k$ 个.
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 

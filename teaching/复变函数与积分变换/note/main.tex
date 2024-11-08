@@ -1,19 +1,13 @@
 \documentclass[11pt,a4paper,twoside,openright,scheme=chinese]{ctexbook}
 \usepackage{book}
-% \PassOptionsToPackage{style=alphabetic}{biblatex}
-% \usepackage[all]{xy}
 \usepackage{makeidx}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
 \input{settings}
 \makeindex
 \title{复变函数与积分变换}
+\subtitle{工程数学教材}
 \author{张神星}
-\institute{合肥工业大学}
-\date{\zhtoday}
-\version{v1.0.0.0}
-\logo{../../../image/logo/hfut.png}
-% \cover{theme/doremi/cover.jpg}
-% \addbibresource[location=local]{mybib.bib}
-% \newfontface\cmunrm{cmunrm.otf}\newcommand\cmu[1]{{\cmunrm{#1}}}
 
 \newcommand{\wip}{
 \begin{exercise}
@@ -22,48 +16,73 @@
 
 
 
+
 \begin{document}
 
-% \maketitle
-% \hypersetup{pageanchor=true}
-% \frontmatter
+\maketitle
 
-% \chapter*{前言}
-% \addcontentsline{toc}{chapter}{前言}
+\hypersetup{pageanchor=true}
+\frontmatter
 
-% 复变函数是大多数理工科专业的必修课。对于非数学专业学生，复变函数课程课时往往相对较短，内容侧重于具体的计算，而缺乏对概念和定理的理解。
-% 本书针对该课程的特点，一方面着重强调概念与定理的理解，并由此得到相应的计算方法；另一方面提供计算中有用的各种技巧，并给出相应理论的应用。
-% 对于定理和概念，本书不会过分强调证明的严格和描述的准确，而是尽量提供多元化的、触及核心的理解方式。
+\chapter*{引\qquad 言}
+\addcontentsline{toc}{chapter}{引言}
 
-% \vskip 0.5cm
-% \begin{flushright}
-% 张神星\\
-% 2024年9月24日
-% \end{flushright}
+在当今科学与工程的广阔领域中，复变函数与积分变换作为数学工具的核心组成部分，扮演着举足轻重的角色。它们不仅是理论研究的基石，更是解决实际问题的利器。本书《复变函数与积分变换》旨在为读者提供一本内容全面、结构清晰、易于理解的教材，旨在帮助读者系统地掌握这一领域的基本理论和实际应用，为未来的学术研究和职业生涯打下坚实的基础。
+
+复变函数，作为数学的一个独特分支，将实数域扩展到复数域，从而揭示了许多在实数域中难以发现的数学规律和性质。通过复变函数，我们可以更加深入地理解自然界的许多现象，如电磁场的分布、流体的流动、振动与波动等。本书首先介绍了复数的基本概念、运算规则和几何意义，为读者后续学习复变函数提供了必要的数学基础。随后，我们深入探讨了复变函数的极限、连续性、可导性和可积性等基本性质，以及复变函数的解析性、零点与极值、全纯函数与调和函数等核心理论。
+
+积分变换，特别是傅里叶变换和拉普拉斯变换，是现代科学与工程中广泛应用的数学工具。它们能够将复杂的微分方程转化为易于求解的代数方程，从而大大简化了问题的求解过程。本书在介绍复变函数的基础上，进一步探讨了积分变换的基本原理、性质和应用。通过详细的例子和丰富的习题，读者可以逐步掌握积分变换的基本方法和技巧，为解决实际工程问题提供有力的数学支持。
+
+在编写过程中，我们注重理论与实践的结合，力求使内容既具有理论深度，又易于理解和应用。同时，我们也注重教材的趣味性和可读性，通过生动的语言、丰富的插图和有趣的数学故事，激发读者的学习兴趣和好奇心。此外，本书还配备了丰富的参考资料和进一步阅读的指引，以便读者在深入学习复变函数与积分变换时能够有更多的选择和参考。
+
+我们相信，通过本书的学习，读者不仅能够掌握复变函数与积分变换的基本理论和方法，还能够培养自己的数学思维和解决问题的能力。无论是在学术研究、工程实践还是日常生活中，复变函数与积分变换都将成为读者不可或缺的数学工具。
+
+最后，我们要感谢所有为本书编写提供支持和帮助的同事、朋友和家人。他们的无私奉献和辛勤付出，使得本书能够顺利出版并与广大读者见面。我们衷心希望本书能够成为读者学习复变函数与积分变换的良师益友，陪伴读者在数学探索的道路上不断前行。
+
+让我们一起，以复变函数与积分变换为钥匙，打开科学与工程的神秘大门，探索未知的数学奥秘吧！
+
+\vskip 0.5cm
+\begin{flushright}
+编者\\
+\zhtoday
+\end{flushright}
 
 
-% \vskip 0.5cm
-
-% \noindent Bib 格式:
-% \begin{lstlisting}
-% @misc{ZhangNotes2021,
-%   AUTHOR = {张神星},
-%   KEY = {zhang2 shen4 xing2},
-%   TITLE = {复变函数与积分变换 (v1.0.0.0)},
-%   YEAR = {2024},
-%   PAGES = {vi+163},
-%   HOWPUBLISHED = {Course Notes},
-%   URL = {https://zhangshenxing.github.io/teaching/复变函数与积分变换/note/main.pdf},
-%   LANGUAGE = {Chinese}
-% }
-% \end{lstlisting}
-
-% \tableofcontents
+\tableofcontents
 
 
 
 
 \mainmatter
+
+
+% \begin{tikzpicture}
+%   \begin{axis}[
+%     color=white,
+%     xlabel=$x$,
+%     ylabel=$y$
+%   ]
+%     \addplot3[
+%       surf,
+%       % shader=interp,
+%       patch,
+%       patch type=bilinear,
+%       mesh/color input=explicit mathparse,
+%       mesh/colorspace explicit color output=rgb,
+%       domain=0:2,
+%       domain y=0:2,
+%       samples=30,
+%       point meta={
+%         symbolic={
+%           (sin(deg(y*pi*2))+1)/2, 
+%           (sin(deg((y+0.5)*pi*2))+1)/2,
+%           (sin(deg((y+1)*pi*2))+1)/2
+%         }
+%       }
+%     ]
+%     {exp(-x)};
+%   \end{axis}
+% \end{tikzpicture}
 
 \input{chapter1.tex}
 % \input{chapter2.tex}
@@ -71,7 +90,7 @@
 % \input{chapter4.tex}
 % \input{chapter5.tex}
 % \input{chapter6.tex}
-
+% \input{exercise-answer}
 
 % \appendix
 % \input{appendix.tex}
@@ -81,7 +100,7 @@
 % \printbibliography[heading=bibintoc, title=\ebibname]
 
 
-
+\phantomsection\addcontentsline{toc}{chapter}{参考文献}
 \begin{thebibliography}{Car43}
 
 \bibitem[Car43]{Cardano1643}
@@ -103,8 +122,17 @@ Gerolamo Cardano, {\em Liber de Zudo Aleae}, Paris, 1663.
 {\em 古今数学思想（第一册）}.
 上海科学技术出版社, 2013.\\
 译自: 
-Kline, Morris, {\em Mathematical Thought from Ancient to Modern Times}, New York, NY, 1990.
+Morris Kline, {\em Mathematical Thought from Ancient to Modern Times}, New York, NY, 1990.
 
+
+\bibitem[Cot14]{Cotes1714}
+{\em Phil. Trans.}, 29, 5--45, 1714.
+
+\bibitem[BJMR75]{BergJulianMinesRichman1975}
+Gordon O. Berg, W. Julian, R. Mines, Fred Richman,
+{\em The constructive Jordan curve theorem},
+Rocky Mountain Journal of Mathematics, 5 (2):225--236,
+1975.
 
 \end{thebibliography}
 
@@ -112,8 +140,8 @@ Kline, Morris, {\em Mathematical Thought from Ancient to Modern Times}, New York
 
 \newpage
 %\phantomsection
-% \addcontentsline{toc}{chapter}{索引}
-\chapter*{索引}
+\addcontentsline{toc}{chapter}{索引}
+\chapter*{索\qquad 引}
 \begingroup  
 % \let\clearpage\relax % 取消 clearpage 的效果，防止分页  
 \begin{multicols}{2} % 开始两栏布局  

@@ -20,8 +20,10 @@
 	\onslide<+->
 	对于标准向量空间 $V=\BR^n$, 我们可以将任一 $\bfv\in V$ \emph{唯一}地表达为形式
 	\[\bfv=\lambda_1\bfe_1+\lambda_2\bfe_2+\cdots+\lambda_n\bfe_n,\]
+	\onslide<+->
 	其中
 	\[\bfe_1=(1,0,\dots,0)^\rmT,\bfe_2=(0,1,\dots,0)^\rmT,\dots,\bfe_n=(0,0,\dots,1)^\rmT.\]
+	\onslide<+->
 	\begin{definition}
 		设 $V$ 是线性空间.
 		若 $\bma_1,\dots,\bma_m\in V$ 满足: 对任意 $\bfv\in V$, 存在唯一的一组数 $\lambda_1,\dots,\lambda_m$ 使得
@@ -59,7 +61,9 @@
 
 \begin{frame}{线性表示的矩阵刻画}
 	\onslide<+->
-	向量 $\bmb$ 能被向量组 $\bma_1,\dots,\bma_m$ 线性表示, 当且仅当存在 $\lambda_1,\dots,\lambda_m$ 使得
+	向量 $\bmb$ 能被向量组 $\bma_1,\dots,\bma_m$ 线性表示, 
+	\onslide<+->
+	当且仅当存在 $\lambda_1,\dots,\lambda_m$ 使得
 	\[\bmb=\lambda_1\bma_1+\cdots+\lambda_m\bma_m=(\bma_1,\dots,\bma_m)\begin{pmatrix}
 		\lambda_1\\\vdots\\\lambda_m
 	\end{pmatrix},\]
@@ -159,7 +163,7 @@
 			\item $\bma_1=(1,2,3)^\rmT$, $\bma_2=(2,3,4)^\rmT$, $\bma_3=(0,0,0)^\rmT$ 线性相关.
 			\alert{包含零向量的向量组总是线性相关的}.
 			\item $\bfe_1=(1,0,0)^\rmT,\bfe_2=(0,1,0)^\rmT,\bfe_3=(0,0,1)^\rmT$ 线性无关.
-			一般地, \alert{$n$ 维标准向量组 $\bfe_1,\dots,\bfe_n$ 线性无关}.
+			一般地, \alert{$n$ 维基本向量组 $\bfe_1,\dots,\bfe_n$ 线性无关}.
 			\item $\bma$ 线性相关 $\iff \bma={\bf0}$.
 			\item $\bma_1,\bma_2$ 线性相关 $\iff \bma_1,\bma_2$ 对应分量成比例(共线).
 		\end{enumerate}
@@ -169,7 +173,9 @@
 
 \begin{frame}{线性无关的等价刻画}
 	\onslide<+->
-	向量组 $\bma_1,\dots,\bma_m$ 线性无关当且仅当
+	向量组 $\bma_1,\dots,\bma_m$ 线性无关%
+	\onslide<+->%
+	当且仅当
 	\[\lambda_1\bma_1+\dots+\lambda_m\bma_m={\bf0}\implies
 	\lambda_1=\cdots=\lambda_m=0,\]
 	\onslide<+->
@@ -473,17 +479,16 @@
 \begin{frame}{例: 线性相关和线性无关}
 	\onslide<+->
 	\begin{exercise}
-		判断下列向量组的线性相关性:
 		\begin{enumerate}
-			\item $(1,2,3,4)^\rmT,(2,3,4,5)^\rmT,(0,0,0,0)^\rmT$. 
-			\alert{\onslide<+->{相关}} 
-			\item $(a,b,1,0,0)^\rmT,(c,d,0,6,0)^\rmT,(a,c,0,5,6)^\rmT$. \alert{\onslide<+->{无关}} 
-			\item $(a,1,0,b,0)^\rmT,(c,0,6,d,0)^\rmT,(a,0,5,c,6)^\rmT$. \alert{\onslide<+->{无关}} 
+			\item 判断下列向量组的线性相关性:
+			\begin{tasks}[label={(\roman*)},label-format=\upshape\textcolor{main}](1)
+				\task $(1,2,3,4)^\rmT,(2,3,4,5)^\rmT,(0,0,0,0)^\rmT$. 
+				\alert{\onslide<+->{相关}} 
+				\task $(a,b,1,0,0)^\rmT,(c,d,0,6,0)^\rmT,(a,c,0,5,6)^\rmT$. \alert{\onslide<+->{无关}} 
+				\task $(a,1,0,b,0)^\rmT,(c,0,6,d,0)^\rmT,(a,0,5,c,6)^\rmT$. \alert{\onslide<+->{无关}} 
+			\end{tasks}
+			\item 若 $(1,0,0,2)^\rmT,(0,1,5,0)^\rmT,(2,1,t+2,4)^\rmT$ 线性相关, 则 $t=$\fillblankframe{$3$}.
 		\end{enumerate}
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $(1,0,0,2)^\rmT,(0,1,5,0)^\rmT,(2,1,t+2,4)^\rmT$ 线性相关, 则 $t=$\fillblankframe{$3$}.
 	\end{exercise}
 \end{frame}
 
@@ -557,11 +562,34 @@
 	由 $T$ 线性无关可知 $R(S)\le m$.
 	\onslide<+->
 	\begin{theorem}
+		设 $\bfA=(\bma_1,\dots,\bma_m)$ 的列向量组为 $S$.
 		\begin{enumerate}
-			\item 向量组 $\bma_1,\dots,\bma_m$ 线性无关$\iff m=R(\bma_1,\dots,\bma_m)$.
-			\item 向量组 $\bma_1,\dots,\bma_m$ 线性相关$\iff m>R(\bma_1,\dots,\bma_m)$.
+			\item $S$ 线性无关$\iff R(S)=m\iff\bfA\bfx={\bf0}$ 只有零解.
+			\item $S$ 线性相关$\iff R(S)<m\iff\bfA\bfx={\bf0}$ 有非零解.
 		\end{enumerate}
 	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{例: 方阵的列向量组}
+	\onslide<+->
+	\begin{corollary}
+		设方阵 $\bfA=(\bma_1,\dots,\bma_n)$ 的列向量组为 $S$.
+		\begin{enumerate}
+			\item $S$ 线性无关$\iff R(S)=m\iff\bfA\bfx={\bf0}$ 只有零解 $\iff |\bfA|\neq0$.
+			\item $S$ 线性相关$\iff R(S)<m\iff\bfA\bfx={\bf0}$ 有非零解 $\iff |\bfA|=0$.
+		\end{enumerate}
+	\end{corollary}
+	\onslide<+->
+	\begin{exercise}
+		设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbraceframe{C}.
+		\begin{taskschoice}(1)
+			() $\bfA$ 必有一列元素全为零
+			() $\bfA$ 必有两列元素对应成比例
+			() $\bfA$ 必有一个列向量可由其余列向量线性表示
+			() $\bfA$ 中任意列向量均可由其余列向量线性表示
+		\end{taskschoice}
+	\end{exercise}
 \end{frame}
 
 

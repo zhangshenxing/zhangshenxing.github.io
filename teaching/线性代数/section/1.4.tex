@@ -186,10 +186,10 @@
 	\visible<+->{\bfA^{-1}=\frac1{|\bfA|}\bfA^*.}\]
 	\vspace{-.5\baselineskip}
 	\onslide<+->
-	\begin{second}{逆矩阵的存在性和形式}
+	\begin{algorithm}{逆矩阵的存在性和形式}
 		$n$ 阶方阵 $\bfA$ 可逆当且仅当 $|\bfA|\neq 0$.
 		此时 $\bfA^{-1}=\dfrac1{|\bfA|}\bfA^*$.
-	\end{second}
+	\end{algorithm}
 \end{frame}
 
 
@@ -564,12 +564,12 @@
 
 \begin{frame}{克拉默法则}
 	\onslide<+->
-	\begin{second}{克拉默法则}
+	\begin{algorithm}{克拉默法则}
 		设 $\bfA$ 是 $n$ 阶方阵, $\bfb=(b_1,\dots,b_n)^\rmT$ 是 $n$ 维列向量,
 		将 $\bfA$ 的第 $j$ 列换成 $\bfb$ 得到的方阵记为 $\bfA_j$.
 		当 $|\bfA|\neq 0$, 线性方程组 $\bfA\bfx=\bfb$ 有唯一解
 		\[\bfx=\biggl(\frac{|\bfA_1|}{|\bfA|},\frac{|\bfA_2|}{|\bfA|},\dots,\frac{|\bfA_n|}{|\bfA|}\biggr).\]
-	\end{second}
+	\end{algorithm}
 	\onslide<+->
 	\begin{proof}
 		显然唯一解就是 $\bfx=\bfA^{-1}\bfb=\dfrac1{|\bfA|}\bfA^*\bfb$.

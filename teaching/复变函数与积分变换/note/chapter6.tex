@@ -744,3 +744,200 @@ $\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega
 		\[y(t)=\msl^{-1}[Y(s)]=\frac{a+b}2e^t+\frac{a-b}2e^{-t}.\]
 \end{solution}
 
+
+
+
+
+\begin{exercise}
+	单选题: 下列不是傅里叶变换对的是\fillbrace{C}.
+	\xx{$\delta(t),1$}%
+		{$e^{j\omega_0t},2\pi\delta(\omega-\omega_0)$}%
+		{$\sin \omega_0t, \pi[\delta(\omega-\omega_0)+\delta(\omega+\omega_0)]$}%
+		{$1,2\pi\delta(\omega)$}	
+\end{exercise}
+
+
+\begin{exercise}
+  填空题: $\delta(t-t_0)$ 的傅里叶变换为 $F(\omega)=$\fillblank{$e^{-j\omega t_0}$}.
+\end{exercise}
+
+
+\begin{exercise}
+	填空题: $F(\omega)=\delta(\omega+2)$ 的傅里叶逆变换为 $f(t)=$\fillblank[2cm][1mm]{$\frac1{2\pi}e^{-2jt}$}.
+\end{exercise}
+
+
+\begin{exercise}
+	填空题: $F(\omega)=2\pi\delta(\omega)$ 的傅里叶逆变换为 $f(t)=$\fillblank{$1$}.
+\end{exercise}
+
+
+\begin{exercise}
+	填空题: $f(t)=\sin t+j\cos t$ 的傅里叶变换为\fillblank[3cm]{$2\pi j\delta(\omega+1)$}.
+\end{exercise}
+
+
+\begin{exercise}
+  用拉普拉斯变换解微分方程
+	\[\begin{cases}y''+4y'+3y=e^{-t},&\\y(0)=y'(0)=1.\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[y]=Y$, 则
+	\[\msl[y']=sY-y(0)=sY-1,\]
+	\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-s-1,\]
+	因此
+	\[s^2Y-s-1+4(sY-1)+3Y=\msl[e^{-t}]=\frac{1}{s+1},\]
+	\[Y(s)=\frac{1}{2(s+1)^2}+\frac{7}{4(s+1)}-\frac3{4(s+3)},\]
+	\[y(t)=\msl^{-1}[Y(s)]=\frac12 te^{-t}+\frac74 e^{-t}-\frac34 e^{-3t}. \qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	用拉普拉斯变换解微分方程
+	\[\begin{cases}y''+y=t,&\\y(0)=1,\quad y'(0)=-2.\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[y]=Y$, 则
+	\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-s+2,\]
+	因此
+	\[s^2Y-s+2+Y=\msl[t]=\frac{1}{s^2},\]
+	\[Y(s)=\frac1{s^2}-\frac3{s^2+1}+\frac s{s^2+1},\]
+	\[y(t)=\msl^{-1}[Y(s)]=t-3\sin t+\cos t. \qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	用拉普拉斯变换解微分方程
+	\[\begin{cases}y''+4y'+3y=e^t,&\\y(0)=0,\quad y'(0)=2.\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[y]=Y$, 则
+	\[\msl[y']=sY-y(0)=sY,\]
+	\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2,\]
+	因此
+	\[s^2Y-2+4sY+3Y=\msl[e^t]=\frac{1}{s-1},\]
+	\[Y(s)=\frac{1}{8(s-1)}+\frac{3}{4(s+1)}-\frac7{8(s+3)},\]
+	\[y(t)=\msl^{-1}[Y(s)]=\frac18e^t+\frac34 e^{-t}-\frac78 e^{-3t}. \qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	用拉普拉斯变换解微分方程
+	\[\begin{cases}y''-3y'+2y=2e^{-t},&\\y(0)=2,\quad y'(0)=-1.\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[y]=Y$, 则
+	\[\msl[y']=sY-y(0)=sY-2,\]
+	\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2s+1,\]
+	因此
+	\[s^2Y-2s+1-3(sY-2)+2Y=\msl[2e^{-t}]=\frac{2}{s+1},\]
+	\[Y(s)=\frac{4}{s-1}+\frac{1}{3(s+1)}-\frac7{3(s-2)},\]
+	\[y(t)=\msl^{-1}[Y(s)]=4e^t+\frac13 e^{-t}-\frac73e^{2t}. \qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	用拉普拉斯变换解微分方程
+	\[\begin{cases}y''(t)+4y(t)=3\cos t,& \\y(0)=y'(0)=0.&\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[y]=Y$, 则
+	\[\msl[y']=s^2Y-sy(0)-y'(0)=s^2Y,\]
+	因此
+	\[s^2Y+4Y=\frac{3s}{s^2+1},\]
+	\[Y(s)=\frac{3s}{(s^2+1)(s^2+4)}=\frac{s}{s^2+1}-\frac{s}{s^2+4},\]
+	\[y(t)=\msl^{-1}[Y(s)]=\cos t-\cos(2t).\qedhere\]
+\end{solution}
+
+
+\begin{exercise}
+	用拉普拉斯变换解微分方程
+	\[\begin{cases}
+		x'(t)+2x(t)+2y(t)=10e^{2t},& \\
+		-2x(t)+y'(t)+3y(t)=13e^{2t},& \\
+		x(0)=1,y(0)=3.&
+	\end{cases}\]
+\end{exercise}
+\begin{solution}
+	设 $\msl[x]=X,\msl[y]=Y$, 则
+		\[\begin{cases}
+			sX-1+2X+2Y=10/(s-2),& \\
+			-2X+sY-3+3Y=13/(s-2).&
+		\end{cases}\]
+	因此
+	\[X(s)=\frac1{s-2},\quad Y(s)=\frac3{s-2},\]
+	\[x(t)=\msl^{-1}\left[\frac1{s-2}\right]=e^{2t},\quad
+	y(t)=\msl^{-1}\left[\frac3{s-2}\right]=3e^{2t}.\qedhere\]
+\end{solution}
+	
+	
+\section*{扩展阅读}
+该部分作业不需要交, 有兴趣的同学可以做完后交到本人邮箱.
+\begin{exercise}
+	对于正奇数 $k$, 设 $F_k(\omega)=\dfrac{\sin(\omega/k)}{\omega/k}$, 设
+	\[I_k=\int_{-\infty}^{+\infty}F_1(\omega)F_3(\omega)\cdots F_k(\omega)\diff\omega.\]
+	则
+	\[I_1=I_3=I_5=\cdots=I_{13}=\pi,\quad
+	I_{15}=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\pi.\]
+	这是为什么呢?
+
+	\subex 根据 
+	\[f(t)=\msf^{-1}[F_1]=\begin{cases}
+		1/2, & |t|<1,\\
+		1/4, & |t|=1,\\
+		0, & |t|>1
+	\end{cases}\]
+	得到 $\msf^{-1}[F_k]=f_k(t):=kf(kt)$.
+	\subex 注意到函数 $g(t)$ 和 $f_k(t)$ 卷积之后在 $t$ 处的值相当于 $g(t)$ 在 $\Bigl[t-\dfrac1k,t+\dfrac1k\Bigr]$ 上取平均值.
+	由此证明 $f_1(t)\ast f_3(t)\ast \cdots\ast f_k(t)$ 在 $|t|<1-\dfrac13-\dfrac15-\cdots-\dfrac1k$ 上取值为 $\dfrac12$.
+	\subex 根据
+	\[\frac1{2\pi}I_k=\msf^{-1}[F_1F_3\cdots F_k](0)=(f_1\ast f_3\ast\cdots\ast f_k)(0)\]
+	解释上述现象.
+	
+	更多细节可见: \url{https://www.bilibili.com/video/BV18e4y1u7BH/}
+\end{exercise}
+\end{document}
+
+\item 利用拉普拉斯变换解微分方程
+$\begin{cases}
+	y''(t)-y'(t)=e^t,&\\
+	y(0)=y'(0)=0.&
+\end{cases}$
+
+
+\item 利用拉氏变换解微分方程 
+\[\begin{cases}
+y''+2y'+y=te^t&\\
+y(0)=y'(0)=0.&
+\end{cases}\]
+
+
+
+
+
+
+\item 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
+\item 函数 $e^{jt}$ 的傅里叶变换为\fillblank{}.
+\item 函数 $f(t)=\cos(3t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+\item 常值函数 $F(\omega)=2$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
+\item 用拉普拉斯变换求解微分方程初值问题
+\[\begin{cases}
+y''(t)+2y(t)=\sin t,&\\
+y(0)=0,\quad y'(0)=2.
+\end{cases}\]
+\item 用拉普拉斯变换求解微分方程初值问题
+\[\begin{cases}
+y''(t)+2y'(t)=8e^{2t},&\\
+y(0)=0,\quad y'(0)=2.
+\end{cases}\]
+\item 设 $f(z)=\dfrac{e^z}{(z-\pi i)(z-2\pi i)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=8}f(z)\diff z$.
+\item 用拉普拉斯变换求解微分方程初值问题
+\[\begin{cases}
+y''(t)+4y(t)=3\cos t,&\\
+y(0)=1,\quad y'(0)=2.
+\end{cases}\]
+\item 用拉普拉斯变换求解微分方程初值问题
+\[\begin{cases}
+y''(t)-4y(t)=3e^t,&\\
+y(0)=0,\quad y'(0)=1.
+\end{cases}\]

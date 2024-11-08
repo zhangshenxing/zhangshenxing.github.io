@@ -185,6 +185,7 @@
 \defbeamertemplate{navigation box}{other}{\color{black}\kern.4pt\my@navibox\kern.4pt}
 \let\my@navibox=\my@navibox@frame
 \newcommand{\my@set@navibox@section}{\let\my@navibox=\my@navibox@frame@section}
+\newcommand{\my@set@navibox@subsection}{\let\my@navibox=\my@navibox@frame@subsection}
 \newcommand{\my@set@navibox@exercise}{\let\my@navibox=\my@navibox@frame@exercise}
 \newcommand{\my@set@navibox@empty}{\let\my@navibox=\my@navibox@frame@empty}
 \newcommand{\setnaviboxsection}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@section}}}
@@ -210,11 +211,29 @@
 	\ifnum#6=\c@part
 		\ifnum\c@section=#1%
 			\setbeamertemplate{navigation box}[other]%
-			\ifnum\c@subsection=#2\ifnum\c@subsectionslide=#3%
+			\ifnum\c@subsection=#2
+				\ifnum\c@subsectionslide=#3%
 					\setbeamertemplate{navigation box}[current]%
-				\fi\fi
+				\fi
+			\fi
 			\beamer@link(#4){\usebeamertemplate{navigation box}}%
 		\fi
+	\fi
+	\global\let\my@navibox=\my@navibox@frame
+}
+\newcommand{\my@slideentry@subsection}[6]{%
+	\ifnum#6=\c@part
+		\ifnum#3=1\my@set@navibox@subsection\fi
+		\setbeamertemplate{navigation box}[other]%
+		\ifnum\c@section=#1
+			\ifnum\c@subsection=#2
+				\ifnum\c@subsectionslide=#3%
+					\setbeamertemplate{navigation box}[current]%
+				\fi
+			\fi
+		\fi
+		\ifnum#1=0\ifnum#3=1\my@set@navibox@empty\fi\fi
+		\beamer@link(#4){\usebeamertemplate{navigation box}}%
 	\fi
 	\global\let\my@navibox=\my@navibox@frame
 }
@@ -223,7 +242,7 @@
 \setbeamertemplate{head/foot seperator}{\kern1pt\raisebox{0.5pt}{$\blacktriangleright$}\kern1pt}
 \defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
 \defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
-\setbeamertemplate{footline}{%
+\defbeamertemplate{footline}{naviboxsection}{%
 	\setlength{\parindent}{0em}
 	\leavevmode%
 	\hbox{%
@@ -294,6 +313,77 @@
 		\end{beamercolorbox}%
 	}%
 }
+\defbeamertemplate{footline}{naviboxall}{%
+	\setlength{\parindent}{0em}
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=0.5pt]{seperate line}
+		\end{beamercolorbox}%
+	}\par%
+	\hbox{%
+		\begin{beamercolorbox}[%
+				wd=\paperwidth,%
+				ht=5ex,%
+				dp=1ex,%
+				leftskip=3ex plus 3ex,%
+				rightskip=3ex plus 3ex,%
+				sep=0pt%
+			]{footline}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\ifnum\thepart>0\else%
+					\ifnum\thesection>0\else%
+						\ifnum\thesubsection>0\else%
+							\usebeamercolor[fg]{title in head/foot}%
+						\fi%
+					\fi%
+				\fi%
+				\insertshorttitle%
+			}%
+			\ifnum\thepart>0{%
+				\usebeamerfont{part in head/foot}%
+				\ifnum\thesection>0\else%
+					\ifnum\thesubsection>0\else%
+						\usebeamercolor[fg]{part in head/foot}%
+					\fi%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				第\zhnumber{\thepart}章~\insertshortpart%
+				}\fi%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\ifnum\thesubsection>0\else%
+					\usebeamercolor[fg]{section in head/foot}%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+				}\fi%
+			\ifnum\thesubsection>0{%
+				\usebeamerfont{subsection in head/foot}%
+				\usebeamercolor[fg]{subsection in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\usebeamertemplate{subsection in footline}
+				}\fi%
+			\hfill%
+			% {%
+			% 	\usebeamercolor[fg]{date in head/foot}%
+			% 	\usebeamerfont{date in head/foot}%
+			% 	\insertshortdate%
+			% }%
+			\par%
+			\let\sectionentry=\my@sectionentry@hide
+			\let\slideentry=\my@slideentry@subsection
+			\dohead
+			\kern\beamer@rightmargin
+			\hfill
+			% {%
+			% 	\usebeamercolor[fg]{page number in head/foot}%
+			% 	\usebeamerfont{page number in head/foot}%
+			% 	\usebeamertemplate{page number in head/foot}%
+			% }%
+		\end{beamercolorbox}%
+	}%
+}
 \defbeamertemplate{footline}{simple}{%
 	\leavevmode%
 	\hbox{%
@@ -349,6 +439,7 @@
 		\end{beamercolorbox}%
 	}%
 }
+\setbeamertemplate{footline}[naviboxsection]
 % Theorems
 \RequirePackage[many]{tcolorbox}
 \tcbset{
@@ -380,7 +471,12 @@
 		fonttitle=\large,
 		attach boxed title to top center={
 			yshift=-10pt, xshift=0pt
-		}
+		},
+		arc=0pt,
+		outer arc=0pt,
+    boxrule=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
 	},
 	sectiontitle/.style={
 		thirdstyle,
@@ -389,28 +485,58 @@
 		fonttitle=\large,
 		attach boxed title to top center={
 			yshift=-10pt, xshift=0pt
-		}
+		},
+		arc=0pt,
+		outer arc=0pt,
+    boxrule=0pt,
+    toprule=0.5pt,
+    bottomrule=0.5pt,
 	},
 	mainstyle/.style={
-		borderline={0pt}{0pt}{main,cstdash},
+		borderline={0pt}{0pt}{main},
+		colback=main!10,
 		colbacktitle=main
 	},
 	secondstyle/.style={
-		borderline={0pt}{0pt}{second,cstdash},
+		borderline={0pt}{0pt}{second},
+		colback=second!10,
 		colbacktitle=second
 	},
 	thirdstyle/.style={
-		borderline={0pt}{0pt}{third,cstdash},
+		borderline={0pt}{0pt}{third},
+		colback=third!10,
 		colbacktitle=third
 	},
 	fourthstyle/.style={
-		borderline={0pt}{0pt}{fourth,cstdash},
+		borderline={0pt}{0pt}{fourth},
+		colback=fourth!10,
 		colbacktitle=fourth
 	},
 	fifthstyle/.style={
-		borderline={0pt}{0pt}{fifth,cstdash},
+		borderline={0pt}{0pt}{fifth},
+		colback=fifth!10,
 		colbacktitle=fifth
-	}
+	},
+	% mainstyle/.style={
+	% 	borderline={0pt}{0pt}{main,cstdash},
+	% 	colbacktitle=main
+	% },
+	% secondstyle/.style={
+	% 	borderline={0pt}{0pt}{second,cstdash},
+	% 	colbacktitle=second
+	% },
+	% thirdstyle/.style={
+	% 	borderline={0pt}{0pt}{third,cstdash},
+	% 	colbacktitle=third
+	% },
+	% fourthstyle/.style={
+	% 	borderline={0pt}{0pt}{fourth,cstdash},
+	% 	colbacktitle=fourth
+	% },
+	% fifthstyle/.style={
+	% 	borderline={0pt}{0pt}{fifth,cstdash},
+	% 	colbacktitle=fifth
+	% }
 }
 % @ means notitle, * means indent
 \NewDocumentEnvironment{main}{m O{} o}{%
@@ -458,38 +584,39 @@
 \NewDocumentEnvironment{remark}{o}{\begin{main}{Remark}[fontupper=\itshape][#1]}{\end{main}}
 \NewDocumentEnvironment{remark*}{o}{\begin{main*}{Remark}[fontupper=\itshape][#1]}{\end{main*}}
 
-\RenewDocumentEnvironment{theorem}{o}{\begin{second}{Theorem}[fontupper=\bfseries]}{\end{second}}
-\NewDocumentEnvironment{theorem*}{o}{\begin{second*}{Theorem}[fontupper=\bfseries]}{\end{second*}}
-\NewDocumentEnvironment{theorem@}{o}{\begin{second@}[fontupper=\bfseries]}{\end{second@}}
-\NewDocumentEnvironment{proposition}{o}{\begin{second}{Proposition}[fontupper=\bfseries]}{\end{second}}
-\NewDocumentEnvironment{proposition*}{o}{\begin{second*}{Proposition}[fontupper=\bfseries]}{\end{second*}}
-\RenewDocumentEnvironment{corollary}{o}{\begin{second}{Corollary}[fontupper=\bfseries]}{\end{second}}
-\NewDocumentEnvironment{corollary*}{o}{\begin{second*}{Corollary}[fontupper=\bfseries]}{\end{second*}}
-\RenewDocumentEnvironment{lemma}{o}{\begin{second}{Lemma}[fontupper=\bfseries]}{\end{second}}
-\NewDocumentEnvironment{lemma*}{o}{\begin{second}{Lemma}[fontupper=\bfseries]}{\end{second*}}
+\RenewDocumentEnvironment{theorem}{o}{\begin{second}{Theorem}[fontupper=\bfseries][#1]}{\end{second}}
+\NewDocumentEnvironment{theorem*}{o}{\begin{second*}{Theorem}[fontupper=\bfseries][#1]}{\end{second*}}
+\NewDocumentEnvironment{theorem@}{ }{\begin{second@}[fontupper=\bfseries]}{\end{second@}}
+\NewDocumentEnvironment{proposition}{o}{\begin{second}{Proposition}[fontupper=\bfseries][#1]}{\end{second}}
+\NewDocumentEnvironment{proposition*}{o}{\begin{second*}{Proposition}[fontupper=\bfseries][#1]}{\end{second*}}
+\RenewDocumentEnvironment{corollary}{o}{\begin{second}{Corollary}[fontupper=\bfseries][#1]}{\end{second}}
+\NewDocumentEnvironment{corollary*}{o}{\begin{second*}{Corollary}[fontupper=\bfseries][#1]}{\end{second*}}
+\RenewDocumentEnvironment{lemma}{o}{\begin{second}{Lemma}[fontupper=\bfseries][#1]}{\end{second}}
+\NewDocumentEnvironment{lemma*}{o}{\begin{second}{Lemma}[fontupper=\bfseries][#1]}{\end{second*}}
+\NewDocumentEnvironment{algorithm}{m O{}}{\begin{tcolorbox}[secondstyle,title={#1},fontupper=\bfseries,#2]}{\end{tcolorbox}}
 
-\RenewDocumentEnvironment{definition}{o}{\begin{third}{Definition}[fontupper=\bfseries]}{\end{third}}
-\NewDocumentEnvironment{definition*}{o}{\begin{third*}{Definition}[fontupper=\bfseries]}{\end{third*}}
-\RenewDocumentEnvironment{definitions}{o}{\begin{third}{Definitions}[fontupper=\bfseries]}{\end{third}}
-\NewDocumentEnvironment{definitions*}{o}{\begin{third*}{Definitions}[fontupper=\bfseries]}{\end{third*}}
+\RenewDocumentEnvironment{definition}{o}{\begin{third}{Definition}[fontupper=\bfseries][#1]}{\end{third}}
+\NewDocumentEnvironment{definition*}{o}{\begin{third*}{Definition}[fontupper=\bfseries][#1]}{\end{third*}}
+\RenewDocumentEnvironment{definitions}{o}{\begin{third}{Definitions}[fontupper=\bfseries][#1]}{\end{third}}
+\NewDocumentEnvironment{definitions*}{o}{\begin{third*}{Definitions}[fontupper=\bfseries][#1]}{\end{third*}}
 
-\RenewDocumentEnvironment{solution}{o}{\begin{fourth}{Solution}[fontupper=\itshape]}{\end{fourth}}
-\NewDocumentEnvironment{solution*}{o}{\begin{fourth*}{Solution}[fontupper=\itshape]}{\end{fourth*}}
-\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{fourth}{Proof}[fontupper=\itshape]}{\popQED\end{fourth}}
-\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{fourth*}{Proof}[fontupper=\itshape]}{\popQED\end{fourth*}}
-\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{fourth}{Proof (Continued)}[fontupper=\itshape]}{\popQED\end{fourth}}
-\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{fourth*}{Proof (Continued)}[fontupper=\itshape]}{\popQED\end{fourth*}}
-\NewDocumentEnvironment{analysis}{o}{\begin{fourth}{Analysis}[fontupper=\itshape]}{\end{fourth}}
-\NewDocumentEnvironment{analysis*}{o}{\begin{fourth*}{Analysis}[fontupper=\itshape]}{\end{fourth*}}
-\NewDocumentEnvironment{answer}{o}{\begin{fourth}{Answer}[fontupper=\itshape]}{\end{fourth}}
-\NewDocumentEnvironment{answer*}{o}{\begin{fourth*}{Answer}[fontupper=\itshape]}{\end{fourth*}}
+\RenewDocumentEnvironment{solution}{o}{\begin{fourth}{Solution}[fontupper=\itshape][#1]}{\end{fourth}}
+\NewDocumentEnvironment{solution*}{o}{\begin{fourth*}{Solution}[fontupper=\itshape][#1]}{\end{fourth*}}
+\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{fourth}{Proof}[fontupper=\itshape][#1]}{\popQED\end{fourth}}
+\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{fourth*}{Proof}[fontupper=\itshape][#1]}{\popQED\end{fourth*}}
+\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{fourth}{Proof (Continued)}[fontupper=\itshape][#1]}{\popQED\end{fourth}}
+\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{fourth*}{Proof (Continued)}[fontupper=\itshape][#1]}{\popQED\end{fourth*}}
+\NewDocumentEnvironment{analysis}{o}{\begin{fourth}{Analysis}[fontupper=\itshape][#1]}{\end{fourth}}
+\NewDocumentEnvironment{analysis*}{o}{\begin{fourth*}{Analysis}[fontupper=\itshape][#1]}{\end{fourth*}}
+\NewDocumentEnvironment{answer}{o}{\begin{fourth}{Answer}[fontupper=\itshape][#1]}{\end{fourth}}
+\NewDocumentEnvironment{answer*}{o}{\begin{fourth*}{Answer}[fontupper=\itshape][#1]}{\end{fourth*}}
 
-\NewDocumentEnvironment{conjecture}{o}{\begin{fifth}{Conjecture}[fontupper=\itshape]}{\end{fifth}}
-\NewDocumentEnvironment{conjecture*}{o}{\begin{fifth*}{Conjecture}[fontupper=\itshape]}{\end{fifth*}}
-\RenewDocumentEnvironment{fact}{o}{\begin{fifth}{Fact}[fontupper=\itshape]}{\end{fifth}}
-\NewDocumentEnvironment{fact*}{o}{\begin{fifth*}{Fact}[fontupper=\itshape]}{\end{fifth*}}
-\NewDocumentEnvironment{exercise}{o}{\begin{fifth}{Exercise}[fontupper=\itshape]}{\end{fifth}}
-\NewDocumentEnvironment{exercise*}{o}{\begin{fifth*}{Exercise}[fontupper=\itshape]}{\end{fifth*}}
+\NewDocumentEnvironment{conjecture}{o}{\begin{fifth}{Conjecture}[fontupper=\itshape][#1]}{\end{fifth}}
+\NewDocumentEnvironment{conjecture*}{o}{\begin{fifth*}{Conjecture}[fontupper=\itshape][#1]}{\end{fifth*}}
+\RenewDocumentEnvironment{fact}{o}{\begin{fifth}{Fact}[fontupper=\itshape][#1]}{\end{fifth}}
+\NewDocumentEnvironment{fact*}{o}{\begin{fifth*}{Fact}[fontupper=\itshape][#1]}{\end{fifth*}}
+\NewDocumentEnvironment{exercise}{o}{\begin{fifth}{Exercise}[fontupper=\itshape][#1]}{\end{fifth}}
+\NewDocumentEnvironment{exercise*}{o}{\begin{fifth*}{Exercise}[fontupper=\itshape][#1]}{\end{fifth*}}
 
 % Math Font
 \usefonttheme[onlymath]{serif}
