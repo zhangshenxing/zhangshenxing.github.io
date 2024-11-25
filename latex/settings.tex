@@ -82,18 +82,18 @@
 % % 不分段枚举环境
 \newenvironment{enuminline}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
-		\ifnum\value{enumi}=0\pause\fi%
+		\ifnum\value{enumi}=0\fi%
 	\refstepcounter{enumi}\theenumi { }}}%
 {\ignorespacesafterend}
 
 
 % 选择题
-% \begin{taskschoice}(4)
+% \begin{exchoice}(4)
 % 	() 选项
-% \end{taskschoice}
+% \end{exchoice}
 \RequirePackage{tasks}
 \settasks{label-format=\mdseries\textcolor{main},label={(\arabic*)},label-width=1.5em}
-\NewTasksEnvironment[label={\upshape(\Alph*)},label-width=1.5em]{taskschoice}[()]
+\NewTasksEnvironment[label={\upshape(\Alph*)},label-width=1.5em]{exchoice}[()]
 % TIKZ 设置
 \usetikzlibrary{
 	quotes,

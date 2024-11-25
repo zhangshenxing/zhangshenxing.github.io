@@ -388,12 +388,12 @@
 	\onslide<+->
 	\begin{example}
 		$n$ 维向量组 $\bma_1,\dots,\bma_s (3\le s\le n)$ 线性无关$\iff$\fillbraceframe{D}.
-		\begin{taskschoice}(1)
+		\begin{exchoice}(1)
 			() $\bma_1,\dots,\bma_s$ 中存在一个向量不能由其余向量线性表示 \alert{\onslide<.->{必要}}
 			() $\bma_1,\dots,\bma_s$ 中任两个向量都线性无关 \alert{\onslide<.->{必要}}
 			() $\bma_1,\dots,\bma_s$ 中不含零向量 \alert{\onslide<.->{必要}}
 			() $\bma_1,\dots,\bma_s$ 中任一个向量都不能由其余向量线性表示
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 \end{frame}
 
@@ -402,23 +402,23 @@
 	\onslide<+->
 	\begin{exercise}
 		若向量组 $\bma,\bmb,\bmg$ 线性无关, $\bma,\bmb,\bmd$ 线性相关, 则\fillbraceframe{C}.
-		\begin{taskschoice}(2)
+		\begin{exchoice}(2)
 			() $\bma$ 一定能由 $\bmb,\bmg,\bmd$ 线性表示
 			() $\bmb$ 一定不能由 $\bma,\bmg,\bmd$ 线性表示
 			() $\bmd$ 一定能由 $\bma,\bmb,\bmg$ 线性表示
 			() $\bmd$ 一定不能由 $\bma,\bmb,\bmg$ 线性表示
-		\end{taskschoice}
+		\end{exchoice}
 	\end{exercise}
 	\onslide<+->
 	\begin{example}
 		设向量 $\bmb$ 可由 $\bma_1,\dots,\bma_m$ 线性表示, 但不能由向量组 $S=\{\bma_1,\dots,\bma_{m-1}\}$ 线性表示. 记 $T=\{\bma_1,\dots,\bma_{m-1},\bmb\}$, 则\fillbraceframe{B}.
 		\alert{\onslide<.->{$\beta=\lambda_1\bma_1+\cdots+\lambda_m\bma_m, \lambda_m\neq 0$}}
-		\begin{taskschoice}(1)
+		\begin{exchoice}(1)
 			() $\bma_m$ 不能由 $S$ 线性表示, 也不能由 $T$ 线性表示
 			() $\bma_m$ 不能由 $S$ 线性表示, 但能由 $T$ 线性表示
 			() $\bma_m$ 能由 $S$ 线性表示, 也能由 $T$ 线性表示
 			() $\bma_m$ 能由 $S$ 线性表示, 但不能由 $T$ 线性表示
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 \end{frame}
 
@@ -546,7 +546,7 @@
 		\begin{enumerate}
 			\item 若 $\bma_1,\dots,\bma_m$ 是线性空间 $V$ 的一组基, 则称 $m$ 为 $V$ 的\emph{维数}, 记作 $\dim V$.
 			\item 设向量组 $S$ 生成空间 $V$.
-			称 $V$ 的维数为该向量组的\emph{秩}(Rank), 记作 $R(S)$.
+			称 $V$ 的维数为该向量组的\emph{秩}(Rank), 记作 $\rank(S)$.
 		\end{enumerate}
 	\end{definition}
 	\onslide<+->
@@ -559,13 +559,13 @@
 	\onslide<+->
 	由于向量组等价$\iff$生成同一个空间, 因此 $S,T$ 是等价向量组.
 	\onslide<+->
-	由 $T$ 线性无关可知 $R(S)\le m$.
+	由 $T$ 线性无关可知 $\rank(S)\le m$.
 	\onslide<+->
 	\begin{theorem}
 		设 $\bfA=(\bma_1,\dots,\bma_m)$ 的列向量组为 $S$.
 		\begin{enumerate}
-			\item $S$ 线性无关$\iff R(S)=m\iff\bfA\bfx={\bf0}$ 只有零解.
-			\item $S$ 线性相关$\iff R(S)<m\iff\bfA\bfx={\bf0}$ 有非零解.
+			\item $S$ 线性无关$\iff \rank(S)=m\iff\bfA\bfx={\bf0}$ 只有零解.
+			\item $S$ 线性相关$\iff \rank(S)<m\iff\bfA\bfx={\bf0}$ 有非零解.
 		\end{enumerate}
 	\end{theorem}
 \end{frame}
@@ -576,19 +576,19 @@
 	\begin{corollary}
 		设方阵 $\bfA=(\bma_1,\dots,\bma_n)$ 的列向量组为 $S$.
 		\begin{enumerate}
-			\item $S$ 线性无关$\iff R(S)=m\iff\bfA\bfx={\bf0}$ 只有零解 $\iff |\bfA|\neq0$.
-			\item $S$ 线性相关$\iff R(S)<m\iff\bfA\bfx={\bf0}$ 有非零解 $\iff |\bfA|=0$.
+			\item $S$ 线性无关$\iff \rank(S)=m\iff\bfA\bfx={\bf0}$ 只有零解 $\iff |\bfA|\neq0$.
+			\item $S$ 线性相关$\iff \rank(S)<m\iff\bfA\bfx={\bf0}$ 有非零解 $\iff |\bfA|=0$.
 		\end{enumerate}
 	\end{corollary}
 	\onslide<+->
 	\begin{exercise}
 		设 $\bfA$ 是 $n$ 阶方阵, 且其行列式 $|\bfA|=0$. 下列说法正确的是\fillbraceframe{C}.
-		\begin{taskschoice}(1)
+		\begin{exchoice}(1)
 			() $\bfA$ 必有一列元素全为零
 			() $\bfA$ 必有两列元素对应成比例
 			() $\bfA$ 必有一个列向量可由其余列向量线性表示
 			() $\bfA$ 中任意列向量均可由其余列向量线性表示
-		\end{taskschoice}
+		\end{exchoice}
 	\end{exercise}
 \end{frame}
 
@@ -597,14 +597,14 @@
 	\onslide<+->
 	\begin{theorem}
 		\begin{enumerate}
-			\item 设向量组 $S$ 可由向量组 $T$ 线性表示, 则 $R(S)\le R(T)$.
+			\item 设向量组 $S$ 可由向量组 $T$ 线性表示, 则 $\rank(S)\le \rank(T)$.
 			\item 若线性空间 $V\subseteq W$, 则 $\dim V\le\dim W$.
-			\item 设向量组 $S$ 可由向量组 $T$ 线性表示, 且 $R(S)=R(T)$, 则 $S,T$ 向量组等价.
-			\item 若线性空间 $V\subseteq W$ 且 $\dim V=\dim W$, 则 $V=W$.
+			\item 设向量组 $S$ 可由向量组 $T$ 线性表示, 且 $\rank(S)=\rank(T)$, 则 $S,T$ 向量组等价.
+			\item 若线性空间 $V\subseteq W$ 且 $\dim V=\dim W$, 则 $V=W$.\label{enum:same-dim-subspace-same}
 		\end{enumerate}
 	\end{theorem}
 	\onslide<+->
-	我们来证明\enumnum4.
+	我们来证明\enumref{enum:same-dim-subspace-same}.
 	\onslide<+->
 	设 $S,T$ 是 $V,W$ 的一组基.
 	\onslide<+->
@@ -634,25 +634,25 @@
 	\begin{example}
 		若
 		\[S_1=\{\bma_1,\bma_2,\bma_3\},\quad S_2=\{\bma_1,\bma_2,\bma_3,\bma_4\},\quad S_3=\{\bma_1,\bma_2,\bma_3,\bma_4,\bma_5\}\]
-		满足 $R(S_1)=R(S_2)=3, R(S_3)=4$.
+		满足 $\rank(S_1)=\rank(S_2)=3, \rank(S_3)=4$.
 		证明向量组 $S=\{\bma_1,\bma_2,\bma_3,\bma_5-\bma_4\}$ 线性无关.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
-		由 $R(S_1)=3$ 可知 $S_1$ 线性无关.
+		由 $\rank(S_1)=3$ 可知 $S_1$ 线性无关.
 		\onslide<+->{%
-			由 $R(S_2)=3$ 可知 $S_2$ 线性相关.
+			由 $\rank(S_2)=3$ 可知 $S_2$ 线性相关.
 		}\onslide<+->{%
 			从而 $\bma_4$ 可由 $S_1$ 线性表示.
 		}\onslide<+->{%
 			于是 $S_3$ 可由 $S$ 线性表示.
 		}\onslide<+->{%
-			显然 $S$ 可由 $S_3$ 线性表示, 因此二者等价, $R(S)=R(S_3)=4$.\qedhere
+			显然 $S$ 可由 $S_3$ 线性表示, 因此二者等价, $\rank(S)=\rank(S_3)=4$.\qedhere
 		}
 	\end{proof}
 	\onslide<+->
 	\begin{exercise}
-		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $R(S)=R(T)$, 则 $S$ 和 $T$ 等价.\onslide<+->{\alert{\text{\huge$\times$}}}
+		判断题: 设 $S$ 和 $T$ 为两个 $n$ 维向量组, 且 $\rank(S)=\rank(T)$, 则 $S$ 和 $T$ 等价.\onslide<+->{\alert{\text{\huge$\times$}}}
 	\end{exercise}
 \end{frame}
 
@@ -676,7 +676,7 @@
 	\onslide<+->
 	根据上一节相关结论可知, $S$ 中所有向量均可由 $S_0$ 线性表示.
 	\onslide<+->
-	换言之, $S_0$ 和 $S$ 等价, 它们生成相同的子空间 $V$, $m=R(S)$, $S_0$ 是 $V$ 的一组基.
+	换言之, $S_0$ 和 $S$ 等价, 它们生成相同的子空间 $V$, $m=\rank(S)$, $S_0$ 是 $V$ 的一组基.
 \end{frame}
 
 
@@ -707,7 +707,7 @@
 
 \begin{frame}{极大线性无关组的性质}
 	\begin{enumerate}
-		\item 若 $R(S)=r$, 则 $S$ 中任意 $r$ 个线性无关的向量构成 $S$ 的一个极大线性无关组.
+		\item 若 $\rank(S)=r$, 则 $S$ 中任意 $r$ 个线性无关的向量构成 $S$ 的一个极大线性无关组.
 		\item 只含有零向量的向量组没有极大线性无关组(空集), 它的秩为 $0$ (空集生成 $0$ 维空间 $\{{\bf0}\}$).
 		\item 极大线性无关组一般不是唯一的.
 	\onslide<+->{%

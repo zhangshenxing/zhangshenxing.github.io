@@ -1,6 +1,6 @@
-\section{柯西-古萨基本定理和复合闭路定理}
+\section{柯西-古萨定理和复合闭路定理}
 
-\subsection{柯西-古萨基本定理}
+\subsection{柯西-古萨定理}
 
 \begin{frame}{积分路径无关与闭路积分}
 	\onslide<+->
@@ -56,7 +56,7 @@
 \end{frame}
 
 
-\begin{frame}{柯西-古萨基本定理: 推导}
+\begin{frame}{柯西-古萨定理: 推导}
 	\onslide<+->
 	设 $C$ 是一条闭路, $D$ 是其内部区域.
 	\onslide<+->
@@ -81,15 +81,15 @@
 \end{frame}
 
 
-\begin{frame}{柯西-古萨基本定理}
+\begin{frame}{柯西-古萨定理}
 	\onslide<+->
-	\begin{algorithm}{柯西-古萨基本定理}
+	\begin{algorithm}{柯西-古萨定理}
 	设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
 	\end{algorithm}
 
 	\onslide<+->
 	\begin{corollary}
-	设 $f(z)$ 在\alert{单连通域} $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+	设 $f(z)$ 在\alert{单连通区域} $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
 	\end{corollary}
 	\onslide<+->
 	这里的闭合曲线可以不是闭路.
@@ -110,7 +110,7 @@
 \end{frame}
 
 
-\begin{frame}{典型例题: 柯西-古萨基本定理计算积分}
+\begin{frame}{典型例题: 柯西-古萨定理计算积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_{|z|=1}\frac1{2z-3}\diff z$.
@@ -119,7 +119,7 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
-		\onslide<+->{因此由柯西-古萨基本定理 $\displaystyle \oint_{|z|=1}\frac1{2z-3}\diff z=0$.}
+		\onslide<+->{因此由柯西-古萨定理 $\displaystyle \oint_{|z|=1}\frac1{2z-3}\diff z=0$.}
 	\end{solution}
 
 	\onslide<+->
@@ -132,7 +132,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 柯西-古萨基本定理计算积分}
+\begin{frame}{例: 柯西-古萨定理计算积分}
 	\onslide<+->
 	\begin{example}
 		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\dfrac12$.
@@ -142,7 +142,7 @@
 	\begin{solution}
 		注意到 $\dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\left(\dfrac1{z+i}+\dfrac1{z-i}\right)$.
 		\onslide<+->{由于 $\dfrac1z,\dfrac1{z+i}$ 在 $|z-i|\le\dfrac12$ 上解析,
-		}\onslide<+->{因此由柯西-古萨基本定理
+		}\onslide<+->{因此由柯西-古萨定理
 			\[\oint_C\frac1z\diff z
 			=\oint_C\frac1{z+i}\diff z=0,\]
 		}\onslide<+->{
@@ -154,7 +154,7 @@
 
 \subsection{复合闭路定理}
 
-\begin{frame}{多连通域边界与复合闭路}
+\begin{frame}{多连通区域边界与复合闭路}
 	\onslide<+->
 	设 $C_0,C_1,\dots,C_n$ 是 $n+1$ 条简单闭曲线, $C_1,\dots,C_n$ 每一条都包含在其它闭路的外部, 而且它们都包含在 $C_0$ 的内部.
 	\onslide<+->
@@ -190,7 +190,7 @@
 		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
 	\end{algorithm}
 	\onslide<+->
-	事实上, 复合闭路定理和柯西-古萨基本定理可以看成一个定理的两种情形: 
+	事实上, 复合闭路定理和柯西-古萨定理可以看成一个定理的两种情形: 
 	\onslide<+->
 	设 $C$ 是一个闭路或复合闭路, 若 $f(z)$ 在 $C$ 及其围成的区域(单连通或多连通)内解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
 \end{frame}
@@ -255,8 +255,8 @@
 \begin{frame}{复合闭路定理}
 	\onslide<+->
 	\begin{proof}
-		以曲线 $\gamma_1,\gamma_2,\dots,\gamma_{n+1}$ 把 $C_0,C_1,\dots,C_n$ 连接起来, 则它们把区域 $D$ 分成了两个单连通域 $D_1,D_2$.
-		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨基本定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
+		以曲线 $\gamma_1,\gamma_2,\dots,\gamma_{n+1}$ 把 $C_0,C_1,\dots,C_n$ 连接起来, 则它们把区域 $D$ 分成了两个单连通区域 $D_1,D_2$.
+		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
 		}\onslide<+->{因此
 			\[\oint_{C_0}f(z)\diff z-
 		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.\]
@@ -318,7 +318,7 @@
 		\begin{enumerate}
 			\item 如果 $a$ 不在 $C$ 的内部, 则 $(z-a)^n$ 在 $C$ 及其内部解析.
 			\onslide<+->{%
-				由柯西-古萨基本定理, $\displaystyle\int_C(z-a)^n\diff z=0$.
+				由柯西-古萨定理, $\displaystyle\int_C(z-a)^n\diff z=0$.
 			}
 			\item 如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
 			\onslide<+->{%

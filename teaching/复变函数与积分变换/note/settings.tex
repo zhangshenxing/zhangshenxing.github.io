@@ -1,44 +1,38 @@
 \usepackage{bm}
 \usepackage{extarrows}
+\usepackage{colortbl} % 表格边框颜色
 \usepackage{mathrsfs}
 \usepackage{stmaryrd}
 \usepackage{multirow}
-\usepackage{tikz}
 \usepackage{color,calc}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{fixdif,derivative}
 \usepackage[normalem]{ulem}
+
 % 颜色
 
-\definecolor{main}{RGB}{0,128,192}%
-\definecolor{second}{RGB}{0,128,192}%
-% \definecolor{main}{RGB}{0,0,0}%
-% \definecolor{second}{RGB}{0,0,0}%
-\definecolor{third}{RGB}{0,0,0}%
-\definecolor{fourth}{RGB}{0,0,0}%
-\definecolor{fifth}{RGB}{0,0,0}%
-
-% \definecolor{main}{RGB}{0,0,224}%
-% \definecolor{second}{RGB}{224,0,0}%
-% \definecolor{third}{RGB}{112,0,112}%
-% \definecolor{fourth}{RGB}{0,128,0}%
-% \definecolor{fifth}{RGB}{255,128,0}%
-
-% \definecolor{main}{RGB}{0,0,0}%
+% \definecolor{main}{RGB}{0,128,192}%
 % \definecolor{second}{RGB}{0,0,0}%
 % \definecolor{third}{RGB}{0,0,0}%
 % \definecolor{fourth}{RGB}{0,0,0}%
-% \definecolor{fifth}{RGB}{0,0,0}%
+% \definecolor{fifth}{RGB}{0,128,192}%
+
+\definecolor{main}{RGB}{0,128,192}%
+\definecolor{second}{RGB}{224,0,0}
+\definecolor{third}{RGB}{112,0,112}
+\definecolor{fourth}{RGB}{0,128,0}
+\definecolor{fifth}{RGB}{0,128,0}
 
 % 选读
-% \newcommand{\optional}{\textcolor{black}{(选读)}}
 \newcommand{\optional}{(选读)}
+\renewcommand{\emph}[1]{{\kaishu #1}}
 % 文本色
 \newcommand{\noun}[1]{{\color{main}{\heiti #1}\index{{#1}}}}
 \newcommand{\nouns}[2]{{\color{main}{\heiti #1}\index{{#2}}}}
-\renewcommand{\emph}[1]{{\kaishu #1}}
-\newcommand{\alert}[1]{{\color{main}{\kaishu #1}}}
+\newcommand{\alert}[1]{{\color{second}{\kaishu #1}}}
+
 \newcommand{\alertn}[1]{{\color{second}{#1}}}
 \newcommand{\emphn}[1]{{\color{main}{#1}}}
 \newcommand{\alertm}[1]{{\textcolor{second}{\boldsymbol{#1}}}}
@@ -46,32 +40,15 @@
 % 枚举数字引用标志
 \newcommand{\enumnum}[1]{{\mdseries\upshape{\textcolor{main}{(#1)}}}}
 
-
-
-
-% TIKZ 设置
-\usetikzlibrary{
-	quotes,
-	shapes.arrows,
-	arrows.meta,
-	positioning,
-	shapes.geometric,
-	overlay-beamer-styles,
-	patterns,
-	calc,
-	angles,
-	decorations.pathreplacing,
-	backgrounds % 背景边框
-}
 \tikzset{
 	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
   % arrow
 	cstra/.style      ={-Stealth},        % right arrow
 	cstla/.style      ={Stealth-},        % left arrow
 	cstlra/.style     ={Stealth-Stealth}, % left-right arrow
-	cstwra/.style     ={-Straight Barb},  % wide ra
-	cstwla/.style     ={Straight Barb-},
-	cstwlra/.style    ={Straight Barb-Straight Barb},
+	cstwra/.style     ={-{Straight Barb[flex'=1]}},  % wide ra
+	cstwla/.style     ={{Straight Barb[flex'=1]}-},
+	cstwlra/.style    ={{Straight Barb[flex'=1]}-{Straight Barb[flex'=1]}},
 	cstnra/.style      ={-Latex, line width=0.1cm},
 	cstmra/.style      ={-Latex, line width=0.05cm},
 	cstmlra/.style     ={Latex-Latex, line width=0.05cm},
@@ -112,8 +89,6 @@
 \newcommand{\falseex}{$\times$}
 
 \newcommand{\ansno}[1]{\par\noindent\emph{\thechapter.#1}}
-\newcommand{\pp}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\dpp}[2]{\dfrac{\partial #1}{\partial #2}}
 
 % arrows
 \newcommand\ra{\rightarrow}
@@ -143,15 +118,9 @@
 \newcommand\ov{\overline}
 \newcommand\ul{\underline}
 \newlength{\larc} % 弧
-\NewDocumentCommand\warc{o m}{%
-	\IfNoValueTF {#1}%
-	{%
-		\settowidth{\larc}{$#2$}%
-		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{0.7\larc}\right.}}}{#2}%
-	}%
-	{%
-		\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1}\right.}}}{#2}%
-	}%
+\NewDocumentCommand\warc{O{0.5} m}{%
+	\settowidth{\larc}{$#2$}%
+	\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1\larc}\right.}}}{#2}%
 }
 
 % 括号, 少用
@@ -168,6 +137,8 @@
 \renewcommand\ge{\geqslant}
 \newcommand\vare{\varepsilon}
 \newcommand\varp{\varphi}
+\newcommand\liml{\lim\limits}
+\newcommand\suml{\sum\limits}
 \newcommand\ilim{\varinjlim\limits}
 \newcommand\plim{\varprojlim\limits}
 \newcommand\half{\frac{1}{2}}
@@ -624,7 +595,6 @@
 % d
 \newcommand\Def{{\mathrm{Def}}}
 \newcommand\diag{{\mathrm{diag}}}
-\newcommand\diff{\,\mathrm{d}}
 \newcommand\disc{{\mathrm{disc}}}
 \newcommand\dist{{\mathrm{dist}}}
 \renewcommand\div{{\mathrm{div}}}
@@ -784,7 +754,6 @@
 \newcommand\supp{{\mathrm{supp}}}
 \newcommand\Supp{{\mathrm{Supp}}}
 \newcommand\Swan{{\mathrm{Sw}}}
-\newcommand\suml{\sum\limits}
 % t
 \newcommand\td{{\mathrm{td}}}
 \let\tanh\relax

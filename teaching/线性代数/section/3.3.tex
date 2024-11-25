@@ -34,22 +34,23 @@
 	\onslide<+->
 	可以看出我们有时候只关心实二次型对应的矩阵的特征值的符号.
 	\onslide<+->
+	由于合同矩阵秩相同, 因此可定义:
 	\begin{definition}
-		称实二次型 $f$ 对应矩阵 $\bfA$ 的秩为 $f$ 的\emph{秩}.
+		称实二次型 $f$ 对应矩阵的秩为 $f$ 的\emph{秩}.
 	\end{definition}
 	\onslide<+->
-	对于可逆阵 $\bfP$, $\bfP^\rmT\bfA\bfP$ 的秩和 $\bfA$ 相同.
-	\onslide<+->
-	因此若可逆线性变换 $\bfx=\bfP\bfy$ 将 $f$ 变为标准形, 则 $y_i^2$ 系数非零为恰有 $r$ 个.
-	\onslide<+->
 	\begin{algorithm}{惯性定理}
-		设实二次型 $f=\bfx^\rmT\bfA\bfx$ 的秩为 $r$.
-		若可逆线性变换 $\bfx=\bfP\bfy=\bfQ\bfz$ 分别将 $f$ 变为
-		\begin{align*}
-			f&=k_1y_1^2+\cdots+k_ry_r^2\\
-			f&=\ell_1z_1^2+\cdots+\ell_rz_r^2,
-		\end{align*}
-		则 $k_1,\dots,k_r$ 中正的个数和 $\ell_1,\dots,\ell_r$ 中正的个数相同.
+		\begin{enumerate}
+			\item 若 $\bfA$ 和 $\bfB$ 为合同的对角阵, 则 $\bfA,\bfB$ 对角元中正数的个数相同.\label{enum:inert-matrix}
+			\item \label{enum:inert-quad-form}
+			设实二次型 $f$ 的秩为 $r$.
+			若可逆线性变换 $\bfx=\bfP\bfy=\bfQ\bfz$ 分别将 $f$ 变为
+			\[
+				f=k_1y_1^2+\cdots+k_ry_r^2,\qquad
+				 =\ell_1z_1^2+\cdots+\ell_rz_r^2,
+			\]
+			则 $k_1,\dots,k_r$ 中正的个数和 $\ell_1,\dots,\ell_r$ 中正的个数相同.
+		\end{enumerate}
 	\end{algorithm}
 \end{frame}
 
@@ -57,35 +58,51 @@
 \begin{frame}{惯性指数}
 	\onslide<+->
 	\begin{proof}
-		由题设可知
+		设 
 		\begin{align*}
-			\bfB&:=\diag(k_1,\dots,k_r,0,\dots,0)=\bfP^\rmT\bfA\bfP,\\
-			\bfC&:=\diag(\ell_1,\dots,\ell_r,0,\dots,0)=\bfQ^\rmT\bfA\bfQ.
+			\bfA&=\diag(k_1,\dots,k_r,0,\dots,0),\\
+			\bfB&=\diag(\ell_1,\dots,\ell_r,0,\dots,0)=\bfP^\rmT\bfA\bfP,
 		\end{align*}
+		其中 $\bfP=(\bma_1,\dots,\bma_n)$ 为可逆矩阵.
 		\onslide<+->{%
-			设 $\bfR=\bfP^{-1}\bfQ=(\bma_1,\dots,\bma_n)$, 则
-			\[\bfC=\bfR^\rmT\bfB\bfR=\diag(k_1\bma_1^\rmT\bma_1,
-				\dots,k_r\bma_r^\rmT\bma_r,0,\dots,0).\]
+		不难得到 $\bfP^\rmT\bfA\bfP$ 的对角元:
+		\[
+			\bfB=\bfP^\rmT\bfA\bfP=\diag(k_1\bma_1^\rmT\bma_1,
+			\dots,k_r\bma_r^\rmT\bma_r,0,\dots,0).
+		\]
 		}\onslide<+->{%
-			从而 $\ell_i=k_i\|\bma_i\|^2$, 二者符号相同.\qedhere
+		从而 $\ell_i=k_i\|\bma_i\|^2$, 二者符号相同.
+		}\onslide<+->{%
+		\enumref{enum:inert-quad-form} 由\enumref{enum:inert-matrix} 得到.\qedhere
 		}
 	\end{proof}
+	\onslide<+->
+	\begin{definition}
+		把实二次型 $f$ 标准形系数中为正数的个数称为 $f$ 的\emph{正惯性指数} $p$, 为负数的个数称为 $f$ 的\emph{负惯性指数} $q=r-q$.
+	\end{definition}
 \end{frame}
 
 
-\begin{frame}{惯性指数}
-	\onslide<+->
-	\begin{definition}
-		把 $f$ 标准型系数中为正数的个数称为实二次型 $f$ 的\emph{正惯性指数} $p$, 为负数的个数称为实二次型 $f$ 的\emph{负惯性指数} $q=r-q$.
-	\end{definition}
+\begin{frame}{实对称阵的相合}
 	\onslide<+->
 	\begin{corollary}
 		实二次型 $f=\bfx^\rmT\bfA\bfx$ 的正(负)惯性指数等于实对称阵 $\bfA$ 的正(负)特征值的个数.
 	\end{corollary}
 	\onslide<+->
+	\begin{theorem}
+		任意 $n$ 阶实对称矩阵 $\bfA$ 合同于对角矩阵
+		\[\begin{pmatrix}
+			\bfE_p&&\\
+			&-\bfE_q&\\
+			&&\bfO_{n-p-q}
+		\end{pmatrix},\]
+		其中 $p,q$ 分别为正负特征值个数(计算重数), $\rank(\bfA)=p+q$.
+	\end{theorem}
+	\onslide<+->
+	从而正负惯性指数相同的实对称阵是合同的.
+	\onslide<+->
 	\begin{corollary}
-		设 $\bfA,\bfB$ 均为 $n$ 阶实对称阵.
-		$\bfA$ 与 $\bfB$ 合同当且仅当 $\bfA$ 的正特征值的个数等于 $\bfB$ 的正特征值的个数, 且 $\bfA$ 的负特征值的个数等于 $\bfB$ 的负特征值的个数.
+		$n$ 阶实对称阵 $\bfA$ 与 $\bfB$ 合同$\iff \bfA,\bfB$ 的正负特征值个数均相同.
 	\end{corollary}
 \end{frame}
 
@@ -96,31 +113,53 @@
 		设 $\bfA=\begin{pmatrix}
 			1&2\\2&1
 		\end{pmatrix}$, 则 $\bfA$ 合同于\fillbraceframe{D}.
-		\begin{taskschoice}(4)
+		\begin{exchoice}(4)
 			() $\begin{pmatrix}-2&1\\1&-2\end{pmatrix}$
 			() $\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$
 			() $\begin{pmatrix}2&1\\1&2\end{pmatrix}$
 			() $\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
-	\onslide
+	\onslide<+->
 	\begin{example}
 		矩阵 $\begin{pmatrix}
 			1&1\\1&1
 		\end{pmatrix}$ 与 $\begin{pmatrix}
 			3&0\\0&0
 		\end{pmatrix}$\fillbraceframe{B}.
-		\begin{taskschoice}(2)
+		\begin{exchoice}(2)
 			() 合同且相似
 			() 合同但不相似
 			() 不合同但相似
 			() 既不合同也不相似
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{二次曲面的分类}
+\begin{frame}{实二次型规范形}
+	\beqskip{3pt}
+	\onslide<+->
+	\begin{definition}
+		若实二次型的标准形的系数只在 $-1, 0, 1$ 三个数中取值, 则称此实二次型为\emph{规范形}．
+	\end{definition}
+	\onslide<+->
+	\begin{theorem}
+		任意一个实二次型总可经过适当的可逆线性变换化为规范形, 且规范形是唯一的(可任意交换变量顺序):
+		\[f=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2,\]
+		其中 $p,q$ 分别为正负惯性指数.
+	\end{theorem}
+	\onslide<+->
+	\begin{example}
+		若实对称矩阵 $\bfA$ 合同于 $\begin{pmatrix}
+			1&0&0\\0&0&2\\0&2&0
+		\end{pmatrix}$, 则通过可逆线性变换 $\bfx=\bfP\bfy$ 可将二次型 $\bfx^\rmT\bfA\bfx$ 化为规范形\fillblankframe[3cm][1pt]{$y_1^2+y_2^2-y_3^2$}.
+	\end{example}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例: 二次曲面的分类}
 	\onslide<+->
 	对于三元实二次型, 正负惯性指数确定了二次曲面的类别.
 	\begin{enumerate}
@@ -133,40 +172,6 @@
 \end{frame}
 
 
-\subsection{实二次型规范形}
-
-\begin{frame}{实二次型规范形}
-	\onslide<+->
-	\begin{definition}
-		若实二次型的标准形的系数只在 $-1, 0, 1$ 三个数中取值, 则称此实二次型为\emph{规范形}．
-	\end{definition}
-	\onslide<+->
-	\begin{theorem}
-		任意一个实二次型总可经过适当的可逆线性变换化为规范形, 且规范形是唯一的(可任意交换变量顺序):
-		\[f=x_1^2+\cdots+x_p^2-x_{p+1}^2-\cdots-x_{p+q}^2,\]
-		其中 $p,q$ 分别为正负惯性指数.
-	\end{theorem}
-\end{frame}
-
-
-\begin{frame}{实对称阵的合同标准形}
-	\onslide<+->
-	\begin{corollary}
-		任意 $n$ 阶实对称矩阵 $\bfA$ 合同于对角矩阵
-		\[\begin{pmatrix}
-			\bfE_p&&\\
-			&-\bfE_q&\\
-			&&\bfO_{n-p-q}
-		\end{pmatrix},\]
-		其中 $p,q$ 分别为正负特征值个数(计算重数), $R(\bfA)=p+q$.
-	\end{corollary}
-	\onslide<+->
-	\begin{example}
-		若实对称矩阵 $\bfA$ 合同于 $\begin{pmatrix}
-			1&0&0\\0&0&2\\0&2&0
-		\end{pmatrix}$, 则通过可逆线性变换 $\bfx=\bfP\bfy$ 可将二次型 $\bfx^\rmT\bfA\bfx$ 化为规范形\fillblankframe[3cm]{$y_1^2+y_2^2-y_3^2$}.
-	\end{example}
-\end{frame}
 
 \subsection{正定二次型}
 
@@ -177,8 +182,7 @@
 		\begin{enumerate}
 			\item 若对任意 $\bfx\neq{\bf0}$, 都有 $f(\bfx)>0$, 则称 $f$ 为\emph{正定二次型}, 并称实对称阵 $\bfA$ 为\emph{正定矩阵}, 也记作 $\bfA>0$.
 			\item 若对任意 $\bfx$, 都有 $f(\bfx)\ge0$, 则称 $f$ 为\emph{半正定二次型}, 并称实对称阵 $\bfA$ 为\emph{半正定矩阵}, 也记作 $\bfA\ge0$.
-			\item 若 $-f$ 正定, 则称 $f$ 为\emph{负定二次型}, 并称实对称阵 $\bfA$ 为\emph{负定矩阵}, 也记作 $\bfA<0$.
-			\item 若 $-f$ 半正定, 则称 $f$ 为\emph{半负定二次型}, 并称实对称阵 $\bfA$ 为\emph{半负定矩阵}, 也记作 $\bfA\le0$.
+			\item 若 $-f$ (半)正定, 则称 $f$ 为\emph{(半)负定二次型}, 并称实对称阵 $\bfA$ 为\emph{(半)负定矩阵}, 也记作 $\bfA<0$ ($\bfA\le0$).
 			\item 除此之外, 称 $f$ \emph{不定}.
 		\end{enumerate}
 	\end{definition}
@@ -226,6 +230,7 @@
 			\dots,\quad
 			|\bfA|>0.\]\label{enum:hurwitz}
 		\end{enumerate}
+		\vspace{-\baselineskip}
 	\end{theorem}
 	\onslide<+->
 	将\enumref{enum:hurwitz}中 $>$ 换成 $\ge$ 即可判断半正定, 这也等价于 $f$ 的负惯性指数为 $0$, 即 $\bfA$ 特征值全非负.
@@ -233,6 +238,7 @@
 
 
 \begin{frame}{例: 正定的性质和判定}
+	\beqskip{5pt}
 	\onslide<+->
 	\begin{corollary}
 		若 $\bfA$ 正定, 则 $|\bfA|>0$ 且对角元全为正.
@@ -247,66 +253,75 @@
 			2&1&0\\
 			1&1&t/2\\
 			0&t/2&1
-		\end{pmatrix}$, 顺序主子式 $2>0,\begin{vmatrix}
-			2&1\\1&1
-		\end{vmatrix}=1>0,|\bfA|=1-\dfrac{t^2}2>0$
-		得到 $\displaystyle-\frac{\sqrt2}2<t<\frac{\sqrt2}2$.
+		\end{pmatrix}$, 
+		\onslide<+->{%
+		顺序主子式
+		\[
+			2>0,\quad
+			\begin{vmatrix}
+				2&1\\1&1
+			\end{vmatrix}=1>0,\quad
+			|\bfA|=1-\dfrac{t^2}2>0
+		\]
+		得到 $-\sqrt2<t<\sqrt2$.
+		}
+	\end{solution}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例: 求二次型的规范形}
+	\onslide<+->
+	\begin{example}
+		求可逆线性变换 $\bfx=\bfP\bfy$二次型 $f=-5x_1^2+6x_2^2-2x_3^2+6x_1x_2+4x_1x_3$ 化为规范形.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		\begin{align*}
+			f&=-2(x_3-x_1)^2-3x_1^2+6x_2^2+6x_1x_2\\
+			&=-2(x_3-x_1)^2-3(x_1-x_2)^2+9x_2^2
+		\end{align*}
+		\onslide<+->{%
+		因此 $\bfx=\bfy\bfP,\bfP=\begin{pmatrix}
+			-\sqrt2&\sqrt3&0\\
+			0&-\sqrt3&3\\
+			\sqrt2&0&0\\
+		\end{pmatrix}^{-1}=\begin{pmatrix}
+			0&0&\dfrac1{\sqrt2}\\
+			\dfrac1{\sqrt3}&0&\dfrac1{\sqrt3}\\
+			\dfrac13&\dfrac13&\dfrac13
+		\end{pmatrix}$,
+		将 $f$ 化为规范形 $f=-y_1^2-y_2^2+y_3^2$,
+		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{例: 正定的性质和判定}
-	\onslide<+->
-	\begin{example}
-		判别二次型 $f=-5x^2-6y^2-4z^2+4xy+4xz$ 是否正定.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		由于
-		$\bfA=\begin{pmatrix}
-			-5&2&2\\
-			2&-6&0\\
-			2&0&-4
-		\end{pmatrix}$.
-		顺序主子式 $-5<0$, 因此不是正定的.
-
-		或由 $f(1,0,0)<0$ 得到.
-	\end{solution}
-	\onslide<+->
 	\begin{example}
 		若实对称阵 $\bfA$ 正定, 证明 $|\bfA+\bfE|>1$.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
 		由 $\bfA$ 正定可知其特征值均为正, 从而 $\bfA+\bfE$ 特征值都大于 $1$.
-		\onslide<+->{
-			从而 $|\bfA+\bfE|>1$.\qedhere
+		\onslide<+->{%
+		从而 $|\bfA+\bfE|>1$.\qedhere
 		}
 	\end{proof}
-\end{frame}
-
-
-\begin{frame}{例: 正定的性质和判定}
 	\onslide<+->
 	\begin{example}
-		设 $3$ 阶实对称阵 $\bfA$ 满足 $\bfA^2+2\bfA=\bfO, R(\bfA)=2$.
-		\begin{enumerate}
-			\item 求 $\bfA$ 的全部特征值.
-			\item 当 $k$ 为何值时, 矩阵 $\bfA+k\bfE$ 为正定矩阵.
-		\end{enumerate}
+		设 $3$ 阶实对称阵 $\bfA$ 满足 $\bfA^2+2\bfA=\bfO, \rank(\bfA)=2$. 当 $k$ 为何值时, 矩阵 $\bfA+k\bfE$ 为正定矩阵.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\begin{enumerate}
-			\item 由 $\bfA^2+2\bfA=\bfO$ 可知 $\bfA$ 的特征值满足 $\lambda^2+2\lambda=0,\lambda=0,-2$.
-			\onslide<+->{%
-				由 $R(\bfA)=2$ 可知 $\bfA$ 特征值为 $0,-2,-2$.
-			}
-			\item $\bfA+k\bfE$ 特征值为 $k,k-2,k-2$.
-			\onslide<+->{%
-				因此 $k>2$.
-			}
-		\end{enumerate}
+		由 $\bfA^2+2\bfA=\bfO$ 可知 $\bfA$ 的特征值满足 $\lambda^2+2\lambda=0,\lambda=0,-2$.
+		\onslide<+->{%
+		由 $\rank(\bfA)=2$ 可知 $\bfA$ 特征值为 $0,-2,-2$,
+		}\onslide<+->{%
+		$\bfA+k\bfE$ 特征值为 $k,k-2,k-2$.
+		}\onslide<+->{%
+		因此 $k>2$.
+		}
 	\end{solution}
 \end{frame}
 
@@ -314,7 +329,7 @@
 \begin{frame}{例: 正定的性质和判定}
 	\onslide<+->
 	\begin{example}
-		设 $\bfA$ 是 $m\times n$ 实矩阵且 $R(\bfA)=n$.
+		设 $\bfA$ 是 $m\times n$ 实矩阵且 $\rank(\bfA)=n$.
 		证明 $\bfA^\rmT\bfA$ 正定.
 	\end{example}
 	\onslide<+->
@@ -322,12 +337,12 @@
 		显然 $\bfA^\rmT\bfA$ 是对称的.
 		\onslide<+->{%
 			注意到
-			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=(\bfA\bfx)^\rmT\bfA\bfx=\|\bfA\bfx\|.\]
+			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=(\bfA\bfx)^\rmT\bfA\bfx=\|\bfA\bfx\|^2.\]
 		}\onslide<+->{%
-			由于 $R(\bfA)=n$, $\bfA\bfx={\bf0}$ 只有零解.
+			由于 $\rank(\bfA)=n$, $\bfA\bfx={\bf0}$ 只有零解.
 		}\onslide<+->{%
 			因此当 $\bfx\neq{\bf0}$ 时, $\bfA\bfx\neq{\bf0}$, 从而
-			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=\|\bfA\bfx\|>0.\qedhere\]
+			\[\bfx^\rmT(\bfA^\rmT\bfA)\bfx=\|\bfA\bfx\|^2>0.\qedhere\]
 		}\vspace{-\baselineskip}
 	\end{proof}
 \end{frame}
@@ -337,17 +352,19 @@
 	\onslide<+->
 	\begin{example}
 		设 $\bfA$ 为 $n$ 阶实对称矩阵.
-		证明 $R(\bfA)=n\iff$ 存在一个 $n$ 阶实方阵 $\bfB$ 使得 $\bfA\bfB+\bfB^\rmT\bfA$ 正定.
+		证明 $\rank(\bfA)=n\iff$ 存在一个 $n$ 阶实方阵 $\bfB$ 使得 $\bfA\bfB+\bfB^\rmT\bfA$ 正定.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
 		显然 $\bfA\bfB+\bfB^\rmT\bfA$ 是对称的, 且
 		\[\bfx^\rmT(\bfA\bfB+\bfB^\rmT\bfA)\bfx=(\bfA\bfx)^\rmT\bfB\bfx+(\bfB\bfx)^\rmT(\bfA\bfx)=2[\bfA\bfx,\bfB\bfx].\]
 		\onslide<+->{%
-			若 $R(\bfA)=n$, 令 $\bfB=\bfA$, 则当 $\bfx\neq{\bf0}$ 时, $\bfA\bfx\neq{\bf0}$, 从而
-			\[[\bfA\bfx,\bfB\bfx]=\|\bfA\bfx\|>0.\]
+		若 $\rank(\bfA)=n$, 令 $\bfB=\bfA$, 则当 $\bfx\neq{\bf0}$ 时, $\bfA\bfx\neq{\bf0}$, 从而
+		\[
+			[\bfA\bfx,\bfB\bfx]=\|\bfA\bfx\|^2>0.
+		\]
 		}\onslide<+->{%
-			若 $R(\bfA)<n$, 则存在 $\bfx\neq{\bf0}$ 使得 $\bfA\bfx={\bf0}$, 从而 $[\bfA\bfx,\bfB\bfx]=0$, $\bfA\bfB+\bfB^\rmT\bfA$ 不正定.\qedhere
+		若 $\rank(\bfA)<n$, 则存在 $\bfx\neq{\bf0}$ 使得 $\bfA\bfx={\bf0}$, 从而 $[\bfA\bfx,\bfB\bfx]=0$, $\bfA\bfB+\bfB^\rmT\bfA$ 不正定.\qedhere
 		}
 	\end{proof}
 \end{frame}
@@ -391,36 +408,6 @@
 \end{frame}
 
 
-\begin{frame}{例: 正定的性质和判定}
-\beqskip{6pt}
-	\onslide<+->
-	\begin{example}
-		设二次型 $f=\bfx^\rmT\bfA\bfx$.
-		证明: 当 $\|x\|=1$ 时, $f(\bfx)$ 的最大(小)值为实对称阵 $\bfA$ 的最大(小)特征值.
-	\end{example}
-	\onslide<+->
-	\begin{proof}
-		将 $\bfA$ 的特征值排序为  $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_n$.
-		\onslide<+->{%
-			存在正交变换 $\bfx=\bfP\bfy$ 使得
-			\[\bmL=\bfP^\rmT\bfA\bfP=\diag(\lambda_1,\dots,\lambda_n),\quad 
-			f=\bfx^\rmT\bfA\bfx=\bfy^\rmT\bmL\bfy=\lambda_1y_1^2+\cdots+\lambda_ny_n^2.\]
-		}\onslide<+->{%
-			由于正交变换保持长度, 因此 $\|\bfx\|=1\iff\|\bfy\|=1$.
-		}\onslide<+->{%
-			\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\le\lambda_1(y_1^2+\cdots+y_n^2)=\lambda_1,\]
-			且等式可在 $\bfy=(1,0,\dots,0)$ 处取得.
-		}\onslide<+->{%
-			\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\ge\lambda_n(y_1^2+\cdots+y_n^2)=\lambda_n,\]
-			且等式可在 $\bfy=(0,\dots,0,1)$ 处取得.
-		}\onslide<+->{%
-			故 $f$ 的最大值为 $\lambda_1$, 最小值为 $\lambda_n$.\qedhere
-		}
-	\end{proof}
-\endgroup
-\end{frame}
-
-
 \begin{frame}{正定的应用: 函数极值\noexer}
 	\onslide<+->
 	实对称阵可用于判断多元函数的极值.
@@ -460,7 +447,7 @@
 	令 $\bmS\in M_{m\times n}$ 为对角阵, 对角元为 $\sigma_1,\dots,\sigma_n$.
 
 	\onslide<+->
-	对于 $1\le j\le r=R(\bfA)$, 令 $\bfu_j=\dfrac1{\sigma_j}\bfA \bfv_j$, 
+	对于 $1\le j\le r=\rank(\bfA)$, 令 $\bfu_j=\dfrac1{\sigma_j}\bfA \bfv_j$, 
 	\onslide<+->
 	设 $\bfu_{r+1},\dots,\bfu_m$ 是 $\bfA^\rmT\bfx={\bf0}$ 的一组标准正交基础解系,
 	\onslide<+->

@@ -34,14 +34,14 @@
 	\onslide<+->
 	$\BR^2$ 或 $\BR^3$ 上的零向量、加法和数乘满足:
 	\begin{enumV}\bf
-		\item $\bma+\bmb=\bmb+\bma$;
+		\item $\bma+\bmb=\bmb+\bma$;\label{enum:V1}
 		\item $\bma+(\bmb+\bmg)=(\bma+\bmb)+\bmg$;
 		\item ${\bm0}+\bma=\bma$;
 		\item 对任意 $\bma$, 存在 $\bmb$ 使得 $\bma+\bmb={\bf0}$. 称 $\bmb$ 为 $\bma$ 的\emph{负向量};
 		\item $(\lambda\mu)\bma=\lambda(\mu\bma)$;
 		\item $(\lambda+\mu)\bma=\lambda\bma+\mu\bma$;
 		\item $\lambda(\bma+\bmb)=\lambda\bma+\lambda\bmb$;
-		\item $1\cdot\bma=\bma$.
+		\item $1\cdot\bma=\bma$.\label{enum:V8}
 	\end{enumV}
 \end{frame}
 
@@ -79,10 +79,10 @@
 		\item $\lambda(a_1,\dots,a_n)^\rmT=(\lambda a_1,\dots,\lambda a_n)^\rmT,\lambda\in\BR$.
 	\end{enumerate}
 	\onslide<+->
-	而且它们也满足\enumnum{V1}--\enumnum{V8}.
+	而且它们也满足\ref{enum:V1}--\ref{enum:V8}.
 	\onslide<+->
 	\begin{definition}
-		若集合 $V$ 带有零向量、加法和实数的数乘, 且满足\enumnum{V1}--\enumnum{V8}, 则称 $V$ 是一个\emph{实线性空间}.
+		若集合 $V$ 带有零向量、加法和实数的数乘, 且满足\ref{enum:V1}--\ref{enum:V8}, 则称 $V$ 是一个\emph{实线性空间}.
 	\end{definition}
 	\onslide<+->
 	这样, $\BR^n$ 成为了一个实线性空间.
@@ -129,8 +129,8 @@
 	\onslide<+->
 	不难验证, 对任意 $\bfu,\bfv\in\BR^n,\lambda\in\BR$,
 	\begin{enumV}[L]
-		\item $\msa(\bfu+\bfv)=\msa(\bfu)+\msa(\bfv)$;
-		\item $\msa(\lambda\bfu)=\lambda \msa(\bfu)$.
+		\item $\msa(\bfu+\bfv)=\msa(\bfu)+\msa(\bfv)$;\label{enum:L1}
+		\item $\msa(\lambda\bfu)=\lambda \msa(\bfu)$.\label{enum:L2}
 	\end{enumV}
 \end{frame}
 
@@ -138,7 +138,7 @@
 \begin{frame}{线性变换\noexer}
 	\onslide<+->
 	\begin{definition}
-		若映射 $\msa:\BR^n\ra\BR^m$ 满足\enumnum{L1},\enumnum{L2}, 称 $\msa$ 是一个\emph{线性变换}或\emph{线性映射}.
+		若映射 $\msa:\BR^n\ra\BR^m$ 满足\ref{enum:L1},\ref{enum:L2}, 称 $\msa$ 是一个\emph{线性变换}或\emph{线性映射}.
 	\end{definition}
 	\onslide<+->
 	反过来, 是不是所有的线性变换 $\BR^n\ra\BR^m$ 都可以表达为前述形式呢?

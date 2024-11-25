@@ -43,7 +43,7 @@
 	在复数域中 $n$ 次多项式总有 $n$ 个根(计算重数),
 	\onslide<+->
 	也就是说 $\bfA$ 的特征多项式可以写成
-	\[f(\lambda)=\pm(\lambda-\lambda_1)\cdots(\lambda-\lambda_n).\]
+	\[f(\lambda)=(\lambda_1-\lambda)\cdots(\lambda_n-\lambda).\]
 	\onslide<+->
 	所以 $\bfA$ 的\alert{特征值有 $n$ 个(计算重数)}.
 
@@ -65,7 +65,7 @@
 	\begin{enumerate}
 		\item 求 $\bfA$ 的特征多项式 $f(\lambda)=|\bfA-\lambda \bfE|$;
 		\item 解 $f(\lambda)=|\bfA-\lambda \bfE|=0$ 得到特征值;
-		\item 对于每一个特征值 $\lambda_i$, 解 $(\bfA-\lambda_i)\bfx={\bf0}$, 其\alert{非零解}就是对应特征向量.
+		\item 对于每一个特征值 $\lambda_i$, 解 $(\bfA-\lambda_i\bfE)\bfx={\bf0}$, 其\alert{非零解}就是对应特征向量.
 	\end{enumerate}
 \end{frame}
 
@@ -274,12 +274,12 @@
 			1&0&1\\
 			0&1&1
 		\end{pmatrix}$ 的特征值为\fillbraceframe{C}.
-		\begin{taskschoice}(4)
+		\begin{exchoice}(4)
 			() $1,0,1$
 			() $1,1,2$
 			() $-1,1,2$
 			() $-1,1,1$
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 \end{frame}
 
@@ -351,12 +351,12 @@
 	\onslide<+->
 	\begin{exercise}
 		若 $4$ 阶方阵 $\bfA$ 的特征值为 $1,2,-2,0$, 则下列矩阵可逆的是\fillbraceframe{C}.
-		\begin{taskschoice}(4)
+		\begin{exchoice}(4)
 			() $\bfA$
 			() $\bfA-2\bfE$
 			() $\bfA+\bfE$
 			() $\bfA-\bfE$
-		\end{taskschoice}
+		\end{exchoice}
 	\end{exercise}
 \end{frame}
 
@@ -381,6 +381,36 @@
 			\end{pmatrix},\]
 		}\onslide<+->{%
 			因此 $\lambda=k+3, 2k+2=(k+3)k,k^2+k-2=0,k=-2$ 或 $1$.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 特征值的应用\noexer}
+	\onslide<+->
+	\begin{example}
+		计算 $\bfA=\begin{pmatrix}
+			a&b&\cdots&b\\
+			b&a&\cdots&b\\
+			\vdots&\vdots&\ddots&\vdots\\
+			b&b&\cdots&a
+		\end{pmatrix}$ 的行列式.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		设 $\bfB=\bfA+(b-a)\bfE$,
+		\onslide<+->{%
+		则 $\bfB$ 所有元素为 $b$, 秩为 $1$, $\bfB\bfx={\bf0}$ 基础解系有 $n-1$ 个向量.
+		}\onslide<+->{%
+		从而 $0$ 是 $\bfB$ 的至少 $n-1$ 重特征值.
+		}\onslide<+->{%
+		由于 $\Tr(\bfB)=nb$, 因此 $\bfB$ 的所有特征值为 $nb,0,\dots,0$,
+		}\onslide<+->{%
+		$\bfA$ 的所有特征值为 $nb+a-b,a-b,\dots,a-b$,
+		\[
+			|\bfA|=(a-b)^{n-1}(nb-b+a).
+		\]
+		\vspace{-\baselineskip}
 		}
 	\end{solution}
 \end{frame}
@@ -417,7 +447,7 @@
 		}
 		\vspace{-\baselineskip}
 	\end{proof}
-\endgroup
+	\endgroup
 \end{frame}
 
 
@@ -438,28 +468,6 @@
 	\onslide<+->
 	由此也可以知道, 不同特征值的特征向量的线性组合不可能还是特征向量.
 \end{frame}
-
-
-\begin{frame}{特征值和特征向量的性质}
-	\onslide<+->
-	设 $\lambda_1$ 对应线性无关的特征向量 $\bma_1,\bma_2$,
-	$\lambda_2$ 对应线性无关的特征向量 $\bmb_1,\bmb_2$.
-	\onslide<+->
-	若 $\lambda_1\neq \lambda_2$, 则 $\bma_1,\bma_2,\bmb_1,\bmb_2$ 也是线性无关的.
-	\onslide<+->
-	这是因为
-	\[\bfA(k_1\bma_1+k_2\bma_2)=\lambda_1(k_1\bma_1+k_2\bma_2),\]
-	\[\bfA(\ell_1\bmb_1+\ell_2\bmb_2)=\lambda_2(\ell_1\bmb_1+\ell_2\bmb_2).\]
-	\onslide<+->
-	若 $k_1\bma_1+k_2\bma_2+\ell_1\bmb_1+\ell_2\bmb_2={\bf0}$,
-	同理可证明这些向量都是零向量.
-	
-	\onslide<+->
-	由此也可以知道, 不同特征值的特征向量的线性组合不可能还是特征向量.
-\end{frame}
-
-
-
 
 
 \begin{frame}{应用: 天气预报}
@@ -677,12 +685,12 @@
 	\onslide<+->
 	\begin{example}
 		若 $3$ 阶方阵 $\bfA\wsim{r_1\swap r_3}{}\bfB\wsim{c_1\swap c_3}{}\bfC$, 则 $\bfA$ 与 $\bfC$ \fillbraceframe{C}.
-		\begin{taskschoice}(2)
+		\begin{exchoice}(2)
 			() 等价但不相似
 			() 相似但不等价
 			() 等价而且相似
 			() 既不等价也不相似
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 \end{frame}
 
@@ -722,7 +730,7 @@
 		\begin{enumerate}
 			\item \alert{$\bfA,\bfB$ 特征值相同(包括重数)};
 			\item \alert{$|\bfA|=|\bfB|$, $\Tr(\bfA)=\Tr(\bfB)$};
-			\item $\bfA\sim\bfB$, 即 \alert{$R(\bfA)=R(\bfB)$};
+			\item $\bfA\sim\bfB$, 即 \alert{$\rank(\bfA)=\rank(\bfB)$};
 			\item 对于多项式 $g,h$, 若 $h(\bfA)$ 可逆, 则 $h(\bfB)$ 也可逆, 且 $g(\bfA)/h(\bfA)$ 与 $g(\bfB)/h(\bfB)$ 相似.
 			特别地, $\bfA-\lambda\bfE$ 与 $\bfB-\lambda\bfE$ 相似.
 		\end{enumerate}
@@ -737,15 +745,7 @@
 \begin{frame}{例: 相似矩阵的性质}
 	\onslide<+->
 	\begin{example}
-		若 $4$ 阶方阵 $\bfA$ 与 $\bfB$ 相似, $\bfA$ 的特征值为 $1,2,3,4$, 则 $|\bfB+\bfE|=$\fillblankframe{$120$}.
-	\end{example}
-	\onslide<+->
-	\begin{example}
-		设$3$ 阶可逆阵 $\bfA,\bfB$ 相似, $\bfA^{-1}$ 的特征值为 $1/2,1/3,1/4$, 则 $|\bfE-\bfB|=$\fillblankframe{$-6$}.
-	\end{example}
-	\onslide<+->
-	\begin{example}
-		设矩阵 $\bfA=\begin{pmatrix}
+		若 $\bfA=\begin{pmatrix}
 			2&-1&4\\
 			0&a&7\\
 			0&0&3
@@ -753,22 +753,15 @@
 			1&0&0\\
 			0&2&0\\
 			0&0&b
-		\end{pmatrix}$ 相似, 求 $a$ 与 $b$ 的值．
+		\end{pmatrix}$ 相似, 则 $a=$\fillblankframe{$1$}, $b=$\fillblankframe{$3$}．
 	\end{example}
 	\onslide<+->
-	\begin{solution}
-		二者特征值相同, 从而 $a=1,b=3$.
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例: 相似矩阵的性质}
+	\begin{example}
+		若 $3$ 阶可逆阵 $\bfA,\bfB$ 相似, $\bfA^{-1}$ 的特征值为 $1/2,1/3,1/4$, 则 $|\bfE-\bfB|=$\fillblankframe{$-6$}.
+	\end{example}
 	\onslide<+->
 	\begin{exercise}
-		\begin{enumerate}
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且 $|\bfA-\bfE|=0, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblankframe{\visible<4->{$3/4$}}.
-			\item 若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblankframe{\visible<5->{$3/4$}}.
-		\end{enumerate}
+		若 $3$ 阶矩阵 $\bfA$ 与 $\bfB$ 相似, 且存在非零矩阵 $\bfC$ 使得 $\bfA\bfC=2\bfC, |\bfA+2\bfE|=0, |2\bfA-\bfE|=0$, 则 $|\bfB^{-1}-\bfE|=$\fillblankframe{\visible<5->{$3/4$}}.
 	\end{exercise}
 	\onslide<+->
 	若 $\bfA\bfB=k\bfB$, 则 $\bfB$ 的每个非零列向量均为 $\bfA$ 的属于特征值 $k$ 的特征向量．
@@ -792,17 +785,17 @@
 	\onslide<+->
 	即 $\bfA\bfp_i=\lambda_i\bfp_i$.
 	\onslide<+->
-	由于 $\bfP$ 可逆, $\bfA$ 拥有 $n$ 个线性无关的特征向量 $\bfp_1,\dots,\bfP_n$.
+	由于 $\bfP$ 可逆, $\bfA$ 拥有 $n$ 个线性无关的特征向量 $\bfp_1,\dots,\bfp_n$.
 	\onslide<+->
 	反之, 若 $\bfA$ 拥有 $n$ 个线性无关的特征向量, 则选择 $\bfP$ 以它们为列向量即可使 $\bfA$ 对角化.
-	\onslide<+->
-	\begin{algorithm}{相似对角化的等价刻画}
-		$n$ 阶矩阵 $\bfA$ 可对角化$\iff\bfA$ 有 $n$ 个线性无关的特征向量.
-	\end{algorithm}
 \end{frame}
 
 
 \begin{frame}{可对角化的刻画}
+	\onslide<+->
+	\begin{algorithm}{相似对角化的等价刻画}
+		$n$ 阶矩阵 $\bfA$ 可对角化$\iff\bfA$ 有 $n$ 个线性无关的特征向量.
+	\end{algorithm}
 	\onslide<+->
 	\begin{corollary}
 		若 $\bfA$ 的特征值两两不同, 则 $\bfA$ 可对角化.
@@ -811,108 +804,26 @@
 	\alert{反之未必成立}.
 	\onslide<+->
 	\begin{example}
-		设 $3$ 阶方阵 $\bfB$ 的特征值为 $1,2,-1$, $\bfA=\bfB^3-2\bfB$, 求 $\bfA$ 的特征值及相似对角阵.
+		设 $3$ 阶方阵 $\bfB$ 的特征值为 $1,2,-2$, $\bfA=\bfB^3-4\bfB+\bfE$, 求 $\bfA$ 的相似对角阵.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		$\bfA$ 的特征值为 $-1,4,1$, 相似对角阵为 $\diag(-1,4,1)$.
-	\end{solution}
-	\onslide<+->
-	回忆 $k$ 重特征值对应的线性无关的特征向量最多 $k$ 个.
-	\onslide<+->
-	\begin{algorithm}{相似对角化的等价刻画}
-		若 $\lambda$ 是 $\bfA$ 的 $k$ 重特征值, 则 $\bfA$ 可对角化 $\iff\forall\lambda, R(\bfA-\lambda\bfE)=n-k$, 即 $\lambda$ 对应的线性无关的特征向量恰有 $k$ 个.
-	\end{algorithm}
-\end{frame}
-
-
-\begin{frame}{例: 可对角化的刻画}
-	\onslide<+->
-	\begin{example}
-		判断下列矩阵 $\bfA$ 能否相似对角化:
-		\begin{enuminline}
-			\item $\bfA$ 是二阶实矩阵且 $|\bfA|<0$;\par
-			\item $\bfA=\begin{pmatrix}
-					1&2&1\\
-					0&3&0\\
-					0&0&0
-				\end{pmatrix}$;
-			\item $\bfA=\begin{pmatrix}
-				-2&1&1\\
-				0&2&0\\
-				-4&1&3
-			\end{pmatrix}$;
-			\item $\bfA=\begin{pmatrix}
-				-1&1&0\\
-				-4&3&0\\
-				1&0&2
-			\end{pmatrix}$.
-		\end{enuminline}
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		\begin{enuminline}
-			\item 特征值一正一负, 能对角化;
+		由于 $\bfB$ 特征值两两不同, 因此存在 $\bfP$ 使得 $\bfP^{-1}\bfB\bfP=\bmL=\diag(1,2,-2)$.
 		\onslide<+->{%
-			\item 特征值为 $1,3,0$, 能对角化;\par
-		}
-		\onslide<+->{%
-			\item	$(2-\lambda)(\lambda^2-\lambda-2)\implies\lambda=-1,2,2$.
-		}\onslide<+->{%
-		 $\bfA-2\bfE=\begin{pmatrix}
-				-4&1&1\\
-				0&0&0\\
-				-4&1&1
-			\end{pmatrix}$ 秩 $1$, 能对角化;\par
-		}
-		\onslide<+->{%
-			\item $(2-\lambda)(\lambda^2-2\lambda+2)\implies\lambda=2,1,1$.
-		}\onslide<+->{%
-			$\bfA-\bfE=\begin{pmatrix}
-				-2&1&0\\
-				-4&2&0\\
-				1&0&1
-			\end{pmatrix}$ 秩 $2$, 不能对角化.
-		}
-	\end{enuminline}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{例: 特征值的应用\noexer}
-	\onslide<+->
-	\begin{example}
-		计算 $\bfA=\begin{pmatrix}
-			a&b&\cdots&b\\
-			b&a&\cdots&b\\
-			\vdots&\vdots&\ddots&\vdots\\
-			b&b&\cdots&a
-		\end{pmatrix}$ 的行列式.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		$b=0$ 时, $|\bfA|=a^n$.
-		\onslide<+->{%
-			设 $b\neq 0$, $\bfB=\bfA+(b-a)\bfE$,
-		}\onslide<+->{%
-			则 $\bfB$ 所有元素为 $b$, 秩为 $1$, $\bfB\bfx={\bf0}$ 基础解系有 $n-1$ 个向量.
-		}\onslide<+->{%
-			从而 $0$ 是 $\bfB$ 的至少 $n-1$ 重特征值.
-		}\onslide<+->{%
-			由于 $\bfB$ 行和为 $nb$, 因此 $nb$ 也是它的特征值.
-		}\onslide<+->{%
-			所以 $\bfB$ 的特征值就是 $nb$ 和 $0$ ($n-1$ 重), 特征多项式为
-			\[|\bfB-\lambda\bfE|=(nb-\lambda)(-\lambda)^{n-1},\]
-			\vspace{-\baselineskip}
-		}\onslide<+->{%
-			\[|\bfA|=\bigl(nb-(b-a)\bigr)(a-b)^{n-1}=(a-b)^{n-1}(nb-b+a).\]
-			\vspace{-\baselineskip}
-		}
+		于是
+		\[\bfP^{-1}\bfA\bfP=\bmL^3-4\bmL+\bfE=\diag(-2,1,1).\]
+		}\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{相似对角化的步骤}
+	\onslide<+->
+	回忆 $k$ 重特征值对应的线性无关的特征向量最多 $k$ 个.
+	\onslide<+->
+	\begin{algorithm}{相似对角化的等价刻画}
+		若 $\lambda$ 是 $\bfA$ 的 $k$ 重特征值, 则 $\bfA$ 可对角化 $\iff\forall\lambda, \rank(\bfA-\lambda\bfE)=n-k$, 即 $\lambda$ 对应的线性无关的特征向量恰有 $k$ 个.
+	\end{algorithm}
 	\onslide<+->
 	相似对角化的步骤如下:
 	\begin{enumerate}
@@ -921,46 +832,6 @@
 		\item 若能, 将 $n$ 个对应的线性无关的特征向量 $\bfp_1,\dots,\bfp_n$ 组成方阵 $\bfP=(\bfp_1,\dots,\bfp_n)$, 
 		\[\bfP^{-1}\bfA\bfP=\diag(\lambda_1,\dots,\lambda_n).\]
 	\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{例: 方阵的相似的应用}
-	\onslide<+->
-	\begin{example}
-		设 $\bfA=\begin{pmatrix}
-			1&1\\
-			0&2
-		\end{pmatrix}$, 计算 $\bfA^k$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}
-		$\bfA$ 特征值为 $1,2$, 对应的特征向量可以取 $\bfp_1=\begin{pmatrix}
-			1\\0
-		\end{pmatrix},\bfp_2=\begin{pmatrix}
-			1\\1
-		\end{pmatrix}$.
-		\onslide<+->{%
-			设 $\bfP=\begin{pmatrix}
-			1&1\\0&1
-		\end{pmatrix}$, 则 $\bfP^{-1}\bfA\bfP=\begin{pmatrix}
-			1&\\&2
-		\end{pmatrix}$.
-		}\onslide<+->{%
-			因此
-			\[\bfA^k=\bfP\begin{pmatrix}
-				1&\\&2
-			\end{pmatrix}^k\bfP^{-1}=\begin{pmatrix}
-				1&1\\0&1
-			\end{pmatrix}\begin{pmatrix}
-				1&\\&2^k
-			\end{pmatrix}\begin{pmatrix}
-				1&-1\\0&1
-			\end{pmatrix}=\begin{pmatrix}
-				1&2^k-1\\
-				0&2^k
-			\end{pmatrix}.\]
-		}
-	\end{solution}
 \end{frame}
 
 
@@ -1000,115 +871,92 @@
 \end{frame}
 
 
-\begin{frame}{例: 对角化的性质}\small
-\beqskip{4pt}
+\begin{frame}{例: 可对角化的刻画}
 	\onslide<+->
-	\begin{exercise}
-		已知矩阵 $\bfA=\begin{pmatrix}
-			0&0&1\\
-			a&1&1\\
-			1&0&0
-		\end{pmatrix}$ 可对角化, 则\fillblankframe{$-1$}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		设 $\bfP^{-1}\bfA\bfP=\diag(1,2,3)$.
-		若 $\bfP=(\bma_1,\bma_2,\bma_3),\bfQ=(\bma_1,\bma_3,\bma_2)$	, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblankframe[2cm]{$\diag(1,3,2)$}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $\bfA=\begin{pmatrix}
-			2&0&0\\
-			0&2&1\\
-			0&0&1
-		\end{pmatrix},\bfB=\begin{pmatrix}
-			2&1&0\\
-			0&2&0\\
-			0&0&1
-		\end{pmatrix},\bfC=\begin{pmatrix}
-			1&0&0\\
-			0&2&0\\
-			0&0&2
-		\end{pmatrix}$, 则\fillbraceframe{C}.
-		\begin{taskschoice}(2)
-			() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 相似
-			() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 相似
-			() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 不相似
-			() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 不相似
-		\end{taskschoice}
-	\end{exercise}
-\endgroup
+	\begin{example}
+		判断下列矩阵 $\bfA$ 能否相似对角化:
+		\begin{enuminline}
+			\item $\bfA$ 是二阶实矩阵且 $|\bfA|<0$;\par
+			\item $\bfA=\begin{pmatrix}
+					1&2&1\\
+					0&3&0\\
+					0&0&0
+				\end{pmatrix}$;
+			\item $\bfA=\begin{pmatrix}
+				-2&1&1\\
+				0&2&0\\
+				-4&1&3
+			\end{pmatrix}$;
+			\item $\bfA=\begin{pmatrix}
+				-1&1&0\\
+				-4&3&0\\
+				1&0&2
+			\end{pmatrix}$.
+		\end{enuminline}
+	\end{example}
+	\onslide<+->{
+	\begin{solution}
+		\begin{enuminline}
+			\onslide<+->{%
+			\item 特征值一正一负, 能对角化;}
+			\onslide<+->{%
+			\item 特征值为 $1,3,0$, 能对角化;\par
+			}
+			\onslide<+->{%
+			\item	$(2-\lambda)(\lambda^2-\lambda-2)\implies\lambda=-1,2,2$.
+			}\onslide<+->{%
+			$\bfA-2\bfE=\begin{pmatrix}
+				-4&1&1\\
+				0&0&0\\
+				-4&1&1
+			\end{pmatrix}$ 秩 $1$, 能对角化;\par
+			}
+			\onslide<+->{%
+			\item $(2-\lambda)(\lambda^2-2\lambda+2)\implies\lambda=2,1,1$.
+		}\onslide<+->{%
+			$\bfA-\bfE=\begin{pmatrix}
+				-2&1&0\\
+				-4&2&0\\
+				1&0&1
+			\end{pmatrix}$ 秩 $2$, 不能对角化.
+		}
+	\end{enuminline}
+	\end{solution}}
 \end{frame}
 
 
-\begin{frame}{相似标准形\noexer}
-	\onslide<+->
-	任何方阵都相似于\emph{约当标准形}
-	\[\diag(\bfJ_{k_1}(\lambda_1),\dots,\bfJ_{k_t}(\lambda_t)),\]
-	其中 $\bfJ_k(\lambda)=\begin{pmatrix}
-		\lambda&1&&\\
-		&\lambda&\ddots&\\
-		&&\ddots&1\\
-		&&&\lambda
-	\end{pmatrix}$ 是 $k$ 阶方阵.
-	\onslide<+->
-	当 $k_1=\cdots=k_t=1$ 时就是对角阵.
-
-	\onslide<+->
-	由此可知, \alert{$\bfA^*$ 的所有特征值的就是 $\bfA$ 的 $n$ 个特征值中 $n-1$ 个相乘得到的}.
-	\begin{enumerate}
-		\item 当 $|\bfA|\neq0$ 时, $\bfA^*$ 的所有特征值为 $|\bfA|/\lambda$.
-		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是一重特征值, 则$\bfA^*$ 唯一的非零特征值为 $\bfA$ 非零特征值之乘积.
-		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是 $\ge2$ 重特征值, 则$\bfA^*=\bfO$.
-	\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{相似标准形\noexer}
-	\onslide<+->
-	对于 $\bfA$ 的 $k$ 重特征值 $\lambda$,
-	\onslide<+->
-	若
-	\[R\bigl((\bfA-\lambda\bfE)^i\bigr)=n-r_i,\quad
-	0=r_0\le r_1\le r_2\le \cdots\le k,\]
-	\onslide<+->
-	则 $\lambda$ 对应的约当块有 $r_1$ 个, 其中 $J_k(\lambda)$ 有 $2r_k-r_{k+1}-r_{k-1}$ 个.
-	
-	\onslide<+->
-	利用约当标准形可以计算任意矩阵的方幂.
-	\onslide<+->
-	设 $\bfN=\bfJ_k(0)$, 则 $\bfN^k=\bfO$,
-	\[\bfJ_k(\lambda)^m
-	=(\lambda\bfE+\bfN)^m=\sum_{i=0}^m \rmC_m^i \lambda^{m-i}\bfN^i.\]
-\end{frame}
-
-
-\begin{frame}{例: 特征值的性质}
+\begin{frame}{例: 对角化的性质}
 	\onslide<+->
 	\begin{exercise}
-		若 $4$ 阶实矩阵 $\bfA^*$ 的特征值为 $-1,1,2,4$, 则下列矩阵可逆的是\fillbraceframe{D}.
-		
-		\begin{taskschoice}(4)
-			() $\bfA+2\bfE$
-			() $\bfA-2\bfE$
-			() $\bfA+\frac12\bfE$
-			() $\bfA-\bfE$
-		\end{taskschoice}
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $n$ 阶实对称矩阵 $\bfA$ 满足 $\bfA^2-\bfA=\bfO$, 则下列矩阵不可逆的是\fillbraceframe{C}.
-		
-		\begin{taskschoice}(4)
-			() $\bfA+2\bfE$
-			() $\bfA+\bfE$
-			() $\bfA-\bfE$
-			() $\bfA-2\bfE$
-		\end{taskschoice}
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $3$ 阶方阵 $\bfA$ 的特征值互不相同且 $|\bfA|=0$, 则 $R(\bfA)=$\fillblankframe{$2$}.
+		\begin{enumerate}
+			\item 若 $\bfA=\begin{pmatrix}
+				0&0&1\\
+				a&1&1\\
+				1&0&0
+			\end{pmatrix}$ 可对角化, 则 $a=$\fillblankframe{$-1$}.
+			\item 设 $\bfP=(\bma_1,\bma_2,\bma_3),\bfQ=(\bma_1,\bma_3,\bma_2)$.
+			若 $\bfP^{-1}\bfA\bfP=\diag(1,2,3)$, 则 $\bfQ^{-1}\bfA\bfQ=$\fillblankframe[2cm]{$\diag(1,3,2)$}.
+			\item 若 $3$ 阶方阵 $\bfA$ 的特征值互不相同且 $|\bfA|=0$, 则 $\rank(\bfA)=$\fillblankframe{$2$}.
+			\item 若 $\bfA=\begin{pmatrix}
+				2&0&0\\
+				0&2&1\\
+				0&0&1
+			\end{pmatrix},\bfB=\begin{pmatrix}
+				2&1&0\\
+				0&2&0\\
+				0&0&1
+			\end{pmatrix},\bfC=\begin{pmatrix}
+				1&0&0\\
+				0&2&0\\
+				0&0&2
+			\end{pmatrix}$, 则\fillbraceframe{C}.
+			\begin{exchoice}(2)
+				() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 相似
+				() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 相似
+				() $\bfA,\bfC$ 相似, $\bfB,\bfC$ 不相似
+				() $\bfA,\bfC$ 不相似, $\bfB,\bfC$ 不相似
+			\end{exchoice}
+		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
@@ -1126,7 +974,7 @@
 	\begin{solution}
 		由 $\Tr(\bfA)=10$ 可知特征值为 $2,2,6$.
 		\onslide<+->{%
-			由 $R(\bfA-2\bfE)=1$ 可知 $x=2,y=-2$.
+			由 $\rank(\bfA-2\bfE)=1$ 可知 $x=2,y=-2$.
 		}
 		
 		\onslide<+->{%
@@ -1169,7 +1017,7 @@
 \begin{frame}{例: 对角化的计算}
 	\onslide<+->
 	\begin{example}
-		已知 $n$ 阶方阵 $\bfA$ 的各行元素之和为 $2$, $\bfA\begin{pmatrix}
+		若 $\bfA$ 的各行元素之和为 $2$, $\bfA\begin{pmatrix}
 			1&2\\
 			0&1\\
 			-1&1
@@ -1179,12 +1027,12 @@
 			1&1
 		\end{pmatrix}$, 则 $\bfA$ 相似于\fillbraceframe{C}.
 		
-		\begin{taskschoice}(4)
+		\begin{exchoice}(4)
 			() $\diag(1,1,2)$
 			() $\diag(2,1,1)$
 			() $\diag(2,1,-1)$
 			() $\diag(2,-1,-1)$
-		\end{taskschoice}
+		\end{exchoice}
 	\end{example}
 	\onslide<+->
 	\begin{exercise}
@@ -1203,101 +1051,182 @@
 
 
 \begin{frame}{例: 对角化的计算}
+	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
-		设 $\bfA$ 为三阶方阵, $\bma_1,\bma_2,\bma_3$ 是线性无关的三维列向量且 $\bfA\bma_1=2\bma_1,\bfA\bma_2=3\bma_2+2\bma_3,\bfA\bma_3=2\bma_2+3\bma_3$.
-		求 $\bfA$ 并证明 $\bfA$ 可对角化.
+		设 $\bfA$ 为三阶方阵, $\bma_1,\bma_2,\bma_3$ 是线性无关的三维列向量且
+		\[
+			\bfA\bma_1=2\bma_1,\bfA\bma_2=3\bma_2+2\bma_3,\bfA\bma_3=2\bma_2+3\bma_3.
+		\]
+		证明 $\bfA$ 可对角化.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		$\bfA(\bma_1,\bma_2,\bma_3)=(\bma_1,\bma_2,\bma_3)\bfB,\bfB=\begin{pmatrix}
-			2&0&0\\
-			0&3&2\\
-			0&2&3
-		\end{pmatrix}$.
-		由于 $\bfB$ 是实对称矩阵, 因此 $\bfB$ 能对角化, 从而 $\bfA$ 也可以.
+		设 $\bfP=(\bma_1,\bma_2,\bma_3)$, 则
+		\[
+			\bfA\bfP=\bfA(\bma_1,\bma_2,\bma_3)=(\bma_1,\bma_2,\bma_3)\bfB=\bfP\bfB,\quad\text{其中}\ \bfB=\begin{pmatrix}
+				2&0&0\\
+				0&3&2\\
+				0&2&3
+			\end{pmatrix}.
+		\]
+		\onslide<+->{%
+		由于 $\bfB$ 的特征值是 $2,1,5$, 因此 $\bfB$ 能对角化, 从而 $\bfA=\bfP\bfB\bfP^{-1}$ 也可以.}
 	\end{solution}
 	\onslide<+->
-	为什么实对称矩阵一定能对角化?
-	在下一节中我们将回答这个问题.
+	一般地, 实对称矩阵一定能对角化. 我们将在下一节中解释这为何成立.
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{相似的应用: 求线性递推数列通项\noexer}
-\beqskip{1pt}
+\begin{frame}{相似标准形\noexer}
 	\onslide<+->
-	线性递推数列是一种常见的数列,
+	任何方阵都可以相似于\emph{约当标准形}
+	\[\diag(\bfJ_{k_1}(\lambda_1),\dots,\bfJ_{k_t}(\lambda_t)),\]
+	其中 $\bfJ_k(\lambda)=\begin{pmatrix}
+		\lambda&1&&\\
+		&\lambda&\ddots&\\
+		&&\ddots&1\\
+		&&&\lambda
+	\end{pmatrix}$ 是 $k$ 阶方阵.
 	\onslide<+->
-	例如著名的斐波那契数列: 假设一对刚出生的小兔一个月后就能长成大兔, 再过一个月就能生下一对小兔, 并且此后每个月都生一对小兔.
-	若一年内没有发生死亡, 一对刚出生的兔子一年内能繁殖成多少对兔子?
+	当 $k_1=\cdots=k_t=1$ 时这就是对角阵.
+	
+	\onslide<+->
+	特别地, 任何方阵都可以相似于一个上三角阵.
+\end{frame}
 
+
+\begin{frame}{伴随矩阵的特征值}
 	\onslide<+->
-	设第 $n$ 个月的兔子数量为 $a_n$, 那么
-	\[a_{n+2}=a_{n+1}+a_n,\quad a_2=a_1=1.\]
+	容易知道上三角阵的伴随矩阵的对角元.
+	\onslide<+->
+	因此 \alert{$\bfA^*$ 的所有特征值的就是 $\bfA$ 的 $n$ 个特征值中 $n-1$ 个相乘得到的}.
+	\begin{enumerate}
+		\item 当 $|\bfA|\neq0$ 时, $\bfA^*$ 的所有特征值为 $|\bfA|/\lambda$.
+		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是一重特征值, 则$\bfA^*$ 唯一的非零特征值为 $\bfA$ 非零特征值之乘积.
+		\item 当 $|\bfA|=0$ 且 $\lambda_1=0$ 是 $\ge2$ 重特征值, 则$\bfA^*=\bfO$.
+	\end{enumerate}
+	\onslide<+->
+	\begin{exercise}
+		若 $4$ 阶实矩阵 $\bfA^*$ 的特征值为 $-1,1,2,4$, 则下列矩阵可逆的是\fillbraceframe{D}.
+		\begin{exchoice}(4)
+			() $\bfA+2\bfE$
+			() $\bfA-2\bfE$
+			() $2\bfA+\bfE$
+			() $\bfA-\bfE$
+		\end{exchoice}
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{例: 方阵的相似的应用}
+	\onslide<+->
+	利用约当标准形还可以计算任意矩阵的幂:
+	\onslide<+->
+	\[\bfJ_k(\lambda)^m
+	=(\lambda\bfE+\bfN)^m=\sum_{i=0}^m \rmC_m^i \lambda^{m-i}\bfN^i,\quad 
+	\text{其中}\ \bfN=\bfJ_k(0).\]
+	\onslide<+->
+	\begin{example}
+		设 $\bfA=\begin{pmatrix}
+			5&-6\\
+			1&0
+		\end{pmatrix}$, 计算 $\bfA^k$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}
+		$\bfA$ 特征值为 $2,3$, 对应的特征向量可以取 $\bfp_1=\begin{pmatrix}
+			2\\1
+		\end{pmatrix},\bfp_2=\begin{pmatrix}
+			3\\1
+		\end{pmatrix}$.
+		\onslide<+->{%
+		设 $\bfP=\begin{pmatrix}
+			2&3\\1&1
+		\end{pmatrix}$, 则 $\bfP^{-1}\bfA\bfP=\bmL=\begin{pmatrix}
+			2&\\&3
+		\end{pmatrix}$, $\bfA^k=\bfP\bmL^k\bfA^{-1}$
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 方阵的相似的应用}
+	\onslide<+->
+	\begin{solution}[续解]
+		因此
+		\[
+			\bfA^k=\begin{pmatrix}
+				2&3\\1&1
+			\end{pmatrix}\begin{pmatrix}
+				2^k&\\&3^k
+			\end{pmatrix}\begin{pmatrix}
+				-1&3\\1&-2
+			\end{pmatrix}=\begin{pmatrix}
+				3^{k+1}-2^{k+1}&6(2^k-3^k)\\
+				3^k-2^k&6(2^{k-1}-3^{k-1})
+			\end{pmatrix}.
+		\]
+	\end{solution}
+	\onslide<+->
+	线性递推数列是指满足如下递推关系的数列
+	\[a_{n+k}-c_{k-1}a_{n+k-1}-\cdots-c_1a_{n+1}-c_0a_n=0,\]
+	它的通项可以用矩阵方法来计算.
+	\onslide<+->
+	例如
+	\[a_{n+2}=5a_{n+1}-6a_n,\quad a_0=a_1=1.\]
 	\onslide<+->
 	设 $\bfx_n=\begin{pmatrix}
 		a_{n+1}\\a_n
-	\end{pmatrix}$, 则 $\bfx_{n+1}=\bfA\bfx_n$, $\bfA=\begin{pmatrix}
-		1&1\\
-		1&0
-	\end{pmatrix}$.
+	\end{pmatrix}$, 则 $\bfx_n=\bfA\bfx_{n-1}$
 	\onslide<+->
-	通过计算可知
-	\[\bfA=\bfP\bmL\bfP^{-1},\quad
-	\bmL=\diag\Bigl(\frac{1+\sqrt5}2,\frac{1-\sqrt5}2\Bigr), \quad \bfP=\begin{pmatrix}
-		\frac{1+\sqrt5}2&\frac{1-\sqrt5}2\\
-		1&1
-	\end{pmatrix}.\]
+	${}=\bfA^n\bfx_0=\begin{pmatrix}
+		2^{n+2}-3^{n+1}\\
+		2^{n+1}-3^n
+	\end{pmatrix}$,
 	\onslide<+->
-	因此
-	$\bfx_n=\bfA^{n-1}\bfx_1=\bfP\bmL^{n-1}\bfP^{-1}\bfx_1$,
-	$\displaystyle a_n=\frac1{\sqrt5}\biggl(\Bigl(\frac{1+\sqrt5}2\Bigr)^n-\Bigl(\frac{1-\sqrt5}2\Bigr)^n\biggr)$,
-	\onslide<+->
-	\[a_{12}\approx \frac{1.618^n}{\sqrt5}=143.9\approx144.\]
-\endgroup
+	故 $a_n=2^{n+1}-3^n$.
 \end{frame}
 
 
-\begin{frame}{相似的应用: 求线性递推数列通项\noexer}
-	\onslide<+->
-	对于一般的线性递推数列
-	\[a_{n+k}-c_{k-1}a_{n+k-1}-\cdots-c_1a_{n+1}-c_0a_n=0,\]
-	\onslide<+->
-	$\bfx_n=(a_{n+k-1},\dots,a_{n+1},a_n)^\rmT$ 满足 $\bfx_{n+1}=\bfA\bfx_n$, 其中 $\bfA=\begin{pmatrix}
-		c_{k-1}&\cdots&c_1&c_0\\
-		1&&&\\
-		&\ddots&&\\
-		&&1&
-	\end{pmatrix}$ 的特征多项式为
-	\[(-1)^k(\lambda^k-c_{k-1}\lambda^{k-1}-\cdots-c_1\lambda-c_0)=0.\]
-	\onslide<+->
-	若特征值两两不同, 可知 $a_n$ 的通项为 $\lambda_1^n,\dots,\lambda_k^n$ 的线性组合;
-	\onslide<+->
-	若特征值有重数, 由约当块的幂次形式可知
-	\[a_n=\sum_\lambda f_\lambda(n)\lambda^n,\]
-	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
-\end{frame}
+% \begin{frame}{相似的应用: 求线性递推数列通项\noexer}
+% 	\onslide<+->
+% 	$\bfx_n=(a_{n+k-1},\dots,a_{n+1},a_n)^\rmT$ 满足 $\bfx_{n+1}=\bfA\bfx_n$, 其中 $\bfA=\begin{pmatrix}
+% 		c_{k-1}&\cdots&c_1&c_0\\
+% 		1&&&\\
+% 		&\ddots&&\\
+% 		&&1&
+% 	\end{pmatrix}$ 的特征多项式为
+% 	\[(-1)^k(\lambda^k-c_{k-1}\lambda^{k-1}-\cdots-c_1\lambda-c_0)=0.\]
+% 	\onslide<+->
+% 	若特征值两两不同, 可知 $a_n$ 的通项为 $\lambda_1^n,\dots,\lambda_k^n$ 的线性组合;
+% 	\onslide<+->
+% 	若特征值有重数, 由约当块的幂次形式可知
+% 	\[a_n=\sum_\lambda f_\lambda(n)\lambda^n,\]
+% 	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
+% \end{frame}
 
 
-\begin{frame}{相似的应用: 求常系数微分方程的解\noexer}
-	\onslide<+->
-	类似地, 对于微分方程
-	\[y^{(k)}(t)-c_{k-1}y^{(k-1)}(t)-\cdots-c_1y'(t)-c_0y(t)=0,\]
-	\onslide<+->
-	$\bfx=(y^{(k-1)},\dots,y',y)^\rmT$ 满足 $\bfx'=\bfA\bfx$.
-	\onslide<+->
-	于是 ``$\bfx=\exp(\bfA t)$''.
+% \begin{frame}{相似的应用: 求常系数微分方程的解\noexer}
+% 	\onslide<+->
+% 	类似地, 对于微分方程
+% 	\[y^{(k)}(t)-c_{k-1}y^{(k-1)}(t)-\cdots-c_1y'(t)-c_0y(t)=0,\]
+% 	\onslide<+->
+% 	$\bfx=(y^{(k-1)},\dots,y',y)^\rmT$ 满足 $\bfx'=\bfA\bfx$.
+% 	\onslide<+->
+% 	于是 ``$\bfx=\exp(\bfA t)$''.
 
-	\onslide<+->
-	其实这里的指数函数是通过幂级数展开定义的
-	\[\exp(\bfA)=\sum_{i=0}^\infty\frac{\bfA^i}{i!}.\]
-	\onslide<+->
-	若 $\bfA=\bfP\diag(\lambda_1,\dots,\lambda_k)\bfP^{-1}$, 容易看出 $\exp(\bfA t)=\bfP\diag(e^{\lambda_1 t},\dots,e^{\lambda_k t})\bfP^{-1}$,
-	\onslide<+->
-	从而 $y$ 是 $e^{\lambda_1t},\dots,e^{\lambda_kt}$ 的线性组合.
-	\onslide<+->
-	对于一般情形, 通过考虑约当块的指数函数可知
-	\[y(t)=\sum_\lambda f_\lambda(t)e^{\lambda t},\]
-	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
-\end{frame}
+% 	\onslide<+->
+% 	其实这里的指数函数是通过幂级数展开定义的
+% 	\[\exp(\bfA)=\sum_{i=0}^\infty\frac{\bfA^i}{i!}.\]
+% 	\onslide<+->
+% 	若 $\bfA=\bfP\diag(\lambda_1,\dots,\lambda_k)\bfP^{-1}$, 容易看出 $\exp(\bfA t)=\bfP\diag(e^{\lambda_1 t},\dots,e^{\lambda_k t})\bfP^{-1}$,
+% 	\onslide<+->
+% 	从而 $y$ 是 $e^{\lambda_1t},\dots,e^{\lambda_kt}$ 的线性组合.
+% 	\onslide<+->
+% 	对于一般情形, 通过考虑约当块的指数函数可知
+% 	\[y(t)=\sum_\lambda f_\lambda(t)e^{\lambda t},\]
+% 	其中 $f_\lambda$ 是多项式, 且次数不超过 $\lambda$ 的重数 $-1$.
+% \end{frame}
 

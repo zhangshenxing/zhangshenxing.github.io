@@ -1,0 +1,31 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\usepackage{tikz}
+\usetikzlibrary{hobby, calc, intersections, decorations.markings, decorations.pathreplacing} %libraries
+\usetikzlibrary{
+	quotes,
+	shapes.arrows,
+	arrows.meta,
+	positioning,
+	shapes.geometric,
+	overlay-beamer-styles,
+	patterns,
+	calc,
+	angles,
+	decorations.pathreplacing,
+	backgrounds % 背景边框
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+	\draw[domain=-1:1,smooth,decoration={
+		markings,
+		mark=at position .55 with {\arrow{Stealth}}},
+		postaction={decorate}
+	] plot (\x,\x);
+\end{tikzpicture}
+
+\end{document}
+

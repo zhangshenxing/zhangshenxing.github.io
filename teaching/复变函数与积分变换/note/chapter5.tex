@@ -8,7 +8,7 @@
 
 \begin{example}
 		考虑函数 $f(z)=\dfrac1{\sin(1/z)}$, 显然 $0,z_k=\dfrac1{k\pi}$ 是奇点, $k$ 是非零整数.
-	{因为 $\lim\limits_{k\to+\infty} z_k=0$, 所以 $0$ 的任何一个去心邻域内都有奇点.此时无法选取一个圆环域 $0<|z|<\delta$ 作 $f(z)$ 的洛朗展开, 因此我们不考虑这类奇点.
+	{因为 $\liml_{k\to+\infty} z_k=0$, 所以 $0$ 的任何一个去心邻域内都有奇点.此时无法选取一个圆环域 $0<|z|<\delta$ 作 $f(z)$ 的洛朗展开, 因此我们不考虑这类奇点.
 	}
 	{
 	\begin{center}
@@ -51,7 +51,7 @@
 % 	\defaultrowcolors
 % 	\Newcommand\arraystretch{1.4}
 % 	\begin{tabular}{|c|c|c|}\hline
-% 		孤立奇点类型&洛朗级数特点&$\lim\limits_{z\to z_0}f(z)$\\\hline
+% 		孤立奇点类型&洛朗级数特点&$\liml_{z\to z_0}f(z)$\\\hline
 % 		可去奇点&没有主要部分&存在且有限\\\hline
 % 		&主要部分只有有限项非零&\\
 % 		\multirow{-2}*{$m$ 阶极点}&最低次为 $-m$ 次&\multirow{-2}*{$\infty$}\\\hline
@@ -73,8 +73,8 @@
 \begin{theorem}
 	\begin{tabular}{rl}
 		$z_0$ 是 $f(z)$ 的可去奇点
-		&$\iff\lim\limits_{z\to z_0}f(z)$ 存在且有限\\
-		&$\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
+		&$\iff\liml_{z\to z_0}f(z)$ 存在且有限\\
+		&$\iff\liml_{z\to z_0}(z-z_0)f(z)=0$.
 	\end{tabular}
 \end{theorem}
 
@@ -82,7 +82,7 @@
 		\[f(z)=\frac{\sin z}z=1-\dfrac{z^2}{3!}+\dfrac{z^4}{5!}+\cdots\]
 		没有负幂次项, 因此 $0$ 是可去奇点.
 
-	{也可以从 $\lim\limits_{z\to0}zf(z)=\sin 0=0$ 看出.
+	{也可以从 $\liml_{z\to0}zf(z)=\sin 0=0$ 看出.
 	}
 \end{example}
 
@@ -90,7 +90,7 @@
 		\[f(z)=\frac{e^z-1}z=1+\dfrac z{2!}+\dfrac{z^2}{3!}+\cdots\]
 		没有负幂次项, 因此 $0$ 是可去奇点.
 
-	{也可以从 $\lim\limits_{z\to0}zf(z)=e^0-1=0$ 看出.
+	{也可以从 $\liml_{z\to0}zf(z)=e^0-1=0$ 看出.
 	}
 \end{example}
 
@@ -103,7 +103,7 @@
 \end{example}
 
 \begin{theorem}
-	$z_0$ 是 $f(z)$ 的本性奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
+	$z_0$ 是 $f(z)$ 的本性奇点 $\iff\liml_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
 \end{theorem}
 
 事实上我们有\emph{皮卡大定理}: 对于本性奇点 $z_0$ 的任何一个去心邻域, $f(z)$ 的像取遍所有复数, 至多有一个取不到.
@@ -124,14 +124,14 @@
 
 \begin{theorem}
 	\begin{enumerate}
-		\item $z_0$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\lim\limits_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零.
-		\item $z_0$ 是 $f(z)$ 的极点 $\iff\lim\limits_{z\to z_0}f(z)=\infty$.
+		\item $z_0$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\liml_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零.
+		\item $z_0$ 是 $f(z)$ 的极点 $\iff\liml_{z\to z_0}f(z)=\infty$.
 	\end{enumerate}
 \end{theorem}
 
 \begin{example}
 		$f(z)=\dfrac{3z+2}{z^2(z+2)}$,
-	{由于 $\lim\limits_{z\to 0}z^2f(z)=1$, 因此 $0$ 是二阶极点.同理 $-2$ 是一阶极点.
+	{由于 $\liml_{z\to 0}z^2f(z)=1$, 因此 $0$ 是二阶极点.同理 $-2$ 是一阶极点.
 	}
 \end{example}
 
@@ -142,7 +142,7 @@
 \subsection{零点与极点}
 
 我们来研究极点与零点的联系, 并给出极点的阶的计算方法.
-\begin{definition}
+\begin{definition}\label{def:zero-order}
 	如果 $f(z)$ 在解析点 $z_0$ 处的泰勒级数最低次项幂次是 $m\ge1$, 即
 	\[f(z)=c_m(z-z_0)^m+c_{m+1}(z-z_0)^{m+1}+\cdots,\ 0<|z-z_0|<\delta,\]
 	其中 $c_m\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \emph{$m$ 阶零点}.
@@ -223,12 +223,12 @@
 
 \begin{example}
 	$z=0$ 是函数 $f(z)=\dfrac{e^z-1}{z^2}$ 的\fillbrace{{A}} 阶极点.
-	\begin{taskschoice}(4)
+	\begin{exchoice}(4)
 		() 1
 		() 2
 		() 3
 		() 4
-	\end{taskschoice}
+	\end{exchoice}
 \end{example}
 
 \begin{solution}
@@ -285,7 +285,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 % 	\defaultrowcolors
 % 	\Newcommand\arraystretch{1.2}
 % 	\begin{tabular}{|c|c|c|}\hline
-% 		$\infty$ 类型&洛朗级数特点&$\lim\limits_{z\to\infty}f(z)$\\\hline
+% 		$\infty$ 类型&洛朗级数特点&$\liml_{z\to\infty}f(z)$\\\hline
 % 		可去奇点&没有正幂次部分&存在且有限\\\hline
 % 		&正幂次部分只有有限项非零&\\
 % 		\multirow{-2}*{$m$ 阶极点}&最高次为 $m$ 次&\multirow{-2}*{$\infty$}\\\hline
@@ -295,7 +295,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{example}
 		$f(z)=\dfrac z{z+1}$.
-	由 $\lim\limits_{z\to\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
+	由 $\liml_{z\to\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
 		\[f(z)=\frac{1}{1+\dfrac1z}=1-\frac1z+\frac1{z^2}-\frac1{z^3}+\cdots\]
 \end{example}
 
@@ -338,7 +338,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	函数 $f(z)=\dfrac{z^2+4\pi^2}{z^3(e^z-1)}$ 在扩充复平面内有哪些什么类型的奇点, 并指出极点的阶.
 \end{exercise}
 
-\begin{example}
+\begin{example}\label{exam:algebraic-basic-theorem}
 	证明非常数复系数多项式 $p(z)$ 总有复零点.
 \end{example}
 此即\noun{代数基本定理}\footnote{
@@ -352,10 +352,10 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 }
 
 {%
-	由于 $\infty$ 是 $p(z)$ 的极点, $\lim\limits_{z\to\infty}p(z)=\infty$.
+	由于 $\infty$ 是 $p(z)$ 的极点, $\liml_{z\to\infty}p(z)=\infty$.
 }%
 {%
-	因此 $\lim\limits_{z\to\infty}f(z)=0$, $\infty$ 是 $f(z)$ 的可去奇点.
+	因此 $\liml_{z\to\infty}f(z)=0$, $\infty$ 是 $f(z)$ 的可去奇点.
 }%
 {%
 	这意味着 $f(z)$ 在 $0$ 处的洛朗展开没有正幂次项.
@@ -376,7 +376,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	设 $z_0$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在它的某个去心邻域内的洛朗展开为
 		\[f(z)=\cdots+\frac{c_{-1}}{z-z_0}+c_0+c_1(z-z_0)+\cdots.\]
 	称
-		\[\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\diff z\]
+		\[\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\d z\]
 	为函数 \emph{$f(z)$ 在 $z_0$ 的留数}, 其中 $C$ 为该去心邻域中绕 $z_0$ 的一条闭路.
 \end{definition}
 
@@ -384,7 +384,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{theorem}[留数定理]
 	若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 则
-	\[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+	\[\oint_Cf(z)\d z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
 \end{theorem}
 
 \begin{proof}
@@ -413,7 +413,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\end{center}
 
 	{由复闭路定理,
-	\[\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
+	\[\oint_Cf(z)\d z=\sum_{k=1}^n\oint_{C_k}f(z)\d z
 	=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\qedhere\]}
 \end{proof}
 
@@ -445,12 +445,12 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{theorem}{极点留数计算公式 I}
 	如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
-	\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].\]
+	\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\d^{m-1}}{\d z^{m-1}}[(z-z_0)^mf(z)].\]
 \end{theorem}
 
 \begin{theorem}{极点留数计算公式 II}
 	如果 $z_0$ 是一阶极点或可去奇点, 那么
-	\[\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z).\]
+	\[\Res[f(z),z_0]=\liml_{z\to z_0}(z-z_0)f(z).\]
 \end{theorem}
 
 \begin{proof}
@@ -514,7 +514,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\begin{align*}
 			&\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
 		=&\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}
-		=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere
+		=\frac{P(z_0)}{\liml_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere
 	\end{align*}
 \end{proof}
 
@@ -534,7 +534,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 
 \begin{example}
-	计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z$.
+	计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\d z$.
 \end{example}
 
 \begin{solution}
@@ -542,7 +542,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	{\begin{align*}
 		\Res[f(z),0]&=\lim_{z\to0}\frac{e^z}{(z-1)^2}=1,\\
 		{\Res[f(z),1]}&{=\lim_{z\to1}\left(\frac{e^z}z\right)'=\lim_{z\to1}\frac{e^z(z-1)}{z^2}=0,}
-	\end{align*}\[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
+	\end{align*}\[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\d z
 		=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]
 		=2\pi i.\]
 	}
@@ -554,7 +554,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	设 $\infty$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在某个 $R<|z|<+\infty$ 内的洛朗展开为
 	\[f(z)=\cdots+c_{-1}z^{-1}+c_0+c_1z+\cdots\]
 	称
-	\[\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\diff z\]
+	\[\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\d z\]
 	为函数 \emph{$f(z)$ 在 $\infty$ 的留数}, 其中 $C$ 为该圆环域中绕 $0$ 的一条闭路.
 \end{definition}
 
@@ -572,12 +572,12 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \begin{proof}
 	设闭路 $C$ 内部包含除 $\infty$ 外所有奇点 $z_1,\dots,z_n$.
 	由留数定理
-		\[-2\pi i\Res[f(z),\infty]=\oint_C f(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+		\[-2\pi i\Res[f(z),\infty]=\oint_C f(z)\d z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
 	故 $\suml_{k=1}^n \Res[f(z),z_k]+\Res[f(z),\infty]=0$.
 \end{proof}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+i)^{10}(z-1)(z-3)}$.
+	求 $\displaystyle\oint_{|z|=2}f(z)\d z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+i)^{10}(z-1)(z-3)}$.
 \end{example}
 
 \begin{solution}
@@ -591,7 +591,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\end{align*}
 {
 	\begin{align*}
-		\oint_{|z|=2}f(z)\diff z
+		\oint_{|z|=2}f(z)\d z
 		&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]+\Res[f(z),0]\bigr]\\
 		&{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}
 	\end{align*}
@@ -600,16 +600,16 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{center}
 	\begin{tikzpicture}[node distance=25pt]
-		\node at (4.55,0.3) [cstnode2]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+		\node at (4.55,0.3) [cstnode2]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\d z=F(b)-F(a)$};
 		\node at (0,2.2) [cstnode]	(isanalytic){$f(z)$ 解析};
 		\node at (4.5,2.2) [cstnode2,align=center]	(end2){设曲线方程为 $z(t)$, 则\\
-		积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
+		积分$\displaystyle=\int_a^bf(z)z'(t)\d t$\\
 		可能需要分段计算};
 		\node at (9,2.2) [cstnode2,align=center]	(end4){用闭路外的孤立\\奇点的留数计算, \\最后取负号*};
 		\node at (0,4.5) [cstnode]	(isclosed){是闭路};
 		\node at (4.5,4.5) [cstnode]	(issingle){只有孤立奇点};
 		\node at (9,4.5) [cstnode,align=center]	(ismany){闭路内部和外部\\孤立奇点数量};
-		\node at (1.5,6.5) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+		\node at (1.5,6.5) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\d z$ 的计算};
 		\node at (9,6.5) [cstnode2,align=center]	(end3){用闭路内的孤立\\奇点的留数计算};
 
 		\draw[cstnra,third] (integral.-160) -- (isclosed);
@@ -647,28 +647,28 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 本节中我们将对若干种在实变中难以计算的定积分和广义积分使用复变函数和留数的技巧进行计算.
 本节内容不作考试要求.
 
-考虑 $\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta$, 其中 $R$ 是一个有理函数.
-令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
+考虑 $\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\d\theta$, 其中 $R$ 是一个有理函数.
+令 $z=e^{i\theta}$, 则 $\d z=iz\d\theta$,
 \[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
 \sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
-	\[\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta
-	=\oint_{|z|=1} R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\diff z.\]
+	\[\int_0^{2\pi} R(\cos\theta,\sin\theta)\d\theta
+	=\oint_{|z|=1} R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\d z.\]
 由于被积函数是一个有理函数, 它的积分可以由 $|z|<1$ 内奇点留数得到.
 
 \begin{example}
-	求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta$.
+	求 $\displaystyle\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta$.
 \end{example}
 
 \begin{solution}
-	令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
+	令 $z=e^{i\theta}$, 则 $\d z=iz\d\theta$,
 	{
 		\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\qquad
 		\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 
 		\begin{align*}
-			\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
-			&=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\frac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}\\
-			&=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\diff z.
+			\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta
+			&=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\frac{z^2+1}{2z}}\cdot\frac{\d z}{iz}\\
+			&=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}\d z.
 		\end{align*}
 	}
 	设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
@@ -678,7 +678,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 	{
 		\[
-			\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
+			\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta
 			=-\frac i6\cdot 2\pi i\Bigl[\Res[f(z),0]+\Res[f(z),\frac13]\Bigr]
 			=\frac{2\pi}9.
 		\]
@@ -687,11 +687,11 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \subsection{有理函数的广义积分}
 
-考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
-我们先考虑 $\displaystyle\int_{-r}^rR(x)\diff x$.
+考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\d x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
+我们先考虑 $\displaystyle\int_{-r}^rR(x)\d x$.
 设 $f(z)=R(z),C=C_r+[-r,r]$ 如下图所示, 使得上半平面内 $f(z)$ 的奇点均在 $C$ 内,
 则
-\[2\pi i\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\diff z=\int_{-r}^rR(x)\diff x+\int_{C_r}f(z)\diff z.\]
+\[2\pi i\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\d z=\int_{-r}^rR(x)\d x+\int_{C_r}f(z)\d z.\]
 
 \begin{center}
 	\begin{tikzpicture}
@@ -710,13 +710,13 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 由于 $P(x)$ 分母次数比分子至少高 $2$ 次,
 当 $r\to+\infty$ 时,
-\[\abs{\int_{C_r}f(z)\diff z}\le \pi r\max_{|z|=r}|f(z)|
+\[\abs{\int_{C_r}f(z)\d z}\le \pi r\max_{|z|=r}|f(z)|
 =\pi \max_{|z|=r}|zf(z)|\to 0.\]
 故
-	\[\int_{-\infty}^{+\infty}R(x)\diff x=2\pi i\sum_{\Im a>0}\Res[R(z),a].\]
+	\[\int_{-\infty}^{+\infty}R(x)\d x=2\pi i\sum_{\Im a>0}\Res[R(z),a].\]
 
 \begin{example}
-	求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3},a>0$.
+	求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\d x}{(x^2+a^2)^3},a>0$.
 \end{example}
 
 \begin{solution}
@@ -727,30 +727,30 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 		\Res[f(z),ai]&=\frac1{2!}\lim_{z\to ai}\left[\frac1{(z+ai)^3}\right]''\\
 		&=\half\lim_{z\to ai}\frac{12}{(z+ai)^5}=\frac{3}{16a^5i},
 		\end{align*}故
-		\[\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3}
+		\[\int_{-\infty}^{+\infty}\frac{\d x}{(x^2+a^2)^3}
 	=2\pi i\Res[f(z),ai]=\frac{3\pi}{8a^5}.\]
 	}
 \end{solution}
 
 \subsection{有理函数与三角函数之积的广义积分}
 
-考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\diff x$, $\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
+考虑 $\displaystyle\int_{-\infty}^{+\infty}R(x)\cos{\lambda x}\d x$, $\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\d x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
 和前一种情形类似, 我们有
-	\[\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\diff x
+	\[\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\d x
 	=2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a],\]
 因此所求积分分别为它的实部和虚部.
 
 
 \begin{example}
-	求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}, a>0$.
+	求 $\displaystyle\int_{-\infty}^{+\infty}\frac{\cos x\d x}{(x^2+a^2)^2}, a>0$.
 \end{example}
 
 \begin{solution}
 	$f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 	{
 		\[\Res[f(z),ai]=\lim_{z\to ai}\left[\frac{e^{iz}}{(z+ai)^2}\right]'=-\frac{e^{-a}(a+1)i}{4a^3}.\]故
-		$\displaystyle\qquad \int_{-\infty}^{+\infty}\frac{e^{ix}\diff x}{(x^2+a^2)^2}=2\pi i \Res[f(z),ai]=\frac{\pi e^{-a}(a+1)}{2a^3}$,
-		\[\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}=\frac{\pi e^{-a}(a+1)}{2a^3}.\]
+		$\displaystyle\qquad \int_{-\infty}^{+\infty}\frac{e^{ix}\d x}{(x^2+a^2)^2}=2\pi i \Res[f(z),ai]=\frac{\pi e^{-a}(a+1)}{2a^3}$,
+		\[\int_{-\infty}^{+\infty}\frac{\cos x\d x}{(x^2+a^2)^2}=\frac{\pi e^{-a}(a+1)}{2a^3}.\]
 	}
 \end{solution}
 
@@ -759,11 +759,11 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 最后我们再来看一个例子.
 
 \begin{example}
-	求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x,0<p<1$.
+	求积分 $I=\displaystyle\int_0^{+\infty}\frac{x^p}{x(x+1)}\d x,0<p<1$.
 \end{example}
 
 \begin{solution}
-	\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
+	\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\d x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\d t.\]
 	{考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 	\begin{center}
 		\begin{tikzpicture}[scale=.8]
@@ -788,11 +788,11 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 		由于 $l:z=t+2\pi i,-R\le t\le R$,
 	{因此
-		\[\int_l f(z)\diff z
-		=\int_R^{-R}\frac{e^{2p\pi i}\cdot e^{pt}}{e^t+1}\diff t
-		=-e^{2p\pi i}\int_{-R}^Rf(t)\diff t.\]由于 $C_1:z=R+it,0\le t\le 2\pi$,因此
-		\[\abs{\int_{C_1}f(z)\diff z}\le \frac{e^{(p+1)R}}{e^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).\]同理
-		\[\abs{\int_{C_2}f(z)\diff z}\le \frac{e^{-(p+1)R}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
+		\[\int_l f(z)\d z
+		=\int_R^{-R}\frac{e^{2p\pi i}\cdot e^{pt}}{e^t+1}\d t
+		=-e^{2p\pi i}\int_{-R}^Rf(t)\d t.\]由于 $C_1:z=R+it,0\le t\le 2\pi$,因此
+		\[\abs{\int_{C_1}f(z)\d z}\le \frac{e^{(p+1)R}}{e^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).\]同理
+		\[\abs{\int_{C_2}f(z)\d z}\le \frac{e^{-(p+1)R}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
 	}
 
 	由于
@@ -800,8 +800,8 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	=\frac{e^{pz}}{(e^z+1)'}\bigg|_{z=\pi i}=-e^{p\pi i},\]
 	{因此
 		\begin{align*}
-		&\left(\int_{-R}^R+\int_l+\int_{C_1}+\int_{C_2}\right)f(z)\diff z\\
-		=&\oint_Cf(z)\diff z=2\pi i\Res[f(z),\pi i]=-2\pi ie^{p\pi i},
+		&\left(\int_{-R}^R+\int_l+\int_{C_1}+\int_{C_2}\right)f(z)\d z\\
+		=&\oint_Cf(z)\d z=2\pi i\Res[f(z),\pi i]=-2\pi ie^{p\pi i},
 		\end{align*}令 $R\to+\infty$,则
 		\begin{align*}
 		&(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
@@ -983,12 +983,12 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 
 \begin{exercise}
-	设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
+	设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\d z$.
 \end{exercise}
 \begin{solution}
 	由于 $f(z)=\dfrac{e^{iz}}{z^2-3\pi z+2\pi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\pi,2\pi$, 因此
 	\begin{align*}
-		\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \\
+		\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\d z&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \\
 		&=2\pi i\biggl[\frac{e^{iz}}{z-2\pi}\bigg|_{z=\pi}+\frac{e^{iz}}{z-\pi}\bigg|_{z=2\pi}\biggr] \\
 	&=2\pi i\biggl[\frac1\pi+\frac1\pi\biggr]=\markeq{4i}. \qedhere
 	\end{align*}
@@ -996,12 +996,12 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 
 \begin{exercise}
-	设 $C$ 为正向圆周 $|z|=2$, 求 $\displaystyle\oint_C\frac{\sin z}{z(z-1)}\diff z$.
+	设 $C$ 为正向圆周 $|z|=2$, 求 $\displaystyle\oint_C\frac{\sin z}{z(z-1)}\d z$.
 \end{exercise}
 \begin{solution}
 	由于 $f(z)=\dfrac{\sin z}{z(z-1)}$ 在 $|z|\le 2$ 内的奇点为 $0,1$, 因此
 	\begin{align*}
-		\oint_C\frac{\sin z}{z(z-1)}\diff z&=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr] \\
+		\oint_C\frac{\sin z}{z(z-1)}\d z&=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr] \\
 		&=2\pi i\biggl[\frac{\sin z}{z-1}\bigg|_{z=0}+\frac{\sin z}{z}\bigg|_{z=1}\biggr]=\markeq{2\pi i\sin1}. \qedhere
 	\end{align*}
 \end{solution}
@@ -1011,7 +1011,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	设 $f(z)=\dfrac1{z^2\cos z}$, $C$ 为正向圆周 $|z|=2$.
 	\subex 求 $f(z)$ 在 $C$ 内部的孤立奇点, 并给出其类型.
 	\subex 求 $f(z)$ 在上述奇点处的留数.
-	\subex 求 $\displaystyle\oint_C f(z)\diff z$.
+	\subex 求 $\displaystyle\oint_C f(z)\d z$.
 \end{exercise}
 \begin{solution}
 	\subex 孤立奇点为\markt{二阶极点 $z=0$, 一阶极点 $z=\pm\frac\pi2$}.
@@ -1025,7 +1025,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\end{align*}
 
 	\subex~
-	\[\oint_Cf(z)\diff z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),\frac\pi2]+\Res[f(z),-\frac\pi2]\bigr]=\markeq{0}.\qedhere\]
+	\[\oint_Cf(z)\d z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),\frac\pi2]+\Res[f(z),-\frac\pi2]\bigr]=\markeq{0}.\qedhere\]
 \end{solution}
 
 
@@ -1033,7 +1033,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	设函数 $f(z)=\dfrac{e^z}{z(z-1)^2}$.
 	\subex 求 $f(z)$ 在复平面上的所有孤立奇点, 并讨论其类型;
 	\subex 计算 $f(z)$ 在所有孤立奇点处的留数;
-	\subex 计算积分 $\displaystyle\oint_Cf(z)\diff z$, 其中曲线 $C$ 为正向圆周 $|z|=2$.
+	\subex 计算积分 $\displaystyle\oint_Cf(z)\d z$, 其中曲线 $C$ 为正向圆周 $|z|=2$.
 \end{exercise}
 \begin{solution}
 	\subex 孤立奇点为\markt{二阶极点 $z=1$, 一阶极点 $z=0$}.
@@ -1046,7 +1046,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 	\end{align*}
 
 	\subex~
-	\[\oint_Cf(z)\diff z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]=\markeq{2\pi i}.\qedhere\]
+	\[\oint_Cf(z)\d z=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]=\markeq{2\pi i}.\qedhere\]
 \end{solution}
 
 
@@ -1084,23 +1084,23 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 \begin{exercise}[2]{9}
 	利用留数计算下述积分:
-	\subex{$\displaystyle\oint_{|z|=4}\frac{\sin z}{z(z-\pi)}\diff z$;}
-	\subex{$\displaystyle\oint_{|z|=2}\frac{e^{2z}}{z(z-1)^2}\diff z$;}
-	\subex{$\displaystyle\oint_{|z|=\frac32}\frac{1-\cos z}{z^5}\diff z,\quad m\in\BZ$;}
-	\subex{$\displaystyle\oint_{|z|=1}\frac1{(z-\frac12)^9(z-2)^9}\diff z$.}
+	\subex{$\displaystyle\oint_{|z|=4}\frac{\sin z}{z(z-\pi)}\d z$;}
+	\subex{$\displaystyle\oint_{|z|=2}\frac{e^{2z}}{z(z-1)^2}\d z$;}
+	\subex{$\displaystyle\oint_{|z|=\frac32}\frac{1-\cos z}{z^5}\d z,\quad m\in\BZ$;}
+	\subex{$\displaystyle\oint_{|z|=1}\frac1{(z-\frac12)^9(z-2)^9}\d z$.}
 \end{exercise}
 \begin{solution}
 	\subex 被积函数 $f(z)$ 在闭路内部的奇点为可去奇点 $0,\pi$, 因此
-	\[\oint_{|z|=4}f(z)\diff z=2\pi i\bigl(\Res[f(z),0]+\Res[f(z),\pi]\bigr)=\markeq{0}.\]
+	\[\oint_{|z|=4}f(z)\d z=2\pi i\bigl(\Res[f(z),0]+\Res[f(z),\pi]\bigr)=\markeq{0}.\]
 
 	\subex 被积函数 $f(z)$ 在闭路内部的奇点为二阶极点 $1$ 和一阶极点 $0$, 因此
 	\[\Res[f(z),1]=\left(\frac{e^{2z}}{z}\right)'\Big|_{z=1}=\frac{2e^{2z}z-e^{2z}}{z^2}\Big|_{z=1}=e^2,\]
 	\[\Res[f(z),0]=\frac{e^{2z}}{(z-1)^2}\Big|_{z=0}=1,\]
-	\[\oint_{|z|=2}f(z)\diff z=2\pi i\bigl(\Res[f(z),1]+\Res[f(z),0]\bigr)=\markeq{2\pi i(e^2+1)}.\]
+	\[\oint_{|z|=2}f(z)\d z=2\pi i\bigl(\Res[f(z),1]+\Res[f(z),0]\bigr)=\markeq{2\pi i(e^2+1)}.\]
 
 	\subex 被积函数 $f(z)$ 在闭路内部的奇点为 $3$ 阶极点 $0$, 因此
 	\[\Res[f(z),0]=\frac1{4!}\lim_{z\to 0}(1-\cos z)^{(4)}=-\frac1{24},\]
-	\[\oint_{|z|=\frac32}f(z)\diff z=2\pi i\Res[f(z),0]=\markeq{-\frac{\pi i}{12}}.\]
+	\[\oint_{|z|=\frac32}f(z)\d z=2\pi i\Res[f(z),0]=\markeq{-\frac{\pi i}{12}}.\]
 
 	\subex $\frac12$ 为被积函数 $f(z)$ 的 $9$ 阶极点, 因此
 	\[\Res[f(z),\frac12]
@@ -1108,7 +1108,7 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 		=\frac1{8!}\lim_{z\to \frac12}\frac{16!}{8!}(z-2)^{-17}
 		=-\frac{16!}{8!^2}(\frac23)^{17}.\]
 	故
-	\[\oint_{|z|=1}f(z)\diff z=2\pi i\Res[f(z),\frac12]=\markeq{-\frac{2^{18}16!\pi i}{{3^{17}}8!^2}}.\qedhere\]
+	\[\oint_{|z|=1}f(z)\d z=2\pi i\Res[f(z),\frac12]=\markeq{-\frac{2^{18}16!\pi i}{{3^{17}}8!^2}}.\qedhere\]
 \end{solution}
 
 
@@ -1157,19 +1157,19 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 \item $z=\pi$ 是函数 $f(z)=\dfrac{z-\pi}{(\sin z)^3}$ 的(~~~~).
 \xx{一阶极点}{本性奇点}{可去奇点}{二阶极点}
 \item 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
-\item 设 $f(z)=\dfrac{1}{(z+1)(z+2)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=3}f(z)\diff z$.
+\item 设 $f(z)=\dfrac{1}{(z+1)(z+2)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=3}f(z)\d z$.
 
 
 \item 函数 $\sin\dfrac{1}{1-z}$ 有哪些奇点(包括 $\infty$)? 并求其在 $1$ 处的洛朗展开.
 \item 计算 $\dfrac{e^z}{z(z-1)}$ 在其所有奇点处的留数.
 
-\item 计算 $\displaystyle\int_{|z|=2}\frac{\diff z}{z^3(z-1)^3(z-3)^5}$.
+\item 计算 $\displaystyle\int_{|z|=2}\frac{\d z}{z^3(z-1)^3(z-3)^5}$.
 
-\item $\displaystyle\int_C\dfrac{\diff z}{(\sin z)(z+6)(z-5)}$, $C:|z|=4$.
-\item $\displaystyle\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2+2x+5}\diff x$.
-\item $\displaystyle\int_0^{\pi/2}\dfrac{\diff \theta}{(1+2\sin^2\theta)^2}$.
+\item $\displaystyle\int_C\dfrac{\d z}{(\sin z)(z+6)(z-5)}$, $C:|z|=4$.
+\item $\displaystyle\int_{-\infty}^{+\infty}\dfrac{\cos x}{x^2+2x+5}\d x$.
+\item $\displaystyle\int_0^{\pi/2}\dfrac{\d \theta}{(1+2\sin^2\theta)^2}$.
 
-\item 证明 $\displaystyle\int_0^{2\pi}\cos^{2n}\theta\diff \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\pi$.
+\item 证明 $\displaystyle\int_0^{2\pi}\cos^{2n}\theta\d \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\pi$.
 
 \item 求下列全纯函数在 $\{z:|z|<1\}$ 中的零点个数：
 \begin{enumerate}
@@ -1180,21 +1180,3 @@ $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
 
 
 \item 求方程 $z^8+e^z+6z+1=0$ 在 $1<|z|<2$ 中根的个数, 并说明理由.
-% \sectionExerciseAnswer
-
-% \begin{answer}
-% 	$-1$ 是一阶极点, $1$ 是二阶极点.
-% \end{answer}
-
-% \begin{answer}
-% 	$1$ 是二阶极点, $0$ 是一阶极点, $-1$ 是三阶极点.
-% \end{answer}
-
-% \begin{answer}
-% 	\begin{itemize}
-% 		\item $z=2k\pi i$ 是一阶极点, $k\neq 0,\pm1$.
-% 		\item $z=0$ 是四阶极点.
-% 		\item $z=\pm 2\pi i$ 是可去奇点.
-% 		\item $z=\infty$ 不是孤立奇点.
-% 	\end{itemize}
-% \end{answer}

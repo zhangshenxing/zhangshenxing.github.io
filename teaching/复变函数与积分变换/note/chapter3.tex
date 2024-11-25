@@ -1,628 +1,1062 @@
 
 \chapter{复变函数的积分}
+
+\label{chapter:3}
+
+复变函数的积分理论的核心是柯西积分公式. 它从定性刻画解析函数积分的柯西积分定理和复合闭路定理出发, 得到一类具有特定形式的复变函数绕闭路的积分.
+从柯西积分公式出发, 可以得到解析函数是任意阶可导, 并由此得到复变函数的级数和留数理论.
+
+由于复变函数积分也是一种线积分, 因此可通过有向曲线的参数方程来将复变函数的积分化为实参变量的积分.
+对于单连通区域内解析函数, 我们有类比高等数学中的牛顿-莱布尼兹定理, 通过求其原函数来计算积分.
+最后, 我们将介绍解析函数与调和函数的联系.
+
 \section{复变函数积分的概念}
 
 \subsection{复变函数积分的定义}
 
-设 $C$ 是平面上一条光滑或逐段光滑的连续曲线, 也就是说它的参数方程 $z=z(t),a\le t\le b$ 除去有限个点之外都有非零导数.
-固定它的一个方向, 称为\emph{正方向}, 则我们得到一条\emph{有向曲线}.
-和这条曲线方向相反的记作 $C^-$, 它的方向被称为该曲线\emph{负方向}.
+设 $C$ 是平面上一条光滑或逐段光滑的连续曲线, 也就是说它的参数方程
+\[
+  z=z(t),a\le t\le b
+\]
+除去有限个点之外都有非零导数.
+固定它的一个方向, 称为\noun{正方向}, 则我们得到一条\noun{有向曲线}.
+和这条曲线方向相反的记作 $C^-$, 它的方向被称为该曲线\noun{负方向}.
 
 对于闭路, 规定它的\alert{正方向是指逆时针方向}, 负方向是指顺时针方向.
 以后我们不加说明的话\alert{默认是正方向}.
 
 \begin{figure}[hbpt]
-	\centering
-	\begin{tikzpicture}
-		\draw[cstaxis](-3.5,0)--(3.5,0);
-		\draw[cstaxis](0,-0.5)--(0,2.5);
-		\begin{scope}[xshift=18mm,yshift=11mm,second,cstdot,cstcurve,smooth]
-			\coordinate [label=left:{$A=z(a)$}] (A) at ({1.3*cos(-35)}, {1.3*sin(-35)});
-			\coordinate [label=below:{$B=z(b)$}] (B) at ({1.3*cos(125)}, {1.3*sin(125)});
-			\draw[main,domain=-35:125] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
-			\draw[main,domain=40:45,cstwra] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
-			\fill (A) circle;
-			\fill (B) circle;
-		\end{scope}
-		\begin{scope}[xshift=-14mm,yshift=11mm,cstcurve,main,smooth,cstwla]
-			\draw[domain=-65:30] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-			\draw[domain=25:120] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-			\draw[domain=115:210] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-			\draw[domain=205:300] plot ({-0.7*cos(\x)}, {0.7*sin(\x)});
-		\end{scope}
-	\end{tikzpicture}
-	\caption{有向曲线}
+  \centering
+  \begin{tikzpicture}
+    \draw[cstaxis](-3.5,0)--(3.5,0);
+    \draw[cstaxis](0,-0.5)--(0,2.5);
+    \begin{scope}[xshift=18mm,yshift=11mm,second,cstdot,cstcurve,samples=100]
+      \coordinate (A) at ({1.3*cos(-35)}, {1.3*sin(-35)});
+      \node at (A)[left] {$A=z(a)$};
+      \coordinate (B) at ({1.3*cos(125)}, {1.3*sin(125)});
+      \node at (B)[below] {$B=z(b)$};
+      \draw[
+        main,
+        domain=-35:125,
+        decoration={
+          markings,
+          mark=at position 0.58 with {
+            \arrow{Stealth};
+          }
+        },
+        postaction={decorate}
+      ] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
+      \fill (A) circle;
+      \fill (B) circle;
+    \end{scope}
+    \begin{scope}[xshift=-17mm,yshift=12mm,cstcurve,main,smooth,Straight Barb-]
+      \draw[domain=-65:30] plot ({-0.9*cos(\x)}, {0.9*sin(\x)});
+      \draw[domain=25:120] plot ({-0.9*cos(\x)}, {0.9*sin(\x)});
+      \draw[domain=115:210] plot ({-0.9*cos(\x)}, {0.9*sin(\x)});
+      \draw[domain=205:300] plot ({-0.9*cos(\x)}, {0.9*sin(\x)});
+    \end{scope}
+  \end{tikzpicture}
+  \caption{有向曲线}
 \end{figure}
 
 所谓的复变函数积分, 本质上仍然是第二类曲线积分.
 设复变函数
 \[
-	w=f(z)=u(x,y)+iv(x,y)
+  w=f(z)=u(x,y)+iv(x,y)
 \]
-定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
+定义在区域 $D$ 上, 有向曲线 $C$ 包含在 $D$ 中.
 形式地展开
 \[
-	f(z)\diff z=(u+iv)(\diff x+i\diff y)=(u\diff x-v\diff y)+i(u\diff y+v\diff x).
+  f(z)\d z=(u+iv)(\d x+i\d y)=(u\d x-v\d y)+i(u\d y+v\d x).
 \]
 \begin{definition}
-	如果下述右侧两个线积分均存在, 则定义
-	\[\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)\]
-	为\emph{函数 $f(z)$ 沿曲线 $C$ 的积分}.
+  如果下述右侧两个线积分均存在, 则定义
+  \[\int_C f(z)\d z=\int_C(u\d x-v\d y)+i\int_C(v\d x+u\d y)\]
+  为\nouns{函数 $f(z)$ 沿曲线 $C$ 的积分}{积分}.
 \end{definition}
 
 我们也可以像线积分那样通过分割来定义.
-在曲线 $C$ 上依次选择分点 $z_0=A,z_1,\dots,z_n=B$, 在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
+在曲线 $C$ 上依次选择分点
 \[
-	S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.
+  z_0=A, z_1, \dots, z_{n-1}, z_n=B,
+\]
+在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
+\[
+  S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.
 \]
 称 $n\ra\infty$, 分割的最大弧长 $\ra 0$ 时 $S_n$ 的极限为复变函数积分.
-这二者是等价的.
+这两种定义是等价的.
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw[cstcurve,third,smooth,domain=0:360] plot ({0.015*\x},{0.6*sin(\x)});
-		\draw[cstcurve,third,smooth,domain=195:200,cstra] plot ({0.015*\x},{0.6*sin(\x)});
-		\fill[cstdot,third] (0,0) circle;
-		\fill[cstdot,second]({0.015*32},{0.6*sin(32)}) circle;
-		\fill[cstdot,main]({0.015*64},{0.6*sin(64)}) circle;
-		\fill[cstdot,second]({0.015*96},{0.6*sin(96)}) circle;
-		\fill[cstdot,main]({0.015*128},{0.6*sin(128)}) circle;
-		\fill[cstdot,second]({0.015*160},{0.6*sin(160)}) circle;
-		\fill[cstdot,main]({0.015*232},{0.6*sin(232)}) circle;
-		\fill[cstdot,second]({0.015*264},{0.6*sin(264)}) circle;
-		\fill[cstdot,main]({0.015*296},{0.6*sin(296)}) circle;
-		\fill[cstdot,second]({0.015*328},{0.6*sin(328)}) circle;
-		\fill[cstdot,third] ({0.015*360},0) circle;
-		\draw
-		({0.015*32},{0.6*sin(32)-0.3}) node[second] {$\zeta_1$}
-		({0.015*64},{0.6*sin(64)+0.3}) node[main] {$z_1$}
-		({0.015*96},{0.6*sin(96)-0.3}) node[second] {$\zeta_2$}
-		({0.015*128},{0.6*sin(128)+0.3}) node[main] {$z_2$}
-		({0.015*160},{0.6*sin(160)-0.3}) node[second] {$\zeta_3$}
-		({0.015*232},{0.6*sin(232)+0.3}) node[main] {$z_{n-2}$}
-		({0.015*264},{0.6*sin(264)-0.3}) node[second] {$\zeta_{n-1}$}
-		({0.015*296},{0.6*sin(296)+0.3}) node[main] {$z_{n-1}$}
-		({0.015*328},{0.6*sin(328)-0.3}) node[second] {$\zeta_n$}
-		({0.015*180},{0.6*sin(180)+0.5}) node[main] {$\ddots$}
-		(-0.3,0) node[third] {$A$}
-		({0.015*360+0.3},0) node[third] {$B$};
-	\end{tikzpicture}
-\end{center}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \draw[
+      cstcurve,
+      third,
+      smooth,
+      domain=0:360,
+      decoration={
+        markings,
+        mark=at position 0.58 with {
+          \arrow{Stealth};
+        }
+      },
+      postaction={decorate}
+    ] plot ({0.015*\x},{0.6*sin(\x)});
+    \fill[cstdot,third] (0,0) circle
+      node[left] {$A$};
+    \fill[cstdot,second]({0.015*32},{0.6*sin(32)}) circle
+      node[below] {$\zeta_1$};
+    \fill[cstdot,main]({0.015*64},{0.6*sin(64)}) circle
+      node[above] {$z_1$};
+    \fill[cstdot,second]({0.015*96},{0.6*sin(96)}) circle
+      node[below] {$\zeta_2$};
+    \fill[cstdot,main]({0.015*128},{0.6*sin(128)}) circle
+      node[above] {$z_2$};
+    \fill[cstdot,second]({0.015*160},{0.6*sin(160)}) circle
+      node[below] {$\zeta_3$}
+      node[third,above] {$\ddots$};
+    \fill[cstdot,main]({0.015*232},{0.6*sin(232)}) circle
+      node[above] {$z_{n-2}$};
+    \fill[cstdot,second]({0.015*264},{0.6*sin(264)}) circle
+      node[below] {$\zeta_{n-1}$};
+    \fill[cstdot,main]({0.015*296},{0.6*sin(296)}) circle
+      node[above] {$z_{n-1}$};
+    \fill[cstdot,second]({0.015*328},{0.6*sin(328)}) circle
+      node[below] {$\zeta_n$};
+    \fill[cstdot,third] ({0.015*360},0) circle
+      node[right] {$B$};
+    % \draw
+    % ({0.015*32},{0.6*sin(32)-0.3}) node[second] {$\zeta_1$}
+    % ({0.015*64},{0.6*sin(64)+0.3}) node[main] {$z_1$}
+    % ({0.015*96},{0.6*sin(96)-0.3}) node[second] {$\zeta_2$}
+    % ({0.015*128},{0.6*sin(128)+0.3}) node[main] {$z_2$}
+    % ({0.015*160},{0.6*sin(160)-0.3}) node[second] {$\zeta_3$}
+    % ({0.015*232},{0.6*sin(232)+0.3}) node[main] {$z_{n-2}$}
+    % ({0.015*264},{0.6*sin(264)-0.3}) node[second] {$\zeta_{n-1}$}
+    % ({0.015*296},{0.6*sin(296)+0.3}) node[main] {$z_{n-1}$}
+    % ({0.015*328},{0.6*sin(328)-0.3}) node[second] {$\zeta_n$}
+    % ({0.015*180},{0.6*sin(180)+0.5}) node[main] {$\ddots$}
+    % (-0.3,0) node[third] {$A$}
+    % ({0.015*360+0.3},0) node[third] {$B$};
+  \end{tikzpicture}
+  \caption{通过分割定义复积分}
+\end{figure}
 
-如果 $C$ 是闭曲线, 则该积分记为 \alert{$\displaystyle\oint_Cf(z)\diff z$}. 此时该积分不依赖端点的选取.
+如果 $C$ 是闭合曲线, 则将该积分记为 \noun{$\displaystyle\oint_Cf(z)\d z$}.
+此时该积分不依赖端点的选取.
 
 如果 $C$ 是实轴上的区间 $[a,b]$ 且 $f(z)=u(x)$, 则
 \[
-	\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x
+  \int_Cf(z)\d z=\int_a^bf(z)\d z=\int_a^b u(x)\d x
 \]
 就是黎曼积分.
 
 根据线积分的存在性条件可知:
 \begin{theorem}
-	如果 $f(z)$ 在 $D$ 内连续, $C$ 是光滑曲线, 则 $\displaystyle\int_Cf(z)\diff z$ 总存在.
+  如果 $f(z)$ 在 $D$ 内连续, $C$ 是逐段光滑曲线, 则 $\displaystyle\int_Cf(z)\d z$ 总存在.
 \end{theorem}
 
+以后我们\alert{只考虑逐段光滑曲线上连续函数的积分}.
 
-\subsection{复变函数积分的计算法}
+
+\subsection{复变函数积分的计算方法}
 
 线积分中诸如变量替换等技巧可以照搬过来使用. 设
 \[
-	C:z(t)=x(t)+iy(t),\quad a\le t\le b
+  C:z(t)=x(t)+iy(t),\quad a\le t\le b
 \]
-是一条光滑有向曲线, 且正方向为 $t$ 增加的方向, 则 $\diff z=z'(t)\diff t$.
+是一条光滑有向曲线, 且正方向为 $t$ 增加的方向, 则 $\d z=z'(t)\d t$.
 
-\begin{theorem}[复变函数积分计算方法I]
-	\[
-		\int_Cf(z)\diff z=\int_a^b f(z)z'(t)\diff t.
-	\]
+\begin{theorem}[复变函数积分计算方法I: 参变量法]
+  \[
+    \int_Cf(z)\d z=\int_a^b f(z)z'(t)\d t.
+  \]
 \end{theorem}
 如果 $C$ 的正方向是从 $z(b)$ 到 $z(a)$, 则需要交换右侧积分的上下限.
 
-如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和. 以后我们\alert{只考虑逐段光滑曲线上的连续函数的积分}.
+如果 $C$ 是逐段光滑的, 则相应的积分就是各段的积分之和.
 
-\begin{example}
-	求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是
-	\begin{enumerate}
-		\item 从原点到点 $3+4i$ 的直线段;
-		\item 抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4i$ 的曲线段.
-	\end{enumerate}
+\begin{example}\label{exam:integral-z}
+  求 $\displaystyle\int_Cz\d z$, 其中 $C$ 是
+  \begin{enumpar}
+    \item 从原点到点 $3+4i$ 的直线段;
+    \item 抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4i$ 的曲线段.
+  \end{enumpar}
 \end{example}
 
-\begin{figure}[hbpt]
-	\centering
-	\begin{minipage}{.48\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\draw[cstaxis](0,0)--(3,0);
-			\draw[cstaxis](0,0)--(0,2.5);
-			\draw[cstcurve,main,cstra](0,0)--(1.5,2);
-			\draw
-				(2.5,1.2) node[main,align=center] {$z=(3+4i)t$\\$0\le t\le 1$};
-		\end{tikzpicture}
-	\end{minipage}
-	\begin{minipage}{.48\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\draw[cstaxis](0,0)--(3,0);
-			\draw[cstaxis](0,0)--(0,2.5);
-			\draw[cstcurve,main,domain=0:1.5,cstra] plot({\x},{8*\x*\x/9});
-			\draw
-				(2.8,2) node[main,align=center] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
-		\end{tikzpicture}
-	\end{minipage}
+\begin{figure}[!hb]
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstaxis](0,0)--(3,0);
+      \draw[cstaxis](0,0)--(0,2.5);
+      \draw[cstcurve,main,cstra](0,0)--(1.5,2);
+      \draw
+        (2.5,1.2) node[main,align=center] {$z=(3+4i)t$\\$0\le t\le 1$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstaxis](0,0)--(3,0);
+      \draw[cstaxis](0,0)--(0,2.5);
+      \draw[cstcurve,main,domain=0:1.5,cstra] plot({\x},{8*\x*\x/9});
+      \draw
+        (2.8,2) node[main,align=center] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
+    \end{tikzpicture}
+  \end{minipage}
 \end{figure}
 
 \begin{solution}
-	\begin{enumerate}
-		\item 由于 $z=(3+4i)t,0\le t\le 1$, 因此
-		\[
-			 \int_Cz\diff z=\int_0^1(3+4i)t\cdot(3+4i)\diff t
-			=(3+4i)^2\int_0^1t\diff t
-			=\half (3+4i)^2=-\frac72+12i.
-		\]
-		\item 由于 $z=t+\dfrac49it^2,0\le t\le 3$, 因此
-		\begin{align*}
-			  \int_Cz\diff z
-			&=\int_0^3\biggl(t+\frac{4}9it^2\biggr)\cdot\biggl(1+\frac89it\biggr)\diff t
-			 =\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t\\
-			&=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3
-			 =-\frac72+12i.
-		\end{align*}
-	\end{enumerate}
+  \begin{enumnopar}
+    \item 由于 $C$ 的参数方程为
+      \[
+        z=(3+4i)t,\quad 0\le t\le 1,
+      \]
+      因此 $\d z=(3+4i)\d t$,
+      \[
+        \int_C z\d z=\int_0^1(3+4i)t\cdot(3+4i)\d t
+        =(3+4i)^2\int_0^1t\d t
+        =\half (3+4i)^2=-\frac72+12i.
+      \]
+    \item 由于 $C$ 的参数方程为
+      \[
+        z=t+\dfrac49it^2,\quad 0\le t\le 3,\]
+      因此 $\d z=(1+\dfrac89it)\d t$,
+      \begin{align*}
+          \int_Cz\d z
+        &=\int_0^3\bigl(t+\frac{4}9it^2\bigr)\cdot\bigl(1+\frac89it\bigr)\d t
+        =\int_0^3\bigl(t+\frac43it^2-\frac{32}{81}t^3\bigr)\d t\\
+        &=\bigl(\half t^2+\frac49it^3-\frac8{81}t^4\bigr)\Big|_0^3
+        =-\frac72+12i.
+      \end{align*}
+  \end{enumnopar}
 \end{solution}
 
-\begin{example}
-	求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是
-	\begin{enumerate}
-		\item 从原点到点 $1+i$ 的直线段;
-		\item 从原点到点 $i$ 再到 $1+i$ 的折线段.
-	\end{enumerate}
+\begin{example}\label{exam:re-z-integral}
+  求 $\displaystyle\int_C\Re z\d z$, 其中 $C$ 是
+  \begin{enumpar}
+    \item 从原点到点 $1+i$ 的直线段;
+    \item 从原点到点 $i$ 再到 $1+i$ 的折线段.
+  \end{enumpar}
 \end{example}
 
 \begin{figure}[hbpt]
-	\centering
-	\begin{minipage}{.48\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\draw[cstaxis](0,0)--(3,0);
-			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,main,cstra](0,0)--(2,2);
-			\draw (2.4,0.9) node[align=center,main] {$z=(1+i)t$\\$0\le t\le 1$};
-		\end{tikzpicture}
-	\end{minipage}
-	\begin{minipage}{.48\textwidth}
-		\centering
-		\begin{tikzpicture}
-			\draw[cstaxis](0,0)--(2.5,0);
-			\draw[cstaxis](0,0)--(0,2);
-			\draw[cstcurve,cstra,main](0,0)--(0,1.5);
-			\draw[cstcurve,cstra,second](0,1.5)--(1.5,1.5);
-			\draw (0,.75) node[left,main,align=center] {$z=it$\\$0\le t\le 1$};
-			\draw (1.5,1.5) node[right,second,align=center] {$z=t+i$\\$0\le t\le 1$};
-		\end{tikzpicture}
-	\end{minipage}
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstaxis](0,0)--(3,0);
+      \draw[cstaxis](0,0)--(0,2);
+      \draw[cstcurve,main,cstra](0,0)--(2,2);
+      \draw (2.4,0.9) node[align=center,main] {$z=(1+i)t$\\$0\le t\le 1$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstaxis](0,0)--(2.5,0);
+      \draw[cstaxis](0,0)--(0,2);
+      \draw[cstcurve,cstra,main](0,0)--(0,1.5);
+      \draw[cstcurve,cstra,main](0,1.5)--(1.5,1.5);
+      \draw (0,.75) node[left,main,align=center] {$z=it$\\$0\le t\le 1$};
+      \draw (1.5,1.5) node[right,main,align=center] {$z=t+i$\\$0\le t\le 1$};
+    \end{tikzpicture}
+  \end{minipage}
 \end{figure}
 
 \begin{solution}
-	\begin{enumerate}
-		\item 由于 $z=(1+i)t,0\le t\le 1$, 因此 $\Re z=t$,
-			\[
-				\int_C\Re z\diff z=\int_0^1t\cdot(1+i)\diff t
-				=(1+i)\int_0^1t\diff t
-				=\frac{1+i}2.
-			\]
-		\item 第一段 $z=it,0\le t\le 1, \Re z=0$,
-			第二段 $z=t+i$, $0\le t\le 1$, $\Re z=t$. 因此
-			\[
-				\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12.
-			\]
-	\end{enumerate}
+  \begin{enumnopar}
+    \item 由于 $C$ 的参数方程为
+      \[
+        z=(1+i)t,\quad 0\le t\le 1,
+      \]
+      因此 $\Re z=t$, $\d z=(1+i)\d t$,
+      \[
+        \int_C\Re z\d z=\int_0^1t\cdot(1+i)\d t
+        =(1+i)\int_0^1t\d t
+        =\frac{1+i}2.
+      \]
+    \item 第一段参数方程为
+      \[
+        z=it,\quad 0\le t\le 1,
+      \]
+      于是 $\Re z=0$, 积分为零. 第二段参数方程为
+      \[
+        z=t+i,\quad 0\le t\le 1,
+      \]
+      于是 $\Re z=t$, $\d z=\d t$. 因此
+      \[
+        \int_C\Re z\d z=\int_0^1 t\d t=\frac12.
+      \]
+  \end{enumnopar}
 \end{solution}
 
 可以看出, 即便起点和终点相同, 沿不同路径 $f(z)=\Re z$ 的积分也可能不同.
 而 $f(z)=z$ 的积分则只和起点和终点位置有关, 与路径无关.
-原因在于 $f(z)=z$ 是处处解析的, 我们以后会详加解释.
+原因在于 $f(z)=z$ 是处处解析的, 我们会在下一节解释为何如此.
 
 \begin{exercise}
-	求 $\displaystyle\int_C\Im z\diff z=$\fillblank[3cm][2mm]{}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
+  求 $\displaystyle\int_C\Im z\d z=$\fillblank[2cm]{}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
 \end{exercise}
-% \begin{center}
-% 	\begin{tikzpicture}
-% 		\draw[cstaxis](0,0)--(2.5,0);
-% 		\draw[cstaxis](0,0)--(0,2.5);
-% 		\draw[cstcurve,cstra,main](0,0)--(2,2);
-% 		\draw[cstcurve,cstra,second](2,2)--(0,2);
-% 	\end{tikzpicture}
-% \end{center}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
+  求 $\displaystyle\oint_{|z-z_0|=r}\frac{\d z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
 \end{example}
-\begin{center}
-	\begin{tikzpicture}
-		\draw[cstcurve,second] ({1.3*cos(120)},{1.3*sin(120)})coordinate (C) -- (0,0)coordinate (B) --(1.3,0)coordinate (A) pic [draw,second,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
-		\fill[cstdot,second](0,0) circle;
-		\draw[cstcurve,main,cstwla]({1.3*cos(45)},{1.3*sin(45)}) arc (45:-320:1.3);
-		\draw
-			(-0.5,0.5) node[second] {$r$}
-			(0,-0.3) node[second] {$z_0$};
-	\end{tikzpicture}
-\end{center}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,second] 
+      ({1.3*cos(120)},{1.3*sin(120)}) coordinate (C) -- 
+      (0,0) coordinate (B) --
+      (1.3,0) coordinate (A)
+      pic [draw,second,"$\theta$",angle eccentricity=1.7,angle radius=3mm] {angle};
+    \fill[cstdot,second](0,0) circle;
+    \draw[cstcurve,main,decoration={
+      markings,
+      mark=at position 0.2 with {\arrow{Straight Barb}}},
+      postaction={decorate}
+    ] (0,0) circle (1.3);
+    \draw
+      (-0.5,0.5) node[second] {$r$}
+      (0,-0.3) node[second] {$z_0$};
+  \end{tikzpicture}
+  \caption{正向圆周}
+\end{figure}
+
 \begin{solution}
-	$C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
-	于是 $\diff z=ire^{i\theta}\diff \theta$.
-	\[
-		\oint_C\frac{\diff z}{(z-z_0)^{n+1}}
-		=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
-		=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta.
-	\]
-	\begin{itemize}
-		\item 当 $n=0$ 时, 该积分值为 $2\pi i$.
-		\item 当 $n\neq 0$ 时, 该积分值 $=\dfrac{ir^{-n}}{-in}e^{-in\theta}\big|_0^{2\pi}=0$.
-	\end{itemize}
+  正向圆周 $C: |z-z_0|=r$ 的参数方程为
+  \[
+    z=z_0+re^{i\theta},\quad 0\le \theta\le 2\pi.
+  \]
+  于是 $\d z=ire^{i\theta}\d \theta$,
+  \begin{align*}
+    \oint_C\frac{\d z}{(z-z_0)^{n+1}}
+    &=\int_0^{2\pi}i(re^{i\theta})^{-n}\d\theta
+    =ir^{-n}\int_0^{2\pi}e^{-in\theta}\d\theta\\
+    &=\begin{cases}
+      2\pi i,&\text{若}\ n=0;\\
+      \dfrac{ir^{-n}}{-in}e^{-in\theta}\Big|_0^{2\pi}=0,&\text{若}\ n\neq0.
+    \end{cases}
+  \end{align*}
 \end{solution}
-所以
-\begin{theorem}[幂函数沿圆周的积分]
-	\[\oint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
+于是我们得到幂函数沿圆周的积分
+\begin{theorem}\label{thm:circle-integral}
+  \[
+    \oint_{|z-z_0|=r}\frac{\d z}{(z-z_0)^{n+1}}
+    =\begin{cases}
+      2\pi i,&\text{若}\ n=0;\\
+      0,&\text{若}\ n\neq0.
+    \end{cases}
+  \]
+\end{theorem}
+这个积分以后经常用到. 特别地, 该积分值与圆周的圆心和半径都无关.
+
+与线积分一样, 复变函数积分有如下线性性质:
+\begin{theorem}
+  \begin{enumerate}
+    \item $\displaystyle\int_Cf(z)\d z=-\displaystyle\int_{C^-}f(z)\d z$.
+    \item $\displaystyle\int_Ckf(z)\d z=k\displaystyle\int_Cf(z)\d z$.
+    \item $\displaystyle\int_C\bigl(f(z)\pm g(z)\bigr)\d z
+    =\displaystyle\int_Cf(z)\d z\pm\displaystyle\int_Cg(z)\d z$.
+  \end{enumerate}
 \end{theorem}
 
-这个积分以后经常用到, 它的特点是积分值与圆周的圆心和半径都无关.
+\subsection{长大不等式和小圆弧定理}
 
-\begin{theorem}[积分的线性性质]
-	\begin{enumerate}
-		\item $\displaystyle\int_Cf(z)\diff z=-\displaystyle\int_{C^-}f(z)\diff z$.
-		\item $\displaystyle\int_Ckf(z)\diff z=k\displaystyle\int_Cf(z)\diff z$.
-		\item $\displaystyle\int_C[f(z)\pm g(z)]\diff z
-		=\displaystyle\int_Cf(z)\diff z\pm\displaystyle\int_Cg(z)\diff z$.
-	\end{enumerate}
-\end{theorem}
-
-\begin{theorem}[长大不等式]
-	设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
-		\[\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML.\]
+通过放缩, 我们可以得到如下积分不等式:
+\begin{theorem}[长大不等式]\label{thm:grow-up}
+  设有向曲线 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
+  \[
+    \abs{\int_Cf(z)\d z}\le\int_C|f(z)|\d s\le ML.
+  \]
 \end{theorem}
 
 \begin{proof}
-	由
-		\[\abs{\sum_{k=1}^n f(\zeta_k)\Delta z_k}
-		\le\sum_{k=1}^n|f(\zeta_k)\Delta z_k|
-		\le\sum_{k=1}^n|f(\zeta_k)|\Delta s_k
-		\le M\sum_{k=1}^n\Delta s_k\]
-	可知
-		\[\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML.\qedhere\]
+  设 $A,B$ 分别为有向曲线 $C$ 的起点和终点.
+  在曲线 $C$ 上依次选择分点
+  \[
+    z_0=A, z_1, \dots, z_{n-1}, z_n=B,
+  \]
+  在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$.
+  设 $\Delta s_k$ 为弧 $\warc{z_{k-1}z_k}$ 的长度, $\Delta z_k=z_k-z_{k-1}$, 则 $\Delta s_k\ge\abs{\Delta z_k}$.
+  于是
+  \[
+    \abs{\sum_{k=1}^n f(\zeta_k)\Delta z_k}
+    \le\sum_{k=1}^n|f(\zeta_k)\Delta z_k|
+    \le\sum_{k=1}^n|f(\zeta_k)|\Delta s_k
+    \le M\sum_{k=1}^n\Delta s_k.
+  \]
+  设 $\d s=\abs{\d z}$ 为弧长微元.
+  令 $n\to+\infty$, 分割的最大弧长 $\ra 0$, 我们得到
+  \[
+    \abs{\int_Cf(z)\d z}\le\int_C|f(z)|\d s
+    \le\int_C M\d s=ML.\qedhere
+  \]
 \end{proof}
 
-长大不等式常常用于证明等式: 估算一个积分和一个具体的数值之差不超过任意给定的 $\varepsilon$, 从而得到二者相等.
+尽管长大不等式给出的是积分的一个估计, 但它实际上常常用于证明等式.
+将待证明等式表达为一个复变函数积分为零的形式, 然后通过长大不等式估计其不超过任意给定的 $\varepsilon>0$, 便可证明之.
 
 注意到: 如果被积函数 $f(z)$ 在 $C$ 上的点都连续, 那么 $|f(z)|$ 是 $C$ 的参变量 $t\in[a,b]$ 的连续函数, 从而有界, 即存在 $M$ 使得 $|f(z)|\le M,\forall z\in C$.
 
 \begin{example}
-	设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\lim\limits_{z\ra a}(z-a)f(z)=k$, 则
-	\[\lim_{r\ra0}\oint_{|z-a|=r}f(z)\diff z=2\pi ik.\]
+  设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\liml_{z\ra a}(z-a)f(z)=k$, 那么
+  \[\lim_{r\ra0}\oint_{|z-a|=r}f(z)\d z=2\pi ik.\]
 \end{example}
 
 \begin{proof}
-	$\forall \varepsilon>0,\exists\delta>0$ 使得当 $|z-a|<\delta$ 时, $|(z-a)f(z)-k|\le\varepsilon$.
-	当 $0<r<\delta$ 时,
-	\begin{align*}
-		 &\abs{\oint_{|z-a|=r}f(z)\diff z-2\pi i k}
-		=\abs{\oint_{|z-a|=r}\left[f(z)-\frac k{z-a}\right]\diff z}\\
-		=&\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\diff z}
-		\le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.
-	\end{align*}
-	由于 $\varepsilon$ 是任意的, 因此命题得证.
+  $\forall \varepsilon>0,\exists\delta>0$ 使得当 $|z-a|<\delta$ 时, $|(z-a)f(z)-k|\le\varepsilon$.
+  根据\thmref{定理}{thm:circle-integral}, $0<r<\delta$ 时,
+  \begin{align*}
+     &\abs{\oint_{|z-a|=r}f(z)\d z-2\pi i k}
+    =\abs{\oint_{|z-a|=r}\Bigl(f(z)-\frac k{z-a}\Bigr)\d z}\\
+    =&\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\d z}
+    \le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.
+  \end{align*}
+  于是命题得证.
 \end{proof}
 
+类似地, 若 $\liml_{z\to \infty} zf(z)=k$, 则
+\[
+  \lim_{R\ra+\infty}\oint_{|z|=R}f(z)\d z=2\pi ik.
+\]
+
+若将上述圆周换成圆弧, 则可类似得到小圆弧定理:
+\begin{theorem}[小圆弧定理]\label{thm:arc}
+  \begin{enumpar}
+    \item 设 $f(z)$ 在 $a$ 的一个去心邻域内有定义, 且 $\liml_{z\to a}(z-a)f(z)=k$.
+    设
+    \[
+      C_r: z=a+re^{i\theta},\quad \theta_1\le\theta\le\theta_2,
+    \]
+    那么
+    \[
+      \lim_{r\ra0}\oint_{C_r}f(z)\d z=ik(\theta_2-\theta_1).
+    \]
+    \item 设 $f(z)$ 在 $\infty$ 的一个去心邻域内有定义, 且 $\liml_{z\to\infty}zf(z)=k$.
+    设
+    \[
+      C_R: z=Re^{i\theta},\quad \theta_1\le\theta\le\theta_2,
+    \]
+    那么
+    \[
+      \lim_{R\ra+\infty}\oint_{C_R}f(z)\d z=ik(\theta_2-\theta_1).
+    \]
+  \end{enumpar}
+\end{theorem}
 
 
-\section{柯西-古萨基本定理和复合闭路定理}
+\section{柯西积分定理和复合闭路定理}
 
-\subsection{柯西-古萨基本定理}
+\subsection{柯西积分定理}
 
-观察下方的两条曲线 $C_1,C_2$.
-设 $C=C_1^-+C_2$.
-可以看出
-\[\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff
-\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.\]
-所以 $f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零.
+观察下方的两条曲线 $C_1,C_2$. 设 $C=C_1^-+C_2$. 可以看出
+\[
+  \int_{C_1}f(z)\d z=\int_{C_2}f(z)\d z\iff
+  \oint_Cf(z)\d z=\int_{C_2}f(z)\d z-\int_{C_1}f(z)\d z=0.
+\]
+所以 \alert{$f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零}.
 
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}
+    \draw
+      (-0.2,-0.2) node[main] {$z_0$}
+      (2.2,2.2) node[main] {$z$}
+      (0.2,1.8) node[second] {$C_1$}
+      (1.8,0.3) node[third] {$C_2$};
+    \draw[cstcurve,second,decoration={
+      markings,
+      mark=at position 0.55 with {\arrow{Stealth}}},
+      postaction={decorate}
+    ] (0,0) to[bend left=60] (2,2);
+    \draw[cstcurve,third,decoration={
+      markings,
+      mark=at position 0.45 with {\arrow{Stealth}}},
+      postaction={decorate}
+    ] (0,0) to[bend right=60] (2,2);
+    \draw[cstcurve,main,cstwla] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
+    \fill[cstdot,main] (0,0) circle;
+    \fill[cstdot,main] (2,2) circle;
+  \end{tikzpicture}
+  \caption{起点和终点相同的有向曲线}
+\end{figure}
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw
-			(-0.2,-0.2) node[second] {$z_0$}
-			(2.2,2.2) node[second] {$z$}
-			(0.2,1.8) node[main] {$C_1$}
-			(1.8,0.3) node[third] {$C_2$};
-		\draw[cstcurve,third] (2,2) arc(0:-90:2);
-		\draw[cstcurve,third,cstwra] ({2*cos(-50)},{2+2*sin(-50)}) arc(-50:-45:2);
-		\draw[cstcurve,main] (0,0) arc(180:90:2);
-		\draw[cstcurve,main,cstwra] ({2+2*cos(140)},{2*sin(140)}) arc(140:135:2);
-		\draw[cstcurve,second,cstwla] ({1+0.3*cos(135)},{1+0.3*sin(135)}) arc(135:-110:0.3);
-		\fill[cstdot,second] (0,0) circle;
-		\fill[cstdot,second] (2,2) circle;
-	\end{tikzpicture}
-\end{center}
-
-上一节中我们计算了 $f(z)=z,\Re z,\dfrac1{z-z_0}$ 的积分.
+上一节中我们计算了 $f(z)=z,\Re z,\frac1{z-z_0}$ 的积分.
 其中
-\begin{itemize}
-	\item $f(z)=z$ 处处解析, 积分只与起点终点有关 (闭路积分为零);
-	\item $f(z)=\dfrac1{z-z_0}$ 有奇点 $z_0$, 沿绕 $z_0$ 闭路的积分非零;
-	\item $f(z)=\Re z$ 处处不解析, 积分与路径有关 (闭路积分非零).
-\end{itemize}
+\begin{itempar}
+  \item $f(z)=z$ 处处解析, 积分只与起点终点有关 (闭路积分为零);
+  \item $f(z)=\frac1{z-z_0}$ 有奇点 $z_0$, 沿绕 $z_0$ 闭路的积分非零;
+  \item $f(z)=\Re z$ 处处不解析, 积分与路径有关 (闭路积分非零).
+\end{itempar}
 由此可见函数沿闭路积分为零,
 与函数在闭路内部是否解析有关.
 
 设 $C$ 是一条闭路, $D$ 是其内部区域.
 设 \alert{$f(z)$ 在闭区域 $\ov D=D\cup C$ 上解析},
 即存在区域 $B\supseteq\ov D$ 使得 $f(z)$ 在 $B$ 上解析.
-为了简便假设 $f'(z)$ 连续,
+为了简便, 我们假设 $f'(z)$ 连续,
 则
-\[\oint_Cf(z)\diff z=\oint_C(u\diff x-v\diff y)
-+i\oint_C(v\diff x+u\diff y).\]
-由格林公式和C-R方程可知
-\[\oint_Cf(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
-+i\iint_D(u_x-v_y)\diff x\diff y=0.\]
-也可以从
-\[\oint_Cf(z)\diff z=-\iint_D\pp f{\ov z}\diff z\diff \ov z=2i\iint_D\pp f{\ov z}\diff x\diff y=0
-\footnote{这是因为 \[\begin{vmatrix}
-	\dpp zx&\dpp zy\\
-	\dpp {\ov z}x&\dpp {\ov z}y
-\end{vmatrix}=\begin{vmatrix}
-	1&i\\
-	1&-i
-\end{vmatrix}=-2i.\]}\]
-看出.
+\[
+  \oint_Cf(z)\d z=\oint_C(u\d x-v\d y)+i\oint_C(v\d x+u\d y).
+\]
+由格林\footnote{
+  George Green (1793--1841), 英国数学物理学家.
+}公式和C-R方程可知
+\[
+  \oint_Cf(z)\d z=-\iint_D(v_x+u_y)\d x\d y+i\iint_D(u_x-v_y)\d x\d y=0.
+\]
 
-\begin{theorem}[柯西-古萨基本定理]
-设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+实际上, 上述条件可以减弱并得到:\footnote{
+  该定理又名\emph{柯西-古萨基本定理}. \'Edouard Goursat (1858--1936), 法国数学家. 他去掉了柯西证明该定理时要求 $f'(z)$ 连续的条件.
+  实际上该定理对任意\emph{可求长曲线}(即可通过黎曼积分得到其长度的曲线)均成立, 证明方式较多, 如 Pringsheim 证法、Beardon 证法、Artin 证法、Dixon 证法等等, 感兴趣的可阅读\cite{ZZ84,FH87,Ahl22}.
+}
+\begin{theorem}[柯西积分定理]\label{thm:Cauchy-Goursat}
+  设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则
+  \[
+    \oint_Cf(z)\d z=0.
+  \]
 \end{theorem}
 
+
+柯西积分定理是我们得到的关于复积分的第一个定性结果, 我们将从它出发得到复变函数的整个积分理论.
+
 \begin{corollary}
-设 $f(z)$ 在单连通域 $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线(可以不是闭路), 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线(可以不是闭路), 则
+\[
+  \oint_Cf(z)\d z=0.
+\]
 \end{corollary}
 
 这是因为即使不是简单曲线也可以拆分为一些简单曲线.
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw[cstcurve,main,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-		\draw[cstcurve,main,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-		\draw[cstcurve,second,cstwla,ultra thick] (1.05,0.35) arc (135:-135:0.5);
-		\draw[cstcurve,third,cstwla,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
-	\end{tikzpicture}
-\end{center}
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}
+    \draw[
+      cstcurve,
+      main,
+      domain=-45:45,
+      samples=100,
+      decoration={
+        markings,
+        mark=at position .3 with {
+          \arrowreversed{Straight Barb};
+        }
+      },
+      postaction={decorate}
+    ] plot ({sqrt(12*cos(2*\x))*cos(\x)},{sqrt(12*cos(2*\x))*sin(\x)});
+    \draw[
+      cstcurve,
+      main,
+      domain=-45:45,
+      samples=100,
+      decoration={
+        markings,
+        mark=at position .3 with {
+          \arrowreversed{Straight Barb};
+        }
+      },
+      postaction={decorate}
+    ] plot ({-sqrt(4*cos(2*\x))*cos(\x)},{sqrt(4*cos(2*\x))*sin(\x)});
+    \draw[cstcurve,second,cstwla,ultra thick] (1.5,0.35) arc (135:-135:0.5);
+    \draw[cstcurve,third,cstwla,ultra thick] (-0.9,-0.25) arc (315:45:0.3535);
+  \end{tikzpicture}
+  \caption{闭合曲线的分拆}
+\end{figure}
+
+
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=1}\frac1{2z-3}\diff z$.
+  求 $\displaystyle\oint_{|z+1|=2}\frac1{2z-3}\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
-	{因此由柯西-古萨基本定理 $\displaystyle \oint_{|z|=1}\frac1{2z-3}\diff z=0$.}
+  由于 $\dfrac1{2z-3}$ 在 $|z+1|\le 2$ 上解析,
+  因此由\thmCG,
+  \[
+    \oint_{|z+1|=2}\frac1{2z-3}\d z=0.
+  \]
+\end{solution}
+
+\begin{example}
+  求 $\displaystyle\oint_{|z|=2}\frac{e^z}{~\ov z~}\d z$.
+\end{example}
+\begin{solution}
+  注意到当 $|z|=2$ 时,
+  \[
+    \frac{e^z}{~\ov z~}=\frac14{ze^z}.
+  \]
+  由于 $\dfrac14ze^z$ 在 $|z|\le 2$ 上解析,
+  因此由\thmCG,
+  \[
+    \oint_{|z|=2}\frac{e^z}{\ov z}\d z
+    =\oint_{|z|=2}\frac14ze^z\d z=0.
+  \]
 \end{solution}
 
 \begin{exercise}
-	\begin{enumerate}
-		\item $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblank{}.
-		\item 求 $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblank{}.
-	\end{enumerate}
+  计算
+  \begin{subsubex}(2)
+    \item $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\d z$.
+    \item $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\d z$.
+  \end{subsubex}
 \end{exercise}
 
 \begin{example}
-	求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\half $.
+  求 $\displaystyle\oint_C\frac1{z(z^2+1)}\d z$, 其中 $C:|z-i|=\half $.
 \end{example}
 
 \begin{solution}
-	注意到 
-	\[\dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\left(\dfrac1{z+i}+\dfrac1{z-i}\right).\]
-	由于 $\dfrac1z,\dfrac1{z+i}$ 在 $|z-i|\le\dfrac12$ 上解析,因此由柯西-古萨基本定理
-		\[\oint_C\frac1z\diff z
-		=\oint_C\frac1{z+i}\diff z=0,\]
-		\[\oint_C\frac1{z(z^2+1)}\diff z
-		=-\half\oint_C\frac1{z-i}\diff z=-\pi i.\]
+  注意到 
+  \[
+    \dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\bigl(\dfrac1{z+i}+\dfrac1{z-i}\bigr).
+  \]
+  由于 $\dfrac1z,\dfrac1{z+i}$ 在 $|z-i|\le\dfrac12$ 上解析,因此由\thmCG
+  \[
+    \oint_C\frac1z\d z
+    =\oint_C\frac1{z+i}\d z=0,
+  \]
+  故
+  \[
+    \oint_C\frac1{z(z^2+1)}\d z
+    =-\half\oint_C\frac1{z-i}\d z=-\pi i.
+  \]
 \end{solution}
 
 
-\subsection{复合闭路定理}
+\subsection{复合闭路定理和连续变形定理}
 
 设 $C_0,C_1,\dots,C_n$ 是 $n+1$ 条简单闭曲线, $C_1,\dots,C_n$ 每一条都包含在其它闭路的外部, 而且它们都包含在 $C_0$ 的内部.
-这样它们围成了一个多连通区域 $D$, 它的边界称为一个\emph{复合闭路}
-\[C=C_0+C_1^-+\cdots+C_n^-.\]
+这样它们围成了一个有界多连通区域 $D$, 即 $C_0$ 的内部去掉其它闭路及内部.
+它的边界称为一个\noun{复合闭路}
+\[
+  C=C_0+C_1^-+\cdots+C_n^-.
+\]
 沿着 $C$ 前进的点, $D$ 总在它的左侧, 因此我们这样规定它的正方向.
 
-\begin{figure}[hbpt]
-	\centering
-	\begin{tikzpicture}
-		\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
-		\fill[cstcurve,white] (1,0) circle(0.6);
-		\fill[cstcurve,white] (-1,0) circle(0.6);
-		\draw[cstcurve,main] (0,0) circle(2.5 and 1.5);
-		\draw[cstcurve,main] (1,0) circle(0.6);
-		\draw[cstcurve,main] (-1,0) circle(0.6);
-		\draw[cstcurve,main,domain=85:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-		\draw[cstcurve,main,domain=135:140,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,main,domain=135:140,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw
-			(2,1.3) node[main] {$C_0$}
-			(-1,0.85) node[main] {$C_1^{-}$}
-			(1,0.85) node[main] {$C_2^{-}$};
-	\end{tikzpicture}
-	\caption{复合闭路围成的区域}
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}
+    \filldraw [
+      cstcurve,
+      main,
+      cstfill1,
+      decoration = {
+        markings,
+        mark = at position .25 with {
+          \arrow{Straight Barb};
+          \node[above right]{$C_0$};
+        },
+        mark = at position .68 with {
+          \coordinate (A1);
+        },
+        mark = at position .81 with {
+          \coordinate (A2);
+        }
+      },
+      postaction={decorate},
+      domain=0:360,
+      samples=500,
+    ] plot ({3*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.8*sin(\x)+.2*sin(2*\x)});
+    \filldraw [
+      xshift=-10mm,
+      cstcurve,
+      main,
+      fill=white,
+      decoration = {
+        markings,
+        mark = at position .25 with {
+          \arrow{Straight Barb};
+          \node[above right]{$C_1$};
+        },
+        mark = at position .75 with {
+          \coordinate (B1);
+        }
+      },
+      postaction={decorate},
+      domain=0:360,
+      samples=500,
+    ] plot ({.5*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {.7*sin(\x)+.1*sin(2*\x)});
+    \filldraw [
+      xshift=10mm,
+      cstcurve,
+      main,
+      fill=white,
+      decoration = {
+        markings,
+        mark = at position .25 with {
+          \arrow{Straight Barb};
+          \node[above right]{$C_2$};
+        },
+        mark = at position .75 with {
+          \coordinate (B2);
+        }
+      },
+      postaction={decorate},
+      domain=0:360,
+      samples=500,
+    ] plot ({.5*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {.7*sin(\x)+.1*sin(2*\x)});
+    \draw[cstcurve,second] (A1)--(B1)
+      node[pos=.5, second, right] {$\gamma_1$};
+    \draw[cstcurve,second] (A2)--(B2)
+      node[pos=.5, second, right] {$\gamma_2$};
+  \end{tikzpicture}
+  \caption{多条闭路围成的区域}
 \end{figure}
 
-\begin{theorem}{复合闭路定理}
-	设 $f(z)$ 在复合闭路 $C=C_0+C_1^-+\cdots+C_n^-$ 及其所围成的多连通区域内解析, 则
-	\[\oint_{C_0}f(z)\diff z=
-	\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
+\begin{theorem}[复合闭路定理]\label{thm:complex-closed-contour}
+  设 $D$ 是复合闭路 $C=C_0+C_1^-+\cdots+C_n^-$ 夹出的区域.
+  设 $f(z)$ 在 $C$ 上连续, $D$ 内解析, 则
+  \[
+    \oint_{C_0}f(z)\d z=
+    \oint_{C_1}f(z)\d z+\cdots+\oint_{C_n}f(z)\d z.
+  \]
 \end{theorem}
 
 \begin{proof}
-	以曲线 $\gamma_1,\gamma_2,\dots,\gamma_{n+1}$ 把 $C_0,C_1,\dots,C_n$ 连接起来, 则它们把区域 $D$ 分成了两个单连通域 $D_1,D_2$.
-	对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨基本定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,因此
-		\[\oint_{C_0}f(z)\diff z-
-	\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.\]于是定理得证.
+  如\ref{fig:two-simple-conntected} 所示, 以曲线 $\gamma_k$ 把 $C_0$ 和 $C_k$ 连接起来, 则 $D$ 去掉这些曲线 $\gamma_1,\dots,\gamma_n$ 之后得到单连通区域 $D'$.
+  对 $D'$ 的边界应用\thmCG{}, 并注意到 $\gamma_i$ 对应部分的积分正好相互抵消, 于是得到
+  \[
+    \oint_Cf(z)\d z=
+    \oint_{C_0}f(z)\d z+
+    \oint_{C_1^-}f(z)\d z+\cdots+\oint_{C_n^-}f(z)\d z=0.
+  \]
+  命题得证.
 \end{proof}
-\begin{center}
-	\begin{tikzpicture}
-		\fill[cstcurve,cstfill] (0,0) circle(2.5 and 1.5);
-		\fill[cstcurve,white] (1,0) circle(0.6);
-		\fill[cstcurve,white] (-1,0) circle(0.6);
 
-		\draw[cstcurve,main,domain=0:90,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-		\draw[cstcurve,main,domain=85:180] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-		\draw[cstcurve,second,domain=180:270,cstwra] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-		\draw[cstcurve,second,domain=265:360] plot ({2.5*cos(\x)}, {1.5*sin(\x)});
-
-		\draw[cstcurve,main,domain=0:140] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,main,domain=135:180,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,second,domain=180:320] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,second,domain=315:360,cstwla] plot ({1+0.6*cos(\x)}, {0.6*sin(\x)});
-
-		\draw[cstcurve,main,domain=0:140] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,main,domain=135:180,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,second,domain=180:320] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-		\draw[cstcurve,second,domain=315:360,cstwla] plot ({-1+0.6*cos(\x)}, {0.6*sin(\x)});
-
-		\draw
-			(2,1.3) node[main] {$C_0$}
-			(-1,0.85) node[main] {$C_1^-$}
-			(1,0.85) node[main] {$C_2^-$}
-			(-2,-0.3) node {$\gamma_1$}
-			(0,-0.3) node {$\gamma_2$}
-			(2,-0.3) node {$\gamma_3$};
-		\draw[cstcurve] (-2.5,0)--(-1.6,0);
-		\draw[cstcurve] (-0.4,0)--(0.4,0);
-		\draw[cstcurve] (1.6,0)--(2.5,0);
-		\draw[cstcurve,thick,main] (-2.5,0.025)--(-1.6,0.025);
-		\draw[cstcurve,thick,second] (-2.5,-0.025)--(-1.6,-0.025);
-		\draw[cstcurve,thick,main] (-0.4,0.025)--(0.4,0.025);
-		\draw[cstcurve,thick,second] (-0.4,-0.025)--(0.4,-0.025);
-		\draw[cstcurve,thick,main] (1.6,0.025)--(2.5,0.025);
-		\draw[cstcurve,thick,second] (1.6,-0.025)--(2.5,-0.025);
-	\end{tikzpicture}
-\end{center}
+这可看成是\thmCG{}定理在多连通情形的一个推广.
 
 在实际应用中, 如果被积函数 $f(z)$ 在闭路 $C$ 的内部有有限多个奇点 $z_1,\dots,z_k$.
-那么我们可以在 $C$ 内部构造闭路 $C_1,\dots,C_k$, 使得每个 $C_j$ 内部只包含一个奇点 $z_j$.
+那么我们可以在 $C$ 内部构造闭路 $C_1,\dots,C_k$, 使得每个 $C_j$ 内部只包含一个奇点 $z_j$, 见\ref{fig:seperate-singular-points}.
 这样, 内部含多个奇点的情形就可以化成内部只含一个奇点的情形. 最后将这些闭路上的积分相加即可.
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
-		\draw[cstcurve,second] (1,0) circle(0.4);
-		\draw[cstcurve,second] (0,0) circle(0.4);
-		\draw[cstcurve,second] (-1,0) circle(0.4);
-		\fill[cstdot,second] (1,0) circle;
-		\fill[cstdot,second] (0,0) circle;
-		\fill[cstdot,second] (-1,0) circle;
-		\draw
-			(-1,-0.25) node[second] {$z_1$}
-			(0,-0.25) node[second] {$z_2$}
-			(1,-0.25) node[second] {$z_3$}
-			(1.8,1.1) node[main] {$C_0$}
-			(-1,0.65) node[second] {$C_1$}
-			(0,0.65) node[second] {$C_2$}
-			(1,0.65) node[second] {$C_3$};
-	\end{tikzpicture}
-\end{center}
+\begin{figure}[!hbt]
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \filldraw [
+        cstcurve,
+        main,
+        cstfill1,
+        decoration = {
+          markings,
+          mark = at position .25 with {
+            \arrow{Straight Barb};
+            \node[above right]{$C_0$};
+          }
+        },
+        postaction={decorate},
+        domain=0:360,
+        samples=500,
+      ] plot ({3*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.8*sin(\x)+.2*sin(2*\x)});
+      \begin{scope}[xshift=-16mm]
+        \fill[cstdot,second] (0,0) circle
+          node[below] {$z_1$};
+        \draw [
+          cstcurve,
+          second,
+          decoration = {
+            markings,
+            mark = at position .25 with {
+              \arrow{Straight Barb};
+              \node[above right]{$C_1$};
+            }
+          },
+          postaction={decorate},
+          domain=0:360,
+          samples=500,
+        ] plot ({.5*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {.6*sin(\x)+.1*sin(2*\x)});
+      \end{scope}
+      \begin{scope}
+        \fill[cstdot,second] (0,0) circle
+          node[below] {$z_2$};
+        \draw [
+          cstcurve,
+          second,
+          decoration = {
+            markings,
+            mark = at position .25 with {
+              \arrow{Straight Barb};
+              \node[above right]{$C_2$};
+            }
+          },
+          postaction={decorate},
+          domain=0:360,
+          samples=500,
+        ] plot ({.5*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {.6*sin(\x)+.1*sin(2*\x)});
+      \end{scope}
+      \begin{scope}[xshift=16mm]
+        \fill[cstdot,second] (0,0) circle
+          node[below] {$z_3$};
+        \draw [
+          cstcurve,
+          second,
+          decoration = {
+            markings,
+            mark = at position .25 with {
+              \arrow{Straight Barb};
+              \node[above right]{$C_3$};
+            }
+          },
+          postaction={decorate},
+          domain=0:360,
+          samples=500,
+        ] plot ({.5*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {.6*sin(\x)+.1*sin(2*\x)});
+      \end{scope}
+    \end{tikzpicture}
+    \caption{分离闭路内的奇点}
+    \label{fig:seperate-singular-points}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw [
+        scale=.9,
+        cstcurve,
+        main,
+        decoration = {
+          markings,
+          mark = at position .28 with {
+            \arrow{Straight Barb};
+            \node[below]{$C_0$};
+          }
+        },
+        postaction={decorate},
+        domain=0:360,
+        samples=500,
+      ] plot ({1.1*cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1}, {1.1*sin(\x)+.1*sin(2*\x)});
+      \draw [
+        rotate=45,
+        cstcurve,
+        second,
+        decoration = {
+          markings,
+          mark = at position .95 with {
+            \arrow{Straight Barb};
+            \node[left]{$C$};
+          }
+        },
+        postaction={decorate},
+        domain=0:360,
+        samples=500,
+      ] plot ({2.7*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.2*sin(\x)+.2*sin(2*\x)});
+      \draw [
+        rotate=135,
+        cstcurve,
+        third,
+        decoration = {
+          markings,
+          mark = at position .93 with {
+            \arrow{Straight Barb};
+            \node[below]{$C'$};
+          }
+        },
+        postaction={decorate},
+        domain=0:360,
+        samples=500,
+      ] plot ({2.7*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.2*sin(\x)+.2*sin(2*\x)});
+      \fill[cstdot,second] (.7,0.2) circle;
+      \fill[cstdot,second] (0,-0.4) circle;
+      \fill[cstdot,second] (-.5,0.1) circle;
+    \end{tikzpicture}
+    \caption{闭路连续变形不改变积分值}
+    \label{fig:continuous-closed-path}
+  \end{minipage}
+\end{figure}
 
-此外, 从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
-因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
+从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\d z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意连续变形.
+如\ref{fig:continuous-closed-path} 所示, 我们总可选择一个包含这些奇点的闭路 $C_0$, 使得 $C_0$ 包含在 $C$ 及其变形后的闭路 $C'$ 内部. 这样它们的积分自然都和 $C_0$ 上的积分相同.
 
-\begin{center}
-	\begin{tikzpicture}
-		\draw[cstcurve,main] (0,0) circle(2.2 and 1.2);
-		\draw[cstcurve,third] (0,0) circle(1.2 and 2.2);
-		\draw[cstcurve,second] (0,0) circle(1);
-		\fill[cstdot,second] (.7,0.2) circle;
-		\fill[cstdot,second] (0,-0.4) circle;
-		\fill[cstdot,second] (-.5,0.1) circle;
-		\draw
-			(1.8,1.1) node[main] {$C_1$}
-			(-1.1,1.8) node[third] {$C_2$}
-			(-.4,0.65) node[second] {$C'$};
-	\end{tikzpicture}
-\end{center}
-
-\begin{example}
-	证明对于任意闭路 $C$, $\displaystyle\int_C(z-a)^n\diff z=0$, $n\neq -1$ 为整数.
-\end{example}
-
-\begin{proof}
-	如果 $a$ 不在 $C$ 的内部,则 $(z-a)^n$ 在 $C$ 及其内部解析.由柯西-古萨基本定理, $\displaystyle\int_C(z-a)^n\diff z=0$.
-
-	如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
-	由复合闭路定理以及上一节的结论
-		\[\int_C(z-a)^n\diff z=\int_{C_1}(z-a)^n\diff z=0.\qedhere\]
-\end{proof}
-
-同理, 由复合闭路定理和上一节的结论可知当 $a$ 在 $C$ 的内部且 $n=-1$ 时积分为 $2\pi i$.
-\begin{theorem}[幂函数沿闭路的积分]
-	当 $a$ 在 $C$ 的内部时,
-	\[\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
+\begin{theorem}\label{thm:continuous-transform}
+  若函数 $f(z)$ 在闭路 $C_1,C_2$ 上连续, 且在 $C_1,C_2$ 内部具有相同的奇点, 则
+  \[
+    \oint_{C_1}f(z)\d z=\oint_{C_2}f(z)\d z.
+  \]
 \end{theorem}
 
 \begin{example}
-	求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
+  证明: 对于闭路 $C$, 若 $a\notin C$, $n$ 为非零整数, 则 $\displaystyle\int_C(z-a)^{n+1}\d z=0$.
+\end{example}
+
+\begin{proof}
+  如果 $a$ 不在 $C$ 的内部,则 $(z-a)^{n+1}$ 在 $C$ 及其内部解析.
+  由\thmCG,
+  \[
+    \int_C(z-a)^{n+1}\d z=0.
+  \]
+
+  如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
+  由\thmCCC 和\thmref{定理}{thm:circle-integral},
+  \[
+    \int_C(z-a)^{n+1}\d z=\int_{C_1}(z-a)^{n+1}\d z=0.\qedhere
+  \]
+\end{proof}
+
+同理, 由\thmCCC 和\thmref{定理}{thm:circle-integral} 可知当 $a$ 在 $C$ 的内部且 $n=0$ 时, 积分为 $2\pi i$.
+
+\begin{theorem}\label{thm:closed-power-integral}
+  当 $a$ 在闭路 $C$ 的内部时,
+  \[
+    \oint_C\frac{\d z}{(z-a)^{n+1}}=\begin{cases}
+      2\pi i,&\text{若}\ n=0;\\
+      0,&\text{若}\ n\neq0.
+    \end{cases}
+  \]
+\end{theorem}
+
+\begin{example}
+  求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\d z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
 \end{example}
 \begin{center}
-	\begin{tikzpicture}
-		\draw[cstaxis] (-2.5,0)--(2.5,0);
-		\draw[cstaxis] (0,-1.5)--(0,1.5);
-		\draw[cstcurve,cstwra,main] (-1,-0.7)--(-0.5,-0.7);
-		\draw[cstcurve,cstwra,second] (-0.4,0) arc(180:225:0.4);
-		\draw[cstcurve,cstwra,second] (0.6,0) arc(180:225:0.4);
-		\draw[cstcurve,second] (0,0) circle (0.4);
-		\draw[cstcurve,second] (1,0) circle (0.4);
-		\fill[cstdot,third] (1,0) circle;
-		\fill[cstdot,third] (0,0) circle;
-		\draw[cstcurve,main] (-2,-0.7) rectangle (2,0.7);
-		\draw
-			(-0.6,0.4) node[second] {$C_1$}
-			(1.6,0.4) node[second] {$C_2$}
-			(-1,-0.5) node[main] {$\Gamma$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[cstaxis] (-2.5,0)--(2.5,0);
+    \draw[cstaxis] (0,-1.5)--(0,1.5);
+    \draw[cstcurve,second,
+      decoration={
+        markings,
+        mark=at position 0.2 with {
+          \arrow[rotate=-20]{Straight Barb};
+        },
+        mark=at position 0.35 with {
+          \node[left]{$C_1$};
+        }
+      },
+      postaction={decorate}
+    ] (0,0) circle (0.4);
+    \draw[
+      cstcurve,
+      second,
+      decoration={
+        markings,
+        mark=at position 0.2 with {
+          \arrow[rotate=-20]{Straight Barb};
+        },
+        mark=at position 0.15 with {
+          \node[right]{$C_2$};
+        }
+      },
+      postaction={decorate}
+    ] (1,0) circle (0.4);
+    \fill[cstdot,third] (1,0) circle;
+    \fill[cstdot,third] (0,0) circle;
+    \draw[
+      cstcurve,
+      main,
+      decoration={
+        markings,
+        mark=at position 0.2 with {
+          \arrowreversed{Straight Barb};
+          \node[below]{$\Gamma$};
+        }
+      },
+      postaction={decorate}
+    ] (-2,-1) rectangle (2,1);
+  \end{tikzpicture}
 \end{center}
 
 \begin{solution}
-	函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
-	设 $C_1,C_2$ 如图所示,由复合闭路定理
-	\begin{align*}
-			&\oint_\Gamma\frac{2z-1}{z^2-z}\diff z
-		=\oint_{C_1}\frac{2z-1}{z^2-z}\diff z+\oint_{C_2}\frac{2z-1}{z^2-z}\diff z\\
-		=&\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
-		+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z\\
-		=&2\pi i+0+0+2\pi i=4\pi i.
-	\end{align*}
+  函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
+  设 $C_1,C_2$ 如图所示, 由\thmCCC 和\thmref{定理}{thm:closed-power-integral},
+  \begin{align*}
+     &\oint_\Gamma\frac{2z-1}{z^2-z}\d z
+    =\oint_{C_1}\frac{2z-1}{z^2-z}\d z+\oint_{C_2}\frac{2z-1}{z^2-z}\d z\\
+    =&\oint_{C_1}\frac1z\d z+\oint_{C_1}\frac1{z-1}\d z+\oint_{C_2}\frac1z\d z+\oint_{C_2}\frac1{z-1}\d z\\
+    =&2\pi i+0+0+2\pi i=4\pi i.
+  \end{align*}
 \end{solution}
 
 \begin{example}
-	求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
+  求 $\displaystyle\int_\Gamma\frac{e^z}z\d z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
 \end{example}
 
 \begin{center}
-	\begin{tikzpicture}
-		\filldraw[cstcurve,main,cstfill] (0,0) circle (1.5);
-		\draw[cstcurve,main,cstwla] (-1.06,1.06) arc(135:90:1.5);
-		\filldraw[cstcurve,second,fill=white] (0,0) circle (0.75);
-		\draw[cstcurve,second,cstwra] (-0.75,0) arc(180:130:0.75);
-		\draw
-			(-1.6,0.8) node[main] {$C_1$}
-			(0.8,-0.7) node[second] {$C_2^-$};
-		\draw[cstaxis] (-1.8,0)--(1.8,0);
-		\draw[cstaxis] (0,-1.8)--(0,1.8);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \filldraw[
+      cstcurve,
+      main,
+      cstfill,
+      decoration={
+        markings,
+        mark=at position 0.33 with {
+          \arrow{Straight Barb};
+          \node[above left]{$C_1$};
+        }
+      },
+      postaction={decorate}
+    ] (0,0) circle (1.5);
+    \filldraw[
+      cstcurve,
+      second,
+      fill=white,
+      decoration={
+        markings,
+        mark=at position 0.8 with {
+          \arrowreversed{Straight Barb};
+          \node[below right]{$C_2^-$};
+        }
+      },
+      postaction={decorate}
+    ] (0,0) circle (0.75);
+    \draw[cstaxis] (-2,0)--(2,0);
+    \draw[cstaxis] (0,-2)--(0,2);
+  \end{tikzpicture}
 \end{center}
 
 \begin{solution}
-	函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
-	由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{e^z}z\diff z=0$.
+  函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
+  由\thmCCC 可知
+  \[
+    \int_\Gamma\frac{e^z}z\d z=0.
+  \]
 \end{solution}
 
+最后我们来看有理函数绕闭路积分的一个结论.
+\begin{example}
+  设 $f(z)=\dfrac{p(z)}{q(z)}$ 是一个有理函数, 其中 $p,q$ 的次数分别是 $m,n$.
+  设 $f(z)$ 的所有奇点都在闭路 $C$ 的内部. 证明:
+  \[
+    \oint_Cf(z)\d z=\begin{cases}
+      0,&\text{若}\ n-m\ge 2;\\
+      2\pi i a/b,&\text{若}\ n-m=1,
+    \end{cases}
+  \]
+  其中 $a,b$ 分别是 $p(z),q(z)$ 的最高次项系数.
+\end{example}
+
+\begin{proof}
+  设 $C_R:|z|=R$. 注意到
+  \[
+    \lim_{z\to\infty} zf(z)=\begin{cases}
+      0,&\text{若}\ n-m\ge 2;\\
+      a/b,&\text{若}\ n-m=1,
+    \end{cases}
+  \]
+  于是由\thmSA 可知
+  \[
+    \lim_{R\to+\infty}\oint_{C_R} f(z)\d z=\begin{cases}
+      0,&\text{若}\ n-m\ge 2;\\
+      2\pi i a/b,&\text{若}\ n-m=1.
+    \end{cases}
+  \]
+  由\thmCCC 可知, 当 $R$ 充分大使得 $f(z)$ 的所有奇点都在 $C_R$ 的内部时,
+  \[
+    \oint_Cf(z)\d z=\oint_{C_R} f(z)\d z.
+  \]
+  恒成立, 由此命题得证.
+\end{proof}
+
+注意闭路 $C$ 内部必须包含 $f(z)$ 的所有奇点上述结论方可成立.
+若 $m\ge n$, 则我们可将 $f(z)$ 写成一个多项式和上述形式有理函数之和.
+
+\begin{exercise}
+  计算 $\displaystyle\oint_{|z|=2}\frac{z^2}{(2z+1)(z^2+1)}$.
+\end{exercise}
 
 
 \section{原函数和不定积分}
@@ -630,298 +1064,427 @@
 \subsection{原函数}
 
 设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
-由柯西-古萨基本定理可知, 积分 $\displaystyle\int_Cf(\zeta)\diff \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
-因此我们也将其记为 $\displaystyle\int_{z_0}^zf(\zeta)\diff\zeta$.
+由\thmCG{}可知, 积分 $\displaystyle\int_Cf(\zeta)\d \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
+因此我们也将其记为 \noun{$\displaystyle\int_{z_0}^zf(\zeta)\d\zeta$}.
 对于任意固定的 $z_0\in D$, 函数
-\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta\]
+\[
+  F(z)=\int_{z_0}^zf(\zeta)\d\zeta
+\]
 定义了一个单值函数.
 
-\begin{theorem}[原函数的存在性]
-	$F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
+\begin{theorem}\label{thm:primitive-function}
+  $F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 \end{theorem}
 
-\begin{proof}
-	以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
-	取 $|\Delta z|$ 小于 $K$ 的半径.那么
-	\[F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
-	=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.\]
-
-	容易知道
-	\[\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.\]我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
-	由于 $f(z)$ 解析, 因此连续.
-	$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.当 $|\Delta z|<\delta$ 时, 由长大不等式
-		\begin{align*}
-		\abs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
-		&{=\abs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\diff \zeta}}\\
-		&{\le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|=\varepsilon.}
-		\end{align*}
-	由于 $\varepsilon$ 是任意的, 因此
-	\[f(z)=\lim_{\Delta z\ra 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]
-\end{proof}
-
 \begin{center}
-	\begin{tikzpicture}
-		\fill[cstcurve,main,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
-		\draw[cstcurve,main] (0,0) circle(0.7);
-		\draw[cstcurve,second] (-2,0)to [bend left](0,0);
-		\draw[cstcurve,second] (0,0)--(0.4,0.4);
-		\fill[cstdot,second] (-2,0) circle;
-		\fill[cstdot,second] (0,0) circle;
-		\fill[cstdot,second] (0.4,0.4) circle;
-		\draw
-			(-2,-0.3) node[second] {$z_0$}
-			(0,-0.3) node[second] {$z$}
-			(1.1,0.7) node[second] {$z+\Delta z$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \fill [
+      xshift=-2mm,
+      cstfill,
+      domain=0:360,
+      samples=500
+    ] plot ({2.8*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.6*sin(\x)+.2*sin(2*\x)});
+    \coordinate (z0) at (-2,0);
+    \coordinate (z) at (0,0);
+    \coordinate (zDz) at (.4,.4);
+    \draw[cstcurve,main] (z) circle(0.7);
+    \draw[cstcurve,second] (z0)to [bend left](z);
+    \draw[cstcurve,second] (z)--(zDz);
+    \fill[cstdot,second] (z0) circle
+      node[below] {$z_0$};
+    \fill[cstdot,second] (z) circle
+      node[below] {$z$};
+    \fill[cstdot,second] (zDz) circle
+      node[above right] {$z+\Delta z$};
+  \end{tikzpicture}
 \end{center}
+
+\begin{proof}
+  以 $z$ 为中心作一包含在 $D$ 内的圆 $K$, 取 $|\Delta z|$ 小于 $K$ 的半径.
+  那么
+  \[
+     F(z+\Delta z)-F(z)
+    =\int_{z_0}^{z+\Delta z}f(\zeta)\d\zeta-\int_{z_0}^zf(\zeta)\d\zeta
+    =\int_z^{z+\Delta z}f(\zeta)\d\zeta.
+  \]
+
+  容易知道
+  \[
+     \int_z^{z+\Delta z}f(z)\d\zeta
+    =f(z)\int_z^{z+\Delta z}\d\zeta=f(z)\Delta z.
+  \]
+  我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线段.
+  由 $f(z)$ 解析可知它连续, 因此 $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.
+  当 $|\Delta z|<\delta$ 时, 由\thmGrowUp 可知
+  \[
+     \abs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
+    =\abs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\d \zeta}
+    \le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|
+    =\varepsilon.
+  \]
+  由于 $\varepsilon$ 是任意的, 因此
+  \[
+    f(z)=\lim_{\Delta z\ra 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere
+  \]
+\end{proof}
 
 
 \subsection{牛顿-莱布尼兹定理}
 
 \begin{theorem}[牛顿-莱布尼兹定理]
-	设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
-	\begin{equation}
-		\int_{z_1}^{z_2}f(z)\diff z=F(z_1)-F(z_2),\quad\text{其中}\quad F'(z)=f(z).
-	\end{equation}
+  设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
+  \[
+    \int_{z_1}^{z_2}f(z)\d z=F(z_1)-F(z_2),
+  \]
+  其中 $F'(z)=f(z)$.
 \end{theorem}
 
-如果 $D$ 上的解析函数 $G(z)$ 满足 $G'(z)=f(z)$, 则称 $G(z)$ 是 $f(z)$ 的一个\emph{原函数}.
-由于导函数为 $0$ 的解析函数只能是常值函数,
-因此 $\displaystyle G(z)=\int_{z_0}^zf(z)\diff z+C$.
-我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\displaystyle\int f(z)\diff z$}.
+如果 $D$ 上的解析函数 $G(z)$ 满足 $G'(z)=f(z)$, 则称 $G(z)$ 是 $f(z)$ 的一个\noun{原函数}.
+在\thmref{例}{exam:zero-deriv-constant} 中我们知道导函数为 $0$ 的函数只能是常值函数, 因此
+\[
+  G(z)=\int_{z_0}^zf(z)\d z+C,
+\]
+称之为 $f(z)$ 的\noun{不定积分}, 记为 \noun{$\displaystyle\int f(z)\d z$}.
 
 复变函数和实变函数的牛顿-莱布尼兹定理的差异在哪呢?
 复变情形要求是\alert{单连通区域上解析函数}, 实变情形要求是\alert{闭区间上连续函数}.
 
 \begin{example}
-	求 $\displaystyle\int_{z_0}^{z_1}z\diff z$.
+  计算 $\displaystyle\int_{z_0}^{z_1}z\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $f(z)=z$ 处处解析, 且 $\displaystyle\int z\diff z=\half  z^2+C$, 因此
-	\[\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).\]
+  由于 $f(z)=z$ 处处解析, 且
+  \[
+    \int z\d z=\half  z^2+C,
+  \]
+  因此
+  \[
+    \int_{z_0}^{z_1}z\d z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
+  \]
 \end{solution}
-因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 无论从 $0$ 到 $3+4i$ 的路径如何.
+
+该结论解释了\thmref{例}{exam:integral-z} 中为何 $z$ 的积分与路径无关, 总等于
+\[
+  \int_0^{3+4i}z\d z=-\frac72+12i.
+\]
 
 \begin{example}
-	求 $\displaystyle\int_0^{\pi i}z\cos z^2\diff z$.
+  计算 $\displaystyle\int_0^{\pi i}z\cos z^2\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $f(z)=z\cos z^2$ 处处解析, 且
-	\[\int z\cos z^2\diff z=\half\int \cos z^2\diff z^2=\half\sin z^2+C,\]
-	因此
-	\[\int_0^{\pi i}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi i}=-\half\sin \pi^2.\]
+  由于 $f(z)=z\cos z^2$ 处处解析, 且
+  \[\int z\cos z^2\d z=\half\int \cos z^2\d z^2=\half\sin z^2+C,\]
+  因此
+  \[\int_0^{\pi i}z\cos z^2\d z=\half\sin z^2\big|_0^{\pi i}=-\half\sin \pi^2.\]
 \end{solution}
 
 这里我们使用了\alert{凑微分法}.
 
 \begin{example}
-	求 $\displaystyle\int_0^i z\cos z\diff z$.
+  计算 $\displaystyle\int_0^i z\cos z\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $f(z)=z\cos z$ 处处解析,
-	{且
-		\[\int z\cos z\diff z
-		=\int z\diff(\sin z)
-		=z\sin z-\int \sin z\diff z
-		{=z\sin z+\cos z+C,}\]因此
-		\[\int_0^i z\cos z\diff z
-		=(z\sin z+\cos z)\big|_0^i
-		{=i\sin i+\cos i-1=e^{-1}-1.}
-		\]}
+  由于 $f(z)=z\cos z$ 处处解析, 且
+  \[
+     \int z\cos z\d z
+    =\int z\d(\sin z)
+    =z\sin z-\int \sin z\d z
+    =z\sin z+\cos z+C,
+  \]
+  因此
+  \[
+     \int_0^i z\cos z\d z
+    =(z\sin z+\cos z)\big|_0^i
+    =i\sin i+\cos i-1=e^{-1}-1.
+  \]
 \end{solution}
 
 这里我们使用了\alert{分部积分法}.
 
 \begin{example}
-	求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
+  计算 $\displaystyle\int_1^{1+i} z e^z\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $f(z)=ze^z$ 处处解析,
-	{且
-	\[\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+c,\]因此
-
-		\begin{align*}
-		\int_1^{1+i} z e^z\diff z&=(z-1)e^z\big|_1^{1+i}\\
-		&{=ie^{1+i}=e(-\sin 1+i\cos 1).}
-		\end{align*}}
+  由于 $f(z)=ze^z$ 处处解析, 且
+  \[
+    \int z e^z\d z=\int z\d e^z=ze^z-\int e^z\d z=(z-1)e^z+c,
+  \]
+  因此
+  \[
+     \int_1^{1+i} z e^z\d z
+    =(z-1)e^z\big|_1^{1+i}
+    =ie^{1+i}
+    =e(-\sin 1+i\cos 1).
+  \]
 \end{solution}
 
 \begin{exercise}
-	求 $\displaystyle\int_0^1 z\sin z\diff z=$\fillblank[4cm]{{$\sin 1-\cos 1$}}.
+  计算 $\displaystyle\int_0^1 z\sin z\d z$.
 \end{exercise}
-\begin{example}
-	求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
-	$\displaystyle\begin{cases}
-	x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
-	\end{cases} 0\le \theta\le 2\pi.$
 
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis](0,0)--(5,0);
-			\draw[cstaxis](0,0)--(0,1.8);
-			\draw[cstcurve,main,smooth,domain=0:360] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
-			\draw[cstcurve,second] (0,0.7) circle (0.7);
-			\fill[cstdot,main] (0,0) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*60)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*120)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*180)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*240)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*300)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
-			\draw[cstcurve,second] ({0.7*(pi/180*360)},0.7) circle (0.7);
-			\fill[cstdot,main] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
-		\end{tikzpicture}
-	\end{center}
+\begin{example}
+  计算 $\displaystyle\int_C(2z^2+8z+1)\d z$, 其中 $C$ 是摆线
+  \[
+    \begin{cases}
+      x=a(\theta-\sin\theta),& \\
+      y=a(1-\cos\theta),&
+    \end{cases}
+    \quad 0\le \theta\le 2\pi.
+  \]
+\end{example}
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[cstaxis](0,0)--(6,0);
+    \draw[cstaxis](0,0)--(0,2);
+    \draw[cstcurve,main,smooth,domain=0:360] plot ({0.7*(pi/180*\x-sin(\x))}, {0.7*(1-cos(\x))});
+    \draw[cstcurve,second] (0,0.7) circle (0.7);
+    \fill[cstdot,main] (0,0) circle;
+    % \draw[cstcurve,second] ({0.7*(pi/180*60)},0.7) circle (0.7);
+    % \fill[cstdot,main] ({0.7*(pi/180*60-sin(60))},{0.7*(1-cos(60))}) circle;
+    \draw[cstcurve,second] ({0.7*(pi/180*120)},0.7) circle (0.7);
+    \fill[cstdot,main] ({0.7*(pi/180*120-sin(120))},{0.7*(1-cos(120))}) circle;
+    % \draw[cstcurve,second] ({0.7*(pi/180*180)},0.7) circle (0.7);
+    % \fill[cstdot,main] ({0.7*(pi/180*180-sin(180))},{0.7*(1-cos(180))}) circle;
+    \draw[cstcurve,second] ({0.7*(pi/180*240)},0.7) circle (0.7);
+    \fill[cstdot,main] ({0.7*(pi/180*240-sin(240))},{0.7*(1-cos(240))}) circle;
+    % \draw[cstcurve,second] ({0.7*(pi/180*300)},0.7) circle (0.7);
+    % \fill[cstdot,main] ({0.7*(pi/180*300-sin(300))},{0.7*(1-cos(300))}) circle;
+    \draw[cstcurve,second] ({0.7*(pi/180*360)},0.7) circle (0.7);
+    \fill[cstdot,main] ({0.7*(pi/180*360-sin(360))},{0.7*(1-cos(360))}) circle;
+  \end{tikzpicture}
+\end{center}
+
+\begin{solution}
+  由于 $f(z)=2z^2+8z+1$ 处处解析, 因此
+  \begin{align*}
+     &\int_C(2z^2+8z+1)\d z=\int_0^{2\pi a}(2z^2+8z+1)\d z\\
+    =&\bigl(\frac23z^3+4z^2+z\bigr)\bigg|_0^{2\pi a}
+    =\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.
+  \end{align*}
+\end{solution}
+
+该积分与摆线方程其实并无关系, 切勿被题干所误导.
+
+\begin{example}
+  设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $f(z)=2z^2+8z+1$ 处处解析, 因此
-		\begin{align*}
-		&\int_C(2z^2+8z+1)\diff z=\int_0^{2\pi a}(2z^2+8z+1)\diff z\\
-		=&\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.
-		\end{align*}
+  函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
+  \[
+     \int\frac{\ln(z+1)}{z+1}\d z
+    =\int\ln(z+1)\d[\ln(z+1)]=\half\ln^2(z+1)+c.
+  \]
+  因此
+  \begin{align*}
+  &\int_C\frac{\ln(z+1)}{z+1}\d z=\half\ln^2(z+1)\big|_1^i
+    =\half\bigl[\ln^2(1+i)-\ln^22\bigr]\\
+  =&\half\bigl[\bigl(\ln\sqrt2+\frac\pi4i\bigr)^2-\ln^22\bigr]
+    =-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.
+  \end{align*}
 \end{solution}
 
 \begin{example}
-	设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
+  设
+  \[
+    C: z=a+re^{i\theta}, \quad -\pi<\theta_1<\theta<\theta_2<\pi,
+  \]
+  $n$ 是整数, 求 $\displaystyle\int_C \dfrac1{z-a}\d z$.
 \end{example}
 
 \begin{solution}
-	函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在 $\Re z\le -1$ 外的单连通区域解析.
-	\[\int\frac{\ln(z+1)}{z+1}\diff z
-	=\int\ln(z+1)\diff[\ln(z+1)]=\half\ln^2(z+1)+c.\]
-	因此
-	\begin{align*}
-	&\int_C\frac{\ln(z+1)}{z+1}\diff z=\half\ln^2(z+1)\big|_1^i
-		=\half\left[\ln^2(1+i)-\ln^22\right]\\
-	=&\half\left[\left(\ln\sqrt2+\frac\pi4i\right)^2-\ln^22\right]
-		=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.
-	\end{align*}
+  注意到 $f(z)=\dfrac1{z-a}$ 在 $\Re(z-a)\le0$ 外的单连通区域解析, 且 $\ln(z-a)$ 是它的原函数.
+  因此
+  \[
+     \int_C f(z)\d z
+    =\ln z\Big|_{a+re^{i\theta_1}}^{a+re^{i\theta_2}}
+    =(\theta_2-\theta_1)i.
+  \]
 \end{solution}
+
+不难说明, 当 $\theta_1\ra -\pi^+,\theta_2\ra \pi^-$ 时, 该积分的极限是
+\[
+  \oint_{|z-a|=r}f(z)\d z=2\pi i.
+\]
+而 $\dfrac1{(z-a)^{n+1}}$ 的原函数 $-\dfrac1{n(z-a)^n}$ 在 $z=a-r$ 处连续, 类似可知
+\[
+  \oint_{|z-a|=r}\dfrac1{(z-a)^{n+1}}\d z=0.
+\]
+这样, 我们便从另一个角度解释了\thmref{定理}{thm:circle-integral}.
+
 
 \section{柯西积分公式}
 
 \subsection{柯西积分公式}
 
-柯西-古萨基本定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
+\thmCG{}是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
 
-\begin{theorem}{柯西积分公式}
-	设
-	\begin{itemize}
-		\item 函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析,
-		\item $z_0\in D$,
-	\end{itemize}
-	则
-		\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z.\]
+\begin{theorem}[柯西积分公式]\label{thm:Cauchy-integral}
+  设函数 $f(z)$ 在闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
+  \[
+    f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\d z.
+  \]
 \end{theorem}
 
-如果 $z_0\notin D$, 由柯西-古萨基本定理, 右侧的积分是 $0$.
+如果 $z_0\notin \ov D$, 由\thmCG{}可知右侧积分是 $0$.
 
 解析函数可以用一个积分
-\[f(z)=\frac1{2\pi i}\oint_C\frac{f(\zeta)}{\zeta-z}\diff\zeta,\quad z\in D\]
+\[
+  f(z)=\frac1{2\pi i}\oint_C\frac{f(\zeta)}{\zeta-z}\d\zeta,\quad z\in D
+\]
 来表示, 这是研究解析函数理论的强有力工具.
 
 解析函数在闭路 $C$ 内部的取值完全由它在 $C$ 上的值所确定. 这也是解析函数的特征之一.
 特别地, 解析函数在圆心处的值等于它在圆周上的平均值.
-设 $z=z_0+Re^{i\theta}$, 则 $\diff z=iRe^{i\theta}\diff\theta$,
-\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z=\frac1{2\pi}\int_0^{2\pi}f(z_0+Re^{i\theta})\diff\theta.\]
+设 $z=z_0+Re^{i\theta}$, 则 $\d z=iRe^{i\theta}\d\theta$,
+\[
+  f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\d z=\frac1{2\pi}\int_0^{2\pi}f(z_0+Re^{i\theta})\d\theta.
+\]
 
 \begin{proof}
-	由连续性可知, $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|z-z_0|\le\delta$ 时, $z\in D$ 且 $|f(z)-f(z_0)|<\varepsilon$.
-	设 $\Gamma:|z-z_0|=\delta$,则
-	\begin{align*}
-		&\abs{\oint_C\frac{f(z)}{z-z_0}\diff z-2\pi i f(z_0)}
-		\xeq{\text{复合闭路定理}}\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\diff z-2\pi i f(z_0)}\\
-		=&\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\diff z-\oint_\Gamma\frac{f(z_0)}{z-z_0}\diff z}
-		=\abs{\oint_\Gamma\frac{f(z)-f(z_0)}{z-z_0}\diff z}\\
-		\le&\frac\varepsilon \delta\cdot 2\pi \delta=2\pi \varepsilon.
-	\end{align*}
-	由 $\varepsilon$ 的任意性可知 
-	$\displaystyle\oint_C\frac{f(z)}{z-z_0}\diff z=2\pi i f(z_0)$.
+  由连续性可知, $\forall\varepsilon>0,\exists\delta>0$ 使得当 $|z-z_0|\le\delta$ 时, $z\in D$ 且 $|f(z)-f(z_0)|<\varepsilon$.
+  设 $\Gamma:|z-z_0|=\delta$, 则由\thmCCC、\thmref{定理}{thm:closed-power-integral}和\thmGrowUp 可知
+  \begin{align*}
+    &\abs{\oint_C\frac{f(z)}{z-z_0}\d z-2\pi i f(z_0)}
+    =\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-2\pi i f(z_0)}\\
+    =&\abs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-\oint_\Gamma\frac{f(z_0)}{z-z_0}\d z}
+    =\abs{\oint_\Gamma\frac{f(z)-f(z_0)}{z-z_0}\d z}\\
+    \le&\frac\varepsilon \delta\cdot 2\pi \delta=2\pi \varepsilon.
+  \end{align*}
+  由 $\varepsilon$ 的任意性可知 
+  $\displaystyle\oint_C\frac{f(z)}{z-z_0}\d z=2\pi i f(z_0)$.
 \end{proof}
 
 从柯西积分公式可以看出, 被积函数分子解析而分母形如 $z-z_0$ 时, 绕闭路的积分可以使用该公式计算.
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=4}\frac{\sin z}z\diff z$.
+  计算 $\displaystyle\oint_{|z|=4}\frac{\sin z}z\d z$.
 \end{example}
 
 \begin{solution}
-	函数 $\sin z$ 处处解析.
-	{取 $f(z)=\sin z, z_0=0$ 并应用柯西积分公式得
-		\[\oint_{|z|=4}\frac{\sin z}z\diff z
-		=2\pi i \sin z|_{z=0}=0.\]}
+  函数 $\sin z$ 处处解析.
+  取 $f(z)=\sin z, z_0=0$ 并应用\thmCI{}得
+  \[
+    \oint_{|z|=4}\frac{\sin z}z\d z
+    =2\pi i \sin z|_{z=0}=0.
+  \]
 \end{solution}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=2}\frac{e^z}{z-1}\diff z$.
+  计算 $\displaystyle\oint_{|z|=2}\frac{z^2e^z}{z-1}\d z$.
 \end{example}
 
 \begin{solution}
-	由于函数 $e^z$ 处处解析,
-	{取 $f(z)=e^z, z_0=1$ 并应用柯西积分公式得
-		\[\oint_{|z|=2}\frac{e^z}{z-1}\diff z
-		=2\pi i e^z|_{z=1}=2\pi ei.\]}
+  由于函数 $z^2e^z$ 处处解析,
+  取 $f(z)=z^2e^z, z_0=1$ 并应用\thmCI{}得
+  \[
+    \oint_{|z|=2}\frac{z^2e^z}{z-1}\d z
+    =2\pi i z^2e^z|_{z=1}=2\pi ei.
+  \]
 \end{solution}
 
 \begin{exercise}
-	求 $\displaystyle\oint_{|z|=2\pi}\frac{\cos z}{z-\pi}\diff z=$\fillblank{{$-2\pi i$}}.
+  计算 $\displaystyle\oint_{|z|=2\pi}\frac{\cos z}{z-\pi}\d z$.
 \end{exercise}
 
 \begin{example}
-	设 $f(z)=\displaystyle\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta$, 求 $f'(1+i)$.
+  设
+  \[
+    f(z)=\displaystyle\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta,
+  \]
+  求 $f'(1+i)$.
 \end{example}
 
 \begin{solution}
-	当 $|z|<\sqrt3$ 时,由柯西积分公式得
-	\[
-		f(z)=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta
-		{=2\pi i(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi i(3z^2+7z+1).}
-	\]
-	{因此 $f'(z)=2\pi i(6z+7)$,
-		\[f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.\]}
+  当 $|z|<\sqrt3$ 时,由\thmCI{}得
+  \[
+    f(z)=\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta
+    {=2\pi i(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi i(3z^2+7z+1).}
+  \]
+  因此
+  \[
+    f'(z)=2\pi i(6z+7),
+  \]
+  \[
+    f'(1+i)=2\pi i(13+6i)=-12\pi+26\pi i.
+  \]
 \end{solution}
 注意当 $|z|>\sqrt3$ 时, $f(z)\equiv0$.
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z$.
+  求 $\displaystyle\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\d z$.
 \end{example}
 
 \begin{solution}
-	被积函数的奇点为 $0,\pm1$.
-	设 $C_1,C_2,C_3$ 分别为绕 $0,1,-1$ 的分离圆周.由复合闭路定理和柯西积分公式
-	\begin{align*}
-		&\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\diff z
-		 =\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\diff z\\
-		=&2\pi i\left[\frac{e^z}{z^2-1}\bigg|_{z=0}+\frac{e^z}{z(z+1)}\bigg|_{z=1}+\frac{e^z}{z(z-1)}\bigg|_{z=-1}\right]\\
-		=&2\pi i\left(-1+\frac e2+\frac{e^{-1}}2\right)=\pi i(e+e^{-1}-2).
-	\end{align*}
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[cstaxis] (-2.1,0)--(2.1,0);
-			\draw[cstaxis] (0,-2)--(0,2.1);
-			\draw[cstcurve,second] (0,0) circle (1.8);
-			\draw[cstcurve,main] (1.2,0) circle(0.5);
-			\draw[cstcurve,main] (-1.2,0) circle(0.5);
-			\draw[cstcurve,main] (0,0) circle(0.5);
-			\fill[cstdot,second] (0,0) circle;
-			\fill[cstdot,second] (1.2,0) circle;
-			\fill[cstdot,second] (-1.2,0) circle;
-			\draw
-				(1.6,1.6) node[second] {$C$}
-				(-0.4,0.8) node[main] {$C_1$}
-				(1.2,-.8) node[main] {$C_2$}
-				(-1.2,-.8) node[main] {$C_3$};
-		\end{tikzpicture}
-	\end{center}
+  被积函数的奇点为 $0,\pm1$.
+  设 $C_1,C_2,C_3$ 分别为绕 $0,1,-1$ 的分离圆周.
+  由\thmCCC 和\thmCI,
+  \begin{align*}
+    &\oint_{|z|=3}\frac{e^z}{z(z^2-1)}\d z
+     =\oint_{C_1+C_2+C_3}\frac{e^z}{z(z^2-1)}\d z\\
+    =&2\pi i\Bigl(\frac{e^z}{z^2-1}\Big|_{z=0}+\frac{e^z}{z(z+1)}\Big|_{z=1}+\frac{e^z}{z(z-1)}\Big|_{z=-1}\Bigr)\\
+    =&2\pi i\bigl(-1+\frac e2+\frac{e^{-1}}2\bigr)=\pi i(e+e^{-1}-2).
+  \end{align*}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[cstaxis] (-2.5,0)--(2.5,0);
+      \draw[cstaxis] (0,-2.5)--(0,2.5);
+      \draw[
+        cstcurve,
+        second,
+        decoration={
+          markings,
+          mark=at position 0.12 with {
+            \node[above]{$C$};
+          }
+        },
+        postaction={decorate}
+      ] (0,0) circle (1.8);
+      \draw[
+        cstcurve,
+        main,
+        decoration={
+          markings,
+          mark=at position 0.7 with {
+            \node[below]{$C_2$};
+          }
+        },
+        postaction={decorate}
+      ] (1.2,0) circle(0.5);
+      \draw[
+        cstcurve,
+        main,
+        decoration={
+          markings,
+          mark=at position 0.8 with {
+            \node[below]{$C_3$};
+          }
+        },
+        postaction={decorate}
+      ] (-1.2,0) circle(0.5);
+      \draw[
+        cstcurve,
+        main,
+        decoration={
+          markings,
+          mark=at position 0.15 with {
+            \node[above]{$C_1$};
+          }
+        },
+        postaction={decorate}
+      ] (0,0) circle(0.5);
+      \begin{scope}[cstdot,second]
+        \fill (0,0) circle;
+        \fill (1.2,0) circle;
+        \fill (-1.2,0) circle;
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
 \end{solution}
 
 \subsection{高阶导数的柯西积分公式}
@@ -929,131 +1492,173 @@
 解析函数可以由它的积分所表示.
 不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
 
-\begin{theorem}{柯西积分公式}
-	设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
-	\[f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.\]
+\begin{theorem}[柯西积分公式]\label{thm:Cauchy-integral-high-order}
+  设函数 $f(z)$ 在闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
+  \[
+    f^{(n)}(z_0)=\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\d z.
+  \]
 \end{theorem}
 
-假如 $f(z)$ 有泰勒展开
-\[f(z)=f(z_0)+f'(z_0)(z-z_0)+\cdots+\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots\]
-那么由 $\displaystyle\oint_C \frac{\diff z}{(z-z_0)^n}$ 的性质可知上述公式右侧应当为 $f^{(n)}(z_0)$.
+事实上, 上一节中\thmCI 等式两边同时对 $z_0$ 求 $n$ 阶导数, 即可得到该公式.
+不过, 这种做法并不正确, 因为我们需要先说明 $f(z)$ 确实存在任意阶导数.
 
 \begin{proof}
-	先证明 $n=1$ 的情形.
-	设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.当 $|h|<\delta$ 时, $z_0+h\in D$.由柯西积分公式,
-		\[f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z,\ 
-		f(z_0+h)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\diff z.\]
-	两式相减得到
-		\[\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\diff z.\]
-	当 $h\ra 0$ 时, 左边的极限是 $f'(z_0)$. 因此我们只需要证明右边的极限等于 $\displaystyle\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^2}\diff z$.
-	二者之差 $=\displaystyle\frac1{2\pi i}\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\diff z$.
-	由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $|f(z)|\le M$. 注意到 $z\in C$, $|z-z_0|\ge \delta$, $|z-z_0-h|\ge\delta-|h|$. 由长大不等式,
-		\[\abs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\diff z}\le\frac{M|h|}{\delta^2(\delta-|h|)}\cdot L,\]
-	其中 $L$ 是闭路 $C$ 的长度.当 $h\ra0$ 时, 它的极限为 $0$, 因此 $n=1$ 情形得证.
+  先证明 $n=1$ 的情形.
+  设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.当 $|h|<\delta$ 时, $z_0+h\in D$.
+  由\thmCI,
+  \[
+    f(z_0)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\d z,\quad
+    f(z_0+h)=\frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0-h}\d z.
+  \]
+  于是
+  \begin{align*}
+    &\frac{f(z_0+h)-f(z_0)}h-\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^2}\d z\\
+    =&\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\d z
+    -\displaystyle\frac1{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^2}\d z\\
+    =&\frac1{2\pi i}\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z.
+  \end{align*}
+  我们只需要证明当 $h\ra 0$ 时, 该式极限为零即可.
 
-	对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式. 比较 $\dfrac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h$ 与积分公式右侧之差, 并利用长大不等式证明 $h\ra 0$ 时, 差趋于零. 具体过程省略.
+  由于 $f(z)$ 在 $C$ 上连续, 因此存在 $M$ 使得在 $C$ 上 $|f(z)|\le M$. 注意到 $z\in C$ 时,
+  \[
+    |z-z_0|\ge \delta,\quad
+    |z-z_0-h|\ge\delta-|h|.
+  \]
+  由\thmGrowUp,
+  \[
+    \abs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z}\le\frac{M|h|}{\delta^2(\delta-|h|)}\cdot L,
+  \]
+  其中 $L$ 是闭路 $C$ 的长度.
+  当 $h\ra0$ 时, 该式的极限为 $0$, 因此 $n=1$ 情形得证.
+
+  对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式, 然后通过\thmGrowUp 证明当 $h\ra 0$ 时,
+  \[
+    \frac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h
+    -\frac{n!}{2\pi i}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\d z
+  \]
+  的极限是零.
+  由于计算过程较为繁琐, 省略之.
 \end{proof}
 
-\alert{柯西积分公式不是用来计算高阶导数的, 而是用高阶导数来计算积分的.}
+由高阶导数的柯西积分公式可知, 区域 $D$ 上的解析函数 $f(z)$ 一定任意阶可导, 各阶导数仍然是解析的. \alert{这一点与实变量函数有本质的区别}.
+
+利用高阶导数的柯西积分公式, 我们可以计算被积函数分子解析而分母为多项式情形下绕闭路的积分.
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
+  计算 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\d z$.
 \end{example}
 
 \begin{solution}
-	由于 $\cos(\pi z)$ 处处解析,
-	{因此由柯西积分公式,
-		\[
-		\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z
-		=\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}
-		{=\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.}
-		\]}
+  由于 $\cos(\pi z)$ 处处解析,
+  因此由\thmCIH,
+  \[
+    \oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\d z
+    =\frac{2\pi i}{4!}[\cos(\pi z)]^{(4)}\big|_{z=1}
+    =\frac{2\pi i}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 i}{12}.
+  \]
 \end{solution}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z.$
+  计算 $\displaystyle\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\d z$.
 \end{example}
 
 \begin{solution}
-	$\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
-	{取 $C_1,C_2$ 为以 $i,-i$ 为圆心的分离圆周.由复合闭路定理,
-		\[\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
-		=\oint_{C_1}\frac{e^z}{(z^2+1)^2}\diff z
-		+\oint_{C_2}\frac{e^z}{(z^2+1)^2}\diff z.\]}
+  $\dfrac{e^z}{(z^2+1)^2}$ 在 $|z|<2$ 的奇点为 $z=\pm i$.
+  取 $C_1,C_2$ 为以 $i,-i$ 为圆心的分离圆周, 则由\thmCCC,
+  \[
+     \oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\d z
+    =\oint_{C_1}\frac{e^z}{(z^2+1)^2}\d z
+    +\oint_{C_2}\frac{e^z}{(z^2+1)^2}\d z.
+  \]
 
-	由柯西积分公式,
-	\begin{align*}
-		&\oint_{C_1}\frac{e^z}{(z^2+1)^2}\diff z
-		=\frac{2\pi i}{1}\left[\frac{e^z}{(z+i)^2}\right]'\Big|_{z=i}\\
-		&=2\pi i\left[\frac{e^z}{(z+i)^2}-\frac{2e^z}{(z+i)^3}\right]\Big|_{z=i}
-		=\frac{(1-i)e^i\pi}2.
-	\end{align*}
-	类似地, $\displaystyle\oint_{C_2}\frac{e^z}{(z^2+1)^2}\diff z=\frac{-(1+i)e^{-i}\pi}2$.
-	故
-		\[\oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\diff z
-		=\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2
-		=\pi i(\sin1-\cos1).\]
+  由\thmCIH,
+  \[
+     \oint_{C_1}\frac{e^z}{(z^2+1)^2}\d z
+    =\frac{2\pi i}{1!}\Bigl(\frac{e^z}{(z+i)^2}\Bigr)'\Big|_{z=i}
+    =2\pi i\Bigl(\frac{e^z}{(z+i)^2}-\frac{2e^z}{(z+i)^3}\Bigr)\Big|_{z=i}
+    =\frac{(1-i)e^i\pi}2,
+  \]
+  同理可得
+  \[
+    \oint_{C_2}\frac{e^z}{(z^2+1)^2}\d z=\frac{-(1+i)e^{-i}\pi}2.
+  \]
+  故
+  \[
+     \oint_{|z|=2}\frac{e^z}{(z^2+1)^2}\d z
+    =\frac{(1-i)e^i\pi}2+\frac{-(1+i)e^{-i}\pi}2
+    =\pi i(\sin1-\cos1).
+  \]
 \end{solution}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z|=1}z^ne^z\diff z$, 其中 $n$ 是整数.
+  计算 $\displaystyle\oint_{|z|=1}z^ne^z\d z$, 其中 $n$ 是整数.
 \end{example}
 
 \begin{solution}
-	当 $n\ge 0$ 时, $z^ne^z$ 处处解析.
-	由柯西-古萨基本定理, 
-	\[
-		\oint_{|z|=1}z^ne^z\diff z=0.
-	\]
-	当 $n\le-1$ 时, $e^z$ 处处解析.由柯西积分公式,
-	\[
-		 \oint_{|z|=1}z^ne^z\diff z
-		=\frac{2\pi i}{(-n-1)!}(e^z)^{(-n-1)}\big|_{z=0}
-		=\frac{2\pi i}{(-n-1)!}.
-	\]
+  当 $n\ge 0$ 时, $z^ne^z$ 处处解析.
+  由\thmCG, 
+  \[
+    \oint_{|z|=1}z^ne^z\d z=0.
+  \]
+  当 $n\le-1$ 时, $e^z$ 处处解析.由柯西积分公式,
+  \[
+     \oint_{|z|=1}z^ne^z\d z
+    =\frac{2\pi i}{(-n-1)!}(e^z)^{(-n-1)}\big|_{z=0}
+    =\frac{2\pi i}{(-n-1)!}.
+  \]
 \end{solution}
 
 \begin{example}
-	求 $\displaystyle\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z$ 和 $\displaystyle\oint_{|z-1|=2}\frac1{(z-2)^2z^3}\diff z$.
+  计算 $\displaystyle\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\d z$ 和 $\displaystyle\oint_{|z-1|=2}\frac1{(z-2)^2z^3}\d z$.
 \end{example}
 
-\begin{solution}
-	\enumnum1 $\dfrac1{(z-2)^2z^3}$ 在 $|z-3|<2$ 的奇点为 $z=2$.
-	{由柯西积分公式,
-		\[\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z
-		=\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\bigg|_{z=2}
-		=-\frac{3\pi i}8.\]}
-
-	\enumnum2 $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
-	取 $C_1,C_2$ 分别为以 $0$ 和 $2$ 为圆心的分离圆周.由复合闭路定理和柯西积分公式,
-	\begin{align*}
-		 &\oint_{|z-1|=3}\frac1{(z-2)^2z^3}\diff z=\oint_{C_1}\frac1{(z-2)^2z^3}\diff z+\oint_{C_2}\frac1{(z-2)^2z^3}\diff z\\
-		=&\frac{2\pi i}{2!}\left[\frac1{(z-2)^2}\right]''\Big|_{z=0}+\frac{2\pi i}{1!}\left(\frac1{z^3}\right)'\Big|_{z=2}=0.
-		\end{align*}
+\begin{solution}\delspace
+  \begin{enumnopar}[(i)]
+    \item 函数 $\dfrac1{(z-2)^2z^3}$ 在 $|z-3|<2$ 的奇点为 $z=2$.
+      由柯西积分公式,
+      \[
+         \oint_{|z-3|=2}\frac1{(z-2)^2z^3}\d z
+        =\frac{2\pi i}{1!}\bigl(\frac1{z^3}\bigr)'\bigg|_{z=2}
+        =-\frac{3\pi i}8.
+      \]
+    \item 函数 $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
+      取 $C_1,C_2$ 分别为以 $0$ 和 $2$ 为圆心的分离圆周.
+      由\thmCCC 和\thmCI,
+      \begin{align*}
+         \oint_{|z-1|=3}\frac1{(z-2)^2z^3}\d z
+        &=\oint_{C_1}\frac1{(z-2)^2z^3}\d z+\oint_{C_2}\frac1{(z-2)^2z^3}\d z\\
+        &=\frac{2\pi i}{2!}\Bigl(\frac1{(z-2)^2}\Bigr)''\Big|_{z=0}+\frac{2\pi i}{1!}\bigl(\frac1{z^3}\bigr)'\Big|_{z=2}=0.
+      \end{align*}
+  \end{enumnopar}
 \end{solution}
 
 \begin{exercise}
-	$\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\diff z=$\fillblank{{$0$}}.
+  $\displaystyle\oint_{|z-2i|=3}\frac1{z^2(z-i)}\d z=$\fillblank{}.
 \end{exercise}
 
-\begin{example}[莫累拉定理]
-	设 $f(z)$ 在单连通域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\displaystyle\oint_Cf(z)\diff z=0$, 则 $f(z)$ 在 $D$ 内解析.
+\begin{example}[莫累拉定理]\footnote{
+  Giacinto Morera (1856--1907), 意大利数学家.
+} 设 $f(z)$ 在单连通区域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有
+  \[
+    \oint_Cf(z)\d z=0.
+  \]
+  证明 $f(z)$ 在 $D$ 内解析.
 \end{example}
 
-该定理可视作柯西-古萨基本定理的逆定理.
+该定理可视作\thmCG{}的逆定理.
 
 \begin{proof}
-	由题设可知 $f(z)$ 的积分与路径无关.
-	固定 $z_0\in D$, 则
-		\[F(z)=\int_{z_0}^zf(z)\diff z\]
-	定义了 $D$ 内的一个函数.类似于原函数的证明可知 $F'(z)=f(z)$.故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.
+  由题设可知 $f(z)$ 的积分与路径无关.
+  固定 $z_0\in D$, 则
+  \[
+    F(z)=\int_{z_0}^zf(z)\d z
+  \]
+  定义了 $D$ 内的一个函数.
+  类似于\thmref{定理}{thm:primitive-function} 的证明可知 $F'(z)=f(z)$.
+  故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.
 \end{proof}
 
-高阶柯西积分公式说明解析函数的导数与实函数的导数有何不同?
-高阶柯西积分公式说明, 函数 $f(z)$ 只要在区域 $D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $D$ 中解析.
-\alert{这一点与实变量函数有本质的区别.}
-
-同时我们也可以看出, 如果一个二元实函数 $u(x,y)$ 是一个解析函数的实部或虚部, 则 $u$ 也是具有任意阶偏导数.
+由\thmCIH 可以看出, 如果一个二元实函数 $u(x,y)$ 是一个解析函数的实部或虚部, 则 $u$ 也是具有任意阶偏导数.
 这便引出了调和函数的概念.
 
 \section{解析函数与调和函数的关系}
@@ -1061,26 +1666,36 @@
 \subsection{调和函数}
 
 调和函数是一类重要的二元实变函数, 它和解析函数有着紧密的联系.
-为了简便, 我们用 $u_{xx},u_{yy}$ 来表示二阶偏导数.
+为了简便, 我们用 $u_{xx},u_{xy},u_{yx},u_{yy}$ 来表示各种二阶偏导数.
 
 \begin{definition}
-	如果二元实变函数 $u(x,y)$ 在区域 $D$ 内有二阶连续偏导数, 且满足拉普拉斯方程
-	\[\Delta u:=u_{xx}+u_{yy}=0,\]
-	则称 $u(x,y)$ 是 $D$ 内的\emph{调和函数}.
+  如果二元实变函数 $u(x,y)$ 在区域 $D$ 内有二阶连续偏导数, 且满足拉普拉斯\footnotemark 方程
+  \[
+    \Delta u:=u_{xx}+u_{yy}=0,
+  \]
+  则称 $u(x,y)$ 是 $D$ 内的\noun{调和函数}.
 \end{definition}
+\footnotetext{Pierre-Simon, marquis de Laplace (1749--1827), 法国数学家、天文学家、物理学家.}
 
 \begin{theorem}
-	区域 $D$ 内解析函数 $f(z)$ 的实部和虚部都是调和函数.
+  区域 $D$ 内解析函数 $f(z)$ 的实部和虚部都是调和函数.
 \end{theorem}
 
 \begin{proof}
-	设 $f(z)=u(x,y)+iv(x,y)$, 则 $u,v$ 存在偏导数且
-		\[f'(z)=u_x+iv_x=v_y-iu_y.\]
-	{由于 $f(z)$ 任意阶可导, 因此 $u,v$ 存在任意阶偏导数.由C-R方程 $u_x=v_y,u_y=-v_x$可知
-		\[\Delta u=u_{xx}+u_{yy}=v_{yx}-v_{xy}=0,\]}
-
-	{
-		\[\Delta v=v_{xx}+v_{yy}=-u_{yx}+u_{xy}=0.\qedhere\]}
+  设 $f(z)=u(x,y)+iv(x,y)$, 则 $u,v$ 存在偏导数且
+  \[
+    f'(z)=u_x+iv_x=v_y-iu_y.
+  \]
+  由于 $f(z)$ 任意阶可导, 因此 $u,v$ 存在任意阶偏导数.
+  由C-R方程可知
+  \[
+    u_x=v_y,\quad u_y=-v_x,
+  \]
+  因此
+  \begin{align*}
+    \Delta u&=u_{xx}+u_{yy}=v_{yx}-v_{xy}=0,\\
+    \Delta v&=v_{xx}+v_{yy}=-u_{yx}+u_{xy}=0.\qedhere\end{align*}
+    
 \end{proof}
 
 \subsection{共轭调和函数}
@@ -1088,262 +1703,324 @@
 反过来, 调和函数是否一定是某个解析函数的实部或虚部呢?
 对于单连通的情形, 答案是肯定的.
 
-如果 $u+iv$ 是区域 $D$ 内的解析函数, 则我们称 $v$ 是 $u$ 的\emph{共轭调和函数}.
+如果 $u+iv$ 是区域 $D$ 内的解析函数, 则我们称 $v$ 是 $u$ 的\noun{共轭调和函数}.
 换言之 $u_x=v_y,u_y=-v_x$.
 显然 $-u$ 是 $v$ 的共轭调和函数.
+
 \begin{theorem}
-	设 $u(x,y)$ 是单连通域 $D$ 内的调和函数, 则线积分
-	\[v(x,y)=\int_{(x_0,y_0)}^{(x,y)}-u_y\diff x+u_x\diff y+C\]
-	是 $u$ 的共轭调和函数.
+  设 $u(x,y)$ 是单连通区域 $D$ 内的调和函数, 则线积分
+  \[
+    v(x,y)=\int_{(x_0,y_0)}^{(x,y)}-u_y\d x+u_x\d y+C
+  \]
+  是 $u$ 的共轭调和函数.
 \end{theorem}
+
 由此可知, 区域 $D$ 上的调和函数在 $z\in D$ 的一个邻域内是一解析函数的实部, 从而在该邻域内具有任意阶连续偏导数.
-而 $z$ 的任取的, 因此调和函数总具有任意阶连续偏导数.
+而 $z$ 的任取的, 因此\alert{调和函数总具有任意阶连续偏导数}.
 
 如果 $D$ 是多连通区域, 则未必存在共轭调和函数.
 例如 $\ln(x^2+y^2)$ 是复平面去掉原点上的调和函数, 但它并不是某个解析函数的实部.
-事实上, 它是 $2\Ln z$ 的实部.
+事实上, 它是多值函数 $2\Ln z$ 的实部.
 
-在实际计算中, 我们\alert{一般不用线积分}来得到共轭调和函数, 而是采用下述两种办法:
-\begin{theorem}{偏积分法}
-	通过 $v_y=u_x$ 解得 $v=\varphi(x,y)+\psi(x)$, 其中 $\psi(x)$ 待定.
-	{再代入 $u_y=-v_x$ 中解出 $\psi(x)$.}
-\end{theorem}
-\begin{theorem}{不定积分法}
-	对 $f'(z)=u_x-iu_y=v_y+iv_x$ 求不定积分得到 $f(z)$.
-\end{theorem}
+在实际计算中, 我们一般不用线积分来计算共轭调和函数, 而是采用下述两种方法.
+\begin{fifth}{共轭调和函数的计算方法}
+  \begin{enumpar}
+    \item \alert{偏积分法}: 通过 $v_y=u_x$ 解得 $v=\varphi(x,y)+\psi(x)$, 其中 $\psi(x)$ 待定. 再代入 $u_y=-v_x$ 中解出 $\psi(x)$.
+    \item \alert{不定积分法}: 对 $f'(z)=u_x-iu_y=v_y+iv_x$ 求不定积分得到 $f(z)$.
+  \end{enumpar}
+\end{fifth}
 
 \begin{example}
-	证明 $u(x,y)=y^3-3x^2y$ 是调和函数, 并求其共轭调和函数以及由它们构成的解析函数.
+  证明 $u(x,y)=y^3-3x^2y$ 是调和函数, 并求其共轭调和函数以及由它们构成的解析函数.
 \end{example}
 
 \begin{solution}
-	由 $u_x=-6xy,u_y=3y^2-3x^2$ 可知 $u_{xx}+u_{yy}=-6y+6y=0$,
-	{故 $u$ 是调和函数.}
+  由
+  \[
+    u_x=-6xy,u_y=3y^2-3x^2
+  \]
+  可知 $u_{xx}+u_{yy}=-6y+6y=0$, 故 $u$ 是调和函数.
 
-	{由 $v_y=u_x=-6xy$ 得 $v=-3xy^2+\psi(x)$.}
-
-	{由 $v_x=-u_y=3x^2-3y^2$ 得 $\psi'(x)=3x^2$,$\psi(x)=x^3+C$.}
-
-	{故 $v(x,y)=-3xy^2+x^3+C$,
-	\[
-		f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
-		{=i(x+iy)^3+iC=i(z^3+C).}
-	\]}
+  由 $v_y=u_x=-6xy$ 得到
+  \[
+    v=-3xy^2+\psi(x).
+  \]
+  由 $v_x=-u_y=3x^2-3y^2$ 得到
+  \[
+    \psi'(x)=3x^2,\quad \psi(x)=x^3+C.
+  \]
+  故 $v(x,y)=-3xy^2+x^3+C$,
+  \[
+    f(z)=u+iv=y^3-3x^2y+i(-3xy^2+x^3+C)
+    =i(x+iy)^3+iC=i(z^3+C).
+  \]
 \end{solution}
 
-当解析函数 $f(z)$ 为 $x,y$ 的多项式形式时, 将 $m$ 次齐次的项放一起, 则 $x^m$ 的系数就是 $f(z)$ 中 $z^m$ 的系数.
+当解析函数 $f(z)$ 是 $x,y$ 的多项式形式时, $f(z)$ 本身一定是 $z$ 的多项式.
+于是将仅包含 $x$ 的多项式部分中的 $x$ 换成 $z$ 就是 $f(z)$.
 
-在上例中我们也可由另一种方法计算得到:
-\[f'(z)=u_x-iu_y=-6xy-i(3y^2-3x^2)=3iz^2.\]
-因此 $f(z)=iz^3+C$.
+在上例中, 若使用不定积分法则有
+\[
+  f'(z)=u_x-iu_y=-6xy-i(3y^2-3x^2)=3iz^2,
+\]
+因此 $f(z)=iz^3+C$. 由于 $u$ 已给定, 因此 $C$ 取 $i$ 的任意实数倍.
 
 \begin{example}
-	求解析函数 $f(z)$ 使得它的虚部为
-	\[v(x,y)=e^x(y\cos y+x\sin y)+x+y.\]
+  求解析函数 $f(z)$ 使得它的虚部为
+  \[
+    v(x,y)=e^x(y\cos y+x\sin y)+x+y.
+  \]
 \end{example}
 
 \begin{solution}
-	由 $u_x=v_y=e^x(\cos y-y\sin y+x\cos y)+1$ 得
-	\[u=e^x(x\cos y-y\sin y)+x+\psi(y).\]
-	{由 $u_y=-v_x=-e^x(y\cos y+x\sin y+\sin y)-1$ 得
-	\[\psi'(y)=-1,\quad\psi(y)=-y+C.\]}
-	故
-
-	\begin{align*}
-		f(z)&=u+iv\\
-		&=e^x(x\cos y-y\sin y)+x-y+C
-		+i\bigl[e^x(y\cos y+x\sin y)+x+y\bigr]\\
-		&{=ze^z+(1+i)z+C,\quad C\in\BR.}
-	\end{align*}
+  由
+  \[
+    u_x=v_y=e^x(\cos y-y\sin y+x\cos y)+1
+  \]
+  得到
+  \[
+    u=e^x(x\cos y-y\sin y)+x+\psi(y).
+  \]
+  由
+  \[
+    u_y=-v_x=-e^x(y\cos y+x\sin y+\sin y)-1
+  \]
+  得到
+  \[
+    \psi'(y)=-1,\quad\psi(y)=-y+C.
+  \]
+  故
+  \begin{align*}
+    &f(z)=u+iv\\
+    =&e^x(x\cos y-y\sin y)+x-y+C+i\bigl(e^x(y\cos y+x\sin y)+x+y\bigr)\\
+    =&ze^z+(1+i)z+C,\quad C\in\BR.
+  \end{align*}
 \end{solution}
-这里, 我们只需看 $e^x\cos y$ 的系数 $x+iy=z$, 即 $f(z)$ 中 $e^z$ 的系数.
 
-也可由
+若使用不定积分法则有
 \begin{align*}
-	f'(z)&=v_y+iv_x\\
-	&=e^x(\cos y-y\sin y+x\cos y)+1
-	+i\bigl[e^x(y\cos y+x\sin y+\sin y)+1\bigr]\\
-	&{=(z+1)e^z+1+i.}
+   &f'(z)=v_y+iv_x\\
+  =&e^x(\cos y-y\sin y+x\cos y)+1+i\bigl(e^x(y\cos y+x\sin y+\sin y)+1\bigr)\\
+  =&(z+1)e^z+1+i.
 \end{align*}
-得 $f(z)=ze^z+(1+i)z+C$.
+得到 $f(z)=ze^z+(1+i)z+C$.
 \begin{exercise}
-	证明 $u(x,y)=x^3-6x^2y-3xy^2+2y^3$ 是调和函数并求它的共轭调和函数.
+  证明 $u(x,y)=x^3-6x^2y-3xy^2+2y^3$ 是调和函数并求它的共轭调和函数.
 \end{exercise}
+
+
+
+
 
 
 \sectionHomework
 \begin{homework}
-	\item 选择题. \begin{exlist}
-		\item 设 $C$ 为正向圆周 $|\zeta|=2$, $\displaystyle f(z)=\oint_C\frac{\sin \zeta}{\zeta-z}\diff \zeta$, 则 $f\left(\dfrac\pi6\right)=$ \fillbrace{}.
-			\begin{taskschoice}(4)
-				() $\pi i$
-				() $-\pi i$
-				() $0$
-				() $2\pi i$
-			\end{taskschoice}
-		\item 下列命题中, 正确的是\fillbrace{}.
-			\begin{taskschoice}(1)
-				() 设 $v_1,v_2$ 在区域 $D$ 内均为 $u$ 的共轭调和函数, 则必有 $v_1=v_2$
-				() 解析函数的实部是虚部的共轭调和函数
-				() 以调和函数为实部与虚部的函数是解析函数
-				() 若 $f(z)=u+iv$ 在区域 $D$ 内解析，则 $u_x$ 为 $D$ 内的调和函数
-		\end{taskschoice}
-	\end{exlist}
-	\item 填空题. \begin{exlist}
-		\item 设 $f(z)$ 在单连通区域 $D$ 内处处解析且不为零, 则 $\displaystyle\oint_C\frac{f''(z)+2f'(z)+f(z)}{f(z)}\diff z=$\fillblank{}, 其中 $C$ 为 $D$ 内一条闭路.
-		\item 设 $C$ 为正向圆周 $|z|=1$, 则 $\displaystyle\oint_C\ov z\diff z=$\fillblank{}.
-		\item 设 $C$ 为正向圆周 $|z|=2$, 则 $\displaystyle\oint_C\left(\frac{\ov z}{z}\right)\diff z=$\fillblank{}.
-		\item 设 $C$ 为正向圆周 $|z|=2$, 则 $\displaystyle\oint_C\dfrac{\ov z}{|z|}\diff z=$\fillblank{}.
-	\end{exlist}
-	\item 计算题.
-	\begin{exlist}
-		\item 利用积分曲线的参数方程求 $\displaystyle\int_C z^2\diff z$, 其中 $C$ 为:
-			\begin{tasks}
-				\task 从 $0$ 到 $3+i$ 的直线段;
-				\task 从 $0$ 到 $3$ 再到 $3+i$ 的折线段.
-			\end{tasks}
-		\item 试用观察法得出下列积分的值, 并说明为什么, 其中 $C:|z|=1$.
-			\begin{tasks}(3)
-				\task $\displaystyle\oint_C\frac{\diff z}{z-2}$;
-				\task $\displaystyle\oint_C\frac{\diff z}{\cos z}$;
-				\task $\displaystyle\oint_C\frac{e^z}{(z-2i)^2}\diff z$;
-				\task $\displaystyle\oint_Ce^z\sin z\diff z$;
-				\task $\displaystyle\oint_C\dfrac{\ 1\ }{\ov z}\diff z$;
-				\task $\displaystyle\oint_C(|z|+e^z\cos z)\diff z$.
-			\end{tasks}
-		\item 计算积分 $\displaystyle\int_\gamma\dfrac{3z-2}{z}\diff z$, 其中 $\gamma$ 为圆周 $\{z: |z|=2\}$ 的上半圆, 从 $-2$ 到 $2$.
-		\item $\displaystyle\int_C(e^z+3z^2+1)\diff z$, $C:|z|=2,\Re z>0$.
-		\item $\displaystyle\int_C\dfrac{\diff z}{z(z-1)^2(z-5)}$, $C:|z|=3$.
-		\item 设 $C$ 为正向圆周 $|z|=4$, 求 $\displaystyle\oint_C\dfrac{\sin z}{|z|^2}\diff z$.
-		\item 设 $C$ 为从原点到 $1+i$ 的直线段, 求 $\displaystyle\int_C(z+1)^2\diff z$.
-		\item 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 求 $\displaystyle\int_C\cos^2z\diff z$.
-		\item 设 $C$ 为从原点到 $2$ 再到 $2+i$ 的折线段, 求 $\displaystyle\int_Cz^2\diff z$.
-		\item 求 $\displaystyle\int_{-\pi i}^{3\pi i}e^{2z}\diff z$.
-		\item 求 $\displaystyle\int_{-\pi i}^{\pi i}\sin^2z\diff z$.
-		\item 求 $\displaystyle\int_0^i(z-i)e^{-z}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z-2|=1$, 求 
-			$\displaystyle\oint_C\frac{e^z}{z-2}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z|=r<1$, 求 
-			$\displaystyle\oint_C\frac{\diff z}{(z^2-1)(z^3-1)}$.
-		\item 设 $C$ 为以 $\pm\dfrac12,\pm\dfrac65i$ 为顶点的菱形, 求 
-			$\displaystyle\oint_C\frac{1}{z-i}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z|=2$, 求 
-			$\displaystyle\oint_C\frac1{(z^2+1)(z^2+9)}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z-3|=4$, 求 
-			$\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
-		\item 设 $C_1$ 为正向圆周 $|z|=2$, $C_2^-$ 为负向圆周 $|z|=3$, $C=C_1+C_2^-$ 为复合闭路, 求 
-			$\displaystyle\oint_C\frac{\cos z}{z^3}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z|=2$, 求 
-			$\displaystyle\oint_C\frac{\sin z}{\left(z-\dfrac\pi 2\right)^2}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z|=1$, 求 
-			$\displaystyle\oint_C\frac{\cos z}{z^{2023}}\diff z$.
-		\item 设 $C$ 为正向圆周 $|z|=1.5$, 求 
-			$\displaystyle\oint_C\frac{\ln(z+2)}{(z-1)^3}\diff z$.
-		\item 设 $C$ 为正向圆周 $|\zeta|=2$, $\displaystyle f(z)=\oint_C\dfrac{\zeta^3+\zeta+1}{(z-\zeta)^2}\diff\zeta$.
-			求 $f'(1+i)$ 和 $f'(4)$.
-		\item 已知 $v(x,y)=x^3+y^3-axy(x+y)$ 为调和函数, 求参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
-		\item 已知 $f(z)=x^2+2xy-y^2+i(y^2+axy-x^2)$ 为解析函数, 求参数 $a$ 和 $f'(z)$.
-		\item 已知 $f(z)=y^3+ax^2y+i(bx^3-3xy^2)$ 为解析函数, $a,b$ 为实数, 求参数 $a,b$ 和 $f'(z)$.	
-		\item 设 $u$ 为区域 $D$ 内的调和函数, $f(z)=u_x-iu_y$.
-			那么 $f(z)$ 是不是 $D$ 内的解析函数? 为什么?
-			\item 求 $\alpha$ 使得 $v(x,y)=\alpha x^2y-y^3+x+y$ 是调和函数, 并求虚部为 $v(x,y)$ 且满足 $f(0)=1$ 的解析函数 $f(z)$.
-		\item 请谈一谈复积分与实积分的区别.
-	\end{exlist}
-	\item 证明题.
-	\begin{exlist}
-		\item 设 $C_1$ 和 $C_2$ 为两条分离的闭路, 证明
-			\[\frac1{2\pi i}\left[\oint_{C_1}\frac{z^2\diff z}{z-z_0}+\oint_{C_2}\frac{\sin z\diff z}{z-z_0}\right]=
-			\begin{cases}
-				z_0^2,&\text{当 $z_0$ 在 $C_1$ 内时,}\\
-				\sin z_0,&\text{当 $z_0$ 在 $C_2$ 内时.}
-			\end{cases}\]
-		\item 设 $f(z)$ 和 $g(z)$ 在区域 $D$ 内处处解析, $C$ 为 $D$ 内任意一条闭路, 且 $C$ 的内部完全包含在 $D$ 中.
-			如果 $f(z)=g(z)$ 在 $C$ 上所有的点处成立, 证明在 $C$ 内部所有点处 $f(z)=g(z)$ 也成立.
-		\item 证明: 一对共轭调和函数的乘积仍为调和函数.
-		\item 证明如果 $f$ 在复平面解析且有界, 则对任意 $a\in\BC$, 有
-			$\displaystyle\int_{|z|=R}\frac{f(z)}{(z-a)^2}\diff z=0$,
-		其中 $R>|a|$.
-		由此证明 $f$ 是常数.
-		\item 设 $f$ 是域 $|z|>r>0$ 上的解析函数.
-		证明: 如果对于 $|a|>R>r$,  $\displaystyle\lim_{z\to\infty} f(z)=f(a)$, 则积分
-			\[\int_{|z|=R} \frac{f(z)}{z-a}\diff z=0.\]
-	\end{exlist}
+  \item 单选题.
+  \begin{subex}
+    \item 函数 $f(z)=\dfrac 1z$ 在区域\fillbrace{}内有原函数.
+    \begin{exchoice}(2)
+      \item $0<|z|<1$
+      \item $\Re z>0$
+      \item $|z-1|>2$
+      \item $|z+1|+|z-1|>4$
+    \end{exchoice}
+    \item 设 $C$ 为正向圆周 $|\zeta|=2$, $\displaystyle f(z)=\oint_C\frac{\sin \zeta}{\zeta-z}\d \zeta$, 则 $f\bigl(\dfrac\pi6\bigr)=$ \fillbrace{}.
+    \begin{exchoice}(4)
+      \item $\pi i$
+      \item $-\pi i$
+      \item $0$
+      \item $2\pi i$
+    \end{exchoice}
+    \item 设 $f(z)=\displaystyle\oint_{|\zeta|=4}\dfrac{\sin\zeta-\cos\zeta}{\zeta-z}\d\zeta$, 则 $f'(\pi)=$\fillbrace{}.
+    \begin{exchoice}(4)
+      \item $0$
+      \item $2\pi i$
+      \item $-2\pi i$
+      \item $\pi i$
+    \end{exchoice}
+    \item 设 $f(z)=\displaystyle\oint_{|\zeta|=2}\dfrac{\zeta^3+3\zeta}{\zeta-z}\d\zeta$, 则 $f'(i)=$\fillbrace{}.
+    \begin{exchoice}(4)
+      \item $0$
+      \item $3i$
+      \item $-3i$
+      \item $2i$
+    \end{exchoice}
+    \item 下列函数中\fillbrace{}不是调和函数.
+    \begin{exchoice}(4)
+      \item $3x-y$
+      \item $x^2-y^2$
+      \item $\ln(x^2+y^2)$
+      \item $\sin x\cos y$
+    \end{exchoice}
+    \item 函数\fillbrace{}不能作为解析函数的虚部.
+    \begin{exchoice}(4)
+      \item $2x+3y$
+      \item $2x^2+3y^2$
+      \item $x^2-xy-y^2$
+      \item $e^x\cos y$
+    \end{exchoice}
+    \item 下列命题中, 正确的是\fillbrace{}.
+    \begin{exchoice}(1)
+      \item 设 $v_1,v_2$ 在区域 $D$ 内均为 $u$ 的共轭调和函数, 则必有 $v_1=v_2$
+      \item 解析函数的实部是虚部的共轭调和函数
+      \item 以调和函数为实部与虚部的函数是解析函数
+      \item 若 $f(z)=u+iv$ 在区域 $D$ 内解析，则 $u_x$ 为 $D$ 内的调和函数
+    \end{exchoice}
+  \end{subex}
+  \item 填空题.
+  \begin{subex}
+    \item 设 $f(z)=e^z-|z|\cos z$, 则 $\displaystyle\oint_{|z|=1}f(z)\d z=$\fillblank{}.
+    \item 设 $C$ 为正向圆周 $|z|=1$, 则积分 $\displaystyle\oint_C\bigl(\frac{1+z+z^2}{z^3}\bigr)\d z=$\fillblank{}.
+    \item 设 $C$ 为正向圆周 $|z|=1$, 则 $\displaystyle\oint_C\ov z\d z=$\fillblank{}.
+    \item 设 $C$ 为正向圆周 $|z|=2$, 则 $\displaystyle\oint_C\dfrac{\ov z}{|z|}\d z=$\fillblank{}.
+    \item 设 $f(z)$ 在单连通区域 $D$ 内处处解析且不为零, 则 $\displaystyle\oint_C\frac{f''(z)+2f'(z)+f(z)}{f(z)}\d z=$\fillblank{}, 其中 $C$ 为 $D$ 内一条闭路.
+    \item 设 $f(z)=\dfrac1{(z+i)^{2023}}$, 则 $\displaystyle\oint_{|z|=2}f(z)\d z=$\fillblank{}.
+  \end{subex}
+  \item 计算题.
+  \begin{subex}
+    \item 利用积分曲线的参数方程求 $\displaystyle\int_C z^2\d z$, 其中 $C$ 为:
+      \begin{subsubex}(2)
+        \item 从 $0$ 到 $3+i$ 的直线段;
+        \item 从 $0$ 到 $3$ 再到 $3+i$ 的折线段.
+      \end{subsubex}
+    \item 试用观察法得出下列积分的值, 并说明为什么, 其中 $C:|z|=1$.
+      \begin{subsubex}(3)
+        \item $\displaystyle\oint_C\frac{\d z}{z-2}$;
+        \item $\displaystyle\oint_C\frac{\d z}{\cos z}$;
+        \item $\displaystyle\oint_C\frac{e^z}{(z-2i)^2}\d z$;
+        \item $\displaystyle\oint_Ce^z\sin z\d z$;
+        \item $\displaystyle\oint_C\dfrac{\ 1\ }{\ov z}\d z$;
+        \item $\displaystyle\oint_C(|z|+e^z\cos z)\d z$.
+      \end{subsubex}
+    \item 计算 $\displaystyle\int_\gamma\dfrac{3z-2}{z}\d z$, 其中 $\gamma$ 为圆周 $\{z: |z|=2\}$ 的上半圆, 从 $-2$ 到 $2$.
+    \item 设 $C:|z|=2,\Re z\ge 0$ 为右半半圆, 方向从 $-2i$ 到 $2i$, 计算 $\displaystyle\int_C(e^z+3z^2+1)\d z$,
+    \item $\displaystyle\int_C\dfrac{\d z}{z(z-1)^2(z-5)}$, $C:|z|=3$.
+    \item 设 $C$ 为正向圆周 $|z|=4$, 计算 $\displaystyle\oint_C\dfrac{\sin z}{|z|^2}\d z$.
+    \item 设 $C$ 为从原点到 $1+i$ 的直线段, 计算 $\displaystyle\int_C(z+1)^2\d z$.
+    \item 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 计算 $\displaystyle\int_C\cos^2z\d z$.
+    \item 设 $C$ 为从原点到 $2$ 再到 $2+i$ 的折线段, 计算 $\displaystyle\int_Cz^2\d z$.
+    \item 计算 $\displaystyle\int_{-\pi i}^{3\pi i}e^{2z}\d z$.
+    \item 计算 $\displaystyle\int_{-\pi i}^{\pi i}\sin^2z\d z$.
+    \item 计算 $\displaystyle\int_0^i(z-i)e^{-z}\d z$.
+    \item 设 $C$ 为正向圆周 $|z-2|=1$, 计算 
+      $\displaystyle\oint_C\frac{e^z}{z-2}\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=r<1$, 计算 
+      $\displaystyle\oint_C\frac{\d z}{(z^2-1)(z^3-1)}$.
+    \item 设 $C$ 为以 $\pm\dfrac12,\pm\dfrac65i$ 为顶点的菱形, 计算 
+      $\displaystyle\oint_C\frac{1}{z-i}\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=2$, 计算 
+      $\displaystyle\oint_C\frac1{(z^2+1)(z^2+9)}\d z$.
+    \item 设 $C$ 为正向圆周 $|z-3|=4$, 计算 
+      $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\d z$.
+    \item 设 $C_1$ 为正向圆周 $|z|=2$, $C_2^-$ 为负向圆周 $|z|=3$, $C=C_1+C_2^-$ 为复合闭路, 计算 
+      $\displaystyle\oint_C\frac{\cos z}{z^3}\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=2$, 计算 
+      $\displaystyle\oint_C\frac{\sin z}{\bigl(z-\dfrac\pi 2\bigr)^2}\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=1$, 计算 
+      $\displaystyle\oint_C\frac{\cos z}{z^{2023}}\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=1.5$, 计算 
+      $\displaystyle\oint_C\frac{\ln(z+2)}{(z-1)^3}\d z$.
+    \item 设 $C$ 为正向圆周 $|\zeta|=2$, $\displaystyle f(z)=\oint_C\dfrac{\zeta^3+\zeta+1}{(z-\zeta)^2}\d\zeta$.
+      计算 $f'(1+i)$ 和 $f'(4)$.
+    \item 已知 $v(x,y)=x^3+y^3-axy(x+y)$ 为调和函数, 计算参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
+    \item 已知 $f(z)=x^2+2xy-y^2+i(y^2+axy-x^2)$ 为解析函数, 计算参数 $a$ 和 $f'(z)$.
+    \item 已知 $f(z)=y^3+ax^2y+i(bx^3-3xy^2)$ 为解析函数, $a,b$ 为实数, 计算参数 $a,b$ 和 $f'(z)$.  
+    \item 设 $u$ 为区域 $D$ 内的调和函数, $f(z)=u_x-iu_y$.
+      那么 $f(z)$ 是不是 $D$ 内的解析函数? 为什么?
+    \item 计算 $\alpha$ 使得 $v(x,y)=\alpha x^2y-y^3+x+y$ 是调和函数, 并计算虚部为 $v(x,y)$ 且满足 $f(0)=1$ 的解析函数 $f(z)$.
+    \item 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 计算 $\displaystyle\int_C\cos^2z\d z$.
+    \item 设 $C$ 为正向圆周 $|z-3|=4$, 计算 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\d z$.
+    \item 假设 $v(x,y)=x^3+y^3-axy(x+y)$ 是调和函数，计算参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
+    \item 设 $C$ 是从 $i$ 到 $2+i$ 的直线, 计算 $\displaystyle\int_C \overline z\d z$.
+    \item 计算 $\displaystyle\int_{-\pi i}^{\pi i}(e^z+1)\d z$.
+    \item 计算 $\displaystyle\int_0^\pi (z+\cos 2z)\d z$.
+    \item 设 $C$ 为正向圆周 $|z|=4$, 计算 $\displaystyle\oint_C\frac{z-6}{z^2+9}\d z$.
+    \item 设 $C$ 为从 $1+i$ 到 $1-i$ 的直线, 计算 $\displaystyle\int_C (3z^2+1) \d z$.
+    \item 设 $C$ 为正向圆周 $|z-1|=4$, 计算 $\displaystyle\oint_C\frac{\sin z+2z}{(z+\pi)^2}\d z$.
+    \item 假设 $v(x,y)=x^2+4xy+ay^2$ 是调和函数，计算参数 $a$ 以及解析函数 $f(z)=u+iv$, 使得 $v$ 是 $f(z)$ 的虚部.
+    \item 已知 $f(z)=u+iv$ 是解析函数, 其中 $u(x,y)=x^2+axy-y^2, v=2x^2-2y^2+2xy$ 且 $a$ 是实数.
+    计算参数 $a$ 以及解析函数 $f'(z)$, 其中 $f'(z)$ 需要写成 $z$ 的表达式.
+    \item 设 $C$ 为有向曲线 $z(t)=\sin t+it,0\le t\le \pi$, 计算 $\displaystyle\int_C ze^z \d z$.
+    \item 设 $C$ 为正向圆周 $|z-1|=4$, 计算 $\displaystyle\oint_C\frac{\sin z}{z^2+1}\d z$.
+    \item 假设 $u(x,y)=x^3+ax^2y+bxy^2-3y^3$ 是调和函数，求参数 $a,b$ 以及 $v(x,y)$ 使得 $v(0,0)=0$ 且 $f(z)=u+iv$ 是解析函数.
+  \end{subex}
+  \item 证明题.
+  \begin{subex}
+    \item 设 $C_1$ 和 $C_2$ 为两条分离的闭路, 证明
+      \[
+        \frac1{2\pi i}\biggl(\oint_{C_1}\frac{z^2\d z}{z-z_0}+\oint_{C_2}\frac{\sin z\d z}{z-z_0}\biggr)=
+        \begin{cases}
+          z_0^2,&\text{当 $z_0$ 在 $C_1$ 内时,}\\
+          \sin z_0,&\text{当 $z_0$ 在 $C_2$ 内时.}
+        \end{cases}
+      \]
+    \item 设 $f(z)$ 和 $g(z)$ 在区域 $D$ 内处处解析, $C$ 为 $D$ 内任意一条闭路, 且 $C$ 的内部完全包含在 $D$ 中.
+      如果 $f(z)=g(z)$ 在 $C$ 上所有的点处成立, 证明在 $C$ 内部所有点处 $f(z)=g(z)$ 也成立.
+    \item 证明: 一对共轭调和函数的乘积仍为调和函数.
+    \item 证明如果 $f$ 在复平面解析且有界, 则对任意 $a\in\BC$, 有
+      $\displaystyle\int_{|z|=R}\frac{f(z)}{(z-a)^2}\d z=0$,
+    其中 $R>|a|$.
+    由此证明 $f$ 是常数.
+    \item 设 $f$ 是域 $|z|>r>0$ 上的解析函数.
+    证明: 如果对于 $|a|>R>r$,  $\displaystyle\lim_{z\to\infty} f(z)=f(a)$, 则积分
+      \[\int_{|z|=R} \frac{f(z)}{z-a}\d z=0.\]
+  \end{subex}
 \end{homework}
 
 
 
 
 
-\item 设 $f(z)=\dfrac1{(z+i)^{2023}}$, 则 $\displaystyle\oint_{|z|=2}f(z)\diff z=$\fillblank{}.
-
-\item 设 $f(z)=e^z-|z|\cos z$, 则 $\displaystyle\oint_{|z|=1}f(z)\diff z=$\fillblank{}.
-\item 设 $C$ 为正向圆周 $|z|=2$, 则积分 $\displaystyle\oint_C\left(\frac{\overline z}{z}\right)\diff z=$\fillblank{}.
-\item 设 $a,b,c$ 为实数. 如果函数 $f(z)=x^2-2xy-y^2+i(ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$\fillblank{}.
-\item 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 求 $\displaystyle\int_C\cos^2z\diff z$.
-\item 设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
-\item 假设 $v(x,y)=x^3+y^3-axy(x+y)$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
-\item 设 $C$ 为正向圆周 $|z|=1$, 则积分 $\displaystyle\oint_C\left(\frac{1+z+z^2}{z^3}\right)\diff z=$\fillblank{}.\item 设 $C$ 是从 $i$ 到 $2+i$ 的直线, 求 $\displaystyle\int_C \overline z\diff z$.
-\item 求 $\displaystyle\int_{-\pi i}^{\pi i}(e^z+1)\diff z$.
-\item 求 $\displaystyle\int_0^\pi (z+\cos 2z)\diff z$.
-\item 设 $C$ 为正向圆周 $|z|=4$, 求 $\displaystyle\oint_C\frac{z-6}{z^2+9}\diff z$.
-\item 函数 $f(z)=\dfrac 1z$ 在下面哪个区域内有原函数?~(~~~~)
-\xx{$0<|z|<1$}{$\Re z>0$}{$|z-1|>2$}{$|z+1|+|z-1|>4$}
-\item 设 $f(z)=\displaystyle\oint_{|\zeta|=4}\dfrac{\sin\zeta-\cos\zeta}{\zeta-z}\diff\zeta$, 则 $f'(\pi)=$(~~~~)
-\xx{$0$}{$2\pi i$}{$-2\pi i$}{$\pi i$}
-\item 下面哪个函数不能作为解析函数的虚部?~(~~~~)
-\xx{$2x+3y$}{$2x^2+3y^2$}{$x^2-xy-y^2$}{$e^x\cos y$}
-\item 设 $f(z)=\displaystyle\oint_{|\zeta|=2}\dfrac{\zeta^3+3\zeta}{\zeta-z}\diff\zeta$, 则 $f'(i)=$(~~~~)
-\xx{$0$}{$3i$}{$-3i$}{$2i$}
-\item 下面哪个函数不是调和函数?~(~~~~)
-\xx{$3x-y$}{$x^2-y^2$}{$\ln(x^2+y^2)$}{$\sin x\cos y$}
-\item 设 $C$ 为从 $1+i$ 到 $1-i$ 的直线, 求 $\displaystyle\int_C (3z^2+1) \diff z$.
-\item 设 $C$ 为正向圆周 $|z-1|=4$, 求 $\displaystyle\oint_C\frac{\sin z+2z}{(z+\pi)^2}\diff z$.
-\item 假设 $v(x,y)=x^2+4xy+ay^2$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)=u+iv$, 使得 $v$ 是 $f(z)$ 的虚部.
 
 
 
+\newpage
+\section{扩展阅读\optional}
 
-\sectionExtraReading
-\begin{homework}
-	\item 扩展阅读. 该部分作业不需要交, 有兴趣的同学可以做完后交到任课教师邮箱.
-		\begin{exlist}
-			\item 设 $f(z)=u+iv$.
-			当 $u,v$ 是二元可微函数时, 我们也可以使用格林公式来计算 $f(z)$ 绕闭路的积分.
-				\begin{tasks}
-					\task 设 $C$ 是一条光滑或逐段光滑的闭路, $D$ 是其内部区域. 函数 $u(x,y),v(x,y)$ 在 $D$ 及其边界上连续可微. 证明
-					\[\oint_C f(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
-					+i\iint_D(u_x-v_y)\diff x\diff y,\]
-					并由此计算 $\displaystyle\oint_{|z|=1}\Re z\diff z$.
-					\task 证明
-					\[\oint_C f(z)\diff z=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z=2i\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y,\]
-					并由此计算 $\displaystyle\oint_{|z|=1}\Re z\diff z$.
-				\end{tasks}
-			\item 设 $f(z)$ 在闭路 $C$ 及其外部区域 $D$ 解析, $z_0\in D$. 是否有类似的柯西积分公式?
-			我们假设 $\lim\limits_{z\to\infty}f(z)=A$ 存在.
-			\begin{center}
-			\begin{tikzpicture}
-				\fill[cstfille5] (-4,4) rectangle (4,-4);
-				\fill[cstdote,main] (0,0) circle;
-				\draw[cstcurve,second] (0,0) circle (0.8);
-				\draw[cstcurve,fourth] (0,0) circle (3.3);
-				\filldraw[cstcurve,main,rounded corners=0.5cm,fill=white] (-3,0.8) rectangle (-1,-0.8);
-				\draw
-					(0,0.3) node[main] {$z_0$}
-					(-1.5,-0.4) node[main] {$C$}
-					(1.1,-0.3) node[second] {$C_1$}
-					(2.5,1) node[fourth] {$C_2$};
-			\end{tikzpicture}
-			\end{center}
-			\begin{tasks}
-				\task 选取以 $z_0$ 为圆心的圆 $C_1,C_2$ 如图所示.
-				利用长大不等式证明 $\displaystyle \frac1{2\pi i}\oint_{C_2}\frac{f(z)}{z-z_0}\diff z=A$.
-				\task 利用复合闭路定理证明 $\displaystyle \frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\diff z=A-f(z_0)$.
-			\end{tasks}
-		\end{exlist}
-\end{homework}
+\subsection{格林公式计算积分}
+设 $f(z)=u+iv$.
+当 $u,v$ 是二元可微函数时, 我们也可以使用格林公式来计算 $f(z)$ 绕闭路的积分.
 
 
-\sectionExerciseAnswer
-\exans $-\dfrac12+\dfrac i2$.
-\exans \enumnum1 $0$; \enumnum2 $0$.
-\exans $v(x,y)=2x^3+3x^2y-6xy^2-y^3+C$.
+\begin{subex}
+  \item 设 $C$ 是一条光滑或逐段光滑的闭路, $D$ 是其内部区域. 函数 $u(x,y),v(x,y)$ 在 $D$ 及其边界上连续可微. 证明
+  \[
+    \oint_C f(z)\d z=-\iint_D(v_x+u_y)\d x\d y
+    +i\iint_D(u_x-v_y)\d x\d y.
+  \]
+  \item 将上述等式改写为如下形式:
+    \[
+      \oint_Cf(z)\d z=2i\iint_D\pdv f{\ov z}\d x\d y=0
+    \]
+  \item 计算
+    \begin{subsubex}(2)
+      \item $\displaystyle\oint_{|z|=r}\Im z\d z$;
+      \item $\displaystyle\oint_{|z|=r}\dfrac 1z\d z$;
+      \item* $\displaystyle\oint_{C}\Re z\d z$, 其中 $C$ 是 $0,i,1+i$ 构成的三角形闭路. 该结果与\thmref{例}{exam:re-z-integral} 有何联系?
+    \end{subsubex}
+\end{subex}
+
+
+\subsection{闭路外的柯西积分公式}
+
+设 $f(z)$ 在闭路 $C$ 及其外部区域 $D$ 解析, $z_0\in D$. 是否有类似的柯西积分公式?
+我们假设 $\liml_{z\to\infty}f(z)=A$ 存在.
+\begin{center}
+\begin{tikzpicture}
+  \fill[cstfille5] (-4,4) rectangle (4,-4);
+  \fill[cstdote,main] (0,0) circle;
+  \draw[cstcurve,second] (0,0) circle (0.8);
+  \draw[cstcurve,fourth] (0,0) circle (3.3);
+  \filldraw[cstcurve,main,rounded corners=0.5cm,fill=white] (-3,0.8) rectangle (-1,-0.8);
+  \draw
+    (0,0.3) node[main] {$z_0$}
+    (-1.5,-0.4) node[main] {$C$}
+    (1.1,-0.3) node[second] {$C_1$}
+    (2.5,1) node[fourth] {$C_2$};
+\end{tikzpicture}
+\end{center}
+\begin{subex}
+  \item 选取以 $z_0$ 为圆心的圆 $C_1,C_2$ 如图所示.
+  利用\thmGrowUp 证明 $\displaystyle \frac1{2\pi i}\oint_{C_2}\frac{f(z)}{z-z_0}\d z=A$.
+  \item 利用\thmCCC 证明 $\displaystyle \frac1{2\pi i}\oint_C\frac{f(z)}{z-z_0}\d z=A-f(z_0)$.
+\end{subex}

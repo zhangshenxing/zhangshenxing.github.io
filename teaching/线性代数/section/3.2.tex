@@ -22,7 +22,7 @@
 		\[f(\lambda x_1,\dots,\lambda x_n)=\lambda^2f(x_1,\dots,x_n),\quad\forall\lambda\in\BR,\]
 		则称 $f$ 为\emph{二次齐次多项式}或\emph{实二次型}.
 		它可以写成
-		\[f(x)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2+2a_{12}x_1x_2+\cdots+2a_{n-1,n}a_{n-1,n}.\]
+		\[f(x)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2+2a_{12}x_1x_2+\cdots+2a_{n-1,n}x_{n-1}x_n.\]
 	\end{definition}
 	\onslide<+->
 	\alert{本课程仅讨论实二次型}.
@@ -103,7 +103,7 @@
 	\begin{proposition}
 		对称方阵的(正交)合同满足
 		\begin{enumerate}
-			\item 自反性: $\bfA$ 与自身正交合同;
+			\item 自反性: $\bfA$ 与自身(正交)合同;
 			\item 对称性: 若 $\bfA$ (正交)合同于 $\bfB$, 则 $\bfB$ (正交)合同于 $\bfA$;
 			\item 传递性: 若 $\bfA$ (正交)合同于 $\bfB$, $\bfB$ (正交)合同于 $\bfC$, 则 $\bfA$ (正交)合同于 $\bfC$.
 		\end{enumerate}
@@ -112,7 +112,7 @@
 	\onslide<+->
 	合同、等价、相似有如下关系:
 	\begin{enumerate}
-		\item 若 $\bfA,\bfB$ 合同, 则 $\bfA,\bfB$ 等价, $R(\bfA)=R(\bfB)$. 反之未必.
+		\item 若 $\bfA,\bfB$ 合同, 则 $\bfA,\bfB$ 等价, $\rank(\bfA)=\rank(\bfB)$. 反之未必.
 		\item 若 $\bfA,\bfB$ 正交合同, 则 $\bfA,\bfB$ 相似. 反之, \alert{若实对称阵 $\bfA,\bfB$ 相似, 则二者正交合同}.
 	\end{enumerate}
 \end{frame}
@@ -186,11 +186,10 @@
 	\end{corollary}
 	\onslide<+->
 	\begin{exercise}
-		设 $\bma_1=(1,-3,1)^\rmT,\bma_2=(1,a,2)^\rmT$ 是实实对称阵 $\bfA$ 对应特征值 $\lambda_1=1$ 和 $\lambda_2=2$ 的特征向量, 则$a=$\fillblankframe{$1$}.
-	\end{exercise}
-	\onslide<+->
-	\begin{exercise}
-		若 $3$ 阶实实对称阵 $\bfA$ 满足 $\bfA^2=\bfA, R(\bfA)=1$, 则 $\bfA$ 的特征值为\fillblankframe[2cm]{$0,0,1$}.
+		\begin{enumerate}
+			\item 设 $\bma_1=(1,-3,1)^\rmT,\bma_2=(1,a,2)^\rmT$ 是实对称阵 $\bfA$ 对应特征值 $\lambda_1=1$ 和 $\lambda_2=2$ 的特征向量, 则$a=$\fillblankframe{$1$}.
+			\item 若 $3$ 阶实对称阵 $\bfA$ 满足 $\bfA^2=\bfA, \rank(\bfA)=1$, 则 $\bfA$ 的特征值为\fillblankframe[2cm]{$0,0,1$}.
+		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
@@ -203,12 +202,13 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由于有两个与特征值 $3$ 对应的线性无关特征向量, 因此与 $\bma_1$ 正交的向量都是与特征值 $3$ 对应的特征向量.
+		由于 $\bfA$ 有两个对应特征值 $3$ 的线性无关特征向量, 因此与 $\bma_1$ 正交的向量都是与特征值 $3$ 对应的特征向量.
 		\onslide<+->{%
-			由 $\bma_1^\rmT\bfx=0$ 得 $\bfa_2=(-1,1,0)^\rmT,\bfa_3=(-1,0,1)^\rmT$.
+		由 $\bma_1^\rmT\bfx=0$ 得 $\bma_2=(-1,1,0)^\rmT,\bma_3=(-1,0,1)^\rmT$.
 		}\onslide<+->{%
-			故
-			\[\bfA=\bfP\diag(6,3,3)\bfP^{-1}
+		故
+		\[
+			\bfA=\bfP\diag(6,3,3)\bfP^{-1}
 			=\begin{pmatrix}
 				1&-1&-1\\
 				1&1&0\\
@@ -225,16 +225,20 @@
 				4&1&1\\
 				1&4&1\\
 				1&1&4
-			\end{pmatrix}.\]
+			\end{pmatrix}.
+		\]
 		}\vspace{-.5\baselineskip}
 	\end{solution}
 	\onslide<+->
-	\begin{solution}{另解}
-		注意到 $\bfA-3\bfE$ 行和为 $3$, 迹为 $3$, 可设 $\bfA-3\bfE=\begin{pmatrix}
-			c&a&b\\
-			a&b&c\\
-			b&c&a
-		\end{pmatrix}$, $a+b+c=3$. 再由 $R(\bfA-3\bfE)=1$ 可知 $a=b=c=1$.
+	\begin{solution}[另解]
+		根据 $\bfA$ 的行和、迹和对称性可设 $\bfA=\begin{pmatrix}
+			a&b&6-a-b\\
+			b&9-a-b&a\\
+			6-a-b&a&3+b
+		\end{pmatrix}$.
+		\onslide<+->{%
+		再由 $\rank(\bfA-3\bfE)=1$ 可知 $a=4,b=1$.
+		}
 	\end{solution}
 \endgroup
 \end{frame}
@@ -242,12 +246,12 @@
 
 \begin{frame}{实二次型对角化的步骤}
 	\onslide<+->
-	对称阵正交实二次型的对角化, 或求正交变换 $\bfx=\bfP\bfy$ 将实二次型 $f$ 化为标准形的步骤:
+	对称阵正交合同对角化, 或求正交变换 $\bfx=\bfP\bfy$ 将实二次型 $f$ 化为标准形的步骤:
 	\begin{enumerate}
 		\item 写出 $f$ 对应的对称阵 $\bfA$.
 		\item 求出 $\bfA$ 的特征值.
-		\item \alert{若特征值是 $k\ge1$ 重的, 求出 $k$ 个特征向量后, 用格拉姆-施密特方法将其正交单位化.}
-		\item 这些特征向量构成正交阵 $\bfP$, $\bfP^\rmT\bfA\bfP$ 为这些特征向量对应的特征值构成的对角阵.
+		\item \alert{若特征值是 $k$ 重的, 求出 $k$ 个特征向量后, 用格拉姆-施密特方法将其正交单位化.}
+		\item 这些特征向量构成正交阵 $\bfP$, $\bfP^\rmT\bfA\bfP=\diag(\lambda_1,\lambda_2,\dots,\lambda_n)$.
 		\item 写出正交变换 $\bfx=\bfP\bfy$ 以及对应的实二次型
 		\[f=\lambda_1 y_1^2+\cdots+\lambda_n y_n^2.\]
 	\end{enumerate}
@@ -304,7 +308,7 @@
 			\end{pmatrix}\implies\bma_2=\begin{pmatrix}
 				0\\1\\1
 			\end{pmatrix}$.
-			\item 对于 $\lambda_3=-1$, $\bfA-\bfE=\begin{pmatrix}
+			\item 对于 $\lambda_3=-1$, $\bfA+\bfE=\begin{pmatrix}
 				3&0&0\\
 				0&1&1\\
 				0&1&1
@@ -422,8 +426,8 @@
 
 		\onslide<+->{%
 			同上例可得 $\displaystyle\bfP=\begin{pmatrix}
-				\dfrac1{\sqrt3}&-\dfrac1{\sqrt2}&-\dfrac1{\sqrt6}\\
-				\dfrac1{\sqrt3}&\dfrac1{\sqrt2}&-\dfrac1{\sqrt6}\\
+				\dfrac1{\sqrt3}&-\dfrac1{\sqrt2}&-\dfrac1{\sqrt6}\\[2mm]
+				\dfrac1{\sqrt3}&\dfrac1{\sqrt2}&-\dfrac1{\sqrt6}\\[2mm]
 				\dfrac1{\sqrt3}&0&\dfrac2{\sqrt6}
 			\end{pmatrix}$.
 		}
@@ -432,6 +436,10 @@
 
 
 \begin{frame}{典型例题: 实二次型的对角化}
+	\onslide<+->
+	\begin{example}
+		设实二次型 $f=a(x_1^2+x_2^2+x_3^2)+4x_1x_2+4x_2x_3+4x_3x_1$ 经正交变换化成标准形 $f(y_1,y_2,y_3)=6y_1^2$, 则 $a=$\fillblankframe{$2$}.
+	\end{example}
 	\onslide<+->
 	\begin{exercise}
 		设实二次型 $f=x_1^2+2x_2^2+ax_3^2-4x_1x_2-4x_2x_3$ 经过正交变换 $\bfx=\bfP\bfy$ 化为 $f=2y_1^2+5y_2^2+by_3^2$.
@@ -445,8 +453,35 @@
 			2&2&1
 		\end{pmatrix}$.
 	\end{answer}
-	\onslide<+->
-	\begin{example}
-		设实二次型 $f=a(x_1^2+x_2^2+x_3^2)+4x_1x_2+4x_2x_3+4x_3x_1$ 经正交变换化成标准形 $f(y_1,y_2,y_3)=6y_1^2$, 则 $a=$\fillblankframe{2}.
-	\end{example}
 \end{frame}
+
+
+\begin{frame}{例: 正定的性质和判定}
+	\beqskip{6pt}
+		\onslide<+->
+		\begin{example}
+			设二次型 $f=\bfx^\rmT\bfA\bfx$.
+			证明: 当 $\|x\|=1$ 时, $f(\bfx)$ 的最大(小)值为实对称阵 $\bfA$ 的最大(小)特征值.
+		\end{example}
+		\onslide<+->
+		\begin{proof}
+			将 $\bfA$ 的特征值排序为  $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_n$.
+			\onslide<+->{%
+				存在正交变换 $\bfx=\bfP\bfy$ 使得
+				\[\bmL=\bfP^\rmT\bfA\bfP=\diag(\lambda_1,\dots,\lambda_n),\quad 
+				f=\bfx^\rmT\bfA\bfx=\bfy^\rmT\bmL\bfy=\lambda_1y_1^2+\cdots+\lambda_ny_n^2.\]
+			}\onslide<+->{%
+				由于正交变换保持长度, 因此 $\|\bfx\|=1\iff\|\bfy\|=1$.
+			}\onslide<+->{%
+				\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\le\lambda_1(y_1^2+\cdots+y_n^2)=\lambda_1,\]
+				且等式可在 $\bfy=(1,0,\dots,0)$ 处取得.
+			}\onslide<+->{%
+				\[f=\lambda_1y_1^2+\cdots+\lambda_ny_n^2\ge\lambda_n(y_1^2+\cdots+y_n^2)=\lambda_n,\]
+				且等式可在 $\bfy=(0,\dots,0,1)$ 处取得.
+			}\onslide<+->{%
+				故 $f$ 的最大值为 $\lambda_1$, 最小值为 $\lambda_n$.\qedhere
+			}
+		\end{proof}
+	\endgroup
+\end{frame}
+	
