@@ -172,13 +172,13 @@
 % 分段枚举环境
 \newenvironment{enumpar}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
-		\par%
+		\par\vspace*{\itemsep}%
 	\refstepcounter{enumi}\theenumi{ }}}%
 {\ignorespacesafterend}
 % 首项不分段枚举环境
 \newenvironment{enumnopar}[1][(1)]{%
 	\setenumtype{#1}\renewcommand{\item}{%
-    \ifnum\value{enumi}=0\else\par\fi%
+    \ifnum\value{enumi}=0\else\par\vspace*{\itemsep}\fi%
   \refstepcounter{enumi}\theenumi { }}}%
 {\ignorespacesafterend}
 % 不分段枚举环境
@@ -191,7 +191,7 @@
 \newlength\itemparindent
 \setlength{\itemparindent}{0em}
 \newenvironment{itempar}[1][$\bullet$]{%
-	\renewcommand{\item}{\par\hspace*{\itemparindent}{\upshape\textcolor{main}{#1}} { }}}%
+	\renewcommand{\item}{\par\vspace*{\itemsep}\hspace*{\itemparindent}{\upshape\textcolor{main}{#1}} { }}}%
 {\ignorespacesafterend}
 
 \RequirePackage{tasks}
@@ -349,8 +349,8 @@
   \par\noindent\textbf{\color{second}{作~~业} \theprob #1 }\rmfamily}{
   \par\ignorespacesafterend}
 
-\newenvironment{solution}[1][解]{\par\textbf{\color{main}#1~~} \citshape}{\par}
-\renewenvironment{proof}[1][证明]{\par\textbf{\color{main}#1~~} \citshape}{\par}
+\newenvironment{solution}[1][解]{\par\textbf{\color{main}#1~~} \citshape}{\par\vspace*{\itemsep}}
+\renewenvironment{proof}[1][证明]{\par\textbf{\color{main}#1~~} \citshape}{\par\vspace*{\itemsep}}
 
 \newenvironment{remark}{\vspace*{5pt}\noindent\textbf{\color{third}注}}{\vspace*{5pt}\par}
 

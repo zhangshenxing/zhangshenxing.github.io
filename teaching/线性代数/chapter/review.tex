@@ -1,7 +1,8 @@
 \documentclass[aspectratio=169,handout]{ctexbeamer}
 \input{../../../latex/cn_teach}
 \title{线性代数(复习课)}
-\let\rank\relax\DeclareMathOperator\rank{\rank}
+\let\rank\relax\DeclareMathOperator\rank{R}
+
 \begin{document}
 
 
@@ -10,7 +11,7 @@
 	\begin{itemize}
 		\item 加减法和数乘、乘法.
 		\item 一般 $\bfA\bfB\neq \bfB\bfA$, 但 $\bfA=\bfE,\bfO,f(\bfB)/g(\bfB)$ 时可以.
-		\item 一般 $\bfA\bfC=\bfB\bfC$ 推不出 $\bfA=\bfB$, 但 $\bfC$ 可逆时可以.
+		\item 一般 $\bfA\bfB=\bfA\bfB$ 推不出 $\bfB=\bfC$, 但 $\bfA$ 列满秩时可以.
 		\item 矩阵的幂: 对角阵、$\lambda \bfE+\bfN$、$\bfu\bfv^\rmT$ 情形, 或相似与这些矩阵情形.
 	\end{itemize}
 \end{frame}
@@ -34,10 +35,10 @@
 			n,&\rank(\bfA)=n;\\
 			1,&\rank(\bfA)=n-1;\\
 			0,&\rank(\bfA)\le n-2.
-		\end{cases}.$
+		\end{cases}$
 		\item $(\bfA,\bfE)\simr (\bfE,\bfA^{-1})$,
 		$(\bfA,\bfB)\simr (\bfE,\bfA^{-1}\bfB)$.
-		\item $\bfA$ 可逆$\iff |\bfA|\neq0 \iff \rank(\bfA)=n\iff\bfA$ 的行最简形为 $\bfE$ $\iff\bfA\sim\bfE\iff\bfA\simr\bfE\iff\bfA\simc\bfE\iff\bfA\bfx={\bf0}$ 只有零解 $\iff\bfA\bfx=\bfb$ 总有解$\iff\bfA\bfx=\bfb$ 总有唯一解 $\iff\bfA$ 特征值都非零.
+		\item $\bfA$ 可逆$\iff |\bfA|\neq0 \iff \rank(\bfA)=n\iff\bfA$ 行最简形为 $\bfE$ $\iff\bfA\sim\bfE\iff\bfA\simr\bfE\iff\bfA\simc\bfE\iff\bfA\bfx={\bf0}$ 只有零解 $\iff\bfA\bfx=\bfb$ 总有解$\iff\bfA\bfx=\bfb$ 总有唯一解 $\iff\bfA$ 特征值都非零.
 	\end{itemize}
 \end{frame}
 
@@ -49,7 +50,7 @@
 		\item 一般用初等变换计算.
 		\item $\rank(\bfA)<n$ 时 $|\bfA|=0$.
 		\item $|\bfA\bfB|=|\bfA|\cdot|\bfB|$, $|\bfA^\rmT|=|\bfA|$, $|k\bfA|=k^n|\bfA|$.
-		\item 拉普拉斯展开, 以及 $\sum_{j=1}^n a_{ij}A_{jk}=0$ 或 $1$.
+		\item 拉普拉斯展开, 以及 $\suml_{j=1}^n a_{ij}A_{jk}=0$ 或 $|\bfA|$.
 		\item 特殊形状行列式的计算, 范德蒙行列式.
 		\item 互换两行(列)后, 方阵的行列式变为 $-1$ 倍.
 		\item 方阵的某一行(列)乘 $k$ 后, 方阵的行列式变为 $k$ 倍.
@@ -57,33 +58,26 @@
 		\item 具有相同的两行(列)的方阵的行列式为零: $|\cdots,\bfv,\cdots,\bfv,\cdots|=0$.
 		\item 若方阵有一行(列)全为零, 则行列式为零: $|\cdots,{\bf0},\cdots|=0$.
 		\item 若方阵有两行(列)成比例, 则行列式为零: $|\cdots,\bfv,\cdots,k\bfv,\cdots|=0$.
-		\item 行列式中某一行(列)的公因子可以提到行列式外面.
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{向量组}
 	\onslide<+->
+	设 $\bfA=(\bma_1,\dots,\bma_m),\bfB=(\bmb_1,\dots,\bmb_m)$ 列向量组分别为 $S,T$.
 	\begin{itemize}
-		\item 线性组合: $\bmb=\lambda_1\bma_1+\cdots+\lambda_m\bma_m\iff \bmb=\bfA\bfx$ 有解 $\iff \bmb\in V$. 其中 $V$ 是这组向量生成的空间.
+		\item 线性组合: $\bmb=\lambda_1\bma_1+\cdots+\lambda_m\bma_m\iff \bmb=\bfA\bfx$ 有解 $\iff \rank(\bfA)=\rank(\bfA,\bmb)$.
 		\item 线性无关: $\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}$ 只有零解$\iff$
-		$\bfA\bfx={\bf0}$ 只有零解$\iff$
-		$V$ 中向量可唯一表示$\iff$
-		$\rank(\bfA)$ 列满秩$\iff$
-		$\rank(S)=m$$\iff$
-		$\dim V=m$.
-		\item 线性相关: 存在不全为零的数使得 $\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0}$$\iff$
-		$\rank(S)<m$.
-		\item 设 $S,T$ 分别为 $\bfA,\bfB$ 的列向量组, 且分别生成空间 $V,W$. 
-		$T$ 可以被 $S$ 线性表示$\iff$ $W\subseteq V$
-		$\iff$ $\exists\bfX$ 使得 $\bfA\bfX=\bfB$.
-		\item $S,T$ 向量组等价$\iff W=V$ $\iff$ $\exists\bfX,\bfY$ 使得 $\bfB=\bfA\bfX,\bfA=\bfB\bfY$. 
+		$\bfA\bfx={\bf0}$ 只有零解$\iff$ $\rank(\bfA)=\rank(S)=m$.
+		\item 线性相关: 存在不全为零的数使得 $\lambda_1\bma_1+\cdots+\lambda_m\bma_m={\bf0} \iff \rank(S)<m$.
+		\item $T$ 可以被 $S$ 线性表示 $\iff \bfA\bfX=\bfB$ 有解 $\iff \rank(\bfA)=\rank(\bfA,\bfB)$.
+		\item $S,T$ 向量组等价 $\iff \bfB=\bfA\bfX,\bfA=\bfB\bfY $ 有解 $\iff \rank(\bfA)=\rank(\bfA,\bfB)=\rank(\bfB)$.
 		\item 设 $\bma_1,\dots,\bma_m$ 线性无关, $(\bmb_1,\dots,\bmb_n)=(\bma_1,\dots,\bma_m)\bfC$. 
 		$\bmb_1,\dots,\bmb_n$ 线性无关$\iff \bfC\bfx={\bf0}$ 只有零解.
-		\item 向量组线性相关$\iff$其中至少有一个向量可以由其它向量线性表示.
+		\item 向量组线性相关 $\iff$ 其中至少有一个向量可以由其它向量线性表示.
 		\item 若 $S$ 线性无关, $S\cup\{\bmb\}$ 线性相关, 则 $\bmb$ 可以由 $S$ 唯一线性表示.
-		\item 部分相关$\implies$整体相关, 整体无关$\implies$部分无关.
-		\item 高维相关$\implies$低维相关, 低维无关$\implies$高维无关.
+		\item 整体无关 $\implies$ 部分无关.
+		\item 低维无关$\implies$ 高维无关.
 		\item 多的由少的表示, 多的一定线性相关.
 	\end{itemize}
 \end{frame}
@@ -102,7 +96,7 @@
 		\item 若 $\bfA_{m\times n}\bfB_{n\times\ell}=\bfO$, 则 $\rank(\bfA)+\rank(\bfB)\le n$;
 		\item $\rank(a\bfA+b\bfB)\le \rank(\bfA,\bfB)\le \rank(\bfA)+\rank(\bfB)$.
 		特别地, $\max\bigl(\rank(\bfA),\rank(\bfB)\bigr)\le \rank(\bfA,\bfB)$.
-		\item 一组基: $S$ 大小是 $n$; $S$ 生成 $V$; $S$ 线性无关. 其中任意两条. 极大无关组类似.
+		\item $S_0\subseteq S$ 是极大无关组, 如果下面任意两条满足: $S_0$ 大小是 $\rank(S)$; $S_0$ 和 $S$ 等价; $S_0$ 线性无关.
 	\end{itemize}
 \end{frame}
 
@@ -125,11 +119,15 @@
 		\item 正交阵: 行(列)向量组是标准正交基.
 		\item $\bfA$ 正交$\iff\bfA^\rmT,\bfA^{-1},\bfA^*$ 也正交.
 		\item $|\bfA|=\pm1$.
-		\item 对角元之和$=$迹 $\Tr(A)=$特征值之和. ($\Tr(A^2)=$特征值平方和)
+	\end{itemize}
+	\begin{itemize}
+		\item 特征值: 解特征多项式.
+		\item 对角元之和$=$迹 $\Tr(A)=$特征值之和. ($\Tr(\bfA^2)=$特征值平方和)
 		\item 行列式$=$特征值乘积.
 		\item $g(\bfA)/h(\bfA)$ 的特征值, $\bfA^\rmT,\bfA^*,\bfP^{-1}\bfA\bfP$ 特征值.
+	\end{itemize}
+	\begin{itemize}
 		\item 对称阵: $\bfA=\bfA^\rmT$, 反对称阵: $\bfA=-\bfA^\rmT$.
-		\item 特征值: 解特征多项式.
 	\end{itemize}
 \end{frame}
 
@@ -140,12 +138,16 @@
 	\begin{itemize}
 		\item 行等价: $\bfA\simr\bfB\iff \bfB=\bfP\bfA,\bfP$ 可逆$\iff$ 行向量组等价$\iff$ 列向量组保持线性关系$\iff\bfA\bfx={\bf0}$ 和 $\bfB\bfx={\bf0}$ 等价.
 		\item 等价: $\bfA\sim\bfB\iff \bfB=\bfP\bfA\bfQ,\bfP,\bfQ$ 可逆$\iff \rank(\bfA)=\rank(\bfB)$.
+	\end{itemize}
+	\begin{itemize}
 		\item 相似: 若 $\bfB=\bfP^{-1}\bfA\bfP$, 则特征值、迹、行列式、特征多项式相同.
 		\item 可对角化$\iff$有 $n$ 个线性无关特征向量(作为 $\bfP$ 的列). 特征值两两不同, 或对所有特征值 $\rank(\bfA-\lambda\bfE)=n-k$ ($\lambda$ 是 $k$ 重).
 		\item 不同特征值的特征向量线性无关.
-		\item 相合: 即二次型等价 $\bfB=\bfP^\rmT\bfP$. 特征值特征向量(可)全实, 可对角化. 标准型 $\diag(\bfE_p,-\bfE_{r-p},\bfO)$.
+	\end{itemize}
+	\begin{itemize}
+		\item 相合: 即二次型等价 $\bfB=\bfP^\rmT\bfA\bfP$. 特征值特征向量(可)全实, 可对角化. 标准型 $\diag(\bfE_p,-\bfE_{r-p},\bfO)$.
 		\item 正交相合: $\bfP$ 是正交阵. 将特征向量正交单位化.
-		\item 正定: 特征值全正, $p=n$, 顺序主子式全正(对角元全正).
+		\item 正定: 特征值全正, $p=n$, 顺序主子式全正($\implies$对角元全正).
 	\end{itemize}
 \end{frame}
 
@@ -206,8 +208,6 @@
 \end{frame}
 
 
-
-
 \begin{frame}{特征值和特征向量的计算}
 	\onslide<+->
 	\begin{enumerate}
@@ -216,24 +216,35 @@
 		\item 对于每一个特征值 $\lambda_i$, 解 $(\bfA-\lambda_i\bfE)\bfx={\bf0}$, 其\alert{非零解}就是对应特征向量.
 	\end{enumerate}
 	\onslide<+->
-	相似对角化的步骤如下:
+	\emph{相似对角化}:
 	\begin{enumerate}
 		\item 求出 $\bfA$ 的所有特征值 $\lambda_i$ 和特征向量 $\bfp_i$;
 		\item 若 $k$ 重特征值均有 $k$ 个对应的线性无关的特征向量, 则可对角化.
 		\item 若能, 将 $n$ 个对应的线性无关的特征向量 $\bfp_1,\dots,\bfp_n$ 组成方阵 $\bfP=(\bfp_1,\dots,\bfp_n)$, 
 		\[\bfP^{-1}\bfA\bfP=\diag(\lambda_1,\dots,\lambda_n).\]
 	\end{enumerate}
-	\vspace{-\baselineskip}
+\end{frame}
+
+
+\begin{frame}{合同}
 	\onslide<+->
-	实对称阵的正交合同对角化, 或求正交变换 $\bfx=\bfP\bfy$ 将实二次型 $f$ 化为标准形的步骤:
+	实对称阵的正交合同对角化, 或求\emph{正交变换} $\bfx=\bfP\bfy$ 将实二次型 $f$ 化为\emph{标准形}:
 	\begin{enumerate}
 		\item 写出 $f$ 对应的对称阵 $\bfA$.
 		\item 求出 $\bfA$ 的特征值.
 		\item \alert{若特征值是 $k$ 重的, 求出 $k$ 个特征向量后, 用格拉姆-施密特方法将其正交单位化.}
 		\item 这些特征向量构成正交阵 $\bfP$, $\bfP^\rmT\bfA\bfP$ 为这些特征向量对应的特征值构成的对角阵.
-		\item 写出正交变换 $\bfx=\bfP\bfy$ 以及对应的实二次型
-		\[f=\lambda_1 y_1^2+\cdots+\lambda_n y_n^2.\]
+		\item 写出正交变换 $\bfx=\bfP\bfy$ 以及对应的实二次型  $f=\lambda_1 y_1^2+\cdots+\lambda_n y_n^2$.
 	\end{enumerate}
+
+	\onslide<+->
+	求\emph{可逆变换} $\bfx=\bfP\bfy$ 将实二次型 $f$ 化为\emph{规范形}:
+	\begin{enumerate}
+		\item 求出正交变换 $\bfQ$ 使得
+		\[\bfQ^\rmT\bfA\bfQ=\diag(\lambda_1,\dots,\lambda_n).\]
+		\item 取 $\bfP=\bfQ\diag(\sqrt{|\lambda_1|},\dots,\sqrt{|\lambda_n|})^{-1}$, 零特征值对应位置任取非零数.
+	\end{enumerate}
+	也可用配方法. 若只求规范形, 可只看特征值正负号.
 \end{frame}
 
 \end{document}

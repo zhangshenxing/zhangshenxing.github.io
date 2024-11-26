@@ -1,10 +1,16 @@
 
+
 \chapter{级数}
+\label{chapter:4}
+
+复变函数的级数理论是为了研究如何把复变函数展开成幂级数或双边幂级数的形式, 这样复变函数的一些性质就显得较为简单.
+与高等数学有所不同, 只要复变函数在圆域或圆环域内处处解析, 就一定能展开成幂级数或双边幂级数的形式.
+这些展开均依赖于柯西积分公式, 其中圆环域内解析函数的双边幂级数展开, 即洛朗展开, 可与该函数绕闭路积分联系, 这便引出了复变函数的留数理论.
+
+
 \section{复数项级数}
 
-\subsection{复数项级数}
-
-复数域上的级数与实数域上的级数并无本质差别.
+和数列类似, 我们可仿照实数域上级数得到复数域上级数.
 
 \begin{definition}
 	\begin{enumpar}
@@ -41,15 +47,17 @@
 	由复数列的敛散性判定条件可知
 	\[
 		\lim_{n\to\infty}s_n=a+bi\iff	
-		\lim_{n\to\infty}\sigma_n=a,\quad 
+		\lim_{n\to\infty}\sigma_n=a\ \text{且}\ 
 		\lim_{n\to\infty}\tau_n=b.
 	\]
-	于是命题得证.
+	由此命题得证.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:absolute-convergent}
 	如果实数项级数
-	\[\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots\]
+	\[
+		\sum_{n=1}^\infty|z_n|=|z_1|+|z_2|+\cdots
+	\]
 	收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
 \end{theorem}
 
@@ -58,7 +66,9 @@
 	{故 $\suml_{n=1}^\infty z_n$ 也收敛.}
 
 	由三角不等式可知
-		$\displaystyle\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|$.
+	\[
+		\abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|.
+	\]
 	两边同时取极限即得级数的不等式关系
 	\[
 		 \abs{\sum_{n=1}^\infty z_n}
@@ -70,13 +80,15 @@
 	其中第二个等式是因为绝对值函数 $|z|$ 连续.
 \end{proof}
 
-\subsection{绝对收敛和条件收敛}
+\begin{exercise}
+	什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
+\end{exercise}
 
 \begin{definition}
-		\begin{enumerate}
+	\begin{enumpar}
 		\item 如果级数 $\suml_{n=1}^\infty |z_n|$ 收敛, 则称 $\suml_{n=1}^\infty z_n$ \noun{绝对收敛}.
 		\item 称收敛但不绝对收敛的级数\noun{条件收敛}.
-	\end{enumerate}
+	\end{enumpar}
 \end{definition}
 
 \begin{theorem}
@@ -84,33 +96,14 @@
 \end{theorem}
 
 \begin{proof}
-	必要性由前一定理的证明已经知道,
+	必要性由\thmref{定理}{thm:absolute-convergent} 的证明已经知道,
 	充分性由 $|z_n|\le|x_n|+|y_n|$ 可得.
 \end{proof}
 
-\begin{center}
-	\renewcommand\arraystretch{1.4}
-	\begin{tabular}{cccc} 
-		&\alert{发散}&\alert{条件收敛}&\alert{绝对收敛}\\
-		\textcolor{main}{\emph{发散}}&发散&发散&发散\\ 
-		\textcolor{main}{\emph{条件收敛}}&发散&条件收敛&条件收敛\\ 
-		\textcolor{main}{\emph{绝对收敛}}&发散&条件收敛&绝对收敛
-	\end{tabular}
-	\begin{tikzpicture}[overlay,fourth]
-		\draw[cstcurve] (-7.21,.81)--(-.12,.81);
-		\draw[cstcurve] (-5.2,1.46)--(-5.2,-1.54);
-		\draw[decorate,decoration={brace,amplitude=8},thick,main] (-6.4,-2.4)--(-6.4,-.4);
-		\draw[decorate,decoration={brace,amplitude=8},thick,second] (-4.3,.3)--(0.7,.3);
-		\draw (-1.8,.8) node[second] {实部级数}
-			(-7,-1.4) node[align=center,main] {虚\\部\\级\\数};
-	\end{tikzpicture}
-\end{center}
+$\suml_{n=1}^\infty z_n$ 条件收敛当且仅当它的实部和虚部级数都条件收敛, 或者一个条件收敛一个绝对收敛.
 
 绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性, 且不改变其和.
-
 一般的级数重排有限项不改变其敛散性与和, 但如果重排无限项则可能会改变其敛散性与和.
-
-想一想: 什么时候 $\abs{\suml_{n=1}^\infty z_n}=\suml_{n=1}^\infty|z_n|$?
 
 \begin{example}
 	级数 $\displaystyle\sum_{n=1}^\infty\frac{1+i^n}n$ 发散、条件收敛、还是绝对收敛?
@@ -118,12 +111,13 @@
 
 \begin{solution}
 	由于实部级数
-	\[\sum_{n=1}^\infty x_n=
-	1+\frac13+\frac24+\frac15+\frac17+\frac28+\cdots>\sum_{n=1}^\infty\frac1{2n-1}\]
+	\[
+		\sum_{n=1}^\infty x_n
+		=1+\frac13+\frac24+\frac15+\frac17+\frac28+\cdots
+		>\sum_{n=1}^\infty\frac1{2n-1}
+	\]
 	发散, 所以该级数发散.
 \end{solution}
-
-它的虚部级数是一个交错级数, 从而是条件收敛的.
 
 \begin{example}
 	级数 $\displaystyle\sum_{n=1}^\infty\dfrac{i^n}n$ 发散、条件收敛、还是绝对收敛?
@@ -131,31 +125,33 @@
 
 \begin{solution}
 	因为它的实部和虚部级数
-	\[\sum_{n=1}^\infty x_n=-\half +\frac14+\frac16-\frac18+\cdots\]
-{
-	\[\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots\]
-	均条件收敛,
-}{所以原级数条件收敛.}
+	\begin{align*}
+		\sum_{n=1}^\infty x_n&=-\half +\frac14+\frac16-\frac18+\cdots\\
+		\sum_{n=1}^\infty y_n&=1-\frac13+\frac15-\frac17+\cdots
+	\end{align*}
+	均条件收敛, 所以原级数条件收敛.
 \end{solution}
 
 \begin{exercise}
-	级数 $\displaystyle\sum_{n=1}^\infty\left[\frac{(-1)^n}n+\frac i{2^n}\right]$ 发散、条件收敛、还是绝对收敛?
+	级数 $\displaystyle\sum_{n=1}^\infty\biggl[\frac{(-1)^n}n+\frac i{2^n}\biggr]$ 发散、条件收敛、还是绝对收敛?
 \end{exercise}
 
-由正项级数的判别法可以得到:
-设
-\begin{enumerate}
-	\item \emph{达朗贝尔判别法(比值法)}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在);
-	\item \emph{柯西判别法(根式法)}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在);
-	\item \emph{柯西-阿达马判别法}: $\lambda=\displaystyle\ov{\lim_{n\to\infty}}\sqrt[n]{\abs{z_n}}$ (子数列中极限的最大值).
-\end{enumerate}
 
-\begin{itemize}
-	\item 当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛.
-	\item 当 $\lambda>1$ 时, $\suml_{n=0}^\infty z_n$ 发散.
+\subsection{判别法}
+
+由正项级数的判别法可以得到如下结论: 设
+\begin{enumpar}
+	\item \noun{比值法}\footnote{又名\emph{达朗贝尔判别法}.}: $\lambda=\displaystyle\lim_{n\to\infty}\abs{\frac{z_{n+1}}{z_n}}$ (假设存在或为 $+\infty$), 或
+	\item \noun{根式法}\footnote{又名\emph{柯西判别法}.}: $\lambda=\displaystyle\lim_{n\to\infty}\sqrt[n]{\abs{z_n}}$ (假设存在或为 $+\infty$),\footnote{
+		一般情形下, 我们有\emph{柯西-阿达马判别法}:  $\lambda=\displaystyle\lim_{k\to\infty}\max_{n\ge k}\sqrt[n]{\abs{z_n}}\in\BR\cup\{+\infty\}$, 即该数列收敛子数列的极限的最大值.}
+\end{enumpar}\par\noindent
+那么
+\begin{itempar}
+	\item 当 $\lambda<1$ 时, $\suml_{n=0}^\infty z_n$ 绝对收敛;
+	\item 当 $\lambda>1$ 时, $\suml_{n=0}^\infty z_n$ 发散;
 	\item 当 $\lambda=1$ 时, 无法使用该方法判断敛散性.
-\end{itemize}
-其证明是通过将该级数与相应的等比级数做比较得到的.
+\end{itempar}\par\noindent
+其证明是通过将该级数与相应的等比级数做比较得到的, 这里省略.
 
 \begin{example}
 	级数 $\displaystyle\sum_{n=0}^\infty\frac{(8i)^n}{n!}$ 发散、条件收敛、还是绝对收敛?
@@ -166,71 +162,92 @@
 \end{solution}
 
 实际上, 它的实部和虚部级数分别为
-\[1-\frac{8^2}{2!}+\frac{8^4}{4!}-\cdots=\cos 8,\quad
-8-\frac{8^3}{3!}+\frac{8^5}{5!}-\cdots=\sin 8,\]
+\[
+	1-\frac{8^2}{2!}+\frac{8^4}{4!}-\cdots=\cos 8,\quad
+	8-\frac{8^3}{3!}+\frac{8^5}{5!}-\cdots=\sin 8,
+\]
 因此
-\[\sum_{n=0}^\infty\frac{(8i)^n}{n!}=\cos 8+i\sin 8=e^{8i}.\]
+\[
+	\sum_{n=0}^\infty\frac{(8i)^n}{n!}=\cos 8+i\sin 8=e^{8i}.
+\]
+我们能否像高等数学情形一样, 直接将函数 $e^z$ 进行展开来得到该级数的和呢?
+事实上我们总可以将解析函数展开成幂级数.
+
 
 \section{幂级数}
 
-\subsection{幂级数的收敛域}
+\subsection{幂级数及其收敛域}
 
 复变函数级数与实变量函数级数也是类似的.
 
 \begin{definition}
-	\begin{itemize}
+	\begin{enumpar}
 		\item 设 $\{f_n(z)\}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
-		表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\emph{复变函数项级数}.
-		\item 对于 $z_0\in D$, 如果级数 $\suml_{n=1}^\infty f_n(z_0)$ 收敛, 则称 \emph{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\emph{和}.
-		\item 如果 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\emph{和函数}.
-		\item 称形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的函数项级数为\emph{幂级数}.\footnote{尽管 $z=a$ 时 $(a-z)^0$ 无意义, 但为了简便我们约定幂级数在 $z=a$ 时取值为 $c_0$.}
-	\end{itemize}
+		表达式 $\suml_{n=1}^\infty f_n(z)$ 称为\noun{复变函数项级数}.
+		\item 对于 $z_0\in D$, 如果级数 $\suml_{n=1}^\infty f_n(z_0)$ 收敛, 则称 \noun{$\suml_{n=1}^\infty f_n(z)$ 在 $z_0$ 处收敛}, 相应级数的值称为它的\noun{和}.
+		\item 如果 $\suml_{n=1}^\infty f_n(z)$ 在 $D$ 上处处收敛, 则它的和是一个函数, 称为\noun{和函数}.
+	\end{enumpar}
 \end{definition}
+
+\begin{definition}
+	称形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的函数项级数为\noun{幂级数}.\footnotemark
+\end{definition}
+\footnotetext{尽管 $z=a$ 时 $(a-z)^0$ 无意义, 但为了简便我们约定幂级数在 $z=a$ 时取值为 $c_0$.}
 
 我们只需要考虑 $a=0$ 情形的幂级数, 因为二者的收敛范围与和函数只是差一个平移.
 
-\begin{theorem}{阿贝尔定理}
-	\begin{enumerate}
-		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.
+\begin{theorem}[阿贝尔定理]
+	\begin{enumpar}
+		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处收敛, 那么对任意 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.\label{enum:abel-theorem-convergent}
 		\item 如果 $\suml_{n=0}^\infty c_nz^n$ 在 $z_0\neq 0$ 处发散, 那么对任意 $|z|>|z_0|$ 的 $z$, 该级数必发散.
-	\end{enumerate}
+	\end{enumpar}
 \end{theorem}
 
-\begin{proof}
-	{\enumnum1 因为级数收敛, 所以 $\liml_{n\to\infty}c_n z_0^n=0$.故存在 $M$ 使得 $|c_nz_0^n|<M$.对于 $|z|<|z_0|$,
-		\[\sum_{n=0}^\infty|c_nz^n|=\sum_{n=0}^\infty|c_nz_0^n|\cdot\abs{\frac z{z_0}}^n
-		{\le M\sum_{n=0}^\infty\abs{\frac z{z_0}}^n
-		=\frac{M}{1-\abs{\dfrac z{z_0}}}.}\]所以级数在 $z$ 处绝对收敛.\enumnum2是\enumnum1的逆否命题.\qedhere}
+\begin{proof}\delspace
+	\begin{enumnopar}
+		\item 因为级数 $\suml_{n=0}^\infty c_nz^n$ 收敛, 所以 $\liml_{n\to\infty}c_n z_0^n=0$.
+			故存在 $M$ 使得 $|c_nz_0^n|<M$.
+			对于 $|z|<|z_0|$,
+			\[
+				\sum_{n=0}^\infty|c_nz^n|=\sum_{n=0}^\infty|c_nz_0^n|\cdot\abs{\frac z{z_0}}^n
+				\le M\sum_{n=0}^\infty\abs{\frac z{z_0}}^n
+				=\frac{M}{1-\abs{\dfrac z{z_0}}}.
+			\]
+			所以级数在 $z$ 处绝对收敛.
+		\item 是 \ref{enum:abel-theorem-convergent} 的逆否命题.\qedhere
+	\end{enumnopar}
 \end{proof}
 
 设 $R$ 是实幂级数 $\suml_{n=0}^\infty|c_n|x^n$ 的收敛半径.
-\begin{itemize}
+\begin{itempar}
 	\item 如果 $R=+\infty$, 由阿贝尔定理可知 $\suml_{n=0}^\infty c_nz^n$ 处处绝对收敛.
 	\item 如果 $0<R<+\infty$, 那么 $\suml_{n=0}^\infty c_nz^n$ 在 $|z|<R$ 上绝对收敛, 在 $|z|>R$ 上发散.
 	\item 如果 $R=0$, 那么 $\suml_{n=0}^\infty c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
-\end{itemize}
-我们称 $R$ 为该幂级数的\emph{收敛半径}.
+\end{itempar}\par\noindent
+我们称 $R$ 为该幂级数的\noun{收敛半径}.
 
-\begin{center}
+\begin{figure}[!hbt]
+	\centering
 	\begin{tikzpicture}
-		\filldraw[cstcurve,main,cstfill2] (0,0) circle (1.2);
-		\fill[cstdot] (0,0) circle;
-		\draw[cstcurve,cstra] (0,0)--(0.96,0.72);
-		\draw[cstcurve,cstra] (-0.96,0.72)--(-2,0.72);
-		\draw
-			(0.6,0.1) node {$R$}
-			(0,-0.4) node[second] {绝对收敛}
-			(2.5,-0.4) node[second] {发散}
-			(-3,0.72) node[main] {都有可能};
+		\fill[cstfille2] (-2,-1.5) rectangle (2,1.5)
+			node[second,below right] {发散};
+		\filldraw[cstcurve,cstfill1] (0,0) circle (1.2);
+		\fill[cstdot] (0,0) circle
+			node[below,main] {绝对收敛};
+		\draw[cstcurve,cstra] (0,0)--(0.96,0.72)
+			node[pos=.5,below right] {$R$};
+		\draw[cstcurve,cstra] (-1.2,0)--(-2.4,0)
+			node[left] {都有可能};
 	\end{tikzpicture}
-\end{center}
+	\caption{幂级数的收敛范围}
+\end{figure}
 
 \begin{example}
 	求幂级数 $\suml_{n=0}^\infty z^n=1+z+z^2+\cdots$ 的收敛半径与和函数.
 \end{example}
 
 \begin{solution}
-	如果幂级数收敛, 则由 $z^n\to0$ 可知 $|z|<1$.
+	如果幂级数收敛, 则由 $\liml_{n\ra\infty}z^n=0$ 可知 $|z|<1$.
 	{当 $|z|<1$ 时, 和函数为
 		\[\lim_{n\to\infty}s_n=\lim_{n\to\infty}\frac{1-z^{n+1}}{1-z}=\frac1{1-z}.\]因此收敛半径为 $1$.}
 \end{solution}
@@ -239,9 +256,8 @@
 
 由正项级数的相应判别法容易得到公式 $R=\dfrac1r$, 其中
 \begin{enumerate}
-	\item \emph{达朗贝尔公式(比值法)}: $r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$ (假设存在);
-	\item \emph{柯西公式(根式法)}: $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在);
-	\item \emph{柯西-阿达马公式}: $r=\displaystyle\ov{\lim_{n\to\infty}} \sqrt[n]{|c_n|}$.
+	\item \noun{比值法}\footnote{又名\emph{达朗贝尔公式}.}: $r=\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}$ (假设存在或为 $+\infty$), 或
+	\item \noun{根式法}\footnote{又名\emph{柯西公式}.}: $r=\displaystyle\lim_{n\to\infty}\sqrt[n]{|c_n|}$ (假设存在或为 $+\infty$).\footnote{一般情形下, 我们有\emph{柯西-阿达马公式}: $r=\displaystyle\lim_{k\to\infty}\max_{n\ge k}\sqrt[n]{|c_n|}$.}
 \end{enumerate}
 如果 $r=0$ 或 $+\infty$, 则 $R=+\infty$ 或 $0$.
 
@@ -250,28 +266,45 @@
 \end{example}
 
 \begin{solution}
-	由 $\displaystyle\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac n{n+1}=1$ 可知收敛半径为 $1$.
-
-	{当 $z=2$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac1n$ 发散.}
-
-	{当 $z=0$ 时, $\displaystyle\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac{(-1)^n}n$ 收敛.}
+	由
+	\[
+		 \lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+		=\lim_{n\to\infty}\frac n{n+1}=1
+	\]
+	可知收敛半径为 $1$. 当 $z=2$ 时,
+	\[
+		\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac1n
+	\]
+	发散. 当 $z=0$ 时,
+	\[
+		\sum_{n=1}^\infty\frac{(z-1)^n}n=\sum_{n=1}^\infty\frac{(-1)^n}n
+	\]
+	收敛.
 \end{solution}
 
-事实上, \emph{收敛圆周上既可能处处收敛, 也可能处处发散, 也可能既有收敛的点也有发散的点}.
+事实上, \alert{收敛圆周上既可能处处收敛, 也可能处处发散, 也可能既有收敛的点也有发散的点}.\footnote{
+	例如 $\suml_{n=1}^\infty z^n$ 在收敛圆周 $|z|=1$ 上处处发散, $\suml_{n=1}^\infty\dfrac{z^n}{n^2}$ 在收敛圆周 $|z|=1$ 上处处绝对收敛; $\suml_{n=1}^\infty\dfrac{(-1)^{[\sqrt n]}z^n}{n}$ 在收敛圆周 $|z|=1$ 上处处条件收敛, 这里 $[\alpha]$ 表示不超过 $\alpha$ 的最大整数.
+}
 
 \begin{example}
 	求幂级数 $\suml_{n=0}^\infty\cos(in)z^n$ 的收敛半径.
 \end{example}
 
 \begin{solution}
-	我们有 $c_n=\cos(in)=\dfrac{e^n+e^{-n}}2$.
-	{由
-		\[\lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\to\infty}\frac{e^{n+1}+e^{-n-1}}{e^n+e^{-n}}=e\lim_{n\to\infty}\frac{1+e^{-2n-2}}{1+e^{-2n}}=e\]
-	可知收敛半径为 $\dfrac1e$.}
+	我们有
+	\[
+		c_n=\cos(in)=\dfrac{e^n+e^{-n}}2.
+	\]
+	由
+	\[
+		 \lim_{n\to\infty}\abs{\frac{c_{n+1}}{c_n}}
+		=\lim_{n\to\infty}\frac{e^{n+1}+e^{-n-1}}{e^n+e^{-n}}=e\lim_{n\to\infty}\frac{1+e^{-2n-2}}{1+e^{-2n}}=e
+	\]
+	可知收敛半径为 $\dfrac1e$.
 \end{solution}
 
 \begin{exercise}
-	幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm][2mm]{{$\dfrac{\sqrt2}2$}}.
+	幂级数 $\suml_{n=0}^\infty(1+i)^nz^n$ 的收敛半径为\fillblank[2cm]{}.
 \end{exercise}
 
 % 
@@ -314,38 +347,50 @@
 
 \begin{theorem}
 	设幂级数
-	\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R_1,\quad
-	g(z)=\sum_{n=0}^\infty b_nz^n,|z|<R_2.\]
-	{那么当 $|z|<R=\min\{R_1,R_2\}$ 时,
-	\[(f\pm g)(z)=\sum_{n=0}^\infty (a_n\pm b_n)z^n,\quad
-	(fg)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^na_kb_{n-k}\right)z^n.\]}
+	\[
+		\sum_{n=0}^\infty a_nz^n,\quad
+		\sum_{n=0}^\infty b_nz^n.
+	\]
+	的收敛半径分别为 $R_1,R_2$, 和函数分别为 $f(z),g(z)$.
+	那么当 $|z|<R=\min\{R_1,R_2\}$ 时,
+	\[
+		(f\pm g)(z)=\sum_{n=0}^\infty (a_n\pm b_n)z^n,\quad
+		(fg)(z)=\sum_{n=0}^\infty\left(\sum_{k=0}^na_kb_{n-k}\right)z^n.
+	\]
 \end{theorem}
 
-当 $f,g$ 的收敛半径相同时, $f\pm g$ 或 $fg$ 的收敛半径可以比 $f,g$ 的大.
+当 $R_1\neq R_2$ 时, $\suml_{n=0}^\infty (a_n\pm b_n)z^n$ 的收敛半径为二者收敛半径的较大值.
+不妨设 $R_1>R_2$, 当 $R_1>|z|>R_2$ 时, 若该幂级数收敛, 则由上述定理可知 $\suml_{n=0}^\infty (a_n\pm b_n-a_n)z^n$ 收敛, 从而与 $\suml_{n=0}^\infty b_nz^n$ 发散矛盾.
+因此当 $R_1>|z|>R_2$ 时该幂级数发散, 从而收敛半径为 $R_1$.
+
+但是若 $R_1=R_2$, $\suml_{n=0}^\infty (a_n\pm b_n)z^n$ 的收敛半径可以比 $R_1$ 大. 我们只需取一收敛半径大于 $R_1$ 的幂级数 $\suml_{n=0}^\infty c_nz^n$, 并令 $b_n=c_n-a_n$, 则 $\suml_{n=0}^\infty b_nz^n$ 的收敛半径为 $R_1$.
+
+% \begin{theorem}
+% 	设幂级数
+% 	\[
+% 		f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R,
+% 	\]
+% 	设函数 $\varphi(z)$ 在集合 $D$ 上满足 $|\varphi(z)|<R$.
+% 	那么当 $z\in D$ 时,
+% 	\[f[\varphi(z)]=\sum_{n=0}^\infty a_n[\varphi(z)]^n.\]}
+% \end{theorem}
 
 \begin{theorem}
-	设幂级数
-	\[f(z)=\sum_{n=0}^\infty a_nz^n,|z|<R,\]
-	设函数 $\varphi(z)$ 在 $|z|<r$ 上解析且 $|\varphi(z)|<R$, 
-	{那么当 $|z|<r$ 时,
-	\[f[\varphi(z)]=\sum_{n=0}^\infty a_n[\varphi(z)]^n.\]}
-\end{theorem}
-
-\begin{theorem}
-	设幂级数 $\suml_{n=0}^\infty c_nz^n$ 的收敛半径为 $R$, 则在 $|z|<R$ 上:
-	\begin{enumerate}
+	若幂级数 $\suml_{n=0}^\infty c_nz^n$ 的收敛半径为 $R$, 则在 $|z|<R$ 上:
+	\begin{enumpar}
 		\item 它的和函数 $f(z)=\suml_{n=0}^\infty c_nz^n$ 解析,
 		\item $f'(z)=\suml_{n=1}^\infty nc_nz^{n-1}$,
 		\item $\displaystyle\int_0^zf(z)\d z=\sum_{n=0}^\infty \frac{c_n}{n+1}z^{n+1}$.
-	\end{enumerate}
+	\end{enumpar}
 \end{theorem}
 
-也就是说, \emph{在收敛圆内, 幂级数的和函数解析, 且可以逐项求导, 逐项积分}.
+也就是说, \alert{在收敛圆内, 幂级数的和函数解析, 且可以逐项求导, 逐项积分}.
 
 由于和函数在 $|z|>R$ 上没有定义, 因此我们不能谈和函数在 $|z|=R$ 上的解析性.
-
-如果函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \emph{一定在收敛圆周上有奇点}.
+如果函数 $g(z)$ 在该幂级数收敛的点处和 $f(z)$ 均相同, 则 $g(z)$ \alert{一定在收敛圆周上有奇点}.
 这是因为一旦 $g(z)$ 在收敛圆周上处处解析, 该和函数就可以在一个半径更大的圆域上作泰勒展开.
+WIP
+
 
 \begin{example}
 	把函数 $\dfrac1{z-b}$ 表成形如 $\suml_{n=0}^\infty c_n(z-a)^n$ 的幂级数, 其中 $a\neq b$.
