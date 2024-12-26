@@ -2,8 +2,8 @@
 \label{chapter:2}
 
 本章中我们将学习复变函数的导数、可导的判定方法以及初等函数.
-我们将仿照单变量实函数情形定义复变函数的导数和微分, 然后将其与实部和虚部的可微性相对比得出判定可导的柯西-黎曼定理.
-最后, 我们将介绍复变量的初等函数及其性质, 并将之与实变量的初等函数性质进行对比.
+我们将仿照单变量实函数情形定义复变函数的导数和微分, 然后将其与实部和虚部这两个二元函数的可微性相对比得出判定可导的柯西-黎曼定理.
+最后, 我们将介绍复变量的初等函数及其性质, 并将之与实变量的初等函数性质进行比较.
 
 \section{解析函数的概念}
 
@@ -13,45 +13,50 @@
 
 \begin{definition}
   设 $w=f(z)$ 在 $z_0$ 的邻域内有定义.
-  如果极限
+  若极限
   \[
-     \lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
-    =\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
+     \lim_{z\ra z_0}\frac{f(z)-f(z_0)}{z-z_0}
+    =\lim_{\delt z\ra 0}\frac{f(z_0+\delt z)-f(z_0)}{\delt z}
   \]
-  存在,则称 \nouns{$f(z)$ 在 $z_0$ 可导}{可导}.
-  这个极限值称为 \nouns{$f(z)$ 在 $z_0$ 的导数}{导数},记作
-  \[
-    f'(z_0)=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.
-  \]
-  如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \nouns{$f(z)$ 在 $D$ 内可导}{可导}.
+  存在, 则称 \nouns{$f(z)$ 在 $z_0$ 处可导}{可导}.
+  这个极限值称为 \nouns{$f(z)$ 在 $z_0$ 处的导数}{导数},记作 $f'(z_0)$.
+  若 $f(z)$ 在区域 $D$ 内处处可导, 则称 \nouns{$f(z)$ 在 $D$ 内可导}{可导}.\footnotemark
 \end{definition}
 
-需要注意的是, 无论极限过程 $z\to z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
+\footnotetext{
+  设 $f(z)$ 定义在区域 $D$ 上.
+  由于 $D$ 内的任意一点都存在一个邻域完全包含在 $D$ 中, 所以可以在任意一点研究上述极限是否存在.
+}
+
+需要注意的是, 无论极限过程 $z\ra z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
 \[
-  \frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
+  \frac{f(z_0+\delt z)-f(z_0)}{\delt z}
 \]
 的极限都要存在且全都相等.
 因此尽管复变函数导数定义的形式和单变量实函数情形类似, 但其限制实际上要严格得多.
 
 \begin{example}
-  函数 $f(z)=x+2yi$ 在哪些点处可导?
+  函数 $f(z)=x+2y\ii$ 在哪些点处可导?
 \end{example}
 
 \begin{solution}
   由定义可知
   \begin{align*}
-    f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
-    &=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)i-(x+2yi)}{\Delta z}
-    =\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y i}{\Delta x+\Delta yi}.
+     f'(z)&
+    =\lim_{\delt z\ra 0}\frac{f(z+\delt z)-f(z)}{\delt z}\\&
+    =\lim_{\delt z\ra 0}\frac{(x+\delt x)+2(y+\delt y)\ii-(x+2y\ii)}{\delt z}\\&
+    =\lim_{\delt z\ra 0}\frac{\delt x+2\ii\delt y}{\delt x+\ii\delt y}.
   \end{align*}
-  当 $\Delta x=0, \Delta y\to 0$ 时, 上式$\to2$;当 $\Delta y=0, \Delta x\to 0$ 时, 上式$\to1$.因此该极限不存在, $f(z)$ 处处不可导.
+  当 $\delt x=0, \delt y\ra 0$ 时, 上式 $\ra2$; 
+  当 $\delt y=0, \delt x\ra 0$ 时, 上式 $\ra1$.
+  因此该极限不存在, $f(z)$ 处处不可导.
 \end{solution}
 
 \begin{exercise}
-  函数 $f(z)=\ov z=x-yi$ 在哪些点处可导? 
+  函数 $f(z)=\ov z=x-y\ii$ 在哪些点处可导? 
 \end{exercise}
 
-可以看出, 即使 $f(z)=u+iv$ 的实部和虚部在 $(x_0,y_0)$ 都有偏导数, 甚至都可微, 也无法保证 $f(z)$ 在 $z_0=x_0+y_0i$ 处可导.
+可以看出, 即使 $f(z)=u+\ii v$ 的实部和虚部在 $(x_0,y_0)$ 都有偏导数, 甚至都可微, 也无法保证 $f(z)$ 在 $z_0=x_0+y_0\ii$ 处可导.
 我们还需要额外的条件来保证可导性, 具体条件我们会在下一节中讨论.
 
 \begin{example}
@@ -61,14 +66,14 @@
 \begin{solution}
   由定义可知
   \begin{align*}
-  f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}
-   =\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}\\
-  &=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.
+     f'(z)&
+    =\lim_{\delt z\ra 0}\frac{f(z+\delt z)-f(z)}{\delt z}
+    =\lim_{\delt z\ra 0}\frac{(z+\delt z)^2-z^2}{\delt z}\\&
+    =\lim_{\delt z\ra 0}(2z+\delt z)=2z.
   \end{align*}
 \end{solution}
 
 事实上, 和单变量实函数情形类似, 复变函数也有如下求导法则.
-由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
 \begin{theorem}
   \begin{enumpar}
     \item $(c)'=0$, 其中 $c$ 为复常数;
@@ -77,17 +82,21 @@
     \item 莱布尼兹法则: $(fg)'=f'g+fg',\quad \Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$;
     \item 复合函数求导: $\Bigl(f\bigl(g(z)\bigr)\Bigr)'=f'\bigl(g(z)\bigr)\cdot g'(z)$;
     \item 反函数求导: $g'(z)=\dfrac1{f'(w)}, g=f^{-1}, w=g(z)$.
+    \label{item:inverse-function-derivative}
   \end{enumpar}
 \end{theorem}
 
 根据上述求导法则, 不难知道:
-\begin{theorem}\label{thm:four-derivable}
+
+\begin{theorem}
+  \label{thm:four-derivable}
   \begin{enumpar}
     \item 在 $z_0$ 处可导的两个函数 $f(z)$, $g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 仍然在 $z_0$ 处可导.
     \item 若函数 $g(z)$ 在 $z_0$ 处可导, 函数 $f(w)$ 在 $g(z_0)$ 处可导, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处可导.
   \end{enumpar}
 \end{theorem}
 
+由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
 
 \begin{example}
   求 $f(z)=\dfrac{z^2+1}{z-1}$ 的导数.
@@ -103,121 +112,118 @@
   \]
 \end{solution}
 
-
-
 \begin{theorem}
-  若 $f(z)$ 在 $z_0$ 可导, 则 $f(z)$ 在 $z_0$ 连续.
+  若 $f(z)$ 在 $z_0$ 处可导, 则 $f(z)$ 在 $z_0$ 处连续.
 \end{theorem}
+
 即可导蕴含连续. 该定理的证明和单变量实函数情形完全相同.
+
 \begin{proof}
   设
-    \[\Delta w=f(z_0+\Delta z)-f(z_0),\]
+  \[
+    \delt w=f(z_0+\delt z)-f(z_0),
+  \]
   则
-    \[
-      \lim_{\Delta z\to 0}\Delta w
-      =\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z
-      =\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot
-        \lim_{\Delta z\to 0}\Delta z
-      =f'(z_0)\cdot 0=0.
-    \]
-  从而 $f(z)$ 在 $z_0$ 连续.
+  \[
+    \lim_{\delt z\ra 0}\delt w
+    =\lim_{\delt z\ra 0}\frac{\delt w}{\delt z}\cdot\delt z
+    =\lim_{\delt z\ra 0}\frac{\delt w}{\delt z}
+      \cdot\lim_{\delt z\ra 0}\delt z
+    =f'(z_0)\cdot 0=0.
+  \]
+  从而 $f(z)$ 在 $z_0$ 处连续.
 \end{proof}
 
 
 \subsection{可微函数}
 
-
 \begin{definition}
-  如果存在常数 $A$ 使得函数 $w=f(z)$ 满足
-    \[\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),\]
-  其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
-  则称 \nouns{$f(z)$ 在 $z_0$ 处可微}{可微}, 称 $A\Delta z$ 为 \nouns{$f(z)$ 在 $z_0$ 的微分}{微分}, 记作 $\d w=A \Delta z$.
+  若存在常数 $A$ 使得函数 $w=f(z)$ 满足
+  \[
+     \delt w
+    =f(z_0+\delt z)-f(z_0)
+    =A\delt z+o(\delt z),
+  \]
+  其中 $o(\delt z)$ 表示 $\delt z$ 的高阶无穷小量, 则称 \nouns{$f(z)$ 在 $z_0$ 处可微}{可微}, 称 $A\delt z$ 为 \nouns{$f(z)$ 在 $z_0$ 的微分}{微分}, 记作 $\d w=A \delt z$.
 \end{definition}
 
-同导数一样, 复变函数微分的定义也和单变量实函数情形类似, 而且复变函数的可微和可导也是等价的, 且 $\d w=f'(z_0)\Delta z, \d z=\Delta z$.
+同导数一样, 复变函数微分的定义也和单变量实函数情形类似, 而且复变函数的可微和可导也是等价的.
+我们有 $\d w=f'(z_0)\delt z, \d z=\delt z$.
 故
-  \[\d w=f'(z_0)\d z,\qquad f'(z_0)=\odv wz.\]
+\[
+  \d w=f'(z_0)\d z,\qquad 
+  f'(z_0)=\odv wz.
+\]
 微分 $\d w$ 是 $f(z)$ 在 $z_0$ 处的线性近似.
+
 
 \subsection{解析函数}
 
 \begin{definition}
   \begin{enumpar}
-    \item 若函数 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \nouns{$f(z)$ 在 $z_0$ 解析}{解析}.
+    \item 若 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \nouns{$f(z)$ 在 $z_0$ 处解析}{解析}.
     \item 若 $f(z)$ 在区域 $D$ 内处处解析, 则称 $f(z)$ 在 $D$ 内解析, 或称 $f(z)$ 是 $D$ 内的一个\noun{解析函数}.\footnotemark
-    \item 若 $f(z)$ 在 $z_0$ 不解析, 则称 $z_0$ 为 $f(z)$ 的一个\noun{奇点}.
+    \item 若 $f(z)$ 在 $z_0$ 处不解析, 则称 $z_0$ 为 $f(z)$ 的一个\noun{奇点}.
   \end{enumpar}
 \end{definition}
+
 \footnotetext{也可叫\emph{全纯函数}或\emph{正则函数}.}
+
 由定义可知, 若 $f(z)$ 在 $z_0$ 解析, 则 $f(z)$ 在 $z_0$ 可导, 但反过来不成立.
 无定义、不连续、不可导、可导但不解析, 都会导致奇点的产生.
 不过, 若 $z_0$ 是 $f(z)$ 定义域的外点, 即存在 $z_0$ 的邻域与 $f(z)$ 定义域交集为空集, 这种情形不甚有趣, 因此我们不考虑这类奇点.
 
-由于区域 $D$ 是一个开集, 其中的任意 $z_0\in D$ 均存在一个包含在 $D$ 的邻域. 所以 \alert{$f(z)$ 在 $D$ 内解析和在 $D$ 内可导是等价的}.
+由于区域 $D$ 是一个开集, 其中的任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域. 所以 \alert{$f(z)$ 在 $D$ 内解析和在 $D$ 内可导是等价的}.
 由于一个点的邻域也是一个开集, 因此若 $f(z)$ 在 $z_0$ 解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析. 因此 \alert{$f(z)$ 解析点全体是一个开集}, 它是可导点集合的内点构成的集合.
 
 \begin{exercise}
   函数 $f(z)$ 在点 $z_0$ 的邻域内解析是 $f(z)$ 在该邻域处处可导的\fillbrace{}.
-  \begin{exchoice}(2)
+  \begin{examplechoice}(2)
     \item 充分条件
     \item 必要条件
     \item 充要条件
     \item 既非充分也非必要条件
-  \end{exchoice}
+  \end{examplechoice}
 \end{exercise}
 
 \begin{example}
   研究函数 $f(z)=|z|^2$ 的解析性.
 \end{example}
+
 \begin{solution}
   注意到
   \[
-    \frac{f(z+\Delta z)-f(z)}{\Delta z}
-    =\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}
-    =\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta yi}{\Delta x+\Delta yi}.
+     \frac{f(z+\delt z)-f(z)}{\delt z}
+    =\frac{(z+\delt z)(\ov z+\ov{\delt z})-z\ov z}{\delt z}
+    =\ov z+\ov{\delt z}
+      +z\frac{\delt x-\ii\delt y}{\delt x+\ii\delt y}.
   \]
-  \begin{itempar}
-    \item 若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
-    \item 若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$; 当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$.因此此时极限不存在.
-  \end{itempar}
-
+  \vspace{-\baselineskip}
+  \begin{enumpar}[(i)]
+    \item 若 $z=0$, 则当 $\delt z\ra 0$ 时该极限为 $\ov z=0$.
+    \item 若 $z\neq0$, 则当 $\delt y=0,\delt x\ra 0$ 时该极限为 $\ov z+z$; 当 $\delt x=0,\delt y\ra 0$ 时该极限为 $\ov z-z$.因此此时极限不存在.
+  \end{enumpar}\parnoindent
   故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.
 \end{solution}
 
-由定理~\ref{thm:four-derivable} 不难证明:
+由\thmref{定理}{thm:four-derivable} 不难证明:
+
 \begin{theorem}
   \begin{enumpar}
     \item 在 $z_0$ 处解析的两个函数 $f(z)$, $g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 仍然在 $z_0$ 处解析.
-    \item 在 $D$ 内解析的两个函数 $f(z)$, $g(z)$ 之和、差、积、商仍然在 $D$ (作商时需要去掉 $g(z)$ 的零点) 内解析.
-    \item 如果函数 $g(z)$ 在 $z_0$ 处解析, 函数 $f(w)$ 在 $g(z_0)$ 处解析, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处解析.
-    \item 如果函数 $g(z)$ 在 $D$ 内解析, 函数 $f(w)$ 在 $g(z_0)$ 处解析, 则 $f\bigl(g(z)\bigr)$ 在 $D$ 内解析.
+    \item 在 $D$ 内解析的两个函数 $f(z)$, $g(z)$ 之和、差、积、商仍然在 $D$ (作商时需要去掉 $g(z)=0$ 的点) 内解析.
+    \item 若函数 $g(z)$ 在 $z_0$ 处解析, 函数 $f(w)$ 在 $g(z_0)$ 处解析, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处解析.\footnotemark
+    \item 若函数 $g(z)$ 在 $D$ 内解析且像均落在 $D'$ 中, 函数 $f(w)$ 在 $D'$ 内解析, 则 $f\bigl(g(z)\bigr)$ 在 $D$ 内解析.
   \end{enumpar}
 \end{theorem}
+\footnotetext{
+  设 $g(w)$ 在 $|z-z_0|<\eta$ 内处处可导, $f(w)$ 在 $|w-g(z_0)|<\varepsilon$ 内处处可导.
+  由于 $g(z)$ 在 $z_0$ 处连续, 因此存在 $\delta$, $0<\delta<\eta$, 使得当 $|z-z_0|<\delta$ 时, $|g(z)-g(z_0)|<\varepsilon$, 从而 $f\bigl(g(z)\bigr)$ 在 $z$ 处可导, 即在 $z_0$ 处解析.
+}
 
 由此可知, 多项式函数处处解析. 有理函数在其定义域内处处解析, 分母的零点是它的奇点.
 
-我们来看复变函数在实变量函数求导中的一个应用.
-\begin{example}
-  设 $f(z)=\dfrac1{1+z^2}$, 则它在除 $z=\pm i$ 外处处解析.
-  当 $z=x$ 为实数时,
-  \begin{align*}
-    \biggl(\frac1{1+x^2}\biggr)^{(n)}&
-      =f^{(n)}(x)=\frac i2\biggl(\frac1{x+i}-\frac1{x-i}\biggr)^{(n)}\\
-    &=\frac i2\cdot(-1)^n n!\biggl(\frac1{(x+i)^{n+1}}-\frac1{(x-i)^{n+1}}\biggr)\\
-    &=(-1)^{n+1}n!\Im{(x+i)^{-n-1}}
-  \end{align*}
-  由于
-  \[
-    |x+i|=\sqrt{x^2+1},\qquad
-    \arg(x+i)=\arccot x,
-  \]
-  因此
-  \[
-    \biggl(\frac1{1+x^2}\biggr)^{(n)}
-    =(-1)^nn!(x^2+1)^{-\frac{n+1}2}\sin\bigl((n+1)\arccot x\bigr).
-  \]
-\end{example}
-如果有理函数 $\dfrac{P(z)}{Q(z)}$ 分母的零点均能求出, 则可将其拆分为一个多项式和一些形如 $\dfrac{a}{(x-b)^k}$ 的分式之和, 从而其高阶导数可按此方法计算.
+
 
 \section{函数解析的充要条件}
 
@@ -233,101 +239,109 @@
   v_x=\pdv vx,\quad
   v_y=\pdv vy
 \]
-等记号表示偏导数.
+等记号来表示偏导数.
 
-设 $f$ 在 $z=x+yi$ 处可导, $f'(z)=a+bi$.
-设 $\rho=|\Delta z|=\sqrt{\Delta x^2+\Delta y^2}$.
-对于充分小 $\rho>0$, 令
+设 $f(z)$ 在 $z=x+y\ii$ 处可导, $f'(z)=a+b\ii$.
+设
 \[
-   \Delta f
-  =f(z+\Delta z)-f(z)
-  =\Delta u+i\Delta v.
+  \delt z=\delt x+\ii\delt y,\qquad
+  \rho=|\delt z|=\sqrt{(\delt x)^2+(\delt y)^2}.
+\]
+对于充分小的 $\rho>0$, 令
+\[
+  \delt u=u(x+\delt x,y+\delt y)-u(x,y),\qquad
+  \delt v=v(x+\delt x,y+\delt y)-v(x,y),
+\]
+\[
+   \delt f
+  =f(z+\delt z)-f(z)
+  =\delt u+\ii\delt v.
 \]
 由于 $f$ 在 $z$ 处可微, 因此
 \[
-   \Delta f
-  =\Delta u+i\Delta v
-  =(a+bi)(\Delta x+i\Delta y)+o(\Delta z).
+   \delt f
+  =\delt u+\ii\delt v
+  =(a+b\ii)(\delt x+\ii\delt y)+o(\delt z).
 \]
-由于 $\Delta z$ 的高阶无穷小量 $o(\Delta z)=o(\rho)$ 的实部和虚部也是 $\rho$ 的高阶无穷小量, 展开可知
+由于 $\delt z$ 的高阶无穷小量 $o(\delt z)=o(\rho)$ 的实部和虚部也是 $\rho$ 的高阶无穷小量, 比较等式两边的实部和虚部可知
 \begin{align*}
-  \Delta u&=a\Delta x-b\Delta y+o(\rho),\\
-  \Delta v&=b\Delta x+a\Delta y+o(\rho),
+  \delt u&=a\delt x-b\delt y+o(\rho),\\
+  \delt v&=b\delt x+a\delt y+o(\rho),
 \end{align*}
 因此 $u,v$ 在 $(x_0,y_0)$ 处可微且 $u_x=v_y=a,v_x=-u_y=b$.
 
-反过来, 假设 $u,v$ 在 $(x_0,y_0)$ 处可微且 $u_x=v_y, v_x=-u_y$. 由全微分公式
+反过来, 假设 $u,v$ 在 $(x_0,y_0)$ 处可微且 $u_x=v_y, v_x=-u_y$.
+由可微的定义可知
 \begin{align*}
-  \Delta u&=u_x\Delta x+u_y\Delta y+o(\rho)
-    =u_x\Delta x-v_x\Delta y+o(\rho),\\
-  \Delta v&=v_x\Delta x+v_y\Delta y+o(\rho)
-    =v_x\Delta x+u_x\Delta y+o(\rho),\\
-  \Delta f&=\Delta u+i\Delta v
-    =(u_x+i v_x)\Delta x+(-v_x+i u_x)\Delta y+o(\rho)\\
-   &=(u_x+i v_x)\Delta(x+iy)+o(\rho)
-    =(u_x+i v_x)\Delta z+o(\rho).
+  \delt u&=u_x\delt x+u_y\delt y+o(\rho)
+    =u_x\delt x-v_x\delt y+o(\rho),\\
+  \delt v&=v_x\delt x+v_y\delt y+o(\rho)
+    =v_x\delt x+u_x\delt y+o(\rho),\\
+  \delt f&=\delt u+\ii\delt v
+    =(u_x+\ii v_x)\delt x+(-v_x+\ii u_x)\delt y+o(\rho)\\
+   &=(u_x+\ii v_x)\delt (x+\ii y)+o(\rho)
+    =(u_x+\ii v_x)\delt z+o(\rho).
 \end{align*}
-故 $f(z)$ 在 $z$ 处可微, 从而可导, 且 $f'(z)=u_x+i v_x=v_y-i u_y$.
+故 $f$ 在 $z$ 处可微, 从而可导, 且 $f'(z)=u_x+\ii v_x=v_y-\ii u_y$.
 
 由此得到:
-\begin{theorem}[柯西-黎曼定理]\label{thm:Cauchy-Riemann}
-  $f(z)$ 在 $z=x+yi$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
-    \[u_x=v_y,\quad v_x=-u_y.\]
+
+\begin{theorem}[柯西-黎曼定理]
+  \label{thm:Cauchy-Riemann}
+  \index{柯西-黎曼定理}
+  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
+  \[
+    u_x=v_y,\quad v_x=-u_y.
+  \]
   此时
-    \[f'(z)=u_x+iv_x=v_y-iu_y.\]
+  \[
+    f'(z)=u_x+\ii v_x=v_y-\ii u_y.
+  \]
 \end{theorem}
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[height=40mm]{../image/Cauchy.jpeg}
-  \hspace{5em}
-  \includegraphics[height=40mm]{../image/Riemann.jpeg}
-  \caption{柯西和黎曼}
-\end{figure}
+柯西-黎曼方程可简称为 C-R 方程.
 
-柯西\footnote{%
-  Augustin-Louis Cauchy (1789--1857), 法国数学家、物理学家.
-}-黎曼方程可简称为 C-R 方程.
-
-当 $f$ 可导时其导数形式也可直接看出.
-当极限
+当 $f$ 可导时其导数形式也可直接用以下方式看出.
+由于极限
 \[
-  \liml_{\Delta z\to 0}\dfrac{\Delta u+i\Delta v}{\Delta z}=f'(z)
+   f'(z)
+  =\liml_{\delt z\ra 0}\frac{\delt f}{\delt z}
+  =\liml_{\delt z\ra 0}\dfrac{\delt u+\ii\delt v}{\delt z}
 \]
-存在时, 它沿着水平方向和竖直方向的极限
+等于其沿着水平方向和竖直方向的极限
 \[
-  \liml_{\Delta x\to 0}\dfrac{\Delta u+i\Delta v}{\Delta x}=u_x+iv_x,\qquad
-  \liml_{\Delta y\to 0}\dfrac{\Delta u+i\Delta v}{\Delta y i}=-iu_y+v_y
+  \liml_{\delt x\ra 0}\dfrac{\delt u+\ii\delt v}{\delt x}=u_x+\ii v_x,\qquad
+  \liml_{\delt y\ra 0}\dfrac{\delt u+\ii\delt v}{\ii\delt y}=-\ii u_y+v_y,
 \]
-也都存在, 且三者极限相同.
-因此 $f'(z)=u_x+iv_x=-iu_y+v_y$.
+因此 $f'(z)=u_x+\ii v_x=-\ii u_y+v_y$.
 
 下面我们来介绍柯西-黎曼方程的等价形式.
 注意到
 \[
   x=\dfrac12z+\dfrac12\ov z,\qquad
-  y=-\dfrac i2z+\dfrac i2\ov z.
+  y=-\dfrac \ii2z+\dfrac \ii2\ov z.
 \]
 仿照着二元实函数偏导数在变量替换下的变换规则, 定义 $f$ 对 $z$ 和 $\ov z$ 的偏导数为
-  \[\begin{aligned}
-      \pdv fz&
-    =\pdv xz\pdv fx+\pdv yz\pdv fy
-    =\frac12\pdv fx-\frac i2\pdv fy,\\
-      \pdv f{\ov z}&
-    =\pdv x{\ov z}\pdv fx+\pdv y{\ov z}\pdv fy
-    =\frac12\pdv fx+\frac i2\pdv fy.
-  \end{aligned}\]
-和前面的计算类似可知: 当 $f$ 在 $z$ 处可导时,
+\begin{align*}
+   \pdv fz&
+  =\pdv xz\pdv fx+\pdv yz\pdv fy
+  =\frac12\pdv fx-\frac \ii2\pdv fy,\\
+   \pdv f{\ov z}&
+  =\pdv x{\ov z}\pdv fx+\pdv y{\ov z}\pdv fy
+  =\frac12\pdv fx+\frac \ii2\pdv fy.
+\end{align*}
+和前面的推导类似: 当 $f$ 在 $z$ 处可导时,
 \[
-  \Delta f=f'(z)\Delta z+o(\rho).
+  \delt f=f'(z)\delt z+o(\rho).
 \]
 当 $u,v$ 可微时,
 \[
-  \Delta f=\pdv fz\Delta z+\pdv f{\ov z}\Delta\ov z+o(\rho).
+  \delt f=\pdv fz\delt z+\pdv f{\ov z}\delt \ov z+o(\rho).
 \]
-由于极限 $\liml_{\Delta z\to 0}\dfrac{\Delta \ov z}{\Delta z}$ 不存在, 因此:
+由于极限 $\liml_{\delt z\ra 0}\dfrac{\delt \ov z}{\delt z}$ 不存在, 因此:
+
 \begin{theorem}[柯西-黎曼定理的等价形式]
-  $f(z)$ 在 $z=x+yi$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
+  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
   \[
     \pdv f{\ov z}=0.
   \]
@@ -336,80 +350,92 @@
     f'(z)=\pdv fz.
   \]
 \end{theorem}
+
 从该定理便可解释, 为何含有 $x,y,\ov z$ 形式的函数往往不可导, 而可导的函数往往可以直接表达为 $z$ 的形式.
 
 由于二元函数的偏导数均连续蕴含可微, 因此我们有:
+
 \begin{theorem}
   \begin{enumpar}
-    \item 如果 $u_x,u_y,v_x,v_y$ 在 $(x,y)$ 处连续, 且满足C-R方程, 则 $f(z)$ 在 $z=x+yi$ 处可导.
-    \item 如果 $u_x,u_y,v_x,v_y$ 在区域 $D$ 上处处连续, 且满足C-R方程, 则 $f(z)$ 在 $D$ 上处处可导, 从而解析.
+    \item 若 $u_x,u_y,v_x,v_y$ 在 $(x,y)$ 处连续, 且满足C-R方程, 则 $f(z)$ 在 $z=x+y\ii$ 处可导.
+    \item 若 $u_x,u_y,v_x,v_y$ 在区域 $D$ 上处处连续, 且满足C-R方程, 则 $f(z)$ 在 $D$ 上处处可导, 从而解析.
   \end{enumpar}
 \end{theorem}
+
 这些连续性要求也可以换成 $\displaystyle \pdv fz$, $\displaystyle \pdv f{\ov z}$ 的连续性.
 尽管这些条件不是充要条件, 但在实际应用中, 很多情形下这些偏导数确实是连续的.
 
 \begin{exercise}
-  若 $f(z)=u(x,y)+iv(x,y)$ 点 $z_0=x_0+y_0i$ 可导, 则下列命题未必成立的是\fillbrace{}.
-  \begin{exchoice}(2)
+  若 $f(z)=u+\ii v$ 点 $z_0=x_0+y_0\ii$ 可导, 则下列命题未必成立的是\fillbrace{}.
+  \begin{examplechoice}(2)
     \item $f(z)$ 在点 $z_0$ 连续
     \item $u,v$ 在 $(x_0,y_0)$ 处偏导数均存在
     \item $u,v$ 在 $(x_0,y_0)$ 处均可微
     \item $u,v$ 在 $(x_0,y_0)$ 处均连续可微
-  \end{exchoice}
+  \end{examplechoice}
 \end{exercise}
+
 
 \subsection{柯西-黎曼定理的应用}
 
-在下面几个例子中, 我们利用柯西黎曼定理来研究函数的可导性和解析性.
+在下面几个例子中, 我们将利用\thmCR 来研究函数的可导性和解析性.
 
 \begin{example}
   研究函数
   \[
     f(z)=\begin{cases}
-      \dfrac{(x^3-y^3)+i(x^3+y^3)}{x^2+y^2},\quad &z\neq 0;\\
+      \dfrac{(x^3-y^3)+\ii(x^3+y^3)}{x^2+y^2},\quad &z\neq 0;\\
       0,&z=0
     \end{cases}
   \]
   在 $z=0$ 处的可导性.
 \end{example}
+
 \begin{solution}
   由题设知
   \[
     u=\begin{cases}
-      \dfrac{x^3-y^3}{x^2+y^2},\quad &z\neq 0;\\
-      0,&z=0,
-    \end{cases}\qquad
+        \dfrac{x^3-y^3}{x^2+y^2},\quad &z\neq 0;\\
+        0,&z=0,
+      \end{cases}\qquad
     v=\begin{cases}
-      \dfrac{x^3+y^3}{x^2+y^2},\quad &z\neq 0;\\
-      0,&z=0.
-    \end{cases}
+        \dfrac{x^3+y^3}{x^2+y^2},\quad &z\neq 0;\\
+        0,&z=0.
+      \end{cases}
   \]
   我们有
   \[
-    u_x(0,0)
-    =\lim_{\Delta x\to 0}\frac{u(\Delta x,0)-u(0,0)}{\Delta x}
-    =\lim_{\Delta x\to 0}\frac{\Delta x-0}{\Delta x}=1.
+     u_x(0,0)
+    =\lim_{\delt x\ra 0}\frac{u(\delt x,0)-u(0,0)}{\delt x}
+    =\lim_{\delt x\ra 0}\frac{\delt x-0}{\delt x}=1.
   \]
-  类似可知 $u_y(0,0)=-1,v_x(0,0)=1,v_y(0,0)=1$.
+  类似可知
+  \[
+    u_y(0,0)=-1,\quad
+    v_x(0,0)=1,\quad
+    v_y(0,0)=1.
+  \]
   于是 $u,v$ 在 $(0,0)$ 处满足C-R方程.
 
-  当 $\Delta y=k\Delta x\neq 0$ 时,
+  当 $\delt y=k\delt x\neq 0$ 时,
   \[
-    \frac{u(\Delta x,\Delta y)-\Delta x+\Delta y}{\sqrt{(\Delta x)^2+(\Delta y)^2}}
+     \frac{u(\delt x,\delt y)-\delt x+\delt y}{\sqrt{(\delt x)^2+(\delt y)^2}}
     =\frac{k(1-k)}{(k^2+1)^{3/2}}
   \]
-  与 $k$ 有关, 因此 $u$ 在 $(0,0)$ 不可微, 所以 $f(z)$ 在 $(0,0)$ 处不可导.
+  与 $k$ 有关, 因此该极限不存在, $u$ 在 $(0,0)$ 处不可微, 所以 $f(z)$ 在 $(0,0)$ 处不可导.
 \end{solution}
-由此可知, 柯西-黎曼定理中的可微性和C-R方程缺一不可.
+
+由此可知, \thmCR 中的可微性和C-R方程缺一不可.
 
 \begin{example}
-  求下列函数的可导点和解析区域.
-  \begin{tasksexam}(2)
-    \item {$f(z)=\ov z$;}
-    \item {$f(z)=\ov z(2z+\ov z)$;}
-    \item {$f(z)=e^{|z|^2}$;}
-    \item {$f(z)=e^x(\cos y+i\sin y)$.}\label{enum:exp}
-  \end{tasksexam}
+  求下列函数的可导点和解析区域, 并求其在可导点处的导数.
+  \begin{subexample}(2)
+    \item $f(z)=\ov z$;
+    \item $f(z)=\ov z(2z+\ov z)$;
+    \item $f(z)=\ee^{|z|^2}$;
+    \item $f(z)=\ee^x(\cos y+\ii\sin y)$.
+    \label{enum:exp}
+  \end{subexample}
 \end{example}
 
 \begin{solution}\delspace
@@ -420,37 +446,37 @@
         v_x&=0,\qquad&v_y&=-1.
       \end{alignat*}
       因为 $u_x=1\neq v_y=-1$, 所以该函数处处不可导, 处处不解析.
-    \item 由 $f(z)=3x^2+y^2-2xyi,u=3x^2+y^2,v=-2xy$ 可知
+    \item 由 $f(z)=3x^2+y^2-2xy\ii,u=3x^2+y^2,v=-2xy$ 可知
       \begin{alignat*}{2}
         u_x&=6x,\qquad&u_y&=2y,\\
         v_x&=-2y, \qquad&v_y&=-2x.
       \end{alignat*}
       这些偏导数都是连续的.
-      由 $u_x=v_y,v_x=-u_y$ 可知只有 $x=\Re z=0$ 满足C-R方程.
+      由 $u_x=v_y,v_x=-u_y$ 可知只有 $x=\Re z=0$ 时满足C-R方程.
       因此该函数在虚轴上可导, 处处不解析且
       \[
-        f'(yi)=(u_x+iv_x)|_{(0,0)}=-2yi.
+        f'(y\ii)=(u_x+\ii v_x)\big|_{(0,0)}=-2y\ii.
       \]
-    \item 由 $f(z)=e^{x^2+y^2},u=e^{x^2+y^2},v=0$ 可知
+    \item 由 $f(z)=\ee^{x^2+y^2},u=\ee^{x^2+y^2},v=0$ 可知
       \begin{alignat*}{2}
-        u_x&=2xe^{x^2+y^2},\qquad&u_y&=2ye^{x^2+y^2},\\
+        u_x&=2x\ee^{x^2+y^2},\qquad&u_y&=2y\ee^{x^2+y^2},\\
         v_x&=0, \qquad&v_y&=0.
       \end{alignat*}
       这些偏导数都是连续的.
-      由 $u_x=v_y,v_x=-u_y$ 可知只有 $x=y=0,z=0$ 满足C-R方程.
-      因此该函数只在 $0$ 可导, 处处不解析且
+      由 $u_x=v_y,v_x=-u_y$ 可知只有 $x=y=0,z=0$ 时满足C-R方程.
+      因此该函数只在 $0$ 处可导, 处处不解析且
       \[
-        f'(0)=(u_x+iv_x)|_{(0,0)}=0.
+        f'(0)=(u_x+\ii v_x)\big|_{(0,0)}=0.
       \]
-    \item 由 $u=e^x\cos y,v=e^x\sin y$ 可知
+    \item 由 $u=\ee^x\cos y,v=\ee^x\sin y$ 可知
       \begin{alignat*}{2}
-        u_x&=e^x\cos y,\qquad&u_y&=-e^x\sin y,\\
-        v_x&=e^x\sin y,\qquad&v_y&=e^x\cos y.
+        u_x&=\ee^x\cos y,\qquad&u_y&=-\ee^x\sin y,\\
+        v_x&=\ee^x\sin y,\qquad&v_y&=\ee^x\cos y.
       \end{alignat*}
       这些偏导数都是连续的, 且处处满足C-R方程.
       因此该函数处处可导, 处处解析, 且
       \[
-        f'(z)=u_x+iv_x=e^x(\cos y+i\sin y)=f(z).
+        f'(z)=u_x+\ii v_x=\ee^x(\cos y+\ii\sin y)=f(z).
       \]
   \end{enumnopar}
 \end{solution}
@@ -465,39 +491,43 @@
     \item 由题设可知
       \[
         \pdv f{\ov z}=2z+2\ov z=4x,\qquad
-        \pdv fz=2\ov z
+        \pdv fz=2\ov z.
       \]
-      都是连续的.
-      由 $\displaystyle\pdv f{\ov z}=0$ 可知只有 $\Re z=x=0$ 满足C-R方程.
+      这些偏导数都是连续的.
+      由 $\displaystyle\pdv f{\ov z}=0$ 可知只有 $\Re z=x=0$ 时满足C-R方程.
       因此该函数在虚轴上可导, 处处不解析且
       \[
-        f'(yi)=\pdv fz\Big|_{z=yi}=2\ov z|_{z=yi}=-2yi.
+         f'(y\ii)
+        =\pdv fz\Big|_{z=y\ii}
+        =2\ov z\big|_{z=y\ii}=-2y\ii.
       \]
-    \item 由 $f(z)=e^{z\ov z}$ 可知
+    \item 由 $f(z)=\ee^{z\ov z}$ 可知
       \[
-        \pdv f{\ov z}=ze^{z\ov z},\qquad
-        \pdv fz=\ov ze^{z\ov z}
+        \pdv f{\ov z}=z\ee^{z\ov z},\qquad
+        \pdv fz=\ov z\ee^{z\ov z}.
       \]
-      都是连续的.
-      由 $\displaystyle\pdv f{\ov z}=0$ 可知只有 $z=0$ 满足C-R方程.
-      因此该函数只在 $0$ 可导, 处处不解析且
+      这些偏导数都是连续的.
+      由 $\displaystyle\pdv f{\ov z}=0$ 可知只有 $z=0$ 时满足C-R方程.
+      因此该函数只在 $0$ 处可导, 处处不解析且
       \[
-        f'(0)=\pdv fz=\ov ze^{z\ov z}|_{z=0}=0.
+        f'(0)=\pdv fz=\ov z\ee^{z\ov z}|_{z=0}=0.
       \]
     \item 由题设可知
       \[
         \begin{aligned}
-          \pdv fz&
-          =\frac12\pdv fx-\frac i2\pdv fy
-          =\frac12e^x(\cos y+i\sin y)
-          -\frac i2e^x(-\sin y+i\cos y)=f(z),\\
-          \pdv f{\ov z}&
-          =\frac12\pdv fx+\frac i2\pdv fy
-          =\frac12e^x(\cos y+i\sin y)
-          +\frac i2e^x(-\sin y+i\cos y)=0
+           \pdv fz&
+          =\frac12\pdv fx-\frac \ii2\pdv fy
+          =\frac12\ee^x(\cos y+\ii\sin y)
+            -\frac \ii2\ee^x(-\sin y+\ii\cos y)
+          =f(z),\\
+           \pdv f{\ov z}&
+          =\frac12\pdv fx+\frac \ii2\pdv fy
+          =\frac12\ee^x(\cos y+\ii\sin y)
+            +\frac \ii2\ee^x(-\sin y+\ii\cos y)
+          =0.
         \end{aligned}
       \]
-    都是连续的, 且处处满足C-R方程.
+    这些偏导数都是连续的, 且处处满足C-R方程.
     因此该函数处处可导, 处处解析, 且
     \[
       f'(z)=\pdv fz=f(z).
@@ -505,21 +535,23 @@
   \end{enumnopar}
 \end{solution}
 
-我们发现, \ref{enum:exp} 中的函数满足导数等于自身, 后面我们会看到它就是复变量的指数函数 $e^z$.
+我们发现, \ref{enum:exp} 中的函数满足导数等于自身, 后面我们会看到它就是复变量的指数函数 $\ee^z$.
 
 \begin{exercise}
   函数\fillbrace{}在 $z=0$ 处不可导.
-  \begin{exchoice}(4)
-    \item $2x+3yi$
-    \item $2x^2+3y^2i$
-    \item $x^2-xyi$
-    \item $e^x\cos y+i e^x\sin y$
-  \end{exchoice}
+  \begin{examplechoice}(2)
+    \item $2x+3y\ii$
+    \item $2x^2+3y^2\ii$
+    \item $x^2-xy\ii$
+    \item $\ee^x\cos y+\ii \ee^x\sin y$
+  \end{examplechoice}
 \end{exercise}
 
 \begin{example}
-  设函数 $f(z)=(x^2+axy+by^2)+i(cx^2+dxy+y^2)$ 在复平面内处处解析. 求实常数 $a,b,c,d$ 以及 $f'(z)$.
+  设函数 $f(z)=(x^2+axy+by^2)+\ii(cx^2+dxy+y^2)$ 在复平面内处处解析.
+  求实常数 $a,b,c,d$ 以及 $f'(z)$.
 \end{example}
+
 \begin{solution}
   注意到
   \begin{alignat*}{2}
@@ -527,48 +559,64 @@
     v_x&=2cx+dy,\qquad&v_y&=dx+2y.
   \end{alignat*}
   由C-R方程可知
-    \[2x+ay=dx+2y,\quad ax+2by=-(2cx+dy),\]
+  \[
+    2x+ay=dx+2y,\quad ax+2by=-(2cx+dy),
+  \]
   因此 $a=d=2$, $b=c=-1$, 且
-    \[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\]
+  \[
+     f'(z)
+    =u_x+\ii v_x
+    =2x+2y+\ii(-2x+2y)
+    =(2-2\ii)z.
+  \]
 \end{solution}
 
-\begin{example}\label{exam:zero-deriv-constant}
-  证明: 如果 $f'(z)$ 在区域 $D$ 内处处为零, 则 $f(z)$ 在 $D$ 内是一常数.
+\begin{example}
+  \label{exam:zero-deriv-constant}
+  证明: 若 $f'(z)$ 在区域 $D$ 内处处为零, 则 $f(z)$ 在 $D$ 内是一常数.
 \end{example}
 
 \begin{proof}
   由于
-    \[f'(z)=u_x+iv_x=v_y-iu_y=0,\]
-  因此 $u_x=v_x=u_y=v_y=0$, $u,v$ 均为常数,从而  $f(z)=u+iv$ 是常数.
+  \[
+    f'(z)=u_x+\ii v_x=v_y-\ii u_y=0,
+  \]
+  因此 $u_x=v_x=u_y=v_y=0$, $u,v$ 均为常数,从而  $f(z)=u+\ii v$ 是常数.
 \end{proof}
-类似地可以证明, 若 $f(z)$ 在 $D$ 内解析, 则下述任一条件均可推出 $f(z)$ 是一常数:
-\begin{tasksexam}(2)
-  \item {$\arg{f(z)}$ 是一常数;}
-  \item {$|f(z)|$ 是一常数;}
-  \item {$\Re{f(z)}$ 是一常数;}
-  \item {$\Im{f(z)}$ 是一常数;}
-  \item {$v=u^2$;}
-  \item {$u=v^2$.}
-\end{tasksexam}
+
+可以类似证明, 若 $f(z)$ 在 $D$ 内解析, 则下述任一条件均可推出 $f(z)$ 是一常数:
+\begin{subexample}(2)
+  \item $\arg{f(z)}$ 是一常数;
+  \item $|f(z)|$ 是一常数;
+  \item $\Re{f(z)}$ 是一常数;
+  \item $\Im{f(z)}$ 是一常数;
+  \item $v=u^2$;
+  \item $u=v^2$.
+\end{subexample}
 
 \begin{example}
-  证明: 如果 $f(z)$ 解析且 $f'(z)$ 处处非零, 则曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 互相正交.
+  \label{exam:orthogonal-curve}
+  证明: 若 $f(z)$ 解析且 $f'(z)$ 处处非零, 则曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 互相正交.
 \end{example}
 
 \begin{proof}
-  由于 $f'(z)=u_x-iu_y$, 因此 $u_x,u_y$ 不全为零.
-  对 $u(x,y)=c_1$ 使用隐函数求导法则得 $u_x\d x+u_y\d y=0$,从而 $(u_y,-u_x)$ 是该曲线在 $z$ 处的非零切向量.
+  由于 $f'(z)=u_x-\ii u_y$, 因此 $u_x,u_y$ 不全为零.
+  对 $u(x,y)=c_1$ 使用隐函数求导法则得 $u_x\d x+u_y\d y=0$,从而 $\bfu=(u_y,-u_x)$ 是该曲线在 $z$ 处的非零切向量.
 
-  同理 $(v_y,-v_x)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.由于
-    \[u_yv_y+u_xv_x=u_yu_x-u_xu_y=0,\]
-  因此这两个切向量正交, 从而曲线正交.
+  同理 $\bfv=(v_y,-v_x)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.
+  由于
+  \[
+    \bfu\cdot\bfv=u_yv_y+u_xv_x=u_yu_x-u_xu_y=0,
+  \]
+  因此这两个切向量 $\bfu,\bfv$ 正交, 从而曲线正交.
 \end{proof}
 
-当 $f'(z_0)\neq 0$ 时, 经过 $z_0$ 的两条曲线 $C_1,C_2$ 的夹角和它们的像 $f(C_1),f(C_2)$ 在 $f(z_0)$ 处的夹角总是相同的.
+当 $f'(z_0)\neq 0$ 时, 经过 $z_0$ 的两条曲线 $C_1,C_2$ 的夹角和它们的像 $C_1',C_2'$ 在 $w_0=f(z_0)$ 处的夹角总是相同的.
 这种性质被称为\noun{保角性}.
-这是因为 $\d f=f'(z_0)\d z$.
-从复数乘法的几何意义可知, 局部上 $f$ 把 $z_0$ 附近的点以 $z_0$ 为中心放缩 $|f'(z_0)|$ 倍并逆时针旋转 $\arg{f'(z_0)}$.
-由 $w$ 复平面上曲线族 $u=c_1,v=c_2$ 正交可知上述例题成立, 特别地, 例~\ref{exam:wz2} 中的曲线族 $x^2-y^2=c_1$, $2xy=c_2$ 正交.
+由 $w$ 平面上直线族 $u=c_1,v=c_2$ 正交可知上述曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 正交.
+特别地, \thmref{例}{exam:wz2} 中的曲线族 $x^2-y^2=c_1$, $2xy=c_2$ 正交.
+解析函数的这种性质我们会在\ref{chapter:6}详细讨论.
+
 
 
 \section{初等函数}
@@ -582,244 +630,217 @@
 
 复指数函数有多种等价的定义方式:
 \begin{enumpar}
-  \item 欧拉恒等式: $\exp z=e^x(\cos y+i\sin y)$;\label{enum:exp-euler}
-  \item 极限定义: $\exp z=\liml_{n\to\infty}\Bigl(1+\dfrac zn\Bigr)^n$;\label{enum:exp-limit}
-  \item 级数定义: $\exp z=1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots
-  =\liml_{n\to\infty}\sum\limits_{k=0}^n\dfrac{z^k}{k!}$;\label{enum:exp-series}
-  \item 解析延拓: $\exp z$ 是唯一一个处处解析函数, 使得当 $z=x\in\BR$ 时, $\exp z=e^x$.\label{enum:exp-expansion}
+  \item 欧拉恒等式:
+    $\exp z=\ee^x(\cos y+\ii\sin y)$;
+    \label{enum:exp-euler}
+  \item 极限定义:
+    $\exp z=\liml_{n\ra\infty}\Bigl(1+\dfrac zn\Bigr)^n$;
+    \label{enum:exp-limit}
+  \item 级数定义:
+    $\exp z
+     =1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots
+     =\liml_{n\ra\infty}\sum\limits_{k=0}^n\dfrac{z^k}{k!}$;
+    \label{enum:exp-series}
+  \item 解析延拓:
+    $\exp z$ 是唯一一个处处解析函数, 使得当 $z=x\in\BR$ 时, $\exp z=\ee^x$.
+    \label{enum:exp-expansion}
 \end{enumpar}\par
-这几种定义方式都是等价的.
-
-若我们采用 \ref{enum:exp-series} 来定义, 则从 $\cos x$ 和 $\sin x$ 的泰勒展开
-\[
-  \cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\quad
-  \sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
-\]
-可以得到欧拉恒等式 $e^{ix}=\cos x+i\sin x$.
-然而, 这实际上需要我们先铺垫好复级数的基础理论, 这将会在\thmref{例}{exam:exp-taylor-expansion} 中得到解释.
-而 \ref{enum:exp-euler} 和 \ref{enum:exp-expansion} 的等价性将可由\thmref{定理}{thm:zero-isolated} 推出.
+这几种定义方式都是等价的, 其中 \ref{enum:exp-euler} 和 \ref{enum:exp-series} 的等价性在复变函数的级数理论中可以自然得到, 见\thmref{例}{exam:exp-taylor-expansion}; \ref{enum:exp-euler} 和 \ref{enum:exp-expansion} 的等价性则可由\thmref{定理}{thm:zero-isolated} 推出.
 
 现在我们来证明 \ref{enum:exp-euler} 和 \ref{enum:exp-limit} 是等价的\footnote{%
   欧拉也是从实指数函数的极限定义
   \[
-    e^x=\lim_{n\to\infty} \bigl(1+\frac xn\bigr)^n
+    \ee^x=\lim_{n\ra\infty} \Bigl(1+\frac xn\Bigr)^n
   \]
   得到复指数函数的极限定义, 并证明了欧拉恒等式.
-  参考 \cite[第19章2,3节]{Kline1990}.
+  参考 \cite[第19章2,3节]{Kline1990b}.
 }.
 \begin{align*}
-   \lim_{n\to\infty}\Bigl|1+\frac zn\Bigr|^n
-  &=\lim_{n\to\infty}\Bigl(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)^{\frac n2}
-   \quad(1^\infty\ \text{型不定式})\\
-  &=\exp\biggl(
-      \lim_{n\to\infty} \frac n2\Bigl(
+   \lim_{n\ra\infty}\Bigl|1+\frac zn\Bigr|^n&
+  =\lim_{n\ra\infty}\Bigl(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)^{\frac n2}
+    \qquad(1^\infty\ \text{型不定式})\\&
+  =\exp\biggl(
+      \lim_{n\ra\infty} \frac n2\Bigl(
         \frac{2x}n+\frac{x^2+y^2}{n^2}
       \Bigr)
     \biggr)
-   =e^x.
+  =\ee^x.
 \end{align*}
-不妨设 $n>|z|$, 这样 $1+\dfrac zn$ 落在右半平面,
-  \[
-     \lim_{n\to\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
-    =\lim_{n\to\infty} n\arctan \frac y{n+x}
-    =\lim_{n\to\infty} \frac{ny}{n+x}=y.
-  \]
+不妨设 $n>|z|$, 这样 $1+\dfrac zn$ 落在右半平面.
+于是
+\[
+   \lim_{n\ra\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
+  =\lim_{n\ra\infty} n\arctan \frac y{n+x}
+  =\lim_{n\ra\infty} \frac{ny}{n+x}
+  =y.
+\]
 故
-  \[
-     \lim_{n\to\infty} \Bigl(1+\dfrac zn\Bigr)^n
-    =e^x(\cos y+i\sin y).
-  \]
+\[
+    \lim_{n\ra\infty} \Bigl(1+\dfrac zn\Bigr)^n
+  =\ee^x(\cos y+\ii\sin y).
+\]
 
 \begin{definition}
   定义\noun{指数函数}
   \[
-    \exp z:=e^x(\cos y+i\sin y).
+    \exp z:=\ee^x(\cos y+\ii\sin y).
   \]
 \end{definition}
-为了方便, 我们也记 \alert{$e^z=\exp z$}\index{$e^z$}\index{$\exp z$}.
-指数函数有如下性质:
-\begin{enumpar}
-  \item $\exp z$ 处处解析, 且 $(\exp z)'=\exp z$.
-  \item $\exp z\neq 0$.
-  \item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$.
-  \item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$.
-  \item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$.
-  \item $\exp z$ 将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=e^c$, 将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
-\end{enumpar}
 
+为了方便, 我们也记 \alert{$\ee^z=\exp z$}\index{$\ee^z$}\index{$\exp z$}.
+但注意这里并不表示``$\ee$ 的 $z$ 次方'', 仅作为指数函数的一种简便形式, 幂的含义见  \ref{ssec:power-function}.
 
-
-\begin{figure}[!ht]
+\begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
-    \draw[cstdash,cstra,third] (-2,1.5)to [bend left] (2,1.5);
-    \begin{scope}[xshift=-30mm]
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \begin{scope}[xshift=-4cm]
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
-      \draw (0,-2) node[below] {$z$ 复平面};
-      \begin{scope}[cstcurve,second]
-        \draw (-1.3,-1.2)--(1.3,-1.2);
-        \draw (-1.3,-0.9)--(1.3,-.9);
-        \draw (-1.3,-0.6)--(1.3,-.6);
-        \draw (-1.3,-0.3)--(1.3,-.3);
-        \draw (-1.3,0)--(1.3,0);
-        \draw (-1.3,0.3)--(1.3,.3);
-        \draw (-1.3,0.6)--(1.3,.6);
-        \draw (-1.3,0.9)--(1.3,.9);
-        \draw (-1.3,1.2)--(1.3,1.2);
-      \end{scope}
-      \begin{scope}[cstcurve,main,rotate=90]
-        \draw (-1.3,-1.2)--(1.3,-1.2);
-        \draw (-1.3,-0.9)--(1.3,-.9);
-        \draw (-1.3,-0.6)--(1.3,-.6);
-        \draw (-1.3,-0.3)--(1.3,-.3);
-        \draw (-1.3,0)--(1.3,0);
-        \draw (-1.3,0.3)--(1.3,.3);
-        \draw (-1.3,0.6)--(1.3,.6);
-        \draw (-1.3,0.9)--(1.3,.9);
-        \draw (-1.3,1.2)--(1.3,1.2);
-      \end{scope}
+      \def\wd{.3}
+      \foreach \i in {-4,-3,...,4}
+        \draw[cstcurve,main] ({\wd*\i},-1.4)--({\wd*\i},1.4);
+      \foreach \i in {-4,-3,...,4}
+        \draw[cstcurve,second,cstra] (-1.4,{\wd*\i})--(1.6,{\wd*\i});
     \end{scope}
-    \begin{scope}[xshift=30mm]
-      \draw[cstaxis] (-2,0)--(2,0);
+    \begin{scope}[xshift=4cm]
+      \draw[cstaxis] (-2.5,0)--(2.5,0);
       \draw[cstaxis] (0,-2)--(0,2);
-      \draw (0,-2) node[below] {$w$ 复平面};
-      \begin{scope}[cstcurve,second,scale=1.8]
-        \draw (0,0)--({cos(140)},{-sin(140)});
-        \draw (0,0)--({cos(105)},{-sin(105)});
-        \draw (0,0)--({cos(70)},{-sin(70)});
-        \draw (0,0)--({cos(35)},{-sin(35)});
-        \draw (0,0)--(1,0);
-        \draw (0,0)--({cos(35)},{sin(35)});
-        \draw (0,0)--({cos(70)},{sin(70)});
-        \draw (0,0)--({cos(105)},{sin(105)});
-        \draw (0,0)--({cos(140)},{sin(140)});
-      \end{scope}
-      \begin{scope}[cstcurve,main,scale=.3]
-        \draw (0,0) circle ({16/81});
-        \draw (0,0) circle ({8/27});
-        \draw (0,0) circle ({4/9});
-        \draw (0,0) circle ({2/3});
-        \draw (0,0) circle (1);
-        \draw (0,0) circle (3/2);
-        \draw (0,0) circle (9/4);
-        \draw (0,0) circle (27/8);
-        \draw (0,0) circle (81/16);
-      \end{scope}
+      \foreach \i in {-4,-3,...,4}
+        \draw[cstcurve,main] (0,0) circle ({.3*pow(1.5,\i)});
+      \foreach \i in {-4,-3,...,4}
+        \draw[cstcurve,second,cstra] (0,0)--({2*cos(35*\i)},{-2*sin(35*\i)});
     \end{scope}
   \end{tikzpicture}
-  \caption{指数函数 $w=e^z$}
+  \caption{指数函数 $w=\ee^z$}
 \end{figure}
 
+指数函数有如下性质:
+\begin{enumpar}
+  \item $\ee^z$ 处处解析, 且 $(\ee^z)'=\ee^z$. 这由\thmCR 得到.
+  \item $\ee^z\neq 0$. 这是因为 $|\ee^z|=\ee^x>0$.
+  \item $\ee^{z_1+z_2}=\ee^{z_1}\cdot \ee^{z_2}$.
+  \item $\ee^{z_1}=\ee^{z_2}$ 当且仅当 $z_1=z_2+2k\cpi \ii,k\in\BZ$. 于是 $\ee^z$ 是周期函数, 周期为 $2\cpi\ii$.
+  \item $w=\ee^z$ 将直线族 $\Re z=c$ 映成圆周族 $\abs{w}=\ee^c$, 将直线族 $\Im z=c$ 映成射线族 $\Arg w=c$.
+\end{enumpar}
+
+由于 $|\ee^{x+\ii y}|=\ee^x$, 因此 $\liml_{x\ra-\infty}\ee^{x+\ii y}=0$, $\liml_{x\ra+\infty}\ee^{x+\ii y}=\infty$.
+但注意 $\liml_{z\ra\infty}\ee^z$ 不存在.
+
 \begin{example}
-  计算函数 $f(z)=\exp\bigl(\dfrac z6\bigr)$ 的周期.
+  计算函数 $f(z)=\ee^{3z}$ 的周期.
 \end{example}
+
 \begin{solution}
   设
   \[
-     f(z_1)=\exp\bigl(\frac{z_1}6\bigr)
-    =f(z_2)=\exp\bigl(\frac{z_2}6\bigr),
+     f(z_1)=\ee^{3z_1}
+    =f(z_2)=\ee^{3z_2},
   \]
-  那么存在整数 $k$ 使得
+  则存在整数 $k$ 使得
   \[
-    \frac{z_1}6=\frac{z_2}6+2k\pi i,
+    3z_1=3z_2+2k\cpi\ii,
   \]
-  从而 $z_1-z_2=12k\pi i$.
-  所以 $f(z)$ 的周期是 $12\pi i$.
+  从而 $z_1-z_2=\dfrac{2k\cpi\ii}3$.
+  所以 $f(z)$ 的周期是 $\dfrac{2\cpi\ii}3$.
 \end{solution}
-由于复数无法比较大小, 因此指数函数没有最小正周期.
-一般地, 对于非零复数 $a$, 函数 $\exp(az+b)$ 的周期中模最小的为 $\pm\dfrac{2\pi i}a$.
 
-由于 $|e^z|=e^{\Re z}$, 因此当 $\Re z\to-\infty$ 时, $e^z\to 0$.
-但注意 $\liml_{z\to\infty}e^z$ 不存在.
+由于复数无法比较大小, 因此指数函数往往没有最小正周期.
+一般地, 对于非零复数 $a$, 函数 $\ee^{az+b}$ 的周期中模最小的为 $\pm\dfrac{2\cpi\ii}a$.
 
 
 \subsection{对数函数}
 
-对数函数 $\Ln z$ 定义为指数函数 $\exp z$ 的反函数\footnote{%
+对数函数 $\Ln z$ 定义为指数函数 $\ee^z$ 的反函数\footnote{%
   如同辐角和辐角主值, 我们用大写的 $\Ln z$ 表示多值的对数函数, 而用 $\ln z$ 表示它的一个单值分支.
 }.
-设 $z\neq 0$,
+设 $z=r\ee^{\theta \ii}$ 为非零复数,
 \[
-  e^w=z=re^{i\theta}=e^{\ln r+i\theta},
+  \ee^w=z=r\ee^{\theta \ii}=\ee^{\ln r+\theta \ii},
 \]
 则
 \[
-  w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.
+  w=\ln r+\theta\ii+2k\cpi\ii,\quad k\in\BZ.
 \]
 
 \begin{definition}
-  \begin{enumerate}
+  \begin{enumpar}
     \item 定义\noun{对数函数}\index{$\Ln z$}
       \[
-        \Ln z=\ln\abs{z}+i\Arg z.
+        \Ln z=\ln\abs{z}+\ii\Arg z.
       \]
       它是一个多值函数.
-    \item 定义\nouns{对数函数主值}{对数函数!对数函数主值}\index{$\ln z$}
+    \item 定义\noun{对数函数主值}\index{$\ln z$}
       \[
-        \ln z=\ln\abs{z}+i\arg z.
+        \ln z=\ln\abs{z}+\ii\arg z.
       \]
-  \end{enumerate}
+  \end{enumpar}
 \end{definition}
 
-对于每一个整数 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
+对于每一个整数 $k$, $\ln z+2k\cpi\ii$ 都给出了 $\Ln z$ 的一个单值分支.
 特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变量的对数函数.
 
 \begin{example}
-  求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
+  计算 $\Ln 2,\Ln(-1)$ 以及它们的主值.
 \end{example}
 
 \begin{solution}
   由对数函数的定义可知
   \[
-    \Ln2=\ln2+2k\pi i,\quad k\in\BZ,
+    \Ln2=\ln2+2k\cpi\ii,\quad k\in\BZ,
   \]
   主值为 $\ln 2$,
   \[
-    \Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i,\quad k\in\BZ,
+    \Ln(-1)=\ln1+\ii\Arg(-1)=(2k+1)\cpi\ii,\quad k\in\BZ,
   \]
-  主值为 $\pi i$.
+  主值为 $\cpi\ii$.
 \end{solution}
 
 \begin{example}
-  求 $\Ln(-2+3i),\Ln(3-\sqrt3 i)$.
+  计算 $\Ln(-2+3\ii),\Ln(3-\sqrt3 \ii)$.
 \end{example}
 
 \begin{solution}
   由对数函数的定义可知
   \begin{align*}
-    \Ln(-2+3i)&=\ln{\lvert-2+3i\rvert}+i\Arg(-2+3i)\\
-      &=\frac 12\ln{13}+\bigl(-\arctan\frac 32+\pi+2k\pi\bigr)i,
+     \Ln(-2+3\ii)&
+    =\ln{\abs{-2+3\ii}}+\ii\Arg(-2+3\ii)\\&
+    =\frac 12\ln{13}
+      +\Bigl(-\arctan\frac 32+\cpi+2k\cpi\Bigr)\ii,
       \quad k\in\BZ,\\
-    \Ln(3-\sqrt3i)&=\ln|3+\sqrt 3i|+i\Arg(3-\sqrt 3i)\\
-      &=\ln 2\sqrt 3+\bigl(-\frac\pi6+2k\pi\bigr)i\\
-      &=\ln 2\sqrt 3+\bigl(2k-\frac16\bigr)\pi i,
+     \Ln(3-\sqrt3\ii)&
+    =\ln|3+\sqrt 3\ii|+\ii\Arg(3-\sqrt 3\ii)\\&
+    =\ln 2\sqrt 3+\bigl(-\frac\cpi6+2k\cpi\bigr)\ii\\&
+    =\ln 2\sqrt 3+\bigl(2k-\frac16\bigr)\cpi\ii,
       \quad k\in\BZ.
   \end{align*}
 \end{solution}
 
 \begin{example}
-  解方程 $e^z-1-\sqrt 3i=0$.
+  解方程 $\ee^z-1-\sqrt 3\ii=0$.
 \end{example}
 
 \begin{solution}
-  由于 $1+\sqrt 3 i=2e^{\frac{\pi i}3}$, 因此
+  由于 $1+\sqrt 3 \ii=2\ee^{\frac{\cpi\ii}3}$, 因此
   \[
-    z=\Ln(1+\sqrt 3i)=\ln 2+\bigl(2k+\frac13\bigr)\pi i,\quad k\in\BZ.
+     z
+    =\Ln(1+\sqrt 3\ii)
+    =\ln 2+\bigl(2k+\frac13\bigr)\cpi\ii,
+      \quad k\in\BZ.
   \]
 \end{solution}
 
 \begin{exercise}
-  求 $\ln(-1-\sqrt3 i)=$\fillblank{}.
+  计算 $\ln(-1-\sqrt3 \ii)=$\fillblank{}.
 \end{exercise}
 
 对数函数与其主值的关系是
 \[
-  \Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ.
+  \Ln z=\ln z+\Ln 1=\ln z+2k\cpi\ii,\quad k\in\BZ.
 \]
-根据辐角以及辐角主值的相应等式, 我们有
+根据辐角主值的相应等式 \ref{eq:Arg-multiply-divide-equality} 和 \ref{eq:Arg-root-equality}, 我们有
 \[
-  \Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
+  \Ln(z_1 z_2)=\Ln z_1+\Ln z_2,\quad
   \Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,
 \]
 \[
@@ -828,171 +849,162 @@
 和辐角一样, 当 $\abs{n}\ge 2$ 时, \alert{$\Ln z^n=n\Ln z$ 不成立}.
 以上等式换成 $\ln z$ 均不一定成立.
 
-设 $x$ 是正实数, 则
+设 $x$ 是正实数, 则 $\liml_{y\ra 0^-}\arg(-x+y\ii)=-\cpi$.
+从而
 \[
-  \ln (-x)=\ln x+\pi i,\quad
-  \lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi i,
+  \ln (-x)=\ln x+\cpi\ii,\quad
+  \lim_{y\ra0^-}\ln (-x+y\ii)=\ln x-\cpi\ii,
 \]
 因此 $\ln z$ 在负实轴和零处不连续.
-而在其它地方, $-\pi<\arg z<\pi$, 因此 $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
-从而 \alert{$(\ln z)'=\dfrac 1z$}, \alert{$\ln z$ 在除负实轴和零处的区域解析}.\footnote{%
-  任取一条从 $0$ 到 $\infty$ 的简单曲线, 在去掉这条曲线后, 若固定一复数 $z_0$ 的辐角, 则多值函数 $\Arg z$ 可以在该区域内连续单值化, 简单来说就是沿着 $z_0$ 到 $z$ 的曲线让辐角连续变化. 同理, $\Ln z$ 也可以在该区域内单值化, 只需固定一复数 $z_0$ 的值.
-}
+而在其它地方, $-\cpi<\arg z<\cpi$, 因此 $\ln z$ 是 $\ee^z$ 在区域 $-\cpi<\Im z<\cpi$ 上的单值反函数, 
+从而由\hyperref[item:inverse-function-derivative]{反函数求导运算法则}可知 \alert{$(\ln z)'=\dfrac 1z$}, \alert{$\ln z$ 在除负实轴和零以外的区域解析}.
 
 也可以通过C-R方程来得到 $\ln z$ 的解析性和导数.
 当 $x>0$ 时,
 \[
-  \ln z=\half \ln(x^2+y^2)+i\arctan \frac yx,
+  \ln z=\half \ln(x^2+y^2)+\ii\arctan \frac yx,
 \]
 \[
   u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},
 \]
 \[
-  (\ln z)'=u_x+iv_x=\frac{x-yi}{x^2+y^2}=\frac 1z.
+  (\ln z)'=u_x+\ii v_x=\frac{x-y\ii}{x^2+y^2}=\frac 1z.
 \]
-其它情形可取虚部为 $\arccot\dfrac xy$ 或 $\arccot\dfrac xy-\pi$ 类似证明.
-
-我们可以利用复对数函数来计算实有理函数的原函数.
-
-\begin{example}
-  设 $f(x)=\dfrac1{x^2+1}$, 那么
-  \[
-    f(x)=\frac i2\Bigl(\frac1{x+i}-\frac1{x-i}\Bigr).
-  \]
-  设
-  \[
-    g(z)=\frac i2\bigl(\ln(z+i)-\ln(z-i)\bigr),
-  \]
-  它在其解析区域(即复平面去掉 $x\pm i,x\le 0$)内的导数为 $f(z)$.
-  当 $z=x$ 是正实数时, 
-  \begin{align*}
-    g(x)&=\frac i2\bigl(\ln(x+i)-\ln(x-i)\bigr)\\
-    &=-\frac12\bigl(\arg(x+i)-\arg(x-i)\bigr)\\
-    &=-\frac12\bigl(\arctan \frac1x-\arctan(-\frac1x)\bigr)\\
-    &=-\arctan \frac1x=\arctan x-\frac\pi2.
-  \end{align*}
-  所以我们得到当 $x>0$ 时 $(\arctan x)'=f(x)$.
-  显然这对任意实数 $x$ 也成立.
-\end{example}
-
+其它情形可取虚部为 $\arccot\dfrac xy$ 或 $\arccot\dfrac xy-\cpi$ 类似证明.
 
 
 \subsection{幂函数}
+\label{ssec:power-function}
 
 \begin{definition}
-  \begin{enumerate}
+  \begin{enumpar}
     \item 设 $a\neq 0$, $z\neq 0$, 定义\noun{幂函数}
       \[
-        w=z^a=e^{a\Ln z}
-        =\exp\bigl(a\ln|z|+ia(\arg z+2k\pi)\bigr),\quad k\in\BZ.
+        w=z^a=\ee^{a\Ln z}
+        =\exp(a\ln|z|+\ii a\Arg z).
       \]
-    \item \nouns{幂函数的主值}{幂函数!幂函数的主值}为
+    \item \noun{幂函数的主值}为
       \[
-        w=e^{a\ln z}=\exp\bigl(a\ln|z|+ia\arg z\bigr).
+        w=\ee^{a\ln z}=\exp\bigl(a\ln|z|+\ii a\arg z\bigr).
       \]
-  \end{enumerate}
+  \end{enumpar}
 \end{definition}
 
+由定义可知
+\[
+   z^a
+  =\exp\bigl(a\ln|z|+\ii a\arg z+2ak\cpi\ii\bigr)
+  =\ee^{a\ln z}\cdot \ee^{2ak\cpi\ii},
+    \quad k\in\BZ.
+\]
 根据 $a$ 的不同, 这个函数有着不同的性质.
 
-当 $a$ 为整数时, 因为 $e^{2ak\pi i}=1$, 所以 $w=z^a$ 是单值的. 此时 $z^a$ 就是我们之前定义的乘幂. 
+当 $a$ 为整数时, 因为 $\ee^{2ak\cpi\ii}=1$, 所以 $w=z^a$ 是单值的. 此时 $z^a$ 就是我们之前定义的乘幂. 
 当 $a$ 是正整数时, $z^a$ 在复平面上解析\footnote{%
-  尽管在幂函数定义中 $z\neq 0$, 但当 $a$ 是正整数时, 我们可自然地补充定义 $0^a=0$.
+  尽管在幂函数定义中 $z\neq 0$, 但当 $a$ 是正实数时, 我们约定 $0^a=0$.
 };
 当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 上解析.
 
-当 $a=p/q$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
+当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
 \[
-  z^{\frac pq}=|z|^{\frac pq}\exp\Bigl(\frac{ip(\arg z+2k\pi)}q\Bigr),\quad k=0,1,\dots,q-1
+   z^{\frac pq}
+  =|z|^{\frac pq}\exp\biggl(\frac{\ii p(\arg z+2k\cpi)}q\biggr),
+    \quad k=0,1,\cdots,q-1
 \]
 具有 $q$ 个值.
-去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 是处处解析的.
+去掉负实轴和零之后, 它的主值 $w=\ee^{a\ln z}$ 是处处解析的.
 事实上它就是 $\sqrt[q]{z^p}=(\sqrt[q]z)^p$.
-\begin{figure}[!ht]
+
+\begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
-    \coordinate [label=below left:{$0$}] (O) at (0,0);
-    \coordinate [label=below:{$x$}] (X) at (2,0);
-    \coordinate [label=left:{$y$}] (Y) at (0,2);
-    \draw[cstaxis] (O)--(X);
-    \draw[cstaxis] (0,-2)--(Y);
-    \draw[draw=white,cstfille1] (O) circle (1.3);
-    \draw[cstdash,main] (0,0)--(-2,0);
-    \draw[cstdash,cstra,third] (1.7,.7)to [bend left] (4.5,.7);
-    \draw (3,1.7) node[third] {$w=z^{2/9}$};
-    \begin{scope}[xshift=5cm]
-      \coordinate [label=below left:{$0$}] (O) at (0,0);
-      \fill[cstfille2,pattern color=second] (O)--({1.4*cos(40)},{1.4*sin(40)}) arc (40:-40:1.4)--cycle;
-      \draw[cstdash,second] ({1.4*cos(40)},{-1.4*sin(40)})--(0,0)--({1.4*cos(40)},{1.4*sin(40)});
-      \coordinate [label=below left:{$0$}] (O) at (0,0);
-      \coordinate [label=below:{$u$}] (X) at (2,0);
-      \coordinate [label=left:{$v$}] (Y) at (0,2);
-      \draw[cstaxis] (-2,0)--(X);
-      \draw[cstaxis] (0,-2)--(Y);
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^{\frac29}$} (1,0);
+    \begin{scope}[xshift=-4cm]
+      \def\r{1.3}
+      \draw[draw=white,cstfille1] (0,0) circle (\r);
+      \cutline{0}{0}{\r}{180}{main};
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+    \end{scope}
+    \begin{scope}[xshift=4cm]
+      \def\r{1.3}
+      \fill[cstfille5,pattern color=fifth] (0,0)--({\r*cos(40)},{\r*sin(40)}) arc (40:-40:\r)--cycle;
+      \draw[cstcurve,fifth] ({\r*cos(40)},{-\r*sin(40)})--(0,0)--({\r*cos(40)},{\r*sin(40)});
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
     \end{scope}
   \end{tikzpicture}
-  \caption{映照 $w=z^{2/9}$}
+  \caption{映射 $w=z^{\frac29}$}
 \end{figure}
 
 对于无理数或虚数 $a$, $z^a$ 具有无穷多个值.
-这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi i$ 的整数倍. 
-从而不同的 $k$ 得到的是不同的值.
-去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 也是处处解析的.\footnote{%
-  对于 $\Ln\dfrac{z-a}{z-b},\sqrt{(z-a)(z-b)}$ 等类型的多值函数, 我们需要将它的``奇点''连接起来形成``割线''. 复平面上去掉这些割线得到的区域内, 这些函数也可以如同 $\Arg z,\Ln z$ 那样单值化.
-}
+因为此时当 $k\neq0$ 时, $2k\cpi a \ii$ 不可能是 $2\cpi \ii$ 的整数倍, 从而不同的 $k$ 得到的是不同的值.
+去掉负实轴和零之后, 它的主值 $w=\ee^{a\ln z}$ 也是处处解析的.
 
-\begin{center}
-  \arrayrulecolor{second}
-  \begin{tabular}{cccc} \toprule
-    $a$& $z^a$ 的值& $z^a$ 的解析区域\\ \midrule
-    &&$n\ge0$ 时处处解析\\
-    \multirow{-2}*{整数 $n$}&\multirow{-2}*{单值}&$n<0$ 时除零点外解析\\ \midrule
-    分数 $p/q$&$q$ 值&除负实轴和零点外解析\\ \midrule
-    无理数或虚数&无穷多值&除负实轴和零点外解析\\ \bottomrule
+\begin{table}[!htb]
+  \centering
+  \begin{tabular}{cccc}
+    \topcolorrule
+      \bf $a$&
+      \bf $z^a$ 的值&
+      \bf  $z^a$ 的解析区域\\
+    \topcolorrule
+      整数 $n$&
+      单值&
+      \makecell{$n\ge0$ 时处处解析\\$n<0$ 时除零点外解析}\\
+    \midcolorrule
+      分数 $p/q$&
+      $q$ 值&
+      除负实轴和零点外解析\\
+    \midcolorrule
+      无理数或虚数&
+      无穷多值&
+      除负实轴和零点外解析\\
+    \bottomcolorrule
   \end{tabular}
-\end{center}
+  \caption{幂函数的分类}
+\end{table}
 
 \begin{example}
-  求 $1^{\sqrt 2}$ 和 $i^i$.
+  求 $1^{\sqrt 2}$ 和 $\ii^\ii$.
 \end{example}
 \begin{solution}
   由幂函数的定义可知
   \[
-    1^{\sqrt2}=e^{\sqrt2\Ln1}
-      =e^{\sqrt 2\cdot 2k\pi i}
-      =\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), \quad k\in\BZ.
+    1^{\sqrt2}=\ee^{\sqrt2\Ln1}
+      =\ee^{\sqrt 2\cdot 2k\cpi\ii}
+      =\cos(2\sqrt 2k\cpi)+\ii\sin(2\sqrt 2k\cpi), \quad k\in\BZ.
   \]
   \[
-    i^i=e^{i\Ln i}
-      =\exp\Bigl(i\cdot\bigl(2k+\half\bigr)\pi i\Bigr)
-      =\exp\bigl(-2k\pi-\half\pi\bigr), \quad k\in\BZ.
+    \ii^\ii=\ee^{\ii\Ln \ii}
+      =\exp\Bigl(\ii\cdot\bigl(2k+\half\bigr)\cpi\ii\Bigr)
+      =\exp\bigl(-2k\cpi-\half\cpi\bigr), \quad k\in\BZ.
   \]
 \end{solution}
 
 \begin{exercise}
-  $3^i$ 的辐角主值是\fillblank{}.
+  $3^\ii$ 的辐角主值是\fillblank{}.
 \end{exercise}
 
 幂函数与其主值有如下关系:
 \[
-  z^a=e^{a\ln z}\cdot 1^a
-    =e^{a\ln z}\cdot e^{2ak\pi i},\quad k\in\BZ.
+  z^a=\ee^{a\ln z}\cdot 1^a
+    =\ee^{a\ln z}\cdot \ee^{2ak\cpi\ii},\quad k\in\BZ.
 \]
 对于幂函数的主值,
 \[
-  (z^a)'=(e^{a\ln z})'=\frac{ae^{a\ln z}}z=az^{a-1}.
+  (z^a)'=(\ee^{a\ln z})'=\frac{a\ee^{a\ln z}}z=az^{a-1}.
 \]
-一般而言, $z^a\cdot z^b=z^{a+b}$ 和 $(z^a)^b=z^{ab}$ 都是不成立的.\footnote{%
+一般情形下, $z^a\cdot z^b=z^{a+b}$ 和 $(z^a)^b=z^{ab}$ 往往是不成立的.\footnote{%
   $z^a\cdot z^b=z^{a+b}$ 成立当且仅当存在整数 $m,n$ 使得 $(a+b)m+n=a$.
   特别地, 当 $a$ 或 $b$ 是整数时该式成立.
   $(z^a)^b=z^{ab}$ 成立当且仅当存在整数 $m,n$ 使得 $abm+n=b$.
-  特别地, 当 $1/a$ 或 $b$ 是整数时该式成立.
+  特别地, 当 $\dfrac1a$ 或 $b$ 是整数时该式成立.
 }
 
-最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
-因为后者在 $a\not\in\BZ$ 时总是多值的.
-前者实际上是后者的主值.
-为避免混淆, 以后我们总\alert{默认 $e^a$ 表示指数函数 $\exp a$}.
+最后, 注意 $\ee^a$ 作为指数函数 $f(z)=\ee^z$ 在 $a$ 处的值和作为幂函数 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
+后者在 $a\not\in\BZ$ 时总是多值的, 前者实际上是后者的主值.
+为避免混淆, 以后我们总\alert{默认 $\ee^a$ 表示指数函数 $\exp a$}.
 
 
 \subsection{三角函数和相关函数}
@@ -1001,8 +1013,8 @@
 
 我们知道
   \[
-    \cos x=\frac{e^{ix}+e^{-ix}}2,\quad
-    \sin x=\frac{e^{ix}-e^{-ix}}{2i}
+    \cos x=\frac{\ee^{\ii x}+\ee^{-\ii x}}2,\quad
+    \sin x=\frac{\ee^{\ii x}-\ee^{-\ii x}}{2\ii}
   \]
 对于任意实数 $x$ 成立,
 我们将其推广到复数情形.
@@ -1010,31 +1022,32 @@
 \begin{definition}
   定义\noun{余弦函数}和\noun{正弦函数}
   \[
-    \cos z=\frac{e^{iz}+e^{-iz}}2,\quad
-    \sin z=\frac{e^{iz}-e^{-iz}}{2i}.
+    \cos z=\frac{\ee^{\ii z}+\ee^{-\ii z}}2,\quad
+    \sin z=\frac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}.
   \]
 \end{definition}
 
-于是欧拉恒等式 \alert{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
+于是欧拉恒等式 \alert{$\ee^{\ii z}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
 由定义可知
 \[
-  \cos(iy)=\dfrac{e^y+e^{-y}}2,\qquad
-  \sin(iy)=i\dfrac{e^y-e^{-y}}2.
+  \cos(\ii y)=\dfrac{\ee^y+\ee^{-y}}2,\qquad
+  \sin(\ii y)=\ii\dfrac{\ee^y-\ee^{-y}}2.
 \]
-当 $y\to\infty$ 时, $\cos(iy)$ 和 $\sin(iy)$ 都 $\to\infty$.
+当 $y\ra\infty$ 时, $\cos(\ii y)$ 和 $\sin(\ii y)$ 都 $\ra\infty$.
 因此 \alert{$\sin z$ 和 $\cos z$ 并不有界}. 
 这和实变量情形不同.
 
 容易看出 $\cos z$ 和 $\sin z$ 的零点都是实数.
-于是可类似定义其它三角函数\index{正切函数}
-\begin{align*}
-  \tan z&=\frac{\sin z}{\cos z},z\neq\bigl(k+\half\bigr)\pi,&
-  \cot z&=\frac{\cos z}{\sin z},z\neq k\pi,\\
-  \sec z&=\frac{1}{\cos z},z\neq\bigl(k+\half\bigr)\pi,&
-  \csc z&=\frac{1}{\sin z},z\neq k\pi.
-\end{align*}
+于是可类似定义其它三角函数
+\begin{itempar}
+  \item \noun{正切函数} $\tan z=\dfrac{\sin z}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
+  \item \noun{余切函数} $\cot z=\dfrac{\cos z}{\sin z},\ z\neq k\cpi$;
+  \item \noun{正割函数} $\sec z=\dfrac{1}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
+  \item \noun{余割函数} $\csc z=\dfrac{1}{\sin z},\ z\neq k\cpi$,
+\end{itempar}
+其中 $k$ 是整数.
 
-根据指数函数的性质可知, 这些三角函数的奇偶性、周期性和导数与实变量情形类似:
+根据指数函数的性质不难知道, 这些三角函数的奇偶性、周期性和导数与实变量情形类似:
   \[
     (\cos z)'=-\sin z,\quad
     (\sin z)'=\cos z,
@@ -1048,18 +1061,16 @@
   由
   \begin{align*}
     \cos^2z+\sin^2z&
-     =\Bigl(\frac{e^{iz}+e^{-iz}}2\Bigr)^2+\Bigl(\frac{e^{iz}-e^{-iz}}{2i}\Bigr)^2\\
-    &=\frac{e^{2iz}+2+e^{-2iz}}4-\frac{e^{2iz}-2+e^{-2iz}}4=1
+    =\biggl(\frac{\ee^{\ii z}+\ee^{-\ii z}}2\biggr)^2
+      +\biggl(\frac{\ee^{\ii z}-\ee^{-\ii z}}{2i}\biggr)^2\\&
+    =\frac{\ee^{2\ii z}+2+\ee^{-2\ii z}}4-\frac{\ee^{2\ii z}-2+\ee^{-2\ii z}}4
+    =1
   \end{align*}
   可得.
 \end{proof}
 
 事实上, 三角函数的各种恒等式如和差化积公式、积化和差公式、倍角公式、半角公式、万能公式等在复数情形均成立\footnote{%
-  若这样的恒等式只含一个变量 $z$, 则两侧之差给出一个解析函数 $f(z)$, 满足当 $z$ 是(定义域内)实数时, $f(z)=0$.
-  由\thmref{定理}{thm:zero-isolated} 可知对于所有(定义域内)复数 $z$, 均有 $f(z)=0$.
-
-  若这样的恒等式包含多个变量 $z_1,z_2,\dots,z_n$, 将其中一个变量 $z_1$ 作为自变量, 固定其余的变量且取实数, 则类似可知对于任意(定义域内)复数 $z_1$ 该恒等式仍然成立.
-  然后依次将其余变量作为自变量, 则可归纳得到这些恒等式在所有(定义域内)复数处均成立.
+  可以利用\thmref{定理}{thm:zero-isolated} 说明这些等式为何在复数情形也是成立的.
 }, 例如：
 
 \begin{itempar}
@@ -1070,17 +1081,18 @@
     $\tan(2z)=\dfrac{2\tan z}{1-\tan^2 z}$.
 \end{itempar}
 
+
 \subsubsection{双曲函数}
 
-类似的, 我们可以定义\noun{双曲函数}:
-\begin{align*}
-  \ch z&=\frac{e^z+e^{-z}}2=\cos iz,\\
-  \sh z&=\frac{e^z-e^{-z}}2=-i\sin iz,\\
-  \tanh z&=\frac{e^z-e^{-z}}{e^z+e^{-z}}
-    =-i\tan iz,\quad z\neq \bigl(k+\half\bigr)\pi i.\
-\end{align*}
+类似的, 我们可以定义双曲函数:
+\begin{itempar}
+  \item \noun{双曲正弦函数} $\ch z=\dfrac{\ee^z+\ee^{-z}}2=\cos \ii z$;
+  \item \noun{双曲余弦函数} $\sh z=\dfrac{\ee^z-\ee^{-z}}2=-\ii\sin \ii z$;
+  \item \noun{双曲正切函数} $\tanh z=\dfrac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}=-\ii\tan \ii z,\ z\neq \bigl(k+\dfrac12\bigr)\cpi\ii, k\in\BZ$.
+\end{itempar}
+
 它们的奇偶性和导数与实变量情形类似, 在定义域范围内是处处解析的.
-$\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
+$\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
 
 由它们与三角函数的关系可以解释为何双曲函数有诸多和三角函数类似的恒等式, 例如:
 
@@ -1090,28 +1102,29 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
   \item $\sh(2z)=\dfrac{2\tanh z}{1-\tanh^2 z}$, $\ch(2z)=\dfrac{1+\tanh^2 z}{1-\tanh^2 z}$, $\tanh(2z)=\dfrac{2\tanh z}{1+\tanh^2 z}$.
 \end{itempar}
 
+
 \subsubsection{反三角函数和反双曲函数}
 
 设
 \[
-  z=\cos w=\dfrac{e^{iw}+e^{-iw}}2,\]
+  z=\cos w=\dfrac{\ee^{\ii w}+\ee^{-\ii w}}2,\]
 则\footnote{注意根号是双值函数.}
 \[
-  e^{2iw}-2ze^{iw}+1=0,\quad
-  e^{iw}=z+\sqrt{z^2-1}.
+  \ee^{2\ii w}-2z\ee^{\ii w}+1=0,\quad
+  \ee^{\ii w}=z+\sqrt{z^2-1}.
 \]
 因此\noun{反余弦函数}为
 \[
-  w=\Arccos z=-i\Ln(z+\sqrt{z^2-1}).
+  w=\Arccos z=-\ii \Ln(z+\sqrt{z^2-1}).
 \]
 显然它是多值的. 同理, 我们有:
 
 \begin{itempar}
-  \item \noun{反正弦函数} $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
-  \item \noun{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
+  \item \noun{反正弦函数} $\Arcsin z=-\ii\Ln(\ii z+\sqrt{1-z^2})$;
+  \item \noun{反正切函数} $\Arctan z=-\dfrac \ii 2\Ln\dfrac{1+\ii z}{1-\ii z},\ z\neq \pm i$;
   \item \noun{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
   \item \noun{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
-  \item \noun{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
+  \item \noun{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z},\ z\neq \pm1$.
 \end{itempar}
 
 \begin{example}
@@ -1121,40 +1134,710 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
 \begin{solution}
   由于
   \[
-    \sin z=\dfrac{e^{iz}-e^{-iz}}{2i}=2,
+    \sin z=\dfrac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}=2,
   \]
   我们有
   \[
-    e^{2iz}-4ie^{iz}-1=0.
+    \ee^{2\ii z}-4\ii\ee^{\ii z}-1=0.
   \]
-  于是 $e^{iz}=(2\pm\sqrt 3)i$,
+  于是 $\ee^{\ii z}=(2\pm\sqrt 3)\ii$,
   \[
-    z=-i\Ln\bigl((2\pm\sqrt 3)i\bigr)
-     =\bigl(2k+\half\bigr)\pi\pm i\ln(2+\sqrt3),
+     z
+    =-\ii\Ln\bigl((2\pm\sqrt 3)\ii\bigr)
+    =\bigl(2k+\half\bigr)\cpi\pm \ii\ln(2+\sqrt3),
       \quad k\in\BZ.
   \]
 \end{solution}
 
 也可由
 \[
-  \cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3i.
+  \cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3\ii.
 \]
-得到 $e^{iz}=\cos z+i\sin z=(2\pm\sqrt 3)i$.
+得到 $\ee^{\ii z}=\cos z+\ii\sin z=(2\pm\sqrt 3)\ii$.
 
-不难知道 $\cos z_1=\cos z_2\iff z_2=2k\pi\pm z_1$.
+不难知道 $\cos z_1=\cos z_2\iff z_2=2k\cpi\pm z_1$.
 因此存在 $\theta$ 使得
 \[
-  \Arccos z=2k\pi\pm \theta,\quad k\in\BZ.
+  \Arccos z=2k\cpi\pm \theta,\quad k\in\BZ.
 \]
 同理, 反正弦函数和反正切函数总可表达为如下形式
 \begin{align*}
-  \Arcsin z&=(2k+\half)\pi\pm \theta,\quad k\in\BZ;\\
-  \Arctan z&=k\pi+\theta,\quad k\in\BZ.
+  \Arcsin z&=(2k+\half)\cpi\pm \theta,\quad k\in\BZ;\\
+  \Arctan z&=k\cpi+\theta,\quad k\in\BZ.
 \end{align*}
 
 
+\subsection{在有理函数的应用}
+\label{ssec:application-of-derivative}
 
-\sectionHomework
+称分子次数小于分母次数的有理函数为\noun{真分式}.
+任何一个有理函数 $f(z)$ 都可以通过带余除法分解为一个多项式 $g(z)$ 和一个真分式之和.
+若这个有理函数分母的零点均能求出, 则这个真分式又可以分拆为部分分式之和, 其中\noun{部分分式}是指形如 $\dfrac{a}{(x-b)^k}$ 的真分式.
+我们来介绍求这种分拆的一种方法.
+设
+\[
+  f(z)=g(z)+\sum_{j=1}^k \sum_{r=1}^{m_j} \frac{c_{j,r}}{(z-\lambda_j)^r},
+\]
+其中 $\lambda_j$ 是 $f(z)$ 分母的 $m_j$ 重根.
+那么
+\[
+   (z-\lambda_j)^{m_j}f(z)
+  =(z-\lambda_j)^{m_j}\biggl(g(z)+\sum_{\substack{\ell=1\\\ell\neq j}}^k \sum_{r=1}^{m_\ell} \frac{c_{\ell,r}}{(z-\lambda_\ell)^r}\biggr)
+    +\sum_{r=1}^{m_j} c_{j,r}(z-\lambda_j)^{m_j-r},
+\]
+于是
+\[
+  c_{j,r}=\frac1{(m_j-r)!}\lim_{z\ra \lambda_j}
+  \bigl((z-\lambda_j)^{m_j}f(z)\bigr)^{(m_j-r)}.
+\]
+
+\begin{example}
+  将下列函数展开成部分分式之和:
+  \begin{subexample}(1)
+    \item $f(z)=\dfrac1{(z-1)(z-2)(z+2)}$;
+    \item $f(z)=\dfrac{1}{(z-1)(z-2)^2}$.
+  \end{subexample}
+\end{example}
+
+\begin{solution}\delspace
+  \begin{enumnopar}[(i)]
+    \item 设
+    \[
+      f(z)=\frac{a}{z-1}+\frac{b}{z-2}+\frac{c}{z+2},
+    \]
+    则
+    \begin{align*}
+      a&=\lim_{z\ra1} (z-1)f(z)
+        =\lim_{z\ra1} \dfrac{1}{(z-2)(z+2)}
+        =-\frac13,\\
+      b&=\lim_{z\ra2} (z-2)f(z)
+        =\lim_{z\ra2} \dfrac{1}{(z-1)(z+2)}
+        =\frac14,\\
+      c&=\lim_{z\ra-2} (z+2)f(z)
+        =\lim_{z\ra-2} \dfrac{1}{(z-1)(z-2)}
+        =\frac1{12}.
+    \end{align*}
+    因此
+    \[
+      f(z)=-\frac{1}{3(z-1)}+\frac{1}{4(z-2)}+\frac{1}{12(z+2)}.
+    \]
+    \item 设
+    \[
+      f(z)=\frac{a}{z-1}+\frac{b}{z-2}+\frac{c}{(z-2)^2},
+    \]
+    则
+    \begin{align*}
+      a&=\lim_{z\ra1} (z-1)f(z)
+        =\lim_{z\ra1} \dfrac{1}{(z-2)^2}
+        =1,\\
+      b&=\lim_{z\ra2} \bigl((z-2)^2f(z)\bigr)'
+        =\lim_{z\ra2} \Bigl(\dfrac{1}{z-1}\Bigr)'
+        =-1,\\
+      c&=\lim_{z\ra2} (z-2)^2f(z)
+        =\lim_{z\ra2} \dfrac{1}{z-1}
+        =1.
+    \end{align*}
+    因此
+    \[
+      f(z)=\frac{1}{z-1}-\frac{1}{z-2}+\frac{1}{(z-2)^2}.
+    \]
+  \end{enumnopar}
+\end{solution}
+
+得到这种分拆之后, 我们可以求出该有理函数的任意阶导数.
+
+\begin{example}
+  计算 $f(x)=\dfrac1{1+x^2}$ 的 $n$ 阶导数.
+\end{example}
+
+\begin{solution}
+  设
+  \[
+     f(z)
+    =\dfrac1{1+z^2}
+    =\frac \ii2\biggl(\frac1{z+\ii}-\frac1{z-\ii}\biggr),
+  \]
+  则它在除 $z=\pm \ii$ 外处处解析, 且
+  \begin{align*}
+     f^{(n)}(z)&
+    =\frac \ii2\biggl(\frac1{z+\ii}-\frac1{z-\ii}\biggr)^{(n)}\\&
+    =\frac \ii2\cdot(-1)^n n!\biggl(\frac1{(z+\ii)^{n+1}}
+      -\frac1{(z-\ii)^{n+1}}\biggr)\\&
+    =(-1)^{n+1}n!\Im{(z+\ii)^{-n-1}}.
+  \end{align*}
+  当 $z=x$ 为实数时,
+  \[
+    |x+\ii|=\sqrt{x^2+1},\qquad
+    \arg(x+\ii)=\arccot x,
+  \]
+  于是
+  \[
+    \frac1{(z\pm\ii)^{n+1}}=(x^2+1)^{-\frac{n+1}2}\ee^{\pm\ii (n+1)\arccot x}.
+  \]
+  因此
+  \[
+     \biggl(\frac1{1+x^2}\biggr)^{(n)}
+    =(-1)^nn!(x^2+1)^{-\frac{n+1}2}\sin\bigl((n+1)\arccot x\bigr).
+  \]
+\end{solution}
+
+我们还可以利用复对数函数来计算实有理函数的不定积分.
+
+\begin{example}
+  \label{exam:int-rational-function}
+  计算 $\dint \frac1{x^3-1}\d x$.
+\end{example}
+  
+\begin{solution}
+  设 $\zeta=\ee^{\frac{2\cpi\ii}3}=\dfrac{-1+\sqrt3\ii}2$, 那么
+  \[
+    x^3-1=(x-1)(x-\zeta)(x-\zeta^2).
+  \]
+  设
+  \[
+     f(x)
+    =\frac1{x^3-1}
+    =\frac{c_0}{x-1}+\frac{c_1}{x-\zeta}+\frac{c_2}{x-\zeta^2},
+  \]
+  则
+  \[
+     c_k
+    =\lim_{x\ra \zeta^k} \frac{x-\zeta^k}{x^3-1}
+    =\lim_{x\ra \zeta^k} \frac1{3x^2}
+    =\frac13\zeta^k.
+  \]
+  设
+  \[
+    g(z)=\frac13\bigl(
+      \ln(z-1)+\zeta\ln(z-\zeta)+\zeta^2\ln(z-\zeta^2)
+    \bigr),
+  \]
+  它在其解析区域(即复平面去掉三条射线 $x+\zeta^k,x\le 0$)内的导数为 $f(z)$.
+  当 $z=x>1$ 时, 
+  \begin{align*}
+     &\zeta\ln(x-\zeta)+\zeta^2\ln(x-\zeta^2)
+    =2\Re\bigl(\zeta\ln(x-\zeta)\bigr)\\
+    =&2\Re\biggl(\frac{-1+\sqrt3\ii}2\ln\Bigl(x-\frac{-1+\sqrt3\ii}2\Bigr)\biggr)\\
+    =&2\Re\biggl(
+      \frac{-1+\sqrt3\ii}2
+        \Bigl(\ln\sqrt{x^2+x+1}-\ii\arccot\frac{2x+1}{\sqrt3}\Bigr)
+      \biggr)\\
+    =&-\ln\sqrt{x^2+x+1}
+      +\sqrt 3\arccot\frac{2x+1}{\sqrt3}.
+  \end{align*}
+  于是我们得到当 $x>1$ 时,
+  \[
+    g(x)=\frac13\ln\abs{x-1}-\frac16\ln(x^2+x+1)
+      +\frac{\sqrt3}3\arccot\frac{2x+1}{\sqrt3}.
+  \]
+  可以看出对于实数 $x<1$, 上式的导数也等于 $f(x)$, 从而
+  \[
+    \int\frac1{x^3-1}\d x
+    =\frac16\ln\frac{(x-1)^2}{|x^2+x+1|}
+      +\frac{\sqrt3}3\arccot\frac{2x+1}{\sqrt3}+C,
+      \quad C\in\BR.
+  \]
+\end{solution}
+
+
+
+\subsection{矩阵上的指数函数(\optional)}
+
+仿照复数的指数函数, 我们可以在矩阵上定义指数函数.
+设 $\bfA\in M_m(\BC)$ 是一个 $m$ 阶复方阵, $\bfE$ 是单位阵.
+我们想说明极限
+\[
+  \ee^\bfA:=\lim_{n\ra \infty}\Bigl(\bfE+\frac1n \bfA\Bigr)^n
+\]
+存在, 即这个矩阵序列每个元素形成的数列极限都存在.
+
+由线性代数的相关理论我们知道, 任意方阵都相似于若尔当标准型, 即存在可逆矩阵 $\bfP$ 使得
+\[
+   \bfP^{-1}\bfA\bfP
+  =\bfB
+  =\diag\bigl(\bfJ_{m_1}(\lambda_1),\cdots,\bfJ_{m_k}(\lambda_k)\bigr),
+\]
+其中
+\[
+  \bfJ_r(\lambda)=\begin{pmatrix}
+    \lambda&1&   &\\
+    &\lambda& 1 &\\
+    & &\ddots&1\\
+    & &      &\lambda
+  \end{pmatrix}\in M_r(\BC)
+\]
+是若尔当块.
+
+设 $\bfN=\bfN_r=\bfJ_r(0)$, 则 $\bfJ_r(\lambda)=\lambda\bfE+\bfN$, $\bfN^r=0$, 于是
+\begin{align*}
+   \Bigl(\bfE+\frac1n \bfJ_r(\lambda)\Bigr)^n&
+  =\biggl(\Bigl(1+\frac \lambda n\Bigr)\bfE+\frac1n \bfN\biggr)^n
+  =\sum_{k=0}^{r-1} \rmC_n^k \Bigl(1+\frac \lambda n\Bigr)^{n-k} \frac1{n^k} \bfN^k\\&
+  =\Bigl(1+\frac \lambda n\Bigr)^n \sum_{k=0}^{r-1} \frac{\rmC_n^k}{(n+\lambda)^k}\bfN^k.
+\end{align*}
+取极限得到
+\begin{equation}
+  \label{eq:jordan-exponential}
+   \ee^{\bfJ_r(\lambda)}
+  =\lim_{n\ra \infty}\Bigl(\bfE+\frac1n \bfJ_r(\lambda)\Bigr)^n
+  =\ee^\lambda\sum_{k=0}^{r-1} \frac1{k!}\bfN^k
+  =\ee^\lambda\ee^\bfN.
+\end{equation}
+注意到 
+\[
+   \Bigl(\bfE+\frac1n \bfA\Bigr)^n
+  =\bfP\Bigl(\bfE+\frac1n \bfB\Bigr)^n\bfP^{-1}.
+\]
+因此
+\begin{equation}
+  \label{eq:matrix-exponential}
+  \ee^\bfA=\bfP\ee^{\bfB}\bfP^{-1}
+  =\bfP\diag\bigl(
+      \ee^{\lambda_1}\ee^{\bfN_{m_1}},\cdots,
+      \ee^{\lambda_k}\ee^{\bfN_{m_k}}
+    \bigr)\bfP^{-1}
+\end{equation}
+存在.
+
+矩阵的指数函数也和通常的指数函数一样有着诸多性质.
+
+\begin{theorem}
+  \begin{enumpar}
+    \item $\ee^\bfA$ 是可逆矩阵.
+    \item $\ee^\bfA=\bfE+\bfA+\dfrac{\bfA^2}{2!}+\dfrac{\bfA^3}{3!}+\cdots$.
+    \label{enum:power-series-matrix-exp}
+    \item 若 $\bfA\bfB=\bfB\bfA$, 则 $\ee^{\bfA+\bfB}=\ee^\bfA\cdot \ee^\bfB$.
+  \end{enumpar}
+\end{theorem}
+
+\begin{proof}
+  沿用之前的记号.
+  \begin{enumpar}
+    \item 由 \ref{eq:jordan-exponential} 可知 $\ee^{\bfJ_r(\lambda)}$ 的特征值均为 $\ee^{\lambda}$, 从而 $\ee^\bfA$ 的特征值为 $\ee^{\lambda_1},\cdots,\ee^{\lambda_k}$.
+    故 $\ee^\bfA$ 可逆.
+    \item 由 \ref{eq:matrix-exponential} 可知我们只需对 $\bfA=\bfJ_r(\lambda)$ 的情形证明即可.
+    此时
+    \[
+       \bfA^k
+      =(\lambda\bfE+\bfN)^k
+      =\sum_{j=0}^k \rmC_k^j \lambda^{k-j}\bfN^j.
+    \]
+    当 $n\ge r$ 时, 
+    \begin{align*}
+       \sum_{k=0}^n \frac1{k!}\bfA^k&
+      =\sum_{k=0}^n \frac1{k!}\sum_{j=0}^k \rmC_k^j \lambda^{k-j}\bfN^j
+      =\sum_{j=0}^n\sum_{k=j}^n \frac1{k!}\rmC_k^j \lambda^{k-j}\bfN^j\\&
+      =\sum_{j=0}^n\sum_{k=0}^{n-j} \frac1{(k+j)!}\rmC_{k+j}^j \lambda^k\bfN^j\\&
+      =\sum_{j=0}^n\frac1{j!}\sum_{k=0}^{n-j} \frac1{k!}\lambda^k\bfN^j
+      =\sum_{j=0}^{r-1}\frac1{j!}\sum_{k=0}^{n-j} \frac1{k!}\lambda^k\bfN^j.
+    \end{align*}
+    故
+    \[
+      \sum_{k=0}^{\infty} \frac1{k!}\bfA^k
+      =\lim_{n\ra\infty}\sum_{j=0}^n\frac1{j!}\ee^\lambda\bfN^j
+      =\sum_{j=0}^{r-1}\frac1{j!}\ee^\lambda\bfN^j
+      =\ee^{\bfA}.  
+    \]
+    \item 我们可以由 \ref{enum:power-series-matrix-exp} 中矩阵指数函数的级数形式展开得到, 但需要验证绝对收敛性以保证能交换无限求和顺序.
+    为了避免引入矩阵``绝对收敛''的概念, 我们不采用这种证明方式, 而是利用\thmref{例}{exam:matrix-exponential-derivative} 的结论来证明.
+
+    设 $\bfX(t)=\ee^{\bfA t}\ee^{\bfB t}$.
+    由矩阵乘法的运算规则不难知道
+    \[
+       \bfX'(t)
+      =(\ee^{\bfA t})'\ee^{\bfB t}+\ee^{\bfA t}(\ee^{\bfB t})'
+      =\bfA \ee^{\bfA t}\ee^{\bfB t}+\ee^{\bfA t}\bfB\ee^{\bfB t}.
+    \]
+    由 $\bfA$ 和 $\bfB$ 交换不难知道
+    \[
+       \ee^{\bfA t}\bfB
+      =\lim_{n\ra \infty}\Bigl(\bfE+\frac1n \bfA t\Bigr)^n\bfB
+      =\lim_{n\ra \infty}\bfB\Bigl(\bfE+\frac1n \bfA t\Bigr)^n
+      =\bfB\ee^{\bfA t},
+    \]
+    从而
+    \[
+        \bfX'(t)
+        =(\bfA+\bfB)\ee^{\bfA t}\ee^{\bfB t}
+        =(\bfA+\bfB)\bfX(t).
+    \]
+    由于 $\bfX(0)=\bfE$, 因此 $\bfX(t)=\ee^{(\bfA+\bfB)t}$.
+    令 $t=1$ 得到 $\ee^{\bfA+\bfB}=\ee^\bfA\cdot \ee^\bfB$.
+    \qedhere
+  \end{enumpar}
+\end{proof}
+
+我们也可以利用级数来定义可逆矩阵的对数函数和幂函数, 此处不再展开.
+
+我们来看矩阵的指数函数和复数的指数函数的联系.
+沿用 \ref{sssec:complex-field-isomorphism}中的记号.
+设
+\[
+  \bfJ=\begin{pmatrix}
+    &1\\-1&
+  \end{pmatrix},\quad
+  \bfA=x\bfE+y\bfJ=\begin{pmatrix}
+    x&y\\-y&x
+  \end{pmatrix}.
+\]
+通过计算可以发现 $\bfA$ 的特征值为 $x\pm y\ii$ 且 $\bfA$ 可对角化:
+\[
+  \bfP^{-1}\bfA\bfP=\diag(x+y\ii,x-y\ii), 
+\]
+其中 $\bfP=\begin{pmatrix}
+  1&1\\\ii&-\ii
+\end{pmatrix}$, $\bfP^{-1}=\dfrac12\begin{pmatrix}
+  1&-\ii\\1&\ii
+\end{pmatrix}$.
+因此
+\begin{align*}
+  \ee^\bfA&
+  =\bfP^{-1}\diag(\ee^{x+y\ii},\ee^{x-y\ii})\bfP\\&
+  =\bfP^{-1}\diag(\ee^x\cos y+\ii\ee^x\sin y,
+    \ee^x\cos y-\ii\ee^x\sin y)\bfP\\&
+  =\begin{pmatrix}
+    \ee^x\cos y&\ee^x\sin y\\
+    -\ee^x\sin y&\ee^x\cos y
+  \end{pmatrix}
+  =\ee^x(\cos y\bfE+\sin y \bfJ).
+\end{align*}
+换言之, 在 \ref{sssec:complex-field-isomorphism}中我们将这样的二阶方阵和复数建立起一一对应后, 复数的指数函数和这样的方阵的指数函数是一回事.
+
+矩阵的指数函数在诸多学科均有所应用, 如物理学中描述系统的演化; 在控制论中分析系统的动态响应和稳定性; 在机器学习中, 对算法的推导和优化等等.
+我们来看它在微分方程中的一个应用.
+
+\begin{example}
+  \label{exam:matrix-exponential-derivative}
+  设 $\bfX(t)$ 是 $n\times m$ 个函数形成的矩阵函数.
+  证明: 常微分方程组 $\bfX'(t)=\bfA\bfX(t)$ 的解为 
+  \[
+    \bfX(t)=\ee^{\bfA t}\bfX(0),
+  \]
+  其中 $\bfX'(t)$ 表示对 $\bfX(t)$ 每个分量求导得到的矩阵函数.
+\end{example}
+
+\begin{proof}
+  设 $\wt\bfX(t)=\ee^{\bfA t}\bfX(0)$.
+  沿用之前的记号, 我们有
+  \[
+     \ee^{\bfJ_r(\lambda)t}
+    =\ee^{\lambda t\bfE+t\bfN}
+    =\ee^{\lambda t}\ee^{t\bfN}
+    =\sum_{k=0}^{r-1}\frac1{k!}\ee^{\lambda t}t^k\bfN^k.
+  \]
+  于是
+  \begin{align*}
+     \lim_{\delt t\ra 0}\frac{\ee^{\bfJ_r(\lambda)(t+\delt t)}-\ee^{\bfJ_r(\lambda)t}}{\delt t}&
+    =\sum_{k=0}^{r-1}\frac1{k!}\frac{\d(\ee^{\lambda t}t^k)}{\d t}\bfN^k\\&
+    =\sum_{k=0}^{r-1}\frac1{k!}(\lambda t^k\ee^{\lambda t}+kt^{k-1}\ee^{\lambda t})\bfN^k\\&
+    =\sum_{k=0}^{r-1}\frac1{k!}\lambda t^k\ee^{\lambda t}\bfN^k+\sum_{k=1}^{r-1}\frac1{(k-1)!}t^{k-1}\ee^{\lambda t}\bfN^k\\&
+    =(\lambda\bfE+\bfN)\ee^{\lambda t}\sum_{k=0}^{r-1}\frac1{k!}t^k\bfN^k
+    =\bfJ_r(\lambda)\ee^{\bfJ_r(\lambda)t}.
+  \end{align*}
+  由于 $\bfB$ 是一些若尔当块形成的分块对角阵, 因此
+  \[
+     \lim_{\delt t\ra 0}\frac{\ee^{\bfB(t+\delt t)}-\ee^{\bfB t}}{\delt t}
+    =\bfB\ee^{\bfB t},\quad
+     \lim_{\delt t\ra 0}\frac{\ee^{\bfA(t+\delt t)}-\ee^{\bfA t}}{\delt t}
+    =\bfP\bfB\ee^{\bfB t}\bfP^{-1}
+    =\bfA\ee^{\bfA t},
+  \]
+  从而
+  \[
+     \wt\bfX'(t)
+    =\lim_{\delt t\ra 0}\frac{\ee^{\bfA(t+\delt t)}-\ee^{\bfA t}}{\delt t}\bfX(0)
+    =\bfA\ee^{\bfA t}\bfX(0)
+    =\bfA\bfX(t)
+  \]
+  是该微分方程组的一个解.
+  下证唯一性.
+  设 $\bfY(t)=\bfX(t)-\wt\bfX(t)$, 则 $\bfY'(t)=\bfY(t)=\bfO$, 从而 $\bfY$ 只能恒为零.
+  故 $\bfX(t)=\wt\bfX(t)$.
+\end{proof}
+
+
+
+\subsection{多值函数的单值化(\optional)}
+
+从对数函数的定义可以看出, 对数函数的多值性来源于其中的辐角函数的多值性.
+为了研究它的多值性, 我们来研究辐角的变化.
+
+设 $z_0$ 是一个非零复数, $0<r<|z_0|$, 那么
+\[
+  U(z_0,r)=\set{z:|z-z_0|<r}
+\]
+是 $z_0$ 的一个邻域且不包含原点.
+对于任意 $z\in U(z_0,r)$, 可以发现 $\dfrac z{z_0}$ 的实部为正.
+若我们固定 $z_0$ 的一个辐角 $\theta$, 则我们可以在整个 $U(z_0,r)$ 上定义一个连续函数
+\[
+  f(z)=\theta+\arg\frac z{z_0},
+\]
+使得 $f(z)$ 是 $z$ 的一个辐角, 且 $f(z_0)=\theta$.
+也就是说, 我们得到了 $\Arg z$ 在 $U(z_0,r)$ 上的一个连续的单值分支.
+
+我们想要将上述函数扩展到整个复平面上.
+对于任意非零复数 $z_1\neq z_0$, 设 $C$ 是 $z_0$ 到 $z_1$ 的一条不经过原点的简单曲线.
+设 $r>0$ 小于原点到 $C$ 的距离, 那么我们可以构造一串复数 $a_1=z_0,a_2,\cdots,a_k=z_1$, 使得 $U(a_j,r)$ 和 $U(a_{j+1},r)$ 的交集非空, 且所有的这些邻域覆盖住了整个的 $C$.
+和前面的做法类似, 我们可以递归地构造出在整个 $C$ 上的 $\Arg z$ 的连续单值分支, 仍然记作 $f(z)$.
+
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}
+    \coordinate (z0) at (2,1);
+    \coordinate (z1) at (-2,1.5);
+    \node[right] at (z0) {$z_0\quad f(z_0)=\arg z_0$};
+    \node[left] at (z1) {$z_1$};
+    \node[align=left] at (-4.5,1.5) {$f(z_1)=\arg z_1$\\$g(z_1)=\arg z_1-2\cpi$};
+    \fill[cstdot,main] (z0) circle;
+    \fill[cstdot,main] (z1) circle;
+    \draw[
+      cstcurve,
+      cstra,
+      main,
+      domain=0:6,
+      samples=200,
+      decoration={
+        markings,
+        mark=at position .13 with {
+          \node[above=8mm] {辐角增加};
+        }
+      },
+      postaction={decorate}
+    ] plot ({2-2*\x/3},{1+\x/12+.8*sin(5*\x*\x)});
+    \draw[
+      cstcurve,
+      cstra,
+      fourth,
+      domain=0:6,
+      samples=200,
+      decoration={
+        markings,
+        mark=at position .3 with {
+          \node[below right] {辐角减少};
+        }
+      },
+      postaction={decorate}
+    ] plot ({2-2*\x/3},{1+\x/12-2.5*sin(30*\x)});
+    \foreach \x in {1,2,...,5}{
+      \fill[cstdot,second] ({2-2*\x/3},{1+\x/12+.8*sin(5*\x*\x)}) circle;
+      \draw[second] ({2-2*\x/3},{1+\x/12+.8*sin(5*\x*\x)}) circle (.5);
+    }
+    \draw[second] (z0) circle (.5);
+    \draw[second] (z1) circle (.5);
+    \draw[cstaxis] (-2.5,0)--(2.5,0);
+    \draw[cstaxis] (0,-1.5)--(0,2.5);
+    \draw[
+      cstcurve,
+      second,
+      decoration={
+        markings,
+        mark=at position .3 with {
+          \arrow{Straight Barb}
+        }
+      },
+      postaction={decorate}
+    ] (0,0) circle (.8);
+    \coordinate (A) at (1,0);
+    \coordinate (O) at (0,0);
+    \coordinate (B) at (.64,.48);
+    \draw[main,thick] pic [cstfill3, draw=third, angle radius=3mm] {angle=A--O--B};
+    \draw[cstra,third] (O)--(B);
+  \end{tikzpicture}
+  \caption{沿不同曲线得到的单值分支不同}
+\end{figure}
+
+然而, 若我们选择另一条曲线 $C'$ 来构造连续单值分支, 可能这两个函数在 $z_1$ 处取值不同.
+也就是说, 当 $z$ 沿着一条封闭曲线从 $z_0$ 绕回到 $z_0$ 之后, 我们所选的 $\Arg z$ 的值有可能发生了改变.
+对于辐角函数而言, 该值会增加了 $2k\cpi$, 其中 $k$ 是整个曲线绕着原点逆时针旋转的圈数.\footnote{
+  该值的变化和该曲线上选择的移动方向有关.
+  若是顺时针绕 $k$ 圈, 该值就会减少 $2k\cpi$.
+}
+
+因此, 若想要得到 $\Arg z$ 在区域 $D$ 上的一个连续的单值分支, $D$ 中就不能包含绕原点的曲线.
+对于多值函数 $F(z)$, 选择充分小的 $\delta$, 令 $z$ 在 $|z-a|=\delta$ 上逆时针绕 $a$ 一周, 且 $F(z)$ 的值连续变化.
+若所选的 $F(z)$ 的值绕一圈后和初始值不同, 则称 $a$ 为 $F(z)$ 的一个\noun{支点}.
+若这个变化值与具体的曲线无关, 我们还可以把它记作 $\delt_a F(z)$.
+例如 $\delt_0 \Arg z=2\cpi$.
+
+对于无穷远点也可类似定义支点的概念, 不过此时考虑的是当 $R$ 充分大, $z$ 在 $|z|=R$ 顺时针旋转一周时, $F(z)$ 的值连续变化的行为.
+例如 $\delt_\infty \Arg z=-2\cpi$.
+$\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反数.
+
+若我们用一条连续曲线将 $0$ 和 $\infty$ 连接起来, 则在去掉这条曲线后的区域内, 我们可以得到 $\Arg z$ 的一个连续单值分支.
+这样的线叫作\noun{支割线}.
+例如, 之前的章节中我们对 $\Arg z$ 所选取的支割线就是负实轴和零, 并得到剩余区域内的连续单值分支 $\arg z$.
+
+\begin{example}
+  \label{exam:cut-arg-frac}
+  求 $F(z)=\Arg \dfrac{z+1}{z-1}$ 的支点和支割线.
+\end{example}
+
+\begin{solution}
+  根据辐角绕一点旋转一周后的变化可知
+  \[
+    \delt_{-1} F(z)=2\cpi,\quad
+    \delt_1 F(z)=-2\cpi,\quad
+    \delt_\infty F(z)=0.
+  \]
+  因此支点为 $\pm1$.
+  我们选取连接 $-1$ 和 $1$ 的曲线作为支割线即可, 例如连接二者的直线段.
+\end{solution}
+
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}
+    \def\w{2}
+    \def\h{2}
+    \def\a{1.7}
+    \def\b{1.5}
+    \def\u{.8}
+    \begin{scope}[xshift=-5cm]
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutlinec{-\u}{0}{2*\u}{0}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+    \begin{scope}
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutline{-\u}{0}{\a-\u}{180}{main};
+      \cutline{\u}{0}{\a-\u}{0}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+    \begin{scope}[xshift=5cm]
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutline{-\u}{0}{\b}{90}{main};
+      \cutline{\u}{0}{\b}{-90}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{$\Ln\dfrac{z+1}{z-1}$ 支割线的选法}
+\end{figure}
+
+当然我们也可以选择两条射线 $(-\infty,-1]\cup[1,+\infty)$ 或其它支割线.
+
+对于对数函数 $F(z)=\Ln\dfrac{z+1}{z-1}$, 支割线的选法也是一样的.
+若固定 $F(0)=\cpi\ii$, 则在 $\BC-[-1,1]$ 内我们可以得到 $F(z)$ 的一个解析单值分支
+\[
+  f_1(z)=\ln\frac{z+1}{z-1};
+\]
+在 $\BC-(-\infty,-1]-[1,+\infty]$ 我们可以得到 $F(z)$ 的一个解析单值分支
+\[
+  f_2(z)=\ln\frac{1+z}{1-z}+\cpi\ii.
+\]
+
+幂函数的多值性也来源于辐角.
+对于函数 $F(z)=\sqrt[n]{z}=\sqrt[n]{|z|}\ee^{\frac{\ii\Arg z}n}$, 当 $z$ 绕原点逆时针旋转一周后, 函数值的辐角增加了 $\dfrac{2\cpi}n$.
+此时有
+\[
+  \delt_0 \Arg F(z)=\frac{2\cpi}n,\qquad
+  \delt_\infty \Arg F(z)=-\frac{2\cpi}n.
+\]
+因此我们需要选择支割线将 $0$ 与 $\infty$ 连接.
+注意, 此时我们允许辐角值绕闭路改变 $2\cpi$ 的整数倍, 因为我们关心的是幂函数本身的单值分支而不是它的辐角的单值分支.
+
+对于 $F(z)=(z-a_1)^{\gamma_1}\cdots(z-a_k)^{\gamma_k}$, 我们有
+\[
+  \delt_{a_j}\Arg F(z)=2\cpi\gamma_j,\qquad
+  \delt_\infty \Arg F(z)=-2\cpi\sum_{j=1}^k\gamma_j,
+\]
+其中取值不是 $2\cpi$ 的整数倍的是 $F(z)$ 的支点.
+我们可以将支点分成若干组, 使得每一组内的 $\delt_a\Arg F(z)$ 之和为 $2\cpi$ 的倍数, 然后把每一组的各个支点连接起来作为支割线即可.
+
+\begin{example}
+  求 $F(z)=\sqrt[3]{(z+1)(z-1)^2}$ 的支点和支割线.
+\end{example}
+
+\begin{solution}
+  根据辐角绕一点旋转一周后的变化可知
+  \[
+    \delt_{-1} \Arg F(z)=\frac{2\cpi}3,\quad
+    \delt_1 \Arg F(z)=\frac{4\cpi}3,\quad
+    \delt_\infty \Arg F(z)=-2\cpi.
+  \]
+  因此支点为 $\pm1$.
+  支割线的选法和\thmref{例}{exam:cut-arg-frac} 相同.
+\end{solution}
+
+\begin{example}
+  求 $F(z)=\sqrt[3]{(z+1)(z-1)}$ 的支点和支割线.
+\end{example}
+
+\begin{solution}
+  根据辐角绕一点旋转一周后的变化可知
+  \[
+    \delt_{-1} \Arg F(z)=\frac{2\cpi}3,\quad
+    \delt_1 \Arg F(z)=\frac{2\cpi}3,\quad
+    \delt_\infty \Arg F(z)=-\frac{4\cpi}3.
+  \]
+  因此支点为 $\pm1,\infty$, 我们选取连接 $-1,1,\infty$ 的曲线作为支割线, 例如 $(-\infty,-1]\cup[1,+\infty)$, 也可以选 $[-1,+\infty)$ 或 $\set{\pm1+y\ii\mid y>0}$.
+\end{solution}
+
+\begin{figure}[!htb]
+  \centering
+  \begin{tikzpicture}
+    \def\w{2}
+    \def\h{2}
+    \def\a{1.7}
+    \def\b{1.5}
+    \def\u{.8}
+    \begin{scope}[xshift=-5cm]
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutline{-\u}{0}{\a-\u}{180}{main};
+      \cutline{\u}{0}{\a-\u}{0}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+    \begin{scope}
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutline{-\u}{0}{\a+\u}{0}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+    \begin{scope}[xshift=5cm]
+      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+      \cutline{-\u}{0}{\b}{90}{main};
+      \cutline{\u}{0}{\b}{90}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\h)--(0,\h);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{$F(z)=\sqrt[3]{(z+1)(z-1)}$ 支割线的选法}
+\end{figure}
+
+由于支割线的选取较为复杂, 在利用复变函数解决一些实变量函数的定积分问题时, 应尽量如同\thmref{例}{exam:int-rational-function} 那样先通过复变函数得到函数的实不定积分, 再利用牛顿-莱布尼兹定理来计算, 而不是直接转化为复积分来计算.
+不过, 能得到不定积分的实函数还是较少, 更多的时候我们是通过解析函数在闭路上的积分来解决实的定积分问题.
+我们将在接下来的章节中讨论复变函数积分的一般理论.
+
+
+
+\psection{本章小结}
+
+本章所需掌握的重点如下:
+\begin{enumpar}
+  \item 能熟练使用\thmCR 求函数的可导点和解析点, 以及函数的导数.
+  \item 熟知指数函数 $\ee^z$ 的定义和性质.
+  \item 熟知对数函数 $\Ln z$ 及其主值的计算方式和性质.
+  \item 熟知幂函数 $z^a$ 及其主值的计算方式和性质.
+  \item 熟知 $\sin z$ 和 $\cos z$ 的定义、计算方式和性质.
+  \item 会解含三角函数 $\sin z$ 或 $\cos z$ 的简单方程.
+\end{enumpar}
+
+本章中不易理解和易错的知识点包括:
+\begin{enumpar}
+  \item 可导和解析的差异和联系. 解析要求函数在一点邻域内处处可导, 因此它是比可导更强的性质.
+  不过, 在区域内处处可导和处处解析是等价的, 对于一点的邻域也是如此.
+  此外, 由\thmCR 判断得到的是函数可导点, 若要得到解析点还需要进一步判断可导点处是否存在一个邻域内函数处处可导.
+  \item \thmCR 不是只有 C-R 方程, 还有复变函数的实部 $u$ 和虚部 $v$ 的可微性要求, 尽管在很多时候可微性可从偏导数连续一笔带过.
+  \item 对数函数和幂函数的多值性, 以及它们的解析区域. 切勿将多值函数本身和其主值混淆.
+  \item 指数函数 $\ee^z$ 是周期的; 三角函数 $\sin z$ 和 $\cos z$ 是无界的. 其奇偶性、导函数和恒等式等性质和实数情形类似.
+  \item 正弦函数 $\sin z=\dfrac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}$ 中分母的 $\ii$ 容易被遗漏掉.
+  在计算三角函数值或求反三角函数时, 由于 $\sin z$ 定义中的分子分母都有 $\ii$, 很容易出现计算错误.
+\end{enumpar}
+
+
+\psection{本章作业}
 \begin{homework}
   \item 单选题.
   \begin{subex}
@@ -1165,32 +1848,32 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
       \item 若 $z_0$ 是 $f(z)$ 和 $g(z)$ 的奇点, 则 $z_0$ 也是 $f(z)+g(z)$ 和 $\dfrac{f(z)}{g(z)}$ 的奇点.
       \item 若 $f(z)$ 在区域 $D$ 内处处可导, 则 $f(z)$ 在区域 $D$ 内解析.
     \end{exchoice}
-    \item 函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+y_0i$ 处可导的充要条件是\fillbrace{}.
+    \item 函数 $f(z)=u(x,y)+\ii v(x,y)$ 在 $z_0=x_0+y_0\ii$ 处可导的充要条件是\fillbrace{}.
     \begin{exchoice}(1)
       \item $u,v$ 均在 $(x_0,y_0)$ 处连续
       \item $u,v$ 均在 $(x_0,y_0)$ 处有偏导数
       \item $u,v$ 均在 $(x_0,y_0)$ 处可微
       \item $u,v$ 均在 $(x_0,y_0)$ 处可微且满足C-R方程
     \end{exchoice}
-    \item 下列函数中, 为解析函数的是\fillbrace{}.
+    \item 下列函数中, 为处处解析函数的是\fillbrace{}.
     \begin{exchoice}(2)
-      \item $x^2-y^2-2xyi$
-      \item $x^2+xyi$
-      \item $2(x-1)y+i(y^2-x^2+2x)$
-      \item $x^3+iy^3$
+      \item $x^2-y^2-2xy\ii$
+      \item $x^2+xy\ii$
+      \item $2(x-1)y+\ii(y^2-x^2+2x)$
+      \item $x^3+\ii y^3$
     \end{exchoice}
     \item 下面函数中, 在 $z=0$ 处不可导的是\fillbrace{}
     \begin{exchoice}(2)
-      \item $2x+3yi$
-      \item $2x^2+3y^2i$
-      \item $x^2-xyi$
-      \item $e^x\cos y+i e^x\sin y$
+      \item $x-y\ii$
+      \item $x^2-y^2\ii$
+      \item $2x^2+3xy\ii$
+      \item $\ee^{-x}\cos y-\ii \ee^{-x}\sin y$
     \end{exchoice}
     \item 设 $n$ 是正整数, $z$ 为非零复数. 下列式子一定正确的是\fillbrace{}.
     \begin{exchoice}(2)
-      \item $\Arg \sqrt z=\dfrac12\Arg z$
+      \item $\Ln \sqrt z=\dfrac12\Ln z$
       \item $\Arg z^n=n\Arg z$
-      \item $\arg z^{-n}=-n\arg z$
+      \item $\ln z^{-n}=-n\ln z$
       \item $\arg \sqrt z=\dfrac12\arg z$
     \end{exchoice}
     \item 设 $n$ 是正整数, $z,z_1,z_2$ 为非零复数. 下列式子一定正确的是\fillbrace{}.
@@ -1202,8 +1885,8 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
     \end{exchoice}
     \item 设 $z$ 为非零复数. 下列式子未必成立的是\fillbrace{}.
     \begin{exchoice}(2)
-      \item $\ov{e^z}=e^{\ov z}$
-      \item $\ln\ov{z}=-\ln z$
+      \item $\ov{\ee^z}=\ee^{\ov z}$
+      \item $\ln\ov{z}=\ov{\ln z}$
       \item $\ov{\cos z}=\cos{\ov z}$
       \item $\ov{\sin z}=\sin{\ov z}$
     \end{exchoice}
@@ -1211,7 +1894,7 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
     \begin{exchoice}(2)
       \item $z^{ab}=(z^a)^b$
       \item $(z_1z_2)^a=z_1^az_2^a$
-      \item $e^{z_1+z_2}=e^{z_1}\cdot e^{z_2}$
+      \item $\ee^{z_1+z_2}=\ee^{z_1}\cdot \ee^{z_2}$
       \item $\ln(z_1z_2)=\ln(z_1)+\ln(z_2)$
     \end{exchoice}
   \end{subex}
@@ -1219,166 +1902,97 @@ $\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
   \begin{subex}
     \item 函数 $\dfrac{z+1}{z(z^2+1)}$ 的奇点为\fillblank{}.
     \item 函数 $\dfrac{z-2}{(z+1)^2(z^2+1)}$ 的奇点为\fillblank{}.
-    \item 函数 $\dfrac{1}{\sin z}$ 的奇点为\fillblank{}.
     \item 函数 $\tanh z=\dfrac{\sh z}{\ch z}$ 的奇点为\fillblank{}.
-    \item 如果函数 $f(z)=x^2-2xy-y^2+i(ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$\fillblank{}.
-    \item 如果函数 $f(z)=e^{ax}(\cos y-i\sin y)$ 在复平面上处处解析, 则实数 $a=$\fillblank{}.
-    \item $\ln i$ 等于 \fillblank{}.
+    \item 函数 $\dfrac{1}{\sin z}$ 的奇点为\fillblank{}.
+    \item 若函数 $f(z)=x^2-2xy-y^2+\ii(ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$\fillblank{}.
+    \item 若函数 $f(z)=\ee^{y}(\cos x+a\sin x)$ 在复平面上处处解析, 则常数 $a=$\fillblank{}.
+    \item $\ln \ii$ 等于 \fillblank{}.
     \item $1^{\sqrt3}$ 的模等于 \fillblank{}.
-    \item $i^{-i}$ 的主值是\fillblank{}.
-    \item $2^{-i}$ 的辐角主值是\fillblank{}.
+    \item $\ii^{-\ii}$ 的主值是\fillblank{}.
+    \item $2^{-\ii}$ 的辐角主值是\fillblank{}.
   \end{subex}
   \item 计算题.
   \begin{subex}
     \item 指出下列函数 $f(z)$ 的解析区域, 并求出其导数.
       \begin{subsubex}(2)
         \item $(z-1)^5$;
-        \item $z^3+2iz$;
+        \item $z^3+2\ii z$;
         \item $\dfrac1{z^2-1}$;
         \item $\dfrac{az+b}{cz+d}$ ($c,d$ 不全为零).
       \end{subsubex}
     \item 下列函数何处可导? 何处解析?
       \begin{subsubex}(2)
-        \item $f(z)=x^3-3xy^2+i(3x^2y-y^3)$;
-        \item $f(z)=xy^2+ix^2y$;
-        \item $f(z)=1/\ov z$;
+        \item $f(z)=x^3-3xy^2+\ii(3x^2y-y^3)$;
+        \item $f(z)=x^3+\ii y^3$;
+        \item $f(z)=\dfrac1{~\ov z~}$;
         \item $f(z)=z\Im z$;
-        \item $f(z)=e^{x^2+y^2}$;
-        \item $f(z)=\sin x\ch y+i\cos x\sh y$.
+        \item $f(z)=\ee^{x^2+y^2}$;
+        \item $f(z)=\sin x\ch y+\ii\cos x\sh y$.
       \end{subsubex}
     \item 计算
       \begin{subsubex}(3)
-        \item $\exp\bigl(\dfrac{1+\pi i}4\bigr)$;
-        \item $\arg e^{1-4i}$;
-        \item $\Ln(1+\sqrt3i)$;
+        \item $\ee^{2+3\cpi\ii}$;
+        \item $\arg \ee^{1-4\ii}$;
+        \item $\Ln(1+\sqrt3\ii)$;
         \item $2\Ln2$;
-        \item $\ln(-i)$;
-        \item $\ln(-3+4i)$;
+        \item $\ln(-\ii)$;
+        \item $\ln(-3+4\ii)$;
       \end{subsubex}
     \item 计算
       \begin{subsubex}(2)
-        \item $3^i$;
-        \item $(1+i)^i$.
-        \item $\Im\sin(1+i)$;
+        \item $3^\ii$;
+        \item $(1+\ii)^\ii$.
+        \item $\Im\sin(1+\ii)$;
         \item $\Arccos 2$.
       \end{subsubex}
     \item 解方程 
       \begin{subsubex}(3)
         \item $\cos z=\dfrac{3\sqrt2}4$;
         \item $\sin z=0$;
-        \item $1+e^z=0$;
-        \item $z^{1+i}=i$;
+        \item $1+\ee^z=0$;
+        \item $z^\ii=1$;
         \item $\sin z+\cos z=0$;
         \item $\sin z=2\cos z$.
       \end{subsubex}
-    \item 设 $f(z)=my^3+nx^2y+i(x^3+lxy^2)$ 为处处解析函数, 试确定实数 $l,m,n$ 的值.
-    \item 设 $f(z)=3x^2+y^2+axyi$ 在复平面有无穷多可导的点, 但处处不解析. 求 $a$ 所有可能的值.
+    \item 设 $f(z)=my^3+nx^2y+\ii(x^3+lxy^2)$ 为处处解析函数, 试确定实数 $l,m,n$ 的值.
+    \item 设 $f(z)=3x^2+y^2+axy\ii$ 在复平面有无穷多可导的点, 但处处不解析. 求 $a$ 所有可能的值.
+    \item 已知 $f(z)=x^2+2xy-y^2+\ii(y^2+axy-x^2)$ 为解析函数, 计算 $a$ 和 $f'(z)$.
+    \item 已知 $f(z)=y^3+ax^2y+\ii(bx^3-3xy^2)$ 为解析函数, $a,b$ 为实数, 计算 $a,b$ 和 $f'(z)$.  
     \item 求函数 $f(z)=\dfrac{1}{\sin z-2}$ 的解析区域.
-    \item 验证 $e^x(x\cos y-y\sin y)+i e^x(y\cos y+x\sin y)$ 在全平面解析, 并求出其导数.
-    \item 利用复变函数计算 $f(x)=\dfrac{x^2+1}{x^4+1}$ 的各阶导数.
-    \item 利用复变函数计算 $\displaystyle\int\frac{1}{x^6-1}\d x$.
+    \item 验证 $f(z)=\ee^x(x\cos y-y\sin y)+\ii \ee^x(y\cos y+x\sin y)$ 在全平面解析, 并求出其导数.
+    \item \optionalex 利用复变函数计算
+      \begin{subsubex}(2)
+        \item $\biggl(\dfrac1{x^3-x}\biggr)^{(n)}$;
+        \item $\biggl(\dfrac1{x^4-1}\biggr)^{(n)}$;
+        \item $\dint \frac1{x^4-1}\d x$;
+        \item $\dint \frac1{x^3+1}\d x$.
+      \end{subsubex}
+    \item \optionalex 设 $\bfX(t)$ 是 $n\times m$ 个函数形成的矩阵函数, $\bfA$ 是 $n$ 阶方阵, $\bfB$ 是 $n\times m$ 矩阵. 解常微分方程组
+      \[
+        \begin{cases}
+          \bfX'(t)=t\bfA\bfX(t),\\
+          \bfX(0)=\bfB.
+        \end{cases}
+      \]
+    \item \optionalex 求下列函数的支点和支割线:
+      \begin{subsubex}(2)
+        \item $F(z)=\Ln\dfrac{z^2(z+1)}{z-1}$;
+        \item $F(z)=\sqrt[3]{z^2(z-\ii)}$.
+      \end{subsubex}
   \end{subex}
   \item 证明题.
   \begin{subex}
-    \item 证明: 若函数 $f(z)$ 在整个复平面解析, 且将实轴和虚轴均映为实数, 则 $f'(0)=0$. 
-    提示: 利用保角性, 或利用导数定义.
-    \item 证明: 若 $|f(z)|$ 在区域 $D$ 内是一常数, 则 $f(z)$ 在 $D$ 内是一常数.
+    \item 证明: 设函数 $f(z)$ 在整个复平面解析. 若 $f(z)$ 将实轴和虚轴均映成实数, 则 $f'(0)=0$. 
+    \item 证明: 设函数 $f(z)$ 在区域 $D$ 内解析. 若 $|f(z)|$ 在区域 $D$ 内是一常数, 则 $f(z)$ 在 $D$ 内是一常数.
   \end{subex}
 \end{homework}
   
 
-\newpage
-\section{扩展阅读\optional}
-
-\subsection{矩阵上的指数函数}
-仿照复数的指数函数, 我们可以在矩阵上定义指数函数.
-设 $\bfA\in M_m(\BC)$ 是一个 $m$ 阶复方阵, 我们想说明极限
-\[e^\bfA:=\lim_{n\to \infty}\Bigl(1+\frac1n \bfA\Bigr)^n\]
-存在.
-\begin{subex}
-  \item 当 $\bfA=\diag(\lambda_1,\lambda_2,\dots,\lambda_m)$ 是一个对角矩阵时, 证明 $e^\bfA$ 存在且
-  \[
-    e^\bfA=\diag\bigl(e^{\lambda_1},e^{\lambda_2},\dots,e^{\lambda_m}\bigr).
-  \]
-  \item 当
-  \[\bfA=\bfJ_m(a)=\begin{pmatrix}
-    a&1&   &\\
-    &a& 1 &\\
-    & &\ddots&1\\
-    & &      &a
-  \end{pmatrix}\]
-  是若尔当块时, 证明 $e^\bfA$ 存在.
-  \item 每个方阵都可以相似于一些若尔当块构成的分块对角阵, 即存在可逆方阵 $\bfP$ 使得
-  \[
-    \bfP^{-1}\bfA\bfP=\diag\bigl(\bfJ_{m_1}(\lambda_1),\bfJ_{m_2}(\lambda_2)\dots,\bfJ_{m_k}(\lambda_k)\bigr).
-  \]
-  由此证明 $e^\bfA$ 总存在.
-\end{subex}
-  
-矩阵的指数函数也和通常的指数函数一样有着诸多性质.
-\begin{subex}
-  \item 当 $\bfA=x\bfE+y\bfJ=\begin{pmatrix}
-    x&y\\-y&x
-  \end{pmatrix}$ 时, 证明
-  \[
-    e^\bfA=\begin{pmatrix}
-      e^x\cos y&e^x\sin y\\
-      -e^x\sin y&e^x\cos y
-    \end{pmatrix}=e^x(\cos y\bfE+\sin y \bfJ).
-  \]
-  换言之, 在\ref{ssec:matrix-form-of-C}中我们将这样的二阶方阵和复数建立起对应后, 复数的指数函数和这样的方阵的指数函数是一回事.
-  \item 证明: $e^\bfA=\bfE+\bfA+\dfrac{\bfA^2}{2!}+\dfrac{\bfA^3}{3!}+\cdots$.
-  \item 证明: 若 $\bfA\bfB=\bfB\bfA$, 则 $e^{\bfA+\bfB}=e^\bfA\cdot e^\bfB$.
-  \item 证明: 对于任意实数 $t$, $e^{t\bfA}=(e^\bfA)^t$.
-\end{subex}
-
-矩阵的指数函数在诸多学科均有所应用, 如物理学中描述系统的演化; 在控制论中分析系统的动态响应和稳定性; 在机器学习中，对算法的推导和优化等等.
-我们来看它在微分方程中的一个应用.
-\begin{subex}
-  \item 证明: 常微分方程组
-  \[
-    \begin{pmatrix}
-      x_1'(t)\\
-      x_2'(t)\\
-      \vdots\\
-      x_n'(t)
-    \end{pmatrix}
-    =\bfA
-    \begin{pmatrix}
-      x_1(t)\\
-      x_2(t)\\
-      \vdots\\
-      x_n(t)
-    \end{pmatrix}
-  \]
-  的解为
-  \[
-    \begin{pmatrix}
-      x_1(t)\\
-      x_2(t)\\
-      \vdots\\
-      x_n(t)
-    \end{pmatrix}=e^{\bfA t}\begin{pmatrix}
-      x_1(0)\\
-      x_2(0)\\
-      \vdots\\
-      x_n(0)
-    \end{pmatrix}.
-  \]
-\end{subex}
-
-
-\subsection{多值函数的单值化}
-
-由于解析函数都是单值函数, 因此多值函数无法直接讨论解析性.
-对于 $\Ln z,z^a$ 等多值函数, 我们可以为其划分出多个连续解析分支, 使得每个分支都是单值解析函数.
-设 $F(z)$ 为区域 $D$ 上的多值函数.
-若 $f(z)$ 为区域 $D$ 上的连续解析函数, 且对任意的 $z\in D$, $f(z)$ 是 $F(z)$ 的一个值, 则称 $f(z)$ 为 $F(z)$ 在区域 $D$ 上的\emph{连续解析分支}.
-
-
-为了划分解析分支, 我们需要支点的概念.
-设 $w=F(z)$ 是多值函数, $a$ 是复平面上一点, $C$ 为包含点 $a$ 的闭路.
-若 $z$ 从 $z_0\in C$ 出发, 沿曲线 $C$ 环绕 $a$ 一周后, $w=F(z)$ 从一个单值分支进入另一个单值分支, 则称 $a$ 为 $F(z)$ 的一个\emph{支点}.
-$F(z)$ 的支点一定是它的奇点, 但反之未必.
-
-WIP
+% 若我们采用 \ref{enum:exp-series} 来定义, 则从 $\cos x$ 和 $\sin x$ 的泰勒展开
+% \[
+%   \cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\quad
+%   \sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
+% \]
+% 可以得到欧拉恒等式 $\ee^{\ii x}=\cos x+\ii\sin x$.
+% 实际上这种推导方式并不严谨, 因为我们需要先铺垫好复变函数的级数理论才能这样代换, 这将会在\thmref{例}{exam:exp-taylor-expansion} 中得到解释.
+% 而 \ref{enum:exp-euler} 和 \ref{enum:exp-expansion} 的等价性将可由\thmref{定理}{thm:zero-isolated} 推出.

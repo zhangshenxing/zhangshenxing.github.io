@@ -1,20 +1,25 @@
 \usepackage{bm}
 \usepackage{extarrows}
-\usepackage{colortbl} % 表格边框颜色
 \usepackage{mathrsfs}
-\usepackage{stmaryrd}
-\usepackage{multirow}
-\usepackage{color,calc}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{booktabs}
-\usepackage{fixdif,derivative}
+\usepackage{fixdif,derivative} % 微分
 \usepackage[normalem]{ulem}
+% \usepackage{stmaryrd}
+\def\UrlBreaks{\do\/\do-\do\a\do\c\do1\do7}
+\tabcolsep=4mm
 
 % 颜色
+% 彩色 蓝 红 紫 绿 绿
+% 单色 蓝 蓝 黑 黑 蓝
+% 对比用25, 交错用1324
+
+% \definecolor{main}{RGB}{0,0,0}%
+% \definecolor{second}{RGB}{0,0,0}%
+% \definecolor{third}{RGB}{0,0,0}%
+% \definecolor{fourth}{RGB}{0,0,0}%
+% \definecolor{fifth}{RGB}{0,0,0}%
 
 % \definecolor{main}{RGB}{0,128,192}%
-% \definecolor{second}{RGB}{0,0,0}%
+% \definecolor{second}{RGB}{0,128,192}%
 % \definecolor{third}{RGB}{0,0,0}%
 % \definecolor{fourth}{RGB}{0,0,0}%
 % \definecolor{fifth}{RGB}{0,128,192}%
@@ -25,12 +30,18 @@
 \definecolor{fourth}{RGB}{0,128,0}
 \definecolor{fifth}{RGB}{0,128,0}
 
+\newcommand{\topcolorrule}{\arrayrulecolor{second}\toprule}
+\newcommand{\midcolorrule}{\arrayrulecolor{fourth}\midrule}
+\newcommand{\bottomcolorrule}{\arrayrulecolor{second}\bottomrule}
 % 选读
-\newcommand{\optional}{(选读)}
-\renewcommand{\emph}[1]{{\kaishu #1}}
+\newcommand{\optional}{选读}
+\newcommand{\optionalex}{(选做)}
+\renewcommand{\emph}[1]{{\bf #1}}
+\newcommand{\emphf}[1]{{\color{main}{\bf #1}}}
 % 文本色
-\newcommand{\noun}[1]{{\color{main}{\heiti #1}\index{{#1}}}}
-\newcommand{\nouns}[2]{{\color{main}{\heiti #1}\index{{#2}}}}
+\newcommand{\noun}[1]{{\color{main}{\bf #1}\index{{#1}}}}
+\newcommand{\nouns}[2]{{\color{main}{\bf #1}\index{{#2}}}}
+\newcommand{\nount}[1]{{\color{white}{#1}\index{{#1}}}}
 \newcommand{\alert}[1]{{\color{second}{\kaishu #1}}}
 
 \newcommand{\alertn}[1]{{\color{second}{#1}}}
@@ -52,26 +63,29 @@
 	cstnra/.style      ={-Latex, line width=0.1cm},
 	cstmra/.style      ={-Latex, line width=0.05cm},
 	cstmlra/.style     ={Latex-Latex, line width=0.05cm},
+	cstcut/.style      ={line width=3.2pt,white},
 	cstaxis/.style        ={-Stealth, thick}, %坐标轴
   % curve
 	cstcurve/.style       ={very thick}, %一般曲线
 	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
   % dot
 	cstdot/.style         ={radius=.08}, %实心点
-	cstdote/.style        ={radius=.07, fill=white}, %空心点
+	cstdote/.style        ={radius=.07, fill=white, very thick}, %空心点
   % fill
 	cstfill/.style       ={fill=black!10},
-	cstfille/.style      ={pattern=north east lines, pattern color=black},
+	cstfillc/.style      ={pattern=crosshatch},
+	% north east lines
+	cstfille/.style      ={pattern=crosshatch, pattern color=black},
 	cstfill1/.style       ={fill=main!20},
-	cstfille1/.style      ={pattern=north east lines, pattern color=main},
+	cstfille1/.style      ={pattern=crosshatch, pattern color=main},
 	cstfill2/.style        ={fill=second!20},
-	cstfille2/.style       ={pattern=north east lines, pattern color=second},
+	cstfille2/.style       ={pattern=crosshatch, pattern color=second},
 	cstfill3/.style        ={fill=third!20},
-	cstfille3/.style       ={pattern=north east lines, pattern color=third},
+	cstfille3/.style       ={pattern=crosshatch, pattern color=third},
 	cstfill4/.style        ={fill=fourth!20},
-	cstfille4/.style       ={pattern=north east lines, pattern color=fourth},
+	cstfille4/.style       ={pattern=crosshatch, pattern color=fourth},
 	cstfill5/.style        ={fill=fifth!20},
-	cstfille5/.style       ={pattern=north east lines, pattern color=fifth},
+	cstfille5/.style       ={pattern=crosshatch, pattern color=fifth},
   % node
 	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnode1/.style       ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
@@ -90,6 +104,7 @@
 
 \newcommand{\ansno}[1]{\par\noindent\emph{\thechapter.#1}}
 
+\letdif{\delt}{Delta}
 % arrows
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
@@ -730,6 +745,7 @@
 \DeclareMathOperator\sh{sh}
 \newcommand\Sht{\mathrm{Sht}}
 \newcommand\Sim{{\mathrm{Sim}}}
+\DeclareMathOperator\sinc{sinc}
 \newcommand\sign{{\mathrm{sign}}}
 \newcommand\SK{{\mathrm{SK}}}
 \newcommand\SL{{\mathrm{SL}}}
@@ -783,3 +799,52 @@
 \newcommand\wa{{\mathrm{wa}}}
 % z
 \newcommand\Zar{{\mathrm{Zar}}}
+
+
+% 定理引用
+\newcommand{\thmCR}{\hyperref[thm:Cauchy-Riemann]{柯西-黎曼定理}}
+\newcommand{\thmGrowUp}{\hyperref[thm:grow-up]{长大不等式}}
+\newcommand{\thmsa}{\hyperref[thm:arc]{小圆弧引理}}
+\newcommand{\thmSA}{\hyperref[thm:arc]{大圆弧引理}}
+\newcommand{\thmCG}{\hyperref[thm:Cauchy-Goursat]{柯西-古萨定理}}
+\newcommand{\thmCCC}{\hyperref[thm:complex-closed-contour]{复合闭路定理}}
+\newcommand{\thmCT}{\hyperref[thm:continuous-transform]{连续变形定理}}
+\newcommand{\thmNL}{\hyperref[eq:newton-leibniz]{牛顿-莱布尼兹公式}}
+\newcommand{\thmCI}{\hyperref[thm:Cauchy-integral]{柯西积分公式}}
+\newcommand{\thmCIH}{\hyperref[thm:Cauchy-integral-high-order]{柯西积分公式}}
+\newcommand{\thmRes}{\hyperref[thm:residue]{留数定理}}
+\newcommand{\thmRouche}{\hyperref[thm:rouche]{儒歇定理}}
+\newcommand{\thmFI}{\hyperref[eq:fourier-integral]{傅里叶积分公式}}
+\newcommand{\thmFSym}{\hyperref[thm:symmetry-property]{对称性质}}
+\newcommand{\thmFDif}{\hyperref[thm:fourier-differential-property]{微分性质}}
+\newcommand{\thmFInt}{\hyperref[thm:fourier-integral-property]{积分性质}}
+\newcommand{\thmFSim}{\hyperref[thm:fourier-similar-property]{相似性质}}
+\newcommand{\thmFPoi}{\hyperref[thm:poisson-summation-formula]{泊松求和公式}}
+\newcommand{\thmFConv}{\hyperref[thm:convolution-theorem]{卷积定理}}
+\newcommand{\thmLShift}{\hyperref[thm:laplace-shift-property]{位移性质}}
+\newcommand{\thmLDif}{\hyperref[thm:laplace-differential-property]{微分性质}}
+% 适应国标
+\usepackage[nolimits]{cmupint} % 提供 \int, \oint
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\ee}{\mathrm{e}}
+\usepackage{textgreek}
+\newcommand{\cpi}{{\text{\textpi}}}
+\newcommand{\dirac}{{\text{\textdelta}}}
+% 缩写
+\DeclareMathOperator\PV{P.V. }
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\doint}{\displaystyle\oint}
+\newcommand{\intT}{\displaystyle\int_{-\frac T2}^{\frac T2}}
+\newcommand{\intf}{\displaystyle\int_0^{+\infty}}
+\newcommand{\intff}{\displaystyle\int_{-\infty}^{+\infty}}
+\newcommand{\sumf}[1]{\displaystyle\sum_{n=#1}^{\infty}}
+\newcommand{\sumff}{\displaystyle\sum_{n=-\infty}^{+\infty}}
+
+\newcommand{\cutwd}{.07}
+% x, y, length, angle, color
+\newcommand{\cutline}[5]{%
+	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1+#3},{#2+\cutwd})--({#1-\cutwd},{#2+\cutwd})--({#1-\cutwd},{#2-\cutwd})--({#1+#3},{#2-\cutwd}) ({#1+#3},{#2+\cutwd})}
+\newcommand{\cutlinec}[5]{%
+	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1-\cutwd},{#2-\cutwd}) rectangle ({#1+#3+\cutwd},{#2+\cutwd})}

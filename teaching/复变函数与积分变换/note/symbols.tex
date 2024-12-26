@@ -61,7 +61,7 @@
     \fp_step_inline:nnnn {#1} { (#2-(#1))/(#3-1)*0.99 } {#2}
   }
 \pgfmathdeclarefunction{nrand}{0}
-  {% \tex_normaldeviate:D 生成均值为 0，标准差为 10000 的随机整数
+  {% \tex_normaldeviate:D 生成均值为 0, 标准差为 10000 的随机整数
     \tl_set:Nx \pgfmathresult { \fp_eval:n { \tex_normaldeviate:D/10000 } }
   }
 \pgfmathdeclarefunction{rdv}{0}{\pgfmathparse{1+nrand/100}}
@@ -687,6 +687,7 @@
 \DeclareMathOperator\sh{sh}
 \newcommand\Sht{\mathrm{Sht}}
 \newcommand\Sim{{\mathrm{Sim}}}
+\DeclareMathOperator{\sinc}{sinc}
 \newcommand\sign{{\mathrm{sign}}}
 \newcommand\SK{{\mathrm{SK}}}
 \newcommand\SL{{\mathrm{SL}}}
