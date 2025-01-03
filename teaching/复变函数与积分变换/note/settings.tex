@@ -1,3 +1,5 @@
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{bm}
 \usepackage{extarrows}
 \usepackage{mathrsfs}
@@ -6,29 +8,10 @@
 % \usepackage{stmaryrd}
 \def\UrlBreaks{\do\/\do-\do\a\do\c\do1\do7}
 \tabcolsep=4mm
-
-% 颜色
-% 彩色 蓝 红 紫 绿 绿
-% 单色 蓝 蓝 黑 黑 蓝
-% 对比用25, 交错用1324
-
-% \definecolor{main}{RGB}{0,0,0}%
-% \definecolor{second}{RGB}{0,0,0}%
-% \definecolor{third}{RGB}{0,0,0}%
-% \definecolor{fourth}{RGB}{0,0,0}%
-% \definecolor{fifth}{RGB}{0,0,0}%
-
-% \definecolor{main}{RGB}{0,128,192}%
-% \definecolor{second}{RGB}{0,128,192}%
-% \definecolor{third}{RGB}{0,0,0}%
-% \definecolor{fourth}{RGB}{0,0,0}%
-% \definecolor{fifth}{RGB}{0,128,192}%
-
-\definecolor{main}{RGB}{0,128,192}%
-\definecolor{second}{RGB}{224,0,0}
-\definecolor{third}{RGB}{112,0,112}
-\definecolor{fourth}{RGB}{0,128,0}
-\definecolor{fifth}{RGB}{0,128,0}
+\usetikzlibrary{
+	patterns,
+	patterns.meta
+}
 
 \newcommand{\topcolorrule}{\arrayrulecolor{second}\toprule}
 \newcommand{\midcolorrule}{\arrayrulecolor{fourth}\midrule}
@@ -60,40 +43,39 @@
 	cstwra/.style     ={-{Straight Barb[flex'=1]}},  % wide ra
 	cstwla/.style     ={{Straight Barb[flex'=1]}-},
 	cstwlra/.style    ={{Straight Barb[flex'=1]}-{Straight Barb[flex'=1]}},
-	cstnra/.style      ={-Latex, line width=0.1cm},
-	cstmra/.style      ={-Latex, line width=0.05cm},
-	cstmlra/.style     ={Latex-Latex, line width=0.05cm},
-	cstcut/.style      ={line width=3.2pt,white},
-	cstaxis/.style        ={-Stealth, thick}, %坐标轴
+	cstnra/.style     ={-Latex, line width=0.1cm},
+	cstmra/.style     ={-Latex, line width=0.05cm},
+	cstmlra/.style    ={Latex-Latex, line width=0.05cm},
+	cstcut/.style     ={line width=3.2pt,white},
+	cstaxis/.style    ={-Stealth, thick}, %坐标轴
   % curve
-	cstcurve/.style       ={very thick}, %一般曲线
-	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
+	cstcurve/.style   ={very thick}, %一般曲线
+	cstdash/.style    ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
   % dot
-	cstdot/.style         ={radius=.08}, %实心点
-	cstdote/.style        ={radius=.07, fill=white, very thick}, %空心点
-  % fill
-	cstfill/.style       ={fill=black!10},
-	cstfillc/.style      ={pattern=crosshatch},
-	% north east lines
-	cstfille/.style      ={pattern=crosshatch, pattern color=black},
-	cstfill1/.style       ={fill=main!20},
-	cstfille1/.style      ={pattern=crosshatch, pattern color=main},
-	cstfill2/.style        ={fill=second!20},
-	cstfille2/.style       ={pattern=crosshatch, pattern color=second},
-	cstfill3/.style        ={fill=third!20},
-	cstfille3/.style       ={pattern=crosshatch, pattern color=third},
-	cstfill4/.style        ={fill=fourth!20},
-	cstfille4/.style       ={pattern=crosshatch, pattern color=fourth},
-	cstfill5/.style        ={fill=fifth!20},
-	cstfille5/.style       ={pattern=crosshatch, pattern color=fifth},
+	cstdot/.style     ={radius=.08}, %实心点
+	cstdote/.style    ={radius=.07, fill=white, very thick}, %空心点
+  % fill and pattern
+	cstfill/.style    ={fill=black!10},
+	cstpattern/.style ={pattern=crosshatch},
+	cstfille/.style   ={cstpattern, pattern color=black},
+	cstfill1/.style   ={fill=main!20},
+	cstfille1/.style  ={cstpattern, pattern color=main},
+	cstfill2/.style   ={fill=second!20},
+	cstfille2/.style  ={cstpattern, pattern color=second},
+	cstfill3/.style   ={fill=third!20},
+	cstfille3/.style  ={cstpattern, pattern color=third},
+	cstfill4/.style   ={fill=fourth!20},
+	cstfille4/.style  ={cstpattern, pattern color=fourth},
+	cstfill5/.style   ={fill=fifth!20},
+	cstfille5/.style  ={cstpattern, pattern color=fifth},
   % node
-	cstnode/.style        ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnode1/.style       ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnode2/.style       ={fill=second!15,draw=second!80,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnode3/.style       ={fill=third!15,draw=third!80,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnode4/.style       ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
-	cstnode5/.style       ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt},
-	emph/.style = {text=main,font=\bfseries}
+	cstnode/.style    ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode1/.style   ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode2/.style   ={fill=second!15,draw=second!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode3/.style   ={fill=third!15,draw=third!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode4/.style   ={fill=fourth!15,draw=fourth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	cstnode5/.style   ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt},
+	emph/.style       ={text=main,font=\bfseries}
 }
 
 % 填空题/选择题/判断题
@@ -812,6 +794,8 @@
 \newcommand{\thmNL}{\hyperref[eq:newton-leibniz]{牛顿-莱布尼兹公式}}
 \newcommand{\thmCI}{\hyperref[thm:Cauchy-integral]{柯西积分公式}}
 \newcommand{\thmCIH}{\hyperref[thm:Cauchy-integral-high-order]{柯西积分公式}}
+\newcommand{\thmAF}{\hyperref[thm:abel-first]{阿贝尔定理}}
+\newcommand{\thmAS}{\hyperref[thm:abel-second]{阿贝尔第二定理}}
 \newcommand{\thmRes}{\hyperref[thm:residue]{留数定理}}
 \newcommand{\thmRouche}{\hyperref[thm:rouche]{儒歇定理}}
 \newcommand{\thmFI}{\hyperref[eq:fourier-integral]{傅里叶积分公式}}
@@ -845,6 +829,10 @@
 \newcommand{\cutwd}{.07}
 % x, y, length, angle, color
 \newcommand{\cutline}[5]{%
-	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1+#3},{#2+\cutwd})--({#1-\cutwd},{#2+\cutwd})--({#1-\cutwd},{#2-\cutwd})--({#1+#3},{#2-\cutwd}) ({#1+#3},{#2+\cutwd})}
+	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1+#3},{#2+\cutwd})--({#1-\cutwd},{#2+\cutwd})--({#1-\cutwd},{#2-\cutwd})--({#1+#3},{#2-\cutwd}) ({#1+#3},{#2+\cutwd})%
+}
 \newcommand{\cutlinec}[5]{%
-	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1-\cutwd},{#2-\cutwd}) rectangle ({#1+#3+\cutwd},{#2+\cutwd})}
+	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1-\cutwd},{#2-\cutwd}) rectangle ({#1+#3+\cutwd},{#2+\cutwd})%
+}
+\renewcommand\dfrac[2]{{\displaystyle\frac{#1}{#2}\rule[-.65\baselineskip]{0pt}{1.6\baselineskip}}}
+\newcommand\ddfrac[2]{{\displaystyle\frac{#1}{#2}}}

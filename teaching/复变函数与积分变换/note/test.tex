@@ -1,40 +1,61 @@
-\documentclass{ctexbook}
+\documentclass{article}
 
+\usepackage{enumitem,xcolor}
+\usepackage{hyperref,cleveref}
 
-\RequirePackage[flushmargin,stable,perpage,symbol*]{footmisc}
-% \counterwithin{footnote}{page}
-% \renewcommand\thefootnote{$\fnsymbol{footnote}$}
-% \renewcommand\thefootnote{\arabic{footnote}}
+\newcounter{cenum}
+\newenvironment{enumnopar}{%
+  \hspace{-\parindent}%
+	\renewcommand{\item}{%
+    \ifnum\value{enumi}=0\else\par\noindent\fi%
+    \refstepcounter{enumi}
+    \makebox[1.7em][r]{\theenumi\MakeLinkTarget[item]{cenum}}%
+    \hspace{.5em}%
+  }%
+}{\ignorespacesafterend}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor = blue
+}
 
 \begin{document}
+greatgreatgreatgreatgreatgreatgreat
+\begin{enumerate}[ref={Step \arabic{enumi}},leftmargin=*,itemindent=4em]
+  \item Step Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep A
+  
+  Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep A
+  \item Step btep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep Atep A
+  \item Step C
+  \item Step D
+\end{enumerate}
 
-啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊\footnote{emm}
+greatgreatgreatgreatgreatgreat
+\begin{enumnopar}
+  \item
+    one \label{one}
+  \item
+    two \label{two}
+\end{enumnopar}
 
+This \ref{two} is great.
 
-\subsection{区域的特性}
+\begin{enumerate}[label=\textcolor{blue}{\arabic*.}, ref=\arabic*]
+  \item
+    one \label{eone}
+  \item
+    two \label{etwo}
+\end{enumerate}
 
-% \setcounter{footnote}{0}
-闭\footnote{波}
-\newpage
+This \ref{etwo} is great.
 
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
+\begin{enumnopar}
+  \item
+    one \label{rone}
+  \item
+    two \label{rtwo}
+\end{enumnopar}
 
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
-
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
-
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
-
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
-
-
-闭\footnote{波}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}\footnote{emm}
-\newpage
+This \ref{rtwo} is great.
 
 \end{document}

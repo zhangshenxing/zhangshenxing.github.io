@@ -72,10 +72,10 @@
 
 \begin{theorem}
   若 $f(t)$ 在区间 $(-\dfrac T2,\dfrac T2)$ 上满足\noun{狄利克雷条件}:
-  \begin{enumpar}
+  \begin{enuma}
     \item 间断点只有有限多个, 且均为第一类间断点;
     \item 只有有限个极值点,
-  \end{enumpar}\par\noindent
+  \end{enuma}\par\noindent
   则 $f(t)$ 可以表达为级数
   \[
     f(t)=\frac{a_0}2+\sumf1 \left(a_n\cos n\omega t+b_n \sin n\omega t\right).
@@ -588,46 +588,44 @@
 
 \begin{theorem}
   $\dirac$ 函数满足如下性质:
-  \begin{enumpar}
+  \begin{enuma}
     \item \noun{筛选性质}: $f(t)\dirac(t-t_0)=f(t_0)\dirac(t-t_0)$.
     \item $\dirac(at)=\dfrac1{|a|}\dirac(t)$. 特别地, $\dirac(t)=\dirac(-t)$.
     \item $\pair{\dirac^{(n)},f}=(-1)^nf^{(n)}(0)$.
     \item $u'(t)=\dirac(t)$, 其中 $u(t)=\begin{cases}1,&t\ge0,\\0,&t<0\end{cases}$ 是\noun{单位阶跃函数}\footnotemark.
-  \end{enumpar}
+  \end{enuma}
 \end{theorem}
 \footnotetext{又名\emph{赫维赛德函数}.}
 
-\begin{proof}
-  \begin{enumnopar}
-    \item 这是因为
-    \[
-      \intff \dirac(t-t_0)f(t)\cdot g(t)\d t=f(t_0)g(t_0)
-      =\intff \dirac(t-t_0)f(t_0)\cdot g(t)\d t.
-    \]
-    \item 这是因为
-    \[
-      \intff \dirac(at)f(t)\d t
-      =\intff \dirac(t)\cdot \frac1{|a|}f\bigl(\frac ta\bigr)\d t
-      =\frac1{|a|}f(0).
-    \]
-    \item 这是因为
-    \begin{align*}
-      \intff \dirac^{(n)}(t)f(t)\d t
-      &=-\intff \dirac^{(n-1)}(t)f'(t)\d t
-      =\cdots\\
-      &=(-1)^n\intff \dirac(t)f^{(n)}(t)\d t
-      =(-1)^nf^{(n)}(0).
-    \end{align*}
-    \item 由于 $\liml_{t\ra\infty}f(t)=0$, 因此
-    \[
-      \intff u'(t)f(t)\d t
-      =-\intff u(t)f'(t)\d t
-      =-\intf f'(t)\d t
-      =-f(t)\big|_0^{+\infty}
-      =f(0).\qedhere
-    \]
-  \end{enumnopar}
-\end{proof}
+\begin{proofenuma}
+  \item 这是因为
+  \[
+    \intff \dirac(t-t_0)f(t)\cdot g(t)\d t=f(t_0)g(t_0)
+    =\intff \dirac(t-t_0)f(t_0)\cdot g(t)\d t.
+  \]
+  \item 这是因为
+  \[
+    \intff \dirac(at)f(t)\d t
+    =\intff \dirac(t)\cdot \frac1{|a|}f\bigl(\frac ta\bigr)\d t
+    =\frac1{|a|}f(0).
+  \]
+  \item 这是因为
+  \begin{align*}
+    \intff \dirac^{(n)}(t)f(t)\d t
+    &=-\intff \dirac^{(n-1)}(t)f'(t)\d t
+    =\cdots\\
+    &=(-1)^n\intff \dirac(t)f^{(n)}(t)\d t
+    =(-1)^nf^{(n)}(0).
+  \end{align*}
+  \item 由于 $\liml_{t\ra\infty}f(t)=0$, 因此
+  \[
+    \intff u'(t)f(t)\d t
+    =-\intff u(t)f'(t)\d t
+    =-\intf f'(t)\d t
+    =-f(t)\big|_0^{+\infty}
+    =f(0).\qedhere
+  \]
+\end{proofenuma}
 
 $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 对于 $f(t)\in\mss$ 以及普通函数 $\lambda$, 我们发现
@@ -753,13 +751,13 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \]
 我们作此汇总:
 \begin{fifth}{与 $\dirac$ 函数有关的傅里叶变换汇总}
-  \begin{enumpar}
+  \begin{enuma}
     \item $\msf[\dirac(t)]=1$, $\msf[\dirac(t-t_0)]=\ee^{-\ii \omega t_0}$;
     \item $\msf[1]=2\cpi\dirac(\omega)$, $\msf[\ee^{\ii \omega_0 t}]=2\cpi\dirac(\omega-\omega_0)$;
     \item $\msf[\sin \omega_0t]=\ii \cpi[\dirac(\omega+\omega_0)-\dirac(\omega-\omega_0)]$;
     \item $\msf[\cos{\omega_0 t}]=\cpi[\dirac(\omega+\omega_0)+\dirac(\omega-\omega_0)]$;
     \item $\msf[u(t)]=\dfrac1{\ii \omega}+\cpi\dirac(\omega)$.
-  \end{enumpar}
+  \end{enuma}
 \end{fifth}
 
 
@@ -828,7 +826,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \begin{align*}
   \msf[tf(t)]&=\ii F'(\omega),&
   \msf^{-1}[\omega F(\omega)]&=-\ii f'(t),\\
-  \msf[t^kf(t)]&=\ii ^kF^{(k)}(\omega),&
+  \msf[t^kf(t)]&=\ii^kF^{(k)}(\omega),&
   \msf^{-1}[\omega^kF(\omega)]&=(-\ii )^kf^{(k)}(t).
 \end{align*}
 
@@ -843,7 +841,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
   因此
   \[
-    \msf[t^k\ee^{-\beta t}u(t)]=\ii ^k\left(\frac1{\beta+\ii \omega}\right)^{(k)}
+    \msf[t^k\ee^{-\beta t}u(t)]=\ii^k\left(\frac1{\beta+\ii \omega}\right)^{(k)}
     =\frac{k!}{(\beta+\ii \omega)^{k+1}}.
   \]
 \end{solution}
@@ -1136,12 +1134,12 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{proof}
 
 以下卷积的性质可由卷积的定义直接证明:
-\begin{enumpar}
+\begin{enuma}
   \item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
   \item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
   \item $f\ast\dirac=f$;
   \item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
-\end{enumpar}\par\noindent
+\end{enuma}\par\noindent
 不过, 利用\thmFConv 可以更容易地理解这些等式.
 因为这些等式的傅里叶变换实际上是在说象函数满足乘法交换律、结合律、分配律, 且 $F\cdot 1=F$,
 \[
@@ -1424,10 +1422,10 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 \begin{theorem}[拉普拉斯变换存在定理]
   若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足:
-  \begin{enumpar}
+  \begin{enuma}
     \item 在任一有限区间上至多只有有限多间断点;
     \item 存在 $M,c$ 使得 $|f(t)|\le M\ee^{ct}$,
-  \end{enumpar}\par\noindent
+  \end{enuma}\par\noindent
   则 $\msf\bigl[f(t)u(t)\ee^{-\beta t}\bigr]$ 在 $\Re s>c$ 上存在且为解析函数.
 \end{theorem}
 
@@ -1648,7 +1646,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 我们作此汇总:
 \begin{fifth}{与有理函数有关的拉普拉斯变换汇总}
-  \begin{enumpar}
+  \begin{enuma}
     \item $\displaystyle\msl[1]=\frac1s$, 
     $\displaystyle \msl[\ee^{kt}]=\frac1{s-k}$;
     \item $\displaystyle\msl[t^m]=\frac{m!}{s^{m+1}}$, 
@@ -1657,7 +1655,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     $\displaystyle\msl[\ee^{at}\sin kt]=\frac{k}{(s-a)^2+k^2}$;
     \item $\displaystyle\msl[\cos kt]=\frac{s}{s^2+k^2}$,
     $\displaystyle\msl[\ee^{at}\cos kt]=\frac{s-a}{(s-a)^2+k^2}$.
-  \end{enumpar}
+  \end{enuma}
 \end{fifth}
 
 由变量替换易得:
@@ -1801,7 +1799,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.
 \end{example}
 
-\begin{solution}
+\begin{solution}[解法一]
   由
   \begin{align*}
      \Res[F(s)\ee^{st},0]
@@ -1817,7 +1815,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 我们也可以直接利用常见函数的拉普拉斯变换来计算逆变换.
 
-\begin{solution}[另解]
+\begin{solution}[解法二]
   设
   \[
     F(s)=\frac as+\frac b{s-1}+\frac c{(s-1)^2},

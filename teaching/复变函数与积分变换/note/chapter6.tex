@@ -85,10 +85,10 @@
 
 \begin{theorem}
   设 $w=f(z)$ 在 $z_0$ 处解析且 $f'(z_0)\neq0$, 那么 $w=f(z)$ 在 $z_0$ 处满足如下性质:
-  \begin{enumpar}
+  \begin{enuma}
     \item 保角性: 经过 $z_0$ 的两条曲线的夹角和它们在 $w=f(z)$ 下的像的夹角相同;
     \item 伸缩率不变性: 连接 $z_0$ 与其附近点的曲线, 经过映射后被伸缩了 $|f'(z_0)|$ 倍, 这个倍率与具体曲线无关.\footnotemark
-  \end{enumpar}
+  \end{enuma}
 \end{theorem}
 \footnotetext{
   ``附近''并不是严格的数学概念, 这里实际上就是指 $|\delt w|=|f'(z_0)|\cdot|\delt z|+o(\delt z)$.
@@ -102,10 +102,10 @@
 \subsection{保形映射的定义}
 
 \begin{definition}
-  \begin{enumpar}
+  \begin{enuma}
     \item 若 $w=f(z)$ 在 $z_0$ 处具有保角性和伸缩率不变性, 则称 $w=f(z)$ 是 $z_0$ 处的\noun{保角映射}.
     \item 若 $w=f(z)$ 在区域 $D$ 处处都是保角映射, 则称 $w=f(z)$ 是 $D$ 内的\noun{保角映射}.
-  \end{enumpar}
+  \end{enuma}
 \end{definition}
 
 由上一小节讨论立即得知:
@@ -148,11 +148,11 @@
 
 于是我们可以定义 $\infty$ 处的保形映射.
 \begin{definition}
-  \begin{enumpar}
+  \begin{enuma}
     \item 若 $f(z_0)=\infty$, 且 $\dfrac1w=\dfrac1{f(z)}$ 是 $z_0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$z_0$ 处的保角映射}{保角映射}.
     \item 若 $f(\infty)=w_0$, 且 $w=f\Bigl(\dfrac1t\Bigr)$ 是 $t=0$ 处的保形映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
     \item 若 $f(\infty)=\infty$, 且 $\dfrac1w=\dfrac1{f(1/t)}$ 是 $t=0$ 处的保形映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
-  \end{enumpar}
+  \end{enuma}
 \end{definition}
 
 对于复球面上的相交曲线, 也可以定义夹角和保形映射.
@@ -236,11 +236,11 @@
   =-\frac{ad-bc}{c^2}\cdot\frac1{z+d/c}+\frac ac.
 \]
 于是它可以由三类比较简单的分式线性映射复合得到:
-\begin{enumpar}
+\begin{enuma}
   \item 平移映射 $w=z+b$;
   \item 相似映射 $w=az$;
   \item 倒数映射 $w=\dfrac1z$.
-\end{enumpar}
+\end{enuma}
 由\thmref{例}{exam:linear-transform} 和\thmref{例}{exam:inverse-transform}, 我们立即得到:
 
 \begin{theorem}
@@ -618,7 +618,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \caption{上半平面到圆域的映射}
 \end{figure}
 
-\begin{solution}
+\begin{solution}[解法一]
   通过 $s=-\ii z$ 可以将上半平面映射为右半平面, 再根据\thmref{例}{exam:rez-open-disk}, 映射
   \[
     t=\ee^{\ii\theta}\dfrac{\beta-s}{\ov\beta+s},\quad\Re\beta>0
@@ -638,7 +638,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   再由 $f(\ii)=2$ 可得 $\alpha=1$. 故 $w=\dfrac{4z}{z+\ii}$.
 \end{solution}
 
-\begin{solution}[另解]
+\begin{solution}[解法二]
   由于 $\ii,-\ii$ 关于直线 $\Im z=0$ 对称, 因此 $w=f(-\ii)$ 为 $2$ 关于 $|w-2|=2$ 的对称点, 即 $\infty$.
   从而 $w=k\dfrac{z}{z+\ii}$.
   再由 $f(\ii)=2$ 可得 $k=4,w=\dfrac{4z}{z+\ii}$.
@@ -888,66 +888,64 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \]
 此时, 由\eqref{eq:rotation-quaternion} 定义的 $q$ 对应的 $\BR^3$ 上的旋转变换 $\Phi_q(\bfa)=q\bfa q^{-1}$ 就和 $w=f(z)$ 诱导的复球面上的旋转变换是相同的.
 
-\begin{example}\delspace
-  \begin{enumnopar}[(i)]
-    \item 设 $q=\cos\dfrac\theta2+\ii\sin\dfrac\theta 2$.
-    那么 $z_1=\ee^{\frac{\ii\theta}2}, z_2=0$, 它对应的分式线性变换为
-    \[
-      w=f(z)=\ee^{\ii\theta}z.
-    \]
-    我们有
-    \begin{align*}
-        F(1,0,0)&
-      =\varphi\bigl(f(\infty)\bigr)
-      =(1,0,0),\\
-        F(0,1,0)&
-      =\varphi\bigl(f(\ii)\bigr)
-      =(0,\cos\theta,\sin\theta),\\
-       F(0,0,1)&
-      =\varphi\bigl(f(-1)\bigr)
-      =(0,-\sin\theta,\cos\theta),\\
-    \end{align*}
-    即 $F$ 是绕 $x$ 轴逆时针旋转 $\theta$ 的变换.
-    \item 设 $q=\cos\dfrac\theta2+\jj\sin\dfrac\theta 2$.
-    那么 $z_1=\cos\dfrac\theta2, z_2=\sin\dfrac\theta2$, 它对应的分式线性变换为
-    \[
-      w=f(z)=\frac{\cos \frac\theta2 \cdot z-\sin\frac\theta2}{\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
-    \]
-    我们有
-    \begin{align*}
-        F(1,0,0)&
-      =\varphi\bigl(f(\infty)\bigr)
-      =(\cos\theta,0,-\sin\theta),\\
-        F(0,1,0)&
-      =\varphi\bigl(f(\ii)\bigr)
-      =(0,1,0),\\
-        F(0,0,1)&
-      =\varphi\bigl(f(-1)\bigr)
-      =(\sin\theta,0,\cos\theta),
-    \end{align*}
-    即 $F$ 是绕 $y$ 轴逆时针旋转 $\theta$ 的变换.
-    \item 设 $q=\cos\dfrac\theta2+\kk\sin\dfrac\theta 2$.
-    那么 $z_1=\cos\dfrac\theta2, z_2=\ii\sin\dfrac\theta2$, 它对应的分式线性变换为
-    \[
-      w=f(z)=\frac{\cos \frac\theta2 \cdot z-\ii \sin\frac\theta2}{-\ii\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
-    \]
-    我们有
-    \begin{align*}
-        F(1,0,0)&
-      =\varphi\bigl(f(\infty)\bigr)
-      =(\cos\theta,\sin\theta,0),\\
-        F(0,1,0)&
-      =\varphi\bigl(f(\ii)\bigr)
-      =(-\sin\theta,\cos\theta,0),\\
-        F(0,0,1)&
-      =\varphi\bigl(f(-1)\bigr)
-      =(0,0,1),
-    \end{align*}
-    即 $F$ 是绕 $z$ 轴逆时针旋转 $\theta$ 的变换.
-  \end{enumnopar}
-
+\begin{exampleenum}
+  \item 设 $q=\cos\dfrac\theta2+\ii\sin\dfrac\theta 2$.
+  那么 $z_1=\ee^{\frac{\ii\theta}2}, z_2=0$, 它对应的分式线性变换为
+  \[
+    w=f(z)=\ee^{\ii\theta}z.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(1,0,0),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(0,\cos\theta,\sin\theta),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(0,-\sin\theta,\cos\theta),\\
+  \end{align*}
+  即 $F$ 是绕 $x$ 轴逆时针旋转 $\theta$ 的变换.
+  \item 设 $q=\cos\dfrac\theta2+\jj\sin\dfrac\theta 2$.
+  那么 $z_1=\cos\dfrac\theta2, z_2=\sin\dfrac\theta2$, 它对应的分式线性变换为
+  \[
+    w=f(z)=\frac{\cos \frac\theta2 \cdot z-\sin\frac\theta2}{\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(\cos\theta,0,-\sin\theta),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(0,1,0),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(\sin\theta,0,\cos\theta),
+  \end{align*}
+  即 $F$ 是绕 $y$ 轴逆时针旋转 $\theta$ 的变换.
+  \item 设 $q=\cos\dfrac\theta2+\kk\sin\dfrac\theta 2$.
+  那么 $z_1=\cos\dfrac\theta2, z_2=\ii\sin\dfrac\theta2$, 它对应的分式线性变换为
+  \[
+    w=f(z)=\frac{\cos \frac\theta2 \cdot z-\ii \sin\frac\theta2}{-\ii\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(\cos\theta,\sin\theta,0),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(-\sin\theta,\cos\theta,0),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(0,0,1),
+  \end{align*}
+  即 $F$ 是绕 $z$ 轴逆时针旋转 $\theta$ 的变换.
+  
   由于任一旋转均可分解为上述三类旋转的复合, 任一模为 $1$ 的四元数也可以分解为上述三类四元数的乘积, 因此所有酉矩阵对应的分式线性变换就对应复球面的所有旋转.
-\end{example}
+\end{exampleenum}
 
 设 $|z_1|^2+|z_2|^2=1$.
 我们将上述讨论的对应总结成\ref{tab:fractal-transform-display}.
@@ -1582,41 +1580,40 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \caption{去掉半圆的带割痕上半平面到上半平面的映射}
 \end{figure}
 
-\begin{solution}\delspace
-  \begin{enumnopar}
-    \item 儒可夫斯基映射
-    \[
-      s=\frac12\Bigl(z+\frac1z\Bigr)
-    \]
-    将上半单位圆周映成线段 $[-1,1]$, 将上半平面在单位圆外部的区域映成上半平面, 所以 $D$ 被映成上半平面去掉射线 $x=0,y\ge \dfrac34$ 的区域 $D_1$.
-    \item 映射
-    \[
-      t=s^2
-    \]
-    将 $D_1$ 映成复平面去掉两条射线 $(-\infty,-\dfrac9{16}]\cup[0,+\infty)$ 的区域 $D_2$.
-    \item 由于两条射线交于 $\infty$, 通过分式线性映射可以把它们映成一条射线.
-    设
-    \begin{alignat*}{3}
-      z_1&=-\dfrac9{16},\quad&
-      z_2&=0,&
-      z_3&=\infty,\\
-      w_1&=0,&
-      w_2&=\infty,\quad&
-      w_3&=1,
-    \end{alignat*}
-    则对应分式线性映射为
-    \[
-      p=\frac{t+\dfrac9{16}}t=1+\frac9{16t},
-    \]
-    它将 $D_2$ 映成复平面去掉射线 $[0,+\infty)$ 的区域 $D_3$.
-    \item 最后, $w=\sqrt p$ 将 $D_3$ 映成上半平面 $D'$.
-  \end{enumnopar}
+\begin{solutionenum}
+  \item 儒可夫斯基映射
+  \[
+    s=\frac12\Bigl(z+\frac1z\Bigr)
+  \]
+  将上半单位圆周映成线段 $[-1,1]$, 将上半平面在单位圆外部的区域映成上半平面, 所以 $D$ 被映成上半平面去掉射线 $x=0,y\ge \dfrac34$ 的区域 $D_1$.
+  \item 映射
+  \[
+    t=s^2
+  \]
+  将 $D_1$ 映成复平面去掉两条射线 $(-\infty,-\dfrac9{16}]\cup[0,+\infty)$ 的区域 $D_2$.
+  \item 由于两条射线交于 $\infty$, 通过分式线性映射可以把它们映成一条射线.
+  设
+  \begin{alignat*}{3}
+    z_1&=-\dfrac9{16},\quad&
+    z_2&=0,&
+    z_3&=\infty,\\
+    w_1&=0,&
+    w_2&=\infty,\quad&
+    w_3&=1,
+  \end{alignat*}
+  则对应分式线性映射为
+  \[
+    p=\frac{t+\dfrac9{16}}t=1+\frac9{16t},
+  \]
+  它将 $D_2$ 映成复平面去掉射线 $[0,+\infty)$ 的区域 $D_3$.
+  \item 最后, $w=\sqrt p$ 将 $D_3$ 映成上半平面 $D'$.
+  
   故
   \[
     w=\sqrt{1+\frac9{4(z+1/z)^2}}
     =\frac{\sqrt{4z^4+17z^2+4}}{2(z^2+1)}.
   \]
-\end{solution}
+\end{solutionenum}
 
 
 \section{保形映射在标量场的应用}
@@ -1763,27 +1760,27 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \psection{本章小结}
 
 本章所需掌握的知识点如下:
-\begin{enumpar}
+\begin{enuma}
   \item 理解保形映射的定义.
   \item 掌握分式线性变换的保圆性和保对称性.
   \item 掌握幂函数、指数函数和儒可夫斯基函数所对应的映射特点.
   \item 会利用上述函数构造简单的单连通区域间的保形映射.
-\end{enumpar}
+\end{enuma}
 
 本章中不易理解的概念和难点包括:
-\begin{enumpar}
+\begin{enuma}
   \item 保角映射和保形映射的差异: 保形映射是一一的保角映射, 这是为了保证区域间的映射可逆.
   \item 与 $\infty$ 相关的保形映射: 作变量替换 $t=\dfrac1z$ 或 $s=\dfrac1w$ 来将其转化为普通复数情形的保形映射.
   \item 利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造分式线性变换时, 需要根据区域在圆周内部还是外部、直线的哪一侧来确定三点的顺序.
   \item 带割痕的区域的处理, 需要使用幂函数将割痕与边界合并.
   \item 儒可夫斯基函数在处理带半圆边界的半平面中的应用.
-\end{enumpar}
+\end{enuma}
 
 
 \psection{本章作业}
 \begin{homework}
   \item 单选题.
-  \begin{subex}
+  \begin{homework}
     \item 保形映射总能保持区域内图形的\fillbrace{}.
     \begin{exchoice}(4)
       \item 面积
@@ -1826,18 +1823,18 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
       \item 椭圆
       \item 直线段或椭圆
     \end{exchoice}
-  \end{subex}
+  \end{homework}
   \item 填空题.
-  \begin{subex}
+  \begin{homework}
     \item 若分式线性变换 $w=f(z)$ 将上半平面映成单位圆域, 且 $f(\ii)=2$, 则 $f(-\ii)=$\fillblank[7mm]{}.
     \item 若分式线性变换 $w=f(z)$ 将单位圆域映成右半平面, 且 $f(0)=1$, 则 $f(\infty)=$\fillblank[7mm]{}.
     \item 若 $w=f(z)$ 将角形区域 $0<\arg z<\dfrac\cpi6$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
     \item 若 $w=f(z)$ 将水平带状区域 $0<\Im z<\cpi$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
-  \end{subex}
+  \end{homework}
   \item 计算题.
-  \begin{subex}
+  \begin{homework}
     \item 求以下区域在相应映射下的像.
-    \begin{subsubex}(2)
+    \begin{subhomework}(2)
       \item $\Re z<0, w=(1-\ii)z+\ii$;
       \item $\Im z>0, w=z-1-\ii$;
       \item $0<\Re z<1, w=\dfrac1{z-1}$;
@@ -1846,14 +1843,14 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
       \item $1<\Re z<2, w=\ee^z$;
       \item $|z|>1, \Im z>0, w=z+\dfrac 2z$;
       \item $|z|<1, \Im z<0, w=z+\dfrac 2z$.
-    \end{subsubex}
+    \end{subhomework}
     \item 求将 $-1,\infty,\ii$ 分别映成下列各点的分式线性映射.
-    \begin{subsubex}(4)
+    \begin{subhomework}(4)
       \item $\ii,1,1+\ii$;
       \item $1,\ii,\infty$;
       \item $0,\infty,1$;
       \item $\infty,-1,\ii$.
-    \end{subsubex}
+    \end{subhomework}
     \item 求扩充复平面上 $|z|>1$ 到 $|w|<1$ 且满足
     \[
       w\Bigl(\frac12\Bigr)=0,\quad
@@ -1862,14 +1859,14 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
     的保形映射 $w=f(z)$.
     \item 求 $1<|z|<2$ 到 $|w|>1, |w+1|<\dfrac{4\sqrt3}3$ 的保形映射 $w=f(z)$.
     \item 求将 $D$ 映成 $D'$ 的分式线性映射.
-    \begin{subsubex}(2)
+    \begin{subhomework}(2)
       \item $D: |z|<1, D': |w-1|<1$;
       \item $D: |z+\ii|>1, D': \Im z<1$;
       \item $D: \Re z>-1, D': |z+1|<2$;
       \item $D: \Re z+\Im z<2, D': |z|<1$.
-    \end{subsubex}
+    \end{subhomework}
     \item 求将 $D$ 映成上半平面的保形映射.
-    \begin{subsubex}(1)
+    \begin{subhomework}(1)
       \item $D: \Im z>1, |z|<2$;
       \item $D: |z|>2, |z-\sqrt2|<\sqrt 2$;
       \item $D: |z|<1, \dfrac\cpi4<\arg z<\dfrac \cpi2$;
@@ -1882,10 +1879,10 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
       \item $D: \Re z>0, |z|<1$;
       \item $D: a<\Re z<b$;
       \item $D: \Re z>0, 0<\Im z<1$.
-    \end{subsubex}
+    \end{subhomework}
     \item 有一个半圆形薄金属板, 上下用两个热绝缘材料完全包裹. 若在半圆周上的温度为 $T_1$, 边界直径上的温度为 $T_2$, 求金属板上的温度分布.
     \item 一块无限大的 $\dfrac14$ 圆形金属板, 圆心处由绝缘体隔开, 两条垂直的无限长半径上的电势分别为 $v_1,v_2$, 求金属板上的电势分布.
-  \end{subex}
+  \end{homework}
 \end{homework}
   
 

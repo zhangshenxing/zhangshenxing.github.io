@@ -26,9 +26,9 @@
 其中 $C$ 为该去心邻域中内部包含 $z_0$ 的一条闭路.
 可以看出, 知道留数之后可以用来计算积分.
 
-\begin{theorem}[留数定理]
+\begin{theorem}[积分计算方法III: 留数定理]
   \label{thm:residue}
-  若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\cdots,z_n$, 则
+  若 $f(z)$ 在闭路 $C$ 内解析, 在 $C$ 内部的奇点为 $z_1,z_2,\cdots,z_n$, 则
   \[
      \oint_Cf(z)\d z
     =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
@@ -116,7 +116,7 @@
 \begin{example}
   设 
   \[
-    f(z)=\dfrac{z^3(\ee^z-1)^2}{\sin z^4}.
+    f(z)=\frac{z^3(\ee^z-1)^2}{\sin z^4}.
   \]
   由于 $0$ 是分子的 $5$ 阶零点, 分母的 $4$ 阶零点, 因此 $0$ 是 $f(z)$ 的可去奇点, 从而 $\Res[f(z),0]=0$.
 \end{example}
@@ -126,7 +126,7 @@
 \begin{example}
   设
   \[
-    f(z)=z^4\sin\dfrac1z.
+    f(z)=z^4\sin\frac1z.
   \]
   由
   \[
@@ -172,9 +172,9 @@
   \begin{align*}
      \Res[f(z),z_0]&
     =c_{-1}
-    =\dfrac1{(m-1)!}g^{(m-1)}(z_0)
-    =\dfrac1{(m-1)!}\lim_{z\ra z_0}g^{(m-1)}(z)\\&
-    =\dfrac1{(m-1)!}\lim_{z\ra z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}(z).\qedhere
+    =\frac1{(m-1)!}g^{(m-1)}(z_0)
+    =\frac1{(m-1)!}\lim_{z\ra z_0}g^{(m-1)}(z)\\&
+    =\frac1{(m-1)!}\lim_{z\ra z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}(z).\qedhere
   \end{align*}
 \end{proof}
 
@@ -248,7 +248,7 @@
 \begin{example}
   计算 $\Res[f(z),z_0]$, 其中
   \[
-    f(z)=\dfrac{z}{z^8-1},\quad z_0=\frac{1+\ii}{\sqrt2}.
+    f(z)=\frac{z}{z^8-1},\quad z_0=\frac{1+\ii}{\sqrt2}.
   \]
 \end{example}
 
@@ -344,7 +344,7 @@
 \begin{example}
   计算 $\doint_{|z|=2}f(z)\d z$, 其中
   \[
-    f(z)=\dfrac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}.
+    f(z)=\frac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}.
   \]
 \end{example}
 
@@ -429,7 +429,7 @@
   \begin{align*}
      \int_0^{2\cpi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta&
     =\oint_{|z|=1}\Bigl(\frac{z^2-1}{2\ii z}\Bigr)^2\cdot
-      \frac1{5-3\dfrac{z^2+1}{2z}}\cdot\frac{\d z}{\ii z}\\&
+      \frac1{5-3\ddfrac{z^2+1}{2z}}\cdot\frac{\d z}{\ii z}\\&
     =-\frac\ii6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-1/3)}\d z.
   \end{align*}
   设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-1/3)}$, 则 $\dfrac13$ 是一阶极点, $0$ 是二阶极点.
@@ -441,8 +441,8 @@
     =\lim_{z\ra \frac13}\frac{(z^2-1)^2}{z^2(z-3)}
     =-\frac83,\\
      \Res[f(z),0]&
-    =\lim_{z\ra 0}\biggl(\dfrac{(z^2-1)^2}{(z-3)(z-1/3)}\biggr)'\\&
-    =\lim_{z\ra 0}\dfrac{(z^2-1)^2}{(z-3)(z-1/3)}
+    =\lim_{z\ra 0}\biggl(\frac{(z^2-1)^2}{(z-3)(z-1/3)}\biggr)'\\&
+    =\lim_{z\ra 0}\frac{(z^2-1)^2}{(z-3)(z-1/3)}
       \Bigl(\frac2{z+1}+\frac2{z-1}-\frac1{z-3}-\frac1{z-1/3}\Bigr)\\&
     =\frac{10}3,
   \end{align*}
@@ -810,7 +810,7 @@
 \begin{solution}
   设
   \[
-    f(z)=\dfrac{\ln^2(-z)}{z^2-2z+2},
+    f(z)=\frac{\ln^2(-z)}{z^2-2z+2},
   \]
   则 $f(z)$ 在正实轴和零以外的奇点为 $1\pm\ii$,
   且
@@ -1140,10 +1140,10 @@
       postaction={decorate}
     ] (-2.5,-2.5) rectangle (2.5,2.5);
     \draw
-      (-2.5,0) node[above left] {$-(N+\dfrac12)$}
-      (2.5,0) node[above right] {$N+\dfrac12$}
-      (0,2.5) node[below right] {$(N+\dfrac12)\ii$}
-      (0,-2.5) node[above left] {$-(N+\dfrac12)\ii$}
+      (-2.5,0) node[above left] {$-(N+\ddfrac12)$}
+      (2.5,0) node[above right] {$N+\ddfrac12$}
+      (0,2.5) node[below right] {$(N+\ddfrac12)\ii$}
+      (0,-2.5) node[above left] {$-(N+\ddfrac12)\ii$}
       (2.5,-2.5) node[right] {$A_1$}
       (2.5,2.5) node[right] {$A_2$}
       (-2.5,2.5) node[left] {$A_3$}
@@ -1221,8 +1221,8 @@
   \begin{align*}
      \cot z
     =\frac{\cos z}{\sin z}
-    =\frac{1-\dfrac12z^2+\cdots}{z-\dfrac16z^3+\cdots}
-    =\frac1z(1-\dfrac12z^2+\cdots)(1+\dfrac16z^2+\cdots)
+    =\frac{1-\ddfrac12z^2+\cdots}{z-\ddfrac16z^3+\cdots}
+    =\frac1z(1-\frac12z^2+\cdots)(1+\frac16z^2+\cdots)
     =\frac1z-\frac13z+\cdots
   \end{align*}
   可知
@@ -1247,7 +1247,7 @@
 
 \begin{theorem}
   \label{thm:log-f-derivative-sum-order}
-  设 $f(z)$ 在闭路 $C$ 上解析且非零, 在 $C$ 内部的奇点均为极点, 则
+  设 $f(z)$ 在闭路 $C$ 内解析且非零, 在 $C$ 内部的奇点均为极点, 则
   \[
     \frac1{2\cpi\ii}\oint_C\frac{f'(z)}{f(z)}\d z
     =N-P,
@@ -1400,7 +1400,7 @@
 % 这里 $\delt_C \arg f(z)$ 表示当 $z$ 沿着 $C$ 正向绕行一周时, $w=f(z)$ 的辐角变化.
 % 由此得到:
 % \begin{theorem}[辐角原理]
-%   设 $f(z)$ 在闭路 $C$ 上解析且非零, 在 $C$ 的内部的奇点均为极点, 则
+%   设 $f(z)$ 在闭路 $C$ 内解析且非零, 在 $C$ 的内部的奇点均为极点, 则
 %   \[
 %     \frac1{2\cpi}\delt_C \arg f(z)
 %     =N-P,
@@ -1423,7 +1423,7 @@
   因此 $f(z)$ 和 $g(z)$ 在 $C$ 上都没有零点.
   设
   \[
-    \varphi(z)=\dfrac{g(z)}{f(z)}=1-\dfrac{h(z)}{f(z)},
+    \varphi(z)=\frac{g(z)}{f(z)}=1-\frac{h(z)}{f(z)},
   \]
   则由假设可知 $\varphi(z)$ 落在区域 $|w-1|<1$ 内, 从而 $F(z)=\ln\varphi(z)$ 是 $C$ 上 $\dfrac{\varphi'(z)}{\varphi(z)}$ 的原函数.
   由\thmNL 可知,
@@ -1469,12 +1469,59 @@
 
 
 
+\psection{本章小结}
+
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 会判断简单的复数项级数 $\sumf1z_n$ 的敛散性.
+  \begin{conclusion}
+    \item 若实部和虚部级数至少有一个发散, 则原级数发散; 若二者都绝对收敛, 则原级数发散; 其它情形原级数条件收敛.
+    \item 若 $\liml_{n\ra\infty} z_n=0$ 不成立, 则级数发散.
+    \item 若 $\lambda=\liml_{n\ra\infty}\abs{\dfrac{z_{n+1}}{z_n}}$ 存在或 $\lambda=\liml_{n\ra\infty}\sqrt[n]{|z_n|}$ 存在, 则当 $\lambda<1$ 时级数绝对收敛; 当 $\lambda<1$ 时级数发散; 当 $\lambda=1$ 则都有可能.
+  \end{conclusion}
+  \item 能熟练使用比值法和根式法计算幂级数 $\sumf0c_n(z-z_0)^n$ 的收敛半径.
+  \begin{conclusion}
+    \item 幂级数的收敛区域是一个圆域.
+    \item 若 $r=\liml_{n\ra\infty}\abs{\dfrac{c_{n+1}}{c_n}}$ 存在(或为 $+\infty$)或 $r=\liml_{n\ra\infty}\sqrt[n]{|c_n|}$ 存在(或为 $+\infty$), 则收敛圆域的半径, 也就是收敛半径 $R=\dfrac1r$.
+    \item 幂级数在其收敛圆周上的敛散性各种情况都有可能.
+  \end{conclusion}
+  \item 熟知泰勒展开和洛朗展开成立的条件、形式、常见性质.
+  \begin{conclusion}
+    \item $f(z)$ 在解析的圆域内可以展开为幂级数, 在解析的圆环域内可以展开为双边幂级数.
+    \item 泰勒展开形式为 $f(z)=\sumf0 \dfrac{f^{(n)}(z_0)}{n!}(z-z_0)^n$.
+    \item 洛朗展开形式为 $f(z)=\sumff \Bigl(\oint_C\dfrac{f(z)}{(z-z_0)^{n+1}}\d z\Bigr)(z-z_0)^n$.
+  \end{conclusion}
+  \item 掌握简单函数的泰勒展开和洛朗展开. 特别地, 要掌握有理函数情形的计算方法.
+  \begin{conclusion}
+    \item 幂级数在其收敛圆域内、双边幂级数在其收敛圆环域内的和函数是解析函数, 且可以进行各种代数运算、逐项求导、逐项积分.
+    \item 解析函数的幂级数展开和双边幂级数展开是唯一的, 所以我们可以通过对简单函数的展开进行各种运算来得到解析函数函数的泰勒展开或洛朗展开.
+    \item 有理函数的展开可以通过拆分为部分分式之和进行展开来计算.
+  \end{conclusion}
+  \item 会判断简单的奇点分类, 会利用零点的阶判断分式的极点的阶.
+  \begin{conclusion}
+    \item 通过在奇点 $z_0$ 去心邻域内洛朗展开的特点来判断.
+    \item 若 $\liml_{z\ra z_0} f(z)$ 存在(为 $\infty$, 或既不存在也不是 $\infty$), 则 $z_0$ 是可去奇点(极点, 或本性奇点).
+    \item 若 $\liml_{z\ra z_0} (z-z_0)f(z)=0$, 则 $z_0$ 是可去奇点.
+    \item 若 $\liml_{z\ra z_0} (z-z_0)^mf(z)$ 存在且非零, 则 $z_0$ 是 $m$ 阶极点.
+    \item 若 $z_0$ 分别是 $f(z),g(z)$ 的 $m,n$ 阶零点, 则当 $m\ge n$ 时 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的可去奇点; 当 $m<n$ 时 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的 $n-m$ 阶极点.
+  \end{conclusion}
+\end{conclusion}
+
+本章中不易理解和易错的概念包括:
+\begin{enuma}
+  \item 混淆比值法及根式法中的 $r$ 和幂级数的收敛半径 $R$, 二者互为倒数.
+  \item 混淆泰勒展开成立的最大圆域半径和泰勒级数的收敛半径, 二者并不总是相等.
+  \item 在计算洛朗展开时, 错误地选取模大于 $1$ 的数作为公比来展开成等比级数. 应当根据圆环域的范围来选择公比.
+\end{enuma}
+
+
+
 \psection{本章作业}
 \begin{homework}
   \item 计算题.
-  \begin{subex}
+  \begin{homework}
     \item 求下列各函数 $f(z)$ 在奇点处的留数.
-      \begin{subsubex}(2)
+      \begin{subhomework}(2)
         \item $\dfrac{z-1}{z^2+2z}$;
         \item $\dfrac{1-\ee^{2z}}{z^5}$;
         \item $\dfrac z{\cos z}$;
@@ -1485,9 +1532,9 @@
         \item $\dfrac{\cos z}{z^2(z^2-\cpi^2)}$;
         \item $\dfrac{\cos z}{z^2(z^2-\cpi^2)}$;
         \item $\dfrac{\ee^z}{z(z-1)}$.
-      \end{subsubex}
+      \end{subhomework}
     \item 利用留数计算下列积分.
-      \begin{subsubex}(2)
+      \begin{subhomework}(2)
         \item $\doint_{|z|=2}\frac{\ee^{2z}}{z(z-1)^2}\d z$;
         \item $\doint_{|z|=\frac32}\frac{1-\cos z}{z^m}\d z,\quad m\in\BZ$;
         \item $\doint_{|z|=1}\frac1{(z-1/2)^9(z-2)^9}\d z$;
@@ -1498,38 +1545,38 @@
         \item $\doint_{|z|=2}\frac{\ee^z}{z(z-1)^2}\d z$;
         \item $\doint_{|z|=2}\frac{\d z}{z^3(z-1)^3(z-3)^5}$;
         \item $\doint_{|z|=4}\frac{\d z}{(z+6)(z-5)\sin z}$.
-      \end{subsubex}
+      \end{subhomework}
       \item 利用留数计算下列积分.
-        \begin{subsubex}(2)
+        \begin{subhomework}(2)
           \item $\dint_0^{2\cpi}\frac{\cos^2\theta}{13+5\sin\theta}\d \theta$.
           \item $\dint_0^{\cpi/2}\dfrac{\d \theta}{(1+2\sin^2\theta)^2}$.
           \item $\intff \dfrac{\cos x}{x^2+2x+5}\d x$.
           \item $\intff \frac{1}{x^{2k}+1}\d x$, $k$ 是正整数.
           \item $\intf\frac{\ln x}{x^2+1}\d x$.
           \item $\intf\frac{x^p}{x^2+1}\d x$, $0<p<1$.
-        \end{subsubex}
+        \end{subhomework}
       \item 利用留数计算下列级数.
-        \begin{subsubex}(2)
+        \begin{subhomework}(2)
           \item $\sumff \dfrac1{n^2+1}$.
           \item $\displaystyle\sum_{n=2}^{+\infty} \dfrac1{n^2-1}$.
-        \end{subsubex}
+        \end{subhomework}
       \item 求下列函数在相应范围内的零点个数(计算重数).
-        \begin{subsubex}(2)
+        \begin{subhomework}(2)
           \item $z^9-2z^6+z^2-8z-2$, $|z|<1$;
           \item $2z^5-z^3+3z^2-z+8$, $|z|<1$;
           \item $\ee^z-4z^n+1$, $|z|<1$;
           \item $z^8+\ee^z+6z+1$, $1<|z|<2$.
-        \end{subsubex}
-  \end{subex}
+        \end{subhomework}
+  \end{homework}
   \item 证明题.
-  \begin{subex}
+  \begin{homework}
     \item 指出下列陈述的错误指出: 函数 $f(z)=\dfrac1{z(z-1)^2}$ 在 $z=1$ 处有一个二阶极点. 因为这个函数有下列洛朗展开式
       \[
         \frac1{z(z-1)^2}=\cdots+\frac1{(z-1)^5}-\frac1{(z-1)^4}+\frac1{(z-1)^3},\quad|z-1|>1,
       \]
       所以 $z=1$ 又是 $f(z)$ 的本性奇点. 由于其中不含 $(z-1)^{-1}$ 幂, 因此 $\Res[f(z),1]=0$.
     \item 证明: $\dint_0^{2\cpi}\cos^{2n}\theta\d \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\cpi$.
-  \end{subex}
+  \end{homework}
 \end{homework}
 
 

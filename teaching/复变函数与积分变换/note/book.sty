@@ -8,8 +8,6 @@
 \RequirePackage{multicol,multirow}
 \RequirePackage{fancyvrb}
 \RequirePackage{makecell}
-\RequirePackage{caption}
-\RequirePackage{subcaption}
 % TIKZ 库
 \RequirePackage{tikz}
 \usetikzlibrary{
@@ -22,7 +20,6 @@
   positioning,
   shapes.geometric,
   overlay-beamer-styles,
-  patterns,
   calc,
   angles,
   decorations.markings,
@@ -30,6 +27,30 @@
   backgrounds,
   chains
 }
+
+
+% 颜色
+% 彩色 蓝 红 紫 绿 绿
+% 单色 蓝 蓝 黑 黑 蓝
+% 对比用25, 交错用1324
+
+% \definecolor{main}{RGB}{0,0,0}%
+% \definecolor{second}{RGB}{0,0,0}%
+% \definecolor{third}{RGB}{0,0,0}%
+% \definecolor{fourth}{RGB}{0,0,0}%
+% \definecolor{fifth}{RGB}{0,0,0}%
+
+% \definecolor{main}{RGB}{0,128,192}%
+% \definecolor{second}{RGB}{0,128,192}%
+% \definecolor{third}{RGB}{0,0,0}%
+% \definecolor{fourth}{RGB}{0,0,0}%
+% \definecolor{fifth}{RGB}{0,128,192}%
+
+\definecolor{main}{RGB}{0,128,192}%
+\definecolor{second}{RGB}{224,0,0}
+\definecolor{third}{RGB}{112,0,112}
+\definecolor{fourth}{RGB}{0,128,0}
+\definecolor{fifth}{RGB}{0,128,0}
 
 
 % 超链接设置
@@ -173,6 +194,7 @@
   \endlist
 }
 % 索引
+\RequirePackage{makeidx}
 \renewenvironment{theindex}{%
   \chapter{\indexname}%
   % \@mkboth{\MakeUppercase\indexname}{\MakeUppercase\indexname}%
@@ -184,12 +206,12 @@
   \end{multicols}
 }
 % 目录
-\renewcommand\tableofcontents{%
+\renewcommand\tableofcontents{{%
 	\hypersetup{linkcolor=black}%
   \chapter{\contentsname}%
   % \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
   \@starttoc{toc}%
-}
+}}
 
 
 % 引用格式、图表、脚注、公式
@@ -202,7 +224,7 @@
 \labelformat{subsubsection}{\textcolor{fourth}{ \thesubsection.#1小节}}
 \labelformat{equation}{\textcolor{fourth}{(\theequation)}}
 \labelformat{figure}{\textcolor{fourth}{图 \thefigure{}}}
-\labelformat{table}{\textcolor{fourth}{表 \thefigure{}}}
+\labelformat{table}{\textcolor{fourth}{表 \thetable{}}}
 \labelformat{theorem}{\textcolor{fourth}{第\zhnumber{\thechapter}章}}
 \newcommand{\thmref}[2]{\hyperref[#2]{#1 \ref{#2}}}
 \renewcommand{\eqref}[1]{\thmref{公式}{#1}}
@@ -210,116 +232,10 @@
 \captionsetup[table]{skip=3pt,labelsep=space}
 \captionsetup[figure]{skip=3pt,labelsep=space}
 
-\newcommand*{\myfnsymbol}[1]{%
-  \ensuremath{%
-    \ifcase#1%
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 10
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 20
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 30
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 40
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 50
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 60
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 70
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 80
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 90
-      \or *%
-      \or \dagger%
-      \or \ddagger%
-      \or \mathsection%
-      \or \mathparagraph%
-      \or \|%
-      \or **%
-      \or \dagger\dagger%
-      \or \dagger\ddagger%
-      \or \ddagger\ddagger% 100
-    \else%
-      \@ctrerr%
-    \fi%
-  }%
-}
 \RequirePackage[flushmargin,stable,perpage]{footmisc}
-\renewcommand\thefootnote{\textcolor{fifth}{\myfnsymbol{\value{footnote}}}}
+\RequirePackage{circledsteps}
+\renewcommand\@makefntext[1]{\noindent\hspace{-2.1em}\hb@xt@1.7em{\hss\normalfont\@thefnmark} #1}
+\renewcommand\thefootnote{\scriptsize\textcolor{third}{\CircledTop[inner xsep=2pt,inner ysep=2pt]{\@arabic\c@footnote}}}
 \setlength{\footnotesep}{12pt}
 \setlength{\abovedisplayskip}{3pt}
 \setlength{\belowdisplayskip}{3pt}
@@ -340,18 +256,67 @@
 \setlist[enumerate,2]{label=\color{main}(\alph*).}
 \setlist[enumerate,3]{label=\color{main}\Roman*.}
 \setlist[enumerate,4]{label=\color{main}\Alph*.}
-%% 作业大题
-\newlist{homework}{enumerate}{1}
-\setlist[homework,1]{label={\zhnum*、\hspace*{-\labelsep}}}
-%% 作业题
-\newlist{subex}{enumerate}{3}
-\setlist[subex,1]{label=\color{main}{\arabic*.},leftmargin=0em}
-\setlist[subex,2]{label=\color{main}{(\roman*)}}
-\setlist[subex,3]{label=\color{main}{(\Roman*)}}
-%% 作业小题
-\NewTasksEnvironment[label-width=2.2em,item-indent=2.6em]{subsubex}[\item]
+% 定理、定义、性质、小结中的枚举
+\newlist{enuma}{enumerate}{2}
+\setlist[enuma]{
+  itemsep=0pt,
+  parsep=0pt,
+  topsep=0pt
+}
+\setlist[enuma,1]{
+  label=\color{main}{(\arabic*)},
+  wide=\parindent
+}
+\setlist[enuma,2]{
+  label=\color{main}{(\roman*)},
+  wide=1.5\parindent
+}
+% 例子、解答等情形的枚举
+\newlist{enumr}{enumerate}{1}
+\setlist[enumr]{
+  itemsep=0pt,
+  parsep=0pt,
+  topsep=0pt,
+  label=\color{main}{(\roman*)},
+  wide=\parindent
+}
+% 小结中的枚举
+\newlist{conclusion}{enumerate}{2}
+\setlist[conclusion]{
+  itemsep=0pt,
+  parsep=0pt,
+  topsep=0pt
+}
+\setlist[conclusion,1]{
+  label={\zhnum*、\hspace*{-\labelsep}},
+  wide=\parindent
+}
+\setlist[conclusion,2]{
+  label=\color{main}{(\arabic*)},
+  wide=\parindent
+}
 %% 例题中的小题
-\NewTasksEnvironment[item-indent=4em]{subexample}[\item]
+\NewTasksEnvironment[
+  item-indent=4em,
+  before-skip=2pt,
+  after-skip=2pt,
+  after-item-skip=0pt
+]{subexample}[\item]
+
+%% 作业大题
+\newlist{homework}{enumerate}{2}
+\setlist[homework,1]{
+  label={\zhnum*、\hspace*{-\labelsep}}
+}
+\setlist[homework,2]{
+  label=\color{main}{\arabic*.},
+  leftmargin=0em
+}
+%% 作业小题
+\NewTasksEnvironment[
+  label-width=2.2em,
+  item-indent=2.6em
+]{subhomework}[\item]
 %% 选择题选项
 \NewTasksEnvironment[label={\upshape{(\Alph*)}}]{exchoice}[\item]
 %% 例题中的选择题选项
@@ -361,7 +326,8 @@
 %% 枚举环境设定
 \newcommand{\delspace}{\hspace{-1em}}
 \newcommand{\delspaceex}{\hspace{-2.5em}}
-\newcommand{\parvspace}{\par\smallskip}
+\newcommand{\parvspace}{\par%\smallskip
+}
 \newcommand{\parnoindent}{\parvspace\noindent}
 \newcommand{\setenumtype}[1]{
 	\ifstrequal{#1}{(1)}{%
@@ -379,25 +345,26 @@
   \setcounter{enumi}{0}%
 }
 %% 分段枚举环境
-\newenvironment{enumpar}[1][(1)]{%
-	\setenumtype{#1}\renewcommand{\item}{%
-		\parnoindent%
-    \refstepcounter{enumi}
-    \makebox[1.7em][r]{\theenumi}%
-    \hspace{.5em}%
-  }%
-}{\ignorespacesafterend}
+% \newenvironment{enuma}[1][(1)]{%
+% 	\setenumtype{#1}\renewcommand{\item}{%
+% 		\parnoindent%
+%     \refstepcounter{enumi}
+%     \makebox[1.7em][r]{\theenumi}%
+%     \hspace{.5em}%
+%   }%
+% }{\ignorespacesafterend}
 %% 首项不分段枚举环境
+\newcounter{cenum}
 \newenvironment{enumnopar}[1][(1)]{%
   \hspace{-\parindent}%
 	\setenumtype{#1}\renewcommand{\item}{%
     \ifnum\value{enumi}=0\else\parnoindent\fi%
     \refstepcounter{enumi}
-    \makebox[1.7em][r]{\theenumi}%
+    \makebox[1.7em][r]{\theenumi\MakeLinkTarget[item]{cenum}}%
     \hspace{.5em}%
   }%
 }{\ignorespacesafterend}
-%% 不分段枚举环境
+%% 行内枚举环境
 \NewDocumentEnvironment{enuminline}{O{(1)} O{1em}}{%
   \hspace{-\parindent}%
 	\setenumtype{#1}\renewcommand{\item}{%
@@ -405,6 +372,26 @@
     \refstepcounter{enumi}
     \makebox[1.7em][r]{\theenumi}%
     \hspace{.5em}%
+  }%
+}{\ignorespacesafterend}
+%% 指定每行个数行内枚举环境，每行只能是2或3个
+\newcounter{enuminlinelistmod}
+\NewDocumentEnvironment{enuminlinelist}{O{3} O{(i)} O{1em}}{%
+  \delspaceex\hspace{-.5em}\hspace{-\parindent}%
+  \setcounter{enuminlinelistmod}{0}
+	\setenumtype{#2}\renewcommand{\item}[1]{%
+    \refstepcounter{enuminlinelistmod}
+    \ifnum\value{enuminlinelistmod}>#1
+      \setcounter{enuminlinelistmod}{1}%
+      \par\hspace{-.3em}
+    \fi%
+    \refstepcounter{enumi}
+    \ifnum#1=2\makebox[1.7em][r]{\theenumi}\hspace{.5em}\makebox[.35\textwidth][l]{##1}%
+      \else\ifnum#1=3\makebox[1.7em][r]{\theenumi}\hspace{.5em}\makebox[.21\textwidth][l]{##1}%
+        \else\ifnum#1=4\makebox[1.7em][r]{\theenumi}\hspace{.5em}\makebox[.14\textwidth][l]{##1}%
+        \fi
+      \fi
+    \fi
   }%
 }{\ignorespacesafterend}
 %% 首项不分段枚举环境
@@ -514,9 +501,13 @@
 \setcounter{exam}{0}
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \NewDocumentEnvironment{example}{o}{
-  \refstepcounter{exam}\par
-  \textbf{\color{main}例 \theexam \IfNoValueTF{#1}{}{~(#1)}}\envskip
+  \refstepcounter{exam}\par\textbf{\color{main}例 \theexam \IfNoValueTF{#1}{}{~(#1)}}\envskip
 }{\parvspace\ignorespacesafterend}
+\NewDocumentEnvironment{exampleenum}{o}{
+  \refstepcounter{exam}\par
+  \trivlist \item[\hspace{2.5em}\textbf{\color{main}例 \theexam} \IfNoValueTF{#1}{}{~#1}\hspace{-1em}]
+  \begin{enumr}
+}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
 %% 练习使用独立计数器
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
@@ -532,6 +523,15 @@
   \textbf{\color{third}练习 \theexer}\envskip
 }{\parvspace\ignorespacesafterend}
 %% 练习答案
+\newcommand{\exerciseanswer}{
+  \stepcounter{chapter}
+  \setcounter{exer}{0}
+  \renewcommand{\item}{
+    \refstepcounter{exer}
+    \parnoindent
+    \makebox[2.2em][l]{\textbf{\color{main}\ref{exer:\theexer}}}
+  }
+}
 \newcommand{\exans}{
   \refstepcounter{exer}
   \parnoindent
@@ -539,11 +539,26 @@
 }
 %% 解、证明
 \newenvironment{solution}[1][解]{
-  \par\textbf{\color{main}#1}\envskip\citshape
+  \par\textbf{\color{main}【#1】}\envskip\citshape
 }{\parvspace\ignorespacesafterend}
+\newenvironment{solutionenum}[1][解]{
+  \par
+  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
+  \begin{enumr}
+}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
 \renewenvironment{proof}[1][证明]{
-  \par\textbf{\color{main}#1}\envskip\citshape
+  \par\textbf{\color{main}【#1】}\envskip\citshape
 }{\parvspace\ignorespacesafterend}
+\newenvironment{proofenumr}[1][证明]{
+  \par
+  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
+  \begin{enumr}
+}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
+\newenvironment{proofenuma}[1][证明]{
+  \par
+  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
+  \begin{enuma}
+}{\end{enuma}\endtrivlist\parvspace\ignorespacesafterend}
 %% 注
 \newenvironment{remark}{
   \smallskip\noindent\textbf{\color{third}注}
@@ -676,3 +691,115 @@
   \end{tikzpicture}
 }
 
+
+
+
+% \newcommand*{\myfnsymbol}[1]{%
+%   \ensuremath{%
+%     \ifcase#1%
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 10
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 20
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 30
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 40
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 50
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 60
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 70
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 80
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 90
+%       \or *%
+%       \or \dagger%
+%       \or \ddagger%
+%       \or \mathsection%
+%       \or \mathparagraph%
+%       \or \|%
+%       \or **%
+%       \or \dagger\dagger%
+%       \or \dagger\ddagger%
+%       \or \ddagger\ddagger% 100
+%     \else%
+%       \@ctrerr%
+%     \fi%
+%   }%
+% }
+% \renewcommand\thefootnote{\textcolor{fifth}{\myfnsymbol{\value{footnote}}}}
