@@ -1,5 +1,7 @@
 \documentclass[11pt,a4paper,twoside,openright,scheme=chinese,no-math]{ctexbook}
-\usepackage{book} % 本地样式
+% \PassOptionsToPackage{black}{mybook}
+% \PassOptionsToPackage{single}{mybook}
+\usepackage{mybook} % 本地样式
 \input{settings}
 \makeindex
 \title{复变函数与积分变换}
@@ -7,7 +9,6 @@
 \subtitle{工程数学教材}
 \version{第一版}
 \press{合肥工业大学}
-
 \newfontface\cmunrm{cmunrm.otf}\newcommand\cmu[1]{{\cmunrm{#1}}}
 \begin{document}
 % \maketitle
@@ -19,17 +20,17 @@
 
 \mainmatter
 
-% \input{chapter1.tex}
+% \input{chapter1.tex} % √
 \setcounter{chapter}{1}
-% \input{chapter2.tex}
+% \input{chapter2.tex} % √
 \setcounter{chapter}{2}
 % \input{chapter3.tex}
 \setcounter{chapter}{3}
-% \input{chapter4.tex}
+% \input{chapter4.tex} % √
 \setcounter{chapter}{4}
 % \input{chapter5.tex}
 \setcounter{chapter}{5}
-% \input{chapter6.tex}
+\input{chapter6.tex}
 \setcounter{chapter}{6}
 % \input{chapter7.tex}
 
@@ -44,4 +45,3 @@
 \end{document}
 
 % \printbibliography[heading=bibintoc, title=参考文献]
-% 列表中定义、定理内列表用(1), 其它用(i)

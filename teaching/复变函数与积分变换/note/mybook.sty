@@ -1,15 +1,16 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mybook}
+
 \RequirePackage{amsthm}
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx}
 \RequirePackage{mathtools}
-\RequirePackage{booktabs}
-\RequirePackage{color,calc}
-\RequirePackage{colortbl}
-\RequirePackage{multicol,multirow}
-\RequirePackage{fancyvrb}
-\RequirePackage{makecell}
-% TIKZ 库
+% \RequirePackage{color}
+% \RequirePackage{calc}
+% \RequirePackage{multicol,multirow}
+% \RequirePackage{fancyvrb}
 \RequirePackage{tikz}
+% TIKZ 库
 \usetikzlibrary{
   hobby,
   intersections,
@@ -28,29 +29,36 @@
   chains
 }
 
-
 % 颜色
 % 彩色 蓝 红 紫 绿 绿
 % 单色 蓝 蓝 黑 黑 蓝
 % 对比用25, 交错用1324
-
-% \definecolor{main}{RGB}{0,0,0}%
-% \definecolor{second}{RGB}{0,0,0}%
-% \definecolor{third}{RGB}{0,0,0}%
-% \definecolor{fourth}{RGB}{0,0,0}%
-% \definecolor{fifth}{RGB}{0,0,0}%
-
-% \definecolor{main}{RGB}{0,128,192}%
-% \definecolor{second}{RGB}{0,128,192}%
-% \definecolor{third}{RGB}{0,0,0}%
-% \definecolor{fourth}{RGB}{0,0,0}%
-% \definecolor{fifth}{RGB}{0,128,192}%
-
+\newif\ifmybook@Fancy\mybook@Fancytrue
+\newif\ifmybook@Single\mybook@Singlefalse
+\newif\ifmybook@Black\mybook@Blackfalse
+\DeclareOption{fancy}{\mybook@Fancytrue}
+\DeclareOption{single}{\mybook@Singletrue}
+\DeclareOption{black}{\mybook@Blacktrue}
+\ProcessOptions\relax
 \definecolor{main}{RGB}{0,128,192}%
 \definecolor{second}{RGB}{224,0,0}
 \definecolor{third}{RGB}{112,0,112}
 \definecolor{fourth}{RGB}{0,128,0}
 \definecolor{fifth}{RGB}{0,128,0}
+\ifmybook@Single
+  \definecolor{main}{RGB}{0,128,192}%
+  \definecolor{second}{RGB}{0,128,192}%
+  \definecolor{third}{RGB}{0,0,0}%
+  \definecolor{fourth}{RGB}{0,0,0}%
+  \definecolor{fifth}{RGB}{0,128,192}%
+\fi
+\ifmybook@Black 
+  \definecolor{main}{RGB}{0,0,0}%
+  \definecolor{second}{RGB}{0,0,0}%
+  \definecolor{third}{RGB}{0,0,0}%
+  \definecolor{fourth}{RGB}{0,0,0}%
+  \definecolor{fifth}{RGB}{0,0,0}%
+\fi
 
 
 % 超链接设置
@@ -129,12 +137,12 @@
   section = {
     name = {,},
     format = \raggedright\color{main}\Large\bfseries,
-    afterskip={4.5ex plus .5ex minus 2.5ex},
+    % afterskip={4.5ex plus .5ex minus 2.5ex},
   },
   subsection = {
     name = {,},
     format = \color{main}\large\bfseries,
-    afterskip={3ex plus .5ex minus 1ex},
+    % afterskip={3ex plus .5ex minus 1ex},
   },
   subsubsection = {
     name = {,},
@@ -213,6 +221,12 @@
   \@starttoc{toc}%
 }}
 
+% 三线表颜色
+\RequirePackage{booktabs}
+\RequirePackage{colortbl}
+\newcommand{\topcolorrule}{\arrayrulecolor{second}\toprule}
+\newcommand{\midcolorrule}{\arrayrulecolor{fourth}\midrule}
+\newcommand{\bottomcolorrule}{\arrayrulecolor{second}\bottomrule}
 
 % 引用格式、图表、脚注、公式
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
@@ -236,73 +250,61 @@
 \RequirePackage{circledsteps}
 \renewcommand\@makefntext[1]{\noindent\hspace{-2.1em}\hb@xt@1.7em{\hss\normalfont\@thefnmark} #1}
 \renewcommand\thefootnote{\scriptsize\textcolor{third}{\CircledTop[inner xsep=2pt,inner ysep=2pt]{\@arabic\c@footnote}}}
-\setlength{\footnotesep}{12pt}
-\setlength{\abovedisplayskip}{3pt}
-\setlength{\belowdisplayskip}{3pt}
+\setlength{\skip\footins}{15pt}
 
 
 % 列表环境
-\RequirePackage{tasks}
-\settasks{%
-	label={\upshape\textcolor{main}{(\roman*)}},%
-	label-width=1.7em,%
-	before-skip={0pt},%
-	after-skip={0pt}%
-}
 \RequirePackage[inline]{enumitem}
-\setlist[itemize,1]{label={\color{main}{$\bullet$}}}
-\setlist[enumerate]{format=\upshape\textcolor{main}}
+\setlength{\topsep}{0pt}%
+\setlength{\partopsep}{0pt}%
+\setlist[itemize]{
+  label={\color{main}{$\bullet$}},
+  nosep
+}
+\SetEnumitemKey{addsep}{
+  topsep=3pt,
+  itemsep=3pt
+}
+\setlist[enumerate]{
+  format=\upshape\textcolor{main},
+  nosep
+}
 \setlist[enumerate,1]{label=\color{main}{(\arabic*)}}
 \setlist[enumerate,2]{label=\color{main}(\alph*).}
 \setlist[enumerate,3]{label=\color{main}\Roman*.}
 \setlist[enumerate,4]{label=\color{main}\Alph*.}
 % 定理、定义、性质、小结中的枚举
 \newlist{enuma}{enumerate}{2}
-\setlist[enuma]{
-  itemsep=0pt,
-  parsep=0pt,
-  topsep=0pt
-}
 \setlist[enuma,1]{
   label=\color{main}{(\arabic*)},
+  nosep,
   wide=\parindent
 }
 \setlist[enuma,2]{
   label=\color{main}{(\roman*)},
+  nosep,
   wide=1.5\parindent
 }
 % 例子、解答等情形的枚举
 \newlist{enumr}{enumerate}{1}
 \setlist[enumr]{
-  itemsep=0pt,
-  parsep=0pt,
-  topsep=0pt,
   label=\color{main}{(\roman*)},
+  nosep,
   wide=\parindent
 }
 % 小结中的枚举
 \newlist{conclusion}{enumerate}{2}
-\setlist[conclusion]{
-  itemsep=0pt,
-  parsep=0pt,
-  topsep=0pt
-}
+\setlist[conclusion]{nosep}
 \setlist[conclusion,1]{
   label={\zhnum*、\hspace*{-\labelsep}},
-  wide=\parindent
+  wide=\parindent,
+  itemsep=1pt,
+  after*=\medskip
 }
 \setlist[conclusion,2]{
   label=\color{main}{(\arabic*)},
   wide=\parindent
 }
-%% 例题中的小题
-\NewTasksEnvironment[
-  item-indent=4em,
-  before-skip=2pt,
-  after-skip=2pt,
-  after-item-skip=0pt
-]{subexample}[\item]
-
 %% 作业大题
 \newlist{homework}{enumerate}{2}
 \setlist[homework,1]{
@@ -312,6 +314,21 @@
   label=\color{main}{\arabic*.},
   leftmargin=0em
 }
+
+\RequirePackage{tasks}
+\settasks{%
+	label={\upshape\textcolor{main}{(\roman*)}},
+	label-width=1.7em,
+	before-skip=2pt,
+	after-skip=2pt,
+  after-item-skip=0pt
+}
+%% 例题中的小题
+\NewTasksEnvironment[
+  item-indent=4em,
+	before-skip=0pt,
+	after-skip=0pt,
+]{subexample}[\item]
 %% 作业小题
 \NewTasksEnvironment[
   label-width=2.2em,
@@ -326,8 +343,7 @@
 %% 枚举环境设定
 \newcommand{\delspace}{\hspace{-1em}}
 \newcommand{\delspaceex}{\hspace{-2.5em}}
-\newcommand{\parvspace}{\par%\smallskip
-}
+\newcommand{\parvspace}{\par\smallskip}
 \newcommand{\parnoindent}{\parvspace\noindent}
 \newcommand{\setenumtype}[1]{
 	\ifstrequal{#1}{(1)}{%
@@ -374,7 +390,7 @@
     \hspace{.5em}%
   }%
 }{\ignorespacesafterend}
-%% 指定每行个数行内枚举环境，每行只能是2或3个
+%% 指定每行个数行内枚举环境, 每行只能是2或3个
 \newcounter{enuminlinelistmod}
 \NewDocumentEnvironment{enuminlinelist}{O{3} O{(i)} O{1em}}{%
   \delspaceex\hspace{-.5em}\hspace{-\parindent}%
@@ -469,8 +485,32 @@
 }
 %% @ means notitle, * means indent
 \RequirePackage{xparse}
-\newenvironment{main}[1]{\begin{tcolorbox}[mainstyle,fontupper=\citshape,title=\bfseries{#1},noindent]}{\end{tcolorbox}}
-\newenvironment{fifth}[1]{\begin{tcolorbox}[fifthstyle,fontupper=\citshape,title=\bfseries{#1},noindent]}{\end{tcolorbox}}
+\newenvironment{main}[1]{%
+  \smallskip%
+  \begin{tcolorbox}[
+    mainstyle,
+    fontupper=\citshape,
+    title=\bfseries{#1},
+    noindent
+  ]%
+    }{%
+  \end{tcolorbox}%
+  \smallskip%
+  \ignorespacesafterend%
+}
+\newenvironment{fifth}[1]{%
+  \smallskip%
+  \begin{tcolorbox}[
+    fifthstyle,
+    fontupper=\citshape,
+    title=\bfseries{#1},
+    noindent
+  ]%
+    }{%
+  \end{tcolorbox}%
+  \smallskip%
+  \ignorespacesafterend%
+}
 %% 定理、命题、定义使用相同计数器
 \newcommand{\envskip}{\hskip 1em plus 1em minus .5em}
 \newcounter{thm}[chapter]
@@ -500,28 +540,42 @@
 \newcounter{exam}[chapter]
 \setcounter{exam}{0}
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
-\NewDocumentEnvironment{example}{o}{
-  \refstepcounter{exam}\par\textbf{\color{main}例 \theexam \IfNoValueTF{#1}{}{~(#1)}}\envskip
-}{\parvspace\ignorespacesafterend}
-\NewDocumentEnvironment{exampleenum}{o}{
-  \refstepcounter{exam}\par
-  \trivlist \item[\hspace{2.5em}\textbf{\color{main}例 \theexam} \IfNoValueTF{#1}{}{~#1}\hspace{-1em}]
-  \begin{enumr}
-}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
+\NewDocumentEnvironment{example}{o}{%
+  \parvspace%
+  \refstepcounter{exam}%
+  \textbf{\color{main}例 \theexam \IfNoValueTF{#1}{}{~(#1)}}\envskip%
+    }{%
+  \parvspace%
+  \ignorespacesafterend%
+}
+\NewDocumentEnvironment{exampleenum}{o}{%
+  \refstepcounter{exam}%
+  \trivlist%
+    \item[\hspace{2.5em}\textbf{\color{main}例 \theexam} \IfNoValueTF{#1}{}{~#1}\hspace{-1.5em}]%
+    \begin{enumr}%
+      }{%
+    \end{enumr}%
+  \endtrivlist%
+  \ignorespacesafterend%
+}
 %% 练习使用独立计数器
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
 \renewcommand{\theexer}{\thechapter.\arabic{exer}}
-\newenvironment{exercise}[1][]{
-  \refstepcounter{exer}\par%
-  \noindent\makebox[1.7em][c]{
-    \tikz[baseline=-2mm]
-    \node[inner sep=0pt,third,rotate=10]{
-      \pgfornament[width=6mm]{94}
-    };}
-  \label{exer:\theexer}
-  \textbf{\color{third}练习 \theexer}\envskip
-}{\parvspace\ignorespacesafterend}
+\newenvironment{exercise}[1][]{%
+  \parvspace%
+  \refstepcounter{exer}%
+  \noindent\makebox[1.7em][c]{%
+    \tikz[baseline=-2mm]%
+    \node[inner sep=0pt,third,rotate=10]{%
+      \pgfornament[width=6mm]{94}%
+    };}%
+  \label{exer:\theexer}%
+  \textbf{\color{third}练习 \theexer}\envskip%
+    }{%
+  \parvspace%
+  \ignorespacesafterend%
+}
 %% 练习答案
 \newcommand{\exerciseanswer}{
   \stepcounter{chapter}
@@ -538,30 +592,48 @@
   \makebox[3em][l]{\textbf{\color{main}\ref{exer:\theexer}}}
 }
 %% 解、证明
-\newenvironment{solution}[1][解]{
-  \par\textbf{\color{main}【#1】}\envskip\citshape
+\newcommand{\envnamebefore}{}
+\newcommand{\envnameafter}{: }
+\newenvironment{solution}[1][解]{%
+  \parvspace%
+  \textbf{\color{main}\envnamebefore#1\envnameafter}%
+  \citshape%
+    }{%
+  \parvspace%
+  \ignorespacesafterend%
+}
+\newenvironment{solutionenum}[1][解]{%
+  \trivlist%
+    \item[\hspace{2.5em}\textbf{\color{main}\envnamebefore#1\envnameafter}\hspace{-2em}]%
+    \citshape%
+    \begin{enumr}%
+      }{%
+    \end{enumr}%
+  \endtrivlist\par%
+  \ignorespacesafterend%
+}
+\renewenvironment{proof}[1][证明]{\parvspace
+  \textbf{\color{main}\envnamebefore#1\envnameafter}\citshape
 }{\parvspace\ignorespacesafterend}
-\newenvironment{solutionenum}[1][解]{
-  \par
-  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
-  \begin{enumr}
-}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
-\renewenvironment{proof}[1][证明]{
-  \par\textbf{\color{main}【#1】}\envskip\citshape
-}{\parvspace\ignorespacesafterend}
-\newenvironment{proofenumr}[1][证明]{
-  \par
-  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
-  \begin{enumr}
-}{\end{enumr}\endtrivlist\parvspace\ignorespacesafterend}
-\newenvironment{proofenuma}[1][证明]{
-  \par
-  \trivlist \item[\hspace{2.5em}\textbf{\color{main}【#1】}\hspace{-1em}]\citshape
+\newenvironment{proofenumr}[1][证明]{\parvspace
+  \trivlist%
+    \item[\hspace{2.5em}\textbf{\color{main}\envnamebefore#1\envnameafter}\hspace{-2.5em}]%
+    \citshape%
+    \begin{enumr}%
+      }{%
+    \end{enumr}%
+  \endtrivlist%
+  \par%
+  \ignorespacesafterend%
+}
+\newenvironment{proofenuma}[1][证明]{\parvspace
+  \trivlist \item[\hspace{2.5em}\textbf{\color{main}\envnamebefore#1\envnameafter}\hspace{-2.5em}]\citshape
   \begin{enuma}
 }{\end{enuma}\endtrivlist\parvspace\ignorespacesafterend}
 %% 注
 \newenvironment{remark}{
-  \smallskip\noindent\textbf{\color{third}注}
+  % \smallskip
+  \noindent\textbf{\color{third}注}
 }{\parvspace\ignorespacesafterend}
 
 
@@ -681,7 +753,7 @@
       text=black
     ] at ($(current page.center)!0.9!(current page.south)$)
     {
-      \includegraphics[height=3em]{../../../image/logo/hfut.png}
+      \includegraphics[height=3em]{../../../image/logo/mybook.png}
       \raisebox{1.1em}{
         \fontsize{1.5em}{1em}
         \selectfont

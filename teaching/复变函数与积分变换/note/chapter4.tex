@@ -1,7 +1,7 @@
 \chapter{级数}
 \label{chapter:4}
 
-复变函数的级数理论是为了研究如何把复变函数展开成幂级数或双边幂级数的形式, 这样复变函数的一些性质就显得较为简单或容易研究.
+复变函数的级数理论研究如何把复变函数展开成幂级数或双边幂级数的形式, 这样复变函数的一些性质就显得较为简单或容易研究.
 与实变量情形有所不同, 只要复变函数在圆域或圆环域内处处解析, 就一定能展开成幂级数或双边幂级数的形式.
 这些展开均来自于\thmCIH, 其中圆环域内解析函数的双边幂级数展开, 即洛朗展开, 可与该函数绕闭路积分联系, 这便引出了复变函数的留数理论.
 最后, 我们针对不同的洛朗级数特点给出孤立奇点的分类, 为留数的计算做好准备.
@@ -661,7 +661,7 @@
 \begin{example}
   由
   \[
-    (\cos z)^{(n)}=\cos\Bigl(z+\dfrac{n\cpi}2\Bigr)
+    (\cos z)^{(n)}=\cos\Bigl(z+\frac{n\cpi}2\Bigr)
   \]
   可知
   \[
@@ -725,7 +725,7 @@
     \def\b{1.6}
     \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
     \cutline{-\u-\cutwd}{0}{\r-\cutwd}{180}{main};
-    \filldraw[cstcurve,second,cstfill1] (0,0) circle (\u);
+    \filldraw[cstcurve,fifth,cstfill5] (0,0) circle (\u);
     \draw[cstaxis] (-2.4,0)--(2.4,0);
     \draw[cstaxis] (0,-2)--(0,2);
   \end{tikzpicture}
@@ -822,7 +822,7 @@
 \begin{exercise}
   求 $\dfrac1{1-3z+2z^2}$ 的麦克劳林展开.
 \end{exercise}
-
+\smallskip
 
 解析函数的泰勒展开还说明了幂级数的和函数无论怎样扩充定义域, 它在收敛圆周上一定有奇点.
 设幂级数 $\sumf0c_n(z-z_0)^n$ 的收敛半径为 $R>0$, 且在 $|z|<R$ 时和函数等于函数 $f(z)$.
@@ -830,7 +830,7 @@
 由泰勒展开的唯一性可知该幂级数就是 $\sumf0c_n(z-z_0)^n$, 从而 $R=d$, $f(z)$ 一定在 $|z|=R$ 上有奇点.
 
 
-\subsection{泰勒展开在级数中的应用(\optional)}
+\subsection{泰勒展开在级数中的应用\optional}
 
 解析函数的泰勒展开可以帮助我们计算级数的和.
 
@@ -869,7 +869,7 @@
   相应地, 前述\thmAF 被称为\emph{阿贝尔第一定理}. \thmAS 结论的一般\\
   形式为: 对任意 $0\le \theta<\dfrac\cpi2$,
   \begin{align*}
-    \lim_{\substack{z\ra a,|z|<R\\-\theta\le\arg (1-z/a)<\theta}}f(z)=f(a),\qquad\qquad\qquad&&&
+    \lim_{\substack{z\ra a,|z|<R\\-\theta\le\arg (1-z/a)\le\theta}}f(z)=f(a),\qquad\qquad\qquad&&&
   \end{align*}
   也就是说, $z$ 在右图阴影区域内趋于 $a$.
 }
@@ -950,7 +950,7 @@
 \end{solution}
 
 
-\subsection{泰勒展开成立的范围(\optional)}
+\subsection{泰勒展开成立的范围\optional}
 \label{ssec:taylor-expansion-radius}
 
 本节中我们来研究泰勒展开成立的最大圆域半径 $d$ 与泰勒级数的收敛半径 $R$ 的关系, 其中 $d$ 等于 $z_0$ 与 $f(z)$ 最近奇点的距离.
@@ -989,23 +989,23 @@
   分情况讨论可知
   \begin{align*}
     f(z)=\begin{cases}
-      g(z),&\text{若}\ \arg(z-1-\ii)\in \Bigl(-\cpi,\dfrac\cpi4\Bigr];\\
-      g(z)+2\cpi\ii,&\text{若}\ \arg(z-1-\ii)\in \Bigl(\dfrac\cpi4,\cpi\Bigr].
+      g(z),&\text{若}\ \arg(z-1-\ii)\in \bigl(-\cpi,\dfrac\cpi4\bigr];\\
+      g(z)+2\cpi\ii,&\text{若}\ \arg(z-1-\ii)\in \bigl(\dfrac\cpi4,\cpi\bigr].
     \end{cases}
   \end{align*}
 
   \begin{figure}[!hbt]
     \centering
     \begin{tikzpicture}
-      \filldraw[cstcurve,fourth,cstfill4] (0,0) circle ({sqrt(2)});
+      \filldraw[cstcurve,fourth,fill=fourth!15] (0,0) circle ({sqrt(2)});
       \filldraw[cstcurve,main,cstfill1] (0,0) circle (1);
-      \draw[cstdash] (1,1)--(-3,1)
+      \draw[cstdash,second] (1,1)--(-3,1)
         node[below right] {$f=g$}
         node[above right] {$f\neq g$};
-      \draw[cstra] (0,0)--node[above left,shift={(.2,0)}] {$1$}({cos(35)},{sin(35)});
-      \draw[cstra] (0,0)--({sqrt(2)*cos(-20)},{sqrt(2)*sin(-20)}) node[right,shift={(-.1,0)}] {$\sqrt2$};
-      \draw[cstdash] (1,1)--(2.3,2.3);
-      \fill[cstdot] (1,1) circle
+      \draw[cstra,third] (0,0)--node[above left,shift={(.2,0)}] {$1$}({cos(35)},{sin(35)});
+      \draw[cstra,third] (0,0)--({sqrt(2)*cos(-20)},{sqrt(2)*sin(-20)}) node[right,shift={(-.1,0)}] {$\sqrt2$};
+      \draw[cstdash,second] (1,1)--(2.3,2.3);
+      \fill[cstdot,third] (1,1) circle
         node[right,shift={(.1,0)}] {$1+\ii$};
       \draw[cstaxis] (-3,0)--(3,0);
       \draw[cstaxis] (0,-2)--(0,2.5);
@@ -1021,7 +1021,7 @@
   而右侧幂级数的收敛半径为 $\sqrt2$, 和函数为 $g(z)$.
   当 $z$ 属于圆域 $D=\set{z:|z|<\sqrt2}$ 的子集
   \[
-    D\cap\set{z: \arg(z-1-\ii)\in\Bigl(\dfrac\cpi4,\cpi\Bigr]}
+    D\cap\set{z: \arg(z-1-\ii)\in\bigl(\frac\cpi4,\cpi\bigr]}
     =D\cap\set{z: \Im z\ge1}
   \]
   时, $f(z)=g(z)+2\cpi\ii $. 因此
@@ -1103,7 +1103,7 @@
       \draw[second,cstra] (0,0)--(A)
         node[pos=.4,below right] {$R_2$};
       \filldraw[cstdote,draw=main] (0,0) circle
-        node[left] {$z_0$}
+        node[left,third] {$z_0$}
         node[below=15mm] {$0<|z-z_0|<R_2$};
     \end{scope}
     \begin{scope}
@@ -1113,13 +1113,13 @@
       \draw[second,cstra] (0,0)--(A)
         node[pos=.4,below right] {$R_1$};
       \fill[cstdot,fill=second] (0,0) circle
-        node[left] {$z_0$}
+        node[left,third] {$z_0$}
         node[below=15mm] {$R_1<|z-z_0|<+\infty$};
     \end{scope}
     \begin{scope}[xshift=40mm]
       \fill[cstfille1] (0,0) circle (1.5);
       \filldraw[cstdote,draw=main] (0,0) circle
-        node[left=2pt,fill=white,inner sep=0pt] {$z_0$}
+        node[left=2pt,third,fill=white,inner sep=0pt] {$z_0$}
         node[below=15mm] {$0<|z-z_0|<+\infty$};
     \end{scope}
   \end{tikzpicture}
@@ -1164,7 +1164,7 @@
 设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析.
 设 $R_1<r<R<R_2$, 
 \[
-  \emphn{K_1:|z-z_0|=r},\quad \alertn{K_2:|z-z_0|=R}
+  \color{main}{K_1:|z-z_0|=r},\quad \color{fifth}{K_2:|z-z_0|=R}
 \]
 是该圆环域内的两个圆周.
 对于 $r<|z-z_0|<R$, 由\thmCCC 和\thmCIH,
@@ -1177,22 +1177,22 @@
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
-    \filldraw[cstcurve,second,cstfill] (0,0) circle (1.6);
+    \filldraw[cstcurve,fifth,cstfill3] (0,0) circle (1.6);
     \filldraw[cstcurve,main,fill=white] (0,0) circle (.8);
-    \node[inner sep=1pt] (Z) at (-1.3,-.3) {$\zeta$};
+    \node[third,inner sep=1pt] (Z) at (-1.3,-.3) {$\zeta$};
     \coordinate (Z1) at ({1.6*cos(225)},{1.6*sin(225)});
     \coordinate (Z2) at ({.8*cos(225)},{.8*sin(225)});
-    \draw[cstra,second] (Z)--(Z1);
+    \draw[cstra,fifth] (Z)--(Z1);
     \draw[cstra,main] (Z)--(Z2);
-    \fill[cstdot,second] (Z1) circle;
+    \fill[cstdot,fifth] (Z1) circle;
     \fill[cstdot,main] (Z2) circle;
-    \draw[second,cstra] (0,0)--({1.6*cos(35)},{1.6*sin(35)})
+    \draw[fifth,cstra] (0,0)--({1.6*cos(35)},{1.6*sin(35)})
       node[right] {$K_2$}
       node[pos=.75,below] {$R$};
     \draw[main,cstra] (0,0)--({.8*cos(290)},{.8*sin(290)})
       node[below] {$K_1$}
       node[pos=.4,right,shift={(-.05,0)}] {$r$};
-    \fill[cstdot,black] (0,0) circle;
+    \fill[cstdot,third] (0,0) circle;
   \end{tikzpicture}
   \caption{函数在圆环域内的洛朗展开}
 \end{figure}
@@ -1242,7 +1242,7 @@
   \label{thm:laurent-expansion}
   若 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析, 则 $f(z)$ 可以在该圆环域内展开成双边幂级数
   \[
-    f(z)=\sumff \biggl(\frac1{2\cpi\ii}\oint_C\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d\zeta\biggr)(z-z_0)^n,
+    f(z)=\sumff \biggl(\frac1{2\cpi\ii}\oint_C \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d\zeta\biggr)(z-z_0)^n,
   \]
   其中 $C$ 是该圆环域中内部包含 $z_0$ 的闭路.
 \end{theorem}
@@ -1258,8 +1258,8 @@
 \]
 逐项积分并由\thmref{定理}{thm:closed-power-integral} 得到
 \[
-   \oint_C\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{m+1}}
-  =\sum_{n=-\infty}^\infty c_n\oint_C(\zeta-z_0)^{n-m-1}\d\zeta
+   \oint_C \frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{m+1}}
+  =\sum_{n=-\infty}^\infty c_n\oint_C (\zeta-z_0)^{n-m-1}\d\zeta
   =2\cpi\ii c_m.
 \]
 从而 $c_m$ 就是洛朗展开的系数.
@@ -1406,7 +1406,7 @@
   \end{align*}
   故
   \[
-    \oint_Cf(z)\d z=2\cpi\ii  c_{-1}=0.
+    \oint_C f(z)\d z=2\cpi\ii  c_{-1}=0.
   \]
 \end{solution}
 
@@ -1421,7 +1421,7 @@
         \draw[cstcurve,main] (-1,0) circle (1);
         \draw[
           cstcurve,
-          second,
+          fourth,
           decoration={
             markings,
             mark=at position .125 with {
@@ -1453,7 +1453,7 @@
       \fill[cstdot,fourth] (A2) circle node[below right] {$\sqrt\cpi$};
       \draw[
         cstcurve,
-        second,
+        fourth,
         decoration={
           markings,
           mark=at position .125 with {
@@ -1482,7 +1482,7 @@
   \]
   故
   \[
-    \oint_Cf(z)\d z=2\cpi\ii  c_{-1}=2\cpi\ii .
+    \oint_C f(z)\d z=2\cpi\ii  c_{-1}=2\cpi\ii .
   \]
 \end{solution}
 
@@ -1490,7 +1490,7 @@
 针对不同的奇点特点, 我们的确有一些计算方法来直接得到 $c_{-1}$ 而不用求出整个洛朗展开, 这也引出了留数的概念.
 
 
-\subsection{有理函数的泰勒展开和洛朗展开(\optional)}
+\subsection{有理函数的泰勒展开和洛朗展开\optional}
 \label{ssec:rational-function-expansion}
 
 在讨论有理函数的泰勒展开和洛朗展开之前, 我们先将 \ref{ssec:taylor-expansion-radius}的结论推广到洛朗展开的情形.
@@ -1724,15 +1724,15 @@
     \foreach \i in {1,2,...,10}{
       \coordinate (A\i) at ({\s/\i/pi},0);
       \coordinate (B\i) at ({-\s/\i/pi},0);
-      \draw[fourth] (A\i)--++(0,.2);
-      \draw[fourth] (B\i)--++(0,.2);
+      \draw[fifth] (A\i)--++(0,.2);
+      \draw[fifth] (B\i)--++(0,.2);
     }
     \draw (A1) node[below] {$z_1$};
     \draw (A2) node[below] {$z_2$};
     \draw (B1) node[below] {$z_{-1}$};
     \draw (B2) node[below] {$z_{-2}$};
     \draw node[below right,inner sep=1pt] {$0$};
-    \fill[fourth] (-.2,0) rectangle (.2,.2);
+    \fill[fifth] (-.2,0) rectangle (.2,.2);
     \draw[cstaxis] (0,-1)--(0,1);
     \draw[cstaxis] (-{\s/2.5},0)--({\s/2.5},0);
   \end{tikzpicture}
@@ -1746,8 +1746,10 @@
 \begin{exampleenum}
   \item $z=0$ 是 $\ee^{\frac1z},\dfrac{\sin z}z$ 的孤立奇点.
   \item $z=-1$ 是 $\dfrac1{z(z+1)}$ 的孤立奇点.
+  \smallskip
   \item $z=0$ 不是 $\dfrac1{\sin(1/z)}$ 的孤立奇点.
 \end{exampleenum}
+\smallskip
 
 若 $f(z)$ 只有有限多个奇点, 则这些奇点都是孤立奇点.
 
@@ -2059,7 +2061,7 @@
 \end{exercise}
 
 
-\subsection{孤立奇点 \texorpdfstring{$\infty$}{∞} 的分类(\optional)}
+\subsection{孤立奇点 \texorpdfstring{$\infty$}{∞} 的分类\optional}
 
 当我们把 $\infty$ 添加到复平面使其变成扩充复平面后, 从几何上看它变成了一个球面.
 这样的一个球面是一种封闭的曲面, 它具有某些整体性质.
@@ -2117,13 +2119,14 @@
 \end{table}
 
 \begin{exampleenum}
-  \item 设 $f(z)=\dfrac z{z+1}$.
+  \item 设 $f(z)=\dfrac z{z+1}$. \smallskip
   由 $\liml_{z\ra\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
   \[
-      f(z)=\frac{1}{1+\ddfrac1z}
+      f(z)=\frac{1}{1+\dfrac1z}
     =1-\frac1z+\frac1{z^2}-\frac1{z^3}+\cdots
   \]
   \item 函数 $f(z)=z^2+\dfrac\ii z$ 含有正次幂项且最高次为 $2$, 因此 $\infty$ 是 $2$ 阶极点.
+  \smallskip
 
   一般地, 若 $f(z)=\dfrac{p(z)}{q(z)}$ 是有理函数, $p,q$ 次数分别为 $m,n$, 则当 $m>n$ 时, $\infty$ 是 $f(z)$ 的 $m-n$ 阶极点;
   当 $m\le n$ 时, $\infty$ 是 $f(z)$ 的可去奇点.
@@ -2201,7 +2204,7 @@
   \begin{conclusion}
     \item $f(z)$ 在解析的圆域内可以展开为幂级数, 在解析的圆环域内可以展开为双边幂级数.
     \item 泰勒展开形式为 $f(z)=\sumf0 \dfrac{f^{(n)}(z_0)}{n!}(z-z_0)^n$.
-    \item 洛朗展开形式为 $f(z)=\sumff \Bigl(\oint_C\dfrac{f(z)}{(z-z_0)^{n+1}}\d z\Bigr)(z-z_0)^n$.
+    \item 洛朗展开形式为 $f(z)=\sumff \Bigl(\oint_C \dfrac{f(z)}{(z-z_0)^{n+1}}\d z\Bigr)(z-z_0)^n$, 其中 $C$ 为圆环域内任意一条内部包含 $z_0$ 的闭路.
   \end{conclusion}
   \item 掌握简单函数的泰勒展开和洛朗展开. 特别地, 要掌握有理函数情形的计算方法.
   \begin{conclusion}
@@ -2219,7 +2222,7 @@
   \end{conclusion}
 \end{conclusion}
 
-本章中不易理解和易错的概念包括:
+本章中不易理解和易错的知识点包括:
 \begin{enuma}
   \item 混淆比值法及根式法中的 $r$ 和幂级数的收敛半径 $R$, 二者互为倒数.
   \item 混淆泰勒展开成立的最大圆域半径和泰勒级数的收敛半径, 二者并不总是相等.
@@ -2299,7 +2302,7 @@
     \item $0$ 是 $(\cos z+\ch z-2)^2$ 的\fillblank{}阶零点.
     \item $0$ 是 $\dfrac1{(\sin z+\sh z-2z)^2}$ 的\fillblank{}阶极点.
   \end{homework}
-  \item 计算题.
+  \item 解答题.
   \begin{homework}
     \item 判断下列级数绝对收敛、条件收敛还是发散:
       \begin{subhomework}(2)
@@ -2322,7 +2325,8 @@
       \item $\sumf1 \ee^{\frac{\cpi\ii}n}z^n$;
       \item $\sumf1 \Bigl(\frac{z-2}{\ln{\ii n}}\Bigr)^n$;
       \item $\sumf1 \frac{z^n}{n^p}$, 其中 $p$ 是正整数;
-      \item $\sumf1 (n+a^n)z^n$, 其中 $a$ 是正实数.
+      \item $\sumf1 (n+a^n)z^n$, 其中 $a$ 是正实数;
+      \item $\sumf1 (a^n+b^n)z^n$.
     \end{subhomework}
     \item 把下列各函数在 $z_0$ 处展开成幂级数, 并指出它们的收敛半径:
     \begin{subhomework}(2)
@@ -2331,8 +2335,10 @@
       \item $\ee^z\cos z, z_0=0$;
       \item $f(z)=\dfrac{1}{z-2}+\ee^{-z}, z_0=0$;
       \item $\dfrac{z}{(z+1)(z+2)}, z_0=2$;
+      \smallskip
       \item $\dfrac1{z^2}, z_0=-1$;
-      \item $\arctan z=-\dfrac\ii2\ln\dfrac{1+\ii z}{1-\ii z}, z_0=0$.
+      \item $\arctan z=-\dfrac\ii2\ln\dfrac{1+\ii z}{1-\ii z}, z_0=0$;
+      \item $\sqrt{z+2}$ 的主值, $z_0=-1$.
     \end{subhomework}
     \item 将下列函数在 $0<|z|<1$ 和 $1<|z|<2$ 内展开成洛朗级数.
       \begin{subhomework}(2)
@@ -2355,12 +2361,12 @@
         \item $\dfrac1{z(z+2)}$;
         \item $\dfrac{e^{\frac1z}}{z-1}$.
       \end{subhomework}
-    \item 求斐波那契数列
+    \item 求数列
       \[
-        F_0=F_1=1,\quad F_{n+2}=F_{n+1}+F_n
+        a_0=a_1=1,\quad a_{n+2}=2a_{n+1}-2a_n
       \]
       的通项公式.
-      提示: 考虑 $\sumf0 F_n z^n$ 的和函数和麦克劳林展开.
+      提示: 先求出 $\sumf0 a_n z^n$ 的和函数.
     \item 指出下述推理的错误之处: 我们有
       \begin{align*}
         \frac{z}{1-z}&=z+z^2+z^3+z^4+\cdots,\\
@@ -2385,24 +2391,6 @@
         \item $\dfrac{(\ee^z-1)^2z^3}{\sin z^8}$;
         \item $\dfrac{z-\cpi}{(\sin z)^3}$.
       \end{subhomework}
-    \item \optionalex 计算如下级数的和.
-    \begin{subhomework}(2)
-      \item $\sumf0 \dfrac1{(3n+1)!}$;
-      \item $\sumf0 \dfrac{(-1)^n}{2n+1}$.
-    \end{subhomework}
-    \item \optionalex 已知有理函数 $f(z)=\dfrac{6}{z^2(z-1)^3}$ 在 $0<|z|<1$ 内的洛朗展开为
-      \[
-        f(z)=-\sum_{n\ge 0}(n^3+12n^2+47n+60)z^n,
-      \]
-      求它在 $1<|z|<+\infty$ 内的洛朗展开.
-    \item \optionalex 已知有理函数 $f(z)=\dfrac{120}{(z-1)(z^2-4)(z^2-9)}$ 在 $0<|z|<1$ 内的洛朗展开为
-      \[
-        f(z)=\sum_{n\ge 0}\Bigl(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n,
-      \]
-      求它在其它解析的圆环域内的洛朗展开.
-  \end{homework}
-  \item 证明题.
-  \begin{homework}
     \item 设解析函数 $f(z)$ 满足 $f(\zeta z)=\zeta^m f(z)$, 其中 $\zeta=\ee^{\frac{2\cpi\ii}n}$ 是 $n$ 次单位根.
       证明: $f(z)$ 的麦克劳林展开只有 $nk+m$ 次项, $k\in\BZ$.
     \item 证明: 若 $z_0$ 是 $f(z)$ 的 $m>1$ 阶零点, 则 $z_0$ 是 $f^{(k)}(z)$ 的 $m-k$ 阶零点, 其中 $1\le k<m$.
@@ -2420,6 +2408,21 @@
       \end{subhomework}
     \item 设函数 $f(z)$ 在扩充复平面上只有有限多个奇点, 这些奇点都是极点且 $\liml_{z\ra\infty}f(z)\neq0$.
       证明 $f(z)$ 在扩充复平面上所有零点的阶之和与所有极点的阶之和相等. 提示: $f(z)$ 一定是有理函数.
+    \item \optionalex 计算如下级数的和.
+    \begin{subhomework}(2)
+      \item $\sumf0 \dfrac1{(3n+1)!}$;
+      \item $\sumf0 \dfrac{(-1)^n}{2n+1}$.
+    \end{subhomework}
+    \item \optionalex 已知有理函数 $f(z)=\dfrac{6}{z^2(z-1)^3}$ 在 $0<|z|<1$ 内的洛朗展开为
+      \[
+        f(z)=-\sum_{n\ge 0}(n^3+12n^2+47n+60)z^n,
+      \]
+      求它在 $1<|z|<+\infty$ 内的洛朗展开.
+    \item \optionalex 已知有理函数 $f(z)=\dfrac{120}{(z-1)(z^2-4)(z^2-9)}$ 在 $0<|z|<1$ 内的洛朗展开为
+      \[
+        f(z)=\sum_{n\ge 0}\Bigl(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n,
+      \]
+      求它在其它解析的圆环域内的洛朗展开.
   \end{homework}
 \end{homework}
 

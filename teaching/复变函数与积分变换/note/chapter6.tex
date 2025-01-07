@@ -91,11 +91,12 @@
   \end{enuma}
 \end{theorem}
 \footnotetext{
-  ``附近''并不是严格的数学概念, 这里实际上就是指 $|\delt w|=|f'(z_0)|\cdot|\delt z|+o(\delt z)$.
+  ``附近''并不是严格的数学概念, 这里实际上就是指 $|{\delt w}|=|f'(z_0)|\cdot|{\delt z}|+o(\delt z)$.
 }
 
 注意, 这里的保角性不仅保持夹角不变, 也保持了夹角的方向.
-若 $w=f(z)$ 在 $z_0$ 附近有上述特点, 设它将经过 $z_0$ 的水平曲线逆时针旋转 $\theta$ 并放缩 $r$ 倍, 则对于充分小的 $|\delt z|$, 有 $\delt w\approx r\ee^{\ii\theta}\delt z$.
+
+反过来, 若 $w=f(z)$ 在 $z_0$ 附近有上述特点, 设它将经过 $z_0$ 的水平曲线逆时针旋转 $\theta$ 并放缩 $r$ 倍, 则对于充分小的 $|{\delt z}|$, 有 $\delt w\approx r\ee^{\ii\theta}\delt z$.
 令 $\delt z\ra 0$, 则我们得到 $f(z)$ 在 $z_0$ 处可微且 $f'(z_0)=r\ee^{\ii\theta}\neq0$.
 
 
@@ -117,7 +118,7 @@
 因此我们要求所使用的映射是一一对应.
 
 \begin{definition}
-  若 $w=f(z)$ 在区域 $D$ 内的一一保角映射, 则称 $f(z)$ 是 $D$ 内的\noun{保形映射}.\footnotemark
+  若 $w=f(z)$ 是区域 $D$ 内的一一保角映射, 则称 $f(z)$ 是 $D$ 内的\noun{保形映射}.\footnotemark
 \end{definition}
 \footnotetext{也叫\noun{保形变换}或\noun{共形映射}.}
 
@@ -133,25 +134,26 @@
 \subsection{与 \texorpdfstring{$\infty$}{∞} 有关的保形映射}
 
 我们来讨论与 $\infty$ 有关的保形映射.
-为了方便, 本章中我们将 $\liml_{z\ra a}f(z)=\infty$ 简记为 $f(a)=\infty$, 将 $\liml_{z\ra \infty}f(z)=A\in\BC^*$ 简记为 $f(\infty)=A$.
+为了方便, 本章中我们将 $\liml_{z\ra a}f(z)=\infty$ 简记为 $f(a)=\infty$, 将 $\liml_{z\ra \infty}f(z)=A\in\BC^*$ 简记为 $f(\infty)=A$, 且所有的复变函数都看作是 $D\subseteq\BC^*$ 到 $\BC^*$ 的映射.
 若曲线
 \[
   C: z=z(t),\ a<t<b
 \]
 满足 $\liml_{t\ra a^+}z(t)=\infty$ 或 $\liml_{t\ra b^-}z(t)=\infty$, 则称 $C$ \noun{延伸至 $\infty$}.
+此时我们把 $\infty$ 也看作是 $C$ 上的一个点.
 这里的 $a,b$ 也可以为 $-\infty,+\infty$.
 
-\begin{definition}
-  设 $C_1,C_2$ 是两条延伸至 $\infty$ 的曲线, 则它们在映射 $z=\dfrac1t$ 下的像 $C_1',C_2'$ 相交于 $0$ 点.
-  称 $C_1',C_2'$ 在 $0$ 点处的夹角为 $C_1,C_2$ 在 \noun{$\infty$ 处的夹角}.
-\end{definition}
+% \begin{definition}
+%   设 $C_1,C_2$ 是两条延伸至 $\infty$ 的曲线, 则它们在映射 $z=\dfrac1t$ 下的像 $C_1',C_2'$ 相交于点 $0$.
+%   称在点 $0$ 处 $C_1'$ 到 $C_2'$ 的夹角为在 \nouns{$\infty$ 处 $C_1$ 到 $C_2$ 的夹角}{$\infty$ 处的夹角}.
+% \end{definition}
 
-于是我们可以定义 $\infty$ 处的保形映射.
+% 于是我们可以定义 $\infty$ 处的保形映射.
 \begin{definition}
   \begin{enuma}
     \item 若 $f(z_0)=\infty$, 且 $\dfrac1w=\dfrac1{f(z)}$ 是 $z_0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$z_0$ 处的保角映射}{保角映射}.
-    \item 若 $f(\infty)=w_0$, 且 $w=f\Bigl(\dfrac1t\Bigr)$ 是 $t=0$ 处的保形映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
-    \item 若 $f(\infty)=\infty$, 且 $\dfrac1w=\dfrac1{f(1/t)}$ 是 $t=0$ 处的保形映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
+    \item 若 $f(\infty)=w_0$, 且 $w=f\Bigl(\dfrac1t\Bigr)$ 是 $t=0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
+    \item 若 $f(\infty)=\infty$, 且 $\dfrac1w=\dfrac1{f(1/t)}$ 是 $t=0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}{保角映射}.
   \end{enuma}
 \end{definition}
 
@@ -166,36 +168,37 @@
   \[
     \dfrac1w=\dfrac1{f(z)}=\dfrac1{f(1/t)}=\dfrac{t}{a+bt}.
   \]
-  在 $t=0$ 处解析, 因此 $w=f(z)$ 是 $\infty$ 处的保形映射.
-  故 $w=f(z)$ 是扩充复平面上的保形映射.
+  在 $t=0$ 处解析, 因此 $w=f(z)$ 是 $\infty$ 处的保角映射.
+  显然 $w=f(z)$ 是一一的, 故 $w=f(z)$ 是扩充复平面 $\BC^*$ 上的保形映射.
 \end{example}
 
 \begin{example}
   \label{exam:inverse-transform}
   倒数映射 $w=f(z)=\dfrac1z$ 在任意非零点的导数 $f'(z)=-\dfrac1{z^2}$ 非零, 因此是这些点的保形映射.
-  由于 $w(0)=\infty$, 且 $\dfrac1w=z$ 在 $z=0$ 处是保形映射, 因此 $w=f(z)$ 是 $0$ 处的保形映射.
-  由于 $w(\infty)=0$, 且 $w=f\Bigl(\dfrac1t\Bigr)=t$ 在 $t=0$ 处是保形映射, 因此 $w=f(z)$ 是 $\infty$ 处的保形映射.
-  故 $w=f(z)$ 是扩充复平面上的保形映射.
+  由于 $w(0)=\infty$, 且 $\dfrac1w=z$ 在 $z=0$ 处是保角映射, 因此 $w=f(z)$ 是 $0$ 处的保角映射.
+  由于 $w(\infty)=0$, 且 $w=f\Bigl(\dfrac1t\Bigr)=t$ 在 $t=0$ 处是保角映射, 因此 $w=f(z)$ 是 $\infty$ 处的保角映射.
+  显然 $w=f(z)$ 是一一的, 故 $w=f(z)$ 是扩充复平面 $\BC^*$ 上的保形映射.
 \end{example}
 
-实际上, 任意分式线性映射都是扩充复平面上的保形映射.
+实际上, 任意分式线性映射都是扩充复平面内的保形映射.
 
 对于扩充复平面上的单连通区域, 我们有如下定理:
+\footnote{
+  扩充复平面内区域的定义和复平面内区域的定义类似, 只不过需要额外考虑 $\infty$ 的情形.
+  如果区域 $D$ 内任意一条闭路的内部或外部(包含 $\infty$)都完全属于该区域, 则称该区域为\emph{单连通区域}.
+  例如圆周外部(包含 $\infty$)是扩充复平面中的单连通区域.
+  从复球面的角度来看更明显.
+}
 
 \begin{theorem}[黎曼映射定理]
   \label{thm:riemann-mapping}
-  若 $D$ 是扩充复平面中的非空单连通区域, 且 $D$ 不是扩充复平面, 也不是扩充复平面去掉一个点, 则存在 $D$ 到单位圆域的保形映射 $w=f(z)$.\footnotemark
+  若 $D\neq\BC^*$ 是扩充复平面中的非空单连通区域, 且 $D$ 不是扩充复平面去掉一个点, 则存在 $D$ 到单位圆域的保形映射 $w=f(z)$.
   对于任意常数 $\theta_0$ 和 $D$ 中任意一点 $z_0$, 若要求 $f(z_0)=0,\arg f'(z_0)=\theta_0$, 则存在唯一一个这样的 $f$.
 \end{theorem}
-\footnotetext{
-  扩充复平面内区域的定义和复平面内区域的定义类似, 只不过需要额外考虑 $\infty$ 的情形.
-  如果区域 $D$ 内任意一条闭路的内部或外部(包含 $\infty$)都完全属于该区域, 则称该区域为\noun{单连通区域}.
-  例如圆周外部(包含 $\infty$)是扩充复平面中的单连通区域.
-}
 
 由保形映射是一一对应, 且它的逆也是保形映射可得:
 \begin{corollary}
-  若 $D_1,D_2$ 是扩充复平面中的非空单连通区域, 且它们不是扩充复平面, 也不是扩充复平面去掉一个点, 则存在 $D_1$ 到 $D_2$ 的保形映射 $w=f(z)$.
+  若 $D_1\neq\BC^*,D_2\neq\BC^*$ 是扩充复平面中的非空单连通区域, 且它们不是扩充复平面去掉一个点, 则存在 $D_1$ 到 $D_2$ 的保形映射 $w=f(z)$.
   对于任意常数 $\theta_0$ 和 $D$ 中任意一点 $z_0$, 若要求 $f(z_0)=0,\arg f'(z_0)=\theta_0$, 则存在唯一一个这样的 $f$.
 \end{corollary}
 
@@ -235,25 +238,26 @@
   =\frac{az+b}{cz+d}
   =-\frac{ad-bc}{c^2}\cdot\frac1{z+d/c}+\frac ac.
 \]
-于是它可以由三类比较简单的分式线性映射复合得到:
+于是它可由三类比较简单的分式线性映射复合得到:
 \begin{enuma}
   \item 平移映射 $w=z+b$;
-  \item 相似映射 $w=az$;
+  \item 相似映射 $w=az$;\smallskip
   \item 倒数映射 $w=\dfrac1z$.
 \end{enuma}
+\smallskip
 由\thmref{例}{exam:linear-transform} 和\thmref{例}{exam:inverse-transform}, 我们立即得到:
 
 \begin{theorem}
-  分式线性映射是扩充复平面上的保形映射.
+  分式线性映射是扩充复平面内的保形映射.
 \end{theorem}
 
 
 \subsubsection{保圆性}
 
 由于保形映射具有保角性和伸缩率不变性, 因此它在局部保持图形的形状不变.
-不过这种不变只是在一定的程度下的近似,.
-对于分式线性映射, 它总把直线和圆映成直线或圆.
-我们也可以将直线视为扩充复平面上经过 $\infty$ 的圆.
+不过这种不变只是在一定的程度下的近似.
+而对于分式线性映射, 它总把直线和圆映成直线或圆.
+我们也可以将直线视为扩充复平面上经过 $\infty$ 的半径无限大的圆.
 
 \begin{theorem}
   分式线性映射把圆周或直线映成圆周或直线.
@@ -265,7 +269,7 @@
   \[
     A(x^2+y^2)+Bx+Cy+D=0,
   \]
-  其中 $A,B,C,D$ 不全为零. 由
+  其中 $B^2+C^2-4AD>0$. 由
   \[
       z
     =\frac1w
@@ -278,22 +282,21 @@
   因此倒数映射把圆周或直线映成圆周或直线, 命题得证.
 \end{proof}
 
-不难看出, 分式线性映射 $w=f(z)$ 将圆周或直线映成直线, 当且仅当它将圆周或直线(含 $\infty$)上的一点映成 $\infty$.
-也就是说, 若圆周或直线经过点 $-\dfrac dc$, 则 $w=f(z)$ 将它变为直线.
-$w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
+不难看出, 分式线性映射 $w=f(z)$ 将圆周或直线 $C$ 映成直线, 当且仅当 $C$ 上的一点的像为 $\infty$, 即 $-\dfrac dc\in C$.
+它也总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 
 
 \subsubsection{保对称点}
 
 如果 $z_1,z_2$ 的垂直平分线是直线 $\ell$, 或者它们重合且都在直线 $\ell$ 上, 则称 $z_1,z_2$ 关于直线 $\ell$ \noun{对称}.
 对于圆周我们也可以定义对称点.
-设 $C:|z-z_0|=R$ 是一圆周, 若 $z_1,z_2$ 在从 $z_0$ 出发的一条射线上, 且 $|z_1-z_0|\cdot|z_2-z_0|=R^2$, 则称 $z_1,z_2$ 关于圆周 $C$ \noun{对称}.
-圆周上的点总和其自身对称.
+设 $C:|z-z_0|=R$ 是一圆周, 若 $z_1,z_2$ 在从 $z_0$ 出发的同一条射线上, 且 $|z_1-z_0|\cdot|z_2-z_0|=R^2$, 则称 $z_1,z_2$ 关于圆周 $C$ \noun{对称}.
+圆周上的点总和其自身对称, 除此之外, 关于圆周对称的点一定是一个在圆周内, 一个在圆周外.
 我们还规定 $z_0$ 和 $\infty$ 关于 $C$ 对称.
 
 \begin{lemma}
   \label{lem:symmetry-circle}
-  $z_1,z_2$ 关于圆周 $C:|z-z_0|=R$ 对称, 当且仅当经过 $z_1,z_2$ 的任一圆周和 $C$ 正交, 即在交点处切线垂直.
+  点 $z_1,z_2$ 关于圆周 $C:|z-z_0|=R$ 对称, 当且仅当经过 $z_1,z_2$ 的任一圆周和 $C$ 正交, 即在交点处切线垂直.
 \end{lemma}
 
 \begin{figure}[!htb]
@@ -315,15 +318,16 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
     \fill[cstdot,second] (O) circle node[above] {$\gamma$};
     \fill[cstdot,second] (P) circle node[above] {$P$};
   \end{tikzpicture}
-  \caption{过对称点圆周的正交性}
+  \caption{过对称点圆周与原圆周正交}
 \end{figure}
 
 \begin{proof}
   若 $z_1,z_2$ 关于圆周 $C$ 对称, 则经过 $z_1,z_2$ 的圆周 $\Gamma$ 一定交 $C$ 于另一点 $P$.
-  而 $|P-z_0|^2=|z_1-z_0|\cdot|z_2-z_0|$, 因此 $\triangle Pz_0z_1$ 相似 $\triangle z_2z_0P$, 从而 $\angle z_0Pz_1=\angle z_0z_2P$, $z_0P$ 是 $\Gamma$ 的切线.
+  而 $|P-z_0|^2=|z_1-z_0|\cdot|z_2-z_0|$, 因此 $\triangle Pz_0z_1$ 相似于 $\triangle z_2z_0P$, 从而 $\angle z_0Pz_1=\angle z_0z_2P$, 这意味着 $z_0P$ 是 $\Gamma$ 的切线.
+  从而 $\Gamma$ 和 $C$ 正交.
 
   反过来, 假设经过 $z_1,z_2$ 的所有圆周 $\Gamma$ 都与 $C$ 正交.
-  不妨设 $z_1=-1,z_2=1$, 则 $\Gamma$ 的圆心为 $\gamma=\lambda\ii,\lambda\in\BR$, 半径为 $\sqrt{1+\lambda^2}$.
+  不妨设 $z_1=-1,z_2=1$, 则 $\Gamma$ 的圆心为 $\gamma=\lambda\ii,\lambda\in\BR$, 半径为 $r=\sqrt{1+\lambda^2}$.
   由 $\angle z_0 P\gamma=\dfrac\cpi2$ 可知
   \[
      |z_0-\lambda\ii|^2
@@ -332,28 +336,31 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
      |z_0|^2+\lambda(z_0-\ov{z_0})\ii
     =R^2+1.
   \]
-  因此 $z_0=\ov{z_0}$, $z_0$ 为实数, 且 $z_0=\sqrt{R^2+1}$.
-  于是 $|z_1-z_0|\cdot|z_2-z_0|=|z_0^2-1|=R^2$ 且 $z_1,z_2$ 在 $z_0$ 同侧.
+  因此 $z_0=\ov{z_0}$, $z_0=\pm\sqrt{R^2+1}$ 为实数.
+  于是
+  \[
+    |z_1-z_0|\cdot|z_2-z_0|=|z_0^2-1|=R^2
+  \]
+  且 $z_1,z_2$ 在 $z_0$ 同侧, 即 $z_1,z_2$ 关于 $C$ 对称.
 \end{proof}
 
 把上述命题的圆周换成圆周或直线也成立.
 
 \begin{theorem}
-  分式线性映射具有保对称点性, 即若 $z_1,z_2$ 关于圆周 $C$ 对称, 则 $f(z_1),f(z_2)$ 关于 $C$ 在 $w=f(z)$ 下的像对称.
+  分式线性映射具有保对称点性, 即若 $z_1,z_2$ 关于圆周或直线 $C$ 对称, 则 $f(z_1),f(z_2)$ 关于 $C$ 在 $w=f(z)$ 下的像对称.
 \end{theorem}
 
 \begin{proof}
   过 $w_1=f(z_1),w_2=f(z_2)$ 作圆周或直线 $\Gamma'$.
   由保圆性可知 $\Gamma'$ 的原像也是圆周或直线 $\Gamma$.
   由\thmref{引理}{lem:symmetry-circle} 可知 $C$ 和 $\Gamma$ 正交, 再由保角性可知 $C$ 的像 $C'$ 和 $\Gamma'$ 正交.
-  再由\thmref{引理}{lem:symmetry-circle} 可知 $f(z_1),f(z_2)$ 关于 $C'$ 对称.
+  最后由\thmref{引理}{lem:symmetry-circle} 可知 $f(z_1),f(z_2)$ 关于 $C'$ 对称.
 \end{proof}
 
 
 \subsubsection{约束条件}
 
-尽管分式线性映射的表达式中有四个参数, 但把它们都换成非零常数倍之后对应的是同一个分式线性映射.
-所以应当只需要三个约束条件就可以确定分式线性映射.
+尽管分式线性映射的表达式中有四个参数, 但把它们都换成非零常数倍之后对应的是同一个分式线性映射, 所以应当只需要三个约束条件就可以确定分式线性映射.
 下述定理说明的确如此.
 
 \begin{theorem}
@@ -367,6 +374,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \end{theorem}
 
 \begin{proof}
+  显然该等式确定了一个满足题设的分式线性映射, 下证唯一性.
   设 $w=\dfrac{az+b}{cz+d}$ 是满足题设的一个分式线性映射, 则
   \[
      w-w_k
@@ -378,11 +386,15 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
     w_3-w_k
    =(ad-bc)\frac{z_3-z_k}{(cz_3+d)(cz_k+d)}.
   \]
-  由此不难得到定理中的等式.
-  显然该等式确定了一个满足题设的分式线性映射, 证毕.
+  从而
+  \[
+    \frac{w-w_k}{w_3-w_k}
+   =\frac{z-z_k}{z_3-z_k}\cdot\frac{(cz_3+d)(cz_k+d)}{(cz+d)(cz_k+d)}.
+  \]
+  分别代入 $k=1,2$ 并将两式相除即可得到定理中的等式.
 \end{proof}
 
-实际上, 等式右侧的分式线性映射将 $z_1,z_2,z_3$ 映成 $0,\infty,1$, 再解出 $w$ 把 $0,\infty,1$ 映成 $w_1,w_2,w_3$.
+实际上, 等式右侧的分式线性映射分别将 $z_1,z_2,z_3$ 映成 $0,\infty,1$, 再代入后左侧的 $w$ 把 $0,\infty,1$ 映成 $w_1,w_2,w_3$.
 
 \begin{corollary}
   若分式线性映射 $w=f(z)$ 将 $z_1,z_2$ 映成 $w_1,w_2$, 则存在常数 $k$ 使得
@@ -394,7 +406,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 
 在 $z$ 平面和 $w$ 平面分别给定圆周 $C,C'$.
 那么我们可以利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造出分式线性映射 $w=f(z)$ 将 $C$ 映成 $C'$, 只需要分别在 $C,C'$ 上任取三个不同的点即可.
-由于 $w=f(z)$ 是扩充复平面上的连续一一对应, 因此 $C$ 内部的连续曲线在该映射下的像还是一条连续曲线, 且与 $C'$ 没有交点.
+由于 $w=f(z)$ 是扩充复平面内的连续一一对应, 因此 $C$ 内部的连续曲线在该映射下的像还是一条连续曲线, 且与 $C'$ 没有交点.
 这意味着该映射把 $C$ 的内部映射为 $C'$ 的内部或外部.
 
 \begin{figure}[!htb]
@@ -443,7 +455,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \caption{分式线性映射将圆周内部映成圆周内部或外部}
 \end{figure}
 
-若希望该映射把 $C$ 的内部是映射为 $C'$ 的内部, 我们只需要在 $C$ 上逆时针依次选择 $z_1,z_2,z_3$, 在 $C'$ 上也逆时针依次选择 $w_1,w_2,w_3$ 即可.
+若希望该映射把 $C$ 的内部映为 $C'$ 的内部, 我们只需要在 $C$ 上逆时针依次选择 $z_1,z_2,z_3$, 在 $C'$ 上也逆时针依次选择 $w_1,w_2,w_3$ 即可.
 这是因为对于 $C$ 内部任意一点 $z_0$, 连接 $z_0,z_1$ 的曲线 $\Gamma$ 到逆时针圆弧 $\warc{z_1z_2}$ 一定是顺时针旋转角度 $\theta<\cpi$.
 由于分式线性映射具有保角性且保持夹角的方向, 因此 $\Gamma$ 的像到逆时针圆弧 $\warc{w_1w_2}$ 也是顺时针旋转角度 $\theta$, 从而 $f(z_0)$ 只能在 $C'$ 内部.
 若希望分式线性映射将 $C$ 的内部映射为 $C'$ 的外部, 只需顺时针依次选择 $w_1,w_2,w_3$.
@@ -453,7 +465,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \subsection{分式线性映射举例}
 
 \begin{example}
-  分式线性映射 $w=f(z)=\dfrac{z+\ii}{z-\ii}$ 将中心分别在 $\pm\dfrac{\sqrt3}3$ 半径为 $\dfrac{2\sqrt3}3$ 的圆弧围成的区域 $D$ 映成什么区域 $D'$?
+  分式线性映射 $w=f(z)=\dfrac{z+\ii}{z-\ii}$ 将中心分别在 $\pm\dfrac{\sqrt3}3$, 半径为 $\dfrac{2\sqrt3}3$ 的圆弧围成的区域 $D$ 映成什么区域 $D'$?
 \end{example}
 
 \begin{figure}[!htb]
@@ -763,14 +775,14 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \end{solution}
 
 
-\subsection{分式线性变换的其它表现(\optional)}
+\subsection{分式线性映射的其它表现\optional}
 
-分式线性变换的复合和逆变换的形式和矩阵的乘法和逆的形式很相像.
+分式线性映射的复合和逆变换的形式和矩阵的乘法和逆的形式很相像.
 事实上这并非偶然.
-每个分式线性变换 $w=f(z)=\dfrac{az+b}{cz+d}$ 可以与一个矩阵 $\bfA=\begin{pmatrix}
+每个分式线性映射 $w=f(z)=\dfrac{az+b}{cz+d}$ 可以与一个矩阵 $\bfA=\begin{pmatrix}
   a&b\\c&d
 \end{pmatrix}$ 相对应.
-显然 $\bfA$ 和它的常数倍对应同一个分式线性变换.
+显然 $\bfA$ 和它的常数倍对应同一个分式线性映射.
 对于 $z\in\BC^*$, 定义复直线
 \[
   V_z=\begin{cases}
@@ -807,7 +819,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{pmatrix}\in V_{f(\infty)},
 \end{align*}
 因此 $\bfA$ 将 $V_z$ 映成 $V_{f(z)}$.
-若分式线性变换 $f,g$ 分别对应矩阵 $\bfA,\bfB$, 则 $f\circ g$ 就是 $\bfA\bfB$ 所对应的分式线性变换, $f^{-1}$ 就是 $\bfA^{-1}$ 所对应的分式线性变换.
+若分式线性映射 $f,g$ 分别对应矩阵 $\bfA,\bfB$, 则 $f\circ g$ 就是 $\bfA\bfB$ 所对应的分式线性映射, $f^{-1}$ 就是 $\bfA^{-1}$ 所对应的分式线性映射.
 
 \begin{example}
   设 $f(z)=\dfrac{\ii z+1}{\ii z-1}$.
@@ -862,7 +874,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \label{fig:xyz-complex-sphere}
 \end{figure}
 
-由于分式线性变换是扩充复平面到扩充复平面的变换, 因此它也诱导了复球面上的变换.
+由于分式线性映射是扩充复平面到扩充复平面的变换, 因此它也诱导了复球面上的变换.
 如果 $\bfA$ 满足 $\bfA{\ov\bfA}^\rmT=\bfE$, 我们称之为\noun{酉矩阵}.
 此时它具有形式
 \[
@@ -872,8 +884,8 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{pmatrix},
 \]
 其中 $|z_1|^2+|z_2|^2=1$.
-它所对应的分式线性变换 $f$ 诱导了复球面上的旋转变换.
-为了使该分式线性变换与其对应的四元数 $q=z_1+z_2\jj$ 表示的旋转一致, 我们重新选择复球面所在空间的 $x,y,z$ 轴如\ref{fig:xyz-complex-sphere} 所示.
+它所对应的分式线性映射 $f$ 诱导了复球面上的旋转变换.
+为了使该分式线性映射与其对应的四元数 $q=z_1+z_2\jj$ 表示的旋转一致, 我们重新选择复球面所在空间的 $x,y,z$ 轴如\ref{fig:xyz-complex-sphere} 所示.
 那么球极投影 \ref{eq:polar-project} 变为
 \begin{align*}
   \varphi:\BC&\lra S\\
@@ -890,7 +902,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 
 \begin{exampleenum}
   \item 设 $q=\cos\dfrac\theta2+\ii\sin\dfrac\theta 2$.
-  那么 $z_1=\ee^{\frac{\ii\theta}2}, z_2=0$, 它对应的分式线性变换为
+  那么 $z_1=\ee^{\frac{\ii\theta}2}, z_2=0$, 它对应的分式线性映射为
   \[
     w=f(z)=\ee^{\ii\theta}z.
   \]
@@ -908,7 +920,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{align*}
   即 $F$ 是绕 $x$ 轴逆时针旋转 $\theta$ 的变换.
   \item 设 $q=\cos\dfrac\theta2+\jj\sin\dfrac\theta 2$.
-  那么 $z_1=\cos\dfrac\theta2, z_2=\sin\dfrac\theta2$, 它对应的分式线性变换为
+  那么 $z_1=\cos\dfrac\theta2, z_2=\sin\dfrac\theta2$, 它对应的分式线性映射为
   \[
     w=f(z)=\frac{\cos \frac\theta2 \cdot z-\sin\frac\theta2}{\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
   \]
@@ -926,7 +938,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{align*}
   即 $F$ 是绕 $y$ 轴逆时针旋转 $\theta$ 的变换.
   \item 设 $q=\cos\dfrac\theta2+\kk\sin\dfrac\theta 2$.
-  那么 $z_1=\cos\dfrac\theta2, z_2=\ii\sin\dfrac\theta2$, 它对应的分式线性变换为
+  那么 $z_1=\cos\dfrac\theta2, z_2=\ii\sin\dfrac\theta2$, 它对应的分式线性映射为
   \[
     w=f(z)=\frac{\cos \frac\theta2 \cdot z-\ii \sin\frac\theta2}{-\ii\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
   \]
@@ -944,7 +956,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{align*}
   即 $F$ 是绕 $z$ 轴逆时针旋转 $\theta$ 的变换.
   
-  由于任一旋转均可分解为上述三类旋转的复合, 任一模为 $1$ 的四元数也可以分解为上述三类四元数的乘积, 因此所有酉矩阵对应的分式线性变换就对应复球面的所有旋转.
+  由于任一旋转均可分解为上述三类旋转的复合, 任一模为 $1$ 的四元数也可以分解为上述三类四元数的乘积, 因此所有酉矩阵对应的分式线性映射就对应复球面的所有旋转.
 \end{exampleenum}
 
 设 $|z_1|^2+|z_2|^2=1$.
@@ -960,7 +972,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
     \topcolorrule
       $w=f(z)=\dfrac{z_1z-z_2}{\ov{z_2}z+\ov{z_1}}$&
       扩充复平面 $\BC^*\ni z$&
-      分式线性变换\\
+      分式线性映射\\
     \midcolorrule
       $w=f(z)=\dfrac{z_1z-z_2}{\ov{z_2}z+\ov{z_1}}$&
       复球面 $S\ni (a,b,c)$&
@@ -978,7 +990,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
       旋转\\
     \bottomcolorrule
   \end{tabular}
-  \caption{分式线性变换的不同表现}
+  \caption{分式线性映射的不同表现}
   \label{tab:fractal-transform-display}
 \end{table}
 
@@ -1762,7 +1774,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 本章所需掌握的知识点如下:
 \begin{enuma}
   \item 理解保形映射的定义.
-  \item 掌握分式线性变换的保圆性和保对称性.
+  \item 掌握分式线性映射的保圆性和保对称性.
   \item 掌握幂函数、指数函数和儒可夫斯基函数所对应的映射特点.
   \item 会利用上述函数构造简单的单连通区域间的保形映射.
 \end{enuma}
@@ -1771,7 +1783,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
 \begin{enuma}
   \item 保角映射和保形映射的差异: 保形映射是一一的保角映射, 这是为了保证区域间的映射可逆.
   \item 与 $\infty$ 相关的保形映射: 作变量替换 $t=\dfrac1z$ 或 $s=\dfrac1w$ 来将其转化为普通复数情形的保形映射.
-  \item 利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造分式线性变换时, 需要根据区域在圆周内部还是外部、直线的哪一侧来确定三点的顺序.
+  \item 利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造分式线性映射时, 需要根据区域在圆周内部还是外部、直线的哪一侧来确定三点的顺序.
   \item 带割痕的区域的处理, 需要使用幂函数将割痕与边界合并.
   \item 儒可夫斯基函数在处理带半圆边界的半平面中的应用.
 \end{enuma}
@@ -1795,14 +1807,14 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
       \item 若 $w=f(z)$ 是区域 $D$ 内的解析函数, 且导数处处非零, 则它是 $D$ 上的保角映射.
       \item 若 $w=f(z)$ 在 $z_0$ 处解析且 $f'(z_0)\neq0$, 则它是 $z_0$ 处的保形映射.
     \end{exchoice}
-    \item 分式线性变换总是\fillbrace{}.
+    \item 分式线性映射总是\fillbrace{}.
     \begin{exchoice}(1)
       \item 将圆和直线都映射为圆
       \item 将圆和直线都映射为直线
       \item 将圆映射为圆或直线
       \item 将关于直线对称的点映射为关于直线对称的点
     \end{exchoice}
-    \item 若\fillbrace{}, 且分式线性变换 $w=f(z)$ 将 $z_1,z_2,z_3$ 映成 $w_1,w_2,w_3$, 则它将单位圆映成上半平面.
+    \item 若\fillbrace{}, 且分式线性映射 $w=f(z)$ 将 $z_1,z_2,z_3$ 映成 $w_1,w_2,w_3$, 则它将单位圆映成上半平面.
     \begin{exchoice}(1)
       \item $z_1=1,z_2=\ii,z_3=-\ii$, $w_1=-1,w_2=0,w_3=\infty$
       \item $z_1=1,z_2=-\ii,z_3=-1$, $w_1=-1,w_2=0,w_3=1$
@@ -1811,7 +1823,7 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
     \end{exchoice}
     \item \fillbrace{}可以将角形区域映成角形区域.
     \begin{exchoice}(2)
-      \item 分式线性变换
+      \item 分式线性映射
       \item 幂函数
       \item 指数函数
       \item 儒可夫斯基函数
@@ -1826,8 +1838,8 @@ $w=f(z)$ 总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
   \end{homework}
   \item 填空题.
   \begin{homework}
-    \item 若分式线性变换 $w=f(z)$ 将上半平面映成单位圆域, 且 $f(\ii)=2$, 则 $f(-\ii)=$\fillblank[7mm]{}.
-    \item 若分式线性变换 $w=f(z)$ 将单位圆域映成右半平面, 且 $f(0)=1$, 则 $f(\infty)=$\fillblank[7mm]{}.
+    \item 若分式线性映射 $w=f(z)$ 将上半平面映成单位圆域, 且 $f(\ii)=2$, 则 $f(-\ii)=$\fillblank[7mm]{}.
+    \item 若分式线性映射 $w=f(z)$ 将单位圆域映成右半平面, 且 $f(0)=1$, 则 $f(\infty)=$\fillblank[7mm]{}.
     \item 若 $w=f(z)$ 将角形区域 $0<\arg z<\dfrac\cpi6$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
     \item 若 $w=f(z)$ 将水平带状区域 $0<\Im z<\cpi$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
   \end{homework}

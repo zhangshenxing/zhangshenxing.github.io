@@ -1,39 +1,42 @@
-\usepackage{caption}
 \usepackage{subcaption}
 \usepackage{bm}
 \usepackage{extarrows}
 \usepackage{mathrsfs}
 \usepackage{fixdif,derivative} % 微分
 \usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{pgfplots}
 % \usepackage{stmaryrd}
+% URL断行
 \def\UrlBreaks{\do\/\do-\do\a\do\c\do1\do7}
+% 三线表列间距
 \tabcolsep=4mm
-\usetikzlibrary{
-	patterns,
-	patterns.meta
-}
-
-\newcommand{\topcolorrule}{\arrayrulecolor{second}\toprule}
-\newcommand{\midcolorrule}{\arrayrulecolor{fourth}\midrule}
-\newcommand{\bottomcolorrule}{\arrayrulecolor{second}\bottomrule}
+% 公式间距
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+% ! 影响排版, 勿动
+\renewcommand{\smallskip}{\vspace{3pt plus 2pt minus 2pt}}
 % 选读
-\newcommand{\optional}{选读}
+\newcommand{\optional}{(选读)}
 \newcommand{\optionalex}{(选做)}
+% 文本色
 \renewcommand{\emph}[1]{{\bf #1}}
 \newcommand{\emphf}[1]{{\color{main}{\bf #1}}}
-% 文本色
 \newcommand{\noun}[1]{{\color{main}{\bf #1}\index{{#1}}}}
 \newcommand{\nouns}[2]{{\color{main}{\bf #1}\index{{#2}}}}
 \newcommand{\nount}[1]{{\color{white}{#1}\index{{#1}}}}
 \newcommand{\alert}[1]{{\color{second}{\kaishu #1}}}
-
 \newcommand{\alertn}[1]{{\color{second}{#1}}}
 \newcommand{\emphn}[1]{{\color{main}{#1}}}
 \newcommand{\alertm}[1]{{\textcolor{second}{\boldsymbol{#1}}}}
 \newcommand{\emphm}[1]{{\color{main}{\boldsymbol{#1}}}}
-% 枚举数字引用标志
-\newcommand{\enumnum}[1]{{\mdseries\upshape{\textcolor{main}{(#1)}}}}
 
+\usetikzlibrary{
+	patterns,
+	patterns.meta,
+	3d
+}
 \tikzset{
 	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
   % arrow
@@ -57,17 +60,17 @@
   % fill and pattern
 	cstfill/.style    ={fill=black!10},
 	cstpattern/.style ={pattern=crosshatch},
-	cstfille/.style   ={cstpattern, pattern color=black},
-	cstfill1/.style   ={fill=main!20},
-	cstfille1/.style  ={cstpattern, pattern color=main},
-	cstfill2/.style   ={fill=second!20},
-	cstfille2/.style  ={cstpattern, pattern color=second},
-	cstfill3/.style   ={fill=third!20},
-	cstfille3/.style  ={cstpattern, pattern color=third},
-	cstfill4/.style   ={fill=fourth!20},
-	cstfille4/.style  ={cstpattern, pattern color=fourth},
-	cstfill5/.style   ={fill=fifth!20},
-	cstfille5/.style  ={cstpattern, pattern color=fifth},
+	cstfille/.style   ={cstpattern, pattern color=black!80},
+	cstfill1/.style   ={fill=main!10},
+	cstfille1/.style  ={cstpattern, pattern color=main!80},
+	cstfill2/.style   ={fill=second!10},
+	cstfille2/.style  ={cstpattern, pattern color=second!80},
+	cstfill3/.style   ={fill=third!10},
+	cstfille3/.style  ={cstpattern, pattern color=third!80},
+	cstfill4/.style   ={fill=fourth!10},
+	cstfille4/.style  ={cstpattern, pattern color=fourth!80},
+	cstfill5/.style   ={fill=fifth!10},
+	cstfille5/.style  ={cstpattern, pattern color=fifth!80},
   % node
 	cstnode/.style    ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnode1/.style   ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
@@ -77,16 +80,31 @@
 	cstnode5/.style   ={fill=fifth!15,draw=fifth!80,text=black,rounded corners=0.2cm,line width=1pt},
 	emph/.style       ={text=main,font=\bfseries}
 }
+\pgfplotsset{
+	colormap={mycolormap}{
+		color(0)=(fifth),
+		color(1)=(second!75),
+		color(2)=(main!50),
+		color(3)=(white),
+	},
+	colormap={fadedecay}{
+		color(0)=(white),
+		color(1)=(fifth!50),
+		color(2)=(main),
+		color(3)=(fifth!50),
+		color(4)=(white),
+		color(5)=(fifth!50),
+		color(6)=(main),
+		color(7)=(fifth!50),
+		color(8)=(white),
+	}
+}
 
 % 填空题/选择题/判断题
 \NewDocumentCommand\fillblank{O{3em}}{\uline{\makebox[#1]{}}}
 \newcommand\fillbrace{{\text{\upshape(\nolinebreak\hspace{2em minus 0.5em}\nolinebreak)}}}
 \newcommand{\trueex}{$\checkmark$}
 \newcommand{\falseex}{$\times$}
-
-\newcommand{\ansno}[1]{\par\noindent\emph{\thechapter.#1}}
-
-\letdif{\delt}{Delta}
 % arrows
 \newcommand\ra{\rightarrow}
 \newcommand\lra{\longrightarrow}
@@ -594,7 +612,7 @@
 \newcommand\diag{{\mathrm{diag}}}
 \newcommand\disc{{\mathrm{disc}}}
 \newcommand\dist{{\mathrm{dist}}}
-\renewcommand\div{{\mathrm{div}}}
+\let\div\relax\DeclareMathOperator\div{div}
 \newcommand\Div{{\mathrm{Div}}}
 \newcommand\dR{{\mathrm{dR}}}
 \newcommand\Drin{{\mathrm{Drin}}}
@@ -625,6 +643,7 @@
 \newcommand\geom{{\mathrm{geom}}}
 \newcommand\Gr{{\mathrm{Gr}}}
 \newcommand\gr{{\mathrm{gr}}}
+\DeclareMathOperator\grad{grad}
 \newcommand\GSO{{\mathrm{GSO}}}
 \newcommand\GSp{{\mathrm{GSp}}}
 \newcommand\GSpin{{\mathrm{GSpin}}}
@@ -717,6 +736,7 @@
 \newcommand\Rig{{\mathrm{Rig}}}
 \newcommand\rk{{\mathrm{rk}}}
 \newcommand\Ros{{\mathrm{Ros}}}
+\DeclareMathOperator\rot{rot}
 \newcommand\rs{{\mathrm{rs}}}
 % s
 \newcommand\sd{{\mathrm{sd}}}
@@ -782,7 +802,6 @@
 % z
 \newcommand\Zar{{\mathrm{Zar}}}
 
-
 % 定理引用
 \newcommand{\thmCR}{\hyperref[thm:Cauchy-Riemann]{柯西-黎曼定理}}
 \newcommand{\thmGrowUp}{\hyperref[thm:grow-up]{长大不等式}}
@@ -808,6 +827,7 @@
 \newcommand{\thmLShift}{\hyperref[thm:laplace-shift-property]{位移性质}}
 \newcommand{\thmLDif}{\hyperref[thm:laplace-differential-property]{微分性质}}
 % 适应国标
+\letdif{\delt}{Delta} % 微分运算符
 \usepackage[nolimits]{cmupint} % 提供 \int, \oint
 \newcommand{\ii}{\mathrm{i}}
 \newcommand{\jj}{\mathrm{j}}
@@ -825,14 +845,11 @@
 \newcommand{\intff}{\displaystyle\int_{-\infty}^{+\infty}}
 \newcommand{\sumf}[1]{\displaystyle\sum_{n=#1}^{\infty}}
 \newcommand{\sumff}{\displaystyle\sum_{n=-\infty}^{+\infty}}
-
+% 割痕
 \newcommand{\cutwd}{.07}
-% x, y, length, angle, color
-\newcommand{\cutline}[5]{%
+\newcommand{\cutline}[5]{% x, y, length, angle, color
 	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1+#3},{#2+\cutwd})--({#1-\cutwd},{#2+\cutwd})--({#1-\cutwd},{#2-\cutwd})--({#1+#3},{#2-\cutwd}) ({#1+#3},{#2+\cutwd})%
 }
 \newcommand{\cutlinec}[5]{%
 	\filldraw[cstcurve,#5,fill=white,rotate around={#4:({#1},{#2})}] ({#1-\cutwd},{#2-\cutwd}) rectangle ({#1+#3+\cutwd},{#2+\cutwd})%
 }
-\renewcommand\dfrac[2]{{\displaystyle\frac{#1}{#2}\rule[-.65\baselineskip]{0pt}{1.6\baselineskip}}}
-\newcommand\ddfrac[2]{{\displaystyle\frac{#1}{#2}}}

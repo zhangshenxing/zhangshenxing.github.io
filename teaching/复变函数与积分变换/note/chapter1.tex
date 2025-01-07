@@ -64,55 +64,50 @@
 \end{solution}
 
 这个方程是不是真的只有 $x=2$ 这一个实数解呢?
-由方程左侧多项式导数为 $3x^2+6>0$ 可知其单调递增, 因此确实只有一个实数解.
+由方程左侧多项式导数为 $3x^2+6>0$ 可知其单调递增, 因此确实只有这一个实数解.
 
 \begin{figure}[!htb]
   \centering
   \begin{minipage}{.48\textwidth}
     \centering
-    \begin{tikzpicture}[
-      declare function={
-        f(\x)=\x*\x*\x+6*\x-20;
-      }
-    ]
+    \begin{tikzpicture}
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \begin{scope}[xscale=.3,yscale=.04]
-        \draw[cstcurve,main,domain=-2.4:3.6,smooth] plot (\x,{f(\x)});
+        \draw[cstcurve,main,domain=-2.4:3.6,smooth] plot (\x,{\x*\x*\x+6*\x-20});
         \coordinate (A) at (2,0);
         \coordinate (B) at (0,-20);
       \end{scope}
-      \begin{scope}[fifth]
-        \fill[cstdot] (A) circle;
-        \fill[cstdot] (B) circle;
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
       \end{scope}
-      \draw
+      \draw[inner sep=2pt]
         (A) node[below right] {$2$}
-        (B) node[left] {$-20$};
+        (B) node[above left] {$-20$};
     \end{tikzpicture}
     \caption{$y=x^3+6x-20$}
   \end{minipage}
   \begin{minipage}{.48\textwidth}
     \centering
-    \begin{tikzpicture}[
-      declare function={
-        f(\x)=(\x-2)*(\x-1)*(\x+3);
-      }
-    ]
+    \begin{tikzpicture}
+      \def\a{-3}
+      \def\b{1}
+      \def\c{2}
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \begin{scope}[xscale=.45,yscale=.1]
-        \draw[cstcurve,main,domain=-3.7:3.2,smooth] plot (\x,{f(\x)});
-        \coordinate (A) at (-3,0);
-        \coordinate (B) at (1,0);
-        \coordinate (C) at (2,0);
+        \draw[cstcurve,main,domain=-3.7:3.2,smooth] plot (\x,{(\x-\a)*(\x-\b)*(\x-\c)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
+        \coordinate (C) at (\c,0);
       \end{scope}
-      \begin{scope}[fifth]
-        \fill[cstdot] (A) circle;
-        \fill[cstdot] (B) circle;
-        \fill[cstdot] (C) circle;
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
+        \fill (C) circle;
       \end{scope}
-      \draw
+      \draw[inner sep=2pt]
         (A) node[below right] {$-3$}
         (B) node[below left] {$1$}
         (C) node[below right] {$2$};
@@ -194,41 +189,42 @@
   \end{minipage}
   \begin{minipage}{.32\textwidth}
     \centering
-    \begin{tikzpicture}[
-      declare function={
-        f(\x)=(\x+2)*(\x-1)*(\x-1);
-      }
-    ]
+    \begin{tikzpicture}
+      \def\a{-2}
+      \def\b{1}
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \begin{scope}[xscale=.35,yscale=.1]
-        \draw[cstcurve,main,domain=-3.1:2.9,smooth] plot ({\x},{f(\x)});
-        \coordinate (A) at (-2,0);
-        \coordinate (B) at (1,0);
+        \draw[cstcurve,main,domain=-3.1:2.9,smooth] plot ({\x},{(\x-\a)*(\x-\b)*(\x-\b)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
       \end{scope}
-      \fill[cstdot,fifth] (A) circle;
-      \fill[cstdot,fifth] (B) circle;
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
+      \end{scope}
     \end{tikzpicture}
     \caption{$\Delta=0$}
   \end{minipage}
   \begin{minipage}{.32\textwidth}
     \centering
-    \begin{tikzpicture}[
-      declare function={
-        f(\x)=(\x+3)*(\x-.5)*(\x-2.5);
-      }
-    ]
+    \begin{tikzpicture}
+      \def\a{-3}
+      \def\b{.5}
+      \def\c{2.5}
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \begin{scope}[xscale=.3,yscale=.05]
-        \draw[cstcurve,main,domain=-4.2:4,smooth] plot ({\x},{f(\x)});
-        \coordinate (A) at (2.5,0);
-        \coordinate (B) at (.5,0);
-        \coordinate (C) at (-3,0);
+        \draw[cstcurve,main,domain=-4.2:4,smooth] plot ({\x},{(\x-\a)*(\x-\b)*(\x-\c)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
+        \coordinate (C) at (\c,0);
       \end{scope}
-      \fill[cstdot,fifth] (A) circle;
-      \fill[cstdot,fifth] (B) circle;
-      \fill[cstdot,fifth] (C) circle;
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
+        \fill (C) circle;
+      \end{scope}
     \end{tikzpicture}
     \caption{$\Delta<0$}
   \end{minipage}
@@ -276,9 +272,8 @@
       \draw[cstaxis] (0,-.5)--(0,2.5);
       \node[below left] {$0$};
       \coordinate (A) at (\a,\b);
-      \draw[cstdash] (\a,0)--(A)--(0,\b);
-      \fill[cstdot,main] (A) circle;
-      \draw (A) node[above] {$z=x+y\ii$};
+      \draw[cstdash,third] (\a,0)--(A)--(0,\b);
+      \fill[cstdot,main] (A) circle node[above] {$z=x+y\ii$};
       \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4.2,1) node[midway,below,main,font=\bfseries] {一一对应};
     \end{scope}
     \begin{scope}[xshift=5cm]
@@ -287,12 +282,11 @@
       \coordinate (A) at (\a,\b);
       \coordinate (B) at (\a,0);
       \coordinate (C) at (0,\b);
-      \draw[cstdash] (B)--(A)--(C);
-      \fill[cstdot,main] (A) circle;
+      \draw[cstdash,third] (B)--(A)--(C);
+      \fill[cstdot,main] (A) circle node[above] {$Z(x,y)$};
       \draw[decorate,decoration={brace,amplitude=5},cstfill5] (O)--(B);
       \draw[decorate,decoration={brace,amplitude=5},cstfill2] (C)--(O);
       \draw
-        (A) node[above] {$Z(x,y)$}
         ($(O)!.5!(B)$) node[above=2mm] {$x$}
         ($(C)!.5!(O)$) node[right=2mm] {$y$};
       \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4.2,1) node[midway,below,main,font=\bfseries] {一一对应};
@@ -304,8 +298,7 @@
       \draw[cstaxis] (0,-.5)--(0,2.5);
       \coordinate (O) node[below left] {$O$};
       \coordinate (A) at (\a,\b);
-      \draw[cstcurve,cstra,main] (O)--(A);
-      \draw (A) node[above] {$\overrightarrow{OZ}=(x,y)$};
+      \draw[cstcurve,cstra,main] (O)--(A) node[above] {$\overrightarrow{OZ}=(x,y)$};
     \end{scope}
   \end{tikzpicture}
   \caption{复数、平面上的点、平面向量一一对应}
@@ -320,17 +313,17 @@
       \node[below left] {$0$};
       \coordinate (R) at (3,0);
       \coordinate (I) at (0,2.5);
-      \coordinate (A) at (2,1.5);
       \coordinate (B) at (2,0);
       \coordinate (C) at (0,1.5);
-      \draw[cstdash] (B)--(A)--(C);
+      \coordinate (A) at ($(B)+(C)$);
+      \draw[cstdash,third] (B)--(A)--(C);
       \fill[cstdot] (A) circle;
       \draw[decorate,decoration={brace,amplitude=5},cstfill5] (B)--(O);
       \draw[decorate,decoration={brace,amplitude=5},cstfill2] (C)--(O);
       \draw[cstaxis] (-.5,0)--(R);
       \draw[cstaxis] (0,-.5)--(I);
       \draw[->,thick,fifth] (-2,.3)-|(.6,0);
-      \draw[->,thick,third] (-2,1.7)--(0,1.7);
+      \draw[->,thick,second] (-2,1.7)--(0,1.7);
       \draw
         (A) node[above] {$z=x+y\ii$}
         ($(B)!.5!(O)$) node[below=1.5mm] {$\Re z$}
@@ -353,7 +346,7 @@
       \draw[cstcurve] (I) circle (1.3 and .7);
       \draw 
         (3.7,0) node[align=center] {全\\体\\复\\数}
-        (2.2,0) node[align=center] {虚数 \\$\ii,\cpi\ii,\frac{-1+\sqrt 3\ii}2$};
+        (2.2,0) node[align=center] {{\color{third}虚数} \\$\ii,\cpi\ii,\frac{-1+\sqrt 3\ii}2$};
     \end{tikzpicture}
   \end{minipage}
   \caption{实数、纯虚数与复数、复平面的关系}
@@ -402,35 +395,44 @@
 \end{align*}
 由向量加法的性质可知复数加法满足交换律和结合律:
 \[
-  z_1+z_2=z_2+z_1,\quad
-  (z_1+z_2)+z_3=z_1+(z_2+z_3).
+  z_1+z_2=z_2+z_1,\quad (z_1+z_2)+z_3=z_1+(z_2+z_3).
 \]
 
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
-    \draw[cstaxis] (-3,0)--(4,0);
-    \draw[cstaxis] (0,-1)--(0,3);
-    \coordinate (O);
-    \coordinate (Z1) at (1,2);
-    \coordinate (Z2) at (-2.5,.5);
-    \coordinate (P) at ($(Z1)+(Z2)$);
-    \coordinate (M) at ($(Z1)-(Z2)$);
-    \coordinate (N) at ($(O)-(Z2)$);
-    \begin{scope}[cstcurve,cstra]
-      \draw (O)--(Z1);
-      \draw (O)--(Z2);
-      \draw[main] (O)--(P);
-      \draw[main] (O)--(M);
+    \begin{scope}
+      \draw[cstaxis] (-3,0)--(2,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+      \coordinate (O);
+      \coordinate (Z1) at (1.2,1.6);
+      \coordinate (Z2) at (-2.5,.5);
+      \coordinate (P) at ($(Z1)+(Z2)$);
+      \begin{scope}[cstcurve,cstra,fourth]
+        \draw (O)--(Z1) node[above] {$z_1$};
+        \draw (O)--(Z2) node[left] {$z_2$};
+        \draw[main] (O)--(P) node[above left] {$z_1+z_2$};
+      \end{scope}
+      \draw[cstdash,third] (Z2)--(P)--(Z1);
     \end{scope}
-    \draw[cstdash,cstra] (O)--(N);
-    \draw[cstdash] (Z2)--(P)--(M)--(N);
-    \draw 
-      (Z1) node[above] {$z_1$}
-      (Z2) node[left] {$z_2$}
-      (P) node[above left] {$z_1+z_2$}
-      (M) node[right] {$z_1-z_2$}
-      (N) node[below] {$-z_2$};
+    \begin{scope}[xshift=6cm]
+      \draw[cstaxis] (-2.5,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+      \coordinate (O);
+      \coordinate (Z1) at (1,2);
+      \coordinate (Z2) at (-2,.5);
+      \coordinate (M) at ($(Z1)-(Z2)$);
+      \coordinate (N) at ($(O)-(Z2)$);
+      \begin{scope}[cstcurve,cstra,fourth]
+        \draw (O)--(Z1) node[above] {$z_1$};
+        \draw (O)--(Z2) node[left] {$z_2$};
+        \draw[second] (O)--(M) node[right] {$z_1-z_2$};
+      \end{scope}
+      \begin{scope}[cstdash,third]
+        \draw[cstra] (O)--(N) node[below] {$-z_2$};
+        \draw (N)--(M)--(Z1);
+      \end{scope}
+    \end{scope}
   \end{tikzpicture}
   \caption{复数的加法和减法}
 \end{figure}
@@ -535,16 +537,17 @@
     \def\d{1.5}
     \draw[cstaxis] (-1.5,0)--(5,0);
     \draw[cstaxis] (0,-2.5)--(0,2.5);
-    \coordinate (O);
-    \node[below left] {$0$};
+    \coordinate (O) node[below left,shift={(-.1,0)}] {$0$};
     \coordinate (Z1) at (\a,\b);
     \coordinate (Z2) at (\c,\d);
     \coordinate (Z3) at ($(Z1)+(Z2)$);
     \coordinate (W1) at (\a,-\b);
     \coordinate (W2) at (\c,-\d);
     \coordinate (W3) at ($(W1)+(W2)$);
-    \draw[cstdash,third] (Z1)--(Z3)--(Z2);
-    \draw[cstdash,third] (W1)--(W3)--(W2);
+    \begin{scope}[cstdash,third]
+      \draw (Z1)--(Z3)--(Z2);
+      \draw (W1)--(W3)--(W2);
+    \end{scope}
     \begin{scope}[cstcurve,cstra]
       \begin{scope}[second]
         \draw (O)--(Z1);
@@ -578,7 +581,7 @@
   \label{enum:conjugate-zbarbar}
   \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
   \ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-  \ov{\Bigl(\ddfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
+  \ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
   \label{enum:conjugate-commutes}
   \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
   \item $z+\ov z=2\Re z,\ z-\ov z=2\ii\Im z$.
@@ -642,7 +645,7 @@
 \]
 
 \begin{example}
-  设 $z_1=10-5\ii,z_2=4+3\ii$, 求 $\ov{\Bigl(\ddfrac{z_1}{z_2}\Bigr)}$.
+  设 $z_1=10-5\ii,z_2=4+3\ii$, 求 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}$.
 \end{example}
 
 \begin{solution}
@@ -654,7 +657,7 @@
     =\frac{(40-15)+(-20-30)\ii}{25}
     =1-2\ii,
   \]
-  故 $\ov{\Bigl(\ddfrac{z_1}{z_2}\Bigr)}=1+2\ii$.
+  故 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=1+2\ii$.
 \end{solution}
 
 \begin{exercise}
@@ -677,25 +680,24 @@
 \[
   r=\sqrt{x^2+y^2},\quad 
   \theta=\arctan\frac yx+2k\cpi\ \text{或}\ 
-         \arctan\frac yx+\cpi+2k\cpi, k\in\BZ.
+         \arctan\frac yx+\cpi+2k\cpi,\ k\in\BZ.
 \]
 
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
     \coordinate (O) node[below left] {$0$};
-    \coordinate (Z) at (3,2);
     \coordinate (X) at (3,0);
     \coordinate (Y) at (0,2);
+    \coordinate (Z) at ($(X)+(Y)$);
     \draw[decorate,decoration={brace,amplitude=5},cstfill4] (X)--(O) node[midway,below=2mm,fourth] {$x$};
     \draw[decorate,decoration={brace,amplitude=5},cstfill4] (O)--(Y) node[midway,left=2mm,fourth] {$y$};
     \draw[main,thick,cstra] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle=X--O--Z};
     \draw[cstaxis] (-.5,0)--(4,0);
     \draw[cstaxis] (0,-.5)--(0,3);
     \draw[cstcurve,main,cstra] (O)--(Z) node[midway,above,main] {$r$};
-    \draw[cstdash] (X)--(Z)--(Y);
-    \fill[cstdot,fourth] (Z) circle;
-    \draw (Z) node[above] {$z=x+y\ii$};
+    \draw[cstdash,third] (X)--(Z)--(Y);
+    \fill[cstdot,third] (Z) circle node[above] {$z=x+y\ii$};
   \end{tikzpicture}
   \caption{复数的模和辐角}
 \end{figure}
@@ -732,32 +734,56 @@
 \end{equation}
 
 \begin{figure}[!htb]
-  \centering
-  \begin{tikzpicture}
-    \draw[cstaxis] (-2.5,0)->(2.5,0); 
-    \draw[cstaxis] (0,-2)->(0,2);
-    \draw[cstaxis,main,cstwla,cstcurve] (-1.5,0) arc(180:-180:1.5);
-    \filldraw[cstdote,draw=main] (-1.5,-.07) circle;
-    \coordinate (A) at (1.7,0);
-    \coordinate (B) at (.9,.9);
-    \coordinate (C) at (1.4,-.9);
-    \coordinate (D) at (-1.1,.8);
-    \coordinate (E) at (-.9,0);
-    \coordinate (G) at (0,.5);
-    \coordinate (H) at (0,-.6);
-    \begin{scope}[cstdot]
-      \fill[main] (A) circle node[above] {$0$};
-      \fill[main] (B) circle node[above right] {$\arctan\ddfrac yx$};
-      \fill[main] (C) circle node[right] {$\arctan\ddfrac yx$};
-      \fill[second] (D) circle node[above left] {$\arctan\ddfrac yx+\cpi$};
-      \fill[third] (E) circle node[below] {$\cpi$};
-      \coordinate (F) at (-1.6,-.7);
-      \fill[fifth] (F) circle node[left] {$\arctan\ddfrac yx-\cpi$};
-      \fill[third] (G) circle node[left] {$\ddfrac\cpi2$};
-      \fill[third] (H) circle node[right] {$-\ddfrac\cpi2$};
-    \end{scope}
-  \end{tikzpicture}
-  \caption{辐角主值与复数位置的关系}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \vspace{-1.18\baselineskip}
+    \begin{tikzpicture}
+      \begin{axis}[
+        axis lines=none,
+        axis line style={-Stealth},
+        view={45}{30},
+        enlargelimits=0.2
+      ]
+      \draw[cstaxis] (axis cs:-1,0,0)--(axis cs:1.3,0,0) node[right] {$x$};
+      \draw[cstaxis] (axis cs:0,-1,0)--(axis cs:0,1.4,0) node[right] {$y$};
+      \draw[cstaxis] (axis cs:0,0,-100)--(axis cs:0,0,864) node[above] {$\Arg z$};
+      \addplot3[
+        surf,
+        domain=0:1,
+        domain y=0:720,
+        samples=60,
+        samples y=60,
+        variable=\v,
+        variable y=\u,
+        shader=interp,
+        colormap name=fadedecay
+      ] ({v*cos(u)},{v*sin(u)},{u});
+      \end{axis}
+    \end{tikzpicture}
+    \vspace{-1.5\baselineskip}
+    \caption{复数 $z$ 的辐角 $\Arg z$}
+    \label{fig:image-Arg-z}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstaxis] (-2.5,0)--(2.5,0); 
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis,main,cstwla,cstcurve] (-1.5,0) arc(180:-180:1.5);
+      \filldraw[cstdote,draw=main] (-1.5,-.07) circle;
+      \begin{scope}[cstdot]
+        \fill[main] (1.7,0) circle node[above] {$0$};
+        \fill[main] (.9,.9) circle node[above right] {$\arctan\dfrac yx$};
+        \fill[main] (1.4,-.9) circle node[right] {$\arctan\dfrac yx$};
+        \fill[second] (-1.1,.8) circle node[above left] {$\arctan\dfrac yx+\cpi$};
+        \fill[third] (-.9,0) circle node[below] {$\cpi$};
+        \fill[third] (0,.5) circle node[left] {$\dfrac\cpi2$};
+        \fill[third] (0,-.6) circle node[right] {$-\dfrac\cpi2$};
+        \fill[fifth] (-1.6,-.7) circle node[left] {$\arctan\dfrac yx-\cpi$};
+      \end{scope}
+    \end{tikzpicture}
+    \caption{辐角主值与复数位置的关系}
+  \end{minipage}
 \end{figure}
 
 \begin{exercise}
@@ -781,37 +807,47 @@
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}
-    \draw[cstaxis] (-4.4,0)--(4.3,0);
-    \draw[cstaxis] (0,-3)--(0,3);
-    \coordinate (O) at (0,0);
-    \coordinate (Z) at (-2.5,1.5);
-    \coordinate (R) at (-2.5,0);
-    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(R) node[midway,below=2mm] {$\abs{\Re z}$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (R)--(Z) node[midway,left=2mm] {$\abs{\Im z}$};
-    \draw[cstcurve,fourth] (O)--(Z) node[midway,above] {$|z|$};
-    \draw[cstcurve,second] (Z)--(R)--(O);
-    \draw[thick] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
-
-    \coordinate [label=below right:{$z_1$}] (Z1) at (2.8,-.4);
-    \coordinate (Z2) at (1.2,2);
-    \coordinate (A) at (2.7,2.4);
-    \coordinate [label=above right:{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
-    \coordinate [label=below:{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
-    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z1)--(O) node[midway,below,sloped] {$|z_1|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (P)--(Z1) node[midway,below,sloped] {$|z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(P) node[midway,above,sloped] {$|z_1+z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z1)--(M) node[midway,below,sloped] {$|z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (A)--(P) node[midway,above,sloped] {$|z_3|$};
-    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(A) node[midway,above=2mm,sloped] {$|z_1+z_2+z_3|$};
-    \begin{scope}[cstcurve,cstra,fourth]
-      \draw (O)--(Z1);
-      \draw (Z1)--(P);
-      \draw (P)--(A);
-      \draw (Z1)--(M);
-      \draw[second] (O)--(A);
-      \draw[second] (O)--(P);
-      \draw[second] (O)--(M);
+    \begin{scope}
+      \draw[cstaxis] (-3,0)--(1,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+      \coordinate (O);
+      \coordinate (Z) at (-2.5,2.1);
+      \coordinate (R) at (-2.5,0);
+      \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(R) node[midway,below=2mm] {$\abs{\Re z}$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill2] (R)--(Z) node[midway,left=2mm] {$\abs{\Im z}$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z)--(O) node[midway,above right] {$|z|$};
+      \draw[thick,third] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
+      \draw[cstcurve,second] (Z)--(R)--(O);
+      \draw[cstcurve,fourth] (Z)--(O);
+    \end{scope}
+    \begin{scope}[xshift=5cm]
+      \coordinate (O);
+      \coordinate (Z1) at (1.4,2);
+      \coordinate (Z2) at (-1.7,.4);
+      \coordinate (Z3) at (-1.7,-.5);
+      \coordinate (Z12) at ($(Z1)+(Z2)$);
+      \coordinate (Z123) at ($(Z12)+(Z3)$);
+      \coordinate (M) at ($(Z1)-(Z2)$);
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (O)--(Z1) node[midway,above,sloped] {$|z_1|$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z12)--(Z1) node[midway,above,sloped] {$|z_2|$};
+      \draw[decorate,decoration={brace,amplitude=5,aspect=.6},cstfill2] (O)--(Z12) node[pos=.6,below,sloped] {$|z_1+z_2|$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z1)--(M) node[midway,above,sloped] {$|z_2|$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill2] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z123)--(Z12) node[midway,above,sloped] {$|z_3|$};
+      \draw[decorate,decoration={brace,amplitude=5,aspect=.6},cstfill2] (O)--(Z123) node[pos=.6,below,sloped] {$|z_1+z_2+z_3|$};
+      \begin{scope}[cstcurve,cstra,fourth]
+        \draw (O)--(Z1);
+        \draw (Z1)--(Z12);
+        \draw (Z12)--(Z123);
+        \draw (Z1)--(M);
+        \begin{scope}[second]
+          \draw (O)--(Z123);
+          \draw (O)--(Z12);
+          \draw (O)--(M);
+        \end{scope}
+      \end{scope}
+      \draw[cstaxis] (-1.5,0)--(3.5,0);
+      \draw[cstaxis] (0,-.5)--(0,3);
     \end{scope}
   \end{tikzpicture}
   \caption{复数模的不等式关系}
@@ -911,6 +947,7 @@
   设 $0<\theta<\dfrac\cpi2$.
   将 $z=\sin\theta-\ii\cos\theta$ 化成三角形式和指数形式.
 \end{example}
+
 \begin{solution}[解法一]
   显然 $|z|=\sqrt{\sin^2\theta+\cos^2\theta}=1$. 由于 $z$ 在第四象限, 由\eqref{eq:arg} 可知
   \[
@@ -977,8 +1014,7 @@
     \def\r{3}
     \def\a{18}
     \def\b{130}
-    \coordinate (O);
-    \node[below left] {$0$};
+    \coordinate (O) node[below left] {$0$};
     \coordinate (Z1) at ({3*cos(\a)},{3*sin(\a)});
     \coordinate (Z2) at ({3*cos(\b)},{3*sin(\b)});
     \coordinate (P) at ($(Z1)+(Z2)$);
@@ -1176,19 +1212,18 @@
       \draw[cstaxis] (0,-.5)--(0,2);
       \draw[cstcurve,main] (Z1)--(Z2)--(Z3)--cycle;
       \draw[cstdash,fourth] (Z1)--(Z3p)--(Z2);
-      \draw
-        (Z1) node[third,below] {$z_1$}
-        (Z2) node[third,above] {$z_2$}
-        (Z3) node[third,left] {$z_3$}
-        (Z3p) node[third,right] {$z'_3$};
+      \draw[third]
+        (Z1) node[below] {$z_1$}
+        (Z2) node[above] {$z_2$}
+        (Z3) node[left] {$z_3$}
+        (Z3p) node[right] {$z'_3$};
     \end{tikzpicture}
     \caption{正三角形的顶点位置关系}
   \end{minipage}
   \begin{minipage}{.48\textwidth}
     \centering
     \begin{tikzpicture}
-      \coordinate  (A);
-      \node[below left] {$A$};
+      \coordinate  (A) node[below left] {$A$};
       \coordinate (B) at (2,0);
       \coordinate (C) at ({3*cos(60)},{3*sin(60)});
       \coordinate (D) at ($(C)!0.6!(B)$);
@@ -1200,9 +1235,9 @@
       \draw[cstcurve,main] (B)--(A)--(C)--cycle;
       \draw[cstcurve,fourth] (A)--(D);
       \draw
-        (B) node[third,below] {$B=1$}
-        (C) node[third,right] {$C=z$}
-        (D) node[third,right] {$D=w$};
+        (B) node[below] {$B=1$}
+        (C) node[right] {$C=z$}
+        (D) node[right] {$D=w$};
     \end{tikzpicture}
     \caption{三角形角平分线与顶点位置关系}
   \end{minipage}
@@ -1402,7 +1437,7 @@
   因此
   \[
      \sqrt[4]{1-\ii}
-    =\sqrt[8]2\exp\frac{\Bigl(-\ddfrac\cpi4+2k\cpi\Bigr)\ii}4,\quad k=0,1,2,3.
+    =\sqrt[8]2\exp\frac{\Bigl(-\dfrac\cpi4+2k\cpi\Bigr)\ii}4,\quad k=0,1,2,3.
   \]
   于是该方根全部值为
   \[
@@ -1544,7 +1579,7 @@
 \end{example}
 
 
-\subsection{实系数三次方程根的情况(\optional)}
+\subsection{实系数三次方程根的情况\optional}
 \label{ssec:real-cubic-equation}
 
 现在我们来看三次方程 $z^3+pz+q=0$ 的根, 其中 $p\neq 0$.
@@ -1616,7 +1651,7 @@
 \end{enuma}
 
 
-\subsection{单位根的应用(\optional)}
+\subsection{单位根的应用\optional}
 
 单位根在代数、数论、组合等领域有着丰富的应用.
 本小节中我们将试举几例.
@@ -1911,30 +1946,34 @@
   \begin{minipage}{.24\textwidth}
     \centering
     \begin{tikzpicture}
+      \def\u{.6}
       \draw[cstaxis] (-.9,0)--(2.1,0);
       \draw[cstaxis] (0,-2.1)--(0,.9);
-      \coordinate (A) at (.6,-.6);
-      \draw[cstcurve,main] (A) circle(1.2);
-      \draw[cstra,fourth,thick] (A)--++(.72,.96);
-      \fill[cstdot,fourth] (A) circle;
-      \draw (A) node[below] {$1-\ii$};
+      \coordinate (A) at (\u,-\u);
+      \draw[cstcurve,main] (A) circle({2*\u});
+      \draw[cstra,fourth,thick] (A)--++({1.2*\u},{1.6*\u});
+      \fill[cstdot,fourth] (A) circle node[below] {$1-\ii$};
     \end{tikzpicture}
     \caption{圆周}
   \end{minipage}
   \begin{minipage}{.24\textwidth}
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[
+      declare function={
+        f(\y)=2*\y-1.5;
+      }
+    ]
+      \def\u{.8}
       \draw[cstaxis] (-.9,0)--(2.1,0);
       \draw[cstaxis] (0,-.6)--(0,2.4);
-      \coordinate (A) at (.8,0);
-      \coordinate (B) at (0,1.6);
+      \coordinate (A) at (\u,0);
+      \coordinate (B) at (0,{2*\u});
       \draw[cstdash,fourth] (A)--(B);
-      \draw[cstcurve,main] (-.88,.16)--(1.68,1.44);
-      \fill[cstdot,fourth] (A) circle;
-      \fill[cstdot,fourth] (B) circle;
-      \draw
-        (A) node[below] {$2$}
-        (B) node[right] {$4\ii$};
+      \draw[cstcurve,main] ({f(.2)*\u},{.2*\u})--({f(1.8)*\u},{1.8*\u});
+      \begin{scope}[cstdot,fourth]
+        \fill (A) circle node[below] {$2$};
+        \fill (B) circle node[right] {$4\ii$};
+      \end{scope}
     \end{tikzpicture}
     \caption{垂直平分线}
   \end{minipage}
@@ -1943,17 +1982,28 @@
     \begin{tikzpicture}
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \def\a{1.2}
+      \def\b{.96}
+      \def\c{{sqrt(\a*\a-\b*\b)}}
       \begin{scope}[rotate=30]
-        \coordinate (A) at (-.72,0);
-        \coordinate (B) at (.72,0);
-        \draw[cstcurve,main] (0,0) circle(1.2 and .96);
-        \coordinate (Z) at (.72,.768);
+        \coordinate (A) at (-\c,0);
+        \coordinate (B) at (\c,0);
+        \draw[
+          cstcurve,
+          main,
+          decoration = {
+            markings,
+            mark = at position .15 with {
+              \coordinate (Z);
+            }
+          },
+          postaction={decorate}
+        ] (0,0) circle({\a} and {\b});
         \draw[cstdash,fourth] (A)--(Z)--(B);
-        \fill[cstdot,fourth] (A) circle;
-        \fill[cstdot,fourth] (B) circle;
-        \draw
-          (A) node[right] {$z_1$}
-          (B) node[left] {$z_2$};
+        \begin{scope}[cstdot,fourth]
+          \fill (A) circle node[right] {$z_1$};
+          \fill (B) circle node[left] {$z_2$};
+        \end{scope}
       \end{scope}
     \end{tikzpicture}
     \caption{椭圆}
@@ -1963,16 +2013,29 @@
     \begin{tikzpicture}
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \draw[cstaxis] (0,-1.5)--(0,1.5);
-      \coordinate (A) at (-1,0);
-      \coordinate (B) at (1,0);
-      \draw[cstcurve,main,domain=-58:58,smooth] plot ({sec(\x)*.5},{.866*tan(\x)});
-      \coordinate (Z) at (.9,{0.2*sqrt(42)});
+      \def\a{.5}
+      \def\c{1}
+      \def\b{sqrt(\c*\c-\a*\a)}
+      \coordinate (A) at (-\c,0);
+      \coordinate (B) at (\c,0);
+      \draw[
+        cstcurve,
+        main,
+        domain=-58:58,
+        decoration = {
+          markings,
+          mark = at position .9 with {
+            \coordinate (Z);
+          }
+        },
+        postaction={decorate},
+        samples=500
+      ] plot ({sec(\x)*\a},{\b*tan(\x)});
       \draw[cstdash,fourth] (A)--(Z)--(B);
-      \fill[cstdot,fourth] (A) circle;
-      \fill[cstdot,fourth] (B) circle;
-      \draw
-        (A) node[below] {$z_1$}
-        (B) node[below] {$z_2$};
+      \begin{scope}[cstdot,fourth]
+        \fill (A) circle node[below] {$z_1$};
+        \fill (B) circle node[below] {$z_2$};
+      \end{scope}
     \end{tikzpicture}
     \caption{双曲线一支}
   \end{minipage}
@@ -2016,23 +2079,19 @@
       \coordinate (A) at (-1,-.5);
       \coordinate (B) at (1,.5);
       \draw[cstcurve,main] (A)--(B);
-      \fill[cstdot,fourth] (A) circle;
-      \fill[cstdot,fourth] (B) circle;
-      \draw
-        (A) node[below] {$z(0)$}
-        (B) node[above] {$z(1)$};
+      \begin{scope}[cstdot,fourth]
+        \fill (A) circle node[below] {$z(0)$};
+        \fill (B) circle node[above] {$z(1)$};
+      \end{scope}
     \end{scope}
     \begin{scope}[xshift=25mm]
       \draw[cstcurve,main,domain=0:360,smooth] plot ({\x*pi/360},{sin(\x)*.5});
-      \coordinate (A) at (-1,-.5);
-      \coordinate (B) at (1,.5);
       \draw[cstaxis] (0,-1.3)--(0,1.3);
       \draw[cstaxis] (-.5,0)--(3.5,0);
-      \fill[cstdot,fourth] (0,0) circle;
-      \fill[cstdot,fourth] ({pi},0) circle;
-      \draw
-        (0,0) node[below right] {$z(0)$}
-        ({pi},0) node[above] {$z(2\cpi)$};
+      \begin{scope}[cstdot,fourth]
+        \fill circle node[below right] {$z(0)$};
+        \fill ({pi},0) circle node[above] {$z(2\cpi)$};
+      \end{scope}
     \end{scope}
     \begin{scope}[xshift=78mm]
       \begin{scope}[rotate=30]
@@ -2040,11 +2099,10 @@
         \coordinate (B) at (.72,0);
         \draw[cstcurve,main] (0,0) circle(1.2 and .96);
       \end{scope}
-      \fill[cstdot,fourth] (A) circle;
-      \fill[cstdot,fourth] (B) circle;
-      \draw
-        (A) node[right] {$z_1$}
-        (B) node[left] {$z_2$};
+      \begin{scope}[cstdot,fourth]
+        \fill (A) circle node[right] {$z_1$};
+        \fill (B) circle node[left] {$z_2$};
+      \end{scope}
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \draw[cstaxis] (0,-1.3)--(0,1.3);
     \end{scope}
@@ -2262,11 +2320,11 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \begin{minipage}{.23\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \draw[cstaxis] (0,-1.25)--(0,1.25);
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \fill[cstfille1] (-1.2,0) rectangle (1.2,.8);
       \draw[cstcurve,main] (-1.2,0)--(1.2,0);
-      \draw (0,-1.5) node[below] {$\Im z>0$};
+      \draw (0,-1.25) node[below] {$\Im z>0$};
     \end{tikzpicture}
     \caption{上半平面}
     \label{fig:upper-half-plane}
@@ -2274,33 +2332,33 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \begin{minipage}{.23\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \draw[cstaxis] (0,-1.25)--(0,1.25);
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \fill[cstfille1] (-1.2,0) rectangle (1.2,-.8);
       \draw[cstcurve,main] (-1.2,0)--(1.2,0);
-      \draw (0,-1.5) node[below] {$\Im z<0$};
+      \draw (0,-1.25) node[below] {$\Im z<0$};
     \end{tikzpicture}
     \caption{下半平面}
   \end{minipage}
   \begin{minipage}{.23\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \draw[cstaxis] (0,-1.25)--(0,1.25);
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \fill[cstfille1] (-1.2,-1) rectangle (0,1);
       \draw[cstcurve,main] (0,-1)--(0,1);
-      \draw (0,-1.5) node[below] {$\Re z>0$};
+      \draw (0,-1.25) node[below] {$\Re z>0$};
     \end{tikzpicture}
     \caption{左半平面}
   \end{minipage}
   \begin{minipage}{.23\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \draw[cstaxis] (0,-1.25)--(0,1.25);
       \draw[cstaxis] (-1.5,0)--(1.5,0);
       \fill[cstfille1] (0,1) rectangle (1.2,-1);
       \draw[cstcurve,main] (0,-1)--(0,1);
-      \draw (0,-1.5) node[below] {$\Re z<0$};
+      \draw (0,-1.25) node[below] {$\Re z<0$};
     \end{tikzpicture}
     \caption{右半平面}
   \end{minipage}
@@ -2311,24 +2369,24 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \begin{minipage}{.32\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (0,-1.75)--(0,1.75);
       \draw[cstaxis] (-2,0)--(2,0);
       \fill[cstfille1] (-.6,-1.5) rectangle (.2,1.5);
       \draw[cstcurve,main] (-.6,-1.5)--(-.6,1.5);
       \draw[cstcurve,main] (.2,-1.5)--(.2,1.5);
-      \draw (0,-2) node[below] {$a<\Re z<b$};
+      \draw (0,-1.75) node[below] {$a<\Re z<b$};
     \end{tikzpicture}
     \caption{竖直带状区域}
   \end{minipage}
   \begin{minipage}{.32\textwidth}
     \centering
     \begin{tikzpicture}
-      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (0,-1.75)--(0,1.75);
       \draw[cstaxis] (-2,0)--(2,0);
       \fill[cstfille1] (-1.5,-.4) rectangle (1.5,.4);
       \draw[cstcurve,main] (-1.5,-.4)--(1.5,-.4);
       \draw[cstcurve,main] (-1.5,.4)--(1.5,.4);
-      \draw (0,-2) node[below] {$a<\Im z<b$};
+      \draw (0,-1.75) node[below] {$a<\Im z<b$};
     \end{tikzpicture}
     \caption{水平带状区域}
   \end{minipage}
@@ -2337,18 +2395,17 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \begin{tikzpicture}
       \def\r{2.5}
       \draw[cstaxis] (-1,0)--(3,0);
-      \draw[cstaxis] (0,-1)--(0,3);
+      \draw[cstaxis] (0,-.75)--(0,2.75);
       \coordinate (A) at (0,0);
       \coordinate (B) at ({\r*cos(60)},{\r*sin(60)});
       \coordinate (C) at ({\r*cos(10)},{\r*sin(10)});
       \fill[cstfille1] (A)--(B) arc(60:10:\r)--cycle;
       \draw[cstcurve,main] (C)--(A)--(B);
-      \draw (1,-1) node[below] {$\theta_1<\Arg z<\theta_2$};
+      \draw (1,-.75) node[below] {$\theta_1<\Arg z<\theta_2$};
     \end{tikzpicture}
     \caption{角形区域\footnotemark}
   \end{minipage}
 \end{figure}
-\footnotetext{这里 $\theta_1<\Arg z<\theta_2$ 表示 $z$ 有一个辐角值 $\theta$ 满足 $\theta_1<\theta<\theta_2$.}
 
 \begin{figure}[!htb]
   \centering
@@ -2373,6 +2430,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \label{fig:anulus-domain}
   \end{minipage}
 \end{figure}
+\footnotetext{这里 $\theta_1<\Arg z<\theta_2$ 表示 $z$ 有一个辐角值 $\theta$ 满足 $\theta_1<\theta<\theta_2$.}
 
 \begin{exercise}
   \ref{fig:upper-half-plane} 至 \ref{fig:anulus-domain} 中的区域对应的闭区域是什么?
@@ -2476,7 +2534,9 @@ $G$ 是一个闭集当且仅当它的补集是开集.
 \begin{exampleenum}
   \item $\Re(z^2)\le1$. 设 $z=x+y\ii$, 则 $\Re(z^2)=x^2-y^2\le1$. 这是无界的单连通闭区域.
   \item $\arg z\neq \cpi$ 表示角形区域 $-\cpi<\arg z<\cpi$. 这是无界的单连通区域.
+  \smallskip
   \item $\abs{\dfrac1z}\le3$. 即 $|z|\ge\dfrac13$. 这是无界的多连通闭区域.
+  \smallskip
   \item $|z+1|+|z-1|<4$ 表示一个椭圆的内部. 这是有界的单连通区域.
 \end{exampleenum}
 
@@ -2572,42 +2632,41 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \centering
   \begin{tikzpicture}
     \draw[cstcurve,cstnra,third] (-2.5,1) to[bend right=30] node[left] {$w=\ov z$} (-2.5,-1);
-    \draw[cstaxis] (-2.5,0)--(2,0);
-    \draw[cstaxis] (-2,-2)--(-2,2);
-    \draw
-      (2.5,0) node[above left] {$x,u$}
-      (-2,2) node[right] {$y,v$}
-      (0,-2) node[below] {$z,w$ 平面重叠};
+    \draw[cstaxis] (-2.5,0)--(2,0) node[above] {$x,u$};
+    \draw[cstaxis] (-2,-2)--(-2,2) node[right] {$y,v$};
+    \draw (0,-2) node[below] {$z,w$ 平面重叠};
     \begin{scope}[fifth,yshift=7mm]
       \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
       \coordinate (a) at (-1.2,-.3);
       \coordinate (b) at (.6,.9);
-      \coordinate (c) at ($.8*(a)+.2*(b)$);
-      \coordinate (d) at ($.5*(a)+.5*(b)$);
-      \coordinate (e) at ($.2*(a)+.8*(b)$);
+      \coordinate (c) at ($(a)!.2!(b)$);
+      \coordinate (d) at ($(a)!.5!(b)$);
+      \coordinate (e) at ($(a)!.8!(b)$);
       \draw[cstcurve] (a)--(b);
     \end{scope}
     \begin{scope}[second,yshift=-7mm]
       \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,.4) (-.3,.9) (.5,.7) (.9,0) (1.1,-1) (-.3,-1.2) (-.7,-1)};
       \coordinate (A) at (-1.2,.3);
       \coordinate (B) at (.6,-.9);
-      \coordinate (C) at ($.8*(A)+.2*(B)$);
-      \coordinate (D) at ($.5*(A)+.5*(B)$);
-      \coordinate (E) at ($.2*(A)+.8*(B)$);
+      \coordinate (C) at ($(A)!.2!(B)$);
+      \coordinate (D) at ($(A)!.5!(B)$);
+      \coordinate (E) at ($(A)!.8!(B)$);
       \draw[cstcurve] (A)--(B);
     \end{scope}
-    \draw[cstdash,smooth,cstra] (c) to (C);
-    \draw[cstdash,smooth,cstra] (d) to (D);
-    \draw[cstdash,smooth,cstra] (e) to (E);
-    \begin{scope}[fifth]
-      \fill[cstdot] (c) circle;
-      \fill[cstdot] (d) circle;
-      \fill[cstdot] (e) circle;
+    \begin{scope}[cstdash,cstra,third]
+      \draw (c) to (C);
+      \draw (d) to (D);
+      \draw (e) to (E);
     \end{scope}
-    \begin{scope}[second]
-      \fill[cstdot] (C) circle;
-      \fill[cstdot] (D) circle;
-      \fill[cstdot] (E) circle;
+    \begin{scope}[cstdot,fifth]
+      \fill (c) circle;
+      \fill (d) circle;
+      \fill (e) circle;
+    \end{scope}
+    \begin{scope}[cstdot,second]
+      \fill (C) circle;
+      \fill (D) circle;
+      \fill (E) circle;
     \end{scope}
   \end{tikzpicture}
   \caption{翻转映射}
@@ -2624,42 +2683,45 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \begin{tikzpicture}
     \draw[cstcurve,cstnra,third] (-1,0)-- node[above=2pt] {$w=az$} (1,0);
     \begin{scope}[xshift=-4cm]
-      \draw[cstaxis] (-2,0)--(2,0);
-      \draw[cstaxis] (0,-2)--(0,2);
-      \draw
-        (2,0) node[above] {$x$}
-        (0,2) node[right] {$y$};
+      \draw[cstaxis] (-2,0)--(2,0) node[above] {$x$};
+      \draw[cstaxis] (0,-2)--(0,2) node[right] {$y$};
       \draw[cstcurve,fifth,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
       \coordinate (a) at (-1.2,-.3);
       \coordinate (b) at (.6,.9);
-      \coordinate (c) at ($.8*(a)+.2*(b)$);
-      \coordinate (d) at ($.5*(a)+.5*(b)$);
-      \coordinate (e) at ($.2*(a)+.8*(b)$);
+      \coordinate (c) at ($(a)!.2!(b)$);
+      \coordinate (d) at ($(a)!.5!(b)$);
+      \coordinate (e) at ($(a)!.8!(b)$);
       \draw[cstcurve,fifth] (a)--(b);
     \end{scope}
     \begin{scope}[xshift=4cm]
       \draw[cstaxis] (-2,0)--(2,0);
-      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (0,-1.5)--(0,1.5);
       \draw
         (2,0) node[above] {$u$}
         (0,2) node[right] {$v$};
       \draw[cstcurve,second,smooth cycle,scale=.8,rotate=90] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
       \coordinate (A) at (.24,-.96);
       \coordinate (B) at (-.72,.48);
-      \coordinate (C) at ($.8*(A)+.2*(B)$);
-      \coordinate (D) at ($.5*(A)+.5*(B)$);
-      \coordinate (E) at ($.2*(A)+.8*(B)$);
+      \coordinate (C) at ($(A)!.2!(B)$);
+      \coordinate (D) at ($(A)!.5!(B)$);
+      \coordinate (E) at ($(A)!.8!(B)$);
       \draw[cstcurve,second] (A)--(B);
     \end{scope}
-    \draw[cstdash,smooth,cstra] (c) to[bend right=25] (C);
-    \draw[cstdash,smooth,cstra] (d) to[bend right=10] (D);
-    \draw[cstdash,smooth,cstra] (e) to[bend left=20] (E);
-    \fill[cstdot,fifth] (c) circle;
-    \fill[cstdot,fifth] (d) circle;
-    \fill[cstdot,fifth] (e) circle;
-    \fill[cstdot,second] (C) circle;
-    \fill[cstdot,second] (D) circle;
-    \fill[cstdot,second] (E) circle;
+    \begin{scope}[cstdash,cstra,third]
+      \draw (c) to[bend right=25] (C);
+      \draw (d) to[bend right=10] (D);
+      \draw (e) to[bend left=20] (E);
+    \end{scope}
+    \begin{scope}[cstdot,fifth]
+      \fill (c) circle;
+      \fill (d) circle;
+      \fill (e) circle;
+    \end{scope}
+    \begin{scope}[cstdot,second]
+      \fill (C) circle;
+      \fill (D) circle;
+      \fill (E) circle;
+    \end{scope}
   \end{tikzpicture}
   \caption{旋转与相似映射复合}
 \end{figure}
@@ -2680,9 +2742,6 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \begin{scope}[xshift=-4cm]
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-1.5)--(0,2);
-      % \draw
-      %   (2,0) node[above] {$x$}
-      %   (0,2) node[left] {$y$};
       \fill[cstfille5] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)}) arc(37.5:7.5:1.5)--cycle;
       \draw[cstcurve,fifth] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)});
       \draw[cstcurve,fifth] (0,0)--({1.5*cos(7.5)},{1.5*sin(7.5)});
@@ -2693,9 +2752,6 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \begin{scope}[xshift=4cm]
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-1.5)--(0,2);
-      % \draw
-      %   (2,0) node[above] {$u$}
-      %   (0,2) node[left] {$v$};
       \fill[cstfille2] (0,0)--({1.8*cos(75)},{1.8*sin(75)}) arc(75:15:1.8)--cycle;
       \draw[cstcurve,second] (0,0)--({1.8*cos(75)},{1.8*sin(75)});
       \draw[cstcurve,second] (0,0)--({1.8*cos(15)},{1.8*sin(15)});
@@ -2703,17 +2759,21 @@ $G$ 是一个闭集当且仅当它的补集是开集.
       \coordinate (B) at (-.8,1.92);
       \coordinate (C) at (.27,.36);
     \end{scope}
-    \begin{scope}[cstdash,smooth,cstra,third]
+    \begin{scope}[cstdash,cstra,third]
       \draw (a) to[bend left=10] (A);
       \draw (b) to[bend left=20] (B);
       \draw (c) to[bend right=25] (C);
     \end{scope}
-    \fill[cstdot,fifth] (a) circle;
-    \fill[cstdot,fifth] (b) circle;
-    \fill[cstdot,fifth] (c) circle;
-    \fill[cstdot,second] (A) circle;
-    \fill[cstdot,second] (B) circle;
-    \fill[cstdot,second] (C) circle;
+    \begin{scope}[cstdot,fifth]
+      \fill (a) circle;
+      \fill (b) circle;
+      \fill (c) circle;
+    \end{scope}
+    \begin{scope}[cstdot,second]
+      \fill (A) circle;
+      \fill (B) circle;
+      \fill (C) circle;
+    \end{scope}
   \begin{scope}[yshift=-4cm]
     \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^2$} (1,0);
     \begin{scope}[xshift=-4cm]
@@ -2798,7 +2858,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
 \begin{figure}[!htb]
   \centering
   \begin{tikzpicture}[scale=.5]
-    \draw[cstcurve,cstnra,third] (-1.5,0)-- node[above] {$w=\ddfrac1z$} (1.5,0);
+    \draw[cstcurve,cstnra,third] (-1.5,0)-- node[above] {$w=\dfrac1z$} (1.5,0);
     \begin{scope}[xshift=-7cm]
       \begin{scope}[cstcurve,fifth]
         \filldraw[fill=fifth!20] (-2,0) circle (2);
@@ -2844,14 +2904,14 @@ $G$ 是一个闭集当且仅当它的补集是开集.
       \draw[cstaxis] (0,-3.5)--(0,3.5);
     \end{scope}
   \end{tikzpicture}
-  \caption{分式线性变换 $w=\ddfrac1z$\footnotemark}
+  \caption{分式线性映射 $w=\dfrac1z$\footnotemark}
 \end{figure}
 \footnotetext{为了提高各个区域的区分度, 此处未使用网格状阴影来表示无界区域.}
 
-形如 $\dfrac{az+b}{cz+d}$ 的映射叫作\noun{分式线性变换}, 它总把直线和圆映成直线或圆.
+形如 $\dfrac{az+b}{cz+d}$ 的映射叫作\noun{分式线性映射}, 它总把直线和圆映成直线或圆.
 
 \begin{exercise}
-  若分式线性变换 $w=\dfrac{az+b}{cz+d}$ 将圆周 $C$ 映成直线, 则 $C$ 一定经过哪个复数?
+  若分式线性映射 $w=\dfrac{az+b}{cz+d}$ 将圆周 $C$ 映成直线, 则 $C$ 一定经过哪个复数?
 \end{exercise}
 
 此外, 也有分别用 $\Re w$ 和 $\Im w$ 图像来表现复变函数映射的, 还有用 $|w|$ 并给不同辐角的 $w$ 涂上不同颜色来表现复变函数映射的方法.
@@ -2956,26 +3016,6 @@ $G$ 是一个闭集当且仅当它的补集是开集.
 我们将介绍复球面的概念, 它是复数的一种几何表示方式且自然地包含无穷远点 $\infty$.
 这种思想是在黎曼研究多值复变函数时引入的.
 
-在三维空间中以复平面原点 $O$ 为球心作一半径为 $1$ 的球面
-\[
-  S=\set{(x,y,z)\in\BR^3\mid x^2+y^2+z^2=1}.
-\]
-过 $O$ 做垂直于复平面的直线, 并与球面相交于它的北极 $N=(0,0,1)$.
-对于复平面上的任意一点 $z$, 连接 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z=\varphi(z)$.
-反之, 球面上除了 $N$ 外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
-也就是说, \noun{球极投影}
-\begin{equation}
-  \label{eq:polar-project}
-  \begin{aligned}
-    \varphi:\BC&\lra S\\
-    z=x+y\ii&\lto \biggl(\frac{2x}{|z|^2+1},\frac{2y}{|z|^2+1},\frac{|z|^2-1}{|z|^2+1}\biggr)
-  \end{aligned}
-\end{equation}
-将 $S-\{N\}$ 和 $\BC$ 建立了一一对应.\footnote{
-  集合 $A-B$ 表示\emph{差集}, 即属于 $A$ 但不属于 $B$ 的元素全体形成集合.
-  也可记作 $A\setminus B$.
-}
-
 \begin{figure}[!htb]
   \centering
   \begin{minipage}[c][40mm][b]{.54\textwidth}
@@ -3020,6 +3060,26 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   \end{minipage}
 \end{figure}
 
+在三维空间中以复平面原点 $O$ 为球心作一半径为 $1$ 的球面
+\[
+  S=\set{(x,y,z)\in\BR^3\mid x^2+y^2+z^2=1}.
+\]
+过 $O$ 做垂直于复平面的直线, 并与球面相交于它的北极 $N=(0,0,1)$.
+对于复平面上的任意一点 $z$, 连接 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z=\varphi(z)$.
+反之, 球面上除了 $N$ 外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
+也就是说, \noun{球极投影}
+\begin{equation}
+  \label{eq:polar-project}
+  \begin{aligned}
+    \varphi:\BC&\lra S\\
+    z=x+y\ii&\lto \biggl(\frac{2x}{|z|^2+1},\frac{2y}{|z|^2+1},\frac{|z|^2-1}{|z|^2+1}\biggr)
+  \end{aligned}
+\end{equation}
+将 $S-\{N\}$ 和 $\BC$ 建立了一一对应.\footnote{
+  集合 $A-B$ 表示\emph{差集}, 即属于 $A$ 但不属于 $B$ 的元素全体形成的集合.
+  也可记作 $A\setminus B$.
+}
+
 当 $|z|$ 越来越大时, 其对应球面上点也越来越接近 $N$.
 若我们在复平面上添加一个额外的``点''——\noun{无穷远点}, 记作 \noun{$\infty$}, 则\noun{扩充复数集合 $\BC^*=\BC\cup\set\infty$} 就正好和球面上的点一一对应.
 称这样的球面为\noun{复球面}, 称包含无穷远点的复平面为\noun{扩充复平面}\footnote{
@@ -3036,7 +3096,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
 朴素地看, 复球面上任意一点可以定义 $\delta$ 邻域为与其距离小于 $\delta$ 的所有点.
 那么在复球面上, 普通复数和 $\infty$ 的邻域具有同等地位.
 特别地, 复球面上 $\infty$ 的 $\delta$ 邻域通过球极投影对应到扩充复平面上 $\infty$ 的邻域
-$U\Bigl(\infty, \sqrt{\ddfrac4{\delta^2}-1}\Bigr)$.\footnote{
+$U\Bigl(\infty, \sqrt{\dfrac4{\delta^2}-1}\Bigr)$.\footnote{
   对于有限复数 $z$, 复球面上 $z$ 的 $\delta$ 邻域对应到复平面上一包含 $z$ 的圆域, 但圆心不是 $z$.
 }
 
@@ -3176,7 +3236,7 @@ $U\Bigl(\infty, \sqrt{\ddfrac4{\delta^2}-1}\Bigr)$.\footnote{
 这种特性使得可导的复变函数具有整洁优美的性质, 我们将在接下来的章节逐步揭开它的神秘面纱.
 
 
-\subsection{复数域的性质(\optional)}
+\subsection{复数域的性质\optional}
 \label{ssec:complex-field}
 
 \subsubsection{复数域的特点}
@@ -3343,9 +3403,12 @@ $\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
     a_0+a_1\ii+a_2\jj+a_3\kk&\lto \begin{pmatrix}
       a_0+a_1\ii&-a_2-a_3\ii\\
       a_2-a_3\ii&a_0-a_1\ii
-    \end{pmatrix}.
+    \end{pmatrix},
   \end{aligned}
 \end{equation}
+也就是将 $A=z+w\jj$ 映为 $\begin{pmatrix}
+  z&-w\\\ov w&\ov z
+\end{pmatrix}$, 其中 $z,w\in\BC$.
 
 当 $a_0=0$ 时, $A=a_1\ii+a_2\jj+a_3\kk$ 对应一个三维向量 $(a_1,a_2,a_3)$.
 因此我们可以用四元数来表示三维向量, 并把四元数分为\noun{标量部分}与\noun{向量部分}之和 $A=a_0+\bfa$.
@@ -3466,26 +3529,59 @@ $\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
 
 \psection{本章小结}
 
-本章所需掌握的重点如下:
-\begin{enuma}
-  \item 能熟练计算复数的三角形式与指数形式.
-  \item 能熟练利用三角形式与指数形式计算复数乘法、除法、乘幂和方根.
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 熟练掌握复数的四则运算.
+  \item 熟练掌握复数的三角形式与指数形式.
+  \begin{conclusion}
+    \item 三角形式和复数形式的核心是计算复数的模和辐角.
+    模 $r=\sqrt{x^2+y^2}$ 相对容易计算, 辐角一般是 $\arctan \dfrac yx$ 或 $\arctan \dfrac yx\pm\cpi$, 具体根据象限来判断.
+    注意看清楚是求辐角还是主辐角.
+    \item 得到三角形式与指数形式后, 复数的乘除、乘幂都很容易计算得到.
+    \item 对于方根, 需要注意非零复数 $z$ 的 $n$ 次方根 $\sqrt[n]{z}$ 总有 $n$ 个值.
+    \item 知道辐角与复数运算有关的等式.
+  \end{conclusion}
   \item 会利用复数乘法的几何意义解决简单的平面几何问题.
-  \item 能熟练地将方程或参数方程和平面图形相互转化.
-  \item 能熟练地判断一个集合是否是区域, 是否有界或单连通.
+  \begin{conclusion}
+    \item 夹角可转化为相邻两条线段对应的复数相除的辐角, 注意辐角可正可负.
+    \item 长度可转化为复数模的关系.
+    \item 逆时针或顺时针旋转 $
+    \theta$ 对应乘 $\ee^{\ii\theta}$ 或 $\ee^{-\ii\theta}$.
+  \end{conclusion}
+  \item 能熟练地将曲线的方程、参数方程和平面图形相互转化.
+  \begin{conclusion}
+    \item 如果有较好的几何直观, 可以利用几何直观直接写出对应 $z$ 的方程.
+    \item 如果是一般的 $x,y$ 的方程形式, 将 $x,y$ 分别用 $z,\ov z$ 表示并化简; 反之亦然.
+    \item 如果是参数方程 $x=x(t),y=y(t)$, 对应的就是 $z=x(t)+\ii y(t)$, 注意 $t$ 的取值范围.
+  \end{conclusion}
+  \item 了解连续曲线、简单曲线和闭路的概念.
+  \item 能熟练判断一个集合是否是区域, 是否有界, 是否是单连通.
+  \begin{conclusion}
+    \item 将对应集合的草图画出来, 通过集合是否包含了它的边界来判断是区域还是闭区域.
+    \item 对于常见的半平面、带状、角状、圆域、圆环域等, 应当能迅速判断它的特性.
+    \item 如果集合可以被一条闭路围住, 那它就是有界的.
+    \item 单连通是指区域内任意一条闭路的内部都包含在该区域中.
+    一块区域挖去内部的一些点、线条或区域往往是多连通的,  但需要注意挖去的线条或区域连接到边界时, 未必是多连通的.
+  \end{conclusion}
   \item 熟知共轭复数的有关性质.
-  \item 了解数列和函数的极限, 了解函数的连续性. 
-  \item 知道 $\infty$ 的含义.
-\end{enuma}
+  \begin{conclusion}
+    \item 知道共轭和四则运算交换.
+    \item 会 $z,\ov z$ 和 $x,y$ 的相互转化.
+    \item 会利用共轭复数判断实数和纯虚数.
+  \end{conclusion}
+  \item 了解数列和函数的极限, 了解函数的连续性. 这些内容大多和单变量实函数情形类似, 但需要注意函数极限中 $z\ra z_0$ 可以是以任意方式趋于 $z_0$.
+  \item 知道 $\infty$ 和复球面的含义.
+\end{conclusion}
 
 本章中不易理解和易错的知识点包括:
 \begin{enuma}
   \item 误将 $0$ 视为纯虚数. 具体的 $0$ 不容易弄错, 但若是判断包含未知数的复数是不是纯虚数, 容易忘记实部和虚部不能都是零.
+  \item $0$ 没有辐角, 关于 $\arg z$ 或 $\Arg z$ 的式子中 $z$ 总是非零的.
   \item 辐角 $\Arg z$ 和辐角主值 $\arg z$ 的计算. 辐角是一个多值函数, 而辐角主值是我们人为选出来的一个单值分支, 为了方便选取 $(-\cpi,\cpi]$ 作为它的范围. 计算时, 需要根据复数所在的象限来确定主辐角是 $\arctan\dfrac yx$, 还是需要 $\pm\cpi$. 
   容易算错第二和第四象限内复数的辐角.
-  \item 辐角有关等式: 多值函数的等式含义应当理解为等式两边所能取到的值形成的集合是相同的, 若其中包含了多值函数的复合, 则表示所有可能的值形成的集合.
+  \item 辐角有关等式. 多值函数的等式含义应当理解为等式两边所能取到的值形成的集合是相同的. 若其中包含了多值函数的复合, 则每一层都要取遍所有可能的值.
   容易判断错误的是: $\Arg z^n=n\Arg z$ 一般不成立; $\Arg \sqrt[n]z=\dfrac1n\Arg z$ 总成立.
-  \item 单连通: 单连通是为了刻画区域在连续变形下的一种不变的特性. 通常情形下, 一个开集挖去一些更小的开集、线段或点往往会变得不再单连通.
+  \item 单连通是为了刻画区域在连续变形下的一种不变的特性. 通常情形下, 一个开集挖去一些更小的开集、线段或点往往会变得不再单连通.
   容易判断错误的是: 复平面挖去负实轴和零是单连通的.
 \end{enuma}
 
@@ -3569,7 +3665,7 @@ $\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
     \item 极限 $\displaystyle\lim_{z\ra 1+\ii}(1+z^2+2z^4)=$\fillblank{}.
     \item 极限 $\displaystyle\lim_{z\ra\infty}\dfrac{2z^2-1-\ii}{z^2+\ii z+1}=$\fillblank{}.
   \end{homework}
-  \item 计算题.
+  \item 解答题.
   \begin{homework}
     \item 求下列复数 $z$ 的实部与虚部, 共轭复数, 模和辐角主值.
     \begin{subhomework}(2)
@@ -3596,35 +3692,6 @@ $\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
       \item $(-4-4\ii)^{\frac15}$;
       \item $(1-\ii)^{\frac13}$.
     \end{subhomework}
-    \item $z_1=-z,z_2=\ov z,z_3=-\ov{z}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
-    \item 已知点 $z_1,z_2,z_3$ 不共线. 点 $\dfrac12(z_1+z_2)$ 和 $\dfrac13(z_1+z_2+z_3)$ 分别表示什么点?
-    \item 利用共轭复数将 $(x_1^2+y_1^2)(x_2^2+y_2^2)$ 表达为两个多项式的平方和.
-    \item 设正方形的两个顶点分别为复数 $a$, $b$, 求它的其它两个顶点的所有可能.
-    \item 用复参数方程表示连接 $-1+\ii$ 与 $1-4\ii$ 的直线段.
-    \item 用 $z,\ov z$ 的方程表示经过 $-1+\ii$ 与 $1-4\ii$ 的直线.
-    \item 下列数列 $\set{z_n}$ 是否收敛? 若收敛求出它们的极限.
-    \begin{subhomework}(2)
-      \item $z_n=\dfrac{1+n\ii}{1-n\ii}$;
-      \item $z_n=\Bigl(1+\dfrac \ii2\Bigr)^n$;
-      \item $z_n=(-1)^n+\dfrac{\ii}{n+1}$;
-      \item $z_n=\dfrac{(3+2\ii)^n}{(3+4\ii)^n}$;
-      \item $z_n=\dfrac{n^2+\ii n}{n^2-\ii n}$;
-      \item $z_n=\Bigl(1+\dfrac{(-1)^n}n\Bigr)\ee^{-\frac{n\cpi \ii}2}$.
-    \end{subhomework}
-    \item \optionalex 利用单位根计算下列表达式.
-      \begin{subhomework}
-        \item $I=\prod\limits_{k=1}^{n-1}\sin\dfrac{k\cpi}n=\sin\dfrac{\cpi}n\sin\dfrac{2\cpi}n \cdots \sin\dfrac{(n-1)\cpi}n$.
-        \item $I=\sum\limits_{k=1}^n\tan^2\dfrac{k\cpi}m=\tan^2\dfrac{\cpi}m+\tan^2\dfrac{2\cpi}m+\cdots+\tan^2\dfrac{n\cpi}m$, 其中 $m=2n+1$ 是奇数.
-      \end{subhomework} 
-    \item \optionalex 设集合 $A=\set{1,2,\cdots,999}$, 令 $N_k$ 为元素之和是 $5m+k$ 型的 $A$ 的子集个数. 利用单位根计算 $N_0,N_1,N_2,N_3,N_4$.
-    \item \optionalex 利用单位根将下列多项式因式分解成有理系数多项式的乘积.
-      \begin{subhomework}(2)
-        \item $x^{10}+x^5+1$;
-        \item $x^8-1$.
-      \end{subhomework}
-  \end{homework}
-  \item 证明题.
-  \begin{homework}
     \item 设 $|a|<1$. 证明 $|z|=1$ 当且仅当 $|z-a|=|1-\ov az|$.
     \item 证明: 若复数 $a+b\ii$ 是实系数方程
       \[
@@ -3636,24 +3703,50 @@ $\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
       \item $z^n+\dfrac1{z^n}=2\cos{nt}$;
       \item $z^n-\dfrac1{z^n}=2\ii\sin{nt}$.
     \end{subhomework}
+    \item $z_1=-z,z_2=\ov z,z_3=-\ov{z}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
+    \item 已知点 $z_1,z_2,z_3$ 不共线. 点 $\dfrac12(z_1+z_2)$ 和 $\dfrac13(z_1+z_2+z_3)$ 分别表示什么点?
+    \item 利用共轭复数将 $(x_1^2+y_1^2)(x_2^2+y_2^2)$ 表达为两个多项式的平方和.
+    \item 设正方形的两个顶点分别为复数 $a$, $b$, 求它的其它两个顶点的所有可能.
+    \item 用复参数方程表示连接 $-1+\ii$ 与 $1-4\ii$ 的直线段.
+    \item 用 $z,\ov z$ 的方程表示经过 $-1+\ii$ 与 $1-4\ii$ 的直线.
     \item 设 $\dfrac{z_2-z_1}{z_3-z_1}=\dfrac{z_1-z_3}{z_2-z_3}$. 证明: $|z_1-z_2|=|z_2-z_3|=|z_3-z_1|$ 并说明这些等式的几何意义.
     \item 证明: 若 $z_1+z_2+z_3=0$ 且 $|z_1|=|z_2|=|z_3|=1$, 则 $z_1,z_2,z_3$ 构成一个正三角形, 且单位圆(圆心为 $0$, 半径为 $1$ 的圆)是它的外接圆.
     \item 证明: $|z_1+z_2|^2+|z_1-z_2|^2=2(|z_1|^2+|z_2|^2)$ 并说明其几何意义.
     \item 证明: $f(z)=z{\ov z}^{-1}-\ov zz^{-1}$ 在 $z\ra 0$ 时极限不存在.
+    \item 下列数列 $\set{z_n}$ 是否收敛? 若收敛求出它们的极限.
+    \begin{subhomework}(2)
+      \item $z_n=\dfrac{1+n\ii}{1-n\ii}$;
+      \item $z_n=\Bigl(1+\dfrac \ii2\Bigr)^n$;
+      \item $z_n=(-1)^n+\dfrac{\ii}{n+1}$;
+      \item $z_n=\dfrac{(3+2\ii)^n}{(3+4\ii)^n}$;
+      \item $z_n=\dfrac{n^2+\ii n}{n^2-\ii n}$;
+      \item $z_n=\Bigl(1+\dfrac{(-1)^n}n\Bigr)\ee^{-\frac{n\cpi \ii}2}$.
+    \end{subhomework}
     \item 证明: $f(z)=\begin{cases}
       1,&\text{若}\ y=x^2;\\
       0,&\text{其它情形}.
     \end{cases}$ 在 $z$ 沿着任意一条直线趋于 $0$ 时极限都存在, 但 $z\ra0$ 时极限不存在.
+    \item \optionalex 利用单位根计算下列表达式.
+      \begin{subhomework}
+        \item $I=\prod\limits_{k=1}^{n-1}\sin\dfrac{k\cpi}n=\sin\dfrac{\cpi}n\sin\dfrac{2\cpi}n \cdots \sin\dfrac{(n-1)\cpi}n$.
+        \item $I=\sum\limits_{k=1}^n\tan^2\dfrac{k\cpi}m=\tan^2\dfrac{\cpi}m+\tan^2\dfrac{2\cpi}m+\cdots+\tan^2\dfrac{n\cpi}m$, 其中 $m=2n+1$ 是奇数.
+      \end{subhomework} 
+    \item \optionalex 设集合 $A=\set{1,2,\cdots,999}$, 令 $N_k$ 为元素之和是 $5m+k$ 型的 $A$ 的子集个数. 利用单位根计算 $N_0,N_1,N_2,N_3,N_4$.
+    \item \optionalex 利用单位根将下列多项式因式分解成有理系数多项式的乘积.
+      \begin{subhomework}(2)
+        \item $x^{10}+x^5+1$;
+        \item $x^8-1$.
+      \end{subhomework}
     \item \optionalex 证明: 
       \begin{subhomework}
         \item $\BQ(\ii)=\{x+y\ii\mid x,y,\in\BQ\}$ 是一个域;
         \item 若 $F$ 是一个域且 $\BR\subsetneq F\subseteq \BC$, 则 $F=\BC$.
       \end{subhomework}
     \item \optionalex 证明: 对任意 $A$, $B\in\BH$, 有
-    \begin{enumr}
+    \begin{subhomework}
       \item $f(AB)=f(A)f(B)$, $f\bigl(\tau(A)\bigr)=\ov{f(A)}^{\rmT}$;
       \item $\tau(AB)=\tau(B)\tau(A)$.
-    \end{enumr}
+    \end{subhomework}
   \end{homework}
 \end{homework}
 
