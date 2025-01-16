@@ -18,9 +18,9 @@
      \lim_{z\ra z_0}\frac{f(z)-f(z_0)}{z-z_0}
     =\lim_{\delt z\ra 0}\frac{f(z_0+\delt z)-f(z_0)}{\delt z}
   \]
-  存在, 则称 \nouns{$f(z)$ 在 $z_0$ 处可导}{可导}.
-  这个极限值称为 \nouns{$f(z)$ 在 $z_0$ 处的导数}{导数},记作 $f'(z_0)$.
-  若 $f(z)$ 在区域 $D$ 内处处可导, 则称 \nouns{$f(z)$ 在 $D$ 内可导}{可导}.\footnotemark
+  存在, 则称 \nouns{$f(z)$ 在 $z_0$ 处可导}\index{kedao@可导}.
+  这个极限值称为 \nouns{$f(z)$ 在 $z_0$ 处的导数}\index{daoshu@导数},记作 $f'(z_0)$.
+  若 $f(z)$ 在区域 $D$ 内处处可导, 则称 \nouns{$f(z)$ 在 $D$ 内可导}\index{kedao@可导}.\footnotemark
 \end{definition}
 
 \footnotetext{
@@ -28,11 +28,14 @@
   由于 $D$ 内的任意一点都存在一个邻域完全包含在 $D$ 中, 所以可以在任意一点研究上述极限是否存在.
 }
 
-需要注意的是, 无论极限过程 $z\ra z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
-\[
-  \frac{f(z_0+\delt z)-f(z_0)}{\delt z}
-\]
-的极限都要存在且全都相等.
+\begin{marker}
+  若要导数存在, 无论极限过程 $z\ra z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
+  \[
+    \frac{f(z_0+\delt z)-f(z_0)}{\delt z}
+  \]
+  的极限都要存在且全都相等.
+\end{marker}
+
 因此尽管复变函数导数定义的形式和单变量实函数情形类似, 但其限制实际上要严格得多.
 
 \begin{example}
@@ -144,7 +147,7 @@
     =f(z_0+\delt z)-f(z_0)
     =A\delt z+o(\delt z),
   \]
-  其中 $o(\delt z)$ 表示 $\delt z$ 的高阶无穷小量, 则称 \nouns{$f(z)$ 在 $z_0$ 处可微}{可微}, 称 $A\delt z$ 为 \nouns{$f(z)$ 在 $z_0$ 的微分}{微分}, 记作 $\d w=A \delt z$.
+  其中 $o(\delt z)$ 表示 $\delt z$ 的高阶无穷小量, 则称 \nouns{$f(z)$ 在 $z_0$ 处可微}\index{kewei@可微}, 称 $A\delt z$ 为 \nouns{$f(z)$ 在 $z_0$ 的微分}\index{weifen@微分}, 记作 $\d w=A \delt z$.
 \end{definition}
 
 同导数一样, 复变函数微分的定义也和单变量实函数情形类似, 而且复变函数的可微和可导也是等价的.
@@ -161,19 +164,26 @@
 
 \begin{definition}
   \begin{enuma}
-    \item 若 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \nouns{$f(z)$ 在 $z_0$ 处解析}{解析}.
-    \item 若 $f(z)$ 在区域 $D$ 内处处解析, 则称 $f(z)$ 在 $D$ 内解析, 或称 $f(z)$ 是 $D$ 内的一个\noun{解析函数}.\footnotemark
-    \item 若 $f(z)$ 在 $z_0$ 处不解析, 则称 $z_0$ 为 $f(z)$ 的一个\noun{奇点}.
+    \item 若 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \nouns{$f(z)$ 在 $z_0$ 处解析}\index{jiexi@解析}.
+    \item 若 $f(z)$ 在区域 $D$ 内处处解析, 则称 $f(z)$ 在 $D$ 内解析, 或称 $f(z)$ 是 $D$ 内的一个\nouns{解析函数}\index{jiexi@解析}.\footnotemark
+    \item 若 $f(z)$ 在 $z_0$ 处不解析, 则称 $z_0$ 为 $f(z)$ 的一个\nouns{奇点}\index{jidian@奇点}.
   \end{enuma}
 \end{definition}
 
-\footnotetext{也可叫\emph{全纯函数}或\emph{正则函数}.}
+\footnotetext{也可叫\emph{全纯函数}\index{quanchunhanshu@全纯函数}或\emph{正则函数}\index{zhengzehanshu@正则函数}.}
 
-由定义可知, 若 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 在 $z_0$ 可导, 但反过来不成立.
+\begin{marker}
+  在一点解析蕴含在这点可导, 反之未必.
+\end{marker}
+
 无定义、不连续、不可导、可导但不解析, 都会导致奇点的产生.
 不过, 若 $z_0$ 是 $f(z)$ 定义域的外点, 即存在 $z_0$ 的邻域与 $f(z)$ 定义域交集为空集, 这种情形不甚有趣, 因此我们不考虑这类奇点.
 
-由于区域 $D$ 是一个开集, 其中的任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域. 所以 \alert{$f(z)$ 在 $D$ 内解析和在 $D$ 内可导是等价的}.
+\begin{marker}
+  在区域 $D$ 内解析和在 $D$ 内可导是等价的.
+\end{marker}
+
+这是因为任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域.
 由于一个点的邻域也是一个开集, 因此若 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析. 因此 \alert{$f(z)$ 解析点全体是一个开集}, 它是可导点集合的内点构成的集合.
 
 \begin{exercise}
@@ -187,7 +197,7 @@
 \end{exercise}
 
 \begin{example}
-  研究函数 $f(z)=|z|^2$ 的解析性.
+  研究函数 $f(z)=\abs{z}^2$ 的解析性.
 \end{example}
 
 \begin{solution}
@@ -217,8 +227,8 @@
   \end{enuma}
 \end{theorem}
 \footnotetext{
-  设 $g(w)$ 在 $|z-z_0|<\eta$ 内处处可导, $f(w)$ 在 $|w-g(z_0)|<\varepsilon$ 内处处可导.
-  由于 $g(z)$ 在 $z_0$ 处连续, 因此存在 $\delta$, $0<\delta<\eta$, 使得当 $|z-z_0|<\delta$ 时, $|g(z)-g(z_0)|<\varepsilon$, 从而 $f\bigl(g(z)\bigr)$ 在 $z$ 处可导, 即在 $z_0$ 处解析.
+  设 $g(w)$ 在 $\abs{z-z_0}<\eta$ 内处处可导, $f(w)$ 在 $\abs{w-g(z_0)}<\varepsilon$ 内处处可导.
+  由于 $g(z)$ 在 $z_0$ 处连续, 因此存在 $\delta$, $0<\delta<\eta$, 使得当 $\abs{z-z_0}<\delta$ 时, $\abs{g(z)-g(z_0)}<\varepsilon$, 从而 $f\bigl(g(z)\bigr)$ 在 $z$ 处可导, 即在 $z_0$ 处解析.
 }
 
 由此可知, 多项式函数处处解析. 有理函数在其定义域内处处解析, 分母的零点是它的奇点.
@@ -245,7 +255,7 @@
 设
 \[
   \delt z=\delt x+\ii\delt y,\qquad
-  \rho=|{\delt z}|=\sqrt{(\delt x)^2+(\delt y)^2}.
+  \rho=\abs{\delt z}=\sqrt{(\delt x)^2+(\delt y)^2}.
 \]
 对于充分小的 $\rho>0$, 令
 \[
@@ -288,8 +298,8 @@
 
 \begin{theorem}[柯西-黎曼定理]
   \label{thm:Cauchy-Riemann}
-  \index{柯西-黎曼定理}
-  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
+  \index{kexilimandingli@柯西-黎曼定理}
+  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\nouns{柯西-黎曼方程}\index{kexilimanfangcheng@柯西-黎曼方程}:
   \[
     u_x=v_y,\quad v_x=-u_y.
   \]
@@ -299,7 +309,7 @@
   \]
 \end{theorem}
 
-柯西-黎曼方程可简称为 C-R 方程.
+柯西-黎曼方程可简称为 \nouns{C-R 方程}\index{crfangcheng@C-R 方程}.
 
 当 $f$ 可导时其导数形式也可直接用以下方式看出.
 由于极限
@@ -341,7 +351,8 @@
 由于极限 $\liml_{\delt z\ra 0}\dfrac{\delt \ov z}{\delt z}$ 不存在, 因此:
 
 \begin{theorem}[柯西-黎曼定理的等价形式]
-  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\noun{柯西-黎曼方程}:
+  \index{kexilimandingli@柯西-黎曼定理}
+  $f(z)$ 在 $z=x+y\ii$ 处可导当且仅当 $u,v$ 在 $(x,y)$ 处可微, 且满足\nouns{柯西-黎曼方程}\index{kexilimanfangcheng@柯西-黎曼方程}:
   \[
     \pdv f{\ov z}=0.
   \]
@@ -384,7 +395,7 @@
   研究函数
   \[
     f(z)=\begin{cases}
-      \dfrac{(x^3-y^3)+\ii(x^3+y^3)}{x^2+y^2},\quad &z\neq 0;\\
+      \dfrac{(x^3-y^3)+\ii(x^3+y^3)}{x^2+y^2},\quad &z\neq 0,\\
       0,&z=0
     \end{cases}
   \]
@@ -395,11 +406,11 @@
   由题设知
   \[
     u=\begin{cases}
-        \dfrac{x^3-y^3}{x^2+y^2},\quad &z\neq 0;\\
+        \dfrac{x^3-y^3}{x^2+y^2},\quad &z\neq 0,\\
         0,&z=0,
       \end{cases}\qquad
     v=\begin{cases}
-        \dfrac{x^3+y^3}{x^2+y^2},\quad &z\neq 0;\\
+        \dfrac{x^3+y^3}{x^2+y^2},\quad &z\neq 0,\\
         0,&z=0.
       \end{cases}
   \]
@@ -425,14 +436,17 @@
   与 $k$ 有关, 因此该极限不存在, $u$ 在 $(0,0)$ 处不可微, 所以 $f(z)$ 在 $(0,0)$ 处不可导.
 \end{solution}
 
-由此可知, \thmCR 中的可微性和C-R方程缺一不可.
+由此可知:
+\begin{marker}
+  \thmCR 中的可微性和C-R方程缺一不可.
+\end{marker}
 
 \begin{example}
   求下列函数的可导点和解析区域, 并求其在可导点处的导数.
   \begin{subexample}(2)
     \item $f(z)=\ov z$;
     \item $f(z)=\ov z(2z+\ov z)$;
-    \item $f(z)=\ee^{|z|^2}$;
+    \item $f(z)=\ee^{\abs{z}^2}$;
     \item $f(z)=\ee^x(\cos y+\ii\sin y)$.
     \label{enum:exp}
   \end{subexample}
@@ -583,7 +597,7 @@
 可以类似证明, 若 $f(z)$ 在 $D$ 内解析, 则下述任一条件均可推出 $f(z)$ 是一常数:
 \begin{subexample}(2)
   \item $\arg{f(z)}$ 是一常数;
-  \item $|f(z)|$ 是一常数;
+  \item $\abs{f(z)}$ 是一常数;
   \item $\Re{f(z)}$ 是一常数;
   \item $\Im{f(z)}$ 是一常数;
   \item $v=u^2$;
@@ -608,7 +622,7 @@
 \end{proof}
 
 当 $f'(z_0)\neq 0$ 时, 经过 $z_0$ 的两条曲线 $C_1,C_2$ 的夹角和它们的像 $C_1',C_2'$ 在 $w_0=f(z_0)$ 处的夹角总是相同的.
-这种性质被称为\noun{保角性}.
+这种性质被称为\nouns{保角性}\index{baojiaoxing@保角性}.
 由 $w$ 平面上直线族 $u=c_1,v=c_2$ 正交可知上述曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 正交.
 特别地, \thmref{例}{exam:wz2} 中的曲线族 $x^2-y^2=c_1$, $2xy=c_2$ 正交.
 解析函数的这种性质我们会在\ref{chapter:6}详细讨论.
@@ -653,7 +667,7 @@
   参考 \cite[第19章2,3节]{Kline1990b}.
 }.
 \begin{align*}
-   \lim_{n\ra\infty}\Bigl|1+\frac zn\Bigr|^n&
+   \lim_{n\ra\infty}\Bigabs{1+\frac zn}^n&
   =\lim_{n\ra\infty}\Bigl(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)^{\frac n2}
     \qquad(1^\infty\ \text{型不定式})\\&
   =\exp\biggl(
@@ -663,7 +677,7 @@
     \biggr)
   =\ee^x.
 \end{align*}
-不妨设 $n>|z|$, 这样 $1+\dfrac zn$ 落在右半平面.
+不妨设 $n>\abs{z}$, 这样 $1+\dfrac zn$ 落在右半平面.
 于是
 \[
    \lim_{n\ra\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
@@ -678,7 +692,7 @@
 \]
 
 \begin{definition}
-  定义\noun{指数函数}
+  定义\nouns{指数函数}\index{zhishuhanshu@指数函数}\index{0ez@$\ee^z$}
   \[
     \exp z:=\ee^x(\cos y+\ii\sin y).
   \]
@@ -687,11 +701,11 @@
 为了方便, 我们也记 \alert{$\ee^z=\exp z$}\index{$\ee^z$}\index{$\exp z$}.
 但注意这里并不表示``$\ee$ 的 $z$ 次方'', 仅作为指数函数的一种简便形式, 幂的含义见  \ref{ssec:power-function}.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
-    \begin{scope}[xshift=-4cm]
+    \begin{scope}[shift={(-4,0)}]
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \def\wd{.3}
@@ -700,7 +714,7 @@
       \foreach \i in {-4,-3,...,4}
         \draw[cstcurve,second,->] (-1.4,{\wd*\i})--(1.6,{\wd*\i});
     \end{scope}
-    \begin{scope}[xshift=4cm]
+    \begin{scope}[shift={(4,0)}]
       \draw[cstaxis] (-2.5,0)--(2.5,0);
       \draw[cstaxis] (0,-2)--(0,2);
       \foreach \i in {-4,-3,...,4}
@@ -715,13 +729,13 @@
 指数函数有如下性质:
 \begin{enuma}
   \item $\ee^z$ 处处解析, 且 $(\ee^z)'=\ee^z$. 这由\thmCR 得到.
-  \item $\ee^z\neq 0$. 这是因为 $|\ee^z|=\ee^x>0$.
+  \item $\ee^z\neq 0$. 这是因为 $\abs{\ee^z}=\ee^x>0$.
   \item $\ee^{z_1+z_2}=\ee^{z_1}\cdot \ee^{z_2}$.
   \item $\ee^{z_1}=\ee^{z_2}$ 当且仅当 $z_1=z_2+2k\cpi \ii,k\in\BZ$. 于是 $\ee^z$ 是周期函数, 周期为 $2\cpi\ii$.
   \item $w=\ee^z$ 将直线族 $\Re z=c$ 映成圆周族 $\abs{w}=\ee^c$, 将直线族 $\Im z=c$ 映成射线族 $\Arg w=c$.
 \end{enuma}
 
-由于 $|\ee^{x+\ii y}|=\ee^x$, 因此 $\liml_{x\ra-\infty}\ee^{x+\ii y}=0$, $\liml_{x\ra+\infty}\ee^{x+\ii y}=\infty$.
+由于 $\abs{\ee^{x+\ii y}}=\ee^x$, 因此 $\liml_{x\ra-\infty}\ee^{x+\ii y}=0$, $\liml_{x\ra+\infty}\ee^{x+\ii y}=\infty$.
 但注意 $\liml_{z\ra\infty}\ee^z$ 不存在.
 
 \begin{example}
@@ -762,12 +776,12 @@
 
 \begin{definition}
   \begin{enuma}
-    \item 定义\noun{对数函数}\index{$\Ln z$}
+    \item 定义\nouns{对数函数}\index{duishuhanshu@对数函数}\index{0lnz@$\Ln z$}
       \[
         \Ln z=\ln\abs{z}+\ii\Arg z.
       \]
       它是一个多值函数.
-    \item 定义\noun{对数函数主值}\index{$\ln z$}
+    \item 定义\nouns{对数函数主值}\index{duishuhanshu@对数函数!duishuhanshuzhuzhi@对数函数主值}\index{0lnz@$\ln z$}
       \[
         \ln z=\ln\abs{z}+\ii\arg z.
       \]
@@ -801,12 +815,12 @@
   由对数函数的定义可知
   \begin{align*}
      \Ln(-2+3\ii)&
-    =\ln{\abs{-2+3\ii}}+\ii\Arg(-2+3\ii)\\&
+    =\ln\abs{-2+3\ii}+\ii\Arg(-2+3\ii)\\&
     =\frac 12\ln{13}
       +\Bigl(-\arctan\frac 32+\cpi+2k\cpi\Bigr)\ii,
       \quad k\in\BZ,\\
      \Ln(3-\sqrt3\ii)&
-    =\ln|3+\sqrt 3\ii|+\ii\Arg(3-\sqrt 3\ii)\\&
+    =\ln\abs{3+\sqrt 3\ii}+\ii\Arg(3-\sqrt 3\ii)\\&
     =\ln 2\sqrt 3+\bigl(-\frac\cpi6+2k\cpi\bigr)\ii\\&
     =\ln 2\sqrt 3+\bigl(2k-\frac16\bigr)\cpi\ii,
       \quad k\in\BZ.
@@ -875,14 +889,14 @@
 
 \begin{definition}
   \begin{enuma}
-    \item 设 $a\neq 0$, $z\neq 0$, 定义\noun{幂函数}
+    \item 设 $a\neq 0$, $z\neq 0$, 定义\nouns{幂函数}\index{mihanshu@幂函数}\index{0za@$z^a$}
       \[
         w=z^a=\ee^{a\Ln z}
-        =\exp(a\ln|z|+\ii a\Arg z).
+        =\exp(a\ln\abs{z}+\ii a\Arg z).
       \]
-    \item \noun{幂函数的主值}为
+    \item \nouns{幂函数的主值}\index{mihanshu@幂函数!mihanshudezhuzhi@幂函数的主值}为
       \[
-        w=\ee^{a\ln z}=\exp\bigl(a\ln|z|+\ii a\arg z\bigr).
+        w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\ii a\arg z\bigr).
       \]
   \end{enuma}
 \end{definition}
@@ -890,7 +904,7 @@
 由定义可知
 \[
    z^a
-  =\exp\bigl(a\ln|z|+\ii a\arg z+2ak\cpi\ii\bigr)
+  =\exp\bigl(a\ln\abs{z}+\ii a\arg z+2ak\cpi\ii\bigr)
   =\ee^{a\ln z}\cdot \ee^{2ak\cpi\ii},
     \quad k\in\BZ.
 \]
@@ -900,35 +914,34 @@
 当 $a$ 是正整数时, $z^a$ 在复平面内解析\footnote{%
   尽管在幂函数定义中 $z\neq 0$, 但当 $a$ 是正实数时, 我们约定 $0^a=0$.
 };
-当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 内解析.
+当 $a$ 是负整数时, $z^a$ 在 $\BC-\{0\}$ 内解析.
 
 当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
 \[
    z^{\frac pq}
-  =|z|^{\frac pq}\exp\biggl(\frac{\ii p(\arg z+2k\cpi)}q\biggr),
+  =\abs{z}^{\frac pq}\exp\biggl(\frac{\ii p(\arg z+2k\cpi)}q\biggr),
     \quad k=0,1,\cdots,q-1
 \]
 具有 $q$ 个值.
 去掉负实轴和零之后, 它的主值 $w=\ee^{a\ln z}$ 是处处解析的.
 事实上它就是 $\sqrt[q]{z^p}=(\sqrt[q]z)^p$.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^{\frac29}$} (1,0);
-    \begin{scope}[xshift=-4cm]
-      \def\r{1.3}
+    \def\r{1.5}
+    \begin{scope}[shift={(-4,0)}]
       \draw[draw=white,cstfille1] (0,0) circle (\r);
       \cutline{0}{0}{\r}{180}{main};
-      \draw[cstaxis] (-2,0)--(2,0);
-      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (-\r,0)--(\r,0);
+      \draw[cstaxis] (0,-\r)--(0,\r);
     \end{scope}
-    \begin{scope}[xshift=4cm]
-      \def\r{1.3}
+    \begin{scope}[shift={(4,0)}]
       \fill[cstfille5] (0,0)--({\r*cos(40)},{\r*sin(40)}) arc (40:-40:\r)--cycle;
       \draw[cstcurve,fifth] ({\r*cos(40)},{-\r*sin(40)})--(0,0)--({\r*cos(40)},{\r*sin(40)});
-      \draw[cstaxis] (-2,0)--(2,0);
-      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (-\r,0)--(\r,0);
+      \draw[cstaxis] (0,-\r)--(0,\r);
     \end{scope}
   \end{tikzpicture}
   \caption{映射 $w=z^{\frac29}$}
@@ -938,7 +951,7 @@
 因为此时当 $k\neq0$ 时, $2k\cpi a \ii$ 不可能是 $2\cpi \ii$ 的整数倍, 从而不同的 $k$ 得到的是不同的值.
 去掉负实轴和零之后, 它的主值 $w=\ee^{a\ln z}$ 也是处处解析的.
 
-\begin{table}[!htb]
+\begin{table}[H]
   \centering
   \begin{tabular}{cccc}
     \topcolorrule
@@ -1017,14 +1030,14 @@
 我们将其推广到复数情形.
 
 \begin{definition}
-  定义\noun{余弦函数}和\noun{正弦函数}
+  定义\nouns{余弦函数}\index{yuxianhanshu@余弦函数}\index{0cosz@$\cos z$}和\nouns{正弦函数}\index{zhengxianhanshu@正弦函数}\index{0sinz@$\sin z$}
   \[
     \cos z=\frac{\ee^{\ii z}+\ee^{-\ii z}}2,\quad
     \sin z=\frac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}.
   \]
 \end{definition}
 
-于是欧拉恒等式 \alert{$\ee^{\ii z}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
+于是欧拉恒等式\index{oulahengdengshi@欧拉恒等式} \alert{$\ee^{\ii z}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
 由定义可知
 \[
   \cos(\ii y)=\frac{\ee^y+\ee^{-y}}2,\qquad
@@ -1037,10 +1050,10 @@
 容易看出 $\cos z$ 和 $\sin z$ 的零点都是实数.
 于是可类似定义其它三角函数
 \begin{itemize}[addsep]
-  \item \noun{正切函数} $\tan z=\dfrac{\sin z}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
-  \item \noun{余切函数} $\cot z=\dfrac{\cos z}{\sin z},\ z\neq k\cpi$;
-  \item \noun{正割函数} $\sec z=\dfrac{1}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
-  \item \noun{余割函数} $\csc z=\dfrac{1}{\sin z},\ z\neq k\cpi$,
+  \item \nouns{正切函数}\index{zhengqiehanshu@正切函数}\index{0tanz@$\tan z$} $\tan z=\dfrac{\sin z}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
+  \item \nouns{余切函数}\index{yuqiehanshu@余切函数}\index{0cotz@$\cot z$} $\cot z=\dfrac{\cos z}{\sin z},\ z\neq k\cpi$;
+  \item \nouns{正割函数}\index{zhenggehanshu@正割函数}\index{0secz@$\sec z$} $\sec z=\dfrac{1}{\cos z},\ z\neq\bigl(k+\dfrac12\bigr)\cpi$;
+  \item \nouns{余割函数}\index{yugehanshu@余割函数}\index{0cscz@$\csc z$} $\csc z=\dfrac{1}{\sin z},\ z\neq k\cpi$,
 \end{itemize}
 其中 $k$ 是整数.
 
@@ -1083,9 +1096,9 @@
 
 类似的, 我们可以定义双曲函数:
 \begin{itemize}[addsep]
-  \item \noun{双曲正弦函数} $\ch z=\dfrac{\ee^z+\ee^{-z}}2=\cos \ii z$;
-  \item \noun{双曲余弦函数} $\sh z=\dfrac{\ee^z-\ee^{-z}}2=-\ii\sin \ii z$;
-  \item \noun{双曲正切函数} $\tanh z=\dfrac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}=-\ii\tan \ii z,\ z\neq \bigl(k+\dfrac12\bigr)\cpi\ii, k\in\BZ$.
+  \item \nouns{双曲正弦函数}\index{shuangquzhengxianhanshu@双曲正弦函数}\index{0chz@$\ch z$} $\ch z=\dfrac{\ee^z+\ee^{-z}}2=\cos \ii z$;
+  \item \nouns{双曲余弦函数}\index{shuangquyuxianhanshu@双曲余弦函数}\index{0shz@$\sh z$} $\sh z=\dfrac{\ee^z-\ee^{-z}}2=-\ii\sin \ii z$;
+  \item \nouns{双曲正切函数}\index{shuangquzhengqiehanshu@双曲正切函数}\index{0thz@$\tanh z$} $\tanh z=\dfrac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}=-\ii\tan \ii z,\ z\neq \bigl(k+\dfrac12\bigr)\cpi\ii, k\in\BZ$.
 \end{itemize}
 
 它们的奇偶性和导数与实变量情形类似, 在定义域范围内是处处解析的.
@@ -1110,18 +1123,18 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
   \ee^{2\ii w}-2z\ee^{\ii w}+1=0,\quad
   \ee^{\ii w}=z+\sqrt{z^2-1}.
 \]
-因此\noun{反余弦函数}为
+因此\nouns{反余弦函数}\index{fanyuxianhanshu@反余弦函数}\index{0arccosz@$\Arccos z$}为 
 \[
   w=\Arccos z=-\ii \Ln(z+\sqrt{z^2-1}).
 \]
 显然它是多值的. 同理, 我们有:
 
 \begin{itemize}[addsep]
-  \item \noun{反正弦函数} $\Arcsin z=-\ii\Ln(\ii z+\sqrt{1-z^2})$;
-  \item \noun{反正切函数} $\Arctan z=-\dfrac \ii 2\Ln\dfrac{1+\ii z}{1-\ii z},\ z\neq \pm i$;
-  \item \noun{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
-  \item \noun{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
-  \item \noun{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z},\ z\neq \pm1$.
+  \item \nouns{反正弦函数}\index{fanzhengxianhanshu@反正弦函数}\index{0arcsinz@$\Arcsin z$} $\Arcsin z=-\ii\Ln(\ii z+\sqrt{1-z^2})$;
+  \item \nouns{反正切函数}\index{fanzhengqiehanshu@反正切函数}\index{0arctanz@$\Arctan z$} $\Arctan z=-\dfrac \ii 2\Ln\dfrac{1+\ii z}{1-\ii z},\ z\neq \pm i$;
+  \item \nouns{反双曲余弦函数}\index{fanshuangquyuxianhanshu@反双曲余弦函数}\index{0archz@$\Arch z$} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
+  \item \nouns{反双曲正弦函数}\index{fanshuangquzhengxianhanshu@反双曲正弦函数}\index{0arshz@$\Arsh z$} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
+  \item \nouns{反双曲正切函数}\index{fanshuangquzhengqiehanshu@反双曲正切函数}\index{0arthz@$\Arth z$} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z},\ z\neq \pm1$.
 \end{itemize}
 
 \begin{example}
@@ -1167,9 +1180,9 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
 \subsection{在有理函数的应用}
 \label{ssec:application-of-derivative}
 
-称分子次数小于分母次数的有理函数为\noun{真分式}.
+称分子次数小于分母次数的有理函数为\nouns{真分式}\index{zhengfenshi@真分式}.
 任何一个有理函数 $f(z)$ 都可以通过带余除法分解为一个多项式 $g(z)$ 和一个真分式之和.
-若这个有理函数分母的零点均能求出, 则这个真分式又可以分拆为部分分式之和, 其中\noun{部分分式}是指形如 $\dfrac{a}{(x-b)^k}$ 的真分式.
+若这个有理函数分母的零点均能求出, 则这个真分式又可以分拆为部分分式之和, 其中\nouns{部分分式}\index{bufenfenshi@部分分式}是指形如 $\dfrac{a}{(x-b)^k}$ 的真分式.
 我们来介绍求这种分拆的一种方法.
 设
 \[
@@ -1262,7 +1275,7 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
   \end{align*}
   当 $z=x$ 为实数时,
   \[
-    |x+\ii|=\sqrt{x^2+1},\qquad
+    \abs{x+\ii}=\sqrt{x^2+1},\qquad
     \arg(x+\ii)=\arccot x,
   \]
   于是
@@ -1328,7 +1341,7 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
   可以看出对于实数 $x<1$, 上式的导数也等于 $f(x)$, 从而
   \[
     \int\frac1{x^3-1}\d x
-    =\frac16\ln\frac{(x-1)^2}{|x^2+x+1|}
+    =\frac16\ln\frac{(x-1)^2}{\abs{x^2+x+1}}
       +\frac{\sqrt3}3\arccot\frac{2x+1}{\sqrt3}+C,
       \quad C\in\BR.
   \]
@@ -1562,9 +1575,9 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
 从对数函数的定义可以看出, 对数函数的多值性来源于其中的辐角函数的多值性.
 为了研究它的多值性, 我们来研究辐角的变化.
 
-设 $z_0$ 是一个非零复数, $0<r<|z_0|$, 那么
+设 $z_0$ 是一个非零复数, $0<r<\abs{z_0}$, 那么
 \[
-  U(z_0,r)=\set{z:|z-z_0|<r}
+  U(z_0,r)=\{z\midcolon \abs{z-z_0}<r\}
 \]
 是 $z_0$ 的一个邻域且不包含原点.
 对于任意 $z\in U(z_0,r)$, $\dfrac z{z_0}$ 的实部为正.
@@ -1580,7 +1593,7 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
 设 $r>0$ 小于原点到 $C$ 的距离, 那么我们可以构造一串复数 $a_1=z_0,a_2,\cdots,a_k=z_1$, 使得 $U(a_j,r)$ 和 $U(a_{j+1},r)$ 的交集非空, 且所有的这些邻域覆盖住了整个的 $C$.
 和前面的做法类似, 我们可以递归地构造出在整个 $C$ 上的 $\Arg z$ 的连续单值分支, 仍然记作 $f(z)$.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \coordinate (z0) at (2,1);
@@ -1654,17 +1667,17 @@ $\ch z,\sh z$ 的周期是 $2\cpi\ii$, $\tanh z$ 的周期是 $\cpi\ii$.
 }
 
 因此, 若想要得到 $\Arg z$ 在区域 $D$ 上的一个连续的单值分支, $D$ 中就不能包含绕原点的曲线.
-对于多值函数 $F(z)$, 选择充分小的 $\delta$, 令 $z$ 在 $|z-a|=\delta$ 上逆时针绕 $a$ 一周, 且 $F(z)$ 的值连续变化.
-若所选的 $F(z)$ 的值绕一圈后和初始值不同, 则称 $a$ 为 $F(z)$ 的一个\noun{支点}.
+对于多值函数 $F(z)$, 选择充分小的 $\delta$, 令 $z$ 在 $\abs{z-a}=\delta$ 上逆时针绕 $a$ 一周, 且 $F(z)$ 的值连续变化.
+若所选的 $F(z)$ 的值绕一圈后和初始值不同, 则称 $a$ 为 $F(z)$ 的一个\nouns{支点}\index{zhidian@支点}.
 若这个变化值与具体的曲线无关, 我们还可以把它记作 $\delt_a F(z)$.
 例如 $\delt_0 \Arg z=2\cpi$.
 
-对于无穷远点也可类似定义支点的概念, 不过此时考虑的是当 $R$ 充分大, $z$ 在 $|z|=R$ 顺时针旋转一周时, $F(z)$ 的值连续变化的行为.
+对于无穷远点也可类似定义支点的概念, 不过此时考虑的是当 $R$ 充分大, $z$ 在 $\abs{z}=R$ 顺时针旋转一周时, $F(z)$ 的值连续变化的行为.
 例如 $\delt_\infty \Arg z=-2\cpi$.
 $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反数.
 
 若我们用一条连续曲线将 $0$ 和 $\infty$ 连接起来, 则在去掉这条曲线后的区域内, 我们可以得到 $\Arg z$ 的一个连续单值分支.
-这样的线叫作\noun{支割线}.
+这样的线叫作\nouns{支割线}\index{zhigexian@支割线}.
 例如, 之前的章节中我们对 $\Arg z$ 所选取的支割线就是负实轴和零, 并得到剩余区域内的连续单值分支 $\arg z$.
 
 \begin{example}
@@ -1683,33 +1696,30 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
   我们选取连接 $-1$ 和 $1$ 的曲线作为支割线即可, 例如连接二者的直线段.
 \end{solution}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \def\w{2}
-    \def\h{2}
-    \def\a{1.7}
-    \def\b{1.5}
-    \def\u{.8}
-    \begin{scope}[xshift=-5cm]
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
+    \def\u{1}
+    \begin{scope}[shift={(-5,0)}]
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
       \cutlinec{-\u}{0}{2*\u}{0}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
     \begin{scope}
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
-      \cutline{-\u}{0}{\a-\u}{180}{main};
-      \cutline{\u}{0}{\a-\u}{0}{main};
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
+      \cutline{-\u}{0}{\w-\u}{180}{main};
+      \cutline{\u}{0}{\w-\u}{0}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
-    \begin{scope}[xshift=5cm]
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
-      \cutline{-\u}{0}{\b}{90}{main};
-      \cutline{\u}{0}{\b}{-90}{main};
+    \begin{scope}[shift={(5,0)}]
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
+      \cutline{-\u}{0}{\w}{90}{main};
+      \cutline{\u}{0}{\w}{-90}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
   \end{tikzpicture}
   \caption{$\Ln\dfrac{z+1}{z-1}$ 支割线的选法}
@@ -1728,7 +1738,7 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
 \]
 
 幂函数的多值性也来源于辐角.
-对于函数 $F(z)=\sqrt[n]{z}=\sqrt[n]{|z|}\ee^{\frac{\ii\Arg z}n}$, 当 $z$ 绕原点逆时针旋转一周后, 函数值的辐角增加了 $\dfrac{2\cpi}n$.
+对于函数 $F(z)=\sqrt[n]{z}=\sqrt[n]{\abs{z}}\ee^{\frac{\ii\Arg z}n}$, 当 $z$ 绕原点逆时针旋转一周后, 函数值的辐角增加了 $\dfrac{2\cpi}n$.
 此时有
 \[
   \delt_0 \Arg F(z)=\frac{2\cpi}n,\qquad
@@ -1771,36 +1781,33 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
     \delt_1 \Arg F(z)=\frac{2\cpi}3,\quad
     \delt_\infty \Arg F(z)=-\frac{4\cpi}3.
   \]
-  因此支点为 $\pm1,\infty$, 我们选取连接 $-1,1,\infty$ 的曲线作为支割线, 例如 $(-\infty,-1]\cup[1,+\infty)$, 也可以选 $[-1,+\infty)$ 或 $\set{\pm1+y\ii\mid y>0}$.
+  因此支点为 $\pm1,\infty$, 我们选取连接 $-1,1,\infty$ 的曲线作为支割线, 例如 $(-\infty,-1]\cup[1,+\infty)$, 也可以选 $[-1,+\infty)$ 或 $\{\pm1+y\ii\mid y>0\}$.
 \end{solution}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \def\w{2}
-    \def\h{2}
-    \def\a{1.7}
-    \def\b{1.5}
-    \def\u{.8}
-    \begin{scope}[xshift=-5cm]
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
-      \cutline{-\u}{0}{\a-\u}{180}{main};
-      \cutline{\u}{0}{\a-\u}{0}{main};
+    \def\u{1}
+    \begin{scope}[shift={(-5,0)}]
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
+      \cutline{-\u}{0}{\w-\u}{180}{main};
+      \cutline{\u}{0}{\w-\u}{0}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
     \begin{scope}
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
-      \cutline{-\u}{0}{\a+\u}{0}{main};
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
+      \cutline{-\u}{0}{\w+\u}{0}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
-    \begin{scope}[xshift=5cm]
-      \fill[cstfille1] (-\a,-\b) rectangle (\a,\b);
-      \cutline{-\u}{0}{\b}{90}{main};
-      \cutline{\u}{0}{\b}{90}{main};
+    \begin{scope}[shift={(5,0)}]
+      \fill[cstfille1] (-\w,-\w) rectangle (\w,\w);
+      \cutline{-\u}{0}{\w}{90}{main};
+      \cutline{\u}{0}{\w}{90}{main};
       \draw[cstaxis] (-\w,0)--(\w,0);
-      \draw[cstaxis] (0,-\h)--(0,\h);
+      \draw[cstaxis] (0,-\w)--(0,\w);
     \end{scope}
   \end{tikzpicture}
   \caption{$F(z)=\sqrt[3]{(z+1)(z-1)}$ 支割线的选法}
@@ -1834,7 +1841,7 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
   \end{conclusion}
   \item 熟知对数函数 $\Ln z$ 及其主值 $\ln z$ 的计算方式和性质.
   \begin{conclusion}
-    \item $\Ln z=\ln|z|+\ii\Arg z, \ln z=\ln|z|+\ii\arg z$.
+    \item $\Ln z=\ln\abs{z}+\ii\Arg z, \ln z=\ln\abs{z}+\ii\arg z$.
     \item $\ln z$ 在除负实轴和零点外解析, 且 $(\ln z)'=\dfrac1z$.
     \item $\Ln(z_1 z_2)=\Ln z_1+\Ln z_2$, $\Ln\dfrac{z_1}{z_2}=\Ln z_1-\Ln z_2$. 其它关于 $\ln z,\Ln z$ 的等式往往不成立.
   \end{conclusion}
@@ -1997,7 +2004,21 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
     \item 求函数 $f(z)=\dfrac{1}{\sin z-2}$ 的解析区域.
     \item 验证 $f(z)=\ee^x(x\cos y-y\sin y)+\ii \ee^x(y\cos y+x\sin y)$ 在全平面解析, 并求出其导数.
     \item 证明: 设函数 $f(z)$ 在整个复平面解析. 若 $f(z)$ 将实轴和虚轴均映成实数, 则 $f'(0)=0$. 
-    \item 证明: 设函数 $f(z)$ 在区域 $D$ 内解析. 若 $|f(z)|$ 在区域 $D$ 内是一常数, 则 $f(z)$ 在 $D$ 内是一常数.
+    \item 证明: 若函数 $f(z)$ 在区域 $D$ 内解析, 则 $\ov{f(\ov z)}$ 也在 $D$ 内解析. 
+    \item 证明: 设函数 $f(z)$ 在区域 $D$ 内解析. 若 $\abs{f(z)}$ 在区域 $D$ 内是一常数, 则 $f(z)$ 在 $D$ 内是一常数.
+    \item 设 $f:U\ra V,g:V\ra \BC$ 是区域上的复变函数, 且它们的实部和虚部都可微. 设 $h=g\circ f$, 证明
+    \begin{align*}
+      \pdv hz&=\pdv gz \cdot \pdv fz+\pdv g{\ov z}\cdot \pdv {\ov f}{z},\\
+      \pdv h{\ov z}&=\pdv gz \cdot \pdv f{\ov z}+\pdv g{\ov z}\cdot \pdv {\ov f}{\ov z}.
+    \end{align*}
+    这里 $g$ 的偏导数在 $f(z)$ 处取值.
+    \item 设 $z=r\ee^{\ii\theta}$. 证明 $f=u+\ii v$ 的C-R方程在极坐标下的形式为
+    \[
+      \pdv ur=\frac1r\cdot \pdv v\theta,\qquad
+      \frac1r\cdot\pdv u\theta=-\pdv vr.
+    \]
+    由此说明对数函数 $\ln z$ 在复平面去掉负实轴和零以外的区域解析.
+    \item 证明函数 $f(z)=\sqrt{\abs{xy}}$ 在 $z=0$ 处满足 C-R 方程, 但不可导.
     \item \optionalex 利用复变函数计算
       \begin{subhomework}[after-item-skip=3pt](2)
         \item $\biggl(\dfrac1{x^3-x}\biggr)^{(n)}$;
@@ -2021,12 +2042,3 @@ $\delt_\infty F(z)$ 也等于其余支点处的 $\delt_a F(z)$ 之和的相反�
   \end{homework}
 \end{homework}
   
-
-% 若我们采用 \ref{enum:exp-series} 来定义, 则从 $\cos x$ 和 $\sin x$ 的泰勒展开
-% \[
-%   \cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\quad
-%   \sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
-% \]
-% 可以得到欧拉恒等式 $\ee^{\ii x}=\cos x+\ii\sin x$.
-% 实际上这种推导方式并不严谨, 因为我们需要先铺垫好复变函数的级数理论才能这样代换, 这将会在\thmref{例}{exam:exp-taylor-expansion} 中得到解释.
-% 而 \ref{enum:exp-euler} 和 \ref{enum:exp-expansion} 的等价性将可由\thmref{定理}{thm:zero-isolated} 推出.

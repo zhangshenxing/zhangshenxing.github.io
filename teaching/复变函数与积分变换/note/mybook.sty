@@ -7,8 +7,9 @@
 \RequirePackage{mathtools}
 % \RequirePackage{color}
 % \RequirePackage{calc}
-% \RequirePackage{multicol,multirow}
+\RequirePackage{multicol,multirow}
 % \RequirePackage{fancyvrb}
+\RequirePackage[nottoc]{tocbibind}
 \RequirePackage{tikz}
 % TIKZ 库
 \usetikzlibrary{
@@ -40,7 +41,7 @@
 \DeclareOption{single}{\mybook@Singletrue}
 \DeclareOption{black}{\mybook@Blacktrue}
 \ProcessOptions\relax
-\definecolor{main}{RGB}{0,128,192}%
+\definecolor{main}{RGB}{0,128,192}
 \definecolor{second}{RGB}{224,0,0}
 \definecolor{third}{RGB}{112,0,112}
 \definecolor{fourth}{RGB}{0,128,0}
@@ -276,12 +277,12 @@
 % 定理、定义、性质、小结中的枚举
 \newlist{enuma}{enumerate}{2}
 \setlist[enuma,1]{
-  label=\color{main}{(\arabic*)},
+  label=\color{main}{\mdseries(\arabic*)},
   nosep,
   wide=\parindent
 }
 \setlist[enuma,2]{
-  label=\color{main}{(\roman*)},
+  label=\color{main}{\mdseries(\roman*)},
   nosep,
   wide=1.5\parindent
 }
@@ -319,8 +320,8 @@
 \settasks{%
 	label={\upshape\textcolor{main}{(\roman*)}},
 	label-width=1.7em,
-	before-skip=2pt,
-	after-skip=2pt,
+	before-skip=0pt, % !
+	after-skip=0pt,
   after-item-skip=0pt
 }
 %% 例题中的小题
@@ -335,11 +336,20 @@
   item-indent=2.6em
 ]{subhomework}[\item]
 %% 选择题选项
-\NewTasksEnvironment[label={\upshape{(\Alph*)}}]{exchoice}[\item]
+\NewTasksEnvironment[
+  label={\upshape{(\Alph*)}},
+]{exchoice}[\item]
 %% 例题中的选择题选项
-\NewTasksEnvironment[item-indent=4em,label={\upshape{(\Alph*)}}]{examplechoice}[\item]
+\NewTasksEnvironment[
+  item-indent=4em,
+  label={\upshape{(\Alph*)}},
+]{examplechoice}[\item]
 %% 参考答案
-\NewTasksEnvironment[label={\upshape\textcolor{main}{\arabic*.}}]{answerlist}[\item]
+\NewTasksEnvironment[
+  label={\upshape\textcolor{main}{\arabic*.}},
+	before-skip=7.3pt, % !
+]{answerlist}[\item]
+
 %% 枚举环境设定
 \newcommand{\delspace}{\hspace{-1em}}
 \newcommand{\delspaceex}{\hspace{-2.5em}}
@@ -360,16 +370,6 @@
 	}{}
   \setcounter{enumi}{0}%
 }
-%% 分段枚举环境
-% \newenvironment{enuma}[1][(1)]{%
-% 	\setenumtype{#1}\renewcommand{\item}{%
-% 		\parnoindent%
-%     \refstepcounter{enumi}
-%     \makebox[1.7em][r]{\theenumi}%
-%     \hspace{.5em}%
-%   }%
-% }{\ignorespacesafterend}
-%% 首项不分段枚举环境
 \newcounter{cenum}
 \newenvironment{enumnopar}[1][(1)]{%
   \hspace{-\parindent}%
@@ -426,7 +426,6 @@
   common/.style={
     lower separated=false,
     coltitle=white,
-    colback=white,
     boxrule=0pt,
     fonttitle=\bfseries,
     enhanced,
@@ -453,6 +452,7 @@
     colbacktitle=main,
     colback=main!5,
     borderline={.5pt}{0pt}{main},
+    drop shadow=main!30
   },
   secondstyle/.style={
     common,
@@ -460,6 +460,7 @@
     colbacktitle=second,
     colback=second!5,
     borderline={.5pt}{0pt}{second},
+    drop shadow=second!30
   },
   thirdstyle/.style={
     common,
@@ -467,6 +468,7 @@
     colbacktitle=third,
     colback=third!5,
     borderline={.5pt}{0pt}{third},
+    drop shadow=third!30
   },
   fourthstyle/.style={
     common,
@@ -474,6 +476,7 @@
     colbacktitle=fourth,
     colback=fourth!5,
     borderline={.5pt}{0pt}{fourth},
+    drop shadow=fourth!30
   },
   fifthstyle/.style={
     common,
@@ -481,7 +484,8 @@
     colbacktitle=fifth,
     colback=fifth!5,
     borderline={.5pt}{0pt}{fifth},
-  }
+    drop shadow=fifth!30
+  },
 }
 %% @ means notitle, * means indent
 \RequirePackage{xparse}
@@ -511,6 +515,27 @@
   \smallskip%
   \ignorespacesafterend%
 }
+\newtcolorbox{marker}[1][]{
+  enhanced,
+  before skip balanced=2mm,
+  after skip balanced=3mm,
+  boxrule=0.4pt,
+  left=5mm, right=2mm, top=1mm, bottom=1mm,
+  colback=black!10,
+  colframe=second,
+  sharp corners,
+  rounded corners=southeast,
+  arc is angular,
+  arc=3mm,
+  fontupper=\bfseries,
+  underlay={%
+    \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=second,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+  },
+  drop fuzzy shadow,#1
+}
+
 %% 定理、命题、定义使用相同计数器
 \newcommand{\envskip}{\hskip 1em plus 1em minus .5em}
 \newcounter{thm}[chapter]
@@ -558,6 +583,7 @@
   \endtrivlist%
   \ignorespacesafterend%
 }
+
 %% 练习使用独立计数器
 \newcounter{exer}[chapter]
 \setcounter{exer}{0}
@@ -580,17 +606,39 @@
 \newcommand{\exerciseanswer}{
   \stepcounter{chapter}
   \setcounter{exer}{0}
-  \renewcommand{\item}{
-    \refstepcounter{exer}
-    \parnoindent
-    \makebox[2.2em][l]{\textbf{\color{main}\ref{exer:\theexer}}}
-  }
 }
 \newcommand{\exans}{
   \refstepcounter{exer}
   \parnoindent
-  \makebox[3em][l]{\textbf{\color{main}\ref{exer:\theexer}}}
+  \textbf{\color{main}\ref{exer:\theexer}}\hspace{.5em}
 }
+\NewDocumentEnvironment{exansenum}{o}{%
+  \refstepcounter{exer}%
+  \trivlist%
+    \item[\hspace{.5em}\textbf{\color{main}\ref{exer:\theexer}} \hspace{-3em}]%
+    \begin{enumerate}[label=\color{main}{(\roman*)},nosep,leftmargin=3.5em]%
+      }{%
+    \end{enumerate}%
+  \endtrivlist%
+  \ignorespacesafterend%
+}
+\NewDocumentEnvironment{exanslist}{o}{%
+  \refstepcounter{exer}%
+  \smallskip
+  \trivlist%
+    \item[\hspace{.5em}\textbf{\color{main}\ref{exer:\theexer}} %\hspace{2em}
+    ]%
+    \begin{exansinline}%
+      }{%
+    \end{exansinline}%
+  \endtrivlist%
+  \ignorespacesafterend%
+}
+\NewTasksEnvironment[
+  item-indent=4em,
+  label={\upshape\textcolor{main}{(\roman*)}},
+	before-skip=5.3pt, % !
+]{exansinline}[\item]
 %% 解、证明
 \newcommand{\envnamebefore}{}
 \newcommand{\envnameafter}{: }
@@ -753,7 +801,7 @@
       text=black
     ] at ($(current page.center)!0.9!(current page.south)$)
     {
-      \includegraphics[height=3em]{../../../image/logo/mybook.png}
+      \includegraphics[height=3em]{../../../image/logo/hfut.png}
       \raisebox{1.1em}{
         \fontsize{1.5em}{1em}
         \selectfont

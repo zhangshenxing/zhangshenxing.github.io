@@ -6,11 +6,13 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{pgfplots}
+\usepackage{float}
+\pgfplotsset{compat=1.7}
 % \usepackage{stmaryrd}
 % URL断行
 \def\UrlBreaks{\do\/\do-\do\a\do\c\do1\do7}
 % 三线表列间距
-\tabcolsep=4mm
+\tabcolsep=6mm
 % 公式间距
 \setlength{\abovedisplayshortskip}{0pt}
 \setlength{\abovedisplayskip}{0pt}
@@ -23,9 +25,12 @@
 % 文本色
 \renewcommand{\emph}[1]{{\bf #1}}
 \newcommand{\emphf}[1]{{\color{main}{\bf #1}}}
-\newcommand{\noun}[1]{{\color{main}{\bf #1}\index{{#1}}}}
-\newcommand{\nouns}[2]{{\color{main}{\bf #1}\index{{#2}}}}
-\newcommand{\nount}[1]{{\color{white}{#1}\index{{#1}}}}
+\newcommand{\noun}[1]{{\color{main}{\bf #1}}\index{#1}}
+\newcommand{\nouns}[1]{{\color{main}{\bf #1}}}
+
+
+
+\newcommand{\nount}[1]{{\color{white}{#1}}\index{#1}}
 \newcommand{\alert}[1]{{\color{second}{\kaishu #1}}}
 \newcommand{\alertn}[1]{{\color{second}{#1}}}
 \newcommand{\emphn}[1]{{\color{main}{#1}}}
@@ -58,19 +63,25 @@
 	cstdot/.style     ={radius=.08}, %实心点
 	cstdote/.style    ={radius=.07, fill=white, very thick}, %空心点
   % fill and pattern
-	cstfill/.style    ={fill=black!10},
+	cstfill/.style    ={fill=black!15},
+	cstfill1/.style   ={fill=main!15},
+	cstfill2/.style   ={fill=second!15},
+	cstfill3/.style   ={fill=third!15},
+	cstfill4/.style   ={fill=fourth!15},
+	cstfill5/.style   ={fill=fifth!15},
 	cstpattern/.style ={pattern=crosshatch},
-	cstfille/.style   ={cstpattern, pattern color=black!80},
-	cstfill1/.style   ={fill=main!10},
-	cstfille1/.style  ={cstpattern, pattern color=main!80},
-	cstfill2/.style   ={fill=second!10},
-	cstfille2/.style  ={cstpattern, pattern color=second!80},
-	cstfill3/.style   ={fill=third!10},
-	cstfille3/.style  ={cstpattern, pattern color=third!80},
-	cstfill4/.style   ={fill=fourth!10},
-	cstfille4/.style  ={cstpattern, pattern color=fourth!80},
-	cstfill5/.style   ={fill=fifth!10},
-	cstfille5/.style  ={cstpattern, pattern color=fifth!80},
+	% cstfille/.style   ={cstpattern, pattern color=black!80},
+	% cstfille1/.style  ={cstpattern, pattern color=main!80},
+	% cstfille2/.style  ={cstpattern, pattern color=second!80},
+	% cstfille3/.style  ={cstpattern, pattern color=third!80},
+	% cstfille4/.style  ={cstpattern, pattern color=fourth!80},
+	% cstfille5/.style  ={cstpattern, pattern color=fifth!80},
+	cstfille/.style    ={fill=black!15},
+	cstfille1/.style   ={fill=main!15},
+	cstfille2/.style   ={fill=second!15},
+	cstfille3/.style   ={fill=third!15},
+	cstfille4/.style   ={fill=fourth!15},
+	cstfille5/.style   ={fill=fifth!15},
   % node
 	cstnode/.style    ={fill=white,draw=black,text=black,rounded corners=0.2cm,line width=1pt},
 	cstnode1/.style   ={fill=main!15,draw=main!80,text=black,rounded corners=0.2cm,line width=1pt},
@@ -97,6 +108,10 @@
 		color(6)=(main),
 		color(7)=(fifth!50),
 		color(8)=(white),
+		color(9)=(fifth!50),
+		color(10)=(main),
+		color(11)=(fifth!50),
+		color(12)=(white),
 	}
 }
 
@@ -138,10 +153,27 @@
 	\stackrel{\rotatebox{-90}{\ensuremath{\left(\rule{0ex}{#1\larc}\right.}}}{#2}%
 }
 
-% 括号, 少用
-\newcommand\set[1]{{\left\{#1\right\}}}
-\newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
-\newcommand\abs[1]{\left|#1\right|}
+% 括号
+\newcommand\midcolon{\mathrel{:}}
+\newcommand\bigmid{\bigm\vert}
+\newcommand\Bigmid{\Bigm\vert}
+\newcommand\biggmid{\biggm\vert}
+\newcommand\Biggmid{\Biggm\vert}
+\newcommand\abs[1]{\lvert#1\rvert}
+\newcommand\bigabs[1]{\bigl\vert#1\bigr\vert}
+\newcommand\Bigabs[1]{\Bigl\vert#1\Bigr\vert}
+\newcommand\biggabs[1]{\biggl\vert#1\biggr\vert}
+\newcommand\Biggabs[1]{\Biggl\vert#1\Biggr\vert}
+% \newcommand\set[1]{\{#1\}}
+\newcommand\bigset[1]{\bigl\{#1\bigr\}}
+\newcommand\Bigset[1]{\Bigl\{#1\Bigr\}}
+\newcommand\biggset[1]{\biggl\{#1\biggr\}}
+\newcommand\Biggset[1]{\Biggl\{#1\Biggr\}}
+% \newcommand\setm[2]{\{#1\mid #2\}}
+\newcommand\bigsetm[2]{\bigl\{#1\bigmid #2\bigr\}}
+\newcommand\Bigsetm[2]{\Bigl\{#1\Bigmid #2\Bigr\}}
+\newcommand\biggsetm[2]{\biggl\{#1\biggmid #2\biggr\}}
+\newcommand\Biggsetm[2]{\Biggl\{#1\Biggmid #2\Biggr\}}
 \newcommand\pair[1]{\langle{#1}\rangle}
 \newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
 \newcommand\dbb[1]{\llbracket#1 \rrbracket}
@@ -845,6 +877,7 @@
 \newcommand{\intff}{\displaystyle\int_{-\infty}^{+\infty}}
 \newcommand{\sumf}[1]{\displaystyle\sum_{n=#1}^{\infty}}
 \newcommand{\sumff}{\displaystyle\sum_{n=-\infty}^{+\infty}}
+\newcommand{\ruleindexint}{\rule{0pt}{16pt}}
 % 割痕
 \newcommand{\cutwd}{.07}
 \newcommand{\cutline}[5]{% x, y, length, angle, color

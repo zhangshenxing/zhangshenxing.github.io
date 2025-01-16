@@ -2,19 +2,19 @@
 \label{chapter:7}
 
 积分变换是现代科学与工程中广泛使用的数学工具.
-我们将从练离散的周期函数傅里叶级数出发, 得到连续的一般函数傅里叶变换.
+我们将从离散的周期函数傅里叶级数出发, 得到连续的一般函数傅里叶变换.
 然后我们将介绍傅里叶变换的各种性质, 以及它与傅里叶级数的联系.
-最后我们介绍它在积分和级数的计算, 以及在微分方程中的应用.
+最后我们介绍它在积分、级数、以及微分方程中的应用.
 
 傅里叶变换对函数要求较高, 为了解决该问题, 考虑函数与指数衰减函数乘积的傅里叶变换, 并由此得到拉普拉斯变换.
-从拉普拉斯变换我们可以得到解析函数, 从而我们可以利用复变函数理论来研究.
-我们将研究它的各种性质, 以及在微分方程中的应用.
+函数的拉普拉斯变换是复解析函数, 从而我们可以利用复变函数理论来研究.
+我们将介绍拉普拉斯变换的各种性质, 以及它在微分方程中的应用.
 
 \section{傅里叶变换}
 
 \subsection{积分变换的引入}
 
-在学习指数和对数的时候, 我们了解到利用对数可以将乘除、幂次转化为加减、乘除.
+在学习指数和对数的时候, 我们了解到利用对数可以将乘除、幂次运算转化为加减、乘除运算.
 \begin{example}
   计算 $12345\times 67890$.
 \end{example}
@@ -57,33 +57,33 @@
   \sin{2\omega t},\ \cos{2\omega t},\ \cdots
 \]
 都是周期为 $T$ 的函数, 其中 $\omega=\dfrac{2\cpi}T$.
-类似于线性组合的概念, 我们希望将 $f$ 表达为上述函数的可数线性组合\footnote{
+类似于线性组合的概念, 我们希望将 $f$ 表达为上述函数的可数线性组合.\footnote{
   通常的线性组合是指有限项的求和.
   若向量
   \[
     \bfv=\liml_{N\ra+\infty} \sum_{n=1}^N\lambda_n \bfv_n,
   \]
-  则称 $\bfv$ 是 $\bfv_1,\bfv_2,\cdots$ 的\emph{可数线性组合}.
+  则称 $\bfv$ 是 $\bfv_1,\bfv_2,\cdots$ 的\emph{可数线性组合}\index{keshuxianxingzuhe@可数线性组合}.
+  这样便可将通常的线性组合和基的概念进行推广.
+  如果一个线性空间中的每一个向量都可以被一组可数个线性无关的向量可数线性组合得到, 则称这组向量为该空间的一组\emph{绍德尔基}\index{shaodeerji@绍德尔基}.
   注意这里会涉及到该线性空间内收敛的含义.
   不过我们只考虑函数, 收敛就是指无穷级数收敛.
-
-  类似于线性空间的一组基, 定义\emph{绍德尔基}为一组线性无关的向量, 使得任一向量都可以被这组向量可数线性组合.
-}.
+}
 
 \begin{theorem}
-  若 $f(t)$ 在区间 $(-\dfrac T2,\dfrac T2)$ 上满足\noun{狄利克雷条件}:
-  \begin{enuma}
+  若 $f(t)$ 周期为 $T$, 且在区间 $\bigl[-\dfrac T2,\dfrac T2\bigr]$ 上满足\nouns{狄利克雷条件}\index{dilikeleitiaojian@狄利克雷条件}:
+  \begin{enuma}[labelindent=.5em]
     \item 间断点只有有限多个, 且均为第一类间断点;
     \item 只有有限个极值点,
-  \end{enuma}\par\noindent
+  \end{enuma}
   则 $f(t)$ 可以表达为级数
   \[
     f(t)=\frac{a_0}2+\sumf1 \left(a_n\cos n\omega t+b_n \sin n\omega t\right).
   \]
-  当 $t$ 是间断点时, 等式左侧需改为 $\dfrac{f(t+)+f(t-)}2$.
+  当 $t$ 是间断点时, 等式左侧需改为 $\dfrac{f(t^+)+f(t^-)}2$.
 \end{theorem}
-上述级数被称为 $f(t)$ 的\noun{傅里叶级数}, 我们来将其改写为复指数形式.
-由
+上述级数被称为 $f(t)$ 的\nouns{傅里叶级数}\index{fuliyejishu@傅里叶级数}, 我们来将其改写为复指数形式.
+由\footnote{工程中习惯使用 $\jj$ 来表示虚数单位, 其含义和本书的 $\ii$ 无差别.}
 \[
   \cos x=\frac{\ee^{\ii x}+\ee^{-\ii x}}2,\quad \sin x=\frac{\ee^{\ii x}-\ee^{-\ii x}}{2\ii }
 \]
@@ -91,11 +91,11 @@
 \[
   f(t)=\sumff c_n\ee^{\ii n\omega t}.
 \]
-现在我们来计算这个可数线性组合的系数.
+我们来计算\nouns{傅里叶系数}\index{fuliyexishu@傅里叶系数} $c_n$.
 
 对于定义在 $(-\infty,+\infty)$ 上周期为 $T>0$ 的\alert{复值}函数 $f,g$, 定义内积\footnote{
-  可以看出, 积分范围可以换成任意长度为 $T$ 的区间.
-  为了避免和线性泛函记号冲突, 这里我们用圆括号表示内积.
+  积分范围可以换成任意长度为 $T$ 的区间.
+  % 为了避免和线性泛函记号冲突, 这里我们用圆括号表示内积.
 }
 \[
   (f,g):=\frac1T\intT f(t)\ov g(t)\d t.
@@ -109,12 +109,13 @@
     0,&m\neq n.
   \end{cases}
 \]
-所以 $\set{\ee^{\ii n\omega t}\mid n\in\BZ}$ 全体构成一组标准正交基. 于是
+所以 $\bigsetm{\ee^{\ii n\omega t}}{n\in\BZ}$ 全体构成一组标准正交基. 于是
 \[
-  c_n=\bigl(f,\ee^{\ii n\omega t}\bigr)
+  c_n=\sumff c_m\bigl(\ee^{\ii m\omega t},\ee^{\ii n\omega t}\bigr)
+  =\bigl(f,\ee^{\ii n\omega t}\bigr)
   =\frac 1T\intT f(t)\ee^{-\ii n\omega t} \d t,
 \]
-我们得到周期函数\noun{傅里叶级数的复指数形式}:
+我们得到周期函数\nouns{傅里叶级数的复指数形式}\index{fuliyejishu@傅里叶级数!fuliyejishudefuzhishuxingshi@傅里叶级数的复指数形式}:
 \[
   f(t)=\frac 1T\sumff \biggl(\intT f(\tau)\ee^{-\ii n\omega\tau} \d\tau\biggr) \ee^{\ii n\omega t}.
 \]
@@ -124,16 +125,18 @@
   (f,f)
   =\sum_{m=-\infty}^{+\infty}\sumff 
     c_m\ov{c_n}\bigl(\ee^{\ii m\omega t},\ee^{\ii n\omega t}\bigr)
-  =\sumff |c_n|^2,
+  =\sumff \abs{c_n}^2.
 \]
-此即勾股定理.
+该等式本质上就是勾股定理的一种推广形式.
 
 \begin{theorem}[帕塞瓦尔恒等式]
-  对于傅里叶级数 $f(t)=\dfrac 1T\sumff c_n \ee^{\ii n\omega t}$, 有
+  \index{pasaiwaerhengdengshi@帕塞瓦尔恒等式}
+  对于周期为 $T$ 的函数 $f(t)$, 我们有
   \[
-     \frac1{T}\intT |f(t)|^2\d t
-    =\sumff |c_n|^2.
+     \frac1{T}\intT \abs{f(t)}^2\d t
+    =\sumff \abs{c_n}^2,
   \]
+  其中 $c_n$ 是它的傅里叶系数, 即 $f(t)=\sumff c_n\ee^{\ii n\omega t}$.
 \end{theorem}
 
 \begin{example}
@@ -143,7 +146,7 @@
 这个问题我们在\thmref{例}{exam:bessel-question} 中使用留数计算过, 现在我们用傅里叶级数的性质来计算它.
 我们需要找一个函数的傅里叶系数与 $\dfrac1{n}$ 有关的函数.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \draw[cstaxis] (-4,0)--(4,0);
@@ -163,7 +166,7 @@
 \end{figure}
 
 \begin{solution}
-  设 $f(t)$ 是一个周期为 $2\cpi$ 的函数, 且 $f(t)=t,t\in[-\cpi,\cpi)$.
+  设 $f(t)$ 是一个周期为 $2\cpi$ 的函数, 且当 $t\in[-\cpi,\cpi)$ 时 $f(t)=t$.
   当 $n\neq0$ 时,
   \[
     c_n=\frac1{2\cpi}\int_{-\cpi}^\cpi t\ee^{-\ii nt}\d t
@@ -193,15 +196,16 @@
 \subsubsection{傅里叶积分公式}
 
 对于一般的函数 $f(t)$, 它未必是周期的.
-此时它无法像前面的情形一样, 表达成可数多个函数 $\set{\ee^{\ii n\omega t}\mid n\in\BZ}$ 的可数线性组合, 而是所有的 $\set{\ee^{\ii \omega t},\omega\in(-\infty,+\infty)}$ 的某种``线性组合''.
-由于我们有不可数无穷多个这样的函数, 因此这种``线性组合的系数''应当是无穷小, 求和自然需要换成积分.
+此时它无法像前面的情形一样, 表达成可数多个函数 $\bigsetm{\ee^{\ii n\omega t}}{n\in\BZ}$ 的可数线性组合, 而是所有的 $\bigsetm{\ee^{\ii \omega t}}{\omega\in(-\infty,+\infty)}$ 的某种``线性组合''.
+由于我们有不可数无穷多个这样的函数, 因此这种``线性组合的系数''应当是``无穷小'', 求和自然需要换成积分.
 若记 $\ee^{\ii \omega t}$ 的``系数''为函数 $\dfrac1{2\cpi}F(\omega)$, 则
 \[
   f(t)=\frac1{2\cpi}\intff F(\omega) \ee^{\ii \omega t}\d t.
 \]
+实际上, $F(\omega)$ 反映了函数 $\ee^{\ii\omega t}$ 出现的权重.
 
-我们来从傅里叶级数形式地推导出函数 $F(\omega)$ 的形式.
-考虑 $f(t)$ 在 $\biggl(-\dfrac T2,\dfrac T2\biggr)$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
+我们来从傅里叶级数形式地推导出函数 $F(\omega)$.
+考虑 $f(t)$ 在 $\Bigl[-\dfrac T2,\dfrac T2\Bigr]$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
 设
 \[
   \omega_n=n\omega,\qquad \delt\omega_n=\omega_n-\omega_{n-1}=\omega,
@@ -219,17 +223,18 @@
     \biggl(\intff f(\tau) \ee^{-\ii \omega\tau} \d \tau\biggr)\ee^{\ii \omega t}
   \d\omega.
 \end{align*}
-这个公式被称为\noun{傅里叶积分公式}.
+这个公式被称为\nouns{傅里叶积分公式}\index{fuliyejifengongshi@傅里叶积分公式}.
 注意这个过程并不严谨, 只是大致陈述从傅里叶级数到傅里叶变换的过程, 其结论的严格表述如下:
 
-\begin{theorem}[\nount{傅里叶积分定理}]
+\begin{theorem}[傅里叶积分定理]
+  \index{fuliyejifendingli@傅里叶积分定理}
   若 $f(t)$ 在 $(-\infty,+\infty)$ 上绝对可积, 且在任一有限区间上满足狄利克雷条件, 则
   \begin{equation}\label{eq:fourier-integral}
     f(t)=\frac1{2\cpi}\intff 
     \biggl(\intff f(\tau) \ee^{-\ii \omega\tau} \d \tau\biggr)\ee^{\ii \omega t}
     \d\omega.
   \end{equation}
-  对于 $f(t)$ 的间断点左边需要改成 $\dfrac{f(t+)+f(t-)}2$.
+  对于 $f(t)$ 的间断点左边需要改成 $\dfrac{f(t^+)+f(t^-)}2$.
 \end{theorem}
 
 \begin{definition}
@@ -237,21 +242,23 @@
   \[
     F(\omega)=\intff f(t) \ee^{-\ii \omega t} \d t
   \]
-  为 $f(t)$ 的\noun{傅里叶变换}, 记作 \noun{$\msf[f]$}.
+  为 $f(t)$ 的\nouns{傅里叶变换}\index{fuliyebianhuan@傅里叶变换}, 记作 \nouns{$\msf[f(t)]$}\index{0ff@$\msf[f(t)]$}.
   称
   \[
     f(t)=\frac1{2\cpi} \intff F(\omega) \ee^{\ii \omega t} \d\omega
   \]
-  为 $F(\omega)$ 的\noun{傅里叶逆变换}, 记作 \noun{$\msf^{-1}[f]$}.
+  为 $F(\omega)$ 的\nouns{傅里叶逆变换}\index{fuliyenibianhuan@傅里叶逆变换}, 记作 \nouns{$\msf^{-1}[F(\omega)]$}\index{0f-1f@$\msf^{-1}[F(\omega)]$}.
 \end{definition}
 
 若 $f(t)$ 是复值函数, 也可定义其傅里叶变换, 只要其实部和虚部都满足傅里叶积分定理的条件即可.
 
-也可以把 $f(t),F(\omega)$ 叫作一个\noun{傅里叶变换对}, $f(t),F(\omega)$ 分别叫作\noun{原函数}和\noun{象函数}.
+也可以把 $f(t),F(\omega)$ 叫作一个\nouns{傅里叶变换对}\index{fuliyebianhuandui@傅里叶变换对}, $f(t),F(\omega)$ 分别叫作\nouns{原函数}\index{yuanhanshu@原函数}和\nouns{象函数}\index{xianghanshu@象函数}.
 若 $f(t)$ 表示随时间 $t$ 变化的函数, 则 $F(\omega)$ 表示的是频率 $\omega$ 的函数, 所以傅里叶变换是\alert{时域到频域的转换}.
 
 从定义出发, 不难发现傅里叶变换满足:
-\begin{theorem}[对称性质]\label{thm:symmetry-property}
+\begin{theorem}[对称性质]
+  \index{duichenxingzhi@对称性质}
+  \label{thm:symmetry-property}
   若 $\msf[f(t)]=g(\omega)$, 则 $\msf[g(t)]=2\cpi f(-\omega)$.
   对于 $f$ 的不连续点, 右侧值需要修改为左右极限平均值.
 \end{theorem}
@@ -282,7 +289,7 @@
     \biggr) \d\omega\\
   &=\frac1\cpi\intf\biggl(\intff f(\tau) \cos \omega(t-\tau)\d\tau\biggr)\d\omega.
 \end{align*}
-于是得到\noun{傅里叶积分公式的三角形式}:
+于是得到\nouns{傅里叶积分公式的三角形式}\index{fuliyejifengongshi@傅里叶积分公式!fuliyejifengongshidesanjiaoxingshi@傅里叶积分公式的三角形式}:
 \[
   f(t)=\frac1\cpi\intf\biggl(\intff f(\tau) \cos \omega(t-\tau)\d\tau\biggr)\d\omega.
 \]
@@ -292,12 +299,12 @@
   F(\omega)=\intff f(t)\ee^{-\ii \omega t}\d t
   =2\intf f(t)\cos{\omega t}\d t
 \]
-也是偶函数, 从而得到\noun{傅里叶余弦变换}和\noun{傅里叶余弦积分公式}:
+也是偶函数, 从而得到\nouns{傅里叶余弦变换}\index{fuliyeyuxianbianhuan@傅里叶余弦变换}和\nouns{傅里叶余弦积分公式}\index{fuliyeyuxianjifengongshi@傅里叶余弦积分公式}:
 \[
   f(t)=\frac2\cpi\intf F_c(\omega)\cos\omega t\d\omega,\quad\text{其中}\ 
   F_c(\omega)=\intf f(t)\cos\omega t\d t.
 \]
-类似地, 若 $f(t)$ 是奇函数, 则有\noun{傅里叶正弦变换}和\noun{傅里叶正弦积分公式}:
+类似地, 若 $f(t)$ 是奇函数, 则有\nouns{傅里叶正弦变换}\index{fuliyezhengxianbianhuan@傅里叶正弦变换}和\nouns{傅里叶正弦积分公式}\index{fuliyezhengxianjifengongshi@傅里叶正弦积分公式}:
 \[
   f(t)=\frac2\cpi\intf F_s(\omega)\sin\omega t\d\omega,\quad\text{其中}\ 
   F_s(\omega)=\intf f(\tau)\sin \omega\tau\d\tau.
@@ -309,8 +316,8 @@
 \begin{example}\label{exam:square-pulse}
   求矩形脉冲函数 $f(t)=
     \begin{cases}
-      1/2, & |t|\le 1,\\
-      0, & |t|>1
+      1/2, & \abs{t}\le 1,\\
+      0, & \abs{t}>1
     \end{cases}$
   的傅里叶变换.
 \end{example}
@@ -326,19 +333,20 @@
   \end{align*}
 \end{solution}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{scope}
+      \def\w{1.2}
       \draw[cstaxis] (-2,0)--(2,0);
       \draw[cstaxis] (0,-1)--(0,2);
-      \draw[cstdash](-1,0)--(-1,1);
-      \draw[cstdash](1,0)--(1,1);
-      \draw[main,cstcurve](-1,1)--(1,1);
+      \draw[cstdash](-\w,0)--(-\w,{\w/2});
+      \draw[cstdash](\w,0)--(\w,{\w/2});
+      \draw[main,cstcurve](-\w,{\w/2})--(\w,{\w/2});
       \draw (2,0) node[above] {$t$};
       \draw (0,2) node[right] {$f(t)$};
     \end{scope}
-    \begin{scope}[xshift=6cm]
+    \begin{scope}[shift={(6,0)}]
       \draw[cstaxis] (-2.5,0)--(2.5,0);
       \draw[cstaxis] (0,-1)--(0,2);
       \draw[cstcurve,second,domain=1:700,smooth] plot ({\x*0.003}, {1.5*sin(\x)*180/\x/pi});
@@ -350,19 +358,19 @@
   \caption{矩形脉冲与 $\sinc$ 函数}
 \end{figure}
 
-我们将它的傅里叶变换称为 \noun{$\sinc$ 函数} $\sinc(x)=\dfrac{\sin x}x$.
+我们将它的傅里叶变换称为 \nouns{$\sinc$ 函数}\index{sinc@$\sinc$ 函数}\index{0sinc@$\sinc(t)$} $\sinc(x)=\dfrac{\sin x}x$.
 注意到它是偶函数, 由\thmFI 可知
 \[
   f(t)=\msf^{-1}[F(\omega)]=\frac1{2\cpi}\intff F(\omega)\ee^{\ii \omega t}\d\omega
   =\frac1\cpi\intf\frac{\sin\omega\cos\omega t}{\omega}\d \omega.
 \]
-当 $t=\pm1$ 时, 左侧应替换为 $\dfrac{f(t+)+f(t-)}2=\dfrac14$.
+当 $t=\pm1$ 时, 左侧应替换为 $\dfrac{f(t^+)+f(t^-)}2=\dfrac14$.
 由此可得
 \[
   \intf\frac{\sin \omega\cos\omega t}\omega\d\omega=\begin{cases}
-    \cpi/2,&|t|<1,\\
-    \cpi/4,&|t|=1,\\
-    0,&|t|>1.
+    \cpi/2,&\abs{t}<1,\\
+    \cpi/4,&\abs{t}=1,\\
+    0,&\abs{t}>1.
   \end{cases}
 \]
 特别地, 我们可以得到狄利克雷积分 $\intf\frac{\sin\omega}\omega\d\omega=\frac\cpi2$.
@@ -370,9 +378,9 @@
 由\thmFSym 可知
 \[
   \msf[\sinc(t)]=\begin{cases}
-    \cpi,&|\omega|<1,\\
-    \cpi/2,&|\omega|=1,\\
-    0,&|\omega|>1.
+    \cpi,&\abs{\omega}<1,\\
+    \cpi/2,&\abs{\omega}=1,\\
+    0,&\abs{\omega}>1.
   \end{cases}
 \]
 
@@ -397,7 +405,7 @@
   \end{align*}
 \end{solution}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{scope}
@@ -410,11 +418,11 @@
       \draw (2,0) node[above] {$t$};
       \draw (0,2) node[right] {$f(t)$};
     \end{scope}
-    \begin{scope}[xshift=6cm]
+    \begin{scope}[shift={(6,0)}]
       \draw[cstaxis] (-2.5,0)--(2.5,0);
       \draw[cstaxis] (0,-1.5)--(0,2);
-      \draw[cstcurve,second,domain=1:540,smooth] plot ({\x*pi/800}, {-1.5*(1-cos(\x))*180/\x/pi});
-      \draw[cstcurve,second,domain=1:540,smooth] plot ({-\x*pi/800}, {1.5*(1-cos(\x))*180/\x/pi});
+      \draw[cstcurve,second,domain=1:540,smooth] plot ({\x*pi/800}, {1.5*(1-cos(\x))*180/\x/pi});
+      \draw[cstcurve,second,domain=1:540,smooth] plot ({-\x*pi/800}, {-1.5*(1-cos(\x))*180/\x/pi});
       \draw (2.5,0) node[above] {$\omega$};
       \draw (0,2) node[right] {$\ii F(\omega)$};
     \end{scope}
@@ -448,10 +456,10 @@
     =-\frac1{\beta+\ii \omega}\ee^{-(\beta+\ii \omega)t}\Big|_0^{+\infty}
     =\frac1{\beta+\ii \omega}.
   \end{align*}
-  这里, 当 $t\ra +\infty$ 时, $|\ee^{(-\beta+\ii \omega)t}|=\ee^{-\beta t}\ra 0$.
+  这里, 当 $t\ra +\infty$ 时, $\abs{\ee^{(-\beta+\ii \omega)t}}=\ee^{-\beta t}\ra 0$.
 \end{solution}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \begin{scope}
@@ -461,7 +469,7 @@
       \draw (3.5,0) node[above] {$t$};
       \draw (0,2.5) node[right] {$f(t)$};
     \end{scope}
-    \begin{scope}[xshift=8cm]
+    \begin{scope}[shift={(8,0)}]
       \draw[cstaxis] (-2.5,0)--(2.5,0);
       \draw[cstaxis] (0,-.5)--(0,2.5);
       \draw[cstcurve,second,domain=-10:10,smooth] plot ({.2*\x}, {2/(1+.1*\x*\x)});
@@ -472,7 +480,7 @@
   \caption{指数衰减函数与它的傅里叶变换}
 \end{figure}
 
-不难看出, 这里实际上只要求 $\Re\beta>0$.
+不难看出, 对于 $\Re\beta>0$ 的情形也有相同的傅里叶变换形式.
 
 由\thmFI 可知
 \begin{align*}
@@ -481,7 +489,7 @@
    =\frac1{2\cpi}\intff \frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\d \omega\\
   &=\frac1{\cpi}\intf \frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\d \omega,
 \end{align*}
-当 $t=0$ 时, 左侧应替换为 $\dfrac{f(0+)+f(0-)}2=\dfrac12$.
+当 $t=0$ 时, 左侧应替换为 $\dfrac{f(0^+)+f(0^-)}2=\dfrac12$.
 由此可得
 \[
   \intf\frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\d\omega
@@ -513,33 +521,40 @@
 例如常值函数 $f(t)=1$ 在 $(-\infty,+\infty)$ 上不是绝对可积的, 所以它没有傅里叶变换, 这很影响我们使用傅里叶变换.
 为此我们引入广义函数的概念.
 
-设 $\mss$ 是由一些性质较好的函数构成的线性空间, 例如我们可以取所有光滑函数 $f(t)$, 且满足对任意非负整数 $m,n$, $\liml_{t\ra\infty}f^{(m)}(t)t^n=0$.
-设 $\lambda(t)$ 是局部可积缓增函数, 也就是说, 它在任一有限区间上可积, 且存在 $n$ 使得 $\liml_{t\ra\infty}\lambda(t)t^{-n}=0$.
+设 $\mss$ 是由一些函数构成的线性空间.
+对于傅里叶变换理论, 我们取所有任意阶可导函数 $f(t)$, 且满足对任意非负整数 $m,n$, $\liml_{t\ra\infty}f^{(m)}(t)t^n=0$.
+设 $\lambda(t)$ 是\nouns{局部可积}\index{jubukeji@局部可积}\nouns{缓增}\index{huanzeng@缓增}函数, 也就是说, 它在任一有限区间上可积, 且存在 $n$ 使得 $\liml_{t\ra\infty}\lambda(t)t^{-n}=0$.
 那么对任意 $f(t)\in\mss$, $\lambda(t)f(t)$ 是绝对可积的, 从而我们可以定义一个线性映射
-\begin{align*}
-  \mss&\lra \BR\\
-  f(t)&\mapsto \pair{\lambda,f}:=\intff \lambda(t)f(t)\d t.
-\end{align*}
+\begin{equation}
+  \label{eq:linear-functional-function}
+  \begin{aligned}
+    \mss&\lra \BR\\
+    f(t)&\mapsto \pair{\lambda,f}:=\intff \lambda(t)f(t)\d t.
+  \end{aligned}
+\end{equation}
 反过来, 这个线性映射也``几乎处处''确定了 $\lambda(t)$ 本身.\footnote{
   ``几乎处处''是指若修改 $\lambda(t)$ 在一个零测集上的函数值, 则对应的线性映射不会改变.
-  集合 $S$ 是一个\emph{零测集}, 若对任意 $\varepsilon>0$, $S$ 可以被包含在至多可数个总长度为 $\varepsilon$ 的区间中.
+  若对任意 $\varepsilon>0$, 集合 $S$ 可以被包含在至多可数个总长度为 $\varepsilon$ 的区间中, 则称集合 $S$ 是一个\emph{零测集}\index{lingceji@零测集}, 
 }
 
-\noun{广义函数}\footnote{也叫\emph{分布}.}就是指一个线性映射 $\msl:\mss\ra \BR$.
+\nouns{广义函数}\index{guangyihanshu@广义函数}\footnote{
+  严格来说应该称之为\emph{缓增广义函数}\index{huanzengguangyihanshu@缓增广义函数}, 也叫\emph{缓增分布}\index{huanzengfenbu@缓增分布}. 此外, $T$ 还要求是连续的: 对任意 $\varepsilon>0$ 和 $m\ge0$, 存在 $\delta>0$ 使得当 $\bigabs{T(f)-T(g)}<\varepsilon$ 时, 对任意 $x$ 均有 $\bigabs{f^{(m)}(x)-g^{(m)}(x)}<\delta$.
+}就是指一个线性映射 $T:\mss\ra \BR$.
 为了和普通函数类比, 常常也将广义函数写成上述积分或配对形式:
 \[
-  \msl(f)=\intff \lambda(t)f(t)\d t=\pair{\lambda,f}.
+  T(f)=\intff \lambda(t)f(t)\d t=\pair{\lambda,f}.
 \]
 注意这里并不是真正的积分, 只是一种记号上的约定, $\lambda(t)$ 也并不是一个真正的函数.
-自然地, 局部可积缓增函数 $\lambda(t)$ 就是一个广义函数.
+
+每一个局部可积缓增函数 $\lambda(t)$ 都可以通过 \ref{eq:linear-functional-function} 看作是一个广义函数.
 
 \begin{definition}
-  狄拉克 \noun{$\dirac$ 函数}\footnotemark 是指广义函数
+  狄拉克 \nouns{$\dirac$ 函数}\index{dilakehanshu@狄拉克 $\dirac$ 函数}\index{0dirac@$\dirac(t)$}\footnotemark 是指广义函数
   \[
     \pair{\dirac,f}=\intff \dirac(t)f(t)\d t=f(0).
   \]
 \end{definition}
-\footnotetext{又名\emph{单位脉冲函数}.}
+\footnotetext{又名\emph{单位脉冲函数}\index{danweimaichonghanshu@单位脉冲函数}.}
 
 可以证明, 不存在局部可积缓增函数 $\lambda(t)$ 使得 $\pair{\lambda,f}=f(0)$. 也就是说, $\dirac$ 函数不可能是真正的函数.
 
@@ -555,47 +570,50 @@
   \pair{\dirac_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\d t=f(\xi),\quad \xi\in(0,\varepsilon).
 \]
 当 $\varepsilon\ra0$ 时, 右侧就趋于 $f(0)$.
-因此 $\dirac$ 可以看成 $\dirac_\varepsilon$ 的``弱极限''\footnote{
-  若 $\liml_{\varepsilon\ra 0}\pair{\lambda_\varepsilon,f}=\pair{\lambda,f}$, 则称 $\lambda$ 是 $\lambda_n$ 当 $\varepsilon\ra 0$ 时的\emph{弱极限}.
-}.
+因此 $\dirac$ 可以看成 $\dirac_\varepsilon$ 的弱极限.\footnote{
+  若 $\liml_{\varepsilon\ra 0}\pair{\lambda_\varepsilon,f}=\pair{\lambda,f}$, 则称 $\lambda$ 是 $\lambda_\varepsilon$ 当 $\varepsilon\ra 0$ 时的\emph{弱极限}\index{ruojixian@弱极限}.
+}
 
 通常用长度为 $1$ 的向上有向线段来表示它, 而用长度为 $k$ 的向上有向线段表示 $k\dirac(t)$, 长度为 $k$ 的向下有向线段表示 $-k\dirac(t)$.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
-    \draw[cstaxis] (-1,0)--(1,0);
+    \draw[cstaxis] (-1.5,0)--(1.5,0) node[above] {$t$};
     \draw[cstaxis] (0,-0.5)--(0,2);
     \draw (0,1.5) node[left] {$1$}
-      (1,0) node[above] {$t$}
-      (0,0) node[below left] {$O$}
-      (0,1.5) node[right] {$\dirac(t)$};
-    \draw[main,cstcurve,cstra](0,0)--(0,1.5);
+      (0,0) node[below left] {$O$};
+    \draw[main,cstcurve,cstra] (0,0)--(0,1.5) 
+      node[right] {$\dirac(t)$};
   \end{tikzpicture}
   \caption{$\dirac$ 函数}
 \end{figure}
 
 对于广义函数 $\lambda$, 仿照函数积分的性质, 我们定义
 \begin{align*}
-  \intff \lambda(t-t_0)f(t)\d t
-  &:=\intff \lambda(t)\cdot f(t+t_0)\d t,\\
-  \intff \lambda(at)f(t)\d t
-  &:=\intff \lambda(t)\cdot\frac1{|a|}f\bigl(\frac ta\bigr)\d t,\\
-  \intff \lambda'(t)f(t)\d t
-  &:=-\intff \lambda(t)f'(t)\d t.
+  \pair{\lambda(t-t_0),f}&
+  =\intff \lambda(t-t_0)f(t)\d t
+  :=\intff \lambda(t)\cdot f(t+t_0)\d t,\\
+  \pair{\lambda(at),f}&
+  =\intff \lambda(at)f(t)\d t
+  :=\intff \lambda(t)\cdot\frac1{\abs{a}}f\bigl(\frac ta\bigr)\d t,\\
+  \pair{\lambda',f}&
+  =\intff \lambda'(t)f(t)\d t
+  :=-\intff \lambda(t)f'(t)\d t.
 \end{align*}
 显然 $\intff \dirac(t-t_0)f(t)\d t=f(t_0)$.
 
 \begin{theorem}
   $\dirac$ 函数满足如下性质:
   \begin{enuma}
-    \item \noun{筛选性质}: $f(t)\dirac(t-t_0)=f(t_0)\dirac(t-t_0)$.
-    \item $\dirac(at)=\dfrac1{|a|}\dirac(t)$. 特别地, $\dirac(t)=\dirac(-t)$.
+    \item \nouns{筛选性质}\index{shuaixuanxingzhi@筛选性质}: $f(t)\dirac(t-t_0)=f(t_0)\dirac(t-t_0)$.
+    \smallskip
+    \item $\dirac(at)=\dfrac1{\abs{a}}\dirac(t)$. 特别地, $\dirac(t)=\dirac(-t)$.
     \item $\pair{\dirac^{(n)},f}=(-1)^nf^{(n)}(0)$.
-    \item $u'(t)=\dirac(t)$, 其中 $u(t)=\begin{cases}1,&t\ge0,\\0,&t<0\end{cases}$ 是\noun{单位阶跃函数}\footnotemark.
+    \item $u'(t)=\dirac(t)$, 其中 $u(t)=\begin{cases}1,&t\ge0,\\0,&t<0\end{cases}$ 是\nouns{单位阶跃函数}\index{danweijieyuehanshu@单位阶跃函数}\index{0ut@$u(t)$}\footnotemark.
   \end{enuma}
 \end{theorem}
-\footnotetext{又名\emph{赫维赛德函数}.}
+\footnotetext{又名\emph{赫维赛德函数}\index{heweisaidehanshu@赫维赛德函数}.}
 
 \begin{proofenuma}
   \item 这是因为
@@ -606,8 +624,8 @@
   \item 这是因为
   \[
     \intff \dirac(at)f(t)\d t
-    =\intff \dirac(t)\cdot \frac1{|a|}f\bigl(\frac ta\bigr)\d t
-    =\frac1{|a|}f(0).
+    =\intff \dirac(t)\cdot \frac1{\abs{a}}f\bigl(\frac ta\bigr)\d t
+    =\frac1{\abs{a}}f(0).
   \]
   \item 这是因为
   \begin{align*}
@@ -630,12 +648,12 @@
 $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 对于 $f(t)\in\mss$ 以及普通函数 $\lambda$, 我们发现
 \begin{align*}
-  \pair{\msf[\lambda],f}
-  =\intff\intff \lambda(t)\ee^{-\ii \omega t}\d t f(\omega)\d \omega
+  \pair{\msf[\lambda],f}&
+  =\intff\intff \lambda(t)\ee^{-\ii \omega t}\d t f(\omega)\d \omega\\&
   =\intff\lambda(t) \intff \ee^{-\ii \omega t}f(\omega)\d \omega\d t 
   =\pair{\lambda,\msf[f]}.
 \end{align*}
-从而我们可以按如下方式定义广义函数的\noun{广义傅里叶变换}:
+从而我们可以按如下方式定义广义函数的\nouns{广义傅里叶变换}\index{fuliyebianhuan@傅里叶变换!guanyifuliyebianhuan@广义傅里叶变换}:
 \[
   \pair{\msf[\lambda],f}=\pair{\lambda,\msf[f]}.
 \]
@@ -695,6 +713,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 由于积分本身具有线性性质, 因此积分变换也都满足线性性质.
 
 \begin{theorem}[线性性质]
+  \index{xianxingxingzhi@线性性质}
   对于任意常数 $\alpha$ 和 $\beta$, 有
   \[
     \msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
@@ -706,6 +725,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \subsubsection{位移性质}
 
 \begin{theorem}[位移性质]
+  \index{weiyixingzhi@位移性质}
   \[\msf[f(t-t_0)]=\ee^{-\ii \omega t_0}F(\omega),\quad
   \msf^{-1}[F(\omega-\omega_0)]=\ee^{\ii \omega_0 t}f(t).\]
 \end{theorem}
@@ -751,6 +771,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \]
 我们作此汇总:
 \begin{fifth}{与 $\dirac$ 函数有关的傅里叶变换汇总}
+  \label{page:dirac-fourier-transform}
   \begin{enuma}
     \item $\msf[\dirac(t)]=1$, $\msf[\dirac(t-t_0)]=\ee^{-\ii \omega t_0}$;
     \item $\msf[1]=2\cpi\dirac(\omega)$, $\msf[\ee^{\ii \omega_0 t}]=2\cpi\dirac(\omega-\omega_0)$;
@@ -779,8 +800,9 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \subsubsection{微分性质和积分性质}
 
 \begin{theorem}[微分性质]
+  \index{weifenxingzhi@微分性质}
   \label{thm:fourier-differential-property}
-  若 $f(t)$ 在 $(-\infty,+\infty)$ 至多有有限多个点处不可导, 且 $\liml_{t\ra\infty}f(t)=0$, 则\footnotemark
+  若 $f(t)$ 在 $(-\infty,+\infty)$ 至多有有限多个点处不可导, 且 $\liml_{t\ra\infty}f(t)=0$, 则
   \[
     \msf[f'(t)]=\ii \omega F(\omega),\qquad
     \msf^{-1}[F'(\omega)]=-\ii tf(t).
@@ -791,7 +813,22 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     \msf^{-1}[F^{(n)}(\omega)]=(-\ii t)^nf(t).
   \]
 \end{theorem}
-\footnotetext{
+
+\begin{proof}
+  由分部积分可知
+  \begin{align*}
+    \msf[f']
+    &=\intff f'(t)\ee^{-\ii \omega t}\d t
+    =f(t)\ee^{-\ii \omega t}\Big|_{-\infty}^{+\infty}-\intff f(t)\frac{\d \ee^{-\ii \omega t}}{\d t}\d t\\
+    &=\ii \omega \intff f(t)\ee^{-\ii \omega t}\d t
+    =\ii \omega F(\omega),
+  \end{align*}
+  这里, 当 $t\ra \infty$ 时, $\abs{f(t)\ee^{-\ii\omega t}}=\abs{f(t)}\ra 0$.
+  逆变换情形类似可得.
+  $n$ 阶导数情形由归纳可得.
+\end{proof}
+
+如果没有 $\liml_{t\ra\infty}f(t)=0$ 这一条件, 该结论是不成立的.\footnote{
   一般地, 若 $\liml_{t\ra+\infty}f(t)=A$, $\liml_{t\ra-\infty}f(t)=B$, 则 $g(t)=f(t)-A-(B-A)u(t)$ 满足定理条件.
   由于
   \[
@@ -807,20 +844,6 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     =\ii \omega \bigl(F(\omega)-(A+B)\cpi\dirac(\omega)\bigr).
   \end{align*}
 }
-
-\begin{proof}
-  由分部积分可知
-  \begin{align*}
-    \msf[f']
-    &=\intff f'(t)\ee^{-\ii \omega t}\d t
-    =f(t)\ee^{-\ii \omega t}\Big|_{-\infty}^{+\infty}-\intff f(t)\frac{\d \ee^{-\ii \omega t}}{\d t}\d t\\
-    &=\ii \omega \intff f(t)\ee^{-\ii \omega t}\d t
-    =\ii \omega F(\omega),
-  \end{align*}
-  这里, 当 $t\ra \infty$ 时, $\abs{f(t)\ee^{-\ii\omega t}}=|f(t)|\ra 0$.
-  逆变换情形类似可得.
-  $n$ 阶导数情形由归纳可得.
-\end{proof}
 
 由\thmFDif 自然得到函数乘多项式之后的傅里叶变换:
 \begin{align*}
@@ -846,7 +869,13 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
 \end{solution}
 
-\begin{theorem}[积分性质]\label{thm:fourier-integral-property}
+\begin{exercise}
+  $f(t)=\dirac'(t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+\end{exercise}
+
+\begin{theorem}[积分性质]
+  \index{jifenxingzhi@积分性质}
+  \label{thm:fourier-integral-property}
   我们有
   \[
     \msf\Bigl(\int_{-\infty}^t f(\tau)\d\tau\Bigr)
@@ -881,10 +910,12 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \subsubsection{相似性质}
 
 由变量替换易得:
-\begin{theorem}[相似性质]\label{thm:fourier-similar-property}
+\begin{theorem}[相似性质]
+  \index{xiangsixingzhi@相似性质}
+  \label{thm:fourier-similar-property}
   \[
-    \msf[f(at)]=\frac1{|a|}F\bigl(\frac\omega a\bigr),\quad
-    \msf^{-1}[F(a\omega)]=\frac1{|a|}f\bigl(\frac t a\bigr).
+    \msf[f(at)]=\frac1{\abs{a}}F\bigl(\frac\omega a\bigr),\quad
+    \msf^{-1}[F(a\omega)]=\frac1{\abs{a}}f\bigl(\frac t a\bigr).
   \]
 \end{theorem}
 
@@ -910,14 +941,17 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     &\Im t_0>0.
   \end{cases}
 \end{equation}
-以上公式右侧在 $0$ 处的值都需要为左右极限的平均值.
+以上公式右侧在 $0$ 处的值都需要改为左右极限的平均值.
 设 $f(z)$ 是有理函数, 分母的次数大于分子的次数, 且分母没有实根.
 那么 $f(z)$ 可以拆分为部分分式之和, 从而可求得其傅里叶变换和傅里叶逆变换.
 
 
 \subsubsection{周期函数的傅里叶变换}
 
-\begin{example}\label{exam:fourier-transform-period-function}
+我们来看傅里叶变换与傅里叶级数之间的联系.
+
+\begin{example}
+  \label{exam:fourier-transform-period-function}
   设 $\msf[f(t)]=F(\omega)$. 求
   \[
     g(t)=\sumff f(t+nT)
@@ -937,16 +971,18 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \[
     g(t)=\frac1T\sumff F(n\omega_0)\ee^{\ii n\omega_0t},
   \]
-  从而
+  当 $t$ 是间断点时, 等式左侧需要修改为 $\dfrac{g(t^+)+g(t^-)}2$.
+  从而可得
   \[
     G(\omega)=\msf[g(t)]
     =\frac{2\cpi}T\sumff F(n\omega_0)\dirac(n-n\omega_0).
   \]
 \end{solution}
 
-由此可知, $f(t)$ 的周期扩展 $f_T(t)$ 的傅里叶变换是一系列脉冲函数的组合, 而各个脉冲的强度正是由 $F(\omega)$ 所决定.
+由此可知, $f(t)$ 的周期扩展 $g(t)$ 的傅里叶变换是一系列脉冲函数的组合, 而各个脉冲的强度正是由 $F(\omega)$ 所决定.
+例如矩形脉冲函数作周期扩展后得到通断比为 $\dfrac12$ 的方波信号, 它的傅里叶变换就是一系列脉冲函数的组合, 各个脉冲函数的强度为脉冲函数所在时间的辛克函数值的 $\dfrac{2\cpi}T$ 倍.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[yscale=1.8]
     \begin{scope}[xscale=.4]
@@ -966,7 +1002,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
       \draw[main,cstcurve](-1,1)--(1,1);
       \draw[main,cstcurve](3,1)--(5,1);
     \end{scope}
-    \begin{scope}[xshift=7cm,xscale=.3]
+    \begin{scope}[shift={(7,0)},xscale=.3]
       \draw[cstaxis] (-10.5,0)--(10.5,0)
         node[above] {$\omega$};
       \draw[cstaxis] (0,-.5)--(0,2)
@@ -990,9 +1026,10 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 \subsection{傅里叶变换的应用}
 
-\subsubsection{乘积定理以及应用}
+\subsubsection{乘积定理}
 
 \begin{theorem}[乘积定理]
+  \index{chengjidingli@乘积定理}
   若 $\msf[f(t)]=F(\omega),\msf[g(t)]=G(\omega)$, 则
   \[
     \intff f(t)\ov{g(t)}\d t
@@ -1000,8 +1037,8 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
   特别地,
   \[
-    \intff |f(t)|^2\d t
-    =\frac1{2\cpi}\intff |F(\omega)|^2\d \omega.
+    \intff \abs{f(t)}^2\d t
+    =\frac1{2\cpi}\intff \abs{F(\omega)}^2\d \omega.
   \]
 \end{theorem}
 
@@ -1040,22 +1077,24 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \begin{align*}
     \intff \frac{\sin^4 x}{x^2}\d x
     &=\frac12\intff \Bigl(\frac{1-\cos 2x}{2x}\Bigr)^2\d (2x)
-    =\frac18\intff |F(\omega)|^2\d \omega\\
-    &=\frac18\cdot2\cpi\intff |f(t)|^2\d t
+    =\frac18\intff \abs{F(\omega)}^2\d \omega\\
+    &=\frac18\cdot2\cpi\intff \abs{f(t)}^2\d t
     =\frac\cpi 4\int_{-1}^1 \d t
     =\frac\cpi2.
   \end{align*}
 \end{solution}
 
 
-\subsubsection{泊松求和公式及其应用}
+\subsubsection{泊松求和公式}
 
-\begin{theorem}[泊松求和公式]\label{thm:poisson-summation-formula}
+\begin{theorem}[泊松求和公式]
+  \index{bosongqiuhegongshi@泊松求和公式}
+  \label{thm:poisson-summation-formula}
   若 $\msf[f(t)]=F(\omega)$, 则
   \[
     \sumff f(n)=\sumff F(2\cpi n).
   \]
-  若 $n$ 是 $f(t)$ 的间断点, 则 $f(n)$ 需要修改为 $\dfrac{f(n+)+f(n-)}2$.
+  若 $n$ 是 $f(t)$ 的间断点, 则 $f(n)$ 需要修改为 $\dfrac{f(n^+)+f(n^-)}2$.
 \end{theorem}
 
 \begin{proof}
@@ -1075,12 +1114,12 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{example}
 
 \begin{solution}
-  由 \ref{eq:fourier-transform-rational-function} 可知 $f(t)=\dfrac1{t^2+1}$ 的傅里叶变换为
+  由 \eqref{eq:fourier-transform-rational-function} 可知 $f(t)=\dfrac1{t^2+1}$ 的傅里叶变换为
   \begin{align*}
     \msf[f(t)]
     =\frac\ii2\msf\Bigl[\frac1{t+\ii}-\frac1{t-\ii}\Bigr]
     =\frac\ii2\bigl(-2\cpi\ii \ee^{-\omega} u(\omega)-2\cpi\ii \ee^{\omega} u(-\omega)\bigr)
-    =\cpi \ee^{-|\omega|}.
+    =\cpi \ee^{-\abs{\omega}}.
   \end{align*}
   这里注意第二个等式右侧在 $\omega=0$ 处的值需要修改为 $\cpi$.
   由\thmFPoi 可得
@@ -1093,20 +1132,11 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
 \end{solution}
 
-\begin{exercise}
-  计算 $\sumff \dfrac1{n^2+n+1}$.
-\end{exercise}
-% $\dfrac{2\cpi}{\sqrt3}\cdot\dfrac{\ee^{\sqrt3\cpi}-1}{\ee^{\sqrt3\cpi}+1}
-% =\dfrac{2\cpi}{\sqrt3}\tanh\dfrac{\sqrt3\cpi}2$.
 
-% \sumff \dfrac1{n^2+a^2}=\cpi /a\tanh(\cpi a)
-% \sumff \dfrac1{(n+1/2)^2+a^2}=\cpi \tanh(\cpi a)/a
-
-
-\subsubsection{卷积及其应用}
+\subsubsection{卷积}
 
 \begin{definition}
-  函数 $f_1(t)$ 和 $f_2(t)$ 的\noun{卷积}是指
+  函数 $f_1(t)$ 和 $f_2(t)$ 的\nouns{卷积}\index{juanji@卷积}是指
   \[
     (f_1\ast f_2)(t)=\intff f_1(\tau)f_2(t-\tau)\d \tau.
   \]
@@ -1114,7 +1144,9 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 卷积满足如下重要性质:
 
-\begin{theorem}[卷积定理]\label{thm:convolution-theorem}
+\begin{theorem}[卷积定理]
+  \index{juanjidingli@卷积定理}
+  \label{thm:convolution-theorem}
   若 $f_1,f_2$ 的傅里叶变换分别为 $F_1,F_2$, 则
   \[
     \msf[f_1\ast f_2]=F_1\cdot F_2,\qquad
@@ -1139,7 +1171,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
   \item $f\ast\dirac=f$;
   \item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
-\end{enuma}\par\noindent
+\end{enuma}
 不过, 利用\thmFConv 可以更容易地理解这些等式.
 因为这些等式的傅里叶变换实际上是在说象函数满足乘法交换律、结合律、分配律, 且 $F\cdot 1=F$,
 \[
@@ -1172,6 +1204,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 我们来看卷积在广义积分中的一个应用.
 
 \begin{example}
+  \label{exam:bouwein-integral}
   计算积分 $I=\intff \frac{\sin \omega}{\omega}\cdot \frac{\sin (\omega/3)}{\omega/3}\d\omega$.
 \end{example}
 
@@ -1185,9 +1218,9 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   由\thmref{例}{exam:square-pulse} 我们知道
   \[
     f(t)=\msf^{-1}[F(\omega)]=\begin{cases}
-      1/2, & |t|<1,\\
-      1/4, & |t|=1,\\
-      0, & |t|>1.
+      1/2, & \abs{t}<1,\\
+      1/4, & \abs{t}=1,\\
+      0, & \abs{t}>1.
     \end{cases}
   \]
   再由\thmFSim 可知
@@ -1205,26 +1238,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   故 $I=2\cpi\msf^{-1}[FG](0)=\cpi$.
 \end{solution}
 
-由卷积的定义可以看出, 函数 $g(t)$ 与函数
-\[
-  f_\varepsilon(t)=\begin{cases}
-    1/2\varepsilon, & |t|<\varepsilon,\\
-    1/4\varepsilon, & |t|=\varepsilon,\\
-    0, & |t|>\varepsilon
-  \end{cases}
-\]
-的卷积在 $t$ 处的值
-\[
-   (g\ast f_\varepsilon)(t)
-  =k\int_{-\varepsilon}^{\varepsilon} g(t-\tau)\d \tau
-  =k\int_{t-\varepsilon}^{t+\varepsilon} g(\tau)\d \tau
-\]
-就是 $g(t)$ 在区间 $[t-\varepsilon,t+\varepsilon]$ 上的平均值.
-当 $\varepsilon$ 很小时, 与 $f_\varepsilon$ 的卷积没有对 $g(t)$ 的形状作很大改变, 但却让 $g(t)$ 变得更``平滑''了.
-当然, 根据我们的需要可以选择不同的函数与其作卷积, 以对齐进行平滑、锐化或边缘检测等操作.
-由此可知卷积在信号和图像处理等邻域有着重要作用.
-
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[xscale=.65]
     \begin{scope}
@@ -1236,14 +1250,14 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
       \draw[cstdash] (1,0)--(1,1);
       \draw[main,cstcurve](-1,1)--(1,1);
     \end{scope}
-    \begin{scope}[xshift=7cm]
+    \begin{scope}[shift={(7,0)}]
       \draw[cstaxis] (-2.5,0)--(2.5,0)
         node[above] {$t$};
       \draw[cstaxis] (0,-.5)--(0,2)
         node[right] {$g\ast f$};
       \draw[main,cstcurve](-1.5,0)--(-0.5,1)--(0.5,1)--(1.5,0);
     \end{scope}
-    \begin{scope}[xshift=15cm]
+    \begin{scope}[shift={(15,0)}]
       \draw[cstaxis] (-3,0)--(3,0)
         node[above] {$t$};
       \draw[cstaxis] (0,-.5)--(0,2)
@@ -1256,17 +1270,36 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \caption{卷积将函数变平滑}
 \end{figure}
 
+由卷积的定义可以看出, 函数 $g(t)$ 与函数
+\[
+  f_\varepsilon(t)=\begin{cases}
+    1/2\varepsilon, & \abs{t}<\varepsilon,\\
+    1/4\varepsilon, & \abs{t}=\varepsilon,\\
+    0, & \abs{t}>\varepsilon
+  \end{cases}
+\]
+的卷积在 $t$ 处的值
+\[
+   (g\ast f_\varepsilon)(t)
+  =k\int_{-\varepsilon}^{\varepsilon} g(t-\tau)\d \tau
+  =k\int_{t-\varepsilon}^{t+\varepsilon} g(\tau)\d \tau
+\]
+就是 $g(t)$ 在区间 $[t-\varepsilon,t+\varepsilon]$ 上的平均值.
+当 $\varepsilon$ 很小时, 与 $f_\varepsilon$ 的卷积没有对 $g(t)$ 的形状作很大改变, 但却让 $g(t)$ 变得更``平滑''了.
+当然, 根据我们的需要可以选择不同的函数与其作卷积, 以对其进行平滑、锐化或边缘检测等操作.
+由此可知卷积在信号和图像处理等邻域有着重要作用.
+
 
 
 \subsubsection{利用傅里叶变换解函数方程}
 
 利用积分变换解含微分或积分的方程的步骤如下: 对原方程两边同时作积分变换, 将原函数 $y$ 的方程转化为象函数 $Y$ 的代数方程.
-解出 $Y$ 并对齐应用积分逆变换得到原函数 $y$.\footnote{
+解出 $Y$ 并对其应用积分逆变换得到原函数 $y$.\footnote{
   事实上在使用\thmFDif 时, 我们对 $f(t)$ 本身是有要求的.
   在实际应用中, 我们往往先忽略这种要求而利用该性质求得方程的解, 然后有必要的话再验证解的合理性.
 }
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
     node distance=40pt,
@@ -1305,12 +1338,12 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \end{align*}
   这里我们利用了 $\dirac$ 函数的筛选性质.
   再由 \ref{eq:fourier-inverse-transform-rational-function} 可知
-  \[
-     y(t)
-    =-\ii\msf^{-1}\biggl(\frac1{\omega-\ii}+\frac1{\omega+\ii}\biggr)
+  \begin{align*}
+    y(t)&
+    =-\ii\msf^{-1}\biggl(\frac1{\omega-\ii}+\frac1{\omega+\ii}\biggr)\\&
     =-\ii\bigl(\ii \ee^{-t}u(t)-\ii \ee^tu(-t)\bigr)
-    =\sgn(t)\ee^{-|t|}.
-  \]
+    =\sgn(t)\ee^{-\abs{t}}.
+  \end{align*}
 \end{solution}
 
 傅里叶变换也可以用来解偏微分方程.
@@ -1379,6 +1412,8 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \end{align*}
 \end{solution}
 
+若将初值换成一般的函数, 则可类似得到一维波动方程的达朗贝尔公式.
+
 \begin{example}
   \label{exam:second-ode}
   解方程 $y''(t)-y(t)=0$.
@@ -1400,8 +1435,6 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 
 
-
-
 \section{拉普拉斯变换}
 
 \subsection{拉普拉斯变换}
@@ -1418,14 +1451,15 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   =\intf f(t)\ee^{-st}\d t,
 \]
 其中 $s=\beta+\ii \omega$.
-这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
+这样的积分在我们遇到的很多情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
 
 \begin{theorem}[拉普拉斯变换存在定理]
+  \index{lapulasibianhuancunzaidingli@拉普拉斯变换存在定理}
   若定义在 $[0,+\infty)$ 上的函数 $f(t)$ 满足:
-  \begin{enuma}
+  \begin{enuma}[labelindent=.5em]
     \item 在任一有限区间上至多只有有限多间断点;
-    \item 存在 $M,c$ 使得 $|f(t)|\le M\ee^{ct}$,
-  \end{enuma}\par\noindent
+    \item 存在 $M,c$ 使得 $\abs{f(t)}\le M\ee^{ct}$,
+  \end{enuma}
   则 $\msf\bigl[f(t)u(t)\ee^{-\beta t}\bigr]$ 在 $\Re s>c$ 上存在且为解析函数.
 \end{theorem}
 
@@ -1434,8 +1468,8 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \[
     F(s)=\intf f(t)\ee^{-st}\d t
   \]
-  为 $f(t)$ 的\noun{拉普拉斯变换}, 记作 \noun{$\msl[f(t)]$}.
-  称 $f(t)$ 为 $F(s)$ 的\noun{拉普拉斯逆变换}, 记作 \noun{$\msl^{-1}[F(s)]$}.
+  为 $f(t)$ 的\nouns{拉普拉斯变换}\index{lapulasibianhuan@拉普拉斯变换}, 记作 \nouns{$\msl[f(t)]$}\index{0lf@$\msl[f(t)]$}.
+  称 $f(t)$ 为 $F(s)$ 的\nouns{拉普拉斯逆变换}\index{lapulasinibianhuan@拉普拉斯逆变换}, 记作 \nouns{$\msl^{-1}[F(s)]$}\index{0l-1f@$\msl^{-1}[F(s)]$}.
 \end{definition}
 
 虽然我们限定了函数只定义在 $t\ge 0$ 处, 但很多时候这不影响我们使用.
@@ -1489,6 +1523,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 本节中总记 $\msl[f]=F,\msl[g]=G$.
 
 \begin{theorem}[线性性质]
+  \index{xianxingxingzhi@线性性质}
   对于任意常数 $\alpha$ 和 $\beta$, 有
   \[
     \msl[\alpha f+\beta g]=\alpha F+\beta G,\quad
@@ -1524,6 +1559,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{exercise}
 
 \begin{theorem}[位移性质]
+  \index{weiyixingzhi@位移性质}
   \label{thm:laplace-shift-property}
   若 $\msl[f(t)]=F(s)$, 则 
   \[
@@ -1556,6 +1592,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 那么 $F(s)$ 可以拆分为部分分式之和, 从而可求得其拉普拉斯逆变换.
 
 \begin{theorem}[延迟性质]
+  \index{yanchixingzhi@延迟性质}
   若 $f(t)$ 满足当 $t<0$ 时, $f(t)=0$, 则
   \[
     \msl[f(t-t_0)]=\ee^{-s t_0}F(s).
@@ -1574,6 +1611,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{proof}
 
 \begin{theorem}[微分性质]
+  \index{weifenxingzhi@微分性质}
   \label{thm:laplace-differential-property}
   若 $\msl[f(t)]=F(s)$, 则 $\msl[f'(t)]=sF(s)-f(0)$.
   由此可知
@@ -1595,7 +1633,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     &=-f(0)+s\intf f(t)\ee^{-st}\d t
     =sF(s)-f(0),
   \end{align*}
-  这里, 由于 $|f(t)|\le M\ee^{ct}$, 因此当 $\Re s>c$ 时, $\liml_{t\ra+\infty} f(t)\ee^{-st}=0$.
+  这里, 由于 $\abs{f(t)}\le M\ee^{ct}$, 因此当 $\Re s>c$ 时, $\liml_{t\ra+\infty} f(t)\ee^{-st}=0$.
   
   将 $f(t)$ 换成 $f'(t)$ 得到
   \[
@@ -1607,6 +1645,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{proof}
 
 \begin{theorem}[乘多项式性质]
+  \index{chengduoxiangshixingzhi@乘多项式性质}
   \label{thm:laplace-multiply-polynomial-property}
   若 $\msl[f(t)]=F(s)$, 则 $\msl[tf(t)]=-F'(s)$.
   一般地, $\msl[t^nf(t)]=(-1)^n F^{(n)}(s)$.
@@ -1625,6 +1664,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{proof}
 
 \begin{theorem}[积分性质]
+  \index{jifenxingzhi@积分性质}
   \label{thm:laplace-integral-property}
   若 $\msl[f(t)]=F(s)$, 则
   \[
@@ -1646,6 +1686,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 
 我们作此汇总:
 \begin{fifth}{与有理函数有关的拉普拉斯变换汇总}
+  \label{page:rational-laplace-transform}
   \begin{enuma}
     \item $\displaystyle\msl[1]=\frac1s$, 
     $\displaystyle \msl[\ee^{kt}]=\frac1{s-k}$;
@@ -1659,7 +1700,9 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \end{fifth}
 
 由变量替换易得:
-\begin{theorem}[相似性质]\label{thm:laplace-similar-property}
+\begin{theorem}[相似性质]
+  \index{xiangsixingzhi@相似性质}
+  \label{thm:laplace-similar-property}
   对于 $a>0$, 
   \[
     \msl[f(at)]=\frac1a F\bigl(\frac sa\bigr).
@@ -1675,6 +1718,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 且我们有如下的卷积定理.
 
 \begin{theorem}[卷积定理]
+  \index{juanjidingli@卷积定理}
   若 $f_1(t),f_2(t)$ 的拉普拉斯变换分别为 $F_1(s),F_2(s)$, 则
   \[
     \msl[f_1(t)\ast f_2(t)]=F_1(s)\cdot F_2(s).
@@ -1719,7 +1763,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
 \end{theorem}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \draw[cstaxis] (-3,0)--(2,0);
@@ -1761,16 +1805,16 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
 \begin{proof}
   选择如\ref{fig:left-half-circle-contour} 所示的闭路 $C=C_R+\ell$, 其中 $C_R$ 是以 $R$ 为半径, $\beta$ 为圆心的左半圆, $\ell$ 是从 $\beta-\ii R$ 到 $\beta+\ii R$ 的直线段.
   选择合适的 $\beta$ 和充分大的 $R$ 使得 $F(s)$ 的所有奇点均在 $C$ 的内部.
-  设 $F(s)$ 在 $C_R$ 上满足 $|F(s)|\le M_R$.
+  设 $F(s)$ 在 $C_R$ 上满足 $\abs{F(s)}\le M_R$.
   作变量替换 $s=\beta+iR\ee^{\ii\theta}\in C_R,\theta\in[0,\cpi]$, 则由\thmGrowUp,
   \[
-     \abs{\int_{C_R} F(s)\ee^{st}\d s}
+     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
     \le M_R \int_0^\cpi \ee^{(\beta-R\sin \theta)t} \cdot R\d \theta
     =2RM_R\int_0^{\cpi/2}\ee^{(\beta-R\sin \theta)t}\d \theta.
   \]
   注意到当 $\theta\in[0,\cpi/2]$ 时, $\sin\theta\ge \dfrac{2\theta}\cpi$, 因此
   \[
-     \abs{\int_{C_R} F(s)\ee^{st}\d s}
+     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
     \le2RM_R\int_0^{\cpi/2}\ee^{(\beta-\frac{2R}{\cpi}\theta)t}\d \theta.
     =\frac1tM_R\cpi\ee^{\beta t}(1-\ee^{-Rt}).
   \]
@@ -1837,6 +1881,11 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
     =1-\ee^t+t\ee^t.
   \]
 \end{solution}
+
+\begin{exercise}
+  $F(s)=\dfrac1{s(s+1)}$ 的拉普拉斯逆变换为\fillblank{}.
+\end{exercise}
+
 
 
 \subsection{拉普拉斯变换的应用}
@@ -1944,221 +1993,199 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
 \end{solution}
 
-这样, 我们便用拉普拉斯变换解决了傅里叶变换不能解决的方程\thmref{例}{exam:second-ode}.
+这样, 我们便用拉普拉斯变换成功解决了傅里叶变换不能解决的方程\thmref{例}{exam:second-ode}.
 
 
 
+\psection{本章小结}
 
-\begin{exercise}
-单选题: 下列不是傅里叶变换对的是\fillbrace{}.
-\begin{exchoice}(2)
-  \item $\dirac(t),1$
-  \item $\ee^{\ii \omega_0t},2\cpi\dirac(\omega-\omega_0)$
-  \item $\sin \omega_0t, \cpi[\dirac(\omega-\omega_0)+\dirac(\omega+\omega_0)]$
-  \item $1,2\cpi\dirac(\omega)$
-\end{exchoice}
-\end{exercise}
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 熟练掌握傅里叶级数的形式. 若 $f(t)$ 周期为 $T$, 则 $f(t)=\sumff c_n \ee^{\ii n\omega t}$, 其中 $\omega=\dfrac{2\cpi}{T}$, $c_n=\dfrac 1T\intT f(\tau)\ee^{-\ii n\omega\tau} \d\tau$, 等式左侧在间断点处需要改为左右极限平均值.
+  \item 熟练掌握傅里叶变换的定义和常用性质.
+  \begin{conclusion}
+    \item 傅里叶变换 $\msf[f(t)]=F(\omega)=\intff f(t) \ee^{-\ii \omega t} \d t$, 傅里叶逆变换 $\msf^{-1}[F(\omega)]=f(t)=\dfrac1{2\cpi} \intff F(\omega) \ee^{\ii \omega t} \d\omega$.
+    \item 位移性质: $\msf[f(t-t_0)]=\ee^{-\ii \omega t_0}F(\omega)$, $\msf^{-1}[F(\omega-\omega_0)]=\ee^{\ii \omega_0 t}f(t)$.
+    \item 微分性质: 若 $f(t)$ 在 $(-\infty,+\infty)$ 至多有有限多个点处不可导, 且 $\liml_{t\ra\infty}f(t)=0$, 则 $\msf[f'(t)]=\ii \omega F(\omega)$, $\msf^{-1}[F'(\omega)]=-\ii tf(t)$.
+  \end{conclusion}
+  \item 了解 $\dirac$ 函数的定义和性质.
+  \begin{conclusion}
+    \item 定义: $\intff \dirac(t-t_0)f(t)=f(t_0)$.
+    \item 筛选性质: $f(t)\dirac(t-t_0)=f(t_0)\dirac(t-t_0)$
+    \item 与 $\dirac$ 函数相关的傅里叶变换见 \pageref{page:dirac-fourier-transform} 页.
+  \end{conclusion}
+  \item 会利用定义和相关性质计算简单函数的傅里叶变换和逆变换.
+  \item 会利用相关性质计算积分或级数.
+  \begin{conclusion}
+    \item 帕塞瓦尔恒等式: 对于周期为 $T$ 的函数 $f(t)$, 有 $\dfrac1{T}\intT \abs{f(t)}^2\d t
+    =\sumff \abs{c_n}^2$, 其中 $c_n$ 是它的傅里叶系数. 这可用来计算级数.
+    \item 乘积定理 $\intff \abs{f(t)}^2\d t
+    =\frac1{2\cpi}\intff \abs{F(\omega)}^2\d \omega$ 可用于计算积分.
+    \item 泊松求和公式 $\sumff f(n)=\sumff F(2\cpi n)$ 可用于计算级数的和. 注意若 $n$ 是 $f(t)$ 的间断点, 则 $f(n)$ 需要修改为 $\dfrac{f(n^+)+f(n^-)}2$.
+    \smallskip
+    \item 卷积定理 $\msf[f_1\ast f_2]=F_1\cdot F_2$, $\msf^{-1}[F_1\ast F_2]=\dfrac1{2\cpi}f_1\cdot f_2$ 可用于计算积分.
+  \end{conclusion}
+  \item 会使用傅里叶变换解决一些简单的微积分方程.
+  \item 熟练掌握拉普拉斯变换的定义和常用性质.
+  \begin{conclusion}
+    \item 拉普拉斯变换 $F(s)=\intf f(t)\ee^{-st}\d t$.
+    \item 位移性质: $\msl[\ee^{s_0 t}f(t)]=F(s-s_0)$.
+    \item 延迟性质: $\msl[f(t-t_0)]=\ee^{-s t_0}F(s)$, 其中 $f(t)$ 满足当 $t<0$ 时, $f(t)=0$.
+    \item 微分性质: $\msl[f'(t)]=sF(s)-f(0)$, $\msl[f''(t)]=s^2F(s)-sf(0)-f'(0)$.
+  \end{conclusion}
+  \item 会计算简单函数的拉普拉斯逆变换.
+  \begin{conclusion}
+    \item 若 $F(s)$ 只有有限多个奇点 $s_1,\cdots,s_k$, 且 $\liml_{s\ra\infty}F(s)=0$, 则
+    \[
+      \msl^{-1}[F(s)]=\suml_{k=1}^n \Res\bigl(F(s)\ee^{st},s_k\bigr).
+    \]
+    \item 也可以直接利用简单函数的拉普拉斯逆变换来计算复杂函数的逆变换.
+    \item 与有理函数相关的拉普拉斯变换见 \pageref{page:rational-laplace-transform} 页.
+  \end{conclusion}
+  \item 会使用拉普拉斯变换解决一些简单的微分方程.
+\end{conclusion}
 
-
-\begin{exercise}
-填空题: $\dirac(t-t_0)$ 的傅里叶变换为 $F(\omega)=$\fillblank{$\ee^{-\ii \omega t_0}$}.
-\end{exercise}
-
-
-\begin{exercise}
-填空题: $F(\omega)=\dirac(\omega+2)$ 的傅里叶逆变换为 $f(t)=$\fillblank[2cm][1mm]{$\frac1{2\cpi}\ee^{-2\ii t}$}.
-\end{exercise}
-
-
-\begin{exercise}
-填空题: $F(\omega)=2\cpi\dirac(\omega)$ 的傅里叶逆变换为 $f(t)=$\fillblank{$1$}.
-\end{exercise}
-
-
-\begin{exercise}
-填空题: $f(t)=\sin t+\ii \cos t$ 的傅里叶变换为\fillblank[3cm]{$2\cpi \ii \dirac(\omega+1)$}.
-\end{exercise}
-
-
-\begin{exercise}
-用拉普拉斯变换解微分方程
-\[\begin{cases}y''+4y'+3y=\ee^{-t},&\\y(0)=y'(0)=1.\end{cases}\]
-\end{exercise}
-\begin{solution}
-设 $\msl[y]=Y$, 则
-\[\msl[y']=sY-y(0)=sY-1,\]
-\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-s-1,\]
-因此
-\[s^2Y-s-1+4(sY-1)+3Y=\msl[\ee^{-t}]=\frac{1}{s+1},\]
-\[Y(s)=\frac{1}{2(s+1)^2}+\frac{7}{4(s+1)}-\frac3{4(s+3)},\]
-\[y(t)=\msl^{-1}[Y(s)]=\frac12 t\ee^{-t}+\frac74 \ee^{-t}-\frac34 \ee^{-3t}. \qedhere\]
-\end{solution}
-
-
-\begin{exercise}
-用拉普拉斯变换解微分方程
-\[\begin{cases}y''+y=t,&\\y(0)=1,\quad y'(0)=-2.\end{cases}\]
-\end{exercise}
-\begin{solution}
-设 $\msl[y]=Y$, 则
-\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-s+2,\]
-因此
-\[s^2Y-s+2+Y=\msl[t]=\frac{1}{s^2},\]
-\[Y(s)=\frac1{s^2}-\frac3{s^2+1}+\frac s{s^2+1},\]
-\[y(t)=\msl^{-1}[Y(s)]=t-3\sin t+\cos t. \qedhere\]
-\end{solution}
+本章中不易理解和易错的知识点包括:
+\begin{enuma}
+  \item 注意在应用傅里叶级数展开形式和傅里叶积分公式的时候, 左侧函数在间断点处的值需要改为左右极限的平均值 $\dfrac{f(t^+)+f(t^-)}2$.
+  \smallskip
+  \item 广义函数的概念较为抽象, 不易理解. 在实际应用中, 很多时候可以把它当做与普通函数类似的情形来处理, 但需要小心避免在计算时遗漏相关的项. 此外, 傅里叶变换的有些性质对广义函数也不适用.
+  \item 傅里叶变换和拉普拉斯变换有很多相似的性质, 但要注意区分不同之处. 如果二者都有某一性质, 往往将傅里叶变换性质中的 $\ii\omega$ 换成 $s$ 就得到了对应的拉普拉斯变换的性质.
+\end{enuma}
 
 
-\begin{exercise}
-用拉普拉斯变换解微分方程
-\[\begin{cases}y''+4y'+3y=\ee^t,&\\y(0)=0,\quad y'(0)=2.\end{cases}\]
-\end{exercise}
-\begin{solution}
-设 $\msl[y]=Y$, 则
-\[\msl[y']=sY-y(0)=sY,\]
-\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2,\]
-因此
-\[s^2Y-2+4sY+3Y=\msl[\ee^t]=\frac{1}{s-1},\]
-\[Y(s)=\frac{1}{8(s-1)}+\frac{3}{4(s+1)}-\frac7{8(s+3)},\]
-\[y(t)=\msl^{-1}[Y(s)]=\frac18\ee^t+\frac34 \ee^{-t}-\frac78 \ee^{-3t}. \qedhere\]
-\end{solution}
+\psection{本章作业}
+
+\begin{homework}
+  \item 单选题.
+  \begin{homework}
+    \item 下列不是傅里叶变换对的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $\dirac(t),1$
+      \item $\ee^{\ii \omega_0t},2\cpi\dirac(\omega-\omega_0)$
+      \item $\sin \omega_0t, \cpi[\dirac(\omega-\omega_0)+\dirac(\omega+\omega_0)]$
+      \item $1,2\cpi\dirac(\omega)$
+    \end{exchoice}
+    \item 下列函数不存在傅里叶变换的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $f(t)=\ee^{-2t}$
+      \item $f(t)=\ee^{-2t}u(t)$
+      \item $f(t)=\ee^{2t}u(-t)$
+      \item $f(t)=\ee^{-2t^2}$
+    \end{exchoice}
+    \item 下列函数不存在拉普拉斯变换的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $f(t)=\ee^{2t}$
+      \item $f(t)=\cos 3t$
+      \item $f(t)=t^3+1$
+      \item $f(t)=\ee^{t^2}$
+    \end{exchoice}
+  \end{homework}
+  \item 填空题.
+  \begin{homework}
+    \item $f(t)=\dirac(t-t_0)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+    \item $f(t)=\ee^{\ii t}$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+    \item $f(t)=\cos(3t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+    \item $F(\omega)=\dirac(\omega+2)$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
+    \item $F(\omega)=2\cpi\dirac(\omega)$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
+    \item $F(\omega)=2$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
+  \end{homework}
+  \item 解答题.
+  \begin{homework}
+    \item 求下列函数的傅里叶变换.
+    \begin{subhomework}(2)
+      \item $f(t)=\begin{cases}
+        1-t^2,&|t|\le 1,\\
+        0,&|t|>1;
+      \end{cases}$
+      \item $f(t)=\begin{cases}
+        \sin t,&|t|\le \cpi,\\
+        0,&|t|>\cpi;
+      \end{cases}$
+      \item $f(t)=\ee^tu(-t)$;
+      \item $f(t)=\ee^{-t} u(t)\sin 2t$;
+      \item $f(t)=\sgn(t)$;
+      \item $f(t)=\sin t\cos 2t$;
+      \item $f(t)=\cos t\cos 2t\cos 3t$;
+      \item $\ov{f(t)}$;
+      \item* $f(t)=\dirac(t+2)+\dirac(t+1)+\dirac(t-1)+\dirac(t-2)$.
+    \end{subhomework}
+    \item 利用帕赛瓦尔恒等式计算 $\sumf1\frac1{n^4}$.
+    \item 利用乘积定理计算 $\intf\dfrac{1-\cos^4 x}{x^2}\d x$.
+    \item 利用泊松求和公式计算 $\sumff \dfrac1{n^2+n+1}$.
+    % $\dfrac{2\cpi}{\sqrt3}\cdot\dfrac{\ee^{\sqrt3\cpi}-1}{\ee^{\sqrt3\cpi}+1}
+    % =\dfrac{2\cpi}{\sqrt3}\tanh\dfrac{\sqrt3\cpi}2$.
+    % \sumff \dfrac1{n^2+a^2}=\cpi /a\tanh(\cpi a)
+    % \sumff \dfrac1{(n+1/2)^2+a^2}=\cpi \tanh(\cpi a)/a叶变换.
+    \item 求下列函数的拉普拉斯变换.
+    \begin{subhomework}(2)
+      \item $f(t)=\begin{cases}
+        1-t,&0\le t\le 1,\\
+        0,& t>1;
+      \end{cases}$
+      \item $f(t)=\begin{cases}
+        2,&0\le t\le 1,\\
+        1,&1\le t\le 2,\\
+        0,& t>2;
+      \end{cases}$
+      \item $f(t)=t^2+4t+3$;
+      \item $f(t)=1+t\ee^{-t}$;
+      \item $f(t)=t\ee^{-2t}\cos 3t$;
+      \item $f(t)=\sinc(t)$;
+      \item $f(t)=(t-1)^2\ee^{-t}$;
+      \item $f(t)=(t+1)\sin 2t$.
+    \end{subhomework}
+    \item 用拉普拉斯变换解下列方程.
+    \begin{subhomework}(2)
+      \item $\begin{cases}
+        y''+y=t,\\ y(0)=1,\ y'(0)=-2;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+4y'+3y=\ee^t,\\ y(0)=0,\ y'(0)=2;
+      \end{cases}$
+      \item $\begin{cases}
+        y''-3y'+2y=2\ee^{-t},\\ y(0)=2,\ y'(0)=-1;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+2y'+y=t\ee^t\\ y(0)=y'(0)=0;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+2y=\sin t,\\ y(0)=0,\quad y'(0)=2;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+2y'=8\ee^{2t},\\ y(0)=0,\quad y'(0)=2;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+4y=3\cos t,\\ y(0)=1,\quad y'(0)=2;
+      \end{cases}$
+      \item $\begin{cases}
+        y''-4y=3\ee^t,\\ y(0)=0,\quad y'(0)=1;
+      \end{cases}$
+      \item $\begin{cases}
+        x''+y''+x+y=0,\\
+        2x''-y''-x+y=\cos t,\\
+        x(0)=y(0)=-1,\\
+        x'(0)=y'(0)=0;
+      \end{cases}$
+      \item $\begin{cases}
+        y''+x''-x'-y=e^t-2,\\
+        2y''+x''-2y'-x=-t,\\
+        x(0)=y(0)=0,\\
+        x'(0)=y'(0)=0.
+      \end{cases}$
+    \end{subhomework}
+    \item 对于正奇数 $k$, 设 $F_k(\omega)=\dfrac{\sin(\omega/k)}{\omega/k}$, 设
+    \[
+      I_k=\intff F_1(\omega)F_3(\omega)\cdots F_k(\omega)\d\omega.
+    \]
+    证明:
+    \[
+      I_1=I_3=I_5=\cdots=I_{13}=\cpi,\quad
+      I_{15}=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\cpi.
+    \]
+    该积分被称为\nouns{波尔文积分}\index{boerwenjifen@波尔文积分}, 它的开头几项都比较简单, 然后在某一项开始变得复杂起来.
+    仿照着\thmref{例}{exam:bouwein-integral} 利用卷积定理来证明这些等式.
+  \end{homework}
+\end{homework}
 
 
-\begin{exercise}
-用拉普拉斯变换解微分方程
-\[\begin{cases}y''-3y'+2y=2\ee^{-t},&\\y(0)=2,\quad y'(0)=-1.\end{cases}\]
-\end{exercise}
-\begin{solution}
-设 $\msl[y]=Y$, 则
-\[\msl[y']=sY-y(0)=sY-2,\]
-\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2s+1,\]
-因此
-\[s^2Y-2s+1-3(sY-2)+2Y=\msl[2\ee^{-t}]=\frac{2}{s+1},\]
-\[Y(s)=\frac{4}{s-1}+\frac{1}{3(s+1)}-\frac7{3(s-2)},\]
-\[y(t)=\msl^{-1}[Y(s)]=4\ee^t+\frac13 \ee^{-t}-\frac73\ee^{2t}. \qedhere\]
-\end{solution}
-
-
-\begin{exercise}
-用拉普拉斯变换解微分方程
-\[\begin{cases}y''(t)+4y(t)=3\cos t,& \\y(0)=y'(0)=0.&\end{cases}\]
-\end{exercise}
-\begin{solution}
-设 $\msl[y]=Y$, 则
-\[\msl[y']=s^2Y-sy(0)-y'(0)=s^2Y,\]
-因此
-\[s^2Y+4Y=\frac{3s}{s^2+1},\]
-\[Y(s)=\frac{3s}{(s^2+1)(s^2+4)}=\frac{s}{s^2+1}-\frac{s}{s^2+4},\]
-\[y(t)=\msl^{-1}[Y(s)]=\cos t-\cos(2t).\qedhere\]
-\end{solution}
-
-
-
-
-\section*{扩展阅读}
-该部分作业不需要交, 有兴趣的同学可以做完后交到本人邮箱.
-\begin{exercise}
-对于正奇数 $k$, 设 $F_k(\omega)=\dfrac{\sin(\omega/k)}{\omega/k}$, 设
-\[I_k=\intff F_1(\omega)F_3(\omega)\cdots F_k(\omega)\d\omega.\]
-则
-\[I_1=I_3=I_5=\cdots=I_{13}=\cpi,\quad
-I_{15}=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\cpi.\]
-这是为什么呢?
-
-  根据 
-\[f(t)=\msf^{-1}[F_1]=\begin{cases}
-  1/2, & |t|<1,\\
-  1/4, & |t|=1,\\
-  0, & |t|>1
-\end{cases}\]
-得到 $\msf^{-1}[F_k]=f_k(t):=kf(kt)$.
-
-  注意到函数 $g(t)$ 和 $f_k(t)$ 卷积之后在 $t$ 处的值相当于 $g(t)$ 在 $\Bigl[t-\dfrac1k,t+\dfrac1k\Bigr]$ 上取平均值.
-由此证明 $f_1(t)\ast f_3(t)\ast \cdots\ast f_k(t)$ 在 $|t|<1-\dfrac13-\dfrac15-\cdots-\dfrac1k$ 上取值为 $\dfrac12$.
-
-  根据
-\[\frac1{2\cpi}I_k=\msf^{-1}[F_1F_3\cdots F_k](0)=(f_1\ast f_3\ast\cdots\ast f_k)(0)\]
-解释上述现象.
-更多细节可见\cite{3B1Bb}.
-\end{exercise}
-
-
-
-最后我们来看卷积对波尔文积分现象的解释.
-对于正整数 $k$, 设 $F_k(\omega)=\sinc(\omega/k)$.
-那么积分序列
-\[
-  I_k=\intff F_1(\omega)F_3(\omega)\cdots F_k(\omega)\d\omega
-\]
-的前几项为
-\[
-  I_1=I_3=I_5=\cdots=I_{13}=\cpi,\quad
-  I_{15}=\frac{467 807 924 713 440 738 696 537 864 469}{467 807 924 720 320 453 655 260 875 000}\cpi.
-\]
-为什么会发生这种奇怪的现象呢?
-由\thmFSim 可知 $f_k(t):=\msf^{-1}[F_k(\omega)]=kf(kt)$.
-% 由卷积的定义可以看出, 函数 $g(t)$ 和 $f_k(t)$ 的卷积在 $t$ 处的值
-% \[
-% 	 (g\ast f_k)(t)
-% 	=k\int_{-1/k}^{1/k} g(t-\tau)\d \tau
-% 	=k\int_{t-1/k}^{t+1/k} g(\tau)\d \tau
-% \]
-% 就是 $g(t)$ 在区间 $[t-1/k,t+1/k]$ 上的平均值.
-注意到 $f_1(t)=f(t)$ 在 $(-1,1)$ 上恒为 $1/2$, 因此 $f_1\ast f_3$ 在 $(-1+1/3,1-1/3)$ 上恒为 $1/2$.
-依次递推下去可知, $f_1(t)\ast f_3(t)\ast \cdots\ast f_k(t)$ 在
-\[
-  |t|<1-\dfrac13-\dfrac15-\cdots-\dfrac1k
-\]
-上取值为 $\dfrac12$.
-对于 $k=1,3\cdots,13$, 上述不等式右侧大于零, 从而
-\[
-  I_k=2\cpi (f_1\ast f_3\ast \cdots\ast f_k)(0)=\cpi.
-\]
-而对于 $k\ge 15$, 上述不等式右侧小于零, 从而 $I_k=\cpi$ 不再成立.
-更多细节可见\cite{3B1Bb}.
-% 更多细节可见: \url{https://www.bilibili.com/video/BV18e4y1u7BH/}
-
-
-% \item 利用拉普拉斯变换解微分方程
-% $\begin{cases}
-% y''(t)-y'(t)=\ee^t,&\\
-% y(0)=y'(0)=0.&
-% \end{cases}$
-
-
-% \item 利用拉氏变换解微分方程 
-% \[\begin{cases}
-% y''+2y'+y=t\ee^t&\\
-% y(0)=y'(0)=0.&
-% \end{cases}\]
-
-
-
-
-
-
-% \item 函数 $\sin t+\ii \cos t$ 的傅里叶变换为\fillblank{}.
-% \item 函数 $\ee^{\ii t}$ 的傅里叶变换为\fillblank{}.
-% \item 函数 $f(t)=\cos(3t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
-% \item 常值函数 $F(\omega)=2$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
-% \item 用拉普拉斯变换求解微分方程初值问题
-% \[\begin{cases}
-% y''(t)+2y(t)=\sin t,&\\
-% y(0)=0,\quad y'(0)=2.
-% \end{cases}\]
-% \item 用拉普拉斯变换求解微分方程初值问题
-% \[\begin{cases}
-% y''(t)+2y'(t)=8\ee^{2t},&\\
-% y(0)=0,\quad y'(0)=2.
-% \end{cases}\]
-% \item 设 $f(z)=\dfrac{\ee^z}{(z-\cpi\ii)(z-2\cpi\ii)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=8}f(z)\d z$.
-% \item 用拉普拉斯变换求解微分方程初值问题
-% \[\begin{cases}
-% y''(t)+4y(t)=3\cos t,&\\
-% y(0)=1,\quad y'(0)=2.
-% \end{cases}\]
-% \item 用拉普拉斯变换求解微分方程初值问题
-% \[\begin{cases}
-% y''(t)-4y(t)=3\ee^t,&\\
-% y(0)=0,\quad y'(0)=1.
-% \end{cases}\]

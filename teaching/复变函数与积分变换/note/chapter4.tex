@@ -16,9 +16,9 @@
 
 \begin{definition}
   \begin{enuma}
-    \item 设 $\{z_n\}_{n\ge1}$ 是复数列. 称表达式 $\sumf1 z_n$ 为复数项\noun{无穷级数}, 简称\noun{级数}.\footnotemark
-    \item 称 $s_n=z_1+z_2+\cdots+z_n$ 为该级数的\noun{部分和}.
-    \item 若部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\sumf1 z_n$ \noun{收敛}, 并记 $\sumf1 z_n=\liml_{n\ra\infty}s_n$ 为它的\noun{和}. 否则称该级数\noun{发散}.
+    \item 设 $\{z_n\}_{n\ge1}$ 是复数列. 称表达式 $\sumf1 z_n$ 为复数项\nouns{无穷级数}\index{wuqiongjishu@无穷级数}, 简称\nouns{级数}\index{jishu@级数}.\footnotemark
+    \item 称 $s_n=z_1+z_2+\cdots+z_n$ 为该级数的\nouns{部分和}\index{bufenhe@部分和}.
+    \item 若部分和数列 $\{s_n\}_{n\ge 1}$ 极限存在, 则称 $\sumf1 z_n$ \nouns{收敛}\index{shoulian@收敛!jishushoulian@级数收敛}\index{jishu@级数!jishushoulian@级数收敛}, 并记 $\sumf1 z_n=\liml_{n\ra\infty}s_n$ 为它的\nouns{和}\index{he@和}. 否则称该级数\nouns{发散}\index{fasan@发散!jishufasan@级数发散}\index{jishu@级数!jishufasan@级数发散}.
   \end{enuma}
 \end{definition}
 \footnotetext{复数列或无穷级数的下标也可以从 $0$ 或任意整数开始.}
@@ -62,9 +62,9 @@
   \label{thm:absolute-convergent}
   若实数项级数
   \[
-    \sumf1 \abs{z_n}=|z_1|+|z_2|+\cdots
+    \sumf1 \abs{z_n}=\abs{z_1}+\abs{z_2}+\cdots
   \]
-  收敛, 则 $\sumf1 z_n$ 也收敛, 且 $\abs{\sumf1 z_n}\le\sumf1 \abs{z_n}$.
+  收敛, 则 $\sumf1 z_n$ 也收敛, 且 $\biggabs{\sumf1 z_n}\le\sumf1 \abs{z_n}$.
 \end{theorem}
 
 此即绝对收敛蕴含收敛.
@@ -75,27 +75,27 @@
 
   由三角不等式可知
   \[
-    \abs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n|z_k|.
+    \biggabs{\sum_{k=1}^n z_k}\le \sum_{k=1}^n\abs{z_k}.
   \]
   两边同时取极限即得级数的不等式关系
   \[
-     \abs{\sumf1 z_n}
+     \biggabs{\sumf1 z_n}
     =\abs{\lim_{n\ra\infty}\sum_{k=1}^n z_k}
-    =\lim_{n\ra\infty}\abs{\sum_{k=1}^n z_k}
-    \le\lim_{n\ra\infty}\sum_{k=1}^n|z_k|
+    =\lim_{n\ra\infty}\biggabs{\sum_{k=1}^n z_k}
+    \le\lim_{n\ra\infty}\sum_{k=1}^n\abs{z_k}
     =\sumf1 \abs{z_n},
   \]
-  其中第二个等式是因为绝对值函数 $|z|$ 连续.
+  其中第二个等式是因为绝对值函数 $\abs{z}$ 连续.
 \end{proof}
 
 \begin{exercise}
-  什么时候 $\abs{\sumf1 z_n}=\sumf1 \abs{z_n}$?
+  什么时候 $\biggabs{\sumf1 z_n}=\sumf1 \abs{z_n}$?
 \end{exercise}
 
 \begin{definition}
   \begin{enuma}
-    \item 若级数 $\sumf1 \abs{z_n}$ 收敛, 则称 $\sumf1 z_n$ \noun{绝对收敛}.
-    \item 称收敛但不绝对收敛的级数\noun{条件收敛}.
+    \item 若级数 $\sumf1 \abs{z_n}$ 收敛, 则称 $\sumf1 z_n$ \nouns{绝对收敛}\index{jueduishoulian@绝对收敛}.
+    \item 称收敛但不绝对收敛的级数\nouns{条件收敛}\index{tiaojianshoulian@条件收敛}.
   \end{enuma}
 \end{definition}
 
@@ -110,7 +110,7 @@
 
 由此我们得到复数项级数的敛散性与实部、虚部级数敛散性的关系\ref{tab:convergent-re-im}.
 
-\begin{table}[!htb]
+\begin{table}[H]
   \centering
   \begin{tabular}{ccc} \topcolorrule
     \bf 实部级数&\bf 虚部级数&\bf 复数项级数\\ \topcolorrule
@@ -127,8 +127,8 @@
 
 绝对收敛的复级数各项可以任意重排次序而不改变其绝对收敛性以及和.
 一般的级数重排有限项不改变其敛散性与和, 但若重排无限项则可能会改变其敛散性与和.\footnote{
-  实数项条件收敛级数重排后可以收敛到任意实数, 也可发散到 $+\infty$, 也可发散到 $-\infty$, 此即\emph{黎曼重排定理}.
-  而对于复数项条件收敛级数, 重排后能取到的和为全体复数(也可发散到 $\infty$), 或者为复平面内一条直线(也可发散到 $\infty$), 此即\emph{列维-斯坦尼兹定理}.
+  实数项条件收敛级数重排后可以收敛到任意实数, 也可发散到 $+\infty$, 也可发散到 $-\infty$, 此即\emph{黎曼重排定理}\index{limanchongpaidingli@黎曼重排定理}.
+  而对于复数项条件收敛级数, 重排后能取到的和为全体复数(也可发散到 $\infty$), 或者为复平面内一条直线(也可发散到 $\infty$), 此即\emph{列维-斯坦尼兹定理}\index{lieweisitannizidingli@列维-斯坦尼兹定理}.
 }
 
 \begin{example}
@@ -166,9 +166,9 @@
 
 \subsection{判别法}
 
-由正项级数的比值审敛法\footnote{又名\emph{达朗贝尔判别法}. 在使用该判别法之前, 可以先移除级数中所有的零项, 该判别法仍然适用.}可得:
-\begin{theorem}[比值审敛法]
-  若极限 $\lambda=\liml_{n\ra\infty}\abs{\dfrac{z_{n+1}}{z_n}}$ 存在或为 $+\infty$, 则
+由正项级数的比值审敛法\footnote{又名\emph{达朗贝尔判别法}\index{dalanbeierpanbiefa@达朗贝尔判别法}. 在使用该判别法之前, 可以先移除级数中所有的零项, 该判别法仍然适用.}可得:
+\begin{theorem}[比值审敛法]\index{bizhishenlianfa@比值审敛法}
+  若极限 $\lambda=\liml_{n\ra\infty}\biggabs{\dfrac{z_{n+1}}{z_n}}$ 存在或为 $+\infty$, 则
   \begin{enuma}
     \item 当 $\lambda<1$ 时, $\sumf0 z_n$ 绝对收敛;
     \item 当 $\lambda>1$ 时, $\sumf0 z_n$ 发散.
@@ -176,10 +176,10 @@
 \end{theorem}
 当 $\lambda=1$ 时, 无法使用该方法判断敛散性.
 
-将上述结论中的 $\lambda$ 换成 \alert{$\lambda=\liml_{n\ra\infty}\sqrt[n]{\abs{z_n}}$} 也成立, 叫做\noun{根式审敛法}\footnote{
-  又名\emph{柯西判别法}.
-  一般情形下, 我们有\emph{柯西-阿达马判别法}: 
-  $\lambda=\liml_{k\ra\infty}\max\limits_{n\ge k}\sqrt[n]{\abs{z_n}}\in\BR\cup\{+\infty\}$, $\lambda$ 即该数列收敛子数列的极限的最大值, 也叫作\emph{上极限}.
+将上述结论中的 $\lambda$ 换成 \alert{$\lambda=\liml_{n\ra\infty}\sqrt[n]{\abs{z_n}}$} 也成立, 叫做\nouns{根式审敛法}\index{genshishenlianfa@根式审敛法}\footnote{
+  又名\emph{柯西判别法}\index{kexipanbiefa@柯西判别法}.
+  一般情形下, 我们有\emph{柯西-阿达马判别法}\index{kexiadamapanbiefa@柯西-阿达马判别法}: 
+  $\lambda=\liml_{k\ra\infty}\max\limits_{n\ge k}\sqrt[n]{\abs{z_n}}\in\BR\cup\{+\infty\}$, $\lambda$ 即该数列收敛子数列的极限的最大值, 也叫作\emph{上极限}\index{shangjixian@上极限}.
 }.
 
 \begin{example}
@@ -189,8 +189,8 @@
 \begin{solution}
   由
   \[
-     \lim_{n\ra\infty}\abs{\frac{z_{n+1}}{z_n}}
-    =\lim_{n\ra\infty}\abs{\dfrac{8\ii}{n+1}}
+     \lim_{n\ra\infty}\biggabs{\frac{z_{n+1}}{z_n}}
+    =\lim_{n\ra\infty}\biggabs{\dfrac{8\ii}{n+1}}
     =0<1
   \]
   可知该级数绝对收敛.
@@ -220,53 +220,46 @@
 
 \begin{definition}
   \begin{enuma}
-    \item 设 $\bigl\{f_n(z)\bigr\}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
-    称表达式 $\sumf1 f_n(z)$ 为\noun{复变函数项级数}.
-    \item 对于 $z_0\in D$, 若级数 $\sumf1 f_n(z_0)$ 收敛, 则称 \noun{$\sumf1 f_n(z)$ 在 $z_0$ 处收敛}.
-    \item 若 $\sumf1 f_n(z)$ 在 $D$ 内处处收敛, 则随着 $z$ 的变化, 该级数的和是一个函数, 称为\noun{和函数}.
+    \item 设 $\bigset{f_n(z)}_{n\ge 1}$ 是一个复变函数列, 其中每一项都在区域 $D$ 上有定义.
+    称表达式 $\sumf1 f_n(z)$ 为\nouns{复变函数项级数}\index{jishu@级数}.
+    \item 对于 $z_0\in D$, 若级数 $\sumf1 f_n(z_0)$ 收敛, 则称 \nouns{$\sumf1 f_n(z)$ 在 $z_0$ 处收敛}\index{shoulian@收敛!jishushoulian@级数收敛}\index{jishu@级数!jishushoulian@级数收敛}.
+    \item 若 $\sumf1 f_n(z)$ 在 $D$ 内处处收敛, 则随着 $z$ 的变化, 该级数的和是一个函数, 称为\nouns{和函数}\index{hehanshu@和函数}.
   \end{enuma}
 \end{definition}
 
+\footnotetext[1]{尽管 $z=a$ 时 $(z-a)^0$ 无意义, 但为了简便我们约定幂级数在 $z=a$ 时取值为 $c_0$.}
 \begin{definition}
-  称形如 $\sumf0 c_n(z-a)^n$ 的函数项级数为\noun{幂级数}.\footnotemark
+  称形如 $\sumf0 c_n(z-a)^n$ 的函数项级数为\nouns{幂级数}\index{mijishu@幂级数}.\footnotemark
 \end{definition}
-\footnotetext{尽管 $z=a$ 时 $(z-a)^0$ 无意义, 但为了简便我们约定幂级数在 $z=a$ 时取值为 $c_0$.}
 
 我们只需要考虑 $a=0$ 情形的幂级数, 因为这和对应的一般情形幂级数的收敛范围以及和函数只是差一个平移.
 
 和实变量情形相同, 复幂级数也有阿贝尔定理.
 
-\begin{theorem}[阿贝尔定理]
+\begin{theorem}[阿贝尔定理]\index{abeierdingli@阿贝尔定理}
   \label{thm:abel-first}
   \begin{enuma}
-    \item 若 $\sumf0 c_nz^n$ 在 $z_0\neq 0$ 处收敛, 则对任意满足 $|z|<|z_0|$ 的 $z$, 该级数必绝对收敛.\label{enum:abel-theorem-convergent}
-    \item 若 $\sumf0 c_nz^n$ 在 $z_0\neq 0$ 处发散, 则对任意满足 $|z|>|z_0|$ 的 $z$, 该级数必发散.
+    \item 若 $\sumf0 c_nz^n$ 在 $z_0\neq 0$ 处收敛, 则对任意满足 $\abs{z}<\abs{z_0}$ 的 $z$, 该级数必绝对收敛.\label{enum:abel-theorem-convergent}
+    \item 若 $\sumf0 c_nz^n$ 在 $z_0\neq 0$ 处发散, 则对任意满足 $\abs{z}>\abs{z_0}$ 的 $z$, 该级数必发散.
   \end{enuma}
 \end{theorem}
 
 \begin{proofenuma}
   \item 因为级数 $\sumf0 c_nz^n$ 收敛, 所以 $\liml_{n\ra\infty}c_n z_0^n=0$.
   故存在 $M$ 使得 $\abs{c_nz_0^n}\le M$.
-  对于 $|z|<|z_0|$,
+  对于 $\abs{z}<\abs{z_0}$,
   \[
       \sumf0 \abs{c_nz^n}
-    =\sumf0 \abs{c_nz_0^n}\cdot\abs{\frac z{z_0}}^n
-    \le M\sumf0 \abs{\frac z{z_0}}^n
-    =\frac{M}{1-\abs{\dfrac z{z_0}}}
+    =\sumf0 \abs{c_nz_0^n}\cdot\biggabs{\frac z{z_0}}^n
+    \le M\sumf0 \biggabs{\frac z{z_0}}^n
+    =\frac{M}{1-\biggabs{\dfrac z{z_0}}}
   \]
   所以级数在 $z$ 处绝对收敛.
   \item 即 \ref{enum:abel-theorem-convergent} 的逆否命题.\qedhere
 \end{proofenuma}
 
-设 $R$ 是实幂级数 $\sumf0 |c_n|x^n$ 的收敛半径.
-\begin{enuma}
-  \item 若 $R=+\infty$, 由\thmAF 可知 $\sumf0 c_nz^n$ 处处绝对收敛.
-  \item 若 $0<R<+\infty$, 则 $\sumf0 c_nz^n$ 在 $|z|<R$ 上绝对收敛, 在 $|z|>R$ 上发散.
-  \item 若 $R=0$, 则 $\sumf0 c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
-\end{enuma}
-我们称 $R$ 为该幂级数的\noun{收敛半径}, 那么\alert{幂级数的收敛域就是圆域 $|z|<R$}.\footnote{收敛域是指收敛的最大区域. 当 $R=0$ 时, 该幂级数仅在 $z=0$ 处收敛, 没有收敛域.}
-
-\begin{figure}[!hbt]
+设 $R$ 是实幂级数 $\sumf0 \abs{c_n}x^n$ 的收敛半径.
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \fill[cstfille2] (-2,-1.5) rectangle (2,1.5)
@@ -281,14 +274,20 @@
   \end{tikzpicture}
   \caption{幂级数的收敛范围}
 \end{figure}
+\begin{enuma}
+  \item 若 $R=+\infty$, 由\thmAF 可知 $\sumf0 c_nz^n$ 处处绝对收敛.
+  \item 若 $0<R<+\infty$, 则 $\sumf0 c_nz^n$ 在 $\abs{z}<R$ 上绝对收敛, 在 $\abs{z}>R$ 上发散.
+  \item 若 $R=0$, 则 $\sumf0 c_nz^n$ 仅在 $z=0$ 处收敛, 对任意 $z\neq 0$ 都发散.
+\end{enuma}
+我们称 $R$ 为该幂级数的\nouns{收敛半径}\index{shoulianbanjing@收敛半径}, 那么\alert{幂级数的收敛域就是圆域 $\abs{z}<R$}.\footnote{收敛域是指收敛的最大区域. 当 $R=0$ 时, 该幂级数仅在 $z=0$ 处收敛, 没有收敛域.}
 
 \begin{example}
   求幂级数 $\sumf0 z^n=1+z+z^2+\cdots$ 的收敛半径与和函数.
 \end{example}
 
 \begin{solution}
-  若该幂级数收敛, 则由 $\liml_{n\ra\infty}z^n=0$ 可知 $|z|<1$.
-  当 $|z|<1$ 时, 该幂级数的和函数为
+  若该幂级数收敛, 则由 $\liml_{n\ra\infty}z^n=0$ 可知 $\abs{z}<1$.
+  当 $\abs{z}<1$ 时, 该幂级数的和函数为
   \[
      \lim_{n\ra\infty}s_n
     =\lim_{n\ra\infty}\frac{1-z^{n+1}}{1-z}
@@ -303,11 +302,11 @@
 
 \subsection{收敛半径的计算}
 
-由计算实幂级数收敛半径的\noun{比值法}\footnote{又名\emph{达朗贝尔公式}.}可得:
+由计算实幂级数收敛半径的\nouns{比值法}\index{bizhifa@比值法}\footnote{又名\emph{达朗贝尔公式}\index{dalangbeiergongshi@达朗贝尔公式}.}可得:
 \begin{theorem}
   若极限
   \[
-    r=\lim_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}
+    r=\lim_{n\ra\infty}\biggabs{\frac{c_{n+1}}{c_n}}
   \]
   存在或为 $+\infty$, 则 $\sumf0 c_nz^n$ 的收敛半径为
   \[
@@ -316,9 +315,9 @@
   若 $r=0$ 或 $+\infty$, 则相应地 $R=+\infty$ 或 $0$.
 \end{theorem}
 
-若将上述结论中的 $r$ 换成 \alert{$r=\liml_{n\ra\infty}\sqrt[n]{\abs{c_n}}$} 也成立, 叫做\noun{根式法}\footnote{
-  又名\emph{柯西公式}.
-  一般情形下, 我们有\emph{柯西-阿达马公式}: 
+若将上述结论中的 $r$ 换成 \alert{$r=\liml_{n\ra\infty}\sqrt[n]{\abs{c_n}}$} 也成立, 叫做\nouns{根式法}\index{genshifa@根式法}\footnote{
+  又名\emph{柯西公式}\index{kexigongshi@柯西公式}.
+  一般情形下, 我们有\emph{柯西-阿达马公式}\index{kexiadamagongshi@柯西-阿达马公式}: 
   $r=\liml_{k\ra\infty}\max\limits_{n\ge k}\sqrt[n]{\abs{c_n}}\in\BR\cup\{+\infty\}$, 即该数列的上极限.
 }.
 
@@ -329,7 +328,7 @@
 \begin{solution}
   由
   \[
-     \lim_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}
+     \lim_{n\ra\infty}\biggabs{\frac{c_{n+1}}{c_n}}
     =\lim_{n\ra\infty}\frac n{n+1}=1
   \]
   可知收敛半径为 $1$.
@@ -346,7 +345,7 @@
 \end{solution}
 
 事实上, \alert{收敛圆周上既可能处处收敛, 也可能处处发散, 也可能既有收敛的点也有发散的点}.\footnote{
-  例如 $\sumf1 z^n$ 在收敛圆周 $|z|=1$ 内处处发散; $\sumf1 \dfrac{z^n}{n^2}$ 在收敛圆周 $|z|=1$ 内处处绝对收敛; $\sumf1 \dfrac{(-1)^{[\sqrt n]}z^n}{n}$ 在收敛圆周 $|z|=1$ 内处处条件收敛, 这里 $[\alpha]$ 表示不超过 $\alpha$ 的最大整数.
+  例如 $\sumf1 z^n$ 在收敛圆周 $\abs{z}=1$ 内处处发散; $\sumf1 \dfrac{z^n}{n^2}$ 在收敛圆周 $\abs{z}=1$ 内处处绝对收敛; $\sumf1 \dfrac{(-1)^{[\sqrt n]}z^n}{n}$ 在收敛圆周 $\abs{z}=1$ 内处处条件收敛, 这里 $[\alpha]$ 表示不超过 $\alpha$ 的最大整数.
 }
 
 \begin{example}
@@ -360,7 +359,7 @@
   \]
   由
   \[
-     \lim_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}
+     \lim_{n\ra\infty}\biggabs{\frac{c_{n+1}}{c_n}}
     =\lim_{n\ra\infty}\frac{\ee^{n+1}+\ee^{-n-1}}{\ee^n+\ee^{-n}}
     =\ee\lim_{n\ra\infty}\frac{1+\ee^{-2n-2}}{1+\ee^{-2n}}
     =\ee
@@ -382,7 +381,7 @@
     g(z)=\sumf0 b_nz^n
   \]
   的收敛半径分别为 $R_1,R_2$.
-  那么当 $|z|<R=\min\{R_1,R_2\}$ 时,
+  那么当 $\abs{z}<R=\min\{R_1,R_2\}$ 时,
   \[
     (f\pm g)(z)=\sumf0 (a_n\pm b_n)z^n,\quad
     (fg)(z)=\sumf0 \biggl(\sum_{k=0}^na_kb_{n-k}\biggr)z^n.
@@ -391,12 +390,12 @@
 
 设 $c_n=a_n+b_n$.
 当 $R_1\neq R_2$ 时, $\sumf0 c_n z^n$ 的收敛半径为 $\min\{R_1,R_2\}$.
-这是因为当 $|z|$ 位于 $R_1,R_2$ 之间时(不妨设 $R_1>R_2$), 若 $\sumf0 c_n z^n$ 收敛, 则由 $\sumf0 a_n z^n$ 收敛可知   $\pm\sumf0 b_n z^n=\sumf0 (c_n-a_n) z^n$ 收敛, 这与 $|z|>R_2$ 矛盾.
+这是因为当 $\abs{z}$ 位于 $R_1,R_2$ 之间时(不妨设 $R_1>R_2$), 若 $\sumf0 c_n z^n$ 收敛, 则由 $\sumf0 a_n z^n$ 收敛可知   $\pm\sumf0 b_n z^n=\sumf0 (c_n-a_n) z^n$ 收敛, 这与 $\abs{z}>R_2$ 矛盾.
 
 但是若 $R_1=R_2$, 则 $\sumf0 (a_n\pm b_n)z^n$ 的收敛半径可以比 $R_1$ 大. 我们只需取一收敛半径大于 $R_1$ 的幂级数 $\sumf0 c_nz^n$, 并令 $b_n=c_n-a_n$, 则 $\sumf0 a_nz^n,\sumf0 b_nz^n$ 的收敛半径相同, 而 $\sumf0 (a_n+b_n)z^n$ 的收敛半径更大.
 
 \begin{theorem}
-  若幂级数 $\sumf0 c_nz^n$ 的收敛半径为 $R$, 则在 $|z|<R$ 上:
+  若幂级数 $\sumf0 c_nz^n$ 的收敛半径为 $R$, 则在 $\abs{z}<R$ 上:
   \begin{enuma}
     \item 它的和函数 $f(z)=\sumf0 c_nz^n$ 解析,
     \item $f'(z)=\sumf1 nc_nz^{n-1}$,
@@ -417,7 +416,7 @@
     =\frac1{(z-a)-(b-a)}
     =\frac1{a-b}\cdot\frac1{1-\dfrac{z-a}{b-a}}.
   \]
-  当 $|z-a|<|b-a|$ 时,
+  当 $\abs{z-a}<\abs{b-a}$ 时,
   \[
      \frac1{z-b}
     =\frac1{a-b}\sumf0 \Bigl(\frac{z-a}{b-a}\Bigr)^n,
@@ -426,7 +425,7 @@
   \[
      \frac1{z-b}
     =-\sumf0 \frac{(z-a)^n}{(b-a)^{n+1}},
-      \quad|z-a|<|b-a|.
+      \quad\abs{z-a}<\abs{b-a}.
   \]
 \end{solution}
 
@@ -437,13 +436,13 @@
 \begin{solution}
   由
   \[
-     \lim_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}
+     \lim_{n\ra\infty}\biggabs{\frac{c_{n+1}}{c_n}}
     =\lim_{n\ra\infty}\frac{2^{n+1}-1}{2^n-1}
     =2\lim_{n\ra\infty}\frac{1-2^{-n-1}}{1-2^{-n}}
     =2
   \]
   可知收敛半径为 $\dfrac12$.
-  当 $|z|<\dfrac12$ 时, $|2z|<1$, 从而
+  当 $\abs{z}<\dfrac12$ 时, $\abs{2z}<1$, 从而
   \begin{align*}
      \sumf1 (2^n-1)z^{n-1}&
     =\sumf1 2^n z^{n-1}-\sumf1 z^{n-1}\\&
@@ -459,13 +458,13 @@
 \begin{solution}
   由
   \[
-     \lim_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}
+     \lim_{n\ra\infty}\biggabs{\frac{c_{n+1}}{c_n}}
     =\lim_{n\ra\infty}\frac{n+1}n
     =\lim_{n\ra\infty}\bigl(1+\frac1n\bigr)
     =1
   \]
   可知收敛半径为 $1$.
-  当 $|z|<1$ 时,
+  当 $\abs{z}<1$ 时,
   \[
      \sumf0 z^{n+1}
     =\frac z{1-z}
@@ -476,7 +475,7 @@
      \sumf0 (n+1)z^n
     =\Bigl(-\frac1{z-1}\Bigr)'
     =\frac1{(z-1)^2},
-      \quad |z|<1.
+      \quad \abs{z}<1.
   \]
 \end{solution}
 
@@ -485,15 +484,15 @@
 \end{exercise}
 
 \begin{example}
-  求 $\doint_{|z|=\half} \sumf{-1} z^n\d z$.
+  求 $\doint_{\abs{z}=\half} \sumf{-1} z^n\d z$.
 \end{example}
 
 \begin{solution}
-  由于 $\sumf0 z^n$ 在 $|z|<1$ 收敛, 它的和函数解析, 因此
+  由于 $\sumf0 z^n$ 在 $\abs{z}<1$ 收敛, 它的和函数解析, 因此
   \begin{align*}
-     \oint_{|z|=\half} \sumf{-1} z^n\d z&
-    =\oint_{|z|=\half}\frac1z\d z
-      +\oint_{|z|=\half} \sumf0 z^n\d z\\&
+     \oint_{\abs{z}=\half} \sumf{-1} z^n\d z&
+    =\oint_{\abs{z}=\half}\frac1z\d z
+      +\oint_{\abs{z}=\half} \sumf0 z^n\d z\\&
     =2\cpi\ii +0
     =2\cpi\ii.
   \end{align*}
@@ -523,24 +522,24 @@
 \[
   \dfrac1{1+x}=1-x+x^2-x^3+\cdots
 \]
-成立的范围是 $|x|<1$, 这可以从该函数在 $x=-1$ 处无定义看出.
+成立的范围是 $\abs{x}<1$, 这可以从该函数在 $x=-1$ 处无定义看出.
 而
 \[
   \dfrac1{1+x^2}=1-x^2+x^4-x^6+\cdots
 \]
-成立的范围也是 $|x|<1$, 但这个函数却处处任意阶可导.
+成立的范围也是 $\abs{x}<1$, 但这个函数却处处任意阶可导.
 为什么它的麦克劳林展开成立的最大区间也是 $(-1,1)$ 呢?
 这些问题在本节可以得到回答.
 
 
 \subsection{泰勒展开的形式与性质}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \filldraw [
       rotate=10,
-      yshift=-5mm,
+      shift={(0,-.5)},
       cstcurve,
       main,
       cstfill1,
@@ -569,8 +568,8 @@
 \end{figure}
 
 设函数 $f(z)$ 在区域 $D$ 内解析, $z_0\in D$ 到 $D$ 边界的距离为 $d$ (可以为 $+\infty$).
-在 $D$ 内作一圆周 $K:|\zeta-z_0|=r<d$.
-对于 $K$ 内部一点 $z$, $|z-z_0|<|\zeta-z_0|=r$.
+在 $D$ 内作一圆周 $K:\abs{\zeta-z_0}=r<d$.
+对于 $K$ 内部一点 $z$, $\abs{z-z_0}<\abs{\zeta-z_0}=r$.
 由 $\dfrac1{\zeta-z}$ 幂级数展开的部分和可得
 \[
    \frac1{\zeta-z}-\frac1{\zeta-z}\biggl(\frac{z-z_0}{\zeta-z_0}\biggr)^N
@@ -593,20 +592,20 @@
 \]
 
 由于 $f(\zeta)$ 在 $D\supseteq K$ 内解析, 从而在 $K$ 上连续且有界.
-设对任意 $\zeta\in K$, $|f(\zeta)|\le M$,
+设对任意 $\zeta\in K$, $\abs{f(\zeta)}\le M$,
 则由\thmGrowUp 和 $\abs{z-z_0}<\abs{\zeta-z_0}$ 可知当 $N\ra\infty$ 时,
 \begin{align*}
-   |R_N(z)|&
-  \le\frac 1{2\cpi}\oint_K\abs{\frac{f(\zeta)}{\zeta-z}\cdot\biggl(\frac{z-z_0}{\zeta-z_0}\biggr)^N}\d s\\&
-  \le\frac 1{2\cpi}\cdot \frac M{r-|z-z_0|}\cdot\abs{\frac{z-z_0}{\zeta-z_0}}^N\cdot 2\cpi r\ra 0.
+   \abs{R_N(z)}&
+  \le\frac 1{2\cpi}\oint_K\biggabs{\frac{f(\zeta)}{\zeta-z}\cdot\biggl(\frac{z-z_0}{\zeta-z_0}\biggr)^N}\d s\\&
+  \le\frac 1{2\cpi}\cdot \frac M{r-\abs{z-z_0}}\cdot\biggabs{\frac{z-z_0}{\zeta-z_0}}^N\cdot 2\cpi r\ra 0.
 \end{align*}
-由此得到\noun{泰勒展开}:
+由此得到\nouns{泰勒展开}\index{tailezhankai@泰勒展开}:
 
 \begin{theorem}
   若 $f(z)$ 在 $z_0$ 处解析, 则
   \[
     f(z)=\sumf0 \frac{f^{(n)}(z_0)}{n!}(z-z_0)^n,
-      \quad |z-z_0|<d,
+      \quad \abs{z-z_0}<d,
   \]
   其中 $d$ 是 $z_0$ 到最近的 $f(z)$ 奇点的距离.\footnotemark
 \end{theorem}
@@ -614,17 +613,17 @@
   若 $f(z)$ 在复平面内处处解析, 则 $d=+\infty$.
   若 $f(z)$ 有奇点, 则一定存在距离解析点 $z_0$ 距离最近的奇点.
   不妨设 $z_0=0$.
-  假设不存在这样的奇点, 则存在 $r\ge 0$ 使得 $f(z)$ 在 $|z|\le r$ 内解析, 且存在一串奇点 $z_1,z_2,\cdots$, 使得 $|z_k|$ 严格单调减趋于 $r$.
-  由\emph{魏尔斯特拉斯聚点定理}, 存在 $\{z_n\}_{n\ge 1}$ 的一个收敛的子数列.
-  设该子数列的极限为 $c$, 则 $c$ 是 $f(z)$ 的奇点且 $|c|=r$, 这与假设矛盾.
+  假设不存在这样的奇点, 则存在 $r\ge 0$ 使得 $f(z)$ 在 $\abs{z}\le r$ 内解析, 且存在一串奇点 $z_1,z_2,\cdots$, 使得 $\abs{z_k}$ 严格单调减趋于 $r$.
+  由\emph{魏尔斯特拉斯聚点定理}\index{weiersitelasijudiandingli@魏尔斯特拉斯聚点定理}, 存在 $\{z_n\}_{n\ge 1}$ 的一个收敛的子数列.
+  设该子数列的极限为 $c$, 则 $c$ 是 $f(z)$ 的奇点且 $\abs{c}=r$, 这与假设矛盾.
 }
 
-称在 $z_0=0$ 处的泰勒展开为\noun{麦克劳林展开}.
+称在 $z_0=0$ 处的泰勒展开为\nouns{麦克劳林展开}\index{maikelaolinzhankai@麦克劳林展开}.
 
 由于幂级数和函数在收敛圆域内解析, 因此 $f(z)$ 的泰勒展开成立的圆域不包含 $f(z)$ 的奇点.
 由此可知, 解析函数在 $z_0$ 处\alert{泰勒展开成立的最大圆域半径 是 $z_0$ 到最近奇点的距离} $d$.
 
-需要注意的是, 泰勒级数的收敛半径可能大于 $d$, 而且泰勒展开也可能对于一些点 $|z-z_0|\ge d$ 成立.
+需要注意的是, 泰勒级数的收敛半径可能大于 $d$, 而且泰勒展开也可能对于一些点 $\abs{z-z_0}\ge d$ 成立.
 不过对于有理函数(分子分母没有公共零点), 其泰勒展开的收敛半径的确就是 $d$, 更多分析见 \ref{ssec:taylor-expansion-radius}.
 
 现在我们来看本节开头提出的问题. 尽管函数
@@ -701,7 +700,7 @@
 可以发现, 奇函数的麦克劳林展开只有奇数幂次项, 没有偶数幂次项, 而偶函数的麦克劳林展开只有偶数幂次项, 没有奇数幂次项.
 
 \begin{example}
-  函数 $\ln(1+z)$ 在去掉射线 $z=x\le-1$ 的区域内解析, 因此它在 $|z|<1$ 内解析, 且此时
+  函数 $\ln(1+z)$ 在去掉射线 $z=x\le-1$ 的区域内解析, 因此它在 $\abs{z}<1$ 内解析, 且此时
   \[
      \bigl(\ln(1+z)\bigr)'
     =\frac1{1+z}
@@ -711,12 +710,12 @@
   \[
      \ln(1+z)
     =\sumf0 \frac{(-1)^nz^{n+1}}{n+1}
-    =\sumf1 \frac{(-1)^{n+1}z^n}{n},\quad|z|<1.
+    =\sumf1 \frac{(-1)^{n+1}z^n}{n},\quad\abs{z}<1.
   \]
   这里注意由于 $\ln(1+z)$ 在零处取值为零, 因此逐项积分后没有常数项.
 \end{example}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \def\r{1.3}
@@ -751,7 +750,7 @@
   \begin{align*}
      (1+z)^a&
     =\sumf0 \frac{a(a-1)\cdots(a-n+1)}{n!}z^n\\&
-    =1+a z+\frac{a(a-1)}2z^2+\frac{a(a-1)(a-2)}{3!}z^3+\cdots,\quad |z|<1.
+    =1+a z+\frac{a(a-1)}2z^2+\frac{a(a-1)(a-2)}{3!}z^3+\cdots,\quad \abs{z}<1.
   \end{align*}
 \end{example}
 
@@ -772,14 +771,14 @@
 \end{example}
 
 \begin{solution}
-  由于 $\dfrac1{3z-2}$ 的奇点为 $z=\dfrac23$, 因此它在 $|z|<\dfrac23$ 内解析.
+  由于 $\dfrac1{3z-2}$ 的奇点为 $z=\dfrac23$, 因此它在 $\abs{z}<\dfrac23$ 内解析.
   此时
   \begin{align*}
      \frac1{3z-2}&
     =-\half\cdot\frac1{1-\dfrac{3z}2}
     =-\half\sumf0 \Bigl(\frac{3z}2\Bigr)^n\\&
     =-\sumf0 \frac{3^n}{2^{n+1}}z^n,
-      \quad|z|<\frac23.
+      \quad\abs{z}<\frac23.
   \end{align*}
 \end{solution}
 
@@ -788,7 +787,7 @@
 \end{example}
 
 \begin{solution}[解法一]
-  由\thmref{例}{exam:power-taylor-series} 中幂函数的展开可知, 当 $|z|<1$ 时,
+  由\thmref{例}{exam:power-taylor-series} 中幂函数的展开可知, 当 $\abs{z}<1$ 时,
   \[
     (1+z)^{-2}=\sumf0 \frac{(-2)(-3)\cdots(-1-n)}{n!}z^n
     =\sumf0 (-1)^n(n+1)z^n.
@@ -796,7 +795,7 @@
 \end{solution}
 
 \begin{solution}[解法二]
-  由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
+  由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $\abs{z}<1$ 内解析.
   由于
   \[
      \frac1{1+z}=1-z+z^2-z^3+\cdots
@@ -807,7 +806,7 @@
      \frac1{(1+z)^2}
     =-\Bigl(\frac1{1+z}\Bigr)'
     =-\sumf1 (-1)^n nz^{n-1}
-    =\sumf0 (-1)^n (n+1)z^n,\quad |z|<1.
+    =\sumf0 (-1)^n (n+1)z^n,\quad \abs{z}<1.
   \]
 \end{solution}
 
@@ -815,7 +814,7 @@
 而部分分式可以展开为
 \[
    \frac1{(\lambda-z)^k}
-  =\sumf0 \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-(n+k)}z^n,\quad |z|<|\lambda|.
+  =\sumf0 \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-(n+k)}z^n,\quad \abs{z}<\abs{\lambda}.
 \]
 由此可得到该有理函数的泰勒展开.
 
@@ -825,9 +824,9 @@
 \smallskip
 
 解析函数的泰勒展开还说明了幂级数的和函数无论怎样扩充定义域, 它在收敛圆周上一定有奇点.
-设幂级数 $\sumf0c_n(z-z_0)^n$ 的收敛半径为 $R>0$, 且在 $|z|<R$ 时和函数等于函数 $f(z)$.
-注意到 $f(z)$ 在 $|z-z_0|<d$ 上可以展开为幂级数, 其中 $d$ 是 $z_0$ 到 $f(z)$ 最近奇点的距离.
-由泰勒展开的唯一性可知该幂级数就是 $\sumf0c_n(z-z_0)^n$, 从而 $R=d$, $f(z)$ 一定在 $|z|=R$ 上有奇点.
+设幂级数 $\sumf0c_n(z-z_0)^n$ 的收敛半径为 $R>0$, 且在 $\abs{z}<R$ 时和函数等于函数 $f(z)$.
+注意到 $f(z)$ 在 $\abs{z-z_0}<d$ 上可以展开为幂级数, 其中 $d$ 是 $z_0$ 到 $f(z)$ 最近奇点的距离.
+由泰勒展开的唯一性可知该幂级数就是 $\sumf0c_n(z-z_0)^n$, 从而 $R=d$, $f(z)$ 一定在 $\abs{z}=R$ 上有奇点.
 
 
 \subsection{泰勒展开在级数中的应用\optional}
@@ -866,18 +865,18 @@
     \draw[cstaxis] (-1.5,0)--(1.5,0);
     \draw[cstaxis] (0,-1.3)--(0,1.5);
   \end{tikzpicture}%
-  相应地, 前述\thmAF 被称为\emph{阿贝尔第一定理}. \thmAS 结论的一般\\
+  相应地, 前述\thmAF 被称为\emph{阿贝尔第一定理}\index{abeierdiyidingli@阿贝尔第一定理}. \thmAS 结论的一般\\
   形式为: 对任意 $0\le \theta<\dfrac\cpi2$,
   \begin{align*}
-    \lim_{\substack{z\ra a,|z|<R\\-\theta\le\arg (1-z/a)\le\theta}}f(z)=f(a),\qquad\qquad\qquad&&&
+    \lim_{\substack{z\ra a,\abs{z}<R\\-\theta\le\arg (1-z/a)\le\theta}}f(z)=f(a),\qquad\qquad\qquad&&&
   \end{align*}
   也就是说, $z$ 在右图阴影区域内趋于 $a$.
 }
 
-\begin{theorem}[阿贝尔第二定理]
+\begin{theorem}[阿贝尔第二定理]\index{abeierdierdingli@阿贝尔第二定理}
   \label{thm:abel-second}
   设幂级数 $f(z)=\sumf0 c_nz^n$ 的收敛半径为 $R$.
-  若 $f(z)$ 在收敛圆周 $|z|=R$ 上一点 $z=a$ 处收敛, 则
+  若 $f(z)$ 在收敛圆周 $\abs{z}=R$ 上一点 $z=a$ 处收敛, 则
   \[
     \lim_{t\ra 1^-}f(ta)=f(a).
   \]
@@ -895,7 +894,7 @@
     S_N=\suml_{n=0}^N c_n,\quad 
     T_N=\suml_{n=1}^N c_n(t^n-1).
   \]
-  对任意 $\varepsilon>0$, 存在正整数 $M$ 使得当 $N>M$ 时, $|S_N-f(1)|<\varepsilon$.
+  对任意 $\varepsilon>0$, 存在正整数 $M$ 使得当 $N>M$ 时, $\abs{S_N-f(1)}<\varepsilon$.
   于是
   \begin{align*}
      T_N&
@@ -906,7 +905,7 @@
   \end{align*}
   满足
   \[
-    |T_N|\le \Bigl|\sum_{n=0}^M c_n(t^n-t^M)+\bigl(S_N-f(1)\bigr)(t^N-1)\Bigr|+(1-t^M)|f(1)|+(t^M-t^N)\varepsilon.
+    \abs{T_N}\le \biggabs{\sum_{n=0}^M c_n(t^n-t^M)+\bigl(S_N-f(1)\bigr)(t^N-1)}+(1-t^M)\abs{f(1)}+(t^M-t^N)\varepsilon.
   \]
   注意到
   \[
@@ -914,7 +913,7 @@
   \]
   令 $N\ra\infty$, 我们得到
   \[
-    |f(t)-f(1)|\le \Bigl|\sum_{n=0}^M c_n(t^n-t^M)\Bigr|+(1-t^M)|f(1)|+t^M \varepsilon.
+    \abs{f(t)-f(1)}\le \biggabs{\sum_{n=0}^M c_n(t^n-t^M)}+(1-t^M)\abs{f(1)}+t^M \varepsilon.
   \]
   令 $t\ra1^-$ 并由 $\varepsilon$ 的任意性可知 $\lim\limits_{t\ra 1^-}f(t)=f(1)$.
 \end{proof}
@@ -930,7 +929,7 @@
     \omega=\ee^{\frac{2\cpi\ii}3}=\frac{-1+\sqrt 3i}2
   \]
   是三次单位根, 则 $\omega^2=\ov\omega$, $1+\omega+\omega^2=0$.
-  当 $|z|<1$ 时,
+  当 $\abs{z}<1$ 时,
   \[
     \ln(1+z)=\sumf1 \frac{(-1)^{n+1}z^n}{n}.
   \]
@@ -959,18 +958,18 @@
   函数
   \[
     f(z)=\begin{cases}
-      \ee^z,&z\neq 1;\\
+      \ee^z,&z\neq 1,\\
       0,&z=1
     \end{cases}
   \]
   的麦克劳林展开为
   \[
-    f(z)=\sumf0 \dfrac{z^n}{n!},\quad |z|<d=1,
+    f(z)=\sumf0 \dfrac{z^n}{n!},\quad \abs{z}<d=1,
   \]
-  而右侧幂级数
-  \[
-    g(z)=\sumf0 \dfrac{z^n}{n!}=\ee^z
-  \]
+  而右侧幂级数%
+  % \[
+  %   g(z)=\sumf0 \dfrac{z^n}{n!}=\ee^z
+  % \]
   的收敛半径为 $R=+\infty$.
   可以看出
   \[
@@ -989,12 +988,12 @@
   分情况讨论可知
   \begin{align*}
     f(z)=\begin{cases}
-      g(z),&\text{若}\ \arg(z-1-\ii)\in \bigl(-\cpi,\dfrac\cpi4\bigr];\\
+      g(z),&\text{若}\ \arg(z-1-\ii)\in \bigl(-\cpi,\dfrac\cpi4\bigr],\\
       g(z)+2\cpi\ii,&\text{若}\ \arg(z-1-\ii)\in \bigl(\dfrac\cpi4,\cpi\bigr].
     \end{cases}
   \end{align*}
 
-  \begin{figure}[!hbt]
+  \begin{figure}[H]
     \centering
     \begin{tikzpicture}
       \filldraw[cstcurve,fourth,fill=fourth!15] (0,0) circle ({sqrt(2)});
@@ -1014,32 +1013,32 @@
   \end{figure}
 
   函数 $f(z)$ 在 $\Re(z-1-\ii)\le 0$ 之外解析, 因此其麦克劳林展开成立的半径为 $1$.
-  当 $|z|<d=1$ 时, 由对数函数的麦克劳林展开可知
+  当 $\abs{z}<d=1$ 时, 由对数函数的麦克劳林展开可知
   \[
     f(z)=g(z)=\ln(-1-\ii)-\sumf1 \frac1{n(1+\ii)^n}z^n,
   \]
   而右侧幂级数的收敛半径为 $\sqrt2$, 和函数为 $g(z)$.
-  当 $z$ 属于圆域 $D=\set{z:|z|<\sqrt2}$ 的子集
+  当 $z$ 属于圆域 $D=\{z\midcolon \abs{z}<\sqrt2\}$ 的子集
   \[
-    D\cap\set{z: \arg(z-1-\ii)\in\bigl(\frac\cpi4,\cpi\bigr]}
-    =D\cap\set{z: \Im z\ge1}
+    D\cap\Bigset{z\midcolon \arg(z-1-\ii)\in\bigl(\frac\cpi4,\cpi\bigr]}
+    =D\cap\bigset{z\midcolon \Im z\ge1}
   \]
   时, $f(z)=g(z)+2\cpi\ii $. 因此
   \[
-    \liml_{\substack{z\ra \ii\\|z|<1}} f(z)=g(\ii)=-\cpi\ii
+    \liml_{\substack{z\ra \ii\\\abs{z}<1}} f(z)=g(\ii)=-\cpi\ii
   \]
   不等于 $f(\ii)$.
 \end{example}
 
 
-可以看出在这两个例子中, 之所以泰勒级数的收敛半径 $R>d$, 是因为 $f(z)$ 在 $|z-z_0|=d$ 上的奇点是可以``消去''的, 只需要在奇点的一个邻域内将 $f(z)$ 换成泰勒级数的和函数 $g(z)$, $f(z)$ 便可以``解析延拓''到更大的区域.
+可以看出在这两个例子中, 之所以泰勒级数的收敛半径 $R>d$, 是因为 $f(z)$ 在 $\abs{z-z_0}=d$ 上的奇点是可以``消去''的, 只需要在奇点的一个邻域内将 $f(z)$ 换成泰勒级数的和函数 $g(z)$, $f(z)$ 便可以``解析延拓''到更大的区域.
 若奇点 $z=a$ 无法通过上述方式消除, 则一定有 $R=d$.
 
 \begin{theorem}
-  设 $a$ 是函数 $f(z)$ 距离解析点 $z_0$ 最近的奇点, $d=|a-z_0|$.
+  设 $a$ 是函数 $f(z)$ 距离解析点 $z_0$ 最近的奇点, $d=\abs{a-z_0}$.
   若极限
   \[
-    \liml_{\substack{z\ra a\\|z-z_0|<d}} f(z)
+    \liml_{\substack{z\ra a\\\abs{z-z_0}<d}} f(z)
   \]
   不存在, 则 $f(z)$ 在 $z_0$ 处泰勒级数的收敛半径等于 $d$.
 \end{theorem}
@@ -1051,7 +1050,7 @@
 
 \begin{example}
   设 $f(z)=\ee^{\frac1z}$.
-  由于 $\liml_{x\ra 0^+}f(x)=\infty$, 因此 $f(z)$ 在 $z_0\neq 0$ 处泰勒级数的收敛半径就是 $z_0$ 到奇点 $0$ 的距离 $d=|z_0|$.
+  由于 $\liml_{x\ra 0^+}f(x)=\infty$, 因此 $f(z)$ 在 $z_0\neq 0$ 处泰勒级数的收敛半径就是 $z_0$ 到奇点 $0$ 的距离 $d=\abs{z_0}$.
 \end{example}
 
 
@@ -1062,49 +1061,49 @@
 
 若函数 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 可以展开成 $z-z_0$ 的幂级数.
 若 $f(z)$ 在 $z_0$ 处不解析呢?
-此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数, 然而它却可能可以展开为\noun{双边幂级数}\footnote{
-  非负幂次部分叫作它的\emph{解析部分}, 负幂次部分叫作它的\emph{主要部分}.
+此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数, 然而它却可能可以展开为\nouns{双边幂级数}\index{shuangbianmijshu@双边幂级数}\footnote{
+  非负幂次部分叫作它的\emph{解析部分}\index{jiexibufen@解析部分}, 负幂次部分叫作它的\emph{主要部分}\index{zhuyaobufen@主要部分}.
 }
 \[
    \sumff c_n(z-z_0)^n
-  =\underbrace{\sumf1 c_{-n}(z-z_0)^{-n}}_{\text{\normalsize \noun{负幂次部分}}}
-    +\underbrace{\sumf0 c_n(z-z_0)^n}_{\text{\normalsize \noun{非负幂次部分}}}.
+  =\underbrace{\sumf1 c_{-n}(z-z_0)^{-n}}_{\text{\normalsize \nouns{负幂次部分}\index{fumicibufen@负幂次部分}}}
+    +\underbrace{\sumf0 c_n(z-z_0)^n}_{\text{\normalsize \nouns{非负幂次部分}\index{feifumicibufen@非负幂次部分}}}.
 \]
 
 为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
 \begin{definition}
-  若双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\noun{收敛}. 否则称之为\noun{发散}.
+  若双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\nouns{收敛}\index{shoulian@收敛!shuangbianmijishushoulian@双边幂级数收敛}. 否则称之为\nouns{发散}\index{fasan@发散!shuangbianmijishufasan@双边幂级数发散}.
 \end{definition}
 
 注意双边幂级数的敛散性不能像幂级数那样通过部分和形成的数列的极限来定义,
 因为使用不同的部分和选取方式会影响到其敛散性和极限值.
 
 现在我们来研究双边幂级数的敛散性.
-设 $\sumf0 c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
+设 $\sumf0 c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $\abs{z-z_0}<R_2$ 内收敛, 在 $\abs{z-z_0}>R_2$ 内发散.
 
 对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 则负幂次部分是 $\zeta$ 的一个幂级数 $\sumf1 c_{-n}\zeta^n$.
-设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
-设 $R_1=\dfrac1R$, 则负幂次部分在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
+设该幂级数的收敛半径为 $R$, 则它在 $\abs{\zeta}<R$ 内收敛, 在 $\abs{\zeta}>R$ 内发散.
+设 $R_1=\dfrac1R$, 则负幂次部分在 $\abs{z-z_0}>R_1$ 内收敛, 在 $\abs{z-z_0}<R_1$ 内发散.
 
 \begin{enuma}
   \item 若 $R_1>R_2$, 则该双边幂级数处处不收敛.
-  \item 若 $R_1=R_2$, 则该双边幂级数只在圆周 $|z-z_0|=R_1$ 上可能有收敛的点. 此时没有收敛域.
-  \item 若 $R_1<R_2$, 则该双边幂级数在 $R_1<|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|<R_1$ 和 $>R_2$ 内发散, 在圆周 $|z-z_0|=R_1$ 和 $R_2$ 上既可能发散也可能收敛.
+  \item 若 $R_1=R_2$, 则该双边幂级数只在圆周 $\abs{z-z_0}=R_1$ 上可能有收敛的点. 此时没有收敛域.
+  \item 若 $R_1<R_2$, 则该双边幂级数在 $R_1<\abs{z-z_0}<R_2$ 内收敛, 在 $\abs{z-z_0}<R_1$ 和 $>R_2$ 内发散, 在圆周 $\abs{z-z_0}=R_1$ 和 $R_2$ 上既可能发散也可能收敛.
 \end{enuma}
-因此\alert{双边幂级数的收敛域为圆环域 $R_1<|z-z_0|<R_2$}.
+因此\alert{双边幂级数的收敛域为圆环域 $R_1<\abs{z-z_0}<R_2$}.
 
 当 $R_1=0$ 或 $R_2=+\infty$ 时, 圆环域的形状会有所不同.
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
-    \begin{scope}[xshift=-40mm]
+    \begin{scope}[shift={(-4,0)}]
       \filldraw[cstcurve,draw=main,cstfill1] (0,0) circle (1.5);
       \coordinate (A) at ({1.5*cos(35)},{1.5*sin(35)});
       \draw[second,cstra] (0,0)--(A)
         node[pos=.4,below right] {$R_2$};
       \filldraw[cstdote,draw=main] (0,0) circle
         node[left,third] {$z_0$}
-        node[below=15mm] {$0<|z-z_0|<R_2$};
+        node[below=15mm] {$0<\abs{z-z_0}<R_2$};
     \end{scope}
     \begin{scope}
       \fill[cstfille1] (0,0) circle (1.5);
@@ -1114,13 +1113,13 @@
         node[pos=.4,below right] {$R_1$};
       \fill[cstdot,fill=second] (0,0) circle
         node[left,third] {$z_0$}
-        node[below=15mm] {$R_1<|z-z_0|<+\infty$};
+        node[below=15mm] {$R_1<\abs{z-z_0}<+\infty$};
     \end{scope}
-    \begin{scope}[xshift=40mm]
+    \begin{scope}[shift={(4,0)}]
       \fill[cstfille1] (0,0) circle (1.5);
       \filldraw[cstdote,draw=main] (0,0) circle
         node[left=2pt,third,fill=white,inner sep=0pt] {$z_0$}
-        node[below=15mm] {$0<|z-z_0|<+\infty$};
+        node[below=15mm] {$0<\abs{z-z_0}<+\infty$};
     \end{scope}
   \end{tikzpicture}
   \caption{特殊的圆环域}
@@ -1139,8 +1138,8 @@
 \end{example}
 
 \begin{solution}
-  不难知道, 非负幂次部分收敛域为 $|z|<|2+\ii|=\sqrt5$, 负幂次部分收敛域为 $|z|>|2|=2$. 
-  因此该双边幂级数的收敛域为 $2<|z|<\sqrt5$.
+  不难知道, 非负幂次部分收敛域为 $\abs{z}<\abs{2+\ii}=\sqrt5$, 负幂次部分收敛域为 $\abs{z}>\abs{2}=2$. 
+  因此该双边幂级数的收敛域为 $2<\abs{z}<\sqrt5$.
   此时
   \[
      \sumf1 \frac{2^n}{z^n}+\sumf0 \frac{z^n}{(2+\ii)^n}
@@ -1153,28 +1152,28 @@
 \subsection{洛朗展开的形式}
 
 双边幂级数的和函数是其收敛圆环域内的解析函数.
-反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\noun{洛朗级数}.
+反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\nouns{洛朗级数}.
 例如 $f(z)=\dfrac1{z(1-z)}$ 在 $z=0,1$ 以外解析.
-在圆环域 $0<|z|<1$ 内,
+在圆环域 $0<\abs{z}<1$ 内,
 \[f(z)=\frac1z+\frac1{1-z}=\frac1z+1+z+z^2+z^3+\cdots\]
-在圆环域 $1<|z|<+\infty$ 内,
+在圆环域 $1<\abs{z}<+\infty$ 内,
 \[f(z)=\frac1z-\frac1z\cdot\frac1{1-\dfrac1z}=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots\]
 
 现在我们来证明洛朗级数的存在性并得到洛朗展开式.
-设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析.
+设 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内解析.
 设 $R_1<r<R<R_2$, 
 \[
-  \color{main}{K_1:|z-z_0|=r},\quad \color{fifth}{K_2:|z-z_0|=R}
+  \color{main}{K_1:\abs{z-z_0}=r},\quad \color{fifth}{K_2:\abs{z-z_0}=R}
 \]
 是该圆环域内的两个圆周.
-对于 $r<|z-z_0|<R$, 由\thmCCC 和\thmCIH,
+对于 $r<\abs{z-z_0}<R$, 由\thmCCC 和\thmCIH,
 \[
    f(z)
   =\frac1{2\cpi\ii}\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\d\zeta
   -\frac1{2\cpi\ii}\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\d\zeta.
 \]
 
-\begin{figure}[!htb]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \filldraw[cstcurve,fifth,cstfill3] (0,0) circle (1.6);
@@ -1223,10 +1222,10 @@
   R_N(z)=\frac1{2\cpi\ii}\oint_{K_1}\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^{N-1}\d\zeta.
 \]
 由于 $f(\zeta)$ 在 $D\supseteq K_1$ 内解析, 从而在 $K_1$ 上连续且有界.
-设对任意 $\zeta\in K$, $|f(\zeta)|\le M$, 则由\thmGrowUp 和 $|\zeta-z_0|=r<|z-z_0|$ 可知当 $N\ra \infty$ 时,
+设对任意 $\zeta\in K$, $\abs{f(\zeta)}\le M$, 则由\thmGrowUp 和 $\abs{\zeta-z_0}=r<\abs{z-z_0}$ 可知当 $N\ra \infty$ 时,
 \begin{align*}
-  |R_N(z)|&\le\frac 1{2\cpi}\oint_{K_1}\abs{\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^N}\d s\\
-  &\le\frac 1{2\cpi}\cdot\frac M{|z-z_0|-r}\cdot\abs{\frac{\zeta-z_0}{z-z_0}}^N\cdot 2\cpi r\ra 0.
+  \abs{R_N(z)}&\le\frac 1{2\cpi}\oint_{K_1}\biggabs{\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^N}\d s\\
+  &\le\frac 1{2\cpi}\cdot\frac M{\abs{z-z_0}-r}\cdot\biggabs{\frac{\zeta-z_0}{z-z_0}}^N\cdot 2\cpi r\ra 0.
 \end{align*}
 故
 \[
@@ -1234,13 +1233,13 @@
     \sumf0 \biggl(\frac1{2\cpi\ii}\oint_{K_2}\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d\zeta\biggr)(z-z_0)^n
     +\sumf1 \biggl(\frac1{2\cpi\ii}\oint_{K_1}\frac{f(\zeta)}{(\zeta-z_0)^{-n+1}}\d\zeta\biggr)(z-z_0)^{-n},
 \]
-其中 $r<|z-z_0|<R$.
+其中 $r<\abs{z-z_0}<R$.
 由\thmCCC, $K_1,K_2$ 可以换成任意一条在圆环域中内部包含 $z_0$ 的闭路 $C$.
-由此我们得到\noun{洛朗展开}:
+由此我们得到\nouns{洛朗展开}\index{luolangzhankai@洛朗展开}:
 
 \begin{theorem}
   \label{thm:laurent-expansion}
-  若 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析, 则 $f(z)$ 可以在该圆环域内展开成双边幂级数
+  若 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内解析, 则 $f(z)$ 可以在该圆环域内展开成双边幂级数
   \[
     f(z)=\sumff \biggl(\frac1{2\cpi\ii}\oint_C \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d\zeta\biggr)(z-z_0)^n,
   \]
@@ -1252,7 +1251,7 @@
 
 \subsection{洛朗展开的计算方法}
 
-设在圆环域 $R_1<|z-z_0|<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
+设在圆环域 $R_1<\abs{z-z_0}<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
 \[
   f(z)=\sumff c_n(z-z_0)^n.
 \]
@@ -1274,7 +1273,7 @@
 \end{example}
 
 \begin{solution}
-  由于 $f(z)$ 在 $0$ 以外处处解析, 因此它可以在 $0<|z|<+\infty$ 内展开成洛朗级数:
+  由于 $f(z)$ 在 $0$ 以外处处解析, 因此它可以在 $0<\abs{z}<+\infty$ 内展开成洛朗级数:
   \[
      \frac{\ee^z-1}{z^2}
     =\frac1{z^2}\Bigl(z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\Bigr)
@@ -1286,9 +1285,9 @@
 \begin{example}
   在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数:
   \begin{subexample}(3)
-    \item $0<|z|<1$;
-    \item $1<|z|<2$;
-    \item $2<|z|<+\infty$.
+    \item $0<\abs{z}<1$;
+    \item $1<\abs{z}<2$;
+    \item $2<\abs{z}<+\infty$.
   \end{subexample}
 \end{example}
 
@@ -1298,9 +1297,9 @@
   \[
     f(z)=\frac1{z-2}-\frac1{z-1},
   \]
-  我们可以根据 $|z|$ 的范围来将其展开成等比级数.
+  我们可以根据 $\abs{z}$ 的范围来将其展开成等比级数.
   \begin{enumr}
-    \item 由于 $|z|<1,\abs{\dfrac z2}<1$, 因此
+    \item 由于 $\abs{z}<1,\biggabs{\dfrac z2}<1$, 因此
       \begin{align*}
          f(z)&
         =-\frac1{2-z}+\frac1{1-z}
@@ -1309,7 +1308,7 @@
         =\sumf0 \Bigl(1-\frac1{2^{n+1}}\Bigr)z^n
         =\frac12+\frac34z+\frac78z^2+\cdots
       \end{align*}
-    \item 由于 $\abs{\dfrac 1z}<1,\abs{\dfrac z2}<1$, 因此
+    \item 由于 $\biggabs{\dfrac 1z}<1,\biggabs{\dfrac z2}<1$, 因此
       \begin{align*}
          f(z)&
         =\frac1{1-z}-\frac1{2-z}
@@ -1318,7 +1317,7 @@
         =-\sumf1 \frac1{z^n}-\sumf0 \frac1{2^{n+1}}z^n\\&
         =\cdots-\frac1{z^2}-\frac1z-\half -\frac14z-\frac18z^2-\cdots
       \end{align*}
-    \item 由于 $\abs{\dfrac 1z}<1,\abs{\dfrac 2z}<1$, 因此
+    \item 由于 $\biggabs{\dfrac 1z}<1,\biggabs{\dfrac 2z}<1$, 因此
       \begin{align*}
          f(z)&
         =\frac1{1-z}-\frac1{2-z}
@@ -1331,7 +1330,7 @@
 \end{solution}
 
 \begin{example}
-  将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<|z|<1$ 内展开成洛朗级数.
+  将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<\abs{z}<1$ 内展开成洛朗级数.
 \end{example}
 
 \begin{solution}[解法一]
@@ -1342,7 +1341,7 @@
     =\frac1{z-1}+\frac{2}{(z-1)^2}
     =-\frac1{1-z}+2\Bigl(\frac1{1-z}\Bigr)',
   \]
-  因此当 $0<|z|<1$ 时,
+  因此当 $0<\abs{z}<1$ 时,
   \begin{align*}
       f(z)&
     =-\sumf0 z^n+2\Bigl(\sumf0 z^n\Bigr)'
@@ -1353,7 +1352,7 @@
 \end{solution}
 
 \begin{solution}[解法二]
-  由于 $0<|z|<1$ 时,
+  由于 $0<\abs{z}<1$ 时,
   \[
      \frac{1}{(z-1)^2}
     =\Bigl(\frac1{1-z}\Bigr)'
@@ -1375,15 +1374,15 @@
 
 洛朗展开的一些特点可以帮助我们检验计算的正确性.
 \begin{enuma}
-  \item 若 $f(z)$ 在 $|z-z_0|<R_2$ 内解析, 则 $f(z)$ 可以展开为泰勒级数. 由唯一性可知泰勒级数等于洛朗级数, 因此此时洛朗展开一定没有负幂次项.
-  \item 若有理函数(分子分母没有公共零点) 在圆周 $|z-z_0|=R_1>0$ 和 $|z-z_0|=R_2>0$ 上都有奇点, 则在圆环域 $R_1<|z-z_0|<R_2$ 上的洛朗展开一定有无穷多负幂次和无穷多正幂次项.
-  \item 有理函数在解析区域 $0<|z-z_0|<r$ 的洛朗展开最多只有有限多负幂次项, 且最低负幂次是 $z-z_0$ 在分母因式分解中出现的次数; 在解析区域 $R<|z-z_0|<+\infty$ 的洛朗展开最多只有有限多正幂次项, 且最高正幂次是分子次数减去分母次数.
+  \item 若 $f(z)$ 在 $\abs{z-z_0}<R_2$ 内解析, 则 $f(z)$ 可以展开为泰勒级数. 由唯一性可知泰勒级数等于洛朗级数, 因此此时洛朗展开一定没有负幂次项.
+  \item 若有理函数(分子分母没有公共零点) 在圆周 $\abs{z-z_0}=R_1>0$ 和 $\abs{z-z_0}=R_2>0$ 上都有奇点, 则在圆环域 $R_1<\abs{z-z_0}<R_2$ 上的洛朗展开一定有无穷多负幂次和无穷多正幂次项.
+  \item 有理函数在解析区域 $0<\abs{z-z_0}<r$ 的洛朗展开最多只有有限多负幂次项, 且最低负幂次是 $z-z_0$ 在分母因式分解中出现的次数; 在解析区域 $R<\abs{z-z_0}<+\infty$ 的洛朗展开最多只有有限多正幂次项, 且最高正幂次是分子次数减去分母次数.
 \end{enuma}
 
 更多有关结论可阅读 \ref{ssec:rational-function-expansion}.
 
 \begin{exercise}
-  将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
+  将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<\abs{z}<+\infty$ 内展开成洛朗级数.
 \end{exercise}
 
 注意到当 $n=-1$ 时, 洛朗展开的系数
@@ -1393,11 +1392,11 @@
 因此洛朗展开可以用来帮助计算函数的积分.
 
 \begin{example}
-  求 $\doint_{|z|=3}\frac1{z(z+1)^2}\d z$.
+  求 $\doint_{\abs{z}=3}\frac1{z(z+1)^2}\d z$.
 \end{example}
 
 \begin{solution}
-  注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内, 我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
+  注意到闭路 $\abs{z}=3$ 落在 $1<\abs{z+1}<+\infty$ 内, 我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
   \begin{align*}
      f(z)&
     =\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\dfrac1{z+1}}\\&
@@ -1410,7 +1409,7 @@
   \]
 \end{solution}
 
-\begin{figure}[!hbt]
+\begin{figure}[H]
   \centering
   \begin{minipage}{.48\textwidth}
     \centering
@@ -1467,13 +1466,13 @@
 \end{figure}
 
 \begin{example}
-  求 $\doint_{|z|=1}\frac{z}{\sin z^2}\d z$.
+  求 $\doint_{\abs{z}=1}\frac{z}{\sin z^2}\d z$.
 \end{example}
 
 可以看出, 该积分无法使用\thmCIH 直接计算.
 
 \begin{solution}
-  注意到闭路 $|z|=1$ 落在 $0<|z|<\sqrt \cpi$ 内, 我们在这个圆环域内求 $f(z)=\dfrac{z}{\sin z^2}$ 的洛朗展开:
+  注意到闭路 $\abs{z}=1$ 落在 $0<\abs{z}<\sqrt \cpi$ 内, 我们在这个圆环域内求 $f(z)=\dfrac{z}{\sin z^2}$ 的洛朗展开:
   \[
      f(z)
     =\frac{z}{\sin z^2}
@@ -1496,19 +1495,19 @@
 在讨论有理函数的泰勒展开和洛朗展开之前, 我们先将 \ref{ssec:taylor-expansion-radius}的结论推广到洛朗展开的情形.
 
 \begin{theorem}
-  设 $f(z)$ 在圆环域 $D:R_1<|z-z_0|<R_2$ 内解析, 其中 $0<R_1<R_2<+\infty$.
+  设 $f(z)$ 在圆环域 $D:R_1<\abs{z-z_0}<R_2$ 内解析, 其中 $0<R_1<R_2<+\infty$.
   \begin{enuma}
-    \item 若 $f(z)$ 在 $|z-z_0|=R_1$ 有满足极限
-    \[
+    \item 若 $f(z)$ 在 $\abs{z-z_0}=R_1$ 有满足极限
+    $
       \liml_{\substack{z\ra a\\ z\in D}} f(z)
-    \]
-    不存在的奇点 $a$, 则 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内的洛朗展开有无穷多负幂次项.
+    $
+    不存在的奇点 $a$, 则 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内的洛朗展开有无穷多负幂次项.
     \label{enum:laurent-expansion-infinite-negative}
-    \item 若 $f(z)$ 在 $|z-z_0|=R_2$ 有满足极限
-    \[
+    \item 若 $f(z)$ 在 $\abs{z-z_0}=R_2$ 有满足极限
+    $
       \liml_{\substack{z\ra a\\z\in D}} f(z)
-    \]
-    不存在的奇点 $a$, 则 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内的洛朗展开有无穷多正幂次项.
+    $
+    不存在的奇点 $a$, 则 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内的洛朗展开有无穷多正幂次项.
   \end{enuma}
 \end{theorem}
 
@@ -1524,7 +1523,7 @@
         \sum_{n=-m}^\infty c_n(z-z_0)^{n+m}
       =\sumf0 c_{n-m}(z-z_0)^n
     \]
-    的和函数 $g(z)$ 在 $|z-z_0|<R_2$ 内解析, 从而
+    的和函数 $g(z)$ 在 $\abs{z-z_0}<R_2$ 内解析, 从而
     \[
       \liml_{\substack{z\ra a\\z\in D}} f(z)
       =\liml_{\substack{z\ra a\\z\in D}} \frac{g(z)}{(z-z_0)^m}
@@ -1532,7 +1531,7 @@
     \]
     存在.
     这与假设矛盾, 因此 $f(z)$ 的洛朗展开有无穷多负幂次项.
-    \item 考虑 $h(z)=f\Bigl(\dfrac1z+z_0\Bigr)$, 则 $h(z)$ 在圆环域 $\dfrac 1{R_2}<|z|<\dfrac 1{R_1}$ 内满足 \ref{enum:laurent-expansion-infinite-negative} 中条件, 从而其洛朗展开
+    \item 考虑 $h(z)=f\Bigl(\dfrac1z+z_0\Bigr)$, 则 $h(z)$ 在圆环域 $\dfrac 1{R_2}<\abs{z}<\dfrac 1{R_1}$ 内满足 \ref{enum:laurent-expansion-infinite-negative} 中条件, 从而其洛朗展开
     \[
       h(z)=\sumff c_nz^{-n}
     \]
@@ -1543,7 +1542,7 @@
 
 \begin{example}
   设 $f(z)=\dfrac{p(z)}{q(z)}$ 是有理函数, 且分子分母没有公共零点.
-  若 $f(z)$ 在圆环域 $0<R_1<|z-z_0|<R_2<+\infty$ 内解析, 且在圆周 $|z-z_0|=R_1$ 和 $|z-z_0|=R_2$ 上都有奇点, 则 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内的洛朗展开有无穷多负幂次项和无穷多正幂次项.
+  若 $f(z)$ 在圆环域 $0<R_1<\abs{z-z_0}<R_2<+\infty$ 内解析, 且在圆周 $\abs{z-z_0}=R_1$ 和 $\abs{z-z_0}=R_2$ 上都有奇点, 则 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内的洛朗展开有无穷多负幂次项和无穷多正幂次项.
 \end{example}
 
 不仅如此, 有理函数 $f(z)$ 在不同的圆环域内的洛朗展开系数还具有较为简单的关系.
@@ -1560,16 +1559,16 @@
 此时 $g(z)$ 是多项式, $f(z)$ 有麦克劳林展开.
 由
 \[
-  \frac1{1-z}=1+z+z^2+\cdots,\quad |z|<1,
+  \frac1{1-z}=1+z+z^2+\cdots,\quad \abs{z}<1,
 \]
 逐项求 $k-1$ 阶导数, 并将 $z$ 换成 $z/\lambda$ 得到
 \[
    \frac1{(1-z/\lambda)^k}
-  =\sumf0 \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-n}z^n,\quad |z|<|\lambda|.
+  =\sumf0 \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-n}z^n,\quad \abs{z}<\abs{\lambda}.
 \]
 因此若 $f(z)$ 的麦克劳林展开为
 \[
-  f(z)=\sumf0 c_n z^n,\quad |z|<\min\{|\lambda_1|,\cdots,|\lambda_k|\},
+  f(z)=\sumf0 c_n z^n,\quad \abs{z}<\min\{\abs{\lambda_1},\cdots,\abs{\lambda_k}\},
 \]
 则除去至多有限项外, 麦克劳林展开的系数为
 \[
@@ -1592,39 +1591,39 @@
 
 由
 \[
-  \frac1{1-z}=-\Bigl(\frac1z+\frac1{z^2}+\frac1{z^3}+\cdots\Bigr),\quad |z|<1,
+  \frac1{1-z}=-\Bigl(\frac1z+\frac1{z^2}+\frac1{z^3}+\cdots\Bigr),\quad \abs{z}<1,
 \]
 逐项求 $k-1$ 阶导数, 并将 $z$ 换成 $z/\lambda$ 得到
 \[
     \frac1{(1-z/\lambda)^k}
-   =-\sum_{n<0} \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-n}z^n,\quad |z|>|\lambda|.
+   =-\sum_{n<0} \frac{(n+k-1)\cdots(n+2)(n+1)}{(k-1)!}\lambda^{-n}z^n,\quad \abs{z}>\abs{\lambda}.
 \]
-因此 $f(z)$ 在其解析的圆环域 $r<|z|<R$ 内的洛朗展开为
+因此 $f(z)$ 在其解析的圆环域 $r<\abs{z}<R$ 内的洛朗展开为
 \[
-  f(z)=g(z)+\sum_{n\ge 0} \sum_{|\lambda_j|\ge R} p_j(n)\lambda_j^{-n}z^n
-  -\sum_{n<0} \sum_{0<|\lambda_j|\le r} p_j(n)\lambda_j^{-n}z^n.
+  f(z)=g(z)+\sum_{n\ge 0} \sum_{\abs{\lambda_j}\ge R} p_j(n)\lambda_j^{-n}z^n
+  -\sum_{n<0} \sum_{0<\abs{\lambda_j}\le r} p_j(n)\lambda_j^{-n}z^n.
 \]
 
 由于 $p_j(n)$ 的形式可以从 $f(z)$ 在任一圆环域内的洛朗展开读出, 因此我们有如下结论.
   
 \begin{theorem}
   \label{thm:rational-function-laurent}
-  设有理函数 $f(z)$ 在其解析的圆环域 $r<|z|<R$ 内有前述形式的洛朗展开
+  设有理函数 $f(z)$ 在其解析的圆环域 $r<\abs{z}<R$ 内有前述形式的洛朗展开
   \[
     f(z)=g(z)+\sum_{n\ge 0} a_n z^n-\sum_{n<0} b_n z^n.
   \]
   \vspace{-\baselineskip}
   \begin{enuma}
-    \item $f(z)$ 在其解析的另一圆环域 $0\le r'<|z|<R'\le r$ 内有洛朗展开
+    \item $f(z)$ 在其解析的另一圆环域 $0\le r'<\abs{z}<R'\le r$ 内有洛朗展开
       \[
         f(z)=g(z)+\sum_{n\ge 0} (a_n+b_n-c_n) z^n-\sum_{n<0} c_n z^n,
       \]
-      其中 $c_n$ 是 $b_n$ 通项形式中满足 $0<|\lambda_j|\le r'$ 的奇点 $\lambda_j$ 所对应的项.
-    \item $f(z)$ 在其解析的另一圆环域 $R\le r'<|z|<R'\le+\infty$ 内有洛朗展开
+      其中 $c_n$ 是 $b_n$ 通项形式中满足 $0<\abs{\lambda_j}\le r'$ 的奇点 $\lambda_j$ 所对应的项.
+    \item $f(z)$ 在其解析的另一圆环域 $R\le r'<\abs{z}<R'\le+\infty$ 内有洛朗展开
     \[
       f(z)=g(z)+\sum_{n\ge 0} c_n z^n-\sum_{n<0} (a_n+b_n-c_n) z^n,
     \]
-    其中 $c_n$ 是 $a_n$ 通项形式中满足 $|\lambda_j|\ge R'$ 的奇点 $\lambda_j$ 所对应的项.
+    其中 $c_n$ 是 $a_n$ 通项形式中满足 $\abs{\lambda_j}\ge R'$ 的奇点 $\lambda_j$ 所对应的项.
   \end{enuma}
 \end{theorem}
   
@@ -1635,14 +1634,14 @@
 
 \begin{corollary}
   \label{cor:rational-function-laurent}
-  设有理函数 $f(z)$ 在其解析的圆环域 $r<|z|<R$ 内有前述形式的洛朗展开
+  设有理函数 $f(z)$ 在其解析的圆环域 $r<\abs{z}<R$ 内有前述形式的洛朗展开
   \[
     f(z)=g(z)+\sum_{n\ge 0} a_n z^n-\sum_{n<0} b_n z^n.
   \]
   那么 $f(z)$ 有洛朗展开
   \begin{align*}
-    f(z)&=g(z)+\sum_{n\ge 0} (a_n+b_n) z^n,\quad 0<|z|<\delta;\\
-    f(z)&=g(z)-\sum_{n<0} (a_n+b_n) z^n,\quad |z|>X,
+    f(z)&=g(z)+\sum_{n\ge 0} (a_n+b_n) z^n,\quad 0<\abs{z}<\delta;\\
+    f(z)&=g(z)-\sum_{n<0} (a_n+b_n) z^n,\quad \abs{z}>X,
   \end{align*} 
   其中 $\delta$ 是 $f(z)$ 非零奇点的最小模, $X$ 是 $f(z)$ 奇点的最大模.
 \end{corollary}
@@ -1658,20 +1657,20 @@
 \end{example}
 
 \begin{solutionenum}
-  \item 设 $0<|z|<1$, 则
+  \item 设 $0<\abs{z}<1$, 则
   \[
       f(z)
     =z+3+\frac1{1-z}-\frac8{2-z}
     =3+z+\sum_{n\ge 0}(1-2^{-n+2})z^n
     =\sum_{n\ge 2}(1-2^{-n+2})z^n.
   \]
-  \item 设 $1<|z|<2$. 由\thmref{定理}{thm:rational-function-laurent}, $c_n$ 是 $a_n=1-2^{-n+2}$ 中 $|\lambda|\ge 2$ 对应的项, 即 $c_n=-2^{-n+2}$. 从而
+  \item 设 $1<\abs{z}<2$. 由\thmref{定理}{thm:rational-function-laurent}, $c_n$ 是 $a_n=1-2^{-n+2}$ 中 $\abs{\lambda}\ge 2$ 对应的项, 即 $c_n=-2^{-n+2}$. 从而
   \[
       f(z)
     =3+z-\sum_{n\ge0}2^{-n+2}z^n-\sum_{n\le-1}z^n
     =-\sum_{n\ge 2}2^{-n+2}z^n-\sum_{n\le 1}z^n.
   \]
-  \item 设 $|z|>2$. 由\thmref{定理}{thm:rational-function-laurent} 或\thmref{推论}{cor:rational-function-laurent} 得到
+  \item 设 $\abs{z}>2$. 由\thmref{定理}{thm:rational-function-laurent} 或\thmref{推论}{cor:rational-function-laurent} 得到
   \[
       f(z)
     =3+z-\sum_{n\le -1}(1-2^{-n+2})z^n
@@ -1680,22 +1679,22 @@
 \end{solutionenum}
 
 \begin{example}
-  将 $f(z)=\dfrac1{(z-\eta)^2}+\dfrac1{z-\xi}$ 在各个以 $0$ 为圆心的圆环域内展开为洛朗级数, 其中 $|\eta|>|\xi|>0$. 
+  将 $f(z)=\dfrac1{(z-\eta)^2}+\dfrac1{z-\xi}$ 在各个以 $0$ 为圆心的圆环域内展开为洛朗级数, 其中 $\abs{\eta}>\abs{\xi}>0$. 
 \end{example}
 
 \begin{solutionenum}
-  \item 设 $0<|z|<|\xi|$, 则
+  \item 设 $0<\abs{z}<\abs{\xi}$, 则
   \[
       f(z)
     =\frac1{\eta}\Bigl(\frac1{1-z/\eta}\Bigr)'-\frac1\xi\cdot\frac1{1-z/\xi}
     =\sum_{n\ge 0}\Bigl(\frac{n+1}{\eta^{n+2}}-\frac1{\xi^{n+1}}\Bigr)z^n.
   \]
-  \item 设 $|\xi|<|z|<|\eta|$. 根据\thmref{定理}{thm:rational-function-laurent}, $c_n$ 是 $a_n=\dfrac{n+1}{\eta^{n+2}}-\dfrac1{\xi^{n+1}}$ 中 $|\lambda|\ge |\eta|$ 对应的项, 即 $c_n=\dfrac{n+1}{\eta^{n+2}}$. 从而
+  \item 设 $\abs{\xi}<\abs{z}<\abs{\eta}$. 根据\thmref{定理}{thm:rational-function-laurent}, $c_n$ 是 $a_n=\dfrac{n+1}{\eta^{n+2}}-\dfrac1{\xi^{n+1}}$ 中 $\abs{\lambda}\ge\abs{\eta}$ 对应的项, 即 $c_n=\dfrac{n+1}{\eta^{n+2}}$. 从而
   \[
       f(z)
     =\sum_{n\ge 0}\frac{n+1}{\eta^{n+2}}z^n+\sum_{n\le -1}\frac1{\xi^{n+1}}z^n.
   \]
-  \item 设 $|z|>2$. 由\thmref{定理}{thm:rational-function-laurent} 或\thmref{推论}{cor:rational-function-laurent} 得到
+  \item 设 $\abs{z}>2$. 由\thmref{定理}{thm:rational-function-laurent} 或\thmref{推论}{cor:rational-function-laurent} 得到
   \[
       f(z)
     =-\sum_{n\le -1}\Bigl(\frac{n+1}{\eta^{n+2}}-\frac1{\xi^{n+1}}\Bigr)z^n.
@@ -1714,10 +1713,10 @@
   考虑函数 $f(z)=\dfrac1{\sin(1/z)}$.
   显然 $0$ 和 $z_k=\dfrac1{k\cpi}$ 是奇点, $k$ 是非零整数.
   因为 $\liml_{k\ra+\infty} z_k=0$, 所以 $0$ 的任何一个去心邻域内都有奇点.
-  此时无法选取一个圆环域 $0<|z|<\delta$ 作 $f(z)$ 的洛朗展开, 我们不考虑这类奇点.
+  此时无法选取一个圆环域 $0<\abs{z}<\delta$ 作 $f(z)$ 的洛朗展开, 我们不考虑这类奇点.
 \end{example}
 
-\begin{figure}[!hbt]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \def\s{6}
@@ -1740,7 +1739,7 @@
 \end{figure}
 
 \begin{definition}
-  若 $z_0$ 是 $f(z)$ 的一个奇点, 且 $z_0$ 的某个邻域内没有其它奇点, 则称 $z_0$ 是 $f(z)$ 的一个\noun{孤立奇点}.
+  若 $z_0$ 是 $f(z)$ 的一个奇点, 且 $z_0$ 的某个邻域内没有其它奇点, 则称 $z_0$ 是 $f(z)$ 的一个\nouns{孤立奇点}\index{gulijidian@孤立奇点}.
 \end{definition}
 
 \begin{exampleenum}
@@ -1753,10 +1752,10 @@
 
 若 $f(z)$ 只有有限多个奇点, 则这些奇点都是孤立奇点.
 
-若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域 $0<|z-z_0|<\delta$ 内解析, 则 $f(z)$ 可以在该邻域作洛朗展开.
+若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域 $0<\abs{z-z_0}<\delta$ 内解析, 则 $f(z)$ 可以在该邻域作洛朗展开.
 根据该洛朗级数负幂次部分的项数, 我们将孤立奇点分为三类:
 
-\begin{table}[!htb]
+\begin{table}[H]
   \centering
   \begin{tabular}{ccc}
     \topcolorrule
@@ -1785,11 +1784,11 @@
 
 \begin{definition}
   若 $f(z)$ 在孤立奇点 $z_0$ 去心邻域的洛朗展开没有负幂次部分, 即
-  \[f(z)=c_0+c_1(z-z_0)+c_2(z-z_0)^2+\cdots,\quad 0<|z-z_0|<\delta,\]
-  是幂级数, 则称 $z_0$ 是 $f(z)$ 的\noun{可去奇点}.
+  \[f(z)=c_0+c_1(z-z_0)+c_2(z-z_0)^2+\cdots,\quad 0<\abs{z-z_0}<\delta,\]
+  是幂级数, 则称 $z_0$ 是 $f(z)$ 的\nouns{可去奇点}\index{kequjidian@可去奇点}.
 \end{definition}
 
-设 $g(z)$ 为右侧幂级数的和函数, 则 $g(z)$ 在 $|z-z_0|<\delta$ 内解析,
+设 $g(z)$ 为右侧幂级数的和函数, 则 $g(z)$ 在 $\abs{z-z_0}<\delta$ 内解析,
 且除 $z_0$ 外 $f(z)=g(z)$.
 通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 处解析.
 这就是``可去''的含义.\footnote{
@@ -1812,19 +1811,19 @@
 \begin{proof}
   \ref{enum:removable}$\implies$\ref{enum:finite-limit}$\implies$\ref{enum:zero-limit} 是容易的.
   假设 $\liml_{z\ra z_0}(z-z_0)f(z)=0$.
-  对任意 $\varepsilon>0$, 存在 $\delta>0$ 使得当 $0<|z-z_0|<\delta$ 时, $|(z-z_0)f(z)|<\varepsilon$.
+  对任意 $\varepsilon>0$, 存在 $\delta>0$ 使得当 $0<\abs{z-z_0}<\delta$ 时, $\abs{(z-z_0)f(z)}<\varepsilon$.
   取闭路
   \[
-    C:|z-z_0|=r<\min\{1,\delta\}.
+    C:\abs{z-z_0}=r<\min\{1,\delta\}.
   \]
   由\thmGrowUp 可知 $f(z)$ 在 $z_0$ 去心邻域洛朗展开的系数 $c_n$ 满足
   \[
-     |c_n|
-    =\abs{\frac1{2\cpi\ii}\oint_C \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d z}
+     \abs{c_n}
+    =\biggabs{\frac1{2\cpi\ii}\oint_C \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\d z}
     \le \frac1{2\cpi} \cdot\frac{\varepsilon}{r^{n+2}}\cdot 2\cpi r
     =\varepsilon r^{-n-1}.
   \]
-  当 $n$ 是负整数时, 我们得到 $|c_n|\le \varepsilon$.
+  当 $n$ 是负整数时, 我们得到 $\abs{c_n}\le \varepsilon$.
   再由 $\varepsilon$ 的任意性得到 $c_n=0$.
   因此 $z_0$ 是 $f(z)$ 的可去奇点.
 \end{proof}
@@ -1852,11 +1851,11 @@
 \begin{definition}
   若 $f(z)$ 在孤立奇点 $z_0$ 去心邻域的洛朗展开负幂次部分只有有限多项非零, 且非零的最低幂次项是 $-m\le-1$ 次, 即
   \[
-    f(z)=c_{-m}(z-z_0)^{-m}+\cdots+c_0+c_1(z-z_0)+\cdots,\quad  0<|z-z_0|<\delta,
+    f(z)=c_{-m}(z-z_0)^{-m}+\cdots+c_0+c_1(z-z_0)+\cdots,\quad  0<\abs{z-z_0}<\delta,
   \]
-  其中 $c_{-m}\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \nouns{$m$ 阶极点}{极点}.\footnotemark
+  其中 $c_{-m}\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \nouns{$m$ 阶极点}\index{jidian@极点}\index{jidian@极点!mjiejidian@$m$ 阶极点}.\footnotemark
 \end{definition}
-\footnotetext{也叫 \emph{$m$ 级极点}.}
+\footnotetext{也叫 \emph{$m$ 级极点}\index{jidian@极点!mjijidian@$m$ 级极点}.}
 
 设
 \[
@@ -1864,7 +1863,7 @@
 \]
 则 $g(z)$ 在 $z_0$ 处解析且非零, 而且
 \[
-  f(z)=\dfrac{g(z)}{(z-z_0)^m},\quad 0<|z-z_0|<\delta.
+  f(z)=\dfrac{g(z)}{(z-z_0)^m},\quad 0<\abs{z-z_0}<\delta.
 \]
 由此可以得到:
 
@@ -1891,7 +1890,7 @@
     =\lim_{z\ra z_0}\frac1{f(z)}=0.
   \]
   由\thmref{定理}{thm:test-removable} 可知 $z_0$ 是 $\dfrac 1{(z-z_0)f(z)}$ 的可去奇点.
-  设 $\dfrac 1{(z-z_0)f(z)}$ 在 $0<|z-z_0|<\delta$ 内的洛朗展开为
+  设 $\dfrac 1{(z-z_0)f(z)}$ 在 $0<\abs{z-z_0}<\delta$ 内的洛朗展开为
   \[
     \frac1{(z-z_0)f(z)}=a_m(z-z_0)^m+a_{m+1}(z-z_0)^{m+1}+\cdots,
   \]
@@ -1932,7 +1931,7 @@
 \subsubsection{本性奇点}
 
 \begin{definition}
-  若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域的洛朗展开负幂次部分有无限多项非零, 则称 $z_0$ 是 $f(z)$ 的\noun{本性奇点}.
+  若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域的洛朗展开负幂次部分有无限多项非零, 则称 $z_0$ 是 $f(z)$ 的\nouns{本性奇点}\index{benxingjidian@本性奇点}.
 \end{definition}
 
 \begin{example}
@@ -1949,7 +1948,7 @@
   $z_0$ 是 $f(z)$ 的本性奇点当且仅当 $\liml_{z\ra z_0}f(z)$ 不存在也不是 $\infty$.
 \end{theorem}
 
-事实上我们有\noun{皮卡大定理}: 对于本性奇点 $z_0$ 的任何一个去心邻域, $f(z)$ 的像取遍所有复数, 至多有一个取不到.
+事实上我们有\nouns{皮卡大定理}\index{pikadadingli@皮卡大定理}: 对于本性奇点 $z_0$ 的任何一个去心邻域, $f(z)$ 的像取遍所有复数, 至多有一个取不到.
 例如 $\ee^{\frac1z}$ 在 $0$ 的任何一个去心邻域内都能取到所有非零复数.
 
 
@@ -1962,11 +1961,11 @@
   \label{def:zero-order}
   若 $f(z)$ 在解析点 $z_0$ 处的泰勒级数非零的最低幂次项是 $m\ge1$ 次, 即
   \[
-    f(z)=c_m(z-z_0)^m+c_{m+1}(z-z_0)^{m+1}+\cdots,\ 0<|z-z_0|<\delta,
+    f(z)=c_m(z-z_0)^m+c_{m+1}(z-z_0)^{m+1}+\cdots,\ 0<\abs{z-z_0}<\delta,
   \]
-  其中 $c_m\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \nouns{$m$ 阶零点}{零点}.\footnotemark
+  其中 $c_m\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \nouns{$m$ 阶零点}\index{lingdian@零点}\index{lingdian@零点!mjielingdian@$m$ 阶零点}.\footnotemark
 \end{definition}
-\footnotetext{也叫 \emph{$m$ 级零点}.}
+\footnotetext{也叫 \emph{$m$ 级零点}\index{lingdian@零点!mjilingdian@$m$ 级零点}.}
 
 此时 $f(z)=(z-z_0)^mg(z)$, $g(z)$ 在 $z_0$ 处解析且 $g(z_0)\neq 0$.
 
@@ -2074,27 +2073,27 @@
 因此我们需要研究函数在 $\infty$ 的行为.
 
 \begin{definition}
-  若函数 $f(z)$ 在 $\infty$ 的去心邻域 $R<|z|<+\infty$ 内没有奇点, 则称 $\infty$ 是 $f(z)$ 的\noun{孤立奇点}.
+  若函数 $f(z)$ 在 $\infty$ 的去心邻域 $R<\abs{z}<+\infty$ 内没有奇点, 则称 $\infty$ 是 $f(z)$ 的\nouns{孤立奇点}\index{gulijidian@孤立奇点}.
 \end{definition}
 
-设 $g(t)=f\Bigl(\dfrac1t\Bigr)$, 则 $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 内解析, $0$ 是它的孤立奇点.
+设 $g(t)=f\Bigl(\dfrac1t\Bigr)$, 则 $g(t)$ 在圆环域 $0<\abs{t}<\dfrac1R$ 内解析, $0$ 是它的孤立奇点.
 研究 $f(z)$ 在 $\infty$ 的性质可以转为研究 $g(t)$ 在 $0$ 的性质.
 
 \begin{definition}
-  若 $0$ 是 $g(t)$ 的可去奇点 ($m$ 阶极点, 或本性奇点), 则称 $\infty$ 是 $f(z)$ 的\noun{可去奇点} (\nouns{$m$ 阶极点}{极点}, 或\noun{本性奇点}).
+  若 $0$ 是 $g(t)$ 的可去奇点 ($m$ 阶极点, 或本性奇点), 则称 $\infty$ 是 $f(z)$ 的\nouns{可去奇点}\index{kequjidian@可去奇点} (\nouns{$m$ 阶极点}\index{jidian@极点}\index{jidian@极点!mjiejidian@$m$ 阶极点}, 或\nouns{本性奇点}\index{benxingjidian@本性奇点}).
 \end{definition}
 
-设 $f(z)$ 在圆环域 $R<|z|<+\infty$ 内的洛朗展开为
+设 $f(z)$ 在圆环域 $R<\abs{z}<+\infty$ 内的洛朗展开为
 \[
   f(z)=\cdots+\frac{c_{-2}}{z^2}+\frac{c_{-1}}{z}+c_0+c_1z+c_2z^2+\cdots
 \]
-则 $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 内的洛朗展开为
+则 $g(t)$ 在圆环域 $0<\abs{t}<\dfrac1R$ 内的洛朗展开为
 \[
   g(t)=\cdots+\frac{c_2}{t^2}+\frac{c_1}t+c_0+c_{-1}t+c_{-2}t^2+\cdots
 \]
 由此得到 $\infty$ 的奇点类型和 $f(z)$ 在 $\infty$ 的去心邻域洛朗展开的关系.
 
-\begin{table}[!htb]
+\begin{table}[H]
   \centering
   \begin{tabular}{ccc}
     \topcolorrule
@@ -2120,7 +2119,7 @@
 
 \begin{exampleenum}
   \item 设 $f(z)=\dfrac z{z+1}$. \smallskip
-  由 $\liml_{z\ra\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
+  由 $\liml_{z\ra\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.事实上此时 $f(z)$ 在 $1<\abs{z}<+\infty$ 内的洛朗展开为
   \[
       f(z)=\frac{1}{1+\dfrac1z}
     =1-\frac1z+\frac1{z^2}-\frac1{z^3}+\cdots
@@ -2192,12 +2191,12 @@
   \begin{conclusion}
     \item 若实部和虚部级数至少有一个发散, 则原级数发散; 若二者都绝对收敛, 则原级数发散; 其它情形原级数条件收敛.
     \item 若 $\liml_{n\ra\infty} z_n=0$ 不成立, 则级数发散.
-    \item 若 $\lambda=\liml_{n\ra\infty}\abs{\dfrac{z_{n+1}}{z_n}}$ 存在或 $\lambda=\liml_{n\ra\infty}\sqrt[n]{|z_n|}$ 存在, 则当 $\lambda<1$ 时级数绝对收敛; 当 $\lambda<1$ 时级数发散; 当 $\lambda=1$ 则都有可能.
+    \item 若 $\lambda=\liml_{n\ra\infty}\biggabs{\dfrac{z_{n+1}}{z_n}}$ 存在或 $\lambda=\liml_{n\ra\infty}\sqrt[n]{\abs{z_n}}$ 存在, 则当 $\lambda<1$ 时级数绝对收敛; 当 $\lambda<1$ 时级数发散; 当 $\lambda=1$ 则都有可能.
   \end{conclusion}
   \item 能熟练使用比值法和根式法计算幂级数 $\sumf0c_n(z-z_0)^n$ 的收敛半径.
   \begin{conclusion}
     \item 幂级数的收敛区域是一个圆域.
-    \item 若 $r=\liml_{n\ra\infty}\abs{\dfrac{c_{n+1}}{c_n}}$ 存在(或为 $+\infty$)或 $r=\liml_{n\ra\infty}\sqrt[n]{|c_n|}$ 存在(或为 $+\infty$), 则收敛圆域的半径, 也就是收敛半径 $R=\dfrac1r$.
+    \item 若 $r=\liml_{n\ra\infty}\biggabs{\dfrac{c_{n+1}}{c_n}}$ 存在(或为 $+\infty$)或 $r=\liml_{n\ra\infty}\sqrt[n]{\abs{c_n}}$ 存在(或为 $+\infty$), 则收敛圆域的半径, 也就是收敛半径 $R=\dfrac1r$.
     \item 幂级数在其收敛圆周上的敛散性各种情况都有可能.
   \end{conclusion}
   \item 熟知泰勒展开和洛朗展开成立的条件、形式、常见性质.
@@ -2245,10 +2244,10 @@
       \end{exchoice}
     \item 设 $z_n\neq0$ 且级数 $\sumf0 z_n$ 绝对收敛, 则下列选项不可能成立的是\fillbrace{}.
       \begin{exchoice}(2)
-        \item $\liml_{n\ra\infty}\abs{\dfrac{z_{n+1}}{z_n}}<1$
-        \item $\liml_{n\ra\infty}\abs{\dfrac{z_{n+1}}{z_n}}=1$
-        \item $\liml_{n\ra\infty}\sqrt[n]{|z_n|}=1$
-        \item $\liml_{n\ra\infty}\sqrt[n]{|z_n|}>1$
+        \item $\liml_{n\ra\infty}\biggabs{\dfrac{z_{n+1}}{z_n}}<1$
+        \item $\liml_{n\ra\infty}\biggabs{\dfrac{z_{n+1}}{z_n}}=1$
+        \item $\liml_{n\ra\infty}\sqrt[n]{\abs{z_n}}=1$
+        \item $\liml_{n\ra\infty}\sqrt[n]{\abs{z_n}}>1$
       \end{exchoice}
     \item 以下表述正确的是\fillbrace{}.
       \begin{exchoice}
@@ -2273,10 +2272,10 @@
       \end{exchoice}
     \item 函数 $f(z)=\dfrac{z-1}{z^2-z-2}$ 不能在\fillbrace{}内作洛朗展开.
       \begin{exchoice}(2)
-        \item $0<|z|<2$
-        \item $2<|z|<4$
-        \item $0<|z+1|<2$
-        \item $1<|z+1|<3$
+        \item $0<\abs{z}<2$
+        \item $2<\abs{z}<4$
+        \item $0<\abs{z+1}<2$
+        \item $1<\abs{z+1}<3$
       \end{exchoice}
     \item 若 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的\fillbrace{}.
       \begin{exchoice}(4)
@@ -2295,10 +2294,10 @@
   \end{homework}
   \item 填空题.
   \begin{homework}
-    \item 函数 $f(z)=\dfrac{\ee^{1/z}}{z+1}$ 在 $z_0=i$ 处的泰勒展开成立的最大圆域是 $|z-i|<$\fillblank{}.
+    \item 函数 $f(z)=\dfrac{\ee^{1/z}}{z+1}$ 在 $z_0=i$ 处的泰勒展开成立的最大圆域是 $\abs{z-i}<$\fillblank{}.
     \item 函数 $f(z)=\dfrac{\ee^z-1}{z}$ 在 $z_0=0$ 处的泰勒级数的收敛半径为\fillblank{}.
-    \item 若函数 $f(z)=\dfrac1{(z+5)\sin z}$ 可以在圆环域 $0<|z|<R$ 内作洛朗展开, 则 $R$ 的最大值为\fillblank{}.
-    \item 若函数 $f(z)=\dfrac{\ln(z+2)}{z+\ii}$ 可以在圆环域 $r<|z|<2$ 内作洛朗展开, 则 $r$ 的最小值为\fillblank{}.
+    \item 若函数 $f(z)=\dfrac1{(z+5)\sin z}$ 可以在圆环域 $0<\abs{z}<R$ 内作洛朗展开, 则 $R$ 的最大值为\fillblank{}.
+    \item 若函数 $f(z)=\dfrac{\ln(z+2)}{z+\ii}$ 可以在圆环域 $r<\abs{z}<2$ 内作洛朗展开, 则 $r$ 的最小值为\fillblank{}.
     \item $0$ 是 $(\cos z+\ch z-2)^2$ 的\fillblank{}阶零点.
     \item $0$ 是 $\dfrac1{(\sin z+\sh z-2z)^2}$ 的\fillblank{}阶极点.
   \end{homework}
@@ -2340,7 +2339,7 @@
       \item $\arctan z=-\dfrac\ii2\ln\dfrac{1+\ii z}{1-\ii z}, z_0=0$;
       \item $\sqrt{z+2}$ 的主值, $z_0=-1$.
     \end{subhomework}
-    \item 将下列函数在 $0<|z|<1$ 和 $1<|z|<2$ 内展开成洛朗级数.
+    \item 将下列函数在 $0<\abs{z}<1$ 和 $1<\abs{z}<2$ 内展开成洛朗级数.
       \begin{subhomework}(2)
         \item $\dfrac{\sin z}{z^2}$;
         \item $\dfrac{\ee^{\frac1z}}{z-1}$;
@@ -2349,17 +2348,17 @@
         \item $\dfrac{z+1}{(z-1)^2}$;
         \item $\dfrac{2}{z(z+2)}$.
       \end{subhomework}
-    \item 将下列函数在 $0<|z-1|<1$ 和 $2<|z-1|<+\infty$ 内展开成洛朗级数.
+    \item 将下列函数在 $0<\abs{z-1}<1$ 和 $2<\abs{z-1}<+\infty$ 内展开成洛朗级数.
       \begin{subhomework}(2)
         \item $\dfrac{\ee^z}{z^2}$;
         \item $\dfrac{z+1}{(z-1)(z-2)}$;
         \item $\dfrac{1}{z^3+z^2}$;
         \item $\dfrac{z}{z^2-3z+2}$.
       \end{subhomework}
-    \item 若 $C$ 为正向圆周 $|z|=3$, 求积分 $\doint_Cf(z)\d z$ 的值, 其中 $f(z)$ 为:
+    \item 若 $C$ 为正向圆周 $\abs{z}=3$, 求积分 $\doint_Cf(z)\d z$ 的值, 其中 $f(z)$ 为:
       \begin{subhomework}(2)
         \item $\dfrac1{z(z+2)}$;
-        \item $\dfrac{e^{\frac1z}}{z-1}$.
+        \item $\dfrac{\ee^{\frac1z}}{z-1}$.
       \end{subhomework}
     \item 求数列
       \[
@@ -2376,6 +2375,17 @@
       \[
         \cdots+\frac1{z^3}+\frac1{z^2}+\frac1z+1+z+z^2+z^3+z^4+\cdots=0.
       \]
+    \item 证明当 $\abs{z}<1$ 时,
+    \begin{subhomework}(2)
+      \item $\sumf0 \frac{z^{2^n}}{1-z^{2^{n+1}}}=\frac z{1-z}$;
+      \item $\sumf0 \frac{2^nz^{2^n}}{1+z^{2^n}}=\frac z{1-z}$.
+    \end{subhomework}
+    \item 证明: 如果自然数集合 $\BN=\{0,1,2,\cdots\}$ 能够拆分成 $k$ 个等差数列
+    \[
+      S_j=\{a_j,a_j+d_j,a_j+2d_j,a_j+3d_j,\cdots\},\quad j=1,2,\cdots,k
+    \]
+    的并, 且 $S_j$ 两两交集为空, 则一定有 $k=1$.
+    提示: 考虑将 $\suml_{n\in\BN} z^n$ 的和函数 $\dfrac1{1-z}$ 表示成 $\dfrac{z^a}{1-z^d}$ 的组合.
     \item 下列函数有哪些奇点? 若是极点, 请指出它的阶:
       \begin{subhomework}(3)
         \item $\dfrac1{(z-2)^3(z^2+1)^2}$;
@@ -2413,97 +2423,15 @@
       \item $\sumf0 \dfrac1{(3n+1)!}$;
       \item $\sumf0 \dfrac{(-1)^n}{2n+1}$.
     \end{subhomework}
-    \item \optionalex 已知有理函数 $f(z)=\dfrac{6}{z^2(z-1)^3}$ 在 $0<|z|<1$ 内的洛朗展开为
+    \item \optionalex 已知有理函数 $f(z)=\dfrac{6}{z^2(z-1)^3}$ 在 $0<\abs{z}<1$ 内的洛朗展开为
       \[
         f(z)=-\sum_{n\ge 0}(n^3+12n^2+47n+60)z^n,
       \]
-      求它在 $1<|z|<+\infty$ 内的洛朗展开.
-    \item \optionalex 已知有理函数 $f(z)=\dfrac{120}{(z-1)(z^2-4)(z^2-9)}$ 在 $0<|z|<1$ 内的洛朗展开为
+      求它在 $1<\abs{z}<+\infty$ 内的洛朗展开.
+    \item \optionalex 已知有理函数 $f(z)=\dfrac{120}{(z-1)(z^2-4)(z^2-9)}$ 在 $0<\abs{z}<1$ 内的洛朗展开为
       \[
         f(z)=\sum_{n\ge 0}\Bigl(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n,
       \]
       求它在其它解析的圆环域内的洛朗展开.
   \end{homework}
 \end{homework}
-
-% 
-% 
-% \begin{example}
-% 求幂级数 $\sumf1 \frac{z^n}{n^p}$ 的收敛半径并讨论在收敛圆周上的情形, 其中 $p\in\BR$.
-% \end{example}
-% 
-% \begin{solution}
-% 由 $\liml_{n\ra\infty}\abs{\frac{c_{n+1}}{c_n}}=\lim_{n\ra\infty}\left(\frac n{n+1}\right)^p=1$ 可知收敛半径为 $1$.
-% {设 $|z|=1$.
-% \begin{itemize}
-% \item 若 $p>1$, $\sumf1 \abs{\frac{z^n}{n^p}}=\sumf1 \frac1{n^p}$ 收敛,
-% {原级数在收敛圆周内处处绝对收敛.}
-% \item 若 $p\le 0$, $\abs{\dfrac{z^n}{n^p}}=\dfrac1{n^p}\not\ra 0$,
-% {原级数在收敛圆周内处处发散.}
-% \end{itemize}}
-% \end{solution}
-% \end{frame}
-
-% 
-% 
-% 回忆\emph{狄利克雷判别法}: 若 $\set{a_n}_{n\ge 1}$ 部分和有界, 实数项数列 $\set{b_n}_{n\ge 1}$ 单调趋于 $0$, 则 $\sumf1 a_nb_n$ 收敛.
-
-% 
-% \begin{solution}
-% \begin{itemize}
-% \item 若 $0<p\le1$, $\sumf1 \frac1{n^p}$ 发散, 
-% {而在收敛圆周上其它点 $z\neq1$ 处,
-% \[|z+z^2+\cdots+z^n|=\abs{\frac{z(1-z^n)}{1-z}}
-% \le\frac{2}{|1-z|}\]
-% 有界, 数列 $\set{n^{-p}}_{n\ge 1}$ 单调趋于 $0$,}
-% {因此 $\sumf1 \frac{z^n}{n^p}$ 收敛.}
-% {故该级数在 $z=1$ 发散, 在收敛圆周上其它点收敛.}
-% \end{itemize}
-% \end{solution}
-% \end{frame}
-
-
-
-
-% \begin{theorem}
-% 	设幂级数
-% 	\[
-% 		f(z)=\sumf0 a_nz^n,|z|<R,
-% 	\]
-% 	设函数 $\varphi(z)$ 在集合 $D$ 上满足 $|\varphi(z)|<R$.
-% 	那么当 $z\in D$ 时,
-% 	\[f[\varphi(z)]=\sumf0 a_n[\varphi(z)]^n.\]}
-% \end{theorem}
-
-% 设 $f(x)=\dfrac1x$, 那么
-% \[
-%   f(m)\le \int_{m-1/2}^{m+1/2}f(x)\d x
-%   \le \frac12\bigl(f(m-\dfrac12)+f(m+\dfrac12)\bigr).
-% \]
-% \begin{center}
-%   \begin{tikzpicture}
-%     \draw[cstaxis] (-.5,0)--(3.5,0);
-%     \draw[cstaxis] (0,-.5)--(0,3);
-%     \fill[cstfill1] (1,0)--(1,1)--(2,.5)--(2,0)--cycle;
-%     \fill[white] plot[domain=1:2,smooth cycle] (\x,{1/\x});
-%     \draw[cstcurve,main,smooth,domain=.4:3] plot (\x,{1/\x});
-%     \draw[cstcurve,fourth] (1,0)--(1,1);
-%     \draw[cstcurve,fourth] (2,0)--(2,.5);
-%     \draw[second] (1,1)--(2,.5);
-%     \draw[second] (1,{8/9})--(2,{4/9});
-%     \fill[cstdote,third] (1,1) circle;
-%     \fill[cstdote,third] (2,.5) circle;
-%     \fill[cstdote,third] (1.5,{2/3}) circle;
-%   \end{tikzpicture}
-% \end{center}
-% 设 $S=f(n+1)+\cdots+f(2n)$, 则
-% \begin{align*}
-%   S&\le \int_{n+1/2}^{2n+1/2} f(x)\d x=\ln\frac{4n+1}{2n+1},\\
-%   \ln 2&=\int_{n}^{2n}f(x)\d x
-%   \le S+\frac12 f(n)-\frac12f(2n)=S+\frac1{4n},
-% \end{align*}
-% 于是由
-% \[
-%   -\frac14\le (S-\ln 2)n\le n\ln\frac{4n+1}{4n+2}
-% \]
-% 和夹逼准则可得 $\liml_{n\ra\infty}(S-\ln 2)n=-\dfrac14$.
