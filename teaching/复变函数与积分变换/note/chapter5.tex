@@ -26,16 +26,6 @@
 其中 $C$ 为该去心邻域中内部包含 $z_0$ 的一条闭路.
 可以看出, 知道留数之后可以用来计算积分.
 
-\begin{theorem}[积分计算方法III: 留数定理]
-  \index{liushudingli@留数定理}
-  \label{thm:residue}
-  若 $f(z)$ 在闭路 $C$ 上处处解析, 在 $C$ 内部的奇点为 $z_1,z_2,\cdots,z_n$, 则
-  \[
-     \oint_C f(z)\d z
-    =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
-  \]
-\end{theorem}
-
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -98,6 +88,16 @@
   \end{tikzpicture}
   \caption{留数定理计算绕闭路积分}
 \end{figure}
+
+\begin{theorem}[积分计算方法III: 留数定理]
+  \index{liushudingli@留数定理}
+  \label{thm:residue}
+  若 $f(z)$ 在闭路 $C$ 上处处解析, 在 $C$ 内部的奇点为 $z_1,z_2,\cdots,z_n$, 则
+  \[
+     \oint_C f(z)\d z
+    =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
+  \]
+\end{theorem}
 
 \begin{proof}
   设 $C_1,C_2,\cdots,C_n$ 是 $C$ 内部绕 $z_1,z_2,\cdots,z_n$ 的分离闭路.
@@ -1600,6 +1600,9 @@
   因此存在 $R>0$ 使得当 $\abs{z}=R$ 时, $\biggabs{\dfrac{p(z)-f(z)}{f(z)}}<1$.
   因此 $f(z)$ 和 $p(z)$ 在区域 $\abs{z}<R$ 内的零点个数相等, 均为 $n$ 个.
 \end{solution}
+
+\thmRouche 刻画了复变函数的零点和极点分布问题, 相关的理论在复变函数理论中被称为值分布理论. 上世纪60--70年代, 在艰苦的客观条件下, 我国数学家张广厚和杨乐在在该领域作出了一系列重要结果.
+他们发现了函数值分布论中的``亏值''和``奇异方向''之间的具体联系, 这一发现被数学界定名为张--杨定理, 相关成果总结在\cite{YangZhang1975,YangZhang1976,Yang1993}.
 
 
 \newpage

@@ -489,13 +489,6 @@
 
 \subsection{柯西-古萨定理}
 
-观察下方的两条曲线 $C_1,C_2$. 设 $C=C_1^-+C_2$. 可以看出
-\[
-  \int_{C_1}f(z)\d z=\int_{C_2}f(z)\d z\iff
-  \oint_C f(z)\d z=\int_{C_2}f(z)\d z-\int_{C_1}f(z)\d z=0.
-\]
-所以 \alert{$f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零}.
-
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -530,7 +523,15 @@
     \draw (2,2) node [above right] {$z$};
   \end{tikzpicture}
   \caption{起点和终点相同的有向曲线}
+  \label{fig:different-curves-with-same-ends}
 \end{figure}
+
+观察\ref{fig:different-curves-with-same-ends} 的两条曲线 $C_1,C_2$. 设 $C=C_1^-+C_2$. 可以看出
+\[
+  \int_{C_1}f(z)\d z=\int_{C_2}f(z)\d z\iff
+  \oint_C f(z)\d z=\int_{C_2}f(z)\d z-\int_{C_1}f(z)\d z=0.
+\]
+所以 \alert{$f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零}.
 
 上一节中我们计算了 $f(z)=z,\Re z,\dfrac1{z-z_0}$ 的积分.
 其中
@@ -579,11 +580,6 @@
   \]
 \end{corollary}
 
-这里的闭合曲线可以不是闭路, 这是闭合曲线总可以拆分为一些闭路.\footnote{
-  实际情况可能会更复杂, 例如闭合曲线有重叠的曲线部分, 或者需要拆分成无穷多个闭路.
-  不过在这些情形下确实该结论都是成立的, 具体解释这里不作展开.
-}
-
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -619,7 +615,10 @@
   \caption{闭合曲线的分拆}
 \end{figure}
 
-
+这里的闭合曲线可以不是闭路, 这是闭合曲线总可以拆分为一些闭路.\footnote{
+  实际情况可能会更复杂, 例如闭合曲线有重叠的曲线部分, 或者需要拆分成无穷多个闭路.
+  不过在这些情形下确实该结论都是成立的, 具体解释这里不作展开.
+}
 
 \begin{example}
   计算 $\doint_{\abs{z+1}=2}\frac1{2z-3}\d z$.
@@ -1137,6 +1136,14 @@
   求 $\doint_\Gamma\frac{\sin z}z\d z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:\abs{z}=2, C_2:\abs{z}=1$.
 \end{example}
 
+\begin{solution}
+  函数 $\dfrac{\sin z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
+  由\thmCCC 可知
+  \[
+    \oint_\Gamma\frac{\sin z}z\d z=0.
+  \]
+\end{solution}
+
 \begin{center}
   \begin{tikzpicture}
     \filldraw[
@@ -1169,14 +1176,6 @@
     \draw[cstaxis] (0,-2)--(0,2);
   \end{tikzpicture}
 \end{center}
-
-\begin{solution}
-  函数 $\dfrac{\sin z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
-  由\thmCCC 可知
-  \[
-    \oint_\Gamma\frac{\sin z}z\d z=0.
-  \]
-\end{solution}
 
 最后我们来看有理函数绕闭路积分的一个结论.
 \begin{example}
@@ -2170,20 +2169,6 @@
 \begin{example}
   求向量场 $\bfA=(y,x)$ 的流函数和势函数.
 \end{example}
-\begin{solution}
-  容易看出 $\bfA$ 是调和场, 它对应复变函数 $A=y+x\ii$.
-  设 $f(z)$ 为它的复势, 则
-  \[
-    \ov{f'(z)}=y+x\ii,\qquad
-    f'(z)=y-x\ii=-\ii z,
-  \]
-  于是
-  \[
-    f(z)=-\frac\ii2z^2
-    =xy+\frac{y^2-x^2}2\ii.
-  \]
-  因此 $\bfA$ 的流函数为 $\psi(x,y)=\dfrac{y^2-x^2}2$, 势函数为 $\varphi(x,y)=xy$.
-\end{solution}
 
 \begin{figure}[H]
   \centering
@@ -2216,6 +2201,20 @@
   \caption{调和场 $(y,x)$ 的流线和等势线}
 \end{figure}
 
+\begin{solution}
+  容易看出 $\bfA$ 是调和场, 它对应复变函数 $A=y+x\ii$.
+  设 $f(z)$ 为它的复势, 则
+  \[
+    \ov{f'(z)}=y+x\ii,\qquad
+    f'(z)=y-x\ii=-\ii z,
+  \]
+  于是
+  \[
+    f(z)=-\frac\ii2z^2
+    =xy+\frac{y^2-x^2}2\ii.
+  \]
+  因此 $\bfA$ 的流函数为 $\psi(x,y)=\dfrac{y^2-x^2}2$, 势函数为 $\varphi(x,y)=xy$.
+\end{solution}
 
 称散度 $\div\bfA\neq0$ 的点为\nouns{源点}\index{yuandian@源点}\footnote{
   有时也称 $\div\bfA>0$ 的点为\emph{源点}\index{yuandian@源点}, $\div\bfA<0$ 的点为\emph{涡点}\index{wodian@涡点}或\emph{洞}\index{dong@洞}.
@@ -2223,33 +2222,6 @@
 \begin{example}
   求含单个源点的向量场的流函数和势函数.
 \end{example}
-
-\begin{solution}
-  不妨设源点位于复平面的原点.
-  由对称性容易看出, $\bfA$ 具有形式 $\bigl(xg(r),yg(r)\bigr)$, 其中 $g(r)$ 是 $r=\abs{z}$ 的函数.
-  也就是说 $A=zg(r)$.
-
-  由于在 $0$ 以外, $\bfA$ 是无源的, 因此 $\bfA$ 在 $\abs{z}=r$ 上的流量与 $r$ 无关, 称为源点的\nouns{强度}\index{qiangdu@强度}, 设为 $N$.
-  那么
-  \[
-    N=\oint_{\abs{z}=r}g(r)(-y\d x+x\d y)
-    =\int_0^{2\cpi} r^2 g(r)\d\theta=2\cpi r^2g(r),
-  \]
-  从而
-  \[
-    g(r)=\frac{N}{2\cpi r^2},\qquad
-    A=\frac{N}{2\cpi \ov z}.
-  \]
-  由于复势满足 $f'(z)=\ov A$, 因此复势在每个不含零的单连通区域为多值函数
-  \[
-    f(z)=\frac N{2\cpi}\Ln z
-  \]
-  的一个单值分支, 从而流函数和势函数分别为
-  \[
-    \psi(x,y)=\frac N{2\cpi} \Arg z,\qquad
-    \varphi(x,y)=\frac N{2\cpi}\ln\abs{z}.
-  \]
-\end{solution}
 
 \begin{figure}[H]
   \centering
@@ -2304,6 +2276,33 @@
   \end{tikzpicture}
   \caption{单个源点的流线和等势线}
 \end{figure}
+
+\begin{solution}
+  不妨设源点位于复平面的原点.
+  由对称性容易看出, $\bfA$ 具有形式 $\bigl(xg(r),yg(r)\bigr)$, 其中 $g(r)$ 是 $r=\abs{z}$ 的函数.
+  也就是说 $A=zg(r)$.
+
+  由于在 $0$ 以外, $\bfA$ 是无源的, 因此 $\bfA$ 在 $\abs{z}=r$ 上的流量与 $r$ 无关, 称为源点的\nouns{强度}\index{qiangdu@强度}, 设为 $N$.
+  那么
+  \[
+    N=\oint_{\abs{z}=r}g(r)(-y\d x+x\d y)
+    =\int_0^{2\cpi} r^2 g(r)\d\theta=2\cpi r^2g(r),
+  \]
+  从而
+  \[
+    g(r)=\frac{N}{2\cpi r^2},\qquad
+    A=\frac{N}{2\cpi \ov z}.
+  \]
+  由于复势满足 $f'(z)=\ov A$, 因此复势在每个不含零的单连通区域为多值函数
+  \[
+    f(z)=\frac N{2\cpi}\Ln z
+  \]
+  的一个单值分支, 从而流函数和势函数分别为
+  \[
+    \psi(x,y)=\frac N{2\cpi} \Arg z,\qquad
+    \varphi(x,y)=\frac N{2\cpi}\ln\abs{z}.
+  \]
+\end{solution}
 
 \begin{example}
   两根平行的无限长的细金属导线带有相同的电荷量, 分别求如下情形的复势:
@@ -2427,6 +2426,11 @@
   \end{enumr}
 \end{solution}
 
+尽管从数学角度复数理论已较为完善, 然而在自然科学学科中, 人们更多地只是将复数当作一种方便的工具来使用.
+2022年, 我国物理学家潘建伟及其团队用超导量子方法验证了复数在量子理论中的必要性, 这意味着仅用实数版量子力学无法完整描述不同源多对纠缠量子的测量结果.
+这也再次体现了数学理论发展在科学发展中的先导作用.
+
+
 
 \psection{本章小结}
 
@@ -2470,7 +2474,7 @@
   \item 误以为实部 $u$ 也是虚部 $v$ 的共轭调和函数. 事实上 $-u$ 才是 $v$ 的共轭调和函数, 这是由于C-R方程中不能随意交换 $u$ 和 $v$ 的位置.
 \end{enuma}
 
-
+\newpage
 \psection{本章作业}
 
 \begin{homework}

@@ -309,6 +309,10 @@
   \]
 \end{theorem}
 
+\begin{people}[images/Cauchy.jpg]
+  柯西 (Augustin-Louis Cauchy), 法国数学家, 复变函数理论主要建立者之一. 他证明了复数的代数与极限运算的合理性, 定义了复函数的连续性, 并给出了柯西-黎曼方程. 此外, 柯西还定义了复函数沿复域中任意路径的积分, 并得到了重要的柯西积分定理, 该定理和由此导出的柯西积分公式是复变函数解析理论的核心内容. 柯西还研究了多值函数, 为黎曼面的创立提供了思想基础. 他的这些工作为复变函数论的全面兴起奠定了基础, 对后世产生了深远影响.
+\end{people}
+
 柯西-黎曼方程可简称为 \nouns{C-R 方程}\index{crfangcheng@C-R 方程}.
 
 当 $f$ 可导时其导数形式也可直接用以下方式看出.
@@ -792,40 +796,46 @@
 特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变量的对数函数.
 
 \begin{example}
-  计算 $\Ln 2,\Ln(-1)$ 以及它们的主值.
+  计算下述对数以及它们的主值
+  \begin{subexample}(4)
+    \item $\Ln 2$;
+    \item $\Ln(-1)$;
+    \item $\Ln(-2+3\ii)$;
+    \item $\Ln(3-\sqrt3 \ii)$.
+  \end{subexample}.
 \end{example}
 
-\begin{solution}
-  由对数函数的定义可知
+\begin{solutionenum}
+  \item 由定义可知
   \[
     \Ln2=\ln2+2k\cpi\ii,\quad k\in\BZ,
   \]
-  主值为 $\ln 2$,
+  主值为 $\ln 2$.
+  \item 由定义可知
   \[
     \Ln(-1)=\ln1+\ii\Arg(-1)=(2k+1)\cpi\ii,\quad k\in\BZ,
   \]
-  主值为 $\cpi\ii$.
-\end{solution}
-
-\begin{example}
-  计算 $\Ln(-2+3\ii),\Ln(3-\sqrt3 \ii)$.
-\end{example}
-
-\begin{solution}
-  由对数函数的定义可知
+  主值为 $\ln(-1)=\cpi\ii$.
+  \item 由定义可知
   \begin{align*}
      \Ln(-2+3\ii)&
     =\ln\abs{-2+3\ii}+\ii\Arg(-2+3\ii)\\&
     =\frac 12\ln{13}
       +\Bigl(-\arctan\frac 32+\cpi+2k\cpi\Bigr)\ii,
-      \quad k\in\BZ,\\
+      \quad k\in\BZ,
+  \end{align*}
+  主值为 $\ln(-2+3\ii)=\dfrac 12\ln{13}
+  +\Bigl(-\arctan\dfrac 32+\cpi\Bigr)\ii$.
+  \item 由定义可知
+  \begin{align*}
      \Ln(3-\sqrt3\ii)&
     =\ln\abs{3+\sqrt 3\ii}+\ii\Arg(3-\sqrt 3\ii)\\&
     =\ln 2\sqrt 3+\bigl(-\frac\cpi6+2k\cpi\bigr)\ii\\&
     =\ln 2\sqrt 3+\bigl(2k-\frac16\bigr)\cpi\ii,
-      \quad k\in\BZ.
+      \quad k\in\BZ,
   \end{align*}
-\end{solution}
+  主值为 $\ln(3-\sqrt3\ii)=\ln 2\sqrt 3-\dfrac16\cpi\ii$.
+\end{solutionenum}
 
 \begin{example}
   解方程 $\ee^z-1-\sqrt 3\ii=0$.
