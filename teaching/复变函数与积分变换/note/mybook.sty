@@ -5,10 +5,7 @@
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx}
 \RequirePackage{mathtools}
-% \RequirePackage{color}
-% \RequirePackage{calc}
 \RequirePackage{multicol,multirow}
-% \RequirePackage{fancyvrb}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{tikz}
 % TIKZ 库
@@ -77,9 +74,8 @@
   plainpages=false,
   pdfstartview=FitH,
   pdfborder={0 0 0},
-  pageanchor=true
+  pageanchor=true,
 }
-
 
 % 字体
 \setCJKmainfont{SimSun}[
@@ -339,7 +335,7 @@
 \NewTasksEnvironment[
   label={\upshape{(\Alph*)}},
 ]{exchoice}[\item]
-%% 例题中的选择题选项
+%% 练习中的选择题选项
 \NewTasksEnvironment[
   item-indent=4em,
   label={\upshape{(\Alph*)}},
@@ -556,11 +552,11 @@
   drop fuzzy shadow,
 }
 \newenvironment{people}[1][]{
-\begin{figure}
+\begin{figure}[!b]
   \begin{peoplebox}
     \begin{center}
       \includegraphics*[height=4cm]{#1}
-    \end{center}}{
+    \end{center}\small}{
   \end{peoplebox}
 \end{figure}}
 

@@ -1,0 +1,2044 @@
+\chapter{保形映射}
+\label{chapter:6}
+
+保形映射是指通过构造一个函数把边界不规则、不易研究的区域映射到边界规则、易研究的区域.
+我们将从解析函数在导数非零处的几何意义出发, 得到共性映射的定义.
+然后讨论分式线性映射、幂函数、指数函数和儒可夫斯基函数所对应的映射特点, 并利用它们得到一些情形下区域的保形映射.
+最后介绍保形映射在平面向量场的应用.
+
+
+
+\section{保形映射的概念}
+
+\subsection{导数的几何意义}
+
+
+在\thmref{例}{exam:orthogonal-curve} 中我们提到, 对于解析函数 $f(z)$, 当 $f'(z_0)\neq 0$ 时, 经过 $z_0$ 的两条曲线 $C_1,C_2$ 的夹角和它们的像 $f(C_1),f(C_2)$ 在 $f(z_0)$ 处的夹角总是相同的.
+大致来说, 这是因为 $\d f=f'(z_0)\d z$, 从复数乘法的几何意义可知, 局部上 $w=f(z)$ 把 $z_0$ 附近的点以 $z_0$ 为中心放缩 $\abs{f'(z_0)}$ 倍并逆时针旋转 $\arg{f'(z_0)}$.
+我们来严格表述这一性质.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw (-4,-2) node[below] {$z$ 平面};
+    \draw (4,-2) node[below] {$w$ 平面};
+    \begin{scope}[shift={(-6,-2)}]
+      \draw[cstaxis] (0,0)--(4,0);
+      \draw[cstaxis] (0,0)--(0,4);
+      \coordinate (B) at (1.5,1.5);
+      \coordinate (A) at (3,3);
+      \coordinate (C) at (1,2.366);
+      \draw[fourth,thick,cstra] pic [cstfill4,draw=fourth, "$\theta$", angle eccentricity=1.5,] {angle=A--B--C};
+      \begin{scope}[main]
+        \draw[thick] (.75,.75)--(3,3);
+        \draw[cstcurve] (.9,.6) to[bend left=35](3.75,2.25);
+      \end{scope}
+      \begin{scope}[second,rotate around={75:(1.5,1.5)}]
+        \draw[thick] (.75,.75)--(3,3);
+        \draw[cstcurve] (.9,.6) to[bend left=35](3.75,2.25);
+      \end{scope}
+    \end{scope}
+    \begin{scope}[shift={(2,-2)}]
+      \draw[cstaxis] (0,0)--(4,0);
+      \draw[cstaxis] (0,0)--(0,4);
+      \begin{scope}[rotate=-20,scale=.8,shift={(.5,.6)}]
+        \coordinate (B) at (1.5,1.5);
+        \coordinate (A) at (3,3);
+        \coordinate (C) at (1,2.366);
+        \draw[fourth,thick,cstra] pic [cstfill4,draw=fourth, "$\theta$", angle eccentricity=1.5] {angle=A--B--C};
+        \begin{scope}[main]
+          \draw[thick] (.75,.75)--(3,3);
+          \draw[cstcurve] (.9,.6) to[bend left=35](3.75,2.25);
+        \end{scope}
+        \begin{scope}[second,rotate around={75:(1.5,1.5)}]
+          \draw[thick] (.75,.75)--(3,3);
+          \draw[cstcurve] (.9,.6) to[bend left=35](3.75,2.25);
+        \end{scope}
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+  \caption{解析函数的保角性}
+\end{figure}
+
+设
+\[
+  C:z=z(t)=x(t)+\ii y(t),\ a\le t\le b
+\]
+是区域 $D$ 内过 $z_0=z(t_0)$ 的一条有向曲线.
+若 $z'(t_0)\neq 0$, 则 $C$ 在 $z_0$ 处的切向量为 $z'(t_0)$ 对应的向量, 即 $\bigl(x'(t_0),y'(t_0)\bigr)$, 切线方程为
+\[
+  \ell: z=z(t_0)+z'(t_0)s,\ s\in\BR.
+\]
+
+设 $w=f(z)$ 是区域 $D$ 上的解析函数, 且 $f'(z_0)\neq 0,z_0\in D$.
+通过映射 $w=f(z)$ 作用之后, $C$ 的像 $C'$ 的参数方程为
+\[
+  C':w=f(t)=f\bigl(z(t)\bigr),\ a\le t\le b,
+\]
+它在 $w_0=f(z_0)$ 处的切向量为 $\dfrac{\d w}{\d t}=f'(z_0) z'(t_0)$, 切线方程为
+\[
+  \ell': z=f(t_0)+f'(z_0) z'(t_0)s,\ s\in\BR.
+\]
+由此可知, $f(z)$ 将切线的角度逆时针旋转了 $\arg f'(z_0)$.
+自然地, 若在 $z$ 平面内有两条不同的经过 $z_0$ 的曲线 $C_1,C_2$, 它们的夹角与它们在 $w$ 平面内的像 $C_1',C_2'$ 的夹角是相同.
+这种性质被称为\nouns{保角性}\index{baojiaoxing@保角性}.
+不仅如此, 由 $\d f=f'(z_0)\d z$ 可知 $w=f(z)$ 还将 $z_0$ 附近的点做了伸缩, 伸缩率为 $\abs{f'(z_0)}$.
+\footnote{
+  若 $f(z)$ 在 $z_0$ 处解析且 $f'(z_0)=0$, 则 $w=f(z)$ 一定不保角.
+  设 $z_0$ 是 $f(z)$ 的 $m$ 阶零点, $a=m!f^{(m)}(z_0)\neq 0$, 则
+  \[
+    f(z_0+r\ee^{\ii\theta})=f(z_0)+ar^m\ee^{m\ii\theta}+o(r^m).
+  \]
+  于是经过 $z_0$ 的曲线 $C$ 的像 $C'$ 的切线可以选择 $s=r^m$ 为参数, 切线方程为 $\ell':z=f(z_0)+a\ee^{m\ii\theta}s$.
+  从而 $w=f(z)$ 将曲线夹角放大为 $m$ 倍.
+} 
+% \begin{marker}
+  \alert{保角性不仅要保持夹角不变, 也要保持夹角的方向.}
+% \end{marker}
+
+\begin{theorem}
+  \label{thm:analytic-nonzero-coformal}
+  设 $w=f(z)$ 在 $z_0$ 处解析且 $f'(z_0)\neq0$, 那么 $w=f(z)$ 在 $z_0$ 处满足如下性质:
+  \begin{enuma}
+    \item 保角性: 经过 $z_0$ 的两条曲线的夹角和它们在 $w=f(z)$ 下的像的夹角大小和方向都相同;
+    \item 伸缩率不变性: 连接 $z_0$ 与其附近点的曲线, 经过映射后被伸缩了 $\abs{f'(z_0)}$ 倍, 这个倍率与具体曲线无关.\footnotemark
+  \end{enuma}
+\end{theorem}
+\footnotetext{
+  ``附近''并不是严格的数学概念, 这里实际上就是指 $\abs{\delt w}=\abs{f'(z_0)}\cdot\abs{\delt z}+o(\delt z)$.
+}
+
+反过来, 若 $w=f(z)$ 在 $z_0$ 附近有上述特点, 设它将经过 $z_0$ 的水平曲线逆时针旋转 $\theta$ 并放缩 $r$ 倍, 则对于充分小的 $\abs{\delt z}$, 有 $\delt w=r\ee^{\ii\theta}\delt z+o(\delt z)$.
+令 $\delt z\ra 0$, 则我们得到 $f(z)$ 在 $z_0$ 处可微且 $f'(z_0)=r\ee^{\ii\theta}$.
+\footnote{
+  若 $f(z)$ 在 $z_0$ 处可导但不解析, 且 $f'(z_0)=0$, 映射 $w=f(z)$ 有可能在 $z_0$ 处保持夹角(伸缩率为 $0$).
+  例如 $f(z)=z\abs{z}$, 即 $f(r\ee^{\ii\theta})=r^2\ee^{\ii\theta}$ 满足 $f'(0)=0$ 且在 $0$ 处保持夹角.
+  不过这不是我们关心的情形.
+}
+
+
+\subsection{保形映射的定义}
+
+\begin{definition}
+  \begin{enuma}
+    \item 若 $w=f(z)$ 在 $z_0$ 处解析, 并具有保角性和伸缩率不变性, 则称 $w=f(z)$ 是 $z_0$ 处的\nouns{保角映射}\index{baojiaoyingshe@保角映射}.
+    \item 若 $w=f(z)$ 在区域 $D$ 内处处都是保角映射, 则称 $w=f(z)$ 是 $D$ 内的\nouns{保角映射}\index{baojiaoyingshe@保角映射}.
+  \end{enuma}
+\end{definition}
+
+由\thmref{定理}{thm:analytic-nonzero-coformal} 立即得知:
+\begin{theorem}
+  若 $f(z)$ 在区域 $D$ 内解析且导数处处非零, 则它是区域 $D$ 内的保角映射.
+\end{theorem}
+
+很多时候, 我们需要把一个复杂区域上的问题通过保角映射化为简单区域上的问题, 例如单位圆域 $\BD:\abs{z}\le1$\index{0d@$\BD$} 或上半平面 $\BH:\Im z>0$\index{0hh@$\BH$}.
+因此我们要求所使用的映射是一一对应.
+
+\begin{definition}
+  若 $w=f(z)$ 是区域 $D$ 内的一一保角映射, 则称 $f(z)$ 是 $D$ 内的\nouns{保形映射}\index{baoxingyingshe@保形映射}.\footnotemark
+\end{definition}
+\footnotetext{
+  也叫\emph{保形变换}\index{baoxingbianhuan@保形变换}或\emph{共形映射}\index{gongxingyingshe@共形映射}.
+}
+
+显然保形映射的逆以及复合也是保形映射.
+我们常常利用这一点, 使用多个简单的保形映射将一个区域逐步简化.
+
+若 $w=f(z)$ 是区域 $D$ 内的保形映射, 则它一定是 $D$ 内的解析函数, 且导数处处非零.
+注意 $w=f(z)$ 在 $D$ 的边界上可以导数为 $0$ 甚至无定义.
+
+若我们不要求 $w=f(z)$ 保持夹角的方向, 它可以不是解析函数.
+例如 $w=\ov z$ 也保持夹角大小和伸缩率不变, 但是它改变了夹角的方向.
+% \begin{marker}
+  \alert{本书中考虑的保形映射都是保持夹角方向的.}
+% \end{marker}
+
+
+\subsection{扩充复平面上的保形映射}
+
+我们来讨论扩充复平面 $\BC^*$ 上的保形映射.
+本章中我们做如下约定:
+% \begin{marker}
+  \begin{enuma}
+    \item 将 $\liml_{z\ra a}f(z)=\infty$ 简记为 $f(a)=\infty$, 将 $\liml_{z\ra \infty}f(z)=A\in\BC^*$ 简记为 $f(\infty)=A$;
+    \item 所有的复变函数都看作是 $D\subseteq\BC^*$ 到 $\BC^*$ 的映射.
+  \end{enuma}
+% \end{marker}
+
+若曲线
+\[
+  C: z=z(t),\ a<t<b
+\]
+满足 $\liml_{t\ra a^+}z(t)=\infty$ 或 $\liml_{t\ra b^-}z(t)=\infty$, 则称 $C$ \nouns{延伸至 $\infty$}\index{yanshenzhiinfty@延伸至 $\infty$}.
+此时我们把 $\infty$ 也看作是 $C$ 上的一个点.
+这里的 $a,b$ 也可以为 $-\infty,+\infty$.
+
+\begin{definition}
+  \begin{enuma}
+    \item 若 $f(z_0)=\infty$ 且 $\dfrac1w=\dfrac1{f(z)}$ 是 $z_0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$z_0$ 处的保角映射}\index{baojiaoyingshe@保角映射}.
+    \item 若 $f(\infty)=w_0$ 且 $w=f\Bigl(\dfrac1t\Bigr)$ 是 $t=0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}\index{baojiaoyingshe@保角映射}.
+    \item 若 $f(\infty)=\infty$ 且 $\dfrac1w=\dfrac1{f(1/t)}$ 是 $t=0$ 处的保角映射, 则称 $w=f(z)$ 是 \nouns{$\infty$ 处的保角映射}\index{baojiaoyingshe@保角映射}.
+  \end{enuma}
+\end{definition}
+
+对于复球面上的相交曲线, 也可以定义夹角和保形映射.
+这些概念通过球极投影和上述对应方式与我们在通常复平面上定义的概念是一致的.
+
+\begin{example}
+  \label{exam:linear-transform}
+  线性函数 $w=f(z)=az+b,a\neq 0$ 是整个复平面内的保形映射.
+  它实际上可以分解成旋转、相似和平移三个映射的复合.
+  由于 $f(\infty)=\infty$, 且
+  \[
+    \dfrac1w=\dfrac1{f(z)}=\dfrac1{f(1/t)}=\dfrac{t}{a+bt}.
+  \]
+  在 $t=0$ 处解析, 因此 $w=f(z)$ 是 $\infty$ 处的保角映射.
+  显然 $w=f(z)$ 是一一的, 故 $w=f(z)$ 是扩充复平面上的保形映射.
+\end{example}
+
+\begin{example}
+  \label{exam:inverse-transform}
+  倒数映射 $w=f(z)=\dfrac1z$ 在任意非零点的导数 $f'(z)=-\dfrac1{z^2}$ 非零, 因此在这些点处是保形映射.
+  由于 $f(0)=\infty$, 且 $\dfrac1w=z$ 在 $z=0$ 处是保角映射, 因此 $w=f(z)$ 是 $0$ 处的保角映射.
+  由于 $f(\infty)=0$, 且 $w=f\Bigl(\dfrac1t\Bigr)=t$ 在 $t=0$ 处是保角映射, 因此 $w=f(z)$ 是 $\infty$ 处的保角映射.
+  显然 $w=f(z)$ 是一一的, 故 $w=f(z)$ 是扩充复平面上的保形映射.
+\end{example}
+
+\begin{exercise}
+  以下映射中\fillbrace{}是 $0$ 处的保角映射.
+  \begin{exchoice}(4)
+    \item $w=\ov z$
+    \item $w=z^2$
+    \item $w=\ln z$
+    \item $w=\dfrac1z$
+  \end{exchoice}
+\end{exercise}
+
+对于扩充复平面上的单连通区域, 我们有如下定理:
+\footnote{
+  扩充复平面内区域的定义和复平面内区域的定义类似, 只不过需要额外考虑 $\infty$ 的情形.
+  若区域 $D$ 内任意一条闭路的内部或外部(包含 $\infty$)都完全属于该区域, 则称该区域为\emph{单连通区域}\index{quyu@区域!danliantongquyu@单连通区域}.
+  例如圆周外部(包含 $\infty$)是扩充复平面内的单连通区域.
+  从复球面的角度来看更明显.
+  对于单连通区域 $D\neq \BC^*$, 通过对应复球面上一点 $z_0\notin D$ 的球极投影, $D$ 可以对应到复平面的一个单连通区域.
+}
+
+\begin{theorem}[黎曼映射定理]
+  \index{limanyingshedingli@黎曼映射定理}
+  \label{thm:riemann-mapping}
+  若 $D\neq\BC^*$ 是扩充复平面中的非空单连通区域, 且 $D$ 不是扩充复平面去掉一个点, 则存在 $D$ 到单位圆域的保形映射 $w=f(z)$.
+  对于任意常数 $\theta_0$ 和 $D$ 中任意一点 $z_0$, 若要求 $f(z_0)=0,\arg f'(z_0)=\theta_0$, 则存在唯一一个这样的 $f$.
+\end{theorem}
+
+由保形映射是一一对应, 且它的逆也是保形映射可得:
+\begin{corollary}
+  若 $D_1\neq\BC^*,D_2\neq\BC^*$ 是扩充复平面中的非空单连通区域, 且它们不是扩充复平面去掉一个点, 则存在 $D_1$ 到 $D_2$ 的保形映射 $w=f(z)$.
+  对于任意常数 $\theta_0$ 和 $D$ 中任意一点 $z_0$, 若要求 $f(z_0)=0,\arg f'(z_0)=\theta_0$, 则存在唯一一个这样的 $f$.
+\end{corollary}
+
+不过, 黎曼映射定理只表明存在这样的映射, 具体映射的构造往往需要使用各种函数组合得到.
+
+
+
+\section{分式线性映射}
+
+形如
+\[
+  w=f(z)=\dfrac{az+b}{cz+d},\quad ad-bc\neq 0
+\]
+的映射叫作\nouns{分式线性映射}\index{fenshixianxingyingshe@分式线性映射}\index{0fz=azbczd@$f(z)=\dfrac{az+b}{cz+d}$\smallskip}\footnote{
+  也叫\emph{莫比乌斯映射}\index{mobiwusiyingshe@莫比乌斯映射}.
+}.
+它是保形映射中比较简单也比较容易研究的一种映射.
+不难看出, 若 $ad-bc=0$, 则 $w$ 是一常数, 这不是保形映射也不是我们感兴趣的.
+
+分式线性映射的逆和复合仍然是分式线性映射.
+设
+\[
+  f(z)=\frac{az+b}{cz+d},\quad
+  g(z)=\frac{a'z+b'}{c'z+d'},
+\]
+则
+\[
+  f^{-1}(z)=\frac{dz-c}{-bz+a},\quad
+  (f\circ g)(z)=\frac{(aa'+bc')z+(ab'+bd')}{(ca'+dc')z+(cb'+dd')}.
+\]
+
+\subsection{分式线性映射的性质}
+
+\subsubsection{保形性}
+
+我们将分式线性映射改写为如下形式:
+\[
+   w
+  =\frac{az+b}{cz+d}
+  =-\frac{ad-bc}{c^2}\cdot\frac1{z+d/c}+\frac ac.
+\]
+于是它可由三类比较简单的分式线性映射复合得到:
+\begin{enuma}
+  \item 平移映射 $w=z+b$;
+  \item 相似映射 $w=az$;\smallskip
+  \item 倒数映射 $w=\dfrac1z$.
+\end{enuma}
+\smallskip
+由\thmref{例}{exam:linear-transform} 和\thmref{例}{exam:inverse-transform}, 我们立即得到:
+
+\begin{theorem}
+  分式线性映射是扩充复平面内的保形映射.
+\end{theorem}
+
+
+\subsubsection{保圆性}
+
+由于保形映射具有保角性和伸缩率不变性, 因此它在局部保持图形的形状不变.
+不过这种不变只是在一定的程度下的近似.
+而对于分式线性映射, 它总把直线和圆周映成直线或圆周.
+我们也可以将直线视为扩充复平面中经过 $\infty$ 的半径无限大的圆周.\footnote{
+  球极投影总将复球面中的圆周映成复平面中的圆周或直线(含 $\infty$).
+}
+
+\begin{theorem}
+  分式线性映射把圆周或直线映成圆周或直线.
+\end{theorem}
+
+\begin{proof}
+  显然平移映射和相似映射把圆周映成圆周, 直线映成直线.
+  对于倒数映射 $w=\dfrac1z$, 注意到圆周和直线的方程都可以表示为
+  \[
+    A(x^2+y^2)+Bx+Cy+D=0,
+  \]
+  其中 $B^2+C^2-4AD>0$. 由
+  \[
+      z
+    =\frac1w
+    =\frac{u}{u^2+v^2}-\ii \frac{v}{u^2+v^2}
+  \]
+  得到
+  \[
+    A+Bu-Cv+D(u^2+v^2)=0.
+  \]
+  因此倒数映射把圆周或直线映成圆周或直线, 命题得证.
+\end{proof}
+
+不难看出, 分式线性映射 $w=f(z)$ 将圆周或直线 $C$ 映成直线, 当且仅当 $C$ 上的一点的像为 $\infty$, 即 $-\dfrac dc\in C$.
+它也总将直线映成经过点 $\dfrac ac$ 的圆周或直线.
+
+
+\subsubsection{保对称点}
+
+若 $z_1,z_2$ 的垂直平分线是直线 $\ell$, 或者它们重合且都在直线 $\ell$ 上, 则称 $z_1,z_2$ 关于直线 $\ell$ \nouns{对称}\index{duicheng@对称}.
+对于圆周我们也可以定义对称点.
+设 $C:\abs{z-z_0}=R$ 是一圆周, 若 $z_1,z_2$ 在从 $z_0$ 出发的同一条射线上, 且 $\abs{z_1-z_0}\cdot\abs{z_2-z_0}=R^2$, 则称 $z_1,z_2$ 关于圆周 $C$ \nouns{对称}\index{duicheng@对称}.
+圆周上的点总和其自身对称, 除此之外, 关于圆周对称的点一定是一个在圆周内, 一个在圆周外.
+我们还规定 $z_0$ 和 $\infty$ 关于 $C$ 对称.
+
+\begin{lemma}
+  \label{lem:symmetry-circle}
+  点 $z_1,z_2$ 关于圆周 $C:\abs{z-z_0}=R$ 对称, 当且仅当经过 $z_1,z_2$ 的任一圆周和 $C$ 正交, 即在交点处切线垂直.
+\end{lemma}
+
+\begin{proof}
+  不妨设 $z_1=-1,z_2=1$.
+  那么经过 $z_1,z_2$ 的圆周 $\Gamma$ 的圆心可设为 $\gamma=\lambda\ii,\lambda\in\BR$, 半径为 $r=\sqrt{1+\lambda^2}$.
+  注意 $C$ 和 $\Gamma$ 正交等价于
+  \begin{equation}
+    \label{eq:orth-symmetry-points}
+     \abs{z_0-\lambda\ii}^2
+    =R^2+r^2
+    =R^2+1+\lambda^2,\quad
+     \abs{z_0}^2+\lambda(z_0-\ov{z_0})\ii
+    =R^2+1.
+  \end{equation}
+
+  若经过 $z_1,z_2$ 的所有圆周 $\Gamma$ 都与 $C$ 正交, 则上式对任意 $\lambda\in\BR$ 均成立, 从而 $z_0=\ov{z_0}$, $z_0=\pm\sqrt{R^2+1}$ 为实数.
+  \[
+    \abs{z_1-z_0}\cdot\abs{z_2-z_0}=\abs{z_0^2-1}=R^2
+  \]
+  且 $z_1,z_2$ 在 $z_0$ 同侧, 即 $z_1,z_2$ 关于 $C$ 对称.
+
+  反过来, 若 $z_1,z_2$ 关于 $C$ 对称, 则 $z_0\in\BR$ 满足
+  \[
+    R^2=(z_1-z_0)(z_2-z_0)=z_0^2-1.
+  \]
+  于是 \ref{eq:orth-symmetry-points} 恒成立, 即 $C$ 和 $\Gamma$ 正交.
+\end{proof}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\a{2.86}
+    \def\b{.84}
+    \def\s{.5}
+    \begin{scope}[scale=.5,rotate=56.31]
+      \coordinate (P);
+      \coordinate (Z) at (-4,0);
+      \coordinate (O) at (0,-3);
+      \coordinate (Z1) at ({-36/13},{-24/13});
+      \coordinate (Z2) at (0,{-78/13});
+      \coordinate (Z12) at ($(Z1)!.5!(Z2)$);
+      \begin{scope}[cstcurve,third]
+        \draw[main] (Z) circle (4);
+        \draw[second] (O) circle (3);
+        \draw[cstdash] (Z)--(O)--(P)--cycle;
+        \draw (P)++(-\s,0)--++(0,-\s)--++(\s,0);
+      \end{scope}
+      \draw[cstaxis] (Z)--($(Z1)!1.5!(Z2)$);
+      \draw[cstaxis] ($(Z12)!-1.5!(O)$)--($(Z12)!3.5!(O)$);
+    \end{scope}
+    \fill[cstdot,main] (Z) circle node[below] {$z_0$};
+    \fill[cstdot,fourth] (Z1) circle node[below left] {$z_1$};
+    \fill[cstdot,fourth] (Z2) circle node[below right] {$z_2$};
+    \fill[cstdot,second] (O) circle node[right] {$\gamma$};
+  \end{tikzpicture}
+  \caption{过对称点圆周与原圆周正交}
+\end{figure}
+
+把上述命题的圆周换成圆周或直线也成立.
+
+\begin{theorem}
+  分式线性映射具有保对称点性, 即若 $z_1,z_2$ 关于圆周或直线 $C$ 对称, 则 $f(z_1),f(z_2)$ 关于 $C$ 在 $w=f(z)$ 下的像对称.
+\end{theorem}
+
+\begin{proof}
+  过 $w_1=f(z_1),w_2=f(z_2)$ 作圆周或直线 $\Gamma'$.
+  由保圆性可知 $\Gamma'$ 的原像 $\Gamma$ 也是圆周或直线.
+  由\thmref{引理}{lem:symmetry-circle} 可知 $C$ 和 $\Gamma$ 正交, 再由保角性可知 $C$ 的像 $C'$ 和 $\Gamma'$ 正交.
+  最后由\thmref{引理}{lem:symmetry-circle} 可知 $f(z_1),f(z_2)$ 关于 $C'$ 对称.
+\end{proof}
+
+
+\subsubsection{约束条件}
+
+尽管分式线性映射的表达式中有四个参数, 但把它们都换成非零常数倍之后对应的是同一个分式线性映射, 所以应当只需要三个约束条件就可以确定分式线性映射.
+下述定理说明的确如此.
+
+\begin{theorem}
+  \label{thm:three-points-determine-fractal-transform}
+  设 $z_1,z_2,z_3$ 是 $z$ 平面三个不同的点, $w_1,w_2,w_3$ 是 $w$ 平面三个不同的点.
+  那么存在唯一一个分式线性映射 $w=f(z)$, 使得 $f(z_k)=w_k,\ k=1,2,3$, 它满足
+  \[
+     \frac{w-w_1}{w-w_2}\cdot\frac{w_3-w_2}{w_3-w_1}
+    =\frac{z-z_1}{z-z_2}\cdot\frac{z_3-z_2}{z_3-z_1}.
+  \]
+\end{theorem}
+
+\begin{proof}
+  显然该等式确定了一个满足题设的分式线性映射, 下证唯一性.
+  设 $w=\dfrac{az+b}{cz+d}$ 是满足题设的一个分式线性映射, 则
+  \[
+     w-w_k
+    =\frac{az+b}{cz+d}-\frac{az_k+b}{cz_k+d}
+    =\frac{(ad-bc)(z-z_k)}{(cz+d)(cz_k+d)}.
+  \]
+  于是对于 $k=1,2$, 有
+  \[
+    w_3-w_k=\frac{(ad-bc)(z_3-z_k)}{(cz_3+d)(cz_k+d)}.
+  \]
+  从而
+  \[
+    \frac{w-w_k}{w_3-w_k}
+   =\frac{z-z_k}{z_3-z_k}\cdot\frac{cz_3+d}{cz+d}.
+  \]
+  分别代入 $k=1,2$ 并将两式相除即可得到定理中的等式.
+\end{proof}
+
+实际上, 等式右侧的分式线性映射分别将 $z_1,z_2,z_3$ 映成 $0,\infty,1$, 代入后解得左侧的 $w$ 把右侧的 $0,\infty,1$ 映成 $w_1,w_2,w_3$.
+
+\begin{corollary}
+  若分式线性映射 $w=f(z)$ 将 $z_1,z_2$ 映成 $w_1,w_2$, 则存在常数 $k$ 使得
+  \[
+    \frac{w-w_1}{w-w_2}=k\frac{z-z_1}{z-z_2}.
+  \]
+  特别地, 若 $f(a)=0,f(b)=\infty$, 则 $w=k\dfrac{z-a}{z-b}$.
+\end{corollary}
+
+在 $z$ 平面和 $w$ 平面分别给定圆周 $C,C'$.
+那么我们可以利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造出分式线性映射 $w=f(z)$ 将 $C$ 映成 $C'$, 只需要分别在 $C,C'$ 上任取三个不同的点即可.
+由于 $w=f(z)$ 是扩充复平面内的连续一一对应, 因此 $C$ 内部的连续曲线在该映射下的像还是一条连续曲线, 且与 $C'$ 没有交点.
+这意味着该映射把 $C$ 的内部映射为 $C'$ 的内部或外部.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[shift={(-4,0)}]
+      \coordinate (A) at (.84,-1.2);
+      \coordinate (B) at (0,-1.2);
+      \coordinate (C) at (-.36,0);
+      \draw[thick,fourth] (A)--(B)--(C);
+      \draw[fourth,thick,cstla] pic [cstfill4,draw=fourth, "$\theta$", angle eccentricity=1.7, angle radius=3mm] {angle=A--B--C};
+      \draw[cstcurve] (-.72,-.36) to[bend left=30] (0,-1.2);
+      \fill[cstdot,third] (-.72,-.36) circle node[above] {$z_0$};
+      \fill[cstdot,main] (0,-1.2) circle node[below] {$z_1$};
+      \fill[cstdot,main] (.96,.72) circle node[right] {$z_2$};
+      \fill[cstdot,main] (-.96,.72) circle node[left] {$z_3$};
+      \draw[cstcurve,main] (0,0) circle (1.2);
+    \end{scope}
+    \begin{scope}[shift={(.5,0)},rotate=60]
+      \coordinate (A) at (1.05,-1.5);
+      \coordinate (B) at (0,-1.5);
+      \coordinate (C) at (-.45,0);
+      \draw[thick,fourth] (A)--(B)--(C);
+      \draw[fourth,thick,cstla] pic [cstfill4,draw=fourth, "$\theta$", angle eccentricity=1.7, angle radius=3mm] {angle=A--B--C};
+      \draw[cstcurve] (-.9,-.45) to[bend left=30] (0,-1.5);
+      \fill[cstdot,third] (-.9,-.45) circle node[left] {$w_0$};
+      \fill[cstdot,main] (0,-1.5) circle node[right] {$w_1$};
+      \fill[cstdot,main] (1.2,.9) circle node[above] {$w_2$};
+      \fill[cstdot,main] (-1.2,.9) circle node[left] {$w_3$};
+      \draw[cstcurve,main] (0,0) circle (1.5);
+    \end{scope}
+    \begin{scope}[shift={(.5,0)},rotate=90]
+      \coordinate (A) at (-1.05,-1.5);
+      \coordinate (B) at (0,-1.5);
+      \coordinate (C) at (.45,-3);
+      \draw[thick,fourth] (A)--(B)--(C);
+      \draw[fourth,thick,cstla] pic [cstfill4,draw=fourth, "$\theta$", angle eccentricity=1.7, angle radius=3mm] {angle=A--B--C};
+      \draw[cstcurve] (.9,-2.55) to[bend left=30] (0,-1.5);
+      \fill[cstdot,third] (.9,-2.55) circle node[above] {$w_0$};
+      \fill[cstdot,main] (0,-1.5) circle node[left] {$w_1$};
+      \fill[cstdot,main] (1.2,.9) circle node[left] {$w_3$};
+      \fill[cstdot,main] (-1.2,.9) circle node[below] {$w_2$};
+      \draw[cstcurve,main] (0,0) circle (1.5);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{分式线性映射将圆周内部映成圆周内部或外部}
+\end{figure}
+
+若希望该映射把 $C$ 的内部映成 $C'$ 的内部, 我们只需要在 $C$ 上逆时针依次选择 $z_1,z_2,z_3$, 在 $C'$ 上也逆时针依次选择 $w_1,w_2,w_3$ 即可.
+这是因为对于 $C$ 内部任意一点 $z_0$, 连接 $z_0,z_1$ 的曲线 $\Gamma$ 到逆时针圆弧 $\warc{z_1z_2}$ 一定是顺时针旋转角度 $\theta<\cpi$.
+由于分式线性映射具有保角性, 因此 $\Gamma$ 的像到逆时针圆弧 $\warc{w_1w_2}$ 也是顺时针旋转角度 $\theta$, 从而 $f(z_0)$ 只能在 $C'$ 内部.
+若希望分式线性映射将 $C$ 的内部映射为 $C'$ 的外部, 只需顺时针依次选择 $w_1,w_2,w_3$.
+若 $C$ 或 $C'$ 是直线, 只需将圆周内部替换为三个点顺序所指方向的左侧即可.
+
+
+\subsection{分式线性映射举例}
+
+\begin{example}
+  分式线性映射
+  \[
+    w=f(z)=\dfrac{z+\ii}{z-\ii}
+  \]
+  将中心分别在 $\pm\dfrac{\sqrt3}3$, 半径为 $\dfrac{2\sqrt3}3$ 的圆弧围成的区域 $D$ 映成什么区域 $D'$?
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \begin{scope}[shift={(-4,0)}]
+      \filldraw[cstcurve,main,cstfill1] (0,1) arc(120:240:1.155)
+        arc(-60:60:1.155) --cycle;
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstdash] 
+        (.577,0)--
+        (0,1) --
+        (-.577,0) node[below left] {$-\frac{\sqrt3}3$}--
+        (0,-1) --cycle;
+      \coordinate (A) at (-1.732,0);
+      \coordinate (O) at (0,1);
+      \coordinate (B) at (1.732,0);
+      \draw[thick,cstra] pic [draw=main] {angle=A--O--B};
+      \draw[thick,main] ($(A)!.5!(O)$)--(O)--($(B)!.5!(O)$);
+      \fill[cstdot,third] (0,-1) circle node[below right] {$z_1$};
+      \fill[cstdot,third] (.577,0) circle node[below right] {$z_2$};
+      \fill[cstdot,third] (0,1) circle node[above right] {$z_3$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \coordinate (A) at (-1,1.732);
+      \coordinate (O) at (0,0);
+      \coordinate (B) at (-1,-1.732);
+      \fill[cstcurve,cstfille5] (A) arc(120:240:2)--(O)--cycle;
+      \draw[fifth,thick,cstra] pic [cstfill5,draw=fifth] {angle=A--O--B};
+      \draw[cstcurve,fifth] (A)--(O)--(B);
+      \draw[cstdash,fifth] (-1,1.732)--(-1.3,{1.3*sqrt(3)});
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \fill[cstdot,third] (0,0) circle node[above right] {$w_1=0$};
+      \fill[cstdot,third] (-.5,.866) circle node[above right,inner sep=1pt] {$w_2$};
+      \fill[cstdot,third] (-1.3,{1.3*sqrt(3)}) circle node[left] {$w_3 =\infty$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{两圆弧围成的区域到角形区域的映射}
+\end{figure}
+
+\begin{solution}
+  由于
+  \[
+    f(\ii)=\infty,\quad
+    f(-\ii)=0,\quad
+    f\Bigl(\dfrac{\sqrt3}3\Bigr)=-\frac12+\frac{\sqrt3}2\ii,
+    \quad
+    f\Bigl(-\dfrac{\sqrt3}3\Bigr)=-\frac12-\frac{\sqrt3}2\ii,
+  \]
+  因此它将两段圆弧映成两条经过 $0,-\dfrac12\pm\dfrac{\sqrt3}2\ii,\infty$ 的射线, 即 $\arg w=\pm\dfrac{2\cpi}3$.
+  由于
+  \[
+    z_1=-\ii,\quad z_2=\frac{\sqrt3}3,\quad z_3=\ii
+  \]
+  在圆弧上逆时针排列, $D'$ 在它们的像
+  \[
+    w_1=0,\quad w_2=-\frac12+\frac{\sqrt3}2\ii,\quad w_3=\infty
+  \]
+  所指方向的左侧, 因此 $D'$ 为射线 $\arg w=\pm\dfrac{2\cpi}3$ 所夹成的夹角为 $\dfrac{2\cpi}3$ 的角形区域
+  \[
+    D':\dfrac{2\cpi}3<\Arg w<\dfrac{4\cpi}3.
+  \]
+\end{solution}
+
+若要求将特定区域映成另一区域的分式线性映射, 我们可分别在它们的边界上选择三个点得到相应映射.
+需要注意选择的点的次序.
+
+\begin{example}
+  \label{exam:imz-open-disk}
+  求将上半平面 $\BH:\Im z>0$ 映成单位圆域 $\BD:\abs{w}<1$ 的分式线性映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \def\w{2}
+    \begin{scope}[shift={(-4,0)}]
+      \fill[cstcurve,main,cstfille1] (-\w,\w) rectangle (\w,0);
+      \draw[cstaxis,cstcurve,main] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \fill[cstdot,third] (-1,0) circle node[below] {$z_1$};
+      \fill[cstdot,third] (0,0) circle node[below left] {$z_2$};
+      \fill[cstdot,third] (1,0) circle node[below] {$z_3$};
+      \draw (\w,\w) node[main,below left] {$\BH$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \filldraw[cstcurve,fifth,cstfill5] (0,0) circle (1);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \fill[cstdot,fourth] (0,0) circle;
+      \fill[cstdot,third] (0,-1) circle node[below left] {$w_1$};
+      \fill[cstdot,third] (1,0) circle node[above right] {$w_2$};
+      \fill[cstdot,third] (0,1) circle node[above left] {$w_3$};
+      \draw (.7,.7) node[fifth,below left] {$\BD$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{$\BH$ 到 $\BD$ 的映射}
+\end{figure}
+
+\begin{solution}
+  我们在直线 $\Im z=0$ 上自左往右选择 $z_1=-1,z_2=0,z_3=1$, 并在单位圆周 $\abs{z}=1$ 上逆时针选择 $w_1=-\ii,w_2=1,w_3=\ii$.
+  由\thmref{定理}{thm:three-points-determine-fractal-transform} 可得
+  \[
+     \frac{w+\ii}{w-1}\cdot\frac{\ii-1}{\ii+\ii}
+    =\frac{z+1}{z-0}\cdot\frac{1+1}{1-0}.
+  \]
+  解得
+  \[
+    w=-\dfrac{z-\ii}{z+\ii}.
+  \]
+\end{solution}
+
+若我们换一组点, 可能会得到不同的分式线性映射.
+若 $f_1,f_2$ 是两个这样的分式线性映射, 则 $f_2\circ f_1^{-1}$ 是 $\BD$ 到自身的分式线性映射.
+
+\begin{example}
+  求单位圆域 $\BD$ 到自身的所有分式线性映射 $w=f(z)$.
+\end{example}
+
+\begin{solution}
+  设 $w=f(z)=\dfrac{az+b}{cz+d}$. \smallskip 
+  若 $\alpha=f^{-1}(0)$, 则 $\abs{\alpha}<1$ .
+  由于分式线性映射保对称点, 因此 $f$ 将 $\alpha$ 的对称点 $\dfrac1{~\ov\alpha~}$ 映成 $0$ 的对称点 $\infty$.
+  这意味着
+  \[
+    w=k\frac{z-\alpha}{z-1/\ov\alpha}=k'\frac{z-\alpha}{1-\ov\alpha z}.
+  \]
+  由于 $f(1)=k'\dfrac{1-\alpha}{1-\ov\alpha}$ 的模为 $1$, 因此 $\abs{k'}=1$.
+  设 $k'=\ee^{\ii\theta}$, 则
+  \[
+    w=\ee^{\ii\theta}\frac{z-\alpha}{1-\ov\alpha z},\quad \abs{\alpha}<1.
+  \]
+  不难知道该映射将单位圆周映成单位圆周, 且 $\abs{f(0)}<1$.
+  因此这就是 $\BD$ 到自身的所有分式线性映射.
+\end{solution}
+
+事实上, 单位圆域到自身的保形映射一定是分式线性映射, 见\thmref{定理}{thm:riemann-mapping}.
+由此也不难知道\thmref{例}{exam:imz-open-disk} 中所有可能的分式线性映射是
+\begin{equation}
+  \label{eq:coformal-h-to-d}
+  w=\ee^{\ii\theta}\dfrac{z+\ov\beta}{z+\beta},\quad\Im\beta>0.
+\end{equation}
+
+\begin{example}
+  求将右半平面 $D:\Re z>0$ 映成圆域 $D':\abs{w-2}<2$ 的分式线性映射 $w=f(z)$, 使得 $f(0)=0,f(1)=2$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \def\w{2}
+    \begin{scope}[shift={(-4,0)},scale=.8]
+      \fill[cstcurve,main,cstfille1] (0,\w) rectangle (\w,-\w);
+      \draw[cstaxis,cstcurve,main] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \coordinate (Z1) at (1,0);
+      \coordinate (Z2) at (0,0);
+      \coordinate (Z3) at (-1,0);
+      \draw (\w,\w) node[main,below left] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)},scale=.64]
+      \filldraw[cstcurve,fifth,cstfill5] (2,0) circle (2);
+      \coordinate (W1) at (2,0);
+      \coordinate (W2) at (0,0);
+      \coordinate (W3) at (-2.5,0);
+      \draw[cstaxis] (0,-2.5)--(0,2.5);
+      \draw[cstaxis] (0,0)--(5,0);
+      \draw[cstdash] (0,0)--(W3);
+      \draw (2,2) node[fifth,below] {$D'$};
+    \end{scope}
+    \begin{scope}[cstdot,third]
+      \fill (Z1) circle node[below] {$z_1$};
+      \fill (Z2) circle node[below right] {$z_2$};
+      \fill (Z3) circle node[below] {$z_3$};
+      \fill (W1) circle node[below] {$w_1$};
+      \fill (W2) circle node[above left] {$w_2$};
+      \fill (W3) circle node[below] {$w_3 =\infty$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{右半平面到圆域的映射}
+\end{figure}
+
+\begin{solution}[解法一]
+  通过 $s=\ii z$ 可以将 $D$ 映成 $\BH$, 再根据\eqref{eq:coformal-h-to-d}, 映射
+  \[
+    t=\ee^{\ii\theta}\dfrac{s+\ov\beta}{s+\beta},\quad\Im\beta>0
+  \]
+  将 $\BH$ 映成 $\BD$.
+  最后映射 $w=2+2t$ 将 $\BD$ 映成 $D'$.
+  将三者复合得到
+  \[
+    w=2+2\ee^{\ii\theta}\dfrac{\ii z+\ov\beta}{\ii z+\beta}.
+  \]
+  由 $f(0)=0$ 可知 $\ee^{\ii\theta}=-\dfrac{\beta}{~\ov\beta~}$, 于是
+  \[
+    w=2-2\frac{\beta}{~\ov\beta~}\cdot\frac{\ii z+\ov\beta}{\ii z+\beta}
+     =2\Bigl(1-\frac{\beta}{~\ov\beta~}\Bigr)\cdot\frac{z}{z-\ii\beta}.
+  \]
+  再由 $f(1)=2$ 可得 $\beta=\ii$. 故 $w=\dfrac{4z}{z+1}$.
+\end{solution}
+
+\begin{solution}[解法二]
+  由于 $1,-1$ 关于直线 $\Re z=0$ 对称, 因此 $w=f(-1)$ 为 $2$ 关于 $\abs{w-2}=2$ 的对称点, 即 $\infty$.
+  由于 $f(0)=0$, 因此存在 $k$ 使得 $w=\dfrac{kz}{z+1}$.
+  再由 $f(1)=2$ 可得 $k=4$.
+  故
+  \[
+    w=\dfrac{4z}{z+1}.
+  \]
+\end{solution}
+
+\begin{exercise}
+  求将右半平面 $D:\Re z>0$ 映成圆周外部 $D':\abs{w-2}>2$ 的分式线性映射 $w=f(z)$, 使得 $f(0)=0,f(-1)=2$.
+\end{exercise}
+
+对于两个圆周或直线围成的区域, 我们需要将交点映射为交点, 然后再选择第三个点.
+
+\begin{example}
+  求将角形区域 $D:-\dfrac\cpi4<\arg z<\dfrac{\cpi}4$ 映成单位右半圆域 $D':\abs{w}<1,\Re w>0$ 的分式线性映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \begin{scope}[shift={(-4,0)}]
+      \def\u{2}
+      \fill[cstcurve,main,cstfille1] (1.414,1.414) arc(45:-45:\u) --(0,0)--cycle;
+      \coordinate (A) at (1,-1);
+      \coordinate (O) at (0,0);
+      \coordinate (B) at (1,1);
+      \draw[thick,cstra] pic [cstfill1,draw=main] {angle=A--O--B};
+      \draw[cstcurve,main] (1.414,1.414)--(0,0)--(1.414,-1.414);
+      \draw[cstaxis] (-\u,0)--(\u,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstdash,main] (1.414,-1.414)--(2,-2);
+      \coordinate (Z1) at (0,0);
+      \coordinate (Z2) at (1,-1);
+      \coordinate (Z3) at (\u,-\u);
+      \draw ({\u*.7},{\u*.3}) node[main] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \filldraw[cstcurve,fifth,cstfill5] (0,1) arc(90:-90:1)--cycle;
+      \coordinate (A) at (0,.75);
+      \coordinate (O) at (0,1);
+      \coordinate (B) at (.75,1);
+      \draw[thick,cstra] pic [draw=fourth] {angle=A--O--B};
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[thick,fourth] (A)--(O)--(B);
+      \coordinate (W1) at (0,1);
+      \coordinate (W2) at (0,0);
+      \coordinate (W3) at (0,-1);
+      \draw (.6,.3) node[fifth] {$D'$};
+    \end{scope}
+    \begin{scope}[cstdot,third]
+      \fill (Z1) circle node[below left] {$z_1$};
+      \fill (Z2) circle node[below left] {$z_2$};
+      \fill (Z3) circle node[right] {$z_3 =\infty$};
+      \fill (W1) circle node[below left] {$w_1$};
+      \fill (W2) circle node[below left] {$w_2$};
+      \fill (W3) circle node[below left] {$w_3$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{角形区域映成半圆盘}
+\end{figure}
+
+\begin{solution}
+  该映射将圆周或直线的交点映成交点, 不妨设 $f(0)=\ii,f(\infty)=-\ii$.
+  于是可设
+  \[
+    w=-\ii\dfrac{z-k}{z+k}.
+  \]
+  为了保证 $w=f(z)$ 将 $\arg z=-\dfrac\cpi4$ 所在直线的右上侧映成 $\Re w=0$ 的右侧, 我们选择 $f(1-\ii)=0$.
+  于是
+  \[
+    0=f(1-\ii)=-\ii\frac{1-\ii-k}{1-\ii+k},\quad
+    k=1-\ii,
+  \]
+  故 $w=-\ii\dfrac{z-1+\ii}{z+1-\ii}$.
+\end{solution}
+
+\begin{example}
+  求将偏心圆环域 $D:\abs{z}>1,\abs{z-1}<\dfrac{3\sqrt2}2$ 映成圆环域 $D':1<\abs{w}<2$ 的分式线性映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \def\u{.8}
+    \begin{scope}[shift={(-5,0)}]
+      \filldraw[cstcurve,main,cstfill1] (\u,0) circle ({\u*2.121});
+      \filldraw[cstcurve,main,fill=white] (0,0) circle (\u);
+      \draw[cstaxis] (0,-2.2)--(0,2.2);
+      \draw[cstaxis] (-2,0)--(3,0);
+      \fill[cstdot,main] (0,0) circle;
+      \fill[cstdot,third] (\u,0) circle node[below right] {$z_3$};
+      \fill[cstdot,third] (-{\u*.5},0) circle node[below] {$z_2$};
+      \fill[cstdot,third] (-{\u*2},0) circle node[below] {$z_1$};
+      \draw ({\u*2.414},{\u*1.414}) node[main,below left] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4.5,0)}]
+      \filldraw[cstcurve,fifth,cstfill5] (0,0) circle ({\u*2});
+      \filldraw[cstcurve,fifth,fill=white] (0,0) circle (\u);
+      \fill[cstdot,fifth] (0,0) circle;
+      \draw[cstaxis] (0,-2.2)--(0,2.2);
+      \draw[cstaxis] (-{\u*2},0)--(2,0);
+      \draw[cstdash] (-{\u*2},0)--(-2.5,0);
+      \fill[cstdot,third] (-2.5,0) circle node[below] {$w_1=\infty$};
+      \fill[cstdot,third] (0,0) circle node[below left] {$w_2$};
+      \fill[cstdot,third] (\u,0) circle node[below right] {$w_3$};
+      \draw ({\u*1.414},{\u*1.414}) node[fifth,below left] {$D'$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{偏心圆环域到圆环域的映射}
+\end{figure}
+
+\begin{solution}
+  我们首先求偏心圆环域 $D$ 边界两个圆周的公共对称点 $z_1,z_2$.
+  由于它们和两圆圆心都共线, 因此它们位于两圆圆心连线上, 也就是说 $z_1,z_2$ 是实数.
+  不仅如此, 它们一定在两圆圆心的同一侧, 从而
+  \[
+    (z_1-0)\cdot (z_2-0)=1,\quad
+    (z_1-1)\cdot(z_2-1)=\frac92.
+  \]
+  整理得到 $z_1+z_2=-\dfrac{5}2$.
+  于是 $z_1,z_2$ 是一元二次方程 $z^2+\dfrac52z+1=0$ 的两个解, 即 $-\dfrac12$ 和 $-2$.
+  注意到圆环域 $D'$ 边界两个同心圆的公共对称点只能是圆心 $0$ 和无穷远点 $\infty$.
+  因此 $-\dfrac12$ 和 $-2$ 的像就是 $0$ 和 $\infty$.
+
+  若 $f\Bigl(-\dfrac12\Bigr)=0$, $f(-2)=\infty$, 则 $w=k\dfrac{2z+1}{z+2}$. \smallskip
+  由于 $-\dfrac12$ 在 $D$ 内圆内部, 它的像 $0$ 在 $D'$ 内圆内部, 因此 $w=f(z)$ 将 $D$ 内圆内部映到 $D'$ 内圆内部, 从而将内圆 $\abs{z}=1$ 映到内圆 $\abs{w}=1$.
+  设 $f(1)=\ee^{\ii\theta}$, 则
+  \[
+    w=\ee^{\ii\theta}\dfrac{2z+1}{z+2}.
+  \]
+  同理, 若 $f\Bigl(-\dfrac12\Bigr)=0$, $f(-2)=\infty$, 则 
+  \[
+    w=\ee^{\ii\theta}\dfrac{2z+4}{2z+1}.
+  \]
+\end{solution}
+
+
+\subsection{分式线性映射的其它表现\optional}
+
+分式线性映射的复合和逆变换的形式与矩阵的乘法和逆的形式很相像.
+事实上这并非偶然.
+我们将分式线性映射 $w=f(z)=\dfrac{az+b}{cz+d}$ 对应到矩阵 $\bfA=\begin{pmatrix}
+  a&b\\c&d
+\end{pmatrix}$.
+显然 $\bfA$ 和它的常数倍对应同一个分式线性映射.
+对于 $z\in\BC^*$, 定义复直线
+\[
+  V_z=\begin{cases}
+    \{(zt,t)^\rmT\mid t\in\BC\},&z\in\BC,\\
+    \{(t,0)^\rmT\mid t\in\BC\},&z=\infty,
+  \end{cases}
+\]
+它是 $\BC^2$ 中的一维线性子空间.
+由于
+\begin{align*}
+   \bfA(zt,t)^\rmT&
+  =\begin{pmatrix}
+    a&b\\
+    c&d
+  \end{pmatrix}\begin{pmatrix}
+    zt\\
+    t
+  \end{pmatrix}
+  =\begin{pmatrix}
+    (az+b)t\\
+    (cz+d)t
+  \end{pmatrix}\in V_{f(z)},\\
+   \bfA(t,0)^\rmT&
+  =\begin{pmatrix}
+    a&b\\
+    c&d
+  \end{pmatrix}\begin{pmatrix}
+    t\\
+    0
+  \end{pmatrix}
+  =\begin{pmatrix}
+    at\\
+    ct
+  \end{pmatrix}\in V_{f(\infty)},
+\end{align*}
+因此 $\bfA$ 将 $V_z$ 映成 $V_{f(z)}$.
+若分式线性映射 $f,g$ 分别对应矩阵 $\bfA,\bfB$, 则 $f\circ g$ 就是 $\bfA\bfB$ 所对应的分式线性映射, $f^{-1}$ 就是 $\bfA^{-1}$ 所对应的分式线性映射.
+
+\begin{example}
+  设 $f(z)=\dfrac{\ii z+1}{\ii z-1}$.
+  证明 $f\circ f\circ f$ 是恒等映射.
+\end{example}
+
+\begin{proof}
+  $f$ 对应的矩阵 $\bfA=\begin{pmatrix}
+    \ii&1\\
+    \ii&-1
+  \end{pmatrix}$.
+  由于
+  \[
+    \bfA^2=\begin{pmatrix}
+      -1+\ii&-1+\ii\\
+      -1-\ii&1+\ii
+    \end{pmatrix},\quad
+    \bfA^3=\begin{pmatrix}
+      -2-2\ii&\\
+      &-2-2\ii
+    \end{pmatrix},
+  \]
+  因此 $f\circ f\circ f$ 是恒等映射.
+\end{proof}
+
+由于分式线性映射是扩充复平面 $\BC^*$ 到自身的变换, 因此它也诱导了复球面 $S$ 上的变换.
+如果 $\bfA$ 满足 $\bfA{\ov\bfA}^\rmT=\bfE$, 我们称之为\nouns{酉矩阵}\index{youjuzhen@酉矩阵}.
+此时它具有形式
+\[
+  \bfA=\begin{pmatrix}
+    z_1&-z_2\\
+    \ov{z_2}&\ov{z_1}
+  \end{pmatrix},
+\]
+其中 $\abs{z_1}^2+\abs{z_2}^2=1$.
+它所对应的分式线性映射 $f$ 诱导了 $S$ 上的旋转变换.
+为了使该分式线性映射与其对应的四元数 $q=z_1+z_2\jj$ 表示的旋转一致, 我们重新选择 $S$ 所在空间的 $x,y,z$ 轴如\ref{fig:xyz-complex-sphere} 所示.
+那么球极投影 \ref{eq:polar-project} 变为
+\begin{align*}
+  \varphi:\BC^*&\lra S\\
+  x+y\ii&\lto\biggl(\frac{\abs{z}^2-1}{\abs{z}^2+1},\frac{2y}{\abs{z}^2+1},-\frac{2x}{\abs{z}^2+1}\biggr),\\
+  \frac{c-b\ii}{a-1}&\lto (a,b,c).
+\end{align*}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=1.2]
+      \def\a{.7}
+      \fill[cstfill1,scale=.7] (-3.65,-.804)--(-1.85,.804)--(3.65,.804)--(1.85,-.804)--cycle;
+      \filldraw[cstcurve,cstfill,fill opacity=.5] (0,0) circle (1);
+      \draw[cstdash,main] (0,0) circle (1 and 0.3);
+      \coordinate (N) at (0,1);
+      \draw[cstdash] (0,0)--(N)
+        node[above left] {$N$};
+      \draw[cstaxis] (N)--(0,1.8)
+        node[above] {$x$ 轴};
+      \draw[cstdash] (0,0)--(1,0);
+      \draw[cstaxis] (1,0)--(2,0)
+        node[right] {虚轴 ($y$ 轴)};
+      \draw[cstdash] (0,0)--({-.8*\a},{-.9*\a});
+      \draw[cstaxis] ({-.8*\a},{-.9*\a})--(-.96,-1.08)
+        node[left] {实轴};
+      \draw[cstdash] (0,0)--({.8*\a},{.9*\a});
+      \draw[cstaxis] ({.8*\a},{.9*\a})--(.96,1.08)
+        node[right] {$z$ 轴};
+    \end{scope}
+    \fill[cstdot] (N) circle;
+  \end{tikzpicture}
+  \caption{复球面所在空间的坐标系}
+  \label{fig:xyz-complex-sphere}
+\end{figure}
+
+特别地,
+\[
+  \varphi(\infty)=(1,0,0),\quad
+  \varphi(\ii)=(0,1,0),\quad
+  \varphi(-1)=(0,0,1).
+\]
+此时, 由\eqref{eq:rotation-quaternion} 定义的 $q$ 对应的 $\BR^3$ 上的旋转变换 $\Phi_q(\bfa)=q\bfa q^{-1}$ 和 $w=f(z)$ 诱导的 $S$ 上的旋转变换 $F=\varphi\circ f\circ\varphi^{-1}$ 是相同的.
+
+\begin{exampleenum}
+  \item 设 $q=\cos\dfrac\theta2+\ii\sin\dfrac\theta 2$.
+  那么 $z_1=\ee^{\frac{\ii\theta}2}, z_2=0$, 它对应的分式线性映射为
+  \[
+    w=f(z)=\ee^{\ii\theta}z.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(1,0,0),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(0,\cos\theta,\sin\theta),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(0,-\sin\theta,\cos\theta),
+  \end{align*}
+  即 $F$ 是绕 $x$ 轴逆时针旋转 $\theta$ 的变换.
+  \item 设 $q=\cos\dfrac\theta2+\jj\sin\dfrac\theta 2$.
+  那么 $z_1=\cos\dfrac\theta2, z_2=\sin\dfrac\theta2$, 它对应的分式线性映射为
+  \[
+    w=f(z)=\frac{\cos \frac\theta2 \cdot z-\sin\frac\theta2}{\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(\cos\theta,0,-\sin\theta),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(0,1,0),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(\sin\theta,0,\cos\theta),
+  \end{align*}
+  即 $F$ 是绕 $y$ 轴逆时针旋转 $\theta$ 的变换.
+  \item 设 $q=\cos\dfrac\theta2+\kk\sin\dfrac\theta 2$.
+  那么 $z_1=\cos\dfrac\theta2, z_2=\ii\sin\dfrac\theta2$, 它对应的分式线性映射为
+  \[
+    w=f(z)=\frac{\cos \frac\theta2 \cdot z-\ii \sin\frac\theta2}{-\ii\sin\frac\theta2 \cdot z+\cos\frac\theta2}.
+  \]
+  我们有
+  \begin{align*}
+      F(1,0,0)&
+    =\varphi\bigl(f(\infty)\bigr)
+    =(\cos\theta,\sin\theta,0),\\
+      F(0,1,0)&
+    =\varphi\bigl(f(\ii)\bigr)
+    =(-\sin\theta,\cos\theta,0),\\
+      F(0,0,1)&
+    =\varphi\bigl(f(-1)\bigr)
+    =(0,0,1),
+  \end{align*}
+  即 $F$ 是绕 $z$ 轴逆时针旋转 $\theta$ 的变换.
+\end{exampleenum}
+
+由于任一旋转均可分解为上述三类旋转的复合, 任一模为 $1$ 的四元数也可以分解为上述三类四元数的乘积, 因此所有酉矩阵对应的分式线性映射就对应 $S$ 的所有旋转.
+设 $\abs{z_1}^2+\abs{z_2}^2=1$.
+我们将上述讨论的对应总结成\ref{tab:fractal-transform-display}.
+
+\begin{table}[H]
+  \centering
+  \tabcolsep=3mm
+  \begin{tabular}{ccc}
+    \topcolorrule
+      \bf 表达形式&
+      \bf 作用的集合&
+      \bf 表现\\
+    \topcolorrule
+      $w=f(z)=\dfrac{z_1z-z_2}{\ov{z_2}z+\ov{z_1}}$&
+      扩充复平面 $\BC^*\ni z$&
+      分式线性映射\\
+    \midcolorrule
+      $w=f(z)=\dfrac{z_1z-z_2}{\ov{z_2}z+\ov{z_1}}$&
+      复球面 $S\ni (a,b,c)$&
+      旋转\\
+    \midcolorrule
+      酉矩阵 $\bfA=\begin{pmatrix}
+        z_1&-z_2\\
+        \ov{z_2}&\ov{z_1}
+      \end{pmatrix}$&
+      $\BC^2$ 的所有一维子空间 $V_z$&
+      线性变换\\
+    \midcolorrule
+      四元数 $q=z_1+z_2\jj$&
+      三维向量空间 $\BR^3\ni c\ii+b\jj-a\kk$&
+      旋转 $\Phi_q$\\
+    \bottomcolorrule
+  \end{tabular}
+  \caption{分式线性映射的不同表现}
+  \label{tab:fractal-transform-display}
+\end{table}
+
+
+
+\section{初等函数对应的映射}
+
+本节中我们将研究在保形映射中常用的初等函数对应的映射.
+
+\subsubsection{幂函数}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^n$} (1,0);
+    \def\r{1.5}
+    \begin{scope}[shift={({-2-\r},0)}]
+      \def\a{10}
+      \def\b{60}
+      \draw[cstaxis] (-\r,0)--(\r,0);
+      \coordinate (O);
+      \coordinate (A) at ({\r*cos(\a)},{\r*sin(\a)});
+      \coordinate (B) at ({\r*cos(\b)},{\r*sin(\b)});
+      \fill[cstcurve,main,cstfille1] (A) arc(\a:\b:\r) --(O)--cycle;
+      \draw[thick,cstra] pic [cstfill1,draw=main] {angle=A--O--B};
+      \draw[cstcurve,main] (A)--(O)--(B);
+      \draw[cstaxis] (0,-\r)--(0,\r);
+    \end{scope}
+    \begin{scope}[shift={({2+\r},0)}]
+      \def\a{30}
+      \def\b{180}
+      \draw[cstaxis] (-\r,0)--(\r,0);
+      \coordinate (O);
+      \coordinate (A) at ({\r*cos(\a)},{\r*sin(\a)});
+      \coordinate (B) at ({\r*cos(\b)},{\r*sin(\b)});
+      \fill[cstcurve,fifth,cstfille5] (A) arc(\a:\b:\r) --(O)--cycle;
+      \draw[thick,cstra] pic [cstfill5,draw=fifth] {angle=A--O--B};
+      \draw[cstcurve,fifth] (A)--(O)--(B);
+      \draw[cstaxis] (0,-\r)--(0,\r);
+    \end{scope}
+    \begin{scope}[shift={(0,-3.5)}]
+      \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^n$} (1,0);
+      \begin{scope}[shift={({-2-\r},0)}]
+        \def\b{120}
+        \draw[thick] (-\r,0)--(0,0);
+        \coordinate (O);
+        \coordinate (A) at (\r,0);
+        \coordinate (B) at ({\r*cos(\b)},{\r*sin(\b)});
+        \fill[cstcurve,main,cstfille1] (A) arc(0:\b:\r) --(O)--cycle;
+        \draw[thick,cstra] pic [cstfill1,draw=main] {angle=A--O--B};
+        \draw[cstcurve,main] (O)--(B);
+        \draw[cstaxis,cstcurve,main] (0,0)--(\r,0);
+        \draw[cstaxis] (0,-\r)--(0,\r);
+      \end{scope}
+      \begin{scope}[shift={({2+\r},0)}]
+        \coordinate (O);
+        \fill[cstcurve,fifth,cstfille5] (-\r,-\r) rectangle (\r,\r);
+        \cutline{0}{0}{\r}{0}{fifth};
+        \draw[cstaxis] (0,-\r)--(0,\r);
+        \draw[cstaxis] (-\r,0)--(\r,0);
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+  \caption{幂函数在角形区域上的映射}
+\end{figure}
+
+设 $w=f(z)=z^n$, $n\ge2$ 为正整数.
+这个函数是处处解析的, 导数为 $f'(z)=nz^{n-1}$.
+因此在 $z\neq0$ 处它是保形映射.
+对于 $z=0$, 不难看出该映射将圆周 $\abs{z}=r$ 映成圆周 $\abs{w}=r^n$, 将射线 $\Arg z=\theta$ 映成 $\Arg w=n\theta$.
+因此它将角形区域 $\theta_1<\Arg z<\theta_2$ 映成角形区域 $n\theta_1<\Arg z<n\theta_2$, 且在这两个区域上是一一对应的, 其中 $0<\theta_2-\theta_1<\dfrac{2\cpi}n$.
+所以 $w=z^n$ 在 $z=0$ 处没有保角性.
+
+幂函数 $w=z^n$ 将角形区域 $0<\Arg z<\dfrac{2\cpi}n$ 映成去掉正实轴和零的复平面 $0<\Arg z<2\cpi$, 其中 $\Arg z=0$ 被映射为 $w$ 平面正实轴的``上沿岸'', $\Arg z=\dfrac{2\cpi}n$ 被映射为 $w$ 平面正实轴的``下沿岸''.
+该映射在这两个区域上是一一对应的.
+
+对于正实数幂次情形的主值, 我们也有类似的结论.
+
+\begin{example}
+  求将角形区域 $D:\dfrac\cpi4<\arg z<\dfrac{3\cpi}4$ 映成 $\BD$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{solution}
+  由于 $D$ 的边界是两条射线, 不可能通过分式线性映射映成单位圆周, 所以不可能单纯使用分式线性映射将 $D$ 映成 $\BD$.
+  我们考虑将 $D$ 的边界映成一条直线, 那么幂函数 $s=z^2$ 就可以做到这一点, 它将 $D$ 映成左半平面 $D_s:\Re z<0$.
+  再由\thmref{例}{exam:imz-open-disk} 可知, 映射 $w=\dfrac{1+s}{1-s}$ 将 $D_s$ 映成 $\BD$.
+  故
+  \[
+    w=\frac{1+z^2}{1-z^2}
+  \]
+  就是一个符合要求的映射.
+\end{solution}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-3.5,-1)--node[below left] {$s=z^2$}(-2,-2.5);
+    \draw[cstcurve,cstnra] (1.5,-2.5)--node[below right] {$w=\dfrac{1+s}{1-s}$}(3,-1);
+    \def\w{1.5}
+    \begin{scope}[shift={(-4,0)}]
+      \def\a{45}
+      \def\b{135}
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \coordinate (O);
+      \coordinate (A) at ({\w*cos(\a)},{\w*sin(\a)});
+      \coordinate (B) at ({\w*cos(\b)},{\w*sin(\b)});
+      \fill[cstcurve,main,cstfille1] (A) arc(\a:\b:\w) --(O)--cycle;
+      \draw ({\w*.25},{\w*.5}) node[main] {$D$};
+      \draw[cstcurve,main] (A)--(O)--(B);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \def\r{1}
+      \filldraw[cstcurve,fifth,cstfill5] (0,0) circle (\r);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \fill[cstdot,fifth] (0,0) circle;
+      \draw (.5,.5) node[fifth] {$\BD$};
+    \end{scope}
+    \begin{scope}[shift={(0,-3)}]
+      \fill[cstcurve,second,cstfille2] (0,\w) rectangle (-\w,-\w);
+      \draw (-\w,-\w) node[second,above right] {$D_s$};
+      \draw[cstaxis,cstcurve,second] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{角形区域到 $\BD$ 的映射}
+\end{figure}
+
+\begin{example}
+  求将带割痕的右半平面 $D:\Re z>0, z\notin[0,1]$ 映成右半平面 $D':\Re w>0$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-4.5,-1.5) to[bend right=30] node[left] {$s=z^2$} (-4.5,-3.5);
+    \draw[cstcurve,cstnra] (-.8,-3.5)-- node[above] {$t=s-1$} (.8,-3.5);
+    \draw[cstcurve,cstnra] (4.5,-3.5) to[bend right=30] node[right] {$w=\sqrt{t}$}(4.5,-1.5);
+    \def\w{1.5}
+    \begin{scope}[shift={(-4,0)}]
+      \fill[cstcurve,main,cstfille1] (0,-\w) rectangle (\w,\w);
+      \draw (\w,\w) node[main,below left] {$D$};
+      \draw[cstaxis,cstcurve,main] (0,-\w)--(0,\w);
+      \cutline{.6}{0}{.6}{180}{main};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \fill[cstcurve,fifth,cstfille5] (0,-\w) rectangle (\w,\w);
+      \draw (\w,\w) node[fifth,below left] {$D'$};
+      \draw[cstaxis,cstcurve,fifth] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+    \begin{scope}[shift={(-2.5,-3.5)}]
+      \coordinate (A) at (0,\w);
+      \coordinate (B) at (0,{-\w});
+      \fill[cstfille2] (-\w,-\w) rectangle (\w,\w);
+      \draw (\w,\w) node[second,below left] {$D_s$};
+      \cutline{.6}{0}{\w+.6}{180}{second};
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+    \begin{scope}[shift={(2.5,-3.5)}]
+      \def\w{1.5}
+      \coordinate (A) at (0,{\w});
+      \coordinate (B) at (0,{-\w});
+      \fill[cstfille2] (-\w,-\w) rectangle (\w,\w);
+      \draw (\w,\w) node[second,below left] {$D_t$};
+      \cutline{0}{0}{\w}{180}{second};
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+  \end{tikzpicture}
+  \caption{带割痕的右半平面到右半平面的映射}
+\end{figure}
+
+\begin{solution}
+  处理割痕的核心想法是将割痕两侧与虚轴的夹角展平.
+  首先 $s=z^2$ 将 $D$ 映成复平面带割痕 $z\le 1$ 的区域 $D_s$.
+  然后 $t=s-1$ 将 $D_s$ 映成复平面带割痕 $z\le 0$ 的区域 $D_t$.
+  最后 $w=\sqrt t$ (取主值) 将 $D_t$ 映成右半平面.
+  所以
+  \[
+    w=\sqrt{z^2-1}
+  \]
+  就是一个符合要求的映射.
+\end{solution}
+
+
+\begin{exercise}
+  通过哪些映射的复合可以将带正实轴割痕的单位圆域 $D$ 映成上半平面 $\BH$?
+\end{exercise}
+
+\subsection{指数函数}
+
+设 $w=f(z)=\ee^z$ 为指数函数.
+由于 $w'=\ee^z$ 处处非零, 因此它是整个复平面上的保形映射.
+指数函数将直线族 $\Re z=c$ 映成圆周族 $\abs{w}=\ee^c$, 将直线族 $\Im z=c$ 映成射线族 $\Arg w=c$.
+所以它将水平带状区域 $\theta_1<\Im z<\theta_2$ 映成角形区域 $\theta_1<\Arg w<\theta_2$, 其中 $0<\theta_2-\theta_1<2\cpi$.
+特别地, 它将 $0<\Im z<2\cpi$ 映成去掉正实轴和零的复平面.
+
+若我们想求反过来的映射, 则选取对数函数.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=\ee^z$} (1,0);
+    \def\w{1.5}
+    \begin{scope}[shift={({-2-\w},0)}]
+      \def\a{.2}
+      \def\b{.8}
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \fill[cstfille1] (-\w,\a) rectangle(\w,\b);
+      \draw[cstcurve,main] (-\w,\a) rectangle(\w,\a);
+      \draw[cstcurve,main] (-\w,\b) rectangle(\w,\b);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+    \end{scope}
+    \begin{scope}[shift={({2+\w},0)}]
+      \def\a{36}
+      \def\b{144}
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \coordinate (O);
+      \coordinate (A) at ({\w*cos(\a)},{\w*sin(\a)});
+      \coordinate (B) at ({\w*cos(\b)},{\w*sin(\b)});
+      \fill[cstcurve,fifth,cstfille5] (A) arc(\a:\b:\w) --(O)--cycle;
+      \draw[thick,cstra] pic [cstfill5,draw=fifth] {angle=A--O--B};
+      \draw[cstcurve,fifth] (A)--(O)--(B);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+    \end{scope}
+    \begin{scope}[shift={(0,{-2-\w})}]
+      \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=\ee^z$} (1,0);
+      \begin{scope}[shift={({-2-\w},0)}]
+        \def\a{-1}
+        \def\b{1}
+        \fill[cstfille1] (-\w,\a) rectangle(\w,\b);
+        \draw[cstcurve,main] (-\w,\a) rectangle(\w,\a);
+        \draw[cstcurve,main] (-\w,\b) rectangle(\w,\b);
+        \draw[cstaxis] (0,-\w)--(0,\w);
+        \draw[cstaxis] (-\w,0)--(\w,0);
+      \end{scope}
+      \begin{scope}[shift={({2+\w},0)}]
+        \coordinate (O);
+        \fill[cstcurve,fifth,cstfille5] (-\w,-\w) rectangle (\w,\w);
+        \cutline{0}{0}{\w}{180}{fifth};
+        \draw[cstaxis] (0,-\w)--(0,\w);
+        \draw[cstaxis] (-\w,0)--(\w,0);
+      \end{scope}
+    \end{scope}
+  \end{tikzpicture}
+  \caption{指数函数在带状区域上的映射}
+\end{figure}
+
+\begin{example}
+  求将竖直带状区域 $D:1<\Re z<2$ 映成单位圆域 $\BD$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{solution}
+  我们先将竖直带状区域映成宽度为 $\cpi$ 的水平带状区域, 然后利用指数函数将其映成半平面, 最后再映成圆域.
+  由于 $s=\cpi\ii z$ 将 $D$ 映成
+  \[
+    D_s:\cpi<\Im s<2\cpi,
+  \]
+  $t=-\ee^s$ 将 $D_s$ 映成上半平面 $\BH$, $w=\dfrac{t-\ii}{t+\ii}$ 将 $\BH$ 映成 $\BD$, 因此
+  \[
+    w=\frac{\ee^{\cpi\ii z}+\ii}{\ee^{\cpi\ii z}-\ii}
+  \]
+  将 $D$ 映成 $\BD$.
+\end{solution}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\w{1.5}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-5,-1.5) to[bend right=30] node[left] {$s=\cpi\ii z$}(-4,-3);
+    \draw[cstcurve,cstnra] (-1,-4) to[bend right=30] node[below] {$t=-\ee^s$}(1,-4);
+    \draw[cstcurve,cstnra] (4,-3) to[bend right=30] node[right] {$w=\dfrac{t-\ii}{t+\ii}$}(5,-1.5);
+    \begin{scope}[shift={(-4,0)}]
+      \def\a{.5}
+      \def\b{1}
+      \fill[cstfille1] (\a,-\w) rectangle(\b,\w);
+      \draw[cstcurve,main] (\a,-\w) rectangle(\a,\w);
+      \draw[cstcurve,main] (\b,-\w) rectangle(\b,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw ({(\a+\b)*.5},\w) node[main,below] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \def\r{1}
+      \filldraw[cstcurve,fifth,cstfill5] circle (\r);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (.7,.7) node[fifth,below left] {$\BD$};
+    \end{scope}
+    \begin{scope}[shift={(-2,-3.5)}]
+      \def\a{.65}
+      \def\b{1.3}
+      \fill[cstfille2] (-\w,\a) rectangle(\w,\b);
+      \draw[cstcurve,second] (-\w,\a) rectangle(\w,\a);
+      \draw[cstcurve,second] (-\w,\b) rectangle(\w,\b);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,{(\a+\b)*.5}) node[second,left] {$D_s$};
+    \end{scope}
+    \begin{scope}[shift={(2,-3.5)}]
+      \fill[cstcurve,second,cstfille2] (-\w,\w) rectangle (\w,0);
+      \draw[cstaxis,cstcurve,second] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$\BH$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{竖直带状区域到 $\BD$ 的映射}
+\end{figure}
+
+\begin{example}
+  求将带割痕的水平带状区域 $D:0<\Re z<2a, z-a\ii\notin(-\infty,b]$ 映成水平带状区域 $D':0<\Re z<2a$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\w{1.5}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-5,-1) to[bend right=30] node[left] {$s=\ee^{\frac\cpi a z}$}(-5,-3);
+    \draw[cstcurve,cstnra] (-1,-3.5)--node[above] {$t=s+\ee^{\frac{b\cpi}a}$}(1,-3.5);
+    \draw[cstcurve,cstnra] (5,-3) to[bend right=30] node[right] {$w=\dfrac a\cpi\ln t$}(5,-1);
+    \begin{scope}[shift={(-4,0)}]
+      \def\b{1.2}
+      \fill[cstfille1] (-\w,0) rectangle(\w,\b);
+      \draw[cstcurve,main] (-\w,0) rectangle(\w,0);
+      \draw[cstcurve,main] (-\w,\b) rectangle(\w,\b);
+      \cutline{.3*\w}{.5*\b}{1.3*\w}{180}{main};
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (\w,\b) node[main,below left] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \def\b{1.2}
+      \fill[cstfille5] (-\w,0) rectangle(\w,\b);
+      \draw[cstcurve,fifth] (-\w,\b)--(\w,\b);
+      \draw[cstaxis,cstcurve,fifth] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\b) node[fifth,below left] {$D'$};
+    \end{scope}
+    \begin{scope}[shift={(-3,-3.5)}]
+      \fill[cstfille2] (-\w,-\w) rectangle(\w,\w);
+      \cutline{-.3*\w}{0}{1.3*\w}{0}{second};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$D_s$};
+    \end{scope}
+    \begin{scope}[shift={(3,-3.5)}]
+      \fill[cstfille2] (-\w,-\w) rectangle(\w,\w);
+      \cutline{0}{0}{\w}{0}{second};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$D_t$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{带割痕的水平带状区域到水平带状区域的映射}
+\end{figure}
+
+\begin{solution}
+  我们先通过指数映射将带割痕的水平带状区域映成带割痕的复平面, 其中割痕的像落在实轴上.
+  然后将割痕移动为正实轴, 最后利用对数函数再映成水平带状区域.
+  由于 $s=\ee^{\frac\cpi a z}$ 将 $D$ 映成
+  \[
+    D_s: s\notin[-\ee^{\frac{b\cpi}a},+\infty),
+  \]
+  $t=s+\ee^{\frac{b\cpi}a}$ 将 $D_s$ 映成
+  \[
+    D_t: t\notin[0,+\infty),
+  \]
+  $w=\dfrac a\cpi\ln t$ 将 $D_t$ 映成 $D'$, 因此
+  \[
+    w=\frac a\cpi\ln\bigl(\ee^{\frac\cpi a z}+\ee^{\frac{b\cpi}a}\bigr)
+  \]
+  将 $D$ 映成 $D'$.
+\end{solution}
+
+
+\subsection{儒可夫斯基函数}
+
+称函数
+\[
+  w=f(z)=\frac12\Bigl(z+\frac{a^2}z\Bigr),\quad a>0,
+\]
+为\nouns{儒可夫斯基函数}\index{rukefusijihanshu@儒可夫斯基函数}\index{0fz12za2z@$f(z)=\dfrac12\Bigl(z+\dfrac{a^2}z\Bigr)\smallskip$}.
+它在 $0$ 以外处处解析, $0$ 是它的一个一阶极点.
+由于
+\[
+  f'(z)=\dfrac12\Bigl(1-\dfrac{a^2}{z^2}\Bigr),
+\]
+因此它在 $z\neq 0,\pm a$ 处是保形映射.
+
+不难知道 $f(z_1)=f(z_2)$ 当且仅当 $z_1z_2=a^2$.
+所以 $w=f(z)$ 将圆域 $\abs{z}<a$ 一一地映射到它的像, 且和 $\abs{z}>a$ 的像相同.
+若 $z=a\ee^{\ii\theta}$, 则 $w=a\cos\theta\in[-a,a]$.
+所以它将圆周 $\abs{z}=a$ 映成直线段 $[-a,a]$.
+反过来, 对于 $w=a\cos\theta\in[-a,a]$, 根据上述讨论, 它的原像只能是 $a\ee^{\pm\ii\theta}$.
+所以 $w=f(z)$ 将\alert{圆域 $\abs{z}<a$ 映成扩充复平面去掉割痕 $[-a,a]$}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\a{.5}
+    \def\b{1.5}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=\ee^z$} (1,0);
+    \begin{scope}[shift={(-4,0)}]
+      \filldraw[cstcurve,main,fill=main!55] circle (\a*\b*\b*\b);
+      \filldraw[cstcurve,main,fill=main!35] circle (\a*\b*\b);
+      \filldraw[cstcurve,main,fill=main!15] circle (\a*\b);
+      \filldraw[cstcurve,main,fill=white] circle (\a);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[thick,main,cstra] (0,0)--({\a*cos(30)},{\a*sin(30)});
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \coordinate (O);
+      \filldraw[cstcurve,fifth,fill=fifth!55] circle ({.5*\b*\b*\b+.5/\b/\b/\b} and {.5*\b*\b*\b-.5/\b/\b/\b});
+      \filldraw[cstcurve,fifth,fill=fifth!35] circle ({.5*\b*\b+.5/\b/\b} and {.5*\b*\b-.5/\b/\b});
+      \filldraw[cstcurve,fifth,fill=fifth!15] circle ({.5*\b+.5/\b} and {.5*\b-.5/\b});
+      \draw[cstaxis] (-2.3,0)--(2.3,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw[cstcurve,fifth] (-1,0)--(1,0);
+      \fill[cstdot,fifth] (1,0) circle;
+      \fill[cstdot,fifth] (-1,0) circle;
+    \end{scope}
+  \end{tikzpicture}
+  \caption{儒可夫斯基函数在圆环域上的映射}
+\end{figure}
+
+我们来看其它半径的圆 $\abs{z}=r\neq a$ 的像. 
+设 $s=\dfrac{a^2}r$, $z=r\ee^{\ii\theta}$, 则
+\[
+  w=f(z)=\frac12(r\ee^{\ii\theta}+s\ee^{-\ii\theta})
+  =\frac{r+s}2 \cos \theta+\frac{r-s}2\ii\sin\theta.
+\]
+这是椭圆的参数方程, 所以圆周 $\abs{z}=r\neq a$ 和 $\abs{z}=\dfrac{a^2}r$ 被映成一个椭圆.
+对于 $\theta\in(0,\cpi)$, 当 $r<a$ 时, $r<s$, 从而 $w$ 在下半平面.
+因此圆周 $\abs{z}=r<a$ 上半部分被映成椭圆的下半部分.
+所以 $w=f(z)$ 将\alert{圆域 $\abs{z}<a$ 的下半部分或圆域 $\abs{z}>a$ 的上半部分映成上半平面 $\BH$}.
+
+\begin{example}
+  求上半圆域 $D: \abs{z}<1,\Im z>0$ 映成单位圆域 $\BD$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\w{1.5}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-3,-1)--node[below left] {$s=-\dfrac12\Bigl(z+\dfrac1z\Bigr)$}(-2,-2);
+    \draw[cstcurve,cstnra] (2,-2)--node[below right] {$w=\dfrac{s-\ii}{s+\ii}$}(3,-1);
+    \begin{scope}[shift={(-4,0)}]
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \filldraw[cstcurve,main,cstfill1] (1,0) arc(0:180:1) --cycle;
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (.7,.7) node[main,below left] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \filldraw[cstcurve,fifth,cstfill5] (0,0) circle (1);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \fill[cstdot,fourth] (0,0) circle;
+      \draw (.7,.7) node[fifth,below left] {$\BD$};
+    \end{scope}
+    \begin{scope}[shift={(0,-2.5)}]
+      \fill[cstcurve,second,cstfille2] (-\w,\w) rectangle (\w,0);
+      \draw[cstaxis,cstcurve,second] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$\BH$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{上半圆域到 $\BD$ 的映射}
+\end{figure}
+
+\begin{solution}
+  注意到
+  \[
+    s=-\frac12\Bigl(z+\frac1z\Bigr)
+  \]
+  将 $D$ 映成 $\BH$, 分式线性映射
+  \[
+    w=\frac{s-\ii}{s+\ii}
+  \]
+  将 $\BH$ 映成 $\BD$.
+  因此
+  \[
+    w=\frac{s-\ii}{s+\ii}
+    =\frac{z^2+2\ii z+1}{z^2-2\ii z+1}
+  \]
+  将 $D$ 映成 $\BD$.
+\end{solution}
+
+\begin{example}
+  求上将半平面去掉半圆 $\abs{z}\le 1,\Im z>0$ 和射线 $x=0,y\ge 2$ 的区域 $D$ 映成上半平面 $\BH$ 的映射 $w=f(z)$.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\w{1.5}
+    \def\r{.5}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \draw[cstcurve,cstnra] (-3.5,-.7)--node[left,shift={(0,.1)}] {$s=\dfrac12\Bigl(z+\dfrac1z\Bigr)$}(-4.5,-2.3);
+    \draw[cstcurve,cstnra] (-3.7,-4)--node[below,shift={(-.1,0)}] {$t=s^2$}(-1.7,-4);
+    \draw[cstcurve,cstnra] (1.7,-4)--node[below] {$p=1+\dfrac9{16t}$}(3.7,-4);
+    \draw[cstcurve,cstnra] (4.5,-2.3)--node[right] {$w=\sqrt p$}(3.5,-.7);
+    \begin{scope}[shift={(-3,0)}]
+      \fill[cstfille1] (-\w,0)--
+        (-\r,0) arc (180:0:\r)--
+        (\w,0)--(\w,\w)--(-\w,\w)--cycle;
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstcurve,main] (-\w,0)--(-\r,0) arc (180:0:\r)--(\w,0);
+      \draw[cstaxis,cstcurve,main] (\r,0)--(\w,0);
+      \cutline{0}{2*\r}{\w-2*\r}{90}{main};
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[main,below left] {$D$};
+    \end{scope}
+    \begin{scope}[shift={(-5.4,-4)}]
+      \fill[cstfille2] (-\w,0) rectangle (\w,\w);
+      \cutline{0}{.75*\r}{\w-.75*\r}{90}{second};
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis,cstcurve,second] (-\w,0)--(\w,0);
+      \draw (\w,\w) node[second,below left] {$D_s$};
+    \end{scope}
+    \begin{scope}[shift={(0,-4)}]
+      \fill[cstfille2] (-\w,-\w) rectangle (\w,\w);
+      \cutline{0}{0}{\w}{0}{second};
+      \cutline{-9/16*\w}{0}{7/16*\w}{180}{second};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$D_t$};
+    \end{scope}
+    \begin{scope}[shift={(5.4,-4)}]
+      \fill[cstfille2] (-\w,-\w) rectangle (\w,\w);
+      \cutline{0}{0}{\w}{0}{second};
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[second,below left] {$D_p$};
+    \end{scope}
+    \begin{scope}[shift={(3,0)}]
+      \fill[cstfille5] (-\w,0) rectangle (\w,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw[cstcurve,fifth] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (\w,\w) node[fifth,below left] {$\BH$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{去掉半圆的带割痕上半平面到 $\BH$ 的映射}
+\end{figure}
+
+\begin{solutionenum}
+  \item 儒可夫斯基映射
+  \[
+    s=\frac12\Bigl(z+\frac1z\Bigr)
+  \]
+  将上半单位圆周映成线段 $[-1,1]$, 将 $\BH$ 在单位圆外部的区域映成 $\BH$, 所以 $D$ 被映成带割痕的上半平面
+  \[
+    D_s: z\in\BH, z\notin\bigsetm{z}{\Re z=0,\Im z\ge \dfrac34}.
+  \]
+  \item 映射
+  \[
+    t=s^2
+  \]
+  将 $D_s$ 映成带两条割痕的复平面
+  \[
+    D_t: z\notin (-\infty,-\dfrac9{16}]\cup[0,+\infty).
+  \]
+  \item 由于两条射线交于 $\infty$, 通过分式线性映射可以把它们映成一条射线.
+  取
+  \begin{alignat*}{3}
+    z_1&=-\dfrac9{16},\quad&
+    z_2&=0,&
+    z_3&=\infty,\\
+    w_1&=0,&
+    w_2&=\infty,\quad&
+    w_3&=1,
+  \end{alignat*}
+  则对应分式线性映射为
+  \[
+    p=\frac{t+\dfrac9{16}}t=1+\frac9{16t},
+  \]
+  它将 $D_t$ 映成 $D_p:z\notin[0,+\infty)$.
+  \item 最后, $w=\sqrt p$ 将 $D_p$ 映成 $\BH$.
+  故
+  \[
+    w=\sqrt{1+\frac9{4(z+1/z)^2}}
+    =\frac{\sqrt{4z^4+17z^2+4}}{2(z^2+1)}.
+  \]
+\end{solutionenum}
+
+此外, 儒可夫斯基映射还可以与指数函数复合得到正弦、余弦、双曲正弦、双曲余弦等映射.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\w{1.5}
+    \def\u{.8}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above=1mm] {$w=\ch z$} (1,0);
+    \begin{scope}[shift={(-3,0)}]
+      \fill[cstfille1] (0,0) rectangle (\w,\u);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstcurve,main] (\w,0)--(0,0)--(0,\u)--(\w,\u);
+      \draw[thick] (-\w,0)--(0,0);
+      \draw[cstaxis,cstcurve,main] (0,0)--(\w,0);
+      \draw (\w,\u) node[main,below left] {$D$};
+      \draw (0,1) node[left] {$\cpi$};
+    \end{scope}
+    \begin{scope}[shift={(3,0)}]
+      \fill[cstfille2] (-\w,0) rectangle (\w,\w);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis,cstcurve,second] (-\w,0)--(\w,0);
+      \draw (\w,\w) node[second,below left] {$\BH$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{半个带状区域到 $\BH$ 的映射}
+\end{figure}
+
+\begin{exercise}
+  正弦函数 $w=\sin z$ 将半个带状区域 $D:-\dfrac\cpi2<\Re z<\dfrac\cpi 2, \Im z<0$ 映成什么?
+\end{exercise}
+
+
+
+\section{保形映射在标量场的应用 \optional}
+
+用保形映射可以求出很多平面场的分布.
+我们来看几个例子.
+
+\begin{example}
+  两块半无穷大的金属板连成一块无穷大的板, 连接处绝缘.
+  设两部分的电势分别为 $v_1$ 和 $v_2$, 求金属板上的电势分布.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)--(1,0)
+      node[midway, above] {$w=f(z)$};
+    \def\w{2}
+    \def\d{.2}
+    \begin{scope}[shift={(-4,0)}]
+      \draw[decorate,decoration={brace,amplitude=5},cstfill5] (\w,0)--(0,0);
+      \draw[decorate,decoration={brace,amplitude=5},cstfill2] (0,0)--(-\w,0);
+      \fill[cstfille1] (-\w,0) rectangle (\w,\w);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstcurve,second] (-\w,0)--(0,0);
+      \draw[cstaxis,cstcurve,fifth] (0,0)--(\w,0);
+      \draw ({.5*\w},0) node[below=2mm,fifth] {$v_1$}
+        ({-.5*\w},0) node[below=2mm,second] {$v_2$};
+      \foreach \i in {2,4,6,8}{
+        \draw[cstaxis,main] ({\d*\i},0) arc (0:180:{\d*\i});
+      }
+      \draw (\w,\w) node[main,below left] {$\BH$};
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \def\a{.6}
+      \def\b{1.4}
+      \fill[cstfill1] (-\w,\a) rectangle (\w,\b);
+      \draw[cstcurve,fifth] (-\w,\a)--(\w,\a);
+      \draw[cstcurve,second] (-\w,\b)--(\w,\b);
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw (-\w,\a) node[left,fifth] {$v_1$}
+        (-\w,\b) node[left,second] {$v_2$};
+      \foreach \i in {-7,-5,...,7}{
+        \draw[cstaxis,main] ({\d*\i},\a)--({\d*\i},\b);
+      }
+      \draw (\w,{\a*.5+\b*.5}) node[main,left] {$D$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{电流分布}
+\end{figure}
+
+\begin{solution}
+  由于金属板是无限长的, 所以在垂直于金属板和连接线的平面上, 场的分布情况完全相同, 因此这个静电场是一个平面场.
+  以金属板在该平面的投影为实轴, 连接处为原点建立坐标系.
+  设 $v_1,v_2$ 分别为正半实轴和负半实轴的电势.
+
+  若保形映射 $w=f(z)$ 将上半平面 $\BH$ 映射为水平带状区域 
+  \[
+    D:v_1<\Im w<v_2,
+  \]
+  且将正半实轴和负半实轴分别映成 $\Im w=v_1$ 和 $\Im w=v_2$, 则从 $D$ 上的电势分布 $v=\Im w$ 就可以得到 $\BH$ 上的电势分布.
+  映射
+  \[
+    s=\ln z
+  \]
+  将 $\BH$ 映成水平带状区域 $0<\Im s<\cpi$, 然后映射
+  \[
+    w=\dfrac{v_2-v_1}\cpi s+v_1
+  \]
+  将其映成水平带状区域 $v_1<\Im w<v_2$.
+  所以
+  \[
+    w=\dfrac{v_2-v_1}\cpi \ln z+\ii v_1,
+  \]
+  $\BH$ 的电势分布为
+  \[
+    v=\Im\Bigl(\dfrac{v_2-v_1}\cpi \ln z+\ii v_1\Bigr)
+    =\dfrac{v_2-v_1}\cpi \arg z+v_1.
+  \]
+  由对称性可知金属板外的电势分布为
+  \[
+    v=\dfrac{v_2-v_1}\cpi \abs{\arg z}+v_1.
+  \]
+\end{solution}
+
+\begin{example}
+  有一个圆形薄金属板, 上下用两个热绝缘材料完全包裹.
+  若金属板边界上两个半圆周上的温度分别为 $T_1,T_2$, 求金属板上的温度分布.
+\end{example}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=f(z)$} (1,0);
+    \def\gd{5}
+    \def\w{1.7}
+    \begin{scope}[shift={(-4,0)}]
+      \def\r{1.6}
+      \fill[cstcurve,cstfill1] circle (\r);
+      \draw[cstcurve,second] (\r,0) arc (0:-180:\r);
+      \draw[cstcurve,fifth] (\r,0) arc (0:180:\r);
+      \draw ({\r*.707},{\r*.707}) node[main,above right] {$\BD$};
+      \draw[thick] (-2,0)--(-\r,0);
+      \draw[cstaxis] (\r,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \foreach \i in {22.5,45,67.5}{
+        \draw[cstdash, main] (-\r,0) arc ({90+\i}:{90-\i}:{\r/sin(\i)});
+        \draw[cstdash, main] (-\r,0) arc ({-90-\i}:{-90+\i}:{\r/sin(\i)});
+      }
+      \draw[cstdash, main] (-\r,0)--(\r,0);
+      \draw
+        node[above left=\r,fifth] {$T_1$}
+        node[below left=\r,second] {$T_2$};
+      \filldraw[cstdote] (\r,0) circle;
+      \filldraw[cstdote] (-\r,0) circle;
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \def\a{.25}
+      \def\b{1.4}
+      \fill[cstfill1] (-\w,\a) rectangle (\w,\b);
+      \draw[cstcurve,fifth] (-\w,\a)--(\w,\a);
+      \draw[cstcurve,second] (-\w,\b)--(\w,\b);
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \draw (-\w,\a) node[fifth,left] {$T_1$}
+        (-\w,\b) node[second,left] {$T_2$};
+      \foreach \i in {1,2,...,7}{
+        \draw[cstdash, main] (-\w,{\a+\i/8*(\b-\a)})--(\w,{\a+\i/8*(\b-\a)});
+      }
+      \draw (\w,\b) node[main,below right] {$D$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{等温线}
+\end{figure}
+
+\begin{solution}
+  由于金属板上下热绝缘, 因此热流被严格限制在金属板内, 这个温度分布是一个平面场.
+  设金属板的半径为 $1$, 以金属板的圆心为原点建立直角坐标系, 使得上下半圆周的温度分别为 $T_1,T_2$.
+
+  若保形映射 $w=f(z)$ 将单位圆域 $\BD$ 映射为水平带状区域 
+  \[
+    D:T_1<\Im w<T_2,
+  \]
+  且将上下半圆周分别映成 $\Im w=T_1$ 和 $\Im w=T_2$, 则从 $D$ 上的温度分布 $T=\Im w$ 就可以得到 $\BD$ 的温度分布.
+  映射
+  \[
+    s=\ii\dfrac{1-z}{1+z}
+  \]
+  将 $\BD$ 映成 $\BH$, 然后映射
+  \[
+    w=\dfrac{T_2-T_1}\cpi \ln s+T_1
+  \]
+  将其映成水平带状区域 $D$.
+  所以
+  \[
+    w=\dfrac{T_2-T_1}\cpi \ln \Bigl(\ii\frac{1-z}{1+z}\Bigr)+\ii T_1,
+  \]
+  $\BD$ 的温度分布为
+  \[
+    T=\Im\biggl(\dfrac{T_2-T_1}\cpi \ln \Bigl(\ii\frac{1-z}{1+z}\Bigr)+\ii T_1\biggr)
+    =T_1+\frac{T_2-T_1}\cpi \arccot\frac{2y}{1-x^2-y^2}.
+  \]
+\end{solution}
+
+
+\newpage
+\psection{本章小结}
+
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 理解保形映射的定义.
+  \begin{conclusion}
+    \item 区域上的保形映射是一一的保角映射.
+    \item 点 $z$ 处的保角映射是指经过 $z$ 的两条曲线的夹角和它们的像的夹角是相同的, 且角度的方向也相同; 而且 $z$ 附近的点具有相同的伸缩率.
+    \item 区域上的保角映射就是导数非零的解析函数.
+    \item 与 $\infty$ 有关的保角映射需要通过倒数映射将其转化为 $0$ 来讨论.
+  \end{conclusion}
+  \item 掌握分式线性映射的性质和构造方式.
+  \begin{conclusion}
+    \item 分式线性映射将圆周或直线 $C$ 映成圆周或直线 $C'$.
+    \item 分式线性映射将关于 $C$ 的对称点映成关于 $C'$ 的对称点.
+    \item 分式线性映射将圆域或半平面映成圆域或半平面.
+    \item 平面上三个不同的点以及它们的像可以唯一确定一个分式线性映射:
+    \[
+       \frac{w-w_1}{w-w_2}\cdot\frac{w_3-w_2}{w_3-w_1}
+      =\frac{z-z_1}{z-z_2}\cdot\frac{z_3-z_2}{z_3-z_1}.
+    \]
+    \item 构造分式线性映射选择三个点时, 先选择圆周或直线的交点, 或者关于圆周或直线的对称, 最后再选择其它边界点, 并根据区域所处位置确定三个点的顺序.
+  \end{conclusion}
+  \item 掌握幂函数、指数函数和儒可夫斯基函数所对应的映射特点.
+  \begin{conclusion}
+    \item 幂函数可以将角形区域映成角形区域, 并改变它的夹角大小.
+    特别地, 半平面可以看作夹角为 $\cpi$ 的角形区域, 带射线割痕的复平面可以看作夹角为 $2\cpi$ 的角形区域.
+    \item 指数函数可以将带状区域映成角形区域, 对数函数则是反过来.
+    \item 儒可夫斯基函数可以将下半圆域映成 $\BH$, 也可以把上半平面挖去上半圆周映成 $\BH$.
+  \end{conclusion}
+  \item 会利用上述函数构造简单的单连通区域间的保形映射.
+  \begin{conclusion}
+    \item 单连通区域之间总存在共性映射, 但一般情形往往很难构造.
+    \item 不同的单连通区域之间可以通过上半平面 $\BH$ 或单位圆域 $\BD$ 为中介来构造映射.
+  \end{conclusion}
+\end{conclusion}
+
+本章中不易理解的概念和难点包括:
+\begin{enuma}
+  \item 保角映射和保形映射的差异: 保形映射是一一的保角映射, 这是为了保证区域间的映射可逆.
+  \item 与 $\infty$ 相关的保形映射: 作变量替换 $t=\dfrac1z$ 或 $s=\dfrac1w$ 来将其转化为普通复数情形的保形映射.
+  \item 利用\thmref{定理}{thm:three-points-determine-fractal-transform} 构造分式线性映射时, 需要根据区域在圆周内部还是外部、直线的哪一侧来确定三点的顺序.
+  \item 带割痕的区域的处理, 需要使用幂函数将割痕与边界合并.
+  \item 儒可夫斯基函数在处理带半圆边界的半平面中的应用.
+\end{enuma}
+
+
+\psection{本章作业}
+\begin{homework}
+  \item 单选题.
+  \begin{homework}
+    \item 保形映射总能保持区域内图形的\fillbrace{}.
+    \begin{exchoice}(4)
+      \item 面积
+      \item 周长
+      \item 夹角和方向
+      \item 对称性
+    \end{exchoice}
+    \item 下列命题正确的是\fillbrace{}.
+    \begin{exchoice}(1)
+      \item 若 $w=f(z)$ 是区域 $D$ 内的解析函数, 且导数处处非零, 则它是 $D$ 上的保形映射.
+      \item 若 $w=f(z)$ 是区域 $D$ 内的解析函数, 且导数处处非零, 则它是 $D$ 上的一一对应.
+      \item 若 $w=f(z)$ 是区域 $D$ 内的解析函数, 且导数处处非零, 则它是 $D$ 上的保角映射.
+      \item 若 $w=f(z)$ 在 $z_0$ 处解析且 $f'(z_0)\neq0$, 则它是 $z_0$ 处的保形映射.
+    \end{exchoice}
+    \item 分式线性映射总是\fillbrace{}.
+    \begin{exchoice}(1)
+      \item 将圆和直线都映射为圆
+      \item 将圆和直线都映射为直线
+      \item 将圆映射为圆或直线
+      \item 将关于直线对称的点映射为关于直线对称的点
+    \end{exchoice}
+    \item 若\fillbrace{}, 且分式线性映射 $w=f(z)$ 将 $z_1,z_2,z_3$ 映成 $w_1,w_2,w_3$, 则它将单位圆映成上半平面.
+    \begin{exchoice}(1)
+      \item $z_1=1,z_2=\ii,z_3=-\ii$, $w_1=-1,w_2=0,w_3=\infty$
+      \item $z_1=1,z_2=-\ii,z_3=-1$, $w_1=-1,w_2=0,w_3=1$
+      \item $z_1=1,z_2=\ii,z_3=-1$, $w_1=1,w_2=0,w_3=\infty$
+      \item $z_1=1,z_2=-1,z_3=-\ii$, $w_1=1,w_2=0,w_3=-1$
+    \end{exchoice}
+    \item \fillbrace{}可以将角形区域映成角形区域.
+    \begin{exchoice}(2)
+      \item 分式线性映射
+      \item 幂函数
+      \item 指数函数
+      \item 儒可夫斯基函数
+    \end{exchoice}
+    \item 儒可夫斯基函数可以将以原点为圆心的圆周映成\fillbrace{}.
+    \begin{exchoice}(4)
+      \item 直线段
+      \item 圆周
+      \item 椭圆
+      \item 直线段或椭圆
+    \end{exchoice}
+  \end{homework}
+  \item 填空题.
+  \begin{homework}
+    \item 若分式线性映射 $w=f(z)$ 将上半平面映成单位圆域, 且 $f(\ii)=2$, 则 $f(-\ii)=$\fillblank[7mm]{}.
+    \item 若分式线性映射 $w=f(z)$ 将单位圆域映成右半平面, 且 $f(0)=1$, 则 $f(\infty)=$\fillblank[7mm]{}.
+    \item 若 $w=f(z)$ 将角形区域 $0<\arg z<\dfrac\cpi6$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
+    \item 若 $w=f(z)$ 将水平带状区域 $0<\Im z<\cpi$ 共形映射到上半平面, 则 $f(z)$ 可以是\fillblank{}.
+  \end{homework}
+  \item 计算题.
+  \begin{homework}
+    \item 求以下区域在相应映射下的像.
+    \begin{subhomework}(2)
+      \item $\Re z<0, w=(1-\ii)z+\ii$;
+      \item $\Im z>0, w=z-1-\ii$;
+      \item $0<\Re z<1, w=\dfrac1{z-1}$;
+      \item $\abs{z-1}<1, w=\dfrac z{z+1}$;
+      \item $\dfrac\cpi2<\arg z<\cpi, w=\sqrt z$ (主值);
+      \item $1<\Re z<2, w=\ee^z$;
+      \item $\abs{z}>1, \Im z>0, w=z+\dfrac 2z$;
+      \item $\abs{z}<1, \Im z<0, w=z+\dfrac 2z$.
+    \end{subhomework}
+    \item 求将 $-1,\infty,\ii$ 分别映成下列各点的分式线性映射.
+    \begin{subhomework}(4)
+      \item $\ii,1,1+\ii$;
+      \item $1,\ii,\infty$;
+      \item $0,\infty,1$;
+      \item $\infty,-1,\ii$.
+    \end{subhomework}
+    \item 求扩充复平面上 $\abs{z}>1$ 到单位圆域 $\BD$ 且满足
+    \[
+      w\Bigl(\frac12\Bigr)=0,\quad
+      \arg w'\Bigl(\frac12\Bigr)=\cpi.
+    \]
+    的保形映射 $w=f(z)$.
+    \item 求 $1<\abs{z}<2$ 到 $\abs{w}>1, \abs{w+1}<\dfrac{4\sqrt3}3$ 的保形映射 $w=f(z)$.
+    \item 求将 $D$ 映成 $D'$ 的分式线性映射.
+    \begin{subhomework}(2)
+      \item $D=\BD, D': \abs{w-1}<1$;
+      \item $D: \abs{z+\ii}>1, D': \Im z<1$;
+      \item $D: \Re z>-1, D': \abs{z+1}<2$;
+      \item $D: \Re z+\Im z<2, D'=\BD$.
+    \end{subhomework}
+    \item 求将 $D$ 映成上半平面的保形映射.
+    \begin{subhomework}(2)
+      \item $D: \Im z>1, \abs{z}<2$;
+      \item $D: \abs{z}>2, \abs{z-\sqrt2}<\sqrt 2$;
+      \item $D: \abs{z}<1, \dfrac\cpi4<\arg z<\dfrac \cpi2$;
+      \smallskip
+      \item $D:\abs{z}>2, 0<\Arg z<\dfrac{3\cpi}2$;
+      \item $D: \abs{z}<1, z\notin[0,1]$;
+      \item $D: \abs{z}<2, \abs{z-1}>1$;
+      \item $D: \Re z>0, \abs{z}<1$;
+      % \item $D: a<\Re z<b$;
+      \item $D: \Re z>0, 0<\Im z<1$.
+    \end{subhomework}
+    \item 求将 $D$ 映成上半平面的保形映射.
+    \begin{subhomework}(1)
+      \item $D$ 为带有割痕 $x=0,0\le y\le a$ 的上半平面;
+      \item $D$ 为带有割痕 $x=0,y\le -1$ 的单位圆周外部 $\abs{z}>1$;
+      \item $D$ 为带有割痕 $\arg z=\dfrac\cpi4, \abs{z}<2$ 的角形区域 $0<\arg z<\dfrac\cpi2$;
+    \end{subhomework}
+    \item 求上半平面到自身的所有分式线性映射.
+    \item \optionalex 设 $w=f(z)=\dfrac{az+b}{cz+d}$ 是分式线性映射, 且 $f\circ f\circ f$ 是恒等映射. 求 $a,b,c,d$ 所需满足的条件.
+    % a=d 或 $ad-bc=(a+d)^2$
+    \item \optionalex 有一个半圆形薄金属板, 上下用两个热绝缘材料完全包裹. 若在半圆周上的温度为 $T_1$, 边界直径上的温度为 $T_2$, 求金属板上的温度分布.
+    \item \optionalex 一块无限大的 $\dfrac14$ 圆形金属板, 圆心处由绝缘体隔开, 两条垂直的无限长半径上的电势分别为 $v_1,v_2$, 求金属板上的电势分布.
+  \end{homework}
+\end{homework}
+  
+
+

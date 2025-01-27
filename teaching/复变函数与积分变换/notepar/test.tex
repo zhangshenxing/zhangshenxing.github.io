@@ -1,0 +1,388 @@
+\documentclass[11pt,a4paper,twoside,openright,scheme=chinese,no-math]{ctexbook}
+% \PassOptionsToPackage{black}{mybook}
+% \PassOptionsToPackage{single}{mybook}
+\usepackage{mybook} % 本地样式
+\usepackage{wrapfig}
+\input{settings}
+\makeindex
+\title{复变函数与积分变换}
+\author{张神星}
+\subtitle{工程数学教材}
+\version{第一版}
+\press{合肥工业大学}
+\newfontface\cmunrm{cmunrm.otf}\newcommand\cmu[1]{{\cmunrm{#1}}}
+\begin{document}
+% \maketitle
+% \newpage
+% \thispagestyle{empty}
+% \frontmatter
+% \input{chapter0.tex}
+% \tableofcontents
+
+\mainmatter
+
+\chapter{复变函数}
+\label{chapter:1}
+
+% \begin{intro}
+  本章中我们将学习复数和复变函数的基本概念, 以及复数列和复变函数的极限. 我们将从解一元三次方程问题出发, 逐步展示引入复数的必要性. 然后介绍复数的运算规则, 并展示复数的三角形式和指数形式在运算中所起的关键作用. 最后, 我们仿照实数情形引入复变函数、复数列以及极限的概念, 并讨论它们与实数情形的联系.
+% \end{intro}
+
+\section{复数及其代数运算}
+
+\subsection{复数的产生}
+\label{ssec:motivation-complex-numbers}
+
+
+复数起源于多项式方程的求根问题. 
+考虑一元二次方程 $x^2+bx+c=0$, 配方可得
+\[
+  \Bigl(x+\frac b2\Bigr)^2=\frac{b^2-4c}4.
+\]
+于是得到求根公式
+\[
+  x=\frac{-b\pm\sqrt\Delta}2,\quad 
+  \Delta=b^2-4c.
+\]
+
+\begin{enuma}
+  \item 当 $\Delta>0$ 时, 有两个不同的实根;
+  \item 当 $\Delta=0$ 时, 有一个二重的实根;\footnote{%
+    若 $x_0$ 是多项式方程 $f(x)=0$ 的根, 则 $x-x_0$ 是 $f(x)$ 的因式, 即存在多项式 $g(x)$ 使得 $f(x)=(x-x_0)g(x)$.
+    若 $(x-x_0)^k$ 是 $f(x)$ 的因式, 但 $(x-x_0)^{k+1}$ 不是, 则称 $x_0$ 是 $f(x)$ 或该方程的 \emph{$k$ 重根}.
+    在\thmref{定义}{def:zero-order} 中我们将会定义一般函数零点的重数.
+  }
+  \item 当 $\Delta<0$ 时, 无实根.
+\end{enuma}
+
+可以看出, 当我们考虑在实数范围内解一元二次方程时, 可以直接舍去包含\alert{负数开平方}的解.
+这样不会影响我们得到方程的实数解.
+然而在一元三次方程中, 即便只考虑实数解也会不可避免地引入负数开平方.
+
+\begin{example}
+  解方程 $x^3+6x-20=0$.
+\end{example}
+
+\newpage 
+
+我们将使用由费罗最先发现, 并由卡尔达诺最先公开的解法.\footnote{%
+  费罗发现了该方法后, 并没有发表他的结果, 因为当时人们常把他们的发现保密, 而向对手们提出挑战. 参考 \cite[第13章4节]{Kline1990}.
+}
+\footnote{\rlap{\parbox{\dimexpr\paperwidth-72pt\relax}{
+A footnote goes here in the footer and should stretch right across the page to include the right margin.}}}
+
+
+
+% \marginpar{
+%   \begin{tikzpicture}
+%     \draw[cstaxis] (-2,0)--(2,0);
+%     \draw[cstaxis] (0,-2)--(0,2);
+%     \clip (-2,-2) rectangle (2,2);
+%     \begin{scope}[xscale=.3,yscale=.04]
+%       \draw[cstcurve,main,domain=-4:4,smooth] plot (\x,{\x*\x*\x+6*\x-20});
+%       \coordinate (A) at (2,0);
+%       \coordinate (B) at (0,-20);
+%     \end{scope}
+%     \begin{scope}[cstdot,fifth]
+%       \fill (A) circle;
+%       \fill (B) circle;
+%     \end{scope}
+%     \draw[inner sep=2pt]
+%       (A) node[below right] {$2$}
+%       (B) node[above left] {$-20$};
+%   \end{tikzpicture}
+%   \captionof{figure}{$y=x^3+6x-20$}
+% }
+
+
+\begin{solution}
+  设 $x=u+v$, 则
+  \[
+    u^3+v^3+3uv(u+v)+6(u+v)-20=0.
+  \]
+  我们希望
+  \[
+    u^3+v^3=20,\qquad uv=-2,
+  \]
+  则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+  解得
+  \[
+    u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3.
+  \]
+  所以
+  \[
+    u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,\quad x=u+v=2.
+  \]
+\end{solution}
+
+这个方程是不是真的只有 $x=2$ 这一个实数解呢?
+由方程左侧多项式导数为 $3x^2+6>0$ 可知其单调递增, 因此确实只有这一个实数解.
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+啊
+
+\subsection{区域和闭区域}
+
+\marpartop{
+  % \vspace{.5\baselineskip}
+  \small
+  为了避免混淆集合中的分割符号和复数的模, 此处用 $:$ 而不是 $\mid$ 作为集合的分割符号.
+}{black}
+% \marginpar{
+%   \vspace{.5\baselineskip}
+%   \centering
+%   \begin{tikzpicture}
+%     \begin{scope}[mpscale]
+%       \coordinate (A) at (-1,0);
+%       \coordinate (B) at (1,0);
+%       \filldraw[cstcurve,main,cstfill1] (A) circle (.8);
+%       \filldraw[cstcurve,main,cstfill1] (B) circle (.8);
+%       \draw[cstra,fourth,thick] (A)--++(.64,.48)
+%         node[midway,above left] {$\delta$};
+%       \draw[cstra,fourth,thick] (B)--++(.64,.48)
+%         node[midway,above left] {$\delta$};
+%     \end{scope}
+%     \fill[cstdot] (A) circle node[left] {$z_0$};
+%     \filldraw[cstdote] (B) circle node[left] {$z_0$};
+%   \end{tikzpicture}
+%   \captionof{figure}{邻域和去心邻域}
+% }
+为了引入极限的概念, 我们需要考虑点的邻域.
+类比高等数学中的邻域和去心邻域, 在复平面中, 称开圆盘
+\[
+  U(z_0,\delta)=\bigset{z\midcolon \abs{z-z_0}<\delta}
+\]
+为 $z_0$ 的一个 \nouns{$\delta$ 邻域}\index{linyu@邻域}, 称去心开圆盘
+\[
+  \Uc(z_0,\delta)=\bigset{z\midcolon 0<\abs{z-z_0}<\delta}
+\]
+为 $z_0$ 的一个\nouns{去心 $\delta$ 邻域}\index{linyu@邻域!quxinlinyu@去心邻域}.
+
+设 $G$ 是复平面的一个子集, $z_0\in\BC$.
+它们的位置关系有三种可能:
+\begin{enuma}
+  \item 若存在 $z_0$ 的一个邻域 $U$ 完全包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\nouns{内点}\index{neidian@内点}.
+  \item 若存在 $z_0$ 的一个邻域 $U$ 完全不包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\nouns{外点}\index{waidian@外点}.
+  \item 若对于 $z_0$ 的任何一个邻域 $U$, 都有属于和不属于 $G$ 的点, 则称 $z_0$ 是 $G$ 的一个\nouns{边界点}\index{bianjiedian@边界点}.
+\end{enuma}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \filldraw[cstcurve,main,cstfill1,smooth cycle] plot coordinates {(2,0) (1.83,.9) (.64,1.46) (-.63,1.6) (-1.66,1.01) (-2.35,0) (-1.81,-1.06) (-.73,-1.68) (.74,-1.57) (1.82,-.91)};
+    \coordinate (A) at (-.7,0);
+    \draw[cstcurve,fourth] (A) circle (.6) node[above] {$z_0$};
+    \fill[cstdot,fourth] (A) circle;
+    \coordinate (B) at (2,0);
+    \draw[cstcurve,second] (B) circle (.6) node[right] {$z_0$};
+    \fill[cstdot,second] (B) circle;
+    \coordinate (C) at (4,0);
+    \draw[cstcurve,third] (C) circle (.6) node[above] {$z_0$};
+    \fill[cstdot,third] (C) circle;
+    \draw (.5,1) node {$G$};
+  \end{tikzpicture}
+  \captionof{figure}{点与集合的位置关系}
+\end{figure}
+
+显然内点都属于 $G$, 外点都不属于 $G$, 而边界点则都有可能.
+这可类比于区间的端点和区间的关系.
+
+\begin{definition}
+  \begin{enuma}
+    \item 若 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\nouns{开集}\index{kaiji@开集}.
+    \item 若 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\nouns{闭集}\index{biji@闭集}.
+  \end{enuma}
+\end{definition}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \small
+  注意 $\arg z$ 的不等式不包括原点.
+}
+
+\vspace*{4mm}
+例如
+\[
+  \abs{z-z_0}<R,\quad 1<\Re z<3,\quad\frac\cpi4<\arg z<\frac{3\cpi}4
+\]
+都给出开集.
+集合 $G$ 是一个闭集当且仅当它的补集是开集.
+直观上看, 由 $>,<$ 的不等式给出的集合往往是开集, 由 $\ge,\le$ 的不等式给出的集合往往是闭集.\footnote{%
+  当不等式中的函数都是连续函数时, 由 $>,<$ 的不等式给出的集合是开集, 否则未必成立.
+  连续函数的定义见\thmref{定义}{def:continuous}.
+  例如 $\arg z>\dfrac\cpi2$ 包含了负实轴, 它既不是开集也不是闭集, 因为 $\arg z$ 在负实轴上不连续.
+  例如 $\biggabs{\dfrac1z}\ge 1$ 表示的不是闭集, 因为它等价于 $0<\abs{z}\le1$.
+}
+
+若集合 $G$ 是某个开圆盘 $U(0,R)$ 的子集, 则称它是\nouns{有界}\index{youjie@有界}的.
+否则称它是\nouns{无界}\index{wujie@无界}的.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \filldraw[cstcurve,main,cstfill1,smooth cycle] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93)};
+    \filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+    \filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+    \draw[cstcurve,second,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+    \coordinate [label=left:{$z_1$}] (A) at (-1,.8);
+    \coordinate [label=below:{$z_2$}] (B) at (1,-.8);
+    \draw[cstcurve,fourth] (A)--(-.2,.5)--(.2,-.5)--(B);
+    \fill[cstdot,main] (1.7,0) circle;
+    \fill[cstdot,main] (1.8,-.6) circle;
+  \end{tikzpicture}
+  \captionof{figure}{区域和它的边界}
+  \label{fig:domain}
+\end{figure}
+
+\begin{definition}
+  若开集 $D$ 的任意两个点都可以用一条完全包含在 $D$ 中的折线段连接起来, 则称 $D$ 是一个\nouns{区域}\index{quyu@区域}.
+\end{definition}
+
+对于区域 $D$ 内的任意两点 $z_1,z_2$, 可以在 $D$ 中画一条从 $z_1$ 到 $z_2$ 的折线段.
+换言之, 区域是``连通''的开集.\footnote{
+  该定义中的折线段可以换成连续曲线段.
+  它也等价于开集 $D$ 不能写成 $D_1\cup D_2$, 其中 $D_1,D_2$ 是两个非空开集且 $D_1\cap D_2=\emptyset$, 即 $D$ 不能拆成多个``独立''的开集.
+}
+区域和它的边界的并集叫作\nouns{闭区域}\index{biquyu@闭区域}\footnote{
+  也叫\emph{闭域}\index{biyu@闭域}.
+}, 记作 $\ov D$.
+它是一个闭集.
+
+\marginpar{
+  \centering
+  \vspace{-12\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \def\w{1.5}
+    \fill[cstfille1] (0,0) circle (\w);
+    \filldraw[cstcurve,main,fill=white] (0,0) circle ({\w/2});
+    \draw[cstaxis] (0,-\w)--(0,\w);
+    \draw[cstaxis] (-\w,0)--(\w,0);
+  \end{tikzpicture}
+  \captionof{figure}{区域 $\abs{z}>1$}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \def\w{1.5}
+      \fill[cstfille1] (0,0) circle (\w);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+    \filldraw[cstdote] (0,0) circle;
+  \end{tikzpicture}
+  \captionof{figure}{区域 $z\neq0$}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \def\w{1.5}
+    \coordinate (O);
+    \fill[cstcurve,main,cstfille1] (O) circle (\w);
+    \cutline{0}{0}{\w}{180}{main};
+    \draw[cstaxis] (0,-\w)--(0,\w);
+    \draw[cstaxis] (-\w,0)--(\w,0);
+  \end{tikzpicture}
+  \captionof{figure}{带割痕的复平面}
+}
+
+\end{document}

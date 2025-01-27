@@ -1,0 +1,3923 @@
+\chapter{复数与复变函数}
+\label{chapter:1}
+
+\begin{widetext}
+  本章中我们将学习复数和复变函数的基本概念, 以及复数列和复变函数的极限.
+  我们将从解一元三次方程问题出发, 逐步展示引入复数的必要性. 然后介绍复数的运算规则, 并展示复数的三角形式和指数形式在运算中所起的关键作用. 最后, 我们仿照实数情形引入复变函数、复数列以及极限的概念, 并讨论它们与实数情形的联系.
+\end{widetext}
+
+\section{复数及其代数运算}
+
+\subsection{复数的产生}
+\label{ssec:motivation-complex-numbers}
+
+复数起源于多项式方程的求根问题. 
+考虑一元二次方程 $x^2+bx+c=0$, 配方可得
+\[
+  \Bigl(x+\frac b2\Bigr)^2=\frac{b^2-4c}4.
+\]
+于是得到求根公式
+\[
+  x=\frac{-b\pm\sqrt\Delta}2,\quad 
+  \Delta=b^2-4c.
+\]
+
+\begin{enuma}
+  \item 当 $\Delta>0$ 时, 有两个不同的实根;
+  \item 当 $\Delta=0$ 时, 有一个二重的实根;\footnote{
+    若 $x_0$ 是多项式方程 $f(x)=0$ 的根, 则 $x-x_0$ 是 $f(x)$ 的因式, 即存在多项式 $g(x)$ 使得 $f(x)=(x-x_0)g(x)$.
+    若 $(x-x_0)^k$ 是 $f(x)$ 的因式, 但 $(x-x_0)^{k+1}$ 不是, 则称 $x_0$ 是 $f(x)$ 或该方程的 \emph{$k$ 重根}.
+    在\thmref{定义}{def:zero-order} 中我们将会定义一般函数零点的重数.
+  }
+  \item 当 $\Delta<0$ 时, 无实根.
+\end{enuma}
+
+可以看出, 当我们考虑在实数范围内解一元二次方程时, 可以直接舍去包含\alert{负数开平方}的解.
+这样不会影响我们得到方程的实数解.
+然而在一元三次方程中, 即便只考虑实数解也会不可避免地引入负数开平方.
+
+\begin{example}
+  解方程 $x^3+6x-20=0$.
+\end{example}
+
+\marginpar{
+  \vspace{-.5\baselineskip}
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \clip (-2,-2) rectangle (2,2);
+      \begin{scope}[xscale=.3,yscale=.04]
+        \draw[cstcurve,main,domain=-3:4,smooth] plot (\x,{\x*\x*\x+6*\x-20});
+        \coordinate (A) at (2,0);
+        \coordinate (B) at (0,-20);
+      \end{scope}
+    \end{scope}
+    \begin{scope}[cstdot,fifth]
+      \fill (A) circle;
+      \fill (B) circle;
+    \end{scope}
+    \draw[inner sep=2pt]
+      (A) node[below right] {$2$}
+      (B) node[above left] {$-20$};
+  \end{tikzpicture}
+  \captionof{figure}{$y=x^3+6x-20$}
+}
+
+\begin{solution}
+  设 $x=u+v$, 则
+  \[
+    u^3+v^3+3uv(u+v)+6(u+v)-20=0.
+  \]
+  我们希望
+  \[
+    u^3+v^3=20,\qquad uv=-2,
+  \]
+  则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+  解得
+  \[
+    u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3.
+  \]
+  所以
+  \[
+    u=1\pm\sqrt3,\quad v=1\mp\sqrt 3,\quad x=u+v=2.
+  \]
+\end{solution}
+
+\marginpar{
+  \vspace{-2\baselineskip}\small
+  该解法由费罗最先发现, 并由卡尔达诺最先公开.
+  费罗发现了该方法后, 并没有发表他的结果, 因为当时人们常把他们的发现保密, 而向对手们提出挑战. 参考 \cite[第13章4节]{Kline1990}.
+}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \def\a{-3}
+      \def\b{1}
+      \def\c{2}
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \clip (-2,-2) rectangle (2,2);
+      \begin{scope}[xscale=.45,yscale=.1]
+        \draw[cstcurve,main,domain=-4:4,smooth] plot (\x,{(\x-\a)*(\x-\b)*(\x-\c)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
+        \coordinate (C) at (\c,0);
+      \end{scope}
+    \end{scope}
+    \begin{scope}[cstdot,fifth]
+      \fill (A) circle;
+      \fill (B) circle;
+      \fill (C) circle;
+    \end{scope}
+    \draw[inner sep=2pt]
+      (A) node[below right] {$-3$}
+      (B) node[below left] {$1$}
+      (C) node[below right] {$2$};
+  \end{tikzpicture}
+  \captionof{figure}{$y=x^3-7x+6$}
+}
+
+这个方程是不是真的只有 $x=2$ 这一个实数解呢?
+由方程左侧多项式导数为 $3x^2+6>0$ 可知其单调递增, 因此确实只有这一个实数解.
+
+\begin{example}
+  解方程 $x^3-7x+6=0$.
+\end{example}
+
+\begin{solution}
+  同样地我们有 $x=u+v$, 其中
+  \[
+    u^3+v^3=-6,\qquad uv=\frac73.
+  \]
+  于是 $u^3,v^3$ 满足一元二次方程
+  \[
+    X^2+6X+\frac{343}{27}=0.
+  \]
+  然而这个方程没有实数解.
+
+  我们可以强行解得
+  \[
+    u^3=-3+\frac{10}9\sqrt{-3},
+  \]
+  \[
+    u=\sqrt[3]{-3+\frac{10}9\sqrt{-3}}
+     =\frac{3+2\sqrt{-3}}3,\ 
+      \frac{-9+\sqrt{-3}}6,\ 
+      \frac{3-5\sqrt{-3}}6,
+  \]
+  相应地,
+  \[
+    v=\frac{3-2\sqrt{-3}}3,\ 
+      \frac{-9-\sqrt{-3}}6,\ 
+      \frac{3+5\sqrt{-3}}6,
+  \]
+  从而
+  \[
+    x=u+v=2,\ -3,\ 1.
+  \]
+\end{solution}
+
+对于一般的三次方程 $x^3+px+q=0$ 而言, 类似可得:
+\[
+  x=u-\frac p{3u},\quad
+  u^3=-\frac q2+\sqrt{\Delta},\quad
+  \Delta=\frac{q^2}4+\frac{p^3}{27}.
+\]
+
+\marginpar{\small
+  \vspace{-4\baselineskip}
+  若 $p=0$, $q>0$, 则选择
+  \[
+    u^3=-\frac q2-\sqrt{\Delta}
+  \]
+  以避免 $u=0$.
+}
+
+\begin{widefigure}
+  \begin{minipage}{5cm}
+    \centering
+    \begin{tikzpicture}[
+      declare function={
+        f(\x)=\x*\x*\x-3*\x;
+      }
+    ]
+      \def\a{2.5}
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \clip (-2,-2) rectangle (2,2);
+      \begin{scope}[xscale=.35,yscale=.1]
+        \draw[cstcurve,main,domain=-3:4,smooth] plot (\x,{f(\x)-f(\a)});
+        \coordinate (A) at (\a,0);
+      \end{scope}
+      \fill[cstdot,fifth] (A) circle;
+    \end{tikzpicture}
+    \caption{$\Delta>0$}
+  \end{minipage}
+  \begin{minipage}{5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\a{-2}
+      \def\b{1}
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \clip (-2,-2) rectangle (2,2);
+      \begin{scope}[xscale=.35,yscale=.1]
+        \draw[cstcurve,main,domain=-4:3,smooth] plot ({\x},{(\x-\a)*(\x-\b)*(\x-\b)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
+      \end{scope}
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
+      \end{scope}
+    \end{tikzpicture}
+    \caption{$\Delta=0$}
+  \end{minipage}
+  \begin{minipage}{5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\a{-3}
+      \def\b{.5}
+      \def\c{2.5}
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \clip (-2,-2) rectangle (2,2);
+      \begin{scope}[xscale=.3,yscale=.05]
+        \draw[cstcurve,main,domain=-5:5,smooth] plot ({\x},{(\x-\a)*(\x-\b)*(\x-\c)});
+        \coordinate (A) at (\a,0);
+        \coordinate (B) at (\b,0);
+        \coordinate (C) at (\c,0);
+      \end{scope}
+      \begin{scope}[cstdot,fifth]
+        \fill (A) circle;
+        \fill (B) circle;
+        \fill (C) circle;
+      \end{scope}
+    \end{tikzpicture}
+    \caption{$\Delta<0$}
+  \end{minipage}
+\end{widefigure}
+
+通过分析函数图像的极值点可以知道:
+\begin{enuma}
+  \item 当 $\Delta>0$ 时, 有 $1$ 个实根;
+  \item 当 $\Delta\le0$ 时, 有 $3$ 个实根(含重根情形).
+\end{enuma}
+
+所以我们想要使用一元三次方程求根公式的话, 就\alert{必须接受负数开方}.
+为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
+我们将在 \ref{ssec:real-cubic-equation}利用复数回答这个问题.
+
+尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的带负数平方根的所谓虚数, 却是难以接受.
+对复数没有清楚认识的这种情况, 反映在常被人引述的莱布尼茨的一段话中: \textcolor{third}{\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根.}
+直到后来通过十七、十八世纪一系列数学家对复变函数理论的发展和完善, 才使得人们逐渐接受复数并将其应用到数学和科学的各个角落.
+科学发现的过程总是这样充满了曲折与挑战, 只有通过不断的研究、实验和修正, 才能逐步逼近真理. 
+\marginpar{\small
+  \vspace{-7\baselineskip}
+  莱布尼茨此语见 \cite[第13章2节]{Kline1990}.
+}
+
+
+\subsection{复数的概念}
+
+\marginpar{\small
+  \vspace{2\baselineskip}
+  全体复数、实数、有理数、整数、自然数构成的集合分别记作 $\BC,\BR,\BQ,\BZ,\BN$, 整数集合记号来自其德语 Zahlen, 其余来自它们的英文名称 complex number, real number, rational number, natural number.
+  这些符号叫做黑板粗体, 手写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
+  有些文献使用黑粗体字母 $\mathbf{C,R,Q,Z,N}$ 来表示这些集合.
+}
+
+现在我们来正式介绍复数的概念.
+由于方程 $x^2=-1$ 在复数范围内有两个不同的根, 为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们引入符号 $\ii$ 来表示其中一个根.
+
+\begin{definition}
+  固定一个记号 $\ii$, \nouns{复数}\index{fushu@复数}就是形如 $z=x+y\ii$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
+  分别称 $x$ 和 $y$ 为 $z$ 的\nouns{实部}\index{shibu@实部}和\nouns{虚部}\index{xubu@虚部}, 并记作 \nouns{$\Re z=x$}\index{0rez@$\Re z$}, \nouns{$\Im z=y$}\index{0imz@$\Im z$}.
+\end{definition}
+
+本书中, 我们将不言自明地使用 $x,y,x_1,y_1,\cdots$ 等记号表示实数.
+复数 $x+y\ii$ 也可表达为形式 $x+\ii y$.
+
+记号 \nouns{$\ii$}\index{0i@$\ii$} 叫作\nouns{虚数单位}\index{xushudanwei@虚数单位}, 它最先是由欧拉引入并使用.
+将\alert{全体复数记作 $\BC$}\index{0c@$\BC$}, 全体实数记作 $\BR$\index{0r@$\BR$}\index{0q@$\BQ$}\index{0z@$\BZ$}\index{0n@$\BN$}.
+由于实数 $x$ 可以自然地看成复数 $x+0\ii$, 在此观点下, 我们有 $\BR\subseteq \BC$.
+我们简记 $x+0\ii=x,0+y\ii=y\ii$.
+
+\begin{widefigure}[2.5cm]
+  \begin{tikzpicture}
+    \def\a{2}
+    \def\b{1.5}
+    \begin{scope}
+      \draw[cstaxis] (-.5,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+      \node[below left] {$0$};
+      \coordinate (A) at (\a,\b);
+      \draw[cstdash,third] (\a,0)--(A)--(0,\b);
+      \fill[cstdot,main] (A) circle node[above] {$z=x+y\ii$};
+      \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4.2,1) node[midway,below,main,font=\bfseries] {一一对应};
+    \end{scope}
+    \begin{scope}[shift={(5,0)}]
+      \coordinate (O);
+      \node[below left] {$O$};
+      \coordinate (A) at (\a,\b);
+      \coordinate (B) at (\a,0);
+      \coordinate (C) at (0,\b);
+      \draw[cstdash,third] (B)--(A)--(C);
+      \fill[cstdot,main] (A) circle node[above] {$Z(x,y)$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill5] (O)--(B);
+      \draw[decorate,decoration={brace,amplitude=5},cstfill2] (C)--(O);
+      \draw
+        ($(O)!.5!(B)$) node[above=2mm] {$x$}
+        ($(C)!.5!(O)$) node[right=2mm] {$y$};
+      \draw[Latex-Latex,line width=.5mm] (2.8,1)--(4.2,1) node[midway,below,main,font=\bfseries] {一一对应};
+      \draw[cstaxis] (-.5,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+    \end{scope}
+    \begin{scope}[shift={(10,0)}]
+      \draw[cstaxis] (-.5,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2.5);
+      \coordinate (O) node[below left] {$O$};
+      \coordinate (A) at (\a,\b);
+      \draw[cstcurve,cstra,main] (O)--(A) node[above] {$\overrightarrow{OZ}=(x,y)$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{复数、平面上的点、平面向量一一对应}
+\end{widefigure}
+
+为了强调表示复数的字母 $z$, $w$ 等的不同, 也可将对应复平面称之为 $z$ 平面、$w$ 平面等等.
+
+将复平面的 $x$ 轴和 $y$ 轴分别称为\nouns{实轴}\index{shizhou@实轴}和\nouns{虚轴}\index{xuzhou@虚轴}.
+当 $\Im z=0$ 时, $z=x$ 是实数, 它落在实轴上.
+称不是实数的复数是\nouns{虚数}\index{xushu@虚数}.
+当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z=y\ii\neq 0$ 是\nouns{纯虚数}\index{xushu@虚数!chunxushu@纯虚数}, 它落在虚轴上.
+\alert{注意虚轴上的点并不都是纯虚数, 因为 $0$ 也在虚轴上.}
+
+由定义可知, 每一个复数都可以唯一地表达成 $x+y\ii$ 这样的形式.
+对于建立了直角坐标系的平面, 平面上的点 $(x,y)$ 和复数 $x+y\ii$ 一一对应.
+将建立起这种对应的平面称为\nouns{复平面}\index{fupingmian@复平面}.
+于是, 我们可将复数 $z$ 与它对应的点 $Z$ 等同起来.
+复数 $z$ 还可与复平面上起于原点、终于点 $Z$ 的向量 $\overrightarrow{OZ}$ 一一对应.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \coordinate (O);
+    \node[below left] {$0$};
+    \coordinate (R) at (3,0);
+    \coordinate (I) at (0,2.5);
+    \coordinate (B) at (2,0);
+    \coordinate (C) at (0,1.5);
+    \coordinate (A) at ($(B)+(C)$);
+    \draw[cstdash,third] (B)--(A)--(C);
+    \fill[cstdot] (A) circle;
+    \draw[decorate,decoration={brace,amplitude=5},cstfill5] (B)--(O);
+    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(C);
+    \draw[cstaxis] (-.5,0)--(R);
+    \draw[cstaxis] (0,-.5)--(I);
+    \draw
+      (A) node[above] {$z=x+y\ii$}
+      ($(B)!.5!(O)$) node[below=1.5mm] {$\Re z$}
+      ($(C)!.5!(O)$) node[left=1.5mm] {$\Im z$}
+      (R) node[below] {\color{fifth}{实轴}}
+      (I) node[right] {\color{second}{虚轴}};
+  \begin{scope}[shift={(5,1.3)}]
+    \filldraw[cstcurve,cstfill1,rounded corners=2mm] (-.5,-1.5) rectangle (3.4,1.5);
+    \draw[->,thick,fifth] (-.3,-.7)-|(-2.5,-1.3);
+    \draw[->,thick,second] (-.3,.7)--(-5,.7);
+    \begin{scope}[shift={(.8,-.7)}]
+      \filldraw[cstcurve,fill=white,rounded corners=2mm] (-1.1,-.6) rectangle (1.1,.6);
+      \draw
+        (0,.3) node[fifth,font=\bfseries] {实数}
+        (0,-.3) node {$0,1,\sqrt2,\cpi,\ee$};
+    \end{scope}
+    \begin{scope}[shift={(.8,.7)}]
+      \filldraw[cstcurve,cstfill1,rounded corners=2mm] (-1.1,-.6) rectangle (1.1,.6);
+      \draw
+        (0,.3) node[second,font=\bfseries] {纯虚数}
+        (0,-.3) node {$\ii,-\ii,\cpi\ii$};
+    \end{scope}
+    \draw 
+      (1.5,-1.5) node[below,main,align=center] {全体复数}
+      (2.7,0) node[align=center] {{\color{third}虚数} \\$\ii,\cpi\ii$,\\$\frac{-1+\sqrt 3\ii}2$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{实数、纯虚数与复数、复平面的关系}
+\end{figure}
+
+\marginpar{
+  \vspace{.5\baselineskip}
+  \begin{exercise}
+    若 $x^2(1+\ii)+x(5+4\ii)+4+3\ii$ 是纯虚数, 则实数 $x=$\fillblank{}.
+  \end{exercise}
+}
+
+\begin{example}
+  实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)\ii$ 是:
+  \begin{subexample}(4)
+    \item 实数;
+    \item 纯虚数.
+  \end{subexample}
+\end{example}
+
+\begin{solutionenum}
+  \item 由题设有 $\Im z=x^2-5x-6=0$, 解得 $x=-1$ 或 $6$.
+  \item 由题设有 $\Re z=x^2-3x-4=0$, 解得 $x=-1$ 或 $4$.
+  但同时要求 $\Im z=x^2-5x-6\neq 0$, 因此 $x\neq -1, x=4$.
+\end{solutionenum}
+
+
+\subsection{复数的代数运算}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \draw[cstaxis] (-1,0)--(2.7,0);
+    \draw[cstaxis] (0,-1.8)--(0,1.6);
+    \coordinate (O);
+    \coordinate (Z1) at (1.7,-.4);
+    \coordinate (Z2) at (.5,1.1);
+    \coordinate (P) at ($(Z1)+(Z2)$);
+    \coordinate (M) at ($(Z1)-(Z2)$);
+    \coordinate (N) at ($(O)-(Z2)$);
+    \begin{scope}[cstcurve,cstra,fourth]
+      \draw (O)--(Z1) node[right] {$z_1$};
+      \draw (O)--(Z2) node[above] {$z_2$};
+      \draw[main] (O)--(P) node[above,shift={(.2,0)}] {$z_1+z_2$};
+      \draw[second] (O)--(M) node[below,shift={(0,.1)}] {$z_1-z_2$};
+    \end{scope}
+    \draw[cstdash,third] (Z2)--(P)--(Z1);
+    \begin{scope}[cstdash,third]
+      \draw[cstra] (O)--(N) node[below] {$-z_2$};
+      \draw (N)--(M)--(Z1);
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{复数的加法和减法}
+}
+
+设 $z_1=x_1+y_1\ii$, $z_2=x_2+y_2\ii$.
+由向量的加法和减法可以自然定义出复数的加法和减法:
+\begin{align*}
+  z_1+z_2&=(x_1+x_2)+(y_1+y_2)\ii,\\
+  z_1-z_2&=(x_1-x_2)+(y_1-y_2)\ii.
+\end{align*}
+由向量加法的性质可知复数加法满足交换律和结合律:
+\[
+  z_1+z_2=z_2+z_1,\quad (z_1+z_2)+z_3=z_1+(z_2+z_3).
+\]
+
+\alert{规定 $\ii\cdot \ii=-1$}.
+若我们希望 $\BC$ 上的运算满足乘法交换律、结合律和分配律, 则复数乘法应当定义为
+\begin{align*}
+   z_1\cdot z_2&
+  =(x_1+y_1\ii)(x_2+y_2\ii)\\&
+  =x_1\cdot x_2+x_1\cdot y_2\ii+y_1\ii\cdot x_2+y_1\ii\cdot y_2\ii\\&
+  =(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)\ii.
+\end{align*}
+容易证明, 这样定义的复数乘法的确满足交换律、结合律和分配律:
+\[
+  z_1z_2=z_2z_1,\quad
+  (z_1z_2) z_3=z_1(z_2 z_3),\quad
+  z_1(z_2+z_3)=z_1z_2+z_1z_3.
+\]
+
+\marginpar{
+  \vspace{4\baselineskip}
+  \begin{exercise}
+    若 $z^2=1+2\sqrt6\ii$, 则 $z=$\fillblank[6em]{}.
+  \end{exercise}
+}
+
+当 $z=x+y\ii\neq0$ 时, 可以发现
+\[
+  (x+y\ii)\cdot\frac{x-y\ii}{x^2+y^2}=1.
+\]
+从而复数除法定义为
+\[
+   \frac{z_1}{z_2}
+  =(x_1+y_1\ii)\cdot\frac{x_2-y_2\ii}{x_2^2+y_2^2}
+  =\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}\ii.
+\]
+不难看出, 当 $z_1,z_2$ 是实数时, 相应的四则运算与实数的四则运算结果是相同的.
+
+对于正整数 $n$, 定义 $z$ 的 \nouns{$n$ 次幂}\index{chengmi@乘幂}为 $n$ 个 $z$ 相乘:
+\[
+  z^n=\underbrace{z\cdot z\cdots z}_{n\ \text{个}\ z}.
+\]
+当 $z\neq 0$ 时, 还可以定义
+\[
+  z^0=1,\qquad
+  z^{-n}=\frac1{z^n}.
+\]
+
+\begin{exampleenum}
+  \item 容易知道 $\ii^2=-1,\ii^3=-\ii,\ii^4=1$.
+  对于整数 $n$, 
+  \[
+    \ii^{4n}=1,\quad 
+    \ii^{4n+1}=\ii,\quad 
+    \ii^{4n+2}=-1,\quad 
+    \ii^{4n+3}=-\ii.
+  \]
+  \item 令 $z=-1+\sqrt 3\ii$, 则 $z^3=8$.
+  \item 令 $z=1+\ii$, 则
+  \[
+    z^2=2\ii,\quad 
+    z^3=-2+2\ii,\quad 
+    z^4=-4,\quad 
+    z^8=16=2^4.
+  \]
+\end{exampleenum}
+
+实数范围内的诸多代数恒等式\footnote{
+  这里的代数恒等式是指只包含四则运算的、在实数范围内恒成立的等式.
+  可以利用\thmref{定理}{thm:zero-isolated} 说明这些等式为何在复数情形也是成立的.
+}如等差数列求和公式、等比数列求和公式、二项式展开、平方(立方)差公式等在复数情形也是成立的.
+
+\marginpar{
+  \vspace{\baselineskip}
+  \begin{exercise}\smallskip
+    $\Bigl(\dfrac{1-\ii}{1+\ii}\Bigr)^{1000}=$\fillblank{}.
+  \end{exercise}
+}
+
+\begin{example}
+  计算 $1+\ii+\ii^2+\ii^3+\ii^4$.
+\end{example}
+
+\begin{solution}
+  根据等比数列求和公式,
+  \[
+     1+\ii+\ii^2+\ii^3+\ii^4
+    =\frac{\ii^5-1}{\ii-1}
+    =\frac{\ii-1}{\ii-1}
+    =1.
+  \]
+\end{solution}
+
+
+\subsection{共轭复数}
+
+\marginpar{
+  \begin{exercise}
+    $z$ 关于虚轴的对称点是什么? 关于原点的对称点是什么?
+  \end{exercise}
+}
+
+\begin{definition}
+  称 $z$ 在复平面关于实轴的对称点为它的\nouns{共轭复数}\index{gonge@共轭} \nouns{$\ov z$}\index{0ovz@$\ov z$}.
+  换言之, $\ov{x+y\ii}=x-y\ii$.
+\end{definition}
+
+从定义出发, 不难验证共轭复数满足如下性质:
+\begin{enuma}
+  \item $z$ 是 $\ov z$ 的共轭复数, 即 $\ov{\ov z}=z$.
+  \label{enum:conjugate-zbarbar}
+  \item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
+  \ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
+  \ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
+  \label{enum:conjugate-commutes}
+  \item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
+  \item $z+\ov z=2\Re z,\ z-\ov z=2\ii\Im z$.
+  \label{enum:conjugate-xy-zzbar}
+  \item $z=\ov z$ 当且仅当 $z$ 是实数; $z=-\ov z$ 当且仅当 $z$ 是纯虚数或 $z=0$.
+  \label{enum:conjugate-real-imag}
+\end{enuma}
+
+\marginpar{
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \def\a{2}
+    \def\b{.5}
+    \def\c{-.5}
+    \def\d{1.5}
+    \draw[cstaxis] (-.8,0)--(2.5,0);
+    \draw[cstaxis] (0,-2.1)--(0,2.1);
+    \coordinate (O) node[below left,shift={(-.1,0)}] {$0$};
+    \coordinate (Z1) at (\a,\b);
+    \coordinate (Z2) at (\c,\d);
+    \coordinate (Z3) at ($(Z1)+(Z2)$);
+    \coordinate (W1) at (\a,-\b);
+    \coordinate (W2) at (\c,-\d);
+    \coordinate (W3) at ($(W1)+(W2)$);
+    \begin{scope}[cstdash,third]
+      \draw (Z1)--(Z3)--(Z2);
+      \draw (W1)--(W3)--(W2);
+    \end{scope}
+    \begin{scope}[cstcurve,cstra]
+      \begin{scope}[second]
+        \draw (O)--(Z1);
+        \draw (O)--(Z2);
+        \draw (O)--(Z3);
+      \end{scope}
+      \begin{scope}[fifth]
+        \draw[fifth] (O)--(W1);
+        \draw[fifth] (O)--(W2);
+        \draw[fifth] (O)--(W3);
+      \end{scope}
+    \end{scope}
+    \draw
+      (Z1) node[right] {$z_1$}
+      (Z2) node[left] {$z_2$}
+      (Z3) node[above] {$z_1+z_2$}
+      (W1) node[right] {$\ov{z_1}$}
+      (W2) node[left] {$\ov{z_2}$}
+      (W3) node[below] {$\ov{z_1}+\ov{z_2}$};
+  \end{tikzpicture}
+  \captionof{figure}{共轭复数}
+}
+
+\ref{enum:conjugate-commutes} 表明共轭运算和四则运算交换.
+\ref{enum:conjugate-xy-zzbar} 表明了复数 $z$ 的实部 $x$ 和虚部 $y$ 可以与 $z,\ov z$ 相互线性表示.
+这意味着使用共轭复数进行计算和证明, 往往比直接使用 $x,y$ 的表达式更简单.
+
+\begin{example}
+  证明: $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re{(z_1\cdot\ov{z_2})}$.
+\end{example}
+
+我们可以设 $z_1=x_1+y_1\ii,z_2=x_2+y_2\ii$, 然后代入等式两边化简并比较实部和虚部来证明.
+但利用共轭复数可以更简单地证明它.
+
+\begin{proof}
+  根据性质 \ref{enum:conjugate-zbarbar} 和 \ref{enum:conjugate-commutes},
+  \[
+     \ov{z_1\cdot\ov{z_2}}
+    =\ov{z_1}\cdot\ov{\ov{z_2}}
+    =\ov{z_1}\cdot z_2.
+  \]
+  再由性质 \ref{enum:conjugate-xy-zzbar} 可得
+  \[
+     z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
+    =z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
+    =2\Re{(z_1\cdot\ov{z_2})}.
+  \]
+\end{proof}
+
+\begin{example}
+  设 $z=x+y\ii$ 且 $y\neq 0$. 证明: $x^2+y^2=1$ 当且仅当 $z+\dfrac1z$ 是实数.
+\end{example}
+\begin{proof}
+  由题设可知 $z\neq 0$.
+  由性质 \ref{enum:conjugate-real-imag} 可知, 
+  $z+\dfrac1z$ 是实数当且仅当
+  \[
+     z+\frac1z
+    =\ov{\Bigl(z+\frac1z\Bigr)}
+    =\ov z+\frac1{~\ov z~}.
+  \]
+  化简可知上述等式等价于
+  \[
+    (z-\ov z)(z\ov z-1)=0.
+  \]
+  由 $y\neq0$ 可知 $z\neq \ov z$.
+  故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.
+\end{proof}
+
+由于 $z\ov z$ 是一个实数,
+因此在作复数的除法运算时, 可以利用下式将其转化为乘法:
+\[
+   \frac{z_1}{z_2}
+  =\frac{z_1\ov{z_2}}{z_2\ov{z_2}}
+  =\frac{z_1\ov{z_2}}{x_2^2+y_2^2}.
+\]
+
+\begin{example}
+  设 $z_1=10-5\ii,z_2=4+3\ii$, 求 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}$.
+\end{example}
+
+\begin{solution}
+  由于
+  \[
+     \frac{z_1}{z_2}
+    =\frac{10-5\ii}{4+3\ii}
+    =\frac{(10-5\ii)(4-3\ii)}{4^2+3^2}
+    =\frac{(40-15)+(-20-30)\ii}{25}
+    =1-2\ii,
+  \]
+  故 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=1+2\ii$.
+\end{solution}
+
+\marginpar{
+  \vspace{-4\baselineskip}
+  \begin{exercise}\smallskip
+    $\dfrac{2-3\ii}{2-\ii}=$\fillblank[5.5em]{}.
+  \end{exercise}
+}
+
+
+\section{复数的三角与指数形式}
+
+\subsection{复数的模和辐角}
+
+\marginpar{
+  \centering
+  \qrcode{images/qr.png}{\color{fifth}微视频}{辐角主值的计算}  
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \coordinate (O) node[below left] {$0$};
+      \coordinate (X) at (2.5,0);
+      \coordinate (Y) at (0,1.5);
+      \coordinate (Z) at ($(X)+(Y)$);
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (X)--(O) node[midway,below=2mm,fourth] {$x$};
+      \draw[decorate,decoration={brace,amplitude=5},cstfill4] (O)--(Y) node[midway,left=2mm,fourth] {$y$};
+      \draw[main,thick,cstra] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.3, angle radius=0.8cm] {angle=X--O--Z};
+      \draw[cstaxis] (-.5,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2);
+      \draw[cstcurve,main,cstra] (O)--(Z) node[midway,above,main] {$r$};
+      \draw[cstdash,third] (X)--(Z)--(Y);
+    \end{scope}
+    \fill[cstdot,third] (Z) circle node[above] {$z=x+y\ii$};
+  \end{tikzpicture}
+  \captionof{figure}{模和辐角}
+}
+
+由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
+以 $0$ 为极点, 正实轴为极轴, 逆时针为极角方向可以自然定义出复平面上的极坐标系.
+设复数 $z=x+y\ii$ 对应点的极坐标为 $(r,\theta)$.
+由极坐标和直角坐标的转化关系可知:
+\begin{gather*}
+  x=r\cos\theta,\qquad y=r\sin\theta,\\
+  r=\sqrt{x^2+y^2},\quad 
+  \theta=\arctan\frac yx+2k\cpi\ \text{或}\ 
+         \arctan\frac yx+\cpi+2k\cpi,\ k\in\BZ.
+\end{gather*}
+
+\begin{definition}
+  \begin{enuma}
+    \item 称 $r$ 为 $z$ 的\nouns{模}\index{mo@模}, 记为 \nouns{$\abs{z}$}\index{0z@$\lvert z\rvert$}${}=r=\sqrt{x^2+y^2}$.
+    \item 称 $\theta$ 为 $z$ 的\nouns{辐角}\index{fujiao@辐角}, 记为 \nouns{$\Arg z$}\index{0argz@$\Arg z$}${}=\theta$.
+  \end{enuma}
+\end{definition}
+
+\alert{约定 $0$ 的辐角没有意义.}
+
+\begin{widefigure}
+  \begin{minipage}[b]{6cm}
+    \centering
+    \begin{tikzpicture}
+      \clip (1.4,1) rectangle (5.3,5);
+      \begin{axis}[
+        axis lines=none,
+        axis line style={-Stealth},
+        view={45}{30},
+        enlargelimits=0.2,
+        height=7cm
+      ]
+      \draw[cstaxis] (axis cs:-1.3,0,0)--(axis cs:1.3,0,0) node[right] {$x$};
+      \draw[cstaxis] (axis cs:0,-1.3,0)--(axis cs:0,1.4,0) node[right] {$y$};
+      \draw[cstaxis] (axis cs:0,0,-250)--(axis cs:0,0,1300) node[above] {$\Arg z$};
+      \addplot3[
+        surf,
+        domain=0:1,
+        domain y=0:1080,
+        samples=90,
+        samples y=70,
+        variable=\v,
+        variable y=\u,
+        shader=interp,
+        colormap name=fadedecay
+      ] ({v*cos(u)},{v*sin(u)},{u});
+      \end{axis}
+    \end{tikzpicture}
+    \captionof{figure}{辐角 $\Arg z$}
+    \label{fig:image-Arg-z}
+  \end{minipage}
+  \begin{minipage}[b]{6cm}
+    \centering
+    \begin{tikzpicture}
+      \def\r{1.2}
+      \draw[cstaxis] (-2,0)--(1.9,0); 
+      \draw[cstaxis] (0,-1.7)--(0,1.7);
+      \draw[cstaxis,main,cstwla,cstcurve] (-\r,0) arc(180:-180:\r);
+      \filldraw[cstdote,draw=main] (-\r,-.07) circle;
+      \begin{scope}[scale=\r]
+        \coordinate (A) at (.6,.6);
+        \coordinate (B) at (-.7,.5);
+        \coordinate (C) at (-1.1,-.5);
+        \coordinate (D) at (1,-.6);
+        \coordinate (R1) at (1.2,0);
+        \coordinate (R2) at (-.6,0);
+        \coordinate (I1) at (0,.5);
+        \coordinate (I2) at (0,-.4);
+      \end{scope}
+      \begin{scope}[cstdot]
+        \fill[main] (A) circle node[right,shift={(.2,0)}] {$\arctan\dfrac yx$};
+        \fill[second] (B) circle node[above left] {$\arctan\dfrac yx+\cpi$};
+        \fill[fifth] (C) circle node[below,shift={(-.5,0)}] {$\arctan\dfrac yx-\cpi$};
+        \fill[main] (D) circle node[below,shift={(.1,0)}] {$\arctan\dfrac yx$};
+        \fill[main] (R1) circle node[above] {$0$};
+        \fill[third] (R2) circle node[below] {$\cpi$};
+        \fill[third] (I1) circle node[left] {$\dfrac\cpi2$};
+        \fill[third] (I2) circle node[right] {$-\dfrac\cpi2$};
+      \end{scope}
+    \end{tikzpicture}
+    \captionof{figure}{辐角主值}
+  \end{minipage}
+\end{widefigure}
+
+任意非零复数 $z$ 的辐角有无穷多个.
+这是因为若 $\theta$ 是 $z$ 的辐角, 则 $\theta+2k\cpi$ 也是 $z$ 的辐角, 其中 $k$ 是任意整数.
+我们固定选择 $\Arg z$ 中位于区间 $(-\cpi,\cpi]$ 的那个, 并称之为\nouns{辐角主值}\index{fujiao@辐角!fujiaozhuzhi@辐角主值}, 记作 \nouns{$\arg z$}\index{0argz@$\arg z$}.
+那么
+\[
+  \Arg z=\arg z+2k\cpi, \quad k\in\BZ.
+\]
+
+\marginpar{
+  \vspace{-2\baselineskip}
+  \small
+  实际上我们可以任选长度为 $2\cpi$ 的半开半闭区间作为辐角主值范围. 常见的选择还有 $[0,2\cpi)$.
+}
+
+根据 $z$ 所处的位置, 我们有
+\begin{equation}
+  \label{eq:arg}
+  \arg z=\begin{cases}
+    {\color{main}\arctan\dfrac yx},&
+      {\color{main}x>0},\\[4pt]
+    {\color{second}\arctan\dfrac yx+\cpi},&
+      {\color{second}x<0,y\ge0},\\[4pt]
+    {\color{fifth}\arctan\dfrac yx-\cpi},&
+      {\color{fifth}x<0,y<0},\\[4pt]
+    {\color{third}\dfrac\cpi2},&
+      {\color{third}x=0,y>0},\\[4pt]
+    {\color{third}-\dfrac\cpi2},&
+      {\color{third}x=0,y<0}.
+  \end{cases}
+\end{equation}
+
+\marginpar{
+  \vspace{3\baselineskip}
+  \begin{exercise}
+    等式 $\arg\ov z=\arg\dfrac1z=-\arg z$ 何时成立?
+  \end{exercise}
+}
+
+我们有
+\[
+  \Arg \ov z=\Arg\frac1z=-\Arg z.
+\]
+这里, 等式两边都可以取很多值, 相等是指两边所能取到的值构成的集合相等.
+可以看出
+\[
+  \Arg\ov z=\Arg\frac1z=\{-\theta+2k\cpi\mid k\in\BZ\},
+  \ 
+  -\Arg z=\{-\theta-2k\cpi\mid k\in\BZ\}
+\]
+作为集合是相等的.
+后文中类似等式的含义也是如此. 
+不过, 等式
+\[
+  \arg\ov z=\arg\frac1z=-\arg z
+\]
+\alert{不一定成立}.
+
+复数的模满足如下性质:
+\begin{enuma}
+  \item $z\ov z=\abs{z}^2=\abs{\ov z}^2$;
+  \label{enum:modulus-zzbar}
+  \item $\abs{\Re z}$ 和 $\abs{\Im z}\le \abs{z}\le\abs{\Re z}+\abs{\Im z}$;
+  \label{enum:re-im-less}
+  \item $\bigabs{\abs{z_1}-\abs{z_2}}\le\abs{z_1\pm z_2}\le\abs{z_1}+\abs{z_2}$;
+  \label{enum:modulus-triangle-inequality}
+  \item $\abs{z_1+z_2+\cdots+z_n}\le\abs{z_1}+\abs{z_2}+\cdots+\abs{z_n}$.
+  \label{enum:modulus-nangle-inequality}
+\end{enuma}
+
+\normalmarginpar
+\marginpar{
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \draw[cstaxis] (-2.5,0)--(.5,0);
+    \draw[cstaxis] (0,-.5)--(0,2);
+    \coordinate (O);
+    \coordinate (Z) at (-2,1.5);
+    \coordinate (R) at (-2,0);
+    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(R) node[midway,below=2mm] {$\abs{\Re z}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (R)--(Z) node[midway,left=2mm] {$\abs{\Im z}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z)--(O) node[midway,above right] {$\abs{z}$};
+    \draw[thick,third] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
+    \draw[cstcurve,second] (Z)--(R)--(O);
+    \draw[cstcurve,fourth] (Z)--(O);
+  \end{tikzpicture}
+  \begin{tikzpicture}[mpscale]
+    \coordinate (O);
+    \coordinate (Z1) at (.9,1.4);
+    \coordinate (Z2) at (-1.1,.3);
+    \coordinate (Z3) at (-1.2,-.2);
+    \coordinate (Z12) at ($(Z1)+(Z2)$);
+    \coordinate (Z123) at ($(Z12)+(Z3)$);
+    \coordinate (M) at ($(Z1)-(Z2)$);
+    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (O)--(Z1) node[midway,above,sloped] {$\abs{z_1}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z12)--(Z1) node[midway,above,sloped] {$\abs{z_2}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z1)--(M) node[midway,above,sloped] {$\abs{z_2}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (M)--(O) node[midway,below,sloped] {$\abs{z_1-z_2}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill4] (Z123)--(Z12) node[midway,above,sloped] {$\abs{z_3}$};
+    \draw[decorate,decoration={brace,amplitude=5},cstfill2] (O)--(Z123) node[midway,below,sloped] {$\abs{z_1+z_2+z_3}$};
+    \begin{scope}[cstcurve,cstra,fourth]
+      \draw (O)--(Z1);
+      \draw (Z1)--(Z12);
+      \draw (Z12)--(Z123);
+      \draw (Z1)--(M);
+      \begin{scope}[second]
+        \draw (O)--(Z123);
+        \draw (O)--(Z12);
+        \draw (O)--(M);
+      \end{scope}
+    \end{scope}
+    % \draw[cstaxis] (-.2,0)--(3,0);
+    % \draw[cstaxis] (0,-.5)--(0,3);
+  \end{tikzpicture}
+  \captionof{figure}{复数模的不等式关系}
+  \label{fig:inequality_of_modulus}
+}
+
+这些性质可通过\ref{fig:inequality_of_modulus} 使用几何直观证明, 也可利用代数方法证明.
+
+\begin{exampleenum}[证明:]
+  \item $\abs{z_1z_2}=\abs{z_1\ov{z_2}}=\abs{z_1}\cdot\abs{z_2}$;
+  \label{enum:modulus-z1z2-z1-z2}
+  \item $\abs{z_1+z_2}^2=\abs{z_1}^2+\abs{z_2}^2+2\Re(z_1\ov{z_2})$.
+  \item $\bigabs{\abs{z_1}-\abs{z_2}}\le\abs{z_1+z_2}$.
+\end{exampleenum}
+
+\marginpar{
+  \begin{exercise}
+    什么时候 $\abs{z_1+z_2+\cdots+z_n}=\abs{z_1}+\abs{z_2}+\cdots+\abs{z_n}$ 成立?
+  \end{exercise}
+}
+
+\begin{proofenumr}
+  \item 根据性质 \ref{enum:modulus-zzbar},
+  \[
+      \abs{z_1z_2}^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
+    =z_1\cdot z_2\cdot \ov{z_1}\cdot \ov{z_2}
+    =\abs{z_1}^2\cdot\abs{z_2}^2.
+  \]
+  由于复数模是非负实数, 因此 $\abs{z_1z_2}=\abs{z_1}\cdot\abs{z_2}$.
+  将 $z_2$ 换成 $\ov{z_2}$ 得到
+  \[
+      \abs{z_1\ov{z_2}}
+    =\abs{z_1}\cdot\abs{\ov{z_2}}
+    =\abs{z_1}\cdot\abs{z_2}.
+  \]
+  \item 我们有
+  \begin{align*}
+      \abs{z_1+z_2}^2
+    =(z_1+z_2)(\ov{z_1}+\ov{z_2})&
+    =z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,\\
+      \abs{z_1}^2+\abs{z_2}^2+2\Re(z_1\ov{z_2})&
+    =z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}}.
+  \end{align*}
+  由于 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 因此两式相等.
+  \item 根据 \ref{enum:modulus-z1z2-z1-z2}, 我们有
+  \begin{align*}
+      \bigabs{\abs{z_1}-\abs{z_2}}^2
+    =\abs{z_1}^2-2\abs{z_1}\cdot\abs{z_2}+\abs{z_2}^2&
+    =\abs{z_1}^2-2\abs{z_1 \ov{z_2}}+\abs{z_2}^2,\\
+      \abs{z_1+z_2}^2&
+    =\abs{z_1}^2+2\Re(z_1 \ov{z_2})+\abs{z_2}^2.
+  \end{align*}
+  因此我们只需证明 $-\abs{z_1 \ov{z_2}}\le \Re(z_1 \ov{z_2})$, 即 $\abs{-z_1 \ov{z_2}}\ge \Re(-z_1 \ov{z_2})$.
+  这由性质 \ref{enum:re-im-less} 得到.
+  \qedhere
+\end{proofenumr}
+
+
+\subsection{复数的三角形式和指数形式}
+
+\marginpar{
+  \vspace{-\baselineskip}
+  \small
+  $\ee^{\ii\theta}:=\cos\theta+\ii\sin\theta$ 叫作\emph{欧拉恒等式}\index{oulahengdengshi@欧拉恒等式}, 它最先由科茨于 1714 年提出 \cite[第19章3节]{Kline1990b}, 后被欧拉于 1748 年重新发现.
+  我们会在 \ref{ssec:exponential-function}说明为何如此定义, 并给出指数函数的一般形式.
+}
+\marginpar{
+  \vspace{\baselineskip}
+  \begin{center}
+    \includegraphics[width=.95\marginparwidth]{images/Euler.jpg}
+  \end{center}
+  \footnotesize
+    欧拉, 瑞士数学家、自然科学家.
+    欧拉出生在瑞士巴塞尔一个牧师家庭, 自幼受父亲的熏陶, 喜爱数学.
+    13岁入读巴塞尔大学, 15岁大学毕业, 16岁获得硕士学位.
+    欧拉是18世纪数学界最杰出的人物之一, 他不但为数学界作出贡献, 更把整个数学推至物理的领域.
+    他是数学史上最多产的数学家, 平均每年写出八百多页的论文, 还写了大量的力学、分析学、几何学、变分法等的课本, 《无穷小分析引论》、《微分学原理》、《积分学原理》等都成为数学界中的经典著作.
+    欧拉对数学的研究如此之广泛, 因此在许多数学的分支中也可经常见到以他的名字命名的重要常数、公式和定理.
+    此外欧拉还涉及建筑学、弹道学、航海学等领域.
+}
+
+
+由 $x=r\cos\theta,y=r\sin\theta$ 可得
+\[
+  \color{main}z=r(\cos\theta+\ii\sin\theta).
+\]
+我们把这种形式称为复数的\nouns{三角形式}\index{sanjiaoxingshi@三角形式}.
+定义 \alert{$\ee^{\ii\theta}:=\cos\theta+\ii\sin\theta$}, 则上述形式可改写为复数的\nouns{指数形式}\index{zhishuxingshi@指数形式}:
+\[
+  \color{main}z=r\ee^{\ii\theta}.
+\]
+这两种形式是等价的, 目前我们将指数形式视为三角形式的一种缩写方式.
+指数形式也可写作 $z=r\exp(\ii\theta)$.
+求复数的三角形式和指数形式的\alert{关键在于计算模和辐角}.
+
+\begin{example}
+  将 $z=-2-\sqrt{12}\ii$ 化成三角形式和指数形式.
+\end{example}
+
+\begin{solution}
+  显然 $\abs{z}=\sqrt{4+12}=4$.
+  由于 $z$ 在第三象限, 由\eqref{eq:arg} 可知
+  \[
+     \arg z
+    =\arctan\frac{-\sqrt{12}}{-2}-\cpi
+    =\frac\cpi3-\cpi
+    =-\frac{2\cpi}3.
+  \]
+  因此 $z$ 的三角形式和指数形式为
+  \[
+     z
+    =4\Bigl(\cos\bigl(-\frac{2\cpi}3\bigr)+\ii\sin\bigl(-\frac{2\cpi}3\bigr)\Bigr)
+    =4\ee^{-\frac{2\cpi \ii}3}.
+  \]
+\end{solution}
+
+求复数的三角形式或指数形式时, 可以任取一个辐角, 不要求必须是辐角主值.
+
+\begin{example}
+  设 $0<\theta<\dfrac\cpi2$.
+  将 $z=\sin\theta-\ii\cos\theta$ 化成三角形式和指数形式.
+\end{example}
+
+\begin{solution}[解法一]
+  显然 $\abs{z}=\sqrt{\sin^2\theta+\cos^2\theta}=1$. 由于 $z$ 在第四象限, 由\eqref{eq:arg} 可知
+  \[
+     \arg z
+    =\arctan\Bigl(-\frac{\cos\theta}{\sin\theta}\Bigr)
+    =-\arctan\tan\Bigl(\frac\cpi2-\theta\Bigr)
+    =-\Bigl(\frac\cpi2-\theta\Bigr)
+    =\theta-\frac\cpi2.
+  \]
+  因此 $z$ 的三角形式和指数形式为
+  \[
+     z
+    =\cos\Bigl(\theta-\frac\cpi2\Bigr)+\ii\sin\Bigl(\theta-\frac\cpi2\Bigr)
+    =\ee^{\ii(\theta-\frac\cpi2)}.
+  \]
+\end{solution}
+
+\begin{solution}[解法二]
+  利用三角函数间的等式关系得到
+  \begin{align*}
+      \sin\theta
+    &=\cos\Bigl(\frac\cpi2-\theta\Bigr)
+     =\cos\Bigl(\theta-\frac\cpi2\Bigr),\\
+      -\cos\theta
+    &=-\sin\Bigl(\frac\cpi2-\theta\Bigr)
+     =\sin\Bigl(\theta-\frac\cpi2\Bigr).
+  \end{align*}
+  因此 $z$ 的三角形式和指数形式为
+  \[
+     z
+    =\cos\Bigl(\theta-\frac\cpi2\Bigr)+\ii\sin\Bigl(\theta-\frac\cpi2\Bigr)
+    =\ee^{\ii(\theta-\frac\cpi2)}.
+  \]
+\end{solution}
+
+\marginpar{
+  \begin{exercise}
+    将 $z=\sqrt 3-3\ii$ 化成三角形式和指数形式.
+  \end{exercise}.
+}
+
+\begin{example}
+  设 $z=\ee^{\ii\theta}$, 其中 $-\cpi<\theta<\cpi$.
+  求 $1+z$ 的三角形式和指数形式.
+\end{example}
+
+\begin{solution}
+  我们有
+  \begin{align*}
+    1+z&
+    =(1+\cos\theta)+\ii\sin\theta
+    =2\cos^2\frac\theta2+2\ii\sin\frac\theta2\cos\frac\theta2\\&
+    =2\cos\frac\theta2\Bigl(\cos\frac\theta2+\ii\sin\frac\theta2\Bigr).
+  \end{align*}
+  由 $-\cpi<\theta<\cpi$ 可知 $\cos\dfrac\theta2>0$.
+  因此 $1+z$ 的三角形式和指数形式为
+  \[
+     1+z
+    =2\cos\frac\theta2\Bigl(\cos\frac\theta2+\ii\sin\frac\theta2\Bigr)
+    =2\cos\frac\theta2\ee^{\frac{\ii\theta}2}.
+  \]
+\end{solution}
+
+同理, 从\ref{fig:sum_of_same_modulus} 容易得到:
+\begin{equation}
+  \label{eq:sum-of-same-modulus}
+   r\ee^{\ii\theta}+r\ee^{\ii\varphi}
+  =2r\cos\Bigl(\frac{\theta-\varphi}2\Bigr)\ee^{\frac{\ii(\theta+\varphi)}2}.
+\end{equation}
+注意当 $\cos\Bigl(\dfrac{\theta-\varphi}2\Bigr)<0$ 时, 这离指数形式还差一步变形.
+
+\normalmarginpar
+\marginpar{
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \def\r{1.9}
+    \def\a{23}
+    \def\b{130}
+    \coordinate (O) node[below left] {$0$};
+    \coordinate (Z1) at ({\r*cos(\a)},{\r*sin(\a)});
+    \coordinate (Z2) at ({\r*cos(\b)},{\r*sin(\b)});
+    \coordinate (P) at ($(Z1)+(Z2)$);
+    \coordinate (M) at ($0.5*(P)$);
+    \coordinate (X) at (1,0);
+    \draw[thick]
+      pic [cstfill, draw=third,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1}
+      pic [cstfill, draw=third, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle=Z1--O--P};
+    \draw[cstaxis] ({-.8*\r},0)--(\r,0);
+    \draw[cstaxis] (0,-.4)--(0,{\r*1.2});
+    \begin{scope}[cstcurve,cstra,main]
+      \draw (O)--(Z1);
+      \draw (O)--(Z2);
+      \draw[fifth] (O)--(P);
+    \end{scope}
+    \draw[cstdash] (Z2)--(Z1)--(P)--(Z2);
+    \draw[thick,rotate around={{(\a+\b)/2-90}:(M)}] (M) rectangle ++(.2,.2);
+    \draw
+      (Z1) node[below] {$\ee^{\ii\varphi}$}
+      (Z2) node[above] {$\ee^{\ii\theta}$}
+      (P) node[above] {$\ee^{\ii\theta}+\ee^{\ii\varphi}$};
+  \end{tikzpicture}
+  \captionof{figure}{模相等的复数之和}
+  \label{fig:sum_of_same_modulus}
+}
+
+
+\section{复数的乘除、乘幂和方根}
+
+三角形式和指数形式在复数的乘法、除法和幂次计算中非常有用.
+
+\subsection{复数的乘除}
+
+\begin{theorem}
+  \label{thm:multiply}
+  设非零复数 $z_1,z_2$ 的三角形式分别为
+  \[
+    z_1=r_1(\cos\theta_1+\ii\sin\theta_1),\qquad
+    z_2=r_2(\cos\theta_2+\ii\sin\theta_2),
+  \]
+  则
+  \begin{align*}
+     z_1z_2&
+    =r_1r_2\bigl(\cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)\bigr),\\
+     \frac{z_1}{z_2}&
+    =\frac{r_1}{r_2}\bigl(\cos(\theta_1-\theta_2)+\ii\sin(\theta_1-\theta_2)\bigr).
+  \end{align*}
+\end{theorem}
+
+若表达为指数形式, 上述等式变为
+  \[
+    r_1\ee^{\ii\theta_1}\cdot r_2\ee^{\ii\theta_2}=r_1r_2\ee^{\ii(\theta_1+\theta_2)},\qquad
+    \frac{r_1\ee^{\ii\theta_1}}{r_2\ee^{\ii\theta_2}}=\frac{r_1}{r_2}\ee^{\ii(\theta_1-\theta_2)}.
+  \]
+该定理表明
+\[
+  \abs{z_1z_2}=\abs{z_1}\cdot\abs{z_2},\quad
+  \biggabs{\frac{z_1}{z_2}}=\frac{\abs{z_1}}{\abs{z_2}},
+\]
+\begin{equation}
+  \label{eq:Arg-multiply-divide-equality}
+  \Arg{(z_1z_2)}=\Arg z_1+\Arg z_2,\quad
+  \Arg{\frac{z_1}{z_2}}=\Arg z_1-\Arg z_2.
+\end{equation}
+不过, 等式
+\[
+  \arg{(z_1z_2)}=\arg z_1+\arg z_2, \arg{\dfrac{z_1}{z_2}}=\arg z_1-\arg z_2
+\]
+\alert{不一定成立}.
+事实上, 当且仅当等式右侧落在区间 $(-\cpi,\cpi]$ 内时上述等式才成立, 否则等式两侧会相差 $\pm2\cpi$.
+例如 $z_1=z_2=\ee^{0.99\cpi \ii}$, $z_1z_2=\ee^{1.98\cpi \ii}$,
+\[
+  \arg z_1+\arg z_2=0.99\cpi+0.99\cpi=1.98\cpi,\quad
+  \arg(z_1z_2)=-0.02\cpi.
+\]
+
+\begin{proof}
+  根据和差的正弦、余弦公式可知
+  \begin{align*}
+     z_1z_2&
+    =r_1(\cos\theta_1+\ii\sin\theta_1)\cdot
+     r_2(\cos\theta_2+\ii\sin\theta_2)\\&
+    =r_1r_2\bigl(
+       (\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
+    +\ii(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)
+     \bigr)\\&
+    =r_1r_2\bigl(
+      \cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)
+     \bigr),
+  \end{align*}
+  由此乘法情形得证.
+
+  对于除法情形, 设 $z_1=z_2\cdot r\ee^{\ii\theta}$.
+  由乘法情形可知 $rr_2=r_1$ 且 $\theta+\theta_2$ 是 $z_1$ 的辐角.
+  因此 $r=r_1/r_2$, $\theta$ 可取 $\theta_1-\theta_2$.
+\end{proof}
+
+
+\subsection{复数乘法的几何意义}
+
+从\thmref{定理}{thm:multiply} 可以看出, 乘以复数 $z=r\ee^{\ii\theta}$ 可以理解为\alert{模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$}.
+由此我们可以利用复数来解决平面几何中的问题.
+
+\marginpar{
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \def\a{1.2}
+    \def\b{2}
+    \def\c{1.3}
+    \def\u{50}
+    \def\v{78}
+    \coordinate (O);
+    \coordinate (X) at (\a,0);
+    \coordinate (Z) at ({\b*cos(\u)},{\b*sin(\u)});
+    \coordinate (Z1) at ({\a*\c*cos(\v)},{\a*\c*sin(\v)});
+    \coordinate (ZZ1) at ({\b*\c*cos(\u+\v)},{\b*\c*sin(\u+\v)});
+    \draw
+      pic [cstcurve,second,cstfill2,draw, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z}
+      pic [cstcurve,fifth,cstfill5,draw,"$\theta$",angle eccentricity=1.4] {angle=Z1--O--ZZ1}
+      pic [thick,cstfill,draw,angle radius=4mm] {angle=ZZ1--Z1--O}
+      pic [thick,cstfill,draw,angle radius=4mm] {angle=Z--X--O};
+    \draw[cstaxis] (-1.5,0)--(1.8,0);
+    \draw[cstaxis] (0,-.5)--(0,3);
+    \begin{scope}[cstcurve,cstra]
+      \draw[second] (O)--(X);
+      \draw[second] (O)--(Z);
+      \draw[fifth] (O)--(Z1);
+      \draw[fifth] (O)--(ZZ1);
+    \end{scope}
+    \draw[cstdash,third] (X)--(Z);
+    \draw[cstdash,third] (Z1)--(ZZ1);
+    \draw
+      (X) node[below] {$1$}
+      (Z) node[above] {$z=r\ee^{\ii\theta}$}
+      (Z1) node[above] {$z_1$}
+      (ZZ1) node[above] {$zz_1$};
+  \end{tikzpicture}
+  \captionof{figure}{复数乘法的几何意义}
+}
+
+\begin{example}
+  已知正三角形的两个顶点为 $z_1=2$ 和 $z_2=1+\ii$, 求它的第三个顶点.
+\end{example}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \begin{scope}[scale=1.3]
+      \coordinate (Z1) at (2,0);
+      \coordinate (Z2) at (1,1);
+      \coordinate (Z3) at ({(1.5-sqrt(3)/2)},{(.5-sqrt(3)/2)});
+      \coordinate (Z3p) at ({(1.5+sqrt(3)/2)},{(.5+sqrt(3)/2)});
+      \draw[cstcurve]
+        pic [cstfill,draw, "$\cpi/3$", angle eccentricity=1.8,angle radius=4mm] {angle=Z2--Z1--Z3}
+        pic [cstfill,draw, "$\cpi/3$", angle eccentricity=1.8] {angle=Z3p--Z1--Z2};
+      \draw[cstaxis] (-.3,0)--(2.5,0);
+      \draw[cstaxis] (0,-.5)--(0,1.7);
+      \draw[cstcurve,main] (Z1)--(Z2)--(Z3)--cycle;
+      \draw[cstdash,fourth] (Z1)--(Z3p)--(Z2);
+      \draw[third]
+        (Z1) node[below] {$z_1$}
+        (Z2) node[above] {$z_2$}
+        (Z3) node[left] {$z_3$}
+        (Z3p) node[right] {$z'_3$};
+      \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{正三角形的顶点位置关系}
+}
+
+\begin{solution}
+  由于 $\overrightarrow{z_1z_3}$ 为 $\overrightarrow{z_1z_2}$ 逆时针或顺时针旋转 $\dfrac\cpi3$, 根据复数乘法的几何意义,
+  \begin{align*}
+     z_3-z_1&
+    =(z_2-z_1)\ee^{\pm\frac{\cpi \ii}3}
+    =(-1+\ii)\Bigl(\half\pm\frac{\sqrt3}2\ii\Bigr)\\&
+    =-\frac{\sqrt3+1}2+\frac{1-\sqrt3}2\ii\ \text{或}\ 
+      \frac{\sqrt3-1}2+\frac{\sqrt3+1}2\ii.
+  \end{align*}
+  因此
+  \[
+    z_3=\frac{3-\sqrt3}2+\frac{1-\sqrt3}2\ii\ \text{或}\ 
+      \frac{3+\sqrt3}2+\frac{1+\sqrt3}2\ii.
+  \]
+\end{solution}
+
+\begin{example}
+  设 $AD$ 是 $\triangle ABC$ 的角平分线, 证明: $\dfrac{AB}{AC}=\dfrac{BD}{CD}$.
+\end{example}
+
+\begin{proof}
+  不妨设 $A=0,B=1,C=z,D=w$. 由于 $B,C,D$ 共线, 因此
+  \[
+     \lambda
+    =\frac{BD}{BC}
+    =\frac{w-1}{z-1}\in(0,1),
+  \]
+  于是
+  \[
+     w
+    =1+\lambda(z-1)
+    =\lambda z+(1-\lambda).
+  \]
+  由于 $\angle BAD=\angle CAD$, 根据复数乘法的几何意义,
+  $\dfrac{z-0}{w-0}$ 是 $\dfrac{w-0}{1-0}$ 的正实数倍, 即
+  \[
+     \frac{w^2}z
+    =\lambda^2 z+2\lambda(1-\lambda)+\frac{(1-\lambda)^2}z\in\BR,
+  \]
+  于是
+  \[
+     \lambda^2z+\frac{(1-\lambda)^2}z
+    =\lambda^2\ov z+\frac{(1-\lambda)^2}{\ov z},\qquad
+    \bigl(\lambda^2\abs{z}^2-(1-\lambda)^2\bigr)(z-\ov z)=0.
+  \]
+  显然 $z\neq \ov z$.
+  又因为 $0<\lambda<1$, 所以
+  \[
+     \frac{AC}{AB}
+    =\abs{z}
+    =\frac{1-\lambda}{\lambda}
+    =\frac{BC-BD}{BD}
+    =\frac{CD}{BD}.\qedhere
+  \]
+\end{proof}
+
+\marginpar{
+  \vspace{-16\baselineskip}
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \coordinate  (A) node[below left] {$A$};
+    \coordinate (B) at (2,0);
+    \coordinate (C) at ({3*cos(60)},{3*sin(60)});
+    \coordinate (D) at ($(C)!0.6!(B)$);
+    \draw[cstcurve]
+      pic [cstfill,draw] {angle=B--A--D}
+      pic [cstfill,draw,angle radius=4mm] {angle=D--A--C};
+    \draw[cstaxis] (-.45,0)--(3.5,0);
+    \draw[cstaxis] (0,-.75)--(0,3);
+    \draw[cstcurve,main] (B)--(A)--(C)--cycle;
+    \draw[cstcurve,fourth] (A)--(D);
+    \draw
+      (B) node[below] {$B=1$}
+      (C) node[right] {$C=z$}
+      (D) node[right] {$D=w$};
+  \end{tikzpicture}
+  \captionof{figure}{三角形角平分线与顶点位置关系}
+  \vspace{\baselineskip}
+  \begin{exercise}
+    已知等腰直角三角形的斜边上两个顶点为 $2+\ii,4-\ii$, 求它的直角顶点.
+  \end{exercise}
+}
+
+
+\subsection{复数的乘幂}
+
+由\thmref{定理}{thm:multiply} 归纳可知
+\begin{theorem}
+  设 $z=r(\cos\theta+\ii\sin\theta)=r\ee^{\ii\theta}$ 是一非零复数.
+  对任意整数 $n$, 有
+  \[
+    z^n=r^n(\cos{n\theta}+\ii\sin{n\theta})
+    =r^n\ee^{\ii n\theta}.
+  \]
+\end{theorem}
+特别地, 当 $r=1$ 时, 我们得到\nouns{棣莫弗公式}\index{dimofugongshi@棣莫弗公式}
+\[
+  (\cos\theta+\ii\sin\theta)^n=\cos{n\theta}+\ii\sin{n\theta}.
+\]
+
+\begin{example}
+  求 $(1+\ii)^n+(1-\ii)^n$.
+\end{example}
+
+\begin{solution}
+  由于
+  \[
+    1+\ii=\sqrt2\Bigl(\cos\frac\cpi4+\ii\sin\frac\cpi4\Bigr),\quad
+    1-\ii=\sqrt2\Bigl(\cos\frac\cpi4-\ii\sin\frac\cpi4\Bigr),
+  \]
+  因此
+  \begin{align*}
+     (1+\ii)^n+(1-\ii)^n&
+    =2^{\frac n2}\Bigl(\cos\frac{n\cpi}4+\ii\sin\frac{n\cpi}4 
+      +\cos\frac{n\cpi}4-\ii\sin\frac{n\cpi}4\Bigr)\\&
+    =2^{\frac n2+1}\cos\frac{n\cpi}4.
+  \end{align*}
+\end{solution}
+
+当 $\abs{n}\ge 2$ 时, 等式 $\Arg(z^n)=n\Arg z$ \alert{总不成立}, 等式 $\arg(z^n)=n\arg z$ \alert{不一定成立.} 
+这是因为
+\begin{align*}
+  \Arg z^n&=n\arg z+2k\cpi,\quad k\in\BZ,\\
+  n\Arg z&=n\arg z+2nk\cpi,\quad k\in\BZ,
+\end{align*}
+二者能取到所有值形成的集合不相等.
+而等式 $\arg z^n=n\arg z$ 也仅在 $\arg z\in(-\frac\cpi n,\frac\cpi n]$ 时成立.
+
+\marginpar{
+  \vspace{-6\baselineskip}
+  \begin{exercise}
+    $(\sqrt3+\ii)^{48}=$\fillblank{}.
+  \end{exercise}
+}
+
+复数的乘幂可用于计算三角函数有关的求和式.
+
+\begin{example}
+  设 $0<\theta<2\cpi$, $n$ 是正整数. 计算
+  \begin{subexample}
+    \item $A_n=1+\cos\theta+\cos{2\theta}+\cdots+\cos{n\theta}$;
+    \item $B_n=\sin\theta+\sin{2\theta}+\cdots+\sin{n\theta}$.
+  \end{subexample}
+\end{example}
+
+\begin{solution}
+  设 $z=\cos\theta+\ii\sin\theta=\ee^{\ii\theta}$, 则 $z\neq 1$,
+  \[
+    A_n+\ii B_n=1+z+z^2+\cdots+z^n=\frac{z^{n+1}-1}{z-1}.
+  \]
+  由\eqref{eq:sum-of-same-modulus} 可知
+  \[
+     \ee^{\ii\varphi}-1
+    =\ee^{\ii\varphi}+\ee^{\ii\cpi}
+    =2\cos\Bigl(\frac{\cpi-\varphi}2\Bigr)\exp\Bigl(\frac{\varphi+\cpi}2\ii\Bigr)
+    =2\sin\frac\varphi2\exp\Bigl(\frac{\varphi+\cpi}2\ii\Bigr),
+  \]
+  于是
+  \begin{align*}
+     z^{n+1}-1
+    =\ee^{\ii(n+1)\theta}-1&
+    =2\sin\Bigl(\frac{(n+1)\theta}2\Bigr)\exp\Bigl(\frac{(n+1)\theta+\cpi}2\ii\Bigr),\\
+     z-1
+    =\ee^{\ii\theta}-1&
+    =2\sin{\frac\theta2}\exp\Bigl(\frac{\theta+\cpi}2\ii\Bigr).
+  \end{align*}
+  两式相除得到
+  \[
+     A_n+\ii B_n
+    =\frac{z^{n+1}-1}{z-1}
+    =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\exp\Bigl(\frac{n\theta}2\ii\Bigr).
+  \]
+  它的实部和虚部分别为
+  \[
+     A_n
+    =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\cos\frac{n\theta}2,\qquad
+    B_n
+     =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\sin\frac{n\theta}2.
+  \]
+\end{solution}
+
+
+\subsection{复数的方根}
+
+我们利用复数乘幂公式来计算非零复数 $z$ 的 \nouns{$n$ 次方根 $\sqrt[n]z$}\index{fanggen@方根}, 其中 $n$ 是正整数.
+设
+\[
+  w^n=z=r\ee^{\ii\theta},\quad 
+  w=\rho \ee^{\ii\varphi},
+\]
+则
+\[
+  w^n=\rho^n(\cos{n\varphi}+\ii\sin{n\varphi})
+     =r(\cos\theta+\ii\sin\theta).
+\]
+比较两边的模可知 $\rho^n=r,\rho=\sqrt[n]r$.
+为了避免记号冲突, 当 $r$ 是正实数时, $\sqrt[n]r$ 默认表示 $r$ 的唯一的 $n$ 次正实根, 称之为\nouns{算术根}\index{suanshugen@算术根}\footnote{%
+  部分文献会使用 $(\sqrt[n]r)$ 来表示算术根, 以示区分.%
+}.
+
+由于 $n\varphi$ 与 $\theta$ 的正弦和余弦均相等, 因此存在整数 $k$ 使得
+\[
+  n\varphi=\theta+2k\cpi,\quad \varphi=\frac{\theta+2k\cpi}n.
+\]
+故
+\[
+  w=w_k=\sqrt[n]r\exp\Bigl(\frac{\theta+2k\cpi}n\ii\Bigr).
+\]
+不难看出, $w_k=w_{k+n}$, 而 $w_0,w_1,\cdots,w_{n-1}$ 两两不同.
+因此只需取 $k=0,1,\cdots,n-1$.
+\begin{theorem}
+  \label{thm:root}
+  任意非零复数 $z=r\ee^{\ii\theta}$ 的 $n$ 次方根有 $n$ 个值:
+  \[
+     \sqrt[n]z
+    =\sqrt[n]r\exp\Bigl(\frac{\theta+2k\cpi}n\ii\Bigr)
+    =\sqrt[n]r\biggl(
+      \cos\Bigl(\frac{\theta+2k\cpi}n\Bigr)
+      +\ii\sin\Bigl(\frac{\theta+2k\cpi}n\Bigr)
+    \biggr),
+  \]
+  其中 $k=0,1,\cdots,n-1$.
+\end{theorem}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \def\a{-11.25}
+    \def\r{1.4}
+    \draw[cstaxis] (-2,0)--(2,0);
+    \draw[cstaxis] (0,-2)--(0,2);
+    \coordinate (O) node[below left] {$0$};
+    \draw[cstcurve,thick,third,cstra] circle (\r);
+    \foreach \i in {0,1,2,3}{
+      \coordinate (W\i) at ({\r*cos(\a+90*\i)},{\r*sin(\a+90*\i)});
+      \draw[thick,cstra,main] (O)--(W\i);
+    }
+    \draw[cstcurve,fourth] (W0)--(W1)--(W2)--(W3)--cycle;
+    \draw
+      (W0) node[right] {$w_0$}
+      (W1) node[above] {$w_1$}
+      (W2) node[left] {$w_2$}
+      (W3) node[below] {$w_3$};
+  \end{tikzpicture}
+  \captionof{figure}{$\sqrt[4]{1-\ii}$ 的所有值}
+  \label{fig:quoternion-root-1-i}
+  \vspace{\baselineskip}
+  \begin{exercise}
+    $\sqrt[6]{-1}=$\fillblank[6em]{}.
+  \end{exercise}
+}
+
+\begin{example}
+  求 $\sqrt[4]{1-\ii}$.
+\end{example}
+
+\begin{solution}
+  由于
+  \[
+    1-\ii=\sqrt2\ee^{-\frac{\cpi \ii}4},
+  \]
+  因此
+  \[
+     \sqrt[4]{1-\ii}
+    =\sqrt[8]2\exp\Bigl(\frac{-\cpi/4+2k\cpi}4\ii\Bigr),\quad k=0,1,2,3.
+  \]
+  于是该方根全部值为
+  \[
+    w_0=\sqrt[8]2\ee^{-\frac{\cpi \ii}{16}},\quad
+    w_1=\sqrt[8]2\ee^{\frac{7\cpi \ii}{16}},\quad
+    w_2=\sqrt[8]2\ee^{\frac{15\cpi \ii}{16}},\quad
+    w_3=\sqrt[8]2\ee^{\frac{23\cpi \ii}{16}}.
+  \]
+\end{solution}
+
+显然 $w_{k+1}=iw_k$, 所以如\ref{fig:quoternion-root-1-i} 所示, $w_0,w_1,w_2,w_3$ 形成了一个正方形.
+
+我们总有
+\begin{equation}
+  \label{eq:Arg-root-equality}
+  \Arg \sqrt[n]z=\frac1n\Arg z=\frac{\arg z+2k\cpi}n,\quad k\in\BZ,
+\end{equation}
+其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角.
+当 $n\ge 2$ 时,
+\[
+  \arg \sqrt[n]z=\frac 1n\arg z
+\]
+\alert{总不成立}. 这是因为等式左侧是多值的.
+
+我们称 $1$ 的 $n$ 次方根为 \nouns{$n$ 次单位根}\index{danweigen@单位根}.
+所有的 $n$ 次方根为
+\[
+  \zeta^k=\ee^{\frac{2k\cpi \ii}n},\quad k=0,1,\cdots,n-1,
+\]
+其中 $\zeta=\ee^{\frac{2\cpi \ii}n}$.
+对于任意非零复数 $z$, 它的 $n$ 次方根满足 $w_k=w_0\zeta^k$.
+于是 $z$ 的 $n$ 次方根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\frac{2\cpi}n$.
+因此\alert{它们均匀分布在以原点为中心, $\sqrt[n]r$ 为半径的圆周上}, 它们构成该圆的一个内接正 $n$ 边形的顶点.
+
+\marginpar{
+  \begin{tikzpicture}
+    \def\r{1.2}
+    \draw[cstaxis] (-2,0)--(2,0);
+    \draw[cstaxis] (0,-2)--(0,2);
+    \foreach \i in {0,...,11}{
+      \coordinate (Z\i) at ({\r*cos(30*\i)},{\r*sin(30*\i)});
+      \draw[cstra,main,thick] (0,0)--(Z\i);
+    }
+    \draw[cstcurve,third,thick] circle (\r);
+    \draw
+      (Z0) node[below right] {$1$}
+      (Z1) node[above right] {$\zeta_{12}$}
+      (Z2) node[above right] {$\zeta_6$}
+      (Z3) node[above right] {$\ii$}
+      (Z4) node[above left] {$\zeta_3$}
+      (Z5) node[above left] {$\zeta_{12}^5$}
+      (Z6) node[below left] {$-1$}
+      (Z7) node[below left] {$-\zeta_{12}$}
+      (Z8) node[below left] {$-\zeta_6$}
+      (Z9) node[below right] {$-\ii$}
+      (Z10) node[below right]  {$-\zeta_3$}
+      (Z11) node[below right]  {$-\zeta_{12}^5$};
+    \draw[cstcurve,fourth,thick] (Z0)--(Z1)--(Z2)--(Z3)--(Z4)--(Z5)--(Z6)--(Z7)--(Z8)--(Z9)--(Z10)--(Z11)--cycle;
+  \end{tikzpicture}
+  \captionof{figure}{所有的 $12$ 次单位根}
+}
+
+\begin{example}
+  显然 $n$ 次单位根都是 $nk$ 次单位根.
+  \begin{enumr}
+    \item $16$ 次单位根全体为
+    \[
+      \underbrace{
+        \overbrace{
+          \pm1,\quad
+          \pm \ii
+        }^{\text{$4$ 次单位根}},\quad
+        \pm\frac{1+\ii}{\sqrt2},\quad
+        \pm\frac{1-\ii}{\sqrt2}
+      }_{\text{$8$ 次单位根}},
+    \]
+    \[
+      \pm\frac{\sqrt{2+\sqrt2}}2\pm\ii\frac{\sqrt{2-\sqrt2}}2,\quad
+      \pm\frac{\sqrt{2+\sqrt2}}2\pm\ii\frac{\sqrt{2-\sqrt2}}2,
+    \]
+    \[
+      \pm\frac{\sqrt{2-\sqrt2}}2\pm\ii\frac{\sqrt{2+\sqrt2}}2,\quad
+      \pm\frac{\sqrt{2-\sqrt2}}2\pm\ii\frac{\sqrt{2+\sqrt2}}2.
+    \]
+    \item $12$ 次单位根全体为
+    \[
+      \underbrace{
+        \overbrace{
+          1,\quad
+          \frac{-1\pm\sqrt3\ii}2
+        }^{\text{$3$ 次单位根}},\quad
+        -1,\quad
+        \frac{1\pm\sqrt3\ii}2
+      }_{\text{$6$ 次单位根}},\quad
+      \pm\ii,\quad
+      \pm\frac{\sqrt 3+\ii}2,\quad
+      \pm\frac{\sqrt 3-\ii}2.
+    \]
+    \item 令 $\zeta=\ee^{\frac{2\cpi \ii}n}$, 则我们有
+    \[
+      1+\zeta+\zeta^2+\cdots+\zeta^{n-1}
+      =\frac{\zeta^n-1}{\zeta-1}=0,
+    \]
+    \[
+        x^n-1
+      =\prod_{k=0}^{n-1}(x-\zeta^k)
+      =(x-1)(x-\zeta)(x-\zeta^2)\cdots(x-\zeta^{n-1}).
+    \]
+  \end{enumr}
+\end{example}
+
+
+\subsection{实系数三次方程根的情况\optional}
+\label{ssec:real-cubic-equation}
+
+现在我们来看三次方程 $z^3+pz+q=0$ 的根, 其中 $p\neq 0$.
+回顾 \ref{ssec:motivation-complex-numbers}中的求根公式:
+\[
+  z=u+v,\quad 
+  u^3=-\frac q2+\sqrt{\Delta},\quad 
+  uv=-\frac p3,\quad 
+  \Delta=\frac{q^2}4+\frac{p^3}{27}.
+\]
+设该方程的三个根为 $z_1,z_2,z_3$, 则
+\begin{align*}
+   z^3+pz+q&
+  =(z-z_1)(z-z_2)(z-z_3)\\&
+  =z^3-(z_1+z_2+z_3)z^2+(z_1z_2+z_2z_3+z_3z_1)z-z_1z_2z_3.
+\end{align*}
+设 $a=z_1z_2$, 则 $z_1+z_2=-z_3$, $p=a-z_3^2$, $q=-az_3$.
+于是
+\begin{align*}
+    &\mathrel{\phantom{=}}
+  \bigl((z_1-z_2)(z_2-z_3)(z_3-z_1)\bigr)^2\\&
+  =(z_1^2-2z_1z_2+z_2^2)\bigl(z_3^2-(z_1+z_2)z_3+z_1z_2\bigr)^2\\&
+  =(z_3^2-4a)(2z_3^2+a)^2\\&
+  =4z_3^6-12az_3^4-15a^2z_3^2-4a^3\\&
+  =4(z_3^2-a)^3-27a^2z_3^2\\&
+  =-4p^3-27q^2
+  =-108\Delta.
+\end{align*}
+
+\marginpar{
+  \vspace{-4\baselineskip}
+  \small
+  一般 $n$ 次多项式的判别式定义为
+  \[
+    \prod_{1\le i<j\le n}(z_i-z_j)^2,
+  \]
+  其中 $z_1,\cdots,z_n$ 表示其所有复数根.
+  判别式总可以表示为多项式系数的多项式形式.
+  这里, 三次多项式 $z^3+pz+q$ 的判别式就是 $-108\Delta=-4p^3-27q^2$.
+}
+
+\begin{enuma}
+  \item 若 $\Delta>0$, 设 $\omega=\ee^{\frac{2\cpi \ii}3}$ 为三次单位根, 设实数 $\alpha$ 满足
+  \[\alpha^3=-\frac q2+\sqrt{\Delta},\]
+  则
+  \[
+    u=\alpha,\ \alpha\omega,\ \alpha\omega^2,\qquad
+    z=\alpha-\frac p{3\alpha},\ 
+      \alpha\omega-\frac p{3\alpha} \omega^2,\ 
+      \alpha\omega^2-\frac p{3\alpha} \omega.
+  \]
+  由于
+  \[
+      \bigl((z_1-z_2)(z_2-z_3)(z_3-z_1)\bigr)^2
+    =-108\Delta<0,
+  \]
+  因此该方程无重根, 且不能有三个实根.
+  注意到第一个根是实根, 后两个根互为共轭.
+  因此此时只有一个实根.
+  \item 若 $\Delta\le 0$, 则 $p<0$,
+  \[
+    \abs{u}^6=\Bigabs{-\frac q2+\sqrt\Delta}^2=-\frac{p^3}{27}.
+  \]
+  于是 $\abs{u}^2=-\dfrac p3=uv$, $v=\ov u$.
+  设
+  \[
+    \sqrt[3]{-\frac q2+\sqrt{\Delta}}=u_1,u_2,u_3,
+  \]
+  则 $u_1,u_2,u_3$ 都是虚数. 从而得到 $3$ 个实根
+  \[
+    x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.
+  \]
+  当且仅当 $\Delta=0$ 时有重根.
+\end{enuma}
+
+
+\subsection{单位根的应用\optional}
+
+单位根在代数、数论、组合等领域有着丰富的应用.
+本小节中我们将试举几例.
+
+
+\subsubsection{单位根在三角函数运算中的应用}
+
+\begin{example}
+  设 $m=2n+1\ge 3$ 是一个奇数, 计算
+  \[
+    I=\prod_{k=1}^n\cos\frac{k\cpi}m
+    =\cos\frac{\cpi}m \cos\frac{2\cpi}m \cdots \cos\frac{n\cpi}m.
+  \]
+\end{example}
+
+\begin{solution}
+  设
+  \[
+     J
+    =\prod_{k=1}^{m-1}\cos\frac{k\cpi}m
+    =\prod_{k=1}^n\cos\frac{k\cpi}m\cos\frac{(m-k)\cpi}m
+    =(-1)^n I^2.
+  \]
+  设 $\zeta=\ee^{\frac{\cpi\ii}m}$ 是 $2m$ 次单位根, 则 $\zeta^k\cdot\zeta^{m-k}=\zeta^m=-1$.
+  由于 $\ov\zeta=\zeta^{-1}$, 因此
+  \begin{align*}
+     J&
+    =\prod_{k=1}^{m-1}\cos\frac{k\cpi}m
+    =\prod_{k=1}^{m-1}\frac{\zeta^k+{\ov\zeta}^k}2
+    =\prod_{k=1}^{m-1}\frac{\zeta^k+\zeta^{-k}}2\\&
+    =2^{1-m}\bigl(\zeta\zeta^2\cdots\zeta^{m-1}\bigr)^{-1}
+      \prod_{k=1}^{m-1}(\zeta^{2k}+1)\\&
+    =2^{1-m}(-1)^n
+      \prod_{k=1}^{m-1}(\zeta^{2k}+1).
+  \end{align*}
+  注意到 $\zeta^{2k}$ 都是 $m$ 次单位根, 且不包括 $1$, 因此
+  \[
+    x^m-1=(x-1)\prod_{k=1}^{m-1}(x-\zeta^{2k}).
+  \]
+  令 $x=-1$ 得到
+  \[
+    \prod_{k=1}^{m-1}(\zeta^{2k}+1)=(-1)^{m-1}=1,
+  \]
+  于是 $J=2^{1-m}(-1)^n$.
+  由 $I>0$ 得到 $I=2^{\frac{1-m}2}=2^{-n}$.
+\end{solution}
+
+\begin{example}
+  求 $n$ 阶方阵
+  \[
+    \bfA_n=\begin{pmatrix}
+      0&1&&&\\
+      1&0&1&&\\
+      &1&0&\ddots&\\
+      &&\ddots&\ddots &1\\
+      &&&1&0
+    \end{pmatrix}
+  \]
+  的特征值.
+\end{example}
+
+\begin{solution}
+  设
+  \[
+     f_n(\lambda)
+    =\abs{\lambda\bfE-\bfA_n}
+    =\begin{vmatrix}
+      \lambda&-1&&&\\
+      -1&\lambda&-1&&\\
+      &-1&\lambda&\ddots&\\
+      &&\ddots&\ddots &-1\\
+      &&&-1&\lambda
+    \end{vmatrix}
+  \]
+  是 $\bfA_n$ 的特征多项式.
+  沿着第一行作拉普拉斯展开得到
+  \[
+    f_n=\lambda f_{n-1}+\begin{vmatrix}
+      -1&-1&&&\\
+      &\lambda&-1&&\\
+      &-1&\lambda&\ddots&\\
+      &&\ddots&\ddots&-1\\
+      &&&-1&\lambda
+    \end{vmatrix}
+    =\lambda f_{n-1}-f_{n-2}.
+  \]
+  设 $t$ 是方程 $x^2-\lambda x+1=0$ 的一个根, 则另一个根是 $t^{-1}$.
+  显然
+  \begin{align*}
+    f_1&=\lambda=t+t^{-1},\\
+    f_2&=\lambda^2-1=t^2+1+t^{-2}.
+  \end{align*}
+  归纳可得
+  \[
+     f_n
+    =t^{-n}+t^{-n+2}+\cdots+t^{n-2}+t^n
+    =\begin{cases}
+      \dfrac{t^{2n+2}-1}{t^n(t^2-1)},&\text{若}\ t\neq \pm1,\\
+      (n+1)t^n,&\text{若}\ t=\pm1.
+    \end{cases}
+  \]
+  若 $f_n(\lambda)=0$, 则 $t\neq \pm1$ 且 $t^{2n+2}=1$, 即
+  \[
+    t=\exp\Bigl(\frac{k\cpi\ii}{n+1}\Bigr),\quad
+    k=\pm 1,\cdots,\pm n,\qquad
+    \lambda=t+t^{-1}=2\cos\Bigl(\frac{k\cpi}{n+1}\Bigr).
+  \]
+  由于 $k$ 和 $-k$ 对应相同的 $\lambda$, 因此 $\bfA_n$ 的所有特征值为
+  \[
+    \lambda=2\cos\Bigl(\frac{k\cpi}{n+1}\Bigr),
+    \quad k=1,2,\cdots,n.
+  \]
+\end{solution}
+
+
+
+\subsubsection{单位根在因式分解中的应用}
+
+\begin{example}
+  将多项式 $x^{12}-1$ 因式分解成有理系数多项式的乘积.
+\end{example}
+
+\begin{solution}
+  设 $\zeta=\ee^{\frac{\cpi\ii}6}$ 是 $12$ 次单位根.
+  设集合 $S_k$ 由 $k$ 次单位根组成, 但不包括更低次的单位根.
+  那么所有的 $12$ 次单位根可以分组为:
+  \begin{align*}
+    S_1&=\{1\},&
+    S_2&=\{-1\},\\
+    S_3&=\{\zeta^4,\zeta^8\},&
+    S_4&=\{\zeta^3,\zeta^9\},\\
+    S_6&=\{\zeta^2,\zeta^{10}\},&
+    S_{12}&=\{\zeta,\zeta^5,\zeta^7,\zeta^{11}\}.
+  \end{align*}
+  令
+  \[
+    \Phi_k(x)=\prod_{t\in S_k}(x-t).
+  \]
+  由单位根的性质可知
+  \begin{align*}
+    P_1(x)=x-1&=\Phi_1(x),\\
+    P_2(x)=x^2-1&=\Phi_1(x)\Phi_2(x),\\
+    P_3(x)=x^3-1&=\Phi_1(x)\Phi_3(x),\\
+    P_4(x)=x^4-1&=\Phi_1(x)\Phi_2(x)\Phi_4(x),\\
+    P_6(x)=x^6-1&=\Phi_1(x)\Phi_2(x)\Phi_3(x)\Phi_6(x),\\
+    P_{12}(x)=x^{12}-1&=\Phi_1(x)\Phi_2(x)\Phi_3(x)\Phi_4(x)\Phi_6(x)\Phi_{12}(x).
+  \end{align*}
+  计算可得
+  \begin{align*}
+    \Phi_1(x)&=P_1=x-1,&
+    \Phi_2(x)&=\frac{P_2}{P_1}=x+1,\\
+    \Phi_3(x)&=\frac{P_3}{P_1}=x^2+x+1,&
+    \Phi_4(x)&=\frac{P_4}{P_2}=x^2+1,\\
+    \Phi_6(x)&=\frac{P_6P_1}{P_3P_2}=x^2-x+1,&
+    \Phi_{12}(x)&=\frac{P_{12}P_2}{P_6P_4}=x^4-x^2+1.
+  \end{align*}
+  故
+  \[
+    x^{12}-1=(x-1)(x+1)(x^2+x+1)(x^2+1)(x^2-x+1)(x^4-x^2+1).
+  \]
+\end{solution}
+
+\marginpar{\small
+  \vspace{-10.5\baselineskip}
+  一般地,
+  \[
+    x^n-1=\prod_{d\mid n}\Phi_d(x),
+  \]
+  其中
+  \[
+    \Phi_n(x)=\prod_{\substack{k=0\\\text{$k$ 和 $n$ 互质}}}^{n-1}\bigl(x-\ee^{\frac{2k\cpi\ii}n}\bigr),
+  \]
+  是不可约有理系数多项式, 叫作\nouns{分圆多项式}\index{fenyuanduoxiangshi@分圆多项式}.
+}
+
+
+\subsubsection{单位根在组合计数的应用}
+
+\begin{example}
+  集合
+  \[
+    A=\{1,2,\cdots,1001\}
+  \]
+  有多少个子集满足元素之和是 $5$ 的倍数?
+\end{example}
+
+\begin{solution}
+  对于集合 $A$ 的每个元素 $a\in A$ 和每个子集 $S\subseteq A$, 有 $a\in S$ 和 $a\notin S$ 两种情形, 因此
+  \[
+    N(x):=\prod_{a\in A}(1+x^a)
+    =\sum_{S\subseteq A}\prod_{a\in S}x^a
+    =\sum_{S\subseteq A}x^{\suml_{a\in S}a}.
+  \]
+  由此可知, $N(x)$ 中 $x^k$ 的系数就是 $A$ 的那些满足元素之和是 $k$ 的子集的个数.
+
+  设 $N_k$ 为元素之和是 $5m+k$ 型的子集个数.
+  那么对于任意 $5$ 次单位根 $x$,
+  \[
+    N(x)=N_0+N_1x+N_2x^2+N_3x^3+N_4x^4.
+  \]
+  显然 $N(1)=2^{1001}$.
+  当 $x\neq 1$ 是 $5$ 次单位根时, $x,x^2,x^3,x^4,x^5=1$ 是所有的 $5$ 次单位根, 从而
+  \[
+    T^5-1=(T-x)(T-x^2)(T-x^3)(T-x^4)(T-x^5).
+  \]
+  令 $T=-1$ 可得
+  \[
+    (1+x)(1+x^2)(1+x^3)(1+x^4)(1+x^5)=2.
+  \]
+  所以
+  \[
+    N(x)=\bigl((1+x)(1+x^2)(1+x^3)(1+x^4)(1+x^5)\bigr)^{200}\cdot(1+x^{1001})
+    =2^{200}(1+x).
+  \]
+
+  我们希望找到 $c_k$ 使得
+  \begin{equation}
+    \label{eq:nx-c0-c1x}
+    N(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4
+  \end{equation}
+  对所有的 $5$ 次单位根 $x$ 都成立.
+  注意到当 $x\neq 1$ 是 $5$ 次单位根时, $1+x+x^2+x^3+x^4=0$.
+  若
+  \[
+    c_0=c_1=2^{200}+t,\qquad c_2=c_3=c_4=t,
+  \]
+  则 \ref{eq:nx-c0-c1x} 对任意 $5$ 次单位根 $x\neq 1$ 都成立, 且
+  \[
+    N(1)=2^{201}+5t=2^{1001},\quad
+    t=\frac{2^{1001}-2^{201}}5.
+  \]
+  设 $\zeta=\ee^{\frac{2\cpi\ii}5}$, 则
+  \[
+    \begin{pmatrix}
+      1&1&1&1&1\\
+      1&\zeta&\zeta^2&\zeta^3&\zeta^4\\
+      1&\zeta^2&\zeta^4&\zeta^6&\zeta^8\\
+      1&\zeta^3&\zeta^6&\zeta^9&\zeta^{12}\\
+      1&\zeta^4&\zeta^8&\zeta^{12}&\zeta^{16}
+    \end{pmatrix}\begin{pmatrix}
+      N_0-c_0\\
+      N_1-c_1\\
+      N_2-c_2\\
+      N_3-c_3\\
+      N_4-c_4
+    \end{pmatrix}={\bf0}.
+  \]
+  由于该线性方程组的系数行列式是范德蒙行列式, 所以它只有零解, 即
+  \[
+    N_k=c_k=\begin{cases}
+      \dfrac15(2^{1001}+3\times 2^{200}),&k=0,1,\\[2\itemsep]
+      \dfrac15(2^{1001}-2\times 2^{200}),&k=2,3,4.
+    \end{cases}
+  \]
+\end{solution}
+
+
+
+\section{曲线和区域}
+
+\subsection{复数表平面曲线}
+
+很多平面图形能用复数形式的方程来表示, 这种表示方式有时候会显得更加直观和易于理解.
+
+
+\begin{exampleenum}
+  \item $\abs{z-1+\ii}=2$. 该方程表示与 $1-\ii$ 的距离为 $2$ 的点全体, 即圆心为 $1-\ii$, 半径为 $2$ 的圆.
+  
+  一般的圆方程为 $\abs{z-z_0}=R$, 其中 $z_0$ 是圆心, $R>0$ 是半径.
+  设 $z=x+y\ii,z_0=x_0+y_0\ii$, 两边同时平方化简可得
+  \[
+    R^2=\abs{z-z_0}^2=(x-x_0)^2+(y-y_0)^2.
+  \]
+  \item $\abs{z-4\ii}=\abs{z-2}$. 该方程表示与 $4\ii$ 和 $2$ 的距离相等的点, 即二者连线的垂直平分线.
+  设 $z=x+y\ii$, 两边同时平方化简可得 $x-2y+3=0$.
+  该方程也可以表达为 $(1+2\ii)z+(1-2\ii)\ov z+6=0$.
+
+  一般地, 方程 $\abs{z-z_1}=\abs{z-z_2}$, $\ov w z+w\ov z+c=0$ 和 $\Re(\ov wz)=c$ 都表示直线.
+  \item $\abs{z-z_1}+\abs{z-z_2}=2a$.
+  \begin{itemize}
+    \item 当 $2a>\abs{z_1-z_2}$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
+    \item 当 $2a=\abs{z_1-z_2}$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
+    \item 当 $2a<\abs{z_1-z_2}$ 时, 该方程表示空集.
+  \end{itemize}
+  \item $\abs{z-z_1}-\abs{z-z_2}=2a$.
+  \begin{itemize}
+    \item 当 $2a<\abs{z_1-z_2}$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线一支;
+    \item 当 $2a=\abs{z_1-z_2}$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
+    \item 当 $2a>\abs{z_1-z_2}$ 时, 该方程表示空集.
+  \end{itemize}
+\end{exampleenum}
+
+\marginpar{
+  \centering
+  \vspace{-21.5\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-.9,0)--(2.1,0);
+      \draw[cstaxis] (0,-2.1)--(0,.9);
+      \coordinate (A) at (.6,-.6);
+      \draw[cstcurve,main] (A) circle(1.2);
+      \draw[cstra,fourth,thick] (A)--++(.72,.96);
+    \end{scope}
+    \fill[cstdot,fourth] (A) circle node[below] {$1-\ii$};
+  \end{tikzpicture}
+  \captionof{figure}{圆周}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-1.2,0)--(1.8,0);
+      \draw[cstaxis] (0,-.4)--(0,2.2);
+      \coordinate (A) at (.75,0);
+      \coordinate (B) at (0,1.5);
+      \draw[cstdash,fourth] (A)--(B);
+      \draw[cstcurve,main] (-.9,.1125)--(1.65,1.3875);
+    \end{scope}
+    \begin{scope}[cstdot,fourth]
+      \fill (A) circle node[below] {$2$};
+      \fill (B) circle node[right] {$4\ii$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{垂直平分线}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-1.5,0)--(1.5,0);
+      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \begin{scope}[rotate=30]
+        \coordinate (A) at (-.72,0);
+        \coordinate (B) at (.72,0);
+        \draw[
+          cstcurve,
+          main,
+          decoration = {
+            markings,
+            mark = at position .15 with {
+              \coordinate (Z);
+            }
+          },
+          postaction={decorate}
+        ] (0,0) circle(1.2 and .96);
+        \draw[cstdash,fourth] (A)--(Z)--(B);
+      \end{scope}
+    \end{scope}
+    \begin{scope}[cstdot,fourth]
+      \fill (A) circle node[right] {$z_1$};
+      \fill (B) circle node[left] {$z_2$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{椭圆}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-1.5,0)--(1.5,0);
+      \draw[cstaxis] (0,-1.5)--(0,1.5);
+      \coordinate (A) at (-.75,0);
+      \coordinate (B) at (.75,0);
+      \draw[
+        cstcurve,
+        main,
+        domain=-58:58,
+        decoration = {
+          markings,
+          mark = at position .9 with {
+            \coordinate (Z);
+          }
+        },
+        postaction={decorate},
+        samples=500
+      ] plot ({sec(\x)*.375},{.866*tan(\x)});
+      \draw[cstdash,fourth] (A)--(Z)--(B);
+    \end{scope}
+    \begin{scope}[cstdot,fourth]
+      \fill (A) circle node[below] {$z_1$};
+      \fill (B) circle node[below] {$z_2$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{双曲线一支}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-1.3,.3)--(1.7,.3);
+      \draw[cstaxis] (-.3,-1)--(-.3,1.3);
+      \coordinate (A) at (-1,-.5);
+      \coordinate (B) at (1,.5);
+      \draw[cstcurve,main] (A)--(B);
+    \end{scope}
+    \begin{scope}[cstdot,fourth]
+      \fill (A) circle node[below] {$z(0)$};
+      \fill (B) circle node[above] {$z(1)$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{直线段}
+}
+
+设 $x(t),y(t),t\in[a,b]$ 是两个连续函数,
+则参变量方程
+\[
+  \begin{cases}
+    x=x(t),\\
+    y=y(t),
+  \end{cases}\quad 
+  t\in[a,b]
+\]
+定义了一条\nouns{连续曲线}\index{quxian@曲线!lianxuquxian@连续曲线}\footnote{%
+  这里考虑的都是连续曲线段. 对于无限长的曲线也可类似定义连续曲线和简单曲线的概念.
+}.
+这也等价于
+\[
+  C:z=z(t)=x(t)+\ii y(t),\quad t\in[a,b].
+\]
+若除了两个端点有可能重叠外, 其它情形不会出现重叠的点, 则称 $C$ 是\nouns{简单曲线}\index{quxian@曲线!jiandanquxian@简单曲线}\footnote{%
+  也叫\emph{若尔当曲线}\index{quxian@曲线!ruoerdangquxian@若尔当曲线}.
+}.
+
+若连续曲线 $C$ 满足两个端点重叠, 即 $z(a)=z(b)$, 则称 $C$ 是\nouns{闭合曲线}\index{quxian@曲线!bihequxian@闭合曲线}.
+称闭合的简单曲线为\nouns{闭路}\index{bilu@闭路}\footnote{%
+  也叫\emph{简单闭曲线}\index{quxian@曲线!jiandanbiquxian@简单闭曲线}或\emph{若尔当闭曲线}\index{quxian@曲线!ruoerdangbiquxian@若尔当闭曲线}或\emph{围道}\index{weidao@围道}.
+}.
+
+\begin{exampleenum}
+  \item 直线段的参数方程可以写成
+  \[
+    z(t)=z_0+(z_1-z_0)t,\quad t\in[0,1],
+  \]
+  其中 $z_0,z_1$ 为两个端点.
+  它是简单曲线.
+  \item 正弦函数曲线段
+  \[
+    z(t)=\sin t,\quad t\in[0,2\cpi]
+  \]
+  是简单曲线.
+  \item 圆 $\abs{z-1+\ii}=2$ 和椭圆 $\abs{z-\sqrt5}+\abs{z+\sqrt5}=6$ 是简单闭曲线, 其参数方程可分别选为
+  \[
+    z=1-\ii+2\ee^{\ii\theta},\quad
+    z=3\cos\theta+2\ii\sin\theta,\quad
+    \theta\in[0,2\cpi].
+  \]
+  \item 双纽线 $\abs{z^2-1}=1$ 不是简单闭曲线.
+\end{exampleenum}
+
+\marginpar{
+  \vspace{-9\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstcurve,main,domain=0:360,smooth] plot ({\x*pi/360},{sin(\x)*.5});
+      \draw[cstaxis] (0,-1)--(0,1);
+      \draw[cstaxis] (-.5,0)--(3.5,0);
+      \coordinate (E) at ({pi},0);
+    \end{scope}
+    \begin{scope}[cstdot,fourth]
+      \fill circle node[below right] {$z(0)$};
+      \fill (E) circle node[above] {$z(2\cpi)$};
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{正弦函数曲线段}
+  \vspace{\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \draw[cstaxis] (-1.8,0)--(1.8,0);
+      \draw[cstaxis] (0,-1)--(0,1);
+      \draw[cstcurve,main,domain=-45:45,smooth] plot ({sqrt(2*cos(2*\x))*cos(\x)},{sqrt(2*cos(2*\x))*sin(\x)});
+      \draw[cstcurve,main,domain=-45:45,smooth] plot ({-sqrt(2*cos(2*\x))*cos(\x)},{sqrt(2*cos(2*\x))*sin(\x)});
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{双纽线}
+  \vspace{\baselineskip}
+  \begin{exercise}
+    $z^2+\ov z^2=1$ 和 $z^2-\ov z^2=\ii$ 分别表示什么图形?
+  \end{exercise}
+}
+
+由于复数 $z$ 的实部 $x$ 和虚部 $y$ 可以与 $z,\ov z$ 相互线性表示, 因此 $x,y$ 的方程总可以改写为 $z,\ov z$ 的方程, 反之亦然.
+
+
+
+\subsection{区域和闭区域}
+
+\marginpar{
+  \vspace{.5\baselineskip}
+  \small
+  为了避免混淆集合中的分割符号和复数的模, 此处用 $:$ 而不是 $\mid$ 作为集合的分割符号.
+}
+\marginpar{
+  \vspace{.5\baselineskip}
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \coordinate (A) at (-1,0);
+      \coordinate (B) at (1,0);
+      \filldraw[cstcurve,main,cstfill1] (A) circle (.8);
+      \filldraw[cstcurve,main,cstfill1] (B) circle (.8);
+      \draw[cstra,fourth,thick] (A)--++(.64,.48)
+        node[midway,above left] {$\delta$};
+      \draw[cstra,fourth,thick] (B)--++(.64,.48)
+        node[midway,above left] {$\delta$};
+    \end{scope}
+    \fill[cstdot] (A) circle node[left] {$z_0$};
+    \filldraw[cstdote] (B) circle node[left] {$z_0$};
+  \end{tikzpicture}
+  \captionof{figure}{邻域和去心邻域}
+}
+为了引入极限的概念, 我们需要考虑点的邻域.
+类比高等数学中的邻域和去心邻域, 在复平面中, 称开圆盘
+\[
+  U(z_0,\delta)=\bigset{z\midcolon \abs{z-z_0}<\delta}
+\]
+为 $z_0$ 的一个 \nouns{$\delta$ 邻域}\index{linyu@邻域}, 称去心开圆盘
+\[
+  \Uc(z_0,\delta)=\bigset{z\midcolon 0<\abs{z-z_0}<\delta}
+\]
+为 $z_0$ 的一个\nouns{去心 $\delta$ 邻域}\index{linyu@邻域!quxinlinyu@去心邻域}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}
+      \filldraw[cstcurve,main,cstfill1,smooth cycle] plot coordinates {(2,0) (1.83,.9) (.64,1.46) (-.63,1.6) (-1.66,1.01) (-2.35,0) (-1.81,-1.06) (-.73,-1.68) (.74,-1.57) (1.82,-.91)};
+      \coordinate (A) at (-.7,0);
+      \draw[cstcurve,fourth] (A) circle (.6) node[above] {$z_0$};
+      \coordinate (B) at (2,0);
+      \draw[cstcurve,second] (B) circle (.6) node[right] {$z_0$};
+      \coordinate (C) at (4,0);
+      \draw[cstcurve,third] (C) circle (.6) node[above] {$z_0$};
+      \draw (.5,1) node {$G$};
+    \end{scope}
+    \begin{scope}[cstdot]
+      \fill[fourth] (A) circle;
+      \fill[second] (B) circle;
+      \fill[third] (C) circle;
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{点与集合的位置关系}
+\end{figure}
+
+设 $G$ 是复平面的一个子集, 点 $z_0\in\BC$.
+它们的位置关系有三种可能:
+\begin{enuma}
+  \item 若存在 $z_0$ 的一个邻域 $U$ 完全包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\nouns{内点}\index{neidian@内点}.
+  \item 若存在 $z_0$ 的一个邻域 $U$ 完全不包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\nouns{外点}\index{waidian@外点}.
+  \item 若对于 $z_0$ 的任何一个邻域 $U$, 都有属于和不属于 $G$ 的点, 则称 $z_0$ 是 $G$ 的一个\nouns{边界点}\index{bianjiedian@边界点}.
+\end{enuma}
+
+显然内点都属于 $G$, 外点都不属于 $G$, 而边界点则都有可能.
+这可类比于区间的端点和区间的关系.
+
+\begin{definition}
+  \begin{enuma}
+    \item 若 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\nouns{开集}\index{kaiji@开集}.
+    \item 若 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\nouns{闭集}\index{biji@闭集}.
+  \end{enuma}
+\end{definition}
+
+\marginpar{
+  \vspace{\baselineskip}
+  \small
+  注意 $\arg z$ 的不等式不包括原点.
+}
+例如
+\[
+  \abs{z-z_0}<R,\quad 1<\Re z<3,\quad\frac\cpi4<\arg z<\frac{3\cpi}4
+\]
+都给出开集.
+集合 $G$ 是一个闭集当且仅当它的补集是开集.
+直观上看, 由 $>,<$ 的不等式给出的集合往往是开集, 由 $\ge,\le$ 的不等式给出的集合往往是闭集.\footnote{%
+  当不等式中的函数都是连续函数时, 由 $>,<$ 的不等式给出的集合是开集, 否则未必成立.
+  连续函数的定义见\thmref{定义}{def:continuous}.
+  例如 $\arg z>\dfrac\cpi2$ 包含了负实轴, 它既不是开集也不是闭集, 因为 $\arg z$ 在负实轴上不连续.
+  例如 $\biggabs{\dfrac1z}\ge 1$ 表示的不是闭集, 因为它等价于 $0<\abs{z}\le1$.
+}
+
+若集合 $G$ 是某个开圆盘 $U(0,R)$ 的子集, 则称它是\nouns{有界}\index{youjie@有界}的.
+否则称它是\nouns{无界}\index{wujie@无界}的.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \filldraw[cstcurve,main,cstfill1,smooth cycle] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93)};
+    \filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+    \filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+    \draw[cstcurve,second,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+    \coordinate [label=left:{$z_1$}] (A) at (-1,.8);
+    \coordinate [label=below:{$z_2$}] (B) at (1,-.8);
+    \draw[cstcurve,fourth] (A)--(-.2,.5)--(.2,-.5)--(B);
+    \fill[cstdot,main] (1.7,0) circle;
+    \fill[cstdot,main] (1.8,-.6) circle;
+  \end{tikzpicture}
+  \captionof{figure}{区域和它的边界}
+  \label{fig:domain}
+\end{figure}
+
+\begin{definition}
+  若开集 $D$ 的任意两个点都可以用一条完全包含在 $D$ 中的折线段连接起来, 则称 $D$ 是一个\nouns{区域}\index{quyu@区域}.
+\end{definition}
+
+对于区域 $D$ 内的任意两点 $z_1,z_2$, 可以在 $D$ 中画一条从 $z_1$ 到 $z_2$ 的折线段.
+换言之, 区域是``连通''的开集.\footnote{
+  该定义中的折线段可以换成连续曲线段.
+  它也等价于开集 $D$ 不能写成 $D_1\cup D_2$, 其中 $D_1,D_2$ 是两个非空开集且 $D_1\cap D_2=\emptyset$, 即 $D$ 不能拆成多个``独立''的开集.
+}
+区域和它的边界的并集叫作\nouns{闭区域}\index{biquyu@闭区域}\footnote{
+  也叫\emph{闭域}\index{biyu@闭域}.
+}, 记作 $\ov D$.
+它是一个闭集.
+
+\marginpar{
+  \vspace{\baselineskip}
+  \small
+  \emph{割痕}\index{gehen@割痕}是指在区域内去掉的一条曲线.
+}
+
+\begin{exampleenum}
+  \item 在\ref{fig:domain} 中, 阴影部分(不包含线条部分)中任意两点可用折线连接, 因此它是一个区域.
+  这些线条割痕和点构成了它的边界.
+  \item 区域 $D:\abs{z}>1$ 是一个无界区域, 它的边界是 $\abs{z}=1$, 闭区域是 $\abs{z}\ge 1$.\footnote{
+    对于这种向外无限延伸的集合, 阴影部分描成圆形或方形是无关紧要的, 都表示同一个集合.
+  }
+  注意数学中边界的概念与日常所说的边界是两码事, 它并不表示集合被包含在边界内部. 
+  \item 区域 $D_1:z\neq 0$ 表示复平面去掉原点, 它的边界是 $\{0\}$.
+  区域 $D_2: \arg z\neq\cpi$ 表示带有割痕为负实轴和零的复平面, 它的边界是负实轴和零.
+  $D_1$ 和 $D_2$ 的闭区域都是 $\BC$.
+  不同的区域可以拥有相同的闭区域.
+  \item \ref{fig:upper-half-plane} 至\ref{fig:anulus-domain} 列出了几种常见区域, 它们由实部、虚部、模和辐角的不等式所表示.
+  其中角形区域中 $\theta_1<\Arg z<\theta_2$ 表示 $z$ 有一个辐角值 $\theta$ 满足 $\theta_1<\theta<\theta_2$.
+\end{exampleenum}
+
+\marginpar{
+  \vspace{-9\baselineskip}
+  \centering
+  \begin{tikzpicture}[mpscale]
+    \def\w{1.5}
+    \fill[cstfille1] (0,0) circle (\w);
+    \filldraw[cstcurve,main,fill=white] (0,0) circle ({\w/2});
+    \draw[cstaxis] (0,-\w)--(0,\w);
+    \draw[cstaxis] (-\w,0)--(\w,0);
+  \end{tikzpicture}
+  \captionof{figure}{区域 $\abs{z}>1$}
+  \vspace{.5\baselineskip}
+  \begin{tikzpicture}
+    \begin{scope}[mpscale]
+      \def\w{1.5}
+      \fill[cstfille1] (0,0) circle (\w);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{scope}
+    \filldraw[cstdote] (0,0) circle;
+  \end{tikzpicture}
+  \captionof{figure}{区域 $z\neq0$}
+  \vspace{.5\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \def\w{1.5}
+    \coordinate (O);
+    \fill[cstcurve,main,cstfille1] (O) circle (\w);
+    \cutline{0}{0}{\w}{180}{main};
+    \draw[cstaxis] (0,-\w)--(0,\w);
+    \draw[cstaxis] (-\w,0)--(\w,0);
+  \end{tikzpicture}
+  \captionof{figure}{带割痕的复平面}
+}
+
+\begin{widefigure}
+  \begin{minipage}{3.5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (-\w,0) rectangle (\w,\w);
+      \draw[cstaxis,cstcurve,main] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (0,-\w) node[below] {$\Im z>0$};
+    \end{tikzpicture}
+    \caption{上半平面}
+    \label{fig:upper-half-plane}
+  \end{minipage}
+  \begin{minipage}{3.5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (-\w,0) rectangle (\w,-\w);
+      \draw[cstaxis,cstcurve,main] (-\w,0)--(\w,0);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw (0,-\w) node[below] {$\Im z<0$};
+    \end{tikzpicture}
+    \caption{下半平面}
+  \end{minipage}
+  \begin{minipage}{3.5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (-\w,-\w) rectangle (0,\w);
+      \draw[cstaxis,cstcurve,main] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (0,-\w) node[below] {$\Re z>0$};
+    \end{tikzpicture}
+    \caption{左半平面}
+  \end{minipage}
+\end{widefigure}
+
+\begin{widefigure}
+  \begin{minipage}{3.5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (0,\w) rectangle (\w,-\w);
+      \draw[cstaxis,cstcurve,main] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (0,-\w) node[below] {$\Re z<0$};
+    \end{tikzpicture}
+    \caption{右半平面}
+  \end{minipage}
+  \begin{minipage}{4cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (-.6,-\w) rectangle (.2,\w);
+      \draw[cstcurve,main] (-.6,-\w)--(-.6,\w);
+      \draw[cstcurve,main] (.2,-\w)--(.2,\w);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (0,-\w) node[below] {$a<\Re z<b$};
+    \end{tikzpicture}
+    \caption{竖直带状区域}
+  \end{minipage}
+  \begin{minipage}{4cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.5}
+      \fill[cstfille1] (-\w,-.4) rectangle (\w,.4);
+      \draw[cstcurve,main] (-\w,-.4)--(\w,-.4);
+      \draw[cstcurve,main] (-\w,.4)--(\w,.4);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+      \draw (0,-\w) node[below] {$a<\Im z<b$};
+    \end{tikzpicture}
+    \caption{水平带状区域}
+  \end{minipage}
+\end{widefigure}
+
+\begin{widefigure}
+  \begin{minipage}[b]{4cm}
+    \centering
+    \begin{tikzpicture}
+      \def\r{2}
+      \draw[cstaxis] (-1,0)--(\r,0);
+      \draw[cstaxis] (0,-1)--(0,\r);
+      \coordinate (A) at (0,0);
+      \coordinate (B) at ({\r*cos(60)},{\r*sin(60)});
+      \coordinate (C) at ({\r*cos(10)},{\r*sin(10)});
+      \fill[cstfille1] (A)--(B) arc(60:10:\r)--cycle;
+      \draw[cstcurve,main] (C)--(A)--(B);
+      \draw ({(\r-1)/2},-1) node[below] {$\theta_1<\Arg z<\theta_2$};
+    \end{tikzpicture}
+    \caption{角形区域}
+  \end{minipage}
+  \begin{minipage}[b]{4cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.76}
+      \filldraw[cstcurve,main,cstfill1] (0,0) circle (1);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{tikzpicture}
+    \caption{圆域 $\abs{z}<R$}
+  \end{minipage}
+  \begin{minipage}[b]{5cm}
+    \centering
+    \begin{tikzpicture}
+      \def\w{1.76}
+      \filldraw[cstcurve,main,cstfill1] (0,0) circle (1);
+      \filldraw[cstcurve,main,fill=white] (0,0) circle (.5);
+      \draw[cstaxis] (0,-\w)--(0,\w);
+      \draw[cstaxis] (-\w,0)--(\w,0);
+    \end{tikzpicture}
+    \caption{圆环域 $r<\abs{z}<R$}
+    \label{fig:anulus-domain}
+  \end{minipage}
+\end{widefigure}
+
+\marginpar{
+  \vspace{-14\baselineskip}
+  \begin{exercise}
+    \ref{fig:upper-half-plane} 至\ref{fig:anulus-domain} 中的区域对应的闭区域是什么?
+  \end{exercise}
+}
+
+
+
+\subsection{区域的特性}
+
+
+闭路 $C$ 把复平面划分成了两个区域, 一个有界一个无界.
+分别称这两个区域是 $C$ 的\nouns{内部}\index{neibu@内部}和\nouns{外部}\index{waibu@外部}, $C$ 是它们的公共边界.
+\marginpar{
+  \vspace{-3\baselineskip}
+  \small
+  波尔查诺最早明确陈述了这个定理, 并指出它是需要证明的. 1893 年, 若尔当首次给出了证明, 其中假设了该定理对于简单多边形成立 (这个情形并不难证明). 不过, 数学家普遍认为他的证明是有缺陷的. 不少数学家认为第一个完备证明是由维布伦于1905年给出的. 参考 \cite{BergJulianMinesRichman1975}.
+}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \fill[cstfille4] (-2,-1.6) rectangle (2,1.6);
+      \filldraw[
+        cstcurve,
+        main,
+        cstfill1,
+        domain=0:360,
+        samples=500,
+      ] plot ({1.2*sin(\x)+.1*sin(2*\x)},{cos(\x)+.1*cos(2*\x)-.1*cos(3*\x)-.1});
+    \end{tikzpicture}
+    \caption{闭路的内部和外部}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \filldraw[cstcurve,main,cstfill1,smooth cycle,shift={(0,-.2)},scale=.9] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93)};
+      \filldraw[cstcurve,main,fill=white,smooth cycle] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91)};
+      \filldraw[cstcurve,main,fill=white] (.5,.2) circle (.3);
+      \fill[cstdot,main] (1.5,0) circle;
+      \fill[cstdot,main] (1.6,-.5) circle;
+      \draw[cstcurve,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+      \draw[cstcurve,smooth cycle,fourth] plot coordinates {(1.94,-.2) (1.79,.41) (1.23,.77) (.58,.81) (.04,.35) (-.3,-.2) (.03,-.81) (.53,-1.19) (1.23,-1.08) (1.76,-.82)};
+    \end{tikzpicture}
+    \caption{多连通区域}
+  \end{minipage}
+\end{figure}
+
+对于一些区域 $D$, 我们在区域中画一条闭路, 闭路的内部完全包含在 $D$ 中.
+而对于另外一些区域 $D$, 却存在闭路使得其内部不完全包含在 $D$ 中.
+
+\begin{definition}
+  若区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\nouns{单连通区域}\index{quyu@区域!danliantongquyu@单连通区域}.
+  否则称之为\nouns{多连通区域}\index{quyu@区域!duoliantongquyu@多连通区域}.
+\end{definition}
+
+单连通区域内的任意一条闭路可以``连续地变形''成一个点\footnote{%
+  即对任一闭路 $\ell: z=\varphi(t),t\in[0,1]$, 存在连续函数 $F:[0,1]\times[0,1]\ra \BC$ (即实部虚部都是连续函数), 使得对 $0\le s<1$, $\ell_s: z=F(s,t),t\in[0,1]$
+  都是闭路, 且 $F(0,t)=\varphi(t)$, 而 $F(1,t)$ 是常值函数.%
+}. 这也等价于: 对区域内的任意两点 $A$, $B$, 若 $\ell_0,\ell_1$ 是从 $A$ 到 $B$ 的两条连续曲线, 则 $\ell_0$ 可以``连续地变形''为 $\ell_1$ 且保持端点不动\footnote{%
+  即存在连续函数 $F:[0,1]\times[0,1]\ra \BC$ 使得
+  $\ell_0: z=F(0,t)$, $\ell_1: z=F(1,t),t\in[0,1]$, 且 $F(s,0)\equiv A$, $F(s,1)\equiv B$.
+}.
+
+\marginpar{
+  \centering
+  \vspace{-12\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \clip (-1.5,-1.1) rectangle (1.5,1.1);
+    \fill[cstfille1] (-1.5,-1.1) rectangle (1.5,1.1);
+    \filldraw[cstcurve,main,domain=-60:60,smooth,fill=white] plot ({sec(\x)},{tan(\x)});
+    \filldraw[cstcurve,main,domain=-60:60,smooth,fill=white] plot ({-sec(\x)},{tan(\x)});
+    \draw[cstaxis] (-1.5,0)--(1.5,0);
+    \draw[cstaxis] (0,-1.1)--(0,1.1);
+  \end{tikzpicture}
+  \captionof{figure}{$\Re(z^2)\le 1$}
+  \vspace{.5\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \fill[cstfille1] (-1.5,-1.5) rectangle (1.5,1.5);
+    \filldraw[cstcurve,main,fill=white] (0,0) circle (.5);
+    \draw[cstaxis] (-1.5,0)--(1.5,0);
+    \draw[cstaxis] (0,-1.5)--(0,1.5);
+  \end{tikzpicture}
+  \captionof{figure}{圆周及其外部}
+  \vspace{.5\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \filldraw[cstcurve,main,cstfill1] (0,0) circle (1 and .866);
+    \draw[cstaxis] (-1.5,0)--(1.5,0);
+    \draw[cstaxis] (0,-1.5)--(0,1.5);
+  \end{tikzpicture}
+  \captionof{figure}{椭圆内部}
+  \vspace{.3\baselineskip}
+  \begin{exercise}
+    集合 $\abs{z+1}>\abs{z-\ii}$ 表示一个\fillbrace{}.
+    \begin{exercisechoice}
+      \item 有界单连通区域
+      \item 有界多连通闭区域
+      \item 无界单连通区域
+      \item 无界多连通闭区域
+    \end{exercisechoice}
+  \end{exercise}
+}
+
+\begin{exampleenum}
+  \item $\Re(z^2)\le1$. 设 $z=x+y\ii$, 则 $\Re(z^2)=x^2-y^2\le1$. 这是无界的单连通闭区域.
+  \item $\arg z\neq \cpi$ 表示角形区域 $-\cpi<\arg z<\cpi$. 这是无界的单连通区域.
+  \smallskip
+  \item $\biggabs{\dfrac1z}\le2$. 即 $\abs{z}\ge\dfrac12$. 这是无界的多连通闭区域.
+  \smallskip
+  \item $\abs{z+1}+\abs{z-1}<4$ 表示一个椭圆的内部. 这是有界的单连通区域.
+\end{exampleenum}
+
+
+
+\section{复变函数}
+
+\subsection{复变函数的定义}
+
+回忆\nouns{映射}\index{yingshe@映射}是指两个集合之间的一种对应 $f:A\ra B$, 使得对于每一个 $a\in A$, 有一个唯一确定的 $b=f(a)$ 与之对应.
+\begin{enuma}
+  \item 当 $A$ 和 $B$ 都是实数集合的子集时, 它就是一个实变量函数.
+  \item 当 $A$ 和 $B$ 都是复数集合的子集时, 它就是一个复变量函数, 简称为\nouns{复变函数}\index{fubianhanshu@复变函数}.
+\end{enuma}
+
+\begin{example}
+  \label{exam:complex-functions}
+  以下表达式
+  \begin{align*}
+    f_1(z)&=\Re z,&
+    f_2(z)&=\arg z,\\
+    f_3(z)&=z^n \ \text{($n$ 为非零整数)},&
+    f_4(z)&=\frac{z+\ii}{z^2+1}
+  \end{align*}
+  都定义了复变函数.
+\end{example}
+
+\begin{definition}
+  \begin{enuma}
+    \item 称 $A$ 为 函数 $f$ 的\nouns{定义域}\index{dingyiyu@定义域}.
+    \item 称 $\{w=f(z)\mid z\in A\}$ 为它的\nouns{值域}\index{zhiyu@值域}.\footnotemark
+  \end{enuma} 
+\end{definition}
+\footnotetext{%
+  值域和\emph{陪域}\index{peiyu@陪域} $B$ 往往不相同. 高等数学课程中的函数陪域总可选为 $\BR$, 复变函数课程中的函数陪域总可选为 $\BC$.
+  尽管在某些情形下, 具有不同陪域的函数视为不同的函数, 但在高等数学和复变函数课程中, 不考虑陪域是否相同, 只要定义域和对应关系相同, 就视为同一函数.
+}
+
+\marginpar{
+  \vspace{-8\baselineskip}
+  \begin{exercise}
+    \thmref{例}{exam:complex-functions} 中函数的定义域和值域分别是什么?
+  \end{exercise}
+}
+
+在复变函数理论中, 常常会遇到\nouns{多值复变函数}\index{fubianhanshu@复变函数!duozhifubianhanshu@多值复变函数}, 也就是说一个 $z\in A$ 可能有多个 $w$ 与之对应.
+为了方便研究, 我们常常需要对每一个 $z$, 选取固定的一个 $f(z)$ 的值.
+这样便得到了这个多值函数的一个\nouns{单值分支}\index{danzhifenzhi@单值分支}.
+\begin{exampleenum}
+  \item $\arg z$ 是无穷多值函数 $\Arg z$ 的一个单值分支.
+  复变函数中常常用开头字母大写来表示多值函数, 对应的单值分支则使用开头字母小写来表示.
+  \item 函数
+  \[
+    f(z)=\sqrt[n]{\abs{z}}\exp\Bigl(\frac{\ii\arg z}n\Bigr)
+  \]
+  是 $n$ 值函数 $\sqrt[n]z$ 的一个单值分支, 其中 $z\neq 0$.
+\end{exampleenum}
+
+在考虑多值的情况下, 复变函数总有反函数.
+若 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\nouns{一一对应}\index{yiyiduiying@一一对应}.
+
+\begin{example}
+  $f(z)=z^n$ 的反函数就是 $f^{-1}(w)=\sqrt[n]{w}$.
+  {当 $n=\pm1$ 时, $f$ 是一一对应.}
+\end{example}
+
+若无特别声明, 本书中\alert{复变函数总是指单值的复变函数}.
+
+
+\subsection{复平面的变换}
+
+大部分复变函数的图像无法在三维空间中表示出来.
+为了直观理解和研究, 我们用 $z$ 平面上的点表示自变量 $z$ 的值, $w$ 平面上的点表示函数 $w=f(z)$ 的值, 然后用这两个复平面之间的变换或映射来表示这种对应关系.
+注意到 $w$ 的实部和虚部可以看作 $z$ 的实部和虚部的函数, 即
+\[
+  w=u+\ii v=u(x,y)+\ii v(x,y),
+\]
+其中 $u,v$ 是两个二元实函数.
+
+\marginpar{\small
+  \vspace{-5\baselineskip}
+  变换通常是指定义域和值域是同一类对象的映射, 不过变换的具体含义需要根据文献上下文确定.
+}
+
+\begin{example}
+  函数 $w=\ov z$.
+  这个映射对应的是沿着 $x$ 轴的翻转映射.
+  它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.
+\end{example}
+
+
+\begin{widefigure}
+  \begin{minipage}{6cm}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstcurve,cstnra,third] (-2.5,1) to[bend right=30] (-2.5,-1);
+      \draw[third] (-3,0) node[rotate=90] {$w=\ov z$};
+      \draw[cstaxis] (-2.5,0)--(2,0) node[above] {$x,u$};
+      \draw[cstaxis] (-2,-2)--(-2,2) node[right] {$y,v$};
+      \draw (0,-2) node[below] {$z,w$ 平面重叠};
+      \begin{scope}[fifth,shift={(0,.7)}]
+        \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+        \coordinate (a) at (-1.2,-.3);
+        \coordinate (b) at (.6,.9);
+        \coordinate (c) at ($(a)!.2!(b)$);
+        \coordinate (d) at ($(a)!.5!(b)$);
+        \coordinate (e) at ($(a)!.8!(b)$);
+        \draw[cstcurve] (a)--(b);
+      \end{scope}
+      \begin{scope}[second,shift={(0,-.7)}]
+        \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,.4) (-.3,.9) (.5,.7) (.9,0) (1.1,-1) (-.3,-1.2) (-.7,-1)};
+        \coordinate (A) at (-1.2,.3);
+        \coordinate (B) at (.6,-.9);
+        \coordinate (C) at ($(A)!.2!(B)$);
+        \coordinate (D) at ($(A)!.5!(B)$);
+        \coordinate (E) at ($(A)!.8!(B)$);
+        \draw[cstcurve] (A)--(B);
+      \end{scope}
+      \begin{scope}[cstdash,cstra,third]
+        \draw (c) to (C);
+        \draw (d) to (D);
+        \draw (e) to (E);
+      \end{scope}
+      \begin{scope}[cstdot,fifth]
+        \fill (c) circle;
+        \fill (d) circle;
+        \fill (e) circle;
+      \end{scope}
+      \begin{scope}[cstdot,second]
+        \fill (C) circle;
+        \fill (D) circle;
+        \fill (E) circle;
+      \end{scope}
+    \end{tikzpicture}
+    \caption{翻转映射}
+  \end{minipage}
+  \begin{minipage}{6cm}
+    \centering
+    \begin{tikzpicture}
+      \draw[cstcurve,cstnra,third] (-2.5,1) to[bend right=30] (-2.5,-1);
+      \draw[third] (-3,0) node[rotate=90] {$w=z+a$};
+      \draw[cstaxis] (-2.5,0)--(2,0) node[above] {$x,u$};
+      \draw[cstaxis] (-2,-2)--(-2,2) node[right] {$y,v$};
+      \draw (0,-2) node[below] {$z,w$ 平面重叠};
+      \begin{scope}[fifth,shift={(-.2,.7)}]
+        \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+        \coordinate (a) at (-1.2,-.3);
+        \coordinate (b) at (.6,.9);
+        \coordinate (c) at ($(a)!.2!(b)$);
+        \coordinate (d) at ($(a)!.5!(b)$);
+        \coordinate (e) at ($(a)!.8!(b)$);
+        \draw[cstcurve] (a)--(b);
+      \end{scope}
+      \begin{scope}[second,shift={(.3,-.8)}]
+        \draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+        \coordinate (A) at (-1.2,-.3);
+        \coordinate (B) at (.6,.9);
+        \coordinate (C) at ($(A)!.2!(B)$);
+        \coordinate (D) at ($(A)!.5!(B)$);
+        \coordinate (E) at ($(A)!.8!(B)$);
+        \draw[cstcurve] (A)--(B);
+      \end{scope}
+      \begin{scope}[cstdash,cstra,third]
+        \draw (c) to (C);
+        \draw (d) to (D);
+        \draw (e) to (E);
+      \end{scope}
+      \begin{scope}[cstdot,fifth]
+        \fill (c) circle;
+        \fill (d) circle;
+        \fill (e) circle;
+      \end{scope}
+      \begin{scope}[cstdot,second]
+        \fill (C) circle;
+        \fill (D) circle;
+        \fill (E) circle;
+      \end{scope}
+    \end{tikzpicture}
+    \caption{平移映射}
+  \end{minipage}
+\end{widefigure}
+
+\begin{example}
+  函数 $w=z+c$, 其中 $c=a+b\ii$.
+  这个映射对应的是平移映射.
+  它把任一区域映成和它全等的区域, 且 $u=x+a,v=y+b$.
+\end{example}
+
+\begin{example}
+  函数 $w=az$.
+  设 $a=r\ee^{\ii\theta}$, 则这个映射对应的是一个旋转映射(逆时针旋转 $\theta$)和一个相似映射(放大为 $r$ 倍)的复合.
+  它把任一区域映成和它相似的区域.
+\end{example}
+
+\begin{widefigure}[1cm]
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above=2pt] {$w=az$} (1,0);
+    \begin{scope}[shift={(-4,0)}]
+      \draw[cstaxis] (-2,0)--(2,0) node[above] {$x$};
+      \draw[cstaxis] (0,-2)--(0,2) node[right] {$y$};
+      \draw[cstcurve,fifth,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+      \coordinate (a) at (-1.2,-.3);
+      \coordinate (b) at (.6,.9);
+      \coordinate (c) at ($(a)!.2!(b)$);
+      \coordinate (d) at ($(a)!.5!(b)$);
+      \coordinate (e) at ($(a)!.8!(b)$);
+      \draw[cstcurve,fifth] (a)--(b);
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \draw[cstaxis] (-2,0)--(2,0) node[above] {$u$};
+      \draw[cstaxis] (0,-2)--(0,2) node[right] {$v$};
+      \draw[cstcurve,second,smooth cycle,scale=.8,rotate=90] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+      \coordinate (A) at (.24,-.96);
+      \coordinate (B) at (-.72,.48);
+      \coordinate (C) at ($(A)!.2!(B)$);
+      \coordinate (D) at ($(A)!.5!(B)$);
+      \coordinate (E) at ($(A)!.8!(B)$);
+      \draw[cstcurve,second] (A)--(B);
+    \end{scope}
+    \begin{scope}[cstdash,cstra,third]
+      \draw (c) to[bend right=25] (C);
+      \draw (d) to[bend right=10] (D);
+      \draw (e) to[bend left=20] (E);
+    \end{scope}
+    \begin{scope}[cstdot,fifth]
+      \fill (c) circle;
+      \fill (d) circle;
+      \fill (e) circle;
+    \end{scope}
+    \begin{scope}[cstdot,second]
+      \fill (C) circle;
+      \fill (D) circle;
+      \fill (E) circle;
+    \end{scope}
+  \end{tikzpicture}
+  \caption{旋转与相似映射复合}
+\end{widefigure}
+
+\begin{example}
+  \label{exam:wz2}
+  函数 $w=z^2$.
+  这个映射把 $z$ 的辐角增大一倍, 因此它会把角形区域映为角形区域, 并将夹角放大一倍.
+  
+\begin{widefigure}[1cm]
+  \begin{tikzpicture}
+    \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^2$} (1,0);
+    \begin{scope}[shift={(-4,0)}]
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-1.5)--(0,2);
+      \fill[cstfille5] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)}) arc(37.5:7.5:1.5)--cycle;
+      \draw[cstcurve,fifth] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)});
+      \draw[cstcurve,fifth] (0,0)--({1.5*cos(7.5)},{1.5*sin(7.5)});
+      \coordinate (a) at (0,1);
+      \coordinate (b) at (.8,1.2);
+      \coordinate (c) at (-.6,-.3);
+    \end{scope}
+    \begin{scope}[shift={(4,0)}]
+      \draw[cstaxis] (-2,0)--(2,0);
+      \draw[cstaxis] (0,-1.5)--(0,2);
+      \fill[cstfille2] (0,0)--({1.8*cos(75)},{1.8*sin(75)}) arc(75:15:1.8)--cycle;
+      \draw[cstcurve,second] (0,0)--({1.8*cos(75)},{1.8*sin(75)});
+      \draw[cstcurve,second] (0,0)--({1.8*cos(15)},{1.8*sin(15)});
+      \coordinate (A) at (-1,0);
+      \coordinate (B) at (-.8,1.92);
+      \coordinate (C) at (.27,.36);
+    \end{scope}
+    \begin{scope}[cstdash,cstra,third]
+      \draw (a) to[bend left=10] (A);
+      \draw (b) to[bend left=20] (B);
+      \draw (c) to[bend right=25] (C);
+    \end{scope}
+    \begin{scope}[cstdot,fifth]
+      \fill (a) circle;
+      \fill (b) circle;
+      \fill (c) circle;
+    \end{scope}
+    \begin{scope}[cstdot,second]
+      \fill (A) circle;
+      \fill (B) circle;
+      \fill (C) circle;
+    \end{scope}
+  \end{tikzpicture}
+  \caption{映射 $w=z^2$}
+\end{widefigure}
+  由于 $u=x^2-y^2,v=2xy$.
+  因此它把 $z$ 平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线 $x^2-y^2=c_1$, $2xy=c_2$ 分别映成 $w$ 平面上的两族平行直线 $u=c_1,v=c_2$.
+\end{example}
+
+\begin{widefigure}[1cm]
+  \begin{tikzpicture}
+  \draw[cstcurve,cstnra,third] (-1,0)-- node[above] {$w=z^2$} (1,0);
+  \begin{scope}[shift={(-4,0)}]
+    \draw[cstaxis] (-2,0)--(2,0);
+    \draw[cstaxis] (0,-2)--(0,2);
+    \begin{scope}[cstcurve,smooth,scale=1.2]
+      \draw[fourth] (-1,-1)--(1,1) (-1,1)--(1,-1);
+      \draw[second,rotate=45] (-1,-1)--(1,1) (-1,1)--(1,-1);
+      \foreach \i in {0,1,2,3}{
+        \draw[domain={-34-11*\i}:{34+11*\i},fifth]
+          plot ({((1-.2*\i)*sec(\x))},{(1-.2*\i)*tan(\x)})
+          plot ({(-(1-.2*\i)*sec(\x))},{(1-.2*\i)*tan(\x)})
+          plot ({(1-.2*\i)*tan(\x)},{(1-.2*\i)*sec(\x)})
+          plot ({(1-.2*\i)*tan(\x)},{(1-.2*\i)*-sec(\x)});
+        \draw[domain={-34-11*\i}:{34+11*\i},second,rotate=45]
+          plot ({((1-.2*\i)*sec(\x))},{(1-.2*\i)*tan(\x)})
+          plot ({(-(1-.2*\i)*sec(\x))},{(1-.2*\i)*tan(\x)})
+          plot ({(1-.2*\i)*tan(\x)},{(1-.2*\i)*sec(\x)})
+          plot ({(1-.2*\i)*tan(\x)},{(1-.2*\i)*-sec(\x)});
+      }
+    \end{scope}
+  \end{scope}
+  \begin{scope}[shift={(4,0)}]
+    \def\lth{1.5}
+    \draw[cstaxis] (-2,0)--(2,0);
+    \draw[cstaxis] (0,-2)--(0,2);
+    \foreach \i in {-4,-3,...,4}{
+      \draw[cstcurve,second] (-\lth,{.3*\i})--(\lth,{.3*\i});
+      \draw[cstcurve,fourth,rotate=90] (-\lth,{.3*\i})--(\lth,{.3*\i});
+    }
+  \end{scope}
+  \end{tikzpicture}
+  \caption{直线在映射 $w=z^2$ 下的原像}
+\end{widefigure}
+
+\begin{example}
+  求下列集合在映射 $w=z^2$ 下的像.
+  \begin{subexample}
+    \item 线段 $0<\abs{z}<3,\ \arg z=\dfrac\cpi4$.
+    \item 双曲线 $x^2-y^2=2$.
+    \item 扇形区域 $0<\arg z<\dfrac\cpi3,\ 0<\abs{z}<2$.
+  \end{subexample}
+\end{example}
+
+\begin{solutionenum}
+  \item 设 $z=r\ee^{\frac{\cpi \ii}4}$, 则 $w=z^2=r^2\ee^{\frac{\cpi \ii}2}=\ii r^2$.
+  因此它的像是连接 $0$ 和 $9\ii$ 的线段(不含端点).
+  \item 由于
+  \[
+    w=u+\ii v=z^2=(x^2-y^2)+2xy\ii.
+  \]
+  因此 $u=x^2-y^2=2,v=2xy$.
+  由于任何 $2+\ii v$ 均存在平方根 $x+y\ii$, 且 $x^2-y^2=2$, 因此这条双曲线的像的确就是直线 $\Re w=2$.\footnote{前面的推理仅说明这条双曲线的像是 $\Re w=2$ 的子集, 还需要说明 $\Re w=2$ 中的每个元素都有原像落在该双曲线内.}
+  \item 设 $z=r\ee^{\ii\theta}$, 则 $w=r^2\ee^{2\ii\theta}$.
+  因此它的像是扇形区域
+  \[
+    0<\arg w<\frac{2\cpi}3,\quad 0<\abs{w}<4.
+  \]
+\end{solutionenum}
+
+\begin{example}
+  求圆周 $\abs{z}=2$ 在映射 $w=\dfrac{z+1}{z-1}$ 下的像.
+\end{example}
+
+\begin{solution}
+  不难看出 $z=\dfrac{w+1}{w-1}$.
+  由 $\biggabs{\dfrac{w+1}{w-1}}=2$ 可知
+  \[
+    \abs{w+1}=2\abs{w-1},\quad w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4,
+  \]
+  化简得到
+  \[
+    w\ov w-\frac53 w-\frac53\ov w+1=0,\quad \abs{w-\frac53}^2=\frac{16}9,
+  \]
+  即 $\Bigabs{w-\dfrac53}=\dfrac43$, 它是一个圆周.
+\end{solution}
+
+\begin{widefigure}[.5cm]
+  \begin{tikzpicture}[scale=.5]
+    \draw[cstcurve,cstnra,third] (-1.5,0)-- node[above] {$w=\dfrac1z$} (1.5,0);
+    \begin{scope}[shift={(-7,0)}]
+      \begin{scope}[cstcurve,fifth]
+        \filldraw[fill=fifth!15] (-2,0) circle (2);
+        \filldraw[fill=fifth!35] (-1,0) circle (1);
+        \filldraw[fill=fifth!55] (-.5,0) circle (.5);
+        \filldraw[fill=fifth!75] (-.3333,0) circle (.3333);
+      \end{scope}
+      \begin{scope}[cstcurve,main]
+        \filldraw[fill=main!15] (2,0) circle (2);
+        \filldraw[fill=main!35] (1,0) circle (1);
+        \filldraw[fill=main!55] (.5,0) circle (.5);
+        \filldraw[fill=main!75] (.3333,0) circle (.3333);
+      \end{scope}
+      \draw[cstaxis] (-4.5,0)--(4.5,0);
+      \draw[cstaxis] (0,-3)--(0,3);
+    \end{scope}
+    \begin{scope}[shift={(7,0)}]
+      \begin{scope}[cstcurve,fifth]
+        \fill[fifth!75] (-4,-3) rectangle (-3,3);
+        \fill[fifth!55] (-3,-3) rectangle (-2,3);
+        \fill[fifth!35] (-2,-3) rectangle (-1,3);
+        \fill[fifth!15] (-1,-3) rectangle (-.5,3);
+      \end{scope}
+      \begin{scope}[cstcurve,main]
+        \fill[main!15] (.5,-3) rectangle (1,3);
+        \fill[main!35] (1,-3) rectangle (2,3);
+        \fill[main!55] (2,-3) rectangle (3,3);
+        \fill[main!75] (3,-3) rectangle (4,3);
+      \end{scope}
+      \begin{scope}[cstcurve,fifth]
+        \draw (-.5,-3)--(-.5,3);
+        \draw (-1,-3)--(-1,3);
+        \draw (-2,-3)--(-2,3);
+        \draw (-3,-3)--(-3,3);
+      \end{scope}
+      \begin{scope}[cstcurve,main]
+        \draw (3,-3)--(3,3);
+        \draw (2,-3)--(2,3);
+        \draw (1,-3)--(1,3);
+        \draw (.5,-3)--(.5,3);
+      \end{scope}
+      \draw[cstaxis] (-4.5,0)--(4.5,0);
+      \draw[cstaxis] (0,-3)--(0,3);
+    \end{scope}
+  \end{tikzpicture}
+  \captionof{figure}{分式线性映射 $w=\dfrac1z$}
+\end{widefigure}
+
+形如
+\[
+  f(z)=\frac{az+b}{cz+d}
+\]
+的映射叫作\nouns{分式线性映射}\index{fenshixianxingyingshe@分式线性映射}, 其中 $ad\neq bc$.
+它总把直线和圆映成直线或圆.
+
+\marginpar{
+  \vspace{-4\baselineskip}
+  \begin{exercise}
+    若分式线性映射
+    \[
+      w=\frac{az+b}{cz+d}
+    \]
+    将圆周 $C$ 映成直线, 则 $C$ 一定经过哪个复数?
+  \end{exercise}
+}
+
+此外, 也有分别用 $\Re w$ 和 $\Im w$ 图像来表现复变函数映射的, 还有用 $\abs{w}$ 并给不同辐角的 $w$ 涂上不同颜色来表现复变函数映射的方法.
+
+
+
+\section{极限和连续性}
+
+类似于实数的情形, 我们可以定义复数列和复变函数的极限.
+
+\subsection{数列的极限}
+
+\begin{definition}
+  设 $\{z_n\}_{n\ge 1}$ 是一个复数列.
+  若存在复数 $z$ 满足对任意 $\varepsilon>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n-z}<\varepsilon$, 则称 $z$ 是\nouns{数列 $\{z_n\}$ 的极限}\index{jixian@极限!shuliejixian@数列极限}\index{shulie@数列!shuliejixian@数列极限}, 记作 \nouns{$\liml_{n\ra\infty}z_n=z$}\index{0limn@$\liml_{n\ra\infty}z_n$}.
+\end{definition}
+此时称\nouns{极限存在}\index{jixian@极限}或\nouns{数列收敛}\index{shoulian@收敛}.
+若不存在这样的 $z$, 则称\nouns{极限不存在}\index{jixian@极限!jixianbucunzai@极限不存在}或\nouns{数列发散}\index{fasan@发散}.
+可以看出, $\liml_{n\ra\infty}z_n=z$ 等价于实极限 $\liml_{n\ra\infty}\abs{z_n-z}=0$.
+
+由于复数列极限的定义和实数列极限的定义在形式上完全相同, 因此类似地, 极限的四则运算法则对于复数列也是成立的.
+
+\begin{theorem}
+  设 $\liml_{n\ra\infty}z_n=z,\liml_{n\ra\infty}w_n=w$, 则
+  \begin{enuma}
+    \item $\liml_{n\ra\infty}(z_n\pm w_n)=z\pm w$;
+    \item $\liml_{n\ra\infty} z_nw_n=zw$;
+    \item 当 $w\neq 0$ 时, $\liml_{n\ra\infty}\dfrac{z_n}{w_n}=\dfrac zw$.
+  \end{enuma}
+\end{theorem}
+
+下述定理保证了我们可以使用实数列的敛散性判定方法来研究复数列的敛散性.
+
+\begin{theorem}
+  \label{thm:sequence-re-im}
+  设 $z_n=x_n+y_n\ii,z=x+y\ii$, 则
+  \[
+    \lim_{n\ra\infty}z_n=z\iff
+    \lim_{n\ra\infty}x_n=x\ \text{且}\ 
+    \lim_{n\ra\infty}y_n=y.
+  \]
+\end{theorem}
+
+\begin{proof}
+  显然我们只需说明
+  \[
+    \lim_{n\ra\infty}\abs{z_n-z}=0\iff
+    \lim_{n\ra\infty}\abs{x_n-x}=\lim_{n\ra\infty}\abs{y_n-y}=0.
+  \]
+
+  若 $\liml_{n\ra\infty}\abs{z_n-z}=0$, 则由三角不等式
+  \[
+    0\le \abs{x_n-x}, \abs{y_n-y}\le\abs{z_n-z}
+  \]
+  和夹逼准则可知 $\liml_{n\ra\infty}\abs{x_n-x}=\liml_{n\ra\infty}\abs{y_n-y}=0$.
+
+  反之, 若 $\liml_{n\ra\infty}\abs{x_n-x}=\liml_{n\ra\infty}\abs{y_n-y}=0$, 则由极限的四则运算法则可知
+  \[
+    \lim_{n\ra\infty}\abs{x_n-x}+\abs{y_n-y}=0.
+  \]
+  由三角不等式
+  \[
+    0\le\abs{z_n-z}\le\abs{x_n-x}+\abs{y_n-y}
+  \]
+  和夹逼准则可知 $\liml_{n\ra\infty}\abs{z_n-z}=0$.
+  由此定理得证.
+\end{proof}
+
+\begin{example}
+  设 $z_n=\dfrac{n^2-1}{n^2+1}\ee^{\frac{\cpi \ii}n}$. 数列 $\{z_n\}$ 是否收敛?
+\end{example}
+
+\begin{solution}
+  由于
+  \[
+    x_n=\frac{n^2-1}{n^2+1}\cos\frac\cpi n\ra 1,\quad
+    y_n=\frac{n^2-1}{n^2+1}\sin\frac\cpi n\ra 0.
+  \]
+  因此 $\{z_n\}$ 收敛且极限为 $1$.
+\end{solution}
+
+\marginpar{
+  \vspace{-5.5\baselineskip}
+  \begin{exercise}
+    设
+    \[
+      z_n=\dfrac{(1+i)^n}{2^n}.
+    \]
+    数列 $\{z_n\}$ 是否收敛?
+  \end{exercise}
+}
+
+
+\subsection{无穷远点和复球面}
+
+数列极限的定义可以用邻域的语言重新表述为:
+\begin{definition}
+  $\liml_{n\ra\infty}z_n=z$ 是指: 对 $z$ 的任意 $\delta$ 邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$.\footnotemark
+\end{definition}
+\footnotetext{%
+  一般地, 一个点的邻域是指包含它的任意一个开集.
+  可以说明, $\liml_{n\ra\infty}z_n=z\in\BC$ 当且仅当对 $z$ 的任意邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$.
+  因为包含 $z$ 的开集一定也包含 $z$ 的一个 $\delta$ 邻域.
+}
+
+若 $\liml_{n\ra\infty}\abs{z_n}=+\infty$, 我们将其记为 \nouns{$\liml_{n\ra\infty}z_n=\infty$}\index{0limn@$\liml_{n\ra\infty}z_n$}\index{0infty@$\infty$}.
+这也等价于: 对任意 $X>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n}>X$.
+我们能不能也用邻域的语言来描述 $\liml_{n\ra\infty}z_n=\infty$ 呢?
+我们将介绍复球面的概念, 它是复数的一种几何表示方式且自然地包含无穷远点 $\infty$.
+这种思想是在黎曼研究多值复变函数时引入的.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{scope}[scale=1.2]
+      \fill[cstfill1,scale=.7] (-3.65,-.804)--(-1.85,.804)--(3.65,.804)--(1.85,-.804)--cycle;
+      \filldraw[cstcurve,fill=main!10,fill opacity=.5] (0,0) circle (1);
+      \draw[cstdash,main] (0,0) circle (1 and 0.3);
+      \coordinate [label=above:\textcolor{third}{$N$}] (N) at (0,1);
+      \draw[cstdash] (0,0)--(N);
+      \draw[cstdash] (0,0)--(1,0);
+      \draw[cstaxis] (1,0)--(2.5,0);
+      \def\a{.7}
+      \draw[cstdash] (0,0)--({-.8*\a},{-.9*\a});
+      \draw[cstaxis] ({-.8*\a},{-.9*\a})--(-.8,-.9);
+      \coordinate [label=left:{$z_1$}] (z1) at (.57,-.15);
+      \coordinate [label=below left:{$Z_1$}] (Z1) at ($(N)!1.2!(z1)$);
+      \coordinate [label=left:{$z_2$}] (z2) at (-1.6,-.2);
+      \coordinate [label=above left:{$Z_2$}] (Z2) at ($(N)!.45!(z2)$);
+      \draw[cstdash,cstcurve,fifth] (N)--(Z1);
+      \draw[cstdash,cstcurve,second] (N)--(Z2);
+      \draw[cstcurve,second] (Z2)--(z2);
+    \end{scope}
+    \fill[cstdot,fifth] (Z1) circle;
+    \fill[cstdot,second] (Z2) circle;
+    \fill[cstdot,fifth] (z1) circle;
+    \fill[cstdot,second] (z2) circle;
+    \fill[cstdot] (N) circle;
+  \end{tikzpicture}
+  \caption{复球面和复平面}
+\end{figure}
+
+\marginpar{
+  \vspace{-3\baselineskip}
+  \begin{center}
+    \includegraphics[width=.95\marginparwidth]{images/Riemann.jpg}
+  \end{center}
+  {\footnotesize
+  黎曼 (Bernhard Riemann), 德国数学家, 复变函数理论主要建立者之一. 他对复变函数理论做出了卓越贡献. 他提出的柯西-黎曼方程是复变函数论中的一项基础性工作, 揭示了复变函数在某点可导的充要条件. 他阐述了黎曼映射定理, 该定理表明了复球面上的任何单连通区域都可以相互共形映射.
+  同时, 黎曼还引入了黎曼曲面的概念, 这是一种描述多值函数的几何工具. 黎曼曲面在代数几何等领域有着广泛的应用, 为现代数学尤其是几何和数论的发展做出了重要贡献.
+  他提出的关于刻画素数分布的黎曼猜想, 也是千禧年百万数学奖七大难题之一.}
+  \vspace{\baselineskip}\small
+  集合 $A-B$ 表示\emph{差集}\index{chaji@差集}, 即属于 $A$ 但不属于 $B$ 的元素全体形成的集合.
+  也可记作 $A\setminus B$.
+  \vspace{\baselineskip}
+  \begin{tikzpicture}[mpscale]
+    \fill[cstfille1] (0,0) circle (1.5);
+    \filldraw[cstcurve,main,fill=white] (0,0) circle (1);
+    \draw[cstaxis] (-1.5,0)--(1.5,0);
+    \draw[cstaxis] (0,-1.5)--(0,1.5);
+  \end{tikzpicture}
+  \captionof{figure}{$\infty$ 的(去心)邻域}
+}
+
+在三维空间中以复平面原点 $O$ 为球心作一半径为 $1$ 的球面
+\[
+  S=\bigsetm{(x,y,z)\in\BR^3}{x^2+y^2+z^2=1}.
+\]
+过 $O$ 做垂直于复平面的直线, 并与球面相交于它的北极 $N=(0,0,1)$.
+对于复平面上的任意一点 $z$, 连接 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z=\varphi(z)$.
+反之, 球面上除了 $N$ 外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
+也就是说, \nouns{球极投影}\index{qiujitouying@球极投影}
+\begin{equation}
+  \label{eq:polar-project}
+  \begin{aligned}
+    \varphi:\BC&\lra S\\
+    z=x+y\ii&\lto \biggl(\frac{2x}{\abs{z}^2+1},\frac{2y}{\abs{z}^2+1},\frac{\abs{z}^2-1}{\abs{z}^2+1}\biggr)
+  \end{aligned}
+\end{equation}
+将 $S-\{N\}$ 和 $\BC$ 建立了一一对应.
+
+当 $\abs{z}$ 越来越大时, 其对应球面上点也越来越接近 $N$.
+若我们在复平面上添加一个额外的``点''——\nouns{无穷远点}\index{wuqiongyuandian@无穷远点}, 记作 \nouns{$\infty$}\index{0infty@$\infty$}, 则\nouns{扩充复数集合 $\BC^*=\BC\cup\{\infty\}$}\index{kuochongfushujihe@扩充复数集合}\index{0cstar@$\BC^*$} 就正好和球面上的点一一对应.
+称这样的球面为\nouns{复球面}\index{fuqiumian@复球面}, 称包含无穷远点的复平面为\nouns{扩充复平面}\index{kuochongfupingmian@扩充复平面}\footnote{
+  也叫\emph{闭复平面}\index{fupingm@复平面!bifupingmian@闭复平面}. 相应地, 将原来的复平面叫作\emph{有限复平面}\index{fupingm@复平面!youxianfupingmian@有限复平面}或\emph{开复平面}\index{fupingm@复平面!kaifupingmian@开复平面}.
+}.
+若约定 $\abs{\infty}=+\infty$, 则分别称
+\[
+  U(\infty,X)=\{z\in\BC^*\midcolon \abs{z}>X\},\qquad
+  \Uc(\infty,X)=\{z\in\BC\midcolon \abs{z}>X\}
+\]
+为 $\infty$ 的 \nouns{$X$ 邻域}\index{linyu@邻域}和\nouns{去心 $X$ 邻域}\index{linyu@邻域!quxinlinyu@去心邻域}.
+这样, 前述极限可统一表述为: 若对 $z\in\BC^*$ 的任意 $\delta$ 邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$, 则记 $\liml_{n\ra\infty}z_n=z$.
+
+朴素地看, 复球面上任意一点可以定义 $\delta$ 邻域为与其距离小于 $\delta$ 的所有点.
+那么在复球面上, 普通复数和 $\infty$ 的邻域具有同等地位.
+特别地, 复球面上 $\infty$ 的 $\delta$ 邻域通过球极投影对应到扩充复平面上 $\infty$ 的邻域
+$U\Bigl(\infty, \sqrt{\dfrac4{\delta^2}-1}\Bigr)$.\footnote{
+  对于有限复数 $z$, 复球面上 $z$ 的 $\delta$ 邻域对应到复平面上一包含 $z$ 的圆域, 但圆心不是 $z$.
+}
+
+注意我们在考虑实数极限的时候有 $\pm\infty$, 但复数情形只有 $\infty$.
+实际上实数情形的 $\infty$ 和复数情形的 $\infty$ 是一回事, 考虑球极投影在实轴上的限制, $\BR\cup\{\infty\}$ 可以和圆周建立一一对应.
+但 $\BR\cup\{\pm\infty\}$ 则对应一种不同的几何表示方式.
+
+
+\subsection{函数的极限}
+
+\begin{definition}
+  设函数 $f(z)$ 在 $z_0$ 的某个去心邻域内有定义.
+  若存在复数 $A$ 满足对任意 $\varepsilon>0$, 存在 $\delta>0$ 使得当 $0<\abs{z-z_0}<\delta$ 时, $\abs{f(z)-A}<\varepsilon$, 则称 $A$ 为 \nouns{$f(z)$ 当 $z\ra z_0$ 时的极限}\index{jixian@极限!hanshujixian@函数极限}\index{fubianhanshu@复变函数!hanshujixian@函数极限}, 记为 \nouns{$\liml_{z\ra z_0}f(z)=A$}\index{0limz@$\liml_{z\ra z_0}f(z)$} 或 \nouns{$f(z)\ra A\ (z\ra z_0)$}\index{0fz@$f(z)\ra A$}.
+\end{definition}
+
+此时称\nouns{极限存在}\index{jixian@极限!jixiancunzai@极限存在}.
+若不存在这样的 $A$, 则称\nouns{极限不存在}\index{jixian@极限!jixianbucunzai@极限不存在}.
+
+该定义可用邻域的语言重新表述为:
+\begin{definition}
+  设函数 $f(z)$ 在 $z_0$ 的某个去心邻域内有定义.
+  若存在复数 $A$ 满足: 对 $A$ 的任意邻域 $V$, 存在 $z_0$ 的去心邻域 $\Uc$ 使得当 $z\in\Uc$ 时, $f(z)\in V$, 则称 $A$ 为 \nouns{$f(z)$ 当 $z\ra z_0$ 时的极限}\index{jixian@极限!hanshujixian@函数极限}, 记为 \nouns{$\liml_{z\ra z_0}f(z)=A$}\index{0limz@$\liml_{z\ra z_0}f(z)$} 或 \nouns{$f(z)\ra A (z\ra z_0)$}\index{0fz@$f(z)\ra A$}.
+\end{definition}
+
+在此表述下, 将上述定义中的 $z_0$ 或 $A$ 换成 $\infty$, 即可得到 $z\ra\infty$ 时的极限定义, 以及 $\lim f(z)=\infty$ 的含义.
+
+类似于复数列情形, 极限的四则运算法则对于复变函数也是成立的.
+\begin{theorem}
+  \label{thm:limfunctionfour}
+  对于 $z_0\in\BC^*$, 若极限 $\liml_{z\ra z_0}f(z)=A,\liml_{z\ra z_0}g(z)=B$ 都存在, 则
+  \begin{enuma}
+    \item $\liml_{z\ra z_0}(f\pm g)(z)=A\pm B$;
+    \item $\liml_{z\ra z_0}(fg)(z)=AB$;
+    \item 当 $B\neq 0$ 时, $\liml_{z\ra z_0}\Bigl(\dfrac fg\Bigr)(z)=\dfrac AB$.
+  \end{enuma}
+\end{theorem}
+
+下述定理表明, 研究复变函数极限, 只需研究其实部、虚部两个二元实函数的极限.
+\begin{theorem}
+  \label{thm:limfunction}
+  设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+y_0\ii,A=u_0+v_0\ii$, 则
+  \[
+    \lim_{z\ra z_0}f(z)=A\iff
+    \lim_{\substack{x\ra x_0\\y\ra y_0}}u(x,y)=u_0\ \text{且}\ 
+    \lim_{\substack{x\ra x_0\\y\ra y_0}}v(x,y)=v_0.
+  \]
+\end{theorem}
+
+\begin{proof}
+  我们有
+  \[
+    \lim_{z\ra z_0}f(z)=A\iff
+    \lim_{\substack{x\ra x_0\\y\ra y_0}}\bigabs{u(x,y)+\ii v(x,y)-u_0-\ii v_0}=0.
+  \]
+  其余推导和\thmref{定理}{thm:sequence-re-im} 的证明类似, 我们省略之.
+\end{proof}
+
+在学习了复变函数的导数后, 我们也可以使用等价无穷小替换、洛必达法则等工具来计算极限. 相应结论的证明与高等数学中相应结论的证明类似, 此处不再赘述.
+
+\begin{example}
+  证明: 当 $z\ra 0$ 时, 函数 $f(z)=\dfrac{\Re z}{\abs{z}}$ 的极限不存在.
+\end{example}
+
+\begin{proof}
+  令 $z=x+y\ii$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
+  因此
+  \[
+    u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.
+  \]
+  当 $z$ 在实轴原点两侧分别趋向于 $0$ 时, $u(x,y)\ra\pm1$.因此 $\liml_{\substack{x\ra 0\\y\ra 0}}u(x,y)$ 不存在,从而 $\liml_{z\ra z_0}f(z)$ 不存在.
+\end{proof}
+
+
+\subsection{函数的连续性}
+
+有了复变函数的极限之后, 可自然地定义复变函数的连续性.
+\begin{definition}
+  \label{def:continuous}
+  \begin{enuma}
+    \item 若 $\liml_{z\ra z_0}f(z)=f(z_0)$, 则称 $f(z)$ 在 \nouns{$z_0$ 处连续}\index{lianxu@连续}.
+    \item 若 $f(z)$ 在区域 $D$ 内处处连续, 则称 $f(z)$ 在 \nouns{$D$ 内连续}\index{lianxu@连续}.
+  \end{enuma}
+\end{definition}
+
+由\thmref{定理}{thm:limfunction} 可知:
+\begin{theorem}
+  函数 $f(z)=u(x,y)+\ii v(x,y)$ 在 $z_0=x_0+\ii y_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
+\end{theorem}
+
+由于复变函数极限和连续的定义和实变量函数情形在形式上完全相同, 因此类似地有:
+\begin{theorem}
+  \begin{enuma}
+    \item 在 $z_0$ 处连续的两个函数 $f(z)$, $g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 仍然在 $z_0$ 处连续.
+    \item 若函数 $g(z)$ 在 $z_0$ 处连续, 函数 $f(w)$ 在 $g(z_0)$ 处连续, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处连续.
+  \end{enuma}
+\end{theorem}
+
+\begin{exampleenum}
+  \item 设
+  \[
+    f(z)=\ln(x^2+y^2)+\ii(x^2-y^2),
+  \]
+  则 $u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续. 因此 $f(z)$ 在 $z\neq0$ 处连续.
+  \item 显然 $f(z)=z$ 是处处连续的.
+  由连续函数的四则运算还连续可知, 多项式函数
+  \[
+    P(z)=a_0+a_1z+a_2z^2+\cdots+a_nz^n
+  \]
+  也处处连续, 有理函数 $\dfrac{P(z)}{Q(z)}$ 在 $Q(z)$ 的零点以外处处连续.
+\end{exampleenum}
+
+\begin{example}
+  证明: 若 $f(z)$ 在 $z_0$ 处连续, 则 $\ov{f(z)}$ 在 $z_0$ 处也连续.
+\end{example}
+
+\begin{proof}[证法一]
+  设
+  \[
+    f(z)=u(x,y)+\ii v(x,y),\quad
+    z_0=x_0+\ii y_0.
+  \]
+  那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 处连续, 从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 处连续.
+  所以
+  \[
+    \ov{f(z)}=u(x,y)-\ii v(x,y)
+  \]
+  在 $(x_0,y_0)$ 处连续.
+\end{proof}
+
+\begin{proof}[证法二]
+  函数 $g(z)=\ov z=x-\ii y$ 处处连续,从而 $g\bigl(f(z)\bigr)=\ov{f(z)}$ 在 $z_0$ 处连续.
+\end{proof}
+
+可以看出, 由于 $\BC$ 和 $\BR$ 类似, 也是一个域, 因此复变函数与单变量实函数的极限和连续具有类似形式与结论.
+另一方面, 由于 $\BC$ 和 $\BR^2$ 一一对应, 复变函数与两个二元实函数的极限和连续也没有太大区别.
+这是复数这一数学对象和 $\BR$ 以及 $\BR^2$ 这两个不同的数学对象的共性.
+数学家们正是从这一体两面的现象中发现了复数函数的独特之处, 一方面它具有和单变量实函数类似的导数和微分, 另一方面它的实部和虚部又具有偏导数和全微分.
+这种特性使得可导的复变函数具有整洁优美的性质, 我们将在接下来的章节逐步揭开它的神秘面纱.
+
+
+\subsection{复数域的性质\optional}
+\label{ssec:complex-field}
+
+\subsubsection{复数域的特点}
+
+若集合 $F$ 带有元素 $0,1$ 以及四则运算\footnote{%
+  即有运算 $+$ 和 $\times$, 且对任意 $a\in S$, 存在 $b\in S$ 使得 $a+b=b+a=0$; 对任意非零 $a\in F$, 存在 $c\in F$ 使得 $a\times c=c\times a=1$.%
+}, 且
+\begin{enuma}
+  \item 满足加法交换、结合律, 乘法交换、结合、分配律\footnote{即对任意 $a,b,c\in F$, 有 $a+b=b+a$, $a+(b+c)=(a+b)+c$, $ab=ba$, $a(bc)=(ab)c$, $a(b+c)=ab+ac$.};
+  \item 对任意 $a\in F$, $a+0=a\times 1=a$,
+\end{enuma}\parnoindent
+则称 $F$ 构成一个\nouns{域}\index{yu@域}.
+有理数全体 $\BQ$, 实数全体 $\BR$, 复数全体 $\BC$ 均构成域.
+
+与有理数域和实数域有着本质不同的是, 复数域是\nouns{代数闭域}\index{yu@域!daishubiyu@代数闭域}.
+也就是说, 对于任意 $n\ge 1$ 个复数 $c_0,c_1,\cdots,c_{n-1}$, 复系数多项式
+\[
+  P(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0
+\]
+总有复数根, 即存在复数 $z_0$ 使得 $P(z_0)=0$.
+由此归纳可知, 复系数多项式可以因式分解成一次多项式的乘积.
+我们会在\thmref{例}{exam:algebraic-basic-theorem} 中证明该结论.
+
+在 $\BQ$ 和 $\BR$ 上可以定义出一个``好的''大小关系.
+换言之它们是\nouns{有序域}\index{yu@域!youxuyu@有序域}, 即存在一个满足下述性质的 $>$:
+\begin{enuma}
+  \item 若 $a\neq b$, 则要么 $a>b$, 要么 $b>a$;
+  \item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
+  \item 若 $a>b,c>0$, 则 $ac>bc$.
+\end{enuma}\parnoindent
+而 \alert{$\BC$ 却不是有序域}.
+这是因为: 若 $\ii>0$, 则
+\[
+  -1=\ii\cdot \ii>0,\quad -\ii=-1\cdot \ii>0.
+\]
+于是 $0>\ii$, 矛盾! 同理 $\ii<0$ 也不可能.
+
+
+\subsubsection{复数域的自同构}
+\label{sssec:complex-field-isomorphism}
+
+若 $F$, $K$ 是两个域, 映射 $f:F\ra K$ 满足
+\begin{enuma}
+  \item $f(0)=0,\quad f(1)=1$ (注意两组 $0,1$ 分别位于 $F$ 和 $K$ 中);
+  \item 对任意 $a,b\in F$, $f(a+b)=f(a)+f(b)$;
+  \item 对任意 $a,b\in F$, $f(ab)=f(a)f(b)$,
+\end{enuma}\parnoindent
+则称 $f$ 是一个\nouns{同态}\index{tongtai@同态}.
+若 $f$ 还是一一对应, 则称 $f$ 是一个\nouns{同构}\index{tonggou@同构}.
+称域 $F$ 到自身的同态和同构分别为 $F$ 的\nouns{自同态}\index{zitongtai@自同态}和\nouns{自同构}\index{zitonggou@自同构}.
+
+\begin{exampleenum}
+  \item 设 $f:\BQ\ra\BQ$ 是有理数域的自同构. 那么对于正整数 $n$,
+  \[
+      f(n)
+    =f(\underbrace{1+1+\cdots+1}_{n\ \text{个}})
+    =\underbrace{f(1)+f(1)+\cdots+f(1)}_{n\ \text{个}}
+    =nf(1)=n.
+  \]
+  于是 $f(-n)=f(0)-f(n)=-n$.
+  对于有理数 $r=\dfrac pq$, 有 $f(r)=\dfrac{f(p)}{f(q)}=\dfrac pq=r$.
+  因此 $f$ 是恒等映射.
+  \item 设 $f:\BR\ra\BR$ 是实数域的连续自同构. 那么对于有理数 $r$, 有 $f(r)=r$.
+  对于任意实数 $x$, 存在有理数列 $\{r_n\}_{n\ge 1}$ 使得 $x=\liml_{n\ra\infty} r_n$.
+  于是由连续性可知
+  \[
+      f(x)
+    =f\bigl(\lim_{n\ra\infty} r_n\bigr)
+    =\lim_{n\ra\infty} f(r_n)
+    =\lim_{n\ra\infty} r_n
+    =x.
+  \]
+  因此 $f$ 是恒等映射.
+\end{exampleenum}
+
+\begin{theorem}
+  设 $f$ 是复数域的连续自同构, 则 $f$ 为恒等映射或共轭.
+\end{theorem}
+
+\begin{proof}
+  由前面的讨论可知, 对于实数 $x$, $f(x)=x$.
+  于是由 $f(\ii^2)=f(-1)=-1$ 可知 $f(\ii)=\pm\ii$.
+  故
+  \[
+    f(x+y\ii)=f(x)+f(y)f(\ii)=x\pm y\ii,
+  \]
+  即 $f$ 为恒等映射或共轭.
+\end{proof}
+
+该定理表明了共轭是唯一一个非平凡的、与四则运算交换的复变函数, 共轭的重要作用由此可见一斑.
+
+复数也可以利用矩阵来构造.
+设
+\[
+  \bfE=\begin{pmatrix}1& \\&1\end{pmatrix},\quad
+  \bfJ=\begin{pmatrix}&-1\\1&\end{pmatrix}.
+\]
+那么集合
+\[
+  F=\Biggsetm{\begin{pmatrix}
+    x&-y\\y&x
+  \end{pmatrix}}{x,y\in\BR}
+  =\{x\bfE+y\bfJ\mid x,y\in\BR\}
+  \subseteq M_2(\BR)
+\]
+上有零矩阵 $\bfO$、单位阵 $\bfE$、矩阵加法和矩阵乘法.
+设
+\begin{align*}
+  f:\BC&\lra F\\
+  x+y\ii&\lto x\bfE+y\bfJ.
+\end{align*}
+由于 $\bfJ^2=\bfE$, 不难说明 $f$ 是满足
+\[
+  f(z_1+z_2)=f(z_1)+f(z_2),\qquad
+  f(z_1z_2)=f(z_1)f(z_2)
+\]
+的一一对应.
+从而 $F$ 上也有域的结构, 且 $f$ 是域同构.
+这样就用矩阵构造了复数域.
+
+可以看出 $f(\ov z)=f(z)^\rmT=f(z)^*$, 即复共轭对应 $F$ 中矩阵的转置(也是伴随), 而且矩阵 $f(z)$ 对应的线性变换将平面向量逆时针旋转 $\theta$ 并将模长放缩至 $r$ 倍.
+
+
+\subsubsection{四元数}
+\label{sssec:quaternion-number}
+
+用复数的乘法可以表示平面的旋转, 如何表示三维空间的旋转呢?
+为此, 哈密顿发明了\nouns{四元数}\index{siyuanshu@四元数}\index{0h@$\BH$}:
+\[
+  \BH=\{a_0+a_1\ii+a_2\jj+a_3\kk\mid a,b,c,d\in\BR\},
+\]
+其中两个四元数相等当且仅当对应的四个系数都相等.
+$\BH$ 上可以自然定义加法, 而它的乘法由如下规律所决定
+\[
+  \ii^2=\jj^2=\kk^2=-1,\quad 
+  \ii\jj=-\jj\ii=\kk,\ 
+  \jj\kk=-\kk\jj=\ii,\ 
+  \kk\ii=-\ii\kk=\jj.
+\]
+这些运算满足除乘法交换律外的域的各种性质.
+
+定义四元数的\nouns{共轭}\index{gonge@共轭}为:
+\[
+  \tau(a_0+a_1\ii+a_2\jj+a_3\kk)
+  =a_0-a_1\ii-a_2\jj-a_3\kk.
+\]
+不难发现 $\tau\bigl(\tau(A)\bigr)=A$,
+\begin{align*}
+   A\tau(A)
+  =a_0^2+a_1^2+a_2^2+a_3^2
+  =\tau(A)A
+\end{align*}
+是非负实数, 且 $A\tau(A)=0\iff A=0$. 
+定义 $A$ 的\nouns{模}\index{mo@模}为
+\[
+  \abs{A}=\sqrt{A\tau(A)}=\sqrt{a_0^2+a_1^2+a_2^2+a_3^2}.
+\]
+对于任意非零四元数 $A$, 存在四元数 $B=\dfrac{\tau(A)}{\abs{A}^2}$ 使得 $AB=BA=1$. 
+
+和复数情形类似, 四元数也可以表达为矩阵形式:
+\begin{equation}
+  \label{eq:quaternion-matrix}
+  \begin{aligned}
+    f:\BH&\simto M_2(\BC)\\
+    a_0+a_1\ii+a_2\jj+a_3\kk&\lto \begin{pmatrix}
+      a_0+a_1\ii&-a_2-a_3\ii\\
+      a_2-a_3\ii&a_0-a_1\ii
+    \end{pmatrix},
+  \end{aligned}
+\end{equation}
+也就是将 $A=z+w\jj$ 映为 $\begin{pmatrix}
+  z&-w\\\ov w&\ov z
+\end{pmatrix}$, 其中 $z,w\in\BC$.
+
+当 $a_0=0$ 时, $A=a_1\ii+a_2\jj+a_3\kk$ 对应一个三维向量 $(a_1,a_2,a_3)$.
+因此我们可以用四元数来表示三维向量, 并把四元数分为\nouns{标量部分}\index{biaoliangbufen@标量部分}与\nouns{向量部分}\index{xiangliangbufen@向量部分}之和 $A=a_0+\bfa$.
+对于三维向量 $\bfa=a_1\ii+a_2\jj+a_3\kk, \bfb=b_1\ii+b_2\jj+b_3\kk$, 定义数量积
+\[
+  \bfa\cdot\bfb=a_1b_1+a_2b_2+a_3b_3
+\]
+和向量积
+\[
+  \bfa\times\bfb=\begin{vmatrix}
+    \ii&\jj&\kk\\
+    a_1&a_2&a_3\\
+    b_1&b_2&b_3
+  \end{vmatrix}.
+\]
+
+\begin{theorem}
+  四元数 $A=a_0+\bfa$ 与 $B=b_0+\bfb$ 的乘积为
+  \[
+    AB=(a_0b_0-\bfa\cdot\bfb)+(a_0\bfb+b_0\bfa+\bfa\times\bfb).
+  \]
+\end{theorem}
+
+\begin{proof}
+  由 $AB=a_0b_0+a_0\bfb+b_0\bfa+\bfa\bfb$ 可知我们只需证明
+  \[
+    \bfa\bfb=-\bfa\cdot\bfb+\bfa\times\bfb,
+  \]
+  而这是因为
+  \begin{align*}
+     \bfa\bfb&
+    =a_1b_1\ii^2+a_2b_2\jj^2+a_3b_3\kk^2\\&
+      \qquad
+      +(a_2b_3\jj\kk+a_3b_2\kk\jj)
+      +(a_3b_1\kk\ii+a_1b_3\ii\kk)
+      +(a_1b_2\ii\jj+a_2b_1\jj\ii)\\&
+    =-(a_1b_1+a_2b_2+a_3b_3)
+      +(a_2b_3-a_3b_2)\ii
+      +(a_3b_1-a_1b_3)\jj
+      +(a_1b_2-a_2b_1)\kk\\&
+    =-\bfa\cdot\bfb+\bfa\times\bfb.\qedhere
+  \end{align*}
+\end{proof}
+
+设 $q$ 是模为 $1$ 的四元数, 定义
+\begin{equation}
+  \label{eq:rotation-quaternion}
+  \Phi_q(A)=qAq^{-1}=qA\tau(q).
+\end{equation}
+显然 $\Phi_q(AB)=\Phi_q(A)\Phi_q(B)$ 且 $\Phi_q(a_0+\bfa)=a_0+\Phi_q(\bfa)$.
+由于
+\begin{align*}
+   \Phi_q(\bfa\bfb)&
+   =\Phi_q(-\bfa\cdot\bfb+\bfa\times\bfb)
+   =-\bfa\cdot\bfb+\Phi_q(\bfa\times\bfb),\\
+   \Phi_q(\bfa)\Phi_q(\bfb)&
+  =-\Phi_q(\bfa)\cdot\Phi_q(\bfb)
+    +\Phi_q(\bfa)\times\Phi_q(\bfb),
+\end{align*}
+因此
+\[
+   \Phi_q(\bfa)\cdot\Phi_q(\bfb)
+  =\bfa\cdot\bfb,\qquad
+   \Phi_q(\bfa)\times\Phi_q(\bfb)
+  =\Phi_q(\bfa\times\bfb),
+\]
+\[
+  \Phi_q(\bfa)\cdot\bigl(\Phi_q(\bfb)\times\Phi_q(\bfc)\Bigr)
+  =\Phi_q(\bfa)\cdot\Phi_q(\bfb\times\bfc)
+  =\bfa\cdot(\bfb\times\bfc).
+\]
+由于 $\Phi_q$ 保持了向量的内积, 因此它是 $\BR^3$ 上的一个正交变换.
+注意到 $\bfa\cdot(\bfb\times\bfc)$ 是以 $\bfa,\bfb,\bfc$ 为三个行向量的三阶方阵的行列式, 而 $\Phi_q$ 不改变这个行列式, 从而它一定是 $\BR^3$ 上的一个旋转变换.
+可以计算得到 $q=w+x\ii+y\jj+z\kk$ 对应的旋转矩阵
+\[
+ \begin{pmatrix}
+   1-2y^2-2z^2&2xy-2wz&2xz+2wy\\
+   2xy+2wz&1-2z^2-2x^2&2yz-2wx\\
+   2xz-2wy&2yz+2wx&1-2x^2-2y^2
+ \end{pmatrix}.
+\]
+
+\begin{theorem}
+  若 $\bfa$ 是单位向量,
+  \[
+    q=\cos\frac\theta2+\bfa\sin\frac\theta2,
+  \]
+  则 $\Phi_q$ 是绕 $\bfa$ 逆时针旋转 $\theta$ 的变换.
+\end{theorem}
+
+\begin{proof}
+  显然 $\abs{q}=1$ 且 $q\bfa=\bfa q$, 因此 $\Phi_q(\bfa)=\bfa$, $\Phi_q$ 是绕 $\bfa$ 的旋转变换.
+
+  设单位向量 $\bfv$ 和 $\bfa$ 正交, 即 $\bfv\cdot \bfa=0$.
+  设 $\bfu=\bfa\times\bfv$, 则 $\bfa,\bfv,\bfu$ 构成右手直角坐标系, 且
+  \[
+    \bfa\bfv=\bfa\times\bfv=\bfu=-\bfv\times\bfa=-\bfv\bfa,\quad
+    \bfa\bfv\bfa=\bfu\bfa=\bfu\times\bfa=\bfv.
+  \]
+  因此
+  \begin{align*}
+    \Phi_q(\bfv)&
+    =(\cos\frac\theta2+\bfa\sin\frac\theta2)\bfv 
+      (\cos\frac\theta2-\bfa\sin\frac\theta2)\\&
+    =\bfv\cos^2\frac\theta2-\bfa\bfv\bfa\sin^2\frac\theta2
+      +(\bfa\bfv-\bfv\bfa)\sin\frac\theta2\cos\frac\theta2\\&
+    =\bfv(\cos^2\frac\theta2-\sin^2\frac\theta2)
+      +(\bfu+\bfu)\sin\frac\theta2\cos\frac\theta2\\&
+    =\bfv\cos\theta+\bfu\sin\theta.
+  \end{align*}
+  故 $\Phi_q$ 是绕 $\bfa$ 逆时针旋转 $\theta$ 的变换.
+\end{proof}
+
+由于 $\BR^3$ 上的旋转变换都可以分解成绕坐标轴的旋转, 因此它们都可以用四元数来表示.
+由于三维矩阵乘法需要计算 $27$ 次实数乘法, 四元数的乘法只需要计算 $16$ 次, 因此四元数乘法的计算复杂度比对应矩阵乘法的计算复杂度要低.
+在计算机图形学中, 尤其是三维物体的旋转中, 四元数发挥着重要的作用.
+
+
+\startwidepage
+\psection{本章小结}
+
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 熟练掌握复数的四则运算.
+  \item 熟练掌握复数的三角形式与指数形式.
+  \begin{conclusion}
+    \item 三角形式和复数形式的核心是计算复数的模和辐角.
+    模 $r=\sqrt{x^2+y^2}$ 相对容易计算, 辐角一般是 $\arctan \dfrac yx$ 或 $\arctan \dfrac yx\pm\cpi$, 具体根据象限来判断.
+    注意看清楚是求辐角还是主辐角.
+    \item 得到三角形式与指数形式后, 复数的乘除、乘幂都很容易计算得到.
+    \item 对于方根, 需要注意非零复数 $z$ 的 $n$ 次方根 $\sqrt[n]{z}$ 总有 $n$ 个值.
+    \item 知道辐角与复数运算有关的等式.
+  \end{conclusion}
+  \item 会利用复数乘法的几何意义解决简单的平面几何问题.
+  \begin{conclusion}
+    \item 夹角可转化为相邻两条线段对应的复数相除的辐角, 注意辐角可正可负.
+    \item 长度可转化为复数模的关系.
+    \item 逆时针或顺时针旋转 $
+    \theta$ 对应乘 $\ee^{\ii\theta}$ 或 $\ee^{-\ii\theta}$.
+  \end{conclusion}
+  \item 能熟练地将曲线的方程、参数方程和平面图形相互转化.
+  \begin{conclusion}
+    \item 如果有较好的几何直观, 可以利用几何直观直接写出对应 $z$ 的方程.
+    \item 如果是一般的 $x,y$ 的方程形式, 将 $x,y$ 分别用 $z,\ov z$ 表示并化简; 反之亦然.
+    \item 如果是参数方程 $x=x(t),y=y(t)$, 对应的就是 $z=x(t)+\ii y(t)$, 注意 $t$ 的取值范围.
+  \end{conclusion}
+  \item 了解连续曲线、简单曲线和闭路的概念.
+  \item 能熟练判断一个集合是否是区域, 是否有界, 是否是单连通.
+  \begin{conclusion}
+    \item 将对应集合的草图画出来, 通过集合是否包含了它的边界来判断是区域还是闭区域.
+    \item 对于常见的半平面、带状、角状、圆域、圆环域等, 应当能迅速判断它的特性.
+    \item 如果集合可以被一条闭路围住, 那它就是有界的.
+    \item 单连通是指区域内任意一条闭路的内部都包含在该区域中.
+    一块区域挖去内部的一些点、线条或区域往往是多连通的,  但需要注意挖去的线条或区域连接到边界时, 未必是多连通的.
+  \end{conclusion}
+  \item 熟知共轭复数的有关性质.
+  \begin{conclusion}
+    \item 知道共轭和四则运算交换.
+    \item 会 $z,\ov z$ 和 $x,y$ 的相互转化.
+    \item 会利用共轭复数判断实数和纯虚数.
+  \end{conclusion}
+  \item 了解数列和函数的极限, 了解函数的连续性. 这些内容大多和单变量实函数情形类似, 但需要注意函数极限中 $z\ra z_0$ 可以是以任意方式趋于 $z_0$.
+  \item 知道 $\infty$ 和复球面的含义.
+\end{conclusion}
+
+本章中不易理解和易错的知识点包括:
+\begin{enuma}
+  \item 误将 $0$ 视为纯虚数. 具体的 $0$ 不容易弄错, 但若是判断包含未知数的复数是不是纯虚数, 容易忘记实部和虚部不能都是零.
+  \item $0$ 没有辐角, 关于 $\arg z$ 或 $\Arg z$ 的式子中 $z$ 总是非零的.
+  \item 辐角 $\Arg z$ 和辐角主值 $\arg z$ 的计算. 辐角是一个多值函数, 而辐角主值是我们人为选出来的一个单值分支, 为了方便选取 $(-\cpi,\cpi]$ 作为它的范围. 计算时, 需要根据复数所在的象限来确定主辐角是 $\arctan\dfrac yx$, 还是需要 $\pm\cpi$. 
+  容易算错第二和第四象限内复数的辐角.
+  \item 辐角有关等式. 多值函数的等式含义应当理解为等式两边所能取到的值形成的集合是相同的. 若其中包含了多值函数的复合, 则每一层都要取遍所有可能的值.
+  容易判断错误的是: $\Arg z^n=n\Arg z$ 一般不成立; $\Arg \sqrt[n]z=\dfrac1n\Arg z$ 总成立.
+  \item 单连通是为了刻画区域在连续变形下的一种不变的特性. 通常情形下, 一个开集挖去一些更小的开集、线段或点往往会变得不再单连通.
+  容易判断错误的是: 复平面挖去负实轴和零是单连通的.
+\end{enuma}
+
+\psection{本章作业}
+
+\begin{homework}
+  \item 单选题.
+  \begin{homework}
+    \item 以下条件中\fillbrace{}\emph{不是} $z$ 是实数的充要条件.
+    \begin{exchoice}(4)
+      \item $\Im z=0$
+      \item $\arg z=0,\cpi$
+      \item $z=\ov z$
+      \item $z^2=\abs{z}^2$
+    \end{exchoice}
+    \item 以下条件中\fillbrace{}是 $z$ 是纯虚数的充要条件.
+    \begin{exchoice}(4)
+      \item $\Re z=0$
+      \item $\arg z=\pm\dfrac\cpi2$
+      \item $z=-\ov z$
+      \item $z^2=-\abs{z}^2$
+    \end{exchoice}
+    \item 以下函数中\fillbrace{}\emph{不是}其定义域上的连续函数.
+    \begin{exchoice}(4)
+      \item $\arg z$
+      \item $\abs{z}$
+      \item 多项式
+      \item $\ln(z\ov z)$
+    \end{exchoice}
+    \item 若 $f(z)$ 在 $0$ 处连续且 $f(0)=0$, $g(z)$ 在 $0$ 处连续, 则下述命题\emph{未必成立}的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $f(z)+g(z)$ 在 $0$ 处连续
+      \item $f(z)g(z)$ 在 $0$ 处连续
+      \item $f\bigl(g(z)\bigr)$ 在 $0$ 处连续
+      \item $g\bigl(f(z)\bigr)$ 在 $0$ 处连续
+    \end{exchoice}
+    \item 下述方程表示的是圆周的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $z\ov z-(2+\ii)z-(2-\ii)\ov z=4$
+      \item $\Re\dfrac{1}{z}=\dfrac{1}{9}$
+      \item $\arg\dfrac{z-1}{z+1}=\dfrac{\cpi}{3}$
+      \item $z=\ii+2\ee^{\ii\theta},\theta\in(0,2\cpi)$
+    \end{exchoice}
+    \item 下述命题\emph{错误}的是\fillbrace{}.
+    \begin{exchoice}(2)
+      \item $\abs{z}=\Re z+1$ 是抛物线
+      \item $\abs{z+\ii}=\abs{z-\ii}$ 是直线
+      \item $\abs{z+\ii}-\abs{z-\ii}=1$ 是双曲线
+      \item $\abs{z}+\abs{z-2\ii}=2$ 是一条线段
+    \end{exchoice}
+    \item \fillbrace{}是多连通区域.
+    \begin{exchoice}(2)
+      \item $-1<\arg z<\cpi-1$
+      \item $\arg z<\dfrac{3\cpi}4$
+      \item $1<\abs{z}<2$
+      \item $0<\Re z<1$
+    \end{exchoice}
+    \item 下述命题\emph{错误}的是\fillbrace{}.
+    \begin{exchoice}(1)
+      \item $z\ov z-(2+\ii)z-(2-\ii)\ov z\le 4$ 是有界单连通闭区域
+      \item $\Im z\le0,\Re z\ge0$ 是无界单连通闭区域
+      \item $\abs{z-1}<\abs{z+3}$ 是无界单连通区域
+      \item $\biggabs{\dfrac{z+1}{z-1}}<2$ 是无界多连通区域
+    \end{exchoice}
+  \end{homework}
+  \item 填空题.
+  \begin{homework}
+    \item 若 $x,y$ 是实数且 $\dfrac{x+1+\ii(y-3)}{5+3\ii}=1+\ii$, 则 $x+y=$\fillblank{}.
+    \item 设 $z=-\ii$, 则 $1+z+z^2+z^3+z^4=$\fillblank{}.
+    \item 化简 $\dfrac{(1+\ii)^{101}}{(1-\ii)^{99}}=$\fillblank{}.
+    \item 化简 $(-1+\ii)^{10}-(-1-\ii)^{10}$=\fillblank{}.
+    \item $\biggl(\dfrac{(1+\ii)^2}2\biggr)^{21}$ 的模是\fillblank{}.
+    \item $\dfrac{3+\ii}{\ii}-\dfrac{10\ii}{3-\ii}$ 的模是\fillblank{}.
+    \item $-1-\ii$ 的辐角是\fillblank{}.
+    \item $-1+\sqrt 3\ii$ 的辐角主值是\fillblank{}.
+    \item $100-\ii$ 绕 $0$ 逆时针旋转 $\dfrac\cpi2$ 后得到的复数是\fillblank{}.
+    \item $-3+2\ii$ 绕 $0$ 顺时针旋转 $\dfrac\cpi2$ 后得到的复数是\fillblank{}.
+    \item 区域 $0<\arg z<\dfrac\cpi3$ 在映射 $w=z^3$ 下的像是\fillblank[12em]{}.
+    \item 已知映射 $w=z^3$, 则 $z=\sqrt3+\ii$ 在 $w$ 平面上的像是\fillblank{}.
+    \item 极限 $\liml_{z\ra 1+\ii}(1+z^2+2z^4)=$\fillblank{}.
+    \item 极限 $\liml_{z\ra\infty}\dfrac{2z^2-1-\ii}{z^2+\ii z+1}=$\fillblank{}.
+  \end{homework}
+  \item 解答题.
+  \begin{homework}
+    \item 求下列复数 $z$ 的实部与虚部, 共轭复数, 模和辐角主值.
+    \begin{subhomework}[after-item-skip=2pt](2)
+      \item $\dfrac{4\ii}{1-\ii}+\dfrac1\ii$;
+      \item $\dfrac{(3-2\ii)(4+5\ii)}{2\ii}$;
+      \item $\Bigl(\dfrac{3-2\ii}{2+\ii}\Bigr)^2$;
+      \item $(2+\ii)^3$;
+      \item $\ii+\ii^7-2\ii^9$;
+      \item $-2\ii(3+\ii)(4+2\ii)(1-\ii)$.
+    \end{subhomework}
+    \item 求下列复数 $z$ 的三角和指数形式.
+    \begin{subhomework}(3)
+      \item $-\ii$;
+      \item $3+\sqrt 3\ii$;
+      \item $\dfrac{4\ii}{1-\ii}$;
+      \item $\ov{\biggl(\dfrac{4-3\ii}{1-2\ii}\biggr)}$;
+      \item $\bigl(\ee^{\frac{\cpi\ii}6}\bigr)^{-11}$;
+      \item $\dfrac{(\cos \theta+\ii\sin \theta)^5}{(\sin \theta-\ii\cos \theta)^4}$.
+    \end{subhomework}
+    \item 计算下列表达式.
+    \begin{subhomework}(3)
+      \item $(\sqrt3-\ii)^{-5}$;
+      \item $(-1+\ii)^{-7}$;
+      \item $\sqrt[4]{-2+2\ii}$;
+      \item $\sqrt[4]{-2}$;
+      \item $(-4-4\ii)^{\frac15}$;
+      \item $(1-\ii)^{\frac13}$.
+    \end{subhomework}
+    \item 利用共轭复数将 $(x_1^2+y_1^2)(x_2^2+y_2^2)$ 表达为两个多项式的平方和.
+    \item 设 $\abs{a}<1$. 证明: $\abs{z}=1$ 当且仅当 $\abs{z-a}=\abs{1-\ov az}$.
+    \item 设 $a_1,a_2,\cdots,a_n$ 的模都小于 $1$, $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是非负实数且 $\lambda_1+\lambda_2+\cdots+\lambda_n=1$. 证明:
+    \[
+      \abs{\lambda_1z_1+\lambda_2z_2+\cdots+\lambda_nz_n}<1.
+    \]
+    \item 证明: 若复数 $a+b\ii$ 是实系数方程
+      \[
+        f(z)=a_0z^n+a_1z^{n-1}+\cdots+a_{n-1}z+a_n=0
+      \]
+      的根, 则 $a-b\ii$ 也是它的根.
+    \item 设 $z=\ee^{\ii t}$, 证明:
+    \begin{subhomework}(2)
+      \item $z^n+\dfrac1{z^n}=2\cos{nt}$;
+      \item $z^n-\dfrac1{z^n}=2\ii\sin{nt}$.
+    \end{subhomework}
+    \item $z_1=-z,z_2=\ov z,z_3=-\ov{z}$ 在复平面上对应的点分别与 $z$ 在复平面上对应的点是什么关系?
+    \item 已知点 $z_1,z_2,z_3$ 不共线. 点 $\dfrac12(z_1+z_2)$ 和 $\dfrac13(z_1+z_2+z_3)$ 分别表示什么点?
+    \item 设正方形的两个顶点分别为复数 $a$, $b$, 求它的其它两个顶点的所有可能.
+    \item 用复参数方程表示连接 $-1+\ii$ 与 $1-4\ii$ 的直线段.
+    \item 用 $z,\ov z$ 的方程表示经过 $-1+\ii$ 与 $1-4\ii$ 的直线.
+    \item 设 $\dfrac{z_2-z_1}{z_3-z_1}=\dfrac{z_1-z_3}{z_2-z_3}$. 证明: $\abs{z_1-z_2}=\abs{z_2-z_3}=\abs{z_3-z_1}$ 并说明这些等式的几何意义.
+    \item 证明: 若 $z_1+z_2+z_3=0$ 且 $\abs{z_1}=\abs{z_2}=\abs{z_3}=1$, 则 $z_1,z_2,z_3$ 构成一个正三角形, 且单位圆(圆心为 $0$, 半径为 $1$ 的圆)是它的外接圆.
+    \item 证明: $\abs{z_1+z_2}^2+\abs{z_1-z_2}^2=2\bigl(\abs{z_1}^2+\abs{z_2}^2\bigr)$ 并说明其几何意义.
+    \item 下列数列 $\{z_n\}$ 是否收敛? 若收敛求出它们的极限.
+    \begin{subhomework}[after-item-skip=2pt](2)
+      \item $z_n=\dfrac{1+n\ii}{1-n\ii}$;
+      \item $z_n=\Bigl(1+\dfrac \ii2\Bigr)^n$;
+      \item $z_n=(-1)^n+\dfrac{\ii}{n+1}$;
+      \item $z_n=\dfrac{(3+2\ii)^n}{(3+4\ii)^n}$;
+      \item $z_n=\dfrac{n^2+\ii n}{n^2-\ii n}$;
+      \item $z_n=\Bigl(1+\dfrac{(-1)^n}n\Bigr)\ee^{-\frac{n\cpi \ii}2}$.
+    \end{subhomework}
+    \item 证明: $f(z)=z{\ov z}^{-1}-\ov zz^{-1}$ 在 $z\ra 0$ 时极限不存在.
+    \item 证明: $f(z)=\begin{cases}
+      1,&\text{若}\ y=x^2,\\
+      0,&\text{其它情形}.
+    \end{cases}$ 在 $z$ 沿着任意一条直线趋于 $0$ 时极限都存在, 但 $z\ra0$ 时极限不存在.
+    \item \optionalex 利用单位根计算下列表达式.
+      \begin{subhomework}
+        \item $I=\prod\limits_{k=1}^{n-1}\sin\dfrac{k\cpi}n=\sin\dfrac{\cpi}n\sin\dfrac{2\cpi}n \cdots \sin\dfrac{(n-1)\cpi}n$.
+        \item $I=\sum\limits_{k=1}^n\tan^2\dfrac{k\cpi}m=\tan^2\dfrac{\cpi}m+\tan^2\dfrac{2\cpi}m+\cdots+\tan^2\dfrac{n\cpi}m$, 其中 $m=2n+1$ 是奇数.
+      \end{subhomework} 
+    \item \optionalex 设集合 $A=\{1,2,\cdots,999\}$, 令 $N_k$ 为元素之和是 $5m+k$ 型的 $A$ 的子集个数. 利用单位根计算 $N_0,N_1,N_2,N_3,N_4$.
+    \item \optionalex 利用单位根将下列多项式因式分解成有理系数多项式的乘积.
+      \begin{subhomework}(2)
+        \item $x^{10}+x^5+1$;
+        \item $x^8-1$.
+      \end{subhomework}
+    \item \optionalex 证明: 
+      \begin{subhomework}
+        \item $\BQ(\ii)=\{x+y\ii\mid x,y,\in\BQ\}$ 是一个域;
+        \item 若 $F$ 是一个域且 $\BR\subsetneq F\subseteq \BC$, 则 $F=\BC$.
+      \end{subhomework}
+    \item \optionalex 证明: 对任意 $A$, $B\in\BH$, 有
+    \begin{subhomework}
+      \item $f(AB)=f(A)f(B)$, $f\bigl(\tau(A)\bigr)=\ov{f(A)}^{\rmT}$;
+      \item $\tau(AB)=\tau(B)\tau(A)$.
+    \end{subhomework}
+  \end{homework}
+\end{homework}
+\finishwidepage

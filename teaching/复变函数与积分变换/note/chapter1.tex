@@ -258,11 +258,19 @@
 记号 \nouns{$\ii$}\index{0i@$\ii$} 叫作\nouns{虚数单位}\index{xushudanwei@虚数单位}, 它最先是由欧拉引入并使用.
 将\alert{全体复数记作 $\BC$}\index{0c@$\BC$}, 全体实数记作 $\BR$\index{0r@$\BR$}\index{0q@$\BQ$}\index{0z@$\BZ$}\index{0n@$\BN$}.\footnote{%
   全体复数、实数、有理数、整数、自然数构成的集合分别记作 $\BC,\BR,\BQ,\BZ,\BN$, 整数集合记号来自其德语 Zahlen, 其余来自它们的英文名称 complex number, real number, rational number, natural number.
-  这些符号叫做空心体或白粗体, 手写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
+  这些符号叫做黑板粗体或双线体, 手写时, 可在普通字母格式上添加一条竖线(对于 $\BZ$ 是斜线)来区分.
   有些文献使用黑粗体字母 $\mathbf{C,R,Q,Z,N}$ 来表示这些集合.
 }
 由于实数 $x$ 可以自然地看成复数 $x+0\ii$, 在此观点下, 我们有 $\BR\subseteq \BC$.
 我们简记 $x+0\ii=x,0+y\ii=y\ii$.
+
+由定义可知, 每一个复数都可以唯一地表达成 $x+y\ii$ 这样的形式.
+对于建立了直角坐标系的平面, 平面上的点 $(x,y)$ 和复数 $x+y\ii$ 一一对应.
+将建立起这种对应的平面称为\nouns{复平面}\index{fupingmian@复平面}.
+于是, 我们可将复数 $z$ 与它对应的点 $Z$ 等同起来.
+复数 $z$ 还可与复平面上起于原点、终于点 $Z$ 的向量 $\overrightarrow{OZ}$ 一一对应.
+
+为了强调表示复数的字母 $z$, $w$ 等的不同, 也可将对应复平面称之为 $z$ 平面、$w$ 平面等等.
 
 \begin{figure}[H]
   \centering
@@ -306,13 +314,11 @@
   \caption{复数、平面上的点、平面向量一一对应}
 \end{figure}
 
-由定义可知, 每一个复数都可以唯一地表达成 $x+y\ii$ 这样的形式.
-对于建立了直角坐标系的平面, 平面上的点 $(x,y)$ 和复数 $x+y\ii$ 一一对应.
-将建立起这种对应的平面称为\nouns{复平面}\index{fupingmian@复平面}.
-于是, 我们可将复数 $z$ 与它对应的点 $Z$ 等同起来.
-复数 $z$ 还可与复平面上起于原点、终于点 $Z$ 的向量 $\overrightarrow{OZ}$ 一一对应.
-
-为了强调表示复数的字母 $z$, $w$ 等的不同, 也可将对应复平面称之为 $z$ 平面、$w$ 平面等等.
+将复平面的 $x$ 轴和 $y$ 轴分别称为\nouns{实轴}\index{shizhou@实轴}和\nouns{虚轴}\index{xuzhou@虚轴}.
+当 $\Im z=0$ 时, $z=x$ 是实数, 它落在实轴上.
+称不是实数的复数是\nouns{虚数}\index{xushu@虚数}.
+当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z=y\ii\neq 0$ 是\nouns{纯虚数}\index{xushu@虚数!chunxushu@纯虚数}, 它落在虚轴上.
+\alert{注意虚轴上的点并不都是纯虚数, 因为 $0$ 也在虚轴上.}
 
 \begin{figure}[H]
   \centering
@@ -361,15 +367,6 @@
   \end{minipage}
   \caption{实数、纯虚数与复数、复平面的关系}
 \end{figure}
-
-将复平面的 $x$ 轴和 $y$ 轴分别称为\nouns{实轴}\index{shizhou@实轴}和\nouns{虚轴}\index{xuzhou@虚轴}.
-当 $\Im z=0$ 时, $z=x$ 是实数, 它落在实轴上.
-称不是实数的复数是\nouns{虚数}\index{xushu@虚数}.
-当 $\Re z=0$ 且 $z\neq 0$ 时, 称 $z=y\ii\neq 0$ 是\nouns{纯虚数}\index{xushu@虚数!chunxushu@纯虚数}, 它落在虚轴上.
-
-\begin{marker}
-  注意虚轴上的点并不都是纯虚数, 因为 $0$ 也在虚轴上.
-\end{marker}
 
 \begin{example}
   实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)\ii$ 是:
@@ -499,7 +496,7 @@
 \end{exampleenum}
 
 \begin{exercise}
-  若 $z^2=1+2\sqrt6\ii$, 则 $z=$\fillblank{}.
+  若 $z^2=1+2\sqrt6\ii$, 则 $z=$\fillblank[6em]{}.
 \end{exercise}
 
 实数范围内的诸多代数恒等式如等差数列求和公式、等比数列求和公式、二项式展开、平方(立方)差公式等在复数情形也是成立的.\footnote{
@@ -644,9 +641,9 @@
 由于 $z\ov z$ 是一个实数,
 因此在作复数的除法运算时, 可以利用下式将其转化为乘法:
 \[
-   \dfrac{z_1}{z_2}
-  =\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}
-  =\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.
+   \frac{z_1}{z_2}
+  =\frac{z_1\ov{z_2}}{z_2\ov{z_2}}
+  =\frac{z_1\ov{z_2}}{x_2^2+y_2^2}.
 \]
 
 \begin{example}
@@ -666,7 +663,7 @@
 \end{solution}
 
 \begin{exercise}
-  计算 $\dfrac{2-3\ii}{2-\ii}=$\fillblank{}.
+  计算 $\dfrac{2-3\ii}{2-\ii}=$\fillblank[6em]{}.
 \end{exercise}
 
 
@@ -712,25 +709,16 @@
   \end{enuma}
 \end{definition}
 
-\begin{marker}
-  约定 $0$ 的辐角没有意义.
-\end{marker}
+\alert{约定 $0$ 的辐角没有意义.}
 
-任意非零复数 $z$ 的辐角有无穷多个.
-这是因为若 $\theta$ 是 $z$ 的辐角, 则 $\theta+2k\cpi$ 也是 $z$ 的辐角, 其中 $k$ 是任意整数.
-不难知道\footnote{%
-这里等式两边都可以取很多值, 相等是指两边所能取到的值构成的集合相等.
-可以看出
-\[
-  \Arg\ov z=\Arg\frac1z=\{-\theta+2k\cpi\mid k\in\BZ\},\qquad
-  -\Arg z=\{-\theta-2k\cpi\mid k\in\BZ\}
-\]
-从而有 $\Arg \ov z=\Arg\dfrac1z=-\Arg z$.
-后文中包含 $\Arg,\Ln,\sqrt[n]{z}$ 等函数的等式的含义也是类似的.
-}
-\[
-  \Arg \ov z=\Arg\dfrac1z=-\Arg z.
-\]
+% \begin{wrapfigure}{o}[1cm]{2.1cm}
+%   \begin{center}
+%     \includegraphics[height=2cm]{images/qr.png}\par
+%     \footnotesize
+%     \textcolor{fifth}{微视频}\par
+%     辐角主值的计算
+%   \end{center}
+% \end{wrapfigure}
 
 我们固定选择 $\Arg z$ 中位于区间 $(-\cpi,\cpi]$ 的那个, 并称之为\nouns{辐角主值}\index{fujiao@辐角!fujiaozhuzhi@辐角主值}\footnote{%
   实际上我们可以任选长度为 $2\cpi$ 的半开半闭区间作为辐角主值范围. 常见的选择还有 $[0,2\cpi)$.
@@ -755,19 +743,14 @@
       {\color{third}x=0,y<0}.
   \end{cases}
 \end{equation}
+% \qrcode{images/qr.png}{\color{fifth}微视频}{辐角主值的计算}
 
-\begin{marker}
-  等式 $\arg\ov z=\arg\dfrac1z=-\arg z$ 不一定成立.
-\end{marker}
-
-\begin{exercise}
-  上述等式何时成立?  
-\end{exercise}
 
 \begin{figure}[H]
   \begin{minipage}{.45\textwidth}
     \centering
     \begin{tikzpicture}
+      \clip (1.4,.6) rectangle (5.3,5);
       \begin{axis}[
         axis lines=none,
         axis line style={-Stealth},
@@ -791,7 +774,6 @@
       ] ({v*cos(u)},{v*sin(u)},{u});
       \end{axis}
     \end{tikzpicture}
-    \vspace{-1.7\baselineskip}
     \caption{复数 $z$ 的辐角 $\Arg z$}
     \label{fig:image-Arg-z}
   \end{minipage}
@@ -800,7 +782,7 @@
     \begin{tikzpicture}
       \def\r{1.4}
       \draw[cstaxis] (-2.5,0)--(2.5,0); 
-      \draw[cstaxis] (0,-2.5)--(0,2.5);
+      \draw[cstaxis] (0,-2.2)--(0,2.2);
       \draw[cstaxis,main,cstwla,cstcurve] (-\r,0) arc(180:-180:\r);
       \filldraw[cstdote,draw=main] (-\r,-.07) circle;
       \begin{scope}[scale=\r]
@@ -827,6 +809,31 @@
     \caption{辐角主值与复数位置的关系}
   \end{minipage}
 \end{figure}
+
+任意非零复数 $z$ 的辐角有无穷多个.
+这是因为若 $\theta$ 是 $z$ 的辐角, 则 $\theta+2k\cpi$ 也是 $z$ 的辐角, 其中 $k$ 是任意整数.
+不难知道\footnote{%
+这里等式两边都可以取很多值, 相等是指两边所能取到的值构成的集合相等.
+可以看出
+\[
+  \Arg\ov z=\Arg\frac1z=\{-\theta+2k\cpi\mid k\in\BZ\},\qquad
+  -\Arg z=\{-\theta-2k\cpi\mid k\in\BZ\}
+\]
+从而有 $\Arg \ov z=\Arg\dfrac1z=-\Arg z$.
+后文中包含 $\Arg,\Ln,\sqrt[n]{z}$ 等函数的等式的含义也是类似的.
+}
+\[
+  \Arg \ov z=\Arg\frac1z=-\Arg z.
+\]
+不过
+\[
+  \arg\ov z=\arg\dfrac1z=-\arg z
+\]
+\alert{不一定成立}.
+
+\begin{exercise}
+  上述等式何时成立?  
+\end{exercise}
 
 复数的模满足如下性质:
 \begin{enuma}
@@ -958,6 +965,15 @@
 指数形式也可写作 $z=r\exp(\ii\theta)$.
 求复数的三角形式和指数形式的\alert{关键在于计算模和辐角}.
 
+\begin{people}[images/Euler.jpg]
+  欧拉 (Leonhard Euler), 瑞士数学家, 被誉为数学史上的巨匠.
+  欧拉是数学史上最多产的数学家, 平均每年写出八百多页的论文, 还写了大量的力学、分析学、几何学、变分法等的课本, 如《无穷小分析引论》、《微分学原理》、《积分学原理》等, 都成为数学界中的经典著作.
+  欧拉在数学的研究领域非常广泛, 因此在许多数学的分支中也可经常见到以他的名字命名的重要常数、公式和定理, 如欧拉线、欧拉定理、欧拉变换公式、欧拉函数、欧拉方程、欧拉公式等.
+  欧拉还创造了一批数学符号, 如 $f(x), \sum,\ii,\ee$ 等, 使得数学更容易表述、推广.
+  除此之外, 欧拉还是刚体力学和流体力学的奠基者, 弹性系统稳定性理论的开创人.
+  欧拉的一生都在为科学、工程学和数学做贡献, 他的著述浩瀚, 不仅包含科学创见, 而且富有科学思想, 给后人留下了极其丰富的科学遗产和为科学献身的精神. ``读读欧拉, 他是我们大家的老师.''
+\end{people}
+
 \begin{example}
   将 $z=-2-\sqrt{12}\ii$ 化成三角形式和指数形式.
 \end{example}
@@ -980,20 +996,6 @@
 \end{solution}
 
 求复数的三角形式或指数形式时, 可以任取一个辐角, 不要求必须是辐角主值.
-
-\begin{figure}[H]
-  \begin{peoplebox}
-    \begin{center}
-      \includegraphics*[height=4cm]{images/Euler.jpg}
-    \end{center}
-    欧拉 (Leonhard Euler), 瑞士数学家, 被誉为数学史上的巨匠.
-    欧拉是数学史上最多产的数学家, 平均每年写出八百多页的论文, 还写了大量的力学、分析学、几何学、变分法等的课本, 如《无穷小分析引论》、《微分学原理》、《积分学原理》等, 都成为数学界中的经典著作.
-    欧拉在数学的研究领域非常广泛, 因此在许多数学的分支中也可经常见到以他的名字命名的重要常数、公式和定理, 如欧拉线、欧拉定理、欧拉变换公式、欧拉函数、欧拉方程、欧拉公式等.
-    欧拉还创造了一批数学符号, 如 $f(x), \sum,\ii,\ee$ 等, 使得数学更容易表述、推广.
-    除此之外, 欧拉还是刚体力学和流体力学的奠基者, 弹性系统稳定性理论的开创人.
-    欧拉的一生都在为科学、工程学和数学做贡献, 他的著述浩瀚, 不仅包含科学创见, 而且富有科学思想, 给后人留下了极其丰富的科学遗产和为科学献身的精神. ``读读欧拉, 他是我们大家的老师.''
-  \end{peoplebox}
-\end{figure}
 
 \begin{example}
   设 $0<\theta<\dfrac\cpi2$.
@@ -1064,9 +1066,9 @@
 \begin{equation}
   \label{eq:sum-of-same-modulus}
    r\ee^{\ii\theta}+r\ee^{\ii\varphi}
-  =2r\cos\frac{\theta-\varphi}2\exp\Bigl(\frac{\theta+\varphi}2\ii\Bigr).
+  =2r\cos\Bigl(\frac{\theta-\varphi}2\Bigr)\ee^{\frac{\ii(\theta+\varphi)}2}.
 \end{equation}
-注意当 $\cos\dfrac{\theta-\varphi}2<0$ 时, 这离指数形式还差一步变形.
+注意当 $\cos\Bigl(\dfrac{\theta-\varphi}2\Bigr)<0$ 时, 这离指数形式还差一步变形.
 
 \begin{figure}[H]
   \centering
@@ -1141,10 +1143,12 @@
   \Arg{\frac{z_1}{z_2}}=\Arg z_1-\Arg z_2.
 \end{equation}
 
-\begin{marker}
-  等式 $\arg{(z_1z_2)}=\arg z_1+\arg z_2, \arg{\dfrac{z_1}{z_2}}=\arg z_1-\arg z_2$ 不一定成立.
-\end{marker}
-
+不过, 等式
+\[
+  \arg{(z_1z_2)}=\arg z_1+\arg z_2,\quad
+  \arg{\dfrac{z_1}{z_2}}=\arg z_1-\arg z_2
+\]
+\alert{不一定成立}.
 事实上, 当且仅当等式右侧落在区间 $(-\cpi,\cpi]$ 内时上述等式才成立, 否则等式两侧会相差 $\pm2\cpi$.
 例如 $z_1=z_2=\ee^{0.99\cpi \ii}$, $z_1z_2=\ee^{1.98\cpi \ii}$,
 \[
@@ -1366,17 +1370,14 @@
   计算 $(\sqrt3+\ii)^{48}=$\fillblank{}.
 \end{exercise}
 
-\begin{marker}
-  当 $\abs{n}\ge 2$ 时, 等式 $\Arg(z^n)=n\Arg z$ 总不成立, 等式 $\arg(z^n)=n\arg z$ 不一定成立.
-\end{marker}
-
+当 $\abs{n}\ge 2$ 时, 等式 $\Arg(z^n)=n\Arg z$ \alert{总不成立}, 等式 $\arg(z^n)=n\arg z$ \alert{不一定成立}.
 这是因为
 \begin{align*}
   \Arg z^n&=n\arg z+2k\cpi,\quad k\in\BZ,\\
   n\Arg z&=n\arg z+2nk\cpi,\quad k\in\BZ,
 \end{align*}
 二者能取到所有值形成的集合不相等.
-而等式 $\arg z^n=n\arg z$ 也仅在 $\arg z\in\Bigl(-\dfrac{\cpi}n,\dfrac\cpi n\Bigr]$ 时成立.
+而等式 $\arg z^n=n\arg z$ 也仅在 $\arg z\in(-\frac\cpi n,\frac\cpi n]$ 时成立.
 
 复数的乘幂可用于计算三角函数有关的求和式.
 
@@ -1404,7 +1405,7 @@
   \begin{align*}
      z^{n+1}-1
     =\ee^{\ii(n+1)\theta}-1&
-    =2\sin{\frac{(n+1)\theta}2}\exp\Bigl(\frac{(n+1)\theta+\cpi}2\ii\Bigr),\\
+    =2\sin\Bigl(\frac{(n+1)\theta}2\Bigr)\exp\Bigl(\frac{(n+1)\theta+\cpi}2\ii\Bigr),\\
      z-1
     =\ee^{\ii\theta}-1&
     =2\sin{\frac\theta2}\exp\Bigl(\frac{\theta+\cpi}2\ii\Bigr).
@@ -1413,14 +1414,14 @@
   \[
      A_n+\ii B_n
     =\frac{z^{n+1}-1}{z-1}
-    =\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}\exp\Bigl(\frac{n\theta}2\ii\Bigr).
+    =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\exp\Bigl(\frac{n\theta}2\ii\Bigr).
   \]
   它的实部和虚部分别为
   \[
      A_n
-    =\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}\cos\frac{n\theta}2,\qquad
+    =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\cos\frac{n\theta}2,\qquad
     B_n
-     =\frac{\sin\frac{(n+1)\theta}2}{\sin\frac\theta2}\sin\frac{n\theta}2.
+     =\frac{\sin\bigl((n+1)\theta/2\bigr)}{\sin(\theta/2)}\sin\frac{n\theta}2.
   \]
 \end{solution}
 
@@ -1474,12 +1475,12 @@
 \begin{solution}
   由于
   \[
-    1-\ii=\sqrt2\exp\Bigl(-\frac{\cpi \ii}4\Bigr),
+    1-\ii=\sqrt2\ee^{-\frac{\cpi \ii}4},
   \]
   因此
   \[
      \sqrt[4]{1-\ii}
-    =\sqrt[8]2\exp\frac{\Bigl(-\dfrac\cpi4+2k\cpi\Bigr)\ii}4,\quad k=0,1,2,3.
+    =\sqrt[8]2\exp\Bigl(\frac{-\cpi/4+2k\cpi}4\ii\Bigr),\quad k=0,1,2,3.
   \]
   于是该方根全部值为
   \[
@@ -1548,7 +1549,7 @@
 \end{figure}
 
 \begin{exercise}
-  计算 $\sqrt[6]{-1}=$\fillblank{}.
+  计算 $\sqrt[6]{-1}=$\fillblank[9em]{}.
 \end{exercise}
 
 我们总有
@@ -1557,9 +1558,7 @@
   \Arg \sqrt[n]z=\frac1n\Arg z=\frac{\arg z+2k\cpi}n,\quad k\in\BZ,
 \end{equation}
 其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角.
-\begin{marker}
-  当 $n\ge 2$ 时, $\arg \sqrt[n]z=\dfrac 1n\arg z$ 总不成立.
-\end{marker}
+当 $n\ge 2$ 时, $\arg \sqrt[n]z=\dfrac 1n\arg z$ \alert{总不成立}.
 这是因为等式左侧是多值的.
 
 我们称 $1$ 的 $n$ 次方根为 \nouns{$n$ 次单位根}\index{danweigen@单位根}.
@@ -1569,7 +1568,7 @@
 \]
 其中 $\zeta=\ee^{\frac{2\cpi \ii}n}$.
 对于任意非零复数 $z$, 它的 $n$ 次方根满足 $w_k=w_0\zeta^k$.
-于是 $z$ 的 $n$ 次方根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\cpi}n$.
+于是 $z$ 的 $n$ 次方根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\frac{2\cpi}n$.
 因此\alert{它们均匀分布在以原点为中心, $\sqrt[n]r$ 为半径的圆周上}, 它们构成该圆的一个内接正 $n$ 边形的顶点.
 
 \begin{example}
@@ -1727,7 +1726,7 @@
     =\prod_{k=1}^{m-1}\cos\frac{k\cpi}m
     =\prod_{k=1}^{m-1}\frac{\zeta^k+{\ov\zeta}^k}2
     =\prod_{k=1}^{m-1}\frac{\zeta^k+\zeta^{-k}}2\\&
-    =2^{1-m}(\zeta\zeta^2\cdots\zeta^{m-1})^{-1}
+    =2^{1-m}\bigl(\zeta\zeta^2\cdots\zeta^{m-1}\bigr)^{-1}
       \prod_{k=1}^{m-1}(\zeta^{2k}+1)\\&
     =2^{1-m}(-1)^n
       \prod_{k=1}^{m-1}(\zeta^{2k}+1).
@@ -1865,7 +1864,7 @@
 \]
 其中
 \[
-  \Phi_n(x)=\prod_{\substack{k=0\\\text{$k$ 和 $n$ 互质}}}^{n-1}\biggl(x-\ee^{\frac{2k\cpi\ii}n}\biggr),
+  \Phi_n(x)=\prod_{\substack{k=0\\\text{$k$ 和 $n$ 互质}}}^{n-1}\bigl(x-\ee^{\frac{2k\cpi\ii}n}\bigr),
 \]
 是不可约有理系数多项式, 叫作\nouns{分圆多项式}\index{fenyuanduoxiangshi@分圆多项式}.
 
@@ -2269,7 +2268,7 @@
 都给出开集.\footnote{
   注意最后一个集合不包括原点.
 }
-$G$ 是一个闭集当且仅当它的补集是开集.
+集合 $G$ 是一个闭集当且仅当它的补集是开集.
 直观上看, 由 $>,<$ 的不等式给出的集合往往是开集, 由 $\ge,\le$ 的不等式给出的集合往往是闭集.\footnote{%
   当不等式中的函数都是连续函数时, 由 $>,<$ 的不等式给出的集合是开集, 否则未必成立.
   连续函数的定义见\thmref{定义}{def:continuous}.
@@ -2277,7 +2276,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   例如 $\biggabs{\dfrac1z}\ge 1$ 表示的不是闭集, 因为它等价于 $0<\abs{z}\le1$.
 }
 
-若 $D$ 是某个开圆盘 $U(0,R)$ 的子集, 则称它是\nouns{有界}\index{youjie@有界}的.
+若集合 $G$ 是某个开圆盘 $U(0,R)$ 的子集, 则称它是\nouns{有界}\index{youjie@有界}的.
 否则称它是\nouns{无界}\index{wujie@无界}的.
 
 \begin{figure}[H]
@@ -2355,14 +2354,6 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   这些线条割痕\footnote{\emph{割痕}\index{gehen@割痕}是指在区域内去掉的一条曲线.}和点构成了它的边界.
   \item 区域 $D:\abs{z}>1$ 是一个无界区域, 它的边界是 $\abs{z}=1$, 闭区域是 $\abs{z}\ge 1$.
   注意数学中边界的概念与日常所说的边界是两码事, 它并不表示集合被包含在边界内部. 
-  \item 区域 $D_1:z\neq 0$ 表示复平面去掉原点, 它的边界是 $\{0\}$.
-  区域 $D_2: \arg z\neq\cpi$ 表示带有割痕为负实轴和零的复平面, 它的边界是负实轴和零.
-  $D_1$ 和 $D_2$ 的闭区域都是 $\BC$.
-  不同的区域可以拥有相同的闭区域.
-  \item \ref{fig:upper-half-plane} 至\ref{fig:anulus-domain} 列出了几种常见区域, 它们由实部、虚部、模和辐角的不等式所表示.
-  其中角形区域中 $\theta_1<\Arg z<\theta_2$ 表示 $z$ 有一个辐角值 $\theta$ 满足 $\theta_1<\theta<\theta_2$.
-\end{exampleenum}
-
 \begin{figure}[H]
   \centering
   \begin{minipage}{.23\textwidth}
@@ -2456,6 +2447,13 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \caption{角形区域}
   \end{minipage}
 \end{figure}
+  \item 区域 $D_1:z\neq 0$ 表示复平面去掉原点, 它的边界是 $\{0\}$.
+  区域 $D_2: \arg z\neq\cpi$ 表示带有割痕为负实轴和零的复平面, 它的边界是负实轴和零.
+  $D_1$ 和 $D_2$ 的闭区域都是 $\BC$.
+  不同的区域可以拥有相同的闭区域.
+  \item \ref{fig:upper-half-plane} 至\ref{fig:anulus-domain} 列出了几种常见区域, 它们由实部、虚部、模和辐角的不等式所表示.
+  其中角形区域中 $\theta_1<\Arg z<\theta_2$ 表示 $z$ 有一个辐角值 $\theta$ 满足 $\theta_1<\theta<\theta_2$.
+\end{exampleenum}
 
 \begin{figure}[H]
   \centering
@@ -2893,7 +2891,7 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \draw[cstaxis] (-2,0)--(2,0);
     \draw[cstaxis] (0,-2)--(0,2);
     \begin{scope}[cstcurve,smooth,scale=1.2]
-      \draw[fifth] (-1,-1)--(1,1) (-1,1)--(1,-1);
+      \draw[fourth] (-1,-1)--(1,1) (-1,1)--(1,-1);
       \draw[second,rotate=45] (-1,-1)--(1,1) (-1,1)--(1,-1);
       \foreach \i in {0,1,2,3}{
         \draw[domain={-34-11*\i}:{34+11*\i},fifth]
@@ -3118,12 +3116,6 @@ $G$ 是一个闭集当且仅当它的补集是开集.
   因为包含 $z$ 的开集一定也包含 $z$ 的一个 $\delta$ 邻域.
 }
 
-\begin{people}[images/Riemann.jpg]
-  黎曼 (Bernhard Riemann), 德国数学家, 复变函数理论主要建立者之一. 他对复变函数理论做出了卓越贡献. 他提出的柯西-黎曼方程是复变函数论中的一项基础性工作, 揭示了复变函数在某点可导的充要条件. 他阐述了黎曼映射定理, 该定理表明了复球面上的任何单连通区域都可以相互共形映射.
-  同时, 黎曼还引入了黎曼曲面的概念, 这是一种描述多值函数的几何工具. 黎曼曲面在代数几何等领域有着广泛的应用, 为现代数学尤其是几何和数论的发展做出了重要贡献.
-  他提出的关于刻画素数分布的黎曼猜想, 也是千禧年百万数学奖七大难题之一.
-\end{people}
-
 若 $\liml_{n\ra\infty}\abs{z_n}=+\infty$, 我们将其记为 \nouns{$\liml_{n\ra\infty}z_n=\infty$}\index{0limn@$\liml_{n\ra\infty}z_n$}\index{0infty@$\infty$}.
 这也等价于: 对任意 $X>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n}>X$.
 我们能不能也用邻域的语言来描述 $\liml_{n\ra\infty}z_n=\infty$ 呢?
@@ -3173,6 +3165,12 @@ $G$ 是一个闭集当且仅当它的补集是开集.
     \caption{$\infty$ 的(去心)邻域}
   \end{minipage}
 \end{figure}
+
+\begin{people}[images/Riemann.png]
+  黎曼 (Bernhard Riemann), 德国数学家, 复变函数理论主要建立者之一. 他对复变函数理论做出了卓越贡献. 他提出的柯西-黎曼方程是复变函数论中的一项基础性工作, 揭示了复变函数在某点可导的充要条件. 他阐述了黎曼映射定理, 该定理表明了复球面上的任何单连通区域都可以相互共形映射.
+  同时, 黎曼还引入了黎曼曲面的概念, 这是一种描述多值函数的几何工具. 黎曼曲面在代数几何等领域有着广泛的应用, 为现代数学尤其是几何和数论的发展做出了重要贡献.
+  他提出的关于刻画素数分布的黎曼猜想, 也是千禧年百万数学奖七大难题之一.
+\end{people}
 
 在三维空间中以复平面原点 $O$ 为球心作一半径为 $1$ 的球面
 \[

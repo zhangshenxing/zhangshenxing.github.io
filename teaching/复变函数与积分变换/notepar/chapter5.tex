@@ -1,0 +1,1758 @@
+\chapter{留数}
+\label{chapter:5}
+
+复变函数的留数理论是其解析理论应用的重要方法, 它将复变函数绕闭路积分转化为计算奇点处的留数问题.
+我们将针对不同的奇点采取不同的留数计算方式, 然后我们将介绍留数在积分计算和级数求和中的应用.
+
+
+
+\section{留数}
+
+\subsection{留数定理}
+
+\begin{definition}
+  设 $z_0$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在 $z_0$ 的某个去心邻域内的洛朗展开为
+  \[
+    f(z)=\cdots+c_{-1}(z-z_0)^{-1}+c_0+c_1(z-z_0)+\cdots
+  \]
+  称 $c_{-1}$ 为 $f(z)$ 在 $z_0$ 的\nouns{留数}\index{liushu@留数}, 记作 \nouns{$\Res[f(z),z_0]$}\index{0res@$\Res[f(z),z_0]$}.
+\end{definition}
+
+由洛朗展开的系数形式可知
+\[
+   \Res[f(z),z_0]
+  =\frac1{2\cpi\ii}\oint_C f(z)\d z,
+\]
+其中 $C$ 为该去心邻域中内部包含 $z_0$ 的一条闭路.
+可以看出, 知道留数之后可以用来计算积分.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\r{.6}
+    \filldraw [
+      cstcurve,
+      main,
+      cstfill1,
+      decoration = {
+        markings,
+        mark = at position .08 with {
+          \arrow{Straight Barb}
+          \node[right=2pt]{$C$};
+        }
+      },
+      postaction={decorate},
+      domain=0:360,
+      samples=500,
+    ] plot ({3*cos(\x)+.2*cos(2*\x)-.3*cos(3*\x)-.2}, {1.8*sin(\x)+.2*sin(2*\x)});
+    \coordinate (Z1) at (-1.7,0.2);
+    \coordinate (Z2) at (0,-.5);
+    \coordinate (Z3) at (1.7,.3);
+    \begin{scope}[cstcurve,fourth]
+      \draw[
+        decoration = {
+          markings,
+          mark = at position .15 with {
+            \arrow[rotate=-7]{Straight Barb}
+            \node[above right,shift={(-.2,-.1)}]{$C_1$};
+          }
+        },
+        postaction={decorate}
+      ] (Z1) circle (\r);
+      \draw[
+        decoration = {
+          markings,
+          mark = at position .75 with {
+            \arrow[rotate=-7]{Straight Barb}
+            \node[below right,shift={(0,.1)}]{$C_2$};
+          }
+        },
+        postaction={decorate}
+      ] (Z2) circle (\r);
+      \draw[
+        decoration = {
+          markings,
+          mark = at position .25 with {
+            \arrow[rotate=-7]{Straight Barb}
+            \node[above left,shift={(0,-.1)}]{$C_3$};
+          }
+        },
+        postaction={decorate}
+      ] (Z3) circle (\r);
+    \end{scope}
+    \begin{scope}[third]
+      \fill[cstdot] (Z1) circle node[below] {$z_1$};
+      \fill[cstdot] (Z2) circle node[below] {$z_2$};
+      \fill[cstdot] (Z3) circle node[below] {$z_3$};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{留数定理计算绕闭路积分}
+\end{figure}
+
+\begin{theorem}[积分计算方法III: 留数定理]
+  \index{liushudingli@留数定理}
+  \label{thm:residue}
+  若 $f(z)$ 在闭路 $C$ 上处处解析, 在 $C$ 内部的奇点为 $z_1,z_2,\cdots,z_n$, 则
+  \[
+     \oint_C f(z)\d z
+    =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
+  \]
+\end{theorem}
+
+\begin{proof}
+  设 $C_1,C_2,\cdots,C_n$ 是 $C$ 内部绕 $z_1,z_2,\cdots,z_n$ 的分离闭路.
+  由\thmCCC,
+  \[
+     \oint_C f(z)\d z
+    =\sum_{k=1}^n\oint_{C_k}f(z)\d z
+    =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].\qedhere
+  \]
+\end{proof}
+
+由\thmRes 和后文的留数计算公式, 我们就不必像之前那样在计算函数绕闭路积分时, 实施划分闭路、运用\thmCI 等步骤, 而是直接\alert{计算留数并相加, 然后乘以 $2\cpi\ii$} 得到.
+
+
+\subsection{留数的计算方法}
+
+若 $z_0$ 为 $f(z)$ 的可去奇点, 则由可去奇点的定义可知 $\Res[f(z),z_0]=0$.
+
+\begin{example}
+  设 $f(z)=\dfrac{z^3(\ee^z-1)^2}{\sin z^4}$.
+  \smallskip
+  由于 $0$ 是分子的 $5$ 阶零点, 分母的 $4$ 阶零点, 因此 $0$ 是 $f(z)$ 的可去奇点, 从而 $\Res[f(z),0]=0$.
+\end{example}
+
+若 $z_0$ 为 $f(z)$ 的本性奇点, 一般只能从定义, 也就是洛朗展开来计算.
+
+\begin{example}
+  设 $f(z)=z^4\sin\dfrac1z$.
+  由
+  \[
+     f(z)
+    =z^4\Bigl(\frac1z-\frac1{3!z^3}+\frac1{5!z^5}+\cdots\Bigr)
+    =z^3-\frac z{3!}+\frac1{5!z}+\cdots
+  \]
+  可知 $\Res[f(z),0]=\dfrac1{120}$.
+\end{example}
+
+对于极点而言, 我们有如下计算公式:
+
+\begin{theorem}[留数计算公式 I]
+  \label{thm:residue-formula-for-pole}
+  若 $z_0$ 是 $f(z)$ 的 $\le m$ 阶极点, 则
+  \[
+    \Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\ra z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}.
+  \]
+\end{theorem}
+
+这里的 $m$ 可以比极点的阶更高, 可根据计算需要来选择合适的 $m$.
+
+特别地, 当 $m=1$ 时, 我们有:
+\begin{theorem}[留数计算公式 II]
+  若 $z_0$ 是 $f(z)$ 的一阶极点, 则
+  \[
+    \Res[f(z),z_0]=\lim_{z\ra z_0}(z-z_0)f(z).
+  \]
+\end{theorem}
+以上公式对可去奇点和解析点也是成立的, 此时计算结果必定是零.
+
+\begin{proof}
+  设 $f(z)$ 在 $z_0$ 去心邻域 $0<\abs{z-z_0}<\delta$ 内的洛朗展开为
+  \[
+    f(z)=c_{-m}(z-z_0)^{-m}+\cdots+c_{-1}(z-z_0)^{-1}+c_0+\cdots
+  \]
+  设 $g(z)$ 为幂级数
+  \[
+    c_{-m}+\cdots+c_{-1}(z-z_0)^{m-1}+c_0(z-z_0)^m+\cdots
+  \]
+  的和函数, 则在 $z_0$ 去心邻域 $0<\abs{z-z_0}<\delta$ 范围内, 有 $g(z)=(z-z_0)^mf(z)$.
+  由泰勒展开的系数形式可知
+  \begin{align*}
+     \Res[f(z),z_0]&
+    =c_{-1}
+    =\frac1{(m-1)!}g^{(m-1)}(z_0)
+    =\frac1{(m-1)!}\lim_{z\ra z_0}g^{(m-1)}(z)\\&
+    =\frac1{(m-1)!}\lim_{z\ra z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}(z).\qedhere
+  \end{align*}
+\end{proof}
+
+这里需要取极限是因为 $(z-z_0)^mf(z)$ 在 $z_0$ 处没有定义.
+在实际计算中, 若函数 $(z-z_0)^mf(z)$ 的表达形式已经在 $z_0$ 处连续, 则该表达式实际上就是 $g(z)$, 从而取极限和在 $z_0$ 处取值是一回事.
+
+\begin{example}
+  计算 $f(z)=\dfrac{\ee^z}{(z-1)^n}$ 在 $1$ 处的留数.
+\end{example}
+
+\begin{solution}
+  显然 $1$ 是 $f(z)$ 的 $n$ 阶极点, 因此
+  \[
+     \Res[f(z),1]
+    =\frac1{(n-1)!}\lim_{z\ra 1}(\ee^z)^{(n-1)}
+    =\frac1{(n-1)!}\lim_{z\ra 1}\ee^z
+    =\frac\ee{(n-1)!}.
+  \]
+\end{solution}
+
+\begin{example}
+  计算 $f(z)=\dfrac{z-\sin z}{z^6}$ 在 $0$ 处的留数.
+\end{example}
+
+\begin{solution}
+  因为 $0$ 是 $z-\sin z$ 的三阶零点, 所以它是 $f(z)$ 的三阶极点.
+  若用\thmref{定理}{thm:residue-formula-for-pole} 并取 $m=3$ 来求
+  \[
+     \Res[f(z),0]
+    =\frac1{2!}\lim_{z\ra0}\Bigl(\frac{z-\sin z}{z^3}\Bigr)'',
+  \]
+  计算会很繁琐.
+  
+  我们取 $m=6$, 则
+  \[
+     \Res[f(z),0]
+    =\frac1{5!}\lim_{z\ra 0}(z-\sin z)^{(5)}
+    =\frac1{5!}\lim_{z\ra 0}(-\cos z)
+    =-\frac1{120}.
+  \]
+\end{solution}
+
+\begin{exercise}
+  计算 $f(z)=\dfrac{\ee^{-z}-1}{(z-2\cpi\ii)^5}$ 在 $2\cpi\ii$ 处的留数.
+\end{exercise}
+
+对于一类特殊的分式, 其留数可通过如下公式计算.
+
+\begin{theorem}[留数计算公式 III]
+  \label{thm:residue-iii}
+  设 $P(z),Q(z)$ 在 $z_0$ 处解析且 $z_0$ 是 $Q(z)$ 的一阶零点, 则
+  \[
+     \Res\biggl[\frac{P(z)}{Q(z)},z_0\biggr]
+    =\frac{P(z_0)}{Q'(z_0)}.
+  \]
+\end{theorem}
+
+\begin{proof}
+  不难看出 $z_0$ 是 $\dfrac{P(z)}{Q(z)}$ 的一阶极点或可去奇点. 因此
+  \[
+    \Res\biggl[\frac{P(z)}{Q(z)},z_0\biggr]
+    =\lim_{z\ra z_0}P(z)\cdot \frac{z-z_0}{Q(z)}.
+  \]
+  注意到 $\dfrac{z-z_0}{Q(z)}$ 是 $\dfrac{~0~}0$ 型不定式, 由洛必达法则可知
+  \[
+     \Res\biggl[\frac{P(z)}{Q(z)},z_0\biggr]
+    =P(z_0)\lim_{z\ra z_0}\frac1{Q'(z)}
+    =\frac{P(z_0)}{Q'(z_0)}.\qedhere
+  \]
+\end{proof}
+
+\begin{example}
+  计算 $\Res[f(z),z_0]$, 其中 $f(z)=\dfrac{z}{z^8-1},\quad z_0=\dfrac{1+\ii}{\sqrt2}$.
+\end{example}
+
+\begin{solution}
+  由 $z_0$ 是分母的 $1$ 阶零点可知
+  \[
+     \Res[f(z),z_0]
+    =\lim_{z\ra z_0}\frac z{(z^8-1)'}
+    =\lim_{z\ra z_0}\frac z{8z^7}
+    =\frac{z_0^2}8
+    =\frac\ii8.
+  \]
+\end{solution}
+
+\begin{example}
+  计算积分 $\doint_{\abs{z}=2}f(z)\d z$, 其中 $f(z)=\dfrac{\ee^z}{z(z-1)^2}$.
+\end{example}
+
+\begin{solution}
+  函数 $f(z)$ 在 $\abs{z}<2$ 内有奇点 $z=0,1$, 且
+  \begin{align*}
+     \Res[f(z),0]&
+    =\lim_{z\ra0}\frac{\ee^z}{(z-1)^2}
+    =1,\\
+     \Res[f(z),1]&
+    =\lim_{z\ra1}\Bigl(\frac{\ee^z}z\Bigr)'
+    =\lim_{z\ra1}\frac{\ee^z(z-1)}{z^2}
+    =0,
+  \end{align*}
+  由\thmRes 可知
+  \[
+    \oint_{\abs{z}=2}\frac{\ee^z}{z(z-1)^2}\d z
+    =2\cpi\ii\bigl(\Res[f(z),0]+\Res[f(z),1]\bigr)
+    =2\cpi\ii.
+  \]
+\end{solution}
+
+\begin{exercise}
+  计算积分 $\doint_{\abs{z}=4}\frac{\sin z}{z(z-\cpi/2)}\d z$.
+\end{exercise}
+
+
+\subsection{在 \texorpdfstring{$\infty$}{∞} 的留数}
+
+\begin{definition}
+  设 $\infty$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在 $\infty$ 的某个去心邻域 $R<\abs{z}<+\infty$ 内的洛朗展开为
+  \[
+    f(z)=\cdots+c_{-1}z^{-1}+c_0+c_1z+\cdots
+  \]
+  称 $-c_{-1}$ 为函数 $f(z)$ 在 $\infty$ 的\nouns{留数}\index{liushu@留数}, 记作 \nouns{$\Res[f(z),\infty]$}\index{0res@$\Res[f(z),\infty]$}.
+\end{definition}
+
+由洛朗展开的系数公式可知
+\[
+   \Res[f(z),\infty]
+  =\frac1{2\cpi\ii}\oint_{C^-}f(z)\d z,
+\]
+其中 $C^-$ 为该去心邻域中内部包含 $0$ 的一条闭路的反方向.
+
+由
+\[
+   f\Bigl(\frac1z\Bigr)\frac1{z^2}
+  =\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots
+\]
+可得:
+\begin{theorem}[留数计算公式 IV]
+  \[
+     \Res[f(z),\infty]
+    =-\Res\biggl[f\Bigl(\frac1z\Bigr)\frac1{z^2},0\biggr].
+  \]
+\end{theorem}
+
+这样我们就可以利用留数计算公式 I-III 来计算函数在 $\infty$ 的留数.
+需要注意的是, 和通常的复数不同, \alert{即便 $\infty$ 是可去奇点, 也不意味着 $\Res[f(z),\infty]=0$}.
+
+\begin{theorem}
+  \label{thm:sum-of-residues-are-zero}
+  若 $f(z)$ 只有有限个奇点, 则 $f(z)$ 在扩充复平面内各奇点处的留数之和为 $0$.
+\end{theorem}
+
+\begin{proof}
+  设闭路 $C$ 内部包含 $f(z)$ 的除 $\infty$ 外的所有奇点 $z_1,\cdots,z_n$.
+  由\thmRes 和在 $\infty$ 的留数定义, 
+  \[
+     -2\cpi\ii\Res[f(z),\infty]
+    =\oint_C f(z)\d z
+    =2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
+  \]
+  故
+  \[
+    \sum_{k=1}^n \Res[f(z),z_k]+\Res[f(z),\infty]=0.\qedhere
+  \]
+\end{proof}
+
+\begin{example}
+  计算 $\doint_{\abs{z}=2}f(z)\d z$, 其中
+  \[
+    f(z)=\frac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}.
+  \]
+\end{example}
+
+我们发现闭路 $C:\abs{z}=2$ 的内部有奇点 $0,-\ii,1$, 其中 $0$ 是本性奇点, 其留数不易计算; 计算在 $10$ 阶极点 $-\ii$ 处的留数需要求 $\dfrac{\sin(1/z)}{(z-1)(z-3)}$ 的 $9$ 阶导数, 也很难计算.
+因此我们使用\thmref{定理}{thm:sum-of-residues-are-zero} 将问题转化为计算闭路 $C$ 外部的奇点处留数.
+
+\begin{solution}
+  $f(z)$ 在 $\abs{z}>2$ 内有奇点 $3,\infty$, 且
+  \begin{align*}
+     \Res[f(z),3]&
+    =\lim_{z\ra3}(z-3)f(z)
+    =\frac1{2(3+\ii)^{10}}\sin\frac13,\\[4pt]
+     \Res[f(z),\infty]&
+    =-\Res\biggl[f\Bigl(\frac1z\Bigr)\frac1{z^2},0\biggr]
+    =-\Res\biggl[\frac{z^{10}\sin z}{(1+\ii z)^{10}(1-z)(1-3z)},0\biggr]
+    =0.
+  \end{align*}
+  因此
+  \begin{align*}
+     \oint_{\abs{z}=2}f(z)\d z&
+    =2\cpi\ii\bigl(\Res[f(z),-\ii]+\Res[f(z),1]+\Res[f(z),0]\bigr)\\&
+    =-2\cpi\ii\bigl(\Res[f(z),3]+\Res[f(z),\infty]\bigr)
+    =-\frac{\cpi\ii}{(3+\ii)^{10}}\sin\frac13.
+  \end{align*}
+\end{solution}
+
+\begin{exercise}
+  计算积分 $\doint_{\abs{z}=5}\frac{z^3}{(z-1)(z-2)(z-3)(z-4)}\d z$.
+\end{exercise}
+
+实际上, 这种计算方法和进行变量替换 $t=\dfrac1{z-a}$ 是一回事, 其中 $a$ 是 $C$ 内部任意一点.
+
+\begin{fifth}{复积分计算方法小结}
+  定积分 $\dint_Cf(z)\d z$ 的计算:
+  \begin{enumerate}
+    \item 若 $f(z)$ 在一包含 $C$ 的单连通区域内解析: 
+    $\dint_C f(z)\d z=F(b)-F(a)$, 
+    其中 $F(z)$ 为 $f(z)$ 的一个原函数, $a,b$ 分别为 $C$ 的起点和终点.
+    \item 若 $C$ 是闭路, 且内部只有有限多个奇点: 
+    $\doint_C f(z)\d z=2\cpi\ii\suml_a \Res[f(z),a]$, 
+    其中 $a$ 取遍 $C$ 内部所有奇点.
+    \item 若 $C$ 是闭路, 且外部只有有限多个奇点: 
+    $\doint_C f(z)\d z=-2\cpi\ii\suml_a \Res[f(z),a]$, 
+    其中 $a$ 取遍 $C$ 外部所有奇点(包括 $\infty$).
+    \item 其它情形: 
+    $\dint_Cf(z)\d z=\int_a^b f\bigl(z(t)\bigr)z'(t)\d t$, 
+    其中曲线方程为 $z=z(t),a\le t\le b$, $z(a),z(b)$ 分别为 $C$ 的起点和终点. 可能需要分段计算并相加.
+  \end{enumerate}
+\end{fifth}
+
+若 $f(z)$ 包含 $\abs{z},\ov z$, 可先尝试通过 $C$ 的方程将这些换成 $z$ 的表达式, 然后再利用上述计算方法.
+
+
+
+\section{留数的应用}
+
+\subsection{留数在定积分的应用}
+
+本小节中我们将使用留数来计算若干种不易直接计算的定积分和广义积分.
+
+\subsubsection{三角函数的有理函数的积分}
+
+考虑 $\dint_0^{2\cpi} P(\cos\theta,\sin\theta)\d\theta$, 其中 $P(x,y)$ 是一个有理函数.
+令 $z=\ee^{\ii \theta}$, 则 $\d z=\ii z\d\theta$,
+\[
+   \cos\theta
+  =\half\Bigl(z+\frac1z\Bigr)
+  =\frac{z^2+1}{2z},\quad
+  \sin\theta
+  =\frac1{2\ii}\Bigl(z-\frac1z\Bigr)
+  =\frac{z^2-1}{2\ii z},
+\]
+因此
+\begin{equation}
+  \label{eq:rational-function-sin-cos}
+   \int_0^{2\cpi} P(\cos\theta,\sin\theta)\d\theta
+  =\oint_{\abs{z}=1} P\Bigl(\frac{z^2+1}{2z},\frac{z^2-1}{2\ii z}\Bigr)\frac1{\ii z}\d z.
+\end{equation}
+由于被积函数是一个有理函数, 它的积分可以由 $\abs{z}<1$ 内奇点留数得到.
+
+\begin{example}
+  计算 $\dint_0^{2\cpi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta$.
+\end{example}
+
+\begin{solution}
+  令 $z=\ee^{\ii \theta}$, 则
+  \begin{align*}
+     \int_0^{2\cpi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta&
+    =\oint_{\abs{z}=1}\Bigl(\frac{z^2-1}{2\ii z}\Bigr)^2\cdot
+      \frac1{5-3\dfrac{z^2+1}{2z}}\cdot\frac{\d z}{\ii z}\\&
+    =-\frac\ii6\oint_{\abs{z}=1}\frac{(z^2-1)^2}{z^2(z-3)(z-1/3)}\d z.
+  \end{align*}
+  设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-1/3)}$, 则 $\dfrac13$ 是一阶极点, $0$ 是二阶极点.
+  于是\footnote{
+    计算 $\Res[f(z),0]$ 时我们利用了对数求导法.
+  }
+  \begin{align*}
+     \Res\biggl[f(z),\frac13\biggr]&
+    =\lim_{z\ra \frac13}\frac{(z^2-1)^2}{z^2(z-3)}
+    =-\frac83,\\
+     \Res[f(z),0]&
+    =\lim_{z\ra 0}\biggl(\frac{(z^2-1)^2}{(z-3)(z-1/3)}\biggr)'\\&
+    =\lim_{z\ra 0}\frac{(z^2-1)^2}{(z-3)(z-1/3)}
+      \Bigl(\frac2{z+1}+\frac2{z-1}-\frac1{z-3}-\frac1{z-1/3}\Bigr)\\&
+    =\frac{10}3,
+  \end{align*}
+  因此
+  \[
+     \int_0^{2\cpi}\frac{\sin^2\theta}{5-3\cos\theta}\d\theta
+    =-\frac\ii6\cdot 2\cpi\ii\biggl(\Res[f(z),0]+\Res\biggl[f(z),\frac13\biggr]\biggr)
+    =\frac{2\cpi}9.
+  \]
+\end{solution}
+
+
+\subsubsection{有理函数以及与正弦、余弦之积的广义积分}
+\label{sssec:integral-rational-and-sin-cos}
+
+设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实根.
+
+\smallskip
+考虑 $\intff f(x)\d x$, 容易证明该广义积分收敛, 从而积分值等于其\nouns{柯西主值}\index{kexizhuzhi@柯西主值}
+\[
+  \PV \intff f(x)\d x:=\lim_{r\ra+\infty}\int_{-r}^rf(x)\d x.
+\]
+选择闭路 $C=C_r+[-r,r]$ 如\ref{fig:half-circle-contour} 所示, 其中 $C_r$ 为圆心在原点的上半圆周.
+令 $r$ 充分大使得 $f(z)$ 在上半平面内的奇点均位于 $C$ 的内部.
+由 $f(x)$ 分母次数比分子至少高 $2$ 次可知 $\liml_{z\ra+\infty} zf(z)=0$, 于是由\thmSA 可知
+\[
+  \lim_{r\ra +\infty} \int_{C_r} f(z)\d z=0.
+\]
+故
+\[
+   \intff f(x)\d x
+  =\lim_{r\ra +\infty} \oint_C f(z)\d z
+  =2\cpi\ii \sum_{\Im a>0} \Res[f(z),a].
+\]
+
+\begin{theorem}
+  \label{thm:rational-integral-infinity}
+  设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实根, 则
+  \[
+     \intff f(x)\d x
+    =2\cpi\ii\sum_{\Im a>0}\Res[f(z),a].
+  \]
+\end{theorem}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\r{2}
+    \draw[cstaxis] (-3,0)--(3,0);
+    \draw[cstaxis] (0,-0.5)--(0,3);
+    \draw[
+      cstcurve,
+      main,
+      decoration={
+        markings,
+        mark = at position .15 with {
+          \arrow{Straight Barb}
+          \node[above right,shift={(0,-.1)}]{$C_r$};
+        }
+      },
+      postaction={decorate}
+    ] (\r,0) arc(0:180:\r)--cycle;
+    \draw[
+      cstcurve,
+      second,
+      decoration={
+        markings,
+        mark = at position .3 with {
+          \arrow{Straight Barb}
+        }
+      },
+      postaction={decorate}
+    ] (-\r,0)--(\r,0);
+    \coordinate (A1) at (1,.5);
+    \coordinate (A2) at (-.5,.9);
+    \coordinate (A3) at (.3,1.2);
+    \begin{scope}[third]
+      \fill[cstdot] (A1) circle node[above] {$a_1$};
+      \fill[cstdot] (A2) circle node[below] {$a_2$};
+      \fill[cstdot] (A3) circle node[above] {$a_3$};
+    \end{scope}
+    \draw
+      (-\r,0) node[below] {$-r$}
+      (\r,0) node[below] {$r$};
+  \end{tikzpicture}
+  \caption{半圆形闭路}
+  \label{fig:half-circle-contour}
+\end{figure}
+
+\begin{example}
+  计算 $\intff \frac{\d x}{(x^2+a^2)^3}$, 其中 $a>0$.
+\end{example}
+
+\begin{solution}
+  $f(z)=\dfrac1{(z^2+a^2)^3}$ 在上半平面内的奇点为三阶极点 $a\ii$.
+  于是
+  \[
+     \Res[f(z),a\ii]
+    =\frac1{2!}\lim_{z\ra a\ii}\biggl(\frac1{(z+a\ii)^3}\biggr)''
+    =\half\lim_{z\ra a\ii}\frac{12}{(z+a\ii)^5}
+    =\frac{3}{16a^5\ii},
+  \]
+  故
+  \[
+     \intff \frac{\d x}{(x^2+a^2)^3}
+    =2\cpi\ii\Res[f(z),a\ii]
+    =\frac{3\cpi}{8a^5}.
+  \]
+\end{solution}
+
+考虑 $\intff f(x)\cos{\lambda x}\d x$, $\intff f(x)\sin{\lambda x}\d x$, 其中 $f(x)$ 如前文所述.
+容易证明这两个广义积分也是收敛的.
+
+不妨设 $\lambda>0$.
+当 $z\ra \infty$ 且 $y=\Im z\ge 0$ 时, 
+  \[
+     \abs{zf(z)\ee^{\ii \lambda z}}
+    =\abs{zf(z)\ee^{\ii \lambda (x+y\ii)}}
+    =\abs{zf(z)\ee^{-\lambda y}}
+    \le \abs{zf(z)}\ra 0.
+  \]
+和前一种情形类似, 由\thmSA 可知
+\[
+  \lim_{r\ra +\infty}\int_{C_r}f(z)\ee^{\ii \lambda z}\d z=0.
+\]
+故
+\[
+   \intff f(x)\ee^{\ii \lambda x}\d x
+  =\lim_{r\ra +\infty}\oint_C f(z)\d z
+  =2\cpi\ii\sum_{\Im a>0}\Res[f(z)\ee^{\ii \lambda z},a],
+\]
+欲求的广义积分分别为它的实部和虚部.
+
+\begin{theorem}
+  \label{thm:rational-integral-exp-infinity}
+  设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实根, 则对任意 $\lambda>0$,
+  \[
+     \intff f(x)\ee^{\ii \lambda x}\d x
+    =2\cpi\ii\sum_{\Im a>0}\Res[f(z)\ee^{\ii \lambda z},a].
+  \]
+\end{theorem}
+
+\begin{example}
+  计算 $\intff \frac{\cos x\d x}{(x^2+a^2)^2}, a>0$.
+\end{example}
+
+\begin{solution}
+  $f(z)=\dfrac{\ee^{\ii z}}{(z^2+a^2)^2}$ 在上半平面内的奇点为二阶极点 $a\ii$.
+  于是
+  \[
+     \Res[f(z),a\ii]
+    =\lim_{z\ra a\ii}\biggl(\frac{\ee^{\ii z}}{(z+a\ii)^2}\biggr)'
+    =\lim_{z\ra a\ii}\frac{\ee^{\ii z}\bigl(\ii(z+a\ii)-2\bigr)}{(z+a\ii)^3}
+    =-\frac{\ee^{-a}(a+1)\ii}{4a^3}.
+  \]
+  于是
+  \[
+     \intff \frac{\ee^{\ii x}\d x}{(x^2+a^2)^2}
+    =2\cpi\ii \Res[f(z),a\ii]=\frac{\cpi \ee^{-a}(a+1)}{2a^3},
+  \]
+  它的实部为
+  \[
+     \intff \frac{\cos x\d x}{(x^2+a^2)^2}
+    =\frac{\cpi \ee^{-a}(a+1)}{2a^3}.
+  \]
+\end{solution}
+
+
+\subsubsection{含对数函数和幂函数的积分}
+
+考虑 $\intf f(x)x^p\d x$, 其中实数 $p$ 不是整数, $f(x)$ 是一个有理函数, 分母没有正实根, 且满足
+\[
+  \lim_{x\ra 0} x^{p+1}f(x)=0,\quad
+  \lim_{x\ra \infty} x^{p+1}f(x)=0.
+\]
+为了构造复变函数在正实轴取值与该积分关联, 设
+\[
+  g(z)=f(z)(-z)^p=f(z)\ee^{p\ln(-z)}
+\]
+并选择如\ref{fig:large-small-circle-negative-side} 所示的闭路, 其中 $C_r,C_R$ 分别为半径是 $r,R$ 的圆周去掉一小段弧, $\ell_1,\ell_2$ 分别为正实轴和 $\Im z=\varepsilon>0$ 的线段(从左往右).
+它们形成一个闭路 $C$.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\r{.5}
+    \def\R{2}
+    \def\t{24}
+    \draw[cstaxis] (0,0)--(2.5,0);
+    \draw[
+      main,
+      cstcurve,
+      decoration={
+        markings,
+        mark = at position .09 with {
+          \arrow[rotate=20]{Straight Barb}
+          \node[left] {$C_r^-$};
+        },
+        mark = at position .2 with {
+          \node[above,second] {$\ell_2$};
+        },
+        mark = at position .58 with {
+          \arrow{Straight Barb}
+          \node[left] {$C_R$};
+        },
+        mark = at position .96 with {
+          \node[below,second] {$\ell_1$};
+        },
+      },
+      postaction={decorate}
+    ] (\r,0) arc(360:\t:\r)
+      --({sqrt(\R*\R-\r*\r*sin(\t)*sin(\t))},{\r*sin(\t)}) 
+      arc({asin(.5*\r*sin(\t))}:360:\R)
+      --cycle;
+    \fill[cstfill5] (\r,0)--(\R,0)--({sqrt(\R*\R-\r*\r*sin(\t)*sin(\t))},{\r*sin(\t)})--({\r*cos(\t)},{\r*sin(\t)})--cycle;
+    \draw[second,cstcurve] (\r,0)--(\R,0)
+    ({\r*cos(\t)},{\r*sin(\t)})--({sqrt(\R*\R-\r*\r*sin(\t)*sin(\t))},{\r*sin(\t)});
+  \end{tikzpicture}
+  \caption{大小圆周带负实轴沿岸闭路}
+  \label{fig:large-small-circle-negative-side}
+\end{figure}
+
+我们来研究 $g(z)$ 在 $\ell_1$ 和 $\ell_2$ 上积分的联系.
+由假设不难知道,
+\[
+  \lim_{z\ra 0} z^{p+1}f(z)=0,\quad
+  \lim_{z\ra \infty} z^{p+1}f(z)=0.
+\]
+将 $f(z)$ 换成 $g(z)$ 或 $h(z)=f(z)\ee^{p\ln z+p\cpi\ii}$ 也是成立的.
+注意到与 $C_r^-$ 互补的小段圆弧, 与 $C_R^-$ 互补的小段圆弧, 以及 $\ell_1,\ell_2$ 形成一个闭路, 且 $h(z)$ 在该闭路及其内部解析(\ref{fig:large-small-circle-negative-side} 阴影部分).
+由\thmsa 可知当 $\varepsilon\ra0^+$ 时, $h(z)$ 在这两小段圆弧上的积分趋于零, 因此
+\[
+  \ee^{2p\cpi\ii}\int_{\ell_2} g(z)\d z-\int_{\ell_1} g(z)\d z
+  =\int_{\ell_2} h(z)\d z-\int_{\ell_1} h(z)\d z
+  \ra 0,
+\]
+即
+\[
+  \lim_{\varepsilon\ra 0^+}\int_{\ell_2} g(z)\d z
+  =\ee^{-2p\cpi\ii}\int_{\ell_1} g(z)\d z.
+\]
+我们把 $\varepsilon\ra 0^+$ 时的 $\ell_2$ 叫作正实轴的``上沿岸'', $g(z)$ 在上沿岸的积分则是指上述极限.
+以后我们省略 $\varepsilon\ra 0^+$ 这一表述.
+
+由\thmsa 和\thmSA 可知
+\[
+  \lim_{r\ra0^+}\int_{C_r} g(z)\d z=0,\quad
+  \lim_{R\ra+\infty}\int_{C_R} g(z)\d z=0.
+\]
+令 $r$ 充分小, $R$ 充分大, 使得 $g(z)$ 除正实轴和零以外的所有奇点都包含在 $C$ 中, 则由留数定理
+\begin{align*}
+   \oint_C g(z)\d z&
+  =2\cpi\ii\sum_a \Res[g(z),a]\\&
+  =-\int_{\ell_1} g(x)\d x
+    +\int_{\ell_2} g(x)\d x
+    -\int_{C_r}g(z)\d z
+    +\int_{C_R}g(z)\d z\\&
+  =-\int_r^R g(x)\d x
+    +\ee^{-2p\cpi\ii}\int_r^R g(x)\d x
+    -\int_{C_r}g(z)\d z
+    +\int_{C_R}g(z)\d z\\&
+  =-\ee^{p\cpi\ii}\int_r^R f(x)x^p\d x
+    +\ee^{-p\cpi\ii}\int_r^R f(x)x^p\d x
+    -\int_{C_r}g(z)\d z
+    +\int_{C_R}g(z)\d z,
+\end{align*}
+其中 $a$ 取遍 $g(z)$ 除正实轴和零以外的奇点.
+令 $r\ra0^+,R\ra +\infty$, 我们得到
+\[
+   (\ee^{-p\cpi\ii}-\ee^{p\cpi\ii})\intf f(x)x^p\d x
+  =2\cpi\ii\sum_a \Res[g(z),a].
+\]
+显然 $\ee^{-p\cpi\ii}-\ee^{p\cpi\ii}=-2\ii\sin{p\cpi}$.
+
+\begin{theorem}
+  \label{thm:integral-xp}
+  设实数 $p$ 不是整数, $f(x)$ 是一个有理函数, 分母没有正实根, 且满足
+  \[
+    \lim_{x\ra 0} x^{p+1}f(x)=0,\quad
+    \lim_{x\ra \infty} x^{p+1}f(x)=0,
+  \]
+  则
+  \[
+     \intf f(x)x^p\d x
+    =-\frac{\cpi}{\sin{p\cpi}}\sum_a \Res\bigl[\ee^{p\ln(-z)}f(z),a\bigr],
+  \]
+  其中 $a$ 取遍 $f(z)$ 的奇点.
+\end{theorem}
+这也说明了该广义积分是收敛的.
+
+若读者觉得沿岸积分这一概念不易理解, 也可对积分作变量替换 $x=\ee^t$.
+然后选择相应的闭路为连接 $-R_1,R_2,R_2+2\cpi\ii,-R_1+2\cpi\ii$ 的矩形闭路, 这样也可以得到该广义积分的值, 读者可自行推导.\footnote{
+  此时公式形式为
+  \[
+    \intf f(x)x^p\d x
+    =\frac{2\cpi\ii}{1-\ee^{2p\cpi\ii}}\sum_{0<\Im a<2\cpi} \Res\bigl[f(\ee^z)\ee^{(p+1)z},a\bigr].
+  \]
+  这两种形式是等价的.
+}
+
+\begin{example}
+  计算 $\intf\frac{x^p}{x(x+1)}\d x,0<p<1$.
+\end{example}
+
+\begin{solution}
+  设
+  \[
+    f(z)=\frac{\ee^{p\ln(-z)}}{z(z+1)},
+  \]
+  则 $f(z)$ 在正实轴和零以外的奇点为 $a=-1$, 且
+  \[
+     \Res[f(z),-1]
+    =\lim_{z\ra-1}\frac{\ee^{p\ln(-z)}}{z}
+    =-\ee^{p\ln 1}
+    =-1.
+  \]
+  因此由\thmref{定理}{thm:integral-xp} 可得
+  \[
+     \intf\frac{x^p}{x(x+1)}\d x
+    =\frac{\cpi}{\sin p\cpi}.
+  \]
+\end{solution}
+
+考虑 $\intf f(x)\ln x\d x$, 其中 $f(x)$ 是一个有理函数, 分母没有正实根, 且分母至少比分子高 $2$ 次.
+设 $g(z)=\ln^2(-z)f(z)$.
+考虑\ref{fig:large-small-circle-negative-side} 所示的闭路, 不难知道
+\[
+  \lim_{r\ra0^+}\int_{C_r}g(z)\d z=0,\quad 
+  \lim_{R\ra+\infty}\int_{C_R}g(z)\d z=0.
+\]
+若 $z\in\ell_1$ 位于正实轴上, 则
+\[
+   g(z)
+  =(\ln z+\cpi\ii)^2f(z)
+  =(\ln^2 z+2\cpi\ii \ln z-\cpi^2)f(z).
+\]
+若 $z\in\ell_2$ 位于正实轴上沿岸, 则
+\[
+   g(z)
+  =(\ln z-\cpi\ii)^2f(z)
+  =(\ln^2 z-2\cpi\ii \ln z-\cpi^2)f(z).
+\]
+令 $r$ 充分小, $R$ 充分大, 使得 $g(z)$ 除正实轴和零以外的所有奇点都包含在 $C$ 中, 则由留数定理
+\begin{align*}
+   \oint_C g(z)\d z&
+  =2\cpi\ii\sum_a \Res[g(z),a]\\&
+  =-\int_{\ell_1} g(x)\d x
+    +\int_{\ell_2} g(x)\d x
+    -\int_{C_r}g(z)\d z
+    +\int_{C_R}g(z)\d z\\&
+  =-\int_r^R (\ln^2 z+2\cpi\ii \ln z-\cpi^2)f(x)\d x
+    +\int_r^R (\ln^2 z-2\cpi\ii \ln z-\cpi^2)f(x)\d x\\&
+    \qquad \qquad 
+    -\int_{C_r}g(z)\d z
+    +\int_{C_R}g(z)\d z\\&
+  =-4\cpi\ii \int_r^R f(x)\ln x\d x
+  -\int_{C_r}g(z)\d z
+  +\int_{C_R}g(z)\d z,
+\end{align*}
+其中 $a$ 取遍 $g(z)$ 除正实轴和零以外的奇点.
+令 $r\ra0^+,R\ra +\infty$, 我们得到:
+
+\begin{theorem}
+  \label{thm:integral-ln}
+  设 $f(x)$ 是一个有理函数, 分母没有正实根, 且分母至少比分子高 $2$ 次, 则
+  \[
+    \intf f(x)\ln x\d x
+    =-\frac12 \sum_a \Res\bigl[\ln^2(-z)f(z),a\bigr],
+  \]
+  其中 $a$ 取遍 $f(z)$ 的奇点.
+\end{theorem}
+对于含 $(\ln x)^n$ 的积分也可类似处理, 此时需要考虑 $\ln^k(-z)f(z)$ 绕闭路 $C$ 的积分, $k=2,\cdots,n+1$.
+
+\begin{example}
+  计算 $\intf\dfrac{\ln x}{x^2-2x+2}\d x$.
+\end{example}
+
+\begin{solution}
+  设
+  \[
+    f(z)=\frac{\ln^2(-z)}{z^2-2z+2},
+  \]
+  则 $f(z)$ 在正实轴和零以外的奇点为 $1\pm\ii$,
+  且
+  \begin{align*}
+     \Res[f(z),1+\ii]&
+    =\lim_{z\ra 1+\ii}\frac{\ln^2(-z)}{z-(1-\ii)}
+    =\frac1{2\ii}\Bigl(\frac12\ln2-\frac{3\cpi\ii}4\Bigr)^2,
+    \\
+     \Res[f(z),1-\ii]&
+    =\lim_{z\ra 1-\ii}\frac{\ln^2(-z)}{z-(1+\ii)}
+    =-\frac1{2\ii}\Bigl(\frac12\ln2+\frac{3\cpi\ii}4\Bigr)^2.
+  \end{align*}
+  由于二者互为共轭, 二者之和为 
+  \[
+    2\Re\biggl(\frac1{2\ii}\Bigl(\frac12\ln2-\frac{3\cpi\ii}4\Bigr)^2\biggr)
+    =-\frac{3\cpi}4\ln2.
+  \]
+  因此
+  \[
+    \intf\dfrac{\ln x}{x^2-2x+2}\d x=\frac{3\cpi}8\ln2.
+  \]
+\end{solution}
+
+
+\subsubsection{奇点处理\optional}
+在前面几个例子中, 若被积函数在积分区间内有瑕点, 就无法直接通过前述公式得到.
+此时我们需要对闭路做适当调整.
+
+设 $P(x,y)$ 是一个二元有理函数.
+若积分 $\dint_0^{2\cpi} P(\cos\theta,\sin\theta)\d\theta$ 有瑕点, 则有理函数
+\[
+  f(z)=P\Bigl(\frac{z^2+1}{2z},\frac{z^2-1}{2\ii z}\Bigr)\frac1{\ii z}
+\]
+在单位圆周 $\abs{z}=1$ 上有奇点.
+此时该瑕积分一定发散, 我们无法使用\eqref{eq:rational-function-sin-cos} 计算.
+不过, 我们可以考虑去掉所有瑕点的邻域 $(t-\varepsilon,t+\varepsilon)$ 之后的积分, 再令 $\varepsilon\ra 0^+$ 得到该瑕积分的柯西主值.
+
+设 $f(z)$ 在单位圆周上的奇点为 $t_1,\cdots,t_k$.
+构造如\ref{fig:circle-remove-singular-contour} 所示的闭路 $C$, 其中在每个瑕点 $t_j$ 附近是半径为 $\varepsilon_j$ 的圆弧 $\Gamma_j$ (沿着整个闭路的逆时针方向).
+若 $t_j$ 是 $f(z)$ 的一阶极点, 则
+\[
+  \lim_{z\ra t_j} (z-t_j)f(z)=\Res[f(z),t_j].
+\]
+注意到 $\varepsilon_j\ra 0^+$ 时, $\Gamma_j$ 的弧度 $2\arcsin\dfrac\varepsilon2-\cpi\ra -\cpi$ (相对于 $t_j$ 是顺时针方向), 所以由\thmsa 可知
+\[
+  \lim_{\varepsilon_j\ra 0^+}\int_{\Gamma_j}f(z)\d z
+  =-\cpi\ii\Res[f(z),t_j].
+\]
+将 $f(z)$ 在 $C$ 上的积分减去在 $\Gamma_j$ 上的积分, 并令 $\varepsilon_j\ra 0^+$, 我们得到:\footnote{
+  对于 $f(z)$ 分母在单位圆周上的重根, 若 $f(z)$ 在该点去心邻域洛朗展开的负偶幂次项系数均为零(只有有限多项), 则该公式也是成立的.
+  否则该积分的柯西主值必定发散.
+  特别地, 若 $f(z)$ 在单位圆周上有偶数阶极点, 该积分的柯西主值必定发散.
+}
+
+\begin{theorem}
+  设 $P(x,y)$ 是一个有理函数, 且
+  \[
+    f(z)=P\Bigl(\frac{z^2+1}{2z},\frac{z^2-1}{2\ii z}\Bigr)\frac1{\ii z}
+  \]
+  在单位圆周上的极点都是一阶的, 则
+  \[
+     \PV\int_0^{2\cpi} P(\cos\theta,\sin\theta)\d\theta
+    =2\cpi\ii\sum_{\abs{a}<1}\Res[f(z),a]
+    +\cpi\ii\sum_{\abs{a}=1}\Res[f(z),a].
+  \]
+\end{theorem}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\r{.4}
+      \def\R{1.5}
+      \def\t{asin(\r/\R/2)}
+      \def\a{45}
+      \def\b{210}
+      \draw[cstaxis] (-2.5,0)--(2.5,0);
+      \draw[cstaxis] (0,-2)--(0,2);
+      \begin{scope}[cstcurve,second]
+        \draw[
+          main,
+          decoration={
+            markings,
+            mark = at position .96 with {
+              \arrow[rotate=15]{Straight Barb}
+              \node[below left,shift={(.1,.1)}]{$\Gamma_j$};
+            }
+          },
+          postaction={decorate}
+        ] ({\R*cos(\a+\t*2)},{\R*sin(\a+\t*2)})
+          arc({\a+\t*2}:{\b-\t*2}:\R)
+          arc({270+\b-\t}:{90+\b+\t}:\r)
+          arc({\b+\t*2}:{360+\a-\t*2}:\R)
+          arc({270+\a-\t}:{90+\a+\t}:\r);
+        \draw[
+          decoration={
+            markings,
+            mark = at position .5 with {
+              \arrow{Straight Barb}
+            }
+          },
+          postaction={decorate}
+        ] ({\R*cos(\a+\t*2)},{\R*sin(\a+\t*2)}) arc({\a+\t*2}:{\b-\t*2}:\R);
+        \draw[
+          decoration={
+            markings,
+            mark = at position .5 with {
+              \arrow{Straight Barb}
+            }
+          },
+          postaction={decorate}
+        ] ({\R*cos(\b+\t*2)},{\R*sin(\b+\t*2)}) arc({\b+\t*2}:{360+\a-\t*2}:\R);
+      \end{scope}
+      \begin{scope}[third]
+        \fill[cstdot] ({\R*cos(\a)},{\R*sin(\a)}) circle node[above right,shift={(-.1,-.1)}] {$t_j$};
+        \fill[cstdot] ({\R*cos(\b)},{\R*sin(\b)}) circle;
+      \end{scope}
+    \end{tikzpicture}
+    \caption{绕过瑕点的圆形闭路}
+    \label{fig:circle-remove-singular-contour}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\r{2}
+      \def\a{1}
+      \def\e{.3}
+      \draw[cstaxis] (-3,0)--(3,0);
+      \draw[cstaxis] (0,-1)--(0,3);
+      \begin{scope}[cstcurve,second]
+        \draw[
+          main,
+          decoration={
+            markings,
+            mark = at position .2 with {
+              \arrow{Straight Barb}
+              \node[above right,shift={(-.1,-.1)}]{$C_r$};
+            },
+            mark = at position .89 with {
+              \arrow[rotate=15]{Straight Barb}
+              \node[above]{$\Gamma_j$};
+            }
+          },
+          postaction={decorate}
+        ] (\r,0) arc(0:180:\r) --({\a-\e},0) arc(180:0:\e) --cycle;
+        \draw[
+          decoration={
+            markings,
+            mark = at position .5 with {
+              \arrow{Straight Barb}
+            }
+          },
+          postaction={decorate}
+        ] (-\r,0) --({\a-\e},0);
+        \draw ({\a+\e},0)--(\r,0);
+      \end{scope}
+      \begin{scope}[third]
+        \fill[cstdot] (\a,0) circle node[below] {$t_j$};
+      \end{scope}
+      \draw
+        (-\r,0) node[below] {$-r$}
+        (\r,0) node[below] {$r$};
+    \end{tikzpicture}
+    \caption{绕过瑕点的半圆形闭路}
+    \label{fig:half-circle-remove-singular-contour}
+  \end{minipage}
+\end{figure}
+
+设 $f(x)$ 是一个有理函数(分子分母没有公共零点), 分母至少比分子高 $2$ 次.
+若 $f(z)$ 在实轴上有奇点 $t$, 则广义积分 $\intff f(x)\d x$ 的讨论也是类似的.
+此时我们构造如\ref{fig:half-circle-remove-singular-contour} 所示的闭路, 其中在每个瑕点 $t_j$ 附近是半径为 $\varepsilon_j$ 的上半圆周 $\Gamma_j$ (从左往右).
+若 $t_j$ 是 $f(z)$ 的一阶极点, 则
+\[
+  \lim_{z\ra t_j} (z-t_j)f(z)=\Res[f(z),t_j],
+\]
+从而由\thmsa 可知
+\[
+  \lim_{\varepsilon_j\ra 0^+}\int_{\Gamma_j}f(z)\d z
+  =-\cpi\ii\Res[f(z),t_j].
+\]
+其余推导和 \ref{sssec:integral-rational-and-sin-cos}类似, 最终我们得到:\footnote{
+  对于分母的实重根, 若 $f(z)$ 在该点去心邻域洛朗展开的负偶幂次项系数均为零(只有有限多项), 则该公式也是成立的.
+  否则该积分的柯西主值必定发散.
+  特别地, 若 $f(z)$ 有偶数阶实极点, 该积分的柯西主值必定发散.
+}
+
+\begin{theorem}
+  设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实重根, 则
+  \[
+     \PV\intff f(x)\d x
+    =2\cpi\ii\sum_{\Im a>0}\Res[f(z),a]
+    +\cpi\ii\sum_{\Im a=0}\Res[f(z),a].
+  \]
+\end{theorem}
+同理:
+\begin{theorem}
+  设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实重根, 则对任意 $\lambda>0$,
+  \[
+     \PV\intff f(x)\ee^{\ii \lambda x}\d x
+    =2\cpi\ii\sum_{\Im a>0}\Res[f(z)\ee^{\ii \lambda z},a]
+    +\cpi\ii\sum_{\Im a=0}\Res[f(z)\ee^{\ii \lambda z},a].
+  \]
+\end{theorem}
+
+
+\subsubsection{杂例\optional}
+
+可以看出, 在使用留数定理计算定积分的过程中, 最重要的是选择合适的函数 $f(z)$ 以及闭路 $C$, 使得 $f(z)$ 在 $C$ 的部分路径的积分极限为零, 其它部分的积分与待求的定积分相关.
+根据积分的不同, 闭路 $C$ 的选择有多种可能, 例如圆周、半圆周、矩形、正方形、扇形、三角形等.
+有时候遇到奇点还需要添加圆弧绕过奇点.
+
+\begin{example}
+  计算 $\intf\ee^{-x^2}\cos{2\lambda x}\d x$.
+\end{example}
+
+\begin{solution}
+  我们只需要考虑 $\lambda \ge 0$ 的情形.
+  设 $f(z)=\ee^{-z^2}$.
+  如\ref{fig:rectangle-contour} 所示, 选择闭路 $C$ 为连接 $-R_1,R_2,R_2+\lambda \ii,-R_1+\lambda \ii$ 的矩形闭路.
+
+  对于 $z=-R_1+y\ii,0\le y\le \lambda$, 当 $R_1\ra+\infty$ 时,
+  \[
+    \abs{f(z)}=\abs{\ee^{-(R_1^2-2R_1y\ii-y^2)}}
+    =\ee^{-R_1^2+y^2}\le \ee^{-R_1^2+\lambda^2}\ra0.
+  \]
+  由于该线段长度为常值 $\lambda$, 因此由\thmGrowUp 可知
+  \[
+    \lim_{R_1\ra+\infty}\int_{\ell_1}f(z)\d z=0.
+  \]
+  同理可知
+  \[
+    \lim_{R_2\ra+\infty}\int_{\ell_2}f(z)\d z=0.
+  \]
+  对于 $z=x+\lambda \ii,-R_1\le x\le R_2$, $f(z)=\ee^{-(x^2+2\lambda x\ii-\lambda^2)}$.
+  因此
+  \[
+    \int_\ell f(z)\d z
+    =-\ee^{\lambda^2}\int_{-R_1}^{R_2} \ee^{-x^2-2\lambda x\ii}\d x.
+  \]
+  由于 $f(z)$ 处处解析, 因此
+  \[
+     0
+    =\oint_C f(z)\d z
+    =\int_{-R_1}^{R_2} \ee^{-x^2}\d x
+    -\ee^{\lambda^2}\int_{-R_1}^{R_2} \ee^{-x^2-2\lambda xi}\d x
+    +\int_{\ell_1}f(z)\d z
+    +\int_{\ell_2}f(z)\d z.
+  \]
+  令 $R_1,R_2\ra+\infty$, 我们得到
+  \[
+    \intff \ee^{-x^2-2\lambda xi}\d x
+    =\ee^{-\lambda^2}\intff \ee^{-x^2}\d x
+    =\ee^{-\lambda^2}\sqrt\cpi,
+  \]
+  即
+  \[
+    \intf \ee^{-x^2}\cos{2\lambda x}\d x
+    =\frac12\ee^{-\lambda^2}\sqrt\cpi.
+  \]
+\end{solution}
+通过变量替换可知
+\begin{equation}\label{eq:exp-cos-integral}
+  \intf \ee^{-ax^2}\cos{bx}\d x
+  =\frac12\exp\Bigl(-\frac{b^2}{4a}\Bigr)\sqrt\frac\cpi a.
+\end{equation}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \coordinate (A) at (-2,1.5);
+      \coordinate (B) at (2,1.5);
+      \coordinate (C) at (-2,0);
+      \coordinate (D) at (2,0);
+      \draw[cstaxis] (-3,0)--(3,0);
+      \draw[cstaxis] (0,-.5)--(0,2.9);
+      \draw[
+        cstcurve,
+        main,
+        decoration={
+          markings,
+          mark = at position .07 with {
+            \arrow{Straight Barb}
+            \node[right] {$\ell_1$};
+          },
+          mark = at position .25 with {
+            \arrow[second]{Straight Barb}
+          },
+          mark = at position .57 with {
+            \arrow{Straight Barb}
+            \node[right] {$\ell_2$};
+          },
+          mark = at position .75 with {
+            \arrow{Straight Barb}
+            \node[above] {$\ell$};
+          }
+        },
+        postaction={decorate}
+      ] (A) rectangle (D);
+      \draw[second,cstcurve] (C)--(D);
+      \draw
+        node[below] at (C) {$-R_1$}
+        node[below] at (D) {$R_2$}
+        node[below left] at (0,1.5) {$\lambda $};
+    \end{tikzpicture}
+    \caption{矩形闭路}
+    \label{fig:rectangle-contour}
+  \end{minipage}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\a{2}
+      \draw[
+        main,
+        cstcurve,
+        decoration={
+          markings,
+          mark = at position .22 with {
+            \arrow{Straight Barb}
+            \node[above left] {$\ell_2$};
+          },
+          mark = at position .59 with {
+            \arrow[second]{Straight Barb}
+          },
+          mark = at position .86 with {
+            \arrow{Straight Barb}
+            \node[right] {$\ell_1$};
+          }
+        },
+        postaction={decorate}
+      ] (\a,\a)--(0,0)--(\a,0)--cycle;
+      \draw[cstaxis] (0,0)--(3.5,0);
+      \draw[cstaxis] (0,0)--(0,3);
+      \draw[cstcurve,second] (0,0)--(\a,0);
+      \draw
+        (0,0) node[below] {$0$}
+        (\a,0) node[below] {$R$}
+        (\a,\a) node[above,shift={(0,-.1)}] {$R(1+\ii)$};
+    \end{tikzpicture}
+    \caption{三角形闭路}
+    \label{fig:triangle-contour}
+  \end{minipage}
+\end{figure}
+
+\begin{example}[菲涅耳积分]
+  计算 $\intf\sin x^2\d x$.
+\end{example}
+
+\begin{solution}
+  设 $f(z)=\ee^{\ii z^2}$ 并选择闭路 $C$ 为连接 $0,R,R(1+\ii)$ 的三角形闭路.
+  对于 $z=R+y\ii,0\le y\le R$, 当 $R\ra+\infty$ 时, 由\thmGrowUp,
+  \[
+    \abs{f(z)}=\abs{\ee^{\ii (R^2+2Ry\ii-y^2)}}=\ee^{-2Ry},
+  \]
+  \[
+     \biggabs{\int_{\ell_1}f(z)\d z}
+    \le \int_0^R \ee^{-2Ry}\d y
+    =\frac1{2R}(1-\ee^{-2R^2})\ra 0.
+  \]
+  对于 $z=(1+\ii)t,0\le t\le R$, $f(z)=\ee^{-2t^2}$,
+  \[
+     \int_{\ell_2} f(z)\d z
+    =-\int_0^R \ee^{-2t^2}(1+\ii)\d t.
+  \]
+  由于 $f(z)$ 是处处解析的, 因此
+  \begin{align*}
+     0&
+    =\oint_C f(z)\d z
+    =\int_{\ell_1} f(z)\d z+\int_{\ell_2} f(z)\d z
+    +\int_0^R f(x)\d x\\&
+    =\int_{\ell_1} f(z)\d z-(1+\ii)\int_0^R\ee^{-2t^2}\d t
+    +\int_0^R f(x)\d x
+  \end{align*}
+  令 $R\ra+\infty$, 我们得到
+  \[
+     \intf f(x)\d x
+    =(1+\ii)\intf \ee^{-2t^2}\d t
+    =\frac{\sqrt{2\cpi}}4(1+\ii).
+  \]
+  故
+  \[
+     \intf\sin x^2\d x
+    =\Im \intf f(x)\d x
+    =\frac{\sqrt{2\cpi}}4.
+  \]
+\end{solution}
+
+
+\subsection{留数在级数中的应用\optional}
+
+下述定理可用于计算级数求和.
+\begin{theorem}
+  \label{thm:sum-fcot-residue-zero}
+  设 $f(z)$ 只有有限多个奇点, 其中不是整数的奇点为 $a_1,\cdots,a_k$, 且满足 $\liml_{z\ra\infty}zf(z)=0$, 则
+  \[
+    \sumff \Res\bigl[f(z)\cot(\cpi z),n\bigr]
+    =-\sum_{j=1}^k \Res\bigl[f(z)\cot(\cpi z),a_j\bigr].
+  \]
+\end{theorem}
+这里, 左侧的求和是指柯西主值
+\[
+  \PV\sumff \Res\bigl[f(z)\cot(\cpi z),n\bigr]
+  =\lim_{N\ra+\infty}\sum_{n=-N}^N \Res[f(z)\cot(\cpi z),n].
+\]
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \def\a{2.5}
+    \draw[cstaxis] (-4,0)--(4,0);
+    \draw[cstaxis] (0,-3.5)--(0,3.5);
+    \draw[
+      cstcurve,
+      main,
+      decoration={
+        markings,
+        mark = at position .05 with {
+          \arrowreversed{Straight Barb}
+          \node[left]{$\ell_4$};
+        },
+        mark = at position .3 with {
+          \arrowreversed{Straight Barb}
+          \node[above]{$\ell_3$};
+        },
+        mark = at position .55 with {
+          \arrowreversed{Straight Barb}
+          \node[right]{$\ell_2$};
+        },
+        mark = at position .8 with {
+          \arrowreversed{Straight Barb}
+          \node[below]{$\ell_1$};
+        }
+      },
+      postaction={decorate}
+    ] (-\a,-\a) rectangle (\a,\a);
+    \draw
+      (-\a,0) node[above left] {$-(N+\dfrac12)$}
+      (\a,0) node[above right] {$N+\dfrac12$}
+      (0,\a) node[below right] {$(N+\dfrac12)\ii$}
+      (0,-\a) node[above left] {$-(N+\dfrac12)\ii$}
+      (\a,-\a) node[right] {$A_1$}
+      (\a,\a) node[right] {$A_2$}
+      (-\a,\a) node[left] {$A_3$}
+      (-\a,-\a) node[left] {$A_4$};
+  \end{tikzpicture}
+  \caption{正方形闭路}
+  \label{fig:square-contour}
+\end{figure}
+
+\begin{proof}
+  对于任意 $\varepsilon>0$, 存在正整数 $N$ 使得当 $\abs{z}>N$ 时, $\abs{f(z)}\le \dfrac\varepsilon N$.
+  设
+  \begin{align*}
+    A_1&=(N+\frac12)(1-\ii),&
+    A_2&=(N+\frac12)(1+\ii),\\
+    A_3&=(N+\frac12)(-1+\ii),&
+    A_4&=(N+\frac12)(-1-\ii),
+  \end{align*}
+  $C_N$ 是经过这四个点的正方形闭路.
+  我们有
+  \[
+    \cot(\cpi z)
+    =\frac{\cos(\cpi z)}{\sin(\cpi z)}
+    =\ii\frac{\ee^{\cpi\ii z}+\ee^{-\cpi\ii z}}{\ee^{\cpi\ii z}-\ee^{-\cpi\ii z}}
+    =\ii\frac{\ee^{2\cpi\ii z}+1}{\ee^{2\cpi\ii z}-1}
+    =\ii\frac{\ee^{2\cpi\ii x}\ee^{-2\cpi y}+1}{\ee^{2\cpi\ii x}\ee^{-2\cpi y}-1}.
+  \]
+  对于 $x=\pm(N+\dfrac12)$,
+  \[
+    \abs{f(z)\cot(\cpi z)}
+    =\frac{1-\ee^{-2\cpi \abs{y}}}{1+\ee^{-2\cpi \abs{y}}}\abs{f(z)}
+    \le \abs{f(z)}
+    \le \frac{\varepsilon}N,
+  \]
+  从而
+  \[
+    \int_{\ell_2}f(z)\cot(\cpi z)\d z
+    \ \text{和}\ 
+    \int_{\ell_4}f(z)\cot(\cpi z)\d z
+    \le \frac{2N+1}N\varepsilon.
+  \]
+  对于 $y=\pm(N+\dfrac12)$,
+  \[
+    \abs{f(z)\cot(\cpi z)}
+    \le\frac{1+\ee^{-2\cpi(N+1/2)}}{1-\ee^{-2\cpi(N-1/2)}}\abs{f(z)}
+    \le\frac{1+\ee^{-2\cpi(N+1/2)}}{1-\ee^{-2\cpi(N-1/2)}}\cdot \frac{\varepsilon}N,
+  \]
+  从而
+  \[
+    \int_{\ell_1}f(z)\cot(\cpi z)\d z
+    \ \text{和}\ 
+    \int_{\ell_3}f(z)\cot(\cpi z)\d z
+    \le \frac{1+\ee^{-2\cpi(N+1/2)}}{1-\ee^{-2\cpi(N-1/2)}}\cdot \frac{2N+1}N\varepsilon.
+  \]
+  令 $N\ra+\infty$ 并由 $\varepsilon$ 的任意性可知
+  \[
+    \lim_{N\ra+\infty}\oint_{C_N}f(z)\cot(\cpi z)\d z=0.
+  \]
+  将其表达为留数形式即得该定理.
+\end{proof}
+
+\begin{example}\label{exam:bessel-question}
+  计算 $\sumf1 \dfrac1{n^2}$.
+\end{example}
+
+\begin{solution}
+  设 $f(z)=\dfrac1{z^2}$, 则非零整数 $n$ 是 $f(z)\cot(\cpi z)$ 的一阶极点, 且
+  \[
+     \Res\bigl[f(z)\cot(\cpi z),n\bigr]
+    =\lim_{z\ra n}\frac1{z^2}\cdot\frac{z-n}{\tan(\cpi z)}
+    =\frac1{n^2}\lim_{z\ra 0}\cdot\frac{z}{\tan(\cpi z)}
+    =\frac1{\cpi n^2}.
+  \]
+  由
+  \[
+    \cos z=1-\dfrac12z^2+\cdots,\qquad
+    \sin z=z-\dfrac16z^3+\cdots
+  \]
+  待定系数可知
+  \[
+     \cot z=\frac1z-\frac13z+\cdots,
+  \]
+  于是
+  \[
+     f(z)\cot(\cpi z)
+    =\frac1{\cpi z^3}-\frac{\cpi}{3z}+\cdots,
+  \]
+  从而 $\Res\bigl[f(z)\cot(\cpi z),0\bigr]=-\dfrac\cpi3$.
+  显然 $f(z)$ 满足\thmref{定理}{thm:sum-fcot-residue-zero} 条件, 且没有非整数奇点, 因此
+  \[
+    \sumff \frac1{\cpi n^2}-\frac\cpi3=0,\qquad
+    \sumf1 \frac1{n^2}=\frac{\cpi^2}6.
+  \]
+\end{solution}
+
+一般地, 若 $n$ 不是 $f(z)$ 的奇点, 则 $\Res[f(z)\cot(\cpi z),n]=\dfrac1\cpi f(n)$.
+
+
+\subsection{儒歇定理\optional}
+
+利用留数理论可以得到辐角原理和儒歇定理, 它可用于解决某些函数的零点计数问题.
+
+\begin{theorem}[辐角原理]
+  \index{fujiaoyuanli@辐角原理}
+  \label{thm:log-f-derivative-sum-order}
+  设 $f(z)$ 在闭路 $C$ 上处处解析且非零, 在 $C$ 内部的奇点均为极点, 则
+  \[
+    \frac1{2\cpi\ii}\oint_C \frac{f'(z)}{f(z)}\d z
+    =N-P,
+  \]
+  其中 $N$ 表示 $C$ 内部 $f(z)$ 所有零点的阶之和, $P$ 表示 $C$ 内部 $f(z)$ 所有极点的阶之和.
+\end{theorem}
+
+\begin{proof}
+  设 $a$ 是 $f(z)$ 的 $m$ 阶零点.
+  由 $a$ 附近的洛朗展开可知, 存在 $a$ 的邻域 $\abs{z-a}<\delta$ 内的解析函数 $g(z)$ 使得 $f(z)=(z-a)^mg(z)$ 且 $g(a)\neq 0$.
+  于是
+  \[
+    \frac{f'(z)}{f(z)}=\frac m{z-a}+\frac{g'(z)}{g(z)}.
+  \]
+  由于 $\dfrac{g'(z)}{g(z)}$ 在 $a$ 处解析, 因此
+  \[
+     \Res\biggl[\frac{f'(z)}{f(z)},a\biggr]
+    =\Res\Bigl[\frac m{z-a},a\Bigr]
+    =m.
+  \]
+  类似地, 若 $a$ 是 $f(z)$ 的 $n$ 阶极点, 则 $\Res\biggl[\dfrac{f'(z)}{f(z)},a\biggr]=-n$.
+
+  由\thmRes,
+  \[
+     \frac1{2\cpi\ii}\oint_C \frac{f'(z)}{f(z)}\d z
+    =\sum_a\Res\biggl[\frac{f'(z)}{f(z)},a\biggr]=N-P,
+  \]
+  其中 $a$ 取遍 $f(z)$ 在 $C$ 内部的所有零点和极点.
+\end{proof}
+
+% \begin{figure}[H]
+%   \centering
+%   \begin{tikzpicture}
+%     \draw[cstaxis] (-.5,0)--(4,0);
+%     \draw[cstaxis] (0,-.5)--(0,4);
+%     \draw[
+%       cstcurve,
+%       main,
+%       decoration={
+%         markings,
+%         mark = at position .55 with {
+%           \arrow{Straight Barb}
+%           \node[above]{$C$};
+%         },
+%         mark = at position 0.0 with {
+%           \coordinate (A);
+%         },
+%         mark = at position 1 with {
+%           \coordinate (B);
+%         }
+%       },
+%       postaction={
+%         decorate
+%       },
+%       domain=30:70,
+%       samples=500,
+%     ] plot ({(-.5*sin(7*\x)+3)*cos(\x)}, {(-.5*sin(7*\x)+3)*sin(\x)});
+%     \coordinate (A) at ({(-.5*sin(7*30)+3)*cos(30)}, {(-.5*sin(7*30)+3)*sin(30)});
+%     \coordinate (O) at (0,0);
+%     \draw[cstcurve] (A)--(O)--(B);
+%     \draw
+%       (A) node[right] {$a$}
+%       (B) node[left] {$b$};
+%     \draw[main,thick,cstra] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.5] {angle=A--O--B};
+%   \end{tikzpicture}
+%   \caption{辐角变化}
+%   \label{fig:delta-arg}
+% \end{figure}
+
+% 设曲线 $C$ 起于点 $a$ 终于点 $b$.
+% 固定 $a$ 的一个辐角 $\arg a$.
+% 当 $z$ 从点 $a$ 沿着曲线 $C$ 向点 $b$ 移动时, 让辐角 $\Arg z$ 也连续变化.
+% 最终终点和起点的辐角差值 $\delt_C \arg z$ 与起点辐角的选取无关.
+% 例如 $C$ 是一条内部包含原点的正向闭路时, $\delt_C \arg z=2\cpi$.
+% 当 $C$ 是一条内部不包含原点的正向闭路时, $\delt_C \arg z=0$.
+
+
+% \begin{figure}[H]
+%   \centering
+%   \begin{tikzpicture}
+%     \begin{scope}
+%       \draw[cstaxis] (-2.5,0)--(2.5,0);
+%       \draw[cstaxis] (0,-2.5)--(0,2.5);
+%       \draw [
+%         cstcurve,
+%         main,
+%         decoration = {
+%           markings,
+%           mark = at position .25 with {
+%             \arrow{Straight Barb}
+%             \node[above right]{$C$};
+%           }
+%         },
+%         postaction={decorate},
+%         domain=0:360,
+%         samples=500,
+%       ] plot ({1.6*cos(\x)+.4*cos(2*\x)-.3*cos(3*\x)+.1*cos(4*\x)}, {1.4*sin(\x)+.2*sin(2*\x)+.2*sin(3*\x)});
+%       \draw (0,-2.5) node[below] {$z$ 平面};
+%     \end{scope}
+%     \begin{scope}[xshift=6cm]
+%       \draw[cstaxis] (-2.5,0)--(2.5,0);
+%       \draw[cstaxis] (0,-2.5)--(0,2.5);
+%       \coordinate (A) at (0,1);
+%       \coordinate (B) at (-.6,0);
+%       \coordinate (C) at (0,-.6);
+%       \coordinate (D) at (.8,0);
+%       \coordinate (E) at (0,2);
+%       \coordinate (F) at (-1.6,1.4);
+%       \coordinate (G) at (-1.8,0);
+%       \coordinate (H) at (-1.3,-1.3);
+%       \coordinate (I) at (0,-1.6);
+%       \coordinate (J) at (0.4,-1.3);
+%       \coordinate (K) at (0.2,-1.1);
+%       \coordinate (L) at (-0.1,-1.5);
+%       \coordinate (M) at (0.5,-1.8);
+%       \coordinate (N) at (2,0);
+%       \coordinate (O) at (1.6,1.3);
+%       \draw[
+%         cstcurve,
+%         second,
+%         decoration = {
+%           markings,
+%           mark = at position .25 with {
+%             \arrow{Straight Barb}
+%             \node[above right]{$C$};
+%           }
+%         },
+%         postaction={decorate},
+%       ] plot[smooth cycle, tension=0.7] coordinates {
+%         (A) (B) (C) (D) (E) (F) (G) (H) (I) (J) (K) (L) (M) (N) (O)
+%       };
+%       \draw (0,-2.5) node[below] {$w$ 平面};
+%     \end{scope}
+%   \end{tikzpicture}
+%   \caption{函数值辐角变化}
+%   \label{fig:delta-arg-w}
+% \end{figure}
+
+% 当 $z$ 沿着 $z$ 平面上的闭路 $C$ 正向绕行一周时, 它的像 $w=f(z)$ 在 $w$ 平面上形成一条闭合曲线 $\ell$.
+% $\ell$ 未必是闭路, 但 $\delt_\ell \arg w$ 应当是 $2\cpi$ 的整数倍.
+% 设 $\ell:w=\rho(\theta)\ee^{\ii \theta}$, 则
+% \begin{align*}
+%   \frac1{2\cpi\ii}\oint_C \frac{f'(z)}{f(z)}\d z
+%   &=\frac1{2\cpi\ii}\oint_\ell \frac{\d w}{w}
+%   =\frac1{2\cpi\ii}\Bigl(\oint_\ell \frac{\rho'}{\rho}\d\theta+\ii \oint_\ell \d \theta\Bigr)\\
+%   &=\frac1{2\cpi}\oint_\ell\d\theta
+%   =\frac1{2\cpi}\delt_\ell \arg w
+%   =\frac1{2\cpi}\delt_C \arg f(z).
+% \end{align*}
+% 这里 $\delt_C \arg f(z)$ 表示当 $z$ 沿着 $C$ 正向绕行一周时, $w=f(z)$ 的辐角变化.
+% 由此得到:
+% \begin{theorem}[辐角原理]
+%   设 $f(z)$ 在闭路 $C$ 上处处解析且非零, 在 $C$ 的内部的奇点均为极点, 则
+%   \[
+%     \frac1{2\cpi}\delt_C \arg f(z)
+%     =N-P,
+%   \]
+%   其中 $N$ 表示 $C$ 内部 $f(z)$ 所有零点的阶之和, $P$ 表示 $C$ 内部 $f(z)$ 所有极点的阶之和.
+% \end{theorem}
+
+\begin{theorem}[儒歇定理]
+  \index{ruxiedingli@儒歇定理}
+  \label{thm:rouche}
+  设函数 $f(z)$ 及 $g(z)$ 在闭路 $C$ 及其内部解析, 且在 $C$ 上满足 $\abs{f(z)}>\abs{f(z)-g(z)}$, 则在 $C$ 的内部 $f(z)$ 与 $g(z)$ 的所有零点阶数之和相等.
+\end{theorem}
+
+\begin{proof}
+  设 $h(z)=f(z)-g(z)$.
+  由于在 $C$ 上
+  \[
+    \abs{f(z)}>\abs{h(z)}>0,\quad
+    \abs{g(z)}\ge \abs{f(z)\abs{-}h(z)}>0,
+  \]
+  因此 $f(z)$ 和 $g(z)$ 在 $C$ 上都没有零点.
+  设
+  \[
+    \varphi(z)=\frac{g(z)}{f(z)}=1-\frac{h(z)}{f(z)},
+  \]
+  则由假设可知 $\varphi(z)$ 落在区域 $\abs{w-1}<1$ 内, 从而 $F(z)=\ln\varphi(z)$ 是 $C$ 上 $\dfrac{\varphi'(z)}{\varphi(z)}$ 的原函数.
+  由\thmNL 可知,
+  \[
+     0
+    =\oint_C \frac{\varphi'(z)}{\varphi(z)}\d z
+    =\oint_C \biggl(\frac{g'(z)}{g(z)}-\frac{f'(z)}{f(z)}\biggr)\d z,
+  \]
+  根据\thmref{引理}{thm:log-f-derivative-sum-order} 可知 $f(z)$ 和 $g(z)$ 在 $C$ 内部零点阶数之和相同.
+\end{proof}
+
+\begin{example}
+  多项式 $f(z)=z^5-z^4+5z^2+1$ 在区域 $\abs{z}<1$ 内有多少零点(计算重数)?
+\end{example}
+
+\begin{solution}
+  设 $g(z)=5z^2$, 则在圆周 $\abs{z}=1$ 上
+  \[
+    \abs{f(z)-g(z)}=\abs{z^5-z^4+1}\le 3<\abs{g(z)}=5,
+  \]
+  因此 $f(z)$ 和 $g(z)$ 在区域 $\abs{z}<1$ 内的零点个数相等, 即为 $2$.
+\end{solution}
+
+通过联立 $f(z)=f'(z)=0$ 可以发现 $f(z)$ 没有重根, 所以 $f(z)$ 在区域 $\abs{z}<1$ 内有两个不同的一阶零点.
+
+\begin{exercise}
+  求 $z^8-6z^4-z^2+3=0$ 在 $\abs{z}<1$ 内的零点个数(计算重数).
+\end{exercise}
+
+我们也可以利用\thmRouche 证明代数学基本定理.
+\begin{example}[代数学基本定理]
+	证明 $n$ 次复系数多项式 $p(z)$ 总有 $n$ 个复零点(计算重数).
+\end{example}
+
+\begin{solution}
+  设
+  \[
+    p(z)=a_nz^n+a_{n-1}z^{n-1}+\cdots+a_0,
+  \]
+  其中 $a_n\neq 0$.
+  设 $f(z)=a_n z^n$.
+  由于
+  \[
+    \lim_{z\ra\infty}\frac{p(z)-f(z)}{f(z)}=0,
+  \]
+  因此存在 $R>0$ 使得当 $\abs{z}=R$ 时, $\biggabs{\dfrac{p(z)-f(z)}{f(z)}}<1$.
+  因此 $f(z)$ 和 $p(z)$ 在区域 $\abs{z}<R$ 内的零点个数相等, 均为 $n$ 个.
+\end{solution}
+
+\thmRouche 刻画了复变函数的零点和极点分布问题, 相关的理论在复变函数理论中被称为值分布理论. 上世纪60--70年代, 在艰苦的客观条件下, 我国数学家张广厚和杨乐在在该领域作出了一系列重要结果.
+他们发现了函数值分布论中的``亏值''和``奇异方向''之间的具体联系, 这一发现被数学界定名为张--杨定理, 相关成果总结在\cite{YangZhang1975,YangZhang1976,Yang1993}.
+
+
+\newpage
+\startwidepage
+\psection{本章小结}
+
+本章所需掌握的知识点如下:
+\begin{conclusion}
+  \item 会计算留数, 会利用留数计算函数绕闭路的积分.
+  \begin{conclusion}
+    \item 本性奇点一般需要从洛朗展开得到留数 $c_{-1}$.
+    \item 若 $z_0$ 是解析点或可去奇点, 则 $\Res[f,z_0]=0$.
+    \item 若 $z_0$ 是 $1$ 阶极点, 则 $\Res[f(z),z_0]=\liml_{z\ra z_0}(z-z_0)f(z)$.
+    \item 若 $z_0$ 是至多 $m$ 阶极点, 则 $\Res[f(z),z_0]=\dfrac1{(m-1)!}\liml_{z\ra z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}$.
+    \item 设 $P(z)$ 在 $z_0$ 处解析, $z_0$ 是 $Q(z)$ 的一阶零点, 则 $\Res\biggl[\dfrac{P(z)}{Q(z)},z_0\biggr]=\dfrac{P(z_0)}{Q'(z_0)}$.
+    \item 在 $\infty$ 的留数: $\Res[f(z),\infty]
+        =-\Res\biggl[f\Bigl(\dfrac1z\Bigr)\dfrac1{z^2},0\biggr]$.
+  \end{conclusion}
+  \item 会利用留数计算函数绕闭路的积分.
+  \begin{conclusion}
+    \item 若 $f(z)$ 在闭路 $C$ 内部只有有限多个奇点 $z_1,z_2,\dots,z_n$, 则
+    \[
+      \oint_C f(z)\d z=2\cpi\ii\sum_{k=1}^n\Res[f(z),z_k].
+    \]
+    \item 若 $f(z)$ 在闭路 $C$ 外部只有有限多个奇点 $z_1,z_2,\dots,z_n$, 则
+    \[
+      \oint_C f(z)\d z=-2\cpi\ii\Bigl(\sum_{k=1}^n\Res[f(z),z_k]+\Res[f(z),\infty]\Bigr).
+    \]
+  \end{conclusion}
+  \item 会使用相应公式计算由留数得到的几类实积分.
+  \begin{conclusion}
+    \item 设 $P(x,y)$ 是有理函数.
+    由欧拉公式将 $P(\cos \theta,\sin\theta)$ 化为 $z=\ee^{\ii\theta}$ 和 $\dfrac1z=\ee^{-\ii\theta}$ 的有理函数, 于是
+    \[
+        \int_0^{2\cpi}P(\cos \theta,\sin\theta)\d\theta
+      =2\cpi\ii\sum_{\abs{a}<1}\Res\biggl[P\Bigl(\frac{z^2+1}{2z},\frac{z^2-1}{2\ii z}\Bigr)\frac1{\ii z},a\biggr].
+    \]
+    \item 设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实根, 则
+    \[
+       \intff f(x)\d x
+      =2\cpi\ii\sum_{\Im a>0}\Res[f(z),a].
+    \]
+    \item 设 $f(x)$ 是一个有理函数, 分母至少比分子高 $2$ 次, 且分母没有实根, 则对任意 $\lambda>0$,
+    \[
+       \intff f(x)\ee^{\ii \lambda x}\d x
+      =2\cpi\ii\sum_{\Im a>0}\Res[f(z)\ee^{\ii \lambda z},a].
+    \]
+    它的实部和虚部分别为 $f(x)\cos\lambda x$ 和 $f(x)\sin\lambda x$ 的积分.
+    \item 设实数 $p$ 不是整数, $f(x)$ 是一个有理函数, 分母没有正实根, 且满足
+    \[
+      \lim_{x\ra 0} x^{p+1}f(x)=0,\quad
+      \lim_{x\ra \infty} x^{p+1}f(x)=0,
+    \]
+    则
+    \[
+       \intf f(x)x^p\d x
+      =-\frac{\cpi}{\sin{p\cpi}}\sum_a \Res\bigl[\ee^{p\ln(-z)}f(z),a\bigr],
+    \]
+    其中 $a$ 取遍 $f(z)$ 的奇点.
+    \item 设 $f(x)$ 是一个有理函数, 分母没有正实根, 且分母至少比分子高 $2$ 次, 则
+    \[
+      \intf f(x)\ln x\d x
+      =-\frac12 \sum_a \Res\bigl[\ln^2(-z)f(z),a\bigr],
+    \]
+    其中 $a$ 取遍 $f(z)$ 的奇点.
+  \end{conclusion}
+\end{conclusion}
+
+本章中不易理解和易错的知识点包括:
+\begin{enuma}
+  \item 错误地判断奇点的类型, 以至于用错留数计算公式.
+  \item 使用\thmref{定理}{thm:residue-formula-for-pole} 计算极点留数时, 需要选择合适的 $m$, $m$ 可以不是极点的阶.
+  当函数是分式形式且分母包含 $(z-z_0)^m$ 项时, 若 $(z-z_0)^mf(z)$ 的导数相对容易计算, 则我们就选择这个幂次 $m$ 来计算.
+  \item 如果函数是分式形式, 且分母因式分解的项较多, 例如 $\dfrac1{z^8-1}$; 或者分母不是多项式形式, 例如 $\dfrac{\sin z+1}{\cos z}$, 则可利用\thmref{定理}{thm:residue-iii} 计算在一阶极点的留数.
+  \smallskip
+  \item 使用相应公式计算实积分时, 注意需要计算留数的奇点所处的范围.
+\end{enuma}
+
+
+
+\psection{本章作业}
+\begin{homework}
+  \item 解答题.
+  \begin{homework}
+    \item 求下列各函数 $f(z)$ 在奇点处的留数.
+      \begin{subhomework}(2)
+        \item $\dfrac{z-1}{z^2+2z}$;
+        \item $\dfrac{1-\ee^{2z}}{z^5}$;
+        \item $\dfrac z{\cos z}$;
+        \item $\cos\dfrac1{1-z}$;
+        \item $\tanh z$;
+        \item $\dfrac{z-\sin z}{z^8}$;
+        \item $\dfrac{\ee^{\ii z}}{1+z^2}$;
+        \item $\dfrac{\cos z}{z^2(z^2-\cpi^2)}$;
+        \item $\dfrac{\cos z}{z^2(z^2-\cpi^2)}$;
+        \item $\dfrac{\ee^z}{z(z-1)}$;
+        \item $\dfrac{\ee^z}{(z-\cpi\ii)(z-2\cpi\ii)^2}$.
+      \end{subhomework}
+    \item 利用留数计算下列积分.
+    \begin{subhomework}(2)
+    \item $\doint_{\abs{z}=2}\frac{\ee^{2z}}{z(z-1)^2}\d z$;
+    \item $\doint_{\abs{z}=\frac32}\frac{1-\cos z}{z^m}\d z,\quad m\in\BZ$;
+    \item $\doint_{\abs{z}=1}\frac1{(z-1/2)^9(z-2)^9}\d z$;
+    \item $\doint_{\abs{z-3}=4}\frac{\ee^{\ii z}}{z^2-3\cpi z+2\cpi^2}\d z$;
+    \item $\doint_{\abs{z}=2}\frac{\sin z}{z(z-1)}\d z$;
+    \item $\doint_{\abs{z}=3}\frac{1}{(z+1)(z+2)^2}\d z$;
+    \item $\doint_{\abs{z}=2}\frac1{z^2\cos z}\d z$;
+    \item $\doint_{\abs{z}=2}\frac{\ee^z}{z(z-1)^2}\d z$;
+    \item $\doint_{\abs{z}=2}\frac{\d z}{z^3(z-1)^3(z-3)^5}$;
+    \item $\doint_{\abs{z}=4}\frac{\d z}{(z+6)(z-5)\sin z}$.
+    \end{subhomework}
+    \item 利用留数计算下列积分.
+    \begin{subhomework}(2)
+      \item $\dint_0^{2\cpi}\frac{\cos^2\theta}{13+5\sin\theta}\d \theta$.
+      \item $\dint_0^{\cpi/2}\dfrac{\d \theta}{(1+2\sin^2\theta)^2}$.
+      \item $\dint_0^{2\cpi}\dfrac{\d \theta}{a+\cos\theta},\ a>1$.
+      \item $\dint_0^{2\cpi}\dfrac{\d \theta}{(a+\cos\theta)^2},\ a>1$.
+      \item $\intff \dfrac{\cos x}{x^2+2x+5}\d x$.
+      \item $\intff \frac{1}{x^{2k}+1}\d x$, $k$ 是正整数.
+      \item $\intf\frac{\ln x}{x^2+1}\d x$.
+      \item $\intf\frac{x^p}{x^2+1}\d x$, $0<p<1$.
+    \end{subhomework}
+    \item \optionalex 计算 $\intf \frac{1-\cos x}{x^2}\d x$.
+    提示: 考虑 $f(z)=\dfrac{1-\ee^{\ii z}}{z^2}$ 在线段 $[r,R]$, $[-R,-r]$ 以及半径为 $r,R$ 的上半圆周组成的闭路的积分.
+    % \item $\dfrac\cpi2$.
+    \item \optionalex 计算 $\intf \frac{x}{\ee^{\cpi x}-\ee^{-\cpi x}}\d x$.
+    提示: 考虑 $f(z)=\dfrac{z}{\ee^{\cpi z}-\ee^{-\cpi z}}$ 在 $\pm R,\pm R+\dfrac12\ii$ 组成的闭路的积分.
+    \item \optionalex 利用留数计算下列级数.
+    \begin{subhomework}(2)
+      \item $\sumff \dfrac1{n^2+1}$.
+      \item $\displaystyle\sum_{n=2}^{+\infty} \dfrac1{n^2-1}$.
+    \end{subhomework}
+    \item \optionalex 求下列函数在相应范围内的零点个数(计算重数).
+    \begin{subhomework}(2)
+      \item $z^9-2z^6+z^2-8z-2$, $\abs{z}<1$;
+      \item $2z^5-z^3+3z^2-z+8$, $\abs{z}<1$;
+      \item $\ee^z-4z^n+1$, $\abs{z}<1$;
+      \item $z^8+\ee^z+6z+1$, $1<\abs{z}<2$.
+    \end{subhomework}
+    \item 证明
+    \[
+      \intff \frac1{(x^2+1)^{n+1}}
+      =\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot6\cdots(2n)}\cdot \cpi.
+    \]
+    \item 指出下列陈述的错误指出: 函数 $f(z)=\dfrac1{z(z-1)^2}$ 在 $z=1$ 处有一个二阶极点. 因为这个函数有下列洛朗展开式
+      \[
+        \frac1{z(z-1)^2}=\cdots+\frac1{(z-1)^5}-\frac1{(z-1)^4}+\frac1{(z-1)^3},\quad\abs{z-1}>1,
+      \]
+      所以 $z=1$ 又是 $f(z)$ 的本性奇点. 由于其中不含 $(z-1)^{-1}$ 幂, 因此 $\Res[f(z),1]=0$.
+    \item 证明: $\dint_0^{2\cpi}\cos^{2n}\theta\d \theta=\dfrac{(2n)!}{2^{2n-1}(n!)^2}\cpi$.
+  \end{homework}
+\end{homework}
+\finishwidepage

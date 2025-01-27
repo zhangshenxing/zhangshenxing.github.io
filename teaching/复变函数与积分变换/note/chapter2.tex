@@ -28,14 +28,11 @@
   由于 $D$ 内的任意一点都存在一个邻域完全包含在 $D$ 中, 所以可以在任意一点研究上述极限是否存在.
 }
 
-\begin{marker}
-  若要导数存在, 无论极限过程 $z\ra z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
-  \[
-    \frac{f(z_0+\delt z)-f(z_0)}{\delt z}
-  \]
-  的极限都要存在且全都相等.
-\end{marker}
-
+若要导数存在, 无论极限过程 $z\ra z_0$ 中 $z$ 是沿何种方式趋于 $z_0$, 比值
+\[
+  \frac{f(z_0+\delt z)-f(z_0)}{\delt z}
+\]
+的极限都要存在且全都相等. 
 因此尽管复变函数导数定义的形式和单变量实函数情形类似, 但其限制实际上要严格得多.
 
 \begin{example}
@@ -89,18 +86,6 @@
   \end{enuma}
 \end{theorem}
 
-根据上述求导法则, 不难知道:
-
-\begin{theorem}
-  \label{thm:four-derivable}
-  \begin{enuma}
-    \item 在 $z_0$ 处可导的两个函数 $f(z)$, $g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 仍然在 $z_0$ 处可导.
-    \item 若函数 $g(z)$ 在 $z_0$ 处可导, 函数 $f(w)$ 在 $g(z_0)$ 处可导, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处可导.
-  \end{enuma}
-\end{theorem}
-
-由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
-
 \begin{example}
   求 $f(z)=\dfrac{z^2+1}{z-1}$ 的导数.
 \end{example}
@@ -114,6 +99,18 @@
     f'(z)=1-\frac2{(z-1)^2}.
   \]
 \end{solution}
+
+根据前述求导法则, 不难知道:
+
+\begin{theorem}
+  \label{thm:four-derivable}
+  \begin{enuma}
+    \item 在 $z_0$ 处可导的两个函数 $f(z)$, $g(z)$ 之和、差、积、商($g(z_0)\neq 0$) 仍然在 $z_0$ 处可导.
+    \item 若函数 $g(z)$ 在 $z_0$ 处可导, 函数 $f(w)$ 在 $g(z_0)$ 处可导, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处可导.
+  \end{enuma}
+\end{theorem}
+
+由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
 
 \begin{theorem}
   若 $f(z)$ 在 $z_0$ 处可导, 则 $f(z)$ 在 $z_0$ 处连续.
@@ -172,17 +169,11 @@
 
 \footnotetext{也可叫\emph{全纯函数}\index{quanchunhanshu@全纯函数}或\emph{正则函数}\index{zhengzehanshu@正则函数}.}
 
-\begin{marker}
-  在一点解析蕴含在这点可导, 反之未必.
-\end{marker}
-
+\alert{在一点解析蕴含在这点可导, 反之未必.} 
 无定义、不连续、不可导、可导但不解析, 都会导致奇点的产生.
 不过, 若 $z_0$ 是 $f(z)$ 定义域的外点, 即存在 $z_0$ 的邻域与 $f(z)$ 定义域交集为空集, 这种情形不甚有趣, 因此我们不考虑这类奇点.
 
-\begin{marker}
-  在区域 $D$ 内解析和在 $D$ 内可导是等价的.
-\end{marker}
-
+\alert{在区域 $D$ 内解析和在 $D$ 内可导是等价的.} 
 这是因为任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域.
 由于一个点的邻域也是一个开集, 因此若 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析. 因此 \alert{$f(z)$ 解析点全体是一个开集}, 它是可导点集合的内点构成的集合.
 
@@ -440,10 +431,7 @@
   与 $k$ 有关, 因此该极限不存在, $u$ 在 $(0,0)$ 处不可微, 所以 $f(z)$ 在 $(0,0)$ 处不可导.
 \end{solution}
 
-由此可知:
-\begin{marker}
-  \thmCR 中的可微性和C-R方程缺一不可.
-\end{marker}
+由此可知: \alert{\thmCR 中的可微性和C-R方程缺一不可.}
 
 \begin{example}
   求下列函数的可导点和解析区域, 并求其在可导点处的导数.

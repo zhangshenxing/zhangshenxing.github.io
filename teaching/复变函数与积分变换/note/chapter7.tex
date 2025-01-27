@@ -71,7 +71,7 @@
 }
 
 \begin{theorem}
-  若 $f(t)$ 周期为 $T$, 且在区间 $\bigl[-\dfrac T2,\dfrac T2\bigr]$ 上满足\nouns{狄利克雷条件}\index{dilikeleitiaojian@狄利克雷条件}:
+  若 $f(t)$ 周期为 $T$, 且在区间 $\bigl[-\dfrac T2,\dfrac T2\bigr]$ 上满足\nouns{狄利克雷条件}\index{dilikeleitiaojian@狄利克雷条件}:\smallskip
   \begin{enuma}[labelindent=.5em]
     \item 间断点只有有限多个, 且均为第一类间断点;
     \item 只有有限个极值点,
@@ -252,7 +252,7 @@
 
 若 $f(t)$ 是复值函数, 也可定义其傅里叶变换, 只要其实部和虚部都满足傅里叶积分定理的条件即可.
 
-也可以把 $f(t),F(\omega)$ 叫作一个\nouns{傅里叶变换对}\index{fuliyebianhuandui@傅里叶变换对}, $f(t),F(\omega)$ 分别叫作\nouns{原函数}\index{yuanhanshu@原函数}\footnote{也叫\emph{原象函数}\index{yuanxianghanshu@原象函数}}和\nouns{象函数}\index{xianghanshu@象函数}.
+也可以把 $f(t),F(\omega)$ 叫作一个\nouns{傅里叶变换对}\index{fuliyebianhuandui@傅里叶变换对}, $f(t),F(\omega)$ 分别叫作\nouns{原函数}\index{yuanhanshu@原函数}\footnote{也叫\emph{原象函数}\index{yuanxianghanshu@原象函数}.}和\nouns{象函数}\index{xianghanshu@象函数}.
 若 $f(t)$ 表示随时间 $t$ 变化的函数, 则 $F(\omega)$ 表示的是频率 $\omega$ 的函数, 所以傅里叶变换是\alert{时域到频域的转换}.
 
 从定义出发, 不难发现傅里叶变换满足:
@@ -825,7 +825,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \end{align*}
   这里, 当 $t\ra \infty$ 时, $\abs{f(t)\ee^{-\ii\omega t}}=\abs{f(t)}\ra 0$.
   逆变换情形类似可得.
-  $n$ 阶导数情形由归纳可得.
+  $n$ 阶导数情形归纳可得.
 \end{proof}
 
 如果没有 $\liml_{t\ra\infty}f(t)=0$ 这一条件, 该结论是不成立的.\footnote{
@@ -1511,7 +1511,7 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \[
      \msl[t^m]
     =\intf t^m\ee^{-st}\d t
-    =-\frac{t^m\ee^{-st}}s\Big|_0^{+\infty}+\intf\frac{\ee^{-st}}s\cdot mt^{m-1}\d t
+    =-\frac{t^m\ee^{-st}}s\bigg|_0^{+\infty}+\intf\frac{\ee^{-st}}s\cdot mt^{m-1}\d t
     =\frac ms\msl[t^{m-1}].
   \]
   归纳可知
@@ -1771,6 +1771,43 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \]
 \end{theorem}
 
+\begin{proof}
+  选择如\ref{fig:left-half-circle-contour} 所示的闭路 $C=C_R+\ell$, 其中 $C_R$ 是以 $R$ 为半径, $\beta$ 为圆心的左半圆, $\ell$ 是从 $\beta-\ii R$ 到 $\beta+\ii R$ 的直线段.
+  选择合适的 $\beta$ 和充分大的 $R$ 使得 $F(s)$ 的所有奇点均在 $C$ 的内部.
+  设 $F(s)$ 在 $C_R$ 上满足 $\abs{F(s)}\le M_R$.
+  作变量替换 $s=\beta+iR\ee^{\ii\theta}\in C_R,\theta\in[0,\cpi]$, 则由\thmGrowUp,
+  \[
+     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
+    \le M_R \int_0^\cpi \ee^{(\beta-R\sin \theta)t} \cdot R\d \theta
+    =2RM_R\int_0^{\cpi/2}\ee^{(\beta-R\sin \theta)t}\d \theta.
+  \]
+  注意到当 $\theta\in[0,\cpi/2]$ 时, $\sin\theta\ge \dfrac{2\theta}\cpi$, 因此
+  \[
+     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
+    \le2RM_R\int_0^{\cpi/2}\ee^{(\beta-\frac{2R}{\cpi}\theta)t}\d \theta.
+    =\frac1tM_R\cpi\ee^{\beta t}(1-\ee^{-Rt}).
+  \]
+  由 $\liml_{R\ra+\infty} M_R=0$ 可得
+  \[
+    \lim_{R\ra+\infty} \int_{C_R} F(s)\ee^{st}\d s=0.
+  \]
+
+  由于 $\ee^{st}$ 处处解析, 从而 $F(s)\ee^{st}$ 的奇点也是 $s_1,\cdots,s_k$.
+  由\thmRes 可知
+  \[
+    \int_{C_R} F(s)\ee^{st}\d s+\int_\ell F(s)\ee^{st}\d s
+    =\int_C F(s)\ee^{st}\d s
+    =2\cpi\ii\sum_{k=1}^n\Res\bigl(F(s)\ee^{st},s_k\bigr).
+  \]
+  再令 $R\ra+\infty$ 得到
+  \[
+     \msl^{-1}[F(s)]
+    =\frac1{2\cpi\ii}\int_{\beta-\ii\infty}^{\beta+\ii\infty} F(s)\ee^{st}\d s
+    =\sum_{k=1}^n\Res\bigl(F(s)\ee^{st},s_k\bigr).
+    \qedhere
+  \]
+\end{proof}
+
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -1809,43 +1846,6 @@ $\dirac$ 函数并非通常的函数, 自然也无法定义傅里叶变换.
   \caption{左半圆形闭路}
   \label{fig:left-half-circle-contour}
 \end{figure}
-
-\begin{proof}
-  选择如\ref{fig:left-half-circle-contour} 所示的闭路 $C=C_R+\ell$, 其中 $C_R$ 是以 $R$ 为半径, $\beta$ 为圆心的左半圆, $\ell$ 是从 $\beta-\ii R$ 到 $\beta+\ii R$ 的直线段.
-  选择合适的 $\beta$ 和充分大的 $R$ 使得 $F(s)$ 的所有奇点均在 $C$ 的内部.
-  设 $F(s)$ 在 $C_R$ 上满足 $\abs{F(s)}\le M_R$.
-  作变量替换 $s=\beta+iR\ee^{\ii\theta}\in C_R,\theta\in[0,\cpi]$, 则由\thmGrowUp,
-  \[
-     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
-    \le M_R \int_0^\cpi \ee^{(\beta-R\sin \theta)t} \cdot R\d \theta
-    =2RM_R\int_0^{\cpi/2}\ee^{(\beta-R\sin \theta)t}\d \theta.
-  \]
-  注意到当 $\theta\in[0,\cpi/2]$ 时, $\sin\theta\ge \dfrac{2\theta}\cpi$, 因此
-  \[
-     \biggabs{\int_{C_R} F(s)\ee^{st}\d s}
-    \le2RM_R\int_0^{\cpi/2}\ee^{(\beta-\frac{2R}{\cpi}\theta)t}\d \theta.
-    =\frac1tM_R\cpi\ee^{\beta t}(1-\ee^{-Rt}).
-  \]
-  由 $\liml_{R\ra+\infty} M_R=0$ 可得
-  \[
-    \lim_{R\ra+\infty} \int_{C_R} F(s)\ee^{st}\d s=0.
-  \]
-
-  由于 $\ee^{st}$ 处处解析, 从而 $F(s)\ee^{st}$ 的奇点也是 $s_1,\cdots,s_k$.
-  由\thmRes 可知
-  \[
-    \int_{C_R} F(s)\ee^{st}\d s+\int_\ell F(s)\ee^{st}\d s
-    =\int_C F(s)\ee^{st}\d s
-    =2\cpi\ii\sum_{k=1}^n\Res\bigl(F(s)\ee^{st},s_k\bigr).
-  \]
-  再令 $R\ra+\infty$ 得到
-  \[
-     \msl^{-1}[F(s)]
-    =\frac1{2\cpi\ii}\int_{\beta-\ii\infty}^{\beta+\ii\infty} F(s)\ee^{st}\d s
-    =\sum_{k=1}^n\Res\bigl(F(s)\ee^{st},s_k\bigr).
-    \qedhere
-  \]
-\end{proof}
 
 \begin{example}
   求 $F(s)=\dfrac1{s(s-1)^2}$ 的拉普拉斯逆变换.

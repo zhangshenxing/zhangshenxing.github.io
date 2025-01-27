@@ -1,4 +1,5 @@
 \documentclass[simple]{hfutexam}
+\usepackage{fixdif,derivative}
 \usepackage{mathrsfs}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\Ln}{Ln}
@@ -6,9 +7,21 @@
 \newcommand\msl{\mathscr{L}}
 \newcommand\BR{\mathbb{R}}
 \newcommand\BZ{\mathbb{Z}}
-\newcommand{\diff}{\,\mathrm{d}}
 \let\Im\relax\DeclareMathOperator{\Im}{Im}
 \let\Re\relax\DeclareMathOperator{\Re}{Re}
+\letdif{\delt}{Delta} % 微分运算符
+\usepackage[nolimits]{cmupint} % 提供 \int, \oint
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\ee}{\mathrm{e}}
+\usepackage{textgreek}
+\newcommand{\cpi}{{\text{\textpi}}}
+\newcommand{\dirac}{{\text{\textdelta}}}
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\doint}{\displaystyle\oint}
+\newcommand{\sumf}[1]{\displaystyle\sum_{n=#1}^{\infty}}
+\newcommand{\sumff}{\displaystyle\sum_{n=-\infty}^{+\infty}}
+\newcommand\ov{\overline}
 
 \begin{document}
 \BiaoTi{2022年合肥工业大学试卷（A）}
@@ -26,49 +39,48 @@
 
 \tigan{一、填空题（每小题3分，共15分）}
 \begin{enumerate}
-\item $i^{-i}$ 的主值是\fillblank{}.
-\item 设 $z=-i$, 则 $1+z+z^2+z^3+z^4=$\fillblank{}.
-\item 设 $C$ 为正向圆周 $|z|=2$, 则积分 $\displaystyle\oint_C\left(\frac{\overline z}{z}\right)\diff z=$\fillblank{}.
-\item 设 $a,b,c$ 为实数. 如果函数 $f(z)=x^2-2xy-y^2+i(ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$\fillblank{}.
-\item 函数 $\sin t+j\cos t$ 的傅里叶变换为\fillblank{}.
+  \item $\ii^{-\ii}$ 的主值是\fillblank{}.
+  \item 设 $z=-\ii$, 则 $1+z+z^2+z^3+z^4=$\fillblank{}.
+  \item 设 $C$ 为正向圆周 $|z|=2$, 则积分 $\doint_C\Bigl(\frac{~\ov z~}{z}\Bigr)\d z=$\fillblank{}.
+  \item 设 $a,b,c$ 为实数. 如果函数 $f(z)=x^2-2xy-y^2+\ii (ax^2+bxy+cy^2)$ 在复平面上处处解析, 则 $a+b+c=$\fillblank{}.
+  \item 函数 $\sin t+\jj \cos t$ 的傅里叶变换为\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每小题3分，共15分）}
 \begin{enumerate}
-\item 方程 $\bigl||z+i|-|z-i|\bigr|=1$ 表示的曲线是(~~~~).
-\xx{直线}{不是圆的椭圆}{双曲线}{圆周}
-\item 不等式 $-1\le\arg z\le \pi-1$ 确定是的(~~~~).
-\xx{有界多连通闭区域}{有界单连通区域}{无界多连通区域}{无界单连通闭区域}
-\item 幂级数 $\displaystyle\sum_{n=1}^\infty (iz)^n$ 的收敛半径是(~~~~).
-\xx{$i$}{$-i$}{$1$}{$+\infty$}
-\item 下面哪个函数在 $z=0$ 处不可导?~(~~~~)
-\xx{$2x+3yi$}{$2x^2+3y^2i$}{$x^2-xyi$}{$e^x\cos y+i e^x\sin y$}
-\item 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的(~~~~).
-\xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
+  \item 方程 $\bigl||z+\ii|-|z-\ii|\bigr|=1$ 表示的曲线是(~~~~).
+  \xx{直线}{不是圆的椭圆}{双曲线}{圆周}
+  \item 不等式 $-1\le\arg z\le \cpi-1$ (包括 $0$) 确定是的(~~~~).
+  \xx{有界多连通闭区域}{有界单连通区域}{无界多连通区域}{无界单连通闭区域}
+  \item 幂级数 $\sumf1 (\ii z)^n$ 的收敛半径是(~~~~).
+  \xx{$\ii$}{$-\ii$}{$1$}{$+\infty$}
+  \item 下面哪个函数在 $z=0$ 处不可导?~(~~~~)
+  \xx{$2x+3y\ii$}{$2x^2+3y^2\ii$}{$x^2-xy\ii$}{$\ee^x\cos y+\ii\ee^x\sin y$}
+  \item 如果 $z_0$ 是 $f(z)$ 的一阶极点, $g(z)$ 的一阶零点, 则 $z_0$ 是 $f(z)^3g(z)^2$ 的(~~~~).
+  \xx{一阶极点}{一阶零点}{可去奇点}{三阶极点}
 \end{enumerate}
-
 
 \tigan{三、解答题}
 \begin{enumerate}
-\item \textbf{(6分)} 设 $z=\dfrac{3+i}{i}-\dfrac{10i}{3-i}$, 求 $z$ 的模和辐角.
-\item \textbf{(6分)} 解方程 $\sin z=2\cos z$.
-\item \textbf{(6分)} 设 $C$ 为从 $i$ 到 $i-\pi$ 再到 $-\pi$ 的折线, 求 $\displaystyle\int_C\cos^2z\diff z$.
-\item \textbf{(10分)} 设 $C$ 为正向圆周 $|z-3|=4$, 求 $\displaystyle\oint_C\frac{e^{iz}}{z^2-3\pi z+2\pi^2}\diff z$.
-\item \textbf{(10分)} 假设 $v(x,y)=x^3+y^3-axy(x+y)$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
-\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域\\
-\indent (1) $0<|z|<1$; \hspace{2em} (2) $1<|z|<+\infty$\\
-内的洛朗级数展开式.
-\item \textbf{(10分)} 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\pi^2)}$ 在有限复平面内的奇点和相应的留数.
-\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
-\[\begin{cases}
-y''(t)+2y(t)=\sin t,&\\
-y(0)=0,\quad y'(0)=2.
-\end{cases}\]
-\item \textbf{(3分)} 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试列举一二.
+  \item \textbf{(6分)} 设 $z=\dfrac{3+\ii}{\ii}-\dfrac{10\ii}{3-\ii}$, 求 $z$ 的模和辐角.
+  \item \textbf{(6分)} 解方程 $\sin z=2\cos z$.
+  \item \textbf{(6分)} 设 $C$ 为从 $\ii$ 到 $\ii-\cpi$ 再到 $-\cpi$ 的折线, 求 $\dint_C\cos^2z\d z$.
+  \item \textbf{(10分)} 设 $C$ 为正向圆周 $|z-3|=4$, 求 $\doint_C\frac{\ee^{\ii z}}{z^2-3\cpi z+2\cpi^2}\d z$.
+  \item \textbf{(10分)} 假设 $v(x,y)=x^3+y^3-axy(x+y)$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)$ 使得 $v(x,y)$ 是它的虚部.
+  \item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域\\
+  \indent (1) $0<|z|<1$; \hspace{2em} (2) $1<|z|<+\infty$\\
+  内的洛朗级数展开式.
+  \item \textbf{(10分)} 求 $f(z)=\dfrac{\cos z}{z^2(z^2-\cpi^2)}$ 在有限复平面内的奇点和相应的留数.
+  \item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+  \[\begin{cases}
+    y''(t)+2y(t)=\sin t,\\
+    y(0)=0,\quad y'(0)=2.
+  \end{cases}\]
+  \item \textbf{(3分)} 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试列举一二.
 \end{enumerate}
+
+
 \newpage
-
-
 \BiaoTi{2022年合肥工业大学考试参考答案（A）}
 \XueQi{一}
 \XueNian{2022}{2023}
@@ -86,11 +98,11 @@ y(0)=0,\quad y'(0)=2.
 
 \textbf{请将你的答案对应填在横线上：}
 
-\textbf{1.} \fillblank[2.5cm]{$e^{\pi/2}$}, 
+\textbf{1.} \fillblank[2.5cm]{$\ee^{\cpi/2}$}, 
 \textbf{2.} \fillblank[2.5cm]{$1$}, 
 \textbf{3.} \fillblank[2.5cm]{$0$}, 
 \textbf{4.} \fillblank[2.5cm]{$2$}, 
-\textbf{5.} \fillblank[2.5cm]{$2\pi j\delta(\omega+1)$}.
+\textbf{5.} \fillblank[2.5cm]{$2\cpi\jj\dirac(\omega+1)$}.
 
 \tigan{二、选择题（每小题3分，共15分）}
 
@@ -107,66 +119,81 @@ y(0)=0,\quad y'(0)=2.
 
 \textbf{1. （6分） 【解】}
 
-由于 $z=-3i+1-i(3+i)=2-6i$, \score2\\
+由于 $z=-3\ii+1-\ii(3+\ii)=2-6\ii$, \score2\\
 因此 $|z|=2\sqrt{10}$, \score2\\
-$\Arg z=2k\pi-\arctan 3,k\in\BZ$. \Score{(2分, 只有主值得1分)}
+$\Arg z=2k\cpi-\arctan 3,\quad k\in\BZ$. \Score{(2分, 只有主值得1分)}
 
 \textbf{2. （6分） 【解】}
 \begin{align*}
-\frac{e^{iz}-e^{-iz}}{2i}&=2\cdot\frac{e^{iz}+e^{-iz}}2, \score2\\
-e^{iz}-e^{-iz}&=2i(e^{iz}+e^{-iz}), \\
-e^{2iz}&=\frac{1+2i}{1-2i}=\frac{(1+2i)^2}5, \score1\\
-2iz&=\Ln\frac{(1+2i)^2}5=(2\arctan 2+2k\pi)i, \score1\\
-z&=\arctan 2+k\pi,\quad k\in\BZ. \Score{(2分, 只有主值得1分)}
+  \frac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}&
+  =2\cdot\frac{\ee^{\ii z}+\ee^{-\ii z}}2, \score2\\
+  \ee^{\ii z}-\ee^{-\ii z}&
+  =2\ii (\ee^{\ii z}+\ee^{-\ii z}), \\
+  \ee^{2\ii z}&
+  =\frac{1+2\ii}{1-2\ii}=\frac{(1+2\ii)^2}5, \score1\\
+  2\ii z&
+  =\Ln\frac{(1+2\ii)^2}5=(2\arctan 2+2k\cpi)\ii, \score1\\
+  z&=\arctan 2+k\cpi,\quad k\in\BZ. \Score{(2分, 只有主值得1分)}
 \end{align*}
 \textbf{另解}: 设 $z_0=\arctan 2$, 则
-\[\tan z=\tan z_0,\quad \sin z\cos z_0=\sin z_0\cos z, \score2\]
-\[\sin(z-z_0)=0, \score2\]
-\[z=z_0+k\pi=\arctan 2+k\pi,\quad k\in\BZ.\Score{(2分, 只有主值得1分)}\]
-\textbf{其它答案}: $z=\dfrac\pi2-\dfrac12\arctan\dfrac43+k\pi, k\in\BZ$.
+\[
+  \tan z=\tan z_0,\quad \sin z\cos z_0=\sin z_0\cos z, \score2
+\]
+\[
+  \sin(z-z_0)=0, \score2
+\]
+\[
+  z=z_0+k\cpi=\arctan 2+k\cpi,\quad k\in\BZ.\Score{(2分, 只有主值得1分)}
+\]
+\textbf{其它答案}: $z=\dfrac\cpi2-\dfrac12\arctan\dfrac43+k\cpi, k\in\BZ$.
+\smallskip
 
 \textbf{3. （6分） 【解】}
 
 由于 $\cos^2z$ 解析, 且 \score1
 \begin{align*}
-\int\cos^2z\diff z&=\int\frac{1+\cos(2z)}2\diff z \score1\\
-&=\frac{z}2+\frac{\sin(2z)}4+C, \score1
+  \int\cos^2z\d z&
+  =\int\frac{1+\cos(2z)}2\d z \score1\\&
+  =\frac{z}2+\frac{\sin(2z)}4+C, \score1
 \end{align*}
 因此
 \begin{align*}
-\int_C\cos^2z\diff z&=\left[\frac{z}2+\frac{\sin(2z)}4\right]\bigg|_i^{-\pi} \score1\\
-&=-\frac\pi2-\left[\frac i2+\frac{\sin(2i)}4\right] \score1\\
-&=-\frac\pi2+\frac{(e^{-2}-4-e^2)i}8. \score1
+  \int_C\cos^2z\d z&
+  =\biggl(\frac{z}2+\frac{\sin(2z)}4\biggr)\bigg|_\ii^{-\cpi} \score1\\&
+  =-\frac\cpi2-\biggl(\frac\ii2+\frac{\sin(2\ii)}4\biggr) \score1\\&
+  =-\frac\cpi2+\frac{(\ee^{-2}-4-\ee^2)\ii}8. \score1
 \end{align*}
 
 \textbf{4. （10分） 【解】}
 
-由于 $f(z)=\dfrac{e^{iz}}{z^2-3\pi z+2\pi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\pi,2\pi$, \score3\\
+由于 $f(z)=\dfrac{\ee^{\ii z}}{z^2-3\cpi z+2\cpi^2}$ 在 $|z-3|\le 4$ 内的奇点为 $\cpi,2\cpi$, \score3\\
 因此
 \begin{align*}
-\oint_Cf(z)\diff z&=2\pi i\bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]\bigr] \score2\\
-&=2\pi i\biggl[\frac{e^{iz}}{z-2\pi}\bigg|_{z=\pi}+\frac{e^{iz}}{z-\pi}\bigg|_{z=2\pi}\biggr] \score2\\
-&=2\pi i\biggl[\frac1\pi+\frac1\pi\biggr]=4i. \score3
+  \oint_Cf(z)\d z&
+  =2\cpi\ii\bigl(\Res[f(z),\cpi]+\Res[f(z),2\cpi]\bigr) \score2\\&
+  =2\cpi\ii\biggl(\frac{\ee^{\ii z}}{z-2\cpi}\bigg|_{z=\cpi}+\frac{\ee^{\ii z}}{z-\cpi}\bigg|_{z=2\cpi}\biggr) \score2\\&
+  =2\cpi\ii\biggl(\frac1\cpi+\frac1\cpi\biggr)=4\ii. \score3
 \end{align*}
 
 \textbf{5. （10分） 【解】}
 
-由 $\Delta v=v_{xx}+v_{yy}=6x-2ay+6y-2ax=0$ 可知 $a=3$. \score3\\
+由 $\delt v=v_{xx}+v_{yy}=6x-2ay+6y-2ax=0$ 可知 $a=3$. \score3\\
 由
 \begin{align*}
-f'(z)&=v_y+iv_x \score2\\
-&=(3y^2-3x^2-6xy)+i(3x^2-6xy-3y^2) \score2\\
-&=3(i-1)(x+iy)^2=3(i-1)z^2 \score1
+  f'(z)&
+  =v_y+\ii v_x \score2\\&
+  =(3y^2-3x^2-6xy)+\ii (3x^2-6xy-3y^2) \score2\\&
+  =3(\ii-1)(x+\ii y)^2=3(\ii-1)z^2 \score1
 \end{align*}
-可知 $f(z)=(i-1)z^3+C, C\in\BR$. \Score{(2分, 没有常数项得1分)}
+可知 $f(z)=(\ii-1)z^3+C,\quad C\in\BR$. \Score{(2分, 没有常数项得1分)}
 
 \textbf{其它解法}: 由 $u_x=v_y=3y^2-3x^2-6xy$ 得 $u=3xy^2-x^3-3x^2y+\psi(y)$. \score2\\
 由 $u_y=-v_x=-(3x^2-6xy-3y^2)$ 得 $\psi'(y)=3y^2$, \\
 $\psi(y)=y^3+C$, \Score{(3分, 没有常数项得2分)}
 \begin{align*}
-f(z)&=u+iv \\
-&=3xy^2-x^3-3x^2y+y^3+C+i(x^3+y^3-3xy^2-3x^2y) \\
-&=(i-1)z^3+C, C\in\BR. \score2
+f(z)&=u+\ii v \\&
+=3xy^2-x^3-3x^2y+y^3+C+\ii (x^3+y^3-3xy^2-3x^2y) \\&
+=(\ii-1)z^3+C,\quad C\in\BR. \score2
 \end{align*}
 
 \textbf{6. （10分） 【解】}
@@ -175,33 +202,46 @@ f(z)&=u+iv \\
 
 (1)
 由于
-\[\frac1{1-z}=\sum_{n=0}^\infty z^n, \score1\]
+\[\frac1{1-z}=\sumf0 z^n, \score1\]
 因此
 \begin{align*}
-f(z)&=\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}=-\frac1{1-z}+2\left(\frac1{1-z}\right)' \score2\\
-&=-\sum_{n=0}^\infty z^n+2\left(\sum_{n=0}^\infty z^n\right)'=-\sum_{n=0}^\infty z^n+2\sum_{n=1}^\infty nz^{n-1} \\
-&=-\sum_{n=0}^\infty z^n+2\sum_{n=0}^\infty (n+1)z^n=\sum_{n=0}^\infty(2n+1)z^n. \score2
+  f(z)&
+  =\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}=-\frac1{1-z}+2\biggl(\frac1{1-z}\biggr)' \score2\\&
+  =-\sumf0 z^n+2\biggl(\sumf0 z^n\biggr)'
+  =-\sumf0 z^n+2\sumf1 nz^{n-1} \\&
+  =-\sumf0 z^n+2\sumf0 (n+1)z^n
+  =\sumf0 (2n+1)z^n. \score2
 \end{align*}
 
 (2) 
 由于
-\[\frac1{z-1}=\frac1z\cdot\frac{1}{1-\frac1z}=\sum_{n=1}^\infty z^{-n}, \score1\]
+\[
+  \frac1{z-1}=\frac1z\cdot\frac{1}{1-\frac1z}
+  =\sumf1 z^{-n}, \score1
+\]
 因此
 \begin{align*}
-f(z)&=\frac1{z-1}-2\left(\frac1{z-1}\right)'=\sum_{n=1}^\infty z^{-n}-2\left(\sum_{n=1}^\infty z^{-n}\right)' \score2\\
-&=\sum_{n=1}^\infty z^{-n}-2\sum_{n=1}^\infty (-n)z^{-n-1} \\
-&=\sum_{n=1}^\infty z^{-n}-2\sum_{n=1}^\infty (-n+1)z^{-n}=\sum_{n=1}^\infty (2n-1)z^{-n}. \score2
+  f(z)&=\frac1{z-1}-2\Bigl(\frac1{z-1}\Bigr)'
+  =\sumf1 z^{-n}-2\Bigl(\sumf1 z^{-n}\Bigr)' \score2\\&
+  =\sumf1 z^{-n}-2\sumf1 (-n)z^{-n-1} \\&
+  =\sumf1 z^{-n}-2\sumf1 (-n+1)z^{-n}
+  =\sumf1 (2n-1)z^{-n}. \score2
 \end{align*}
 
 \textbf{7. （10分） 【解】}
 
 由于 $0$ 是分母的二阶零点, 因此它是 $f(z)$ 的二阶极点. \score1\\
-由于 $\pm\pi$ 是分母的一阶零点, 因此它们是 $f(z)$ 的一阶极点. \score1
+由于 $\pm\cpi$ 是分母的一阶零点, 因此它们是 $f(z)$ 的一阶极点. \score1
 \begin{align*}
-\Res[f(z),0]&=\left(\frac{\cos z}{z^2-\pi^2}\right)'\bigg|_{z=0} \score2\\
-&=\frac{-\sin z\cdot(z^2-\pi^2)-\cos z\cdot 2z}{(z^2-\pi^2)^2}\bigg|_{z=0}=0, \score2\\
-\Res[f(z),\pi]&=\frac{\cos z}{z^2(z+\pi)}\bigg|_{z=\pi}=-\frac1{2\pi^3}, \score2\\
-\Res[f(z),-\pi]&=\frac{\cos z}{z^2(z-\pi)}\bigg|_{z=-\pi}=\frac1{2\pi^3}. \score2
+  \Res[f(z),0]&
+  =\Bigl(\frac{\cos z}{z^2-\cpi^2}\Bigr)'\bigg|_{z=0} \score2\\&
+  =\frac{-\sin z\cdot(z^2-\cpi^2)-\cos z\cdot 2z}{(z^2-\cpi^2)^2}\bigg|_{z=0}=0, \score2\\
+  \Res[f(z),\cpi]&
+  =\frac{\cos z}{z^2(z+\cpi)}\bigg|_{z=\cpi}
+  =-\frac1{2\cpi^3}, \score2\\
+  \Res[f(z),-\cpi]&
+  =\frac{\cos z}{z^2(z-\cpi)}\bigg|_{z=-\cpi}
+  =\frac1{2\cpi^3}. \score2
 \end{align*}
 
 \textbf{8. （9分） 【解】}
@@ -210,20 +250,24 @@ f(z)&=\frac1{z-1}-2\left(\frac1{z-1}\right)'=\sum_{n=1}^\infty z^{-n}-2\left(\su
 \[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2, \score3\]
 因此
 \begin{align*}
-s^2Y-2+2Y&=\msl[\sin t]=\frac{1}{s^2+1}, \score2\\
-Y(s)&=\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}=\frac{1}{s^2+1}+\frac{1}{s^2+2}, \score2\\
-y(t)&=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right]
-=\sin t+\frac{\sqrt 2}2\cdot\sin(\sqrt 2 t). \score2
+  s^2Y-2+2Y&
+  =\msl[\sin t]=\frac{1}{s^2+1}, \score2\\
+  Y(s)&
+  =\frac{2}{s^2+2}+\frac{1}{(s^2+1)(s^2+2)}
+  =\frac{1}{s^2+1}+\frac{1}{s^2+2}, \score2\\
+  y(t)&
+  =\msl^{-1}\Bigl[\frac{1}{s^2+1}\Bigr]+\msl^{-1}\Bigl[\frac{1}{s^2+2}\Bigr]
+  =\sin t+\frac{\sqrt 2}2\cdot\sin(\sqrt 2 t). \score2
 \end{align*}
 
 \textbf{9. （3分） 【解】}
 
 例如(每项1分)
 \begin{itemize}
-\item $f'(z)=\cos z,g'(x)=\cos x$. \score1
-\item $\sin z$ 处处可导, $\sin x$ 处处可导. \score1
-\item 麦克劳林展开的系数相同. \score1
-\item $\sin z$ 无界, $\sin x$ 有界. \score1
+  \item $f'(z)=\cos z,g'(x)=\cos x$. \score1
+  \item $\sin z$ 处处可导, $\sin x$ 处处可导. \score1
+  \item 麦克劳林展开的系数相同. \score1
+  \item $\sin z$ 无界, $\sin x$ 有界. \score1
 \end{itemize}
 
 
@@ -243,50 +287,50 @@ y(t)&=\msl^{-1}\left[\frac{1}{s^2+1}\right]+\msl^{-1}\left[\frac{1}{s^2+2}\right
 
 \tigan{一、填空题（每小题3分，共15分）}
 \begin{enumerate}
-  \item $-1+\sqrt 3i$ 的辐角主值是\fillblank{}.
-  \item $i^{2022}-(-i)^{2022}=$\fillblank{}.
-  \item 如果函数 $f(z)=e^{ax}(\cos y-i\sin y)$ 在复平面上处处解析, 则实数 $a=$\fillblank{}.
-  \item 设 $C$ 为正向圆周 $|z|=1$, 则积分 $\displaystyle\oint_C\left(\frac{1+z+z^2}{z^3}\right)\diff z=$\fillblank{}.
-  \item 函数 $e^{jt}$ 的傅里叶变换为\fillblank{}.
+  \item $-1+\sqrt 3\ii$ 的辐角主值是\fillblank{}.
+  \item $\ii^{2022}-(-\ii)^{2022}=$\fillblank{}.
+  \item 如果函数 $f(z)=\ee^{ax}(\cos y-\ii \sin y)$ 在复平面上处处解析, 则实数 $a=$\fillblank{}.
+  \item 设 $C$ 为正向圆周 $|z|=1$, 则积分 $\doint_C\Bigl(\frac{1+z+z^2}{z^3}\Bigr)\d z=$\fillblank{}.
+  \item 函数 $\ee^{\jj t}$ 的傅里叶变换为\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每小题3分，共15分）}
 \begin{enumerate}
   \item 不等式 $1<|z|<2$ 确定是的(~~~~).
   \xx{有界多连通区域}{有界单连通区域}{无界多连通区域}{无界单连通区域}
-  \item 方程 $|z+i|=|z-i|$ 表示的曲线是(~~~~).
+  \item 方程 $|z+\ii|=|z-\ii|$ 表示的曲线是(~~~~).
   \xx{直线}{不是圆的椭圆}{双曲线}{圆周}
   \item 幂级数在其收敛圆周上(~~~~).
   \xx{一定处处绝对收敛}{一定处处条件收敛}{一定有发散的点}{可能处处收敛也可能有发散的点}
-  \item 函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+iy_0$ 处可导的充要条件是(~~~~).
+  \item 函数 $f(z)=u(x,y)+\ii v(x,y)$ 在 $z_0=x_0+\ii y_0$ 处可导的充要条件是(~~~~).
   \xx{$u,v$ 均在 $(x_0,y_0)$ 处连续}{$u,v$ 均在 $(x_0,y_0)$ 处有偏导数}{$u,v$ 均在 $(x_0,y_0)$ 处可微}{$u,v$ 均在 $(x_0,y_0)$ 处可微且满足C-R方程}
-  \item $z=\pi$ 是函数 $\dfrac{\sin z}{(z-\pi)^2}$ 的(~~~~).
+  \item $z=\cpi$ 是函数 $\dfrac{\sin z}{(z-\cpi)^2}$ 的(~~~~).
   \xx{一阶极点}{一阶零点}{可去奇点}{本性奇点}
 \end{enumerate}
 
 \tigan{三、解答题}
 \begin{enumerate}
-\item \textbf{(6分)} 设 $z=\dfrac{2+i}{1-2i}$, 求 $z$ 的模和辐角.
-\item \textbf{(6分)} 求 $\sqrt[3]{-8}$.
-\item \textbf{(7分)} 设 $C$ 是从 $i$ 到 $2+i$ 的直线, 求 $\displaystyle\int_C \overline z\diff z$.
-\item \textbf{(7分)} 求 $\displaystyle\int_{-\pi i}^{\pi i}(e^z+1)\diff z$.
-\item \textbf{(7分)} 求 $\displaystyle\int_0^\pi (z+\cos 2z)\diff z$.
-\item \textbf{(7分)} 设 $C$ 为正向圆周 $|z|=4$, 求 $\displaystyle\oint_C\frac{z-6}{z^2+9}\diff z$.
-\item \textbf{(8分)} 已知 $f(z)=u+iv$ 是解析函数, 其中 $u(x,y)=x^2+axy-y^2, v=2x^2-2y^2+2xy$ 且 $a$ 是实数.
+  \item \textbf{(6分)} 设 $z=\dfrac{2+\ii}{1-2\ii}$, 求 $z$ 的模和辐角.
+  \item \textbf{(6分)} 求 $\sqrt[3]{-8}$.
+  \item \textbf{(7分)} 设 $C$ 是从 $\ii$ 到 $2+\ii$ 的直线, 求 $\dint_C \ov z\d z$.
+  \item \textbf{(7分)} 求 $\dint_{-\cpi\ii}^{\cpi\ii}(\ee^z+1)\d z$.
+  \item \textbf{(7分)} 求 $\dint_0^\cpi (z+\cos 2z)\d z$.
+  \item \textbf{(7分)} 设 $C$ 为正向圆周 $|z|=4$, 求 $\doint_C\frac{z-6}{z^2+9}\d z$.
+  \item \textbf{(8分)} 已知 $f(z)=u+\ii v$ 是解析函数, 其中 $u(x,y)=x^2+axy-y^2, v=2x^2-2y^2+2xy$ 且 $a$ 是实数.
 求参数 $a$ 以及解析函数 $f'(z)$, 其中 $f'(z)$ 需要写成 $z$ 的表达式.
-\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{2}{z(z+2)}$ 在圆环域\\
+  \item \textbf{(10分)} 确定函数 $f(z)=\dfrac{2}{z(z+2)}$ 在圆环域\\
 \indent (1) $0<|z|<2$; \hspace{2em} (2) $2<|z|<+\infty$\\
 内的洛朗级数展开式.
-\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+  \item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
 \[\begin{cases}
-y''(t)+2y'(t)=8e^{2t},&\\
-y(0)=0,\quad y'(0)=2.
+  y''(t)+2y'(t)=8\ee^{2t},\\
+  y(0)=0,\quad y'(0)=2.
 \end{cases}\]
-\item \textbf{(3分)} 复积分的计算方法或公式有哪些? 请给出至少三条.
+  \item \textbf{(3分)} 复积分的计算方法或公式有哪些? 请给出至少三条.
 \end{enumerate}
 
-\newpage
 
+\newpage
 \BiaoTi{2022年合肥工业大学考试参考答案（B）}
 \XueQi{一}
 \XueNian{2022}{2023}
@@ -304,11 +348,11 @@ y(0)=0,\quad y'(0)=2.
 
 \textbf{请将你的答案对应填在横线上：}
 
-\textbf{1.} \fillblank[2.5cm]{$\dfrac{2\pi}3$}, 
+\textbf{1.} \fillblank[2.5cm]{$2\cpi/3$}, 
 \textbf{2.} \fillblank[2.5cm]{$0$}, 
 \textbf{3.} \fillblank[2.5cm]{$-1$}, 
-\textbf{4.} \fillblank[2.5cm]{$2\pi i$}, 
-\textbf{5.} \fillblank[2.5cm]{$2\pi\delta(\omega-1)$}.
+\textbf{4.} \fillblank[2.5cm]{$2\cpi\ii$}, 
+\textbf{5.} \fillblank[2.5cm]{$2\cpi\dirac(\omega-1)$}.
 
 \tigan{二、选择题（每小题3分，共15分）}
 
@@ -324,54 +368,63 @@ y(0)=0,\quad y'(0)=2.
 \tigan{三、解答题}
 
 \textbf{1. （6分） 【解】}
-由于 $\displaystyle z=\dfrac{(2+i)(1+2i)}{5}=i$, \score2\\
+由于 $z=\dfrac{(2+\ii)(1+2\ii)}{5}=\ii$, \score2\\
 因此 $|z|=1$, \score2\\
-$\Arg z=\dfrac\pi2+2k\pi,k\in\BZ$. \Score{(2分, 只有主值得1分)}
+$\Arg z=\dfrac\cpi2+2k\cpi,\quad k\in\BZ$. \Score{(2分, 只有主值得1分)}
+\smallskip
 
 \textbf{2. （6分） 【解】}
-由于 $-8=8e^{\pi i}$,\score2\\
+由于 $-8=8\ee^{\cpi\ii}$,\score2\\
 因此
-\[\sqrt[3]{-8}=2e^{\frac13(\pi i+2k\pi)},\quad k=0,1,2\score2\]
+\[
+  \sqrt[3]{-8}=2\ee^{\frac13(\cpi\ii+2k\cpi)},\quad k=0,1,2\score2
+\]
 即
-\[2e^{\frac{\pi i}3}=1+\sqrt3i,\quad
-2e^{\pi i}=-2,\quad
-2e^{\frac{5\pi i}3}=1-\sqrt3i.\score2\]
+\[
+  2\ee^{\frac{\cpi\ii}3}=1+\sqrt3\ii,\quad
+  2\ee^{\cpi\ii}=-2,\quad
+  2\ee^{\frac{5\cpi\ii}3}=1-\sqrt3\ii.\score2
+\]
 
 \textbf{3. （7分） 【解】}
 
-直线 $C$ 的方程为 $z=t+i,0\le t\le 2$.\score2\\
-因此 $\diff z=\diff t$, $\overline z=t-i$.\score2
+直线 $C$ 的方程为 $z=t+\ii ,0\le t\le 2$.\score2\\
+因此 $\d z=\d t$, $\ov z=t-\ii$.\score2
 \begin{align*}
-\int\overline z\diff z&=\int_0^2(t-i)\diff t \score2\\
-&=\left(\frac{t^2}2-it\right)\bigg|_0^2=2-2i.\score1
+  \int\ov z\d z&
+  =\int_0^2(t-\ii)\d t \score2\\&
+  =\Bigl(\frac{t^2}2-\ii t\Bigr)\Big|_0^2
+  =2-2\ii .\score1
 \end{align*}
 
 \textbf{4. （7分） 【解】}
-由于 $e^z+1$ 处处解析, 因此\score2
+由于 $\ee^z+1$ 处处解析, 因此\score2
 \begin{align*}
-  \int_{-\pi i}^{\pi i}(e^z+1)\diff z
-  &=(e^z+z)\Big|_{-\pi i}^{\pi i}\score2\\
-  &=(e^{\pi i}+\pi i)-(e^{-\pi i}-\pi i)\score2\\
-  &=2\pi i.\score1
+  \int_{-\cpi\ii}^{\cpi\ii}(\ee^z+1)\d z&
+  =(\ee^z+z)\Big|_{-\cpi\ii}^{\cpi\ii}\score2\\&
+  =(\ee^{\cpi\ii}+\cpi\ii)-(\ee^{-\cpi\ii}-\cpi\ii)\score2\\&
+  =2\cpi\ii.\score1
 \end{align*}
 
 \textbf{5. （7分） 【解】}
 由于 $z+\cos 2z$ 处处解析, 因此\score2
 \begin{align*}
-  \int_0^\pi (z+\cos 2z)\diff z
-  &=\left(\frac{z^2}2+\frac{\sin 2z}2\right)\Big|_0^\pi\score2\\
-  &=\frac{\pi^2}2+\frac{\sin 2\pi}2\score2\\
-  &=\frac{\pi^2}2.\score1
+  \int_0^\cpi (z+\cos 2z)\d z
+  &=\Bigl(\frac{z^2}2+\frac{\sin 2z}2\Bigr)\Big|_0^\cpi\score2\\&
+  =\frac{\cpi^2}2+\frac{\sin 2\cpi}2\score2\\&
+  =\frac{\cpi^2}2.\score1
 \end{align*}
 
 \textbf{6. （7分） 【解】}
 
-由于 $f(z)=\dfrac{z-6}{z^2+9}$ 在 $|z|\le 4$ 内的奇点为 $\pm3i$, \score2\\
+由于 $f(z)=\dfrac{z-6}{z^2+9}$ 在 $|z|\le 4$ 内的奇点为 $\pm3\ii$, \score2\\
 因此
 \begin{align*}
-\oint_Cf(z)\diff z&=2\pi i\bigl[\Res[f(z),3i]+\Res[f(z),-3i]\bigr] \score2\\
-&=2\pi i\biggl[\frac{z-6}{z+3i}\bigg|_{z=3i}+\frac{z-6}{z-3i}\bigg|_{z=-3i}\biggr] \score2\\
-&=2\pi i\left(\frac{3i-6}{6i}+\frac{-3i-6}{-6i}\right)=2\pi i \score1
+  \oint_Cf(z)\d z&
+  =2\cpi\ii\bigl(\Res[f(z),3\ii]+\Res[f(z),-3\ii]\bigr) \score2\\&
+  =2\cpi\ii\biggl(\frac{z-6}{z+3\ii}\bigg|_{z=3\ii}+\frac{z-6}{z-3\ii}\bigg|_{z=-3\ii}\biggr) \score2\\&
+  =2\cpi\ii\Bigl(\frac{3\ii-6}{6\ii}+\frac{-3\ii-6}{-6\ii}\Bigr)
+  =2\cpi\ii \score1
 \end{align*}
 
 \textbf{7. （8分） 【解】}
@@ -379,9 +432,10 @@ $\Arg z=\dfrac\pi2+2k\pi,k\in\BZ$. \Score{(2分, 只有主值得1分)}
 由 $u_x=2x+ay=v_y=-4y+2x$ 可知 $a=-4$. \score2\\
 由
 \begin{align*}
-f'(z)&=u_x+iv_x \score2\\
-&=(-4y+2x)+i(4x+2y) \score2\\
-&=(2+4i)z. \score2
+  f'(z)&
+  =u_x+\ii v_x \score2\\&
+  =(-4y+2x)+\ii (4x+2y) \score2\\&
+  =(2+4\ii)z. \score2
 \end{align*}
 
 \textbf{8. （10分） 【解】}
@@ -390,30 +444,39 @@ f'(z)&=u_x+iv_x \score2\\
 
 (1)
 \begin{align*}
-f(z)&=\frac1z-\frac1{z+2} \score2\\
-&=\frac1z-\frac12\cdot\frac1{1+\frac z2}\score1 \\
-&=\frac1z-\frac12\sum_{n=0}^\infty\left(-\frac z2\right)^n \score1 \\
-&=\frac1z+\sum_{n=0}^\infty\frac{(-1)^{n+1}}{2^{n+1}}z^n=\sum_{n=-1}^\infty\frac{(-1)^{n+1}}{2^{n+1}}z^n.\score1
+  f(z)&
+  =\frac1z-\frac1{z+2} \score2\\&
+  =\frac1z-\frac12\cdot\frac1{1+\dfrac z2}\score1 \\&
+  =\frac1z-\frac12\sumf0\Bigl(-\frac z2\Bigr)^n \score1 \\&
+  =\frac1z+\sumf0\frac{(-1)^{n+1}}{2^{n+1}}z^n
+  =\sumf{-1}\frac{(-1)^{n+1}}{2^{n+1}}z^n.\score1
 \end{align*}
 
 (2) 
 \begin{align*}
-f(z)&=\frac1z-\frac1{z+2} \score2\\
-&=\frac1z-\frac1z\cdot\frac1{1+\frac 2z}\score1 \\
-&=\frac1z-\frac1z\sum_{n=0}^\infty\left(-\frac 2z\right)^n \score1 \\
-&=-\sum_{n=1}^\infty\frac{(-2)^n}{z^{n+1}}=-\sum_{n=2}^\infty\frac{(-2)^{n-1}}{z^n}.\score1
+  f(z)&=\frac1z-\frac1{z+2} \score2\\&
+  =\frac1z-\frac1z\cdot\frac1{1+\dfrac 2z}\score1 \\&
+  =\frac1z-\frac1z\sumf0\Bigl(-\frac 2z\Bigr)^n \score1 \\&
+  =-\sumf1\frac{(-2)^n}{z^{n+1}}
+  =-\sum_{n=2}^\infty\frac{(-2)^{n-1}}{z^n}.\score1
 \end{align*}
 
 \textbf{9. （9分） 【解】}
 
 设 $\msl[y]=Y$, 则
-\[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2, \score3\]
+\[
+  \msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-2, \score3
+\]
 因此
-\[s^2Y-2+2sY=\msl[8e^{2t}]=\frac8{s-2}, \score2\]
+\[
+  s^2Y-2+2sY=\msl[8\ee^{2t}]=\frac8{s-2}, \score2
+\]
 \begin{align*}
-Y(s)&=\frac{2s+4}{(s-2)(s^2+2s)}=\frac{2}{s(s-2)}=\frac1{s-2}-\frac1s, \score2\\
-y(t)&=\msl^{-1}\left[\frac{1}{s-2}\right]-\msl^{-1}\left[\frac{1}{s}\right]
-=e^{2t}-1. \score2
+  Y(s)&
+  =\frac{2s+4}{(s-2)(s^2+2s)}=\frac{2}{s(s-2)}=\frac1{s-2}-\frac1s, \score2\\
+  y(t)&
+  =\msl^{-1}\Bigl[\frac{1}{s-2}\Bigr]-\msl^{-1}\Bigl[\frac{1}{s}\Bigr]
+  =\ee^{2t}-1. \score2
 \end{align*}
 
 \textbf{10. （3分） 【解】}
@@ -446,50 +509,49 @@ y(t)&=\msl^{-1}\left[\frac{1}{s-2}\right]-\msl^{-1}\left[\frac{1}{s}\right]
 
 \tigan{一、填空题（每小题3分，共15分）}
 \begin{enumerate}
-\item $2^{-i}$ 的辐角主值是\fillblank{}.
-\item $2023-i$ 绕 $0$ 逆时针旋转 $\dfrac\pi2$ 后得到的复数是\fillblank{}.
-\item 如果函数 $f(z)=\dfrac1{(z+5)\sin z}$ 可以在圆环域 $0<|z|<R$ 内作洛朗展开, 则 $R$ 的最大值为\fillblank{}.
-\item 设 $f(z)=e^z-|z|\cos z$, 则 $\displaystyle\oint_{|z|=1}f(z)\diff z=$\fillblank{}.
-\item 函数 $f(t)=\cos(3t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+  \item $2^{-\ii}$ 的辐角主值是\fillblank{}.
+  \item $2023-\ii$ 绕 $0$ 逆时针旋转 $\dfrac\cpi2$ 后得到的复数是\fillblank{}.
+  \item 如果函数 $f(z)=\dfrac1{(z+5)\sin z}$ 可以在圆环域 $0<|z|<R$ 内作洛朗展开, 则 $R$ 的最大值为\fillblank{}.
+  \item 设 $f(z)=\ee^z-|z|\cos z$, 则 $\doint_{|z|=1}f(z)\d z=$\fillblank{}.
+  \item 函数 $f(t)=\cos(3t)$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每小题3分，共15分）}
 \begin{enumerate}
-\item 函数 $f(z)=\dfrac 1z$ 在下面哪个区域内有原函数?~(~~~~)
-\xx{$0<|z|<1$}{$\Re z>0$}{$|z-1|>2$}{$|z+1|+|z-1|>4$}
-\item 设 $f(z)=\displaystyle\oint_{|\zeta|=4}\dfrac{\sin\zeta-\cos\zeta}{\zeta-z}\diff\zeta$, 则 $f'(\pi)=$(~~~~)
-\xx{$0$}{$2\pi i$}{$-2\pi i$}{$\pi i$}
-\item 幂级数 $\displaystyle\sum_{n=1}^\infty \frac{n!}{n^n}z^n$ 的收敛半径是(~~~~).
-\xx{$0$}{$+\infty$}{$e$}{$1$}
-\item 下面哪个函数不能作为解析函数的虚部?~(~~~~)
-\xx{$2x+3y$}{$2x^2+3y^2$}{$x^2-xy-y^2$}{$e^x\cos y$}
-\item $z=0$ 是函数 $f(z)=\dfrac{(e^z-1)^2z^3}{\sin z^8}$ 的(~~~~).
-\xx{一阶极点}{本性奇点}{可去奇点}{三阶极点}
+  \item 函数 $f(z)=\dfrac 1z$ 在下面哪个区域内有原函数?~(~~~~)
+  \xx{$0<|z|<1$}{$\Re z>0$}{$|z-1|>2$}{$|z+1|+|z-1|>4$}
+  \item 设 $f(z)=\doint_{|\zeta|=4}\dfrac{\sin\zeta-\cos\zeta}{\zeta-z}\d\zeta$, 则 $f'(\cpi)=$(~~~~)
+  \xx{$0$}{$2\cpi\ii$}{$-2\cpi\ii$}{$\cpi\ii$}
+  \item 幂级数 $\sumf1 \frac{n!}{n^n}z^n$ 的收敛半径是(~~~~).
+  \xx{$0$}{$+\infty$}{$\ee$}{$1$}
+  \item 下面哪个函数不能作为解析函数的虚部?~(~~~~)
+  \xx{$2x+3y$}{$2x^2+3y^2$}{$x^2-xy-y^2$}{$\ee^x\cos y$}
+  \item $z=0$ 是函数 $f(z)=\dfrac{(\ee^z-1)^2z^3}{\sin z^8}$ 的(~~~~).
+  \xx{一阶极点}{本性奇点}{可去奇点}{三阶极点}
 \end{enumerate}
 
 
 \tigan{三、解答题}
 \begin{enumerate}
-\item \textbf{(6分)} 计算 $(-1+i)^{10}-(-1-i)^{10}$.
-\item \textbf{(6分)} 解方程 $\cos z=\dfrac{3\sqrt2}4$.
-\item \textbf{(6分)} 设 $C$ 为有向曲线 $z(t)=\sin t+it,0\le t\le \pi$, 求 $\displaystyle\int_C ze^z \diff z$.
-\item \textbf{(10分)} 设 $C$ 为正向圆周 $|z-1|=4$, 求 $\displaystyle\oint_C\frac{\sin z}{z^2+1}\diff z$.
-\item \textbf{(10分)} 假设 $u(x,y)=x^3+ax^2y+bxy^2-3y^3$ 是调和函数，求参数 $a,b$ 以及 $v(x,y)$ 使得 $v(0,0)=0$ 且 $f(z)=u+iv$ 是解析函数.
-\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z}{z^2-3z+2}$ 在圆环域\\[6pt]
-\indent (1) $|z|>2$; \hspace{2em} (2) $0<|z-2|<1$\\
-内的洛朗级数展开式.
-\item \textbf{(10分)} 设 $f(z)=\dfrac{e^z}{(z-\pi i)(z-2\pi i)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=8}f(z)\diff z$.
-\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
-\[\begin{cases}
-y''(t)+4y(t)=3\cos t,&\\
-y(0)=1,\quad y'(0)=2.
-\end{cases}\]
-\item \textbf{(3分)} 复变函数 $f(z)=e^z$ 和实变量函数 $g(x)=e^x$ 的性质有什么相似和不同之处? 试举出三点.
+  \item \textbf{(6分)} 计算 $(-1+\ii)^{10}-(-1-\ii)^{10}$.
+  \item \textbf{(6分)} 解方程 $\cos z=\dfrac{3\sqrt2}4$.
+  \item \textbf{(6分)} 设 $C$ 为有向曲线 $z(t)=\sin t+\ii t,0\le t\le \cpi$, 求 $\dint_C z\ee^z \d z$.
+  \item \textbf{(10分)} 设 $C$ 为正向圆周 $|z-1|=4$, 求 $\doint_C\frac{\sin z}{z^2+1}\d z$.
+  \item \textbf{(10分)} 假设 $u(x,y)=x^3+ax^2y+bxy^2-3y^3$ 是调和函数，求参数 $a,b$ 以及 $v(x,y)$ 使得 $v(0,0)=0$ 且 $f(z)=u+\ii v$ 是解析函数.
+  \item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z}{z^2-3z+2}$ 在圆环域\\[6pt]
+  \indent (1) $|z|>2$; \hspace{2em} (2) $0<|z-2|<1$\\
+  内的洛朗级数展开式.
+  \item \textbf{(10分)} 设 $f(z)=\dfrac{\ee^z}{(z-\cpi\ii)(z-2\cpi\ii)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\doint_{|z|=8}f(z)\d z$.
+  \item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+  \[\begin{cases}
+    y''(t)+4y(t)=3\cos t,\\
+    y(0)=1,\quad y'(0)=2.
+  \end{cases}\]
+  \item \textbf{(3分)} 复变函数 $f(z)=\ee^z$ 和实变量函数 $g(x)=\ee^x$ 的性质有什么相似和不同之处? 试举出三点.
 \end{enumerate}
 
 
 \newpage
-
 \BiaoTi{2023年合肥工业大学考试参考答案（A）}
 \XueQi{一}
 \XueNian{2023}{2024}
@@ -508,10 +570,10 @@ y(0)=1,\quad y'(0)=2.
 \textbf{请将你的答案对应填在横线上：}
 
 \textbf{1.} \fillblank[2cm]{$-\ln 2$}, 
-\textbf{2.} \fillblank[2.5cm]{$1+2023i$}, 
-\textbf{3.} \fillblank[1.7cm]{$\pi$}, 
+\textbf{2.} \fillblank[2.5cm]{$1+2023\ii$}, 
+\textbf{3.} \fillblank[1.7cm]{$\cpi$}, 
 \textbf{4.} \fillblank[1.7cm]{$0$}, 
-\textbf{5.} \fillblank[4.5cm]{$\pi[\delta(\omega+3)+\delta(\omega-3)]$}.
+\textbf{5.} \fillblank[4.5cm]{$\cpi[\dirac(\omega+3)+\dirac(\omega-3)]$}.
 
 \tigan{二、选择题（每小题3分，共15分）}
 
@@ -529,53 +591,53 @@ y(0)=1,\quad y'(0)=2.
 \textbf{1. （6分） 【解】}
 由于
 {\large
-\[-1+i=\sqrt 2 e^{\frac{3\pi i}4}, \score2\]}
+\[-1+\ii =\sqrt 2 \ee^{\frac{3\cpi\ii}4}, \score2\]}
 因此
 {\large
 \begin{align*}
-  (-1+i)^{10}&=32e^{\frac{30\pi i}4}=-32i, \score1\\
-  (-1-i)^{10}&=32e^{-\frac{30\pi i}4}=32i, \score1
+  (-1+\ii)^{10}&=32\ee^{\frac{30\cpi\ii}4}=-32\ii , \score1\\
+  (-1-\ii)^{10}&=32\ee^{-\frac{30\cpi\ii}4}=32\ii , \score1
 \end{align*}}
 故
 {\large
-\[(-1+i)^{10}-(-1-i)^{10}=-64i. \score2\]}
-也可以直接计算 $(-1+i)^2=-2i$ 得到 $(-1+i)^{10}=-32i$.
+\[(-1+\ii)^{10}-(-1-\ii)^{10}=-64\ii. \score2\]}
+也可以直接计算 $(-1+\ii)^2=-2\ii $ 得到 $(-1+\ii)^{10}=-32\ii $.
 
 \textbf{2. （6分） 【解】}
 由
-\[\cos z=\frac{e^{iz}+e^{-iz}}2=\frac{3\sqrt2}4,\score1\]
+\[\cos z=\frac{\ee^{\ii z}+\ee^{-\ii z}}2=\frac{3\sqrt2}4,\score1\]
 整理得到
-\[e^{2iz}-\frac{3\sqrt2}2e^{iz}+1=0,\score2\]
-\[e^{iz}=\frac12\left[\frac{3\sqrt2}2\pm\sqrt{\Bigl(\frac{3\sqrt2}2\Bigr)^2-4}\right]
+\[\ee^{2\ii z}-\frac{3\sqrt2}2\ee^{\ii z}+1=0,\score2\]
+\[\ee^{\ii z}=\frac12\Bigl[\frac{3\sqrt2}2\pm\sqrt{\Bigl(\frac{3\sqrt2}2\Bigr)^2-4}\Bigr]
   =\sqrt2\text{ 或 }\frac{\sqrt2}2,\score2\]
 因此
-\[iz=\Ln\sqrt2=\frac12\ln2+2k\pi i\text{ 或 }\Ln\frac{\sqrt2}2=-\frac12\ln 2+2k\pi i,\]
-\[z=2k\pi\pm\frac{\ln 2}2i, k\in\BZ. \score1\]
+\[iz=\Ln\sqrt2=\frac12\ln2+2k\cpi\ii\text{ 或 }\Ln\frac{\sqrt2}2=-\frac12\ln 2+2k\cpi\ii,\]
+\[z=2k\cpi\pm\frac{\ln 2}2\ii , k\in\BZ. \score1\]
 
 \vspace*{10pt}
 \textbf{其它解法}: 由 $\cos z=\frac{3\sqrt2}4$ 得
 \[\sin z=\sqrt{1-\cos^2z}=\pm\frac{\sqrt2 i}4,\score3\]
 因此
-\[e^{iz}=\cos z+i\sin z=\sqrt2\text{ 或 }\frac{\sqrt2}2.\score2\]
+\[\ee^{\ii z}=\cos z+\ii \sin z=\sqrt2\text{ 或 }\frac{\sqrt2}2.\score2\]
 下同.
 
 \textbf{3. （6分） 【解】}
-由于 $ze^z$ 解析, 且 \score1
-\[\int ze^z\diff z=(z-1)e^z+C, \score2\]
-而曲线 $C$ 的起点是 $0$, 终点是 $\pi i$, 因此
+由于 $z\ee^z$ 解析, 且 \score1
+\[\int z\ee^z\d z=(z-1)\ee^z+C, \score2\]
+而曲线 $C$ 的起点是 $0$, 终点是 $\cpi\ii$, 因此
 \begin{align*}
-\int_C ze^z\diff z&=(z-1)e^z\bigg|_0^{\pi i} \score1\\
-&=(\pi i-1)e^{\pi i}-(-1)
-=2-\pi i. \score2
+\int_C z\ee^z\d z&=(z-1)\ee^z\bigg|_0^{\cpi\ii} \score1\\&
+=(\cpi\ii-1)\ee^{\cpi\ii}-(-1)
+=2-\cpi\ii. \score2
 \end{align*}
 
 \textbf{4. （10分） 【解】}
-由于 $f(z)=\dfrac{\sin z}{(z+i)(z-i)}$ 在 $|z-1|\le 4$ 内的奇点为 $\pm i$, 因此\score2
+由于 $f(z)=\dfrac{\sin z}{(z+\ii)(z-\ii)}$ 在 $|z-1|\le 4$ 内的奇点为 $\pm i$, 因此\score2
 \begin{align*}
-\oint_Cf(z)\diff z&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),-2i]\bigr] \score2\\
-&=2\pi i\biggl[\frac{\sin z}{z+i}\bigg|_{z=i}+\frac{\sin z}{z-i}\bigg|_{z=-i}\biggr] \score2\\
-&=2\pi i\biggl[\frac{\sin i}{2i}+\frac{\sin(-i)}{-2i}\biggr]\score 2\\
-&=2\pi\sin i=\pi i\bigl(e-\frac1e\bigr). \score2
+\oint_Cf(z)\d z&=2\cpi\ii\bigl[\Res[f(z),-\ii ]+\Res[f(z),-2\ii ]\bigr] \score2\\&
+=2\cpi\ii\biggl[\frac{\sin z}{z+\ii}\bigg|_{z=i}+\frac{\sin z}{z-\ii}\bigg|_{z=-\ii}\biggr] \score2\\&
+=2\cpi\ii\biggl[\frac{\sin i}{2\ii}+\frac{\sin(-\ii)}{-2\ii}\biggr]\score 2\\&
+=2\cpi\sin i=\cpi\ii\bigl(e-\frac1e\bigr). \score2
 \end{align*}
 
 \textbf{5. （10分） 【解】}
@@ -583,12 +645,12 @@ y(0)=1,\quad y'(0)=2.
 \[\Delta u=u_{xx}+u_{yy}=6x+2ay+2bx-18y=0\]
 可知 $a=9,b=-3$. 由\score3
 \begin{align*}
-  f'(z)&=u_x-iu_y \score2\\
-  &=(3x^2+18xy-3y^2)-i(9x^2-6xy-9y^2) \score2\\
-  &=(3-9i)(x+iy)^2=(3-9i)z^2 \score1
+  f'(z)&=u_x-\ii u_y \score2\\&
+  =(3x^2+18xy-3y^2)-\ii (9x^2-6xy-9y^2) \score2\\&
+  =(3-9i)(x+\ii y)^2=(3-9i)z^2 \score1
 \end{align*}
 可知
-\[f(z)=(1-3i)z^3+C, C\in\BR. \score1 \]
+\[f(z)=(1-3\ii)z^3+C,\quad C\in\BR. \score1 \]
 由 $v(0,0)=0,f(0)=0$ 可知 $C=0$,
 \[v=-3x^3+3x^2y+9xy^2-y^3.\score1\]
 
@@ -607,30 +669,30 @@ y(0)=1,\quad y'(0)=2.
 (1)
 由于
 \begin{align*}
-  \frac1{z-1}&=\frac1z\cdot\frac1{1-\dfrac1z}=\sum_{n=1}^\infty \frac1{z^n}, \score2\\
-  \frac1{z-2}&=\frac1z\cdot\frac1{1-\dfrac2z}=\sum_{n=1}^\infty \frac{2^{n-1}}{z^n}, \score2
+  \frac1{z-1}&=\frac1z\cdot\frac1{1-\dfrac1z}=\sumf1 \frac1{z^n}, \score2\\
+  \frac1{z-2}&=\frac1z\cdot\frac1{1-\dfrac2z}=\sumf1 \frac{2^{n-1}}{z^n}, \score2
 \end{align*}
 因此
-\[f(z)=\frac2{z-2}-\frac1{z-1}=\sum_{n=1}^\infty \frac{2^n-1}{z^n}. \score2\]
+\[f(z)=\frac2{z-2}-\frac1{z-1}=\sumf1 \frac{2^n-1}{z^n}. \score2\]
 
 (2) 
 由于
-\[\frac1{z-1}=\frac1{1+(z-2)}=\sum_{n=0}^\infty (-1)^n(z-2)^n, \score2\]
+\[\frac1{z-1}=\frac1{1+(z-2)}=\sumf0 (-1)^n(z-2)^n, \score2\]
 因此
 \begin{align*}
   f(z)&=\frac2{z-2}-\frac1{z-1}
-  =\frac2{z-2}-\sum_{n=0}^\infty (-1)^n(z-2)^n. \score2
+  =\frac2{z-2}-\sumf0 (-1)^n(z-2)^n. \score2
 \end{align*}
 
 \textbf{7. （10分） 【解】}
-由于 $\pi i$ 是分母的一阶零点, 因此它是 $f(z)$ 的一阶极点. \score1\\
-由于 $2\pi i$ 是分母的二阶零点, 因此它是 $f(z)$ 的二阶极点. \score1
-\[\Res[f(z),\pi i]=\frac{e^z}{(z-2\pi i)^2}\bigg|_{z=\pi i}=\frac1{\pi^2}, \score2\]
+由于 $\cpi\ii$ 是分母的一阶零点, 因此它是 $f(z)$ 的一阶极点. \score1\\
+由于 $2\cpi\ii$ 是分母的二阶零点, 因此它是 $f(z)$ 的二阶极点. \score1
+\[\Res[f(z),\cpi\ii]=\frac{\ee^z}{(z-2\cpi\ii)^2}\bigg|_{z=\cpi\ii}=\frac1{\cpi^2}, \score2\]
 \begin{align*}
-  \Res[f(z),2\pi i]&=\left(\frac{e^z}{z-\pi i}\right)'\bigg|_{z=2\pi i} \score2\\
-  &=\frac{e^z(z-\pi i-1)}{(z-\pi i)^2}\bigg|_{z=2\pi i}=\frac{1-\pi i}{\pi^2}, \score2
+  \Res[f(z),2\cpi\ii]&=\Bigl(\frac{\ee^z}{z-\cpi\ii}\Bigr)'\bigg|_{z=2\cpi\ii} \score2\\&
+  =\frac{\ee^z(z-\cpi\ii-1)}{(z-\cpi\ii)^2}\bigg|_{z=2\cpi\ii}=\frac{1-\cpi\ii}{\cpi^2}, \score2
 \end{align*}
-\[\oint_{|z|=8}f(z)\diff z=2\pi i\bigl[\Res[f(z),\pi i]+\Res[f(z),2\pi i]\bigr]=2+\frac{4}\pi i. \score2\]
+\[\oint_{|z|=8}f(z)\d z=2\cpi\ii\bigl[\Res[f(z),\cpi\ii]+\Res[f(z),2\cpi\ii]\bigr]=2+\frac{4}\cpi\ii. \score2\]
 
 \textbf{8. （9分） 【解】}
 设 $\msl[y]=Y$, 则
@@ -638,20 +700,20 @@ y(0)=1,\quad y'(0)=2.
 因此
 \[s^2Y-s-2+4Y=3\msl[\cos t]=\frac{3s}{s^2+1}, \score2\]
 \begin{align*}
-Y(s)&=\frac{s+2}{s^2+4}+\frac{3s}{(s^2+1)(s^2+4)}=\frac{s^3+2s^2+4s+2}{(s^2+1)(s^2+4)}\\
-&=\frac{2}{s^2+4}+\frac{s}{s^2+1}, \score2\\
-y(t)&=\msl^{-1}\left[\frac{2}{s^2+4}\right]+\msl^{-1}\left[\frac{s}{s^2+1}\right]
+Y(s)&=\frac{s+2}{s^2+4}+\frac{3s}{(s^2+1)(s^2+4)}=\frac{s^3+2s^2+4s+2}{(s^2+1)(s^2+4)}\\&
+=\frac{2}{s^2+4}+\frac{s}{s^2+1}, \score2\\
+y(t)&=\msl^{-1}\Bigl[\frac{2}{s^2+4}\Bigr]+\msl^{-1}\Bigl[\frac{s}{s^2+1}\Bigr]
 =\sin 2t+\cos t. \score2
 \end{align*}
 
 \textbf{9. （3分） 【解】}
 例如(每项1分)
 \begin{itemize}
-\item $f'(z)=e^z,g'(x)=e^x$. \score1
-\item $e^z$ 处处可导, $e^x$ 处处可导. \score1
-\item 麦克劳林展开的系数相同. \score1
-\item $e^z$ 无界, $e^x$ 无界. \score1
-\item $e^z$ 是周期的, $e^x$ 不是. \score1
+  \item $f'(z)=\ee^z,g'(x)=\ee^x$. \score1
+  \item $\ee^z$ 处处可导, $\ee^x$ 处处可导. \score1
+  \item 麦克劳林展开的系数相同. \score1
+  \item $\ee^z$ 无界, $\ee^x$ 无界. \score1
+  \item $\ee^z$ 是周期的, $\ee^x$ 不是. \score1
 \end{itemize}
 
 
@@ -674,45 +736,45 @@ y(t)&=\msl^{-1}\left[\frac{2}{s^2+4}\right]+\msl^{-1}\left[\frac{s}{s^2+1}\right
 
 \tigan{一、填空题（每小题3分，共15分）}
 \begin{enumerate}
-\item $-1-i$ 的辐角主值是\fillblank{}.
-\item $\dfrac{(1+i)^3}{(1-i)^3}=$\fillblank{}.
-\item 函数 $f(z)=\dfrac1{(z+5)(z-3)}$ 在 $z_0=0$ 处展开的幂级数的收敛半径是\fillblank{}.
-\item 设 $f(z)=\dfrac1{(z+i)^{2023}}$, 则 $\displaystyle\oint_{|z|=2}f(z)\diff z=$\fillblank{}.
-\item 常值函数 $F(\omega)=2$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
+  \item $-1-\ii$ 的辐角主值是\fillblank{}.
+  \item $\dfrac{(1+\ii)^3}{(1-\ii)^3}=$\fillblank{}.
+  \item 函数 $f(z)=\dfrac1{(z+5)(z-3)}$ 在 $z_0=0$ 处展开的幂级数的收敛半径是\fillblank{}.
+  \item 设 $f(z)=\dfrac1{(z+\ii)^{2023}}$, 则 $\doint_{|z|=2}f(z)\d z=$\fillblank{}.
+  \item 常值函数 $F(\omega)=2$ 的傅里叶逆变换为 $f(t)=$\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每小题3分，共15分）}
 \begin{enumerate}
-\item 区域 $0<\Re z<1$ 是(~~~~)
-\xx{有界单连通区域}{无界单连通区域}{有界多连通区域}{无界多连通区域}
-\item 设 $f(z)=\displaystyle\oint_{|\zeta|=2}\dfrac{\zeta^3+3\zeta}{\zeta-z}\diff\zeta$, 则 $f'(i)=$(~~~~)
-\xx{$0$}{$3i$}{$-3i$}{$2i$}
-\item 幂级数 $\displaystyle\sum_{n=1}^\infty \frac{z^n}{(1+i)^n}$ 的收敛半径是(~~~~).
-\xx{$0$}{$+\infty$}{$\sqrt2$}{$\dfrac{\sqrt2}2$}
-\item 下面哪个函数不是调和函数?~(~~~~)
-\xx{$3x-y$}{$x^2-y^2$}{$\ln(x^2+y^2)$}{$\sin x\cos y$}
-\item $z=\pi$ 是函数 $f(z)=\dfrac{z-\pi}{(\sin z)^3}$ 的(~~~~).
-\xx{一阶极点}{本性奇点}{可去奇点}{二阶极点}
+  \item 区域 $0<\Re z<1$ 是(~~~~)
+  \xx{有界单连通区域}{无界单连通区域}{有界多连通区域}{无界多连通区域}
+  \item 设 $f(z)=\doint_{|\zeta|=2}\dfrac{\zeta^3+3\zeta}{\zeta-z}\d\zeta$, 则 $f'(\ii)=$(~~~~)
+  \xx{$0$}{$3\ii$}{$-3\ii$}{$2\ii $}
+  \item 幂级数 $\sumf1 \frac{z^n}{(1+\ii)^n}$ 的收敛半径是(~~~~).
+  \xx{$0$}{$+\infty$}{$\sqrt2$}{$\dfrac{\sqrt2}2$}
+  \item 下面哪个函数不是调和函数?~(~~~~)
+  \xx{$3x-y$}{$x^2-y^2$}{$\ln(x^2+y^2)$}{$\sin x\cos y$}
+  \item $z=\cpi$ 是函数 $f(z)=\dfrac{z-\cpi}{(\sin z)^3}$ 的(~~~~).
+  \xx{一阶极点}{本性奇点}{可去奇点}{二阶极点}
 \end{enumerate}
 
 
 \tigan{三、解答题}
 \begin{enumerate}
-\item \textbf{(6分)} 求 $z=\dfrac{5+i}{2+3i}$ 的模和辐角.
-\item \textbf{(6分)} 求 $\Ln(1+\sqrt3i)$.
-\item \textbf{(6分)} 设 $C$ 为从 $1+i$ 到 $1-i$ 的直线, 求 $\displaystyle\int_C (3z^2+1) \diff z$.
-\item \textbf{(10分)} 设 $C$ 为正向圆周 $|z+1|=4$, 求 $\displaystyle\oint_C\frac{\sin z+2z}{(z+\pi)^2}\diff z$.
-\item \textbf{(10分)} 假设 $v(x,y)=x^2+4xy+ay^2$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)=u+iv$, 使得 $v$ 是 $f(z)$ 的虚部.
-\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z+1}{(z-1)(z-2)}$ 在圆环域\\
+  \item \textbf{(6分)} 求 $z=\dfrac{5+\ii}{2+3\ii}$ 的模和辐角.
+  \item \textbf{(6分)} 求 $\Ln(1+\sqrt3\ii)$.
+  \item \textbf{(6分)} 设 $C$ 为从 $1+\ii$ 到 $1-\ii$ 的直线, 求 $\dint_C (3z^2+1) \d z$.
+  \item \textbf{(10分)} 设 $C$ 为正向圆周 $|z+1|=4$, 求 $\doint_C\frac{\sin z+2z}{(z+\cpi)^2}\d z$.
+  \item \textbf{(10分)} 假设 $v(x,y)=x^2+4xy+ay^2$ 是调和函数，求参数 $a$ 以及解析函数 $f(z)=u+\ii v$, 使得 $v$ 是 $f(z)$ 的虚部.
+  \item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z+1}{(z-1)(z-2)}$ 在圆环域\\
 \indent (1) $|z-1|>1$; \hspace{2em} (2) $0<|z-2|<1$\\
 内的洛朗级数展开式.
-\item \textbf{(10分)} 设 $f(z)=\dfrac{1}{(z+1)(z+2)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\displaystyle\oint_{|z|=3}f(z)\diff z$.
-\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+  \item \textbf{(10分)} 设 $f(z)=\dfrac{1}{(z+1)(z+2)^2}$. 求 $f(z)$ 在有限复平面内的奇点以及 $\doint_{|z|=3}f(z)\d z$.
+  \item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
 \[\begin{cases}
-y''(t)-4y(t)=3e^t,&\\
+y''(t)-4y(t)=3\ee^t,\\
 y(0)=0,\quad y'(0)=1.
 \end{cases}\]
-\item \textbf{(3分)} 谈一谈复变函数在一点处连续、可导与解析之间的联系.
+  \item \textbf{(3分)} 谈一谈复变函数在一点处连续、可导与解析之间的联系.
 \end{enumerate}
 
 
@@ -734,11 +796,11 @@ y(0)=0,\quad y'(0)=1.
 
 \textbf{请将你的答案对应填在横线上：}
 
-\textbf{1.} \fillblank[2.5cm]{$-\dfrac34\pi$}, 
-\textbf{2.} \fillblank[2.5cm]{$-i$}, 
+\textbf{1.} \fillblank[2.5cm]{$-\dfrac34\cpi$}, 
+\textbf{2.} \fillblank[2.5cm]{$-\ii$}, 
 \textbf{3.} \fillblank[2.5cm]{$3$}, 
 \textbf{4.} \fillblank[2.5cm]{$0$}, 
-\textbf{5.} \fillblank[2.5cm]{$2\delta(t)$}.
+\textbf{5.} \fillblank[2.5cm]{$2\dirac(t)$}.
 
 \tigan{二、选择题（每小题3分，共15分）}
 
@@ -755,36 +817,36 @@ y(0)=0,\quad y'(0)=1.
 
 \textbf{1. （6分） 【解】}
 由于
-\[z=\frac{5+i}{2+3i}=\frac{(5+i)(2-3i)}{13}=\frac{13-13i}{13}=1-i,\score2\]
+\[z=\frac{5+\ii}{2+3\ii}=\frac{(5+\ii)(2-3\ii)}{13}=\frac{13-13\ii}{13}=1-\ii ,\score2\]
 因此
-\[|z|=\sqrt2,\quad \Arg z=2k\pi-\frac14\pi,k\in\BZ.\Score{(各2分, 没有$k$减1分)}\]
+\[|z|=\sqrt2,\quad \Arg z=2k\cpi-\frac14\cpi,\quad k\in\BZ.\Score{(各2分, 没有$k$减1分)}\]
 
 \textbf{2. （6分） 【解】}
 由于
 {\large
-\[1+\sqrt 3i=2e^{\frac{\pi i}3},\score2\]
+\[1+\sqrt 3\ii=2\ee^{\frac{\cpi\ii}3},\score2\]
 }
 因此
-\[\Ln(1+\sqrt3i)=\ln 2+\bigl(2k\pi+\frac{\pi}3\bigr)i, k\in\BZ.\Score{(实部虚部各2分, 没有$k$减1分)}\]
+\[\Ln(1+\sqrt3\ii)=\ln 2+\bigl(2k\cpi+\frac{\cpi}3\bigr)\ii, k\in\BZ.\Score{(实部虚部各2分, 没有$k$减1分)}\]
 
 \textbf{3. （6分） 【解】}
 由于 $3z^2+1$ 解析, 且 \score1
-\[\int (3z^2+1)\diff z=z^3+z+C, \score2\]
+\[\int (3z^2+1)\d z=z^3+z+C, \score2\]
 因此
 \begin{align*}
-  \int_C (3z^2+1) \diff z&=(z^3+z)\big|_{1+i}^{1-i} \score1\\
-  &=(1-i)^3-(1+i)^3+(1-i)-(1+i)\\
-  &=-6i. \score2
+  \int_C (3z^2+1) \d z&=(z^3+z)\big|_{1+\ii}^{1-\ii} \score1\\&
+  =(1-\ii)^3-(1+\ii)^3+(1-\ii)-(1+\ii)\\&
+  =-6i. \score2
 \end{align*}
 
 \textbf{4. （10分） 【解】}
-由于 $f(z)=\dfrac{\sin z+2z}{(z+\pi)^2}$ 在 $|z+1|\le 4$ 内的奇点为 $-\pi$, \score2\\
+由于 $f(z)=\dfrac{\sin z+2z}{(z+\cpi)^2}$ 在 $|z+1|\le 4$ 内的奇点为 $-\cpi$, \score2\\
 因此
 \begin{align*}
-  \oint_Cf(z)\diff z&=2\pi i\Res[f(z),-\pi]\score2\\
-  &=2\pi i(\sin z+2z)'\bigg|_{z=-\pi} \score2\\
-  &=2\pi i[\cos(-\pi)+2] \score2\\
-  &=2\pi i. \score2
+  \oint_Cf(z)\d z&=2\cpi\ii\Res[f(z),-\cpi]\score2\\&
+  =2\cpi\ii(\sin z+2z)'\bigg|_{z=-\cpi} \score2\\&
+  =2\cpi\ii[\cos(-\cpi)+2] \score2\\&
+  =2\cpi\ii. \score2
 \end{align*}
 
 \textbf{5. （10分） 【解】}
@@ -793,12 +855,12 @@ y(0)=0,\quad y'(0)=1.
 可知 $a=-1$. \score1\\
 由
 \begin{align*}
-  f'(z)&=v_y+iv_x \score2\\
-  &=(4x-2y)+i(2x+4y) \score2\\
-  &=(4+2i)(x+iy)=(4+2i)z \score1
+  f'(z)&=v_y+\ii v_x \score2\\&
+  =(4x-2y)+\ii (2x+4y) \score2\\&
+  =(4+2\ii)(x+\ii y)=(4+2\ii)z \score1
 \end{align*}
 可知
-\[f(z)=(2+i)z^2+C, C\in\BR. \Score{(2分, 没有 $C$ 减一分)} \]
+\[f(z)=(2+\ii)z^2+C,\quad C\in\BR. \Score{(2分, 没有 $C$ 减一分)} \]
 
 \vspace*{10pt}
 \textbf{其它解法}: 由 $u_x=v_y=4x-2y$ 得
@@ -806,7 +868,7 @@ y(0)=0,\quad y'(0)=1.
 由 $u_y=-v_x=-(2x+4y)$ 得
 \[\psi'(y)=-4y, \score2\]
 \[\psi(y)=-2y^2+C,\quad u=2x^2-2xy-2y^2+C. \score2\]
-\[f(z)=2x^2-2xy-2y^2+C+i(x^2+4xy-y^2)=(2+i)z^2+C. \score1\]
+\[f(z)=2x^2-2xy-2y^2+C+\ii (x^2+4xy-y^2)=(2+\ii)z^2+C. \score1\]
 
 \newpage
 \textbf{6. （10分） 【解】}
@@ -814,36 +876,36 @@ y(0)=0,\quad y'(0)=1.
 
 (1)
 由于
-\[\frac1{z-2}=\frac1{(z-1)-1}=\frac1{z-1}\cdot\frac1{1-\dfrac1{z-1}}=\sum_{n=1}^\infty \frac1{(z-1)^n}, \score3\]
+\[\frac1{z-2}=\frac1{(z-1)-1}=\frac1{z-1}\cdot\frac1{1-\dfrac1{z-1}}=\sumf1 \frac1{(z-1)^n}, \score3\]
 因此
-\[f(z)=\frac3{z-2}-\frac2{z-1}=-\frac2{z-1}+\sum_{n=1}^\infty \frac3{(z-1)^n}. \score2\]
+\[f(z)=\frac3{z-2}-\frac2{z-1}=-\frac2{z-1}+\sumf1 \frac3{(z-1)^n}. \score2\]
 
 (2) 
 由于
-\[\frac1{z-1}=\frac1{1+(z-2)}=\sum_{n=0}^\infty (-1)^n(z-2)^n, \score3\]
+\[\frac1{z-1}=\frac1{1+(z-2)}=\sumf0 (-1)^n(z-2)^n, \score3\]
 因此
-\[f(z)=\frac3{z-2}-\frac2{z-1}=\frac3{z-2}-\sum_{n=0}^\infty 2(-1)^n(z-2)^n. \score2\]
+\[f(z)=\frac3{z-2}-\frac2{z-1}=\frac3{z-2}-\sumf0 2(-1)^n(z-2)^n. \score2\]
 
 \textbf{7. （10分） 【解】}
 由于 $-1$ 是分母的一阶零点, 因此它们是 $f(z)$ 的一阶极点. \score1\\
 由于 $-2$ 是分母的二阶零点, 因此它是 $f(z)$ 的二阶极点. \score1
 \[\Res[f(z),-1]=\frac{1}{(z+2)^2}\bigg|_{z=-1}=1, \score2\]
 \begin{align*}
-  \Res[f(z),-2]&=\left(\frac{1}{z+1}\right)'\bigg|_{z=-2} \score2\\
-  &=-\frac{1}{(z+1)^2}\bigg|_{z=-2}=-1, \score2
+  \Res[f(z),-2]&=\Bigl(\frac{1}{z+1}\Bigr)'\bigg|_{z=-2} \score2\\&
+  =-\frac{1}{(z+1)^2}\bigg|_{z=-2}=-1, \score2
 \end{align*}
-\[\oint_{|z|=3}f(z)\diff z=2\pi i\bigl[\Res[f(z),\pi i]+\Res[f(z),2\pi i]\bigr]=0. \score2\]
+\[\oint_{|z|=3}f(z)\d z=2\cpi\ii\bigl[\Res[f(z),\cpi\ii]+\Res[f(z),2\cpi\ii]\bigr]=0. \score2\]
 
 \textbf{8. （9分） 【解】}
 设 $\msl[y]=Y$, 则
 \[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-1, \score3\]
 因此
-\[s^2Y-1-4Y=3\msl[e^t]=\frac{3}{s-1}, \score2\]
+\[s^2Y-1-4Y=3\msl[\ee^t]=\frac{3}{s-1}, \score2\]
 \begin{align*}
-Y(s)&=\frac{1}{s^2-4}+\frac{3}{(s-1)(s^2-4)}=\frac{s+2}{(s-1)(s^2-4)}\\
-&=\frac{1}{(s-1)(s-2)}=\frac1{s-2}-\frac1{s-1}, \score2\\
-y(t)&=\msl^{-1}\left[\frac{1}{s-2}\right]-\msl^{-1}\left[\frac{1}{s-1}\right]
-=e^{2t}-e^t. \score2
+Y(s)&=\frac{1}{s^2-4}+\frac{3}{(s-1)(s^2-4)}=\frac{s+2}{(s-1)(s^2-4)}\\&
+=\frac{1}{(s-1)(s-2)}=\frac1{s-2}-\frac1{s-1}, \score2\\
+y(t)&=\msl^{-1}\Bigl[\frac{1}{s-2}\Bigr]-\msl^{-1}\Bigl[\frac{1}{s-1}\Bigr]
+=\ee^{2t}-\ee^t. \score2
 \end{align*}
 
 \textbf{9. （3分） 【解】}
@@ -854,6 +916,8 @@ y(t)&=\msl^{-1}\left[\frac{1}{s-2}\right]-\msl^{-1}\left[\frac{1}{s-1}\right]
   \item 可导蕴含连续，但反过来不对。\score1
 \end{itemize}
 
+
+\newpage
 \BiaoTi{2024年合肥工业大学试卷（A）}
 \XueQi{一}
 \XueNian{2024}{2025}
@@ -869,47 +933,49 @@ y(t)&=\msl^{-1}\left[\frac{1}{s-2}\right]-\msl^{-1}\left[\frac{1}{s-1}\right]
 
 \tigan{一、填空题（每小题3分，共15分）}
 \begin{enumerate}
-\item 设 $\omega=\dfrac{-1-\sqrt3i}2$, 则 $\omega+\omega^2=$\fillblank{}.
-\item 对数函数主值 $\ln(-i)=$\fillblank{}.
-\item 设 $C$ 为正向圆周 $|z-1|=1$, 则积分 $\displaystyle\oint_{C}\overline z\diff z=$\fillblank{}.
-\item 函数 $f(z)=\tan z$ 在 $z=\dfrac\pi2$ 处的留数等于\fillblank{}.
-\item 常值函数 $f(t)=-2$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
+  \item 设 $\omega=\dfrac{-1-\sqrt3\ii}2$, 则 $\omega+\omega^2=$\fillblank{}.
+  \item 对数函数主值 $\ln(-\ii)=$\fillblank{}.
+  \item 设 $C$ 为正向圆周 $|z-1|=1$, 则积分 $\doint_{C}\ov z\d z=$\fillblank{}.
+  \item 函数 $f(z)=\tan z$ 在 $z=\dfrac\cpi2$ 处的留数等于\fillblank{}.
+  \item 常值函数 $f(t)=-2$ 的傅里叶变换为 $F(\omega)=$\fillblank{}.
 \end{enumerate}
 
 \tigan{二、选择题（每小题3分，共15分）}
 \begin{enumerate}
-\item 集合 $|z-1|\ge|z-i|$ 是(~~~~).
-\xx{有界单连通区域}{无界单连通闭区域}{有界多连通区域}{无界多连通闭区域}
-\item 下面哪个数不是纯虚数?(~~~~)
-\xx{$\ln(-1)$}{$\cos i$}{$\sin i$}{$\sqrt{-\pi}$ 主值}
-\item 设有向曲线 $C:z(t)=\sin{2t}+2i\cos{t},t\in[0,\pi]$, 则积分 $\displaystyle\int_C z\diff z$ 等于(~~~~)
-\xx{$0$}{$-2i$}{$-4i$}{$4i$}
-\item 函数 $f(z)=\dfrac{z-1}{z^2-z-2}$ 不能在(~~~~)内作洛朗展开.
-\xx{$0<|z|<2$}{$2<|z|<4$}{$0<|z+1|<2$}{$1<|z+1|<3$}
-\item $z=0$ 是函数 $f(z)=\dfrac{z\sin z^3}{\ln(1-z^4)}$ 的(~~~~).
-\xx{一阶极点}{本性奇点}{可去奇点}{四阶极点}
+  \item 集合 $|z-1|\ge|z-\ii |$ 是(~~~~).
+  \xx{有界单连通区域}{无界单连通闭区域}{有界多连通区域}{无界多连通闭区域}
+  \item 下面哪个数不是纯虚数?(~~~~)
+  \xx{$\ln(-1)$}{$\cos i$}{$\sin i$}{$\sqrt{-\cpi}$ 主值}
+  \item 设有向曲线 $C:z(t)=\sin{2t}+2\ii \cos{t},t\in[0,\cpi]$, 则积分 $\dint_C z\d z$ 等于(~~~~)
+  \xx{$0$}{$-2\ii $}{$-4\ii$}{$4\ii$}
+  \item 函数 $f(z)=\dfrac{z-1}{z^2-z-2}$ 不能在(~~~~)内作洛朗展开.
+  \xx{$0<|z|<2$}{$2<|z|<4$}{$0<|z+1|<2$}{$1<|z+1|<3$}
+  \item $z=0$ 是函数 $f(z)=\dfrac{z\sin z^3}{\ln(1-z^4)}$ 的(~~~~).
+  \xx{一阶极点}{本性奇点}{可去奇点}{四阶极点}
 \end{enumerate}
 
 
 \tigan{三、解答题}
 \begin{enumerate}
-\item \textbf{(6分)} 设 $z=\sqrt2(1-i)$. 计算 $z^5$.
-\item \textbf{(6分)} 解方程 $\sin z=\dfrac{2\sqrt3}3$.
-\item \textbf{(6分)} 设 $C$ 为从 $1$ 到 $1+i$ 再到 $i$ 的折线段, 求 $\displaystyle\int_C (\Re z+\Im z) \diff z$.
-\item \textbf{(10分)} 设 $C$ 为正向圆周 $|z|=2$, 求 $\displaystyle\oint_C\frac{\cos z}{z^2(z+i)}\diff z$.
-\item \textbf{(10分)} 假设 $v(x,y)=x^2+xy+ay^2-2y$ 是调和函数，求参数 $a$ 以及 $u(x,y)$ 使得 $f(z)=u+iv$ 是解析函数且满足 $f(0)=0$.
-\item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z-1}{z^2+3z+2}$ 在圆环域\par
+  \item \textbf{(6分)} 设 $z=\sqrt2(1-\ii)$. 计算 $z^5$.
+  \item \textbf{(6分)} 解方程 $\sin z=\dfrac{2\sqrt3}3$.
+  \item \textbf{(6分)} 设 $C$ 为从 $1$ 到 $1+\ii$ 再到 $\ii$ 的折线段, 求 $\dint_C (\Re z+\Im z) \d z$.
+  \item \textbf{(10分)} 设 $C$ 为正向圆周 $|z|=2$, 求 $\doint_C\frac{\cos z}{z^2(z+\ii)}\d z$.
+  \item \textbf{(10分)} 假设 $v(x,y)=x^2+xy+ay^2-2y$ 是调和函数，求参数 $a$ 以及 $u(x,y)$ 使得 $f(z)=u+\ii v$ 是解析函数且满足 $f(0)=0$.
+  \item \textbf{(10分)} 确定函数 $f(z)=\dfrac{z-1}{z^2+3z+2}$ 在圆环域\par
 (1) $0<|z|<1$; \hspace{2em} (2) $|z+1|>1$\par
 内的洛朗级数展开式.
-\item \textbf{(10分)} 设 $f(z)=\dfrac{z^2-\pi^2}{z\sin z}$. 求 $f(z)$ 在有限复平面内的奇点和类型, 求出极点的阶, 并计算 $\displaystyle\oint_{C}f(z)\diff z$, 其中 $C$ 为正向圆周 $|z-6|=4$.
-\item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
+  \item \textbf{(10分)} 设 $f(z)=\dfrac{z^2-\cpi^2}{z\sin z}$. 求 $f(z)$ 在有限复平面内的奇点和类型, 求出极点的阶, 并计算 $\doint_{C}f(z)\d z$, 其中 $C$ 为正向圆周 $|z-6|=4$.
+  \item \textbf{(9分)} 用拉普拉斯变换求解微分方程初值问题
 \[\begin{cases}
-y''(t)-4y(t)=e^{3t},&\\
+y''(t)-4y(t)=\ee^{3t},\\
 y(0)=1,\quad y'(0)=-1.
 \end{cases}\]
-\item \textbf{(3分)} 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试举出三点.
+  \item \textbf{(3分)} 复变函数 $f(z)=\sin z$ 和实变量函数 $g(x)=\sin x$ 的性质有什么相似和不同之处? 试举出三点.
 \end{enumerate}
 
+
+\newpage
 \BiaoTi{2024年合肥工业大学考试参考答案（A）}
 \XueQi{一}
 \XueNian{2024}{2025}
@@ -928,10 +994,10 @@ y(0)=1,\quad y'(0)=-1.
 \textbf{请将你的答案对应填在横线上：}
 
 \textbf{1.} \fillblank[2cm]{$-1$}, 
-\textbf{2.} \fillblank[2.5cm]{$-\frac{\pi i}2$}, 
-\textbf{3.} \fillblank[1.7cm]{$2\pi i$}, 
+\textbf{2.} \fillblank[2.5cm]{$-\frac{\cpi\ii}2$}, 
+\textbf{3.} \fillblank[1.7cm]{$2\cpi\ii$}, 
 \textbf{4.} \fillblank[1.7cm]{$-1$}, 
-\textbf{5.} \fillblank[4.5cm]{$-4\pi\delta(\omega)$}.
+\textbf{5.} \fillblank[4.5cm]{$-4\cpi\dirac(\omega)$}.
 
 \tigan{二、选择题（每小题3分，共15分）}
 
@@ -948,47 +1014,47 @@ y(0)=1,\quad y'(0)=-1.
 
 \textbf{1. （6分） 【解】}
 由于
-\[z=2e^{-\frac{\pi i}4}.\score2\]
+\[z=2\ee^{-\frac{\cpi\ii}4}.\score2\]
 因此
-\[z^5=2^5e^{-\frac{5\pi i}4}=-16\sqrt2+16\sqrt 2 i.\score4\]
+\[z^5=2^5\ee^{-\frac{5\cpi\ii}4}=-16\sqrt2+16\sqrt 2 i.\score4\]
 也可直接计算得到.
 
 \textbf{2. （6分） 【解】}
 由
-\[\sin z=\frac{e^{iz}-e^{-iz}}{2i}=\frac{2\sqrt3}3,\score1\]
+\[\sin z=\frac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}=\frac{2\sqrt3}3,\score1\]
 整理得到
-\[e^{2iz}-\frac{4\sqrt3}3ie^{iz}-1=0,\score2\]
-\[e^{iz}=\frac12\biggl(\frac{4\sqrt3}3i\pm\sqrt{\Bigl(\frac{4\sqrt3}3i\Bigr)^2+4}\biggr)
-  =\sqrt3i\text{ 或 }\frac{\sqrt3}3i,\score2\]
+\[\ee^{2\ii z}-\frac{4\sqrt3}3\ii\ee^{\ii z}-1=0,\score2\]
+\[\ee^{\ii z}=\frac12\biggl(\frac{4\sqrt3}3\ii\pm\sqrt{\Bigl(\frac{4\sqrt3}3\ii\Bigr)^2+4}\biggr)
+  =\sqrt3\ii\text{ 或 }\frac{\sqrt3}3\ii,\score2\]
 因此
-\[iz=\Ln(\sqrt3i)=\frac12\ln3+\frac{\pi i}2+2k\pi i\text{ 或 }\Ln\frac{\sqrt3}3=-\frac12\ln 3+\frac{\pi i}2+2k\pi i,\]
-\[z=2k\pi+\frac{\pi }2\pm\frac{\ln 3}2i, k\in\BZ. \score1\]
+\[iz=\Ln(\sqrt3\ii)=\frac12\ln3+\frac{\cpi\ii}2+2k\cpi\ii\text{ 或 }\Ln\frac{\sqrt3}3=-\frac12\ln 3+\frac{\cpi\ii}2+2k\cpi\ii,\]
+\[z=2k\cpi+\frac{\cpi }2\pm\frac{\ln 3}2\ii , k\in\BZ. \score1\]
 
 另解: 由于
-\[\cos z=\sqrt{1-\sin^2z}=\pm\frac{\sqrt3}3i,\score2\]
+\[\cos z=\sqrt{1-\sin^2z}=\pm\frac{\sqrt3}3\ii,\score2\]
 因此
-\[e^{iz}=\cos z+i\sin z=\sqrt3i\text{\ 或\ }\frac{\sqrt3}3i.\score3\]
+\[\ee^{\ii z}=\cos z+\ii \sin z=\sqrt3\ii\text{\ 或\ }\frac{\sqrt3}3\ii.\score3\]
 其余相同.
 
 \textbf{3. （6分） 【解】}
 分段计算.\score1\\
-第一段 $C_1:z=1+it,t\in[0,1]$, $\diff z=i\diff t$, $\Re z+\Im z=1+t$, 因此\score1
-\[\int_{C_1}(\Re z+\Im z)\diff z=\int_0^1 (1+t)i\diff t=\frac{3}2i.\score1\]
-第二段 $C_2:z=1+i-t,t\in[0,1]$, $\diff z=-\diff t$, $\Re z+\Im z=2-t$, 因此\score1
-\[\int_{C_2}(\Re z+\Im z)\diff z=\int_0^1 \bigl(-(2-t)\bigr)\diff t=-\frac32.\score1\]
+第一段 $C_1:z=1+\ii t,t\in[0,1]$, $\d z=i\d t$, $\Re z+\Im z=1+t$, 因此\score1
+\[\int_{C_1}(\Re z+\Im z)\d z=\int_0^1 (1+t)\ii\d t=\frac{3}2\ii .\score1\]
+第二段 $C_2:z=1+\ii-t,t\in[0,1]$, $\d z=-\d t$, $\Re z+\Im z=2-t$, 因此\score1
+\[\int_{C_2}(\Re z+\Im z)\d z=\int_0^1 \bigl(-(2-t)\bigr)\d t=-\frac32.\score1\]
 因此
-\[\int_C (\Re z+\Im z)\diff z=-\frac32+\frac32 i.\score1\]
+\[\int_C (\Re z+\Im z)\d z=-\frac32+\frac32 i.\score1\]
 
 \textbf{4. （10分） 【解】}
-$f(z)=\dfrac{\cos z}{z^2(z+i)}$ 在 $|z|\le 2$ 内的奇点为 $0,-i$.\score2
-\[\Res[f,0]=\Bigl(\frac{\cos z}{z+i}\Bigr)'\Big|_{z=0}
-=\frac{-(z+i)\sin z-\cos z}{(z+i)^2}\Big|_{z=0}=1,\score2\]
-\[\Res[f,-i]=\frac{\cos z}{z^2}\Big|_{z=-i}=-\cos i.\score2\]
+$f(z)=\dfrac{\cos z}{z^2(z+\ii)}$ 在 $|z|\le 2$ 内的奇点为 $0,-\ii$.\score2
+\[\Res[f,0]=\Bigl(\frac{\cos z}{z+\ii}\Bigr)'\Big|_{z=0}
+=\frac{-(z+\ii)\sin z-\cos z}{(z+\ii)^2}\Big|_{z=0}=1,\score2\]
+\[\Res[f,-\ii ]=\frac{\cos z}{z^2}\Big|_{z=-\ii}=-\cos i.\score2\]
 故
 \begin{align*}
-\oint_Cf(z)\diff z&=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),-i]\bigr] \score2\\
-&=2\pi i(1-\cos i)\score1\\
-&=(2-e-\frac1e)\pi i.\score 1
+\oint_Cf(z)\d z&=2\cpi\ii\bigl[\Res[f(z),0]+\Res[f(z),-\ii ]\bigr] \score2\\&
+=2\cpi\ii(1-\cos i)\score1\\&
+=(2-e-\frac1e)\cpi\ii.\score 1
 \end{align*}
 
 \textbf{5. （10分） 【解】}
@@ -996,12 +1062,12 @@ $f(z)=\dfrac{\cos z}{z^2(z+i)}$ 在 $|z|\le 2$ 内的奇点为 $0,-i$.\score2
 \[\Delta v=v_{xx}+v_{yy}=2+2a=0\]
 可知 $a=-1$. 由\score3
 \begin{align*}
-  f'(z)&=v_y+iv_x \score2\\
-  &=(x-2y-2)+i(2x+y) \score2\\
-  &=(1+2i)(x+yi)-2=(1+2i)z-2 \score1
+  f'(z)&=v_y+\ii v_x \score2\\&
+  =(x-2y-2)+\ii (2x+y) \score2\\&
+  =(1+2\ii)(x+y\ii)-2=(1+2\ii)z-2 \score1
 \end{align*}
 可知
-\[f(z)=\frac{1+2i}2z^2-2z+C, C\in\BR. \score1 \]
+\[f(z)=\frac{1+2\ii}2z^2-2z+C,\quad C\in\BR. \score1 \]
 由 $f(0)=0$ 可知 $C=0$,
 \[u=\frac{x^2-y^2}2-2xy-2x.\score1\]
 
@@ -1020,38 +1086,38 @@ $f(z)=\dfrac{\cos z}{z^2(z+i)}$ 在 $|z|\le 2$ 内的奇点为 $0,-i$.\score2
 (1)
 由于
 \begin{align*}
-  \frac1{z+1}&=\sum_{n=0}^\infty (-1)^nz^n, \score2\\
-  \frac1{z+2}&=\frac12\cdot\frac1{1+\dfrac z2}=\sum_{n=0}^\infty \frac{(-1)^n}{2^{n+1}}z^n, \score2
+  \frac1{z+1}&=\sumf0 (-1)^nz^n, \score2\\
+  \frac1{z+2}&=\frac12\cdot\frac1{1+\dfrac z2}=\sumf0 \frac{(-1)^n}{2^{n+1}}z^n, \score2
 \end{align*}
 因此
-\[f(z)=\frac3{z+2}-\frac2{z+1}=\sum_{n=0}^\infty (-1)^n\Bigl(\frac3{2^{n+1}}-2\Bigr){z^n}. \score2\]
+\[f(z)=\frac3{z+2}-\frac2{z+1}=\sumf0 (-1)^n\Bigl(\frac3{2^{n+1}}-2\Bigr){z^n}. \score2\]
 
 (2) 
 由于
-\[\frac1{z+2}=\frac1{z+1}\cdot\frac1{1+\dfrac 1{z+1}}=\sum_{n=1}^\infty \frac{(-1)^{n+1}}{(z+1)^n}, \score2\]
+\[\frac1{z+2}=\frac1{z+1}\cdot\frac1{1+\dfrac 1{z+1}}=\sumf1 \frac{(-1)^{n+1}}{(z+1)^n}, \score2\]
 因此
 \[f(z)=\frac3{z+2}-\frac2{z+1}
-=3\sum_{n=1}^\infty \frac{(-1)^{n+1}}{(z+1)^n}-\frac2{z+1}=\frac1{z+1}+3\sum_{n=2}^\infty \frac{(-1)^{n+1}}{(z+1)^n}. \score2\]
+=3\sumf1 \frac{(-1)^{n+1}}{(z+1)^n}-\frac2{z+1}=\frac1{z+1}+3\sum_{n=2}^\infty \frac{(-1)^{n+1}}{(z+1)^n}. \score2\]
 
 \textbf{7. （10分） 【解】}
 由于 $0$ 是分母的二阶零点, 因此它是 $f(z)$ 的二阶极点. \score1\\
-由于 $\pm\pi$ 是分子分母的一阶零点, 因此它是 $f(z)$ 的可去极点. \score1\\
-对于整数 $k\neq 0,\pm1$, $k\pi$ 是分母的一阶零点, 因此它是 $f(z)$ 的一阶极点. \score1
-\[\Res[f(z),\pi]=0,\score1\]
-\[\Res[f(z),2\pi]=\frac{z^2-\pi^2}{\sin z+z\cos z}\bigg|_{z=2\pi}=\frac32\pi, \score2\]
-\[\Res[f(z),3\pi]=\frac{z^2-\pi^2}{\sin z+z\cos z}\bigg|_{z=3\pi}=-\frac83\pi, \score2\]
-\[\oint_{|z-6|=4}f(z)\diff z=2\pi i\Bigl[\Res[f(z),\pi]+\Res[f(z),2\pi]+\Res[f(z),3\pi]\Bigr]=-\frac73\pi^2 i. \score2\]
+由于 $\pm\cpi$ 是分子分母的一阶零点, 因此它是 $f(z)$ 的可去极点. \score1\\
+对于整数 $k\neq 0,\pm1$, $k\cpi$ 是分母的一阶零点, 因此它是 $f(z)$ 的一阶极点. \score1
+\[\Res[f(z),\cpi]=0,\score1\]
+\[\Res[f(z),2\cpi]=\frac{z^2-\cpi^2}{\sin z+z\cos z}\bigg|_{z=2\cpi}=\frac32\cpi, \score2\]
+\[\Res[f(z),3\cpi]=\frac{z^2-\cpi^2}{\sin z+z\cos z}\bigg|_{z=3\cpi}=-\frac83\cpi, \score2\]
+\[\oint_{|z-6|=4}f(z)\d z=2\cpi\ii\Bigl[\Res[f(z),\cpi]+\Res[f(z),2\cpi]+\Res[f(z),3\cpi]\Bigr]=-\frac73\cpi^2 i. \score2\]
 
 \textbf{8. （9分） 【解】}
 设 $\msl[y]=Y$, 则
 \[\msl[y'']=s^2Y-sy(0)-y'(0)=s^2Y-s+1, \score3\]
 因此
-\[s^2Y-s+1-4Y=\msl[e^{3t}]=\frac{1}{s-3}, \score2\]
+\[s^2Y-s+1-4Y=\msl[\ee^{3t}]=\frac{1}{s-3}, \score2\]
 \begin{align*}
-Y(s)&=\frac{1}{s^2-4}\Bigl(s-1+\frac{1}{s-3}\Bigr)\\
-&=\frac{s-2}{(s+2)(s-3)}=\frac15\Bigl(\frac1{s-3}+\frac4{s+2}\Bigr), \score2\\
-y(t)&=\msl^{-1}\left[\frac15\Bigl(\frac1{s-3}+\frac4{s+2}\Bigr)\right]
-=\frac15e^{3t}+\frac45e^{-2t}. \score2
+Y(s)&=\frac{1}{s^2-4}\Bigl(s-1+\frac{1}{s-3}\Bigr)\\&
+=\frac{s-2}{(s+2)(s-3)}=\frac15\Bigl(\frac1{s-3}+\frac4{s+2}\Bigr), \score2\\
+y(t)&=\msl^{-1}\Bigl[\frac15\Bigl(\frac1{s-3}+\frac4{s+2}\Bigr)\Bigr]
+=\frac15\ee^{3t}+\frac45\ee^{-2t}. \score2
 \end{align*}
 
 \textbf{9. （3分） 【解】}
