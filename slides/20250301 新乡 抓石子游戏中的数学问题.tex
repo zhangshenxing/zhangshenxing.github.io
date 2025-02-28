@@ -34,7 +34,7 @@
 
 \begin{frame}{抓石子游戏}
   \begin{itemize}
-    \item 幼儿园里有两个小朋友 \alertn{A}lice和\emphn{B}ob, 他们从地上抓起一把石子, 然后从Alice开始, 轮流从石子堆中取走石子.
+    \item \alertn{A}lice和\emphn{B}ob 在玩一个游戏, 他们从地上抓起一把石子, 然后从Alice开始, 轮流从石子堆中取走石子.
     \item 每个人每次可以取走$1\sim3$个石子, 最终谁把最后一颗石子取走, 谁就获得了游戏的胜利.
     \onslide<+->
     \begin{center}
@@ -136,32 +136,38 @@
         \draw[visible on=<8-10>,thick, ->] (A2) to [bend right=30] (A0);
         \draw[visible on=<8-10>,thick, ->] (A2) to [bend right=30] (A1);
         \draw[visible on=<8->,red] (2,0) circle (\r) node {$2$};
-        \draw[visible on=<9->,red] (2,0) node[below=3mm] {$2$};
         \draw[visible on=<9>,red] (2,0) node[below=7mm] {\small 可变成 $0,1$};
-        \begin{scope}[visible on=<10>]
+        \begin{scope}[visible on=<10->]
+          \draw[red] (2,0) node[below=3mm] {$2$};
+          \draw[red] (2,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+        \end{scope}
+        \begin{scope}[visible on=<11->]
+          \draw[blue] (0,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+          \draw[red] (1,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+        \end{scope}
+        \begin{scope}[visible on=<12>]
           \draw[thick, ->] (A3) to [bend right=30] (A0);
           \draw[thick, ->] (A3) to [bend right=30] (A1);
           \draw[thick, ->] (A3) to [bend right=30] (A2);
         \end{scope}
-        \draw[visible on=<10->,red] (3,0) circle (\r) node {$3$} node[below=3mm] {$3$};
-        \begin{scope}[visible on=<11>]
+        \begin{scope}[visible on=<12->]
+          \draw[red] (3,0) circle (\r) node {$3$} node[below=3mm] {$3$};
+          \draw[red] (3,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+        \end{scope}
+        \begin{scope}[visible on=<13>]
           \draw[thick, ->] (A4) to [bend right=30] (A1);
           \draw[thick, ->] (A4) to [bend right=30] (A2);
           \draw[thick, ->] (A4) to [bend right=30] (A3);
         \end{scope}
-        \draw[visible on=<11->,blue] (4,0) circle (\r) node {$4$} node[below=3mm] {$0$};
-        \begin{scope}[visible on=<12->,red]
+        \begin{scope}[visible on=<13->]
+          \draw[blue] (4,0) circle (\r) node {$4$} node[below=3mm] {$0$};
+          \draw[blue] (4,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+        \end{scope}
+        \begin{scope}[visible on=<14->,red]
           \draw (5,0) circle (\r) node {$5$} node[below=3mm] {$1$};
           \draw (6,0) circle (\r) node {$6$} node[below=3mm] {$2$};
           \draw (7,0) circle (\r) node {$7$} node[below=3mm] {$3$};
           \draw[blue] (8,0) circle (\r) node {$8$} node[below=3mm] {$0$};
-        \end{scope}
-        \begin{scope}[visible on=<13->,red]
-          \draw[blue] (0,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
-          \draw (1,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
-          \draw (2,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
-          \draw (3,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
-          \draw[blue] (4,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
           \draw (5,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
           \draw (6,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
           \draw (7,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
@@ -191,7 +197,7 @@
         \draw[blue] (8,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
       \end{tikzpicture}}
     \end{center}
-    \onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->
+    \onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->
     可以变成 $0\sim m-1$ 级必胜点的点, 叫做 $m$ 级必胜点.
   \end{itemize}
 \end{frame}
