@@ -1,46 +1,59 @@
-\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
-\usepackage[colorlinks]{hyperref}
-\usepackage{amssymb, enumitem, fontawesome, xcolor}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv_style}
+\RequirePackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\RequirePackage[colorlinks]{hyperref}
+\RequirePackage{amssymb, enumitem, fontawesome, xcolor}
 \newcommand{\mainColor}{blue!90!black}
 \newcommand{\urlColor}{magenta}
 \hypersetup{urlcolor=\urlColor}
 \setlength{\parindent}{0em}
-\newlist{cvlist}{itemize}{3}
-\setlist[cvlist,1]{label=$\diamond$}
-\newlist{cvstage}{itemize}{3}
-\setlist[cvstage,1]{label=$\blacktriangleright$}
-\setlist[cvstage,2]{label=$\bullet$, topsep=-1ex, itemsep=0ex, parsep=0ex, leftmargin=1em}
-% Use this if you like enumerate
-\newlist{cvliste}{enumerate}{3}
-\setlist[cvliste,1]{label=\arabic*.}
-\newlist{cvstagee}{enumerate}{3}
-\setlist[cvstagee,1]{label=\arabic*.}
-\setlist[cvstagee,2]{label=\roman*)}
+
+\newif\ifcvstyle@enum\cvstyle@enumfalse
+\DeclareOption{enumerate}{\cvstyle@enumtrue}
+\ProcessOptions\relax
+\ifcvstyle@enum
+  % Use this if you like enumerate
+  \newlist{cvlist}{enumerate}{3}
+  \setlist[cvlist,1]{label=\arabic*.}
+  \newlist{cvstage}{enumerate}{3}
+  \setlist[cvstage,1]{label=\arabic*.}
+  \setlist[cvstage,2]{label=\roman*)}
+\else
+  \newlist{cvlist}{itemize}{3}
+  \setlist[cvlist,1]{label=$\diamond$}
+  \newlist{cvstage}{itemize}{3}
+  \setlist[cvstage,1]{label=$\blacktriangleright$}
+  \setlist[cvstage,2]{label=$\bullet$, topsep=-1ex, itemsep=0ex, parsep=0ex, leftmargin=1em}
+\fi
 \renewcommand{\hrulefill}{\leavevmode\leaders\hrule height 0.2ex\hfill\kern\z@}
 
+\global\let\@author\@empty
+\newcommand{\address}[1]{\gdef\@address{#1}}
+\newcommand{\email}[1]{\gdef\@email{#1}}
+\newcommand{\website}[1]{\gdef\@website{#1}}
+\renewcommand{\maketitle}{\cvtitle{\@author}{\@address}{\@email}{\@website}}
 \newcommand{\cvtitle}[4]{
-  \begin{minipage}[c]{\textwidth} \centering
-  {\bfseries\huge\textcolor{\mainColor}{#1}}
-  \par\vspace{2ex}#2\par%
-  \ifx&#3&%
-    \ifx&#4&\else{\textcolor{\urlColor}{\faGlobe~\url{#4}}}\fi%
-  \else%
-    \ifx&#4&\textcolor{\urlColor}{\faEnvelopeO~\url{#3}}%
+  \begin{center}
+    {\bfseries\huge\textcolor{\mainColor}{#1}}
+    \par\vspace{2ex}#2\par%
+    \ifx&#3&%
+      \ifx&#4&\else{\textcolor{\urlColor}{\faGlobe~\url{#4}}}\fi%
     \else%
-      \makebox[0.47\textwidth][r]{\textcolor{\urlColor}{\faEnvelope~\href{mailto:#3}{\texttt{#3}}}}~\textbullet~%
-      \makebox[0.47\textwidth][l]{\textcolor{\urlColor}{\faGlobe~\url{#4}}}%
+      \ifx&#4&\textcolor{\urlColor}{\faEnvelopeO~\url{#3}}%
+      \else%
+        \makebox[0.48\textwidth][r]{\textcolor{\urlColor}{\faEnvelope~\href{mailto:#3}{\texttt{#3}}}}~\textbullet~%
+        \makebox[0.48\textwidth][l]{\textcolor{\urlColor}{\faGlobe~\url{#4}}}%
+      \fi%
     \fi%
-  \fi%
-  \vspace{2ex}%
-  \end{minipage}
+  \end{center}
 }
-\newcommand{\cvsection}[1]{{%
+\renewcommand{\section}[1]{{%
   \vspace{2ex}%
   \raggedright\strut{\Large\bfseries\textcolor{\mainColor}{#1}}\par%
   \raisebox{0.5ex}{\textcolor{\mainColor}{\rule{0.25\columnwidth}{1.2ex}}}%
   \raisebox{1.5ex}{\textcolor{\mainColor}{\rule{0.7\columnwidth}{0.2ex}}}\par\nobreak%
 }}
-\newcommand{\cvsubsection}[1]{{%
+\renewcommand{\subsection}[1]{{%
   \vspace{2ex}%
   \raggedright\strut{\large\bfseries\textcolor{\mainColor}{#1}}\hspace{2pt}%
   \textcolor{\mainColor}{\hrulefill}\hspace{0.5\columnwidth}~\par\nobreak%

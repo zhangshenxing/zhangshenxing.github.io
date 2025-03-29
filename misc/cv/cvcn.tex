@@ -1,15 +1,16 @@
 \documentclass[11pt]{article}
 \usepackage{cv_style}
-\usepackage{ctex}
+\usepackage{multicol}\usepackage{ctex}
 
 \begin{document}
-\cvtitle{张神星}
-	{安徽合肥丹霞路485号合肥工业大学翡翠科教楼B1810}
-	{zhangshenxing@hfut.edu.cn}
-	{https://zhangshenxing.gitee.io/}
 
+\author{张神星}
+\address{安徽合肥丹霞路485号合肥工业大学翡翠科教楼B1810}
+\email{zhangshenxing@hfut.edu.cn}
+\website{https://zhangshenxing.github.io/}
+\maketitle
 
-\cvsection{教育经历}
+\section{教育经历}
 \begin{cvstage}
 	\editem{数学博士}
 		{2015年11月}
@@ -26,7 +27,7 @@
 \end{cvstage}
 
 
-\cvsection{学术经历}
+\section{学术经历}
 \begin{cvstage}
 	\editem{副研究员}
 		{2021年12月 -- 至今}
@@ -42,10 +43,14 @@
 		{合作导师: 田野}
 \end{cvstage}
 
-\newpage
-\cvsection{出版物与预印本}
-\cvsubsection{论文}
+
+\section{出版物与预印本}
+\subsection{论文}
 \begin{cvlist}
+	\item \textbf{S. Zhang}.
+	The generating fields of twisted Kloosterman sums.
+	{\em Int. J. Number Theory}, (2025), to appear.
+	
 	\item \textbf{S. Zhang}.
 	On the linearity of the periods of subtraction games.
 	{\em Theor. Comput. Sci.}, 985 (2024).
@@ -85,27 +90,26 @@
 	\item Y. Ouyang, \textbf{S. Zhang}.
 	On non-congruent numbers with 1 modulo 4 prime factors.
 	{\em Sci. China Math.} 57 (2014), no. 3, 649--658.
-	\end{cvlist}
+\end{cvlist}
 
 
-	\cvsubsection{预印本}
-	\begin{cvlist}
+\subsection{预印本}
+\begin{cvlist}
+	\item \textbf{S. Zhang}.
+	On the Diophantine equation $my^2=x^3-k^3$.
+	(2025), submitted.
+
 	\item Z. Wang, \textbf{S. Zhang}.
 	On the quadratic twist of elliptic curves with full $2$-torsion.
 	(2022), submitted.
-
-	\item \textbf{S. Zhang}.
-	The generating fields of twisted Kloosterman sums.
-	(2021), submitted.
 
 	\item \textbf{S. Zhang}.
 	The virtual period of the degree sequences of the exponential sums.
 	{\em Arxiv:} 2010.08342, preprint.
 \end{cvlist}
 
-\newpage
-\cvsection{基金和奖励}
-\cvsubsection{主持基金}
+\section{基金和奖励}
+\subsection{主持基金}
 \begin{cvlist}
 	\item 合肥工业大学学术新人提升B计划(JZ2023HGTB0217)
 	\item 国家自然科学基金委青年科学基金(12001510)
@@ -113,15 +117,16 @@
 \end{cvlist}
 
 
-\cvsubsection{参与基金}
+\subsection{参与基金}
 \begin{cvlist}
+	\item 基础加强计划重点基础研究项目
 	\item 中国科学技术大学青年创新基金(WK0010000061)
 	\item 国家自然科学基金委面上项目(12271335, 11571328, 11171317)
 	\item 国家自然科学基金委青年科学基金(11601255, 11201445)
 \end{cvlist}
 
 
-\cvsubsection{奖项}
+\subsection{奖项}
 \begin{cvlist}
 	\item 2023年合肥工业大学青年教师教学基本功比赛二等奖
 	\item 2013年研究生国家奖学金
@@ -130,14 +135,13 @@
 \end{cvlist}
 
 
-\cvsection{教学经历}
-\cvsubsection{教学}
+\section{教学经历}
+\subsection{教学}
 \begin{cvstage}
 	\item 合肥工业大学\begin{cvstage}
-		\csitem{1400261B 复变函数与积分变换}{2023年秋}
-		\csitem{034Y01 数学（下）}{2023年春}
-		\csitem{1400261B 复变函数与积分变换}{2022年秋}
-		\csitem{034Y01 数学（下）}{2022年春}
+		\csitem{1400261B 复变函数与积分变换}{2022-2024年秋}
+		\csitem{1400071B 线性代数}{2024年秋}
+		\csitem{034Y01 数学（下）}{2022-2023年春}
 	\end{cvstage}
 	\item 中国科学技术大学\begin{cvstage}
 		\csitem{001548 复变函数B}{2020年秋}
@@ -146,12 +150,10 @@
 \end{cvstage}
 
 
-\cvsubsection{助教}
+\subsection{助教}
 \begin{cvstage}
 	\item 清华大学\begin{cvstage}
-		\csitem{丘成桐清华数学夏令营, 线性代数}{2023年夏}
-		\csitem{丘成桐清华数学夏令营, 线性代数}{2022年夏}
-		\csitem{丘成桐清华数学夏令营, 线性代数}{2021年夏}
+		\csitem{丘成桐清华数学夏令营, 线性代数}{2021-2023年夏}
 	\end{cvstage}
 	\item 合肥工业大学\begin{cvstage}
 		\csitem{概率论与数理统计}{2021年秋}
@@ -169,16 +171,20 @@
 	\end{cvstage}
 \end{cvstage}
 
-\cvsubsection{教学论文}
+\subsection{教学论文}
 \begin{cvlist}
+	\item 袁志杰, \textbf{张神星}.
+	复变函数在不同圆环域内洛朗展开的探究[J].
+	{\em 南阳师范学院学报}, 2024, 23(3): 38--41.
 	\item 欧阳毅, \textbf{张神星}.
 	善用初等变换展开线性代数理论教学[J].
 	{\em 大学数学}, 2023, 39(5): 68--75.
 \end{cvlist}
 
-\cvsubsection{指导学生}
+\subsection{指导学生}
 \begin{cvstage}
 	\item 本科毕业论文\begin{cvstage}
+		\csitem{邱修煜, 椭圆曲线的同源与密码学应用的研究}{2024}
 		\csitem{刘旭鸿, 二次域类群的结构以及算术应用}{2022}
 	\end{cvstage}
 	\item 大学生创新创业训练计划\begin{cvstage}
@@ -187,26 +193,33 @@
 \end{cvstage}
 
 
-\cvsection{期刊审稿人}
-\begin{cvlist}
-	\item {\em International Journal of Number theory}
-	\item {\em Algebra Colloquium}
-	\item {\em The Ramanujan Journal}
-	\item {\em Bulletin of the Belgian Mathematical Society – Simon Stevin}
-	\item {\em 大学数学}
-\end{cvlist}
+\section{期刊审稿人}
+\begin{multicols}{2}
+	\begin{cvlist}
+		\item {\em International Journal of Number theory}
+		\item {\em Algebra Colloquium}
+		\item {\em The Ramanujan Journal}
+		\item {\em Finite Fields and Their Applications}
+		\item {\em Pure and Applied Mathematics Quarterly}
+		\item {\em Bulletin of the Belgian Mathematical Society – Simon Stevin}
+		\item {\em 中国科学 数学}
+		\item {\em 大学数学}
+	\end{cvlist}
+\end{multicols}
 
 
-\cvsection{研究方向}
-\begin{cvlist}
-	\item 椭圆曲线与非同余数问题
-	\item 椭圆曲线与 Heegner 点
-	\item 指数和
-	\item 类群与岩泽理论
-	\item $p$ 进伽罗瓦表示与 $p$ 进霍奇理论
-\end{cvlist}
+\section{研究方向}
+\begin{multicols}{2}
+	\begin{cvlist}
+		\item 椭圆曲线与非同余数问题
+		\item 椭圆曲线与 Heegner 点
+		\item 指数和
+		\item 类群与岩泽理论
+		% \item $p$ 进伽罗瓦表示与 $p$ 进霍奇理论
+	\end{cvlist}
+\end{multicols}
 
 
-\medskip\emph{最后更新: 2023年12月26日}
+\medskip\emph{最后更新: 2025年3月29日}
 
 \end{document}
