@@ -1275,7 +1275,10 @@
 \fancyhf{}
 
 
-\fancyfoot[c]{\color{main}\small\thepage}
+\fancyfoot[c]{
+  {\tiny 本讲义是免费资源. 若您为此付款过, 请向收款方追回款项. 免费下载地址:\color{blue}
+  \href{https://zhangshenxing.github.io/teaching/代数数论/代数数论讲义.pdf}{https://zhangshenxing.github.io/teaching/代数数论/代数数论讲义.pdf}}\par\color{main}\small\thepage
+}
 \if@twoside
   \fancyhead[EL]{\color{main}\cnormal\leftmark}
   \fancyhead[OR]{\color{main}\cnormal\rightmark}
