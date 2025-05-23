@@ -1,0 +1,660 @@
+\documentclass[aspectratio=169,handout]{ctexbeamer}
+\input{../latex/cn_talk}
+\title{含非同余数因子的非同余数}
+\invitedby[nju]{南京大学}
+\date{2025年6月15日}
+
+\DeclareMathOperator*{\SUB}{{\text{\mdseries{\upshape\textsc{sub}}}}}
+\renewcommand\ul[1]{{\color{main}\underline{#1}}}
+\newcommand{\emphov}[2]{\emph{$\overset{\text{\clap{#2}}}{\text{#1}}$}}
+\usepackage{makecell}
+\usepackage{tikz}
+\usetikzlibrary{
+  hobby,
+  intersections,
+  quotes,
+  shapes.arrows,
+  arrows.meta,
+  bending,
+  positioning,
+  shapes.geometric,
+  overlay-beamer-styles,
+  calc,
+  angles,
+  decorations.markings,
+  decorations.pathreplacing,
+  backgrounds,
+  chains
+}
+
+\begin{document}
+
+
+\section{问题背景}
+
+\begin{frame}{同余数}
+  \begin{itemize}
+    \item 同余数问题是一个古老的数学问题.
+    \item 如果正整数 $n$ 可以表达为一个有理边长直角三角形的面积, 则称 $n$ 是\emphov{同余数}{congruent number}.
+  \end{itemize}
+  \onslide<+->
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{scope}[scale=.1]
+        \draw (0,0)--(40,0)--(0,9)--cycle;
+        \draw (7,4) node[color=main] {$\bf 5$};
+        \draw (20,0) node[below] {$\frac{40}6$};
+        \draw (0,4.5) node[left] {$\frac{9}6$};
+        \draw (20,4.5) node[above] {$\frac{41}6$};
+      \end{scope}
+      \begin{scope}[scale=.8,shift={(6,0)}]
+        \draw (0,0)--(4,0)--(0,3)--cycle;
+        \draw (1,1) node[color=main] {$\bf 6$};
+        \draw (2,0) node[below] {$4$};
+        \draw (0,1.5) node[left] {$3$};
+        \draw (2,1.5) node[above right] {$5$};
+      \end{scope}
+      \begin{scope}[scale=.15,shift={(60,0)}]
+        \draw (0,0)--(28.8,0)--(0,17.5)--cycle;
+        \draw (7,7) node[color=main] {$\bf 7$};
+        \draw (14.4,0) node[below] {$\frac{288}{60}$};
+        \draw (0,8.75) node[left] {$\frac{175}{60}$};
+        \draw (14.4,8.75) node[above right] {$\frac{337}{60}$};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+  \onslide<+->
+  \begin{itemize}
+    \item 显然我们只需要考虑无平方因子正整数.
+    \item 本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
+    \item 通过变量替换 $x=\frac{na}b,y=\frac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+    \[
+      E_n:y^2=x^3-n^2x.
+    \]
+    \item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{同余数}
+  \begin{itemize}
+    \item 显然我们只需要考虑无平方因子正整数.
+    \item 本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
+    \item 通过变量替换 $x=\frac{na}b,y=\frac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+    \[
+      E_n:y^2=x^3-n^2x.
+    \]
+    \item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
+  \end{itemize}
+\end{frame}
+
+
+% \begin{frame}{必胜条件}
+%   \begin{itemize}
+%     \item 可以看出, 只要A能将游戏状态变成\emph{后手必胜}, 那么原来的游戏就是\alert{先手必胜}.
+%     \item 如果无论 A 怎么操作, 都不能将游戏变成先手必胜, 那么这个游戏就是\emph{后手必胜}的.
+%     \item 如果初始有 $n$ 个石子, 令
+%     \[
+%       \CP(n)=\begin{cases}
+%         \color{red}1,&\color{red}\text{先手必胜};\\
+%         \color{blue}0,&\color{blue}\text{后手必胜}.
+%       \end{cases}
+%     \]
+%     \item 那么
+%     \[
+%       \CP(n)=1-\CP(n-1)\CP(n-2)\CP(n-3)
+%       =\begin{cases}
+%         \color{red}1,&\color{red}4\nmid n;\\
+%         \color{blue}0,&\color{blue}4\mid n.
+%       \end{cases}
+%     \]
+%     \item 这个序列($n\ge 0$)形如:
+%     \[
+%       {\color{red}0\color{blue}111\ 
+%       \color{red}0\color{blue}111\ 
+%       \color{red}0\color{blue}111\ }\cdots
+%     \]
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{必胜点}
+%   \begin{itemize}
+%     \item 我们将这个游戏记为 $\SUB(S)$, 其中 $S\subset \BN$ 表示每次可以取的石头个数.
+%     \item 由于有可能最后剩下的石子数量比 $S$ 中的最小元还要小, 所以我们将游戏规则改成\alert{谁不能取谁算输}更为合理.
+%     \onslide<+->
+%     \begin{center}
+%       \mode<beamer>{
+%       \begin{tikzpicture}
+%         \def\r{.3}
+%         \foreach \i in {0,1,...,5}
+%         \coordinate[minimum height=1cm] (A\i) at (\i,\r);
+%         \draw[visible on=<3->] (0,0) circle (\r) node {$0$};
+%         \begin{scope}[visible on=<4->]
+%           \draw[blue] (0,0) circle (\r) node {$0$}
+%           node[below=3mm] {$0$};
+%         \end{scope}
+%         \draw[visible on=<5->] (1,0) circle (\r) node {$1$};
+%         \draw[visible on=<6>,thick, ->] (A1) to [bend right=30] (A0);
+%         \draw[visible on=<6->,red] (1,0) circle (\r) node {$1$}
+%         node[below=3mm] {$1$};
+%         \draw[visible on=<7->] (2,0) circle (\r) node {$2$};
+%         \draw[visible on=<8-10>,thick, ->] (A2) to [bend right=30] (A0);
+%         \draw[visible on=<8-10>,thick, ->] (A2) to [bend right=30] (A1);
+%         \draw[visible on=<8->,red] (2,0) circle (\r) node {$2$};
+%         \draw[visible on=<9>,red] (2,0) node[below=7mm] {\small 可变成 $0,1$};
+%         \begin{scope}[visible on=<10->]
+%           \draw[red] (2,0) node[below=3mm] {$2$};
+%           \draw[red] (2,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \end{scope}
+%         \begin{scope}[visible on=<11->]
+%           \draw[blue] (0,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%           \draw[red] (1,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \end{scope}
+%         \begin{scope}[visible on=<12>]
+%           \draw[thick, ->] (A3) to [bend right=30] (A0);
+%           \draw[thick, ->] (A3) to [bend right=30] (A1);
+%           \draw[thick, ->] (A3) to [bend right=30] (A2);
+%         \end{scope}
+%         \begin{scope}[visible on=<12->]
+%           \draw[red] (3,0) circle (\r) node {$3$} node[below=3mm] {$3$};
+%           \draw[red] (3,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \end{scope}
+%         \begin{scope}[visible on=<13>]
+%           \draw[thick, ->] (A4) to [bend right=30] (A1);
+%           \draw[thick, ->] (A4) to [bend right=30] (A2);
+%           \draw[thick, ->] (A4) to [bend right=30] (A3);
+%         \end{scope}
+%         \begin{scope}[visible on=<13->]
+%           \draw[blue] (4,0) circle (\r) node {$4$} node[below=3mm] {$0$};
+%           \draw[blue] (4,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \end{scope}
+%         \begin{scope}[visible on=<14->,red]
+%           \draw (5,0) circle (\r) node {$5$} node[below=3mm] {$1$};
+%           \draw (6,0) circle (\r) node {$6$} node[below=3mm] {$2$};
+%           \draw (7,0) circle (\r) node {$7$} node[below=3mm] {$3$};
+%           \draw[blue] (8,0) circle (\r) node {$8$} node[below=3mm] {$0$};
+%           \draw (5,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%           \draw (6,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%           \draw (7,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%           \draw[blue] (8,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \end{scope}
+%       \end{tikzpicture}}
+%       \mode<handout>{
+%       \begin{tikzpicture}[red]
+%         \def\r{.3}
+%         \draw[blue] (0,0) circle (\r) node {$0$} node[below=3mm] {$0$};
+%         \draw (1,0) circle (\r) node {$1$} node[below=3mm] {$1$};
+%         \draw (2,0) circle (\r) node {$2$} node[below=3mm] {$2$};
+%         \draw (3,0) circle (\r) node {$3$} node[below=3mm] {$3$};
+%         \draw[blue] (4,0) circle (\r) node {$4$} node[below=3mm] {$0$};
+%         \draw (5,0) circle (\r) node {$5$} node[below=3mm] {$1$};
+%         \draw (6,0) circle (\r) node {$6$} node[below=3mm] {$2$};
+%         \draw (7,0) circle (\r) node {$7$} node[below=3mm] {$3$};
+%         \draw[blue] (8,0) circle (\r) node {$8$} node[below=3mm] {$0$};
+%         \draw[blue] (0,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (1,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (2,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (3,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw[blue] (4,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (5,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (6,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw (7,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%         \draw[blue] (8,0) node[below=7mm,align=center] {\small 级\\必\\胜\\点};
+%       \end{tikzpicture}}
+%     \end{center}
+%     \onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->\onslide<+->
+%     可以变成 $0\sim m-1$ 级必胜点的点, 叫做 $m$ 级必胜点.
+%   \end{itemize}
+% \end{frame}
+
+
+
+% \begin{frame}{Sprague-Grundy 序列}
+%   \begin{itemize}
+%     \item 如果 $n$ 个石子情形是 $m$ 级必胜点, 定义 $\CG_S(n)=m$,
+%     \onslide<+->
+%     并称该序列为 \emph{Sprague-Grundy 序列} (或 Nim 序列).
+%     \onslide<+->
+%     那么
+%     \[
+%       \CG_S(n)=\mex\set{\CG_S(n-s): s\in S},
+%     \]
+%     $\mex$ 是指不属于后面集合的最小的非负整数 (\alertn{m}inimal \alertn{ex}cept).
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{Nim 游戏及其变种}
+%   \onslide<+->
+%   实际上 Nim 游戏(抓石子游戏)有相当多的变种, 例如
+%   \begin{itemize}
+%     \item 有多个石子堆;
+%     \item 有无穷多种取法 ($S$ 无限);
+%     \item 高维情形 ($n$ 是向量, $S$ 是向量集合) 等等.
+%   \end{itemize}
+%   \onslide<+->
+%   我们今天只讨论 $S$ 有限的\emphov{一维一堆情形}{subtraction game}.
+
+%   \onslide<+->
+%   注意到 $\CG_{dS}(n)=\CG_S\bigl(\bigl[\frac nd\bigr]\bigr)$.
+%   \onslide<+->
+%   因此我们只需考虑 $S$ 的所有元素公因子为 $1$ 的情形.
+% \end{frame}
+
+
+% \begin{frame}{周期和预周期}
+%   \begin{itemize}
+%     \item 我们将集合 $S$ 中的元素从小到大排列, 即
+%     \[
+%       S=\set{s_1,s_2,\dots,s_k},\quad s_1<s_2<\cdots<s_k.
+%     \]
+%     \item 那么 $\CG(n)\le k$.
+%     \onslide<+->
+%     于是 S-G 序列中连续 $s_k$ 项形成的序列只有 $(k+1)^{s_k}$ 种可能, 从而由抽屉原理可知, 存在两个相同的 $s_k$ 项序列.
+%     \onslide<+->
+%     而 $\CG(n)$ 仅由它之前的 $s_k$ 项决定, 所以我们得到:
+%     \onslide<+->
+%     \begin{proposition}
+%       序列 $\CG$ 是\emphov{最终周期}{ultimately periodic}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG(n+p)=\CG(n),\forall n\ge \ell$.
+%     \end{proposition}
+%     \item 将最小的 $p$ 称为($\CG_S$ 或 $\SUB(S)$ 的)\emphov{周期}{period}, 最小的 $\ell$ 称为\emphov{预周期}{pre-period}.
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{周期和预周期(续)}
+%   \begin{itemize}
+%     \item 于是
+%     \[
+%       \CG=\CG(0)\CG(1)\CG(2)\cdots
+%       =\CG(0)\cdots\CG(\ell-1)\ul{\CG(\ell)\cdots\CG(\ell+p-1)}.
+%     \]
+%     这里 $\ul{\CH}=\CH\CH\cdots$ 表示无穷多个 $\CH$ 重复得到的序列.
+%     \item 不难说明, 满足 $\CG(n)=\CG(n+p),\ell\le\forall  n\le \ell+s_k$ 的最小的 $p$ 和 $\ell$ 就是周期和预周期.
+%     \item 因此对于任意集合 $S$, 很容易通过计算机来计算它的周期和预周期, 从而得到整个 S-G 序列.
+%     \item 显然 $p,\ell\le (k+1)^{s_k}$.
+%   \end{itemize}
+% \end{frame}
+
+
+% \section{已知的结论}
+
+% \begin{frame}{二元集合情形}
+%   \onslide<+->
+%   当 $k=\#S\le 2$ 时, $p$ 和 $\ell$ 都是已知的.
+%   \onslide<+->
+%   而即使是 $k=3$ 的情形, $p$ 和 $\ell$ 依然还不是完全知道.
+%   \onslide<+->
+%   我们将回顾已知的并给出一些新的结果.
+%   \begin{itemize}
+%     \item $\CG_{\set1}=\ul{01}$.
+%     \item $1\in S$ 不含偶数 $\iff \CG_S=\ul{01}$.
+%     \item 事实上, 如果 $S'=S\cup\set{x+pt}$, 其中 $x\in S,p$ 是 $\CG_S$ 周期, 则 $\CG_{S'}=\CG_S$.
+%     \item 设 $S=\set{a,c=at+r}, 0\le r<a$, 则
+%     \[
+%       \CG_S=\begin{cases}
+%         \ul{(0^a 1^a)^{t/2} 0^r 2^{a-r}1^r},&2\mid t;\\
+%         \ul{(0^a 1^a)^{(t+1)/2} 2^r},&2\nmid t,
+%       \end{cases},\quad
+%       \ell=0, p=c+a\ \text{或}\ 2a.
+%     \]
+%     这里 $\CH^t=\CH\cdots\CH$ 表示 $t$ 个 $\CH$ 重复得到的序列.
+%     \onslide<+->
+%     注意 $2\nmid t$ 时这里未必是最小循环节.
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{三元集合: $a=1,b$ 奇}
+%   \onslide<+->
+%   \begin{example}
+%     设 $S=\set{1,b,c},2\nmid b$.
+%     注意到 $\CG_\set{1,b}=\ul\CH, \CH=01$.
+%     我们有
+%     \begin{center}
+%       \begin{tabular}{cccc}
+%         \topcolorrule
+%         $c$ & $\CG_S$ & $\ell$ & $p$\\
+%         \midcolorrule
+%         奇数&$\ul\CH$ & $0$ & $2$\\
+%         偶数&$\ul{\CH^{c/2}(23)^{(b-1)/2}2}$ & $0$ & $c+b$\\
+%         \bottomcolorrule
+%       \end{tabular}
+%     \end{center}
+%   \end{example}
+% \end{frame}
+
+
+% \begin{frame}{三元集合: $a=1,b=2$}
+%   \onslide<+->
+%   \begin{example}
+%     设 $S=\set{1,2,3t+r},0\le r<3$.
+%     注意到 $\CG_\set{1,2}=\ul\CH, \CH=012$.
+%     我们有
+%     \begin{center}
+%       \begin{tabular}{cccc}
+%         \topcolorrule
+%         $r$ & $\CG_S$ & $\ell$ & $p$\\
+%         \midcolorrule
+%         $0$ & $\ul{(012)^t3}$ & $0$ & $c+1$\\
+%         $1,2$ & $\ul{012}$ & $0$ & $3$\\
+%         \bottomcolorrule
+%       \end{tabular}
+%     \end{center}
+%   \end{example}
+% \end{frame}
+
+
+% \begin{frame}{三元集合: $a=1,b=4$}
+%   \onslide<+->
+%   \begin{example}
+%     设 $S=\set{1,4,c=5t+r}, 0\le r<5$.
+%     注意到 $\CG_\set{1,4}=\ul{\CH}, \CH=01012$.
+%     我们有
+%     \begin{center}
+%       \begin{tabular}{cccc}
+%         \topcolorrule
+%         $r,c$ & $\CG_S$ & $\ell$ & $p$\\
+%         \midcolorrule
+%         $r=0, c=5$ & $\ul{\CH\,323}$ & $0$ & $8$\\
+%         $r=0, c>5$ & $\CH^t\,323013\ul{\CH^{t-1}012012}$ & $c+6$ & $c+1$\\
+%         $r=1,4$ & $\ul\CH$ & $0$ & $5$\\
+%         $r=2$ & $\ul{\CH^t\,012}$ & $0$ & $c+1$\\
+%         $r=3$ & $\ul{\CH^{t+1}\,32}$ & $0$ & $c+4$\\
+%         \bottomcolorrule
+%       \end{tabular}
+%     \end{center}
+%   \end{example}
+% \end{frame}
+
+
+% \begin{frame}{三元集合: $a=1,b\ge 6$ 偶}
+%   \onslide<+->
+%   \begin{proposition}
+%     设 $S=\set{1,b,c}$, 其中 $b\ge 6$ 是偶数, $c=t(b+1)+r,0\le r\le b$.
+%     \onslide<+->{
+%     我们有
+%     \begin{center}
+%       \begin{tabular}{cccc}
+%         \topcolorrule
+%         $r$ & $\ell$ & $p$\\
+%         \midcolorrule
+%         $1,b$ & $0$ & $b+1$\\
+%         $[3,b-1]$ 是奇数 & $0$ & $c+b$\\
+%         $b-2$ & $0$ & $c+1$\\
+%         $c=b+1$ & $0$ & $2b$\\
+%         \begin{tikzpicture}[overlay,shift={(-.1,.2)}]
+%           \draw[decorate,decoration={brace,amplitude=5},thick] (0,-1.3)--(0,0);
+%           \draw (-1.5,-.65) node[align=left] {\small $c>b+1$\smallskip\\$r\le b-4$ 偶};
+%         \end{tikzpicture}
+%         $r>b-2t-2$&
+%         $\bigl(\frac{b-r}2-1\bigr)(c+b+2)-b$&
+%         $c+1$\\
+%         $r=b-2t-2$&
+%         $t(c+b+2)-b$&
+%         $b-1$\\
+%         $r<b-2t-2$&
+%         $t(c+b+2)-b$&
+%         $c+b$\\
+%         \bottomcolorrule
+%       \end{tabular}
+%     \end{center}}
+%   \end{proposition}
+%   \begin{itemize}
+%     \item 可以看出在带 $1$ 的三元集情形, $p$ 和 $\ell$ 的形式与 $c$ 模 $\set{1,b}$ 的周期的同余类有关.
+%     \item 除去有限多种情形外, $c$ 在每一个同余类中, $p$ 和 $\ell$ 是 $c$ 的一次函数.
+%   \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}{三元集合: $a=1,b\ge 6$ 偶(续)}
+%   \onslide<+->
+%   该情形 $\CG$ 序列较为复杂.
+%   \onslide<+->
+%   例如: 若 $0<r=2v<b-2t-2$, $b=2k$, 则
+%   \begin{center}
+%     \begin{tabular}{cl}
+%       \topcolorrule
+%       $i$ & $\CG\bigl((c+1)i+j\bigr), 0\le j\le c$\\
+%       \midcolorrule
+%     $0$ &
+%       $\CH^t\, (01)^v2$\\\hline
+%     $1$ &
+%       $(32)^{k-v-1}(01)^{v+1}2, \CH^{t-1} (01)^v0$\\\hline
+%     $2$ &
+%       $1(01)^{k-v-2}2(01)^{v+1}2, (32)^{k-v-2}(01)^{v+2}2, \CH^{t-2} (01)^v0$\\\hline
+%     $i$ &
+%       \makecell[l]{$1(01)^{k-v-2}2(01)^{v+1}0, \dots, 1(01)^{k-v-i+1}2(01)^{v+i-2}0, $\\
+%       $1(01)^{k-v-i}2(01)^{v+i-1}2, (32)^{k-v-i}(01)^{v+i}2, \CH^{t-i} (01)^v0$}\\\hline
+%     $t-1$ &
+%       \makecell[l]{$1(01)^{k-v-2}2(01)^{v+1}0, \dots, 1(01)^{k-v-t+2}2(01)^{v+t-3}0, $\\
+%       $1(01)^{k-v-t+1}2(01)^{v+t-2}2, (32)^{k-v-t+1}(01)^{v+t-1}2, \CH^1 (01)^v0$}\\\hline
+%     $t$ &
+%       \makecell[l]{$1(01)^{k-v-2}2(01)^{v+1}0, \dots, 1(01)^{k-v-t+1}2(01)^{v+t-2}0, $\\
+%       $1(01)^{k-v-t}2(01)^{v+t-1}2, (3$\emphn{$2)^{k-v-t}(01)^{v+t}2, (01)^v0$}}\\\hline
+%     $t+1$ &
+%       \makecell[l]{\emphn{$1(01)^{k-v-2}2(01)^{v+1}0, \dots, 1(01)^{k-v-t+1} 2(01)^{v+t-2}0$,}\\
+%       \emphn{$1(01)^{k-v-t}2(01)^{v+t-1}0, 1(01)^{k-v-t-1}2(01)^{v+t}$}$2, (32)^{k-v-t-1}01\cdots$}\\
+%       \bottomcolorrule
+%     \end{tabular}
+%   \end{center}
+% \end{frame}
+
+
+% \begin{frame}{更多的例子}
+%   \onslide<+->
+%   \begin{proposition}
+%     设 $S=\set{a,2a,c=3at+r},0\le r<3a$, 则
+%     \[
+%       \ell=\begin{cases}
+%         c+a-r,&0<r<a;\\
+%         0,&\text{其它情形},
+%       \end{cases}\quad 
+%       p=\begin{cases}
+%         3a/2,&r=a/2;\\
+%         3a,&a/2<r\le 2a;\\
+%         c+a,&\text{其它情形.}
+%       \end{cases}
+%     \]
+%   \end{proposition}
+%   \onslide<+->
+%   \begin{proposition}
+%     设 $S=\set{a,a+1,\dots,b-1,b,c=t(a+b)+r},0\le r<a+b$, 则
+%     \[\ell=0,\quad p=\begin{cases}
+%       a+b,&a\le r\le b;\\
+%       c+a,&r=0\text{ 或 }r>b;\\
+%       c+b,&0<r<a.
+%     \end{cases}\]
+%   \end{proposition}
+% \end{frame}
+
+
+% \begin{frame}{五元集合的例子}
+%   \onslide<+->
+%   \begin{example}
+%     设 $S=\set{2,3,5,7}$, 则 $\CG_S=\ul{0^2 1^2 2^2 3^2 4}$ 周期为 $9$.
+%     对于 $11\le c\le 500$, $\SUB\bigl(S\cup\set{c}\bigr)$ 的预周期和周期为
+%     \[\ell_c=\begin{cases}
+%       2c-4,&c\equiv1\bmod{18};\\
+%       c+5,&c\equiv10\bmod{18};\\
+%       0,&\text{其它情形},
+%     \end{cases}\quad
+%       p_c=\begin{cases}
+%       c+2, &c\equiv0,8,9,10,17\bmod{18};\\
+%       4, &c\equiv1\bmod{18};\\
+%       9, &\text{其它情形}.
+%     \end{cases}\]
+%   \end{example}
+% \end{frame}
+
+
+% \section{主要猜想、结论和应用}
+% \begin{frame}{主要猜想结论}
+%   \onslide<+->
+%   根据这些结论, 我们猜想 $\SUB(S\cup\{c\})$ 周期和预周期关于 $c$ 是\emph{最终逐剩余类线性}的:
+%   \onslide<+->
+%   \begin{conjecture}
+%     固定集合 $S$. 存在正整数 $q, N$ 以及 $\alpha_r,\beta_r,\lambda_r,\mu_r,0\le r<q$,
+%     使得当 $c\ge N$ 且 $c\equiv r\bmod q$ 时,
+%       $\SUB(S\cup\{c\})$ 的预周期和周期分别是 $\alpha_r c+\beta_r$ 和 $\lambda_r c+\mu_r$.
+%   \end{conjecture}
+%   \onslide<+->
+%   \begin{theorem}[TCS2024]
+%     上述猜想在如下情形成立:
+%     \begin{enumerate}
+%       \item $1\in S$ 且 $S$ 所有元素均为奇数;
+%       \item $S=\set{1,b}$;
+%       \item $S=\set{a,2a}$;
+%       \item $S=\set{a,a+1,\dots,b-1,b}$.
+%     \end{enumerate}
+%   \end{theorem}
+% \end{frame}
+
+
+% \begin{frame}{应用: 最终二分序列}
+%   \onslide<+->
+%   这个猜想可以指导我们寻找特定周期的 S-G 序列.
+%   \onslide<+->
+%   如果 $\CG_S$ 的周期为 $2$, 称 $\SUB(S)$ 是\emphov{最终二分}{ultimately bipartite}的.
+%   \onslide<+->
+%   可以证明如果 $\SUB(S)$ 是最终二分的, 则 $S$ 不含偶数.
+%   \onslide<+->
+%   \begin{example}
+%     设 $a\ge 3$ 是奇数. 如果 $S$ 是如下情形之一:
+%     \begin{itemize}[<*>]
+%       \item $S=\set{3,5,9,\dots,2^a+1}$;
+%       \item $S=\set{3,5,2^a+1}$;
+%       \item $S=\set{a,a+2,2a+3}$;
+%       \item $S=\set{a,2a+1,3a}$,
+%     \end{itemize}
+%     则 $\SUB(S)$ 是最终二分的.
+%   \end{example}
+% \end{frame}
+
+
+% \begin{frame}{应用: 最终二分序列}
+%   \onslide<+->
+%   根据上面的例子和猜想的启发, 我们发现了如下三元最终二分 $\SUB(S)$.
+%   \onslide<+->
+%   \begin{theorem}
+%     设 $a\ge 3$ 是奇数, $t\ge 1$.
+%     如果 $S$ 是如下情形之一:
+%     \begin{enumerate}[<*>]
+%       \item $S=\set{a,a+2,(2a+2)t+1}$;\label{enum:bi1} \hfill(来自 $\set{a,a+2,2a+3}$)
+%       \item $S=\set{a,2a+1,(3a+1)t-1}$; \hfill(来自 $\set{a,2a+1,3a}$)
+%       \item $S=\set{a,2a-1,(3a-1)t+a-2}$, \hfill(来自 $\set{a,a+2,2a+3}$)
+%     \end{enumerate}
+%     则 $\SUB(S)$ 是最终二分的.
+%   \end{theorem}
+% \end{frame}
+
+
+% \begin{frame}{应用: 最终二分序列}
+%   \onslide<+->
+%   例如情形 \enumnum1 的G-S序列开头为 ($a=2k+1$):
+%   \begin{center}\small
+%     \begin{tabular}{c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+%     \topcolorrule
+%       $i$ & \multicolumn{7}{l}{$\CG\bigl((a+1)(2t+1)i+j\bigr), 0\le j<(a+1)(2t+1)=c+a$}
+%     \\\midcolorrule
+%       $0$&
+%       $0^a1$&
+%       $[$&
+%       $1^{a-1}22$&
+%       $0^a1$&
+%       $]^{t-1}$&
+%       $1^{a-1}22$&
+%       $02^{a-3}331$
+%     \\\midcolorrule
+%       $1$&
+%       $030^{a-2}1$&
+%       $[$&
+%       $01^{a-2}21$&
+%       $020^{a-2}1$&
+%       $]^{t-1}$&
+%       $01^{a-2}21$&
+%       $0202^{a-5}321$
+%     \\\midcolorrule
+%       $i$&
+%       $(01)^{i-1}030^{a-2i}1$&
+%       $[$&
+%       $(01)^{i-1}01^{a-2i}21$&
+%       $(01)^{i-1}020^{a-2i}1$&
+%       $]^{t-1}$&
+%       $(01)^{i-1}01^{a-2i}21$&
+%       $(01)^{i-1}0202^{a-2i-3}321$
+%     \\\midcolorrule
+%       $k-1$&
+%       $(01)^{k-2}030^31$&
+%       $[$&
+%       $(01)^{k-2}01^321$&
+%       $(01)^{k-2}020^31$&
+%       $]^{t-1}$&
+%       $(01)^{k-2}01^321$&
+%       $(01)^{k-2}020321$
+%     \\\midcolorrule
+%       $k$&
+%       $(01)^{k-1}0301$&
+%       $[$&
+%       $(01)^{k-1}0121$&
+%       $(01)^{k-1}03$\emphn{$01$}&
+%       $]^{t-1}$&
+%       \emphn{$(01)^{k-1}0101$}&
+%       \emphn{$(01)^{k-1}0101$}
+%     \\\bottomcolorrule
+%     \end{tabular}
+%   \end{center}
+% \end{frame}
+
+
+% \begin{frame}{应用: 最终二分序列}
+%   \onslide<+->
+%   例如情形 \enumnum1的G-S序列开头为:
+%   \begin{center}
+%     \begin{tabular}{cc@{}cc@{}cc@{}c}
+%     \topcolorrule
+%       $i$ & \multicolumn{5}{l}{$\CG\bigl((a+1)(2t+1)i+j\bigr), 0\le j<(a+1)(2t+1)=c+a$}\\
+%     \midcolorrule
+%       $0$&
+%       \makecell{$0^a1$\\~}&
+%       \makecell{$[$\\~}&
+%       \makecell{$1^{a-1}22$\\$1^{a-1}22$}&
+%       \makecell{$0^a1$\\$02^{a-3}331$}&
+%       \makecell{$]^{t-1}$\\~}\\\hline
+%       $1$&
+%       \makecell{$030^{a-2}1$\\~}&
+%       \makecell{$[$\\~}&
+%       \makecell{$01^{a-2}21$\\$01^{a-2}21$}&
+%       \makecell{$020^{a-2}1$\\$0202^{a-5}321$}&
+%       \makecell{$]^{t-1}$\\~}\\\hline
+%       $i$&
+%       \makecell{$(01)^{i-1}030^{a-2i}1$\\~}&
+%       \makecell{$[$\\~}&
+%       \makecell{$(01)^{i-1}01^{a-2i}21$\\$(01)^{i-1}01^{a-2i}21$}&
+%       \makecell{$(01)^{i-1}020^{a-2i}1$\\$(01)^{i-1}0202^{a-2i-3}321$}&
+%       \makecell{$]^{t-1}$\\~}\\\hline
+%       $k-1$&
+%       \makecell{$(01)^{k-2}030^31$\\~}&
+%       \makecell{$[$\\~}&
+%       \makecell{$(01)^{k-2}01^321$\\$(01)^{k-2}01^321$}&
+%       \makecell{$(01)^{k-2}020^31$\\$(01)^{k-2}020321$}&
+%       \makecell{$]^{t-1}$\\~}\\\hline
+%       $k$&
+%       \makecell{$(01)^{k-1}0301$\\~}&
+%       \makecell{$[$\\~}&
+%       \makecell{$(01)^{k-1}0121$\\\emphn{$(01)^{k-1}0101$}}&
+%       \makecell{$(01)^{k-1}03$\emphn{$01$}\\\emphn{$(01)^{k-1}0101$}}&
+%       \makecell{$]^{t-1}$\\~}\\
+%     \bottomcolorrule
+%     \end{tabular}
+%   \end{center}
+%   % \onslide<+->
+%   % 对于四元情形, 我们通过计算发现了当 $3\le a\le 25, c<500$ 且 $c\not\equiv \pm1 \bmod a$ 时, $\SUB(\set{a,2a+1,3a,c})$ 是最终二分的.
+% \end{frame}
+
+
+\end{document}
+
+
+
