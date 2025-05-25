@@ -4,9 +4,10 @@
 \invitedby[nju]{南京大学}
 \date{2025年6月15日}
 
-\DeclareMathOperator*{\SUB}{{\text{\mdseries{\upshape\textsc{sub}}}}}
-\renewcommand\ul[1]{{\color{main}\underline{#1}}}
 \newcommand{\emphov}[2]{\emph{$\overset{\text{\clap{#2}}}{\text{#1}}$}}
+\renewcommand\leg[2]{\Bigl(\dfrac{{#1}}{#2}\Bigr)}
+\renewcommand\aleg[2]{\Bigl[\dfrac{{#1}}{#2}\Bigr]}
+
 \usepackage{makecell}
 \usepackage{tikz}
 \usetikzlibrary{
@@ -32,7 +33,7 @@
 
 \section{问题背景}
 
-\begin{frame}{同余数}
+\begin{frame}{同余数问题}
   \begin{itemize}
     \item 同余数问题是一个古老的数学问题.
     \item 如果正整数 $n$ 可以表达为一个有理边长直角三角形的面积, 则称 $n$ 是\emphov{同余数}{congruent number}.
@@ -63,30 +64,565 @@
       \end{scope}
     \end{tikzpicture}
   \end{center}
+\end{frame}
+
+
+\begin{frame}{同余数与椭圆曲线}
+  \begin{itemize}
+    \item 显然我们只需要考虑无平方因子正整数.
+    \item 注意到本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
+    \item 通过变量替换 $x=\dfrac{na}b,y=\dfrac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+    \[
+      E_n:y^2=x^3-n^2x.
+    \]
+    \item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Selmer 群和Tate-Shafarevich群}
+  \begin{itemize}
+    \item 不难知道 $E_n(\BQ)$ 的所有挠点为
+    \[
+      E_n(\BQ)_{\tors}
+      =E_n[2]
+      =\{(\pm n,0),(0,0),O\}
+      \cong(\BZ/2\BZ)^2.
+    \]
+    \item 由正合列
+    \[
+      0\ra E_n(\BQ)/2E_n(\BQ)\ra \Sel_2(E_n)\ra \Sha(E_n)[2]\ra0
+    \]
+    \item 可得
+    \[
+      \rank_\BZ E_n(\BQ)\le \dim_{\BF_2}\Sel_2(E_n)-2=s_2(n),
+    \]
+    \item 其中 $s_2(n)$ 是
+    \[
+      \Sel'_2(E_n):=\frac{\Sel_2(E_n)}{E_n(\BQ)[2]}
+    \]
+    的维数.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{非同余数: $s_2(n)=0$ 情形}
+  \begin{itemize}
+    \item BSD猜想断言: 若 $n$ 是非同余数, 则 $L(E_n,1)\ne 0$, 从而 $n\equiv 1,2,3\bmod 8$.
+    \item 当 $n\equiv 1,2,3\bmod 8$ 时, $s_2(n)$ 是偶数.
+    \item 自然地, $s_2(n)=0$ 蕴含 $n$ 是非同余数且 $\Sha(E_n)[2^\infty]=0$.
+    \item 此时由Tian-Yuan-Zhang (2017) 和Smith (2016), 它等价于
+    \[
+      \sum_{\substack{n=d_0d_1\cdots d_k\\ d_1\equiv\dots\equiv d_k\equiv 1\bmod 8\\ h_4(-d_i)=0,\forall i}}1=1\in\BF_2,
+    \]
+    且此时 BSD 猜想 $2$ 部分成立.
+    \item 这里 $h_4(-d)=r_4(\CA_{-d})$ 是 $F_{-d}=\BQ(\sqrt{-d})$ 整数环 $\CO_{-d}$ 缩理想类群 $\CA_{-d}$ 的 $4$ 秩, 
+    \[
+      r_{2^a}(A):=\dim_{\BF_2}\Bigl(\frac{2^{a-1}A}{2^aA}\Bigr).
+    \]
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{非同余数: $s_2(n)=2$ 情形}
+  \begin{theorem}[{Wang 2016}]
+    若 $n$ 是模 $4$ 余 $1$ 素数乘积, 则下述等价:
+    \begin{itemize}[<*>]
+      \item $n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^2$;
+      \item $h_4(-n)=1,h_8(-n)\equiv (d-1)/4\bmod 2$,
+    \end{itemize}
+    其中 $0<d\mid n$ 满足 $(d,-n)_v=1,\forall v, d\ne 1,n$, 或 $(2d,-n)_v=1,\forall v$.
+  \end{theorem}
+  这里 $(d,-n)_v$ 是希尔伯特符号.
+  \onslide<+->
+  \begin{theorem}[{Wang-Zhang 2022}]
+    若 $n$ 是模 $8$ 余 $\pm1$ 素数乘积, 则下述等价:
+    \begin{itemize}[<*>]
+      \item $n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^2$;
+      \item $h_4(-n)=1, h_8(-n)=0$.
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
+
+\begin{frame}{已知结果: $s_2(n)=2$}  
+  \begin{theorem}[{Zhang 2023}]
+    \label{thm:3}
+    若 $n$ 是模 $8$ 余 $\pm1$ 素数乘积, 则下述等价:
+    \begin{itemize}[<*>]
+      \item $2n$ 是非同余数且 $\Sha(E_{2n})[2^\infty]\cong(\BZ/2\BZ)^2$;
+      \item $h_4(-n)=1,d\equiv 9\bmod 16$,
+    \end{itemize}
+    其中 $d\mid n$ 满足 $(d,n)_v=1,\forall v$ 且 $d\ne 1,d\equiv 1\bmod 4$.
+  \end{theorem}
+  \begin{itemize}
+    \item 这实际上也等价于 $h_4(-n)=1,h_8(-n)+h_8(-2n)=1$.
+    \item 此外, Qin (2021) 证明了当素数 $p\equiv 1\bmod 8$ 且 $r_8(K_2\CO_p)=0$ 时, $p$ 是非同余数.
+    且若此时 $r_4(K_2\CO_p)=1$, 则 $\Sha(E_p/\BQ)[2^\infty]\cong(\BZ/4\BZ)^2$.
+  \end{itemize}  
+\end{frame}
+
+
+\section{主要结果}
+\begin{frame}{设定}
+  \begin{itemize}
+    \item 这些结论都是指定 $n$ 的素因子落在某个同余类中来研究.
+    \item 我们想要考虑的问题略有不同, 我们希望从一个满足 $s_2(Q)=0$ 的非同余数 $Q$ 出发, 构造它的一个倍数 $n=PQ$, 使得 $n$ 依然是非同余数.
+    \item 设 $P=p_1\cdots p_k$, 其中素因子 $p_i\equiv 1\bmod8$.
+    \item 设 $Q=\gcd(2,Q) q_1\cdots q_\ell$.
+  \end{itemize}  
+\end{frame}
+
+
+\begin{frame}{假设}
+  \begin{itemize}
+    \item 假设存在 $\BF_2$ 上的向量 $\bfu=(u_1,\dots,u_k)^\rmT$, $\bfv=(v_1,\dots,v_\ell)^\rmT$,
+    \item 使得 $\sum_i u_i=0,\sum_j v_j=1$, $\aleg{p_i}{q_j}=u_iv_j$.
+    \item 这里 $\aleg{p_i}{q_j}=\log\leg{p_i}{q_j}$ 是加性勒让德符号, 其中 $\log:\{\pm1\}\simto \BF_2$.
+    \item 换言之, 定义矩阵
+    \[
+      \bfA_{2P}=\bfA_P:=([p_j,-P]_{p_i})\in M_k(\BF_2),\qquad(\text{每行元素之和为 $0$})
+    \]
+    并类似定义 $\bfA_Q$, $\bfA_n$, 则
+    \[
+      \bfA_n=\begin{pmatrix}
+        \bfA_P+\bfU_P&\bfu\bfv^\rmT\\
+        \bfv\bfu^\rmT&\bfA_Q
+      \end{pmatrix},
+    \]
+    其中 ${\bf1}^\rmT\bfu=0,{\bf1}^\rmT\bfv=1$, $\bfU_P=\diag\{u_1,\dots,u_k\}$.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{主要结果: $s_2(n)=0,2$}
+  \begin{theorem}
+    在前述假设下, 如下等价:
+    \begin{itemize}[<*>]
+      \item $n$ 是非同余数且 $\Sha(E_n)=0$;
+      \item $\bfA_P+\bfU_P$ 可逆.
+    \end{itemize}
+  \end{theorem}
+  \onslide<+->
+  \begin{theorem}
+    在前述假设下, 如下等价:
+    \begin{itemize}[<*>]
+      \item $n$ 是非同余数且 $\Sha(E_n)\cong(\BZ/2\BZ)^2$;
+      \item $\corank(\bfA_P+\bfU_P)=1$ 且 $\aleg{\gamma}d=\aleg{\sqrt2+1}{d}+1$,
+    \end{itemize}
+    其中 $0<d\mid P$ 满足 $d\ne 1, [d,-P]_{p_i}=u_i,\forall p_i\mid d$; $[d,-P]_{p_i}=0,\forall p_i\mid \frac Pd$;  $(\alpha,\beta,\gamma)$ 是 $d\alpha^2+\frac{n}d\beta^2=4\gamma^2$ 的一组本原正整数解.
+  \end{theorem}
+  \onslide<+->
+  这里, 本原正整数解是指满足 $\gcd(\alpha,\beta,\gamma)=1$ 的正整数解.
+\end{frame}
+
+
+\begin{frame}{推论: $s_2(n)=2,\bfu={\bf0}$ 情形}
+  若取 $\bfu={\bf0}$ 则我们得到:
+  \begin{corollary}
+    在前述假设下, 若 $\aleg{p_i}{q_j}=0, \forall i,j$, 则如下等价:
+    \begin{itemize}[<*>]
+      \item $n$ 是非同余数且 $\Sha(E_n)\cong(\BZ/2\BZ)^2$;
+      \item $h_4(-P)=1$ 且 $\aleg{\gamma}P=h_8(-P)$;
+      \item $h_4(-P)=1$ 且 $\aleg{\gamma}P=r_4(K_2\CO_P)$,
+    \end{itemize}
+    其中 $(\alpha,\beta,\gamma)$ 是 $P\alpha^2+Q\beta^2=4\gamma^2$ 的一组本原正整数解.
+  \end{corollary}
+  \begin{itemize}
+    \item 这里 $K_2$ 是Milnor $K$ 群(或叫 tame kernel).
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{推论: $s_2(n)=2,\ell=0$ 情形}
+  若 $\ell=0$, 即 $Q=1,2$, 则:
+  \begin{corollary}
+    设 $n$ 是模 $8$ 余 $1$ 素数乘积.
+    \begin{enumerate}
+      \item 下述等价:
+      \begin{itemize}[<*>]
+        \item $n$ 是非同余数且 $\Sha(E_n)\cong(\BZ/2\BZ)^2$;
+        \item $h_4(-n)=1$ 且 $h_8(-n)=0$;
+        \item $r_4(K_2\CO_n)=0$.
+      \end{itemize}
+      \item 下述等价:
+      \begin{itemize}[<*>]
+        \item $2n$ 是非同余数且 $\Sha(E_{2n})\cong(\BZ/2\BZ)^2$;
+        \item $h_4(-n)=1$ 且 $h_8(-n)+h_8(-2n)=1$;
+        \item $r_4(K_2\CO_{-2n})=0$.
+      \end{itemize}
+    \end{enumerate}
+  \end{corollary}
+\end{frame}
+
+
+\begin{frame}{主要结果: $s_2(n)\ge 2$}
+  \begin{theorem}
+    假设前述条件以及 $\aleg{p_i}{q_j}=0, \forall i,j$.
+    若存在分解 $P=f_1\cdots f_r$ 满足
+    \begin{itemize}[<*>]
+      \item $h_4(-f_i)=1,\forall i$;
+      \item $\aleg{p}{p'}=0$, 其中 $p\mid f_i,p'\mid f_j$ 是任意素因子, $i\ne j$;
+      \item $\aleg{\gamma_i}{f_j}=0$,$\forall i\ne j$; $\aleg{\gamma_i}{f_i}=h_8(-f_i)$,
+    \end{itemize}
+    则 $n$ 是非同余数且 $\Sha(E_n)\cong(\BZ/2\BZ)^{2r}$,
+    其中 $(\alpha_i,\beta_i,\gamma_i)$ 是  $f_i\alpha_i^2+\frac{n}{f_i}\beta_i^2=4\gamma_i^2$ 的一组本原正整数解.
+  \end{theorem}
+\end{frame}
+
+
+\begin{frame}{推论: $s_2(n)\ge 2,\ell=0$ 情形}
+  \begin{corollary}
+    设奇数 $n$ 的所有素因子均模 $8$ 余 $1$.
+    \begin{enumerate}
+      \item (Wang 2016) 若存在分解 $n=f_1\cdots f_r$ 使得
+      \begin{itemize}[<*>]
+        \item $h_4(-f_i)=1,h_8(-f_i)=0,\forall i$;
+        \item $h_8(-n)=r$; 或 $h_8(-n)=r-1,[(2,\sqrt{-n})]\notin\CA_{-n}^4$;
+        \item $\aleg{p}{p'}=0$, 其中 $p\mid f_i,p'\mid f_j$ 是任意素因子, $i\ne j$,
+      \end{itemize}
+      则 $n$ 是非同余数且 $\Sha(E_n)\cong(\BZ/2\BZ)^{2r}$.
+      \item 若存在分解 $n=f_1\cdots f_r$ 使得
+      \begin{itemize}[<*>]
+        \item $h_4(-f_i)=1,h_8(-f_i)=0,\forall i$;
+        \item $h_8(-2n)=r$;
+        \item $\aleg{p}{p'}=0$, 其中 $p\mid f_i,p'\mid f_j$ 是任意素因子, $i\ne j$,
+      \end{itemize}
+      则 $2n$ 是非同余数且 $\Sha(E_{2n})\cong(\BZ/2\BZ)^{2r}$.
+    \end{enumerate}
+  \end{corollary}
+\end{frame}
+
+
+\section{下降法}
+\begin{frame}{2-下降法}
+  \begin{itemize}
+    \item 证明主要工具是\emphov{下降法}{descent method}.
+    \item 根据2-下降法, $\Sel_2(E_n)$ 可等同于集合
+    \[
+      \{\Lambda=(d_1,d_2,d_3)\in(\BQ^\times/\BQ^{\times2})^3:
+      D_\Lambda(\BA_\BQ)\ne \emptyset,d_1d_2d_3\equiv 1\bmod\BQ^{\times 2}\},
+    \]
+    \item 其中 $D_\Lambda$ 是齐性空间
+    \[
+      \begin{cases}
+        H_1:& -nt^2+d_2u_2^2-d_3u_3^2=0,\\
+        H_2:& -nt^2+d_3u_3^2-d_1u_1^2=0,\\
+        H_3:& 2nt^2+d_1u_1^2-d_2u_2^2=0.
+      \end{cases}
+    \]
+    \item 一般地 $E(\BQ)\ni (x,y)\mapsto (x-n,x+n,x)$,
+    \item $O\mapsto (1,1,1),(n,0)\mapsto (2,2n,n),(-n,0)\mapsto (-2n,2,-n),(0,0)\mapsto (-n,n,-1)$.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Monsky 矩阵: 奇数 $n$}
+  \begin{itemize}
+    \item 通过对这些齐性空间可解性的分析, Monsky 将 $\Sel_2'(E_n)$ 与一 $\BF_2$ 上矩阵 $\bfM_n$ 的核联系起来.
+    \item 当 $n=p_1\cdots p_k$ 是奇数时, $\Sel_2'(E_n)$ 中的元素可选取一代表元 $(d_1,d_2,d_3)$ 使得 $d_1,d_2, d_3$ 均为 $n$ 的正因子.
+    \item 此时
+    \[
+      \begin{aligned}
+        \Sel_2'(E_n)&\ra\Ker\bfM_n,\quad \bfM_n=\begin{pmatrix}
+          \bfA_n+\bfD_{n,2}&\bfD_{n,2}\\
+          \bfD_{n,2}&\bfA_n+\bfD_{n,-2}
+        \end{pmatrix}\\
+        (d_1,d_2,d_3)&\mapsto\begin{pmatrix}
+          \psi_n(d_2)\\ \psi_n(d_1)
+        \end{pmatrix},
+      \end{aligned}
+    \]
+    \item 其中 $\psi_n(d):=\bigl(v_{p_1}(d),\dots,v_{p_k}(d)\bigr)^\rmT\in\BF_2^k$,
+    \item $\bfD_{n,\varepsilon}:=\diag\Bigl\{\aleg{\varepsilon}{p_1},\dots,\aleg{\varepsilon}{p_k}\Bigr\}$.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Monsky 矩阵: 偶数 $2n$}
+  \begin{itemize}
+    \item 类似地, $\Sel_2'(E_{2n})$ 中的元素可选取一代表元 $(d_1,d_2,d_3)$ 使得 $d_1,d_2, d_3$ 均为 $n$ 的因子且$d_2>0$, $d_3\equiv1\bmod4$.
+    \item 此时
+    \[
+      \begin{aligned}
+        \Sel_2'(E_{2n})&\ra\Ker\bfM_{2n},\quad \bfM_{2n}=\begin{pmatrix}
+          \bfA_n^\rmT+\bfD_2&\bfD_{n,-1}\\
+          \bfD_{n,2}&\bfA_n+\bfD_{n,2}
+        \end{pmatrix}\\
+        (d_1,d_2,d_3)&\mapsto\begin{pmatrix}
+          \psi_n(|d_3|)\\ \psi_n(d_2)
+        \end{pmatrix},
+      \end{aligned}
+    \]
+    \item 两种情形下均有
+    \[
+      s_2(n)=\dim_{\BF_2}\Sel_2'(E_n)=\corank \bfM_n.
+    \]
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Cassels 配对}
+  \begin{itemize}
+    \item 仅知道 $s_2(n)$ 还不足以得到非同余数, 因为 $\Sha(E_n)[2]$ 也会影响它的大小.
+    \item Cassels 在 $\Sel_2'(E_n)$ 上定义了一个(反)对称双线性型$\pair{-,-}\in\BF_2$.
+    \item 对于 $\Lambda\in\Sel_2(E_n)$, $H_i$ 局部均可解, 从而存在整体解 $Q_i$ (Hasse-Minkowski 原理).
+    \item 令 $L_i$ 为一线性型, 使得它定义了 $H_i$ 在 $Q_i$ 处的切平面.
+    \item 对于 $\Lambda'=(d'_1,d'_2,d'_3)\in\Sel_2(E_n)$, 定义
+    \[
+      \pair{\Lambda,\Lambda'}=\sum_v\pair{\Lambda,\Lambda'}_v\in\BF_2,
+      \quad
+      \pair{\Lambda,\Lambda'}_v
+      =\sum_{i=1}^3 \bigl[L_i(P_v),d_i'\bigr]_v,
+    \]
+    \item 其中对 $\BQ$ 的任意素位 $v$, 选取 $P_v\in D_\Lambda(\BQ_v)$.
+    \item 当 $v\nmid 2\infty$, $H_i,L_i$ 系数的分母, 且 $D_\Lambda$ 和 $L_i=0$ 模 $v$ 后依然分别是亏格 $1$ 的曲线和它的一个切平面时, $\pair{-,-}_v=0$.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Cassels 配对的核}
+  \onslide<+->
+  \begin{lemma}[Wang2016]
+    $n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^{s_2(n)}\iff$
+    $\Sel_2'(E_n)$ 上 Cassels 配对非退化.
+  \end{lemma}
   \onslide<+->
   \begin{itemize}
-    \item 显然我们只需要考虑无平方因子正整数.
-    \item 本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
-    \item 通过变量替换 $x=\frac{na}b,y=\frac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+    \item 由正合列
     \[
-      E_n:y^2=x^3-n^2x.
+      0\ra E_n[2]\ra E_n[4] \sto{\times 2} E_n[2]\ra 0
     \]
-    \item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
+    得到长正合列
+    \[
+      0\ra {E_n(\BQ)[2]}/{2E_n(\BQ)[4]}\ra \Sel_2(E_n)\ra \Sel_4(E_n)\ra \Im \Sel_4(E_n)\ra 0,
+    \]
+    \item 其中 $\Im \Sel_4(E_n)$ 是映射 $\Sel_4(E_n)\sto{\times 2} \Sel_2(E_n)$ 的像.
+    \item 而 $\Sel_2(E_n)$ 上Cassels 配对的核就是这个像.
+    \item 因此引理左侧等价于 $\#\Sel_2(E_n) = \#\Sel_4(E_n)$, 
+    \item 等价于 $\Im \Sel_4(E_n)=E_n[2]\subseteq \Sel_2(E_n)$, 等价于引理右侧.
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{同余数}
+\section{结论证明}
+\begin{frame}{Selmer 群的计算}
+  \onslide<+->
+  \begin{lemma}
+    在前述假设下, $s_2(n)=2\corank(\bfA_P+\bfU_P)$.
+  \end{lemma}
+  \onslide<+->
   \begin{itemize}
-    \item 显然我们只需要考虑无平方因子正整数.
-    \item 本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
-    \item 通过变量替换 $x=\frac{na}b,y=\frac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+    \item 我们只证明 $n$ 是奇数的情形, 偶数情形类似,
+    \item 设
     \[
-      E_n:y^2=x^3-n^2x.
+      \begin{pmatrix}
+        \bfx\\\bfy\\\bfz\\\bfw
+      \end{pmatrix}\in\Ker\bfM_n
+      =\Ker\begin{pmatrix}
+        \bfA_P+\bfU_P&\bfu\bfv^\rmT&\bfO_k&\\
+        \bfv\bfu^\rmT&\bfA_Q+\bfD_{Q,2}&&\bfD_{Q,2}\\
+        \bfO_k&&\bfA_P+\bfU_P&\bfu\bfv^\rmT\\
+        &\bfD_{Q,2}&\bfv\bfu^\rmT&\bfA_Q+\bfD_{Q,-2}
+      \end{pmatrix}.
     \]
-    \item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
   \end{itemize}
 \end{frame}
+  
+
+\begin{frame}{Selmer 群的计算 (续)}
+  \begin{itemize}
+    \item 
+    则
+    \[
+      (\bfA_P+\bfU_P)\bfx=\bfu\bfv^\rmT\bfy,\qquad
+      (\bfA_P+\bfU_P)\bfz=\bfu\bfv^\rmT\bfw
+    \]
+    \[
+      \bfM_Q\begin{pmatrix}
+        \bfy\\\bfw
+      \end{pmatrix}
+      =\begin{pmatrix}
+        \bfv\bfu^\rmT\bfx\\
+        \bfv\bfu^\rmT\bfz
+      \end{pmatrix}.
+    \]
+    \item 从 ${\bf1}^\rmT(\bfA_P+\bfU_P)\bfx={\bf1}^\rmT\bfu\bfv^\rmT\bfy$ 得到 $\bfu^\rmT\bfx=0$.
+    \item 同理 $\bfu^\rmT\bfz=0$, 故 $\bfM_Q\begin{pmatrix}
+        \bfy\\\bfw
+      \end{pmatrix}={\bf0}$.
+    \item 由于 $s_2(Q)=0$, $\bfM_Q$ 可逆, 从而 $\bfy=\bfw={\bf0}$,
+    \item $\bfx,\bfz\in\Ker(\bfA_P+\bfU_P)$, $s_2(n)=2\corank(\bfA_P+\bfU_P)$.
+    \item 由此可立得主要结论中 $s_2(n)=0$ 的情形.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Cassles 配对的计算}
+  \begin{proposition}
+    设 $0<f_i,f_j\mid P$ 满足 $\gcd(f_i,f_j)=1$, $\psi_P(f_i),\psi_P(f_j)\in \Ker(\bfA_P+\bfU_P)$.
+    令 $\Lambda_t=(f_t,1,f_t), \Lambda'_t=(f_t,f_t,1)$,
+    那么
+    \begin{align*}
+      \pair{\Lambda_i',\Lambda_i}&=\aleg{\sqrt2+1}{f_i}+\aleg{\gamma_i}{f_i}=\aleg{\sqrt2+1}{f_i}+\aleg{\gamma_i'}{f_i},\\
+      \pair{\Lambda_i',\Lambda_j}&=\aleg{\gamma_i}{f_j}=\aleg{\gamma_j'}{f_i},\\
+      \pair{\Lambda_i',\Lambda_i'}&=\aleg{\gamma_i\gamma_i'}{f_i},\qquad
+      \pair{\Lambda_i',\Lambda_j'}=\aleg{\gamma_i\gamma_i'}{f_j},
+    \end{align*}
+    其中 $(\alpha_i,\beta_i,\gamma_i),(\alpha_i',\beta_i',\gamma_i')$ 分别是方程 $f_i\alpha_i^2+\frac n{f_i}\beta_i^2=4\gamma_i^2$, $f_i\alpha_i'^2-\frac n{f_i}\beta_i'^2=4\gamma_i'^2$ 的本原正整数解.
+  \end{proposition}
+\end{frame}
+
+
+\begin{frame}{Cassles 配对的计算 (续)}  
+  \[
+    D_{\Lambda_i}:
+    \begin{cases}
+      H_1:& -nt^2+u_2^2-f_iu_3^2=0,\\
+      H_2:& -\frac n{f_i} t^2+u_3^2-u_1^2=0,\\
+      H_3:& 2nt^2+f_iu_1^2-u_2^2=0.
+    \end{cases}
+  \]
+  \begin{itemize}
+    \item 取
+    \begin{align*}
+      Q_1&=(\beta_i',f_i\alpha_i',2\gamma_i')\in H_1(\BQ),&
+      L_1&=\frac{n}{f_i}\beta_i' t-\alpha_i' u_2+2\gamma_i' u_3,\\
+      Q_2&=(0,1,-1)\in H_2(\BQ),&
+      L_2&=u_3+u_1.
+    \end{align*}
+    \item 根据假设不难得到
+    \[
+      \aleg{f_i}{q_s}=0,\quad
+      \aleg{n/f_i}{p}=0,\forall p\mid f_i,\quad
+      \aleg{f_i}{p}=0,\forall p\mid \frac{P}{f_i}.
+    \]
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Cassles 配对的计算 (再续)}  
+  \begin{itemize}
+    \item 对于 $v\mid f_i$, 取 $P_v=(t,u_1,u_2,u_3)=\bigl(1,\sqrt{-2n/f_i},0,\sqrt{-n/f_i}\bigr)$.
+    这里根号取正负不影响最后的结果.
+    \item $\bigl[L_1(P_v),f_t\bigr]_v
+      =\bigl[\beta_i'n/f_i+2\gamma_i'\sqrt{-n/f_i},f_t\bigr]_v
+      =\bigl[4\gamma_i'\sqrt{-n/f_i},f_t\bigr]_v
+      =\bigl[\gamma_i'\sqrt{-n/f_i},f_t\bigr]_v$.
+    \item $\bigl[L_2(P_v),f_t\bigr]_v
+      =\bigl[(\sqrt2+1)\sqrt{-n/f_i},f_t\bigr]_v$,
+      $\bigl[L_1L_2(P_v),f_t\bigr]_v
+        =\bigl[(\sqrt2+1)\gamma_i',f_t\bigr]_v$.
+    \item 对于 $v\mid \frac P{f_i}$, 取 $P_v=(t,u_1,u_2,u_3)=\bigl(0,1,\sqrt{f_i},1\bigr)$.
+    \item 类似可得 $\bigl[L_1L_2(P_v),f_t\bigr]_v=[\gamma_i',f_t]_v$.
+    \item $\pair{\Lambda_i,\Lambda_i'}
+        =\suml_{v\mid f_i}\bigl[(\sqrt2+1)\gamma_i',f_i\bigr]_v
+        +\suml_{v\mid \frac{P}{f_i}}[\gamma_i',f_i]_v
+        =\aleg{(\sqrt2+1)\gamma_i'}{f_i}$.
+    \item $\pair{\Lambda_i,\Lambda_j'}
+        =\suml_{v\mid f_i}\bigl[(\sqrt2+1)\gamma_i',f_j\bigr]_v
+        +\suml_{v\mid \frac{P}{f_i}}[\gamma_i',f_j]_v
+        =\aleg{\gamma_i'}{f_j}$.
+    \item 其它情形类似.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{主要结论: $s_2(n)=2$ 情形}
+  \begin{itemize}
+    \item 根据前面的计算 $s_2(n)=2\iff \corank(\bfA_P+\bfU_P)=1$.
+    \item 此时 $\Sel_2'(E_n)$ 由 $\Lambda=(d,1,d),\Lambda'=(d,d,1)$ 生成, 其中 $\psi_P(d)\in\Ker(\bfA_P+\bfU_P)$.
+    \item 于是 $\pair{\Lambda,\Lambda'}
+		=\aleg{\sqrt2+1}d+\aleg{\gamma}{d}$.
+  \end{itemize}
+  \onslide<+->
+  若进一步假设 $\bfu={\bf0}$, 则 $d=P$.
+\end{frame}
+
+
+\begin{frame}{高斯型理论}
+  \begin{itemize}
+    \item 为了将我们的结果与类群、$K_2$ 群联系起来, 我们回顾有关结论.
+    \item 设 $n=p_1\cdots p_k\equiv 1\bmod 4$.
+    \item 根据高斯型理论, $h_2(-n)=k+1$,  $h_4(-n)=\corank \bfR_{-n}-1$,
+    \item 其中R\`edei 矩阵 $\bfR_{-n}=\begin{pmatrix}
+			\bfA_n&\bfb_{n,2}\\
+			\bfb_{n,-1}^\rmT&\aleg{2}{n}
+		\end{pmatrix}$, $\bfb_{n,\varepsilon}=\bfD_{n,\varepsilon}{\bf1}$.
+    \item 对于 $\theta_{-n}(d):=[(d,\sqrt{-n})]\in\CA_{-n}[2]$, $\theta_{-n}(d)\in \CA_{-n}^4\iff \bfb_{n,\gamma}\in \Im\bfR_{-n}'$.
+    \item 这里 $\bfR_{-n}'$ 是 $\bfR_{-n}$ 去掉最后一行, $(\alpha,\beta,\gamma)$ 是 $d\alpha^2+\frac{n}{d}\beta^2=4\gamma^2$ 的本原正整数解.
+    \item 对于 $h_{2^a}(-2n)$, 我们有类似结论.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{$K_2$ 群}
+  \begin{itemize}
+    \item 根据 Browkin-Schinzel (1982) 和 Qin(1995) 的工作, 
+    \item 当 $m=n,2n>2$ 时
+    \[
+      2^{r_4(K_2\CO_m)+1}=\#\{\bfx:\bfB_m\bfx=\bfb_{n,\pm1},\bfb_{n,\pm2},\bfb_{n,\pm\mu}\}.
+    \]
+    \item 当 $m=-n,-2n<-2$ 时
+    \[
+      \begin{aligned}	
+        2^{r_4(K_2\CO_m)+2}&
+        =\begin{cases}
+          \#\{\bfx:\bfB_m\bfx={\bf0},\bfb_{n,2},\bfb_{n,\mu}\},&\text{if}\ \bfb_{n,-1}\notin\Im \bfB_m;\\
+          2\#\{\bfx:\bfB_m\bfx={\bf0},\bfb_{n,2},\bfb_{n,\mu}\},&\text{if}\ \bfb_{n,-1}\in\Im \bfB_m.
+        \end{cases}
+      \end{aligned}
+    \]
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{类群, $K_2$ 群和矩阵 $\bfA_n$ 的联系}
+  \begin{itemize}
+    \item 设 $n$ 是模 $8$ 余 $1$ 素数乘积时, $n=\lambda^2-2\mu^2$.
+    \begin{itemize}
+      \item $h_4(-n)=h_4(-2n)=\corank\bfA_n$.
+      \item $r_4(K_2\CO_{-2n})=0$ $\iff$ $h_4(-n)=1,h_8(-n)+h_8(-2n)=1$.
+      \item $r_4(K_2\CO_n)=0\iff h_4(-n)=1,h_8(-n)=0$.
+      \item 若 $h_4(-n)=1$, 则 $h_8(-n)=1-\aleg{\sqrt2+1}{n}$,  $h_8(-2n)=1-\aleg{\sqrt2}{n}$, $r_4(K_2\CO_{-2n}),r_4(K_2\CO_n)\le 1$.
+    \end{itemize}
+    \item 由此可得 $s_2(n)=0,\bfu={\bf0}$ 情形的结论.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{主要结论: $s_2(n)=2k$ 情形}
+  \begin{itemize}
+    \item 此时
+    \[
+      \bfA_P+\bfU_P=\bfA_P=\diag\bigl\{
+        \bfA_{f_1},\cdots \bfA_{f_r}
+      \bigr\}.
+    \]
+    \item 由 $h_4(-f_i)=1$ 可知 $\corank \bfA_{f_i}=1$, $s_2(n)=2r$.
+    \item 此时由 $\Ker\bfM_n$ 可知 $\Sel_2'(E_n)$ 由 $\Lambda_i=(f_i,1,f_i),\Lambda_i'=(f_i,f_i,1)$ 生成.
+    \item 相应的Cassels配对对应矩阵
+    \[
+      \bfX=\begin{pmatrix}
+        *&\bfB^\rmT+\bfC\\\bfB+\bfC&\bfB+\bfB^\rmT
+      \end{pmatrix},
+    \]
+    \begin{align*}
+      \bfB&
+      =\Bigl(\aleg{\gamma_i}{f_j}\Bigr)_{r\times r}
+      =\diag\Bigl\{h_8(-f_1),\cdots,h_8(-f_r)\Bigr\},\\
+      \bfC&
+      =\diag\Bigl\{\aleg{\sqrt2+1}{f_1},\cdots,\aleg{\sqrt2+1}{f_r}\Bigr\}
+      =\diag\bigl\{1-h_8(-f_1),\cdots,1-h_8(-f_r)\bigr\}.
+    \end{align*}
+    \item 因此 $\bfX=\begin{pmatrix}
+      *&\bfI\\\bfI&\bfO
+    \end{pmatrix}$ 可逆.
+  \end{itemize}
+\end{frame}
+
+
+
 
 
 % \begin{frame}{必胜条件}
