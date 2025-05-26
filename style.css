@@ -59,7 +59,7 @@ article {
 h2 {
 	margin: 28px 0 0;
 	padding-bottom: 2px;
-	border-bottom: 2px solid hsl(20, 60%, 50%);
+	border-bottom: 2px solid hsl(210, 60%, 50%);
 	color: hsl(20, 60%, 50%);
 	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
 	font-size: 150%;
@@ -68,7 +68,7 @@ h2 {
 
 h2:hover {
 	color: hsl(210, 60%, 50%);
-	border-bottom: 2px solid hsl(210, 60%, 50%);
+	border-bottom: 2px solid hsl(20, 60%, 50%);
 }
 
 h3 {
@@ -117,7 +117,7 @@ img {
 	vertical-align: middle;
 }
 
-h2 img {
+h2:hover img, h3:hover img {
 	filter: url(#changeIconColorGold);
 	-webkit-filter: url(#changeIconColorGold);
 	-moz-filter: url(#changeIconColorGold);
@@ -125,7 +125,7 @@ h2 img {
 	-o-filter: url(#changeIconColorGold);
 }
 
-h2:hover img {
+h2 img, h3 img {
 	filter: url(#changeIconColorBlue);
 	-webkit-filter: url(#changeIconColorBlue);
 	-moz-filter: url(#changeIconColorBlue);
@@ -237,6 +237,10 @@ ul.custom-icon li.cv::before {
 
 ul.custom-icon li.location::before {
 	content: url(image/svg/location-dot-solid.svg);
+}
+
+ul.custom-icon li.conference::before {
+	content: url(image/svg/handshake-solid.svg);
 }
 
 ul.custom-icon li.employment::before {

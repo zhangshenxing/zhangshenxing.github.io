@@ -111,12 +111,8 @@
             <p>
               My research interests lie in number theory, especially elliptic curves, class groups and character sums.
             </p>
-            <ul class="custom-icon" style="margin-bottom:0px;">
-              <li style="margin-top: 12px; margin-bottom:0px;" class="location">
-                Travel Plan / 我的位置
-              </li>
-            </ul>
-            <ul class="no-space travel-plan" style="margin-top: 0px; margin-bottom: 0px;">
+            <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/location-dot-solid.svg" alt="">Travel Plan / 我的位置</h3>
+            <ul class="travel-plan">
               <li>Default: Hefei / 默认：合肥</li>
               <!-- <li>Secondary: Tongling / 铜陵</li> -->
               <!-- <li>2019-12-26 ~ 2020-01-10, Beijing / 北京</li>
@@ -161,14 +157,19 @@
               <li>03-21 ~ 03-24, Wuhan / 武汉</li>
               <li>04-04 ~ 04-06, Tongling / 铜陵</li>
               <li>04-08 ~ 04-13, Nanjing / 南京</li>
-              <li>04-18 ~ 04-20, Wuhu / 芜湖</li> -->
-              <li>05-23 ~ 05-25, Shanghai / 上海</li>
+              <li>04-18 ~ 04-20, Wuhu / 芜湖</li>
+              <li>05-23 ~ 05-25, Shanghai / 上海</li> -->
               <li>06-04 ~ 06-08, Harbin / 哈尔滨</li>
+              <li>06-13 ~ 06-14, Nanjing / 南京</li>
               <li>06-25 ~ 07-07, Urumqi / 乌鲁木齐</li>
             </ul>
             
-            <!-- <p>近期会议：2025-01-11 ~ 2025-01-12, Hefei / 合肥<br>2025年数论与编码小型研讨会</a>，欢迎参加！</p> -->
-            <!-- <p>近期会议：2023-07-02 ~ 2023-07-05, Hefei / 合肥<br><a style="font-weight: bold;" href="conference/2023 USTC-HFUT Number Theory.jpg">2023年科大合工大数论会议</a>，欢迎参加！</p> -->
+            <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/handshake-solid.svg" alt="">近期会议</h3>
+            <ul class="travel-plan">
+              <li>2025-07-01 ~ 2025-07-07, Urumqi / 乌鲁木齐<br><a href="conference/2025 USTC-XJNU Number Theory.png">2025年数论及相关领域学术研讨会</a>，欢迎参加！</li>
+              <!-- <li>2025-01-11 ~ 2025-01-12, Hefei / 合肥<br>2025年数论与编码小型研讨会</a>，欢迎参加！</li>
+              <li>2023-07-02 ~ 2023-07-05, Hefei / 合肥<br><a href="conference/2023 USTC-HFUT Number Theory.jpg">2023年科大合工大数论会议</a>，欢迎参加！</li> -->
+            </ul>
           </div>
           <div id="div-image">
             <img id="zsx" src="me.jpg" alt="我的照片" title="点击放大"
@@ -228,6 +229,7 @@
             S. Zhang.
             <em><abbr title="International Journal of Number Theory">Int. J. Number Theory</em> (2025), to appear.<br>
             <a href="publications/Zhang2025ijnt The generating fields of twisted Kloosterman sums.pdf">PDF</a> |
+            <a href="https://doi.org/10.1142/S1793042125500782">PubPDF</a> |
             <a href="slides/20210517 聊城 On the generating fields of Kloosterman sums.pdf">Slide</a> &
             <a href="slides/20210824 珠海 Kloosterman 和的生成域.pdf">幻灯片</a> |
             <a onclick="toggle_abs(this)">Abs</a>
@@ -380,7 +382,7 @@
             J. Li, Y. Ouyang, Y. Xu, S. Zhang.
             <em><abbr title="Publicacions Matemàtiques">Publ. Mat.</abbr></em> 66 (2022), no. 1, 235-267.<br>
             <a href="publications/LiOuyangXuZhang2022 ℓ-Class groups of fields in Kummer towers.pdf">PDF</a> |
-            <a href="https://arxiv.org/pdf/2010.08342">PubPDF</a> |
+            <a href="https://doi.org/10.5565/publmat6612210">PubPDF</a> |
             <a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
             <span class="abstract">
               Let $\ell$ and $p$ be prime numbers and $K_{n,m}=\mathbb Q(p^{1/\ell^n},\zeta_{2\ell^m})$. We study the
@@ -494,8 +496,7 @@
             Y. Ouyang, S. Zhang.
             <em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em> 170 (2015), no. 4, 343-360.<br>
             <a href="publications/OuyangZhang2015 On second 2-descent and non-congruent numbers.pdf">PDF</a> |
-            <a href="https://doi.org/10.4064/aa170-4-3">PubPDF</a> &
-            <a href="publications/OuyangZhang2015 Errata ActaArith.pdf">Errata</a> |
+            <a href="https://doi.org/10.4064/aa170-4-3">PubPDF</a> |
             <a onclick="toggle_abs(this)">Abs</a> | <a onclick="toggle_bib(this)">Bib</a><br>
             <span class="abstract">
               We use the so-called second $2$-decent method to find several series of non-congruent numbers. We consider
@@ -516,6 +517,8 @@
          DOI = {10.4064/aa170-4-3}, 
          URL = {https://doi.org/10.4064/aa170-4-3}, 
 }</pre>
+            <a href="publications/OuyangZhang2015 Errata ActaArith.pdf">Errata</a>
+            <em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em> 202 (2022), 203-203.
           </li>
           <li>On non-congruent numbers with 1 modulo 4 prime factors<br>
             Y. Ouyang, S. Zhang.
@@ -552,6 +555,7 @@
             S. Zhang.
             (2025), preprint.<br>
             <a href="publications/Zhang2025.pdf">PDF</a> |
+            <a href="slides/20250615 南京 含非同余数因子的非同余数.pdf">幻灯片</a> |
             <a onclick="toggle_abs(this)">Abs</a><br>
             <span class="abstract">
               Let $n=PQ$ be a square-free positive integer, where $P$ is a product of primes congruent to $1\bmod8$, and $Q$ is a non-congruent number with a trivial $2$-primary Shafarevich-Tate group.
@@ -574,10 +578,8 @@
             </span>
           </li>
           <li>The virtual periods of linear recurrence sequences in cyclotomic fields<br>
-            S. Zhang.
-            arXiv: 2010.08342 (2020).<br>
+            S. Zhang. (2020), preprint.<br>
             <a href="publications/Zhang2020.pdf">PDF</a> |
-            <a href="https://arxiv.org/pdf/2010.08342">arXivPDF</a> |
             <a onclick="toggle_abs(this)">Abs</a><br>
             <span class="abstract">
               A linear recurrence sequence in a cyclotomic field produces a sequence of the generating fields of each
@@ -626,7 +628,7 @@
     <section>
       <h2 onclick="toggle_div(this)" title="Click to hide/show" id="teaching"><img src="image/svg/chalkboard-user-solid.svg" alt="">教学</h2>
       <div>
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">教学中</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/chalkboard-user-solid.svg" alt="">教学中</h3>
         <div>无
           <!-- <h4>复变函数与积分变换 1400261B</h4>
           <ul>
@@ -667,7 +669,7 @@
           </ul> -->
         </div>
 
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">历史记录</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/chalkboard-user-solid.svg" alt="">历史记录</h3>
         <div>
           <table class="teaching">
             <thead>
@@ -779,7 +781,7 @@
           </table>
         </div>
 
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">教研论文</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/scroll-solid.svg" alt="">教研论文</h3>
         <div>
           <ol class="teaching">
             <li>袁志杰, 张神星. 复变函数在不同圆环域内洛朗展开的探究[J]. <em>南阳师范学院学报</em>, 2024, 23(3): 38-41.<br>
@@ -811,14 +813,14 @@
           </ol>
         </div>
 
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">本科生毕业论文</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/pen-to-square-solid.svg" alt="">本科生毕业论文</h3>
         <div>
           <ul>
             <li>邱修煜(2024)：<a href="teaching/publications/邱修煜 椭圆曲线的同源与密码学应用的研究.pdf">椭圆曲线的同源与密码学应用的研究</a></li>
             <li>刘旭鸿(2022)：<a href="teaching/publications/刘旭鸿 二次域类群的结构以及算术应用.pdf">二次域类群的结构以及算术应用</a></li>
           </ul>
         </div>
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">大学生创新创业训练计划</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/pen-to-square-solid.svg" alt="">大学生创新创业训练计划</h3>
         <div>
           <ul>
             <li>朱思雯、姚佳婧、王悦妍、邓颖、罗天曦(<abbr title="校级">X</abbr>202210359482)：<a href="teaching/publications/朱思雯等 新型冠状病毒传染模型.pdf">新型冠状病毒传染模型</a></li>
@@ -830,7 +832,7 @@
     <section>
       <h2 onclick="toggle_div(this)" title="Click to hide/show" id="links"><img src="image/svg/link-solid.svg" alt="">链接</h2>
       <div>
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">数学链接</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/infinity-solid.svg" alt="">数学链接</h3>
         <div>
           <ul>
             <li>
@@ -883,7 +885,7 @@
           </ul>
         </div>
 
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">L<span
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/link-solid.svg" alt="">L<span
             style="margin-left: -0.3em;margin-right: -0.1em;vertical-align: .35ex;font-size: 80%;">A</span>T<span
             style="margin-left: -0.2em;margin-right: -0.1em;vertical-align: -.35ex;">E</span>X 链接</h3>
         <div>
@@ -939,7 +941,7 @@
           </ul>
         </div>
 
-        <h3 onclick="toggle_div(this)" title="Click to hide/show">其它链接</h3>
+        <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/user-solid.svg" alt="">其它链接</h3>
         <div>
           <p class="p-inline-block">
             <a href="https://ams.cnu.edu.cn/rydw1/jyry1/boda_1585734093_1441.htm">蔡&#x3000;立</a> |
@@ -1010,7 +1012,7 @@
   </article>
 
   <footer>
-    <p>A page since 2006 | Last updated on 2025-05-08</p>
+    <p>A page since 2006 | Last updated on 2025-05-26</p>
   </footer>
 
   <svg style="height:0;">
