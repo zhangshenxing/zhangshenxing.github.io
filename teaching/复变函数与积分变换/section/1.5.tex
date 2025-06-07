@@ -1,49 +1,51 @@
 \section{复变函数}
 
+
 \subsection{复变函数的定义}
+
+
 \begin{frame}{复变函数的定义}
-	\onslide<+->
-	所谓的\emph{映射}, 就是两个集合之间的一种对应 $f:A\to B$, 使得对于每一个 $a\in A$, 有一个唯一确定的 $b=f(a)$ 与之对应.
 	\begin{itemize}
+		\item 所谓的\emph{映射}, 就是两个集合之间的一种对应 $f:A\to B$, 使得对于每一个 $a\in A$, 有一个唯一确定的 $b=f(a)$ 与之对应.
 		\item 当 $A$ 和 $B$ 都是实数集合的子集时, 它就是一个实变函数.
 		\item 当 $A$ 和 $B$ 都是复数集合的子集时, 它就是一个\emph{复变函数}.
 	\end{itemize}
-
 	\onslide<+->
-	\begin{example}
+	\begin{example}[nearnext]
 		$f(z)=\Re z,\arg z,|z|$, $z^n$ ($n$ 为整数), $\dfrac{z+1}{z^2+1}$ 都是复变函数.
 	\end{example}
-
 	\onslide<+->
 	\begin{definition}
-		\begin{itemize}
+		\begin{enumerate}
 			\item 称 $A$ 为 函数 $f$ 的\emph{定义域}.
-			\item 称 $\set{w=f(z)\mid z\in A}$ 为它的\emph{值域}.
-		\end{itemize} 
+			\item 称 $\{w=f(z)\mid z\in A\}$ 为它的\emph{值域}.
+		\end{enumerate} 
 	\end{definition}
-	\onslide<+->
-	上述函数的定义域和值域分别是什么?
+	\begin{itemize}
+		\item 上述函数的定义域和值域分别是什么?
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{多值复变函数}
-	\onslide<+->
-	在复变函数理论中, 我们常常会遇到\emph{多值的复变函数}, 也就是说一个 $z\in A$ 可能有多个 $w$ 与之对应.
-	\onslide<+->
-	例如 $\Arg z,\sqrt[n]z$ 等.
-	\onslide<+->
-	为了方便研究, 我们常常需要对每一个 $z$, 选取固定的一个 $f(z)$ 的值.
-	\onslide<+->
-	这样我们得到了这个多值函数的一个\emph{单值分支}.
+	\begin{itemize}
+		\item 在复变函数理论中, 我们常常会遇到\emph{多值的复变函数}, 也就是说一个 $z\in A$ 可能有多个 $w$ 与之对应.
+		\item 例如 $\Arg z,\sqrt[n]z$ 等.
+		\item 为了方便研究, 我们常常需要对每一个 $z$, 选取固定的一个 $f(z)$ 的值.
+		\item 这样我们得到了这个多值函数的一个\emph{单值分支}.
+	\end{itemize}
 	\onslide<+->
 	\begin{example}
 		$\arg z$ 是无穷多值函数 $\Arg z$ 的一个单值分支.
 	\end{example}
+\end{frame}
 
-	\onslide<+->
-	在考虑多值的情况下, 复变函数总有反函数.
-	\onslide<+->
-	如果 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\emph{一一对应}.
+
+\begin{frame}{多值复变函数}
+	\begin{itemize}
+		\item 在考虑多值的情况下, 复变函数总有反函数.
+		\item 如果 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\emph{一一对应}.
+	\end{itemize}
 	\onslide<+->
 	\begin{example}
 		$f(z)=z^n$ 的反函数就是 $f^{-1}(w)=\sqrt[n]{w}$.
@@ -51,22 +53,25 @@
 			当 $n=\pm1$ 时, $f$ 是一一对应.
 		}
 	\end{example}
-
-	\onslide<+->
-	若无特别声明, 本课程中\alert{复变函数总是指单值的复变函数}.
+	\begin{itemize}
+		\item 若无特别声明, 本课程中\alert{复变函数总是指单值的复变函数}.
+	\end{itemize}
 \end{frame}
 
 
-\subsection{映照}
-\begin{frame}{映照}
-	\onslide<+->
-	大部分复变函数的图像无法在三维空间中表示出来.
-	\onslide<+->
-	为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的\emph{映照}来表示这种对应关系,
-	\onslide<+->
-	其中 
-	\[w=u+iv=u(x,y)+iv(x,y)\]
-	的实部和虚部是两个二元实变函数.
+\subsection{复平面的变换}
+
+
+\begin{frame}{变换}
+	\begin{itemize}
+		\item 大部分复变函数的图像无法在三维空间中表示出来.
+		\item 为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的变换(也叫映射、映照)来表示这种对应关系.
+		\item 注意到 $w$ 的实部和虚部可以看作 $z$ 的实部和虚部的函数, 即
+		\[
+			w=u+\ii v=u(x,y)+\ii v(x,y)
+		\]
+		的实部和虚部是两个二元实变函数.
+	\end{itemize}
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -106,318 +111,381 @@
 \end{frame}
 
 
-\begin{frame}{例: 映照}
+\begin{frame}{例: 变换}
 	\onslide<+->
-	\begin{example}
-		函数 $w=\ov z$.
-		\onslide<+->{%
-			如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个映照对应的是关于 $z$ 轴的翻转变换.
-		}\onslide<+->{%
-			它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.
-			\begin{center}
-				\begin{tikzpicture}
-					\begin{scope}[xshift=-25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$x$}
-							(0,1.5) node[left] {$y$}
-							(0,-1.5) node[below,main] {$z$ 复平面};
-						\draw[cstcurve,main,smooth] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1) (-1.5,0)};
-						\coordinate (a) at (-1.2,-.3);
-						\coordinate (b) at (.6,.9);
-						\coordinate (c) at ($.8*(a)+.2*(b)$);
-						\coordinate (d) at ($.5*(a)+.5*(b)$);
-						\coordinate (e) at ($.2*(a)+.8*(b)$);
-						\draw[cstcurve,main] (a)--(b);
-					\end{scope}
-					\begin{scope}[xshift=25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$u$}
-							(0,1.5) node[left] {$v$}
-							(0,-1.5) node[below,second] {$w$ 复平面};
-						\draw[cstcurve,second,smooth] plot coordinates {(-1.5,0) (-1.7,.4) (-.3,.9) (.5,.7) (.9,0) (1.1,-1) (-.3,-1.2) (-.7,-1) (-1.5,0)};
-						\coordinate (A) at (-1.2,.3);
-						\coordinate (B) at (.6,-.9);
-						\coordinate (C) at ($.8*(A)+.2*(B)$);
-						\coordinate (D) at ($.5*(A)+.5*(B)$);
-						\coordinate (E) at ($.2*(A)+.8*(B)$);
-						\draw[cstcurve,second] (A)--(B);
-					\end{scope}
-					\draw[cstdash,smooth,third,cstra] (c) to[bend right=15] (C);
-					\draw[cstdash,smooth,third,cstra] (d) to[bend right=25] (D);
-					\draw[cstdash,smooth,third,cstra] (e) to[bend left=45] (E);
-					\fill[cstdot,main] (c) circle;
-					\fill[cstdot,main] (d) circle;
-					\fill[cstdot,main] (e) circle;
-					\fill[cstdot,second] (C) circle;
-					\fill[cstdot,second] (D) circle;
-					\fill[cstdot,second] (E) circle;
-				\end{tikzpicture}
-			\end{center}
-		}
+	\begin{example}[sidepic,righthand width=5cm,leftupper=0mm]
+		\begin{itemize}
+			\item 函数 $w=\ov z$.
+			\item 如果把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个变换是关于 $z$ 轴的翻转变换.
+			\item 它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.
+		\end{itemize}
+		\tcblower
+		\onslide<3->{%
+		\begin{tikzpicture}
+			\begin{scope}[scale=.8]
+				\draw[cstcurve,cstnra,third] (-2.5,1) to[bend right=30] (-2.5,-1);
+				\draw[third] (-3.3,0) node[rotate=90] {$w=\ov z$};
+				\draw[cstaxis] (-2.5,0)--(2,0) node[above] {$x,u$};
+				\draw[cstaxis] (-2,-2)--(-2,2) node[right] {$y,v$};
+				\draw (0,-2) node[below] {$z,w$ 平面重叠};
+				\begin{scope}[fourth,shift={(0,.7)}]
+					\draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+					\coordinate (a) at (-1.2,-.3);
+					\coordinate (b) at (.6,.9);
+					\coordinate (c) at ($(a)!.2!(b)$);
+					\coordinate (d) at ($(a)!.5!(b)$);
+					\coordinate (e) at ($(a)!.8!(b)$);
+					\draw[cstcurve] (a)--(b);
+				\end{scope}
+				\begin{scope}[second,shift={(0,-.7)}]
+					\draw[cstcurve,smooth cycle] plot coordinates {(-1.5,0) (-1.7,.4) (-.3,.9) (.5,.7) (.9,0) (1.1,-1) (-.3,-1.2) (-.7,-1)};
+					\coordinate (A) at (-1.2,.3);
+					\coordinate (B) at (.6,-.9);
+					\coordinate (C) at ($(A)!.2!(B)$);
+					\coordinate (D) at ($(A)!.5!(B)$);
+					\coordinate (E) at ($(A)!.8!(B)$);
+					\draw[cstcurve] (A)--(B);
+				\end{scope}
+				\begin{scope}[cstdash,cstra,third]
+					\draw (c) to (C);
+					\draw (d) to (D);
+					\draw (e) to (E);
+				\end{scope}
+			\end{scope}
+			\begin{scope}[cstdot,fourth]
+				\fill (c) circle;
+				\fill (d) circle;
+				\fill (e) circle;
+			\end{scope}
+			\begin{scope}[cstdot,second]
+				\fill (C) circle;
+				\fill (D) circle;
+				\fill (E) circle;
+			\end{scope}
+		\end{tikzpicture}}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 映照}
+\begin{frame}{例: 变换}
 	\onslide<+->
-	\begin{example}
-		函数 $w=az$.
-		\onslide<+->{%
-			设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.
-		}\onslide<+->{%
-			它把任一区域映成和它相似的区域.
-			\begin{center}
-				\begin{tikzpicture}
-					\begin{scope}[xshift=-25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$x$}
-							(0,1.5) node[left] {$y$}
-							(0,-1.5) node[below,main] {$z$ 复平面};
-						\draw[cstcurve,main,smooth] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1) (-1.5,0)};
-						\coordinate (a) at (-1.2,-.3);
-						\coordinate (b) at (.6,.9);
-						\coordinate (c) at ($.8*(a)+.2*(b)$);
-						\coordinate (d) at ($.5*(a)+.5*(b)$);
-						\coordinate (e) at ($.2*(a)+.8*(b)$);
-						\draw[cstcurve,main] (a)--(b);
-					\end{scope}
-					\begin{scope}[xshift=25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$u$}
-							(0,1.5) node[left] {$v$}
-							(0,-1.5) node[below,second] {$w$ 复平面};
-						\draw[cstcurve,second,smooth,scale=.8,rotate=90] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1) (-1.5,0)};
-						\coordinate (A) at (.24,-.96);
-						\coordinate (B) at (-.72,.48);
-						\coordinate (C) at ($.8*(A)+.2*(B)$);
-						\coordinate (D) at ($.5*(A)+.5*(B)$);
-						\coordinate (E) at ($.2*(A)+.8*(B)$);
-						\draw[cstcurve,second] (A)--(B);
-					\end{scope}
-					\draw[cstdash,smooth,third,cstra] (c) to[bend right=25] (C);
-					\draw[cstdash,smooth,third,cstra] (d) to[bend right=10] (D);
-					\draw[cstdash,smooth,third,cstra] (e) to[bend left=20] (E);
-					\fill[cstdot,main] (c) circle;
-					\fill[cstdot,main] (d) circle;
-					\fill[cstdot,main] (e) circle;
-					\fill[cstdot,second] (C) circle;
-					\fill[cstdot,second] (D) circle;
-					\fill[cstdot,second] (E) circle;
-				\end{tikzpicture}
-			\end{center}
-		}
+	\begin{example}[near,leftupper=0mm]
+		\begin{itemize}
+			\item 函数 $w=az$.
+			\item 设 $a=r\ee^{\ii\theta}$, 则这个变换是一个旋转变换(逆时针旋转 $\theta$)和一个相似变换(放大为 $r$ 倍)的复合.
+			\item 它把任一区域映成和它相似的区域.
+		\end{itemize}
+		\tcblower
+		\onslide<3->{%
+		\begin{center}
+			\begin{tikzpicture}[scale=.8]
+				\draw[cstcurve,cstnra,third] (-1,0)-- node[above=2pt] {$w=az$} (1,0);
+				\begin{scope}[shift={(-4,0)}]
+					\draw[cstaxis] (-2,0)--(2,0) node[above] {$x$};
+					\draw[cstaxis] (0,-2)--(0,2) node[right] {$y$};
+					\draw[cstcurve,fourth,smooth cycle] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+					\coordinate (a) at (-1.2,-.3);
+					\coordinate (b) at (.6,.9);
+					\coordinate (c) at ($(a)!.2!(b)$);
+					\coordinate (d) at ($(a)!.5!(b)$);
+					\coordinate (e) at ($(a)!.8!(b)$);
+					\draw[cstcurve,fourth] (a)--(b);
+				\end{scope}
+				\begin{scope}[shift={(4,0)}]
+					\draw[cstaxis] (-2,0)--(2,0) node[above] {$u$};
+					\draw[cstaxis] (0,-2)--(0,2) node[right] {$v$};
+					\draw[cstcurve,second,smooth cycle,scale=.8,rotate=90] plot coordinates {(-1.5,0) (-1.7,-.4) (-.3,-.9) (.5,-.7) (.9,0) (1.1,1) (-.3,1.2) (-.7,1)};
+					\coordinate (A) at (.24,-.96);
+					\coordinate (B) at (-.72,.48);
+					\coordinate (C) at ($(A)!.2!(B)$);
+					\coordinate (D) at ($(A)!.5!(B)$);
+					\coordinate (E) at ($(A)!.8!(B)$);
+					\draw[cstcurve,second] (A)--(B);
+				\end{scope}
+				\begin{scope}[cstdash,cstra,third]
+					\draw (c) to[bend right=25] (C);
+					\draw (d) to[bend right=10] (D);
+					\draw (e) to[bend left=20] (E);
+				\end{scope}
+				\begin{scope}[cstdot,fourth]
+					\fill (c) circle;
+					\fill (d) circle;
+					\fill (e) circle;
+				\end{scope}
+				\begin{scope}[cstdot,second]
+					\fill (C) circle;
+					\fill (D) circle;
+					\fill (E) circle;
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 映照}
+\begin{frame}{例: 变换}
 	\onslide<+->
-	\begin{example}
-		函数 $w=z^2$.
-		\onslide<+->{%
-			这个映照把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
-		}\onslide<+->{
-			\begin{center}
-				\begin{tikzpicture}
-					\begin{scope}[xshift=-25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$x$}
-							(0,1.5) node[left] {$y$}
-							(0,-1.5) node[below,main] {$z$ 复平面};
-						\fill[cstfille1] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)}) arc(37.5:7.5:1.5)--cycle;
-						\draw[cstcurve,main] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)});
-						\draw[cstcurve,main] (0,0)--({1.5*cos(7.5)},{1.5*sin(7.5)});
-						\coordinate (a) at (0,1);
-						\coordinate (b) at (.8,1.2);
-						\coordinate (c) at (-.6,-.3);
-					\end{scope}
-					\begin{scope}[xshift=25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\draw
-							(2,0) node[above] {$u$}
-							(0,1.5) node[left] {$v$}
-							(0,-1.5) node[below,second] {$w$ 复平面};
-						\fill[cstfille2] (0,0)--({1.8*cos(75)},{1.8*sin(75)}) arc(75:15:1.8)--cycle;
-						\draw[cstcurve,second] (0,0)--({1.8*cos(75)},{1.8*sin(75)});
-						\draw[cstcurve,second] (0,0)--({1.8*cos(15)},{1.8*sin(15)});
-						\coordinate (A) at (-1,0);
-						\coordinate (B) at (-.8,1.92);
-						\coordinate (C) at (.27,.36);
-					\end{scope}
-					\draw[cstdash,smooth,third,cstra] (a) to[bend left=10] (A);
-					\draw[cstdash,smooth,third,cstra] (b) to[bend left=20] (B);
-					\draw[cstdash,smooth,third,cstra] (c) to[bend right=25] (C);
-					\fill[cstdot,fill=main] (a) circle;
-					\fill[cstdot,fill=main] (b) circle;
-					\fill[cstdot,fill=main] (c) circle;
-					\fill[cstdot,fill=second] (A) circle;
-					\fill[cstdot,fill=second] (B) circle;
-					\fill[cstdot,fill=second] (C) circle;
-				\end{tikzpicture}
-			\end{center}
-		}
+	\begin{example}[near,leftupper=0mm]
+		\begin{itemize}
+			\item 函数 $w=z^2$.
+			\item 这个变换把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
+		\end{itemize}
+		\tcblower
+		\onslide<3->{%
+		\begin{center}
+			\begin{tikzpicture}
+				\begin{scope}[xshift=-25mm]
+					\draw[cstaxis] (-2,0)--(2,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\draw
+						(2,0) node[above] {$x$}
+						(0,1.5) node[left] {$y$};
+					\fill[cstfille1] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)}) arc(37.5:7.5:1.5)--cycle;
+					\draw[cstcurve,main] (0,0)--({1.5*cos(37.5)},{1.5*sin(37.5)});
+					\draw[cstcurve,main] (0,0)--({1.5*cos(7.5)},{1.5*sin(7.5)});
+					\coordinate (a) at (0,1);
+					\coordinate (b) at (.8,1.2);
+					\coordinate (c) at (-.6,-.3);
+				\end{scope}
+				\begin{scope}[xshift=25mm]
+					\draw[cstaxis] (-2,0)--(2,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\draw
+						(2,0) node[above] {$u$}
+						(0,1.5) node[left] {$v$};
+					\fill[cstfille2] (0,0)--({1.8*cos(75)},{1.8*sin(75)}) arc(75:15:1.8)--cycle;
+					\draw[cstcurve,second] (0,0)--({1.8*cos(75)},{1.8*sin(75)});
+					\draw[cstcurve,second] (0,0)--({1.8*cos(15)},{1.8*sin(15)});
+					\coordinate (A) at (-1,0);
+					\coordinate (B) at (-.8,1.92);
+					\coordinate (C) at (.27,.36);
+				\end{scope}
+				\draw[cstdash,smooth,third,cstra] (a) to[bend left=10] (A);
+				\draw[cstdash,smooth,third,cstra] (b) to[bend left=20] (B);
+				\draw[cstdash,smooth,third,cstra] (c) to[bend right=25] (C);
+				\fill[cstdot,fill=main] (a) circle;
+				\fill[cstdot,fill=main] (b) circle;
+				\fill[cstdot,fill=main] (c) circle;
+				\fill[cstdot,fill=second] (A) circle;
+				\fill[cstdot,fill=second] (B) circle;
+				\fill[cstdot,fill=second] (C) circle;
+			\end{tikzpicture}
+		\end{center}}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 映照}
+\begin{frame}{例: 变换}
 	\onslide<+->
-	\begin{example}[续]
-		由于 $u=x^2-y^2,v=2xy$.
-		\onslide<+->{%
-			因此它把 $z$ 复平面上两族分别以直线 $y=\pm x$ 和坐标轴为渐近线的等轴双曲线 $x^2-y^2=c_1,2xy=c_2$
-		}\onslide<+->{%
-			分别映射为 $w$ 复平面上的两族平行直线 $u=c_1,v=c_2$.
-		}\onslide<2->{
-			\begin{center}
-				\begin{tikzpicture}
-					\begin{scope}[xshift=-25mm]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\begin{scope}[cstcurve,main,smooth]
-							\draw (-1.2,-1.2)--(1.2,1.2);
-							\draw (-1.2,1.2)--(1.2,-1.2);
-							\draw[domain=-35:35]
-								plot ({sec(\x)},{tan(\x)})
-								plot ({-sec(\x)},{tan(\x)})
-								plot ({tan(\x)},{sec(\x)})
-								plot ({tan(\x)},{-sec(\x)});
-							\draw[domain=-46:46]
-								plot ({(.8*sec(\x))},{0.8*tan(\x)})
-								plot ({(-.8*sec(\x))},{0.8*tan(\x)})
-								plot ({0.8*tan(\x)},{0.8*sec(\x)})
-								plot ({0.8*tan(\x)},{0.8*-sec(\x)});
-							\draw[domain=-57:57]
-								plot ({(.6*sec(\x))},{0.6*tan(\x)})
-								plot ({(-.6*sec(\x))},{0.6*tan(\x)})
-								plot ({0.6*tan(\x)},{0.6*sec(\x)})
-								plot ({0.6*tan(\x)},{0.6*-sec(\x)});
-							\draw[domain=-68:68]
-								plot ({(.4*sec(\x))},{0.4*tan(\x)})
-								plot ({(-.4*sec(\x))},{0.4*tan(\x)})
-								plot ({0.4*tan(\x)},{0.4*sec(\x)})
-								plot ({0.4*tan(\x)},{0.4*-sec(\x)});
-						\end{scope}
-						\begin{scope}[cstcurve,second,smooth,rotate=45,visible on=<4->]
-							\draw (-1.2,-1.2)--(1.2,1.2);
-							\draw (-1.2,1.2)--(1.2,-1.2);
-							\draw[domain=-35:35]
-								plot ({sec(\x)},{tan(\x)})
-								plot ({-sec(\x)},{tan(\x)})
-								plot ({tan(\x)},{sec(\x)})
-								plot ({tan(\x)},{-sec(\x)});
-							\draw[domain=-46:46]
-								plot ({(.8*sec(\x))},{0.8*tan(\x)})
-								plot ({(-.8*sec(\x))},{0.8*tan(\x)})
-								plot ({0.8*tan(\x)},{0.8*sec(\x)})
-								plot ({0.8*tan(\x)},{0.8*-sec(\x)});
-							\draw[domain=-57:57]
-								plot ({(.6*sec(\x))},{0.6*tan(\x)})
-								plot ({(-.6*sec(\x))},{0.6*tan(\x)})
-								plot ({0.6*tan(\x)},{0.6*sec(\x)})
-								plot ({0.6*tan(\x)},{0.6*-sec(\x)});
-							\draw[domain=-68:68]
-								plot ({(.4*sec(\x))},{0.4*tan(\x)})
-								plot ({(-.4*sec(\x))},{0.4*tan(\x)})
-								plot ({0.4*tan(\x)},{0.4*sec(\x)})
-								plot ({0.4*tan(\x)},{0.4*-sec(\x)});
-						\end{scope}
+	\begin{example}[near,leftupper=0mm][续]
+		\begin{itemize}
+			\item 由于 $u=x^2-y^2,v=2xy$.
+			\item 因此它把 $z$ 复平面上以直线 $y=\pm x$ 为渐近线的等轴双曲线 $x^2-y^2=c_1$ 变换为 $w$ 复平面上的直线 $u=c_1$,
+			\item 把 $z$ 复平面上以坐标轴为渐近线的等轴双曲线 $
+			2xy=c_2$ 变换为 $w$ 复平面上的直线 $v=c_2$.
+		\end{itemize}
+		\tcblower
+		\onslide<3->{%
+		\begin{center}
+			\begin{tikzpicture}[scale=.9]
+				\begin{scope}[xshift=-25mm]
+					\draw[cstaxis] (-2,0)--(2,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\begin{scope}[cstcurve,main,smooth]
+						\draw (-1.2,-1.2)--(1.2,1.2);
+						\draw (-1.2,1.2)--(1.2,-1.2);
+						\draw[domain=-35:35]
+							plot ({sec(\x)},{tan(\x)})
+							plot ({-sec(\x)},{tan(\x)})
+							plot ({tan(\x)},{sec(\x)})
+							plot ({tan(\x)},{-sec(\x)});
+						\draw[domain=-46:46]
+							plot ({(.8*sec(\x))},{0.8*tan(\x)})
+							plot ({(-.8*sec(\x))},{0.8*tan(\x)})
+							plot ({0.8*tan(\x)},{0.8*sec(\x)})
+							plot ({0.8*tan(\x)},{0.8*-sec(\x)});
+						\draw[domain=-57:57]
+							plot ({(.6*sec(\x))},{0.6*tan(\x)})
+							plot ({(-.6*sec(\x))},{0.6*tan(\x)})
+							plot ({0.6*tan(\x)},{0.6*sec(\x)})
+							plot ({0.6*tan(\x)},{0.6*-sec(\x)});
+						\draw[domain=-68:68]
+							plot ({(.4*sec(\x))},{0.4*tan(\x)})
+							plot ({(-.4*sec(\x))},{0.4*tan(\x)})
+							plot ({0.4*tan(\x)},{0.4*sec(\x)})
+							plot ({0.4*tan(\x)},{0.4*-sec(\x)});
 					\end{scope}
-					\begin{scope}[xshift=25mm,visible on=<3->]
-						\draw[cstaxis] (-2,0)--(2,0);
-						\draw[cstaxis] (0,-1.5)--(0,1.5);
-						\begin{scope}[cstcurve,second,visible on=<5->]
-							\draw (-1.3,-1.2)--(1.3,-1.2);
-							\draw (-1.3,-0.9)--(1.3,-.9);
-							\draw (-1.3,-0.6)--(1.3,-.6);
-							\draw (-1.3,-0.3)--(1.3,-.3);
-							\draw (-1.3,0)--(1.3,0);
-							\draw (-1.3,0.3)--(1.3,.3);
-							\draw (-1.3,0.6)--(1.3,.6);
-							\draw (-1.3,0.9)--(1.3,.9);
-							\draw (-1.3,1.2)--(1.3,1.2);
-						\end{scope}
-						\begin{scope}[cstcurve,main,rotate=90]
-							\draw (-1.3,-1.2)--(1.3,-1.2);
-							\draw (-1.3,-0.9)--(1.3,-.9);
-							\draw (-1.3,-0.6)--(1.3,-.6);
-							\draw (-1.3,-0.3)--(1.3,-.3);
-							\draw (-1.3,0)--(1.3,0);
-							\draw (-1.3,0.3)--(1.3,.3);
-							\draw (-1.3,0.6)--(1.3,.6);
-							\draw (-1.3,0.9)--(1.3,.9);
-							\draw (-1.3,1.2)--(1.3,1.2);
-						\end{scope}
+					\begin{scope}[cstcurve,second,smooth,rotate=45,visible on=<4->]
+						\draw (-1.2,-1.2)--(1.2,1.2);
+						\draw (-1.2,1.2)--(1.2,-1.2);
+						\draw[domain=-35:35]
+							plot ({sec(\x)},{tan(\x)})
+							plot ({-sec(\x)},{tan(\x)})
+							plot ({tan(\x)},{sec(\x)})
+							plot ({tan(\x)},{-sec(\x)});
+						\draw[domain=-46:46]
+							plot ({(.8*sec(\x))},{0.8*tan(\x)})
+							plot ({(-.8*sec(\x))},{0.8*tan(\x)})
+							plot ({0.8*tan(\x)},{0.8*sec(\x)})
+							plot ({0.8*tan(\x)},{0.8*-sec(\x)});
+						\draw[domain=-57:57]
+							plot ({(.6*sec(\x))},{0.6*tan(\x)})
+							plot ({(-.6*sec(\x))},{0.6*tan(\x)})
+							plot ({0.6*tan(\x)},{0.6*sec(\x)})
+							plot ({0.6*tan(\x)},{0.6*-sec(\x)});
+						\draw[domain=-68:68]
+							plot ({(.4*sec(\x))},{0.4*tan(\x)})
+							plot ({(-.4*sec(\x))},{0.4*tan(\x)})
+							plot ({0.4*tan(\x)},{0.4*sec(\x)})
+							plot ({0.4*tan(\x)},{0.4*-sec(\x)});
 					\end{scope}
-				\end{tikzpicture}
-			\end{center}
-		}
+				\end{scope}
+				\begin{scope}[xshift=25mm,visible on=<3->]
+					\draw[cstaxis] (-2,0)--(2,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\begin{scope}[cstcurve,second,visible on=<4->]
+						\draw (-1.3,-1.2)--(1.3,-1.2);
+						\draw (-1.3,-0.9)--(1.3,-.9);
+						\draw (-1.3,-0.6)--(1.3,-.6);
+						\draw (-1.3,-0.3)--(1.3,-.3);
+						\draw (-1.3,0)--(1.3,0);
+						\draw (-1.3,0.3)--(1.3,.3);
+						\draw (-1.3,0.6)--(1.3,.6);
+						\draw (-1.3,0.9)--(1.3,.9);
+						\draw (-1.3,1.2)--(1.3,1.2);
+					\end{scope}
+					\begin{scope}[cstcurve,main,rotate=90]
+						\draw (-1.3,-1.2)--(1.3,-1.2);
+						\draw (-1.3,-0.9)--(1.3,-.9);
+						\draw (-1.3,-0.6)--(1.3,-.6);
+						\draw (-1.3,-0.3)--(1.3,-.3);
+						\draw (-1.3,0)--(1.3,0);
+						\draw (-1.3,0.3)--(1.3,.3);
+						\draw (-1.3,0.6)--(1.3,.6);
+						\draw (-1.3,0.9)--(1.3,.9);
+						\draw (-1.3,1.2)--(1.3,1.2);
+					\end{scope}
+				\end{scope}
+			\end{tikzpicture}
+		\end{center}}
+		\bigdel
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 映照的像}\small
+\begin{frame}{例: 变换的像}\small
 	\onslide<+->
-	\begin{example}
-		求下列集合在映照 $w=z^2$ 下的像.
+	\begin{example}[nearnext]
+		求下列集合在变换 $w=z^2$ 下的像.
 		\begin{enumerate}
-			\item 线段 $0<|z|<2,\arg z=\pi/2$.
-			\item 双曲线 $x^2-y^2=4$.
-			\item 扇形区域 $0<\arg z<\pi/4,0<|z|<2$.
+			\item 线段 $0<|z|<3,\arg z=\frac\pi4$.
+			\item 双曲线 $x^2-y^2=2$.
+			\item 扇形区域 $0<\arg z<\frac\pi3,0<|z|<2$.
 		\end{enumerate}
 	\end{example}
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		\begin{enumerate}
-			\item 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
-				\onslide<+->{%
-					因此它的像是线段 $0<|w|<4,\arg w=\pi$.
-				}
-			\item 由于 $w=u+iv=z^2=(x^2-y^2)+2xyi$.
-				\onslide<+->{%
-					因此 $u=x^2-y^2=4,v=2xy$.
-				}\onslide<+->{%
-					可以说明当 $u=4$ 时, 对任意 $v$, $u+iv$ 都是该双曲线上某一点的像.
-				}\onslide<+->{%
-					所以这条双曲线的像是直线 $\Re w=4$.
-				}
-			\item 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
-				\onslide<+->{%
-					因此它的像是扇形区域 $0<\arg w<\pi/2,0<|w|<4$.
-				}
+			\item 设 $z=r\ee^{\frac{\pi\ii}4}$, 则 $w=z^2=r^2\ee^{\frac{\pi\ii}2}=\ii r^2$.
+			\onslide<+->{%
+			因此它的像是连接 $0$ 和 $9\ii$ 的线段: $0<|w|<9,\arg w=\frac\pi2$.
+			}
+			\item 由于 $w=u+\ii v=z^2=(x^2-y^2)+2xy\ii$.
+			\onslide<+->{%
+			因此 $u=x^2-y^2=2$.
+			}\onslide<+->{%
+			由于任意 $2+\ii v$ 均存在平方根, 因此所求的像就是直线 $\Re w=2$.
+			}
+			\item 设 $z=r\ee^{\ii\theta}$, 则 $w=r^2\ee^{2\ii\theta}$.
+			\onslide<+->{%
+			因此它的像是扇形区域 $0<\arg w<\frac{2\pi}3,0<|w|<4$.
+			}
 		\end{enumerate}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 映照的像}
+\begin{frame}{例: 变换的像}
 	\onslide<+->
-	\begin{example}
-		求圆周 $|z|=2$ 在映照 $w=\dfrac{z+1}{z-1}$ 下的像.
+	\begin{example}[near]
+		求圆周 $\abs{z}=2$ 在映射 $w=\dfrac{z+1}{z-1}$ 下的像.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
-		由于 $z=\dfrac{w+1}{w-1}$, $\abs{\dfrac{w+1}{w-1}}=2$,
-		\onslide<+->{%
-			因此
-			\[|w+1|=2|w-1|,\quad w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4,\]}
-		\onslide<+->{%
-			\[w\ov w-\frac53 w-\frac53\ov w+1=0,\quad \abs{w-\frac53}^2=\dfrac{16}9,\]
-		}\onslide<+->{%
-			即 $\abs{w-\dfrac53}=\dfrac43$, 是一个圆周.
-		}
+	\begin{solution}[near,leftupper=0mm]
+		\begin{itemize}
+			\item 不难看出 $z=\dfrac{w+1}{w-1}$.
+			\item 由 $\biggabs{\dfrac{w+1}{w-1}}=2$ 可知 $\abs{w+1}=2\abs{w-1}$.
+			\item 从而 $w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4$.
+			\item $w\ov w-\dfrac53 w-\dfrac53\ov w+1=0$.
+			\item $\biggabs{w-\dfrac53}^2=\dfrac{16}9$, 即 $\biggabs{w-\dfrac53}=\dfrac43$, 它是一个圆周.
+		\end{itemize}
+		\meddel
 	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例: 变换的像}
+	\begin{itemize}
+		\item 形如
+		\[
+			f(z)=\frac{az+b}{cz+d}
+		\]
+		的映射叫作\emph{分式线性映射}, 其中 $ad\neq bc$.
+		\item 它总把直线和圆映成直线或圆.
+	\end{itemize}
+	\onslide<+->
+	\begin{center}
+		\begin{tikzpicture}[scale=.4]
+			\draw[cstcurve,cstnra,third] (-1.5,0)-- node[above] {$w=1/z$} (1.5,0);
+			\begin{scope}[shift={(-7,0)}]
+				\begin{scope}[cstcurve,fourth]
+					\filldraw[fill=fourth!15] (-2,0) circle (2);
+					\filldraw[fill=fourth!35] (-1,0) circle (1);
+					\filldraw[fill=fourth!55] (-.5,0) circle (.5);
+					\filldraw[fill=fourth!75] (-.3333,0) circle (.3333);
+				\end{scope}
+				\begin{scope}[cstcurve,main]
+					\filldraw[fill=main!15] (2,0) circle (2);
+					\filldraw[fill=main!35] (1,0) circle (1);
+					\filldraw[fill=main!55] (.5,0) circle (.5);
+					\filldraw[fill=main!75] (.3333,0) circle (.3333);
+				\end{scope}
+				\draw[cstaxis] (-4.8,0)--(4.8,0);
+				\draw[cstaxis] (0,-3)--(0,3);
+			\end{scope}
+			\begin{scope}[shift={(7,0)}]
+				\begin{scope}[cstcurve,fourth]
+					\fill[fourth!75] (-4,-3) rectangle (-3,3);
+					\fill[fourth!55] (-3,-3) rectangle (-2,3);
+					\fill[fourth!35] (-2,-3) rectangle (-1,3);
+					\fill[fourth!15] (-1,-3) rectangle (-.5,3);
+				\end{scope}
+				\begin{scope}[cstcurve,main]
+					\fill[main!15] (.5,-3) rectangle (1,3);
+					\fill[main!35] (1,-3) rectangle (2,3);
+					\fill[main!55] (2,-3) rectangle (3,3);
+					\fill[main!75] (3,-3) rectangle (4,3);
+				\end{scope}
+				\begin{scope}[cstcurve,fourth]
+					\draw (-.5,-3)--(-.5,3);
+					\draw (-1,-3)--(-1,3);
+					\draw (-2,-3)--(-2,3);
+					\draw (-3,-3)--(-3,3);
+				\end{scope}
+				\begin{scope}[cstcurve,main]
+					\draw (3,-3)--(3,3);
+					\draw (2,-3)--(2,3);
+					\draw (1,-3)--(1,3);
+					\draw (.5,-3)--(.5,3);
+				\end{scope}
+				\draw[cstaxis] (-4.8,0)--(4.8,0);
+				\draw[cstaxis] (0,-3)--(0,3);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	\begin{exercise}
+		直线在分式线性映射 $w=\dfrac{az+b}{cz+d}$ 下的像一定经过复数\fillblankframe[3em][3mm]{$\dfrac ac$}.
+	\end{exercise}
 \end{frame}
 

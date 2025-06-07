@@ -1,0 +1,529 @@
+\section{曲线和区域}
+
+\subsection{复数表平面曲线}
+\begin{frame}{例: 复数方程表平面图形}
+	\onslide<+->
+	很多的平面图形能用复数形式的方程来表示, 这种表示方程有些时候会显得更加直观和易于理解.
+
+	\onslide<+->
+	\begin{example}
+		$|z+\ii|=2$.
+		\onslide<+->{%
+			该方程表示与 $-\ii $ 的距离为 $2$ 的点全体, 即圆心为 $-\ii $ 半径为 $2$ 的圆.
+		}\onslide<+->{%
+			一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
+		}
+		\onslide<3->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-2)--(0,1);
+				\coordinate (A) at (0,-.6);
+				\fill[cstdot,second] (A) circle
+					node[left] {$-\ii $};
+				\draw[cstcurve,main] (A) circle(1.2);
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 复数方程表平面图形}
+	\onslide<+->
+	\begin{example}
+		$|z-2\ii|=|z+2|$.
+		\onslide<+->{%
+			该方程表示与 $2\ii$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
+		}\onslide<+->{%
+			两边同时平方化简可得 $x+y=0$.
+		}
+		\onslide<2->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstaxis] (-1.5,0)--(1.5,0);
+				\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\coordinate (A) at (-1,0);
+				\fill[cstdot,second] (A) circle node[above] {$-2$};
+				\coordinate (B) at (0,1);
+				\fill[cstdot,second] (B) circle node[left] {$2\ii$};
+				\draw[cstcurve,main] (-1.2,1.2)--(1.2,-1.2);
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+	\onslide<+->
+	
+	\begin{example}
+		$\Im(i+\ov z)=4$.
+		\onslide<+->{%
+			设 $z=x+y\ii$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 复数方程表平面图形}
+	\onslide<+->
+	\begin{example}
+		$|z-z_1|+|z-z_2|=2a$.
+		\begin{itemize}
+			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
+			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
+			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示空集.	
+		\end{itemize}
+	\end{example}
+	\onslide<+->
+	\begin{example}
+		$|z-z_1|-|z-z_2|=2a$.
+		\begin{itemize}
+			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支;
+			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
+			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示空集.	
+		\end{itemize}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 复数方程表平面图形}
+	\onslide<+->
+	\begin{exercise}
+		$z^2+\ov z^2=1$ 和 $z^2-\ov z^2=i$ 分别表示什么图形?
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		双曲线 $x^2-y^2=\dfrac12$ 和双曲线 $xy=\dfrac14$.
+	\end{answer}
+\end{frame}
+
+
+\subsection{区域的定义}
+\begin{frame}{邻域}
+	\onslide<+->
+	为了引入极限的概念, 我们需要考虑点的邻域.
+	\onslide<+->
+	类比于高等数学中的邻域和去心邻域, 我们在复变函数中, 称开圆盘
+	\[U(z_0,\delta)=\set{z:|z-z_0|<\delta}
+	\]
+	为 $z_0$ 的一个 \emph{$\delta$-邻域},
+	\onslide<+->
+	称去心开圆盘
+	\[\Uc(z_0,\delta)=\set{z:0<|z-z_0|<\delta}
+	\]
+	为 $z_0$ 的一个\emph{去心 $\delta$-邻域}.
+
+	\onslide<2->
+	\begin{figure}[hbpt]
+		\centering
+		\begin{minipage}{.48\textwidth}
+			\centering
+			\begin{tikzpicture}
+				\coordinate (A);
+				\filldraw[cstcurve,main,cstfill1] (A) circle (1.5);
+				\draw[cstcurve,cstra,second] (A)--(1.2,.9)
+					node[midway,above left] {$\delta$};
+				\fill[cstdot,second] (A) circle
+					node[left] {$z_0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.48\textwidth}
+			\centering
+			\begin{tikzpicture}[visible on=<3->]
+				\coordinate (A);
+				\filldraw[cstcurve,main,cstfill1] (A) circle (1.5);
+				\draw[cstcurve,cstra,second] (A)--(1.2,.9)
+					node[midway,above left] {$\delta$};
+				\filldraw[cstdote,draw=main] (A) circle
+					node[left,second] {$z_0$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{内部、外部、边界}
+	\onslide<+->
+	设 $G$ 是复平面的一个子集, $z_0\in\BC$.
+	\onslide<+->
+	它们的位置关系有三种可能:
+	\begin{enumerate}
+		\item 如果存在 $z_0$ 的一个邻域 $U$ 完全包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\emph{内点}.
+		\item 如果存在 $z_0$ 的一个邻域 $U$ 完全不包含在 $G$ 中, 则称 $z_0$ 是 $G$ 的一个\emph{外点}.
+		\item 如果 $z_0$ 的任何一个邻域 $U$, 都有属于和不属于 $G$ 的点, 则称 $z_0$ 是 $G$ 的一个\emph{边界点}.
+	\end{enumerate}
+	\onslide<+->
+	显然内点都属于 $G$, 外点都不属于 $G$, 而边界点则都有可能.
+	\onslide<+->
+	这类比于区间的端点和区间的关系.
+
+	\onslide<1->
+	\begin{center}
+		\begin{tikzpicture}
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2,0) (1.83,.9) (.64,1.46) (-.63,1.6) (-1.66,1.01) (-2.35,0) (-1.81,-1.06) (-.73,-1.68) (.74,-1.57) (1.82,-.91) (2,0)};
+			\begin{scope}[visible on=<3->]
+				\coordinate (A) at (-.7,0);
+				\draw[cstcurve,second] (A) circle (.5) node[above] {$z_0$};
+				\fill[cstdot,second] (A) circle;
+			\end{scope}
+			\begin{scope}[visible on=<5->]
+				\coordinate (B) at (2,0);
+				\draw[cstcurve,third] (B) circle (.5) node[right] {$z_0$};
+				\fill[cstdot,third] (B) circle;
+			\end{scope}
+			\begin{scope}[visible on=<4->]
+				\coordinate (C) at (4,0);
+				\draw[cstcurve,fourth] (C) circle (.5) node[above] {$z_0$};
+				\fill[cstdot,fourth] (C) circle;
+			\end{scope}
+			\draw (.5,0) node[main] {$G$};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{开集和闭集、有界和无界}
+	\onslide<+->
+	\begin{definition}
+		\begin{enumerate}
+			\item 如果 $G$ 的所有点都是内点, 也就是说, $G$ 的边界点都不属于它, 称 $G$ 是一个\emph{开集}.
+			\item 如果 $G$ 的所有边界点都属于 $G$, 称 $G$ 是一个\emph{闭集}. 这等价于它的补集是开集.
+		\end{enumerate}
+	\end{definition}
+	\onslide<+->
+	例如
+	\[|z-z_0|<R,\quad 1<\Re z<3,\quad\frac\pi4<\arg z<\dfrac{3\pi}4
+	\]
+	都是开集.
+	\onslide<+->
+	$G$ 是一个闭集当且仅当它的补集是开集.
+	\onslide<+->
+	直观上看: 开集往往由 $>,<$ 的不等式给出, 闭集往往由 $\ge,\le$ 的不等式给出.
+	\onslide<+->
+	不过注意这并不是绝对的.
+
+	\onslide<+->
+	如果 $D$ 可以被包含在某个开圆盘 $U(0,R)$ 中, 则称它是\emph{有界}的.
+	\onslide<+->
+	否则称它是\emph{无界}的.
+\end{frame}
+
+
+\begin{frame}{区域和闭区域}
+	\onslide<+->
+	\begin{definition}
+		如果开集 $D$ 的任意两个点之间都可以用一条完全包含在 $D$ 中的折线连接起来, 则称 $D$ 是一个\emph{区域}.
+		\onslide<+->{%
+			也就是说, 区域是连通的开集.
+		}
+	\end{definition}
+
+	\onslide<+->
+	观察下方的图案,
+	\onslide<+->
+	阴影部分(不包含线条部分)中任意两点可用折线连接, 因此它是一个区域.
+	\onslide<+->
+	这些线条和点构成了它的边界.
+
+	\onslide<3->
+	\begin{center}
+		\begin{tikzpicture}[scale=.8]
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93) (2.81,0)};
+			\filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+			\filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+			\fill[cstdot,main] (1.5,0) circle;
+			\fill[cstdot,main] (1.6,-.5) circle;
+			\draw[cstcurve,second,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+			\begin{scope}[visible on=<4->]
+				\coordinate [label=left:\textcolor{second}{$z_1$}] (A) at (-1,.8);
+				\coordinate [label=below:\textcolor{second}{$z_2$}] (B) at (1,-.8);
+				\draw[cstcurve,second] (A)--(-.2,.5)--(.2,-.5)--(B);
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	\onslide<+->
+	区域和它的边界一起构成了\emph{闭区域}, 记作 $\ov D$.
+	\onslide<+->
+	它是一个闭集.
+	\onslide<+->
+	数学中边界的概念与日常所说的边界是两码事. 例如区域 $|z|>1$ 的边界是 $|z|=1$, 其闭区域是 $|z|\ge 1$.
+\end{frame}
+
+
+\begin{frame}{常见区域}\small
+	\onslide<+->
+	很多区域可以由复数的实部、虚部、模和辐角的不等式所确定.
+	\onslide<7->{%
+		下方区域对应的闭区域是什么?
+	}
+	\vspace{-.5\baselineskip}
+	\onslide<2->
+	\begin{figure}[hbpt]
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,0) rectangle (1.2,.8);
+				\draw (0,-1.5) node[below,align=center] {上半平面\\$\Im z>0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,0) rectangle (1.2,-.8);
+				\draw (0,-1.5) node[below,align=center] {下半平面\\$\Im z<0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<3->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1.2,-1) rectangle (0,1);
+				\draw (0,-1.5) node[below,align=center] {左半平面\\$\Re z<0$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<3->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (0,1) rectangle (1.2,-1);
+				\draw (0,-1.5) node[below,align=center] {右半平面\\$\Re z>0$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
+	\vspace{-.5\baselineskip}	
+	\begin{figure}[hbpt]
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<4->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-.6,-1) rectangle (.2,1);
+				\draw[cstcurve,main] (-.6,-1)--(-.6,1);
+				\draw[cstcurve,main] (.2,-1)--(.2,1);
+				\draw (0,-1.5) node[below,align=center] {竖直带状区域\\$x_1<\Re z<x_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<4->]
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\fill[cstfille1] (-1,-.4) rectangle (1,.4);
+				\draw[cstcurve,main] (-1,-.4)--(1,-.4);
+				\draw[cstcurve,main] (-1,.4)--(1,.4);
+				\draw (0,-1.5) node[below,align=center] {水平带状区域\\$y_1<\Im z<y_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<5->]
+				\draw[cstaxis](-.5,0)--(2.5,0);
+				\draw[cstaxis](0,-.5)--(0,2.5);
+				\coordinate (A) at (0,0);
+				\coordinate (B) at ({2.2*cos(60)},{2.2*sin(60)});
+				\coordinate (C) at ({2.2*cos(10)},{2.2*sin(10)});
+				\fill[cstfille1] (A)--(B) arc(60:10:2.2)--cycle;
+				\draw[cstcurve,main] (C)--(A)--(B);
+				\draw (1,-.5) node[below,align=center] {角状区域\\$\alpha_1<\arg z<\alpha_2$};
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.24\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.7,visible on=<6->]
+				\filldraw[cstcurve,main,cstfill1] (0,0) circle (1.2);
+				\filldraw[cstcurve,main,fill=white] (0,0) circle (.6);
+				\draw[cstaxis](-1.5,0)--(1.5,0);
+				\draw[cstaxis](0,-1.5)--(0,1.5);
+				\draw (0,-1.5) node[below,align=center] {圆环域\\$r<|z|<R$};
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
+\end{frame}
+
+
+\subsection{区域的特性}
+\begin{frame}{闭路}
+	\onslide<+->
+	设 $x(t),y(t),t\in[a,b]$ 是两个连续函数,
+	\onslide<+->
+	则参变量方程
+	$\begin{cases}x=x(t),& \\y=y(t),&\end{cases}t\in[a,b]$ 定义了一条\emph{连续曲线}.
+	\onslide<+->
+	这也等价于 $C:z=z(t)=x(t)+\iiy(t),t\in[a,b]$.
+	\onslide<+->
+	例如
+	\begin{itemize}
+		\item $z(t)=z_1+(z_2-z_1)t,t\in[0,1]$ 表示连接 $z_1,z_2$ 的直线段;
+		\item $z(\theta)=z_0+r(\cos \theta+\ii\sin \theta),\theta\in[0,2\pi]$ 表示以 $z_0$ 为圆心, $r$ 为半径的圆周.
+	\end{itemize}
+
+	\onslide<+->
+	如果除了两个端点有可能重叠外, 其它情形不会出现重叠的点, 则称 $C$ 是\emph{简单曲线}.
+	\onslide<+->
+	\onslide<+->
+	如果还满足两个端点重叠, 即 $z(a)=z(b)$, 则称 $C$ 是\emph{简单闭曲线}或\emph{闭路}.
+
+	\onslide<7->
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[cstaxis](-.3,.5)--(9.5,.5);
+			\draw[cstaxis](0,.2)--(0,2.5);
+			\coordinate (A) at (1.2,1.4);
+			\coordinate (B) at (4,1.4);
+			\draw[cstcurve,main,smooth] plot coordinates {(A) (2,2.1) (3,1.1) (B)};
+			\fill[cstdot,second] (A) circle node[left] {$z(a)$};
+			\fill[cstdot,second] (B) circle node[above] {$z(b)$};
+			\draw[cstcurve,second,smooth,visible on=<8->] plot coordinates {(4.8,.7) (5.76,1.25) (6.31,2) (5.77,2.71) (4.77,2.45) (4.78,1.55) (6.2,.7) };
+			\draw[cstcurve,main,smooth,visible on=<9->] plot coordinates {(9.02,1.5) (8.9,1.98) (8.33,2.27) (7.69,2.18) (7.07,1.95) (6.94,1.5) (7.11,1.04) (7.68,.75) (8.34,.82) (8.93,1.08) (9.02,1.5)};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{闭路的内部和外部}
+	\onslide<+->
+	闭路 $C$ 把复平面划分成了两个区域, 一个有界一个无界.
+	\onslide<+->
+	分别称这两个区域是 $C$ 的\emph{内部}和\emph{外部}.
+	\onslide<+->
+	$C$ 是它们的公共边界.
+	\onslide<1->
+	\begin{center}
+		\begin{tikzpicture}
+			\fill[cstfille1] (-2,-1.5) rectangle (2,1.5);
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(1.18,0) (.93,.64) (.33,1.06) (-.32,1.08) (-.83,.59) (-1.15,0) (-.83,-.68) (-.36,-1) (.36,-1.08) (.83,-.69) (1.18,0)};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{单连通区域和多连通区域}
+	\onslide<+->
+	在前面所说的几个常见区域的例子中, 我们在区域中画一条闭路.
+	\onslide<+->
+	除了圆环域之外, 闭路的内部仍然包含在这个区域内.
+
+	\onslide<+->
+	\begin{definition}
+		如果区域 $D$ 中的任一闭路的内部都包含在 $D$ 中, 则称 $D$ 是\emph{单连通区域}.
+		否则称之为\emph{多连通区域}.
+	\end{definition}
+
+	\onslide<+->
+	\onslide<+->
+	\onslide<+->
+	单连通区域内的任一闭路可以``连续地变形''成一个点.
+	\onslide<+->
+	这也等价于: 设 $\ell_0,\ell_1$ 是从 $A$ 到 $B$ 的两条连续曲线, 则 $\ell_0$ 可以连续地变形为 $\ell_1$ 且保持端点不动.
+	\onslide<4->
+	\begin{center}
+		\begin{tikzpicture}[scale=.8]
+			\filldraw[cstcurve,main,cstfill1,smooth] plot coordinates {(2.81,0) (2.37,1.03) (.91,1.7) (-.8,1.48) (-2.29,1.05) (-2.89,0) (-2.24,-1.03) (-.92,-1.64) (.81,-1.65) (2.38,-.93) (2.81,0)};
+			\filldraw[cstcurve,main,fill=white,smooth] plot coordinates {(-.86,-.3) (-1.16,.31) (-1.62,.1) (-1.68,-.69) (-1.17,-.91) (-.86,-.3)};
+			\filldraw[cstcurve,main,fill=white] (.5,.3) circle (.3);
+			\fill[cstdot,main] (1.5,0) circle;
+			\fill[cstdot,main] (1.6,-.5) circle;
+			\draw[cstcurve,main] plot coordinates {(1,.5) (1.2,.3) (1.2,-.3) (1.4,.5)};
+			\draw[cstcurve,second,smooth,visible on=<5->] plot coordinates {(1.94,-.2) (1.79,.41) (1.23,.77) (.58,.81) (.04,.35) (-.3,-.2) (.03,-.81) (.53,-1.19) (1.23,-1.08) (1.76,-.82) (1.94,-.2)};
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例: 区域的特性}
+	\onslide<+->
+	\begin{example}
+		$\Re(z^2)<1$.
+		\onslide<+->{%
+			设 $z=x+y\ii$, 则 $\Re(z^2)=x^2-y^2<1$.
+		}\onslide<+->{%
+			这是无界的单连通区域.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (-1.414,-1) rectangle (1.414,1);
+					\filldraw[cstcurve,main,domain=-45:45,smooth,fill=white] plot ({sec(\x)},{tan(\x)});
+					\filldraw[cstcurve,main,domain=-45:45,smooth,fill=white] plot ({-sec(\x)},{tan(\x)});
+					\draw[cstaxis] (-1.8,0)--(1.8,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 区域的特性}
+	\onslide<+->
+	\begin{example}
+		$\arg z\neq \pi$. 
+		\onslide<+->{%
+			即角状区域 $-\pi<\arg z<\pi$.
+		}\onslide<+->{%
+		 	这是无界的单连通区域.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (0,0) circle (1.2);
+					\draw[cstaxis] (0,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+					\draw[cstdash,main] (-1.5,0)--(0,0);
+				\end{tikzpicture}
+			\end{center}
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 区域的特性}
+	\onslide<+->
+	\begin{example}
+		$\abs{\dfrac1z}\le3$.
+		\onslide<+->{%
+			即 $|z|\ge\dfrac13$.
+		}\onslide<+->{%
+			这是无界的多连通\alertn{闭区域}.
+		}\onslide<2->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\fill[cstfille1] (-1.2,-1.2) rectangle (1.2,1.2);
+					\filldraw[cstcurve,main,fill=white] (0,0) circle (.5);
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: 区域的特性}
+	\onslide<+->
+	\begin{example}
+		$|z+1|+|z-1|<4$.
+		\onslide<+->{%
+			表示一个椭圆的内部.
+		}\onslide<+->{%
+			这是有界的单连通区域.
+		}\onslide<+->{%
+			\begin{center}
+				\begin{tikzpicture}
+					\filldraw[cstdash,main,cstfill1] (0,0) circle (1 and {0.5*sqrt(3)});
+					\draw[cstaxis] (-1.5,0)--(1.5,0);
+					\draw[cstaxis] (0,-1.5)--(0,1.5);
+				\end{tikzpicture}
+			\end{center}
+			}
+	\end{example}
+
+	\onslide<+->
+	\begin{thinking}
+		$|z+1|+|z-1|\ge 1$ 表示什么集合?
+		\visible<+->{\alertn{整个复平面.}}
+	\end{thinking}
+\end{frame}
+

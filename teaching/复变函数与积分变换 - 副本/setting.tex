@@ -1,0 +1,100 @@
+
+\tcbset{
+	arc=0pt,
+}
+	
+\RenewDocumentEnvironment{main}{m O{} o}{%
+	\begin{tcolorbox}[
+		mainstyle,
+		#2,
+		borderline={0.5pt}{0pt}{main}
+	]%
+		{\bfseries\color{main}\translate{#1}.\IfNoValueTF{#3}{}{~(#3)}}
+}{\end{tcolorbox}}
+% \NewDocumentEnvironment{main*}{m O{} o}{%
+% 	\begin{tcolorbox}[mainstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
+% }{\end{tcolorbox}}
+
+\RenewDocumentEnvironment{second}{m O{} o}{%
+	\begin{tcolorbox}[
+		secondstyle,
+		#2,
+		borderline={0.5pt}{0pt}{second}
+	]%
+		{\bfseries\color{second}\translate{#1}.\IfNoValueTF{#3}{}{~(#3)}}
+}{\end{tcolorbox}}
+% \NewDocumentEnvironment{second*}{m O{} o}{%
+% 	\begin{tcolorbox}[secondstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
+% }{\end{tcolorbox}}
+% \NewDocumentEnvironment{second@}{O{}}{%
+% 	\begin{tcolorbox}[secondstyle,notitle,#1,indent]%
+% }{\end{tcolorbox}}
+
+% \NewDocumentEnvironment{third}{m O{} o}{%
+% 	\begin{tcolorbox}[thirdstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
+% }{\end{tcolorbox}}
+% \NewDocumentEnvironment{third*}{m O{} o}{%
+% 	\begin{tcolorbox}[thirdstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
+% }{\end{tcolorbox}}
+
+\RenewDocumentEnvironment{fourth}{m O{} o}{%
+	\begin{tcolorbox}[
+		fourthstyle,
+		#2,
+		borderline={0.5pt}{0pt}{fourth}
+	]%
+		{\bfseries\color{fourth}\IfNoValueTF{#3}{\translate{#1}}{#3}.}
+}{\end{tcolorbox}}
+% \NewDocumentEnvironment{fourth*}{m O{} o}{%
+% 	\begin{tcolorbox}[fourthstyle,title={\IfNoValueTF{#3}{\translate{#1}}{#3}},#2,indent]%
+% }{\end{tcolorbox}}
+
+% \NewDocumentEnvironment{fifth}{m O{} o}{%
+% 	\begin{tcolorbox}[fifthstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
+% }{\end{tcolorbox}}
+% \NewDocumentEnvironment{fifth*}{m O{} o}{%
+% 	\begin{tcolorbox}[fifthstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
+% }{\end{tcolorbox}}
+
+\NewDocumentEnvironment{solutionside}{O{3.2cm} o}{\begin{fourth}{Solution}[
+	fontupper=\itshape,
+	sidebyside,
+	righthand width=#1,
+	lower separated=true,
+	bicolor,
+	colbacklower=third!10,
+	segmentation style={draw=third,line width=.5pt,solid},
+][#2]}{\end{fourth}}
+
+\NewDocumentEnvironment{solutionitem}{O{\translate{Solution}}}{%
+	\begin{tcolorbox}[fourthstyle]
+    \trivlist%
+      \item[\hspace{.5em}\textbf{\color{main}#1.~}\hspace{-1.5em}]%
+      \itshape%
+      \begin{itemize}%
+        }{%
+      \end{itemize}%
+    \endtrivlist%
+  \end{tcolorbox}%
+}
+
+\NewDocumentEnvironment{solutionitemside}{O{3.2cm} O{\translate{Solution}}}{%
+	\newcommand{\picpart}{\end{itemize}\endtrivlist\tcblower}%
+	\setbeamercolor{item}{fg=fourth,bg=white}%
+	\begin{tcolorbox}[
+		fourthstyle,
+		borderline={0.5pt}{0pt}{fourth},
+		sidebyside,
+		righthand width=#1,
+		lower separated=true,
+		bicolor,
+		colbacklower=third!10,
+		segmentation style={draw=third,line width=.5pt,solid},
+	]
+    \trivlist%
+      \item[\hspace{.5em}\textbf{\color{fourth}#2.~}\hspace{-1.5em}]%
+      \itshape%
+			\begin{itemize}
+        }{%
+  \end{tcolorbox}%
+}

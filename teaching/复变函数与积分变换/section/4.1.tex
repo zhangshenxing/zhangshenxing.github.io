@@ -10,7 +10,7 @@
 		\begin{itemize}
 			\item 设 $\{z_n\}_{n\ge1}$ 是复数列. 表达式 $\suml_{n=1}^\infty z_n$ 称为复数项\emph{无穷级数}.
 			\item 称 $s_n:=z_1+z_2+\cdots+z_n$ 为该级数的\emph{部分和}.
-			\item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \emph{收敛}, 并记 $\suml_{n=1}^\infty z_n=\lim\limits_{n\to\infty}s_n$ 为它的\emph{和}. 否则称该级数\emph{发散}.
+			\item 如果部分和数列 $\set{s_n}_{n\ge 1}$ 极限存在, 则称 $\suml_{n=1}^\infty z_n$ \emph{收敛}, 并记 $\suml_{n=1}^\infty z_n=\liml_{n\to\infty}s_n$ 为它的\emph{和}. 否则称该级数\emph{发散}.
 		\end{itemize}
 	\end{definition}
 
@@ -30,12 +30,16 @@
 	\onslide<+->
 	\begin{proof}
 		设部分和
-		\[\sigma_n=x_1+x_2+\cdots+x_n,\quad
-			\tau_n=y_1+y_2+\cdots+y_n.\]
+	\[
+		\sigma_n=x_1+x_2+\cdots+x_n,\quad
+			\tau_n=y_1+y_2+\cdots+y_n.
+	\]
 		\onslide<+->{则
-			\[s_n=z_1+z_2+\cdots+z_n=\sigma_n+i\tau_n.\]
+			\[s_n=z_1+z_2+\cdots+z_n=\sigma_n+\ii\tau_n.
+	\]
 		}\onslide<+->{由复数列的敛散性判定条件可知
-			\[\lim_{n\to\infty}s_n=a+bi\iff	\lim_{n\to\infty}\sigma_n=a,\quad \lim_{n\to\infty}\tau_n=b.\]
+			\[\lim_{n\to\infty}s_n=a+bi\iff	\lim_{n\to\infty}\sigma_n=a,\quad \lim_{n\to\infty}\tau_n=b.
+	\]
 		}\onslide<+->{于是命题得证.\qedhere}
 	\end{proof}
 \end{frame}
@@ -48,7 +52,7 @@
 		如果实数项级数 $\suml_{n=1}^\infty|z_n|$ 收敛, 则 $\suml_{n=1}^\infty z_n$ 也收敛, 且 $\abs{\suml_{n=1}^\infty z_n}\le\suml_{n=1}^\infty |z_n|$.
 	\end{theorem}
 	\onslide<+->
-	\begin{proof*}
+	\begin{proof}[indent]
 		因为 $|x_n|,|y_n|\le|z_n|$, 由比较判别法可知实数项级数 $\suml_{n=1}^\infty x_n$, $\suml_{n=1}^\infty y_n$ 绝对收敛, 从而收敛.
 	\onslide<+->{%
 		故 $\suml_{n=1}^\infty z_n$ 也收敛.}
@@ -59,11 +63,12 @@
 	}\onslide<+->{%
 		两边同时取极限即得级数的不等式关系
 			\[\abs{\sum_{n=1}^\infty z_n}=\abs{\lim_{n\to\infty}\sum_{k=1}^n z_k}=
-			\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,\]
+			\lim_{n\to\infty}\abs{\sum_{k=1}^n z_k}\le\lim_{n\to\infty}\sum_{k=1}^n|z_k|=\sum_{n=1}^\infty |z_n|,
+	\]
 	}\onslide<+->{%
 		其中第二个等式是因为绝对值函数 $|z|$ 连续.\qedhere
 	}
-	\end{proof*}
+	\end{proof}
 	\endgroup
 \end{frame}
 
@@ -129,14 +134,16 @@
 \begin{frame}{典型例题: 判断级数的敛散性}
 	\onslide<+->
 	\begin{example}
-		级数 $\displaystyle\sum_{n=1}^\infty\frac{1+i^n}n$ 发散、条件收敛、还是绝对收敛?
+		级数 $\displaystyle\sum_{n=1}^\infty\frac{1+\ii^n}n$ 发散、条件收敛、还是绝对收敛?
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		由于实部级数
-		\[\sum_{n=1}^\infty x_n=
-		1+\frac13+\frac24+\frac15+\frac17+\frac28+\cdots>\sum_{n=1}^\infty\frac1{2n-1}\]
+	\[
+		\sum_{n=1}^\infty x_n=
+		1+\frac13+\frac24+\frac15+\frac17+\frac28+\cdots>\sum_{n=1}^\infty\frac1{2n-1}
+	\]
 		发散, 所以该级数发散.
 	\end{solution}
 
@@ -154,9 +161,13 @@
 	\onslide<+->
 	\begin{solution}
 		因为它的实部和虚部级数
-		\[\sum_{n=1}^\infty x_n=-\half +\frac14+\frac16-\frac18+\cdots\]
+	\[
+		\sum_{n=1}^\infty x_n=-\half +\frac14+\frac16-\frac18+\cdots
+	\]
 	\onslide<+->{
-		\[\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots\]
+	\[
+		\sum_{n=1}^\infty y_n=1-\frac13+\frac15-\frac17+\cdots
+	\]
 		均条件收敛,
 	}\onslide<+->{所以原级数条件收敛.}
 	\end{solution}
@@ -198,7 +209,7 @@
 \begin{frame}{典型例题: 判断级数的敛散性}
 	\onslide<+->
 	\begin{example}
-		级数 $\displaystyle\sum_{n=0}^\infty\frac{(8i)^n}{n!}$ 发散、条件收敛、还是绝对收敛?
+		级数 $\displaystyle\sum_{n=0}^\infty\frac{(8\ii)^n}{n!}$ 发散、条件收敛、还是绝对收敛?
 	\end{example}
 
 	\onslide<+->
@@ -209,10 +220,12 @@
 	\onslide<+->
 	实际上, 它的实部和虚部级数分别为
 	\[1-\frac{8^2}{2!}+\frac{8^4}{4!}-\cdots=\cos 8,\quad
-	8-\frac{8^3}{3!}+\frac{8^5}{5!}-\cdots=\sin 8,\]
+	8-\frac{8^3}{3!}+\frac{8^5}{5!}-\cdots=\sin 8,
+	\]
 	\onslide<+->
 	因此
-	\[\sum_{n=0}^\infty\frac{(8i)^n}{n!}=\cos 8+i\sin 8=e^{8i}.\]
+	\[\sum_{n=0}^\infty\frac{(8\ii)^n}{n!}=\cos 8+\ii\sin 8=\ee^{8\ii}.
+	\]
 \end{frame}
 
 

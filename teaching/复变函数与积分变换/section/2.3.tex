@@ -12,24 +12,24 @@
 	\onslide<+->
 	指数函数有多种等价的定义方式:
 	\begin{enumerate}
-		\item $\exp z=e^x(\cos y+i\sin y)$ (欧拉恒等式);
-		\item $\exp z=\lim\limits_{n\to\infty}\left(1+\dfrac zn\right)^n$ (极限定义);
+		\item $\exp z=\ee^x(\cos y+\ii\sin y)$ (欧拉恒等式);
+		\item $\exp z=\liml_{n\to\infty}\Bigl(1+\dfrac zn\Bigr)^n$ (极限定义);
 		\item $\exp z=1+z+\dfrac{z^2}{2!}+\dfrac{z^3}{3!}+\cdots
-		=\lim\limits_{n\to\infty}\sum\limits_{k=0}^n\dfrac{z^k}{k!}$ (级数定义);
-		\item $\exp z$ 是唯一的一个处处解析的函数, 使得当 $z=x\in\BR$ 时, $\exp z=e^x$ ($e^x$ 的解析延拓).
+		=\liml_{n\to\infty}\sum\limits_{k=0}^n\dfrac{z^k}{k!}$ (级数定义);
+		\item $\exp z$ 是唯一的一个处处解析的函数, 使得当 $z=x\in\BR$ 时, $\exp z=\ee^x$ ($\ee^x$ 的解析延拓).
 	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{指数函数}
 	\onslide<+->
-	有些人会从 $e^x,\cos x,\sin x$ 的泰勒展开
+	有些人会从 $\ee^x,\cos x,\sin x$ 的泰勒展开
 	\begin{align*}
-		e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
+		\ee^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots\\
 		\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
 		\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
 	\end{align*}
-	形式地带入得到欧拉恒等式 $e^{ix}=\cos x+i\sin x$.
+	形式地带入得到欧拉恒等式 $\ee^{ix}=\cos x+\ii\sin x$.
 	\onslide<+->
 	事实上我们可以把它当做复指数函数的定义, 而不是欧拉恒等式的证明.
 	\onslide<+->
@@ -44,39 +44,42 @@
 	\onslide<+->
 	\begin{align*}
 		\lim_{n\to\infty}\abs{1+\frac zn}^n
-		&=\lim_{n\to\infty}\left(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\right)^{\frac n2}\quad
+		&=\lim_{n\to\infty}\Bigl(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)^{\frac n2}\quad
 		\visible<+->{(1^\infty\ \text{型不定式})}\\
 		&\visible<+->{=\exp\left[\lim_{n\to\infty}\frac n2
-		\left(\frac{2x}n+\frac{x^2+y^2}{n^2}\right)\right]=e^x.}
+		\Bigl(\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)\right]=\ee^x.}
 	\end{align*}
 	\onslide<+->
 	不妨设 $n>\abs{z}$, 这样 $1+\dfrac zn$ 落在右半平面,
 	\onslide<+->
-	\[\lim_{n\to\infty} n\arg{\left(1+\frac zn\right)}
+	\[\lim_{n\to\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
 	=\lim_{n\to\infty} n\arctan \frac y{n+x}
-	\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}\]
+	\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}
+	\]
 	\vspace{-\baselineskip}
 	\onslide<+->
-	故 $\exp z=e^x(\cos y+i\sin y)$.
+	故 $\exp z=\ee^x(\cos y+\ii\sin y)$.
 \end{frame}
 
 
 \begin{frame}{指数函数的性质}
 	\onslide<+->
 	\begin{third}{指数函数}
-		\[\exp z:=e^x(\cos y+i\sin y).\]
+	\[
+		\exp z:=\ee^x(\cos y+\ii\sin y).
+	\]
 	\end{third}
 	\onslide<+->
-	为了方便, 我们也记 $\emphm{e^z=\exp z}$.
+	为了方便, 我们也记 $\emphm{\ee^z=\exp z}$.
 	\onslide<+->
 	指数函数有如下性质:
 	\begin{itemize}\bf
 		\item $\exp z$ 处处解析, 且 $(\exp z)'=\exp z$.
 		\item $\exp z\neq 0$.
 		\item $\exp(z_1+z_2)=\exp z_1\cdot \exp z_2$.
-		\item $\exp(z+2k\pi i)=\exp z$, 即 $\exp z$ 周期为 $2\pi i$.
-		\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi i,k\in\BZ$.
-		\item 指数函数将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=e^c$, 将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
+		\item $\exp(z+2k\pi\ii)=\exp z$, 即 $\exp z$ 周期为 $2\pi\ii$.
+		\item $\exp z_1=\exp z_2$ 当且仅当 $z_1=z_2+2k\pi\ii,k\in\BZ$.
+		\item 指数函数将直线族 $\Re z=c$ 映为圆周族 $\abs{w}=\ee^c$, 将直线族 $\Im z=c$ 映为射线族 $\Arg w=c$.
 	\end{itemize}
 \end{frame}
 
@@ -89,19 +92,20 @@
 
 	\onslide<+->
 	\begin{solution}
-		设 $f(z_1)=f(z_2)$, 则 $e^{z_1/6}=e^{z_2/6}$.
+		设 $f(z_1)=f(z_2)$, 则 $\ee^{z_1/6}=\ee^{z_2/6}$.
 		\onslide<+->{%
 			因此存在 $k\in\BZ$ 使得
-			\[\frac{z_1}6=\frac{z_2}6+2k\pi i,\]
+			\[\frac{z_1}6=\frac{z_2}6+2k\pi\ii,
+	\]
 		}\onslide<+->{%
-			从而 $z_1-z_2=12k\pi i$.
+			从而 $z_1-z_2=12k\pi\ii$.
 		}\onslide<+->{%
-			所以 $f(z)$ 的周期是 $12\pi i$.
+			所以 $f(z)$ 的周期是 $12\pi\ii$.
 		}
 	\end{solution}
 
 	\onslide<+->
-	一般地, $\exp(az+b)$ 的周期是 $\dfrac{2\pi i}a$ (或写成 $-\dfrac{2\pi i}a$), $a\neq 0$.
+	一般地, $\exp(az+b)$ 的周期是 $\dfrac{2\pi\ii}a$ (或写成 $-\dfrac{2\pi\ii}a$), $a\neq 0$.
 \end{frame}
 
 
@@ -125,25 +129,28 @@
 
 \begin{frame}{对数函数及其主值}
 	\onslide<+->
-	设 $z\neq0,e^w=z=re^{i\theta}=e^{\ln r+i\theta}$,
+	设 $z\neq0,\ee^w=z=r\ee^{\ii\theta}=\ee^{\ln r+\ii\theta}$,
 	\onslide<+->
 	则
-	\[w=\ln r+i\theta+2k\pi i,\quad k\in\BZ.\]
+	\[w=\ln r+\ii\theta+2k\pi\ii,\quad k\in\BZ.
+	\]
 	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{third}{对数函数}
 		\begin{enumerate}
 			\item 定义\emph{对数函数}
-				\[\Ln z=\ln\abs{z}+i\Arg z.\]
+				\[\Ln z=\ln\abs{z}+\ii\Arg z.
+	\]
 				它是一个多值函数.
 			\item 定义\emph{对数函数主值}
-				\[\ln z=\ln\abs{z}+i\arg z.\]
+				\[\ln z=\ln\abs{z}+\ii\arg z.
+	\]
 				\vspace{-\baselineskip}
 		\end{enumerate}
 	\end{third}
 
 	\onslide<+->
-	对于每一个整数 $k$, $\ln z+2k\pi i$ 都给出了 $\Ln z$ 的一个单值分支.
+	对于每一个整数 $k$, $\ln z+2k\pi\ii$ 都给出了 $\Ln z$ 的一个单值分支.
 	\onslide<+->
 	特别地, 当 $z=x>0$ 是正实数时, $\ln z$ 就是实变的对数函数.
 \end{frame}
@@ -159,14 +166,16 @@
 	\begin{solution}
 		\begin{enumerate}
 			\item
-			\[\Ln2=\ln2+2k\pi i, k\in\BZ,\]
+			\[\Ln2=\ln2+2k\pi\ii, k\in\BZ,
+	\]
 			\onslide<+->{%
 				主值为 $\ln 2$.
 			}
 			\item
-			\[\Ln(-1)=\ln1+i\Arg(-1)=(2k+1)\pi i, k\in\BZ,\]
+			\[\Ln(-1)=\ln1+\ii\Arg(-1)=(2k+1)\pi\ii, k\in\BZ,
+	\]
 			\onslide<+->{%
-				主值为 $\pi i$.
+				主值为 $\pi\ii$.
 			}
 		\end{enumerate}
 	\end{solution}
@@ -177,7 +186,7 @@
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
-	求 $\Ln(-2+3i),\Ln(3-\sqrt3 i)$.
+	求 $\Ln(-2+3\ii),\Ln(3-\sqrt3 i)$.
 	\end{example}
 
 	\onslide<+->
@@ -185,14 +194,14 @@
 		\begin{enumerate}
 			\item
 			\begin{align*}
-				\Ln(-2+3i)&=\ln\abs{-2+3i}+i\Arg(-2+3i)\\
-				&\visible<+->{=\frac 12\ln 13+\left(-\arctan\frac 32+\pi+2k\pi\right)i,\quad k\in\BZ.}
+				\Ln(-2+3\ii)&=\ln\abs{-2+3\ii}+\ii\Arg(-2+3\ii)\\
+				&\visible<+->{=\frac 12\ln 13+\Bigl(-\arctan\frac 32+\pi+2k\pi\Bigr)\ii,\quad k\in\BZ.}
 			\end{align*}
 			\item
 			\begin{align*}
-				\Ln(3-\sqrt3i)&=\ln\abs{3+\sqrt 3i}+i\Arg(3-\sqrt 3i)\\
-				&\visible<+->{=\ln 2\sqrt 3+\left(-\frac\pi6+2k\pi\right)i
-				=\ln 2\sqrt 3+\left(2k-\frac16\right)\pi i,\quad k\in\BZ.}
+				\Ln(3-\sqrt3\ii)&=\ln\abs{3+\sqrt 3\ii}+\ii\Arg(3-\sqrt 3\ii)\\
+				&\visible<+->{=\ln 2\sqrt 3+\Bigl(-\frac\pi6+2k\pi\Bigr)\ii
+				=\ln 2\sqrt 3+\Bigl(2k-\frac16\Bigr)\pi\ii,\quad k\in\BZ.}
 			\end{align*}
 		\end{enumerate}
 		\vspace{-.5\baselineskip}
@@ -204,20 +213,21 @@
 \begin{frame}{例: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
-		解方程 $e^z-1-\sqrt 3i=0$.
+		解方程 $\ee^z-1-\sqrt 3\ii=0$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		由于 $1+\sqrt 3 i=2e^{\frac{\pi i}3}$,
+		由于 $1+\sqrt 3 i=2\ee^{\frac{\pi\ii}3}$,
 		\onslide<+->{因此
-		\[z=\Ln(1+\sqrt 3i)=\ln 2+\left(2k+\frac13\right)\pi i,\quad k\in\BZ.\]}
+	\[
+		z=\Ln(1+\sqrt 3\ii)=\ln 2+\Bigl(2k+\frac13\Bigr)\pi\ii,\quad k\in\BZ.\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\ln(-1-\sqrt3 i)=$\fillblankframe[2cm][3mm]{$\ln 2-\dfrac{2\pi i}3$}.
+		求 $\ln(-1-\sqrt3 i)=$\fillblankframe[2cm][3mm]{$\ln 2-\dfrac{2\pi\ii}3$}.
 	\end{exercise}
 \end{frame}
 
@@ -225,17 +235,20 @@
 \begin{frame}{对数函数的性质}
 	\onslide<+->
 	对数函数与其主值的关系是
-	\[\emphn{\Ln z=\ln z+\Ln 1=\ln z+2k\pi i,\quad k\in\BZ}.\]
+	\[\emphn{\Ln z=\ln z+\Ln 1=\ln z+2k\pi\ii,\quad k\in\BZ}.
+	\]
 
 	\onslide<+->
 	根据辐角以及辐角主值的相应等式, 我们有
 	\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
-	\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,\]
-	\[\Ln \sqrt[n]z=\dfrac1n\Ln z.\]
+	\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,
+	\]
+	\[\Ln \sqrt[n]z=\dfrac1n\Ln z.
+	\]
 	\onslide<+->
 	而当 $\abs{n}\ge 2$ 时, \alert{$\Ln z^n=n\Ln z$ 不成立}.
 	\onslide<+->
-	以上等式换成 $\ln z$ 均不一定成立.
+	以上等式换成 $\ln z$ 均未必成立.
 \end{frame}
 
 
@@ -245,13 +258,14 @@
 	设 $x$ 是正实数, 
 	\onslide<+->
 	则
-	\[\ln (-x)=\ln x+\pi i,\quad
-	\lim_{y\to0^-}\ln (-x+yi)=\ln x-\pi i,\]
+	\[\ln (-x)=\ln x+\pi\ii,\quad
+	\lim_{y\to0^-}\ln (-x+y\ii)=\ln x-\pi\ii,
+	\]
 	\onslide<+->
 	因此 $\ln z$ 在负实轴和零处不连续.
 
 	\onslide<+->
-	而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $e^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
+	而在其它地方 $-\pi<\arg z<\pi$, $\ln z$ 是 $\ee^z$ 在区域 $-\pi<\Im z<\pi$ 上的单值反函数, 
 	\onslide<+->
 	从而
 	\alert{$(\ln z)'=\dfrac 1z$},
@@ -259,10 +273,13 @@
 
 	\onslide<+->
 	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数: 当 $x>0$ 时,
-	\[\ln z=\half \ln(x^2+y^2)+i\arctan \frac yx,\]
+	\[\ln z=\half \ln(x^2+y^2)+\ii\arctan \frac yx,
+	\]
 	\onslide<+->
-	\[u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},\]
-	\[(\ln z)'=(x-yi)/(x^2+y^2)=\frac 1z.\]
+	\[u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},
+	\]
+	\[(\ln z)'=(x-yi)/(x^2+y^2)=\frac 1z.
+	\]
 	其它情形可取虚部为 $\arccot\dfrac xy$ 或 $\arccot\dfrac xy-\pi$ 类似证明.
 \endgroup
 \end{frame}
@@ -275,10 +292,12 @@
 	\begin{third}{幂函数}
 		\begin{enumerate}
 			\item 设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
-			\[w=z^a=e^{a\Ln z}
-			=\exp\bigl[a\ln\abs{z}+ia(\arg z+2k\pi)\bigr],\quad k\in\BZ.\]
+			\[w=z^a=\ee^{a\Ln z}
+			=\exp\bigl[a\ln\abs{z}+\iia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
+	\]
 			\item \emph{幂函数的主值}为
-			\[w=e^{a\ln z}=\exp\bigl(a\ln\abs{z}+ia\arg z\bigr).\]
+			\[w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\iia\arg z\bigr).
+	\]
 		\end{enumerate}
 		\vspace{-\baselineskip}
 	\end{third}
@@ -286,7 +305,7 @@
 	根据 $a$ 的不同, 这个函数有着不同的性质.
 
 	\onslide<+->
-	当 $a$ 为整数时, 因为 $e^{2ak\pi i}=1$, 所以 $w=z^a$ 是单值的.
+	当 $a$ 为整数时, 因为 $\ee^{2ak\pi\ii}=1$, 所以 $w=z^a$ 是单值的.
 	\onslide<+->
 	此时 $z^a$ 就是我们之前定义的乘幂.
 
@@ -301,7 +320,8 @@
 	\onslide<+->
 	当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
 	\onslide<+->
-	\[z^{\frac pq}=\abs{z}^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1\]
+	\[z^{\frac pq}=\abs{z}^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1
+	\]
 	具有 $q$ 个值.
 	\onslide<+->
 	去掉负实轴和 $0$ 之后, 它的主值 $w=\exp(a\ln z)$ 是处处解析的.
@@ -338,7 +358,7 @@
 \onslide<+->
 	对于其它的 $a$, $z^a$ 具有无穷多个值.
 	\onslide<+->
-	这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi i$ 的整数倍. 
+	这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi\ii$ 的整数倍. 
 	\onslide<+->
 	从而不同的 $k$ 得到的是不同的值.
 	\onslide<+->
@@ -366,15 +386,16 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		\[
-			1^{\sqrt2}=e^{\sqrt2\Ln1}
-			\visible<+->{=e^{\sqrt 2\cdot 2k\pi i}}
-			\visible<+->{=\cos(2\sqrt 2k\pi)+i\sin(2\sqrt 2k\pi), k\in\BZ.}\]
+	\[
+			1^{\sqrt2}=\ee^{\sqrt2\Ln1}
+			\visible<+->{=\ee^{\sqrt 2\cdot 2k\pi\ii}}
+			\visible<+->{=\cos(2\sqrt 2k\pi)+\ii\sin(2\sqrt 2k\pi), k\in\BZ.}
+	\]
 		\onslide<+->{%
-		\[
-			i^i=e^{i\Ln i}
-			\visible<+->{=\exp\left[i\cdot\left(2k+\half\right)\pi i\right]}
-			\visible<+->{=\exp\left(-2k\pi-\half\pi\right), k\in\BZ.}\]}
+	\[
+			i^i=\ee^{\ii\Ln i}
+			\visible<+->{=\exp\left[i\cdot\Bigl(2k+\half\Bigr)\pi\ii\right]}
+			\visible<+->{=\exp\Bigl(-2k\pi-\half\pi\Bigr), k\in\BZ.}\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->
@@ -387,24 +408,26 @@
 \begin{frame}{幂函数的性质}
 	幂函数与其主值有如下关系:
 	\onslide<+->
-	\[\emphn{z^a=e^{a\ln z}\cdot 1^a
-	=e^{a\ln z}\cdot e^{2ak\pi i},\quad k\in\BZ.}\]
+	\[\emphn{z^a=\ee^{a\ln z}\cdot 1^a
+	=\ee^{a\ln z}\cdot \ee^{2ak\pi\ii},\quad k\in\BZ.}
+	\]
 
 	\onslide<+->
 	对于幂函数的主值,
-	\[\alertn{(z^a)'}=\left(e^{a\ln z}\right)'=\frac{ae^{a\ln z}}z=\alert{az^{a-1}}.\]
+	\[\alertn{(z^a)'}=\Bigl(\ee^{a\ln z}\Bigr)'=\frac{a\ee^{a\ln z}}z=\alert{az^{a-1}}.
+	\]
 
 	\onslide<+->
 	一般而言, $z^a\cdot z^b=z^{a+b}$ 和 $(z^a)^b=z^{ab}$ 都是不成立的.
 
 	\onslide<+->
-	最后, 注意 $e^a$ 作为指数函数 $f(z)=e^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
+	最后, 注意 $\ee^a$ 作为指数函数 $f(z)=\ee^z$ 在 $a$ 处的值和作为 $g(z)=z^a$ 在 $e$ 处的值是\alert{不同}的.
 	\onslide<+->
 	因为后者在 $a\not\in\BZ$ 时总是多值的.
 	\onslide<+->
 	前者实际上是后者的主值.
 	\onslide<+->
-	为避免混淆, 以后我们总\alert{默认 $e^a$ 表示指数函数 $\exp a$}.
+	为避免混淆, 以后我们总\alert{默认 $\ee^a$ 表示指数函数 $\exp a$}.
 \end{frame}
 
 
@@ -413,20 +436,23 @@
 \begin{frame}{三角函数的定义}
 	\onslide<+->
 	我们知道
-	\[\cos x=\frac{e^{ix}+e^{-ix}}2,\quad
-	\sin x=\frac{e^{ix}-e^{-ix}}{2i}\]
+	\[\cos x=\frac{\ee^{ix}+\ee^{-\ii x}}2,\quad
+	\sin x=\frac{\ee^{ix}-\ee^{-\ii x}}{2\ii}
+	\]
 	对于任意实数 $x$ 成立,
 	\onslide<+->
 	我们将其推广到复数情形.
 	\onslide<+->
 	\begin{definition}
 		定义余弦和正弦函数
-		\[\displaystyle\cos z=\frac{e^{iz}+e^{-iz}}2,\quad
-		\sin z=\frac{e^{iz}-e^{-iz}}{2i}.\]
+	\[
+		\displaystyle\cos z=\frac{\ee^{iz}+\ee^{-\ii z}}2,\quad
+		\sin z=\frac{\ee^{iz}-\ee^{-\ii z}}{2\ii}.
+	\]
 	\end{definition}
 
 	\onslide<+->
-	那么欧拉恒等式 \emph{$e^{iz}=\cos z+i\sin z$ 对任意复数 $z$ 均成立}.
+	那么欧拉恒等式 \emph{$\ee^{iz}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
 \end{frame}
 
 
@@ -434,8 +460,9 @@
 	\onslide<+->
 	不难得到
 	\[
-		\cos(iy)=\dfrac{e^y+e^{-y}}2,\qquad
-		\visible<+->{\sin(iy)=i\dfrac{e^y-e^{-y}}2.}
+		\cos(iy)=\dfrac{\ee^y+\ee^{-y}}2,\qquad
+		\visible<+->{\sin(iy)=i\dfrac{\ee^y-\ee^{-y}}2.}
+	
 	\]
 	\onslide<+->
 	当 $y\to\infty$ 时, $\cos(iy)$ 和 $\sin(iy)$ 都 $\to\infty$.
@@ -450,11 +477,11 @@
 	于是我们可类似定义其它三角函数
 	\begin{align*}
 		\alertn{\tan z}&
-		\alertn{=\frac{\sin z}{\cos z},z\neq\left(k+\half\right)\pi,}&
+		\alertn{=\frac{\sin z}{\cos z},z\neq\Bigl(k+\half\Bigr)\pi,}&
 		\alertn{\cot z}&
 		\alertn{=\frac{\cos z}{\sin z},z\neq k\pi,}\\
 		\alertn{\sec z}&
-		\alertn{=\frac{1}{\cos z},z\neq\left(k+\half\right)\pi,}&
+		\alertn{=\frac{1}{\cos z},z\neq\Bigl(k+\half\Bigr)\pi,}&
 		\alertn{\csc z}&
 		\alertn{=\frac{1}{\sin z},z\neq k\pi.}
 	\end{align*}
@@ -465,7 +492,8 @@
 	\onslide<+->
 	这些三角函数的奇偶性, 周期性和导数与实变情形类似,
 	\[\alertn{(\cos z)'=-\sin z,\quad
-	(\sin z)'=\cos z,}\]
+	(\sin z)'=\cos z,}
+	\]
 	\onslide<+->
 	且在定义域范围内是处处解析的.
 
@@ -485,37 +513,42 @@
 	\onslide<+->
 	类似的, 我们可以定义双曲函数:
 	\onslide<+->
-	\[\alertn{\ch z=\frac{e^z+e^{-z}}2=\cos iz,}\]
+	\[\alertn{\ch z=\frac{\ee^z+\ee^{-z}}2=\cos iz,}
+	\]
 	\onslide<+->
-	\[\alertn{\sh z=\frac{e^z-e^{-z}}2=-i\sin iz,}\]
+	\[\alertn{\sh z=\frac{\ee^z-\ee^{-z}}2=-\ii \sin iz,}
+	\]
 	\onslide<+->
-	\[\alertn{\tanh z=\frac{e^z-e^{-z}}{e^z+e^{-z}}
-	=-i\tan iz,\quad z\neq \left(k+\half\right)\pi i.}\]
+	\[\alertn{\tanh z=\frac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}
+	=-\ii \tan iz,\quad z\neq \Bigl(k+\half\Bigr)\pi\ii.}
+	\]
 	\onslide<+->
 	它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
 
 	\onslide<+->
-	$\ch z,\sh z$ 的周期是 $2\pi i$, $\tanh z$ 的周期是 $\pi i$.
+	$\ch z,\sh z$ 的周期是 $2\pi\ii$, $\tanh z$ 的周期是 $\pi\ii$.
 \end{frame}
 
 
 \begin{frame}{反三角函数和反双曲函数}
 	\onslide<+->
-	设 $z=\cos w=\dfrac{e^{iw}+e^{-iw}}2$,
+	设 $z=\cos w=\dfrac{\ee^{iw}+\ee^{-\ii w}}2$,
 	\onslide<+->
 	则
-	\[e^{2iw}-2ze^{iw}+1=0,\quad
-	\visible<+->{e^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}\]
+	\[\ee^{2\iiw}-2z\ee^{iw}+1=0,\quad
+	\visible<+->{\ee^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}
+	\]
 	\onslide<+->
 	因此\emph{反余弦函数}为
-	\[w=\Arccos z=-i\Ln(z+\sqrt{z^2-1}).\]
+	\[w=\Arccos z=-\ii \Ln(z+\sqrt{z^2-1}).
+	\]
 	\onslide<+->
 	显然它是多值的.
 	\onslide<+->
 	同理, 我们有:
 	\begin{itemize}
-		\item \emph{反正弦函数} $\Arcsin z=-i\Ln(iz+\sqrt{1-z^2})$;
-		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+iz}{1-iz}, z\neq \pm i$;
+		\item \emph{反正弦函数} $\Arcsin z=-\ii \Ln(iz+\sqrt{1-z^2})$;
+		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+\iiz}{1-\ii z}, z\neq \pm i$;
 		\item \emph{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
 		\item \emph{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
 		\item \emph{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
@@ -531,12 +564,14 @@
 
 	\onslide<+->
 	\begin{solution}
-	由于 $\sin z=\dfrac{e^{iz}-e^{-iz}}{2i}=2$,
+	由于 $\sin z=\dfrac{\ee^{iz}-\ee^{-\ii z}}{2\ii}=2$,
 	\onslide<+->{我们有
-	\[e^{2iz}-4ie^{iz}-1=0.\]
-	}\onslide<+->{于是 $e^{iz}=(2\pm\sqrt 3)i$,
+	\[\ee^{2\iiz}-4\ii\ee^{iz}-1=0.
+	\]
+	}\onslide<+->{于是 $\ee^{iz}=(2\pm\sqrt 3)\ii$,
 	}\onslide<+->{
-		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
+	\[
+		z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 	\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
@@ -545,10 +580,12 @@
 	\onslide<+->
 	\begin{solution}[另解]
 	由 $\sin z=2$ 可知
-	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3i.\]
-	\onslide<+->{于是 $e^{iz}=\cos z+i\sin z=(2\pm\sqrt 3)i$,
+	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3\ii.
+	\]
+	\onslide<+->{于是 $\ee^{iz}=\cos z+\ii\sin z=(2\pm\sqrt 3)\ii$,
 	}\onslide<+->{
-		\[z=-i\Ln[(2\pm\sqrt 3)i]=\left(2k+\half\right)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
+	\[
+		z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
 	\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->

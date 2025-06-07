@@ -126,7 +126,7 @@
 
 \begin{frame}{非同余数: $s_2(n)=2$ 情形}
 	\onslide<+->
-	\begin{theorem}[{Wang 2016}]
+	\begin{theorem}[nearprev][{Wang 2016}]
 		若 $n$ 是模 $4$ 余 $1$ 素数乘积, 则下述等价:
 		\begin{itemize}[<*>]
 			\item $n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^2$;
@@ -136,7 +136,7 @@
 	\end{theorem}
 	这里 $(d,-n)_v$ 是希尔伯特符号.
 	\onslide<+->
-	\begin{theorem}[{Wang-Zhang 2022}]
+	\begin{theorem}[nearnext][{Wang-Zhang 2022}]
 		若 $n$ 是模 $8$ 余 $\pm1$ 素数乘积, 则下述等价:
 		\begin{itemize}[<*>]
 			\item $n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^2$;
@@ -148,7 +148,7 @@
 
 \begin{frame}{非同余数: $s_2(n)=2$ 情形}
 	\onslide<+->
-	\begin{theorem}[{Zhang 2023}]
+	\begin{theorem}[][{Zhang 2023}]
 		\label{thm:3}
 		若 $n$ 是模 $8$ 余 $\pm1$ 素数乘积, 则下述等价:
 		\begin{itemize}[<*>]
@@ -197,7 +197,7 @@
 \end{frame}
 
 
-\begin{frame}{主要结果: $s_2(n)=0,2$}
+\begin{frame}{主要结果: $s_2(n)=0$ 情形}
 	\onslide<+->
 	\begin{theorem}
 		在前述假设下, 如下等价:
@@ -206,6 +206,10 @@
 			\item $\bfA_P+\bfU_P$ 可逆.
 		\end{itemize}
 	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{主要结果: $s_2(n)=2$ 情形}
 	\onslide<+->
 	\begin{theorem}
 		在前述假设下, 如下等价:
@@ -279,7 +283,7 @@
 
 
 \begin{frame}{推论: $s_2(n)\ge 2,\ell=0$ 情形}
-	\begin{corollary}
+	\begin{corollary}[near]
 		设奇数 $n$ 的所有素因子均模 $8$ 余 $1$.
 		\begin{enumerate}
 			\item (Wang 2016) 若存在分解 $n=f_1\cdots f_r$ 使得
@@ -296,6 +300,7 @@
 				\item $\aleg{p}{p'}=0$, 其中 $p\mid f_i,p'\mid f_j$ 是任意素因子, $i\ne j$,
 			\end{itemize}
 			则 $2n$ 是非同余数且 $\Sha(E_{2n})\cong(\BZ/2\BZ)^{2r}$.
+			\meddel
 		\end{enumerate}
 	\end{corollary}
 \end{frame}
@@ -390,7 +395,7 @@
 
 \begin{frame}{Cassels 配对的核}
 	\onslide<+->
-	\begin{lemma}[Wang2016]
+	\begin{lemma}[][Wang2016]
 		$n$ 是非同余数且 $\Sha(E_n)[2^\infty]\cong(\BZ/2\BZ)^{s_2(n)}\iff$
 		$\Sel_2'(E_n)$ 上 Cassels 配对非退化.
 	\end{lemma}
@@ -604,12 +609,9 @@
 
 \begin{frame}{主要结论: $s_2(n)=2k$ 情形}
 	\begin{itemize}
-		\item 此时
-		\[
-			\bfA_P+\bfU_P=\bfA_P=\diag\bigl\{
+		\item 此时 $\bfA_P+\bfU_P=\bfA_P=\diag\bigl\{
 				\bfA_{f_1},\cdots \bfA_{f_r}
-			\bigr\}.
-		\]
+			\bigr\}$.
 		\item 由 $h_4(-f_i)=1$ 可知 $\corank \bfA_{f_i}=1$, $s_2(n)=2r$.
 		\item 此时由 $\Ker\bfM_n$ 可知 $\Sel_2'(E_n)$ 由 $\Lambda_i=(f_i,1,f_i),\Lambda_i'=(f_i,f_i,1)$ 生成.
 		\item 相应的Cassels配对对应矩阵

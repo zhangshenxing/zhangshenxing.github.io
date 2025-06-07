@@ -47,7 +47,7 @@
 % 非考试内容
 \newcommand{\noexer}{\hfill\mdseries\itshape\color{black}\small 非考试内容}
 % 枚举数字引用标志
-\newcommand\enumnum[1]{{\mdseries\upshape\textcolor{main}{(#1)}}}
+\newcommand\enumnum[1]{{\mdseries\upshape\textcolor{fourth}{(#1)}}}
 % 枚举引用
 \newcommand\enumref[1]{\textcolor{main}{\upshape(\ref{#1})}}
 
@@ -129,8 +129,8 @@
 	cstcurve/.style       ={very thick}, %一般曲线
 	cstdash/.style        ={thick, dash pattern= on 0.2cm off 0.05cm}, %虚线
   % dot
-	cstdot/.style         ={radius=.08}, %实心点
-	cstdote/.style        ={radius=.07, fill=white}, %空心点
+	cstdot/.style         ={radius=.07,fourth}, %实心点
+	cstdote/.style        ={radius=.06, fill=white}, %空心点
   % fill
 	cstfill/.style       ={fill=black!10},
 	cstfille/.style      ={pattern=north east lines, pattern color=black},
@@ -237,20 +237,38 @@
 	}%
 }
 
-% 括号, 少用
-\newcommand\set[1]{{\left\{#1\right\}}}
-\newcommand\setm[2]{{\left\{#1\,\middle\vert\, #2\right\}}}
-\newcommand\abs[1]{\left|#1\right|}
+% 括号
+\newcommand\midcolon{\mathrel{:}}
+\newcommand\bigmid{\bigm\vert}
+\newcommand\Bigmid{\Bigm\vert}
+\newcommand\biggmid{\biggm\vert}
+\newcommand\Biggmid{\Biggm\vert}
+\newcommand\abs[1]{\lvert#1\rvert}
+\newcommand\bigabs[1]{\bigl\vert#1\bigr\vert}
+\newcommand\Bigabs[1]{\Bigl\vert#1\Bigr\vert}
+\newcommand\biggabs[1]{\biggl\vert#1\biggr\vert}
+\newcommand\Biggabs[1]{\Biggl\vert#1\Biggr\vert}
+% \newcommand\set[1]{\{#1\}}
+\newcommand\bigset[1]{\bigl\{#1\bigr\}}
+\newcommand\Bigset[1]{\Bigl\{#1\Bigr\}}
+\newcommand\biggset[1]{\biggl\{#1\biggr\}}
+\newcommand\Biggset[1]{\Biggl\{#1\Biggr\}}
+% \newcommand\setm[2]{\{#1\mid #2\}}
+\newcommand\bigsetm[2]{\bigl\{#1\bigmid #2\bigr\}}
+\newcommand\Bigsetm[2]{\Bigl\{#1\Bigmid #2\Bigr\}}
+\newcommand\biggsetm[2]{\biggl\{#1\biggmid #2\biggr\}}
+\newcommand\Biggsetm[2]{\Biggl\{#1\Biggmid #2\Biggr\}}
 \newcommand\pair[1]{\langle{#1}\rangle}
 \newcommand\norm[1]{\!\parallel\!{#1}\!\parallel\!}
 \newcommand\dbb[1]{\llbracket#1 \rrbracket}
 \newcommand\floor[1]{\lfloor#1\rfloor}
-
 % symbols
 \renewcommand\le{\leqslant}
 \renewcommand\ge{\geqslant}
 \newcommand\vare{\varepsilon}
 \newcommand\varp{\varphi}
+\newcommand\liml{\lim\limits}
+\newcommand\suml{\sum\limits}
 \newcommand\ilim{\varinjlim\limits}
 \newcommand\plim{\varprojlim\limits}
 \newcommand\half{\frac{1}{2}}
@@ -868,7 +886,6 @@
 \newcommand\supp{{\mathrm{supp}}}
 \newcommand\Supp{{\mathrm{Supp}}}
 \newcommand\Swan{{\mathrm{Sw}}}
-\newcommand\suml{\sum\limits}
 % t
 \newcommand\td{{\mathrm{td}}}
 \let\tanh\relax
@@ -898,3 +915,28 @@
 \newcommand\wa{{\mathrm{wa}}}
 % z
 \newcommand\Zar{{\mathrm{Zar}}}
+
+% 适应国标
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\kk}{\mathrm{k}}
+\newcommand{\ee}{\mathrm{e}}
+\usepackage{fixdif,derivative} % 提供微分运算符
+\letdif{\delt}{Delta} % 微分运算符 Δ
+\usepackage[nolimits]{cmupint} % 提供正体 \int, \oint
+\usepackage{textgreek}% 提供正体希腊字母
+\newcommand{\cpi}{{\text{\textpi}}}
+\newcommand{\dirac}{{\text{\textdelta}}}
+% 缩写
+\DeclareMathOperator\PV{P.V. }
+\newcommand{\dint}{\displaystyle\int}
+\newcommand{\doint}{\displaystyle\oint}
+\newcommand{\intT}{\displaystyle\int_{-\frac T2}^{\frac T2}}
+\newcommand{\intf}{\displaystyle\int_0^{+\infty}}
+\newcommand{\intff}{\displaystyle\int_{-\infty}^{+\infty}}
+\newcommand{\sumf}[1]{\displaystyle\sum_{n=#1}^{\infty}}
+\newcommand{\sumff}{\displaystyle\sum_{n=-\infty}^{+\infty}}
+
+\newcommand{\bigdel}{\vspace{-\bigskipamount}}
+\newcommand{\meddel}{\vspace{-\medskipamount}}
+\newcommand{\smalldel}{\vspace{-\smallskipamount}}

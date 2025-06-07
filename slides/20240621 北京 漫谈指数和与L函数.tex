@@ -16,222 +16,316 @@
 \section{指数和与 $L$ 函数的特征根}
 
 \begin{frame}{指数和与 $L$ 函数}
-设 $p$ 是素数, $\BF_q$ 是含有 $q=p^a$ 个元素的有限域.
-设 $\psi:\BF_p\to \BQ(\zeta_p)^\times$ 是一非平凡加性特征,
-那么 $\psi_k=\psi\circ \Tr_{\BF_{q^k}/\BF_p}$ 是 $\BF_{q^k}$ 的加性特征.
-
-对于多项式 $f(x)\in \BF_q[x]$, 定义\emph{指数和}
-\[S_k(f):=\sum_{x\in\BF_{q^k}}\psi_k\bigl(f(x)\bigr)\in\BZ[\zeta_p]\]
-以及\emph{$L$ 函数}
-\[L(s,f):=\exp\left(\sum_k S_k(f)\frac{s^k}{k}\right)=\prod_{x\in\ov{\BF}_p}\Bigl(1-\psi_{\deg x}\bigl(f(x)\bigr)s^{\deg x}\Bigr)^{-1}.\]
-我们关心，作为一个代数整数, $S_k(f)$ 的各种性质, 以及 $L$ 函数的各种性质.
+	\begin{itemize}
+		\item 设 $p$ 是素数, $\BF_q$ 是含有 $q=p^a$ 个元素的有限域.
+		\item 设 $\psi:\BF_p\to \BQ(\zeta_p)^\times$ 是一非平凡加性特征, 那么 $\psi_k=\psi\circ \Tr_{\BF_{q^k}/\BF_p}$ 是 $\BF_{q^k}$ 的加性特征.
+		\item 对于多项式 $f(x)\in \BF_q[x]$, 定义\emph{指数和}
+		\[
+			S_k(f):=\sum_{x\in\BF_{q^k}}\psi_k\bigl(f(x)\bigr)\in\BZ[\zeta_p]
+		\]
+		\item 以及 \emph{$L$ 函数}
+		\[
+			L(s,f):=\exp\left(\sum_k S_k(f)\frac{s^k}{k}\right)
+			=\prod_{x\in\ov{\BF}_p}\Bigl(1-\psi_{\deg x}\bigl(f(x)\bigr)s^{\deg x}\Bigr)^{-1}.
+		\]
+		\item 我们关心，作为一个代数整数, $S_k(f)$ 的各种性质, 以及 $L$ 函数的各种性质.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{$L$ 函数的有理性}
-\begin{theorem}[Dwork-Bombieri-Grothendick]
-$L(s,f)$ 是有理函数.
-\end{theorem} 
-	\[L(s,f)=\frac{\prod_j (1-\beta_j s)}{\prod_i(1-\alpha_i s)},\quad \alpha_i\neq \beta_j
-	\implies
-	S_k(f)=\sum_i \alpha_i^k-\sum_j\beta_j^k.\]
-称 $\alpha_i,\beta_j$ 为\emph{特征根}. 为了估计特征根, 我们需要 $\ell$ 进方法.
+	\onslide<+->
+	\begin{theorem}[][Dwork-Bombieri-Grothendick]
+		$L(s,f)$ 是有理函数.
+	\end{theorem}
+	\begin{itemize}
+		\item 故
+		\[
+			L(s,f)=\frac{\prod_j (1-\beta_j s)}{\prod_i(1-\alpha_i s)},\quad \alpha_i\neq \beta_j
+			\implies
+			S_k(f)=\sum_i \alpha_i^k-\sum_j\beta_j^k.
+		\]
+		\item 称 $\alpha_i,\beta_j$ 为\emph{特征根}.
+		\item 为了估计特征根, 我们需要 $\ell$ 进方法.
+	\end{itemize}
 
-% 一般地, 设 $X$ 是一个概形, $X_\et$ 是(小) \etale\ site.
-% 固定素数 $\ell\neq p$, 设 $E$ 是 $\BQ_\ell$ 的有限扩张.
-% $X_\et$ 上系数为 $E$ 的 \emph{$\ell$ 进层}是这个 site 上的层 (实际上是 $\CO_E$ 有限商上的模层的逆向系, 态射扩充至 $E$), 使得在每个有限商上是可构造的. 若在每个有限商上是局部常值的, 则称之为 \emph{lisse} 的.
+	% 一般地, 设 $X$ 是一个概形, $X_\et$ 是(小) \etale\ site.
+	% 固定素数 $\ell\neq p$, 设 $E$ 是 $\BQ_\ell$ 的有限扩张.
+	% $X_\et$ 上系数为 $E$ 的 \emph{$\ell$ 进层}是这个 site 上的层 (实际上是 $\CO_E$ 有限商上的模层的逆向系, 态射扩充至 $E$), 使得在每个有限商上是可构造的. 若在每个有限商上是局部常值的, 则称之为 \emph{lisse} 的.
 \end{frame}
 
 
 \begin{frame}{$\ell$ 进方法}
-设 $E\supseteq \mu_p$ 是一 $\ell\neq p$ 进域.
-Deligne 在 ${\Ga}_{,\ov\BF_p}$ 上构造了一个局部自由秩 $1$ 的 $E$ 系数 $\ell$ 进 lisse 层 $\CF_\ell(f)$, 它满足
-	\[L(s,f)=\prod_i \det\bigl(1-s \Frob,\RH^i_c\bigr)^{(-1)^{i+1}},\]
-	\[S_k(f)=\sum_i (-1)^i\Tr(\Frob^k,\RH_c^i).\]
-这里 $\Frob$ 是几何 Frobenius, $\RH_c^i=\RH_c^i\bigl({\Ga}_{,\ov\BF_p},\CF_\ell(f)\bigr)$ 是紧支撑上同调.
+	\begin{itemize}
+		\item 设 $E\supseteq \mu_p$ 是一 $\ell\neq p$ 进域.
+		\item Deligne 在 ${\Ga}_{,\ov\BF_p}$ 上构造了一个局部自由秩 $1$ 的 $E$ 系数 $\ell$ 进 lisse 层 $\CF_\ell(f)$,
+		\item 它满足
+		\[
+			L(s,f)=\prod_i \det\bigl(1-s \Frob,\RH^i_c\bigr)^{(-1)^{i+1}},
+		\]
+		\item
+		\[
+			S_k(f)=\sum_i (-1)^i\Tr(\Frob^k,\RH_c^i).
+		\]
+		\item 这里 $\Frob$ 是几何 Frobenius, $\RH_c^i=\RH_c^i\bigl({\Ga}_{,\ov\BF_p},\CF_\ell(f)\bigr)$ 是紧支撑上同调.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{$\ell$ 进方法（续）}
-记 $\omega_{ij}$ 为 $\Frob$ 在 $\RH^i_c$ 上的特征值, 则
-	\[S_k(f)=\sum_{ij}(-1)^i \omega_{ij}^k.\]
-
-\begin{theorem}[Deligne]
-$\omega_{ij}$ 是代数整数, 且存在整数 $0\le r_{ij}\le i$ 使得它的所有 $\BQ$ 共轭的绝对值均为 $q^{r_{ij}/2}$.
-\end{theorem}
-我们把 $r_{ij}$ 就叫做对应特征根 $\omega_{ij}$ 的\emph{权}.
-
-记 $b_i=\dim_{E}\RH^i_c$ 为 Betti 数, 
-则
-	\[|S_k(f)|\le \sum_i b_i q^{ki/2}.\]
+	\begin{itemize}
+		\item 记 $\omega_{ij}$ 为 $\Frob$ 在 $\RH^i_c$ 上的特征值, 
+		\item 则
+		\[
+			S_k(f)=\sum_{ij}(-1)^i \omega_{ij}^k.
+		\]
+	\end{itemize}
+	\onslide<+->
+	\begin{theorem}[][Deligne]
+		$\omega_{ij}$ 是代数整数, 且存在整数 $0\le r_{ij}\le i$ 使得它的所有 $\BQ$ 共轭的绝对值均为 $q^{r_{ij}/2}$.
+	\end{theorem}
+	\begin{itemize}
+		\item 我们把 $r_{ij}$ 就叫做对应特征根 $\omega_{ij}$ 的\emph{权}.
+		\item 记 $b_i=\dim_{E}\RH^i_c$ 为 Betti 数, 
+		\item 则
+		\[
+			|S_k(f)|\le \sum_i b_i q^{ki/2}.
+		\]
+	\end{itemize}
 \end{frame}
 
 
-
 \begin{frame}{一般情形}
-一般地, 设
-\begin{itemize}
-\item $V\subseteq \BA^N$ 是 $\BF_q$ 上的闭子簇,
-\item $f\in \BF_q[V]$, $g\in\BF_q[V]^\times$,
-\item $\chi$ 是 $\BF_q^\times$ 上乘性特征.
-\end{itemize}
-定义指数和和 $L$ 函数
-	\[S_k=\sum_{x\in V(\BF_{q^k})}\psi_{k\log_p q}\bigl(f(x)\bigr)\chi\Bigl(\bfN_{\BF_{q^n}/\BF_q}\bigl(g(x)\bigr)\Bigr),\quad
-	L(s,V,f)=\exp\left(\sum_k S_k\frac{s^k}k\right).\]
-前述结论依然成立.
-\begin{theorem}[Bombieri1978]
-特征根个数不超过 $(4\max\set{\deg V+1,\deg f}+5)^{2N+1}$.
-\end{theorem}
+	\begin{itemize}
+		\item 一般地, 设
+		\begin{itemize}
+			\item $V\subseteq \BA^N$ 是 $\BF_q$ 上的闭子簇,
+			\item $f\in \BF_q[V]$, $g\in\BF_q[V]^\times$,
+			\item $\chi$ 是 $\BF_q^\times$ 上乘性特征.
+		\end{itemize}
+		\item 定义指数和和 $L$ 函数
+		\[
+			S_k=\sum_{x\in V(\BF_{q^k})}\psi_{k\log_p q}\bigl(f(x)\bigr)\chi\Bigl(\bfN_{\BF_{q^n}/\BF_q}\bigl(g(x)\bigr)\Bigr),\quad
+			L(s,V,f)=\exp\left(\sum_k S_k\frac{s^k}k\right).
+		\]
+		\item 前述结论依然成立.
+	\end{itemize}
+	\onslide<+->
+	\begin{theorem}[][Bombieri1978]
+		特征根个数不超过 $(4\max\set{\deg V+1,\deg f}+5)^{2N+1}$.
+	\end{theorem}
 \end{frame}
 
 
 \begin{frame}{Kloosterman 和}
-
-\begin{example}[Deligne SGA4$\half$, Serre1977]
-设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 上的 $n$ 个特征, $a\in\BF_q^\times$.
-定义 \emph{Kloosterman 和}
-	\[\Kl_k=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q^k}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_k(x_1+\cdots+x_n).\]
-它是 $V=V(X_1\cdots X_n-a)$ 上 $f=X_1+\cdots+X_n$ 的指数和.
-
-此时 $L(s,V,f)^{(-1)^n}$ 是 $n$ 次多项式, 即
-\[\Kl_k=(-1)^{n-1}\sum_{i=1}^n \omega_i^k,\]
-且特征根权均为 $n-1$.
-因此 $|\Kl_k|\le nq^{(n-1)k/2}$.
-\end{example}
+	\beqskip{4pt}
+	\onslide<+->
+	\begin{example}[near][Deligne SGA4$\half$, Serre1977]
+		\begin{itemize}
+			\item 设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 上的 $n$ 个特征, $a\in\BF_q^\times$.
+			\item 定义 \emph{Kloosterman 和}
+			\[
+				\Kl_k=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q^k}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_k(x_1+\cdots+x_n).
+			\]
+			\item 它是 $V=V(X_1\cdots X_n-a)$ 上 $f=X_1+\cdots+X_n$ 的指数和.
+			\item 此时 $L(s,V,f)^{(-1)^n}$ 是 $n$ 次多项式, 即
+			\[
+				\Kl_k=(-1)^{n-1}\sum_{i=1}^n \omega_i^k,
+			\]
+			\item 且特征根权均为 $n-1$.
+			\item 因此 $|\Kl_k|\le nq^{(n-1)k/2}$.
+		\end{itemize}
+	\end{example}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}
-\begin{example}[Serre1977]
-设 $X$ 是一几何不可约仿射光滑曲线, $\wh X$ 为其对应的射影曲线, $X_\infty=\wh X-X$.
-设 $X'\to X$ 是方程 $y^p-y=f(x)$ 给出的 $\BZ/p\BZ$ 平展覆盖, 并延拓至 $\wh X'\to \wh X$.
-对于 $P\in X_\infty$, 如果该覆盖在 $P$ 处非分歧, 记 $n_P=0$; 否则记
-\[n_P=1-\sup_{\varphi\in\BF_q(\wh X)} v_P(f-\varphi^p+\varphi)\ge 2.\]
-那么
-\begin{itemize}
-	\item $L(s,X,f)$ 是多项式; $b_i=0, \forall i\neq 1$;
-	\item $(X,f)$ 权全为 $1 \iff n_P\neq 0,\forall P$, 此时 $b_1=2g-2+\sum n_P\deg P$.
-\end{itemize}
-\end{example}
+\begin{frame}{指数和}
+	\onslide<+->
+	\begin{example}[][Serre1977]
+		\begin{itemize}
+			\item 设 $X$ 是一几何不可约仿射光滑曲线, $\wh X$ 为其对应的射影曲线, $X_\infty=\wh X-X$.
+			\item 设 $X'\to X$ 是方程 $y^p-y=f(x)$ 给出的 $\BZ/p\BZ$ 平展覆盖, 并延拓至 $\wh X'\to \wh X$.
+			\item 对于 $P\in X_\infty$, 如果该覆盖在 $P$ 处非分歧, 记 $n_P=0$; 否则记
+			\[
+				n_P=1-\sup_{\varphi\in\BF_q(\wh X)} v_P(f-\varphi^p+\varphi)\ge 2.
+			\]
+			\item 那么
+			\begin{itemize}
+				\item $L(s,X,f)$ 是多项式; $b_i=0, \forall i\neq 1$;
+				\item $(X,f)$ 权全为 $1 \iff n_P\neq 0,\forall P$, 此时 $b_1=2g-2+\sum n_P\deg P$.
+			\end{itemize}
+		\end{itemize}
+	\end{example}
 \end{frame}
-	
 
-\begin{frame}
-\begin{example}[Serre1977]
-对于仿射平面 $\BA^n$, $f\in\BF_q[x_1,\dots,x_n]$ 是 $d$ 次多项式且 $p\nmid d$, 有
-\begin{itemize}
-	\item $L(s,X,f)^{(-1)^{n-1}}$ 是多项式; $b_i=0,\forall i\neq n$;
-	\item $(X,f)$ 权全为 $n$, $b_n=(d-1)^r$.
-\end{itemize}
-此时 $|S_k|\le (d-1)^nq^{nk/2}$.
-\end{example}
+
+\begin{frame}{仿射多项式}
+	\begin{example}[][Serre1977]
+		\begin{itemize}
+			\item 对于仿射平面 $\BA^n$, $f\in\BF_q[x_1,\dots,x_n]$ 是 $d$ 次多项式且 $p\nmid d$, 有
+			\begin{itemize}
+				\item $L(s,X,f)^{(-1)^{n-1}}$ 是多项式; $b_i=0,\forall i\neq n$;
+				\item $(X,f)$ 权全为 $n$, $b_n=(d-1)^r$.
+			\end{itemize}
+			\item 此时 $|S_k|\le (d-1)^nq^{nk/2}$.
+		\end{itemize}
+	\end{example}
 \end{frame}
-	
+
 
 \section{$L$ 函数的牛顿折线}
 
 
 \begin{frame}{指数和的变化}
-现在我们来考虑指数和的 $p$ 进性质.
-
-设 $f\in\BF_q[x]$ 是 $d$ 次多项式.
-我们可以考虑更一般点. 设
-\begin{itemize}
-\item $\psi_m:\BZ_p\to\BC_p^\times$ 是一个阶为 $p^m$ 的加性特征;
-\item $\omega^{-u}:\BF_q^\times\to\BC_p^\times$ 是一个乘性特征, 其中 $\omega$ 是 Teichm\"uller 提升, $0\le u\le q-2$.
-\end{itemize}
-定义
-	\[
-		S_{k,u}(f,\psi_m)=\sum_{x\in\BF_{q^k}^\times}\psi_m\left(\Tr_{\BQ_{q^k}/\BQ_p}\bigl(\hat f(\hat x)\bigr)\right)\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right),
-	\]
-	\[
-		L_u(s,f,\psi_m)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,\psi_m)\frac{s^m}m\right).
-	\]
+	\begin{itemize}
+		\item 现在我们来考虑指数和的 $p$ 进性质.
+		\item 设 $f\in\BF_q[x]$ 是 $d$ 次多项式.
+		\item 我们可以考虑更一般点. 设
+		\begin{itemize}
+			\item $\psi_m:\BZ_p\to\BC_p^\times$ 是一个阶为 $p^m$ 的加性特征;
+			\item $\omega^{-u}:\BF_q^\times\to\BC_p^\times$ 是一个乘性特征, 其中 $\omega$ 是 Teichm\"uller 提升, $0\le u\le q-2$.
+		\end{itemize}
+		\item 定义
+		\[
+			S_{k,u}(f,\psi_m)=\sum_{x\in\BF_{q^k}^\times}\psi_m\left(\Tr_{\BQ_{q^k}/\BQ_p}\bigl(\hat f(\hat x)\bigr)\right)\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right),
+		\]
+		\item 
+		\[
+			L_u(s,f,\psi_m)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,\psi_m)\frac{s^m}m\right).
+		\]
+	\end{itemize}
 \end{frame}
 
-\begin{frame}{$L$ 函数是多项式}
-\begin{theorem}[Adolphson-Sperber, 李文卿, 刘春雷-魏达盛, 刘春雷]
-如果 $p\nmid d=\deg f$, 则 $L_u(s,f,\psi_m)$ 是次数为 $p^{m-1}d$ 的多项式.
-\end{theorem} 
 
-记
-	\[L_u(s,f,\psi_m)=\sum_{n=0}^{p^{m-1}d} a_n s^n=\prod_i(1-\alpha_i s),
-	\quad S_{u,k}(f)=-\sum_i \alpha_i^k.\]
-为了了解 $S_{u,k}(f)$ 的 $p$ 进性质, 我们需要了解 $\alpha_i$ 的赋值.
-而它们正是该 $L$ 函数的牛顿折线的斜率, 其中牛顿折线是指所有
-	\[\bigl(n,v_p(a_n)\bigr)\]
-的下凸包.
+\begin{frame}{$L$ 函数是多项式}
+	\onslide<+->
+	\begin{theorem}[][Adolphson-Sperber, 李文卿, 刘春雷-魏达盛, 刘春雷]
+		如果 $p\nmid d=\deg f$, 则 $L_u(s,f,\psi_m)$ 是次数为 $p^{m-1}d$ 的多项式.
+	\end{theorem}
+	\begin{itemize}
+		\item 记
+		\[
+			L_u(s,f,\psi_m)=\sum_{n=0}^{p^{m-1}d} a_n s^n=\prod_i(1-\alpha_i s),
+			\quad S_{u,k}(f)=-\sum_i \alpha_i^k.
+		\]
+		\item 为了了解 $S_{u,k}(f)$ 的 $p$ 进性质, 我们需要了解 $\alpha_i$ 的赋值.
+		\item 而它们正是该 $L$ 函数的牛顿折线的斜率, 其中牛顿折线是指所有
+		\[
+			\bigl(n,v_p(a_n)\bigr)
+		\]
+		的下凸包.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{$T$ 进指数和和 $T$ 进 $L$ 函数}
-为了统一考虑不同 $m$ 对应的牛顿折线, 我们引入 $T$ 进指数和和 $T$ 进 $L$ 函数:
-	\[	S_{k,u}(f,T)=\sum_{x\in\BF_{q^k}^\times}(1+T)^{\Tr_{\BQ_{q^k}/\BQ_p}(\hat f(\hat x))}\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right), \]
-	\[
-		L_u(s,f,T)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,T)\frac{s^k}{k}\right)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb.
-	\]
-我们有 $L_u(s,f,\psi_m)=L_u(s,f,\pi_m)$, 其中 $\pi_m=\psi_m(1)-1$.
-
-定义特征函数
-	\[C_u(s,f,T)=\prod_{j=0}^\infty L_u(q^j s,f,T)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb,\]
-则
-	\[	L_u(s,f,T)=\frac{C_u(s,f,T)}{C_u(qs,f,T)}.\]
+	\begin{itemize}
+		\item 为了统一考虑不同 $m$ 对应的牛顿折线, 我们引入 $T$ 进指数和和 $T$ 进 $L$ 函数:
+		\[
+			S_{k,u}(f,T)=\sum_{x\in\BF_{q^k}^\times}(1+T)^{\Tr_{\BQ_{q^k}/\BQ_p}(\hat f(\hat x))}\omega^{-u}\left(\Nm_{\BF_{q^k}/\BF_q}(x)\right), 
+		\]
+		\item 
+		\[
+			L_u(s,f,T)=\exp\left(\sum_{k=1}^\infty S_{k,u}(f,T)\frac{s^k}{k}\right)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb.
+		\]
+		\item 我们有 $L_u(s,f,\psi_m)=L_u(s,f,\pi_m)$, 其中 $\pi_m=\psi_m(1)-1$.
+		\item 定义特征函数
+		\[
+			C_u(s,f,T)=\prod_{j=0}^\infty L_u(q^j s,f,T)\in 1+s\BZ_q\ldb T\rdb\ldb s\rdb,
+		\]
+		\item 则
+		\[
+			L_u(s,f,T)=\frac{C_u(s,f,T)}{C_u(qs,f,T)}.
+		\]
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{牛顿折线的关系}
-记
-\begin{itemize}
-\item $\NP_{u,m}(f)=C_u(s,f,\pi_m)$ 的 $\pi_m^{a(p-1)}$ 进牛顿折线(不依赖 $\psi_m$), $a=\log_p q$;
-\item $\NP_{u,T}(f)=C_u(s,f,T)$ 的 $T^{a(p-1)}$ 进牛顿折线.
-\item $H_{[0,d],u}^\infty$ 为扭霍奇折线, 其斜率为 $\tfrac{n}{d}+\tfrac{1}{bd(p-1)}\sum_{k=1}^b u_k,\ n\in\BN,$
-其中 $b$ 是满足 $p^bu\equiv u\bmod{(q-1)}$ 的最小正整数,
-	\[u=u_0+u_1p+\cdots+u_{a-1}p^{a-1},\ 0\le u_i\le p-1.\]
-\end{itemize}
-这样规范化后的牛顿折线满足
-	\[\NP_{u,m}(f)\ge \NP_{u,T}(f)\ge H_{[0,d],u}^\infty.\]
-由定义可知 $\NP_{u,m}(f)$ 完全由它在 $[0,d-1]$ 上的值决定.
+	\begin{itemize}
+		\item 记
+		\begin{itemize}
+			\item $\NP_{u,m}(f)=C_u(s,f,\pi_m)$ 的 $\pi_m^{a(p-1)}$ 进牛顿折线(不依赖 $\psi_m$), $a=\log_p q$;
+			\item $\NP_{u,T}(f)=C_u(s,f,T)$ 的 $T^{a(p-1)}$ 进牛顿折线.
+			\item $H_{[0,d],u}^\infty$ 为扭霍奇折线, 其斜率为 $\tfrac{n}{d}+\tfrac{1}{bd(p-1)}\sum_{k=1}^b u_k,\ n\in\BN,$
+			其中 $b$ 是满足 $p^bu\equiv u\bmod{(q-1)}$ 的最小正整数,
+			\[
+				u=u_0+u_1p+\cdots+u_{a-1}p^{a-1},\ 0\le u_i\le p-1.
+			\]
+		\end{itemize}
+		\item 这样规范化后的牛顿折线满足
+		\[
+			\NP_{u,m}(f)\ge \NP_{u,T}(f)\ge H_{[0,d],u}^\infty.
+		\]
+		\item 由定义可知 $\NP_{u,m}(f)$ 完全由它在 $[0,d-1]$ 上的值决定.
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{$p$ 进 Artin-Hasse 函数}
-不妨设
-\[f(x)=\sum_{i=1}^d a_ix^i.\]
-我们需要 $T$ 进 Dwork 迹公式来计算牛顿折线. 定义
-	\[
-	E(X)=\exp\left(\sum_{i=0}^\infty p^{-i}X^{p^i}\right)=\sum_{n=0}^\infty \lambda_n X^n\in\BZ_p\ldb X\rdb,
-	\]
-	\[
-	E_f(X)=\prod_{i=1}^d E(\pi \hat a_i X^i)=\sum_{n=0}^\infty \gamma_n X^n,
-	\]
-则
-	\[\gamma_k=\sum\pi^{x_1+\cdots+x_d}\prod_{i=1}^d\lambda_{x_i}\hat a_i^{x_i},\]
-其中 $(x_1,\dots,x_d)$ 取遍 $\sum i x_i=k$ 的所有非负整数解.
+	\beqskip{0pt}
+	\begin{itemize}
+		\item 不妨设
+		\[
+			f(x)=\sum_{i=1}^d a_ix^i.
+		\]
+		\item 我们需要 $T$ 进 Dwork 迹公式来计算牛顿折线.
+		\item 定义
+		\[
+			E(X)=\exp\left(\sum_{i=0}^\infty p^{-i}X^{p^i}\right)=\sum_{n=0}^\infty \lambda_n X^n\in\BZ_p\ldb X\rdb,
+		\]
+		\item 
+		\[
+			E_f(X)=\prod_{i=1}^d E(\pi \hat a_i X^i)=\sum_{n=0}^\infty \gamma_n X^n,
+		\]
+		\item 则
+		\[
+			\gamma_k=\sum\pi^{x_1+\cdots+x_d}\prod_{i=1}^d\lambda_{x_i}\hat a_i^{x_i},
+		\]
+		\item 其中 $(x_1,\dots,x_d)$ 取遍 $\sum i x_i=k$ 的所有非负整数解.
+	\end{itemize}
+	\endgroup
 \end{frame}
 
 \begin{frame}{$T$ 进 Dwork 半线性算子}
-定义
-	\[\CB_u=\Bigl\{\sum_{v\in M_u} b_v \pi^{\frac{v}{d}}X^v\mid b_v\in\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\ra 0 (\pi\text{进})\Bigr\},\ M_u=\tfrac{u}{q-1}+\BN,\]
-	\[\psi:\CB_u\lra \CB_{p^{-1}u},\
-		\sum_{v\in M_u} b_v X^v\longmapsto \sum_{v\in M_{p^{-1}u}} b_{pv}X^v,\]
-则
-	\[\Psi:=\sigma^{-1}\circ\psi\circ E_f: \CB_u\to \CB_{p^{-1}u}\]
-是一个半线性算子, 其中 $\sigma\in \Gal(\BQ_q/\BQ_p)$ 是 Frobenius.
-那么它定义了 $\CB:=\bigoplus_{i=0}^{b-1}\CB_{p^iu}$ 上的算子, 且 $\Psi^a$ 是 $\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 线性的.
+	\begin{itemize}
+		\item 定义
+		\[
+			\CB_u=\Bigl\{\sum_{v\in M_u} b_v \pi^{\frac{v}{d}}X^v\mid b_v\in\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\ra 0 (\pi\text{进})\Bigr\},\ 
+			M_u=\tfrac{u}{q-1}+\BN,
+		\]
+		\item 
+		\[
+			\psi:\CB_u\lra \CB_{p^{-1}u},\
+			\sum_{v\in M_u} b_v X^v\longmapsto \sum_{v\in M_{p^{-1}u}} b_{pv}X^v,
+		\]
+		\item 则
+		\[
+			\Psi:=\sigma^{-1}\circ\psi\circ E_f: \CB_u\to \CB_{p^{-1}u}
+		\]
+		是一个半线性算子, 其中 $\sigma\in \Gal(\BQ_q/\BQ_p)$ 是 Frobenius.
+		\item 那么它定义了 $\CB:=\bigoplus_{i=0}^{b-1}\CB_{p^iu}$ 上的算子, 且 $\Psi^a$ 是 $\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb$ 线性的.
+	\end{itemize}
 \end{frame}
 
+
 \begin{frame}{$T$ 进 Dwork 迹公式}
-\begin{theorem}
-我们有
-	\[C_u(s,f,T)=\det\Bigl(1-\Psi^a s \mid \CB_u/\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr).\]
-因此 $C_u(s,f,T)$ 的 $T$ 进牛顿折线是
-	\[\Bigl(n,\frac1b\ord_T(c_{abn})\Bigr),\ n\in\BN,\]
-的凸包, 其中
-	\[
-	\det\Bigl(1-\Psi s\mid\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr)=\sum_{i=0}^\infty (-1)^n c_n s^n.
-	\]
-\end{theorem}
+	\onslide<+->
+	\begin{theorem}
+		我们有
+		\[
+			C_u(s,f,T)=\det\Bigl(1-\Psi^a s \mid \CB_u/\BZ_q\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr).
+		\]
+		因此 $C_u(s,f,T)$ 的 $T$ 进牛顿折线是
+		\[
+			\Bigl(n,\frac1b\ord_T(c_{abn})\Bigr),\ n\in\BN,
+		\]
+		的凸包, 其中
+		\[
+			\det\Bigl(1-\Psi s\mid\CB/\BZ_p\ldb\pi^{\frac{1}{d(q-1)}}\rdb\Bigr)=\sum_{i=0}^\infty (-1)^n c_n s^n.
+		\]
+	\end{theorem}
 \end{frame}
 
 
@@ -273,220 +367,277 @@ $\omega_{ij}$ 是代数整数, 且存在整数 $0\le r_{ij}\le i$ 使得它的�
 
 
 \begin{frame}{二项式情形的已知结果}
-对于一般的多项式, 上述方法可以得到牛顿折线的下界.
-这个下界是否能否达到, 取决于对应赋值项的系数是否为零.
-
-对于二项式 $f(x)=x^d+\lambda x^e$ 情形, 相应系数与 $f$ 的系数无关.
-由于 $(d,e)>1$ 时可以化归到扭的情形, 我们不妨设 $(d,e)=1$.
-此时最低赋值项为
-	\[\pm\hat\lambda^{(*)}\Nm\left(\prod_{k=1}^b h_{n,k}\right),\quad
-	h_{n,k}:=\sum_{\tau\in S_{u_k,n}^\circ}\sgn(\tau)\prod_{i=0}^n\frac{1}{x_{u_k,i}^\tau!y_{u_k,i}^\tau!},
-	\]
-其中 $S_{u_k,n}^\circ$ 是 $\set{0,1,\dots,n}$ 上满足 $e^{-1}(pi-\tau(i)+u_k)\mod d$ 所有最小非负剩余之和达到最小的置换全体,
-	\[dx_{u_k,i}^\tau+ey_{u_k,i}^\tau=pi-\tau(i)+u_k,0\le y_{u_k,i}^\tau\le d-1.\]
-因此当且仅当所有的 $h_{n,k}\in\BZ_p^\times$ 时,
-	\[\NP_{u,m}(f)=\NP_{u,T}(f)\]
-达到应有的下界.
+	\begin{itemize}
+		\item 对于一般的多项式, 上述方法可以得到牛顿折线的下界.
+		\item 这个下界是否能否达到, 取决于对应赋值项的系数是否为零.
+		\item 对于二项式 $f(x)=x^d+\lambda x^e$ 情形, 相应系数与 $f$ 的系数无关.
+		\item 由于 $(d,e)>1$ 时可以化归到扭的情形, 我们不妨设 $(d,e)=1$.
+		\item 此时最低赋值项为
+		\[
+			\pm\hat\lambda^{(*)}\Nm\left(\prod_{k=1}^b h_{n,k}\right),\quad
+			h_{n,k}:=\sum_{\tau\in S_{u_k,n}^\circ}\sgn(\tau)\prod_{i=0}^n\frac{1}{x_{u_k,i}^\tau!y_{u_k,i}^\tau!},
+		\]
+		\item 其中 $S_{u_k,n}^\circ$ 是 $\set{0,1,\dots,n}$ 上满足 $e^{-1}(pi-\tau(i)+u_k)\mod d$ 所有最小非负剩余之和达到最小的置换全体,
+		\item $dx_{u_k,i}^\tau+ey_{u_k,i}^\tau=pi-\tau(i)+u_k,0\le y_{u_k,i}^\tau\le d-1$.
+		\item 因此当且仅当所有的 $h_{n,k}\in\BZ_p^\times$ 时,
+		\[
+			\NP_{u,m}(f)=\NP_{u,T}(f)
+		\]
+		达到应有的下界.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{二项式情形的已知结果}
-如下情形是已知的 ($p\gg0$):
-\begin{itemize}
-\item $u=0$:
-\begin{itemize}
-\item $p\equiv 1\bmod d$, 此时 $\NP_{u,m}(f)=H_{[0,d],u}^\infty$.
-\item $f(x)=x^d+\lambda x$, 有很多人计算过, 不在此列举.
-\item $f(x)=x^d+\lambda x^{d-1},p\equiv -1\bmod d$, 欧阳毅-张 2016.
-\item $f(x)=x^d+\lambda x^2,p\equiv 2\bmod d$, Zhang Qingjie-牛传择 2021.
-\end{itemize}
-\item 任意 $u$:
-\begin{itemize}
-	\item $f(x)=x^d+\lambda x$, 刘春雷-牛传择 2011.
-	\item $f(x)=x^d+\lambda x^{d-1}$, 张 2022.
-\end{itemize}
-\end{itemize}
+	如下情形是已知的 ($p\gg0$):
+	\begin{itemize}
+		\item $u=0$:
+		\begin{itemize}
+			\item $p\equiv 1\bmod d$, 此时 $\NP_{u,m}(f)=H_{[0,d],u}^\infty$.
+			\item $f(x)=x^d+\lambda x$, 有很多人计算过, 不在此列举.
+			\item $f(x)=x^d+\lambda x^{d-1},p\equiv -1\bmod d$, 欧阳毅-张 2016.
+			\item $f(x)=x^d+\lambda x^2,p\equiv 2\bmod d$, Zhang Qingjie-牛传择 2021.
+		\end{itemize}
+		\item 任意 $u$:
+		\begin{itemize}
+			\item $f(x)=x^d+\lambda x$, 刘春雷-牛传择 2011.
+			\item $f(x)=x^d+\lambda x^{d-1}$, 张 2022.
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{二项式情形的已知结果}
-例如, 当 $e=d-1$ 时, 若 $p>(d^2-d-1)\mathrm{order}(\omega^{-u})$, 我们有
-	\[\begin{split}
-	&h_{n,k}\equiv\det\left(\frac{1}{(-d^{-1}ev_i+u_k(1-d^{-1}e)-j)!(v_i+j)!}\right)\\
-\equiv &\prod_{i=0}^n \frac{\left(d^{-1}e(i-t)+t\right)_i}{\bigl(-d^{-1}ev_i+u_k(1-d^{-1}e)\bigr)!\cdot(v_i+n)!} \cdot \prod_{0\le i<j\le n}(v_i-v_j)\not\equiv 0\mod p.
-\end{split}\]
-因此此时 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}.$
+	\begin{itemize}
+		\item 例如, 当 $e=d-1$ 时, 若 $p>(d^2-d-1)\mathrm{order}(\omega^{-u})$, 我们有
+		\[
+			\begin{split}
+				&h_{n,k}\equiv\det\left(\frac{1}{(-d^{-1}ev_i+u_k(1-d^{-1}e)-j)!(v_i+j)!}\right)\\
+				\equiv &\prod_{i=0}^n \frac{\left(d^{-1}e(i-t)+t\right)_i}{\bigl(-d^{-1}ev_i+u_k(1-d^{-1}e)\bigr)!\cdot(v_i+n)!} \cdot \prod_{0\le i<j\le n}(v_i-v_j)\not\equiv 0\mod p.
+			\end{split}
+		\]
+		\item 因此此时 $\NP_{u,m}(f)=\NP_{u,T}(f)=P_{u,e,d}$.
+	\end{itemize}
 \end{frame}
-
 
 
 \section{指数和的生成域}
 
 
-
 \begin{frame}{生成域}
-设 $\chi$ 是 $\BF_q^\times$ 上乘性特征, 阶为 $c$.
-那么指数和 $S_k\in\BQ(\mu_{pc})$.
-我们可以问, $\BQ(S_k)\subseteq \BQ(\mu_{pc})$ 这个子域是什么?
-
-对于多项式情形, 我们有一些已知结果, 在此省略.
-我们来看一下 Kloosterman 和的生成域.
-设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 的 $n$ 个乘性特征, 重新记
-\[\Kl_n(\psi,\bchi,q,a)=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_{\log_p q}(x_1+\cdots+x_n).\]
+	\begin{itemize}
+		\item 设 $\chi$ 是 $\BF_q^\times$ 上乘性特征, 阶为 $c$.
+		\item 那么指数和 $S_k\in\BQ(\mu_{pc})$.
+		\item 我们可以问, $\BQ(S_k)\subseteq \BQ(\mu_{pc})$ 这个子域是什么?
+		\item 对于多项式情形, 我们有一些已知结果, 在此省略.
+		\item 我们来看一下 Kloosterman 和的生成域.
+		\item 设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 的 $n$ 个乘性特征, 重新记
+		\[
+			\Kl_n(\psi,\bchi,q,a)=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_{\log_p q}(x_1+\cdots+x_n).
+		\]
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{Stickelberger 同余定理}
-首先回顾下Stickelberger 同余定理.
-固定 $\fP\mid \fp \mid p$ 为 $\BQ(\mu_{(q-1)p})$ 和 $\BQ(\mu_{q-1})$ 的素位.
-固定 $\fp$ 的剩余域到 $\BF_q$ 的同构.
-那么 Teichm\"uller 提升给出了一个特征 $\omega:\BF_q^\times\to\BQ(\mu_{q-1})^\times$.
-
-记 $g(m):=\sum_{t\in\BF_q^\times}\omega(t)^{-m}\psi_{\log_p q}\bigl(\Tr(t)\bigr)$ 为 $\omega^{-m}$ 的\emph{高斯和}.
-
-\begin{theorem}[Stickelberger 同余定理]
-对于 $0\le m<q-1$,
-  \[g(m)\equiv -\frac{\pi^{m_0+\dots +m_{k-1}}}{m_0!\cdots m_{k-1}!} \bmod \fP^{m_0+\dots+m_{k-1}+1},\]
-其中
-  \[m=m_0+m_1p+\dots+m_{k-1}p^{k-1},\quad 0\le m_i\le p-1.\]
-\end{theorem}
+	\begin{itemize}
+		\item 首先回顾下Stickelberger 同余定理.
+		\item 固定 $\fP\mid \fp \mid p$ 为 $\BQ(\mu_{(q-1)p})$ 和 $\BQ(\mu_{q-1})$ 的素位.
+		\item 固定 $\fp$ 的剩余域到 $\BF_q$ 的同构.
+		\item 那么 Teichm\"uller 提升给出了一个特征 $\omega:\BF_q^\times\to\BQ(\mu_{q-1})^\times$.
+		\item 记 $g(m):=\sum_{t\in\BF_q^\times}\omega(t)^{-m}\psi_{\log_p q}\bigl(\Tr(t)\bigr)$ 为 $\omega^{-m}$ 的\emph{高斯和}.
+	\end{itemize}
+	\onslide<+->
+	\begin{theorem}[][Stickelberger 同余定理]
+		对于 $0\le m<q-1$,
+		\[
+			g(m)\equiv -\frac{\pi^{m_0+\dots +m_{k-1}}}{m_0!\cdots m_{k-1}!} \bmod \fP^{m_0+\dots+m_{k-1}+1},
+		\]
+		其中
+		\[
+			m=m_0+m_1p+\dots+m_{k-1}p^{k-1},\quad
+			0\le m_i\le p-1.
+		\]
+	\end{theorem}
 \end{frame}
-
 
 
 \begin{frame}{$\fP$ 进展开}
-设 $\chi_i=\omega^{-s_i}$.
-根据
-\[\sum_{m=0}^{q-2} \omega^{-m}(a^{-1}x_1\cdots x_n)=\begin{cases}
-	0,&\text{if}\ x_1\cdots x_n\neq a;\\
-	q-1,&\text{if}\ x_1\cdots x_n= a,
-\end{cases}\]
-得到
-\[(q-1)\Kl_n(\psi,\bchi,q,a)=\sum_{m=0}^{q-2}\omega^m(a)\prod_{i=1}^n g(m+s_i).\]
-通过小心地估计, 可以证明: 如果 $\chi_i^{-1}\chi_j=1$ 或不是 $n$ 阶特征, $\forall i,j$, 则 当 $p\gg0$ 时, 存在唯一的 $m$ 使得 
-\[v_\fP\Bigl(\prod_{i=1}^n g(m+s_i)\Bigr)\]
-达到最小.
-这样我们得到 $\Kl_n\neq 0$.
-
-事实上, 该方法也可以用来对指数和何时能被 $\Gal(\BQ(\mu_{pc})/\BQ)$ 中元素固定做出一些判断, 从而得到特定情形下的指数和的生成域.
+	\begin{itemize}
+		\item 设 $\chi_i=\omega^{-s_i}$.
+		\item $\displaystyle
+				\sum_{m=0}^{q-2} \omega^{-m}(a^{-1}x_1\cdots x_n)
+				=\begin{cases}
+					0,&\text{if}\ x_1\cdots x_n\neq a;\\
+					q-1,&\text{if}\ x_1\cdots x_n= a,
+				\end{cases}$
+		\item $\displaystyle
+				(q-1)\Kl_n(\psi,\bchi,q,a)
+				=\sum_{m=0}^{q-2}\omega^m(a)\prod_{i=1}^n g(m+s_i)$.
+		\item 通过小心地估计, 可以证明: 如果 $\chi_i^{-1}\chi_j=1$ 或不是 $n$ 阶特征, $\forall i,j$, 则当 $p\gg0$ 时, 存在唯一的 $m$ 使得 
+		\[
+			v_\fP\Bigl(\prod_{i=1}^n g(m+s_i)\Bigr)
+		\]
+		达到最小.
+		\item 这样我们得到 $\Kl_n\neq 0$.
+		\item 事实上, 该方法也可以用来对指数和何时能被 $\Gal(\BQ(\mu_{pc})/\BQ)$ 中元素固定做出一些判断, 从而得到特定情形下的指数和的生成域.
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{伽罗瓦作用}
-记
-	\[\Gal(\BQ(\mu_{pc})/\BQ)=\set{\sigma_t\tau_w\mid t\in (\BZ/p\BZ)^\times,w\in(\BZ/c\BZ)^\times},\]
-其中
-	\[\sigma_t(\zeta_p)=\zeta_p^t,\quad \sigma_t(\zeta_c)=\zeta_c,\]
-	\[\tau_w(\zeta_p)=\zeta_p,\quad \tau_w(\zeta_c)=\zeta_c^w.\] 
-
-容易看出
-	\[\sigma_t\tau_w\Kl_n(\psi,\bchi,q,a)=\prod\bchi(t)^{-w}\Kl_n(\psi,\bchi^w,q,at^n).\]
-因此我们需要研究两个 Kloosterman 和何时相差一个 $(q-1)$ 次单位根.
-这需要用到 $\ell$ 进方法.
+	\begin{itemize}
+		\item 记
+		\[
+			\Gal(\BQ(\mu_{pc})/\BQ)
+			=\set{\sigma_t\tau_w\mid t\in (\BZ/p\BZ)^\times,w\in(\BZ/c\BZ)^\times},
+		\]
+		\item 其中
+		\[
+			\sigma_t(\zeta_p)=\zeta_p^t,\quad
+			\sigma_t(\zeta_c)=\zeta_c,
+		\]
+		\item 
+		\[
+			\tau_w(\zeta_p)=\zeta_p,\quad
+			\tau_w(\zeta_c)=\zeta_c^w.
+		\]
+		\item 容易看出
+		\[
+			\sigma_t\tau_w\Kl_n(\psi,\bchi,q,a)
+			=\prod\bchi(t)^{-w}\Kl_n(\psi,\bchi^w,q,at^n).
+		\]
+		\item 因此我们需要研究两个 Kloosterman 和何时相差一个 $(q-1)$ 次单位根.
+		\item 这需要用到 $\ell$ 进方法.
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{Swan 导子}
-为了刻画 lisse 层的一些性质, 我们需要 Swan 导子的概念.
-设 $K$ 是完备离散赋值域, $I^{(x)},x\ge 0$ 为其高阶分歧群. 
-对于分歧群 $P$ 的 $E$ 表示 $M$, 我们有满足如下性质的分解 $M=\oplus M(x)$, 
-	\[M(0)=M^P,\quad M(x)^{I^{(x)}}=0,\quad M(x)^{I(y)}=M(x), \ y>x>0.\]
-称 $M(x)\neq 0$ 的 $x$ 为 $M$ 的\emph{断点}.
-定义 $M$ 的 \emph{Swan 导子}为
-	\[\Swan(M)=\sum x\dim M(x).\]
-它总是一个整数.
+	\begin{itemize}
+		\item 为了刻画 lisse 层的一些性质, 我们需要 Swan 导子的概念.
+		\item 设 $K$ 是完备离散赋值域, $I^{(x)},x\ge 0$ 为其高阶分歧群. 
+		\item 对于分歧群 $P$ 的 $E$ 表示 $M$, 我们有满足如下性质的分解 $M=\oplus M(x)$, 
+		\[
+			M(0)=M^P,\quad
+			M(x)^{I^{(x)}}=0,\quad
+			M(x)^{I(y)}=M(x), \ y>x>0.
+		\]
+		\item 称 $M(x)\neq 0$ 的 $x$ 为 $M$ 的\emph{断点}.
+		\item 定义 $M$ 的 \emph{Swan 导子}为
+		\[
+			\Swan(M)=\sum x\dim M(x).
+		\]
+		\item 它总是一个整数.
+	\end{itemize}
 \end{frame}
 
 
-
 \begin{frame}{曲线}
-令 $C$ 是特征 $p$ 完全域 $\BF$ 上一射影光滑几何连通代数曲线, $K=\BF(C)$ 为其函数域.
-对于任意闭点 $x\in C(\BF)$, 我们有完备化 $K_x$.
-
-对于非空开集 $U\subset C$, 我们有阿贝尔范畴等价
-\begin{align*}
-	\set{\text{$U$ 上的 lisse $E$ 层}}&\lra \cRep_E^c \pi_1(U,\ov\eta)\\
-	\CF&\lto \CF_{\ov\eta}.
-\end{align*}
-	
-由于基本群 $\pi_1(U,\ov\eta)$ 是伽罗瓦群 $\Gal(\ov K/K)$ 的商, 因此分解群 $D_x$ 作用在 $\CF_{\ov\eta}$ 上.
-于是我们可以定义 $\CF$ 在 $x$ 处的 Swan 导子.
-对于 $x\in U$, 由于惯性群 $I_x$ 作用平凡, 因此 $\Swan_x(\CF)=0$.
-
-我们将会取 $C=\BP^1$ and $U=\Gm$.
+	\begin{itemize}
+		\item 令 $C$ 是特征 $p$ 完全域 $\BF$ 上一射影光滑几何连通代数曲线, $K=\BF(C)$ 为其函数域.
+		\item 对于任意闭点 $x\in C(\BF)$, 我们有完备化 $K_x$.
+		\item 对于非空开集 $U\subset C$, 我们有阿贝尔范畴等价
+		\begin{align*}
+			\set{\text{$U$ 上的 lisse $E$ 层}}&\lra \cRep_E^c \pi_1(U,\ov\eta)\\
+			\CF&\lto \CF_{\ov\eta}.
+		\end{align*}
+		\item 由于基本群 $\pi_1(U,\ov\eta)$ 是伽罗瓦群 $\Gal(\ov K/K)$ 的商, 因此分解群 $D_x$ 作用在 $\CF_{\ov\eta}$ 上.
+		\item 于是我们可以定义 $\CF$ 在 $x$ 处的 Swan 导子.
+		\item 对于 $x\in U$, 由于惯性群 $I_x$ 作用平凡, 因此 $\Swan_x(\CF)=0$.
+		\item 我们将会取 $C=\BP^1$ and $U=\Gm$.
+	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Kloosterman 层}
-Deligne 和 Katz 在 $\Gm\otimes \BF_q$ 上定义了一个 lisse 层
-	\[\CKl=\CKl_{n,q}(\psi,\bchi),\]
-它满足如下性质
-\begin{enumerate}
-\item $\CKl$ 秩为 $n$, 纯粹权为 $n-1$.
-\item 对任意 $a\in \BF_q^\times$,
-	$\Tr\bigl(\Frob_a,\CKl_{\ov a}\bigr)=(-1)^{n-1}\Kl_n(\psi,\bchi,q,a).$
-\item $\CKl$ 在 $0$ 处温和 ($\Swan_0=0$).
-\item $\CKl$ 在 $\infty$ 处完全野, $\Swan_\infty=1$. 于是它的 $\infty$ 断点均为 $1/n$.
-\end{enumerate}
+	\begin{itemize}
+		\item Deligne 和 Katz 在 $\Gm\otimes \BF_q$ 上定义了一个 lisse 层
+		\[
+			\CKl=\CKl_{n,q}(\psi,\bchi),
+		\]
+		\item 它满足如下性质
+		\begin{enumerate}
+			\item $\CKl$ 秩为 $n$, 纯粹权为 $n-1$.
+			\item 对任意 $a\in \BF_q^\times$,
+				$\Tr\bigl(\Frob_a,\CKl_{\ov a}\bigr)=(-1)^{n-1}\Kl_n(\psi,\bchi,q,a).$
+			\item $\CKl$ 在 $0$ 处温和 ($\Swan_0=0$).
+			\item $\CKl$ 在 $\infty$ 处完全野, $\Swan_\infty=1$. 于是它的 $\infty$ 断点均为 $1/n$.
+		\end{enumerate}
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{Fisher 的下降}
-Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
-对于 $a\in\BF_q^\times$, 他定义了 $\Gm\otimes\BF_p$ 上的一个 lisse 层 $\CF_a(\bchi)$, 使得
-\[\CF_a(\bchi)|\Gm\otimes\BF_q=\bigotimes\limits_{\sigma\in\Gal(\BF_q/\BF_p)} \bigl(t\mapsto \sigma(a)t^n\bigr)^*\CKl_n(\psi\circ\sigma^{-1},\bchi\circ\sigma^{-1})\]
-并满足如下性质:
-\begin{enumerate}
-\item $\CF_a(\bchi)$ 秩为 $n^d$, 纯粹权为 $d(n-1)$.
-\item 对任意 $t\in\BF_p^\times$,
-	$\Tr\bigl(\Frob_t,\CF_a(\bchi)_{\ov t}\bigr)=(-1)^{(n-1)d}\Kl_n(\psi,\bchi,q,at^n).$
-\item $\CF_a(\bchi)$ 在 $0$ 处温和.
-\item $\CF_a(\bchi)$ 的 $\infty$ 断点均不超过 $1$.
-\end{enumerate}
+	\begin{itemize}
+		\item Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
+		\item 对于 $a\in\BF_q^\times$, 他定义了 $\Gm\otimes\BF_p$ 上的一个 lisse 层 $\CF_a(\bchi)$, 使得
+		\[
+			\CF_a(\bchi)|\Gm\otimes\BF_q=\bigotimes\limits_{\sigma\in\Gal(\BF_q/\BF_p)} \bigl(t\mapsto \sigma(a)t^n\bigr)^*\CKl_n(\psi\circ\sigma^{-1},\bchi\circ\sigma^{-1})
+		\]
+		\item 并满足如下性质:
+		\begin{enumerate}
+			\item $\CF_a(\bchi)$ 秩为 $n^d$, 纯粹权为 $d(n-1)$.
+			\item 对任意 $t\in\BF_p^\times$,
+				$\Tr\bigl(\Frob_t,\CF_a(\bchi)_{\ov t}\bigr)=(-1)^{(n-1)d}\Kl_n(\psi,\bchi,q,at^n).$
+			\item $\CF_a(\bchi)$ 在 $0$ 处温和.
+			\item $\CF_a(\bchi)$ 的 $\infty$ 断点均不超过 $1$.
+		\end{enumerate}
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{辅助层}
-将乘性特征 $\chi$ 看作 $\BB^\times=\Res_{\BF_q/\BF_p}\Gm$ 的 $\BF_p$ 的特征, 通过 Lang torsor 给出 $\BB^\times$ 上的秩一 lisse 层. 记 $\CL_\chi$ 为其在 $\Gm$ 上的限制.
-类似地, 加性特征 $\psi$ 给出了 $\Ga/\BF_p$ 上的 lisse 层, 记 $\CL_\psi$ 为其在 $\Gm$ 上的限制.
-
-对于 $t\in\BF_p^\times$,
-\[\Tr\bigl(\Frob_t, (\CL_\chi)_{\ov t}\bigr)=\chi(t),\quad
-\Tr\bigl(\Frob_t, (\CL_\psi)_{\ov t}\bigr)=\psi(t).\]
-
-对于单位根 $\lambda\in\mu_{q-1}$, 令 $V$ 为一维 $\ov\BQ_\ell$ 线性空间, 使得几何 Frobenius 通过 $\lambda$ 作用.
-那么它给出了 $\Spec \BF_p$ 上的层, 通过拉回到 $\Gm$ 上得到 $\CL$.
-那么对于 $t\in\BF_p^\times$,
-\[\Tr\bigl(\Frob_t, \CL_{\ov t}\bigr)=\lambda.\]
+	\begin{itemize}
+		\item 将乘性特征 $\chi$ 看作 $\BB^\times=\Res_{\BF_q/\BF_p}\Gm$ 的 $\BF_p$ 的特征, 通过 Lang torsor 给出 $\BB^\times$ 上的秩一 lisse 层.
+		\item 记 $\CL_\chi$ 为其在 $\Gm$ 上的限制.
+		\item 类似地, 加性特征 $\psi$ 给出了 $\Ga/\BF_p$ 上的 lisse 层, 记 $\CL_\psi$ 为其在 $\Gm$ 上的限制.
+		\item 对于 $t\in\BF_p^\times$,
+		\[
+			\Tr\bigl(\Frob_t, (\CL_\chi)_{\ov t}\bigr)=\chi(t),\quad
+			\Tr\bigl(\Frob_t, (\CL_\psi)_{\ov t}\bigr)=\psi(t).
+		\]
+		\item 对于单位根 $\lambda\in\mu_{q-1}$, 令 $V$ 为一维 $\ov\BQ_\ell$ 线性空间, 使得几何 Frobenius 通过 $\lambda$ 作用.
+		\item 那么它给出了 $\Spec \BF_p$ 上的层, 通过拉回到 $\Gm$ 上得到 $\CL$.
+		\item 那么对于 $t\in\BF_p^\times$,
+		\[
+			\Tr\bigl(\Frob_t, \CL_{\ov t}\bigr)=\lambda.
+		\]
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{关键的估计}
-\begin{lemma}
-设 $\CF,\CF'$ 是 $\Gm\otimes\BF_p$ 上秩均为 $r$, 纯粹权为 $w$ 的 lisse 层.
-假设对任意 $t\in \BF_p^\times$ 有
-	\[\Tr\bigl(\Frob_t, \CF_{\ov t}\bigr)=\Tr\bigl(\Frob_t, \CF'_{\ov t}\bigr).\]
-设 $\CG$ 是 $\Gm\otimes\BF_p$ 上一几何不可约秩为 $s$, 纯粹权为 $w$ 的层, 使得 $\CG\mid \Gm\otimes\ov\BF_p$ 在 $\CF\mid \Gm\otimes\ov \BF_p$ 中恰好出现一次, 则它在 $\CF'\mid \Gm\otimes\ov \BF_p$ 中至少出现一次, 其中我们要求 $p>[2rs(M_0+M_\infty)+1]^2$, $M_\eta$ 是 $\CF\oplus \CF'$ 的最大 $\eta$ 断点.
-\end{lemma}
+	\onslide<+->
+	\begin{lemma}
+		设 $\CF,\CF'$ 是 $\Gm\otimes\BF_p$ 上秩均为 $r$, 纯粹权为 $w$ 的 lisse 层.
+		假设对任意 $t\in \BF_p^\times$ 有
+		\[
+			\Tr\bigl(\Frob_t, \CF_{\ov t}\bigr)=\Tr\bigl(\Frob_t, \CF'_{\ov t}\bigr).
+		\]
+		设 $\CG$ 是 $\Gm\otimes\BF_p$ 上一几何不可约秩为 $s$, 纯粹权为 $w$ 的层, 使得 $\CG\mid \Gm\otimes\ov\BF_p$ 在 $\CF\mid \Gm\otimes\ov \BF_p$ 中恰好出现一次, 则它在 $\CF'\mid \Gm\otimes\ov \BF_p$ 中至少出现一次, 其中我们要求 $p>[2rs(M_0+M_\infty)+1]^2$, $M_\eta$ 是 $\CF\oplus \CF'$ 的最大 $\eta$ 断点.
+	\end{lemma}
 \end{frame}
 
 
 \begin{frame}{最高权的比较}
-设 $\CG_a(\bchi)$ 为 $\CF_a(\bchi)$ 的一个子层, 使得作为连通几何单值群 $G_\geom\bigl(\CF_a(\bchi)\bigr)^\circ$ 的李代数的子表示, 其具有最高权.
-将
-\[\CF=\CF_a(\bchi)\otimes\CL_{\prod\ov \bchi},\quad
-\CF'=\CF'_b(\brho)\otimes\CL_{\prod\ov \brho},\quad
-\CG=\CG_a(\bchi)\otimes\CL_{\prod\ov \bchi}\]
-代入上述引理中, 以及交换二者的情形, 得到二者具有相等的最高权.
-
-将 $\CF,\CF'$ 通过伽罗瓦作用得到的层直和起来, $\CG_a(\chi),\CG_b(\rho)$ 可视为其连通几何单值群的李代数表示, 分解得到伽罗瓦作用之后得到的两个层的集合具有一样的最高权集合, 从而 $\bchi$ 和 $\brho$ 在相差伽罗瓦作用下只相差一个特征:
-\[\exists\sigma\in\Gal(\BF_q/\BF_p),\quad\brho=\eta\cdot(\bchi\circ \sigma^{-1}),\quad b=\sigma(a).\]
+	\begin{itemize}
+		\item 设 $\CG_a(\bchi)$ 为 $\CF_a(\bchi)$ 的一个子层, 使得作为连通几何单值群 $G_\geom\bigl(\CF_a(\bchi)\bigr)^\circ$ 的李代数的子表示, 其具有最高权.
+		\item 将
+		\[
+			\CF=\CF_a(\bchi)\otimes\CL_{\prod\ov \bchi},\quad
+			\CF'=\CF'_b(\brho)\otimes\CL_{\prod\ov \brho},\quad
+			\CG=\CG_a(\bchi)\otimes\CL_{\prod\ov \bchi}
+		\]
+		\item 代入上述引理中, 以及交换二者的情形, 得到二者具有相等的最高权.
+		\item 将 $\CF,\CF'$ 通过伽罗瓦作用得到的层直和起来, $\CG_a(\chi),\CG_b(\rho)$ 可视为其连通几何单值群的李代数表示, 分解得到伽罗瓦作用之后得到的两个层的集合具有一样的最高权集合,
+		\item 从而 $\bchi$ 和 $\brho$ 在相差伽罗瓦作用下只相差一个特征:
+		\[
+			\exists\sigma\in\Gal(\BF_q/\BF_p),\quad
+			\brho=\eta\cdot(\bchi\circ \sigma^{-1}),\quad
+			b=\sigma(a).
+		\]
+	\end{itemize}
 \end{frame}
-
 
 
 % \begin{frame}{关键的估计之证明概述}
@@ -502,7 +653,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % \end{frame}
 
 
-
 % \begin{frame}{Kloosterman和的生成域}
 % 称 $\bchi$ 是 \emph{Kummer 诱导的}, 若存在非平凡特征 $\Lambda$ 使得作为无序数组 $\bchi=\bchi\Lambda:=\set{\chi_1\Lambda,\dots,\chi_n\Lambda}$.
 % 此时, $\prod\bchi=\prod(\bchi\Lambda)=\Lambda^n\prod\bchi$. 因此 $\Lambda^n=1$. 
@@ -510,7 +660,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % 假设 $p>2n+1$ 且 $\bchi$ 不是 Kummer 诱导的, 则 $\CF_a(\bchi)$ 有一个重数为 $1$ 的最高权. 考虑对应的李代数  $\fg(\CF_a(\bchi))$ 表示, 它对应一个子层 $\CG_a(\bchi)$. 
 % 而且这个子层是几何不可约的, 且在 $\CF_a(\bchi)|\Gm\otimes\ov\BF_p$ 中只出现一次.
 % \end{frame}
-
 
 
 % \begin{frame}{推论}
@@ -524,7 +673,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % 这里 $\CL_\chi$ 是 $\Gm\otimes\BF_p$ 上由 Lang torsor 定义的秩 $1$ lisse 层, 使得对任意 $t\in\BF_p^\times$,
 % 	\[\Tr(\Frob_t,(\CL_\chi)_{\ov t})=\chi(t).\]
 % \end{frame}
-
 
 
 % \begin{frame}{推论的证明}
@@ -543,7 +691,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % \end{frame}
 
 
-
 % \begin{frame}{Kloosterman 和的不同}
 % 现在
 % 	\[\CG_a(\bchi)\otimes \CL_{\prod \ov\bchi}\inj \CF_b(\brho)\otimes\CL_{\prod\ov \brho},\quad \CG_b(\brho)\otimes \CL_{\prod \ov\brho}\inj \CF_a(\bchi)\otimes\CL_{\prod\ov \bchi}.\]
@@ -559,7 +706,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % \end{frame}
 
 
-
 % \begin{frame}{非零性}
 % 最后一步我们需要证明 Kloosterman 和非零.
 % \begin{theorem}
@@ -569,7 +715,6 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % 是任两个特征的阶的最小公倍数的最大值.
 % \end{theorem}
 % \end{frame}
-
 
 
 % \begin{frame}{非零性的证明概述}
@@ -583,52 +728,56 @@ Fisher 给了 Kloosterman 层沿着有限域的扩张的下降.
 % \end{frame}
 
 
-
 \begin{frame}{生成域}
-\begin{theorem}
-若 $p\gg0$ 且 $\chi_i$ 之间不相差非平凡的 $n$ 次特征, 则 $\Kl_n(\psi,\bchi,q,a)$ 生成 $\BQ(\mu_{pc})^H$, 其中 $H$ 包含的 $\sigma_t\tau_w$ 满足: 存在整数 $\beta$ 和特征 $\eta$ 使得
-  \[t=\lambda a_1^\beta,\lambda^{n_1}=1,\ \bchi^w=\eta\bchi^{q_1^\beta},\ \eta(a)=\prod\bchi^w(t).\]
-这里, $n_1=(n,p-1)$, $q_1=\#\BF_p(a^{(p-1)/n_1})$, $a_1\in\BF_p^\times$ 满足 $a_1^{n/n_1}=\bfN_{\BF_{q_1}/\BF_p}(a^{(1-p)/n_1})=a^{(1-q_1)/n_1}$.
-\end{theorem}
+	\onslide<+->
+	\begin{theorem}
+		若 $p\gg0$ 且 $\chi_i$ 之间不相差非平凡的 $n$ 次特征, 则 $\Kl_n(\psi,\bchi,q,a)$ 生成 $\BQ(\mu_{pc})^H$, 其中 $H$ 包含的 $\sigma_t\tau_w$ 满足: 存在整数 $\beta$ 和特征 $\eta$ 使得
+		\[
+			t=\lambda a_1^\beta,\lambda^{n_1}=1,\ 
+			\bchi^w=\eta\bchi^{q_1^\beta},\ 
+			\eta(a)=\prod\bchi^w(t).
+		\]
+		这里, $n_1=(n,p-1)$, $q_1=\#\BF_p(a^{(p-1)/n_1})$, $a_1\in\BF_p^\times$ 满足 $a_1^{n/n_1}=\bfN_{\BF_{q_1}/\BF_p}(a^{(1-p)/n_1})=a^{(1-q_1)/n_1}$.
+	\end{theorem}
 \end{frame}
-
-
 
 
 \begin{frame}{例子: $n=2$ 情形}
-设 $\bchi=\set{1,\chi}$, $\chi$ 的阶为 $c\neq 2$.
-若 $p\gg0$, 则 $\Kl(\psi,\bchi,p^d,a)$ 生成 $\BQ(\mu_{pc})^H$, 其中 
-	\[H=
-	\begin{cases}
-		\pair{\tau_{q_1}\sigma_{a_1},\sigma_{-1},\tau_{-1}},
-			&\text{若}\ \chi(-1)=1,\chi(a)=1;\\
-		\pair{\tau_{-q_1}\sigma_{a_1},\sigma_{-1}},
-			&\text{若}\ \chi(-1)=1,\chi(a)=\chi(a_1)=-1;\\
-		\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha},\sigma_{-1}},
-			&\text{若}\ \chi(-1)=1,\chi(a)^\alpha\neq 1;\\
-		\pair{\tau_{q_1}\sigma_{-a_1},\tau_{-1}\sigma_{-1}},
-			&\text{若}\ \chi(-1)=-1, \chi(a)=\chi(a_1)=-1;\\
-		\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}}
-			&\text{若}\ \chi(-1)=-1, \chi(a)=1;\\
-		\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}\sigma_{-1}},
-			&\text{若}\ \chi(-1)=-1,\chi(a)=-1,\chi(a_1)=1;\\
-		\pair{\tau_{q_1^{\alpha/2}}\sigma_{-a_1^{\alpha/2}}},
-			&\text{若}\ \chi(-1)=-1,2\mid \alpha,\chi(a)\neq \pm1;\\
-		\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha}},
-			&\text{若}\ \chi(-1)=-1,2\nmid \alpha,\chi(a)\neq \pm1.
-	\end{cases}\]
- $q_1=\#\BF_p(a^{(1-p)/2}), a_1=a^{(1-q_1)/2}$, $\alpha$ 是 $\chi(a_1)\in\mu_{p-1}$ 的阶.
+	\begin{itemize}
+		\item 设 $\bchi=\set{1,\chi}$, $\chi$ 的阶为 $c\neq 2$.
+		\item 若 $p\gg0$, 则 $\Kl(\psi,\bchi,p^d,a)$ 生成 $\BQ(\mu_{pc})^H$, 其中 
+		\[
+			H=\begin{cases}
+				\pair{\tau_{q_1}\sigma_{a_1},\sigma_{-1},\tau_{-1}},
+					&\text{若}\ \chi(-1)=1,\chi(a)=1;\\
+				\pair{\tau_{-q_1}\sigma_{a_1},\sigma_{-1}},
+					&\text{若}\ \chi(-1)=1,\chi(a)=\chi(a_1)=-1;\\
+				\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha},\sigma_{-1}},
+					&\text{若}\ \chi(-1)=1,\chi(a)^\alpha\neq 1;\\
+				\pair{\tau_{q_1}\sigma_{-a_1},\tau_{-1}\sigma_{-1}},
+					&\text{若}\ \chi(-1)=-1, \chi(a)=\chi(a_1)=-1;\\
+				\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}}
+					&\text{若}\ \chi(-1)=-1, \chi(a)=1;\\
+				\pair{\tau_{q_1}\sigma_{a_1},\tau_{-1}\sigma_{-1}},
+					&\text{若}\ \chi(-1)=-1,\chi(a)=-1,\chi(a_1)=1;\\
+				\pair{\tau_{q_1^{\alpha/2}}\sigma_{-a_1^{\alpha/2}}},
+					&\text{若}\ \chi(-1)=-1,2\mid \alpha,\chi(a)\neq \pm1;\\
+				\pair{\tau_{q_1^{\alpha}}\sigma_{a_1^\alpha}},
+					&\text{若}\ \chi(-1)=-1,2\nmid \alpha,\chi(a)\neq \pm1.
+			\end{cases}
+		\]
+		\item $q_1=\#\BF_p(a^{(1-p)/2}), a_1=a^{(1-q_1)/2}$, $\alpha$ 是 $\chi(a_1)\in\mu_{p-1}$ 的阶.
+	\end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{指数和的生成域序列}
-回到一般情形, 数列 $\set{S_k}_{k\ge 1}$ 的生成域是一个有理函数.
-因此它是线性递推数列.
-
-类比 Skolem-Mahler-Lech 关于线性递推数列零点的定理, 万大庆-尹航证明了此类数列的生成域除有限多项外, 是周期的.
+	\begin{itemize}
+		\item 回到一般情形, 数列 $\set{S_k}_{k\ge 1}$ 的生成域是一个有理函数.
+		\item 因此它是线性递推数列.
+		\item 类比 Skolem-Mahler-Lech 关于线性递推数列零点的定理, 万大庆-尹航证明了此类数列的生成域除有限多项外, 是周期的.
+	\end{itemize}
 \end{frame}
-
 
 
 \end{document}

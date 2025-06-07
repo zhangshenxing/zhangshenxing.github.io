@@ -248,10 +248,12 @@
     于是 S-G 序列中连续 $s_k$ 项形成的序列只有 $(k+1)^{s_k}$ 种可能, 从而由抽屉原理可知, 存在两个相同的 $s_k$ 项序列.
     \onslide<+->
     而 $\CG(n)$ 仅由它之前的 $s_k$ 项决定, 所以我们得到:
-    \onslide<+->
-    \begin{proposition}
-      序列 $\CG$ 是\emphov{最终周期}{ultimately periodic}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG(n+p)=\CG(n),\forall n\ge \ell$.
-    \end{proposition}
+  \end{itemize}
+  \onslide<+->
+  \begin{proposition}
+    序列 $\CG$ 是\emphov{最终周期}{ultimately periodic}的, 即存在整数 $p\ge 1,\ell\ge 0$ 使得 $\CG(n+p)=\CG(n),\forall n\ge \ell$.
+  \end{proposition}
+  \begin{itemize}
     \item 将最小的 $p$ 称为($\CG_S$ 或 $\SUB(S)$ 的)\emphov{周期}{period}, 最小的 $\ell$ 称为\emphov{预周期}{pre-period}.
   \end{itemize}
 \end{frame}
@@ -365,7 +367,7 @@
 
 \begin{frame}{三元集合: $a=1,b\ge 6$ 偶}
   \onslide<+->
-  \begin{proposition}
+  \begin{proposition}[near]
     设 $S=\set{1,b,c}$, 其中 $b\ge 6$ 是偶数, $c=t(b+1)+r,0\le r\le b$.
     \onslide<+->{
     我们有
@@ -393,6 +395,7 @@
         $c+b$\\
         \bottomcolorrule
       \end{tabular}
+      \smalldel
     \end{center}}
   \end{proposition}
   \begin{itemize}
@@ -439,27 +442,26 @@
 \begin{frame}{更多的例子}
   \onslide<+->
   \begin{proposition}
-    设 $S=\set{a,2a,c=3at+r},0\le r<3a$, 则
-    \[
-      \ell=\begin{cases}
-        c+a-r,&0<r<a;\\
-        0,&\text{其它情形},
-      \end{cases}\quad 
-      p=\begin{cases}
-        3a/2,&r=a/2;\\
-        3a,&a/2<r\le 2a;\\
-        c+a,&\text{其它情形.}
-      \end{cases}
-    \]
-  \end{proposition}
-  \onslide<+->
-  \begin{proposition}
-    设 $S=\set{a,a+1,\dots,b-1,b,c=t(a+b)+r},0\le r<a+b$, 则
-    \[\ell=0,\quad p=\begin{cases}
-      a+b,&a\le r\le b;\\
-      c+a,&r=0\text{ 或 }r>b;\\
-      c+b,&0<r<a.
-    \end{cases}\]
+    \begin{enumerate}
+      \item 设 $S=\set{a,2a,c=3at+r},0\le r<3a$, 则
+      \[
+        \ell=\begin{cases}
+          c+a-r,&0<r<a;\\
+          0,&\text{其它情形},
+        \end{cases}\quad 
+        p=\begin{cases}
+          3a/2,&r=a/2;\\
+          3a,&a/2<r\le 2a;\\
+          c+a,&\text{其它情形.}
+        \end{cases}
+      \]
+      \item 设 $S=\set{a,a+1,\dots,b-1,b,c=t(a+b)+r},0\le r<a+b$, 则
+      \[\ell=0,\quad p=\begin{cases}
+        a+b,&a\le r\le b;\\
+        c+a,&r=0\text{ 或 }r>b;\\
+        c+b,&0<r<a.
+      \end{cases}\]
+    \end{enumerate}
   \end{proposition}
 \end{frame}
 
@@ -486,7 +488,7 @@
 \section{主要猜想、结论和应用}
 \begin{frame}{主要猜想结论}
   \onslide<+->
-  根据这些结论, 我们猜想 $\SUB(S\cup\{c\})$ 周期和预周期关于 $c$ 是\emph{最终逐剩余类线性}的:
+  由此我们猜测 $\SUB(S\cup\{c\})$ 周期和预周期关于 $c$ 是\emph{最终逐剩余类线性}的:
   \onslide<+->
   \begin{conjecture}
     固定集合 $S$. 存在正整数 $q, N$ 以及 $\alpha_r,\beta_r,\lambda_r,\mu_r,0\le r<q$,

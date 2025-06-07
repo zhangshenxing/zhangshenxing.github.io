@@ -8,7 +8,7 @@
 	\onslide<+->
 	也就是说它的参数方程 $z=z(t),a\le t\le b$ 除去有限个点之外都有非零导数.
 	\onslide<+->
-	这里 $z'(t)=x'(t)+iy'(t)$.
+	这里 $z'(t)=x'(t)+\iiy'(t)$.
 
 	\onslide<+->
 	固定它的一个方向, 称为\emph{正方向}, 则我们得到一条\emph{有向曲线}.
@@ -50,21 +50,23 @@
 	\onslide<+->
 	设复变函数
 	\[
-		w=f(z)=u(x,y)+iv(x,y)
+		w=f(z)=u(x,y)+\ii v(x,y)
+	
 	\]
 	定义在区域 $D$ 内, 有向曲线 $C$ 包含在 $D$ 中.
 	\onslide<+->
 	形式地展开
 	\[
-		f(z)\diff z=(u+iv)(\diff x+i\diff y)=(u\diff x-v\diff y)+i(u\diff y+v\diff x).
+		f(z)\diff z=(u+\ii v)(\diff x+\ii\diff y)=(u\diff x-v\diff y)+\ii(u\diff y+v\diff x).
+	
 	\]
 	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{definition}
 		如果下述右侧两个线积分均存在, 则定义
-		\[
-			\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+i\int_C(v\diff x+u\diff y)
-		\]
+	\[
+			\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+\ii\int_C(v\diff x+u\diff y)
+	\]
 		为 \emph{$f(z)$ 沿曲线 $C$ 的积分}.
 	\end{definition}
 \end{frame}
@@ -79,6 +81,7 @@
 	然后在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
 	\[
 		S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.
+	
 	\]
 	\onslide<+->
 	然后称 $n\to\infty$, 分割的最大弧长 $\ra 0$ 时 $S_n$ 的极限为复变函数积分.
@@ -136,6 +139,7 @@
 	则
 	\[
 		\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x
+	
 	\]
 	就是黎曼积分.
 
@@ -156,14 +160,17 @@
 	\onslide<+->
 	设
 	\[
-		C:z(t)=x(t)+iy(t),\quad a\le t\le b
+		C:z(t)=x(t)+\iiy(t),\quad a\le t\le b
+	
 	\]
 	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向,
 	\onslide<+->
 	则 $\diff z=z'(t)\diff t=\bigl(x'(t)+y'(t)\bigr)\diff t$.
 	\onslide<+->
 	\begin{algorithm}{复变函数积分计算方法I}
-		\[\int_Cf(z)\diff z=\int_a^b f\bigl(z(t)\bigr)z'(t)\diff t.\]
+	\[
+		\int_Cf(z)\diff z=\int_a^b f\bigl(z(t)\bigr)z'(t)\diff t.
+	\]
 	\end{algorithm}
 	\onslide<+->
 	如果 $C$ 的正方向是从 $z(b)$ 到 $z(a)$, 则需要交换右侧积分的上下限.
@@ -178,18 +185,18 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是从原点到点 $3+4i$ 的直线段.
+		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是从原点到点 $3+4\ii$ 的直线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由于 $z=(3+4i)t,0\le t\le 1$,
+		由于 $z=(3+4\ii)t,0\le t\le 1$,
 		\onslide<+->{%
 		因此
-		\[
-			\int_Cz\diff z=\int_0^1(3+4i)t\cdot(3+4i)\diff t
-			\onslide<+->{=(3+4i)^2\int_0^1t\diff t}
-			\onslide<+->{=\half (3+4i)^2=-\frac72+12i.}
-		\]
+	\[
+			\int_Cz\diff z=\int_0^1(3+4\ii)t\cdot(3+4\ii)\diff t
+			\onslide<+->{=(3+4\ii)^2\int_0^1t\diff t}
+			\onslide<+->{=\half (3+4\ii)^2=-\frac72+12\ii.}
+	\]
 		}
 		\vspace{-\baselineskip}
 		\onslide<1->{%
@@ -201,7 +208,7 @@
 				\coordinate (A) at (1.5,2);
 				\draw[cstcurve,main,cstwra](O)--(A);
 				\draw
-					(A) node[below right,main,align=center,visible on=<2->] {$z=(3+4i)t$\\$0\le t\le 1$};
+					(A) node[below right,main,align=center,visible on=<2->] {$z=(3+4\ii)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}}
 	\end{solution}
@@ -211,19 +218,19 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4i$ 的曲线段.
+		求 $\displaystyle\int_Cz\diff z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4\ii$ 的曲线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		\begin{minipage}{.66\textwidth}
-			由于 $z=t+\dfrac49it^2,0\le t\le 3$,
+			由于 $z=t+\dfrac49\iit^2,0\le t\le 3$,
 			\onslide<+->{%
 				因此
 				\begin{align*}
-					\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9it^2\biggr)\cdot\biggl(1+\frac89it\biggr)\diff t\\
-					&\onslide<+->{=\int_0^3\biggl(t+\frac43it^2-\frac{32}{81}t^3\biggr)\diff t}\\
-					&\onslide<+->{=\biggl(\half t^2+\frac49it^3-\frac8{81}t^4\biggr)\Big|_0^3}
-					\onslide<+->{=-\frac72+12i.}
+					\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9\iit^2\biggr)\cdot\biggl(1+\frac89\iit\biggr)\diff t\\
+					&\onslide<+->{=\int_0^3\biggl(t+\frac43\iit^2-\frac{32}{81}t^3\biggr)\diff t}\\
+					&\onslide<+->{=\biggl(\half t^2+\frac49\iit^3-\frac8{81}t^4\biggr)\Big|_0^3}
+					\onslide<+->{=-\frac72+12\ii.}
 			\end{align*}}
 			\vspace{-\baselineskip}
 		\end{minipage}
@@ -233,7 +240,7 @@
 				\draw[cstaxis](O)--(3,0);
 				\draw[cstaxis](O)--(0,2.5);
 				\draw[cstcurve,main,domain=0:1.5,cstwra] plot({\x},{8*\x*\x/9});
-				\draw (A) node[right,main,align=center,visible on=<2->] {$z=t+\dfrac49it^2$\\[1mm]$0\le t\le 3$};
+				\draw (A) node[right,main,align=center,visible on=<2->] {$z=t+\dfrac49\iit^2$\\[1mm]$0\le t\le 3$};
 			\end{tikzpicture}
 		\end{minipage}
 	\end{solution}
@@ -243,18 +250,18 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $1+i$ 的直线段.
+		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $1+\ii$ 的直线段.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		由于 $z=(1+i)t,0\le t\le 1$,
+		由于 $z=(1+\ii)t,0\le t\le 1$,
 		\onslide<+->{因此 $\Re z=t$,
 		}\onslide<+->{
 			\[
-				\int_C\Re z\diff z=\int_0^1t\cdot(1+i)\diff t
-				\onslide<+->{=(1+i)\int_0^1t\diff t}
-				\onslide<+->{=\frac{1+i}2.}
+				\int_C\Re z\diff z=\int_0^1t\cdot(1+\ii)\diff t
+				\onslide<+->{=(1+\ii)\int_0^1t\diff t}
+				\onslide<+->{=\frac{1+\ii}2.}
 			\]}
 		\vspace{-\baselineskip}
 		\onslide<1->{%
@@ -264,7 +271,7 @@
 				\draw[cstaxis](O)--(0,2);
 				\coordinate (B) at (2,2);
 				\draw[cstcurve,main,cstwra](O)--(B);
-				\draw (B) node[below right,main,align=center,visible on=<2->] {$z=(1+i)t$\\$0\le t\le 1$};
+				\draw (B) node[below right,main,align=center,visible on=<2->] {$z=(1+\ii)t$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}}
 	\end{solution}
@@ -274,7 +281,7 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $i$ 再到 $1+i$ 的折线段.
+		求 $\displaystyle\int_C\Re z\diff z$, 其中 $C$ 是从原点到点 $\ii$ 再到 $1+\ii$ 的折线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -283,7 +290,7 @@
 		}
 
 		\onslide<+->{%
-			第二段 $z=t+i$, $0\le t\le 1$, $\Re z=t$.
+			第二段 $z=t+\ii$, $0\le t\le 1$, $\Re z=t$.
 		}\onslide<+->{%
 			因此 $\displaystyle\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12$.}
 		\onslide<2->
@@ -297,7 +304,7 @@
 				\draw[cstcurve,second,cstwra](C)--(D);
 				\draw
 					(C) node[below left,align=center,main,visible on=<3->] {$z=it$\\$0\le t\le 1$}
-					(D) node[right,align=center,second,visible on=<3->] {$z=t+i$\\$0\le t\le 1$};
+					(D) node[right,align=center,second,visible on=<3->] {$z=t+\ii$\\$0\le t\le 1$};
 			\end{tikzpicture}
 		\end{center}
 		\vspace{-.5\baselineskip}
@@ -315,7 +322,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\int_C\Im z\diff z=$\fillblankframe[3cm][2mm]{\onslide<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+i$ 再到 $i$ 的折线段.
+		求 $\displaystyle\int_C\Im z\diff z=$\fillblankframe[3cm][2mm]{\onslide<+->{$-\dfrac12+\dfrac i2$}}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+\ii$ 再到 $\ii$ 的折线段.
 		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis](O)--(2,0);
@@ -335,17 +342,17 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		$C: |z-z_0|=r$ 的参数方程为 $z=z_0+re^{i\theta},0\le \theta\le 2\pi$.
+		$C: |z-z_0|=r$ 的参数方程为 $z=z_0+r\ee^{\ii\theta},0\le \theta\le 2\pi$.
 		\onslide<+->{%
-			于是 $\diff z=ire^{i\theta}\diff \theta$.
+			于是 $\diff z=ir\ee^{\ii\theta}\diff \theta$.
 		}\onslide<+->{%
 			\begin{align*}
 				\alertm{\oint_C\frac{\diff z}{(z-z_0)^{n+1}}}
-				&=\int_0^{2\pi}i(re^{i\theta})^{-n}\diff\theta
-				\onslide<+->{=ir^{-n}\int_0^{2\pi}e^{-in\theta}\diff\theta}\\
-				&\onslide<+->{=ir^{-n}\int_0^{2\pi}\bigl(\cos(n\theta)+i\sin(n\theta)\bigr)\diff\theta}
+				&=\int_0^{2\pi}\ii(r\ee^{\ii\theta})^{-n}\diff\theta
+				\onslide<+->{=ir^{-n}\int_0^{2\pi}\ee^{-\ii n\theta}\diff\theta}\\
+				&\onslide<+->{=ir^{-n}\int_0^{2\pi}\bigl(\cos(n\theta)+\ii\sin(n\theta)\bigr)\diff\theta}
 				\onslide<+->{=\begin{cases}
-					\alertm{2\pi i,}&\alertm{\text{\alert{若}}\ n=0;}\\
+					\alertm{2\pi\ii,}&\alertm{\text{\alert{若}}\ n=0;}\\
 					\alertm{0,}&\alertm{\text{\alert{若}}\ n\neq0.}
 				\end{cases}}
 			\end{align*}
@@ -369,7 +376,8 @@
 					\draw (1.2,0) node[second] {线性性质};
 				\end{tikzpicture}
 			\item (\emph{长大不等式}) 设 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $|f(z)|\le M$, 则
-			\[\alert{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.\]
+			\[\alert{\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML}.
+	\]
 		\end{enumerate}
 	\end{theorem}
 \end{frame}
@@ -383,7 +391,8 @@
 			\[\abs{\sum_{k=1}^n f(\zeta_k)\Delta z_k}
 			\le\sum_{k=1}^n|f(\zeta_k)\Delta z_k|
 			\le\sum_{k=1}^n|f(\zeta_k)|\Delta s_k
-			\le M\sum_{k=1}^n\Delta s_k\]
+			\le M\sum_{k=1}^n\Delta s_k
+	\]
 		}\onslide<+->{可知
 			\[\abs{\int_Cf(z)\diff z}\le\int_C|f(z)|\diff s\le ML.\qedhere\]}
 	\end{proof}
@@ -399,9 +408,11 @@
 \begin{frame}{例: 长大不等式的应用\noexer}
 	\onslide<+->
 	\begin{example}
-		设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\lim\limits_{z\to a}(z-a)f(z)=k$, 则
+		设 $f(z)$ 在 $z\neq a$ 处连续, 且 $\liml_{z\to a}(z-a)f(z)=k$, 则
 		\vspace{-0.9\baselineskip}
-		\[\lim_{r\to0}\oint_{|z-a|=r}f(z)\diff z=2\pi ik.\]
+	\[
+		\lim_{r\to0}\oint_{|z-a|=r}f(z)\diff z=2\pi\iik.
+	\]
 	\end{example}
 
 	\onslide<+->
@@ -411,7 +422,7 @@
 			当 $0<r<\delta$ 时,
 			\vspace{-0.5\baselineskip}
 			\begin{align*}
-				&\abs{\oint_{|z-a|=r}f(z)\diff z-2\pi i k}
+				&\abs{\oint_{|z-a|=r}f(z)\diff z-2\pi\ii k}
 				=\abs{\oint_{|z-a|=r}\left[f(z)-\frac k{z-a}\right]\diff z}\\
 				\onslide<+->{=}&\onslide<.->{\abs{\oint_{|z-a|=r}\frac{(z-a)f(z)-k}{z-a}\diff z}}
 				\onslide<+->{\le \frac{\varepsilon}r\cdot 2\pi r=2\pi\varepsilon.}

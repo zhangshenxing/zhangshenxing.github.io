@@ -6,9 +6,11 @@
 	\onslide<+->
 	\begin{definition}
 			设 $z_0$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在它的某个去心邻域内的洛朗展开为
-			\[f(z)=\cdots+\frac{c_{-1}}{z-z_0}+c_0+c_1(z-z_0)+\cdots.\]
+			\[f(z)=\cdots+\frac{c_{-1}}{z-z_0}+c_0+c_1(z-z_0)+\cdots.
+	\]
 		\onslide<+->{称
-			\[\alertm{\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi i}\oint_Cf(z)\diff z}\]
+			\[\alertm{\Res[f(z),z_0]:=c_{-1}=\frac1{2\pi\ii}\oint_Cf(z)\diff z}
+	\]
 			为函数 \emph{$f(z)$ 在 $z_0$ 的留数}, 其中 $C$ 为该去心邻域中绕 $z_0$ 的一条闭路.
 		}
 	\end{definition}
@@ -22,7 +24,9 @@
 	\onslide<+->
 	\begin{algorithm}{复变函数积分计算方法 III: 留数定理}
 		若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 则
-		\[\oint_Cf(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+	\[
+		\oint_Cf(z)\diff z=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k].
+	\]
 	\end{algorithm}
 
 	\onslide<+->
@@ -53,7 +57,7 @@
 		\vspace{-.3\baselineskip}
 		\onslide<+->{%
 			由复闭路定理, $\displaystyle\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
-			=2\pi i\sum_{k=1}^n\Res[f(z),z_k]$.\qedhere
+			=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k]$.\qedhere
 		}
 	\end{proof}
 \end{frame}
@@ -67,12 +71,14 @@
 
 	\onslide<+->
 	\begin{example}
-		$f(z)=\dfrac{z^3(e^z-1)^2}{\sin z^4}$.
+		$f(z)=\dfrac{z^3(\ee^z-1)^2}{\sin z^4}$.
 		\onslide<+->{%
 		由于 $0$ 是分子的 $5$ 阶零点, 分母的 $4$ 阶零点, 因此 $z=0$ 是 $f(z)$ 的可去奇点.
 		}\onslide<+->{%
 		故
-		\[\Res[f(z),0]=0.\]
+	\[
+		\Res[f(z),0]=0.
+	\]
 		}
 	\end{example}
 \end{frame}
@@ -87,11 +93,14 @@
 		$f(z)=z^4\sin\dfrac1z$.
 	\onslide<+->{%
 		由于
-		\[f(z)=z^4\sum_{n=0}^\infty(-1)^n\frac{z^{-2n-1}}{(2n+1)!}
-		=z^3-\frac z{3!}+\frac1{5!z}+\cdots\]
+	\[
+		f(z)=z^4\sum_{n=0}^\infty(-1)^n\frac{z^{-2n-1}}{(2n+1)!}
+		=z^3-\frac z{3!}+\frac1{5!z}+\cdots
+	\]
 	}
 	\onslide<+->{%
-		因此 \[\Res[f(z),0]=\frac1{120}.\]
+		因此 \[\Res[f(z),0]=\frac1{120}.
+	\]
 	}
 	\end{example}
 \end{frame}
@@ -104,13 +113,17 @@
 	\onslide<+->
 	\begin{algorithm}{极点留数计算公式 I}
 		如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
-		\[\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].\]
+	\[
+		\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].
+	\]
 	\end{algorithm}
 
 	\onslide<+->
 	\begin{algorithm}{极点留数计算公式 II}
 		如果 $z_0$ 是一阶极点或可去奇点, 那么
-		\[\Res[f(z),z_0]=\lim\limits_{z\to z_0}(z-z_0)f(z).\]
+	\[
+		\Res[f(z),z_0]=\liml_{z\to z_0}(z-z_0)f(z).
+	\]
 	\end{algorithm}
 \end{frame}
 
@@ -128,7 +141,9 @@
 	}%
 	\onslide<+->{%
 		由泰勒展开系数与函数导数的关系可知
-		\[\Res[f(z),z_0]=c_{-1}=\dfrac1{(m-1)!}g^{(m-1)}(z_0).\qedhere\]
+	\[
+		\Res[f(z),z_0]=c_{-1}=\dfrac1{(m-1)!}g^{(m-1)}(z_0).\qedhere
+	\]
 	}
 	\end{proof}
 \end{frame}
@@ -137,15 +152,15 @@
 \begin{frame}{典型例题: 留数的计算}
 	\onslide<+->
 	\begin{example}
-		求 $\Res\left[\dfrac{e^z}{z^n},0\right]$.
+		求 $\Res\left[\dfrac{\ee^z}{z^n},0\right]$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 			显然 $0$ 是 $n$ 阶极点,
 		\onslide<+->{\begin{align*}
-				\Res\left[\frac{e^z}{z^n},0\right]&=\frac1{(n-1)!}\lim_{z\to0}(e^z)^{(n-1)}\\
-				&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}e^z=\frac1{(n-1)!}.}
+				\Res\left[\frac{\ee^z}{z^n},0\right]&=\frac1{(n-1)!}\lim_{z\to0}(\ee^z)^{(n-1)}\\
+				&\visible<+->{=\frac1{(n-1)!}\lim_{z\to0}\ee^z=\frac1{(n-1)!}.}
 			\end{align*}
 		}
 	\end{solution}
@@ -164,12 +179,13 @@
 		\onslide<+->{所以是 $\dfrac{z-\sin z}{z^6}$ 的三阶极点.
 		}\onslide<+->{如果用公式
 			\[\Res\left[\frac{z-\sin z}{z^6},0\right]
-			=\frac1{2!}\lim_{z\to0}\left(\frac{z-\sin z}{z^3}\right)''\]
+			=\frac1{2!}\lim_{z\to0}\Bigl(\frac{z-\sin z}{z^3}\Bigr)''
+	\]
 			计算会很繁琐.
 		}
 		\vspace{-.5\baselineskip}
 		\onslide<+->{
-		\[
+	\[
 			\Res\left[\frac{z-\sin z}{z^6},0\right]=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}
 			\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
 		\]}
@@ -181,7 +197,7 @@
 \begin{frame}{典型例题: 留数的计算}
 	\onslide<+->
 	\begin{exercise}
-			求 $\Res\left[\dfrac{e^z-1}{z^5},0\right]=$\fillblankframe[2cm][2mm]{$\dfrac1{24}$}.
+			求 $\Res\left[\dfrac{\ee^z-1}{z^5},0\right]=$\fillblankframe[2cm][2mm]{$\dfrac1{24}$}.
 	\end{exercise}
 \end{frame}
 
@@ -190,7 +206,9 @@
 	\onslide<+->
 	\begin{algorithm}{极点留数计算公式 III}
 		设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的一阶零点, 则
-		\[\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.\]
+	\[
+		\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.
+	\]
 	\end{algorithm}
 
 	\onslide<+->
@@ -200,7 +218,7 @@
 			\begin{align*}
 				&\Res[f(z),z_0]=\lim_{z\to z_0}(z-z_0)f(z)\\
 				\visible<+->{=}&\visible<.->{\lim_{z\to z_0}\frac{P(z)}{\dfrac{Q(z)-Q(z_0)}{z-z_0}}}
-				\visible<+->{=\frac{P(z_0)}{\lim\limits_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere}
+				\visible<+->{=\frac{P(z_0)}{\liml_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere}
 			\end{align*}
 		}
 		\vspace{-\baselineskip}
@@ -211,17 +229,18 @@
 \begin{frame}{典型例题: 留数的计算}
 	\onslide<+->
 	\begin{example}
-		求 $\Res\left[\dfrac{z}{z^8-1},\dfrac{1+i}{\sqrt2}\right]$.
+		求 $\Res\left[\dfrac{z}{z^8-1},\dfrac{1+\ii}{\sqrt2}\right]$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-			由于 $z=\dfrac{1+i}{\sqrt2}$ 是分母的 $1$ 阶零点,
+			由于 $z=\dfrac{1+\ii}{\sqrt2}$ 是分母的 $1$ 阶零点,
 		\onslide<+->{因此
-			\[\Res\left[\frac z{z^8-1},\frac{1+i}{\sqrt2}\right]
-			=\frac z{(z^8-1)'}\Big|_{z=\frac{1+i}{\sqrt2}}
-			=\frac z{8z^7}\Big|_{z=\frac{1+i}{\sqrt2}}
-			=\frac i8.\]
+			\[\Res\left[\frac z{z^8-1},\frac{1+\ii}{\sqrt2}\right]
+			=\frac z{(z^8-1)'}\Big|_{z=\frac{1+\ii}{\sqrt2}}
+			=\frac z{8z^7}\Big|_{z=\frac{1+\ii}{\sqrt2}}
+			=\frac i8.
+	\]
 		}
 	\end{solution}
 \end{frame}
@@ -231,21 +250,23 @@
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
-		计算积分 $\displaystyle\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z$.
+		计算积分 $\displaystyle\oint_{|z|=2}\frac{\ee^z}{z(z-1)^2}\diff z$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-			$f(z)=\dfrac{e^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
+			$f(z)=\dfrac{\ee^z}{z(z-1)^2}$ 在 $|z|<2$ 内有奇点 $z=0,1$.
 		\onslide<+->{%
 		\begin{align*}
-			\Res[f(z),0]&=\lim_{z\to0}\frac{e^z}{(z-1)^2}=1,\\
-			\visible<+->{\Res[f(z),1]}&\visible<.->{=\lim_{z\to1}\left(\frac{e^z}z\right)'=\lim_{z\to1}\frac{e^z(z-1)}{z^2}=0,}
+			\Res[f(z),0]&=\lim_{z\to0}\frac{\ee^z}{(z-1)^2}=1,\\
+			\visible<+->{\Res[f(z),1]}&\visible<.->{=\lim_{z\to1}\Bigl(\frac{\ee^z}z\Bigr)'=\lim_{z\to1}\frac{\ee^z(z-1)}{z^2}=0,}
 		\end{align*}
 		}\onslide<+->{%
-		\[\oint_{|z|=2}\frac{e^z}{z(z-1)^2}\diff z
-			=2\pi i\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]
-			=2\pi i.\]
+	\[
+		\oint_{|z|=2}\frac{\ee^z}{z(z-1)^2}\diff z
+			=2\pi\ii\bigl[\Res[f(z),0]+\Res[f(z),1]\bigr]
+			=2\pi\ii.
+	\]
 		}
 		\vspace{-0.7\baselineskip}
 	\end{solution}
@@ -253,23 +274,28 @@
 \end{frame}
 
 
-\subsection{在 \texorpdfstring{$\infty$}{∞} 的留数*}
+\subsection{在 \texorpdfstring{$\infty$}{∞} 的留数}
 
 \begin{frame}{在 $\infty$ 的留数\noexer}
 	\onslide<+->
 	\begin{definition}
 		设 $\infty$ 为 $f(z)$ 的孤立奇点, $f(z)$ 在某个 $R<|z|<+\infty$ 内的洛朗展开为
-		\[f(z)=\cdots+c_{-1}z^{-1}+c_0+c_1z+\cdots\]
+	\[
+		f(z)=\cdots+c_{-1}z^{-1}+c_0+c_1z+\cdots
+	\]
 		称
-		\[\emphm{\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi i}\oint_{C^-}f(z)\diff z}\]
+	\[
+		\emphm{\Res[f(z),\infty]:=-c_{-1}=\frac1{2\pi\ii}\oint_{C^-}f(z)\diff z}
+	\]
 		为函数 \emph{$f(z)$ 在 $\infty$ 的留数}, 其中 $C$ 为该圆环域中绕 $0$ 的一条闭路.
 	\end{definition}
 
 	\onslide<+->
 	由于
-	\[f\left(\frac1z\right)\frac1{z^2}=\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots\]
+	\[f\Bigl(\frac1z\Bigr)\frac1{z^2}=\cdots+\frac{c_1}{z^3}+\frac{c_0}{z^2}+\frac{c_{-1}}z+c_{-2}+\cdots
+	\]
 	\onslide<+->
-	因此 $\displaystyle\alertm{\Res[f(z),\infty]=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]}$.
+	因此 $\displaystyle\alertm{\Res[f(z),\infty]=-\Res\left[f\Bigl(\frac1z\Bigr)\frac1{z^2},0\right]}$.
 \end{frame}
 
 
@@ -286,7 +312,8 @@
 	\begin{proof}
 			设闭路 $C$ 内部包含除 $\infty$ 外所有奇点 $z_1,\dots,z_n$.
 		\onslide<+->{由留数定理
-			\[-2\pi i\Res[f(z),\infty]=\oint_C f(z)\diff z=2\pi i\sum_{k=1}^n\Res[f(z),z_k].\]
+			\[-2\pi\ii\Res[f(z),\infty]=\oint_C f(z)\diff z=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k].
+	\]
 		}\onslide<+->{故 $\suml_{k=1}^n\Res[f(z),z_k]+\Res[f(z),\infty]=0$.\qedhere
 		}
 	\end{proof}
@@ -296,24 +323,26 @@
 \begin{frame}{例: 留数的应用\noexer}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+i)^{10}(z-1)(z-3)}$.
+		求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}$.
 	\end{example}
 
 	\onslide<+->
-	\begin{solution*}
-		$f(z)$ 在 $|z|<2$ 内有奇点 $1,-i,0$,
+	\begin{solution}[indent]
+		$f(z)$ 在 $|z|<2$ 内有奇点 $1,-\ii ,0$,
 		\onslide<+->{%
 		其中 $0$ 是本性奇点, 它的留数不易求得.
 		}\onslide<+->{%
-		而 $-i$ 是 $10$ 阶极点, 它的留数也难以计算.
+		而 $-\ii $ 是 $10$ 阶极点, 它的留数也难以计算.
 		}
 		
 		\onslide<+->{%
 		$f(z)$ 在 $|z|>2$ 内只有奇点 $3,\infty$.
 		}\onslide<+->{%
-		\[\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+i)^{10}}\sin\frac13.\]
+	\[
+		\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+\ii)^{10}}\sin\frac13.
+	\]
 		}\vspace{-\baselineskip}
-	\end{solution*}
+	\end{solution}
 \end{frame}
 
 
@@ -321,14 +350,14 @@
 	\onslide<+->
 	\begin{solution}[续解]
 		\begin{align*}
-			\Res[f(z),\infty]&=-\Res\left[f\left(\frac1z\right)\frac1{z^2},0\right]\\
-			&=-\Res\left[\frac{z^{10}\sin z}{(1+iz)^{10}(1-z)(1-3z)},0\right]=0.
+			\Res[f(z),\infty]&=-\Res\left[f\Bigl(\frac1z\Bigr)\frac1{z^2},0\right]\\
+			&=-\Res\left[\frac{z^{10}\sin z}{(1+\iiz)^{10}(1-z)(1-3z)},0\right]=0.
 		\end{align*}
 	\onslide<+->{
 		\begin{align*}
 			\oint_{|z|=2}f(z)\diff z
-			&=2\pi i\bigl[\Res[f(z),-i]+\Res[f(z),1]+\Res[f(z),0]\bigr]\\
-			&\visible<+->{=-2\pi i\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi i}{(3+i)^{10}}\sin\frac13.}
+			&=2\pi\ii\bigl[\Res[f(z),-\ii ]+\Res[f(z),1]+\Res[f(z),0]\bigr]\\
+			&\visible<+->{=-2\pi\ii\bigl[\Res[f(z),3]+\Res[f(z),\infty]\bigr]=-\frac{\pi\ii}{(3+\ii)^{10}}\sin\frac13.}
 		\end{align*}
 	}
 	\end{solution}
@@ -343,12 +372,12 @@
 	\node at (4.5,2.2) [cstnode2,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
 可能需要分段计算};
-	\node at (9,2.2) [cstnode2,align=center, visible on=<9->]	(end4){闭路外奇点留数之和\\并乘 $-2\pi i$*};
+	\node at (9,2.2) [cstnode2,align=center, visible on=<9->]	(end4){闭路外奇点留数之和\\并乘 $-2\pi\ii$*};
 	\node at (0,4.5) [cstnode,visible on=<2->]	(isclosed){是闭路};
 	\node at (4.5,4.5) [cstnode,visible on=<5->]	(issingle){内(外)部只有孤立奇点};
 	\node at (9,4.5) [cstnode,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
 	\node at (1.5,6.3) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
-	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){闭路内奇点留数之和\\并乘 $2\pi i$};
+	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){闭路内奇点留数之和\\并乘 $2\pi\ii$};
 
 	\draw[cstmra,fourth,visible on=<2->] (integral.-160) -- (isclosed);
 	\draw[cstmra,fourth,visible on=<3->] (isanalytic) -- node[left]{是} (end1.173);
@@ -369,7 +398,8 @@
 	在求有理函数的洛朗展开, 以及之后在求有理函数的拉普拉斯逆变换时, 我们需要将一个有理函数表达为分母只有一个零点的有理函数之和.
 	\onslide<+->
 	例如:
-	\[\frac{z-3}{(z+1)(z-1)^2}=\frac1{z-1}-\frac1{(z-1)^2}-\frac1{z+1}.\]
+	\[\frac{z-3}{(z+1)(z-1)^2}=\frac1{z-1}-\frac1{(z-1)^2}-\frac1{z+1}.
+	\]
 	\onslide<+->
 	我们将之前所使用的利用柯西积分公式的方法翻译为留数的语言.
 \end{frame}
@@ -381,7 +411,7 @@
 			设 $\displaystyle f(z)=\frac{z-3}{(z+1)(z-1)^2}=\frac a{z-1}+\frac b{(z-1)^2}+\frac c{z+1}$,
 		\onslide<+->{则
 			\begin{align*}
-				a&=\Res[f(z),1]=\left(\frac{z-3}{z+1}\right)'\Big|_{z=1}=\frac 4{(z+1)^2}\Big|_{z=1}=1,\\
+				a&=\Res[f(z),1]=\Bigl(\frac{z-3}{z+1}\Bigr)'\Big|_{z=1}=\frac 4{(z+1)^2}\Big|_{z=1}=1,\\
 				b&=\Res[(z-1)f(z),1]=\frac{z-3}{z+1}\Big|_{z=1}=-1,\\
 				c&=\Res[f(z),-1]=\frac{z-3}{(z-1)^2}\Big|_{z=-1}=-1.
 			\end{align*}

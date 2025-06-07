@@ -7,6 +7,7 @@
 \setbeamercolor{example text}{fg=fourth,bg=white}
 \setbeamercolor{title}{use=structure,fg=structure.fg}
 \setbeamercolor{item}{fg=main,bg=white}
+\setbeamercolor{subitem}{fg=fourth,bg=white}
 \setbeamercolor{email}{use=structure,fg=structure.fg}
 \setbeamercolor{title in head/foot}{parent=structure}
 \setbeamercolor{part in head/foot}{parent=structure}
@@ -376,11 +377,11 @@
 			\dohead
 			\kern\beamer@rightmargin
 			\hfill
-			% {%
-			% 	\usebeamercolor[fg]{page number in head/foot}%
-			% 	\usebeamerfont{page number in head/foot}%
-			% 	\usebeamertemplate{page number in head/foot}%
-			% }%
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
 		\end{beamercolorbox}%
 	}%
 }
@@ -443,29 +444,41 @@
 % Theorems
 \RequirePackage[many]{tcolorbox}
 \tcbset{
-	lower separated=false,
-	coltitle=white,
-	colback=white,
-	boxrule=0pt,
-	fonttitle=\bfseries,
-	enhanced,
-	left=1mm,right=1mm,bottom=1mm,top=2mm,
-	before skip=2mm minus 1mm,
-	after skip=2mm minus 1mm,
-	attach boxed title to top left={
-		yshift=-0.11in,
-		xshift=0.15in
-	},
-	boxed title style={
+	arc=0pt,
+	titlebox/.style={
+		coltitle=white,
 		boxrule=0pt,
-		arc=0pt,
-		outer arc=0pt
+		fonttitle=\bfseries,
+		enhanced,
+		left=1mm,
+		right=1mm,
+		bottom=1mm,
+		top=2mm,
+		before skip=2mm minus 1mm,
+		after skip=2mm minus 1mm,
+		attach boxed title to top left={
+			yshift=-0.11in,
+			xshift=0.15in
+		},
+		boxed title style={
+			boxrule=0pt,
+			arc=0pt,
+			outer arc=0pt
+		},
+	},
+	centerbox/.style={
+		titlebox,
+		attach boxed title to top center={
+			yshift=-0.11in
+		}
 	},
 	indent/.style={
 		before upper={\parindent1em}
 	},
 	parttitle/.style={
-		mainstyle,
+		titlebox,
+		colback=main!10,
+		colbacktitle=main,
 		left=1em,
 		bottom=1ex,
 		fonttitle=\large,
@@ -474,12 +487,14 @@
 		},
 		arc=0pt,
 		outer arc=0pt,
-    boxrule=0pt,
-    toprule=0.5pt,
-    bottomrule=0.5pt,
+		frame style={draw=none},
+		borderline north={1pt}{-1pt}{main},
+		borderline south={1pt}{-1pt}{main},
 	},
 	sectiontitle/.style={
-		thirdstyle,
+		titlebox,
+		colback=third!10,
+		colbacktitle=third,
 		left=-0.5em, top=4ex,
 		bottom=1ex,
 		fonttitle=\large,
@@ -488,135 +503,116 @@
 		},
 		arc=0pt,
 		outer arc=0pt,
-    boxrule=0pt,
-    toprule=0.5pt,
-    bottomrule=0.5pt,
+		frame style={draw=none},
+		borderline north={1pt}{-1pt}{third},
+		borderline south={1pt}{-1pt}{third},
 	},
-	mainstyle/.style={
-		borderline={0pt}{0pt}{main},
-		colback=main!10,
-		colbacktitle=main
+	examstyle/.style={
+		fontupper=\itshape,
+		fontlower=\itshape,
 	},
-	secondstyle/.style={
-		borderline={0pt}{0pt}{second},
-		colback=second!10,
-		colbacktitle=second
+	thmstyle/.style={
+		fontupper=\bfseries,
+		fontlower=\bfseries,
 	},
-	thirdstyle/.style={
-		borderline={0pt}{0pt}{third},
-		colback=third!10,
-		colbacktitle=third
+	sidepic/.style={
+		sidebyside,
+		lower separated=true,
 	},
-	fourthstyle/.style={
-		borderline={0pt}{0pt}{fourth},
-		colback=fourth!10,
-		colbacktitle=fourth
+	nearprev/.style={
+		before skip=0pt,
 	},
-	fifthstyle/.style={
-		borderline={0pt}{0pt}{fifth},
-		colback=fifth!10,
-		colbacktitle=fifth
+	nearnext/.style={
+		after skip=0pt,
 	},
-	% mainstyle/.style={
-	% 	borderline={0pt}{0pt}{main,cstdash},
-	% 	colbacktitle=main
-	% },
-	% secondstyle/.style={
-	% 	borderline={0pt}{0pt}{second,cstdash},
-	% 	colbacktitle=second
-	% },
-	% thirdstyle/.style={
-	% 	borderline={0pt}{0pt}{third,cstdash},
-	% 	colbacktitle=third
-	% },
-	% fourthstyle/.style={
-	% 	borderline={0pt}{0pt}{fourth,cstdash},
-	% 	colbacktitle=fourth
-	% },
-	% fifthstyle/.style={
-	% 	borderline={0pt}{0pt}{fifth,cstdash},
-	% 	colbacktitle=fifth
-	% }
+	near/.style={
+		nearprev,
+		nearnext
+	},
 }
-% @ means notitle, * means indent
-\NewDocumentEnvironment{main}{m O{} o}{%
-	\begin{tcolorbox}[mainstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{main*}{m O{} o}{%
-	\begin{tcolorbox}[mainstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
-}{\end{tcolorbox}}
+% 环境中第一个可选参数固定为 tcb 追加样式
+\NewTColorBox{main}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=main,
+	colback=main!10,
+	colbacktitle=main,
+	title={\translate{#2}\IfNoValueTF{#3}{}{~(#3)}},
+	#1
+}
+\NewTColorBox{second}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=second,
+	colback=second!10,
+	colbacktitle=second,
+	title={\translate{#2}\IfNoValueTF{#3}{}{~(#3)}},
+	#1
+}
+\NewTColorBox{second*}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=second,
+	colback=second!10,
+	colbacktitle=second,
+	title={\IfNoValueTF{#3}{\translate{#2}}{#3}},
+	#1
+}
+\NewTColorBox{third}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=third,
+	colback=third!10,
+	colbacktitle=third,
+	title={\translate{#2}\IfNoValueTF{#3}{}{~(#3)}},
+	#1
+}
+\NewTColorBox{fourth}{O{} m o}{% 第三个参数替换标题
+	boxrule=0.5pt,
+	colframe=fourth,
+	colback=fourth!10,
+	colbacktitle=fourth,
+	title={\IfNoValueTF{#3}{\translate{#2}}{#3}},
+	#1
+}
+\NewTColorBox{fifth}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=fifth,
+	colback=fifth!10,
+	colbacktitle=fifth,
+	title={\translate{#2}\IfNoValueTF{#3}{}{~(#3)}},
+	#1
+}
 
-\NewDocumentEnvironment{second}{m O{} o}{%
-	\begin{tcolorbox}[secondstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{second*}{m O{} o}{%
-	\begin{tcolorbox}[secondstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{second@}{O{}}{%
-	\begin{tcolorbox}[secondstyle,notitle,#1,indent]%
-}{\end{tcolorbox}}
+\RenewDocumentEnvironment{example}{O{} o}{\begin{main}[examstyle,#1]{Example}[#2]}{\end{main}}
+\NewDocumentEnvironment{thinking}{O{} o}{\begin{main}[examstyle,#1]{Thinking}[#2]}{\end{main}}
+\NewDocumentEnvironment{remark}{O{} o}{\begin{main}[examstyle,#1]{Remark}[#2]}{\end{main}}
+\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourth}[examstyle,#1]{Solution}[#2]}{\end{fourth}}
+\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourth}[examstyle,#1]{Proof}[#2]}{\popQED\end{fourth}}
+% \NewDocumentEnvironment{proofe}{O{} o}{\pushQED{\qed}\begin{fourth}[examstyle,#1]{Proof (Continued)}[#2]}{\popQED\end{fourth}}
+\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourth}[examstyle,#1]{Analysis}[#2]}{\end{fourth}}
+\NewDocumentEnvironment{answer}{O{} o}{\begin{fourth}[examstyle,#1]{Answer}[#2]}{\end{fourth}}
+\NewDocumentEnvironment{conjecture}{O{} o}{\begin{fifth}[examstyle,#1]{Conjecture}[#2]}{\end{fifth}}
+\RenewDocumentEnvironment{fact}{O{} o}{\begin{fifth}[examstyle,#1]{Fact}[#2]}{\end{fifth}}
+\NewDocumentEnvironment{exercise}{O{} o}{\begin{fifth}[examstyle,#1]{Exercise}[#2]}{\end{fifth}}
 
-\NewDocumentEnvironment{third}{m O{} o}{%
-	\begin{tcolorbox}[thirdstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{third*}{m O{} o}{%
-	\begin{tcolorbox}[thirdstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
-}{\end{tcolorbox}}
+\RenewDocumentEnvironment{definition}{O{} o}{\begin{second}[thmstyle,#1]{Definition}[#2]}{\end{second}}
+\NewDocumentEnvironment{definition*}{O{} o}{\begin{second*}[thmstyle,#1]{Definition}[#2]}{\end{second*}}
+\RenewDocumentEnvironment{definitions}{O{} o}{\begin{second}[thmstyle,#1]{Definitions}[#2]}{\end{second}}
+\RenewDocumentEnvironment{theorem}{O{} o}{\begin{third}[thmstyle,#1]{Theorem}[#2]}{\end{third}}
+\NewDocumentEnvironment{proposition}{O{} o}{\begin{third}[thmstyle,#1]{Proposition}[#2]}{\end{third}}
+\RenewDocumentEnvironment{corollary}{O{} o}{\begin{third}[thmstyle,#1]{Corollary}[#2]}{\end{third}}
+\RenewDocumentEnvironment{lemma}{O{} o}{\begin{third}[thmstyle,#1]{Lemma}[#2]}{\end{third}}
 
-\NewDocumentEnvironment{fourth}{m O{} o}{%
-	\begin{tcolorbox}[fourthstyle,title={\IfNoValueTF{#3}{\translate{#1}}{#3}},#2]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{fourth*}{m O{} o}{%
-	\begin{tcolorbox}[fourthstyle,title={\IfNoValueTF{#3}{\translate{#1}}{#3}},#2,indent]%
-}{\end{tcolorbox}}
-
-\NewDocumentEnvironment{fifth}{m O{} o}{%
-	\begin{tcolorbox}[fifthstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2]%
-}{\end{tcolorbox}}
-\NewDocumentEnvironment{fifth*}{m O{} o}{%
-	\begin{tcolorbox}[fifthstyle,title={\translate{#1}\IfNoValueTF{#3}{}{~(#3)}},#2,indent]%
-}{\end{tcolorbox}}
-
-\RenewDocumentEnvironment{example}{o}{\begin{main}{Example}[fontupper=\itshape][#1]}{\end{main}}
-\NewDocumentEnvironment{example*}{o}{\begin{main*}{Example}[fontupper=\itshape][#1]}{\end{main*}}
-\NewDocumentEnvironment{thinking}{o}{\begin{main}{Thinking}[fontupper=\itshape][#1]}{\end{main}}
-\NewDocumentEnvironment{thinking*}{o}{\begin{main*}{Thinking}[fontupper=\itshape][#1]}{\end{main*}}
-\NewDocumentEnvironment{remark}{o}{\begin{main}{Remark}[fontupper=\itshape][#1]}{\end{main}}
-\NewDocumentEnvironment{remark*}{o}{\begin{main*}{Remark}[fontupper=\itshape][#1]}{\end{main*}}
-
-\RenewDocumentEnvironment{theorem}{o}{\begin{second}{Theorem}[fontupper=\bfseries][#1]}{\end{second}}
-\NewDocumentEnvironment{theorem*}{o}{\begin{second*}{Theorem}[fontupper=\bfseries][#1]}{\end{second*}}
-\NewDocumentEnvironment{theorem@}{ }{\begin{second@}[fontupper=\bfseries]}{\end{second@}}
-\NewDocumentEnvironment{proposition}{o}{\begin{second}{Proposition}[fontupper=\bfseries][#1]}{\end{second}}
-\NewDocumentEnvironment{proposition*}{o}{\begin{second*}{Proposition}[fontupper=\bfseries][#1]}{\end{second*}}
-\RenewDocumentEnvironment{corollary}{o}{\begin{second}{Corollary}[fontupper=\bfseries][#1]}{\end{second}}
-\NewDocumentEnvironment{corollary*}{o}{\begin{second*}{Corollary}[fontupper=\bfseries][#1]}{\end{second*}}
-\RenewDocumentEnvironment{lemma}{o}{\begin{second}{Lemma}[fontupper=\bfseries][#1]}{\end{second}}
-\NewDocumentEnvironment{lemma*}{o}{\begin{second}{Lemma}[fontupper=\bfseries][#1]}{\end{second*}}
-\NewDocumentEnvironment{algorithm}{m O{}}{\begin{tcolorbox}[secondstyle,title={#1},fontupper=\bfseries,#2]}{\end{tcolorbox}}
-
-\RenewDocumentEnvironment{definition}{o}{\begin{third}{Definition}[fontupper=\bfseries][#1]}{\end{third}}
-\NewDocumentEnvironment{definition*}{o}{\begin{third*}{Definition}[fontupper=\bfseries][#1]}{\end{third*}}
-\RenewDocumentEnvironment{definitions}{o}{\begin{third}{Definitions}[fontupper=\bfseries][#1]}{\end{third}}
-\NewDocumentEnvironment{definitions*}{o}{\begin{third*}{Definitions}[fontupper=\bfseries][#1]}{\end{third*}}
-
-\RenewDocumentEnvironment{solution}{o}{\begin{fourth}{Solution}[fontupper=\itshape][#1]}{\end{fourth}}
-\NewDocumentEnvironment{solution*}{o}{\begin{fourth*}{Solution}[fontupper=\itshape][#1]}{\end{fourth*}}
-\RenewDocumentEnvironment{proof}{o}{\pushQED{\qed}\begin{fourth}{Proof}[fontupper=\itshape][#1]}{\popQED\end{fourth}}
-\NewDocumentEnvironment{proof*}{o}{\pushQED{\qed}\begin{fourth*}{Proof}[fontupper=\itshape][#1]}{\popQED\end{fourth*}}
-\NewDocumentEnvironment{proofe}{o}{\pushQED{\qed}\begin{fourth}{Proof (Continued)}[fontupper=\itshape][#1]}{\popQED\end{fourth}}
-\NewDocumentEnvironment{proofe*}{o}{\pushQED{\qed}\begin{fourth*}{Proof (Continued)}[fontupper=\itshape][#1]}{\popQED\end{fourth*}}
-\NewDocumentEnvironment{analysis}{o}{\begin{fourth}{Analysis}[fontupper=\itshape][#1]}{\end{fourth}}
-\NewDocumentEnvironment{analysis*}{o}{\begin{fourth*}{Analysis}[fontupper=\itshape][#1]}{\end{fourth*}}
-\NewDocumentEnvironment{answer}{o}{\begin{fourth}{Answer}[fontupper=\itshape][#1]}{\end{fourth}}
-\NewDocumentEnvironment{answer*}{o}{\begin{fourth*}{Answer}[fontupper=\itshape][#1]}{\end{fourth*}}
-
-\NewDocumentEnvironment{conjecture}{o}{\begin{fifth}{Conjecture}[fontupper=\itshape][#1]}{\end{fifth}}
-\NewDocumentEnvironment{conjecture*}{o}{\begin{fifth*}{Conjecture}[fontupper=\itshape][#1]}{\end{fifth*}}
-\RenewDocumentEnvironment{fact}{o}{\begin{fifth}{Fact}[fontupper=\itshape][#1]}{\end{fifth}}
-\NewDocumentEnvironment{fact*}{o}{\begin{fifth*}{Fact}[fontupper=\itshape][#1]}{\end{fifth*}}
-\NewDocumentEnvironment{exercise}{o}{\begin{fifth}{Exercise}[fontupper=\itshape][#1]}{\end{fifth}}
-\NewDocumentEnvironment{exercise*}{o}{\begin{fifth*}{Exercise}[fontupper=\itshape][#1]}{\end{fifth*}}
+\RequirePackage{enumext}
+\NewDocumentEnvironment{subexample}{O{1}}{
+  \begin{enumext*}[
+    columns=#1,
+    label={(\arabic*)},
+    wrap-label={\upshape\textcolor{main}{##1}},
+    list-offset=4pt,
+    nosep,
+    itemsep=3pt
+  ]%
+		}{%
+	\end{enumext*}
+}
 
 % Math Font
 \usefonttheme[onlymath]{serif}

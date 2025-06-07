@@ -1,0 +1,179 @@
+\subsection{复数的产生}
+
+\begin{frame}{复数的引入\noexer}
+	\onslide<+->
+	\begin{itemize}
+		\item 复数起源于多项式方程的求根问题.
+		\item 考虑一元二次方程 $x^2+bx+c=0$,
+		\item 配方可得 $\Bigl(x+\dfrac b2\Bigr)^2=\dfrac{b^2-4c}4$.
+		\item 于是得到求根公式 $x=\dfrac{-b\pm\sqrt\Delta}2$, 其中 $\Delta=b^2-4c$.
+		\begin{enumerate}
+			\item 当 $\Delta>0$ 时, 有两个不同的实根;
+			\item 当 $\Delta=0$ 时, 有一个二重的实根;
+			\item 当 $\Delta<0$ 时, 无实根.
+		\end{enumerate}
+		\item 可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开方}的解.
+		\item 然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开方.
+	\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	\begin{example}
+		解方程 $x^3+6x-20=0$.
+	\end{example}
+	\onslide<+->
+	\begin{solutionitemside}[3.2cm]
+		\item 设 $x=u+v$,
+		\item 则
+		\[
+			u^3+v^3+3uv(u+v)+6(u+v)-20=0.
+		\]
+		\item 我们希望 $u^3+v^3=20$, $uv=-2$,
+		\item 则 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
+		\item 解得
+		\[
+			u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3.
+		\]
+		\item 所以 $u=1\pm\sqrt3$, $v=1\mp\sqrt 3$,
+		\item $x=u+v=2$.
+		\picpart
+		\begin{tikzpicture}
+			\begin{scope}[xscale=.78]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\clip (-2,-2) rectangle (2,2);
+				\begin{scope}[xscale=.3,yscale=.04]
+					\draw[cstcurve,main,domain=-3:4,smooth] plot (\x,{\x*\x*\x+6*\x-20});
+					\coordinate (A) at (2,0);
+					\coordinate (B) at (0,-20);
+				\end{scope}
+				\draw[inner sep=2pt]
+					(A) node[below right] {$2$}
+					(B) node[above left] {$-20$};
+			\end{scope}
+			\begin{scope}[cstdot,fourth]
+				\fill (A) circle;
+				\fill (B) circle;
+			\end{scope}
+		\end{tikzpicture}
+	\end{solutionitemside}
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\beqskip{4pt}
+	\onslide<+->
+	\begin{example}
+		解方程 $x^3-7x+6=0$.
+	\end{example}
+	\onslide<+->
+	\begin{solutionitemside}[2.7cm]
+		\item 类似地 $x=u+v$, 其中 $u^3+v^3=-6$, $uv=\dfrac73$.
+		\item 于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\dfrac{343}{27}=0$.
+		\item 然而这个方程没有实数解.
+		\item 我们可以强行解得 
+		\[
+				u^3=-3+\dfrac{10}9\sqrt{-3},\ 
+				\visible<+->{u=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,}
+		\]
+		\item $v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6$,
+		\item $x=u+v=2,-3,1$.
+		\vspace{-.2\baselineskip}
+		\picpart
+		\begin{tikzpicture}
+			\begin{scope}[xscale=.7]
+				\def\a{-3}
+				\def\b{1}
+				\def\c{2}
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\clip (-2,-2) rectangle (2,2);
+				\begin{scope}[xscale=.45,yscale=.1]
+					\draw[cstcurve,main,domain=-4:4,smooth] plot (\x,{(\x-\a)*(\x-\b)*(\x-\c)});
+					\coordinate (A) at (\a,0);
+					\coordinate (B) at (\b,0);
+					\coordinate (C) at (\c,0);
+				\end{scope}
+				\draw[inner sep=2pt]
+					(A) node[below right] {$-3$}
+					(B) node[below left] {$1$}
+					(C) node[below right] {$2$};
+			\end{scope}
+			\begin{scope}[cstdot,fourth]
+				\fill (A) circle;
+				\fill (B) circle;
+				\fill (C) circle;
+			\end{scope}
+		\end{tikzpicture}
+	\end{solutionitemside}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}\small
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{itemize}
+		\item 对于一般 $x^3+px+q=0$, 类似可得:
+		\[
+			x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.
+		\]
+		\item 由于 $p=0$ 情形较为简单, 所以我们不考虑这种情形.
+		\item 通过分析函数图像的极值点可以知道:
+		\begin{enumerate}
+			\item 当 $\Delta>0$ 时, 有 $1$ 个实根.
+			\item 当 $\Delta=0$ 时, 有 $2$ 个实根 $x=-\sqrt[3]{4q},\half\sqrt[3]{4q}$ ($2$重).
+			\item 当 $\Delta<0$ 时, 有 $3$ 个实根.
+		\end{enumerate}
+	\end{itemize}
+	\begin{figure}[hbpt]
+		\centering
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.65,visible on=<4->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-2.6:3.3,smooth] plot ({(\x)*0.35},{(\x*\x*\x-3*\x-10)*0.1});
+				\fill[cstdot,second] (.92,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.65,visible on=<5->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-3.1:2.8,smooth] plot ({(\x)*0.35},{(\x*\x*\x-3*\x+2)*0.1});
+				\fill[cstdot,second] (.37,0) circle;
+				\fill[cstdot,second] (-.69,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.32\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=.65,visible on=<6->]
+				\draw[cstaxis] (-2,0)--(2,0);
+				\draw[cstaxis] (0,-2)--(0,2);
+				\draw[cstcurve,main,domain=-4:3.9,smooth] plot ({(\x)*0.3},{(\x*\x*\x-7*\x+1)*0.05});
+				\fill[cstdot,second] (.76,0) circle;
+				\fill[cstdot,second] (.05,0) circle;
+				\fill[cstdot,second] (-.78,0) circle;
+			\end{tikzpicture}
+		\end{minipage}
+	\end{figure}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{三次方程的根\noexer}
+	\onslide<+->
+	\begin{itemize}
+		\item 由此可见, 若想使用求根公式, 就\alert{必须接受负数开方}.
+		\item 那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
+		\item 这个问题在我们学习了第一章的内容之后可以得到回答.
+		\item 尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
+		\item 莱布尼兹曾说: {\color{third}\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。}
+		\item 我们将在下一节使用更为现代的语言来解释和运用复数.
+	\end{itemize}
+\end{frame}

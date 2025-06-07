@@ -1,0 +1,578 @@
+\section{孤立奇点}
+
+\subsection{孤立奇点的类型}
+
+\begin{frame}{孤立奇点}
+	\onslide<+->
+	我们先根据奇点附近洛朗展开的形式来对其进行分类, 以便于分类计算留数.
+
+	\onslide<+->
+	\begin{example}
+			考虑函数 $f(z)=\dfrac1{\sin(1/z)}$, 显然 $0,z_k=\dfrac1{k\pi}$ 是奇点, $k$ 是非零整数.
+		\onslide<+->{因为 $\lim\limits_{k\to+\infty} z_k=0$, 所以 $0$ 的任何一个去心邻域内都有奇点.
+		}\onslide<+->{此时无法选取一个圆环域 $0<|z|<\delta$ 作 $f(z)$ 的洛朗展开, 因此我们不考虑这类奇点.
+		}
+		\onslide<3->{
+		\begin{center}
+			\begin{tikzpicture}
+				\draw[cstcurve,third] (0,0) circle (1.3);
+				\fill[cstdot] (0,0) circle;
+				\fill[cstdot,second] (2,0) circle;
+				\fill[cstdot,main] (1,0) circle;
+				\fill[cstdot,second] (0.6667,0) circle;
+				\fill[cstdot,main] (0.5,0) circle;
+				\fill[cstdot,second] (0.4,0) circle;
+				\draw
+					(-0.3,0) node {$0$}
+					(2,-0.3) node[second] {$z_1$}
+					(1,0.3) node[main] {$z_2$}
+					(0.6667,-0.3) node[second] {$z_3$}
+					(0.5,0.3) node[main] {$z_4$}
+					(0.4,-0.3) node[second] {$z_k$};
+			\end{tikzpicture}
+		\end{center}}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{孤立奇点的定义}
+	\onslide<+->
+	\begin{definition}
+		如果 $z_0$ 是 $f(z)$ 的一个奇点, 且 $z_0$ 的某个邻域内没有其它奇点, 则称 $z_0$ 是 $f(z)$ 的一个\emph{孤立奇点}.
+	\end{definition}
+
+	\onslide<+->
+	\begin{example}
+		\begin{itemize}
+			\item $z=0$ 是 $\ee^{\frac1z},\dfrac{\sin z}z$ 的孤立奇点.
+			\item $z=-1$ 是 $\dfrac1{z(z+1)}$ 的孤立奇点.
+			\item $z=0$ 不是 $\dfrac1{\sin(1/z)}$ 的孤立奇点.
+		\end{itemize}
+	\end{example}
+
+	\onslide<+->
+	若 $f(z)$ 只有有限多个奇点, 则这些奇点都是孤立奇点.
+\end{frame}
+
+
+\begin{frame}{孤立奇点的分类}
+	\onslide<+->
+	如果 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域 $0<|z-z_0|<\delta$ 内解析, 则可以作 $f(z)$ 的洛朗展开.
+	\onslide<+->
+	根据该洛朗级数主要部分的项数, 我们可以将孤立奇点分为三种:
+	\onslide<+->
+	\begin{center}
+		\arrayrulecolor{second}
+		\begin{tabular}{ccc} \toprule
+			孤立奇点类型&洛朗级数特点&$\lim\limits_{z\to z_0}f(z)$\\ \toprule
+			可去奇点&没有主要部分&存在\\ \midrule
+			&主要部分只有有限项非零&\\
+			\multirow{-2}*{$m$ 阶极点}&最低次为 $-m$ 次&\multirow{-2}*{$\infty$}\\ \midrule
+			本性奇点&主要部分有无限项非零&不存在且不为 $\infty$\\ \bottomrule
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{可去奇点的定义}
+	\onslide<+->
+	\begin{definition}
+		若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域洛朗级数没有主要部分, 即
+	\[
+		f(z)=c_0+c_1(z-z_0)+c_2(z-z_0)^2+\cdots,\quad 0<|z-z_0|<\delta,
+	\]
+		是幂级数, 则称 $z_0$ 是 $f(z)$ 的\emph{可去奇点}.
+	\end{definition}
+
+	\onslide<+->
+	设 $g(z)$ 为右侧幂级数的和函数, 则 $g(z)$ 在 $|z-z_0|<\delta$ 上解析,
+	\onslide<+->
+	且除 $z_0$ 外 $f(z)=g(z)$.
+	\onslide<+->
+	通过补充或修改定义 $f(z_0)=g(z_0)=c_0$, 可使得 $f(z)$ 也在 $z_0$ 解析.
+	\onslide<+->
+	这就是``可去''的含义.
+
+	\onslide<+->
+	\begin{theorem}
+			$z_0$ 是 $f(z)$ 的可去奇点
+			$\iff\lim\limits_{z\to z_0}f(z)$ 存在
+			$\iff\lim\limits_{z\to z_0}(z-z_0)f(z)=0$.
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{例: 可去奇点}
+	\onslide<+->
+	\begin{example*}
+			\[f(z)=\frac{\sin z}z=1-\dfrac{z^2}{3!}+\dfrac{z^4}{5!}+\cdots
+	\]
+			没有负幂次项, 因此 $0$ 是可去奇点.
+
+		\onslide<+->{也可以从 $\lim\limits_{z\to0}zf(z)=\sin 0=0$ 看出.
+		}
+	\end{example*}
+
+	\onslide<+->
+	\begin{example*}
+			\[f(z)=\frac{\ee^z-1}z=1+\dfrac z{2!}+\dfrac{z^2}{3!}+\cdots
+	\]
+			没有负幂次项, 因此 $0$ 是可去奇点.
+
+		\onslide<+->{也可以从 $\lim\limits_{z\to0}zf(z)=\ee^0-1=0$ 看出.
+		}
+	\end{example*}
+\end{frame}
+
+
+\begin{frame}{本性奇点的定义}
+	\onslide<+->
+	\begin{definition}
+		若 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域的洛朗级数主要部分有无限多项非零, 则称 $z_0$ 是 $f(z)$ 的\emph{本性奇点}.
+	\end{definition}
+
+	\onslide<+->
+	\begin{example}
+		由于 $\displaystyle \ee^{\frac1z}=1+\frac1z+\frac1{2z^2}+\cdots$, 因此 $0$ 是本性奇点.
+	\end{example}
+
+	\onslide<+->
+	\begin{theorem}
+		$z_0$ 是 $f(z)$ 的本性奇点 $\iff\lim\limits_{z\to z_0}f(z)$ 不存在也不是 $\infty$.
+	\end{theorem}
+
+	\onslide<+->
+	事实上我们有\emph{皮卡大定理}: 对于本性奇点 $z_0$ 的任何一个去心邻域, $f(z)$ 的像取遍所有复数, 至多有一个取不到.
+\end{frame}
+
+
+\begin{frame}{极点的定义}
+	\onslide<+->
+	可去奇点的性质比较简单, 而本性奇点的性质又较为复杂, 因此我们主要关心的是极点的情形.
+
+	\onslide<+->
+	\begin{definition}
+		如果 $f(z)$ 在孤立奇点 $z_0$ 的去心邻域的洛朗级数主要部分只有有限多项非零, 即
+	\[
+		f(z)=\frac{c_{-m}}{(z-z_0)^m}+\cdots+c_0+c_1(z-z_0)+\cdots,\ 0<|z-z_0|<\delta,
+	\]
+		其中 $c_{-m}\neq 0,m\ge 1$, 则称 $z_0$ 是 $f(z)$ 的 \emph{$m$ 阶极点}或 \emph{$m$ 级极点}.
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{极点的定义}
+	\onslide<+->
+	令
+	\[g(z)=c_{-m}+c_{-m+1}(z-z_0)+c_{-m+2}(z-z_0)^2+\cdots,
+	\]
+	则 $g(z)$ 在 $z_0$ 解析且非零,
+	\onslide<+->
+	且
+	\[f(z)=\dfrac{g(z)}{(z-z_0)^m},0<|z-z_0|<\delta.
+	\]
+
+	\onslide<+->
+	\begin{theorem}
+		\begin{enumerate}
+			\item $z_0$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\lim\limits_{z\to z_0}(z-z_0)^mf(z)$ 存在且非零.
+			\item $z_0$ 是 $f(z)$ 的极点 $\iff\lim\limits_{z\to z_0}f(z)=\infty$.
+		\end{enumerate}
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{典型例题: 函数的极点}
+	\onslide<+->
+	\begin{example}
+			$f(z)=\dfrac{3z+2}{z^2(z+2)}$,
+		\onslide<+->{由于 $\lim\limits_{z\to 0}z^2f(z)=1$, 因此 $0$ 是 $2$ 阶极点.
+		}\onslide<+->{同理 $-2$ 是 $1$ 阶极点.
+		}
+	\end{example}
+
+	\onslide<+->
+	\begin{exercise}
+		求 $f(z)=\dfrac1{z^3-z^2-z+1}$ 的奇点, 并指出极点的阶.
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		$-1$ 是 $1$ 阶极点, $1$ 是 $2$ 阶极点.
+	\end{answer}
+\end{frame}
+
+
+\subsection{零点与极点}
+
+\begin{frame}{函数的零点}
+	\onslide<+->
+	我们来研究极点与零点的联系, 并给出极点的阶的计算方法.
+	\onslide<+->
+	\begin{definition}
+		如果 $f(z)$ 在解析点 $z_0$ 处的泰勒级数最低次项幂次是 $m\ge1$, 即
+	\[
+		f(z)=c_m(z-z_0)^m+c_{m+1}(z-z_0)^{m+1}+\cdots,\ 0<|z-z_0|<\delta,
+	\]
+		其中 $c_m\neq 0$, 则称 $z_0$ 是 $f(z)$ 的 \emph{$m$ 阶零点}.
+	\end{definition}
+
+	\onslide<+->
+	此时 $f(z)=(z-z_0)^mg(z)$, $g(z)$ 在 $z_0$ 解析且 $g(z_0)\neq 0$.
+
+	\onslide<+->
+	\begin{theorem}
+		设 $f(z)$ 在 $z_0$ 解析.
+		$z_0$ 是 $m$ 阶零点$\iff\lim\limits_{z\to z_0}(z-z_0)^{-m}f(z)$ 存在
+	\[
+		\iff f(z_0)=f'(z_0)=\cdots=f^{(m-1)}(z_0)=0,\quad
+		f^{(m)}(z_0)\neq 0.
+	\]
+	\end{theorem}
+\end{frame}
+
+
+\begin{frame}{例: 函数的零点}
+	\onslide<+->
+	\begin{example}
+			$f(z)=z(z-1)^3$
+		\onslide<+->{有 $1$ 阶零点 $0$ 和 $3$ 阶零点 $1$.
+		}
+	\end{example}
+
+	\onslide<+->
+	\begin{example}
+		$f(z)=\sin z^5-z^5$.
+		\onslide<+->{%
+		由于
+			\[f(z)=-\frac{z^{15}}{3!}+\frac{z^{25}}{5!}+\cdots
+	\]
+		因此 $0$ 是 $15$ 阶零点.
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{零点的孤立性\noexer}
+	\onslide<+->
+	\begin{theorem}
+	非零的解析函数的零点总是孤立的.
+	\end{theorem}
+
+	\onslide<+->
+	\begin{proof*}
+		设 $f(z)$ 是区域 $D$ 上的非零解析函数, $z_0\in D$ 是 $f(z)$ 的一个零点.
+	\onslide<+->{%
+		由于 $f(z)$ 不恒为零, 因此存在 $m\ge 1$ 使得在 $z_0$ 的一个邻域内 $f(z)=(z-z_0)^m g(z)$, $g(z)$ 在 $z_0$ 处解析且非零.
+	}
+
+	\onslide<+->{
+		对于 $\varepsilon=\dfrac12|g(z_0)|$, 存在 $\delta>0$ 使得当 $z\in \Uc(z_0,\delta)\subseteq D$ 时, $|g(z)-g(z_0)|<\varepsilon$.
+	}%
+	\onslide<+->{%
+		从而 $g(z)\neq0$, $f(z)\neq 0$.\qedhere
+	}
+	\end{proof*}
+
+	\onslide<+->
+	若解析函数 $f(z)$ 满足对任意实数 $x,f(x)=\ee^x$, 那么所有实数都是解析函数 $f(z)-\ee^z$ 的零点, 从而 $f(z)\equiv \ee^z$.
+\end{frame}
+
+
+% \begin{frame}{函数的零点, 极点和阶}
+% 	\onslide<+->
+% 	为了统一地研究零点和极点, 我们引入下述记号.
+% 	\onslide<+->
+% 	设 $z_0$ 是 $f(z)$ 的可去奇点、极点或解析点.
+% 	\onslide<+->
+% 	记 $\ord(f,z_0)$ 为 $f(z)$ 在 $z_0$ 的洛朗展开的最低次项幂次.
+
+% 	\onslide<+->
+% 	不难看出,
+% 	\begin{enumerate}
+% 		\item 如果 $\ord(f,z_0)\ge0$, 则 $z_0$ 是可去奇点或解析点.
+% 		\item 如果 $\ord(f,z_0)=m>0$, 则 $z_0$ 是可去奇点或 $m$ 阶零点.
+% 		\item 如果 $\ord(f,z_0)=-m<0$, 则 $z_0$ 是 $m$ 阶极点.
+% 	\end{enumerate}
+
+% 	\onslide<+->
+% 	\begin{algorithm}{可去奇点和极点判定方法}
+% 		如果 $\ord(f,z_0)=m,\ord(g,z_0)=n$, 那么
+% 		\[\ord\Bigl(\frac fg,z_0\Bigr)=m-n,\quad\ord(fg,z_0)=m+n.
+	\]
+% 	\end{algorithm}
+% \end{frame}
+
+
+% \begin{frame}{函数的零点, 极点和阶}
+% 	\onslide<+->
+% 	\begin{proof*}
+% 			设 $f_0(z)$ 为幂级数 $(z-z_0)^{-m}f(z)$ 的和函数, $g_0(z)$ 为幂级数 $(z-z_0)^{-n}g(z)$ 的和函数,
+% 		\onslide<+->{则 $f_0(z),g_0(z)$ 在 $z_0$ 解析且非零.
+% 		}%
+
+% 		\onslide<+->{因此 $\dfrac{f_0(z)}{g_0(z)},f_0(z)g_0(z)$ 在 $z_0$ 解析且非零.
+% 		}\onslide<+->{由
+% 			\[\frac{f(z)}{g(z)}=(z-z_0)^{m-n}\frac{f_0(z)}{g_0(z)},\quad
+% 			f(z)g(z)=(z-z_0)^{m+n}f_0(z)g_0(z)
+	\]
+% 			可知命题成立.\qedhere
+% 		}
+% 	\end{proof*}
+% \end{frame}
+
+
+\begin{frame}{函数的零点, 极点和阶}
+	\onslide<+->
+	下面我们给出分式的奇点和分子分母零点的联系.
+	\onslide<+->
+	\begin{proposition}
+		若 $z_0$ 是 $f$ 的 $m$ 阶零点(若解析不是零点 $m=0$), $g$ 的 $n$ 阶零点, 则 $z_0$ 是 $fg$ 的 $m+n$ 阶零点.
+	\end{proposition}
+	\onslide<+->
+	\begin{proposition}
+		设 $z_0$ 是 $f$ 的 $m$ 阶零点(若解析不是零点 $m=0$), 是 $g$ 的 $n$ 阶零点.
+		\begin{enumerate}
+			\item 若 $m\ge n$, 则 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的可去奇点.
+			\item 若 $m<n$ 时, 则 $z_0$ 是 $\dfrac{f(z)}{g(z)}$ 的 $n-m$ 阶极点.
+		\end{enumerate}
+	\end{proposition}
+\end{frame}
+
+
+\begin{frame}{典型例题: 函数的极点}
+	\onslide<+->
+	\begin{example}
+		$z=0$ 是函数 $f(z)=\dfrac{\ee^z-1}{z^2}$ 的\fillbraceframe{A} 阶极点.
+		\begin{exchoice}(4)
+			() $1$
+			() $2$
+			() $3$
+			() $4$
+		\end{exchoice}
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		由于
+	\[
+		\ee^z-1=z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots,
+	\]
+		所以 $0$ 是 $\ee^z-1$ 的 $1$ 阶零点.
+		\onslide<+->{%
+		因此$0$ 是 $1$ 阶极点.
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 函数的极点}
+	\onslide<+->
+	\begin{example}
+		$z=0$ 是 $f(z)=\dfrac{(\ee^z-1)^3z^2}{\sin z^7}$ 的几阶极点?
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		$0$ 是分子的 $5$ 阶零点, 分母的 $7$ 阶零点.
+		\onslide<+->{%
+		因此 $0$ 是 $2$ 阶极点.
+		}
+	\end{solution}
+
+	\onslide<+->
+	\begin{exercise}
+		函数 $f(z)=\dfrac{(z-5)\sin z}{(z-1)^2z^2(z+1)^3}$ 有哪些什么类型的奇点, 并指出极点的阶.
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		$1$ 是 $2$ 阶极点, $0$ 是 $1$ 阶极点, $-1$ 是 $3$ 阶极点.
+	\end{answer}
+\end{frame}
+
+
+\subsection{函数在 \texorpdfstring{$\infty$}{∞} 的性态}
+
+\begin{frame}{函数在 $\infty$ 的性态}
+	\onslide<+->
+	在复平面添加了 $\infty$之后, 从几何上看它变成了一个球面.
+	\onslide<+->
+	这样的一个球面是一种封闭的曲面, 它具有某些整体性质.
+
+	\onslide<+->
+	当我们需要计算一个闭路上函数的积分的时候,
+	\onslide<+->
+	我们需要研究闭路内部每一个奇点处的洛朗展开,
+	\onslide<+->
+	从而得到相应的小闭路上的积分.
+	\onslide<+->
+	如果在这个闭路内部的奇点比较多, 而外部的奇点比较少时, 这样计算就不太方便.
+	\onslide<+->
+	此时如果通过变量替换 $z=\dfrac1t$, 转而研究闭路外部奇点处的洛朗展开,\onslide<+->
+	便可减少所需考虑的奇点个数, 从而降低所需的计算量.
+	\onslide<+->
+	因此我们需要研究函数在 $\infty$ 的性态.
+\end{frame}
+
+
+\begin{frame}{函数在 $\infty$ 的性态}
+	\onslide<+->
+	\begin{definition}
+		如果函数 $f(z)$ 在 $\infty$ 的去心邻域 $R<|z|<+\infty$ 内没有奇点, 则称 $\infty$ 是 $f(z)$ 的\emph{孤立奇点}.
+	\end{definition}
+
+	\onslide<+->
+	设 $g(t)=f\Bigl(\dfrac1t\Bigr)$, 则研究 $f(z)$ 在 $\infty$ 的性质可以转为研究 $g(t)$ 在 $0$ 的性质.
+	\onslide<+->
+	$g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 上解析, $0$ 是它的孤立奇点.
+
+	\onslide<+->
+	\begin{definition}
+		如果 $0$ 是 $g(t)$ 的可去奇点 ($m$ 阶极点、本性奇点), 则称 $\infty$ 是 $f(z)$ 的\emph{可去奇点 ($m$ 阶极点、本性奇点).}
+	\end{definition}
+\end{frame}
+
+
+\begin{frame}{函数在 $\infty$ 的性态}
+	\onslide<+->
+	设 $f(z)$ 在圆环域 $R<|z|<+\infty$ 的洛朗展开为
+	\[f(z)=\cdots+\frac{c_{-2}}{z^2}+\frac{c_{-1}}{z}+c_0+c_1z+c_2z^2+\cdots
+	\]
+	\onslide<+->
+	则 $g(t)$ 在圆环域 $0<|t|<\dfrac1R$ 的洛朗展开为
+	\[g(t)=\cdots+\frac{c_2}{t^2}+\frac{c_1}t+c_0+c_{-1}t+c_{-2}t^2+\cdots
+	\]
+	\onslide<+->
+	\begin{center}
+		\arrayrulecolor{second}
+		\begin{tabular}{ccc}\toprule
+			$\infty$ 类型&洛朗级数特点&$\lim\limits_{z\to\infty}f(z)$\\ \toprule
+			可去奇点&没有正幂次部分&存在\\ \midrule
+			&正幂次部分只有有限项非零&\\
+			\multirow{-2}*{$m$ 阶极点}&最高次为 $m$ 次&\multirow{-2}*{$\infty$}\\ \midrule
+			本性奇点&正幂次部分有无限项非零&不存在且不为 $\infty$\\ \bottomrule
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}{例: $\infty$ 的奇点类型}
+	\onslide<+->
+	\begin{example}
+			$f(z)=\dfrac z{z+1}$.
+		\onslide<+->{由 $\lim\limits_{z\to\infty}f(z)=1$ 可知 $\infty$ 是可去奇点.
+		}\onslide<+->{事实上此时 $f(z)$ 在 $1<|z|<+\infty$ 内的洛朗展开为
+			\[f(z)=\frac{1}{1+\dfrac1z}=1-\frac1z+\frac1{z^2}-\frac1{z^3}+\cdots
+	\]
+		}
+	\end{example}
+
+	\onslide<+->
+	\begin{example}
+			函数 $f(z)=z^2+\dfrac1z$
+		\onslide<+->{含有正次幂项且最高次为 $2$, 因此 $\infty$ 是 $2$ 阶极点.
+		}
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例: $\infty$ 的奇点类型}
+	\onslide<+->
+	\begin{example}
+		设 $p(z)$ 是 $n\ge1$ 次多项式,
+		\onslide<+->{%
+		则 $\infty$ 是 $p(z)$ 的 $n$ 阶极点.
+		}
+
+		\onslide<+->{%
+		一般地, $\infty$ 是 $f(z)$ 的 $m$ 阶极点 $\iff\displaystyle\lim_{z\to\infty}\frac{f(z)}{z^m}$ 是非零复数.
+		}
+	\end{example}
+
+	\onslide<+->
+	\begin{example*}
+		函数 
+			\[\sin z=z-\frac{z^3}{3!}+\frac{z^5}{5!}-\frac{z^7}{7!}+\cdots
+	\]
+		\onslide<+->{%
+		含有无限多正次幂项, 因此 $\infty$ 是本性奇点.
+		}
+
+		\onslide<+->{%
+		事实上, 如果函数 $f(z)$ 在复平面上处处解析, 且 $f(z)$ 不是多项式, 则 $\infty$ 是它的本性奇点.
+		}
+	\end{example*}
+\end{frame}
+
+
+\begin{frame}{典型例题: 奇点的类型}
+	\onslide<+->
+	\begin{example}
+		函数 $f(z)=\dfrac{(z^2-1)(z-2)^3}{(\sin{\pi z})^3}$ 在扩充复平面内有哪些什么类型的奇点, 并指出极点的阶.
+	\end{example}
+
+	\onslide<+->
+	\begin{solution}
+		\begin{itemize}
+			\item 整数 $z=k\neq \pm1,2$ 是 $\sin{\pi z}$ 的 $1$ 阶零点, 因此是 $f(z)$ 的 $3$ 阶极点.
+			\item $z=\pm1$ 是 $z^2-1$ 的 $1$ 阶零点, 因此是 $f(z)$ 的 $2$ 阶极点.
+			\item $z=2$ 是 $(z-2)^3$ 的 $3$ 阶零点, 因此是 $f(z)$ 的可去奇点.
+			\item 由于奇点 $1,2,3,\cdots\to \infty$, 因此 $\infty$ 不是孤立奇点.
+		\end{itemize}
+	\end{solution}
+	\onslide<+->
+	如果 $f(z)$ 在复平面上有无限多奇点, 那么 $f(z)$ 在扩充复平面上一定有非孤立奇点.
+\end{frame}
+
+
+\begin{frame}{典型例题: 奇点的类型}
+	\onslide<+->
+	\begin{exercise}
+		函数 $f(z)=\dfrac{z^2+4\pi^2}{z^3(\ee^z-1)}$ 在扩充复平面内有哪些什么类型的奇点, 并指出极点的阶.
+	\end{exercise}
+
+	\onslide<+->
+	\begin{answer}
+		\begin{itemize}
+			\item $z=2k\pi\ii$ 是 $1$ 阶极点, $k\neq 0,\pm1$.
+			\item $z=0$ 是四阶极点.
+			\item $z=\pm 2\pi\ii$ 是可去奇点.
+			\item $z=\infty$ 不是孤立奇点.
+		\end{itemize}
+	\end{answer}
+\end{frame}
+
+
+\begin{frame}{例: 证明复数域是代数封闭的\noexer}
+	\onslide<+->
+	\begin{example}
+		证明非常数复系数多项式 $p(z)$ 总有复零点.
+	\end{example}
+
+	\onslide<+->
+	\begin{proof*}
+		假设多项式 $p(z)$ 没有复零点, 那么 $f(z)=\dfrac1{p(z)}$ 在复平面上处处解析, 
+	\onslide<+->{%
+		从而 $f(z)$ 在 $0$ 处可以展开为幂级数.
+	}
+
+	\onslide<+->{%
+		由于 $\infty$ 是 $p(z)$ 的极点, $\lim\limits_{z\to\infty}p(z)=\infty$.
+	}%
+	\onslide<+->{%
+		因此 $\lim\limits_{z\to\infty}f(z)=0$, $\infty$ 是 $f(z)$ 的可去奇点.
+	}%
+	\onslide<+->{%
+		这意味着 $f(z)$ 在 $0$ 处的洛朗展开没有正幂次项.
+	}%
+	\onslide<+->{%
+		二者结合可知 $f(z)$ 只能是常数, 矛盾!\qedhere
+	}
+	\end{proof*}
+
+	\onslide<+->
+	设 $z_1$ 是 $n$ 次多项式 $p(z)$ 的零点, 则 $\dfrac{p(z)}{z-z_1}$ 是 $n-1$ 次多项式.
+	\onslide<+->
+	归纳可知, $p(z)$ 可以分解为 $p(z)=(z-z_1)\cdots(z-z_n)$.
+\end{frame}
