@@ -13,7 +13,7 @@
 \setbeamercolor{part in head/foot}{parent=structure}
 \setbeamercolor{section in head/foot}{parent=structure}
 \setbeamercolor{subsection in head/foot}{parent=structure}
-\setbeamercolor{date in head/foot}{parent=structure}
+\setbeamercolor{date in head/foot}{parent=structure,fg=example text.fg}
 \setbeamercolor{seperate line}{use=structure,bg=structure}
 \setbeamercolor{subsection in toc}{use=structure,fg=black,bg=structure!20}
 \setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
@@ -294,7 +294,7 @@
 				\kern2pt\usebeamertemplate{head/foot seperator}%
 				\usebeamertemplate{subsection in footline}
 				}\fi%
-			\hfill%
+			% \hfill%
 			% {%
 			% 	\usebeamercolor[fg]{date in head/foot}%
 			% 	\usebeamerfont{date in head/foot}%
@@ -366,11 +366,11 @@
 				\usebeamertemplate{subsection in footline}
 				}\fi%
 			\hfill%
-			% {%
-			% 	\usebeamercolor[fg]{date in head/foot}%
-			% 	\usebeamerfont{date in head/foot}%
-			% 	\insertshortdate%
-			% }%
+			{%
+				\usebeamercolor[fg]{date in head/foot}%
+				\usebeamerfont{date in head/foot}%
+				\insertshortdate%
+			}%
 			\par%
 			\let\sectionentry=\my@sectionentry@hide
 			\let\slideentry=\my@slideentry@subsection
