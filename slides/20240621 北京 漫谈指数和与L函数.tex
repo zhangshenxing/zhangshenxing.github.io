@@ -112,7 +112,7 @@
 	\end{itemize}
 	\onslide<+->
 	\begin{theorem}[][Bombieri1978]
-		特征根个数不超过 $(4\max\set{\deg V+1,\deg f}+5)^{2N+1}$.
+		特征根个数不超过 $(4\max\{\deg V+1,\deg f\}+5)^{2N+1}$.
 	\end{theorem}
 \end{frame}
 
@@ -120,9 +120,9 @@
 \begin{frame}{Kloosterman 和}
 	\beqskip{4pt}
 	\onslide<+->
-	\begin{example}[near][Deligne SGA4$\half$, Serre1977]
+	\begin{example}[near,leftupper=0pt][Deligne SGA4$\half$, Serre1977]
 		\begin{itemize}
-			\item 设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 上的 $n$ 个特征, $a\in\BF_q^\times$.
+			\item 设 $\bchi=\{\chi_1,\dots,\chi_n\}$ 是 $\BF_q^\times$ 上的 $n$ 个特征, $a\in\BF_q^\times$.
 			\item 定义 \emph{Kloosterman 和}
 			\[
 				\Kl_k=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q^k}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_k(x_1+\cdots+x_n).
@@ -142,7 +142,7 @@
 
 \begin{frame}{指数和}
 	\onslide<+->
-	\begin{example}[][Serre1977]
+	\begin{example}[leftupper=0pt][Serre1977]
 		\begin{itemize}
 			\item 设 $X$ 是一几何不可约仿射光滑曲线, $\wh X$ 为其对应的射影曲线, $X_\infty=\wh X-X$.
 			\item 设 $X'\to X$ 是方程 $y^p-y=f(x)$ 给出的 $\BZ/p\BZ$ 平展覆盖, 并延拓至 $\wh X'\to \wh X$.
@@ -161,7 +161,7 @@
 
 
 \begin{frame}{仿射多项式}
-	\begin{example}[][Serre1977]
+	\begin{example}[leftupper=0pt][Serre1977]
 		\begin{itemize}
 			\item 对于仿射平面 $\BA^n$, $f\in\BF_q[x_1,\dots,x_n]$ 是 $d$ 次多项式且 $p\nmid d$, 有
 			\begin{itemize}
@@ -362,7 +362,7 @@
 % 	=&\frac{s_k-s_{k-1}}{d(q-1)}+\frac{j-i}{d}+\phi(pi-j+u_{-k}),
 % 	\end{split}
 % 	\]
-% 其中 $\phi(n)=\min\set{x_1+\cdots+x_d\mid \sum ix_i=n,x_i\ge0}\in\BN\cup\set{+\infty}.$
+% 其中 $\phi(n)=\min\{x_1+\cdots+x_d\mid \sum ix_i=n,x_i\ge0\}\in\BN\cup\{+\infty\}.$
 % \end{frame}
 
 
@@ -377,7 +377,7 @@
 			\pm\hat\lambda^{(*)}\Nm\left(\prod_{k=1}^b h_{n,k}\right),\quad
 			h_{n,k}:=\sum_{\tau\in S_{u_k,n}^\circ}\sgn(\tau)\prod_{i=0}^n\frac{1}{x_{u_k,i}^\tau!y_{u_k,i}^\tau!},
 		\]
-		\item 其中 $S_{u_k,n}^\circ$ 是 $\set{0,1,\dots,n}$ 上满足 $e^{-1}(pi-\tau(i)+u_k)\mod d$ 所有最小非负剩余之和达到最小的置换全体,
+		\item 其中 $S_{u_k,n}^\circ$ 是 $\{0,1,\dots,n\}$ 上满足 $e^{-1}(pi-\tau(i)+u_k)\mod d$ 所有最小非负剩余之和达到最小的置换全体,
 		\item $dx_{u_k,i}^\tau+ey_{u_k,i}^\tau=pi-\tau(i)+u_k,0\le y_{u_k,i}^\tau\le d-1$.
 		\item 因此当且仅当所有的 $h_{n,k}\in\BZ_p^\times$ 时,
 		\[
@@ -431,7 +431,7 @@
 		\item 我们可以问, $\BQ(S_k)\subseteq \BQ(\mu_{pc})$ 这个子域是什么?
 		\item 对于多项式情形, 我们有一些已知结果, 在此省略.
 		\item 我们来看一下 Kloosterman 和的生成域.
-		\item 设 $\bchi=\set{\chi_1,\dots,\chi_n}$ 是 $\BF_q^\times$ 的 $n$ 个乘性特征, 重新记
+		\item 设 $\bchi=\{\chi_1,\dots,\chi_n\}$ 是 $\BF_q^\times$ 的 $n$ 个乘性特征, 重新记
 		\[
 			\Kl_n(\psi,\bchi,q,a)=\sum_{x_1\cdots x_n=a\atop x_i\in\BF_{q}}\chi_1(x_1)\cdots\chi_n(x_n)\psi_{\log_p q}(x_1+\cdots+x_n).
 		\]
@@ -490,7 +490,7 @@
 		\item 记
 		\[
 			\Gal(\BQ(\mu_{pc})/\BQ)
-			=\set{\sigma_t\tau_w\mid t\in (\BZ/p\BZ)^\times,w\in(\BZ/c\BZ)^\times},
+			=\{\sigma_t\tau_w\mid t\in (\BZ/p\BZ)^\times,w\in(\BZ/c\BZ)^\times\},
 		\]
 		\item 其中
 		\[
@@ -539,7 +539,7 @@
 		\item 对于任意闭点 $x\in C(\BF)$, 我们有完备化 $K_x$.
 		\item 对于非空开集 $U\subset C$, 我们有阿贝尔范畴等价
 		\begin{align*}
-			\set{\text{$U$ 上的 lisse $E$ 层}}&\lra \cRep_E^c \pi_1(U,\ov\eta)\\
+			\{\text{$U$ 上的 lisse $E$ 层}\}&\lra \cRep_E^c \pi_1(U,\ov\eta)\\
 			\CF&\lto \CF_{\ov\eta}.
 		\end{align*}
 		\item 由于基本群 $\pi_1(U,\ov\eta)$ 是伽罗瓦群 $\Gal(\ov K/K)$ 的商, 因此分解群 $D_x$ 作用在 $\CF_{\ov\eta}$ 上.
@@ -654,7 +654,7 @@
 
 
 % \begin{frame}{Kloosterman和的生成域}
-% 称 $\bchi$ 是 \emph{Kummer 诱导的}, 若存在非平凡特征 $\Lambda$ 使得作为无序数组 $\bchi=\bchi\Lambda:=\set{\chi_1\Lambda,\dots,\chi_n\Lambda}$.
+% 称 $\bchi$ 是 \emph{Kummer 诱导的}, 若存在非平凡特征 $\Lambda$ 使得作为无序数组 $\bchi=\bchi\Lambda:=\{\chi_1\Lambda,\dots,\chi_n\Lambda\}$.
 % 此时, $\prod\bchi=\prod(\bchi\Lambda)=\Lambda^n\prod\bchi$. 因此 $\Lambda^n=1$. 
 
 % 假设 $p>2n+1$ 且 $\bchi$ 不是 Kummer 诱导的, 则 $\CF_a(\bchi)$ 有一个重数为 $1$ 的最高权. 考虑对应的李代数  $\fg(\CF_a(\bchi))$ 表示, 它对应一个子层 $\CG_a(\bchi)$. 
@@ -744,7 +744,7 @@
 
 \begin{frame}{例子: $n=2$ 情形}
 	\begin{itemize}
-		\item 设 $\bchi=\set{1,\chi}$, $\chi$ 的阶为 $c\neq 2$.
+		\item 设 $\bchi=\{1,\chi\}$, $\chi$ 的阶为 $c\neq 2$.
 		\item 若 $p\gg0$, 则 $\Kl(\psi,\bchi,p^d,a)$ 生成 $\BQ(\mu_{pc})^H$, 其中 
 		\[
 			H=\begin{cases}
@@ -773,7 +773,7 @@
 
 \begin{frame}{指数和的生成域序列}
 	\begin{itemize}
-		\item 回到一般情形, 数列 $\set{S_k}_{k\ge 1}$ 的生成域是一个有理函数.
+		\item 回到一般情形, 数列 $\{S_k\}_{k\ge 1}$ 的生成域是一个有理函数.
 		\item 因此它是线性递推数列.
 		\item 类比 Skolem-Mahler-Lech 关于线性递推数列零点的定理, 万大庆-尹航证明了此类数列的生成域除有限多项外, 是周期的.
 	\end{itemize}

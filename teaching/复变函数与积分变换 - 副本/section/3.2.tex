@@ -10,8 +10,7 @@
 	\onslide<+->
 	可以看出
 	\[\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff
-	\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.
-	\]
+	\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.\]
 	\onslide<+->
 	所以 $f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零.
 	\onslide<+->
@@ -70,17 +69,14 @@
 	\onslide<+->
 	则
 	\[\oint_Cf(z)\diff z=\oint_C(u\diff x-v\diff y)
-	+\ii\oint_C(v\diff x+u\diff y).
-	\]
+	+i\oint_C(v\diff x+u\diff y).\]
 	\onslide<+->
 	由格林公式和C-R方程可知
 	\[\oint_Cf(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
-	+\ii\iint_D(u_x-v_y)\diff x\diff y=0.
-	\]
+	+i\iint_D(u_x-v_y)\diff x\diff y=0.\]
 	\onslide<+->
 	也可以从
-	\[\oint_Cf(z)\diff z=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z=2\ii\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y=0
-	\]
+	\[\oint_Cf(z)\diff z=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z=2i\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y=0\]
 	看出.
 \end{frame}
 
@@ -139,20 +135,19 @@
 \begin{frame}{例: 柯西-古萨定理计算积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-\ii |=\dfrac12$.
+		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-i|=\dfrac12$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		注意到 $\dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\Bigl(\dfrac1{z+\ii}+\dfrac1{z-\ii }\Bigr)$.
-		\onslide<+->{由于 $\dfrac1z,\dfrac1{z+\ii}$ 在 $|z-\ii |\le\dfrac12$ 上解析,
+		注意到 $\dfrac1{z(z^2+1)}=\dfrac1z-\dfrac12\left(\dfrac1{z+i}+\dfrac1{z-i}\right)$.
+		\onslide<+->{由于 $\dfrac1z,\dfrac1{z+i}$ 在 $|z-i|\le\dfrac12$ 上解析,
 		}\onslide<+->{因此由柯西-古萨定理
 			\[\oint_C\frac1z\diff z
-			=\oint_C\frac1{z+\ii}\diff z=0,
-	\]
+			=\oint_C\frac1{z+i}\diff z=0,\]
 		}\onslide<+->{
 			\[\oint_C\frac1{z(z^2+1)}\diff z
-			=-\half\oint_C\frac1{z-\ii }\diff z=-\pi\ii.\]}
+			=-\half\oint_C\frac1{z-i}\diff z=-\pi i.\]}
 	\end{solution}
 \end{frame}
 
@@ -161,10 +156,9 @@
 
 \begin{frame}{多连通区域边界与复合闭路}
 	\onslide<+->
-	设 $C_0,C_1,\dots,C_n$ 是 $n+1$ 条闭路, $C_1,\dots,C_n$ 每一条都包含在其它闭路的外部, 而且它们都包含在 $C_0$ 的内部.
+	设 $C_0,C_1,\dots,C_n$ 是 $n+1$ 条简单闭曲线, $C_1,\dots,C_n$ 每一条都包含在其它闭路的外部, 而且它们都包含在 $C_0$ 的内部.
 	\onslide<+->
-	这样它们围成了一个多连通区域 $D$, 它的边界称为一个\emph{复合闭路} \[C=C_0+C_1^-+\cdots+C_n^-.
-	\]
+	这样它们围成了一个多连通区域 $D$, 它的边界称为一个\emph{复合闭路} \[C=C_0+C_1^-+\cdots+C_n^-.\]
 	\onslide<+->
 	沿着 $C$ 前进的点, $D$ 总在它的左侧,所以这就是它的正方向.
 	\onslide<1->
@@ -192,10 +186,8 @@
 	\onslide<+->
 	\begin{algorithm}{复合闭路定理}
 		设 $f(z)$ 在复合闭路 $C=C_0+C_1^-+\cdots+C_n^-$ 及其所围成的多连通区域内解析, 则
-	\[
-		\oint_{C_0}f(z)\diff z=
-		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.
-	\]
+		\[\oint_{C_0}f(z)\diff z=
+		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.\]
 	\end{algorithm}
 	\onslide<+->
 	事实上, 复合闭路定理和柯西-古萨定理可以看成一个定理的两种情形: 
@@ -267,8 +259,7 @@
 		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
 		}\onslide<+->{因此
 			\[\oint_{C_0}f(z)\diff z-
-		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.
-	\]
+		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.\]
 		}\onslide<+->{于是定理得证.\qedhere}
 		\vspace{-1.7\baselineskip}
 		\onslide<1->
@@ -334,8 +325,7 @@
 				由复合闭路定理以及上一节的结论
 				\[
 					\int_C(z-a)^n\diff z=\int_{C_1}(z-a)^n\diff z=0.\qedhere
-				
-	\]
+				\]
 			}
 			\vspace{-\baselineskip}
 		\end{enumerate}
@@ -345,13 +335,11 @@
 
 \begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
-	同理, 由复合闭路定理和上一节的结论可知当 $a$ 在 $C$ 的内部且 $n=-1$ 时积分为 $2\pi\ii$.
+	同理, 由复合闭路定理和上一节的结论可知当 $a$ 在 $C$ 的内部且 $n=-1$ 时积分为 $2\pi i$.
 	\onslide<+->
 	\begin{theorem@}
 		当 $a$ 在 $C$ 的内部时,
-	\[
-		\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}2\pi\ii,&n=0;\\0,&n\neq 0.\end{cases}
-	\]
+		\[\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}2\pi i,&n=0;\\0,&n\neq 0.\end{cases}\]
 	\end{theorem@}
 \end{frame}
 
@@ -394,7 +382,7 @@
 				=\oint_{C_1}\frac{2z-1}{z^2-z}\diff z+\oint_{C_2}\frac{2z-1}{z^2-z}\diff z\\
 				\visible<+->{=}&\visible<.->{\oint_{C_1}\frac1z\diff z+\oint_{C_1}\frac1{z-1}\diff z
 				+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}\\
-				\visible<+->{=}&\visible<.->{2\pi\ii+0+0+2\pi\ii=4\pi\ii.}
+				\visible<+->{=}&\visible<.->{2\pi i+0+0+2\pi i=4\pi i.}
 			\end{align*}
 		}\vspace{-\baselineskip}
 	\end{solution}
@@ -405,7 +393,7 @@
 \begin{frame}{例: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_\Gamma\frac{\ee^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
+		求 $\displaystyle\int_\Gamma\frac{e^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
 		\vspace{-.8\baselineskip}
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
@@ -424,8 +412,8 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		函数 $\dfrac{\ee^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
-		\onslide<+->{由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{\ee^z}z\diff z=0$.}
+		函数 $\dfrac{e^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
+		\onslide<+->{由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{e^z}z\diff z=0$.}
 	\end{solution}
 \end{frame}
 

@@ -13,9 +13,8 @@
 	\onslide<+->
 	例如
 	\[f(x)=\begin{cases}
-	\ee^{-x^{-2}},&x\neq 0,\\
-	0,&x=0.\end{cases}
-	\]
+	e^{-x^{-2}},&x\neq 0,\\
+	0,&x=0.\end{cases}\]
 	\onslide<+->
 	它处处可导, 但是它在 $0$ 处的各阶导数都是 $0$.
 	\onslide<+->
@@ -30,14 +29,12 @@
 	而即使是泰勒级数能收敛到原函数的情形, 它成立的范围也很难从函数本身读出.
 	\onslide<+->
 	例如
-	\[\dfrac1{1+x}=1-x+x^2-x^3+\cdots,\quad|x|<1.
-	\]
+	\[\dfrac1{1+x}=1-x+x^2-x^3+\cdots,\quad|x|<1.\]
 	\onslide<+->
 	这可以从 $x=-1$ 是奇点看出.
 	\onslide<+->
 	而
-	\[\dfrac1{1+x^2}=1-x^2+x^4-x^6+\cdots,\quad|x|<1
-	\]
+	\[\dfrac1{1+x^2}=1-x^2+x^4-x^6+\cdots,\quad|x|<1\]
 	却并没有奇点.
 	\onslide<+->
 	为什么它的麦克劳林级数成立的开区间也是 $(-1,1)$?
@@ -56,8 +53,7 @@
 	设 $K:|\zeta-z_0|=r$, 则 $K$ 和它的内部包含在 $D$ 中.
 	\onslide<+->
 	由于 $\abs{\dfrac{z-z_0}{\zeta-z_0}}<1$, 因此
-	\[\frac1{\zeta-z}=\frac1{\zeta-z_0}\cdot\frac1{1-\dfrac{z-z_0}{\zeta-z_0}}=\sum_{n=0}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}.
-	\]
+	\[\frac1{\zeta-z}=\frac1{\zeta-z_0}\cdot\frac1{1-\dfrac{z-z_0}{\zeta-z_0}}=\sum_{n=0}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}.\]
 
 	\onslide<1->
 	\begin{center}
@@ -83,19 +79,18 @@
 	\onslide<+->
 	故
 	\begin{align*}
-		f(z)&=\frac1{2\pi\ii}\oint_K \frac{f(\zeta)}{\zeta-z}\diff\zeta
-		\visible<+->{=\frac1{2\pi\ii}\oint_K f(\zeta)\sum_{n=0}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\diff\zeta}\\
+		f(z)&=\frac1{2\pi i}\oint_K \frac{f(\zeta)}{\zeta-z}\diff\zeta
+		\visible<+->{=\frac1{2\pi i}\oint_K f(\zeta)\sum_{n=0}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\diff\zeta}\\
 		&\visible<+->{=
-		\sum_{n=0}^{N-1}\left[\frac1{2\pi\ii}\oint_K\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n+R_N(z),}\\
+		\sum_{n=0}^{N-1}\left[\frac1{2\pi i}\oint_K\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n+R_N(z),}\\
 		&\visible<+->{=
 		\sum_{n=0}^{N-1}\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+R_N(z),}
 	\end{align*}
 	\onslide<+->
 	其中
 	\[
-		R_N(z)=\frac1{2\pi\ii}\oint_Kf(\zeta)\left[\sum_{n=N}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\right]\diff\zeta
-		=\frac1{2\pi\ii}\oint_K\frac{f(\zeta)}{\zeta-z}\cdot\Bigl(\frac{z-z_0}{\zeta-z_0}\Bigr)^N\diff\zeta.
-	
+		R_N(z)=\frac1{2\pi i}\oint_Kf(\zeta)\left[\sum_{n=N}^\infty\frac{(z-z_0)^n}{(\zeta-z_0)^{n+1}}\right]\diff\zeta
+		=\frac1{2\pi i}\oint_K\frac{f(\zeta)}{\zeta-z}\cdot\left(\frac{z-z_0}{\zeta-z_0}\right)^N\diff\zeta.
 	\]
 \end{frame}
 
@@ -108,13 +103,12 @@
 	\onslide<+->
 	那么
 	\begin{align*}
-		|R_N(z)|&\le\frac 1{2\pi}\oint_K\abs{\frac{f(\zeta)}{\zeta-z}\cdot\Bigl(\frac{z-z_0}{\zeta-z_0}\Bigr)^N}\diff s\\
+		|R_N(z)|&\le\frac 1{2\pi}\oint_K\abs{\frac{f(\zeta)}{\zeta-z}\cdot\left(\frac{z-z_0}{\zeta-z_0}\right)^N}\diff s\\
 		&\visible<+->{\le\frac 1{2\pi}\cdot \frac M{r-|z-z_0|}\cdot\abs{\frac{z-z_0}{\zeta-z_0}}^N\cdot 2\pi r\to 0\quad (N\to\infty).}
 	\end{align*}
 	\onslide<+->
 	故
-	\[\alertm{f(z)=\sum_{n=0}^\infty\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n},\quad |z-z_0|<d.
-	\]
+	\[\alertm{f(z)=\sum_{n=0}^\infty\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n},\quad |z-z_0|<d.\]
 \end{frame}
 
 
@@ -126,21 +120,18 @@
 	\onslide<+->
 	需要注意的是, 泰勒级数的收敛半径是有可能比这个半径更大的:
 	\[f(z)=\begin{cases}
-	\ee^z,&z\neq 1;\\ 0,&z=1,
-	\end{cases}\qquad f(z)=\suml_{n=0}^\infty \dfrac{z^n}{n!},\quad |z|<1.
-	\]
+	e^z,&z\neq 1;\\ 0,&z=1,
+	\end{cases}\qquad f(z)=\suml_{n=0}^\infty \dfrac{z^n}{n!},\quad |z|<1.\]
 	\onslide<+->
-	\[f(z)=\ln(z-1-\ii ),\qquad f(z)=-\frac1{1+\ii}\sum_{n=0}^\infty\frac1{n(1+\ii)^n}z^n,\quad |z|<1.
-	\]
+	\[f(z)=\ln(z-1-i),\qquad f(z)=-\frac1{1+i}\sum_{n=0}^\infty\frac1{n(1+i)^n}z^n,\quad |z|<1.\]
 	\onslide<+->
 	若并非这两种情形(奇点``可去''), 则收敛半径的确就是前述距离.
 
 	\onslide<+->
 	对于
 	\[f(z)=\begin{cases}
-	\ee^{-z^{-2}},&z\neq 0,\\
-	0,&z=0.\end{cases}
-	\]
+	e^{-z^{-2}},&z\neq 0,\\
+	0,&z=0.\end{cases}\]
 	\onslide<+->
 	$\lim_{y\to 0}f(iy)=\infty$, 因此 $f(z)$ 在 $0$ 处不连续, 无法在 $0$ 处进行复的泰勒展开.
 \end{frame}
@@ -159,8 +150,7 @@
 	若 $f(z)$ 在 $z_0$ 附近展开为 $\suml_{n=0}^\infty c_n(z-z_0)^n$,
 	\onslide<+->
 	则由幂级数的逐项求导性质可知
-	\[f^{(n)}(z_0)=\sum_{k=n}^\infty c_k k(k-1)\cdots(k-n+1)(z-z_0)^{k-n}\Big|_{z=z_0}=n!c_n.
-	\]
+	\[f^{(n)}(z_0)=\sum_{k=n}^\infty c_k k(k-1)\cdots(k-n+1)(z-z_0)^{k-n}\Big|_{z=z_0}=n!c_n.\]
 	\onslide<+->
 	所以\alert{解析函数的幂级数展开是唯一的}.
 	\onslide<+->
@@ -177,19 +167,17 @@
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
-		由于 $(\ee^z)^{(n)}(0)=\ee^z|_{z=0}=1$,
+		由于 $(e^z)^{(n)}(0)=e^z|_{z=0}=1$,
 		\onslide<+->{因此
-	\[
-		\emphm{\ee^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
+		\[\emphm{e^z=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots=\sum_{n=0}^\infty\frac{z^n}{n!},\quad\forall z.}\]}
 		\vspace{-.5\baselineskip}
 	\end{example}
 
 	\onslide<+->
 	\begin{example}
-		由于 $\displaystyle(\cos z)^{(n)}=\cos\Bigl(z+\dfrac{n\pi}2\Bigr)$,
+		由于 $\displaystyle(\cos z)^{(n)}=\cos\left(z+\dfrac{n\pi}2\right)$,
 		\onslide<+->{
-			\[(\cos z)^{(2n+1)}(0)=0,\quad (\cos z)^{(2n)}(0)=(-1)^n,
-	\]
+			\[(\cos z)^{(2n+1)}(0)=0,\quad (\cos z)^{(2n)}(0)=(-1)^n,\]
 		}\onslide<+->{因此
 			\[\emphm{\cos z=1-\frac{z^2}{2!}+\frac{z^4}{4!}-\frac{z^6}{6!}+\cdots=\sum_{n=0}^\infty(-1)^n\frac{z^{2n}}{(2n)!},\quad\forall z.}\]}
 			\vspace{-.5\baselineskip}
@@ -201,10 +189,10 @@
 \begin{frame}{典型例题: 泰勒展开的计算}
 	\onslide<+->
 	\begin{example}
-		由 $\ee^z$ 的泰勒展开可得
+		由 $e^z$ 的泰勒展开可得
 		\begin{align*}
-			\sin z&=\frac{\ee^{iz}-\ee^{-\ii z}}{2\ii}
-			\visible<+->{=\sum_{n=0}^\infty\frac{(iz)^n-(-\ii z)^n}{2\ii\cdot n!}}\\
+			\sin z&=\frac{e^{iz}-e^{-iz}}{2i}
+			\visible<+->{=\sum_{n=0}^\infty\frac{(iz)^n-(-iz)^n}{2i\cdot n!}}\\
 			&\visible<+->{\emphm{=z-\frac{z^3}{3!}+\frac{z^5}{5!}-\cdots}
 			\emphm{=\sum_{n=0}^\infty(-1)^n\frac{z^{2n+1}}{(2n+1)!},\quad\forall z.}}
 		\end{align*}
@@ -225,9 +213,7 @@
 	由于 $\ln(1+z)$ 在去掉射线 $z=x\le-1$ 的区域内解析,
 	\onslide<+->{因此它在 $|z|<1$ 内解析,
 	}\onslide<+->{且
-	\[
-		[\ln(1+z)]'=\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\quad|z|<1.
-	\]
+		\[[\ln(1+z)]'=\frac1{1+z}=\sum_{n=0}^\infty(-1)^nz^n,\quad|z|<1.\]
 	}\onslide<+->{逐项积分得到
 	\begin{align*}
 	\ln(1+z)&=\int_0^z\frac1{1+\zeta}\diff\zeta
@@ -267,8 +253,7 @@
 	当 $\alpha=n$ 是正整数时, 上述麦克劳林展开的 $>n$ 幂次项系数为零, 
 	\onslide<+->
 	从而
-	\[(1+z)^n=\sum_{k=0}^n \mathrm{C}_n^k z^k,
-	\]
+	\[(1+z)^n=\sum_{k=0}^n \mathrm{C}_n^k z^k,\]
 	此即牛顿二项式展开.
 
 	\onslide<+->
@@ -279,10 +264,8 @@
 	\onslide<+->
 	\begin{solution}
 		由幂函数展开可知当 $|z|<1$ 时,
-	\[
-		(1+z)^{-2}=\sum_{n=0}^\infty \frac{(-2)(-3)\cdots(-1-n)}{n!}z^n
-		\visible<+->{=\sum_{n=0}^\infty (-1)^n(n+1)z^n.}
-	\]
+		\[(1+z)^{-2}=\sum_{n=0}^\infty \frac{(-2)(-3)\cdots(-1-n)}{n!}z^n
+		\visible<+->{=\sum_{n=0}^\infty (-1)^n(n+1)z^n.}\]
 		\vspace{-.5\baselineskip}
 	\end{solution}
 \end{frame}
@@ -293,21 +276,19 @@
 	\begin{solution}[另解]
 		由于 $\dfrac1{(1+z)^2}$ 的奇点为 $z=-1$, 因此它在 $|z|<1$ 内解析.
 		\onslide<+->{由于
-			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,
-	\]
+			\[\frac1{1+z}=1-z+z^2-z^3+\cdots=\sum_{n=0}^\infty (-1)^nz^n,\]
 		}\onslide<+->{因此
 			\[
-			\frac1{(1+z)^2}=-\Bigl(\frac1{1+z}\Bigr)'
+			\frac1{(1+z)^2}=-\left(\frac1{1+z}\right)'
 			\visible<+->{=-\sum_{n=1}^\infty(-1)^n nz^{n-1}}
 			\visible<+->{=\sum_{n=0}^\infty(-1)^n (n+1)z^n,\quad |z|<1.}
-	\]
+			\]
 		}
 		\vspace{-\baselineskip}
 	\end{solution}
 	\onslide<+->
 	一般地, 我们有
-	\[\frac1{(1-\lambda z)^k}=\sum_{n=0}^\infty(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|<\frac1{|\lambda|}.
-	\]
+	\[\frac1{(1-\lambda z)^k}=\sum_{n=0}^\infty(n+k-1)\cdots(n+2)(n+1)z^n,\ |z|<\frac1{|\lambda|}.\]
 \end{frame}
 
 
@@ -323,7 +304,7 @@
 		\onslide<+->{此时
 		\begin{align*}
 			\frac1{3z-2}&=-\half\cdot\frac1{1-\dfrac{3z}2}
-				\visible<+->{=-\half\sum_{n=0}^\infty\Bigl(\frac{3z}2\Bigr)^n}\\
+				\visible<+->{=-\half\sum_{n=0}^\infty\left(\frac{3z}2\right)^n}\\
 			&\visible<+->{=-\sum_{n=0}^\infty\frac{3^n}{2^{n+1}}z^n,\quad|z|<\frac23.}
 		\end{align*}}
 		\vspace{-.5\baselineskip}
@@ -343,7 +324,6 @@
 	\[
 		\frac1{1-3z+2z^2}=\frac{2}{1-2z}-\frac1{1-z}
 		=\sum_{n=0}^\infty(2^{n+1}-1)z^n,\quad |z|<\half .
-	
 	\]
 	\end{answer}
 
@@ -351,11 +331,9 @@
 	有理函数展开为真分式形式若用待定系数法总略显繁琐, 我们现介绍一种方法.
 	\onslide<+->
 	设
-	\[f(z)=\dfrac{1}{(z-1)(z-2)(z+2)}=\frac{a}{z-1}+\frac{b}{z-2}+\frac{c}{z+2},
-	\]
+	\[f(z)=\dfrac{1}{(z-1)(z-2)(z+2)}=\frac{a}{z-1}+\frac{b}{z-2}+\frac{c}{z+2},\]
 	\onslide<+->
-	\[a=\frac1{2\pi\ii} \oint_{|z-1|=0.1}f(z)\diff z=\dfrac{1}{(z-2)(z+2)}\Big|_{z=1}=-\frac13.
-	\]
+	\[a=\frac1{2\pi i} \oint_{|z-1|=0.1}f(z)\diff z=\dfrac{1}{(z-2)(z+2)}\Big|_{z=1}=-\frac13.\]
 	\onslide<+->
 	类似可得 $b=\dfrac14,c=\dfrac1{12}$.
 	\endgroup
@@ -367,19 +345,15 @@
 	\onslide<+->
 	对于分母有重根的情形, 例如
 	\onslide<+->
-	\[f(z)=\dfrac{1}{(z-1)^2(z-2)^3}=\frac{a}{z-1}+\frac{b}{(z-1)^2}+\frac{c}{z-2}+\frac{d}{(z-2)^2}+\frac{e}{(z-2)^3},
-	\]
+	\[f(z)=\dfrac{1}{(z-1)^2(z-2)^3}=\frac{a}{z-1}+\frac{b}{(z-1)^2}+\frac{c}{z-2}+\frac{d}{(z-2)^2}+\frac{e}{(z-2)^3},\]
 	\onslide<+->
-	\[a=\frac1{2\pi\ii} \oint_{|z-1|=0.1}f(z)\diff z=\Bigl(\dfrac{1}{(z-2)^3}\Bigr)'\Big|_{z=1}=-3,
-	\]
+	\[a=\frac1{2\pi i} \oint_{|z-1|=0.1}f(z)\diff z=\left(\dfrac{1}{(z-2)^3}\right)'\Big|_{z=1}=-3,\]
 	\onslide<+->
-	\[b=\frac1{2\pi\ii} \oint_{|z-1|=0.1}(z-1)f(z)\diff z=\dfrac{1}{(z-2)^3}\Big|_{z=1}=-1.
-	\]
+	\[b=\frac1{2\pi i} \oint_{|z-1|=0.1}(z-1)f(z)\diff z=\dfrac{1}{(z-2)^3}\Big|_{z=1}=-1.\]
 	\onslide<+->
 	类似可得 $c=3,d=-2,e=1$, 只是我们需要计算高阶导数.
 	\onslide<+->
 	因此
-	\[f(z)=\sum_{n=0}^\infty\Bigl(3-(n+1)+\frac{-\frac32-\frac12(n+1)-\frac18(n+2)(n+1)}{2^n}\Bigr)z^n,\quad |z|<1.
-	\]
+	\[f(z)=\sum_{n=0}^\infty\left(3-(n+1)+\frac{-\frac32-\frac12(n+1)-\frac18(n+2)(n+1)}{2^n}\right)z^n,\quad |z|<1.\]
 \end{frame}
 

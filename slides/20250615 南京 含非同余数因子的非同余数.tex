@@ -70,38 +70,44 @@
 \begin{frame}{同余数与椭圆曲线}
 	\begin{itemize}
 		\item 显然我们只需要考虑无平方因子正整数.
-		\item 注意到本原的勾股数总可表达为 $(2ab,a^2-b^2,a^2+b^2)$ 的形式, 此时它的面积为 $ab(a+b)(a-b)=n\cdot\square$.
-		\item 通过变量替换 $x=\dfrac{na}b,y=\dfrac{n^2}{b^2}\sqrt{\square}$ 可将其变为椭圆曲线
+		\item 设直角三角形的三条边分别为 $a,b,c$, 设 $x=\dfrac{n(a-c)}b,y=\dfrac{2nx}b$.
+		\item 那么由勾股定理 $a^2+b^2=c^2$ 可得 $a=\dfrac{x^2-n^2}y,b=\dfrac{2nx}y$.
+		\item 于是 $n=\dfrac12ab=\dfrac{x^3-n^2x}{y^2}$.
+		\item 换言之, $(x,y)$ 是椭圆曲线
 		\[
-			E_n:y^2=x^3-n^2x.
+			E_n:y^2=x^3-n^2x
 		\]
-		\item 于是 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
+		的一个满足 $y\ne 0$ 的有理点.
+		\item 而 $E_n(\BQ)$ 全体构成有限生成交换群, 且挠群为
+		\[
+			E_n(\BQ)_{\tors}=E_n[2]=\{O,(0,0),(n,0),(-n,0)\}\cong(\BZ/2\BZ)^2.
+		\]
+		\item 故 $n$ 是同余数当且仅当该椭圆曲线的有理点全体 $E_n(\BQ)$ 构成无限群.
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{Selmer 群和Tate-Shafarevich群}
 	\begin{itemize}
-		\item 不难知道 $E_n(\BQ)$ 的所有挠点为
+		\item 我们可以利用Selmer群来估计 $E_n(\BQ)$ 的秩.
+		\item 通过对短正合列 $0\ra E_n[2]\ra E_n\ra E_n\ra 0$ 取 $G_\BQ$ 上同调可得
 		\[
-			E_n(\BQ)_{\tors}
-			=E_n[2]
-			=\{(\pm n,0),(0,0),O\}
-			\cong(\BZ/2\BZ)^2.
+			0\ra E_n(\BQ)/2E_n(\BQ)\ra \Sel_2(E_n)\ra \Sha(E_n)[2]\ra0,
 		\]
-		\item 由正合列
-		\[
-			0\ra E_n(\BQ)/2E_n(\BQ)\ra \Sel_2(E_n)\ra \Sha(E_n)[2]\ra0
-		\]
-		\item 可得
+		其中
+		\begin{align*}
+			\Sel_2(E_n)&:=\Ker\Bigl(\RH^1(G_\BQ,E_n[2])\ra\prod_v \RH^1(G_{\BQ_v},E_n)\Bigr),\\
+			\Sha(E_n)&:=\Ker\Bigl(\RH^1(G_\BQ,E_n)\ra\prod_v \RH^1(G_{\BQ_v},E_n)\Bigr).
+		\end{align*}
+		\item 由此可得
 		\[
 			\rank_\BZ E_n(\BQ)\le \dim_{\BF_2}\Sel_2(E_n)-2=s_2(n),
 		\]
-		\item 其中 $s_2(n)$ 是
+		\item 其中
 		\[
-			\Sel'_2(E_n):=\frac{\Sel_2(E_n)}{E_n(\BQ)[2]}
+			s_2(n):=\dim_{\BF_2}\Sel'_2(E_n),\qquad
+			\Sel'_2(E_n):=\frac{\Sel_2(E_n)}{E_n(\BQ)[2]}.
 		\]
-		的维数.
 	\end{itemize}
 \end{frame}
 

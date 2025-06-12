@@ -40,8 +40,58 @@ header:hover {
 article {
 	width: 100%;
 	max-width: 810px;
-	padding: 6px 40px 20px;
+	/* padding: 6px 0px 20px; */
 	background-color: white;
+}
+section{
+	padding: 6px 40px;
+	border-top: .5px dashed hsl(210, 60%, 90%);
+	border-bottom: .5px dashed hsl(210, 60%, 90%);
+  background-attachment: scroll;
+	background-position:center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: 25%;
+}
+section:first-child {
+	background-color: hsl(100, 60%, 99%);
+	background-image:linear-gradient(
+		to bottom,
+		hsl(100, 60%, 99%,0.98),
+		hsl(100, 60%, 99%,0.98)
+	), url(image/svg/user-solid.svg);
+}
+section:nth-child(2) {
+	background-color: hsl(120, 60%, 99%);
+	background-image:linear-gradient(
+		to bottom,
+		hsl(120, 60%, 99%,0.98),
+		hsl(120, 60%, 99%,0.98)
+	), url(image/svg/user-graduate-solid.svg);
+}
+section:nth-child(3) {
+	background-color: hsl(140, 60%, 99%);
+	background-image:linear-gradient(
+		to bottom,
+		hsl(140, 60%, 99%,0.98),
+		hsl(140, 60%, 99%,0.98)
+	), url(image/svg/scroll-solid.svg);
+}
+section:nth-child(4) {
+	background-color: hsl(160, 60%, 99%);
+	background-image:linear-gradient(
+		to bottom,
+		hsl(160, 60%, 99%,0.98),
+		hsl(160, 60%, 99%,0.98)
+	), url(image/svg/chalkboard-user-solid.svg);
+}
+section:nth-child(5) {
+	background-color: hsl(180, 60%, 99%);
+	background-image:linear-gradient(
+		to bottom,
+		hsl(180, 60%, 99%,0.98),
+		hsl(180, 60%, 99%,0.98)
+	), url(image/svg/link-solid.svg);
 }
 
 @media screen and (min-width: 800px) {
@@ -59,7 +109,7 @@ article {
 h2 {
 	margin: 28px 0 0;
 	padding-bottom: 2px;
-	border-bottom: 2px solid hsl(210, 60%, 50%);
+	border-bottom: 2px solid hsl(20, 60%, 50%);
 	color: hsl(20, 60%, 50%);
 	font-family: Helvetica, SimHei, Verdana, Arial, sans-serif;
 	font-size: 150%;
@@ -68,7 +118,7 @@ h2 {
 
 h2:hover {
 	color: hsl(210, 60%, 50%);
-	border-bottom: 2px solid hsl(20, 60%, 50%);
+	border-bottom: 2px solid hsl(210, 60%, 50%);
 }
 
 h3 {
@@ -87,7 +137,6 @@ h2+div,
 h3+div {
 	display: block;
 }
-
 
 h4 {
 	margin: 10px 40px;
@@ -118,19 +167,19 @@ img {
 }
 
 h2:hover img, h3:hover img {
-	filter: url(#changeIconColorGold);
-	-webkit-filter: url(#changeIconColorGold);
-	-moz-filter: url(#changeIconColorGold);
-	-ms-filter: url(#changeIconColorGold);
-	-o-filter: url(#changeIconColorGold);
-}
-
-h2 img, h3 img {
 	filter: url(#changeIconColorBlue);
 	-webkit-filter: url(#changeIconColorBlue);
 	-moz-filter: url(#changeIconColorBlue);
 	-ms-filter: url(#changeIconColorBlue);
 	-o-filter: url(#changeIconColorBlue);
+}
+
+h2 img, h3 img {
+	filter: url(#changeIconColorGold);
+	-webkit-filter: url(#changeIconColorGold);
+	-moz-filter: url(#changeIconColorGold);
+	-ms-filter: url(#changeIconColorGold);
+	-o-filter: url(#changeIconColorGold);
 }
 
 /* about me & experience */

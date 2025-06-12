@@ -14,7 +14,6 @@
 		1,\sin{\omega t},\cos{\omega t},
 		\sin{2\omega t},\cos{2\omega t},
 		\sin{3\omega t},\cos{3\omega t},\dots
-	
 	\]
 	的周期都是 $T$, 其中 $\omega=\dfrac{2\pi}T$.
 	\onslide<+->
@@ -27,8 +26,7 @@
 	\end{itemize}
 	\onslide<+->
 	则我们有\emph{傅里叶级数}展开:
-	\[f(t)=\frac{a_0}2+\sum_{n=1}^\infty \Bigl(a_n\cos n\omega t+b_n \sin n\omega t\Bigr).
-	\]
+	\[f(t)=\frac{a_0}2+\sum_{n=1}^\infty \left(a_n\cos n\omega t+b_n \sin n\omega t\right).\]
 	\onslide<+->
 	当 $t$ 是间断点时, 傅里叶级数的左侧需改为 $\dfrac{f(t+)+f(t-)}2$.
 \end{frame}
@@ -38,52 +36,45 @@
 	\onslide<+->
 	我们来将其改写为复指数形式.
 	\onslide<+->
-	物理中为了与电流 $\ii$ 区分, 通常用 $j$ 来表示虚数单位.
+	物理中为了与电流 $i$ 区分, 通常用 $j$ 来表示虚数单位.
 	\onslide<+->
 	由
-	\[\cos x=\frac{\ee^{jx}+\ee^{-jx}}2,\quad \sin x=\frac{\ee^{jx}-\ee^{-jx}}{2j}
-	\]
+	\[\cos x=\frac{e^{jx}+e^{-jx}}2,\quad \sin x=\frac{e^{jx}-e^{-jx}}{2j}\]
 	\onslide<+->
-	可知 $f(t)$ 的傅里叶级数可以表示为函数 $\ee^{jn\omega t}$ 的线性叠加
+	可知 $f(t)$ 的傅里叶级数可以表示为函数 $e^{jn\omega t}$ 的线性叠加
 	\[
-		f(t)=\sum_{n=-\infty}^{+\infty}c_n\ee^{jn\omega t}.
-	
+		f(t)=\sum_{n=-\infty}^{+\infty}c_ne^{jn\omega t}.
 	\]
 	\onslide<+->
 	现在我们来计算这个线性叠加的系数.
 
 	\onslide<+->
 	对于定义在 $(-\infty,+\infty)$ 上周期为 $T>0$ 的\alert{复值}函数 $f,g$, 定义内积
-	\[(f,g):=\frac1T\int_{-\frac T2}^{\frac T2} f(t)\ov g(t)\diff t.
-	\]
+	\[(f,g):=\frac1T\int_{-\frac T2}^{\frac T2} f(t)\ov g(t)\diff t.\]
 \end{frame}
 
 
 \begin{frame}{傅里叶级数的复指数形式}
 	\onslide<+->
 	那么
-	\[(\ee^{jm\omega t},\ee^{jn\omega t})
-	=\frac1T\int_{-\frac T2}^{\frac T2} \ee^{j(m-n)\omega t}\diff t=\begin{cases}
+	\[(e^{jm\omega t},e^{jn\omega t})
+	=\frac1T\int_{-\frac T2}^{\frac T2} e^{j(m-n)\omega t}\diff t=\begin{cases}
 		1,&m=n\\
 		0,&m\neq n.
-	\end{cases}
-	\]
+	\end{cases}\]
 	\onslide<+->
 	所以
-	\[\cdots,\ee^{-2j\omega t},\ee^{-j\omega t},1,\ee^{j\omega t},\ee^{2j\omega t},\cdots
-	\]
+	\[\cdots,e^{-2j\omega t},e^{-j\omega t},1,e^{j\omega t},e^{2j\omega t},\cdots\]
 	是一组标准正交基.
 	\onslide<+->
 	于是
 	\[
-		c_n=(f,\ee^{jn\omega t})=\frac 1T\int_{-\frac T2}^{\frac T2}f(t)\ee^{-jn\omega t} \diff t,
-	
+		c_n=(f,e^{jn\omega t})=\frac 1T\int_{-\frac T2}^{\frac T2}f(t)e^{-jn\omega t} \diff t,
 	\]
 	\onslide<+->
 	我们得到周期函数\emph{傅里叶级数的复指数形式}:
 	\[
-		f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)\ee^{-jn\omega\tau} \diff\tau\right] \ee^{jn\omega t}.
-	
+		f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-jn\omega\tau} \diff\tau\right] e^{jn\omega t}.
 	\]
 \end{frame}
 
@@ -93,17 +84,15 @@
 	对于一般的函数 $f(t)$, 它未必是周期的.
 	\onslide<+->
 	此时它无法像前面的情形一样, 表达成可数多个函数
-	\[\cdots,\ee^{-2j\omega t},\ee^{-j\omega t},1,\ee^{j\omega t},\ee^{2j\omega t},\cdots
-	\]
+	\[\cdots,e^{-2j\omega t},e^{-j\omega t},1,e^{j\omega t},e^{2j\omega t},\cdots\]
 	的线性叠加,
 	\onslide<+->
-	而是所有的 $\ee^{j\omega t},\omega\in(-\infty,+\infty)$ 的叠加.
+	而是所有的 $e^{j\omega t},\omega\in(-\infty,+\infty)$ 的叠加.
 	\onslide<+->
 	这种叠加的系数应当是无穷小方可, 而求和应当改为积分.
 	\onslide<+->
-	所以, 若记 $\ee^{j\omega t}$ 的系数为函数 $\dfrac1{2\pi}F(\omega)$, 则
-	\[f(t)=\frac1{2\pi}\int_{-\infty}^{+\infty} F(\omega) \ee^{j\omega t}\diff t.
-	\]
+	所以, 若记 $e^{j\omega t}$ 的系数为函数 $\dfrac1{2\pi}F(\omega)$, 则
+	\[f(t)=\frac1{2\pi}\int_{-\infty}^{+\infty} F(\omega) e^{j\omega t}\diff t.\]
 \end{frame}
 
 
@@ -114,14 +103,13 @@
 	考虑 $f(t)$ 它在 $\left[-\dfrac T2,\dfrac T2\right]$ 上的限制, 并向两边扩展成一个周期函数 $f_T(t)$.
 	\onslide<+->
 	设
-	\[\omega_n=n\omega,\quad \Delta\omega_n=\omega_n-\omega_{n-1}=\omega,
-	\]
+	\[\omega_n=n\omega,\quad \Delta\omega_n=\omega_n-\omega_{n-1}=\omega,\]
 	则
 	\begin{align*}
 		f(t)&=\lim_{T\to +\infty}f_T(t)\\
-		&\visible<+->{=\lim_{T\to+\infty} \frac 1T \sum_{n=-\infty}^{+\infty} \left[\int_{-\frac T2}^{\frac T2}f(\tau)\ee^{-j\omega_n\tau}\diff\tau\right] \ee^{j\omega_n t}}\\
-		&\visible<+->{=\frac1{2\pi}\lim_{\Delta\omega_n\to 0}\sum_{n=-\infty}^{+\infty}\emphn{\left[\int_{-\frac T2}^{\frac T2}f(\tau)\ee^{-j\omega_n\tau} \diff \tau\right] \ee^{j\omega_n t}}\Delta\omega_n}\\
-		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\emphn{\left[\int_{-\infty}^{+\infty}f(\tau) \ee^{-j\omega\tau} \diff \tau\right]\ee^{j\omega t}}\diff\omega.}
+		&\visible<+->{=\lim_{T\to+\infty} \frac 1T \sum_{n=-\infty}^{+\infty} \left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau}\diff\tau\right] e^{j\omega_n t}}\\
+		&\visible<+->{=\frac1{2\pi}\lim_{\Delta\omega_n\to 0}\sum_{n=-\infty}^{+\infty}\emphn{\left[\int_{-\frac T2}^{\frac T2}f(\tau)e^{-j\omega_n\tau} \diff \tau\right] e^{j\omega_n t}}\Delta\omega_n}\\
+		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\emphn{\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff \tau\right]e^{j\omega t}}\diff\omega.}
 	\end{align*}
 \end{frame}
 
@@ -132,10 +120,8 @@
 	\onslide<+->
 	\begin{main}{傅里叶积分定理}
 		若 $f(t)$ 在 $(-\infty,+\infty)$ 上\emph{绝对可积}, 且在任一有限区间上满足狄利克雷条件, 则
-	\[
-		\alertm{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) \ee^{j\omega t} \diff\omega,\qquad
-		F(\omega)=\int_{-\infty}^{+\infty}f(t) \ee^{-j\omega t} \diff t.}
-	\]
+		\[\alertm{f(t)=\frac1{2\pi} \int_{-\infty}^{+\infty}F(\omega) e^{j\omega t} \diff\omega,\qquad
+		F(\omega)=\int_{-\infty}^{+\infty}f(t) e^{-j\omega t} \diff t.}\]
 		\onslide<+->{%
 		对于 $f(t)$ 的间断点左边需要改成 $\frac{f(t+)+f(t-)}2$.
 		}
@@ -161,8 +147,8 @@
 	\onslide<+->
 	例如:
 	\begin{align*}
-		f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) \ee^{-j\omega\tau} \diff\tau\right] \ee^{j\omega t} \diff\omega\\
-		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) \ee^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
+		f(t)&=\frac1{2\pi} \int_{-\infty}^{+\infty}\left[\int_{-\infty}^{+\infty}f(\tau) e^{-j\omega\tau} \diff\tau\right] e^{j\omega t} \diff\omega\\
+		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(\tau) e^{j\omega(t-\tau)}\diff\tau \diff\omega}\\
 		&\visible<+->{=\frac1{2\pi} \int_{-\infty}^{+\infty}\Bigl[
 				\underbrace{\int_{-\infty}^{+\infty}f(\tau)\cos \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的偶函数}}
 				+j\underbrace{\int_{-\infty}^{+\infty}f(\tau)\sin \omega(t-\tau) \diff\tau}_{\text{\small$\omega$ 的奇函数}}
@@ -178,19 +164,16 @@
 	\onslide<+->
 	若 $f(t)$ 是偶函数, 则 $f(t)\cos{\omega t}$ 是偶函数, $f(t)\sin{\omega t}$ 是奇函数,
 	\onslide<+->
-	\[F(\omega)=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t
-	=2\int_0^{+\infty} f(t)\cos{\omega t}\diff t
-	\]
+	\[F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
+	=2\int_0^{+\infty} f(t)\cos{\omega t}\diff t\]
 	也是偶函数,
 	\onslide<+->
 	从而得到\emph{傅里叶余弦积分公式}:
-	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}
-	\]
+	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\cos\omega\tau\diff\tau\right]\cos\omega t\diff\omega.}\]
 
 	\onslide<+->
 	类似地, 若 $f(t)$ 是奇函数, 则 $\displaystyle F(\omega)=2j\int_0^{+\infty} f(t)\sin{\omega t}\diff t$ 也是奇函数, 且有\emph{傅里叶正弦积分公式}:
-	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}
-	\]
+	\[\alertn{f(t)=\frac2\pi\int_0^{+\infty}\left[\int_0^{+\infty}f(\tau)\sin \omega\tau\diff\tau\right]\sin\omega t\diff\omega.}\]
 \end{frame}
 
 
@@ -211,7 +194,7 @@
 		由于 $f(t)$ 是偶函数, 因此
 		\begin{align*}
 			F(\omega)&=\msf[f(t)]
-			=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t
+			=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
 			=\int_{-\infty}^{+\infty}f(t)\cos{\omega t}\diff t\\
 			&\visible<+->{=\frac12\int_{-1}^1\cos{\omega t}\diff t}
 				\visible<+->{=\frac{\sin \omega}{\omega}.}
@@ -226,7 +209,7 @@
 	\onslide<+->
 	由傅里叶积分公式
 	\begin{align*}
-		f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)\ee^{j\omega t}\diff\omega\\
+		f(t)&=\msf^{-1}[F(\omega)]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff\omega\\
 		&\visible<+->{=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\sin\omega}{\omega}(\cos\omega t+j\sin\omega t)\diff \omega}\\
 		&\visible<+->{=\frac1\pi\int_0^{+\infty}\frac{\sin\omega\cos\omega t}{\omega}\diff \omega.}
 	\end{align*}
@@ -238,8 +221,7 @@
 		\pi/2,&|t|<1,\\
 		\pi/4,&|t|=1,\\
 		0,&|t|>1.
-	\end{cases}
-	\]
+	\end{cases}\]
 	\onslide<+->
 	特别地, 可以得到狄利克雷积分
 	$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
@@ -275,8 +257,7 @@
 		\pi,&|\omega|<1,\\
 		\pi/2,&|\omega|=1,\\
 		0,&|\omega|>1.
-		\end{cases}.
-	\]
+		\end{cases}.\]
 \end{frame}
 
 
@@ -297,7 +278,7 @@
 		由于 $f(t)$ 是奇函数, 因此
 		\begin{align*}
 			F(\omega)&=\msf[f(t)]
-			=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t
+			=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t
 			=2j\int_0^{+\infty}f(t)\sin{\omega t}\diff t\\
 			&\visible<+->{=2j\int_0^1\sin{\omega t}\diff t}
 			\visible<+->{=-\frac{2j(1-\cos\omega)}\omega.}
@@ -343,7 +324,7 @@
 		求\emph{指数衰减函数} $f(t)=
 			\begin{cases}
 				0,&t<0,\\
-				\ee^{-\beta t},&t\ge 0
+				e^{-\beta t},&t\ge 0
 			\end{cases}$ 的傅里叶变换, $\beta>0$.
 	\end{example}
 
@@ -351,9 +332,9 @@
 	\begin{solution}
 		\vspace{-\baselineskip}
 		\begin{align*}
-			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t\\
-			&\visible<+->{=\int_0^{+\infty}\ee^{-\beta t}\ee^{-j\omega t}\diff t}
-			\visible<+->{=\int_0^{+\infty}\ee^{-(\beta+j\omega)t}\diff t}
+			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+			&\visible<+->{=\int_0^{+\infty}e^{-\beta t}e^{-j\omega t}\diff t}
+			\visible<+->{=\int_0^{+\infty}e^{-(\beta+j\omega)t}\diff t}
 			\visible<+->{=\alertn{\frac1{\beta+j\omega}}.}&\visible<.->{}
 		\end{align*}
 	\end{solution}
@@ -364,7 +345,7 @@
 		\begin{cases}
 			0,&t<0,\\
 			\pi/2,&t=0,\\
-			\pi \ee^{-\beta t},&t>0.
+			\pi e^{-\beta t},&t>0.
 		\end{cases}$
 \end{frame}
 
@@ -372,23 +353,23 @@
 \begin{frame}{例: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
-		求\emph{钟形脉冲函数} $f(t)=\ee^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
+		求\emph{钟形脉冲函数} $f(t)=e^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		\vspace{-\baselineskip}
 		\begin{align*}
-			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}\ee^{-\beta t^2}\ee^{-j\omega t}\diff t}\\
-			&\visible<+->{=\ee^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\Bigl(t+\frac{j\omega}{2\beta}\Bigr)^2\right]\diff t}
-			\visible<+->{=\alertn{\sqrt{\frac\pi\beta}\ee^{-\frac{\omega^2}{4\beta}}.}}
+			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}e^{-\beta t^2}e^{-j\omega t}\diff t}\\
+			&\visible<+->{=e^{-\frac{\omega^2}{4\beta}}\int_{-\infty}^{+\infty}\exp\left[-\beta\left(t+\frac{j\omega}{2\beta}\right)^2\right]\diff t}
+			\visible<+->{=\alertn{\sqrt{\frac\pi\beta}e^{-\frac{\omega^2}{4\beta}}.}}
 		\end{align*}
 	\end{solution}
 
 	\onslide<+->
 	类似可得
-	$\displaystyle\int_0^{+\infty}\ee^{-\frac{\omega^2}{4\beta}}\cos\omega t\diff\omega=\sqrt{\pi\beta}\ee^{-\beta t^2}$.
+	$\displaystyle\int_0^{+\infty}e^{-\frac{\omega^2}{4\beta}}\cos\omega t\diff\omega=\sqrt{\pi\beta}e^{-\beta t^2}$.
 \end{frame}
 
 
@@ -406,8 +387,7 @@
 	设 $\mss$ 是一些函数形成的线性空间.
 	\onslide<+->
 	从一个(满足特定性质)函数 $\lambda(t)$ 出发, 我们可以定义一个线性映射 $\mss\to \BR$:
-	\[\pair{\lambda,f}:=\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.
-	\]
+	\[\pair{\lambda,f}:=\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
 	\onslide<+->
 	这个线性映射基本上确定了 $\lambda(t)$ 本身(至多可数个点处不同).
 
@@ -415,8 +395,7 @@
 	\emph{广义函数(分布)}就是指一个线性映射 $\mss\to \BR$.
 	\onslide<+->
 	为了和普通函数类比, 也可将广义函数表为上述积分形式(并不是真的积分):
-	\[\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.
-	\]
+	\[\int_{-\infty}^{+\infty}\lambda(t)f(t)\diff t.\]
 	这里的 $\lambda(t)$ 并不表示一个真正的函数.
 \end{frame}
 
@@ -429,9 +408,7 @@
 	\onslide<+->
 	\begin{definition}
 		\emph{$\delta$ 函数}是指广义函数
-	\[
-		\pair{\delta,f}=\int_{-\infty}^{+\infty}\delta(t)f(t)\diff t=f(0).
-	\]
+		\[\pair{\delta,f}=\int_{-\infty}^{+\infty}\delta(t)f(t)\diff t=f(0).\]
 	\end{definition}
 
 	\onslide<6->
@@ -454,8 +431,7 @@
 	\end{cases}$
 	\onslide<+->
 	则
-	\[\pair{\delta_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\diff t=f(\xi),\quad \xi\in(0,\varepsilon).
-	\]
+	\[\pair{\delta_\varepsilon,f}=\frac1\varepsilon\int_0^\varepsilon f(t)\diff t=f(\xi),\quad \xi\in(0,\varepsilon).\]
 	\onslide<+->
 	当 $\varepsilon\to0$ 时, 右侧就趋于 $f(0)$.
 	\onslide<+->
@@ -469,11 +445,9 @@
 	\onslide<+->
 	对于广义函数 $\lambda$, 我们可以形式地定义 $\lambda(at),\lambda'$:
 	\[\int_{-\infty}^{+\infty}\lambda(at)f(t)\diff t
-	=\int_{-\infty}^{+\infty}\lambda(t)\cdot\frac1{|a|}f\bigl(\frac ta\bigr)\diff t,
-	\]
+	=\int_{-\infty}^{+\infty}\lambda(t)\cdot\frac1{|a|}f\bigl(\frac ta\bigr)\diff t,\]
 	\[\int_{-\infty}^{+\infty}\lambda'(t)f(t)\diff t
-	=-\int_{-\infty}^{+\infty}\lambda(t)f'(t)\diff t.
-	\]
+	=-\int_{-\infty}^{+\infty}\lambda(t)f'(t)\diff t.\]
 	\onslide<+->
 	由此可知
 	\begin{itemize}
@@ -487,17 +461,14 @@
 \begin{frame}{Dirac $\delta$ 函数的傅里叶变换和逆变换}
 	\onslide<+->
 	根据 $\delta$ 函数的定义可知
-	\[\msf[\delta(t)]=\int_{-\infty}^{+\infty}\delta(t)\ee^{-j\omega t}\diff t=1.
-	\]
+	\[\msf[\delta(t)]=\int_{-\infty}^{+\infty}\delta(t)e^{-j\omega t}\diff t=1.\]
 	\onslide<+->
 	同理可得其傅里叶逆变换.
 	\onslide<+->
 	因此我们得到:
 	\begin{theorem@}
-	\[
-		\msf[\delta(t)]=1,\qquad
-		\msf^{-1}[\delta(\omega)]=\dfrac1{2\pi}.
-	\]
+		\[\msf[\delta(t)]=1,\qquad
+		\msf^{-1}[\delta(\omega)]=\dfrac1{2\pi}.\]
 	\end{theorem@}
 \end{frame}
 
@@ -511,17 +482,15 @@
 	\onslide<+->
 	\begin{proof}
 			\[\msf^{-1}\left[\frac1{j\omega}\right]
-			=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{\ee^{j\omega t}}{j\omega} \diff\omega
-			=\frac1\pi\int_0^{+\infty}\frac{\sin\omega t}{\omega} \diff\omega.
-	\]
+			=\frac1{2\pi}\int_{-\infty}^{+\infty}\frac{e^{j\omega t}}{j\omega} \diff\omega
+			=\frac1\pi\int_0^{+\infty}\frac{\sin\omega t}{\omega} \diff\omega.\]
 		\onslide<+->{由
 			$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega \diff\omega=\dfrac\pi2$
 			可知
 			$\displaystyle\int_0^{+\infty}\frac{\sin\omega t}\omega \diff\omega=\frac\pi2\sgn(t)$.
 		}\onslide<+->{故
 			\[\msf^{-1} \left[\frac1{j\omega}+\pi\delta(\omega)\right]
-			=\half\sgn(t)+\half =u(t)\quad (t\neq 0).\qedhere
-	\]
+			=\half\sgn(t)+\half =u(t)\quad (t\neq 0).\qedhere\]
 		}
 	\end{proof}
 \end{frame}
@@ -538,18 +507,14 @@
 
 	\onslide<+->
 	\begin{main}{线性性质}
-	\[
-		\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
-		\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.
-	\]
+		\[\msf[\alpha f+\beta g]=\alpha F+\beta G,\quad
+		\msf^{-1}[\alpha F+\beta G]=\alpha f+\beta g.\]
 	\end{main}
 
 	\onslide<+->
 	\begin{main}{位移性质}
-	\[
-		\msf[f(t-t_0)]=\ee^{-j\omega t_0}F(\omega),\quad
-		\msf^{-1}[F(\omega-\omega_0)]=\ee^{j\omega_0 t}f(t).
-	\]
+		\[\msf[f(t-t_0)]=e^{-j\omega t_0}F(\omega),\quad
+		\msf^{-1}[F(\omega-\omega_0)]=e^{j\omega_0 t}f(t).\]
 		\vspace{-\baselineskip}
 	\end{main}
 \end{frame}
@@ -559,40 +524,35 @@
 	\onslide<+->
 	\begin{proof}
 		\begin{align*}
-			\msf[f(t-t_0)]&=\int_{-\infty}^{+\infty}f(t-t_0)\ee^{-j\omega t}\diff t\\
-			&=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega (t+t_0)}\diff t=\ee^{-j\omega t_0}F(\omega).
+			\msf[f(t-t_0)]&=\int_{-\infty}^{+\infty}f(t-t_0)e^{-j\omega t}\diff t\\
+			&=\int_{-\infty}^{+\infty}f(t)e^{-j\omega (t+t_0)}\diff t=e^{-j\omega t_0}F(\omega).
 		\end{align*}
 		\onslide<+->{逆变换情形类似可得.\qedhere}
 	\end{proof}
 
 	\onslide<+->
 	由此可得
-	\[\alertn{\msf[\delta(t-t_0)]=\ee^{-j\omega t_0},\quad
-	\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}\ee^{j\omega_0 t}}.
-	\]
+	\[\alertn{\msf[\delta(t-t_0)]=e^{-j\omega t_0},\quad
+	\msf^{-1}[\delta(\omega-\omega_0)]=\dfrac1{2\pi}e^{j\omega_0 t}}.\]
 \end{frame}
 
 
 \begin{frame}{傅里叶变换的性质: 微分性质}
 	\onslide<+->
 	\begin{main}{微分性质}
-	\[
-		\msf[f'(t)]=j\omega F(\omega),\quad
-		\msf^{-1}[F'(\omega)]=-jtf(t),
-	\]
+		\[\msf[f'(t)]=j\omega F(\omega),\quad
+		\msf^{-1}[F'(\omega)]=-jtf(t),\]
 		\vspace{-\baselineskip}
-	\[
-		\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
-		\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).
-	\]
+		\[\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
+		\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).\]
 		这里, 被变换的函数要求在 $\infty$ 处趋于 $0$.
 	\end{main}
 
 	\onslide<+->
 	\begin{proof}
 		\begin{align*}
-			\msf[f']&=\int_{-\infty}^{+\infty}f'(t)\ee^{-j\omega t}\diff t\\
-			&=-\int_{-\infty}^{+\infty}f(t)(\ee^{-j\omega t})'\diff t=j\omega F(\omega)
+			\msf[f']&=\int_{-\infty}^{+\infty}f'(t)e^{-j\omega t}\diff t\\
+			&=-\int_{-\infty}^{+\infty}f(t)(e^{-j\omega t})'\diff t=j\omega F(\omega)
 		\end{align*}
 		\onslide<+->{逆变换情形类似可得. 一般的 $k$ 归纳可得.\qedhere}
 	\end{proof}
@@ -603,30 +563,22 @@
 	\onslide<+->
 	由微分性质可得
 	\begin{main}{乘多项式性质}
-	\[
-		\msf[tf(t)]=jF'(\omega),\quad
-		\msf^{-1}[\omega F(\omega)]=-jf'(t),
-	\]
-	\[
-		\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
-		\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).
-	\]
+		\[\msf[tf(t)]=jF'(\omega),\quad
+		\msf^{-1}[\omega F(\omega)]=-jf'(t),\]
+		\[\msf[t^kf(t)]=j^kF^{(k)}(\omega),\quad
+		\msf^{-1}[\omega^kF(\omega)]=(-j)^kf^{(k)}(t).\]
 	\end{main}
 
 	\onslide<+->
 	\begin{main}{积分性质}
-	\[
-		\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega)\qquad (\text{假设}\ \int_{-\infty}^{+\infty}f(t)\diff t=0).
-	\]
+		\[\msf\left[\int_{-\infty}^t f(\tau)\diff\tau\right]=\frac1{j\omega}F(\omega)\qquad (\text{假设}\ \int_{-\infty}^{+\infty}f(t)\diff t=0).\]
 	\end{main}
 
 	\onslide<+->
 	由变量替换易得
 	\begin{main}{相似性质}
-	\[
-		\msf[f(at)]=\frac1{|a|}F\Bigl(\frac\omega a\Bigr),\quad
-		\msf^{-1}[F(a\omega)]=\frac1{|a|}f\Bigl(\frac t a\Bigr).
-	\]
+		\[\msf[f(at)]=\frac1{|a|}F\left(\frac\omega a\right),\quad
+		\msf^{-1}[F(a\omega)]=\frac1{|a|}f\left(\frac t a\right).\]
 	\end{main}
 \end{frame}
 
@@ -634,17 +586,16 @@
 \begin{frame}{典型例题: 计算傅里叶变换}
 	\onslide<+->
 	\begin{example}
-		求 $\msf[t^k \ee^{-\beta t}u(t)],\beta>0$.
+		求 $\msf[t^k e^{-\beta t}u(t)],\beta>0$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 			由于
-			\[\msf[\ee^{-\beta t}u(t)]=\frac{1}{\beta+j\omega},
-	\]
+			\[\msf[e^{-\beta t}u(t)]=\frac{1}{\beta+j\omega},\]
 		\onslide<+->{因此
 			\begin{align*}
-				\msf[t^k\ee^{-\beta t}u(t)]&=j^k\Bigl(\frac1{\beta+j\omega}\Bigr)^{(k)}
+				\msf[t^ke^{-\beta t}u(t)]&=j^k\left(\frac1{\beta+j\omega}\right)^{(k)}
 				=\frac{k!}{(\beta+j\omega)^{k+1}}.
 			\end{align*}
 		}
@@ -667,15 +618,13 @@
 		$g(t)$ 是一个周期为 $T$ 的函数, 设 $\omega_0=\dfrac{2\pi}T$.
 		\onslide<+->
 		我们先计算它的傅里叶级数展开
-	\[
-		c_n=\frac1T\int_{-\frac T2}^{\frac T2} f(t)\ee^{-jn\omega_0 t}\diff t=\frac 1TF(n\omega_0),\quad
-		\onslide<+->{f(t)=\frac1T\sum_{n=-\infty}^{+\infty}F(n\omega_0)\ee^{jn\omega_0t}.}
-	\]
+		\[c_n=\frac1T\int_{-\frac T2}^{\frac T2} f(t)e^{-jn\omega_0 t}\diff t=\frac 1TF(n\omega_0),\quad
+		\onslide<+->{f(t)=\frac1T\sum_{n=-\infty}^{+\infty}F(n\omega_0)e^{jn\omega_0t}.}\]
 		\onslide<+->{%
 		因此
-	\[
+		\[
 			G(\omega)=\msf[f(t)]=\frac{2\pi}T\sum_{n=-\infty}^{+\infty}F(n\omega_0)\delta(n-n\omega_0).
-	\]
+		\]
 		}
 	\end{solution}
 \end{frame}
@@ -723,10 +672,10 @@
 	\onslide<+->
 	\begin{solution}
 			由于 $\msf[1]=2\pi\delta(\omega)$,
-		\onslide<+->{因此 $\msf[\ee^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
+		\onslide<+->{因此 $\msf[e^{j\omega_0t}]=2\pi\delta(\omega-\omega_0)$,
 		}
 		\onslide<+->{\begin{align*}
-				\msf[\sin{\omega_0 t}]&=\frac1{2j}\left[\msf[\ee^{j\omega_0t}]-\msf[\ee^{-j\omega_0t}]\right]&\\
+				\msf[\sin{\omega_0 t}]&=\frac1{2j}\left[\msf[e^{j\omega_0t}]-\msf[e^{-j\omega_0t}]\right]&\\
 				&\visible<+->{=\frac1{2j}[2\pi\delta(\omega-\omega_0)-2\pi\delta(\omega+\omega_0)]}&\\
 				&\visible<+->{=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)].}
 			\end{align*}
@@ -744,12 +693,8 @@
 \begin{frame}{常见傅里叶变换汇总}
 	\onslide<+->
 	\begin{algorithm}{常见傅里叶变换汇总 I}
-	\[
-		\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=\ee^{-j\omega t_0},
-	\]
-	\[
-		\msf[1]=2\pi\delta(\omega),\quad \msf[\ee^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).
-	\]
+		\[\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=e^{-j\omega t_0},\]
+		\[\msf[1]=2\pi\delta(\omega),\quad \msf[e^{j\omega_0 t}]=2\pi\delta(\omega-\omega_0).\]
 		\begin{align*}
 		\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 		\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
@@ -758,13 +703,9 @@
 
 	\onslide<+->
 	\begin{main}{常见傅里叶变换汇总 II}
-	\[
-		\msf[u(t)\ee^{-\beta t}]=\dfrac1{\beta+j\omega},\quad
-		\msf[\ee^{-\beta t^2}]=\sqrt{\dfrac\pi\beta}\ee^{-\omega^2/(4\beta)},
-	\]
-	\[
-		\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega).
-	\]
+		\[\msf[u(t)e^{-\beta t}]=\dfrac1{\beta+j\omega},\quad
+		\msf[e^{-\beta t^2}]=\sqrt{\dfrac\pi\beta}e^{-\omega^2/(4\beta)},\]
+		\[\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega).\]
 	\end{main}
 \end{frame}
 
@@ -772,23 +713,20 @@
 \subsection{傅里叶变换在级数中的应用*}
 \begin{frame}{傅里叶级数的帕塞瓦尔等式\noexer}
 	\onslide<+->
-	对于傅里叶级数 $\displaystyle f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}c_n \ee^{jn\omega t}$, 我们有如下等式
-	\[\frac1{T}\int_{-\frac T2}^{\frac T2}|f(t)|^2\diff t=\sum_{n=-\infty}^{\infty}|c_n|^2.
-	\]
+	对于傅里叶级数 $\displaystyle f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}c_n e^{jn\omega t}$, 我们有如下等式
+	\[\frac1{T}\int_{-\frac T2}^{\frac T2}|f(t)|^2\diff t=\sum_{n=-\infty}^{\infty}|c_n|^2.\]
 	\onslide<+->
 	这其实就是勾股定理.
 	\onslide<+->
 	\begin{example}
 		设 $f(t)$ 是一个周期为 $2\pi$ 的函数, 且 $f(t)=1,t\in[-\pi,\pi]$.
 		\onslide<+->{%
-		它的傅里叶级数展开为 $\displaystyle f(t)=\sum_{n\neq 0}\frac1n \ee^{jnt}.$
+		它的傅里叶级数展开为 $\displaystyle f(t)=\sum_{n\neq 0}\frac1n e^{jnt}.$
 		}\onslide<+->{%
 		因此
-	\[
-		\frac1{2\pi}\int_{-\pi}^{\pi}t^2\diff t=\sum_{n\neq 0}\frac1{n^2},
+		\[\frac1{2\pi}\int_{-\pi}^{\pi}t^2\diff t=\sum_{n\neq 0}\frac1{n^2},
 		\qquad\onslide<+->{
-		\sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}6.}
-	\]
+		\sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}6.}\]
 		}\vspace{-\baselineskip}
 	\end{example}
 \end{frame}
@@ -799,17 +737,15 @@
 	\onslide<+->
 	对于傅里叶变换, 有
 	\begin{theorem}
-	\[
-		\int_{-\infty}^{+\infty}|f(t)|^2\diff t
-		=\frac1{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^2\diff \omega.
-	\]
+		\[\int_{-\infty}^{+\infty}|f(t)|^2\diff t
+		=\frac1{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^2\diff \omega.\]
 	\end{theorem}
 	\onslide<+->
 	\begin{proof}
 		\begin{align*}
 			\int_{-\infty}^{+\infty}|f(t)|^2\diff t
-			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}F(\omega)\ee^{j\omega t}\diff \omega \ov f(t)\diff t\\
-			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\ov{\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t}F(\omega)\diff \omega\\
+			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}F(\omega)e^{j\omega t}\diff \omega \ov f(t)\diff t\\
+			&=\dfrac1{2\pi}\int_{-\infty}^{+\infty}\ov{\int_{-\infty}^{+\infty}f(t)e^{-j\omega t}\diff t}F(\omega)\diff \omega\\
 			&=\frac1{2\pi}\int_{-\infty}^{+\infty}|F(\omega)|^2\diff \omega.\qedhere
 		\end{align*}
 	\end{proof}
@@ -823,23 +759,21 @@
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{theorem}
-	\[
-		\sum_{n=-\infty}^{+\infty}f(n)
-		=\sum_{n=-\infty}^{+\infty}F(2\pi n).
-	\]
+		\[\sum_{n=-\infty}^{+\infty}f(n)
+		=\sum_{n=-\infty}^{+\infty}F(2\pi n).\]
 	\end{theorem}
 	\onslide<+->
 	\begin{proof}
 		考虑 $g(t)=\sum\limits_{n=-\infty}^{+\infty}f(t+n)$ 的傅里叶展开:
 		\onslide<+->{%
 		\begin{align*}
-			&\int_0^1 g(t)\ee^{-2\pi jnt}\diff t
-			=\sum_{m=-\infty}^{+\infty}\int_0^1f(t+m)\ee^{-2\pi jnt}\diff t\\
-			\onslide<+->{=}&\onslide<.->{\sum_{m=-\infty}^{+\infty}\int_m^{m+1}f(t)\ee^{-2\pi jnt}\diff t
-			=\int_{-\infty}^{+\infty}f(t)\ee^{-2\pi jnt}\diff t=F(2\pi n).}
+			&\int_0^1 g(t)e^{-2\pi jnt}\diff t
+			=\sum_{m=-\infty}^{+\infty}\int_0^1f(t+m)e^{-2\pi jnt}\diff t\\
+			\onslide<+->{=}&\onslide<.->{\sum_{m=-\infty}^{+\infty}\int_m^{m+1}f(t)e^{-2\pi jnt}\diff t
+			=\int_{-\infty}^{+\infty}f(t)e^{-2\pi jnt}\diff t=F(2\pi n).}
 		\end{align*}
 		}\onslide<+->{%
-		因此 $g(t)=\sum\limits_{n=-\infty}^{+\infty}F(2\pi n)\ee^{2\pi j n t}$.
+		因此 $g(t)=\sum\limits_{n=-\infty}^{+\infty}F(2\pi n)e^{2\pi j n t}$.
 		}\onslide<+->{%
 		令 $t=0$ 即得.\qedhere
 		}
@@ -854,23 +788,19 @@
 		为了计算 $\sum\limits_{n=-\infty}^{+\infty}\dfrac1{n^2+1}$, 
 		\onslide<+->{%
 		考虑
-	\[
-		F(\omega)=\frac1{2\pi +j\omega}+\frac1{2\pi -j\omega}=\frac{4\pi }{4\pi^2+\omega^2}
-	\]
+		\[F(\omega)=\frac1{2\pi +j\omega}+\frac1{2\pi -j\omega}=\frac{4\pi }{4\pi^2+\omega^2}\]
 		的傅里叶逆变换
 		}\onslide<+->{%
-	\[
-		f(t)=\msf^{-1}[F(\omega)]=\ee^{-2\pi t\sgn(t)}.
-	\]
+		\[f(t)=\msf^{-1}[F(\omega)]=e^{-2\pi t\sgn(t)}.\]
 		}\onslide<+->{%
 		于是
-	\[
+		\[
 			\sum_{n=-\infty}^{+\infty}\frac1{n^2+1}
 			=\pi\sum_{n=-\infty}^{+\infty}F(2\pi n)
 			\onslide<+->{=\pi\sum_{n=-\infty}^{+\infty}f(n)
-			=\pi\Bigl(1+2\sum_{n=1}^\infty \ee^{-2\pi n}\Bigr)
+			=\pi\Bigl(1+2\sum_{n=1}^\infty e^{-2\pi n}\Bigr)
 			=\frac{\pi}{\tanh\pi}.}
-	\]
+		\]
 		}
 	\end{example}
 \end{frame}
@@ -881,17 +811,14 @@
 	\onslide<+->
 	\begin{definition}
 		$f_1(t),f_2(t)$ 的\emph{卷积}是指
-	\[
-		\alertn{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}
-	\]
+		\[\alertn{(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_1(\tau)f_2(t-\tau)\diff \tau.}\]
 	\end{definition}
 	\onslide<+->
 	卷积满足如下重要性质:
 	\onslide<+->
 	\begin{main}{卷积定理}
 	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
-	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.
-	\]
+	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.\]
 	\vspace{-\baselineskip}
 	\end{main}
 \end{frame}
@@ -902,10 +829,10 @@
 	\begin{proof}
 		\vspace{-\baselineskip}
 		\begin{align*}
-			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot \ee^{-j\omega t}\diff t\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)\ee^{-j\omega \tau}\cdot f_2(t-\tau)\ee^{-j\omega (t-\tau)}\diff t\diff \tau}\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)\ee^{-j\omega \tau}\cdot f_2(t)\ee^{-j\omega t}\diff t\diff \tau}\\
-			&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)\ee^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)\ee^{-j\omega t}\diff t}\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
+			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot e^{-j\omega t}\diff t\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t-\tau)e^{-j\omega (t-\tau)}\diff t\diff \tau}\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\cdot f_2(t)e^{-j\omega t}\diff t\diff \tau}\\
+			&\visible<+->{=\int_{-\infty}^{+\infty}f_1(\tau)e^{-j\omega \tau}\diff\tau\int_{-\infty}^{+\infty}f_2(t)e^{-j\omega t}\diff t}\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
 		\end{align*}
 	\end{proof}
 	\onslide<+->
@@ -922,18 +849,16 @@
 \begin{frame}{例: 计算卷积\noexer}
 	\onslide<+->
 	\begin{example}
-		设 $f_1(t)=u(t),f_2(t)=\ee^{-t}u(t)$. 求 $f_1\ast f_2$.
+		设 $f_1(t)=u(t),f_2(t)=e^{-t}u(t)$. 求 $f_1\ast f_2$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-			\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_2(\tau)f_1(t-\tau)\diff \tau=\int_0^{+\infty} \ee^{-\tau}u(t-\tau)\diff \tau.
-	\]
+			\[(f_1\ast f_2)(t)=\int_{-\infty}^{+\infty} f_2(\tau)f_1(t-\tau)\diff \tau=\int_0^{+\infty} e^{-\tau}u(t-\tau)\diff \tau.\]
 		\onslide<+->{当 $t<0$ 时, $(f_1\ast f_2)(t)=0$.
 		}\onslide<+->{当 $t\ge0$ 时, 
-			\[(f_1\ast f_2)(t)=\int_0^t \ee^{-\tau}\diff \tau=1-\ee^{-t}.
-	\]
-		}\onslide<+->{故 $(f_1\ast f_2)(t)=(1-\ee^{-t})u(t)$.
+			\[(f_1\ast f_2)(t)=\int_0^t e^{-\tau}\diff \tau=1-e^{-t}.\]
+		}\onslide<+->{故 $(f_1\ast f_2)(t)=(1-e^{-t})u(t)$.
 		}
 	\end{solution}
 \end{frame}
@@ -949,11 +874,9 @@
 	\begin{solution}
 			设 $F(\omega)=\dfrac{\sin\omega}{\omega},G(\omega)=\dfrac{\sin(\omega/3)}{\omega/3}$,%
 		\onslide<+->{则
-			\[\msf^{-1}[FG]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)\ee^{j\omega t}\diff\omega,
-	\]
+			\[\msf^{-1}[FG]=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)e^{j\omega t}\diff\omega,\]
 		}\onslide<+->{
-			\[\msf^{-1}[FG](0)=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)\diff\omega=\frac1{2\pi}I.
-	\]
+			\[\msf^{-1}[FG](0)=\frac1{2\pi}\int_{-\infty}^{+\infty}F(\omega)G(\omega)\diff\omega=\frac1{2\pi}I.\]
 		}
 	\end{solution}
 \end{frame}
@@ -967,8 +890,7 @@
 				1/2, & |t|<1,\\
 				1/4, & |t|=1,\\
 				0, & |t|>1.
-			\end{cases}
-	\]
+			\end{cases}\]
 		\onslide<+->{所以 $\msf^{-1}[G(\omega)]=g(t)=3f(3t)$,
 		}\onslide<+->{
 			\begin{align*}
@@ -1008,18 +930,16 @@
 	\begin{solution}
 			设 $\msf[y]=Y$.
 		\onslide<+->{两边同时作傅里叶变换得到
-			\[j\omega Y(\omega)-\frac1{j\omega}Y(\omega)=2,
-	\]
+			\[j\omega Y(\omega)-\frac1{j\omega}Y(\omega)=2,\]
 		}\onslide<+->{
-			\[Y(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},
-	\]
+			\[Y(\omega)=-\frac{2j\omega}{1+\omega^2}=\frac1{1+j\omega}-\frac1{1-j\omega},\]
 		}\onslide<+->{
 			\begin{align*}
 				y(t)=\msf^{-1}\left[\frac1{1+j\omega}-\frac1{1-j\omega}\right]
 				&\visible<+->{=\begin{cases}
-				0-\ee^t=-\ee^t,&t<0,\\
+				0-e^t=-e^t,&t<0,\\
 				0,&t=0,\\
-				\ee^{-t}-0=\ee^{-t},&t>0.
+				e^{-t}-0=e^{-t},&t>0.
 				\end{cases}}
 			\end{align*}
 		}
@@ -1038,8 +958,7 @@
 	\begin{solution}
 			设 $\msf[y]=Y$,
 		\onslide<+->{则
-			\[\msf[y''(t)-y(t)]=[(j\omega)^2-1]Y(\omega)=0,
-	\]
+			\[\msf[y''(t)-y(t)]=[(j\omega)^2-1]Y(\omega)=0,\]
 		}
 		\vspace{-\baselineskip}
 		\onslide<+->{\[Y(\omega)=0,\quad y(t)=\msf^{-1}[Y(\omega)]=0.\]}
@@ -1047,10 +966,10 @@
 	\end{solution}
 
 	\onslide<+->
-	显然这是不对的, 该方程的解应该是 $y(t)=C_1\ee^t+C_2\ee^{-t}$.
+	显然这是不对的, 该方程的解应该是 $y(t)=C_1e^t+C_2e^{-t}$.
 
 	\onslide<+->
-	原因在于使用傅里叶变换要求函数是绝对可积的, 而 $\ee^t,\ee^{-t}$ 并不满足该条件.
+	原因在于使用傅里叶变换要求函数是绝对可积的, 而 $e^t,e^{-t}$ 并不满足该条件.
 	\onslide<+->
 	我们需要一个对函数限制更少的积分变换来解决此类方程, 例如拉普拉斯变换.
 \end{frame}

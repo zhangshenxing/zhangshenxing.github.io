@@ -12,7 +12,7 @@
 			\centering
 			\begin{tikzpicture}
 				\coordinate [label=below left:$0$] (O) at (0,0);
-				\coordinate [label=above:\textcolor{second}{$z=x+y\ii$}] (Z) at (3,2);
+				\coordinate [label=above:\textcolor{second}{$z=x+yi$}] (Z) at (3,2);
 				\coordinate (X) at (3,0);
 				\coordinate (Y) at (0,2);
 				\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (X)--(O) node[midway,below=2mm] {$x$};
@@ -28,8 +28,7 @@
 		\begin{minipage}{.56\textwidth}
 			\centering
 			\onslide<4->{
-			\[ x=r\cos\theta,\qquad y=r\sin\theta,
-	\]
+			\[ x=r\cos\theta,\qquad y=r\sin\theta,\]
 			\[r=\sqrt{x^2+y^2},\qquad \theta=\arctan\dfrac yx\text{ 或 }\arctan\dfrac yx\pm\pi.\]}
 		\end{minipage}
 	\end{center}
@@ -189,8 +188,7 @@
 		\begin{enumerate}
 			\item 因为
 				\[|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
-				=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,
-	\]
+				=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,\]
 				\onslide<+->{%
 					所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 				}\onslide<+->{%
@@ -217,17 +215,14 @@
 	由 $x=r\cos\theta,y=r\sin\theta$ 可得
 	\onslide<+->
 	\begin{definition}[复数的三角形式]
-	\[
-		z=r(\cos\theta+\ii\sin\theta).\]	
+		\[z=r(\cos\theta+i\sin\theta).\]	
 	\end{definition}
 	\onslide<+->
-	定义 \alert{$\ee^{\ii\theta}=\exp(\ii\theta):=\cos\theta+\ii\sin\theta$} (欧拉恒等式),
+	定义 \alert{$e^{i\theta}=\exp(i\theta):=\cos\theta+i\sin\theta$} (欧拉恒等式),
 	\onslide<+->
 	则我们得到
 	\begin{definition}[复数的指数形式]
-	\[
-		z=r\ee^{\ii\theta}=r\exp(\ii\theta).
-	\]
+		\[z=re^{i\theta}=r\exp(i\theta).\]
 	\end{definition}
 	\onslide<+->
 	这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
@@ -240,7 +235,7 @@
 \begin{frame}{例: 求复数的三角和指数形式}
 	\onslide<+->
 	\begin{example}
-		将 $z=-\sqrt{12}-2\ii$ 化成三角形式和指数形式.
+		将 $z=-\sqrt{12}-2i$ 化成三角形式和指数形式.
 	\end{example}
 
 	\onslide<+->
@@ -250,13 +245,11 @@
 			由于 $z$ 在第三象限,
 		}\onslide<+->{%
 			因此
-			\[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.
-	\]
+			\[\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.\]
 		}\onslide<+->{%
 			故
-			\[z=4\left[\cos\Bigl(-\frac{5\pi}6\Bigr)+\ii\sin\Bigl(-
-			\frac{5\pi}6\Bigr)\right]=4\ee^{-\frac{5\pi\ii}6}.
-	\]
+			\[z=4\left[\cos\left(-\frac{5\pi}6\right)+i\sin\left(-
+			\frac{5\pi}6\right)\right]=4e^{-\frac{5\pi i}6}.\]
 		}
 	\end{solution}
 \end{frame}
@@ -266,26 +259,26 @@
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
-		将 $z=\sin\dfrac\pi5+\ii\cos\dfrac\pi5$ 化成三角形式和指数形式.
+		将 $z=\sin\dfrac\pi5+i\cos\dfrac\pi5$ 化成三角形式和指数形式.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		$r=|z|=1$.
 		\onslide<+->{%
-		由于 $z$ 在第一象限, 因此
-		\[\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.
-		\]}\onslide<+->{%
-		故
-		\[
-			z=\cos\frac{3\pi}{10}+\ii\sin\frac{3\pi}{10}=\ee^{\frac{3\pi\ii}{10}}.
-		\]}
+			由于 $z$ 在第一象限, 因此
+			\[\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.
+		\]
+		}\onslide<+->{
+			故
+			\[z=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.\]
+		}
 	\end{solution}
 	\onslide<+->
 	\begin{solution}[另解]
 		\[
-			z=\sin\frac\pi5+\ii\cos\frac\pi5
-			\visible<+->{=\cos\Bigl(\frac\pi2-\frac\pi5\Bigr)+\ii\sin\Bigl(\frac\pi2-\frac\pi5\Bigr)}
-			\visible<+->{=\cos\frac{3\pi}{10}+\ii\sin\frac{3\pi}{10}=\ee^{\frac{3\pi\ii}{10}}.}
+		z=\sin\frac\pi5+i\cos\frac\pi5
+		\visible<+->{=\cos\left(\frac\pi2-\frac\pi5\right)+i\sin\left(\frac\pi2-\frac\pi5\right)}
+		\visible<+->{=\cos\frac{3\pi}{10}+i\sin\frac{3\pi}{10}=e^{\frac{3\pi i}{10}}.}
 		\]
 	\end{solution}
 	\endgroup
@@ -298,13 +291,13 @@
 
 	\onslide<+->
 	\begin{exercise}
-		将 $z=\sqrt 3-3\ii$ 化成三角形式和指数形式.
+		将 $z=\sqrt 3-3i$ 化成三角形式和指数形式.
 	\end{exercise}
 
 	\onslide<+->
 	\begin{answer}
-		$\displaystyle z=2\sqrt3\Bigl(\cos\frac{-\pi}3+\ii\sin\frac{-\pi}3\Bigr)
-		=2\sqrt3\ee^{-\frac{\pi\ii}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
+		$\displaystyle z=2\sqrt3\left(\cos\frac{-\pi}3+i\sin\frac{-\pi}3\right)
+		=2\sqrt3e^{-\frac{\pi i}3}$, 写成 $\dfrac{5\pi}3$ 也可以.
 	\end{answer}
 \end{frame}
 
@@ -313,18 +306,15 @@
 	\onslide<+->
 	两个模相等的复数之和的三角和指数形式形式较为简单.
 	\onslide<+->
-	\[
-		\ee^{\ii\theta}+\ee^{\ii\varphi}
-		=2\cos\frac{\theta-\varphi}2\ee^{\frac{\theta+\varphi}2\ii}.
-	\]
+	\[e^{i\theta}+e^{i\varphi}=2\cos\frac{\theta-\varphi}2e^{\frac{\theta+\varphi}2i}.\]
 	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[scale=.8]
 			\coordinate [label=below left:0] (O) at (0,0);
-			\coordinate [label=right:\textcolor{main}{$\ee^{\ii\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
-			\coordinate [label=left:\textcolor{main}{$\ee^{\ii\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
-			\coordinate [label=above:\textcolor{second}{$\ee^{\ii\theta}+\ee^{\ii\varphi}$}] (P) at ($(Z1)+(Z2)$);
+			\coordinate [label=right:\textcolor{main}{$e^{i\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
+			\coordinate [label=left:\textcolor{main}{$e^{i\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
+			\coordinate [label=above:\textcolor{second}{$e^{i\theta}+e^{i\varphi}$}] (P) at ($(Z1)+(Z2)$);
 			\coordinate (M) at ($0.5*(P)$);
 			\coordinate (X) at (2,0);
 			\draw[thick,main] pic [cstfill1, draw=main,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1};
@@ -340,6 +330,6 @@
 	\end{center}
 	\onslide<+->
 	\begin{example}
-		如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 \ee^{\frac{\theta \ii}2}$.
+		如果 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 e^{\frac{\theta i}2}$.
 	\end{example}
 \end{frame}

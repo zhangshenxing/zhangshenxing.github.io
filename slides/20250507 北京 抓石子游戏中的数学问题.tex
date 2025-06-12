@@ -212,7 +212,7 @@
     \onslide<+->
     那么
     \[
-      \CG_S(n)=\mex\set{\CG_S(n-s): s\in S},
+      \CG_S(n)=\mex\{\CG_S(n-s): s\in S\},
     \]
     $\mex$ 是指不属于后面集合的最小的非负整数 (\alertn{m}inimal \alertn{ex}cept).
   \end{itemize}
@@ -241,7 +241,7 @@
   \begin{itemize}
     \item 我们将集合 $S$ 中的元素从小到大排列, 即
     \[
-      S=\set{s_1,s_2,\dots,s_k},\quad s_1<s_2<\cdots<s_k.
+      S=\{s_1,s_2,\dots,s_k\},\quad s_1<s_2<\cdots<s_k.
     \]
     \item 那么 $\CG(n)\le k$.
     \onslide<+->
@@ -284,10 +284,10 @@
   \onslide<+->
   我们将回顾已知的并给出一些新的结果.
   \begin{itemize}
-    \item $\CG_{\set1}=\ul{01}$.
+    \item $\CG_{\{1\}}=\ul{01}$.
     \item $1\in S$ 不含偶数 $\iff \CG_S=\ul{01}$.
-    \item 事实上, 如果 $S'=S\cup\set{x+pt}$, 其中 $x\in S,p$ 是 $\CG_S$ 周期, 则 $\CG_{S'}=\CG_S$.
-    \item 设 $S=\set{a,c=at+r}, 0\le r<a$, 则
+    \item 事实上, 如果 $S'=S\cup\{x+pt\}$, 其中 $x\in S,p$ 是 $\CG_S$ 周期, 则 $\CG_{S'}=\CG_S$.
+    \item 设 $S=\{a,c=at+r\}, 0\le r<a$, 则
     \[
       \CG_S=\begin{cases}
         \ul{(0^a 1^a)^{t/2} 0^r 2^{a-r}1^r},&2\mid t;\\
@@ -305,8 +305,8 @@
 \begin{frame}{三元集合: $a=1,b$ 奇}
   \onslide<+->
   \begin{example}
-    设 $S=\set{1,b,c},2\nmid b$.
-    注意到 $\CG_\set{1,b}=\ul\CH, \CH=01$.
+    设 $S=\{1,b,c\},2\nmid b$.
+    注意到 $\CG_\{1,b\}=\ul\CH, \CH=01$.
     我们有
     \begin{center}
       \begin{tabular}{cccc}
@@ -325,8 +325,8 @@
 \begin{frame}{三元集合: $a=1,b=2$}
   \onslide<+->
   \begin{example}
-    设 $S=\set{1,2,3t+r},0\le r<3$.
-    注意到 $\CG_\set{1,2}=\ul\CH, \CH=012$.
+    设 $S=\{1,2,3t+r\},0\le r<3$.
+    注意到 $\CG_\{1,2\}=\ul\CH, \CH=012$.
     我们有
     \begin{center}
       \begin{tabular}{cccc}
@@ -345,8 +345,8 @@
 \begin{frame}{三元集合: $a=1,b=4$}
   \onslide<+->
   \begin{example}
-    设 $S=\set{1,4,c=5t+r}, 0\le r<5$.
-    注意到 $\CG_\set{1,4}=\ul{\CH}, \CH=01012$.
+    设 $S=\{1,4,c=5t+r\}, 0\le r<5$.
+    注意到 $\CG_\{1,4\}=\ul{\CH}, \CH=01012$.
     我们有
     \begin{center}
       \begin{tabular}{cccc}
@@ -368,7 +368,7 @@
 \begin{frame}{三元集合: $a=1,b\ge 6$ 偶}
   \onslide<+->
   \begin{proposition}[near]
-    设 $S=\set{1,b,c}$, 其中 $b\ge 6$ 是偶数, $c=t(b+1)+r,0\le r\le b$.
+    设 $S=\{1,b,c\}$, 其中 $b\ge 6$ 是偶数, $c=t(b+1)+r,0\le r\le b$.
     \onslide<+->{
     我们有
     \begin{center}
@@ -399,7 +399,7 @@
     \end{center}}
   \end{proposition}
   \begin{itemize}
-    \item 可以看出在带 $1$ 的三元集情形, $p$ 和 $\ell$ 的形式与 $c$ 模 $\set{1,b}$ 的周期的同余类有关.
+    \item 可以看出在带 $1$ 的三元集情形, $p$ 和 $\ell$ 的形式与 $c$ 模 $\{1,b\}$ 的周期的同余类有关.
     \item 除去有限多种情形外, $c$ 在每一个同余类中, $p$ 和 $\ell$ 是 $c$ 的一次函数.
   \end{itemize}
 \end{frame}
@@ -443,7 +443,7 @@
   \onslide<+->
   \begin{proposition}
     \begin{enumerate}
-      \item 设 $S=\set{a,2a,c=3at+r},0\le r<3a$, 则
+      \item 设 $S=\{a,2a,c=3at+r\},0\le r<3a$, 则
       \[
         \ell=\begin{cases}
           c+a-r,&0<r<a;\\
@@ -455,7 +455,7 @@
           c+a,&\text{其它情形.}
         \end{cases}
       \]
-      \item 设 $S=\set{a,a+1,\dots,b-1,b,c=t(a+b)+r},0\le r<a+b$, 则
+      \item 设 $S=\{a,a+1,\dots,b-1,b,c=t(a+b)+r\},0\le r<a+b$, 则
       \[\ell=0,\quad p=\begin{cases}
         a+b,&a\le r\le b;\\
         c+a,&r=0\text{ 或 }r>b;\\
@@ -469,8 +469,8 @@
 \begin{frame}{五元集合的例子}
   \onslide<+->
   \begin{example}
-    设 $S=\set{2,3,5,7}$, 则 $\CG_S=\ul{0^2 1^2 2^2 3^2 4}$ 周期为 $9$.
-    对于 $11\le c\le 500$, $\SUB\bigl(S\cup\set{c}\bigr)$ 的预周期和周期为
+    设 $S=\{2,3,5,7\}$, 则 $\CG_S=\ul{0^2 1^2 2^2 3^2 4}$ 周期为 $9$.
+    对于 $11\le c\le 500$, $\SUB\bigl(S\cup\{c\}\bigr)$ 的预周期和周期为
     \[\ell_c=\begin{cases}
       2c-4,&c\equiv1\bmod{18};\\
       c+5,&c\equiv10\bmod{18};\\
@@ -500,9 +500,9 @@
     上述猜想在如下情形成立:
     \begin{enumerate}
       \item $1\in S$ 且 $S$ 所有元素均为奇数;
-      \item $S=\set{1,b}$;
-      \item $S=\set{a,2a}$;
-      \item $S=\set{a,a+1,\dots,b-1,b}$.
+      \item $S=\{1,b\}$;
+      \item $S=\{a,2a\}$;
+      \item $S=\{a,a+1,\dots,b-1,b\}$.
     \end{enumerate}
   \end{theorem}
 \end{frame}
@@ -519,10 +519,10 @@
   \begin{example}
     设 $a\ge 3$ 是奇数. 如果 $S$ 是如下情形之一:
     \begin{itemize}[<*>]
-      \item $S=\set{3,5,9,\dots,2^a+1}$;
-      \item $S=\set{3,5,2^a+1}$;
-      \item $S=\set{a,a+2,2a+3}$;
-      \item $S=\set{a,2a+1,3a}$,
+      \item $S=\{3,5,9,\dots,2^a+1\}$;
+      \item $S=\{3,5,2^a+1\}$;
+      \item $S=\{a,a+2,2a+3\}$;
+      \item $S=\{a,2a+1,3a\}$,
     \end{itemize}
     则 $\SUB(S)$ 是最终二分的.
   \end{example}
@@ -537,9 +537,9 @@
     设 $a\ge 3$ 是奇数, $t\ge 1$.
     如果 $S$ 是如下情形之一:
     \begin{enumerate}[<*>]
-      \item $S=\set{a,a+2,(2a+2)t+1}$;\label{enum:bi1} \hfill(来自 $\set{a,a+2,2a+3}$)
-      \item $S=\set{a,2a+1,(3a+1)t-1}$; \hfill(来自 $\set{a,2a+1,3a}$)
-      \item $S=\set{a,2a-1,(3a-1)t+a-2}$, \hfill(来自 $\set{a,a+2,2a+3}$)
+      \item $S=\{a,a+2,(2a+2)t+1\}$;\label{enum:bi1} \hfill(来自 $\{a,a+2,2a+3\}$)
+      \item $S=\{a,2a+1,(3a+1)t-1\}$; \hfill(来自 $\{a,2a+1,3a\}$)
+      \item $S=\{a,2a-1,(3a-1)t+a-2\}$, \hfill(来自 $\{a,a+2,2a+3\}$)
     \end{enumerate}
     则 $\SUB(S)$ 是最终二分的.
   \end{theorem}
@@ -646,7 +646,7 @@
 %     \end{tabular}
 %   \end{center}
 %   % \onslide<+->
-%   % 对于四元情形, 我们通过计算发现了当 $3\le a\le 25, c<500$ 且 $c\not\equiv \pm1 \bmod a$ 时, $\SUB(\set{a,2a+1,3a,c})$ 是最终二分的.
+%   % 对于四元情形, 我们通过计算发现了当 $3\le a\le 25, c<500$ 且 $c\not\equiv \pm1 \bmod a$ 时, $\SUB(\{a,2a+1,3a,c\})$ 是最终二分的.
 % \end{frame}
 
 

@@ -1,46 +1,39 @@
-\section{三角和指数形式在计算中的运用}
+\section{复数的乘除、乘幂与方根}
 
-\subsection{复数的乘除}
-\begin{frame}{复数的乘除}
+\subsection{复数的乘除与三角、指数表示}
+\begin{frame}{复数的乘除与三角、指数表示}
 	\onslide<+->
 	三角和指数形式在进行复数的乘法、除法和幂次计算中非常方便.
 
 	\onslide<+->
 	\begin{theorem}
 		设
-	\[
-		z_1=r_1(\cos\theta_1+\ii\sin\theta_1)=r_1\ee^{\ii\theta_1},
-	\]
-	\[
-		z_2=r_2(\cos\theta_2+\ii\sin\theta_2)=r_2\ee^{\ii\theta_2}\neq 0,
-	\]
+		\[z_1=r_1(\cos\theta_1+i\sin\theta_1)=r_1e^{i\theta_1},\]
+		\[z_2=r_2(\cos\theta_2+i\sin\theta_2)=r_2e^{i\theta_2}\neq 0,\]
 		则
 		\begin{align*}
-			z_1z_2&=r_1r_2[\cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)]=r_1r_2\ee^{i(\theta_1+\theta_2)},\\
-			\frac{z_1}{z_2}&=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+\ii\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}\ee^{i(\theta_1-\theta_2)}.
+			z_1z_2&=r_1r_2[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)]=r_1r_2e^{i(\theta_1+\theta_2)},\\
+			\frac{z_1}{z_2}&=\frac{r_1}{r_2}[\cos(\theta_1-\theta_2)+i\sin(\theta_1-\theta_2)]=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}.
 		\end{align*}
 	\end{theorem}
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角、指数形式}
+\begin{frame}{复数的乘除与三角、指数表示}
 	\onslide<+->
 	换言之,
-	\[\alertn{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}
-	\]
+	\[\alertn{|z_1z_2|=|z_1|\cdot|z_2|,\quad\abs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}\]
 	\onslide<+->
 	\[\alertn{\Arg(z_1z_2)=\Arg z_1+\Arg z_2,\quad
-	\Arg\Bigl(\frac{z_1}{z_2}\Bigr)=\Arg z_1-\Arg z_2.}
-	\]
+	\Arg\left(\frac{z_1}{z_2}\right)=\Arg z_1-\Arg z_2.}\]
 	\onslide<+->
 	\emph{多值函数相等是指两边所能取到的值构成的集合相等.}
 
 	\onslide<+->
 	注意上述等式中 $\Arg$ 不能换成 $\arg$, 也就是说
 	\[\arg(z_1z_2)=\arg z_1+\arg z_2,\quad
-	\arg\Bigl(\frac{z_1}{z_2}\Bigr)=\arg z_1-\arg z_2
-	\]
-	\alert{未必成立}.
+	\arg\left(\frac{z_1}{z_2}\right)=\arg z_1-\arg z_2\]
+	\alert{不一定成立}.
 	\onslide<+->
 	这是因为 $\arg z_1\pm\arg z_2$ 有可能不落在区间 $(-\pi,\pi]$ 上.
 	\onslide<+->
@@ -48,27 +41,26 @@
 \end{frame}
 
 
-\begin{frame}{复数的乘除与三角和指数形式}
+\begin{frame}{复数的乘除与三角和指数表示}
 	\onslide<+->
 	\begin{proof*}
 		根据和差的正弦、余弦公式可知
 		\begin{align*}
-			z_1z_2&=r_1(\cos\theta_1+\ii\sin\theta_1)\cdot
-			r_2(\cos\theta_2+\ii\sin\theta_2)\\
+			z_1z_2&=r_1(\cos\theta_1+i\sin\theta_1)\cdot
+			r_2(\cos\theta_2+i\sin\theta_2)\\
 			&\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
-			+\ii(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
-			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)\bigr]}
+			+i(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
+			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+i\sin(\theta_1+\theta_2)\bigr]}
 		\end{align*}
 		\onslide<+->{%
 			因此乘法情形得证.
 		}
 
 		\onslide<+->{%
-			设 $\dfrac{z_1}{z_2}=r\ee^{\ii\theta}$,
+			设 $\dfrac{z_1}{z_2}=re^{i\theta}$,
 		}\onslide<+->{%
 			则由乘法情形可知
-			\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.
-	\]
+			\[rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.\]
 		}\onslide<+->{%
 			因此 $r=\dfrac{r_1}{r_2}$, $\theta$ 可取 $\theta_1-\theta_2$.\qedhere
 		}
@@ -77,13 +69,13 @@
 
 
 \begin{frame}{乘积的几何意义}
-	从该定理可以看出, 乘以复数 $z=r\ee^{\ii\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
+	从该定理可以看出, 乘以复数 $z=re^{i\theta}$ 可以理解为模放大为 $r$ 倍, 并沿逆时针旋转角度 $\theta$.
 	\begin{center}
 		\begin{animateinline}[width=6.5cm]{10}
 			\begin{tikzpicture}
 				\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
 				\coordinate (O) at (0,0);
-				\coordinate [label=right:\textcolor{main}{$z=r\ee^{\ii\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+				\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
 				\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
 				\coordinate [label=above:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
 				\coordinate (ZZ1) at ({3*cos(130)},{3*sin(130)});
@@ -101,7 +93,7 @@
 				\begin{tikzpicture}
 					\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
 					\coordinate (O) at (0,0);
-					\coordinate [label=right:\textcolor{main}{$z=r\ee^{\ii\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+					\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
 					\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
 					\coordinate [label=above:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
 					\coordinate (ZZ1) at ({(2.4+0.03*\r)*cos(80+2.5*\r)},{(2.4+0.03*\r)*sin(80+2.5*\r)});
@@ -123,7 +115,7 @@
 	% 	\begin{tikzpicture}
 	% 		\coordinate [label=below:\textcolor{main}{$1$}] (X) at (1.6,0);
 	% 		\coordinate (O) at (0,0);
-	% 		\coordinate [label=right:\textcolor{main}{$z=r\ee^{\ii\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
+	% 		\coordinate [label=right:\textcolor{main}{$z=re^{i\theta}$}] (Z) at ({2*cos(50)},{2*sin(50)});
 	% 		\draw[cstcurve,main] pic [cstfill1,draw=main, "$\theta$", angle eccentricity=1.4] {angle=X--O--Z};
 	% 		\begin{scope}[visible on=<3->]
 	% 			\coordinate [label=right:\textcolor{second}{$z_1$}] (Z1) at ({2.4*cos(80)},{2.4*sin(80)});
@@ -143,7 +135,7 @@
 \begin{frame}{例: 复数解决平面几何问题}
 	\onslide<+->
 	\begin{example}
-		已知正三角形的两个顶点为 $z_1=1$ 和 $z_2=2+\ii$, 求它的另一个顶点.
+		已知正三角形的两个顶点为 $z_1=1$ 和 $z_2=2+i$, 求它的另一个顶点.
 	\end{example}
 
 	\onslide<+->
@@ -172,13 +164,12 @@
 	\begin{solution}[续解]
 		因此
 		\begin{align*}
-			z_3-z_1&=(z_2-z_1)\exp\Bigl(\pm\frac{\pi\ii}3\Bigr)
-			\visible<+->{=(1+\ii)\Bigl(\half\pm\frac{\sqrt3}2\ii\Bigr)}\\
-			&\visible<+->{=\frac{1-\sqrt3}2+\frac{1+\sqrt3}2\ii\ \text{或}\ \frac{1+\sqrt3}2+\frac{1-\sqrt3}2\ii,}
+			z_3-z_1&=(z_2-z_1)\exp\left(\pm\frac{\pi i}3\right)
+			\visible<+->{=(1+i)\left(\half\pm\frac{\sqrt3}2i\right)}\\
+			&\visible<+->{=\frac{1-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{1+\sqrt3}2+\frac{1-\sqrt3}2i,}
 		\end{align*}
 		\onslide<+->{
-			\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2\ii\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2\ii.
-	\]
+			\[z_3=\frac{3-\sqrt3}2+\frac{1+\sqrt3}2i\ \text{或}\ \frac{3+\sqrt3}2+\frac{1-\sqrt3}2i.\]
 		}
 	\end{solution}
 \end{frame}
@@ -216,26 +207,21 @@
 	\onslide<+->
 	\begin{proof}[续证]
 		那么
-	\[
-		w=1+\lambda(z-1)=\lambda z+(1-\lambda).
-	\]
+		\[w=1+\lambda(z-1)=\lambda z+(1-\lambda).\]
 		\onslide<+->{%
 			由于 $\angle BAD=\angle DAC$, 根据复数乘法的几何意义,
 			$\dfrac{z-0}{w-0}$ 是 $\dfrac{w-0}{1-0}$ 的正实数倍,
 		}\onslide<+->{%
 			即
-			\[\frac{w^2}z=\lambda^2 z+2\lambda(1-\lambda)+\frac{(1-\lambda)^2}z\in\BR,
-	\]
+			\[\frac{w^2}z=\lambda^2 z+2\lambda(1-\lambda)+\frac{(1-\lambda)^2}z\in\BR,\]
 		}\onslide<+->{%
 			于是
 			\[\lambda^2z+\dfrac{(1-\lambda)^2}z=\lambda^2\ov z+\dfrac{(1-\lambda)^2}{\ov z},\qquad
-			\bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0.
-	\]
+			\bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0.\]
 		}\onslide<+->{%
 			显然 $z\neq \ov z$. 又因为 $0<\lambda<1$, 故
 			\[\frac{AB}{AC}=|z|=\frac{1-\lambda}{\lambda}
-			=\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere
-	\]
+			=\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere\]
 		}
 	\end{proof}
 	\endgroup
@@ -247,19 +233,16 @@
 
 \begin{frame}{复数的乘幂}
 	\onslide<+->
-	设 $z=r(\cos\theta+\ii\sin\theta)=r\ee^{\ii\theta}\neq0$.
+	设 $z=r(\cos\theta+i\sin\theta)=re^{i\theta}\neq0$.
 	\onslide<+->
 	根据复数三角和指数形式的乘法和除法运算法则, 我们有
 	\onslide<+->
 	\begin{theorem}[复数的乘幂]
-	\[
-		z^n=r^n(\cos{n\theta}+\ii\sin{n\theta})=r^n\ee^{in\theta},\quad\forall n\in\BZ.
-	\]
+		\[z^n=r^n(\cos{n\theta}+i\sin{n\theta})=r^ne^{in\theta},\quad\forall n\in\BZ.\]
 	\end{theorem}
 	\onslide<+->
 	特别地, 当 $r=1$ 时, 我们得到\emph{棣莫弗公式}
-	\[(\cos\theta+\ii\sin\theta)^n=\cos{n\theta}+\ii\sin{n\theta}.
-	\]
+	\[(\cos\theta+i\sin\theta)^n=\cos{n\theta}+i\sin{n\theta}.\]
 \end{frame}
 
 
@@ -277,8 +260,7 @@
 	一般地, 可以证明 $\cos{n\theta}$ 是 $\cos\theta$ 的 $n$ 次多项式,
 	\onslide<+->
 	这个多项式
-	\[g_n(T)=2^{n-1}T^n-n2^{n-3}T^{n-2}+\cdots
-	\]
+	\[g_n(T)=2^{n-1}T^n-n2^{n-3}T^{n-2}+\cdots\]
 	叫做\emph{切比雪夫多项式}.
 	\onslide<+->
 	它在计算数学的逼近理论中有着重要作用.
@@ -288,29 +270,27 @@
 \begin{frame}{典型例题: 复数乘幂的计算}
 	\onslide<+->
 	\begin{example}
-		求 $(1+\ii)^n+(1-\ii )^n$.
+		求 $(1+i)^n+(1-i)^n$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		由于
-	\[
-		1+\ii=\sqrt2\Bigl(\cos\frac\pi4+\ii\sin\frac\pi4\Bigr),\ 
-		1-\ii =\sqrt2\Bigl(\cos\frac\pi4-\ii \sin\frac\pi4\Bigr),
-	\]
+		\[1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),\ 
+		1-i=\sqrt2\left(\cos\frac\pi4-i\sin\frac\pi4\right),\]
 		\onslide<+->{%
 			因此
 			\[
-				(1+\ii)^n+(1-\ii )^n
-				=2^{\frac n2}\Bigl(\cos\frac{n\pi}4+\ii\sin\frac{n\pi}4+\cos\frac{n\pi}4-\ii \sin\frac{n\pi}4\Bigr)
+				(1+i)^n+(1-i)^n
+				=2^{\frac n2}\left(\cos\frac{n\pi}4+i\sin\frac{n\pi}4+\cos\frac{n\pi}4-i\sin\frac{n\pi}4\right)
 				\visible<+->{=2^{\frac n2+1}\cos\frac{n\pi}4.}
-	\]
+			\]
 		}\vspace{-\baselineskip}
 	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}
-		求 $(\sqrt3+\ii)^{2022}=$\fillblankframe[2cm]{$-2^{2022}$}.
+		求 $(\sqrt3+i)^{2022}=$\fillblankframe[2cm]{$-2^{2022}$}.
 	\end{exercise}
 \end{frame}
 
@@ -321,12 +301,10 @@
 	我们利用复数乘幂公式来计算复数 $z$ 的 \emph{$n$ 次方根 $\sqrt[n]z$}.
 	\onslide<+->
 	设
-	\[w^n=z=r\ee^{\ii\theta}\neq0,\quad w=\rho \ee^{\ii\varphi},
-	\]
+	\[w^n=z=re^{i\theta}\neq0,\quad w=\rho e^{i\varphi},\]
 	\onslide<+->
 	则
-	\[w^n=\rho^n(\cos{n\varphi}+\ii\sin{n\varphi})=r(\cos\theta+\ii\sin\theta).
-	\]
+	\[w^n=\rho^n(\cos{n\varphi}+i\sin{n\varphi})=r(\cos\theta+i\sin\theta).\]
 	\onslide<+->
 	比较两边的模可知 $\rho^n=r,\rho=\sqrt[n]r$.
 	\onslide<+->
@@ -334,8 +312,7 @@
 
 	\onslide<+->
 	由于 $n\varphi$ 和 $\theta$ 的正弦和余弦均相等, 因此存在整数 $k$ 使得
-	\[n\varphi=\theta+2k\pi,\quad \varphi=\frac{\theta+2k\pi}n.
-	\]
+	\[n\varphi=\theta+2k\pi,\quad \varphi=\frac{\theta+2k\pi}n.\]
 \end{frame}
 
 
@@ -348,10 +325,10 @@
 	\onslide<+->
 	\begin{theorem}[复数的方根]
 		任意一个非零复数 $z$ 的 $n$ 次方根有 $n$ 个值:
-	\[
+		\[
 			\sqrt[n]z=\sqrt[n]r\exp\Bigl(\dfrac{\theta+2k\pi}ni\Bigr)\\
-				=\sqrt[n]r\Bigl(\cos\frac{\theta+2k\pi}n+\ii\sin\frac{\theta+2k\pi}n\Bigr),\quad k=0,1,\dots,n-1.
-	\]
+				=\sqrt[n]r\Bigl(\cos\frac{\theta+2k\pi}n+i\sin\frac{\theta+2k\pi}n\Bigr),\quad k=0,1,\dots,n-1.
+		\]
 	\end{theorem}
 	\onslide<+->
 	这些根的模都相等, 且 $w_k$ 和 $w_{k+1}$ 辐角相差 $\dfrac{2\pi}n$.
@@ -363,23 +340,21 @@
 \begin{frame}{例: 复数方根的计算}
 	\onslide<+->
 	\begin{example}
-		求 $\sqrt[4]{1+\ii}$.
+		求 $\sqrt[4]{1+i}$.
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		由于 $1+\ii=\sqrt2\exp\Bigl(\dfrac{\pi\ii}4\Bigr)$,
+		由于 $1+i=\sqrt2\exp\left(\dfrac{\pi i}4\right)$,
 		\onslide<+->{%
 			因此
-			\[\sqrt[4]{1+\ii}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)\ii}4,\quad k=0,1,2,3.
-	\]
+			\[\sqrt[4]{1+i}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)i}4,\quad k=0,1,2,3.\]
 		}\onslide<+->{%
 			于是该方根所有值为
-			\[w_0=\sqrt[8]2\ee^{\frac{\pi\ii}{16}},\quad
-			w_1=\sqrt[8]2\ee^{\frac{9\pi\ii}{16}},\quad
-			w_2=\sqrt[8]2\ee^{\frac{17\pi\ii}{16}},\quad
-			w_3=\sqrt[8]2\ee^{\frac{25\pi\ii}{16}}.
-	\]
+			\[w_0=\sqrt[8]2e^{\frac{\pi i}{16}},\quad
+			w_1=\sqrt[8]2e^{\frac{9\pi i}{16}},\quad
+			w_2=\sqrt[8]2e^{\frac{17\pi i}{16}},\quad
+			w_3=\sqrt[8]2e^{\frac{25\pi i}{16}}.\]
 		}
 		\vspace{-\baselineskip}
 	\end{solution}
@@ -416,24 +391,21 @@
 	\vspace{-\baselineskip}
 	\onslide<+->
 	\begin{exercise}
-		计算 $\sqrt[6]{-1}=$\fillblankframe[5cm][2mm]{$\pm\dfrac{\sqrt3+\ii}2,\pm i,\pm\dfrac{\sqrt3-\ii }2$}.
+		计算 $\sqrt[6]{-1}=$\fillblankframe[5cm][2mm]{$\pm\dfrac{\sqrt3+i}2,\pm i,\pm\dfrac{\sqrt3-i}2$}.
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{乘幂和方根的辐角等式}
+\begin{frame}{方幂和方根的辐角等式}
 	\onslide<+->
 	注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
 	\onslide<+->
 	这是因为
-	\[\Arg(z^n)=n\arg z+2k\pi,\quad k\in\BZ,
-	\]
-	\[n\Arg z=n\arg z+2nk\pi,\quad k\in\BZ.
-	\]
+	\[\Arg(z^n)=n\arg z+2k\pi,\quad k\in\BZ,\]
+	\[n\Arg z=n\arg z+2nk\pi,\quad k\in\BZ.\]
 	\onslide<+->
 	不过我们总有
-	\[\alertn{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ,
-	\]
+	\[\alertn{\Arg \sqrt[n]z=\dfrac1n\Arg z}=\dfrac{\arg z+2k\pi}n,\quad k\in\BZ,\]
 	\onslide<+->
 	其中左边表示 $z$ 的所有 $n$ 次方根的所有辐角.
 \end{frame}
@@ -444,11 +416,10 @@
 	现在我们来看三次方程 $x^3+px+q=0$ 的根, $p\neq 0$.
 	\onslide<+->
 	回顾求根公式:
-	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3,\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.
-	\]
+	\[x=u+v,\quad u^3=-\frac q2+\sqrt{\Delta},\quad uv=-\frac p3,\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.\]
 	\vspace{-\baselineskip}
 	\begin{enumerate}
-		\item 如果 $\Delta>0$, 设 $\omega=\ee^{2\pi\ii/3}$, 设实数 $\alpha$ 满足 $\alpha^3=-\dfrac q2+\sqrt{\Delta}$,
+		\item 如果 $\Delta>0$, 设 $\omega=e^{2\pi i/3}$, 设实数 $\alpha$ 满足 $\alpha^3=-\dfrac q2+\sqrt{\Delta}$,
 			\onslide<+->
 			则
 				\[
@@ -456,8 +427,7 @@
 					x=\alpha-\frac p{3\alpha},\ 
 						\alpha\omega-\frac p{3\alpha} \omega^2,\ 
 						\alpha\omega^2-\frac p{3\alpha} \omega.
-				
-	\]
+				\]
 			\onslide<+->
 			容易证明后两个根都是虚数.
 		\item 如果 $\Delta\le 0$, 则 $p<0$, $|u|^2=-\dfrac p3>0$. 
@@ -467,8 +437,7 @@
 			设 $\sqrt[3]{-\dfrac q2+\sqrt{\Delta}}=u_1,u_2,u_3$,
 			\onslide<+->
 			则我们得到 $3$ 个实根
-				\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.
-	\]
+				\[x=u_1+\ov{u_1},\ u_2+\ov{u_2},\ u_3+\ov{u_3}.\]
 			\onslide<+->
 			不难验证, 若有重根则 $\Delta=0$.
 	\end{enumerate}

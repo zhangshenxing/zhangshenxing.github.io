@@ -65,8 +65,7 @@
 	为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的\emph{映照}来表示这种对应关系,
 	\onslide<+->
 	其中 
-	\[w=u+\ii v=u(x,y)+\ii v(x,y)
-	\]
+	\[w=u+iv=u(x,y)+iv(x,y)\]
 	的实部和虚部是两个二元实变函数.
 	\onslide<+->
 	\begin{center}
@@ -168,7 +167,7 @@
 	\begin{example}
 		函数 $w=az$.
 		\onslide<+->{%
-			设 $a=r\ee^{\ii\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.
+			设 $a=re^{i\theta}$, 则这个映照对应的是一个旋转映照(逆时针旋转 $\theta$)和一个相似映照(放大为 $r$ 倍)的复合.
 		}\onslide<+->{%
 			它把任一区域映成和它相似的区域.
 			\begin{center}
@@ -381,19 +380,19 @@
 	\onslide<+->
 	\begin{solution}
 		\begin{enumerate}
-			\item 设 $z=r\ee^{\frac{\pi\ii}2}=ir$, 则 $w=z^2=-r^2$.
+			\item 设 $z=re^{\frac{\pi i}2}=ir$, 则 $w=z^2=-r^2$.
 				\onslide<+->{%
 					因此它的像是线段 $0<|w|<4,\arg w=\pi$.
 				}
-			\item 由于 $w=u+\ii v=z^2=(x^2-y^2)+2xyi$.
+			\item 由于 $w=u+iv=z^2=(x^2-y^2)+2xyi$.
 				\onslide<+->{%
 					因此 $u=x^2-y^2=4,v=2xy$.
 				}\onslide<+->{%
-					可以说明当 $u=4$ 时, 对任意 $v$, $u+\ii v$ 都是该双曲线上某一点的像.
+					可以说明当 $u=4$ 时, 对任意 $v$, $u+iv$ 都是该双曲线上某一点的像.
 				}\onslide<+->{%
 					所以这条双曲线的像是直线 $\Re w=4$.
 				}
-			\item 设 $z=r\ee^{\ii\theta}$, 则 $w=r^2\ee^{2\ii\theta}$.
+			\item 设 $z=re^{i\theta}$, 则 $w=r^2e^{2i\theta}$.
 				\onslide<+->{%
 					因此它的像是扇形区域 $0<\arg w<\pi/2,0<|w|<4$.
 				}
@@ -415,8 +414,7 @@
 			因此
 			\[|w+1|=2|w-1|,\quad w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4,\]}
 		\onslide<+->{%
-			\[w\ov w-\frac53 w-\frac53\ov w+1=0,\quad \abs{w-\frac53}^2=\dfrac{16}9,
-	\]
+			\[w\ov w-\frac53 w-\frac53\ov w+1=0,\quad \abs{w-\frac53}^2=\dfrac{16}9,\]
 		}\onslide<+->{%
 			即 $\abs{w-\dfrac53}=\dfrac43$, 是一个圆周.
 		}

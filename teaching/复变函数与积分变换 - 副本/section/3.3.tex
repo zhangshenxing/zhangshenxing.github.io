@@ -12,8 +12,7 @@
 
 	\onslide<+->
 	对于任意固定的 $z_0\in D$, 定义
-	\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta.
-	\]
+	\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta.\]
 \end{frame}
 
 
@@ -48,7 +47,7 @@
 			\[
 				F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
 				\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}
-	\]
+			\]
 		}\onslide<+->{%
 			容易知道
 			$\displaystyle\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z$.
@@ -72,8 +71,7 @@
 			&\visible<+->{\le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|=\varepsilon.}
 			\end{align*}
 		}\onslide<+->{由于 $\varepsilon$ 是任意的, 因此
-	\[
-		f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]}
+		\[f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]}
 	\end{proof}
 \end{frame}
 
@@ -94,9 +92,8 @@
 	\onslide<+->
 	\begin{algorithm}{复变函数积分计算方法II}
 		设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
-	\[
-			\int_{z_1}^{z_2}f(z)\diff z=F(z)\Big|_{z_1}^{z_2}=F(z_2)-F(z_1),
-	\]
+		\[
+			\int_{z_1}^{z_2}f(z)\diff z=F(z)\Big|_{z_1}^{z_2}=F(z_2)-F(z_1),\]
 		其中 $F(z)$ 是 $f(z)$ 的一个原函数.
 	\end{algorithm}
 
@@ -122,18 +119,18 @@
 			因此
 			\[
 				\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
-	\]
+			\]
 		}\vspace{-.5\baselineskip}
 	\end{solution}
 	\onslide<+->
-	因此之前的例子中 $\displaystyle\int_0^{3+4\ii}z\diff z=-\frac72+12\ii$, 无论从 $0$ 到 $3+4\ii$ 的路径如何.
+	因此之前的例子中 $\displaystyle\int_0^{3+4i}z\diff z=-\frac72+12i$, 无论从 $0$ 到 $3+4i$ 的路径如何.
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_0^{\pi\ii}z\cos z^2\diff z$.
+		求 $\displaystyle\int_0^{\pi i}z\cos z^2\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -143,12 +140,12 @@
 			且
 			\[
 				\int z\cos z^2\diff z=\half\int \cos z^2\diff z^2=\half\sin z^2+C,
-	\]
+			\]
 		}\onslide<+->{%
 			因此
 			\[
-				\int_0^{\pi\ii}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi\ii}=-\half\sin \pi^2.
-	\]
+				\int_0^{\pi i}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi i}=-\half\sin \pi^2.
+			\]
 		}\vspace{-.5\baselineskip}
 	\end{solution}
 
@@ -173,14 +170,14 @@
 				=\int z\diff(\sin z)
 				=z\sin z-\int \sin z\diff z
 				\visible<+->{=z\sin z+\cos z+C,}
-	\]
+			\]
 		}\onslide<+->{%
 			因此
 			\[
 				\int_0^i z\cos z\diff z
 				=(z\sin z+\cos z)\big|_0^i
-				\visible<+->{=i\sin i+\cos i-1=\ee^{-1}-1.}
-	\]
+				\visible<+->{=i\sin i+\cos i-1=e^{-1}-1.}
+			\]
 		}\vspace{-.5\baselineskip}
 	\end{solution}
 	\onslide<+->
@@ -191,16 +188,16 @@
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_1^{1+\ii} z \ee^z\diff z$.
+		求 $\displaystyle\int_1^{1+i} z e^z\diff z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-		由于 $f(z)=z\ee^z$ 处处解析,
+		由于 $f(z)=ze^z$ 处处解析,
 		\onslide<+->{%
-			且 $\displaystyle\int z \ee^z\diff z=\int z\diff \ee^z=z\ee^z-\int \ee^z\diff z=(z-1)\ee^z+C$,
+			且 $\displaystyle\int z e^z\diff z=\int z\diff e^z=ze^z-\int e^z\diff z=(z-1)e^z+C$,
 		}\onslide<+->{%
-			因此 $\displaystyle \int_1^{1+\ii} z \ee^z\diff z=(z-1)\ee^z\big|_1^{1+\ii}
-			\visible<+->{=i\ee^{1+\ii}=e(-\sin 1+\ii\cos 1)}$.
+			因此 $\displaystyle \int_1^{1+i} z e^z\diff z=(z-1)e^z\big|_1^{1+i}
+			\visible<+->{=ie^{1+i}=e(-\sin 1+i\cos 1)}$.
 		}
 	\end{solution}
 	\onslide<+->
@@ -246,8 +243,8 @@
 			因此
 			\[
 				\text{原积分}=\int_0^{2\pi a}(2z^2+8z+1)\diff z
-				\visible<+->{=\Bigl(\frac23z^3+4z^2+z\Bigr)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
-	\]
+				\visible<+->{=\left(\frac23z^3+4z^2+z\right)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+			\]
 		}
 	\end{solution}
 	\endgroup
@@ -258,7 +255,7 @@
 	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
-		设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $\ii$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
+		设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $i$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -266,15 +263,14 @@
 		函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在单连通区域 $\Re z>-1$ 内解析.
 		\onslide<+->{%
 			\[\int\frac{\ln(z+1)}{z+1}\diff z
-			=\int\ln(z+1)\diff[\ln(z+1)]=\half\ln^2(z+1)+C.
-	\]
+			=\int\ln(z+1)\diff[\ln(z+1)]=\half\ln^2(z+1)+C.\]
 		}\onslide<+->{%
 			因此
 			\begin{align*}
 				\int_C\frac{\ln(z+1)}{z+1}\diff z&=\half\ln^2(z+1)\big|_1^i
-				\visible<+->{=\half\left[\ln^2(1+\ii)-\ln^22\right]}\\
-				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4\ii\Bigr)^2-\ln^22\biggr)
-				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}\ii.}
+				\visible<+->{=\half\left[\ln^2(1+i)-\ln^22\right]}\\
+				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4i\Bigr)^2-\ln^22\biggr)
+				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}i.}
 			\end{align*}
 		}
 	\end{solution}

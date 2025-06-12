@@ -6,13 +6,13 @@
 	\onslide<+->
 	现在我们来正式介绍复数的概念.
 	\onslide<+->
-	为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $\ii$, 再通过定义它的运算来构造复数.
+	为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $i$, 再通过定义它的运算来构造复数.
 	\onslide<+->
 	\begin{definition}
-		固定一个记号 $\ii$, \emph{复数}就是形如 $z=x+y\ii$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
+		固定一个记号 $i$, \emph{复数}就是形如 $z=x+yi$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
 	\end{definition}
 	\onslide<+->
-	实数 $x$ 可以自然地看成复数 $x+0\ii$.
+	实数 $x$ 可以自然地看成复数 $x+0i$.
 \end{frame}
 
 
@@ -20,7 +20,7 @@
 	\onslide<+->
 	将\emph{全体复数记作 $\BC$}.
 	\onslide<+->
-	那么 $\BC$ 自然构成一个二维实线性空间, 且 $\{1,\ii\}$ 是一组基. 
+	那么 $\BC$ 自然构成一个二维实线性空间, 且 $\{1,i\}$ 是一组基. 
 	\onslide<+->
 	因此它和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
 	\onslide<+->
@@ -30,7 +30,7 @@
 				\draw[cstaxis] (-.5,0)--(3,0);
 				\draw[cstaxis] (0,-.5)--(0,2.5);
 				\coordinate [label=below left:$0$] (O) at (0,0);
-				\coordinate [label=above:\textcolor{second}{$z=x+y\ii$}] (A) at (2,1.5);
+				\coordinate [label=above:\textcolor{second}{$z=x+yi$}] (A) at (2,1.5);
 				\coordinate (B) at (2,0);
 				\coordinate (C) at (0,1.5);
 				\draw[cstdash] (B)--(A)--(C);
@@ -66,7 +66,7 @@
 	\onslide<+->
 	\begin{itemize}
 		\item $x,y$ 轴分别对应复平面的\emph{实轴}和\alert{虚轴}.
-		\item 称 $z=x+y\ii$ 中 $x=\Re z$ 为 $z$ 的\emph{实部}; $y=\Im z$ 为 $z$ 的\alert{虚部}.
+		\item 称 $z=x+yi$ 中 $x=\Re z$ 为 $z$ 的\emph{实部}; $y=\Im z$ 为 $z$ 的\alert{虚部}.
 		\item 当虚部 $\Im z=0$ 时, $z$ 为实数, 它落在实轴上.
 		\item 不是实数的复数是\textcolor{third}{\bf 虚数}.
 		\item 当实部 $\Re z=0$ 且 \alert{$z\neq0$} 时, $z$ 为\alert{纯虚数}, 它落在虚轴上.
@@ -85,7 +85,7 @@
 				\begin{scope}[visible on=<3->]
 					\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (B)--(O) node[midway,below=1.5mm] {$\Re z$};
 					\draw[decorate,decoration={brace,amplitude=5},second,cstfill2] (C)--(O) node[midway,right=1.5mm] {$\Im z$};
-					\coordinate [label=above:\textcolor{third}{$z=x+y\ii$}] (A) at (2,1.5);
+					\coordinate [label=above:\textcolor{third}{$z=x+yi$}] (A) at (2,1.5);
 					\draw[cstdash] (B)--(A)--(C);
 					\fill[cstdot,third] (A) circle;
 				\end{scope}
@@ -109,12 +109,12 @@
 				\coordinate (R) at (0,-.8);
 				\filldraw[cstcurve,main,fill=white,visible on=<4->] (R) circle (1.2 and .7);
 				\coordinate (I) at (0,.8);
-				\draw (R) node[align=center,main,visible on=<4->] {实数 \\$0,1,\sqrt2,\pi,\ee$};
-				\draw (I) node[align=center,second,visible on=<6->] {纯虚数 \\$\ii,-\ii ,\pi\ii$};
+				\draw (R) node[align=center,main,visible on=<4->] {实数 \\$0,1,\sqrt2,\pi,e$};
+				\draw (I) node[align=center,second,visible on=<6->] {纯虚数 \\$i,-i,\pi i$};
 				\draw[cstcurve,second,visible on=<6->] (I) circle (1.2 and .7);
 				\draw 
 					(3.7,0) node[align=center] {全\\体\\复\\数}
-					(2,0) node[align=center,third,visible on=<5->] {虚数 \\$\ii,\pi\ii,\frac{-1+\sqrt 3 \ii}2$};
+					(2,0) node[align=center,third,visible on=<5->] {虚数 \\$i,\pi i,\frac{-1+\sqrt 3 i}2$};
 			\end{tikzpicture}
 		\end{minipage}
 	\end{figure}
@@ -124,7 +124,7 @@
 \begin{frame}{例题：判断实数和纯虚数}
 	\onslide<+->
 	\begin{example}
-		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)\ii$ 是:
+		实数 $x$ 取何值时, $z=(x^2-3x-4)+(x^2-5x-6)i$ 是:
 		\begin{enumerate}[<*>]
 			\item 实数;
 			\item 纯虚数.
@@ -144,7 +144,7 @@
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		若 $x^2(1+\ii)+x(5+4\ii)+4+3\ii$ 是纯虚数, 则实数 $x=$\fillblankframe{$-4$}.
+		若 $x^2(1+i)+x(5+4i)+4+3i$ 是纯虚数, 则实数 $x=$\fillblankframe{$-4$}.
 	\end{exercise}
 \end{frame}
 
@@ -153,13 +153,13 @@
 
 \begin{frame}{复数的加法与减法}
 	\onslide<+->
-	设 $z_1=x_1+y_1\ii,z_2=x_2+y_2\ii$.
+	设 $z_1=x_1+y_1i,z_2=x_2+y_2i$.
 	\onslide<+->
 	定义复数的加法和减法:
 	\onslide<+->
 	\[
-		z_1+z_2=(x_1+x_2)+(y_1+y_2)\ii,\quad
-		\visible<+->{z_1-z_2=(x_1-x_2)+(y_1-y_2)\ii.}
+		z_1+z_2=(x_1+x_2)+(y_1+y_2)i,\quad
+		\visible<+->{z_1-z_2=(x_1-x_2)+(y_1-y_2)i.}
 	\]
 	\onslide<+->
 	复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
@@ -192,16 +192,15 @@
 
 \begin{frame}{复数的乘除法}
 	\onslide<+->
-	\alert{规定 $\ii\cdot \ii=-1$} 并定义复数的乘法:
+	\alert{规定 $i\cdot i=-1$} 并定义复数的乘法:
 	\onslide<+->
 	\begin{align*}
-		z_1\cdot z_2&=(x_1+y_1\ii)(x_2+y_2\ii)=x_1\cdot x_2+x_1\cdot y_2\ii+y_1\ii\cdot x_2+y_1\ii\cdot y_2\ii\\
-		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)\ii,
+		z_1\cdot z_2&=(x_1+y_1i)(x_2+y_2i)=x_1\cdot x_2+x_1\cdot y_2i+y_1i\cdot x_2+y_1i\cdot y_2i\\
+		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)i,
 	\end{align*}
 	\onslide<+->
 	由此可得复数的除法:
-	\[\frac{z_1}{z_2}=\frac{(x_1+y_1\ii)(x_2-y_2\ii)}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}\ii.
-	\]
+	\[\frac{z_1}{z_2}=\frac{(x_1+y_1i)(x_2-y_2i)}{x_2^2+y_2^2}=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}i.\]
 
 	\onslide<+->
 	对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
@@ -215,45 +214,39 @@
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
-			\item $\ii^2=-1,\ii^3=-\ii ,\ii^4=1$.
+			\item $i^2=-1,i^3=-i,i^4=1$.
 			\onslide<+->{%
-			一般地, 对于整数 $n$, 
-			\[
-				\ii^{4n}=1,\quad \ii^{4n+1}=i,\quad
-				\ii^{4n+2}=-1,\quad \ii^{4n+3}=-\ii.
-			\]
+				一般地, 对于整数 $n$, 
+				\[i^{4n}=1,\quad i^{4n+1}=i,\quad i^{4n+2}=-1,\quad i^{4n+3}=-i.\]
 			}
 			\vspace{-\baselineskip}
-			\item 令 $\omega=\dfrac{-1+\sqrt 3\ii}2$, 则 $\omega^2=\dfrac{-1-\sqrt3\ii}2,\omega^3=1$.
-			\item 令 $z=1+\ii$, \onslide<+->{则
-			\[z^2=2\ii,\quad z^3=-2+2\ii,\quad z^4=-4,\quad z^8=16=2^4.\]}
+			\item 令 $\omega=\dfrac{-1+\sqrt 3i}2$, 则 $\omega^2=\dfrac{-1-\sqrt3i}2,\omega^3=1$.
+			\item 令 $z=1+i$, \onslide<+->{则
+			\[z^2=2i,\quad z^3=-2+2i,\quad z^4=-4,\quad z^8=16=2^4.\]}
 		\end{enumerate}
 		\vspace{-\baselineskip}
 	\end{example}
 	\onslide<+->
 	将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
 	\onslide<+->
-	那么 $1,\ii,-1,-\ii $ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $-\omega$ 是 $6$ 次单位根.
+	那么 $1,i,-1,-i$ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $-\omega$ 是 $6$ 次单位根.
 \end{frame}
 
 
 \begin{frame}{例: 单位根}
 	\onslide<+->
 	\begin{example}
-		化简 $1+\ii+\ii^2+\ii^3+\ii^4$.
+		化简 $1+i+i^2+i^3+i^4$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		根据等比数列求和公式,
-		\[
-			1+\ii+\ii^2+\ii^3+\ii^4
-			=\frac{\ii^5-1}{\ii-1}
-			\visible<+->{=\frac{\ii-1}{\ii-1}=1.}
-		\]
+		\[1+i+i^2+i^3+i^4=\frac{i^5-1}{i-1}
+		\visible<+->{=\frac{i-1}{i-1}=1.}\]
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		化简 $\Bigl(\dfrac{1-\ii}{1+\ii}\Bigr)^{2026}$=\fillblankframe{$-1$}.
+		化简 $\left(\dfrac{1-i}{1+i}\right)^{2020}$=\fillblankframe{$1$}.
 	\end{exercise}
 \end{frame}
 
@@ -274,9 +267,7 @@
 	与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}:
 	\onslide<+->
 	对于任何次数 $n\ge 1$ 的复系数多项式
-	\[
-		p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,
-	\]
+		\[p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,\]
 	都存在复数 $z_0$ 使得 $p(z_0)=0$.
 	\onslide<+->
 	由此不难知道, 复系数多项式可以因式分解成一次多项式的乘积.
@@ -298,12 +289,10 @@
 	\onslide<+->
 	而 \alert{$\BC$ 却不是有序域}.
 	\onslide<+->
-	如果 $\ii>0$, 则
-	\[
-		-1=\ii\cdot \ii>0,\quad -\ii =-1\cdot \ii>0.
-	\]
+	如果 $i>0$, 则
+		\[-1=i\cdot i>0,\quad -i=-1\cdot i>0.\]
 	\onslide<+->
-	于是 $0>\ii$, 矛盾! 同理 $\ii<0$ 也不可能.
+	于是 $0>i$, 矛盾! 同理 $i<0$ 也不可能.
 \end{frame}
 
 
@@ -313,7 +302,7 @@
 	\onslide<+->
 	\begin{definition}
 		称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
-		换言之, $\ov{x+y\ii}=x-y\ii$.
+	换言之, $\ov{x+yi}=x-yi$.
 	\end{definition}
 	\onslide<+->
 	\begin{exercise}
@@ -327,7 +316,7 @@
 		\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
 		\ov{z_1/z_2}=\ov{z_1}/\ov{z_2}$.
 		\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
-		\item $z+\ov z=2\Re z,\ z-\ov z=2\ii\Im z$.
+		\item $z+\ov z=2\Re z,\ z-\ov z=2i\Im z$.
 		\item $z=\ov z\iff z$ 是实数; $z=-\ov z\iff z$ 是纯虚数或 $z=0$.
 	\end{enumerate}
 	\onslide<+->
@@ -345,7 +334,7 @@
 		证明 $z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2=2\Re(z_1\cdot\ov{z_2})$.
 	\end{example}
 	\onslide<+->
-	我们可以设 $z_1=x_1+y_1\ii,z_2=x_2+y_2\ii$, 然后代入等式两边化简并比较实部和虚部得到.
+	我们可以设 $z_1=x_1+y_1i,z_2=x_2+y_2i$, 然后代入等式两边化简并比较实部和虚部得到.
 	\onslide<+->
 	但我们利用共轭复数可以更简单地证明它.
 	\onslide<+->
@@ -356,8 +345,7 @@
 			因此
 			\[z_1\cdot\ov{z_2}+\ov{z_1}\cdot z_2
 				=z_1\cdot\ov{z_2}+\ov{z_1\cdot\ov{z_2}}
-				=2\Re(z_1\cdot\ov{z_2}).\qedhere
-	\]
+				=2\Re(z_1\cdot\ov{z_2}).\qedhere\]
 		}
 		\vspace{-\baselineskip}
 	\end{proof}
@@ -367,18 +355,15 @@
 \begin{frame}{例题：共轭复数判断实数}
 	\onslide<+->
 	\begin{example}
-		设 $z=x+y\ii$ 且 $y\neq 0,\pm1$. 证明: $x^2+y^2=1$ 当且仅当 $\dfrac z{1+z^2}$ 是实数.
+		设 $z=x+yi$ 且 $y\neq 0,\pm1$. 证明: $x^2+y^2=1$ 当且仅当 $\dfrac z{1+z^2}$ 是实数.
 	\end{example}
 	\onslide<+->
 	\begin{proof}
 		$\dfrac z{1+z^2}$ 是实数当且仅当
-	\[
-		\frac z{1+z^2}=\ov{\Bigl(\frac z{1+z^2}\Bigr)}=\frac{\ov z}{1+{\ov z}^2},
-	\]
+		\[\frac z{1+z^2}=\ov{\left(\frac z{1+z^2}\right)}=\frac{\ov z}{1+{\ov z}^2},\]
 		\onslide<+->{%
 			即
-			\[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.
-	\]
+			\[z(1+{\ov z}^2)=\ov z(1+z^2),\quad (z-\ov z)(z\ov z-1)=0.\]
 		}\onslide<+->{%
 			由 $y\neq0$ 可知 $z\neq \ov z$.
 		}\onslide<+->{%
@@ -392,25 +377,20 @@
 	由于 $z\ov z$ 是一个实数,
 	\onslide<+->
 	因此在做复数的除法运算时, 可以利用下式将其转化为乘法:
-	\[
-		\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.
-	\]
+		\[\dfrac{z_1}{z_2}=\dfrac{z_1\ov{z_2}}{z_2\ov{z_2}}=\dfrac{z_1\ov{z_2}}{x_2^2+y_2^2}.\]
 	\vspace{-.5\baselineskip}
 	\onslide<+->
 	\begin{example}
-		$z=-\dfrac1\ii-\dfrac{3\ii}{1-\ii }$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
+		$z=-\dfrac1i-\dfrac{3i}{1-i}$, 求 $\Re z,\Im z$ 以及 $z\ov z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-	\[
-		z=-\frac1\ii-\frac{3\ii}{1-\ii }
-		\onslide<+->{=\ii-\frac{3\ii-3}2=\frac32-\half \ii,}
-	\]
+		\[z=-\frac1i-\frac{3i}{1-i}
+		\onslide<+->{=i-\frac{3i-3}2=\frac32-\half i,}\]
 		\onslide<+->{%
 			因此
 				\[\Re z=\frac32,\quad\Im z=-\half ,\quad
-				z\ov z=\Bigl(\frac32\Bigr)^2+\Bigl(-\half\Bigr)^2=\frac52.
-	\]
+				z\ov z=\left(\frac32\right)^2+\left(-\half\right)^2=\frac52.\]
 		}\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
@@ -419,18 +399,18 @@
 \begin{frame}{例: 复数的代数计算}
 	\onslide<+->
 	\begin{example}
-		设 $z_1=5-5\ii,z_2=-3+4\ii$, 求 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}$.
+		设 $z_1=5-5i,z_2=-3+4i$, 求 $\ov{\left(\dfrac{z_1}{z_2}\right)}$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
 		\begin{align*}
-			\frac{z_1}{z_2}&=\frac{5-5\ii}{-3+4\ii}
-			\onslide<+->{=\frac{(5-5\ii)(-3-4\ii)}{(-3)^2+4^2}}\\
-			&\onslide<+->{=\frac{(-15-20)+(-20+15)\ii}{25}}
-			\onslide<+->{=-\frac75-\frac15\ii,}
+			\frac{z_1}{z_2}&=\frac{5-5i}{-3+4i}
+			\onslide<+->{=\frac{(5-5i)(-3-4i)}{(-3)^2+4^2}}\\
+			&\onslide<+->{=\frac{(-15-20)+(-20+15)i}{25}}
+			\onslide<+->{=-\frac75-\frac15i,}
 		\end{align*}
 		\onslide<+->{%
-			因此 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=-\dfrac75+\dfrac15\ii$.
+			因此 $\ov{\left(\dfrac{z_1}{z_2}\right)}=-\dfrac75+\dfrac15i$.
 		}
 	\end{solution}
 \end{frame}

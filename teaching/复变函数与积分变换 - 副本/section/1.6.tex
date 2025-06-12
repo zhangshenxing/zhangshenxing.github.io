@@ -20,8 +20,7 @@
 \begin{frame}{数列极限的等价定义}
 	\onslide<+->
 	如果我们称
-	\[\Uc(\infty,X)=\set{z\in\BC\mid|z|>X}
-	\]
+	\[\Uc(\infty,X)=\set{z\in\BC\mid|z|>X}\]
 	为 \emph{$\infty$ 的(去心)邻域},
 	\onslide<+->
 	\begin{center}
@@ -187,18 +186,14 @@
 
 	\onslide<+->
 	\begin{theorem}
-		设 $z_n=x_n+y_ni,z=x+y\ii$, 则
-	\[
-		\lim_{n\to\infty}z_n=z\iff \lim_{n\to\infty}x_n=x,\lim_{n\to\infty}y_n=y.
-	\]
+		设 $z_n=x_n+y_ni,z=x+yi$, 则
+		\[\lim_{n\to\infty}z_n=z\iff \lim_{n\to\infty}x_n=x,\lim_{n\to\infty}y_n=y.\]
 	\end{theorem}
 
 	\onslide<+->
 	\begin{proof}
 		由三角不等式
-	\[
-		|x_n-x|,|y_n-y|\le|z_n-z|\le|x_n-x|+|y_n-y|
-	\]
+		\[|x_n-x|,|y_n-y|\le|z_n-z|\le|x_n-x|+|y_n-y|\]
 		易证.
 	\end{proof}
 \end{frame}
@@ -222,16 +217,14 @@
 \begin{frame}{例: 数列的敛散性}
 	\onslide<+->
 	\begin{example}
-		设 $z_n=\Bigl(1+\dfrac1n\Bigr)\ee^{\frac{\pi\ii}n}$. 数列 $\{z_n\}$ 是否收敛?
+		设 $z_n=\left(1+\dfrac1n\right)e^{\frac{\pi i}n}$. 数列 $\{z_n\}$ 是否收敛?
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
 		由于
-	\[
-		x_n=\Bigl(1+\frac1n\Bigr)\cos\frac\pi n\to 1,\quad
-		y_n=\Bigl(1+\frac1n\Bigr)\sin\frac\pi n\to 0.
-	\]
+		\[x_n=\left(1+\frac1n\right)\cos\frac\pi n\to 1,\quad
+		y_n=\left(1+\frac1n\right)\sin\frac\pi n\to 0.\]
 		\onslide<+->{%
 			因此 $\{z_n\}$ 收敛且 $\lim\limits_{n\to\infty}z_n=1$.
 		}
@@ -246,8 +239,7 @@
 		设函数 $f(z)$ 在点 $z_0$ 的某个去心邻域内有定义.
 		\onslide<+->{%
 			如果存在复数 $A$, 使得对 $A$ 的任意邻域 $U(A,\varepsilon),\exists\delta>0$ 使得
-			\[z\in\Uc(z_0,\delta)\implies f(z)\in U(A,\varepsilon),
-	\]
+			\[z\in\Uc(z_0,\delta)\implies f(z)\in U(A,\varepsilon),\]
 		}\onslide<+->{%
 			则称 $A$ 为 \emph{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \emph{$\lim\limits_{z\to z_0}f(z)=A$} 或 \emph{$f(z)\to A (z\to z_0)$}.
 		}
@@ -268,20 +260,16 @@
 
 	\onslide<+->
 	\begin{theorem}
-		设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+y_0\ii,A=u_0+v_0\ii$, 则
-	\[
-		\lim_{z\to z_0}f(z)=A\iff
+		设 $f(z)=u(x,y)+iv(x,y),z_0=x_0+y_0i,A=u_0+v_0i$, 则
+		\[\lim_{z\to z_0}f(z)=A\iff
 		\lim_{\substack{x\to x_0\\y\to y_0}}u(x,y)=u_0,\quad
-		\lim_{\substack{x\to x_0\\y\to y_0}}v(x,y)=v_0.
-	\]
+		\lim_{\substack{x\to x_0\\y\to y_0}}v(x,y)=v_0.\]
 	\end{theorem}
 
 	\onslide<+->
 	\begin{proof}
 		由三角不等式
-	\[
-		|u-u_0|,|v-v_0|\le|f(z)-A|\le|u-u_0|+|v-v_0|
-	\]
+		\[|u-u_0|,|v-v_0|\le|f(z)-A|\le|u-u_0|+|v-v_0|\]
 		易证.
 	\end{proof}
 \end{frame}
@@ -296,7 +284,7 @@
 		\begin{enumerate}
 			\item $\lim\limits_{z\to z_0}(f\pm g)(z)=A\pm B$;
 			\item $\lim\limits_{z\to z_0}(fg)(z)=AB$;
-			\item 当 $B\neq 0$ 时, $\lim\limits_{z\to z_0}\Bigl(\dfrac fg\Bigr)(z)=\dfrac AB$.
+			\item 当 $B\neq 0$ 时, $\lim\limits_{z\to z_0}\left(\dfrac fg\right)(z)=\dfrac AB$.
 		\end{enumerate}
 	\end{theorem}
 
@@ -313,11 +301,10 @@
 
 	\onslide<+->
 	\begin{proof}
-		令 $z=x+y\ii$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
+		令 $z=x+yi$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
 		\onslide<+->{%
 			因此
-			\[u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.
-	\]
+			\[u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.\]
 		}\onslide<+->{%
 			当 $z$ 在实轴原点两侧分别趋向于 $0$ 时, $u(x,y)\to\pm1$.
 		}\onslide<+->{%
@@ -343,12 +330,12 @@
 	根据前面的极限判定定理可知:
 	\onslide<+->
 	\begin{theorem}
-		函数 $f(z)=u(x,y)+\ii v(x,y)$ 在 $z_0=x_0+\iiy_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
+		函数 $f(z)=u(x,y)+iv(x,y)$ 在 $z_0=x_0+iy_0$ 处连续当且仅当 $u(x,y)$ 和 $v(x,y)$ 在 $(x_0,y_0)$ 处连续.
 	\end{theorem}
 
 	\onslide<+->
 	\begin{example}
-		设 $f(z)=\ln(x^2+y^2)+\ii(x^2-y^2)$.
+		设 $f(z)=\ln(x^2+y^2)+i(x^2-y^2)$.
 		\onslide<+->{%
 			$u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
 		}\onslide<+->{%
@@ -371,8 +358,7 @@
 	显然 $f(z)=z$ 是处处连续的,
 	\onslide<+->
 	故多项式函数
-	\[P(z)=a_0+a_1z+a_2z^2+\cdots+a_nz^n
-	\]
+	\[P(z)=a_0+a_1z+a_2z^2+\cdots+a_nz^n\]
 	也处处连续,
 	\onslide<+->
 	有理函数 $\dfrac{P(z)}{Q(z)}$ 在 $Q(z)$ 的零点以外处处连续.
@@ -387,18 +373,18 @@
 
 	\onslide<+->
 	\begin{proof}
-		设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+\iiy_0$.
+		设 $f(z)=u(x,y)+iv(x,y),z_0=x_0+iy_0$.
 		\onslide<+->{%
 			那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.
 		}\onslide<+->{%
 			从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.
 		}\onslide<+->{%
-			所以 $\ov{f(z)}=u(x,y)-\ii v(x,y)$ 在 $(x_0,y_0)$ 连续.\qedhere
+			所以 $\ov{f(z)}=u(x,y)-iv(x,y)$ 在 $(x_0,y_0)$ 连续.\qedhere
 		}
 	\end{proof}
 	\onslide<+->
 	\begin{proof}[另证]
-		函数 $g(z)=\ov z=x-\ii y$ 处处连续,
+		函数 $g(z)=\ov z=x-iy$ 处处连续,
 		\onslide<+->{%
 			从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.\qedhere
 		}

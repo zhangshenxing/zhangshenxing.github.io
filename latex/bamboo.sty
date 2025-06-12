@@ -3,18 +3,20 @@
 \setbeamersize{text margin left=2em,text margin right=2em}
 % Colors
 \setbeamercolor{structure}{fg=main,bg=white}
-\setbeamercolor{alerted text}{fg=second,bg=white}
-\setbeamercolor{example text}{fg=fourth,bg=white}
-\setbeamercolor{title}{use=structure,fg=structure.fg}
-\setbeamercolor{item}{fg=main,bg=white}
-\setbeamercolor{subitem}{fg=fourth,bg=white}
-\setbeamercolor{email}{use=structure,fg=structure.fg}
+\setbeamercolor{title}{parent=structure}
+\setbeamercolor{item}{parent=structure}
+\setbeamercolor{email}{parent=structure}
 \setbeamercolor{title in head/foot}{parent=structure}
 \setbeamercolor{part in head/foot}{parent=structure}
 \setbeamercolor{section in head/foot}{parent=structure}
 \setbeamercolor{subsection in head/foot}{parent=structure}
-\setbeamercolor{date in head/foot}{parent=structure,fg=example text.fg}
 \setbeamercolor{seperate line}{use=structure,bg=structure}
+\setbeamercolor{alerted text}{fg=second,bg=white}
+\setbeamercolor{date in head/foot}{fg=third}
+\setbeamercolor{example text}{fg=fourth,bg=white}
+\setbeamercolor{qed symbol}{parent=example text}
+\setbeamercolor{subitem}{parent=example text}
+\setbeamercolor{page number in head/foot}{fg=fifth}
 \setbeamercolor{subsection in toc}{use=structure,fg=black,bg=structure!20}
 \setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
 \setbeamercolor{footline}{use=structure,bg=structure.fg!10}
@@ -137,6 +139,8 @@
 \setbeamertemplate{section page}{
 	\begingroup
 	\begin{tcolorbox}[sectiontitle,title=第\zhnumber{\thesection}节\hspace{1em}\insertsection]
+		\setbeamercolor{item}{fg=third,bg=white}
+		\setbeamercolor{subitem}{fg=third,bg=white}
 		\begin{spacing}{2}
 			\tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
 		\end{spacing}
@@ -580,25 +584,76 @@
 	#1
 }
 
-\RenewDocumentEnvironment{example}{O{} o}{\begin{main}[examstyle,#1]{Example}[#2]}{\end{main}}
-\NewDocumentEnvironment{thinking}{O{} o}{\begin{main}[examstyle,#1]{Thinking}[#2]}{\end{main}}
-\NewDocumentEnvironment{remark}{O{} o}{\begin{main}[examstyle,#1]{Remark}[#2]}{\end{main}}
-\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourth}[examstyle,#1]{Solution}[#2]}{\end{fourth}}
-\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourth}[examstyle,#1]{Proof}[#2]}{\popQED\end{fourth}}
+\RenewDocumentEnvironment{example}{O{} o}{\begin{main}[examstyle,#1]{Example}[#2]
+	\setbeamercolor{item}{fg=main,bg=white}
+	\setbeamercolor{subitem}{fg=main,bg=white}
+}{\end{main}}
+\NewDocumentEnvironment{thinking}{O{} o}{\begin{main}[examstyle,#1]{Thinking}[#2]
+	\setbeamercolor{item}{fg=main,bg=white}
+	\setbeamercolor{subitem}{fg=main,bg=white}
+}{\end{main}}
+\NewDocumentEnvironment{remark}{O{} o}{\begin{main}[examstyle,#1]{Remark}[#2]
+	\setbeamercolor{item}{fg=main,bg=white}
+	\setbeamercolor{subitem}{fg=main,bg=white}
+}{\end{main}}
+\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourth}[examstyle,#1]{Solution}[#2]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+}{\end{fourth}}
+\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourth}[examstyle,#1]{Proof}[#2]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+}{\popQED\end{fourth}}
 % \NewDocumentEnvironment{proofe}{O{} o}{\pushQED{\qed}\begin{fourth}[examstyle,#1]{Proof (Continued)}[#2]}{\popQED\end{fourth}}
-\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourth}[examstyle,#1]{Analysis}[#2]}{\end{fourth}}
-\NewDocumentEnvironment{answer}{O{} o}{\begin{fourth}[examstyle,#1]{Answer}[#2]}{\end{fourth}}
-\NewDocumentEnvironment{conjecture}{O{} o}{\begin{fifth}[examstyle,#1]{Conjecture}[#2]}{\end{fifth}}
-\RenewDocumentEnvironment{fact}{O{} o}{\begin{fifth}[examstyle,#1]{Fact}[#2]}{\end{fifth}}
-\NewDocumentEnvironment{exercise}{O{} o}{\begin{fifth}[examstyle,#1]{Exercise}[#2]}{\end{fifth}}
+\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourth}[examstyle,#1]{Analysis}[#2]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+}{\end{fourth}}
+\NewDocumentEnvironment{answer}{O{} o}{\begin{fourth}[examstyle,#1]{Answer}[#2]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+}{\end{fourth}}
+\NewDocumentEnvironment{conjecture}{O{} o}{\begin{fifth}[examstyle,#1]{Conjecture}[#2]
+	\setbeamercolor{item}{fg=fifth,bg=white}
+	\setbeamercolor{subitem}{fg=fifth,bg=white}
+}{\end{fifth}}
+\RenewDocumentEnvironment{fact}{O{} o}{\begin{fifth}[examstyle,#1]{Fact}[#2]
+	\setbeamercolor{item}{fg=fifth,bg=white}
+	\setbeamercolor{subitem}{fg=fifth,bg=white}
+}{\end{fifth}}
+\NewDocumentEnvironment{exercise}{O{} o}{\begin{fifth}[examstyle,#1]{Exercise}[#2]
+	\setbeamercolor{item}{fg=fifth,bg=white}
+	\setbeamercolor{subitem}{fg=fifth,bg=white}
+}{\end{fifth}}
 
-\RenewDocumentEnvironment{definition}{O{} o}{\begin{second}[thmstyle,#1]{Definition}[#2]}{\end{second}}
-\NewDocumentEnvironment{definition*}{O{} o}{\begin{second*}[thmstyle,#1]{Definition}[#2]}{\end{second*}}
-\RenewDocumentEnvironment{definitions}{O{} o}{\begin{second}[thmstyle,#1]{Definitions}[#2]}{\end{second}}
-\RenewDocumentEnvironment{theorem}{O{} o}{\begin{third}[thmstyle,#1]{Theorem}[#2]}{\end{third}}
-\NewDocumentEnvironment{proposition}{O{} o}{\begin{third}[thmstyle,#1]{Proposition}[#2]}{\end{third}}
-\RenewDocumentEnvironment{corollary}{O{} o}{\begin{third}[thmstyle,#1]{Corollary}[#2]}{\end{third}}
-\RenewDocumentEnvironment{lemma}{O{} o}{\begin{third}[thmstyle,#1]{Lemma}[#2]}{\end{third}}
+\RenewDocumentEnvironment{definition}{O{} o}{\begin{second}[thmstyle,#1]{Definition}[#2]
+	\setbeamercolor{item}{fg=second,bg=white}
+	\setbeamercolor{subitem}{fg=second,bg=white}
+}{\end{second}}
+\NewDocumentEnvironment{definition*}{O{} o}{\begin{second*}[thmstyle,#1]{Definition}[#2]
+	\setbeamercolor{item}{fg=second,bg=white}
+	\setbeamercolor{subitem}{fg=second,bg=white}
+}{\end{second*}}
+\RenewDocumentEnvironment{definitions}{O{} o}{\begin{second}[thmstyle,#1]{Definitions}[#2]
+	\setbeamercolor{item}{fg=second,bg=white}
+	\setbeamercolor{subitem}{fg=second,bg=white}
+}{\end{second}}
+\RenewDocumentEnvironment{theorem}{O{} o}{\begin{third}[thmstyle,#1]{Theorem}[#2]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+}{\end{third}}
+\NewDocumentEnvironment{proposition}{O{} o}{\begin{third}[thmstyle,#1]{Proposition}[#2]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+}{\end{third}}
+\RenewDocumentEnvironment{corollary}{O{} o}{\begin{third}[thmstyle,#1]{Corollary}[#2]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+}{\end{third}}
+\RenewDocumentEnvironment{lemma}{O{} o}{\begin{third}[thmstyle,#1]{Lemma}[#2]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+}{\end{third}}
 
 \RequirePackage{enumext}
 \NewDocumentEnvironment{subexample}{O{1}}{

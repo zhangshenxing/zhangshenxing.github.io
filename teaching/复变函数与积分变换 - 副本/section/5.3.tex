@@ -11,14 +11,12 @@
 	\onslide<+->
 	考虑 $\displaystyle\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta$, 其中 $R$ 是一个有理函数.
 	\onslide<+->
-	令 $z=\ee^{\ii\theta}$, 则 $\diff z=iz\diff\theta$,
+	令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
 	\onslide<+->
-	\[\cos\theta=\half\Bigl(z+\frac1z\Bigr)=\frac{z^2+1}{2z},\quad
-	\sin\theta=\frac1{2\ii}\Bigl(z-\frac1z\Bigr)=\frac{z^2-1}{2\iiz},
-	\]
+	\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\quad
+	\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 	\onslide<+->
-	\[\alertn{\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta=\oint_{|z|=1}R\Bigl(\frac{z^2+1}{2z},\frac{z^2-1}{2\iiz}\Bigr)\frac1{iz}\diff z.}
-	\]
+	\[\alertn{\int_0^{2\pi} R(\cos\theta,\sin\theta)\diff\theta=\oint_{|z|=1}R\left(\frac{z^2+1}{2z},\frac{z^2-1}{2iz}\right)\frac1{iz}\diff z.}\]
 	\onslide<+->
 	由于被积函数是一个有理函数, 它的积分可以由 $|z|<1$ 内奇点留数得到.
 \end{frame}
@@ -33,17 +31,16 @@
 
 	\onslide<+->
 	\begin{solution}
-		令 $z=\ee^{\ii\theta}$, 则 $\diff z=iz\diff\theta$,
+		令 $z=e^{i\theta}$, 则 $\diff z=iz\diff\theta$,
 		\onslide<+->{
-			\[\cos\theta=\half\Bigl(z+\frac1z\Bigr)=\frac{z^2+1}{2z},\qquad
-			\sin\theta=\frac1{2\ii}\Bigl(z-\frac1z\Bigr)=\frac{z^2-1}{2\iiz},
-	\]
+			\[\cos\theta=\half\left(z+\frac1z\right)=\frac{z^2+1}{2z},\qquad
+			\sin\theta=\frac1{2i}\left(z-\frac1z\right)=\frac{z^2-1}{2iz},\]
 		}\onslide<+->{
 			\[
 				\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
 				=\oint_{|z|=1}\frac{(z^2-1)^2}{-4z^2}\cdot\frac1{5-3\dfrac{z^2+1}{2z}}\cdot\frac{\diff z}{iz}
 				=-\frac i6\oint_{|z|=1}\frac{(z^2-1)^2}{z^2(z-3)(z-\dfrac13)}\diff z.
-	\]
+			\]
 		}\onslide<+->{%
 			设 $f(z)=\dfrac{(z^2-1)^2}{z^2(z-3)(z-\frac13)}$,
 		}\onslide<+->{%
@@ -53,9 +50,9 @@
 		\onslide<+->{
 			\[
 				\int_0^{2\pi}\frac{\sin^2\theta}{5-3\cos\theta}\diff\theta
-				=-\frac i6\cdot 2\pi\ii\Bigl[\Res[f(z),0]+\Res[f(z),\frac13]\Bigr]
+				=-\frac i6\cdot 2\pi i\Bigl[\Res[f(z),0]+\Res[f(z),\frac13]\Bigr]
 				=\frac{2\pi}9.
-	\]
+			\]
 		}
 		\vspace{-.5\baselineskip}
 	\end{solution}
@@ -73,8 +70,7 @@
 	设 $f(z)=R(z),C=C_r+[-r,r]$ 如下图所示, 使得上半平面内 $f(z)$ 的奇点均在 $C$ 内,
 	\onslide<+->
 	则
-	\[2\pi\ii\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\diff z=\int_{-r}^rR(x)\diff x+\int_{C_r}f(z)\diff z.
-	\]
+	\[2\pi i\sum_{\Im a>0}\Res[f(z),a]=\oint_Cf(z)\diff z=\int_{-r}^rR(x)\diff x+\int_{C_r}f(z)\diff z.\]
 	\onslide<3->
 	\begin{center}
 		\begin{tikzpicture}
@@ -99,16 +95,13 @@
 	\onslide<+->
 	当 $r\to+\infty$ 时,
 	\[\abs{\int_{C_r}f(z)\diff z}\le \pi r\max_{|z|=r}|f(z)|
-	=\pi \max_{|z|=r}|zf(z)|\to 0.
-	\]
+	=\pi \max_{|z|=r}|zf(z)|\to 0.\]
 	\onslide<+->
 	故
-	\[\alertn{\int_{-\infty}^{+\infty}R(x)\diff x=2\pi\ii\sum_{\Im a>0}\Res[R(z),a].}
-	\]
+	\[\alertn{\int_{-\infty}^{+\infty}R(x)\diff x=2\pi i\sum_{\Im a>0}\Res[R(z),a].}\]
 	\onslide<+->
 	这里我们考虑的广义积分都是指柯西主值
-	\[P.V.\int_{-\infty}^{+\infty}f(x)\diff x=\lim_{a\to+\infty}\int_{-a}^af(x)\diff t.
-	\]
+	\[P.V.\int_{-\infty}^{+\infty}f(x)\diff x=\lim_{a\to+\infty}\int_{-a}^af(x)\diff t.\]
 \end{frame}
 
 
@@ -125,12 +118,11 @@
 		\onslide<+->{
 			\begin{align*}
 			\Res[f(z),ai]&=\frac1{2!}\lim_{z\to ai}\left[\frac1{(z+ai)^3}\right]''\\
-			&=\half\lim_{z\to ai}\frac{12}{(z+ai)^5}=\frac{3}{16a^5\ii},
+			&=\half\lim_{z\to ai}\frac{12}{(z+ai)^5}=\frac{3}{16a^5i},
 			\end{align*}
 		}\onslide<+->{故
 			\[\int_{-\infty}^{+\infty}\frac{\diff x}{(x^2+a^2)^3}
-		=2\pi\ii\Res[f(z),ai]=\frac{3\pi}{8a^5}.
-	\]
+		=2\pi i\Res[f(z),ai]=\frac{3\pi}{8a^5}.\]
 		}
 		\vspace{-.5\baselineskip}
 	\end{solution}
@@ -146,9 +138,8 @@
 	$\displaystyle\int_{-\infty}^{+\infty}R(x)\sin{\lambda x}\diff x$, 其中 $R(x)$ 是一个有理函数, 分母比分子至少高 $2$ 次, 且分母没有实根.
 	\onslide<+->
 	和前一种情形类似, 我们有
-	\[\alertn{\int_{-\infty}^{+\infty}R(x)\ee^{\ii\lambda x}\diff x
-	=2\pi\ii\sum_{\Im a>0}\Res[R(z)\ee^{\ii\lambda z},a],}
-	\]
+	\[\alertn{\int_{-\infty}^{+\infty}R(x)e^{i\lambda x}\diff x
+	=2\pi i\sum_{\Im a>0}\Res[R(z)e^{i\lambda z},a],}\]
 	\onslide<+->
 	因此所求积分分别为它的实部和虚部.
 \end{frame}
@@ -163,15 +154,13 @@
 
 	\onslide<+->
 	\begin{solution}
-		$f(z)=\dfrac{\ee^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
+		$f(z)=\dfrac{e^{iz}}{(z^2+a^2)^2}$ 在上半平面内的奇点为 $ai$,
 		\onslide<+->{
-			\[\Res[f(z),ai]=\lim_{z\to ai}\left[\frac{\ee^{iz}}{(z+ai)^2}\right]'=-\frac{\ee^{-a}(a+1)\ii}{4a^3}.
-	\]
+			\[\Res[f(z),ai]=\lim_{z\to ai}\left[\frac{e^{iz}}{(z+ai)^2}\right]'=-\frac{e^{-a}(a+1)i}{4a^3}.\]
 		}\onslide<+->{故
-			$\displaystyle\qquad \int_{-\infty}^{+\infty}\frac{\ee^{ix}\diff x}{(x^2+a^2)^2}=2\pi\ii \Res[f(z),ai]=\frac{\pi \ee^{-a}(a+1)}{2a^3}$,
+			$\displaystyle\qquad \int_{-\infty}^{+\infty}\frac{e^{ix}\diff x}{(x^2+a^2)^2}=2\pi i \Res[f(z),ai]=\frac{\pi e^{-a}(a+1)}{2a^3}$,
 		}\onslide<+->{
-			\[\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}=\frac{\pi \ee^{-a}(a+1)}{2a^3}.
-	\]
+			\[\int_{-\infty}^{+\infty}\frac{\cos x\diff x}{(x^2+a^2)^2}=\frac{\pi e^{-a}(a+1)}{2a^3}.\]
 		}
 	\end{solution}
 	\endgroup
@@ -191,10 +180,8 @@
 
 	\onslide<+->
 	\begin{solution}
-	\[
-		I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=\ee^t}\int_{-\infty}^{+\infty}\frac{\ee^{pt}}{\ee^t+1}\diff t.
-	\]
-		\onslide<+->{考虑 $f(z)=\dfrac{\ee^{pz}}{\ee^z+1}$ 在如下闭路 $C$ 上的积分.
+		\[I=\int_0^{+\infty}\frac{x^p}{x(x+1)}\diff x\xto{\text{令}\ x=e^t}\int_{-\infty}^{+\infty}\frac{e^{pt}}{e^t+1}\diff t.\]
+		\onslide<+->{考虑 $f(z)=\dfrac{e^{pz}}{e^z+1}$ 在如下闭路 $C$ 上的积分.
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
 				\draw[cstaxis] (-3,0)--(3,0);
@@ -209,7 +196,7 @@
 				\draw
 					(1.8,0.3) node {$R$}
 					(-2,0.3) node {$-R$}
-					(0.4,0.8) node {$2\pi\ii$}
+					(0.4,0.8) node {$2\pi i$}
 					(1.2,0.4) node[main] {$C_1$}
 					(-1.1,0.5) node[main] {$C_2$}
 					(-0.4,0.8) node[second] {$l$};
@@ -222,19 +209,16 @@
 \begin{frame}{例: 留数在定积分上的应用\noexer}
 	\onslide<+->
 	\begin{solution}[续解]
-			由于 $l:z=t+2\pi\ii,-R\le t\le R$,
+			由于 $l:z=t+2\pi i,-R\le t\le R$,
 		\onslide<+->{因此
 			\[\int_l f(z)\diff z
-			=\int_R^{-R}\frac{\ee^{2p\pi\ii}\cdot \ee^{pt}}{\ee^t+1}\diff t
-			=-\ee^{2p\pi\ii}\int_{-R}^Rf(t)\diff t.
-	\]
-		}\onslide<+->{由于 $C_1:z=R+\iit,0\le t\le 2\pi$,
+			=\int_R^{-R}\frac{e^{2p\pi i}\cdot e^{pt}}{e^t+1}\diff t
+			=-e^{2p\pi i}\int_{-R}^Rf(t)\diff t.\]
+		}\onslide<+->{由于 $C_1:z=R+it,0\le t\le 2\pi$,
 		}\onslide<+->{因此
-			\[\abs{\int_{C_1}f(z)\diff z}\le \frac{\ee^{pR}}{\ee^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).
-	\]
+			\[\abs{\int_{C_1}f(z)\diff z}\le \frac{e^{pR}}{e^R-1}\cdot 2\pi\to 0\quad(R\to+\infty).\]
 		}\onslide<+->{同理
-			\[\abs{\int_{C_2}f(z)\diff z}\le \frac{\ee^{-pR}}{1-\ee^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).
-	\]
+			\[\abs{\int_{C_2}f(z)\diff z}\le \frac{e^{-pR}}{1-e^{-R}}\cdot 2\pi\to 0\quad(R\to+\infty).\]
 		}
 	\end{solution}
 \end{frame}
@@ -244,20 +228,18 @@
 	\onslide<+->
 	\begin{solution}[续解]
 		由于
-	\[
-		\Res[f(z),\pi\ii]
-		=\frac{\ee^{pz}}{(\ee^z+1)'}\bigg|_{z=\pi\ii}=-\ee^{p\pi\ii},
-	\]
+		\[\Res[f(z),\pi i]
+		=\frac{e^{pz}}{(e^z+1)'}\bigg|_{z=\pi i}=-e^{p\pi i},\]
 		\onslide<+->{因此
 			\begin{align*}
-			&\Bigl(\int_{-R}^R+\int_l+\int_{C_1}+\int_{C_2}\Bigr)f(z)\diff z\\
-			=&\oint_Cf(z)\diff z=2\pi\ii\Res[f(z),\pi\ii]=-2\pi\ii\ee^{p\pi\ii},
+			&\left(\int_{-R}^R+\int_l+\int_{C_1}+\int_{C_2}\right)f(z)\diff z\\
+			=&\oint_Cf(z)\diff z=2\pi i\Res[f(z),\pi i]=-2\pi ie^{p\pi i},
 			\end{align*}
 		}\onslide<+->{令 $R\to+\infty$,
 		}\onslide<+->{则
 			\begin{align*}
-			&(1-\ee^{2p\pi\ii})I=-2\pi\ii\ee^{p\pi\ii},\quad
-			\visible<+->{I=\frac{2\pi\ii}{\ee^{p\pi\ii}-\ee^{-p\pi\ii}}=\frac{\pi}{\sin p\pi}.}
+			&(1-e^{2p\pi i})I=-2\pi ie^{p\pi i},\quad
+			\visible<+->{I=\frac{2\pi i}{e^{p\pi i}-e^{-p\pi i}}=\frac{\pi}{\sin p\pi}.}
 			\end{align*}
 		}
 		\vspace{-\baselineskip}

@@ -19,8 +19,7 @@
 	设 \alert{$f$ 在 $z$ 处可导}, $f'(z)=a+bi$,
 	\onslide<+->
 	则
-	\[\Delta u+\ii\Delta v=\Delta f=(a+bi)(\Delta x+\ii\Delta y)+o(\Delta z).
-	\]
+	\[\Delta u+i\Delta v=\Delta f=(a+bi)(\Delta x+i\Delta y)+o(\Delta z).\]
 	\onslide<+->展开可知
 	\begin{align*}
 		\Delta u&=a\Delta x-b\Delta y+o(\Delta z),\\
@@ -44,12 +43,12 @@
 			\visible<+->{\Delta v}&\visible<.->{=v_x\Delta x+v_y\Delta y+o(\Delta z)
 			=v_x\Delta x+u_x\Delta y+o(\Delta z),}\\
 		\visible<+->{\Delta f}&
-		\visible<.->{=\Delta (u+\ii v)=(u_x+\ii v_x)\Delta x+(-v_x+\ii u_x)\Delta y}+o(\Delta z)\\
-		&\visible<+->{=(u_x+\ii v_x)\Delta(x+\iiy)+o(\Delta z)}\\
-		&\visible<+->{=(u_x+\ii v_x)\Delta z+o(\Delta z).}
+		\visible<.->{=\Delta (u+iv)=(u_x+i v_x)\Delta x+(-v_x+i u_x)\Delta y}+o(\Delta z)\\
+		&\visible<+->{=(u_x+i v_x)\Delta(x+iy)+o(\Delta z)}\\
+		&\visible<+->{=(u_x+i v_x)\Delta z+o(\Delta z).}
 	\end{align*}
 	\onslide<+->
-	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+\ii v_x=v_y-\ii  u_y$}.
+	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+i v_x=v_y-i u_y$}.
 \end{frame}
 
 
@@ -59,13 +58,9 @@
 	\onslide<+->
 	\begin{algorithm}{柯西-黎曼定理}
 		$f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足柯西-黎曼方程 (简称为 C-R 方程):
-	\[
-		u_x=v_y,\quad v_x=-u_y.
-	\]
+		\[u_x=v_y,\quad v_x=-u_y.\]
 		此时
-	\[
-		f'(z)=u_x+\ii v_x=v_y-\ii u_y.
-	\]
+		\[f'(z)=u_x+iv_x=v_y-iu_y.\]
 	\end{algorithm}
 
 	\onslide<+->
@@ -88,14 +83,12 @@
 		\displaystyle
 		\pp f{\ov z}=\pp x{\ov z}\pp fx+\pp y{\ov z}\pp fy
 		=\frac12\pp fx+\frac i2\pp fy.
-	}.
-	\]
+	}.\]
 	\onslide<+->
 	如果把 $z,\ov z$ 看成独立变量, 那么当 $f$ 在 $z$ 处可导时,
 	$\diff f=f'\diff z$.
 	当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微),
-	\[\diff f=\pp fz\diff z+\pp f{\ov z}\diff\ov z.
-	\]
+	\[\diff f=\pp fz\diff z+\pp f{\ov z}\diff\ov z.\]
 	\onslide<+->
 	所以 \alert{$f$ 在 $z$ 处可导当且仅当 $u,v$ 可微且 $\dpp f{\ov z}=0$, 此时 $f'(z)=\dpp fz$.}
 \end{frame}
@@ -146,7 +139,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		由 $f(z)=x^2+\iixy,u=x^2,v=xy$
+		由 $f(z)=x^2+ixy,u=x^2,v=xy$
 		\onslide<+->{%
 			可知
 			\begin{align*}
@@ -157,8 +150,7 @@
 			由 $2x=x,0=-y$ 可知只有 $x=y=0,z=0$ 满足C-R方程.
 		}\onslide<+->{%
 			因此该函数只在 $0$ 可导, 处处不解析且
-			\[f'(0)=u_x(0)+\ii v_x(0)=0.
-	\]
+			\[f'(0)=u_x(0)+iv_x(0)=0.\]
 		}
 		\vspace{-\baselineskip}
 	\end{solution}
@@ -170,28 +162,27 @@
 \begin{frame}{典型例题: 利用C-R方程判断可导和解析}
 	\onslide<+->
 	\begin{example}
-		函数 $f(z)=\ee^x(\cos y+\ii\sin y)$ 在何处可导, 在何处解析?
+		函数 $f(z)=e^x(\cos y+i\sin y)$ 在何处可导, 在何处解析?
 	\end{example}
 
 	\onslide<+->
 	\begin{solution}
-		由 $u=\ee^x\cos y,v=\ee^x\sin y$
+		由 $u=e^x\cos y,v=e^x\sin y$
 		\onslide<+->{%
 			可知
 			\begin{align*}
-			u_x&=\ee^x\cos y,&u_y&=-\ee^x\sin y,\\
-			v_x&=\ee^x\sin y,&v_y&=\ee^x\cos y.
+			u_x&=e^x\cos y,&u_y&=-e^x\sin y,\\
+			v_x&=e^x\sin y,&v_y&=e^x\cos y.
 			\end{align*}
 		}\onslide<+->{%
 			因此该函数处处可导, 处处解析, 且
-			\[f'(z)=u_x+\ii v_x=\ee^x(\cos y+\ii\sin y)=f(z).
-	\]
+			\[f'(z)=u_x+iv_x=e^x(\cos y+i\sin y)=f(z).\]
 		}
 	\vspace{-\baselineskip}
 	\end{solution}
 
 	\onslide<+->
-	实际上, 这个函数就是复变量的指数函数 $\ee^z$.
+	实际上, 这个函数就是复变量的指数函数 $e^z$.
 \end{frame}
 
 
@@ -201,8 +192,8 @@
 		函数\fillbraceframe{A}在 $z=0$ 处不可导.
 		\begin{exchoice}(2)
 			() $2x+3yi$
-			() $2x^2+3y^2\ii$
-			() $\ee^x\cos y+\ii \ee^x\sin y$
+			() $2x^2+3y^2i$
+			() $e^x\cos y+i e^x\sin y$
 			() $x^2-xyi$
 		\end{exchoice}
 	\end{exercise}
@@ -219,7 +210,7 @@
 \begin{frame}{例: 利用C-R方程判断可导和解析}
 	\onslide<+->
 	\begin{example}
-		设函数 $f(z)=(x^2+axy+by^2)+\ii(cx^2+dxy+y^2)$ 在复平面内处处解析. 求实常数 $a,b,c,d$ 以及 $f'(z)$.
+		设函数 $f(z)=(x^2+axy+by^2)+i(cx^2+dxy+y^2)$ 在复平面内处处解析. 求实常数 $a,b,c,d$ 以及 $f'(z)$.
 	\end{example}
 
 	\onslide<+->
@@ -237,7 +228,7 @@
 			\[a=d=2,\quad b=c=-1,\]}
 		\vspace{-\baselineskip}
 		\onslide<+->{
-			\[f'(z)=u_x+\ii v_x=2x+2y+\ii(-2x+2y)=(2-2\ii)z.\]}
+			\[f'(z)=u_x+iv_x=2x+2y+i(-2x+2y)=(2-2i)z.\]}
 		\vspace{-\baselineskip}
 	\end{solution}
 \end{frame}
@@ -251,11 +242,11 @@
 
 	\onslide<+->
 	\begin{proof}
-		由于 $f'(z)=u_x+\ii v_x=v_y-\ii u_y=0$,
+		由于 $f'(z)=u_x+iv_x=v_y-iu_y=0$,
 		\onslide<+->{%
 			因此 $u_x=v_x=u_y=v_y=0$, $u,v$ 均为常数,
 		}\onslide<+->{%
-			从而 $f(z)=u+\ii v$ 是常数.\qedhere
+			从而 $f(z)=u+iv$ 是常数.\qedhere
 		}
 	\end{proof}
 
@@ -290,7 +281,7 @@
 
 	\onslide<+->
 	\begin{proof*}
-		由于 $f'(z)=u_x-\ii u_y$, 因此 $u_x,u_y$ 不全为零.
+		由于 $f'(z)=u_x-iu_y$, 因此 $u_x,u_y$ 不全为零.
 		\onslide<+->{%
 			对 $u(x,y)=c_1$ 使用隐函数求导法则得 $u_x\diff x+u_y\diff y=0$,
 		}\onslide<+->{%
@@ -301,8 +292,7 @@
 			同理 $(v_y,-v_x)$ 是 $v(x,y)=c_2$ 在 $z$ 处的非零切向量.
 		}\onslide<+->{%
 			由于
-			\[u_yv_y+u_xv_x=u_yu_x-u_xu_y=0,
-	\]
+			\[u_yv_y+u_xv_x=u_yu_x-u_xu_y=0,\]
 		}\onslide<+->{%
 			因此二者正交.\qedhere
 		}
@@ -334,9 +324,9 @@
 			当 $z=x$ 为实数时,
 		}\onslide<+->{%
 			\begin{align*}
-			\Bigl(\dfrac1{1+x^2}\Bigr)^{(n)}&=f^{(n)}(x)=\frac i2\left[\frac1{x+\ii}-\frac1{x-\ii }\right]^{(n)}\\
-			&\visible<+->{=\frac i2\cdot(-1)^n n!\left[\frac1{(x+\ii)^{n+1}}-\frac1{(x-\ii )^{n+1}}\right]}\\
-			&\visible<+->{=(-1)^{n+1}n!\Im\frac1{(x+\ii)^{n+1}}}\\
+			\left(\dfrac1{1+x^2}\right)^{(n)}&=f^{(n)}(x)=\frac i2\left[\frac1{x+i}-\frac1{x-i}\right]^{(n)}\\
+			&\visible<+->{=\frac i2\cdot(-1)^n n!\left[\frac1{(x+i)^{n+1}}-\frac1{(x-i)^{n+1}}\right]}\\
+			&\visible<+->{=(-1)^{n+1}n!\Im\frac1{(x+i)^{n+1}}}\\
 			&\visible<+->{=\frac{(-1)^nn!\sin[(n+1)\arccot x]}{(x^2+1)^{\frac{n+1}2}}.}
 			\end{align*}}
 			\vspace{-\baselineskip}

@@ -7,9 +7,9 @@
 
 	\onslide<+->
 	\begin{example}
-		$|z+\ii|=2$.
+		$|z+i|=2$.
 		\onslide<+->{%
-			该方程表示与 $-\ii $ 的距离为 $2$ 的点全体, 即圆心为 $-\ii $ 半径为 $2$ 的圆.
+			该方程表示与 $-i$ 的距离为 $2$ 的点全体, 即圆心为 $-i$ 半径为 $2$ 的圆.
 		}\onslide<+->{%
 			一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
 		}
@@ -20,7 +20,7 @@
 				\draw[cstaxis] (0,-2)--(0,1);
 				\coordinate (A) at (0,-.6);
 				\fill[cstdot,second] (A) circle
-					node[left] {$-\ii $};
+					node[left] {$-i$};
 				\draw[cstcurve,main] (A) circle(1.2);
 			\end{tikzpicture}
 		\end{center}}
@@ -31,9 +31,9 @@
 \begin{frame}{例: 复数方程表平面图形}
 	\onslide<+->
 	\begin{example}
-		$|z-2\ii|=|z+2|$.
+		$|z-2i|=|z+2|$.
 		\onslide<+->{%
-			该方程表示与 $2\ii$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
+			该方程表示与 $2i$ 和 $-2$ 的距离相等的点, 即二者连线的垂直平分线.
 		}\onslide<+->{%
 			两边同时平方化简可得 $x+y=0$.
 		}
@@ -45,7 +45,7 @@
 				\coordinate (A) at (-1,0);
 				\fill[cstdot,second] (A) circle node[above] {$-2$};
 				\coordinate (B) at (0,1);
-				\fill[cstdot,second] (B) circle node[left] {$2\ii$};
+				\fill[cstdot,second] (B) circle node[left] {$2i$};
 				\draw[cstcurve,main] (-1.2,1.2)--(1.2,-1.2);
 			\end{tikzpicture}
 		\end{center}}
@@ -55,7 +55,7 @@
 	\begin{example}
 		$\Im(i+\ov z)=4$.
 		\onslide<+->{%
-			设 $z=x+y\ii$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.
+			设 $z=x+yi$, 则 $\Im(i+\ov z)=1-y=4$, 因此 $y=-3$.
 		}
 	\end{example}
 \end{frame}
@@ -102,13 +102,11 @@
 	为了引入极限的概念, 我们需要考虑点的邻域.
 	\onslide<+->
 	类比于高等数学中的邻域和去心邻域, 我们在复变函数中, 称开圆盘
-	\[U(z_0,\delta)=\set{z:|z-z_0|<\delta}
-	\]
+	\[U(z_0,\delta)=\set{z:|z-z_0|<\delta}\]
 	为 $z_0$ 的一个 \emph{$\delta$-邻域},
 	\onslide<+->
 	称去心开圆盘
-	\[\Uc(z_0,\delta)=\set{z:0<|z-z_0|<\delta}
-	\]
+	\[\Uc(z_0,\delta)=\set{z:0<|z-z_0|<\delta}\]
 	为 $z_0$ 的一个\emph{去心 $\delta$-邻域}.
 
 	\onslide<2->
@@ -190,8 +188,7 @@
 	\end{definition}
 	\onslide<+->
 	例如
-	\[|z-z_0|<R,\quad 1<\Re z<3,\quad\frac\pi4<\arg z<\dfrac{3\pi}4
-	\]
+	\[|z-z_0|<R,\quad 1<\Re z<3,\quad\frac\pi4<\arg z<\dfrac{3\pi}4\]
 	都是开集.
 	\onslide<+->
 	$G$ 是一个闭集当且仅当它的补集是开集.
@@ -353,12 +350,12 @@
 	则参变量方程
 	$\begin{cases}x=x(t),& \\y=y(t),&\end{cases}t\in[a,b]$ 定义了一条\emph{连续曲线}.
 	\onslide<+->
-	这也等价于 $C:z=z(t)=x(t)+\iiy(t),t\in[a,b]$.
+	这也等价于 $C:z=z(t)=x(t)+iy(t),t\in[a,b]$.
 	\onslide<+->
 	例如
 	\begin{itemize}
 		\item $z(t)=z_1+(z_2-z_1)t,t\in[0,1]$ 表示连接 $z_1,z_2$ 的直线段;
-		\item $z(\theta)=z_0+r(\cos \theta+\ii\sin \theta),\theta\in[0,2\pi]$ 表示以 $z_0$ 为圆心, $r$ 为半径的圆周.
+		\item $z(\theta)=z_0+r(\cos \theta+i\sin \theta),\theta\in[0,2\pi]$ 表示以 $z_0$ 为圆心, $r$ 为半径的圆周.
 	\end{itemize}
 
 	\onslide<+->
@@ -439,7 +436,7 @@
 	\begin{example}
 		$\Re(z^2)<1$.
 		\onslide<+->{%
-			设 $z=x+y\ii$, 则 $\Re(z^2)=x^2-y^2<1$.
+			设 $z=x+yi$, 则 $\Re(z^2)=x^2-y^2<1$.
 		}\onslide<+->{%
 			这是无界的单连通区域.
 		}\onslide<2->{%

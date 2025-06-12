@@ -11,8 +11,7 @@
 		\onslide<+->{%
 			如果极限
 			\[\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
-			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
-	\]
+			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}\]
 		存在,
 		}\onslide<+->{%
 			则称 \emph{$f(z)$ 在 $z_0$ 可导}.
@@ -21,8 +20,7 @@
 		}\onslide<+->{%
 			记作
 			\[\alertn{f'(z_0)=\frac{\diff w}{\diff z}\big|_{z=z_0}
-			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}
-	\]
+			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}\]
 		}\onslide<+->{%
 			如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
 		}
@@ -40,7 +38,7 @@
 	\begin{solution}
 		\begin{align*}
 			f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
-			&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)\ii-(x+2yi)}{\Delta z}}\\
+			&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)i-(x+2yi)}{\Delta z}}\\
 			&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y i}{\Delta x+\Delta yi}.}
 		\end{align*}
 		\onslide<+->{%
@@ -69,11 +67,11 @@
 
 	\onslide<+->
 	\begin{solution}
-	\[
+		\[
 		f'(z)=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}
 		\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}
 		\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
-	\]
+		\]
 	\end{solution}
 \end{frame}
 
@@ -87,7 +85,7 @@
 			\item $(c)'=0$, 其中 $c$ 为复常数;
 			\item $(z^n)'=nz^{n-1}$, 其中 $n$ 为整数;
 			\item $(f\pm g)'=f'\pm g',\quad (cf)'=cf'$;
-			\item $(fg)'=f'g+fg',\quad \Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$;
+			\item $(fg)'=f'g+fg',\quad \left(\dfrac fg\right)'=\dfrac{f'g-fg'}{g^2}$;
 			\item $[f(g(z))]'=f'[g(z)]\cdot g'(z)$;
 			\item $g'(z)=\dfrac1{f'(w)}, g=f^{-1}, w=g(z)$.
 		\end{itemize}
@@ -104,8 +102,7 @@
 	该定理的证明和实变量情形完全相同.
 	\onslide<+->
 	\begin{proof}
-		设 \[\Delta w=f(z_0+\Delta z)-f(z_0),
-	\]
+		设 \[\Delta w=f(z_0+\Delta z)-f(z_0),\]
 		\onslide<+->{%
 			则
 			\begin{align*}
@@ -128,9 +125,7 @@
 	\onslide<+->
 	\begin{definition}
 		如果存在常数 $A$ 使得函数 $w=f(z)$ 满足
-	\[
-		\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),
-	\]
+		\[\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),\]
 		其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
 		\onslide<+->{%
 			则称 \emph{$f(z)$ 在 $z_0$ 处可微},
@@ -200,11 +195,11 @@
 	\onslide<+->
 	\begin{solution}
 		由于
-	\[
+		\[
 			\frac{f(z+\Delta z)-f(z)}{\Delta z}
 			=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}
 			=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta yi}{\Delta x+\Delta yi},
-	\]
+		\]
 		\begin{enumerate}
 			\item 若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
 			\item 若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;
