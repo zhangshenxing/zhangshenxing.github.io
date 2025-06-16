@@ -567,6 +567,14 @@
 	title={\translate{#2}\IfNoValueTF{#3}{}{~(#3)}},
 	#1
 }
+\NewTColorBox{third*}{O{} m o}{%
+	boxrule=0.5pt,
+	colframe=third,
+	colback=third!10,
+	colbacktitle=third,
+	title={\IfNoValueTF{#3}{\translate{#2}}{#3}},
+	#1
+}
 \NewTColorBox{fourth}{O{} m o}{% 第三个参数替换标题
 	boxrule=0.5pt,
 	colframe=fourth,
@@ -642,6 +650,10 @@
 	\setbeamercolor{item}{fg=third,bg=white}
 	\setbeamercolor{subitem}{fg=third,bg=white}
 }{\end{third}}
+\NewDocumentEnvironment{theorem*}{O{} o}{\begin{third*}[thmstyle,#1]{Theorem}[#2]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+}{\end{third*}}
 \NewDocumentEnvironment{proposition}{O{} o}{\begin{third}[thmstyle,#1]{Proposition}[#2]
 	\setbeamercolor{item}{fg=third,bg=white}
 	\setbeamercolor{subitem}{fg=third,bg=white}

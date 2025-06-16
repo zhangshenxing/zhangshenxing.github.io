@@ -1,43 +1,34 @@
 \section{解析函数的概念}
 
-\subsection{可导的函数}
+\subsection{可导函数}
 \begin{frame}{复变函数的导数}
+	\begin{itemize}
+		\item 由于 $\BC$ 和 $\BR$ 一样是域, 因此我们可以像一元实变函数一样去定义复变函数的导数和微分.
+	\end{itemize}
 	\onslide<+->
-	由于 $\BC$ 和 $\BR$ 一样是域, 因此我们可以像一元实变函数一样去定义复变函数的导数和微分.
-	\onslide<+->
-
-	\begin{definition}
-		设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
-		\onslide<+->{%
-			如果极限
-			\[\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
-			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
-	\]
-		存在,
-		}\onslide<+->{%
-			则称 \emph{$f(z)$ 在 $z_0$ 可导}.
-		}\onslide<+->{%
-			这个极限值称为 \emph{$f(z)$ 在 $z_0$ 的导数},
-		}\onslide<+->{%
-			记作
-			\[\alertn{f'(z_0)=\frac{\diff w}{\diff z}\big|_{z=z_0}
-			=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}
-	\]
-		}\onslide<+->{%
-			如果 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
-		}
+	\begin{definition}[leftupper=0pt]
+		\begin{itemize}
+			\item 设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
+			\item 若极限
+			\[
+				\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
+				=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
+			\]
+			存在, 则称 \emph{$f(z)$ 在 $z_0$ 可导}.
+			这个极限值称为 \emph{$f(z)$ 在 $z_0$ 的导数}, 记作 $f'(z_0)$.
+			\item 若 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
+		\end{itemize}
 	\end{definition}
 \end{frame}
 
 
 \begin{frame}{例: 线性函数的不可导性}
 	\onslide<+->
-	\begin{example}
-		函数 $f(z)=x+2yi$ 在哪些点处可导?
+	\begin{example}[nearnext]
+		函数 $f(z)=x+2y\ii$ 在哪些点处可导?
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		\begin{align*}
 			f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
 			&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)\ii-(x+2yi)}{\Delta z}}\\
@@ -119,15 +110,18 @@
 \end{frame}
 
 
-\subsection{可微的函数}
+\subsection{可微函数}
 
+% \alertn{f'(z_0)=\frac{\diff w}{\diff z}\Big|_{z=z_0}
+% =\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}
+% \]
 \begin{frame}{复变函数的微分}
 	\onslide<+->
 	复变函数的微分也和一元实变函数情形类似.
 
 	\onslide<+->
 	\begin{definition}
-		如果存在常数 $A$ 使得函数 $w=f(z)$ 满足
+		若存在常数 $A$ 使得函数 $w=f(z)$ 满足
 	\[
 		\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),
 	\]
@@ -146,7 +140,7 @@
 \end{frame}
 
 
-\subsection{解析的函数}
+\subsection{解析函数}
 
 \begin{frame}{解析函数}
 	\onslide<+->
@@ -167,7 +161,7 @@
 	所以 \alert{$f(z)$ 在 $D$ 内解析和在 $D$ 内可导是等价的}.
 
 	\onslide<+->
-	如果 $f(z)$ 在 $z_0$ 解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析.
+	若 $f(z)$ 在 $z_0$ 解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析.
 	\onslide<+->
 	因此 \alert{$f(z)$ 解析点全体是一个开集}.
 \end{frame}

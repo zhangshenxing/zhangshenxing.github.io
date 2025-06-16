@@ -289,18 +289,18 @@
 
 \begin{frame}{幂函数的性质: $a$ 为整数时}
 	\onslide<+->
-	\begin{third}{幂函数}
+	\begin{definition}[][幂函数]
 		\begin{enumerate}
 			\item 设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
 			\[w=z^a=\ee^{a\Ln z}
-			=\exp\bigl[a\ln\abs{z}+\iia(\arg z+2k\pi)\bigr],\quad k\in\BZ.
+			=\exp\bigl[a\ln\abs{z}+\ii a(\arg z+2k\pi)\bigr],\quad k\in\BZ.
 	\]
 			\item \emph{幂函数的主值}为
-			\[w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\iia\arg z\bigr).
+			\[w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\ii a\arg z\bigr).
 	\]
 		\end{enumerate}
 		\vspace{-\baselineskip}
-	\end{third}
+	\end{definition}
 	\onslide<+->
 	根据 $a$ 的不同, 这个函数有着不同的性质.
 
@@ -312,7 +312,7 @@
 	\onslide<+->
 	当 $a$ 是非负整数时, $z^a$ 在复平面上解析;
 	\onslide<+->
-	当 $a$ 是负整数时, $z^a$ 在 $\BC-\set0$ 上解析.
+	当 $a$ 是负整数时, $z^a$ 在 $\BC-\{0\}$ 上解析.
 \end{frame}
 
 
@@ -548,7 +548,7 @@
 	同理, 我们有:
 	\begin{itemize}
 		\item \emph{反正弦函数} $\Arcsin z=-\ii \Ln(iz+\sqrt{1-z^2})$;
-		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+\iiz}{1-\ii z}, z\neq \pm i$;
+		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+\ii z}{1-\ii z}, z\neq \pm i$;
 		\item \emph{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
 		\item \emph{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
 		\item \emph{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
@@ -566,7 +566,7 @@
 	\begin{solution}
 	由于 $\sin z=\dfrac{\ee^{iz}-\ee^{-\ii z}}{2\ii}=2$,
 	\onslide<+->{我们有
-	\[\ee^{2\iiz}-4\ii\ee^{iz}-1=0.
+	\[\ee^{2\ii z}-4\ii\ee^{iz}-1=0.
 	\]
 	}\onslide<+->{于是 $\ee^{iz}=(2\pm\sqrt 3)\ii$,
 	}\onslide<+->{
@@ -578,7 +578,7 @@
 
 \begin{frame}{例: 解三角函数方程}
 	\onslide<+->
-	\begin{solution}[另解]
+	\begin{solution}[][另解]
 	由 $\sin z=2$ 可知
 	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3\ii.
 	\]

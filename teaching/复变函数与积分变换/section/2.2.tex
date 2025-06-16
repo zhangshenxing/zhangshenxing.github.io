@@ -45,11 +45,11 @@
 			=v_x\Delta x+u_x\Delta y+o(\Delta z),}\\
 		\visible<+->{\Delta f}&
 		\visible<.->{=\Delta (u+\ii v)=(u_x+\ii v_x)\Delta x+(-v_x+\ii u_x)\Delta y}+o(\Delta z)\\
-		&\visible<+->{=(u_x+\ii v_x)\Delta(x+\iiy)+o(\Delta z)}\\
+		&\visible<+->{=(u_x+\ii v_x)\Delta(x+\ii y)+o(\Delta z)}\\
 		&\visible<+->{=(u_x+\ii v_x)\Delta z+o(\Delta z).}
 	\end{align*}
 	\onslide<+->
-	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+\ii v_x=v_y-\ii  u_y$}.
+	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+\ii v_x=v_y-\ii u_y$}.
 \end{frame}
 
 
@@ -57,7 +57,7 @@
 	\onslide<+->
 	由此得到
 	\onslide<+->
-	\begin{algorithm}{柯西-黎曼定理}
+	\begin{theorem*}[][柯西-黎曼定理]
 		$f(z)$ 在 $z$ 可导当且仅当在 $z$ 点 $u,v$ 可微且满足柯西-黎曼方程 (简称为 C-R 方程):
 	\[
 		u_x=v_y,\quad v_x=-u_y.
@@ -66,7 +66,7 @@
 	\[
 		f'(z)=u_x+\ii v_x=v_y-\ii u_y.
 	\]
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	\begin{center}
@@ -91,7 +91,7 @@
 	}.
 	\]
 	\onslide<+->
-	如果把 $z,\ov z$ 看成独立变量, 那么当 $f$ 在 $z$ 处可导时,
+	若把 $z,\ov z$ 看成独立变量, 那么当 $f$ 在 $z$ 处可导时,
 	$\diff f=f'\diff z$.
 	当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微),
 	\[\diff f=\pp fz\diff z+\pp f{\ov z}\diff\ov z.
@@ -108,8 +108,8 @@
 	\onslide<+->
 	\begin{theorem}
 		\begin{itemize}
-			\item 如果 $u_x,u_y,v_x,v_y$ 在 $z$ 处连续, 且满足C-R方程, 则 $f(z)$ 在 $z$ 可导.
-			\item 如果 $u_x,u_y,v_x,v_y$ 在区域 $D$ 上处处连续, 且满足C-R方程, 则 $f(z)$ 在 $D$ 上可导(从而解析).
+			\item 若 $u_x,u_y,v_x,v_y$ 在 $z$ 处连续, 且满足C-R方程, 则 $f(z)$ 在 $z$ 可导.
+			\item 若 $u_x,u_y,v_x,v_y$ 在区域 $D$ 上处处连续, 且满足C-R方程, 则 $f(z)$ 在 $D$ 上可导(从而解析).
 		\end{itemize}
 	\end{theorem}
 \end{frame}
@@ -146,7 +146,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		由 $f(z)=x^2+\iixy,u=x^2,v=xy$
+		由 $f(z)=x^2+\ii xy,u=x^2,v=xy$
 		\onslide<+->{%
 			可知
 			\begin{align*}
@@ -246,7 +246,7 @@
 \begin{frame}[<*>]{例: 利用C-R方程证明解析函数结论}
 	\onslide<+->
 	\begin{example}
-		如果 $f'(z)$ 在区域 $D$ 内处处为零, 则 $f(z)$ 在 $D$ 内是一常数.
+		若 $f'(z)$ 在区域 $D$ 内处处为零, 则 $f(z)$ 在 $D$ 内是一常数.
 	\end{example}
 
 	\onslide<+->
@@ -285,7 +285,7 @@
 	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
-		如果 $f(z)$ 解析且 $f'(z)$ 处处非零, 则曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 互相正交.
+		若 $f(z)$ 解析且 $f'(z)$ 处处非零, 则曲线族 $u(x,y)=c_1$ 和曲线族 $v(x,y)=c_2$ 互相正交.
 	\end{example}
 
 	\onslide<+->
