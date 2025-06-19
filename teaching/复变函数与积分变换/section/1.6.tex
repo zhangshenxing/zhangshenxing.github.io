@@ -55,15 +55,15 @@
 		\]
 	\end{theorem}
 	\onslide<+->
-	\begin{proof}[leftupper=0mm,nearprev]
-		\begin{itemize}
+	\begin{proof}[nearprev]
+		\begin{itemize*}
 			\item 我们只需证明 $
 			\liml_{n\ra\infty}\abs{z_n-z}=0\iff
 			\liml_{n\ra\infty}\abs{x_n-x}=\liml_{n\ra\infty}\abs{y_n-y}=0$.
 			\item ``$\Rightarrow$'': 由三角不等式 $0\le \abs{x_n-x}, \abs{y_n-y}\le\abs{z_n-z}$ 和夹逼准则可得知.
 			\item ``$\Leftarrow$'': 由极限的四则运算法则可知 $\liml_{n\ra\infty}\bigl(\abs{x_n-x}+\abs{y_n-y}\bigr)=0$.
 			\item 再由三角不等式 $0\le\abs{z_n-z}\le\abs{x_n-x}+\abs{y_n-y}$ 和夹逼准则可得.\qedhere
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 
@@ -74,15 +74,15 @@
 		设 $z_n=\Bigl(1-\dfrac1n\Bigr)\ee^{\frac{\pi\ii}n}$. 数列 $\{z_n\}$ 是否收敛?
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev,leftupper=0mm]
-		\begin{itemize}
+	\begin{solution}[nearprev]
+		\begin{itemize*}
 			\item 由于
 			\[
 				x_n=\Bigl(1-\frac1n\Bigr)\cos\frac\pi n\to 1,\quad
 				y_n=\Bigl(1-\frac1n\Bigr)\sin\frac\pi n\to 0.
 			\]
 			\item 因此 $\{z_n\}$ 收敛且 $\liml_{n\to\infty}z_n=1$.
-		\end{itemize}
+		\end{itemize*}
 	\end{solution}
 \end{frame}
 
@@ -298,8 +298,8 @@
 		证明: 当 $z\to0$ 时, 函数 $f(z)=\dfrac{\Re z}{|z|}$ 的极限不存在.
 	\end{example}
 	\onslide<+->
-	\begin{proof}[leftupper=0mm,nearprev]
-		\begin{itemize}
+	\begin{proof}[nearprev]
+		\begin{itemize*}
 			\item 令 $z=x+y\ii$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
 			\item 因此
 			\[
@@ -307,7 +307,7 @@
 			\]
 			\item 当 $z$ 在实轴原点两侧分别趋向于 $0$ 时, $u(x,y)\to\pm1$.
 			\item 因此 $\liml_{\substack{x\to 0\\y\to0}}u(x,y)$ 不存在, 从而 $\liml_{z\to z_0}f(z)$ 不存在.\qedhere
-		\end{itemize}
+		\end{itemize*}
 		\meddel
 	\end{proof}
 \end{frame}
@@ -368,20 +368,20 @@
 		证明: 若 $f(z)$ 在 $z_0$ 连续, 则 $\ov{f(z)}$ 在 $z_0$ 也连续.
 	\end{example}
 	\onslide<+->
-	\begin{proof}[near,leftupper=0mm]
-		\begin{itemize}
+	\begin{proof}[near]
+		\begin{itemize*}
 			\item 设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+\ii y_0$.
 			\item 那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.
 			\item 从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.
 			\item 所以 $\ov{f(z)}=u(x,y)-\ii v(x,y)$ 在 $(x_0,y_0)$ 连续.\qedhere
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 	\onslide<+->
-	\begin{proof}[near,leftupper=0mm][另证]
-		\begin{itemize}
+	\begin{proof}[near][另证]
+		\begin{itemize*}
 			\item 函数 $g(z)=\ov z=x-\ii y$ 处处连续,
 			\item 从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.\qedhere
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 

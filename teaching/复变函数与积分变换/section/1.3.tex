@@ -53,8 +53,8 @@
 
 \begin{frame}{复数的乘除与三角和指数形式}
 	\onslide<+->
-	\begin{proof}[near,leftupper=0mm]
-		\begin{itemize}
+	\begin{proof}[near,itemize]
+		\begin{itemize*}
 			\item 根据和差的正弦、余弦公式可知
 			\begin{align*}
 				z_1z_2&=r_1(\cos\theta_1+\ii\sin\theta_1)\cdot
@@ -70,7 +70,7 @@
 				rr_2=r_1,\quad \theta+\Arg z_2=\Arg z_1.
 			\]
 			\item 因此 $r=r_1/r_2$, $\theta$ 可取 $\theta_1-\theta_2$.\qedhere
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 
@@ -185,13 +185,13 @@
 		设 $AD$ 是 $\triangle ABC$ 的角平分线, 证明 $\dfrac{AB}{AC}=\dfrac{DB}{DC}$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near,sidepic,righthand width=3.2cm,leftupper=0mm][证明]
-		\begin{itemize}
+	\begin{solution}[near,sidepic,righthand width=3.2cm][证明]
+		\begin{itemize*}
 			\item 不妨设 $A=0,B=z,C=1,D=w$.
 			\item 设 $\lambda=\dfrac{DC}{BC}=\dfrac{w-1}{z-1}\in(0,1)$.
 			\item 那么 $w=1+\lambda(z-1)=\lambda z+(1-\lambda)$.
 			\item 由于 $\angle BAD=\angle DAC$, 根据复数乘法的几何意义, $\dfrac{z-0}{w-0}$ 是 $\dfrac{w-0}{1-0}$ 的正实数倍.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<3->{%
 		\begin{tikzpicture}[scale=.75]
@@ -212,8 +212,8 @@
 
 \begin{frame}{例: 复数解决平面几何问题}
 	\onslide<+->
-	\begin{proof}[leftupper=0mm][续证]
-		\begin{itemize}
+	\begin{proof}[][续证]
+		\begin{itemize*}
 			\item $\dfrac{w^2}z=\lambda^2 z+2\lambda(1-\lambda)+\dfrac{(1-\lambda)^2}z\in\BR$,
 			\item $\lambda^2z+\dfrac{(1-\lambda)^2}z=\lambda^2\ov z+\dfrac{(1-\lambda)^2}{\ov z}$,
 			\item $\bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0$.
@@ -223,7 +223,7 @@
 				\frac{AB}{AC}=|z|=\frac{1-\lambda}{\lambda}
 				=\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere
 			\]
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 
@@ -277,14 +277,14 @@
 		求 $(1+\ii)^n+(1-\ii )^n$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near,leftupper=0mm]
-		\begin{itemize}
-			\item $1+\ii=\sqrt2\Bigl(\cos\dfrac\pi4+\ii\sin\dfrac\pi4\Bigr)$,
-			\item $1-\ii =\sqrt2\Bigl(\cos\dfrac\pi4-\ii \sin\dfrac\pi4\Bigr)$,
-			\item $(1+\ii)^n+(1-\ii )^n
+	\begin{solution}[near]
+		\begin{itemize*}
+			\item \centering $1+\ii=\sqrt2\Bigl(\cos\dfrac\pi4+\ii\sin\dfrac\pi4\Bigr)$,
+			\item \centering $1-\ii =\sqrt2\Bigl(\cos\dfrac\pi4-\ii \sin\dfrac\pi4\Bigr)$,
+			\item \centering $(1+\ii)^n+(1-\ii )^n
 				=2^{\frac n2}\Bigl(\cos\dfrac{n\pi}4+\ii\sin\dfrac{n\pi}4+\cos\dfrac{n\pi}4-\ii \sin\dfrac{n\pi}4\Bigr)
 				=2^{\frac n2+1}\cos\dfrac{n\pi}4$.
-		\end{itemize}
+		\end{itemize*}
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}[near]
@@ -302,8 +302,8 @@
 		计算 $\displaystyle I =\sin\frac{\pi}5\sin\frac{2\pi}5\sin\frac{3\pi}5\sin\frac{4\pi}5$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near,leftupper=0mm]
-		\begin{itemize}
+	\begin{solution}[near]
+		\begin{itemize*}
 			\item 设 $z=\ee^{\frac{2\pi\ii}5}$.
 			\item 那么
 			\begin{align*}
@@ -314,7 +314,7 @@
 				\visible<+->{=\dfrac1{16}\bigl(5-(1+z+z^2+z^3+z^4)\bigr)
 				=\dfrac{5}{16}.}
 			\end{align*}
-		\end{itemize}
+		\end{itemize*}
 		\bigdel\bigdel
 	\end{solution}
 \end{frame}
@@ -372,15 +372,15 @@
 		求 $\sqrt[4]{1+\ii}$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev,sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{solution}[nearprev,sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item 由于 $1+\ii=\sqrt2\exp\Bigl(\dfrac{\pi\ii}4\Bigr)$,
 			\item 因此
 			\[
 				\sqrt[4]{1+\ii}=\sqrt[8]2\exp\frac{(\frac\pi4+2k\pi)\ii}4,\quad k=0,1,2,3.
 			\]
 			\item 于是该方根所有值为
-		\end{itemize}
+		\end{itemize*}
 		\onslide<.->{%
 		\[
 			w_0=\sqrt[8]2\ee^{\frac{\pi\ii}{16}},\ 

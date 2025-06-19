@@ -10,12 +10,12 @@
 		\item 这种表示方程有些时候会显得更加直观和易于理解.
 	\end{itemize}
 	\onslide<+->
-	\begin{example}[sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $|z+2\ii|=2$.
 			\item 该方程表示与 $-2\ii $ 的距离为 $2$ 的点全体, 即圆心为 $-2\ii $ 半径为 $2$ 的圆.
 			\item 一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<5->{\begin{tikzpicture}
 			\draw[cstaxis] (-1.5,0)--(1.5,0);
@@ -31,13 +31,13 @@
 
 \begin{frame}{例: 复数方程表平面图形}
 	\onslide<+->
-	\begin{example}[sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $|z-4\ii|=|z-2|$.
 			\item 该方程表示与 $4\ii$ 和 $2$ 的距离相等的点, 即二者连线的垂直平分线.
 			\item 两边同时平方化简可得 $x-2y+3=0$.
 			\item 该方程也可以表达为 $(1+2\ii)z+(1-2\ii)\ov z+6=0$.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<3->{
       \begin{tikzpicture}[
@@ -63,22 +63,22 @@
 
 \begin{frame}{例: 复数方程表平面图形}
 	\onslide<+->
-	\begin{example}[leftupper=0mm]
-		\begin{itemize}
+	\begin{example}
+		\begin{itemize*}
 			\item $|z-z_1|+|z-z_2|=2a$.
 			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
 			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
 			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示空集.
-		\end{itemize}
+		\end{itemize*}
 	\end{example}
 	\onslide<+->
-	\begin{example}[leftupper=0mm]
-		\begin{itemize}
+	\begin{example}
+		\begin{itemize*}
 			\item $|z-z_1|-|z-z_2|=2a$.
 			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支;
 			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
 			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示空集.	
-		\end{itemize}
+		\end{itemize*}
 	\end{example}
 \end{frame}
 
@@ -128,7 +128,7 @@
 	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}[near,sidepic,righthand width=4.6cm,leftupper=0mm]
-		\begin{itemize}
+		\begin{enumerate}
 			\item 直线段:
 			\[
 				z(t)=z_0+(z_1-z_0)t,\quad t\in[0,1],
@@ -149,7 +149,7 @@
 				z=3\cos\theta+2\ii\sin\theta,\quad \theta\in[0,2\pi].
 			\]
 			\item 双纽线 $\abs{z^2-1}=1$ 是闭合曲线, 但不是闭路.
-		\end{itemize}
+		\end{enumerate}
 		\meddel
 		\tcblower\small
 		\onslide<2->
@@ -476,12 +476,12 @@
 
 \begin{frame}{例: 区域的特性}
 	\onslide<+->
-	\begin{example}[near,sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[near,sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $\Re(z^2)<1$.
 			\item 设 $z=x+y\ii$, 则 $\Re(z^2)=x^2-y^2<1$.
 			\item 这是无界的单连通区域.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<3->{%
 		\begin{tikzpicture}[scale=.7]
@@ -496,12 +496,12 @@
 		\end{tikzpicture}}
 	\end{example}
 	\onslide<+->
-	\begin{example}[near,sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[near,sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $\arg z\neq \pi$. 
 			\item 即角状区域 $-\pi<\arg z<\pi$.
 			\item 这是无界的单连通区域.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<7->{%
 		\begin{tikzpicture}[scale=.8]
@@ -516,12 +516,12 @@
 
 \begin{frame}{例: 区域的特性}
 	\onslide<+->
-	\begin{example}[near,sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[near,sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $\Bigabs{\dfrac1z}\le3$.
 			\item 即 $|z|\ge\dfrac13$.
 			\item 这是无界的多连通\alertn{闭区域}.
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<3->{%
 		\begin{tikzpicture}[scale=.8]
@@ -532,14 +532,14 @@
 		\end{tikzpicture}}
 	\end{example}
 	\onslide<+->
-	\begin{example}[near,sidepic,righthand width=3.3cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{example}[near,sidepic,righthand width=3.3cm]
+		\begin{itemize*}
 			\item $|z+1|+|z-1|<4$.
 			\item 表示一个椭圆的内部.
 			\item 这是有界的单连通区域.
 			\item $|z+1|+|z-1|\ge 1$ 表示什么集合?
 			\item \alertn{整个复平面.}
-		\end{itemize}
+		\end{itemize*}
 		\tcblower
 		\onslide<7->{%
 		\begin{tikzpicture}[scale=.9]

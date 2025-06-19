@@ -19,23 +19,22 @@
 \end{frame}
 
 
-
 \begin{frame}{三次方程的根\noexer}
 	\onslide<+->
 	\begin{example}[nearnext]
 		解方程 $x^3+6x-20=0$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev,sidepic,righthand width=3.2cm,leftupper=0mm]
-		\begin{itemize}
+	\begin{solution}[nearprev,sidepic,righthand width=3.2cm]
+		\begin{itemize*}
 			\item 设 $x=u+v$,
 			\item 那么 $u^3+v^3+3uv(u+v)+6(u+v)-20=0$.
 			\item 我们希望 $u^3+v^3=20$, $uv=-2$.
 			\item 那么 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
 			\item 解得 $u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3$.
 			\item 所以 $u=1\pm\sqrt3$, $v=1\mp\sqrt 3$.
-			\item $x=u+v=2$.
-		\end{itemize}
+			\item \centering $x=u+v=2$.
+		\end{itemize*}
 		\tcblower
 		\onslide<+->{
 		\begin{tikzpicture}
@@ -62,27 +61,21 @@
 
 
 \begin{frame}{三次方程的根\noexer}
-	\beqskip{1pt}
+	\beqskip{0pt}
 	\onslide<+->
-	\begin{example}[nearnext]
+	\begin{example}[near]
 		解方程 $x^3-7x+6=0$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev,sidepic,righthand width=2.7cm,leftupper=0mm]
-		\begin{itemize}
-			\item 类似地 $x=u+v$, 其中 $u^3+v^3=-6$, $uv=\frac73$.
-			\item 于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+\frac{343}{27}=0$.
-			\item 这个方程没有实数解, 我们可以强行解得 
-		\end{itemize}
-		\onslide<+->{%
-		\[
-			u^3=-3+\dfrac{10}9\sqrt{-3},\ 
-			\visible<+->{u=\frac{3+2\sqrt{-3}}3,\frac{-9+\sqrt{-3}}6,\frac{3-5\sqrt{-3}}6,}
-		\]}
-		\begin{itemize}
-			\item $v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6$,
-			\item $x=u+v=2,-3,1$.
-		\end{itemize}
+	\begin{solution}[near,sidepic,righthand width=2.7cm]
+		\begin{itemize*}
+			\item 类似地 $x=u+v$, 其中 $u^3+v^3=-6$, $uv=7/3$.
+			\item 于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+343/27=0$.
+			\item 该方程无实数解, 我们可以强行解得 $u^3=-3+\dfrac{10}9\sqrt{-3}$.
+			\item \centering $u=\dfrac{3+2\sqrt{-3}}3,\dfrac{-9+\sqrt{-3}}6,\dfrac{3-5\sqrt{-3}}6$,
+			\item \centering $v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6$,
+			\item \centering $x=u+v=2,-3,1$.
+		\end{itemize*}
 		\tcblower
 		\onslide<+->{%
 		\begin{tikzpicture}
@@ -501,8 +494,8 @@
 	\onslide<+->
 	但我们利用共轭复数可以更简单地证明它.
 	\onslide<+->
-	\begin{proof}[leftupper=0mm]
-		\begin{itemize}
+	\begin{proof}
+		\begin{itemize*}
 			\item 由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
 			\item 因此
 			\[
@@ -510,7 +503,7 @@
 				=z_1\cdot\ov{z_2}-\ov{z_1\cdot\ov{z_2}}
 				=2\ii\Im(z_1\cdot\ov{z_2}).\qedhere
 			\]
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 
@@ -522,8 +515,8 @@
 		证明: $x^2+y^2=1$ 当且仅当 $z+\dfrac 1z$ 是实数.
 	\end{example}
 	\onslide<+->
-	\begin{proof}[nearprev,leftupper=0mm]
-		\begin{itemize}
+	\begin{proof}[nearprev]
+		\begin{itemize*}
 			\item $z+\dfrac 1z$ 是实数等价于
 				$z+\dfrac 1z=\ov{\Bigl(z+\dfrac 1z\Bigr)}=\ov z+\dfrac1{~\ov z~}$,
 			\item 等价于
@@ -532,7 +525,7 @@
 			\]
 			\item 由 $z$ 是虚数可知 $z\neq \ov z$.
 			\item 故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere
-		\end{itemize}
+		\end{itemize*}
 	\end{proof}
 \end{frame}
 

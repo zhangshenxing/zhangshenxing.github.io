@@ -533,6 +533,9 @@
 		nearprev,
 		nearnext
 	},
+	itemize/.style={
+		leftupper=-3mm
+	}
 }
 % 环境中第一个可选参数固定为 tcb 追加样式
 \NewTColorBox{main}{O{} m o}{%
@@ -680,6 +683,12 @@
 		}{%
 	\end{enumext*}
 }
+\NewDocumentEnvironment{itemize*}{}{
+  \begin{enumext*}[
+    label={},
+    labelwidth=0em,
+    list-offset=-2mm
+  ]}{\end{enumext*}}
 
 % Math Font
 \usefonttheme[onlymath]{serif}
