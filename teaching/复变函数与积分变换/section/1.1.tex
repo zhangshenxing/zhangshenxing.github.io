@@ -2,39 +2,64 @@
 
 \subsection{复数的产生}
 
-\begin{frame}{复数的引入\noexer}
-	\begin{itemize}
-		\item 复数起源于多项式方程的求根问题.
-		\item 考虑一元二次方程 $x^2+bx+c=0$.
-		\item 配方可得 $\Bigl(x+\dfrac b2\Bigr)^2=\dfrac{b^2-4c}4$.
-		\item 于是得到求根公式 $x=\dfrac{-b\pm\sqrt\Delta}2$, 其中 $\Delta=b^2-4c$.
-		\begin{enumerate}
-			\item 当 $\Delta>0$ 时, 有两个不同的实根;
-			\item 当 $\Delta=0$ 时, 有一个二重的实根;
-			\item 当 $\Delta<0$ 时, 无实根.
-		\end{enumerate}
-		\item 可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开方}的解.
-		\item 然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开方.
-	\end{itemize}
+\begin{frame}{复数与解方程\noexer}
+	\onslide<+->
+	复数起源于多项式方程的求根问题.
+	\onslide<+->
+	考虑一元二次方程 $x^2+bx+c=0$.
+	\onslide<+->
+	配方可得
+	\[
+		\Bigl(x+\dfrac b2\Bigr)^2=\dfrac{b^2-4c}4.
+	\]
+	\onslide<+->
+	于是得到求根公式 $x=\dfrac{-b\pm\sqrt\Delta}2$, 其中 $\Delta=b^2-4c$.
+	\begin{enumerate}
+		\item 当 $\Delta>0$ 时, 有两个不同的实根;
+		\item 当 $\Delta=0$ 时, 有一个二重的实根;
+		\item 当 $\Delta<0$ 时, 无实根.
+	\end{enumerate}
+	\onslide<+->
+	可以看出, 在一元二次方程中, 我们可以舍去包含\alert{负数开方}的解.
+	\onslide<+->
+	然而在一元三次方程中, 即便只考虑实数根也会不可避免地引入负数开方.
 \end{frame}
 
 
-\begin{frame}{三次方程的根\noexer}
+\begin{frame}{例题: 三次方程求解(一个实根)\noexer}
+	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}[nearnext]
 		解方程 $x^3+6x-20=0$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev,sidepic,righthand width=3.2cm]
-		\begin{itemize*}
-			\item 设 $x=u+v$,
-			\item 那么 $u^3+v^3+3uv(u+v)+6(u+v)-20=0$.
-			\item 我们希望 $u^3+v^3=20$, $uv=-2$.
-			\item 那么 $u^3,v^3$ 满足一元二次方程 $X^2-20X-8=0$.
-			\item 解得 $u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3$.
-			\item 所以 $u=1\pm\sqrt3$, $v=1\mp\sqrt 3$.
-			\item \centering $x=u+v=2$.
-		\end{itemize*}
+		设 $x=u+v$,
+		\onslide<+->{%
+			那么
+			\[
+				u^3+v^3+3uv(u+v)+6(u+v)-20=0.
+			\]%
+		}\onslide<+->{%
+			我们希望
+			\[
+				u^3+v^3=20,\qquad uv=-2.
+			\]%
+		}\onslide<+->{%
+			那么 $u^3,v^3$ 满足一元二次方程
+			\[
+				X^2-20X-8=0.
+			\]
+		}\onslide<+->{%
+			解得
+			\[
+				u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3.
+			\]%
+		}\onslide<+->{%
+			所以 $u=1\pm\sqrt3$, $v=1\mp\sqrt 3$.
+		}\onslide<+->{%
+			$x=u+v=2$.
+		}
 		\tcblower
 		\onslide<+->{
 		\begin{tikzpicture}
@@ -57,25 +82,42 @@
 			\end{scope}
 		\end{tikzpicture}}
 	\end{solution}
+	\endgroup
 \end{frame}
 
 
-\begin{frame}{三次方程的根\noexer}
+\begin{frame}{例题: 三次方程求解(三个实根)\noexer}
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}[near]
 		解方程 $x^3-7x+6=0$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near,sidepic,righthand width=2.7cm]
-		\begin{itemize*}
-			\item 类似地 $x=u+v$, 其中 $u^3+v^3=-6$, $uv=7/3$.
-			\item 于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+343/27=0$.
-			\item 该方程无实数解, 我们可以强行解得 $u^3=-3+\dfrac{10}9\sqrt{-3}$.
-			\item \centering $u=\dfrac{3+2\sqrt{-3}}3,\dfrac{-9+\sqrt{-3}}6,\dfrac{3-5\sqrt{-3}}6$,
-			\item \centering $v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6$,
-			\item \centering $x=u+v=2,-3,1$.
-		\end{itemize*}
+	\begin{solution}[near,sidepic,righthand width=2.9cm,indent]
+		类似地 $x=u+v$, 其中
+		\[
+			u^3+v^3=-6,\qquad uv=\frac 73.
+		\]
+		\onslide<+->{%
+			于是 $u^3,v^3$ 满足一元二次方程 $X^2+6X+343/27=0$.
+		}
+		
+		\onslide<+->{%
+			该方程无实数解, 我们可以强行解得 $u^3=-3+\dfrac{10}9\sqrt{-3}$.
+		}\onslide<+->{%
+			于是
+			\[
+				u=\dfrac{3+2\sqrt{-3}}3,\dfrac{-9+\sqrt{-3}}6,\dfrac{3-5\sqrt{-3}}6,
+			\]%
+		}\onslide<+->{%
+			\[
+				v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6,
+			\]%
+		}\onslide<+->{%
+			\[
+				x=u+v=2,-3,1.
+			\]%
+		}\bigdel
 		\tcblower
 		\onslide<+->{%
 		\begin{tikzpicture}
@@ -108,16 +150,17 @@
 \end{frame}
 
 
-\begin{frame}{三次方程的根\noexer}
-	\begin{itemize}
-		\item 一般地, 方程 $x^3+px+q=0$ 的解为($p=0$ 情形较简单, 这里不考虑)
-		\[
-			x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.
-		\]
-		\item 通过分析函数图像的极值点可以知道:
-	\end{itemize}
+\begin{frame}{一般情形三次方程的根\noexer}
+	\onslide<+->
+	一般地, 方程 $x^3+px+q=0$ 的解为($p=0$ 情形较简单, 这里不考虑)
+	\[
+		x=u-\frac p{3u},\quad u^3=-\frac q2+\sqrt{\Delta},\quad \Delta=\frac{q^2}4+\frac{p^3}{27}.
+	\]
+	\onslide<+->
+	通过分析函数图像的极值点可以知道:
+	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[visible on=<3->]
+		\begin{tikzpicture}
 			\begin{scope}[scale=.65,
 				declare function={
 					f(\x)=\x*\x*\x-3*\x;
@@ -177,41 +220,51 @@
 \end{frame}
 
 
-\begin{frame}{三次方程的根\noexer}
-	\begin{itemize}
-		\item 由此可见, 若想使用求根公式, 就\alert{必须接受负数开方}.
-		\item 那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
-		\item 这个问题在我们学习了第一章的内容之后可以得到回答.
-		\item 尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
-		\item 莱布尼兹曾说: {\color{third}\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。}
-		\item 不过, 现在我们可以用更为现代和严格的语言来引入复数.
-	\end{itemize}
+\begin{frame}{三次方程的根与负数开方\noexer}
+	\onslide<+->
+	由此可见, 若想使用求根公式, 就\alert{必须接受负数开方}.
+	\onslide<+->
+	那么为什么当 $\Delta<0$ 时, 从求根公式一定能得到 $3$ 个实根呢?
+	\onslide<+->
+	这个问题在我们学习了第一章的内容之后可以得到回答.
+
+	\onslide<+->
+	尽管在十六世纪, 人们已经得到了三次方程的求根公式, 然而对其中出现的虚数, 却是难以接受.
+	\onslide<+->
+	莱布尼兹曾说: {\color{third}\itshape 圣灵在分析的奇观中找到了超凡的显示, 这就是那个理想世界的端兆, 那个介于存在与不存在之间的两栖物, 那个我们称之为虚的 $-1$ 的平方根。}
+	\onslide<+->
+	不过, 现在我们可以用更为现代和严格的语言来引入复数.
 \end{frame}
+
 
 \subsection{复数的概念}
 
 \begin{frame}{复数的定义}
-	\begin{itemize}
-		\item 现在我们来正式介绍复数的概念.
-		\item 为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $\ii$, 再通过定义它的运算来构造复数.
-	\end{itemize}
+	\onslide<+->
+	现在我们来正式介绍复数的概念.
+	\onslide<+->
+	为了避免记号 $\sqrt{-1}$ 带来的歧义, 我们先引入抽象符号 $\ii$, 再通过定义它的运算来构造复数.
 	\onslide<+->
 	\begin{definition}
 		固定一个记号 $\ii$, \emph{复数}就是形如 $z=x+y\ii$ 的元素, 其中 $x,y$ 均是实数, 且不同的 $(x,y)$ 对应不同的复数.
 	\end{definition}
-	\begin{itemize}
-		\item 实数 $x$ 可以自然地看成复数 $x+0\ii$.
-	\end{itemize}
+	\onslide<+->
+	回忆全体实数、有理数、整数、自然数构成的集合分别记作 $\BR,\BQ,\BZ,\BN$.
+	\onslide<+->
+	将\emph{全体复数记作 $\BC$}.
+
+	\onslide<+->
+	实数 $x$ 可以自然地看成复数 $x+0\ii$.
+	\onslide<+->
+	于是我们有 $\BR\subseteq \BC$.
 \end{frame}
 
 
 \begin{frame}{复平面}
-	\begin{itemize}
-		\item 回忆全体实数、有理数、整数、自然数构成的集合分别记作 $\BR,\BQ,\BZ,\BN$.
-		\item 将\emph{全体复数记作 $\BC$}.
-		\item 那么 $\BC$ 自然构成一个二维实线性空间, 且 $\{1,\ii\}$ 是一组基. 
-		\item 因此它和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
-	\end{itemize}
+	\onslide<+->
+	$\BC$ 自然构成一个二维实线性空间, 且 $\{1,\ii\}$ 是一组基. 
+	\onslide<+->
+	因此它和平面上的点可以建立一一对应, 并将建立起这种对应的平面称为\emph{复平面}.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -257,7 +310,9 @@
 		\item $x,y$ 轴分别对应复平面的\emph{实轴}和\alert{虚轴}.
 		\item 称 $z=x+y\ii$ 中 $x=\Re z$ 为 $z$ 的\emph{实部}; $y=\Im z$ 为 $z$ 的\alert{虚部}.
 		\item 当虚部 $\Im z=0$ 时, $z$ 为实数, 它落在实轴上.
-		\item 不是实数的复数是\textcolor{third}{\bf 虚数}.
+		\begin{itemize}
+			\item 不是实数的复数是\textcolor{third}{\bf 虚数}.
+		\end{itemize}
 		\item 当实部 $\Re z=0$ 且 \alert{$z\neq0$} 时, $z$ 为\alert{纯虚数}, 它落在虚轴上.
 	\end{itemize}
 	\onslide<1->
@@ -342,15 +397,16 @@
 
 
 \begin{frame}{复数的加法与减法}
-	\begin{itemize}
-		\item 设 $z_1=x_1+y_1\ii,z_2=x_2+y_2\ii$.
-		\item 定义复数的\emph{加法}和\emph{减法}:
-		\[
-			z_1+z_2=(x_1+x_2)+(y_1+y_2)\ii,\quad
-			z_1-z_2=(x_1-x_2)+(y_1-y_2)\ii.
-		\]
-		\item 复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
-	\end{itemize}
+	\onslide<+->
+	设 $z_1=x_1+y_1\ii,z_2=x_2+y_2\ii$.
+	\onslide<+->
+	定义复数的\emph{加法}和\emph{减法}:
+	\[
+		z_1+z_2=(x_1+x_2)+(y_1+y_2)\ii,\quad
+		z_1-z_2=(x_1-x_2)+(y_1-y_2)\ii.
+	\]
+	\onslide<+->
+	复数的加减法与其对应的向量 $\overrightarrow{OZ}$ 的加减法是一致的.
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}[scale=.7]
@@ -378,30 +434,36 @@
 \end{frame}
 
 
-\begin{frame}{复数的乘除法}
-	\begin{itemize}
-		\item \alert{规定 $\ii\cdot \ii=-1$}.
-		\item 定义复数的\emph{乘法}:
-		\begin{align*}
-			z_1\cdot z_2&
-			=(x_1+y_1\ii)(x_2+y_2\ii)
-			=x_1\cdot x_2+x_1\cdot y_2\ii+y_1\ii\cdot x_2+y_1\ii\cdot y_2\ii\\
-			&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)\ii.
-		\end{align*}
-		\item 此时加法/乘法交换律, 结合律以及乘法分配律均成立.
-		\item 待定系数可得复数的\emph{除法}定义为:
-		\[
-			\frac{z_1}{z_2}
-			=\frac{(x_1+y_1\ii)(x_2-y_2\ii)}{x_2^2+y_2^2}
-			=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}\ii.
-		\]
-		\item 对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
-		\item 当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
-	\end{itemize}
+\begin{frame}{复数的乘法、除法和乘幂}
+	\onslide<+->
+	\alert{规定 $\ii\cdot \ii=-1$}.
+	\onslide<+->
+	定义复数的\emph{乘法}:
+	\begin{align*}
+		z_1\cdot z_2&
+		=(x_1+y_1\ii)(x_2+y_2\ii)
+		=x_1\cdot x_2+x_1\cdot y_2\ii+y_1\ii\cdot x_2+y_1\ii\cdot y_2\ii\\
+		&=(x_1x_2-y_1y_2)+(x_1y_2+x_2y_1)\ii.
+	\end{align*}
+	\onslide<+->
+	此时加法/乘法交换律, 结合律以及乘法分配律均成立.
+
+	\onslide<+->
+	待定系数可得复数的\emph{除法}:
+	\[
+		\frac{z_1}{z_2}
+		=\frac{(x_1+y_1\ii)(x_2-y_2\ii)}{x_2^2+y_2^2}
+		=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}+\frac{x_2y_1-x_1y_2}{x_2^2+y_2^2}\ii.
+	\]
+	
+	\onslide<+->
+	对于正整数 $n$, 定义 $z$ 的 \emph{$n$ 次幂}为 $n$ 个 $z$ 相乘.
+	\onslide<+->
+	当 $z\neq 0$ 时, 还可以定义 $z^0=1,z^{-n}=\dfrac1{z^n}$.
 \end{frame}
 
 
-\begin{frame}{例: 单位根}
+\begin{frame}{例题: 复数的乘幂}
 	\onslide<+->
 	\begin{example}
 		\begin{enumerate}
@@ -422,26 +484,28 @@
 		\end{enumerate}
 		\bigdel\bigdel
 	\end{example}
-	\begin{itemize}
-		\item 将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
-		\item 那么 $1,\ii,-1,-\ii $ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $-\omega$ 是 $6$ 次单位根.
-	\end{itemize}
+	\onslide<+->
+	将满足 $z^n=1$ 的复数 $z$ 称为 \emph{$n$ 次单位根}.
+	\onslide<+->
+	那么 $1,\ii,-1,-\ii $ 是 $4$ 次单位根, $1,\omega,\omega^2$ 是 $3$ 次单位根, $-\omega$ 是 $6$ 次单位根.
 \end{frame}
 
 
-\begin{frame}{例: 代数式的计算}
-	\begin{itemize}
-		\item 实数情形的等差数列求和公式、等比数列求和公式、二项式展开、平方差公式等在复数情形也成立.
-	\end{itemize}
+\begin{frame}{例: 复数代数式的计算}
+	\onslide<+->
+	实数情形的等差数列求和公式、等比数列求和公式、二项式展开、平方差公式等代数恒等式在复数情形也成立.
 	\onslide<+->
 	\begin{example}[nearnext]
 		化简 $1+\ii+\ii^2+\dots+\ii^{1000}$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		根据等比数列求和公式, $1+\ii+\ii^2+\dots+\ii^{1000}
+		根据等比数列求和公式,
+		\[
+			1+\ii+\ii^2+\dots+\ii^{1000}
 			=\dfrac{\ii^{1001}-1}{\ii-1}
-			\visible<+->{=\dfrac{\ii-1}{\ii-1}=1.}$
+			\visible<+->{=\dfrac{\ii-1}{\ii-1}=1.}
+		\]
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
@@ -453,34 +517,32 @@
 \subsection{共轭复数}
 
 
-\begin{frame}{共轭复数的定义}
+\begin{frame}{共轭复数的定义和性质}
 	\onslide<+->
 	\begin{definition}
 		称 $z$ 在复平面关于实轴的对称点为它的\emph{共轭复数 $\ov z$}.
 		换言之, $\ov{x+y\ii}=x-y\ii$.
 	\end{definition}
 	\onslide<+->
+	从定义出发, 不难验证共轭复数满足如下性质:
+	\begin{enumerate}\bf
+		\item $z$ 是 $\ov z$ 的共轭复数.\hfill\alert{共轭是一种对合}
+		\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
+		\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
+		\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
+		\hfill \alert{共轭复数和四则运算交换}
+		\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
+		\item $z+\ov z=2\Re z,\ z-\ov z=2\ii\Im z$.
+		\hfill \alert{$x,y$ 和 $z,\ov z$ 可相互表示}
+		\item $z=\ov z\iff z$ 是实数; $z=-\ov z\iff z$ 是纯虚数或 $z=0$.\hfill\alert{判断实数和纯虚数}
+	\end{enumerate}
+
+	\onslide<+->
+	使用共轭复数进行计算和证明，往往比直接使用 $x,y$ 表达的形式更简单.
+	\onslide<+->
 	\begin{exercise}
 		$z$ 关于虚轴的对称点是\fillblankframe{$-\ov z$}.
 	\end{exercise}
-\end{frame}
-
-\begin{frame}{共轭复数的性质}
-	\begin{itemize}
-		\item 从定义出发, 不难验证共轭复数满足如下性质:
-		\begin{enumerate}\bf
-			\item $z$ 是 $\ov z$ 的共轭复数.\hfill\alert{共轭是一种对合}
-			\item $\ov{z_1\pm z_2}=\ov{z_1}\pm\ov{z_2},\ 
-			\ov{z_1\cdot z_2}=\ov{z_1}\cdot\ov{z_2},\ 
-			\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}=\dfrac{~\ov{z_1}~}{~\ov{z_2}~}$.
-			\hfill \alert{共轭复数和四则运算交换}
-			\item $z\ov{z}=(\Re z)^2+(\Im z)^2$.
-			\item $z+\ov z=2\Re z,\ z-\ov z=2\ii\Im z$.
-			\hfill \alert{$x,y$ 和 $z,\ov z$ 可相互表示}
-			\item $z=\ov z\iff z$ 是实数; $z=-\ov z\iff z$ 是纯虚数或 $z=0$.\hfill\alert{判断实数和纯虚数}
-		\end{enumerate}
-		\item 这些性质意味着使用共轭复数进行计算和证明，往往比直接使用 $x,y$ 表达的形式更简单.
-	\end{itemize}
 \end{frame}
 
 
@@ -495,15 +557,15 @@
 	但我们利用共轭复数可以更简单地证明它.
 	\onslide<+->
 	\begin{proof}
-		\begin{itemize*}
-			\item 由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
-			\item 因此
+		由于 $\ov{z_1\cdot\ov{z_2}}=\ov{z_1}\cdot\ov{\ov{z_2}}=\ov{z_1}\cdot z_2$, 
+		\onslide<+->{%
+			因此
 			\[
 				z_1\cdot\ov{z_2}-\ov{z_1}\cdot z_2
 				=z_1\cdot\ov{z_2}-\ov{z_1\cdot\ov{z_2}}
 				=2\ii\Im(z_1\cdot\ov{z_2}).\qedhere
-			\]
-		\end{itemize*}
+			\]%
+		}\bigdel
 	\end{proof}
 \end{frame}
 
@@ -516,21 +578,25 @@
 	\end{example}
 	\onslide<+->
 	\begin{proof}[nearprev]
-		\begin{itemize*}
-			\item $z+\dfrac 1z$ 是实数等价于
-				$z+\dfrac 1z=\ov{\Bigl(z+\dfrac 1z\Bigr)}=\ov z+\dfrac1{~\ov z~}$,
-			\item 等价于
+		$z+\dfrac 1z$ 是实数等价于
+		\[
+			z+\dfrac 1z=\ov{\Bigl(z+\dfrac 1z\Bigr)}=\ov z+\dfrac1{~\ov z~},
+		\]
+		\onslide<+->{%
+			等价于
 			\[
-				z-\ov z=\frac1{~\ov z~}-\frac1z=\frac{z-\ov z}{z\ov z},\quad (z-\ov z)(z\ov z-1)=0.
+				z-\ov z=\frac1{~\ov z~}-\frac1z=\frac{z-\ov z}{z\ov z},\qquad (z-\ov z)(z\ov z-1)=0.
 			\]
-			\item 由 $z$ 是虚数可知 $z\neq \ov z$.
-			\item 故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere
-		\end{itemize*}
+		}\onslide<+->{%
+			由 $z$ 是虚数可知 $z\neq \ov z$.
+		}\onslide<+->{%
+			故上述等式等价于 $z\ov z=1$, 即 $x^2+y^2=1$.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 复数的代数计算}
+\begin{frame}{例题: 复数的代数计算}
 	\onslide<+->
 	由于 $z\ov z$ 是一个实数,
 	\onslide<+->
@@ -560,7 +626,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 复数的代数计算}
+\begin{frame}{例题: 复数的代数计算}
 	\onslide<+->
 	\begin{example}[nearnext]
 		设 $z_1=5-5\ii,z_2=-3+4\ii$, 求 $\ov{\Bigl(\dfrac{z_1}{z_2}\Bigr)}$.

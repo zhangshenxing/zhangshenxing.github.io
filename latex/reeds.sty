@@ -1,0 +1,683 @@
+\mode<presentation>
+\newif\ifshowprefix\showprefixtrue
+\setbeamersize{text margin left=2em,text margin right=2em}
+% Colors
+\setbeamercolor{structure}{fg=main,bg=white}
+\setbeamercolor{title}{parent=structure}
+\setbeamercolor{item}{parent=structure}
+\setbeamercolor{email}{parent=structure}
+\setbeamercolor{title in head/foot}{parent=structure}
+\setbeamercolor{part in head/foot}{parent=structure}
+\setbeamercolor{section in head/foot}{parent=structure}
+\setbeamercolor{subsection in head/foot}{parent=structure}
+\setbeamercolor{seperate line}{use=structure,bg=structure}
+\setbeamercolor{alerted text}{fg=second,bg=white}
+\setbeamercolor{date in head/foot}{fg=third}
+\setbeamercolor{example text}{fg=fourth,bg=white}
+\setbeamercolor{qed symbol}{parent=example text}
+\setbeamercolor{subitem}{parent=example text}
+\setbeamercolor{page number in head/foot}{fg=black}
+\setbeamercolor{subsection in toc}{use=structure,fg=black,bg=structure!20}
+\setbeamercolor{frametitle}{use=structure,bg=structure.fg!10}
+\setbeamercolor{footline}{use=structure,bg=structure.fg!10}
+% Items
+\useinnertheme{circles}
+\setbeamertemplate{enumerate item}{(\insertenumlabel)}
+\setbeamertemplate{enumerate subitem}{
+	\usebeamercolor[fg]{enumerate subitem}%
+	\begin{pgfpicture}{-1ex}{0ex}{0.5ex}{2ex}
+		\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1ex}
+		\pgfusepath{stroke}
+		\pgftext[base]{\color{fg}\insertenumlabel}
+	\end{pgfpicture}%
+}
+% Font
+\setbeamerfont{item}{shape=\upshape}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{institute}{size=\normalsize,shape=\itshape}
+\setbeamerfont{date}{size=\normalsize,shape=\itshape}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{part title}{size=\Large}
+\setbeamerfont{part name}{size=\Large, parent=part title}
+\setbeamerfont{enumerate subitem}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+\setbeamerfont{email}{size=\normalsize,family=\ttfamily}
+\setbeamerfont{title seperator}{parent=author}
+% Title Page
+\newcommand\office[1]{\def\insertoffice{#1}}\office{}
+\newcommand\email[1]{\def\insertemail{#1}}\email{}
+\newcommand\website[1]{\def\insertwebsite{#1}}\website{}
+\setbeamertemplate{title seperator}{\usebeamerfont{title seperator}: }
+\setbeamertemplate{title page}{\vfill%
+	\setlength{\parskip}{0pt plus 1pt}%
+	\hskip0em%
+	\ifx\inserttitlegraphic\@empty\else%
+		\includegraphics[height=0.2\textheight]{\inserttitlegraphic}\hskip2em%
+	\fi%
+	\ifx\insertinstitutegraphic\@empty\else%
+		\raisebox{0.035\textheight}{%
+			\includegraphics[height=0.13\textheight]{\insertinstitutegraphic}%
+		}%
+	\fi%
+	\vskip1.5em%
+	\par\hskip0em{%
+		\usebeamerfont{title}%
+		\usebeamercolor[fg]{title}%
+		\inserttitle%
+	}%
+	\par\hskip-.5em%
+	\begin{beamercolorbox}[wd=0.8\paperwidth,ht=1.5pt]{seperate line}%
+	\end{beamercolorbox}%
+	\vskip1ex%
+	\par\hskip0em{%
+		\usebeamerfont{author}%
+		\usebeamercolor[fg]{author}%
+		\insertauthor (\insertinstitute)%
+	}%
+	\ifx\insertoffice\@empty\else\vskip0.25em\par\hskip0em{%
+		\usebeamercolor[fg]{institute}%
+		\ifshowprefix%
+			{\usebeamerfont{institute}\translate{Office}}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
+		{\usebeamerfont{institute}\insertoffice}%
+		}\fi%
+	\ifx\insertemail\@empty\else\vskip0.25em\par\hskip0em{%
+		\usebeamercolor[fg]{institute}%
+		\ifshowprefix%
+			{\usebeamerfont{email}Email}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
+		{\usebeamercolor[fg]{email}\usebeamerfont{email}\href{mailto:\insertemail}{\insertemail}}%
+		}\fi%
+	\ifx\insertwebsite\@empty\else\vskip0.25em\par\hskip0em{%
+		\usebeamercolor[fg]{institute}%
+		\ifshowprefix%
+			{\usebeamerfont{institute}\translate{Website}}%
+			{\usebeamertemplate{title seperator}}%
+		\fi%
+		{\usebeamercolor[fg]{email}\usebeamerfont{email}\url{\insertwebsite}}%
+		}\fi\vfill%
+}
+\AtBeginDocument{
+	{
+			\setnaviboxempty
+			\frame[c]{\titlepage}
+		}
+}
+% Background
+\setbeamertemplate{background}{
+	\ifx\inserttitlegraphic\@empty\else
+		\begin{tikzpicture}
+			\path (0,0) -- (\paperwidth,\paperheight);
+			\node [opacity=0.025] at (0.8\paperwidth,0.25\paperheight) {\includegraphics[width=11cm]{\inserttitlegraphic}};
+		\end{tikzpicture}
+	\fi
+}
+\setbeamertemplate{navigation symbols}{}
+% Part Page
+\setbeamertemplate{part page}{
+	\begin{tcolorbox}[parttitle,title=第\zhnumber{\thepart}章\hspace{1em}\insertpart]
+		\tableofcontents[sectionstyle=show,subsectionstyle=hide]
+	\end{tcolorbox}
+	\vspace{-\baselineskip}
+}
+\AtBeginPart{
+	\setbeamertemplate{subsection in footline}[no number]
+	\beamer@tocsectionnumber=0\relax%
+	\setcounter{section}{0}%
+	{
+		\setnaviboxempty
+		\frame[c]{\partpage}
+	}
+}
+% Section Page
+\setbeamertemplate{subsection in toc}[square]
+\RequirePackage{setspace}
+\setbeamertemplate{section page}{
+	\begingroup
+	\begin{tcolorbox}[sectiontitle,title=第\zhnumber{\thesection}节\hspace{1em}\insertsection]
+		\setbeamercolor{item}{fg=third,bg=white}
+		\setbeamercolor{subitem}{fg=third,bg=white}
+		\begin{spacing}{2}
+			\tableofcontents[sectionstyle=hide,subsectionstyle=show/show/hide]
+		\end{spacing}
+		\vspace{-\baselineskip}
+	\end{tcolorbox}
+	\endgroup
+}
+\AtBeginSection{
+	\setbeamertemplate{subsection in footline}[normal]
+	{
+		\setnaviboxempty
+		\frame[c]{\sectionpage}
+	}
+}
+% Frametitle
+\setbeamertemplate{frametitle}{%
+	\vskip-0.2ex
+	\hbox{%
+		\begin{beamercolorbox}[%
+				wd=\paperwidth,%
+				ht=2.75ex,%
+				dp=1.5ex,%
+				leftskip=1em,%
+				rightskip=0.5em,%
+				sep=0pt%
+			]{frametitle}
+			\usebeamerfont{frametitle}\usebeamercolor{frametitle}\insertframetitle
+		\end{beamercolorbox}%
+	}\par%
+	\vskip-1ex
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=1pt]{seperate line}%
+		\end{beamercolorbox}%
+	}%
+	% \vskip-1ex
+}
+% Navigation Box, from theme riemann by Jianrui Lyu
+\newcommand{\my@navibox@frame@section}{$\boxtimes$}
+\newcommand{\my@navibox@frame@subsection}{$\boxplus$}
+\newcommand{\my@navibox@frame}{$\square$}
+\newcommand{\my@navibox@frame@exercise}{$\boxtimes$}
+\newcommand{\my@navibox@frame@empty}{}
+\defbeamertemplate{navigation box}{current}{%
+	\kern.55pt\color{fourth}\rule[-0.24pt]{5pt}{5pt}%
+	\kern-5.57pt\color{bg}\kern.4pt\my@navibox\kern.4pt
+}
+\defbeamertemplate{navigation box}{other}{\color{black}\kern.4pt\my@navibox\kern.4pt}
+\let\my@navibox=\my@navibox@frame
+\newcommand{\my@set@navibox@section}{\let\my@navibox=\my@navibox@frame@section}
+\newcommand{\my@set@navibox@subsection}{\let\my@navibox=\my@navibox@frame@subsection}
+\newcommand{\my@set@navibox@exercise}{\let\my@navibox=\my@navibox@frame@exercise}
+\newcommand{\my@set@navibox@empty}{\let\my@navibox=\my@navibox@frame@empty}
+\newcommand{\setnaviboxsection}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@section}}}
+\newcommand{\setnaviboxexercise}{\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@exercise}}}
+\newcommand{\setnaviboxempty}{%
+	\addtocontents{nav}{\protect\headcommand{\protect\my@set@navibox@empty}}%
+	\addtocounter{framenumber}{-1}%
+	\setbeamertemplate{footline}{}%
+}
+\newcommand{\my@sectionentry@show}[5]{%
+	\begingroup
+	\def\my@navibox{#1}%
+	\hyperlink{Navigation#3}{\usebeamertemplate{navigation box}}%
+	\endgroup
+}
+\newif\ifmy@hidesection
+\newcommand{\my@sectionentry@hide}[5]{\my@hidesectiontrue}
+\pretocmd{\beamer@setuplinks}{\renewcommand{\beamer@subsectionentry}[5]{}}{}{}
+\apptocmd{\beamer@setuplinks}{\global\let\beamer@subsectionentry\mybeamer@subsectionentry}{}{}
+\newcommand{\mybeamer@subsectionentry}[5]{\global\let\my@navibox=\my@navibox@frame@subsection}
+\newcommand{\my@slideentry@empty}[6]{}
+\newcommand{\my@slideentry@section}[6]{%
+	\ifnum#6=\c@part
+		\ifnum\c@section=#1%
+			\setbeamertemplate{navigation box}[other]%
+			\ifnum\c@subsection=#2
+				\ifnum\c@subsectionslide=#3%
+					\setbeamertemplate{navigation box}[current]%
+				\fi
+			\fi
+			\beamer@link(#4){\usebeamertemplate{navigation box}}%
+		\fi
+	\fi
+	\global\let\my@navibox=\my@navibox@frame
+}
+\newcommand{\my@slideentry@subsection}[6]{%
+	\ifnum#6=\c@part
+		\ifnum#3=1\my@set@navibox@subsection\fi
+		\setbeamertemplate{navigation box}[other]%
+		\ifnum\c@section=#1
+			\ifnum\c@subsection=#2
+				\ifnum\c@subsectionslide=#3%
+					\setbeamertemplate{navigation box}[current]%
+				\fi
+			\fi
+		\fi
+		\ifnum#1=0\ifnum#3=1\my@set@navibox@empty\fi\fi
+		\beamer@link(#4){\usebeamertemplate{navigation box}}%
+	\fi
+	\global\let\my@navibox=\my@navibox@frame
+}
+% Footline
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+\setbeamertemplate{head/foot seperator}{\kern1pt\raisebox{0.5pt}{$\blacktriangleright$}\kern1pt}
+\defbeamertemplate{subsection in footline}{normal}{\Alph{subsection}~\insertsubsectionhead{}}
+\defbeamertemplate{subsection in footline}{no number}{\insertsubsectionhead{}}
+\defbeamertemplate{footline}{naviboxsection}{%
+	\setlength{\parindent}{0em}
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=0.5pt]{seperate line}
+		\end{beamercolorbox}%
+	}\par%
+	\hbox{%
+		\begin{beamercolorbox}[%
+				wd=\paperwidth,%
+				ht=5ex,%
+				dp=1ex,%
+				leftskip=3ex plus 3ex,%
+				rightskip=3ex plus 3ex,%
+				sep=0pt%
+			]{footline}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\ifnum\thepart>0\else%
+					\ifnum\thesection>0\else%
+						\ifnum\thesubsection>0\else%
+							\usebeamercolor[fg]{title in head/foot}%
+						\fi%
+					\fi%
+				\fi%
+				\insertshorttitle%
+			}%
+			\ifnum\thepart>0{%
+				\usebeamerfont{part in head/foot}%
+				\ifnum\thesection>0\else%
+					\ifnum\thesubsection>0\else%
+						\usebeamercolor[fg]{part in head/foot}%
+					\fi%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				第\zhnumber{\thepart}章~\insertshortpart%
+				}\fi%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\ifnum\thesubsection>0\else%
+					\usebeamercolor[fg]{section in head/foot}%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+				}\fi%
+			\ifnum\thesubsection>0{%
+				\usebeamerfont{subsection in head/foot}%
+				\usebeamercolor[fg]{subsection in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\usebeamertemplate{subsection in footline}
+				}\fi%
+			% \hfill%
+			% {%
+			% 	\usebeamercolor[fg]{date in head/foot}%
+			% 	\usebeamerfont{date in head/foot}%
+			% 	\insertshortdate%
+			% }%
+			\par%
+			\let\sectionentry=\my@sectionentry@hide
+			\let\slideentry=\my@slideentry@section
+			\dohead
+			\kern\beamer@rightmargin
+			\hfill
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
+		\end{beamercolorbox}%
+	}%
+}
+\defbeamertemplate{footline}{naviboxall}{%
+	\setlength{\parindent}{0em}
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=\paperwidth,ht=0.5pt]{seperate line}
+		\end{beamercolorbox}%
+	}\par%
+	\hbox{%
+		\begin{beamercolorbox}[%
+				wd=\paperwidth,%
+				ht=5ex,%
+				dp=1ex,%
+				leftskip=3ex plus 3ex,%
+				rightskip=3ex plus 3ex,%
+				sep=0pt%
+			]{footline}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\ifnum\thepart>0\else%
+					\ifnum\thesection>0\else%
+						\ifnum\thesubsection>0\else%
+							\usebeamercolor[fg]{title in head/foot}%
+						\fi%
+					\fi%
+				\fi%
+				\insertshorttitle%
+			}%
+			\ifnum\thepart>0{%
+				\usebeamerfont{part in head/foot}%
+				\ifnum\thesection>0\else%
+					\ifnum\thesubsection>0\else%
+						\usebeamercolor[fg]{part in head/foot}%
+					\fi%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				第\zhnumber{\thepart}章~\insertshortpart%
+				}\fi%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\ifnum\thesubsection>0\else%
+					\usebeamercolor[fg]{section in head/foot}%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+				}\fi%
+			\ifnum\thesubsection>0{%
+				\usebeamerfont{subsection in head/foot}%
+				\usebeamercolor[fg]{subsection in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\usebeamertemplate{subsection in footline}
+				}\fi%
+			\hfill%
+			{%
+				\usebeamercolor[fg]{date in head/foot}%
+				\usebeamerfont{date in head/foot}%
+				\insertshortdate%
+			}%
+			\par%
+			\let\sectionentry=\my@sectionentry@hide
+			\let\slideentry=\my@slideentry@subsection
+			\dohead
+			\kern\beamer@rightmargin
+			\hfill
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
+		\end{beamercolorbox}%
+	}%
+}
+\defbeamertemplate{footline}{simple}{%
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[%
+				wd=\paperwidth,%
+				ht=3ex,%
+				dp=1ex,%
+				leftskip=3ex,%
+				rightskip=3ex,%
+				sep=0pt%
+			]{}%
+			{%
+				\usebeamerfont{title in head/foot}%
+				\ifnum\thepart>0\else%
+					\ifnum\thesection>0\else%
+						\ifnum\thesubsection>0\else%
+							\usebeamercolor[fg]{title in head/foot}%
+						\fi%
+					\fi%
+				\fi%
+				\insertshorttitle%
+			}%
+			\ifnum\thepart>0{%
+				\usebeamerfont{part in head/foot}%
+				\ifnum\thesection>0\else%
+					\ifnum\thesubsection>0\else%
+						\usebeamercolor[fg]{part in head/foot}%
+					\fi%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				第\zhnumber{\thepart}章~\insertshortpart%
+				}\fi%
+			\ifnum\thesection>0{%
+				\usebeamerfont{section in head/foot}%
+				\ifnum\thesubsection>0\else%
+					\usebeamercolor[fg]{section in head/foot}%
+				\fi%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\thesection~\insertsectionhead{}%
+				}\fi%
+			\ifnum\thesubsection>0{%
+				\usebeamerfont{subsection in head/foot}%
+				\usebeamercolor[fg]{subsection in head/foot}%
+				\kern2pt\usebeamertemplate{head/foot seperator}%
+				\usebeamertemplate{subsection in footline}
+				}\fi%
+			\hfill
+			{%
+				\usebeamercolor[fg]{page number in head/foot}%
+				\usebeamerfont{page number in head/foot}%
+				\usebeamertemplate{page number in head/foot}%
+			}%
+		\end{beamercolorbox}%
+	}%
+}
+\setbeamertemplate{footline}[naviboxsection]
+% Theorems
+\RequirePackage[many]{tcolorbox}
+\tcbset{
+	arc=0pt,
+	titlebox/.style={
+		coltitle=white,
+		boxrule=0pt,
+		fonttitle=\bfseries,
+		enhanced,
+		left=1mm,
+		right=1mm,
+		bottom=1mm,
+		top=2mm,
+		before skip=2mm minus 1mm,
+		after skip=2mm minus 1mm,
+		attach boxed title to top left={
+			yshift=-0.11in,
+			xshift=0.15in
+		},
+		boxed title style={
+			boxrule=0pt,
+			arc=0pt,
+			outer arc=0pt
+		},
+	},
+	centerbox/.style={
+		titlebox,
+		attach boxed title to top center={
+			yshift=-0.11in
+		}
+	},
+	indent/.style={
+		before upper={\parindent1em}
+	},
+	parttitle/.style={
+		titlebox,
+		grow to left by=2em,
+		grow to right by=2em,
+		colback=main!10,
+		colbacktitle=main,
+		left=3em,
+		bottom=1ex,
+		fonttitle=\large,
+		attach boxed title to top center={
+			yshift=-10pt, xshift=0pt
+		},
+		arc=0pt,
+		outer arc=0pt,
+		frame style={draw=none},
+		borderline north={1pt}{-1pt}{main},
+		borderline south={1pt}{-1pt}{main},
+	},
+	sectiontitle/.style={
+		titlebox,
+		grow to left by=2em,
+		grow to right by=2em,
+		colback=third!10,
+		colbacktitle=third,
+		left=1.5em,
+		top=4ex,
+		bottom=1ex,
+		fonttitle=\large,
+		attach boxed title to top center={
+			yshift=-10pt, xshift=0pt
+		},
+		arc=0pt,
+		outer arc=0pt,
+		frame style={draw=none},
+		borderline north={1pt}{-1pt}{third},
+		borderline south={1pt}{-1pt}{third},
+	},
+	examstyle/.style={
+		fontupper=\itshape,
+		fontlower=\itshape,
+	},
+	thmstyle/.style={
+		fontupper=\bfseries,
+		fontlower=\bfseries,
+	},
+	sidepic/.style={
+		sidebyside,
+		lower separated=true,
+	},
+	nearprev/.style={
+		before skip=2pt,
+	},
+	nearnext/.style={
+		after skip=2pt,
+	},
+	near/.style={
+		nearprev,
+		nearnext
+	},
+	itemize/.style={
+		leftupper=-3mm
+	},
+	thmcommon/.style={
+		boxrule=0.5pt,
+		grow to left by=2.1em,
+		grow to right by=2.1em,
+		left=1.6em,
+		right=1.6em,
+	}
+}
+% 环境中第一个可选参数固定为 tcb 追加样式
+\NewTColorBox{main}{O{}}{%
+	thmcommon,
+	colframe=main,
+	colback=main!10,
+	colbacktitle=main,
+	#1
+}
+\NewTColorBox{second}{O{}}{%
+	thmcommon,
+	colframe=second,
+	colback=second!10,
+	colbacktitle=second,
+	#1
+}
+\NewTColorBox{third}{O{}}{%
+	thmcommon,
+	colframe=third,
+	colback=third!10,
+	colbacktitle=third,
+	#1
+}
+\NewTColorBox{fourth}{O{}}{%
+	thmcommon,
+	colframe=fourth,
+	colback=fourth!10,
+	colbacktitle=fourth,
+	#1
+}
+\NewTColorBox{fifth}{O{}}{%
+	thmcommon,
+	colframe=fifth,
+	colback=fifth!10,
+	colbacktitle=fifth,
+	#1
+}
+
+\NewDocumentEnvironment{mainblock}{O{} m o}{\begin{main}[#1]
+	\setbeamercolor{item}{fg=main,bg=white}
+	\setbeamercolor{subitem}{fg=main,bg=white}
+	\noindent{\color{main}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+}{\end{main}}
+\NewDocumentEnvironment{secondblock}{O{} m o}{\begin{second}[#1]
+	\setbeamercolor{item}{fg=second,bg=white}
+	\setbeamercolor{subitem}{fg=second,bg=white}
+	\noindent{\color{second}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+}{\end{second}}
+\NewDocumentEnvironment{secondblock*}{O{} m o}{\begin{second}[#1]
+	\setbeamercolor{item}{fg=second,bg=white}
+	\setbeamercolor{subitem}{fg=second,bg=white}
+	\noindent{\color{second}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+}{\end{second}}
+\NewDocumentEnvironment{thirdblock}{O{} m o}{\begin{third}[#1]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+	\noindent{\color{third}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+}{\end{third}}
+\NewDocumentEnvironment{thirdblock*}{O{} m o}{\begin{third}[#1]
+	\setbeamercolor{item}{fg=third,bg=white}
+	\setbeamercolor{subitem}{fg=third,bg=white}
+	\noindent{\color{third}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+}{\end{third}}
+% !
+\NewDocumentEnvironment{fourthblock}{O{} m o}{\begin{fourth}[#1]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+	\noindent{\color{fourth}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+}{\end{fourth}}
+\NewDocumentEnvironment{fifthblock}{O{} m o}{\begin{fifth}[#1]
+	\setbeamercolor{item}{fg=fifth,bg=white}
+	\setbeamercolor{subitem}{fg=fifth,bg=white}
+	\noindent{\color{fifth}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+}{\end{fifth}}
+
+\RenewDocumentEnvironment{example}{O{} o}{\begin{mainblock}[examstyle,#1]{Example}[#2]}{\end{mainblock}}
+\NewDocumentEnvironment{thinking}{O{} o}{\begin{mainblock}[examstyle,#1]{Thinking}[#2]}{\end{mainblock}}
+\NewDocumentEnvironment{remark}{O{} o}{\begin{mainblock}[examstyle,#1]{Remark}[#2]}{\end{mainblock}}
+\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourthblock}[examstyle,#1]{Solution}[#2]}{\end{fourthblock}}
+\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourthblock}[examstyle,#1]{Proof}[#2]}{\popQED\end{fourthblock}}
+% \NewDocumentEnvironment{proofe}{O{} o}{\pushQED{\qed}\begin{fourthblock}[examstyle,#1]{Proof (Continued)}[#2]}{\popQED\end{fourthblock}}
+\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourthblock}[examstyle,#1]{Analysis}[#2]}{\end{fourthblock}}
+\NewDocumentEnvironment{answer}{O{} o}{\begin{fourthblock}[examstyle,#1]{Answer}[#2]}{\end{fourthblock}}
+\NewDocumentEnvironment{conjecture}{O{} o}{\begin{fifthblock}[examstyle,#1]{Conjecture}[#2]}{\end{fifthblock}}
+\RenewDocumentEnvironment{fact}{O{} o}{\begin{fifthblock}[examstyle,#1]{Fact}[#2]}{\end{fifthblock}}
+\NewDocumentEnvironment{exercise}{O{} o}{\begin{fifthblock}[examstyle,#1]{Exercise}[#2]}{\end{fifthblock}}
+
+\RenewDocumentEnvironment{definition}{O{} o}{\begin{secondblock}[thmstyle,#1]{Definition}[#2]}{\end{secondblock}}
+\NewDocumentEnvironment{definition*}{O{} o}{\begin{secondblock*}[thmstyle,#1]{Definition}[#2]}{\end{secondblock*}}
+\RenewDocumentEnvironment{definitions}{O{} o}{\begin{secondblock}[thmstyle,#1]{Definitions}[#2]}{\end{secondblock}}
+
+\RenewDocumentEnvironment{theorem}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Theorem}[#2]}{\end{thirdblock}}
+\NewDocumentEnvironment{theorem*}{O{} o}{\begin{thirdblock*}[thmstyle,#1]{Theorem}[#2]}{\end{thirdblock*}}
+\NewDocumentEnvironment{proposition}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Proposition}[#2]}{\end{thirdblock}}
+\RenewDocumentEnvironment{corollary}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Corollary}[#2]}{\end{thirdblock}}
+\RenewDocumentEnvironment{lemma}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Lemma}[#2]}{\end{thirdblock}}
+
+\RequirePackage{enumext}
+\NewDocumentEnvironment{subexample}{O{1}}{
+  \begin{enumext*}[
+    columns=#1,
+    label={(\arabic*)},
+    wrap-label={\upshape\textcolor{main}{##1}},
+    list-offset=4pt,
+    nosep,
+    itemsep=3pt
+  ]%
+		}{%
+	\end{enumext*}
+}
+\NewDocumentEnvironment{itemize*}{}{
+  \begin{enumext*}[
+    label={},
+    labelwidth=0em,
+    list-offset=-2mm
+  ]}{\end{enumext*}}
+
+% Math Font
+\usefonttheme[onlymath]{serif}
+\RequirePackage{lmodern}
+\beamerdefaultoverlayspecification{<+->}
+\mode<all>
+% Translations
+\providetranslation[to=ChineseUTF8]{Example}{例}
+\providetranslation[to=ChineseUTF8]{Conjecture}{猜想}
+\providetranslation[to=ChineseUTF8]{Proof (Continued)}{续证}
+\providetranslation[to=ChineseUTF8]{Solution (Continued)}{续解}
+\providetranslation[to=ChineseUTF8]{Thinking}{思考}
+\providetranslation[to=ChineseUTF8]{Answer}{答案}
+\providetranslation[to=ChineseUTF8]{Analysis}{分析}
+\providetranslation[to=ChineseUTF8]{Office}{办公室}
+\providetranslation[to=ChineseUTF8]{Website}{课件地址}
+\setlength{\parskip}{6pt plus 6pt minus 6pt}

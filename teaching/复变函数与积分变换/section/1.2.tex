@@ -5,15 +5,23 @@
 
 
 \begin{frame}{复数的极坐标形式}
-	\begin{itemize}
-		\item 由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
-		\item 以 $0$ 为极点, 正实轴为极轴, 逆时针为极角方向可以定义出复平面上的极坐标系.
-	\end{itemize}
 	\onslide<+->
+	由平面的极坐标表示, 我们可以得到复数的另一种表示方式.
+	\onslide<+->
+	以 $0$ 为极点, 正实轴为极轴, 逆时针为极角方向可以定义出复平面上的极坐标系.
+	\onslide<4->{
+	\begin{definition}
+		\begin{enumerate}
+			\item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
+			\item<5-> 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
+			\onslide<6->{约定 \alert{$0$ 的辐角没有定义}.}
+		\end{enumerate}
+	\end{definition}}
+	\onslide<2->
 	\begin{center}
 		\begin{minipage}{.4\textwidth}
 			\centering
-			\begin{tikzpicture}
+			\begin{tikzpicture}[scale=.8]
 				\coordinate [label=below left:$0$] (O) at (0,0);
 				\coordinate [label=above:\textcolor{second}{$z=x+y\ii$}] (Z) at (3,2);
 				\coordinate (X) at (3,0);
@@ -30,7 +38,7 @@
 		\end{minipage}
 		\begin{minipage}{.56\textwidth}
 			\centering
-			\onslide<4->{
+			\onslide<3->{
 			\[
 				x=r\cos\theta,\qquad y=r\sin\theta,
 			\]
@@ -39,29 +47,26 @@
 			\]}
 		\end{minipage}
 	\end{center}
-	\onslide<+->
-	\onslide<+->
-	\begin{definition}[nearprev]
-		\begin{enumerate}
-			\item 称 $r$ 为 $z$ 的\emph{模}, 记为 \emph{$|z|=r$}.
-			\item 称 $\theta$ 为 $z$ 的\emph{辐角}, 记为 \emph{$\Arg z=\theta$}.
-			\onslide<+->{约定 \alert{$0$ 的辐角没有定义}.}
-		\end{enumerate}
-	\end{definition}
 \end{frame}
 
 
 \begin{frame}{辐角主值}
-	\begin{itemize}
-		\item 任意非零复数 $z$ 都有无穷多个辐角.
-		\item 称其中位于 $(-\pi,\pi]$ 的那个辐角为\emph{辐角主值}或\emph{主辐角}, 记作 $\emphm{\arg z}$.
-		\item 那么 $\emphm{\Arg z=\arg z+2k\pi, k\in\BZ}$.
-		\item<8-> 注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 当且仅当 $z$ 不是负实数和 $0$ 时成立.
-	\end{itemize}
+	\onslide<+->
+	任意非零复数 $z$ 都有无穷多个辐角.
+	\onslide<+->
+	称其中位于 $(-\pi,\pi]$ 的那个辐角为\emph{辐角主值}或\emph{主辐角}, 记作 $\emphm{\arg z}$.
+	\onslide<+->
+	那么
+	\[
+		\emphm{\Arg z=\arg z+2k\pi, k\in\BZ}.
+	\]
+	\onslide<8->
+	注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 当且仅当 $z$ 不是负实数和 $0$ 时该等式成立.
 	\onslide<2->
-	\begin{figure}[hbpt]
-		\centering
+	\bigdel
+	\begin{center}
 		\begin{minipage}{.46\textwidth}
+			\centering
 			\onslide<4->{
 			\[\arg z=\begin{cases}
 				\visible<4->{\emphn{\arctan\dfrac yx,}}&\visible<4->{\emphn{x>0;}}\vspace{1ex}\\
@@ -105,106 +110,103 @@
 				\end{scope}
 			\end{tikzpicture}
 		\end{minipage}
-	\end{figure}
+	\end{center}
 \end{frame}
 
 
 \begin{frame}{复数模的性质}\small
 	\onslide<+->
-	复数的模满足如下性质:
-	\begin{figure}[hbpt]
-		\centering
-		\begin{minipage}{.48\textwidth}
+	复数的模满足如下性质
+	\begin{center}
+		\begin{minipage}{.52\textwidth}
+			\centering
+			\begin{tikzpicture}[visible on=<3->,scale=.75]
+				\draw[cstaxis] (-4,0)--(4.3,0);
+				\draw[cstaxis] (0,-3)--(0,3);
+				\coordinate (O) at (0,0);
+				\coordinate (Z) at (-2.5,1.5);
+				\coordinate (R) at (-2.5,0);
+				\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(R) node[midway,below=2mm,main] {$\abs{\Re z}$};
+				\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (R)--(Z) node[midway,left=2mm,main] {$\abs{\Im z}$};
+				\draw[cstcurve,second] (O)--(Z) node[midway,above,second] {$|z|$};
+				\draw[cstcurve,main] (Z)--(R)--(O);
+				\draw[thick] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
+		
+				\begin{scope}[visible on=<4->]
+					\coordinate [label=below right:\textcolor{main}{$z_1$}] (Z1) at (2.8,-.4);
+					\coordinate (Z2) at (1.2,2);
+					\coordinate [label=above right:\textcolor{main}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
+					\coordinate [label=below:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
+					\draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(O) node[midway,below,sloped] {$|z_1|$};
+					\draw[decorate,decoration={brace,amplitude=5},main] (P)--(Z1) node[midway,below,sloped] {$|z_2|$};
+					\draw[decorate,decoration={brace,amplitude=5},second] (O)--(P) node[midway,above,sloped] {$|z_1+z_2|$};
+					\draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(M) node[midway,below,sloped] {$|z_2|$};
+					\draw[decorate,decoration={brace,amplitude=5},third] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
+					\begin{scope}[cstcurve,cstra]
+						\draw[main] (O)--(Z1);
+						\draw[main] (Z1)--(P);
+						\draw[second] (O)--(P);
+						\draw[third] (O)--(M);
+						\draw[main] (Z1)--(M);
+					\end{scope}
+				\end{scope}
+
+				\begin{scope}[visible on=<5->]
+					\coordinate (A) at (2.7,2.4);
+					\draw[decorate,decoration={brace,amplitude=5},main] (A)--(P) node[midway,above,sloped] {$|z_3|$};
+					\draw[decorate,decoration={brace,amplitude=5},fourth] (O)--(A) node[midway,above=2mm,sloped] {$|z_1+z_2+z_3|$};
+					\begin{scope}[cstcurve,cstra]
+						\draw[main] (P)--(A);
+						\draw[fourth] (O)--(A);
+					\end{scope}
+				\end{scope}
+			\end{tikzpicture}
+		\end{minipage}
+		\begin{minipage}{.46\textwidth}
 			\begin{itemize}\bf
 				\item $z\ov z=|z|^2=|\ov z|^2$;
 				\item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
-			\end{itemize}
-		\end{minipage}
-		\begin{minipage}{.48\textwidth}
-			\begin{itemize}\bf
 				\item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
 				\item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
 			\end{itemize}
 		\end{minipage}
-	\end{figure}
-	\begin{center}
-		\begin{tikzpicture}[visible on=<3->,scale=.88]
-			\draw[cstaxis] (-4.4,0)--(4.3,0);
-			\draw[cstaxis] (0,-3)--(0,3);
-			\coordinate (O) at (0,0);
-			\coordinate (Z) at (-2.5,1.5);
-			\coordinate (R) at (-2.5,0);
-			\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (O)--(R) node[midway,below=2mm,main] {$\abs{\Re z}$};
-			\draw[decorate,decoration={brace,amplitude=5},main,cstfill1] (R)--(Z) node[midway,left=2mm,main] {$\abs{\Im z}$};
-			\draw[cstcurve,second] (O)--(Z) node[midway,above,second] {$|z|$};
-			\draw[cstcurve,main] (Z)--(R)--(O);
-			\draw[thick] (R) ++(0,.3)--++(.3,0)--++(0,-.3);
-	
-			\begin{scope}[visible on=<4->]
-				\coordinate [label=below right:\textcolor{main}{$z_1$}] (Z1) at (2.8,-.4);
-				\coordinate (Z2) at (1.2,2);
-				\coordinate [label=above right:\textcolor{main}{$z_1+z_2$}] (P) at ($(Z1)+(Z2)$);
-				\coordinate [label=below:\textcolor{third}{$z_1-z_2$}] (M) at ($(Z1)-(Z2)$);
-				\draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(O) node[midway,below,sloped] {$|z_1|$};
-				\draw[decorate,decoration={brace,amplitude=5},main] (P)--(Z1) node[midway,below,sloped] {$|z_2|$};
-				\draw[decorate,decoration={brace,amplitude=5},second] (O)--(P) node[midway,above,sloped] {$|z_1+z_2|$};
-				\draw[decorate,decoration={brace,amplitude=5},main] (Z1)--(M) node[midway,below,sloped] {$|z_2|$};
-				\draw[decorate,decoration={brace,amplitude=5},third] (M)--(O) node[midway,below,sloped] {$|z_1-z_2|$};
-				\begin{scope}[cstcurve,cstra]
-					\draw[main] (O)--(Z1);
-					\draw[main] (Z1)--(P);
-					\draw[second] (O)--(P);
-					\draw[third] (O)--(M);
-					\draw[main] (Z1)--(M);
-				\end{scope}
-			\end{scope}
-
-			\begin{scope}[visible on=<5->]
-				\coordinate (A) at (2.7,2.4);
-				\draw[decorate,decoration={brace,amplitude=5},main] (A)--(P) node[midway,above,sloped] {$|z_3|$};
-				\draw[decorate,decoration={brace,amplitude=5},fourth] (O)--(A) node[midway,above=2mm,sloped] {$|z_1+z_2+z_3|$};
-				\begin{scope}[cstcurve,cstra]
-					\draw[main] (P)--(A);
-					\draw[fourth] (O)--(A);
-				\end{scope}
-			\end{scope}
-		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
 \begin{frame}{例题：共轭复数解决模的等式}
 	\beqskip{4pt}
-	\onslide<+->
+	\onslide<1->{
 	\begin{example}[nearnext]
 		证明
 		\begin{subexample}[2]
 			\item $|z_1z_2|=|z_1\ov{z_2}|=|z_1|\cdot|z_2|$;
 			\item $|z_1+z_2|^2=|z_1|^2+|z_2|^2+2\Re(z_1\ov{z_2})$.
 		\end{subexample}
-	\end{example}
+	\end{example}}
 	\onslide<+->
 	\begin{proof}[nearprev]
 		\begin{enumerate}
 			\item 因为
 			\[
 				|z_1z_2|^2=z_1z_2\cdot\ov{z_1}\ov{z_2}
-				=z_1z_2\ov{z_1}\ov{z_2}=|z_1|^2\cdot|z_2|^2,
+				\onslide<+->{=z_1\ov{z_1}\cdot z_2\ov{z_2}}
+				\onslide<+->{=|z_1|^2\cdot|z_2|^2,}
 			\]
 			\onslide<+->{%
-			所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
+				所以 $|z_1z_2|=|z_1|\cdot|z_2|$.
 			}\onslide<+->{%
-			因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
+				因此 $|z_1\ov{z_2}|=|z_1|\cdot|\ov{z_2}|=|z_1|\cdot|z_2|$.
 			}
 			\item 因为
-				\begin{align*}
-					\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
-					=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,\\
-					\text{右边}&=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},
-				\end{align*}
-				\onslide<+->{%
-					而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.\qedhere
-				}
+			\begin{align*}
+				\text{左边}&=(z_1+z_2)(\ov{z_1}+\ov{z_2})
+				=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1}z_2,\\
+				\onslide<+->{\text{右边}}&\onslide<.->{=z_1\ov{z_1}+z_2\ov{z_2}+z_1\ov{z_2}+\ov{z_1\ov{z_2}},}
+			\end{align*}
+			\onslide<+->{%
+				而 $\ov{z_1\ov{z_2}}=\ov{z_1}z_2$, 所以两侧相等.\qedhere
+			}
 		\end{enumerate}
 	\end{proof}
 	\endgroup
@@ -215,28 +217,27 @@
 
 
 \begin{frame}{复数的三角和指数形式}
-	\begin{itemize}
-		\item 由 $x=r\cos\theta,y=r\sin\theta$ 可得
-	\end{itemize}
+	\onslide<+->
+	由 $x=r\cos\theta,y=r\sin\theta$ 可得
 	\onslide<+->
 	\begin{definition*}[][复数的三角形式]
 	\[
 		z=r(\cos\theta+\ii\sin\theta).
 	\]
 	\end{definition*}
-	\begin{itemize}
-		\item 定义 \alert{$\ee^{\ii\theta}=\exp(\ii\theta):=\cos\theta+\ii\sin\theta$} (欧拉恒等式).
-	\end{itemize}
 	\onslide<+->
+	定义 \alert{$\ee^{\ii\theta}=\exp(\ii\theta):=\cos\theta+\ii\sin\theta$} (欧拉恒等式).
+	\onslide<+->
+	那么我们得到
 	\begin{definition*}[][复数的指数形式]
 	\[
 		z=r\ee^{\ii\theta}=r\exp(\ii\theta).
 	\]
 	\end{definition*}
-	\begin{itemize}
-		\item 这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
-		\item 求复数的三角和指数形式的\alert{关键在于计算模和辐角}.
-	\end{itemize}
+	\onslide<+->
+	这两种形式的等价的, 指数形式可以认为是三角形式的一种缩写方式.
+	\onslide<+->
+	求复数的三角和指数形式的\alert{关键在于计算模和辐角}.
 \end{frame}
 
 
@@ -249,46 +250,51 @@
 	\begin{solution}[nearprev]
 		$r=|z|=\sqrt{12+4}=4$.
 		\onslide<+->{%
-		由于 $z$ 在第三象限,
+			由于 $z$ 在第三象限,
 		}\onslide<+->{%
-		因此
-		\[
-			\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi=\frac\pi6-\pi=-\frac{5\pi}6.
-		\]
+			因此
+			\[
+				\arg z=\arctan\frac{-2}{-\sqrt{12}}-\pi
+				\onslide<+->{=\frac\pi6-\pi=-\frac{5\pi}6.}
+			\]
 		}\onslide<+->{%
-		故
-		\[
-			z=4\left[\cos\Bigl(-\frac{5\pi}6\Bigr)+\ii\sin\Bigl(-
-			\frac{5\pi}6\Bigr)\right]=4\ee^{-\frac{5\pi\ii}6}.
-		\]
+			故
+			\[
+				z=4\left[\cos\Bigl(-\frac{5\pi}6\Bigr)+\ii\sin\Bigl(-
+				\frac{5\pi}6\Bigr)\right]=4\ee^{-\frac{5\pi\ii}6}.
+			\]
 		}
+		\meddel
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{例: 求复数的三角和指数形式}
-	\beqskip{6pt}
+	\beqskip{10pt}
 	\onslide<+->
 	\begin{example}[nearnext]
 		将 $z=\sin\dfrac\pi5+\ii\cos\dfrac\pi5$ 化成三角形式和指数形式.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near]
+	\begin{solution}[nearprev]
 		$r=|z|=1$.
 		\onslide<+->{%
-		由于 $z$ 在第一象限, 因此
-		\[
-			\arg z=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}
-			=\arctan\cot\frac\pi 5=\frac\pi2-\frac\pi5=\frac{3\pi}{10}.
-		\]}\onslide<+->{%
-		\[
-			z=\cos\frac{3\pi}{10}+\ii\sin\frac{3\pi}{10}=\ee^{\frac{3\pi\ii}{10}}.
-		\]}
-		\bigdel
+			由于 $z$ 在第一象限, 因此
+			\[
+				\arg z
+				=\arctan\frac{\cos(\pi/5)}{\sin(\pi/5)}
+				\onslide<+->{=\arctan\cot\frac\pi 5}
+				\onslide<+->{=\frac\pi2-\frac\pi5
+				=\frac{3\pi}{10}.}
+			\]%
+		}\onslide<+->{%
+			\[
+				z=\cos\frac{3\pi}{10}+\ii\sin\frac{3\pi}{10}=\ee^{\frac{3\pi\ii}{10}}.
+			\]%
+		}\bigdel
 	\end{solution}
-	\begin{itemize}
-		\item 求复数的三角或指数形式时, 只需取一个辐角就可以了, 不要求必须是辐角主值.
-	\end{itemize}
+	\onslide<+->
+	求复数的三角或指数形式时, 只需取一个辐角就可以了, 不要求必须是辐角主值.
 	\endgroup
 \end{frame}
 
@@ -319,30 +325,34 @@
 	\onslide<+->
 	两个模相等的复数之和的三角和指数形式形式较为简单.
 	\onslide<+->
-	\[
-		\ee^{\ii\theta}+\ee^{\ii\varphi}
-		=2\cos\frac{\theta-\varphi}2\ee^{\frac{\theta+\varphi}2\ii}.
-	\]
-	\vspace{-\baselineskip}
-	\onslide<+->
 	\begin{center}
-		\begin{tikzpicture}[scale=.75]
-			\coordinate [label=below left:0] (O) at (0,0);
-			\coordinate [label=right:\textcolor{main}{$\ee^{\ii\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
-			\coordinate [label=left:\textcolor{main}{$\ee^{\ii\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
-			\coordinate [label=above:\textcolor{second}{$\ee^{\ii\theta}+\ee^{\ii\varphi}$}] (P) at ($(Z1)+(Z2)$);
-			\coordinate (M) at ($0.5*(P)$);
-			\coordinate (X) at (2,0);
-			\draw[thick,main] pic [cstfill1, draw=main,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1};
-			\draw[thick,second] pic [cstfill2, draw=second, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle=Z1--O--P};
-			\draw[cstaxis] (-3,0)--(3,0);
-			\draw[cstaxis] (0,-.4)--(0,3.5);
-			\draw[cstcurve,cstra,main] (O)--(Z1);
-			\draw[cstcurve,cstra,main] (O)--(Z2);
-			\draw[cstcurve,cstra,second] (O)--(P);
-			\draw[cstdash] (Z2)--(Z1)--(P)--(Z2);
-			\draw[thick] (M)--++({.3*cos(16)},{-.3*sin(16)})--++({.3*sin(16)},{.3*cos(16)})--++({-.3*cos(16)},{.3*sin(16)});
-		\end{tikzpicture}
+		\begin{minipage}{.4\textwidth}
+			\centering
+			\[
+				\ee^{\ii\theta}+\ee^{\ii\varphi}
+				=2\cos\frac{\theta-\varphi}2\ee^{\frac{\theta+\varphi}2\ii}.
+			\]
+		\end{minipage}
+		\begin{minipage}{.4\textwidth}
+			\centering\onslide<+->
+			\begin{tikzpicture}[scale=.75]
+				\coordinate [label=below left:0] (O) at (0,0);
+				\coordinate [label=right:\textcolor{main}{$\ee^{\ii\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
+				\coordinate [label=left:\textcolor{main}{$\ee^{\ii\theta}$}] (Z2) at ({3*cos(130)},{3*sin(130)});
+				\coordinate [label=above right:\textcolor{second}{$\ee^{\ii\theta}+\ee^{\ii\varphi}$}] (P) at ($(Z1)+(Z2)$);
+				\coordinate (M) at ($0.5*(P)$);
+				\coordinate (X) at (2,0);
+				\draw[thick,main] pic [cstfill1, draw=main,"$\varphi$", angle eccentricity=1.4, angle radius=0.7cm] {angle=X--O--Z1};
+				\draw[thick,second] pic [cstfill2, draw=second, "$\frac{\theta-\varphi}2$", angle eccentricity=1.7] {angle=Z1--O--P};
+				\draw[cstaxis] (-3,0)--(3,0);
+				\draw[cstaxis] (0,-.4)--(0,3.5);
+				\draw[cstcurve,cstra,main] (O)--(Z1);
+				\draw[cstcurve,cstra,main] (O)--(Z2);
+				\draw[cstcurve,cstra,second] (O)--(P);
+				\draw[cstdash] (Z2)--(Z1)--(P)--(Z2);
+				\draw[thick] (M)--++({.3*cos(16)},{-.3*sin(16)})--++({.3*sin(16)},{.3*cos(16)})--++({-.3*cos(16)},{.3*sin(16)});
+			\end{tikzpicture}
+		\end{minipage}
 	\end{center}
 	\onslide<+->
 	\begin{example}
