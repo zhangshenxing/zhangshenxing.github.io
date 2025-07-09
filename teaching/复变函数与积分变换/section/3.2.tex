@@ -9,14 +9,15 @@
 	设 $C=C_1^-+C_2$.
 	\onslide<+->
 	可以看出
-	\[\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff
-	\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.
+	\[
+		\int_{C_1}f(z)\diff z=\int_{C_2}f(z)\diff z\iff
+		\oint_Cf(z)\diff z=\int_{C_2}f(z)\diff z-\int_{C_1}f(z)\diff z=0.
 	\]
 	\onslide<+->
 	所以 $f(z)$ 的积分只与起点终点有关 $\iff f(z)$ 绕任意闭路的积分为零.
-	\onslide<+->
-	这里, 如果 $C$ 不是闭路(有自相交的点), 也可以拆分为一些闭路的并.
 
+	\onslide<+->
+	这里, 如果闭合曲线 $C$ 不是闭路(有自相交的点), 也可以拆分为一些闭路的并.
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
@@ -69,17 +70,23 @@
 	为了简便假设 $f'(z)$ 连续,
 	\onslide<+->
 	则
-	\[\oint_Cf(z)\diff z=\oint_C(u\diff x-v\diff y)
-	+\ii\oint_C(v\diff x+u\diff y).
+	\[
+		\oint_Cf(z)\diff z
+		=\oint_C(u\diff x-v\diff y)+\ii\oint_C(v\diff x+u\diff y).
 	\]
 	\onslide<+->
-	由格林公式和C-R方程可知
-	\[\oint_Cf(z)\diff z=-\iint_D(v_x+u_y)\diff x\diff y
-	+\ii\iint_D(u_x-v_y)\diff x\diff y=0.
+	由格林公式\onslide<+->{和C-R方程可知}
+	\[
+		\oint_Cf(z)\diff z
+		=-\iint_D(v_x+u_y)\diff x\diff y
+		+\ii\iint_D(u_x-v_y)\diff x\diff y\onslide<7->{=0.}
 	\]
 	\onslide<+->
 	也可以从
-	\[\oint_Cf(z)\diff z=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z=2\ii\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y=0
+	\[
+		\oint_Cf(z)\diff z
+		=-\iint_D\frac{\partial f}{\partial \ov z}\diff z\diff \ov z
+		=2\ii\iint_D\frac{\partial f}{\partial \ov z}\diff x\diff y=0
 	\]
 	看出.
 \end{frame}
@@ -87,59 +94,45 @@
 
 \begin{frame}{柯西-古萨定理}
 	\onslide<+->
-	\begin{algorithm}{柯西-古萨定理}
-	设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
-	\end{algorithm}
+	\begin{theorem*}[][柯西-古萨定理]
+	设 $f(z)$ 在闭路 $C$ 上连续, $C$ 内部解析, 则 $\doint_Cf(z)\diff z=0$.
+	\end{theorem*}
 
 	\onslide<+->
 	\begin{corollary}
-	设 $f(z)$ 在\alert{单连通区域} $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+	设 $f(z)$ 在\alert{单连通区域} $D$ 内解析, $C$ 是 $D$ 内一条闭合曲线, 则 $\doint_Cf(z)\diff z=0$.
 	\end{corollary}
 	\onslide<+->
 	这里的闭合曲线可以不是闭路.
-
-	% \onslide<+->
-	% 这是因为即使不是简单曲线也可以拆分为一些简单曲线.
-	% \onslide<4->
-	% \begin{center}
-	% 	\begin{tikzpicture}
-	% 		\draw[cstcurve,main,smooth,domain=-45:-15] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-	% 		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({3*sqrt(cos(2*\x))*cos(\x)},{3*sqrt(cos(2*\x))*sin(\x)});
-	% 		\draw[cstcurve,main,smooth,domain=-45:-15] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-	% 		\draw[cstcurve,main,smooth,domain=-20:45,cstwla] plot({-2*sqrt(cos(2*\x))*cos(\x)},{2*sqrt(cos(2*\x))*sin(\x)});
-	% 		\draw[cstcurve,second,cstwla,ultra thick] (1.05,0.35) arc (135:-135:0.5);
-	% 		\draw[cstcurve,third,cstwla,ultra thick] (-0.75,-0.25) arc (315:45:0.3535);
-	% 	\end{tikzpicture}
-	% \end{center}
 \end{frame}
 
 
 \begin{frame}{典型例题: 柯西-古萨定理计算积分}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\oint_{|z|=1}\frac1{2z-3}\diff z$.
+	\begin{example}[nearnext]
+		求 $\doint_{|z|=1}\frac1{2z-3}\diff z$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $\dfrac1{2z-3}$ 在 $|z|\le 1$ 上解析,
-		\onslide<+->{因此由柯西-古萨定理 $\displaystyle \oint_{|z|=1}\frac1{2z-3}\diff z=0$.}
+		\onslide<+->{%
+			因此由柯西-古萨定理 $\doint_{|z|=1}\frac1{2z-3}\diff z=0$.
+		}
 	\end{solution}
-
 	\onslide<+->
 	\begin{exercise}
 		\begin{enumerate}
-			\item $\displaystyle\oint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblankframe{$0$}.
-			\item 求 $\displaystyle\oint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblankframe{$0$}.
+			\item $\doint_{|z-2|=1}\frac1{z^2+z}\diff z=$\fillblankframe{$0$}.
+			\item $\doint_{|z|=2}\dfrac{\sin z}{|z|}\diff z=$\fillblankframe{$0$}.
 		\end{enumerate}
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{例: 柯西-古萨定理计算积分}
+\begin{frame}{例题: 柯西-古萨定理计算积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-\ii |=\dfrac12$.
+		求 $\doint_C\frac1{z(z^2+1)}\diff z$, 其中 $C:|z-\ii |=\dfrac12$.
 	\end{example}
 
 	\onslide<+->
@@ -190,22 +183,22 @@
 
 \begin{frame}{复合闭路定理}
 	\onslide<+->
-	\begin{algorithm}{复合闭路定理}
+	\begin{theorem*}[][复合闭路定理]
 		设 $f(z)$ 在复合闭路 $C=C_0+C_1^-+\cdots+C_n^-$ 及其所围成的多连通区域内解析, 则
-	\[
-		\oint_{C_0}f(z)\diff z=
-		\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.
-	\]
-	\end{algorithm}
+		\[
+			\oint_{C_0}f(z)\diff z=
+			\oint_{C_1}f(z)\diff z+\cdots+\oint_{C_n}f(z)\diff z.
+		\]
+	\end{theorem*}
 	\onslide<+->
 	事实上, 复合闭路定理和柯西-古萨定理可以看成一个定理的两种情形: 
 	\onslide<+->
-	设 $C$ 是一个闭路或复合闭路, 若 $f(z)$ 在 $C$ 及其围成的区域(单连通或多连通)内解析, 则 $\displaystyle\oint_Cf(z)\diff z=0$.
+	设 $C$ 是一个闭路或复合闭路, 若 $f(z)$ 在 $C$ 及其围成的区域(单连通或多连通)内解析, 则 $\doint_Cf(z)\diff z=0$.
 \end{frame}
 
 
 
-\begin{frame}{复合闭路定理: 注记}
+\begin{frame}{连续变形定理}
 	\onslide<+->
 	在实际应用中, 如果被积函数 $f(z)$ 在(复合)闭路 $C$ 的内部有有限多个奇点 $z_1,\dots,z_k$.
 	\onslide<+->
@@ -235,9 +228,9 @@
 \end{frame}
 
 
-\begin{frame}{复合闭路定理: 注记}
+\begin{frame}{连续变形定理}
 	\onslide<+->
-	此外, 从复合闭路定理还可以看出, 在计算积分 $\displaystyle \oint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
+	此外, 从复合闭路定理还可以看出, 在计算积分 $\doint_C f(z)\diff z$ 时, $C$ 的具体形状无关紧要, 只要其内部奇点不变, $C$ 可以任意变形.
 	\onslide<+->
 	因为我们总可以选择一个包含这些奇点的闭路 $C'$, 使得 $C'$ 包含在 $C$ 及其变形后的闭路内部. 这样它们的积分自然都和 $C'$ 上的积分相同.
 	\onslide<+->
@@ -264,13 +257,16 @@
 	\onslide<+->
 	\begin{proof}
 		以曲线 $\gamma_1,\gamma_2,\dots,\gamma_{n+1}$ 把 $C_0,C_1,\dots,C_n$ 连接起来, 则它们把区域 $D$ 分成了两个单连通区域 $D_1,D_2$.
-		\onslide<+->{对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
-		}\onslide<+->{因此
-			\[\oint_{C_0}f(z)\diff z-
-		\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.
-	\]
-		}\onslide<+->{于是定理得证.\qedhere}
-		\vspace{-1.7\baselineskip}
+		\onslide<+->{%
+			对 $D_1$ 和 $D_2$ 的边界应用柯西-古萨定理并相加, 则 $\gamma_i$ 对应的部分正好相互抵消,
+		}\onslide<+->{%
+			因此
+			\[
+				\oint_{C_0}f(z)\diff z-\oint_{C_1}f(z)\diff z-\cdots-\oint_{C_n}f(z)\diff z=0.
+			\]
+		}\onslide<+->{%
+			于是定理得证.\qedhere
+		}\bigdel
 		\onslide<1->
 		\begin{center}
 			\begin{tikzpicture}[scale=.9]
@@ -311,59 +307,62 @@
 				\draw[cstcurve,thick,second,visible on=<2->] (1.6,-0.025)--(2.5,-0.025);
 			\end{tikzpicture}
 		\end{center}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 复合闭路定理的应用}
+\begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
-	\begin{example}
-		证明对于任意闭路 $C$, $\displaystyle\int_C(z-a)^n\diff z=0$, $n\neq -1$ 为整数.
+	\begin{example}[nearnext]
+		证明对于任意闭路 $C$, $\dint_C(z-a)^n\diff z=0$, $n\neq -1$ 为整数.
 	\end{example}
-
 	\onslide<+->
-	\begin{proof}
+	\begin{proof}[nearprev]
 		\begin{enumerate}
 			\item 如果 $a$ 不在 $C$ 的内部, 则 $(z-a)^n$ 在 $C$ 及其内部解析.
 			\onslide<+->{%
-				由柯西-古萨定理, $\displaystyle\int_C(z-a)^n\diff z=0$.
+				由柯西-古萨定理,
+				\[
+					\dint_C(z-a)^n\diff z=0.
+				\]
 			}
 			\item 如果 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
 			\onslide<+->{%
 				由复合闭路定理以及上一节的结论
 				\[
 					\int_C(z-a)^n\diff z=\int_{C_1}(z-a)^n\diff z=0.\qedhere
-				
-	\]
+				\]
 			}
-			\vspace{-\baselineskip}
+			\bigdel
 		\end{enumerate}
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 复合闭路定理的应用}
+\begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	同理, 由复合闭路定理和上一节的结论可知当 $a$ 在 $C$ 的内部且 $n=-1$ 时积分为 $2\pi\ii$.
 	\onslide<+->
-	\begin{theorem@}
+	\begin{theorem}
 		当 $a$ 在 $C$ 的内部时,
 	\[
-		\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}2\pi\ii,&n=0;\\0,&n\neq 0.\end{cases}
+		\oint_C\frac{\diff z}{(z-a)^{n+1}}=\begin{cases}
+			2\pi\ii,&n=0;\\
+			0,&n\neq 0.
+		\end{cases}
 	\]
-	\end{theorem@}
+	\end{theorem}
 \end{frame}
 
 
-\begin{frame}{例: 复合闭路定理的应用}
+\begin{frame}{例题: 复合闭路定理的应用}
 	\beqskip{4pt}
 	\onslide<+->
-	\begin{example}
-		\begin{minipage}{.6\textwidth}
-			求 $\displaystyle\int_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm i,-2\pm i$ 形成的矩形闭路.
-		\end{minipage}
-		\begin{minipage}{.36\textwidth}
+	\begin{example}[nearnext,sidepic,righthand width=144pt]
+		求 $\dint_\Gamma\frac{2z-1}{z^2-z}\diff z$, 其中 $\Gamma$ 是由 $2\pm \ii,-2\pm \ii$ 形成的矩形闭路.
+		\tcblower
+		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis] (-2.5,0)--(2.5,0);
 				\draw[cstaxis] (0,-1)--(0,1);
@@ -380,10 +379,10 @@
 					(1.6,0.4) node[second,visible on=<3->] {$C_2$}
 					(-1,-0.5) node[main] {$\Gamma$};
 			\end{tikzpicture}
-		\end{minipage}
+		\end{center}
 	\end{example}
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		函数 $\dfrac{2z-1}{z^2-z}$ 在 $\Gamma$ 内有两个奇点 $z=0,1$.
 		\onslide<+->{%
 			设 $C_1,C_2$ 如图所示,
@@ -396,17 +395,17 @@
 				+\oint_{C_2}\frac1z\diff z+\oint_{C_2}\frac1{z-1}\diff z}\\
 				\visible<+->{=}&\visible<.->{2\pi\ii+0+0+2\pi\ii=4\pi\ii.}
 			\end{align*}
-		}\vspace{-\baselineskip}
+		}\bigdel
 	\end{solution}
 	\endgroup
 \end{frame}
 
 
-\begin{frame}{例: 复合闭路定理的应用}
+\begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_\Gamma\frac{\ee^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
-		\vspace{-.8\baselineskip}
+	\begin{example}[nearnext,sidepic,righthand width=94pt]
+		求 $\dint_\Gamma\frac{\ee^z}z\diff z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:|z|=2, C_2:|z|=1$.
+		\tcblower
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
 				\filldraw[cstcurve,main,cstfill] (0,0) circle (1.5);
@@ -420,13 +419,72 @@
 				\draw[cstaxis] (0,-1.8)--(0,1.8);
 			\end{tikzpicture}
 		\end{center}
-		\vspace{-.8\baselineskip}
+		\bigdel
 	\end{example}
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		函数 $\dfrac{\ee^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
-		\onslide<+->{由复合闭路定理可知 $\displaystyle\int_\Gamma\frac{\ee^z}z\diff z=0$.}
+		\onslide<+->{由复合闭路定理可知 $\dint_\Gamma\frac{\ee^z}z\diff z=0$.}
 	\end{solution}
 \end{frame}
 
 
+\begin{frame}{例题: 有理函数绕闭路积分}
+	\onslide<+->
+	\begin{example}
+		设 $f(z)=\dfrac{p(z)}{q(z)}$ 是一个有理函数, 其中 $p,q$ 的次数分别是 $m,n$.
+		证明: 若 $f(z)$ 的所有奇点都在闭路 $C$ 的内部, 则
+		\[
+			\oint_C f(z)\d z=\begin{cases}
+				0,&\text{若}\ n-m\ge 2,\\
+				2\pi\ii a/b,&\text{若}\ n-m=1,
+			\end{cases}
+		\]
+		其中 $a,b$ 分别是 $p(z),q(z)$ 的最高次项系数.
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{例题: 有理函数绕闭路积分}
+	\beqskip{8pt}
+	\onslide<+->
+	\begin{proof}[near]
+		设 $C_R:\abs{z}=R$.
+		\onslide<+->{%
+			注意到
+			\[
+				\lim_{z\ra\infty} zf(z)=\begin{cases}
+					0,&\text{若}\ n-m\ge 2,\\
+					a/b,&\text{若}\ n-m=1,
+				\end{cases}
+			\]
+		}\onslide<+->{%
+			于是由大圆弧引理可知
+			\[
+				\lim_{R\ra+\infty}\oint_{C_R} f(z)\d z=\begin{cases}
+					0,&\text{若}\ n-m\ge 2,\\
+					2\pi\ii a/b,&\text{若}\ n-m=1.
+				\end{cases}
+			\]
+		}\onslide<+->{%
+			由连续变形定理可知, 当 $R$ 充分大使得 $f(z)$ 的所有奇点都在 $C_R$ 的内部时,
+			\[
+				\oint_C f(z)\d z=\oint_{C_R} f(z)\d z
+			\]
+			恒成立, 由此命题得证.\qedhere
+		}
+	\end{proof}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{例题: 有理函数绕闭路积分}
+	\onslide<+->
+	注意闭路 $C$ 内部必须包含 $f(z)$ 的所有奇点上述结论方可成立.
+	\onslide<+->
+	若 $m\ge n$, 则我们可将 $f(z)$ 写成一个多项式和上述形式有理函数之和.
+	\onslide<+->
+	\begin{exercise}
+		$\doint_{\abs{z}=2}\dfrac{z^2}{(2z+1)(z^2+1)}=$\fillblankframe{$\pi\ii$}.
+	\end{exercise}
+\end{frame}

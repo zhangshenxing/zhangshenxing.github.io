@@ -1,6 +1,7 @@
 \section{初等函数}
 
 \subsection{指数函数}
+
 \begin{frame}{指数函数}
 	\onslide<+->
 	我们将实变函数中的初等函数推广到复变函数.
@@ -21,7 +22,7 @@
 \end{frame}
 
 
-\begin{frame}{指数函数}
+\begin{frame}{指数函数与欧拉恒等式}
 	\onslide<+->
 	有些人会从 $\ee^x,\cos x,\sin x$ 的泰勒展开
 	\begin{align*}
@@ -29,7 +30,7 @@
 		\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}+\cdots\\
 		\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}\cdots
 	\end{align*}
-	形式地带入得到欧拉恒等式 $\ee^{ix}=\cos x+\ii\sin x$.
+	形式地带入得到欧拉恒等式 $\ee^{\ii x}=\cos x+\ii\sin x$.
 	\onslide<+->
 	事实上我们可以把它当做复指数函数的定义, 而不是欧拉恒等式的证明.
 	\onslide<+->
@@ -43,7 +44,7 @@
 	我们来证明\enumnum1和\enumnum2等价.
 	\onslide<+->
 	\begin{align*}
-		\lim_{n\to\infty}\abs{1+\frac zn}^n
+		\lim_{n\to\infty}\Bigabs{1+\frac zn}^n
 		&=\lim_{n\to\infty}\Bigl(1+\frac{2x}n+\frac{x^2+y^2}{n^2}\Bigr)^{\frac n2}\quad
 		\visible<+->{(1^\infty\ \text{型不定式})}\\
 		&\visible<+->{=\exp\left[\lim_{n\to\infty}\frac n2
@@ -52,11 +53,12 @@
 	\onslide<+->
 	不妨设 $n>\abs{z}$, 这样 $1+\dfrac zn$ 落在右半平面,
 	\onslide<+->
-	\[\lim_{n\to\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
-	=\lim_{n\to\infty} n\arctan \frac y{n+x}
-	\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}
+	\[
+		\lim_{n\to\infty} n\arg{\Bigl(1+\frac zn\Bigr)}
+		=\lim_{n\to\infty} n\arctan \frac y{n+x}
+		\visible<+->{=\lim_{n\to\infty}\frac{ny}{n+x}=y.}
 	\]
-	\vspace{-\baselineskip}
+	\bigdel
 	\onslide<+->
 	故 $\exp z=\ee^x(\cos y+\ii\sin y)$.
 \end{frame}
@@ -64,11 +66,11 @@
 
 \begin{frame}{指数函数的性质}
 	\onslide<+->
-	\begin{third}{指数函数}
+	\begin{definition*}[][指数函数]
 	\[
 		\exp z:=\ee^x(\cos y+\ii\sin y).
 	\]
-	\end{third}
+	\end{definition*}
 	\onslide<+->
 	为了方便, 我们也记 $\emphm{\ee^z=\exp z}$.
 	\onslide<+->
@@ -95,8 +97,9 @@
 		设 $f(z_1)=f(z_2)$, 则 $\ee^{z_1/6}=\ee^{z_2/6}$.
 		\onslide<+->{%
 			因此存在 $k\in\BZ$ 使得
-			\[\frac{z_1}6=\frac{z_2}6+2k\pi\ii,
-	\]
+			\[
+				\frac{z_1}6=\frac{z_2}6+2k\pi\ii,
+			\]
 		}\onslide<+->{%
 			从而 $z_1-z_2=12k\pi\ii$.
 		}\onslide<+->{%
@@ -124,30 +127,32 @@
 	我们将多值的这个开头字母大写, 而对应的单值的则是开头字母小写.
 	\onslide<+->
 	例如 $\Arg z$ 和 $\arg z$.
-\end{frame}
 
-
-\begin{frame}{对数函数及其主值}
 	\onslide<+->
 	设 $z\neq0,\ee^w=z=r\ee^{\ii\theta}=\ee^{\ln r+\ii\theta}$,
 	\onslide<+->
 	则
 	\[w=\ln r+\ii\theta+2k\pi\ii,\quad k\in\BZ.
 	\]
-	\vspace{-\baselineskip}
+\end{frame}
+
+
+\begin{frame}{对数函数及其主值}
 	\onslide<+->
-	\begin{third}{对数函数}
+	\begin{definition*}{对数函数}
 		\begin{enumerate}
 			\item 定义\emph{对数函数}
-				\[\Ln z=\ln\abs{z}+\ii\Arg z.
-	\]
-				它是一个多值函数.
+			\[
+				\Ln z=\ln\abs{z}+\ii\Arg z.
+			\]
+			它是一个多值函数.
 			\item 定义\emph{对数函数主值}
-				\[\ln z=\ln\abs{z}+\ii\arg z.
-	\]
-				\vspace{-\baselineskip}
+			\[
+				\ln z=\ln\abs{z}+\ii\arg z.
+			\]
+			\bigdel
 		\end{enumerate}
-	\end{third}
+	\end{definition*}
 
 	\onslide<+->
 	对于每一个整数 $k$, $\ln z+2k\pi\ii$ 都给出了 $\Ln z$ 的一个单值分支.
@@ -156,7 +161,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
 		求 $\Ln 2,\Ln(-1)$ 以及它们的主值.
@@ -166,14 +171,16 @@
 	\begin{solution}
 		\begin{enumerate}
 			\item
-			\[\Ln2=\ln2+2k\pi\ii, k\in\BZ,
-	\]
+			\[
+				\Ln2=\ln2+2k\pi\ii, k\in\BZ,
+			\]
 			\onslide<+->{%
 				主值为 $\ln 2$.
 			}
 			\item
-			\[\Ln(-1)=\ln1+\ii\Arg(-1)=(2k+1)\pi\ii, k\in\BZ,
-	\]
+			\[
+				\Ln(-1)=\ln1+\ii\Arg(-1)=(2k+1)\pi\ii, k\in\BZ,
+			\]
 			\onslide<+->{%
 				主值为 $\pi\ii$.
 			}
@@ -182,7 +189,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
@@ -210,7 +217,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 对数函数的计算}
+\begin{frame}{例题: 对数函数的计算}
 	\onslide<+->
 	\begin{example}
 		解方程 $\ee^z-1-\sqrt 3\ii=0$.
@@ -219,15 +226,17 @@
 	\onslide<+->
 	\begin{solution}
 		由于 $1+\sqrt 3 i=2\ee^{\frac{\pi\ii}3}$,
-		\onslide<+->{因此
-	\[
-		z=\Ln(1+\sqrt 3\ii)=\ln 2+\Bigl(2k+\frac13\Bigr)\pi\ii,\quad k\in\BZ.\]}
-		\vspace{-\baselineskip}
+		\onslide<+->{%
+			因此
+			\[
+				z=\Ln(1+\sqrt 3\ii)=\ln 2+\Bigl(2k+\frac13\Bigr)\pi\ii,\quad k\in\BZ.
+			\]
+		}\bigdel
 	\end{solution}
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\ln(-1-\sqrt3 i)=$\fillblankframe[2cm][3mm]{$\ln 2-\dfrac{2\pi\ii}3$}.
+		求 $\ln(-1-\sqrt3\ii)=$\fillblankframe[2cm][3mm]{$\ln 2-\dfrac{2\pi\ii}3$}.
 	\end{exercise}
 \end{frame}
 
@@ -235,15 +244,18 @@
 \begin{frame}{对数函数的性质}
 	\onslide<+->
 	对数函数与其主值的关系是
-	\[\emphn{\Ln z=\ln z+\Ln 1=\ln z+2k\pi\ii,\quad k\in\BZ}.
+	\[
+		\emphn{\Ln z=\ln z+\Ln 1=\ln z+2k\pi\ii,\quad k\in\BZ}.
 	\]
 
 	\onslide<+->
 	根据辐角以及辐角主值的相应等式, 我们有
-	\[\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
-	\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,
+	\[
+		\Ln(z_1\cdot z_2)=\Ln z_1+\Ln z_2,\quad
+		\Ln\frac{z_1}{z_2}=\Ln z_1-\Ln z_2,
 	\]
-	\[\Ln \sqrt[n]z=\dfrac1n\Ln z.
+	\[
+		\Ln \sqrt[n]z=\dfrac1n\Ln z.
 	\]
 	\onslide<+->
 	而当 $\abs{n}\ge 2$ 时, \alert{$\Ln z^n=n\Ln z$ 不成立}.
@@ -258,8 +270,9 @@
 	设 $x$ 是正实数, 
 	\onslide<+->
 	则
-	\[\ln (-x)=\ln x+\pi\ii,\quad
-	\lim_{y\to0^-}\ln (-x+y\ii)=\ln x-\pi\ii,
+	\[
+		\ln (-x)=\ln x+\pi\ii,\quad
+		\lim_{y\to0^-}\ln (-x+y\ii)=\ln x-\pi\ii,
 	\]
 	\onslide<+->
 	因此 $\ln z$ 在负实轴和零处不连续.
@@ -273,12 +286,15 @@
 
 	\onslide<+->
 	也可以通过C-R方程来得到 $\ln z$ 的解析性和导数: 当 $x>0$ 时,
-	\[\ln z=\half \ln(x^2+y^2)+\ii\arctan \frac yx,
+	\[
+		\ln z=\half \ln(x^2+y^2)+\ii\arctan \frac yx,
 	\]
 	\onslide<+->
-	\[u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},
+	\[
+		u_x=v_y=\frac x{x^2+y^2},\qquad v_x=-u_y=-\frac y{x^2+y^2},
 	\]
-	\[(\ln z)'=(x-yi)/(x^2+y^2)=\frac 1z.
+	\[
+		(\ln z)'=\frac{x-yi}{x^2+y^2}=\frac 1z.
 	\]
 	其它情形可取虚部为 $\arccot\dfrac xy$ 或 $\arccot\dfrac xy-\pi$ 类似证明.
 \endgroup
@@ -289,18 +305,20 @@
 
 \begin{frame}{幂函数的性质: $a$ 为整数时}
 	\onslide<+->
-	\begin{definition}[][幂函数]
+	\begin{definition*}[][幂函数]
 		\begin{enumerate}
 			\item 设 $a\neq 0$, $z\neq 0$, 定义\emph{幂函数}
-			\[w=z^a=\ee^{a\Ln z}
-			=\exp\bigl[a\ln\abs{z}+\ii a(\arg z+2k\pi)\bigr],\quad k\in\BZ.
-	\]
+			\[
+				w=z^a=\ee^{a\Ln z}
+				=\exp\bigl[a\ln\abs{z}+\ii a(\arg z+2k\pi)\bigr],\quad k\in\BZ.
+			\]
 			\item \emph{幂函数的主值}为
-			\[w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\ii a\arg z\bigr).
-	\]
+			\[
+				w=\ee^{a\ln z}=\exp\bigl(a\ln\abs{z}+\ii a\arg z\bigr).
+			\]
 		\end{enumerate}
-		\vspace{-\baselineskip}
-	\end{definition}
+		\bigdel
+	\end{definition*}
 	\onslide<+->
 	根据 $a$ 的不同, 这个函数有着不同的性质.
 
@@ -320,7 +338,8 @@
 	\onslide<+->
 	当 $a=\dfrac pq$ 为分数, $p,q$ 为互质的整数且 $q>1$ 时,
 	\onslide<+->
-	\[z^{\frac pq}=\abs{z}^{\frac pq}\exp\left[\frac{ip(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1
+	\[
+		z^{\frac pq}=\abs{z}^{\frac pq}\exp\left[\frac{\ii p(\arg z+2k\pi)}q\right],\quad k=0,1,\dots,q-1
 	\]
 	具有 $q$ 个值.
 	\onslide<+->
@@ -358,7 +377,7 @@
 \onslide<+->
 	对于其它的 $a$, $z^a$ 具有无穷多个值.
 	\onslide<+->
-	这是因为此时当 $k\neq0$ 时, $2k\pi a i$ 不可能是 $2\pi\ii$ 的整数倍. 
+	这是因为此时当 $k\neq0$ 时, $2k\pi a \ii$ 不可能是 $2\pi\ii$ 的整数倍. 
 	\onslide<+->
 	从而不同的 $k$ 得到的是不同的值.
 	\onslide<+->
@@ -382,25 +401,26 @@
 \begin{frame}{典型例题: 幂函数的计算}
 	\onslide<+->
 	\begin{example}
-		求 $1^{\sqrt 2}$ 和 $i^i$.
+		求 $1^{\sqrt 2}$ 和 $\ii^\ii$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
-	\[
+		\[
 			1^{\sqrt2}=\ee^{\sqrt2\Ln1}
 			\visible<+->{=\ee^{\sqrt 2\cdot 2k\pi\ii}}
 			\visible<+->{=\cos(2\sqrt 2k\pi)+\ii\sin(2\sqrt 2k\pi), k\in\BZ.}
-	\]
+		\]
 		\onslide<+->{%
-	\[
-			i^i=\ee^{\ii\Ln i}
-			\visible<+->{=\exp\left[i\cdot\Bigl(2k+\half\Bigr)\pi\ii\right]}
-			\visible<+->{=\exp\Bigl(-2k\pi-\half\pi\Bigr), k\in\BZ.}\]}
-		\vspace{-\baselineskip}
+			\[
+				\ii^\ii=\ee^{\ii\Ln \ii}
+				\visible<+->{=\exp\left[\ii\cdot\Bigl(2k+\half\Bigr)\pi\ii\right]}
+				\visible<+->{=\exp\Bigl(-2k\pi-\half\pi\Bigr), k\in\BZ.}
+			\]
+		}\bigdel
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		填空题: $3^i$ 的辐角主值是\fillblankframe{$\ln 3$}.
+		$3^\ii$ 的辐角主值是\fillblankframe{$\ln 3$}.
 	\end{exercise}
 \end{frame}
 
@@ -408,13 +428,15 @@
 \begin{frame}{幂函数的性质}
 	幂函数与其主值有如下关系:
 	\onslide<+->
-	\[\emphn{z^a=\ee^{a\ln z}\cdot 1^a
-	=\ee^{a\ln z}\cdot \ee^{2ak\pi\ii},\quad k\in\BZ.}
+	\[
+		\emphn{z^a=\ee^{a\ln z}\cdot 1^a
+		=\ee^{a\ln z}\cdot \ee^{2ak\pi\ii},\quad k\in\BZ.}
 	\]
 
 	\onslide<+->
 	对于幂函数的主值,
-	\[\alertn{(z^a)'}=\Bigl(\ee^{a\ln z}\Bigr)'=\frac{a\ee^{a\ln z}}z=\alert{az^{a-1}}.
+	\[
+		\alertn{(z^a)'}=\Bigl(\ee^{a\ln z}\Bigr)'=\frac{a\ee^{a\ln z}}z=\alertn{az^{a-1}}.
 	\]
 
 	\onslide<+->
@@ -436,23 +458,22 @@
 \begin{frame}{三角函数的定义}
 	\onslide<+->
 	我们知道
-	\[\cos x=\frac{\ee^{ix}+\ee^{-\ii x}}2,\quad
-	\sin x=\frac{\ee^{ix}-\ee^{-\ii x}}{2\ii}
+	\[
+		\cos x=\frac{\ee^{\ii x}+\ee^{-\ii x}}2,\quad
+		\sin x=\frac{\ee^{\ii x}-\ee^{-\ii x}}{2\ii}
 	\]
 	对于任意实数 $x$ 成立,
 	\onslide<+->
 	我们将其推广到复数情形.
 	\onslide<+->
-	\begin{definition}
-		定义余弦和正弦函数
-	\[
-		\displaystyle\cos z=\frac{\ee^{iz}+\ee^{-\ii z}}2,\quad
-		\sin z=\frac{\ee^{iz}-\ee^{-\ii z}}{2\ii}.
-	\]
-	\end{definition}
-
+	\begin{definition*}[][余弦和正弦函数]
+		\[
+			\cos z=\frac{\ee^{\ii z}+\ee^{-\ii z}}2,\quad
+			\sin z=\frac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}.
+		\]
+	\end{definition*}
 	\onslide<+->
-	那么欧拉恒等式 \emph{$\ee^{iz}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
+	那么欧拉恒等式 \emph{$\ee^{\ii z}=\cos z+\ii\sin z$ 对任意复数 $z$ 均成立}.
 \end{frame}
 
 
@@ -460,12 +481,11 @@
 	\onslide<+->
 	不难得到
 	\[
-		\cos(iy)=\dfrac{\ee^y+\ee^{-y}}2,\qquad
-		\visible<+->{\sin(iy)=i\dfrac{\ee^y-\ee^{-y}}2.}
-	
+		\cos(\ii y)=\dfrac{\ee^y+\ee^{-y}}2,\qquad
+		\visible<+->{\sin(\ii y)=\ii\dfrac{\ee^y-\ee^{-y}}2.}
 	\]
 	\onslide<+->
-	当 $y\to\infty$ 时, $\cos(iy)$ 和 $\sin(iy)$ 都 $\to\infty$.
+	当 $y\to\infty$ 时, $\cos(\ii y)$ 和 $\sin(\ii y)$ 都 $\to\infty$.
 	\onslide<+->
 	因此 \alert{$\sin z$ 和 $\cos z$ 并不有界}. 
 	\onslide<+->
@@ -491,8 +511,9 @@
 \begin{frame}{三角函数的性质}
 	\onslide<+->
 	这些三角函数的奇偶性, 周期性和导数与实变情形类似,
-	\[\alertn{(\cos z)'=-\sin z,\quad
-	(\sin z)'=\cos z,}
+	\[
+		\alertn{(\cos z)'=-\sin z,\quad
+		(\sin z)'=\cos z,}
 	\]
 	\onslide<+->
 	且在定义域范围内是处处解析的.
@@ -513,14 +534,17 @@
 	\onslide<+->
 	类似的, 我们可以定义双曲函数:
 	\onslide<+->
-	\[\alertn{\ch z=\frac{\ee^z+\ee^{-z}}2=\cos iz,}
+	\[
+		\alertn{\ch z=\frac{\ee^z+\ee^{-z}}2=\cos \ii z,}
 	\]
 	\onslide<+->
-	\[\alertn{\sh z=\frac{\ee^z-\ee^{-z}}2=-\ii \sin iz,}
+	\[
+		\alertn{\sh z=\frac{\ee^z-\ee^{-z}}2=-\ii \sin \ii z,}
 	\]
 	\onslide<+->
-	\[\alertn{\tanh z=\frac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}
-	=-\ii \tan iz,\quad z\neq \Bigl(k+\half\Bigr)\pi\ii.}
+	\[
+		\alertn{\tanh z=\frac{\ee^z-\ee^{-z}}{\ee^z+\ee^{-z}}
+		=-\ii \tan \ii z,\quad z\neq \Bigl(k+\half\Bigr)\pi\ii.}
 	\]
 	\onslide<+->
 	它们的奇偶性和导数与实变情形类似, 在定义域范围内是处处解析的.
@@ -532,23 +556,25 @@
 
 \begin{frame}{反三角函数和反双曲函数}
 	\onslide<+->
-	设 $z=\cos w=\dfrac{\ee^{iw}+\ee^{-\ii w}}2$,
+	设 $z=\cos w=\dfrac{\ee^{\ii w}+\ee^{-\ii w}}2$,
 	\onslide<+->
 	则
-	\[\ee^{2\iiw}-2z\ee^{iw}+1=0,\quad
-	\visible<+->{\ee^{iw}=z+\sqrt{z^2-1}\ \text{(双值)}.}
+	\[
+		\ee^{2\ii w}-2z\ee^{\ii w}+1=0,\quad
+		\visible<+->{\ee^{\ii w}=z+\sqrt{z^2-1}\ \text{(双值)}.}
 	\]
 	\onslide<+->
 	因此\emph{反余弦函数}为
-	\[w=\Arccos z=-\ii \Ln(z+\sqrt{z^2-1}).
+	\[
+		w=\Arccos z=-\ii \Ln(z+\sqrt{z^2-1}).
 	\]
 	\onslide<+->
 	显然它是多值的.
 	\onslide<+->
 	同理, 我们有:
 	\begin{itemize}
-		\item \emph{反正弦函数} $\Arcsin z=-\ii \Ln(iz+\sqrt{1-z^2})$;
-		\item \emph{反正切函数} $\Arctan z=-\dfrac i2\Ln\dfrac{1+\ii z}{1-\ii z}, z\neq \pm i$;
+		\item \emph{反正弦函数} $\Arcsin z=-\ii \Ln(\ii z+\sqrt{1-z^2})$;
+		\item \emph{反正切函数} $\Arctan z=-\dfrac \ii2\Ln\dfrac{1+\ii z}{1-\ii z}, z\neq \pm \ii$;
 		\item \emph{反双曲余弦函数} $\Arch z=\Ln(z+\sqrt{z^2-1})$;
 		\item \emph{反双曲正弦函数} $\Arsh z=\Ln(z+\sqrt{z^2+1})$;
 		\item \emph{反双曲正切函数} $\Arth z=\dfrac12\Ln\dfrac{1+z}{1-z}, z\neq \pm1$.
@@ -556,44 +582,210 @@
 \end{frame}
 
 
-\begin{frame}{例: 解三角函数方程}
+\begin{frame}{例题: 解三角函数方程}
 	\onslide<+->
 	\begin{example}
 		解方程 $\sin z=2$.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}
-	由于 $\sin z=\dfrac{\ee^{iz}-\ee^{-\ii z}}{2\ii}=2$,
-	\onslide<+->{我们有
-	\[\ee^{2\ii z}-4\ii\ee^{iz}-1=0.
-	\]
-	}\onslide<+->{于是 $\ee^{iz}=(2\pm\sqrt 3)\ii$,
-	}\onslide<+->{
-	\[
-		z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
-	\vspace{-\baselineskip}
+	由于 $\sin z=\dfrac{\ee^{\ii z}-\ee^{-\ii z}}{2\ii}=2$,
+	\onslide<+->{%
+		我们有
+		\[
+			\ee^{2\ii z}-4\ii\ee^{\ii z}-1=0.
+		\]
+	}\onslide<+->{%
+		于是 $\ee^{\ii z}=(2\pm\sqrt 3)\ii$,
+	}\onslide<+->{%
+		\[
+			z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm \ii\ln(2+\sqrt3),\quad k\in\BZ.
+		\]
+	}\bigdel
 	\end{solution}
 \end{frame}
 
-\begin{frame}{例: 解三角函数方程}
+\begin{frame}{例题: 解三角函数方程}
 	\onslide<+->
 	\begin{solution}[][另解]
 	由 $\sin z=2$ 可知
-	\[\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3\ii.
-	\]
-	\onslide<+->{于是 $\ee^{iz}=\cos z+\ii\sin z=(2\pm\sqrt 3)\ii$,
-	}\onslide<+->{
 	\[
-		z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm i\ln(2+\sqrt3),\quad k\in\BZ.\]}
-	\vspace{-\baselineskip}
+		\cos z=\sqrt{1-\sin^2 z}=\pm\sqrt 3\ii.
+	\]
+	\onslide<+->{%
+		于是 $\ee^{\ii z}=\cos z+\ii\sin z=(2\pm\sqrt 3)\ii$,
+	}\onslide<+->{%
+		\[
+			z=-\ii \Ln[(2\pm\sqrt 3)\ii]=\Bigl(2k+\half\Bigr)\pi\pm \ii\ln(2+\sqrt3),\quad k\in\BZ.
+		\]
+	}\bigdel
 	\end{solution}
 	\onslide<+->
-	我们总有形式
+	对于任意 $z$, 总存在 $\theta$ 使得
 	\begin{align*}
 		\Arcsin z&=(2k+\half)\pi\pm \theta,\\
 		\Arccos z&=2k\pi\pm \theta,\\
-		\Arctan z&=k\pi+\theta.
+		\Arctan z&=k\pi+\theta,\quad (z\ne\pm\ii).
 	\end{align*}
 \end{frame}
 
+
+\subsection{在有理函数的应用}
+
+
+\begin{frame}{有理函数分拆}
+	\onslide<+->
+	称分子次数小于分母次数的有理函数为\emph{真分式}.
+	\onslide<+->
+	任何一个有理函数 $f(z)$ 都可以通过带余除法分解为一个多项式 $g(z)$ 和一个真分式之和.
+
+	\onslide<+->
+	若这个有理函数分母的零点均能求出, 则这个真分式又可以分拆为部分分式之和, 其中\emph{部分分式}是指形如 $\dfrac{a}{(x-b)^k}$ 的真分式.
+	\onslide<+->
+	我们来介绍求这种分拆的一种方法.
+\end{frame}
+
+
+\begin{frame}{例题: 有理函数分拆}
+	\beqskip{2pt}
+	\onslide<+->
+	\begin{example}[near]
+		将 $f(z)=\dfrac{1}{(z-1)(z-2)^2}$ 展开成部分分式之和.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[near]
+		设 $f(z)=\dfrac{a}{z-1}+\dfrac{b}{z-2}+\dfrac{c}{(z-2)^2}$,
+		\onslide<+->{%
+			则
+			\begin{align*}
+				a&=\lim_{z\ra1} (z-1)f(z)
+					=\lim_{z\ra1} \frac{1}{(z-2)^2}
+					=1,\\
+				\onslide<+->{b}&\onslide<.->{=\lim_{z\ra2} \bigl((z-2)^2f(z)\bigr)'
+					=\lim_{z\ra2} \Bigl(\frac{1}{z-1}\Bigr)'
+					=-1,}\\
+				\onslide<+->{c}&\onslide<.->{=\lim_{z\ra2} (z-2)^2f(z)
+					=\lim_{z\ra2} \frac{1}{z-1}=1.}
+			\end{align*}
+		}\onslide<+->{%
+			因此
+			\[
+				f(z)=\frac{1}{z-1}-\frac{1}{z-2}+\frac{1}{(z-2)^2}.
+			\]
+		}\bigdel
+	\end{solution}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{有理函数的导数\noexer}
+	\onslide<+->
+	得到这种分拆之后, 我们可以求出该有理函数的任意阶导数.
+	\onslide<+->
+	\begin{example}[nearnext]
+		计算 $f(x)=\dfrac1{1+x^2}$ 的 $n$ 阶导数.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		设
+		\[
+			f(z)
+			=\frac1{1+z^2}
+			=\frac \ii2\biggl(\frac1{z+\ii}-\frac1{z-\ii}\biggr),
+		\]
+		\onslide<+->{%
+			则它在除 $z=\pm \ii$ 外处处解析,
+		}\onslide<+->{%
+			且
+			\begin{align*}
+				f^{(n)}(z)&
+				=\frac \ii2\biggl(\frac1{z+\ii}-\frac1{z-\ii}\biggr)^{(n)}
+				\onslide<+->{=\frac \ii2\cdot(-1)^n n!\biggl(\frac1{(z+\ii)^{n+1}}-\frac1{(z-\ii)^{n+1}}\biggr)}\\&
+				\onslide<+->{=(-1)^{n+1}n!\Im{(z+\ii)^{-n-1}}.}
+			\end{align*}
+		}\bigdel
+	\end{solution}
+\end{frame}
+	
+	
+\begin{frame}{有理函数的导数}
+	\onslide<+->
+	\begin{solution}[][]%
+		当 $z=x$ 为实数时,
+		\[
+			\abs{x+\ii}=\sqrt{x^2+1},\qquad
+			\arg(x+\ii)=\arccot x,
+		\]
+		\onslide<+->{%
+			于是
+			\[
+				\frac1{(z\pm\ii)^{n+1}}=(x^2+1)^{-\frac{n+1}2}\ee^{\pm\ii (n+1)\arccot x}.
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\biggl(\frac1{1+x^2}\biggr)^{(n)}
+				=(-1)^nn!(x^2+1)^{-\frac{n+1}2}\sin\bigl((n+1)\arccot x\bigr).
+			\]
+		}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{有理函数的不定积分\noexer}
+	\onslide<+->
+	我们还可以利用复对数函数来计算实有理函数的不定积分.
+	\onslide<+->
+	\begin{example}[nearnext]
+		计算 $\dint \frac1{x^3-1}\d x$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		设 $\zeta=\ee^{\frac{2\cpi\ii}3}=\dfrac{-1+\sqrt3\ii}2$, 
+		\onslide<+->{%
+			那么我们有分拆
+			\[
+				f(x)
+				=\frac1{x^3-1}
+				=\frac13\Bigl(\frac{1}{x-1}+\frac{\zeta}{x-\zeta}+\frac{\zeta^2}{x-\zeta^2}\Bigr),
+			\]
+		}\onslide<+->{%
+			设
+			\[
+				g(z)=\frac13\bigl(
+					\ln(z-1)+\zeta\ln(z-\zeta)+\zeta^2\ln(z-\zeta^2)
+				\bigr).
+			\]
+		}\bigdel
+	\end{solution}
+\end{frame}
+	
+	
+\begin{frame}{有理函数的不定积分\noexer}
+	\beqskip{5pt}
+	\onslide<+->
+	\begin{solution}[][]%
+		$g(z)$ 在复平面去掉三条射线 $x+\zeta^k,x\le 0$ 内的导数为 $f(z)$.
+		\onslide<+->{%
+			当 $z=x>1$ 时, 
+			\begin{align*}
+				&3g(z)-\ln(x-1)=2\Re\bigl(\zeta\ln(x-\zeta)\bigr)
+				=2\Re\biggl(\frac{-1+\sqrt3\ii}2\ln\Bigl(x-\frac{-1+\sqrt3\ii}2\Bigr)\biggr)\\
+				={}&2\Re\biggl(
+					\frac{-1+\sqrt3\ii}2
+						\Bigl(\ln\sqrt{x^2+x+1}-\ii\arccot\frac{2x+1}{\sqrt3}\Bigr)
+					\biggr)\\
+				={}&\ln\sqrt{x^2+x+1}+\sqrt 3\arccot\frac{2x+1}{\sqrt3}.
+			\end{align*}
+		}\onslide<+->{%
+			于是我们得到当 $x>1$ 时,
+			\[
+				g(x)=\frac13\ln\abs{x-1}-\frac16\ln(x^2+x+1)
+					+\frac{\sqrt3}3\arccot\frac{2x+1}{\sqrt3}.
+			\]
+		}\onslide<+->{%
+			可以看出对于实数 $x<1$, 上式的导数也等于 $f(x)$, 从而 $f(x)$ 的不定积分为 $g(x)+C$, $C\in\BR$.
+		}
+	\end{solution}
+	\endgroup
+\end{frame}

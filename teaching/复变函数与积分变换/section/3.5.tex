@@ -35,10 +35,10 @@
 		}\onslide<+->{由C-R方程 $u_x=v_y,u_y=-v_x$
 		}\onslide<+->{可知
 			\[\Delta u=u_{xx}+u_{yy}=v_{yx}-v_{xy}=0,\]}
-			\vspace{-\baselineskip}
+			\bigdel
 		\onslide<+->{
 			\[\Delta v=v_{xx}+v_{yy}=-u_{yx}+u_{xy}=0.\qedhere\]}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{proof}
 \end{frame}
 
@@ -82,14 +82,14 @@
 	\onslide<+->
 	在实际计算中, 我们\emph{一般不用线积分}来得到共轭调和函数, 而是采用下述两种办法:
 	\onslide<+->
-	\begin{algorithm}{偏积分法}
+	\begin{theorem*}[][偏积分法]
 		通过 $v_y=u_x$ 解得 $v=\varphi(x,y)+\psi(x)$, 其中 $\psi(x)$ 待定.
 		\onslide<+->{再代入 $u_y=-v_x$ 中解出 $\psi(x)$.}
-	\end{algorithm}
+	\end{theorem*}
 	\onslide<+->
-	\begin{algorithm}{不定积分法}
+	\begin{theorem*}[][不定积分法]
 		对 $f'(z)=u_x-\ii u_y=v_y+\ii v_x$ 求不定积分得到 $f(z)$.
-	\end{algorithm}
+	\end{theorem*}
 \end{frame}
 
 
@@ -120,7 +120,7 @@
 	\]
 				}
 		\end{itemize}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 \end{frame}
 
@@ -161,14 +161,14 @@
 				\psi'(y)=-1,\quad\psi(y)=-y+C.
 	\]
 		}\onslide<+->{%
-			\vspace{-\baselineskip}
+			\bigdel
 			\begin{align*}
 				f(z)&=u+\ii v
 				=\ee^x(x\cos y-y\sin y)+x-y+C
 				+\ii\bigl[\ee^x(y\cos y+x\sin y)+x+y\bigr]\\
 				&\visible<+->{=z\ee^z+(1+\ii)z+C,\quad C\in\BR.}
 			\end{align*}
-		}\vspace{-\baselineskip}
+		}\bigdel
 	\end{solution}
 	\onslide<+->
 	这里, 我们只需看 $\ee^x\cos y$ 的系数 $x+\iiy=z$, 即 $f(z)$ 中 $\ee^z$ 的系数.

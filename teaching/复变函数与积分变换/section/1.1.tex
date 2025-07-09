@@ -33,18 +33,18 @@
 		解方程 $x^3+6x-20=0$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev,sidepic,righthand width=3.2cm]
+	\begin{solution}[nearprev,sidepic,righthand width=99pt]
 		设 $x=u+v$,
 		\onslide<+->{%
 			那么
 			\[
 				u^3+v^3+3uv(u+v)+6(u+v)-20=0.
-			\]%
+			\]
 		}\onslide<+->{%
 			我们希望
 			\[
 				u^3+v^3=20,\qquad uv=-2.
-			\]%
+			\]
 		}\onslide<+->{%
 			那么 $u^3,v^3$ 满足一元二次方程
 			\[
@@ -54,7 +54,7 @@
 			解得
 			\[
 				u^3=10\pm\sqrt{108}=(1\pm\sqrt3)^3.
-			\]%
+			\]
 		}\onslide<+->{%
 			所以 $u=1\pm\sqrt3$, $v=1\mp\sqrt 3$.
 		}\onslide<+->{%
@@ -93,7 +93,7 @@
 		解方程 $x^3-7x+6=0$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near,sidepic,righthand width=2.9cm,indent]
+	\begin{solution}[near,sidepic,righthand width=90pt,indent]
 		类似地 $x=u+v$, 其中
 		\[
 			u^3+v^3=-6,\qquad uv=\frac 73.
@@ -108,15 +108,15 @@
 			于是
 			\[
 				u=\dfrac{3+2\sqrt{-3}}3,\dfrac{-9+\sqrt{-3}}6,\dfrac{3-5\sqrt{-3}}6,
-			\]%
+			\]
 		}\onslide<+->{%
 			\[
 				v=\dfrac{3-2\sqrt{-3}}3,\dfrac{-9-\sqrt{-3}}6,\dfrac{3+5\sqrt{-3}}6,
-			\]%
+			\]
 		}\onslide<+->{%
 			\[
 				x=u+v=2,-3,1.
-			\]%
+			\]
 		}\bigdel
 		\tcblower
 		\onslide<+->{%
@@ -471,11 +471,11 @@
 			\onslide<+->{%
 			一般地, 对于整数 $n$, 
 			\[
-				\ii^{4n}=1,\quad \ii^{4n+1}=i,\quad
+				\ii^{4n}=1,\quad \ii^{4n+1}=\ii,\quad
 				\ii^{4n+2}=-1,\quad \ii^{4n+3}=-\ii.
 			\]
 			}
-			\vspace{-\baselineskip}
+			\bigdel
 			\item 令 $\omega=\dfrac{-1+\sqrt 3\ii}2$, 则 $\omega^2=\dfrac{-1-\sqrt3\ii}2,\omega^3=1$.
 			\item 令 $z=1+\ii$, \onslide<+->{则
 			\[
@@ -491,7 +491,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 复数代数式的计算}
+\begin{frame}{例题: 复数代数式的计算}
 	\onslide<+->
 	实数情形的等差数列求和公式、等比数列求和公式、二项式展开、平方差公式等代数恒等式在复数情形也成立.
 	\onslide<+->
@@ -564,7 +564,7 @@
 				z_1\cdot\ov{z_2}-\ov{z_1}\cdot z_2
 				=z_1\cdot\ov{z_2}-\ov{z_1\cdot\ov{z_2}}
 				=2\ii\Im(z_1\cdot\ov{z_2}).\qedhere
-			\]%
+			\]
 		}\bigdel
 	\end{proof}
 \end{frame}
@@ -644,50 +644,3 @@
 		}
 	\end{solution}
 \end{frame}
-
-
-
-% \begin{frame}{复数域\noexer}
-% 	\begin{itemize}
-% 		\item 复数全体构成一个\emph{域}.
-% 		\item 所谓的域, 是指带有如下内容和性质的集合
-% 		\begin{itemize}\bf
-% 			\item 包含 $0,1$, 且有四则运算;
-% 			\item 满足加法结合/交换律, 乘法结合/交换/分配律;
-% 			\item 对任意 $a$, $a+0=a\times 1=a$.
-% 		\end{itemize}
-% 		\item 有理数全体 $\BQ$, 实数全体 $\BR$ 也构成域, 它们是 $\BC$ 的子域.
-% 		\item 与有理数域和实数域有着本质不同的是, 复数域是\emph{代数闭域}:
-% 		\item 对于任何次数 $n\ge 1$ 的复系数多项式
-% 		\[
-% 			p(z)=z^n+c_{n-1}z^{n-1}+\cdots+c_1z+c_0,
-% 		\]
-% 		都存在复数 $z_0$ 使得 $p(z_0)=0$.
-% 		\item 由此不难知道, 复系数多项式可以因式分解成一次多项式的乘积.
-% 		\item 我们会在第五章证明该结论.
-% 	\end{itemize}
-% \end{frame}
-
-
-% \begin{frame}{复数域不是有序域\noexer}
-% 	\begin{itemize}
-% 		\item \onslide<+->
-% 	\end{itemize}
-% 	在 $\BQ,\BR$ 上可以定义出一个好的大小关系,
-% 	\onslide<+->
-% 	换言之它们是有序域, 即存在一个满足下述性质的 $>$:
-% 	\begin{itemize}\bf
-% 		\item 若 $a\neq b$, 则要么 $a>b$, 要么 $b>a$;
-% 		\item 若 $a>b$, 则对于任意 $c$, $a+c>b+c$;
-% 		\item 若 $a>b,c>0$, 则 $ac>bc$.
-% 	\end{itemize}
-% 	\onslide<+->
-% 	而 \alert{$\BC$ 却不是有序域}.
-% 	\onslide<+->
-% 	若 $\ii>0$, 则
-% 	\[
-% 		-1=\ii\cdot \ii>0,\quad -\ii =-1\cdot \ii>0.
-% 	\]
-% 	\onslide<+->
-% 	于是 $0>\ii$, 矛盾! 同理 $\ii<0$ 也不可能.
-% \end{frame}

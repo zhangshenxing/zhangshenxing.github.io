@@ -18,9 +18,8 @@
 		\end{enumerate}
 	\end{definition}}
 	\onslide<2->
-	\begin{center}
-		\begin{minipage}{.4\textwidth}
-			\centering
+	\begin{twopart}[nearprev]{185pt}
+		\begin{center}
 			\begin{tikzpicture}[scale=.8]
 				\coordinate [label=below left:$0$] (O) at (0,0);
 				\coordinate [label=above:\textcolor{second}{$z=x+y\ii$}] (Z) at (3,2);
@@ -35,9 +34,9 @@
 				\draw[cstdash] (X)--(Z)--(Y);
 				\fill[cstdot,second] (Z) circle;
 			\end{tikzpicture}
-		\end{minipage}
-		\begin{minipage}{.56\textwidth}
-			\centering
+		\end{center}
+		\tcblower
+		\begin{center}
 			\onslide<3->{
 			\[
 				x=r\cos\theta,\qquad y=r\sin\theta,
@@ -45,8 +44,8 @@
 			\[
 				r=\sqrt{x^2+y^2}.
 			\]}
-		\end{minipage}
-	\end{center}
+		\end{center}
+	\end{twopart}
 \end{frame}
 
 
@@ -63,12 +62,11 @@
 	\onslide<8->
 	注意 \alert{$\arg \ov z=-\arg z$ 未必成立}, 当且仅当 $z$ 不是负实数和 $0$ 时该等式成立.
 	\onslide<2->
-	\bigdel
-	\begin{center}
-		\begin{minipage}{.46\textwidth}
-			\centering
-			\onslide<4->{
-			\[\arg z=\begin{cases}
+	\begin{twopart}[near]{203pt}
+		\smalldel
+		\onslide<4->{
+		\[
+			\arg z=\begin{cases}
 				\visible<4->{\emphn{\arctan\dfrac yx,}}&\visible<4->{\emphn{x>0;}}\vspace{1ex}\\
 				\visible<5->{\alertn{\arctan\dfrac yx+\pi,}}&\visible<5->{\alertn{x<0,y\ge0;}}\vspace{1ex}\\
 				\visible<6->{\color{third}{\arctan\dfrac yx-\pi,}}&\visible<6->{\color{third}{x<0,y<0;}}\\
@@ -76,9 +74,10 @@
 				\visible<7->{\color{fourth}{x=0,y>0;}}\\
 				\visible<7->{\color{fourth}{-\dfrac\pi2,}}&
 				\visible<7->{\color{fourth}{x=0,y<0.}}
-				\end{cases}\]}
-		\end{minipage}
-		\begin{minipage}{.52\textwidth}
+			\end{cases}
+		\]}\bigdel
+		\tcblower\smalldel
+		\begin{center}
 			\begin{tikzpicture}
 				\draw[cstaxis](-2.5,0)->(2.5,0); 
 				\draw[cstaxis](0,-2)->(0,2);
@@ -109,17 +108,16 @@
 					\fill[cstdot,fourth] (H) circle;
 				\end{scope}
 			\end{tikzpicture}
-		\end{minipage}
-	\end{center}
+		\end{center}\bigdel
+	\end{twopart}
 \end{frame}
 
 
 \begin{frame}{复数模的性质}\small
 	\onslide<+->
 	复数的模满足如下性质
-	\begin{center}
-		\begin{minipage}{.52\textwidth}
-			\centering
+	\begin{twopart}{173pt}
+		\begin{center}
 			\begin{tikzpicture}[visible on=<3->,scale=.75]
 				\draw[cstaxis] (-4,0)--(4.3,0);
 				\draw[cstaxis] (0,-3)--(0,3);
@@ -150,7 +148,6 @@
 						\draw[main] (Z1)--(M);
 					\end{scope}
 				\end{scope}
-
 				\begin{scope}[visible on=<5->]
 					\coordinate (A) at (2.7,2.4);
 					\draw[decorate,decoration={brace,amplitude=5},main] (A)--(P) node[midway,above,sloped] {$|z_3|$};
@@ -161,16 +158,15 @@
 					\end{scope}
 				\end{scope}
 			\end{tikzpicture}
-		\end{minipage}
-		\begin{minipage}{.46\textwidth}
-			\begin{itemize}\bf
-				\item $z\ov z=|z|^2=|\ov z|^2$;
-				\item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
-				\item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
-				\item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
-			\end{itemize}
-		\end{minipage}
-	\end{center}
+		\end{center}
+		\tcblower
+		\begin{enumerate}\bf
+			\item $z\ov z=|z|^2=|\ov z|^2$;
+			\item $\abs{\Re z},\abs{\Im z}\le |z|\le\abs{\Re z}+\abs{\Im z}$;
+			\item $\big||z_1|-|z_2|\big|\le|z_1\pm z_2|\le|z_1|+|z_2|$;
+			\item $|z_1+z_2+\cdots+z_n|\le|z_1|+|z_2|+\cdots+|z_n|$.
+		\end{enumerate}
+	\end{twopart}
 \end{frame}
 
 
@@ -241,7 +237,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求复数的三角和指数形式}
+\begin{frame}{例题: 求复数的三角和指数形式}
 	\onslide<+->
 	\begin{example}[nearnext]
 		将 $z=-\sqrt{12}-2\ii$ 化成三角形式和指数形式.
@@ -269,7 +265,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求复数的三角和指数形式}
+\begin{frame}{例题: 求复数的三角和指数形式}
 	\beqskip{10pt}
 	\onslide<+->
 	\begin{example}[nearnext]
@@ -286,11 +282,11 @@
 				\onslide<+->{=\arctan\cot\frac\pi 5}
 				\onslide<+->{=\frac\pi2-\frac\pi5
 				=\frac{3\pi}{10}.}
-			\]%
+			\]
 		}\onslide<+->{%
 			\[
 				z=\cos\frac{3\pi}{10}+\ii\sin\frac{3\pi}{10}=\ee^{\frac{3\pi\ii}{10}}.
-			\]%
+			\]
 		}\bigdel
 	\end{solution}
 	\onslide<+->
@@ -299,7 +295,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求复数的三角和指数形式}
+\begin{frame}{例题: 求复数的三角和指数形式}
 	\onslide<+->
 	\begin{solution}[][另解]
 		\[
@@ -325,16 +321,13 @@
 	\onslide<+->
 	两个模相等的复数之和的三角和指数形式形式较为简单.
 	\onslide<+->
-	\begin{center}
-		\begin{minipage}{.4\textwidth}
-			\centering
-			\[
-				\ee^{\ii\theta}+\ee^{\ii\varphi}
-				=2\cos\frac{\theta-\varphi}2\ee^{\frac{\theta+\varphi}2\ii}.
-			\]
-		\end{minipage}
-		\begin{minipage}{.4\textwidth}
-			\centering\onslide<+->
+	\begin{twopart}{180pt}
+		\[
+			\ee^{\ii\theta}+\ee^{\ii\varphi}
+			=2\cos\frac{\theta-\varphi}2\ee^{\frac{\theta+\varphi}2\ii}.
+		\]
+		\tcblower
+		\begin{center}
 			\begin{tikzpicture}[scale=.75]
 				\coordinate [label=below left:0] (O) at (0,0);
 				\coordinate [label=right:\textcolor{main}{$\ee^{\ii\varphi}$}] (Z1) at ({3*cos(18)},{3*sin(18)});
@@ -352,8 +345,8 @@
 				\draw[cstdash] (Z2)--(Z1)--(P)--(Z2);
 				\draw[thick] (M)--++({.3*cos(16)},{-.3*sin(16)})--++({.3*sin(16)},{.3*cos(16)})--++({-.3*cos(16)},{.3*sin(16)});
 			\end{tikzpicture}
-		\end{minipage}
-	\end{center}
+		\end{center}
+	\end{twopart}
 	\onslide<+->
 	\begin{example}
 		若 $|z|=1,\arg z=\theta$, 则 $z+1=2\cos\dfrac\theta2 \ee^{\frac{\theta \ii}2}$.

@@ -7,7 +7,7 @@
 	柯西-古萨定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
 
 	\onslide<+->
-	\begin{algorithm}{柯西积分公式}
+	\begin{theorem*}[][柯西积分公式]
 		设
 		\begin{itemize}[<*>]
 			\item 函数 $f(z)$ 在(复合)闭路 $C$ 及其内部(围成的区域) $D$ 解析,
@@ -15,7 +15,7 @@
 		\end{itemize}
 		\onslide<+->{则
 			\[f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\diff z.\]}
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	如果 $z_0\notin \ov D$, 由柯西-古萨定理, 右侧的积分是 $0$.
@@ -59,7 +59,7 @@
 			\end{align*}
 		}\onslide<+->{%
 			由 $\varepsilon$ 的任意性可知 
-			$\displaystyle\oint_C\frac{f(z)}{z-z_0}\diff z=2\pi\ii f(z_0)$.\qedhere
+			$\doint_C\frac{f(z)}{z-z_0}\diff z=2\pi\ii f(z_0)$.\qedhere
 		}
 	\end{proof}
 \end{frame}
@@ -71,7 +71,7 @@
 
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=4}\frac{\sin z}z\diff z$.
+		求 $\doint_{|z|=4}\frac{\sin z}z\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -91,7 +91,7 @@
 \begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=2}\frac{\ee^z}{z-1}\diff z$.
+		求 $\doint_{|z|=2}\frac{\ee^z}{z-1}\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -108,7 +108,7 @@
 
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\oint_{|z|=2\pi}\frac{\cos z}{z-\pi}\diff z=$\fillblankframe{$-2\pi\ii$}.
+		求 $\doint_{|z|=2\pi}\frac{\cos z}{z-\pi}\diff z=$\fillblankframe{$-2\pi\ii$}.
 	\end{exercise}
 \end{frame}
 
@@ -116,7 +116,7 @@
 \begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
 	\begin{example}
-		设 $f(z)=\displaystyle\oint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta$, 求 $f'(1+\ii)$.
+		设 $f(z)=\doint_{|\zeta|=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\diff \zeta$, 求 $f'(1+\ii)$.
 	\end{example}
 
 	\onslide<+->
@@ -140,7 +140,7 @@
 \begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=3}\frac{\ee^z}{z(z^2-1)}\diff z$.
+		求 $\doint_{|z|=3}\frac{\ee^z}{z(z^2-1)}\diff z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -189,19 +189,19 @@
 	不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
 
 	\onslide<+->
-	\begin{algorithm}{柯西积分公式}
+	\begin{theorem*}[][柯西积分公式]
 		设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
 	\[
 		f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\diff z.
 	\]
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	假如 $f(z)$ 有泰勒展开
 	\[f(z)=f(z_0)+f'(z_0)(z-z_0)+\cdots+\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots
 	\]
 	\onslide<+->
-	那么由 $\displaystyle\oint_C \frac{\diff z}{(z-z_0)^n}$ 的性质可知上述公式右侧应当为 $f^{(n)}(z_0)$.
+	那么由 $\doint_C \frac{\diff z}{(z-z_0)^n}$ 的性质可知上述公式右侧应当为 $f^{(n)}(z_0)$.
 \end{frame}
 
 
@@ -250,7 +250,7 @@
 
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
+		求 $\doint_{|z|=2}\frac{\cos(\pi z)}{(z-1)^5}\diff z.$
 	\end{example}
 
 	\onslide<+->
@@ -272,7 +272,7 @@
 	\beqskip{6pt}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=2}\frac{\ee^z}{(z^2+1)^2}\diff z.$
+		求 $\doint_{|z|=2}\frac{\ee^z}{(z^2+1)^2}\diff z.$
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -284,19 +284,19 @@
 				 \oint_{C_1}\frac{\ee^z}{(z^2+1)^2}\diff z
 				=\frac{2\pi\ii}{1}\biggl(\frac{\ee^z}{(z+\ii)^2}\biggr)'\Big|_{z=i}
 				\visible<+->{=2\pi\ii\biggl(\frac{\ee^z}{(z+\ii)^2}-\frac{2\ee^z}{(z+\ii)^3}\biggr)\Big|_{z=i}
-				=\frac{(1-\ii )\ee^i\pi}2.}
+				=\frac{(1-\ii )\ee^\ii\pi}2.}
 	\]
 		}\onslide<+->{%
-			类似地, $\displaystyle\oint_{C_2}\frac{\ee^z}{(z^2+1)^2}\diff z=\frac{-(1+\ii)\ee^{-\ii }\pi}2$.
+			类似地, $\doint_{C_2}\frac{\ee^z}{(z^2+1)^2}\diff z=\frac{-(1+\ii)\ee^{-\ii }\pi}2$.
 		}\onslide<+->{%
 			故
 			\begin{align*}
 				 \oint_{|z|=2}\frac{\ee^z}{(z^2+1)^2}\diff z
 			 &=\biggl(\oint_{C_1}+\oint_{C_2}\biggr)\frac{\ee^z}{(z^2+1)^2}\diff z\\
-			 &=\frac{(1-\ii )\ee^i\pi}2+\frac{-(1+\ii)\ee^{-\ii }\pi}2
+			 &=\frac{(1-\ii )\ee^\ii\pi}2+\frac{-(1+\ii)\ee^{-\ii }\pi}2
 			  =\pi\ii(\sin1-\cos1).
 			\end{align*}
-		}\vspace{-\baselineskip}
+		}\bigdel
 	\end{solution}
 	\endgroup
 \end{frame}
@@ -305,7 +305,7 @@
 \begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=1}z^n\ee^z\diff z$, 其中 $n$ 是整数.
+		求 $\doint_{|z|=1}z^n\ee^z\diff z$, 其中 $n$ 是整数.
 	\end{example}
 
 	\onslide<+->
@@ -330,7 +330,7 @@
 	\]
 				}
 		\end{enumerate}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 \end{frame}
 
@@ -339,7 +339,7 @@
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z$ 和 $\displaystyle\oint_{|z-1|=2}\frac1{(z-2)^2z^3}\diff z$.
+		求 $\doint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z$ 和 $\doint_{|z-1|=2}\frac1{(z-2)^2z^3}\diff z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}
@@ -351,7 +351,6 @@
 					\oint_{|z-3|=2}\frac1{(z-2)^2z^3}\diff z
 					=\frac{2\pi\ii}{1!}\Bigl(\frac1{z^3}\Bigr)'\bigg|_{z=2}
 					=-\frac{3\pi\ii}8.
-				
 	\]
 			}
 			\item $\dfrac1{(z-2)^2z^3}$ 在 $|z-1|<3$ 的奇点为 $z=0,2$.
@@ -364,7 +363,7 @@
 				\end{align*}
 			}
 		\end{enumerate}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 	\endgroup
 \end{frame}
@@ -374,11 +373,11 @@
 	\beqskip{2pt}
 	\onslide<+->
 	\begin{exercise}
-		$\displaystyle\oint_{|z-2\ii|=3}\frac1{z^2(z-\ii )}\diff z=$\fillblankframe{$0$}.
+		$\doint_{|z-2\ii|=3}\frac1{z^2(z-\ii )}\diff z=$\fillblankframe{$0$}.
 	\end{exercise}
 	\onslide<+->
 	\begin{example}[莫累拉定理]
-		设 $f(z)$ 在单连通区域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\displaystyle\oint_Cf(z)\diff z=0$, 则 $f(z)$ 在 $D$ 内解析.
+		设 $f(z)$ 在单连通区域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\doint_Cf(z)\diff z=0$, 则 $f(z)$ 在 $D$ 内解析.
 	\end{example}
 	\onslide<+->
 	\begin{proof}

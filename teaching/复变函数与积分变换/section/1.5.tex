@@ -1,51 +1,49 @@
 \section{复变函数}
 
-
 \subsection{复变函数的定义}
 
 
 \begin{frame}{复变函数的定义}
-	\begin{itemize}
-		\item 所谓的\emph{映射}, 就是两个集合之间的一种对应 $f:A\to B$, 使得对于每一个 $a\in A$, 有一个唯一确定的 $b=f(a)$ 与之对应.
+	\onslide<+->
+	所谓的\emph{映射}, 就是两个集合之间的一种对应 $f:A\to B$, 使得对于每一个 $a\in A$, 有一个唯一确定的 $b=f(a)$ 与之对应.
+	\begin{enumerate}
 		\item 当 $A$ 和 $B$ 都是实数集合的子集时, 它就是一个实变函数.
 		\item 当 $A$ 和 $B$ 都是复数集合的子集时, 它就是一个\emph{复变函数}.
-	\end{itemize}
+	\end{enumerate}
 	\onslide<+->
 	\begin{example}[nearnext]
 		$f(z)=\Re z,\arg z,|z|$, $z^n$ ($n$ 为整数), $\dfrac{z+1}{z^2+1}$ 都是复变函数.
 	\end{example}
 	\onslide<+->
 	\begin{definition}
-		\begin{enumerate}
-			\item 称 $A$ 为 函数 $f$ 的\emph{定义域}.
-			\item 称 $\{w=f(z)\mid z\in A\}$ 为它的\emph{值域}.
-		\end{enumerate} 
+		称 $A$ 为 函数 $f$ 的\emph{定义域},
+		\onslide<+->{%
+			称 $\{w=f(z)\mid z\in A\}$ 为它的\emph{值域}.
+		}
 	\end{definition}
-	\begin{itemize}
-		\item 上述函数的定义域和值域分别是什么?
-	\end{itemize}
+	\onslide<+->
+	上述函数的定义域和值域分别是什么?
 \end{frame}
 
 
 \begin{frame}{多值复变函数}
-	\begin{itemize}
-		\item 在复变函数理论中, 我们常常会遇到\emph{多值的复变函数}, 也就是说一个 $z\in A$ 可能有多个 $w$ 与之对应.
-		\item 例如 $\Arg z,\sqrt[n]z$ 等.
-		\item 为了方便研究, 我们常常需要对每一个 $z$, 选取固定的一个 $f(z)$ 的值.
-		\item 这样我们得到了这个多值函数的一个\emph{单值分支}.
-	\end{itemize}
+	\onslide<+->
+	在复变函数理论中, 我们常常会遇到\emph{多值的复变函数}, 也就是说一个 $z\in A$ 可能有多个 $w$ 与之对应.
+	\onslide<+->
+	例如 $\Arg z,\sqrt[n]z$ 等.
+
+	\onslide<+->
+	为了方便研究, 我们常常需要对每一个 $z$, 选取固定的一个 $f(z)$ 的值.
+	\onslide<+->
+	这样我们得到了这个多值函数的一个\emph{单值分支}.
 	\onslide<+->
 	\begin{example}
 		$\arg z$ 是无穷多值函数 $\Arg z$ 的一个单值分支.
 	\end{example}
-\end{frame}
-
-
-\begin{frame}{多值复变函数}
-	\begin{itemize}
-		\item 在考虑多值的情况下, 复变函数总有反函数.
-		\item 若 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\emph{一一对应}.
-	\end{itemize}
+	\onslide<+->
+	在考虑多值的情况下, 复变函数总有反函数.
+	\onslide<+->
+	若 $f$ 和 $f^{-1}$ 都是单值的, 则称 $f$ 是\emph{一一对应}.
 	\onslide<+->
 	\begin{example}
 		$f(z)=z^n$ 的反函数就是 $f^{-1}(w)=\sqrt[n]{w}$.
@@ -53,9 +51,8 @@
 			当 $n=\pm1$ 时, $f$ 是一一对应.
 		}
 	\end{example}
-	\begin{itemize}
-		\item 若无特别声明, 本课程中\alert{复变函数总是指单值的复变函数}.
-	\end{itemize}
+	\onslide<+->
+	若无特别声明, 本课程中\alert{复变函数总是指单值的复变函数}.
 \end{frame}
 
 
@@ -63,15 +60,16 @@
 
 
 \begin{frame}{变换}
-	\begin{itemize}
-		\item 大部分复变函数的图像无法在三维空间中表示出来.
-		\item 为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的变换(也叫映射、映照)来表示这种对应关系.
-		\item 注意到 $w$ 的实部和虚部可以看作 $z$ 的实部和虚部的函数, 即
+	\onslide<+->
+	大部分复变函数的图像无法在三维空间中表示出来.
+	\onslide<+->
+	为了直观理解和研究, 我们用两个复平面($z$ 复平面和 $w$ 复平面)之间的变换(也叫映射、映照)来表示这种对应关系.
+	\onslide<+->
+	注意到 $w$ 的实部和虚部可以看作 $z$ 的实部和虚部的函数, 即
 		\[
 			w=u+\ii v=u(x,y)+\ii v(x,y)
 		\]
 		的实部和虚部是两个二元实变函数.
-	\end{itemize}
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -111,14 +109,15 @@
 \end{frame}
 
 
-\begin{frame}{例: 变换}
+\begin{frame}{例题: 翻转变换}
 	\onslide<+->
 	\begin{example}[sidepic,righthand width=5cm]
-		\begin{itemize*}
-			\item 函数 $w=\ov z$.
-			\item 若把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个变换是关于 $z$ 轴的翻转变换.
-			\item 它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.
-		\end{itemize*}
+		函数 $w=\ov z$.
+		\onslide<+->{%
+			若把 $z$ 复平面和 $w$ 复平面重叠放置, 则这个变换是关于 $z$ 轴的翻转变换.
+		}\onslide<+->{%
+			它把任一区域映成和它全等的区域, 且 $u=x,v=-y$.
+		}
 		\tcblower
 		\onslide<3->{%
 		\begin{tikzpicture}
@@ -167,14 +166,15 @@
 \end{frame}
 
 
-\begin{frame}{例: 变换}
+\begin{frame}{例题: 旋转和相似变换}
 	\onslide<+->
 	\begin{example}[near]
-		\begin{itemize*}
-			\item 函数 $w=az$.
-			\item 设 $a=r\ee^{\ii\theta}$, 则这个变换是一个旋转变换(逆时针旋转 $\theta$)和一个相似变换(放大为 $r$ 倍)的复合.
-			\item 它把任一区域映成和它相似的区域.
-		\end{itemize*}
+		函数 $w=az$.
+		\onslide<+->{%
+			设 $a=r\ee^{\ii\theta}$, 则这个变换是一个旋转变换(逆时针旋转 $\theta$)和一个相似变换(放大为 $r$ 倍)的复合.
+		}\onslide<+->{%
+			它把任一区域映成和它相似的区域.
+		}
 		\tcblower
 		\onslide<3->{%
 		\begin{center}
@@ -223,13 +223,13 @@
 \end{frame}
 
 
-\begin{frame}{例: 变换}
+\begin{frame}{例题: 平方变换}
 	\onslide<+->
 	\begin{example}[near]
-		\begin{itemize*}
-			\item 函数 $w=z^2$.
-			\item 这个变换把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
-		\end{itemize*}
+		函数 $w=z^2$.
+		\onslide<+->{%
+			这个变换把 $z$ 的辐角增大一倍, 因此它会把角形区域变换为角形区域, 并将夹角放大一倍.
+		}
 		\tcblower
 		\onslide<3->{%
 		\begin{center}
@@ -275,15 +275,16 @@
 \end{frame}
 
 
-\begin{frame}{例: 变换}
+\begin{frame}{例题: 平方变换}
 	\onslide<+->
-	\begin{example}[near][续]
-		\begin{itemize*}
-			\item 由于 $u=x^2-y^2,v=2xy$.
-			\item 因此它把 $z$ 复平面上以直线 $y=\pm x$ 为渐近线的等轴双曲线 $x^2-y^2=c_1$ 变换为 $w$ 复平面上的直线 $u=c_1$,
-			\item 把 $z$ 复平面上以坐标轴为渐近线的等轴双曲线 $
+	\begin{example*}[near][]%
+		由于 $u=x^2-y^2,v=2xy$.
+		\onslide<+->{%
+			因此它把 $z$ 复平面上以直线 $y=\pm x$ 为渐近线的等轴双曲线 $x^2-y^2=c_1$ 变换为 $w$ 复平面上的直线 $u=c_1$,
+		}\onslide<+->{%
+			把 $z$ 复平面上以坐标轴为渐近线的等轴双曲线 $
 			2xy=c_2$ 变换为 $w$ 复平面上的直线 $v=c_2$.
-		\end{itemize*}
+		}
 		\tcblower
 		\onslide<3->{%
 		\begin{center}
@@ -369,70 +370,98 @@
 			\end{tikzpicture}
 		\end{center}}
 		\bigdel
-	\end{example}
+	\end{example*}
 \end{frame}
 
 
-\begin{frame}{例: 变换的像}\small
+\begin{frame}{例题: 变换的像}
 	\onslide<+->
-	\begin{example}[nearnext]
-		求下列集合在变换 $w=z^2$ 下的像.
-		\begin{enumerate}
-			\item 线段 $0<|z|<3,\arg z=\frac\pi4$.
-			\item 双曲线 $x^2-y^2=2$.
-			\item 扇形区域 $0<\arg z<\frac\pi3,0<|z|<2$.
-		\end{enumerate}
+	\begin{example}[near]
+		求线段 $0<|z|<3,\arg z=\dfrac\pi4$ 在变换 $w=z^2$ 下的像.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		\begin{enumerate}
-			\item 设 $z=r\ee^{\frac{\pi\ii}4}$, 则 $w=z^2=r^2\ee^{\frac{\pi\ii}2}=\ii r^2$.
-			\onslide<+->{%
-			因此它的像是连接 $0$ 和 $9\ii$ 的线段: $0<|w|<9,\arg w=\frac\pi2$.
-			}
-			\item 由于 $w=u+\ii v=z^2=(x^2-y^2)+2xy\ii$.
-			\onslide<+->{%
+		设 $z=r\ee^{\frac{\pi\ii}4}$, 则 $w=z^2=r^2\ee^{\frac{\pi\ii}2}=\ii r^2$.
+		\onslide<+->{%
+			因此它的像是连接 $0$ 和 $9\ii$ 的线段:
+			\[
+				0<|w|<9,\quad \arg w=\frac\pi2.
+			\]
+		}\bigdel\smalldel
+	\end{solution}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求双曲线 $x^2-y^2=2$ 在变换 $w=z^2$ 下的像.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于
+		\[
+			w=u+\ii v=z^2=(x^2-y^2)+2xy\ii.
+		\]
+		\onslide<+->{%
 			因此 $u=x^2-y^2=2$.
-			}\onslide<+->{%
+		}
+		\onslide<+->{%
 			由于任意 $2+\ii v$ 均存在平方根, 因此所求的像就是直线 $\Re w=2$.
-			}
-			\item 设 $z=r\ee^{\ii\theta}$, 则 $w=r^2\ee^{2\ii\theta}$.
-			\onslide<+->{%
-			因此它的像是扇形区域 $0<\arg w<\frac{2\pi}3,0<|w|<4$.
-			}
-		\end{enumerate}
+		}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 变换的像}
+\begin{frame}{例题: 变换的像}
 	\onslide<+->
-	\begin{example}[near]
+	\begin{example}[nearnext]
+		求扇形区域 $0<\arg z<\dfrac\pi3,0<|z|<2$ 在变换 $w=z^2$ 下的像.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		设 $z=r\ee^{\ii\theta}$, 则 $w=r^2\ee^{2\ii\theta}$.
+		\onslide<+->{%
+			因此它的像是扇形区域
+			\[
+				0<\arg w<\frac{2\pi}3,\quad 0<|w|<4.
+			\]
+		}\bigdel
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{例题: 变换的像}
+	\onslide<+->
+	\begin{example}[nearnext]
 		求圆周 $\abs{z}=2$ 在映射 $w=\dfrac{z+1}{z-1}$ 下的像.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near]
-		\begin{itemize*}
-			\item 不难看出 $z=\dfrac{w+1}{w-1}$.
-			\item 由 $\biggabs{\dfrac{w+1}{w-1}}=2$ 可知 $\abs{w+1}=2\abs{w-1}$.
-			\item 从而 $w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4$.
-			\item $w\ov w-\dfrac53 w-\dfrac53\ov w+1=0$.
-			\item $\biggabs{w-\dfrac53}^2=\dfrac{16}9$, 即 $\biggabs{w-\dfrac53}=\dfrac43$, 它是一个圆周.
-		\end{itemize*}
-		\meddel
+	\begin{solution}[nearprev]
+		不难看出 $z=\dfrac{w+1}{w-1}$.
+		\onslide<+->{%
+			由 $\biggabs{\dfrac{w+1}{w-1}}=2$ 可知 $\abs{w+1}=2\abs{w-1}$.
+		}\onslide<+->{%
+			从而
+			\[
+				w\ov w+w+\ov w+1=4w\ov w-4w-4\ov w+4.
+			\]
+		}\onslide<+->{%
+			\[
+				w\ov w-\dfrac53 w-\dfrac53\ov w+1=0.
+			\]
+		}\onslide<+->{%
+			于是 $\biggabs{w-\dfrac53}^2=\dfrac{16}9$, 即 $\biggabs{w-\dfrac53}=\dfrac43$, 它是一个圆周.
+		}\meddel
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 变换的像}
-	\begin{itemize}
-		\item 形如
+\begin{frame}{例题: 变换的像}
+	\onslide<+->
+	形如
 		\[
 			f(z)=\frac{az+b}{cz+d}
 		\]
 		的映射叫作\emph{分式线性映射}, 其中 $ad\neq bc$.
-		\item 它总把直线和圆映成直线或圆.
-	\end{itemize}
+	\onslide<+->
+	它总把直线和圆映成直线或圆.
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}[scale=.4]

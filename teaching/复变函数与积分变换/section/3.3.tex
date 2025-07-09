@@ -1,32 +1,89 @@
-\section{原函数和不定积分}
+\subsection{原函数和不定积分}
 
-\subsection{原函数}
 
-\begin{frame}{原函数的存在性}
+\begin{frame}{牛顿-莱布尼兹公式}
 	\onslide<+->
-	设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
+	设有向曲线 $C:z=z(t),a\le t\le b$ 起于 $z_1=z(a)$ 终于 $z_2=z(b)$.
 	\onslide<+->
-	由柯西-古萨定理可知, 积分 $\displaystyle\int_Cf(\zeta)\diff \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
+	若存在 $C$ 上的解析函数 $F(z)$ 使得 $F'(z)=f(z)$, 则
+	\begin{align*}
+			\int_C f(z)\d z&
+		=\int_a^b f\bigl(z(t)\bigr)z'(t)\d t\\&
+		=F\bigl(z(t)\bigr)\Big|_a^b
+		=F(z_2)-F(z_1).
+	\end{align*}
 	\onslide<+->
-	因此我们也将其记为 $\displaystyle\int_{z_0}^zf(\zeta)\diff\zeta$.
+	这就是\alert{牛顿-莱布尼兹公式}.
+	\onslide<+->
+	我们把 $F(z)$ 称为 $f(z)$ 的一个\emph{原函数}.
+	\onslide<+->
+	特别地, 若 $C$ 是闭路, 则 $\doint_C f(z)\d z=0$.
+\end{frame}
 
+
+\begin{frame}{牛顿-莱布尼兹公式的应用}
 	\onslide<+->
-	对于任意固定的 $z_0\in D$, 定义
-	\[F(z)=\int_{z_0}^zf(\zeta)\diff\zeta.
+	例如对于整数 $n\neq0$, 当 $a$ 在闭路 $C$ 的内部时,
+	\[
+		f(z)=\dfrac1{(z-a)^{n+1}}
 	\]
+	在 $C$ 上有原函数 $F(z)=-\dfrac1{n(z-a)^n}$.
+	\onslide<+->
+	从而 $\doint_C f(z)\d z=0$. 
+	\onslide<+->
+	于是我们再次证明了该积分结论的 $n\neq0$ 情形.
+
+	\onslide<+->
+	但需要注意 $\dfrac1{z-a}$ 在 $C$ 上并没有原函数, 因为 $\ln(z-a)$ 在 $C$ 上有奇点.
 \end{frame}
 
 
 \begin{frame}{原函数的存在性}
-	\beqskip{0pt}
+	\onslide<+->
+	不过, 不同于单变量实函数的情形, 并不是所有的连续函数都有原函数.
+
+	\onslide<+->
+	设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
+	\onslide<+->
+	由柯西-古萨定理可知, 积分 $\dint_Cf(\zeta)\diff \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
+	\onslide<+->
+	因此我们也将其记为 $\dint_{z_0}^zf(\zeta)\diff\zeta$.
 	\onslide<+->
 	\begin{theorem}
-		$F(z)$ 是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
+		固定 $z_0\in D$, 则函数
+		\[
+			F(z)=\int_{z_0}^zf(\zeta)\diff\zeta.
+		\]
+		是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
 	\end{theorem}
 	\onslide<+->
-	\begin{solution}[证明]
+	由此可知, \alert{单连通区域上的解析函数总有原函数}.
+\end{frame}
+
+
+\begin{frame}{原函数的存在性}
+	\onslide<+->
+	\begin{solution}[sidepic,righthand width=27mm][证明]
+		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
+		\onslide<+->{%
+			取 $|\Delta z|$ 小于 $K$ 的半径.
+		}\onslide<+->{%
+			那么
+			\[
+				F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
+				\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}
+			\]
+		}\onslide<+->{%
+			容易知道
+			\[
+				\dint_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z.
+			\]
+		}\onslide<+->{%
+			我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
+		}
+		\tcblower
 		\begin{center}
-			\begin{tikzpicture}
+			\begin{tikzpicture}[rotate=-90]
 				\fill[cstcurve,main,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
 				\draw[cstcurve,main] (0,0) circle(0.7);
 				\draw[cstcurve,third] (-2,0)to [bend left](0,0);
@@ -40,65 +97,49 @@
 					(1.1,0.7) node[third,visible on=<2->] {$z+\Delta z$};
 			\end{tikzpicture}
 		\end{center}
-		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
-		\onslide<+->{%
-			取 $|\Delta z|$ 小于 $K$ 的半径.
-		}\onslide<+->{%
-			那么
-			\[
-				F(z+\Delta z)-F(z)=\int_{z_0}^{z+\Delta z}f(\zeta)\diff\zeta-\int_{z_0}^zf(\zeta)\diff\zeta
-				\visible<+->{=\int_z^{z+\Delta z}f(\zeta)\diff\zeta.}
-	\]
-		}\onslide<+->{%
-			容易知道
-			$\displaystyle\int_z^{z+\Delta z}f(z)\diff\zeta=f(z)\int_z^{z+\Delta z}\diff\zeta=f(z)\Delta z$.
-		}\onslide<+->{%
-			我们需要比较上述两个积分, 其中 $z$ 到 $z+\Delta z$ 取直线.
-		}
 	\end{solution}
-	\endgroup
 \end{frame}
 
 
 \begin{frame}{原函数的存在性}
 	\onslide<+->
-	\begin{proof}[续证]
+	\begin{proof}[][]%
 		由于 $f(z)$ 解析, 因此连续.
-		\onslide<+->{$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.
-		}\onslide<+->{当 $|\Delta z|<\delta$ 时, 由长大不等式
+		\onslide<+->{%
+			$\forall\varepsilon>0,\exists\delta>0$ 使得当 $|\zeta-z|<\delta$ 时, $z$ 落在 $K$ 中且 $|f(\zeta)-f(z)|<\varepsilon$.
+		}\onslide<+->{%
+			当 $|\Delta z|<\delta$ 时, 由长大不等式
 			\begin{align*}
-			\abs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
-			&\visible<+->{=\abs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\diff \zeta}}\\
-			&\visible<+->{\le\frac{\varepsilon}{|\Delta z|}\cdot|\Delta z|=\varepsilon.}
+				\biggabs{\frac{F(z+\Delta z)-F(z)}{\Delta z}-f(z)}
+				&\visible<+->{=\biggabs{\int_z^{z+\Delta z}\frac{f(\zeta)-f(z)}{\Delta z}\diff \zeta}}\\
+				&\visible<+->{\le\frac{\varepsilon}{\abs{\Delta z}}\cdot\abs{\Delta z}=\varepsilon.}
 			\end{align*}
-		}\onslide<+->{由于 $\varepsilon$ 是任意的, 因此
-	\[
-		f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere\]}
+		}\onslide<+->{%
+			由于 $\varepsilon$ 是任意的, 因此
+			\[
+				f(z)=\lim_{\Delta z\to 0}\frac{F(z+\Delta z)-F(z)}{\Delta z}=F'(z).\qedhere
+			\]
+		}\bigdel
 	\end{proof}
 \end{frame}
 
 
-\subsection{牛顿-莱布尼兹定理}
-
-\begin{frame}{牛顿-莱布尼兹定理}
-
+\begin{frame}{原函数法计算积分}
 	\onslide<+->
-	如果 $D$ 上的解析函数 $G(z)$ 满足 $G'(z)=f(z)$, 则称 $G(z)$ 是 $f(z)$ 的一个\emph{原函数}.
-	\onslide<+->
-	由于导函数为 $0$ 的解析函数只能是常值函数,
-	\onslide<+->
-	因此 $\displaystyle G(z)=\int_{z_0}^zf(\zeta)\diff \zeta+C$.
-	\onslide<+->
-	我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\displaystyle\int f(z)\diff z$}.
-
-	\onslide<+->
-	\begin{algorithm}{复变函数积分计算方法II}
+	\begin{theorem*}[][积分计算方法II: 原函数法]
 		设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
-	\[
+		\[
 			\int_{z_1}^{z_2}f(z)\diff z=F(z)\Big|_{z_1}^{z_2}=F(z_2)-F(z_1),
-	\]
+		\]
 		其中 $F(z)$ 是 $f(z)$ 的一个原函数.
-	\end{algorithm}
+	\end{theorem*}
+	\onslide<+->
+	由于导函数为 $0$ 的函数只能是常值函数, 因此
+	\[
+		F(z)=\int_{z_0}^zf(z)\d z+C.
+	\]
+	\onslide<+->
+	我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\dint f(z)\diff z$}.
 
 	\onslide<+->
 	复变函数和实变函数的牛顿-莱布尼兹定理的差异在哪呢?
@@ -109,49 +150,46 @@
 
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_{z_0}^{z_1}z\diff z$.
+	\begin{example}[nearnext]
+		求 $\dint_{z_0}^{z_1}z\diff z$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $f(z)=z$ 处处解析,
 		\onslide<+->{%
-			且 $\displaystyle\int z\diff z=\half  z^2+C$,
+			且 $\dint z\diff z=\half  z^2+C$,
 		}\onslide<+->{%
 			因此
 			\[
-				\int_{z_0}^{z_1}z\diff z=\half z^2\big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
-	\]
-		}\vspace{-.5\baselineskip}
+				\int_{z_0}^{z_1}z\diff z=\half z^2\Big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
+			\]
+		}\bigdel
 	\end{solution}
 	\onslide<+->
-	因此之前的例子中 $\displaystyle\int_0^{3+4\ii}z\diff z=-\frac72+12\ii$, 无论从 $0$ 到 $3+4\ii$ 的路径如何.
+	因此之前的例子中 $\dint_0^{3+4\ii}z\diff z=-\frac72+12\ii$, 无论从 $0$ 到 $3+4\ii$ 的路径如何.
 \end{frame}
 
 
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_0^{\pi\ii}z\cos z^2\diff z$.
+	\begin{example}[nearnext]
+		求 $\dint_0^{\pi\ii}z\cos z^2\diff z$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $f(z)=z\cos z^2$ 处处解析,
 		\onslide<+->{%
 			且
 			\[
 				\int z\cos z^2\diff z=\half\int \cos z^2\diff z^2=\half\sin z^2+C,
-	\]
+			\]
 		}\onslide<+->{%
 			因此
 			\[
-				\int_0^{\pi\ii}z\cos z^2\diff z=\half\sin z^2\big|_0^{\pi\ii}=-\half\sin \pi^2.
-	\]
-		}\vspace{-.5\baselineskip}
+				\int_0^{\pi\ii}z\cos z^2\diff z=\half\sin z^2\Big|_0^{\pi\ii}=-\half\sin \pi^2.
+			\]
+		}\bigdel
 	\end{solution}
-
 	\onslide<+->
 	这里我们使用了\alert{凑微分法}.
 \end{frame}
@@ -159,12 +197,11 @@
 
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_0^i z\cos z\diff z$.
+	\begin{example}[nearnext]
+		求 $\dint_0^\ii z\cos z\diff z$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $f(z)=z\cos z$ 处处解析,
 		\onslide<+->{%
 			且
@@ -173,15 +210,15 @@
 				=\int z\diff(\sin z)
 				=z\sin z-\int \sin z\diff z
 				\visible<+->{=z\sin z+\cos z+C,}
-	\]
+			\]
 		}\onslide<+->{%
 			因此
 			\[
-				\int_0^i z\cos z\diff z
-				=(z\sin z+\cos z)\big|_0^i
-				\visible<+->{=i\sin i+\cos i-1=\ee^{-1}-1.}
-	\]
-		}\vspace{-.5\baselineskip}
+				\int_0^\ii z\cos z\diff z
+				=(z\sin z+\cos z)\Big|_0^\ii
+				\visible<+->{=\ii\sin \ii+\cos \ii-1=\ee^{-1}-1.}
+			\]
+		}\bigdel
 	\end{solution}
 	\onslide<+->
 	这里我们使用了\alert{分部积分法}.
@@ -190,22 +227,28 @@
 
 \begin{frame}{典型例题: 利用原函数求积分}
 	\onslide<+->
-	\begin{example}
-		求 $\displaystyle\int_1^{1+\ii} z \ee^z\diff z$.
+	\begin{example}[near]
+		求 $\dint_1^{1+\ii} z \ee^z\diff z$.
 	\end{example}
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $f(z)=z\ee^z$ 处处解析,
 		\onslide<+->{%
-			且 $\displaystyle\int z \ee^z\diff z=\int z\diff \ee^z=z\ee^z-\int \ee^z\diff z=(z-1)\ee^z+C$,
+			且
+			\[
+				\dint z \ee^z\diff z=\int z\diff \ee^z=z\ee^z-\int \ee^z\diff z=(z-1)\ee^z+C,
+			\]
 		}\onslide<+->{%
-			因此 $\displaystyle \int_1^{1+\ii} z \ee^z\diff z=(z-1)\ee^z\big|_1^{1+\ii}
-			\visible<+->{=i\ee^{1+\ii}=e(-\sin 1+\ii\cos 1)}$.
-		}
+			因此
+			\[
+				\dint_1^{1+\ii} z \ee^z\diff z=(z-1)\ee^z\Big|_1^{1+\ii}
+				\visible<+->{=\ii\ee^{1+\ii}=\ee(-\sin 1+\ii\cos 1)}.
+			\]
+		}\bigdel
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		求 $\displaystyle\int_0^1 z\sin z\diff z=$\fillblankframe[4cm]{$\sin 1-\cos 1$}.
+		求 $\dint_0^1 z\sin z\diff z=$\fillblankframe[4cm]{$\sin 1-\cos 1$}.
 	\end{exercise}
 \end{frame}
 
@@ -214,11 +257,11 @@
 	\beqskip{0pt}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\int_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
+		求 $\dint_C(2z^2+8z+1)\diff z$, 其中 $C$ 是摆线
 		$\displaystyle\begin{cases}
 		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
 		\end{cases} 0\le \theta\le 2\pi.$
-		\vspace{-\baselineskip}
+		\bigdel
 		\begin{center}
 			\begin{animateinline}[width=9cm]{10}
 				\begin{tikzpicture}
@@ -258,7 +301,7 @@
 	\beqskip{3pt}
 	\onslide<+->
 	\begin{example}
-		设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $\ii$ 的逆时针圆弧, 求 $\displaystyle\int_C\frac{\ln(z+1)}{z+1}\diff z$.
+		设 $C$ 为沿着 $|z|=1$ 从 $1$ 到 $\ii$ 的逆时针圆弧, 求 $\dint_C\frac{\ln(z+1)}{z+1}\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -271,7 +314,7 @@
 		}\onslide<+->{%
 			因此
 			\begin{align*}
-				\int_C\frac{\ln(z+1)}{z+1}\diff z&=\half\ln^2(z+1)\big|_1^i
+				\int_C\frac{\ln(z+1)}{z+1}\diff z&=\half\ln^2(z+1)\big|_1^\ii
 				\visible<+->{=\half\left[\ln^2(1+\ii)-\ln^22\right]}\\
 				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4\ii\Bigr)^2-\ln^22\biggr)
 				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}\ii.}

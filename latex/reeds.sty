@@ -586,64 +586,85 @@
 	#1
 }
 
+\NewDocumentEnvironment{twopart}{O{} m}{\begin{tcolorbox}[
+	thmcommon,
+	frame hidden,
+	% colframe=white,
+	colback=white,
+	sidepic,
+	righthand width=#2,
+	#1
+]}{\end{tcolorbox}}
+
 \NewDocumentEnvironment{mainblock}{O{} m o}{\begin{main}[#1]
 	\setbeamercolor{item}{fg=main,bg=white}
 	\setbeamercolor{subitem}{fg=main,bg=white}
-	\noindent{\color{main}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+	\noindent{\color{main}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
+}{\end{main}}
+\NewDocumentEnvironment{mainblock*}{O{} m o}{\begin{main}[#1]
+	\setbeamercolor{item}{fg=main,bg=white}
+	\setbeamercolor{subitem}{fg=main,bg=white}
+	\noindent{\color{main}\bf\IfNoValueTF{#3}{\translate{#2}.}{\IfBlankTF{#3}{}{#3.}}}%
 }{\end{main}}
 \NewDocumentEnvironment{secondblock}{O{} m o}{\begin{second}[#1]
 	\setbeamercolor{item}{fg=second,bg=white}
 	\setbeamercolor{subitem}{fg=second,bg=white}
-	\noindent{\color{second}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+	\noindent{\color{second}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
 }{\end{second}}
 \NewDocumentEnvironment{secondblock*}{O{} m o}{\begin{second}[#1]
 	\setbeamercolor{item}{fg=second,bg=white}
 	\setbeamercolor{subitem}{fg=second,bg=white}
-	\noindent{\color{second}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+	\noindent{\color{second}\bf\IfNoValueTF{#3}{\translate{#2}.}{\IfBlankTF{#3}{}{#3.}}}%
 }{\end{second}}
 \NewDocumentEnvironment{thirdblock}{O{} m o}{\begin{third}[#1]
 	\setbeamercolor{item}{fg=third,bg=white}
 	\setbeamercolor{subitem}{fg=third,bg=white}
-	\noindent{\color{third}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+	\noindent{\color{third}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
 }{\end{third}}
 \NewDocumentEnvironment{thirdblock*}{O{} m o}{\begin{third}[#1]
 	\setbeamercolor{item}{fg=third,bg=white}
 	\setbeamercolor{subitem}{fg=third,bg=white}
-	\noindent{\color{third}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+	\noindent{\color{third}\bf\IfNoValueTF{#3}{\translate{#2}.}{\IfBlankTF{#3}{}{#3.}}}%
 }{\end{third}}
-% !
 \NewDocumentEnvironment{fourthblock}{O{} m o}{\begin{fourth}[#1]
 	\setbeamercolor{item}{fg=fourth,bg=white}
 	\setbeamercolor{subitem}{fg=fourth,bg=white}
-	\noindent{\color{fourth}\bf\IfNoValueTF{#3}{\translate{#2}}{#3}.}
+	\noindent{\color{fourth}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
+}{\end{fourth}}
+\NewDocumentEnvironment{fourthblock*}{O{} m o}{\begin{fourth}[#1]
+	\setbeamercolor{item}{fg=fourth,bg=white}
+	\setbeamercolor{subitem}{fg=fourth,bg=white}
+	\noindent{\color{fourth}\bf\IfNoValueTF{#3}{\translate{#2}.}{\IfBlankTF{#3}{}{#3.}}}%
 }{\end{fourth}}
 \NewDocumentEnvironment{fifthblock}{O{} m o}{\begin{fifth}[#1]
 	\setbeamercolor{item}{fg=fifth,bg=white}
 	\setbeamercolor{subitem}{fg=fifth,bg=white}
-	\noindent{\color{fifth}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}
+	\noindent{\color{fifth}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
 }{\end{fifth}}
 
-\RenewDocumentEnvironment{example}{O{} o}{\begin{mainblock}[examstyle,#1]{Example}[#2]}{\end{mainblock}}
-\NewDocumentEnvironment{thinking}{O{} o}{\begin{mainblock}[examstyle,#1]{Thinking}[#2]}{\end{mainblock}}
-\NewDocumentEnvironment{remark}{O{} o}{\begin{mainblock}[examstyle,#1]{Remark}[#2]}{\end{mainblock}}
-\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourthblock}[examstyle,#1]{Solution}[#2]}{\end{fourthblock}}
-\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourthblock}[examstyle,#1]{Proof}[#2]}{\popQED\end{fourthblock}}
-% \NewDocumentEnvironment{proofe}{O{} o}{\pushQED{\qed}\begin{fourthblock}[examstyle,#1]{Proof (Continued)}[#2]}{\popQED\end{fourthblock}}
-\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourthblock}[examstyle,#1]{Analysis}[#2]}{\end{fourthblock}}
-\NewDocumentEnvironment{answer}{O{} o}{\begin{fourthblock}[examstyle,#1]{Answer}[#2]}{\end{fourthblock}}
+\RenewDocumentEnvironment{definition}{O{} o}{\begin{mainblock}[thmstyle,#1]{Definition}[#2]}{\end{mainblock}}
+\NewDocumentEnvironment{definition*}{O{} o}{\begin{mainblock*}[thmstyle,#1]{Definition}[#2]}{\end{mainblock*}}
+\RenewDocumentEnvironment{definitions}{O{} o}{\begin{mainblock}[thmstyle,#1]{Definitions}[#2]}{\end{mainblock}}
+
+\RenewDocumentEnvironment{theorem}{O{} o}{\begin{secondblock}[thmstyle,#1]{Theorem}[#2]}{\end{secondblock}}
+\NewDocumentEnvironment{theorem*}{O{} o}{\begin{secondblock*}[thmstyle,#1]{Theorem}[#2]}{\end{secondblock*}}
+\NewDocumentEnvironment{proposition}{O{} o}{\begin{secondblock}[thmstyle,#1]{Proposition}[#2]}{\end{secondblock}}
+\RenewDocumentEnvironment{corollary}{O{} o}{\begin{secondblock}[thmstyle,#1]{Corollary}[#2]}{\end{secondblock}}
+\RenewDocumentEnvironment{lemma}{O{} o}{\begin{secondblock}[thmstyle,#1]{Lemma}[#2]}{\end{secondblock}}
+
+\RenewDocumentEnvironment{example}{O{} o}{\begin{thirdblock}[examstyle,#1]{Example}[#2]}{\end{thirdblock}}
+\NewDocumentEnvironment{example*}{O{} o}{\begin{thirdblock*}[examstyle,#1]{Example}[#2]}{\end{thirdblock*}}
+\NewDocumentEnvironment{thinking}{O{} o}{\begin{thirdblock}[examstyle,#1]{Thinking}[#2]}{\end{thirdblock}}
+\NewDocumentEnvironment{remark}{O{} o}{\begin{thirdblock}[examstyle,#1]{Remark}[#2]}{\end{thirdblock}}
+
+\RenewDocumentEnvironment{solution}{O{} o}{\begin{fourthblock*}[examstyle,#1]{Solution}[#2]}{\end{fourthblock*}}
+\RenewDocumentEnvironment{proof}{O{} o}{\pushQED{\qed}\begin{fourthblock*}[examstyle,#1]{Proof}[#2]}{\popQED\end{fourthblock*}}
+\NewDocumentEnvironment{analysis}{O{} o}{\begin{fourthblock*}[examstyle,#1]{Analysis}[#2]}{\end{fourthblock*}}
+\NewDocumentEnvironment{answer}{O{} o}{\begin{fourthblock*}[examstyle,#1]{Answer}[#2]}{\end{fourthblock*}}
+
 \NewDocumentEnvironment{conjecture}{O{} o}{\begin{fifthblock}[examstyle,#1]{Conjecture}[#2]}{\end{fifthblock}}
 \RenewDocumentEnvironment{fact}{O{} o}{\begin{fifthblock}[examstyle,#1]{Fact}[#2]}{\end{fifthblock}}
 \NewDocumentEnvironment{exercise}{O{} o}{\begin{fifthblock}[examstyle,#1]{Exercise}[#2]}{\end{fifthblock}}
-
-\RenewDocumentEnvironment{definition}{O{} o}{\begin{secondblock}[thmstyle,#1]{Definition}[#2]}{\end{secondblock}}
-\NewDocumentEnvironment{definition*}{O{} o}{\begin{secondblock*}[thmstyle,#1]{Definition}[#2]}{\end{secondblock*}}
-\RenewDocumentEnvironment{definitions}{O{} o}{\begin{secondblock}[thmstyle,#1]{Definitions}[#2]}{\end{secondblock}}
-
-\RenewDocumentEnvironment{theorem}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Theorem}[#2]}{\end{thirdblock}}
-\NewDocumentEnvironment{theorem*}{O{} o}{\begin{thirdblock*}[thmstyle,#1]{Theorem}[#2]}{\end{thirdblock*}}
-\NewDocumentEnvironment{proposition}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Proposition}[#2]}{\end{thirdblock}}
-\RenewDocumentEnvironment{corollary}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Corollary}[#2]}{\end{thirdblock}}
-\RenewDocumentEnvironment{lemma}{O{} o}{\begin{thirdblock}[thmstyle,#1]{Lemma}[#2]}{\end{thirdblock}}
 
 \RequirePackage{enumext}
 \NewDocumentEnvironment{subexample}{O{1}}{

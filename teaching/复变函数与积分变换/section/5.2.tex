@@ -22,12 +22,12 @@
 
 \begin{frame}{留数定理}
 	\onslide<+->
-	\begin{algorithm}{复变函数积分计算方法 III: 留数定理}
+	\begin{theorem*}[][复变函数积分计算方法 III: 留数定理]
 		若 $f(z)$ 在闭路 $C$ 上解析, 在 $C$ 内部的奇点为 $z_1,z_2,\dots,z_n$, 则
 	\[
 		\oint_Cf(z)\diff z=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k].
 	\]
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	\begin{proof}
@@ -56,7 +56,7 @@
 		\end{center}
 		\vspace{-.3\baselineskip}
 		\onslide<+->{%
-			由复闭路定理, $\displaystyle\oint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
+			由复闭路定理, $\doint_Cf(z)\diff z=\sum_{k=1}^n\oint_{C_k}f(z)\diff z
 			=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k]$.\qedhere
 		}
 	\end{proof}
@@ -111,20 +111,20 @@
 	设 $z_0$ 为 $f(z)$ 的极点.
 
 	\onslide<+->
-	\begin{algorithm}{极点留数计算公式 I}
+	\begin{theorem*}[][极点留数计算公式 I]
 		如果 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
 	\[
 		\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\frac{\diff^{m-1}}{\diff z^{m-1}}[(z-z_0)^mf(z)].
 	\]
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
-	\begin{algorithm}{极点留数计算公式 II}
+	\begin{theorem*}[][极点留数计算公式 II]
 		如果 $z_0$ 是一阶极点或可去奇点, 那么
 	\[
 		\Res[f(z),z_0]=\liml_{z\to z_0}(z-z_0)f(z).
 	\]
-	\end{algorithm}
+	\end{theorem*}
 \end{frame}
 
 
@@ -189,7 +189,7 @@
 			\Res\left[\frac{z-\sin z}{z^6},0\right]=\frac1{5!}\lim_{z\to0}(z-\sin z)^{(5)}
 			\visible<+->{=\frac1{5!}\lim_{z\to0}(-\cos z)=-\frac1{120}.}
 		\]}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 \end{frame}
 
@@ -204,12 +204,12 @@
 
 \begin{frame}{留数的计算方法}
 	\onslide<+->
-	\begin{algorithm}{极点留数计算公式 III}
+	\begin{theorem*}[][极点留数计算公式 III]
 		设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的一阶零点, 则
 	\[
 		\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.
 	\]
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	\begin{proof}
@@ -221,7 +221,7 @@
 				\visible<+->{=\frac{P(z_0)}{\liml_{z\to z_0}\dfrac{Q(z)-Q(z_0)}{z-z_0}}=\frac{P(z_0)}{Q'(z_0)}.\qedhere}
 			\end{align*}
 		}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{proof}
 \end{frame}
 
@@ -246,11 +246,11 @@
 \end{frame}
 
 
-\begin{frame}{例: 留数的应用}
+\begin{frame}{例题: 留数的应用}
 	\beqskip{5pt}
 	\onslide<+->
 	\begin{example}
-		计算积分 $\displaystyle\oint_{|z|=2}\frac{\ee^z}{z(z-1)^2}\diff z$.
+		计算积分 $\doint_{|z|=2}\frac{\ee^z}{z(z-1)^2}\diff z$.
 	\end{example}
 
 	\onslide<+->
@@ -320,10 +320,10 @@
 \end{frame}
 
 
-\begin{frame}{例: 留数的应用\noexer}
+\begin{frame}{例题: 留数的应用\noexer}
 	\onslide<+->
 	\begin{example}
-		求 $\displaystyle\oint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}$.
+		求 $\doint_{|z|=2}f(z)\diff z$, 其中 $f(z)=\dfrac{\sin(1/z)}{(z+\ii)^{10}(z-1)(z-3)}$.
 	\end{example}
 
 	\onslide<+->
@@ -341,12 +341,12 @@
 	\[
 		\Res[f(z),3]=\lim_{z\to3}(z-3)f(z)=\frac1{2(3+\ii)^{10}}\sin\frac13.
 	\]
-		}\vspace{-\baselineskip}
+		}\bigdel
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 留数的应用\noexer}
+\begin{frame}{例题: 留数的应用\noexer}
 	\onslide<+->
 	\begin{solution}[续解]
 		\begin{align*}
@@ -367,7 +367,7 @@
 \begin{frame}{积分的计算方法汇总}
 \begin{center}
 \begin{tikzpicture}[node distance=25pt]
-	\node at (4.5,0.5) [cstnode2,visible on=<3->]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\displaystyle\int_Cf(z)\diff z=F(b)-F(a)$};
+	\node at (4.5,0.5) [cstnode2,visible on=<3->]	(end1){求出 $f(z)$ 的原函数 $F(z)$ 得到 $\dint_Cf(z)\diff z=F(b)-F(a)$};
 	\node at (0,2.2) [cstnode,visible on=<3->]	(isanalytic){$f(z)$ 解析};
 	\node at (4.5,2.2) [cstnode2,align=center, visible on=<4->]	(end2){设曲线方程为 $z(t)$, 则\\
 积分$\displaystyle=\int_a^bf(z)z'(t)\diff t$\\
@@ -376,7 +376,7 @@
 	\node at (0,4.5) [cstnode,visible on=<2->]	(isclosed){是闭路};
 	\node at (4.5,4.5) [cstnode,visible on=<5->]	(issingle){内(外)部只有孤立奇点};
 	\node at (9,4.5) [cstnode,align=center, visible on=<7->]	(ismany){闭路内部和外部\\孤立奇点数量};
-	\node at (1.5,6.3) [cstnode1]  (integral){定积分 $\displaystyle\int_Cf(z)\diff z$ 的计算};
+	\node at (1.5,6.3) [cstnode1]  (integral){定积分 $\dint_Cf(z)\diff z$ 的计算};
 	\node at (9,6.3) [cstnode2,align=center, visible on=<8->]	(end3){闭路内奇点留数之和\\并乘 $2\pi\ii$};
 
 	\draw[cstmra,fourth,visible on=<2->] (integral.-160) -- (isclosed);
@@ -393,7 +393,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 留数在有理函数分解中的应用}
+\begin{frame}{例题: 留数在有理函数分解中的应用}
 	\onslide<+->
 	在求有理函数的洛朗展开, 以及之后在求有理函数的拉普拉斯逆变换时, 我们需要将一个有理函数表达为分母只有一个零点的有理函数之和.
 	\onslide<+->
@@ -405,7 +405,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 留数在有理函数分解中的应用}
+\begin{frame}{例题: 留数在有理函数分解中的应用}
 	\onslide<+->
 	\begin{solution}
 			设 $\displaystyle f(z)=\frac{z-3}{(z+1)(z-1)^2}=\frac a{z-1}+\frac b{(z-1)^2}+\frac c{z+1}$,

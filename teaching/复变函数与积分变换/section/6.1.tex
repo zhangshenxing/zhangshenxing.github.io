@@ -14,7 +14,6 @@
 		1,\sin{\omega t},\cos{\omega t},
 		\sin{2\omega t},\cos{2\omega t},
 		\sin{3\omega t},\cos{3\omega t},\dots
-	
 	\]
 	的周期都是 $T$, 其中 $\omega=\dfrac{2\pi}T$.
 	\onslide<+->
@@ -47,7 +46,6 @@
 	可知 $f(t)$ 的傅里叶级数可以表示为函数 $\ee^{jn\omega t}$ 的线性叠加
 	\[
 		f(t)=\sum_{n=-\infty}^{+\infty}c_n\ee^{jn\omega t}.
-	
 	\]
 	\onslide<+->
 	现在我们来计算这个线性叠加的系数.
@@ -77,13 +75,11 @@
 	于是
 	\[
 		c_n=(f,\ee^{jn\omega t})=\frac 1T\int_{-\frac T2}^{\frac T2}f(t)\ee^{-jn\omega t} \diff t,
-	
 	\]
 	\onslide<+->
 	我们得到周期函数\emph{傅里叶级数的复指数形式}:
 	\[
 		f(t)=\frac 1T\sum_{n=-\infty}^{+\infty}\left[\int_{-\frac T2}^{\frac T2}f(\tau)\ee^{-jn\omega\tau} \diff\tau\right] \ee^{jn\omega t}.
-	
 	\]
 \end{frame}
 
@@ -194,7 +190,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求函数 $f(t)=
@@ -222,7 +218,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	由傅里叶积分公式
 	\begin{align*}
@@ -242,11 +238,11 @@
 	\]
 	\onslide<+->
 	特别地, 可以得到狄利克雷积分
-	$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
+	$\dint_0^{+\infty}\frac{\sin\omega}\omega\diff\omega=\frac\pi2$.
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -280,7 +276,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求函数 $f(t)=
@@ -306,7 +302,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{center}
 		\begin{tikzpicture}
@@ -328,7 +324,7 @@
 	\end{center}
 	\onslide<+->
 	类似可得
-	$\displaystyle\int_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega=
+	$\dint_0^{+\infty}\frac{(1-\cos\omega)\sin\omega t}\omega\diff\omega=
 		\begin{cases}
 			\pi/2,&0<t<1,\\
 			\pi/4,&t=1,\\
@@ -337,7 +333,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求\emph{指数衰减函数} $f(t)=
@@ -349,7 +345,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		\vspace{-\baselineskip}
+		\bigdel
 		\begin{align*}
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_0^{+\infty}\ee^{-\beta t}\ee^{-j\omega t}\diff t}
@@ -360,7 +356,7 @@
 
 	\onslide<+->
 	类似可得
-	$\displaystyle\int_0^{+\infty}\frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\diff\omega=
+	$\dint_0^{+\infty}\frac{\beta\cos\omega t+\omega\sin\omega t}{\beta^2+\omega^2}\diff\omega=
 		\begin{cases}
 			0,&t<0,\\
 			\pi/2,&t=0,\\
@@ -369,7 +365,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		求\emph{钟形脉冲函数} $f(t)=\ee^{-\beta t^2}$ 的傅里叶变换和积分表达式, $\beta>0$.
@@ -377,7 +373,7 @@
 
 	\onslide<+->
 	\begin{solution}
-		\vspace{-\baselineskip}
+		\bigdel
 		\begin{align*}
 			F(\omega)&=\msf[f(t)]=\int_{-\infty}^{+\infty}f(t)\ee^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_{-\infty}^{+\infty}\ee^{-\beta t^2}\ee^{-j\omega t}\diff t}\\
@@ -388,7 +384,7 @@
 
 	\onslide<+->
 	类似可得
-	$\displaystyle\int_0^{+\infty}\ee^{-\frac{\omega^2}{4\beta}}\cos\omega t\diff\omega=\sqrt{\pi\beta}\ee^{-\beta t^2}$.
+	$\dint_0^{+\infty}\ee^{-\frac{\omega^2}{4\beta}}\cos\omega t\diff\omega=\sqrt{\pi\beta}\ee^{-\beta t^2}$.
 \end{frame}
 
 
@@ -493,16 +489,16 @@
 	同理可得其傅里叶逆变换.
 	\onslide<+->
 	因此我们得到:
-	\begin{theorem@}
+	\begin{theorem*}[][]%
 	\[
 		\msf[\delta(t)]=1,\qquad
 		\msf^{-1}[\delta(\omega)]=\dfrac1{2\pi}.
 	\]
-	\end{theorem@}
+	\end{theorem*}
 \end{frame}
 
 
-\begin{frame}{例: 求傅里叶变换}
+\begin{frame}{例题: 求傅里叶变换}
 	\onslide<+->
 	\begin{example}
 		证明 \alert{$\msf[u(t)]=\dfrac1{j\omega}+\pi\delta(\omega)$}.
@@ -515,9 +511,9 @@
 			=\frac1\pi\int_0^{+\infty}\frac{\sin\omega t}{\omega} \diff\omega.
 	\]
 		\onslide<+->{由
-			$\displaystyle\int_0^{+\infty}\frac{\sin\omega}\omega \diff\omega=\dfrac\pi2$
+			$\dint_0^{+\infty}\frac{\sin\omega}\omega \diff\omega=\dfrac\pi2$
 			可知
-			$\displaystyle\int_0^{+\infty}\frac{\sin\omega t}\omega \diff\omega=\frac\pi2\sgn(t)$.
+			$\dint_0^{+\infty}\frac{\sin\omega t}\omega \diff\omega=\frac\pi2\sgn(t)$.
 		}\onslide<+->{故
 			\[\msf^{-1} \left[\frac1{j\omega}+\pi\delta(\omega)\right]
 			=\half\sgn(t)+\half =u(t)\quad (t\neq 0).\qedhere
@@ -550,7 +546,7 @@
 		\msf[f(t-t_0)]=\ee^{-j\omega t_0}F(\omega),\quad
 		\msf^{-1}[F(\omega-\omega_0)]=\ee^{j\omega_0 t}f(t).
 	\]
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{main}
 \end{frame}
 
@@ -580,7 +576,7 @@
 		\msf[f'(t)]=j\omega F(\omega),\quad
 		\msf^{-1}[F'(\omega)]=-jtf(t),
 	\]
-		\vspace{-\baselineskip}
+		\bigdel
 	\[
 		\msf[f^{(k)}(t)]=(j\omega)^k F(\omega),\quad
 		\msf^{-1}[F^{(k)}(\omega)]=(-jt)^kf(t).
@@ -648,7 +644,7 @@
 				=\frac{k!}{(\beta+j\omega)^{k+1}}.
 			\end{align*}
 		}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 	\onslide<+->
 	由此可得任意有理函数(分子次数小于分母)的傅里叶(逆)变换.
@@ -743,7 +739,7 @@
 
 \begin{frame}{常见傅里叶变换汇总}
 	\onslide<+->
-	\begin{algorithm}{常见傅里叶变换汇总 I}
+	\begin{theorem*}[][常见傅里叶变换汇总 I]
 	\[
 		\msf[\delta(t)]=1,\quad \msf[\delta(t-t_0)]=\ee^{-j\omega t_0},
 	\]
@@ -754,7 +750,7 @@
 		\msf[\sin \omega_0t]&=j\pi[\delta(\omega+\omega_0)-\delta(\omega-\omega_0)],\\
 		\msf[\cos{\omega_0 t}]&=\pi[\delta(\omega+\omega_0)+\delta(\omega-\omega_0)].
 		\end{align*}
-	\end{algorithm}
+	\end{theorem*}
 
 	\onslide<+->
 	\begin{main}{常见傅里叶变换汇总 II}
@@ -789,7 +785,7 @@
 		\qquad\onslide<+->{
 		\sum_{n=1}^\infty\frac1{n^2}=\frac{\pi^2}6.}
 	\]
-		}\vspace{-\baselineskip}
+		}\bigdel
 	\end{example}
 \end{frame}
 
@@ -892,7 +888,7 @@
 	\[\msf[f_1\ast f_2]=F_1\cdot F_2,\quad
 	\msf^{-1}[F_1\ast F_2]=\frac1{2\pi}f_1\cdot f_2.
 	\]
-	\vspace{-\baselineskip}
+	\bigdel
 	\end{main}
 \end{frame}
 
@@ -900,7 +896,7 @@
 \begin{frame}{卷积的性质\noexer}
 	\onslide<+->
 	\begin{proof}
-		\vspace{-\baselineskip}
+		\bigdel
 		\begin{align*}
 			\msf[f_1\ast f_2]&=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)f_2(t-\tau)\diff \tau \cdot \ee^{-j\omega t}\diff t\\
 			&\visible<+->{=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f_1(\tau)\ee^{-j\omega \tau}\cdot f_2(t-\tau)\ee^{-j\omega (t-\tau)}\diff t\diff \tau}\\
@@ -919,7 +915,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 计算卷积\noexer}
+\begin{frame}{例题: 计算卷积\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f_1(t)=u(t),f_2(t)=\ee^{-t}u(t)$. 求 $f_1\ast f_2$.
@@ -997,11 +993,11 @@
 \end{frame}
 
 
-\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\beqskip{1pt}
 	\onslide<+->
 	\begin{example}
-		解方程 $y'(t)-\displaystyle\int_{-\infty}^t y(\tau)\diff \tau=2\delta(t)$.
+		解方程 $y'(t)-\dint_{-\infty}^t y(\tau)\diff \tau=2\delta(t)$.
 	\end{example}
 
 	\onslide<+->
@@ -1028,7 +1024,7 @@
 \end{frame}
 
 
-\begin{frame}{例: 使用傅里叶变换解微积分方程\noexer}
+\begin{frame}{例题: 使用傅里叶变换解微积分方程\noexer}
 	\onslide<+->
 	\begin{example}
 		解方程 $y''(t)-y(t)=0$.
@@ -1041,9 +1037,9 @@
 			\[\msf[y''(t)-y(t)]=[(j\omega)^2-1]Y(\omega)=0,
 	\]
 		}
-		\vspace{-\baselineskip}
+		\bigdel
 		\onslide<+->{\[Y(\omega)=0,\quad y(t)=\msf^{-1}[Y(\omega)]=0.\]}
-		\vspace{-\baselineskip}
+		\bigdel
 	\end{solution}
 
 	\onslide<+->

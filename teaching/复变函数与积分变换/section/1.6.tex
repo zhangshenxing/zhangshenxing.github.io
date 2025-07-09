@@ -5,10 +5,11 @@
 
 
 \begin{frame}{数列的极限}
-	\begin{itemize}
-		\item 类似于实变函数情形, 我们可以定义复变函数的极限.
-		\item 我们先来看数列极限的定义.
-	\end{itemize}
+	\onslide<+->
+	类似于实数的情形, 我们可以定义复数列和复变函数的极限.
+
+	\onslide<+->
+	我们先来看数列极限的定义.
 	\onslide<+->
 	\begin{definition}
 		设 $\{z_n\}_{n\ge 1}$ 是一个复数列.
@@ -16,19 +17,21 @@
 		若存在复数 $z$ 满足对任意 $\varepsilon>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n-z}<\varepsilon$, 则称 $z$ 是\emph{数列 $\{z_n\}$ 的极限}, 记作 \emph{$\liml_{n\ra\infty}z_n=z$}.
 		}
 	\end{definition}
-	\begin{itemize}
-		\item 此时称\emph{极限存在}或\emph{数列收敛}.
-		\item 若不存在这样的 $z$, 则称\emph{极限不存在}或\emph{数列发散}.
-		\item 可以看出, $\liml_{n\ra\infty}z_n=z$ 等价于实极限 $\liml_{n\ra\infty}\abs{z_n-z}=0$.
-	\end{itemize}
+	\onslide<+->
+	此时称\emph{极限存在}或\emph{数列收敛}.
+	\onslide<+->
+	若不存在这样的 $z$, 则称\emph{极限不存在}或\emph{数列发散}.
+
+	\onslide<+->
+	可以看出, $\liml_{n\ra\infty}z_n=z$ 等价于实极限 $\liml_{n\ra\infty}\abs{z_n-z}=0$.
 \end{frame}
 
 
 \begin{frame}{极限的四则运算}
-	\begin{itemize}
-		\item 由于复数列极限的定义和实数列极限的定义在形式上完全相同,
-		\item 因此类似地, 极限的四则运算法则对于复数列也是成立的.
-	\end{itemize}
+	\onslide<+->
+	由于复数列极限的定义和实数列极限的定义在形式上完全相同,
+	\onslide<+->
+	因此类似地, 极限的四则运算法则对于复数列也是成立的.
 	\onslide<+->
 	\begin{theorem}
 		设 $\liml_{n\to\infty}z_n=z,\liml_{n\to\infty}w_n=w$, 则
@@ -42,9 +45,8 @@
 
 
 \begin{frame}{数列收敛的等价刻画}
-	\begin{itemize}
-		\item 下述定理保证了我们可以使用实数列的敛散性判定方法来研究复数列的敛散性.
-	\end{itemize}
+	\onslide<+->
+	下述定理保证了我们可以使用实数列的敛散性判定方法来研究复数列的敛散性.
 	\onslide<+->
 	\begin{theorem}[nearnext]
 		设 $z_n=x_n+y_n\ii,z=x+y\ii$, 则
@@ -56,33 +58,40 @@
 	\end{theorem}
 	\onslide<+->
 	\begin{proof}[nearprev]
-		\begin{itemize*}
-			\item 我们只需证明 $
+		我们只需证明
+		\[
 			\liml_{n\ra\infty}\abs{z_n-z}=0\iff
-			\liml_{n\ra\infty}\abs{x_n-x}=\liml_{n\ra\infty}\abs{y_n-y}=0$.
-			\item ``$\Rightarrow$'': 由三角不等式 $0\le \abs{x_n-x}, \abs{y_n-y}\le\abs{z_n-z}$ 和夹逼准则可得知.
-			\item ``$\Leftarrow$'': 由极限的四则运算法则可知 $\liml_{n\ra\infty}\bigl(\abs{x_n-x}+\abs{y_n-y}\bigr)=0$.
-			\item 再由三角不等式 $0\le\abs{z_n-z}\le\abs{x_n-x}+\abs{y_n-y}$ 和夹逼准则可得.\qedhere
-		\end{itemize*}
+			\liml_{n\ra\infty}\abs{x_n-x}=\liml_{n\ra\infty}\abs{y_n-y}=0.
+		\]
+		
+		\onslide<+->{%
+			``$\Rightarrow$'': 由三角不等式 $0\le \abs{x_n-x}, \abs{y_n-y}\le\abs{z_n-z}$ 和夹逼准则可得知.
+		}
+		
+		\onslide<+->{%
+			``$\Leftarrow$'': 由极限的四则运算法则可知 $\liml_{n\ra\infty}\bigl(\abs{x_n-x}+\abs{y_n-y}\bigr)=0$.
+		}\onslide<+->{%
+			再由三角不等式 $0\le\abs{z_n-z}\le\abs{x_n-x}+\abs{y_n-y}$ 和夹逼准则可得.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{例: 数列的敛散性}
+\begin{frame}{例题: 数列的敛散性}
 	\onslide<+->
 	\begin{example}[nearnext]
 		设 $z_n=\Bigl(1-\dfrac1n\Bigr)\ee^{\frac{\pi\ii}n}$. 数列 $\{z_n\}$ 是否收敛?
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		\begin{itemize*}
-			\item 由于
-			\[
-				x_n=\Bigl(1-\frac1n\Bigr)\cos\frac\pi n\to 1,\quad
-				y_n=\Bigl(1-\frac1n\Bigr)\sin\frac\pi n\to 0.
-			\]
-			\item 因此 $\{z_n\}$ 收敛且 $\liml_{n\to\infty}z_n=1$.
-		\end{itemize*}
+		由于
+		\[
+			x_n=\Bigl(1-\frac1n\Bigr)\cos\frac\pi n\to 1,\quad
+			y_n=\Bigl(1-\frac1n\Bigr)\sin\frac\pi n\to 0.
+		\]
+		\onslide<+->{%
+			因此 $\{z_n\}$ 收敛且 $\liml_{n\to\infty}z_n=1$.
+		}
 	\end{solution}
 \end{frame}
 
@@ -91,31 +100,37 @@
 
 
 \begin{frame}{数列极限的等价定义\noexer}
-	\begin{itemize}
-		\item 数列极限的定义可以用邻域的语言重新表述为:
-	\end{itemize}
+	\onslide<+->
+	数列极限的定义可以用邻域的语言重新表述为:
 	\onslide<+->
 	\begin{definition}
 		$\liml_{n\ra\infty}z_n=z$ 是指: 对 $z$ 的任意 $\delta$ 邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$.
 	\end{definition}
-	\begin{itemize}
-		\item 若 $\liml_{n\ra\infty}\abs{z_n}=+\infty$, 我们将其记为 \emph{$\liml_{n\ra\infty}z_n=\infty$}.
-		\item 这也等价于: 对任意 $X>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n}>X$.
-		\item 我们能不能也用邻域的语言来描述 $\liml_{n\ra\infty}z_n=\infty$ 呢?
-		\item 我们将介绍复球面的概念, 它是复数的一种几何表示方式且自然地包含无穷远点 $\infty$.
-		\item 这种思想是在黎曼研究多值复变函数时引入的.
-	\end{itemize}
+	\onslide<+->
+	若 $\liml_{n\ra\infty}\abs{z_n}=+\infty$, 我们将其记为 \emph{$\liml_{n\ra\infty}z_n=\infty$}.
+	\onslide<+->
+	这也等价于: 对任意 $X>0$, 存在 $N$ 使得当 $n\ge N$ 时, $\abs{z_n}>X$.
+
+	\onslide<+->
+	我们能不能也用邻域的语言来描述 $\liml_{n\ra\infty}z_n=\infty$ 呢?
+	\onslide<+->
+	我们将介绍复球面的概念, 它是复数的一种几何表示方式且自然地包含无穷远点 $\infty$.
+	\onslide<+->
+	这种思想是在黎曼研究多值复变函数时引入的.
 \end{frame}
 
 
 \begin{frame}[b]{复球面\noexer}
+	\onslide<+->
+	取一个球心在 $z=0$ 的单位球面.
+	\onslide<+->
+	过 $O$ 做垂直于复平面的直线, 并与球面相交于其中一点 $N$, 称之为北极.
 	\begin{itemize}
-		\item 取一个球心在 $z=0$ 的单位球面.
-		\item 过 $O$ 做垂直于复平面的直线, 并与球面相交于其中一点 $N$, 称之为北极.
 		\item 对于平面上的任意一点 $z$, 连接北极 $N$ 和 $z$ 的直线一定与球面相交于除 $N$ 以外的唯一一个点 $Z$.
 		\item 反之, 球面上除了北极外的任意一点 $Z$, 直线 $NZ$ 一定与复平面相交于唯一一点.
-		\item 这样, 球面上除北极外的所有点和全体复数建立了一一对应.
 	\end{itemize}
+	\onslide<+->
+	这样, 球面上除北极外的所有点和全体复数建立了一一对应.
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
@@ -147,19 +162,22 @@
 			\draw (z1) node[fourth,left,visible on=<3->] {$z_1$};
 			\draw (Z1) node[fourth,below left,visible on=<3->] {$Z_1$};
 			\draw (z2) node[second,left,visible on=<4->] {$z_2$};
-			\draw (Z2) node[second,above left,visible on=<4->] {$Z_1$};
+			\draw (Z2) node[second,above left,visible on=<4->] {$Z_2$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
 \begin{frame}[b]{复球面: 无穷远点\noexer}
-	\begin{itemize}
-		\item 当 $|z|$ 越来越大时, 其对应球面上点也越来越接近 $N$.
-		\item 若我们在复平面上添加一个额外的"点"——\emph{无穷远点}, 记作 \emph{$\infty$}.
-		\item 那么\emph{扩充复数集合 $\BC^*=\BC\cup\{\infty\}$} 就正好和球面上的点一一对应.
-		\item 称这样的球面为\emph{复球面}, 称包含无穷远点的复平面为\emph{扩充复平面}或\emph{闭复平面}.
-	\end{itemize}
+	\onslide<+->
+	当 $|z|$ 越来越大时, 其对应球面上点也越来越接近 $N$.
+
+	\onslide<+->
+	若我们在复平面上添加一个额外的"点"——\emph{无穷远点}, 记作 \emph{$\infty$}.
+	\onslide<+->
+	那么\emph{扩充复数集合 $\BC^*=\BC\cup\{\infty\}$} 就正好和球面上的点一一对应.
+	\onslide<+->
+	称这样的球面为\emph{复球面}, 称包含无穷远点的复平面为\emph{扩充复平面}或\emph{闭复平面}.
 	\onslide<1->
 	\begin{center}
 		\begin{tikzpicture}
@@ -167,17 +185,17 @@
 				\fill[cstfill1,scale=.7] (-3.65,-.804)--(-1.85,.804)--(3.65,.804)--(1.85,-.804)--cycle;
 				\filldraw[cstcurve,fill=main!10,fill opacity=.5] (0,0) circle (1);
 				\draw[cstdash,main] (0,0) circle (1 and 0.3);
-				\coordinate [label=above:\textcolor{third}{$N$}] (N) at (0,1);
+				\coordinate (N) at (0,1);
 				\draw[cstdash] (0,0)--(N);
 				\draw[cstdash] (0,0)--(1,0);
 				\draw[cstaxis] (1,0)--(2.5,0);
 				\def\a{.7}
 				\draw[cstdash] (0,0)--({-.8*\a},{-.9*\a});
 				\draw[cstaxis] ({-.8*\a},{-.9*\a})--(-.8,-.9);
-				\coordinate [label=left:{$z_1$}] (z1) at (.57,-.15);
-				\coordinate [label=below left:{$Z_1$}] (Z1) at ($(N)!1.2!(z1)$);
-				\coordinate [label=left:{$z_2$}] (z2) at (-1.6,-.2);
-				\coordinate [label=above left:{$Z_2$}] (Z2) at ($(N)!.45!(z2)$);
+				\coordinate (z1) at (.57,-.15);
+				\coordinate (Z1) at ($(N)!1.2!(z1)$);
+				\coordinate (z2) at (-1.6,-.2);
+				\coordinate (Z2) at ($(N)!.45!(z2)$);
 				\draw[cstdash,cstcurve,fourth] (N)--(Z1);
 				\draw[cstdash,cstcurve,second] (N)--(Z2);
 				\draw[cstcurve,second] (Z2)--(z2);
@@ -187,33 +205,43 @@
 			\fill[cstdot,fourth] (z1) circle;
 			\fill[cstdot,second] (z2) circle;
 			\fill[cstdot,third] (N) circle;
+			\draw (N) node[third,above] {$N$};
+			\draw (z1) node[fourth,left] {$z_1$};
+			\draw (Z1) node[fourth,below left] {$Z_1$};
+			\draw (z2) node[second,left] {$z_2$};
+			\draw (Z2) node[second,above left] {$Z_2$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}
 
 
 \begin{frame}{复球面: 无穷远点的邻域\noexer}
-	\begin{itemize}
-		\item 若约定 $\abs{\infty}=+\infty$, 则分别称
+	\onslide<+->
+	若约定 $\abs{\infty}=+\infty$, 则分别称
 		\[
 			U(\infty,X)=\{z\in\BC^*\midcolon \abs{z}>X\},\quad
 			\Uc(\infty,X)=\{z\in\BC\midcolon \abs{z}>X\}
 		\]
 		为 $\infty$ 的 \emph{$X$ 邻域}和\emph{去心 $X$ 邻域}.
-		\item 这样, 前述极限可统一表述为: 若对 $z\in\BC^*$ 的任意 $\delta$ 邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$, 则记 $\liml_{n\ra\infty}z_n=z$.
-		\item 朴素地看, 复球面上任意一点可以定义 $\delta$ 邻域为与其距离小于 $\delta$ 的所有点.
-		\item 特别地, $\infty$ 的邻域通过前面所说的对应关系, 可以对应到扩充复平面上 $\infty$ 的一个邻域.
-		\item 所以在复球面上, 普通复数和 $\infty$ 的邻域具有同等地位.
-	\end{itemize}
+	\onslide<+->
+	这样, 前述极限可统一表述为: 若对 $z\in\BC^*$ 的任意 $\delta$ 邻域 $U$, 存在 $N$ 使得当 $n\ge N$ 时, $z_n\in U$, 则记 $\liml_{n\ra\infty}z_n=z$.
+
+	\onslide<+->
+	朴素地看, 复球面上任意一点可以定义 $\delta$ 邻域为与其距离小于 $\delta$ 的所有点.
+	\onslide<+->
+	特别地, $\infty$ 的邻域通过前面所说的对应关系, 可以对应到扩充复平面上 $\infty$ 的一个邻域.
+	\onslide<+->
+	所以在复球面上, 普通复数和 $\infty$ 的邻域具有同等地位.
 \end{frame}
 
 
 \begin{frame}{复球面: 与实数无穷的联系\noexer}
-	\begin{itemize}
-		\item 它和实数列极限符号中的 $\infty$ 有什么联系呢?
-		\item 选取上述图形的一个截面来看, 实轴可以和圆周去掉一点建立一一对应.
-		\item 于是实数列极限符号中的 $\infty$ 在复球面上就是 $\infty$.
-	\end{itemize}
+	\onslide<+->
+	它和实数列极限符号中的 $\infty$ 有什么联系呢?
+	\onslide<+->
+	选取上述图形的一个截面来看, 实轴可以和圆周去掉一点建立一一对应.
+	\onslide<+->
+	于是实数列极限符号中的 $\infty$ 在复球面上就是 $\infty$.
 	\onslide<2->
 	\begin{center}
 		\begin{tikzpicture}
@@ -246,20 +274,19 @@
 			若存在复数 $A$, 使得对 $A$ 的任意邻域 $U(A,\varepsilon),\exists\delta>0$ 使得
 			\[z\in\Uc(z_0,\delta)\implies f(z)\in U(A,\varepsilon),
 	\]
-		}\onslide<+->{%
+		}
+	\onslide<+->{%
 			则称 $A$ 为 \emph{$f(z)$ 当 $z\to z_0$ 时的极限}, 记为 \emph{$\liml_{z\to z_0}f(z)=A$} 或 \emph{$f(z)\to A (z\to z_0)$}.
 		}
 	\end{definition}
-	\begin{itemize}
-		\item 在此表述下, 将上述定义中的 $z_0$ 或 $A$ 换成 $\infty$, 即可得到 $z\ra\infty$ 时的极限定义, 以及 $\lim f(z)=\infty$ 的含义.
-	\end{itemize}
+	\onslide<+->
+	在此表述下, 将上述定义中的 $z_0$ 或 $A$ 换成 $\infty$, 即可得到 $z\ra\infty$ 时的极限定义, 以及 $\lim f(z)=\infty$ 的含义.
 \end{frame}
 
 
 \begin{frame}{极限的四则运算}
-	\begin{itemize}
-		\item 类似于复数列情形, 极限的四则运算法则对于复变函数也是成立的.
-	\end{itemize}
+	\onslide<+->
+	类似于复数列情形, 极限的四则运算法则对于复变函数也是成立的.
 	\onslide<+->
 	\begin{theorem}
 		设 $\liml_{z\to z_0}f(z)=A,\liml_{z\to z_0}g(z)=B$, 则
@@ -273,9 +300,8 @@
 
 
 \begin{frame}{与实函数极限之联系}
-	\begin{itemize}
-		\item 和数列极限类似, 我们有下述定理:
-	\end{itemize}
+	\onslide<+->
+	和数列极限类似, 我们有下述定理:
 	\onslide<+->
 	\begin{theorem}
 		设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+y_0\ii,A=u_0+v_0\ii$, 则
@@ -285,29 +311,32 @@
 			\lim_{\substack{x\to x_0\\y\to y_0}}v(x,y)=v_0.
 		\]
 	\end{theorem}
-	\begin{itemize}
-		\item 该定理表明: 研究复变函数极限, 只需研究其实部、虚部两个二元实函数的极限.
-		\item 在学习了复变函数的导数后, 我们也可以使用等价无穷小替换、洛必达法则等工具来计算极限.
-	\end{itemize}
+	\onslide<+->
+	该定理表明: 研究复变函数极限, 只需研究其实部、虚部两个二元实函数的极限.
+
+	\onslide<+->
+	在学习了复变函数的导数后, 我们也可以使用等价无穷小替换、洛必达法则等工具来计算极限.
 \end{frame}
 
 
-\begin{frame}{例: 判断函数极限是否存在}
+\begin{frame}{例题: 判断函数极限是否存在}
 	\onslide<+->
 	\begin{example}[nearnext]
 		证明: 当 $z\to0$ 时, 函数 $f(z)=\dfrac{\Re z}{|z|}$ 的极限不存在.
 	\end{example}
 	\onslide<+->
 	\begin{proof}[nearprev]
-		\begin{itemize*}
-			\item 令 $z=x+y\ii$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
-			\item 因此
+		令 $z=x+y\ii$, 则 $f(z)=\dfrac x{\sqrt{x^2+y^2}}$.
+		\onslide<+->{%
+			因此
 			\[
 				u(x,y)=\frac x{\sqrt{x^2+y^2}},\quad v(x,y)=0.
 			\]
-			\item 当 $z$ 在实轴原点两侧分别趋向于 $0$ 时, $u(x,y)\to\pm1$.
-			\item 因此 $\liml_{\substack{x\to 0\\y\to0}}u(x,y)$ 不存在, 从而 $\liml_{z\to z_0}f(z)$ 不存在.\qedhere
-		\end{itemize*}
+		}\onslide<+->{%
+			当 $z$ 在实轴原点两侧分别趋向于 $0$ 时, $u(x,y)\to\pm1$.
+		}\onslide<+->{%
+			因此 $\liml_{\substack{x\to 0\\y\to0}}u(x,y)$ 不存在, 从而 $\liml_{z\to z_0}f(z)$ 不存在.\qedhere
+		}
 		\meddel
 	\end{proof}
 \end{frame}
@@ -341,58 +370,76 @@
 	\onslide<+->
 	\begin{example}[near]
 		\begin{enumerate}
-			\item 设 $f(z)=\ln(x^2+y^2)+\ii(x^2-y^2)$.
+			\item 设
+			\[
+				f(z)=\ln(x^2+y^2)+\ii(x^2-y^2).
+			\]
 			\onslide<+->{%
-			$u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
-			}\onslide<+->{%
-			因此 $f(z)$ 在 $z\neq0$ 处连续.
+				$u(x,y)=\ln(x^2+y^2)$ 除原点外处处连续, $v(x,y)=x^2-y^2$ 处处连续.
+			}
+			\onslide<+->{%
+				因此 $f(z)$ 在 $z\neq0$ 处连续.
 			}
 			\item 显然 $f(z)=z$ 是处处连续的,
 			\onslide<+->{%
-			故多项式函数
-			\[
-				P(z)=a_0+a_1z+a_2z^2+\cdots+a_nz^n
-			\]
-			也处处连续,
-			}\onslide<+->{%
-			有理函数 $\dfrac{P(z)}{Q(z)}$ 在 $Q(z)$ 的零点以外处处连续.
+				故多项式函数
+				\[
+					P(z)=a_0+a_1z+a_2z^2+\cdots+a_nz^n
+				\]
+				也处处连续,
+			}
+			\onslide<+->{%
+				有理函数 $\dfrac{P(z)}{Q(z)}$ 在 $Q(z)$ 的零点以外处处连续.
 			}
 		\end{enumerate}
 	\end{example}
 \end{frame}
 
 
-\begin{frame}{例: 函数连续性的判定}
+\begin{frame}{例题: 函数连续性的判定}
 	\onslide<+->
-	\begin{example}[near]
+	\begin{example}[nearnext]
 		证明: 若 $f(z)$ 在 $z_0$ 连续, 则 $\ov{f(z)}$ 在 $z_0$ 也连续.
 	\end{example}
 	\onslide<+->
 	\begin{proof}[near]
-		\begin{itemize*}
-			\item 设 $f(z)=u(x,y)+\ii v(x,y),z_0=x_0+\ii y_0$.
-			\item 那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.
-			\item 从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.
-			\item 所以 $\ov{f(z)}=u(x,y)-\ii v(x,y)$ 在 $(x_0,y_0)$ 连续.\qedhere
-		\end{itemize*}
+		设
+		\[
+			f(z)=u(x,y)+\ii v(x,y),\quad z_0=x_0+\ii y_0.
+		\]
+		\onslide<+->{%
+			那么 $u(x,y),v(x,y)$ 在 $(x_0,y_0)$ 连续.
+		}\onslide<+->{%
+			从而 $-v(x,y)$ 也在 $(x_0,y_0)$ 连续.
+		}\onslide<+->{%
+			所以
+			\[
+				\ov{f(z)}=u(x,y)-\ii v(x,y)
+			\]
+			在 $(x_0,y_0)$ 连续.\qedhere
+		}
 	\end{proof}
 	\onslide<+->
-	\begin{proof}[near][另证]
-		\begin{itemize*}
-			\item 函数 $g(z)=\ov z=x-\ii y$ 处处连续,
-			\item 从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.\qedhere
-		\end{itemize*}
+	\begin{proof}[nearprev][另证]
+		函数 $g(z)=\ov z=x-\ii y$ 处处连续,
+		\onslide<+->{%
+			从而 $g(f(z))=\ov{f(z)}$ 在 $z_0$ 处连续.\qedhere
+		}
 	\end{proof}
 \end{frame}
 
 
 \begin{frame}{注记}
-	\begin{itemize}
-		\item 可以看出, 在极限和连续性上, 复变函数和两个二元实函数没有什么差别.
-		\item 那么复变函数和多变量微积分的差异究竟是什么导致的呢?
-		\item 归根到底就在于 $\BC$ 是一个域, 上面可以做除法.
-		\item 这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
-		\item 这种特性使得可导的复变函数具有整洁优美的性质, 我们将在下一章来逐步揭开它的神秘面纱.
-	\end{itemize}
+	\onslide<+->
+	可以看出, 在极限和连续性上, 复变函数和两个二元实函数没有什么差别.
+	\onslide<+->
+	那么复变函数和多变量微积分的差异究竟是什么导致的呢?
+
+	\onslide<+->
+	归根到底就在于 $\BC$ 是一个域, 上面可以做除法.
+	\onslide<+->
+	这就导致了复变函数有\alert{导数}, 而不是像多变量实函数只有偏导数.
+	\onslide<+->
+	这种特性使得可导的复变函数具有整洁优美的性质, 我们将在下一章来逐步揭开它的神秘面纱.
 \end{frame}
 

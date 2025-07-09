@@ -1,34 +1,36 @@
 \section{解析函数的概念}
 
 \subsection{可导函数}
+
 \begin{frame}{复变函数的导数}
-	\begin{itemize}
-		\item 由于 $\BC$ 和 $\BR$ 一样是域, 因此我们可以像一元实变函数一样去定义复变函数的导数和微分.
-	\end{itemize}
 	\onslide<+->
-	\begin{definition}[leftupper=0pt]
-		\begin{itemize}
-			\item 设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
-			\item 若极限
+	由于 $\BC$ 和 $\BR$ 一样是域, 因此我们可以像一元实变函数一样去定义复变函数的导数和微分.
+	\onslide<+->
+	\begin{definition}
+		设 $w=f(z)$ 的定义域是区域 $D$, $z_0\in D$.
+		\onslide<+->{%
+			若极限
 			\[
 				\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
 				=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
 			\]
 			存在, 则称 \emph{$f(z)$ 在 $z_0$ 可导}.
+		}\onslide<+->{%
 			这个极限值称为 \emph{$f(z)$ 在 $z_0$ 的导数}, 记作 $f'(z_0)$.
-			\item 若 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
-		\end{itemize}
+		}\onslide<+->{%
+			若 $f(z)$ 在区域 $D$ 内处处可导, 称 \emph{$f(z)$ 在 $D$ 内可导}.
+		}
 	\end{definition}
 \end{frame}
 
 
-\begin{frame}{例: 线性函数的不可导性}
+\begin{frame}{例题: 线性函数的不可导性}
 	\onslide<+->
-	\begin{example}[near]
+	\begin{example}[nearnext]
 		函数 $f(z)=x+2y\ii$ 在哪些点处可导?
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near]
+	\begin{solution}[nearprev]
 		由定义可知
 		\begin{align*}
 			f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
@@ -36,20 +38,19 @@
 			&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y\ii}{\Delta x+\Delta y\ii}.}
 		\end{align*}
 		\onslide<+->{%
-		当 $\Delta x=0, \Delta y\to 0$ 时, 上式$\to2$;
+			当 $\Delta x=0, \Delta y\to 0$ 时, 上式$\to2$;
 		}\onslide<+->{%
-		当 $\Delta y=0, \Delta x\to 0$ 时, 上式$\to1$.
+			当 $\Delta y=0, \Delta x\to 0$ 时, 上式$\to1$.
 		}\onslide<+->{%
-		因此该极限不存在, $f(z)$ 处处不可导.
-		}
-		\meddel
+			因此该极限不存在, $f(z)$ 处处不可导.
+		}\meddel
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例: 复变函数的导数}
+\begin{frame}{例题: 复变函数的导数}
 	\onslide<+->
-	\begin{exercise}[near]
+	\begin{exercise}[nearnext]
 		函数 $f(z)=\ov z=x-y\ii$ 在哪些点处可导? 
 	\end{exercise}
 	\onslide<+->
@@ -61,14 +62,13 @@
 		求 $f(z)=z^2$ 的导数.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[near]
+	\begin{solution}[nearprev]
 		\bigdel
 		\[
 			f'(z)=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}
 			\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}
 			\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
-		\]
-		\bigdel
+		\]\bigdel
 	\end{solution}
 \end{frame}
 
@@ -91,9 +91,8 @@
 
 
 \begin{frame}{四则运算和复合的可导性}
-	\begin{itemize}
-		\item 由上述求导法则, 不难知道:
-	\end{itemize}
+	\onslide<+->
+	由上述求导法则, 不难知道:
 	\onslide<+->
 	\begin{theorem}
 		\begin{enumerate}
@@ -101,29 +100,28 @@
 			\item 若函数 $g(z)$ 在 $z_0$ 处可导, 函数 $f(w)$ 在 $g(z_0)$ 处可导, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处可导.
 		\end{enumerate}
 	\end{theorem}
-	\begin{itemize}
-		\item 由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
-	\end{itemize}
+	\onslide<+->
+	由此可知, 多项式函数处处可导, 有理函数在其定义域内处处可导, 且二者导数形式和单变量实函数情形类似.
 \end{frame}
 
 
-\begin{frame}{例: 利用求导运算法则计算导数}
+\begin{frame}{例题: 利用求导运算法则计算导数}
 	\onslide<+->
 	\begin{example}[nearnext]
 		求 $f(z)=\dfrac{z^2+3}{z+1}$ 的导数.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		\begin{itemize*}
-			\item 由于
+		由于
+		\[
+			f(z)=z-1+\frac4{z+1},
+		\]
+		\onslide<+->{%
+			因此
 			\[
-				f(z)=z-1+\frac4{z+1},
+				f'(z)=1-\frac4{(z+1)^2}.
 			\]
-			\item 因此
-			\[
-				f'(z)=1-\frac4{(z-1)^2}.
-			\]
-		\end{itemize*}
+		}
 	\end{solution}
 \end{frame}
 
@@ -137,30 +135,28 @@
 	该定理的证明和单变量实函数情形完全相同.
 	\onslide<+->
 	\begin{proof}
-		\begin{itemize*}
-			\item 设 $\Delta w=f(z_0+\Delta z)-f(z_0)$,
-			\item 则
+		设 $\Delta w=f(z_0+\Delta z)-f(z_0)$,
+		\onslide<+->{%
+			则
 			\[
 				\lim_{\Delta z\to 0}\Delta w
 				=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z
 				\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}
 				\visible<+->{=f'(z_0)\cdot 0=0,}
 			\]
-			\item 从而 $f(z)$ 在 $z_0$ 处连续.\qedhere
-		\end{itemize*}
+			}\onslide<+->{%
+				从而 $f(z)$ 在 $z_0$ 处连续.\qedhere
+			}
 	\end{proof}
 \end{frame}
 
 
 \subsection{可微函数}
 
-% \alertn{f'(z_0)=\frac{\diff w}{\diff z}\Big|_{z=z_0}
-% =\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}.}
-% \]
+
 \begin{frame}{复变函数的微分}
-	\begin{itemize}
-		\item 复变函数的微分也和单变量实函数情形类似.
-	\end{itemize}
+	\onslide<+->
+	复变函数的微分也和单变量实函数情形类似.
 	\onslide<+->
 	\begin{definition}
 		若存在常数 $A$ 使得函数 $w=f(z)$ 满足
@@ -169,43 +165,53 @@
 		\]
 		其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
 		\onslide<+->{%
-		则称 \emph{$f(z)$ 在 $z_0$ 处可微},
-		}\onslide<+->{%
-		称 $A\Delta z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.
+			则称 \emph{$f(z)$ 在 $z_0$ 处可微},
+		}
+		\onslide<+->{%
+			称 $A\Delta z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.
 		}
 	\end{definition}
-	\begin{itemize}
-		\item 和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\diff w=f'(z_0)\Delta z$, $\diff z=\Delta z$.
-		\item 故
-		\[
-			\emphn{\diff w=f'(z_0)\diff z,f'(z_0)=\dfrac{\diff w}{\diff z}}.
-		\]
-	\end{itemize}
+	\onslide<+->
+	和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\diff w=f'(z_0)\Delta z$, $\diff z=\Delta z$.
+	\onslide<+->
+	故
+	\[
+		\emphn{\diff w=f'(z_0)\diff z,f'(z_0)=\dfrac{\diff w}{\diff z}}.
+	\]
 \end{frame}
 
 
 \subsection{解析函数}
 
+
 \begin{frame}{解析、解析函数和奇点}
 	\onslide<+->
-	\begin{definition}[near]
+	\begin{definition}
 		\begin{enumerate}
 			\item 若函数 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 则称 \emph{$f(z)$ 在 $z_0$ 解析}.
 			\item 若 $f(z)$ 在区域 $D$ 内处处解析, 则称 $f(z)$ 在 $D$ 内解析, 或称 $f(z)$ 是 $D$ 内的一个\emph{解析函数}.
 			\item 若 $f(z)$ 在 $z_0$ 不解析, 则称 $z_0$ 为 $f(z)$ 的一个\emph{奇点}.
 		\end{enumerate}
 	\end{definition}
-	\begin{itemize}
-		\item \alert{在一点解析蕴含在这点可导, 反之未必.} 
-		\onslide<+->{无定义、不连续、不可导、可导但不解析, 都会导致奇点的产生.}
-		\onslide<+->{不过, 若 $z_0$ 是 $f(z)$ 定义域的外点, 即存在 $z_0$ 的邻域与 $f(z)$ 定义域交集为空集, 这种情形不甚有趣, 因此我们不考虑这类奇点.}
-		\item \alert{在区域 $D$ 内解析和在 $D$ 内可导是等价的.} \onslide<+->{这是因为任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域.}
-		\item 由于一个点的邻域也是一个开集, 因此若 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析. \onslide<+->{因此 \alert{$f(z)$ 解析点全体是一个开集}, 它是可导点集合的内点构成的集合.}
-	\end{itemize}
+	\onslide<+->
+	\alert{在一点解析蕴含在这点可导, 反之未必.} 
+	\onslide<+->
+	无定义、不连续、不可导、可导但不解析, 都会导致奇点的产生.
+	\onslide<+->
+	不过, 若 $z_0$ 是 $f(z)$ 定义域的外点, 即存在 $z_0$ 的邻域与 $f(z)$ 定义域交集为空集, 这种情形不甚有趣, 因此我们不考虑这类奇点.
+
+	\onslide<+->
+	\alert{在区域 $D$ 内解析和在 $D$ 内可导是等价的.} 
+	\onslide<+->
+	这是因为任意 $z_0\in D$ 均存在一个包含在 $D$ 内的邻域.
 \end{frame}
 
 
-\begin{frame}{例: 解析与可导的关系}
+\begin{frame}{例题: 解析与可导的关系}
+	\onslide<+->
+	由于一个点的邻域也是一个开集, 因此若 $f(z)$ 在 $z_0$ 处解析, 则 $f(z)$ 在 $z_0$ 的一个邻域内处处可导, 从而在该邻域内解析. 
+	\onslide<+->
+	因此 \alert{$f(z)$ 解析点全体是一个开集}, 它是可导点集合的内点构成的集合.
 	\onslide<+->
 	\begin{exercise}[nearnext]
 		函数 $f(z)$ 在点 $z_0$ 处解析是 $f(z)$ 在该点可导的\fillbraceframe{A}.
@@ -223,38 +229,35 @@
 \end{frame}
 
 
-\begin{frame}{例: 函数的解析性}
+\begin{frame}{例题: 函数的解析性}
 	\onslide<+->
 	\begin{example}[nearnext]
 		研究函数 $f(z)=|z|^2$ 的解析性.
 	\end{example}
-
 	\onslide<+->
 	\begin{solution}[nearprev]
-		\begin{itemize*}
-			\item 注意到
-			\[
-				\frac{f(z+\Delta z)-f(z)}{\Delta z}
-				=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}
-				=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta y\ii}{\Delta x+\Delta y\ii}.
-			\]
+		注意到
+		\[
+			\frac{f(z+\Delta z)-f(z)}{\Delta z}
+			=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}
+			=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta y\ii}{\Delta x+\Delta y\ii}.
+		\]
+		\begin{itemize}
 			\item 若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
 			\item 若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;
-			\onslide<+->{%
+		\end{itemize}
+		\onslide<+->{%
 			当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$. 
-			}\onslide<+->{%
+		}\onslide<+->{%
 			因此此时极限不存在.
-			}
-			\item 故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.
-		\end{itemize*}
+		}\onslide<+->{%
+			故 $f(z)$ 仅在 $z=0$ 处可导, 从而处处不解析.
+		}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{解析函数的四则运算和复合}
-	\begin{itemize}
-		\item 不难证明:
-	\end{itemize}
 	\onslide<+->
 	\begin{theorem}
 		\begin{enumerate}
@@ -262,13 +265,6 @@
 			\item 若函数 $g(z)$ 在 $z_0$ 处解析, 函数 $f(w)$ 在 $g(z_0)$ 处解析, 则 $f\bigl(g(z)\bigr)$ 在 $z_0$ 处解析.
 		\end{enumerate}
 	\end{theorem}
-\end{frame}
-
-
-\begin{frame}{区域内解析函数的四则运算和复合}
-	\begin{itemize}
-		\item 由此可得:
-	\end{itemize}
 	\onslide<+->
 	\begin{theorem}
 		\begin{enumerate}
@@ -276,9 +272,8 @@
 			\item 若函数 $g(z)$ 在 $D$ 内解析且像均落在 $D'$ 中, 函数 $f(w)$ 在 $D'$ 内解析, 则 $f\bigl(g(z)\bigr)$ 在 $D$ 内解析.
 		\end{enumerate}
 	\end{theorem}
-	\begin{itemize}
-		\item 由此可知, 多项式函数处处解析. 有理函数在其定义域内处处解析, 分母的零点是它的奇点.
-	\end{itemize}
+	\onslide<+->
+	由此可知, 多项式函数处处解析. 有理函数在其定义域内处处解析, 分母的零点是它的奇点.
 \end{frame}
 
 
