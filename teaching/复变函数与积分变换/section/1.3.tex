@@ -31,7 +31,7 @@
 	\onslide<+->
 	换言之,
 	\[
-		\alertn{|z_1z_2|=|z_1|\cdot|z_2|,\quad\Bigabs{\frac{z_1}{z_2}}=\frac{|z_1|}{|z_2|},}
+		\alertn{\abs{z_1z_2}=\abs{z_1}\cdot\abs{z_2},\quad\Bigabs{\frac{z_1}{z_2}}=\frac{\abs{z_1}}{\abs{z_2}},}
 	\]
 	\onslide<+->
 	\[
@@ -63,9 +63,9 @@
 		\begin{align*}
 			z_1z_2&=r_1(\cos\theta_1+\ii\sin\theta_1)\cdot
 			r_2(\cos\theta_2+\ii\sin\theta_2)\\
-			&\visible<+->{=r_1r_2\bigl[(\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
-			+\ii(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr]}\\
-			&\visible<+->{=r_1r_2\bigl[\cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)\bigr]}
+			&\visible<+->{=r_1r_2\bigl((\cos\theta_1\cos\theta_2-\sin\theta_1\sin\theta_2)
+			+\ii(\cos\theta_1\sin\theta_2+\sin\theta_1\cos\theta_2)\bigr)}\\
+			&\visible<+->{=r_1r_2\bigl(\cos(\theta_1+\theta_2)+\ii\sin(\theta_1+\theta_2)\bigr)}
 		\end{align*}
 		\onslide<+->{%
 			因此乘法情形得证.
@@ -223,7 +223,7 @@
 			\]
 		}\onslide<+->{%
 			\[
-				\bigl(\lambda^2|z|^2-(1-\lambda)^2\bigr)(z-\ov z)=0.
+				\bigl(\lambda^2\abs{z}^2-(1-\lambda)^2\bigr)(z-\ov z)=0.
 			\]
 		}\onslide<+->{%
 			显然 $z\neq \ov z$.
@@ -231,7 +231,7 @@
 			又因为 $0<\lambda<1$, 故
 		}\onslide<+->{%
 			\[
-				\frac{AB}{AC}=|z|=\frac{1-\lambda}{\lambda}
+				\frac{AB}{AC}=\abs{z}=\frac{1-\lambda}{\lambda}
 				=\frac{BC-DC}{DC}=\frac{DB}{DC}.\qedhere
 			\]
 		}\bigdel
@@ -412,7 +412,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 复数方根的计算}
+\begin{frame}{典型例题: 复数方根的计算}
 	\onslide<+->
 	\begin{example}[nearnext]
 		求 $\sqrt[4]{1+\ii}$.
@@ -466,7 +466,7 @@
 		计算 $\sqrt[6]{-1}=$\fillblankframe[5cm][2mm]{$\pm\dfrac{\sqrt3+\ii}2,\ \pm \ii,\ \pm\dfrac{\sqrt3-\ii }2$}.
 	\end{exercise}
 	\onslide<+->
-	注意当 $|n|\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
+	注意当 $\abs{n}\ge 2$ 时, \alert{$\Arg(z^n)=n\Arg z$ 不成立}.
 	\onslide<+->
 	这是因为
 	\[
@@ -510,7 +510,7 @@
 		\]
 		\onslide<+->
 		容易证明后两个根都是虚数.
-		\item 若 $\Delta\le 0$, 则 $p<0$, $|u|^2=-\dfrac p3>0$. 
+		\item 若 $\Delta\le 0$, 则 $p<0$, $\abs{u}^2=-\dfrac p3>0$. 
 		\onslide<+->
 		从而 $v=\ov u$.
 		\onslide<+->

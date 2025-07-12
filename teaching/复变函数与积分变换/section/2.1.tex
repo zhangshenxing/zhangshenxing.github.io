@@ -12,7 +12,7 @@
 			若极限
 			\[
 				\lim_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}
-				=\lim_{\Delta z\to 0}\frac{f(z_0+\Delta z)-f(z_0)}{\Delta z}
+				=\lim_{\delt z\to 0}\frac{f(z_0+\delt z)-f(z_0)}{\delt z}
 			\]
 			存在, 则称 \emph{$f(z)$ 在 $z_0$ 可导}.
 		}\onslide<+->{%
@@ -33,14 +33,14 @@
 	\begin{solution}[nearprev]
 		由定义可知
 		\begin{align*}
-			f'(z)&=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\\
-			&\visible<+->{=\lim_{\Delta z\to 0}\frac{(x+\Delta x)+2(y+\Delta y)\ii-(x+2y\ii)}{\Delta z}}\\
-			&\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta x+2\Delta y\ii}{\Delta x+\Delta y\ii}.}
+			f'(z)&=\lim_{\delt z\to 0}\frac{f(z+\delt z)-f(z)}{\delt z}\\
+			&\visible<+->{=\lim_{\delt z\to 0}\frac{(x+\delt x)+2(y+\delt y)\ii-(x+2y\ii)}{\delt z}}\\
+			&\visible<+->{=\lim_{\delt z\to 0}\frac{\delt x+2\delt y\ii}{\delt x+\delt y\ii}.}
 		\end{align*}
 		\onslide<+->{%
-			当 $\Delta x=0, \Delta y\to 0$ 时, 上式$\to2$;
+			当 $\delt x=0, \delt y\to 0$ 时, 上式$\to2$;
 		}\onslide<+->{%
-			当 $\Delta y=0, \Delta x\to 0$ 时, 上式$\to1$.
+			当 $\delt y=0, \delt x\to 0$ 时, 上式$\to1$.
 		}\onslide<+->{%
 			因此该极限不存在, $f(z)$ 处处不可导.
 		}\meddel
@@ -65,9 +65,9 @@
 	\begin{solution}[nearprev]
 		\bigdel
 		\[
-			f'(z)=\lim_{\Delta z\to 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}
-			\visible<+->{=\lim_{\Delta z\to 0}\frac{(z+\Delta z)^2-z^2}{\Delta z}}
-			\visible<+->{=\lim_{\Delta z\to 0}(2z+\Delta z)=2z.}
+			f'(z)=\lim_{\delt z\to 0}\frac{f(z+\delt z)-f(z)}{\delt z}
+			\visible<+->{=\lim_{\delt z\to 0}\frac{(z+\delt z)^2-z^2}{\delt z}}
+			\visible<+->{=\lim_{\delt z\to 0}(2z+\delt z)=2z.}
 		\]\bigdel
 	\end{solution}
 \end{frame}
@@ -83,7 +83,7 @@
 			\item $(z^n)'=nz^{n-1}$, 其中 $n$ 为整数;
 			\item $(f\pm g)'=f'\pm g',\quad (cf)'=cf'$;\hfill\alert{线性性质}
 			\item $(fg)'=f'g+fg',\quad \Bigl(\dfrac fg\Bigr)'=\dfrac{f'g-fg'}{g^2}$;\hfill\alert{莱布尼兹法则}
-			\item $\Bigl(f\bigl(g(z)\bigr)\Bigr)'=f'[g(z)]\cdot g'(z)$;\hfill\alert{复合函数求导}
+			\item $\Bigl(f\bigl(g(z)\bigr)\Bigr)'=f'\bigl(g(z)\bigr)\cdot g'(z)$;\hfill\alert{复合函数求导}
 			\item $g'(z)=\dfrac1{f'(w)}, g=f^{-1}, w=g(z)$.\hfill\alert{反函数求导}
 		\end{enumerate}
 	\end{theorem}
@@ -135,13 +135,13 @@
 	该定理的证明和单变量实函数情形完全相同.
 	\onslide<+->
 	\begin{proof}
-		设 $\Delta w=f(z_0+\Delta z)-f(z_0)$,
+		设 $\delt w=f(z_0+\delt z)-f(z_0)$,
 		\onslide<+->{%
 			则
 			\[
-				\lim_{\Delta z\to 0}\Delta w
-				=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\Delta z
-				\visible<+->{=\lim_{\Delta z\to 0}\frac{\Delta w}{\Delta z}\cdot\lim_{\Delta z\to 0}\Delta z}
+				\lim_{\delt z\to 0}\delt w
+				=\lim_{\delt z\to 0}\frac{\delt w}{\delt z}\cdot\delt z
+				\visible<+->{=\lim_{\delt z\to 0}\frac{\delt w}{\delt z}\cdot\lim_{\delt z\to 0}\delt z}
 				\visible<+->{=f'(z_0)\cdot 0=0,}
 			\]
 			}\onslide<+->{%
@@ -161,22 +161,22 @@
 	\begin{definition}
 		若存在常数 $A$ 使得函数 $w=f(z)$ 满足
 		\[
-			\Delta w=f(z_0+\Delta z)-f(z_0)=A\Delta z+o(\Delta z),
+			\delt w=f(z_0+\delt z)-f(z_0)=A\delt z+o(\delt z),
 		\]
-		其中 $o(\Delta z)$ 表示 $\Delta z$ 的高阶无穷小量,
+		其中 $o(\delt z)$ 表示 $\delt z$ 的高阶无穷小量,
 		\onslide<+->{%
 			则称 \emph{$f(z)$ 在 $z_0$ 处可微},
 		}
 		\onslide<+->{%
-			称 $A\Delta z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\diff w=A \Delta z$.
+			称 $A\delt z$ 为 \emph{$f(z)$ 在 $z_0$ 的微分}, 记作 $\d w=A \delt z$.
 		}
 	\end{definition}
 	\onslide<+->
-	和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\diff w=f'(z_0)\Delta z$, $\diff z=\Delta z$.
+	和一元实变函数情形一样, 复变函数的可微和可导是等价的, 且 $\d w=f'(z_0)\delt z$, $\d z=\delt z$.
 	\onslide<+->
 	故
 	\[
-		\emphn{\diff w=f'(z_0)\diff z,f'(z_0)=\dfrac{\diff w}{\diff z}}.
+		\emphn{\d w=f'(z_0)\d z,f'(z_0)=\dfrac{\d w}{\d z}}.
 	\]
 \end{frame}
 
@@ -232,22 +232,22 @@
 \begin{frame}{例题: 函数的解析性}
 	\onslide<+->
 	\begin{example}[nearnext]
-		研究函数 $f(z)=|z|^2$ 的解析性.
+		研究函数 $f(z)=\abs{z}^2$ 的解析性.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
 		注意到
 		\[
-			\frac{f(z+\Delta z)-f(z)}{\Delta z}
-			=\frac{(z+\Delta z)(\ov z+\ov{\Delta z})-z\ov z}{\Delta z}
-			=\ov z+\ov{\Delta z}+z\frac{\Delta x-\Delta y\ii}{\Delta x+\Delta y\ii}.
+			\frac{f(z+\delt z)-f(z)}{\delt z}
+			=\frac{(z+\delt z)(\ov z+\ov{\delt z})-z\ov z}{\delt z}
+			=\ov z+\ov{\delt z}+z\frac{\delt x-\delt y\ii}{\delt x+\delt y\ii}.
 		\]
 		\begin{itemize}
-			\item 若 $z=0$, 则当 $\Delta z\to 0$ 时该极限为 $0$.
-			\item 若 $z\neq0$, 则当 $\Delta y=0,\Delta x\to 0$ 时该极限为 $\ov z+z$;
+			\item 若 $z=0$, 则当 $\delt z\to 0$ 时该极限为 $0$.
+			\item 若 $z\neq0$, 则当 $\delt y=0,\delt x\to 0$ 时该极限为 $\ov z+z$;
 		\end{itemize}
 		\onslide<+->{%
-			当 $\Delta x=0,\Delta y\to 0$ 时该极限为 $\ov z-z$. 
+			当 $\delt x=0,\delt y\to 0$ 时该极限为 $\ov z-z$. 
 		}\onslide<+->{%
 			因此此时极限不存在.
 		}\onslide<+->{%

@@ -109,8 +109,10 @@
 	patterns,
 	calc,
 	angles,
+  decorations.markings,
 	decorations.pathreplacing,
-	backgrounds % 背景边框
+	backgrounds, % 背景边框
+  chains
 }
 \tikzset{
 	background rectangle/.style={semithick,draw=fourth,fill=white,rounded corners},
@@ -926,7 +928,8 @@
 \usepackage[nolimits]{cmupint} % 提供正体 \int, \oint
 \usepackage{textgreek}% 提供正体希腊字母
 \newcommand{\cpi}{{\text{\textpi}}}
-\newcommand{\dirac}{{\text{\textdelta}}}
+% \newcommand{\dirac}{{\text{\textdelta}}}
+\newcommand{\dirac}{{\delta}}
 % 缩写
 \DeclareMathOperator\PV{P.V. }
 \newcommand{\dint}{\displaystyle\int}

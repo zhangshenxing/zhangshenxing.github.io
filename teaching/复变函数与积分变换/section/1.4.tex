@@ -11,13 +11,13 @@
 	这种表示方程有些时候会显得更加直观和易于理解.
 	\onslide<+->
 	\begin{example}[sidepic,righthand width=3.3cm,indent]
-		$|z+2\ii|=2$.
+		$\abs{z+2\ii}=2$.
 		\onslide<+->{%
 			该方程表示与 $-2\ii $ 的距离为 $2$ 的点全体, 即圆心为 $-2\ii $ 半径为 $2$ 的圆.
 		}
 		
 		\onslide<+->{%
-			一般的圆方程为 $|z-z_0|=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
+			一般的圆方程为 $\abs{z-z_0}=R$, 其中 $z_0$ 是圆心, $R$ 是半径.
 		}
 		\tcblower
 		\onslide<4->{\begin{tikzpicture}
@@ -35,7 +35,7 @@
 \begin{frame}{例题: 复数方程表直线}
 	\onslide<+->
 	\begin{example}[sidepic,righthand width=3.3cm]
-		$|z-4\ii|=|z-2|$.
+		$\abs{z-4\ii}=\abs{z-2}$.
 		\onslide<+->{%
 			该方程表示与 $4\ii$ 和 $2$ 的距离相等的点, 即二者连线的垂直平分线.
 		}\onslide<+->{%
@@ -72,20 +72,20 @@
 \begin{frame}{例题: 复数方程表椭圆和双曲线}
 	\onslide<+->
 	\begin{example}
-		$|z-z_1|+|z-z_2|=2a$.
+		$\abs{z-z_1}+\abs{z-z_2}=2a$.
 		\begin{itemize}
-			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
-			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
-			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示空集.
+			\item 当 $2a>\abs{z_1-z_2}$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为长半轴的椭圆;
+			\item 当 $2a=\abs{z_1-z_2}$ 时, 该方程表示连接 $z_1,z_2$ 的线段;
+			\item 当 $2a<\abs{z_1-z_2}$ 时, 该方程表示空集.
 		\end{itemize}
 	\end{example}
 	\onslide<+->
 	\begin{example}
-		$|z-z_1|-|z-z_2|=2a$.
+		$\abs{z-z_1}-\abs{z-z_2}=2a$.
 		\begin{itemize}
-			\item 当 $2a<|z_1-z_2|$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支;
-			\item 当 $2a=|z_1-z_2|$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
-			\item 当 $2a>|z_1-z_2|$ 时, 该方程表示空集.	
+			\item 当 $2a<\abs{z_1-z_2}$ 时, 该方程表示以 $z_1,z_2$ 为焦点, $a$ 为实半轴的双曲线的一支;
+			\item 当 $2a=\abs{z_1-z_2}$ 时, 该方程表示以 $z_2$ 为起点, 与 $z_2,z_1$ 连线反向的射线;
+			\item 当 $2a>\abs{z_1-z_2}$ 时, 该方程表示空集.	
 		\end{itemize}
 	\end{example}
 \end{frame}
@@ -236,13 +236,13 @@
 	\onslide<+->
 	类比于高等数学中的邻域和去心邻域, 我们在复变函数中, 称开圆盘
 		\[
-			U(z_0,\delta)=\{z:|z-z_0|<\delta\}
+			U(z_0,\delta)=\{z:\abs{z-z_0}<\delta\}
 		\]
 		为 $z_0$ 的一个 \emph{$\delta$-邻域}.
 	\onslide<+->
 	称去心开圆盘
 		\[
-			\Uc(z_0,\delta)=\{z:0<|z-z_0|<\delta\}
+			\Uc(z_0,\delta)=\{z:0<\abs{z-z_0}<\delta\}
 		\]
 		为 $z_0$ 的一个\emph{去心 $\delta$-邻域}.
 	\onslide<2->
@@ -368,7 +368,7 @@
 	\onslide<+->
 	注意数学中边界的概念与日常所说的边界是两码事.
 	\onslide<+->
-	例如区域 $|z|>1$ 的边界是 $|z|=1$, 其闭区域是 $|z|\ge 1$.
+	例如区域 $\abs{z}>1$ 的边界是 $\abs{z}=1$, 其闭区域是 $\abs{z}\ge 1$.
 \end{frame}
 
 
@@ -377,8 +377,7 @@
 	很多区域可以由复数的实部、虚部、模和辐角的不等式所确定.
 	\onslide<7->{%
 		下方区域对应的闭区域是什么?
-	}
-	\vspace{-.5\baselineskip}
+	}\bigdel
 	\onslide<2->
 	\begin{figure}[hbpt]
 		\begin{minipage}{.24\textwidth}
@@ -462,7 +461,7 @@
 				\filldraw[cstcurve,main,fill=white] (0,0) circle (.6);
 				\draw[cstaxis](-1.5,0)--(1.5,0);
 				\draw[cstaxis](0,-1.5)--(0,1.5);
-				\draw (0,-1.5) node[below,align=center] {圆环域\\$r<|z|<R$};
+				\draw (0,-1.5) node[below,align=center] {圆环域\\$r<\abs{z}<R$};
 			\end{tikzpicture}
 		\end{minipage}
 	\end{figure}
@@ -519,7 +518,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 区域的特性}
+\begin{frame}{典型例题: 区域的特性}
 	\onslide<+->
 	\begin{example}[sidepic,righthand width=3.3cm]
 		$\Re(z^2)<1$.
@@ -565,12 +564,12 @@
 \end{frame}
 
 
-\begin{frame}{例题: 区域的特性}
+\begin{frame}{典型例题: 区域的特性}
 	\onslide<+->
 	\begin{example}[near,sidepic,righthand width=3.3cm]
 		$\Bigabs{\dfrac1z}\le3$.
 		\onslide<+->{%
-			即 $|z|\ge\dfrac13$.
+			即 $\abs{z}\ge\dfrac13$.
 		}\onslide<+->{%
 			这是无界的多连通\alertn{闭区域}.
 		}
@@ -587,7 +586,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{example}[near,sidepic,righthand width=3.3cm]
-		$|z+1|+|z-1|<4$.
+		$\abs{z+1}+\abs{z-1}<4$.
 		\onslide<+->{%
 			表示一个椭圆的内部.
 		}\onslide<+->{%
@@ -606,7 +605,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{exercise}[near]
-		$|z+1|+|z-1|\ge 1$ 表示什么集合?
+		$\abs{z+1}+\abs{z-1}\ge 1$ 表示什么集合?
 		\onslide<+->{\alertn{整个复平面.}}
 	\end{exercise}
 \end{frame}

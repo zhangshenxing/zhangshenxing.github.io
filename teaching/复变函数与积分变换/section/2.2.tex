@@ -15,43 +15,43 @@
 \end{frame}
 
 
-\begin{frame}{可导的等价刻画: 形式推导}
+\begin{frame}{可导的等价刻画: 形式推导\noexer}
 	\onslide<+->
 	设 \alert{$f$ 在 $z$ 处可导}, $f'(z)=a+b\ii$,
 	\onslide<+->
 	则
 		\[
-			\Delta u+\ii\Delta v
-			=\Delta f
-			=(a+b\ii)(\Delta x+\ii\Delta y)+o(\Delta z).
+			\delt u+\ii\delt v
+			=\delt f
+			=(a+b\ii)(\delt x+\ii\delt y)+o(\delt z).
 		\]
 	\onslide<+->
 	展开可知
 		\begin{align*}
-			\Delta u&=a\Delta x-b\Delta y+o(\Delta z),\\
-			\Delta v&=b\Delta x+a\Delta y+o(\Delta z).
+			\delt u&=a\delt x-b\delt y+o(\delt z),\\
+			\delt v&=b\delt x+a\delt y+o(\delt z).
 		\end{align*}
 	\onslide<+->
-	由于 $o(\Delta z)=o(|\Delta z|)=o(\sqrt{x^2+y^2})$,
+	由于 $o(\delt z)=o(\abs{\delt z})=o(\sqrt{x^2+y^2})$,
 	\onslide<+->
 	因此 \alert{$u,v$ 可微且 $u_x=v_y=a,v_x=-u_y=b$}.
 \end{frame}
 
 
-\begin{frame}{可导的等价刻画: 形式推导}
+\begin{frame}{可导的等价刻画: 形式推导\noexer}
 	\onslide<+->
 	反过来, 假设 \alert{$u,v$ 可微且 $u_x=v_y, v_x=-u_y$}.
 	\onslide<+->
 	由全微分公式
 		\begin{align*}
-			\Delta u&=u_x\Delta x+u_y\Delta y+o(\Delta z)
-				=u_x\Delta x-v_x\Delta y+o(\Delta z),\\
-				\visible<+->{\Delta v}&\visible<.->{=v_x\Delta x+v_y\Delta y+o(\Delta z)
-				=v_x\Delta x+u_x\Delta y+o(\Delta z),}\\
-			\visible<+->{\Delta f}&
-			\visible<.->{=\Delta (u+\ii v)=(u_x+\ii v_x)\Delta x+(-v_x+\ii u_x)\Delta y+o(\Delta z)}\\
-			&\visible<+->{=(u_x+\ii v_x)\Delta(x+\ii y)+o(\Delta z)}\\
-			&\visible<+->{=(u_x+\ii v_x)\Delta z+o(\Delta z).}
+			\delt u&=u_x\delt x+u_y\delt y+o(\delt z)
+				=u_x\delt x-v_x\delt y+o(\delt z),\\
+				\visible<+->{\delt v}&\visible<.->{=v_x\delt x+v_y\delt y+o(\delt z)
+				=v_x\delt x+u_x\delt y+o(\delt z),}\\
+			\visible<+->{\delt f}&
+			\visible<.->{=\delt (u+\ii v)=(u_x+\ii v_x)\delt x+(-v_x+\ii u_x)\delt y+o(\delt z)}\\
+			&\visible<+->{=(u_x+\ii v_x)\delt(x+\ii y)+o(\delt z)}\\
+			&\visible<+->{=(u_x+\ii v_x)\delt z+o(\delt z).}
 		\end{align*}
 	\onslide<+->
 	故 \alert{$f(z)$ 在 $z$ 处可导, 且 $f'(z)=u_x+\ii v_x=v_y-\ii u_y$}.
@@ -101,8 +101,8 @@
 	\onslide<+->
 	若把 $z,\ov z$ 看成独立变量, 那么
 	\begin{itemize}
-		\item 当 $f$ 在 $z$ 处可导时, $\diff f=f'\diff z$.
-		\item 当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微), $\displaystyle\diff f=\pp fz\diff z+\pp f{\ov z}\diff\ov z$.
+		\item 当 $f$ 在 $z$ 处可导时, $\d f=f'\d z$.
+		\item 当 $f$ 关于 $z,\ov z$ 可微时(即 $u,v$ 可微), $\displaystyle\d f=\pp fz\d z+\pp f{\ov z}\d\ov z$.
 	\end{itemize}
 	\onslide<+->
 	所以 \alert{$f$ 在 $z$ 处可导当且仅当 $u,v$ 可微且 $\dpp f{\ov z}=0$, 此时 $f'(z)=\dpp fz$.}
@@ -260,7 +260,7 @@
 \end{frame}
 
 
-\begin{frame}[<*>]{例: 利用C-R方程证明解析函数结论}
+\begin{frame}[<*>]{例题: 利用C-R方程证明解析函数结论}
 	\onslide<+->
 	\begin{example}[nearnext]
 		若 $f'(z)$ 在区域 $D$ 内处处为零, 则 $f(z)$ 在 $D$ 内是一常数.
@@ -289,7 +289,7 @@
 		\end{itemize}
 		\tcblower
 		\begin{itemize}
-			\item $|f(z)|$ 是一常数,
+			\item $\abs{f(z)}$ 是一常数,
 			\item $\Im{f(z)}$ 是一常数,
 			\item $u=v^2$.
 		\end{itemize}
@@ -308,7 +308,7 @@
 		\onslide<+->{%
 			对 $u(x,y)=c_1$ 使用隐函数求导法则得
 			\[
-				u_x\diff x+u_y\diff y=0,
+				u_x\d x+u_y\d y=0,
 			\]
 		}\onslide<+->{%
 			从而 $\bfu=(u_y,-u_x)$ 是该曲线在 $z$ 处的非零切向量.
@@ -335,7 +335,7 @@
 	这种性质被称为\emph{保角性}.
 
 	\onslide<+->
-	这是因为 $\diff f=f'(z_0)\diff z$.
+	这是因为 $\d f=f'(z_0)\d z$.
 	\onslide<+->
 	局部来看 $f$ 把 $z_0$ 附近的点以 $z_0$ 为中心放缩 $f'(z_0)$ 倍并逆时针旋转 $\arg{f'(z_0)}$.
 	\onslide<+->

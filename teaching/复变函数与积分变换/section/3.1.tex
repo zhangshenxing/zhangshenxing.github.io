@@ -20,7 +20,7 @@
 	\onslide<+->
 	以后我们不加说明的话\alert{默认是正方向}.
 
-	\onslide<1->
+	\onslide<2->
 	\begin{center}
 		\begin{tikzpicture}
 			\draw[cstaxis](-3.5,0)--(3.5,0);
@@ -29,11 +29,11 @@
 				\coordinate [label=left:{$A=z(a)$}] (A) at ({1.3*cos(-35)}, {1.3*sin(-35)});
 				\coordinate [label=below:{$B=z(b)$}] (B) at ({1.3*cos(125)}, {1.3*sin(125)});
 				\draw[main,domain=-35:125] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
-				\draw[main,domain=40:45,cstwra,visible on=<3->] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
+				\draw[main,domain=40:45,cstwra,visible on=<4->] plot ({1.3*cos(\x)}, {1.3*sin(\x)});
 				\fill (A) circle;
 				\fill (B) circle;
 			\end{scope}
-			\begin{scope}[xshift=-18mm,yshift=13mm,cstcurve,main,smooth,cstwla,visible on=<5->]
+			\begin{scope}[xshift=-18mm,yshift=13mm,cstcurve,main,smooth,cstwla,visible on=<6->]
 				\draw[domain=-65:30] plot ({-cos(\x)}, {.8*sin(\x)});
 				\draw[domain=25:120] plot ({-cos(\x)}, {.8*sin(\x)});
 				\draw[domain=115:210] plot ({-cos(\x)}, {.8*sin(\x)});
@@ -56,14 +56,14 @@
 	\onslide<+->
 	形式地展开
 	\[
-		f(z)\diff z=(u+\ii v)(\diff x+\ii\diff y)=(u\diff x-v\diff y)+\ii(u\diff y+v\diff x).
+		f(z)\d z=(u+\ii v)(\d x+\ii\d y)=(u\d x-v\d y)+\ii(u\d y+v\d x).
 	\]
 	\bigdel
 	\onslide<+->
 	\begin{definition}
 		若下述右侧两个线积分均存在, 则定义
 	\[
-			\int_C f(z)\diff z=\int_C(u\diff x-v\diff y)+\ii\int_C(v\diff x+u\diff y)
+			\int_C f(z)\d z=\int_C(u\d x-v\d y)+\ii\int_C(v\d x+u\d y)
 	\]
 		为 \emph{$f(z)$ 沿曲线 $C$ 的积分}.
 	\end{definition}
@@ -78,7 +78,7 @@
 	\onslide<+->
 	然后在每一段弧上任取 $\zeta_k\in\warc{z_{k-1}z_k}$ 并作和式
 	\[
-		S_n=\sum_{k=1}^n f(\zeta_k)\Delta z_k,\quad \Delta z_k=z_k-z_{k-1}.
+		S_n=\sum_{k=1}^n f(\zeta_k)\delt z_k,\quad \delt z_k=z_k-z_{k-1}.
 	\]
 	\onslide<+->
 	然后称 $n\to\infty$, 分割的最大弧长 $\ra 0$ 时 $S_n$ 的极限为复变函数积分.
@@ -126,7 +126,7 @@
 
 \begin{frame}{复变函数积分的存在性}
 	\onslide<+->
-	若 $C$ 是闭路, 则该积分记为 \alert{$\doint_Cf(z)\diff z$}.
+	若 $C$ 是闭路, 则该积分记为 \alert{$\doint_Cf(z)\d z$}.
 	\onslide<+->
 	此时该积分不依赖端点的选取.
 
@@ -135,7 +135,7 @@
 	\onslide<+->
 	则
 	\[
-		\int_Cf(z)\diff z=\int_a^bf(z)\diff z=\int_a^b u(x)\diff x
+		\int_Cf(z)\d z=\int_a^bf(z)\d z=\int_a^b u(x)\d x
 	\]
 	就是黎曼积分.
 
@@ -143,12 +143,12 @@
 	根据线积分的存在性条件可知:
 	\onslide<+->
 	\begin{theorem}
-		若 $f(z)$ 在 $D$ 内连续, $C$ 是光滑曲线, 则 $\dint_Cf(z)\diff z$ 总存在.
+		若 $f(z)$ 在 $D$ 内连续, $C$ 是光滑曲线, 则 $\dint_Cf(z)\d z$ 总存在.
 	\end{theorem}
 \end{frame}
 
 
-\subsection{复变函数积分的计算法}
+\subsection{参变量法计算复变函数积分}
 
 \begin{frame}{复变函数积分的计算法}
 	\onslide<+->
@@ -160,11 +160,11 @@
 	\]
 	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向,
 	\onslide<+->
-	则 $\diff z=z'(t)\diff t=\bigl(x'(t)+y'(t)\bigr)\diff t$.
+	则 $\d z=z'(t)\d t=\bigl(x'(t)+y'(t)\bigr)\d t$.
 	\onslide<+->
 	\begin{theorem*}[][积分计算方法I: 参变量法]
 		\[
-			\int_Cf(z)\diff z=\int_a^b f\bigl(z(t)\bigr)z'(t)\diff t.
+			\int_Cf(z)\d z=\int_a^b f\bigl(z(t)\bigr)z'(t)\d t.
 		\]
 	\end{theorem*}
 	\onslide<+->
@@ -180,7 +180,7 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_Cz\diff z$, 其中 $C$ 是从原点到点 $3+4\ii$ 的直线段.
+		求 $\dint_Cz\d z$, 其中 $C$ 是从原点到点 $3+4\ii$ 的直线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev,sidepic,righthand width=113pt]
@@ -188,25 +188,21 @@
 		\onslide<+->{%
 		因此
 		\begin{align*}
-			\int_Cz\diff z&
-			=\int_0^1(3+4\ii)t\cdot(3+4\ii)\diff t
-			\onslide<+->{=(3+4\ii)^2\int_0^1t\diff t}\\&
+			\int_Cz\d z&
+			=\int_0^1(3+4\ii)t\cdot(3+4\ii)\d t
+			\onslide<+->{=(3+4\ii)^2\int_0^1t\d t}\\&
 			\onslide<+->{=\half (3+4\ii)^2=-\frac72+12\ii.}
 		\end{align*}
 		}\bigdel
 		\tcblower
-		\onslide<1->{%
-		\begin{center}
-			\begin{tikzpicture}
-				\coordinate (O) at (0,0);
-				\draw[cstaxis](O)--(3,0);
-				\draw[cstaxis](O)--(0,2.5);
-				\coordinate (A) at (1.5,2);
-				\draw[cstcurve,main,cstwra](O)--(A);
-				\draw
-					(A) node[below right,main,align=center,visible on=<2->] {$z=(3+4\ii)t$\\$0\le t\le 1$};
-			\end{tikzpicture}
-		\end{center}}
+		\begin{tikzpicture}
+			\coordinate (O) at (0,0);
+			\draw[cstaxis](O)--(3,0);
+			\draw[cstaxis](O)--(0,2.5);
+			\coordinate (A) at (1.5,2);
+			\draw[cstcurve,main,cstwra](O)--(A);
+			\draw (A) node[below right,main,align=center] {$z=(3+4\ii)t$\\$0\le t\le 1$};
+		\end{tikzpicture}
 	\end{solution}
 \end{frame}
 
@@ -214,7 +210,7 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_Cz\diff z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4\ii$ 的曲线段.
+		求 $\dint_Cz\d z$, 其中 $C$ 是抛物线 $y=\dfrac49x^2$ 上从原点到点 $3+4\ii$ 的曲线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev,sidepic,righthand width=110pt]
@@ -222,20 +218,19 @@
 		\onslide<+->{%
 			因此
 			\begin{align*}
-				\int_Cz\diff z&=\int_0^3\biggl(t+\frac{4}9\ii t^2\biggr)\cdot\biggl(1+\frac89\ii t\biggr)\diff t\\
-				&\onslide<+->{=\int_0^3\biggl(t+\frac43\ii t^2-\frac{32}{81}t^3\biggr)\diff t}\\
+				\int_Cz\d z&=\int_0^3\biggl(t+\frac{4}9\ii t^2\biggr)\cdot\biggl(1+\frac89\ii t\biggr)\d t\\
+				&\onslide<+->{=\int_0^3\biggl(t+\frac43\ii t^2-\frac{32}{81}t^3\biggr)\d t}\\
 				&\onslide<+->{=\biggl(\half t^2+\frac49\ii t^3-\frac8{81}t^4\biggr)\Big|_0^3}
 				\onslide<+->{=-\frac72+12\ii.}
 			\end{align*}
 		}\bigdel
 		\tcblower
-		\onslide<2->{
 		\begin{tikzpicture}
 			\draw[cstaxis](O)--(3,0);
 			\draw[cstaxis](O)--(0,2.5);
 			\draw[cstcurve,main,domain=0:1.5,cstwra] plot({\x},{8*\x*\x/9});
-			\draw (A) node[right,main,align=center,visible on=<2->] {$z=t+\dfrac49\ii t^2$\\[1mm]$0\le t\le 3$};
-		\end{tikzpicture}}
+			\draw (A) node[right,main,align=center] {$z=t+\dfrac49\ii t^2$\\[1mm]$0\le t\le 3$};
+		\end{tikzpicture}
 	\end{solution}
 \end{frame}
 
@@ -243,7 +238,7 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_C\Re z\diff z$, 其中 $C$ 是从原点到点 $1+\ii$ 的直线段.
+		求 $\dint_C\Re z\d z$, 其中 $C$ 是从原点到点 $1+\ii$ 的直线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev,sidepic,righthand width=122pt]
@@ -252,23 +247,20 @@
 			因此 $\Re z=t$,
 		}\onslide<+->{%
 			\begin{align*}
-				\int_C\Re z\diff z&
-				=\int_0^1t\cdot(1+\ii)\diff t\\&
-				\onslide<+->{=(1+\ii)\int_0^1t\diff t}
+				\int_C\Re z\d z&
+				=\int_0^1t\cdot(1+\ii)\d t\\&
+				\onslide<+->{=(1+\ii)\int_0^1t\d t}
 				\onslide<+->{=\frac{1+\ii}2.}
 			\end{align*}
 		}\bigdel
 		\tcblower
-		\onslide<1->{%
-		\begin{center}
-			\begin{tikzpicture}
-				\draw[cstaxis](O)--(3,0);
-				\draw[cstaxis](O)--(0,2);
-				\coordinate (B) at (2,2);
-				\draw[cstcurve,main,cstwra](O)--(B);
-				\draw (B) node[below right,main,align=center,visible on=<2->] {$z=(1+\ii)t$\\$0\le t\le 1$};
-			\end{tikzpicture}
-		\end{center}}
+		\begin{tikzpicture}
+			\draw[cstaxis](O)--(3,0);
+			\draw[cstaxis](O)--(0,2);
+			\coordinate (B) at (2,2);
+			\draw[cstcurve,main,cstwra](O)--(B);
+			\draw (B) node[below right,main,align=center] {$z=(1+\ii)t$\\$0\le t\le 1$};
+		\end{tikzpicture}
 	\end{solution}
 \end{frame}
 
@@ -276,36 +268,31 @@
 \begin{frame}{典型例题: 计算复变函数沿曲线的积分}
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_C\Re z\diff z$, 其中 $C$ 是从原点到点 $\ii$ 再到 $1+\ii$ 的折线段.
+		求 $\dint_C\Re z\d z$, 其中 $C$ 是从原点到点 $\ii$ 再到 $1+\ii$ 的折线段.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev,sidepic,righthand width=146pt]
+		第一段 $z=\ii t$, $0\le t\le 1$, $\Re z=0$,
 		\onslide<+->{%
-			第一段 $z=\ii t$, $0\le t\le 1$, $\Re z=0$,
-		}\onslide<+->{%
 			第二段 $z=t+\ii$, $0\le t\le 1$, $\Re z=t$.
 		}\onslide<+->{%
 			因此
 			\[
-				\int_C\Re z\diff z=\int_0^1 t\diff t=\frac12.
+				\int_C\Re z\d z=\int_0^1 t\d t=\frac12.
 			\]
 		}\bigdel
 		\tcblower
-		\onslide<2->{
-			\begin{center}
-				\begin{tikzpicture}
-					\draw[cstaxis](O)--(2.5,0);
-					\draw[cstaxis](O)--(0,2);
-					\coordinate (C) at (0,1.5);
-					\coordinate (D) at (1.5,1.5);
-					\draw[cstcurve,main,cstwra](O)--(C);
-					\draw[cstcurve,second,cstwra](C)--(D);
-					\draw
-						(C) node[below left,align=center,main,visible on=<3->] {$z=it$\\$0\le t\le 1$}
-						(D) node[right,align=center,second,visible on=<3->] {$z=t+\ii$\\$0\le t\le 1$};
-				\end{tikzpicture}
-			\end{center}
-		}
+		\begin{tikzpicture}
+			\draw[cstaxis](O)--(2.5,0);
+			\draw[cstaxis](O)--(0,2);
+			\coordinate (C) at (0,1.5);
+			\coordinate (D) at (1.5,1.5);
+			\draw[cstcurve,main,cstwra](O)--(C);
+			\draw[cstcurve,second,cstwra,visible on=<3->](C)--(D);
+			\draw
+				(C) node[below left,align=center,main] {$z=\ii t$\\$0\le t\le 1$}
+				(D) node[right,align=center,second,visible on=<3->] {$z=t+\ii$\\$0\le t\le 1$};
+		\end{tikzpicture}
 	\end{solution}
 \end{frame}
 
@@ -320,7 +307,7 @@
 
 	\onslide<+->
 	\begin{exercise}[sidepic,righthand width=96pt]
-		求 $\dint_C\Im z\diff z=$\fillblankframe[3cm][2mm]{$-\dfrac12+\dfrac\ii2$}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+\ii$ 再到 $\ii$ 的折线段.
+		求 $\dint_C\Im z\d z=$\fillblankframe[3cm][2mm]{$-\dfrac12+\dfrac\ii2$}, 其中 $C$ 是从原点沿 $y=x$ 到点 $1+\ii$ 再到 $\ii$ 的折线段.
 		\tcblower
 		\begin{center}
 			\begin{tikzpicture}
@@ -336,20 +323,20 @@
 
 \begin{frame}{例题: 计算复变函数沿圆周的积分}
 	\onslide<+->
-	\begin{example}
-		求 $\doint_{|z-z_0|=r}\frac{\diff z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
+	\begin{example}[nearnext]
+		求 $\doint_{\abs{z-z_0}=r}\frac{\d z}{(z-z_0)^{n+1}}$, 其中 $n$ 为整数.
 	\end{example}
 	\onslide<+->
-	\begin{solution}
-		$C: |z-z_0|=r$ 的参数方程为 $z=z_0+r\ee^{\ii\theta},0\le \theta\le 2\pi$.
+	\begin{solution}[nearprev]
+		$C: \abs{z-z_0}=r$ 的参数方程为 $z=z_0+r\ee^{\ii\theta},0\le \theta\le 2\pi$.
 		\onslide<+->{%
-			于是 $\diff z=\ii r\ee^{\ii\theta}\diff \theta$.
+			于是 $\d z=\ii r\ee^{\ii\theta}\d \theta$.
 		}\onslide<+->{%
 			\begin{align*}
-				\alertn{\oint_C\frac{\diff z}{(z-z_0)^{n+1}}}
-				&=\int_0^{2\pi}\ii(r\ee^{\ii\theta})^{-n}\diff\theta
-				\onslide<+->{=\ii r^{-n}\int_0^{2\pi}\ee^{-\ii n\theta}\diff\theta}\\
-				&\onslide<+->{=\ii r^{-n}\int_0^{2\pi}\bigl(\cos(n\theta)+\ii\sin(n\theta)\bigr)\diff\theta}
+				\alertn{\oint_C\frac{\d z}{(z-z_0)^{n+1}}}
+				&=\int_0^{2\pi}\ii(r\ee^{\ii\theta})^{-n}\d\theta
+				\onslide<+->{=\ii r^{-n}\int_0^{2\pi}\ee^{-\ii n\theta}\d\theta}\\
+				&\onslide<+->{=\ii r^{-n}\int_0^{2\pi}\bigl(\cos(n\theta)+\ii\sin(n\theta)\bigr)\d\theta}
 				\onslide<+->{=\begin{cases}
 					\alertn{2\pi\ii,}&\alertn{\text{\alert{若}}\ n=0;}\\
 					\alertn{0,}&\alertn{\text{\alert{若}}\ n\neq0.}
@@ -366,10 +353,10 @@
 	\onslide<+->
 	\begin{theorem}[][线性性质]
 		\begin{enumerate}
-			\item $\dint_Cf(z)\diff z=-\dint_{C^-}f(z)\diff z$.
-			\item $\dint_Ckf(z)\diff z=k\dint_Cf(z)\diff z$.
-			\item $\dint_C[f(z)\pm g(z)]\diff z
-			=\dint_Cf(z)\diff z\pm\dint_Cg(z)\diff z$.
+			\item $\dint_Cf(z)\d z=-\dint_{C^-}f(z)\d z$.
+			\item $\dint_Ckf(z)\d z=k\dint_Cf(z)\d z$.
+			\item $\dint_C[f(z)\pm g(z)]\d z
+			=\dint_Cf(z)\d z\pm\dint_Cg(z)\d z$.
 		\end{enumerate}
 	\end{theorem}
 \end{frame}
@@ -378,7 +365,7 @@
 \subsection{长大不等式和大小圆弧引理}
 
 
-\begin{frame}{长大不等式}
+\begin{frame}{长大不等式\noexer}
 	\onslide<+->
 	\begin{theorem*}[nearnext][长大不等式]
 		设有向曲线 $C$ 的长度为 $L$, $f(z)$ 在 $C$ 上满足 $\abs{f(z)}\le M$, 则
@@ -390,10 +377,10 @@
 	\begin{proof}[nearprev]
 		对
 			$\displaystyle
-				\biggabs{\sum_{k=1}^n f(\zeta_k)\Delta z_k}
-				\le\sum_{k=1}^n\abs{f(\zeta_k)\Delta z_k}
-				\le\sum_{k=1}^n\abs{f(\zeta_k)}\Delta s_k
-				\le M\sum_{k=1}^n\Delta s_k
+				\biggabs{\sum_{k=1}^n f(\zeta_k)\delt z_k}
+				\le\sum_{k=1}^n\abs{f(\zeta_k)\delt z_k}
+				\le\sum_{k=1}^n\abs{f(\zeta_k)}\delt s_k
+				\le M\sum_{k=1}^n\delt s_k
 			$
 		\onslide<+->{%
 			取极限即可.\qedhere
@@ -403,11 +390,11 @@
 	长大不等式常常用于证明等式: 估算一个积分和一个具体的数值之差不超过任意给定的 $\varepsilon$, 从而得到二者相等.
 
 	\onslide<+->
-	注意到: 若被积函数 $f(z)$ 在 $C$ 上的点都连续, 那么 $|f(z)|$ 是 $C$ 的参变量 $t\in[a,b]$ 的连续函数, 从而有界, 即存在 $M$ 使得 $|f(z)|\le M,\forall z\in C$.
+	注意到: 若被积函数 $f(z)$ 在 $C$ 上的点都连续, 那么 $\abs{f(z)}$ 是 $C$ 的参变量 $t\in[a,b]$ 的连续函数, 从而有界, 即存在 $M$ 使得 $\abs{f(z)}\le M,\forall z\in C$.
 \end{frame}
 
 
-\begin{frame}{小圆弧引理}
+\begin{frame}{小圆弧引理\noexer}
 	\onslide<+->
 	\begin{theorem*}[nearnext][小圆弧引理]
 		设函数 $f(z)$ 满足 $\liml_{z\ra a}(z-a)f(z)=k$.
@@ -424,7 +411,7 @@
 \end{frame}
 
 
-\begin{frame}{小圆弧引理的证明}
+\begin{frame}{小圆弧引理的证明\noexer}
 	\onslide<+->
 	\begin{proof}[nearprev]
 		和前面的例题类似, 
@@ -434,9 +421,9 @@
 			=\ii(\theta_2-\theta_1).
 		\]
 		\onslide<+->{%
-			对任意 $\varepsilon>0$, 存在 $\delta>0$ 使得当 $\abs{z-a}<\delta$ 时, $\bigabs{(z-a)f(z)-k}\le\varepsilon$.
+			对任意 $\varepsilon>0$, 存在 $\delt>0$ 使得当 $\abs{z-a}<\delt$ 时, $\bigabs{(z-a)f(z)-k}\le\varepsilon$.
 		}\onslide<+->{%
-			当 $0<r<\delta$ 时,
+			当 $0<r<\delt$ 时,
 			\begin{align*}
 					&\biggabs{\int_{C_r}f(z)\d z-\ii k(\theta_2-\theta_1)}
 				=\biggabs{\int_{C_r}\Bigl(f(z)-\frac k{z-a}\Bigr)\d z}\\
@@ -450,9 +437,9 @@
 \end{frame}
 
 
-\begin{frame}{小圆弧引理}
+\begin{frame}{小圆弧引理\noexer}
 	\onslide<+->
-	特别地, 若 $C_r:|z-a|=r$, 则上述极限为 $2k\pi \ii$.
+	特别地, 若 $C_r:\abs{z-a}=r$, 则上述极限为 $2k\pi \ii$.
 
 	\onslide<+->
 	类似地, 若 $\liml_{z\ra \infty} zf(z)=k$, 则有大圆弧引理.

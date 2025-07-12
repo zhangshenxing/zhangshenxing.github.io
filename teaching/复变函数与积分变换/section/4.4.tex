@@ -4,35 +4,37 @@
 
 \begin{frame}{双边幂级数}
 	\onslide<+->
-	如果解析函数 $f(z)$ 在 $z_0$ 处解析, 那么在 $z_0$ 处可以展开成泰勒级数.
+	若解析函数 $f(z)$ 在 $z_0$ 处解析, 那么在 $z_0$ 处可以展开成泰勒级数.
 	\onslide<+->
-	如果 $f(z)$ 在 $z_0$ 处不解析呢?
+	若 $f(z)$ 在 $z_0$ 处不解析呢?
 	\onslide<+->
 	此时 $f(z)$ 一定不能展开成 $z-z_0$ 的幂级数,
 	\onslide<+->
 	然而它却可能可以展开为\emph{双边幂级数}
-	\onslide<+->
-	\[\sum_{n=-\infty}^\infty c_n(z-z_0)^n=\alert{
-	\underbrace{\sum_{n=1}^\infty c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}+
-	\emph{\underbrace{\sum_{n=0}^\infty c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.
+	\[
+		\sumff c_n(z-z_0)^n
+		=\alert{\underbrace{\sumf1 c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}
+		+\emph{\underbrace{\sumf0 c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.
 	\]
 	\onslide<+->
 	例如
-	\[\frac1{z^2(1-z)}=\frac1{z^2}+\frac1z+1+z+z^2+\cdots,\quad 0<|z|<1.
+	\[
+		\frac1{z^2(1-z)}=\frac1{z^2}+\frac1z+1+z+z^2+\cdots,
+		\quad 0<\abs{z}<1.
 	\]
+	\onslide<+->
+	双边幂级数的非负幂次部分也叫\emph{解析部分}, 负幂次部分也叫\emph{主要部分}.
 \end{frame}
 
 
 \begin{frame}{双边幂级数的敛散性}
 	\onslide<+->
 	为了保证双边幂级数的收敛范围有一个好的性质以便于我们使用, 我们对它的敛散性作如下定义:
-
 	\onslide<+->
 	\begin{definition}
-		如果双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
+		若双边幂级数的非负幂次部分和负幂次部分作为函数项级数都收敛, 则我们称这个双边幂级数\emph{收敛}.
 		否则我们称之为\emph{发散}.
 	\end{definition}
-
 	\onslide<+->
 	注意双边幂级数的敛散性不能像幂级数那样通过部分和形成的数列的极限来定义,
 	\onslide<+->
@@ -42,28 +44,26 @@
 
 \begin{frame}{双边幂级数的收敛域}
 	\onslide<+->
-	设 $\suml_{n=0}^\infty c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|>R_2$ 内发散.
+	设 $\sumf0 c_n(z-z_0)^n$ 的收敛半径为 $R_2$, 则它在 $\abs{z-z_0}<R_2$ 内收敛, 在 $\abs{z-z_0}>R_2$ 内发散.
 
 	\onslide<+->
-	对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\suml_{n=1}^\infty c_{-n}\zeta^n$.
+	对于负幂次部分, 令 $\zeta=\dfrac1{z-z_0}$, 那么负幂次部分是 $\zeta$ 的一个幂级数 $\sumf1 c_{-n}\zeta^n$.
 	\onslide<+->
-	设该幂级数的收敛半径为 $R$, 则它在 $|\zeta|<R$ 内收敛, 在 $|\zeta|>R$ 内发散.
+	设该幂级数的收敛半径为 $R$, 则它在 $\abs{\zeta}<R$ 内收敛, 在 $\abs{\zeta}>R$ 内发散.
 	\onslide<+->
-	设 $R_1:=\frac1R$, 则 $\suml_{n=1}^\infty c_{-n}(z-z_0)^{-n}$ 在 $|z-z_0|>R_1$ 内收敛, 在 $|z-z_0|<R_1$ 内发散.
+	设 $R_1:=\frac1R$, 则 $\sumf1 c_{-n}(z-z_0)^{-n}$ 在 $\abs{z-z_0}>R_1$ 内收敛, 在 $\abs{z-z_0}<R_1$ 内发散.
 
 	\begin{enumerate}
-		\item 如果 $R_1>R_2$, 则该双边幂级数处处不收敛.
-		\item 如果 $R_1=R_2$, 则该双边幂级数只在圆周 $|z-z_0|=R_1$ 上可能有收敛的点.
-		\onslide<+->
-		此时没有收敛域.
-		\item 如果 $R_1<R_2$, 则该双边幂级数在 $R_1<|z-z_0|<R_2$ 内收敛, 在 $|z-z_0|<R_1$ 或 $>R_2$ 内发散, 在圆周 $|z-z_0|=R_1$ 或 $R_2$ 上既可能发散也可能收敛.
+		\item 若 $R_1>R_2$, 则该双边幂级数处处不收敛.
+		\item 若 $R_1=R_2$, 则该双边幂级数只在圆周 $\abs{z-z_0}=R_1$ 上可能有收敛的点.
+		\item 若 $R_1<R_2$, 则该双边幂级数在 $R_1<\abs{z-z_0}<R_2$ 内收敛, 在 $\abs{z-z_0}<R_1$ 或 $>R_2$ 内发散, 在圆周 $\abs{z-z_0}=R_1$ 或 $R_2$ 上既可能发散也可能收敛.
 	\end{enumerate}
 \end{frame}
 
 
 \begin{frame}{双边幂级数的收敛域}
 	\onslide<+->
-	因此\alert{双边幂级数的收敛域为圆环域 $R_1<|z-z_0|<R_2$}.
+	当 $R_1<R_2$ 时, 称圆环域 $R_1<\abs{z-z_0}<R_2$ 为该\alert{双边幂级数的收敛圆环}.
 
 	\onslide<+->
 	当 $R_1=0$ 或 $R_2=+\infty$ 时, 圆环域的形状会有所不同.
@@ -76,7 +76,7 @@
 			\draw
 				(0.7,0.2) node[second] {$R_2$}
 				(-0.3,0) node[main] {$z_0$}
-				(0,-2) node {$0<|z-z_0|<R_2$};
+				(0,-2) node {$0<\abs{z-z_0}<R_2$};
 
 			\fill[cstfille1,visible on=<+->] (2.5,-1.5) rectangle (5.5,1.5);
 			\filldraw[cstcurve,fill=white,draw=main,visible on=<.->] (4,0) circle (1); 
@@ -85,16 +85,15 @@
 			\draw
 				(4.1,-0.6) node[second,visible on=<.->] {$R_1$}
 				(3.7,0) node[main,visible on=<.->] {$z_0$}
-				(4,-2) node[visible on=<.->] {$R_1<|z-z_0|<+\infty$};
+				(4,-2) node[visible on=<.->] {$R_1<\abs{z-z_0}<+\infty$};
 
 			\fill[cstfille1,visible on=<+->] (6.5,-1.5) rectangle (9.5,1.5);
 			\filldraw[cstdote,draw=main,visible on=<.->] (8,0) circle;
 			\draw
 				(7.7,0) node[main,visible on=<.->] {$z_0$}
-				(8,-2) node[visible on=<.->] {$0<|z-z_0|<+\infty$};
+				(8,-2) node[visible on=<.->] {$0<\abs{z-z_0}<+\infty$};
 		\end{tikzpicture}
 	\end{center}
-
 	\onslide<+->
 	双边幂级数的非负幂次部分和负幂次部分在收敛圆环域内都收敛,
 	\onslide<+->
@@ -106,18 +105,22 @@
 
 \begin{frame}{例题: 双边幂级数的收敛域}
 	\onslide<+->
-	\begin{example}
-		求双边幂级数 $\displaystyle\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+\ii)^n}$ 的收敛域与和函数.
+	\begin{example}[nearnext]
+		求双边幂级数 $\displaystyle\sumf1\frac{2^n}{z^n}+\sumf0\frac{z^n}{(2+\ii)^n}$ 的收敛域与和函数.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
-		非负幂次部分收敛域为 $|z|<|2+\ii|=\sqrt5$, 负幂次部分收敛域为 $|z|>|2|=2$.
-		\onslide<+->{因此该双边幂级数的收敛域为 $2<|z|<\sqrt5$.
-		}\onslide<+->{此时
-			\[\sum_{n=1}^\infty\frac{2^n}{z^n}+\sum_{n=0}^\infty\frac{z^n}{(2+\ii)^n}
-			=\frac{\dfrac 2z}{1-\dfrac 2z}+\frac1{1-\dfrac z{2+\ii}}
-			=\frac{-\ii z}{(z-2)(z-2-\ii )}.\]}
+	\begin{solution}[nearprev]
+		非负幂次部分收敛域为 $\abs{z}<\abs{2+\ii}=\sqrt5$, 负幂次部分收敛域为 $\abs{z}>\abs{2}=2$.
+		\onslide<+->{%
+			因此该双边幂级数的收敛域为 $2<\abs{z}<\sqrt5$.
+		}\onslide<+->{%
+			此时
+			\[
+				\sumf1\frac{2^n}{z^n}+\sumf0\frac{z^n}{(2+\ii)^n}
+				=\frac{\dfrac 2z}{1-\dfrac 2z}+\frac1{1-\dfrac z{2+\ii}}
+				=\frac{-\ii z}{(z-2)(z-2-\ii )}.
+			\]
+		}\bigdel
 	\end{solution}
 \end{frame}
 
@@ -131,12 +134,16 @@
 	\onslide<+->
 	例如 $f(z)=\dfrac1{z(1-z)}$ 在 $z=0,1$ 以外解析.
 	\onslide<+->
-	在圆环域 $0<|z|<1$ 内,
-	\[f(z)=\frac1z+\frac1{1-z}=\frac1z+1+z+z^2+z^3+\cdots
+	在圆环域 $0<\abs{z}<1$ 内,
+	\[
+		f(z)=\frac1z+\frac1{1-z}
+		=\frac1z+1+z+z^2+z^3+\cdots
 	\]
 	\onslide<+->
-	在圆环域 $1<|z|<+\infty$ 内,
-	\[f(z)=\frac1z-\frac1z\cdot\frac1{1-\dfrac1z}=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots
+	在圆环域 $1<\abs{z}<+\infty$ 内,
+	\[
+		f(z)=\frac1z-\frac1z\cdot\frac1{1-\dfrac1z}
+		=-\frac1{z^2}-\frac1{z^3}-\frac1{z^4}-\cdots
 	\]
 \end{frame}
 
@@ -145,16 +152,20 @@
 	\onslide<+->
 	考虑一般情形下的洛朗展开.
 	\onslide<+->
-	设 $f(z)$ 在圆环域 $R_1<|z-z_0|<R_2$ 内解析.
+	设 $f(z)$ 在圆环域 $R_1<\abs{z-z_0}<R_2$ 内解析.
 	\onslide<+->
 	设
-	\[\alertn{K_1:|z-z_0|=r},\quad \emphn{K_2:|z-z_0|=R},\quad R_1<r<R<R_2.
+	\[
+		\alertn{K_1:\abs{z-z_0}=r},\quad
+		\emphn{K_2:\abs{z-z_0}=R},\quad
+		R_1<r<R<R_2.
 	\]
 	\onslide<+->
-	对于 $r<|z-z_0|<R$, 对复合闭路 $K_2+K_1^-$ 应用柯西积分公式,
-	\[f(z)=\frac1{2\pi\ii}
-	\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
-	-\frac1{2\pi\ii}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}.
+	对于 $r<\abs{z-z_0}<R$, 对复合闭路 $K_2+K_1^-$ 应用柯西积分公式,
+	\[
+		f(z)=\frac1{2\pi\ii}
+		\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\d\zeta}
+		-\frac1{2\pi\ii}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\d\zeta}.
 	\]
 	\onslide<2->
 	\begin{center}
@@ -185,17 +196,22 @@
 \begin{frame}{洛朗级数}
 	\onslide<+->
 	和泰勒级数的推导类似,
-	\[\frac1{2\pi\ii}\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\diff\zeta}
-	=\sum_{n=0}^\infty\left[\frac1{2\pi\ii}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n
+	\[\frac1{2\pi\ii}\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\d\zeta}
+	=\sumf0\left[\frac1{2\pi\ii}\oint_{K_2}\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n
 	\]
 	可以表达为幂级数的形式.
 	\onslide<+->
-	对于 $\zeta\in K_1$, 由 $\abs{\dfrac{\zeta-z_0}{z-z_0}}<1$ 可得
+	对于 $\zeta\in K_1$, 由 $\Bigabs{\dfrac{\zeta-z_0}{z-z_0}}<1$ 可得
 	\onslide<+->
-	\[-\frac1{\zeta-z}=\frac1{z-z_0}\cdot\frac1{1-\dfrac{\zeta-z_0}{z-z_0}}=\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}},
+	\[
+		-\frac1{\zeta-z}
+		=\frac1{z-z_0}\cdot\frac1{1-\dfrac{\zeta-z_0}{z-z_0}}
+		=\sumf1\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}},
 	\]
 	\onslide<+->
-	\[-\frac1{2\pi\ii}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\diff\zeta}=\frac1{2\pi\ii}\oint_{K_1}f(\zeta)\sum_{n=1}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta.
+	\[
+		-\frac1{2\pi\ii}\alertn{\oint_{K_1}\frac{f(\zeta)}{\zeta-z}\d\zeta}
+		=\frac1{2\pi\ii}\oint_{K_1}f(\zeta)\sumf1\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\d\zeta.
 	\]
 \end{frame}
 
@@ -204,18 +220,18 @@
 	\onslide<+->
 	令
 	\begin{align*}
-		R_N(z)&=\frac1{2\pi\ii}\oint_{K_1}f(\zeta)\sum_{n=N}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\diff\zeta\\
-		&=\frac1{2\pi\ii}\oint_{K_1}\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^{N-1}\diff\zeta.
+		R_N(z)&=\frac1{2\pi\ii}\oint_{K_1}f(\zeta)\sum_{n=N}^\infty\frac{(z-z_0)^{-n}}{(\zeta-z_0)^{-n+1}}\d\zeta\\
+		&=\frac1{2\pi\ii}\oint_{K_1}\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^{N-1}\d\zeta.
 	\end{align*}
 	\onslide<+->
 	由于 $f(\zeta)$ 在 $D\supseteq K_1$ 上解析, 从而在 $K_1$ 上连续且有界.
 	\onslide<+->
-	设 $|f(\zeta)|\le M,\zeta\in K_1$,
+	设 $\abs{f(\zeta)}\le M,\zeta\in K_1$,
 	\onslide<+->
 	那么
 	\begin{align*}
-	|R_N(z)|&\le\frac 1{2\pi}\oint_{K_1}\abs{\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^{N-1}}\diff s\\
-	&\visible<+->{\le\frac 1{2\pi}\cdot\frac M{|z-z_0|-r}\cdot\abs{\frac{\zeta-z_0}{z-z_0}}^{N-1}\cdot 2\pi r\to 0\quad (N\to\infty).}
+		\abs{R_N(z)}&\le\frac 1{2\pi}\oint_{K_1}\biggabs{\frac{f(\zeta)}{z-\zeta}\cdot\Bigl(\frac{\zeta-z_0}{z-z_0}\Bigr)^{N-1}}\d s\\
+		&\onslide<+->{\le\frac 1{2\pi}\cdot\frac M{\abs{z-z_0}-r}\cdot\biggabs{\frac{\zeta-z_0}{z-z_0}}^{N-1}\cdot 2\pi r\to 0\quad (N\to\infty).}
 	\end{align*}
 \end{frame}
 
@@ -224,17 +240,18 @@
 	\onslide<+->
 	故
 	\begin{align*}
-	f(z)&=\sum_{n=0}^\infty\left[\frac1{2\pi\ii}\oint_{K_2}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\\
-	&\qquad+\sum_{n=1}^\infty \left[\frac1{2\pi\ii}\oint_{K_1}\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{-n+1}}\right](z-z_0)^{-n},
+		f(z)&=\sumf0\left[\frac1{2\pi\ii}\oint_{K_2}\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{n+1}}\right](z-z_0)^n\\
+		&\qquad+\sumf1 \left[\frac1{2\pi\ii}\oint_{K_1}\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{-n+1}}\right](z-z_0)^{-n},
 	\end{align*}
-	其中 $r<|z-z_0|<R$.
+	其中 $r<\abs{z-z_0}<R$.
 	\onslide<+->
 	由复合闭路定理, $K_1,K_2$ 可以换成任意一条在圆环域内绕 $z_0$ 的闭路 $C$.
 	\onslide<+->
 	从而我们得到 \emph{$\emphm{f(z)}$ 在以 $\emphm{z_0}$ 为圆心的圆环域的洛朗展开}
-	\[\alertm{f(z)=\sum_{n=-\infty}^\infty\left[\emphm{\frac1{2\pi\ii}\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},
+	\[
+		\alertm{f(z)=\sumff\left[\emphm{\frac1{2\pi\ii}\oint_C\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{n+1}}}\right](z-z_0)^n},
 	\]
-	其中 $R_1<|z-z_0|<R_2$.
+	其中 $R_1<\abs{z-z_0}<R_2$.
 \end{frame}
 
 
@@ -244,37 +261,37 @@
 	\onslide<+->
 	和圆域上解析函数的幂级数展开类似, 圆环域上解析函数的双边幂级数展开也具有唯一性.
 	\onslide<+->
-	设在圆环域 $R_1<|z-z_0|<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
-	\[f(z)=\sum_{n=-\infty}^\infty c_n(z-z_0)^n.
+	设在圆环域 $R_1<\abs{z-z_0}<R_2$ 内的解析函数 $f(z)$ 可以表达为双边幂级数
+	\[
+		f(z)=\sumff c_n(z-z_0)^n.
 	\]
 	\onslide<+->
 	逐项积分得到
-	\[\oint_C\frac{f(\zeta)\diff\zeta}{(\zeta-z_0)^{n+1}}=\sum_{k=-\infty}^\infty c_k\oint_C(\zeta-z_0)^{k-n-1}\diff\zeta=2\pi\ii c_n.
+	\[
+		\oint_C\frac{f(\zeta)\d\zeta}{(\zeta-z_0)^{n+1}}
+		=\sum_{k=-\infty}^\infty c_k\oint_C(\zeta-z_0)^{k-n-1}\d\zeta
+		=2\pi\ii c_n.
 	\]
 	\onslide<+->
 	因此 $f(z)$ 在圆环域内的\alert{双边幂级数展开是唯一的, 它就是洛朗级数}.
 	\onslide<+->
 	由于计算积分往往较繁琐, 因此我们一般不用直接法, 而是\alert{用双边幂级数的代数、求导、求积分运算}来得到洛朗级数.
-	
-	\onslide<+->
-	称 $f(z)$ 洛朗展开的非负幂次部分为它的\emph{解析部分}, 负幂次部分为它的\emph{主要部分}.
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗级数}
 	\onslide<+->
-	\begin{example}
+	\begin{example}[nearprev]
 		将 $f(z)=\dfrac{\ee^z-1}{z^2}$ 展开为以 $0$ 为中心的洛朗级数.
 	\end{example}
-
 	\onslide<+->
-	由于 $f(z)$ 只有 $0$ 这个奇点, 因此 $f(z)$ 在 $0<|z|<+\infty$ 解析.
+	由于 $f(z)$ 只有 $0$ 这个奇点, 因此 $f(z)$ 在 $0<\abs{z}<+\infty$ 解析.
 	\onslide<+->
 	我们先使用直接法解答.
 	\onslide<+->
 	\begin{solution}
 	\[
-		c_n=\frac1{2\pi\ii}\oint_C\frac{\ee^z-1}{z^{n+3}}
+		c_n=\frac1{2\pi\ii}\oint_C\frac{\ee^z-1}{z^{n+3}}\d z
 		=\begin{cases}
 			\dfrac{(\ee^z-1)^{(n+2)}}{(n+2)!}\Big|_{z=0}=\dfrac1{(n+2)!},&n\ge -3;\\
 			(\ee^z-1)(0)=0,&n=-2;\\
@@ -282,29 +299,33 @@
 		\end{cases}
 	\]
 		\onslide<+->{%
-		故 $\displaystyle f(z)=\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n$.%
-		}
+		故 $\displaystyle f(z)=\frac1z+\sumf0 \frac1{(n+2)!}z^n$.%
+		}\smalldel
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
-	\begin{solution}[另解]
+	\begin{solution}[][另解]
 	\[
 		\frac{\ee^z-1}{z^2}=\frac1{z^2}\Bigl(z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots\Bigr)
 		\onslide<+->{%
-		=\frac1z+\sum_{n=0}^\infty \frac1{(n+2)!}z^n.}
+		=\frac1z+\sumf0 \frac1{(n+2)!}z^n.}
 	\]
 	\end{solution}
 	\onslide<+->
-	\begin{example}
-		在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.\par
-		\onslide<+->{\enumnum1 $0<|z|<1$,\qquad \enumnum2 $1<|z|<2$, \qquad\enumnum3 $2<|z|<+\infty$.}
+	\begin{example}[nearnext]
+		在下列圆环域中把 $f(z)=\dfrac1{(z-1)(z-2)}$ 展开为洛朗级数.
+		\smallskip
+		\begin{subexample}[3]
+			\item $0<\abs{z}<1$;
+			\item $1<\abs{z}<2$;
+			\item $2<\abs{z}<+\infty$.
+		\end{subexample}
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
+	\begin{solution}[nearprev]
 		由于 $f(z)$ 的奇点为 $z=1,2$, 因此在这些圆环域内 $f(z)$ 解析.
 		\onslide<+->{%
 		我们有
@@ -317,144 +338,174 @@
 
 
 \begin{frame}{典型例题: 求洛朗展开}
-	\onslide<+->
-	\begin{solution}[续解]
-		\enumnum1 由于 $|z|<1,\abs{\dfrac z2}<1$,
-		\onslide<+->{因此
-			\begin{align*}
-				f(z)&=-\frac1{2-z}+\frac1{1-z}
-				\visible<+->{=-\half\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
-				&\visible<+->{=-\half\sum_{n=0}^\infty\Bigl(\frac z2\Bigr)^n+\sum_{n=0}^\infty z^n}
-				\visible<+->{=\sum_{n=0}^\infty\Bigl(1-\frac1{2^{n+1}}\Bigr)z^n}\\
-				&\visible<+->{=\half +\frac34z+\frac78z^2+\cdots}
-			\end{align*}}
+	\begin{solution}[][]
+		\begin{enumerate}
+			\item 由于 $\abs{z}<1,\Bigabs{\dfrac z2}<1$,
+			\onslide<+->{%
+				因此
+				\begin{align*}
+					f(z)&=-\frac1{2-z}+\frac1{1-z}
+					\onslide<+->{=-\half\cdot\frac1{1-\dfrac z2}+\frac1{1-z}}\\
+					&\onslide<+->{=-\half\sumf0\Bigl(\frac z2\Bigr)^n+\sumf0 z^n}
+					\onslide<+->{=\sumf0\Bigl(1-\frac1{2^{n+1}}\Bigr)z^n}\\
+					&\onslide<+->{=\half +\frac34z+\frac78z^2+\cdots}
+				\end{align*}
+			}
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+	\begin{solution}[][]
+		\begin{enumerate}\setcounter{enumi}{1}
+			\item 由于 $\Bigabs{\dfrac1z}<1,\Bigabs{\dfrac z2}<1$, 
+			\onslide<+->{%
+			因此
+				\begin{align*}
+					f(z)&=\frac1{1-z}-\frac1{2-z}
+					\onslide<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\half\cdot\frac1{1-\dfrac z2}}\\
+					&\onslide<+->{=-\frac1z\sumf0 \Bigl(\frac1z\Bigr)^n-\half\sumf0\Bigl(\frac z2\Bigr)^n}
+					\onslide<+->{=-\sum_{n=1}^{\infty}\frac1{z^n}-\sumf0\frac1{2^{n+1}}z^n}\\
+					&\onslide<+->{=\cdots-\frac1{z^2}-\frac1z-\half -\frac14z-\frac18z^2-\cdots}
+				\end{align*}
+			}
+		\end{enumerate}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 求洛朗展开}
+	\begin{solution}[][]
+		\begin{enumerate}\setcounter{enumi}{2}
+				\item 由于 $\Bigabs{\dfrac1z}<1,\Bigabs{\dfrac2z}<1$, \onslide<+->{%
+					因此
+					\begin{align*}
+						f(z)&=\frac1{1-z}-\frac1{2-z}
+							\onslide<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}\\
+						&\onslide<+->{=-\frac1z\sumf0 \Bigl(\frac1z\Bigr)^n+\frac1z\sumf0\Bigl(\frac2z\Bigr)^n}
+							\onslide<+->{=\sumf0\frac{2^n-1}{z^{n+1}}}\\
+						&\onslide<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
+					\end{align*}
+				}
+		\end{enumerate}
 	\end{solution}
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
-	\begin{solution}[续解]
-		\enumnum2 由于 $\abs{\dfrac1z}<1,\abs{\dfrac z2}<1$, 
-		\onslide<+->{因此
-			\begin{align*}
-				f(z)&=\frac1{1-z}-\frac1{2-z}
-				\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}-\half\cdot\frac1{1-\dfrac z2}}\\
-				&\visible<+->{=-\frac1z\sum_{n=0}^\infty \Bigl(\frac1z\Bigr)^n-\half\sum_{n=0}^\infty\Bigl(\frac z2\Bigr)^n}
-				\visible<+->{=-\sum_{n=1}^{\infty}\frac1{z^n}-\sum_{n=0}^\infty\frac1{2^{n+1}}z^n}\\
-				&\visible<+->{=\cdots-\frac1{z^2}-\frac1z-\half -\frac14z-\frac18z^2-\cdots}
-			\end{align*}}
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 求洛朗展开}
+	\begin{example}[nearnext]
+		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<\abs{z}<1$ 内展开成洛朗级数.
+	\end{example}
 	\onslide<+->
-	\begin{solution}[续解]
-		\enumnum3 由于 $\abs{\dfrac1z}<1,\abs{\dfrac2z}<1$, \onslide<+->{因此
+	\begin{solution}[nearprev]
+		\[
+			f(z)=\frac{z-1+2}{(z-1)^2}
+			=\frac1{z-1}+\frac{2}{(z-1)^2}.
+		\]
+		\onslide<+->{%
 			\begin{align*}
-				f(z)&=\frac1{1-z}-\frac1{2-z}
-					\visible<+->{=-\frac1z\cdot\frac1{1-\dfrac1z}+\frac1z\cdot\frac1{1-\dfrac2z}}\\
-				&\visible<+->{=-\frac1z\sum_{n=0}^\infty \Bigl(\frac1z\Bigr)^n+\frac1z\sum_{n=0}^\infty\Bigl(\frac2z\Bigr)^n}
-					\visible<+->{=\sum_{n=0}^\infty\frac{2^n-1}{z^{n+1}}}\\
-				&\visible<+->{=\frac1{z^2}+\frac3{z^3}+\frac7{z^4}+\cdots}
-			\end{align*}}
+				\frac1{1-z}=\sum_{n=0}^{\infty} z^n,\qquad
+				\frac1{(1-z)^2}=\sumf1 nz^{n-1}=\sumf0 (n+1)z^n,
+			\end{align*}
+		}\onslide<+->{%
+			\[
+				f(z)=\sumf0 \bigl(2(n+1)-1\bigr)z^n
+				=\sumf0(2n+1)z^n.
+			\]
+		}\bigdel
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{洛朗级数的特点\noexer}
+\begin{frame}{求有理函数洛朗展开的步骤}
+	\onslide<+->
+	可以看出, 有理函数的洛朗展开通常需要将其分解成部分分式 $\dfrac1{(z-a)^m}$ 的线性组合.
+	\onslide<+->
+	根据 $z$ 所处的圆环域, 选取 $\dfrac{z-z_0}{a-z_0}$ 和 $\dfrac{a-z_0}{z-z_0}$ 中模小于 $1$ 的数作为公比来求得 $\dfrac1{z-a}$ 的洛朗展开.
+	\onslide<+->
+	然后对其求 $m-1$ 阶导, 最后合并相同幂次项的系数.
+
+	\onslide<+->
 	洛朗展开的一些特点可以帮助我们检验计算的正确性.
 	\begin{itemize}
-		\item  若 $f(z)$ 在 $|z-z_0|<R_2$ 内\emph{解析},
+		\item 若 $f(z)$ 在 $\abs{z-z_0}<R_2$ 内\emph{解析},
 		\onslide<+->
 		则 $f(z)$ 可以展开为泰勒级数.
 		\onslide<+->
 		由唯一性可知泰勒级数等于洛朗级数,
 		\onslide<+->
 		因此\emph{此处洛朗展开一定没有负幂次项}.
-		\item 有理函数的洛朗展开在 $0<|z-z_0|<r$ \emph{最多只有有限多负幂次项}, 在 $R<|z-z_0|<+\infty$ \emph{最多只有有限多正幂次项}, 在其它圆环域\emph{总有无穷多负幂次和无穷多正幂次项}.
+		\item 若有理函数(分子分母没有公共零点) 在圆周 $\abs{z-z_0}=R_1>0$ 和 $\abs{z-z_0}=R_2>0$ 上都有奇点, 
+		\onslide<+->
+		则在圆环域 $R_1<\abs{z-z_0}<R_2$ 上的洛朗展开一定有无穷多负幂次和无穷多正幂次项.
+		\item 有理函数在解析区域 $0<\abs{z-z_0}<r$ 的洛朗展开最多只有有限多负幂次项, 且最低负幂次是 $z-z_0$ 在分母因式分解中出现的次数; 
+		\onslide<+->
+		在解析区域 $R<\abs{z-z_0}<+\infty$ 的洛朗展开最多只有有限多正幂次项, 且最高正幂次是分子次数减去分母次数.
 	\end{itemize}
-	
-	\onslide<+->
-	有理函数 $f(z)$ 在圆环域 $r<|z|<R$ 内的洛朗展开总形如
-	\[f(z)=P(z)+\sum_{n\ge 0}a_n z^n+\sum_{n<0}b_n z^n,
-	\]
-	其中 $P(z)$ 只有有限多项, 
-	\onslide<+->
-	$a_n$ 和 $b_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $\lambda$ 是奇点, $\deg p+1$ 是 $\lambda$ 在 $f(z)$ 分母出现的重数,
-	\onslide<+->
-	其中 $|\lambda|\ge R$ 的那些项出现在 $a_n$ 中, 而 $|\lambda|\le r$ 的那些项出现在 $b_n$ 中.
 \end{frame}
 
 
 \begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
+	有理函数 $f(z)$ 在圆环域 $r<\abs{z}<R$ 内的洛朗展开总形如
+	\[
+		f(z)=P(z)+\sum_{n\ge 0}a_n z^n+\sum_{n<0}b_n z^n,
+	\]
+	其中 $P(z)$ 只有有限多项, 
+	\onslide<+->
+	$a_n$ 和 $b_n$ 是形如 $p(n)\lambda^{-n}$ 的线性组合, $\lambda$ 是奇点, $\deg p+1$ 是 $\lambda$ 在 $f(z)$ 分母出现的重数,
+	\onslide<+->
+	其中 $\abs{\lambda}\ge R$ 的那些项出现在 $a_n$ 中, 而 $\abs{\lambda}\le r$ 的那些项出现在 $b_n$ 中.
+	\onslide<+->
 	不仅如此, 从 $f(z)$ 在任一圆环域上的展开可以得到其它圆环域上的展开,
 	\onslide<+->
 	只需要将需要变化求和范围的那些项{\itshape\ $n$ 的求和范围变化, 系数变号}.
-
-	\onslide<+->
-	例如在 $0<|z|<1$ 内,
-	\[f(z)=\frac{120}{(z-1)(z^2-4)(z^2-9)}=\sum_{n\ge 0}\Bigl(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n.
-	\]
-	\onslide<+->
-	那么在 $2<|z|<3$ 内洛朗展开需要变动奇点 $1,\pm2$ 对应的项:
-	\[f(z)=\sum_{n\ge 0}\Bigl(-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n+\sum_{n\le-1}\Bigl(5-\frac2{(-2)^{n+1}}-\frac6{2^{n+1}}\Bigr)z^n.
-	\]
-	\onslide<+->
-	感兴趣的同学可阅读《\alert{\href{https://zhangshenxing.gitee.io/teaching/publications/袁志杰张神星2023 复变函数在不同圆环域内洛朗展开的联系.pdf}{复变函数在不同圆环域内洛朗展开的联系}}》.
 \end{frame}
 
 
-\begin{frame}{典型例题: 求洛朗展开}
+\begin{frame}{洛朗级数的特点\noexer}
 	\onslide<+->
-	\begin{example}
-		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $0<|z|<1$ 内展开成洛朗级数.
-	\end{example}
-
-	\onslide<+->
-	\begin{solution}
+	例如在 $0<\abs{z}<1$ 内,
 	\[
-		f(z)=\frac{z-1+2}{(z-1)^2}=\frac1{z-1}+\frac{2}{(z-1)^2}.
+		f(z)=\frac{120}{(z-1)(z^2-4)(z^2-9)}=\sum_{n\ge 0}\Bigl(-5+\frac2{(-2)^{n+1}}+\frac6{2^{n+1}}-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n.
 	\]
-		\onslide<+->{%
-		\begin{align*}
-			\frac1{1-z}=\sum_{n=0}^{\infty} z^n,\qquad
-			\frac1{(1-z)^2}=\sum_{n=1}^\infty nz^{n-1}=\sum_{n=0}^\infty (n+1)z^n,
-		\end{align*}
-		}\onslide<+->{%
-			\[f(z)=\sum_{n=0}^\infty \bigl(2(n+1)-1\bigr)z^n
-			=\sum_{n=0}^\infty(2n+1)z^n.\]%
-		}
-	\end{solution}
+	\onslide<+->
+	那么在 $2<\abs{z}<3$ 内洛朗展开需要变动奇点 $1,\pm2$ 对应的项:
+	\[
+		f(z)=\sum_{n\ge 0}\Bigl(-\frac1{(-3)^{n+1}}-\frac2{3^{n+1}}\Bigr)z^n+\sum_{n\le-1}\Bigl(5-\frac2{(-2)^{n+1}}-\frac6{2^{n+1}}\Bigr)z^n.
+	\]
+	\onslide<+->
+	感兴趣的同学可阅读课本相应部分.
 \end{frame}
 
 
 \begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
 	\begin{exercise}
-		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<|z|<+\infty$ 内展开成洛朗级数.
+		将函数 $f(z)=\dfrac{z+1}{(z-1)^2}$ 在圆环域 $1<\abs{z}<+\infty$ 内展开成洛朗级数.
 	\end{exercise}
 	\onslide<+->
 	\begin{answer}
 		\begin{align*}
 			\frac1{z-1}=\frac1z\cdot\frac1{1-\dfrac1z}=\sum_{n=1}^{\infty} \frac1{z^n},\qquad
-			-\frac1{(z-1)^2}=\sum_{n=1}^\infty \frac{-n}{z^{n+1}}=-\sum_{n=1}^\infty \frac{(n-1)}{z^n},
+			-\frac1{(z-1)^2}=\sumf1 \frac{-n}{z^{n+1}}=-\sumf1 \frac{(n-1)}{z^n},
 		\end{align*}
-			\[f(z)=\sum_{n=0}^\infty \frac{2(n-1)+1}{z^n}
-			=\sum_{n=1}^\infty\frac{(2n-1)}{z^n}.
-	\]
+		\[
+			f(z)=\sumf0 \frac{2(n-1)+1}{z^n}
+			=\sumf1\frac{(2n-1)}{z^n}.
+		\]
 	\end{answer}
 	\onslide<+->
-	此即 $\displaystyle -\sum_{n\le -1}(2n+1)z^n$.
+	此即 $-\suml_{n\le -1}(2n+1)z^n$.
 \end{frame}
 
 
 \begin{frame}{例题: 洛朗展开的应用}
 	\onslide<+->
 	注意到当 $n=-1$ 时, 洛朗级数的系数
-	\[c_{-1}=\frac1{2\pi\ii}\oint_C f(\zeta)\diff\zeta,
+	\[c_{-1}=\frac1{2\pi\ii}\oint_C f(\zeta)\d\zeta,
 	\]
 	\onslide<+->
 	因此洛朗展开可以用来帮助计算函数的积分,
@@ -466,24 +517,23 @@
 % \begin{frame}{例题: 洛朗展开的应用}
 % 	\beqskip{0pt}
 % 	\onslide<+->
-% 	\begin{example}
-% 		求 $\doint_{|z|=3}\frac1{z(z+1)^2}\diff z$.
+% 	\begin{example}[nearnext]
+% 		求 $\doint_{\abs{z}=3}\frac1{z(z+1)^2}\d z$.
 % 	\end{example}
 
 % 	\onslide<+->
-% 	\begin{solution}
-% 		注意到闭路 $|z|=3$ 落在 $1<|z+1|<+\infty$ 内.
+% 	\begin{solution}[nearprev]
+% 		注意到闭路 $\abs{z}=3$ 落在 $1<\abs{z+1}<+\infty$ 内.
 % 		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac1{z(z+1)^2}$ 的洛朗展开.
 % 		}\onslide<+->{
 % 			\begin{align*}
 % 			f(z)&=\frac1{z(z+1)^2}=\frac1{(z+1)^3}\cdot\frac1{1-\dfrac1{z+1}}\\
-% 			&\visible<+->{=\frac1{(z+1)^3}\sum_{n=0}^\infty\frac1{(z+1)^n}}
-% 			\visible<+->{=\sum_{n=0}^{\infty}\frac1{(z+1)^{n+3}}}
+% 			&\onslide<+->{=\frac1{(z+1)^3}\sumf0\frac1{(z+1)^n}}
+% 			\onslide<+->{=\sum_{n=0}^{\infty}\frac1{(z+1)^{n+3}}}
 % 			\end{align*}
 % 		}\onslide<+->{故
-% 			$\doint_Cf(z)\diff z=2\pi\ii c_{-1}=0$.}
+% 			$\doint_Cf(z)\d z=2\pi\ii c_{-1}=0$.}
 % 	\end{solution}
-% 	\vspace{-.\baselineskip}
 % 	\endgroup
 % \end{frame}
 
@@ -491,21 +541,22 @@
 
 \begin{frame}{例题: 洛朗展开的应用}
 	\onslide<+->
-	\begin{example}
-		求 $\doint_{|z|=1}\frac{z}{\sin z^2}\diff z$.
+	\begin{example}[nearnext]
+		求 $\doint_{\abs{z}=1}\frac{z}{\sin z^2}\d z$.
 	\end{example}
-
 	\onslide<+->
-	\begin{solution}
-		注意到闭路 $|z|=1$ 落在 $0<|z|<\sqrt \pi$ 内.
-		\onslide<+->{我们在这个圆环域内求 $f(z)=\dfrac{z}{\sin z^2}$ 的洛朗展开.
-		}\onslide<+->{
+	\begin{solution}[nearprev]
+		注意到闭路 $\abs{z}=1$ 落在 $0<\abs{z}<\sqrt \pi$ 内.
+		\onslide<+->{%
+			我们在这个圆环域内求 $f(z)=\dfrac{z}{\sin z^2}$ 的洛朗展开.
+		}\onslide<+->{%
 			\[
-			f(z)=\frac{z}{\sin z^2}=
-			\frac{z}{z^2-\dfrac{z^6}{3!}+\dfrac{z^{10}}{5!}+\cdots}
-			\visible<+->{=\frac1z+\frac{z^3}6+\cdots}
-	\]
-		}\onslide<+->{故
-			$\doint_Cf(z)\diff z=2\pi\ii c_{-1}=2\pi\ii$.}
+				f(z)=\frac{z}{\sin z^2}
+				=\frac{z}{z^2-\dfrac{z^6}{3!}+\dfrac{z^{10}}{5!}+\cdots}
+				\onslide<+->{=\frac1z+\frac{z^3}6+\cdots}
+			\]
+		}\onslide<+->{%
+			故 $\doint_Cf(z)\d z=2\pi\ii c_{-1}=2\pi\ii$.
+		}
 	\end{solution}
 \end{frame}

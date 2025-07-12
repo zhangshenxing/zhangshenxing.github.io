@@ -589,7 +589,7 @@
 \NewDocumentEnvironment{twopart}{O{} m}{\begin{tcolorbox}[
 	thmcommon,
 	frame hidden,
-	% colframe=white,
+	colframe=white,
 	colback=white,
 	sidepic,
 	righthand width=#2,
@@ -630,11 +630,13 @@
 	\setbeamercolor{item}{fg=fourth,bg=white}
 	\setbeamercolor{subitem}{fg=fourth,bg=white}
 	\noindent{\color{fourth}\bf\translate{#2}\IfNoValueTF{#3}{}{~(#3)}.}%
+	\renewcommand\enumnum[1]{{\mdseries\upshape\textcolor{fourth}{(##1)}}}
 }{\end{fourth}}
 \NewDocumentEnvironment{fourthblock*}{O{} m o}{\begin{fourth}[#1]
 	\setbeamercolor{item}{fg=fourth,bg=white}
 	\setbeamercolor{subitem}{fg=fourth,bg=white}
 	\noindent{\color{fourth}\bf\IfNoValueTF{#3}{\translate{#2}.}{\IfBlankTF{#3}{}{#3.}}}%
+	\renewcommand\enumnum[1]{{\mdseries\upshape\textcolor{fourth}{(##1)}}}
 }{\end{fourth}}
 \NewDocumentEnvironment{fifthblock}{O{} m o}{\begin{fifth}[#1]
 	\setbeamercolor{item}{fg=fifth,bg=white}
@@ -671,7 +673,7 @@
   \begin{enumext*}[
     columns=#1,
     label={(\arabic*)},
-    wrap-label={\upshape\textcolor{main}{##1}},
+    wrap-label={\upshape\textcolor{third}{##1}},
     list-offset=4pt,
     nosep,
     itemsep=3pt
