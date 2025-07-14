@@ -362,7 +362,7 @@
 		\[
 			\begin{aligned}
 				\Sel_2'(E_{2n})&\ra\Ker\bfM_{2n},\quad \bfM_{2n}=\begin{pmatrix}
-					\bfA_n^\rmT+\bfD_2&\bfD_{n,-1}\\
+					\bfA_n^\rmT+\bfD_{n,2}&\bfD_{n,-1}\\
 					\bfD_{n,2}&\bfA_n+\bfD_{n,2}
 				\end{pmatrix}\\
 				(d_1,d_2,d_3)&\mapsto\begin{pmatrix}
@@ -581,17 +581,16 @@
 		\item 根据 Browkin-Schinzel (1982) 和 Qin (1995) 的工作, 
 		\item 当 $m=n,2n>2$ 时
 		\[
-			2^{r_4(K_2\CO_m)+1}=\#\{\bfx:\bfB_m\bfx=\bfb_{n,\pm1},\bfb_{n,\pm2},\bfb_{n,\pm\mu}\}.
+			\#\{\bfx:\bfB_m\bfx=\bfb_{n,\pm1},\bfb_{n,\pm2}\}+\#\{\bfx:\bfB_m\bfx=\bfb_{n,\pm\mu}\}=2^{r_4(K_2\CO_m)+1}.
 		\]
 		\item 当 $m=-n,-2n<-2$ 时
 		\[
-			\begin{aligned}	
-				2^{r_4(K_2\CO_m)+2}&
+				\#\{\bfx:\bfB_m\bfx={\bf0},\bfb_{n,2}\}
+				+\#\{\bfx:\bfB_m\bfx=\bfb_{n,\mu}\}
 				=\begin{cases}
-					\#\{\bfx:\bfB_m\bfx={\bf0},\bfb_{n,2},\bfb_{n,\mu}\},&\text{若}\ \bfb_{n,-1}\notin\Im \bfB_m;\\
-					2\#\{\bfx:\bfB_m\bfx={\bf0},\bfb_{n,2},\bfb_{n,\mu}\},&\text{若}\ \bfb_{n,-1}\in\Im \bfB_m.
+					2^{r_4(K_2\CO_m)+2},&\text{若}\ \bfb_{n,-1}\notin\Im \bfB_m;\\
+					2^{r_4(K_2\CO_m)+1},&\text{若}\ \bfb_{n,-1}\in\Im \bfB_m.
 				\end{cases}
-			\end{aligned}
 		\]
 		\item 其中 $\bfB_m=\bfA_n+\bfD_{n,m/n}$.
 	\end{itemize}
