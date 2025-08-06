@@ -115,7 +115,7 @@
 	这也等价于 $C:z=z(t)=x(t)+\ii y(t),t\in[a,b]$.
 	\begin{itemize}
 		\item 若除了两个端点有可能重叠外, 其它情形不会出现重叠的点, 则称 $C$ 是\emph{简单曲线}.
-		\item 若连续曲线 $C$ 满足两个端点重叠, 即 $z(a) = z(b)$, 则称 $C$ 是闭合曲线.
+		\item 若连续曲线 $C$ 满足两个端点重叠, 即 $z(a) = z(b)$, 则称 $C$ 是\emph{闭合曲线}.
 		\item 称闭合的简单曲线为\emph{简单闭曲线}或\emph{闭路}.
 	\end{itemize}
 	\onslide<3->
@@ -142,7 +142,7 @@
 	\end{example}
 	\onslide<+->
 	\begin{example}[sidepic,righthand width=150pt,near]
-		直线段:
+		直线段
 		\[
 			z(t)=z_0+(z_1-z_0)t,\quad t\in[0,1],
 		\]
@@ -252,14 +252,14 @@
 				\coordinate (A) at (-1,0);
 				\coordinate (B) at (2,0);
 				\filldraw[cstcurve,main,cstfill1] (A) circle (1);
-				\filldraw[cstcurve,main,cstfill1,visible on=<3->] (B) circle (1);
+				\draw[cstcurve,main,cstfill1,visible on=<3->] (B) circle (1);
 				\draw[cstra,fourth,thick] (A)--++(.8,.6)
 					node[midway,above left] {$\delta$};
 				\draw[cstra,fourth,thick,visible on=<3->] (B)--++(.8,.6)
 					node[midway,above left] {$\delta$};
 			\end{scope}
 			\fill[cstdot] (A) circle node[left] {$z_0$};
-			\filldraw[cstdote,fourth,visible on=<3->] (B) circle node[left] {$z_0$};
+			\filldraw[cstdote,draw=fourth,visible on=<3->] (B) circle node[left,fourth] {$z_0$};
 		\end{tikzpicture}
 	\end{center}
 \end{frame}

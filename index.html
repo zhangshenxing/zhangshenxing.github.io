@@ -73,10 +73,21 @@
     function hide_cover() {
       document.getElementById("cover-image").style.display = "block";
     }
+    function load(){
+      const travelStart = new Date('2025-08-10');
+      const travelEnd = new Date('2025-08-17');
+      var d = new Date();
+      if(d>=travelStart&&d<=travelEnd){
+        document.getElementById("harbin").style.fontWeight = "bold";
+      }
+      else{
+        document.getElementById("hefei").style.fontWeight = "bold";
+      }
+    }
   </script>
 </head>
 
-<body>
+<body onload="load();">
   <header onclick="toggle_all()" title="Click to hide/show">
     <h1><span lang="en">ZHANG Shenxing</span> <span class="header-sep">/</span><br class="header-br"> 张神星</h1>
   </header>
@@ -113,7 +124,7 @@
             </p>
             <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/location-dot-solid.svg" alt="">Travel Plan / 我的位置</h3>
             <ul class="travel-plan">
-              <li>Default: Hefei / 默认：合肥</li>
+              <li id="hefei">Default: Hefei / 默认：合肥</li>
               <!-- <li>Secondary: Tongling / 铜陵</li> -->
               <!-- <li>2019-12-26 ~ 2020-01-10, Beijing / 北京</li>
               <li>2021-06-25 ~ 2021-07-01, Changzhou / 常州</li>
@@ -163,7 +174,7 @@
               <li>06-13 ~ 06-14, Nanjing / 南京</li>
               <li>06-25 ~ 06-26, Urumqi / 乌鲁木齐</li>
               <li>07-01 ~ 07-07, Urumqi / 乌鲁木齐</li> -->
-              <li>08-10 ~ 08-17, Harbin / 哈尔滨</li>
+              <li id="harbin">08-10 ~ 08-17, Harbin / 哈尔滨</li>
             </ul>
             
             <!-- <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/handshake-solid.svg" alt="">近期会议</h3>
@@ -227,9 +238,9 @@
           alt="">Research</h2>
       <div>
         <ol>
-          <li>The generating fields of twisted Kloosterman sums<br>
+          <li><span class="pubtitle">The generating fields of twisted Kloosterman sums</span><br>
             S. Zhang.
-            <em><abbr title="International Journal of Number Theory">Int. J. Number Theory</em> 21(2025), no. 07, 1567-1581.<br>
+            <em><abbr title="International Journal of Number Theory">Int. J. Number Theory</em> 21 (2025), no. 07, 1567-1581.<br>
             <a href="publications/Zhang2025ijnt The generating fields of twisted Kloosterman sums.pdf">PDF</a> |
             <a href="https://doi.org/10.1142/S1793042125500782">DOI</a> |
             <a href="slides/20210517 聊城 On the generating fields of Kloosterman sums.pdf">Slide</a> &
@@ -257,7 +268,7 @@
          URL = {https://doi.org/10.1142/S1793042125500782}
 }</pre>
           </li>
-          <li>On the linearity of the periods of subtraction games<br>
+          <li><span class="pubtitle">On the linearity of the periods of subtraction games</span><br>
             S. Zhang.
             <em><abbr title="Theoretical Computer Science">Theor. Comput. Sci.</abbr></em> 985 (2024), Paper No. 114350, 9 pp.<br>
             <a href="publications/Zhang2024tcs On the linearity of the periods of subtraction games.pdf">PDF</a> |
@@ -288,7 +299,7 @@
          URL = {https://doi.org/10.1016/j.tcs.2023.114350},
 }</pre>
           </li>
-          <li>On a comparison of Cassels pairings of different elliptic curves<br>
+          <li><span class="pubtitle">On a comparison of Cassels pairings of different elliptic curves</span><br>
             S. Zhang.
             <em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em> 211 (2023), no. 1, 1-23.<br>
             <a href="publications/Zhang2023aa On a comparison of Cassels pairings of different elliptic curves.pdf">PDF</a> |
@@ -322,8 +333,8 @@
          URL = {https://doi.org/10.4064/aa220709-15-7}, 
 }</pre>
           </li>
-          <!-- <li>On the Newton polygons of twisted $L$-functions of binomials<br> -->
-          <li>On the Newton polygons of twisted 𝐿-functions of binomials<br>
+          <!-- <li><span class="pubtitle">On the Newton polygons of twisted $L$-functions of binomials<br> -->
+          <li><span class="pubtitle">On the Newton polygons of twisted 𝐿-functions of binomials</span><br>
             S. Zhang.
             <em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em> 80 (2022), Paper No. 102026, 20 pp.<br>
             <a href="publications/Zhang2022 On the Newton polygons of twisted 𝐿-functions of binomials.pdf">PDF</a> |
@@ -353,8 +364,8 @@
          URL = {https://doi.org/10.1016/j.ffa.2022.102026}, 
 }</pre>
           </li>
-          <!-- <li>The 3-class groups of ℚ(<span style="margin-left: 0.1em;margin-right: -1em;vertical-align: 2.1ex;font-size: 50%;">3</span>√<span style="text-decoration: overline;vertical-align: -.25ex;font-style: italic;">p</span>) and its normal closure<br> -->
-          <li>The $3$-class groups of $\mathbb Q(\sqrt[3]p)$ and its normal closure<br>
+          <!-- <li><span class="pubtitle">The 3-class groups of ℚ(<span style="margin-left: 0.1em;margin-right: -1em;vertical-align: 2.1ex;font-size: 50%;">3</span>√<span style="text-decoration: overline;vertical-align: -.25ex;font-style: italic;">p</span>) and its normal closure<br> -->
+          <li><span class="pubtitle">The $3$-class groups of $\mathbb Q(\sqrt[3]p)$ and its normal closure</span><br>
             J. Li, S. Zhang.
             <em><abbr title="Mathematische Zeitschrift">Math Z.</abbr></em> 300 (2022), no. 1, 209-215.<br>
             <a href="publications/LiZhang2022 The 3-class groups of ℚ(∛𝑝) and its normal closure.pdf">PDF</a> |
@@ -381,8 +392,7 @@
          URL = {https://doi.org/10.1007/s00209-021-02797-5}, 
 }</pre>
           </li>
-          <!-- <li>𝑙-Class groups of fields in Kummer towers<br> -->
-          <li>$\ell$-Class groups of fields in Kummer towers<br>
+          <li><span class="pubtitle">$\ell$-Class groups of fields in Kummer towers</span><br>
             J. Li, Y. Ouyang, Y. Xu, S. Zhang.
             <em><abbr title="Publicacions Matemàtiques">Publ. Mat.</abbr></em> 66 (2022), no. 1, 235-267.<br>
             <a href="publications/LiOuyangXuZhang2022 ℓ-Class groups of fields in Kummer towers.pdf">PDF</a> |
@@ -412,7 +422,7 @@
          URL = {https://doi.org/10.5565/publmat6612210}, 
 }</pre>
           </li>
-          <li>The generating fields of two twisted Kloosterman sums<br>
+          <li><span class="pubtitle">The generating fields of two twisted Kloosterman sums</span><br>
             S. Zhang.
             <em><abbr title="中国科学技术大学学报">J. Univ. Sci. Technol. China</abbr></em> 51 (2021), no. 12, 879-888.<br>
             <a href="publications/Zhang2021 The generating fields of two twisted Kloosterman sums.pdf">PDF</a> |
@@ -440,7 +450,7 @@
          URL = {https://doi.org/10.52396/JUST-2021-0077}, 
 }</pre>
           </li>
-          <li>Birch's lemma over global function fields<br>
+          <li><span class="pubtitle">Birch's lemma over global function fields</span><br>
             Y. Ouyang, S. Zhang.
             <em><abbr title="Proceedings of the American Mathematical Society">Proc. Amer. Math. Soc.</abbr></em> 145
             (2017), no. 2, 577-584.<br>
@@ -467,8 +477,8 @@
          URL = {https://doi.org/10.1090/proc/13265}, 
 }</pre>
           </li>
-          <!-- <li>Newton polygons of <span style="font-style: italic">L</span>-functions of polynomials 𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑-1</sup> with 𝑝≡-1 mod 𝑑</span><br> -->
-          <li>Newton polygons of $L$-functions of polynomials $x^d+ax^{d-1}$ with $p\equiv-1\bmod d$<br>
+          <!-- <li><span class="pubtitle">Newton polygons of <span style="font-style: italic">L</span>-functions of polynomials 𝑥<sup>𝑑</sup>+𝑎𝑥<sup>𝑑-1</sup> with 𝑝≡-1 mod 𝑑</span><br> -->
+          <li><span class="pubtitle">Newton polygons of $L$-functions of polynomials $x^d+ax^{d-1}$ with $p\equiv-1\bmod d$</span><br>
             Y. Ouyang, S. Zhang.
             <em><abbr title="Finite Fields and their Applications">Finite Fields Appl.</abbr></em>
             37 (2016), 285-294.<br>
@@ -497,7 +507,7 @@
          URL = {https://doi.org/10.1016/j.ffa.2015.10.003}, 
 }</pre>
           </li>
-          <li>On second 2-descent and non-congruent numbers<br>
+          <li><span class="pubtitle">On second 2-descent and non-congruent numbers</span><br>
             Y. Ouyang, S. Zhang.
             <em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em> 170 (2015), no. 4, 343-360.<br>
             <a href="publications/OuyangZhang2015 On second 2-descent and non-congruent numbers.pdf">PDF</a> |
@@ -525,7 +535,7 @@
             <a href="publications/OuyangZhang2015 Errata ActaArith.pdf">Errata</a>
             <em><abbr title="Acta Arithmetica">Acta Arith.</abbr></em> 202 (2022), no. 2, 203.
           </li>
-          <li>On non-congruent numbers with 1 modulo 4 prime factors<br>
+          <li><span class="pubtitle">On non-congruent numbers with 1 modulo 4 prime factors</span><br>
             Y. Ouyang, S. Zhang.
             <em><abbr title="Science China. Mathematics">Sci. China Math.</abbr></em> 57 (2014), no. 3, 649-658. <br>
             <a href="publications/OuyangZhang2014 On non-congruent numbers with 1 modulo 4 prime factors.pdf">PDF</a> |
@@ -556,7 +566,7 @@
 
         <p>Here are some preprint.</p>
         <ol>
-          <li>On non-congruent numbers as multiples of non-congruent numbers<br>
+          <li><span class="pubtitle">On non-congruent numbers as multiples of non-congruent numbers</span><br>
             S. Zhang.
             (2025), preprint.<br>
             <a href="publications/Zhang2025.pdf">PDF</a> |
@@ -569,7 +579,7 @@
               These results involve the class groups and tame kernels of quadratic fields.
             </span>
           </li>
-          <li>On the quadratic twist of elliptic curves with full $2$-torsion<br>
+          <li><span class="pubtitle">On the quadratic twist of elliptic curves with full $2$-torsion</span><br>
             Z. Wang, S. Zhang.
             (2022), preprint.<br>
             <a href="publications/WangZhang2022.pdf">PDF</a> |
@@ -582,7 +592,7 @@
               elliptic curves.
             </span>
           </li>
-          <li>The virtual periods of linear recurrence sequences in cyclotomic fields<br>
+          <li><span class="pubtitle">The virtual periods of linear recurrence sequences in cyclotomic fields</span><br>
             S. Zhang. (2020), preprint.<br>
             <a href="publications/Zhang2020.pdf">PDF</a> |
             <a onclick="toggle_abs(this)">Abs</a><br>
@@ -596,7 +606,7 @@
 
         <p>Here are some notes.</p>
         <ol>
-          <li>The curve and $p$-adic Hodge theory<br>
+          <li><span class="pubtitle">The curve and $p$-adic Hodge theory</span><br>
             Laurent Fargus, 2019-11-01 ~ 2020-01-10, MCM Beijing<br>
             <a href="pubnote/Fargus2019 The curve and 𝑝-adic Hodge theory.pdf">PDF</a> |
             <a onclick="toggle_abs(this)">Abs</a><br>
@@ -612,7 +622,7 @@
               morphisms, and filtered $\phi$-modules.
             </span>
           </li>
-          <li>$p$-adic abelian integrals<br>
+          <li><span class="pubtitle">$p$-adic abelian integrals</span><br>
             Pierre Colmez, 2016-09-14 ~ 2016-10-26, BICMR Beijing<br>
             <a href="pubnote/Colmez2016 𝑝-adic abelian integrals.pdf">PDF</a> |
             <a onclick="toggle_abs(this)">Abs</a><br>
@@ -790,7 +800,7 @@
         <h3 onclick="toggle_div(this)" title="Click to hide/show"><img src="image/svg/scroll-solid.svg" alt="">教研论文</h3>
         <div>
           <ol class="teaching">
-            <li>袁志杰, 张神星. 复变函数在不同圆环域内洛朗展开的探究[J]. <em>南阳师范学院学报</em>, 2024, 23(3): 38-41.<br>
+            <li>袁志杰, 张神星. <span class="pubtitle">复变函数在不同圆环域内洛朗展开的探究</span>[J]. <em>南阳师范学院学报</em>, 2024, 23(3): 38-41.<br>
               <a href="teaching/publications/袁志杰张神星2024 复变函数在不同圆环域内洛朗展开的探究.pdf">PDF</a> |
               <a href="https://publish.cnki.net/journal/portal/nysf/client/paper/01eb42a7419d144c7a0459345f42f130">DOI</a> |
               <a onclick="toggle_abs(this)">Abs</a><br>
@@ -798,7 +808,7 @@
                 针对解析函数在同圆心的不同圆环域内洛朗级数，给出了这些洛朗级数的系数之差与函数在两个圆环之间的极点的关系。特别地，由有理函数在某一圆环内的洛朗展开可以直接得到它在同圆心的任一圆环域内的洛朗级数。
               </span>
             </li>
-            <li>欧阳毅, 张神星. 善用初等变换展开线性代数理论教学[J]. <em>大学数学</em>, 2023, 39(5): 68-75.<br>
+            <li>欧阳毅, 张神星. <span class="pubtitle">善用初等变换展开线性代数理论教学</span>[J]. <em>大学数学</em>, 2023, 39(5): 68-75.<br>
               <a href="teaching/publications/欧阳毅张神星2023 善用初等变换展开线性代数理论教学.pdf">PDF</a> |
               <a href="http://gksx.cbpt.cnki.net/WKE2/WebPublication/paperDigest.aspx?paperID=d4704055-efb3-4732-b6ae-65197e374074">DOI</a> |
               <a onclick="toggle_abs(this)">Abs</a><br>
@@ -1019,7 +1029,7 @@
   </article>
 
   <footer>
-    <p>A page since 2006 | Last updated on 2025-07-10</p>
+    <p>A page since 2006 | Last updated on 2025-08-03</p>
   </footer>
 
   <svg style="height:0;">

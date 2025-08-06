@@ -13,9 +13,9 @@
 	\onslide<+->
 	它的傅里叶变换为
 	\[
-		\msf[\varphi(t)u(t)\ee^{-\beta t}]=\int_0^{+\infty}\varphi(t)\ee^{-(\beta+j\omega)t}\d t=\int_0^{+\infty}\varphi(t)\ee^{-st}\d t,
+		\msf[\varphi(t)u(t)\ee^{-\beta t}]=\int_0^{+\infty}\varphi(t)\ee^{-(\beta+\ii\omega)t}\d t=\int_0^{+\infty}\varphi(t)\ee^{-st}\d t,
 	\]
-	其中 $s=\beta+j\omega$.
+	其中 $s=\beta+\ii\omega$.
 	\onslide<+->
 	这样的积分在我们遇到的多数情形都是存在的, 只要选择充分大的 $\beta=\Re s$.
 	\onslide<+->
@@ -133,8 +133,8 @@
 	\onslide<+->
 	\begin{solution}[nearprev]
 		\begin{align*}
-			\msl[\sin{kt}]&=\frac{\msl[\ee^{jkt}]-\msl[\ee^{-jkt}]}{2j}\\
-			&\visible<+->{=\frac1{2j}\Bigl(\frac1{s-jk}-\frac1{s+jk}\Bigr)}
+			\msl[\sin{kt}]&=\frac{\msl[\ee^{\ii kt}]-\msl[\ee^{-\ii kt}]}{2\ii}\\
+			&\visible<+->{=\frac1{2\ii}\Bigl(\frac1{s-\ii k}-\frac1{s+\ii k}\Bigr)}
 			\visible<+->{=\alertm{\frac k{s^2+k^2}}.}
 		\end{align*}
 	\end{solution}
