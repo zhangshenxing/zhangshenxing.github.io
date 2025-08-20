@@ -160,7 +160,7 @@
 	\]
 	是一条光滑有向曲线, 且正方向为 $t$ 增加的方向,
 	\onslide<+->
-	则 $\d z=z'(t)\d t=\bigl(x'(t)+y'(t)\bigr)\d t$.
+	则 $\d z=z'(t)\d t=\bigl(x'(t)+\ii y'(t)\bigr)\d t$.
 	\onslide<+->
 	\begin{theorem*}[][积分计算方法I: 参变量法]
 		\[
@@ -421,9 +421,9 @@
 			=\ii(\theta_2-\theta_1).
 		\]
 		\onslide<+->{%
-			对任意 $\varepsilon>0$, 存在 $\delt>0$ 使得当 $\abs{z-a}<\delt$ 时, $\bigabs{(z-a)f(z)-k}\le\varepsilon$.
+			对任意 $\varepsilon>0$, 存在 $\delta>0$ 使得当 $\abs{z-a}<\delta$ 时, $\bigabs{(z-a)f(z)-k}\le\varepsilon$.
 		}\onslide<+->{%
-			当 $0<r<\delt$ 时,
+			当 $0<r<\delta$ 时,
 			\begin{align*}
 					&\biggabs{\int_{C_r}f(z)\d z-\ii k(\theta_2-\theta_1)}
 				=\biggabs{\int_{C_r}\Bigl(f(z)-\frac k{z-a}\Bigr)\d z}\\
@@ -437,7 +437,7 @@
 \end{frame}
 
 
-\begin{frame}{小圆弧引理\noexer}
+\begin{frame}{大圆弧引理\noexer}
 	\onslide<+->
 	特别地, 若 $C_r:\abs{z-a}=r$, 则上述极限为 $2k\pi \ii$.
 
