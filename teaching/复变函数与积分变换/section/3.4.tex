@@ -1,431 +1,213 @@
-\section{柯西积分公式}
+\section{解析函数与调和函数的关系}
 
-\subsection{柯西积分公式}
 
-\begin{frame}{柯西积分公式}
+\subsection{调和函数}
+
+\begin{frame}{调和函数}
 	\onslide<+->
-	柯西-古萨定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
+	调和函数是一类重要的二元实变函数, 它和解析函数有着紧密的联系.
 	\onslide<+->
-	\begin{theorem*}[][柯西积分公式]
-		设
-		\begin{itemize}[<*>]
-			\item 函数 $f(z)$ 在(复合)闭路 $C$ 及其内部(围成的区域) $D$ 解析,
-			\item $z_0\in D$,
-		\end{itemize}
-		\onslide<+->{%
-			则
-			\[
-				f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z.
-			\]
-		}
-	\end{theorem*}
+	为了简便, 我们用 $u_{xx},u_{yy}$ 来表示二阶偏导数.
 	\onslide<+->
-	若 $z_0\notin \ov D$, 由柯西-古萨定理, 右侧的积分是 $0$.
+	\begin{definition}
+		若二元实变函数 $u(x,y)$ 在区域 $D$ 内有二阶连续偏导数, 且满足\emph{拉普拉斯方程}
+		\[
+			\alertn{\delt u:=u_{xx}+u_{yy}=0},
+		\]
+		则称 $u(x,y)$ 是 $D$ 内的\emph{调和函数}.
+	\end{definition}
 \end{frame}
 
 
-\begin{frame}{柯西积分公式: 注记}
+\begin{frame}{解析函数与调和函数的联系}
 	\onslide<+->
-	解析函数可以用一个积分
-	\[
-		f(z)=\frac1{2\pi\ii}\oint_C\frac{f(\zeta)}{\zeta-z}\d\zeta,\quad z\in D
-	\]
-	来表示, 这是研究解析函数理论的强有力工具.
-
+	\begin{theorem}[nearnext]
+		区域 $D$ 内解析函数 $f(z)$ 的实部和虚部都是调和函数.
+	\end{theorem}
 	\onslide<+->
-	解析函数在闭路 $C$ 内部的取值完全由它在 $C$ 上的值所确定. 这也是解析函数的特征之一.
-	\onslide<+->
-	特别地, 解析函数在圆心处的值等于它在圆周上的平均值.
-	\onslide<+->
-	设 $z=z_0+R\ee^{\ii\theta}$, 则 $\d z=\ii R\ee^{\ii\theta}\d\theta$,
-	\onslide<+->
-	\[
-		f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z
-		=\frac1{2\pi}\int_0^{2\pi}f(z_0+R\ee^{\ii\theta})\d\theta.
-	\]
-\end{frame}
-
-
-\begin{frame}{柯西积分公式证明\noexer}
-	\onslide<+->
-	\begin{proof}
-		由连续性可知, $\forall\varepsilon>0,\exists\delta>0$ 使得当 $\abs{z-z_0}\le\delta$ 时, $z\in D$ 且 $\abs{f(z)-f(z_0)}<\varepsilon$.
+	\begin{proof}[nearprev]
+		设 $f(z)=u(x,y)+\ii v(x,y)$, 则 $u,v$ 存在偏导数且
+		\[
+			f'(z)=u_x+\ii v_x=v_y-\ii u_y.
+		\]
 		\onslide<+->{%
-			设 $\Gamma:\abs{z-z_0}=\delta$,
+			由于 $f(z)$ 任意阶可导, 因此 $u,v$ 存在任意阶偏导数.
 		}\onslide<+->{%
-			则
-			\begin{align*}
-				\biggabs{\oint_C\frac{f(z)}{z-z_0}\d z-2\pi\ii f(z_0)}
-				&\xeq{\text{复合闭路定理}}\biggabs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-2\pi\ii f(z_0)}\\
-				&\visible<+->{=\biggabs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-\oint_\Gamma\frac{f(z_0)}{z-z_0}\d z}
-				=\biggabs{\oint_\Gamma\frac{f(z)-f(z_0)}{z-z_0}\d z}}\\
-				&\visible<+->{\le\frac\varepsilon \delta\cdot 2\pi \delta
-				=2\pi \varepsilon.}
-			\end{align*}
+			由C-R方程 $u_x=v_y,u_y=-v_x$
 		}\onslide<+->{%
-			由 $\varepsilon$ 的任意性可知 
+			可知
 			\[
-				\doint_C\frac{f(z)}{z-z_0}\d z=2\pi\ii f(z_0).\qedhere
+				\delt u=u_{xx}+u_{yy}=v_{yx}-v_{xy}=0,
+			\]\bigdel
+		}\onslide<+->{%
+			\[
+				\delt v=v_{xx}+v_{yy}=-u_{yx}+u_{xy}=0.\qedhere
 			\]
-		}
+		}\bigdel
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{典型例题: 柯西积分公式的应用}
+\subsection{共轭调和函数}
+\begin{frame}{解析函数与调和函数的联系}
 	\onslide<+->
-	可以看出, 当被积函数分子解析而分母形如 $z-z_0$ 时, 绕闭路的积分可以使用柯西积分公式计算.
+	反过来, 调和函数是否一定是某个解析函数的实部或虚部呢?
 	\onslide<+->
-	\begin{example}[nearnext]
-		求 $\doint_{\abs{z}=4}\frac{\sin z}z\d z$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev]
-		函数 $\sin z$ 处处解析.
-		\onslide<+->{%
-			取 $f(z)=\sin z, z_0=0$ 并应用柯西积分公式得
-			\[
-				\oint_{\abs{z}=4}\frac{\sin z}z\d z
-				=2\pi\ii \sin z|_{z=0}=0.
-			\]
-		}\bigdel
-	\end{solution}
-\end{frame}
+	对于单连通的情形, 答案是肯定的.
 
-
-\begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
-	\begin{example}[nearnext]
-		求 $\doint_{\abs{z}=2}\frac{\ee^z}{z-1}\d z$.
-	\end{example}
+	若 $u+\ii v$ 是区域 $D$ 内的解析函数, 则我们称 $v$ 是 $u$ 的\emph{共轭调和函数}.
 	\onslide<+->
-	\begin{solution}[nearprev]
-		由于函数 $\ee^z$ 处处解析,
-		\onslide<+->{
-			取 $f(z)=\ee^z, z_0=1$ 并应用柯西积分公式得
-			\[
-				\oint_{\abs{z}=2}\frac{\ee^z}{z-1}\d z
-				=2\pi\ii \ee^z|_{z=1}=2\pi \ee\ii.
-			\]
-		}\bigdel
-	\end{solution}
+	换言之 $u_x=v_y,u_y=-v_x$.
 	\onslide<+->
-	\begin{exercise}
-		求 $\doint_{\abs{z}=2\pi}\frac{\cos z}{z-\pi}\d z=$\fillblankframe{$-2\pi\ii$}.
-	\end{exercise}
-\end{frame}
-
-
-\begin{frame}{典型例题: 柯西积分公式的应用}
+	显然 $-u$ 是 $v$ 的共轭调和函数.
 	\onslide<+->
-	\begin{example}[nearnext]
-		设 $f(z)=\doint_{\abs{\zeta}=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta$, 求 $f'(1+\ii)$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev]
-		当 $\abs{z}<\sqrt3$ 时,由柯西积分公式得
-		\[
-			f(z)=\oint_{\abs{\zeta}=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta
-			\visible<+->{=2\pi\ii(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi\ii(3z^2+7z+1).}
-		\]
-		\onslide<+->{%
-			因此 $f'(z)=2\pi\ii(6z+7)$,
-		}\onslide<+->{
-			\[
-				f'(1+\ii)=2\pi\ii(13+6\ii)=-12\pi+26\pi\ii.
-			\]
-		}\bigdel
-	\end{solution}
-	\onslide<+->
-	注意当 $\abs{z}>\sqrt3$ 时, $f(z)\equiv0$.
-\end{frame}
-
-
-\begin{frame}{典型例题: 柯西积分公式的应用}
-	\onslide<+->
-	\begin{example}[nearnext]
-		求 $\doint_{\abs{z}=3}\frac{\ee^z}{z(z^2-1)}\d z$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev,sidepic,righthand width=4.1cm]
-		被积函数的奇点为 $0,\pm1$.
-		\onslide<+->{%
-			设 $C_1$, $C_2$, $C_3$ 分别为绕 $0$, $1$, $-1$ 的分离圆周.
-		}\onslide<+->{%
-			由复合闭路定理和柯西积分公式
-			\begin{align*}
-				&\oint_{\abs{z}=3}\frac{\ee^z}{z(z^2-1)}\d z
-				=\oint_{C_1+C_2+C_3}\frac{\ee^z}{z(z^2-1)}\d z\\
-				\visible<+->{=}&\visible<.->{2\pi\ii\Bigg(\frac{\ee^z}{z^2-1}\bigg|_{z=0}+\frac{\ee^z}{z(z+1)}\bigg|_{z=1}+\frac{\ee^z}{z(z-1)}\bigg|_{z=-1}\Bigg)}\\
-				\visible<+->{=}&\visible<.->{2\pi\ii\Bigg(-1+\frac \ee 2+\frac{\ee^{-1}}2\Bigg)=\pi\ii(\ee+\ee^{-1}-2).}
-			\end{align*}
-		}\bigdel
-		\tcblower
-		\begin{tikzpicture}[scale=.8]
-			\draw[cstaxis] (-2.5,0)--(2.5,0);
-			\draw[cstaxis] (0,-2.5)--(0,2.5);
-			\draw[cstcurve,main] (0,0) circle (1.8);
-			\draw[cstcurve,main,visible on=<3->] (1.2,0) circle(0.5);
-			\draw[cstcurve,main,visible on=<3->] (-1.2,0) circle(0.5);
-			\draw[cstcurve,main,visible on=<3->] (0,0) circle(0.5);
-			\fill[cstdot,second,visible on=<2->] (0,0) circle;
-			\fill[cstdot,second,visible on=<2->] (1.2,0) circle;
-			\fill[cstdot,second,visible on=<2->] (-1.2,0) circle;
-			\draw
-				(1.6,1.6) node[main] {$C$}
-				(-0.4,0.8) node[second,visible on=<3->] {$C_1$}
-				(1.2,-.8) node[second,visible on=<3->] {$C_2$}
-				(-1.2,-.8) node[second,visible on=<3->] {$C_3$};
-		\end{tikzpicture}
-	\end{solution}
-\end{frame}
-
-
-\subsection{高阶导数的柯西积分公式}
-
-\begin{frame}{高阶导数的柯西积分公式}
-	\onslide<+->
-	解析函数可以由它的积分所表示.
-	\onslide<+->
-	不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
-	\onslide<+->
-	\begin{theorem*}[][柯西积分公式]
-		设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
+	\begin{theorem}
+		设 $u(x,y)$ 是单连通区域 $D$ 内的调和函数, 则线积分
 	\[
-		f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\d z.
+		v(x,y)=\int_{(x_0,y_0)}^{(x,y)}-u_y\d x+u_x\d y+C
 	\]
+		是 $u$ 的共轭调和函数.
+	\end{theorem}
+	\onslide<+->
+	由此可知, 区域 $D$ 上的调和函数在 $z\in D$ 的一个邻域内是一解析函数的实部, 从而在该邻域内具有任意阶连续偏导数.
+	\onslide<+->
+	而 $z$ 的任取的, 因此\alert{调和函数总具有任意阶连续偏导数}.
+\end{frame}
+
+
+\begin{frame}{共轭调和函数的求法}
+	\onslide<+->
+	若 $D$ 是多连通区域, 则未必存在共轭调和函数.
+	\onslide<+->
+	例如 $\ln(x^2+y^2)$ 是复平面去掉原点上的调和函数, 但它并不是某个解析函数的实部.
+	\onslide<+->
+	事实上, 它是 $2\Ln z$ 的实部.
+
+	\onslide<+->
+	在实际计算中, 我们\emph{一般不用线积分}来得到共轭调和函数, 而是采用下述两种办法:
+	\onslide<+->
+	\begin{theorem*}[][偏积分法]
+		通过 $v_y=u_x$ 解得 $v=\varphi(x,y)+\psi(x)$, 其中 $\psi(x)$ 待定.
+		\onslide<+->{再代入 $u_y=-v_x$ 中解出 $\psi(x)$.}
 	\end{theorem*}
 	\onslide<+->
-	假如 $f(z)$ 有泰勒展开
-	\[
-		f(z)=f(z_0)+f'(z_0)(z-z_0)+\cdots+\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots
-	\]
-	\onslide<+->
-	那么由 $\doint_C \frac{\d z}{(z-z_0)^n}$ 的性质可知上述公式右侧应当为 $f^{(n)}(z_0)$.
+	\begin{theorem*}[][不定积分法]
+		对 $f'(z)=u_x-\ii u_y=v_y+\ii v_x$ 求不定积分得到 $f(z)$.
+	\end{theorem*}
 \end{frame}
 
 
-\begin{frame}{高阶导数的柯西积分公式证明\noexer}
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
-	\begin{solution}[][证明]
-		先证明 $n=1$ 的情形.
+	\begin{example}[nearnext]
+		证明 $u(x,y)=y^3-3x^2y$ 是调和函数, 并求其共轭调和函数以及由它们构成的解析函数.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev,indent]
+		由 $u_x=-6xy,u_y=3y^2-3x^2$ 可知
+		\[
+			u_{xx}+u_{yy}=-6y+6y=0,
+		\]
 		\onslide<+->{%
-			设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.
+			故 $u$ 是调和函数.
+		}
+		
+		\onslide<+->{%
+			由 $v_y=u_x=-6xy$ 得 $v=-3xy^2+\psi(x)$.
+		}
+		
+		\onslide<+->{%
+			由 $v_x=-u_y=3x^2-3y^2$ 得 $\psi'(x)=3x^2$,
 		}\onslide<+->{%
-			当 $\abs{h}<\delta$ 时, $z_0+h\in D$.
+			$\psi(x)=x^3+C$.
+		}
+		
+		\onslide<+->{%
+			故 $v(x,y)=-3xy^2+x^3+C$,
 		}\onslide<+->{%
-			由柯西积分公式,
 			\[
-				f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z,\quad 
-				f(z_0+h)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0-h}\d z.
-			\]
-		}\onslide<+->{%
-			两式相减得到
-			\[
-				\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi\ii}\alertn{\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\d z}.
-			\]
-		}\onslide<+->{%
-			当 $h\to 0$ 时, 左边的极限是 $f'(z_0)$.
-		}\onslide<+->{%
-			因此我们只需要证明右边的极限等于 
-			\[
-				\frac1{2\pi\ii}\alertn{\oint_C\frac{f(z)}{(z-z_0)^2}\d z}.
+				f(z)=u+\ii v=y^3-3x^2y+\ii(-3xy^2+x^3+C)
+				\visible<+->{=\ii(x+\ii y)^3+\ii C=\ii(z^3+C), C\in\BR.}
 			\]
 		}\bigdel
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{高阶导数的柯西积分公式证明\noexer}
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
-	\begin{proof}[indent][]
-		\[
-			\text{二者之差}=\frac1{2\pi\ii}\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z.
-		\]
-		\onslide<+->{%
-			由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $\abs{f(z)}\le M$.
-		}\onslide<+->{%
-			注意到 $z\in C$, $\abs{z-z_0}\ge \delta$, $\abs{z-z_0-h}\ge\delta-\abs{h}$.
-		}\onslide<+->{%
-			由长大不等式,
-			\[
-				\biggabs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z}\le\frac{M\abs{h}}{\delta^2(\delta-\abs{h})}\cdot L,
-			\]
-		其中 $L$ 是闭路 $C$ 的长度.
-		}\onslide<+->{%
-			当 $h\to0$ 时, 它的极限为 $0$, 因此 $n=1$ 情形得证.%
-		}
+  当解析函数 $f(z)$ 是 $x,y$ 的多项式形式时, $f(z)$ 本身一定是 $z$ 的多项式.
+	\onslide<+->
+  于是将 $x$ 全部换成 $z$, $y$ 全部换成 $0$ 就是 $f(z)$.
+	\onslide<+->
+  即使 $f(z)$ 不是 $x,y$ 的多项式形式, 这种替换方式很多时候也奏效.
 
-		\onslide<+->{%
-			对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式.
-		}\onslide<+->{%
-			比较 $\dfrac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h$ 与积分公式右侧之差, 并利用长大不等式证明 $h\to 0$ 时, 差趋于零.
-		}\onslide<+->{%
-			具体过程见教材.\qedhere
-		}
-	\end{proof}
+	\onslide<+->
+	在上例中我们也可由另一种方法计算得到:
+	\onslide<+->
+	\[
+		f'(z)=u_x-\ii u_y=-6xy-\ii (3y^2-3x^2)=3\ii z^2.
+	\]
+	\onslide<+->
+	因此 $f(z)=\ii z^3+C$.
 \end{frame}
 
 
-\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
+	\beqskip{6pt}
 	\onslide<+->
-	\alert{柯西积分公式不是用来计算高阶导数的, 而是用高阶导数来计算积分的.}
-\onslide<+->
 	\begin{example}[nearnext]
-		求 $\doint_{\abs{z}=2}\frac{\cos(\pi z)}{(z-1)^5}\d z.$
+		求解析函数 $f(z)$ 使得它的虚部为
+		\[
+			v(x,y)=\ee^x(y\cos y+x\sin y)+x+y.
+		\]
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		由于 $\cos(\pi z)$ 处处解析,
+		由 $u_x=v_y=\ee^x(\cos y-y\sin y+x\cos y)+1$ 得
+		\[
+			u=\ee^x(x\cos y-y\sin y)+x+\psi(y).
+		\]
 		\onslide<+->{%
-			因此由柯西积分公式,
+			由 $u_y=-v_x=-\ee^x(y\cos y+x\sin y+\sin y)-1$ 得
 			\[
-				\oint_{\abs{z}=2}\frac{\cos(\pi z)}{(z-1)^5}\d z
-				=\frac{2\pi\ii}{4!}\cos(\pi z)^{(4)}\big|_{z=1}
-				\visible<+->{=\frac{2\pi\ii}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 \ii}{12}.}
+				\psi'(y)=-1,\quad\psi(y)=-y+C.
 			\]
-		}\bigdel
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}\small
-	\onslide<+->
-	\begin{example}[near]
-		求 $\doint_{\abs{z}=2}\frac{\ee^z}{(z^2+1)^2}\d z.$
-	\end{example}
-	\onslide<+->
-	\begin{solution}[near]
-		被积函数在 $\abs{z}<2$ 的奇点为 $z=\pm \ii$.
-		\onslide<+->{%
-			取 $C_1,C_2$ 为以 $\ii,-\ii $ 为圆心的分离圆周.
-		}\onslide<+->{%
-			\[
-				 \oint_{C_1}\frac{\ee^z}{(z^2+1)^2}\d z
-				=\frac{2\pi\ii}{1}\biggl(\frac{\ee^z}{(z+\ii)^2}\biggr)'\Big|_{z=\ii}
-				\visible<+->{=2\pi\ii\biggl(\frac{\ee^z}{(z+\ii)^2}-\frac{2\ee^z}{(z+\ii)^3}\biggr)\Big|_{z=\ii}
-				=\frac{(1-\ii )\ee^\ii\pi}2.}
-	\]
-		}\onslide<+->{%
-			类似地, $\doint_{C_2}\frac{\ee^z}{(z^2+1)^2}\d z=\frac{-(1+\ii)\ee^{-\ii }\pi}2$.
 		}\onslide<+->{%
 			故
 			\begin{align*}
-				 \oint_{\abs{z}=2}\frac{\ee^z}{(z^2+1)^2}\d z
-			 &=\biggl(\oint_{C_1}+\oint_{C_2}\biggr)\frac{\ee^z}{(z^2+1)^2}\d z\\
-			 &=\frac{(1-\ii )\ee^\ii\pi}2+\frac{-(1+\ii)\ee^{-\ii }\pi}2
-			  =\pi\ii(\sin1-\cos1).
+				f(z)&=u+\ii v
+				=\ee^x(x\cos y-y\sin y)+x-y+C
+				+\ii\bigl[\ee^x(y\cos y+x\sin y)+x+y\bigr]\\
+				&\visible<+->{=z\ee^z+(1+\ii)z+C,\quad C\in\BR.}
 			\end{align*}
 		}\bigdel
 	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
-	\onslide<+->
-	\begin{example}[nearnext]
-		求 $\doint_{\abs{z}=1}z^n\ee^z\d z$, 其中 $n$ 是整数.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev]
-		\begin{enumerate}
-			\item 当 $n\ge 0$ 时, $z^n\ee^z$ 处处解析.
-			\onslide<+->{%
-				由柯西-古萨定理, 
-				\[
-					\oint_{\abs{z}=1}z^n\ee^z\d z=0.
-				\]
-			}
-			\item 当 $n\le-1$ 时, $\ee^z$ 处处解析.
-			\onslide<+->{%
-				由柯西积分公式,
-				\[
-					\oint_{\abs{z}=1}z^n\ee^z\d z
-					=\frac{2\pi\ii}{(-n-1)!}(\ee^z)^{(-n-1)}\big|_{z=0}
-					=\frac{2\pi\ii}{(-n-1)!}.
-				\]
-			}
-		\end{enumerate}
-		\bigdel\meddel
-	\end{solution}
-\end{frame}
-
-
-\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}\small
-	\beqskip{0pt}
-	\onslide<+->
-	\begin{example}[near]
-		求 $\doint_{\abs{z-3}=2}\frac1{(z-2)^2z^3}\d z$ 和 $\doint_{\abs{z-1}=2}\frac1{(z-2)^2z^3}\d z$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[near]
-		\begin{enumerate}
-			\item $\dfrac1{(z-2)^2z^3}$ 在 $\abs{z-3}<2$ 的奇点为 $z=2$.
-			\onslide<+->{%
-				由柯西积分公式,
-				\[
-					\oint_{\abs{z-3}=2}\frac1{(z-2)^2z^3}\d z
-					=\frac{2\pi\ii}{1!}\Bigl(\frac1{z^3}\Bigr)'\bigg|_{z=2}
-					=-\frac{3\pi\ii}8.
-				\]
-			}
-			\item $\dfrac1{(z-2)^2z^3}$ 在 $\abs{z-1}<3$ 的奇点为 $z=0,2$.
-			\onslide<+->{%
-				取 $C_1,C_2$ 为以 $0,2$ 为圆心的分离圆周.
-			}\onslide<+->{
-				\begin{align*}
-					&\oint_{\abs{z-1}=3}\frac1{(z-2)^2z^3}\d z=\oint_{C_1}\frac1{(z-2)^2z^3}\d z+\oint_{C_2}\frac1{(z-2)^2z^3}\d z\\
-					\visible<+->{=}&\visible<.->{\frac{2\pi\ii}{2!}\biggl(\frac1{(z-2)^2}\biggr)''\Big|_{z=0}+\frac{2\pi\ii}{1!}\Bigl(\frac1{z^3}\Bigr)'\Big|_{z=2}=0.}
-				\end{align*}
-			}
-		\end{enumerate}
-		\bigdel
-	\end{solution}
 	\endgroup
 \end{frame}
 
 
-\begin{frame}{莫累拉定理}
-	\beqskip{2pt}
+\begin{frame}{典型例题: 求共轭调和函数和相应的解析函数}
 	\onslide<+->
-	\begin{exercise}
-		$\doint_{\abs{z-2\ii}=3}\frac1{z^2(z-\ii )}\d z=$\fillblankframe{$0$}.
+	也可由
+	\begin{align*}
+		f'(z)&=v_y+\ii v_x\\
+		&=\ee^x(\cos y-y\sin y+x\cos y)+1
+		+\ii\bigl(\ee^x(y\cos y+x\sin y+\sin y)+1\bigr)\\
+		&\visible<+->{=(z+1)\ee^z+1+\ii.}
+	\end{align*}
+	\onslide<+->
+	得 $f(z)=z\ee^z+(1+\ii)z+C$.
+	\onslide<+->
+	\begin{exercise}[nearnext]
+		证明 $u(x,y)=x^3-6x^2y-3xy^2+2y^3$ 是调和函数并求它的共轭调和函数.
 	\end{exercise}
 	\onslide<+->
-	\begin{example}[nearnext][莫累拉定理]
-		设 $f(z)$ 在单连通区域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\doint_Cf(z)\d z=0$, 则 $f(z)$ 在 $D$ 内解析.
-	\end{example}
+	\begin{answer}[nearprev]
+		$v(x,y)=2x^3+3x^2y-6xy^2-y^3+C$.
+	\end{answer}
 	\onslide<+->
-	\begin{proof}[nearprev]
-		由题设可知 $f(z)$ 的积分与路径无关.
-		\onslide<+->{%
-			固定 $z_0\in D$, 则
-			\[
-				F(z)=\int_{z_0}^zf(z)\d z
-			\]
-			定义了 $D$ 内的一个函数.
-		}\onslide<+->{%
-			类似于原函数的证明可知 $F'(z)=f(z)$.
-		}\onslide<+->{%
-			故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.\qedhere
-		}
-	\end{proof}
-	\endgroup
+	显然 $u+\ii v=(1+2\ii)z^3+\ii C$.
 \end{frame}
-
-
-\begin{frame}{解析函数与实函数的差异}
-	\onslide<+->
-	高阶柯西积分公式说明解析函数的导数与实函数的导数有何不同?
-	\onslide<+->
-	高阶柯西积分公式说明, 函数 $f(z)$ 只要在区域 $D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $D$ 中解析.
-	\onslide<+->
-	\alert{这一点与实变量函数有本质的区别.}
-
-	\onslide<+->
-	同时我们也可以看出, 若一个二元实函数 $u(x,y)$ 是一个解析函数的实部或虚部, 则 $u$ 也是具有任意阶偏导数.
-	\onslide<+->
-	这便引出了调和函数的概念.
-\end{frame}
-
 

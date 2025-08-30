@@ -1,328 +1,431 @@
-\subsection{原函数和不定积分}
+\section{柯西积分公式}
 
+\subsection{柯西积分公式}
 
-\begin{frame}{牛顿-莱布尼兹公式}
+\begin{frame}{柯西积分公式}
 	\onslide<+->
-	设有向曲线 $C:z=z(t),a\le t\le b$ 起于 $z_1=z(a)$ 终于 $z_2=z(b)$.
+	柯西-古萨定理是解析函数理论的基础, 但在很多情形下它由柯西积分公式表现.
 	\onslide<+->
-	若存在 $C$ 上的解析函数 $F(z)$ 使得 $F'(z)=f(z)$, 则
-	\begin{align*}
-			\int_C f(z)\d z&
-		=\int_a^b f\bigl(z(t)\bigr)z'(t)\d t\\&
-		=F\bigl(z(t)\bigr)\Big|_a^b
-		=F(z_2)-F(z_1).
-	\end{align*}
-	\onslide<+->
-	这就是\alert{牛顿-莱布尼兹公式}.
-	\onslide<+->
-	我们把 $F(z)$ 称为 $f(z)$ 的一个\emph{原函数}.
-	\onslide<+->
-	特别地, 若 $C$ 是闭路, 则 $\doint_C f(z)\d z=0$.
-\end{frame}
-
-
-\begin{frame}{牛顿-莱布尼兹公式的应用}
-	\onslide<+->
-	例如对于整数 $n\neq0$, 当 $a$ 在闭路 $C$ 的内部时,
-	\[
-		f(z)=\dfrac1{(z-a)^{n+1}}
-	\]
-	在 $C$ 上有原函数 $F(z)=-\dfrac1{n(z-a)^n}$.
-	\onslide<+->
-	从而 $\doint_C f(z)\d z=0$. 
-	\onslide<+->
-	于是我们再次证明了该积分结论的 $n\neq0$ 情形.
-
-	\onslide<+->
-	但需要注意 $\dfrac1{z-a}$ 在 $C$ 上并没有原函数, 因为 $\ln(z-a)$ 在 $C$ 上有奇点.
-\end{frame}
-
-
-\begin{frame}{原函数的存在性}
-	\onslide<+->
-	不过, 不同于单变量实函数的情形, 并不是所有的连续函数都有原函数.
-
-	\onslide<+->
-	设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
-	\onslide<+->
-	由柯西-古萨定理可知, 积分 $\dint_Cf(\zeta)\d \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
-	\onslide<+->
-	因此我们也将其记为 $\dint_{z_0}^zf(\zeta)\d\zeta$.
-	\onslide<+->
-	\begin{theorem}
-		固定 $z_0\in D$, 则函数
-		\[
-			F(z)=\int_{z_0}^zf(\zeta)\d\zeta.
-		\]
-		是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
-	\end{theorem}
-	\onslide<+->
-	由此可知, \alert{单连通区域上的解析函数总有原函数}.
-\end{frame}
-
-
-\begin{frame}{原函数的存在性}
-	\onslide<+->
-	\begin{solution}[sidepic,righthand width=27mm][证明]
-		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
+	\begin{theorem*}[][柯西积分公式]
+		设
+		\begin{itemize}[<*>]
+			\item 函数 $f(z)$ 在(复合)闭路 $C$ 及其内部(围成的区域) $D$ 解析,
+			\item $z_0\in D$,
+		\end{itemize}
 		\onslide<+->{%
-			取 $\abs{\delt z}$ 小于 $K$ 的半径.
-		}\onslide<+->{%
-			那么
+			则
 			\[
-				F(z+\delt z)-F(z)=\int_{z_0}^{z+\delt z}f(\zeta)\d\zeta-\int_{z_0}^zf(\zeta)\d\zeta
-				\visible<+->{=\int_z^{z+\delt z}f(\zeta)\d\zeta.}
+				f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z.
 			\]
-		}\onslide<+->{%
-			容易知道
-			\[
-				\dint_z^{z+\delt z}f(z)\d\zeta=f(z)\int_z^{z+\delt z}\d\zeta=f(z)\delt z.
-			\]
-		}\onslide<+->{%
-			我们需要比较上述两个积分, 其中 $z$ 到 $z+\delt z$ 取直线.
 		}
-		\tcblower
-		\begin{center}
-			\begin{tikzpicture}[rotate=-90]
-				\fill[cstcurve,main,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
-				\draw[cstcurve,main] (0,0) circle(0.7);
-				\draw[cstcurve,third] (-2,0)to [bend left](0,0);
-				\draw[cstcurve,third,visible on=<2->] (0,0)--(0.4,0.4);
-				\fill[cstdot,third] (-2,0) circle;
-				\fill[cstdot,third] (0,0) circle;
-				\fill[cstdot,third,visible on=<2->] (0.4,0.4) circle;
-				\draw
-					(-2,-0.3) node[third] {$z_0$}
-					(0,-0.3) node[third] {$z$}
-					(1.1,0.7) node[third,visible on=<2->] {$z+\delt z$};
-			\end{tikzpicture}
-		\end{center}
-	\end{solution}
+	\end{theorem*}
+	\onslide<+->
+	若 $z_0\notin \ov D$, 由柯西-古萨定理, 右侧的积分是 $0$.
 \end{frame}
 
 
-\begin{frame}{原函数的存在性}
+\begin{frame}{柯西积分公式: 注记}
 	\onslide<+->
-	\begin{proof}[][]%
-		由于 $f(z)$ 解析, 因此连续.
+	解析函数可以用一个积分
+	\[
+		f(z)=\frac1{2\pi\ii}\oint_C\frac{f(\zeta)}{\zeta-z}\d\zeta,\quad z\in D
+	\]
+	来表示, 这是研究解析函数理论的强有力工具.
+
+	\onslide<+->
+	解析函数在闭路 $C$ 内部的取值完全由它在 $C$ 上的值所确定. 这也是解析函数的特征之一.
+	\onslide<+->
+	特别地, 解析函数在圆心处的值等于它在圆周上的平均值.
+	\onslide<+->
+	设 $z=z_0+R\ee^{\ii\theta}$, 则 $\d z=\ii R\ee^{\ii\theta}\d\theta$,
+	\onslide<+->
+	\[
+		f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z
+		=\frac1{2\pi}\int_0^{2\pi}f(z_0+R\ee^{\ii\theta})\d\theta.
+	\]
+\end{frame}
+
+
+\begin{frame}{柯西积分公式证明\noexer}
+	\onslide<+->
+	\begin{proof}
+		由连续性可知, $\forall\varepsilon>0,\exists\delta>0$ 使得当 $\abs{z-z_0}\le\delta$ 时, $z\in D$ 且 $\abs{f(z)-f(z_0)}<\varepsilon$.
 		\onslide<+->{%
-			$\forall\varepsilon>0,\exists\delt>0$ 使得当 $\abs{\zeta-z}<\delt$ 时, $z$ 落在 $K$ 中且 $\abs{f(\zeta)-f(z)}<\varepsilon$.
+			设 $\Gamma:\abs{z-z_0}=\delta$,
 		}\onslide<+->{%
-			当 $\abs{\delt z}<\delt$ 时, 由长大不等式
+			则
 			\begin{align*}
-				\biggabs{\frac{F(z+\delt z)-F(z)}{\delt z}-f(z)}
-				&\visible<+->{=\biggabs{\int_z^{z+\delt z}\frac{f(\zeta)-f(z)}{\delt z}\d \zeta}}\\
-				&\visible<+->{\le\frac{\varepsilon}{\abs{\delt z}}\cdot\abs{\delt z}=\varepsilon.}
+				\biggabs{\oint_C\frac{f(z)}{z-z_0}\d z-2\pi\ii f(z_0)}
+				&\xeq{\text{复合闭路定理}}\biggabs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-2\pi\ii f(z_0)}\\
+				&\visible<+->{=\biggabs{\oint_\Gamma\frac{f(z)}{z-z_0}\d z-\oint_\Gamma\frac{f(z_0)}{z-z_0}\d z}
+				=\biggabs{\oint_\Gamma\frac{f(z)-f(z_0)}{z-z_0}\d z}}\\
+				&\visible<+->{\le\frac\varepsilon \delta\cdot 2\pi \delta
+				=2\pi \varepsilon.}
 			\end{align*}
 		}\onslide<+->{%
-			由于 $\varepsilon$ 是任意的, 因此
+			由 $\varepsilon$ 的任意性可知 
 			\[
-				f(z)=\lim_{\delt z\to 0}\frac{F(z+\delt z)-F(z)}{\delt z}=F'(z).\qedhere
+				\doint_C\frac{f(z)}{z-z_0}\d z=2\pi\ii f(z_0).\qedhere
 			\]
-		}\bigdel
+		}
 	\end{proof}
 \end{frame}
 
 
-\begin{frame}{原函数法计算积分}
+\begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
-	\begin{theorem*}[][积分计算方法II: 原函数法]
-		设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
-		\[
-			\int_{z_1}^{z_2}f(z)\d z=F(z)\Big|_{z_1}^{z_2}=F(z_2)-F(z_1),
-		\]
-		其中 $F(z)$ 是 $f(z)$ 的一个原函数.
-	\end{theorem*}
-	\onslide<+->
-	由于导函数为 $0$ 的函数只能是常值函数, 因此
-	\[
-		F(z)=\int_{z_0}^zf(z)\d z+C.
-	\]
-	\onslide<+->
-	我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\dint f(z)\d z$}.
-
-	\onslide<+->
-	复变函数和实变函数的牛顿-莱布尼兹定理的差异在哪呢?
-	\onslide<+->
-	复变情形要求是\alert{单连通区域上解析函数}, 实变情形要求是\alert{闭区间上连续函数}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 利用原函数求积分}
+	可以看出, 当被积函数分子解析而分母形如 $z-z_0$ 时, 绕闭路的积分可以使用柯西积分公式计算.
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_{z_0}^{z_1}z\d z$.
+		求 $\doint_{\abs{z}=4}\frac{\sin z}z\d z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		由于 $f(z)=z$ 处处解析,
+		函数 $\sin z$ 处处解析.
 		\onslide<+->{%
-			且 $\dint z\d z=\half  z^2+C$,
-		}\onslide<+->{%
-			因此
+			取 $f(z)=\sin z, z_0=0$ 并应用柯西积分公式得
 			\[
-				\int_{z_0}^{z_1}z\d z=\half z^2\Big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
+				\oint_{\abs{z}=4}\frac{\sin z}z\d z
+				=2\pi\ii \sin z|_{z=0}=0.
 			\]
 		}\bigdel
 	\end{solution}
-	\onslide<+->
-	因此之前的例子中 $\dint_0^{3+4\ii}z\d z=-\frac72+12\ii$, 无论从 $0$ 到 $3+4\ii$ 的路径如何.
 \end{frame}
 
 
-\begin{frame}{典型例题: 利用原函数求积分}
+\begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
 	\begin{example}[nearnext]
-		求 $\dint_0^{\pi\ii}z\cos z^2\d z$.
+		求 $\doint_{\abs{z}=2}\frac{\ee^z}{z-1}\d z$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		由于 $f(z)=z\cos z^2$ 处处解析,
-		\onslide<+->{%
-			且
+		由于函数 $\ee^z$ 处处解析,
+		\onslide<+->{
+			取 $f(z)=\ee^z, z_0=1$ 并应用柯西积分公式得
 			\[
-				\int z\cos z^2\d z=\half\int \cos z^2\d z^2=\half\sin z^2+C,
-			\]
-		}\onslide<+->{%
-			因此
-			\[
-				\int_0^{\pi\ii}z\cos z^2\d z=\half\sin z^2\Big|_0^{\pi\ii}=-\half\sin \pi^2.
-			\]
-		}\bigdel
-	\end{solution}
-	\onslide<+->
-	这里我们使用了\alert{凑微分法}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 利用原函数求积分}
-	\onslide<+->
-	\begin{example}[nearnext]
-		求 $\dint_0^\ii z\cos z\d z$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev]
-		由于 $f(z)=z\cos z$ 处处解析,
-		\onslide<+->{%
-			且
-			\[
-				\int z\cos z\d z
-				=\int z\d(\sin z)
-				=z\sin z-\int \sin z\d z
-				\visible<+->{=z\sin z+\cos z+C,}
-			\]
-		}\onslide<+->{%
-			因此
-			\[
-				\int_0^\ii z\cos z\d z
-				=(z\sin z+\cos z)\Big|_0^\ii
-				\visible<+->{=\ii\sin \ii+\cos \ii-1=\ee^{-1}-1.}
-			\]
-		}\bigdel
-	\end{solution}
-	\onslide<+->
-	这里我们使用了\alert{分部积分法}.
-\end{frame}
-
-
-\begin{frame}{典型例题: 利用原函数求积分}
-	\onslide<+->
-	\begin{example}[near]
-		求 $\dint_1^{1+\ii} z \ee^z\d z$.
-	\end{example}
-	\onslide<+->
-	\begin{solution}[nearprev]
-		由于 $f(z)=z\ee^z$ 处处解析,
-		\onslide<+->{%
-			且
-			\[
-				\dint z \ee^z\d z=\int z\d \ee^z=z\ee^z-\int \ee^z\d z=(z-1)\ee^z+C,
-			\]
-		}\onslide<+->{%
-			因此
-			\[
-				\dint_1^{1+\ii} z \ee^z\d z=(z-1)\ee^z\Big|_1^{1+\ii}
-				\visible<+->{=\ii\ee^{1+\ii}=\ee(-\sin 1+\ii\cos 1)}.
+				\oint_{\abs{z}=2}\frac{\ee^z}{z-1}\d z
+				=2\pi\ii \ee^z|_{z=1}=2\pi \ee\ii.
 			\]
 		}\bigdel
 	\end{solution}
 	\onslide<+->
 	\begin{exercise}
-		求 $\dint_0^1 z\sin z\d z=$\fillblankframe[4cm]{$\sin 1-\cos 1$}.
+		求 $\doint_{\abs{z}=2\pi}\frac{\cos z}{z-\pi}\d z=$\fillblankframe{$-2\pi\ii$}.
 	\end{exercise}
 \end{frame}
 
 
-\begin{frame}{典型例题: 利用原函数求积分}
-	\beqskip{0pt}
+\begin{frame}{典型例题: 柯西积分公式的应用}
 	\onslide<+->
-	\begin{example}[nearprev]
-		求 $\dint_C(2z^2+8z+1)\d z$, 其中 $C$ 是摆线
-		$\displaystyle\begin{cases}
-		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
-		\end{cases} 0\le \theta\le 2\pi.$
-		\bigdel
-		\begin{center}
-			\begin{animateinline}[width=9cm]{10}
-				\begin{tikzpicture}
-					\draw[cstaxis, thick](-1.5,0)--(7.5,0);
-					\draw[cstaxis, thick](0,0)--(0,2.5);
-					\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
-				\end{tikzpicture}
-				\newframe
-				\multiframe{37}{r=0+10}{
-					\begin{tikzpicture}
-						\draw[cstaxis, thick](-1.5,0)--(7.5,0);
-						\draw[cstaxis, thick](0,0)--(0,2.5);
-						\draw[cstcurve,second] ({1*(pi/180*\r)},1) circle (1);
-						\fill[cstdot,main] ({1*(pi/180*\r-sin(\r))},{1*(1-cos(\r))}) circle;
-						\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
-					\end{tikzpicture}
-				}
-			\end{animateinline}
-		\end{center}
+	\begin{example}[nearnext]
+		设 $f(z)=\doint_{\abs{\zeta}=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta$, 求 $f'(1+\ii)$.
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		由于 $f(z)=2z^2+8z+1$ 处处解析,
+		当 $\abs{z}<\sqrt3$ 时,由柯西积分公式得
+		\[
+			f(z)=\oint_{\abs{\zeta}=\sqrt3}\frac{3\zeta^2+7\zeta+1}{\zeta-z}\d \zeta
+			\visible<+->{=2\pi\ii(3\zeta^2+7\zeta+1)|_{\zeta=z}=2\pi\ii(3z^2+7z+1).}
+		\]
 		\onslide<+->{%
-			因此
+			因此 $f'(z)=2\pi\ii(6z+7)$,
+		}\onslide<+->{
 			\[
-				\text{原积分}=\int_0^{2\pi a}(2z^2+8z+1)\d z
-				\visible<+->{=\Bigl(\frac23z^3+4z^2+z\Bigr)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+				f'(1+\ii)=2\pi\ii(13+6\ii)=-12\pi+26\pi\ii.
+			\]
+		}\bigdel
+	\end{solution}
+	\onslide<+->
+	注意当 $\abs{z}>\sqrt3$ 时, $f(z)\equiv0$.
+\end{frame}
+
+
+\begin{frame}{典型例题: 柯西积分公式的应用}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求 $\doint_{\abs{z}=3}\frac{\ee^z}{z(z^2-1)}\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev,sidepic,righthand width=4.1cm]
+		被积函数的奇点为 $0,\pm1$.
+		\onslide<+->{%
+			设 $C_1$, $C_2$, $C_3$ 分别为绕 $0$, $1$, $-1$ 的分离圆周.
+		}\onslide<+->{%
+			由复合闭路定理和柯西积分公式
+			\begin{align*}
+				&\oint_{\abs{z}=3}\frac{\ee^z}{z(z^2-1)}\d z
+				=\oint_{C_1+C_2+C_3}\frac{\ee^z}{z(z^2-1)}\d z\\
+				\visible<+->{=}&\visible<.->{2\pi\ii\Bigg(\frac{\ee^z}{z^2-1}\bigg|_{z=0}+\frac{\ee^z}{z(z+1)}\bigg|_{z=1}+\frac{\ee^z}{z(z-1)}\bigg|_{z=-1}\Bigg)}\\
+				\visible<+->{=}&\visible<.->{2\pi\ii\Bigg(-1+\frac \ee 2+\frac{\ee^{-1}}2\Bigg)=\pi\ii(\ee+\ee^{-1}-2).}
+			\end{align*}
+		}\bigdel
+		\tcblower
+		\begin{tikzpicture}[scale=.8]
+			\draw[cstaxis] (-2.5,0)--(2.5,0);
+			\draw[cstaxis] (0,-2.5)--(0,2.5);
+			\draw[cstcurve,main] (0,0) circle (1.8);
+			\draw[cstcurve,main,visible on=<3->] (1.2,0) circle(0.5);
+			\draw[cstcurve,main,visible on=<3->] (-1.2,0) circle(0.5);
+			\draw[cstcurve,main,visible on=<3->] (0,0) circle(0.5);
+			\fill[cstdot,second,visible on=<2->] (0,0) circle;
+			\fill[cstdot,second,visible on=<2->] (1.2,0) circle;
+			\fill[cstdot,second,visible on=<2->] (-1.2,0) circle;
+			\draw
+				(1.6,1.6) node[main] {$C$}
+				(-0.4,0.8) node[second,visible on=<3->] {$C_1$}
+				(1.2,-.8) node[second,visible on=<3->] {$C_2$}
+				(-1.2,-.8) node[second,visible on=<3->] {$C_3$};
+		\end{tikzpicture}
+	\end{solution}
+\end{frame}
+
+
+\subsection{高阶导数的柯西积分公式}
+
+\begin{frame}{高阶导数的柯西积分公式}
+	\onslide<+->
+	解析函数可以由它的积分所表示.
+	\onslide<+->
+	不仅如此, 通过积分表示, 还可以说明\alert{解析函数是任意阶可导的}.
+	\onslide<+->
+	\begin{theorem*}[][柯西积分公式]
+		设函数 $f(z)$ 在闭路或复合闭路 $C$ 及其内部 $D$ 解析, 则对任意 $z_0\in D$,
+	\[
+		f^{(n)}(z_0)=\frac{n!}{2\pi\ii}\oint_C\frac{f(z)}{(z-z_0)^{n+1}}\d z.
 	\]
+	\end{theorem*}
+	\onslide<+->
+	假如 $f(z)$ 有泰勒展开
+	\[
+		f(z)=f(z_0)+f'(z_0)(z-z_0)+\cdots+\frac{f^{(n)}(z_0)}{n!}(z-z_0)^n+\cdots
+	\]
+	\onslide<+->
+	那么由 $\doint_C \frac{\d z}{(z-z_0)^n}$ 的性质可知上述公式右侧应当为 $f^{(n)}(z_0)$.
+\end{frame}
+
+
+\begin{frame}{高阶导数的柯西积分公式证明\noexer}
+	\onslide<+->
+	\begin{solution}[][证明]
+		先证明 $n=1$ 的情形.
+		\onslide<+->{%
+			设 $\delta$ 为 $z_0$ 到 $C$ 的最短距离.
+		}\onslide<+->{%
+			当 $\abs{h}<\delta$ 时, $z_0+h\in D$.
+		}\onslide<+->{%
+			由柯西积分公式,
+			\[
+				f(z_0)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0}\d z,\quad 
+				f(z_0+h)=\frac1{2\pi\ii}\oint_C\frac{f(z)}{z-z_0-h}\d z.
+			\]
+		}\onslide<+->{%
+			两式相减得到
+			\[
+				\frac{f(z_0+h)-f(z_0)}h=\frac1{2\pi\ii}\alertn{\oint_C\frac{f(z)}{(z-z_0)(z-z_0-h)}\d z}.
+			\]
+		}\onslide<+->{%
+			当 $h\to 0$ 时, 左边的极限是 $f'(z_0)$.
+		}\onslide<+->{%
+			因此我们只需要证明右边的极限等于 
+			\[
+				\frac1{2\pi\ii}\alertn{\oint_C\frac{f(z)}{(z-z_0)^2}\d z}.
+			\]
+		}\bigdel
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{高阶导数的柯西积分公式证明\noexer}
+	\onslide<+->
+	\begin{proof}[indent][]
+		\[
+			\text{二者之差}=\frac1{2\pi\ii}\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z.
+		\]
+		\onslide<+->{%
+			由于 $f(z)$ 在 $C$ 上连续, 故存在 $M$ 使得 $\abs{f(z)}\le M$.
+		}\onslide<+->{%
+			注意到 $z\in C$, $\abs{z-z_0}\ge \delta$, $\abs{z-z_0-h}\ge\delta-\abs{h}$.
+		}\onslide<+->{%
+			由长大不等式,
+			\[
+				\biggabs{\oint_C\frac{h f(z)}{(z-z_0)^2(z-z_0-h)}\d z}\le\frac{M\abs{h}}{\delta^2(\delta-\abs{h})}\cdot L,
+			\]
+		其中 $L$ 是闭路 $C$ 的长度.
+		}\onslide<+->{%
+			当 $h\to0$ 时, 它的极限为 $0$, 因此 $n=1$ 情形得证.%
 		}
+
+		\onslide<+->{%
+			对于一般的 $n$, 我们通过归纳法将 $f^{(n)}(z_0)$ 和 $f^{(n)}(z_0+h)$ 表达为积分形式.
+		}\onslide<+->{%
+			比较 $\dfrac{f^{(n)}(z_0+h)-f^{(n)}(z_0)}h$ 与积分公式右侧之差, 并利用长大不等式证明 $h\to 0$ 时, 差趋于零.
+		}\onslide<+->{%
+			具体过程见教材.\qedhere
+		}
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
+	\onslide<+->
+	\alert{柯西积分公式不是用来计算高阶导数的, 而是用高阶导数来计算积分的.}
+\onslide<+->
+	\begin{example}[nearnext]
+		求 $\doint_{\abs{z}=2}\frac{\cos(\pi z)}{(z-1)^5}\d z.$
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $\cos(\pi z)$ 处处解析,
+		\onslide<+->{%
+			因此由柯西积分公式,
+			\[
+				\oint_{\abs{z}=2}\frac{\cos(\pi z)}{(z-1)^5}\d z
+				=\frac{2\pi\ii}{4!}\cos(\pi z)^{(4)}\big|_{z=1}
+				\visible<+->{=\frac{2\pi\ii}{24}\cdot \pi^4\cos \pi=-\frac{\pi^5 \ii}{12}.}
+			\]
+		}\bigdel
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}\small
+	\onslide<+->
+	\begin{example}[near]
+		求 $\doint_{\abs{z}=2}\frac{\ee^z}{(z^2+1)^2}\d z.$
+	\end{example}
+	\onslide<+->
+	\begin{solution}[near]
+		被积函数在 $\abs{z}<2$ 的奇点为 $z=\pm \ii$.
+		\onslide<+->{%
+			取 $C_1,C_2$ 为以 $\ii,-\ii $ 为圆心的分离圆周.
+		}\onslide<+->{%
+			\[
+				 \oint_{C_1}\frac{\ee^z}{(z^2+1)^2}\d z
+				=\frac{2\pi\ii}{1}\biggl(\frac{\ee^z}{(z+\ii)^2}\biggr)'\Big|_{z=\ii}
+				\visible<+->{=2\pi\ii\biggl(\frac{\ee^z}{(z+\ii)^2}-\frac{2\ee^z}{(z+\ii)^3}\biggr)\Big|_{z=\ii}
+				=\frac{(1-\ii )\ee^\ii\pi}2.}
+	\]
+		}\onslide<+->{%
+			类似地, $\doint_{C_2}\frac{\ee^z}{(z^2+1)^2}\d z=\frac{-(1+\ii)\ee^{-\ii }\pi}2$.
+		}\onslide<+->{%
+			故
+			\begin{align*}
+				 \oint_{\abs{z}=2}\frac{\ee^z}{(z^2+1)^2}\d z
+			 &=\biggl(\oint_{C_1}+\oint_{C_2}\biggr)\frac{\ee^z}{(z^2+1)^2}\d z\\
+			 &=\frac{(1-\ii )\ee^\ii\pi}2+\frac{-(1+\ii)\ee^{-\ii }\pi}2
+			  =\pi\ii(\sin1-\cos1).
+			\end{align*}
+		}\bigdel
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求 $\doint_{\abs{z}=1}z^n\ee^z\d z$, 其中 $n$ 是整数.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		\begin{enumerate}
+			\item 当 $n\ge 0$ 时, $z^n\ee^z$ 处处解析.
+			\onslide<+->{%
+				由柯西-古萨定理, 
+				\[
+					\oint_{\abs{z}=1}z^n\ee^z\d z=0.
+				\]
+			}
+			\item 当 $n\le-1$ 时, $\ee^z$ 处处解析.
+			\onslide<+->{%
+				由柯西积分公式,
+				\[
+					\oint_{\abs{z}=1}z^n\ee^z\d z
+					=\frac{2\pi\ii}{(-n-1)!}(\ee^z)^{(-n-1)}\big|_{z=0}
+					=\frac{2\pi\ii}{(-n-1)!}.
+				\]
+			}
+		\end{enumerate}
+		\bigdel\meddel
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{典型例题: 使用高阶导数的柯西积分公式计算积分}\small
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{example}[near]
+		求 $\doint_{\abs{z-3}=2}\frac1{(z-2)^2z^3}\d z$ 和 $\doint_{\abs{z-1}=3}\frac1{(z-2)^2z^3}\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[near]
+		\begin{enumerate}
+			\item $\dfrac1{(z-2)^2z^3}$ 在 $\abs{z-3}<2$ 的奇点为 $z=2$.
+			\onslide<+->{%
+				由柯西积分公式,
+				\[
+					\oint_{\abs{z-3}=2}\frac1{(z-2)^2z^3}\d z
+					=\frac{2\pi\ii}{1!}\Bigl(\frac1{z^3}\Bigr)'\bigg|_{z=2}
+					=-\frac{3\pi\ii}8.
+				\]
+			}
+			\item $\dfrac1{(z-2)^2z^3}$ 在 $\abs{z-1}<3$ 的奇点为 $z=0,2$.
+			\onslide<+->{%
+				取 $C_1,C_2$ 为以 $0,2$ 为圆心的分离圆周.
+			}\onslide<+->{
+				\begin{align*}
+					&\oint_{\abs{z-1}=3}\frac1{(z-2)^2z^3}\d z=\oint_{C_1}\frac1{(z-2)^2z^3}\d z+\oint_{C_2}\frac1{(z-2)^2z^3}\d z\\
+					\visible<+->{=}&\visible<.->{\frac{2\pi\ii}{2!}\biggl(\frac1{(z-2)^2}\biggr)''\Big|_{z=0}+\frac{2\pi\ii}{1!}\Bigl(\frac1{z^3}\Bigr)'\Big|_{z=2}=0.}
+				\end{align*}
+			}
+		\end{enumerate}
+		\bigdel
 	\end{solution}
 	\endgroup
 \end{frame}
 
 
-\begin{frame}{典型例题: 利用原函数求积分}
-	\beqskip{4pt}
+\begin{frame}{莫累拉定理}
+	\beqskip{2pt}
 	\onslide<+->
-	\begin{example}[nearnext]
-		设 $C$ 为沿着 $\abs{z}=1$ 从 $1$ 到 $\ii$ 的逆时针圆弧, 求 $\dint_C\frac{\ln(z+1)}{z+1}\d z$.
+	\begin{exercise}
+		$\doint_{\abs{z-2\ii}=3}\frac1{z^2(z-\ii )}\d z=$\fillblankframe{$0$}.
+	\end{exercise}
+	\onslide<+->
+	\begin{example}[nearnext][莫累拉定理]
+		设 $f(z)$ 在单连通区域 $D$ 内连续, 且对于 $D$ 中任意闭路 $C$ 都有 $\doint_Cf(z)\d z=0$, 则 $f(z)$ 在 $D$ 内解析.
 	\end{example}
 	\onslide<+->
-	\begin{solution}[nearprev]
-		函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在单连通区域 $\Re z>-1$ 内解析.
+	\begin{proof}[nearprev]
+		由题设可知 $f(z)$ 的积分与路径无关.
 		\onslide<+->{%
+			固定 $z_0\in D$, 则
 			\[
-				\int\frac{\ln(z+1)}{z+1}\d z
-				=\int\ln(z+1)\d\bigl(\ln(z+1)\bigr)
-				=\half\ln^2(z+1)+C.
+				F(z)=\int_{z_0}^zf(z)\d z
 			\]
+			定义了 $D$ 内的一个函数.
 		}\onslide<+->{%
-			因此
-			\begin{align*}
-				\int_C\frac{\ln(z+1)}{z+1}\d z&=\half\ln^2(z+1)\big|_1^\ii
-				\visible<+->{=\half\Bigl(\ln^2(1+\ii)-\ln^22\Bigr)}\\
-				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4\ii\Bigr)^2-\ln^22\biggr)
-				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}\ii.}
-			\end{align*}
+			类似于原函数的证明可知 $F'(z)=f(z)$.
+		}\onslide<+->{%
+			故 $f(z)$ 作为解析函数 $F(z)$ 的导数也是解析的.\qedhere
 		}
-	\end{solution}
+	\end{proof}
 	\endgroup
+\end{frame}
+
+
+\begin{frame}{解析函数与实函数的差异}
+	\onslide<+->
+	高阶柯西积分公式说明解析函数的导数与实函数的导数有何不同?
+	\onslide<+->
+	高阶柯西积分公式说明, 函数 $f(z)$ 只要在区域 $D$ 中处处可导, 它就一定无限次可导, 并且各阶导数仍然在 $D$ 中解析.
+	\onslide<+->
+	\alert{这一点与实变量函数有本质的区别.}
+
+	\onslide<+->
+	同时我们也可以看出, 若一个二元实函数 $u(x,y)$ 是一个解析函数的实部或虚部, 则 $u$ 也是具有任意阶偏导数.
+	\onslide<+->
+	这便引出了调和函数的概念.
 \end{frame}
 
 

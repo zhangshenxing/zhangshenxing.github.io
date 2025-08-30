@@ -13,8 +13,8 @@
 	然而它却可能可以展开为\emph{双边幂级数}
 	\[
 		\sumff c_n(z-z_0)^n
-		=\alert{\underbrace{\sumf1 c_{-n}(z-z_0)^{-n}}_{\text{\normalsize 负幂次部分}}}
-		+\emph{\underbrace{\sumf0 c_n(z-z_0)^n}_{\text{\normalsize 非负幂次部分}}}.
+		=\alert{\underbrace{\sumf1 c_{-n}(z-z_0)^{-n}}_{\text{\normalsize \alert{负幂次部分}}}}
+		+\emph{\underbrace{\sumf0 c_n(z-z_0)^n}_{\text{\normalsize \emph{非负幂次部分}}}}.
 	\]
 	\onslide<+->
 	例如
@@ -110,9 +110,9 @@
 	\end{example}
 	\onslide<+->
 	\begin{solution}[nearprev]
-		非负幂次部分收敛域为 $\abs{z}<\abs{2+\ii}=\sqrt5$, 负幂次部分收敛域为 $\abs{z}>\abs{2}=2$.
+		非负幂次部分收敛圆为 $\abs{z}<\abs{2+\ii}=\sqrt5$, 负幂次部分收敛圆为 $\abs{z}>\abs{2}=2$.
 		\onslide<+->{%
-			因此该双边幂级数的收敛域为 $2<\abs{z}<\sqrt5$.
+			因此该双边幂级数的收敛圆环为 $2<\abs{z}<\sqrt5$.
 		}\onslide<+->{%
 			此时
 			\[
@@ -129,7 +129,7 @@
 
 \begin{frame}{洛朗级数}
 	\onslide<+->
-	反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\alert{洛朗级数}.
+	反过来, 在圆环域内解析的函数也一定能展开为双边幂级数, 被称为\emph{洛朗级数}.
 
 	\onslide<+->
 	例如 $f(z)=\dfrac1{z(1-z)}$ 在 $z=0,1$ 以外解析.
@@ -148,7 +148,7 @@
 \end{frame}
 
 
-\begin{frame}{洛朗级数的形式}
+\begin{frame}{洛朗级数的形式\noexer}
 	\onslide<+->
 	考虑一般情形下的洛朗展开.
 	\onslide<+->
@@ -193,7 +193,7 @@
 \end{frame}
 
 
-\begin{frame}{洛朗级数}
+\begin{frame}{洛朗级数的形式\noexer}
 	\onslide<+->
 	和泰勒级数的推导类似,
 	\[\frac1{2\pi\ii}\emphn{\oint_{K_2}\frac{f(\zeta)}{\zeta-z}\d\zeta}
@@ -216,7 +216,7 @@
 \end{frame}
 
 
-\begin{frame}{洛朗级数的形式}
+\begin{frame}{洛朗级数的形式\noexer}
 	\onslide<+->
 	令
 	\begin{align*}
@@ -279,7 +279,7 @@
 \end{frame}
 
 
-\begin{frame}{典型例题: 求洛朗级数}
+\begin{frame}{典型例题: 求洛朗展开}
 	\onslide<+->
 	\begin{example}[nearprev]
 		将 $f(z)=\dfrac{\ee^z-1}{z^2}$ 展开为以 $0$ 为中心的洛朗级数.
@@ -490,11 +490,11 @@
 	\begin{answer}
 		\begin{align*}
 			\frac1{z-1}=\frac1z\cdot\frac1{1-\dfrac1z}=\sum_{n=1}^{\infty} \frac1{z^n},\qquad
-			-\frac1{(z-1)^2}=\sumf1 \frac{-n}{z^{n+1}}=-\sumf1 \frac{(n-1)}{z^n},
+			-\frac1{(z-1)^2}=\sumf1 \frac{-n}{z^{n+1}}=-\sumf1 \frac{n-1}{z^n},
 		\end{align*}
 		\[
 			f(z)=\sumf0 \frac{2(n-1)+1}{z^n}
-			=\sumf1\frac{(2n-1)}{z^n}.
+			=\sumf1\frac{2n-1}{z^n}.
 		\]
 	\end{answer}
 	\onslide<+->

@@ -119,7 +119,7 @@
 	\begin{example}
 		$f(z)=\dfrac{z^3(\ee^z-1)^2}{\sin z^4}$.
 		\onslide<+->{%
-			由于 $0$ 是分子的 $5$ 阶零点, 分母的 $4$ 阶零点, 因此 $z=0$ 是 $f(z)$ 的可去奇点.
+			由于 $0$ 是分子的五阶零点, 分母的四阶零点, 因此 $z=0$ 是 $f(z)$ 的可去奇点.
 		}\onslide<+->{%
 			故
 			\[
@@ -156,14 +156,14 @@
 	\onslide<+->
 	设 $z_0$ 为 $f(z)$ 的极点.
 	\onslide<+->
-	\begin{theorem*}[][极点留数计算公式 I]
+	\begin{theorem*}[][留数计算公式 I]
 		若 $z_0$ 是 $\le m$ 阶极点或可去奇点, 那么
 		\[
-			\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\bigl((z-z_0)^mf(z)\bigr)^{(m-1)}.
+			\Res[f(z),z_0]=\frac1{(m-1)!}\lim_{z\to z_0}\bigl[(z-z_0)^mf(z)\bigr]^{(m-1)}.
 		\]
 	\end{theorem*}
 	\onslide<+->
-	\begin{theorem*}[][极点留数计算公式 II]
+	\begin{theorem*}[][留数计算公式 II]
 		若 $z_0$ 是一阶极点或可去奇点, 那么
 		\[
 			\Res[f(z),z_0]=\liml_{z\to z_0}(z-z_0)f(z).
@@ -244,7 +244,7 @@
 
 \begin{frame}{留数的计算方法}
 	\onslide<+->
-	\begin{theorem*}[nearnext][极点留数计算公式 III]
+	\begin{theorem*}[nearnext][留数计算公式 III]
 		设 $P(z),Q(z)$ 在 $z_0$ 解析且 $z_0$ 是 $Q$ 的一阶零点, 则
 		\[
 			\Res\left[\frac{P(z)}{Q(z)},z_0\right]=\frac{P(z_0)}{Q'(z_0)}.
@@ -336,7 +336,7 @@
 	\]
 	\onslide<+->
 	因此有
-	\begin{theorem*}[][极点留数计算公式 IV]
+	\begin{theorem*}[][留数计算公式 IV]
 		\[
 			\Res[f(z),\infty]=-\Res\left[f\Bigl(\frac1z\Bigr)\frac1{z^2},0\right].
 		\]
@@ -355,9 +355,9 @@
 		\onslide<+->{%
 			由留数定理
 			\[
-				-2\pi\ii\Res[f(z),\infty]
-				=\oint_C f(z)\d z
-				=2\pi\ii\sum_{k=1}^n\Res[f(z),z_k].
+				-\Res[f(z),\infty]
+				=\frac1{2\pi\ii}\oint_C f(z)\d z
+				=\sum_{k=1}^n\Res[f(z),z_k].
 			\]
 		}\onslide<+->{%
 			故 $\suml_{k=1}^n\Res[f(z),z_k]+\Res[f(z),\infty]=0$.\qedhere

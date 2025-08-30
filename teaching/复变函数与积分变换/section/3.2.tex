@@ -320,7 +320,7 @@
 \begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}[nearnext]
-		证明对于任意闭路 $C$, $\dint_C(z-a)^n\d z=0$, $n\neq -1$ 为整数.
+		证明对于任意闭路 $C$, $\doint_C(z-a)^n\d z=0$, $n\neq -1$ 为整数.
 	\end{example}
 	\onslide<+->
 	\begin{proof}[nearprev]
@@ -329,14 +329,14 @@
 			\onslide<+->{%
 				由柯西-古萨定理,
 				\[
-					\dint_C(z-a)^n\d z=0.
+					\oint_C(z-a)^n\d z=0.
 				\]
 			}
 			\item 若 $a$ 在 $C$ 的内部, 则在 $C$ 的内部取一个以 $a$ 为圆心的圆周 $C_1$.
 			\onslide<+->{%
 				由复合闭路定理以及上一节的结论
 				\[
-					\int_C(z-a)^n\d z=\int_{C_1}(z-a)^n\d z=0.\qedhere
+					\oint_C(z-a)^n\d z=\oint_{C_1}(z-a)^n\d z=0.\qedhere
 				\]
 			}
 			\bigdel
@@ -365,7 +365,7 @@
 	\beqskip{4pt}
 	\onslide<+->
 	\begin{example}[nearnext,sidepic,righthand width=144pt]
-		求 $\dint_\Gamma\frac{2z-1}{z^2-z}\d z$, 其中 $\Gamma$ 是由 $2\pm \ii,-2\pm \ii$ 形成的矩形闭路.
+		求 $\doint_\Gamma\frac{2z-1}{z^2-z}\d z$, 其中 $\Gamma$ 是由 $2\pm \ii,-2\pm \ii$ 形成的矩形闭路.
 		\tcblower
 		\begin{center}
 			\begin{tikzpicture}
@@ -409,7 +409,7 @@
 \begin{frame}{例题: 复合闭路定理的应用}
 	\onslide<+->
 	\begin{example}[nearnext,sidepic,righthand width=94pt]
-		求 $\dint_\Gamma\frac{\ee^z}z\d z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:\abs{z}=2, C_2:\abs{z}=1$.
+		求 $\doint_\Gamma\frac{\ee^z}z\d z$, 其中 $\Gamma=C_1+C_2^-$, $C_1:\abs{z}=2, C_2:\abs{z}=1$.
 		\tcblower
 		\begin{center}
 			\begin{tikzpicture}[scale=.8]
@@ -429,12 +429,12 @@
 	\onslide<+->
 	\begin{solution}[nearprev]
 		函数 $\dfrac{\ee^z}z$ 在 $C_1,C_2$ 围城的圆环域内解析.
-		\onslide<+->{由复合闭路定理可知 $\dint_\Gamma\frac{\ee^z}z\d z=0$.}
+		\onslide<+->{由复合闭路定理可知 $\doint_\Gamma\frac{\ee^z}z\d z=0$.}
 	\end{solution}
 \end{frame}
 
 
-\begin{frame}{例题: 有理函数绕闭路积分}
+\begin{frame}{例题: 有理函数绕闭路积分\noexer}
 	\onslide<+->
 	\begin{example}
 		设 $f(z)=\dfrac{p(z)}{q(z)}$ 是一个有理函数, 其中 $p,q$ 的次数分别是 $m,n$.
@@ -450,7 +450,7 @@
 \end{frame}
 
 
-\begin{frame}{例题: 有理函数绕闭路积分}
+\begin{frame}{例题: 有理函数绕闭路积分\noexer}
 	\beqskip{8pt}
 	\onslide<+->
 	\begin{proof}[near]
@@ -490,6 +490,336 @@
 	若 $m\ge n$, 则我们可将 $f(z)$ 写成一个多项式和上述形式有理函数之和.
 	\onslide<+->
 	\begin{exercise}
-		$\doint_{\abs{z}=2}\dfrac{z^2}{(2z+1)(z^2+1)}=$\fillblankframe{$\pi\ii$}.
+		$\doint_{\abs{z}=2}\dfrac{z^2}{(2z+1)(z^2+1)}\d z=$\fillblankframe{$\pi\ii$}.
 	\end{exercise}
 \end{frame}
+
+
+\subsection{原函数和不定积分}
+
+
+\begin{frame}{牛顿-莱布尼兹公式}
+	\onslide<+->
+	设有向曲线 $C:z=z(t),a\le t\le b$ 起于 $z_1=z(a)$ 终于 $z_2=z(b)$.
+	\onslide<+->
+	若存在 $C$ 上的解析函数 $F(z)$ 使得 $F'(z)=f(z)$, 则
+	\begin{align*}
+			\int_C f(z)\d z&
+		=\int_a^b f\bigl(z(t)\bigr)z'(t)\d t\\&
+		=F\bigl(z(t)\bigr)\Big|_a^b
+		=F(z_2)-F(z_1).
+	\end{align*}
+	\onslide<+->
+	这就是\alert{牛顿-莱布尼兹公式}.
+	\onslide<+->
+	我们把 $F(z)$ 称为 $f(z)$ 的一个\emph{原函数}.
+	\onslide<+->
+	特别地, 若 $C$ 是闭路, 则 $\doint_C f(z)\d z=0$.
+\end{frame}
+
+
+\begin{frame}{牛顿-莱布尼兹公式的应用}
+	\onslide<+->
+	例如对于整数 $n\neq0$, 当 $a$ 在闭路 $C$ 的内部时,
+	\[
+		f(z)=\dfrac1{(z-a)^{n+1}}
+	\]
+	在 $C$ 上有原函数 $F(z)=-\dfrac1{n(z-a)^n}$.
+	\onslide<+->
+	从而 $\doint_C f(z)\d z=0$. 
+	\onslide<+->
+	于是我们再次证明了该积分结论的 $n\neq0$ 情形.
+
+	\onslide<+->
+	但需要注意 $\dfrac1{z-a}$ 在 $C$ 上并没有原函数, 因为 $\ln(z-a)$ 在 $C$ 上有奇点.
+\end{frame}
+
+
+\begin{frame}{原函数的存在性}
+	\onslide<+->
+	不过, 不同于单变量实函数的情形, 并不是所有的连续函数都有原函数.
+
+	\onslide<+->
+	设 $f(z)$ 在单连通区域 $D$ 内解析, $C$ 是 $D$ 内一条起于 $z_0$ 终于 $z$ 的曲线.
+	\onslide<+->
+	由柯西-古萨定理可知, 积分 $\dint_Cf(\zeta)\d \zeta$ 与路径无关, 只与 $z_0,z$ 有关.
+	\onslide<+->
+	因此我们也将其记为 $\dint_{z_0}^zf(\zeta)\d\zeta$.
+	\onslide<+->
+	\begin{theorem}
+		固定 $z_0\in D$, 则函数
+		\[
+			F(z)=\int_{z_0}^zf(\zeta)\d\zeta.
+		\]
+		是 $D$ 内的解析函数, 且 $F'(z)=f(z)$.
+	\end{theorem}
+	\onslide<+->
+	由此可知, \alert{单连通区域上的解析函数总有原函数}.
+\end{frame}
+
+
+\begin{frame}{原函数的存在性\noexer}
+	\onslide<+->
+	\begin{solution}[sidepic,righthand width=27mm][证明]
+		以 $z$ 为中心作一包含在 $D$ 内的圆 $K$,
+		\onslide<+->{%
+			取 $\abs{\delt z}$ 小于 $K$ 的半径.
+		}\onslide<+->{%
+			那么
+			\[
+				F(z+\delt z)-F(z)=\int_{z_0}^{z+\delt z}f(\zeta)\d\zeta-\int_{z_0}^zf(\zeta)\d\zeta
+				\visible<+->{=\int_z^{z+\delt z}f(\zeta)\d\zeta.}
+			\]
+		}\onslide<+->{%
+			容易知道
+			\[
+				\dint_z^{z+\delt z}f(z)\d\zeta=f(z)\int_z^{z+\delt z}\d\zeta=f(z)\delt z.
+			\]
+		}\onslide<+->{%
+			我们需要比较上述两个积分, 其中 $z$ 到 $z+\delt z$ 取直线.
+		}
+		\tcblower
+		\begin{center}
+			\begin{tikzpicture}[rotate=-90]
+				\fill[cstcurve,main,rounded corners=0.5cm,cstfill] (-2.5,-0.8) rectangle (2,1);
+				\draw[cstcurve,main] (0,0) circle(0.7);
+				\draw[cstcurve,third] (-2,0)to [bend left](0,0);
+				\draw[cstcurve,third,visible on=<2->] (0,0)--(0.4,0.4);
+				\fill[cstdot,third] (-2,0) circle;
+				\fill[cstdot,third] (0,0) circle;
+				\fill[cstdot,third,visible on=<2->] (0.4,0.4) circle;
+				\draw
+					(-2,-0.3) node[third] {$z_0$}
+					(0,-0.3) node[third] {$z$}
+					(1.1,0.7) node[third,visible on=<2->] {$z+\delt z$};
+			\end{tikzpicture}
+		\end{center}
+	\end{solution}
+\end{frame}
+
+
+\begin{frame}{原函数的存在性\noexer}
+	\onslide<+->
+	\begin{proof}[][]%
+		由于 $f(z)$ 解析, 因此连续.
+		\onslide<+->{%
+			$\forall\varepsilon>0,\exists\delt>0$ 使得当 $\abs{\zeta-z}<\delt$ 时, $z$ 落在 $K$ 中且 $\abs{f(\zeta)-f(z)}<\varepsilon$.
+		}\onslide<+->{%
+			当 $\abs{\delt z}<\delt$ 时, 由长大不等式
+			\begin{align*}
+				\biggabs{\frac{F(z+\delt z)-F(z)}{\delt z}-f(z)}
+				&\visible<+->{=\biggabs{\int_z^{z+\delt z}\frac{f(\zeta)-f(z)}{\delt z}\d \zeta}}\\
+				&\visible<+->{\le\frac{\varepsilon}{\abs{\delt z}}\cdot\abs{\delt z}=\varepsilon.}
+			\end{align*}
+		}\onslide<+->{%
+			由于 $\varepsilon$ 是任意的, 因此
+			\[
+				f(z)=\lim_{\delt z\to 0}\frac{F(z+\delt z)-F(z)}{\delt z}=F'(z).\qedhere
+			\]
+		}\bigdel
+	\end{proof}
+\end{frame}
+
+
+\begin{frame}{原函数法计算积分}
+	\onslide<+->
+	\begin{theorem*}[][积分计算方法II: 原函数法]
+		设 $f(z)$ 在单连通区域 $D$ 上解析, $z_1$ 至 $z_2$ 的积分路径落在 $D$ 内, 则
+		\[
+			\int_{z_1}^{z_2}f(z)\d z=F(z)\Big|_{z_1}^{z_2}=F(z_2)-F(z_1),
+		\]
+		其中 $F(z)$ 是 $f(z)$ 的一个原函数.
+	\end{theorem*}
+	\onslide<+->
+	由于导函数为 $0$ 的函数只能是常值函数, 因此
+	\[
+		F(z)=\int_{z_0}^zf(z)\d z+C.
+	\]
+	\onslide<+->
+	我们称之为 $f(z)$ 的\emph{不定积分}, 记为 \emph{$\dint f(z)\d z$}.
+
+	\onslide<+->
+	复变函数和实变函数的牛顿-莱布尼兹定理的差异在哪呢?
+	\onslide<+->
+	复变情形要求是\alert{单连通区域上解析函数}, 实变情形要求是\alert{闭区间上连续函数}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求 $\dint_{z_0}^{z_1}z\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $f(z)=z$ 处处解析,
+		\onslide<+->{%
+			且 $\dint z\d z=\half  z^2+C$,
+		}\onslide<+->{%
+			因此
+			\[
+				\int_{z_0}^{z_1}z\d z=\half z^2\Big|_{z_0}^{z_1}=\half (z_1^2-z_0^2).
+			\]
+		}\bigdel
+	\end{solution}
+	\onslide<+->
+	因此之前的例子中 $\dint_0^{3+4\ii}z\d z=-\frac72+12\ii$, 无论从 $0$ 到 $3+4\ii$ 的路径如何.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求 $\dint_0^{\pi\ii}z\cos z^2\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $f(z)=z\cos z^2$ 处处解析,
+		\onslide<+->{%
+			且
+			\[
+				\int z\cos z^2\d z=\half\int \cos z^2\d z^2=\half\sin z^2+C,
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\int_0^{\pi\ii}z\cos z^2\d z=\half\sin z^2\Big|_0^{\pi\ii}=-\half\sin \pi^2.
+			\]
+		}\bigdel
+	\end{solution}
+	\onslide<+->
+	这里我们使用了\alert{凑微分法}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\onslide<+->
+	\begin{example}[nearnext]
+		求 $\dint_0^\ii z\cos z\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $f(z)=z\cos z$ 处处解析,
+		\onslide<+->{%
+			且
+			\[
+				\int z\cos z\d z
+				=\int z\d(\sin z)
+				=z\sin z-\int \sin z\d z
+				\visible<+->{=z\sin z+\cos z+C,}
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\int_0^\ii z\cos z\d z
+				=(z\sin z+\cos z)\Big|_0^\ii
+				\visible<+->{=\ii\sin \ii+\cos \ii-1=\ee^{-1}-1.}
+			\]
+		}\bigdel
+	\end{solution}
+	\onslide<+->
+	这里我们使用了\alert{分部积分法}.
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\onslide<+->
+	\begin{example}[near]
+		求 $\dint_1^{1+\ii} z \ee^z\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $f(z)=z\ee^z$ 处处解析,
+		\onslide<+->{%
+			且
+			\[
+				\dint z \ee^z\d z=\int z\d \ee^z=z\ee^z-\int \ee^z\d z=(z-1)\ee^z+C,
+			\]
+		}\onslide<+->{%
+			因此
+			\[
+				\dint_1^{1+\ii} z \ee^z\d z=(z-1)\ee^z\Big|_1^{1+\ii}
+				\visible<+->{=\ii\ee^{1+\ii}=\ee(-\sin 1+\ii\cos 1)}.
+			\]
+		}\bigdel
+	\end{solution}
+	\onslide<+->
+	\begin{exercise}
+		求 $\dint_0^1 z\sin z\d z=$\fillblankframe[4cm]{$\sin 1-\cos 1$}.
+	\end{exercise}
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\beqskip{0pt}
+	\onslide<+->
+	\begin{example}[nearprev]
+		求 $\dint_C(2z^2+8z+1)\d z$, 其中 $C$ 是摆线
+		$\displaystyle\begin{cases}
+		x=a(\theta-\sin\theta),& \\ y=a(1-\cos\theta),
+		\end{cases} 0\le \theta\le 2\pi.$
+		\bigdel
+		\begin{center}
+			\begin{animateinline}[width=9cm]{10}
+				\begin{tikzpicture}
+					\draw[cstaxis, thick](-1.5,0)--(7.5,0);
+					\draw[cstaxis, thick](0,0)--(0,2.5);
+					\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
+				\end{tikzpicture}
+				\newframe
+				\multiframe{37}{r=0+10}{
+					\begin{tikzpicture}
+						\draw[cstaxis, thick](-1.5,0)--(7.5,0);
+						\draw[cstaxis, thick](0,0)--(0,2.5);
+						\draw[cstcurve,second] ({1*(pi/180*\r)},1) circle (1);
+						\fill[cstdot,main] ({1*(pi/180*\r-sin(\r))},{1*(1-cos(\r))}) circle;
+						\draw[cstcurve,main,smooth,domain=0:360] plot ({1*(pi/180*\x-sin(\x))},{1*(1-cos(\x))});
+					\end{tikzpicture}
+				}
+			\end{animateinline}
+		\end{center}
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		由于 $f(z)=2z^2+8z+1$ 处处解析,
+		\onslide<+->{%
+			因此
+			\[
+				\text{原积分}=\int_0^{2\pi a}(2z^2+8z+1)\d z
+				\visible<+->{=\Bigl(\frac23z^3+4z^2+z\Bigr)\bigg|_0^{2\pi a}=\frac{16}3\pi^3a^3+16\pi^2a^2+2\pi a.}
+	\]
+		}
+	\end{solution}
+	\endgroup
+\end{frame}
+
+
+\begin{frame}{典型例题: 利用原函数求积分}
+	\beqskip{4pt}
+	\onslide<+->
+	\begin{example}[nearnext]
+		设 $C$ 为沿着 $\abs{z}=1$ 从 $1$ 到 $\ii$ 的逆时针圆弧, 求 $\dint_C\frac{\ln(z+1)}{z+1}\d z$.
+	\end{example}
+	\onslide<+->
+	\begin{solution}[nearprev]
+		函数 $f(z)=\dfrac{\ln(z+1)}{z+1}$ 在单连通区域 $\Re z>-1$ 内解析.
+		\onslide<+->{%
+			\[
+				\int\frac{\ln(z+1)}{z+1}\d z
+				=\int\ln(z+1)\d\bigl(\ln(z+1)\bigr)
+				=\half\ln^2(z+1)+C.
+			\]
+		}\onslide<+->{%
+			因此
+			\begin{align*}
+				\int_C\frac{\ln(z+1)}{z+1}\d z&=\half\ln^2(z+1)\big|_1^\ii
+				\visible<+->{=\half\Bigl(\ln^2(1+\ii)-\ln^22\Bigr)}\\
+				&\visible<+->{=\half\biggl(\Bigl(\ln\sqrt2+\frac\pi4\ii\Bigr)^2-\ln^22\biggr)
+				=-\frac{\pi^2}{32}-\frac38\ln^22+\frac{\pi\ln2}{8}\ii.}
+			\end{align*}
+		}
+	\end{solution}
+	\endgroup
+\end{frame}
+
+

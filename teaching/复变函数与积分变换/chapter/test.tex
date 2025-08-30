@@ -1,41 +1,62 @@
 \documentclass[handout,aspectratio=169]{ctexbeamer}
 \usepackage{animate}
+\usepackage{graphicx}
+
+
+\usepackage{upgreek}
+
+% \newcommand{\skewmathbb}[2]{\scalebox{1}[1]{\skew{#1}{\mathbb{#2}}}}
+% \newcommand{\bbsl}[1]{\skewmathbb{2.5}{#1}}
+
+\DeclareSymbolFont{lettersA}{U}{txmia}{m}{it}
+\DeclareMathSymbol{\alphaup}{\mathord}{lettersA}{11}
+\DeclareMathSymbol{\betaup}{\mathord}{lettersA}{12}
+\NewDocumentCommand{\bdgrk}{m m}{
+	#1\hspace{#2}#1\hspace{#2}#1\hspace{#2}#1\hspace{#2}#1\hspace{#2}#1
+}
+\NewDocumentCommand{\bdalpha}{}{\bdgrk{$\alphaup$}{-6.35pt}}
+\NewDocumentCommand{\bdbeta}{}{\bdgrk{$\betaup$}{-5.75pt}}
+
+% \def\cstsl#1#2{%
+%   \tikz[baseline=(X.base), xslant=tan(#1)]
+%     \node[inner sep=0pt, xslant=tan(#1)](X){#2};%
+% }
+% \newcommand{\slbbH}{\text{\cstsl{10}{$\mathbb{H}$}}}
+% \newcommand{\slbbD}{\text{\cstsl{10}{$\mathbb{D}$}}}
+
+\newcommand\boldgreekalpha{
+  \tikz{
+	\foreach \i in {0,0.003,0.006,...,0.015}{
+    \draw (\i,0) node[inner sep=0pt] {$\alphaup$};}
+	}
+}
+
+
 \input{../cn_teach}
 \title{复变函数与积分变换}
 
 \begin{document}
-\begin{frame}{邻域}
+\begin{frame}{卷积的性质}\small
 	\onslide<+->
-	为了引入极限的概念, 我们需要考虑点的邻域.
+	\begin{proof}[nearprev]
+		\bigdel\bigdel
+		\begin{align*}
+			\msf[f_1\ast f_2]&=\intff \intff f_1(\tau)f_2(t-\tau)\d \tau \cdot \ee^{-\ii \omega t}\d t\\
+			&\visible<+->{=\intff \intff f_1(\tau)\ee^{-\ii \omega \tau}\cdot f_2(t-\tau)\ee^{-\ii \omega (t-\tau)}\d t\d \tau}\\
+			&\visible<+->{=\intff \intff f_1(\tau)\ee^{-\ii \omega \tau}\cdot f_2(t)\ee^{-\ii \omega t}\d t\d \tau}\\
+			&\visible<+->{=\intff f_1(\tau)\ee^{-\ii \omega \tau}\d\tau\intff f_2(t)\ee^{-\ii \omega t}\d t}\visible<+->{=\msf[f_1]\msf[f_2].\qedhere}
+		\end{align*}
+	\end{proof}
 	\onslide<+->
-	类比于高等数学中的邻域和去心邻域, 我们在复变函数中, 称开圆盘
-		\[
-			U(z_0,\delta)=\{z:\abs{z-z_0}<\delta\}
-		\]
-		为 $z_0$ 的一个 \emph{$\delta$-邻域}.
-	\onslide<+->
-	称去心开圆盘
-		\[
-			\Uc(z_0,\delta)=\{z:0<\abs{z-z_0}<\delta\}
-		\]
-		为 $z_0$ 的一个\emph{去心 $\delta$-邻域}.
-	\onslide<2->
-	\begin{center}
-		\begin{tikzpicture}
-			\begin{scope}
-				\coordinate (A) at (-1,0);
-				\coordinate (B) at (2,0);
-				\filldraw[cstcurve,main,cstfill1] (A) circle (1);
-				\filldraw[cstcurve,main,cstfill1,visible on=<3->] (B) circle (1);
-				\draw[cstra,fourth,thick] (A)--++(.8,.6)
-					node[midway,above left] {$\delta$};
-				\draw[cstra,fourth,thick,visible on=<3->] (B)--++(.8,.6)
-					node[midway,above left] {$\delta$};
-			\end{scope}
-			\fill[cstdot] (A) circle node[left] {$z_0$};
-			\filldraw[cstdote,draw=fourth,visible on=<3->] (B) circle node[left,fourth] {$z_0$};
-		\end{tikzpicture}
-	\end{center}
+	由函数的乘法性质可知卷积满足如下性质:
+	\begin{itemize}\bf
+		\item $f_1\ast f_2=f_2\ast f_1,\ (f_1\ast f_2)\ast f_3=f_1\ast(f_2\ast f_3)$;
+		\item $f_1\ast(f_2+f_3)=f_1\ast f_2+f_1\ast f_3$;
+		\item $f\ast\dirac=f$;
+		\item $(f_1\ast f_2)'=f_1'\ast f_2=f_1\ast f_2'$.
+	\end{itemize}
 \end{frame}
+
+
 
 \end{document}

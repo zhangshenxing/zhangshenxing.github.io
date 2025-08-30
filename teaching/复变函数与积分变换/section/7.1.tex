@@ -148,7 +148,7 @@
 		=\sumff \abs{c_n}^2
 	\]
 	\onslide<+->
-	可得 (本章中这些用于计算级数和积分的定理会在考试时按需提供):
+	可得如下等式 (本章中这些用于计算级数和积分的定理会在考试时按需提供):
 	\begin{theorem*}[][帕塞瓦尔恒等式]
 		对于周期为 $T$ 的函数 $f(t)$, 我们有
 		\[
@@ -301,7 +301,7 @@
 \end{frame}
 
 
-\begin{frame}{傅里叶正弦/余弦积分公式\noexer}
+\begin{frame}{傅里叶正弦、余弦积分公式\noexer}
 	\onslide<+->
 	若 $f(t)$ 是偶函数, 则 $f(t)\cos{\omega t}$ 是偶函数, $f(t)\sin{\omega t}$ 是奇函数,
 	\onslide<+->
@@ -538,7 +538,7 @@
 		\pair{\lambda,f}:=\intff \lambda(t)f(t)\d t.
 	\]
 	\onslide<+->
-	这个线性映射基本上确定了 $\lambda(t)$ 本身(至多可数个点处不同).
+	这个线性映射基本上确定了 $\lambda(t)$ 本身.
 
 	\onslide<+->
 	\emph{广义函数(分布)}就是指一个线性映射 $\mss\to \BR$.
@@ -589,7 +589,7 @@
 \end{frame}
 
 
-\begin{frame}{狄拉克 $\dirac$ 函数的性质}
+\begin{frame}{狄拉克 $\dirac$ 函数的性质\noexer}
 	\onslide<+->
 	对于广义函数 $\lambda$, 我们可以形式地定义 $\lambda(at),\lambda'$:
 	\[
@@ -610,7 +610,7 @@
 \end{frame}
 
 
-\begin{frame}{Dirac $\dirac$ 函数的傅里叶变换和逆变换}
+\begin{frame}{狄拉克 $\dirac$ 函数的傅里叶变换和逆变换}
 	\onslide<+->
 	根据 $\dirac$ 函数的定义可知
 	\[
@@ -840,7 +840,7 @@
 		}\onslide<+->{%
 			因此
 			\[
-					G(\omega)=\msf[f(t)]=\frac{2\pi}T\sumff F(n\omega_0)\dirac(n-n\omega_0).
+					G(\omega)=\msf[f(t)]=\frac{2\pi}T\sumff F(n\omega_0)\dirac(\omega-n\omega_0).
 			\]
 		}
 	\end{solution}
@@ -1018,7 +1018,7 @@
 \begin{frame}{卷积的性质}\small
 	\onslide<+->
 	\begin{proof}[nearprev]
-		\bigdel
+		\bigdel\bigdel
 		\begin{align*}
 			\msf[f_1\ast f_2]&=\intff \intff f_1(\tau)f_2(t-\tau)\d \tau \cdot \ee^{-\ii \omega t}\d t\\
 			&\visible<+->{=\intff \intff f_1(\tau)\ee^{-\ii \omega \tau}\cdot f_2(t-\tau)\ee^{-\ii \omega (t-\tau)}\d t\d \tau}\\
